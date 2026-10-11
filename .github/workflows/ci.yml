@@ -97,8 +97,6 @@ jobs:
       - run: scripts/check-audit-tooling.sh
       - run: scripts/check-public-posture.sh
       - run: scripts/validate-changelog.sh
-      - run: python3 scripts/test_release_notes.py
-      - run: python3 -m unittest -v scripts.test_compare_benchmark scripts.test_profile_sqlite
       - run: scripts/check-docs-freshness.sh
       - run: scripts/test-check-docs-freshness.sh
       - run: scripts/check-plan-freshness.sh
@@ -106,27 +104,30 @@ jobs:
       - run: scripts/check-rust-format.sh
       - run: cargo clippy --locked --workspace --all-targets -- -D warnings
       - run: cargo check --locked -p slskr-web --target wasm32-unknown-unknown
-      - run: cargo test --locked --workspace
+      - name: Run and receipt the native Linux x64 Rust test node
+        env:
+          VALIDATION_NODE_ID: linux-x64
+          VALIDATION_RECEIPT_EXPORT: ${{ runner.temp }}/validation/rust-linux-x64.json
+        run: node scripts/validate-development.mjs --tests-only
+      - name: Retain Linux x64 Rust test receipt
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # actions/upload-artifact@v7.0.1
+        with:
+          name: validation-rust-linux-x64
+          path: ${{ runner.temp }}/validation/rust-linux-x64.json
+          if-no-files-found: warn
+          retention-days: 7
       - run: cargo audit
       - run: scripts/run-security-scans.sh
-      - run: scripts/check-client-sdk-gates.sh
-      - run: npm --prefix web ci --allow-git=root --legacy-peer-deps
       - run: bash scripts/check-web-audit.sh
       - run: npm --prefix web run lint
-      - run: npm --prefix web test
-      - name: Verify E2E fixture path discovery
-        working-directory: web
-        run: npx playwright test e2e/fixture-paths.spec.ts e2e/harness-lifecycle.spec.ts --reporter=line
-      - run: npm --prefix web run test:api-lifecycle-coverage
       - run: npm --prefix web run build
       - run: npm --prefix web run test:bundle-budget
       - run: node web/scripts/verify-build-output.mjs
       - run: node web/scripts/smoke-subpath-build.mjs
-      - run: npm --prefix dashboard ci
       - run: bash scripts/check-web-audit.sh dashboard
       - run: npm --prefix dashboard run type-check
       - run: npm --prefix dashboard run lint
-      - run: npm --prefix dashboard run test:coverage
       - run: npm --prefix dashboard run build
       - run: npm --prefix dashboard run test:bundle-budget
       - name: Prove shared peer gateway shutdown
@@ -179,6 +180,9 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
         with:
           fetch-depth: 2
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # actions/setup-node@v6
+        with:
+          node-version: '22'
       - uses: dtolnay/rust-toolchain@29eef336d9b2848a0b548edc03f92a220660cdb8 # dtolnay/rust-toolchain@stable
         with:
           toolchain: 1.94.0
@@ -192,8 +196,19 @@ jobs:
           sudo apt-get install -y musl-tools
       - name: Check native GNU build
         run: cargo check --locked --workspace --all-targets
-      - name: Run native GNU tests
-        run: cargo test --locked --workspace
+      - name: Run and receipt the native Linux AArch64 Rust test node
+        env:
+          VALIDATION_NODE_ID: linux-aarch64
+          VALIDATION_RECEIPT_EXPORT: ${{ runner.temp }}/validation/rust-linux-aarch64.json
+        run: node scripts/validate-development.mjs --task rust-workspace-tests
+      - name: Retain Linux AArch64 Rust test receipt
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # actions/upload-artifact@v7.0.1
+        with:
+          name: validation-rust-linux-aarch64
+          path: ${{ runner.temp }}/validation/rust-linux-aarch64.json
+          if-no-files-found: warn
+          retention-days: 7
       - name: Check static musl build
         run: cargo check --locked -p slskr --target aarch64-unknown-linux-musl
 
@@ -253,6 +268,9 @@ jobs:
           targets: |
             ${{ matrix.target }}
             wasm32-unknown-unknown
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # actions/setup-node@v6
+        with:
+          node-version: '22'
       - uses: Swatinem/rust-cache@f0d9c3887740aee45f6153b24b3a6b815192ec16 # Swatinem/rust-cache@v2
       - name: Prefer rustup toolchain binaries
         shell: bash
@@ -280,7 +298,18 @@ jobs:
       - name: Run native workspace tests
         if: matrix.native_tests
         shell: bash
-        run: cargo test --locked --workspace
+        env:
+          VALIDATION_NODE_ID: ${{ matrix.name }}
+          VALIDATION_RECEIPT_EXPORT: ${{ runner.temp }}/validation/rust-${{ matrix.name }}.json
+        run: node scripts/validate-development.mjs --task rust-workspace-tests
+      - name: Retain native platform Rust test receipt
+        if: always() && matrix.native_tests
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # actions/upload-artifact@v7.0.1
+        with:
+          name: validation-rust-${{ matrix.name }}
+          path: ${{ runner.temp }}/validation/rust-${{ matrix.name }}.json
+          if-no-files-found: warn
+          retention-days: 7
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # actions/download-artifact@v8.3.0
         with:
           name: ci-web-assets
@@ -321,9 +350,33 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
+  validation-reconcile:
+    name: Reconcile native Rust test nodes
+    if: always()
+    needs: [rust, linux-aarch64, platform-builds]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # actions/setup-node@v6
+        with:
+          node-version: '22'
+      - name: Prepare receipt directory
+        run: mkdir -p "$RUNNER_TEMP/validation-receipts"
+      - name: Download current-run Rust receipts
+        id: download-receipts
+        continue-on-error: true
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # actions/download-artifact@v8.3.0
+        with:
+          pattern: validation-rust-*
+          path: ${{ runner.temp }}/validation-receipts
+          merge-multiple: true
+      - name: Reconcile exact run, attempt, source and inventory
+        run: node scripts/validation-engine/reconcile-rust-matrix.mjs --receipts "$RUNNER_TEMP/validation-receipts"
+
   package-surfaces:
     name: Package and deployment surfaces
-    needs: platform-builds
+    needs: [platform-builds, validation-reconcile]
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
