@@ -23,6 +23,8 @@ import {
   executePlan,
   formatValidationProgress,
   globMatches,
+  isolatedRuntimeEnvironment,
+  isolatedTaskEnvironment,
   matchesVersionCheck,
   main as runEngine,
   parseCaseCount,
@@ -267,6 +269,32 @@ test('plan binds the candidate and closes test selection over its dependencies',
   assert.match(plan.inventoryLaneDigests.unit, /^[a-f0-9]{64}$/);
 });
 
+test('runtime probes exclude inherited credentials and retain declared tool settings', () => {
+  const { root, config } = fixture();
+  const injected = {
+    GITHUB_TOKEN: 'synthetic-runtime-token',
+    NODE_OPTIONS: '--require=/nonexistent-slskr-runtime-module.cjs',
+  };
+  const previous = new Map(Object.keys(injected).map((name) => [name, process.env[name]]));
+  Object.assign(process.env, injected);
+  config.runtimes = [{
+    command: process.execPath,
+    args: ['-e', `process.stdout.write(JSON.stringify([process.env.GITHUB_TOKEN ?? null, process.env.NODE_OPTIONS ?? null, process.env.GOTOOLCHAIN ?? null]))`],
+    env: { GOTOOLCHAIN: 'local' },
+  }];
+  try {
+    const plan = createPlan(root, config);
+    assert.equal(plan.runtimes[0].version, '[null,null,"local"]');
+    assert.equal(plan.runtimes[0].available, true);
+    assert.equal(plan.runtimes[0].versionCompatible, true);
+  } finally {
+    for (const [name, value] of previous) {
+      if (value === undefined) delete process.env[name];
+      else process.env[name] = value;
+    }
+  }
+});
+
 test('test tasks reject unregistered case parsers', () => {
   const { root, config } = fixture();
   config.tasks[0].caseParser = 'repository-supplied-regex';
@@ -395,30 +423,99 @@ test('exports a private receipt only to a location beneath the system temporary 
   }
 });
 
-test('child environments hide sensitive values unless a task explicitly needs them', async () => {
+test('child environments hide inherited secrets and reject unapproved passEnv requests', async () => {
+  const { root, config } = fixture();
+  const runRoot = mkdtempSync(path.join(os.tmpdir(), 'slskr-isolated-environment-'));
+  temporaryRoots.push(runRoot);
+  assert.throws(
+    () => isolatedTaskEnvironment({ id: '../outside' }, runRoot),
+    /safe lowercase identifier/,
+  );
   const key = 'VALIDATION_ENGINE_TEST_SECRET';
-  const previous = process.env[key];
-  process.env[key] = 'do-not-log-me';
+  const injected = {
+    [key]: 'do-not-log-me',
+    GITHUB_TOKEN: 'synthetic-github-token',
+    NODE_OPTIONS: '--require=/nonexistent-slskr-validation-module.cjs',
+    HOME: '/operator/home',
+    TMPDIR: '/operator/tmp',
+    CARGO_HOME: '/operator/cargo',
+    GOPATH: '/operator/go',
+    GOMODCACHE: '/operator/go/pkg/mod',
+    GOCACHE: '/operator/go-cache',
+    PYTHONPATH: '/operator/python',
+    HTTPS_PROXY: 'http://proxy.invalid',
+    RANDOM_PRIVATE_VALUE: 'synthetic-private-value',
+    XDG_CONFIG_HOME: '/operator/config',
+  };
+  const probeKeys = [...Object.keys(injected), 'RUSTUP_HOME', 'GOTOOLCHAIN', 'CI'];
+  const previous = new Map(probeKeys.map((name) => [name, process.env[name]]));
+  Object.assign(process.env, injected);
+  delete process.env.RUSTUP_HOME;
   try {
-    const { root, config } = fixture();
     config.tasks[0].kind = 'check';
+    config.tasks[0].env = { GOTOOLCHAIN: 'local' };
     config.tasks[0].command = [
       process.execPath,
       '-e',
-      `process.stdout.write(process.env.${key} ?? '')`,
+      `const keys = ${JSON.stringify(probeKeys)}; process.stdout.write(JSON.stringify(Object.fromEntries(keys.map((name) => [name, process.env[name] ?? null]))))`,
     ];
-    let result = await executePlan(root, config, createPlan(root, config));
-    let log = path.join(result.runRoot, result.receipt.tasks[0].logFile);
-    assert.equal(readFileSync(log, 'utf8'), '');
+    const result = await executePlan(root, config, createPlan(root, config), { runRoot });
+    const log = path.join(result.runRoot, result.receipt.tasks[0].logFile);
+    const childEnvironment = JSON.parse(readFileSync(log, 'utf8'));
+    const environmentRoot = path.join(result.runRoot, `${config.tasks[0].id}-environment`);
+    assert.equal(childEnvironment[key], null);
+    assert.equal(childEnvironment.RUSTUP_HOME, path.join('/operator/home', '.rustup'));
+    assert.equal(childEnvironment.GITHUB_TOKEN, null);
+    assert.equal(childEnvironment.NODE_OPTIONS, null);
+    assert.equal(childEnvironment.CARGO_HOME, path.join(result.runRoot, 'cargo-home'));
+    assert.equal(childEnvironment.GOPATH, path.join(environmentRoot, 'go'));
+    assert.equal(childEnvironment.GOMODCACHE, path.join(environmentRoot, 'go', 'pkg', 'mod'));
+    assert.equal(childEnvironment.GOCACHE, path.join(environmentRoot, 'go-cache'));
+    assert.equal(childEnvironment.GOTOOLCHAIN, 'local');
+    assert.equal(childEnvironment.PYTHONPATH, null);
+    assert.equal(childEnvironment.HTTPS_PROXY, null);
+    assert.equal(childEnvironment.RANDOM_PRIVATE_VALUE, null);
+    assert.equal(childEnvironment.HOME, path.join(environmentRoot, 'home'));
+    assert.equal(childEnvironment.TMPDIR, path.join(environmentRoot, 'tmp'));
+    assert.equal(childEnvironment.XDG_CONFIG_HOME, path.join(environmentRoot, 'xdg-config'));
+    assert.equal(childEnvironment.CI, 'true');
+
+    const runtimeProbeRoot = path.join(runRoot, 'runtime-probe');
+    const runtimeEnvironment = isolatedRuntimeEnvironment(
+      { env: { GOTOOLCHAIN: 'local' } },
+      runtimeProbeRoot,
+      injected,
+    );
+    assert.equal(runtimeEnvironment.GOPATH, path.join(runtimeProbeRoot, 'go'));
+    assert.equal(runtimeEnvironment.GOMODCACHE, path.join(runtimeProbeRoot, 'go', 'pkg', 'mod'));
+    assert.equal(runtimeEnvironment.GOCACHE, path.join(runtimeProbeRoot, 'go-cache'));
+    assert.equal(runtimeEnvironment.GOTOOLCHAIN, 'local');
+    assert.equal(runtimeEnvironment.HOME, path.join(runtimeProbeRoot, 'home'));
+    assert.equal(runtimeEnvironment.RUSTUP_HOME, path.join('/operator/home', '.rustup'));
+
+    const probeScript = [
+      "if (process.env.GOPATH === '/operator/go' ||",
+      "process.env.GOMODCACHE === '/operator/go/pkg/mod' ||",
+      "process.env.GOTOOLCHAIN !== 'local') process.exit(1);",
+      'if (!process.env.GOPATH || !process.env.GOMODCACHE || !process.env.GOCACHE) process.exit(2);',
+      "process.stdout.write('private-go-cache-paths')",
+    ].join(' ');
+    config.runtimes = [{
+      command: process.execPath,
+      args: ['-e', probeScript],
+      env: { GOTOOLCHAIN: 'local' },
+    }];
+    const probePlan = createPlan(root, config);
+    assert.equal(probePlan.runtimes[0].available, true);
+    assert.equal(probePlan.runtimes[0].version, 'private-go-cache-paths');
 
     config.tasks[0].passEnv = [key];
-    result = await executePlan(root, config, createPlan(root, config));
-    log = path.join(result.runRoot, result.receipt.tasks[0].logFile);
-    assert.equal(readFileSync(log, 'utf8'), 'do-not-log-me');
-    assert.deepEqual(result.receipt.tasks[0].envKeys, [key]);
+    assert.throws(() => createPlan(root, config), /unapproved inherited environment variable/);
   } finally {
-    if (previous === undefined) delete process.env[key];
-    else process.env[key] = previous;
+    for (const [name, value] of previous) {
+      if (value === undefined) delete process.env[name];
+      else process.env[name] = value;
+    }
   }
 });
 

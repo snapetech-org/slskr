@@ -18,6 +18,7 @@ export const validation = {
     'web/package.json',
     'web/package-lock.json',
     'release-notes/README.md',
+    'release-notes/20261012-validation-environment-isolation.md',
     'scripts/check-client-sdk-gates.sh',
     'scripts/check-rust-format.sh',
     'scripts/validate-development.mjs',
@@ -131,12 +132,12 @@ export const validation = {
         {
           command: 'go',
           args: ['version'],
-          env: { GOTOOLCHAIN: 'go1.25.0' },
+          env: { GOTOOLCHAIN: 'local' },
           versionCheck: { prefix: 'go version go1.25.', boundary: 'digit' },
         },
         { command: 'python3.12', args: ['--version'], versionCheck: { prefix: 'Python 3.12.', boundary: 'digit' } },
       ],
-      env: { GOTOOLCHAIN: 'go1.25.0', PYTHON_EXECUTABLE: 'python3.12' },
+      env: { GOTOOLCHAIN: 'local', PYTHON_EXECUTABLE: 'python3.12' },
       timeoutSeconds: 3600,
     },
     {
