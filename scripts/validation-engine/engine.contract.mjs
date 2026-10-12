@@ -491,6 +491,16 @@ test('child environments hide inherited secrets and reject unapproved passEnv re
     assert.equal(runtimeEnvironment.HOME, path.join(runtimeProbeRoot, 'home'));
     assert.equal(runtimeEnvironment.RUSTUP_HOME, path.join('/operator/home', '.rustup'));
 
+    const probeScript = [
+      "if (process.env.GOPATH === '/operator/go' || process.env.GOMODCACHE === '/operator/go/pkg/mod') process.exit(1);",
+      'if (!process.env.GOPATH || !process.env.GOMODCACHE || !process.env.GOCACHE) process.exit(2);',
+      "process.stdout.write('private-go-cache-paths')",
+    ].join(' ');
+    config.runtimes = [{ command: process.execPath, args: ['-e', probeScript] }];
+    const probePlan = createPlan(root, config);
+    assert.equal(probePlan.runtimes[0].available, true);
+    assert.equal(probePlan.runtimes[0].version, 'private-go-cache-paths');
+
     config.tasks[0].passEnv = [key];
     assert.throws(() => createPlan(root, config), /unapproved inherited environment variable/);
   } finally {
