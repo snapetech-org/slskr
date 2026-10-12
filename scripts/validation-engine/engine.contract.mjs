@@ -412,7 +412,18 @@ test('exports a private receipt only to a location beneath the system temporary 
   temporaryRoots.push(exportDirectory);
   const exportPath = path.join(exportDirectory, 'receipt.json');
   const previous = process.env.VALIDATION_RECEIPT_EXPORT;
+  const previousContext = new Map(GITHUB_CONTEXT_KEYS.map((key) => [key, process.env[key]]));
   process.env.VALIDATION_RECEIPT_EXPORT = exportPath;
+  // This unit test calls the engine entry point directly; its sandbox policy is
+  // covered separately, so provide a self-consistent synthetic CI identity.
+  process.env.GITHUB_ACTIONS = 'true';
+  process.env.GITHUB_RUN_ID = 'contract-test-run';
+  process.env.GITHUB_RUN_ATTEMPT = '1';
+  process.env.GITHUB_SHA = captureCandidate(root, config.inputs, discoverInventory(root, config.inventory)).commit;
+  process.env.GITHUB_WORKFLOW = 'validation-engine-contract';
+  process.env.GITHUB_JOB = 'receipt-export';
+  process.env.GITHUB_EVENT_NAME = 'workflow_dispatch';
+  process.env.VALIDATION_NODE_ID = 'contract-test';
   try {
     assert.equal(await runEngine(['--task', 'unit-tests'], root, config), 0);
     assert.equal(JSON.parse(readFileSync(exportPath, 'utf8')).status, 'passed');
@@ -420,6 +431,10 @@ test('exports a private receipt only to a location beneath the system temporary 
   } finally {
     if (previous === undefined) delete process.env.VALIDATION_RECEIPT_EXPORT;
     else process.env.VALIDATION_RECEIPT_EXPORT = previous;
+    for (const [key, value] of previousContext) {
+      if (value === undefined) delete process.env[key];
+      else process.env[key] = value;
+    }
   }
 });
 
@@ -460,6 +475,7 @@ test('child environments hide inherited secrets and reject unapproved passEnv re
       `const keys = ${JSON.stringify(probeKeys)}; process.stdout.write(JSON.stringify(Object.fromEntries(keys.map((name) => [name, process.env[name] ?? null]))))`,
     ];
     const result = await executePlan(root, config, createPlan(root, config), { runRoot });
+    assert.ok(result.runRoot && result.receipt.tasks[0]?.logFile, JSON.stringify(result.receipt));
     const log = path.join(result.runRoot, result.receipt.tasks[0].logFile);
     const childEnvironment = JSON.parse(readFileSync(log, 'utf8'));
     const environmentRoot = path.join(result.runRoot, `${config.tasks[0].id}-environment`);
