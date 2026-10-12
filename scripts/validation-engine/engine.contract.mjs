@@ -27,6 +27,12 @@ import {
 } from './engine.mjs';
 
 const temporaryRoots = [];
+const GITHUB_CONTEXT_KEYS = [
+  'GITHUB_ACTIONS', 'GITHUB_RUN_ID', 'GITHUB_RUN_ATTEMPT', 'GITHUB_SHA',
+  'GITHUB_WORKFLOW', 'GITHUB_JOB', 'GITHUB_EVENT_NAME', 'VALIDATION_NODE_ID',
+];
+const inheritedGithubContext = new Map(GITHUB_CONTEXT_KEYS.map((key) => [key, process.env[key]]));
+for (const key of GITHUB_CONTEXT_KEYS) delete process.env[key];
 
 function makeRoot(files = {}) {
   const root = mkdtempSync(path.join(os.tmpdir(), 'slskr-validation-contract-'));
@@ -84,6 +90,10 @@ function fixture() {
 }
 
 after(() => {
+  for (const [key, value] of inheritedGithubContext) {
+    if (value === undefined) delete process.env[key];
+    else process.env[key] = value;
+  }
   for (const root of temporaryRoots) rmSync(root, { recursive: true, force: true });
 });
 
@@ -359,4 +369,25 @@ test('candidate digests change after tracked source edits', () => {
   writeFileSync(path.join(root, 'package.json'), '{"edited":true}\n');
   const afterEdit = captureCandidate(root, config.inputs, discoverInventory(root, config.inventory));
   assert.notEqual(before.sourceSha256, afterEdit.sourceSha256);
+});
+
+test('hosted execution rejects a workflow SHA that does not match its source snapshot', async () => {
+  const previous = new Map(GITHUB_CONTEXT_KEYS.map((key) => [key, process.env[key]]));
+  process.env.GITHUB_ACTIONS = 'true';
+  process.env.GITHUB_RUN_ID = 'validation-contract-run';
+  process.env.GITHUB_RUN_ATTEMPT = '1';
+  process.env.GITHUB_SHA = '0'.repeat(40);
+  try {
+    const { root, config } = fixture();
+    const result = await executePlan(root, config, createPlan(root, config));
+    assert.equal(result.exitCode, 1);
+    assert.equal(result.receipt.status, 'incomplete');
+    assert.equal(result.receipt.totals.executed, 0);
+    assert.equal(result.receipt.prerequisites.some((item) => item.command === 'GITHUB_SHA'), true);
+  } finally {
+    for (const [key, value] of previous) {
+      if (value === undefined) delete process.env[key];
+      else process.env[key] = value;
+    }
+  }
 });
