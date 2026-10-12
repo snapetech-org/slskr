@@ -31,6 +31,12 @@ for expected in \
   fi
 done
 
+if rg -n '^[[:space:]]*runs-on:.*self-hosted' .github/workflows \
+  | rg -v -F "github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')"; then
+  printf 'workflow release policy check failed: self-hosted runners must be restricted to trusted main events\n' >&2
+  status=1
+fi
+
 if [[ ! -f "$pin_policy" ]]; then
   printf 'workflow release policy check failed: GitHub Actions pin policy is missing: %s\n' "$pin_policy" >&2
   status=1
