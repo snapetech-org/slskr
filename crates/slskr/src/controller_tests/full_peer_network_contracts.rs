@@ -185,9 +185,20 @@ pub(super) async fn reachable_searcher_receives_one_direct_response_without_brok
         .await
         .expect("direct peer init timed out")
         .expect("decode direct peer init");
-        let slskr_client::listener::IncomingConnection::PeerMessages(mut peer) = incoming else {
+        let slskr_client::listener::IncomingConnection::PeerInit {
+            username,
+            kind,
+            stream,
+            obfuscated,
+            ..
+        } = incoming
+        else {
             panic!("reachable searcher received the wrong connection kind");
         };
+        assert_eq!(username, "tester");
+        assert_eq!(kind, slskr_client::connection::ConnectionKind::PeerMessages);
+        assert!(!obfuscated);
+        let mut peer = slskr_client::stream::PeerMessageConnection::new(stream);
         let message = tokio::time::timeout(Duration::from_secs(2), peer.receive())
             .await
             .expect("direct search response timed out")
@@ -215,7 +226,10 @@ pub(super) async fn reachable_searcher_receives_one_direct_response_without_brok
     .await
     .expect("direct search response send");
     receiver.await.expect("direct peer receiver task");
-    assert!(matches!(commands.try_recv(), Err(tokio::sync::mpsc::error::TryRecvError::Empty)));
+    assert!(matches!(
+        commands.try_recv(),
+        Err(tokio::sync::mpsc::error::TryRecvError::Empty)
+    ));
     assert!(state
         .pending_indirect_peer_messages
         .lock()
