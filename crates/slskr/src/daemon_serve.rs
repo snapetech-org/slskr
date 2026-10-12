@@ -875,6 +875,7 @@ pub(super) async fn serve(invocation: ServeInvocation) -> Result<(), String> {
         multisource: Arc::new(RwLock::new(multisource::SwarmStore::default())),
         controller_features: ControllerFeatureStore::new(controller_feature_state),
         peer_endpoints: RwLock::new(BTreeMap::new()),
+        pending_indirect_peer_messages: std::sync::Mutex::new(BTreeMap::new()),
         preview_streams: Arc::new(Semaphore::new(MAX_PREVIEW_STREAMS)),
         listening_party_stream_limits: RwLock::new(ListeningPartyStreamLimits::default()),
         revoked_jwts: RwLock::new(revoked_jwts),

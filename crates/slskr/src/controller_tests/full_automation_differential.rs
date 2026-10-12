@@ -108,7 +108,7 @@ pub(super) async fn controller_api_differential_automation_compat_routes_use_exp
     assert_eq!(search.status, "200 OK");
     assert!(search.body.contains("\"query\":\"Remote Song\""));
     let search_json = serde_json::from_str::<serde_json::Value>(&search.body).unwrap();
-    assert!(search_json["searchId"].is_string());
+    assert!(search_json["id"].is_string());
     assert_eq!(search_json["query"], "Remote Song");
     assert!(search_json["results"].is_array());
     record_evidence!("POST", "/api/v0/searches", "nominal-status-headers-body");
@@ -159,33 +159,31 @@ pub(super) async fn controller_api_differential_automation_compat_routes_use_exp
     .expect("uuid search route");
     assert_eq!(uuid_search.status, "200 OK");
     let uuid_search_json = serde_json::from_str::<serde_json::Value>(&uuid_search.body).unwrap();
-    assert!(uuid_search_json["searchId"].is_string());
+    assert!(uuid_search_json["id"].is_string());
     assert_eq!(uuid_search_json["query"], "UUID Song");
     let _ = receiver.try_recv();
 
-    let dashless_search_id = uuid_search_json["searchId"]
-        .as_str()
-        .expect("dashless search id");
-    let dashless_detail = crate::route_http_request(
+    let uuid_search_id = uuid_search_json["id"].as_str().expect("search id");
+    let uuid_detail = crate::route_http_request(
         "GET",
-        &format!("/api/v0/searches/{dashless_search_id}"),
+        &format!("/api/v0/searches/{uuid_search_id}"),
         None,
         "",
         &state,
     )
     .await
-    .expect("dashless search detail route");
-    assert_eq!(dashless_detail.status, "200 OK");
-    let dashless_responses = crate::route_http_request(
+    .expect("search detail route");
+    assert_eq!(uuid_detail.status, "200 OK");
+    let uuid_responses = crate::route_http_request(
         "GET",
-        &format!("/api/v0/searches/{dashless_search_id}/responses"),
+        &format!("/api/v0/searches/{uuid_search_id}/responses"),
         None,
         "",
         &state,
     )
     .await
-    .expect("dashless search responses route");
-    assert_eq!(dashless_responses.status, "200 OK");
+    .expect("search responses route");
+    assert_eq!(uuid_responses.status, "200 OK");
 
     for (method, path) in [
         ("GET", format!("/api/v0/searches/{uuid_search_id}")),

@@ -4,7 +4,7 @@ use std::{
     io::{Read, Seek, SeekFrom},
     path::{Path, PathBuf},
     sync::{
-        atomic::{AtomicBool, Ordering},
+        atomic::{AtomicBool, AtomicUsize, Ordering},
         Arc,
     },
 };
@@ -405,6 +405,44 @@ mod media_attribute_tests {
     }
 }
 
+#[cfg(test)]
+mod progress_tests {
+    use super::*;
+
+    #[test]
+    fn filesystem_entry_count_is_published_during_scan() {
+        let root = std::env::temp_dir().join(format!(
+            "slskr-share-progress-test-{}",
+            uuid::Uuid::new_v4()
+        ));
+        let artist = root.join("Artist");
+        fs::create_dir_all(&artist).expect("create share fixture directory");
+        fs::write(artist.join("Track.flac"), b"audio").expect("write nested fixture");
+        fs::write(root.join("Readme.txt"), b"text").expect("write root fixture");
+        let directories =
+            crate::config::parse_share_directories(root.to_str().expect("share fixture path"))
+                .expect("parse share fixture");
+        let progress = Arc::new(AtomicUsize::new(0));
+        let scan = scan_share_dirs_with_cancellation_and_progress(
+            ShareScanRequest {
+                directories: &directories,
+                follow_symlinks: false,
+                include_hidden: false,
+                max_files: 100,
+                probe_media_attributes: false,
+                workers: 1,
+                filters: &[],
+                cancellation: Arc::new(AtomicBool::new(false)),
+            },
+            Arc::clone(&progress),
+        );
+
+        assert_eq!(scan.entries.len(), 2);
+        assert_eq!(progress.load(Ordering::Relaxed), 3);
+        fs::remove_dir_all(root).expect("remove share fixture");
+    }
+}
+
 #[derive(Clone, Debug)]
 pub(super) struct ShareScan {
     pub(super) entries: Vec<FileEntry>,
@@ -421,6 +459,7 @@ struct ShareScanOptions {
     max_files: usize,
     probe_media_attributes: bool,
     cancellation: Arc<AtomicBool>,
+    progress: Arc<AtomicUsize>,
 }
 
 pub(super) struct ShareScanRequest<'a> {
@@ -440,9 +479,18 @@ pub(super) fn build_share_index(config: &AppConfig) -> ShareIndexSnapshot {
         .expect("share scan without cancellation cannot fail")
 }
 
+#[cfg(any(test, feature = "full-controller-tests"))]
 pub(super) fn build_share_index_with_cancellation(
     config: &AppConfig,
     cancellation: Arc<AtomicBool>,
+) -> Result<ShareIndexSnapshot, String> {
+    build_share_index_with_progress(config, cancellation, Arc::new(AtomicUsize::new(0)))
+}
+
+pub(super) fn build_share_index_with_progress(
+    config: &AppConfig,
+    cancellation: Arc<AtomicBool>,
+    progress: Arc<AtomicUsize>,
 ) -> Result<ShareIndexSnapshot, String> {
     let filters = compile_controller_regexes(
         &config.share_settings.filters,
@@ -450,16 +498,19 @@ pub(super) fn build_share_index_with_cancellation(
         config.controller_profile,
     )
     .expect("validated share filters must compile");
-    let mut scan = scan_share_dirs_with_cancellation(ShareScanRequest {
-        directories: &config.share_settings.directories,
-        follow_symlinks: config.share_settings.follow_symlinks,
-        include_hidden: config.share_settings.include_hidden,
-        max_files: config.share_settings.max_files,
-        probe_media_attributes: config.share_settings.probe_media_attributes,
-        workers: config.share_settings.cache_workers,
-        filters: &filters,
-        cancellation,
-    });
+    let mut scan = scan_share_dirs_with_cancellation_and_progress(
+        ShareScanRequest {
+            directories: &config.share_settings.directories,
+            follow_symlinks: config.share_settings.follow_symlinks,
+            include_hidden: config.share_settings.include_hidden,
+            max_files: config.share_settings.max_files,
+            probe_media_attributes: config.share_settings.probe_media_attributes,
+            workers: config.share_settings.cache_workers,
+            filters: &filters,
+            cancellation,
+        },
+        Arc::clone(&progress),
+    );
     if scan.cancelled {
         return Err(SHARE_SCAN_CANCELLED_ERROR.to_owned());
     }
@@ -484,6 +535,7 @@ pub(super) fn build_share_index_with_cancellation(
         cache_written_at,
         cache_error,
         updated_at: unix_timestamp(),
+        scanned_entries: progress.load(Ordering::Relaxed),
     })
 }
 
@@ -509,6 +561,13 @@ pub(super) fn scan_share_dirs(
 }
 
 pub(super) fn scan_share_dirs_with_cancellation(request: ShareScanRequest<'_>) -> ShareScan {
+    scan_share_dirs_with_cancellation_and_progress(request, Arc::new(AtomicUsize::new(0)))
+}
+
+fn scan_share_dirs_with_cancellation_and_progress(
+    request: ShareScanRequest<'_>,
+    progress: Arc<AtomicUsize>,
+) -> ShareScan {
     let ShareScanRequest {
         directories,
         follow_symlinks,
@@ -525,6 +584,7 @@ pub(super) fn scan_share_dirs_with_cancellation(request: ShareScanRequest<'_>) -
         max_files,
         probe_media_attributes,
         cancellation,
+        progress,
     };
     let exclusions = directories
         .iter()
@@ -806,6 +866,7 @@ fn scan_share_root(
                 output.errors.push(SHARE_SCAN_ENTRY_LIMIT_ERROR.to_owned());
                 return;
             }
+            options.progress.fetch_add(1, Ordering::Relaxed);
 
             let Ok(child) = child else {
                 output.errors.push(format!(
@@ -949,6 +1010,7 @@ fn scan_share_root_unix(
                 return;
             }
             let Ok(child) = child else {
+                options.progress.fetch_add(1, Ordering::Relaxed);
                 output.errors.push(format!(
                     "{}: entry unreadable",
                     json_safe_share_label(label)
@@ -959,6 +1021,7 @@ fn scan_share_root_unix(
             if matches!(name.to_bytes(), b"." | b"..") {
                 continue;
             }
+            options.progress.fetch_add(1, Ordering::Relaxed);
             let name_os = std::ffi::OsStr::from_bytes(name.to_bytes());
             if !options.include_hidden && name_os.to_string_lossy().starts_with('.') {
                 continue;

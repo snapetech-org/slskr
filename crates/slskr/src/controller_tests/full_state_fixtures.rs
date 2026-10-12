@@ -284,6 +284,7 @@ pub(super) fn test_state_with_env_parts_full(
             crate::ControllerFeatureState::in_memory(),
         ),
         peer_endpoints: RwLock::new(BTreeMap::new()),
+        pending_indirect_peer_messages: std::sync::Mutex::new(BTreeMap::new()),
         preview_streams: Arc::new(tokio::sync::Semaphore::new(crate::MAX_PREVIEW_STREAMS)),
         listening_party_stream_limits: RwLock::new(crate::ListeningPartyStreamLimits::default()),
         revoked_jwts: RwLock::new(crate::RevokedJwtStore::default()),

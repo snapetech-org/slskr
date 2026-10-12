@@ -1,4 +1,5 @@
 import * as sharesLibrary from '../../../lib/shares';
+import * as applicationLibrary from '../../../lib/application';
 import { toDisplayError } from '../../../lib/errors';
 import { LoaderSegment, ShrinkableButton, Switch } from '../../Shared';
 import ContentsModal from './ContentsModal';
@@ -7,6 +8,8 @@ import ShareTable from './ShareTable';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import { Divider } from 'semantic-ui-react';
+
+const EMPTY_STATE = Object.freeze({});
 
 const ScanButton = ({ rescan, scanPending, working }) => (
   <ShrinkableButton
@@ -34,17 +37,25 @@ const CancelButton = ({ cancel, working }) => (
   </ShrinkableButton>
 );
 
-const Shares = ({ state = {}, theme } = {}) => {
+const Shares = ({ state = EMPTY_STATE, theme } = {}) => {
   const [loading, setLoading] = useState(true);
   const [working, setWorking] = useState(false);
+  const [monitoringScan, setMonitoringScan] = useState(false);
   const [shares, setShares] = useState([]);
   const [modal, setModal] = useState(false);
+  const [liveState, setLiveState] = useState(state);
   const mountedRef = useRef(false);
   const requestIdRef = useRef(0);
   const operationIdRef = useRef(0);
   const initialLoadRef = useRef(true);
+  const sawScanningRef = useRef(false);
+  const scanPollFailureLoggedRef = useRef(false);
 
-  const { directories, files, scanPending, scanProgress, scanning } = state;
+  const { directories, files, scanEntries = 0, scanPending, scanning } = liveState;
+
+  useEffect(() => {
+    if (!scanning && !monitoringScan) setLiveState(state);
+  }, [monitoringScan, scanning, state]);
 
   const getAll = useCallback(async (quiet = false) => {
     if (!mountedRef.current) return;
@@ -101,10 +112,46 @@ const Shares = ({ state = {}, theme } = {}) => {
     };
   }, [getAll, scanPending, scanning]);
 
+  useEffect(() => {
+    if (!scanning && !monitoringScan) return undefined;
+    let active = true;
+    let timeout;
+    const refreshScanState = async () => {
+      try {
+        const application = await applicationLibrary.getState();
+        if (!active || !application.shares) return;
+        scanPollFailureLoggedRef.current = false;
+        setLiveState(application.shares);
+        if (application.shares.scanning) {
+          sawScanningRef.current = true;
+        } else if (sawScanningRef.current || !working) {
+          sawScanningRef.current = false;
+          setMonitoringScan(false);
+          void getAll(true);
+        }
+      } catch (error) {
+        if (active && !scanPollFailureLoggedRef.current) {
+          console.error(error);
+          scanPollFailureLoggedRef.current = true;
+        }
+      } finally {
+        if (active) timeout = setTimeout(refreshScanState, 750);
+      }
+    };
+    void refreshScanState();
+    return () => {
+      active = false;
+      if (timeout) clearTimeout(timeout);
+    };
+  }, [getAll, monitoringScan, scanning, working]);
+
   const rescan = async () => {
     if (!mountedRef.current || working) return;
     const operationId = ++operationIdRef.current;
     try {
+      sawScanningRef.current = false;
+      scanPollFailureLoggedRef.current = false;
+      setMonitoringScan(true);
       setWorking(true);
       await sharesLibrary.rescan();
     } catch (error) {
@@ -178,9 +225,12 @@ const Shares = ({ state = {}, theme } = {}) => {
           scanning && (
             <LoaderSegment>
               <div>
-                <div>{Math.round(scanProgress * 100)}%</div>
+                <div>Scanning shares</div>
                 <div className="share-scan-detail">
-                  Found {files} files in {directories} directories
+                  Visited {Number(scanEntries).toLocaleString()} filesystem entries
+                </div>
+                <div className="share-scan-detail">
+                  Last index: {files} files in {directories} directories
                 </div>
               </div>
             </LoaderSegment>
