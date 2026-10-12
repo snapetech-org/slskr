@@ -23,6 +23,7 @@ import {
   executePlan,
   formatValidationProgress,
   globMatches,
+  isolatedRuntimeEnvironment,
   isolatedTaskEnvironment,
   matchesVersionCheck,
   main as runEngine,
@@ -438,6 +439,9 @@ test('child environments hide inherited secrets and reject unapproved passEnv re
     HOME: '/operator/home',
     TMPDIR: '/operator/tmp',
     CARGO_HOME: '/operator/cargo',
+    GOPATH: '/operator/go',
+    GOMODCACHE: '/operator/go/pkg/mod',
+    GOCACHE: '/operator/go-cache',
     PYTHONPATH: '/operator/python',
     HTTPS_PROXY: 'http://proxy.invalid',
     RANDOM_PRIVATE_VALUE: 'synthetic-private-value',
@@ -463,6 +467,9 @@ test('child environments hide inherited secrets and reject unapproved passEnv re
     assert.equal(childEnvironment.GITHUB_TOKEN, null);
     assert.equal(childEnvironment.NODE_OPTIONS, null);
     assert.equal(childEnvironment.CARGO_HOME, path.join(result.runRoot, 'cargo-home'));
+    assert.equal(childEnvironment.GOPATH, path.join(environmentRoot, 'go'));
+    assert.equal(childEnvironment.GOMODCACHE, path.join(environmentRoot, 'go', 'pkg', 'mod'));
+    assert.equal(childEnvironment.GOCACHE, path.join(environmentRoot, 'go-cache'));
     assert.equal(childEnvironment.PYTHONPATH, null);
     assert.equal(childEnvironment.HTTPS_PROXY, null);
     assert.equal(childEnvironment.RANDOM_PRIVATE_VALUE, null);
@@ -470,6 +477,19 @@ test('child environments hide inherited secrets and reject unapproved passEnv re
     assert.equal(childEnvironment.TMPDIR, path.join(environmentRoot, 'tmp'));
     assert.equal(childEnvironment.XDG_CONFIG_HOME, path.join(environmentRoot, 'xdg-config'));
     assert.equal(childEnvironment.CI, 'true');
+
+    const runtimeProbeRoot = path.join(runRoot, 'runtime-probe');
+    const runtimeEnvironment = isolatedRuntimeEnvironment(
+      { env: { GOTOOLCHAIN: 'go1.25.0' } },
+      runtimeProbeRoot,
+      injected,
+    );
+    assert.equal(runtimeEnvironment.GOPATH, path.join(runtimeProbeRoot, 'go'));
+    assert.equal(runtimeEnvironment.GOMODCACHE, path.join(runtimeProbeRoot, 'go', 'pkg', 'mod'));
+    assert.equal(runtimeEnvironment.GOCACHE, path.join(runtimeProbeRoot, 'go-cache'));
+    assert.equal(runtimeEnvironment.GOTOOLCHAIN, 'go1.25.0');
+    assert.equal(runtimeEnvironment.HOME, path.join(runtimeProbeRoot, 'home'));
+    assert.equal(runtimeEnvironment.RUSTUP_HOME, path.join('/operator/home', '.rustup'));
 
     config.tasks[0].passEnv = [key];
     assert.throws(() => createPlan(root, config), /unapproved inherited environment variable/);

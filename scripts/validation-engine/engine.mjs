@@ -19,6 +19,7 @@ import {
   realpathSync,
   readlinkSync,
   readdirSync,
+  rmSync,
   unlinkSync,
   writeFileSync,
 } from 'node:fs';
@@ -384,16 +385,66 @@ function sanitizedEnvironment(additional = {}, inherited = process.env) {
   return env;
 }
 
+function privateEnvironment(additional, environmentRoot, cargoHome, inherited = process.env) {
+  const env = sanitizedEnvironment(additional, inherited);
+  if (!env.RUSTUP_HOME) {
+    const inheritedHome = inherited.HOME ?? inherited.USERPROFILE;
+    if (typeof inheritedHome === 'string' && inheritedHome) {
+      env.RUSTUP_HOME = path.join(inheritedHome, '.rustup');
+    }
+  }
+  const directories = {
+    HOME: path.join(environmentRoot, 'home'),
+    USERPROFILE: path.join(environmentRoot, 'home'),
+    TMPDIR: path.join(environmentRoot, 'tmp'),
+    TMP: path.join(environmentRoot, 'tmp'),
+    TEMP: path.join(environmentRoot, 'tmp'),
+    XDG_CONFIG_HOME: path.join(environmentRoot, 'xdg-config'),
+    XDG_CACHE_HOME: path.join(environmentRoot, 'xdg-cache'),
+    APPDATA: path.join(environmentRoot, 'AppData', 'Roaming'),
+    LOCALAPPDATA: path.join(environmentRoot, 'AppData', 'Local'),
+    CARGO_HOME: cargoHome,
+    GOPATH: path.join(environmentRoot, 'go'),
+    GOMODCACHE: path.join(environmentRoot, 'go', 'pkg', 'mod'),
+    GOCACHE: path.join(environmentRoot, 'go-cache'),
+  };
+  for (const directory of new Set(Object.values(directories))) {
+    mkdirSync(directory, { recursive: true, mode: 0o700 });
+  }
+  Object.assign(env, directories, {
+    CI: 'true',
+    NO_COLOR: '1',
+    CARGO_TERM_COLOR: 'never',
+    PYTHONNOUSERSITE: '1',
+  });
+  return env;
+}
+
+export function isolatedRuntimeEnvironment(runtime, environmentRoot, inherited = process.env) {
+  return privateEnvironment(
+    runtime?.env ?? {},
+    environmentRoot,
+    path.join(environmentRoot, 'cargo-home'),
+    inherited,
+  );
+}
+
 function inspectRuntime(root, runtime) {
   const available = commandAvailable(runtime.command);
   if (!available) return { ...runtime, available, version: null, exitCode: null };
-  const result = spawnSync(runtime.command, runtime.args ?? ['--version'], {
-    cwd: root,
-    encoding: 'utf8',
-    timeout: 10_000,
-    maxBuffer: 1024 * 1024,
-    env: sanitizedEnvironment(runtime.env),
-  });
+  const probeRoot = mkdtempSync(path.join(os.tmpdir(), 'slskr-runtime-probe-'));
+  let result;
+  try {
+    result = spawnSync(runtime.command, runtime.args ?? ['--version'], {
+      cwd: root,
+      encoding: 'utf8',
+      timeout: 10_000,
+      maxBuffer: 1024 * 1024,
+      env: isolatedRuntimeEnvironment(runtime, probeRoot),
+    });
+  } finally {
+    rmSync(probeRoot, { recursive: true, force: true });
+  }
   const version = (result.stdout ?? '') + (result.stderr ?? '');
   const versionLine = version.trim().split(/\r?\n/, 1)[0] ?? '';
   const versionCompatible = !runtime.versionCheck ||
@@ -619,13 +670,13 @@ export function isolatedTaskEnvironment(task, runRoot, inherited = process.env) 
   if (typeof task?.id !== 'string' || !/^[a-z0-9][a-z0-9-]*$/.test(task.id)) {
     fail('Validation task ID must be a safe lowercase identifier.');
   }
-  const env = sanitizedEnvironment({}, inherited);
-  if (!env.RUSTUP_HOME) {
-    const inheritedHome = inherited.HOME ?? inherited.USERPROFILE;
-    if (typeof inheritedHome === 'string' && inheritedHome) {
-      env.RUSTUP_HOME = path.join(inheritedHome, '.rustup');
-    }
-  }
+  const environmentRoot = path.join(runRoot, `${task.id}-environment`);
+  const env = privateEnvironment(
+    task.env ?? {},
+    environmentRoot,
+    path.join(runRoot, 'cargo-home'),
+    inherited,
+  );
   const approvedPassEnv = APPROVED_TASK_PASS_ENVIRONMENT.get(task.id) ?? new Set();
   const passEnv = task.passEnv ?? [];
   if (!Array.isArray(passEnv) || passEnv.some((name) =>
@@ -636,32 +687,6 @@ export function isolatedTaskEnvironment(task, runRoot, inherited = process.env) 
     const match = Object.entries(inherited).find(([key]) => key.toUpperCase() === name.toUpperCase());
     if (match && typeof match[1] === 'string') env[name] = match[1];
   }
-  for (const [key, value] of Object.entries(task.env ?? {})) {
-    if (typeof value === 'string') env[key] = value;
-  }
-
-  const environmentRoot = path.join(runRoot, `${task.id}-environment`);
-  const directories = {
-    HOME: path.join(environmentRoot, 'home'),
-    USERPROFILE: path.join(environmentRoot, 'home'),
-    TMPDIR: path.join(environmentRoot, 'tmp'),
-    TMP: path.join(environmentRoot, 'tmp'),
-    TEMP: path.join(environmentRoot, 'tmp'),
-    XDG_CONFIG_HOME: path.join(environmentRoot, 'xdg-config'),
-    XDG_CACHE_HOME: path.join(environmentRoot, 'xdg-cache'),
-    APPDATA: path.join(environmentRoot, 'AppData', 'Roaming'),
-    LOCALAPPDATA: path.join(environmentRoot, 'AppData', 'Local'),
-    CARGO_HOME: path.join(runRoot, 'cargo-home'),
-  };
-  for (const directory of new Set(Object.values(directories))) {
-    mkdirSync(directory, { recursive: true, mode: 0o700 });
-  }
-  Object.assign(env, directories, {
-    CI: 'true',
-    NO_COLOR: '1',
-    CARGO_TERM_COLOR: 'never',
-    PYTHONNOUSERSITE: '1',
-  });
   if (task.kind === 'test') env.NODE_ENV = 'test';
   return env;
 }
