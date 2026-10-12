@@ -33,8 +33,10 @@ source changes during a run.
 Runtime probes and child commands inherit only the executable path, platform
 process variables, locale, timezone, and the Rust toolchain location. Each task
 receives a run-owned home, temporary, and XDG configuration/cache directory.
-Cargo uses a private cache shared only within that validation run. Registered task settings
-remain task-scoped, and unapproved `passEnv` requests fail during planning.
+Go runtime probes and tasks receive private `GOPATH`, `GOMODCACHE`, and
+`GOCACHE` locations. Cargo uses a private cache shared only within that
+validation run. Registered task settings remain task-scoped, and unapproved
+`passEnv` requests fail during planning.
 `CI` is forced to `true`; Python user-site packages are disabled, and test tasks
 use `NODE_ENV=test`.
 Ambient credentials, loader options, proxy settings, workflow context, and
