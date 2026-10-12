@@ -49,6 +49,47 @@ const TEST_HARNESS_ENV = new Set([
   'VALIDATION_NODE_ID',
   'VALIDATION_RECEIPT_EXPORT',
 ]);
+const CONTENT_MATCHERS = Object.freeze({
+  rustInlineTestModule: (contents) => /#\s*\[\s*cfg\s*\(\s*test\s*\)\s*\]/.test(contents),
+});
+
+function sumCapturedCounts(output, pattern) {
+  let total = 0;
+  for (const match of output.matchAll(pattern)) total += Number(match[1]);
+  return total;
+}
+
+const CASE_COUNT_PARSERS = Object.freeze({
+  tapSummary: (output) => sumCapturedCounts(output, /(?:ℹ|#)\s*pass\s+(\d+)/g),
+  cargoTestSummary: (output) => sumCapturedCounts(output, /test result: ok\.\s+(\d+) passed\b/g),
+  sdkNativeSummary: (output) => sumCapturedCounts(output, /NATIVE_TESTS_PASSED=(\d+)/g),
+  pythonUnittestSummary: (output) => sumCapturedCounts(output, /Ran\s+(\d+) tests?\b/g),
+  vitestSummary: (output) => sumCapturedCounts(output, /Tests\s+(\d+)\s+passed\b/g),
+  playwrightSummary: (output) => sumCapturedCounts(output, /(?:^|\n)\s*(\d+) passed(?:\s|$)/g),
+  passLines: (output) => output.split(/\r?\n/).filter((line) => line.trim() === 'PASS').length,
+});
+
+export function parseCaseCount(parserName, output) {
+  const parser = CASE_COUNT_PARSERS[parserName];
+  if (!parser) fail('Unknown native test summary parser: ' + parserName);
+  return parser(output);
+}
+
+const VERSION_BOUNDARIES = new Set(['digit', 'space-or-end']);
+
+function asciiDigit(character) {
+  if (character === undefined) return false;
+  const code = character.charCodeAt(0);
+  return code >= 48 && code <= 57;
+}
+
+export function matchesVersionCheck(versionLine, check) {
+  if (!versionLine.startsWith(check.prefix)) return false;
+  const next = versionLine[check.prefix.length];
+  if (check.boundary === 'digit') return asciiDigit(next);
+  return check.boundary === 'space-or-end' &&
+    (next === undefined || next === ' ' || next === '\t');
+}
 
 function fail(message) {
   throw new Error(message);
@@ -127,27 +168,52 @@ function gitText(root, args) {
   return git(root, args).toString('utf8').trim();
 }
 
-export function globRegex(glob) {
-  let result = '^';
-  for (let index = 0; index < glob.length; index += 1) {
-    const character = glob[index];
-    if (character === '*' && glob[index + 1] === '*') {
-      index += 1;
-      if (glob[index + 1] === '/') {
-        index += 1;
-        result += '(?:.*/)?';
-      } else {
-        result += '.*';
+function segmentMatches(pattern, value) {
+  let previous = new Uint8Array(value.length + 1);
+  previous[0] = 1;
+  for (const token of pattern) {
+    const current = new Uint8Array(value.length + 1);
+    if (token === '*') {
+      current[0] = previous[0];
+      for (let index = 1; index <= value.length; index += 1) {
+        current[index] = previous[index] || current[index - 1] ? 1 : 0;
       }
-    } else if (character === '*') {
-      result += '[^/]*';
-    } else if (character === '?') {
-      result += '[^/]';
     } else {
-      result += character.replace(/[|\\{}()[\]^$+?.]/g, '\\$&');
+      for (let index = 1; index <= value.length; index += 1) {
+        current[index] = previous[index - 1] && (token === '?' || token === value[index - 1]) ? 1 : 0;
+      }
     }
+    previous = current;
   }
-  return new RegExp(result + '$');
+  return previous[value.length] === 1;
+}
+
+export function globMatches(glob, filename) {
+  if (typeof glob !== 'string' || glob.length === 0 || glob.length > 512 ||
+      glob.startsWith('/') || glob.includes('\\') || glob.split('/').includes('..') ||
+      typeof filename !== 'string' || filename.length > 4096 ||
+      filename.startsWith('/') || filename.includes('\\')) {
+    fail('Inventory glob and paths must be bounded relative POSIX paths.');
+  }
+  const patterns = glob.split('/');
+  const segments = filename.split('/');
+  let previous = new Uint8Array(segments.length + 1);
+  previous[0] = 1;
+  for (const pattern of patterns) {
+    const current = new Uint8Array(segments.length + 1);
+    if (pattern === '**') {
+      current[0] = previous[0];
+      for (let index = 1; index <= segments.length; index += 1) {
+        current[index] = previous[index] || current[index - 1] ? 1 : 0;
+      }
+    } else {
+      for (let index = 1; index <= segments.length; index += 1) {
+        current[index] = previous[index - 1] && segmentMatches(pattern, segments[index - 1]) ? 1 : 0;
+      }
+    }
+    previous = current;
+  }
+  return previous[segments.length] === 1;
 }
 
 function walk(root, relative = '') {
@@ -167,13 +233,18 @@ function walk(root, relative = '') {
   return files;
 }
 
-function fileDigest(root, relative) {
+// Configured source inputs and discovered tests are text. Git may check them
+// out with CRLF on Windows; untracked files keep byte-exact hashing below.
+function fileDigest(root, relative, normalizeLineEndings = false) {
   const filePath = path.join(root, relative);
   const info = lstatSync(filePath);
   if (info.isSymbolicLink() || !info.isFile()) {
     fail('Validation inventory contains a non-regular file: ' + relative);
   }
-  return hash(readFileSync(filePath));
+  const contents = readFileSync(filePath);
+  return normalizeLineEndings
+    ? hash(contents.toString('utf8').replace(/\r\n/g, '\n'))
+    : hash(contents);
 }
 
 export function discoverInventory(root, rules) {
@@ -181,11 +252,11 @@ export function discoverInventory(root, rules) {
   const entriesByPath = new Map();
   const laneCounts = {};
   for (const rule of rules) {
-    const pattern = globRegex(rule.glob);
-    let matches = files.filter(({ path: name }) => pattern.test(name));
-    if (rule.contentPattern) {
-      const contentPattern = new RegExp(rule.contentPattern);
-      matches = matches.filter(({ path: name }) => contentPattern.test(readFileSync(
+    let matches = files.filter(({ path: name }) => globMatches(rule.glob, name));
+    if (rule.contentMatcher) {
+      const contentMatcher = CONTENT_MATCHERS[rule.contentMatcher];
+      if (!contentMatcher) fail('Unknown inventory content matcher: ' + rule.contentMatcher);
+      matches = matches.filter(({ path: name }) => contentMatcher(readFileSync(
         path.join(root, name), 'utf8'
       )));
     }
@@ -203,7 +274,7 @@ export function discoverInventory(root, rules) {
         framework: rule.framework,
         owner: rule.owner,
         lane: rule.id,
-        sha256: fileDigest(root, match.path),
+        sha256: fileDigest(root, match.path, true),
       });
     }
   }
@@ -236,7 +307,7 @@ export function captureCandidate(root, inputs, inventory) {
   const untracked = untrackedDigests(root);
   const inputDigests = inputs.map((relative) => ({
     file: relative,
-    sha256: fileDigest(root, relative),
+    sha256: fileDigest(root, relative, true),
   }));
   const inventorySha256 = hash(stable(inventory.entries));
   const sourceSha256 = hash(stable({
@@ -291,8 +362,8 @@ function inspectRuntime(root, runtime) {
   });
   const version = (result.stdout ?? '') + (result.stderr ?? '');
   const versionLine = version.trim().split(/\r?\n/, 1)[0] ?? '';
-  const versionCompatible = !runtime.versionPattern ||
-    new RegExp(runtime.versionPattern).test(versionLine);
+  const versionCompatible = !runtime.versionCheck ||
+    matchesVersionCheck(versionLine, runtime.versionCheck);
   return {
     ...runtime,
     available: !result.error && result.status === 0,
@@ -320,7 +391,8 @@ function validateConfig(config) {
     if (!Array.isArray(task.command) || task.command.length === 0) {
       fail('Task must use a registered native command array: ' + task.id);
     }
-    if (task.kind === 'test' && (!task.casePattern || task.minimumCases < 1)) {
+    if (task.kind === 'test' &&
+        (!Object.hasOwn(CASE_COUNT_PARSERS, task.caseParser) || task.minimumCases < 1)) {
       fail('Test tasks must require active-case evidence: ' + task.id);
     }
     if (!Array.isArray(task.passEnv ?? [])) {
@@ -352,6 +424,12 @@ function validateConfig(config) {
         !Array.isArray(runtime.args ?? [])) {
       fail('Runtime declarations require an executable and an argument array.');
     }
+    if (runtime.versionCheck &&
+        (typeof runtime.versionCheck.prefix !== 'string' || !runtime.versionCheck.prefix ||
+         runtime.versionCheck.prefix.length > 128 ||
+         !VERSION_BOUNDARIES.has(runtime.versionCheck.boundary))) {
+      fail('Runtime version checks require a prefix and a supported boundary.');
+    }
   }
   for (const task of config.tasks) {
     if (!Array.isArray(task.runtimes ?? [])) {
@@ -361,6 +439,12 @@ function validateConfig(config) {
       if (!runtime || typeof runtime.command !== 'string' || !runtime.command ||
           !Array.isArray(runtime.args ?? [])) {
         fail('Task runtime declarations require an executable and an argument array: ' + task.id);
+      }
+      if (runtime.versionCheck &&
+          (typeof runtime.versionCheck.prefix !== 'string' || !runtime.versionCheck.prefix ||
+           runtime.versionCheck.prefix.length > 128 ||
+           !VERSION_BOUNDARIES.has(runtime.versionCheck.boundary))) {
+        fail('Task runtime version checks require a prefix and a supported boundary: ' + task.id);
       }
     }
   }
@@ -480,8 +564,7 @@ export function createPlan(root, config, options = {}) {
       timeoutSeconds: task.timeoutSeconds ?? 3600,
       command: task.command,
       cwd: task.cwd ?? '.',
-      casePattern: task.casePattern ?? null,
-      caseCountMode: task.caseCountMode ?? 'sum',
+      caseParser: task.caseParser ?? null,
       minimumCases: task.minimumCases ?? null,
       envKeys: [...new Set([
         ...Object.keys(task.env ?? {}),
@@ -575,19 +658,7 @@ export async function runCommand(task, root, logPath) {
   const combined = stdout + (stdout && stderr ? '\n' : '') + stderr;
   const logBuffer = Buffer.from(combined);
   writeFileSync(logPath, logBuffer, { mode: 0o600 });
-  const casePattern = task.casePattern ? new RegExp(task.casePattern, 'g') : null;
-  let activeCases = null;
-  if (casePattern) {
-    if (task.caseCountMode === 'matches') {
-      activeCases = [...combined.matchAll(casePattern)].length;
-    } else {
-      activeCases = 0;
-      for (const match of combined.matchAll(casePattern)) {
-        const parsed = Number(match[1]);
-        if (Number.isFinite(parsed)) activeCases += parsed;
-      }
-    }
-  }
+  const activeCases = task.caseParser ? parseCaseCount(task.caseParser, combined) : null;
   const status = timedOut || exit.error || exit.code !== 0
     ? 'failed'
     : task.kind === 'test' && activeCases < task.minimumCases

@@ -35,6 +35,11 @@ emits counts from Go JSON events, pytest JUnit output, and Jest JSON output.
 Python unittest and Vitest/Playwright summaries are counted from their native
 reports. Empty or missing test output cannot be reported as a pass.
 
+Inventory globs are matched by bounded POSIX path segments (`*`, `?`, and
+`**`). Test-content filtering, runtime versions, and native result summaries use
+named engine matchers; repository configuration cannot provide executable
+regular expressions for discovery or case accounting.
+
 ## GitHub test nodes
 
 The required Rust workspace test runs are identified as `linux-x64`,

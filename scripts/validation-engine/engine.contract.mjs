@@ -21,12 +21,20 @@ import {
   createPlan,
   discoverInventory,
   executePlan,
-  globRegex,
+  globMatches,
+  matchesVersionCheck,
   main as runEngine,
+  parseCaseCount,
   releaseRunLock,
 } from './engine.mjs';
 
 const temporaryRoots = [];
+const GITHUB_CONTEXT_KEYS = [
+  'GITHUB_ACTIONS', 'GITHUB_RUN_ID', 'GITHUB_RUN_ATTEMPT', 'GITHUB_SHA',
+  'GITHUB_WORKFLOW', 'GITHUB_JOB', 'GITHUB_EVENT_NAME', 'VALIDATION_NODE_ID',
+];
+const inheritedGithubContext = new Map(GITHUB_CONTEXT_KEYS.map((key) => [key, process.env[key]]));
+for (const key of GITHUB_CONTEXT_KEYS) delete process.env[key];
 
 function makeRoot(files = {}) {
   const root = mkdtempSync(path.join(os.tmpdir(), 'slskr-validation-contract-'));
@@ -66,7 +74,7 @@ function baseConfig(overrides = {}) {
       stage: 'repository',
       kind: 'test',
       command: [process.execPath, '--test', 'tests/example.test.mjs'],
-      casePattern: '(?:ℹ|#)\\s*pass\\s+(\\d+)',
+      caseParser: 'tapSummary',
       minimumCases: 1,
       inventoryLanes: ['unit'],
       timeoutSeconds: 10,
@@ -84,15 +92,44 @@ function fixture() {
 }
 
 after(() => {
+  for (const [key, value] of inheritedGithubContext) {
+    if (value === undefined) delete process.env[key];
+    else process.env[key] = value;
+  }
   for (const root of temporaryRoots) rmSync(root, { recursive: true, force: true });
 });
 
 test('glob matching covers root and nested files without crossing sibling names', () => {
-  const nested = globRegex('src/**/*.test.*');
-  assert.equal(nested.test('src/a.test.js'), true);
-  assert.equal(nested.test('src/components/a.test.jsx'), true);
-  assert.equal(nested.test('src-other/a.test.js'), false);
-  assert.equal(globRegex('**/*.spec.ts').test('a.spec.ts'), true);
+  assert.equal(globMatches('src/**/*.test.*', 'src/a.test.js'), true);
+  assert.equal(globMatches('src/**/*.test.*', 'src/components/a.test.jsx'), true);
+  assert.equal(globMatches('src/**/*.test.*', 'src-other/a.test.js'), false);
+  assert.equal(globMatches('**/*.spec.ts', 'a.spec.ts'), true);
+  assert.equal(globMatches('crates/**/src/**/*.rs', 'crates/app/src/lib.rs'), true);
+  assert.equal(globMatches('tests/*.test.mjs', 'tests/nested/example.test.mjs'), false);
+  assert.throws(() => globMatches('../**/*.js', 'src/example.js'), /bounded relative POSIX paths/);
+});
+
+test('fixed native summary parsers count cases without config-supplied regular expressions', () => {
+  assert.equal(parseCaseCount('tapSummary', 'ℹ tests 12\nℹ pass 12\n'), 12);
+  assert.equal(parseCaseCount('cargoTestSummary', 'test result: ok. 47 passed; 0 failed; 2 ignored;'), 47);
+  assert.equal(parseCaseCount('sdkNativeSummary', 'NATIVE_TESTS_PASSED=5\n'), 5);
+  assert.equal(parseCaseCount('pythonUnittestSummary', 'Ran 8 tests in 0.2s\n'), 8);
+  assert.equal(parseCaseCount('vitestSummary', 'Tests 31 passed | 2 skipped'), 31);
+  assert.equal(parseCaseCount('playwrightSummary', '3 passed (4.2s)\n'), 3);
+  assert.equal(parseCaseCount('passLines', 'PASS\nPASS\nPASS\n'), 3);
+  assert.throws(() => parseCaseCount('custom', '1 passed'), /Unknown native test summary parser/);
+});
+
+test('runtime compatibility checks use bounded prefix and character rules', () => {
+  assert.equal(matchesVersionCheck('v22.19.0', { prefix: 'v22.', boundary: 'digit' }), true);
+  assert.equal(matchesVersionCheck('v220.19.0', { prefix: 'v22.', boundary: 'digit' }), false);
+  assert.equal(matchesVersionCheck('v22.preview', { prefix: 'v22.', boundary: 'digit' }), false);
+  assert.equal(matchesVersionCheck('rustc 1.94.0 (hash)', {
+    prefix: 'rustc 1.94.0', boundary: 'space-or-end',
+  }), true);
+  assert.equal(matchesVersionCheck('rustc 1.94.01', {
+    prefix: 'rustc 1.94.0', boundary: 'space-or-end',
+  }), false);
 });
 
 test('inventory records scoped file digests and rejects empty or duplicate ownership', () => {
@@ -111,6 +148,22 @@ test('inventory records scoped file digests and rejects empty or duplicate owner
   }]), /inventory is empty/);
 });
 
+test('tracked source-input and inventory digests ignore CRLF checkout conversion', () => {
+  const { root, config } = fixture();
+  const inventory = discoverInventory(root, config.inventory);
+  const original = captureCandidate(root, config.inputs, inventory);
+  for (const relative of ['package.json', 'tests/example.test.mjs']) {
+    const fullPath = path.join(root, relative);
+    const normalized = readFileSync(fullPath, 'utf8').replace(/\r?\n/g, '\n');
+    writeFileSync(fullPath, normalized.replace(/\n/g, '\r\n'));
+  }
+
+  const windowsCheckoutInventory = discoverInventory(root, config.inventory);
+  const windowsCheckout = captureCandidate(root, config.inputs, windowsCheckoutInventory);
+  assert.equal(windowsCheckout.inventorySha256, original.inventorySha256);
+  assert.deepEqual(windowsCheckout.inputDigests, original.inputDigests);
+});
+
 test('inventory content filters keep inline Rust test modules in the native lane', () => {
   const root = makeRoot({
     'Cargo.toml': '[workspace]\nmembers = []\n',
@@ -120,12 +173,38 @@ test('inventory content filters keep inline Rust test modules in the native lane
   const inventory = discoverInventory(root, [{
     id: 'rust-inline',
     glob: 'crates/**/src/**/*.rs',
-    contentPattern: '#\\s*\\[\\s*cfg\\s*\\(\\s*test\\s*\\)\\s*\\]',
+    contentMatcher: 'rustInlineTestModule',
     framework: 'cargo-test',
     owner: 'rust-workspace',
   }]);
   assert.deepEqual(inventory.laneCounts, { 'rust-inline': 1 });
   assert.equal(inventory.entries[0].file, 'crates/app/src/lib.rs');
+});
+
+test('inventory Rust matcher accepts spacing and rejects ordinary source', () => {
+  const root = makeRoot({
+    'crates/app/src/lib.rs': '#  [ cfg ( test ) ]\nmod tests {}\n',
+    'crates/app/src/main.rs': 'fn main() {}\n',
+  });
+  const inventory = discoverInventory(root, [{
+    id: 'rust-inline',
+    glob: 'crates/**/src/**/*.rs',
+    contentMatcher: 'rustInlineTestModule',
+    framework: 'cargo-test',
+    owner: 'rust-workspace',
+  }]);
+  assert.deepEqual(inventory.laneCounts, { 'rust-inline': 1 });
+});
+
+test('inventory rejects content matchers that are not registered by the engine', () => {
+  const { root } = fixture();
+  assert.throws(() => discoverInventory(root, [{
+    id: 'custom',
+    glob: 'tests/**/*.test.mjs',
+    contentMatcher: 'repository-supplied-regex',
+    framework: 'node:test',
+    owner: 'unit',
+  }]), /Unknown inventory content matcher/);
 });
 
 test('inventory rejects symbolic links in native test discovery scopes', () => {
@@ -153,7 +232,7 @@ test('plan binds the candidate and closes test selection over its dependencies',
     stage: 'browser',
     kind: 'test',
     command: [process.execPath, '-e', 'process.exit(0)'],
-    casePattern: 'passed (\\d+)',
+    caseParser: 'tapSummary',
     minimumCases: 1,
     defaultSelected: false,
   });
@@ -169,6 +248,12 @@ test('plan binds the candidate and closes test selection over its dependencies',
   assert.match(plan.candidate.sourceSha256, /^[a-f0-9]{64}$/);
   assert.equal(plan.runtimes.length, 0);
   assert.match(plan.inventoryLaneDigests.unit, /^[a-f0-9]{64}$/);
+});
+
+test('test tasks reject unregistered case parsers', () => {
+  const { root, config } = fixture();
+  config.tasks[0].caseParser = 'repository-supplied-regex';
+  assert.throws(() => createPlan(root, config), /active-case evidence/);
 });
 
 test('executor rejects a plan whose task contract was changed after hashing', async () => {
@@ -199,10 +284,9 @@ test('native execution records passing case counts, source identity and private 
 test('native execution can count individual pass events without summing their labels', async () => {
   const { root, config } = fixture();
   config.tasks[0].command = [process.execPath, '-e', 'console.log("PASS\\nPASS\\nPASS")'];
-  config.tasks[0].casePattern = 'PASS';
-  config.tasks[0].caseCountMode = 'matches';
+  config.tasks[0].caseParser = 'passLines';
   const plan = createPlan(root, config);
-  assert.equal(plan.tasks[0].caseCountMode, 'matches');
+  assert.equal(plan.tasks[0].caseParser, 'passLines');
   const result = await executePlan(root, config, plan);
   assert.equal(result.receipt.status, 'passed');
   assert.equal(result.receipt.totals.activeCases, 3);
@@ -359,4 +443,25 @@ test('candidate digests change after tracked source edits', () => {
   writeFileSync(path.join(root, 'package.json'), '{"edited":true}\n');
   const afterEdit = captureCandidate(root, config.inputs, discoverInventory(root, config.inventory));
   assert.notEqual(before.sourceSha256, afterEdit.sourceSha256);
+});
+
+test('hosted execution rejects a workflow SHA that does not match its source snapshot', async () => {
+  const previous = new Map(GITHUB_CONTEXT_KEYS.map((key) => [key, process.env[key]]));
+  process.env.GITHUB_ACTIONS = 'true';
+  process.env.GITHUB_RUN_ID = 'validation-contract-run';
+  process.env.GITHUB_RUN_ATTEMPT = '1';
+  process.env.GITHUB_SHA = '0'.repeat(40);
+  try {
+    const { root, config } = fixture();
+    const result = await executePlan(root, config, createPlan(root, config));
+    assert.equal(result.exitCode, 1);
+    assert.equal(result.receipt.status, 'incomplete');
+    assert.equal(result.receipt.totals.executed, 0);
+    assert.equal(result.receipt.prerequisites.some((item) => item.command === 'GITHUB_SHA'), true);
+  } finally {
+    for (const [key, value] of previous) {
+      if (value === undefined) delete process.env[key];
+      else process.env[key] = value;
+    }
+  }
 });
