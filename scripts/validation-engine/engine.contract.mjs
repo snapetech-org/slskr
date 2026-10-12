@@ -280,11 +280,11 @@ test('runtime probes exclude inherited credentials and retain declared tool sett
   config.runtimes = [{
     command: process.execPath,
     args: ['-e', `process.stdout.write(JSON.stringify([process.env.GITHUB_TOKEN ?? null, process.env.NODE_OPTIONS ?? null, process.env.GOTOOLCHAIN ?? null]))`],
-    env: { GOTOOLCHAIN: 'go1.25.0' },
+    env: { GOTOOLCHAIN: 'local' },
   }];
   try {
     const plan = createPlan(root, config);
-    assert.equal(plan.runtimes[0].version, '[null,null,"go1.25.0"]');
+    assert.equal(plan.runtimes[0].version, '[null,null,"local"]');
     assert.equal(plan.runtimes[0].available, true);
     assert.equal(plan.runtimes[0].versionCompatible, true);
   } finally {
@@ -447,12 +447,13 @@ test('child environments hide inherited secrets and reject unapproved passEnv re
     RANDOM_PRIVATE_VALUE: 'synthetic-private-value',
     XDG_CONFIG_HOME: '/operator/config',
   };
-  const probeKeys = [...Object.keys(injected), 'RUSTUP_HOME', 'CI'];
+  const probeKeys = [...Object.keys(injected), 'RUSTUP_HOME', 'GOTOOLCHAIN', 'CI'];
   const previous = new Map(probeKeys.map((name) => [name, process.env[name]]));
   Object.assign(process.env, injected);
   delete process.env.RUSTUP_HOME;
   try {
     config.tasks[0].kind = 'check';
+    config.tasks[0].env = { GOTOOLCHAIN: 'local' };
     config.tasks[0].command = [
       process.execPath,
       '-e',
@@ -470,6 +471,7 @@ test('child environments hide inherited secrets and reject unapproved passEnv re
     assert.equal(childEnvironment.GOPATH, path.join(environmentRoot, 'go'));
     assert.equal(childEnvironment.GOMODCACHE, path.join(environmentRoot, 'go', 'pkg', 'mod'));
     assert.equal(childEnvironment.GOCACHE, path.join(environmentRoot, 'go-cache'));
+    assert.equal(childEnvironment.GOTOOLCHAIN, 'local');
     assert.equal(childEnvironment.PYTHONPATH, null);
     assert.equal(childEnvironment.HTTPS_PROXY, null);
     assert.equal(childEnvironment.RANDOM_PRIVATE_VALUE, null);
@@ -480,23 +482,29 @@ test('child environments hide inherited secrets and reject unapproved passEnv re
 
     const runtimeProbeRoot = path.join(runRoot, 'runtime-probe');
     const runtimeEnvironment = isolatedRuntimeEnvironment(
-      { env: { GOTOOLCHAIN: 'go1.25.0' } },
+      { env: { GOTOOLCHAIN: 'local' } },
       runtimeProbeRoot,
       injected,
     );
     assert.equal(runtimeEnvironment.GOPATH, path.join(runtimeProbeRoot, 'go'));
     assert.equal(runtimeEnvironment.GOMODCACHE, path.join(runtimeProbeRoot, 'go', 'pkg', 'mod'));
     assert.equal(runtimeEnvironment.GOCACHE, path.join(runtimeProbeRoot, 'go-cache'));
-    assert.equal(runtimeEnvironment.GOTOOLCHAIN, 'go1.25.0');
+    assert.equal(runtimeEnvironment.GOTOOLCHAIN, 'local');
     assert.equal(runtimeEnvironment.HOME, path.join(runtimeProbeRoot, 'home'));
     assert.equal(runtimeEnvironment.RUSTUP_HOME, path.join('/operator/home', '.rustup'));
 
     const probeScript = [
-      "if (process.env.GOPATH === '/operator/go' || process.env.GOMODCACHE === '/operator/go/pkg/mod') process.exit(1);",
+      "if (process.env.GOPATH === '/operator/go' ||",
+      "process.env.GOMODCACHE === '/operator/go/pkg/mod' ||",
+      "process.env.GOTOOLCHAIN !== 'local') process.exit(1);",
       'if (!process.env.GOPATH || !process.env.GOMODCACHE || !process.env.GOCACHE) process.exit(2);',
       "process.stdout.write('private-go-cache-paths')",
     ].join(' ');
-    config.runtimes = [{ command: process.execPath, args: ['-e', probeScript] }];
+    config.runtimes = [{
+      command: process.execPath,
+      args: ['-e', probeScript],
+      env: { GOTOOLCHAIN: 'local' },
+    }];
     const probePlan = createPlan(root, config);
     assert.equal(probePlan.runtimes[0].available, true);
     assert.equal(probePlan.runtimes[0].version, 'private-go-cache-paths');

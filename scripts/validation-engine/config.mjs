@@ -132,12 +132,12 @@ export const validation = {
         {
           command: 'go',
           args: ['version'],
-          env: { GOTOOLCHAIN: 'go1.25.0' },
+          env: { GOTOOLCHAIN: 'local' },
           versionCheck: { prefix: 'go version go1.25.', boundary: 'digit' },
         },
         { command: 'python3.12', args: ['--version'], versionCheck: { prefix: 'Python 3.12.', boundary: 'digit' } },
       ],
-      env: { GOTOOLCHAIN: 'go1.25.0', PYTHON_EXECUTABLE: 'python3.12' },
+      env: { GOTOOLCHAIN: 'local', PYTHON_EXECUTABLE: 'python3.12' },
       timeoutSeconds: 3600,
     },
     {
