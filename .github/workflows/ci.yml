@@ -48,57 +48,32 @@ jobs:
           retention-days: 7
 
   rust:
-    # Trusted branch pushes and manual runs on main use the local runner; PRs stay hosted.
-    runs-on: ${{ ((github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')) || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')) && fromJSON('["self-hosted","Linux","X64","host"]') || 'ubuntu-latest' }}
+    # Main pushes and manual runs on main use the local runner; other refs stay hosted.
+    runs-on: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && fromJSON('["self-hosted","Linux","X64","host"]') || 'ubuntu-latest' }}
     timeout-minutes: 60
     steps:
-      - name: Configure private runner temporary storage
-        if: runner.environment == 'self-hosted'
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          if [[ -z "${RUNNER_TEMP:-}" || "$RUNNER_TEMP" != /* || "$RUNNER_TEMP" == *$'\n'* || "$RUNNER_TEMP" == *$'\r'* || ! -d "$RUNNER_TEMP" || ! -r "$RUNNER_TEMP" || ! -w "$RUNNER_TEMP" || ! -x "$RUNNER_TEMP" ]]; then
-            printf 'RUNNER_TEMP must be an absolute, readable, writable directory without line breaks\n' >&2
-            exit 1
-          fi
-
-          runner_temp_resolved="$(cd -- "$RUNNER_TEMP" && pwd -P)"
-          if [[ "$runner_temp_resolved" == *$'\n'* || "$runner_temp_resolved" == *$'\r'* ]]; then
-            printf 'RUNNER_TEMP must not resolve to a path containing line breaks\n' >&2
-            exit 1
-          fi
-          case "$runner_temp_resolved" in
-            /|/tmp|/tmp/*|/var/tmp|/var/tmp/*|/dev/shm|/dev/shm/*)
-              printf 'RUNNER_TEMP must not resolve to a shared or root temporary directory\n' >&2
-              exit 1
-              ;;
-          esac
-
-          if [[ ! -O "$runner_temp_resolved" ]]; then
-            printf 'RUNNER_TEMP must be owned by the workflow runner user\n' >&2
-            exit 1
-          fi
-          runner_temp_mode="$(stat -c '%a' -- "$runner_temp_resolved")"
-          if [[ ! "$runner_temp_mode" =~ ^[0-7]{3,4}$ ]]; then
-            printf 'Could not determine RUNNER_TEMP directory permissions\n' >&2
-            exit 1
-          fi
-          runner_temp_permissions=$((8#$runner_temp_mode))
-          if (( runner_temp_permissions & 0022 )); then
-            printf 'RUNNER_TEMP must not be writable by group or other users\n' >&2
-            exit 1
-          fi
-
-          : "${GITHUB_ENV:?GITHUB_ENV is required}"
-          umask 077
-          job_temp="$(mktemp -d -- "$runner_temp_resolved/slskr-job.XXXXXX")"
-          mkdir -m 700 -- "$job_temp/go-tmp"
-          printf 'TMPDIR=%s\nTMP=%s\nTEMP=%s\nGOTMPDIR=%s/go-tmp\n' \
-            "$job_temp" "$job_temp" "$job_temp" "$job_temp" >> "$GITHUB_ENV"
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
         with:
           fetch-depth: 2
+      - name: Test private runner temporary storage setup
+        if: runner.os == 'Linux'
+        run: ./scripts/test-private-runner-temp.sh
+
+      - name: Configure private runner temporary storage
+        id: private-runner-temp
+        if: runner.os == 'Linux'
+        env:
+          PRIVATE_RUNNER_TEMP_PREFIX: slskr
+        run: ./scripts/prepare-private-runner-temp.sh
+
+      - name: Configure private Go temporary storage
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -m 700 -- "$PRIVATE_RUNNER_TEMP/go-tmp"
+          printf 'GOTMPDIR=%s/go-tmp\n' "$PRIVATE_RUNNER_TEMP" >> "$GITHUB_ENV"
+
       - uses: dtolnay/rust-toolchain@29eef336d9b2848a0b548edc03f92a220660cdb8 # dtolnay/rust-toolchain@stable
         with:
           toolchain: 1.94.0
@@ -130,7 +105,7 @@ jobs:
           version: '0.13.0'
           python-version: '3.12'
           activate-environment: true
-          venv-path: ${{ runner.temp }}/slskr-python
+          venv-path: ${{ steps.private-runner-temp.outputs.path || runner.temp }}/slskr-python
           no-project: true
           enable-cache: false
       - name: Install workflow and shell linters on GitHub-hosted runner
@@ -174,14 +149,14 @@ jobs:
       - name: Run and receipt the native Linux x64 Rust test node
         env:
           VALIDATION_NODE_ID: linux-x64
-          VALIDATION_RECEIPT_EXPORT: ${{ runner.temp }}/validation/rust-linux-x64.json
+          VALIDATION_RECEIPT_EXPORT: ${{ steps.private-runner-temp.outputs.path || runner.temp }}/validation/rust-linux-x64.json
         run: node scripts/validate-development.mjs --tests-only
       - name: Retain Linux x64 Rust test receipt
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # actions/upload-artifact@v7.0.1
         with:
           name: validation-rust-linux-x64
-          path: ${{ runner.temp }}/validation/rust-linux-x64.json
+          path: ${{ steps.private-runner-temp.outputs.path || runner.temp }}/validation/rust-linux-x64.json
           if-no-files-found: warn
           retention-days: 7
       - run: cargo audit
