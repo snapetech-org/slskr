@@ -148,6 +148,22 @@ test('inventory records scoped file digests and rejects empty or duplicate owner
   }]), /inventory is empty/);
 });
 
+test('tracked source-input and inventory digests ignore CRLF checkout conversion', () => {
+  const { root, config } = fixture();
+  const inventory = discoverInventory(root, config.inventory);
+  const original = captureCandidate(root, config.inputs, inventory);
+  for (const relative of ['package.json', 'tests/example.test.mjs']) {
+    const fullPath = path.join(root, relative);
+    const normalized = readFileSync(fullPath, 'utf8').replace(/\r?\n/g, '\n');
+    writeFileSync(fullPath, normalized.replace(/\n/g, '\r\n'));
+  }
+
+  const windowsCheckoutInventory = discoverInventory(root, config.inventory);
+  const windowsCheckout = captureCandidate(root, config.inputs, windowsCheckoutInventory);
+  assert.equal(windowsCheckout.inventorySha256, original.inventorySha256);
+  assert.deepEqual(windowsCheckout.inputDigests, original.inputDigests);
+});
+
 test('inventory content filters keep inline Rust test modules in the native lane', () => {
   const root = makeRoot({
     'Cargo.toml': '[workspace]\nmembers = []\n',

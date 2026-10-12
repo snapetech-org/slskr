@@ -233,13 +233,18 @@ function walk(root, relative = '') {
   return files;
 }
 
-function fileDigest(root, relative) {
+// Configured source inputs and discovered tests are text. Git may check them
+// out with CRLF on Windows; untracked files keep byte-exact hashing below.
+function fileDigest(root, relative, normalizeLineEndings = false) {
   const filePath = path.join(root, relative);
   const info = lstatSync(filePath);
   if (info.isSymbolicLink() || !info.isFile()) {
     fail('Validation inventory contains a non-regular file: ' + relative);
   }
-  return hash(readFileSync(filePath));
+  const contents = readFileSync(filePath);
+  return normalizeLineEndings
+    ? hash(contents.toString('utf8').replace(/\r\n/g, '\n'))
+    : hash(contents);
 }
 
 export function discoverInventory(root, rules) {
@@ -269,7 +274,7 @@ export function discoverInventory(root, rules) {
         framework: rule.framework,
         owner: rule.owner,
         lane: rule.id,
-        sha256: fileDigest(root, match.path),
+        sha256: fileDigest(root, match.path, true),
       });
     }
   }
@@ -302,7 +307,7 @@ export function captureCandidate(root, inputs, inventory) {
   const untracked = untrackedDigests(root);
   const inputDigests = inputs.map((relative) => ({
     file: relative,
-    sha256: fileDigest(root, relative),
+    sha256: fileDigest(root, relative, true),
   }));
   const inventorySha256 = hash(stable(inventory.entries));
   const sourceSha256 = hash(stable({
