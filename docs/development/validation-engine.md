@@ -35,6 +35,13 @@ emits counts from Go JSON events, pytest JUnit output, and Jest JSON output.
 Python unittest and Vitest/Playwright summaries are counted from their native
 reports. Empty or missing test output cannot be reported as a pass.
 
+During execution, the engine writes cumulative task progress to stderr at task
+start and completion, with a heartbeat every minute for long tasks. It reports
+completed, failed, blocked, and pending tasks plus the active task and elapsed
+time. Native test-case totals update after each task finishes, since native
+runner output may be buffered. In GitHub Actions these updates appear in the
+live step log; the rendered job summary is published after the step completes.
+
 Inventory globs are matched by bounded POSIX path segments (`*`, `?`, and
 `**`). Test-content filtering, runtime versions, and native result summaries use
 named engine matchers; repository configuration cannot provide executable

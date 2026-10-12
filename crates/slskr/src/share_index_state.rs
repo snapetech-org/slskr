@@ -118,6 +118,7 @@ pub(crate) struct ShareIndexSnapshot {
     pub(crate) cache_written_at: Option<u64>,
     pub(crate) cache_error: Option<String>,
     pub(crate) updated_at: u64,
+    pub(crate) scanned_entries: usize,
 }
 
 #[derive(Clone, Debug)]
@@ -128,6 +129,7 @@ pub(crate) struct ShareLifecycleState {
     pub(crate) faulted: bool,
     pub(crate) cancelled: bool,
     pub(crate) scan_progress: f64,
+    pub(crate) scan_entries: usize,
     pub(crate) directories: usize,
     pub(crate) files: usize,
 }
@@ -141,6 +143,7 @@ impl ShareLifecycleState {
             faulted: false,
             cancelled: false,
             scan_progress: 1.0,
+            scan_entries: snapshot.scanned_entries,
             directories: snapshot.roots.iter().map(|root| root.directories).sum(),
             files: snapshot.entries.len(),
         }
@@ -154,6 +157,7 @@ impl ShareLifecycleState {
             faulted: false,
             cancelled: false,
             scan_progress: 0.0,
+            scan_entries: 0,
             directories: 0,
             files: 0,
         }
@@ -172,6 +176,7 @@ impl ShareLifecycleState {
             "faulted": self.faulted,
             "cancelled": self.cancelled,
             "scanProgress": scan_progress,
+            "scanEntries": self.scan_entries,
             "directories": self.directories,
             "files": self.files,
         });
@@ -221,6 +226,7 @@ impl ShareIndexSnapshot {
             cache_written_at: None,
             cache_error: None,
             updated_at: unix_timestamp(),
+            scanned_entries: 0,
         }
     }
 
@@ -357,6 +363,7 @@ impl ShareIndexSnapshot {
             cache_written_at,
             cache_error,
             updated_at,
+            scanned_entries: 0,
         }
     }
 }

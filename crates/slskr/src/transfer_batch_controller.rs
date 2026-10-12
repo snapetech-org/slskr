@@ -341,6 +341,29 @@ pub(super) fn controller_enqueue_request(body: &str) -> Option<(String, Vec<serd
     (!files.is_empty()).then_some((username, files))
 }
 
+pub(super) fn slskd_download_enqueue_body(
+    transfers: &[serde_json::Value],
+    failed: Vec<serde_json::Value>,
+) -> String {
+    let enqueued = transfers
+        .iter()
+        .map(|transfer| {
+            serde_json::json!({
+                "id": transfer.get("id").cloned().unwrap_or(serde_json::Value::Null),
+                "filename": transfer
+                    .get("filename")
+                    .cloned()
+                    .unwrap_or(serde_json::Value::Null),
+            })
+        })
+        .collect::<Vec<_>>();
+    serde_json::json!({
+        "enqueued": enqueued,
+        "failed": failed,
+    })
+    .to_string()
+}
+
 #[derive(Debug)]
 pub(super) enum BatchTransferPreparationError {
     Duplicate,

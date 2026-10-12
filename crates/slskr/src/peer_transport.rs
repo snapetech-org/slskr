@@ -1,3 +1,4 @@
+use super::session_state::PendingIndirectPeerMessage;
 use super::*;
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -814,6 +815,127 @@ pub(super) async fn send_peer_message_oneway(
         }
     }
     Err(last_error.unwrap_or_else(|| "peer did not advertise a response port".to_owned()))
+}
+
+pub(super) async fn send_peer_message_with_indirect_fallback(
+    state: &AppState,
+    username: &str,
+    address: Option<&PeerAddress>,
+    message: PeerMessage,
+) -> Result<(), String> {
+    let direct_error = match address {
+        Some(address) => send_peer_message_oneway(state, address, message.clone())
+            .await
+            .err(),
+        None => Some("peer endpoint lookup failed".to_owned()),
+    };
+    if direct_error.is_none() {
+        return Ok(());
+    }
+
+    let (completion, response) = oneshot::channel();
+    let token = {
+        let mut pending = state
+            .pending_indirect_peer_messages
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner);
+        let mut token = None;
+        for _ in 0..64 {
+            let mut bytes = [0_u8; 4];
+            SysRng
+                .try_fill_bytes(&mut bytes)
+                .map_err(|_| "secure indirect peer token generation failed".to_owned())?;
+            let candidate = u32::from_be_bytes(bytes);
+            if candidate != 0 && !pending.contains_key(&candidate) {
+                token = Some(candidate);
+                break;
+            }
+        }
+        let Some(token) = token else {
+            return Err("unable to allocate an indirect peer token".to_owned());
+        };
+        pending.insert(
+            token,
+            PendingIndirectPeerMessage {
+                message,
+                completion,
+            },
+        );
+        token
+    };
+
+    if let Err(error) = try_send_session_command(
+        state,
+        SessionCommand::IndirectPeerMessage {
+            username: username.to_owned(),
+            token,
+        },
+    ) {
+        state
+            .pending_indirect_peer_messages
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner)
+            .remove(&token);
+        return Err(match direct_error {
+            Some(direct_error) => {
+                format!("direct peer-message send failed: {direct_error}; {error}")
+            }
+            None => error,
+        });
+    }
+
+    let result = match time::timeout(
+        state.config.soulseek_connection.timeout_inactivity,
+        response,
+    )
+    .await
+    {
+        Ok(Ok(result)) => result,
+        Ok(Err(_)) => Err("indirect peer-message connection was dropped".to_owned()),
+        Err(_) => {
+            fail_pending_indirect_peer_message(
+                state,
+                token,
+                "indirect peer-message connection timed out".to_owned(),
+            );
+            Err("indirect peer-message connection timed out".to_owned())
+        }
+    };
+    result
+}
+
+pub(super) async fn send_pending_indirect_peer_message(
+    state: &AppState,
+    token: u32,
+    stream: TcpStream,
+) -> Option<Result<(), String>> {
+    let pending = state
+        .pending_indirect_peer_messages
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner)
+        .remove(&token)?;
+    let result = time::timeout(state.config.soulseek_connection.timeout_inactivity, async {
+        let mut peer = PeerMessageConnection::new(stream);
+        peer.send(&pending.message)
+            .await
+            .map_err(|error| format!("indirect peer-message send failed: {error}"))
+    })
+    .await
+    .map_err(|_| "indirect peer-message send timed out".to_owned())
+    .and_then(|result| result);
+    let _ = pending.completion.send(result.clone());
+    Some(result)
+}
+
+pub(super) fn fail_pending_indirect_peer_message(state: &AppState, token: u32, error: String) {
+    let pending = state
+        .pending_indirect_peer_messages
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner)
+        .remove(&token);
+    if let Some(pending) = pending {
+        let _ = pending.completion.send(Err(error));
+    }
 }
 
 const MAX_PEER_ENDPOINT_RECORDS: usize = 1_024;
