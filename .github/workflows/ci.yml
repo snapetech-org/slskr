@@ -11,7 +11,7 @@ on:
   pull_request:
   push:
     branches:
-      - '**'
+      - main
   workflow_dispatch:
 
 concurrency:
@@ -47,16 +47,54 @@ jobs:
           retention-days: 7
 
   rust:
-    # Keep public PRs hosted; trusted pushes and manual main runs can use the local runner.
-    runs-on: ${{ (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')) && fromJSON('["self-hosted","Linux","X64","host"]') || 'ubuntu-latest' }}
+    # Only main pushes and manual runs on main use the local runner; PRs and other refs stay hosted.
+    runs-on: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && fromJSON('["self-hosted","Linux","X64","host"]') || 'ubuntu-latest' }}
     timeout-minutes: 60
     steps:
-      - name: Use runner temp for local temporary files
+      - name: Configure private runner temporary storage
         if: runner.environment == 'self-hosted'
+        shell: bash
         run: |
-          install -d "$RUNNER_TEMP/tmp" "$RUNNER_TEMP/go-tmp"
-          echo "TMPDIR=$RUNNER_TEMP/tmp" >> "$GITHUB_ENV"
-          echo "GOTMPDIR=$RUNNER_TEMP/go-tmp" >> "$GITHUB_ENV"
+          set -euo pipefail
+
+          if [[ -z "${RUNNER_TEMP:-}" || "$RUNNER_TEMP" != /* || "$RUNNER_TEMP" == *$'\n'* || "$RUNNER_TEMP" == *$'\r'* || ! -d "$RUNNER_TEMP" || ! -r "$RUNNER_TEMP" || ! -w "$RUNNER_TEMP" || ! -x "$RUNNER_TEMP" ]]; then
+            printf 'RUNNER_TEMP must be an absolute, readable, writable directory without line breaks\n' >&2
+            exit 1
+          fi
+
+          runner_temp_resolved="$(cd -- "$RUNNER_TEMP" && pwd -P)"
+          if [[ "$runner_temp_resolved" == *$'\n'* || "$runner_temp_resolved" == *$'\r'* ]]; then
+            printf 'RUNNER_TEMP must not resolve to a path containing line breaks\n' >&2
+            exit 1
+          fi
+          case "$runner_temp_resolved" in
+            /|/tmp|/tmp/*|/var/tmp|/var/tmp/*|/dev/shm|/dev/shm/*)
+              printf 'RUNNER_TEMP must not resolve to a shared or root temporary directory\n' >&2
+              exit 1
+              ;;
+          esac
+
+          if [[ ! -O "$runner_temp_resolved" ]]; then
+            printf 'RUNNER_TEMP must be owned by the workflow runner user\n' >&2
+            exit 1
+          fi
+          runner_temp_mode="$(stat -c '%a' -- "$runner_temp_resolved")"
+          if [[ ! "$runner_temp_mode" =~ ^[0-7]{3,4}$ ]]; then
+            printf 'Could not determine RUNNER_TEMP directory permissions\n' >&2
+            exit 1
+          fi
+          runner_temp_permissions=$((8#$runner_temp_mode))
+          if (( runner_temp_permissions & 0022 )); then
+            printf 'RUNNER_TEMP must not be writable by group or other users\n' >&2
+            exit 1
+          fi
+
+          : "${GITHUB_ENV:?GITHUB_ENV is required}"
+          umask 077
+          job_temp="$(mktemp -d -- "$runner_temp_resolved/slskr-job.XXXXXX")"
+          mkdir -m 700 -- "$job_temp/go-tmp"
+          printf 'TMPDIR=%s\nTMP=%s\nTEMP=%s\nGOTMPDIR=%s/go-tmp\n' \
+            "$job_temp" "$job_temp" "$job_temp" "$job_temp" >> "$GITHUB_ENV"
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
         with:
           fetch-depth: 2
