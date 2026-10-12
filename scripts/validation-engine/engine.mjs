@@ -25,6 +25,7 @@ import {
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { requireTrustedLocalTestSandbox } from './trusted-sandbox.mjs';
 
 export const ENGINE_VERSION = 1;
 const ENGINE_DIR = path.dirname(fileURLToPath(import.meta.url));
@@ -980,6 +981,9 @@ export async function main(argv = process.argv.slice(2), root = DEFAULT_ROOT, co
         plan.prerequisites.filter((item) => item.available).length + '/' +
         plan.prerequisites.length + ' command prerequisites available.\n');
     return 0;
+  }
+  if (plan.tasks.some((task) => task.selected && task.kind === 'test')) {
+    requireTrustedLocalTestSandbox();
   }
   const lock = acquireRunLock(root, loaded.repository);
   let result;

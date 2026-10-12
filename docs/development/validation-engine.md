@@ -13,6 +13,18 @@ node scripts/validate-development.mjs --tests-only
 node scripts/validate-development.mjs
 ```
 
+Local execution of test tasks requires the trusted Linux bubblewrap launcher.
+When evaluating an unreviewed branch, copy `trusted-test-launcher.mjs` from a
+reviewed revision to a location outside the checkout and run:
+
+```sh
+node /path/to/trusted-test-launcher.mjs "$PWD" -- node scripts/validate-development.mjs --tests-only
+```
+
+Run planning for an unreviewed candidate through that launcher too, because
+planning imports its validation configuration. GitHub Actions remains
+responsible for hosted validation.
+
 `--plan` is discovery only: it records the candidate, test file inventory,
 available commands and selected tasks without running them. `--task` selects a
 single registered task and its prerequisites. `--tests-only` runs the Rust
