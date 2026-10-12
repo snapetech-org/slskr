@@ -30,6 +30,16 @@ untracked files, pinned input digests, and test inventory digests. The engine
 checks this identity before and after every task and blocks later work if the
 source changes during a run.
 
+Runtime probes and child commands inherit only the executable path, platform
+process variables, locale, timezone, and the Rust toolchain location. Each task
+receives a run-owned home, temporary, and XDG configuration/cache directory.
+Cargo uses a private cache shared only within that validation run. Registered task settings
+remain task-scoped, and unapproved `passEnv` requests fail during planning.
+`CI` is forced to `true`; Python user-site packages are disabled, and test tasks
+use `NODE_ENV=test`.
+Ambient credentials, loader options, proxy settings, workflow context, and
+operator configuration paths are not inherited.
+
 Rust cases are counted from Cargo's native test result summaries. The SDK gate
 emits counts from Go JSON events, pytest JUnit output, and Jest JSON output.
 Python unittest and Vitest/Playwright summaries are counted from their native

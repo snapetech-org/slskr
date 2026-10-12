@@ -18,6 +18,7 @@ export const validation = {
     'web/package.json',
     'web/package-lock.json',
     'release-notes/README.md',
+    'release-notes/20261012-validation-environment-isolation.md',
     'scripts/check-client-sdk-gates.sh',
     'scripts/check-rust-format.sh',
     'scripts/validate-development.mjs',
