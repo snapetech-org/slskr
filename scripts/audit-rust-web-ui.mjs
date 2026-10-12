@@ -43,7 +43,7 @@ const routes = [
 ];
 
 const apiRequestCountBudgets = new Map([
-  ['/searches', 14],
+  ['/searches', 15], // Hosted total includes the selected result-row download exercised by the audit.
   ['/discovery-graph', 13],
   ['/playlist-intake', 19],
   ['/wishlist', 11], // Includes the search action and its follow-up list refresh.
@@ -378,6 +378,10 @@ try {
               : null,
           };
         });
+      const searchResultDownloadRequestCount = apiRequests.filter(
+        ({ method, path: requestPath }) =>
+          method === 'POST' && requestPath === '/api/v0/transfers/downloads/peer-audit',
+      ).length;
       const initialApiRequestCount = apiRequests.filter(
         (request) => request.requestedAt - pageStartedAt <= 500,
       ).length;
@@ -399,6 +403,7 @@ try {
         primaryActionCount,
         confirmationVisible,
         rowCount,
+        searchResultDownloadRequestCount,
         screenshot: `${slug}-${viewport.name}.png`,
         selectedStatus,
         selectedTitle,
@@ -406,6 +411,18 @@ try {
         viewport: viewport.name,
       };
       audit.routes.push(routeResult);
+
+      if (
+        path === '/searches' &&
+        viewport.name === 'desktop' &&
+        audit.apiRequestBudget.enabled &&
+        clickRowActions &&
+        searchResultDownloadRequestCount !== 1
+      ) {
+        audit.errors.push(
+          `/searches desktop: expected the selected result row action to issue one POST /api/v0/transfers/downloads/peer-audit, got ${searchResultDownloadRequestCount}`,
+        );
+      }
 
       if (audit.apiRequestBudget.enabled) {
         if (routeResult.apiRequestCount > apiRequestCountBudget) {
