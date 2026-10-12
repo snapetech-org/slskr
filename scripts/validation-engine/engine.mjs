@@ -615,6 +615,9 @@ export function createPlan(root, config, options = {}) {
 }
 
 export function isolatedTaskEnvironment(task, runRoot, inherited = process.env) {
+  if (typeof task?.id !== 'string' || !/^[a-z0-9][a-z0-9-]*$/.test(task.id)) {
+    fail('Validation task ID must be a safe lowercase identifier.');
+  }
   const env = sanitizedEnvironment({}, inherited);
   if (!env.RUSTUP_HOME) {
     const inheritedHome = inherited.HOME ?? inherited.USERPROFILE;

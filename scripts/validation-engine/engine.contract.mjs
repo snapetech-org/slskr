@@ -23,6 +23,7 @@ import {
   executePlan,
   formatValidationProgress,
   globMatches,
+  isolatedTaskEnvironment,
   matchesVersionCheck,
   main as runEngine,
   parseCaseCount,
@@ -425,6 +426,10 @@ test('child environments hide inherited secrets and reject unapproved passEnv re
   const { root, config } = fixture();
   const runRoot = mkdtempSync(path.join(os.tmpdir(), 'slskr-isolated-environment-'));
   temporaryRoots.push(runRoot);
+  assert.throws(
+    () => isolatedTaskEnvironment({ id: '../outside' }, runRoot),
+    /safe lowercase identifier/,
+  );
   const key = 'VALIDATION_ENGINE_TEST_SECRET';
   const injected = {
     [key]: 'do-not-log-me',
