@@ -276,18 +276,32 @@ jobs:
             ccache="$RUNNER_TEMP/copr.krb5cc"
             armor="$RUNNER_TEMP/copr.krb5cc.armor"
             otp="$(oathtool --totp --base32 "$COPR_FEDORA_OTP_SECRET")"
-            KRB5CCNAME="FILE:$armor" kinit -n @FEDORAPROJECT.ORG
-            printf '%s%s\n' "$COPR_FEDORA_PASSWORD" "$otp" \
-              | KRB5CCNAME="FILE:$ccache" kinit -T "FILE:$armor" "${COPR_FEDORA_USERNAME}@FEDORAPROJECT.ORG"
-            KRB5CCNAME="FILE:$armor" kdestroy || true
-            echo "KRB5CCNAME=FILE:$ccache" >> "$GITHUB_ENV"
-            cat > ~/.config/copr <<EOF
+            if KRB5CCNAME="FILE:$armor" kinit -n @FEDORAPROJECT.ORG >/dev/null 2>&1 \
+              && printf '%s%s\n' "$COPR_FEDORA_PASSWORD" "$otp" \
+                | KRB5CCNAME="FILE:$ccache" kinit -T "FILE:$armor" "${COPR_FEDORA_USERNAME}@FEDORAPROJECT.ORG"; then
+              KRB5CCNAME="FILE:$armor" kdestroy || true
+              echo "KRB5CCNAME=FILE:$ccache" >> "$GITHUB_ENV"
+              cat > ~/.config/copr <<EOF
           [copr-cli]
           username = slskdn
           copr_url = https://copr.fedorainfracloud.org
           gssapi = true
           EOF
-            echo "Configured COPR with Fedora password+TOTP Kerberos/GSSAPI."
+              echo "Configured COPR with Fedora password+TOTP Kerberos/GSSAPI."
+            elif [[ -n "${COPR_LOGIN:-}" && -n "${COPR_TOKEN:-}" ]]; then
+              rm -f "$ccache" "$armor"
+              cat > ~/.config/copr <<EOF
+          [copr-cli]
+          login = ${COPR_LOGIN}
+          username = slskdn
+          token = ${COPR_TOKEN}
+          copr_url = https://copr.fedorainfracloud.org
+          EOF
+              echo "::warning::COPR Kerberos authentication failed; trying the configured API token fallback."
+            else
+              echo "::error title=COPR authentication failed::Fedora password+TOTP authentication failed and no COPR API token fallback is configured."
+              exit 1
+            fi
           else
             echo "COPR credentials not configured; skipping."
           fi

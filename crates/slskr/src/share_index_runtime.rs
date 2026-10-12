@@ -110,7 +110,15 @@ pub(super) async fn rebuild_share_index_with_permit(
         lifecycle.faulted = false;
         lifecycle.cancelled = false;
         lifecycle.scan_progress = 0.0;
+        lifecycle.scan_entries = 0;
     }
+    record_daemon_log(
+        state,
+        logging::LogLevel::Info,
+        "shares",
+        "share scan started",
+    )
+    .await;
     let (share_settings, share_settings_generation, filter_case_sensitive) = {
         let _persistence_turn = state.share_index_persistence_lock.lock().await;
         (
@@ -128,11 +136,39 @@ pub(super) async fn rebuild_share_index_with_permit(
     config.share_settings = share_settings;
     config.controller_case_sensitive_regex = filter_case_sensitive;
     let cancellation = Arc::clone(&cancellation_guard.cancellation);
-    let snapshot = tokio::task::spawn_blocking(move || {
-        build_share_index_with_cancellation(&config, cancellation)
-    })
-    .await
-    .map_err(|_| SHARE_SCAN_WORKER_ERROR.to_owned());
+    let progress = Arc::new(std::sync::atomic::AtomicUsize::new(0));
+    let worker_progress = Arc::clone(&progress);
+    let mut worker = tokio::task::spawn_blocking(move || {
+        build_share_index_with_progress(&config, cancellation, worker_progress)
+    });
+    let mut progress_tick = tokio::time::interval(std::time::Duration::from_millis(100));
+    progress_tick.set_missed_tick_behavior(tokio::time::MissedTickBehavior::Skip);
+    let mut last_logged_entries: usize = 0;
+    let worker_result: Result<Result<ShareIndexSnapshot, String>, tokio::task::JoinError> = loop {
+        tokio::select! {
+            result = &mut worker => break result,
+            _ = progress_tick.tick() => {
+                let scanned_entries = progress.load(std::sync::atomic::Ordering::Relaxed);
+                {
+                    let mut lifecycle = state.share_lifecycle.write().await;
+                    lifecycle.scan_entries = scanned_entries;
+                }
+                if scanned_entries >= last_logged_entries.saturating_add(10_000) {
+                    record_daemon_log(
+                        state,
+                        logging::LogLevel::Info,
+                        "shares",
+                        format!("share scan visited {scanned_entries} filesystem entries"),
+                    )
+                    .await;
+                    last_logged_entries = scanned_entries;
+                }
+            }
+        }
+    };
+    let scanned_entries = progress.load(std::sync::atomic::Ordering::Relaxed);
+    state.share_lifecycle.write().await.scan_entries = scanned_entries;
+    let snapshot = worker_result.map_err(|_| SHARE_SCAN_WORKER_ERROR.to_owned());
     let snapshot = match snapshot {
         Ok(Ok(snapshot)) => snapshot,
         Ok(Err(error)) if error == SHARE_SCAN_CANCELLED_ERROR => {
@@ -140,21 +176,56 @@ pub(super) async fn rebuild_share_index_with_permit(
             lifecycle.scanning = false;
             lifecycle.cancelled = true;
             lifecycle.faulted = false;
+            drop(lifecycle);
+            record_daemon_log(
+                state,
+                logging::LogLevel::Info,
+                "shares",
+                format!("share scan cancelled after visiting {scanned_entries} filesystem entries"),
+            )
+            .await;
             return Err(error);
         }
         Ok(Err(error)) => {
             let mut lifecycle = state.share_lifecycle.write().await;
             lifecycle.scanning = false;
             lifecycle.faulted = true;
+            drop(lifecycle);
+            record_daemon_log(
+                state,
+                logging::LogLevel::Warn,
+                "shares",
+                format!("share scan failed after visiting {scanned_entries} filesystem entries: {error}"),
+            )
+            .await;
             return Err(error);
         }
         Err(error) => {
             let mut lifecycle = state.share_lifecycle.write().await;
             lifecycle.scanning = false;
             lifecycle.faulted = true;
+            drop(lifecycle);
+            record_daemon_log(
+                state,
+                logging::LogLevel::Error,
+                "shares",
+                format!("share scan worker failed after visiting {scanned_entries} filesystem entries: {error}"),
+            )
+            .await;
             return Err(error);
         }
     };
+    record_daemon_log(
+        state,
+        logging::LogLevel::Info,
+        "shares",
+        format!(
+            "share scan completed after visiting {} filesystem entries and indexing {} files",
+            snapshot.scanned_entries,
+            snapshot.entries.len()
+        ),
+    )
+    .await;
     commit_share_index_snapshot_checked(state, &snapshot, share_settings_generation).await?;
     Ok(snapshot)
 }

@@ -1,7 +1,7 @@
 # Council Scan Inventory
 
 Scan date: 2026-10-12
-Source digest: 517091ae9930e9064e7b3ddf08c3eefdcb3d628d974bf3fd90cd3c1d0cd9c663
+Source digest: 60cfbe00c06886e5a705656052ee94496378f7ab61bb9c23d5c500660ad37107
 
 > Council process upgrades (mirrored from slskNet.Runtime, 2026-05-06): see `bug-council-severity-schema.md`, `bug-council-sibling-search.md`, `bug-council-negative-space.md`, `bug-council-behavior-pinning.md`, and `bug-council-phases.md`. Future sweep rows on this file should adopt the severity/confidence schema; the wire-frame trust boundary is now declared and enforced by `scripts/check-council-negative-space.sh`.
 
@@ -71,8 +71,8 @@ adversarial corpus pass.
 | Constructor/mutable collection candidates | 10 |
 | Protocol count/length candidates | 163 |
 | Protocol scalar emission candidates | 310 |
-| Resolver/raw stream candidates | 1083 |
-| Task/cancellation/lifecycle candidates | 1447 |
+| Resolver/raw stream candidates | 1087 |
+| Task/cancellation/lifecycle candidates | 1467 |
 | Example Web API candidates | 317 |
 
 ### Constructor/mutable collection candidates
@@ -175,8 +175,8 @@ bughunt report. They are discovery candidates, not confirmed bug counts.
 | --- | ---: | --- | --- |
 | `Protocol-controlled allocations and lengths` | 175 | Guarded | Whole-class review grouped frame/reader lengths, count-sized collections, transfer/mesh chunks, and persisted input files. Reader-derived byte slices are checked against available input; object counts use `read_bounded_count` or are walked without count-sized allocation; transport/state limits are enforced by the taint lens, adversarial corpus, and runtime boundary gate. No unresolved production allocation path remained. |
 | `Proxy, redirect, SSRF, and outbound trust boundaries` | 138 | Guarded | Whole-class review grouped fixed provider endpoints, user-supplied source/webhook URLs, operator-configured integrations, telemetry, and forwarded headers. User-supplied network targets validate scheme/authority, resolve and pin addresses, disable ambient proxies and redirects, and bound time/body; forwarded identity is trusted only behind configured proxy CIDRs. Evidence includes outbound-policy and trusted-proxy gates. |
-| `Filesystem and persistent-state boundaries` | 365 | Guarded | Whole-class review grouped credential files, persisted JSON/SQLite state, download/share paths, relay and mesh manifests, and test fixtures. Sensitive/state reads are size bounded and reject non-regular or symlink paths where required; generated credentials use a same-directory private temporary file and atomic replacement; user download paths remain scoped under the configured root. Evidence includes credential, storage-listing, transfer-state, and runtime-boundary checks. |
-| `Async task and channel lifecycle boundaries` | 463 | Guarded | Whole-class review grouped fixed daemon supervisors, connection handlers, request-triggered jobs, bounded channels, and test/CLI workers. Production code has no unbounded Tokio channels; HTTP handlers share a 256-task cap and service work uses bounded admission or managed ownership. Review found one legacy multisource task outside `ManagedTaskRegistry`; BUG-093 moves it to `spawn_managed`. Runtime boundary and lifecycle regressions cover cancellation and shutdown. |
+| `Filesystem and persistent-state boundaries` | 367 | Guarded | Whole-class review grouped credential files, persisted JSON/SQLite state, download/share paths, relay and mesh manifests, and test fixtures. Sensitive/state reads are size bounded and reject non-regular or symlink paths where required; generated credentials use a same-directory private temporary file and atomic replacement; user download paths remain scoped under the configured root. New share-progress counters only report filesystem entries encountered by the existing confined scanner; the progress API regression verifies the reported count. |
+| `Async task and channel lifecycle boundaries` | 466 | Guarded | Whole-class review grouped fixed daemon supervisors, connection handlers, request-triggered jobs, bounded channels, and test/CLI workers. Production code has no unbounded Tokio channels; HTTP handlers share a 256-task cap and service work uses bounded admission or managed ownership. Review found one legacy multisource task outside `ManagedTaskRegistry`; BUG-093 moves it to `spawn_managed`. The new firewalled-search callback uses a pending map, one-shot completion, timeout cleanup, and `CantConnectToPeer` cleanup; regressions cover the callback and completion path. |
 | `Browser injection, token storage, and opener boundaries` | 39 | Guarded | The current scan finds zero direct HTML/code-execution sinks, 33 storage references, and 6 opener references. Runtime token and UI storage paths have existing behavior tests; opener paths have `safeOpen` tests and `scripts/check-unsafe-blank-opens.sh`. `scripts/check-browser-injection-sinks.sh` now guards direct execution sinks. Reclassify on any fresh finding. |
 | `Go SDK transport, decoding, and filesystem boundaries` | 22 | Guarded | The Go SDK validates absolute HTTP(S) URLs without credentials, applies request and WebSocket handshake deadlines, refuses redirects, bounds response reads, and validates decoded response contracts. Evidence: `client-go/client_test.go` URL, redirect, body-limit, timeout, JSON, and response-contract cases; `client-go/websocket_test.go` invalid-URL, handshake-timeout, disconnect, and listener-lifecycle cases. |
 | `Python SDK transport, decoding, and filesystem boundaries` | 23 | Fixed | The SDK validates base URLs, refuses redirects, bounds HTTP response bodies, caps WebSocket messages, cleans up owned tasks/sessions, and bounds reconnects. Review found disconnect waited behind an in-flight handshake; BUG-070 now cancels that connection and prevents a queued pre-disconnect connect from starting. Evidence: the Python WebSocket cancellation/reconnect/message-bound tests and the full SDK gate. |

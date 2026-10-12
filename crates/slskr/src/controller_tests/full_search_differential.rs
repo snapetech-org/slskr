@@ -43,7 +43,12 @@ pub(super) async fn controller_api_differential_search_api_creates_reads_and_com
     assert_eq!(created.status, "200 OK");
     assert!(created.body.contains("\"query\":\"test flac\""));
     let created_json = serde_json::from_str::<serde_json::Value>(&created.body).unwrap();
-    assert!(created_json["searchId"].is_string());
+    assert!(created_json["id"].is_string());
+    assert!(created_json["token"].is_number());
+    assert_eq!(created_json["searchText"], "test flac");
+    assert!(created_json["state"].is_string());
+    assert!(created_json["isComplete"].is_boolean());
+    assert!(created_json["responses"].is_array());
     assert_eq!(created_json["query"], "test flac");
     assert!(created_json["results"].is_array());
     assert_eq!(

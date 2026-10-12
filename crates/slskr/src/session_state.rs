@@ -1,4 +1,5 @@
-use super::ServerMessage;
+use super::{PeerMessage, ServerMessage};
+use tokio::sync::oneshot;
 
 use super::{
     json_bool_option, json_option, json_u32_option, json_u64_option, redact_username,
@@ -17,6 +18,12 @@ pub(super) struct SessionSnapshot {
     pub(super) reconnects: u64,
     pub(super) connected_at: Option<u64>,
     pub(super) updated_at: u64,
+}
+
+#[derive(Debug)]
+pub(super) struct PendingIndirectPeerMessage {
+    pub(super) message: PeerMessage,
+    pub(super) completion: oneshot::Sender<Result<(), String>>,
 }
 
 impl SessionSnapshot {
@@ -107,6 +114,10 @@ pub(super) enum SessionCommand {
         folder: String,
     },
     IndirectBrowse {
+        username: String,
+        token: u32,
+    },
+    IndirectPeerMessage {
         username: String,
         token: u32,
     },

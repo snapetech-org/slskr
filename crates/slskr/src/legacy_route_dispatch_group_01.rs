@@ -15,12 +15,7 @@ pub(super) async fn legacy_route_dispatch_group_01(
         extended_mutation,
         request_is_versioned_v0,
     } = *context;
-    let _ = (
-        authorization,
-        headers,
-        extended_mutation,
-        request_is_versioned_v0,
-    );
+    let _ = (authorization, headers, extended_mutation);
     match (method, normalized_path.as_str()) {
         ("GET", "/api/telemetry") => {
             let session = state.session.read().await;
@@ -1613,21 +1608,25 @@ pub(super) async fn legacy_route_dispatch_group_01(
                   webhook_data,
               ).await;
 
-              // Return simplified response matching C# compatibility contract
-              let search_id = record.id.replace("-", "");
-              let results_json = record
-                  .results
-                  .iter()
-                  .map(|r| r.json())
-                  .collect::<Vec<_>>()
-                  .join(",");
-              let response_body = format!(
-                  r#"{{"searchId":"{}","query":"{}","results":[{}]}}"#,
-                  json_escape(&search_id),
-                  json_escape(&record.query),
-                  results_json
-              );
-              Ok(routing::ok_response(response_body))
+             if request_is_versioned_v0 {
+                 Ok(routing::ok_response(record.json()))
+             } else {
+                 // Preserve the original unversioned C# compatibility shape.
+                 let search_id = record.id.replace("-", "");
+                 let results_json = record
+                     .results
+                     .iter()
+                     .map(|result| result.json())
+                     .collect::<Vec<_>>()
+                     .join(",");
+                 let response_body = format!(
+                     r#"{{"searchId":"{}","query":"{}","results":[{}]}}"#,
+                     json_escape(&search_id),
+                     json_escape(&record.query),
+                     results_json
+                 );
+                 Ok(routing::ok_response(response_body))
+             }
         }
 
         ("POST", _path) if search_token_path(normalized_path.as_str(), "/complete").is_some() => {

@@ -361,6 +361,11 @@ pub(crate) async fn project_server_message(
             project_indirect_transfer_response(state, response).await;
         }
         ServerMessage::CantConnectToPeerResponse { token } => {
+            fail_pending_indirect_peer_message(
+                state,
+                *token,
+                "server reported cant-connect-to-peer".to_owned(),
+            );
             fail_indirect_browse(
                 state,
                 *token,

@@ -745,14 +745,17 @@ async fn route_dispatch_group_2_transfer_status(
                 rollback_transfer_mutation_if_unchanged(state, previous, mutated).await;
                 return Ok(routing::service_unavailable_response(&error));
             }
-            Ok(routing::ok_response(
+            let response_body = if route.path.starts_with("/api/v0/") {
+                slskd_download_enqueue_body(&created, blocked)
+            } else {
                 serde_json::json!({
                     "queued": count,
                     "transfers": created,
                     "blocked": blocked,
                 })
-                .to_string(),
-            ))
+                .to_string()
+            };
+            Ok(routing::ok_response(response_body))
         }
 
         ("DELETE", "/api/transfers/downloads/all/completed")

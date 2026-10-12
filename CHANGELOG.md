@@ -18,6 +18,14 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.57] — 2026-10-12
+
+- Added live progress state and scan logs for large share libraries.
+- Returned slskd-compatible versioned search and download responses, and delivered
+  search results to firewalled peers through server-brokered connections.
+- Added a COPR API-token fallback when Fedora Kerberos authentication is
+  unavailable.
+
 ## [0.2.47] — 2026-10-04
 
 - Improved search loading and recovery, user profile details, mobile navigation,

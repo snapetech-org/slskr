@@ -179,6 +179,130 @@ pub(super) async fn share_rescan_route_rebuilds_snapshot() {
 
 #[cfg_attr(test, tokio::test)]
 #[cfg(feature = "full-controller-tests")]
+pub(super) async fn share_scan_progress_is_exposed_in_application_state() {
+    let root = std::env::temp_dir().join(format!(
+        "slskr-share-progress-controller-test-{}",
+        uuid::Uuid::new_v4()
+    ));
+    let artist = root.join("Artist");
+    std::fs::create_dir_all(&artist).expect("create share fixture directory");
+    std::fs::write(artist.join("Track.flac"), b"audio").expect("write nested fixture");
+    std::fs::write(root.join("Readme.txt"), b"text").expect("write root fixture");
+
+    let (state, _receiver) = test_state_with_env(
+        MapEnv::default()
+            .with("SLSKR_SHARE_DIRS", &root.display().to_string())
+            .with("SLSKR_SHARE_FIXTURE", "")
+            .with("SLSKR_SHARE_CACHE_TSV_ENABLED", "false"),
+    );
+    let scan = crate::route_http_request("POST", "/api/v0/shares/rescan", None, "", &state)
+        .await
+        .expect("rescan shares");
+    assert_eq!(scan.status, "202 Accepted");
+
+    let application = crate::route_http_request("GET", "/api/v0/application", None, "", &state)
+        .await
+        .expect("application state");
+    assert_eq!(application.status, "200 OK");
+    let application: serde_json::Value =
+        serde_json::from_str(&application.body).expect("application state JSON");
+    assert_eq!(application["shares"]["scanEntries"], 3);
+    assert_eq!(application["shares"]["files"], 2);
+
+    std::fs::remove_dir_all(root).expect("remove share fixture");
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
+pub(super) async fn share_scan_progress_is_visible_before_a_large_scan_completes() {
+    const DIRECTORY_COUNT: usize = 8_000;
+    const ROOT_FILE_COUNT: usize = 33_000;
+    const TOTAL_FILES: usize = DIRECTORY_COUNT + ROOT_FILE_COUNT;
+    const TOTAL_ENTRIES: usize = DIRECTORY_COUNT + TOTAL_FILES;
+
+    let root = std::env::temp_dir().join(format!(
+        "slskr-live-share-progress-test-{}",
+        uuid::Uuid::new_v4()
+    ));
+    let content = [0_u8; 64];
+    for index in 0..DIRECTORY_COUNT {
+        let directory = root.join(format!("artist-{index:04}"));
+        std::fs::create_dir_all(&directory).expect("create share directory fixture");
+        std::fs::write(directory.join("track.flac"), content).expect("write nested share fixture");
+    }
+    for index in 0..ROOT_FILE_COUNT {
+        std::fs::write(root.join(format!("track-{index:05}.flac")), content)
+            .expect("write root share fixture");
+    }
+
+    let (state, _receiver) = test_state();
+    let directories = crate::config::parse_share_directories(&root.display().to_string())
+        .expect("parse share fixture root");
+    {
+        let mut settings = state.share_settings.write().await;
+        settings.fixture_entries.clear();
+        settings.roots = directories
+            .iter()
+            .filter(|directory| !directory.is_excluded)
+            .map(|directory| directory.local_path.clone())
+            .collect();
+        settings.directories = directories;
+        settings.cache_tsv_enabled = false;
+        settings.cache_workers = 1;
+        settings.max_files = TOTAL_FILES + 1;
+        settings.probe_media_attributes = true;
+    }
+
+    let scan_state = Arc::clone(&state);
+    let scan = tokio::spawn(async move {
+        crate::route_http_request("POST", "/api/v0/shares/rescan", None, "", &scan_state).await
+    });
+    let deadline = tokio::time::Instant::now() + Duration::from_secs(10);
+    let mut observed_progress = 0;
+    let mut observed_progress_log = false;
+    while tokio::time::Instant::now() < deadline {
+        let lifecycle = state.share_lifecycle.read().await.clone();
+        if lifecycle.scanning && lifecycle.scan_entries > 0 {
+            observed_progress = lifecycle.scan_entries;
+            let logs = crate::route_http_request("GET", "/api/v0/logs", None, "", &state)
+                .await
+                .expect("read live share scan logs");
+            observed_progress_log = logs.body.contains("share scan visited");
+            if observed_progress_log {
+                break;
+            }
+        }
+        if scan.is_finished() {
+            break;
+        }
+        tokio::time::sleep(Duration::from_millis(5)).await;
+    }
+    assert!(
+        observed_progress > 0,
+        "large scan completed or failed before live filesystem progress was published"
+    );
+    assert!(
+        observed_progress_log,
+        "large scan completed before a progress log was visible"
+    );
+
+    let response = tokio::time::timeout(Duration::from_secs(30), scan)
+        .await
+        .expect("large share scan timed out")
+        .expect("share scan task failed")
+        .expect("share scan route failed");
+    assert_eq!(response.status, "202 Accepted");
+    assert_eq!(
+        state.share_lifecycle.read().await.scan_entries,
+        TOTAL_ENTRIES
+    );
+    assert!(observed_progress < TOTAL_ENTRIES);
+
+    std::fs::remove_dir_all(root).expect("remove share fixture");
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
 pub(super) async fn share_rebuild_routes_reject_concurrent_scans() {
     let (state, _receiver) = test_state();
     let _permit = Arc::clone(&state.share_scans)

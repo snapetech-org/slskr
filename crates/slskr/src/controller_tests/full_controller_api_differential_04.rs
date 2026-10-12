@@ -1554,8 +1554,9 @@ pub(super) async fn controller_api_differential_controller_search_lifecycle() {
         "/api/v0/searches",
         "nominal-status-headers-body",
         created.status == "200 OK"
-            && created_json["searchId"] == search_id.replace('-', "")
-            && created_json["query"] == "Remote Search"
+            && created_json["id"] == search_id
+            && created_json["searchText"] == "Remote Search"
+            && created_json["state"].is_string()
             && created_json["results"].is_array()
     );
     record!(
@@ -1876,10 +1877,7 @@ pub(super) async fn controller_api_differential_controller_search_failure_restar
     .expect("create restart search");
     let created_json =
         serde_json::from_str::<serde_json::Value>(&created.body).expect("search response json");
-    let search_id = created_json["searchId"]
-        .as_str()
-        .expect("search id")
-        .to_owned();
+    let search_id = created_json["id"].as_str().expect("search id").to_owned();
     let _ = receiver.try_recv();
     let persisted = db
         .list_searches(10, 0)
@@ -1922,7 +1920,7 @@ pub(super) async fn controller_api_differential_controller_search_failure_restar
     .await
     .expect("create delete search");
     let delete_id = serde_json::from_str::<serde_json::Value>(&delete_created.body)
-        .expect("delete search json")["searchId"]
+        .expect("delete search json")["id"]
         .as_str()
         .expect("delete search id")
         .to_owned();
@@ -1986,7 +1984,7 @@ pub(super) async fn controller_api_differential_controller_search_failure_restar
     .await
     .expect("create put search");
     let put_id = serde_json::from_str::<serde_json::Value>(&put_created.body)
-        .expect("put search json")["searchId"]
+        .expect("put search json")["id"]
         .as_str()
         .expect("put search id")
         .to_owned();
