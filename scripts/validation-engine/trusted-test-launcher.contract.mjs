@@ -91,12 +91,22 @@ test(
       path.join(source, 'node_modules/marker.txt'),
       'read-only dependency'
     );
+    mkdirSync(path.join(source, 'node_modules/fixture-dependency'));
+    writeFileSync(
+      path.join(source, 'node_modules/fixture-dependency/package.json'),
+      '{"name":"fixture-dependency","type":"module","exports":"./index.js"}\n'
+    );
+    writeFileSync(
+      path.join(source, 'node_modules/fixture-dependency/index.js'),
+      'export default "sibling dependency resolved";\n'
+    );
     writeFileSync(
       path.join(source, 'bin/run-local-validation.mjs'),
       `import assert from 'node:assert/strict';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import net from 'node:net';
 import path from 'node:path';
+import fixtureDependency from 'fixture-dependency';
 const hostFile = ${JSON.stringify(hostFile)};
 const hostSocket = ${JSON.stringify(hostSocket)};
 const hostPort = ${tcpServer.address().port};
@@ -109,6 +119,7 @@ assert.equal(existsSync('/mnt/workspace/nested/.env.local'), false);
 assert.equal(existsSync('/mnt/workspace/nested/config/secrets.json'), false);
 assert.throws(() => writeFileSync(hostFile, 'escaped'));
 assert.equal(readFileSync('/run/validation-engine-sandbox', 'utf8'), process.env.VALIDATION_OUTER_SANDBOX_TOKEN);
+assert.equal(fixtureDependency, 'sibling dependency resolved');
 const connectionResults = await Promise.all([
   new Promise((resolve) => { const socket = net.connect(hostPort, '127.0.0.1'); socket.once('connect', () => { socket.destroy(); resolve('connected'); }); socket.once('error', () => resolve('blocked')); socket.setTimeout(1000, () => { socket.destroy(); resolve('blocked'); }); }),
   new Promise((resolve) => { const socket = net.createConnection(hostSocket); socket.once('connect', () => { socket.destroy(); resolve('connected'); }); socket.once('error', () => resolve('blocked')); socket.setTimeout(1000, () => { socket.destroy(); resolve('blocked'); }); }),

@@ -14,7 +14,6 @@ import {
   readdirSync,
   realpathSync,
   rmSync,
-  symlinkSync,
   writeFileSync,
 } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -204,20 +203,16 @@ function linkDependencies(sourceRoot, workspace) {
   }
   for (const {
     relative: relativePath,
-    dependency,
   } of dependencyDirectories.sort((left, right) =>
     left.relative.localeCompare(right.relative)
   )) {
-    let index = dependencies.indexOf(dependency);
-    if (index === -1) {
-      index = dependencies.length;
-      dependencies.push(dependency);
-    }
     const target = path.join(workspace, relativePath);
-    mkdirSync(path.dirname(target), { recursive: true });
-    symlinkSync(`${GUEST_RUN}/dependencies/${index}`, target, 'dir');
+    mkdirSync(target, { recursive: true, mode: 0o700 });
   }
-  return dependencies;
+  return dependencyDirectories.map(({ relative, dependency }) => ({
+    relative,
+    source: dependency,
+  }));
 }
 
 function bubblewrapPath() {
@@ -239,7 +234,7 @@ function makeSandboxCommand({
     );
   const runtimePath = realpathSync(process.execPath);
   const runtimeDirectory = path.dirname(runtimePath);
-  const externalRoots = [...dependencies];
+  const externalRoots = [];
   let playwrightCacheIndex = -1;
   if (playwrightCache) {
     playwrightCacheIndex = externalRoots.indexOf(playwrightCache);
@@ -256,6 +251,10 @@ function makeSandboxCommand({
   const mounts = externalRoots.map((source, index) => [
     realpathSync(source),
     `${GUEST_RUN}/dependencies/${index}`,
+  ]);
+  const dependencyMounts = dependencies.map(({ relative, source }) => [
+    realpathSync(source),
+    path.posix.join(GUEST_WORKSPACE, relative.split(path.sep).join('/')),
   ]);
   mkdirSync(path.join(runDirectory, 'dependencies'), { recursive: true });
   for (let index = 0; index < mounts.length; index++)
@@ -316,6 +315,8 @@ function makeSandboxCommand({
     GUEST_RUN,
   ];
   for (const [source, target] of mounts) args.push('--ro-bind', source, target);
+  for (const [source, target] of dependencyMounts)
+    args.push('--ro-bind', source, target);
   args.push(
     '--proc',
     '/proc',
