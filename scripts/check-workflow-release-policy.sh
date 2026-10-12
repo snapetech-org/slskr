@@ -31,9 +31,14 @@ for expected in \
   fi
 done
 
+trusted_runner_condition="((github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')) || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'))"
+if ! rg -n -F "$trusted_runner_condition" .github/workflows/ci.yml >/dev/null; then
+  printf 'workflow release policy check failed: trusted branch and manual-main runner policy is missing\n' >&2
+  status=1
+fi
 if rg -n '^[[:space:]]*runs-on:.*self-hosted' .github/workflows \
-  | rg -v -F "github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')"; then
-  printf 'workflow release policy check failed: self-hosted runners must be restricted to trusted main events\n' >&2
+  | rg -v -F "$trusted_runner_condition"; then
+  printf 'workflow release policy check failed: self-hosted runners must be restricted to trusted branch pushes or manual main events\n' >&2
   status=1
 fi
 
