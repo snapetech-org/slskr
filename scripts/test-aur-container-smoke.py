@@ -37,7 +37,7 @@ if os.environ['AUR_TEST_FAIL']=='1' and args[-1]=='PKGBUILD-bin': sys.exit(23)
             runuser.chmod(0o755)
             docker = bin_dir / 'docker'
             docker.write_text('''#!/usr/bin/python3
-import json, os, pathlib, subprocess, sys
+import json, os, pathlib, shlex, subprocess, sys
 args=sys.argv[1:]
 with open(os.environ['AUR_TEST_LOG'],'a') as log:
  log.write(json.dumps({'kind':'docker','args':args})+'\\n')
@@ -48,13 +48,17 @@ cid=pathlib.Path(args[args.index('--cidfile')+1]);cid.write_text('a'*64+'\\n')
 if '-i' not in args and '--interactive' not in args: sys.exit(0)
 script=sys.stdin.read();assert script, 'container stdin was empty'
 script=script.replace('/repo/packaging/aur/.', os.environ['AUR_TEST_SOURCE']+'/packaging/aur/.')
+script=script.replace(' -p /tmp ', ' -p '+shlex.quote(os.environ['AUR_TEST_CONTAINER_TMP'])+' ')
 sys.exit(subprocess.run(['/bin/bash','-s','--'],input=script,text=True,cwd='/').returncode)
 ''')
             docker.chmod(0o755)
             log_path = root / 'calls.jsonl'
+            container_tmp = root / 'container-tmp'
+            container_tmp.mkdir()
             result = subprocess.run(['/bin/bash', str(ROOT / 'scripts/check-aur-package-smoke.sh')],
                 env={**os.environ, 'PATH': str(bin_dir), 'AUR_TEST_LOG': str(log_path),
-                     'AUR_TEST_SOURCE': str(ROOT), 'AUR_TEST_FAIL': str(int(fail))},
+                     'AUR_TEST_SOURCE': str(ROOT), 'AUR_TEST_FAIL': str(int(fail)),
+                     'AUR_TEST_CONTAINER_TMP': str(container_tmp)},
                 capture_output=True, text=True, timeout=15)
             calls = [json.loads(line) for line in log_path.read_text().splitlines()]
             self.assertEqual([c['package'] for c in calls if c['kind']=='makepkg'], ['PKGBUILD', 'PKGBUILD-bin'])
