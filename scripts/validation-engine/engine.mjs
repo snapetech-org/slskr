@@ -29,6 +29,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { requireTrustedLocalTestSandbox } from './trusted-sandbox.mjs';
 
 export const ENGINE_VERSION = 1;
+const SYSTEM_TEMP_DIR = os.tmpdir();
 const ENGINE_DIR = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_ROOT = path.resolve(ENGINE_DIR, '..', '..');
 const MAX_BUFFER = 8 * 1024 * 1024;
@@ -432,7 +433,7 @@ export function isolatedRuntimeEnvironment(runtime, environmentRoot, inherited =
 function inspectRuntime(root, runtime) {
   const available = commandAvailable(runtime.command);
   if (!available) return { ...runtime, available, version: null, exitCode: null };
-  const probeRoot = mkdtempSync(path.join(os.tmpdir(), 'slskr-runtime-probe-'));
+  const probeRoot = mkdtempSync(path.join(SYSTEM_TEMP_DIR, 'slskr-runtime-probe-'));
   let result;
   try {
     result = spawnSync(runtime.command, runtime.args ?? ['--version'], {
