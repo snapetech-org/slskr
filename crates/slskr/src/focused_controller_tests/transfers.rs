@@ -652,7 +652,7 @@ async fn legacy_per_user_transfer_path_resolution_releases_transfer_lock() {
 
     let (state, _receiver) = test_state_with_env(MapEnv::default());
     let held_destinations = state.destinations.write().await;
-    let body = r#"{"files":[{"filename":"Music/A.flac","size":42}]}"#;
+    let body = r#"[{"filename":"Music/A.flac","size":42}]"#;
     let mut request = Box::pin(crate::route_http_request(
         "POST",
         "/api/v0/transfers/downloads/peer",
@@ -677,8 +677,9 @@ async fn legacy_per_user_transfer_path_resolution_releases_transfer_lock() {
     assert_eq!(response.status, "200 OK");
     let response: serde_json::Value =
         serde_json::from_str(&response.body).expect("per-user enqueue response JSON");
-    assert_eq!(response["queued"], 1);
-    assert_eq!(response["transfers"].as_array().unwrap().len(), 1);
+    assert_eq!(response["enqueued"].as_array().unwrap().len(), 1);
+    assert_eq!(response["enqueued"][0]["filename"], "Music/A.flac");
+    assert_eq!(response["failed"], serde_json::json!([]));
     assert_eq!(state.transfers.read().await.entries.len(), 1);
     fs::remove_dir_all(&state.config.state_dir).expect("remove per-user transfer lock test state");
 }

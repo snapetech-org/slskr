@@ -26,6 +26,7 @@ export const validation = {
     'scripts/validation-engine/engine.contract.mjs',
     'scripts/validation-engine/reconcile-rust-matrix.mjs',
     'scripts/validation-engine/reconcile-rust-matrix.contract.mjs',
+    'docs/development/validation-engine.md',
     'release-notes/20261011-validation-engine.md',
   ],
   requiredCommands: ['git', 'node'],

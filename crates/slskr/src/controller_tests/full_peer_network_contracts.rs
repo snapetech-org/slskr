@@ -82,6 +82,163 @@ pub(super) async fn soulseek_connector_uses_authenticated_socks5_proxy() {
 
 #[cfg_attr(test, tokio::test)]
 #[cfg(feature = "full-controller-tests")]
+pub(super) async fn firewalled_searcher_receives_search_response_via_server_brokered_connection() {
+    let (state, mut commands) = test_state();
+    let response = crate::build_file_search_response(&state, 29, "test")
+        .await
+        .expect("fixture search response");
+    let listener = tokio::net::TcpListener::bind("127.0.0.1:0")
+        .await
+        .expect("bind indirect peer listener");
+    let listener_address = listener.local_addr().expect("indirect peer address");
+    let receiving_state = Arc::clone(&state);
+    let receiving_task = tokio::spawn(async move {
+        let (stream, remote_address) = listener.accept().await.expect("accept indirect peer");
+        let incoming = slskr_client::listener::demux_incoming(stream)
+            .await
+            .expect("decode indirect peer init");
+        crate::listener_runtime::handle_owned_incoming(receiving_state, incoming, remote_address)
+            .await;
+    });
+
+    let address = slskr_client::protocol::server::PeerAddress {
+        username: "firewalled-searcher".to_owned(),
+        ip: "127.0.0.1".parse().expect("loopback peer address"),
+        port: 0,
+        obfuscation_type: 0,
+        obfuscated_port: 0,
+    };
+    let sending_state = Arc::clone(&state);
+    let sending_task = tokio::spawn(async move {
+        crate::send_peer_message_with_indirect_fallback(
+            &sending_state,
+            "firewalled-searcher",
+            Some(&address),
+            crate::PeerMessage::FileSearchResponse(response),
+        )
+        .await
+    });
+
+    let command = tokio::time::timeout(Duration::from_secs(2), commands.recv())
+        .await
+        .expect("indirect request dispatch timed out")
+        .expect("session command channel closed");
+    let token = match command {
+        crate::SessionCommand::IndirectPeerMessage { username, token } => {
+            assert_eq!(username, "firewalled-searcher");
+            token
+        }
+        other => panic!("unexpected indirect search command: {other:?}"),
+    };
+
+    let stream = tokio::net::TcpStream::connect(listener_address)
+        .await
+        .expect("firewalled peer callback connect");
+    let stream = slskr_client::peer_connect::send_pierce_firewall(stream, token)
+        .await
+        .expect("send callback token");
+    let mut peer = slskr_client::stream::PeerMessageConnection::new(stream);
+    let message = tokio::time::timeout(Duration::from_secs(2), peer.receive())
+        .await
+        .expect("indirect search response timed out")
+        .expect("decode indirect search response");
+    let crate::PeerMessage::FileSearchResponse(response) = message else {
+        panic!("firewalled searcher received the wrong peer message");
+    };
+    assert_eq!(response.username, "tester");
+    assert_eq!(response.token, 29);
+    assert_eq!(response.results.len(), 1);
+    assert_eq!(response.results[0].filename, "Virtual/Test.flac");
+    tokio::time::timeout(Duration::from_secs(2), sending_task)
+        .await
+        .expect("indirect send completion timed out")
+        .expect("indirect send task failed")
+        .expect("indirect send failed");
+    receiving_task.await.expect("indirect receive task failed");
+    assert!(state
+        .pending_indirect_peer_messages
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner)
+        .is_empty());
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
+pub(super) async fn reachable_searcher_receives_one_direct_response_without_broker_request() {
+    let (state, mut commands) = test_state();
+    let response = crate::build_file_search_response(&state, 30, "test")
+        .await
+        .expect("fixture search response");
+    let listener = tokio::net::TcpListener::bind("127.0.0.1:0")
+        .await
+        .expect("bind direct peer listener");
+    let listener_address = listener.local_addr().expect("direct peer address");
+    let receiver = tokio::spawn(async move {
+        let (stream, _) = tokio::time::timeout(Duration::from_secs(2), listener.accept())
+            .await
+            .expect("direct peer connection timed out")
+            .expect("accept direct peer");
+        let incoming = tokio::time::timeout(
+            Duration::from_secs(2),
+            slskr_client::listener::demux_incoming(stream),
+        )
+        .await
+        .expect("direct peer init timed out")
+        .expect("decode direct peer init");
+        let slskr_client::listener::IncomingConnection::PeerInit {
+            username,
+            kind,
+            stream,
+            obfuscated,
+            ..
+        } = incoming
+        else {
+            panic!("reachable searcher received the wrong connection kind");
+        };
+        assert_eq!(username, "tester");
+        assert_eq!(kind, slskr_client::connection::ConnectionKind::PeerMessages);
+        assert!(!obfuscated);
+        let mut peer = slskr_client::stream::PeerMessageConnection::new(stream);
+        let message = tokio::time::timeout(Duration::from_secs(2), peer.receive())
+            .await
+            .expect("direct search response timed out")
+            .expect("receive direct search response");
+        let crate::PeerMessage::FileSearchResponse(response) = message else {
+            panic!("reachable searcher received the wrong peer message");
+        };
+        assert_eq!(response.token, 30);
+        assert_eq!(response.results.len(), 1);
+    });
+
+    let address = slskr_client::protocol::server::PeerAddress {
+        username: "reachable-searcher".to_owned(),
+        ip: "127.0.0.1".parse().expect("loopback peer address"),
+        port: listener_address.port().into(),
+        obfuscation_type: 0,
+        obfuscated_port: 0,
+    };
+    crate::send_peer_message_with_indirect_fallback(
+        &state,
+        "reachable-searcher",
+        Some(&address),
+        crate::PeerMessage::FileSearchResponse(response),
+    )
+    .await
+    .expect("direct search response send");
+    receiver.await.expect("direct peer receiver task");
+    assert!(matches!(
+        commands.try_recv(),
+        Err(tokio::sync::mpsc::error::TryRecvError::Empty)
+    ));
+    assert!(state
+        .pending_indirect_peer_messages
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner)
+        .is_empty());
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
 pub(super) async fn soulseek_connector_uses_no_auth_socks5_and_transfer_buffers() {
     use tokio::io::{AsyncReadExt, AsyncWriteExt};
 

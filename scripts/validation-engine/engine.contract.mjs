@@ -21,6 +21,7 @@ import {
   createPlan,
   discoverInventory,
   executePlan,
+  formatValidationProgress,
   globMatches,
   matchesVersionCheck,
   main as runEngine,
@@ -118,6 +119,22 @@ test('fixed native summary parsers count cases without config-supplied regular e
   assert.equal(parseCaseCount('playwrightSummary', '3 passed (4.2s)\n'), 3);
   assert.equal(parseCaseCount('passLines', 'PASS\nPASS\nPASS\n'), 3);
   assert.throws(() => parseCaseCount('custom', '1 passed'), /Unknown native test summary parser/);
+});
+
+test('live progress summary distinguishes completed, blocked, pending, and active tasks', () => {
+  const tasks = [
+    { id: 'passed', name: 'Passed task' },
+    { id: 'blocked', name: 'Blocked task' },
+    { id: 'running', name: 'Long task' },
+  ];
+  const results = new Map([
+    ['passed', { status: 'passed', startedAt: '2026-10-12T00:00:00.000Z' }],
+    ['blocked', { status: 'blocked' }],
+  ]);
+  assert.equal(
+    formatValidationProgress('sample', tasks, results, tasks[2], 65_000),
+    '[validation] sample: 1/3 selected tasks complete (1 passed, 0 failed, 1 blocked, 1 pending); running Long task (1m05s)',
+  );
 });
 
 test('runtime compatibility checks use bounded prefix and character rules', () => {

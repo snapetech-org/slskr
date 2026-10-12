@@ -503,7 +503,7 @@ async fn process_shared_mesh_overlay_connection(
     }
 }
 
-async fn handle_owned_incoming(
+pub(super) async fn handle_owned_incoming(
     state: Arc<AppState>,
     incoming: IncomingConnection<TcpStream>,
     remote_addr: SocketAddr,
@@ -578,6 +578,11 @@ async fn handle_owned_incoming(
                     .pending_inbound_file_transfer(Some(token))
                     .is_some()
             };
+            let has_pending_peer_message = state
+                .pending_indirect_peer_messages
+                .lock()
+                .unwrap_or_else(std::sync::PoisonError::into_inner)
+                .contains_key(&token);
             if has_file_transfer {
                 handle_inbound_file_transfer(
                     &state,
@@ -585,6 +590,10 @@ async fn handle_owned_incoming(
                     Some(token),
                 )
                 .await
+            } else if has_pending_peer_message {
+                send_pending_indirect_peer_message(&state, token, stream)
+                    .await
+                    .unwrap_or(Ok(()))
             } else {
                 handle_plain_peer_messages_with_address(
                     &state,
