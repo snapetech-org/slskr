@@ -54,9 +54,29 @@ pub(crate) async fn schedule_incoming_search_response(
                 .await;
                 return Ok::<(), String>(());
             };
-            let address = request_peer_endpoint(&state, &username).await?;
-            send_peer_message_oneway(&state, &address, PeerMessage::FileSearchResponse(response))
-                .await?;
+            let address = match request_peer_endpoint(&state, &username).await {
+                Ok(address) => Some(address),
+                Err(error) => {
+                    record_soulseek_diagnostic(
+                        &state,
+                        logging::LogLevel::Debug,
+                        "search",
+                        format!(
+                            "Direct search response address for {} unavailable ({error}); trying server-brokered connection",
+                            redact_username(&username)
+                        ),
+                    )
+                    .await;
+                    None
+                }
+            };
+            send_peer_message_with_indirect_fallback(
+                &state,
+                &username,
+                address.as_ref(),
+                PeerMessage::FileSearchResponse(response),
+            )
+            .await?;
             record_soulseek_diagnostic(
                 &state,
                 logging::LogLevel::Debug,

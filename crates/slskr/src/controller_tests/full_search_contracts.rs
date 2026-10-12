@@ -476,7 +476,10 @@ pub(super) async fn search_api_expires_and_prunes_records() {
     .expect("create search");
     assert_eq!(created.status, "200 OK");
     let created_json = serde_json::from_str::<serde_json::Value>(&created.body).unwrap();
-    assert!(created_json["searchId"].is_string());
+    assert!(created_json["id"].is_string());
+    assert!(created_json["token"].is_number());
+    assert!(created_json["searchText"].is_string());
+    assert!(created_json["responses"].is_array());
     assert_eq!(created_json["query"], "short lived");
     let _ = receiver.try_recv();
 
@@ -507,6 +510,69 @@ pub(super) async fn search_api_expires_and_prunes_records() {
 
 #[cfg_attr(test, tokio::test)]
 #[cfg(feature = "full-controller-tests")]
+pub(super) async fn versioned_search_create_returns_search_state() {
+    for profile in ["legacy", "native"] {
+        let (state, _receiver) =
+            test_state_with_env(MapEnv::default().with("SLSKR_CONTROLLER_PROFILE", profile));
+        state.session.write().await.state = "connected";
+        let id = "33333333-3333-4333-8333-333333333333";
+        let response = crate::route_http_request(
+            "POST",
+            "/api/v0/searches",
+            None,
+            &serde_json::json!({ "id": id, "searchText": "compatibility contract" }).to_string(),
+            &state,
+        )
+        .await
+        .expect("create versioned search");
+
+        assert_eq!(
+            response.status, "200 OK",
+            "profile {profile}: {}",
+            response.body
+        );
+        let body: serde_json::Value =
+            serde_json::from_str(&response.body).expect("SearchState JSON");
+        for field in [
+            "id",
+            "token",
+            "searchText",
+            "state",
+            "isComplete",
+            "fileCount",
+            "lockedFileCount",
+            "responseCount",
+            "responses",
+            "startedAt",
+        ] {
+            assert!(
+                body.get(field).is_some(),
+                "profile {profile} missing {field}"
+            );
+        }
+        assert_eq!(body["id"], id, "profile {profile}");
+        assert_eq!(body["searchText"], "compatibility contract");
+        assert!(body["responses"].is_array());
+        assert!(body.get("searchId").is_none());
+
+        let detail = crate::route_http_request(
+            "GET",
+            &format!("/api/v0/searches/{}", body["id"].as_str().unwrap()),
+            None,
+            "",
+            &state,
+        )
+        .await
+        .expect("read created search");
+        assert_eq!(detail.status, "200 OK", "profile {profile}");
+        let detail: serde_json::Value =
+            serde_json::from_str(&detail.body).expect("SearchState detail JSON");
+        assert_eq!(detail["id"], body["id"]);
+    }
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
 pub(super) async fn search_create_accepts_camel_case_ttl_and_caps_large_values() {
     let (state, mut receiver) = test_state();
     state.session.write().await.state = "connected";
@@ -522,7 +588,7 @@ pub(super) async fn search_create_accepts_camel_case_ttl_and_caps_large_values()
     .expect("create search");
     assert_eq!(created.status, "200 OK");
     let created_json = serde_json::from_str::<serde_json::Value>(&created.body).unwrap();
-    assert!(created_json["searchId"].is_string());
+    assert!(created_json["id"].is_string());
     assert_eq!(created_json["query"], "bounded");
     let _ = receiver.try_recv();
 
@@ -559,7 +625,7 @@ pub(super) async fn search_api_supports_targeted_dispatch_commands() {
     .expect("user search");
     assert_eq!(user.status, "200 OK");
     let user_json = serde_json::from_str::<serde_json::Value>(&user.body).unwrap();
-    assert!(user_json["searchId"].is_string());
+    assert!(user_json["id"].is_string());
     assert_eq!(user_json["query"], "rare");
     assert_eq!(
         receiver.try_recv().expect("user search command"),
@@ -581,7 +647,7 @@ pub(super) async fn search_api_supports_targeted_dispatch_commands() {
     .expect("room search");
     assert_eq!(room.status, "200 OK");
     let room_json = serde_json::from_str::<serde_json::Value>(&room.body).unwrap();
-    assert!(room_json["searchId"].is_string());
+    assert!(room_json["id"].is_string());
     assert_eq!(room_json["query"], "ambient");
     assert_eq!(
         receiver.try_recv().expect("room search command"),
@@ -603,7 +669,7 @@ pub(super) async fn search_api_supports_targeted_dispatch_commands() {
     .expect("wishlist search");
     assert_eq!(wishlist.status, "200 OK");
     let wishlist_json = serde_json::from_str::<serde_json::Value>(&wishlist.body).unwrap();
-    assert!(wishlist_json["searchId"].is_string());
+    assert!(wishlist_json["id"].is_string());
     assert_eq!(wishlist_json["query"], "wantlist");
     assert_eq!(
         receiver.try_recv().expect("wishlist search command"),

@@ -196,6 +196,19 @@ pub(crate) async fn handle_session_command(
             )
             .await;
         }
+        SessionCommand::IndirectPeerMessage { username, token } => {
+            send_active_server_message(
+                state,
+                session,
+                ServerMessage::ConnectToPeerRequest(ConnectToPeerRequest {
+                    token,
+                    username,
+                    connection_type: ConnectionKind::PeerMessages.as_str().to_owned(),
+                }),
+                "request indirect peer message",
+            )
+            .await;
+        }
         SessionCommand::RequestUserStats(username) => {
             send_active_server_message(
                 state,

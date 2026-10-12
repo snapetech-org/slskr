@@ -265,6 +265,41 @@ pub(super) async fn transfer_cancellation_returns_frozen_statuses() {
 
 #[cfg_attr(test, tokio::test)]
 #[cfg(feature = "full-controller-tests")]
+pub(super) async fn versioned_download_enqueue_returns_slskd_result_contract() {
+    for profile in ["legacy", "native"] {
+        let (state, _receiver) =
+            test_state_with_env(MapEnv::default().with("SLSKR_CONTROLLER_PROFILE", profile));
+        let response = crate::route_http_request(
+            "POST",
+            "/api/v0/transfers/downloads/some-peer",
+            None,
+            r#"[{"filename":"Some/Album/Track.flac","size":123456}]"#,
+            &state,
+        )
+        .await
+        .expect("enqueue versioned download");
+
+        assert_eq!(response.status, "200 OK", "profile {profile}");
+        let body: serde_json::Value =
+            serde_json::from_str(&response.body).expect("download enqueue JSON");
+        assert_eq!(
+            body.as_object()
+                .unwrap()
+                .keys()
+                .map(String::as_str)
+                .collect::<std::collections::BTreeSet<_>>(),
+            ["enqueued", "failed"].into_iter().collect(),
+            "profile {profile}"
+        );
+        assert_eq!(body["enqueued"].as_array().unwrap().len(), 1);
+        assert!(body["enqueued"][0]["id"].is_string());
+        assert_eq!(body["enqueued"][0]["filename"], "Some/Album/Track.flac");
+        assert_eq!(body["failed"], serde_json::json!([]));
+    }
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
 pub(super) async fn inbound_message_route_rolls_back_when_persistence_fails() {
     let db = crate::persistence::DatabaseManager::in_memory()
         .await

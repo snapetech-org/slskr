@@ -712,10 +712,13 @@ use self::peer_transport::{
 use self::peer_transport::{
     PeerTransferNegotiation, SoulseekSocketClass, cached_peer_endpoint,
     configure_incoming_soulseek_socket, connect_file_transfer_preferred,
-    connect_indirect_file_transfer, connect_soulseek_tcp, fetch_indirect_peer_browse,
+    connect_indirect_file_transfer, connect_soulseek_tcp,
+    fail_pending_indirect_peer_message, fetch_indirect_peer_browse,
     fetch_indirect_peer_folder, fetch_peer_browse, fetch_peer_folder, negotiate_peer_transfer,
     outgoing_peer_init_username, peer_connect_ip, remember_peer_endpoint, request_peer_endpoint,
-    send_peer_message_oneway, send_peer_message_request, test_user_endpoint_peer_address,
+    send_peer_message_oneway, send_peer_message_request,
+    send_peer_message_with_indirect_fallback, send_pending_indirect_peer_message,
+    test_user_endpoint_peer_address,
 };
 use self::pod_membership_workflow::{
     PodJoinAcceptanceInput, PodJoinReplayStore, PodJoinSignatureInput, PodLeaveAcceptanceInput,
@@ -871,7 +874,7 @@ use self::share_scanner::{ShareScanRequest, scan_share_dirs_with_cancellation};
 #[cfg(any(test, feature = "full-controller-tests"))]
 use self::share_scanner::build_share_index;
 use self::share_scanner::{
-    build_share_index_with_cancellation, scan_share_dirs, summarize_extensions, virtual_share_path,
+    build_share_index_with_progress, scan_share_dirs, summarize_extensions, virtual_share_path,
 };
 use self::songid_controller::{
     songid_capabilities_json, songid_evidence_package_json, songid_runs_value, songid_source_type,

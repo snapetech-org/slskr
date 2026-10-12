@@ -430,33 +430,28 @@ async fn controller_api_differential_controller_file_transfer_room_residuals() {
         "POST",
         "/api/v0/transfers/downloads/peer",
         None,
-        r#"{"files":[{"filename":"Remote/Queued.flac","size":99}]}"#,
+        r#"[{"filename":"Remote/Queued.flac","size":99}]"#,
         &state,
     )
     .await
     .expect("enqueue focused transfer");
     let enqueue_json = serde_json::from_str::<serde_json::Value>(&enqueue.body).unwrap_or_default();
-    let transfer_id = enqueue_json["transfers"][0]["id"]
+    let transfer_id = enqueue_json["enqueued"][0]["id"]
         .as_str()
         .and_then(|value| value.parse::<u64>().ok())
-        .or_else(|| enqueue_json["transfers"][0]["id"].as_u64())
         .expect("focused transfer id");
     let enqueue_pass = enqueue.status == "200 OK"
-        && enqueue_json["queued"] == 1
-        && enqueue_json["transfers"][0]["username"] == "peer";
+        && enqueue_json["enqueued"]
+            .as_array()
+            .is_some_and(|rows| rows.len() == 1)
+        && enqueue_json["enqueued"][0]["filename"] == "Remote/Queued.flac"
+        && enqueue_json["failed"] == serde_json::json!([]);
     record!(
         "POST",
         "/api/v0/transfers/downloads/{username}",
         "nominal-status-headers-body",
         enqueue_pass
     );
-    record!(
-        "POST",
-        "/api/v0/transfers/downloads/{username}",
-        "mutation-side-effects-and-readback",
-        enqueue_pass
-    );
-
     let list = crate::route_http_request("GET", "/api/v0/transfers/downloads", None, "", &state)
         .await
         .expect("focused transfer list");
@@ -465,6 +460,12 @@ async fn controller_api_differential_controller_file_transfer_room_residuals() {
         && list_json
             .as_array()
             .is_some_and(|rows| rows.iter().any(|row| row["username"] == "peer"));
+    record!(
+        "POST",
+        "/api/v0/transfers/downloads/{username}",
+        "mutation-side-effects-and-readback",
+        enqueue_pass && list_pass
+    );
     record!(
         "GET",
         "/api/v0/transfers/downloads",

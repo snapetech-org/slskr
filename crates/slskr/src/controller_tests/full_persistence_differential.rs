@@ -1875,13 +1875,11 @@ pub(super) async fn persistence_lifecycle_differential_search_and_message_domain
             "{target} differential search create"
         );
         let _ = receiver.try_recv();
-        // The creation response's `searchId` is a dash-stripped
-        // compatibility id. It must round-trip through the normal
-        // read/update/delete handlers without exposing the canonical
-        // stored id to callers.
+        // The versioned creation response exposes the canonical id that is
+        // persisted and accepted by subsequent read/update/delete handlers.
         let search_id = serde_json::from_str::<serde_json::Value>(&created.body)
             .ok()
-            .and_then(|json| json["searchId"].as_str().map(str::to_owned))
+            .and_then(|json| json["id"].as_str().map(str::to_owned))
             .expect("differential search id");
 
         let updated = crate::route_http_request(

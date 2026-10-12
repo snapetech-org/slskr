@@ -1,3 +1,4 @@
+use super::session_state::PendingIndirectPeerMessage;
 use super::*;
 
 #[derive(Debug)]
@@ -125,6 +126,8 @@ pub(super) struct AppState {
     pub(super) multisource: Arc<RwLock<multisource::SwarmStore>>,
     pub(super) controller_features: ControllerFeatureStore,
     pub(super) peer_endpoints: RwLock<BTreeMap<String, (PeerAddress, u64)>>,
+    pub(super) pending_indirect_peer_messages:
+        std::sync::Mutex<BTreeMap<u32, PendingIndirectPeerMessage>>,
     pub(super) preview_streams: Arc<Semaphore>,
     pub(super) listening_party_stream_limits: RwLock<ListeningPartyStreamLimits>,
     pub(super) revoked_jwts: RwLock<RevokedJwtStore>,
