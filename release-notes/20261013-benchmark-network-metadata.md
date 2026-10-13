@@ -5,4 +5,4 @@ area: benchmarks
 action: none
 breaking: false
 ---
-Benchmark artifact summaries now report a shared network when every selected profile uses the same one, reserving `profile-dependent` for mixed profile sets.
+Benchmark artifact summaries now report a shared network when every selected profile uses the same one, reserving `profile-dependent` for mixed profile sets. The retained DHT-only artifact now records its bridge network consistently.

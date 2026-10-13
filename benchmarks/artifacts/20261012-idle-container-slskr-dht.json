@@ -14,7 +14,7 @@
       "slskr-dht",
       "slskr-dht"
     ],
-    "network": "profile-dependent",
+    "network": "bridge",
     "network_by_profile": {
       "slskr-dht": "bridge"
     },

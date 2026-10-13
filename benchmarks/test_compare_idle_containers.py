@@ -179,6 +179,19 @@ class NetworkMetadataTests(unittest.TestCase):
             benchmark.network_metadata(["slskr", "slskr-dht"], live_session=True),
         )
 
+    def test_retained_dht_only_artifact_matches_its_profile_network(self):
+        artifact_path = SCRIPT.parent / "artifacts/20261012-idle-container-slskr-dht.json"
+        artifact = json.loads(artifact_path.read_text())
+        parameters = artifact["parameters"]
+
+        self.assertEqual(
+            benchmark.network_metadata(parameters["profiles"], live_session=False),
+            {
+                "network": parameters["network"],
+                "network_by_profile": parameters["network_by_profile"],
+            },
+        )
+
 
 class BenchmarkReportIntegrityTests(unittest.TestCase):
     def test_live_slskd_report_counts_metadata_only_retry_attempt(self):
