@@ -190,6 +190,7 @@ test(
     writeFileSync(path.join(browserCache, 'browser-canary.txt'), 'read-only browser');
     writeFileSync(path.join(source, '.gitignore'), 'node_modules/\n');
     writeFileSync(path.join(source, '.env'), 'PRIVATE_ENV_CANARY=hidden\n');
+    writeFileSync(path.join(source, 'production-api-key.json'), '{"api_key":"hidden"}');
     writeFileSync(path.join(source, 'config.json'), '{"private":true}\n');
     writeFileSync(
       path.join(source, 'nested/.env.local'),
@@ -216,8 +217,11 @@ test(
     writeFileSync(path.join(source, 'refresh_token.yaml'), 'refresh_token: hidden\\n');
     writeFileSync(path.join(source, 'client-secret.ts'), 'CLIENT_SECRET_CANARY=hidden\\n');
     writeFileSync(path.join(source, 'src/client-secret.ts'), 'SOURCE_CLIENT_SECRET_CANARY=hidden\\n');
+    writeFileSync(path.join(source, 'src/github-access-token.ts'), 'GITHUB_ACCESS_TOKEN_CANARY=hidden');
+    writeFileSync(path.join(source, 'src/mytoken.ts'), 'export const mytoken = "ordinary source";');
     writeFileSync(path.join(source, 'packages/app/api-key.js'), 'export const API_KEY_CANARY = "hidden";\\n');
     writeFileSync(path.join(source, 'ops/secrets/production.ts'), 'export const TOKEN_CANARY = "hidden";\\n');
+    writeFileSync(path.join(source, 'ops/acme-client-secret.env'), 'ACME_SECRET_CANARY=hidden');
     writeFileSync(path.join(source, '.private-key.ts'), 'PRIVATE_KEY_CANARY=hidden\\n');
     writeFileSync(path.join(source, 'nested/credentials/TokenStore.ts'), 'export const source = "nested credential source";\\n');
     mkdirSync(path.join(source, 'packages/auth/scripts'), { recursive: true });
@@ -274,6 +278,7 @@ assert.throws(() => readFileSync(hostFile), { code: 'ENOENT' });
 assert.equal(process.env.SECRET_CANARY, undefined);
 assert.equal(existsSync('/mnt/workspace/.env'), false);
 assert.equal(existsSync('/mnt/workspace/config.json'), true);
+assert.equal(existsSync('/mnt/workspace/production-api-key.json'), false);
 assert.equal(existsSync('/mnt/workspace/nested/config/operator.json'), false);
 assert.equal(existsSync('/mnt/workspace/auth.json'), false);
 assert.equal(existsSync('/mnt/workspace/token.json'), false);
@@ -290,8 +295,11 @@ assert.equal(existsSync('/mnt/workspace/access-token.json'), false);
 assert.equal(existsSync('/mnt/workspace/refresh_token.yaml'), false);
 assert.equal(existsSync('/mnt/workspace/client-secret.ts'), false);
 assert.equal(existsSync('/mnt/workspace/src/client-secret.ts'), false);
+assert.equal(existsSync('/mnt/workspace/src/github-access-token.ts'), false);
+assert.equal(readFileSync('/mnt/workspace/src/mytoken.ts', 'utf8'), 'export const mytoken = "ordinary source";');
 assert.equal(existsSync('/mnt/workspace/packages/app/api-key.js'), false);
 assert.equal(existsSync('/mnt/workspace/ops/secrets/production.ts'), false);
+assert.equal(existsSync('/mnt/workspace/ops/acme-client-secret.env'), false);
 assert.equal(existsSync('/mnt/workspace/.private-key.ts'), false);
 assert.equal(existsSync('/mnt/workspace/nested/credentials/TokenStore.ts'), false);
 assert.equal(existsSync('/mnt/workspace/nested/credentials/private-key'), false);
