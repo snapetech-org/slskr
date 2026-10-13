@@ -1,4 +1,5 @@
 import { REGIONAL_FORMAT_OPTIONS } from '../../../lib/regionalFormat';
+import { EXPERIENCE_PREFERENCES_STORAGE_KEY } from '../../../lib/experiencePreferences';
 import { copyToClipboard } from '../../../lib/clipboard';
 import { toDisplayError } from '../../../lib/errors';
 import { readBoundedJson } from '../../../lib/persistedJson';
@@ -21,7 +22,7 @@ import {
   Segment,
 } from 'semantic-ui-react';
 
-const storageKey = 'slskr:experience-preferences:v1';
+const storageKey = EXPERIENCE_PREFERENCES_STORAGE_KEY;
 
 const defaults = {
   regionalFormat: 'system',
