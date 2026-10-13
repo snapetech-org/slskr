@@ -18,6 +18,10 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.57] — 2026-10-13
+
+- Added browser-local interface-language and regional-format preferences across
+  navigation, transfer states, dates, metrics, and accessibility labels.
 - Filter candidate snapshots for credential filenames with multiple leading
   qualifiers or trailing camel-case environment names while preserving ordinary
   source modules and documentation.
@@ -29,9 +33,6 @@ the release is prepared. Do not rewrite audited release history.
   mark process RSS totals incomplete when procfs samples are missing.
 - Hardened local validation with a trusted test sandbox and isolated task
   environments.
-
-## [0.2.57] — 2026-10-12
-
 - Added live progress state and scan logs for large share libraries.
 - Returned slskd-compatible versioned search and download responses, and delivered
   search results to firewalled peers through server-brokered connections.
