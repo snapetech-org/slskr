@@ -5,4 +5,4 @@ area: release-pipeline
 action: none
 breaking: false
 ---
-The release gate installs Web UI dependencies before baseline audits that use their parser packages and validates slskR's share-scan progress extension during upstream comparisons.
+The release gate prepares Web UI dependencies before baseline audits and normalizes task-scoped paths and slskR's share-scan progress extension in upstream comparisons.

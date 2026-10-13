@@ -22,8 +22,8 @@ the release is prepared. Do not rewrite audited release history.
 
 - Added browser-local interface-language and regional-format preferences across
   navigation, transfer states, dates, metrics, and accessibility labels.
-- Fixed release-gate setup so clean-checkout audits have Web UI parser
-  dependencies and correctly compare slskR's share-scan progress extension.
+- Fixed release-gate baseline setup for clean checkouts and task-scoped
+  temporary paths, including comparison of slskR's share-scan progress field.
 - Filter candidate snapshots for credential filenames with multiple leading
   qualifiers or trailing camel-case environment names while preserving ordinary
   source modules and documentation.

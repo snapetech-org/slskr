@@ -132,7 +132,7 @@ for path in source.iterdir():
         if not isinstance(value, str) or not value:
             raise SystemExit(f"invalid configuration debug view in {source}")
         value = re.sub(
-            r"/tmp/slskr-options-differential\.[^/]+/state-(?:slskd|slskdn)-configuration-(?:upstream|slskr)",
+            r"/(?:[^/\n]*/)*slskr-options-differential\.[^/]+/state-(?:slskd|slskdn)-configuration-(?:upstream|slskr)",
             "<STATE_DIR>",
             value,
         )
@@ -154,7 +154,7 @@ for path in source.iterdir():
         value = {"pendingRestart": value["pendingRestart"]}
     elif path.name.startswith("debug-view-") and isinstance(value, str):
         value = re.sub(
-            r"/tmp/slskr-options-differential\.[^/]+/state-(?:slskd|slskdn)-debug-(?:upstream|slskr)",
+            r"/(?:[^/\n]*/)*slskr-options-differential\.[^/]+/state-(?:slskd|slskdn)-debug-(?:upstream|slskr)",
             "<STATE_DIR>",
             value,
         )
@@ -178,7 +178,7 @@ for path in source.iterdir():
         value = {"pendingRestart": value["pendingRestart"]}
     elif path.name.startswith("blacklist-validation-") and isinstance(value, str):
         value = re.sub(
-            r"/tmp/slskr-options-differential\.[^/]+/state-(?:slskd|slskdn)-blacklist-(?:upstream|slskr)",
+            r"/(?:[^/\n]*/)*slskr-options-differential\.[^/]+/state-(?:slskd|slskdn)-blacklist-(?:upstream|slskr)",
             "<STATE_DIR>",
             value,
         )
