@@ -260,11 +260,13 @@ const AppNavigationPrimary = ({
                     </Menu.Item>
                   </NavLink>
                   <Dropdown
-                    aria-label="More navigation options"
+                    aria-label={t('More navigation options')}
                     className="navigation-more"
                     data-testid="nav-more"
+                    dir={directionFor('More navigation options')}
                     icon={null}
                     item
+                    lang={languageFor('More navigation options')}
                     trigger={(
                       <span className="navigation-more-trigger">
                         <Icon name="ellipsis horizontal" />

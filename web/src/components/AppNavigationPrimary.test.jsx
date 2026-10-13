@@ -50,4 +50,31 @@ describe('primary navigation language metadata', () => {
     expect(document.documentElement.lang).toBe('en');
     expect(document.documentElement.dir).toBe('ltr');
   });
+
+  it('localizes the More dropdown accessible name and metadata', () => {
+    setInterfaceLanguage('ar');
+    const arabicIndex = INTERFACE_LANGUAGE_OPTIONS.slice(1).findIndex(
+      ({ value }) => value === 'ar',
+    );
+
+    render(
+      <MemoryRouter>
+        <AppNavigationPrimary
+          isAgent={false}
+          isLegacyProfile={false}
+          isNativeProfile={false}
+          navActivity={{ chat: false, rooms: false }}
+          version={{ isCanary: false }}
+        />
+      </MemoryRouter>,
+    );
+
+    const moreDropdown = screen.getByTestId('nav-more');
+    expect(moreDropdown).toHaveAttribute(
+      'aria-label',
+      UI_LABELS['More navigation options'][arabicIndex],
+    );
+    expect(moreDropdown).toHaveAttribute('lang', 'ar');
+    expect(moreDropdown).toHaveAttribute('dir', 'rtl');
+  });
 });
