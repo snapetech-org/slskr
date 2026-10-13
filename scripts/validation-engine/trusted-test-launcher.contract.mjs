@@ -63,6 +63,19 @@ test('preserves tracked source files named token while excluding credential conf
   assert.equal(isSensitiveCandidatePath('vendor/mainline/src/rpc/server/tokens.rs'), false);
   assert.equal(isSensitiveCandidatePath('src/authentication.ts'), false);
   assert.equal(isSensitiveCandidatePath('src/auth.ts'), false);
+  assert.equal(isSensitiveCandidatePath('src/token.ts'), true);
+  assert.equal(isSensitiveCandidatePath('src/auth.rs'), true);
+  assert.equal(isSensitiveCandidatePath('src/credentials.py'), true);
+  assert.equal(isSensitiveCandidatePath('src/secrets.js'), true);
+  assert.equal(isSensitiveCandidatePath('ops/production-auth.json'), true);
+  assert.equal(
+    isSensitiveCandidatePath('crates/slskr/src/private_gateway_owners/peer_authentication.rs'),
+    false,
+  );
+  assert.equal(
+    isSensitiveCandidatePath('crates/slskr/data/peer-controller-auth-policy.json'),
+    false,
+  );
   assert.equal(isSensitiveCandidatePath('src/client-secret.ts'), true);
   assert.equal(isSensitiveCandidatePath('packages/app/api-key.js'), true);
   assert.equal(isSensitiveCandidatePath('src/access-token.ts'), true);
@@ -205,6 +218,8 @@ test(
     mkdirSync(path.join(source, 'web/src/lib'), { recursive: true });
     mkdirSync(path.join(source, 'dashboard/src/pages'), { recursive: true });
     mkdirSync(path.join(source, 'vendor/mainline/src/rpc/server'), { recursive: true });
+    mkdirSync(path.join(source, 'crates/slskr/src/private_gateway_owners'), { recursive: true });
+    mkdirSync(path.join(source, 'crates/slskr/data'), { recursive: true });
     writeFileSync(path.join(source, 'web/src/lib/token.js'), 'export const token = "source code";\n');
     writeFileSync(path.join(source, 'client-go/auth/client.go'), 'package auth\nfunc Client() {}\n');
     writeFileSync(path.join(source, 'client-python/auth/__init__.py'), 'def login(): return None\n');
@@ -231,6 +246,19 @@ test(
     writeFileSync(path.join(source, 'src/productionApiKey.ts'), 'export const API_KEY_CANARY = "hidden";\n');
     writeFileSync(path.join(source, 'src/productionPrivateKey.ts'), 'export const PRIVATE_KEY_CANARY = "hidden";\n');
     writeFileSync(path.join(source, 'src/productionToken.ts'), 'export const TOKEN_CANARY = "hidden";\n');
+    writeFileSync(path.join(source, 'src/token.ts'), 'export const TOKEN_CANARY = "hidden";\n');
+    writeFileSync(path.join(source, 'src/auth.rs'), 'const TOKEN_CANARY: &str = "hidden";\n');
+    writeFileSync(path.join(source, 'src/credentials.py'), 'TOKEN_CANARY = "hidden"\n');
+    writeFileSync(path.join(source, 'src/secrets.js'), 'export const TOKEN_CANARY = "hidden";\n');
+    writeFileSync(path.join(source, 'ops/production-auth.json'), '{"token":"hidden"}\n');
+    writeFileSync(
+      path.join(source, 'crates/slskr/src/private_gateway_owners/peer_authentication.rs'),
+      'pub fn peer_authentication() {}\n',
+    );
+    writeFileSync(
+      path.join(source, 'crates/slskr/data/peer-controller-auth-policy.json'),
+      '{"policy":"source metadata"}\n',
+    );
     writeFileSync(path.join(source, 'githubAccessToken.js'), 'export const TOKEN_CANARY = "hidden";\n');
     writeFileSync(path.join(source, 'productionAPIKey.ts'), 'export const API_KEY_CANARY = "hidden";\n');
     writeFileSync(path.join(source, 'api.key.json'), '{"api_key":"hidden"}');
@@ -362,6 +390,13 @@ assert.equal(existsSync('/mnt/workspace/src/apiKeys.js'), false);
 assert.equal(existsSync('/mnt/workspace/src/productionApiKey.ts'), false);
 assert.equal(existsSync('/mnt/workspace/src/productionPrivateKey.ts'), false);
 assert.equal(existsSync('/mnt/workspace/src/productionToken.ts'), false);
+assert.equal(existsSync('/mnt/workspace/src/token.ts'), false);
+assert.equal(existsSync('/mnt/workspace/src/auth.rs'), false);
+assert.equal(existsSync('/mnt/workspace/src/credentials.py'), false);
+assert.equal(existsSync('/mnt/workspace/src/secrets.js'), false);
+assert.equal(existsSync('/mnt/workspace/ops/production-auth.json'), false);
+assert.match(readFileSync('/mnt/workspace/crates/slskr/src/private_gateway_owners/peer_authentication.rs', 'utf8'), /peer_authentication/u);
+assert.equal(readFileSync('/mnt/workspace/crates/slskr/data/peer-controller-auth-policy.json', 'utf8'), '{"policy":"source metadata"}\\n');
 assert.equal(existsSync('/mnt/workspace/production-token.json'), false);
 assert.equal(existsSync('/mnt/workspace/github-secrets.yaml'), false);
 assert.equal(existsSync('/mnt/workspace/acme-credentials.toml'), false);

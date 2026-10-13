@@ -86,15 +86,25 @@ const sensitiveCredentialName =
   /^[.]?(?:auth(?:entication)?|tokens?|credentials?|secrets?|private[-_]?keys?|api[-_]?keys?|access[-_]?tokens?|refresh[-_]?tokens?|client[-_]?secrets?)$/iu;
 const sensitiveCredentialConfigFile =
   /^[.]?(?:auth(?:entication)?|tokens?|credentials?|secrets?|private[-_]?keys?|api[-_]?keys?|access[-_]?tokens?|refresh[-_]?tokens?|client[-_]?secrets?)[.](?:json|ya?ml|toml|ini|cfg|conf|env(?:[.](?!example$)[^/]+)?|properties|xml|txt)$/iu;
+const sensitiveCredentialSourceFile =
+  /^[.]?(?:auth(?:entication)?|tokens?|credentials?|secrets?)[.](?:[cm]?js|jsx|ts|tsx|rs|go|py|rb|java|kt|cs|php|sh|sql)$/iu;
+const qualifiedAuthConfigFile =
+  /^[^/]+[._-]auth(?:entication)?[.](?:json|ya?ml|toml|ini|cfg|conf|env|properties|xml|txt)$/iu;
 const sensitiveCredentialMaterialFile =
-  /(?:^|[._-])(?:private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)(?=$|[._-])|^[^/]+[._-](?:auth(?:entication)?|tokens?|credentials?|secrets?)(?=$|[._-])/iu;
+  /(?:^|[._-])(?:private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)(?=$|[._-])|^[^/]+[._-](?:tokens?|credentials?|secrets?)(?=$|[._-])/iu;
 const camelCaseCredentialMaterialFile =
-  /(?:(?<=[a-z0-9])(?:PrivateKeys?|privateKeys?|ApiKeys?|APIKeys?|AccessTokens?|RefreshTokens?|ClientSecrets?)|[a-z][a-z0-9]{3,}(?:Auth(?:entication)?|Tokens?|Credentials?|Secrets?))(?=$|[._-])/iu;
+  /(?:(?<=[a-z0-9])(?:PrivateKeys?|privateKeys?|ApiKeys?|APIKeys?|AccessTokens?|RefreshTokens?|ClientSecrets?)|[a-z][a-z0-9]{3,}(?:Tokens?|Credentials?|Secrets?))(?=$|[._-])/iu;
 const qualifiedCredentialDirectoryName =
   /^[^/]+[._-](?:auth(?:entication)?|tokens?|credentials?|secrets?|private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)$/iu;
 const sourceTreeDirectory =
   /^(?:src|source|packages|apps|web|dashboard|client-go|client-python|client-ts|crates|scripts|lib|tests?|__tests__|fixtures?)$/iu;
 const knownApiKeysPage = 'dashboard/src/pages/ApiKeys.tsx';
+const knownSourceCredentialModules = new Set([
+  'src/auth.ts',
+  'src/authentication.ts',
+  'web/src/lib/token.js',
+  'vendor/mainline/src/rpc/server/tokens.rs',
+]);
 
 export function isSensitiveCandidatePath(relativePath) {
   const normalizedPath = relativePath.replaceAll(String.fromCharCode(92), '/');
@@ -106,12 +116,12 @@ export function isSensitiveCandidatePath(relativePath) {
 
   const filename = segments.at(-1) ?? '';
   const directories = segments.slice(0, -1);
-  const insideSourceTree = directories.some((segment) =>
-    sourceTreeDirectory.test(segment),
-  );
   if (
     sensitiveCredentialName.test(filename) ||
-    sensitiveCredentialConfigFile.test(filename)
+    sensitiveCredentialConfigFile.test(filename) ||
+    qualifiedAuthConfigFile.test(filename) ||
+    (sensitiveCredentialSourceFile.test(filename) &&
+      !knownSourceCredentialModules.has(normalizedPath))
   )
     return true;
   if (
