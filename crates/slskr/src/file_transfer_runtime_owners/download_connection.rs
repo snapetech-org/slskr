@@ -29,17 +29,19 @@ pub(super) async fn download_file_transfer_with_retry(
             let next_attempt_at = unix_timestamp().saturating_add(delay.as_secs());
             let scheduled = {
                 let mut transfers = state.transfers.write().await;
-                transfers.update_retry_state(
+                transfers.update_active_download_retry_state(
                     transfer.id,
                     attempt_number,
                     Some(next_attempt_at),
-                    "queued",
                     Some(format!("retry scheduled for attempt {attempt_number}")),
                 )
             };
-            if let Some(scheduled) = scheduled {
-                persist_transfer_projection(state, &scheduled).await;
-            }
+            let Some(scheduled) = scheduled else {
+                return Err(
+                    "download retry stopped because the transfer is no longer active".to_owned(),
+                );
+            };
+            persist_transfer_projection(state, &scheduled).await;
             time::sleep(delay).await;
         }
         if transfer_is_cancelled(state, transfer.id).await {
@@ -49,11 +51,19 @@ pub(super) async fn download_file_transfer_with_retry(
             let attempt_number = attempt.saturating_add(1);
             let started = {
                 let mut transfers = state.transfers.write().await;
-                transfers.update_retry_state(transfer.id, attempt_number, None, "in_progress", None)
+                transfers.update_active_download_retry_state(
+                    transfer.id,
+                    attempt_number,
+                    None,
+                    None,
+                )
             };
-            if let Some(started) = started {
-                persist_transfer_projection(state, &started).await;
-            }
+            let Some(started) = started else {
+                return Err(
+                    "download retry stopped because the transfer is no longer active".to_owned(),
+                );
+            };
+            persist_transfer_projection(state, &started).await;
         }
         match download_file_transfer(state, address, transfer).await {
             Ok(completed) => return Ok(completed),

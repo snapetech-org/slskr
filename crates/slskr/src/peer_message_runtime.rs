@@ -184,33 +184,75 @@ async fn handle_queued_upload_request(
     username: &str,
     request: &TransferRequest,
 ) -> Result<bool, String> {
-    if !state.config.transfer_allow_inbound || !transfer_capacity_available(state, None).await {
+    if !state.config.transfer_allow_inbound {
         return Ok(false);
     }
-    let accepted = {
+    let download_slots =
+        usize::try_from(state.transfer_download_settings.read().await.slots).unwrap_or(usize::MAX);
+    let admission = {
         let mut transfers = state.transfers.write().await;
-        transfers.accept_pending_remote_upload_request(
-            username,
-            &request.filename,
-            request.token,
-            request.size,
-        )
+        let pending = transfers.entries.iter().any(|entry| {
+            entry.direction == 0
+                && entry.peer_username.as_deref() == Some(username)
+                && entry.filename == request.filename
+                && entry.local_path.is_some()
+                && entry.status == "queued"
+                && entry
+                    .reason
+                    .as_deref()
+                    .is_some_and(is_remote_queue_response)
+        });
+        if !pending {
+            None
+        } else if !transfers.has_capacity_for_direction(
+            0,
+            state.config.transfer_max_active,
+            download_slots,
+            None,
+        ) {
+            Some(Err("Queued".to_owned()))
+        } else {
+            transfers
+                .accept_pending_remote_upload_request(
+                    username,
+                    &request.filename,
+                    request.token,
+                    request.size,
+                )
+                .map(Ok)
+        }
     };
-    let Some(accepted) = accepted else {
-        return Ok(false);
-    };
-    peer.send(&PeerMessage::TransferResponse(TransferResponse::Allowed {
-        token: request.token,
-        size: accepted.size,
-    }))
-    .await
-    .map_err(|error| format!("queued upload response send failed: {error}"))?;
-    update_listeners(state, |snapshot| {
-        snapshot.last_event = Some("transfer_queued_upload_accepted".to_owned());
-        snapshot.last_error = None;
-    })
-    .await;
-    Ok(true)
+    match admission {
+        None => Ok(false),
+        Some(Err(reason)) => {
+            peer.send(&PeerMessage::TransferResponse(TransferResponse::Rejected {
+                token: request.token,
+                reason,
+            }))
+            .await
+            .map_err(|error| format!("queued download deferral response send failed: {error}"))?;
+            update_listeners(state, |snapshot| {
+                snapshot.last_event = Some("transfer_queued_download_deferred".to_owned());
+                snapshot.last_error = None;
+            })
+            .await;
+            Ok(true)
+        }
+        Some(Ok(accepted)) => {
+            peer.send(&PeerMessage::TransferResponse(TransferResponse::Allowed {
+                token: request.token,
+                size: accepted.size,
+            }))
+            .await
+            .map_err(|error| format!("queued upload response send failed: {error}"))?;
+            update_listeners(state, |snapshot| {
+                snapshot.last_event = Some("transfer_queued_upload_accepted".to_owned());
+                snapshot.last_error = None;
+            })
+            .await;
+            Ok(true)
+        }
+    }
 }
 
 async fn handle_queued_upload_resume_request(
@@ -219,33 +261,85 @@ async fn handle_queued_upload_resume_request(
     username: &str,
     request: &TransferRequest,
 ) -> Result<bool, String> {
-    if !state.config.transfer_allow_inbound || !transfer_capacity_available(state, None).await {
+    if !state.config.transfer_allow_inbound {
         return Ok(false);
     }
-    let accepted = {
+    let upload = state.transfer_upload_settings.read().await.clone();
+    let groups = state.transfer_groups_settings.read().await.clone();
+    let users = state.users.read().await.records.clone();
+    let (group_name, group_slots) =
+        upload_group_slot_limit_from(&groups, &users, Some(username), upload.slots);
+    let upload_slots = usize::try_from(upload.slots).unwrap_or(usize::MAX);
+    let admission = {
         let mut transfers = state.transfers.write().await;
-        transfers.accept_pending_remote_download_request(
-            username,
-            &request.filename,
-            request.token,
-            request.size,
-        )
+        let pending = transfers.entries.iter().any(|entry| {
+            entry.direction == 1
+                && entry.peer_username.as_deref() == Some(username)
+                && entry.filename == request.filename
+                && entry.local_path.is_some()
+                && entry.status == "queued"
+                && entry
+                    .reason
+                    .as_deref()
+                    .is_some_and(is_remote_queue_response)
+        });
+        if !pending {
+            None
+        } else if !transfers.has_capacity_for_upload_group(
+            state.config.transfer_max_active,
+            upload_slots,
+            usize::try_from(group_slots).unwrap_or(usize::MAX),
+            None,
+            |peer_username| {
+                peer_username
+                    .map(|peer| effective_transfer_group_from_records(&groups, &users, peer))
+                    .unwrap_or_else(|| "default".to_owned())
+                    == group_name
+            },
+        ) {
+            Some(Err("Queued".to_owned()))
+        } else {
+            transfers
+                .accept_pending_remote_download_request(
+                    username,
+                    &request.filename,
+                    request.token,
+                    request.size,
+                )
+                .map(Ok)
+        }
     };
-    let Some(accepted) = accepted else {
-        return Ok(false);
-    };
-    peer.send(&PeerMessage::TransferResponse(TransferResponse::Allowed {
-        token: request.token,
-        size: accepted.size,
-    }))
-    .await
-    .map_err(|error| format!("queued upload resume response send failed: {error}"))?;
-    update_listeners(state, |snapshot| {
-        snapshot.last_event = Some("transfer_queued_upload_resume_accepted".to_owned());
-        snapshot.last_error = None;
-    })
-    .await;
-    Ok(true)
+    match admission {
+        None => Ok(false),
+        Some(Err(reason)) => {
+            peer.send(&PeerMessage::TransferResponse(TransferResponse::Rejected {
+                token: request.token,
+                reason,
+            }))
+            .await
+            .map_err(|error| format!("queued upload deferral response send failed: {error}"))?;
+            update_listeners(state, |snapshot| {
+                snapshot.last_event = Some("transfer_queued_upload_deferred".to_owned());
+                snapshot.last_error = None;
+            })
+            .await;
+            Ok(true)
+        }
+        Some(Ok(accepted)) => {
+            peer.send(&PeerMessage::TransferResponse(TransferResponse::Allowed {
+                token: request.token,
+                size: accepted.size,
+            }))
+            .await
+            .map_err(|error| format!("queued upload resume response send failed: {error}"))?;
+            update_listeners(state, |snapshot| {
+                snapshot.last_event = Some("transfer_queued_upload_resume_accepted".to_owned());
+                snapshot.last_error = None;
+            })
+            .await;
+            Ok(true)
+        }
+    }
 }
 
 fn queued_upload_group_policy(
@@ -274,13 +368,16 @@ pub(super) fn next_queued_upload_id(
     upload: &crate::config::TransferUploadSettings,
     groups: &crate::config::TransferGroupsSettings,
     users: &UserStore,
+    max_active: usize,
 ) -> Option<u64> {
     let active = transfers
         .entries
         .iter()
         .filter(|entry| entry.direction == 1 && is_active_transfer_status(&entry.status))
         .collect::<Vec<_>>();
-    if active.len() >= usize::try_from(upload.slots).unwrap_or(usize::MAX) {
+    if transfers.active_count_excluding(None) >= max_active
+        || active.len() >= usize::try_from(upload.slots).unwrap_or(usize::MAX)
+    {
         return None;
     }
 
@@ -338,7 +435,13 @@ pub(super) async fn schedule_queued_uploads(state: &AppState) {
         let users = state.users.read().await;
         let selected = {
             let mut transfers = state.transfers.write().await;
-            let id = next_queued_upload_id(&transfers, &upload, &groups, &users);
+            let id = next_queued_upload_id(
+                &transfers,
+                &upload,
+                &groups,
+                &users,
+                state.config.transfer_max_active,
+            );
             id.and_then(|id| transfers.update_status(id, "peer_lookup", None, None))
         };
         drop(users);
@@ -440,6 +543,7 @@ fn upload_queue_forecast_from(
     groups: &crate::config::TransferGroupsSettings,
     users: &UserStore,
     username: &str,
+    max_active: usize,
 ) -> (u32, u32) {
     let group_name = effective_transfer_group_from(groups, users, username);
     let (_, group_slots, strategy) = queued_upload_group_policy(groups, &group_name, upload.slots);
@@ -456,7 +560,8 @@ fn upload_queue_forecast_from(
             })
         })
         .count();
-    if active.len() < usize::try_from(upload.slots).unwrap_or(usize::MAX)
+    if transfers.active_count_excluding(None) < max_active
+        && active.len() < usize::try_from(upload.slots).unwrap_or(usize::MAX)
         && group_active < usize::try_from(group_slots).unwrap_or(usize::MAX)
     {
         return (group_slots, 0);
@@ -486,7 +591,14 @@ pub(super) async fn upload_queue_forecast(state: &AppState, username: &str) -> (
     let upload = state.transfer_upload_settings.read().await;
     let groups = state.transfer_groups_settings.read().await;
     let users = state.users.read().await;
-    upload_queue_forecast_from(&transfers, &upload, &groups, &users, username)
+    upload_queue_forecast_from(
+        &transfers,
+        &upload,
+        &groups,
+        &users,
+        username,
+        state.config.transfer_max_active,
+    )
 }
 
 async fn handle_queue_upload_message(
@@ -563,15 +675,29 @@ async fn handle_queued_download_request(
         if reason == "Queued" {
             let queued = {
                 let mut transfers = state.transfers.write().await;
-                let queued = transfers.create(
-                    1,
-                    Some(username.to_owned()),
-                    request.filename.clone(),
-                    Some(shared_file.local_path.display().to_string()),
-                    Some(shared_file.size),
-                );
-                transfers.update_status(queued.id, "queued", None, Some(reason.clone()));
-                queued
+                transfers
+                    .entries
+                    .iter()
+                    .find(|entry| {
+                        entry.direction == 1
+                            && entry.peer_username.as_deref() == Some(username)
+                            && entry.filename == request.filename
+                            && entry.status == "queued"
+                            && entry.reason.as_deref() == Some("Queued")
+                    })
+                    .cloned()
+                    .unwrap_or_else(|| {
+                        let queued = transfers.create(
+                            1,
+                            Some(username.to_owned()),
+                            request.filename.clone(),
+                            Some(shared_file.local_path.display().to_string()),
+                            Some(shared_file.size),
+                        );
+                        transfers
+                            .update_status(queued.id, "queued", None, Some(reason.clone()))
+                            .unwrap_or(queued)
+                    })
             };
             persist_transfer_projection(state, &queued).await;
         } else {
@@ -593,16 +719,87 @@ async fn handle_queued_download_request(
         .map_err(|error| format!("queued transfer policy response send failed: {error}"))?;
         return Ok(true);
     }
-    let entry = {
+    let upload = state.transfer_upload_settings.read().await.clone();
+    let groups = state.transfer_groups_settings.read().await.clone();
+    let users = state.users.read().await.records.clone();
+    let (group_name, group_slots) =
+        upload_group_slot_limit_from(&groups, &users, Some(username), upload.slots);
+    let upload_slots = usize::try_from(upload.slots).unwrap_or(usize::MAX);
+    let admission = {
         let mut transfers = state.transfers.write().await;
-        transfers.record_accepted_inbound_request(
-            1,
-            request.token,
-            Some(username.to_owned()),
-            request.filename.clone(),
-            shared_file.local_path.display().to_string(),
-            shared_file.size,
-        )
+        if !transfers.has_capacity_for_upload_group(
+            state.config.transfer_max_active,
+            upload_slots,
+            usize::try_from(group_slots).unwrap_or(usize::MAX),
+            None,
+            |peer_username| {
+                peer_username
+                    .map(|peer| effective_transfer_group_from_records(&groups, &users, peer))
+                    .unwrap_or_else(|| "default".to_owned())
+                    == group_name
+            },
+        ) {
+            let queued = transfers
+                .entries
+                .iter()
+                .find(|entry| {
+                    entry.direction == 1
+                        && entry.peer_username.as_deref() == Some(username)
+                        && entry.filename == request.filename
+                        && entry.status == "queued"
+                        && entry.reason.as_deref() == Some("Queued")
+                })
+                .cloned()
+                .unwrap_or_else(|| {
+                    let queued = transfers.create(
+                        1,
+                        Some(username.to_owned()),
+                        request.filename.clone(),
+                        Some(shared_file.local_path.display().to_string()),
+                        Some(shared_file.size),
+                    );
+                    transfers
+                        .update_status(queued.id, "queued", None, Some("Queued".to_owned()))
+                        .unwrap_or(queued)
+                });
+            Err(queued)
+        } else {
+            Ok(transfers
+                .accept_pending_inbound_upload_request(
+                    username,
+                    &request.filename,
+                    request.token,
+                    shared_file.size,
+                )
+                .unwrap_or_else(|| {
+                    transfers.record_accepted_inbound_request(
+                        1,
+                        request.token,
+                        Some(username.to_owned()),
+                        request.filename.clone(),
+                        shared_file.local_path.display().to_string(),
+                        shared_file.size,
+                    )
+                }))
+        }
+    };
+    let entry = match admission {
+        Ok(entry) => entry,
+        Err(queued) => {
+            persist_transfer_projection(state, &queued).await;
+            peer.send(&PeerMessage::TransferResponse(TransferResponse::Rejected {
+                token: request.token,
+                reason: "Queued".to_owned(),
+            }))
+            .await
+            .map_err(|error| format!("queued transfer response send failed: {error}"))?;
+            update_listeners(state, |snapshot| {
+                snapshot.last_event = Some("transfer_queued_upload".to_owned());
+                snapshot.last_error = None;
+            })
+            .await;
+            return Ok(true);
+        }
     };
     persist_transfer_durability(state).await;
     peer.send(&PeerMessage::TransferResponse(TransferResponse::Rejected {

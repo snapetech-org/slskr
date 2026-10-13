@@ -375,7 +375,7 @@ pub(super) struct SoulseekIdentity {
     pub(super) server_address: String,
     pub(super) listen_port: u32,
     pub(super) username: Option<String>,
-    pub(super) password: Option<String>,
+    pub(super) login_credentials: Option<LoginCredentials>,
     pub(super) credential_store: CredentialStoreMode,
     pub(super) credential_file: PathBuf,
     pub(super) auto_connect: bool,
@@ -832,8 +832,11 @@ pub(super) fn resolve_soulseek_identity<E: ConfigEnv>(
     Ok(SoulseekIdentity {
         server_address,
         listen_port,
+        login_credentials: username
+            .clone()
+            .zip(password.clone())
+            .map(|(username, password)| LoginCredentials::default_client(username, password)),
         username,
-        password,
         credential_store,
         credential_file,
         auto_connect,

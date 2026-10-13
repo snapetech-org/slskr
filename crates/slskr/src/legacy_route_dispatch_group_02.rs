@@ -807,6 +807,17 @@ pub(super) async fn legacy_route_dispatch_group_02(
              let uploads = transfers.entries.iter().filter(|entry| entry.direction != 0).collect::<Vec<_>>();
              let listeners = state.listeners.read().await;
              let shares = state.shares.read().await;
+             let upload_slots = state.transfer_upload_settings.read().await.slots;
+             let global_transfer_limit = state.config.transfer_max_active;
+             let warnings = if global_transfer_limit
+                 < usize::try_from(upload_slots).unwrap_or(usize::MAX)
+             {
+                 vec![format!(
+                     "combined transfer cap ({global_transfer_limit}) is below upload slots ({upload_slots})"
+                 )]
+             } else {
+                 Vec::new()
+             };
              Ok(routing::ok_response(serde_json::json!({
                  "activeUploads": uploads.iter().filter(|entry| is_active_transfer_status(&entry.status)).count(),
                  "failedUploads": uploads.iter().filter(|entry| is_failed_transfer_status(&entry.status)).count(),
@@ -824,9 +835,10 @@ pub(super) async fn legacy_route_dispatch_group_02(
                  "shareScanPending": false,
                  "shareScanning": false,
                  "soulseekState": state.session.read().await.state,
-                 "uploadSlots": state.config.transfer_max_active,
+                 "globalTransferLimit": global_transfer_limit,
+                 "uploadSlots": upload_slots,
                  "uploadSpeedLimit": 0,
-                 "warnings": [],
+                 "warnings": warnings,
              }).to_string()))
          }
 
@@ -1514,6 +1526,8 @@ pub(super) async fn legacy_route_dispatch_group_02(
                       return Ok(routing::service_unavailable_response(&error));
                  }
              }
+             schedule_queued_uploads(state).await;
+             schedule_queued_downloads(state).await;
               if remove_file {
                   if let Some(path) = target.local_path.as_deref() {
                       if let Err(error) = controller_remove_transfer_file_if_present(path).await {
@@ -1546,6 +1560,8 @@ pub(super) async fn legacy_route_dispatch_group_02(
                       return Ok(routing::service_unavailable_response(&error));
                  }
              }
+             schedule_queued_uploads(state).await;
+             schedule_queued_downloads(state).await;
               if remove_file {
                   if let Some(path) = target.local_path.as_deref() {
                       if let Err(error) = controller_remove_transfer_file_if_present(path).await {
@@ -1601,6 +1617,8 @@ pub(super) async fn legacy_route_dispatch_group_02(
                          rollback_transfer_mutation_if_unchanged(state, previous, mutation).await;
                          return Ok(routing::service_unavailable_response(&error));
                      }
+                     schedule_queued_uploads(state).await;
+                     schedule_queued_downloads(state).await;
                      Ok(routing::ok_response(json_response))
                  } else {
                      drop(transfers);
@@ -1613,6 +1631,14 @@ pub(super) async fn legacy_route_dispatch_group_02(
 
          ("POST", _path) if transfer_action_path(normalized_path.as_str()).is_some() => {
             if let Some((id, action)) = transfer_action_path(normalized_path.as_str()) {
+                let upload_slots = usize::try_from(
+                    state.transfer_upload_settings.read().await.slots,
+                )
+                .unwrap_or(usize::MAX);
+                let download_slots = usize::try_from(
+                    state.transfer_download_settings.read().await.slots,
+                )
+                .unwrap_or(usize::MAX);
                 let session_command_permit = if action == "start" || action == "retry" {
                     let transfers = state.transfers.read().await;
                     let active_count = transfers
@@ -1628,6 +1654,24 @@ pub(super) async fn legacy_route_dispatch_group_02(
                     let Some(entry) = transfers.entries.iter().find(|entry| entry.id == id) else {
                         return Ok(routing::not_found_response());
                     };
+                    let active_directional = transfers
+                        .entries
+                        .iter()
+                        .filter(|transfer| transfer.direction == entry.direction)
+                        .filter(|transfer| is_active_transfer_status(&transfer.status))
+                        .count();
+                    let directional_limit = if entry.direction == 0 {
+                        download_slots
+                    } else {
+                        upload_slots
+                    };
+                    if active_directional >= directional_limit {
+                        return Ok(routing::conflict_response(if entry.direction == 0 {
+                            "download slot limit reached"
+                        } else {
+                            "upload slot limit reached"
+                        }));
+                    }
                     if action == "retry"
                         && (entry.direction != 0
                             || !matches!(
@@ -1672,10 +1716,34 @@ pub(super) async fn legacy_route_dispatch_group_02(
                     let active_count = transfers.entries.iter()
                         .filter(|t| is_active_transfer_status(&t.status))
                         .count();
+                    let active_downloads = transfers.entries.iter()
+                        .filter(|t| t.direction == 0 && is_active_transfer_status(&t.status))
+                        .count();
+                    let active_uploads = transfers.entries.iter()
+                        .filter(|t| t.direction != 0 && is_active_transfer_status(&t.status))
+                        .count();
 
                     if active_count >= max_active {
                         drop(transfers);
                         return Ok(routing::conflict_response("transfer limit reached"));
+                    }
+
+                    let Some(direction) = transfers.entries.iter()
+                        .find(|entry| entry.id == id)
+                        .map(|entry| entry.direction)
+                    else {
+                        drop(transfers);
+                        return Ok(routing::not_found_response());
+                    };
+                    if (direction == 0 && active_downloads >= download_slots)
+                        || (direction != 0 && active_uploads >= upload_slots)
+                    {
+                        drop(transfers);
+                        return Ok(routing::conflict_response(if direction == 0 {
+                            "download slot limit reached"
+                        } else {
+                            "upload slot limit reached"
+                        }));
                     }
 
                     let previous = transfers.mutation_snapshot();

@@ -135,7 +135,7 @@ impl AppConfig {
             server_address,
             listen_port,
             username,
-            password,
+            login_credentials,
             credential_store,
             credential_file,
             auto_connect,
@@ -411,7 +411,7 @@ impl AppConfig {
             env,
             "SLSKR_TRANSFER_MAX_ACTIVE",
             file_config.transfers.max_active,
-            3_usize,
+            520_usize,
         )?;
         let transfer_allow_inbound = env_bool_layer(
             env,
@@ -585,7 +585,7 @@ impl AppConfig {
             server_address,
             listen_port,
             username,
-            password,
+            soulseek_credentials: login_credentials,
             credential_store,
             credential_file,
             auto_connect,
@@ -698,10 +698,7 @@ impl AppConfig {
     }
 
     pub fn credentials(&self) -> Option<LoginCredentials> {
-        Some(LoginCredentials::default_client(
-            self.username.clone()?,
-            self.password.clone()?,
-        ))
+        self.soulseek_credentials.clone()
     }
 
     /// Current upstream-style native deployments put Soulseek peer traffic and
@@ -843,7 +840,7 @@ impl AppConfig {
             json_option(self.peer_host_override.map(|ip| ip.to_string()).as_deref()),
             self.test_user_endpoint_overrides.len(),
             json_option(self.username.as_deref().map(redact_username).as_deref()),
-            self.username.is_some() && self.password.is_some(),
+            self.soulseek_credentials.is_some(),
             self.credential_store.as_str(),
             "credential://configured",
             self.auto_connect,
