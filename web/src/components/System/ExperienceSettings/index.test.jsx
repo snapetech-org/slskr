@@ -112,10 +112,21 @@ describe('ExperienceSettings', () => {
     fireEvent.click(languageSelect);
 
     for (const option of INTERFACE_LANGUAGE_OPTIONS) {
-      const optionLabel = screen.getByRole('option', { name: option.text }).querySelector('span');
-      expect(optionLabel).not.toBeNull();
-      expect(optionLabel).toHaveAttribute('lang', option.value);
-      expect(optionLabel).toHaveAttribute('dir', option.value === 'ar' ? 'rtl' : 'ltr');
+      const optionLabels = screen.getByRole('option', { name: option.text }).querySelectorAll('span');
+      const [nativeName, englishName] = option.text.split(' — ');
+      expect(optionLabels).toHaveLength(englishName ? 2 : 1);
+      expect(Array.from(optionLabels, (label) => ({
+        text: label.textContent,
+        lang: label.getAttribute('lang'),
+        dir: label.getAttribute('dir'),
+      }))).toEqual([
+        {
+          text: nativeName,
+          lang: option.value,
+          dir: option.value === 'ar' ? 'rtl' : 'ltr',
+        },
+        ...(englishName ? [{ text: englishName, lang: 'en', dir: 'ltr' }] : []),
+      ]);
     }
   });
 
@@ -130,10 +141,22 @@ describe('ExperienceSettings', () => {
     fireEvent.click(regionalSelect);
 
     for (const option of REGIONAL_FORMAT_OPTIONS) {
-      const optionLabel = screen.getByRole('option', { name: option.text }).querySelector('span');
-      expect(optionLabel).not.toBeNull();
-      expect(optionLabel).toHaveAttribute('lang', option.value === 'system' ? 'en' : option.value);
-      expect(optionLabel).toHaveAttribute('dir', option.value === 'ar' ? 'rtl' : 'ltr');
+      const optionLabels = screen.getByRole('option', { name: option.text }).querySelectorAll('span');
+      const [nativeName, englishName] = option.text.split(' — ');
+      const nativeLocale = option.value === 'system' ? 'en' : option.value;
+      expect(optionLabels).toHaveLength(englishName ? 2 : 1);
+      expect(Array.from(optionLabels, (label) => ({
+        text: label.textContent,
+        lang: label.getAttribute('lang'),
+        dir: label.getAttribute('dir'),
+      }))).toEqual([
+        {
+          text: nativeName,
+          lang: nativeLocale,
+          dir: nativeLocale === 'ar' ? 'rtl' : 'ltr',
+        },
+        ...(englishName ? [{ text: englishName, lang: 'en', dir: 'ltr' }] : []),
+      ]);
     }
   });
 });

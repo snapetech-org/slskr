@@ -31,23 +31,32 @@ import {
   Segment,
 } from 'semantic-ui-react';
 
+const localizedOptionLabel = (option, locale = option.value) => {
+  const [nativeName, englishName] = option.text.split(' — ');
+  const direction = locale === 'ar' ? 'rtl' : 'ltr';
+
+  return (
+    <>
+      <span dir={direction} lang={locale}>{nativeName}</span>
+      {englishName && (
+        <>
+          {' — '}
+          <span dir="ltr" lang="en">{englishName}</span>
+        </>
+      )}
+    </>
+  );
+};
+
 const interfaceLanguageOptions = INTERFACE_LANGUAGE_OPTIONS.map((option) => ({
   ...option,
-  text: (
-    <span dir={option.value === 'ar' ? 'rtl' : 'ltr'} lang={option.value}>
-      {option.text}
-    </span>
-  ),
+  text: localizedOptionLabel(option),
 }));
 const regionalFormatOptions = REGIONAL_FORMAT_OPTIONS.map((option) => ({
   ...option,
-  text: (
-    <span
-      dir={option.value === 'ar' ? 'rtl' : 'ltr'}
-      lang={option.value === 'system' ? 'en' : option.value}
-    >
-      {option.text}
-    </span>
+  text: localizedOptionLabel(
+    option,
+    option.value === 'system' ? 'en' : option.value,
   ),
 }));
 
