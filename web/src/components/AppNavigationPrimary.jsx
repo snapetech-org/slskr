@@ -3,13 +3,15 @@ import { Dropdown, Icon, Menu } from 'semantic-ui-react';
 import { useInterfaceLanguage } from '../lib/interfaceLocale';
 
 const NavigationIcon = ({ alert, alertTestId, name }) => {
-  const { t } = useInterfaceLanguage();
+  const { t, languageFor, directionFor } = useInterfaceLanguage();
   return (
   <span className="navigation-alert-icon">
     <Icon name={name} />
     {alert && (
       <span
         aria-label={t('New activity')}
+        lang={languageFor('New activity')}
+        dir={directionFor('New activity')}
         className="navigation-alert-dot"
         data-testid={alertTestId}
         role="status"
@@ -26,13 +28,18 @@ const AppNavigationPrimary = ({
   navActivity,
   version,
 }) => {
-  const { language, t } = useInterfaceLanguage();
+  const { t, languageFor, directionFor } = useInterfaceLanguage();
+  const label = (source) => (
+    <span lang={languageFor(source)} dir={directionFor(source)}>
+      {t(source)}
+    </span>
+  );
   return (
               <div
-                aria-label={t('Primary navigation')}
+                aria-label="Primary navigation"
                 className="navigation-primary"
-                lang={language}
-                dir={language === 'ar' ? 'rtl' : 'ltr'}
+                lang="en"
+                dir="ltr"
                 role="navigation"
               >
                 {version.isCanary && (
@@ -41,13 +48,13 @@ const AppNavigationPrimary = ({
                       color="yellow"
                       name="flask"
                     />
-                    {t('Canary')}
+                    {label('Canary')}
                   </Menu.Item>
                 )}
               {isAgent ? (
                 <Menu.Item>
                   <Icon name="detective" />
-                  {t('Agent Mode')}
+                  {label('Agent Mode')}
                 </Menu.Item>
               ) : (
                 isLegacyProfile ? (
@@ -55,25 +62,25 @@ const AppNavigationPrimary = ({
                   <NavLink to="/dashboard">
                     <Menu.Item data-testid="nav-dashboard">
                       <Icon name="chart bar" />
-                      {t('Dashboard')}
+                      {label('Dashboard')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/searches">
                     <Menu.Item data-testid="nav-search">
                       <Icon name="search" />
-                      {t('Search')}
+                      {label('Search')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/downloads">
                     <Menu.Item data-testid="nav-downloads">
                       <Icon name="download" />
-                      {t('Downloads')}
+                      {label('Downloads')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/uploads">
                     <Menu.Item data-testid="nav-uploads">
                       <Icon name="upload" />
-                      {t('Uploads')}
+                      {label('Uploads')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/rooms">
@@ -83,7 +90,7 @@ const AppNavigationPrimary = ({
                         alertTestId="nav-rooms-alert"
                         name="comments"
                       />
-                      {t('Rooms')}
+                      {label('Rooms')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/chat">
@@ -93,19 +100,19 @@ const AppNavigationPrimary = ({
                         alertTestId="nav-chat-alert"
                         name="comment"
                       />
-                      {t('Chat')}
+                      {label('Chat')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/users">
                     <Menu.Item data-testid="nav-users">
                       <Icon name="users" />
-                      {t('Users')}
+                      {label('Users')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/browse">
                     <Menu.Item data-testid="nav-browse">
                       <Icon name="folder open" />
-                      {t('Browse')}
+                      {label('Browse')}
                     </Menu.Item>
                   </NavLink>
                 </>
@@ -114,43 +121,43 @@ const AppNavigationPrimary = ({
                   <NavLink to="/searches">
                     <Menu.Item data-testid="nav-search">
                       <Icon name="search" />
-                      {t('Search')}
+                      {label('Search')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/discovery-graph">
                     <Menu.Item data-testid="nav-discovery-graph">
                       <Icon name="crosshairs" />
-                      {t('Discovery Graph')}
+                      {label('Discovery Graph')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/playlist-intake">
                     <Menu.Item data-testid="nav-playlist-intake">
                       <Icon name="list alternate outline" />
-                      {t('Playlist Intake')}
+                      {label('Playlist Intake')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/wishlist">
                     <Menu.Item data-testid="nav-wishlist">
                       <Icon name="star" />
-                      {t('Wishlist')}
+                      {label('Wishlist')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/lidarr">
                     <Menu.Item data-testid="nav-lidarr">
                       <Icon name="music" />
-                      {t('Lidarr')}
+                      {label('Lidarr')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/downloads">
                     <Menu.Item data-testid="nav-downloads">
                       <Icon name="download" />
-                      {t('Downloads')}
+                      {label('Downloads')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/uploads">
                     <Menu.Item data-testid="nav-uploads">
                       <Icon name="upload" />
-                      {t('Uploads')}
+                      {label('Uploads')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/messages">
@@ -162,49 +169,49 @@ const AppNavigationPrimary = ({
                         }
                         name="comments"
                       />
-                      {t('Messages')}
+                      {label('Messages')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/users">
                     <Menu.Item data-testid="nav-users">
                       <Icon name="users" />
-                      {t('Users')}
+                      {label('Users')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/contacts">
                     <Menu.Item data-testid="nav-contacts">
                       <Icon name="address book" />
-                      {t('Contacts')}
+                      {label('Contacts')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/solid">
                     <Menu.Item data-testid="nav-solid">
                       <Icon name="key" />
-                      {t('Solid')}
+                      {label('Solid')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/collections">
                     <Menu.Item data-testid="nav-collections">
                       <Icon name="list" />
-                      {t('Collections')}
+                      {label('Collections')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/sharegroups">
                     <Menu.Item data-testid="nav-groups">
                       <Icon name="users" />
-                      {t('Share Groups')}
+                      {label('Share Groups')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/shared">
                     <Menu.Item data-testid="nav-shared-with-me">
                       <Icon name="share" />
-                      {t('Shared with Me')}
+                      {label('Shared with Me')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/browse">
                     <Menu.Item data-testid="nav-browse">
                       <Icon name="folder open" />
-                      {t('Browse')}
+                      {label('Browse')}
                     </Menu.Item>
                   </NavLink>
                 </>
@@ -213,25 +220,25 @@ const AppNavigationPrimary = ({
                   <NavLink to="/searches">
                     <Menu.Item data-testid="nav-search">
                       <Icon name="search" />
-                      {t('Search')}
+                      {label('Search')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/wishlist">
                     <Menu.Item data-testid="nav-wishlist">
                       <Icon name="star" />
-                      {t('Wishlist')}
+                      {label('Wishlist')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/downloads">
                     <Menu.Item data-testid="nav-downloads">
                       <Icon name="download" />
-                      {t('Downloads')}
+                      {label('Downloads')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/uploads">
                     <Menu.Item data-testid="nav-uploads">
                       <Icon name="upload" />
-                      {t('Uploads')}
+                      {label('Uploads')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/messages">
@@ -243,17 +250,17 @@ const AppNavigationPrimary = ({
                         }
                         name="comments"
                       />
-                      {t('Messages')}
+                      {label('Messages')}
                     </Menu.Item>
                   </NavLink>
                   <NavLink to="/users">
                     <Menu.Item data-testid="nav-users">
                       <Icon name="users" />
-                      {t('Users')}
+                      {label('Users')}
                     </Menu.Item>
                   </NavLink>
                   <Dropdown
-                    aria-label={t('More navigation options')}
+                    aria-label="More navigation options"
                     className="navigation-more"
                     data-testid="nav-more"
                     icon={null}
@@ -261,7 +268,7 @@ const AppNavigationPrimary = ({
                     trigger={(
                       <span className="navigation-more-trigger">
                         <Icon name="ellipsis horizontal" />
-                        {t('More')}
+                        {label('More')}
                       </span>
                     )}
                   >
@@ -270,56 +277,56 @@ const AppNavigationPrimary = ({
                         as={NavLink}
                         data-testid="nav-discovery-graph"
                         icon="crosshairs"
-                        text={t('Discovery Graph')}
+                        text={label('Discovery Graph')}
                         to="/discovery-graph"
                       />
                       <Dropdown.Item
                         as={NavLink}
                         data-testid="nav-playlist-intake"
                         icon="list alternate outline"
-                        text={t('Playlist Intake')}
+                        text={label('Playlist Intake')}
                         to="/playlist-intake"
                       />
                       <Dropdown.Item
                         as={NavLink}
                         data-testid="nav-contacts"
                         icon="address book"
-                        text={t('Contacts')}
+                        text={label('Contacts')}
                         to="/contacts"
                       />
                       <Dropdown.Item
                         as={NavLink}
                         data-testid="nav-solid"
                         icon="key"
-                        text={t('Solid')}
+                        text={label('Solid')}
                         to="/solid"
                       />
                       <Dropdown.Item
                         as={NavLink}
                         data-testid="nav-collections"
                         icon="list"
-                        text={t('Collections')}
+                        text={label('Collections')}
                         to="/collections"
                       />
                       <Dropdown.Item
                         as={NavLink}
                         data-testid="nav-groups"
                         icon="users"
-                        text={t('Share Groups')}
+                        text={label('Share Groups')}
                         to="/sharegroups"
                       />
                       <Dropdown.Item
                         as={NavLink}
                         data-testid="nav-shared-with-me"
                         icon="share"
-                        text={t('Shared with Me')}
+                        text={label('Shared with Me')}
                         to="/shared"
                       />
                       <Dropdown.Item
                         as={NavLink}
                         data-testid="nav-browse"
                         icon="folder open"
-                        text={t('Browse')}
+                        text={label('Browse')}
                         to="/browse"
                       />
                     </Dropdown.Menu>

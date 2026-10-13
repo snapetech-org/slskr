@@ -17,7 +17,7 @@ afterEach(() => {
 });
 
 describe('primary navigation language metadata', () => {
-  it('keeps Arabic direction and language scoped to the translated navigation', () => {
+  it('keeps translated and English fallback metadata scoped to each navigation label', () => {
     setInterfaceLanguage('ar');
     const arabicIndex = INTERFACE_LANGUAGE_OPTIONS.slice(1).findIndex(
       ({ value }) => value === 'ar',
@@ -28,19 +28,25 @@ describe('primary navigation language metadata', () => {
         <AppNavigationPrimary
           isAgent={false}
           isLegacyProfile={false}
-          isNativeProfile={false}
+          isNativeProfile={true}
           navActivity={{ chat: false, rooms: false }}
-          version={{ isCanary: false }}
+          version={{ isCanary: true }}
         />
       </MemoryRouter>,
     );
 
     const navigation = screen.getByRole('navigation', {
-      name: UI_LABELS['Primary navigation'][arabicIndex],
+      name: 'Primary navigation',
     });
-    expect(navigation).toHaveAttribute('lang', 'ar');
-    expect(navigation).toHaveAttribute('dir', 'rtl');
-    expect(screen.getByText(UI_LABELS.Search[arabicIndex])).toBeInTheDocument();
+    expect(navigation).toHaveAttribute('lang', 'en');
+    expect(navigation).toHaveAttribute('dir', 'ltr');
+    const translatedSearch = screen.getByText(UI_LABELS.Search[arabicIndex]);
+    expect(translatedSearch).toHaveAttribute('lang', 'ar');
+    expect(translatedSearch).toHaveAttribute('dir', 'rtl');
+    for (const fallback of ['Canary', 'Lidarr', 'Solid']) {
+      expect(screen.getByText(fallback)).toHaveAttribute('lang', 'en');
+      expect(screen.getByText(fallback)).toHaveAttribute('dir', 'ltr');
+    }
     expect(document.documentElement.lang).toBe('en');
     expect(document.documentElement.dir).toBe('ltr');
   });
