@@ -20,6 +20,8 @@ the release is prepared. Do not rewrite audited release history.
 
 - Recorded repeatable idle CPU and memory comparisons for local containers and
   connected Soulseek sessions, with raw measurements and clear scope limits.
+- Preserve timestamped failed benchmark attempts and failure reasons in raw
+  artifacts so retry counts and denominators can be audited.
 - Hardened local validation with a trusted test sandbox and isolated task
   environments.
 

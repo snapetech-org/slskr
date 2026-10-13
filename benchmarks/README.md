@@ -72,6 +72,10 @@ This takes about 117 minutes, plus login time. CPU is the cgroup v2
 `cpu.stat` usage delta; the percentage is normalized to one logical CPU. The
 artifact also retains process RSS and cgroup memory samples, session/DHT
 boundary status, host CPU busy percentage, and load average for every trial.
+Each raw artifact records every started trial attempt, separately from
+completed measurements. Failed login, API, or cgroup reads retain the profile,
+attempt number, UTC start and finish times, and failure reason before the runner
+stops, so retries and denominator changes can be audited.
 Keep host-specific results separate and report host load: CPU-time samples
 from different machines or materially different background load are not a
 controlled head-to-head comparison. The retained [2026-10-12 live matrix

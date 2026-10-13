@@ -20,6 +20,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 
 
 IMAGES = {
@@ -42,6 +43,39 @@ def docker(*args: str, env: dict[str, str] | None = None) -> str:
         ["docker", *args], check=True, capture_output=True, text=True, env=env
     )
     return result.stdout.strip()
+
+
+def docker_context_endpoint(context: str) -> str:
+    raw = docker(
+        "context", "inspect", context, "--format",
+        "{{json .Endpoints.docker.Host}}",
+    )
+    endpoint = json.loads(raw)
+    if not isinstance(endpoint, str) or not endpoint:
+        raise RuntimeError(f"Docker context {context!r} has no daemon endpoint")
+    return endpoint
+
+
+def require_local_docker_daemon() -> str:
+    context = os.environ.get("DOCKER_CONTEXT")
+    if context:
+        endpoint = docker_context_endpoint(context)
+    else:
+        endpoint = os.environ.get("DOCKER_HOST")
+        if not endpoint:
+            endpoint = docker_context_endpoint(docker("context", "show"))
+
+    parsed = urlsplit(endpoint)
+    if (
+        parsed.scheme != "unix"
+        or parsed.netloc
+        or not Path(parsed.path).is_absolute()
+    ):
+        raise RuntimeError(
+            "this benchmark reads host /proc and /sys/cgroup counters, "
+            "so it requires a local Docker daemon on a Unix socket"
+        )
+    return endpoint
 
 
 def network_metadata(profiles: list[str], live_session: bool) -> dict[str, Any]:
@@ -538,6 +572,61 @@ def save(path: Path, result: dict[str, Any]) -> None:
     temporary.replace(path)
 
 
+def run_recorded_trial(
+    result: dict[str, Any],
+    output: Path,
+    app: str,
+    repetition: int,
+    warmup: int,
+    duration: int,
+    interval: int,
+    *,
+    live_session: bool = False,
+    credentials: tuple[str, str] | None = None,
+    login_timeout: int = 300,
+) -> dict[str, Any]:
+    attempt = {
+        "app": app,
+        "repetition": repetition,
+        "started_utc": utc_now(),
+        "status": "running",
+    }
+    result.setdefault("attempts", []).append(attempt)
+    result["updated_utc"] = attempt["started_utc"]
+    save(output, result)
+    try:
+        trial = run_trial(
+            app,
+            repetition,
+            warmup,
+            duration,
+            interval,
+            live_session=live_session,
+            credentials=credentials,
+            login_timeout=login_timeout,
+        )
+    except Exception as error:
+        attempt.update({
+            "status": "failed",
+            "finished_utc": utc_now(),
+            "failure": {
+                "type": type(error).__name__,
+                "reason": str(error),
+            },
+        })
+        result["run_status"] = "aborted"
+        result["failed_utc"] = attempt["finished_utc"]
+        result["updated_utc"] = attempt["finished_utc"]
+        save(output, result)
+        raise
+
+    result["trials"].append(trial)
+    attempt.update({"status": "completed", "finished_utc": utc_now()})
+    result["updated_utc"] = attempt["finished_utc"]
+    save(output, result)
+    return trial
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repeats", type=int, default=3)
@@ -571,7 +660,10 @@ def main() -> int:
         raise SystemExit("repeats and durations must be positive; warm-up may be zero")
     if args.login_timeout_seconds < 1:
         raise SystemExit("login timeout must be positive")
-    if platform.system() != "Linux" or not (CGROUP_ROOT / "cgroup.controllers").exists():
+    if platform.system() != "Linux":
+        raise SystemExit("this runner requires Linux with cgroup v2")
+    require_local_docker_daemon()
+    if not (CGROUP_ROOT / "cgroup.controllers").exists():
         raise SystemExit("this runner requires Linux with cgroup v2")
     prefix = "liveidle" if args.live_session else "idlecmp"
     if docker("ps", "--filter", f"name=^/{prefix}-", "--format", "{{.Names}}"):
@@ -625,6 +717,8 @@ def main() -> int:
         },
         "images": {app: image_info(IMAGES[app]) for app in args.profiles},
         "trials": [],
+        "attempts": [],
+        "run_status": "running",
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     save(args.output, result)
@@ -635,7 +729,9 @@ def main() -> int:
     )
     for index, app in enumerate(order, start=1):
         repetition = order[:index].count(app)
-        trial = run_trial(
+        run_recorded_trial(
+            result,
+            args.output,
             app,
             repetition,
             args.warmup_seconds,
@@ -645,11 +741,11 @@ def main() -> int:
             credentials=credentials,
             login_timeout=args.login_timeout_seconds,
         )
-        result["trials"].append(trial)
         result["updated_utc"] = utc_now()
         result["host"]["load_average_at_end"] = os.getloadavg()
         save(args.output, result)
     result["completed_utc"] = utc_now()
+    result["run_status"] = "completed"
     save(args.output, result)
     print(f"Completed {len(result['trials'])} trials: {args.output}", flush=True)
     return 0

@@ -3,9 +3,12 @@
 import hashlib
 import importlib.util
 import json
+from argparse import Namespace
+from os import environ
+from tempfile import TemporaryDirectory
 import unittest
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import call, patch
 
 
 SCRIPT = Path(__file__).with_name("compare-idle-containers.py")
@@ -124,6 +127,182 @@ class HostCpuAccountingTests(unittest.TestCase):
         )
 
         self.assertEqual({"total": 680, "idle": 510}, ticks)
+
+
+class LocalDockerDaemonTests(unittest.TestCase):
+    def test_rejects_remote_context_even_when_docker_host_is_local(self):
+        with patch.dict(
+            environ,
+            {
+                "DOCKER_CONTEXT": "remote-benchmark",
+                "DOCKER_HOST": "unix:///var/run/docker.sock",
+            },
+        ):
+            with patch.object(
+                benchmark, "docker", return_value=json.dumps("ssh://docker@example")
+            ) as docker_command:
+                with self.assertRaisesRegex(RuntimeError, "local Docker daemon"):
+                    benchmark.require_local_docker_daemon()
+
+        docker_command.assert_called_once_with(
+            "context", "inspect", "remote-benchmark", "--format",
+            "{{json .Endpoints.docker.Host}}",
+        )
+
+    def test_accepts_a_local_unix_socket_without_context_lookup(self):
+        with patch.dict(
+            environ,
+            {"DOCKER_HOST": "unix:///var/run/docker.sock"},
+            clear=False,
+        ):
+            with patch.dict(environ, {"DOCKER_CONTEXT": ""}):
+                with patch.object(benchmark, "docker") as docker_command:
+                    self.assertEqual(
+                        "unix:///var/run/docker.sock",
+                        benchmark.require_local_docker_daemon(),
+                    )
+
+        docker_command.assert_not_called()
+
+    def test_resolves_the_active_context_when_no_environment_override_exists(self):
+        with patch.dict(environ, {"DOCKER_HOST": "", "DOCKER_CONTEXT": ""}):
+            with patch.object(
+                benchmark,
+                "docker",
+                side_effect=["default", json.dumps("unix:///var/run/docker.sock")],
+            ) as docker_command:
+                self.assertEqual(
+                    "unix:///var/run/docker.sock",
+                    benchmark.require_local_docker_daemon(),
+                )
+
+        self.assertEqual(
+            [
+                call("context", "show"),
+                call(
+                    "context", "inspect", "default", "--format",
+                    "{{json .Endpoints.docker.Host}}",
+                ),
+            ],
+            docker_command.call_args_list,
+        )
+
+    def test_main_rejects_remote_context_before_docker_or_host_counter_reads(self):
+        args = Namespace(
+            repeats=1,
+            warmup_seconds=0,
+            duration_seconds=1,
+            sample_interval_seconds=1,
+            profiles=["slskr"],
+            live_session=False,
+            login_timeout_seconds=1,
+            credential_username_env="USER",
+            credential_password_env="PASSWORD",
+            output=Path("unused.json"),
+        )
+        with patch.object(benchmark, "parse_args", return_value=args):
+            with patch.object(benchmark.platform, "system", return_value="Linux"):
+                with patch.object(Path, "exists", return_value=True):
+                    with patch.dict(
+                        environ,
+                        {"DOCKER_CONTEXT": "remote-benchmark"},
+                        clear=False,
+                    ):
+                        with patch.object(
+                            benchmark,
+                            "docker",
+                            return_value=json.dumps("tcp://remote:2376"),
+                        ) as docker_command:
+                            with patch.object(benchmark, "host_cpu_ticks") as cpu_ticks:
+                                with self.assertRaisesRegex(
+                                    RuntimeError, "local Docker daemon"
+                                ):
+                                    benchmark.main()
+
+        docker_command.assert_called_once_with(
+            "context", "inspect", "remote-benchmark", "--format",
+            "{{json .Endpoints.docker.Host}}",
+        )
+        cpu_ticks.assert_not_called()
+
+
+class FailedTrialPersistenceTests(unittest.TestCase):
+    def test_persists_failed_trial_metadata_before_propagating(self):
+        failures = (
+            RuntimeError("login did not become authenticated before timeout"),
+            OSError("cgroup memory.stat disappeared at a sample boundary"),
+        )
+        for failure in failures:
+            with self.subTest(failure=type(failure).__name__):
+                with TemporaryDirectory() as directory:
+                    output = Path(directory) / "run.json"
+                    result = {"trials": []}
+                    with patch.object(benchmark, "run_trial", side_effect=failure):
+                        with self.assertRaises(type(failure)):
+                            benchmark.run_recorded_trial(
+                                result,
+                                output,
+                                "slskd",
+                                2,
+                                0,
+                                60,
+                                10,
+                                live_session=True,
+                                credentials=("test-user", "test-password"),
+                                login_timeout=30,
+                            )
+
+                    saved_text = output.read_text()
+                    saved = json.loads(saved_text)
+                    self.assertEqual([], saved["trials"])
+                    self.assertEqual(
+                        {
+                            "app": "slskd",
+                            "repetition": 2,
+                            "status": "failed",
+                            "failure": {
+                                "type": type(failure).__name__,
+                                "reason": str(failure),
+                            },
+                        },
+                        {
+                            key: saved["attempts"][0][key]
+                            for key in ("app", "repetition", "status", "failure")
+                        },
+                    )
+                    self.assertTrue(saved["attempts"][0]["started_utc"])
+                    self.assertTrue(saved["attempts"][0]["finished_utc"])
+                    self.assertEqual("aborted", saved["run_status"])
+                    self.assertNotIn("test-password", saved_text)
+
+    def test_saves_completed_trial_and_attempt_together(self):
+        with TemporaryDirectory() as directory:
+            output = Path(directory) / "run.json"
+            result = {"trials": []}
+            trial = {"app": "slskr", "cpu_seconds": 1.25}
+            with patch.object(benchmark, "run_trial", return_value=trial):
+                self.assertIs(
+                    trial,
+                    benchmark.run_recorded_trial(
+                        result, output, "slskr", 1, 0, 1, 1
+                    ),
+                )
+
+            saved = json.loads(output.read_text())
+            self.assertEqual([trial], saved["trials"])
+            self.assertEqual(
+                {
+                    "app": "slskr",
+                    "repetition": 1,
+                    "status": "completed",
+                },
+                {
+                    key: saved["attempts"][0][key]
+                    for key in ("app", "repetition", "status")
+                },
+            )
+            self.assertTrue(saved["attempts"][0]["started_utc"])
+            self.assertTrue(saved["attempts"][0]["finished_utc"])
 
 
 class RunScopedApiCredentialTests(unittest.TestCase):
