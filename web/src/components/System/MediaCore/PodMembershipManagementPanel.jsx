@@ -1,3 +1,4 @@
+import { getRegionalLocale } from '../../../lib/regionalFormat';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -277,12 +278,12 @@ const PodMembershipManagementPanel = ({
                         <strong>Published:</strong>{' '}
                         {new Date(
                           membershipPublishResult.publishedAt,
-                        ).toLocaleString()}
+                        ).toLocaleString(getRegionalLocale())}
                         <br />
                         <strong>Expires:</strong>{' '}
                         {new Date(
                           membershipPublishResult.expiresAt,
-                        ).toLocaleString()}
+                        ).toLocaleString(getRegionalLocale())}
                       </p>
                     </Message>
                   )}
@@ -366,7 +367,7 @@ const PodMembershipManagementPanel = ({
                             {membershipResult.signedRecord?.membership?.joinedAt
                               ? new Date(
                                   membershipResult.signedRecord.membership.joinedAt,
-                                ).toLocaleString()
+                                ).toLocaleString(getRegionalLocale())
                               : 'Unknown'}
                           </p>
                         </Message>
@@ -527,7 +528,7 @@ const PodMembershipManagementPanel = ({
                       {membershipStats.lastOperation
                         ? new Date(
                             membershipStats.lastOperation,
-                          ).toLocaleString()
+                          ).toLocaleString(getRegionalLocale())
                         : 'Never'}
                     </p>
                     {membershipStats.membershipsByRole &&

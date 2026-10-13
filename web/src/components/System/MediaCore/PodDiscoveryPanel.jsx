@@ -1,3 +1,4 @@
+import { getRegionalLocale } from '../../../lib/regionalFormat';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -285,12 +286,12 @@ const PodDiscoveryPanel = ({ visible = true }) => {
                         <strong>Registered:</strong>{' '}
                         {new Date(
                           podRegistrationResult.registeredAt,
-                        ).toLocaleString()}
+                        ).toLocaleString(getRegionalLocale())}
                         <br />
                         <strong>Expires:</strong>{' '}
                         {new Date(
                           podRegistrationResult.expiresAt,
-                        ).toLocaleString()}
+                        ).toLocaleString(getRegionalLocale())}
                       </p>
                     </Message>
                   )}

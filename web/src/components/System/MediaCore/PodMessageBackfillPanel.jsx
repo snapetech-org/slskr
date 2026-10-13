@@ -1,3 +1,4 @@
+import { getRegionalLocale } from '../../../lib/regionalFormat';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -188,15 +189,15 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
                   <Message.Header>Backfill Statistics</Message.Header>
                   <p>
                     <strong>Requests Sent:</strong>{' '}
-                    {backfillStats.totalBackfillRequestsSent?.toLocaleString() ||
+                    {backfillStats.totalBackfillRequestsSent?.toLocaleString(getRegionalLocale()) ||
                       0}
                     <br />
                     <strong>Requests Received:</strong>{' '}
-                    {backfillStats.totalBackfillRequestsReceived?.toLocaleString() ||
+                    {backfillStats.totalBackfillRequestsReceived?.toLocaleString(getRegionalLocale()) ||
                       0}
                     <br />
                     <strong>Messages Backfilled:</strong>{' '}
-                    {backfillStats.totalMessagesBackfilled?.toLocaleString() ||
+                    {backfillStats.totalMessagesBackfilled?.toLocaleString(getRegionalLocale()) ||
                       0}
                     <br />
                     <strong>Data Transferred:</strong>{' '}
@@ -213,7 +214,7 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
                     {backfillStats.lastBackfillOperation
                       ? new Date(
                           backfillStats.lastBackfillOperation,
-                        ).toLocaleString()
+                        ).toLocaleString(getRegionalLocale())
                       : 'Never'}
                   </p>
                 </Message>
@@ -285,7 +286,7 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
                             style={{ marginBottom: '0.25em' }}
                           >
                             <strong>{channelId}:</strong>{' '}
-                            {new Date(timestamp).toLocaleString()}
+                            {new Date(timestamp).toLocaleString(getRegionalLocale())}
                           </div>
                         ),
                       )}

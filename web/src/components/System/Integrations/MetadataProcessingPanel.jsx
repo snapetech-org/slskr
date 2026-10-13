@@ -1,3 +1,4 @@
+import { getRegionalLocale } from '../../../lib/regionalFormat';
 import React, { useState } from 'react';
 import { Card, Header, Icon, Label, Message, Table } from 'semantic-ui-react';
 import { getMetadataProcessingStatus } from '../../../lib/slskr';
@@ -72,7 +73,7 @@ const MetadataProcessingPanel = () => {
                     <Label color={labelColor(item.status)}>{item.status}</Label>
                   </Table.Cell>
                   <Table.Cell>
-                    {item.startedAt ? new Date(item.startedAt).toLocaleString() : '-'}
+                    {item.startedAt ? new Date(item.startedAt).toLocaleString(getRegionalLocale()) : '-'}
                   </Table.Cell>
                   <Table.Cell>{item.detail || 'In progress'}</Table.Cell>
                 </Table.Row>

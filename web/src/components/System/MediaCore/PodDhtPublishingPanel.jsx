@@ -1,3 +1,4 @@
+import { getRegionalLocale } from '../../../lib/regionalFormat';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -189,12 +190,12 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
                         <strong>Published:</strong>{' '}
                         {new Date(
                           podPublishingResult.publishedAt,
-                        ).toLocaleString()}
+                        ).toLocaleString(getRegionalLocale())}
                         <br />
                         <strong>Expires:</strong>{' '}
                         {new Date(
                           podPublishingResult.expiresAt,
-                        ).toLocaleString()}
+                        ).toLocaleString(getRegionalLocale())}
                       </p>
                     </Message>
                   )}
@@ -251,12 +252,12 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
                             <strong>Retrieved:</strong>{' '}
                             {new Date(
                               podMetadataResult.retrievedAt,
-                            ).toLocaleString()}
+                            ).toLocaleString(getRegionalLocale())}
                             <br />
                             <strong>Expires:</strong>{' '}
                             {new Date(
                               podMetadataResult.expiresAt,
-                            ).toLocaleString()}
+                            ).toLocaleString(getRegionalLocale())}
                             <br />
                             <strong>Display Name:</strong>{' '}
                             {podMetadataResult.publishedPod?.displayName}
@@ -354,7 +355,7 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
                       {podPublishingStats.lastPublishOperation
                         ? new Date(
                             podPublishingStats.lastPublishOperation,
-                          ).toLocaleString()
+                          ).toLocaleString(getRegionalLocale())
                         : 'Never'}
                     </p>
                     {podPublishingStats.publicationsByVisibility &&

@@ -1,3 +1,4 @@
+import { REGIONAL_FORMAT_OPTIONS } from '../../../lib/regionalFormat';
 import { copyToClipboard } from '../../../lib/clipboard';
 import { toDisplayError } from '../../../lib/errors';
 import { readBoundedJson } from '../../../lib/persistedJson';
@@ -23,6 +24,7 @@ import {
 const storageKey = 'slskr:experience-preferences:v1';
 
 const defaults = {
+  regionalFormat: 'system',
   discoveryApprovalFilter: 'all',
   discoveryConfidenceFloor: '0.70',
   discoveryExplanationDetail: 'full',
@@ -47,6 +49,7 @@ const defaults = {
 };
 
 const options = {
+  regionalFormat: REGIONAL_FORMAT_OPTIONS,
   actionPreviewDensity: [
     { key: 'compact', text: 'Compact', value: 'compact' },
     { key: 'detailed', text: 'Detailed', value: 'detailed' },
@@ -92,6 +95,7 @@ const options = {
 
 const maxPreferenceTextCharacters = 2_048;
 const preferenceOptionValues = {
+  regionalFormat: options.regionalFormat.map((option) => option.value),
   discoveryApprovalFilter: options.approvalFilter.map((option) => option.value),
   discoveryExplanationDetail: options.explanationDetail.map((option) => option.value),
   playerDefaultVisualizer: options.visualizerDefault.map((option) => option.value),
@@ -143,6 +147,7 @@ const readStoredPreferences = () => {
 const buildReport = (form) =>
   [
     'slskr experience preferences',
+    'Regional format: ' + form.regionalFormat,
     `Search: ranking=${form.searchRankingProfile}, condition=${form.searchPreferredCondition}, duplicate_folding=${form.searchDuplicateFolding}, previews=${form.searchActionPreviewDensity}`,
     `Discovery: provider=${form.discoveryProviderFilter || 'all'}, approval=${form.discoveryApprovalFilter}, confidence>=${form.discoveryConfidenceFloor}, stale_days=${form.discoveryStaleDays}, explanations=${form.discoveryExplanationDetail}`,
     `Player: queue_auto_fill=${form.playerQueueAutoFill}, radio_seed=${form.playerRadioSeedMode}, ratings=${form.playerShowRatings}, history=${form.playerCaptureHistory}, scrobble=${form.playerScrobbleMode}, visualizer=${form.playerDefaultVisualizer}, shortcuts=${form.playerKeyboardShortcuts}`,
@@ -228,6 +233,26 @@ const ExperienceSettings = () => {
         itemsPerRow={1}
         stackable
       >
+        <Card fluid>
+          <Card.Content>
+            <Card.Header>
+              <Icon name="globe" />
+              Regional Format
+            </Card.Header>
+            <Card.Meta>Choose how dates, times, and numbers are shown in this browser. Interface text remains English.</Card.Meta>
+          </Card.Content>
+          <Card.Content>
+            <Form>
+              <Form.Select
+                aria-label="Regional format preference"
+                label="Date, time, and number format"
+                onChange={(_, { value }) => update('regionalFormat', value)}
+                options={options.regionalFormat}
+                value={form.regionalFormat}
+              />
+            </Form>
+          </Card.Content>
+        </Card>
         <Card fluid>
           <Card.Content>
             <Card.Header>

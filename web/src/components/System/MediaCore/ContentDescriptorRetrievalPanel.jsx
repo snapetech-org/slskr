@@ -1,3 +1,4 @@
+import { getRegionalLocale } from '../../../lib/regionalFormat';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -231,7 +232,7 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
                         {retrievalResult.fromCache ? 'Yes' : 'No'}
                         <br />
                         <strong>Retrieved:</strong>{' '}
-                        {new Date(retrievalResult.retrievedAt).toLocaleString()}
+                        {new Date(retrievalResult.retrievedAt).toLocaleString(getRegionalLocale())}
                         <br />
                         <strong>Duration:</strong>{' '}
                         {retrievalResult.retrievalDuration?.totalMilliseconds.toFixed(

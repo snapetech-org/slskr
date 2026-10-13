@@ -1,3 +1,4 @@
+import { getRegionalLocale } from '../../lib/regionalFormat';
 import { getWishlistRequestState } from '../../lib/acquisitionRequests';
 import { toDisplayError } from '../../lib/errors';
 import { encodePathSegment } from '../../lib/pathEncoding';
@@ -19,7 +20,7 @@ const formatDate = (dateString) => {
   if (!dateString) return 'Never';
   const date = new Date(dateString);
   if (Number.isNaN(date.getTime())) return 'Never';
-  return date.toLocaleString();
+  return date.toLocaleString(getRegionalLocale());
 };
 
 const WishlistItemRow = ({

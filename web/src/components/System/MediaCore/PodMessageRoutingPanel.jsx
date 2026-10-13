@@ -1,3 +1,4 @@
+import { getRegionalLocale } from '../../../lib/regionalFormat';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -425,7 +426,7 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
                       {routingStats.lastRoutingOperation
                         ? new Date(
                             routingStats.lastRoutingOperation,
-                          ).toLocaleString()
+                          ).toLocaleString(getRegionalLocale())
                         : 'Never'}
                     </p>
                   </Message>

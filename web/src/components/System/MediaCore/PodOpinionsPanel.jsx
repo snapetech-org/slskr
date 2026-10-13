@@ -1,3 +1,4 @@
+import { getRegionalLocale } from '../../../lib/regionalFormat';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -523,7 +524,7 @@ const PodOpinionsPanel = ({ visible = true }) => {
                     {opinionStatistics.maxScore}
                     <br />
                     <strong>Last Updated:</strong>{' '}
-                    {new Date(opinionStatistics.lastUpdated).toLocaleString()}
+                    {new Date(opinionStatistics.lastUpdated).toLocaleString(getRegionalLocale())}
                   </p>
                 </Message>
               )}
@@ -855,7 +856,7 @@ const PodOpinionsPanel = ({ visible = true }) => {
                               Last Activity:{' '}
                               {new Date(
                                 affinity.lastActivity,
-                              ).toLocaleDateString()}
+                              ).toLocaleDateString(getRegionalLocale())}
                             </small>
                           </div>
                         </Card.Content>

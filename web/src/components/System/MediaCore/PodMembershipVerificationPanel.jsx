@@ -1,3 +1,4 @@
+import { getRegionalLocale } from '../../../lib/regionalFormat';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -392,7 +393,7 @@ const PodMembershipVerificationPanel = React.memo(({
                       {verificationStats.lastVerification
                         ? new Date(
                             verificationStats.lastVerification,
-                          ).toLocaleString()
+                          ).toLocaleString(getRegionalLocale())
                         : 'Never'}
                     </p>
                   </Message>

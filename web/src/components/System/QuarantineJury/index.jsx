@@ -1,3 +1,4 @@
+import { getRegionalLocale } from '../../../lib/regionalFormat';
 // <copyright file="index.jsx" company="slskr Team">
 // Copyright (c) slskr Team. All rights reserved.
 // </copyright>
@@ -182,7 +183,7 @@ const formatDate = (value) => {
   const text = toText(value);
   if (!text) return '-';
   const date = new Date(text);
-  return Number.isNaN(date.getTime()) ? '-' : date.toLocaleString();
+  return Number.isNaN(date.getTime()) ? '-' : date.toLocaleString(getRegionalLocale());
 };
 
 const getVerdictCount = (counts = {}, key, numericKey) =>

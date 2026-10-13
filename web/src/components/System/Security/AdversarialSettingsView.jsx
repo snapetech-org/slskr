@@ -1,3 +1,4 @@
+import { getRegionalLocale } from '../../../lib/regionalFormat';
 import React from 'react';
 import {
   Button,
@@ -344,7 +345,7 @@ const AdversarialSettingsView = ({ actions, state }) => {
                         <strong>Last Connected:</strong>{' '}
                         {new Date(
                           torStatus.LastSuccessfulConnection,
-                        ).toLocaleString()}
+                        ).toLocaleString(getRegionalLocale())}
                       </p>
                     )}
                     <p>
