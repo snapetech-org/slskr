@@ -116,7 +116,7 @@ pub(super) async fn rebuild_share_index_with_permit(
         state,
         logging::LogLevel::Info,
         "shares",
-        "share scan started",
+        "Scanning shares...",
     )
     .await;
     let (share_settings, share_settings_generation, filter_case_sensitive) = {
@@ -220,9 +220,9 @@ pub(super) async fn rebuild_share_index_with_permit(
         logging::LogLevel::Info,
         "shares",
         format!(
-            "share scan completed after visiting {} filesystem entries and indexing {} files",
-            snapshot.scanned_entries,
-            snapshot.entries.len()
+            "Share scan completed, {} files indexed after visiting {} filesystem entries",
+            snapshot.entries.len(),
+            snapshot.scanned_entries
         ),
     )
     .await;
