@@ -14,9 +14,10 @@ workspace tests, RustSec audit when `cargo-audit` is installed, workspace
 packaging, web tests, Rust/WASM web checks, the Rust web UI headless parity
 audit, and subpath smoke checks.
 
-GitHub CI and tagged release workflows check for the `cargo-audit` executable,
-install it when missing, and add its bin directory to `PATH` before running the
-RustSec audit. Local runs may skip the audit when the tool is not installed.
+GitHub CI and tagged release workflows check the cached `cargo-audit` version,
+install the pinned version when it is missing or stale, and add its bin directory
+to `PATH` before running the RustSec audit. Local runs may skip the audit when
+the tool is not installed.
 
 All compile-capable Cargo commands in this repository use the normal Rust
 toolchain. The workspace config keeps the large daemon crate on one Cargo job,
