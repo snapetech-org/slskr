@@ -212,12 +212,20 @@ pub(super) async fn auto_download_completed_wishlist(
         return Ok(0);
     }
 
+    let download_slots =
+        usize::try_from(state.transfer_download_settings.read().await.slots).unwrap_or(usize::MAX);
     let available = {
         let transfers = state.transfers.read().await;
-        state
+        let global_available = state
             .config
             .transfer_max_active
-            .saturating_sub(transfers.active_count_excluding(None))
+            .saturating_sub(transfers.active_count_excluding(None));
+        let active_downloads = transfers
+            .entries
+            .iter()
+            .filter(|entry| entry.direction == 0 && is_active_transfer_status(&entry.status))
+            .count();
+        global_available.min(download_slots.saturating_sub(active_downloads))
     };
     let batch_id = (files.len() > 1).then(|| uuid::Uuid::new_v4().to_string());
     let mut staged = Vec::new();
@@ -234,6 +242,17 @@ pub(super) async fn auto_download_completed_wishlist(
             .to_string();
         let entry = {
             let mut transfers = state.transfers.write().await;
+            let active_count = transfers.active_count_excluding(None);
+            let active_downloads = transfers
+                .entries
+                .iter()
+                .filter(|entry| entry.direction == 0 && is_active_transfer_status(&entry.status))
+                .count();
+            if active_count >= state.config.transfer_max_active
+                || active_downloads >= download_slots
+            {
+                break;
+            }
             let entry = transfers.create_with_batch_for_wishlist(
                 0,
                 Some(username.clone()),

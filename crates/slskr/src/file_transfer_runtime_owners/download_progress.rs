@@ -110,15 +110,11 @@ pub(crate) async fn write_download_chunk_if_active(
     file.write_all(chunk)
         .map_err(|error| format!("download file write failed: {error}"))?;
     let updated = transfers.update_progress(transfer_id, bytes_transferred);
-    let should_persist = updated
-        .as_ref()
-        .is_some_and(|entry| transfers.should_persist_progress(entry));
     drop(transfers);
-    if let Some(entry) = updated {
+    if let Some((entry, should_persist)) = updated {
         if should_persist {
             persist_transfer_progress_projection(state, &entry).await;
         } else {
-            persist_transfer_durability(state).await;
             publish_transfer_hub_event(state, "progress", &entry);
         }
     }
@@ -140,15 +136,11 @@ pub(crate) async fn update_transfer_progress(
         return;
     }
     let updated = transfers.update_progress(transfer_id, bytes_transferred);
-    let should_persist = updated
-        .as_ref()
-        .is_some_and(|entry| transfers.should_persist_progress(entry));
     drop(transfers);
-    if let Some(entry) = updated {
+    if let Some((entry, should_persist)) = updated {
         if should_persist {
             persist_transfer_progress_projection(state, &entry).await;
         } else {
-            persist_transfer_durability(state).await;
             publish_transfer_hub_event(state, "progress", &entry);
         }
     }

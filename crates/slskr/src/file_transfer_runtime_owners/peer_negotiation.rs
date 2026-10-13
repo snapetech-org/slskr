@@ -170,11 +170,8 @@ pub(crate) async fn execute_accepted_file_transfer(
         maybe_import_lidarr_completed_download(state, &updated).await;
         maybe_upload_ftp_completed_download(state, &updated).await;
     }
-    if transfer.direction == 1 {
-        schedule_queued_uploads(state).await;
-    } else {
-        schedule_queued_downloads(state).await;
-    }
+    schedule_queued_uploads(state).await;
+    schedule_queued_downloads(state).await;
 }
 
 pub(crate) async fn project_indirect_transfer_response(
@@ -237,11 +234,8 @@ pub(crate) async fn project_indirect_transfer_response(
         maybe_import_lidarr_completed_download(state, &updated).await;
         maybe_upload_ftp_completed_download(state, &updated).await;
     }
-    if transfer.direction == 1 {
-        schedule_queued_uploads(state).await;
-    } else {
-        schedule_queued_downloads(state).await;
-    }
+    schedule_queued_uploads(state).await;
+    schedule_queued_downloads(state).await;
 }
 
 pub(crate) async fn project_peer_transfer_response(state: &AppState, address: &PeerAddress) {
@@ -258,28 +252,22 @@ pub(crate) async fn project_peer_transfer_response(state: &AppState, address: &P
     {
         return;
     }
-    if transfer.direction == 0 && !download_capacity_available(state, Some(transfer.id)).await {
-        let queued = {
-            let mut transfers = state.transfers.write().await;
-            transfers.update_status(
-                transfer.id,
-                "queued",
-                None,
-                Some("Local download slots exhausted".to_owned()),
-            )
-        };
-        if let Some(queued) = queued {
-            persist_transfer_projection(state, &queued).await;
-        }
-        return;
-    }
-
-    let negotiating = {
+    let download_slots =
+        usize::try_from(state.transfer_download_settings.read().await.slots).unwrap_or(usize::MAX);
+    let transition = {
         let mut transfers = state.transfers.write().await;
-        transfers.update_status(transfer.id, "peer_negotiating", None, None)
+        transfers.claim_pending_peer_transfer(
+            transfer.id,
+            state.config.transfer_max_active,
+            download_slots,
+        )
     };
-    if let Some(negotiating) = negotiating {
-        persist_transfer_projection(state, &negotiating).await;
+    let Some(transition) = transition else {
+        return;
+    };
+    persist_transfer_projection(state, &transition).await;
+    if transition.status == "queued" {
+        return;
     }
 
     let result = negotiate_peer_transfer(state, address, &transfer).await;
@@ -366,20 +354,32 @@ pub(crate) async fn project_peer_transfer_response(state: &AppState, address: &P
     if let Some(updated) = updated {
         persist_transfer_projection(state, &updated).await;
     }
-    if transfer.direction == 1 && status != "queued" {
+    if status != "queued" {
         schedule_queued_uploads(state).await;
-    } else if transfer.direction == 0 && status != "queued" {
         schedule_queued_downloads(state).await;
     }
 }
 
 pub(crate) async fn schedule_queued_downloads(state: &AppState) {
     loop {
+        let download_slots = usize::try_from(state.transfer_download_settings.read().await.slots)
+            .unwrap_or(usize::MAX);
         if !download_capacity_available(state, None).await {
             return;
         }
         let queued = {
             let mut transfers = state.transfers.write().await;
+            let active_count = transfers.active_count_excluding(None);
+            let active_downloads = transfers
+                .entries
+                .iter()
+                .filter(|entry| entry.direction == 0 && is_active_transfer_status(&entry.status))
+                .count();
+            if active_count >= state.config.transfer_max_active
+                || active_downloads >= download_slots
+            {
+                return;
+            }
             let next = transfers
                 .entries
                 .iter()

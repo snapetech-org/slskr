@@ -366,7 +366,10 @@ fn controller_debug_password(state: &AppState, provider: &str) -> Option<String>
                 })
         }
         "EnvironmentVariableConfigurationProvider" => std::env::var("SLSKD_SLSK_PASSWORD").ok(),
-        _ => state.config.password.clone(),
+        _ => state
+            .config
+            .credentials()
+            .map(|credentials| credentials.password),
     }
 }
 

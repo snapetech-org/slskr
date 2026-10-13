@@ -492,7 +492,12 @@ pub(super) async fn legacy_route_http_request_with_headers_inner(
     if method == "DELETE" && route.path == "/api/v0/session" {
         if let Some(token) = utils::bearer_authorization_token(authorization) {
             let now = unix_timestamp();
-            if let Some(claims) = utils::verify_admin_jwt(&state.config, token, now) {
+            if let Some(claims) = utils::verify_admin_jwt(
+                &state.config.controller_web_jwt_key,
+                state.config.controller_profile,
+                token,
+                now,
+            ) {
                 let revoke_result = state
                     .revoked_jwts
                     .write()

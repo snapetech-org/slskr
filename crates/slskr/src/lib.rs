@@ -541,12 +541,13 @@ use self::feature_mutation_controller::{
 use self::file_transfer_runtime::apply_completed_download_permissions;
 use self::file_transfer_runtime::{
     configured_download_destination_path, effective_transfer_group, effective_transfer_group_from,
-    ensure_scoped_download_path, execute_accepted_file_transfer, fail_indirect_browse,
-    fail_indirect_transfer, handle_inbound_file_transfer, inbound_upload_policy,
-    open_download_file_for_read, prepare_transfer_local_path, probe_peer_capability,
-    project_indirect_transfer_response, project_peer_transfer_response,
+    effective_transfer_group_from_records, ensure_scoped_download_path,
+    execute_accepted_file_transfer, fail_indirect_browse, fail_indirect_transfer,
+    handle_inbound_file_transfer, inbound_upload_policy, open_download_file_for_read,
+    prepare_transfer_local_path, probe_peer_capability, project_indirect_transfer_response,
+    project_peer_transfer_response, schedule_queued_downloads,
     render_configured_completed_download_path, safe_download_path, transfer_capacity_available,
-    transfer_group_upload_settings,
+    transfer_group_upload_settings, upload_group_slot_limit_from,
 };
 #[cfg(any(
     feature = "full-controller-tests",
@@ -871,7 +872,7 @@ use self::share_scanner::extension_for;
 use self::share_scanner::reserve_share_scan_entry;
 #[cfg(test)]
 use self::share_scanner::{ShareScanRequest, scan_share_dirs_with_cancellation};
-#[cfg(any(test, feature = "full-controller-tests"))]
+#[cfg(any(test, feature = "full-controller-tests", feature = "bounded-differential"))]
 use self::share_scanner::build_share_index;
 use self::share_scanner::{
     build_share_index_with_progress, scan_share_dirs, summarize_extensions, virtual_share_path,
@@ -1404,13 +1405,14 @@ fn controller_share_value(root: &ShareRoot) -> serde_json::Value {
     value
 }
 
-const MAX_SHARE_SCAN_ENTRIES: usize = 131_072;
-#[cfg(unix)]
-const MAX_SHARE_SCAN_PENDING_DIRECTORIES: usize = 8192;
+const MAX_SHARE_SCAN_ENTRIES: usize = 2_000_000;
+const MAX_SHARE_SCAN_PENDING_DIRECTORIES: usize = 262_144;
+const SHARE_SCAN_FILE_LIMIT_ERROR: &str = "share scan stopped at SLSKR_SHARE_SCAN_MAX_FILES";
 const SHARE_SCAN_ENTRY_LIMIT_ERROR: &str = "share scan stopped at aggregate directory entry limit";
-#[cfg(unix)]
 const SHARE_SCAN_PENDING_DIRECTORY_LIMIT_ERROR: &str =
-    "share scan stopped at pending directory limit";
+    "share scan stopped at pending directory path limit";
+const SHARE_SCAN_DESCRIPTOR_LIMIT_ERROR: &str =
+    "share scan stopped at filesystem descriptor limit";
 
 fn virtual_basename(path: &str) -> &str {
     path.rsplit(['/', '\\']).next().unwrap_or(path)

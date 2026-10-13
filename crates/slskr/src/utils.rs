@@ -346,12 +346,13 @@ pub(crate) struct AdminJwtClaims {
 }
 
 pub(crate) fn issue_admin_jwt(
-    config: &AppConfig,
+    jwt_key: &str,
+    controller_profile: crate::config::ControllerProfile,
+    ttl_millis: u64,
     username: &str,
     now: u64,
 ) -> Option<(String, AdminJwtClaims)> {
-    let secret = config.controller_web_jwt_key.as_str();
-    let issuer = match config.controller_profile {
+    let issuer = match controller_profile {
         crate::config::ControllerProfile::Legacy => "slskd",
         crate::config::ControllerProfile::Native => "slskr",
     };
@@ -362,25 +363,25 @@ pub(crate) fn issue_admin_jwt(
         scope: "*".to_owned(),
         iat: now,
         nbf: now,
-        exp: now.saturating_add(config.controller_web_jwt_ttl_millis / 1000),
+        exp: now.saturating_add(ttl_millis / 1000),
         iss: issuer.to_owned(),
         aud: issuer.to_owned(),
     };
     let header = URL_SAFE_NO_PAD.encode(br#"{"alg":"HS256","typ":"JWT"}"#);
     let payload = URL_SAFE_NO_PAD.encode(serde_json::to_vec(&claims).ok()?);
     let signing_input = format!("{header}.{payload}");
-    let mut mac = Hmac::<Sha256>::new_from_slice(secret.as_bytes()).ok()?;
+    let mut mac = Hmac::<Sha256>::new_from_slice(jwt_key.as_bytes()).ok()?;
     mac.update(signing_input.as_bytes());
     let signature = URL_SAFE_NO_PAD.encode(mac.finalize().into_bytes());
     Some((format!("{signing_input}.{signature}"), claims))
 }
 
 pub(crate) fn verify_admin_jwt(
-    config: &AppConfig,
+    jwt_key: &str,
+    controller_profile: crate::config::ControllerProfile,
     token: &str,
     now: u64,
 ) -> Option<AdminJwtClaims> {
-    let secret = config.controller_web_jwt_key.as_str();
     let mut parts = token.split('.');
     let header = parts.next()?;
     let payload = parts.next()?;
@@ -398,12 +399,12 @@ pub(crate) fn verify_admin_jwt(
         return None;
     }
     let signature = URL_SAFE_NO_PAD.decode(signature).ok()?;
-    let mut mac = Hmac::<Sha256>::new_from_slice(secret.as_bytes()).ok()?;
+    let mut mac = Hmac::<Sha256>::new_from_slice(jwt_key.as_bytes()).ok()?;
     mac.update(format!("{header}.{payload}").as_bytes());
     mac.verify_slice(&signature).ok()?;
     let claims =
         serde_json::from_slice::<AdminJwtClaims>(&URL_SAFE_NO_PAD.decode(payload).ok()?).ok()?;
-    let issuer = match config.controller_profile {
+    let issuer = match controller_profile {
         crate::config::ControllerProfile::Legacy => "slskd",
         crate::config::ControllerProfile::Native => "slskr",
     };
@@ -488,7 +489,13 @@ fn api_credential(
                 name: None,
             })
         } else if scheme == ApiAuthScheme::Jwt {
-            verify_admin_jwt(config, token, unix_timestamp()).map(|claims| ApiCredential {
+            verify_admin_jwt(
+                &config.controller_web_jwt_key,
+                config.controller_profile,
+                token,
+                unix_timestamp(),
+            )
+            .map(|claims| ApiCredential {
                 access: ApiAccess::Administrator,
                 scheme,
                 nowplaying_only: false,
@@ -1074,7 +1081,7 @@ pub fn parse_json_string_prefix(value: &str) -> Option<JsonStringPrefix> {
                 return Some(JsonStringPrefix {
                     value: output,
                     consumed: index + 1,
-                })
+                });
             }
             other => output.push(other),
         }

@@ -481,7 +481,9 @@ pub(super) async fn legacy_route_dispatch_group_00(
                 }
                 state.login_attempts.write().await.clear(&attempt_keys);
                 let Some((token, claims)) = utils::issue_admin_jwt(
-                    &state.config,
+                    &state.config.controller_web_jwt_key,
+                    state.config.controller_profile,
+                    state.config.controller_web_jwt_ttl_millis,
                     &username,
                     issued,
                 ) else {

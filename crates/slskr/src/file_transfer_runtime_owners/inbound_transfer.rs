@@ -92,10 +92,7 @@ pub(crate) async fn handle_inbound_file_transfer(
         maybe_import_lidarr_completed_download(state, &updated).await;
         maybe_upload_ftp_completed_download(state, &updated).await;
     }
-    if transfer.direction == 1 {
-        schedule_queued_uploads(state).await;
-    } else {
-        schedule_queued_downloads(state).await;
-    }
+    schedule_queued_uploads(state).await;
+    schedule_queued_downloads(state).await;
     Ok(())
 }
