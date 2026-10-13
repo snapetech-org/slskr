@@ -67,15 +67,12 @@ export const formatRegionalCompactNumber = (
   const numericValue = Number(value);
   if (!Number.isFinite(numericValue)) return '—';
   const absoluteValue = Math.abs(numericValue);
-  if (absoluteValue >= 1_000_000) {
-    return `${formatRegionalFixedNumber(numericValue / 1_000_000, compactFractionDigits)}M`;
-  }
-  if (absoluteValue >= 1_000) {
-    return `${formatRegionalFixedNumber(numericValue / 1_000, compactFractionDigits)}K`;
-  }
-  return formatRegionalNumber(numericValue, {
-    maximumFractionDigits: smallMaximumFractionDigits,
-  });
+  return new Intl.NumberFormat(getRegionalLocale(), {
+    notation: 'compact',
+    maximumFractionDigits: absoluteValue >= 1_000
+      ? compactFractionDigits
+      : smallMaximumFractionDigits,
+  }).format(numericValue);
 };
 
 export const formatRegionalDateTime = (value) =>

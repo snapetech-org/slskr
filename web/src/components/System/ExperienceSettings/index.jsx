@@ -281,7 +281,9 @@ const ExperienceSettings = () => {
             <Form>
               <Form.Select
                 aria-label={t('Interface language')}
+                dir={language === 'ar' ? 'rtl' : 'ltr'}
                 label={<span lang={language}>{t('Interface language')}</span>}
+                lang={language}
                 onChange={(_, { value }) => setLanguage(value)}
                 options={interfaceLanguageOptions}
                 value={language}
@@ -301,7 +303,9 @@ const ExperienceSettings = () => {
             <Form>
               <Form.Select
                 aria-label={t('Regional format')}
+                dir={language === 'ar' ? 'rtl' : 'ltr'}
                 label={<span lang={language}>{t('Date, time, and number format')}</span>}
+                lang={language}
                 onChange={(_, { value }) => update('regionalFormat', value)}
                 options={options.regionalFormat}
                 value={form.regionalFormat}

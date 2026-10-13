@@ -38,7 +38,33 @@ describe('regional number formatting', () => {
     expect(utils.formatSpeed(1_536)).toBe('1,5 KB/s');
     expect(utils.formatWait(90)).toBe('1,5m');
     expect(utils.formatRegionalNumber(1_234.5)).toBe('1.234,5');
-    expect(utils.formatRegionalCompactNumber(1_234)).toBe('1,2K');
+    expect(utils.formatRegionalCompactNumber(1_234)).toBe(
+      new Intl.NumberFormat('de', {
+        notation: 'compact',
+        maximumFractionDigits: 1,
+      }).format(1_234),
+    );
+  });
+
+  it('uses locale-native compact digits, suffixes, and magnitude boundaries', () => {
+    for (const [locale, value] of [
+      ['ar', 1_234_567],
+      ['ja', 12_345],
+      ['zh-CN', 12_345],
+    ]) {
+      utils.setRegionalFormatPreference(locale);
+      expect(utils.formatRegionalCompactNumber(value)).toBe(
+        new Intl.NumberFormat(locale, {
+          notation: 'compact',
+          maximumFractionDigits: 1,
+        }).format(value),
+      );
+    }
+
+    utils.setRegionalFormatPreference('ar');
+    expect(utils.formatRegionalCompactNumber(1_234_567)).not.toMatch(/[KM]/u);
+    utils.setRegionalFormatPreference('ja');
+    expect(utils.formatRegionalCompactNumber(12_345)).toContain('万');
   });
 
   it('localizes zero byte, speed, and wait values with Arabic digits', () => {

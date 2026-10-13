@@ -106,8 +106,9 @@ describe('ExperienceSettings', () => {
     render(<ExperienceSettings />);
 
     const languageSelect = screen.getAllByRole('combobox')[0];
-    expect(languageSelect).not.toHaveAttribute('lang');
-    expect(languageSelect).not.toHaveAttribute('dir');
+    expect(languageSelect).toHaveAttribute('lang', 'ar');
+    expect(languageSelect).toHaveAttribute('dir', 'rtl');
+    expect(languageSelect).toHaveAccessibleName(languageSelect.getAttribute('aria-label'));
     fireEvent.click(languageSelect);
 
     for (const option of INTERFACE_LANGUAGE_OPTIONS) {
@@ -123,8 +124,9 @@ describe('ExperienceSettings', () => {
     render(<ExperienceSettings />);
 
     const regionalSelect = screen.getAllByRole('combobox')[1];
-    expect(regionalSelect).not.toHaveAttribute('lang');
-    expect(regionalSelect).not.toHaveAttribute('dir');
+    expect(regionalSelect).toHaveAttribute('lang', 'ar');
+    expect(regionalSelect).toHaveAttribute('dir', 'rtl');
+    expect(regionalSelect).toHaveAccessibleName(regionalSelect.getAttribute('aria-label'));
     fireEvent.click(regionalSelect);
 
     for (const option of REGIONAL_FORMAT_OPTIONS) {
