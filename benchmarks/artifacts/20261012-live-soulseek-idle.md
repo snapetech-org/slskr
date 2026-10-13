@@ -70,9 +70,11 @@ sequential trials.
 
 After the primary matrix, one separate DHT-on window completed on `kspld0`.
 The authenticated session was valid at both measurement boundaries, and DHT
-was enabled, running, and bootstrapped at both status checks. It used 0.664036
-CPU seconds over 600.214 seconds (0.110633% of one logical CPU); host CPU busy
-was 21.76% during the window. This single supplemental trial is kept separate
+was enabled, running, and bootstrapped at both status checks. The initial DHT
+status carried a last-error indicator with 71 discovered peers; the indicator
+was clear at the end, with 69 discovered peers. It used 0.664036 CPU seconds
+over 600.214 seconds (0.110633% of one logical CPU); host CPU busy was 21.76%
+during the window. This single supplemental trial is kept separate
 from the three-window DHT-on median above. Its host load samples and complete
 metadata are in the [supplemental DHT-on retry artifact](20261012-live-soulseek-slskr-dht-retry.json).
 

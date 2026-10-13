@@ -83,7 +83,7 @@ The [live report](benchmarks/artifacts/20261012-live-soulseek-idle.md)
 describes the method, invalid trials, DHT status, host conditions, and all
 [primary raw trials](benchmarks/artifacts/20261012-live-soulseek-idle-matrix.json),
 [the slskd replacement trial](benchmarks/artifacts/20261012-live-soulseek-slskd-retry-2.json),
-and [the aborted kspls0 attempt](benchmarks/artifacts/20261012-live-soulseek-idle-kspls0-aborted.json). A separate authenticated DHT-on retry used 0.664036 CPU seconds over 600.214 seconds (0.110633% of one logical CPU), with DHT healthy at both measurement boundaries; it is kept separate from the three-window matrix median and documented in the report.
+and [the aborted kspls0 attempt](benchmarks/artifacts/20261012-live-soulseek-idle-kspls0-aborted.json). A separate authenticated DHT-on retry used 0.664036 CPU seconds over 600.214 seconds (0.110633% of one logical CPU), with DHT running and bootstrapped at both boundaries, though the initial status carried a last-error indicator that had cleared by the end; it is kept separate from the three-window matrix median and documented in the report.
 
 For a guided first run, see [Getting Started](./docs/getting-started.md). The
 [feature guide](./docs/FEATURES.md) and [status guide](./docs/status.md)

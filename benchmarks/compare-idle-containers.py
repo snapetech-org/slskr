@@ -138,6 +138,24 @@ def image_info(image: str) -> dict[str, Any]:
     }
 
 
+def share_scan_disabled_for_profile(app: str, live_session: bool) -> bool:
+    """Return whether run_command disables share scanning for this profile."""
+    return app == "slskd" or live_session
+
+
+def share_scan_metadata(
+    profiles: list[str], live_session: bool
+) -> dict[str, Any]:
+    by_profile = {
+        app: share_scan_disabled_for_profile(app, live_session)
+        for app in profiles
+    }
+    return {
+        "share_scan_disabled": all(by_profile.values()),
+        "share_scan_disabled_by_profile": by_profile,
+    }
+
+
 def run_command(
     app: str,
     container: str,
@@ -166,7 +184,6 @@ def run_command(
                 "-e", "SLSKD_SLSK_PASSWORD",
                 "-e", "SLSKD_SLSK_ADDRESS=vps.slsknet.org",
                 "-e", "SLSKD_SLSK_PORT=2271",
-                "-e", "SLSKD_NO_SHARE_SCAN=true",
             ])
         elif app == "slskr-dht":
             command.extend([
@@ -184,13 +201,13 @@ def run_command(
                 "-e", "SLSKD_SLSK_PORT=2271",
                 "-e", "SLSKD_API_KEY",
                 "-e", "SLSKD_NO_CONNECT=false",
-                "-e", "SLSKD_NO_SHARE_SCAN=true",
             ])
         else:
             command.extend([
                 "-e", "SLSKD_NO_CONNECT=true",
-                "-e", "SLSKD_NO_SHARE_SCAN=true",
             ])
+    if share_scan_disabled_for_profile(app, live_session):
+        command.extend(["-e", "SLSKD_NO_SHARE_SCAN=true"])
     command.append(IMAGES[app])
     return command
 
@@ -488,7 +505,7 @@ def main() -> int:
                 if args.live_session else "not configured"
             ),
             "server_endpoint": "vps.slsknet.org:2271" if args.live_session else None,
-            "share_scan_disabled": args.live_session,
+            **share_scan_metadata(args.profiles, args.live_session),
             "healthchecks": False,
             "cpu_accounting": "host-read cgroup v2 cpu.stat usage_usec",
         },
