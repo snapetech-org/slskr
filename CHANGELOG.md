@@ -18,6 +18,10 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+- Filter candidate snapshots for credential filenames with multiple leading
+  qualifiers or trailing camel-case environment names while preserving ordinary
+  source modules and documentation.
+
 ## [0.2.57] — 2026-10-12
 
 - Added live progress state and scan logs for large share libraries.
