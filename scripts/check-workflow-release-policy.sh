@@ -32,7 +32,7 @@ for expected in \
 done
 
 trusted_runner_condition="((github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'))"
-trusted_runner_labels="fromJSON('[\"self-hosted\",\"Linux\",\"X64\",\"host\",\"linux-build\",\"linux-amd64\"]')"
+trusted_runner_labels="fromJSON('[\"self-hosted\",\"Linux\",\"X64\",\"host\",\"linux-build\",\"linux-amd64\",\"kspls0\"]')"
 push_branches="$(
   awk '
     /^  push:$/ { in_push=1; next }
@@ -52,7 +52,7 @@ if [[ "$push_branches" != "main" ]]; then
   status=1
 fi
 if ! rg -n -F "$trusted_runner_labels" .github/workflows/ci.yml >/dev/null; then
-  printf 'workflow release policy check failed: trusted main jobs must target the shared local runner pool\n' >&2
+  printf 'workflow release policy check failed: trusted main jobs must target the kspls0 server runner\n' >&2
   status=1
 fi
 if ! rg -n -F 'CARGO_BUILD_JOBS=4' .github/workflows/ci.yml >/dev/null; then
