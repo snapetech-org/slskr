@@ -3,6 +3,7 @@ name: CI
 env:
   ACTIONLINT_VERSION: v1.7.12
   CARGO_AUDIT_VERSION: 0.22.1
+  CARGO_AUDIT_CACHE_SCHEMA: v2
   SLSKR_SECURITY_SCANS_REQUIRED: '1'
   SLSKR_SEMGREP_IMAGE: semgrep/semgrep:1.167.0
   SLSKR_TRIVY_IMAGE: aquasec/trivy:0.72.0
@@ -47,8 +48,8 @@ jobs:
           retention-days: 7
 
   rust:
-    # Pull request code always uses hosted runners; only main may use the local Linux pool.
-    runs-on: ${{ ((github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')) && fromJSON('["self-hosted","Linux","X64","host","linux-build","linux-amd64"]') || 'ubuntu-latest' }}
+    # Pull request code always uses hosted runners; only main may use the server-local Linux runner.
+    runs-on: ${{ ((github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')) && fromJSON('["self-hosted","Linux","X64","host","linux-build","linux-amd64","kspls0"]') || 'ubuntu-latest' }}
     timeout-minutes: 360
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
@@ -217,10 +218,11 @@ jobs:
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # actions/cache@v6.1.0
         with:
           path: ~/.cargo/bin/cargo-audit
-          key: cargo-audit-${{ runner.os }}-${{ runner.arch }}-${{ env.CARGO_AUDIT_VERSION }}
-      - name: Install cargo-audit
-        if: steps.cargo-audit-cache.outputs.cache-hit != 'true'
-        run: cargo install cargo-audit --version "$CARGO_AUDIT_VERSION" --locked
+          key: cargo-audit-${{ env.CARGO_AUDIT_CACHE_SCHEMA }}-${{ runner.os }}-${{ runner.arch }}-${{ env.CARGO_AUDIT_VERSION }}
+      - name: Ensure cargo-audit is available
+        run: scripts/ensure-cargo-audit.sh
+      - name: Test cargo-audit cache and PATH handling
+        run: scripts/test-ensure-cargo-audit.sh
       - run: scripts/check-process-memory-guard.sh
       - run: scripts/test-process-memory-guard.sh
       - run: scripts/test-live-interop-account-validation.sh
