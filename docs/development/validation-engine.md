@@ -6,6 +6,14 @@ workflow run and source checks for the Rust platform test matrix. On a GitHub
 rerun, successful receipts from earlier attempts of that same run remain valid
 when their source and inventory identities match.
 
+## GitHub runner routing
+
+Pull request and non-main validation use GitHub-hosted runners. Only trusted
+pushes to `main` and manual runs against `main` route the Rust lane to the
+server-local Linux runner. The desktop runner's temporary filesystem had
+limited free space, so the heavier trusted lane now uses the server's larger
+host disk. Runner scratch remains private to each workflow run.
+
 ## Local commands
 
 ```sh
