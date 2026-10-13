@@ -5,4 +5,4 @@ area: validation-security
 action: none
 breaking: false
 ---
-Trusted validation snapshots now reject camel-case and dot-separated credential filenames and exempt only the known dashboard API keys page, preventing candidate code from reading matching credential files.
+Trusted validation snapshots now reject camel-case and dot-separated credential filenames plus qualified credential directories outside source trees. Only the known dashboard API keys page is exempt, preventing candidate code from reading matching credential files.

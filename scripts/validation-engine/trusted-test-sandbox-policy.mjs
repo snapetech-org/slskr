@@ -88,6 +88,10 @@ const sensitiveCredentialConfigFile =
   /^[.]?(?:auth(?:entication)?|tokens?|credentials?|secrets?|private[-_]?keys?|api[-_]?keys?|access[-_]?tokens?|refresh[-_]?tokens?|client[-_]?secrets?)[.](?:json|ya?ml|toml|ini|cfg|conf|env(?:[.](?!example$)[^/]+)?|properties|xml|txt)$/iu;
 const sensitiveCredentialMaterialFile =
   /(?:^|[._-])(?:private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)(?=$|[._-])/iu;
+const camelCaseCredentialMaterialFile =
+  /(?<=[a-z0-9])(?:privateKeys?|ApiKeys?|APIKeys?|AccessTokens?|RefreshTokens?|ClientSecrets?)(?=$|[._-])/u;
+const qualifiedCredentialDirectoryName =
+  /(?:^|[._-])(?:auth(?:entication)?|tokens?|credentials?|secrets?|private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)(?=$|[._-])/iu;
 const sourceTreeDirectory =
   /^(?:src|source|packages|apps|web|dashboard|client-go|client-python|client-ts|crates|scripts|lib|tests?|__tests__|fixtures?)$/iu;
 const knownApiKeysPage = 'dashboard/src/pages/ApiKeys.tsx';
@@ -111,12 +115,14 @@ export function isSensitiveCandidatePath(relativePath) {
   )
     return true;
   if (
-    sensitiveCredentialMaterialFile.test(filename) &&
+    (sensitiveCredentialMaterialFile.test(filename) ||
+      camelCaseCredentialMaterialFile.test(filename)) &&
     normalizedPath !== knownApiKeysPage
   ) return true;
 
   const credentialDirectoryIndex = directories.findIndex((segment) =>
-    sensitiveCredentialName.test(segment),
+    sensitiveCredentialName.test(segment) ||
+    qualifiedCredentialDirectoryName.test(segment),
   );
   if (credentialDirectoryIndex < 0) return false;
 
