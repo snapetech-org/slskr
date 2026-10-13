@@ -203,7 +203,8 @@ for anchor in \
   'share_scan_bounds_pending_directory_descriptors' \
   'MAX_SHARE_SCAN_TASKS' \
   'share_rebuild_routes_reject_concurrent_scans' \
-  'build_share_index_with_cancellation(&config, cancellation)' \
+  'build_share_index_with_progress(&config, cancellation, worker_progress)' \
+  'graceful_shutdown_cancels_registered_share_rebuild_before_publish' \
   'SHARE_SCAN_CANCELLED_ERROR' \
   'share_rebuild_errors_redact_internal_details' \
   'share_snapshot_errors_redact_internal_details' \
