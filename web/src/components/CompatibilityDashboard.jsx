@@ -1,4 +1,4 @@
-import { formatRegionalNumber, formatBytes, formatDate, formatSpeed, formatWait, getFileName, truncate } from '../lib/util';
+import { formatRegionalFixedNumber, formatRegionalNumber, formatBytes, formatDate, formatSpeed, formatWait, getFileName, truncate } from '../lib/util';
 import './CompatibilityDashboard.css';
 import { toDisplayError } from '../lib/errors';
 import { encodePathSegment } from '../lib/pathEncoding';
@@ -110,7 +110,10 @@ const formatBytesParts = (bytes) => {
     units.length - 1,
     Math.floor(Math.log(bytes) / Math.log(1_024)),
   );
-  return { unit: units[index], value: (bytes / 1_024 ** index).toFixed(1) };
+  return {
+    unit: units[index],
+    value: formatRegionalFixedNumber(bytes / 1_024 ** index, 1),
+  };
 };
 
 

@@ -43,8 +43,10 @@ const readLanguage = () => {
   }
 };
 
-const applyDocumentLanguage = (_language) => {
+const applyDocumentLanguage = () => {
   if (typeof document === 'undefined') return;
+  // Most shipped screens are English. Translated navigation and preference
+  // labels carry their own lang and direction metadata.
   document.documentElement.lang = 'en';
   document.documentElement.dir = 'ltr';
 };
@@ -75,10 +77,16 @@ export const setInterfaceLanguage = (language) => {
 };
 
 export const resetInterfaceLanguage = () => {
-  try { localStorage.removeItem(STORAGE_KEY); } catch { /* Use the browser language for this tab. */ }
+  let removed = true;
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    removed = false;
+  }
   activeLanguage = browserLanguage();
-  applyDocumentLanguage(activeLanguage);
+  applyDocumentLanguage();
   notify();
+  return removed;
 };
 
 export const useInterfaceLanguage = () => {

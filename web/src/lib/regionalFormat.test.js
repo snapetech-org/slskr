@@ -7,11 +7,18 @@ import {
   formatRegionalNumber,
   formatRegionalTime,
   getRegionalLocale,
+  setRegionalFormatPreference,
 } from './util';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 describe('regional format preferences', () => {
   beforeEach(() => {
+    localStorage.clear();
+    setRegionalFormatPreference('system');
+  });
+
+  afterEach(() => {
+    setRegionalFormatPreference('system');
     localStorage.clear();
   });
 
@@ -22,6 +29,7 @@ describe('regional format preferences', () => {
       EXPERIENCE_PREFERENCES_STORAGE_KEY,
       JSON.stringify({ regionalFormat: 'system' }),
     );
+    setRegionalFormatPreference('system');
 
     expect(getRegionalLocale()).toBeUndefined();
   });
@@ -31,35 +39,41 @@ describe('regional format preferences', () => {
       EXPERIENCE_PREFERENCES_STORAGE_KEY,
       JSON.stringify({ regionalFormat: 'de' }),
     );
+    setRegionalFormatPreference('de');
 
     expect(getRegionalLocale()).toBe('de');
   });
 
   it('falls back safely for malformed, oversized, and unsupported values', () => {
     localStorage.setItem(EXPERIENCE_PREFERENCES_STORAGE_KEY, 'not-json');
+    setRegionalFormatPreference('system');
     expect(getRegionalLocale()).toBeUndefined();
 
     localStorage.setItem(
       EXPERIENCE_PREFERENCES_STORAGE_KEY,
       'x'.repeat(64 * 1024 + 1),
     );
+    setRegionalFormatPreference('system');
     expect(getRegionalLocale()).toBeUndefined();
 
     localStorage.setItem(
       EXPERIENCE_PREFERENCES_STORAGE_KEY,
       JSON.stringify({ regionalFormat: 'unsupported-locale' }),
     );
+    setRegionalFormatPreference('system');
     expect(getRegionalLocale()).toBeUndefined();
   });
 
   it('ignores non-object preference data and non-string settings', () => {
     localStorage.setItem(EXPERIENCE_PREFERENCES_STORAGE_KEY, JSON.stringify(['de']));
+    setRegionalFormatPreference('system');
     expect(getRegionalLocale()).toBeUndefined();
 
     localStorage.setItem(
       EXPERIENCE_PREFERENCES_STORAGE_KEY,
       JSON.stringify({ regionalFormat: 17 }),
     );
+    setRegionalFormatPreference('system');
     expect(getRegionalLocale()).toBeUndefined();
   });
   it('formats numbers and dates with the selected locale', () => {
@@ -67,6 +81,7 @@ describe('regional format preferences', () => {
       EXPERIENCE_PREFERENCES_STORAGE_KEY,
       JSON.stringify({ regionalFormat: 'de' }),
     );
+    setRegionalFormatPreference('de');
     const timestamp = '2026-01-02T15:04:05Z';
     const date = new Date(timestamp);
 
@@ -92,6 +107,7 @@ describe('regional format preferences', () => {
         EXPERIENCE_PREFERENCES_STORAGE_KEY,
         JSON.stringify({ regionalFormat: value }),
       );
+      setRegionalFormatPreference(value);
       expect(getRegionalLocale()).toBe(value === 'system' ? undefined : value);
     }
   });

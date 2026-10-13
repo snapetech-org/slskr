@@ -1,5 +1,10 @@
 import '@testing-library/jest-dom';
 import ExperienceSettings from './index';
+import {
+  resetInterfaceLanguage,
+  setInterfaceLanguage,
+} from '../../../lib/interfaceLocale';
+import { setRegionalFormatPreference } from '../../../lib/util';
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -9,6 +14,8 @@ const storageKey = 'slskr:experience-preferences:v1';
 describe('ExperienceSettings', () => {
   beforeEach(() => {
     localStorage.clear();
+    resetInterfaceLanguage();
+    setRegionalFormatPreference('system');
     Object.assign(navigator, {
       clipboard: {
         writeText: vi.fn().mockResolvedValue(undefined),
@@ -55,5 +62,18 @@ describe('ExperienceSettings', () => {
     expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
       expect.stringContaining('Messages:'),
     );
+  });
+
+  it('resets the browser-local interface language with the other preferences', () => {
+    setInterfaceLanguage('de');
+    render(<ExperienceSettings />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Reset' }));
+
+    expect(localStorage.getItem('slskr.interface-language')).toBeNull();
+    expect(document.documentElement.lang).toBe('en');
+    expect(
+      screen.getByText('Experience preferences reset to defaults.'),
+    ).toBeInTheDocument();
   });
 });

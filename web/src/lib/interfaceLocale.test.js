@@ -2,6 +2,7 @@ import UI_LABELS from './ui-labels.json';
 import {
   INTERFACE_LANGUAGE_OPTIONS,
   applyInitialInterfaceLanguage,
+  resetInterfaceLanguage,
   setInterfaceLanguage,
   useInterfaceLanguage,
 } from './interfaceLocale';
@@ -11,8 +12,7 @@ const storageKey = 'slskr.interface-language';
 const originalLanguages = Object.getOwnPropertyDescriptor(navigator, 'languages');
 
 afterEach(() => {
-  act(() => setInterfaceLanguage('en'));
-  localStorage.removeItem(storageKey);
+  act(() => resetInterfaceLanguage());
   if (originalLanguages) {
     Object.defineProperty(navigator, 'languages', originalLanguages);
   }
@@ -29,6 +29,7 @@ describe('interface language', () => {
       'ja',
       'fr',
       'pt-BR',
+      'ar',
       'ko',
       'zh-Hant',
       'vi',
@@ -42,7 +43,7 @@ describe('interface language', () => {
     }
   });
 
-  it('translates supported interface strings and sets document language and direction', () => {
+  it('translates supported interface strings without changing the mostly-English page language or direction', () => {
     const { result } = renderHook(() => useInterfaceLanguage());
 
     for (const option of INTERFACE_LANGUAGE_OPTIONS) {
@@ -52,10 +53,8 @@ describe('interface language', () => {
       expect(result.current.t('Search')).toBe(
         option.value === 'en' ? 'Search' : UI_LABELS.Search[option.value],
       );
-      expect(document.documentElement.lang).toBe(option.value);
-      expect(document.documentElement.dir).toBe(
-        option.value === 'ar' ? 'rtl' : 'ltr',
-      );
+      expect(document.documentElement.lang).toBe('en');
+      expect(document.documentElement.dir).toBe('ltr');
       expect(localStorage.getItem(storageKey)).toBe(option.value);
     }
   });
@@ -80,7 +79,7 @@ describe('interface language', () => {
 
     const { result, unmount } = renderHook(() => useInterfaceLanguage());
     expect(result.current.language).toBe('fr');
-    expect(document.documentElement.lang).toBe('fr');
+    expect(document.documentElement.lang).toBe('en');
 
     localStorage.setItem(storageKey, 'de');
     applyInitialInterfaceLanguage();
@@ -88,5 +87,23 @@ describe('interface language', () => {
 
     const restored = renderHook(() => useInterfaceLanguage());
     expect(restored.result.current.language).toBe('de');
+  });
+
+  it('resets the saved language to the browser preference', () => {
+    Object.defineProperty(navigator, 'languages', {
+      configurable: true,
+      value: ['fr-CA', 'en-US'],
+    });
+    const { result } = renderHook(() => useInterfaceLanguage());
+    act(() => setInterfaceLanguage('de'));
+
+    let removed;
+    act(() => { removed = resetInterfaceLanguage(); });
+
+    expect(removed).toBe(true);
+    expect(result.current.language).toBe('fr');
+    expect(localStorage.getItem(storageKey)).toBeNull();
+    expect(document.documentElement.lang).toBe('en');
+    expect(document.documentElement.dir).toBe('ltr');
   });
 });

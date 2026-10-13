@@ -1,4 +1,8 @@
-import { formatRegionalNumber, formatRegionalTime } from '../../../lib/util';
+import {
+  formatBytesFixed,
+  formatRegionalCompactNumber,
+  formatRegionalTime,
+} from '../../../lib/util';
 import { getKpiMetrics } from '../../../lib/telemetry';
 import { toDisplayError } from '../../../lib/errors';
 import { LoaderSegment } from '../../Shared';
@@ -19,29 +23,12 @@ import {
 const formatBytes = (bytes) => {
   const numericBytes = Number(bytes);
   if (!Number.isFinite(numericBytes) || numericBytes <= 0) return '0 B';
-  const k = 1_024;
-  const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
-  const i = Math.min(
-    sizes.length - 1,
-    Math.floor(Math.log(numericBytes) / Math.log(k)),
-  );
-  return formatRegionalNumber(numericBytes / k ** i, {
-    minimumFractionDigits: 1,
-    maximumFractionDigits: 1,
-  }) + ' ' + sizes[i];
+  return formatBytesFixed(numericBytes, 1);
 };
 
 const formatNumber = (value) => {
   if (value === undefined || value === null) return '—';
-  const numericValue = Number(value);
-  if (!Number.isFinite(numericValue)) return '—';
-  if (numericValue >= 1_000_000) {
-    return formatRegionalNumber(numericValue / 1_000_000, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + 'M';
-  }
-  if (numericValue >= 1_000) {
-    return formatRegionalNumber(numericValue / 1_000, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + 'K';
-  }
-  return formatRegionalNumber(numericValue, { maximumFractionDigits: 2 });
+  return formatRegionalCompactNumber(value, { smallMaximumFractionDigits: 2 });
 };
 
 // Extract the first sample value from a metric, or null

@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom';
 import { createLogsHubConnection } from '../../../lib/hubFactory';
 import { getLogs, updateLogLevel } from '../../../lib/options';
-import Logs from './index';
+import Logs, { formatLogTimestamp } from './index';
+import { setRegionalFormatPreference } from '../../../lib/util';
 import { cleanup, render, screen } from '@testing-library/react';
 import React from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -17,6 +18,8 @@ vi.mock('../../../lib/options', () => ({
 
 describe('Logs', () => {
   beforeEach(() => {
+    localStorage.clear();
+    setRegionalFormatPreference('system');
     getLogs.mockRejectedValue({
       response: { data: { message: 'Log endpoint unavailable' } },
     });
@@ -33,6 +36,8 @@ describe('Logs', () => {
 
   afterEach(() => {
     cleanup();
+    setRegionalFormatPreference('system');
+    localStorage.clear();
     vi.clearAllMocks();
   });
 
@@ -44,5 +49,23 @@ describe('Logs', () => {
     );
     expect(screen.getByText('No logs are available from the server')).toBeInTheDocument();
     expect(screen.queryByText('No logs match the selected filter')).not.toBeInTheDocument();
+  });
+
+  it('formats log timestamps with the selected regional time and seconds', () => {
+    localStorage.setItem(
+      'slskr:experience-preferences:v1',
+      JSON.stringify({ regionalFormat: 'de' }),
+    );
+    setRegionalFormatPreference('de');
+    const timestamp = Date.UTC(2026, 9, 13, 12, 34, 56);
+    const date = new Date(timestamp);
+
+    expect(formatLogTimestamp(timestamp)).toBe(
+      new Intl.DateTimeFormat('de', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+      }).format(date),
+    );
   });
 });

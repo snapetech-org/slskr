@@ -1,6 +1,13 @@
 import { REGIONAL_FORMAT_OPTIONS } from '../../../lib/regionalFormat';
-import { INTERFACE_LANGUAGE_OPTIONS, resetInterfaceLanguage, useInterfaceLanguage } from '../../../lib/interfaceLocale';
-import { EXPERIENCE_PREFERENCES_STORAGE_KEY, setRegionalFormatPreference } from '../../../lib/util';
+import {
+  INTERFACE_LANGUAGE_OPTIONS,
+  resetInterfaceLanguage,
+  useInterfaceLanguage,
+} from '../../../lib/interfaceLocale';
+import {
+  EXPERIENCE_PREFERENCES_STORAGE_KEY,
+  setRegionalFormatPreference,
+} from '../../../lib/util';
 import { copyToClipboard } from '../../../lib/clipboard';
 import { toDisplayError } from '../../../lib/errors';
 import { readBoundedJson } from '../../../lib/persistedJson';
@@ -185,12 +192,12 @@ const ExperienceSettings = () => {
   };
 
   const reset = () => {
-    resetInterfaceLanguage();
-    const removed = removeLocalStorageItem(storageKey);
+    const preferencesRemoved = removeLocalStorageItem(storageKey);
+    const languageRemoved = resetInterfaceLanguage();
     setForm(defaults);
     setRegionalFormatPreference(defaults.regionalFormat);
     setMessage(
-      removed
+      preferencesRemoved && languageRemoved
         ? 'Experience preferences reset to defaults.'
         : 'Unable to reset experience preferences in this browser.',
     );
@@ -214,7 +221,7 @@ const ExperienceSettings = () => {
   };
 
   return (
-    <div className="experience-settings">
+    <div className="experience-settings" lang="en">
       <Segment>
         <Header as="h3">
           <Icon name="compass" />
@@ -241,14 +248,16 @@ const ExperienceSettings = () => {
       >
         <Card fluid>
           <Card.Content>
-            <Card.Header><Icon name="language" /> {t('Interface language')}</Card.Header>
-            <Card.Meta>{t('Choose the language used for the interface.')} {t('Translations currently cover navigation and language settings; most other screens are still in English.')}</Card.Meta>
+            <Card.Header><Icon name="language" /> <span dir={language === 'ar' ? 'rtl' : 'ltr'} lang={language}>{t('Interface language')}</span></Card.Header>
+            <Card.Meta dir={language === 'ar' ? 'rtl' : 'ltr'} lang={language}>{t('Choose the language used for the interface.')} {t('Translations currently cover navigation and language settings; most other screens are still in English.')}</Card.Meta>
           </Card.Content>
           <Card.Content>
             <Form>
               <Form.Select
                 aria-label={t('Interface language')}
-                label={t('Interface language')}
+                dir={language === 'ar' ? 'rtl' : 'ltr'}
+                label={<span lang={language}>{t('Interface language')}</span>}
+                lang={language}
                 onChange={(_, { value }) => setLanguage(value)}
                 options={INTERFACE_LANGUAGE_OPTIONS}
                 value={language}
@@ -260,15 +269,17 @@ const ExperienceSettings = () => {
           <Card.Content>
             <Card.Header>
               <Icon name="globe" />
-              {t('Regional format')}
+              <span dir={language === 'ar' ? 'rtl' : 'ltr'} lang={language}>{t('Regional format')}</span>
             </Card.Header>
-            <Card.Meta>{t('Choose how dates, times, and numbers are displayed. This setting is separate from interface language.')}</Card.Meta>
+            <Card.Meta dir={language === 'ar' ? 'rtl' : 'ltr'} lang={language}>{t('Choose how dates, times, and numbers are displayed. This setting is separate from interface language.')}</Card.Meta>
           </Card.Content>
           <Card.Content>
             <Form>
               <Form.Select
                 aria-label={t('Regional format')}
-                label={t('Date, time, and number format')}
+                dir={language === 'ar' ? 'rtl' : 'ltr'}
+                label={<span lang={language}>{t('Date, time, and number format')}</span>}
+                lang={language}
                 onChange={(_, { value }) => update('regionalFormat', value)}
                 options={options.regionalFormat}
                 value={form.regionalFormat}

@@ -10,7 +10,8 @@
     "ko": "검색",
     "zh-Hant": "搜尋",
     "vi": "Tìm kiếm",
-    "id": "Cari"
+    "id": "Cari",
+    "ar": "بحث"
   },
   "Downloads": {
     "es": "Descargas",
@@ -23,7 +24,8 @@
     "ko": "다운로드",
     "zh-Hant": "下載",
     "vi": "Tải xuống",
-    "id": "Unduhan"
+    "id": "Unduhan",
+    "ar": "التنزيلات"
   },
   "Interface language": {
     "es": "Idioma de la interfaz",
@@ -36,7 +38,8 @@
     "ko": "인터페이스 언어",
     "zh-Hant": "介面語言",
     "vi": "Ngôn ngữ giao diện",
-    "id": "Bahasa antarmuka"
+    "id": "Bahasa antarmuka",
+    "ar": "لغة الواجهة"
   },
   "Choose the language used for the interface.": {
     "es": "Elige el idioma de la interfaz.",
@@ -49,7 +52,8 @@
     "ko": "인터페이스 언어를 선택하세요.",
     "zh-Hant": "選擇介面使用的語言。",
     "vi": "Chọn ngôn ngữ giao diện.",
-    "id": "Pilih bahasa antarmuka."
+    "id": "Pilih bahasa antarmuka.",
+    "ar": "اختر اللغة المستخدمة في الواجهة."
   },
   "Regional format": {
     "es": "Formato regional",
@@ -62,7 +66,8 @@
     "ko": "지역 형식",
     "zh-Hant": "地區格式",
     "vi": "Định dạng khu vực",
-    "id": "Format regional"
+    "id": "Format regional",
+    "ar": "التنسيق الإقليمي"
   },
   "Date, time, and number format": {
     "es": "Fechas, horas y números",
@@ -75,7 +80,8 @@
     "ko": "날짜, 시간 및 숫자",
     "zh-Hant": "日期、時間與數字",
     "vi": "Ngày, giờ và số",
-    "id": "Tanggal, waktu, dan angka"
+    "id": "Tanggal, waktu, dan angka",
+    "ar": "تنسيق التاريخ والوقت والأرقام"
   },
   "Choose how dates, times, and numbers are displayed. This setting is separate from interface language.": {
     "es": "Elige cómo se muestran las fechas, horas y números. Este ajuste es independiente del idioma de la interfaz.",
@@ -88,7 +94,8 @@
     "ko": "날짜, 시간, 숫자 표시 방식을 선택하세요. 이 설정은 인터페이스 언어와 별개입니다.",
     "zh-Hant": "選擇日期、時間與數字的顯示方式。此設定與介面語言分開。",
     "vi": "Chọn cách hiển thị ngày, giờ và số. Tùy chọn này độc lập với ngôn ngữ giao diện.",
-    "id": "Pilih cara tanggal, waktu, dan angka ditampilkan. Pengaturan ini terpisah dari bahasa antarmuka."
+    "id": "Pilih cara tanggal, waktu, dan angka ditampilkan. Pengaturan ini terpisah dari bahasa antarmuka.",
+    "ar": "اختر طريقة عرض التواريخ والأوقات والأرقام. هذا الإعداد مستقل عن لغة الواجهة."
   },
   "More": {
     "es": "Más",
@@ -101,7 +108,8 @@
     "ko": "더 보기",
     "zh-Hant": "更多",
     "vi": "Thêm",
-    "id": "Lainnya"
+    "id": "Lainnya",
+    "ar": "المزيد"
   },
   "Wishlist": {
     "es": "Lista de deseos",
@@ -114,7 +122,8 @@
     "ko": "위시리스트",
     "zh-Hant": "願望清單",
     "vi": "Danh sách yêu thích",
-    "id": "Daftar keinginan"
+    "id": "Daftar keinginan",
+    "ar": "قائمة الأمنيات"
   },
   "Browse": {
     "es": "Explorar",
@@ -127,7 +136,8 @@
     "ko": "둘러보기",
     "zh-Hant": "瀏覽",
     "vi": "Duyệt",
-    "id": "Jelajahi"
+    "id": "Jelajahi",
+    "ar": "استعراض"
   },
   "Rooms": {
     "es": "Salas",
@@ -140,7 +150,8 @@
     "ko": "방",
     "zh-Hant": "聊天室",
     "vi": "Phòng",
-    "id": "Ruang"
+    "id": "Ruang",
+    "ar": "الغرف"
   },
   "Messages": {
     "es": "Mensajes",
@@ -153,7 +164,8 @@
     "ko": "메시지",
     "zh-Hant": "訊息",
     "vi": "Tin nhắn",
-    "id": "Pesan"
+    "id": "Pesan",
+    "ar": "الرسائل"
   },
   "Users": {
     "es": "Usuarios",
@@ -166,7 +178,8 @@
     "ko": "사용자",
     "zh-Hant": "使用者",
     "vi": "Người dùng",
-    "id": "Pengguna"
+    "id": "Pengguna",
+    "ar": "المستخدمون"
   },
   "Primary navigation": {
     "es": "Navegación principal",
@@ -179,7 +192,8 @@
     "ko": "기본 탐색",
     "zh-Hant": "主導覽",
     "vi": "Điều hướng chính",
-    "id": "Navigasi utama"
+    "id": "Navigasi utama",
+    "ar": "التنقل الرئيسي"
   },
   "More navigation options": {
     "es": "Más opciones de navegación",
@@ -192,7 +206,8 @@
     "ko": "더 많은 탐색 옵션",
     "zh-Hant": "更多導覽選項",
     "vi": "Thêm tùy chọn điều hướng",
-    "id": "Opsi navigasi lainnya"
+    "id": "Opsi navigasi lainnya",
+    "ar": "خيارات تنقل إضافية"
   },
   "Dashboard": {
     "es": "Panel",
@@ -205,7 +220,8 @@
     "ko": "대시보드",
     "zh-Hant": "儀表板",
     "vi": "Bảng điều khiển",
-    "id": "Dasbor"
+    "id": "Dasbor",
+    "ar": "لوحة التحكم"
   },
   "Uploads": {
     "es": "Subidas",
@@ -218,7 +234,8 @@
     "ko": "업로드",
     "zh-Hant": "上傳",
     "vi": "Tải lên",
-    "id": "Unggahan"
+    "id": "Unggahan",
+    "ar": "الملفات المرفوعة"
   },
   "Chat": {
     "es": "Chat",
@@ -231,7 +248,8 @@
     "ko": "채팅",
     "zh-Hant": "聊天",
     "vi": "Trò chuyện",
-    "id": "Obrolan"
+    "id": "Obrolan",
+    "ar": "الدردشة"
   },
   "Discovery Graph": {
     "es": "Grafo de descubrimiento",
@@ -244,7 +262,8 @@
     "ko": "탐색 그래프",
     "zh-Hant": "探索圖",
     "vi": "Đồ thị khám phá",
-    "id": "Graf penemuan"
+    "id": "Graf penemuan",
+    "ar": "مخطط الاكتشاف"
   },
   "Playlist Intake": {
     "es": "Importación de listas",
@@ -257,7 +276,8 @@
     "ko": "재생목록 가져오기",
     "zh-Hant": "播放清單匯入",
     "vi": "Nhập danh sách phát",
-    "id": "Impor daftar putar"
+    "id": "Impor daftar putar",
+    "ar": "استيراد قائمة التشغيل"
   },
   "Contacts": {
     "es": "Contactos",
@@ -270,7 +290,8 @@
     "ko": "연락처",
     "zh-Hant": "聯絡人",
     "vi": "Liên hệ",
-    "id": "Kontak"
+    "id": "Kontak",
+    "ar": "جهات الاتصال"
   },
   "Collections": {
     "es": "Colecciones",
@@ -283,7 +304,8 @@
     "ko": "컬렉션",
     "zh-Hant": "合集",
     "vi": "Bộ sưu tập",
-    "id": "Koleksi"
+    "id": "Koleksi",
+    "ar": "المجموعات"
   },
   "Solid": {
     "es": "Solid",
@@ -296,7 +318,8 @@
     "ko": "Solid",
     "zh-Hant": "Solid",
     "vi": "Solid",
-    "id": "Solid"
+    "id": "Solid",
+    "ar": "Solid"
   },
   "Lidarr": {
     "es": "Lidarr",
@@ -309,7 +332,8 @@
     "ko": "Lidarr",
     "zh-Hant": "Lidarr",
     "vi": "Lidarr",
-    "id": "Lidarr"
+    "id": "Lidarr",
+    "ar": "Lidarr"
   },
   "Canary": {
     "es": "Canary",
@@ -322,7 +346,8 @@
     "ko": "Canary",
     "zh-Hant": "Canary",
     "vi": "Canary",
-    "id": "Canary"
+    "id": "Canary",
+    "ar": "Canary"
   },
   "Agent Mode": {
     "es": "Modo de agente",
@@ -335,7 +360,8 @@
     "ko": "에이전트 모드",
     "zh-Hant": "代理模式",
     "vi": "Chế độ tác nhân",
-    "id": "Mode agen"
+    "id": "Mode agen",
+    "ar": "وضع الوكيل"
   },
   "Share Groups": {
     "es": "Grupos compartidos",
@@ -348,7 +374,8 @@
     "ko": "공유 그룹",
     "zh-Hant": "分享群組",
     "vi": "Nhóm chia sẻ",
-    "id": "Grup berbagi"
+    "id": "Grup berbagi",
+    "ar": "مجموعات المشاركة"
   },
   "Shared with Me": {
     "es": "Compartido conmigo",
@@ -361,7 +388,8 @@
     "ko": "나와 공유됨",
     "zh-Hant": "與我共用",
     "vi": "Được chia sẻ với tôi",
-    "id": "Dibagikan kepada saya"
+    "id": "Dibagikan kepada saya",
+    "ar": "المشاركات معي"
   },
   "New activity": {
     "es": "Nueva actividad",
@@ -374,7 +402,8 @@
     "ko": "새 활동",
     "zh-Hant": "新動態",
     "vi": "Hoạt động mới",
-    "id": "Aktivitas baru"
+    "id": "Aktivitas baru",
+    "ar": "نشاط جديد"
   },
   "Translations currently cover navigation and language settings; most other screens are still in English.": {
     "es": "Por ahora, las traducciones cubren la navegación y los ajustes de idioma; la mayoría de las demás pantallas siguen en inglés.",
@@ -387,6 +416,7 @@
     "ko": "현재 탐색 메뉴와 언어 설정만 번역되어 있으며, 그 밖의 화면은 대부분 영어로 표시됩니다.",
     "zh-Hant": "目前僅翻譯導覽和語言設定；其他大多數畫面仍為英文。",
     "vi": "Hiện bản dịch chỉ bao gồm điều hướng và cài đặt ngôn ngữ; hầu hết màn hình khác vẫn bằng tiếng Anh.",
-    "id": "Saat ini, terjemahan mencakup navigasi dan pengaturan bahasa; sebagian besar layar lainnya masih berbahasa Inggris."
+    "id": "Saat ini, terjemahan mencakup navigasi dan pengaturan bahasa; sebagian besar layar lainnya masih berbahasa Inggris.",
+    "ar": "تغطي الترجمات حاليًا التنقل وإعدادات اللغة؛ ولا تزال معظم الشاشات الأخرى باللغة الإنجليزية."
   }
 }

@@ -5,7 +5,10 @@ import {
   formatNetworkHealthReport,
 } from '../../../lib/networkHealthScore';
 import { getLocalStorageItem, setLocalStorageItem } from '../../../lib/storage';
-import { formatRegionalNumber } from '../../../lib/util';
+import {
+  formatBytesFixed as formatRegionalBytes,
+  formatRegionalCompactNumber,
+} from '../../../lib/util';
 import { useMountedRef } from '../../../lib/useMountedRef';
 import { usePolling } from '../../../lib/usePolling';
 import { LoaderSegment, ShrinkableButton } from '../../Shared';
@@ -33,21 +36,12 @@ const DHT_EXPOSURE_CONSENT_KEY = 'slskr:ui:dht-public-exposure:consent-v1';
 
 const formatBytes = (bytes) => {
   if (bytes === 0 || bytes === undefined || bytes === null) return '0 B';
-  const k = 1_024;
-  const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
-  const index = Math.min(sizes.length - 1, Math.floor(Math.log(bytes) / Math.log(k)));
-  return formatRegionalNumber(Number.parseFloat((bytes / k ** index).toFixed(1))) + ' ' + sizes[index];
+  return formatRegionalBytes(Number(bytes), 1);
 };
 
 const formatNumber = (value) => {
   if (value === undefined || value === null) return '0';
-  if (value >= 1_000_000) {
-    return formatRegionalNumber(value / 1_000_000, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + 'M';
-  }
-  if (value >= 1_000) {
-    return formatRegionalNumber(value / 1_000, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + 'K';
-  }
-  return formatRegionalNumber(value);
+  return formatRegionalCompactNumber(value);
 };
 
 const normalizePeerRecords = (value) => {
