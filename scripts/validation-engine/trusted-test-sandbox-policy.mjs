@@ -91,13 +91,13 @@ const sensitiveCredentialSourceFile =
 const qualifiedAuthConfigFile =
   /^[^/]+[._-]auth(?:entication)?[.](?:json|ya?ml|toml|ini|cfg|conf|env|properties|xml|txt)$/iu;
 const qualifiedCredentialConfigFile =
-  /^(?:[^/]+[._-])?(?:tokens?|credentials?|secrets?)[._-](?:prod(?:uction)?|dev(?:elopment)?|test(?:ing)?|stage|staging|local|qa|live|backup|old|new|previous|current)[.](?:json|ya?ml|toml|ini|cfg|conf|env|properties|xml|txt)$/iu;
+  /^(?:[^/]+[._-])?(?:tokens?|credentials?|secrets?)(?:[._-](?!(?:manager|parser|service|client|store|provider|package|module|checker|scanning|persistence|differential|filter|policy|schema|template|example|sample|source)(?:$|[._-]))[^/.]+)*[.](?:json|ya?ml|toml|ini|cfg|conf|env(?:[.](?!example$)[^/]+)?|properties|xml|txt)$/iu;
 const sensitiveCredentialMaterialFile =
-  /(?:^|[._-])(?:private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)(?=$|[._-])|^[^/]+[._-](?:tokens?|credentials?|secrets?)(?=$|[._-])/iu;
+  /(?:^|[._-])(?:private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)(?=$|[._-])/iu;
 const camelCaseCredentialMaterialFile =
   /(?:(?<=[a-z0-9])(?:PrivateKeys?|privateKeys?|ApiKeys?|APIKeys?|ApiTokens?|APITokens?|AccessTokens?|RefreshTokens?|ClientTokens?|ClientCredentials?|ClientSecrets?|ServiceAccountTokens?|ServiceAccountCredentials?|ServiceAccountSecrets?)|^(?:prod(?:uction)?|dev(?:elopment)?|test(?:ing)?|stage|staging|local|qa|live|github|gitlab|bitbucket|aws|azure|gcp|google|slack|discord|oauth|jwt|bearer)(?:Auth(?:entication)?|Tokens?|Credentials?|Secrets?)(?=$|[._-]))/iu;
 const qualifiedCredentialDirectoryName =
-  /^(?:[^/]+[._-](?:auth(?:entication)?|tokens?|credentials?|secrets?|private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)|(?:tokens?|credentials?|secrets?)[._-](?:prod(?:uction)?|dev(?:elopment)?|test(?:ing)?|stage|staging|local|qa|live|backup|old|new|previous|current))$/iu;
+  /^(?:[^/]+[._-](?:auth(?:entication)?|tokens?|credentials?|secrets?|private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)|(?:tokens?|credentials?|secrets?)[._-](?!(?:manager|parser|service|client|store|provider|package|module|checker|scanning|persistence|differential|filter|policy|schema|template|example|sample|source)(?:$|[._-]))[^/]+)$/iu;
 const sourceTreeDirectory =
   /^(?:src|source|packages|apps|web|dashboard|client-go|client-python|client-ts|crates|scripts|lib|tests?|__tests__|fixtures?)$/iu;
 const knownApiKeysPage = 'dashboard/src/pages/ApiKeys.tsx';
