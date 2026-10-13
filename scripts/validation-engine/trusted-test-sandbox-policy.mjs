@@ -87,13 +87,14 @@ const sensitiveCredentialName =
 const sensitiveCredentialConfigFile =
   /^[.]?(?:auth(?:entication)?|tokens?|credentials?|secrets?|private[-_]?keys?|api[-_]?keys?|access[-_]?tokens?|refresh[-_]?tokens?|client[-_]?secrets?)[.](?:json|ya?ml|toml|ini|cfg|conf|env(?:[.](?!example$)[^/]+)?|properties|xml|txt)$/iu;
 const sensitiveCredentialMaterialFile =
-  /(?:^|[._-])(?:private[-_]?keys?|api[-_]?keys?|access[-_]?tokens?|refresh[-_]?tokens?|client[-_]?secrets?)(?=$|[._-])/iu;
+  /(?:^|[._-])(?:private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)(?=$|[._-])/iu;
 const sourceTreeDirectory =
   /^(?:src|source|packages|apps|web|dashboard|client-go|client-python|client-ts|crates|scripts|lib|tests?|__tests__|fixtures?)$/iu;
-const sourceApiKeysModule = /^apiKeys?[.](?:jsx?|tsx?)$/iu;
+const knownApiKeysPage = 'dashboard/src/pages/ApiKeys.tsx';
 
 export function isSensitiveCandidatePath(relativePath) {
-  const segments = relativePath.replaceAll(String.fromCharCode(92), '/').split('/');
+  const normalizedPath = relativePath.replaceAll(String.fromCharCode(92), '/');
+  const segments = normalizedPath.split('/');
   if (segments.includes('.git') || segments.includes('node_modules'))
     return true;
   if (segments.some((segment) => sensitiveName.test(segment)))
@@ -111,7 +112,7 @@ export function isSensitiveCandidatePath(relativePath) {
     return true;
   if (
     sensitiveCredentialMaterialFile.test(filename) &&
-    !(insideSourceTree && sourceApiKeysModule.test(filename))
+    normalizedPath !== knownApiKeysPage
   ) return true;
 
   const credentialDirectoryIndex = directories.findIndex((segment) =>
