@@ -6,4 +6,4 @@ action: none
 breaking: false
 ---
 
-CI and tagged release workflows verify that the cached RustSec audit tool exists and add its bin directory to `PATH` before running the audit.
+CI and tagged release workflows ensure the RustSec audit tool is installed and add its bin directory to `PATH` before running the audit, even when the cache reports a hit.
