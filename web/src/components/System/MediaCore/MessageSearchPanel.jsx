@@ -1,4 +1,4 @@
-import { formatRegionalDateTime } from '../../../lib/util';
+import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import { useMountedRef } from '../../../lib/useMountedRef';
@@ -21,6 +21,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const MessageSearchPanel = () => {
+  useRegionalFormat();
   const mountedRef = useMountedRef();
   const [searchQuery, setSearchQuery] = useMountedState(mountedRef, '');
   const [searchResults, setSearchResults] = useMountedState(mountedRef, null);

@@ -1,4 +1,4 @@
-import { formatRegionalDate, formatRegionalDateTime } from '../../../lib/util';
+import { formatRegionalDate, formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -32,6 +32,7 @@ const opinionQueryKey = (podId, contentId) =>
   JSON.stringify([podId.trim(), contentId.trim()]);
 
 const PodOpinionsPanel = ({ visible = true }) => {
+  useRegionalFormat();
   const mountedRef = useRef(true);
 
   useEffect(() => {

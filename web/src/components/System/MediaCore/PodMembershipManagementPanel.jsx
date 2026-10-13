@@ -1,4 +1,4 @@
-import { formatRegionalDateTime } from '../../../lib/util';
+import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -34,6 +34,7 @@ const PodMembershipManagementPanel = ({
   verifyingMembership,
   visible = true,
 }) => {
+  useRegionalFormat();
   const mountedRef = useRef(true);
 
   useEffect(() => {

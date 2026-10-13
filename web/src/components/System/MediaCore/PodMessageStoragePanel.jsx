@@ -1,4 +1,4 @@
-import { formatRegionalDateTime, formatRegionalNumber } from '../../../lib/util';
+import { formatRegionalDateTime, formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -30,6 +30,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const PodMessageStoragePanel = React.memo(({ visible }) => {
+  useRegionalFormat();
   const mountedRef = useRef(true);
   React.useEffect(() => {
     mountedRef.current = true;

@@ -7,6 +7,10 @@ import MediaCore from './index';
 import React, { act } from 'react';
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import {
+  EXPERIENCE_PREFERENCES_STORAGE_KEY,
+  setRegionalFormatPreference,
+} from '../../../lib/util';
 
 vi.mock('../../../lib/mediacore', () => ({
   getConflictStrategies: vi.fn(),
@@ -1072,6 +1076,48 @@ describe('MediaCore', () => {
       p95Ms: p95,
       samplesMs: inputSamples,
     }));
+  });
+
+  it('updates memoized storage stats after a cross-tab regional format change', async () => {
+    const initialPreference = JSON.stringify({ regionalFormat: 'fr' });
+    localStorage.setItem(EXPERIENCE_PREFERENCES_STORAGE_KEY, initialPreference);
+    act(() => setRegionalFormatPreference('fr'));
+    mediacore.getMessageStorageStats.mockResolvedValue({
+      messagesPerChannel: {},
+      messagesPerPod: {},
+      newestMessage: null,
+      oldestMessage: null,
+      totalMessages: 1_234,
+      totalSizeBytes: 0,
+    });
+
+    render(<MediaCore />);
+    await screen.findByText('MediaCore ContentID Registry');
+    fireEvent.click(screen.getByRole('button', { name: 'Get Storage Stats' }));
+
+    const totalMessagesLabel = await screen.findByText('Total Messages:');
+    const storageStats = totalMessagesLabel.parentElement;
+    expect(storageStats.textContent).toContain(
+      new Intl.NumberFormat('fr').format(1_234),
+    );
+
+    const nextPreference = JSON.stringify({ regionalFormat: 'de' });
+    act(() => {
+      localStorage.setItem(EXPERIENCE_PREFERENCES_STORAGE_KEY, nextPreference);
+      window.dispatchEvent(new StorageEvent('storage', {
+        key: EXPERIENCE_PREFERENCES_STORAGE_KEY,
+        oldValue: initialPreference,
+        newValue: nextPreference,
+        storageArea: localStorage,
+      }));
+    });
+
+    expect(screen.getByText('Total Messages:').parentElement.textContent).toContain(
+      new Intl.NumberFormat('de').format(1_234),
+    );
+
+    act(() => setRegionalFormatPreference('system'));
+    localStorage.removeItem(EXPERIENCE_PREFERENCES_STORAGE_KEY);
   });
 
   it('profiles pod message storage updates', async () => {

@@ -1,4 +1,4 @@
-import { formatRegionalDateTime, formatRegionalNumber } from '../../../lib/util';
+import { formatRegionalDateTime, formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -22,6 +22,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const PodMessageBackfillPanel = ({ visible = true }) => {
+  useRegionalFormat();
   const mountedRef = useRef(true);
 
   useEffect(() => {

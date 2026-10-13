@@ -1,4 +1,4 @@
-import { formatRegionalDateTime } from '../../../lib/util';
+import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -28,6 +28,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const MediaCoreStatisticsDashboardPanel = () => {
+  useRegionalFormat();
   const mountedRef = useRef(true);
 
   useEffect(() => {
