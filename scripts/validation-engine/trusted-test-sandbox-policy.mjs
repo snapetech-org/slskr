@@ -83,9 +83,13 @@ export function sandboxMountOperations({
 const sensitiveName =
   /^(?:[.]env(?:$|[.](?!example$)[^/]+)|[.]ssh|[.]aws|[.]gnupg|id_(?:rsa|ed25519)|[.]git-credentials|[.]npmrc|[.]pypirc|[.]netrc|[^/]+[.](?:pem|key))$/iu;
 const sensitiveCredentialName =
-  /^(?:auth(?:entication)?|tokens?|credentials?|secrets?)$/iu;
+  /^[.]?(?:auth(?:entication)?|tokens?|credentials?|secrets?|private[-_]?keys?|api[-_]?keys?|access[-_]?tokens?|refresh[-_]?tokens?|client[-_]?secrets?)$/iu;
 const sensitiveCredentialConfigFile =
-  /^(?:auth(?:entication)?|tokens?|credentials?|secrets?)[.](?:json|ya?ml|toml|ini|cfg|conf|env|properties|xml|txt)$/iu;
+  /^[.]?(?:auth(?:entication)?|tokens?|credentials?|secrets?|private[-_]?keys?|api[-_]?keys?|access[-_]?tokens?|refresh[-_]?tokens?|client[-_]?secrets?)[.](?:json|ya?ml|toml|ini|cfg|conf|env|properties|xml|txt)$/iu;
+const sensitiveCredentialMaterialFile =
+  /^(?:private[-_]?keys?|api[-_]?keys?|access[-_]?tokens?|refresh[-_]?tokens?|client[-_]?secrets?)[.][^/]+$/iu;
+const sourceTreeDirectory =
+  /^(?:src|source|packages|apps|web|dashboard|client-ts|crates|scripts|lib|tests?|__tests__|fixtures?)$/iu;
 const sourceCodeFile =
   /[.](?:c|cc|cpp|cs|css|go|h|hpp|java|js|jsx|mjs|php|py|rb|rs|sql|swift|ts|tsx|vue)$/iu;
 
@@ -99,12 +103,19 @@ export function isSensitiveCandidatePath(relativePath) {
   const filename = segments.at(-1) ?? '';
   if (
     sensitiveCredentialName.test(filename) ||
-    sensitiveCredentialConfigFile.test(filename)
+    sensitiveCredentialConfigFile.test(filename) ||
+    sensitiveCredentialMaterialFile.test(filename)
   )
     return true;
 
-  const insideCredentialDirectory = segments
-    .slice(0, -1)
-    .some((segment) => sensitiveCredentialName.test(segment));
-  return insideCredentialDirectory && !sourceCodeFile.test(filename);
+  const directories = segments.slice(0, -1);
+  const credentialDirectoryIndex = directories.findIndex((segment) =>
+    sensitiveCredentialName.test(segment),
+  );
+  if (credentialDirectoryIndex < 0) return false;
+
+  const insideSourceTree = directories
+    .slice(0, credentialDirectoryIndex)
+    .some((segment) => sourceTreeDirectory.test(segment));
+  return !insideSourceTree && !sourceCodeFile.test(filename);
 }

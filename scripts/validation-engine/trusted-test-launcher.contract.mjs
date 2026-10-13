@@ -67,10 +67,19 @@ test('preserves tracked source files named token while excluding credential conf
   assert.equal(isSensitiveCandidatePath('auth.json'), true);
   assert.equal(isSensitiveCandidatePath('nested/config/secrets.yaml'), true);
   assert.equal(isSensitiveCandidatePath('.env.local'), true);
+  assert.equal(isSensitiveCandidatePath('.token'), true);
+  assert.equal(isSensitiveCandidatePath('.auth'), true);
+  assert.equal(isSensitiveCandidatePath('.credentials'), true);
+  assert.equal(isSensitiveCandidatePath('.secrets'), true);
+  assert.equal(isSensitiveCandidatePath('packages/auth/.token'), true);
   assert.equal(isSensitiveCandidatePath('tokens.env'), true);
   assert.equal(isSensitiveCandidatePath('nested/credentials/private-key'), true);
+  assert.equal(isSensitiveCandidatePath('nested/credentials/private-key.ts'), true);
   assert.equal(isSensitiveCandidatePath('src/tokens/index.ts'), false);
   assert.equal(isSensitiveCandidatePath('nested/credentials/TokenStore.ts'), false);
+  assert.equal(isSensitiveCandidatePath('packages/auth/package.json'), false);
+  assert.equal(isSensitiveCandidatePath('src/tokens/schema.json'), false);
+  assert.equal(isSensitiveCandidatePath('packages/auth/scripts/setup.sh'), false);
 });
 
 test('opens required host sources before masking their parent directories', () => {
@@ -159,8 +168,35 @@ test(
     writeFileSync(path.join(source, 'tokens.env'), 'PRIVATE_TOKENS_CANARY=hidden\n');
     mkdirSync(path.join(source, 'nested/credentials'), { recursive: true });
     writeFileSync(path.join(source, 'nested/credentials/private-key'), 'private credential\n');
+    writeFileSync(path.join(source, '.token'), 'DOT_TOKEN_CANARY=hidden\n');
+    writeFileSync(path.join(source, '.auth'), 'DOT_AUTH_CANARY=hidden\n');
+    writeFileSync(path.join(source, '.credentials'), 'DOT_CREDENTIALS_CANARY=hidden\n');
+    writeFileSync(path.join(source, '.secrets'), 'DOT_SECRETS_CANARY=hidden\n');
+    mkdirSync(path.join(source, 'packages/auth/scripts'), { recursive: true });
+    writeFileSync(
+      path.join(source, 'packages/auth/package.json'),
+      '{"name":"fixture-auth-package","type":"module"}\n',
+    );
+    writeFileSync(
+      path.join(source, 'packages/auth/scripts/setup.sh'),
+      '#!/bin/sh\nprintf "auth package asset\\n"\n',
+    );
     mkdirSync(path.join(source, 'src/tokens'), { recursive: true });
     writeFileSync(path.join(source, 'src/tokens/index.ts'), 'export const source = "token directory source";\n');
+    writeFileSync(
+      path.join(source, 'src/tokens/schema.json'),
+      '{"schema":"token asset"}\n',
+    );
+    mkdirSync(path.join(source, 'src/tokens/fixtures'), { recursive: true });
+    writeFileSync(
+      path.join(source, 'src/tokens/fixtures/sample.json'),
+      '{"fixture":"token asset"}\n',
+    );
+    mkdirSync(path.join(source, 'src/tokens/templates'), { recursive: true });
+    writeFileSync(
+      path.join(source, 'src/tokens/templates/config.hbs'),
+      'token template asset\n',
+    );
     writeFileSync(path.join(source, 'credentials'), 'private credential\n');
     mkdirSync(path.join(source, 'node_modules'), { recursive: true });
     writeFileSync(
@@ -194,8 +230,17 @@ assert.equal(existsSync('/mnt/workspace/nested/config/operator.json'), false);
 assert.equal(existsSync('/mnt/workspace/auth.json'), false);
 assert.equal(existsSync('/mnt/workspace/token.json'), false);
 assert.equal(existsSync('/mnt/workspace/tokens.env'), false);
+assert.equal(existsSync('/mnt/workspace/.token'), false);
+assert.equal(existsSync('/mnt/workspace/.auth'), false);
+assert.equal(existsSync('/mnt/workspace/.credentials'), false);
+assert.equal(existsSync('/mnt/workspace/.secrets'), false);
 assert.equal(existsSync('/mnt/workspace/nested/credentials/private-key'), false);
+assert.equal(readFileSync('/mnt/workspace/packages/auth/package.json', 'utf8'), '{"name":"fixture-auth-package","type":"module"}\\n');
+assert.match(readFileSync('/mnt/workspace/packages/auth/scripts/setup.sh', 'utf8'), /auth package asset/u);
 assert.match(readFileSync('/mnt/workspace/src/tokens/index.ts', 'utf8'), /token directory source/u);
+assert.equal(readFileSync('/mnt/workspace/src/tokens/schema.json', 'utf8'), '{"schema":"token asset"}\\n');
+assert.equal(readFileSync('/mnt/workspace/src/tokens/fixtures/sample.json', 'utf8'), '{"fixture":"token asset"}\\n');
+assert.match(readFileSync('/mnt/workspace/src/tokens/templates/config.hbs', 'utf8'), /token template asset/u);
 assert.equal(existsSync('/mnt/workspace/credentials'), false);
 assert.equal(readFileSync('/mnt/workspace/web/src/lib/token.js', 'utf8'), 'export const token = "source code";\\n');
 assert.equal(readFileSync('/mnt/workspace/vendor/mainline/src/rpc/server/tokens.rs', 'utf8'), 'pub fn tokens() {}\\n');

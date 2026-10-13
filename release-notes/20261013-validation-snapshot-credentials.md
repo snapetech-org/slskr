@@ -6,4 +6,4 @@ action: none
 breaking: false
 ---
 
-Validation snapshots exclude extensionless credentials and files in credential-named folders while retaining token-named source code.
+Validation snapshots exclude dotted and extensionless credential names, omit credential-named folders outside source trees, and preserve manifests and runtime assets in source subtrees whose directory names overlap with credential terms.
