@@ -413,43 +413,71 @@ async fn route_dispatch_group_2_transfer_status(
                     ));
                 }
             };
+            let download_slots =
+                usize::try_from(state.transfer_download_settings.read().await.slots)
+                    .unwrap_or(usize::MAX);
             let mut transfers = state.transfers.write().await;
+            let Some(current_original) = transfers
+                .entries
+                .iter()
+                .find(|entry| entry.id == original.id && entry.direction == 0)
+                .cloned()
+            else {
+                return Ok(routing::not_found_response());
+            };
+            let dispatch = transfers.has_capacity_for_direction(
+                0,
+                state.config.transfer_max_active,
+                download_slots,
+                Some(current_original.id),
+            );
             let previous = transfers.mutation_snapshot();
             let updated_original = transfers.update_status(
-                original.id,
+                current_original.id,
                 "cancelled",
-                Some(original.bytes_transferred),
+                Some(current_original.bytes_transferred),
                 Some("replaced by alternative source".to_owned()),
             );
             let replacement = transfers.create_with_details(
                 0,
                 alternative.peer_username.clone(),
                 alternative.filename.clone(),
-                original.local_path.clone(),
+                current_original.local_path.clone(),
                 Some(alternative.size),
-                original.batch_id.clone(),
+                current_original.batch_id.clone(),
                 TransferRequestDetails {
-                    request_id: original.request_id.clone(),
-                    wishlist_item_id: original.wishlist_item_id.clone(),
-                    request_name: original.request_name.clone(),
-                    destination_directory: original.destination_directory.clone(),
-                    bit_rate: original.bit_rate,
-                    sample_rate: original.sample_rate,
-                    bit_depth: original.bit_depth,
-                    length_seconds: original.length_seconds,
-                    artist: original.artist.clone(),
-                    album: original.album.clone(),
-                    title: original.title.clone(),
-                    track_number: original.track_number,
-                    year: original.year,
+                    request_id: current_original.request_id.clone(),
+                    wishlist_item_id: current_original.wishlist_item_id.clone(),
+                    request_name: current_original.request_name.clone(),
+                    destination_directory: current_original.destination_directory.clone(),
+                    bit_rate: current_original.bit_rate,
+                    sample_rate: current_original.sample_rate,
+                    bit_depth: current_original.bit_depth,
+                    length_seconds: current_original.length_seconds,
+                    artist: current_original.artist.clone(),
+                    album: current_original.album.clone(),
+                    title: current_original.title.clone(),
+                    track_number: current_original.track_number,
+                    year: current_original.year,
                     attempts: 1,
-                    auto_replace_attempts: original.auto_replace_attempts.saturating_add(1),
+                    auto_replace_attempts: current_original.auto_replace_attempts.saturating_add(1),
                     next_attempt_at: None,
                 },
             );
-            let replacement = transfers
-                .update_status(replacement.id, "peer_lookup", None, None)
-                .unwrap_or(replacement);
+            let replacement = if dispatch {
+                transfers
+                    .update_status(replacement.id, "peer_lookup", None, None)
+                    .unwrap_or(replacement)
+            } else {
+                transfers
+                    .update_status(
+                        replacement.id,
+                        "queued",
+                        None,
+                        Some("Local download slots exhausted".to_owned()),
+                    )
+                    .unwrap_or(replacement)
+            };
             let replacement_json = replacement.json();
             let mutated = transfers.mutation_snapshot();
             drop(transfers);
@@ -459,10 +487,12 @@ async fn route_dispatch_group_2_transfer_status(
                 rollback_transfer_mutation_if_unchanged(state, previous, mutated).await;
                 return Ok(routing::service_unavailable_response(&error));
             }
-            session_command_permit.send(SessionCommand::TransferPeer {
-                id: replacement.id,
-                username: replacement_username,
-            });
+            if dispatch {
+                session_command_permit.send(SessionCommand::TransferPeer {
+                    id: replacement.id,
+                    username: replacement_username,
+                });
+            }
             Ok(routing::accepted_response(
                 serde_json::json!({
                     "transfer_id": transfer_id,
@@ -537,55 +567,93 @@ async fn route_dispatch_group_2_transfer_status(
             let mut queued = Vec::new();
             let mut commands = Vec::new();
             let mut persisted = Vec::new();
+            let download_slots =
+                usize::try_from(state.transfer_download_settings.read().await.slots)
+                    .unwrap_or(usize::MAX);
             let mut transfers = state.transfers.write().await;
             let previous = transfers.mutation_snapshot();
             for (original, alternative) in replacements {
+                let Some(current_original) = transfers
+                    .entries
+                    .iter()
+                    .find(|entry| {
+                        entry.id == original.id
+                            && entry.direction == 0
+                            && is_failed_transfer_status(&entry.status)
+                    })
+                    .cloned()
+                else {
+                    continue;
+                };
+                let dispatch = transfers.has_capacity_for_direction(
+                    0,
+                    state.config.transfer_max_active,
+                    download_slots,
+                    None,
+                );
                 if let Some(entry) = transfers.update_status(
-                    original.id,
+                    current_original.id,
                     "cancelled",
-                    Some(original.bytes_transferred),
+                    Some(current_original.bytes_transferred),
                     Some("auto-replaced by alternative source".to_owned()),
                 ) {
                     persisted.push(entry);
+                } else {
+                    continue;
                 }
                 let replacement = transfers.create_with_details(
                     0,
                     alternative.peer_username.clone(),
                     alternative.filename.clone(),
-                    original.local_path.clone(),
+                    current_original.local_path.clone(),
                     Some(alternative.size),
-                    original.batch_id.clone(),
+                    current_original.batch_id.clone(),
                     TransferRequestDetails {
-                        request_id: original.request_id.clone(),
-                        wishlist_item_id: original.wishlist_item_id.clone(),
-                        request_name: original.request_name.clone(),
-                        destination_directory: original.destination_directory.clone(),
-                        bit_rate: original.bit_rate,
-                        sample_rate: original.sample_rate,
-                        bit_depth: original.bit_depth,
-                        length_seconds: original.length_seconds,
-                        artist: original.artist.clone(),
-                        album: original.album.clone(),
-                        title: original.title.clone(),
-                        track_number: original.track_number,
-                        year: original.year,
+                        request_id: current_original.request_id.clone(),
+                        wishlist_item_id: current_original.wishlist_item_id.clone(),
+                        request_name: current_original.request_name.clone(),
+                        destination_directory: current_original.destination_directory.clone(),
+                        bit_rate: current_original.bit_rate,
+                        sample_rate: current_original.sample_rate,
+                        bit_depth: current_original.bit_depth,
+                        length_seconds: current_original.length_seconds,
+                        artist: current_original.artist.clone(),
+                        album: current_original.album.clone(),
+                        title: current_original.title.clone(),
+                        track_number: current_original.track_number,
+                        year: current_original.year,
                         attempts: 1,
-                        auto_replace_attempts: original.auto_replace_attempts.saturating_add(1),
+                        auto_replace_attempts: current_original
+                            .auto_replace_attempts
+                            .saturating_add(1),
                         next_attempt_at: None,
                     },
                 );
-                let replacement = transfers
-                    .update_status(replacement.id, "peer_lookup", None, None)
-                    .unwrap_or(replacement);
+                let replacement = if dispatch {
+                    transfers
+                        .update_status(replacement.id, "peer_lookup", None, None)
+                        .unwrap_or(replacement)
+                } else {
+                    transfers
+                        .update_status(
+                            replacement.id,
+                            "queued",
+                            None,
+                            Some("Local download slots exhausted".to_owned()),
+                        )
+                        .unwrap_or(replacement)
+                };
                 persisted.push(replacement.clone());
-                if let Some(username) = replacement.peer_username.clone() {
-                    commands.push(SessionCommand::TransferPeer {
-                        id: replacement.id,
-                        username,
-                    });
+                if dispatch {
+                    if let Some(username) = replacement.peer_username.clone() {
+                        commands.push(SessionCommand::TransferPeer {
+                            id: replacement.id,
+                            username,
+                        });
+                    }
                 }
                 queued.push(serde_json::json!({
-                    "transfer_id": original.id,
+                    "transfer_id": current_original.id,
                     "replacement": serde_json::from_str::<serde_json::Value>(&replacement.json())
                         .map_err(|error| format!("replacement json failed: {error}"))?,
                     "alternative": {

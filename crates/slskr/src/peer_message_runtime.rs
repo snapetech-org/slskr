@@ -264,8 +264,12 @@ async fn handle_queued_upload_resume_request(
     if !state.config.transfer_allow_inbound {
         return Ok(false);
     }
-    let upload_slots =
-        usize::try_from(state.transfer_upload_settings.read().await.slots).unwrap_or(usize::MAX);
+    let upload = state.transfer_upload_settings.read().await.clone();
+    let groups = state.transfer_groups_settings.read().await.clone();
+    let users = state.users.read().await.records.clone();
+    let (group_name, group_slots) =
+        upload_group_slot_limit_from(&groups, &users, Some(username), upload.slots);
+    let upload_slots = usize::try_from(upload.slots).unwrap_or(usize::MAX);
     let admission = {
         let mut transfers = state.transfers.write().await;
         let pending = transfers.entries.iter().any(|entry| {
@@ -281,11 +285,17 @@ async fn handle_queued_upload_resume_request(
         });
         if !pending {
             None
-        } else if !transfers.has_capacity_for_direction(
-            1,
+        } else if !transfers.has_capacity_for_upload_group(
             state.config.transfer_max_active,
             upload_slots,
+            usize::try_from(group_slots).unwrap_or(usize::MAX),
             None,
+            |peer_username| {
+                peer_username
+                    .map(|peer| effective_transfer_group_from_records(&groups, &users, peer))
+                    .unwrap_or_else(|| "default".to_owned())
+                    == group_name
+            },
         ) {
             Some(Err("Queued".to_owned()))
         } else {
@@ -709,15 +719,25 @@ async fn handle_queued_download_request(
         .map_err(|error| format!("queued transfer policy response send failed: {error}"))?;
         return Ok(true);
     }
-    let upload_slots =
-        usize::try_from(state.transfer_upload_settings.read().await.slots).unwrap_or(usize::MAX);
+    let upload = state.transfer_upload_settings.read().await.clone();
+    let groups = state.transfer_groups_settings.read().await.clone();
+    let users = state.users.read().await.records.clone();
+    let (group_name, group_slots) =
+        upload_group_slot_limit_from(&groups, &users, Some(username), upload.slots);
+    let upload_slots = usize::try_from(upload.slots).unwrap_or(usize::MAX);
     let admission = {
         let mut transfers = state.transfers.write().await;
-        if !transfers.has_capacity_for_direction(
-            1,
+        if !transfers.has_capacity_for_upload_group(
             state.config.transfer_max_active,
             upload_slots,
+            usize::try_from(group_slots).unwrap_or(usize::MAX),
             None,
+            |peer_username| {
+                peer_username
+                    .map(|peer| effective_transfer_group_from_records(&groups, &users, peer))
+                    .unwrap_or_else(|| "default".to_owned())
+                    == group_name
+            },
         ) {
             let queued = transfers
                 .entries

@@ -669,14 +669,65 @@ async fn transfer_batch_path_preparation_releases_transfer_lock() {
             crate::TransferRequestDetails::default(),
         );
     }
-    let (staged, failures) =
+    let (committed, staged, failures) =
         crate::commit_prepared_download_batch_transfers(&state, "peer", batch_id, vec![prepared])
             .await;
+    assert!(committed.is_empty());
     assert!(staged.is_empty());
     assert_eq!(failures.len(), 1);
     assert_eq!(failures[0].1["filename"], "Music/A.flac");
     assert_eq!(state.transfers.read().await.entries.len(), 1);
     fs::remove_dir_all(&state.config.state_dir).expect("remove transfer batch lock test state");
+}
+
+#[tokio::test]
+async fn transfer_batch_queues_entries_after_directional_capacity_is_full() {
+    let (state, _receiver) = test_state_with_env(
+        MapEnv::default()
+            .with("SLSKR_TRANSFER_MAX_ACTIVE", "1")
+            .with("SLSKR_DOWNLOAD_SLOTS", "1"),
+    );
+    let batch_id = "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb";
+    let first = crate::prepare_download_batch_transfer(
+        &state,
+        0,
+        "peer",
+        "Music/A.flac",
+        42,
+        batch_id,
+        None,
+    )
+    .await
+    .expect("prepare first batch transfer");
+    let second = crate::prepare_download_batch_transfer(
+        &state,
+        1,
+        "peer",
+        "Music/B.flac",
+        84,
+        batch_id,
+        None,
+    )
+    .await
+    .expect("prepare second batch transfer");
+
+    let (committed, dispatch, failures) = crate::commit_prepared_download_batch_transfers(
+        &state,
+        "peer",
+        batch_id,
+        vec![first, second],
+    )
+    .await;
+    assert!(failures.is_empty());
+    assert_eq!(committed.len(), 2);
+    assert_eq!(dispatch.len(), 1);
+    assert_eq!(dispatch[0].0.status, "peer_lookup");
+    assert_eq!(committed[1].status, "queued");
+    assert_eq!(
+        committed[1].reason.as_deref(),
+        Some("Local download slots exhausted")
+    );
+    fs::remove_dir_all(&state.config.state_dir).expect("remove transfer batch capacity state");
 }
 
 #[tokio::test(flavor = "current_thread")]

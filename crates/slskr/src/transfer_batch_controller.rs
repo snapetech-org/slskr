@@ -464,11 +464,15 @@ pub(super) async fn commit_prepared_download_batch_transfers(
     batch_id: &str,
     prepared: Vec<PreparedBatchTransfer>,
 ) -> (
+    Vec<TransferEntry>,
     Vec<(TransferEntry, mpsc::OwnedPermit<SessionCommand>)>,
     Vec<(usize, serde_json::Value)>,
 ) {
-    let mut staged = Vec::with_capacity(prepared.len());
+    let mut committed = Vec::with_capacity(prepared.len());
+    let mut dispatch = Vec::with_capacity(prepared.len());
     let mut failures = Vec::new();
+    let download_slots =
+        usize::try_from(state.transfer_download_settings.read().await.slots).unwrap_or(usize::MAX);
     {
         let mut transfers = state.transfers.write().await;
         for transfer in prepared {
@@ -491,11 +495,30 @@ pub(super) async fn commit_prepared_download_batch_transfers(
                 Some(batch_id.to_owned()),
                 transfer.details,
             );
-            let entry = transfers
-                .update_status(entry.id, "peer_lookup", None, None)
-                .unwrap_or(entry);
-            staged.push((entry, transfer.permit));
+            let entry = if transfers.has_capacity_for_direction(
+                0,
+                state.config.transfer_max_active,
+                download_slots,
+                None,
+            ) {
+                let entry = transfers
+                    .update_status(entry.id, "peer_lookup", None, None)
+                    .unwrap_or(entry);
+                dispatch.push((entry.clone(), transfer.permit));
+                entry
+            } else {
+                drop(transfer.permit);
+                transfers
+                    .update_status(
+                        entry.id,
+                        "queued",
+                        None,
+                        Some("Local download slots exhausted".to_owned()),
+                    )
+                    .unwrap_or(entry)
+            };
+            committed.push(entry);
         }
     }
-    (staged, failures)
+    (committed, dispatch, failures)
 }

@@ -942,6 +942,174 @@ pub(super) async fn transfer_auto_replace_queues_failed_download_alternatives() 
 
 #[cfg_attr(test, tokio::test)]
 #[cfg(feature = "full-controller-tests")]
+pub(super) async fn transfer_auto_replace_respects_active_download_capacity() {
+    let (state, mut receiver) = test_state_with_env(
+        MapEnv::default()
+            .with("SLSKR_TRANSFER_MAX_ACTIVE", "1")
+            .with("SLSKD_DOWNLOAD_SLOTS", "1"),
+    );
+    let created = crate::route_http_request(
+        "POST",
+        "/api/v0/transfers",
+        None,
+        "{\"filename\":\"Remote/Album/Song.flac\",\"peer_username\":\"stale\",\"size\":100}",
+        &state,
+    )
+    .await
+    .expect("create failed transfer");
+    assert_eq!(created.status, "201 Created");
+    {
+        let mut transfers = state.transfers.write().await;
+        transfers.update_status(1, "failed", Some(40), Some("peer offline".to_owned()));
+        let blocker = transfers.create(
+            0,
+            Some("busy".to_owned()),
+            "Remote/Busy.flac".to_owned(),
+            None,
+            Some(100),
+        );
+        transfers.update_status(blocker.id, "in_progress", None, None);
+    }
+    crate::route_http_request(
+        "POST",
+        "/api/v0/searches",
+        None,
+        "{\"query\":\"song\"}",
+        &state,
+    )
+    .await
+    .expect("create search");
+    let _ = receiver.try_recv();
+    crate::route_http_request(
+        "POST",
+        "/api/v0/search-responses",
+        None,
+        "{\"token\":1,\"peer_username\":\"fresh\",\"filename\":\"Other/Path/Song.flac\",\"size\":100}",
+        &state,
+    )
+    .await
+    .expect("ingest alternative");
+
+    let replaced = crate::route_http_request(
+        "POST",
+        "/api/transfers/downloads/auto-replace",
+        None,
+        "{}",
+        &state,
+    )
+    .await
+    .expect("auto replace");
+    assert_eq!(replaced.status, "202 Accepted");
+    let json = serde_json::from_str::<serde_json::Value>(&replaced.body).unwrap();
+    assert_eq!(json["replacement_queued"], true);
+    assert_eq!(json["replacements"][0]["replacement"]["status"], "queued");
+    assert!(receiver.try_recv().is_err());
+    let transfers = state.transfers.read().await;
+    assert_eq!(transfers.active_count_excluding(None), 1);
+    assert_eq!(transfers.entries.len(), 3);
+    assert_eq!(
+        transfers.entries[2].reason.as_deref(),
+        Some("Local download slots exhausted")
+    );
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
+pub(super) async fn peer_transfer_response_claim_is_single_and_capacity_checked() {
+    let (state, _receiver) = test_state_with_env(
+        MapEnv::default()
+            .with("SLSKR_TRANSFER_MAX_ACTIVE", "1")
+            .with("SLSKD_DOWNLOAD_SLOTS", "1"),
+    );
+    let (pending_id, blocker_id) = {
+        let mut transfers = state.transfers.write().await;
+        let pending = transfers.create(
+            0,
+            Some("friend".to_owned()),
+            "Remote/Pending.flac".to_owned(),
+            None,
+            Some(20),
+        );
+        transfers.update_status(pending.id, "peer_lookup", None, None);
+        let blocker = transfers.create(
+            0,
+            Some("busy".to_owned()),
+            "Remote/Busy.flac".to_owned(),
+            None,
+            Some(20),
+        );
+        transfers.update_status(blocker.id, "in_progress", None, None);
+        (pending.id, blocker.id)
+    };
+
+    let mut transfers = state.transfers.write().await;
+    let queued = transfers
+        .claim_pending_peer_transfer(pending_id, 1, 1)
+        .expect("pending transfer is claimed");
+    assert_eq!(queued.status, "queued");
+    assert_eq!(
+        queued.reason.as_deref(),
+        Some("Local download slots exhausted")
+    );
+    assert!(transfers
+        .claim_pending_peer_transfer(pending_id, 1, 1)
+        .is_none());
+    transfers.update_status(blocker_id, "succeeded", Some(20), None);
+    transfers.update_status(pending_id, "peer_lookup", None, None);
+    let negotiating = transfers
+        .claim_pending_peer_transfer(pending_id, 1, 1)
+        .expect("freed capacity allows the transfer to be claimed");
+    assert_eq!(negotiating.status, "peer_negotiating");
+    assert!(transfers
+        .claim_pending_peer_transfer(pending_id, 1, 1)
+        .is_none());
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
+pub(super) async fn download_retry_backoff_keeps_active_slot_reserved() {
+    let (state, _receiver) = test_state_with_env(
+        MapEnv::default()
+            .with("SLSKR_TRANSFER_MAX_ACTIVE", "1")
+            .with("SLSKD_DOWNLOAD_SLOTS", "1"),
+    );
+    let transfer_id = {
+        let mut transfers = state.transfers.write().await;
+        let transfer = transfers.create(
+            0,
+            Some("friend".to_owned()),
+            "Remote/Retry.flac".to_owned(),
+            None,
+            Some(20),
+        );
+        transfers.update_status(transfer.id, "in_progress", None, None);
+        transfer.id
+    };
+
+    let mut transfers = state.transfers.write().await;
+    let waiting = transfers
+        .update_active_download_retry_state(
+            transfer_id,
+            2,
+            Some(123),
+            Some("retry scheduled for attempt 2".to_owned()),
+        )
+        .expect("active retry state is recorded");
+    assert_eq!(waiting.status, "in_progress");
+    assert_eq!(waiting.next_attempt_at, Some(123));
+    assert_eq!(transfers.active_count_excluding(None), 1);
+    assert!(transfers
+        .update_active_download_retry_state(transfer_id, 2, None, None)
+        .is_some());
+    assert_eq!(transfers.active_count_excluding(None), 1);
+    transfers.update_status(transfer_id, "queued", None, None);
+    assert!(transfers
+        .update_active_download_retry_state(transfer_id, 3, None, None)
+        .is_none());
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
 pub(super) async fn transfer_replacements_reject_before_mutation_when_dispatch_is_unavailable() {
     for (path, body) in [
         (
@@ -1636,6 +1804,95 @@ pub(super) async fn queued_outgoing_upload_resume_obeys_upload_slots() {
     });
 
     let stream = tokio::net::TcpStream::connect(address)
+        .await
+        .expect("connect peer-message");
+    let mut peer = slskr_client::stream::PeerMessageConnection::new(stream);
+    peer.send(&crate::PeerMessage::TransferRequest(
+        crate::TransferRequest {
+            filename_encoding: Default::default(),
+            direction: 0,
+            token: 77,
+            filename: "Remote/QueuedUpload.flac".to_owned(),
+            size: Some(4),
+        },
+    ))
+    .await
+    .expect("send resume request");
+    assert_eq!(
+        peer.receive().await.expect("resume response"),
+        crate::PeerMessage::TransferResponse(crate::TransferResponse::Rejected {
+            token: 77,
+            reason: "Queued".to_owned(),
+        })
+    );
+    drop(peer);
+    server.await.expect("server task").expect("server result");
+
+    let transfers = state.transfers.read().await;
+    let queued = transfers
+        .entries
+        .iter()
+        .find(|entry| entry.peer_username.as_deref() == Some("friend"))
+        .expect("queued upload remains pending");
+    assert_eq!(queued.status, "queued");
+    assert_eq!(queued.reason.as_deref(), Some("Queued"));
+    assert_ne!(queued.token, 77);
+    let _ = std::fs::remove_file(path);
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
+pub(super) async fn queued_outgoing_upload_resume_obeys_group_slots() {
+    let (state, _receiver) = test_state_with_env(MapEnv::default().with("SLSKD_UPLOAD_SLOTS", "2"));
+    state
+        .transfer_groups_settings
+        .write()
+        .await
+        .default
+        .upload
+        .slots = 1;
+    let path = std::env::temp_dir().join(format!(
+        "slskr-transfer-queued-upload-group-capacity-{}-resume.bin",
+        std::process::id()
+    ));
+    std::fs::write(&path, [1_u8, 2, 3, 4]).expect("write upload file");
+    add_test_share(&state, "Remote/QueuedUpload.flac", &path, 4).await;
+    {
+        let mut transfers = state.transfers.write().await;
+        let active = transfers.create(
+            1,
+            Some("busy".to_owned()),
+            "Remote/Busy.flac".to_owned(),
+            Some(path.display().to_string()),
+            Some(4),
+        );
+        transfers.update_status(active.id, "in_progress", None, None);
+        let queued = transfers.create(
+            1,
+            Some("friend".to_owned()),
+            "Remote/QueuedUpload.flac".to_owned(),
+            Some(path.display().to_string()),
+            Some(4),
+        );
+        transfers.update_status(queued.id, "queued", None, Some("Queued".to_owned()));
+    }
+
+    let listener = tokio::net::TcpListener::bind("127.0.0.1:0")
+        .await
+        .expect("listener");
+    let local_addr = listener.local_addr().expect("local addr");
+    let server_state = state.clone();
+    let server = tokio::spawn(async move {
+        let (stream, _) = listener.accept().await.expect("accept peer-message");
+        crate::handle_plain_peer_messages(
+            &server_state,
+            slskr_client::stream::PeerMessageConnection::new(stream),
+            Some("friend".to_owned()),
+        )
+        .await
+    });
+
+    let stream = tokio::net::TcpStream::connect(local_addr)
         .await
         .expect("connect peer-message");
     let mut peer = slskr_client::stream::PeerMessageConnection::new(stream);
@@ -2413,6 +2670,64 @@ pub(super) fn transfer_capacity_respects_directional_and_shared_caps() {
     assert!(!transfers.has_capacity_for_direction(1, 4, 1, None));
     assert!(!transfers.has_capacity_for_direction(0, 2, 4, None));
     assert!(!transfers.has_capacity_for_direction(0, 0, 4, None));
+    assert!(!transfers.has_capacity_for_upload_group(4, 4, 1, None, |peer| { peer == Some("bob") }));
+    assert!(
+        transfers.has_capacity_for_upload_group(4, 4, 1, None, |peer| { peer == Some("alice") })
+    );
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
+pub(super) async fn manual_upload_start_respects_transfer_group_slots() {
+    let (state, _receiver) = test_state();
+    state
+        .transfer_groups_settings
+        .write()
+        .await
+        .default
+        .upload
+        .slots = 1;
+    let queued_id = {
+        let mut transfers = state.transfers.write().await;
+        let active = transfers.create(
+            1,
+            Some("busy".to_owned()),
+            "Remote/Busy.flac".to_owned(),
+            Some("/shares/busy.flac".to_owned()),
+            Some(10),
+        );
+        transfers.update_status(active.id, "in_progress", None, None);
+        let queued = transfers.create(
+            1,
+            Some("friend".to_owned()),
+            "Remote/Queued.flac".to_owned(),
+            Some("/shares/queued.flac".to_owned()),
+            Some(10),
+        );
+        transfers
+            .update_status(queued.id, "queued", None, Some("Queued".to_owned()))
+            .unwrap()
+            .id
+    };
+
+    let response = crate::route_http_request(
+        "POST",
+        &format!("/api/transfers/{queued_id}/start"),
+        None,
+        "",
+        &state,
+    )
+    .await
+    .expect("start queued upload");
+    assert_eq!(response.status, "409 Conflict");
+    assert!(response.body.contains("upload group slot limit reached"));
+    let transfers = state.transfers.read().await;
+    let queued = transfers
+        .entries
+        .iter()
+        .find(|entry| entry.id == queued_id)
+        .expect("queued transfer remains");
+    assert_eq!(queued.status, "queued");
 }
 
 #[cfg_attr(test, tokio::test)]

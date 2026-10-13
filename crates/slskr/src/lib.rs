@@ -541,12 +541,13 @@ use self::feature_mutation_controller::{
 use self::file_transfer_runtime::apply_completed_download_permissions;
 use self::file_transfer_runtime::{
     configured_download_destination_path, effective_transfer_group, effective_transfer_group_from,
-    ensure_scoped_download_path, execute_accepted_file_transfer, fail_indirect_browse,
-    fail_indirect_transfer, handle_inbound_file_transfer, inbound_upload_policy,
-    open_download_file_for_read, prepare_transfer_local_path, probe_peer_capability,
-    project_indirect_transfer_response, project_peer_transfer_response, schedule_queued_downloads,
+    effective_transfer_group_from_records, ensure_scoped_download_path,
+    execute_accepted_file_transfer, fail_indirect_browse, fail_indirect_transfer,
+    handle_inbound_file_transfer, inbound_upload_policy, open_download_file_for_read,
+    prepare_transfer_local_path, probe_peer_capability, project_indirect_transfer_response,
+    project_peer_transfer_response, schedule_queued_downloads,
     render_configured_completed_download_path, safe_download_path, transfer_capacity_available,
-    transfer_group_upload_settings,
+    transfer_group_upload_settings, upload_group_slot_limit_from,
 };
 #[cfg(any(
     feature = "full-controller-tests",

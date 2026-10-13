@@ -678,6 +678,24 @@ impl TransferQueue {
         Some(entry)
     }
 
+    pub(super) fn update_active_download_retry_state(
+        &mut self,
+        id: u64,
+        attempt: u32,
+        next_attempt_at: Option<u64>,
+        reason: Option<String>,
+    ) -> Option<TransferEntry> {
+        let status = self
+            .entries
+            .iter()
+            .find(|entry| {
+                entry.id == id && matches!(entry.status.as_str(), "accepted" | "in_progress")
+            })?
+            .status
+            .clone();
+        self.update_retry_state(id, attempt, next_attempt_at, &status, reason)
+    }
+
     pub(super) fn update_audio_metadata(
         &mut self,
         id: u64,
@@ -702,9 +720,34 @@ impl TransferQueue {
             .iter()
             .find(|entry| {
                 entry.peer_username.as_deref() == Some(username.as_str())
-                    && (entry.status == "peer_lookup" || entry.status == "peer_negotiating")
+                    && entry.status == "peer_lookup"
             })
             .cloned()
+    }
+
+    pub(super) fn claim_pending_peer_transfer(
+        &mut self,
+        id: u64,
+        max_active: usize,
+        download_slots: usize,
+    ) -> Option<TransferEntry> {
+        let transfer = self
+            .entries
+            .iter()
+            .find(|entry| entry.id == id && entry.status == "peer_lookup")?
+            .clone();
+        if transfer.direction == 0
+            && !self.has_capacity_for_direction(0, max_active, download_slots, Some(transfer.id))
+        {
+            self.update_status(
+                transfer.id,
+                "queued",
+                None,
+                Some("Local download slots exhausted".to_owned()),
+            )
+        } else {
+            self.update_status(transfer.id, "peer_negotiating", None, None)
+        }
     }
 
     pub(super) fn pending_indirect_transfer(
@@ -875,6 +918,31 @@ impl TransferQueue {
             })
             .count()
             < directional_slots
+    }
+
+    pub(super) fn has_capacity_for_upload_group(
+        &self,
+        max_active: usize,
+        upload_slots: usize,
+        group_slots: usize,
+        excluding_id: Option<u64>,
+        is_in_group: impl Fn(Option<&str>) -> bool,
+    ) -> bool {
+        if !self.has_capacity_for_direction(1, max_active, upload_slots, excluding_id)
+            || group_slots == 0
+        {
+            return false;
+        }
+        self.entries
+            .iter()
+            .filter(|entry| {
+                excluding_id != Some(entry.id)
+                    && entry.direction == 1
+                    && is_active_transfer_status(&entry.status)
+                    && is_in_group(entry.peer_username.as_deref())
+            })
+            .count()
+            < group_slots
     }
 
     pub(super) fn push_entry(&mut self, entry: TransferEntry) -> TransferEntry {

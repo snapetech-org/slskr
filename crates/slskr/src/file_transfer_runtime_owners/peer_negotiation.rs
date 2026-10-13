@@ -252,28 +252,22 @@ pub(crate) async fn project_peer_transfer_response(state: &AppState, address: &P
     {
         return;
     }
-    if transfer.direction == 0 && !download_capacity_available(state, Some(transfer.id)).await {
-        let queued = {
-            let mut transfers = state.transfers.write().await;
-            transfers.update_status(
-                transfer.id,
-                "queued",
-                None,
-                Some("Local download slots exhausted".to_owned()),
-            )
-        };
-        if let Some(queued) = queued {
-            persist_transfer_projection(state, &queued).await;
-        }
-        return;
-    }
-
-    let negotiating = {
+    let download_slots =
+        usize::try_from(state.transfer_download_settings.read().await.slots).unwrap_or(usize::MAX);
+    let transition = {
         let mut transfers = state.transfers.write().await;
-        transfers.update_status(transfer.id, "peer_negotiating", None, None)
+        transfers.claim_pending_peer_transfer(
+            transfer.id,
+            state.config.transfer_max_active,
+            download_slots,
+        )
     };
-    if let Some(negotiating) = negotiating {
-        persist_transfer_projection(state, &negotiating).await;
+    let Some(transition) = transition else {
+        return;
+    };
+    persist_transfer_projection(state, &transition).await;
+    if transition.status == "queued" {
+        return;
     }
 
     let result = negotiate_peer_transfer(state, address, &transfer).await;

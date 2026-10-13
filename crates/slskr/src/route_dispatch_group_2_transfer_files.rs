@@ -165,9 +165,16 @@ async fn route_dispatch_group_2_transfer_files(
 
         ("POST", _path) if transfer_action_path(normalized_path).is_some() => {
             if let Some((id, action)) = transfer_action_path(normalized_path) {
-                let upload_slots =
-                    usize::try_from(state.transfer_upload_settings.read().await.slots)
-                        .unwrap_or(usize::MAX);
+                let upload = state.transfer_upload_settings.read().await.clone();
+                let upload_slots = usize::try_from(upload.slots).unwrap_or(usize::MAX);
+                let group_capacity_settings = if action == "start" || action == "retry" {
+                    Some((
+                        state.transfer_groups_settings.read().await.clone(),
+                        state.users.read().await.records.clone(),
+                    ))
+                } else {
+                    None
+                };
                 let download_slots =
                     usize::try_from(state.transfer_download_settings.read().await.slots)
                         .unwrap_or(usize::MAX);
@@ -201,6 +208,37 @@ async fn route_dispatch_group_2_transfer_files(
                         } else {
                             "upload slot limit reached"
                         }));
+                    }
+                    if entry.direction != 0 {
+                        let (groups, users) = group_capacity_settings
+                            .as_ref()
+                            .expect("group settings are captured for transfer starts");
+                        let (group_name, group_slots) = upload_group_slot_limit_from(
+                            &groups,
+                            &users,
+                            entry.peer_username.as_deref(),
+                            upload.slots,
+                        );
+                        if !transfers.has_capacity_for_upload_group(
+                            state.config.transfer_max_active,
+                            upload_slots,
+                            usize::try_from(group_slots).unwrap_or(usize::MAX),
+                            None,
+                            |username| {
+                                username
+                                    .map(|username| {
+                                        effective_transfer_group_from_records(
+                                            &groups, &users, username,
+                                        )
+                                    })
+                                    .unwrap_or_else(|| "default".to_owned())
+                                    == group_name
+                            },
+                        ) {
+                            return Ok(routing::conflict_response(
+                                "upload group slot limit reached",
+                            ));
+                        }
                     }
                     if action == "retry"
                         && (entry.direction != 0
@@ -273,6 +311,43 @@ async fn route_dispatch_group_2_transfer_files(
                         drop(transfers);
                         return Ok(routing::not_found_response());
                     };
+                    if direction != 0 {
+                        let (groups, users) = group_capacity_settings
+                            .as_ref()
+                            .expect("group settings are captured for transfer starts");
+                        let peer_username = transfers
+                            .entries
+                            .iter()
+                            .find(|entry| entry.id == id)
+                            .and_then(|entry| entry.peer_username.as_deref());
+                        let (group_name, group_slots) = upload_group_slot_limit_from(
+                            &groups,
+                            &users,
+                            peer_username,
+                            upload.slots,
+                        );
+                        if !transfers.has_capacity_for_upload_group(
+                            max_active,
+                            upload_slots,
+                            usize::try_from(group_slots).unwrap_or(usize::MAX),
+                            None,
+                            |username| {
+                                username
+                                    .map(|username| {
+                                        effective_transfer_group_from_records(
+                                            &groups, &users, username,
+                                        )
+                                    })
+                                    .unwrap_or_else(|| "default".to_owned())
+                                    == group_name
+                            },
+                        ) {
+                            drop(transfers);
+                            return Ok(routing::conflict_response(
+                                "upload group slot limit reached",
+                            ));
+                        }
+                    }
                     if (direction == 0 && active_downloads >= download_slots)
                         || (direction != 0 && active_uploads >= upload_slots)
                     {

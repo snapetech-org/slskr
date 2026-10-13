@@ -338,19 +338,32 @@ where
                         }
                     }
                 }
-                let upload_slots =
-                    usize::try_from(state.transfer_upload_settings.read().await.slots)
-                        .unwrap_or(usize::MAX);
+                let upload = state.transfer_upload_settings.read().await.clone();
+                let groups = state.transfer_groups_settings.read().await.clone();
+                let users = state.users.read().await.records.clone();
+                let (group_name, group_slots) =
+                    upload_group_slot_limit_from(&groups, &users, peer_username, upload.slots);
+                let upload_slots = usize::try_from(upload.slots).unwrap_or(usize::MAX);
                 let admission = {
                     let mut transfers = state.transfers.write().await;
                     let global_full =
                         transfers.active_count_excluding(None) >= state.config.transfer_max_active;
                     let upload_full = request.direction == 0
-                        && !transfers.has_capacity_for_direction(
-                            1,
+                        && !transfers.has_capacity_for_upload_group(
                             state.config.transfer_max_active,
                             upload_slots,
+                            usize::try_from(group_slots).unwrap_or(usize::MAX),
                             None,
+                            |username| {
+                                username
+                                    .map(|username| {
+                                        effective_transfer_group_from_records(
+                                            &groups, &users, username,
+                                        )
+                                    })
+                                    .unwrap_or_else(|| "default".to_owned())
+                                    == group_name
+                            },
                         );
                     if global_full || upload_full {
                         if request.direction == 0 {

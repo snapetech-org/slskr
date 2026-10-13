@@ -34,15 +34,20 @@ pub(crate) fn effective_transfer_group_from(
     users: &UserStore,
     username: &str,
 ) -> String {
+    effective_transfer_group_from_records(settings, &users.records, username)
+}
+
+pub(crate) fn effective_transfer_group_from_records(
+    settings: &crate::config::TransferGroupsSettings,
+    users: &[UserRecord],
+    username: &str,
+) -> String {
     // Matches the oracle's real UserService.GetGroup: a blacklist decision is
     // only made for a username already present in the user cache. Unknown
     // usernames return the default group, even when the configured blacklist
     // would match them; once cached, the blacklist wins over every other
     // classification, including privileged status.
-    if users
-        .records
-        .iter()
-        .any(|record| record.username == username)
+    if users.iter().any(|record| record.username == username)
         && settings
             .blacklisted
             .members
@@ -52,7 +57,6 @@ pub(crate) fn effective_transfer_group_from(
         return "blacklisted".to_owned();
     }
     if users
-        .records
         .iter()
         .find(|record| record.username == username)
         .is_some_and(|record| record.privileged)
@@ -73,7 +77,6 @@ pub(crate) fn effective_transfer_group_from(
         return name.clone();
     }
     if users
-        .records
         .iter()
         .find(|record| record.username == username)
         .is_some_and(|record| {
@@ -107,6 +110,26 @@ pub(crate) fn transfer_group_upload_settings<'a>(
         "leechers" => Some(&settings.leechers.upload),
         name => settings.user_defined.get(name).map(|group| &group.upload),
     }
+}
+
+pub(crate) fn upload_group_slot_limit_from(
+    groups: &crate::config::TransferGroupsSettings,
+    users: &[UserRecord],
+    username: Option<&str>,
+    upload_slots: u32,
+) -> (String, u32) {
+    let group_name = username
+        .map(|username| effective_transfer_group_from_records(groups, users, username))
+        .unwrap_or_else(|| "default".to_owned());
+    let group_slots = if group_name == "privileged" {
+        upload_slots
+    } else {
+        transfer_group_upload_settings(groups, &group_name)
+            .unwrap_or(&groups.default.upload)
+            .slots
+            .min(upload_slots)
+    };
+    (group_name, group_slots)
 }
 
 #[derive(Default)]

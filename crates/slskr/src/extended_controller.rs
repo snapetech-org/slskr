@@ -369,16 +369,12 @@ pub(super) async fn controller_enqueue_download_batch(
         }
     }
 
-    let (staged, commit_failures) =
+    let (staged_entries, dispatch, commit_failures) =
         commit_prepared_download_batch_transfers(state, &username, &batch_id, prepared).await;
     file_failures.extend(commit_failures);
     file_failures.sort_by_key(|(index, _)| *index);
     failures.extend(file_failures.into_iter().map(|(_, failure)| failure));
 
-    let staged_entries = staged
-        .iter()
-        .map(|(entry, _)| entry.clone())
-        .collect::<Vec<_>>();
     if let Err(error) = persist_transfer_records(state, &staged_entries).await {
         let removed = remove_transfer_entries_if_unchanged(state, &staged_entries).await;
         if removed.len() == staged_entries.len() {
@@ -438,7 +434,7 @@ pub(super) async fn controller_enqueue_download_batch(
             return routing::service_unavailable_response(&error);
         }
     }
-    for (entry, permit) in staged {
+    for (entry, permit) in dispatch {
         permit.send(SessionCommand::TransferPeer {
             id: entry.id,
             username: username.clone(),
@@ -489,6 +485,8 @@ pub(super) async fn extended_controller_download_response(
         return Err(routing::bad_request_response("items are required"));
     }
     let mut requests = Vec::new();
+    let download_slots =
+        usize::try_from(state.transfer_download_settings.read().await.slots).unwrap_or(usize::MAX);
     for item in items.into_iter().take(1_000) {
         let username = item
             .get("user")
@@ -526,18 +524,42 @@ pub(super) async fn extended_controller_download_response(
         };
         let mut transfers = state.transfers.write().await;
         let entry = transfers.create(0, Some(username.to_owned()), filename.clone(), None, None);
-        let entry = transfers
-            .update_status(entry.id, "peer_lookup", None, None)
-            .unwrap_or(entry);
+        let (entry, dispatch) = if transfers.has_capacity_for_direction(
+            0,
+            state.config.transfer_max_active,
+            download_slots,
+            None,
+        ) {
+            (
+                transfers
+                    .update_status(entry.id, "peer_lookup", None, None)
+                    .unwrap_or(entry),
+                true,
+            )
+        } else {
+            (
+                transfers
+                    .update_status(
+                        entry.id,
+                        "queued",
+                        None,
+                        Some("Local download slots exhausted".to_owned()),
+                    )
+                    .unwrap_or(entry),
+                false,
+            )
+        };
         drop(transfers);
         if let Err(error) = persist_transfer_record(state, &entry).await {
             remove_transfer_entries_if_unchanged(state, std::slice::from_ref(&entry)).await;
             return Err(routing::service_unavailable_response(&error));
         }
-        permit.send(SessionCommand::TransferPeer {
-            id: entry.id,
-            username: username.to_owned(),
-        });
+        if dispatch {
+            permit.send(SessionCommand::TransferPeer {
+                id: entry.id,
+                username: username.to_owned(),
+            });
+        }
         requests.push(entry);
     }
     Ok(requests)
