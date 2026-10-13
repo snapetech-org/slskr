@@ -31,6 +31,15 @@ import {
   Segment,
 } from 'semantic-ui-react';
 
+const interfaceLanguageOptions = INTERFACE_LANGUAGE_OPTIONS.map((option) => ({
+  ...option,
+  text: (
+    <span dir={option.value === 'ar' ? 'rtl' : 'ltr'} lang={option.value}>
+      {option.text}
+    </span>
+  ),
+}));
+
 const storageKey = EXPERIENCE_PREFERENCES_STORAGE_KEY;
 
 const defaults = {
@@ -261,11 +270,9 @@ const ExperienceSettings = () => {
             <Form>
               <Form.Select
                 aria-label={t('Interface language')}
-                dir={language === 'ar' ? 'rtl' : 'ltr'}
                 label={<span lang={language}>{t('Interface language')}</span>}
-                lang={language}
                 onChange={(_, { value }) => setLanguage(value)}
-                options={INTERFACE_LANGUAGE_OPTIONS}
+                options={interfaceLanguageOptions}
                 value={language}
               />
             </Form>

@@ -30,6 +30,8 @@ const translationFor = (source, language) => {
   return index === undefined ? undefined : UI_LABELS[source]?.[index];
 };
 
+export const getInterfaceLanguageIndex = (language) => translatedLanguages.get(language);
+
 const browserLanguage = () => {
   if (typeof navigator === 'undefined') return 'en';
   const candidates = navigator.languages?.length ? navigator.languages : [navigator.language];

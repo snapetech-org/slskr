@@ -1,4 +1,5 @@
 import UI_LABELS from './ui-labels.json';
+import TRANSFER_BULK_ACTION_LABELS from './transfer-bulk-action-labels.json';
 import {
   INTERFACE_LANGUAGE_OPTIONS,
   applyInitialInterfaceLanguage,
@@ -9,6 +10,18 @@ import {
 import { act, renderHook } from '@testing-library/react';
 
 const storageKey = 'slskr.interface-language';
+const bulkActionLabels = [
+  'Retry All',
+  'Retry All Errored',
+  'Retry All Cancelled',
+  'Cancel All',
+  'Cancel All Queued',
+  'Cancel All In Progress',
+  'Remove All Succeeded',
+  'Remove All Errored',
+  'Remove All Cancelled',
+  'Remove All Completed',
+];
 const originalLanguages = Object.getOwnPropertyDescriptor(navigator, 'languages');
 
 afterEach(() => {
@@ -39,6 +52,13 @@ describe('interface language', () => {
     for (const [source, translations] of Object.entries(UI_LABELS)) {
       expect(translations).toHaveLength(INTERFACE_LANGUAGE_OPTIONS.length - 1);
       expect(translations.every((value) => value === null || typeof value === 'string')).toBe(true);
+    }
+  });
+
+  it('translates each bulk action as a complete phrase in every supported language', () => {
+    for (const source of bulkActionLabels) {
+      expect(TRANSFER_BULK_ACTION_LABELS[source]).toHaveLength(INTERFACE_LANGUAGE_OPTIONS.length - 1);
+      expect(TRANSFER_BULK_ACTION_LABELS[source].every((translation) => typeof translation === 'string')).toBe(true);
     }
   });
 

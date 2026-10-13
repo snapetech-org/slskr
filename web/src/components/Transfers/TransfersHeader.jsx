@@ -1,8 +1,9 @@
 import { isStateCancellable, isStateRetryable } from '../../lib/transfers';
 import { Div, Nbsp } from '../Shared';
 import ShrinkableDropdownButton from '../Shared/ShrinkableDropdownButton';
-import React, { useMemo, useState } from 'react';
-import { useInterfaceLanguage } from '../../lib/interfaceLocale';
+import React, { useEffect, useMemo, useState } from 'react';
+import { getInterfaceLanguageIndex, useInterfaceLanguage } from '../../lib/interfaceLocale';
+import transferBulkActionLabelsUrl from '../../lib/transfer-bulk-action-labels.json?url';
 import { Checkbox, Icon, Popup, Segment } from 'semantic-ui-react';
 
 const getRetryableFiles = ({ files, retryOption }) => {
@@ -79,10 +80,26 @@ const TransfersHeader = ({
   server = { isConnected: true },
   transfers,
 }) => {
-  const { t, languageFor, directionFor } = useInterfaceLanguage();
-  const localizedText = (source, text = t(source)) => (
-    <span lang={languageFor(source)} dir={directionFor(source)}>{text}</span>
+  const { language, t, languageFor } = useInterfaceLanguage();
+  const [bulkActionLabels, setBulkActionLabels] = useState(null);
+  useEffect(() => {
+    if (language === 'en') return;
+    fetch(transferBulkActionLabelsUrl)
+      .then((response) => response.json())
+      .then(setBulkActionLabels)
+      .catch(() => null);
+  }, [language]);
+  const localizedText = (source, text = t(source), localizedLanguage = languageFor(source)) => (
+    <span lang={localizedLanguage} dir={localizedLanguage === 'ar' ? 'rtl' : 'ltr'}>{text}</span>
   );
+  const localizedBulkAction = (action, option) => {
+    const source = `${action} All${option === 'All' ? '' : ` ${option}`}`;
+    const languageIndex = getInterfaceLanguageIndex(language);
+    const translation = languageIndex === undefined
+      ? undefined
+      : bulkActionLabels?.[source]?.[languageIndex];
+    return localizedText(source, translation || source, translation ? language : 'en');
+  };
   const [removeOption, setRemoveOption] = useState('Succeeded');
   const [cancelOption, setCancelOption] = useState('All');
   const [retryOption, setRetryOption] = useState('Errored');
@@ -136,10 +153,7 @@ const TransfersHeader = ({
             { key: 'all', text: localizedText('All'), value: 'All' },
           ]}
         >
-          {localizedText(
-            'Retry',
-            `${t('Retry')} ${retryOption === 'All' ? t('All') : `${t('All')} ${t(retryOption)}`}`,
-          )}
+          {localizedBulkAction('Retry', retryOption)}
         </ShrinkableDropdownButton>
         <Nbsp />
         <ShrinkableDropdownButton
@@ -159,10 +173,7 @@ const TransfersHeader = ({
             { key: 'inProgress', text: localizedText('In Progress'), value: 'In Progress' },
           ]}
         >
-          {localizedText(
-            'Cancel',
-            `${t('Cancel')} ${cancelOption === 'All' ? t('All') : `${t('All')} ${t(cancelOption)}`}`,
-          )}
+          {localizedBulkAction('Cancel', cancelOption)}
         </ShrinkableDropdownButton>
         <Nbsp />
         <ShrinkableDropdownButton
@@ -186,7 +197,7 @@ const TransfersHeader = ({
             { key: 'completed', text: localizedText('Completed'), value: 'Completed' },
           ]}
         >
-          {localizedText('Remove', `${t('Remove')} ${t('All')} ${t(removeOption)}`)}
+          {localizedBulkAction('Remove', removeOption)}
         </ShrinkableDropdownButton>
         <Nbsp />
         <Popup

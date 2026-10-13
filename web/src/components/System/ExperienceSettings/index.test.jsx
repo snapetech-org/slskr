@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import ExperienceSettings from './index';
 import {
+  INTERFACE_LANGUAGE_OPTIONS,
   resetInterfaceLanguage,
   setInterfaceLanguage,
 } from '../../../lib/interfaceLocale';
@@ -97,5 +98,22 @@ describe('ExperienceSettings', () => {
     expect(
       screen.getByText('Experience preferences reset to defaults.'),
     ).toBeInTheDocument();
+  });
+
+  it('uses each language option’s own pronunciation and text direction', () => {
+    setInterfaceLanguage('ar');
+    render(<ExperienceSettings />);
+
+    const languageSelect = screen.getAllByRole('combobox')[0];
+    expect(languageSelect).not.toHaveAttribute('lang');
+    expect(languageSelect).not.toHaveAttribute('dir');
+    fireEvent.click(languageSelect);
+
+    for (const option of INTERFACE_LANGUAGE_OPTIONS) {
+      const optionLabel = screen.getByRole('option', { name: option.text }).querySelector('span');
+      expect(optionLabel).not.toBeNull();
+      expect(optionLabel).toHaveAttribute('lang', option.value);
+      expect(optionLabel).toHaveAttribute('dir', option.value === 'ar' ? 'rtl' : 'ltr');
+    }
   });
 });
