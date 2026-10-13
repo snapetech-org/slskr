@@ -63,6 +63,13 @@ and engine contract tests. The default command runs all registered local tasks,
 including Rust formatting, Clippy, WASM, advisory, lint, typecheck, and build
 checks.
 
+The engine runs up to three dependency-ready tasks at once. Cargo tasks share an
+exclusive group because they write to the same Rust target tree. Web test and
+browser tasks, web build writers, and dashboard tasks that produce shared
+artifacts also use repository-specific groups. Install and build dependencies
+still gate their consumers; independent checks can overlap. Task selection,
+native case accounting, source checks, and one receipt per task are unchanged.
+
 Each execution receives a fresh private directory under the operating system's
 temporary directory. Its receipt distinguishes planned, executed, passed,
 failed, blocked, excluded, and active test cases. Logs are hashed and kept with
@@ -92,10 +99,11 @@ reports. Empty or missing test output cannot be reported as a pass.
 
 During execution, the engine writes cumulative task progress to stderr at task
 start and completion, with a heartbeat every minute for long tasks. It reports
-completed, failed, blocked, and pending tasks plus the active task and elapsed
-time. Native test-case totals update after each task finishes, since native
-runner output may be buffered. In GitHub Actions these updates appear in the
-live step log; the rendered job summary is published after the step completes.
+completed, failed, blocked, and pending tasks plus each active task and its
+elapsed time. Native test-case totals update after each task finishes, since
+native runner output may be buffered. In GitHub Actions these updates appear in
+the live step log; the rendered job summary is published after the step
+completes.
 
 Inventory globs are matched by bounded POSIX path segments (`*`, `?`, and
 `**`). Test-content filtering, runtime versions, and native result summaries use
