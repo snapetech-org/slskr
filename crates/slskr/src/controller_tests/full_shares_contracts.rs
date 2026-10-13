@@ -259,6 +259,7 @@ pub(super) async fn share_scan_progress_is_visible_before_a_large_scan_completes
     });
     let deadline = tokio::time::Instant::now() + Duration::from_secs(10);
     let mut observed_progress = 0;
+    let mut observed_start_log = false;
     let mut observed_progress_log = false;
     while tokio::time::Instant::now() < deadline {
         let lifecycle = state.share_lifecycle.read().await.clone();
@@ -267,8 +268,9 @@ pub(super) async fn share_scan_progress_is_visible_before_a_large_scan_completes
             let logs = crate::route_http_request("GET", "/api/v0/logs", None, "", &state)
                 .await
                 .expect("read live share scan logs");
+            observed_start_log = logs.body.contains("Scanning shares...");
             observed_progress_log = logs.body.contains("share scan visited");
-            if observed_progress_log {
+            if observed_start_log && observed_progress_log {
                 break;
             }
         }
@@ -280,6 +282,10 @@ pub(super) async fn share_scan_progress_is_visible_before_a_large_scan_completes
     assert!(
         observed_progress > 0,
         "large scan completed or failed before live filesystem progress was published"
+    );
+    assert!(
+        observed_start_log,
+        "large scan did not log its start before indexing"
     );
     assert!(
         observed_progress_log,
@@ -297,6 +303,26 @@ pub(super) async fn share_scan_progress_is_visible_before_a_large_scan_completes
         TOTAL_ENTRIES
     );
     assert!(observed_progress < TOTAL_ENTRIES);
+
+    let expected_completion = format!(
+        "Share scan completed, {TOTAL_FILES} files indexed after visiting {TOTAL_ENTRIES} filesystem entries"
+    );
+    let completion_deadline = tokio::time::Instant::now() + Duration::from_secs(10);
+    let mut completion_logged = false;
+    while tokio::time::Instant::now() < completion_deadline {
+        let logs = crate::route_http_request("GET", "/api/v0/logs", None, "", &state)
+            .await
+            .expect("read completed share scan logs");
+        completion_logged = logs.body.contains(&expected_completion);
+        if completion_logged {
+            break;
+        }
+        tokio::time::sleep(Duration::from_millis(5)).await;
+    }
+    assert!(
+        completion_logged,
+        "completed scan did not log its indexed file count"
+    );
 
     std::fs::remove_dir_all(root).expect("remove share fixture");
 }

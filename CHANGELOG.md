@@ -37,7 +37,8 @@ the release is prepared. Do not rewrite audited release history.
   mark process RSS totals incomplete when procfs samples are missing.
 - Hardened local validation with a trusted test sandbox and isolated task
   environments.
-- Added live progress state and scan logs for large share libraries.
+- Added startup share-scan logs for the start, periodic filesystem-entry
+  progress, and final indexed-file count.
 - Returned slskd-compatible versioned search and download responses, and delivered
   search results to firewalled peers through server-brokered connections.
 - Added a COPR API-token fallback when Fedora Kerberos authentication is
