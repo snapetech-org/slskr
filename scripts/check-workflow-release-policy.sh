@@ -32,6 +32,11 @@ for expected in \
 done
 
 trusted_runner_condition="((github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')) || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'))"
+trusted_runner_labels="fromJSON('[\"self-hosted\",\"Linux\",\"X64\",\"host\",\"kspld0\"]')"
+if ! rg -n -F "$trusted_runner_labels" .github/workflows/ci.yml >/dev/null; then
+  printf 'workflow release policy check failed: trusted branch jobs must target the kspld0 runner\n' >&2
+  status=1
+fi
 if ! rg -n -F "$trusted_runner_condition" .github/workflows/ci.yml >/dev/null; then
   printf 'workflow release policy check failed: trusted branch push and manual-main local runner policy is missing\n' >&2
   status=1
