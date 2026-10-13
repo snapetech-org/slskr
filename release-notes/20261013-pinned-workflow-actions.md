@@ -5,4 +5,4 @@ area: release-pipeline
 action: update the repository action allowlist when workflow action revisions change
 breaking: false
 ---
-GitHub Actions is enabled for CI and releases with a selected action policy. The allowlist includes only the pinned revisions used by repository workflows and the GitHub-managed CodeQL analyzer; other marketplace actions remain blocked.
+GitHub Actions is enabled for CI and releases with a selected action policy. GitHub-owned actions are allowed, while third-party marketplace actions are limited to the pinned revisions used by repository workflows; other third-party actions remain blocked.
