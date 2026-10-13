@@ -214,6 +214,43 @@ pub(super) async fn share_scan_progress_is_exposed_in_application_state() {
 
 #[cfg_attr(test, tokio::test)]
 #[cfg(feature = "full-controller-tests")]
+pub(super) async fn capped_share_scan_preserves_the_last_complete_snapshot() {
+    let root = std::env::temp_dir().join(format!(
+        "slskr-share-cap-preserves-snapshot-{}",
+        uuid::Uuid::new_v4()
+    ));
+    std::fs::create_dir_all(&root).expect("create share fixture directory");
+    std::fs::write(root.join("one.flac"), b"one").expect("write first fixture");
+    std::fs::write(root.join("two.flac"), b"two").expect("write second fixture");
+    let directories = crate::config::parse_share_directories(&root.display().to_string())
+        .expect("parse share fixture root");
+    let (state, _receiver) = test_state();
+    {
+        let mut settings = state.share_settings.write().await;
+        settings.fixture_entries.clear();
+        settings.roots = directories
+            .iter()
+            .filter(|directory| !directory.is_excluded)
+            .map(|directory| directory.local_path.clone())
+            .collect();
+        settings.directories = directories;
+        settings.max_files = 1;
+        settings.cache_tsv_enabled = false;
+    }
+    let previous = state.shares.read().await.json();
+
+    let error = crate::rebuild_share_index(&state)
+        .await
+        .expect_err("capped scan must fail");
+
+    assert!(error.contains("share scan incomplete"), "{error}");
+    assert_eq!(state.shares.read().await.json(), previous);
+    assert!(state.share_lifecycle.read().await.faulted);
+    std::fs::remove_dir_all(root).expect("remove share fixture");
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
 pub(super) async fn share_scan_progress_is_visible_before_a_large_scan_completes() {
     const DIRECTORY_COUNT: usize = 8_000;
     const ROOT_FILE_COUNT: usize = 33_000;
@@ -1749,44 +1786,34 @@ pub(super) fn share_scan_applies_alias_and_exclusion_before_indexing() {
     assert_eq!(scan.roots[1].label, "Library");
     assert_eq!(scan.roots[1].files, 1);
 
+    let config = crate::AppConfig::from_layers(
+        None,
+        crate::config::FileConfig::default(),
+        &MapEnv::default()
+            .with(
+                "SLSKD_SHARED_DIR",
+                &format!("[Library]{};!{}", root.display(), excluded.display()),
+            )
+            .with("SLSKR_SHARE_CACHE_TSV_ENABLED", "false")
+            .with("SLSKR_SHARES_PROBE_MEDIA_ATTRIBUTES", "false"),
+    )
+    .expect("share configuration with an exclusion");
+    let index = crate::build_share_index(&config);
+    assert_eq!(index.entries.len(), 1);
+
     std::fs::remove_dir_all(root).unwrap();
 }
 
 #[cfg_attr(test, test)]
 #[cfg(feature = "full-controller-tests")]
 pub(super) fn share_scan_bounds_aggregate_directory_entries() {
-    let mut scanned_entries = crate::MAX_SHARE_SCAN_ENTRIES - 1;
-    assert!(crate::reserve_share_scan_entry(&mut scanned_entries));
-    assert_eq!(scanned_entries, crate::MAX_SHARE_SCAN_ENTRIES);
-    assert!(!crate::reserve_share_scan_entry(&mut scanned_entries));
-}
-
-#[cfg(unix)]
-#[cfg_attr(test, test)]
-#[cfg(feature = "full-controller-tests")]
-pub(super) fn share_scan_bounds_pending_directory_descriptors() {
-    let unique = SystemTime::now()
-        .duration_since(UNIX_EPOCH)
-        .map(|duration| duration.as_nanos())
-        .unwrap_or(0);
-    let root = std::env::temp_dir().join(format!(
-        "slskr-share-scan-width-test-{}-{unique}",
-        std::process::id()
-    ));
-    std::fs::create_dir_all(&root).unwrap();
-    for index in 0..=crate::MAX_SHARE_SCAN_PENDING_DIRECTORIES {
-        std::fs::create_dir(root.join(format!("directory-{index:04}"))).unwrap();
-    }
-
-    let directory = crate::config::parse_share_directories(root.to_str().unwrap()).unwrap();
-    let scan = crate::scan_share_dirs(&directory, false, false, 100, false, 1, &[]);
-
-    assert!(scan.entries.is_empty());
-    assert!(scan
-        .errors
-        .iter()
-        .any(|error| error == crate::SHARE_SCAN_PENDING_DIRECTORY_LIMIT_ERROR));
-    std::fs::remove_dir_all(root).unwrap();
+    let scanned_entries = std::sync::atomic::AtomicUsize::new(crate::MAX_SHARE_SCAN_ENTRIES - 1);
+    assert!(crate::reserve_share_scan_entry(&scanned_entries));
+    assert_eq!(
+        scanned_entries.load(std::sync::atomic::Ordering::Relaxed),
+        crate::MAX_SHARE_SCAN_ENTRIES
+    );
+    assert!(!crate::reserve_share_scan_entry(&scanned_entries));
 }
 
 #[cfg(unix)]

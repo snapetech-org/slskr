@@ -1422,18 +1422,34 @@ pub(super) fn security_controls_differential_authentication_and_jwt() {
             uuid::Uuid::new_v4().simple()
         ));
         fs::create_dir_all(&root).expect("authentication control state root");
+        let jwt_secret = format!(
+            "{}{}",
+            uuid::Uuid::new_v4().simple(),
+            uuid::Uuid::new_v4().simple()
+        );
         let jwt_env = MapEnv::default()
             .with("SLSKR_STATE_DIR", root.to_str().expect("auth state path"))
             .with("SLSKR_CONTROLLER_PROFILE", target)
-            .with("SLSKD_JWT_KEY", "0123456789abcdef0123456789abcdef")
+            .with("SLSKD_JWT_KEY", &jwt_secret)
             .with("SLSKD_JWT_TTL", "3600000")
             .with("SLSKR_API_TOKEN", "admin-token");
         let config = crate::AppConfig::from_layers(None, FileConfig::default(), &jwt_env)
             .expect("authentication control config");
         let now = crate::unix_timestamp();
-        let (jwt, claims) = crate::utils::issue_admin_jwt(&config, "security-user", now)
-            .expect("issue administrator JWT");
-        let verified = crate::utils::verify_admin_jwt(&config, &jwt, now);
+        let (jwt, claims) = crate::utils::issue_admin_jwt(
+            &config.controller_web_jwt_key,
+            config.controller_profile,
+            config.controller_web_jwt_ttl_millis,
+            "security-user",
+            now,
+        )
+        .expect("issue administrator JWT");
+        let verified = crate::utils::verify_admin_jwt(
+            &config.controller_web_jwt_key,
+            config.controller_profile,
+            &jwt,
+            now,
+        );
         record!(
             target,
             SECURITY_SERVICE,
@@ -1469,7 +1485,13 @@ pub(super) fn security_controls_differential_authentication_and_jwt() {
             target,
             SECURITY_SERVICE,
             "rejected-malicious-and-boundary-input",
-            crate::utils::verify_admin_jwt(&config, &tampered, now).is_none()
+            crate::utils::verify_admin_jwt(
+                &config.controller_web_jwt_key,
+                config.controller_profile,
+                &tampered,
+                now,
+            )
+            .is_none()
         );
         record!(
             target,
@@ -1484,8 +1506,13 @@ pub(super) fn security_controls_differential_authentication_and_jwt() {
             target,
             SECURITY_SERVICE,
             "restart-rotation-and-recovery",
-            crate::utils::verify_admin_jwt(&reloaded, &jwt, now)
-                .is_some_and(|value| value.jti == claims.jti)
+            crate::utils::verify_admin_jwt(
+                &reloaded.controller_web_jwt_key,
+                reloaded.controller_profile,
+                &jwt,
+                now,
+            )
+            .is_some_and(|value| value.jti == claims.jti)
         );
 
         let key = "0123456789abcdef";

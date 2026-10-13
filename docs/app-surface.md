@@ -199,11 +199,11 @@ Initial configuration sources:
 - `SLSKR_SHARE_DIRS` for semicolon-separated share roots. The daemon scans explicit roots into virtual `root/file` paths at startup.
 - `SLSKR_SHARE_FOLLOW_SYMLINKS` to follow symlinks during share scans; defaults to `false`
 - `SLSKR_SHARE_INCLUDE_HIDDEN` to include dot-prefixed path components; defaults to `false`
-- `SLSKR_SHARE_SCAN_MAX_FILES` to cap startup scan size; defaults to `50000`
+- `SLSKR_SHARE_SCAN_MAX_FILES` to cap startup scan size; defaults to `250000`. Scans that hit the file, filesystem-entry (`2000000`), or pending-directory-path (`262144`) safety limits fail without replacing the last complete index.
 - `SLSKR_SHARE_CACHE_TSV_ENABLED` to emit the `share-index.tsv` compatibility/debug mirror; defaults to `true`. SQLite `share_files` remains the durable share index when persistence is enabled.
 - `SLSKR_SHARE_FIXTURE` for temporary in-memory test entries as `path=size;path=size`
 - `SLSKR_TRANSFER_HISTORY_LIMIT` for the in-memory transfer event history; defaults to `500`
-- `SLSKR_TRANSFER_MAX_ACTIVE` for max concurrently active transfer records, including peer lookup/negotiation and inbound accepted transfers; defaults to `3`. Set to `0` to block transfer starts and inbound transfer acceptance.
+- `SLSKR_TRANSFER_MAX_ACTIVE` for the combined cap on active uploads and downloads, including peer lookup/negotiation and inbound accepted transfers; defaults to `520`. Upload and download limits are directional and default to `20` (`SLSKD_UPLOAD_SLOTS`) and `500` (`SLSKD_DOWNLOAD_SLOTS`). Set the combined cap to `0` to block transfer starts and inbound transfer acceptance.
 - `SLSKR_TRANSFER_ALLOW_INBOUND` controls whether peer `TransferRequest`s for local shares are accepted; defaults to `true`.
 - `SLSKR_TRANSFER_ALLOW_OUTBOUND` controls whether API-started peer transfers are allowed to begin; defaults to `true`.
 - `SLSKR_TRANSFER_AUTO_RETRY_ENABLED` controls the connected-session failed-download worker; defaults to `true`. Its bounded policy is configured with `SLSKR_TRANSFER_AUTO_RETRY_DELAY_SECONDS` (default `1800`), `SLSKR_TRANSFER_AUTO_RETRY_CHECK_INTERVAL_SECONDS` (`300`), `SLSKR_TRANSFER_AUTO_RETRY_MAX_ATTEMPTS` (`5`, or `0` for unlimited), `SLSKR_TRANSFER_AUTO_RETRY_MAX_FILES_PER_CYCLE` (`10`), `SLSKR_TRANSFER_AUTO_RETRY_MAX_FILES_PER_PEER_PER_CYCLE` (`1`), `SLSKR_TRANSFER_AUTO_RETRY_PEER_COOLDOWN_SECONDS` (`900`), `SLSKR_TRANSFER_AUTO_RETRY_ALTERNATE_SOURCES_ENABLED` (`true`), `SLSKR_TRANSFER_AUTO_RETRY_MAX_ALTERNATE_SOURCE_SEARCHES_PER_CYCLE` (`1`), and `SLSKR_TRANSFER_AUTO_RETRY_ALTERNATE_SOURCE_SIZE_TOLERANCE_PERCENT` (`5`). Equivalent TOML keys live under `[transfers.auto_retry]`.

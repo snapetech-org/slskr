@@ -132,7 +132,7 @@ dirs = ["/srv/slskr/shares/music"]
 filters = ["\\.ini$", "Thumbs\\.db$", "\\.DS_Store$"]
 follow_symlinks = false
 include_hidden = false
-scan_max_files = 50000
+scan_max_files = 250000
 # Emit share-index.tsv for compatibility/debug inspection. SQLite share_files is
 # the durable share index when [persistence].enabled = true.
 cache_tsv_enabled = true
@@ -144,10 +144,18 @@ request = ["^.{1,2}$"]
 
 [transfers]
 history_limit = 500
-max_active = 3
+# Combined cap across active uploads and downloads; directional slot limits
+# below remain the normal admission limits.
+max_active = 520
 allow_inbound = true
 allow_outbound = true
 # completed_path_template = "{uploader}/{remote_parent}/{request_name}"
+
+[transfers.upload]
+slots = 20
+
+[transfers.download]
+slots = 500
 
 [transfers.groups.blacklisted]
 # The native options API projects this under `groups.blacklisted`, while the

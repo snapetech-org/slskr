@@ -417,7 +417,7 @@ impl TransferUploadSettings {
             file = serde_json::from_str::<TransferUploadFileConfig>(&json)
                 .map_err(|error| format!("invalid transfer upload configuration: {error}"))?;
         }
-        let slots = env_parse_layer(env, "SLSKD_UPLOAD_SLOTS", file.slots, 10_u32)?;
+        let slots = env_parse_layer(env, "SLSKD_UPLOAD_SLOTS", file.slots, 20_u32)?;
         let speed_limit_kib = env_parse_layer(
             env,
             "SLSKD_UPLOAD_SPEED_LIMIT",
@@ -453,7 +453,7 @@ impl TransferDownloadSettings {
             file = serde_json::from_str::<TransferDownloadFileConfig>(&json)
                 .map_err(|error| format!("invalid transfer download configuration: {error}"))?;
         }
-        let slots = env_parse_layer(env, "SLSKD_DOWNLOAD_SLOTS", file.slots, i32::MAX as u32)?;
+        let slots = env_parse_layer(env, "SLSKD_DOWNLOAD_SLOTS", file.slots, 500_u32)?;
         let speed_limit_kib = env_parse_layer(
             env,
             "SLSKD_DOWNLOAD_SPEED_LIMIT",

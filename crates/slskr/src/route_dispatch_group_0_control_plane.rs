@@ -222,7 +222,7 @@ async fn route_dispatch_group_0_control_plane(
                 Err(_) => {
                     return Ok(routing::bad_request_response(
                         "limit must be between 1 and 500",
-                    ))
+                    ));
                 }
             };
             match (username, password) {
@@ -481,9 +481,13 @@ async fn route_dispatch_group_0_control_plane(
                         .to_string(),
                     ));
                 }
-                let Some((token, claims)) =
-                    utils::issue_admin_jwt(&state.config, &username, issued)
-                else {
+                let Some((token, claims)) = utils::issue_admin_jwt(
+                    &state.config.controller_web_jwt_key,
+                    state.config.controller_profile,
+                    state.config.controller_web_jwt_ttl_millis,
+                    &username,
+                    issued,
+                ) else {
                     return Ok(routing::service_unavailable_response(
                         "JWT signing credential is unavailable",
                     ));

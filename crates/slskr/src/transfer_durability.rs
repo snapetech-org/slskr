@@ -8,6 +8,7 @@ use std::{
     collections::{BTreeMap, HashMap, HashSet},
     path::{Path, PathBuf},
     sync::{Arc, LazyLock, Mutex},
+    time::Instant,
 };
 use tokio::sync::Mutex as AsyncMutex;
 
@@ -328,7 +329,7 @@ pub(super) async fn remove_transfer_entries_if_unchanged(
 #[derive(Debug)]
 pub(super) struct TransferMutationSnapshot {
     entries: Vec<TransferEntry>,
-    progress_persisted_at: BTreeMap<u64, u64>,
+    progress_persisted_at: BTreeMap<u64, Instant>,
     next_id: u64,
     next_token: u32,
 }
@@ -510,20 +511,5 @@ impl TransferQueue {
                 }
             }
         }
-    }
-
-    pub(super) fn should_persist_progress(&mut self, entry: &TransferEntry) -> bool {
-        const PROGRESS_PERSIST_INTERVAL_MS: u64 = 1_000;
-        let should_persist = self
-            .progress_persisted_at
-            .get(&entry.id)
-            .is_none_or(|persisted_at| {
-                entry.updated_at_ms.saturating_sub(*persisted_at) >= PROGRESS_PERSIST_INTERVAL_MS
-            });
-        if should_persist {
-            self.progress_persisted_at
-                .insert(entry.id, entry.updated_at_ms);
-        }
-        should_persist
     }
 }

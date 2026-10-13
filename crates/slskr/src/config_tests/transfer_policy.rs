@@ -1,6 +1,21 @@
 use super::*;
 
 #[test]
+fn large_share_and_directional_transfer_defaults_do_not_throttle_common_setups() {
+    let config = crate::config::AppConfig::from_layers(
+        None,
+        crate::config::FileConfig::default(),
+        &MapEnv::default(),
+    )
+    .expect("default config");
+
+    assert_eq!(config.share_settings.max_files, 250_000);
+    assert_eq!(config.transfer_upload.slots, 20);
+    assert_eq!(config.transfer_download.slots, 500);
+    assert_eq!(config.transfer_max_active, 520);
+}
+
+#[test]
 fn frozen_targets_read_blacklisted_groups_from_their_distinct_yaml_paths() {
     for (target, expected) in [
         ("slskd", "^transfers-path$"),
