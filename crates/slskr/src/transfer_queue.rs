@@ -11,12 +11,18 @@ use super::{
     truncate_utf8_bytes, unix_timestamp, unix_timestamp_millis, virtual_basename, AppConfig,
     RecordListFilter, TransferEntry, MAX_TRANSFER_LOCAL_PATH_BYTES, MAX_TRANSFER_STATUS_BYTES,
 };
-use std::{collections::BTreeMap, path::PathBuf};
+use std::{
+    collections::BTreeMap,
+    path::PathBuf,
+    time::{Duration, Instant},
+};
+
+const PROGRESS_PERSIST_INTERVAL: Duration = Duration::from_secs(1);
 
 #[derive(Debug)]
 pub(super) struct TransferQueue {
     pub(super) entries: Vec<TransferEntry>,
-    pub(super) progress_persisted_at: BTreeMap<u64, u64>,
+    pub(super) progress_persisted_at: BTreeMap<u64, Instant>,
     pub(super) next_id: u64,
     pub(super) next_token: u32,
     pub(super) history_limit: usize,
@@ -611,7 +617,7 @@ impl TransferQueue {
         &mut self,
         id: u64,
         bytes_transferred: u64,
-    ) -> Option<TransferEntry> {
+    ) -> Option<(TransferEntry, bool)> {
         let entry = self.entries.iter_mut().find(|entry| entry.id == id)?;
         if !is_active_transfer_status(&entry.status) {
             return None;
@@ -629,9 +635,25 @@ impl TransferQueue {
         entry.updated_at = now;
         entry.updated_at_ms = next_transfer_updated_at_ms(entry.updated_at_ms);
         let entry = entry.clone();
-        self.mark_durable_mutation(Some(entry.clone()));
+        let should_persist = self.should_persist_progress_at(&entry, Instant::now());
+        if should_persist {
+            self.mark_durable_mutation(Some(entry.clone()));
+        }
         self.updated_at = unix_timestamp();
-        Some(entry)
+        Some((entry, should_persist))
+    }
+
+    fn should_persist_progress_at(&mut self, entry: &TransferEntry, now: Instant) -> bool {
+        let should_persist = self
+            .progress_persisted_at
+            .get(&entry.id)
+            .is_none_or(|persisted_at| {
+                now.saturating_duration_since(*persisted_at) >= PROGRESS_PERSIST_INTERVAL
+            });
+        if should_persist {
+            self.progress_persisted_at.insert(entry.id, now);
+        }
+        should_persist
     }
 
     pub(super) fn update_retry_state(
