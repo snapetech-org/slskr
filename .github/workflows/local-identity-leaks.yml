@@ -20,8 +20,12 @@ jobs:
       - name: Install scanner dependencies
         run: sudo apt-get update && sudo apt-get install -y jq ripgrep
 
+      - name: Test rewritten-push history fallback
+        run: bash scripts/test-check-local-identity-leaks.sh
+
       - name: Check release-facing text
         env:
           LOCAL_IDENTITY_DENYLIST: ${{ secrets.LOCAL_IDENTITY_DENYLIST }}
           LOCAL_IDENTITY_SCAN_COMMITS: "1"
+          LOCAL_IDENTITY_SCAN_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: bash scripts/check-local-identity-leaks.sh

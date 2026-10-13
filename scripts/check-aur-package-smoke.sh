@@ -21,7 +21,12 @@ run_makepkg() {
 if command -v makepkg >/dev/null 2>&1; then
   work_root="$(mktemp -d -t slskr-aur-smoke.XXXXXX)"
   trap 'find "$work_root" -mindepth 1 -delete' EXIT
-  cp -a "$aur_root/." "$work_root/"
+  # The checkout may carry NFSv4 ACLs that the private temp filesystem cannot store.
+  # Preserve POSIX mode bits without copying filesystem-specific ACL metadata.
+  (
+    umask 000
+    cp -R "$aur_root/." "$work_root/"
+  )
   run_makepkg "$work_root" -p PKGBUILD
   run_makepkg "$work_root" -p PKGBUILD-bin
   printf 'AUR package smoke passed with host makepkg\n'
@@ -59,7 +64,8 @@ pacman -Sy --noconfirm --needed sudo >/dev/null
 useradd --create-home builder
 work_root="$(mktemp -d -p /tmp slskr-aur-smoke.XXXXXX)"
 trap 'rm -rf "$work_root"' EXIT
-cp -a /repo/packaging/aur/. "$work_root/"
+# The bind-mounted checkout may carry ACLs that container /tmp cannot store.
+(umask 000; cp -R /repo/packaging/aur/. "$work_root/")
 chown -R builder:builder "$work_root"
 cd "$work_root"
 runuser -u builder -- makepkg --nobuild --nodeps --clean --cleanbuild -C -p PKGBUILD

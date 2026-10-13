@@ -52,20 +52,53 @@ if [[ "$process_guard_context_active" -eq 1 ]]; then
   exec "$@"
 fi
 
-# A user systemd manager gives a reliable resident-memory ceiling for Chromium
-# and its renderer processes. The environment switch exists only for the
-# fallback regression test; production callers use systemd when available.
+force_system_manager="${SLSKR_PROCESS_MEMORY_GUARD_FORCE_SYSTEM_MANAGER:-0}"
+case "$force_system_manager" in
+  0|1) ;;
+  *)
+    printf 'SLSKR_PROCESS_MEMORY_GUARD_FORCE_SYSTEM_MANAGER must be 0 or 1\n' >&2
+    exit 2
+    ;;
+esac
+
+systemd_manager=""
+systemd_run_prefix=()
+systemd_stop_prefix=()
 if [[ "${SLSKR_PROCESS_MEMORY_GUARD_DISABLE_SYSTEMD:-0}" != "1" ]] \
   && [[ "$process_guard_context_active" -eq 0 ]] \
+  && [[ "$host_platform" == "Linux" ]] \
   && command -v systemd-run >/dev/null 2>&1 \
-  && command -v systemctl >/dev/null 2>&1 \
-  && systemctl --user show-environment >/dev/null 2>&1; then
+  && command -v systemctl >/dev/null 2>&1; then
+  if [[ "$force_system_manager" != "1" ]] \
+    && systemctl --user show-environment >/dev/null 2>&1; then
+    systemd_manager="user"
+    systemd_run_prefix=(systemd-run --user)
+    systemd_stop_prefix=(systemctl --user)
+  elif [[ "$(id -u)" == "0" ]] \
+    && systemctl show-environment >/dev/null 2>&1; then
+    systemd_manager="system"
+    systemd_run_prefix=(systemd-run)
+    systemd_stop_prefix=(systemctl)
+  elif command -v sudo >/dev/null 2>&1 \
+    && sudo -n systemctl show-environment >/dev/null 2>&1; then
+    # Hosted runners often have a system manager but no user manager. Keep the
+    # same cgroup memory/swap bound without RLIMIT_AS, which constrains V8's
+    # and Chromium's address-space reservations before their resident memory
+    # reaches the configured ceiling.
+    systemd_manager="system"
+    systemd_run_prefix=(sudo -n systemd-run)
+    systemd_stop_prefix=(sudo -n systemctl)
+  fi
+fi
+
+if [[ -n "$systemd_manager" ]]; then
   unit_name="slskr-process-memory-guard-${BASHPID}-${RANDOM}.service"
   environment_file=""
+  # shellcheck disable=SC2329 # Invoked by the EXIT/INT/TERM trap below.
   cleanup_unit() {
     local status="$?"
     trap - EXIT INT TERM
-    systemctl --user stop "$unit_name" >/dev/null 2>&1 || true
+    "${systemd_stop_prefix[@]}" stop "$unit_name" >/dev/null 2>&1 || true
     if [[ -n "$environment_file" ]]; then
       rm -f -- "$environment_file"
     fi
@@ -85,21 +118,31 @@ if [[ "${SLSKR_PROCESS_MEMORY_GUARD_DISABLE_SYSTEMD:-0}" != "1" ]] \
     printf -v escaped_environment_value '%q' "$environment_value"
     printf '%s=%s\n' "$environment_name" "$escaped_environment_value" >> "$environment_file"
   done < <(env -0)
-  systemd-run --user --wait --pipe --collect \
-    --unit="$unit_name" \
-    --working-directory="$repo_root" \
-    --property="MemoryMax=${memory_kib}K" \
-    --property="MemorySwapMax=0" \
-    --property="TasksMax=${tasks_max}" \
-    --property="EnvironmentFile=$environment_file" \
-    --setenv=SLSKR_PROCESS_MEMORY_GUARD_HELD=1 \
-    "$@"
+
+  systemd_run_arguments=(
+    --wait
+    --pipe
+    --collect
+    --unit="$unit_name"
+    --working-directory="$repo_root"
+    --property="MemoryMax=${memory_kib}K"
+    --property="MemorySwapMax=0"
+    --property="TasksMax=$tasks_max"
+    --property="EnvironmentFile=$environment_file"
+    --setenv=SLSKR_PROCESS_MEMORY_GUARD_HELD=1
+    --setenv=SLSKR_PROCESS_MEMORY_GUARD_UNIT="$unit_name"
+  )
+  if [[ "$systemd_manager" == "system" ]]; then
+    systemd_run_arguments+=(--uid="$(id -u)")
+  fi
+  "${systemd_run_prefix[@]}" "${systemd_run_arguments[@]}" "$@"
   exit "$?"
 fi
 
-# Portable fallback for environments without a user systemd manager (including
-# Git Bash and minimal containers). A virtual-memory ceiling is fail-closed: a
-# browser that cannot operate within it exits instead of growing unbounded.
+# Portable fallback for environments without an accessible systemd manager
+# (including Git Bash and minimal containers). A virtual-memory ceiling is
+# fail-closed: a browser that cannot operate within it exits instead of growing
+# unbounded.
 (
   if [[ "$virtual_memory_limit_supported" -eq 1 ]]; then
     if ! ulimit -v "$memory_kib"; then

@@ -31,6 +31,68 @@ for expected in \
   fi
 done
 
+main_runner_condition="((github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'))"
+trusted_runner_labels="fromJSON('[\"self-hosted\",\"Linux\",\"X64\",\"host\",\"linux-build\",\"linux-amd64\"]')"
+push_branches="$(
+  awk '
+    /^  push:$/ { in_push=1; next }
+    in_push && /^  [[:alpha:]_][[:alnum:]_-]*:/ { exit }
+    in_push && /^    branches:$/ { in_branches=1; next }
+    in_branches && /^    [[:alpha:]_][[:alnum:]_-]*:/ { exit }
+    in_branches && /^      - / {
+      branch=$0
+      sub(/^      - /, "", branch)
+      gsub(/["\047]/, "", branch)
+      print branch
+    }
+  ' .github/workflows/ci.yml
+)"
+if [[ "$push_branches" != "main" ]]; then
+  printf 'workflow release policy check failed: only main pushes may enter the self-hosted CI workflow\n' >&2
+  status=1
+fi
+if ! rg -n -F "$trusted_runner_labels" .github/workflows/ci.yml >/dev/null; then
+  printf 'workflow release policy check failed: trusted Linux jobs must target the shared local host label\n' >&2
+  status=1
+fi
+if ! rg -n -F 'CARGO_BUILD_JOBS=1' .github/workflows/ci.yml >/dev/null; then
+  printf 'workflow release policy check failed: local Cargo parallelism must be capped\n' >&2
+  status=1
+fi
+bootstrap_line="$(rg -n -m1 'name: Protect local runner command files before repository scripts' .github/workflows/ci.yml | cut -d: -f1)"
+repository_script_line="$(rg -n -m1 'run: ./scripts/test-private-runner-temp.sh' .github/workflows/ci.yml | cut -d: -f1)"
+if [[ -z "$bootstrap_line" || -z "$repository_script_line" || "$bootstrap_line" -ge "$repository_script_line" ]]; then
+  printf 'workflow release policy check failed: local command files must be protected before repository scripts\\n' >&2
+  status=1
+fi
+for expected in 'os.O_NOFOLLOW' 'metadata.st_nlink != 1'; do
+  if ! rg -n -F -- "$expected" .github/workflows/ci.yml >/dev/null; then
+    printf 'workflow release policy check failed: local command-file hardening is incomplete: %s\\n' "$expected" >&2
+    status=1
+  fi
+done
+missing_attempt_artifacts="$(rg -n 'name: validation-(task-logs|rust)-' .github/workflows/ci.yml | rg -Fv -- '-attempt-${{ github.run_attempt }}' || true)"
+if [[ -n "$missing_attempt_artifacts" ]]; then
+  printf 'workflow release policy check failed: validation artifacts must be unique per workflow attempt\n' >&2
+  printf '%s\n' "$missing_attempt_artifacts" >&2
+  status=1
+fi
+receipt_download_policy="$(sed -n '/name: Download current-run Rust receipts/,/name: Reconcile this run/p' .github/workflows/ci.yml)"
+if [[ "$receipt_download_policy" != *'merge-multiple: false'* ]]; then
+  printf 'workflow release policy check failed: receipt artifacts must stay in separate attempt directories\n' >&2
+  status=1
+fi
+
+if ! rg -n -F "$main_runner_condition" .github/workflows/ci.yml >/dev/null; then
+  printf 'workflow release policy check failed: local runner policy must be limited to main pushes and manual runs\n' >&2
+  status=1
+fi
+if rg -n '^[[:space:]]*runs-on:.*self-hosted' .github/workflows \
+  | rg -v -F "$main_runner_condition"; then
+  printf 'workflow release policy check failed: self-hosted CI runners must be restricted to main pushes or manual main runs\n' >&2
+  status=1
+fi
+
 if [[ ! -f "$pin_policy" ]]; then
   printf 'workflow release policy check failed: GitHub Actions pin policy is missing: %s\n' "$pin_policy" >&2
   status=1

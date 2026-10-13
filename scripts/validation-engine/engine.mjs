@@ -22,6 +22,8 @@ import {
   rmSync,
   unlinkSync,
   writeFileSync,
+  writeSync,
+  fsyncSync,
 } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -33,6 +35,8 @@ const SYSTEM_TEMP_DIR = os.tmpdir();
 const ENGINE_DIR = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_ROOT = path.resolve(ENGINE_DIR, '..', '..');
 const MAX_BUFFER = 8 * 1024 * 1024;
+const MAX_LOG_BYTES = 16 * 1024 * 1024;
+const LOG_TRUNCATION_MARKER = Buffer.from('\n[validation log truncated after 16 MiB]\n');
 const PROGRESS_INTERVAL_MS = 60_000;
 const IGNORED_DIRS = new Set([
   '.git',
@@ -52,7 +56,9 @@ const INHERITED_ENVIRONMENT_KEYS = new Set([
   'MISE_DATA_DIR', 'MISE_HOME', 'NVM_DIR', 'PATH', 'PATHEXT',
   'PYENV_ROOT', 'RUSTUP_HOME', 'VOLTA_HOME', 'SYSTEMROOT', 'TZ', 'WINDIR',
 ]);
-const APPROVED_TASK_PASS_ENVIRONMENT = new Map();
+const APPROVED_TASK_PASS_ENVIRONMENT = new Map([
+  ['rust-workspace-tests', new Set(['OPENSSL_SRC_PERL'])],
+]);
 const CONTENT_MATCHERS = Object.freeze({
   rustInlineTestModule: (contents) => /#\s*\[\s*cfg\s*\(\s*test\s*\)\s*\]/.test(contents),
 });
@@ -430,19 +436,44 @@ export function isolatedRuntimeEnvironment(runtime, environmentRoot, inherited =
   );
 }
 
+function isGoRuntimeCommand(command) {
+  const executableName = path.basename(command)
+    .replace(/\.(?:bat|cmd|exe)$/iu, '')
+    .toLowerCase();
+  return executableName === 'go';
+}
+
+export function runtimeProbeCommands(runtime) {
+  const commands = [];
+  if (isGoRuntimeCommand(runtime.command)) commands.push(['telemetry', 'off']);
+  commands.push(runtime.args ?? ['--version']);
+  return commands;
+}
+
 function inspectRuntime(root, runtime) {
   const available = commandAvailable(runtime.command);
   if (!available) return { ...runtime, available, version: null, exitCode: null };
   const probeRoot = mkdtempSync(path.join(SYSTEM_TEMP_DIR, 'slskr-runtime-probe-'));
   let result;
   try {
-    result = spawnSync(runtime.command, runtime.args ?? ['--version'], {
-      cwd: root,
-      encoding: 'utf8',
-      timeout: 10_000,
-      maxBuffer: 1024 * 1024,
-      env: isolatedRuntimeEnvironment(runtime, probeRoot),
-    });
+    const env = isolatedRuntimeEnvironment(runtime, probeRoot);
+    const commands = runtimeProbeCommands(runtime);
+    const disablesGoTelemetry = isGoRuntimeCommand(runtime.command);
+    for (const [index, args] of commands.entries()) {
+      result = spawnSync(runtime.command, args, {
+        cwd: root,
+        encoding: 'utf8',
+        timeout: 10_000,
+        maxBuffer: 1024 * 1024,
+        env,
+      });
+      if (disablesGoTelemetry && index === 0 &&
+          (result?.error !== undefined || result?.status !== 0)) {
+        const detail = (result.stderr ?? '').trim();
+        fail('Could not disable Go telemetry in the isolated runtime probe.' +
+          (result.error ? ' ' + result.error.message : detail ? ' ' + detail : ''));
+      }
+    }
   } finally {
     rmSync(probeRoot, { recursive: true, force: true });
   }
@@ -718,48 +749,77 @@ export async function runCommand(task, root, logPath) {
   let stderr = '';
   let outputBytes = 0;
   let timedOut = false;
-  const child = spawn(command, args, {
-    cwd,
-    env: isolatedTaskEnvironment(task, path.dirname(logPath)),
-    stdio: ['ignore', 'pipe', 'pipe'],
-    detached: process.platform !== 'win32',
-    windowsHide: true,
-  });
+  const logDescriptor = openSync(logPath, 'wx', 0o600);
+  const logContentLimit = MAX_LOG_BYTES - LOG_TRUNCATION_MARKER.length;
+  let logBytesWritten = 0;
+  let logTruncated = false;
+  let child;
   const append = (chunk, target) => {
     outputBytes += chunk.length;
     target.value += chunk.toString('utf8');
     if (target.value.length > MAX_BUFFER) target.value = target.value.slice(-MAX_BUFFER);
   };
+  const persist = (chunk) => {
+    const length = Math.min(chunk.length, logContentLimit - logBytesWritten);
+    let offset = 0;
+    while (offset < length) {
+      offset += writeSync(logDescriptor, chunk, offset, length - offset);
+    }
+    logBytesWritten += length;
+    if (length < chunk.length) logTruncated = true;
+  };
   const out = { value: stdout };
   const err = { value: stderr };
-  child.stdout.on('data', (chunk) => append(chunk, out));
-  child.stderr.on('data', (chunk) => append(chunk, err));
-  const timer = setTimeout(() => {
-    timedOut = true;
-    terminate(child);
-    setTimeout(() => {
-      if (child.exitCode === null && child.signalCode === null) {
-        if (child.pid && process.platform !== 'win32') {
-          try {
-            process.kill(-child.pid, 'SIGKILL');
-          } catch {
-            // The process group may exit between the child status check and this signal.
+  let exit;
+  try {
+    child = spawn(command, args, {
+      cwd,
+      env: isolatedTaskEnvironment(task, path.dirname(logPath)),
+      stdio: ['ignore', 'pipe', 'pipe'],
+      detached: process.platform !== 'win32',
+      windowsHide: true,
+    });
+    child.stdout.on('data', (chunk) => {
+      append(chunk, out);
+      persist(chunk);
+    });
+    child.stderr.on('data', (chunk) => {
+      append(chunk, err);
+      persist(chunk);
+    });
+    const timer = setTimeout(() => {
+      timedOut = true;
+      terminate(child);
+      setTimeout(() => {
+        if (child.exitCode === null && child.signalCode === null) {
+          if (child.pid && process.platform !== 'win32') {
+            try {
+              process.kill(-child.pid, 'SIGKILL');
+            } catch {
+              // The process group may exit between the child status check and this signal.
+            }
+          } else {
+            child.kill('SIGKILL');
           }
-        } else {
-          child.kill('SIGKILL');
         }
-      }
-    }, 2000).unref();
-  }, timeout * 1000);
-  const exit = await new Promise((resolve) => {
-    child.once('error', (error) => resolve({ code: null, signal: null, error }));
-    child.once('close', (code, signal) => resolve({ code, signal, error: null }));
-  }).finally(() => clearTimeout(timer));
+      }, 2000).unref();
+    }, timeout * 1000);
+    let spawnError = null;
+    exit = await new Promise((resolve) => {
+      child.once('error', (error) => {
+        spawnError = error;
+      });
+      child.once('close', (code, signal) => resolve({ code, signal, error: spawnError }));
+    }).finally(() => clearTimeout(timer));
+  } finally {
+    if (logTruncated) writeSync(logDescriptor, LOG_TRUNCATION_MARKER);
+    fsyncSync(logDescriptor);
+    closeSync(logDescriptor);
+  }
   stdout = out.value;
   stderr = err.value;
   const combined = stdout + (stdout && stderr ? '\n' : '') + stderr;
-  const logBuffer = Buffer.from(combined);
-  writeFileSync(logPath, logBuffer, { mode: 0o600 });
+  const logBuffer = readFileSync(logPath);
   const activeCases = task.caseParser ? parseCaseCount(task.caseParser, combined) : null;
   const status = timedOut || exit.error || exit.code !== 0
     ? 'failed'
@@ -792,7 +852,11 @@ export async function executePlan(root, config, plan, options = {}) {
   if (plan.repository !== config.repository || !planSha256 || hash(stable(planBody)) !== planSha256) {
     fail('Validation plan digest does not match its contents.');
   }
-  const runRoot = options.runRoot ?? mkdtempSync(path.join(os.tmpdir(), config.repository + '-validation-'));
+  const runnerTemp = process.env.RUNNER_TEMP;
+  const temporaryRoot = typeof runnerTemp === 'string' && path.isAbsolute(runnerTemp)
+    ? runnerTemp
+    : os.tmpdir();
+  const runRoot = options.runRoot ?? mkdtempSync(path.join(temporaryRoot, config.repository + '-validation-'));
   mkdirSync(runRoot, { recursive: true, mode: 0o700 });
   chmodSync(runRoot, 0o700);
   const runId = randomUUID();

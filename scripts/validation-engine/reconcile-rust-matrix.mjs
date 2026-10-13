@@ -30,28 +30,75 @@ function sourceIdentity(candidate) {
 }
 
 export function reconcileRustReceipts({ receipts, runId, runAttempt, sha }) {
-  if (!runId || !runAttempt || !/^[a-f0-9]{40}$/.test(sha ?? '')) {
+  const currentAttempt = Number(runAttempt);
+  if (!runId || !Number.isSafeInteger(currentAttempt) || currentAttempt < 1 ||
+      !/^[a-f0-9]{40}$/.test(sha ?? '')) {
     fail('A GitHub run ID, attempt, and full source commit are required.');
   }
-  if (!Array.isArray(receipts) || receipts.length !== EXPECTED_NODES.length) {
-    fail('Expected exactly one Rust workspace test receipt from each configured native runner.');
+  if (!Array.isArray(receipts) || receipts.length < EXPECTED_NODES.length) {
+    fail('Expected at least one Rust workspace test receipt from each configured native runner.');
   }
 
   const byNode = new Map();
+  let sharedSource;
+  let sharedInventory;
   for (const receipt of receipts) {
     const nodeId = receipt.executionContext?.nodeId;
-    if (!EXPECTED_NODES.some((node) => node.id === nodeId)) {
+    const expected = EXPECTED_NODES.find((node) => node.id === nodeId);
+    if (!expected) {
       fail('A Rust receipt does not identify a configured native runner.');
     }
-    if (byNode.has(nodeId)) fail('Duplicate Rust test receipt for ' + nodeId + '.');
-    byNode.set(nodeId, receipt);
+    const context = receipt.executionContext;
+    const github = context.github;
+    const attempt = Number(github?.runAttempt);
+    if (context.executor !== 'github-actions' || context.runner?.os !== expected.os ||
+        context.runner?.architecture !== expected.arch) {
+      fail(nodeId + ' receipt does not match the configured GitHub runner identity.');
+    }
+    if (String(github?.runId) !== String(runId) ||
+        !Number.isSafeInteger(attempt) || attempt < 1 || attempt > currentAttempt ||
+        github?.sha !== sha || receipt.candidate?.commit !== sha) {
+      fail(nodeId + ' receipt belongs to a different workflow run, a future or invalid attempt, or a different commit.');
+    }
+
+    const candidate = receipt.candidate;
+    if (!/^[a-f0-9]{40}$/.test(candidate?.tree ?? '') ||
+        !/^[a-f0-9]{64}$/.test(candidate?.sourceSha256 ?? '') ||
+        !/^[a-f0-9]{64}$/.test(candidate?.inventorySha256 ?? '') ||
+        !Array.isArray(candidate?.inputDigests)) {
+      fail(nodeId + ' receipt has an invalid source snapshot identity.');
+    }
+    const source = sourceIdentity(candidate);
+    if (sharedSource !== undefined && source !== sharedSource) {
+      fail('Rust runner receipts were produced from different source snapshots.');
+    }
+    sharedSource ??= source;
+
+    const counts = receipt.inventoryCounts;
+    const digests = receipt.inventoryLaneDigests;
+    if (REQUIRED_LANES.some((lane) => !Number.isInteger(counts?.[lane]) || counts[lane] < 1 ||
+        !/^[a-f0-9]{64}$/.test(digests?.[lane] ?? ''))) {
+      fail(nodeId + ' receipt is missing a required Rust source inventory lane.');
+    }
+    const inventory = JSON.stringify({ counts, digests });
+    if (sharedInventory !== undefined && inventory !== sharedInventory) {
+      fail('Rust runner receipts were produced from different test inventories.');
+    }
+    sharedInventory ??= inventory;
+
+    const previous = byNode.get(nodeId);
+    if (previous) {
+      const previousAttempt = Number(previous.executionContext.github.runAttempt);
+      if (attempt === previousAttempt) fail('Duplicate Rust test receipt for ' + nodeId + ' in attempt ' + attempt + '.');
+      if (attempt > previousAttempt) byNode.set(nodeId, receipt);
+    } else {
+      byNode.set(nodeId, receipt);
+    }
   }
   if (EXPECTED_NODES.some((node) => !byNode.has(node.id))) {
     fail('A required Rust native runner receipt is missing.');
   }
 
-  let sharedSource;
-  let sharedInventory;
   let totalCases = 0;
   const nodes = [];
   for (const expected of EXPECTED_NODES) {
@@ -69,9 +116,11 @@ export function reconcileRustReceipts({ receipts, runId, runAttempt, sha }) {
         context.runner?.os !== expected.os || context.runner?.architecture !== expected.arch) {
       fail(expected.id + ' receipt does not match the configured GitHub runner identity.');
     }
-    if (String(github?.runId) !== String(runId) || String(github?.runAttempt) !== String(runAttempt) ||
+    const receiptAttempt = Number(github?.runAttempt);
+    if (String(github?.runId) !== String(runId) ||
+        !Number.isSafeInteger(receiptAttempt) || receiptAttempt < 1 || receiptAttempt > currentAttempt ||
         github?.sha !== sha || receipt.candidate?.commit !== sha) {
-      fail(expected.id + ' receipt belongs to a different workflow run, attempt, or commit.');
+      fail(expected.id + ' receipt belongs to a different workflow run, a future or invalid attempt, or a different commit.');
     }
     const candidate = receipt.candidate;
     if (!/^[a-f0-9]{40}$/.test(candidate?.tree ?? '') ||
@@ -146,9 +195,20 @@ export function main(argv = process.argv.slice(2)) {
   const options = parseArgs(argv);
   if (!options.receipts) fail('Pass --receipts <directory>.');
   const directory = path.resolve(options.receipts);
-  const receipts = readdirSync(directory)
-    .filter((name) => /^rust-[a-z0-9-]+\.json$/.test(name))
-    .map((name) => JSON.parse(readFileSync(path.join(directory, name), 'utf8')));
+  const receipts = [];
+  const pending = [directory];
+  while (pending.length > 0) {
+    const current = pending.pop();
+    for (const entry of readdirSync(current, { withFileTypes: true })) {
+      const filename = path.join(current, entry.name);
+      if (entry.isSymbolicLink()) fail('Receipt directories must not contain symbolic links.');
+      if (entry.isDirectory()) {
+        pending.push(filename);
+      } else if (entry.isFile() && /^rust-[a-z0-9-]+\.json$/.test(entry.name)) {
+        receipts.push(JSON.parse(readFileSync(filename, 'utf8')));
+      }
+    }
+  }
   const summary = reconcileRustReceipts({
     receipts,
     runId: options['run-id'] ?? process.env.GITHUB_RUN_ID,
