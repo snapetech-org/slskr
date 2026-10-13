@@ -16,6 +16,10 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
+import {
+  HOST_PATHS_TO_HIDE,
+  hostPathsToHide,
+} from './trusted-test-sandbox-policy.mjs';
 
 const launcher = fileURLToPath(
   new URL(
@@ -23,6 +27,11 @@ const launcher = fileURLToPath(
     import.meta.url
   )
 );
+for (const hostPath of ['/etc', '/opt', '/srv', '/usr/local'])
+  assert.ok(
+    HOST_PATHS_TO_HIDE.includes(hostPath),
+    `the sandbox must hide host path ${hostPath}`
+  );
 const bwrap = ['/usr/bin/bwrap', '/bin/bwrap'].find(existsSync);
 const sandboxAvailable = (() => {
   if (process.platform !== 'linux' || !bwrap) return false;
@@ -86,6 +95,8 @@ test(
       path.join(source, 'nested/config/secrets.json'),
       '{"secret":"hidden"}\n'
     );
+    writeFileSync(path.join(source, 'auth.json'), '{"token":"private"}\n');
+    writeFileSync(path.join(source, 'token.json'), '{"token":"private"}\n');
     mkdirSync(path.join(source, 'node_modules'), { recursive: true });
     writeFileSync(
       path.join(source, 'node_modules/marker.txt'),
@@ -115,8 +126,13 @@ assert.equal(process.env.SECRET_CANARY, undefined);
 assert.equal(existsSync('/mnt/workspace/.env'), false);
 assert.equal(existsSync('/mnt/workspace/config.json'), true);
 assert.equal(existsSync('/mnt/workspace/nested/config/operator.json'), false);
+assert.equal(existsSync('/mnt/workspace/auth.json'), false);
+assert.equal(existsSync('/mnt/workspace/token.json'), false);
 assert.equal(existsSync('/mnt/workspace/nested/.env.local'), false);
 assert.equal(existsSync('/mnt/workspace/nested/config/secrets.json'), false);
+assert.equal(existsSync('/etc/os-release'), false);
+const originalCheckout = ${JSON.stringify(source)};
+assert.throws(() => readFileSync(path.join(originalCheckout, 'auth.json')), { code: 'ENOENT' });
 assert.throws(() => writeFileSync(hostFile, 'escaped'));
 assert.equal(readFileSync('/run/validation-engine-sandbox', 'utf8'), process.env.VALIDATION_OUTER_SANDBOX_TOKEN);
 assert.equal(fixtureDependency, 'sibling dependency resolved');
@@ -148,7 +164,6 @@ assert.throws(() => writeFileSync('/mnt/workspace/node_modules/marker.txt', 'cha
       path.join(source, 'nested/config/operator.json'),
       '{"private":true}\n'
     );
-
     const result = spawnSync(
       process.execPath,
       [
@@ -190,3 +205,13 @@ assert.throws(() => writeFileSync('/mnt/workspace/node_modules/marker.txt', 'cha
     );
   }
 );
+
+test('sandbox masks candidate checkouts outside the standard host paths', () => {
+  assert.ok(hostPathsToHide('/projects/QuestarrNG').includes('/projects'));
+  assert.ok(hostPathsToHide('/QuestarrNG').includes('/QuestarrNG'));
+  assert.equal(
+    hostPathsToHide('/home/keith/QuestarrNG').includes('/home/keith'),
+    false
+  );
+  assert.throws(() => hostPathsToHide('/'), /cannot be the filesystem root/u);
+});
