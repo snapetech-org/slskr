@@ -550,6 +550,8 @@ Community support and migration discussion can be found on Discord:
 [discord.gg/5PyXBfvS6T](https://discord.gg/5PyXBfvS6T).
 
 
+If you find slskr useful, [support its development on Ko-fi](https://ko-fi.com/snapetech).
+
 ## License
 
 `slskr` is licensed under AGPL-3.0-only. See [LICENSE](./LICENSE) and
