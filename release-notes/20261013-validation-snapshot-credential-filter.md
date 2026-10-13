@@ -5,4 +5,4 @@ area: validation-security
 action: none
 breaking: false
 ---
-Trusted validation snapshots now reject qualified credential filenames in dot-separated and camel-case forms, exact generic credential basenames with source extensions, and credential directories outside source trees. Auth filenames match only when `auth` is terminal before the extension, preserving source files such as `peer_authentication.rs` and metadata such as `*-controller-auth-policy.json`. Ordinary service names such as `token-parser` and `secrets-manager` remain available in validation snapshots, and only the known dashboard API keys page is exempt from the API-key filename filter.
+Validation snapshots now exclude qualified credential filenames and exact credential basenames with source extensions. Auth matching requires `auth` at the end of a filename, so legitimate files such as `peer_authentication.rs` and `*-controller-auth-policy.json` remain available. Common source files and service directories remain accessible.
