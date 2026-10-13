@@ -1,4 +1,4 @@
-import { formatBytes, formatSpeed, formatWait } from '../lib/util';
+import { formatRegionalDateTime, formatRegionalFixedNumber, formatRegionalNumber, formatBytes, formatSpeed, formatWait } from '../lib/util';
 import React, { useMemo, useState } from 'react';
 import { Segment } from 'semantic-ui-react';
 
@@ -58,16 +58,16 @@ export const buildChartData = (histogram = {}) =>
 export const HISTORY_SERIES = [
   { color: '#21ba45', format: (value) => formatBytes(value, 1), key: 'uploadBytes', name: 'Upload Size' },
   { color: '#2185d0', format: (value) => formatBytes(value, 1), key: 'downloadBytes', name: 'Download Size' },
-  { color: '#6435c9', format: (value) => value.toLocaleString(), key: 'uploadCount', name: 'Upload Count' },
-  { color: '#e03997', format: (value) => value.toLocaleString(), key: 'downloadCount', name: 'Download Count' },
+  { color: '#6435c9', format: (value) => formatRegionalNumber(value), key: 'uploadCount', name: 'Upload Count' },
+  { color: '#e03997', format: (value) => formatRegionalNumber(value), key: 'downloadCount', name: 'Download Count' },
   { color: '#f2711c', format: formatSpeed, key: 'uploadSpeed', name: 'Upload Speed' },
   { color: '#fbbd08', format: formatSpeed, key: 'downloadSpeed', name: 'Download Speed' },
-  { color: '#db2828', format: (value) => value.toLocaleString(), key: 'uploadErrors', name: 'Upload Errors' },
-  { color: '#a333c8', format: (value) => value.toLocaleString(), key: 'downloadErrors', name: 'Download Errors' },
-  { color: '#d4500a', format: (value) => `${value.toFixed(1)}%`, key: 'uploadErrorRate', name: 'Upload Error Rate' },
-  { color: '#1aa9b0', format: (value) => `${value.toFixed(1)}%`, key: 'downloadErrorRate', name: 'Download Error Rate' },
+  { color: '#db2828', format: (value) => formatRegionalNumber(value), key: 'uploadErrors', name: 'Upload Errors' },
+  { color: '#a333c8', format: (value) => formatRegionalNumber(value), key: 'downloadErrors', name: 'Download Errors' },
+  { color: '#d4500a', format: (value) => `${formatRegionalFixedNumber(value, 1)}%`, key: 'uploadErrorRate', name: 'Upload Error Rate' },
+  { color: '#1aa9b0', format: (value) => `${formatRegionalFixedNumber(value, 1)}%`, key: 'downloadErrorRate', name: 'Download Error Rate' },
   { color: '#8e44ad', format: formatWait, key: 'uploadWait', name: 'Upload Queue Wait' },
-  { color: '#b5cc18', format: (value) => value.toFixed(2), key: 'shareRatio', name: 'Share Ratio' },
+  { color: '#b5cc18', format: (value) => formatRegionalFixedNumber(value, 2), key: 'shareRatio', name: 'Share Ratio' },
 ];
 
 const CompatibilityGraph = ({ data = [], defaultSeries, series = [] }) => {
@@ -166,7 +166,7 @@ const CompatibilityGraph = ({ data = [], defaultSeries, series = [] }) => {
         </svg>
         {hovered && (
           <div className="compatibility-graph-tooltip">
-            <strong>{new Date(hovered.timestamp).toLocaleString()}</strong>
+            <strong>{formatRegionalDateTime(hovered.timestamp)}</strong>
             {series.filter((item) => visible.has(item.key)).map((item) => (
               <span key={item.key}>
                 <i style={{ backgroundColor: item.color }} />

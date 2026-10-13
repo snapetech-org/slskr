@@ -1,3 +1,4 @@
+import { formatRegionalDateTime } from '../../../lib/util';
 import React from 'react';
 import {
   Button,
@@ -342,9 +343,7 @@ const AdversarialSettingsView = ({ actions, state }) => {
                     {torStatus.LastSuccessfulConnection && (
                       <p>
                         <strong>Last Connected:</strong>{' '}
-                        {new Date(
-                          torStatus.LastSuccessfulConnection,
-                        ).toLocaleString()}
+                        {formatRegionalDateTime(torStatus.LastSuccessfulConnection)}
                       </p>
                     )}
                     <p>

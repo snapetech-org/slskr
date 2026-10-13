@@ -1,3 +1,4 @@
+import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -28,6 +29,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const PodDiscoveryPanel = ({ visible = true }) => {
+  useRegionalFormat();
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -283,14 +285,10 @@ const PodDiscoveryPanel = ({ visible = true }) => {
                         {podRegistrationResult.discoveryKeys?.join(', ')}
                         <br />
                         <strong>Registered:</strong>{' '}
-                        {new Date(
-                          podRegistrationResult.registeredAt,
-                        ).toLocaleString()}
+                        {formatRegionalDateTime(podRegistrationResult.registeredAt)}
                         <br />
                         <strong>Expires:</strong>{' '}
-                        {new Date(
-                          podRegistrationResult.expiresAt,
-                        ).toLocaleString()}
+                        {formatRegionalDateTime(podRegistrationResult.expiresAt)}
                       </p>
                     </Message>
                   )}

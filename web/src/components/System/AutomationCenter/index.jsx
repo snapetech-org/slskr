@@ -1,3 +1,4 @@
+import { formatRegionalDateTime } from '../../../lib/util';
 import {
   automationRecipes,
   buildAutomationExecutionReport,
@@ -49,7 +50,7 @@ const formatLastDryRun = (value) => {
     return 'Not run yet';
   }
 
-  return new Date(value).toLocaleString();
+  return formatRegionalDateTime(value);
 };
 
 const AutomationCenter = () => {

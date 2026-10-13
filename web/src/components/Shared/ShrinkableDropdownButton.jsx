@@ -7,6 +7,8 @@ const ShrinkableDropdownButton = ({
   color,
   disabled,
   ariaLabel,
+  ariaLabelDir,
+  ariaLabelLang,
   hidden,
   icon,
   loading,
@@ -33,7 +35,9 @@ const ShrinkableDropdownButton = ({
       <Dropdown
         aria-label={ariaLabel}
         className="button icon"
+        dir={ariaLabelDir}
         disabled={disabled}
+        lang={ariaLabelLang}
         onChange={onChange}
         options={options}
         trigger={null}

@@ -1,3 +1,4 @@
+import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import { useMountedRef } from '../../../lib/useMountedRef';
@@ -20,6 +21,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const MessageSearchPanel = () => {
+  useRegionalFormat();
   const mountedRef = useMountedRef();
   const [searchQuery, setSearchQuery] = useMountedState(mountedRef, '');
   const [searchResults, setSearchResults] = useMountedState(mountedRef, null);
@@ -112,7 +114,7 @@ const MessageSearchPanel = () => {
                 }}
               >
                 <small style={{ color: '#666' }}>
-                  {new Date(message.timestampUnixMs).toLocaleString()} •{' '}
+                  {formatRegionalDateTime(message.timestampUnixMs)} •{' '}
                   {message.senderPeerId} • {message.channelId}
                 </small>
                 <div style={{ marginTop: '0.25em' }}>{message.body}</div>

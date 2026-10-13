@@ -2,6 +2,7 @@ import '../System.css';
 import { createLogsHubConnection } from '../../../lib/hubFactory';
 import { toDisplayError } from '../../../lib/errors';
 import { getLogs, updateLogLevel } from '../../../lib/options';
+import { formatRegionalTime } from '../../../lib/util';
 import { LoaderSegment } from '../../Shared';
 import React, { Component } from 'react';
 import {
@@ -31,6 +32,23 @@ const levels = {
 };
 
 const maxLogs = 500;
+
+export const formatLogTimestamp = (timestamp) => {
+  const numericTimestamp = Number(timestamp);
+  const date = Number.isFinite(numericTimestamp)
+    ? new Date(
+      numericTimestamp < 10_000_000_000
+        ? numericTimestamp * 1_000
+        : numericTimestamp,
+    )
+    : new Date(timestamp);
+  if (Number.isNaN(date.getTime())) return 'Unknown time';
+  return formatRegionalTime(date, {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  });
+};
 
 class Logs extends Component {
   constructor(props) {
@@ -166,12 +184,7 @@ class Logs extends Component {
   };
 
   formatTimestamp = (timestamp) => {
-    const date = new Date(
-      Number(timestamp) < 10_000_000_000
-        ? Number(timestamp) * 1000
-        : Number(timestamp),
-    );
-    return `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`; // eslint-disable-line max-len
+    return formatLogTimestamp(timestamp);
   };
 
   handleFilterChange = (level) => {

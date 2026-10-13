@@ -1,3 +1,102 @@
+import { useSyncExternalStore } from 'react';
+
+export const EXPERIENCE_PREFERENCES_STORAGE_KEY = 'slskr:experience-preferences:v1';
+
+const supportedRegionalFormats = '|system|es|zh-CN|hi-IN|de|ja|fr|pt-BR|ar|ko|zh-TW|vi|id|';
+const listeners = new Set();
+
+const readRegionalFormat = () => {
+  try {
+    const stored = window.localStorage.getItem(EXPERIENCE_PREFERENCES_STORAGE_KEY);
+    if (stored && stored.length > 64 * 1024) return 'system';
+    const value = JSON.parse(stored)?.regionalFormat;
+    return supportedRegionalFormats.includes('|' + value + '|') ? value : 'system';
+  } catch {
+    return 'system';
+  }
+};
+
+let activeRegionalFormat = readRegionalFormat();
+const notifyRegionalFormatChange = () => listeners.forEach((listener) => listener());
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('storage', (event) => {
+    if (event.key !== EXPERIENCE_PREFERENCES_STORAGE_KEY && event.key !== null) return;
+    activeRegionalFormat = readRegionalFormat();
+    notifyRegionalFormatChange();
+  });
+}
+
+export const setRegionalFormatPreference = (value) => {
+  if (!supportedRegionalFormats.includes('|' + value + '|')) return;
+  activeRegionalFormat = value;
+  notifyRegionalFormatChange();
+};
+
+export const useRegionalFormat = () =>
+  useSyncExternalStore(
+    (listener) => { listeners.add(listener); return () => listeners.delete(listener); },
+    () => activeRegionalFormat,
+    () => 'system',
+  );
+
+export const getRegionalLocale = () =>
+  activeRegionalFormat === 'system' ? undefined : activeRegionalFormat;
+
+export const formatRegionalNumber = (value, options) => {
+  if (value === undefined || value === null) return value;
+  if (typeof value === 'string' && value.trim() === '') return value;
+  const numericValue = Number(value);
+  if (!Number.isFinite(numericValue)) return value;
+  return new Intl.NumberFormat(getRegionalLocale(), options).format(numericValue);
+};
+
+export const formatRegionalFixedNumber = (value, fractionDigits = 1) => {
+  const numericValue = Number(value);
+  if (!Number.isFinite(numericValue)) return '—';
+  return new Intl.NumberFormat(getRegionalLocale(), {
+    minimumFractionDigits: fractionDigits,
+    maximumFractionDigits: fractionDigits,
+  }).format(numericValue);
+};
+
+export const formatRegionalCompactNumber = (
+  value,
+  { smallMaximumFractionDigits = 20, compactFractionDigits = 1 } = {},
+) => {
+  const numericValue = Number(value);
+  if (!Number.isFinite(numericValue)) return '—';
+  const absoluteValue = Math.abs(numericValue);
+  return new Intl.NumberFormat(getRegionalLocale(), {
+    notation: 'compact',
+    maximumFractionDigits: absoluteValue >= 1_000
+      ? compactFractionDigits
+      : smallMaximumFractionDigits,
+  }).format(numericValue);
+};
+
+export const formatRegionalDateTime = (value) =>
+  new Date(value).toLocaleString(getRegionalLocale());
+
+export const formatRegionalDate = (value) =>
+  new Date(value).toLocaleDateString(getRegionalLocale());
+
+export const formatRegionalTime = (value, options) => {
+  const date = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(date.getTime())) return 'Invalid Date';
+  return options
+    ? new Intl.DateTimeFormat(getRegionalLocale(), options).format(date)
+    : date.toLocaleTimeString(getRegionalLocale());
+};
+
+export const formatRegionalCompactDateTime = (value) =>
+  new Intl.DateTimeFormat(getRegionalLocale(), {
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    month: 'numeric',
+  }).format(value);
+
 export const formatSeconds = (seconds) => {
   if (seconds === undefined) return '';
   const date = new Date(1_970, 0, 1);
@@ -20,32 +119,38 @@ export const formatBytesAsUnit = (bytes, unit, decimals = 2) => {
 };
 
 export const formatBytes = (bytes, decimals = 2) => {
-  if (bytes === 0) return '0 B';
+  if (bytes === 0) return `${formatRegionalNumber(0)} B`;
 
   const k = 1_024;
   const dm = decimals < 0 ? 0 : decimals;
   const sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-
   const index = Math.floor(Math.log(bytes) / Math.log(k));
+  const rounded = Number.parseFloat((bytes / k ** index).toFixed(dm));
+  return `${formatRegionalNumber(rounded, { maximumFractionDigits: dm })} ${sizes[index]}`;
+};
 
-  return (
-    Number.parseFloat((bytes / k ** index).toFixed(dm)) + ' ' + sizes[index]
-  );
+export const formatBytesFixed = (bytes, decimals = 1) => {
+  if (bytes === 0) return `${formatRegionalNumber(0)} B`;
+  const k = 1_024;
+  const dm = decimals < 0 ? 0 : decimals;
+  const sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  const index = Math.floor(Math.log(bytes) / Math.log(k));
+  return `${formatRegionalFixedNumber(bytes / k ** index, dm)} ${sizes[index]}`;
 };
 
 export const formatSpeed = (bytesPerSecond, decimals = 1) => {
-  if (!bytesPerSecond || bytesPerSecond === 0) return '0 B/s';
+  if (!bytesPerSecond || bytesPerSecond === 0) return `${formatRegionalNumber(0)} B/s`;
   return `${formatBytes(bytesPerSecond, decimals)}/s`;
 };
 
 export const formatWait = (seconds) => {
-  if (!seconds || seconds === 0) return '0s';
-  if (seconds < 60) return `${Math.round(seconds)}s`;
-  return `${(seconds / 60).toFixed(1)}m`;
+  if (!seconds || seconds === 0) return `${formatRegionalNumber(0)}s`;
+  if (seconds < 60) return `${formatRegionalNumber(Math.round(seconds))}s`;
+  return `${formatRegionalFixedNumber(seconds / 60, 1)}m`;
 };
 
 export const formatDate = (date) => {
-  return new Date(date).toLocaleString();
+  return formatRegionalDateTime(date);
 };
 
 export const truncate = (text, maxLength) => {

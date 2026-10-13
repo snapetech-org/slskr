@@ -1,3 +1,14 @@
+import { REGIONAL_FORMAT_OPTIONS } from '../../../lib/regionalFormat';
+import {
+  INTERFACE_LANGUAGE_OPTIONS,
+  resetInterfaceLanguage,
+  useInterfaceLanguage,
+} from '../../../lib/interfaceLocale';
+import {
+  EXPERIENCE_PREFERENCES_STORAGE_KEY,
+  setRegionalFormatPreference,
+  useRegionalFormat,
+} from '../../../lib/util';
 import { copyToClipboard } from '../../../lib/clipboard';
 import { toDisplayError } from '../../../lib/errors';
 import { readBoundedJson } from '../../../lib/persistedJson';
@@ -20,9 +31,39 @@ import {
   Segment,
 } from 'semantic-ui-react';
 
-const storageKey = 'slskr:experience-preferences:v1';
+const localizedOptionLabel = (option, locale = option.value) => {
+  const [nativeName, englishName] = option.text.split(' — ');
+  const direction = locale === 'ar' ? 'rtl' : 'ltr';
+
+  return (
+    <>
+      <span dir={direction} lang={locale}>{nativeName}</span>
+      {englishName && (
+        <>
+          {' — '}
+          <span dir="ltr" lang="en">{englishName}</span>
+        </>
+      )}
+    </>
+  );
+};
+
+const interfaceLanguageOptions = INTERFACE_LANGUAGE_OPTIONS.map((option) => ({
+  ...option,
+  text: localizedOptionLabel(option),
+}));
+const regionalFormatOptions = REGIONAL_FORMAT_OPTIONS.map((option) => ({
+  ...option,
+  text: localizedOptionLabel(
+    option,
+    option.value === 'system' ? 'en' : option.value,
+  ),
+}));
+
+const storageKey = EXPERIENCE_PREFERENCES_STORAGE_KEY;
 
 const defaults = {
+  regionalFormat: 'system',
   discoveryApprovalFilter: 'all',
   discoveryConfidenceFloor: '0.70',
   discoveryExplanationDetail: 'full',
@@ -47,6 +88,7 @@ const defaults = {
 };
 
 const options = {
+  regionalFormat: regionalFormatOptions,
   actionPreviewDensity: [
     { key: 'compact', text: 'Compact', value: 'compact' },
     { key: 'detailed', text: 'Detailed', value: 'detailed' },
@@ -92,6 +134,7 @@ const options = {
 
 const maxPreferenceTextCharacters = 2_048;
 const preferenceOptionValues = {
+  regionalFormat: options.regionalFormat.map((option) => option.value),
   discoveryApprovalFilter: options.approvalFilter.map((option) => option.value),
   discoveryExplanationDetail: options.explanationDetail.map((option) => option.value),
   playerDefaultVisualizer: options.visualizerDefault.map((option) => option.value),
@@ -143,6 +186,7 @@ const readStoredPreferences = () => {
 const buildReport = (form) =>
   [
     'slskr experience preferences',
+    'Regional format: ' + form.regionalFormat,
     `Search: ranking=${form.searchRankingProfile}, condition=${form.searchPreferredCondition}, duplicate_folding=${form.searchDuplicateFolding}, previews=${form.searchActionPreviewDensity}`,
     `Discovery: provider=${form.discoveryProviderFilter || 'all'}, approval=${form.discoveryApprovalFilter}, confidence>=${form.discoveryConfidenceFloor}, stale_days=${form.discoveryStaleDays}, explanations=${form.discoveryExplanationDetail}`,
     `Player: queue_auto_fill=${form.playerQueueAutoFill}, radio_seed=${form.playerRadioSeedMode}, ratings=${form.playerShowRatings}, history=${form.playerCaptureHistory}, scrobble=${form.playerScrobbleMode}, visualizer=${form.playerDefaultVisualizer}, shortcuts=${form.playerKeyboardShortcuts}`,
@@ -153,10 +197,16 @@ const ExperienceSettings = () => {
   const [form, setForm] = useState(defaults);
   const [message, setMessage] = useState(null);
   const mountedRef = useMountedRef();
+  const regionalFormat = useRegionalFormat();
+  const { language, setLanguage, t } = useInterfaceLanguage();
 
   useEffect(() => {
     setForm(readStoredPreferences());
   }, []);
+
+  useEffect(() => {
+    setForm((current) => ({ ...current, regionalFormat }));
+  }, [regionalFormat]);
 
   const update = (key, value) => {
     setForm((current) => ({ ...current, [key]: value }));
@@ -168,6 +218,7 @@ const ExperienceSettings = () => {
       storageKey,
       JSON.stringify(normalizePreferences(form)),
     );
+    setRegionalFormatPreference(form.regionalFormat);
     setMessage(
       saved
         ? 'Experience preferences saved locally in this browser.'
@@ -176,10 +227,12 @@ const ExperienceSettings = () => {
   };
 
   const reset = () => {
-    const removed = removeLocalStorageItem(storageKey);
+    const preferencesRemoved = removeLocalStorageItem(storageKey);
+    const languageRemoved = resetInterfaceLanguage();
     setForm(defaults);
+    setRegionalFormatPreference(defaults.regionalFormat);
     setMessage(
-      removed
+      preferencesRemoved && languageRemoved
         ? 'Experience preferences reset to defaults.'
         : 'Unable to reset experience preferences in this browser.',
     );
@@ -203,7 +256,7 @@ const ExperienceSettings = () => {
   };
 
   return (
-    <div className="experience-settings">
+    <div className="experience-settings" lang="en">
       <Segment>
         <Header as="h3">
           <Icon name="compass" />
@@ -228,6 +281,47 @@ const ExperienceSettings = () => {
         itemsPerRow={1}
         stackable
       >
+        <Card fluid>
+          <Card.Content>
+            <Card.Header><Icon name="language" /> <span dir={language === 'ar' ? 'rtl' : 'ltr'} lang={language}>{t('Interface language')}</span></Card.Header>
+            <Card.Meta dir={language === 'ar' ? 'rtl' : 'ltr'} lang={language}>{t('Choose the language used for the interface.')} {t('Translations cover navigation, preferences, and transfer labels; other screens use English.')}</Card.Meta>
+          </Card.Content>
+          <Card.Content>
+            <Form>
+              <Form.Select
+                aria-label={t('Interface language')}
+                dir={language === 'ar' ? 'rtl' : 'ltr'}
+                label={<span lang={language}>{t('Interface language')}</span>}
+                lang={language}
+                onChange={(_, { value }) => setLanguage(value)}
+                options={interfaceLanguageOptions}
+                value={language}
+              />
+            </Form>
+          </Card.Content>
+        </Card>
+        <Card fluid>
+          <Card.Content>
+            <Card.Header>
+              <Icon name="globe" />
+              <span dir={language === 'ar' ? 'rtl' : 'ltr'} lang={language}>{t('Regional format')}</span>
+            </Card.Header>
+            <Card.Meta dir={language === 'ar' ? 'rtl' : 'ltr'} lang={language}>{t('Choose how dates, times, and numbers are displayed. This setting is separate from interface language.')}</Card.Meta>
+          </Card.Content>
+          <Card.Content>
+            <Form>
+              <Form.Select
+                aria-label={t('Regional format')}
+                dir={language === 'ar' ? 'rtl' : 'ltr'}
+                label={<span lang={language}>{t('Date, time, and number format')}</span>}
+                lang={language}
+                onChange={(_, { value }) => update('regionalFormat', value)}
+                options={options.regionalFormat}
+                value={form.regionalFormat}
+              />
+            </Form>
+          </Card.Content>
+        </Card>
         <Card fluid>
           <Card.Content>
             <Card.Header>

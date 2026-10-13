@@ -1,9 +1,10 @@
+import { formatRegionalFixedNumber, formatRegionalNumber, formatBytes, formatDate, formatSpeed, formatWait, getFileName, truncate } from '../lib/util';
 import './CompatibilityDashboard.css';
 import { toDisplayError } from '../lib/errors';
 import { encodePathSegment } from '../lib/pathEncoding';
 import * as reports from '../lib/reports';
 import * as searches from '../lib/searches';
-import { formatBytes, formatDate, formatSpeed, formatWait, getFileName, truncate } from '../lib/util';
+
 import LoaderSegment from './Shared/LoaderSegment';
 import { useMountedRef } from '../lib/useMountedRef';
 import CompatibilityGraph, { buildChartData, HISTORY_SERIES, isRecord, sumBytes, sumCounts } from './CompatibilityGraph';
@@ -103,13 +104,18 @@ const ReportStatus = ({ error, label, testId }) => {
 
 
 const formatBytesParts = (bytes) => {
-  if (!bytes || bytes < 1) return { unit: 'B', value: '0' };
+  if (!bytes || bytes < 1) {
+    return { unit: 'B', value: formatRegionalNumber(0) };
+  }
   const units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
   const index = Math.min(
     units.length - 1,
     Math.floor(Math.log(bytes) / Math.log(1_024)),
   );
-  return { unit: units[index], value: (bytes / 1_024 ** index).toFixed(1) };
+  return {
+    unit: units[index],
+    value: formatRegionalFixedNumber(bytes / 1_024 ** index, 1),
+  };
 };
 
 
@@ -255,7 +261,7 @@ const LeaderboardTable = ({ loading, onSort, rows = [], sortBy }) => {
           <Table.Row key={row.username}>
             <Table.Cell textAlign="right">{index + 1}</Table.Cell>
             <Table.Cell>{row.username}</Table.Cell>
-            <Table.Cell textAlign="right">{(row.count ?? 0).toLocaleString()}</Table.Cell>
+            <Table.Cell textAlign="right">{formatRegionalNumber(row.count ?? 0)}</Table.Cell>
             <Table.Cell textAlign="right">{formatBytes(row.totalBytes ?? 0)}</Table.Cell>
             <Table.Cell textAlign="right">{formatSpeed(row.averageSpeed ?? 0)}</Table.Cell>
           </Table.Row>
@@ -371,8 +377,8 @@ const TopDirectories = ({ error, rows = [] }) => (
             <Table.Row key={row.directory}>
               <Table.Cell textAlign="right">{index + 1}</Table.Cell>
               <Table.Cell title={row.directory}>{parts.slice(-2).join('/')}</Table.Cell>
-              <Table.Cell textAlign="right">{(row.count ?? 0).toLocaleString()}</Table.Cell>
-              <Table.Cell textAlign="right">{(row.distinctUsers ?? 0).toLocaleString()}</Table.Cell>
+              <Table.Cell textAlign="right">{formatRegionalNumber(row.count ?? 0)}</Table.Cell>
+              <Table.Cell textAlign="right">{formatRegionalNumber(row.distinctUsers ?? 0)}</Table.Cell>
             </Table.Row>
           );
         })}
@@ -418,8 +424,8 @@ const ExceptionPareto = ({ direction, loading, onDirectionChange, rows }) => {
               <Table.Cell>{row.direction}</Table.Cell>
               <Table.Cell title={row.exception}>{truncate(row.exception, 80)}</Table.Cell>
               <Table.Cell><Progress color="red" percent={Math.round(((row.count ?? 0) / maxCount) * 100)} size="tiny" /></Table.Cell>
-              <Table.Cell textAlign="right"><strong>{(row.count ?? 0).toLocaleString()}</strong></Table.Cell>
-              <Table.Cell textAlign="right">{(row.distinctUsers ?? 0).toLocaleString()}</Table.Cell>
+              <Table.Cell textAlign="right"><strong>{formatRegionalNumber(row.count ?? 0)}</strong></Table.Cell>
+              <Table.Cell textAlign="right">{formatRegionalNumber(row.distinctUsers ?? 0)}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
@@ -560,8 +566,8 @@ const TransferErrors = ({ data, end, start }) => {
         data={data.chartData}
         defaultSeries={new Set(['uploadErrors', 'downloadErrors'])}
         series={[
-          { color: '#db2828', format: (value) => value.toLocaleString(), key: 'uploadErrors', name: 'Upload Errors' },
-          { color: '#a333c8', format: (value) => value.toLocaleString(), key: 'downloadErrors', name: 'Download Errors' },
+          { color: '#db2828', format: (value) => formatRegionalNumber(value), key: 'uploadErrors', name: 'Upload Errors' },
+          { color: '#a333c8', format: (value) => formatRegionalNumber(value), key: 'downloadErrors', name: 'Download Errors' },
         ]}
       />
       <ReportStatus
@@ -657,18 +663,18 @@ const HistoricalStatistics = ({ data, historyLabel, historyRanges, onHistoryRang
       >
         <Statistic color="blue">
           <Statistic.Value><Icon name="arrow down" size="tiny" />{downloadParts.value}<small>{downloadParts.unit}</small></Statistic.Value>
-          <Statistic.Label>Downloaded · {sumCounts(summary.Download ?? {}).toLocaleString()} files</Statistic.Label>
+          <Statistic.Label>Downloaded · {formatRegionalNumber(sumCounts(summary.Download ?? {}))} files</Statistic.Label>
         </Statistic>
         <Statistic color="green">
           <Statistic.Value><Icon name="arrow up" size="tiny" />{uploadParts.value}<small>{uploadParts.unit}</small></Statistic.Value>
-          <Statistic.Label>Uploaded · {sumCounts(summary.Upload ?? {}).toLocaleString()} files</Statistic.Label>
+          <Statistic.Label>Uploaded · {formatRegionalNumber(sumCounts(summary.Upload ?? {}))} files</Statistic.Label>
         </Statistic>
         <Statistic color={shareRatio === null ? 'grey' : shareRatio > 0.66 ? 'green' : shareRatio >= 0.33 ? 'yellow' : 'red'}>
           <Statistic.Value><Icon name="chart pie" size="tiny" />{shareRatio === null ? '—' : shareRatio.toFixed(2)}</Statistic.Value>
           <Statistic.Label>Share ratio (↑/↓)</Statistic.Label>
         </Statistic>
         <Statistic>
-          <Statistic.Value><Icon name="user" size="tiny" />{((summary.Upload?.Succeeded?.distinctUsers ?? 0) + (summary.Download?.Succeeded?.distinctUsers ?? 0)).toLocaleString()}</Statistic.Value>
+          <Statistic.Value><Icon name="user" size="tiny" />{formatRegionalNumber((summary.Upload?.Succeeded?.distinctUsers ?? 0) + (summary.Download?.Succeeded?.distinctUsers ?? 0))}</Statistic.Value>
           <Statistic.Label>Distinct peers</Statistic.Label>
         </Statistic>
       </Statistic.Group>

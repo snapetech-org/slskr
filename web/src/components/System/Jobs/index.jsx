@@ -1,10 +1,11 @@
+import { formatRegionalDateTime, formatBytes } from '../../../lib/util';
 // <copyright file="index.jsx" company="slskr Team">
 // Copyright (c) slskr Team. All rights reserved.
 // </copyright>
 
 import * as jobsLibrary from '../../../lib/jobs';
 import { toDisplayError } from '../../../lib/errors';
-import { formatBytes } from '../../../lib/util';
+
 import { useMountedRef } from '../../../lib/useMountedRef';
 import { usePolling } from '../../../lib/usePolling';
 import SwarmVisualization from '../SwarmVisualization';
@@ -238,7 +239,7 @@ const Jobs = () => {
   const formatDate = (dateString) => {
     if (!dateString) return 'N/A';
     try {
-      return new Date(dateString).toLocaleString();
+      return formatRegionalDateTime(dateString);
     } catch {
       return dateString;
     }

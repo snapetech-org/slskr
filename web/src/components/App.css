@@ -808,10 +808,21 @@ body {
     align-content: flex-start;
     align-items: stretch;
     align-self: flex-start;
+    direction: ltr;
     display: flex;
     flex: 1 1 auto;
     flex-wrap: wrap;
     min-width: 0;
+}
+
+.navigation-primary-label {
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
 }
 
 .navigation-primary > a,

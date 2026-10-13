@@ -3,6 +3,7 @@ import * as autoReplaceLibrary from '../../lib/autoReplace';
 import { toDisplayError } from '../../lib/errors';
 import * as transfersLibrary from '../../lib/transfers';
 import { usePolling } from '../../lib/usePolling';
+import { useInterfaceLanguage } from '../../lib/interfaceLocale';
 import { LoaderSegment, PlaceholderSegment } from '../Shared';
 import TransferGroup from './TransferGroup';
 import TransfersHeader from './TransfersHeader';
@@ -143,6 +144,7 @@ const groupFlatTransfers = (records) => {
 };
 
 const Transfers = ({ runtimeProfile, direction, server }) => {
+  const { t, languageFor, directionFor } = useInterfaceLanguage();
   const testId = direction === 'download' ? 'downloads-root' : 'uploads-root';
   const [connecting, setConnecting] = useState(true);
   const [transfers, setTransfers] = useState([]);
@@ -767,7 +769,17 @@ const Transfers = ({ runtimeProfile, direction, server }) => {
       )}
       {transfersLoadError ? null : transfers.length === 0 ? (
         <PlaceholderSegment
-          caption={`No ${direction}s to display`}
+          caption={
+            direction === 'download' ? (
+              <span lang={languageFor('No downloads to display')} dir={directionFor('No downloads to display')}>
+                {t('No downloads to display')}
+              </span>
+            ) : (
+              <span lang={languageFor('No uploads to display')} dir={directionFor('No uploads to display')}>
+                {t('No uploads to display')}
+              </span>
+            )
+          }
           icon={direction}
         />
       ) : (

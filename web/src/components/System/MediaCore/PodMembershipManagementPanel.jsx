@@ -1,3 +1,4 @@
+import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -33,6 +34,7 @@ const PodMembershipManagementPanel = ({
   verifyingMembership,
   visible = true,
 }) => {
+  useRegionalFormat();
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -275,14 +277,10 @@ const PodMembershipManagementPanel = ({
                         {membershipPublishResult.dhtKey}
                         <br />
                         <strong>Published:</strong>{' '}
-                        {new Date(
-                          membershipPublishResult.publishedAt,
-                        ).toLocaleString()}
+                        {formatRegionalDateTime(membershipPublishResult.publishedAt)}
                         <br />
                         <strong>Expires:</strong>{' '}
-                        {new Date(
-                          membershipPublishResult.expiresAt,
-                        ).toLocaleString()}
+                        {formatRegionalDateTime(membershipPublishResult.expiresAt)}
                       </p>
                     </Message>
                   )}
@@ -364,9 +362,7 @@ const PodMembershipManagementPanel = ({
                             <br />
                             <strong>Joined:</strong>{' '}
                             {membershipResult.signedRecord?.membership?.joinedAt
-                              ? new Date(
-                                  membershipResult.signedRecord.membership.joinedAt,
-                                ).toLocaleString()
+                              ? formatRegionalDateTime(membershipResult.signedRecord.membership.joinedAt)
                               : 'Unknown'}
                           </p>
                         </Message>
@@ -525,9 +521,7 @@ const PodMembershipManagementPanel = ({
                       <br />
                       <strong>Last Operation:</strong>{' '}
                       {membershipStats.lastOperation
-                        ? new Date(
-                            membershipStats.lastOperation,
-                          ).toLocaleString()
+                        ? formatRegionalDateTime(membershipStats.lastOperation)
                         : 'Never'}
                     </p>
                     {membershipStats.membershipsByRole &&
