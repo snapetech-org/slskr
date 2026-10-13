@@ -1,4 +1,4 @@
-import { getRegionalLocale } from '../../lib/regionalFormat';
+import { formatRegionalTime } from '../../lib/util';
 import * as pods from '../../lib/pods';
 import { toDisplayError } from '../../lib/errors';
 import {
@@ -252,7 +252,7 @@ const PodChannelSession = ({ channel, state }) => {
                   >
                     <span className="room-message-time">
                       {message.timestampUnixMs
-                        ? new Date(message.timestampUnixMs).toLocaleTimeString(getRegionalLocale())
+                        ? formatRegionalTime(message.timestampUnixMs)
                         : ''}
                     </span>
                     <span className="room-message-name">

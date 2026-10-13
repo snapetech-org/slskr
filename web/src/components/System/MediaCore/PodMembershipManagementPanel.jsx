@@ -1,4 +1,4 @@
-import { getRegionalLocale } from '../../../lib/regionalFormat';
+import { formatRegionalDateTime } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -276,14 +276,10 @@ const PodMembershipManagementPanel = ({
                         {membershipPublishResult.dhtKey}
                         <br />
                         <strong>Published:</strong>{' '}
-                        {new Date(
-                          membershipPublishResult.publishedAt,
-                        ).toLocaleString(getRegionalLocale())}
+                        {formatRegionalDateTime(membershipPublishResult.publishedAt)}
                         <br />
                         <strong>Expires:</strong>{' '}
-                        {new Date(
-                          membershipPublishResult.expiresAt,
-                        ).toLocaleString(getRegionalLocale())}
+                        {formatRegionalDateTime(membershipPublishResult.expiresAt)}
                       </p>
                     </Message>
                   )}
@@ -365,9 +361,7 @@ const PodMembershipManagementPanel = ({
                             <br />
                             <strong>Joined:</strong>{' '}
                             {membershipResult.signedRecord?.membership?.joinedAt
-                              ? new Date(
-                                  membershipResult.signedRecord.membership.joinedAt,
-                                ).toLocaleString(getRegionalLocale())
+                              ? formatRegionalDateTime(membershipResult.signedRecord.membership.joinedAt)
                               : 'Unknown'}
                           </p>
                         </Message>
@@ -526,9 +520,7 @@ const PodMembershipManagementPanel = ({
                       <br />
                       <strong>Last Operation:</strong>{' '}
                       {membershipStats.lastOperation
-                        ? new Date(
-                            membershipStats.lastOperation,
-                          ).toLocaleString(getRegionalLocale())
+                        ? formatRegionalDateTime(membershipStats.lastOperation)
                         : 'Never'}
                     </p>
                     {membershipStats.membershipsByRole &&

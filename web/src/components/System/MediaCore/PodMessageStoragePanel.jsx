@@ -1,4 +1,4 @@
-import { getRegionalLocale } from '../../../lib/regionalFormat';
+import { formatRegionalDateTime, formatRegionalNumber } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -127,7 +127,7 @@ const PodMessageStoragePanel = React.memo(({ visible }) => {
                   <Message.Header>Message Storage Statistics</Message.Header>
                   <p>
                     <strong>Total Messages:</strong>{' '}
-                    {storageStats.totalMessages?.toLocaleString(getRegionalLocale()) || 0}
+                    {formatRegionalNumber(storageStats.totalMessages) || 0}
                     <br />
                     <strong>Estimated Size:</strong>{' '}
                     {(storageStats.totalSizeBytes / (1_024 * 1_024)).toFixed(2)}{' '}
@@ -135,12 +135,12 @@ const PodMessageStoragePanel = React.memo(({ visible }) => {
                     <br />
                     <strong>Oldest Message:</strong>{' '}
                     {storageStats.oldestMessage
-                      ? new Date(storageStats.oldestMessage).toLocaleString(getRegionalLocale())
+                      ? formatRegionalDateTime(storageStats.oldestMessage)
                       : 'None'}
                     <br />
                     <strong>Newest Message:</strong>{' '}
                     {storageStats.newestMessage
-                      ? new Date(storageStats.newestMessage).toLocaleString(getRegionalLocale())
+                      ? formatRegionalDateTime(storageStats.newestMessage)
                       : 'None'}
                     <br />
                     <strong>Pods with Messages:</strong>{' '}

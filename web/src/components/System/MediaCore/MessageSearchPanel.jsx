@@ -1,4 +1,4 @@
-import { getRegionalLocale } from '../../../lib/regionalFormat';
+import { formatRegionalDateTime } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import { useMountedRef } from '../../../lib/useMountedRef';
@@ -113,7 +113,7 @@ const MessageSearchPanel = () => {
                 }}
               >
                 <small style={{ color: '#666' }}>
-                  {new Date(message.timestampUnixMs).toLocaleString(getRegionalLocale())} •{' '}
+                  {formatRegionalDateTime(message.timestampUnixMs)} •{' '}
                   {message.senderPeerId} • {message.channelId}
                 </small>
                 <div style={{ marginTop: '0.25em' }}>{message.body}</div>

@@ -1,11 +1,11 @@
-import { getRegionalLocale } from '../../../lib/regionalFormat';
+import { formatRegionalNumber, formatBytes } from '../../../lib/util';
 // <copyright file="index.jsx" company="slskr Team">
 // Copyright (c) slskr Team. All rights reserved.
 // </copyright>
 
 import * as swarmAnalyticsLibrary from '../../../lib/swarmAnalytics';
 import { toDisplayError } from '../../../lib/errors';
-import { formatBytes } from '../../../lib/util';
+
 import { useMountedRef } from '../../../lib/useMountedRef';
 import { usePolling } from '../../../lib/usePolling';
 import React, { useCallback, useRef, useState } from 'react';
@@ -212,7 +212,7 @@ const SwarmAnalytics = () => {
                   <Grid.Column>
                     <Statistic>
                       <Statistic.Value>
-                        {performanceMetrics.totalDownloads?.toLocaleString(getRegionalLocale()) ??
+                        {formatRegionalNumber(performanceMetrics.totalDownloads) ??
                           0}
                       </Statistic.Value>
                       <Statistic.Label>Total Downloads</Statistic.Label>
@@ -264,7 +264,7 @@ const SwarmAnalytics = () => {
                   <Grid.Column>
                     <Statistic size="small">
                       <Statistic.Value>
-                        {performanceMetrics.totalChunksCompleted?.toLocaleString(getRegionalLocale()) ??
+                        {formatRegionalNumber(performanceMetrics.totalChunksCompleted) ??
                           0}
                       </Statistic.Value>
                       <Statistic.Label>Chunks Completed</Statistic.Label>
@@ -392,7 +392,7 @@ const SwarmAnalytics = () => {
                           {formatBytes(peer.averageThroughputBytesPerSecond)}/s
                         </Table.Cell>
                         <Table.Cell>
-                          {peer.chunksCompleted?.toLocaleString(getRegionalLocale()) ?? 0}
+                          {formatRegionalNumber(peer.chunksCompleted) ?? 0}
                         </Table.Cell>
                         <Table.Cell>
                           {(peer.chunkSuccessRate * 100).toFixed(1)}%

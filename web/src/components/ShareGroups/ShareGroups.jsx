@@ -1,4 +1,4 @@
-import { getRegionalLocale } from '../../lib/regionalFormat';
+import { formatRegionalDate } from '../../lib/util';
 import * as collectionsAPI from '../../lib/collections';
 import { toDisplayError } from '../../lib/errors';
 import * as identityAPI from '../../lib/identity';
@@ -391,7 +391,7 @@ export default class ShareGroups extends Component {
                     </Button>
                   </Table.Cell>
                   <Table.Cell>
-                    {new Date(group.createdAt).toLocaleDateString(getRegionalLocale())}
+                    {formatRegionalDate(group.createdAt)}
                   </Table.Cell>
                   <Table.Cell>
                     <Button

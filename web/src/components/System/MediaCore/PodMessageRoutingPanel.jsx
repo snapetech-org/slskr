@@ -1,4 +1,4 @@
-import { getRegionalLocale } from '../../../lib/regionalFormat';
+import { formatRegionalDateTime } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -424,9 +424,7 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
                       %<br />
                       <strong>Last Operation:</strong>{' '}
                       {routingStats.lastRoutingOperation
-                        ? new Date(
-                            routingStats.lastRoutingOperation,
-                          ).toLocaleString(getRegionalLocale())
+                        ? formatRegionalDateTime(routingStats.lastRoutingOperation)
                         : 'Never'}
                     </p>
                   </Message>

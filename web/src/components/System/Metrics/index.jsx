@@ -1,4 +1,4 @@
-import { getRegionalLocale } from '../../../lib/regionalFormat';
+import { formatRegionalTime } from '../../../lib/util';
 import { getKpiMetrics } from '../../../lib/telemetry';
 import { toDisplayError } from '../../../lib/errors';
 import { LoaderSegment } from '../../Shared';
@@ -249,7 +249,7 @@ const Metrics = () => {
           type="button"
         >
           <Icon name="refresh" />
-          {lastUpdated ? `Updated ${lastUpdated.toLocaleTimeString(getRegionalLocale())}` : 'Refresh'}
+          {lastUpdated ? `Updated ${formatRegionalTime(lastUpdated)}` : 'Refresh'}
         </Button>
       </div>
 

@@ -1,4 +1,4 @@
-import { getRegionalLocale } from '../../../lib/regionalFormat';
+import { formatRegionalNumber } from '../../../lib/util';
 import * as sharesLibrary from '../../../lib/shares';
 import * as applicationLibrary from '../../../lib/application';
 import { toDisplayError } from '../../../lib/errors';
@@ -228,7 +228,7 @@ const Shares = ({ state = EMPTY_STATE, theme } = {}) => {
               <div>
                 <div>Scanning shares</div>
                 <div className="share-scan-detail">
-                  Visited {Number(scanEntries).toLocaleString(getRegionalLocale())} filesystem entries
+                  Visited {formatRegionalNumber(Number(scanEntries))} filesystem entries
                 </div>
                 <div className="share-scan-detail">
                   Last index: {files} files in {directories} directories

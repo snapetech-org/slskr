@@ -1,4 +1,4 @@
-import { getRegionalLocale } from './regionalFormat';
+import { formatRegionalTime } from './util';
 const normalizeState = (value) => String(value ?? '').trim().toLowerCase();
 
 const stateTokens = (search = {}) =>
@@ -122,5 +122,7 @@ export const parseSearchDate = (value) => {
 export const searchDateValue = (value) =>
   parseSearchDate(value)?.getTime() ?? 0;
 
-export const formatSearchTime = (value) =>
-  parseSearchDate(value)?.toLocaleTimeString(getRegionalLocale()) ?? '-';
+export const formatSearchTime = (value) => {
+  const date = parseSearchDate(value);
+  return date ? formatRegionalTime(date) : '-';
+};

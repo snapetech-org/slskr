@@ -1,4 +1,4 @@
-import { getRegionalLocale } from '../../../lib/regionalFormat';
+import { formatRegionalDateTime } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -233,9 +233,7 @@ const MediaCoreStatisticsDashboardPanel = () => {
                       <br />
                       <strong>Last Updated:</strong>{' '}
                       {mediaCoreDashboard.timestamp
-                        ? new Date(
-                            mediaCoreDashboard.timestamp,
-                          ).toLocaleString(getRegionalLocale())
+                        ? formatRegionalDateTime(mediaCoreDashboard.timestamp)
                         : 'N/A'}
                     </p>
                   </Message>

@@ -1,8 +1,12 @@
+import { REGIONAL_FORMAT_OPTIONS } from './regionalFormat';
 import {
   EXPERIENCE_PREFERENCES_STORAGE_KEY,
-  readExperiencePreference,
-} from './experiencePreferences';
-import { getRegionalLocale } from './regionalFormat';
+  formatRegionalDate,
+  formatRegionalDateTime,
+  formatRegionalNumber,
+  formatRegionalTime,
+  getRegionalLocale,
+} from './util';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 describe('regional format preferences', () => {
@@ -47,13 +51,39 @@ describe('regional format preferences', () => {
     expect(getRegionalLocale()).toBeUndefined();
   });
 
-  it('uses the fallback when a preference is missing or not a string', () => {
+  it('ignores non-object preference data and non-string settings', () => {
+    localStorage.setItem(EXPERIENCE_PREFERENCES_STORAGE_KEY, JSON.stringify(['de']));
+    expect(getRegionalLocale()).toBeUndefined();
+
     localStorage.setItem(
       EXPERIENCE_PREFERENCES_STORAGE_KEY,
       JSON.stringify({ regionalFormat: 17 }),
     );
+    expect(getRegionalLocale()).toBeUndefined();
+  });
+  it('formats numbers and dates with the selected locale', () => {
+    localStorage.setItem(
+      EXPERIENCE_PREFERENCES_STORAGE_KEY,
+      JSON.stringify({ regionalFormat: 'de' }),
+    );
+    const timestamp = '2026-01-02T15:04:05Z';
+    const date = new Date(timestamp);
 
-    expect(readExperiencePreference('regionalFormat', 'system')).toBe('system');
-    expect(readExperiencePreference('missingPreference', 'fallback')).toBe('fallback');
+    expect(formatRegionalNumber(1234567.89)).toBe(
+      (1234567.89).toLocaleString('de'),
+    );
+    expect(formatRegionalDateTime(timestamp)).toBe(date.toLocaleString('de'));
+    expect(formatRegionalDate(timestamp)).toBe(date.toLocaleDateString('de'));
+    expect(formatRegionalTime(timestamp)).toBe(date.toLocaleTimeString('de'));
+  });
+
+  it('accepts each listed locale option', () => {
+    for (const { value } of REGIONAL_FORMAT_OPTIONS) {
+      localStorage.setItem(
+        EXPERIENCE_PREFERENCES_STORAGE_KEY,
+        JSON.stringify({ regionalFormat: value }),
+      );
+      expect(getRegionalLocale()).toBe(value === 'system' ? undefined : value);
+    }
   });
 });

@@ -1,4 +1,4 @@
-import { getRegionalLocale } from '../../../lib/regionalFormat';
+import { formatRegionalNumber } from '../../../lib/util';
 import * as mesh from '../../../lib/mesh';
 import * as soulseekDiscovery from '../../../lib/soulseekDiscovery';
 import { toDisplayError } from '../../../lib/errors';
@@ -39,7 +39,7 @@ const toCount = (value) => {
 
 const formatCount = (value) => {
   const count = toCount(value);
-  return count === null ? '—' : count.toLocaleString(getRegionalLocale());
+  return count === null ? '—' : formatRegionalNumber(count);
 };
 
 const normalizeMeshStats = (data) => {

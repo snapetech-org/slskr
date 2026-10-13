@@ -1,4 +1,4 @@
-import { getRegionalLocale } from '../../../lib/regionalFormat';
+import { formatRegionalDateTime } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -391,9 +391,7 @@ const PodMembershipVerificationPanel = React.memo(({
                       <br />
                       <strong>Last Verification:</strong>{' '}
                       {verificationStats.lastVerification
-                        ? new Date(
-                            verificationStats.lastVerification,
-                          ).toLocaleString(getRegionalLocale())
+                        ? formatRegionalDateTime(verificationStats.lastVerification)
                         : 'Never'}
                     </p>
                   </Message>

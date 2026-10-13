@@ -1,4 +1,30 @@
-import { getRegionalLocale } from './regionalFormat';
+export const EXPERIENCE_PREFERENCES_STORAGE_KEY = 'slskr:experience-preferences:v1';
+
+const supportedRegionalFormats = '|es|zh-CN|hi-IN|de|ja|fr|pt-BR|ar|ko|zh-TW|vi|id|';
+
+export const getRegionalLocale = () => {
+  try {
+    const stored = window.localStorage.getItem(EXPERIENCE_PREFERENCES_STORAGE_KEY);
+    if (stored?.length > 64 * 1024) return undefined;
+    const value = JSON.parse(stored)?.regionalFormat;
+    return supportedRegionalFormats.includes(`|${value}|`) ? value : undefined;
+  } catch {
+    return undefined;
+  }
+};
+
+export const formatRegionalNumber = (value) =>
+  value?.toLocaleString(getRegionalLocale()) ?? value;
+
+export const formatRegionalDateTime = (value) =>
+  new Date(value).toLocaleString(getRegionalLocale());
+
+export const formatRegionalDate = (value) =>
+  new Date(value).toLocaleDateString(getRegionalLocale());
+
+export const formatRegionalTime = (value) =>
+  new Date(value).toLocaleTimeString(getRegionalLocale());
+
 export const formatSeconds = (seconds) => {
   if (seconds === undefined) return '';
   const date = new Date(1_970, 0, 1);
@@ -46,7 +72,7 @@ export const formatWait = (seconds) => {
 };
 
 export const formatDate = (date) => {
-  return new Date(date).toLocaleString(getRegionalLocale());
+  return formatRegionalDateTime(date);
 };
 
 export const truncate = (text, maxLength) => {

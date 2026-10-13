@@ -1,4 +1,4 @@
-import { getRegionalLocale } from '../../../lib/regionalFormat';
+import { formatRegionalDateTime } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -188,14 +188,10 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
                         <strong>DHT Key:</strong> {podPublishingResult.dhtKey}
                         <br />
                         <strong>Published:</strong>{' '}
-                        {new Date(
-                          podPublishingResult.publishedAt,
-                        ).toLocaleString(getRegionalLocale())}
+                        {formatRegionalDateTime(podPublishingResult.publishedAt)}
                         <br />
                         <strong>Expires:</strong>{' '}
-                        {new Date(
-                          podPublishingResult.expiresAt,
-                        ).toLocaleString(getRegionalLocale())}
+                        {formatRegionalDateTime(podPublishingResult.expiresAt)}
                       </p>
                     </Message>
                   )}
@@ -250,14 +246,10 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
                             {podMetadataResult.isValidSignature ? 'Yes' : 'No'}
                             <br />
                             <strong>Retrieved:</strong>{' '}
-                            {new Date(
-                              podMetadataResult.retrievedAt,
-                            ).toLocaleString(getRegionalLocale())}
+                            {formatRegionalDateTime(podMetadataResult.retrievedAt)}
                             <br />
                             <strong>Expires:</strong>{' '}
-                            {new Date(
-                              podMetadataResult.expiresAt,
-                            ).toLocaleString(getRegionalLocale())}
+                            {formatRegionalDateTime(podMetadataResult.expiresAt)}
                             <br />
                             <strong>Display Name:</strong>{' '}
                             {podMetadataResult.publishedPod?.displayName}
@@ -353,9 +345,7 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
                       <br />
                       <strong>Last Operation:</strong>{' '}
                       {podPublishingStats.lastPublishOperation
-                        ? new Date(
-                            podPublishingStats.lastPublishOperation,
-                          ).toLocaleString(getRegionalLocale())
+                        ? formatRegionalDateTime(podPublishingStats.lastPublishOperation)
                         : 'Never'}
                     </p>
                     {podPublishingStats.publicationsByVisibility &&

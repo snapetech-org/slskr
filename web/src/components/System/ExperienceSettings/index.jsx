@@ -1,5 +1,5 @@
 import { REGIONAL_FORMAT_OPTIONS } from '../../../lib/regionalFormat';
-import { EXPERIENCE_PREFERENCES_STORAGE_KEY } from '../../../lib/experiencePreferences';
+import { EXPERIENCE_PREFERENCES_STORAGE_KEY } from '../../../lib/util';
 import { copyToClipboard } from '../../../lib/clipboard';
 import { toDisplayError } from '../../../lib/errors';
 import { readBoundedJson } from '../../../lib/persistedJson';
