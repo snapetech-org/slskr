@@ -51,6 +51,28 @@ describe('ExperienceSettings', () => {
     ).toBeInTheDocument();
   });
 
+  it('keeps the regional selector in sync with changes from another tab', () => {
+    render(<ExperienceSettings />);
+
+    localStorage.setItem(storageKey, JSON.stringify({ regionalFormat: 'de' }));
+    fireEvent(
+      window,
+      new StorageEvent('storage', {
+        key: storageKey,
+        newValue: JSON.stringify({ regionalFormat: 'de' }),
+      }),
+    );
+
+    expect(screen.getByRole('combobox', { name: 'Regional format' })).toHaveTextContent(
+      'Deutsch — German',
+    );
+
+    fireEvent.click(screen.getByLabelText('Enable search duplicate folding preference'));
+    fireEvent.click(screen.getByRole('button', { name: 'Save Local Preferences' }));
+
+    expect(JSON.parse(localStorage.getItem(storageKey)).regionalFormat).toBe('de');
+  });
+
   it('copies a preference report', () => {
     render(<ExperienceSettings />);
 

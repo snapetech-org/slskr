@@ -7,6 +7,7 @@ import {
 import {
   EXPERIENCE_PREFERENCES_STORAGE_KEY,
   setRegionalFormatPreference,
+  useRegionalFormat,
 } from '../../../lib/util';
 import { copyToClipboard } from '../../../lib/clipboard';
 import { toDisplayError } from '../../../lib/errors';
@@ -167,11 +168,16 @@ const ExperienceSettings = () => {
   const [form, setForm] = useState(defaults);
   const [message, setMessage] = useState(null);
   const mountedRef = useMountedRef();
+  const regionalFormat = useRegionalFormat();
   const { language, setLanguage, t } = useInterfaceLanguage();
 
   useEffect(() => {
     setForm(readStoredPreferences());
   }, []);
+
+  useEffect(() => {
+    setForm((current) => ({ ...current, regionalFormat }));
+  }, [regionalFormat]);
 
   const update = (key, value) => {
     setForm((current) => ({ ...current, [key]: value }));
@@ -249,7 +255,7 @@ const ExperienceSettings = () => {
         <Card fluid>
           <Card.Content>
             <Card.Header><Icon name="language" /> <span dir={language === 'ar' ? 'rtl' : 'ltr'} lang={language}>{t('Interface language')}</span></Card.Header>
-            <Card.Meta dir={language === 'ar' ? 'rtl' : 'ltr'} lang={language}>{t('Choose the language used for the interface.')} {t('Translations currently cover navigation and language settings; most other screens are still in English.')}</Card.Meta>
+            <Card.Meta dir={language === 'ar' ? 'rtl' : 'ltr'} lang={language}>{t('Choose the language used for the interface.')} {t('Translations cover navigation, preferences, and transfer labels; other screens use English.')}</Card.Meta>
           </Card.Content>
           <Card.Content>
             <Form>

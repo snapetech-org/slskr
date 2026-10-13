@@ -19,7 +19,16 @@ export const INTERFACE_LANGUAGE_OPTIONS = [
 
 const STORAGE_KEY = 'slskr.interface-language';
 const supportedLanguages = new Set(INTERFACE_LANGUAGE_OPTIONS.map((option) => option.value));
+// Catalog arrays follow this order: INTERFACE_LANGUAGE_OPTIONS without English.
+const translatedLanguages = new Map(
+  INTERFACE_LANGUAGE_OPTIONS.slice(1).map(({ value }, index) => [value, index]),
+);
 const listeners = new Set();
+
+const translationFor = (source, language) => {
+  const index = translatedLanguages.get(language);
+  return index === undefined ? undefined : UI_LABELS[source]?.[index];
+};
 
 const browserLanguage = () => {
   if (typeof navigator === 'undefined') return 'en';
@@ -45,8 +54,8 @@ const readLanguage = () => {
 
 const applyDocumentLanguage = () => {
   if (typeof document === 'undefined') return;
-  // Most shipped screens are English. Translated navigation and preference
-  // labels carry their own lang and direction metadata.
+  // Most screens remain English. Translated navigation, preference, and
+  // transfer labels carry their own language and direction metadata.
   document.documentElement.lang = 'en';
   document.documentElement.dir = 'ltr';
 };
@@ -95,6 +104,8 @@ export const useInterfaceLanguage = () => {
     () => activeLanguage,
     () => 'en',
   );
-  const t = (source) => language === 'en' ? source : UI_LABELS[source]?.[language] || source;
-  return { language, setLanguage: setInterfaceLanguage, t };
+  const t = (source) => translationFor(source, language) || source;
+  const languageFor = (source) => translationFor(source, language) ? language : 'en';
+  const directionFor = (source) => languageFor(source) === 'ar' ? 'rtl' : 'ltr';
+  return { language, setLanguage: setInterfaceLanguage, t, languageFor, directionFor };
 };

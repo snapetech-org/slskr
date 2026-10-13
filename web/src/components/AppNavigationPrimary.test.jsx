@@ -1,7 +1,11 @@
 import '@testing-library/jest-dom';
 import AppNavigationPrimary from './AppNavigationPrimary';
 import UI_LABELS from '../lib/ui-labels.json';
-import { resetInterfaceLanguage, setInterfaceLanguage } from '../lib/interfaceLocale';
+import {
+  INTERFACE_LANGUAGE_OPTIONS,
+  resetInterfaceLanguage,
+  setInterfaceLanguage,
+} from '../lib/interfaceLocale';
 import { cleanup, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import React from 'react';
@@ -15,6 +19,9 @@ afterEach(() => {
 describe('primary navigation language metadata', () => {
   it('keeps Arabic direction and language scoped to the translated navigation', () => {
     setInterfaceLanguage('ar');
+    const arabicIndex = INTERFACE_LANGUAGE_OPTIONS.slice(1).findIndex(
+      ({ value }) => value === 'ar',
+    );
 
     render(
       <MemoryRouter>
@@ -29,11 +36,11 @@ describe('primary navigation language metadata', () => {
     );
 
     const navigation = screen.getByRole('navigation', {
-      name: UI_LABELS['Primary navigation'].ar,
+      name: UI_LABELS['Primary navigation'][arabicIndex],
     });
     expect(navigation).toHaveAttribute('lang', 'ar');
     expect(navigation).toHaveAttribute('dir', 'rtl');
-    expect(screen.getByText(UI_LABELS.Search.ar)).toBeInTheDocument();
+    expect(screen.getByText(UI_LABELS.Search[arabicIndex])).toBeInTheDocument();
     expect(document.documentElement.lang).toBe('en');
     expect(document.documentElement.dir).toBe('ltr');
   });

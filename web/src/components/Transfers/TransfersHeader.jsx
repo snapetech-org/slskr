@@ -79,8 +79,10 @@ const TransfersHeader = ({
   server = { isConnected: true },
   transfers,
 }) => {
-  const { language, t } = useInterfaceLanguage();
-  const localizedText = (value) => <span lang={language} dir={language === 'ar' ? 'rtl' : 'ltr'}>{value}</span>;
+  const { t, languageFor, directionFor } = useInterfaceLanguage();
+  const localizedText = (source, text = t(source)) => (
+    <span lang={languageFor(source)} dir={directionFor(source)}>{text}</span>
+  );
   const [removeOption, setRemoveOption] = useState('Succeeded');
   const [cancelOption, setCancelOption] = useState('All');
   const [retryOption, setRetryOption] = useState('Errored');
@@ -129,12 +131,15 @@ const TransfersHeader = ({
           onChange={(_, data) => setRetryOption(data.value)}
           onClick={() => onRetryAll(getRetryableFiles({ files, retryOption }))}
           options={[
-            { key: 'errored', text: localizedText(t('Errored')), value: 'Errored' },
-            { key: 'cancelled', text: localizedText(t('Cancelled')), value: 'Cancelled' },
-            { key: 'all', text: localizedText(t('All')), value: 'All' },
+            { key: 'errored', text: localizedText('Errored'), value: 'Errored' },
+            { key: 'cancelled', text: localizedText('Cancelled'), value: 'Cancelled' },
+            { key: 'all', text: localizedText('All'), value: 'All' },
           ]}
         >
-          {localizedText(`${t('Retry')} ${retryOption === 'All' ? t('All') : `${t('All')} ${t(retryOption)}`}`)}
+          {localizedText(
+            'Retry',
+            `${t('Retry')} ${retryOption === 'All' ? t('All') : `${t('All')} ${t(retryOption)}`}`,
+          )}
         </ShrinkableDropdownButton>
         <Nbsp />
         <ShrinkableDropdownButton
@@ -149,12 +154,15 @@ const TransfersHeader = ({
             onCancelAll(getCancellableFiles({ cancelOption, files }))
           }
           options={[
-            { key: 'all', text: 'All', value: 'All' },
-            { key: 'queued', text: localizedText(t('Queued')), value: 'Queued' },
-            { key: 'inProgress', text: localizedText(t('In Progress')), value: 'In Progress' },
+            { key: 'all', text: localizedText('All'), value: 'All' },
+            { key: 'queued', text: localizedText('Queued'), value: 'Queued' },
+            { key: 'inProgress', text: localizedText('In Progress'), value: 'In Progress' },
           ]}
         >
-          {localizedText(`${t('Cancel')} ${cancelOption === 'All' ? t('All') : `${t('All')} ${t(cancelOption)}`}`)}
+          {localizedText(
+            'Cancel',
+            `${t('Cancel')} ${cancelOption === 'All' ? t('All') : `${t('All')} ${t(cancelOption)}`}`,
+          )}
         </ShrinkableDropdownButton>
         <Nbsp />
         <ShrinkableDropdownButton
@@ -172,13 +180,13 @@ const TransfersHeader = ({
             )
           }
           options={[
-            { key: 'succeeded', text: localizedText(t('Succeeded')), value: 'Succeeded' },
-            { key: 'errored', text: 'Errored', value: 'Errored' },
-            { key: 'cancelled', text: 'Cancelled', value: 'Cancelled' },
-            { key: 'completed', text: localizedText(t('Completed')), value: 'Completed' },
+            { key: 'succeeded', text: localizedText('Succeeded'), value: 'Succeeded' },
+            { key: 'errored', text: localizedText('Errored'), value: 'Errored' },
+            { key: 'cancelled', text: localizedText('Cancelled'), value: 'Cancelled' },
+            { key: 'completed', text: localizedText('Completed'), value: 'Completed' },
           ]}
         >
-          {localizedText(`${t('Remove')} ${t('All')} ${t(removeOption)}`)}
+          {localizedText('Remove', `${t('Remove')} ${t('All')} ${t(removeOption)}`)}
         </ShrinkableDropdownButton>
         <Nbsp />
         <Popup
@@ -194,7 +202,7 @@ const TransfersHeader = ({
                 Boolean(modeStatusError)
               }
               hidden={direction === 'upload'}
-              label={localizedText(t('Accelerated'))}
+              label={localizedText('Accelerated')}
               onChange={(_, data) => onAcceleratedChange?.(data.checked)}
               toggle
             />
@@ -214,7 +222,7 @@ const TransfersHeader = ({
                 Boolean(modeStatusError)
               }
               hidden={direction === 'upload'}
-              label={localizedText(t('Auto-Replace'))}
+              label={localizedText('Auto-Replace')}
               onChange={(_, data) => onAutoReplaceChange?.(data.checked)}
               toggle
             />

@@ -21,6 +21,7 @@ const getTransferStatusLabel = (state = '') => ({
   'Completed, Cancelled': 'Cancelled',
   'Completed, TimedOut': 'Failed',
   'Completed, Rejected': 'Failed',
+  'Completed, Aborted': 'Failed',
 }[state] || state);
 
 const TransferStatus = ({ state, placeInQueue }) => {
