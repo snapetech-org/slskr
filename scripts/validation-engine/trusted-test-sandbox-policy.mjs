@@ -87,11 +87,11 @@ const sensitiveCredentialName =
 const sensitiveCredentialConfigFile =
   /^[.]?(?:auth(?:entication)?|tokens?|credentials?|secrets?|private[-_]?keys?|api[-_]?keys?|access[-_]?tokens?|refresh[-_]?tokens?|client[-_]?secrets?)[.](?:json|ya?ml|toml|ini|cfg|conf|env(?:[.](?!example$)[^/]+)?|properties|xml|txt)$/iu;
 const sensitiveCredentialMaterialFile =
-  /(?:^|[._-])(?:private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)(?=$|[._-])/iu;
+  /(?:^|[._-])(?:private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)(?=$|[._-])|^[^/]+[._-](?:auth(?:entication)?|tokens?|credentials?|secrets?)(?=$|[._-])/iu;
 const camelCaseCredentialMaterialFile =
-  /(?<=[a-z0-9])(?:PrivateKeys?|privateKeys?|ApiKeys?|APIKeys?|AccessTokens?|RefreshTokens?|ClientSecrets?)(?=$|[._-])/u;
+  /(?:(?<=[a-z0-9])(?:PrivateKeys?|privateKeys?|ApiKeys?|APIKeys?|AccessTokens?|RefreshTokens?|ClientSecrets?)|[a-z][a-z0-9]{3,}(?:Auth(?:entication)?|Tokens?|Credentials?|Secrets?))(?=$|[._-])/iu;
 const qualifiedCredentialDirectoryName =
-  /(?:^|[._-])(?:auth(?:entication)?|tokens?|credentials?|secrets?|private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)(?=$|[._-])/iu;
+  /^[^/]+[._-](?:auth(?:entication)?|tokens?|credentials?|secrets?|private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)$/iu;
 const sourceTreeDirectory =
   /^(?:src|source|packages|apps|web|dashboard|client-go|client-python|client-ts|crates|scripts|lib|tests?|__tests__|fixtures?)$/iu;
 const knownApiKeysPage = 'dashboard/src/pages/ApiKeys.tsx';

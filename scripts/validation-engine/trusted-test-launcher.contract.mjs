@@ -93,12 +93,16 @@ test('preserves tracked source files named token while excluding credential conf
   assert.equal(isSensitiveCandidatePath('refresh_token.yaml'), true);
   assert.equal(isSensitiveCandidatePath('client-secret.ts'), true);
   assert.equal(isSensitiveCandidatePath('production-api-key.json'), true);
+  assert.equal(isSensitiveCandidatePath('production-token.json'), true);
+  assert.equal(isSensitiveCandidatePath('github-secrets.yaml'), true);
+  assert.equal(isSensitiveCandidatePath('acme-credentials.toml'), true);
   assert.equal(isSensitiveCandidatePath('api.key.json'), true);
   assert.equal(isSensitiveCandidatePath('production.private.key.json'), true);
   assert.equal(isSensitiveCandidatePath('github.access.token.ts'), true);
   assert.equal(isSensitiveCandidatePath('src/apiKey.ts'), true);
   assert.equal(isSensitiveCandidatePath('src/apiKeys.js'), true);
   assert.equal(isSensitiveCandidatePath('src/productionApiKey.ts'), true);
+  assert.equal(isSensitiveCandidatePath('src/productionToken.ts'), true);
   assert.equal(isSensitiveCandidatePath('src/productionPrivateKey.ts'), true);
   assert.equal(isSensitiveCandidatePath('githubAccessToken.js'), true);
   assert.equal(isSensitiveCandidatePath('productionAPIKey.ts'), true);
@@ -114,6 +118,9 @@ test('preserves tracked source files named token while excluding credential conf
   assert.equal(isSensitiveCandidatePath('web/src/lib/ApiKeys.tsx'), true);
   assert.equal(isSensitiveCandidatePath('ops/production-secrets/value.json'), true);
   assert.equal(isSensitiveCandidatePath('ops/github-tokens/value.json'), true);
+  assert.equal(isSensitiveCandidatePath('auth-service/src/index.js'), false);
+  assert.equal(isSensitiveCandidatePath('token-parser/src/index.js'), false);
+  assert.equal(isSensitiveCandidatePath('secrets-manager/src/index.js'), false);
   assert.equal(isSensitiveCandidatePath('src/production-secrets/schema.ts'), false);
   assert.equal(isSensitiveCandidatePath('packages/auth/package.json'), false);
   assert.equal(isSensitiveCandidatePath('src/tokens/schema.json'), false);
@@ -189,6 +196,9 @@ test(
     mkdirSync(path.join(source, 'ops/secrets'), { recursive: true });
     mkdirSync(path.join(source, 'ops/production-secrets'), { recursive: true });
     mkdirSync(path.join(source, 'ops/github-tokens'), { recursive: true });
+    mkdirSync(path.join(source, 'auth-service/src'), { recursive: true });
+    mkdirSync(path.join(source, 'token-parser/src'), { recursive: true });
+    mkdirSync(path.join(source, 'secrets-manager/src'), { recursive: true });
     mkdirSync(path.join(source, 'src/production-secrets'), { recursive: true });
     mkdirSync(path.join(source, 'client-go/auth'), { recursive: true });
     mkdirSync(path.join(source, 'client-python/auth'), { recursive: true });
@@ -220,6 +230,7 @@ test(
     writeFileSync(path.join(source, 'src/apiKeys.js'), 'export const API_KEYS_CANARY = "hidden";\n');
     writeFileSync(path.join(source, 'src/productionApiKey.ts'), 'export const API_KEY_CANARY = "hidden";\n');
     writeFileSync(path.join(source, 'src/productionPrivateKey.ts'), 'export const PRIVATE_KEY_CANARY = "hidden";\n');
+    writeFileSync(path.join(source, 'src/productionToken.ts'), 'export const TOKEN_CANARY = "hidden";\n');
     writeFileSync(path.join(source, 'githubAccessToken.js'), 'export const TOKEN_CANARY = "hidden";\n');
     writeFileSync(path.join(source, 'productionAPIKey.ts'), 'export const API_KEY_CANARY = "hidden";\n');
     writeFileSync(path.join(source, 'api.key.json'), '{"api_key":"hidden"}');
@@ -231,6 +242,12 @@ test(
     writeFileSync(path.join(source, '.gitignore'), 'node_modules/\n');
     writeFileSync(path.join(source, '.env'), 'PRIVATE_ENV_CANARY=hidden\n');
     writeFileSync(path.join(source, 'production-api-key.json'), '{"api_key":"hidden"}');
+    writeFileSync(path.join(source, 'production-token.json'), '{"token":"hidden"}');
+    writeFileSync(path.join(source, 'github-secrets.yaml'), 'token: hidden\n');
+    writeFileSync(path.join(source, 'acme-credentials.toml'), 'token="hidden"\n');
+    writeFileSync(path.join(source, 'auth-service/src/index.js'), 'export const service = true;\n');
+    writeFileSync(path.join(source, 'token-parser/src/index.js'), 'export const parser = true;\n');
+    writeFileSync(path.join(source, 'secrets-manager/src/index.js'), 'export const manager = true;\n');
     writeFileSync(path.join(source, 'config.json'), '{"private":true}\n');
     writeFileSync(
       path.join(source, 'nested/.env.local'),
@@ -344,6 +361,10 @@ assert.equal(existsSync('/mnt/workspace/src/apiKey.ts'), false);
 assert.equal(existsSync('/mnt/workspace/src/apiKeys.js'), false);
 assert.equal(existsSync('/mnt/workspace/src/productionApiKey.ts'), false);
 assert.equal(existsSync('/mnt/workspace/src/productionPrivateKey.ts'), false);
+assert.equal(existsSync('/mnt/workspace/src/productionToken.ts'), false);
+assert.equal(existsSync('/mnt/workspace/production-token.json'), false);
+assert.equal(existsSync('/mnt/workspace/github-secrets.yaml'), false);
+assert.equal(existsSync('/mnt/workspace/acme-credentials.toml'), false);
 assert.equal(existsSync('/mnt/workspace/githubAccessToken.js'), false);
 assert.equal(existsSync('/mnt/workspace/productionAPIKey.ts'), false);
 assert.equal(existsSync('/mnt/workspace/api.key.json'), false);
@@ -353,6 +374,9 @@ assert.equal(readFileSync('/mnt/workspace/src/mytoken.ts', 'utf8'), 'export cons
 assert.equal(readFileSync('/mnt/workspace/src/myToken.ts', 'utf8'), 'export const myToken = "ordinary source";');
 assert.equal(existsSync('/mnt/workspace/ops/production-secrets/value.json'), false);
 assert.equal(existsSync('/mnt/workspace/ops/github-tokens/value.json'), false);
+assert.match(readFileSync('/mnt/workspace/auth-service/src/index.js', 'utf8'), /service/u);
+assert.match(readFileSync('/mnt/workspace/token-parser/src/index.js', 'utf8'), /parser/u);
+assert.match(readFileSync('/mnt/workspace/secrets-manager/src/index.js', 'utf8'), /manager/u);
 assert.equal(readFileSync('/mnt/workspace/src/production-secrets/schema.ts', 'utf8'), 'export const schema = "source asset";');
 assert.equal(existsSync('/mnt/workspace/dashboard/src/pages/apiKeys.tsx'), false);
 assert.equal(existsSync('/mnt/workspace/dashboard/src/pages/ApiKeys.jsx'), false);
