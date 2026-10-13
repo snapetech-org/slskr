@@ -57,6 +57,14 @@ for (const file of requiredFiles) {
   }
 }
 
+const localeCodes = ['es', 'zh-Hans', 'hi', 'de', 'ja', 'fr', 'pt-BR', 'ar', 'ko', 'zh-Hant', 'vi', 'id'];
+for (const locale of localeCodes) {
+  const prefix = 'ui-labels.' + locale + '-';
+  if (!fs.readdirSync(path.join(buildDir, 'assets')).some((file) => file.startsWith(prefix) && file.endsWith('.json'))) {
+    fail('Built web output is missing the ' + locale + ' interface catalog asset');
+  }
+}
+
 const assetDir = path.join(buildDir, 'assets');
 if (!fs.existsSync(assetDir) || !fs.statSync(assetDir).isDirectory()) {
   fail('Built web output is missing the assets directory');

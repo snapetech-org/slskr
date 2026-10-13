@@ -37,7 +37,7 @@ Translate interface labels, help, empty states, validation, notifications, and e
 
 ## Implemented in this PR
 
-System > Experience Preferences offers a browser-local interface-language selector for twelve first-wave locales. The shipped Web UI now localizes 3,852 source strings across browsing, search, chat, rooms, collections, player, wishlist, transfers, and system screens, including app-owned statuses, messages, and accessibility labels. The catalog audit covered 46,224 locale cells with no missing translations or placeholder mismatches. Media and user-provided content, paths, and raw API/protocol values remain unchanged.
+System > Experience Preferences offers a browser-local interface-language selector for twelve first-wave locales. The shipped Web UI now localizes 3,850 source strings across browsing, search, chat, rooms, collections, player, wishlist, transfers, and system screens, including app-owned statuses, messages, and accessibility labels. The catalog audit covered 46,200 locale cells with no missing translations or placeholder mismatches. Locale JSON is fetched on demand, and startup waits for the selected or browser-detected catalog. Media and user-provided content, paths, and raw API/protocol values remain unchanged.
 
 The regional-format preference also localizes digits in track durations and audio quality values, alongside the existing dates, counts, transfer sizes, and metric/network values. Arabic strings carry local language and direction metadata.
 
