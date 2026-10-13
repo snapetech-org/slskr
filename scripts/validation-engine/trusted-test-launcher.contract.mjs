@@ -92,6 +92,10 @@ test('preserves tracked source files named token while excluding credential conf
   assert.equal(isSensitiveCandidatePath('access-token.json'), true);
   assert.equal(isSensitiveCandidatePath('refresh_token.yaml'), true);
   assert.equal(isSensitiveCandidatePath('client-secret.ts'), true);
+  assert.equal(isSensitiveCandidatePath('production-api-key.json'), true);
+  assert.equal(isSensitiveCandidatePath('src/github-access-token.ts'), true);
+  assert.equal(isSensitiveCandidatePath('ops/acme-client-secret.env'), true);
+  assert.equal(isSensitiveCandidatePath('src/mytoken.ts'), false);
   assert.equal(isSensitiveCandidatePath('src/tokens/index.ts'), false);
   assert.equal(isSensitiveCandidatePath('nested/credentials/TokenStore.ts'), true);
   assert.equal(isSensitiveCandidatePath('dashboard/src/pages/ApiKeys.tsx'), false);
