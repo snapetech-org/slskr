@@ -7,8 +7,8 @@ The shipped browser UI is the React application under `web/`. Its reachable bran
 ## Implementation plan
 
 1. Localize the shipped `web/` application only. Inventory labels, forms, errors, notifications, empty states, and accessibility names; keep the non-shipped dashboard, generated clients, Soulseek usernames, room names, artists, and filenames out of that extraction.
-2. Add `i18next` with `react-i18next` and ICU plural support, a central English catalog, English fallback, and a check for missing keys and placeholder parity.
-3. Add Display Language to the existing System > Experience settings area. Apply it immediately and save it with the current user's UI preferences, not in a daemon-wide language setting.
+2. Extend the compact shell catalog with screen-sized batches and English per-key fallback. Add a full message framework when dynamic errors or plural rules make it useful, with missing-key and placeholder checks.
+3. Add Display Language to the existing System > Experience settings area. Apply it immediately and save it in this browser rather than in daemon-wide settings.
 4. Format dates, counts, and relative times with the selected locale. Keep API and protocol values stable; the backend should return error codes or structured data rather than strings already localized for one browser.
 5. Add locales in the ranked order below. Arabic requires document `lang`/ `dir`, logical CSS properties, and RTL review of search, transfers, chat, settings, and dialogs.
 
@@ -37,4 +37,4 @@ Translate interface labels, help, empty states, validation, notifications, and e
 
 ## Implemented in this PR
 
-System > Experience Preferences now includes a browser-local regional format selector for dates, times, and numbers, covering Spanish, Simplified Chinese, Hindi, German, Japanese, French, Brazilian Portuguese, Arabic, Korean, Traditional Chinese, Vietnamese, and Indonesian. Existing locale-aware date and number output uses that preference. Interface translations and RTL layout remain in the planned catalog rollout.
+System > Experience Preferences now offers a browser-local interface-language selector for twelve locales. Primary navigation and its accessibility labels use translated strings with per-key English fallback. Other screens remain in English; Arabic document direction is set, but full RTL layout review remains in the roadmap.
