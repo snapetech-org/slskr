@@ -1,4 +1,3 @@
-import LocalizedText from "../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import React from 'react';
 import { Button, Icon, Popup } from 'semantic-ui-react';
@@ -170,7 +169,7 @@ const VisualizerOverlayControls = ({
                       onChange={selectNativePlaylist}
                       value={activeNativePlaylistId}
                      {...interfaceTextProps("RustyMilk playlist")}>
-                      <option value=""><LocalizedText source={"All imported"} /></option>
+                      <option value="">{interfaceText("All imported")}</option>
                       {rustyMilkPresetPlaylists.map((playlist) => (
                         <option key={playlist.id} value={playlist.id}>
                           {playlist.name}
@@ -261,13 +260,13 @@ const VisualizerOverlayControls = ({
                       value={selectedRustyMilkPresetValue}
                      {...interfaceTextProps("RustyMilk preset library")}>
                       <option value="">
-                        {visibleRustyMilkPresetLibrary.length === 0 ? <LocalizedText source={"No matches"} /> : (
+                        {visibleRustyMilkPresetLibrary.length === 0 ? interfaceText("No matches") : (
                           rustyMilkLibraryMode === 'favorites' ? 'Favorites' : 'Presets'
                         )}
                       </option>
                       {visibleRustyMilkPresetLibrary.map((preset) => (
                         <option key={preset.id} value={preset.id}>
-                          {rustyMilkFavoritePresetIds.includes(preset.id) ? <LocalizedText source={"(favorite)"} /> : ''}
+                          {rustyMilkFavoritePresetIds.includes(preset.id) ? `${interfaceText("(favorite)")} ` : ''}
                           {preset.title || preset.fileName}
                         </option>
                       ))}
@@ -509,10 +508,10 @@ const VisualizerOverlayControls = ({
                     onChange={updateNativeFpsCap}
                     value={nativeFpsCap}
                    {...interfaceTextProps("RustyMilk FPS cap")}>
-                    <option value="full"><LocalizedText source={"Full FPS"} /></option>
-                    <option value="60"><LocalizedText source={"60 FPS"} /></option>
-                    <option value="30"><LocalizedText source={"30 FPS"} /></option>
-                    <option value="24"><LocalizedText source={"24 FPS"} /></option>
+                    <option value="full">{interfaceText("Full FPS")}</option>
+                    <option value="60">{interfaceText("60 FPS")}</option>
+                    <option value="30">{interfaceText("30 FPS")}</option>
+                    <option value="24">{interfaceText("24 FPS")}</option>
                   </select>
                 }
                {...interfaceTextProps("Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.")}/>
@@ -526,10 +525,10 @@ const VisualizerOverlayControls = ({
                     onChange={updateNativeQualityPreset}
                     value={nativeQualityPreset}
                    {...interfaceTextProps("RustyMilk quality preset")}>
-                    <option value="balanced"><LocalizedText source={"Balanced"} /></option>
-                    <option value="efficient"><LocalizedText source={"Efficient"} /></option>
-                    <option value="full"><LocalizedText source={"Full"} /></option>
-                    <option value="custom"><LocalizedText source={"Custom"} /></option>
+                    <option value="balanced">{interfaceText("Balanced")}</option>
+                    <option value="efficient">{interfaceText("Efficient")}</option>
+                    <option value="full">{interfaceText("Full")}</option>
+                    <option value="custom">{interfaceText("Custom")}</option>
                   </select>
                 }
                {...interfaceTextProps("Choose a RustyMilk quality preset. Efficient lowers GPU load, Balanced caps at 60 FPS, and Full leaves rendering uncapped.")}/>
@@ -563,7 +562,7 @@ const VisualizerOverlayControls = ({
                         {shape.label}
                       </option>
                     )) : (
-                      <option value={0}><LocalizedText source={"No shapes"} /></option>
+                      <option value={0}>{interfaceText("No shapes")}</option>
                     )}
                   </select>
                 }
@@ -614,7 +613,7 @@ const VisualizerOverlayControls = ({
                         {wave.label}
                       </option>
                     )) : (
-                      <option value={0}><LocalizedText source={"No waves"} /></option>
+                      <option value={0}>{interfaceText("No waves")}</option>
                     )}
                   </select>
                 }
@@ -675,9 +674,9 @@ const VisualizerOverlayControls = ({
                       onChange={updateRustyMilkAutomationBeats}
                       value={rustyMilkAutomationSettings.beatsPerPreset}
                      {...interfaceTextProps("RustyMilk beats per preset")}>
-                      <option value={4}><LocalizedText source={"4 beats"} /></option>
-                      <option value={8}><LocalizedText source={"8 beats"} /></option>
-                      <option value={16}><LocalizedText source={"16 beats"} /></option>
+                      <option value={4}>{interfaceText("4 beats")}</option>
+                      <option value={8}>{interfaceText("8 beats")}</option>
+                      <option value={16}>{interfaceText("16 beats")}</option>
                     </select>
                   }
                  {...interfaceTextProps("Choose how many detected bass beats should pass before RustyMilk advances to another preset.")}/>
@@ -693,9 +692,9 @@ const VisualizerOverlayControls = ({
                       onChange={updateRustyMilkAutomationInterval}
                       value={rustyMilkAutomationSettings.timedIntervalSeconds}
                      {...interfaceTextProps("RustyMilk timed preset interval")}>
-                      <option value={15}><LocalizedText source={"15 sec"} /></option>
-                      <option value={30}><LocalizedText source={"30 sec"} /></option>
-                      <option value={60}><LocalizedText source={"60 sec"} /></option>
+                    <option value={15}>{interfaceText("15 sec")}</option>
+                    <option value={30}>{interfaceText("30 sec")}</option>
+                    <option value={60}>{interfaceText("60 sec")}</option>
                     </select>
                   }
                  {...interfaceTextProps("Choose how long RustyMilk should wait before timed preset changes.")}/>

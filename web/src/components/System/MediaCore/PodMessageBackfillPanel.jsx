@@ -269,7 +269,10 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
                 Object.keys(lastSeenTimestamps).length > 0 && (
                   <Message size="small">
                     <Message.Header>
-                      <LocalizedText source={"Last Seen Timestamps for Pod"} />{" "}{backfillPodId}
+                      <LocalizedText
+                        source={"Last Seen Timestamps for Pod {podId}"}
+                        values={{ podId: backfillPodId }}
+                      />
                     </Message.Header>
                     <div style={{ maxHeight: '150px', overflowY: 'auto' }}>
                       {Object.entries(lastSeenTimestamps).map(

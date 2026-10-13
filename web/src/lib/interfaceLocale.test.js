@@ -115,7 +115,7 @@ describe('interface language', () => {
       expect(result.current.language).toBe(option.value);
       for (const [source, translations] of Object.entries(UI_LABELS)) {
         const translation = option.value === 'en' ? null : translations[translationIndex];
-        const localizedLanguage = translation ? option.value : 'en';
+        const localizedLanguage = translation && translation !== source ? option.value : 'en';
         expect(result.current.t(source)).toBe(translation || source);
         expect(result.current.languageFor(source)).toBe(localizedLanguage);
         expect(result.current.directionFor(source)).toBe(

@@ -21,7 +21,7 @@
   "Playlist Intake": "播放清單匯入",
   "Contacts": "聯絡人",
   "Collections": "合集",
-  "Solid": "堅硬的",
+  "Solid": "Solid",
   "Lidarr": "Lidarr",
   "Canary": "Canary",
   "Agent Mode": "代理模式",
@@ -4287,5 +4287,8 @@
   "Wanted sync finished. Created: {created}; duplicates: {duplicates}; skipped: {skipped}.": "想要同步完成。建立：{created}；重複：{duplicates}；跳過：{skipped}。",
   "Watching {artist}.": "觀看{artist}。",
   "{imported} rows imported; {skipped} duplicates or incomplete rows skipped.": "導入 {imported} 行； {skipped} 跳過重複或不完整的行。",
-  "{name} launched.": "{name} 推出。"
+  "{name} launched.": "{name} 推出。",
+  "Showing {workflow}": "正在顯示 {workflow}",
+  "Last Seen Timestamps for Pod {podId}": "Pod {podId} 的最後出現時間",
+  "Member Affinities ({count})": "會員親和度（{count}）"
 }

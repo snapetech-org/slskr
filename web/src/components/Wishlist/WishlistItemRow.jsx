@@ -2,7 +2,7 @@ import { formatRegionalDateTime, formatRegionalNumber, useRegionalFormat } from 
 import { getWishlistRequestState } from '../../lib/acquisitionRequests';
 import { encodePathSegment } from '../../lib/pathEncoding';
 import { useMountedFlag } from './wishlistHooks';
-import { useInterfaceLanguage } from '../../lib/interfaceLocale';
+import { interfaceTextProps, useInterfaceLanguage } from '../../lib/interfaceLocale';
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -172,8 +172,14 @@ const WishlistItemRow = ({
           dir={directionFor('Delete')}
         />
         <Confirm
-          cancelButton={localized('Cancel')}
-          confirmButton={localized('Delete')}
+          cancelButton={{
+            ...interfaceTextProps('Cancel'),
+            content: localized('Cancel'),
+          }}
+          confirmButton={{
+            ...interfaceTextProps('Delete'),
+            content: localized('Delete'),
+          }}
           content={localized('Delete wishlist item {search}?', { search: item.searchText })}
           header={localized('Confirm Delete')}
           onCancel={() => setConfirmDelete(false)}

@@ -231,7 +231,10 @@ export const useInterfaceLanguage = () => {
     });
   }, [language, revision]);
   const languageFor = useCallback(
-    (source) => translationFor(source, language) ? language : 'en',
+    (source) => {
+      const translated = translationFor(source, language);
+      return translated && translated !== source ? language : 'en';
+    },
     [language, revision],
   );
   const directionFor = useCallback((source) => languageFor(source) === 'ar' ? 'rtl' : 'ltr', [languageFor]);

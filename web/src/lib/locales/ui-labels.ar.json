@@ -21,7 +21,7 @@
   "Playlist Intake": "استيراد قائمة التشغيل",
   "Contacts": "جهات الاتصال",
   "Collections": "المجموعات",
-  "Solid": "صلب",
+  "Solid": "Solid",
   "Lidarr": "Lidarr",
   "Canary": "Canary",
   "Agent Mode": "وضع الوكيل",
@@ -4287,5 +4287,8 @@
   "Wanted sync finished. Created: {created}; duplicates: {duplicates}; skipped: {skipped}.": "انتهت المزامنة المطلوبة. تم الإنشاء: {created}; التكرارات: {duplicates}؛ تم تخطي: {skipped}.",
   "Watching {artist}.": "جاري المشاهدة {artist}.",
   "{imported} rows imported; {skipped} duplicates or incomplete rows skipped.": "تم استيراد صفوف {imported}؛ {skipped} تم تخطي الصفوف المكررة أو غير المكتملة.",
-  "{name} launched.": "تم إطلاق {name}."
+  "{name} launched.": "تم إطلاق {name}.",
+  "Showing {workflow}": "يتم عرض {workflow}",
+  "Last Seen Timestamps for Pod {podId}": "الطوابع الزمنية لآخر ظهور في Pod {podId}",
+  "Member Affinities ({count})": "ارتباطات الأعضاء ({count})"
 }

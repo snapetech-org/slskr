@@ -192,7 +192,7 @@ const Wishlist = () => {
         requestId === loadRequestIdRef.current
       ) {
         console.error(error);
-        setLoadError(interfaceText('Could not load wishlist.'));
+        setLoadError(toDisplayError(error, interfaceText('Could not load wishlist.')));
         toast.error(interfaceText('Could not load wishlist.'));
       }
     } finally {

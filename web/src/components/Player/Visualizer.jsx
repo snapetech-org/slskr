@@ -775,15 +775,21 @@ const Visualizer = ({
               {nativeDebugSnapshot.format}
               {' · '}
               {nativeDebugSnapshot.presetCount}
+              {' '}
               {<LocalizedText source={"preset"} />}
               {nativeDebugSnapshot.presetCount === 1 ? '' : <LocalizedText source={"s"} />}
             </div>
             <div>
               {nativeDebugSnapshot.shapes}
+              {' '}
               {<LocalizedText source={"shapes ·"} />}
+              {' '}
               {nativeDebugSnapshot.waves}
+              {' '}
               {<LocalizedText source={"waves ·"} />}
+              {' '}
               {nativeDebugSnapshot.sprites}
+              {' '}
               {<LocalizedText source={"sprites"} />}
             </div>
             <div>
@@ -795,6 +801,7 @@ const Visualizer = ({
               {nativeFpsCap === 'full' ? <LocalizedText source={"uncapped"} /> : <LocalizedText source={"{nativeFpsCap} fps"} values={{ "nativeFpsCap": (nativeFpsCap) }} />}
               {' · '}
               {rustyMilkFrameMs.toFixed(1)}
+              {' '}
               {<LocalizedText source={"ms"} />}
             </div>
             <div>

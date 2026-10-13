@@ -21,7 +21,7 @@
   "Playlist Intake": "재생목록 가져오기",
   "Contacts": "연락처",
   "Collections": "컬렉션",
-  "Solid": "단단한",
+  "Solid": "Solid",
   "Lidarr": "Lidarr",
   "Canary": "Canary",
   "Agent Mode": "에이전트 모드",
@@ -4287,5 +4287,8 @@
   "Wanted sync finished. Created: {created}; duplicates: {duplicates}; skipped: {skipped}.": "원하는 동기화가 완료되었습니다. 생성됨: {created}; 중복: {duplicates}; 건너뛰었습니다: {skipped}.",
   "Watching {artist}.": "{artist} 시청 중입니다.",
   "{imported} rows imported; {skipped} duplicates or incomplete rows skipped.": "{imported} 행을 가져왔습니다. {skipped} 중복되거나 불완전한 행을 건너뛰었습니다.",
-  "{name} launched.": "{name} 출시되었습니다."
+  "{name} launched.": "{name} 출시되었습니다.",
+  "Showing {workflow}": "{workflow} 표시 중",
+  "Last Seen Timestamps for Pod {podId}": "Pod {podId}의 마지막 확인 시각",
+  "Member Affinities ({count})": "회원 친밀도 ({count})"
 }

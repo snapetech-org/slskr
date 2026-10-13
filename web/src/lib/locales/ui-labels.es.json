@@ -21,7 +21,7 @@
   "Playlist Intake": "Importación de listas",
   "Contacts": "Contactos",
   "Collections": "Colecciones",
-  "Solid": "Sólido",
+  "Solid": "Solid",
   "Lidarr": "Lidarr",
   "Canary": "Canary",
   "Agent Mode": "Modo de agente",
@@ -4287,5 +4287,8 @@
   "Wanted sync finished. Created: {created}; duplicates: {duplicates}; skipped: {skipped}.": "Sincronización deseada finalizada. Creado: {created}; duplicados: {duplicates}; omitido: {skipped}.",
   "Watching {artist}.": "Viendo {artist}.",
   "{imported} rows imported; {skipped} duplicates or incomplete rows skipped.": "{imported} filas importadas; {skipped} se omitieron duplicados o filas incompletas.",
-  "{name} launched.": "{name} lanzado."
+  "{name} launched.": "{name} lanzado.",
+  "Showing {workflow}": "Mostrando {workflow}",
+  "Last Seen Timestamps for Pod {podId}": "Marcas de tiempo de última presencia del pod {podId}",
+  "Member Affinities ({count})": "Afinidades de miembros ({count})"
 }

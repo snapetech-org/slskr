@@ -241,9 +241,9 @@ const PodChannelManagementPanel = ({ visible = true }) => {
                       }}
                       value={newChannelKind}
                      {...interfaceTextProps("New channel type")}>
-                      <option value="General"><LocalizedText source={"General"} /></option>
-                      <option value="Custom"><LocalizedText source={"Custom"} /></option>
-                      <option value="Bound"><LocalizedText source={"Bound"} /></option>
+                      <option value="General">{interfaceText("General")}</option>
+                      <option value="Custom">{interfaceText("Custom")}</option>
+                      <option value="Bound">{interfaceText("Bound")}</option>
                     </select>
                     <Button
                       color="green"

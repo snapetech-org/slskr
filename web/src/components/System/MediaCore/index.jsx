@@ -197,7 +197,12 @@ const MediaCore = () => {
           >
             <Message.Content>
               <Message.Header><LocalizedText source={"Focused pod workflow"} /></Message.Header>
-              <LocalizedText source={"Showing"} />{" "}{selectedPodWorkflow?.label || 'one pod workflow'}<LocalizedText source={". Choose \"Show all pod workflows\" or use the reset action to return to the complete MediaCore pod surface."} /><div style={{ marginTop: '0.75em' }}>
+              <LocalizedText
+                source={"Showing {workflow}"}
+                values={{ workflow: selectedPodWorkflow?.label || 'one pod workflow' }}
+              />
+              <LocalizedText source={". Choose \"Show all pod workflows\" or use the reset action to return to the complete MediaCore pod surface."} />
+              <div style={{ marginTop: '0.75em' }}>
                 <Button
                   basic
                   onClick={() => setPodWorkflowFilter('all')}

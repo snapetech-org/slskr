@@ -330,9 +330,9 @@ const PodContentLinkingPanel = ({ contentId, setContentId, visible = true }) => 
                       onChange={(e) => setNewPodVisibility(e.target.value)}
                       value={newPodVisibility}
                     >
-                      <option value="Unlisted"><LocalizedText source={"Unlisted"} /></option>
-                      <option value="Listed"><LocalizedText source={"Listed"} /></option>
-                      <option value="Private"><LocalizedText source={"Private"} /></option>
+                      <option value="Unlisted">{interfaceText("Unlisted")}</option>
+                      <option value="Listed">{interfaceText("Listed")}</option>
+                      <option value="Private">{interfaceText("Private")}</option>
                     </select>
                   </div>
 

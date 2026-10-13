@@ -821,7 +821,10 @@ const PodOpinionsPanel = ({ visible = true }) => {
                 Object.keys(memberAffinities).length > 0 && (
                 <div style={{ marginBottom: '1em' }}>
                   <Header size="tiny">
-                    <LocalizedText source={"Member Affinities ("} />{Object.keys(memberAffinities).length})
+                    <LocalizedText
+                      source={"Member Affinities ({count})"}
+                      values={{ count: Object.keys(memberAffinities).length }}
+                    />
                   </Header>
                   {Object.entries(memberAffinities).map(
                     ([peerId, affinity], index) => (

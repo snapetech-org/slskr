@@ -21,7 +21,7 @@
   "Playlist Intake": "Impor daftar putar",
   "Contacts": "Kontak",
   "Collections": "Koleksi",
-  "Solid": "Padat",
+  "Solid": "Solid",
   "Lidarr": "Lidarr",
   "Canary": "Canary",
   "Agent Mode": "Mode agen",
@@ -4287,5 +4287,8 @@
   "Wanted sync finished. Created: {created}; duplicates: {duplicates}; skipped: {skipped}.": "Sinkronisasi yang diinginkan selesai. Dibuat: {created}; duplikat: {duplicates}; dilewati: {skipped}.",
   "Watching {artist}.": "Menonton {artist}.",
   "{imported} rows imported; {skipped} duplicates or incomplete rows skipped.": "{imported} baris diimpor; {skipped} duplikat atau baris tidak lengkap dilewati.",
-  "{name} launched.": "{name} diluncurkan."
+  "{name} launched.": "{name} diluncurkan.",
+  "Showing {workflow}": "Menampilkan {workflow}",
+  "Last Seen Timestamps for Pod {podId}": "Stempel waktu terakhir terlihat untuk Pod {podId}",
+  "Member Affinities ({count})": "Afinitas Anggota ({count})"
 }

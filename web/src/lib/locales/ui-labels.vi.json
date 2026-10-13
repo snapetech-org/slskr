@@ -21,7 +21,7 @@
   "Playlist Intake": "Nhập danh sách phát",
   "Contacts": "Liên hệ",
   "Collections": "Bộ sưu tập",
-  "Solid": "Chất rắn",
+  "Solid": "Solid",
   "Lidarr": "Lidarr",
   "Canary": "Canary",
   "Agent Mode": "Chế độ tác nhân",
@@ -4287,5 +4287,8 @@
   "Wanted sync finished. Created: {created}; duplicates: {duplicates}; skipped: {skipped}.": "Đồng bộ hóa mong muốn đã hoàn tất. Đã tạo: {created}; trùng lặp: {duplicates}; đã bỏ qua: {skipped}.",
   "Watching {artist}.": "Đang xem {artist}.",
   "{imported} rows imported; {skipped} duplicates or incomplete rows skipped.": "{imported} hàng đã được nhập; {skipped} các hàng trùng lặp hoặc không đầy đủ bị bỏ qua.",
-  "{name} launched.": "{name} đã ra mắt."
+  "{name} launched.": "{name} đã ra mắt.",
+  "Showing {workflow}": "Đang hiển thị {workflow}",
+  "Last Seen Timestamps for Pod {podId}": "Dấu thời gian xuất hiện gần nhất của Pod {podId}",
+  "Member Affinities ({count})": "Mức độ gắn kết của thành viên ({count})"
 }

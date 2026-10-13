@@ -30,6 +30,7 @@ import {
 } from '../../../lib/storage';
 import { getAllNotes } from '../../../lib/userNotes';
 import { getDirectoryName, sleep, formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
+import { toDisplayError } from '../../../lib/errors';
 import * as wishlistAPI from '../../../lib/wishlist';
 import ErrorSegment from '../../Shared/ErrorSegment';
 import LoaderSegment from '../../Shared/LoaderSegment';
@@ -347,7 +348,7 @@ const SearchDetail = ({
       } catch (getError) {
         if (!cancelled) {
           console.error(getError);
-          setError(t('Could not load search results. Try again later.'));
+          setError(toDisplayError(getError, 'Could not load search results. Try again later.'));
           setLoading(false);
         }
       }
@@ -689,14 +690,14 @@ const SearchDetail = ({
   const loaded = !removing && !creating && !loading && results !== null;
 
   if (error && results === null) {
-    return <ErrorSegment caption={t('Could not load search results. Try again later.')} />;
+    return <ErrorSegment caption={toDisplayError(error, t('Could not load search results. Try again later.'))} />;
   }
 
   return (
     <>
       {error && (
         <div data-testid="search-results-load-error">
-          <ErrorSegment caption={t('Could not load search results. Try again later.')} />
+          <ErrorSegment caption={toDisplayError(error, t('Could not load search results. Try again later.'))} />
         </div>
       )}
       <SearchDetailHeader
@@ -820,8 +821,14 @@ const SearchDetail = ({
             />
           ))}
         <Confirm
-          cancelButton={localized('Keep Result')}
-          confirmButton={localized('Ignore Folder')}
+          cancelButton={{
+            ...interfaceTextProps('Keep Result'),
+            content: localized('Keep Result'),
+          }}
+          confirmButton={{
+            ...interfaceTextProps('Ignore Folder'),
+            content: localized('Ignore Folder'),
+          }}
           content={ignoreRequest
             ? localized('Hide “{directory}” from {username} in every future run of this wishlist item? Other results from this user will remain visible.', {
               directory: ignoreRequest.directory,

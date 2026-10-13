@@ -21,7 +21,7 @@
   "Playlist Intake": "プレイリスト取り込み",
   "Contacts": "連絡先",
   "Collections": "コレクション",
-  "Solid": "固体",
+  "Solid": "Solid",
   "Lidarr": "Lidarr",
   "Canary": "Canary",
   "Agent Mode": "エージェントモード",
@@ -4287,5 +4287,8 @@
   "Wanted sync finished. Created: {created}; duplicates: {duplicates}; skipped: {skipped}.": "必要な同期が完了しました。作成日: {created};重複: {duplicates};スキップされました: {skipped}。",
   "Watching {artist}.": "{artist} を見ています。",
   "{imported} rows imported; {skipped} duplicates or incomplete rows skipped.": "{imported} 行がインポートされました。 {skipped} 重複行または不完全な行はスキップされました。",
-  "{name} launched.": "{name} が発売されました。"
+  "{name} launched.": "{name} が発売されました。",
+  "Showing {workflow}": "{workflow} を表示しています",
+  "Last Seen Timestamps for Pod {podId}": "Pod {podId} の最終確認タイムスタンプ",
+  "Member Affinities ({count})": "メンバーの親和性（{count}）"
 }
