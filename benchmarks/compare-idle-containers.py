@@ -133,22 +133,32 @@ def process_memory(container: str) -> dict[str, Any]:
     pids = [int(line.strip()) for line in output.splitlines()[1:] if line.strip().isdigit()]
     rss_kib = 0
     pss_kib = 0
+    rss_complete = True
     pss_complete = True
     for pid in pids:
         status = Path(f"/proc/{pid}/status")
         try:
-            for line in status.read_text().splitlines():
-                if line.startswith("VmRSS:"):
-                    rss_kib += int(line.split()[1])
-                    break
+            status_lines = status.read_text().splitlines()
+            rss_line = next(
+                (line for line in status_lines if line.startswith("VmRSS:")),
+                None,
+            )
+            if rss_line is None:
+                rss_complete = False
+            else:
+                rss_kib += int(rss_line.split()[1])
+        except (OSError, ValueError):
+            rss_complete = False
+        try:
             rollup = Path(f"/proc/{pid}/smaps_rollup").read_text()
             pss_line = next(line for line in rollup.splitlines() if line.startswith("Pss:"))
             pss_kib += int(pss_line.split()[1])
-        except (FileNotFoundError, PermissionError, StopIteration, ValueError):
+        except (OSError, StopIteration, ValueError):
             pss_complete = False
     return {
         "process_count": len(pids),
-        "rss_kib_sum": rss_kib,
+        "rss_kib_sum": rss_kib if rss_complete else None,
+        "rss_complete": rss_complete,
         "pss_kib_sum": pss_kib if pss_complete else None,
         "pss_complete": pss_complete,
     }
@@ -189,6 +199,12 @@ def image_info(image: str) -> dict[str, Any]:
         "repo_digests": value.get("RepoDigests", []),
         "platform": f"{value.get('Os')}/{value.get('Architecture')}",
     }
+
+
+def prepare_image_metadata(profiles: list[str]) -> dict[str, Any]:
+    for image in dict.fromkeys(IMAGES[app] for app in profiles):
+        docker("pull", image)
+    return {app: image_info(IMAGES[app]) for app in profiles}
 
 
 def share_scan_disabled_for_profile(app: str, live_session: bool) -> bool:
@@ -715,7 +731,7 @@ def main() -> int:
             "docker_version": docker("version", "--format", "client={{.Client.Version}} server={{.Server.Version}}"),
             "load_average_at_start": os.getloadavg(),
         },
-        "images": {app: image_info(IMAGES[app]) for app in args.profiles},
+        "images": prepare_image_metadata(args.profiles),
         "trials": [],
         "attempts": [],
         "run_status": "running",

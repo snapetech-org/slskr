@@ -23,6 +23,8 @@ workloads.
 The runner generates fresh random local status credentials for each trial,
 passes them through the container environment and request headers, and does
 not save them in measurement artifacts; slskd's trial key is read-only.
+Before recording image metadata, it pulls each selected pinned image digest if
+the local daemon does not already have it.
 
 Run all three profiles with the same repetition and window settings:
 
@@ -76,6 +78,9 @@ Each raw artifact records every started trial attempt, separately from
 completed measurements. Failed login, API, or cgroup reads retain the profile,
 attempt number, UTC start and finish times, and failure reason before the runner
 stops, so retries and denominator changes can be audited.
+Process RSS is reported only when every PID returned by Docker has a readable
+`/proc/<pid>/status` entry with a `VmRSS` row; otherwise the RSS total is null
+and `rss_complete` is false. PSS completeness is recorded independently.
 Keep host-specific results separate and report host load: CPU-time samples
 from different machines or materially different background load are not a
 controlled head-to-head comparison. The retained [2026-10-12 live matrix

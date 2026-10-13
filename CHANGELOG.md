@@ -22,6 +22,8 @@ the release is prepared. Do not rewrite audited release history.
   connected Soulseek sessions, with raw measurements and clear scope limits.
 - Preserve timestamped failed benchmark attempts and failure reasons in raw
   artifacts so retry counts and denominators can be audited.
+- Pull selected benchmark images by pinned digest before recording metadata and
+  mark process RSS totals incomplete when procfs samples are missing.
 - Hardened local validation with a trusted test sandbox and isolated task
   environments.
 

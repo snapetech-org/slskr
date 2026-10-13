@@ -226,6 +226,93 @@ class LocalDockerDaemonTests(unittest.TestCase):
         cpu_ticks.assert_not_called()
 
 
+class ImageAvailabilityTests(unittest.TestCase):
+    def test_pulls_selected_unique_images_before_inspecting_them(self):
+        events = []
+
+        def pull(*args, **kwargs):
+            events.append(("pull", *args))
+            return "pulled"
+
+        def inspect(image):
+            events.append(("inspect", image))
+            return {"requested": image}
+
+        with patch.object(benchmark, "docker", side_effect=pull):
+            with patch.object(benchmark, "image_info", side_effect=inspect):
+                metadata = benchmark.prepare_image_metadata(
+                    ["slskr", "slskd", "slskr-dht"]
+                )
+
+        self.assertEqual(
+            [
+                ("pull", "pull", benchmark.IMAGES["slskr"]),
+                ("pull", "pull", benchmark.IMAGES["slskd"]),
+                ("inspect", benchmark.IMAGES["slskr"]),
+                ("inspect", benchmark.IMAGES["slskd"]),
+                ("inspect", benchmark.IMAGES["slskr-dht"]),
+            ],
+            events,
+        )
+        self.assertEqual(
+            {app: {"requested": benchmark.IMAGES[app]} for app in benchmark.IMAGES},
+            metadata,
+        )
+
+
+class ProcessMemoryCompletenessTests(unittest.TestCase):
+    def test_reports_complete_rss_and_pss_totals(self):
+        def read_text(path, *args, **kwargs):
+            if str(path) == "/proc/123/status":
+                return "Name:\tdaemon\nVmRSS:\t12 kB\n"
+            if str(path) == "/proc/123/smaps_rollup":
+                return "Pss: 9 kB\n"
+            raise AssertionError(f"unexpected procfs path: {path}")
+
+        with patch.object(benchmark, "docker", return_value="PID\n123\n"):
+            with patch.object(Path, "read_text", autospec=True, side_effect=read_text):
+                result = benchmark.process_memory("bench-container")
+
+        self.assertEqual(12, result["rss_kib_sum"])
+        self.assertTrue(result["rss_complete"])
+        self.assertEqual(9, result["pss_kib_sum"])
+        self.assertTrue(result["pss_complete"])
+
+    def test_invalidates_rss_when_a_status_read_fails_but_keeps_available_pss(self):
+        def read_text(path, *args, **kwargs):
+            if str(path) == "/proc/123/status":
+                raise PermissionError("status is not readable")
+            if str(path) == "/proc/123/smaps_rollup":
+                return "Pss: 24 kB\n"
+            raise AssertionError(f"unexpected procfs path: {path}")
+
+        with patch.object(benchmark, "docker", return_value="PID\n123\n"):
+            with patch.object(Path, "read_text", autospec=True, side_effect=read_text):
+                result = benchmark.process_memory("bench-container")
+
+        self.assertEqual(1, result["process_count"])
+        self.assertIsNone(result["rss_kib_sum"])
+        self.assertFalse(result["rss_complete"])
+        self.assertEqual(24, result["pss_kib_sum"])
+        self.assertTrue(result["pss_complete"])
+
+    def test_marks_rss_incomplete_when_status_has_no_vm_rss_row(self):
+        def read_text(path, *args, **kwargs):
+            if str(path) == "/proc/123/status":
+                return "Name:\tdaemon\n"
+            if str(path) == "/proc/123/smaps_rollup":
+                return "Pss: 24 kB\n"
+            raise AssertionError(f"unexpected procfs path: {path}")
+
+        with patch.object(benchmark, "docker", return_value="PID\n123\n"):
+            with patch.object(Path, "read_text", autospec=True, side_effect=read_text):
+                result = benchmark.process_memory("bench-container")
+
+        self.assertIsNone(result["rss_kib_sum"])
+        self.assertFalse(result["rss_complete"])
+        self.assertTrue(result["pss_complete"])
+
+
 class FailedTrialPersistenceTests(unittest.TestCase):
     def test_persists_failed_trial_metadata_before_propagating(self):
         failures = (
