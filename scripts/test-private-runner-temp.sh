@@ -14,8 +14,9 @@ esac
 
 scratch_root="$(mktemp -d -- "$scratch_parent/slskr-runner-temp-test.XXXXXX")"
 runner_temp="$scratch_root/runner-temp"
-github_env="$runner_temp/github-env"
-github_output="$runner_temp/github-output"
+command_file_dir="$runner_temp/_runner_file_commands"
+github_env="$command_file_dir/github-env"
+github_output="$command_file_dir/github-output"
 private_temp=''
 unsafe_link="$scratch_root/unsafe-runner-temp"
 unsafe_parent="$scratch_root/unsafe-parent"
@@ -30,6 +31,7 @@ cleanup() {
   [[ -f "$outside_output" ]] && unlink -- "$outside_output" 2>/dev/null || true
   [[ -f "$github_env" ]] && unlink -- "$github_env" 2>/dev/null || true
   [[ -f "$github_output" ]] && unlink -- "$github_output" 2>/dev/null || true
+  [[ -d "$command_file_dir" ]] && rmdir -- "$command_file_dir" 2>/dev/null || true
   [[ -f "$unsafe_temp/github-env" ]] && unlink -- "$unsafe_temp/github-env" 2>/dev/null || true
   [[ -f "$unsafe_temp/github-output" ]] && unlink -- "$unsafe_temp/github-output" 2>/dev/null || true
   [[ -d "$unsafe_temp" ]] && rmdir -- "$unsafe_temp" 2>/dev/null || true
@@ -42,6 +44,8 @@ trap cleanup EXIT
 
 mkdir -m 700 -- "$runner_temp"
 chmod 775 -- "$runner_temp"
+mkdir -m 700 -- "$command_file_dir"
+chmod 777 -- "$command_file_dir"
 : > "$github_env"
 : > "$github_output"
 chmod 600 -- "$github_env" "$github_output"
@@ -63,6 +67,8 @@ private_temp="$(sed -n 's/^path=//p' "$github_output")"
   || { printf 'Private job directory is not mode 0700.\n' >&2; exit 1; }
 [[ "$(stat -c '%a' -- "$github_env")" == 600 && "$(stat -c '%a' -- "$github_output")" == 600 ]] \
   || { printf 'GitHub command files are not private.\n' >&2; exit 1; }
+[[ "$(stat -c '%a' -- "$command_file_dir")" == 700 ]] \
+  || { printf 'GitHub command-file directory is not private.\n' >&2; exit 1; }
 for name in PRIVATE_RUNNER_TEMP TMPDIR TMP TEMP; do
   grep -Fxq "$name=$private_temp" "$github_env" \
     || { printf '%s was not pointed at the private job directory.\n' "$name" >&2; exit 1; }

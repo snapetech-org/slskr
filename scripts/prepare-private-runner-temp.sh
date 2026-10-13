@@ -40,7 +40,7 @@ validate_private_directory_chain() {
 validate_action_file() {
   local path="$1"
   local label="$2"
-  local parent mode links
+  local parent mode links current
 
   [[ -n "$path" && "$path" == /* && "$path" != *$'\n'* && "$path" != *$'\r'* ]] \
     || fail "$label must be an absolute path without line breaks."
@@ -53,6 +53,19 @@ validate_action_file() {
     "$runner_temp_resolved"|"$runner_temp_resolved"/*) ;;
     *) fail "$label must be inside RUNNER_TEMP." ;;
   esac
+  current="$parent"
+  while [[ "$current" != "$runner_temp_resolved" ]]; do
+    case "$current" in
+      "$runner_temp_resolved"/*) ;;
+      *) fail "$label parent escaped RUNNER_TEMP." ;;
+    esac
+    [[ -d "$current" && ! -L "$current" && -O "$current" ]] \
+      || fail "$label parent must be a directory owned by the workflow runner."
+    chmod 700 -- "$current" || fail "Could not make the $label parent private."
+    mode="$(stat -c '%a' -- "$current")" || fail "Could not verify the $label parent permissions."
+    [[ "$mode" == 700 ]] || fail "$label parent must have mode 0700."
+    current="$(dirname -- "$current")"
+  done
   validate_private_directory_chain "$parent" "$runner_temp_resolved"
   chmod 600 -- "$path" || fail "Could not make $label private."
   mode="$(stat -c '%a' -- "$path")" || fail "Could not verify $label permissions."
