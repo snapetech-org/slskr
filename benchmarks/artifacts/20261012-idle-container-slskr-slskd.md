@@ -227,8 +227,12 @@ python3 benchmarks/compare-idle-containers.py \
   --warmup-seconds 180 \
   --duration-seconds 600 \
   --sample-interval-seconds 60 \
-  --output benchmarks/artifacts/20261012-idle-container-repeats.json
+  --output target/perf/20261012-idle-container-repeats.json
 ```
+
+Reproduction output goes to the ignored `target/perf/` directory so an
+interrupted or failed run cannot replace the checked-in measurement artifact.
+The runner creates the output directory when needed.
 
 The complete recorded output is
 [`20261012-idle-container-repeats.json`](20261012-idle-container-repeats.json)
@@ -246,7 +250,7 @@ python3 benchmarks/compare-idle-containers.py \
   --warmup-seconds 180 \
   --duration-seconds 600 \
   --sample-interval-seconds 60 \
-  --output benchmarks/artifacts/20261012-idle-container-slskr-dht.json
+  --output target/perf/20261012-idle-container-slskr-dht.json
 ```
 
 The retained [DHT-on JSON](20261012-idle-container-slskr-dht.json) has SHA-256
