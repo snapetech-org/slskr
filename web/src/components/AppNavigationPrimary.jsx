@@ -36,10 +36,10 @@ const AppNavigationPrimary = ({
   );
   return (
               <div
-                aria-label="Primary navigation"
+                aria-label={t('Primary navigation')}
                 className="navigation-primary"
-                lang="en"
-                dir="ltr"
+                lang={languageFor('Primary navigation')}
+                dir={directionFor('Primary navigation')}
                 role="navigation"
               >
                 {version.isCanary && (

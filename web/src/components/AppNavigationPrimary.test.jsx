@@ -36,10 +36,10 @@ describe('primary navigation language metadata', () => {
     );
 
     const navigation = screen.getByRole('navigation', {
-      name: 'Primary navigation',
+      name: UI_LABELS['Primary navigation'][arabicIndex],
     });
-    expect(navigation).toHaveAttribute('lang', 'en');
-    expect(navigation).toHaveAttribute('dir', 'ltr');
+    expect(navigation).toHaveAttribute('lang', 'ar');
+    expect(navigation).toHaveAttribute('dir', 'rtl');
     const translatedSearch = screen.getByText(UI_LABELS.Search[arabicIndex]);
     expect(translatedSearch).toHaveAttribute('lang', 'ar');
     expect(translatedSearch).toHaveAttribute('dir', 'rtl');
