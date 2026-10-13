@@ -8,12 +8,13 @@ when their source and inventory identities match.
 
 ## GitHub runner routing
 
-Pull request and non-main validation use GitHub-hosted runners. Only trusted
-pushes to `main` and manual runs against `main` route the Rust lane to the shared
-organization Linux build pool with the `host`, `linux-build`, and `linux-amd64`
-capability labels. The server-side runner-group policy allows only this workflow
-pinned to `refs/heads/main`, so public PR code cannot select the pool. Runner
-scratch remains private to each workflow run.
+Pull request and non-main validation use GitHub-hosted runners. Trusted pushes
+to `main` and manual runs against `main` use the shared organization Linux build
+pool with the `host`, `linux-build`, and `linux-amd64` capability labels only
+when `TRUSTED_MAIN_RUNNERS_ENABLED` is exactly `true`; an unset or false flag
+keeps the lane hosted. The server-side runner-group policy allows only this
+workflow pinned to `refs/heads/main`, so public PR code cannot select the pool.
+Runner scratch remains private to each workflow run.
 
 ## Local commands
 
