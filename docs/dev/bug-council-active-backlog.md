@@ -5,8 +5,8 @@ A green all-phases council run is not proof that no bugs exist; this file
 records the active discovery piles that still need review, splitting, or
 burn-down.
 
-Scan date: 2026-10-12
-Source digest: 60cfbe00c06886e5a705656052ee94496378f7ab61bb9c23d5c500660ad37107
+Scan date: 2026-10-13
+Source digest: 6a249ed7f92e51bb2bda6ff6179811fe1bbe9e55016821c61f8b83141d749403
 
 Every council scan candidate class must have a row below with the current
 candidate count. `scripts/check-council-active-backlog.sh` fails when a class is
@@ -28,7 +28,7 @@ Status meanings:
 | `Protocol scalar emission candidates` | 310 | Guarded | The widened production-module scalar scan was reviewed by narrowing and signed-conversion class. Four wrapping paths in share metadata, distributed state, wishlist scheduler state, and user timestamps were fixed; remaining length/code emissions are bounded, checked, or inventory-tested. | Reopen only when a fresh protocol-visible narrowing path lacks a checked conversion or discriminant inventory evidence. |
 | `Resolver/raw stream candidates` | 1087 | Guarded | Current candidates are classified. The server-brokered peer-message flow validates the `PierceFirewall` token against pending work before sending and retains direct-listener and endpoint policies; real-socket regressions verify direct delivery and brokered fallback. Counts are scanner matches, not confirmed bugs. Raw-frame/connect-timeout regressions and daemon/SDK timeout, resolver, and frame-size checks remain active. | Reopen a finding when a production socket/resolver/read path lacks timeout, address policy, or size-bound evidence. |
 | `Task/cancellation/lifecycle candidates` | 1467 | Guarded | Current lifecycle candidates are classified; accepted TypeScript timer/default bugs and the legacy multisource shutdown gap are fixed. Daemon/WebSocket/webhook/script/port-forward ownership is covered by bounded channels, timeouts, and shutdown tests; HTTP handlers share a 256-task cap and service work uses bounded admission or managed ownership. New share progress uses one worker plus a 100 ms state publisher; indirect peer-message requests have one-shot completion, timeout cleanup, and server failure cleanup, and successful direct sends avoid duplicate broker requests. | Reopen only when a fresh spawn/timeout/channel path lacks shutdown, bounded queue, or cleanup evidence. |
-| `Example Web API candidates` | 317 | Guarded | Current web/API examples are classified; stale WebSocket auth examples are fixed and remaining matches are covered by token, unsafe-open, CORS, and docs freshness gates. | Reopen only when a fresh example bypasses the SDK auth helpers, hard-codes secrets, or contradicts deployment posture. |
+| `Example Web API candidates` | 348 | Guarded | Current web/API examples are classified; the 31 fresh matches are locale and regional-preference implementation/tests, including non-secret UI preference storage. API tokens remain session-only under the browser token persistence gate; unsafe opens, CORS, and docs freshness remain gated. | Reopen when a fresh example bypasses the SDK auth helpers, hard-codes secrets, or contradicts deployment posture. |
 | `Async void boundaries` | 0 | Existing guard | The current scan has no async-void candidates in the scoped source trees; async operations either return their result or are explicitly owned by a task boundary. | Reopen when a fresh candidate appears. |
 | `Silent catch or lossy exception boundaries` | 0 | Existing guard | The current scan has no unclassified silent-catch candidates; optional compatibility reads distinguish 404 fallbacks from outages and auth/network failures. | Reopen when a fresh candidate appears. |
 | `Callback/event invocation boundaries` | 0 | Existing guard | The current scan has no callback/event candidates requiring classification; event and callback paths are covered by the existing lifecycle and bounded-queue guards. | Reopen when a fresh candidate appears. |
