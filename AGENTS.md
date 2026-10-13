@@ -25,6 +25,12 @@ These interaction rules are standard for all model interfaces using this repo, i
 - Keep credentials in the documented credential sources. Never place real credentials, account data, or operator configuration in fixtures, test output, release notes, or PRs.
 - Treat upstream implementations as read-only reference unless the task explicitly includes an upstream contribution. Preserve their attribution in forked files.
 
+## Machine inventory and scratch space
+
+- `kspld0` is the desktop; `kspls0` is the server.
+- The `kspls0` LVM data pool was verified at `/mnt/datapool_lvm_media` on 2026-10-12 and mounted on `kspld0` over NFSv4.2. Free space changes, so check it again before writing.
+- Before using that pool, confirm the target with `hostname`, then run `findmnt -T /mnt/datapool_lvm_media` and `df -hT /mnt/datapool_lvm_media` on the target host. Do not assume a mount path or free capacity. Use a per-task directory and remove only task-created files; preserve existing or ambiguous data.
+
 ## Required reading
 
 - Start with docs/README.md for the maintained documentation map.
