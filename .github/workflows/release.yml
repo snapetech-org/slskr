@@ -2,6 +2,7 @@ name: Release
 
 env:
   CARGO_AUDIT_VERSION: 0.22.1
+  CARGO_AUDIT_CACHE_SCHEMA: v2
   ACTIONLINT_VERSION: v1.7.12
   SLSKR_SECURITY_SCANS_REQUIRED: '1'
   SLSKR_SEMGREP_IMAGE: semgrep/semgrep:1.167.0
@@ -141,7 +142,7 @@ jobs:
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # actions/cache@v6.1.0
         with:
           path: ~/.cargo/bin/cargo-audit
-          key: cargo-audit-${{ runner.os }}-${{ runner.arch }}-${{ env.CARGO_AUDIT_VERSION }}
+          key: cargo-audit-${{ env.CARGO_AUDIT_CACHE_SCHEMA }}-${{ runner.os }}-${{ runner.arch }}-${{ env.CARGO_AUDIT_VERSION }}
       - name: Ensure cargo-audit is available
         run: scripts/ensure-cargo-audit.sh
       - name: Test cargo-audit cache and PATH handling

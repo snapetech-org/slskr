@@ -337,10 +337,12 @@ fi
 for workflow in ci release; do
   workflow_path=".github/workflows/${workflow}.yml"
   for expected in \
+    'CARGO_AUDIT_CACHE_SCHEMA: v2' \
+    'key: cargo-audit-${{ env.CARGO_AUDIT_CACHE_SCHEMA }}-${{ runner.os }}-${{ runner.arch }}-${{ env.CARGO_AUDIT_VERSION }}' \
     'run: scripts/ensure-cargo-audit.sh' \
     'run: scripts/test-ensure-cargo-audit.sh'; do
     if ! rg -n -F -- "$expected" "$workflow_path" >/dev/null; then
-      printf 'workflow release policy check failed: %s must verify cargo-audit setup: %s\n' "$workflow_path" "$expected" >&2
+      printf 'workflow release policy check failed: %s must keep cargo-audit cache/setup contract: %s\n' "$workflow_path" "$expected" >&2
       status=1
     fi
   done
