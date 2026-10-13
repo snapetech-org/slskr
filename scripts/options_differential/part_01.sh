@@ -379,6 +379,13 @@ for path in source.iterdir():
         value = {"pendingRestart": value["pendingRestart"]}
     elif path.name.startswith("application-"):
         value = value["shares"]
+        if isinstance(value, dict) and "scanEntries" in value:
+            # slskR exposes this live progress counter in addition to the
+            # upstream application shape; its semantics are covered by Rust
+            # contract tests, while this differential checks shared fields.
+            scan_entries = value.pop("scanEntries")
+            if type(scan_entries) is not int or scan_entries < 0:
+                raise SystemExit(f"invalid share scan entry count in {source}: {scan_entries!r}")
     elif path.name.startswith("storage-options-"):
         value = value["directories"]
     elif path.name.startswith("options-"):
