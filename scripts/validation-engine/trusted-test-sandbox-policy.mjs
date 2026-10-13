@@ -87,7 +87,7 @@ const sensitiveCredentialName =
 const sensitiveCredentialConfigFile =
   /^[.]?(?:auth(?:entication)?|tokens?|credentials?|secrets?|private[-_]?keys?|api[-_]?keys?|access[-_]?tokens?|refresh[-_]?tokens?|client[-_]?secrets?)[.](?:json|ya?ml|toml|ini|cfg|conf|env|properties|xml|txt)$/iu;
 const sensitiveCredentialMaterialFile =
-  /^(?:private[-_]?keys?|api[-_]?keys?|access[-_]?tokens?|refresh[-_]?tokens?|client[-_]?secrets?)[.][^/]+$/iu;
+  /^[.]?(?:private[-_]?keys?|api[-_]?keys?|access[-_]?tokens?|refresh[-_]?tokens?|client[-_]?secrets?)[.][^/]+$/iu;
 const sourceTreeDirectory =
   /^(?:src|source|packages|apps|web|dashboard|client-ts|crates|scripts|lib|tests?|__tests__|fixtures?)$/iu;
 const sourceCodeFile =
@@ -101,21 +101,27 @@ export function isSensitiveCandidatePath(relativePath) {
     return true;
 
   const filename = segments.at(-1) ?? '';
+  const directories = segments.slice(0, -1);
+  const insideSourceTree = directories.some((segment) =>
+    sourceTreeDirectory.test(segment),
+  );
   if (
     sensitiveCredentialName.test(filename) ||
-    sensitiveCredentialConfigFile.test(filename) ||
-    sensitiveCredentialMaterialFile.test(filename)
+    sensitiveCredentialConfigFile.test(filename)
   )
     return true;
+  if (
+    sensitiveCredentialMaterialFile.test(filename) &&
+    !(insideSourceTree && sourceCodeFile.test(filename))
+  ) return true;
 
-  const directories = segments.slice(0, -1);
   const credentialDirectoryIndex = directories.findIndex((segment) =>
     sensitiveCredentialName.test(segment),
   );
   if (credentialDirectoryIndex < 0) return false;
 
-  const insideSourceTree = directories
+  const sourceTreeBeforeCredentialDirectory = directories
     .slice(0, credentialDirectoryIndex)
     .some((segment) => sourceTreeDirectory.test(segment));
-  return !insideSourceTree && !sourceCodeFile.test(filename);
+  return !sourceTreeBeforeCredentialDirectory && !sourceCodeFile.test(filename);
 }

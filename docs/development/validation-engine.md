@@ -25,9 +25,11 @@ outside the checkout, keeping them together. The launcher snapshots only paths
 in the Git index, hides the original checkout and common host configuration and
 data roots, and runs candidate code offline. Explicit credential names,
 including dotted extensionless names, are excluded. Credential-named folders
-outside source trees are also omitted; normal manifests, fixtures, scripts,
-templates, and other assets inside source trees remain available unless their
-own paths identify credentials. Stage new candidate files first.
+outside source trees are also omitted; manifests, fixtures, scripts, templates,
+source modules, and other assets inside source trees remain available, including
+credential-named source modules such as `ApiKeys.tsx`. Credential data and
+files in credential-named folders outside source trees remain excluded. Stage
+new candidate files first.
 
 ```sh
 node /path/to/trusted-test-launcher.mjs "$PWD" -- node scripts/validate-development.mjs --tests-only

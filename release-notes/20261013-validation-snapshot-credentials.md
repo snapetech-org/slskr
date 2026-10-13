@@ -6,4 +6,4 @@ action: none
 breaking: false
 ---
 
-Validation snapshots exclude dotted and extensionless credential names, omit credential-named folders outside source trees, and preserve manifests and runtime assets in source subtrees whose directory names overlap with credential terms.
+Validation snapshots exclude dotted and extensionless credential names, omit credential-named folders outside source trees, and preserve source modules, manifests, and runtime assets in source subtrees whose filenames or directory names overlap with credential terms.
