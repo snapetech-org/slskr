@@ -1,7 +1,14 @@
 // Copyright (c) slskR contributors. All rights reserved.
 import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
 import { test } from 'node:test';
+import { fileURLToPath } from 'node:url';
 import { reconcileRustReceipts } from './reconcile-rust-matrix.mjs';
+
+const reconciler = fileURLToPath(new URL('./reconcile-rust-matrix.mjs', import.meta.url));
 
 const sha = 'a'.repeat(40);
 const nodes = [
@@ -102,6 +109,44 @@ test('a failed newest receipt supersedes an older passing receipt', () => {
     () => reconcileRustReceipts({ receipts: [...current, stale], ...identity }),
     /passing Rust tests/u,
   );
+});
+
+test('reconciles recursively downloaded artifacts from multiple run attempts', () => {
+  const directory = mkdtempSync(path.join(tmpdir(), 'rust-receipt-artifacts-'));
+  try {
+    const older = receipt('linux-x64', 'Linux', 'X64');
+    older.executionContext.github.runAttempt = '1';
+    older.status = 'failed';
+    older.tasks[0].status = 'failed';
+    const artifacts = [older, ...receipts()];
+    for (const item of artifacts) {
+      const attempt = item.executionContext.github.runAttempt;
+      const node = item.executionContext.nodeId;
+      const artifactDirectory = path.join(directory, `validation-rust-${node}-attempt-${attempt}`);
+      mkdirSync(artifactDirectory, { recursive: true });
+      writeFileSync(path.join(artifactDirectory, `rust-${node}.json`), JSON.stringify(item));
+    }
+    const result = spawnSync(
+      process.execPath,
+      [reconciler, '--receipts', directory],
+      {
+        encoding: 'utf8',
+        env: {
+          ...process.env,
+          GITHUB_RUN_ID: identity.runId,
+          GITHUB_RUN_ATTEMPT: identity.runAttempt,
+          GITHUB_SHA: identity.sha,
+        },
+      }
+    );
+    assert.equal(result.error, undefined, result.error?.message);
+    assert.equal(result.status, 0, result.stderr);
+    const summary = JSON.parse(result.stdout);
+    assert.equal(summary.status, 'passed');
+    assert.equal(summary.nodes.length, 5);
+  } finally {
+    rmSync(directory, { recursive: true, force: true });
+  }
 });
 
 test('rejects duplicate receipts from the same runner and attempt', () => {

@@ -454,7 +454,7 @@ jobs:
         if: failure() && matrix.native_tests
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # actions/upload-artifact@v7.0.1
         with:
-          name: validation-task-logs-${{ matrix.name }}
+          name: validation-task-logs-${{ matrix.name }}-attempt-${{ github.run_attempt }}
           path: ${{ runner.temp }}/slskr-validation-*/*.log
           if-no-files-found: ignore
           retention-days: 7
@@ -462,7 +462,7 @@ jobs:
         if: always() && matrix.native_tests
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # actions/upload-artifact@v7.0.1
         with:
-          name: validation-rust-${{ matrix.name }}
+          name: validation-rust-${{ matrix.name }}-attempt-${{ github.run_attempt }}
           path: ${{ runner.temp }}/validation/rust-${{ matrix.name }}.json
           if-no-files-found: warn
           retention-days: 7
@@ -526,7 +526,7 @@ jobs:
         with:
           pattern: validation-rust-*
           path: ${{ runner.temp }}/validation-receipts
-          merge-multiple: true
+          merge-multiple: false
       - name: Reconcile this run, source and inventory across retries
         run: node scripts/validation-engine/reconcile-rust-matrix.mjs --receipts "$RUNNER_TEMP/validation-receipts"
 

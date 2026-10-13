@@ -204,7 +204,7 @@ export function main(argv = process.argv.slice(2)) {
       if (entry.isSymbolicLink()) fail('Receipt directories must not contain symbolic links.');
       if (entry.isDirectory()) {
         pending.push(filename);
-      } else if (entry.isFile() && /^rust-[a-z0-9-]+\\.json$/.test(entry.name)) {
+      } else if (entry.isFile() && /^rust-[a-z0-9-]+\.json$/.test(entry.name)) {
         receipts.push(JSON.parse(readFileSync(filename, 'utf8')));
       }
     }
