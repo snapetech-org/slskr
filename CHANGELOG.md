@@ -18,13 +18,17 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
-## [0.2.57] — 2026-10-12
+## [0.2.57] — 2026-10-13
 
 - Added live progress state and scan logs for large share libraries.
 - Returned slskd-compatible versioned search and download responses, and delivered
   search results to firewalled peers through server-brokered connections.
 - Added a COPR API-token fallback when Fedora Kerberos authentication is
   unavailable.
+- Recorded repeatable idle CPU and memory comparisons for local containers and
+  connected Soulseek sessions, with raw measurements and clear scope limits.
+- Hardened local validation with a trusted test sandbox and isolated task
+  environments.
 
 ## [0.2.47] — 2026-10-04
 

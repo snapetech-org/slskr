@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-10-12T20:48:54.373944+00:00",
+  "parameters": {
+    "repeats_per_app": 3,
+    "warmup_seconds": 180,
+    "duration_seconds": 600,
+    "memory_sample_interval_seconds": 60,
+    "profiles": [
+      "slskd",
+      "slskr",
+      "slskr-dht"
+    ],
+    "order": [
+      "slskd",
+      "slskr",
+      "slskr-dht",
+      "slskr",
+      "slskr-dht",
+      "slskd",
+      "slskr-dht",
+      "slskd",
+      "slskr"
+    ],
+    "network": "bridge",
+    "network_by_profile": {
+      "slskd": "bridge",
+      "slskr": "bridge",
+      "slskr-dht": "bridge"
+    },
+    "live_soulseek_session": true,
+    "credentials": "same test account reused sequentially; values omitted",
+    "server_endpoint": "vps.slsknet.org:2271",
+    "share_scan_disabled": true,
+    "healthchecks": false,
+    "cpu_accounting": "host-read cgroup v2 cpu.stat usage_usec"
+  },
+  "host": {
+    "platform": "Linux-7.2.4-arch1-2-x86_64-with-glibc2.44",
+    "architecture": "x86_64",
+    "kernel": "7.2.4-arch1-2",
+    "online_cpus": 32,
+    "process_cpu_affinity_count": 32,
+    "cgroup_version": "v2",
+    "docker_version": "client=29.9.0 server=29.8.0",
+    "load_average_at_start": [
+      70.77490234375,
+      78.453125,
+      91.87841796875
+    ]
+  },
+  "images": {
+    "slskd": {
+      "requested": "slskd/slskd@sha256:588af49abc3088d639c8f1174d3bfad6e92c093a275a593140e3ac9311ebf6c4",
+      "image_id": "sha256:588af49abc3088d639c8f1174d3bfad6e92c093a275a593140e3ac9311ebf6c4",
+      "repo_digests": [
+        "slskd/slskd@sha256:588af49abc3088d639c8f1174d3bfad6e92c093a275a593140e3ac9311ebf6c4"
+      ],
+      "platform": "linux/amd64"
+    },
+    "slskr": {
+      "requested": "sha256:ec36112f5cf390e3c09a3ab1faf94f13786415cd184a401f0fa2e5ef5fe4c7a5",
+      "image_id": "sha256:ec36112f5cf390e3c09a3ab1faf94f13786415cd184a401f0fa2e5ef5fe4c7a5",
+      "repo_digests": [],
+      "platform": "linux/amd64"
+    },
+    "slskr-dht": {
+      "requested": "sha256:ec36112f5cf390e3c09a3ab1faf94f13786415cd184a401f0fa2e5ef5fe4c7a5",
+      "image_id": "sha256:ec36112f5cf390e3c09a3ab1faf94f13786415cd184a401f0fa2e5ef5fe4c7a5",
+      "repo_digests": [],
+      "platform": "linux/amd64"
+    }
+  },
+  "trials": [],
+  "run_status": "aborted_before_any_completed_trial",
+  "abort_record": {
+    "profile": "slskd",
+    "repetition": 1,
+    "measurement_progress_seconds": 60,
+    "reason": "The task-owned container was stopped after host saturation was observed. The runner then failed to read that container cgroup memory.stat; no completed trial was recorded.",
+    "host_observation_utc": "2026-10-12T20:53:00Z",
+    "host_load_average": [
+      195.35,
+      120.61,
+      104.35
+    ],
+    "cpu_idle_percent_in_two_consecutive_one_second_samples": [
+      0,
+      0
+    ],
+    "runnable_tasks_in_those_samples": [
+      237,
+      275
+    ]
+  },
+  "image_provenance": {
+    "slskd": "Pulled on server host by the pinned repository digest recorded in images.slskd.",
+    "slskr": "The locally cached image was verified on desktop host with repo digest ghcr.io/snapetech/slskr@sha256:ec36112f5cf390e3c09a3ab1faf94f13786415cd184a401f0fa2e5ef5fe4c7a5. Docker load on server host preserved the identical image ID; Docker RepoDigests is empty after load."
+  }
+}

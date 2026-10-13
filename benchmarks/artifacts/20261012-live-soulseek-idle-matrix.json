@@ -1,0 +1,2250 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-10-12T18:20:16.695745+00:00",
+  "parameters": {
+    "repeats_per_app": 3,
+    "warmup_seconds": 180,
+    "duration_seconds": 600,
+    "memory_sample_interval_seconds": 60,
+    "profiles": [
+      "slskd",
+      "slskr",
+      "slskr-dht"
+    ],
+    "order": [
+      "slskd",
+      "slskr",
+      "slskr-dht",
+      "slskr",
+      "slskr-dht",
+      "slskd",
+      "slskr-dht",
+      "slskd",
+      "slskr"
+    ],
+    "network": "bridge",
+    "network_by_profile": {
+      "slskd": "bridge",
+      "slskr": "bridge",
+      "slskr-dht": "bridge"
+    },
+    "live_soulseek_session": true,
+    "credentials": "same test account reused sequentially; values omitted",
+    "server_endpoint": "vps.slsknet.org:2271",
+    "share_scan_disabled": true,
+    "healthchecks": false,
+    "cpu_accounting": "host-read cgroup v2 cpu.stat usage_usec"
+  },
+  "host": {
+    "platform": "Linux-7.1.7-arch1-1-x86_64-with-glibc2.44",
+    "architecture": "x86_64",
+    "kernel": "7.1.7-arch1-1",
+    "online_cpus": 32,
+    "process_cpu_affinity_count": 32,
+    "cgroup_version": "v2",
+    "docker_version": "client=29.9.0 server=29.8.0",
+    "load_average_at_start": [
+      7.7978515625,
+      13.01123046875,
+      14.96435546875
+    ],
+    "load_average_at_end": [
+      14.50439453125,
+      15.91796875,
+      17.5556640625
+    ]
+  },
+  "images": {
+    "slskd": {
+      "requested": "slskd/slskd@sha256:588af49abc3088d639c8f1174d3bfad6e92c093a275a593140e3ac9311ebf6c4",
+      "image_id": "sha256:588af49abc3088d639c8f1174d3bfad6e92c093a275a593140e3ac9311ebf6c4",
+      "repo_digests": [
+        "slskd/slskd@sha256:588af49abc3088d639c8f1174d3bfad6e92c093a275a593140e3ac9311ebf6c4"
+      ],
+      "platform": "linux/amd64"
+    },
+    "slskr": {
+      "requested": "ghcr.io/snapetech/slskr@sha256:ec36112f5cf390e3c09a3ab1faf94f13786415cd184a401f0fa2e5ef5fe4c7a5",
+      "image_id": "sha256:ec36112f5cf390e3c09a3ab1faf94f13786415cd184a401f0fa2e5ef5fe4c7a5",
+      "repo_digests": [
+        "ghcr.io/snapetech/slskr@sha256:ec36112f5cf390e3c09a3ab1faf94f13786415cd184a401f0fa2e5ef5fe4c7a5"
+      ],
+      "platform": "linux/amd64"
+    },
+    "slskr-dht": {
+      "requested": "ghcr.io/snapetech/slskr@sha256:ec36112f5cf390e3c09a3ab1faf94f13786415cd184a401f0fa2e5ef5fe4c7a5",
+      "image_id": "sha256:ec36112f5cf390e3c09a3ab1faf94f13786415cd184a401f0fa2e5ef5fe4c7a5",
+      "repo_digests": [
+        "ghcr.io/snapetech/slskr@sha256:ec36112f5cf390e3c09a3ab1faf94f13786415cd184a401f0fa2e5ef5fe4c7a5"
+      ],
+      "platform": "linux/amd64"
+    }
+  },
+  "trials": [
+    {
+      "app": "slskd",
+      "repetition": 1,
+      "container_started_utc": "2026-10-12T18:20:16.778966+00:00",
+      "measurement_started_utc": "2026-10-12T18:23:22.269994+00:00",
+      "warmup_seconds": 180,
+      "requested_window_seconds": 600,
+      "actual_wall_seconds": 600.2084003128111,
+      "cpu_limit": "max 100000",
+      "cpu_stat_start": {
+        "usage_usec": 9349430,
+        "user_usec": 8415719,
+        "system_usec": 933711,
+        "nice_usec": 0,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpu_stat_end": {
+        "usage_usec": 26096272,
+        "user_usec": 22456165,
+        "system_usec": 3640107,
+        "nice_usec": 0,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpu_usage_delta_usec": 16746842,
+      "cpu_seconds": 16.746842,
+      "average_one_core_percent": 2.790171212410895,
+      "host_cpu_busy_percent": 25.683407435075313,
+      "host_load_average_start": [
+        8.56494140625,
+        13.49169921875,
+        14.978515625
+      ],
+      "host_load_average_end": [
+        8.3505859375,
+        12.5400390625,
+        13.623046875
+      ],
+      "live_session": true,
+      "session_login_wait_seconds": 5.121688770130277,
+      "session_login_status_attempts": 2,
+      "session_status_before": {
+        "connected": true,
+        "logged_in": true,
+        "state": "Connected, LoggedIn"
+      },
+      "session_status_after": {
+        "connected": true,
+        "logged_in": true,
+        "state": "Connected, LoggedIn"
+      },
+      "session_logged_in_at_measurement_boundaries": true,
+      "dht_status_before": null,
+      "dht_status_after": null,
+      "memory_samples": [
+        {
+          "time_utc": "2026-10-12T18:23:22.269994+00:00",
+          "memory_current_bytes": 170127360,
+          "memory_stat_bytes": {
+            "anon": 103493632,
+            "file": 60534784,
+            "shmem": 54345728,
+            "kernel": 3936256,
+            "slab": 1973736
+          },
+          "process_count": 2,
+          "rss_kib_sum": 253564,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:24:22.286475+00:00",
+          "memory_current_bytes": 173568000,
+          "memory_stat_bytes": {
+            "anon": 104402944,
+            "file": 63262720,
+            "shmem": 54542336,
+            "kernel": 3805184,
+            "slab": 1917384
+          },
+          "process_count": 2,
+          "rss_kib_sum": 255876,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:25:22.305493+00:00",
+          "memory_current_bytes": 183111680,
+          "memory_stat_bytes": {
+            "anon": 112922624,
+            "file": 65810432,
+            "shmem": 54624256,
+            "kernel": 3846144,
+            "slab": 1933528
+          },
+          "process_count": 2,
+          "rss_kib_sum": 263224,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:26:22.324168+00:00",
+          "memory_current_bytes": 187936768,
+          "memory_stat_bytes": {
+            "anon": 114728960,
+            "file": 68517888,
+            "shmem": 54972416,
+            "kernel": 3870720,
+            "slab": 1944256
+          },
+          "process_count": 2,
+          "rss_kib_sum": 265292,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:27:22.343431+00:00",
+          "memory_current_bytes": 192159744,
+          "memory_stat_bytes": {
+            "anon": 116166656,
+            "file": 71073792,
+            "shmem": 55115776,
+            "kernel": 3895296,
+            "slab": 1953512
+          },
+          "process_count": 2,
+          "rss_kib_sum": 266840,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:28:22.360550+00:00",
+          "memory_current_bytes": 197062656,
+          "memory_stat_bytes": {
+            "anon": 117424128,
+            "file": 74113024,
+            "shmem": 55136256,
+            "kernel": 3944448,
+            "slab": 1970120
+          },
+          "process_count": 2,
+          "rss_kib_sum": 268068,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:29:22.378217+00:00",
+          "memory_current_bytes": 198172672,
+          "memory_stat_bytes": {
+            "anon": 117334016,
+            "file": 76689408,
+            "shmem": 55144448,
+            "kernel": 3825664,
+            "slab": 1929928
+          },
+          "process_count": 2,
+          "rss_kib_sum": 267984,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:30:22.399361+00:00",
+          "memory_current_bytes": 201453568,
+          "memory_stat_bytes": {
+            "anon": 117440512,
+            "file": 79171584,
+            "shmem": 55156736,
+            "kernel": 3977216,
+            "slab": 1993256
+          },
+          "process_count": 2,
+          "rss_kib_sum": 268100,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:31:22.417431+00:00",
+          "memory_current_bytes": 196317184,
+          "memory_stat_bytes": {
+            "anon": 114458624,
+            "file": 77221888,
+            "shmem": 50606080,
+            "kernel": 3948544,
+            "slab": 1986776
+          },
+          "process_count": 2,
+          "rss_kib_sum": 260600,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:32:22.436923+00:00",
+          "memory_current_bytes": 205164544,
+          "memory_stat_bytes": {
+            "anon": 118980608,
+            "file": 79568896,
+            "shmem": 50561024,
+            "kernel": 4005888,
+            "slab": 1970584
+          },
+          "process_count": 2,
+          "rss_kib_sum": 265072,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:33:22.459040+00:00",
+          "memory_current_bytes": 201039872,
+          "memory_stat_bytes": {
+            "anon": 120037376,
+            "file": 75878400,
+            "shmem": 50659328,
+            "kernel": 4063232,
+            "slab": 2000720
+          },
+          "process_count": 2,
+          "rss_kib_sum": 265900,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        }
+      ]
+    },
+    {
+      "app": "slskr",
+      "repetition": 1,
+      "container_started_utc": "2026-10-12T18:33:23.141463+00:00",
+      "measurement_started_utc": "2026-10-12T18:36:28.570778+00:00",
+      "warmup_seconds": 180,
+      "requested_window_seconds": 600,
+      "actual_wall_seconds": 600.2552864556201,
+      "cpu_limit": "max 100000",
+      "cpu_stat_start": {
+        "usage_usec": 128190,
+        "user_usec": 90242,
+        "system_usec": 37947,
+        "nice_usec": 0,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpu_stat_end": {
+        "usage_usec": 490984,
+        "user_usec": 354267,
+        "system_usec": 136716,
+        "nice_usec": 0,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpu_usage_delta_usec": 362794,
+      "cpu_seconds": 0.362794,
+      "average_one_core_percent": 0.0604399508319571,
+      "host_cpu_busy_percent": 17.772589712142587,
+      "host_load_average_start": [
+        5.64111328125,
+        9.3271484375,
+        12.1669921875
+      ],
+      "host_load_average_end": [
+        24.08154296875,
+        11.13720703125,
+        10.74658203125
+      ],
+      "live_session": true,
+      "session_login_wait_seconds": 5.031857531983405,
+      "session_login_status_attempts": 2,
+      "session_status_before": {
+        "connected": true,
+        "logged_in": true,
+        "state": "Connected, LoggedIn"
+      },
+      "session_status_after": {
+        "connected": true,
+        "logged_in": true,
+        "state": "Connected, LoggedIn"
+      },
+      "session_logged_in_at_measurement_boundaries": true,
+      "dht_status_before": {
+        "enabled": false,
+        "bootstrapped": null,
+        "running": false,
+        "routing_node_count": 0,
+        "discovered_peer_count": 0,
+        "last_error_present": false
+      },
+      "dht_status_after": {
+        "enabled": false,
+        "bootstrapped": null,
+        "running": false,
+        "routing_node_count": 0,
+        "discovered_peer_count": 0,
+        "last_error_present": false
+      },
+      "memory_samples": [
+        {
+          "time_utc": "2026-10-12T18:36:28.570778+00:00",
+          "memory_current_bytes": 6864896,
+          "memory_stat_bytes": {
+            "anon": 4100096,
+            "file": 16384,
+            "shmem": 0,
+            "kernel": 1708032,
+            "slab": 672664
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28976,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:37:28.587520+00:00",
+          "memory_current_bytes": 5832704,
+          "memory_stat_bytes": {
+            "anon": 4108288,
+            "file": 16384,
+            "shmem": 0,
+            "kernel": 1708032,
+            "slab": 672664
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28984,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:38:28.606218+00:00",
+          "memory_current_bytes": 5832704,
+          "memory_stat_bytes": {
+            "anon": 4108288,
+            "file": 16384,
+            "shmem": 0,
+            "kernel": 1708032,
+            "slab": 672664
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29112,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:39:28.623661+00:00",
+          "memory_current_bytes": 5844992,
+          "memory_stat_bytes": {
+            "anon": 4108288,
+            "file": 16384,
+            "shmem": 0,
+            "kernel": 1708032,
+            "slab": 672664
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29112,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:40:28.640872+00:00",
+          "memory_current_bytes": 6103040,
+          "memory_stat_bytes": {
+            "anon": 4116480,
+            "file": 16384,
+            "shmem": 0,
+            "kernel": 1708032,
+            "slab": 672664
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29120,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:41:28.657474+00:00",
+          "memory_current_bytes": 5844992,
+          "memory_stat_bytes": {
+            "anon": 4116480,
+            "file": 16384,
+            "shmem": 0,
+            "kernel": 1708032,
+            "slab": 672664
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29120,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:42:28.677663+00:00",
+          "memory_current_bytes": 5840896,
+          "memory_stat_bytes": {
+            "anon": 4116480,
+            "file": 16384,
+            "shmem": 0,
+            "kernel": 1703936,
+            "slab": 671192
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29120,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:43:28.699354+00:00",
+          "memory_current_bytes": 5840896,
+          "memory_stat_bytes": {
+            "anon": 4116480,
+            "file": 16384,
+            "shmem": 0,
+            "kernel": 1703936,
+            "slab": 670776
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29120,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:44:28.716187+00:00",
+          "memory_current_bytes": 5894144,
+          "memory_stat_bytes": {
+            "anon": 4149248,
+            "file": 16384,
+            "shmem": 0,
+            "kernel": 1708032,
+            "slab": 674960
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29152,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:45:28.734137+00:00",
+          "memory_current_bytes": 6139904,
+          "memory_stat_bytes": {
+            "anon": 4149248,
+            "file": 16384,
+            "shmem": 0,
+            "kernel": 1708032,
+            "slab": 672384
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29152,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:46:28.754035+00:00",
+          "memory_current_bytes": 6135808,
+          "memory_stat_bytes": {
+            "anon": 4149248,
+            "file": 16384,
+            "shmem": 0,
+            "kernel": 1708032,
+            "slab": 672248
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29152,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        }
+      ]
+    },
+    {
+      "app": "slskr-dht",
+      "repetition": 1,
+      "container_started_utc": "2026-10-12T18:46:29.451389+00:00",
+      "measurement_started_utc": "2026-10-12T18:49:35.250239+00:00",
+      "warmup_seconds": 180,
+      "requested_window_seconds": 600,
+      "actual_wall_seconds": 600.2135620601475,
+      "cpu_limit": "max 100000",
+      "cpu_stat_start": {
+        "usage_usec": 294745,
+        "user_usec": 195544,
+        "system_usec": 99201,
+        "nice_usec": 0,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpu_stat_end": {
+        "usage_usec": 1104444,
+        "user_usec": 758611,
+        "system_usec": 345833,
+        "nice_usec": 0,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpu_usage_delta_usec": 809699,
+      "cpu_seconds": 0.809699,
+      "average_one_core_percent": 0.13490181681680494,
+      "host_cpu_busy_percent": 27.37985976180779,
+      "host_load_average_start": [
+        5.42041015625,
+        8.81982421875,
+        9.9853515625
+      ],
+      "host_load_average_end": [
+        6.37841796875,
+        10.13671875,
+        10.7490234375
+      ],
+      "live_session": true,
+      "session_login_wait_seconds": 5.061482107732445,
+      "session_login_status_attempts": 2,
+      "session_status_before": {
+        "connected": true,
+        "logged_in": true,
+        "state": "Connected, LoggedIn"
+      },
+      "session_status_after": {
+        "connected": true,
+        "logged_in": true,
+        "state": "Connected, LoggedIn"
+      },
+      "session_logged_in_at_measurement_boundaries": true,
+      "dht_status_before": {
+        "enabled": true,
+        "bootstrapped": true,
+        "running": true,
+        "routing_node_count": 153,
+        "discovered_peer_count": 69,
+        "last_error_present": false
+      },
+      "dht_status_after": {
+        "enabled": true,
+        "bootstrapped": true,
+        "running": true,
+        "routing_node_count": 153,
+        "discovered_peer_count": 69,
+        "last_error_present": false
+      },
+      "memory_samples": [
+        {
+          "time_utc": "2026-10-12T18:49:35.250239+00:00",
+          "memory_current_bytes": 6983680,
+          "memory_stat_bytes": {
+            "anon": 4161536,
+            "file": 20480,
+            "shmem": 0,
+            "kernel": 1744896,
+            "slab": 686128
+          },
+          "process_count": 1,
+          "rss_kib_sum": 30268,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:50:35.270679+00:00",
+          "memory_current_bytes": 6221824,
+          "memory_stat_bytes": {
+            "anon": 4169728,
+            "file": 20480,
+            "shmem": 0,
+            "kernel": 1740800,
+            "slab": 684072
+          },
+          "process_count": 1,
+          "rss_kib_sum": 30336,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:51:35.288455+00:00",
+          "memory_current_bytes": 6213632,
+          "memory_stat_bytes": {
+            "anon": 4186112,
+            "file": 20480,
+            "shmem": 0,
+            "kernel": 1740800,
+            "slab": 684072
+          },
+          "process_count": 1,
+          "rss_kib_sum": 30352,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:52:35.307667+00:00",
+          "memory_current_bytes": 6217728,
+          "memory_stat_bytes": {
+            "anon": 4186112,
+            "file": 20480,
+            "shmem": 0,
+            "kernel": 1740800,
+            "slab": 683968
+          },
+          "process_count": 1,
+          "rss_kib_sum": 30352,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:53:35.328008+00:00",
+          "memory_current_bytes": 5955584,
+          "memory_stat_bytes": {
+            "anon": 4186112,
+            "file": 20480,
+            "shmem": 0,
+            "kernel": 1740800,
+            "slab": 683968
+          },
+          "process_count": 1,
+          "rss_kib_sum": 30352,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:54:35.347531+00:00",
+          "memory_current_bytes": 6213632,
+          "memory_stat_bytes": {
+            "anon": 4186112,
+            "file": 20480,
+            "shmem": 0,
+            "kernel": 1740800,
+            "slab": 683968
+          },
+          "process_count": 1,
+          "rss_kib_sum": 30352,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:55:35.366467+00:00",
+          "memory_current_bytes": 6213632,
+          "memory_stat_bytes": {
+            "anon": 4186112,
+            "file": 20480,
+            "shmem": 0,
+            "kernel": 1740800,
+            "slab": 683968
+          },
+          "process_count": 1,
+          "rss_kib_sum": 30352,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:56:35.386521+00:00",
+          "memory_current_bytes": 5959680,
+          "memory_stat_bytes": {
+            "anon": 4190208,
+            "file": 20480,
+            "shmem": 0,
+            "kernel": 1740800,
+            "slab": 683968
+          },
+          "process_count": 1,
+          "rss_kib_sum": 30304,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:57:35.406835+00:00",
+          "memory_current_bytes": 6238208,
+          "memory_stat_bytes": {
+            "anon": 4210688,
+            "file": 20480,
+            "shmem": 0,
+            "kernel": 1740800,
+            "slab": 683968
+          },
+          "process_count": 1,
+          "rss_kib_sum": 30240,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:58:35.423652+00:00",
+          "memory_current_bytes": 6238208,
+          "memory_stat_bytes": {
+            "anon": 4210688,
+            "file": 20480,
+            "shmem": 0,
+            "kernel": 1740800,
+            "slab": 683968
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29984,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T18:59:35.441943+00:00",
+          "memory_current_bytes": 6238208,
+          "memory_stat_bytes": {
+            "anon": 4210688,
+            "file": 20480,
+            "shmem": 0,
+            "kernel": 1740800,
+            "slab": 683968
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29600,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        }
+      ]
+    },
+    {
+      "app": "slskr",
+      "repetition": 2,
+      "container_started_utc": "2026-10-12T18:59:35.852561+00:00",
+      "measurement_started_utc": "2026-10-12T19:02:41.165331+00:00",
+      "warmup_seconds": 180,
+      "requested_window_seconds": 600,
+      "actual_wall_seconds": 600.2646414618939,
+      "cpu_limit": "max 100000",
+      "cpu_stat_start": {
+        "usage_usec": 146996,
+        "user_usec": 94973,
+        "system_usec": 52022,
+        "nice_usec": 0,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpu_stat_end": {
+        "usage_usec": 720931,
+        "user_usec": 482299,
+        "system_usec": 238631,
+        "nice_usec": 0,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpu_usage_delta_usec": 573935,
+      "cpu_seconds": 0.573935,
+      "average_one_core_percent": 0.09561366110158175,
+      "host_cpu_busy_percent": 41.31985579340868,
+      "host_load_average_start": [
+        9.228515625,
+        9.826171875,
+        10.49609375
+      ],
+      "host_load_average_end": [
+        23.26953125,
+        21.05419921875,
+        14.7958984375
+      ],
+      "live_session": true,
+      "session_login_wait_seconds": 5.026609745807946,
+      "session_login_status_attempts": 2,
+      "session_status_before": {
+        "connected": true,
+        "logged_in": true,
+        "state": "Connected, LoggedIn"
+      },
+      "session_status_after": {
+        "connected": true,
+        "logged_in": true,
+        "state": "Connected, LoggedIn"
+      },
+      "session_logged_in_at_measurement_boundaries": true,
+      "dht_status_before": {
+        "enabled": false,
+        "bootstrapped": null,
+        "running": false,
+        "routing_node_count": 0,
+        "discovered_peer_count": 0,
+        "last_error_present": false
+      },
+      "dht_status_after": {
+        "enabled": false,
+        "bootstrapped": null,
+        "running": false,
+        "routing_node_count": 0,
+        "discovered_peer_count": 0,
+        "last_error_present": false
+      },
+      "memory_samples": [
+        {
+          "time_utc": "2026-10-12T19:02:41.165331+00:00",
+          "memory_current_bytes": 16449536,
+          "memory_stat_bytes": {
+            "anon": 4153344,
+            "file": 9543680,
+            "shmem": 0,
+            "kernel": 1703936,
+            "slab": 676976
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28556,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:03:41.183094+00:00",
+          "memory_current_bytes": 15409152,
+          "memory_stat_bytes": {
+            "anon": 4161536,
+            "file": 9543680,
+            "shmem": 0,
+            "kernel": 1703936,
+            "slab": 676976
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28560,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:04:41.202268+00:00",
+          "memory_current_bytes": 15413248,
+          "memory_stat_bytes": {
+            "anon": 4161536,
+            "file": 9543680,
+            "shmem": 0,
+            "kernel": 1703936,
+            "slab": 676976
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28560,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:05:41.220089+00:00",
+          "memory_current_bytes": 15421440,
+          "memory_stat_bytes": {
+            "anon": 4165632,
+            "file": 9543680,
+            "shmem": 0,
+            "kernel": 1703936,
+            "slab": 676976
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28564,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:06:41.242982+00:00",
+          "memory_current_bytes": 15413248,
+          "memory_stat_bytes": {
+            "anon": 4165632,
+            "file": 9543680,
+            "shmem": 0,
+            "kernel": 1703936,
+            "slab": 676976
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28564,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:07:41.305056+00:00",
+          "memory_current_bytes": 15679488,
+          "memory_stat_bytes": {
+            "anon": 4169728,
+            "file": 9543680,
+            "shmem": 0,
+            "kernel": 1703936,
+            "slab": 676976
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28568,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:08:41.324435+00:00",
+          "memory_current_bytes": 15679488,
+          "memory_stat_bytes": {
+            "anon": 4169728,
+            "file": 9543680,
+            "shmem": 0,
+            "kernel": 1703936,
+            "slab": 676976
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28568,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:09:41.342503+00:00",
+          "memory_current_bytes": 15687680,
+          "memory_stat_bytes": {
+            "anon": 4173824,
+            "file": 9543680,
+            "shmem": 0,
+            "kernel": 1703936,
+            "slab": 676976
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28544,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:10:41.361973+00:00",
+          "memory_current_bytes": 31379456,
+          "memory_stat_bytes": {
+            "anon": 4173824,
+            "file": 25235456,
+            "shmem": 0,
+            "kernel": 1712128,
+            "slab": 686448
+          },
+          "process_count": 1,
+          "rss_kib_sum": 10260,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:11:41.385611+00:00",
+          "memory_current_bytes": 31121408,
+          "memory_stat_bytes": {
+            "anon": 4173824,
+            "file": 25235456,
+            "shmem": 0,
+            "kernel": 1712128,
+            "slab": 686448
+          },
+          "process_count": 1,
+          "rss_kib_sum": 10352,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:12:41.409108+00:00",
+          "memory_current_bytes": 31387648,
+          "memory_stat_bytes": {
+            "anon": 4177920,
+            "file": 25235456,
+            "shmem": 0,
+            "kernel": 1712128,
+            "slab": 686448
+          },
+          "process_count": 1,
+          "rss_kib_sum": 10356,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        }
+      ]
+    },
+    {
+      "app": "slskr-dht",
+      "repetition": 2,
+      "container_started_utc": "2026-10-12T19:12:41.895931+00:00",
+      "measurement_started_utc": "2026-10-12T19:15:47.211427+00:00",
+      "warmup_seconds": 180,
+      "requested_window_seconds": 600,
+      "actual_wall_seconds": 600.3582804687321,
+      "cpu_limit": "max 100000",
+      "cpu_stat_start": {
+        "usage_usec": 216845,
+        "user_usec": 145437,
+        "system_usec": 71408,
+        "nice_usec": 0,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpu_stat_end": {
+        "usage_usec": 975123,
+        "user_usec": 706169,
+        "system_usec": 268953,
+        "nice_usec": 0,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpu_usage_delta_usec": 758278,
+      "cpu_seconds": 0.758278,
+      "average_one_core_percent": 0.12630424609251187,
+      "host_cpu_busy_percent": 43.95392248606075,
+      "host_load_average_start": [
+        8.619140625,
+        15.091796875,
+        13.62744140625
+      ],
+      "host_load_average_end": [
+        20.1962890625,
+        21.5546875,
+        17.134765625
+      ],
+      "live_session": true,
+      "session_login_wait_seconds": 5.028588940855116,
+      "session_login_status_attempts": 2,
+      "session_status_before": {
+        "connected": true,
+        "logged_in": true,
+        "state": "Connected, LoggedIn"
+      },
+      "session_status_after": {
+        "connected": true,
+        "logged_in": true,
+        "state": "Connected, LoggedIn"
+      },
+      "session_logged_in_at_measurement_boundaries": true,
+      "dht_status_before": {
+        "enabled": true,
+        "bootstrapped": true,
+        "running": true,
+        "routing_node_count": 116,
+        "discovered_peer_count": 70,
+        "last_error_present": false
+      },
+      "dht_status_after": {
+        "enabled": true,
+        "bootstrapped": true,
+        "running": true,
+        "routing_node_count": 118,
+        "discovered_peer_count": 71,
+        "last_error_present": false
+      },
+      "memory_samples": [
+        {
+          "time_utc": "2026-10-12T19:15:47.211427+00:00",
+          "memory_current_bytes": 10588160,
+          "memory_stat_bytes": {
+            "anon": 4329472,
+            "file": 3457024,
+            "shmem": 0,
+            "kernel": 1748992,
+            "slab": 692504
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29620,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:16:47.231243+00:00",
+          "memory_current_bytes": 9658368,
+          "memory_stat_bytes": {
+            "anon": 4333568,
+            "file": 3571712,
+            "shmem": 0,
+            "kernel": 1748992,
+            "slab": 692504
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29624,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:17:47.250406+00:00",
+          "memory_current_bytes": 9953280,
+          "memory_stat_bytes": {
+            "anon": 4370432,
+            "file": 3571712,
+            "shmem": 0,
+            "kernel": 1748992,
+            "slab": 694360
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29852,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:18:47.268131+00:00",
+          "memory_current_bytes": 9965568,
+          "memory_stat_bytes": {
+            "anon": 4378624,
+            "file": 3571712,
+            "shmem": 0,
+            "kernel": 1748992,
+            "slab": 694360
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29860,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:19:47.286264+00:00",
+          "memory_current_bytes": 9965568,
+          "memory_stat_bytes": {
+            "anon": 4378624,
+            "file": 3571712,
+            "shmem": 0,
+            "kernel": 1748992,
+            "slab": 694152
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29860,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:20:47.306802+00:00",
+          "memory_current_bytes": 9973760,
+          "memory_stat_bytes": {
+            "anon": 4386816,
+            "file": 3571712,
+            "shmem": 0,
+            "kernel": 1748992,
+            "slab": 694152
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29868,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:21:47.378006+00:00",
+          "memory_current_bytes": 9711616,
+          "memory_stat_bytes": {
+            "anon": 4386816,
+            "file": 3571712,
+            "shmem": 0,
+            "kernel": 1748992,
+            "slab": 694152
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29868,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:22:47.427477+00:00",
+          "memory_current_bytes": 9711616,
+          "memory_stat_bytes": {
+            "anon": 4386816,
+            "file": 3571712,
+            "shmem": 0,
+            "kernel": 1748992,
+            "slab": 694152
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29868,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:23:47.450268+00:00",
+          "memory_current_bytes": 10010624,
+          "memory_stat_bytes": {
+            "anon": 4423680,
+            "file": 3571712,
+            "shmem": 0,
+            "kernel": 1748992,
+            "slab": 694152
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29944,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:24:47.494813+00:00",
+          "memory_current_bytes": 10010624,
+          "memory_stat_bytes": {
+            "anon": 4423680,
+            "file": 3571712,
+            "shmem": 0,
+            "kernel": 1748992,
+            "slab": 694152
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29944,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:25:47.549638+00:00",
+          "memory_current_bytes": 9748480,
+          "memory_stat_bytes": {
+            "anon": 4423680,
+            "file": 3571712,
+            "shmem": 0,
+            "kernel": 1748992,
+            "slab": 694152
+          },
+          "process_count": 1,
+          "rss_kib_sum": 30008,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        }
+      ]
+    },
+    {
+      "app": "slskd",
+      "repetition": 2,
+      "container_started_utc": "2026-10-12T19:25:47.953306+00:00",
+      "measurement_started_utc": "2026-10-12T19:28:53.375046+00:00",
+      "warmup_seconds": 180,
+      "requested_window_seconds": 600,
+      "actual_wall_seconds": 600.288245589938,
+      "cpu_limit": "max 100000",
+      "cpu_stat_start": {
+        "usage_usec": 8864877,
+        "user_usec": 7878533,
+        "system_usec": 986343,
+        "nice_usec": 0,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpu_stat_end": {
+        "usage_usec": 23192336,
+        "user_usec": 19839651,
+        "system_usec": 3352684,
+        "nice_usec": 0,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpu_usage_delta_usec": 14327459,
+      "cpu_seconds": 14.327459,
+      "average_one_core_percent": 2.3867632100507943,
+      "host_cpu_busy_percent": 31.566325098838696,
+      "host_load_average_start": [
+        13.07373046875,
+        17.64892578125,
+        16.40771484375
+      ],
+      "host_load_average_end": [
+        7.5537109375,
+        12.154296875,
+        14.48583984375
+      ],
+      "live_session": true,
+      "session_login_wait_seconds": 5.1216354123316705,
+      "session_login_status_attempts": 2,
+      "session_status_before": {
+        "connected": true,
+        "logged_in": true,
+        "state": "Connected, LoggedIn"
+      },
+      "session_status_after": {
+        "connected": false,
+        "logged_in": false,
+        "state": "Disconnected"
+      },
+      "session_logged_in_at_measurement_boundaries": false,
+      "dht_status_before": null,
+      "dht_status_after": null,
+      "memory_samples": [
+        {
+          "time_utc": "2026-10-12T19:28:53.375046+00:00",
+          "memory_current_bytes": 325386240,
+          "memory_stat_bytes": {
+            "anon": 100569088,
+            "file": 217903104,
+            "shmem": 53207040,
+            "kernel": 4870144,
+            "slab": 2937112
+          },
+          "process_count": 2,
+          "rss_kib_sum": 249084,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:29:53.394722+00:00",
+          "memory_current_bytes": 330690560,
+          "memory_stat_bytes": {
+            "anon": 103579648,
+            "file": 220717056,
+            "shmem": 53571584,
+            "kernel": 4935680,
+            "slab": 2964672
+          },
+          "process_count": 2,
+          "rss_kib_sum": 252548,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:30:53.415396+00:00",
+          "memory_current_bytes": 338776064,
+          "memory_stat_bytes": {
+            "anon": 110317568,
+            "file": 223490048,
+            "shmem": 53690368,
+            "kernel": 4968448,
+            "slab": 2966928
+          },
+          "process_count": 2,
+          "rss_kib_sum": 259048,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:31:53.448363+00:00",
+          "memory_current_bytes": 342028288,
+          "memory_stat_bytes": {
+            "anon": 110485504,
+            "file": 226050048,
+            "shmem": 53743616,
+            "kernel": 4919296,
+            "slab": 2949888
+          },
+          "process_count": 2,
+          "rss_kib_sum": 259268,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:32:53.502284+00:00",
+          "memory_current_bytes": 347291648,
+          "memory_stat_bytes": {
+            "anon": 113537024,
+            "file": 228454400,
+            "shmem": 53776384,
+            "kernel": 4882432,
+            "slab": 2932688
+          },
+          "process_count": 2,
+          "rss_kib_sum": 262244,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:33:53.520361+00:00",
+          "memory_current_bytes": 349978624,
+          "memory_stat_bytes": {
+            "anon": 113405952,
+            "file": 231010304,
+            "shmem": 53800960,
+            "kernel": 5025792,
+            "slab": 2994896
+          },
+          "process_count": 2,
+          "rss_kib_sum": 262112,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:34:53.565831+00:00",
+          "memory_current_bytes": 352751616,
+          "memory_stat_bytes": {
+            "anon": 113725440,
+            "file": 233488384,
+            "shmem": 53850112,
+            "kernel": 4968448,
+            "slab": 2977024
+          },
+          "process_count": 2,
+          "rss_kib_sum": 262456,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:35:53.585320+00:00",
+          "memory_current_bytes": 356343808,
+          "memory_stat_bytes": {
+            "anon": 115040256,
+            "file": 235925504,
+            "shmem": 53907456,
+            "kernel": 4796416,
+            "slab": 2914624
+          },
+          "process_count": 2,
+          "rss_kib_sum": 263816,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:36:53.606070+00:00",
+          "memory_current_bytes": 361541632,
+          "memory_stat_bytes": {
+            "anon": 119230464,
+            "file": 237768704,
+            "shmem": 54456320,
+            "kernel": 4280320,
+            "slab": 2726448
+          },
+          "process_count": 2,
+          "rss_kib_sum": 268472,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:37:53.625707+00:00",
+          "memory_current_bytes": 361549824,
+          "memory_stat_bytes": {
+            "anon": 119193600,
+            "file": 237813760,
+            "shmem": 54501376,
+            "kernel": 4280320,
+            "slab": 2726688
+          },
+          "process_count": 2,
+          "rss_kib_sum": 268484,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:38:53.644340+00:00",
+          "memory_current_bytes": 362119168,
+          "memory_stat_bytes": {
+            "anon": 119554048,
+            "file": 238018560,
+            "shmem": 54706176,
+            "kernel": 4288512,
+            "slab": 2729232
+          },
+          "process_count": 2,
+          "rss_kib_sum": 269020,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        }
+      ]
+    },
+    {
+      "app": "slskr-dht",
+      "repetition": 3,
+      "container_started_utc": "2026-10-12T19:38:54.078285+00:00",
+      "measurement_started_utc": "2026-10-12T19:41:59.513778+00:00",
+      "warmup_seconds": 180,
+      "requested_window_seconds": 600,
+      "actual_wall_seconds": 600.2364766271785,
+      "cpu_limit": "max 100000",
+      "cpu_stat_start": {
+        "usage_usec": 236841,
+        "user_usec": 161907,
+        "system_usec": 74933,
+        "nice_usec": 0,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpu_stat_end": {
+        "usage_usec": 967811,
+        "user_usec": 715740,
+        "system_usec": 252071,
+        "nice_usec": 0,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpu_usage_delta_usec": 730970,
+      "cpu_seconds": 0.73097,
+      "average_one_core_percent": 0.12178033632801416,
+      "host_cpu_busy_percent": 27.89752217819436,
+      "host_load_average_start": [
+        20.72314453125,
+        16.08544921875,
+        15.4931640625
+      ],
+      "host_load_average_end": [
+        6.20361328125,
+        10.47607421875,
+        13.55810546875
+      ],
+      "live_session": true,
+      "session_login_wait_seconds": 5.028905073180795,
+      "session_login_status_attempts": 2,
+      "session_status_before": {
+        "connected": true,
+        "logged_in": true,
+        "state": "Connected, LoggedIn"
+      },
+      "session_status_after": {
+        "connected": true,
+        "logged_in": true,
+        "state": "Connected, LoggedIn"
+      },
+      "session_logged_in_at_measurement_boundaries": true,
+      "dht_status_before": {
+        "enabled": true,
+        "bootstrapped": true,
+        "running": true,
+        "routing_node_count": 113,
+        "discovered_peer_count": 72,
+        "last_error_present": false
+      },
+      "dht_status_after": {
+        "enabled": true,
+        "bootstrapped": true,
+        "running": true,
+        "routing_node_count": 113,
+        "discovered_peer_count": 0,
+        "last_error_present": true
+      },
+      "memory_samples": [
+        {
+          "time_utc": "2026-10-12T19:41:59.513778+00:00",
+          "memory_current_bytes": 61370368,
+          "memory_stat_bytes": {
+            "anon": 4415488,
+            "file": 54038528,
+            "shmem": 0,
+            "kernel": 1871872,
+            "slab": 826224
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29580,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:42:59.548370+00:00",
+          "memory_current_bytes": 60309504,
+          "memory_stat_bytes": {
+            "anon": 4415488,
+            "file": 54026240,
+            "shmem": 0,
+            "kernel": 1863680,
+            "slab": 826584
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29580,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:43:59.568659+00:00",
+          "memory_current_bytes": 60612608,
+          "memory_stat_bytes": {
+            "anon": 4452352,
+            "file": 54026240,
+            "shmem": 0,
+            "kernel": 1867776,
+            "slab": 830768
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29744,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:44:59.588212+00:00",
+          "memory_current_bytes": 60616704,
+          "memory_stat_bytes": {
+            "anon": 4456448,
+            "file": 54026240,
+            "shmem": 0,
+            "kernel": 1867776,
+            "slab": 830768
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29748,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:45:59.606262+00:00",
+          "memory_current_bytes": 60358656,
+          "memory_stat_bytes": {
+            "anon": 4460544,
+            "file": 54026240,
+            "shmem": 0,
+            "kernel": 1867776,
+            "slab": 830768
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29752,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:46:59.630365+00:00",
+          "memory_current_bytes": 60628992,
+          "memory_stat_bytes": {
+            "anon": 4464640,
+            "file": 54026240,
+            "shmem": 0,
+            "kernel": 1867776,
+            "slab": 830768
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29756,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:47:59.650919+00:00",
+          "memory_current_bytes": 60366848,
+          "memory_stat_bytes": {
+            "anon": 4464640,
+            "file": 54026240,
+            "shmem": 0,
+            "kernel": 1867776,
+            "slab": 830768
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29756,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:48:59.674101+00:00",
+          "memory_current_bytes": 60633088,
+          "memory_stat_bytes": {
+            "anon": 4468736,
+            "file": 54026240,
+            "shmem": 0,
+            "kernel": 1867776,
+            "slab": 830768
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29760,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:49:59.692543+00:00",
+          "memory_current_bytes": 60641280,
+          "memory_stat_bytes": {
+            "anon": 4468736,
+            "file": 54026240,
+            "shmem": 0,
+            "kernel": 1867776,
+            "slab": 830768
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29760,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:50:59.711033+00:00",
+          "memory_current_bytes": 60633088,
+          "memory_stat_bytes": {
+            "anon": 4472832,
+            "file": 54026240,
+            "shmem": 0,
+            "kernel": 1867776,
+            "slab": 830768
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29764,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:51:59.731342+00:00",
+          "memory_current_bytes": 60633088,
+          "memory_stat_bytes": {
+            "anon": 4472832,
+            "file": 54026240,
+            "shmem": 0,
+            "kernel": 1867776,
+            "slab": 830768
+          },
+          "process_count": 1,
+          "rss_kib_sum": 29764,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        }
+      ]
+    },
+    {
+      "app": "slskd",
+      "repetition": 3,
+      "container_started_utc": "2026-10-12T19:52:00.168142+00:00",
+      "measurement_started_utc": "2026-10-12T19:55:05.776493+00:00",
+      "warmup_seconds": 180,
+      "requested_window_seconds": 600,
+      "actual_wall_seconds": 600.4624060797505,
+      "cpu_limit": "max 100000",
+      "cpu_stat_start": {
+        "usage_usec": 9193686,
+        "user_usec": 8164696,
+        "system_usec": 1028989,
+        "nice_usec": 0,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpu_stat_end": {
+        "usage_usec": 26994977,
+        "user_usec": 22790758,
+        "system_usec": 4204219,
+        "nice_usec": 0,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpu_usage_delta_usec": 17801291,
+      "cpu_seconds": 17.801291,
+      "average_one_core_percent": 2.964597087138161,
+      "host_cpu_busy_percent": 46.75966591506612,
+      "host_load_average_start": [
+        10.134765625,
+        9.9052734375,
+        12.734375
+      ],
+      "host_load_average_end": [
+        27.76171875,
+        33.09033203125,
+        21.9296875
+      ],
+      "live_session": true,
+      "session_login_wait_seconds": 5.117163416929543,
+      "session_login_status_attempts": 2,
+      "session_status_before": {
+        "connected": true,
+        "logged_in": true,
+        "state": "Connected, LoggedIn"
+      },
+      "session_status_after": {
+        "connected": true,
+        "logged_in": true,
+        "state": "Connected, LoggedIn"
+      },
+      "session_logged_in_at_measurement_boundaries": true,
+      "dht_status_before": null,
+      "dht_status_after": null,
+      "memory_samples": [
+        {
+          "time_utc": "2026-10-12T19:55:05.776493+00:00",
+          "memory_current_bytes": 302206976,
+          "memory_stat_bytes": {
+            "anon": 102875136,
+            "file": 189796352,
+            "shmem": 52543488,
+            "kernel": 4317184,
+            "slab": 2504240
+          },
+          "process_count": 2,
+          "rss_kib_sum": 241860,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:56:05.794753+00:00",
+          "memory_current_bytes": 308035584,
+          "memory_stat_bytes": {
+            "anon": 106450944,
+            "file": 196980736,
+            "shmem": 52785152,
+            "kernel": 4354048,
+            "slab": 2518704
+          },
+          "process_count": 2,
+          "rss_kib_sum": 245980,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:57:05.813997+00:00",
+          "memory_current_bytes": 318341120,
+          "memory_stat_bytes": {
+            "anon": 113754112,
+            "file": 199622656,
+            "shmem": 52854784,
+            "kernel": 4407296,
+            "slab": 2531144
+          },
+          "process_count": 2,
+          "rss_kib_sum": 253204,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:58:05.835326+00:00",
+          "memory_current_bytes": 322080768,
+          "memory_stat_bytes": {
+            "anon": 115216384,
+            "file": 202469376,
+            "shmem": 53166080,
+            "kernel": 4366336,
+            "slab": 2515360
+          },
+          "process_count": 2,
+          "rss_kib_sum": 254956,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T19:59:05.861914+00:00",
+          "memory_current_bytes": 325447680,
+          "memory_stat_bytes": {
+            "anon": 115818496,
+            "file": 204922880,
+            "shmem": 53174272,
+            "kernel": 4526080,
+            "slab": 2576328
+          },
+          "process_count": 2,
+          "rss_kib_sum": 255692,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T20:00:05.883125+00:00",
+          "memory_current_bytes": 331321344,
+          "memory_stat_bytes": {
+            "anon": 117235712,
+            "file": 207269888,
+            "shmem": 53223424,
+            "kernel": 4403200,
+            "slab": 2526568
+          },
+          "process_count": 2,
+          "rss_kib_sum": 256992,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T20:01:05.903862+00:00",
+          "memory_current_bytes": 332619776,
+          "memory_stat_bytes": {
+            "anon": 118124544,
+            "file": 209768448,
+            "shmem": 53227520,
+            "kernel": 4452352,
+            "slab": 2553960
+          },
+          "process_count": 2,
+          "rss_kib_sum": 257844,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T20:02:05.940700+00:00",
+          "memory_current_bytes": 336465920,
+          "memory_stat_bytes": {
+            "anon": 119169024,
+            "file": 212512768,
+            "shmem": 53239808,
+            "kernel": 4263936,
+            "slab": 2478824
+          },
+          "process_count": 2,
+          "rss_kib_sum": 258568,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T20:03:06.037857+00:00",
+          "memory_current_bytes": 261066752,
+          "memory_stat_bytes": {
+            "anon": 119943168,
+            "file": 136224768,
+            "shmem": 53248000,
+            "kernel": 4374528,
+            "slab": 2527640
+          },
+          "process_count": 2,
+          "rss_kib_sum": 223332,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T20:04:06.153880+00:00",
+          "memory_current_bytes": 218779648,
+          "memory_stat_bytes": {
+            "anon": 120852480,
+            "file": 92213248,
+            "shmem": 53276672,
+            "kernel": 4153344,
+            "slab": 2403080
+          },
+          "process_count": 2,
+          "rss_kib_sum": 201636,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T20:05:06.211192+00:00",
+          "memory_current_bytes": 242008064,
+          "memory_stat_bytes": {
+            "anon": 125968384,
+            "file": 112218112,
+            "shmem": 53805056,
+            "kernel": 3821568,
+            "slab": 2275728
+          },
+          "process_count": 2,
+          "rss_kib_sum": 209024,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        }
+      ]
+    },
+    {
+      "app": "slskr",
+      "repetition": 3,
+      "container_started_utc": "2026-10-12T20:05:06.781416+00:00",
+      "measurement_started_utc": "2026-10-12T20:08:12.402363+00:00",
+      "warmup_seconds": 180,
+      "requested_window_seconds": 600,
+      "actual_wall_seconds": 600.234629096929,
+      "cpu_limit": "max 100000",
+      "cpu_stat_start": {
+        "usage_usec": 126529,
+        "user_usec": 80323,
+        "system_usec": 46205,
+        "nice_usec": 0,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpu_stat_end": {
+        "usage_usec": 681801,
+        "user_usec": 511625,
+        "system_usec": 170175,
+        "nice_usec": 0,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 0,
+        "nr_throttled": 0,
+        "throttled_usec": 0,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpu_usage_delta_usec": 555272,
+      "cpu_seconds": 0.555272,
+      "average_one_core_percent": 0.09250915776642601,
+      "host_cpu_busy_percent": 35.120152609877934,
+      "host_load_average_start": [
+        14.65625,
+        23.0419921875,
+        19.9482421875
+      ],
+      "host_load_average_end": [
+        14.50439453125,
+        15.91796875,
+        17.5556640625
+      ],
+      "live_session": true,
+      "session_login_wait_seconds": 5.029503906145692,
+      "session_login_status_attempts": 2,
+      "session_status_before": {
+        "connected": true,
+        "logged_in": true,
+        "state": "Connected, LoggedIn"
+      },
+      "session_status_after": {
+        "connected": true,
+        "logged_in": true,
+        "state": "Connected, LoggedIn"
+      },
+      "session_logged_in_at_measurement_boundaries": true,
+      "dht_status_before": {
+        "enabled": false,
+        "bootstrapped": null,
+        "running": false,
+        "routing_node_count": 0,
+        "discovered_peer_count": 0,
+        "last_error_present": false
+      },
+      "dht_status_after": {
+        "enabled": false,
+        "bootstrapped": null,
+        "running": false,
+        "routing_node_count": 0,
+        "discovered_peer_count": 0,
+        "last_error_present": false
+      },
+      "memory_samples": [
+        {
+          "time_utc": "2026-10-12T20:08:12.402363+00:00",
+          "memory_current_bytes": 60264448,
+          "memory_stat_bytes": {
+            "anon": 3887104,
+            "file": 53760000,
+            "shmem": 0,
+            "kernel": 1830912,
+            "slab": 816072
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28228,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T20:09:12.422837+00:00",
+          "memory_current_bytes": 59650048,
+          "memory_stat_bytes": {
+            "anon": 3977216,
+            "file": 53841920,
+            "shmem": 0,
+            "kernel": 1830912,
+            "slab": 816664
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28228,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T20:10:12.439855+00:00",
+          "memory_current_bytes": 59957248,
+          "memory_stat_bytes": {
+            "anon": 4018176,
+            "file": 53841920,
+            "shmem": 0,
+            "kernel": 1835008,
+            "slab": 820848
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28652,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T20:11:12.462306+00:00",
+          "memory_current_bytes": 59969536,
+          "memory_stat_bytes": {
+            "anon": 4026368,
+            "file": 53841920,
+            "shmem": 0,
+            "kernel": 1835008,
+            "slab": 820848
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28660,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T20:12:12.482129+00:00",
+          "memory_current_bytes": 59711488,
+          "memory_stat_bytes": {
+            "anon": 4030464,
+            "file": 53841920,
+            "shmem": 0,
+            "kernel": 1835008,
+            "slab": 820848
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28664,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T20:13:12.506539+00:00",
+          "memory_current_bytes": 59969536,
+          "memory_stat_bytes": {
+            "anon": 4030464,
+            "file": 53841920,
+            "shmem": 0,
+            "kernel": 1835008,
+            "slab": 820256
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28664,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T20:14:12.533362+00:00",
+          "memory_current_bytes": 59981824,
+          "memory_stat_bytes": {
+            "anon": 4042752,
+            "file": 53841920,
+            "shmem": 0,
+            "kernel": 1835008,
+            "slab": 820256
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28676,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T20:15:12.557389+00:00",
+          "memory_current_bytes": 59723776,
+          "memory_stat_bytes": {
+            "anon": 4042752,
+            "file": 53841920,
+            "shmem": 0,
+            "kernel": 1835008,
+            "slab": 820256
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28676,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T20:16:12.579398+00:00",
+          "memory_current_bytes": 59719680,
+          "memory_stat_bytes": {
+            "anon": 4042752,
+            "file": 53841920,
+            "shmem": 0,
+            "kernel": 1835008,
+            "slab": 820256
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28676,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T20:17:12.597721+00:00",
+          "memory_current_bytes": 59723776,
+          "memory_stat_bytes": {
+            "anon": 4046848,
+            "file": 53841920,
+            "shmem": 0,
+            "kernel": 1835008,
+            "slab": 820048
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28744,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        },
+        {
+          "time_utc": "2026-10-12T20:18:12.619186+00:00",
+          "memory_current_bytes": 59736064,
+          "memory_stat_bytes": {
+            "anon": 4050944,
+            "file": 53841920,
+            "shmem": 0,
+            "kernel": 1835008,
+            "slab": 820048
+          },
+          "process_count": 1,
+          "rss_kib_sum": 28748,
+          "pss_kib_sum": null,
+          "pss_complete": false
+        }
+      ]
+    }
+  ],
+  "updated_utc": "2026-10-12T20:18:13.156589+00:00",
+  "completed_utc": "2026-10-12T20:18:13.157381+00:00"
+}

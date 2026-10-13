@@ -4,6 +4,24 @@ This is the maintained performance note. It records what has been measured and
 what still needs measurement; source size, test counts, and intuition are not
 runtime benchmarks.
 
+The dated [idle-container comparison with slskd](../benchmarks/artifacts/20261012-idle-container-slskr-slskd.md)
+is a diagnostic release-image measurement. It records CPU and process RSS for
+three 600-second windows in each of three profiles: a matched disconnected
+slskd/slskR pair and slskR with DHT enabled. It retains image digests, runtime
+settings, raw JSON, a repeatable runner, and interpretation limits. It is not a
+CI threshold or a production workload claim. The report describes the
+connected-idle and target-NAS measurements needed to evaluate a user's own
+Docker CPU reading.
+
+A separate [live Soulseek idle comparison](../benchmarks/artifacts/20261012-live-soulseek-idle.md)
+measures the same three connected-idle profiles on `desktop host`; an attempt on
+`server host` was aborted under severe CPU saturation and yielded no valid trial.
+The report retains CPU, RSS, session/DHT boundary status, and host-load samples
+for each completed trial, plus metadata for the aborted attempt. Its scope and
+observed machine conditions are distinct from the disconnected baseline
+above; neither report predicts an unrelated NAS or an active
+share/search/transfer workload.
+
 ## Current inventory
 
 As of the 2026-09-15 local audit baseline (HEAD `0dfab48`):

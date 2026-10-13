@@ -16,6 +16,16 @@ These interaction rules are standard for all model interfaces used with this rep
 - Optimize for accuracy, not approval.
 - If you do not know, say so. Never fabricate.
 
+## Machine inventory and scratch space
+
+- `kspld0` is the desktop; `kspls0` is the server.
+- `kspls0` has ample LVM storage for tests, scratch, and temporary artifacts
+  when speed is not important. Confirm the host and available path before
+  writing; do not assume a mount path.
+- Keep temporary files and generated artifacts scoped to the task. Remove
+  task-created files that are no longer needed, and preserve existing or
+  ambiguous files and user data.
+
 ## Release-note contract
 
 Do not let user-facing behavior, security changes, operational changes, or
