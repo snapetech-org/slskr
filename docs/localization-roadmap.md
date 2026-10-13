@@ -14,7 +14,7 @@ The shipped browser UI is the React application under `web/`. Its reachable bran
 
 ## First-pass locale order
 
-This is a practical rollout order, not a claim about these apps' actual user base. Product-level language analytics are not available. It combines global speaker estimates with online-content usage, and keeps the requested Arabic and Asian-language coverage in the first waves:
+This is a practical rollout order, not a claim about these apps' actual user base. Product-level language analytics are not available. It combines global speaker estimates with online-content usage. Arabic remains a planned follow-up until its right-to-left layout review is complete:
 
 1. Spanish (es; es-MX where the product already distinguishes it)
 2. Simplified Chinese (zh-Hans / zh-CN)
@@ -23,11 +23,12 @@ This is a practical rollout order, not a claim about these apps' actual user bas
 5. Japanese (ja)
 6. French (fr)
 7. Brazilian Portuguese (pt-BR)
-8. Arabic (ar; requires right-to-left layout support)
-9. Korean (ko)
-10. Traditional Chinese (zh-Hant / zh-TW)
-11. Vietnamese (vi)
-12. Indonesian (id)
+8. Korean (ko)
+9. Traditional Chinese (zh-Hant / zh-TW)
+10. Vietnamese (vi)
+11. Indonesian (id)
+
+Arabic (ar) follows this initial set after right-to-left layout is verified across core workflows at narrow and desktop widths.
 
 The World Bank's 2025 report estimates Mandarin Chinese, Hindi, and Spanish at 15%, 7.6%, and 6.9% of the global population respectively; its online-content data also places German, Chinese, and Japanese among the leading languages. [World Bank, Digital Progress and Trends Report 2025](https://documents1.worldbank.org/curated/en/099112525160536089/pdf/P505350-59c98ca8-0803-4f23-b470-17f3dab010ab.pdf). W3Techs tracks website content-language share rather than app users. [W3Techs content-language survey](https://w3techs.com/technologies/cross/content_language%20/ranking). Reorder this list if maintainers later receive reliable demand signals.
 
@@ -37,4 +38,4 @@ Translate interface labels, help, empty states, validation, notifications, and e
 
 ## Implemented in this PR
 
-System > Experience Preferences now offers a browser-local interface-language selector for twelve locales. Primary navigation and its accessibility labels use translated strings with per-key English fallback. Other screens remain in English; Arabic document direction is set, but full RTL layout review remains in the roadmap.
+System > Experience Preferences now offers a browser-local interface-language selector for eleven locales. Primary navigation and its accessibility labels use translated strings with per-key English fallback. Other screens remain in English. Arabic remains planned after right-to-left layout review is completed at narrow and desktop widths.

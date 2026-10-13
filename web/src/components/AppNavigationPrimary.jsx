@@ -9,7 +9,7 @@ const NavigationIcon = ({ alert, alertTestId, name }) => {
     <Icon name={name} />
     {alert && (
       <span
-        aria-label={t("New activity")}
+        aria-label={t('New activity')}
         className="navigation-alert-dot"
         data-testid={alertTestId}
         role="status"
@@ -29,7 +29,7 @@ const AppNavigationPrimary = ({
   const { t } = useInterfaceLanguage();
   return (
               <div
-                aria-label={t("Primary navigation")}
+                aria-label={t('Primary navigation')}
                 className="navigation-primary"
                 role="navigation"
               >
@@ -251,6 +251,7 @@ const AppNavigationPrimary = ({
                     </Menu.Item>
                   </NavLink>
                   <Dropdown
+                    aria-label={t('More navigation options')}
                     className="navigation-more"
                     data-testid="nav-more"
                     icon={null}
@@ -258,7 +259,7 @@ const AppNavigationPrimary = ({
                     trigger={(
                       <span className="navigation-more-trigger">
                         <Icon name="ellipsis horizontal" />
-                        {t("More")}
+                        {t('More')}
                       </span>
                     )}
                   >
@@ -267,56 +268,56 @@ const AppNavigationPrimary = ({
                         as={NavLink}
                         data-testid="nav-discovery-graph"
                         icon="crosshairs"
-                        text={t("Discovery Graph")}
+                        text={t('Discovery Graph')}
                         to="/discovery-graph"
                       />
                       <Dropdown.Item
                         as={NavLink}
                         data-testid="nav-playlist-intake"
                         icon="list alternate outline"
-                        text={t("Playlist Intake")}
+                        text={t('Playlist Intake')}
                         to="/playlist-intake"
                       />
                       <Dropdown.Item
                         as={NavLink}
                         data-testid="nav-contacts"
                         icon="address book"
-                        text={t("Contacts")}
+                        text={t('Contacts')}
                         to="/contacts"
                       />
                       <Dropdown.Item
                         as={NavLink}
                         data-testid="nav-solid"
                         icon="key"
-                        text={t("Solid")}
+                        text={t('Solid')}
                         to="/solid"
                       />
                       <Dropdown.Item
                         as={NavLink}
                         data-testid="nav-collections"
                         icon="list"
-                        text={t("Collections")}
+                        text={t('Collections')}
                         to="/collections"
                       />
                       <Dropdown.Item
                         as={NavLink}
                         data-testid="nav-groups"
                         icon="users"
-                        text={t("Share Groups")}
+                        text={t('Share Groups')}
                         to="/sharegroups"
                       />
                       <Dropdown.Item
                         as={NavLink}
                         data-testid="nav-shared-with-me"
                         icon="share"
-                        text={t("Shared with Me")}
+                        text={t('Shared with Me')}
                         to="/shared"
                       />
                       <Dropdown.Item
                         as={NavLink}
                         data-testid="nav-browse"
                         icon="folder open"
-                        text={t("Browse")}
+                        text={t('Browse')}
                         to="/browse"
                       />
                     </Dropdown.Menu>

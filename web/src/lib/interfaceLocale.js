@@ -10,7 +10,6 @@ export const INTERFACE_LANGUAGE_OPTIONS = [
   { key: 'ja', text: '日本語 — Japanese', value: 'ja' },
   { key: 'fr', text: 'Français — French', value: 'fr' },
   { key: 'pt-BR', text: 'Português (Brasil) — Brazilian Portuguese', value: 'pt-BR' },
-  { key: 'ar', text: 'العربية — Arabic', value: 'ar' },
   { key: 'ko', text: '한국어 — Korean', value: 'ko' },
   { key: 'zh-Hant', text: '繁體中文 — Traditional Chinese', value: 'zh-Hant' },
   { key: 'vi', text: 'Tiếng Việt — Vietnamese', value: 'vi' },
