@@ -39,7 +39,17 @@ describe('primary navigation language metadata', () => {
       name: UI_LABELS['Primary navigation'][arabicIndex],
     });
     expect(navigation).toHaveAttribute('lang', 'ar');
-    expect(navigation).toHaveAttribute('dir', 'rtl');
+    expect(navigation).not.toHaveAttribute('dir', 'rtl');
+    expect(navigation).toHaveAttribute(
+      'aria-labelledby',
+      'primary-navigation-label',
+    );
+    const accessibleLabel = document.getElementById('primary-navigation-label');
+    expect(accessibleLabel).toHaveTextContent(
+      UI_LABELS['Primary navigation'][arabicIndex],
+    );
+    expect(accessibleLabel).toHaveAttribute('lang', 'ar');
+    expect(accessibleLabel).toHaveAttribute('dir', 'rtl');
     const translatedSearch = screen.getByText(UI_LABELS.Search[arabicIndex]);
     expect(translatedSearch).toHaveAttribute('lang', 'ar');
     expect(translatedSearch).toHaveAttribute('dir', 'rtl');

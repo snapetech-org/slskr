@@ -36,12 +36,19 @@ const AppNavigationPrimary = ({
   );
   return (
               <div
-                aria-label={t('Primary navigation')}
+                aria-labelledby="primary-navigation-label"
                 className="navigation-primary"
                 lang={languageFor('Primary navigation')}
-                dir={directionFor('Primary navigation')}
                 role="navigation"
               >
+                <span
+                  className="navigation-primary-label"
+                  dir={directionFor('Primary navigation')}
+                  id="primary-navigation-label"
+                  lang={languageFor('Primary navigation')}
+                >
+                  {t('Primary navigation')}
+                </span>
                 {version.isCanary && (
                   <Menu.Item>
                     <Icon
