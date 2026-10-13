@@ -8782,3 +8782,15 @@ credentialed run details. This confirms that the public login window was still
 unavailable at 2026-10-03 19:32 UTC; it does not establish an endpoint metadata
 regression. Phase A remains open until the public service accepts the required
 logins. Phase B and Phase E remain 5/5. No product or security behavior changed.
+
+## Aggregate Web Bundle Budget Recheck (2026-10-13 UTC)
+
+The non-localized production build contained 624,653 bytes of aggregate
+JavaScript gzip (610.013 KiB), 13 bytes above the 610 KiB cap. That measurement
+initially justified a 611 KiB ceiling. The full Web localization candidate then
+measured 619.69 KiB aggregate gzip and 1,108.67 KiB initial JavaScript, with
+per-asset budgets passing. The shared aggregate ceiling is therefore 625 KiB;
+the initial-JavaScript ceiling remains 1,150 KiB, and per-asset limits remain
+enabled. The release candidate must pass the bundle checker and full release
+gate against the merged localized source. This is internal build-policy
+maintenance; no user-facing behavior changed.

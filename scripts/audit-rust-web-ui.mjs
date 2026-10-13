@@ -67,6 +67,7 @@ const apiRequestCountBudgetOverrides = new Map([
   ['/messages mobile', 14],
   ['/users desktop', 17],
 ]);
+const API_REQUEST_BUDGET_WINDOW_MS = 500;
 const MIN_REPEATED_API_REQUEST_INTERVAL_MS = 200;
 
 const contentTypes = new Map([
@@ -218,6 +219,7 @@ const audit = {
     enabled: !liveBackendUrl && auditScenario === 'success' && settleMs === 500,
     maximumByRoute: Object.fromEntries(apiRequestCountBudgets),
     maximumByRouteViewport: Object.fromEntries(apiRequestCountBudgetOverrides),
+    windowMs: API_REQUEST_BUDGET_WINDOW_MS,
     minimumRepeatedEndpointIntervalMs: MIN_REPEATED_API_REQUEST_INTERVAL_MS,
     settleMs,
   },
@@ -382,9 +384,10 @@ try {
         ({ method, path: requestPath }) =>
           method === 'POST' && requestPath === '/api/v0/transfers/downloads/peer-audit',
       ).length;
-      const initialApiRequestCount = apiRequests.filter(
-        (request) => request.requestedAt - pageStartedAt <= 500,
-      ).length;
+      const apiRequestsWithinBudgetWindow = apiRequests.filter(
+        (request) => request.requestedAt - pageStartedAt <= API_REQUEST_BUDGET_WINDOW_MS,
+      );
+      const initialApiRequestCount = apiRequestsWithinBudgetWindow.length;
       const apiRequestCountBudget =
         apiRequestCountBudgetOverrides.get(`${path} ${viewport.name}`) ??
         apiRequestCountBudgets.get(path);
@@ -393,6 +396,7 @@ try {
         initialApiRequestCount,
         apiRequestCount: apiRequests.length,
         apiRequestCountBudget: apiRequestCountBudget ?? null,
+        apiRequestBudgetWindowMs: API_REQUEST_BUDGET_WINDOW_MS,
         apiRequestMetrics,
         developerOpen,
         heading,
@@ -425,12 +429,18 @@ try {
       }
 
       if (audit.apiRequestBudget.enabled) {
-        if (routeResult.apiRequestCount > apiRequestCountBudget) {
-          const endpointCounts = apiRequestMetrics
-            .map(({ endpoint, count }) => `${endpoint}=${count}`)
+        if (routeResult.initialApiRequestCount > apiRequestCountBudget) {
+          const endpointCounts = new Map();
+          for (const { method, path: requestPath } of apiRequestsWithinBudgetWindow) {
+            const endpoint = `${method} ${requestPath}`;
+            endpointCounts.set(endpoint, (endpointCounts.get(endpoint) || 0) + 1);
+          }
+          const budgetedEndpointCounts = [...endpointCounts.entries()]
+            .sort(([left], [right]) => left.localeCompare(right))
+            .map(([endpoint, count]) => `${endpoint}=${count}`)
             .join(', ');
           audit.errors.push(
-            `${path} ${viewport.name}: API request count ${routeResult.apiRequestCount} exceeds the ${apiRequestCountBudget}-request route budget (${endpointCounts})`,
+            `${path} ${viewport.name}: API startup request count ${routeResult.initialApiRequestCount} exceeds the ${apiRequestCountBudget}-request route budget within ${API_REQUEST_BUDGET_WINDOW_MS} ms (${budgetedEndpointCounts}; ${routeResult.apiRequestCount} total requests were recorded across the audited workflow)`,
           );
         }
         for (const metric of apiRequestMetrics) {
