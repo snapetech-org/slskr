@@ -82,13 +82,124 @@ export function sandboxMountOperations({
 
 const sensitiveName =
   /^(?:[.]env(?:$|[.](?!example$)[^/]+)|[.]ssh|[.]aws|[.]gnupg|id_(?:rsa|ed25519)|[.]git-credentials|[.]npmrc|[.]pypirc|[.]netrc|[^/]+[.](?:pem|key))$/iu;
+const sensitiveCredentialName =
+  /^[.]?(?:auth(?:entication)?|tokens?|credentials?|secrets?|private[-_]?keys?|api[-_]?keys?|access[-_]?tokens?|refresh[-_]?tokens?|client[-_]?secrets?)$/iu;
 const sensitiveCredentialConfigFile =
-  /^(?:auth(?:entication)?|tokens?|credentials?|secrets?)[.](?:json|ya?ml|toml|ini|cfg|conf|properties|xml)$/iu;
+  /^[.]?(?:auth(?:entication)?|tokens?|credentials?|secrets?|private[-_]?keys?|api[-_]?keys?|access[-_]?tokens?|refresh[-_]?tokens?|client[-_]?secrets?)[.](?:json|ya?ml|toml|ini|cfg|conf|env(?:[.](?!example$)[^/]+)?|properties|xml|txt)$/iu;
+const qualifiedCredentialSourceName =
+  /^(?:[^._-]+[._-])*(?:tokens?|credentials?|secrets?)(?:[._-](?!(?:manager|parser|service|client|store|provider|package|module|checker|scanning|persistence|differential|filter|policy|schema|template|example|sample|source)(?:$|[._-]))[^/]+)*$/iu;
+const qualifiedAuthSourceName = /^[^._-]+[._-]auth(?:entication)?$/iu;
+const credentialEnvironmentExampleFile =
+  /^[.]?(?:auth(?:entication)?|tokens?|credentials?|secrets?)[.]env[.]example$/iu;
+const qualifiedAuthConfigFile =
+  /^[^/]+[._-]auth(?:entication)?[.](?:json|ya?ml|toml|ini|cfg|conf|env|properties|xml|txt)$/iu;
+const qualifiedCredentialConfigFile =
+  /^(?:[^/]+[._-])?(?:tokens?|credentials?|secrets?)(?:[._-](?!(?:manager|parser|service|client|store|provider|package|module|checker|scanning|persistence|differential|filter|policy|schema|template|example|sample|source)(?:$|[._-]))[^/.]+)*[.](?:json|ya?ml|toml|ini|cfg|conf|env(?:[.](?!example$)[^/]+)?|properties|xml|txt)$/iu;
+const sensitiveCredentialMaterialFile =
+  /(?:^|[._-])(?:private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)(?=$|[._-])/iu;
+const camelCaseCredentialMaterialFile =
+  /(?:(?<=[a-z0-9])(?:PrivateKeys?|privateKeys?|ApiKeys?|APIKeys?|ApiTokens?|APITokens?|AccessTokens?|RefreshTokens?|ClientTokens?|ClientCredentials?|ClientSecrets?|ServiceAccountTokens?|ServiceAccountCredentials?|ServiceAccountSecrets?)|^(?:prod(?:uction)?|dev(?:elopment)?|test(?:ing)?|stage|staging|local|qa|live|github|gitlab|bitbucket|aws|azure|gcp|google|slack|discord|oauth|jwt|bearer)(?:Auth(?:entication)?|Tokens?|Credentials?|Secrets?)(?=$|[._-]))/iu;
+const qualifiedCredentialDirectoryName =
+  /^(?:[^/]+[._-](?:auth(?:entication)?|tokens?|credentials?|secrets?|private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)|(?:tokens?|credentials?|secrets?|private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)[._-](?!(?:manager|parser|service|client|store|provider|package|module|checker|scanning|persistence|differential|filter|policy|schema|template|example|sample|source)(?:$|[._-]))[^/]+)$/iu;
+const camelCredentialQualifierWords = new Set([
+  'aws', 'azure', 'bearer', 'bitbucket', 'dev', 'development', 'discord',
+  'gcp', 'github', 'gitlab', 'google', 'jwt', 'live', 'local', 'oauth',
+  'preprod', 'prod', 'production', 'qa', 'sandbox', 'slack', 'stage',
+  'staging', 'test', 'testing', 'uat',
+]);
+const credentialNamePhrases = [
+  ['auth'], ['authentication'], ['token'], ['tokens'],
+  ['credential'], ['credentials'], ['secret'], ['secrets'],
+  ['private', 'key'], ['private', 'keys'], ['api', 'key'], ['api', 'keys'],
+  ['access', 'token'], ['access', 'tokens'], ['refresh', 'token'],
+  ['refresh', 'tokens'], ['client', 'secret'], ['client', 'secrets'],
+];
+
+function hasCamelCaseTrailingCredentialQualifier(name) {
+  const words = name
+    .replace(/([a-z0-9])([A-Z])/gu, '$1 $2')
+    .replace(/([A-Z])([A-Z][a-z])/gu, '$1 $2')
+    .toLowerCase()
+    .split(/[\s._-]+/u)
+    .filter(Boolean);
+  if (words.length < 2 || !camelCredentialQualifierWords.has(words.at(-1)))
+    return false;
+
+  const beforeQualifier = words.slice(0, -1);
+  return credentialNamePhrases.some((phrase) => {
+    for (let index = 0; index <= beforeQualifier.length - phrase.length; index++) {
+      const prefix = beforeQualifier.slice(0, index);
+      if (
+        prefix.every((word) => camelCredentialQualifierWords.has(word)) &&
+        phrase.every((word, phraseIndex) =>
+          beforeQualifier[index + phraseIndex] === word
+        )
+      ) return true;
+    }
+    return false;
+  });
+}
+const sourceTreeDirectory =
+  /^(?:src|source|packages|apps|web|dashboard|client-go|client-python|client-ts|crates|scripts|lib|tests?|__tests__|fixtures?)$/iu;
+const knownApiKeysPage = 'dashboard/src/pages/ApiKeys.tsx';
+const descriptiveMarkdownPath = /^(?:docs|release-notes)\/.+\.md$/iu;
+const knownCredentialNameExceptions = new Set([
+  'src/auth.ts',
+  'src/authentication.ts',
+  'web/src/lib/token.js',
+  'vendor/mainline/src/rpc/server/tokens.rs',
+  'crates/slskr/src/private_gateway_owners/peer_authentication.rs',
+  'dashboard/src/pages/ApiKeys.tsx',
+]);
 
 export function isSensitiveCandidatePath(relativePath) {
-  const segments = relativePath.replaceAll(String.fromCharCode(92), '/').split('/');
+  const normalizedPath = relativePath.replaceAll(String.fromCharCode(92), '/');
+  const segments = normalizedPath.split('/');
   if (segments.includes('.git') || segments.includes('node_modules'))
     return true;
-  return segments.some((segment) => sensitiveName.test(segment)) ||
-    sensitiveCredentialConfigFile.test(segments.at(-1) ?? '');
+  if (segments.some((segment) => sensitiveName.test(segment)))
+    return true;
+
+  const filename = segments.at(-1) ?? '';
+  const directories = segments.slice(0, -1);
+  const extensionSeparator = filename.lastIndexOf('.');
+  const sourceName = extensionSeparator > 0
+    ? filename.slice(0, extensionSeparator)
+    : filename;
+  const sensitiveCredentialSourceFile =
+    sensitiveCredentialName.test(sourceName) ||
+    qualifiedCredentialSourceName.test(sourceName) ||
+    qualifiedAuthSourceName.test(sourceName) ||
+    hasCamelCaseTrailingCredentialQualifier(sourceName);
+  if (
+    sensitiveCredentialName.test(filename) ||
+    sensitiveCredentialConfigFile.test(filename) ||
+    qualifiedAuthConfigFile.test(filename) ||
+    qualifiedCredentialConfigFile.test(filename) ||
+    (!credentialEnvironmentExampleFile.test(filename) &&
+      sensitiveCredentialSourceFile &&
+      !knownCredentialNameExceptions.has(normalizedPath) &&
+      !descriptiveMarkdownPath.test(normalizedPath))
+  )
+    return true;
+  if (
+    (sensitiveCredentialMaterialFile.test(filename) ||
+      camelCaseCredentialMaterialFile.test(filename) ||
+      hasCamelCaseTrailingCredentialQualifier(filename)) &&
+    normalizedPath !== knownApiKeysPage &&
+    !descriptiveMarkdownPath.test(normalizedPath)
+  ) return true;
+  if (descriptiveMarkdownPath.test(normalizedPath)) return false;
+
+  const credentialDirectoryIndex = directories.findIndex((segment) =>
+    sensitiveCredentialName.test(segment) ||
+    qualifiedCredentialDirectoryName.test(segment) ||
+    hasCamelCaseTrailingCredentialQualifier(segment),
+  );
+  if (credentialDirectoryIndex < 0) return false;
+
+  const sourceTreeBeforeCredentialDirectory = directories
+    .slice(0, credentialDirectoryIndex)
+    .some((segment) => sourceTreeDirectory.test(segment));
+  return !sourceTreeBeforeCredentialDirectory;
 }

@@ -31,7 +31,20 @@ When evaluating an unreviewed branch, copy `trusted-test-launcher.mjs` and
 `trusted-test-sandbox-policy.mjs` from the same reviewed revision to a location
 outside the checkout, keeping them together. The launcher snapshots only paths
 in the Git index, hides the original checkout and common host configuration and
-data roots, and runs candidate code offline. Stage new candidate files first.
+data roots, and runs candidate code offline. Explicit credential names,
+including dotted extensionless names, private/API keys, access/refresh tokens,
+and client secrets, including suffixed dotenv names such as `tokens.env.local`,
+are excluded even with source-like extensions.
+Credential-named folders outside source trees are omitted recursively, including
+files with source-code extensions. Manifests, fixtures, scripts, templates,
+source modules, and other assets inside source trees remain available unless the
+filename explicitly identifies credential material. Descriptive Markdown under
+`docs/` and `release-notes/` remains available, while credential configuration
+files in those directories remain excluded. Ordinary modules such as `ApiKeys.tsx`
+remain available. The recognized source roots include `client-go`,
+`client-python`, and `client-ts`, so ordinary SDK packages under an `auth`
+directory remain available while explicit key and secret filenames are still
+excluded. Stage new candidate files first.
 
 ```sh
 node /path/to/trusted-test-launcher.mjs "$PWD" -- node scripts/validate-development.mjs --tests-only
