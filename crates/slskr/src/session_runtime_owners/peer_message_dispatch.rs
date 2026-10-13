@@ -336,28 +336,106 @@ where
                         }
                     }
                 }
-                {
+                let upload_slots =
+                    usize::try_from(state.transfer_upload_settings.read().await.slots)
+                        .unwrap_or(usize::MAX);
+                let admission = {
                     let mut transfers = state.transfers.write().await;
-                    transfers.record_accepted_inbound_request(
-                        1,
-                        request.token,
-                        peer_username.map(str::to_owned),
-                        request.filename.clone(),
-                        shared_file.local_path.display().to_string(),
-                        shared_file.size,
-                    );
+                    let global_full =
+                        transfers.active_count_excluding(None) >= state.config.transfer_max_active;
+                    let active_uploads = transfers
+                        .entries
+                        .iter()
+                        .filter(|entry| {
+                            entry.direction == 1 && is_active_transfer_status(&entry.status)
+                        })
+                        .count();
+                    let upload_full = request.direction == 0 && active_uploads >= upload_slots;
+                    if global_full || upload_full {
+                        if request.direction == 0 {
+                            peer_username.map(|username| {
+                                let queued = transfers.create(
+                                    1,
+                                    Some(username.to_owned()),
+                                    request.filename.clone(),
+                                    Some(shared_file.local_path.display().to_string()),
+                                    Some(shared_file.size),
+                                );
+                                transfers
+                                    .update_status(
+                                        queued.id,
+                                        "queued",
+                                        None,
+                                        Some("Queued".to_owned()),
+                                    )
+                                    .unwrap_or(queued)
+                            })
+                        } else {
+                            None
+                        }
+                        .map(Err)
+                    } else {
+                        Some(Ok(transfers.record_accepted_inbound_request(
+                            1,
+                            request.token,
+                            peer_username.map(str::to_owned),
+                            request.filename.clone(),
+                            shared_file.local_path.display().to_string(),
+                            shared_file.size,
+                        )))
+                    }
+                };
+                match admission {
+                    Some(Ok(_accepted)) => {
+                        persist_transfer_durability(state).await;
+                        send_response(PeerMessage::TransferResponse(TransferResponse::Allowed {
+                            token: request.token,
+                            size: Some(shared_file.size),
+                        }))
+                        .await?;
+                        update_listeners(state, |snapshot| {
+                            snapshot.last_event = Some("transfer_accepted".to_owned());
+                            snapshot.last_error = None;
+                        })
+                        .await;
+                    }
+                    Some(Err(queued)) => {
+                        persist_transfer_projection(state, &queued).await;
+                        send_response(PeerMessage::TransferResponse(TransferResponse::Rejected {
+                            token: request.token,
+                            reason: "Queued".to_owned(),
+                        }))
+                        .await?;
+                        update_listeners(state, |snapshot| {
+                            snapshot.last_event = Some("transfer_queued_upload".to_owned());
+                            snapshot.last_error = None;
+                        })
+                        .await;
+                    }
+                    None => {
+                        let reason = "transfer limit reached".to_owned();
+                        record_transfer_rejection(
+                            state,
+                            request.direction,
+                            request.token,
+                            request.filename.clone(),
+                            request.size,
+                            reason.clone(),
+                        )
+                        .await;
+                        send_response(PeerMessage::TransferResponse(TransferResponse::Rejected {
+                            token: request.token,
+                            reason,
+                        }))
+                        .await?;
+                        update_listeners(state, |snapshot| {
+                            snapshot.transfer_rejections += 1;
+                            snapshot.last_event = Some("transfer_rejected_limit".to_owned());
+                            snapshot.last_error = None;
+                        })
+                        .await;
+                    }
                 }
-                persist_transfer_durability(state).await;
-                send_response(PeerMessage::TransferResponse(TransferResponse::Allowed {
-                    token: request.token,
-                    size: Some(shared_file.size),
-                }))
-                .await?;
-                update_listeners(state, |snapshot| {
-                    snapshot.last_event = Some("transfer_accepted".to_owned());
-                    snapshot.last_error = None;
-                })
-                .await;
             } else {
                 let reason = "requested file is not available from local shares".to_owned();
                 record_transfer_rejection(

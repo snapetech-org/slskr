@@ -347,6 +347,36 @@ impl TransferQueue {
         self.push_entry(entry)
     }
 
+    pub(super) fn accept_pending_inbound_upload_request(
+        &mut self,
+        username: &str,
+        filename: &str,
+        token: u32,
+        size: u64,
+    ) -> Option<TransferEntry> {
+        let username = bounded_transfer_username(username);
+        let filename = bounded_transfer_filename(filename);
+        let entry = self.entries.iter_mut().find(|entry| {
+            entry.direction == 1
+                && entry.peer_username.as_deref() == Some(username.as_str())
+                && entry.filename == filename
+                && entry.local_path.is_some()
+                && entry.status == "queued"
+                && entry.reason.as_deref() == Some("Queued")
+        })?;
+        entry.previous_status = Some(entry.status.clone());
+        entry.token = token;
+        entry.size = Some(size);
+        entry.status = "accepted".to_owned();
+        entry.reason = None;
+        entry.updated_at = unix_timestamp();
+        entry.updated_at_ms = next_transfer_updated_at_ms(entry.updated_at_ms);
+        let entry = entry.clone();
+        self.mark_durable_mutation(Some(entry.clone()));
+        self.updated_at = unix_timestamp();
+        Some(entry)
+    }
+
     pub(super) fn create(
         &mut self,
         direction: u32,

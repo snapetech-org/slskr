@@ -274,13 +274,16 @@ pub(super) fn next_queued_upload_id(
     upload: &crate::config::TransferUploadSettings,
     groups: &crate::config::TransferGroupsSettings,
     users: &UserStore,
+    max_active: usize,
 ) -> Option<u64> {
     let active = transfers
         .entries
         .iter()
         .filter(|entry| entry.direction == 1 && is_active_transfer_status(&entry.status))
         .collect::<Vec<_>>();
-    if active.len() >= usize::try_from(upload.slots).unwrap_or(usize::MAX) {
+    if transfers.active_count_excluding(None) >= max_active
+        || active.len() >= usize::try_from(upload.slots).unwrap_or(usize::MAX)
+    {
         return None;
     }
 
@@ -338,7 +341,13 @@ pub(super) async fn schedule_queued_uploads(state: &AppState) {
         let users = state.users.read().await;
         let selected = {
             let mut transfers = state.transfers.write().await;
-            let id = next_queued_upload_id(&transfers, &upload, &groups, &users);
+            let id = next_queued_upload_id(
+                &transfers,
+                &upload,
+                &groups,
+                &users,
+                state.config.transfer_max_active,
+            );
             id.and_then(|id| transfers.update_status(id, "peer_lookup", None, None))
         };
         drop(users);
@@ -440,6 +449,7 @@ fn upload_queue_forecast_from(
     groups: &crate::config::TransferGroupsSettings,
     users: &UserStore,
     username: &str,
+    max_active: usize,
 ) -> (u32, u32) {
     let group_name = effective_transfer_group_from(groups, users, username);
     let (_, group_slots, strategy) = queued_upload_group_policy(groups, &group_name, upload.slots);
@@ -456,7 +466,8 @@ fn upload_queue_forecast_from(
             })
         })
         .count();
-    if active.len() < usize::try_from(upload.slots).unwrap_or(usize::MAX)
+    if transfers.active_count_excluding(None) < max_active
+        && active.len() < usize::try_from(upload.slots).unwrap_or(usize::MAX)
         && group_active < usize::try_from(group_slots).unwrap_or(usize::MAX)
     {
         return (group_slots, 0);
@@ -486,7 +497,14 @@ pub(super) async fn upload_queue_forecast(state: &AppState, username: &str) -> (
     let upload = state.transfer_upload_settings.read().await;
     let groups = state.transfer_groups_settings.read().await;
     let users = state.users.read().await;
-    upload_queue_forecast_from(&transfers, &upload, &groups, &users, username)
+    upload_queue_forecast_from(
+        &transfers,
+        &upload,
+        &groups,
+        &users,
+        username,
+        state.config.transfer_max_active,
+    )
 }
 
 async fn handle_queue_upload_message(
@@ -563,15 +581,29 @@ async fn handle_queued_download_request(
         if reason == "Queued" {
             let queued = {
                 let mut transfers = state.transfers.write().await;
-                let queued = transfers.create(
-                    1,
-                    Some(username.to_owned()),
-                    request.filename.clone(),
-                    Some(shared_file.local_path.display().to_string()),
-                    Some(shared_file.size),
-                );
-                transfers.update_status(queued.id, "queued", None, Some(reason.clone()));
-                queued
+                transfers
+                    .entries
+                    .iter()
+                    .find(|entry| {
+                        entry.direction == 1
+                            && entry.peer_username.as_deref() == Some(username)
+                            && entry.filename == request.filename
+                            && entry.status == "queued"
+                            && entry.reason.as_deref() == Some("Queued")
+                    })
+                    .cloned()
+                    .unwrap_or_else(|| {
+                        let queued = transfers.create(
+                            1,
+                            Some(username.to_owned()),
+                            request.filename.clone(),
+                            Some(shared_file.local_path.display().to_string()),
+                            Some(shared_file.size),
+                        );
+                        transfers
+                            .update_status(queued.id, "queued", None, Some(reason.clone()))
+                            .unwrap_or(queued)
+                    })
             };
             persist_transfer_projection(state, &queued).await;
         } else {
@@ -595,14 +627,23 @@ async fn handle_queued_download_request(
     }
     let entry = {
         let mut transfers = state.transfers.write().await;
-        transfers.record_accepted_inbound_request(
-            1,
-            request.token,
-            Some(username.to_owned()),
-            request.filename.clone(),
-            shared_file.local_path.display().to_string(),
-            shared_file.size,
-        )
+        transfers
+            .accept_pending_inbound_upload_request(
+                username,
+                &request.filename,
+                request.token,
+                shared_file.size,
+            )
+            .unwrap_or_else(|| {
+                transfers.record_accepted_inbound_request(
+                    1,
+                    request.token,
+                    Some(username.to_owned()),
+                    request.filename.clone(),
+                    shared_file.local_path.display().to_string(),
+                    shared_file.size,
+                )
+            })
     };
     persist_transfer_durability(state).await;
     peer.send(&PeerMessage::TransferResponse(TransferResponse::Rejected {

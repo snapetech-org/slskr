@@ -219,7 +219,7 @@ pub(crate) async fn inbound_upload_policy(
     if !state.config.transfer_allow_inbound {
         return Err("inbound transfers are disabled".to_owned());
     }
-    if !transfer_capacity_available(state, None).await {
+    if state.config.transfer_max_active == 0 {
         return Err("transfer limit reached".to_owned());
     }
     let group_name = effective_transfer_group(state, username).await;
@@ -325,6 +325,9 @@ pub(crate) async fn inbound_upload_policy(
         group.slots.min(upload.slots)
     };
     if group_active >= usize::try_from(group_slots).unwrap_or(usize::MAX) {
+        return Err("Queued".to_owned());
+    }
+    if transfers.active_count_excluding(None) >= state.config.transfer_max_active {
         return Err("Queued".to_owned());
     }
     Ok(group_name)

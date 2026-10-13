@@ -9,21 +9,41 @@ use std::{
     },
 };
 
+use super::MAX_SHARE_SCAN_PENDING_DIRECTORIES;
 use super::{
     compile_controller_regexes, share_cache_path, unix_timestamp, write_share_cache_if_enabled,
     AppConfig, ControllerRegex, FileAttribute, FileEntry, ShareDirectory, ShareExtensionSummary,
     ShareIndexSnapshot, ShareRoot, MAX_SHARE_SCAN_ENTRIES, SHARE_SCAN_CANCELLED_ERROR,
-    SHARE_SCAN_ENTRY_LIMIT_ERROR,
+    SHARE_SCAN_DESCRIPTOR_LIMIT_ERROR, SHARE_SCAN_ENTRY_LIMIT_ERROR, SHARE_SCAN_FILE_LIMIT_ERROR,
+    SHARE_SCAN_PENDING_DIRECTORY_LIMIT_ERROR, SHARE_SCAN_WORKER_ERROR,
 };
-#[cfg(unix)]
-use super::{MAX_SHARE_SCAN_PENDING_DIRECTORIES, SHARE_SCAN_PENDING_DIRECTORY_LIMIT_ERROR};
 
-pub(super) fn reserve_share_scan_entry(scanned_entries: &mut usize) -> bool {
-    if *scanned_entries >= MAX_SHARE_SCAN_ENTRIES {
-        return false;
-    }
-    *scanned_entries += 1;
-    true
+pub(super) fn reserve_share_scan_entry(scanned_entries: &AtomicUsize) -> bool {
+    scanned_entries
+        .fetch_update(Ordering::Relaxed, Ordering::Relaxed, |current| {
+            (current < MAX_SHARE_SCAN_ENTRIES).then_some(current + 1)
+        })
+        .is_ok()
+}
+
+pub(super) fn reserve_share_scan_file(indexed_files: &AtomicUsize, max_files: usize) -> bool {
+    indexed_files
+        .fetch_update(Ordering::Relaxed, Ordering::Relaxed, |current| {
+            (current < max_files).then_some(current + 1)
+        })
+        .is_ok()
+}
+
+pub(super) fn reserve_pending_share_scan_directory(pending: &AtomicUsize) -> bool {
+    pending
+        .fetch_update(Ordering::Relaxed, Ordering::Relaxed, |current| {
+            (current < MAX_SHARE_SCAN_PENDING_DIRECTORIES).then_some(current + 1)
+        })
+        .is_ok()
+}
+
+fn release_pending_share_scan_directory(pending: &AtomicUsize) {
+    pending.fetch_sub(1, Ordering::Relaxed);
 }
 
 pub(super) fn virtual_share_path(path: &Path) -> String {
@@ -408,6 +428,23 @@ mod media_attribute_tests {
 #[cfg(test)]
 mod progress_tests {
     use super::*;
+    use std::collections::BTreeMap;
+
+    #[derive(Default)]
+    struct TestConfigEnv(BTreeMap<String, String>);
+
+    impl TestConfigEnv {
+        fn with(mut self, name: &str, value: impl Into<String>) -> Self {
+            self.0.insert(name.to_owned(), value.into());
+            self
+        }
+    }
+
+    impl crate::config::ConfigEnv for TestConfigEnv {
+        fn var(&self, name: &str) -> Option<String> {
+            self.0.get(name).cloned()
+        }
+    }
 
     #[test]
     fn filesystem_entry_count_is_published_during_scan() {
@@ -441,6 +478,84 @@ mod progress_tests {
         assert_eq!(progress.load(Ordering::Relaxed), 3);
         fs::remove_dir_all(root).expect("remove share fixture");
     }
+
+    #[test]
+    fn a_file_limit_returns_an_error_instead_of_a_partial_index() {
+        let root = std::env::temp_dir().join(format!(
+            "slskr-share-file-limit-test-{}",
+            uuid::Uuid::new_v4()
+        ));
+        fs::create_dir_all(&root).expect("create share fixture directory");
+        for name in ["one.flac", "two.flac", "three.flac"] {
+            fs::write(root.join(name), b"audio").expect("write fixture file");
+        }
+        let config = AppConfig::from_layers(
+            None,
+            crate::config::FileConfig::default(),
+            &TestConfigEnv::default()
+                .with("SLSKR_SHARE_DIRS", root.display().to_string())
+                .with("SLSKR_SHARE_SCAN_MAX_FILES", "2")
+                .with("SLSKR_SHARE_CACHE_TSV_ENABLED", "false"),
+        )
+        .expect("valid share configuration");
+
+        let result = build_share_index_with_progress(
+            &config,
+            Arc::new(AtomicBool::new(false)),
+            Arc::new(AtomicUsize::new(0)),
+        );
+
+        let error = result.expect_err("capped scans must not produce an index");
+        assert!(error.contains(SHARE_SCAN_FILE_LIMIT_ERROR), "{error}");
+        fs::remove_dir_all(root).expect("remove share fixture");
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn wide_share_roots_are_scanned_without_retaining_every_directory_fd() {
+        const DIRECTORY_COUNT: usize = 8_200;
+        let root = std::env::temp_dir().join(format!(
+            "slskr-share-wide-root-test-{}",
+            uuid::Uuid::new_v4()
+        ));
+        fs::create_dir_all(&root).expect("create share fixture directory");
+        for index in 0..DIRECTORY_COUNT {
+            let directory = root.join(format!("artist-{index:05}"));
+            fs::create_dir(&directory).expect("create artist directory");
+            fs::write(directory.join("track.flac"), b"audio").expect("write track");
+        }
+        let directories =
+            crate::config::parse_share_directories(root.to_str().expect("share fixture path"))
+                .expect("parse share fixture");
+        let progress = Arc::new(AtomicUsize::new(0));
+        let scan = scan_share_dirs_with_cancellation_and_progress(
+            ShareScanRequest {
+                directories: &directories,
+                follow_symlinks: false,
+                include_hidden: false,
+                max_files: DIRECTORY_COUNT + 1,
+                probe_media_attributes: false,
+                workers: 1,
+                filters: &[],
+                cancellation: Arc::new(AtomicBool::new(false)),
+            },
+            Arc::clone(&progress),
+        );
+
+        assert_eq!(scan.entries.len(), DIRECTORY_COUNT);
+        assert!(scan.errors.is_empty(), "{:?}", scan.errors);
+        assert_eq!(progress.load(Ordering::Relaxed), DIRECTORY_COUNT * 2);
+        fs::remove_dir_all(root).expect("remove share fixture");
+    }
+
+    #[test]
+    fn pending_directory_paths_have_a_separate_bound() {
+        let pending = AtomicUsize::new(0);
+        for _ in 0..MAX_SHARE_SCAN_PENDING_DIRECTORIES {
+            assert!(reserve_pending_share_scan_directory(&pending));
+        }
+        assert!(!reserve_pending_share_scan_directory(&pending));
+    }
 }
 
 #[derive(Clone, Debug)]
@@ -457,6 +572,9 @@ struct ShareScanOptions {
     follow_symlinks: bool,
     include_hidden: bool,
     max_files: usize,
+    indexed_files: Arc<AtomicUsize>,
+    file_limit_reached: Arc<AtomicBool>,
+    pending_directories: Arc<AtomicUsize>,
     probe_media_attributes: bool,
     cancellation: Arc<AtomicBool>,
     progress: Arc<AtomicUsize>,
@@ -476,7 +594,7 @@ pub(super) struct ShareScanRequest<'a> {
 #[cfg(any(test, feature = "full-controller-tests"))]
 pub(super) fn build_share_index(config: &AppConfig) -> ShareIndexSnapshot {
     build_share_index_with_cancellation(config, Arc::new(AtomicBool::new(false)))
-        .expect("share scan without cancellation cannot fail")
+        .expect("test share scan should remain within configured limits")
 }
 
 #[cfg(any(test, feature = "full-controller-tests"))]
@@ -513,6 +631,9 @@ pub(super) fn build_share_index_with_progress(
     );
     if scan.cancelled {
         return Err(SHARE_SCAN_CANCELLED_ERROR.to_owned());
+    }
+    if let Some(error) = scan.errors.first() {
+        return Err(format!("share scan incomplete: {error}"));
     }
     let fixture_files = config.share_settings.fixture_entries.len();
     let mut entries = config.share_settings.fixture_entries.clone();
@@ -582,6 +703,9 @@ fn scan_share_dirs_with_cancellation_and_progress(
         follow_symlinks,
         include_hidden,
         max_files,
+        indexed_files: Arc::new(AtomicUsize::new(0)),
+        file_limit_reached: Arc::new(AtomicBool::new(false)),
+        pending_directories: Arc::new(AtomicUsize::new(0)),
         probe_media_attributes,
         cancellation,
         progress,
@@ -611,7 +735,7 @@ fn scan_share_dirs_with_cancellation_and_progress(
     for (position, item) in active.into_iter().enumerate() {
         groups[position % worker_count].push(item);
     }
-    let scanned = std::thread::scope(|scope| {
+    let (worker_scans, worker_failed) = std::thread::scope(|scope| {
         groups
             .into_iter()
             .map(|group| {
@@ -634,20 +758,33 @@ fn scan_share_dirs_with_cancellation_and_progress(
             })
             .collect::<Vec<_>>()
             .into_iter()
-            .flat_map(|worker| worker.join().unwrap_or_default())
-            .collect::<BTreeMap<_, _>>()
+            .fold(
+                (Vec::new(), false),
+                |(mut scans, failed), worker| match worker.join() {
+                    Ok(mut worker_scans) => {
+                        scans.append(&mut worker_scans);
+                        (scans, failed)
+                    }
+                    Err(_) => (scans, true),
+                },
+            )
     });
+    let scanned = worker_scans.into_iter().collect::<BTreeMap<_, _>>();
 
     let mut entries = Vec::new();
     let mut local_paths = BTreeMap::new();
     let mut root_summaries = Vec::new();
     let mut errors = Vec::new();
     for (index, directory) in ordered_directories.iter().enumerate() {
-        let mut scan = scanned.get(&index).cloned().unwrap_or(ShareScan {
+        let mut scan = scanned.get(&index).cloned().unwrap_or_else(|| ShareScan {
             entries: Vec::new(),
             local_paths: BTreeMap::new(),
             roots: Vec::new(),
-            errors: Vec::new(),
+            errors: if directory.is_excluded {
+                Vec::new()
+            } else {
+                vec![SHARE_SCAN_WORKER_ERROR.to_owned()]
+            },
             cancelled: false,
         });
         if scan.cancelled {
@@ -659,22 +796,13 @@ fn scan_share_dirs_with_cancellation_and_progress(
                 cancelled: true,
             };
         }
-        let remaining = max_files.saturating_sub(entries.len());
-        scan.entries.truncate(remaining);
-        let accepted = scan
-            .entries
-            .iter()
-            .map(|entry| entry.filename.as_str())
-            .collect::<HashSet<_>>();
-        scan.local_paths
-            .retain(|filename, _| accepted.contains(filename.as_str()));
         root_summaries.push(share_root_summary(directory, &scan.entries));
         entries.append(&mut scan.entries);
         local_paths.append(&mut scan.local_paths);
         errors.append(&mut scan.errors);
-        if entries.len() >= max_files {
-            break;
-        }
+    }
+    if worker_failed && !errors.iter().any(|error| error == SHARE_SCAN_WORKER_ERROR) {
+        errors.push(SHARE_SCAN_WORKER_ERROR.to_owned());
     }
 
     let cancelled = options.cancellation.load(Ordering::Relaxed);
@@ -696,12 +824,10 @@ fn scan_single_share_directory(
     let mut entries = Vec::new();
     let mut local_paths = BTreeMap::new();
     let mut errors = Vec::new();
-    let mut scanned_entries = 0;
     let mut output = ShareScanOutput {
         entries: &mut entries,
         local_paths: &mut local_paths,
         errors: &mut errors,
-        scanned_entries: &mut scanned_entries,
     };
     let cancellation = Arc::clone(&options.cancellation);
     scan_share_root(
@@ -771,7 +897,6 @@ struct ShareScanOutput<'a> {
     entries: &'a mut Vec<FileEntry>,
     local_paths: &'a mut BTreeMap<String, PathBuf>,
     errors: &'a mut Vec<String>,
-    scanned_entries: &'a mut usize,
 }
 
 fn scan_share_root(
@@ -785,7 +910,7 @@ fn scan_share_root(
     if options.cancellation.load(Ordering::Relaxed) {
         return;
     }
-    if output.entries.len() >= options.max_files {
+    if options.file_limit_reached.load(Ordering::Relaxed) {
         return;
     }
 
@@ -802,7 +927,7 @@ fn scan_share_root(
     };
     let Ok(metadata) = metadata else {
         output.errors.push(format!(
-            "{}: metadata unavailable",
+            "{}: share root metadata unavailable",
             json_safe_share_label(label)
         ));
         return;
@@ -828,15 +953,19 @@ fn scan_share_root(
         None
     };
 
+    if !reserve_pending_share_scan_directory(&options.pending_directories) {
+        output
+            .errors
+            .push(SHARE_SCAN_PENDING_DIRECTORY_LIMIT_ERROR.to_owned());
+        return;
+    }
     let mut stack = vec![root.to_path_buf()];
     while let Some(directory) = stack.pop() {
+        release_pending_share_scan_directory(&options.pending_directories);
         if options.cancellation.load(Ordering::Relaxed) {
             return;
         }
-        if output.entries.len() >= options.max_files {
-            output
-                .errors
-                .push("share scan stopped at SLSKR_SHARE_SCAN_MAX_FILES".to_owned());
+        if options.file_limit_reached.load(Ordering::Relaxed) {
             return;
         }
 
@@ -855,18 +984,14 @@ fn scan_share_root(
             if options.cancellation.load(Ordering::Relaxed) {
                 return;
             }
-            if output.entries.len() >= options.max_files {
-                output
-                    .errors
-                    .push("share scan stopped at SLSKR_SHARE_SCAN_MAX_FILES".to_owned());
+            if options.file_limit_reached.load(Ordering::Relaxed) {
                 return;
             }
 
-            if !reserve_share_scan_entry(output.scanned_entries) {
+            if !reserve_share_scan_entry(&options.progress) {
                 output.errors.push(SHARE_SCAN_ENTRY_LIMIT_ERROR.to_owned());
                 return;
             }
-            options.progress.fetch_add(1, Ordering::Relaxed);
 
             let Ok(child) = child else {
                 output.errors.push(format!(
@@ -903,6 +1028,12 @@ fn scan_share_root(
                 continue;
             }
             if metadata.is_dir() {
+                if !reserve_pending_share_scan_directory(&options.pending_directories) {
+                    output
+                        .errors
+                        .push(SHARE_SCAN_PENDING_DIRECTORY_LIMIT_ERROR.to_owned());
+                    return;
+                }
                 stack.push(path);
                 continue;
             }
@@ -920,6 +1051,12 @@ fn scan_share_root(
                 if !canonical_path.starts_with(canonical_root) {
                     continue;
                 }
+            }
+
+            if !reserve_share_scan_file(&options.indexed_files, options.max_files) {
+                options.file_limit_reached.store(true, Ordering::Relaxed);
+                output.errors.push(SHARE_SCAN_FILE_LIMIT_ERROR.to_owned());
+                return;
             }
 
             let Ok(relative) = path.strip_prefix(root) else {
@@ -959,39 +1096,66 @@ fn scan_share_root_unix(
     options: ShareScanOptions,
     output: &mut ShareScanOutput<'_>,
 ) {
-    use rustix::fs::{open, openat, Dir, Mode, OFlags};
+    use rustix::fs::{open, openat, statat, AtFlags, Dir, FileType, Mode, OFlags};
     use std::os::unix::ffi::OsStrExt;
 
     let directory_flags = OFlags::RDONLY | OFlags::DIRECTORY | OFlags::NOFOLLOW | OFlags::CLOEXEC;
     let file_flags = OFlags::RDONLY | OFlags::NONBLOCK | OFlags::NOFOLLOW | OFlags::CLOEXEC;
     let root_directory = match open(root, directory_flags, Mode::empty()) {
         Ok(directory) => directory,
-        Err(_) => {
-            output.errors.push(format!(
-                "{}: directory unavailable",
-                json_safe_share_label(label)
-            ));
+        Err(error) => {
+            output
+                .errors
+                .push(if is_share_scan_descriptor_limit(error) {
+                    SHARE_SCAN_DESCRIPTOR_LIMIT_ERROR.to_owned()
+                } else {
+                    format!("{}: directory unavailable", json_safe_share_label(label))
+                });
             return;
         }
     };
-    let mut stack = vec![(PathBuf::new(), root_directory)];
-    while let Some((relative_directory, directory)) = stack.pop() {
+    if !reserve_pending_share_scan_directory(&options.pending_directories) {
+        output
+            .errors
+            .push(SHARE_SCAN_PENDING_DIRECTORY_LIMIT_ERROR.to_owned());
+        return;
+    }
+    let mut stack = vec![PathBuf::new()];
+    while let Some(relative_directory) = stack.pop() {
+        release_pending_share_scan_directory(&options.pending_directories);
         if options.cancellation.load(Ordering::Relaxed) {
             return;
         }
-        if output.entries.len() >= options.max_files {
-            output
-                .errors
-                .push("share scan stopped at SLSKR_SHARE_SCAN_MAX_FILES".to_owned());
+        if options.file_limit_reached.load(Ordering::Relaxed) {
             return;
         }
+        let directory = match open_share_scan_directory(
+            &root_directory,
+            &relative_directory,
+            directory_flags,
+        ) {
+            Ok(directory) => directory,
+            Err(error) => {
+                output
+                    .errors
+                    .push(if is_share_scan_descriptor_limit(error) {
+                        SHARE_SCAN_DESCRIPTOR_LIMIT_ERROR.to_owned()
+                    } else {
+                        format!("{}: directory unavailable", json_safe_share_label(label))
+                    });
+                continue;
+            }
+        };
         let mut reader = match Dir::read_from(&directory) {
             Ok(reader) => reader,
-            Err(_) => {
-                output.errors.push(format!(
-                    "{}: directory unreadable",
-                    json_safe_share_label(label)
-                ));
+            Err(error) => {
+                output
+                    .errors
+                    .push(if is_share_scan_descriptor_limit(error) {
+                        SHARE_SCAN_DESCRIPTOR_LIMIT_ERROR.to_owned()
+                    } else {
+                        format!("{}: directory unreadable", json_safe_share_label(label))
+                    });
                 continue;
             }
         };
@@ -999,18 +1163,14 @@ fn scan_share_root_unix(
             if options.cancellation.load(Ordering::Relaxed) {
                 return;
             }
-            if output.entries.len() >= options.max_files {
-                output
-                    .errors
-                    .push("share scan stopped at SLSKR_SHARE_SCAN_MAX_FILES".to_owned());
-                return;
-            }
-            if !reserve_share_scan_entry(output.scanned_entries) {
-                output.errors.push(SHARE_SCAN_ENTRY_LIMIT_ERROR.to_owned());
+            if options.file_limit_reached.load(Ordering::Relaxed) {
                 return;
             }
             let Ok(child) = child else {
-                options.progress.fetch_add(1, Ordering::Relaxed);
+                if !reserve_share_scan_entry(&options.progress) {
+                    output.errors.push(SHARE_SCAN_ENTRY_LIMIT_ERROR.to_owned());
+                    return;
+                }
                 output.errors.push(format!(
                     "{}: entry unreadable",
                     json_safe_share_label(label)
@@ -1021,7 +1181,10 @@ fn scan_share_root_unix(
             if matches!(name.to_bytes(), b"." | b"..") {
                 continue;
             }
-            options.progress.fetch_add(1, Ordering::Relaxed);
+            if !reserve_share_scan_entry(&options.progress) {
+                output.errors.push(SHARE_SCAN_ENTRY_LIMIT_ERROR.to_owned());
+                return;
+            }
             let name_os = std::ffi::OsStr::from_bytes(name.to_bytes());
             if !options.include_hidden && name_os.to_string_lossy().starts_with('.') {
                 continue;
@@ -1039,18 +1202,67 @@ fn scan_share_root_unix(
             {
                 continue;
             }
-            if let Ok(child_directory) = openat(&directory, name, directory_flags, Mode::empty()) {
-                if stack.len() >= MAX_SHARE_SCAN_PENDING_DIRECTORIES {
+            match openat(&directory, name, directory_flags, Mode::empty()) {
+                Ok(child_directory) => {
+                    drop(child_directory);
+                    if !reserve_pending_share_scan_directory(&options.pending_directories) {
+                        output
+                            .errors
+                            .push(SHARE_SCAN_PENDING_DIRECTORY_LIMIT_ERROR.to_owned());
+                        return;
+                    }
+                    stack.push(relative);
+                    continue;
+                }
+                Err(error) if is_share_scan_descriptor_limit(error) => {
                     output
                         .errors
-                        .push(SHARE_SCAN_PENDING_DIRECTORY_LIMIT_ERROR.to_owned());
+                        .push(SHARE_SCAN_DESCRIPTOR_LIMIT_ERROR.to_owned());
                     return;
                 }
-                stack.push((relative, child_directory));
+                Err(_) => {}
+            }
+            let entry_type = match statat(&directory, name, AtFlags::SYMLINK_NOFOLLOW) {
+                Ok(stat) => FileType::from_raw_mode(stat.st_mode),
+                Err(error) if is_share_scan_descriptor_limit(error) => {
+                    output
+                        .errors
+                        .push(SHARE_SCAN_DESCRIPTOR_LIMIT_ERROR.to_owned());
+                    return;
+                }
+                Err(_) => {
+                    output.errors.push(format!(
+                        "{}: entry metadata unavailable",
+                        json_safe_share_label(label)
+                    ));
+                    continue;
+                }
+            };
+            if entry_type == FileType::Directory {
+                output.errors.push(format!(
+                    "{}: directory unreadable",
+                    json_safe_share_label(label)
+                ));
                 continue;
             }
-            let Ok(file) = openat(&directory, name, file_flags, Mode::empty()) else {
+            if entry_type != FileType::RegularFile {
                 continue;
+            }
+            let file = match openat(&directory, name, file_flags, Mode::empty()) {
+                Ok(file) => file,
+                Err(error) if is_share_scan_descriptor_limit(error) => {
+                    output
+                        .errors
+                        .push(SHARE_SCAN_DESCRIPTOR_LIMIT_ERROR.to_owned());
+                    return;
+                }
+                Err(_) => {
+                    output.errors.push(format!(
+                        "{}: entry unreadable",
+                        json_safe_share_label(label)
+                    ));
+                    continue;
+                }
             };
             let mut file = fs::File::from(file);
             let Ok(metadata) = file.metadata() else {
@@ -1062,6 +1274,11 @@ fn scan_share_root_unix(
             };
             if !metadata.is_file() {
                 continue;
+            }
+            if !reserve_share_scan_file(&options.indexed_files, options.max_files) {
+                options.file_limit_reached.store(true, Ordering::Relaxed);
+                output.errors.push(SHARE_SCAN_FILE_LIMIT_ERROR.to_owned());
+                return;
             }
             let filename = format!("{}/{}", label, virtual_share_path(&relative));
             let extension = extension_for(&filename);
@@ -1088,4 +1305,33 @@ fn scan_share_root_unix(
             });
         }
     }
+}
+
+#[cfg(unix)]
+fn open_share_scan_directory(
+    root_directory: &rustix::fd::OwnedFd,
+    relative: &Path,
+    directory_flags: rustix::fs::OFlags,
+) -> rustix::io::Result<rustix::fd::OwnedFd> {
+    use rustix::fs::{openat, Mode};
+    use std::path::Component;
+
+    let mut current = rustix::io::dup(root_directory)?;
+    for component in relative.components() {
+        match component {
+            Component::Normal(name) => {
+                current = openat(&current, name, directory_flags, Mode::empty())?;
+            }
+            Component::CurDir => {}
+            Component::ParentDir | Component::RootDir | Component::Prefix(_) => {
+                return Err(rustix::io::Errno::INVAL);
+            }
+        }
+    }
+    Ok(current)
+}
+
+#[cfg(unix)]
+fn is_share_scan_descriptor_limit(error: rustix::io::Errno) -> bool {
+    error == rustix::io::Errno::MFILE || error == rustix::io::Errno::NFILE
 }

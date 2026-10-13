@@ -62,6 +62,17 @@ async fn route_dispatch_group_2_transfer_status(
                 .collect::<Vec<_>>();
             let listeners = state.listeners.read().await;
             let shares = state.shares.read().await;
+            let upload_slots = state.transfer_upload_settings.read().await.slots;
+            let global_transfer_limit = state.config.transfer_max_active;
+            let warnings = if global_transfer_limit
+                < usize::try_from(upload_slots).unwrap_or(usize::MAX)
+            {
+                vec![format!(
+                    "combined transfer cap ({global_transfer_limit}) is below upload slots ({upload_slots})"
+                )]
+            } else {
+                Vec::new()
+            };
             Ok(routing::ok_response(serde_json::json!({
                  "activeUploads": uploads.iter().filter(|entry| is_active_transfer_status(&entry.status)).count(),
                  "failedUploads": uploads.iter().filter(|entry| is_failed_transfer_status(&entry.status)).count(),
@@ -79,9 +90,10 @@ async fn route_dispatch_group_2_transfer_status(
                  "shareScanPending": false,
                  "shareScanning": false,
                  "soulseekState": state.session.read().await.state,
-                 "uploadSlots": state.config.transfer_max_active,
+                 "globalTransferLimit": global_transfer_limit,
+                 "uploadSlots": upload_slots,
                  "uploadSpeedLimit": 0,
-                 "warnings": [],
+                 "warnings": warnings,
              }).to_string()))
         }
 

@@ -2056,7 +2056,13 @@ pub(super) async fn transfer_group_queue_schedules_priority_slots_and_reports_fr
         let groups = state.transfer_groups_settings.read().await;
         let users = state.users.read().await;
         assert_eq!(
-            crate::next_queued_upload_id(&transfers, &upload, &groups, &users),
+            crate::next_queued_upload_id(
+                &transfers,
+                &upload,
+                &groups,
+                &users,
+                state.config.transfer_max_active,
+            ),
             Some(alice.id)
         );
     }
@@ -2138,6 +2144,122 @@ pub(super) async fn transfer_group_queue_schedules_priority_slots_and_reports_fr
         crate::upload_queue_forecast(&round_robin, "charlie").await,
         (1, 3)
     );
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
+pub(super) async fn downloads_do_not_make_upload_queue_appear_free_at_the_shared_cap() {
+    let (state, mut receiver) =
+        test_state_with_env(MapEnv::default().with("SLSKR_TRANSFER_MAX_ACTIVE", "1"));
+    let diagnostics = crate::route_http_request(
+        "GET",
+        "/api/transfers/uploads/diagnostics",
+        None,
+        "",
+        &state,
+    )
+    .await
+    .expect("upload diagnostics");
+    let diagnostics: serde_json::Value =
+        serde_json::from_str(&diagnostics.body).expect("diagnostics JSON");
+    assert_eq!(diagnostics["uploadSlots"], 20);
+    assert_eq!(diagnostics["globalTransferLimit"], 1);
+    assert_eq!(diagnostics["warnings"].as_array().unwrap().len(), 1);
+    let (download_id, queued_upload) = {
+        let mut transfers = state.transfers.write().await;
+        let download = transfers.create(
+            0,
+            Some("alice".to_owned()),
+            "incoming.flac".to_owned(),
+            None,
+            Some(10),
+        );
+        transfers.update_status(download.id, "in_progress", None, None);
+        let upload = transfers.create(
+            1,
+            Some("bob".to_owned()),
+            "shared.flac".to_owned(),
+            Some("/shares/shared.flac".to_owned()),
+            Some(10),
+        );
+        let upload = transfers
+            .update_status(upload.id, "queued", None, Some("Queued".to_owned()))
+            .expect("queue upload");
+        (download.id, upload)
+    };
+
+    let (slots, queue_position) = crate::upload_queue_forecast(&state, "bob").await;
+    assert!(slots > 0);
+    assert_eq!(queue_position, 2);
+    assert_eq!(
+        crate::inbound_upload_policy(&state, "charlie", "another.flac", 10)
+            .await
+            .unwrap_err(),
+        "Queued"
+    );
+    crate::schedule_queued_uploads(&state).await;
+    assert!(receiver.try_recv().is_err());
+    assert_eq!(
+        state
+            .transfers
+            .read()
+            .await
+            .entries
+            .iter()
+            .find(|entry| entry.id == queued_upload.id)
+            .unwrap()
+            .status,
+        "queued"
+    );
+
+    state
+        .transfers
+        .write()
+        .await
+        .update_status(download_id, "succeeded", None, None);
+    crate::schedule_queued_uploads(&state).await;
+    assert_eq!(
+        receiver.try_recv().unwrap(),
+        crate::SessionCommand::RequestPeerEndpoint("bob".to_owned())
+    );
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
+pub(super) async fn queued_inbound_upload_is_promoted_without_a_duplicate_record() {
+    let (state, _receiver) = test_state();
+    let (queued, accepted, matching_records) = {
+        let mut transfers = state.transfers.write().await;
+        let queued = transfers.create(
+            1,
+            Some("alice".to_owned()),
+            "track.flac".to_owned(),
+            Some("/shares/track.flac".to_owned()),
+            Some(10),
+        );
+        let queued = transfers
+            .update_status(queued.id, "queued", None, Some("Queued".to_owned()))
+            .expect("queued transfer");
+        let accepted = transfers
+            .accept_pending_inbound_upload_request("alice", "track.flac", 77, 12)
+            .expect("accept queued upload");
+        let matching_records = transfers
+            .entries
+            .iter()
+            .filter(|entry| {
+                entry.direction == 1
+                    && entry.peer_username.as_deref() == Some("alice")
+                    && entry.filename == "track.flac"
+            })
+            .count();
+        (queued, accepted, matching_records)
+    };
+
+    assert_eq!(accepted.id, queued.id);
+    assert_eq!(accepted.status, "accepted");
+    assert_eq!(accepted.token, 77);
+    assert_eq!(accepted.size, Some(12));
+    assert_eq!(matching_records, 1);
 }
 
 #[cfg_attr(test, test)]

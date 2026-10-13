@@ -411,7 +411,7 @@ impl AppConfig {
             env,
             "SLSKR_TRANSFER_MAX_ACTIVE",
             file_config.transfers.max_active,
-            3_usize,
+            520_usize,
         )?;
         let transfer_allow_inbound = env_bool_layer(
             env,

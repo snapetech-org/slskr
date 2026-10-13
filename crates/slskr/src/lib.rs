@@ -544,7 +544,7 @@ use self::file_transfer_runtime::{
     ensure_scoped_download_path, execute_accepted_file_transfer, fail_indirect_browse,
     fail_indirect_transfer, handle_inbound_file_transfer, inbound_upload_policy,
     open_download_file_for_read, prepare_transfer_local_path, probe_peer_capability,
-    project_indirect_transfer_response, project_peer_transfer_response,
+    project_indirect_transfer_response, project_peer_transfer_response, schedule_queued_downloads,
     render_configured_completed_download_path, safe_download_path, transfer_capacity_available,
     transfer_group_upload_settings,
 };
@@ -1404,13 +1404,14 @@ fn controller_share_value(root: &ShareRoot) -> serde_json::Value {
     value
 }
 
-const MAX_SHARE_SCAN_ENTRIES: usize = 131_072;
-#[cfg(unix)]
-const MAX_SHARE_SCAN_PENDING_DIRECTORIES: usize = 8192;
+const MAX_SHARE_SCAN_ENTRIES: usize = 2_000_000;
+const MAX_SHARE_SCAN_PENDING_DIRECTORIES: usize = 262_144;
+const SHARE_SCAN_FILE_LIMIT_ERROR: &str = "share scan stopped at SLSKR_SHARE_SCAN_MAX_FILES";
 const SHARE_SCAN_ENTRY_LIMIT_ERROR: &str = "share scan stopped at aggregate directory entry limit";
-#[cfg(unix)]
 const SHARE_SCAN_PENDING_DIRECTORY_LIMIT_ERROR: &str =
-    "share scan stopped at pending directory limit";
+    "share scan stopped at pending directory path limit";
+const SHARE_SCAN_DESCRIPTOR_LIMIT_ERROR: &str =
+    "share scan stopped at filesystem descriptor limit";
 
 fn virtual_basename(path: &str) -> &str {
     path.rsplit(['/', '\\']).next().unwrap_or(path)
