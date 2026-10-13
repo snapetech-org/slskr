@@ -99,8 +99,14 @@ test('preserves tracked source files named token while excluding credential conf
   assert.equal(isSensitiveCandidatePath('scripts/check-secret-scanning.sh'), false);
   assert.equal(isSensitiveCandidatePath('scripts/check-web-auth-credentials-differential.sh'), false);
   assert.equal(isSensitiveCandidatePath('docs/credential-storage.md'), false);
+  assert.equal(isSensitiveCandidatePath('docs/20260829-session-token-storage.md'), false);
+  assert.equal(isSensitiveCandidatePath('docs/credentials/session-token-storage.md'), false);
+  assert.equal(isSensitiveCandidatePath('docs/credentials/operator.env'), true);
+  assert.equal(isSensitiveCandidatePath('release-notes/20260821-web-token-session-bootstrap.md'), false);
+  assert.equal(isSensitiveCandidatePath('release-notes/20261013-benchmark-per-run-api-credentials.md'), false);
   assert.equal(isSensitiveCandidatePath('release-notes/20261013-validation-snapshot-credential-filter.md'), false);
   assert.equal(isSensitiveCandidatePath('release-notes/20261013-validation-snapshot-credentials.md'), false);
+  assert.equal(isSensitiveCandidatePath('release-notes/production-credentials.env'), true);
   assert.equal(
     isSensitiveCandidatePath('crates/slskr/src/private_gateway_owners/peer_authentication.rs'),
     false,
@@ -316,6 +322,8 @@ test(
     writeFileSync(path.join(source, 'scripts/check-web-auth-credentials-differential.sh'), '#!/bin/sh\nexit 0\n');
     writeFileSync(path.join(source, 'release-notes/20261013-validation-snapshot-credential-filter.md'), 'Validation snapshots filter secrets safely.\n');
     writeFileSync(path.join(source, 'release-notes/20261013-validation-snapshot-credentials.md'), 'Credential matching avoids checker files.\n');
+    writeFileSync(path.join(source, 'release-notes/20260821-web-token-session-bootstrap.md'), 'Public token-handling documentation.\n');
+    writeFileSync(path.join(source, 'release-notes/production-credentials.env'), 'CREDENTIAL_CANARY=hidden\n');
     writeFileSync(
       path.join(source, 'crates/slskr/src/private_gateway_owners/peer_authentication.rs'),
       'pub fn peer_authentication() {}\n',
@@ -500,6 +508,8 @@ assert.equal(readFileSync('/mnt/workspace/scripts/check-secret-scanning.sh', 'ut
 assert.equal(readFileSync('/mnt/workspace/scripts/check-web-auth-credentials-differential.sh', 'utf8'), '#!/bin/sh\\nexit 0\\n');
 assert.equal(readFileSync('/mnt/workspace/release-notes/20261013-validation-snapshot-credential-filter.md', 'utf8'), 'Validation snapshots filter secrets safely.\\n');
 assert.equal(readFileSync('/mnt/workspace/release-notes/20261013-validation-snapshot-credentials.md', 'utf8'), 'Credential matching avoids checker files.\\n');
+assert.equal(readFileSync('/mnt/workspace/release-notes/20260821-web-token-session-bootstrap.md', 'utf8'), 'Public token-handling documentation.\\n');
+assert.equal(existsSync('/mnt/workspace/release-notes/production-credentials.env'), false);
 assert.equal(readFileSync('/mnt/workspace/docs/credential-storage.md', 'utf8'), 'Credential storage is documented here.\\n');
 assert.match(readFileSync('/mnt/workspace/crates/slskr/src/private_gateway_owners/peer_authentication.rs', 'utf8'), /peer_authentication/u);
 assert.equal(readFileSync('/mnt/workspace/crates/slskr/data/peer-controller-auth-policy.json', 'utf8'), '{"policy":"source metadata"}\\n');

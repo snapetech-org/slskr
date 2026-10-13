@@ -142,6 +142,7 @@ function hasCamelCaseTrailingCredentialQualifier(name) {
 const sourceTreeDirectory =
   /^(?:src|source|packages|apps|web|dashboard|client-go|client-python|client-ts|crates|scripts|lib|tests?|__tests__|fixtures?)$/iu;
 const knownApiKeysPage = 'dashboard/src/pages/ApiKeys.tsx';
+const descriptiveMarkdownPath = /^(?:docs|release-notes)\/.+\.md$/iu;
 const knownCredentialNameExceptions = new Set([
   'src/auth.ts',
   'src/authentication.ts',
@@ -149,8 +150,6 @@ const knownCredentialNameExceptions = new Set([
   'vendor/mainline/src/rpc/server/tokens.rs',
   'crates/slskr/src/private_gateway_owners/peer_authentication.rs',
   'dashboard/src/pages/ApiKeys.tsx',
-  'docs/credential-storage.md',
-  'release-notes/20261013-validation-snapshot-credentials.md',
 ]);
 
 export function isSensitiveCandidatePath(relativePath) {
@@ -179,15 +178,18 @@ export function isSensitiveCandidatePath(relativePath) {
     qualifiedCredentialConfigFile.test(filename) ||
     (!credentialEnvironmentExampleFile.test(filename) &&
       sensitiveCredentialSourceFile &&
-      !knownCredentialNameExceptions.has(normalizedPath))
+      !knownCredentialNameExceptions.has(normalizedPath) &&
+      !descriptiveMarkdownPath.test(normalizedPath))
   )
     return true;
   if (
     (sensitiveCredentialMaterialFile.test(filename) ||
       camelCaseCredentialMaterialFile.test(filename) ||
       hasCamelCaseTrailingCredentialQualifier(filename)) &&
-    normalizedPath !== knownApiKeysPage
+    normalizedPath !== knownApiKeysPage &&
+    !descriptiveMarkdownPath.test(normalizedPath)
   ) return true;
+  if (descriptiveMarkdownPath.test(normalizedPath)) return false;
 
   const credentialDirectoryIndex = directories.findIndex((segment) =>
     sensitiveCredentialName.test(segment) ||

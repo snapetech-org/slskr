@@ -38,8 +38,10 @@ are excluded even with source-like extensions.
 Credential-named folders outside source trees are omitted recursively, including
 files with source-code extensions. Manifests, fixtures, scripts, templates,
 source modules, and other assets inside source trees remain available unless the
-filename explicitly identifies credential material; ordinary modules such as
-`ApiKeys.tsx` remain available. The recognized source roots include `client-go`,
+filename explicitly identifies credential material. Descriptive Markdown under
+`docs/` and `release-notes/` remains available, while credential configuration
+files in those directories remain excluded. Ordinary modules such as `ApiKeys.tsx`
+remain available. The recognized source roots include `client-go`,
 `client-python`, and `client-ts`, so ordinary SDK packages under an `auth`
 directory remain available while explicit key and secret filenames are still
 excluded. Stage new candidate files first.
