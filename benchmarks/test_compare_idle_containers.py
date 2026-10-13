@@ -3,6 +3,7 @@
 import importlib.util
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 
 SCRIPT = Path(__file__).with_name("compare-idle-containers.py")
@@ -18,6 +19,100 @@ def environment_values(command):
         for index, value in enumerate(command[:-1])
         if value == "-e"
     ]
+
+
+class LocalApiRequestTests(unittest.TestCase):
+    def test_uses_only_a_fixed_loopback_http_endpoint(self):
+        with patch.object(
+            benchmark, "docker", return_value="127.0.0.1:45678"
+        ) as docker_command:
+            with patch.object(benchmark.http.client, "HTTPConnection") as factory:
+                connection = factory.return_value
+                response = connection.getresponse.return_value
+                response.status = 200
+                response.read.return_value = b'{"connected":true}'
+
+                result = benchmark.local_api_json(
+                    "bench-container",
+                    "/api/v0/server",
+                    ("Authorization", "Bearer test-token"),
+                )
+
+        self.assertEqual({"connected": True}, result)
+        docker_command.assert_called_once_with(
+            "port", "bench-container", "5030/tcp"
+        )
+        factory.assert_called_once_with("127.0.0.1", 45678, timeout=10)
+        connection.request.assert_called_once_with(
+            "GET",
+            "/api/v0/server",
+            headers={
+                "Accept": "application/json",
+                "Authorization": "Bearer test-token",
+            },
+        )
+        connection.close.assert_called_once_with()
+
+    def test_rejects_file_urls_before_contacting_docker_or_http(self):
+        with patch.object(benchmark, "docker") as docker_command:
+            with patch.object(benchmark.http.client, "HTTPConnection") as factory:
+                with self.assertRaisesRegex(
+                    ValueError, "unsupported local status API path"
+                ):
+                    benchmark.local_api_json(
+                        "bench-container", "file:///etc/passwd"
+                    )
+
+        docker_command.assert_not_called()
+        factory.assert_not_called()
+
+    def test_rejects_out_of_range_ports_before_opening_http_connection(self):
+        with patch.object(benchmark, "docker", return_value="127.0.0.1:70000"):
+            with patch.object(benchmark.http.client, "HTTPConnection") as factory:
+                with self.assertRaisesRegex(
+                    ValueError, "outside the TCP port range"
+                ):
+                    benchmark.local_api_json(
+                        "bench-container", "/api/dht/status"
+                    )
+
+        factory.assert_not_called()
+
+
+    def test_rejects_http_errors_and_closes_the_connection(self):
+        with patch.object(benchmark, "docker", return_value="127.0.0.1:45678"):
+            with patch.object(benchmark.http.client, "HTTPConnection") as factory:
+                connection = factory.return_value
+                connection.getresponse.return_value.status = 401
+
+                with self.assertRaisesRegex(RuntimeError, "returned HTTP 401"):
+                    benchmark.local_api_json(
+                        "bench-container", "/api/v0/server"
+                    )
+
+        connection.close.assert_called_once_with()
+
+    def test_rejects_oversized_status_responses_and_closes_the_connection(self):
+        with patch.object(benchmark, "docker", return_value="127.0.0.1:45678"):
+            with patch.object(benchmark.http.client, "HTTPConnection") as factory:
+                connection = factory.return_value
+                response = connection.getresponse.return_value
+                response.status = 200
+                response.read.return_value = b"x" * (
+                    benchmark.MAX_LOCAL_API_RESPONSE_BYTES + 1
+                )
+
+                with self.assertRaisesRegex(
+                    RuntimeError, "exceeded 65536 bytes"
+                ):
+                    benchmark.local_api_json(
+                        "bench-container", "/api/dht/status"
+                    )
+
+        response.read.assert_called_once_with(
+            benchmark.MAX_LOCAL_API_RESPONSE_BYTES + 1
+        )
+        connection.close.assert_called_once_with()
 
 
 class ShareScanConfigurationTests(unittest.TestCase):

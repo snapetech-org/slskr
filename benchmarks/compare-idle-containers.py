@@ -8,6 +8,7 @@ measurement does not launch docker exec processes inside the containers.
 from __future__ import annotations
 
 import argparse
+import http.client
 import json
 import os
 import platform
@@ -15,7 +16,6 @@ import random
 import subprocess
 import sys
 import time
-import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -28,6 +28,8 @@ IMAGES = {
 }
 NETWORKS = {"slskr": "none", "slskd": "none", "slskr-dht": "bridge"}
 CGROUP_ROOT = Path("/sys/fs/cgroup")
+LOCAL_API_PATHS = frozenset({"/api/dht/status", "/api/v0/server"})
+MAX_LOCAL_API_RESPONSE_BYTES = 64 * 1024
 DHT_API_TOKEN = "idle-benchmark-local-token-2026"
 SLSKD_API_KEY = "idle-benchmark-local-api-key-2026"
 SLSKD_API_KEY_CONFIG = (
@@ -217,16 +219,31 @@ def local_api_json(
     path: str,
     auth: tuple[str, str] | None = None,
 ) -> dict[str, Any]:
+    if path not in LOCAL_API_PATHS:
+        raise ValueError(f"unsupported local status API path: {path}")
     mapping = docker("port", container, "5030/tcp").splitlines()[0].strip()
     host_port = int(mapping.rsplit(":", 1)[1])
+    if not 1 <= host_port <= 65535:
+        raise ValueError("local status API port is outside the TCP port range")
     headers = {"Accept": "application/json"}
     if auth is not None:
         headers[auth[0]] = auth[1]
-    request = urllib.request.Request(
-        f"http://127.0.0.1:{host_port}{path}", headers=headers
-    )
-    with urllib.request.urlopen(request, timeout=10) as response:
-        value = json.load(response)
+    connection = http.client.HTTPConnection("127.0.0.1", host_port, timeout=10)
+    try:
+        connection.request("GET", path, headers=headers)
+        response = connection.getresponse()
+        if response.status < 200 or response.status >= 300:
+            raise RuntimeError(
+                f"local status endpoint returned HTTP {response.status}"
+            )
+        body = response.read(MAX_LOCAL_API_RESPONSE_BYTES + 1)
+        if len(body) > MAX_LOCAL_API_RESPONSE_BYTES:
+            raise RuntimeError(
+                f"local status endpoint exceeded {MAX_LOCAL_API_RESPONSE_BYTES} bytes"
+            )
+        value = json.loads(body)
+    finally:
+        connection.close()
     if not isinstance(value, dict):
         raise RuntimeError("local status endpoint returned a non-object response")
     return value
@@ -279,7 +296,7 @@ def wait_for_soulseek_login(
             last_status = soulseek_runtime_status(container, app)
             if last_status["logged_in"]:
                 return last_status, time.monotonic() - started, attempts
-        except (OSError, RuntimeError, ValueError, urllib.error.URLError):
+        except (OSError, RuntimeError, ValueError, http.client.HTTPException):
             pass
         time.sleep(5)
     return last_status, time.monotonic() - started, attempts
