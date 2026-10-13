@@ -48,6 +48,18 @@ def docker(*args: str, env: dict[str, str] | None = None) -> str:
     return result.stdout.strip()
 
 
+def network_metadata(profiles: list[str], live_session: bool) -> dict[str, Any]:
+    network_by_profile = {
+        profile: "bridge" if live_session else NETWORKS[profile]
+        for profile in profiles
+    }
+    networks = set(network_by_profile.values())
+    return {
+        "network": next(iter(networks)) if len(networks) == 1 else "profile-dependent",
+        "network_by_profile": network_by_profile,
+    }
+
+
 def key_values(path: Path) -> dict[str, int]:
     values: dict[str, int] = {}
     for line in path.read_text(encoding="utf-8").splitlines():
@@ -507,15 +519,7 @@ def main() -> int:
             "memory_sample_interval_seconds": args.sample_interval_seconds,
             "profiles": args.profiles,
             "order": order,
-            "network": (
-                "bridge" if args.live_session else
-                "none" if all(NETWORKS[app] == "none" for app in args.profiles) else
-                "profile-dependent"
-            ),
-            "network_by_profile": {
-                app: "bridge" if args.live_session else NETWORKS[app]
-                for app in args.profiles
-            },
+            **network_metadata(args.profiles, args.live_session),
             "live_soulseek_session": args.live_session,
             "credentials": (
                 "same test account reused sequentially; values omitted"

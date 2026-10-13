@@ -152,6 +152,34 @@ class ShareScanConfigurationTests(unittest.TestCase):
             self.assertIn("SLSKD_NO_SHARE_SCAN=true", environment_values(command))
 
 
+class NetworkMetadataTests(unittest.TestCase):
+    def test_single_dht_profile_reports_bridge_network(self):
+        self.assertEqual(
+            {"network": "bridge", "network_by_profile": {"slskr-dht": "bridge"}},
+            benchmark.network_metadata(["slskr-dht"], live_session=False),
+        )
+
+    def test_uniform_and_mixed_profile_networks_are_accurately_summarized(self):
+        self.assertEqual(
+            {"network": "none", "network_by_profile": {"slskr": "none"}},
+            benchmark.network_metadata(["slskr"], live_session=False),
+        )
+        self.assertEqual(
+            {
+                "network": "profile-dependent",
+                "network_by_profile": {"slskr": "none", "slskr-dht": "bridge"},
+            },
+            benchmark.network_metadata(["slskr", "slskr-dht"], live_session=False),
+        )
+        self.assertEqual(
+            {
+                "network": "bridge",
+                "network_by_profile": {"slskr": "bridge", "slskr-dht": "bridge"},
+            },
+            benchmark.network_metadata(["slskr", "slskr-dht"], live_session=True),
+        )
+
+
 class BenchmarkReportIntegrityTests(unittest.TestCase):
     def test_live_slskd_report_counts_metadata_only_retry_attempt(self):
         artifacts = SCRIPT.parent / "artifacts"
