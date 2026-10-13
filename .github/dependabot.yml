@@ -19,6 +19,14 @@ updates:
     cooldown:
       default-days: 7
     open-pull-requests-limit: 10
+    ignore:
+      # Keep the production React update deferred until the Web gzip budget has room.
+      - dependency-name: "react"
+        versions:
+          - ">=19.3.0"
+      - dependency-name: "react-dom"
+        versions:
+          - ">=19.3.0"
     groups:
       web-dependencies:
         patterns:
