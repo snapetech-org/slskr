@@ -1,6 +1,7 @@
 """Regression tests for benchmark profile metadata and container configuration."""
 
 import importlib.util
+import json
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -149,6 +150,43 @@ class ShareScanConfigurationTests(unittest.TestCase):
         for profile in profiles:
             command = benchmark.run_command(profile, "test", live_session=True)
             self.assertIn("SLSKD_NO_SHARE_SCAN=true", environment_values(command))
+
+
+class BenchmarkReportIntegrityTests(unittest.TestCase):
+    def test_live_slskd_report_counts_metadata_only_retry_attempt(self):
+        artifacts = SCRIPT.parent / "artifacts"
+        primary_path = artifacts / "20261012-live-soulseek-idle-matrix.json"
+        replacement_path = artifacts / "20261012-live-soulseek-slskd-retry-2.json"
+        metadata_only_path = artifacts / "20261012-live-soulseek-slskd-retry.json"
+        primary = json.loads(primary_path.read_text())
+        replacement = json.loads(replacement_path.read_text())
+        metadata_only = json.loads(metadata_only_path.read_text())
+
+        primary_attempts = [
+            trial for trial in primary["trials"] if trial["app"] == "slskd"
+        ]
+        replacement_attempts = [
+            trial for trial in replacement["trials"] if trial["app"] == "slskd"
+        ]
+        metadata_only_attempt = (
+            "slskd" in metadata_only["parameters"]["profiles"]
+            and metadata_only["parameters"]["live_soulseek_session"]
+            and bool(metadata_only["started_utc"])
+            and not metadata_only["trials"]
+        )
+        valid_attempts = sum(
+            trial["session_logged_in_at_measurement_boundaries"]
+            for trial in primary_attempts + replacement_attempts
+        )
+        attempt_count = (
+            len(primary_attempts)
+            + len(replacement_attempts)
+            + int(metadata_only_attempt)
+        )
+
+        self.assertEqual((3, 5), (valid_attempts, attempt_count))
+        report = (artifacts / "20261012-live-soulseek-idle.md").read_text()
+        self.assertIn("3 of 5 attempts", report)
 
 
 if __name__ == "__main__":
