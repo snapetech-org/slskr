@@ -24,7 +24,10 @@ When evaluating an unreviewed branch, copy `trusted-test-launcher.mjs` and
 outside the checkout, keeping them together. The launcher snapshots only paths
 in the Git index, hides the original checkout and common host configuration and
 data roots, and runs candidate code offline. Explicit credential names,
-including dotted extensionless names, are excluded. Credential-named folders
+including dotted extensionless names, private/API keys, access/refresh tokens,
+and client secrets, including suffixed dotenv names such as `tokens.env.local`,
+are excluded even with source-like extensions.
+Credential-named folders
 outside source trees are also omitted; manifests, fixtures, scripts, templates,
 source modules, and other assets inside source trees remain available, including
 credential-named source modules such as `ApiKeys.tsx`. Credential data and
