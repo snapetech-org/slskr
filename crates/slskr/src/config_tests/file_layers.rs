@@ -33,7 +33,13 @@ fn frozen_controller_startup_aliases_drive_core_runtime_configuration() {
     assert_eq!(config.http_bind, "127.0.0.2:55030".parse().unwrap());
     assert_eq!(config.server_address, "soulseek.example:2271");
     assert_eq!(config.username.as_deref(), Some("upstream-user"));
-    assert_eq!(config.password.as_deref(), Some("upstream-password"));
+    assert_eq!(
+        config.credentials().map(|credentials| credentials.password),
+        Some("upstream-password".to_owned())
+    );
+    let debug = format!("{config:?}");
+    assert!(!debug.contains("upstream-password"), "{debug}");
+    assert!(debug.contains("[REDACTED]"), "{debug}");
     assert_eq!(config.listen_port, 55031);
     assert_eq!(config.listener_bind.as_deref(), Some("0.0.0.0:55031"));
     assert!(!config.obfuscation_enabled);
@@ -247,7 +253,10 @@ fn controller_yaml_is_a_real_startup_provider_for_core_settings() {
     assert!(!config.auto_connect);
     assert_eq!(config.server_address, "yaml.example:2271");
     assert_eq!(config.username.as_deref(), Some("yaml-user"));
-    assert_eq!(config.password.as_deref(), Some("yaml-password"));
+    assert_eq!(
+        config.credentials().map(|credentials| credentials.password),
+        Some("yaml-password".to_owned())
+    );
     assert_eq!(config.user_info_description, "yaml description");
     assert_eq!(config.listen_port, 55100);
     assert_eq!(config.listener_bind.as_deref(), Some("0.0.0.0:55100"));
