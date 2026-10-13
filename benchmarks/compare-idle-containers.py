@@ -13,6 +13,7 @@ import json
 import os
 import platform
 import random
+import secrets
 import subprocess
 import sys
 import time
@@ -30,11 +31,6 @@ NETWORKS = {"slskr": "none", "slskd": "none", "slskr-dht": "bridge"}
 CGROUP_ROOT = Path("/sys/fs/cgroup")
 LOCAL_API_PATHS = frozenset({"/api/dht/status", "/api/v0/server"})
 MAX_LOCAL_API_RESPONSE_BYTES = 64 * 1024
-DHT_API_TOKEN = "idle-benchmark-local-token-2026"
-SLSKD_API_KEY = "idle-benchmark-local-api-key-2026"
-SLSKD_API_KEY_CONFIG = (
-    f"role=ReadOnly;cidr=0.0.0.0/0,::/0;{SLSKD_API_KEY}"
-)
 
 
 def utc_now() -> str:
@@ -71,16 +67,25 @@ def key_values(path: Path) -> dict[str, int]:
     return values
 
 
+def parse_host_cpu_ticks(line: str) -> dict[str, int]:
+    fields = line.split()
+    if not fields or fields[0] != "cpu":
+        raise ValueError("expected the aggregate cpu row from /proc/stat")
+    values = [int(value) for value in fields[1:]]
+    # Linux guest ticks are already included in user and nice.
+    non_guest_values = values[:8]
+    return {
+        "total": sum(non_guest_values),
+        "idle": values[3] + (values[4] if len(values) > 4 else 0),
+    }
+
+
 def host_cpu_ticks() -> dict[str, int]:
     line = next(
         row for row in Path("/proc/stat").read_text().splitlines()
         if row.startswith("cpu ")
     )
-    values = [int(value) for value in line.split()[1:]]
-    return {
-        "total": sum(values),
-        "idle": values[3] + (values[4] if len(values) > 4 else 0),
-    }
+    return parse_host_cpu_ticks(line)
 
 
 def host_cpu_busy_percent(start: dict[str, int], end: dict[str, int]) -> float:
@@ -175,7 +180,16 @@ def run_command(
     container: str,
     *,
     live_session: bool = False,
+    api_token: str | None = None,
+    slskd_api_key: str | None = None,
 ) -> list[str]:
+    requires_slskr_api_token = app == "slskr-dht" or (
+        live_session and app == "slskr"
+    )
+    if requires_slskr_api_token and not api_token:
+        raise ValueError("this profile requires a per-run slskR API token")
+    if live_session and app == "slskd" and not slskd_api_key:
+        raise ValueError("live slskd requires a per-run API key")
     command = [
         "run", "--rm", "-d", "--name", container,
         "--platform", "linux/amd64",
@@ -203,7 +217,7 @@ def run_command(
             command.extend([
                 "-p", "127.0.0.1::5030/tcp",
                 "-e", "SLSKR_HTTP_BIND=0.0.0.0:5030",
-                "-e", f"SLSKR_API_TOKEN={DHT_API_TOKEN}",
+                "-e", "SLSKR_API_TOKEN",
             ])
     else:
         if live_session:
@@ -261,11 +275,11 @@ def local_api_json(
     return value
 
 
-def dht_runtime_status(container: str) -> dict[str, Any]:
+def dht_runtime_status(container: str, api_token: str) -> dict[str, Any]:
     status = local_api_json(
         container,
         "/api/dht/status",
-        ("Authorization", f"Bearer {DHT_API_TOKEN}"),
+        ("Authorization", f"Bearer {api_token}"),
     )
     return {
         "enabled": status.get("isEnabled"),
@@ -277,12 +291,21 @@ def dht_runtime_status(container: str) -> dict[str, Any]:
     }
 
 
-def soulseek_runtime_status(container: str, app: str) -> dict[str, Any]:
-    auth = (
-        ("X-API-Key", SLSKD_API_KEY)
-        if app == "slskd"
-        else ("Authorization", f"Bearer {DHT_API_TOKEN}")
-    )
+def soulseek_runtime_status(
+    container: str,
+    app: str,
+    *,
+    api_token: str | None = None,
+    slskd_api_key: str | None = None,
+) -> dict[str, Any]:
+    if app == "slskd":
+        if not slskd_api_key:
+            raise ValueError("slskd status requests require the per-run API key")
+        auth = ("X-API-Key", slskd_api_key)
+    else:
+        if not api_token:
+            raise ValueError("slskR status requests require the per-run API token")
+        auth = ("Authorization", f"Bearer {api_token}")
     status = local_api_json(
         container,
         "/api/v0/server",
@@ -297,7 +320,12 @@ def soulseek_runtime_status(container: str, app: str) -> dict[str, Any]:
 
 
 def wait_for_soulseek_login(
-    container: str, app: str, timeout_seconds: int
+    container: str,
+    app: str,
+    timeout_seconds: int,
+    *,
+    api_token: str | None = None,
+    slskd_api_key: str | None = None,
 ) -> tuple[dict[str, Any], float, int]:
     started = time.monotonic()
     attempts = 0
@@ -305,13 +333,32 @@ def wait_for_soulseek_login(
     while time.monotonic() - started < timeout_seconds:
         attempts += 1
         try:
-            last_status = soulseek_runtime_status(container, app)
+            last_status = soulseek_runtime_status(
+                container,
+                app,
+                api_token=api_token,
+                slskd_api_key=slskd_api_key,
+            )
             if last_status["logged_in"]:
                 return last_status, time.monotonic() - started, attempts
         except (OSError, RuntimeError, ValueError, http.client.HTTPException):
             pass
         time.sleep(5)
     return last_status, time.monotonic() - started, attempts
+
+
+def fresh_api_credentials(
+    app: str, live_session: bool
+) -> tuple[str | None, str | None]:
+    api_token = (
+        secrets.token_urlsafe(32)
+        if app in ("slskr", "slskr-dht") and (live_session or app == "slskr-dht")
+        else None
+    )
+    slskd_api_key = (
+        secrets.token_urlsafe(32) if live_session and app == "slskd" else None
+    )
+    return api_token, slskd_api_key
 
 
 def run_trial(
@@ -328,17 +375,27 @@ def run_trial(
     prefix = "liveidle" if live_session else "idlecmp"
     container = f"{prefix}-{app}-{repetition:02d}"
     started = utc_now()
-    child_env = None
+    api_token, slskd_api_key = fresh_api_credentials(app, live_session)
+    child_env = os.environ.copy() if live_session or api_token or slskd_api_key else None
     if live_session:
         if credentials is None:
             raise RuntimeError("live-session mode requires test credentials")
-        child_env = os.environ.copy()
         child_env["SLSKD_SLSK_USERNAME"] = credentials[0]
         child_env["SLSKD_SLSK_PASSWORD"] = credentials[1]
-        child_env["SLSKR_API_TOKEN"] = DHT_API_TOKEN
-        child_env["SLSKD_API_KEY"] = SLSKD_API_KEY_CONFIG
+    if api_token:
+        child_env["SLSKR_API_TOKEN"] = api_token
+    if slskd_api_key:
+        child_env["SLSKD_API_KEY"] = (
+            f"role=ReadOnly;cidr=0.0.0.0/0,::/0;{slskd_api_key}"
+        )
     docker(
-        *run_command(app, container, live_session=live_session),
+        *run_command(
+            app,
+            container,
+            live_session=live_session,
+            api_token=api_token,
+            slskd_api_key=slskd_api_key,
+        ),
         env=child_env,
     )
     try:
@@ -350,7 +407,11 @@ def run_trial(
         if live_session:
             print(f"{container}: waiting for a live Soulseek login", flush=True)
             login_ready, login_wait_seconds, login_attempts = wait_for_soulseek_login(
-                container, app, login_timeout
+                container,
+                app,
+                login_timeout,
+                api_token=api_token,
+                slskd_api_key=slskd_api_key,
             )
             if not login_ready["logged_in"]:
                 raise RuntimeError(
@@ -365,13 +426,24 @@ def run_trial(
             print(f"{container}: warm-up {warmup}s", flush=True)
         time.sleep(warmup)
 
-        session_status_before = soulseek_runtime_status(container, app) if live_session else None
+        session_status_before = (
+            soulseek_runtime_status(
+                container,
+                app,
+                api_token=api_token,
+                slskd_api_key=slskd_api_key,
+            )
+            if live_session else None
+        )
         if live_session and not session_status_before["logged_in"]:
             raise RuntimeError(f"{container} lost its Soulseek login during warm-up")
         if live_session and app in ("slskr", "slskr-dht"):
-            dht_status_before = dht_runtime_status(container)
+            dht_status_before = dht_runtime_status(container, api_token)
         else:
-            dht_status_before = dht_runtime_status(container) if app == "slskr-dht" else None
+            dht_status_before = (
+                dht_runtime_status(container, api_token)
+                if app == "slskr-dht" else None
+            )
         load_start = os.getloadavg()
         cpu_start = key_values(cgroup / "cpu.stat")
         host_start = host_cpu_ticks()
@@ -388,11 +460,22 @@ def run_trial(
         cpu_end = key_values(cgroup / "cpu.stat")
         wall_end = time.monotonic()
         host_end = host_cpu_ticks()
-        session_status_after = soulseek_runtime_status(container, app) if live_session else None
+        session_status_after = (
+            soulseek_runtime_status(
+                container,
+                app,
+                api_token=api_token,
+                slskd_api_key=slskd_api_key,
+            )
+            if live_session else None
+        )
         if live_session and app in ("slskr", "slskr-dht"):
-            dht_status_after = dht_runtime_status(container)
+            dht_status_after = dht_runtime_status(container, api_token)
         else:
-            dht_status_after = dht_runtime_status(container) if app == "slskr-dht" else None
+            dht_status_after = (
+                dht_runtime_status(container, api_token)
+                if app == "slskr-dht" else None
+            )
         wall_seconds = wall_end - wall_start
         usage_delta = cpu_end["usage_usec"] - cpu_start["usage_usec"]
         trial = {

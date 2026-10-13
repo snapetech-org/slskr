@@ -117,6 +117,82 @@ class LocalApiRequestTests(unittest.TestCase):
         connection.close.assert_called_once_with()
 
 
+class HostCpuAccountingTests(unittest.TestCase):
+    def test_guest_ticks_are_not_added_twice_to_host_cpu_total(self):
+        ticks = benchmark.parse_host_cpu_ticks(
+            "cpu 100 20 30 500 10 5 7 8 900 40"
+        )
+
+        self.assertEqual({"total": 680, "idle": 510}, ticks)
+
+
+class RunScopedApiCredentialTests(unittest.TestCase):
+    def test_each_trial_gets_a_fresh_token_only_for_profiles_with_an_api(self):
+        with patch.object(
+            benchmark.secrets,
+            "token_urlsafe",
+            side_effect=["first-random-token", "second-random-token"],
+        ) as token_factory:
+            first = benchmark.fresh_api_credentials("slskr-dht", live_session=False)
+            second = benchmark.fresh_api_credentials("slskr-dht", live_session=False)
+
+        self.assertEqual(("first-random-token", None), first)
+        self.assertEqual(("second-random-token", None), second)
+        self.assertEqual(2, token_factory.call_count)
+        self.assertIsNone(
+            benchmark.fresh_api_credentials("slskr", live_session=False)[0]
+        )
+        self.assertIsNone(
+            benchmark.fresh_api_credentials("slskd", live_session=False)[1]
+        )
+
+    def test_container_and_dht_status_request_use_the_same_token(self):
+        api_token, _ = benchmark.fresh_api_credentials("slskr-dht", live_session=False)
+        command = benchmark.run_command(
+            "slskr-dht", "bench-container", api_token=api_token
+        )
+
+        self.assertIn("SLSKR_API_TOKEN", environment_values(command))
+        self.assertNotIn(api_token, command)
+        with patch.object(benchmark, "local_api_json", return_value={}) as request:
+            benchmark.dht_runtime_status("bench-container", api_token)
+
+        request.assert_called_once_with(
+            "bench-container",
+            "/api/dht/status",
+            ("Authorization", f"Bearer {api_token}"),
+        )
+
+    def test_slskd_live_status_uses_the_same_read_only_per_run_key(self):
+        _, api_key = benchmark.fresh_api_credentials("slskd", live_session=True)
+        command = benchmark.run_command(
+            "slskd", "bench-container", live_session=True, slskd_api_key=api_key
+        )
+
+        self.assertIn("SLSKD_API_KEY", environment_values(command))
+        self.assertNotIn(api_key, command)
+        with patch.object(
+            benchmark,
+            "local_api_json",
+            return_value={"isLoggedIn": True},
+        ) as request:
+            benchmark.soulseek_runtime_status(
+                "bench-container", "slskd", slskd_api_key=api_key
+            )
+
+        request.assert_called_once_with(
+            "bench-container",
+            "/api/v0/server",
+            ("X-API-Key", api_key),
+        )
+
+    def test_exposed_status_apis_require_a_per_run_credential(self):
+        with self.assertRaisesRegex(ValueError, "per-run slskR API token"):
+            benchmark.run_command("slskr-dht", "bench-container")
+        with self.assertRaisesRegex(ValueError, "per-run API key"):
+            benchmark.run_command("slskd", "bench-container", live_session=True)
+
+
 class ShareScanConfigurationTests(unittest.TestCase):
     def test_disconnected_slskd_metadata_matches_container_configuration(self):
         metadata = benchmark.share_scan_metadata(["slskd"], live_session=False)
@@ -149,7 +225,14 @@ class ShareScanConfigurationTests(unittest.TestCase):
             metadata["share_scan_disabled_by_profile"],
         )
         for profile in profiles:
-            command = benchmark.run_command(profile, "test", live_session=True)
+            credential = (
+                {"api_token": "test-run-token"}
+                if profile in ("slskr", "slskr-dht")
+                else {"slskd_api_key": "test-run-api-key"}
+            )
+            command = benchmark.run_command(
+                profile, "test", live_session=True, **credential
+            )
             self.assertIn("SLSKD_NO_SHARE_SCAN=true", environment_values(command))
 
 
@@ -195,6 +278,18 @@ class NetworkMetadataTests(unittest.TestCase):
 
 
 class BenchmarkReportIntegrityTests(unittest.TestCase):
+    def test_retained_host_cpu_percentages_are_labeled_as_legacy(self):
+        artifacts = SCRIPT.parent / "artifacts"
+        for report_path in (
+            artifacts / "20261012-idle-container-slskr-slskd.md",
+            artifacts / "20261012-live-soulseek-idle.md",
+        ):
+            report = report_path.read_text()
+            self.assertIn("guest and `guest_nice` ticks", report)
+            self.assertIn("individual host tick deltas", report)
+            self.assertIn("may be overstated", report)
+            self.assertIn("reruns use the corrected accounting", report)
+
     def test_dht_artifact_checksum_matches_report(self):
         artifacts = SCRIPT.parent / "artifacts"
         artifact_path = artifacts / "20261012-idle-container-slskr-dht.json"

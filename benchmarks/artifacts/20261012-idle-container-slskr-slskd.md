@@ -48,15 +48,22 @@ two medians (which is about 16.97x). The paired values are:
 | 2 | 0.173476 s | 2.771776 s | 15.98x |
 | 3 | 0.145679 s | 3.023154 s | 20.75x |
 
-| Repetition | slskR one-core CPU | slskd one-core CPU | Host CPU busy during window |
+| Repetition | slskR one-core CPU | slskd one-core CPU | Recorded host CPU busy (legacy) |
 | --- | ---: | ---: | ---: |
 | 1 | 0.034123% | 0.490465% | slskR 21.90%; slskd 16.26% |
 | 2 | 0.028901% | 0.461732% | slskR 14.47%; slskd 14.35% |
 | 3 | 0.024271% | 0.503670% | slskR 15.63%; slskd 16.94% |
 
+Legacy host-busy figures were collected before the runner excluded
+guest and `guest_nice` ticks from `/proc/stat`. Linux already includes those
+ticks in user and nice, so the figures may be overstated. The raw artifacts do
+not retain the individual host tick deltas needed to recompute them; current
+reruns use the corrected accounting.
+
 The CPU ranges do not overlap in these six trials. The host was nevertheless
-not idle: unrelated workloads were running, and aggregate host CPU busy ranged
-from 14.3% to 21.9%. The order alternated to reduce simple time-order bias:
+not idle: unrelated workloads were running, and recorded legacy aggregate
+host CPU busy ranged from 14.3% to 21.9%. The order alternated to reduce
+simple time-order bias:
 slskR then slskd for repetition 1, slskd then slskR for repetition 2, and
 slskR then slskd for repetition 3. The comparison is sequential, so the two
 containers did not compete with each other for CPU.
@@ -102,18 +109,23 @@ matched slskR column remain on `--network none`.
 
 The CPU and memory fields use the same collection method. The DHT-on column
 uses the same slskR image digest but ran later, with bridge networking and
-higher host activity (23.9%–47.7% aggregate host CPU busy, versus 14.3%–21.9%
-for the matched disconnected trials). The raw measurements do not isolate DHT
+higher recorded legacy host CPU busy (23.9%–47.7% versus 14.3%–21.9% for the
+matched disconnected trials). The raw measurements do not isolate DHT
 cost from network mode or host-time variation; the table is a profile
 comparison, not a causal estimate of the CPU overhead from DHT alone.
 
 ### DHT-on trial details
 
-| Repetition | CPU time | One-core CPU | RSS sample range | Host CPU busy | DHT routing nodes before → after | Discovered peers before → after |
+| Repetition | CPU time | One-core CPU | RSS sample range | Recorded host CPU busy (legacy) | DHT routing nodes before → after | Discovered peers before → after |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | 1 | 0.548808 s | 0.091409% | 28.5–28.6 MiB | 47.72% | 156 → 156 | 69 → 66 |
 | 2 | 0.453765 s | 0.075594% | 28.2–28.3 MiB | 29.36% | 23 → 101 | 65 → 65 |
 | 3 | 0.453027 s | 0.075474% | 26.4–26.9 MiB | 23.89% | 144 → 144 | 65 → 68 |
+
+Legacy host-busy figures were collected before the runner excluded
+guest and `guest_nice` ticks from `/proc/stat`; they may be overstated and
+cannot be recomputed from the retained artifacts. Current reruns use the
+corrected accounting.
 
 The DHT status endpoint reported the service enabled and bootstrapped before
 and after all three CPU windows. It reported a `lastError` value before trial
@@ -254,11 +266,12 @@ python3 benchmarks/compare-idle-containers.py \
 ```
 
 The retained [DHT-on JSON](20261012-idle-container-slskr-dht.json) has SHA-256
-`f8889185dc1b7b3b8b4e67bd76abb01a3018847fbbfee219aa0f43d87728f9ed`. For
-local verification, the runner binds the HTTP status endpoint inside the
-container and publishes an ephemeral port only on host loopback with a
-throwaway API token. It queries `/api/dht/status` after warm-up and after CPU
-measurement; it makes no request during the measured window.
+`f8889185dc1b7b3b8b4e67bd76abb01a3018847fbbfee219aa0f43d87728f9ed`. The
+archived sample predates per-run API-token hardening. Current reruns bind the
+HTTP status endpoint inside the container, publish an ephemeral port only on
+host loopback, and create a fresh random API token for each trial without
+recording it in the artifact. The runner queries `/api/dht/status` after
+warm-up and after CPU measurement, never during the measured window.
 
 ## What would make the next comparison stronger
 

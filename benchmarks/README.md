@@ -18,7 +18,11 @@ and [DHT-on raw JSON](artifacts/20261012-idle-container-slskr-dht.json). Run
 `--profiles slskd slskr slskr-dht` to collect the full matrix. The DHT-on profile
 must use bridge networking and is documented separately from the no-network
 matched pair. These are diagnostic measurements, not regression thresholds;
-they do not exercise a Soulseek login, shares, transfers, or HTTP clients.
+they do not exercise a Soulseek login, shares, transfers, or user-facing HTTP
+workloads.
+The runner generates fresh random local status credentials for each trial,
+passes them through the container environment and request headers, and does
+not save them in measurement artifacts; slskd's trial key is read-only.
 
 Run all three profiles with the same repetition and window settings:
 

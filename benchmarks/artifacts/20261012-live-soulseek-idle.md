@@ -42,10 +42,16 @@ processes in the container and can count shared pages more than once. Both
 memory figures are sampled at one-minute intervals, not continuous peaks.
 
 The local host had 32 logical CPUs, Linux 7.1.7-arch1-1, Docker client 29.9.0,
-Docker server 29.8.0, and cgroup v2. Aggregate host CPU busy during valid
-windows ranged from 17.77% to 46.76%; per-trial start/end load averages are in
-the raw JSON. The host was not idle, and its load varied across these
-sequential trials.
+Docker server 29.8.0, and cgroup v2. Recorded (legacy) aggregate host CPU busy
+percentages during valid windows ranged from 17.77% to 46.76%; per-trial
+start/end load averages are in the raw JSON. The host was not idle, and its
+load varied across these sequential trials.
+
+These archived host-busy percentages were collected before the runner excluded
+guest and `guest_nice` ticks from `/proc/stat`. Linux already includes those
+ticks in user and nice, so the figures may be overstated. The raw artifacts do
+not retain the individual host tick deltas needed to recompute them; current
+reruns use the corrected accounting.
 
 ### Trial validity notes
 
@@ -75,8 +81,8 @@ The authenticated session was valid at both measurement boundaries, and DHT
 was enabled, running, and bootstrapped at both status checks. The initial DHT
 status carried a last-error indicator with 71 discovered peers; the indicator
 was clear at the end, with 69 discovered peers. It used 0.664036 CPU seconds
-over 600.214 seconds (0.110633% of one logical CPU); host CPU busy was 21.76%
-during the window. This single supplemental trial is kept separate
+over 600.214 seconds (0.110633% of one logical CPU); recorded (legacy) host
+CPU busy was 21.76% during the window. This single supplemental trial is kept separate
 from the three-window DHT-on median above. Its host load samples and complete
 metadata are in the [supplemental DHT-on retry artifact](20261012-live-soulseek-slskr-dht-retry.json).
 
