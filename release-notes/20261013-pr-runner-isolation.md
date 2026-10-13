@@ -5,4 +5,4 @@ area: ci-security
 action: none
 breaking: false
 ---
-Pull request validation uses hosted runners, leaving the persistent Linux runner for trusted main pushes and manual runs. Local jobs protect GitHub command files, cap Cargo builds at one job, and stream private logs within a 16 MiB limit. Rust receipts are stored per workflow attempt; reconciliation uses each runner's newest result and rejects duplicates.
+Pull requests use hosted runners; the persistent Linux runner is reserved for trusted main pushes and manual runs. Local jobs protect command files, cap Cargo at one job, enforce memory and swap limits, and retain private streamed logs (16 MiB). Rust receipts are stored per attempt and reconciled using each runner's newest result. The guide documents sandbox mounts and retry checks.
