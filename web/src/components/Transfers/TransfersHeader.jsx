@@ -2,6 +2,7 @@ import { isStateCancellable, isStateRetryable } from '../../lib/transfers';
 import { Div, Nbsp } from '../Shared';
 import ShrinkableDropdownButton from '../Shared/ShrinkableDropdownButton';
 import React, { useMemo, useState } from 'react';
+import { useInterfaceLanguage } from '../../lib/interfaceLocale';
 import { Checkbox, Icon, Popup, Segment } from 'semantic-ui-react';
 
 const getRetryableFiles = ({ files, retryOption }) => {
@@ -78,6 +79,8 @@ const TransfersHeader = ({
   server = { isConnected: true },
   transfers,
 }) => {
+  const { language, t } = useInterfaceLanguage();
+  const localizedText = (value) => <span lang={language} dir={language === 'ar' ? 'rtl' : 'ltr'}>{value}</span>;
   const [removeOption, setRemoveOption] = useState('Succeeded');
   const [cancelOption, setCancelOption] = useState('All');
   const [retryOption, setRetryOption] = useState('Errored');
@@ -126,12 +129,12 @@ const TransfersHeader = ({
           onChange={(_, data) => setRetryOption(data.value)}
           onClick={() => onRetryAll(getRetryableFiles({ files, retryOption }))}
           options={[
-            { key: 'errored', text: 'Errored', value: 'Errored' },
-            { key: 'cancelled', text: 'Cancelled', value: 'Cancelled' },
-            { key: 'all', text: 'All', value: 'All' },
+            { key: 'errored', text: localizedText(t('Errored')), value: 'Errored' },
+            { key: 'cancelled', text: localizedText(t('Cancelled')), value: 'Cancelled' },
+            { key: 'all', text: localizedText(t('All')), value: 'All' },
           ]}
         >
-          {`Retry ${retryOption === 'All' ? retryOption : `All ${retryOption}`}`}
+          {localizedText(`${t('Retry')} ${retryOption === 'All' ? t('All') : `${t('All')} ${t(retryOption)}`}`)}
         </ShrinkableDropdownButton>
         <Nbsp />
         <ShrinkableDropdownButton
@@ -147,11 +150,11 @@ const TransfersHeader = ({
           }
           options={[
             { key: 'all', text: 'All', value: 'All' },
-            { key: 'queued', text: 'Queued', value: 'Queued' },
-            { key: 'inProgress', text: 'In Progress', value: 'In Progress' },
+            { key: 'queued', text: localizedText(t('Queued')), value: 'Queued' },
+            { key: 'inProgress', text: localizedText(t('In Progress')), value: 'In Progress' },
           ]}
         >
-          {`Cancel ${cancelOption === 'All' ? cancelOption : `All ${cancelOption}`}`}
+          {localizedText(`${t('Cancel')} ${cancelOption === 'All' ? t('All') : `${t('All')} ${t(cancelOption)}`}`)}
         </ShrinkableDropdownButton>
         <Nbsp />
         <ShrinkableDropdownButton
@@ -169,13 +172,13 @@ const TransfersHeader = ({
             )
           }
           options={[
-            { key: 'succeeded', text: 'Succeeded', value: 'Succeeded' },
+            { key: 'succeeded', text: localizedText(t('Succeeded')), value: 'Succeeded' },
             { key: 'errored', text: 'Errored', value: 'Errored' },
             { key: 'cancelled', text: 'Cancelled', value: 'Cancelled' },
-            { key: 'completed', text: 'Completed', value: 'Completed' },
+            { key: 'completed', text: localizedText(t('Completed')), value: 'Completed' },
           ]}
         >
-          {`Remove All ${removeOption}`}
+          {localizedText(`${t('Remove')} ${t('All')} ${t(removeOption)}`)}
         </ShrinkableDropdownButton>
         <Nbsp />
         <Popup
@@ -191,7 +194,7 @@ const TransfersHeader = ({
                 Boolean(modeStatusError)
               }
               hidden={direction === 'upload'}
-              label="Accelerated"
+              label={localizedText(t('Accelerated'))}
               onChange={(_, data) => onAcceleratedChange?.(data.checked)}
               toggle
             />
@@ -211,7 +214,7 @@ const TransfersHeader = ({
                 Boolean(modeStatusError)
               }
               hidden={direction === 'upload'}
-              label="Auto-Replace"
+              label={localizedText(t('Auto-Replace'))}
               onChange={(_, data) => onAutoReplaceChange?.(data.checked)}
               toggle
             />

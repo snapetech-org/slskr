@@ -1,4 +1,5 @@
 import { formatBytes, formatBytesAsUnit, getFileName } from '../../lib/util';
+import { useInterfaceLanguage } from '../../lib/interfaceLocale';
 import React, { Component } from 'react';
 import {
   Button,
@@ -9,6 +10,28 @@ import {
   Progress,
   Table,
 } from 'semantic-ui-react';
+
+const getTransferStatusLabel = (state = '') => ({
+  InProgress: 'In Progress',
+  Requested: 'Queued',
+  'Queued, Locally': 'Queued',
+  'Queued, Remotely': 'Queued',
+  'Completed, Succeeded': 'Succeeded',
+  'Completed, Errored': 'Errored',
+  'Completed, Cancelled': 'Cancelled',
+  'Completed, TimedOut': 'Failed',
+  'Completed, Rejected': 'Failed',
+}[state] || state);
+
+const TransferStatus = ({ state, placeInQueue }) => {
+  const { t, languageFor, directionFor } = useInterfaceLanguage();
+  const label = getTransferStatusLabel(state);
+  return (
+    <span lang={languageFor(label)} dir={directionFor(label)}>
+      {t(label)}{placeInQueue ? ` (#${placeInQueue})` : ''}
+    </span>
+  );
+};
 
 const getColor = (state = '') => {
   switch (state) {
@@ -199,8 +222,7 @@ class TransferList extends Component {
                                isRetryableState(f.state) && (
                                  <Icon name="redo" />
                                )}
-                              {f.state}
-                              {f.placeInQueue ? ` (#${f.placeInQueue})` : ''}
+                              <TransferStatus state={f.state} placeInQueue={f.placeInQueue} />
                             </Button>
                           )}
                         </Table.Cell>

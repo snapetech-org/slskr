@@ -37,10 +37,10 @@ Translate interface labels, help, empty states, validation, notifications, and e
 
 ## Implemented in this PR
 
-System > Experience Preferences offers a browser-local interface-language selector for twelve first-wave locales. The translated primary navigation uses per-key English fallback; Arabic navigation labels carry local language and direction metadata while the document and untranslated screens remain English and left-to-right. Full screen-level translation and app-wide RTL layout review remain outstanding.
+System > Experience Preferences offers a browser-local interface-language selector for twelve first-wave locales. The translated primary navigation uses per-key English fallback; Arabic navigation labels carry local language and direction metadata while the document and untranslated screens remain English and left-to-right. The Downloads and Uploads views now translate visible transfer statuses, empty states, bulk retry/cancel/remove choices, and the accelerated and auto-replace controls. Protocol state values and transfer metadata remain unchanged; full screen-level translation and app-wide RTL review remain outstanding.
 
 Regional formatting uses the selected preference for dates, times, counts, byte sizes, and numbers in the shipped UI. Changes re-render open screens immediately, keep working in the current tab when browser storage is blocked, and update from another tab's preference changes.
 
 ## Remaining work
 
-Translate the highest-use search, transfer, room, settings, and error workflows in screen-sized catalog batches. Keep server and protocol values unchanged, and use stable message keys before translating server-originated errors or persisted notifications. Verify complete Arabic layout in real workflows before claiming app-wide RTL support.
+Translate search, room, settings, and transfer help/error messaging in screen-sized catalog batches. Keep server and protocol values unchanged, use stable message keys for server-originated errors and persisted notifications, and verify complete Arabic layout before claiming app-wide RTL support.
