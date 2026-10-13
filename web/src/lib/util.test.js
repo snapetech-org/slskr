@@ -41,6 +41,16 @@ describe('regional number formatting', () => {
     expect(utils.formatRegionalCompactNumber(1_234)).toBe('1,2K');
   });
 
+  it('localizes zero byte, speed, and wait values with Arabic digits', () => {
+    utils.setRegionalFormatPreference('ar');
+    const zero = new Intl.NumberFormat('ar').format(0);
+
+    expect(utils.formatBytes(0)).toBe(`${zero} B`);
+    expect(utils.formatBytesFixed(0)).toBe(`${zero} B`);
+    expect(utils.formatSpeed(0)).toBe(`${zero} B/s`);
+    expect(utils.formatWait(0)).toBe(`${zero}s`);
+  });
+
   it('formats regional time with an explicit seconds field', () => {
     const date = new Date('2026-10-13T12:34:56Z');
     const options = { hour: '2-digit', minute: '2-digit', second: '2-digit' };

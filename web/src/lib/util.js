@@ -122,7 +122,7 @@ export const formatBytesAsUnit = (bytes, unit, decimals = 2) => {
 };
 
 export const formatBytes = (bytes, decimals = 2) => {
-  if (bytes === 0) return '0 B';
+  if (bytes === 0) return `${formatRegionalNumber(0)} B`;
 
   const k = 1_024;
   const dm = decimals < 0 ? 0 : decimals;
@@ -133,7 +133,7 @@ export const formatBytes = (bytes, decimals = 2) => {
 };
 
 export const formatBytesFixed = (bytes, decimals = 1) => {
-  if (bytes === 0) return '0 B';
+  if (bytes === 0) return `${formatRegionalNumber(0)} B`;
   const k = 1_024;
   const dm = decimals < 0 ? 0 : decimals;
   const sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
@@ -142,12 +142,12 @@ export const formatBytesFixed = (bytes, decimals = 1) => {
 };
 
 export const formatSpeed = (bytesPerSecond, decimals = 1) => {
-  if (!bytesPerSecond || bytesPerSecond === 0) return '0 B/s';
+  if (!bytesPerSecond || bytesPerSecond === 0) return `${formatRegionalNumber(0)} B/s`;
   return `${formatBytes(bytesPerSecond, decimals)}/s`;
 };
 
 export const formatWait = (seconds) => {
-  if (!seconds || seconds === 0) return '0s';
+  if (!seconds || seconds === 0) return `${formatRegionalNumber(0)}s`;
   if (seconds < 60) return `${formatRegionalNumber(Math.round(seconds))}s`;
   return `${formatRegionalFixedNumber(seconds / 60, 1)}m`;
 };

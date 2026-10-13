@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import ExperienceSettings from './index';
+import { REGIONAL_FORMAT_OPTIONS } from '../../../lib/regionalFormat';
 import {
   INTERFACE_LANGUAGE_OPTIONS,
   resetInterfaceLanguage,
@@ -113,6 +114,23 @@ describe('ExperienceSettings', () => {
       const optionLabel = screen.getByRole('option', { name: option.text }).querySelector('span');
       expect(optionLabel).not.toBeNull();
       expect(optionLabel).toHaveAttribute('lang', option.value);
+      expect(optionLabel).toHaveAttribute('dir', option.value === 'ar' ? 'rtl' : 'ltr');
+    }
+  });
+
+  it('uses each regional-format option’s own pronunciation and text direction', () => {
+    setInterfaceLanguage('ar');
+    render(<ExperienceSettings />);
+
+    const regionalSelect = screen.getAllByRole('combobox')[1];
+    expect(regionalSelect).not.toHaveAttribute('lang');
+    expect(regionalSelect).not.toHaveAttribute('dir');
+    fireEvent.click(regionalSelect);
+
+    for (const option of REGIONAL_FORMAT_OPTIONS) {
+      const optionLabel = screen.getByRole('option', { name: option.text }).querySelector('span');
+      expect(optionLabel).not.toBeNull();
+      expect(optionLabel).toHaveAttribute('lang', option.value === 'system' ? 'en' : option.value);
       expect(optionLabel).toHaveAttribute('dir', option.value === 'ar' ? 'rtl' : 'ltr');
     }
   });

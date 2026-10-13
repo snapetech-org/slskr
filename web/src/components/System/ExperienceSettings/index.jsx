@@ -39,6 +39,17 @@ const interfaceLanguageOptions = INTERFACE_LANGUAGE_OPTIONS.map((option) => ({
     </span>
   ),
 }));
+const regionalFormatOptions = REGIONAL_FORMAT_OPTIONS.map((option) => ({
+  ...option,
+  text: (
+    <span
+      dir={option.value === 'ar' ? 'rtl' : 'ltr'}
+      lang={option.value === 'system' ? 'en' : option.value}
+    >
+      {option.text}
+    </span>
+  ),
+}));
 
 const storageKey = EXPERIENCE_PREFERENCES_STORAGE_KEY;
 
@@ -68,7 +79,7 @@ const defaults = {
 };
 
 const options = {
-  regionalFormat: REGIONAL_FORMAT_OPTIONS,
+  regionalFormat: regionalFormatOptions,
   actionPreviewDensity: [
     { key: 'compact', text: 'Compact', value: 'compact' },
     { key: 'detailed', text: 'Detailed', value: 'detailed' },
@@ -290,9 +301,7 @@ const ExperienceSettings = () => {
             <Form>
               <Form.Select
                 aria-label={t('Regional format')}
-                dir={language === 'ar' ? 'rtl' : 'ltr'}
                 label={<span lang={language}>{t('Date, time, and number format')}</span>}
-                lang={language}
                 onChange={(_, { value }) => update('regionalFormat', value)}
                 options={options.regionalFormat}
                 value={form.regionalFormat}
