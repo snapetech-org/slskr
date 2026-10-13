@@ -9,10 +9,11 @@ when their source and inventory identities match.
 ## GitHub runner routing
 
 Pull request and non-main validation use GitHub-hosted runners. Only trusted
-pushes to `main` and manual runs against `main` route the Rust lane to the
-server-local Linux runner. The desktop runner's temporary filesystem had
-limited free space, so the heavier trusted lane now uses the server's larger
-host disk. Runner scratch remains private to each workflow run.
+pushes to `main` and manual runs against `main` route the Rust lane to the shared
+organization Linux build pool with the `host`, `linux-build`, and `linux-amd64`
+capability labels. The server-side runner-group policy allows only this workflow
+pinned to `refs/heads/main`, so public PR code cannot select the pool. Runner
+scratch remains private to each workflow run.
 
 ## Local commands
 
