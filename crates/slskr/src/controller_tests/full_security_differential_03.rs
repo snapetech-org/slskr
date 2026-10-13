@@ -1436,9 +1436,20 @@ pub(super) fn security_controls_differential_authentication_and_jwt() {
         let config = crate::AppConfig::from_layers(None, FileConfig::default(), &jwt_env)
             .expect("authentication control config");
         let now = crate::unix_timestamp();
-        let (jwt, claims) = crate::utils::issue_admin_jwt(&config, "security-user", now)
-            .expect("issue administrator JWT");
-        let verified = crate::utils::verify_admin_jwt(&config, &jwt, now);
+        let (jwt, claims) = crate::utils::issue_admin_jwt(
+            &config.controller_web_jwt_key,
+            config.controller_profile,
+            config.controller_web_jwt_ttl_millis,
+            "security-user",
+            now,
+        )
+        .expect("issue administrator JWT");
+        let verified = crate::utils::verify_admin_jwt(
+            &config.controller_web_jwt_key,
+            config.controller_profile,
+            &jwt,
+            now,
+        );
         record!(
             target,
             SECURITY_SERVICE,
@@ -1474,7 +1485,13 @@ pub(super) fn security_controls_differential_authentication_and_jwt() {
             target,
             SECURITY_SERVICE,
             "rejected-malicious-and-boundary-input",
-            crate::utils::verify_admin_jwt(&config, &tampered, now).is_none()
+            crate::utils::verify_admin_jwt(
+                &config.controller_web_jwt_key,
+                config.controller_profile,
+                &tampered,
+                now,
+            )
+            .is_none()
         );
         record!(
             target,
@@ -1489,8 +1506,13 @@ pub(super) fn security_controls_differential_authentication_and_jwt() {
             target,
             SECURITY_SERVICE,
             "restart-rotation-and-recovery",
-            crate::utils::verify_admin_jwt(&reloaded, &jwt, now)
-                .is_some_and(|value| value.jti == claims.jti)
+            crate::utils::verify_admin_jwt(
+                &reloaded.controller_web_jwt_key,
+                reloaded.controller_profile,
+                &jwt,
+                now,
+            )
+            .is_some_and(|value| value.jti == claims.jti)
         );
 
         let key = "0123456789abcdef";

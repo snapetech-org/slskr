@@ -343,7 +343,12 @@ pub(super) async fn request_uses_revoked_jwt(
         return false;
     };
     let now = unix_timestamp();
-    let Some(claims) = utils::verify_admin_jwt(&state.config, token, now) else {
+    let Some(claims) = utils::verify_admin_jwt(
+        &state.config.controller_web_jwt_key,
+        state.config.controller_profile,
+        token,
+        now,
+    ) else {
         return false;
     };
     state.revoked_jwts.write().await.contains(&claims.jti, now)

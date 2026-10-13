@@ -591,13 +591,21 @@ pub(super) struct ShareScanRequest<'a> {
     pub(super) cancellation: Arc<AtomicBool>,
 }
 
-#[cfg(any(test, feature = "full-controller-tests"))]
+#[cfg(any(
+    test,
+    feature = "full-controller-tests",
+    feature = "bounded-differential"
+))]
 pub(super) fn build_share_index(config: &AppConfig) -> ShareIndexSnapshot {
     build_share_index_with_cancellation(config, Arc::new(AtomicBool::new(false)))
         .expect("test share scan should remain within configured limits")
 }
 
-#[cfg(any(test, feature = "full-controller-tests"))]
+#[cfg(any(
+    test,
+    feature = "full-controller-tests",
+    feature = "bounded-differential"
+))]
 pub(super) fn build_share_index_with_cancellation(
     config: &AppConfig,
     cancellation: Arc<AtomicBool>,
