@@ -89,7 +89,7 @@ const sensitiveCredentialConfigFile =
 const sensitiveCredentialMaterialFile =
   /(?:^|[._-])(?:private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)(?=$|[._-])/iu;
 const camelCaseCredentialMaterialFile =
-  /(?<=[a-z0-9])(?:privateKeys?|ApiKeys?|APIKeys?|AccessTokens?|RefreshTokens?|ClientSecrets?)(?=$|[._-])/u;
+  /(?<=[a-z0-9])(?:PrivateKeys?|privateKeys?|ApiKeys?|APIKeys?|AccessTokens?|RefreshTokens?|ClientSecrets?)(?=$|[._-])/u;
 const qualifiedCredentialDirectoryName =
   /(?:^|[._-])(?:auth(?:entication)?|tokens?|credentials?|secrets?|private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)(?=$|[._-])/iu;
 const sourceTreeDirectory =

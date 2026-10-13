@@ -99,6 +99,7 @@ test('preserves tracked source files named token while excluding credential conf
   assert.equal(isSensitiveCandidatePath('src/apiKey.ts'), true);
   assert.equal(isSensitiveCandidatePath('src/apiKeys.js'), true);
   assert.equal(isSensitiveCandidatePath('src/productionApiKey.ts'), true);
+  assert.equal(isSensitiveCandidatePath('src/productionPrivateKey.ts'), true);
   assert.equal(isSensitiveCandidatePath('githubAccessToken.js'), true);
   assert.equal(isSensitiveCandidatePath('productionAPIKey.ts'), true);
   assert.equal(isSensitiveCandidatePath('src/github-access-token.ts'), true);
@@ -218,6 +219,7 @@ test(
     writeFileSync(path.join(source, 'src/apiKey.ts'), 'export const API_KEY_CANARY = "hidden";\n');
     writeFileSync(path.join(source, 'src/apiKeys.js'), 'export const API_KEYS_CANARY = "hidden";\n');
     writeFileSync(path.join(source, 'src/productionApiKey.ts'), 'export const API_KEY_CANARY = "hidden";\n');
+    writeFileSync(path.join(source, 'src/productionPrivateKey.ts'), 'export const PRIVATE_KEY_CANARY = "hidden";\n');
     writeFileSync(path.join(source, 'githubAccessToken.js'), 'export const TOKEN_CANARY = "hidden";\n');
     writeFileSync(path.join(source, 'productionAPIKey.ts'), 'export const API_KEY_CANARY = "hidden";\n');
     writeFileSync(path.join(source, 'api.key.json'), '{"api_key":"hidden"}');
@@ -341,6 +343,7 @@ assert.equal(existsSync('/mnt/workspace/src/github-access-token.ts'), false);
 assert.equal(existsSync('/mnt/workspace/src/apiKey.ts'), false);
 assert.equal(existsSync('/mnt/workspace/src/apiKeys.js'), false);
 assert.equal(existsSync('/mnt/workspace/src/productionApiKey.ts'), false);
+assert.equal(existsSync('/mnt/workspace/src/productionPrivateKey.ts'), false);
 assert.equal(existsSync('/mnt/workspace/githubAccessToken.js'), false);
 assert.equal(existsSync('/mnt/workspace/productionAPIKey.ts'), false);
 assert.equal(existsSync('/mnt/workspace/api.key.json'), false);
