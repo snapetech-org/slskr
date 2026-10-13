@@ -27,12 +27,11 @@ data roots, and runs candidate code offline. Explicit credential names,
 including dotted extensionless names, private/API keys, access/refresh tokens,
 and client secrets, including suffixed dotenv names such as `tokens.env.local`,
 are excluded even with source-like extensions.
-Credential-named folders
-outside source trees are also omitted; manifests, fixtures, scripts, templates,
-source modules, and other assets inside source trees remain available, including
-credential-named source modules such as `ApiKeys.tsx`. Credential data and
-files in credential-named folders outside source trees remain excluded. Stage
-new candidate files first.
+Credential-named folders outside source trees are omitted recursively, including
+files with source-code extensions. Manifests, fixtures, scripts, templates,
+source modules, and other assets inside source trees remain available unless the
+filename explicitly identifies credential material; ordinary modules such as
+`ApiKeys.tsx` remain available. Stage new candidate files first.
 
 ```sh
 node /path/to/trusted-test-launcher.mjs "$PWD" -- node scripts/validate-development.mjs --tests-only
