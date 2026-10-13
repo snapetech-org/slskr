@@ -591,6 +591,7 @@
   "Clear Quality": "品質条件をクリア",
   "Clear the bitrate, lossless, bit-depth, and sample-rate filters.": "ビットレート、ロスレス、ビット深度、サンプルレートの条件を解除します。",
   "File Properties": "ファイルのプロパティ",
+  "File sharing": "ファイル共有",
   "Min Size (bytes)": "最小サイズ（バイト）",
   "e.g. 1048576 (1MB)": "例: 1048576（1 MB）",
   "Max Size (bytes)": "最大サイズ（バイト）",

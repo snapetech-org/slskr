@@ -591,6 +591,7 @@
   "Clear Quality": "Qualitätsfilter löschen",
   "Clear the bitrate, lossless, bit-depth, and sample-rate filters.": "Entfernt die Filter für Bitrate, Verlustfreiheit, Bittiefe und Abtastrate.",
   "File Properties": "Dateieigenschaften",
+  "File sharing": "Dateifreigabe",
   "Min Size (bytes)": "Mindestgröße (Bytes)",
   "e.g. 1048576 (1MB)": "z. B. 1048576 (1 MB)",
   "Max Size (bytes)": "Maximalgröße (Bytes)",

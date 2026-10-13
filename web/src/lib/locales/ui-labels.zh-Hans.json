@@ -591,6 +591,7 @@
   "Clear Quality": "清除质量筛选",
   "Clear the bitrate, lossless, bit-depth, and sample-rate filters.": "清除比特率、无损、位深和采样率筛选条件。",
   "File Properties": "文件属性",
+  "File sharing": "文件共享",
   "Min Size (bytes)": "最小大小（字节）",
   "e.g. 1048576 (1MB)": "例如 1048576（1 MB）",
   "Max Size (bytes)": "最大大小（字节）",

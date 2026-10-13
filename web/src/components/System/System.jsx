@@ -134,7 +134,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
           >
             <Icon name="share external" />
           </Switch>
-          <LocalizedText source={"Shares"} /></Menu.Item>
+          <LocalizedText source={"File sharing"} /></Menu.Item>
       ),
       render: () => (
         <Tab.Pane>

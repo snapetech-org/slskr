@@ -591,6 +591,7 @@
   "Clear Quality": "مسح إعدادات الجودة",
   "Clear the bitrate, lossless, bit-depth, and sample-rate filters.": "يمسح عوامل تصفية معدل البت وفقدان البيانات وعمق البت ومعدل أخذ العينات.",
   "File Properties": "خصائص الملف",
+  "File sharing": "مشاركة الملفات",
   "Min Size (bytes)": "الحد الأدنى للحجم (بايت)",
   "e.g. 1048576 (1MB)": "مثال: 1048576 (1 MB)",
   "Max Size (bytes)": "الحد الأقصى للحجم (بايت)",
