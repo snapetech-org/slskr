@@ -31,7 +31,10 @@ Credential-named folders outside source trees are omitted recursively, including
 files with source-code extensions. Manifests, fixtures, scripts, templates,
 source modules, and other assets inside source trees remain available unless the
 filename explicitly identifies credential material; ordinary modules such as
-`ApiKeys.tsx` remain available. Stage new candidate files first.
+`ApiKeys.tsx` remain available. The recognized source roots include `client-go`,
+`client-python`, and `client-ts`, so ordinary SDK packages under an `auth`
+directory remain available while explicit key and secret filenames are still
+excluded. Stage new candidate files first.
 
 ```sh
 node /path/to/trusted-test-launcher.mjs "$PWD" -- node scripts/validate-development.mjs --tests-only

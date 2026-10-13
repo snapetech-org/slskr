@@ -56,6 +56,10 @@ const sandboxAvailable = (() => {
 
 test('preserves tracked source files named token while excluding credential config files', () => {
   assert.equal(isSensitiveCandidatePath('web/src/lib/token.js'), false);
+  assert.equal(isSensitiveCandidatePath('client-go/auth/client.go'), false);
+  assert.equal(isSensitiveCandidatePath('client-python/auth/__init__.py'), false);
+  assert.equal(isSensitiveCandidatePath('client-go/auth/api-key.go'), true);
+  assert.equal(isSensitiveCandidatePath('client-python/auth/client-secret.py'), true);
   assert.equal(isSensitiveCandidatePath('vendor/mainline/src/rpc/server/tokens.rs'), false);
   assert.equal(isSensitiveCandidatePath('src/authentication.ts'), false);
   assert.equal(isSensitiveCandidatePath('src/auth.ts'), false);
@@ -163,10 +167,16 @@ test(
     mkdirSync(path.join(source, 'src'), { recursive: true });
     mkdirSync(path.join(source, 'packages/app'), { recursive: true });
     mkdirSync(path.join(source, 'ops/secrets'), { recursive: true });
+    mkdirSync(path.join(source, 'client-go/auth'), { recursive: true });
+    mkdirSync(path.join(source, 'client-python/auth'), { recursive: true });
     mkdirSync(path.join(source, 'web/src/lib'), { recursive: true });
     mkdirSync(path.join(source, 'dashboard/src/pages'), { recursive: true });
     mkdirSync(path.join(source, 'vendor/mainline/src/rpc/server'), { recursive: true });
     writeFileSync(path.join(source, 'web/src/lib/token.js'), 'export const token = "source code";\n');
+    writeFileSync(path.join(source, 'client-go/auth/client.go'), 'package auth\nfunc Client() {}\n');
+    writeFileSync(path.join(source, 'client-python/auth/__init__.py'), 'def login(): return None\n');
+    writeFileSync(path.join(source, 'client-go/auth/api-key.go'), 'package auth\nconst APIKey = "hidden"\n');
+    writeFileSync(path.join(source, 'client-python/auth/client-secret.py'), 'CLIENT_SECRET = "hidden"\n');
     writeFileSync(
       path.join(source, 'dashboard/src/pages/ApiKeys.tsx'),
       'export default function ApiKeys() { return null; }\n',
@@ -290,6 +300,10 @@ assert.match(readFileSync('/mnt/workspace/src/tokens/templates/config.hbs', 'utf
 assert.equal(existsSync('/mnt/workspace/credentials'), false);
 assert.equal(readFileSync('/mnt/workspace/dashboard/src/pages/ApiKeys.tsx', 'utf8'), 'export default function ApiKeys() { return null; }\\n');
 assert.equal(readFileSync('/mnt/workspace/web/src/lib/token.js', 'utf8'), 'export const token = "source code";\\n');
+assert.equal(readFileSync('/mnt/workspace/client-go/auth/client.go', 'utf8'), 'package auth\\nfunc Client() {}\\n');
+assert.equal(readFileSync('/mnt/workspace/client-python/auth/__init__.py', 'utf8'), 'def login(): return None\\n');
+assert.equal(existsSync('/mnt/workspace/client-go/auth/api-key.go'), false);
+assert.equal(existsSync('/mnt/workspace/client-python/auth/client-secret.py'), false);
 assert.equal(readFileSync('/mnt/workspace/vendor/mainline/src/rpc/server/tokens.rs', 'utf8'), 'pub fn tokens() {}\\n');
 assert.equal(existsSync('/mnt/workspace/nested/.env.local'), false);
 assert.equal(existsSync('/mnt/workspace/nested/config/secrets.json'), false);

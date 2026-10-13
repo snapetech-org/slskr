@@ -89,7 +89,7 @@ const sensitiveCredentialConfigFile =
 const sensitiveCredentialMaterialFile =
   /^[.]?(?:private[-_]?keys?|api[-_]?keys?|access[-_]?tokens?|refresh[-_]?tokens?|client[-_]?secrets?)[.][^/]+$/iu;
 const sourceTreeDirectory =
-  /^(?:src|source|packages|apps|web|dashboard|client-ts|crates|scripts|lib|tests?|__tests__|fixtures?)$/iu;
+  /^(?:src|source|packages|apps|web|dashboard|client-go|client-python|client-ts|crates|scripts|lib|tests?|__tests__|fixtures?)$/iu;
 const sourceApiKeysModule = /^apiKeys?[.](?:jsx?|tsx?)$/iu;
 
 export function isSensitiveCandidatePath(relativePath) {
