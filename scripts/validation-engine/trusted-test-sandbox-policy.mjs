@@ -82,13 +82,17 @@ export function sandboxMountOperations({
 
 const sensitiveName =
   /^(?:[.]env(?:$|[.](?!example$)[^/]+)|[.]ssh|[.]aws|[.]gnupg|id_(?:rsa|ed25519)|[.]git-credentials|[.]npmrc|[.]pypirc|[.]netrc|[^/]+[.](?:pem|key))$/iu;
+const sensitiveCredentialName =
+  /^(?:auth(?:entication)?|tokens?|credentials?|secrets?)$/iu;
 const sensitiveCredentialConfigFile =
-  /^(?:auth(?:entication)?|tokens?|credentials?|secrets?)[.](?:json|ya?ml|toml|ini|cfg|conf|properties|xml)$/iu;
+  /^(?:auth(?:entication)?|tokens?|credentials?|secrets?)[.](?:json|ya?ml|toml|ini|cfg|conf|env|properties|xml|txt)$/iu;
 
 export function isSensitiveCandidatePath(relativePath) {
   const segments = relativePath.replaceAll(String.fromCharCode(92), '/').split('/');
   if (segments.includes('.git') || segments.includes('node_modules'))
     return true;
+  const filename = segments.at(-1) ?? '';
   return segments.some((segment) => sensitiveName.test(segment)) ||
-    sensitiveCredentialConfigFile.test(segments.at(-1) ?? '');
+    sensitiveCredentialName.test(filename) ||
+    sensitiveCredentialConfigFile.test(filename);
 }
