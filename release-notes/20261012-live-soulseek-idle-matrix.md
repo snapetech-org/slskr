@@ -5,4 +5,4 @@ area: performance
 action: none
 breaking: false
 ---
-Operators can compare pinned slskR and slskd connected-idle CPU and memory readings, with DHT-off/on profiles, session checks, raw trials, and host-load context. It also records an aborted second-host run and explains why the figures should not be generalized to other hardware or active workloads.
+Documents a repeated connected-idle CPU and memory comparison for pinned slskR and slskd images on `kspld0`, plus an aborted second-host attempt on `kspls0` under severe CPU saturation. The matrix records DHT-off and DHT-on slskR profiles, a supplemental authenticated DHT-on retry, session validation, host-load context, raw trial artifacts, and the limits on generalizing results to other hosts or active workloads.

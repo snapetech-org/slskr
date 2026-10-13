@@ -58,32 +58,32 @@ for image digests, method, counters, and limitations.
 ### Live connected-idle matrix
 
 A separate live run logged each client into Soulseek and measured CPU and
-memory while otherwise idle. The `desktop host` columns below use session-valid
-600-second windows; `server host` did not yield a valid completed window because
+memory while otherwise idle. The `kspld0` columns below use session-valid
+600-second windows; `kspls0` did not yield a valid completed window because
 the host was CPU-saturated during the attempted run.
 
 | Host / measurement | slskd 0.26.1 | slskR v0.2.56, DHT off | slskR v0.2.56, DHT on |
 | --- | ---: | ---: | ---: |
-| `desktop host`: valid authenticated windows | 3 of 4 attempts | 3 of 3 | 3 of 3; one DHT boundary warning |
-| `desktop host`: median CPU time per 600 s | 16.852206 s | 0.555272 s | 0.758278 s |
-| `desktop host`: CPU-time range | 16.746842–17.801291 s | 0.362794–0.573935 s | 0.730970–0.809699 s |
-| `desktop host`: median use of one logical CPU | 2.807641% | 0.092509% | 0.126304% |
-| `desktop host`: summed process RSS samples | 196.9–262.7 MiB | 10.0–28.5 MiB | 28.9–29.6 MiB |
-| `server host`: result | No valid completed trial | No run | No run |
+| `kspld0`: valid authenticated windows | 3 of 4 attempts | 3 of 3 | 3 of 3; one DHT boundary warning |
+| `kspld0`: median CPU time per 600 s | 16.852206 s | 0.555272 s | 0.758278 s |
+| `kspld0`: CPU-time range | 16.746842–17.801291 s | 0.362794–0.573935 s | 0.730970–0.809699 s |
+| `kspld0`: median use of one logical CPU | 2.807641% | 0.092509% | 0.126304% |
+| `kspld0`: summed process RSS samples | 196.9–262.7 MiB | 10.0–28.5 MiB | 28.9–29.6 MiB |
+| `kspls0`: result | No valid completed trial | No run | No run |
 
 The DHT-on median includes three authenticated windows. At the end of one,
 DHT status also reported a last-error indicator and zero discovered peers;
 the median of the other two DHT-on windows was 0.783989 CPU seconds. The
-`server host` attempt is preserved but excluded: the host load average rose to
+`kspls0` attempt is preserved but excluded: the host load average rose to
 195.35 and two one-second samples showed 0% idle CPU. These are
 host-specific observations, not a general performance ranking. Confidence is
 high in the recorded CPU counters, moderate for comparing these profile
-medians on `desktop host`, and low for predicting other hosts or active workloads.
+medians on `kspld0`, and low for predicting other hosts or active workloads.
 The [live report](benchmarks/artifacts/20261012-live-soulseek-idle.md)
 describes the method, invalid trials, DHT status, host conditions, and all
 [primary raw trials](benchmarks/artifacts/20261012-live-soulseek-idle-matrix.json),
 [the slskd replacement trial](benchmarks/artifacts/20261012-live-soulseek-slskd-retry-2.json),
-and [the aborted server host attempt](benchmarks/artifacts/20261012-live-soulseek-idle-server-aborted.json). A separate authenticated DHT-on retry used 0.664036 CPU seconds over 600.214 seconds (0.110633% of one logical CPU), with DHT healthy at both measurement boundaries; it is kept separate from the three-window matrix median and documented in the report.
+and [the aborted kspls0 attempt](benchmarks/artifacts/20261012-live-soulseek-idle-kspls0-aborted.json). A separate authenticated DHT-on retry used 0.664036 CPU seconds over 600.214 seconds (0.110633% of one logical CPU), with DHT healthy at both measurement boundaries; it is kept separate from the three-window matrix median and documented in the report.
 
 For a guided first run, see [Getting Started](./docs/getting-started.md). The
 [feature guide](./docs/FEATURES.md) and [status guide](./docs/status.md)

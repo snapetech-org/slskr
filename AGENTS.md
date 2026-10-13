@@ -19,12 +19,16 @@ These interaction rules are standard for all model interfaces used with this rep
 ## Machine inventory and scratch space
 
 - `kspld0` is the desktop; `kspls0` is the server.
-- `kspls0` has ample LVM storage for tests, scratch, and temporary artifacts
-  when speed is not important. Confirm the host and available path before
-  writing; do not assume a mount path.
-- Keep temporary files and generated artifacts scoped to the task. Remove
-  task-created files that are no longer needed, and preserve existing or
-  ambiguous files and user data.
+- Verified on 2026-10-12: `kspls0` stores its LVM data pool at
+  `/mnt/datapool_lvm_media` (`/dev/mapper/datapool_lvm-media`, ext4). The same
+  path is mounted on `kspld0` from `kspls0:/mnt/datapool_lvm_media` over
+  NFSv4.2. Both hosts reported about 31 TiB available at verification time;
+  free space changes, so check it again before each task.
+- Before writing scratch data, confirm the target with `hostname`, then run
+  `findmnt -T /mnt/datapool_lvm_media` and `df -hT
+  /mnt/datapool_lvm_media` on that host. Do not assume the mount path or free
+  capacity. Use a per-task directory and remove only files created for that
+  task; preserve existing or ambiguous files.
 
 ## Release-note contract
 

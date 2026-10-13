@@ -94,7 +94,7 @@
     ]
   },
   "image_provenance": {
-    "slskd": "Pulled on server host by the pinned repository digest recorded in images.slskd.",
-    "slskr": "The locally cached image was verified on desktop host with repo digest ghcr.io/snapetech/slskr@sha256:ec36112f5cf390e3c09a3ab1faf94f13786415cd184a401f0fa2e5ef5fe4c7a5. Docker load on server host preserved the identical image ID; Docker RepoDigests is empty after load."
+    "slskd": "Pulled on kspls0 by the pinned repository digest recorded in images.slskd.",
+    "slskr": "The locally cached image was verified on kspld0 with repo digest ghcr.io/snapetech/slskr@sha256:ec36112f5cf390e3c09a3ab1faf94f13786415cd184a401f0fa2e5ef5fe4c7a5. Docker load on kspls0 preserved the identical image ID; Docker RepoDigests is empty after load."
   }
 }

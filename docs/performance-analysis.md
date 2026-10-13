@@ -14,8 +14,8 @@ connected-idle and target-NAS measurements needed to evaluate a user's own
 Docker CPU reading.
 
 A separate [live Soulseek idle comparison](../benchmarks/artifacts/20261012-live-soulseek-idle.md)
-measures the same three connected-idle profiles on `desktop host`; an attempt on
-`server host` was aborted under severe CPU saturation and yielded no valid trial.
+measures the same three connected-idle profiles on `kspld0`; an attempt on
+`kspls0` was aborted under severe CPU saturation and yielded no valid trial.
 The report retains CPU, RSS, session/DHT boundary status, and host-load samples
 for each completed trial, plus metadata for the aborted attempt. Its scope and
 observed machine conditions are distinct from the disconnected baseline

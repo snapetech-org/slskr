@@ -4,12 +4,12 @@
 
 This diagnostic run compares pinned slskd and slskR release images while each
 client is authenticated to the Soulseek server and otherwise idle. The valid
-completed matrix was measured on the desktop host. A separate server-host
-attempt was aborted after severe CPU saturation; it produced no valid trial
-and is not included in the results below.
+completed matrix was measured on `kspld0`. A separate `kspls0` attempt was
+aborted after severe host CPU saturation was observed; it produced no valid
+trial and is not included in the results below.
 
-**Confidence:** high that the reported desktop-host CPU values match the
-recorded cgroup v2 counters; moderate that the three profile medians describe this
+**Confidence:** high that the reported `kspld0` CPU values match the recorded
+cgroup v2 counters; moderate that the three profile medians describe this
 host and workload; low for predicting a different host, configuration, or
 active workload. The DHT-on profile returned a DHT error indicator at the end
 of one trial, which is called out below.
@@ -19,7 +19,7 @@ session, endpoint, and host conditions. It does not establish that the
 reporter's 28% reading was wrong: their host, container quota, configuration,
 and monitor denominator were not available for this run.
 
-## Results: desktop host
+## Results: `kspld0`
 
 Each value summarizes authenticated windows only. CPU time is the change in
 container cgroup `cpu.stat` `usage_usec`; one-core percent is CPU time divided
@@ -68,19 +68,20 @@ sequential trials.
 
 ### Supplemental DHT-on retry
 
-After the primary matrix, one separate DHT-on window completed on the desktop
-host. The authenticated session was valid at both measurement boundaries, and DHT
+After the primary matrix, one separate DHT-on window completed on `kspld0`.
+The authenticated session was valid at both measurement boundaries, and DHT
 was enabled, running, and bootstrapped at both status checks. It used 0.664036
 CPU seconds over 600.214 seconds (0.110633% of one logical CPU); host CPU busy
 was 21.76% during the window. This single supplemental trial is kept separate
 from the three-window DHT-on median above. Its host load samples and complete
 metadata are in the [supplemental DHT-on retry artifact](20261012-live-soulseek-slskr-dht-retry.json).
 
-## Attempted second host: server host
+## Attempted second host: `kspls0`
 
-The server host yielded no valid measurement. It has 32 logical CPUs and
-shared storage with about 31 TiB available during this run. Storage layout is
-not needed to interpret the benchmark.
+No `kspls0` result is reported. The host has 32 logical CPUs and the LVM data
+pool at `/mnt/datapool_lvm_media`; this path is also mounted on `kspld0` from
+`kspls0:/mnt/datapool_lvm_media` over NFSv4.2. The pool reported about 31 TiB
+available during this run.
 
 The first `slskd` attempt reached its first 60-second memory sample, but the
 host was severely CPU-saturated. At 2026-10-12 20:53 UTC, the host reported a
@@ -88,11 +89,11 @@ load average of 195.35, 120.61, and 104.35; two consecutive one-second
 `vmstat` samples showed 0% idle CPU and 237 then 275 runnable tasks. I stopped
 the task-owned benchmark container. The runner then could not read that
 container's removed cgroup and did not save a completed trial. The attempt is
-retained in [the server-host aborted-run metadata](20261012-live-soulseek-idle-server-aborted.json)
+retained in [`kspls0 aborted-run metadata`](20261012-live-soulseek-idle-kspls0-aborted.json)
 with zero completed trials. No other containers or services were stopped.
 
 Because that environment was saturated, this report makes no cross-host
-comparison and no server-host CPU or memory claim. A second-host matrix needs a
+comparison and no `kspls0` CPU or memory claim. A second-host matrix needs a
 separate run under recorded, materially less saturated conditions.
 
 ## Method
@@ -115,22 +116,22 @@ separate run under recorded, materially less saturated conditions.
   feature workloads were configured or exercised. “DHT on” means the DHT
   service was enabled for this idle profile; it does not mean every slskR
   feature was configured and under load.
-- The same pinned release images were used throughout. The desktop host
-  requested the slskR image by repository digest. For the aborted server-host
+- The same pinned release images were used throughout. The kspld0 runner
+  requested the slskR image by repository digest. For the aborted kspls0
   attempt, the exact locally verified slskR image was transferred with
   `docker save`/`docker load` after GHCR denied a direct pull; the loaded image
   ID matched the verified digest. The slskd digest was pulled directly.
 - Credentials are omitted from the JSON artifacts. The test credential file
-  on the server host was mode 600 and removed by the remote launcher after the
+  on `kspls0` was mode 600 and removed by the remote launcher after the
   attempt.
 
 ## Raw artifacts and reproducibility
 
-- [Primary desktop-host matrix, including the invalid slskd repetition](20261012-live-soulseek-idle-matrix.json)
+- [Primary `kspld0` matrix, including the invalid slskd repetition](20261012-live-soulseek-idle-matrix.json)
 - [Authenticated slskd replacement trial](20261012-live-soulseek-slskd-retry-2.json)
 - [Metadata-only earlier slskd retry attempt](20261012-live-soulseek-slskd-retry.json)
 - [Supplemental DHT-on retry trial](20261012-live-soulseek-slskr-dht-retry.json)
-- [Aborted server-host attempt metadata](20261012-live-soulseek-idle-server-aborted.json)
+- [Aborted `kspls0` attempt metadata](20261012-live-soulseek-idle-kspls0-aborted.json)
 - [Runner](../compare-idle-containers.py)
 
 The CPU figures are specific observations, not a universal ranking, a

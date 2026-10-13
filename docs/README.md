@@ -89,7 +89,7 @@ http://127.0.0.1:5030
 | [Runtime parity ledger](parity/slskdn-slsknet-runtime-parity.md) | slskdN/Soulseek.NET-family behavior parity ledger. |
 | [Performance analysis](performance-analysis.md) | Performance observations and follow-up areas. |
 | [Idle container benchmark](../benchmarks/artifacts/20261012-idle-container-slskr-slskd.md) | Repeated pinned-image CPU/RSS matrix: matched disconnected slskR/slskd and DHT-on slskR, with raw data and method limits. |
-| [Live Soulseek idle benchmark](../benchmarks/artifacts/20261012-live-soulseek-idle.md) | Connected-idle comparison of slskd, slskR with DHT off, and slskR with DHT on on `desktop host`, plus the aborted `server host` attempt and host-load evidence. |
+| [Live Soulseek idle benchmark](../benchmarks/artifacts/20261012-live-soulseek-idle.md) | Connected-idle comparison of slskd, slskR with DHT off, and slskR with DHT on on `kspld0`, plus the aborted `kspls0` attempt and host-load evidence. |
 | [Enhancements](ENHANCEMENTS.md) | Historical enhancement backlog. |
 | [Integration guide](INTEGRATION_GUIDE.md) | Historical component-integration backlog; use current API and Web UI docs for runbooks. |
 
