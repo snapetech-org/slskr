@@ -31,7 +31,7 @@ for expected in \
   fi
 done
 
-trusted_runner_condition="((github.event_name == 'pull_request' && github.event.pull_request.user.login == 'snapetech') || (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'))"
+main_runner_condition="((github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'))"
 trusted_runner_labels="fromJSON('[\"self-hosted\",\"Linux\",\"X64\",\"host\",\"linux-build\",\"linux-amd64\"]')"
 push_branches="$(
   awk '
@@ -59,13 +59,13 @@ if ! rg -n -F 'CARGO_BUILD_JOBS=4' .github/workflows/ci.yml >/dev/null; then
   printf 'workflow release policy check failed: local Cargo parallelism must be capped\n' >&2
   status=1
 fi
-if ! rg -n -F "$trusted_runner_condition" .github/workflows/ci.yml >/dev/null; then
-  printf 'workflow release policy check failed: trusted-PR, main-push, and manual-main local runner policy is missing\n' >&2
+if ! rg -n -F "$main_runner_condition" .github/workflows/ci.yml >/dev/null; then
+  printf 'workflow release policy check failed: local runner policy must be limited to main pushes and manual runs\n' >&2
   status=1
 fi
 if rg -n '^[[:space:]]*runs-on:.*self-hosted' .github/workflows \
-  | rg -v -F "$trusted_runner_condition"; then
-  printf 'workflow release policy check failed: self-hosted CI runners must be restricted to snapetech PRs or trusted main runs\n' >&2
+  | rg -v -F "$main_runner_condition"; then
+  printf 'workflow release policy check failed: self-hosted CI runners must be restricted to main pushes or manual main runs\n' >&2
   status=1
 fi
 
