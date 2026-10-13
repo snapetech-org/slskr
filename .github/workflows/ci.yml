@@ -218,9 +218,10 @@ jobs:
         with:
           path: ~/.cargo/bin/cargo-audit
           key: cargo-audit-${{ runner.os }}-${{ runner.arch }}-${{ env.CARGO_AUDIT_VERSION }}
-      - name: Install cargo-audit
-        if: steps.cargo-audit-cache.outputs.cache-hit != 'true'
-        run: cargo install cargo-audit --version "$CARGO_AUDIT_VERSION" --locked
+      - name: Ensure cargo-audit is available
+        run: scripts/ensure-cargo-audit.sh
+      - name: Test cargo-audit cache and PATH handling
+        run: scripts/test-ensure-cargo-audit.sh
       - run: scripts/check-process-memory-guard.sh
       - run: scripts/test-process-memory-guard.sh
       - run: scripts/test-live-interop-account-validation.sh

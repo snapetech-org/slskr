@@ -334,6 +334,17 @@ if ! rg -n -F 'cargo audit' .github/workflows/ci.yml .github/workflows/release.y
   printf 'workflow release policy check failed: RustSec audit must stay wired into CI and release gates\n' >&2
   status=1
 fi
+for workflow in ci release; do
+  workflow_path=".github/workflows/${workflow}.yml"
+  for expected in \
+    'run: scripts/ensure-cargo-audit.sh' \
+    'run: scripts/test-ensure-cargo-audit.sh'; do
+    if ! rg -n -F -- "$expected" "$workflow_path" >/dev/null; then
+      printf 'workflow release policy check failed: %s must verify cargo-audit setup: %s\n' "$workflow_path" "$expected" >&2
+      status=1
+    fi
+  done
+done
 
 for expected in \
   'tag_pattern=' \

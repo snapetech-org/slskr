@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+version="${CARGO_AUDIT_VERSION:-}"
+if [[ -z "$version" ]]; then
+  printf 'CARGO_AUDIT_VERSION must be set before preparing cargo-audit\n' >&2
+  exit 1
+fi
+if [[ -z "${GITHUB_PATH:-}" ]]; then
+  printf 'GITHUB_PATH must be set before preparing cargo-audit\n' >&2
+  exit 1
+fi
+
+cargo_home="${CARGO_HOME:-$HOME/.cargo}"
+cargo_bin_dir="$cargo_home/bin"
+cargo_audit="$cargo_bin_dir/cargo-audit"
+if [[ "$cargo_bin_dir" == *$'\n'* || "$cargo_bin_dir" == *$'\r'* ]]; then
+  printf 'cargo-audit bin directory contains a line break\n' >&2
+  exit 1
+fi
+
+if [[ ! -x "$cargo_audit" ]]; then
+  cargo install cargo-audit --version "$version" --locked
+fi
+if [[ ! -x "$cargo_audit" ]]; then
+  printf 'cargo-audit executable is missing after installation: %s\n' "$cargo_audit" >&2
+  exit 1
+fi
+
+printf '%s\n' "$cargo_bin_dir" >> "$GITHUB_PATH"
+"$cargo_audit" --version
