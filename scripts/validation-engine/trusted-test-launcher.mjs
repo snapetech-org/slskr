@@ -201,22 +201,9 @@ function linkDependencies(sourceRoot, workspace) {
 
 function bubblewrapPath() {
   for (const candidate of ['/usr/bin/bwrap', '/bin/bwrap']) {
-    if (!existsSync(candidate)) continue;
-    let help;
-    try {
-      help = execFileSync(candidate, ['--help'], {
-        encoding: 'utf8',
-        stdio: ['ignore', 'pipe', 'pipe'],
-      });
-    } catch {
-      continue;
-    }
-    if (help.includes('--bind-fd') && help.includes('--ro-bind-fd'))
-      return candidate;
+    if (existsSync(candidate)) return candidate;
   }
-  throw new Error(
-    'bubblewrap with --bind-fd and --ro-bind-fd support is required; candidate code was not started.'
-  );
+  throw new Error('bubblewrap is required; candidate code was not started.');
 }
 
 function makeSandboxCommand({
@@ -329,9 +316,10 @@ function makeSandboxCommand({
         const descriptor = openSync(operation.source, 'r');
         sourceDescriptors.push(descriptor);
         const childDescriptor = sourceDescriptors.length + 2;
+        // The inherited fd pins the source even when its host path is masked.
         args.push(
-          operation.type === 'bind-fd' ? '--bind-fd' : '--ro-bind-fd',
-          String(childDescriptor),
+          operation.type === 'bind-fd' ? '--bind' : '--ro-bind',
+          `/proc/self/fd/${childDescriptor}`,
           operation.target
         );
       } else {

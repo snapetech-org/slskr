@@ -417,6 +417,23 @@ test('execution streams task output to its log before a timeout', async () => {
   assert.match(readFileSync(logPath, 'utf8'), /persisted-before-timeout/u);
 });
 
+test('task logs stay within the configured size limit and mark truncation', async () => {
+  const { root, config } = fixture();
+  const outputBytes = 16 * 1024 * 1024 + 1;
+  config.tasks[0].command = [
+    process.execPath,
+    '-e',
+    `process.stdout.write(Buffer.alloc(${outputBytes}, 120))`,
+  ];
+  const plan = createPlan(root, config);
+  const result = await executePlan(root, config, plan);
+  assert.equal(result.receipt.tasks[0].outputBytes, outputBytes);
+  const logPath = path.join(result.runRoot, result.receipt.tasks[0].logFile);
+  const log = readFileSync(logPath);
+  assert.equal(log.length, 16 * 1024 * 1024);
+  assert.match(log.toString('utf8'), /\[validation log truncated after 16 MiB\]\n$/u);
+});
+
 test('workspace run lock rejects overlap and releases only its own lock file', () => {
   const { root } = fixture();
   const first = acquireRunLock(root, 'slskr');

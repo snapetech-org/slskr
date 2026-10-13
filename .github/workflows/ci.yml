@@ -66,7 +66,10 @@ jobs:
           def fail(message):
               raise SystemExit(message)
 
-          runner_temp = os.path.realpath(os.environ.get('RUNNER_TEMP', ''))
+          runner_temp_input = os.environ.get('RUNNER_TEMP', '')
+          if not runner_temp_input or not os.path.isabs(runner_temp_input):
+              fail('RUNNER_TEMP must be an absolute path.')
+          runner_temp = os.path.realpath(runner_temp_input)
           uid = os.geteuid()
           if not runner_temp or not os.path.isabs(runner_temp) or runner_temp in ('/', '/tmp', '/var/tmp', '/dev/shm') or runner_temp.startswith(('/tmp/', '/var/tmp/', '/dev/shm/')):
               fail('RUNNER_TEMP must be private and outside shared temporary roots.')

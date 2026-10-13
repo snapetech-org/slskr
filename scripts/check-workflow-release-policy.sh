@@ -71,6 +71,17 @@ for expected in 'os.O_NOFOLLOW' 'metadata.st_nlink != 1'; do
     status=1
   fi
 done
+missing_attempt_artifacts="$(rg -n 'name: validation-(task-logs|rust)-' .github/workflows/ci.yml | rg -Fv -- '-attempt-${{ github.run_attempt }}' || true)"
+if [[ -n "$missing_attempt_artifacts" ]]; then
+  printf 'workflow release policy check failed: validation artifacts must be unique per workflow attempt\n' >&2
+  printf '%s\n' "$missing_attempt_artifacts" >&2
+  status=1
+fi
+receipt_download_policy="$(sed -n '/name: Download current-run Rust receipts/,/name: Reconcile this run/p' .github/workflows/ci.yml)"
+if [[ "$receipt_download_policy" != *'merge-multiple: false'* ]]; then
+  printf 'workflow release policy check failed: receipt artifacts must stay in separate attempt directories\n' >&2
+  status=1
+fi
 
 if ! rg -n -F "$main_runner_condition" .github/workflows/ci.yml >/dev/null; then
   printf 'workflow release policy check failed: local runner policy must be limited to main pushes and manual runs\n' >&2

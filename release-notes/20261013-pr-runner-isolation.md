@@ -5,4 +5,4 @@ area: ci-security
 action: none
 breaking: false
 ---
-Pull request validation runs on GitHub-hosted runners; the persistent Linux runner is reserved for trusted main-branch pushes and manual runs on main. Local jobs protect GitHub command files before running repository scripts and keep Cargo builds at one job. Validation task logs are streamed to private, size-limited files and retained after failures. Rust receipt artifacts are separated by workflow attempt, and reconciliation selects the newest receipt for each runner while rejecting duplicate receipts from the same attempt.
+Pull request validation uses hosted runners, leaving the persistent Linux runner for trusted main pushes and manual runs. Local jobs protect GitHub command files, cap Cargo builds at one job, and stream private logs within a 16 MiB limit. Rust receipts are stored per workflow attempt; reconciliation uses each runner's newest result and rejects duplicates.
