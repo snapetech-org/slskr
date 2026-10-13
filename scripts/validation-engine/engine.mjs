@@ -22,6 +22,8 @@ import {
   rmSync,
   unlinkSync,
   writeFileSync,
+  writeSync,
+  fsyncSync,
 } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -33,6 +35,8 @@ const SYSTEM_TEMP_DIR = os.tmpdir();
 const ENGINE_DIR = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_ROOT = path.resolve(ENGINE_DIR, '..', '..');
 const MAX_BUFFER = 8 * 1024 * 1024;
+const MAX_LOG_BYTES = 16 * 1024 * 1024;
+const LOG_TRUNCATION_MARKER = Buffer.from('\n[validation log truncated after 16 MiB]\n');
 const PROGRESS_INTERVAL_MS = 60_000;
 const IGNORED_DIRS = new Set([
   '.git',
@@ -745,48 +749,77 @@ export async function runCommand(task, root, logPath) {
   let stderr = '';
   let outputBytes = 0;
   let timedOut = false;
-  const child = spawn(command, args, {
-    cwd,
-    env: isolatedTaskEnvironment(task, path.dirname(logPath)),
-    stdio: ['ignore', 'pipe', 'pipe'],
-    detached: process.platform !== 'win32',
-    windowsHide: true,
-  });
+  const logDescriptor = openSync(logPath, 'wx', 0o600);
+  const logContentLimit = MAX_LOG_BYTES - LOG_TRUNCATION_MARKER.length;
+  let logBytesWritten = 0;
+  let logTruncated = false;
+  let child;
   const append = (chunk, target) => {
     outputBytes += chunk.length;
     target.value += chunk.toString('utf8');
     if (target.value.length > MAX_BUFFER) target.value = target.value.slice(-MAX_BUFFER);
   };
+  const persist = (chunk) => {
+    const length = Math.min(chunk.length, logContentLimit - logBytesWritten);
+    let offset = 0;
+    while (offset < length) {
+      offset += writeSync(logDescriptor, chunk, offset, length - offset);
+    }
+    logBytesWritten += length;
+    if (length < chunk.length) logTruncated = true;
+  };
   const out = { value: stdout };
   const err = { value: stderr };
-  child.stdout.on('data', (chunk) => append(chunk, out));
-  child.stderr.on('data', (chunk) => append(chunk, err));
-  const timer = setTimeout(() => {
-    timedOut = true;
-    terminate(child);
-    setTimeout(() => {
-      if (child.exitCode === null && child.signalCode === null) {
-        if (child.pid && process.platform !== 'win32') {
-          try {
-            process.kill(-child.pid, 'SIGKILL');
-          } catch {
-            // The process group may exit between the child status check and this signal.
+  let exit;
+  try {
+    child = spawn(command, args, {
+      cwd,
+      env: isolatedTaskEnvironment(task, path.dirname(logPath)),
+      stdio: ['ignore', 'pipe', 'pipe'],
+      detached: process.platform !== 'win32',
+      windowsHide: true,
+    });
+    child.stdout.on('data', (chunk) => {
+      append(chunk, out);
+      persist(chunk);
+    });
+    child.stderr.on('data', (chunk) => {
+      append(chunk, err);
+      persist(chunk);
+    });
+    const timer = setTimeout(() => {
+      timedOut = true;
+      terminate(child);
+      setTimeout(() => {
+        if (child.exitCode === null && child.signalCode === null) {
+          if (child.pid && process.platform !== 'win32') {
+            try {
+              process.kill(-child.pid, 'SIGKILL');
+            } catch {
+              // The process group may exit between the child status check and this signal.
+            }
+          } else {
+            child.kill('SIGKILL');
           }
-        } else {
-          child.kill('SIGKILL');
         }
-      }
-    }, 2000).unref();
-  }, timeout * 1000);
-  const exit = await new Promise((resolve) => {
-    child.once('error', (error) => resolve({ code: null, signal: null, error }));
-    child.once('close', (code, signal) => resolve({ code, signal, error: null }));
-  }).finally(() => clearTimeout(timer));
+      }, 2000).unref();
+    }, timeout * 1000);
+    let spawnError = null;
+    exit = await new Promise((resolve) => {
+      child.once('error', (error) => {
+        spawnError = error;
+      });
+      child.once('close', (code, signal) => resolve({ code, signal, error: spawnError }));
+    }).finally(() => clearTimeout(timer));
+  } finally {
+    if (logTruncated) writeSync(logDescriptor, LOG_TRUNCATION_MARKER);
+    fsyncSync(logDescriptor);
+    closeSync(logDescriptor);
+  }
   stdout = out.value;
   stderr = err.value;
   const combined = stdout + (stdout && stderr ? '\n' : '') + stderr;
-  const logBuffer = Buffer.from(combined);
-  writeFileSync(logPath, logBuffer, { mode: 0o600 });
+  const logBuffer = readFileSync(logPath);
   const activeCases = task.caseParser ? parseCaseCount(task.caseParser, combined) : null;
   const status = timedOut || exit.error || exit.code !== 0
     ? 'failed'

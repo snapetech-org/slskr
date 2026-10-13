@@ -16,6 +16,10 @@ node scripts/validate-development.mjs
 ```
 
 Local execution of test tasks requires the trusted Linux bubblewrap launcher.
+Bubblewrap must support `--bind-fd` and `--ro-bind-fd`; the launcher fails
+closed when either option is unavailable. File-descriptor mounts let it mask
+host directories while keeping only the already-opened candidate and runtime
+inputs available inside the sandbox.
 When evaluating an unreviewed branch, copy `trusted-test-launcher.mjs` and
 `trusted-test-sandbox-policy.mjs` from the same reviewed revision to a location
 outside the checkout, keeping them together. The launcher snapshots only paths

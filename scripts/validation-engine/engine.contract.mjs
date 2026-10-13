@@ -400,15 +400,21 @@ test('execution blocks later tasks when a command changes the planned source', a
   assert.equal(result.receipt.totals.blocked, 1);
 });
 
-test('execution records timeouts and does not accept failed native commands', async () => {
+test('execution streams task output to its log before a timeout', async () => {
   const { root, config } = fixture();
-  config.tasks[0].command = [process.execPath, '-e', 'setInterval(() => {}, 1000)'];
+  config.tasks[0].command = [
+    process.execPath,
+    '-e',
+    'process.stdout.write("persisted-before-timeout"); setInterval(() => {}, 1000)',
+  ];
   config.tasks[0].timeoutSeconds = 0.1;
   const plan = createPlan(root, config);
   const result = await executePlan(root, config, plan);
   assert.equal(result.receipt.tasks[0].status, 'failed');
   assert.equal(result.receipt.tasks[0].timedOut, true);
   assert.equal(result.receipt.status, 'failed');
+  const logPath = path.join(result.runRoot, result.receipt.tasks[0].logFile);
+  assert.match(readFileSync(logPath, 'utf8'), /persisted-before-timeout/u);
 });
 
 test('workspace run lock rejects overlap and releases only its own lock file', () => {

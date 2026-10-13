@@ -19,6 +19,8 @@ import { fileURLToPath } from 'node:url';
 import {
   HOST_PATHS_TO_HIDE,
   hostPathsToHide,
+  isSensitiveCandidatePath,
+  sandboxMountOperations,
 } from './trusted-test-sandbox-policy.mjs';
 
 const launcher = fileURLToPath(
@@ -52,6 +54,49 @@ const sandboxAvailable = (() => {
   );
 })();
 
+test('preserves tracked source files named token while excluding credential config files', () => {
+  assert.equal(isSensitiveCandidatePath('web/src/lib/token.js'), false);
+  assert.equal(isSensitiveCandidatePath('vendor/mainline/src/rpc/server/tokens.rs'), false);
+  assert.equal(isSensitiveCandidatePath('src/authentication.ts'), false);
+  assert.equal(isSensitiveCandidatePath('auth.json'), true);
+  assert.equal(isSensitiveCandidatePath('nested/config/secrets.yaml'), true);
+  assert.equal(isSensitiveCandidatePath('.env.local'), true);
+});
+
+test('opens required host sources before masking their parent directories', () => {
+  const hiddenDirectories = hostPathsToHide('/home/runner/work/slskr')
+    .filter((directory) => ['/home', '/tmp', '/usr/local', '/mnt'].includes(directory));
+  const operations = sandboxMountOperations({
+    workspace: '/home/runner/work/slskr',
+    runDirectory: '/home/runner/work/_temp/validation-run',
+    externalMounts: [['/usr/local/bin/node', '/mnt/run-data/dependencies/0']],
+    dependencyMounts: [['/home/runner/work/slskr/web/node_modules/react', '/mnt/workspace/web/node_modules/react']],
+    hiddenDirectories,
+    guestWorkspace: '/mnt/workspace',
+    guestRun: '/mnt/run-data',
+    markerFile: '/home/runner/work/_temp/validation-run/sandbox-marker',
+    guestMarker: '/run/validation-engine-sandbox',
+  });
+  const finalHostMask = Math.max(...operations
+    .map((operation, index) => operation.hostMask ? index : -1));
+  const descriptorBinds = operations.filter((operation) =>
+    operation.type === 'bind-fd' || operation.type === 'ro-bind-fd');
+
+  assert.equal(operations.filter((operation) => operation.hostMask).length, hiddenDirectories.length);
+  assert.ok(descriptorBinds.length > 0);
+  assert.ok(operations.indexOf(descriptorBinds[0]) > finalHostMask);
+  assert.deepEqual(
+    descriptorBinds.map(({ type, source, target }) => ({ type, source, target })),
+    [
+      { type: 'bind-fd', source: '/home/runner/work/slskr', target: '/mnt/workspace' },
+      { type: 'bind-fd', source: '/home/runner/work/_temp/validation-run', target: '/mnt/run-data' },
+      { type: 'ro-bind-fd', source: '/usr/local/bin/node', target: '/mnt/run-data/dependencies/0' },
+      { type: 'ro-bind-fd', source: '/home/runner/work/slskr/web/node_modules/react', target: '/mnt/workspace/web/node_modules/react' },
+      { type: 'ro-bind-fd', source: '/home/runner/work/_temp/validation-run/sandbox-marker', target: '/run/validation-engine-sandbox' },
+    ]
+  );
+});
+
 test(
   'trusted launcher contains import-time candidate code before it runs',
   { skip: !sandboxAvailable && 'bubblewrap user namespaces are unavailable' },
@@ -82,6 +127,10 @@ test(
       rmSync(parent, { recursive: true, force: true });
     });
     mkdirSync(path.join(source, 'nested/config'), { recursive: true });
+    mkdirSync(path.join(source, 'web/src/lib'), { recursive: true });
+    mkdirSync(path.join(source, 'vendor/mainline/src/rpc/server'), { recursive: true });
+    writeFileSync(path.join(source, 'web/src/lib/token.js'), 'export const token = "source code";\n');
+    writeFileSync(path.join(source, 'vendor/mainline/src/rpc/server/tokens.rs'), 'pub fn tokens() {}\n');
     writeFileSync(hostFile, 'host canary stays unchanged');
     writeFileSync(path.join(browserCache, 'browser-canary.txt'), 'read-only browser');
     writeFileSync(path.join(source, '.gitignore'), 'node_modules/\n');
@@ -128,6 +177,8 @@ assert.equal(existsSync('/mnt/workspace/config.json'), true);
 assert.equal(existsSync('/mnt/workspace/nested/config/operator.json'), false);
 assert.equal(existsSync('/mnt/workspace/auth.json'), false);
 assert.equal(existsSync('/mnt/workspace/token.json'), false);
+assert.equal(readFileSync('/mnt/workspace/web/src/lib/token.js', 'utf8'), 'export const token = "source code";\\n');
+assert.equal(readFileSync('/mnt/workspace/vendor/mainline/src/rpc/server/tokens.rs', 'utf8'), 'pub fn tokens() {}\\n');
 assert.equal(existsSync('/mnt/workspace/nested/.env.local'), false);
 assert.equal(existsSync('/mnt/workspace/nested/config/secrets.json'), false);
 assert.equal(existsSync('/etc/os-release'), false);

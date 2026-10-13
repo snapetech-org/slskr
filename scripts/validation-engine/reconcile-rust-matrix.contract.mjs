@@ -78,14 +78,51 @@ test('accepts passing receipts from earlier attempts of the same immutable workf
   assert.equal(result.nodes.length, 5);
 });
 
+test('selects the newest receipt per runner when reruns leave older failed artifacts', () => {
+  const current = receipts();
+  const stale = structuredClone(current[0]);
+  stale.executionContext.github.runAttempt = '1';
+  stale.status = 'failed';
+  stale.tasks[0].status = 'failed';
+  const result = reconcileRustReceipts({
+    receipts: [stale, ...current],
+    ...identity,
+  });
+  assert.equal(result.status, 'passed');
+  assert.equal(result.nodes.length, 5);
+});
+
+test('a failed newest receipt supersedes an older passing receipt', () => {
+  const current = receipts();
+  const stale = structuredClone(current[0]);
+  stale.executionContext.github.runAttempt = '1';
+  current[0].tasks[0].status = 'failed';
+  current[0].status = 'failed';
+  assert.throws(
+    () => reconcileRustReceipts({ receipts: [...current, stale], ...identity }),
+    /passing Rust tests/u,
+  );
+});
+
+test('rejects duplicate receipts from the same runner and attempt', () => {
+  const items = receipts();
+  assert.throws(
+    () => reconcileRustReceipts({ receipts: [...items, structuredClone(items[0])], ...identity }),
+    /Duplicate Rust test receipt/u,
+  );
+});
+
 test('rejects missing, duplicate, and unknown runner receipts', () => {
-  assert.throws(() => reconcileRustReceipts({ receipts: receipts().slice(1), ...identity }), /exactly one/);
+  assert.throws(
+    () => reconcileRustReceipts({ receipts: receipts().slice(1), ...identity }),
+    /at least one Rust workspace test receipt/u,
+  );
   const duplicate = receipts();
-  duplicate[4] = duplicate[0];
-  assert.throws(() => reconcileRustReceipts({ receipts: duplicate, ...identity }), /Duplicate Rust/);
+  duplicate[4] = structuredClone(duplicate[1]);
+  assert.throws(() => reconcileRustReceipts({ receipts: duplicate, ...identity }), /Duplicate Rust/u);
   const unknown = receipts();
   unknown[4].executionContext.nodeId = 'linux-musl-x64';
-  assert.throws(() => reconcileRustReceipts({ receipts: unknown, ...identity }), /does not identify/);
+  assert.throws(() => reconcileRustReceipts({ receipts: unknown, ...identity }), /does not identify/u);
 });
 
 test('rejects unsuccessful tasks and zero-case successes', () => {
@@ -98,13 +135,13 @@ test('rejects unsuccessful tasks and zero-case successes', () => {
   assert.throws(() => reconcileRustReceipts({ receipts: empty, ...identity }), /positive native case count/);
 });
 
-test('rejects runner identity mismatches and duplicate runner claims', () => {
+test('rejects runner identity mismatches and inconsistent node claims', () => {
   const wrongOs = receipts();
   wrongOs[0].executionContext.runner.os = 'Windows';
-  assert.throws(() => reconcileRustReceipts({ receipts: wrongOs, ...identity }), /runner identity/);
+  assert.throws(() => reconcileRustReceipts({ receipts: wrongOs, ...identity }), /runner identity/u);
   const wrongNode = receipts();
   wrongNode[0].executionContext.nodeId = 'linux-aarch64';
-  assert.throws(() => reconcileRustReceipts({ receipts: wrongNode, ...identity }), /Duplicate Rust/);
+  assert.throws(() => reconcileRustReceipts({ receipts: wrongNode, ...identity }), /configured GitHub runner identity/u);
 });
 
 test('rejects receipts from another run, future or invalid attempts, or a different commit', () => {

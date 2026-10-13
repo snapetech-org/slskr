@@ -55,10 +55,23 @@ if ! rg -n -F "$trusted_runner_labels" .github/workflows/ci.yml >/dev/null; then
   printf 'workflow release policy check failed: trusted Linux jobs must target the shared local host label\n' >&2
   status=1
 fi
-if ! rg -n -F 'CARGO_BUILD_JOBS=4' .github/workflows/ci.yml >/dev/null; then
+if ! rg -n -F 'CARGO_BUILD_JOBS=1' .github/workflows/ci.yml >/dev/null; then
   printf 'workflow release policy check failed: local Cargo parallelism must be capped\n' >&2
   status=1
 fi
+bootstrap_line="$(rg -n -m1 'name: Protect local runner command files before repository scripts' .github/workflows/ci.yml | cut -d: -f1)"
+repository_script_line="$(rg -n -m1 'run: ./scripts/test-private-runner-temp.sh' .github/workflows/ci.yml | cut -d: -f1)"
+if [[ -z "$bootstrap_line" || -z "$repository_script_line" || "$bootstrap_line" -ge "$repository_script_line" ]]; then
+  printf 'workflow release policy check failed: local command files must be protected before repository scripts\\n' >&2
+  status=1
+fi
+for expected in 'os.O_NOFOLLOW' 'metadata.st_nlink != 1'; do
+  if ! rg -n -F -- "$expected" .github/workflows/ci.yml >/dev/null; then
+    printf 'workflow release policy check failed: local command-file hardening is incomplete: %s\\n' "$expected" >&2
+    status=1
+  fi
+done
+
 if ! rg -n -F "$main_runner_condition" .github/workflows/ci.yml >/dev/null; then
   printf 'workflow release policy check failed: local runner policy must be limited to main pushes and manual runs\n' >&2
   status=1
