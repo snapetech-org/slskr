@@ -1,5 +1,6 @@
 """Regression tests for benchmark profile metadata and container configuration."""
 
+import hashlib
 import importlib.util
 import json
 import unittest
@@ -194,6 +195,14 @@ class NetworkMetadataTests(unittest.TestCase):
 
 
 class BenchmarkReportIntegrityTests(unittest.TestCase):
+    def test_dht_artifact_checksum_matches_report(self):
+        artifacts = SCRIPT.parent / "artifacts"
+        artifact_path = artifacts / "20261012-idle-container-slskr-dht.json"
+        digest = hashlib.sha256(artifact_path.read_bytes()).hexdigest()
+        report = (artifacts / "20261012-idle-container-slskr-slskd.md").read_text()
+
+        self.assertIn(f"`{digest}`", report)
+
     def test_live_slskd_report_counts_metadata_only_retry_attempt(self):
         artifacts = SCRIPT.parent / "artifacts"
         primary_path = artifacts / "20261012-live-soulseek-idle-matrix.json"

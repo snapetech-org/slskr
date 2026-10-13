@@ -254,7 +254,7 @@ python3 benchmarks/compare-idle-containers.py \
 ```
 
 The retained [DHT-on JSON](20261012-idle-container-slskr-dht.json) has SHA-256
-`33e8e5839c81bc519ad581f57d1e6518ee536a8e089a2c75e4ab345eda7725ca`. For
+`f8889185dc1b7b3b8b4e67bd76abb01a3018847fbbfee219aa0f43d87728f9ed`. For
 local verification, the runner binds the HTTP status endpoint inside the
 container and publishes an ephemeral port only on host loopback with a
 throwaway API token. It queries `/api/dht/status` after warm-up and after CPU
