@@ -38,8 +38,14 @@ fn frozen_controller_startup_aliases_drive_core_runtime_configuration() {
         Some("upstream-password".to_owned())
     );
     let debug = format!("{config:?}");
-    assert!(!debug.contains("upstream-password"), "{debug}");
-    assert!(debug.contains("[REDACTED]"), "{debug}");
+    assert!(
+        !debug.contains("upstream-password"),
+        "configuration debug output must redact the Soulseek password"
+    );
+    assert!(
+        debug.contains("[REDACTED]"),
+        "configuration debug output must use the credential redaction marker"
+    );
     assert_eq!(config.listen_port, 55031);
     assert_eq!(config.listener_bind.as_deref(), Some("0.0.0.0:55031"));
     assert!(!config.obfuscation_enabled);
