@@ -1,4 +1,5 @@
-import path from 'node:path';
+// The sandbox policy describes Linux paths even when its contract runs on Windows.
+import path from 'node:path/posix';
 
 export const HOST_PATHS_TO_HIDE = Object.freeze([
   '/etc',
