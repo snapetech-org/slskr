@@ -187,6 +187,8 @@ class BenchmarkReportIntegrityTests(unittest.TestCase):
         self.assertEqual((3, 5), (valid_attempts, attempt_count))
         report = (artifacts / "20261012-live-soulseek-idle.md").read_text()
         self.assertIn("3 of 5 attempts", report)
+        readme = (SCRIPT.parent.parent / "README.md").read_text()
+        self.assertIn("3 of 5 attempts", readme)
 
 
 if __name__ == "__main__":

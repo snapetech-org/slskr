@@ -64,7 +64,7 @@ the host was CPU-saturated during the attempted run.
 
 | Host / measurement | slskd 0.26.1 | slskR v0.2.56, DHT off | slskR v0.2.56, DHT on |
 | --- | ---: | ---: | ---: |
-| `kspld0`: valid authenticated windows | 3 of 4 attempts | 3 of 3 | 3 of 3; one DHT boundary warning |
+| `kspld0`: valid authenticated windows | 3 of 5 attempts | 3 of 3 | 3 of 3; one DHT boundary warning |
 | `kspld0`: median CPU time per 600 s | 16.852206 s | 0.555272 s | 0.758278 s |
 | `kspld0`: CPU-time range | 16.746842–17.801291 s | 0.362794–0.573935 s | 0.730970–0.809699 s |
 | `kspld0`: median use of one logical CPU | 2.807641% | 0.092509% | 0.126304% |
