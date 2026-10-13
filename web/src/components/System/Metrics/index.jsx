@@ -1,3 +1,8 @@
+import {
+  formatBytesFixed,
+  formatRegionalCompactNumber,
+  formatRegionalTime,
+} from '../../../lib/util';
 import { getKpiMetrics } from '../../../lib/telemetry';
 import { toDisplayError } from '../../../lib/errors';
 import { LoaderSegment } from '../../Shared';
@@ -17,23 +22,15 @@ import {
 
 const formatBytes = (bytes) => {
   const numericBytes = Number(bytes);
-  if (!Number.isFinite(numericBytes) || numericBytes <= 0) return '0 B';
-  const k = 1_024;
-  const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
-  const i = Math.min(
-    sizes.length - 1,
-    Math.floor(Math.log(numericBytes) / Math.log(k)),
-  );
-  return `${(numericBytes / k ** i).toFixed(1)} ${sizes[i]}`;
+  if (!Number.isFinite(numericBytes) || numericBytes <= 0) {
+    return formatBytesFixed(0, 1);
+  }
+  return formatBytesFixed(numericBytes, 1);
 };
 
 const formatNumber = (value) => {
   if (value === undefined || value === null) return '—';
-  const numericValue = Number(value);
-  if (!Number.isFinite(numericValue)) return '—';
-  if (numericValue >= 1_000_000) return `${(numericValue / 1_000_000).toFixed(1)}M`;
-  if (numericValue >= 1_000) return `${(numericValue / 1_000).toFixed(1)}K`;
-  return Number.parseFloat(numericValue.toFixed(2)).toString();
+  return formatRegionalCompactNumber(value, { smallMaximumFractionDigits: 2 });
 };
 
 // Extract the first sample value from a metric, or null
@@ -248,7 +245,7 @@ const Metrics = () => {
           type="button"
         >
           <Icon name="refresh" />
-          {lastUpdated ? `Updated ${lastUpdated.toLocaleTimeString()}` : 'Refresh'}
+          {lastUpdated ? `Updated ${formatRegionalTime(lastUpdated)}` : 'Refresh'}
         </Button>
       </div>
 

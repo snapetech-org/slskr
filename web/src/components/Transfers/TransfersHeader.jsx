@@ -1,7 +1,9 @@
 import { isStateCancellable, isStateRetryable } from '../../lib/transfers';
 import { Div, Nbsp } from '../Shared';
 import ShrinkableDropdownButton from '../Shared/ShrinkableDropdownButton';
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { getInterfaceLanguageIndex, useInterfaceLanguage } from '../../lib/interfaceLocale';
+import transferBulkActionLabelsUrl from '../../lib/transfer-bulk-action-labels.json?url';
 import { Checkbox, Icon, Popup, Segment } from 'semantic-ui-react';
 
 const getRetryableFiles = ({ files, retryOption }) => {
@@ -78,6 +80,42 @@ const TransfersHeader = ({
   server = { isConnected: true },
   transfers,
 }) => {
+  const { language, t, languageFor } = useInterfaceLanguage();
+  const [bulkActionLabels, setBulkActionLabels] = useState(null);
+  useEffect(() => {
+    if (language === 'en') return;
+    fetch(transferBulkActionLabelsUrl)
+      .then((response) => response.json())
+      .then(setBulkActionLabels)
+      .catch(() => null);
+  }, [language]);
+  const localizedText = (source, text = t(source), localizedLanguage = languageFor(source)) => (
+    <span lang={localizedLanguage} dir={localizedLanguage === 'ar' ? 'rtl' : 'ltr'}>{text}</span>
+  );
+  const localizedTransferLabel = (source) => {
+    const languageIndex = getInterfaceLanguageIndex(language);
+    const translation = languageIndex === undefined
+      ? undefined
+      : bulkActionLabels?.[source]?.[languageIndex];
+    const labelLanguage = translation ? language : 'en';
+    return { text: translation || source, language: labelLanguage };
+  };
+  const localizedTransferText = (source) => {
+    const label = localizedTransferLabel(source);
+    return localizedText(source, label.text, label.language);
+  };
+  const localizedAriaLabel = (source) => {
+    const label = localizedTransferLabel(source);
+    return {
+      ariaLabel: label.text,
+      ariaLabelDir: label.language === 'ar' ? 'rtl' : 'ltr',
+      ariaLabelLang: label.language,
+    };
+  };
+  const localizedBulkAction = (action, option) => {
+    const source = `${action} All${option === 'All' ? '' : ` ${option}`}`;
+    return localizedTransferText(source);
+  };
   const [removeOption, setRemoveOption] = useState('Succeeded');
   const [cancelOption, setCancelOption] = useState('All');
   const [retryOption, setRetryOption] = useState('Errored');
@@ -116,7 +154,7 @@ const TransfersHeader = ({
         hidden={empty}
       >
         <ShrinkableDropdownButton
-          ariaLabel="Filter retryable downloads"
+          {...localizedAriaLabel('Filter retryable downloads')}
           color="green"
           disabled={working || empty || !server.isConnected}
           hidden={direction === 'upload'}
@@ -126,16 +164,16 @@ const TransfersHeader = ({
           onChange={(_, data) => setRetryOption(data.value)}
           onClick={() => onRetryAll(getRetryableFiles({ files, retryOption }))}
           options={[
-            { key: 'errored', text: 'Errored', value: 'Errored' },
-            { key: 'cancelled', text: 'Cancelled', value: 'Cancelled' },
-            { key: 'all', text: 'All', value: 'All' },
+            { key: 'errored', text: localizedText('Errored'), value: 'Errored' },
+            { key: 'cancelled', text: localizedText('Cancelled'), value: 'Cancelled' },
+            { key: 'all', text: localizedText('All'), value: 'All' },
           ]}
         >
-          {`Retry ${retryOption === 'All' ? retryOption : `All ${retryOption}`}`}
+          {localizedBulkAction('Retry', retryOption)}
         </ShrinkableDropdownButton>
         <Nbsp />
         <ShrinkableDropdownButton
-          ariaLabel="Filter downloads to cancel"
+          {...localizedAriaLabel('Filter downloads to cancel')}
           color="red"
           disabled={working || empty}
           icon="x"
@@ -146,16 +184,16 @@ const TransfersHeader = ({
             onCancelAll(getCancellableFiles({ cancelOption, files }))
           }
           options={[
-            { key: 'all', text: 'All', value: 'All' },
-            { key: 'queued', text: 'Queued', value: 'Queued' },
-            { key: 'inProgress', text: 'In Progress', value: 'In Progress' },
+            { key: 'all', text: localizedText('All'), value: 'All' },
+            { key: 'queued', text: localizedText('Queued'), value: 'Queued' },
+            { key: 'inProgress', text: localizedText('In Progress'), value: 'In Progress' },
           ]}
         >
-          {`Cancel ${cancelOption === 'All' ? cancelOption : `All ${cancelOption}`}`}
+          {localizedBulkAction('Cancel', cancelOption)}
         </ShrinkableDropdownButton>
         <Nbsp />
         <ShrinkableDropdownButton
-          ariaLabel="Filter downloads to remove"
+          {...localizedAriaLabel('Filter downloads to remove')}
           disabled={working || empty}
           icon="trash alternate"
           loading={removing}
@@ -169,13 +207,13 @@ const TransfersHeader = ({
             )
           }
           options={[
-            { key: 'succeeded', text: 'Succeeded', value: 'Succeeded' },
-            { key: 'errored', text: 'Errored', value: 'Errored' },
-            { key: 'cancelled', text: 'Cancelled', value: 'Cancelled' },
-            { key: 'completed', text: 'Completed', value: 'Completed' },
+            { key: 'succeeded', text: localizedText('Succeeded'), value: 'Succeeded' },
+            { key: 'errored', text: localizedText('Errored'), value: 'Errored' },
+            { key: 'cancelled', text: localizedText('Cancelled'), value: 'Cancelled' },
+            { key: 'completed', text: localizedText('Completed'), value: 'Completed' },
           ]}
         >
-          {`Remove All ${removeOption}`}
+          {localizedBulkAction('Remove', removeOption)}
         </ShrinkableDropdownButton>
         <Nbsp />
         <Popup
@@ -191,7 +229,7 @@ const TransfersHeader = ({
                 Boolean(modeStatusError)
               }
               hidden={direction === 'upload'}
-              label="Accelerated"
+              label={localizedText('Accelerated')}
               onChange={(_, data) => onAcceleratedChange?.(data.checked)}
               toggle
             />
@@ -211,7 +249,7 @@ const TransfersHeader = ({
                 Boolean(modeStatusError)
               }
               hidden={direction === 'upload'}
-              label="Auto-Replace"
+              label={localizedText('Auto-Replace')}
               onChange={(_, data) => onAutoReplaceChange?.(data.checked)}
               toggle
             />

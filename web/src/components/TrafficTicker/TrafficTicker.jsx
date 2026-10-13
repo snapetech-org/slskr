@@ -1,3 +1,4 @@
+import { formatBytes, formatRegionalNumber, formatRegionalTime } from '../../lib/util';
 import './TrafficTicker.css';
 import { createTransfersHubConnection } from '../../lib/hubFactory';
 import { toDisplayError } from '../../lib/errors';
@@ -91,20 +92,10 @@ const formatActivity = (activity) => {
   }
 
   if (safeState.includes('InProgress') && percentComplete > 0) {
-    return `${safeDirection === 'Download' ? '↓' : '↑'} ${safeUsername}/${fileName} ${percentComplete.toFixed(1)}%`;
+    return `${safeDirection === 'Download' ? '↓' : '↑'} ${safeUsername}/${fileName} ${formatRegionalNumber(percentComplete, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%`;
   }
 
   return `${safeDirection === 'Download' ? '↓' : '↑'} ${safeUsername}/${fileName} ${safeState}`;
-};
-
-const formatBytes = (bytes) => {
-  if (!Number.isFinite(bytes) || bytes <= 0) return '0 B';
-  const k = 1_024;
-  const sizes = ['B', 'KB', 'MB', 'GB'];
-  const index = Math.min(sizes.length - 1, Math.floor(Math.log(bytes) / Math.log(k)));
-  return (
-    Number.parseFloat((bytes / k ** index).toFixed(1)) + ' ' + sizes[index]
-  );
 };
 
 const TrafficTicker = () => {
@@ -190,7 +181,7 @@ const TrafficTicker = () => {
                       size="small"
                     />
                     <Popup
-                      content={`${new Date(activity.timestamp).toLocaleTimeString()} - ${activity.direction} ${activity.state}`}
+                      content={`${formatRegionalTime(activity.timestamp)} - ${activity.direction} ${activity.state}`}
                       position="top left"
                       trigger={
                         <span className="traffic-activity-text">

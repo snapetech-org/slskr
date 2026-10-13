@@ -9,6 +9,7 @@ import { connect, disconnect } from '../lib/server';
 import * as session from '../lib/session';
 import { getLocalStorageItem, setLocalStorageItem } from '../lib/storage';
 import { isPassthroughEnabled } from '../lib/token';
+import { useRegionalFormat } from '../lib/util';
 import {
   getStoredNetworkEndpointSnapshot,
   getVpnPortForwards,
@@ -953,10 +954,12 @@ class App extends Component {
 
 const AppWithLocation = (props) => {
   const location = useLocation();
+  const regionalFormat = useRegionalFormat();
   return (
     <App
       {...props}
       location={location}
+      regionalFormat={regionalFormat}
     />
   );
 };

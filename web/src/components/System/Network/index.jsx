@@ -5,6 +5,10 @@ import {
   formatNetworkHealthReport,
 } from '../../../lib/networkHealthScore';
 import { getLocalStorageItem, setLocalStorageItem } from '../../../lib/storage';
+import {
+  formatBytesFixed as formatRegionalBytes,
+  formatRegionalCompactNumber,
+} from '../../../lib/util';
 import { useMountedRef } from '../../../lib/useMountedRef';
 import { usePolling } from '../../../lib/usePolling';
 import { LoaderSegment, ShrinkableButton } from '../../Shared';
@@ -31,20 +35,15 @@ import {
 const DHT_EXPOSURE_CONSENT_KEY = 'slskr:ui:dht-public-exposure:consent-v1';
 
 const formatBytes = (bytes) => {
-  if (bytes === 0 || bytes === undefined || bytes === null) return '0 B';
-  const k = 1_024;
-  const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
-  const index = Math.floor(Math.log(bytes) / Math.log(k));
-  return (
-    Number.parseFloat((bytes / k ** index).toFixed(1)) + ' ' + sizes[index]
-  );
+  if (bytes === 0 || bytes === undefined || bytes === null) {
+    return formatRegionalBytes(0, 1);
+  }
+  return formatRegionalBytes(Number(bytes), 1);
 };
 
 const formatNumber = (value) => {
-  if (value === undefined || value === null) return '0';
-  if (value >= 1_000_000) return (value / 1_000_000).toFixed(1) + 'M';
-  if (value >= 1_000) return (value / 1_000).toFixed(1) + 'K';
-  return value.toString();
+  if (value === undefined || value === null) return formatRegionalCompactNumber(0);
+  return formatRegionalCompactNumber(value);
 };
 
 const normalizePeerRecords = (value) => {
@@ -384,6 +383,11 @@ const Network = ({ options = {}, state = {}, theme }) => {
 
   const { backfill, capabilities, hashDb, mesh, swarmJobs } = stats || {};
   const hasStats = stats !== null;
+  const hashDbSizeBytes = hashDb?.dbSizeBytes;
+  const hasHashDbSize =
+    hashDbSizeBytes !== undefined &&
+    hashDbSizeBytes !== null &&
+    Number.isFinite(Number(hashDbSizeBytes));
   const obfuscation = capabilities?.obfuscation;
   const darkTheme = theme === 'dark';
   const dhtIsLanOnly = stats?.dht?.isLanOnly ?? stats?.dht?.lanOnly ?? false;
@@ -572,8 +576,8 @@ const Network = ({ options = {}, state = {}, theme }) => {
           inverted={darkTheme}
           label="Hash Entries"
           subLabel={
-            hasStats && hashDb?.dbSizeBytes
-              ? `${formatBytes(hashDb.dbSizeBytes)} on disk`
+            hasStats && hasHashDbSize
+              ? `${formatBytes(hashDbSizeBytes)} on disk`
               : 'Local database'
           }
           value={hasStats ? formatNumber(hashDb?.totalEntries ?? 0) : '—'}

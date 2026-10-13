@@ -1,3 +1,4 @@
+import { formatRegionalDateTime, formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -21,6 +22,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const PodMessageBackfillPanel = ({ visible = true }) => {
+  useRegionalFormat();
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -188,15 +190,15 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
                   <Message.Header>Backfill Statistics</Message.Header>
                   <p>
                     <strong>Requests Sent:</strong>{' '}
-                    {backfillStats.totalBackfillRequestsSent?.toLocaleString() ||
+                    {formatRegionalNumber(backfillStats.totalBackfillRequestsSent) ||
                       0}
                     <br />
                     <strong>Requests Received:</strong>{' '}
-                    {backfillStats.totalBackfillRequestsReceived?.toLocaleString() ||
+                    {formatRegionalNumber(backfillStats.totalBackfillRequestsReceived) ||
                       0}
                     <br />
                     <strong>Messages Backfilled:</strong>{' '}
-                    {backfillStats.totalMessagesBackfilled?.toLocaleString() ||
+                    {formatRegionalNumber(backfillStats.totalMessagesBackfilled) ||
                       0}
                     <br />
                     <strong>Data Transferred:</strong>{' '}
@@ -211,9 +213,7 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
                     <br />
                     <strong>Last Operation:</strong>{' '}
                     {backfillStats.lastBackfillOperation
-                      ? new Date(
-                          backfillStats.lastBackfillOperation,
-                        ).toLocaleString()
+                      ? formatRegionalDateTime(backfillStats.lastBackfillOperation)
                       : 'Never'}
                   </p>
                 </Message>
@@ -285,7 +285,7 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
                             style={{ marginBottom: '0.25em' }}
                           >
                             <strong>{channelId}:</strong>{' '}
-                            {new Date(timestamp).toLocaleString()}
+                            {formatRegionalDateTime(timestamp)}
                           </div>
                         ),
                       )}

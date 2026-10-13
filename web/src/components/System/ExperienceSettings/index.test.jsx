@@ -1,5 +1,12 @@
 import '@testing-library/jest-dom';
 import ExperienceSettings from './index';
+import { REGIONAL_FORMAT_OPTIONS } from '../../../lib/regionalFormat';
+import {
+  INTERFACE_LANGUAGE_OPTIONS,
+  resetInterfaceLanguage,
+  setInterfaceLanguage,
+} from '../../../lib/interfaceLocale';
+import { setRegionalFormatPreference } from '../../../lib/util';
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -9,6 +16,8 @@ const storageKey = 'slskr:experience-preferences:v1';
 describe('ExperienceSettings', () => {
   beforeEach(() => {
     localStorage.clear();
+    resetInterfaceLanguage();
+    setRegionalFormatPreference('system');
     Object.assign(navigator, {
       clipboard: {
         writeText: vi.fn().mockResolvedValue(undefined),
@@ -44,6 +53,28 @@ describe('ExperienceSettings', () => {
     ).toBeInTheDocument();
   });
 
+  it('keeps the regional selector in sync with changes from another tab', () => {
+    render(<ExperienceSettings />);
+
+    localStorage.setItem(storageKey, JSON.stringify({ regionalFormat: 'de' }));
+    fireEvent(
+      window,
+      new StorageEvent('storage', {
+        key: storageKey,
+        newValue: JSON.stringify({ regionalFormat: 'de' }),
+      }),
+    );
+
+    expect(screen.getByRole('combobox', { name: 'Regional format' })).toHaveTextContent(
+      'Deutsch — German',
+    );
+
+    fireEvent.click(screen.getByLabelText('Enable search duplicate folding preference'));
+    fireEvent.click(screen.getByRole('button', { name: 'Save Local Preferences' }));
+
+    expect(JSON.parse(localStorage.getItem(storageKey)).regionalFormat).toBe('de');
+  });
+
   it('copies a preference report', () => {
     render(<ExperienceSettings />);
 
@@ -55,5 +86,77 @@ describe('ExperienceSettings', () => {
     expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
       expect.stringContaining('Messages:'),
     );
+  });
+
+  it('resets the browser-local interface language with the other preferences', () => {
+    setInterfaceLanguage('de');
+    render(<ExperienceSettings />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Reset' }));
+
+    expect(localStorage.getItem('slskr.interface-language')).toBeNull();
+    expect(document.documentElement.lang).toBe('en');
+    expect(
+      screen.getByText('Experience preferences reset to defaults.'),
+    ).toBeInTheDocument();
+  });
+
+  it('uses each language option’s own pronunciation and text direction', () => {
+    setInterfaceLanguage('ar');
+    render(<ExperienceSettings />);
+
+    const languageSelect = screen.getAllByRole('combobox')[0];
+    expect(languageSelect).toHaveAttribute('lang', 'ar');
+    expect(languageSelect).toHaveAttribute('dir', 'rtl');
+    expect(languageSelect).toHaveAccessibleName(languageSelect.getAttribute('aria-label'));
+    fireEvent.click(languageSelect);
+
+    for (const option of INTERFACE_LANGUAGE_OPTIONS) {
+      const optionLabels = screen.getByRole('option', { name: option.text }).querySelectorAll('span');
+      const [nativeName, englishName] = option.text.split(' — ');
+      expect(optionLabels).toHaveLength(englishName ? 2 : 1);
+      expect(Array.from(optionLabels, (label) => ({
+        text: label.textContent,
+        lang: label.getAttribute('lang'),
+        dir: label.getAttribute('dir'),
+      }))).toEqual([
+        {
+          text: nativeName,
+          lang: option.value,
+          dir: option.value === 'ar' ? 'rtl' : 'ltr',
+        },
+        ...(englishName ? [{ text: englishName, lang: 'en', dir: 'ltr' }] : []),
+      ]);
+    }
+  });
+
+  it('uses each regional-format option’s own pronunciation and text direction', () => {
+    setInterfaceLanguage('ar');
+    render(<ExperienceSettings />);
+
+    const regionalSelect = screen.getAllByRole('combobox')[1];
+    expect(regionalSelect).toHaveAttribute('lang', 'ar');
+    expect(regionalSelect).toHaveAttribute('dir', 'rtl');
+    expect(regionalSelect).toHaveAccessibleName(regionalSelect.getAttribute('aria-label'));
+    fireEvent.click(regionalSelect);
+
+    for (const option of REGIONAL_FORMAT_OPTIONS) {
+      const optionLabels = screen.getByRole('option', { name: option.text }).querySelectorAll('span');
+      const [nativeName, englishName] = option.text.split(' — ');
+      const nativeLocale = option.value === 'system' ? 'en' : option.value;
+      expect(optionLabels).toHaveLength(englishName ? 2 : 1);
+      expect(Array.from(optionLabels, (label) => ({
+        text: label.textContent,
+        lang: label.getAttribute('lang'),
+        dir: label.getAttribute('dir'),
+      }))).toEqual([
+        {
+          text: nativeName,
+          lang: nativeLocale,
+          dir: nativeLocale === 'ar' ? 'rtl' : 'ltr',
+        },
+        ...(englishName ? [{ text: englishName, lang: 'en', dir: 'ltr' }] : []),
+      ]);
+    }
   });
 });

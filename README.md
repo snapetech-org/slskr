@@ -30,6 +30,61 @@ metadata, integrations, and mesh/federation surfaces should be treated as
 configuration-dependent or experimental unless the linked docs and tests say
 otherwise.
 
+## Runtime Performance
+
+The repeated idle matrix has three columns: a matched disconnected comparison,
+plus slskR with DHT enabled and connected to the DHT network.
+
+| Measurement | slskd 0.26.1, matched idle | slskR v0.2.56, matched idle | slskR v0.2.56, DHT-on idle |
+| --- | ---: | ---: | ---: |
+| Median CPU, one-logical-CPU scale | 0.4905% | 0.0289% | 0.0756% |
+| CPU range across 3 trials | 0.4617–0.5037% | 0.0243–0.0341% | 0.0755–0.0914% |
+| Summed process RSS samples | 130.1–219.0 MiB | 20.8–24.7 MiB | 26.4–28.6 MiB |
+| Network / DHT | none / no DHT service | none / disabled | Docker bridge / bootstrapped |
+
+For the **matched disconnected pair**, the median of the three paired CPU-time
+ratios was 15.98x. The DHT-on column uses bridge networking and is an additional
+profile, not a like-for-like ratio or a causal estimate of DHT overhead.
+**Confidence: moderate for these idle profiles, low for predicting another
+host or connected workload.** None of the columns has a Soulseek login, shares,
+or transfers, and there are no client/UI requests during measurement windows;
+the DHT-on runner checks status immediately before and after its windows.
+“DHT-on idle” does not mean all features were exercised under load. See the [full benchmark report](benchmarks/artifacts/20261012-idle-container-slskr-slskd.md),
+[repeatable runner](benchmarks/compare-idle-containers.py),
+[matched raw measurements](benchmarks/artifacts/20261012-idle-container-repeats.json),
+and [DHT-on raw measurements](benchmarks/artifacts/20261012-idle-container-slskr-dht.json)
+for image digests, method, counters, and limitations.
+
+### Live connected-idle matrix
+
+A separate live run logged each client into Soulseek and measured CPU and
+memory while otherwise idle. The `kspld0` columns below use session-valid
+600-second windows; `kspls0` did not yield a valid completed window because
+the host was CPU-saturated during the attempted run.
+
+| Host / measurement | slskd 0.26.1 | slskR v0.2.56, DHT off | slskR v0.2.56, DHT on |
+| --- | ---: | ---: | ---: |
+| `kspld0`: valid authenticated windows | 3 of 5 attempts | 3 of 3 | 3 of 3; one DHT boundary warning |
+| `kspld0`: median CPU time per 600 s | 16.852206 s | 0.555272 s | 0.758278 s |
+| `kspld0`: CPU-time range | 16.746842–17.801291 s | 0.362794–0.573935 s | 0.730970–0.809699 s |
+| `kspld0`: median use of one logical CPU | 2.807641% | 0.092509% | 0.126304% |
+| `kspld0`: summed process RSS samples | 196.9–262.7 MiB | 10.0–28.5 MiB | 28.9–29.6 MiB |
+| `kspls0`: result | No valid completed trial | No run | No run |
+
+The DHT-on median includes three authenticated windows. At the end of one,
+DHT status also reported a last-error indicator and zero discovered peers;
+the median of the other two DHT-on windows was 0.783989 CPU seconds. The
+`kspls0` attempt is preserved but excluded: the host load average rose to
+195.35 and two one-second samples showed 0% idle CPU. These are
+host-specific observations, not a general performance ranking. Confidence is
+high in the recorded CPU counters, moderate for comparing these profile
+medians on `kspld0`, and low for predicting other hosts or active workloads.
+The [live report](benchmarks/artifacts/20261012-live-soulseek-idle.md)
+describes the method, invalid trials, DHT status, host conditions, and all
+[primary raw trials](benchmarks/artifacts/20261012-live-soulseek-idle-matrix.json),
+[the slskd replacement trial](benchmarks/artifacts/20261012-live-soulseek-slskd-retry-2.json),
+and [the aborted kspls0 attempt](benchmarks/artifacts/20261012-live-soulseek-idle-kspls0-aborted.json). A separate authenticated DHT-on retry used 0.664036 CPU seconds over 600.214 seconds (0.110633% of one logical CPU), with DHT running and bootstrapped at both boundaries, though the initial status carried a last-error indicator that had cleared by the end; it is kept separate from the three-window matrix median and documented in the report.
+
 For a guided first run, see [Getting Started](./docs/getting-started.md). The
 [feature guide](./docs/FEATURES.md) and [status guide](./docs/status.md)
 describe current capabilities and their setup requirements.
@@ -37,6 +92,7 @@ describe current capabilities and their setup requirements.
 ## Table Of Contents
 
 - [Screenshots](#screenshots)
+- [Runtime Performance](#runtime-performance)
 - [Features](#features)
 - [Quick Start](#quick-start)
 - [Configuration](#configuration)
@@ -514,6 +570,8 @@ The table below links the maintained entry points most users need first.
 | [docs/FEATURES.md](./docs/FEATURES.md) | User-facing map of slskR feature areas. |
 | [docs/status.md](./docs/status.md) | Available, configured, compatibility-only, and limited behavior. |
 | [docs/configuration.md](./docs/configuration.md) | Config sources, defaults, credentials, network ports, and optional settings. |
+| [docs/performance-analysis.md](./docs/performance-analysis.md) | Measured runtime and build performance evidence, methods, and limits. |
+| [Idle container benchmark](./benchmarks/artifacts/20261012-idle-container-slskr-slskd.md) | Repeated pinned-image disconnected-idle CPU/RSS comparison with slskd, method, raw-data links, and limits. |
 | [docs/architecture.md](./docs/architecture.md) | Main components, state ownership, and shared peer-port layout. |
 | [docs/troubleshooting.md](./docs/troubleshooting.md) | Common startup, auth, network, share, and transfer issues. |
 | [docs/install.md](./docs/install.md) | Build, install, config/state, service, container, and exposure runbook. |

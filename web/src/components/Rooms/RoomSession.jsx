@@ -1,3 +1,4 @@
+import { formatRegionalCompactDateTime } from '../../lib/util';
 import * as rooms from '../../lib/rooms';
 import { createRoomsHubConnection } from '../../lib/hubFactory';
 import { createPollingController } from '../../lib/usePolling';
@@ -277,14 +278,7 @@ class RoomSession extends Component {
       return 'Unknown time';
     }
 
-    const dtfUS = new Intl.DateTimeFormat('en', {
-      day: 'numeric',
-      hour: 'numeric',
-      minute: '2-digit',
-      month: 'numeric',
-    });
-
-    return dtfUS.format(date);
+    return formatRegionalCompactDateTime(date);
   };
 
   sendMessage = async () => {

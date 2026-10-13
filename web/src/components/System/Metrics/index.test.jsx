@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import { getKpiMetrics } from '../../../lib/telemetry';
 import Metrics from './index';
+import { setRegionalFormatPreference } from '../../../lib/util';
 import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -16,6 +17,7 @@ vi.mock('../../Shared', () => ({
 describe('Metrics', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    setRegionalFormatPreference('system');
   });
 
   it('retains the last successful snapshot when a refresh fails', async () => {
@@ -40,5 +42,21 @@ describe('Metrics', () => {
     expect(screen.getByText('Uploads Total')).toBeInTheDocument();
     expect(screen.getAllByText('3')).not.toHaveLength(0);
     await waitFor(() => expect(getKpiMetrics).toHaveBeenCalledTimes(2));
+  });
+
+  it('formats zero byte metrics with the selected regional digits', async () => {
+    setRegionalFormatPreference('ar');
+    getKpiMetrics.mockResolvedValueOnce({
+      process_working_set_bytes: {
+        help: 'Working set bytes',
+        samples: [{ value: 0 }],
+        type: 'gauge',
+      },
+    });
+
+    render(<Metrics />);
+
+    const zero = new Intl.NumberFormat('ar').format(0);
+    expect(await screen.findByText(`${zero} B`)).toBeInTheDocument();
   });
 });

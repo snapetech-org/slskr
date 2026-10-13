@@ -1,3 +1,4 @@
+import { formatRegionalCompactDateTime } from '../../lib/util';
 import './Chat.css';
 import * as chat from '../../lib/chat';
 import { createPollingController } from '../../lib/usePolling';
@@ -360,14 +361,7 @@ class ChatSession extends Component {
       return 'Unknown time';
     }
 
-    const dtfUS = new Intl.DateTimeFormat('en', {
-      day: 'numeric',
-      hour: 'numeric',
-      minute: '2-digit',
-      month: 'numeric',
-    });
-
-    return dtfUS.format(date);
+    return formatRegionalCompactDateTime(date);
   };
 
   deleteConversation = async () => {

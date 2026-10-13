@@ -1,3 +1,4 @@
+import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -33,6 +34,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
+  useRegionalFormat();
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -231,7 +233,7 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
                         {retrievalResult.fromCache ? 'Yes' : 'No'}
                         <br />
                         <strong>Retrieved:</strong>{' '}
-                        {new Date(retrievalResult.retrievedAt).toLocaleString()}
+                        {formatRegionalDateTime(retrievalResult.retrievedAt)}
                         <br />
                         <strong>Duration:</strong>{' '}
                         {retrievalResult.retrievalDuration?.totalMilliseconds.toFixed(

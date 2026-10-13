@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-10-12T20:18:25.910972+00:00",
+  "parameters": {
+    "repeats_per_app": 1,
+    "warmup_seconds": 180,
+    "duration_seconds": 600,
+    "memory_sample_interval_seconds": 60,
+    "profiles": [
+      "slskd"
+    ],
+    "order": [
+      "slskd"
+    ],
+    "network": "bridge",
+    "network_by_profile": {
+      "slskd": "bridge"
+    },
+    "live_soulseek_session": true,
+    "credentials": "same test account reused sequentially; values omitted",
+    "server_endpoint": "vps.slsknet.org:2271",
+    "share_scan_disabled": true,
+    "healthchecks": false,
+    "cpu_accounting": "host-read cgroup v2 cpu.stat usage_usec"
+  },
+  "host": {
+    "platform": "Linux-7.1.7-arch1-1-x86_64-with-glibc2.44",
+    "architecture": "x86_64",
+    "kernel": "7.1.7-arch1-1",
+    "online_cpus": 32,
+    "process_cpu_affinity_count": 32,
+    "cgroup_version": "v2",
+    "docker_version": "client=29.9.0 server=29.8.0",
+    "load_average_at_start": [
+      13.41748046875,
+      15.6396484375,
+      17.447265625
+    ]
+  },
+  "images": {
+    "slskd": {
+      "requested": "slskd/slskd@sha256:588af49abc3088d639c8f1174d3bfad6e92c093a275a593140e3ac9311ebf6c4",
+      "image_id": "sha256:588af49abc3088d639c8f1174d3bfad6e92c093a275a593140e3ac9311ebf6c4",
+      "repo_digests": [
+        "slskd/slskd@sha256:588af49abc3088d639c8f1174d3bfad6e92c093a275a593140e3ac9311ebf6c4"
+      ],
+      "platform": "linux/amd64"
+    }
+  },
+  "trials": []
+}

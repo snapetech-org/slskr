@@ -1,9 +1,10 @@
 import '@testing-library/jest-dom';
 import CompatibilityDashboard from './CompatibilityDashboard';
+import { setRegionalFormatPreference } from '../lib/util';
 import React from 'react';
 import { MemoryRouter, useLocation } from 'react-router-dom';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const reportMocks = vi.hoisted(() => ({
   getExceptionPareto: vi.fn(),
@@ -28,6 +29,7 @@ const LocationProbe = () => {
 
 describe('CompatibilityDashboard', () => {
   beforeEach(() => {
+    setRegionalFormatPreference('system');
     reportMocks.getSummary.mockResolvedValue({
       Download: { Succeeded: { count: 2, distinctUsers: 1, totalBytes: 2_048 } },
       Upload: { Succeeded: { count: 1, distinctUsers: 1, totalBytes: 1_024 } },
@@ -43,6 +45,10 @@ describe('CompatibilityDashboard', () => {
     reportMocks.getExceptionPareto.mockResolvedValue([]);
     reportMocks.getExceptions.mockResolvedValue([]);
     searchCreate.mockResolvedValue({});
+  });
+
+  afterEach(() => {
+    setRegionalFormatPreference('system');
   });
 
   it('renders the frozen dashboard workflow and changes history range', async () => {
@@ -65,6 +71,26 @@ describe('CompatibilityDashboard', () => {
         expect.objectContaining({ buckets: 84 }),
       );
     });
+  });
+
+  it('formats zero transfer totals with the selected regional digits', async () => {
+    setRegionalFormatPreference('ar');
+    reportMocks.getSummary.mockResolvedValueOnce({
+      Download: { Succeeded: { count: 0, distinctUsers: 0, totalBytes: 0 } },
+      Upload: { Succeeded: { count: 0, distinctUsers: 0, totalBytes: 0 } },
+    });
+
+    render(
+      <MemoryRouter>
+        <CompatibilityDashboard server={{ isConnected: true }} />
+      </MemoryRouter>,
+    );
+
+    const zero = new Intl.NumberFormat('ar').format(0);
+    const downloadLabel = await screen.findByText(`Downloaded · ${zero} files`);
+    expect(downloadLabel.closest('.statistic')?.querySelector('.value')).toHaveTextContent(
+      `${zero}B`,
+    );
   });
 
   it('retains the last successful report when a range refresh fails', async () => {

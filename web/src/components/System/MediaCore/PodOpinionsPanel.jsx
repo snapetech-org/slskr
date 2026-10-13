@@ -1,3 +1,4 @@
+import { formatRegionalDate, formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -31,6 +32,7 @@ const opinionQueryKey = (podId, contentId) =>
   JSON.stringify([podId.trim(), contentId.trim()]);
 
 const PodOpinionsPanel = ({ visible = true }) => {
+  useRegionalFormat();
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -523,7 +525,7 @@ const PodOpinionsPanel = ({ visible = true }) => {
                     {opinionStatistics.maxScore}
                     <br />
                     <strong>Last Updated:</strong>{' '}
-                    {new Date(opinionStatistics.lastUpdated).toLocaleString()}
+                    {formatRegionalDateTime(opinionStatistics.lastUpdated)}
                   </p>
                 </Message>
               )}
@@ -853,9 +855,7 @@ const PodOpinionsPanel = ({ visible = true }) => {
                             <br />
                             <small>
                               Last Activity:{' '}
-                              {new Date(
-                                affinity.lastActivity,
-                              ).toLocaleDateString()}
+                              {formatRegionalDate(affinity.lastActivity)}
                             </small>
                           </div>
                         </Card.Content>

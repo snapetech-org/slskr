@@ -21,6 +21,14 @@ the release is prepared. Do not rewrite audited release history.
 - Filter candidate snapshots for credential filenames with multiple leading
   qualifiers or trailing camel-case environment names while preserving ordinary
   source modules and documentation.
+- Recorded repeatable idle CPU and memory comparisons for local containers and
+  connected Soulseek sessions, with raw measurements and clear scope limits.
+- Preserve timestamped failed benchmark attempts and failure reasons in raw
+  artifacts so retry counts and denominators can be audited.
+- Pull selected benchmark images by pinned digest before recording metadata and
+  mark process RSS totals incomplete when procfs samples are missing.
+- Hardened local validation with a trusted test sandbox and isolated task
+  environments.
 
 ## [0.2.57] — 2026-10-12
 

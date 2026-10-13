@@ -9,6 +9,84 @@ The maintained HTTP benchmark is [`scripts/benchmark-http.py`](../scripts/benchm
 It talks to a real running daemon and emits JSON with status counts, errors,
 throughput, and bounded latency samples.
 
+The dated [slskR/slskd idle-container report](artifacts/20261012-idle-container-slskr-slskd.md)
+records three 10-minute CPU/RSS trials per profile: the matched, disconnected
+slskd/slskR pair and slskR with DHT enabled on Docker bridge networking. The
+maintained [`compare-idle-containers.py`](compare-idle-containers.py) runner
+writes the [matched raw JSON](artifacts/20261012-idle-container-repeats.json)
+and [DHT-on raw JSON](artifacts/20261012-idle-container-slskr-dht.json). Run
+`--profiles slskd slskr slskr-dht` to collect the full matrix. The DHT-on profile
+must use bridge networking and is documented separately from the no-network
+matched pair. These are diagnostic measurements, not regression thresholds;
+they do not exercise a Soulseek login, shares, transfers, or user-facing HTTP
+workloads.
+The runner generates fresh random local status credentials for each trial,
+passes them through the container environment and request headers, and does
+not save them in measurement artifacts; slskd's trial key is read-only.
+Before recording image metadata, it pulls each selected pinned image digest if
+the local daemon does not already have it.
+
+Run all three profiles with the same repetition and window settings:
+
+```bash
+python3 benchmarks/compare-idle-containers.py \
+  --profiles slskd slskr slskr-dht \
+  --repeats 3 \
+  --warmup-seconds 180 \
+  --duration-seconds 600 \
+  --sample-interval-seconds 60 \
+  --output target/perf/idle-container-matrix.json
+```
+
+This takes about 117 minutes at those settings. The DHT profile needs outbound
+network access; its authenticated status checks use an ephemeral host port
+bound to loopback and occur outside the CPU windows.
+
+## Live Soulseek session matrix
+
+The live runner uses the same three profiles with a dedicated test account:
+`slskd`, slskR with DHT disabled, and slskR with DHT enabled. All profiles use
+Docker bridge networking and connect sequentially to the same Soulseek
+endpoint. The runner verifies the authenticated session immediately before
+and after each measurement window; slskR's DHT status is also checked at those
+boundaries. These checks are outside the CPU window. The measurements cover
+connected idle only: no shares, share scans, searches, transfers, or UI/API
+workloads are configured or exercised. DHT-on is an additional profile, not a
+claim that every slskR feature is enabled or under load.
+
+Provide a dedicated test account through `SLSKR_LIVE_BENCH_USERNAME` and
+`SLSKR_LIVE_BENCH_PASSWORD` in the runner's environment. The runner passes
+those values to containers without writing them to its JSON artifact or
+command-line arguments.
+
+```bash
+python3 benchmarks/compare-idle-containers.py \
+  --profiles slskd slskr slskr-dht \
+  --live-session \
+  --repeats 3 \
+  --warmup-seconds 180 \
+  --duration-seconds 600 \
+  --sample-interval-seconds 60 \
+  --output target/perf/live-soulseek-idle-matrix.json
+```
+
+This takes about 117 minutes, plus login time. CPU is the cgroup v2
+`cpu.stat` usage delta; the percentage is normalized to one logical CPU. The
+artifact also retains process RSS and cgroup memory samples, session/DHT
+boundary status, host CPU busy percentage, and load average for every trial.
+Each raw artifact records every started trial attempt, separately from
+completed measurements. Failed login, API, or cgroup reads retain the profile,
+attempt number, UTC start and finish times, and failure reason before the runner
+stops, so retries and denominator changes can be audited.
+Process RSS is reported only when every PID returned by Docker has a readable
+`/proc/<pid>/status` entry with a `VmRSS` row; otherwise the RSS total is null
+and `rss_complete` is false. PSS completeness is recorded independently.
+Keep host-specific results separate and report host load: CPU-time samples
+from different machines or materially different background load are not a
+controlled head-to-head comparison. The retained [2026-10-12 live matrix
+report](artifacts/20261012-live-soulseek-idle.md) links the raw trials and
+documents the observed host conditions and exclusions.
+
 Example:
 
 ```bash

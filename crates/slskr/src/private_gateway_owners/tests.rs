@@ -413,8 +413,11 @@ async fn gateway_certificate_identity_is_durable() {
 #[tokio::test]
 async fn shared_tcp_gateway_does_not_bind_a_second_public_tcp_socket() {
     let root = temporary_directory("gateway-shared-tcp");
-    let public_listener = TcpListener::bind("127.0.0.1:0").await.unwrap();
-    let public_address = public_listener.local_addr().unwrap();
+    // Windows can reserve ephemeral TCP and UDP port ranges differently.
+    // Pick a UDP port first, then bind TCP to that same available port.
+    let shared_udp_socket = Arc::new(StdUdpSocket::bind("127.0.0.1:0").unwrap());
+    let public_address = shared_udp_socket.local_addr().unwrap();
+    let _public_listener = TcpListener::bind(public_address).await.unwrap();
     let gateway = Gateway::load_or_create_with_quic_and_data_policy_and_proxy_and_dht_socket_with_data_share_shared_tcp(
             public_address,
             &root,
@@ -422,7 +425,7 @@ async fn shared_tcp_gateway_does_not_bind_a_second_public_tcp_socket() {
             None,
             None,
             None,
-            None,
+            Some(shared_udp_socket),
             None,
             None,
             8,
