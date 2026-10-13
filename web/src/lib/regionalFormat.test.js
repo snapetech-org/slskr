@@ -1,6 +1,7 @@
 import { REGIONAL_FORMAT_OPTIONS } from './regionalFormat';
 import {
   EXPERIENCE_PREFERENCES_STORAGE_KEY,
+  formatRegionalCompactDateTime,
   formatRegionalDate,
   formatRegionalDateTime,
   formatRegionalNumber,
@@ -75,6 +76,14 @@ describe('regional format preferences', () => {
     expect(formatRegionalDateTime(timestamp)).toBe(date.toLocaleString('de'));
     expect(formatRegionalDate(timestamp)).toBe(date.toLocaleDateString('de'));
     expect(formatRegionalTime(timestamp)).toBe(date.toLocaleTimeString('de'));
+    expect(formatRegionalCompactDateTime(date)).toBe(
+      new Intl.DateTimeFormat('de', {
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        month: 'numeric',
+      }).format(date),
+    );
   });
 
   it('accepts each listed locale option', () => {

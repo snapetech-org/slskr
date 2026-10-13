@@ -25,6 +25,14 @@ export const formatRegionalDate = (value) =>
 export const formatRegionalTime = (value) =>
   new Date(value).toLocaleTimeString(getRegionalLocale());
 
+export const formatRegionalCompactDateTime = (value) =>
+  new Intl.DateTimeFormat(getRegionalLocale(), {
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    month: 'numeric',
+  }).format(value);
+
 export const formatSeconds = (seconds) => {
   if (seconds === undefined) return '';
   const date = new Date(1_970, 0, 1);
