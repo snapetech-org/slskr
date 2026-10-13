@@ -35,12 +35,14 @@ import {
 const DHT_EXPOSURE_CONSENT_KEY = 'slskr:ui:dht-public-exposure:consent-v1';
 
 const formatBytes = (bytes) => {
-  if (bytes === 0 || bytes === undefined || bytes === null) return '0 B';
+  if (bytes === 0 || bytes === undefined || bytes === null) {
+    return formatRegionalBytes(0, 1);
+  }
   return formatRegionalBytes(Number(bytes), 1);
 };
 
 const formatNumber = (value) => {
-  if (value === undefined || value === null) return '0';
+  if (value === undefined || value === null) return formatRegionalCompactNumber(0);
   return formatRegionalCompactNumber(value);
 };
 
@@ -381,6 +383,11 @@ const Network = ({ options = {}, state = {}, theme }) => {
 
   const { backfill, capabilities, hashDb, mesh, swarmJobs } = stats || {};
   const hasStats = stats !== null;
+  const hashDbSizeBytes = hashDb?.dbSizeBytes;
+  const hasHashDbSize =
+    hashDbSizeBytes !== undefined &&
+    hashDbSizeBytes !== null &&
+    Number.isFinite(Number(hashDbSizeBytes));
   const obfuscation = capabilities?.obfuscation;
   const darkTheme = theme === 'dark';
   const dhtIsLanOnly = stats?.dht?.isLanOnly ?? stats?.dht?.lanOnly ?? false;
@@ -569,8 +576,8 @@ const Network = ({ options = {}, state = {}, theme }) => {
           inverted={darkTheme}
           label="Hash Entries"
           subLabel={
-            hasStats && hashDb?.dbSizeBytes
-              ? `${formatBytes(hashDb.dbSizeBytes)} on disk`
+            hasStats && hasHashDbSize
+              ? `${formatBytes(hashDbSizeBytes)} on disk`
               : 'Local database'
           }
           value={hasStats ? formatNumber(hashDb?.totalEntries ?? 0) : '—'}

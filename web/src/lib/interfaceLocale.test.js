@@ -21,6 +21,9 @@ const bulkActionLabels = [
   'Remove All Errored',
   'Remove All Cancelled',
   'Remove All Completed',
+  'Filter retryable downloads',
+  'Filter downloads to cancel',
+  'Filter downloads to remove',
 ];
 const originalLanguages = Object.getOwnPropertyDescriptor(navigator, 'languages');
 
@@ -55,7 +58,7 @@ describe('interface language', () => {
     }
   });
 
-  it('translates each bulk action as a complete phrase in every supported language', () => {
+  it('translates transfer actions and filter names in every supported language', () => {
     for (const source of bulkActionLabels) {
       expect(TRANSFER_BULK_ACTION_LABELS[source]).toHaveLength(INTERFACE_LANGUAGE_OPTIONS.length - 1);
       expect(TRANSFER_BULK_ACTION_LABELS[source].every((translation) => typeof translation === 'string')).toBe(true);

@@ -53,5 +53,16 @@ describe('TransfersHeader', () => {
     const label = screen.getByText('إعادة محاولة كل عمليات النقل التي بها أخطاء');
     expect(label).toHaveAttribute('lang', 'ar');
     expect(label).toHaveAttribute('dir', 'rtl');
+
+    const filterNames = [
+      'تصفية التنزيلات القابلة لإعادة المحاولة',
+      'تصفية التنزيلات المراد إلغاؤها',
+      'تصفية التنزيلات المراد إزالتها',
+    ];
+    for (const name of filterNames) {
+      const filter = screen.getByLabelText(name);
+      expect(filter).toHaveAttribute('lang', 'ar');
+      expect(filter).toHaveAttribute('dir', 'rtl');
+    }
   });
 });

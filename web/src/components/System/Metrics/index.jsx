@@ -22,7 +22,9 @@ import {
 
 const formatBytes = (bytes) => {
   const numericBytes = Number(bytes);
-  if (!Number.isFinite(numericBytes) || numericBytes <= 0) return '0 B';
+  if (!Number.isFinite(numericBytes) || numericBytes <= 0) {
+    return formatBytesFixed(0, 1);
+  }
   return formatBytesFixed(numericBytes, 1);
 };
 

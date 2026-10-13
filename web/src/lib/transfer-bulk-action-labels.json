@@ -138,5 +138,47 @@
     "移除所有已完成的傳輸",
     "Xóa tất cả lượt truyền đã hoàn tất",
     "Hapus semua transfer yang selesai"
+  ],
+  "Filter retryable downloads": [
+    "Filtrar descargas reintentables",
+    "筛选可重试的下载",
+    "पुनः प्रयास योग्य डाउनलोड फ़िल्टर करें",
+    "Wiederholbare Downloads filtern",
+    "再試行できるダウンロードを絞り込む",
+    "Filtrer les téléchargements pouvant être relancés",
+    "Filtrar downloads que podem ser repetidos",
+    "تصفية التنزيلات القابلة لإعادة المحاولة",
+    "재시도 가능한 다운로드 필터",
+    "篩選可重試的下載",
+    "Lọc các lượt tải xuống có thể thử lại",
+    "Filter unduhan yang dapat dicoba ulang"
+  ],
+  "Filter downloads to cancel": [
+    "Filtrar descargas para cancelar",
+    "筛选要取消的下载",
+    "रद्द करने के लिए डाउनलोड फ़िल्टर करें",
+    "Downloads zum Abbrechen filtern",
+    "キャンセルするダウンロードを絞り込む",
+    "Filtrer les téléchargements à annuler",
+    "Filtrar downloads para cancelar",
+    "تصفية التنزيلات المراد إلغاؤها",
+    "취소할 다운로드 필터",
+    "篩選要取消的下載",
+    "Lọc lượt tải xuống cần hủy",
+    "Filter unduhan yang akan dibatalkan"
+  ],
+  "Filter downloads to remove": [
+    "Filtrar descargas para eliminar",
+    "筛选要移除的下载",
+    "हटाने के लिए डाउनलोड फ़िल्टर करें",
+    "Downloads zum Entfernen filtern",
+    "削除するダウンロードを絞り込む",
+    "Filtrer les téléchargements à supprimer",
+    "Filtrar downloads para remover",
+    "تصفية التنزيلات المراد إزالتها",
+    "제거할 다운로드 필터",
+    "篩選要移除的下載",
+    "Lọc lượt tải xuống cần xóa",
+    "Filter unduhan yang akan dihapus"
   ]
 }

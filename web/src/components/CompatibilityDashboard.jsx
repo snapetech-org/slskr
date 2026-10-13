@@ -104,7 +104,9 @@ const ReportStatus = ({ error, label, testId }) => {
 
 
 const formatBytesParts = (bytes) => {
-  if (!bytes || bytes < 1) return { unit: 'B', value: '0' };
+  if (!bytes || bytes < 1) {
+    return { unit: 'B', value: formatRegionalNumber(0) };
+  }
   const units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
   const index = Math.min(
     units.length - 1,

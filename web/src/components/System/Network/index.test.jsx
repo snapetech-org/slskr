@@ -4,6 +4,7 @@
 
 import * as slskrAPI from '../../../lib/slskr';
 import Network from '.';
+import { setRegionalFormatPreference } from '../../../lib/util';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 
@@ -31,6 +32,7 @@ describe('Network', () => {
       },
     });
     window.localStorage.clear();
+    setRegionalFormatPreference('system');
     slskrAPI.getSlskrStats.mockResolvedValue({
       backfill: {
         completedToday: 0,
@@ -69,6 +71,23 @@ describe('Network', () => {
     ).toBeInTheDocument();
     expect(screen.getByText('Network Health')).toBeInTheDocument();
     expect(screen.getByText('Needs attention')).toBeInTheDocument();
+  });
+
+  it('formats zero database bytes with the selected regional digits', async () => {
+    setRegionalFormatPreference('ar');
+    slskrAPI.getSlskrStats.mockResolvedValueOnce({
+      backfill: { completedToday: 0, discoveryRate: 0, isActive: false, pendingCount: 0 },
+      capabilities: { features: [], version: 'slskR' },
+      dht: { dhtNodeCount: 0, isEnabled: false, isLanOnly: false, isDhtRunning: false },
+      hashDb: { currentSeqId: 0, dbSizeBytes: 0, totalEntries: 0 },
+      mesh: { connectedPeerCount: 0, warnings: [] },
+      swarmJobs: [],
+    });
+
+    render(<Network theme="light" />);
+
+    const zero = new Intl.NumberFormat('ar').format(0);
+    expect(await screen.findByText(`${zero} B on disk`)).toBeInTheDocument();
   });
 
   it('does not score an unavailable runtime snapshot as measured health', async () => {

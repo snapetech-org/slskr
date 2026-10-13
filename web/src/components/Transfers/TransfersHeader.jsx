@@ -92,13 +92,29 @@ const TransfersHeader = ({
   const localizedText = (source, text = t(source), localizedLanguage = languageFor(source)) => (
     <span lang={localizedLanguage} dir={localizedLanguage === 'ar' ? 'rtl' : 'ltr'}>{text}</span>
   );
-  const localizedBulkAction = (action, option) => {
-    const source = `${action} All${option === 'All' ? '' : ` ${option}`}`;
+  const localizedTransferLabel = (source) => {
     const languageIndex = getInterfaceLanguageIndex(language);
     const translation = languageIndex === undefined
       ? undefined
       : bulkActionLabels?.[source]?.[languageIndex];
-    return localizedText(source, translation || source, translation ? language : 'en');
+    const labelLanguage = translation ? language : 'en';
+    return { text: translation || source, language: labelLanguage };
+  };
+  const localizedTransferText = (source) => {
+    const label = localizedTransferLabel(source);
+    return localizedText(source, label.text, label.language);
+  };
+  const localizedAriaLabel = (source) => {
+    const label = localizedTransferLabel(source);
+    return {
+      ariaLabel: label.text,
+      ariaLabelDir: label.language === 'ar' ? 'rtl' : 'ltr',
+      ariaLabelLang: label.language,
+    };
+  };
+  const localizedBulkAction = (action, option) => {
+    const source = `${action} All${option === 'All' ? '' : ` ${option}`}`;
+    return localizedTransferText(source);
   };
   const [removeOption, setRemoveOption] = useState('Succeeded');
   const [cancelOption, setCancelOption] = useState('All');
@@ -138,7 +154,7 @@ const TransfersHeader = ({
         hidden={empty}
       >
         <ShrinkableDropdownButton
-          ariaLabel="Filter retryable downloads"
+          {...localizedAriaLabel('Filter retryable downloads')}
           color="green"
           disabled={working || empty || !server.isConnected}
           hidden={direction === 'upload'}
@@ -157,7 +173,7 @@ const TransfersHeader = ({
         </ShrinkableDropdownButton>
         <Nbsp />
         <ShrinkableDropdownButton
-          ariaLabel="Filter downloads to cancel"
+          {...localizedAriaLabel('Filter downloads to cancel')}
           color="red"
           disabled={working || empty}
           icon="x"
@@ -177,7 +193,7 @@ const TransfersHeader = ({
         </ShrinkableDropdownButton>
         <Nbsp />
         <ShrinkableDropdownButton
-          ariaLabel="Filter downloads to remove"
+          {...localizedAriaLabel('Filter downloads to remove')}
           disabled={working || empty}
           icon="trash alternate"
           loading={removing}
