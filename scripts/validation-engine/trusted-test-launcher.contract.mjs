@@ -68,6 +68,13 @@ test('preserves tracked source files named token while excluding credential conf
   assert.equal(isSensitiveCandidatePath('src/credentials.py'), true);
   assert.equal(isSensitiveCandidatePath('src/secrets.js'), true);
   assert.equal(isSensitiveCandidatePath('ops/production-auth.json'), true);
+  assert.equal(isSensitiveCandidatePath('token.production.env'), true);
+  assert.equal(isSensitiveCandidatePath('credentials.prod.toml'), true);
+  assert.equal(isSensitiveCandidatePath('secrets-production.yaml'), true);
+  assert.equal(isSensitiveCandidatePath('ops/secrets-production/value.json'), true);
+  assert.equal(isSensitiveCandidatePath('ops/credentials.prod/value.json'), true);
+  assert.equal(isSensitiveCandidatePath('web/src/designTokens.ts'), false);
+  assert.equal(isSensitiveCandidatePath('src/cancellationToken.ts'), false);
   assert.equal(
     isSensitiveCandidatePath('crates/slskr/src/private_gateway_owners/peer_authentication.rs'),
     false,
@@ -208,6 +215,8 @@ test(
     mkdirSync(path.join(source, 'packages/app'), { recursive: true });
     mkdirSync(path.join(source, 'ops/secrets'), { recursive: true });
     mkdirSync(path.join(source, 'ops/production-secrets'), { recursive: true });
+    mkdirSync(path.join(source, 'ops/secrets-production'), { recursive: true });
+    mkdirSync(path.join(source, 'ops/credentials.prod'), { recursive: true });
     mkdirSync(path.join(source, 'ops/github-tokens'), { recursive: true });
     mkdirSync(path.join(source, 'auth-service/src'), { recursive: true });
     mkdirSync(path.join(source, 'token-parser/src'), { recursive: true });
@@ -251,6 +260,13 @@ test(
     writeFileSync(path.join(source, 'src/credentials.py'), 'TOKEN_CANARY = "hidden"\n');
     writeFileSync(path.join(source, 'src/secrets.js'), 'export const TOKEN_CANARY = "hidden";\n');
     writeFileSync(path.join(source, 'ops/production-auth.json'), '{"token":"hidden"}\n');
+    writeFileSync(path.join(source, 'token.production.env'), 'TOKEN_CANARY=hidden\n');
+    writeFileSync(path.join(source, 'credentials.prod.toml'), 'TOKEN_CANARY="hidden"\n');
+    writeFileSync(path.join(source, 'secrets-production.yaml'), 'token: hidden\n');
+    writeFileSync(path.join(source, 'ops/secrets-production/value.json'), '{"token":"hidden"}\n');
+    writeFileSync(path.join(source, 'ops/credentials.prod/value.json'), '{"token":"hidden"}\n');
+    writeFileSync(path.join(source, 'web/src/designTokens.ts'), 'export const designTokens = {};\n');
+    writeFileSync(path.join(source, 'src/cancellationToken.ts'), 'export const cancellationToken = {};\n');
     writeFileSync(
       path.join(source, 'crates/slskr/src/private_gateway_owners/peer_authentication.rs'),
       'pub fn peer_authentication() {}\n',
@@ -395,6 +411,13 @@ assert.equal(existsSync('/mnt/workspace/src/auth.rs'), false);
 assert.equal(existsSync('/mnt/workspace/src/credentials.py'), false);
 assert.equal(existsSync('/mnt/workspace/src/secrets.js'), false);
 assert.equal(existsSync('/mnt/workspace/ops/production-auth.json'), false);
+assert.equal(existsSync('/mnt/workspace/token.production.env'), false);
+assert.equal(existsSync('/mnt/workspace/credentials.prod.toml'), false);
+assert.equal(existsSync('/mnt/workspace/secrets-production.yaml'), false);
+assert.equal(existsSync('/mnt/workspace/ops/secrets-production'), false);
+assert.equal(existsSync('/mnt/workspace/ops/credentials.prod'), false);
+assert.equal(readFileSync('/mnt/workspace/web/src/designTokens.ts', 'utf8'), 'export const designTokens = {};\\n');
+assert.equal(readFileSync('/mnt/workspace/src/cancellationToken.ts', 'utf8'), 'export const cancellationToken = {};\\n');
 assert.match(readFileSync('/mnt/workspace/crates/slskr/src/private_gateway_owners/peer_authentication.rs', 'utf8'), /peer_authentication/u);
 assert.equal(readFileSync('/mnt/workspace/crates/slskr/data/peer-controller-auth-policy.json', 'utf8'), '{"policy":"source metadata"}\\n');
 assert.equal(existsSync('/mnt/workspace/production-token.json'), false);

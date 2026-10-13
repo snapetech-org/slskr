@@ -90,12 +90,14 @@ const sensitiveCredentialSourceFile =
   /^[.]?(?:auth(?:entication)?|tokens?|credentials?|secrets?)[.](?:[cm]?js|jsx|ts|tsx|rs|go|py|rb|java|kt|cs|php|sh|sql)$/iu;
 const qualifiedAuthConfigFile =
   /^[^/]+[._-]auth(?:entication)?[.](?:json|ya?ml|toml|ini|cfg|conf|env|properties|xml|txt)$/iu;
+const qualifiedCredentialConfigFile =
+  /^(?:[^/]+[._-])?(?:tokens?|credentials?|secrets?)[._-](?:prod(?:uction)?|dev(?:elopment)?|test(?:ing)?|stage|staging|local|qa|live|backup|old|new|previous|current)[.](?:json|ya?ml|toml|ini|cfg|conf|env|properties|xml|txt)$/iu;
 const sensitiveCredentialMaterialFile =
   /(?:^|[._-])(?:private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)(?=$|[._-])|^[^/]+[._-](?:tokens?|credentials?|secrets?)(?=$|[._-])/iu;
 const camelCaseCredentialMaterialFile =
-  /(?:(?<=[a-z0-9])(?:PrivateKeys?|privateKeys?|ApiKeys?|APIKeys?|AccessTokens?|RefreshTokens?|ClientSecrets?)|[a-z][a-z0-9]{3,}(?:Tokens?|Credentials?|Secrets?))(?=$|[._-])/iu;
+  /(?:(?<=[a-z0-9])(?:PrivateKeys?|privateKeys?|ApiKeys?|APIKeys?|ApiTokens?|APITokens?|AccessTokens?|RefreshTokens?|ClientTokens?|ClientCredentials?|ClientSecrets?|ServiceAccountTokens?|ServiceAccountCredentials?|ServiceAccountSecrets?)|^(?:prod(?:uction)?|dev(?:elopment)?|test(?:ing)?|stage|staging|local|qa|live|github|gitlab|bitbucket|aws|azure|gcp|google|slack|discord|oauth|jwt|bearer)(?:Auth(?:entication)?|Tokens?|Credentials?|Secrets?)(?=$|[._-]))/iu;
 const qualifiedCredentialDirectoryName =
-  /^[^/]+[._-](?:auth(?:entication)?|tokens?|credentials?|secrets?|private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)$/iu;
+  /^(?:[^/]+[._-](?:auth(?:entication)?|tokens?|credentials?|secrets?|private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)|(?:tokens?|credentials?|secrets?)[._-](?:prod(?:uction)?|dev(?:elopment)?|test(?:ing)?|stage|staging|local|qa|live|backup|old|new|previous|current))$/iu;
 const sourceTreeDirectory =
   /^(?:src|source|packages|apps|web|dashboard|client-go|client-python|client-ts|crates|scripts|lib|tests?|__tests__|fixtures?)$/iu;
 const knownApiKeysPage = 'dashboard/src/pages/ApiKeys.tsx';
@@ -120,6 +122,7 @@ export function isSensitiveCandidatePath(relativePath) {
     sensitiveCredentialName.test(filename) ||
     sensitiveCredentialConfigFile.test(filename) ||
     qualifiedAuthConfigFile.test(filename) ||
+    qualifiedCredentialConfigFile.test(filename) ||
     (sensitiveCredentialSourceFile.test(filename) &&
       !knownSourceCredentialModules.has(normalizedPath))
   )
