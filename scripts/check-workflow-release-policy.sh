@@ -33,6 +33,8 @@ done
 
 main_runner_condition="((github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'))"
 trusted_runner_labels="fromJSON('[\"self-hosted\",\"Linux\",\"X64\",\"host\",\"linux-build\",\"linux-amd64\"]')"
+trusted_runner_group="group: \${{ ${main_runner_condition} && 'trusted-main' || '' }}"
+trusted_runner_labels_line="labels: \${{ ${main_runner_condition} && ${trusted_runner_labels} || fromJSON('[\"ubuntu-latest\"]') }}"
 push_branches="$(
   awk '
     /^  push:$/ { in_push=1; next }
@@ -53,6 +55,14 @@ if [[ "$push_branches" != "main" ]]; then
 fi
 if ! rg -n -F "$trusted_runner_labels" .github/workflows/ci.yml >/dev/null; then
   printf 'workflow release policy check failed: trusted Linux jobs must target the shared organization Linux build-pool labels\n' >&2
+  status=1
+fi
+if ! rg -n -F "$trusted_runner_group" .github/workflows/ci.yml >/dev/null; then
+  printf 'workflow release policy check failed: trusted Linux jobs must select the trusted-main organization runner group\n' >&2
+  status=1
+fi
+if ! rg -n -F "$trusted_runner_labels_line" .github/workflows/ci.yml >/dev/null; then
+  printf 'workflow release policy check failed: trusted Linux jobs must keep the hosted fallback and shared labels\n' >&2
   status=1
 fi
 if rg -n 'kspls0' .github/workflows/ci.yml >/dev/null; then
@@ -91,7 +101,7 @@ if ! rg -n -F "$main_runner_condition" .github/workflows/ci.yml >/dev/null; then
   printf 'workflow release policy check failed: local runner policy must be limited to main pushes and manual runs\n' >&2
   status=1
 fi
-if rg -n '^[[:space:]]*runs-on:.*self-hosted' .github/workflows \
+if rg -n '^[[:space:]]*(runs-on|labels):.*self-hosted' .github/workflows \
   | rg -v -F "$main_runner_condition"; then
   printf 'workflow release policy check failed: self-hosted CI runners must be restricted to main pushes or manual main runs\n' >&2
   status=1

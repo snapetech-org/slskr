@@ -49,7 +49,9 @@ jobs:
 
   rust:
     # Pull request and non-main code stays hosted; trusted main uses the shared organization Linux build pool.
-    runs-on: ${{ ((github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')) && fromJSON('["self-hosted","Linux","X64","host","linux-build","linux-amd64"]') || 'ubuntu-latest' }}
+    runs-on:
+      group: ${{ ((github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')) && 'trusted-main' || '' }}
+      labels: ${{ ((github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')) && fromJSON('["self-hosted","Linux","X64","host","linux-build","linux-amd64"]') || fromJSON('["ubuntu-latest"]') }}
     timeout-minutes: 360
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
