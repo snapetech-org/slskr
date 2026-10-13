@@ -1,8 +1,9 @@
+import { interfaceText, interfaceTextProps, getInterfaceLanguageIndex, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import { isStateCancellable, isStateRetryable } from '../../lib/transfers';
 import { Div, Nbsp } from '../Shared';
 import ShrinkableDropdownButton from '../Shared/ShrinkableDropdownButton';
 import React, { useEffect, useMemo, useState } from 'react';
-import { getInterfaceLanguageIndex, useInterfaceLanguage } from '../../lib/interfaceLocale';
+
 import transferBulkActionLabelsUrl from '../../lib/transfer-bulk-action-labels.json?url';
 import { Checkbox, Icon, Popup, Segment } from 'semantic-ui-react';
 
@@ -217,7 +218,7 @@ const TransfersHeader = ({
         </ShrinkableDropdownButton>
         <Nbsp />
         <Popup
-          content="Allow slow or stalled downloads to use verified alternate sources. Soulseek peers use sequential failover; true multipart chunking is reserved for trusted slskr mesh peers."
+          content={interfaceText("Allow slow or stalled downloads to use verified alternate sources. Soulseek peers use sequential failover; true multipart chunking is reserved for trusted slskr mesh peers.")}
           position="bottom right"
           trigger={
             <Checkbox
@@ -234,10 +235,10 @@ const TransfersHeader = ({
               toggle
             />
           }
-        />
+         {...interfaceTextProps("Allow slow or stalled downloads to use verified alternate sources. Soulseek peers use sequential failover; true multipart chunking is reserved for trusted slskr mesh peers.")}/>
         <Nbsp />
         <Popup
-          content={`Automatically find and replace stuck downloads with alternative sources. Replacements must be within ${autoReplaceThreshold}% file size.`}
+          content={interfaceText("Automatically find and replace stuck downloads with alternative sources. Replacements must be within {autoReplaceThreshold}% file size.", { "autoReplaceThreshold": (autoReplaceThreshold) })}
           position="bottom right"
           trigger={
             <Checkbox
@@ -254,7 +255,7 @@ const TransfersHeader = ({
               toggle
             />
           }
-        />
+         {...interfaceTextProps("Automatically find and replace stuck downloads with alternative sources. Replacements must be within {autoReplaceThreshold}% file size.")}/>
       </Div>
     </Segment>
   );

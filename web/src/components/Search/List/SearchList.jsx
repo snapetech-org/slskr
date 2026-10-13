@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import ErrorSegment from '../../Shared/ErrorSegment';
 import Switch from '../../Shared/Switch';
 import { searchDateValue } from '../../../lib/searchState';
@@ -14,6 +16,7 @@ const SearchList = ({
   removingAll = false,
   searches = {},
 }) => {
+  useInterfaceLanguage();
   return (
     <Card
       className="search-list-card"
@@ -22,7 +25,7 @@ const SearchList = ({
       <Card.Content>
         <div className="search-list-header">
           <Popup
-            content="Clear all completed searches"
+            content={interfaceText("Clear all completed searches")}
             position="left center"
             trigger={
               <Button
@@ -36,10 +39,9 @@ const SearchList = ({
                 size="small"
               >
                 <Icon name="trash" />
-                Clear All
-              </Button>
+                <LocalizedText source={"Clear All"} /></Button>
             }
-          />
+           {...interfaceTextProps("Clear all completed searches")}/>
         </div>
         <div className="search-list-wrapper">
           <Switch
@@ -64,20 +66,15 @@ const SearchList = ({
                     <Icon name="info circle" />
                   </Table.HeaderCell>
                   <Table.HeaderCell className="search-list-phrase">
-                    Search
-                  </Table.HeaderCell>
+                    <LocalizedText source={"Search"} /></Table.HeaderCell>
                   <Table.HeaderCell className="search-list-files">
-                    Files
-                  </Table.HeaderCell>
+                    <LocalizedText source={"Files"} /></Table.HeaderCell>
                   <Table.HeaderCell className="search-list-locked">
-                    Locked
-                  </Table.HeaderCell>
+                    <LocalizedText source={"Locked"} /></Table.HeaderCell>
                   <Table.HeaderCell className="search-list-responses">
-                    Responses
-                  </Table.HeaderCell>
+                    <LocalizedText source={"Responses"} /></Table.HeaderCell>
                   <Table.HeaderCell className="search-list-started">
-                    Ended
-                  </Table.HeaderCell>
+                    <LocalizedText source={"Ended"} /></Table.HeaderCell>
                   <Table.HeaderCell className="search-list-action" />
                 </Table.Row>
               </Table.Header>

@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import { list } from '../../../lib/events';
 import { toDisplayError } from '../../../lib/errors';
 import { LoaderSegment } from '../../Shared';
@@ -39,6 +41,7 @@ const getErrorMessage = (error) =>
   toDisplayError(error, 'The event history could not be loaded.');
 
 const Events = () => {
+  useInterfaceLanguage();
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -127,39 +130,37 @@ const Events = () => {
   return (
     <>
       <form
-        aria-label="Event history filters"
+        aria-label={interfaceText("Event history filters")}
         onSubmit={applyFilters}
         style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75em', marginBottom: '1em' }}
-      >
+       {...interfaceTextProps("Event history filters")}>
         <Input
-          aria-label="Event text filter"
+          aria-label={interfaceText("Event text filter")}
           onChange={updateFilter('q')}
-          placeholder="Search event text"
+          placeholder={interfaceText("Search event text")}
           value={filters.q}
-        />
+         {...interfaceTextProps("Event text filter")}/>
         <Input
-          aria-label="Event kind filter"
+          aria-label={interfaceText("Event kind filter")}
           onChange={updateFilter('kind')}
-          placeholder="Filter by kind"
+          placeholder={interfaceText("Filter by kind")}
           value={filters.kind}
-        />
+         {...interfaceTextProps("Event kind filter")}/>
         <Input
-          aria-label="Event topic filter"
+          aria-label={interfaceText("Event topic filter")}
           onChange={updateFilter('topic')}
-          placeholder="Filter by topic"
+          placeholder={interfaceText("Filter by topic")}
           value={filters.topic}
-        />
+         {...interfaceTextProps("Event topic filter")}/>
         <Button primary disabled={loading} type="submit">
-          Filter events
-        </Button>
+          <LocalizedText source={"Filter events"} /></Button>
         <Button
           disabled={loading || (!filters.q && !filters.kind && !filters.topic
             && !activeFilters.q && !activeFilters.kind && !activeFilters.topic)}
           onClick={clearFilters}
           type="button"
         >
-          Clear Filter
-        </Button>
+          <LocalizedText source={"Clear Filter"} /></Button>
       </form>
       <div className="header-buttons">
         <Pagination
@@ -174,17 +175,16 @@ const Events = () => {
           data-testid="events-refreshing"
           info
         >
-          Refreshing event history…
-        </Message>
+          <LocalizedText source={"Refreshing event history…"} /></Message>
       )}
       {error ? (
         <Message
           data-testid="events-load-error"
           negative
         >
-          <Message.Header>Event history unavailable</Message.Header>
+          <Message.Header><LocalizedText source={"Event history unavailable"} /></Message.Header>
           <p>{error}</p>
-          {events.length > 0 && <p>Showing the last successfully loaded events.</p>}
+          {events.length > 0 && <p><LocalizedText source={"Showing the last successfully loaded events."} /></p>}
         </Message>
       ) : null}
       <Table
@@ -193,16 +193,13 @@ const Events = () => {
       >
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell className="events-list-id">Id</Table.HeaderCell>
+            <Table.HeaderCell className="events-list-id"><LocalizedText source={"Id"} /></Table.HeaderCell>
             <Table.HeaderCell className="events-list-timestamp">
-              Timestamp
-            </Table.HeaderCell>
+              <LocalizedText source={"Timestamp"} /></Table.HeaderCell>
             <Table.HeaderCell className="events-list-type">
-              Type
-            </Table.HeaderCell>
+              <LocalizedText source={"Type"} /></Table.HeaderCell>
             <Table.HeaderCell className="events-list-data">
-              Data
-            </Table.HeaderCell>
+              <LocalizedText source={"Data"} /></Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body className="events-table-body">
@@ -217,8 +214,7 @@ const Events = () => {
                   textAlign: 'center',
                 }}
               >
-                No events
-              </Table.Cell>
+                <LocalizedText source={"No events"} /></Table.Cell>
             </Table.Row>
             )
           ) : (

@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import { toDisplayError } from '../../lib/errors';
 import { useMountedRef } from '../../lib/useMountedRef';
 import React, { useEffect, useRef, useState } from 'react';
@@ -6,6 +8,7 @@ import { Form, Message, Segment } from 'semantic-ui-react';
 import api from '../../lib/api';
 
 export default function SolidSettings() {
+  useInterfaceLanguage();
   const [status, setStatus] = useState(null);
   const [webId, setWebId] = useState('');
   const [resolved, setResolved] = useState(null);
@@ -91,19 +94,18 @@ export default function SolidSettings() {
 
   return (
     <Segment data-testid="solid-root">
-      <h2>Solid</h2>
+      <h2><LocalizedText source={"Solid"} /></h2>
 
       {status && !status.enabled && (
         <Message warning>
-          Solid integration is disabled (Feature.Solid=false).
-        </Message>
+          <LocalizedText source={"Solid integration is disabled (Feature.Solid=false)."} /></Message>
       )}
 
       {status && status.enabled && (
         <Message info>
-          Client ID: <code>{status.clientId}</code>
+          <LocalizedText source={"Client ID:"} />{" "}<code>{status.clientId}</code>
           <br />
-          Redirect path: <code>{status.redirectPath}</code>
+          <LocalizedText source={"Redirect path:"} />{" "}<code>{status.redirectPath}</code>
         </Message>
       )}
 
@@ -111,12 +113,12 @@ export default function SolidSettings() {
 
       <Form>
         <Form.Input
-          label="WebID"
+          label={interfaceText("WebID")}
           placeholder="https://example.com/profile/card#me"
           value={webId}
           onChange={(e) => setWebId(e.target.value)}
           data-testid="solid-webid-input"
-        />
+         {...interfaceTextProps("WebID")}/>
         <TooltipButton
           primary
           type="button"
@@ -126,8 +128,7 @@ export default function SolidSettings() {
           data-testid="solid-resolve-webid"
           tooltip="Resolve this WebID and show the Solid identity document returned by the server."
         >
-          Resolve WebID
-        </TooltipButton>
+          <LocalizedText source={"Resolve WebID"} /></TooltipButton>
       </Form>
 
       {resolved && (

@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import { useMountedRef } from '../../../lib/useMountedRef';
@@ -33,6 +35,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const ResolveExternalIdPanel = forwardRef((_props, ref) => {
+  useInterfaceLanguage();
   const mountedRef = useMountedRef();
   const [resolveId, setResolveId] = useMountedState(mountedRef, '');
   const [resolvedContent, setResolvedContent] = useMountedState(
@@ -70,16 +73,14 @@ const ResolveExternalIdPanel = forwardRef((_props, ref) => {
         <Card.Content>
           <Card.Header>
             <Icon name="search" />
-            Resolve External ID
-          </Card.Header>
+            <LocalizedText source={"Resolve External ID"} /></Card.Header>
           <Card.Description>
-            Find the ContentID for an external identifier
-          </Card.Description>
+            <LocalizedText source={"Find the ContentID for an external identifier"} /></Card.Description>
         </Card.Content>
         <Card.Content>
           <Form>
             <Form.Field>
-              <label>External ID to Resolve</label>
+              <label><LocalizedText source={"External ID to Resolve"} /></label>
               <Input
                 action={
                   <Button
@@ -88,13 +89,12 @@ const ResolveExternalIdPanel = forwardRef((_props, ref) => {
                     onClick={handleResolve}
                     primary
                   >
-                    Resolve
-                  </Button>
+                    <LocalizedText source={"Resolve"} /></Button>
                 }
                 onChange={(e) => setResolveId(e.target.value)}
-                placeholder="Enter external ID to resolve..."
+                placeholder={interfaceText("Enter external ID to resolve...")}
                 value={resolveId}
-              />
+               {...interfaceTextProps("Enter external ID to resolve...")}/>
             </Form.Field>
           </Form>
 
@@ -106,11 +106,11 @@ const ResolveExternalIdPanel = forwardRef((_props, ref) => {
                 </Message>
               ) : (
                 <Message success>
-                  <Message.Header>Resolved Successfully</Message.Header>
+                  <Message.Header><LocalizedText source={"Resolved Successfully"} /></Message.Header>
                   <p>
-                    <strong>External ID:</strong> {resolvedContent.externalId}
+                    <strong><LocalizedText source={"External ID:"} /></strong> {resolvedContent.externalId}
                     <br />
-                    <strong>Content ID:</strong> {resolvedContent.contentId}
+                    <strong><LocalizedText source={"Content ID:"} /></strong> {resolvedContent.contentId}
                   </p>
                 </Message>
               )}

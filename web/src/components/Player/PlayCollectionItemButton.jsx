@@ -1,13 +1,15 @@
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import { usePlayer } from './PlayerContext';
 import React from 'react';
 import { Button, Icon, Popup } from 'semantic-ui-react';
 
 const PlayCollectionItemButton = ({ item, size = 'small' }) => {
+  useInterfaceLanguage();
   const { playItem } = usePlayer();
 
   return (
     <Popup
-      content="Play this item through the local stream endpoint and update your now-playing status."
+      content={interfaceText("Play this item through the local stream endpoint and update your now-playing status.")}
       trigger={
         <Button
           data-testid="player-play-item"
@@ -18,7 +20,7 @@ const PlayCollectionItemButton = ({ item, size = 'small' }) => {
           <Icon name="play" />
         </Button>
       }
-    />
+     {...interfaceTextProps("Play this item through the local stream endpoint and update your now-playing status.")}/>
   );
 };
 

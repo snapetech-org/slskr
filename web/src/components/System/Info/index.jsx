@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import { getVersion, restart, shutdown } from '../../../lib/application';
 import DiagnosticBundleModal from './DiagnosticBundleModal';
 import SetupHealthCheckModal from './SetupHealthCheckModal';
@@ -13,6 +15,7 @@ import { Divider, Header, Modal } from 'semantic-ui-react';
 import YAML from 'yaml';
 
 const Info = ({ runtimeProfile, options, state, theme }) => {
+  useInterfaceLanguage();
   const [contents, setContents] = useState();
 
   useEffect(() => {
@@ -38,8 +41,7 @@ const Info = ({ runtimeProfile, options, state, theme }) => {
             onClick={() => getVersion({ forceCheck: true })}
             primary
           >
-            Check for Updates
-          </ShrinkableButton>
+            <LocalizedText source={"Check for Updates"} /></ShrinkableButton>
           {/* Neutral, not amber — this is an optional external upsell from
               Soulseek itself, not an app action that needs to alarm anyone. */}
           <ShrinkableButton
@@ -54,8 +56,7 @@ const Info = ({ runtimeProfile, options, state, theme }) => {
               )
             }
           >
-            Get Privileges
-          </ShrinkableButton>
+            <LocalizedText source={"Get Privileges"} /></ShrinkableButton>
           {runtimeProfile !== 'legacy' && (
             <DiagnosticBundleModal
               options={options}
@@ -73,19 +74,19 @@ const Info = ({ runtimeProfile, options, state, theme }) => {
           actions={[
             'Cancel',
             {
-              content: 'Shut Down',
+              content: interfaceText("Shut Down"),
               key: 'done',
               negative: true,
               onClick: shutdown,
             },
           ]}
           centered
-          content="Are you sure you want to shut the application down?  You'll need to manually start it again."
+          content={interfaceText("Are you sure you want to shut the application down? You'll need to manually start it again.")}
           header={
             <Header
-              content="Confirm Shutdown"
+              content={interfaceText("Confirm Shutdown")}
               icon="redo"
-            />
+             {...interfaceTextProps("Confirm Shutdown")}/>
           }
           size="mini"
           trigger={
@@ -95,27 +96,26 @@ const Info = ({ runtimeProfile, options, state, theme }) => {
               mediaQuery="(max-width: 686px)"
               negative
             >
-              Shut Down
-            </ShrinkableButton>
+              <LocalizedText source={"Shut Down"} /></ShrinkableButton>
           }
-        />
+         {...interfaceTextProps("Are you sure you want to shut the application down? You'll need to manually start it again.")}/>
         <Modal
           actions={[
             'Cancel',
             {
-              content: 'Restart',
+              content: interfaceText("Restart"),
               key: 'done',
               negative: true,
               onClick: restart,
             },
           ]}
           centered
-          content="Are you sure you want restart the application?"
+          content={interfaceText("Are you sure you want restart the application?")}
           header={
             <Header
-              content="Confirm Restart"
+              content={interfaceText("Confirm Restart")}
               icon="redo"
-            />
+             {...interfaceTextProps("Confirm Restart")}/>
           }
           size="mini"
           trigger={
@@ -126,20 +126,19 @@ const Info = ({ runtimeProfile, options, state, theme }) => {
               mediaQuery="(max-width: 686px)"
               negative={!pendingRestart}
             >
-              Restart
-            </ShrinkableButton>
+              <LocalizedText source={"Restart"} /></ShrinkableButton>
           }
-        />
+         {...interfaceTextProps("Are you sure you want restart the application?")}/>
       </div>
       <Divider />
       <Switch loading={!contents && <LoaderSegment />}>
         <CodeEditor
-          ariaLabel="System information JSON"
+          ariaLabel={interfaceText("System information JSON")}
           basicSetup={false}
           editable={false}
           theme={theme}
           value={contents}
-        />
+         {...interfaceTextProps("System information JSON")}/>
       </Switch>
     </>
   );

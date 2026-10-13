@@ -1,3 +1,7 @@
+import LocalizedText from "./LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
+
+
 import './Footer.css';
 import * as application from '../../lib/application';
 import { toDisplayError } from '../../lib/errors';
@@ -222,8 +226,7 @@ class Footer extends Component {
               rel="noopener noreferrer"
               target="_blank"
             >
-              slskd 0.0.0 AGPLv3
-            </a>
+              <LocalizedText source={"slskd 0.0.0 AGPLv3"} /></a>
           </div>
         </footer>
       );
@@ -255,10 +258,9 @@ class Footer extends Component {
               href={GITHUB_BASE}
               rel="noopener noreferrer"
               target="_blank"
-              title="slskr project"
-            >
-              slskr
-            </a>
+              title={interfaceText("slskr project")}
+             {...interfaceTextProps("slskr project")}>
+              <LocalizedText source={"slskr"} /></a>
           </span>
         </footer>
       );
@@ -325,15 +327,15 @@ class Footer extends Component {
                 href={GITHUB_BASE}
                 rel="noopener noreferrer"
                 target="_blank"
-                title="Open slskr on GitHub"
-              >
+                title={interfaceText("Open slskr on GitHub")}
+               {...interfaceTextProps("Open slskr on GitHub")}>
                 <img
                   alt=""
                   aria-hidden="true"
                   src={`${urlBase}/slskr-mark.png`}
                 />
                 <Icon name="github" />
-                <span>GitHub</span>
+                <span><LocalizedText source={"GitHub"} /></span>
               </a>
 
 
@@ -344,10 +346,9 @@ class Footer extends Component {
                   href={GITHUB_BASE}
                   rel="noopener noreferrer"
                   target="_blank"
-                  title="slskr project"
-                >
-                  slskr
-                </a>
+                  title={interfaceText("slskr project")}
+                 {...interfaceTextProps("slskr project")}>
+                  <LocalizedText source={"slskr"} /></a>
               </span>
               <a
                 className={`slskr-footer-build ${isUpdateAvailable ? 'update-available' : ''}`}
@@ -361,11 +362,11 @@ class Footer extends Component {
                 }
               >
                 <Icon name={isUpdateAvailable ? 'bullhorn' : 'code branch'} />
-                <span className="slskr-footer-build-label">Build</span>
+                <span className="slskr-footer-build-label"><LocalizedText source={"Build"} /></span>
                 <code>{currentBuild}</code>
                 {isUpdateAvailable && (
                   <span className="slskr-footer-update-label">
-                    update {latestBuild}
+                    <LocalizedText source={"update"} />{" "}{latestBuild}
                   </span>
                 )}
               </a>
@@ -375,9 +376,9 @@ class Footer extends Component {
           <div className="slskr-footer-center">
             <div
               className={`slskr-footer-speeds ${isLoggedIn && speeds ? 'active' : ''}`}
-              aria-label="Transfer speeds"
-            >
-              <span className="slskr-footer-group-label">Speed</span>
+              aria-label={interfaceText("Transfer speeds")}
+             {...interfaceTextProps("Transfer speeds")}>
+              <span className="slskr-footer-group-label"><LocalizedText source={"Speed"} /></span>
               <span
                 className="slskr-footer-speed-item"
                 title={
@@ -431,28 +432,25 @@ class Footer extends Component {
               href={`${urlBase}/system/network`}
               title={networkTooltip}
             >
-              <span className="slskr-footer-group-label">Network</span>
+              <span className="slskr-footer-group-label"><LocalizedText source={"Network"} /></span>
               <span className="slskr-footer-network-item">
                 <Icon
                   color={displayedDhtPeers > 0 ? 'green' : 'grey'}
                   name="rss"
                 />
-                {formatCount(displayedDhtPeers)} dht
-              </span>
+                {formatCount(displayedDhtPeers)} <LocalizedText source={"dht"} /></span>
               <span className="slskr-footer-network-item">
                 <Icon
                   color={meshPeers > 0 ? 'green' : 'grey'}
                   name="sitemap"
                 />
-                {formatCount(meshPeers)} mesh
-              </span>
+                {formatCount(meshPeers)} <LocalizedText source={"mesh"} /></span>
               <span className="slskr-footer-network-item">
                 <Icon
                   color={hashCount > 0 ? 'blue' : 'grey'}
                   name="database"
                 />
-                {formatCount(hashCount)} hashes
-              </span>
+                {formatCount(hashCount)} <LocalizedText source={"hashes"} /></span>
               <span
                 className={`slskr-footer-network-item ${isSyncing ? 'syncing' : ''}`}
               >
@@ -461,12 +459,12 @@ class Footer extends Component {
                   loading={isSyncing}
                   name="sync"
                 />
-                seq:{seqId}
+                <LocalizedText source={"seq:"} />{seqId}
               </span>
               {activeSwarms > 0 && (
                 <span className="slskr-footer-network-item active">
                   <Icon name="bolt" />
-                  {activeSwarms} swarm{activeSwarms === 1 ? '' : 's'}
+                  {activeSwarms} <LocalizedText source={"swarm"} />{activeSwarms === 1 ? '' : <LocalizedText source={"s"} />}
                 </span>
               )}
               {backfillActive && (
@@ -475,8 +473,7 @@ class Footer extends Component {
                     loading
                     name="clock"
                   />
-                  backfill
-                </span>
+                  <LocalizedText source={"backfill"} /></span>
               )}
               <span className="slskr-footer-network-item">
                 <Icon name="trophy" />
@@ -487,9 +484,9 @@ class Footer extends Component {
 
             <div
               className="slskr-footer-stats"
-              aria-label="Transport health"
+              aria-label={interfaceText("Transport health")}
               role="group"
-            >
+             {...interfaceTextProps("Transport health")}>
               <Icon
                 className={
                   isDhtConnected

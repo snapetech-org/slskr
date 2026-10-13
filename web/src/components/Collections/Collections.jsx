@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import * as collectionsAPI from '../../lib/collections';
 import { toDisplayError } from '../../lib/errors';
 import { readOptionalApiResponse } from '../../lib/optionalApi';
@@ -616,8 +618,8 @@ export default class Collections extends Component {
     if (loading) return <LoaderSegment />;
 
     const typeOptions = [
-      { key: 'Playlist', text: 'Playlist', value: 'Playlist' },
-      { key: 'ShareList', text: 'Share List', value: 'ShareList' },
+      { key: 'Playlist', text: interfaceText("Playlist"), value: 'Playlist' },
+      { key: 'ShareList', text: interfaceText("Share List"), value: 'ShareList' },
     ];
 
     const collectionShares = shares;
@@ -628,10 +630,8 @@ export default class Collections extends Component {
           <Header as="h1">
             <Icon name="list" />
             <Header.Content>
-              Collections
-              <Header.Subheader>
-                Manage your playlists and share lists
-              </Header.Subheader>
+              <LocalizedText source={"Collections"} /><Header.Subheader>
+                <LocalizedText source={"Manage your playlists and share lists"} /></Header.Subheader>
             </Header.Content>
           </Header>
 
@@ -644,8 +644,7 @@ export default class Collections extends Component {
               primary
             >
               <Icon name="plus" />
-              Create Collection
-            </Button>
+              <LocalizedText source={"Create Collection"} /></Button>
           </div>
 
           {collectionsLoadError ? (
@@ -653,31 +652,29 @@ export default class Collections extends Component {
               data-testid="collections-load-error"
               error
             >
-              <Message.Header>Collections unavailable</Message.Header>
+              <Message.Header><LocalizedText source={"Collections unavailable"} /></Message.Header>
               <p>{collectionsLoadError}</p>
             </Message>
           ) : collections.length === 0 ? (
             <Segment placeholder>
               <Header icon>
                 <Icon name="list" />
-                No collections yet
-              </Header>
+                <LocalizedText source={"No collections yet"} /></Header>
               <Button
                 data-testid="collections-create-empty"
                 onClick={() => this.setState({ createModalOpen: true })}
                 primary
               >
-                Create Collection
-              </Button>
+                <LocalizedText source={"Create Collection"} /></Button>
             </Segment>
           ) : (
             <Table celled>
               <Table.Header>
                 <Table.Row>
-                  <Table.HeaderCell>Title</Table.HeaderCell>
-                  <Table.HeaderCell>Type</Table.HeaderCell>
-                  <Table.HeaderCell>Items</Table.HeaderCell>
-                  <Table.HeaderCell>Actions</Table.HeaderCell>
+                  <Table.HeaderCell><LocalizedText source={"Title"} /></Table.HeaderCell>
+                  <Table.HeaderCell><LocalizedText source={"Type"} /></Table.HeaderCell>
+                  <Table.HeaderCell><LocalizedText source={"Items"} /></Table.HeaderCell>
+                  <Table.HeaderCell><LocalizedText source={"Actions"} /></Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
@@ -702,8 +699,7 @@ export default class Collections extends Component {
                         disabled={deletingCollectionId !== null}
                         size="small"
                       >
-                        Delete
-                      </Button>
+                        <LocalizedText source={"Delete"} /></Button>
                     </Table.Cell>
                   </Table.Row>
                 ))}
@@ -727,16 +723,14 @@ export default class Collections extends Component {
                   primary
                 >
                   <Icon name="plus" />
-                  Add Item
-                </Button>
+                  <LocalizedText source={"Add Item"} /></Button>
                 <Button
                   data-testid="share-create"
                   onClick={this.handleOpenShareModal}
                   style={{ marginLeft: '0.5em' }}
                 >
                   <Icon name="share alternate" />
-                  Share Collection
-                </Button>
+                  <LocalizedText source={"Share Collection"} /></Button>
               </div>
 
               <div data-testid="collection-items-table">
@@ -745,24 +739,24 @@ export default class Collections extends Component {
                     data-testid="collection-items-load-error"
                     error
                   >
-                    <Message.Header>Collection items unavailable</Message.Header>
+                    <Message.Header><LocalizedText source={"Collection items unavailable"} /></Message.Header>
                     <p>{collectionItemsError}</p>
                     {selectedCollectionItems.length > 0 && (
-                      <p>Showing the last successfully loaded collection items.</p>
+                      <p><LocalizedText source={"Showing the last successfully loaded collection items."} /></p>
                     )}
                   </Message>
                 )}
                 {selectedCollectionItems.length === 0 ? (
                   collectionItemsError ? null : (
-                  <Message info>No items in this collection yet.</Message>
+                  <Message info><LocalizedText source={"No items in this collection yet."} /></Message>
                   )
                 ) : (
                   <Table>
                     <Table.Header>
                       <Table.Row>
-                        <Table.HeaderCell>File Name</Table.HeaderCell>
-                        <Table.HeaderCell>Media Kind</Table.HeaderCell>
-                        <Table.HeaderCell>Actions</Table.HeaderCell>
+                        <Table.HeaderCell><LocalizedText source={"File Name"} /></Table.HeaderCell>
+                        <Table.HeaderCell><LocalizedText source={"Media Kind"} /></Table.HeaderCell>
+                        <Table.HeaderCell><LocalizedText source={"Actions"} /></Table.HeaderCell>
                       </Table.Row>
                     </Table.Header>
                     <Table.Body>
@@ -772,13 +766,13 @@ export default class Collections extends Component {
                           key={item.id}
                         >
                           <Table.Cell>
-                            {item.fileName || item.contentId || 'N/A'}
+                            {item.fileName || item.contentId || interfaceText('N/A')}
                           </Table.Cell>
                           <Table.Cell>{item.mediaKind || 'Unknown'}</Table.Cell>
                           <Table.Cell>
                             <PlayCollectionItemButton item={item} />
                             <Popup
-                              content="Remove this item from the collection without deleting the shared file."
+                              content={interfaceText("Remove this item from the collection without deleting the shared file.")}
                               trigger={
                                 <Button
                                   data-testid={`collection-item-remove-${index}`}
@@ -788,10 +782,9 @@ export default class Collections extends Component {
                                   onClick={() => this.handleRemoveItem(item.id)}
                                   size="small"
                                 >
-                                  Remove
-                                </Button>
+                                  <LocalizedText source={"Remove"} /></Button>
                               }
-                            />
+                             {...interfaceTextProps("Remove this item from the collection without deleting the shared file.")}/>
                           </Table.Cell>
                         </Table.Row>
                       ))}
@@ -804,31 +797,31 @@ export default class Collections extends Component {
                 data-testid="shares-list"
                 style={{ marginTop: '1em' }}
               >
-                <Header as="h4">Shares</Header>
+                <Header as="h4"><LocalizedText source={"Shares"} /></Header>
                 {sharesError ? (
                   <Message
                     data-testid="collection-shares-load-error"
                     error
                   >
-                    <Message.Header>Collection shares unavailable</Message.Header>
+                    <Message.Header><LocalizedText source={"Collection shares unavailable"} /></Message.Header>
                     <p>{sharesError}</p>
                     {collectionShares.length > 0 && (
-                      <p>Showing the last successfully loaded collection shares.</p>
+                      <p><LocalizedText source={"Showing the last successfully loaded collection shares."} /></p>
                     )}
                   </Message>
                 ) : null}
                 {collectionShares.length === 0 ? (
                   sharesError ? null : (
-                  <Message info>No shares yet.</Message>
+                  <Message info><LocalizedText source={"No shares yet."} /></Message>
                   )
                 ) : (
                   <Table>
                     <Table.Header>
                       <Table.Row>
-                        <Table.HeaderCell>Collection</Table.HeaderCell>
-                        <Table.HeaderCell>Audience</Table.HeaderCell>
-                        <Table.HeaderCell>Stream</Table.HeaderCell>
-                        <Table.HeaderCell>Download</Table.HeaderCell>
+                        <Table.HeaderCell><LocalizedText source={"Collection"} /></Table.HeaderCell>
+                        <Table.HeaderCell><LocalizedText source={"Audience"} /></Table.HeaderCell>
+                        <Table.HeaderCell><LocalizedText source={"Stream"} /></Table.HeaderCell>
+                        <Table.HeaderCell><LocalizedText source={"Download"} /></Table.HeaderCell>
                       </Table.Row>
                     </Table.Header>
                     <Table.Body>
@@ -840,10 +833,10 @@ export default class Collections extends Component {
                           </Table.Cell>
                           <Table.Cell>{share.username}</Table.Cell>
                           <Table.Cell>
-                            {collectionsAPI.shareGrantAllows(share.permissions, 'stream') ? 'Yes' : 'No'}
+                            {collectionsAPI.shareGrantAllows(share.permissions, 'stream') ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
                           </Table.Cell>
                           <Table.Cell>
-                            {collectionsAPI.shareGrantAllows(share.permissions, 'download') ? 'Yes' : 'No'}
+                            {collectionsAPI.shareGrantAllows(share.permissions, 'download') ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
                           </Table.Cell>
                         </Table.Row>
                       ))}

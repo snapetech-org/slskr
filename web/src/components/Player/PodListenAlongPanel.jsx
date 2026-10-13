@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import { createListeningPartyHubConnection } from '../../lib/hubFactory';
 import { toDisplayError } from '../../lib/errors';
 import * as listeningParty from '../../lib/listeningParty';
@@ -36,6 +38,7 @@ const applyPartyState = (state, player) => {
 };
 
 const PodListenAlongPanel = ({ channelId, compact = false, podId, user }) => {
+  useInterfaceLanguage();
   const player = usePlayer();
   const [connected, setConnected] = useState(false);
   const [directory, setDirectory] = useState([]);
@@ -281,16 +284,16 @@ const PodListenAlongPanel = ({ channelId, compact = false, podId, user }) => {
             }
           />
           <span className="pod-listen-along-compact-copy">
-            {partyState ? partyState.title || partyState.contentId : 'Room broadcast'}
+            {partyState ? partyState.title || partyState.contentId : <LocalizedText source={"Room broadcast"} />}
           </span>
         </div>
         <div className="pod-listen-along-compact-actions">
           <Popup
-            content="Follow this room's broadcast using your own stream access."
+            content={interfaceText("Follow this room's broadcast using your own stream access.")}
             trigger={
               <Button
                 active={following}
-                aria-label="Follow room broadcast"
+                aria-label={interfaceText("Follow room broadcast")}
                 icon
                 onClick={() => {
                   const next = !following;
@@ -303,73 +306,73 @@ const PodListenAlongPanel = ({ channelId, compact = false, podId, user }) => {
                   }
                 }}
                 size="mini"
-                title="Follow room broadcast"
-              >
+                title={interfaceText("Follow room broadcast")}
+               {...interfaceTextProps("Follow room broadcast")}>
                 <Icon name={following ? 'volume up' : 'volume off'} />
               </Button>
             }
-          />
+           {...interfaceTextProps("Follow this room's broadcast using your own stream access.")}/>
           <Popup
-            content="Broadcast your current local player track to this room."
+            content={interfaceText("Broadcast your current local player track to this room.")}
             trigger={
               <Button
-                aria-label="Broadcast current track to room"
+                aria-label={interfaceText("Broadcast current track to room")}
                 disabled={publishing || !player.current}
                 icon
                 onClick={() => publish('play')}
                 size="mini"
-                title="Broadcast current track to room"
-              >
+                title={interfaceText("Broadcast current track to room")}
+               {...interfaceTextProps("Broadcast current track to room")}>
                 <Icon name="bullhorn" />
               </Button>
             }
-          />
+           {...interfaceTextProps("Broadcast your current local player track to this room.")}/>
           <Popup
-            content="List this room broadcast in the mesh radio directory."
+            content={interfaceText("List this room broadcast in the mesh radio directory.")}
             trigger={
               <Button
                 active={globalRadio}
-                aria-label="List room broadcast in mesh directory"
+                aria-label={interfaceText("List room broadcast in mesh directory")}
                 icon
                 onClick={() => setGlobalRadio((value) => !value)}
                 size="mini"
-                title="List room broadcast in mesh directory"
-              >
+                title={interfaceText("List room broadcast in mesh directory")}
+               {...interfaceTextProps("List room broadcast in mesh directory")}>
                 <Icon name="broadcast tower" />
               </Button>
             }
-          />
+           {...interfaceTextProps("List this room broadcast in the mesh radio directory.")}/>
           <Popup
-            content="Allow directory listeners to stream the current track from this node."
+            content={interfaceText("Allow directory listeners to stream the current track from this node.")}
             trigger={
               <Button
                 active={meshStreaming}
-                aria-label="Allow mesh streaming for broadcast"
+                aria-label={interfaceText("Allow mesh streaming for broadcast")}
                 disabled={!globalRadio}
                 icon
                 onClick={() => setMeshStreaming((value) => !value)}
                 size="mini"
-                title="Allow mesh streaming for broadcast"
-              >
+                title={interfaceText("Allow mesh streaming for broadcast")}
+               {...interfaceTextProps("Allow mesh streaming for broadcast")}>
                 <Icon name="wifi" />
               </Button>
             }
-          />
+           {...interfaceTextProps("Allow directory listeners to stream the current track from this node.")}/>
           <Popup
-            content="Stop broadcasting listen-along metadata for this room."
+            content={interfaceText("Stop broadcasting listen-along metadata for this room.")}
             trigger={
               <Button
-                aria-label="Stop room broadcast"
+                aria-label={interfaceText("Stop room broadcast")}
                 disabled={publishing}
                 icon
                 onClick={() => publish('stop')}
                 size="mini"
-                title="Stop room broadcast"
-              >
+                title={interfaceText("Stop room broadcast")}
+               {...interfaceTextProps("Stop room broadcast")}>
                 <Icon name="stop" />
               </Button>
             }
-          />
+           {...interfaceTextProps("Stop broadcasting listen-along metadata for this room.")}/>
         </div>
       </Segment>
     );
@@ -387,45 +390,45 @@ const PodListenAlongPanel = ({ channelId, compact = false, podId, user }) => {
       )}
       <div className="pod-listen-along-main">
         <div>
-          <strong>Listen Along</strong>
+          <strong><LocalizedText source={"Listen Along"} /></strong>
           <div className="pod-listen-along-state">
             {partyState
               ? `${partyState.hostPeerId} ${partyState.action}: ${partyState.title || partyState.contentId}`
-              : 'No active party'}
+              : <LocalizedText source={"No active party"} />}
           </div>
         </div>
         <Label color={connected ? 'green' : 'grey'}>
-          {connected ? 'Live' : 'Offline'}
+          {connected ? <LocalizedText source={"Live"} /> : <LocalizedText source={"Offline"} />}
         </Label>
       </div>
       <div className="pod-listen-along-toggles">
         <Popup
-          content="List this party in the slskr mesh radio directory so nearby mesh members can discover it."
+          content={interfaceText("List this party in the slskr mesh radio directory so nearby mesh members can discover it.")}
           trigger={
             <Checkbox
               checked={globalRadio}
-              label="List globally"
+              label={interfaceText("List globally")}
               onChange={(event, data) => setGlobalRadio(data.checked)}
               toggle
-            />
+             {...interfaceTextProps("List globally")}/>
           }
-        />
+         {...interfaceTextProps("List this party in the slskr mesh radio directory so nearby mesh members can discover it.")}/>
         <Popup
-          content="Allow listeners who join from the directory to stream this party's current track from this slskr node."
+          content={interfaceText("Allow listeners who join from the directory to stream this party's current track from this slskr node.")}
           trigger={
             <Checkbox
               checked={meshStreaming}
               disabled={!globalRadio}
-              label="Mesh streaming"
+              label={interfaceText("Mesh streaming")}
               onChange={(event, data) => setMeshStreaming(data.checked)}
               toggle
-            />
+             {...interfaceTextProps("Mesh streaming")}/>
           }
-        />
+         {...interfaceTextProps("Allow listeners who join from the directory to stream this party's current track from this slskr node.")}/>
       </div>
       <Button.Group size="small">
         <Popup
-          content="Follow this pod's host playback using your own stream access."
+          content={interfaceText("Follow this pod's host playback using your own stream access.")}
           trigger={
             <Button
               active={following}
@@ -444,9 +447,9 @@ const PodListenAlongPanel = ({ channelId, compact = false, podId, user }) => {
               <Icon name={following ? 'volume up' : 'volume off'} />
             </Button>
           }
-        />
+         {...interfaceTextProps("Follow this pod's host playback using your own stream access.")}/>
         <Popup
-          content="Publish your current local player track as the pod listen-along host."
+          content={interfaceText("Publish your current local player track as the pod listen-along host.")}
           trigger={
             <Button
               disabled={publishing || !player.current}
@@ -456,9 +459,9 @@ const PodListenAlongPanel = ({ channelId, compact = false, podId, user }) => {
               <Icon name="bullhorn" />
             </Button>
           }
-        />
+         {...interfaceTextProps("Publish your current local player track as the pod listen-along host.")}/>
         <Popup
-          content="Stop hosting listen-along metadata for this pod."
+          content={interfaceText("Stop hosting listen-along metadata for this pod.")}
           trigger={
             <Button
               disabled={publishing}
@@ -468,17 +471,17 @@ const PodListenAlongPanel = ({ channelId, compact = false, podId, user }) => {
               <Icon name="stop" />
             </Button>
           }
-        />
+         {...interfaceTextProps("Stop hosting listen-along metadata for this pod.")}/>
       </Button.Group>
       {directory.length > 0 && (
         <div className="pod-listen-along-directory">
-          <strong>Listed radio</strong>
+          <strong><LocalizedText source={"Listed radio"} /></strong>
           <List divided relaxed>
             {directory.slice(0, 6).map((party) => (
               <List.Item key={party.partyId}>
                 <List.Content floated="right">
                   <Popup
-                    content="Join this listed radio party and stream from the host's integrated slskr endpoint when available."
+                    content={interfaceText("Join this listed radio party and stream from the host's integrated slskr endpoint when available.")}
                     trigger={
                       <Button
                         disabled={!party.allowMeshStreaming}
@@ -489,13 +492,13 @@ const PodListenAlongPanel = ({ channelId, compact = false, podId, user }) => {
                         <Icon name="play" />
                       </Button>
                     }
-                  />
+                   {...interfaceTextProps("Join this listed radio party and stream from the host's integrated slskr endpoint when available.")}/>
                 </List.Content>
                 <List.Content>
                   <List.Header>{party.title || party.contentId}</List.Header>
                   <List.Description>
                     {party.hostPeerId}
-                    {party.allowMeshStreaming ? ' | streamable' : ' | metadata only'}
+                    {party.allowMeshStreaming ? <LocalizedText source={"| streamable"} /> : <LocalizedText source={"| metadata only"} />}
                   </List.Description>
                 </List.Content>
               </List.Item>

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { interfaceText } from '../../lib/interfaceLocale';
 import * as externalVisualizer from '../../lib/externalVisualizer';
 import { toDisplayError } from '../../lib/errors';
 
@@ -38,7 +39,7 @@ const useExternalVisualizerControl = ({ integrationsOpen, mountedRef }) => {
           mountedRef.current &&
           externalStatusRequestIdRef.current === requestId
         ) {
-          setExternalVisualizerMessage('External visualizer status is unavailable.');
+          setExternalVisualizerMessage(interfaceText('External visualizer status is unavailable.'));
         }
       })
       .finally(() => {
@@ -74,8 +75,8 @@ const useExternalVisualizerControl = ({ integrationsOpen, mountedRef }) => {
               : 'External visualizer';
         setExternalVisualizerMessage(
           result?.started
-            ? name + ' launched.'
-            : toDisplayError(result, 'External visualizer did not launch.'),
+            ? interfaceText('{name} launched.', { name })
+            : toDisplayError(result, interfaceText('External visualizer did not launch.')),
         );
       })
       .catch((error) => {

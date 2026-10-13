@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../../lib/interfaceLocale";
 import './Security.css';
 import * as securityApi from '../../../lib/security';
 import { toDisplayError } from '../../../lib/errors';
@@ -53,7 +55,7 @@ const AdversarialSettings = () => {
         setError(null);
         return data;
       } else {
-        setError('Adversarial features are not configured on this server');
+        setError(interfaceText("Adversarial features are not configured on this server"));
       }
     } catch (fetchError) {
       if (
@@ -93,14 +95,14 @@ const AdversarialSettings = () => {
           setStatusError(null);
         } else {
           setStatus(null);
-          setStatusError('Anonymity status is unavailable');
+          setStatusError(interfaceText('Anonymity status is unavailable'));
         }
       }
     } catch (statusError) {
       if (mountedRef.current && requestIdsRef.current.status === requestId) {
         setStatus(null);
         setStatusError(
-          toDisplayError(statusError, 'Failed to load adversarial status'),
+          toDisplayError(statusError, interfaceText('Failed to load adversarial status')),
         );
       }
     } finally {
@@ -125,7 +127,7 @@ const AdversarialSettings = () => {
           setTransportError(null);
         } else {
           setTransportStatus(null);
-          setTransportError('Transport status is unavailable');
+          setTransportError(interfaceText('Transport status is unavailable'));
         }
       }
     } catch (transportError) {
@@ -135,7 +137,7 @@ const AdversarialSettings = () => {
       ) {
         setTransportStatus(null);
         setTransportError(
-          toDisplayError(transportError, 'Failed to load transport status'),
+          toDisplayError(transportError, interfaceText('Failed to load transport status')),
         );
       }
     } finally {
@@ -163,13 +165,13 @@ const AdversarialSettings = () => {
           setTorError(null);
         } else {
           setTorStatus(null);
-          setTorError('Tor status is unavailable');
+          setTorError(interfaceText('Tor status is unavailable'));
         }
       }
     } catch (torError) {
       if (mountedRef.current && requestIdsRef.current.tor === requestId) {
         setTorStatus(null);
-        setTorError(toDisplayError(torError, 'Failed to load Tor status'));
+        setTorError(toDisplayError(torError, interfaceText('Failed to load Tor status')));
       }
     } finally {
       if (mountedRef.current && requestIdsRef.current.tor === requestId) {
@@ -212,7 +214,7 @@ const AdversarialSettings = () => {
 
       await securityApi.updateAdversarialSettings(settings);
       if (isCurrentRequest()) {
-        setSuccess('Adversarial settings updated successfully');
+        setSuccess(interfaceText("Adversarial settings updated successfully"));
         setHasChanges(false);
       }
     } catch (saveError) {
@@ -249,7 +251,7 @@ const AdversarialSettings = () => {
         mountedRef.current &&
         requestIdsRef.current.testTransport === requestId
       ) {
-        setSuccess('Transport connectivity test completed');
+        setSuccess(interfaceText("Transport connectivity test completed"));
         void fetchTransportStatus();
       }
     } catch (error) {
@@ -270,7 +272,7 @@ const AdversarialSettings = () => {
         mountedRef.current &&
         requestIdsRef.current.testTor === requestId
       ) {
-        setSuccess('Tor connectivity test completed');
+        setSuccess(interfaceText("Tor connectivity test completed"));
         void fetchTorStatus();
       }
     } catch (error) {
@@ -532,7 +534,7 @@ const AdversarialSettings = () => {
           active
           inverted
         >
-          <Loader>Loading Adversarial Settings...</Loader>
+          <Loader><LocalizedText source={"Loading Adversarial Settings..."} /></Loader>
         </Dimmer>
       </Segment>
     );
@@ -541,19 +543,15 @@ const AdversarialSettings = () => {
   if (error && !settings) {
     return (
       <Message negative>
-        <Message.Header>Adversarial Features Unavailable</Message.Header>
+        <Message.Header><LocalizedText source={"Adversarial Features Unavailable"} /></Message.Header>
         <p>{error}</p>
         <p>
-          Adversarial features are advanced security options designed for users
-          in adversarial environments. They are disabled by default and require
-          explicit configuration.
-        </p>
+          <LocalizedText source={"Adversarial features are advanced security options designed for users in adversarial environments. They are disabled by default and require explicit configuration."} /></p>
         <Button
           onClick={fetchSettings}
           size="small"
         >
-          Retry
-        </Button>
+          <LocalizedText source={"Retry"} /></Button>
       </Message>
     );
   }
@@ -561,8 +559,8 @@ const AdversarialSettings = () => {
   if (!settings) {
     return (
       <Message info>
-        <Message.Header>Adversarial Settings Not Configured</Message.Header>
-        <p>No adversarial configuration found.</p>
+        <Message.Header><LocalizedText source={"Adversarial Settings Not Configured"} /></Message.Header>
+        <p><LocalizedText source={"No adversarial configuration found."} /></p>
       </Message>
     );
   }

@@ -10,6 +10,8 @@ import {
   getRunnableWishlistRequests,
 } from '../../lib/acquisitionRequests';
 import { toDisplayError } from '../../lib/errors';
+import { formatRegionalNumber, useRegionalFormat } from '../../lib/util';
+import { interfaceText, useInterfaceLanguage } from '../../lib/interfaceLocale';
 import * as wishlistAPI from '../../lib/wishlist';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
@@ -27,13 +29,22 @@ import {
 } from 'semantic-ui-react';
 
 const Wishlist = () => {
+  const { t, languageFor, directionFor } = useInterfaceLanguage();
+  useRegionalFormat();
+  const translateRef = useRef(t);
+  translateRef.current = t;
+  const localized = (source, parameters) => (
+    <span lang={languageFor(source)} dir={directionFor(source)}>
+      {t(source, parameters)}
+    </span>
+  );
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(null);
   const [modalItem, setModalItem] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
-  const [requestCopyStatus, setRequestCopyStatus] = useState('');
+  const [requestCopyStatus, setRequestCopyStatus] = useState(null);
   const [bulkRunning, setBulkRunning] = useState(false);
   const [bulkFilter, setBulkFilter] = useState('');
   const [selectedIds, setSelectedIds] = useState(() => new Set());
@@ -70,18 +81,18 @@ const Wishlist = () => {
     const report = formatWishlistRequestReviewPacket(packet);
 
     if (!navigator.clipboard?.writeText) {
-      setRequestCopyStatus('Clipboard unavailable; copy the request summary manually.');
+      setRequestCopyStatus({ source: 'Clipboard unavailable; copy the request summary manually.' });
       return;
     }
 
     try {
       await navigator.clipboard.writeText(report);
       if (mountedRef.current) {
-        setRequestCopyStatus('Wishlist request review copied.');
+        setRequestCopyStatus({ source: 'Wishlist request review copied.' });
       }
     } catch {
       if (mountedRef.current) {
-        setRequestCopyStatus('Unable to copy Wishlist request review.');
+        setRequestCopyStatus({ source: 'Unable to copy Wishlist request review.' });
       }
     }
   };
@@ -136,11 +147,13 @@ const Wishlist = () => {
       ) {
         return;
       }
-      setRequestCopyStatus(
-        `Ran ${ran} enabled Wishlist search${ran === 1 ? '' : 'es'}${
-          failed ? `; ${failed} failed` : ''
-        }. Downloads still require normal result selection and policy.`,
-      );
+      setRequestCopyStatus({
+        source: 'Ran {completed} enabled Wishlist searches; {failed} failed.',
+        parameters: {
+          completed: formatRegionalNumber(ran),
+          failed: formatRegionalNumber(failed),
+        },
+      });
       await loadItems();
     } finally {
       if (
@@ -178,9 +191,9 @@ const Wishlist = () => {
         mountedRef.current &&
         requestId === loadRequestIdRef.current
       ) {
-        const message = toDisplayError(error, 'Failed to load wishlist');
-        setLoadError(message);
-        toast.error(message);
+        console.error(error);
+        setLoadError(interfaceText('Could not load wishlist.'));
+        toast.error(interfaceText('Could not load wishlist.'));
       }
     } finally {
       if (
@@ -223,7 +236,7 @@ const Wishlist = () => {
         return;
       }
       const updatedCount = result?.updatedCount ?? result?.UpdatedCount ?? ids.length;
-      toast.success(`Updated filters for ${updatedCount} item(s)`);
+      toast.success(translateRef.current('Updated filters for {count} item(s)', { count: formatRegionalNumber(updatedCount) }));
       setSelectedIds(new Set());
       setBulkFilter('');
       await loadItems();
@@ -232,7 +245,8 @@ const Wishlist = () => {
         mountedRef.current &&
         requestId === operationRequestIdRef.current
       ) {
-        toast.error(`Failed to update filters: ${toDisplayError(error)}`);
+        console.error(error);
+        toast.error(translateRef.current('Could not update Wishlist filters.'));
       }
     } finally {
       if (
@@ -269,11 +283,11 @@ const Wishlist = () => {
       if (item.id) {
         await wishlistAPI.update(item.id, item);
         if (!mountedRef.current) return;
-        toast.success('Wishlist item updated');
+        toast.success(translateRef.current('Wishlist item updated'));
       } else {
         await wishlistAPI.create(item);
         if (!mountedRef.current) return;
-        toast.success('Added to wishlist');
+        toast.success(translateRef.current('Added to wishlist'));
       }
 
       await loadItems();
@@ -293,14 +307,15 @@ const Wishlist = () => {
       ) {
         return;
       }
-      toast.success('Wishlist item deleted');
+      toast.success(translateRef.current('Wishlist item deleted'));
       await loadItems();
     } catch (error) {
       if (
         mountedRef.current &&
         requestId === operationRequestIdRef.current
       ) {
-        toast.error(`Failed to delete: ${toDisplayError(error)}`);
+        console.error(error);
+        toast.error(translateRef.current('Could not delete this Wishlist item.'));
       }
     } finally {
       finishOperation();
@@ -324,7 +339,11 @@ const Wishlist = () => {
       const result = await wishlistAPI.importCsv(request);
       if (!mountedRef.current) return;
       toast.success(
-        `Imported ${result?.createdCount ?? 0} searches (${result?.duplicateCount ?? 0} duplicates, ${result?.skippedCount ?? 0} skipped)`,
+          translateRef.current('Imported {created} searches; {duplicates} duplicates and {skipped} skipped.', {
+            created: formatRegionalNumber(result?.createdCount ?? 0),
+            duplicates: formatRegionalNumber(result?.duplicateCount ?? 0),
+            skipped: formatRegionalNumber(result?.skippedCount ?? 0),
+          }),
       );
       await loadItems();
     } finally {
@@ -344,14 +363,14 @@ const Wishlist = () => {
         >
           <Icon name="star" />
           <Header.Content>
-            Wishlist
+            {localized('Wishlist')}
             <Header.Subheader>
-              Saved searches that run automatically
+              {localized('Saved searches that run automatically')}
             </Header.Subheader>
           </Header.Content>
         </Header>
         <Popup
-          content="Add one saved search to the wishlist. Enabled wishlist entries run later using the normal conservative scheduler."
+          content={localized('Add one saved search to the Wishlist. Enabled entries run later using the normal scheduler.')}
           trigger={
             <Button
               floated="right"
@@ -361,12 +380,12 @@ const Wishlist = () => {
               primary
             >
               <Icon name="plus" />
-              Add Search
+              {localized('Add Search')}
             </Button>
           }
         />
         <Popup
-          content="Import a playlist CSV, such as a TuneMyMusic export, into wishlist searches without starting a large search burst immediately."
+          content={localized('Import a playlist CSV into Wishlist searches without starting a large search burst immediately.')}
           trigger={
             <Button
               floated="right"
@@ -375,7 +394,7 @@ const Wishlist = () => {
               onClick={handleImportClick}
             >
               <Icon name="file alternate outline" />
-              Import CSV
+              {localized('Import CSV')}
             </Button>
           }
         />
@@ -386,31 +405,35 @@ const Wishlist = () => {
           <div className="wishlist-request-summary-header">
             <Header as="h3">
               <Icon name="clipboard check" />
-              Request Portal Summary
+              {localized('Request Portal Summary')}
               <Header.Subheader>
-                Operator view of wanted music before acquisition jobs are wired.
+                {localized('Operator view of wanted music before acquisition jobs are wired.')}
               </Header.Subheader>
             </Header>
             <Popup
-              content="Copy the current Wishlist request review packet. This does not start searches, peer browsing, downloads, or automation."
+              content={localized('Copy the current Wishlist request review packet. This does not start searches, peer browsing, downloads, or automation.')}
               position="top center"
               trigger={
                 <Button
-                  aria-label="Copy Wishlist request review"
+                  aria-label={t('Copy Wishlist request review')}
+                  lang={languageFor('Copy Wishlist request review')}
+                  dir={directionFor('Copy Wishlist request review')}
                   onClick={copyRequestReviewPacket}
                   size="small"
                 >
                   <Icon name="copy" />
-                  Copy Review
+                  {localized('Copy Review')}
                 </Button>
               }
             />
             <Popup
-              content="Run up to three enabled Wishlist searches now through the backend. This starts search jobs only; downloads still require the normal result selection and policy."
+              content={localized('Run up to three enabled Wishlist searches now through the backend. This starts search jobs only; downloads still require the normal result selection and policy.')}
               position="top center"
               trigger={
                 <Button
-                  aria-label="Run enabled Wishlist searches"
+                  aria-label={t('Run enabled Wishlist searches')}
+                  lang={languageFor('Run enabled Wishlist searches')}
+                  dir={directionFor('Run enabled Wishlist searches')}
                   disabled={runnableRequests.length === 0}
                   loading={bulkRunning}
                   onClick={runEnabledSearches}
@@ -418,7 +441,7 @@ const Wishlist = () => {
                   size="small"
                 >
                   <Icon name="play" />
-                  Run Enabled
+                  {localized('Run Enabled')}
                 </Button>
               }
             />
@@ -427,29 +450,29 @@ const Wishlist = () => {
             {/* Plain counts get a neutral pill; color is reserved for the two
                 pills below that actually report a state worth noticing. */}
             <Label basic>
-              Requests
-              <Label.Detail>{requestSummary.total}</Label.Detail>
+              {localized('Requests')}
+              <Label.Detail>{formatRegionalNumber(requestSummary.total)}</Label.Detail>
             </Label>
             <Label basic>
-              Enabled
-              <Label.Detail>{requestSummary.enabled}</Label.Detail>
+              {localized('Enabled')}
+              <Label.Detail>{formatRegionalNumber(requestSummary.enabled)}</Label.Detail>
             </Label>
             <Label basic>
-              Automatic
-              <Label.Detail>{requestSummary.automatic}</Label.Detail>
+              {localized('Automatic')}
+              <Label.Detail>{formatRegionalNumber(requestSummary.automatic)}</Label.Detail>
             </Label>
             <Label color={requestSummary.reviewCount > 0 ? 'yellow' : 'grey'}>
-              Needs Review
-              <Label.Detail>{requestSummary.reviewCount}</Label.Detail>
+              {localized('Needs Review')}
+              <Label.Detail>{formatRegionalNumber(requestSummary.reviewCount)}</Label.Detail>
             </Label>
             <Label color={requestSummary.quotaStatus === 'Within quota' ? 'green' : 'orange'}>
-              {requestSummary.quotaStatus}
-              <Label.Detail>{requestSummary.quotaRemaining} left</Label.Detail>
+              {localized(requestSummary.quotaStatus)}
+              <Label.Detail>{localized('{count} left', { count: formatRegionalNumber(requestSummary.quotaRemaining) })}</Label.Detail>
             </Label>
           </div>
           {requestCopyStatus && (
-            <Label basic>
-              {requestCopyStatus}
+          <Label basic lang={requestCopyStatus && languageFor(requestCopyStatus.source)} dir={requestCopyStatus && directionFor(requestCopyStatus.source)}>
+              {requestCopyStatus && t(requestCopyStatus.source, requestCopyStatus.parameters)}
             </Label>
           )}
         </Segment>
@@ -459,25 +482,31 @@ const Wishlist = () => {
         <Segment className="wishlist-bulk-actions">
           <Header as="h4">
             <Icon name="tasks" />
-            Bulk actions ({selectedIds.size})
+            {localized('Bulk actions ({count})', { count: formatRegionalNumber(selectedIds.size) })}
           </Header>
           <Form>
             <Form.Input
-              aria-label="Bulk wishlist filter"
-              label="Apply filter to selected items"
+              aria-label={t('Bulk wishlist filter')}
+              lang={languageFor('Bulk wishlist filter')}
+              dir={directionFor('Bulk wishlist filter')}
+              label={localized('Apply filter to selected items')}
+              lang={languageFor('e.g., flac OR mp3')}
+              dir={directionFor('e.g., flac OR mp3')}
               onChange={(event) => setBulkFilter(event.target.value)}
-              placeholder="e.g., flac OR mp3"
+              placeholder={t('e.g., flac OR mp3')}
               value={bulkFilter}
             />
             <Button
-              aria-label="Apply filter to selected wishlist items"
+              aria-label={t('Apply filter to selected wishlist items')}
+              lang={languageFor('Apply filter to selected wishlist items')}
+              dir={directionFor('Apply filter to selected wishlist items')}
               disabled={bulkRunning}
               loading={bulkRunning}
               onClick={handleBulkFilter}
               primary
             >
               <Icon name="filter" />
-              Apply Filter
+              {localized('Apply Filter')}
             </Button>
           </Form>
         </Segment>
@@ -488,9 +517,9 @@ const Wishlist = () => {
           data-testid="wishlist-load-error"
           error
         >
-          <Message.Header>Wishlist unavailable</Message.Header>
-          <p>{loadError}</p>
-          <p>Previously loaded wishlist items remain visible until the next successful refresh.</p>
+          <Message.Header>{localized('Wishlist unavailable')}</Message.Header>
+          <p>{localized(loadError)}</p>
+          <p>{localized('Previously loaded Wishlist items remain visible until the next successful refresh.')}</p>
         </Message>
       )}
 
@@ -510,16 +539,16 @@ const Wishlist = () => {
               inverted
             >
               <Icon name="star outline" />
-              No wishlist items yet
+              {localized('No wishlist items yet')}
             </Header>
             <p>
-              Add searches to your wishlist and they&apos;ll run automatically.
+              {localized("Add searches to your wishlist and they'll run automatically.")}
             </p>
             <Button
               onClick={handleAdd}
               primary
             >
-              Add Your First Search
+              {localized('Add Your First Search')}
             </Button>
           </Segment>
         )
@@ -532,34 +561,36 @@ const Wishlist = () => {
             <Table.Row>
               <Table.HeaderCell width={1}>
                 <Checkbox
-                  aria-label="Select all wishlist items for bulk actions"
+                  aria-label={t('Select all wishlist items for bulk actions')}
+                  lang={languageFor('Select all wishlist items for bulk actions')}
+                  dir={directionFor('Select all wishlist items for bulk actions')}
                   checked={items.length > 0 && selectedIds.size === items.length}
                   onChange={(_, { checked }) => toggleAllSelections(checked)}
                 />
               </Table.HeaderCell>
-              <Table.HeaderCell width={1}>Active</Table.HeaderCell>
-              <Table.HeaderCell>Search</Table.HeaderCell>
+              <Table.HeaderCell width={1}>{localized('Active')}</Table.HeaderCell>
+              <Table.HeaderCell>{localized('Search')}</Table.HeaderCell>
               <Table.HeaderCell
                 textAlign="center"
                 width={1}
               >
-                Auto
+                {localized('Auto')}
               </Table.HeaderCell>
-              <Table.HeaderCell width={3}>Last Run</Table.HeaderCell>
+              <Table.HeaderCell width={3}>{localized('Last Run')}</Table.HeaderCell>
               <Table.HeaderCell
                 textAlign="center"
                 width={1}
               >
-                Matches
+                {localized('Matches')}
               </Table.HeaderCell>
               <Table.HeaderCell
                 textAlign="center"
                 width={1}
               >
-                Runs
+                {localized('Runs')}
               </Table.HeaderCell>
-              <Table.HeaderCell width={2}>Request State</Table.HeaderCell>
-              <Table.HeaderCell width={3}>Actions</Table.HeaderCell>
+              <Table.HeaderCell width={2}>{localized('Request State')}</Table.HeaderCell>
+              <Table.HeaderCell width={3}>{localized('Actions')}</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>

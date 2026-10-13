@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import LoaderSegment from '../Shared/LoaderSegment';
 import React from 'react';
 import { Button, Dropdown, Form, Message, Modal } from 'semantic-ui-react';
@@ -11,16 +13,16 @@ const CollectionShareModal = ({ actions, state }) => {
             onClose={onClose}
             open={shareModalOpen}
           >
-            <Modal.Header>Share Collection</Modal.Header>
+            <Modal.Header><LocalizedText source={"Share Collection"} /></Modal.Header>
             <Modal.Content>
               {shareGroupsLoading ? (
                 <LoaderSegment />
               ) : shareGroups.length === 0 ? (
-                <Message warning>No share groups available.</Message>
+                <Message warning><LocalizedText source={"No share groups available."} /></Message>
               ) : (
                 <Form>
                   <Form.Field>
-                    <label htmlFor="share-group">Share Group</label>
+                    <label htmlFor="share-group"><LocalizedText source={"Share Group"} /></label>
                     <Dropdown
                       data-testid="share-audience-picker"
                       id="share-group"
@@ -35,7 +37,7 @@ const CollectionShareModal = ({ actions, state }) => {
                     />
                   </Form.Field>
                   <Form.Field>
-                    <label htmlFor="share-allow-stream">Allow streaming</label>
+                    <label htmlFor="share-allow-stream"><LocalizedText source={"Allow streaming"} /></label>
                     <input
                       checked={shareAllowStream}
                       data-testid="share-policy-stream"
@@ -45,7 +47,7 @@ const CollectionShareModal = ({ actions, state }) => {
                     />
                   </Form.Field>
                   <Form.Field>
-                    <label htmlFor="share-allow-download">Allow download</label>
+                    <label htmlFor="share-allow-download"><LocalizedText source={"Allow download"} /></label>
                     <input
                       checked={shareAllowDownload}
                       data-testid="share-policy-download"
@@ -62,8 +64,7 @@ const CollectionShareModal = ({ actions, state }) => {
                 disabled={creatingShare}
                 onClick={onClose}
               >
-                Cancel
-              </Button>
+                <LocalizedText source={"Cancel"} /></Button>
               <Button
                 data-testid="share-create-submit"
                 disabled={!shareAudienceId || creatingShare}
@@ -71,8 +72,7 @@ const CollectionShareModal = ({ actions, state }) => {
                 onClick={onCreateShare}
                 primary
               >
-                Share
-              </Button>
+                <LocalizedText source={"Share"} /></Button>
             </Modal.Actions>
           </Modal>
   );

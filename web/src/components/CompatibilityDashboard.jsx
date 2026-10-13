@@ -1,3 +1,5 @@
+import LocalizedText from "./Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../lib/interfaceLocale";
 import { formatRegionalFixedNumber, formatRegionalNumber, formatBytes, formatDate, formatSpeed, formatWait, getFileName, truncate } from '../lib/util';
 import './CompatibilityDashboard.css';
 import { toDisplayError } from '../lib/errors';
@@ -28,13 +30,13 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 
 const HISTORY_RANGES = [
-  { buckets: 24, days: 1, label: '24h' },
-  { buckets: 84, days: 7, label: '7d' },
-  { buckets: 60, days: 30, label: '30d' },
-  { buckets: 90, days: 90, label: '90d' },
-  { buckets: 90, days: 180, label: '180d' },
-  { buckets: 100, days: 365, label: '1y' },
-  { buckets: 100, days: null, label: 'All' },
+  { buckets: 24, days: 1, get label() { return interfaceText("24h"); } },
+  { buckets: 84, days: 7, get label() { return interfaceText("7d"); } },
+  { buckets: 60, days: 30, get label() { return interfaceText("30d"); } },
+  { buckets: 90, days: 90, get label() { return interfaceText("90d"); } },
+  { buckets: 90, days: 180, get label() { return interfaceText("180d"); } },
+  { buckets: 100, days: 365, get label() { return interfaceText("1y"); } },
+  { buckets: 100, days: null, get label() { return interfaceText("All"); } },
 ];
 
 const EMPTY_REPORT = {
@@ -86,6 +88,7 @@ const normalizeReport = ({
 });
 
 const ReportStatus = ({ error, label, testId }) => {
+  useInterfaceLanguage();
   if (!error) return null;
 
   return (
@@ -94,9 +97,9 @@ const ReportStatus = ({ error, label, testId }) => {
       data-testid={testId}
       error
     >
-      <Message.Header>{label} unavailable</Message.Header>
+      <Message.Header>{label} <LocalizedText source={"unavailable"} /></Message.Header>
       <p>{error}</p>
-      <p>Showing the last successfully loaded data when available.</p>
+      <p><LocalizedText source={"Showing the last successfully loaded data when available."} /></p>
     </Message>
   );
 };
@@ -121,6 +124,7 @@ const formatBytesParts = (bytes) => {
 
 
 const SearchBar = ({ server } = {}) => {
+  useInterfaceLanguage();
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState('');
   const [creating, setCreating] = useState(false);
@@ -151,7 +155,7 @@ const SearchBar = ({ server } = {}) => {
         navigate(`/searches/${encodePathSegment(id)}`);
       } else {
         const label = query.length > 30 ? `${query.slice(0, 15)}...` : query;
-        toast.info(`Search for '${label}' started.`);
+        toast.info(interfaceText("Search for '{label}' started.", { "label": (label) }));
       }
     } catch (error) {
       if (mountedRef.current) {
@@ -182,11 +186,11 @@ const SearchBar = ({ server } = {}) => {
               onClick={() => create()}
             />
             <Button
-              aria-label="Search and open results"
+              aria-label={interfaceText("Search and open results")}
               disabled={!connected || creating || !searchText.trim()}
               icon="search"
               onClick={() => create({ navigateToResults: true })}
-            />
+             {...interfaceTextProps("Search and open results")}/>
           </>
         )}
         className="compatibility-search-input"
@@ -209,10 +213,11 @@ const SearchBar = ({ server } = {}) => {
 
 
 const LeaderboardTable = ({ loading, onSort, rows = [], sortBy }) => {
+  useInterfaceLanguage();
   const fields = [
-    { label: 'Count', sort: 'Count' },
-    { label: 'Total Size', sort: 'TotalBytes' },
-    { label: 'Avg Speed', sort: 'AverageSpeed' },
+    { label: interfaceText("Count"), sort: 'Count' },
+    { label: interfaceText("Total Size"), sort: 'TotalBytes' },
+    { label: interfaceText("Avg Speed"), sort: 'AverageSpeed' },
   ];
 
   return (
@@ -223,7 +228,7 @@ const LeaderboardTable = ({ loading, onSort, rows = [], sortBy }) => {
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell textAlign="right">#</Table.HeaderCell>
-          <Table.HeaderCell>Username</Table.HeaderCell>
+          <Table.HeaderCell><LocalizedText source={"Username"} /></Table.HeaderCell>
           {fields.map((field) => (
             <Table.HeaderCell
               key={field.sort}
@@ -253,8 +258,7 @@ const LeaderboardTable = ({ loading, onSort, rows = [], sortBy }) => {
               colSpan={5}
               style={{ opacity: 0.5, textAlign: 'center' }}
             >
-              No data to display
-            </Table.Cell>
+              <LocalizedText source={"No data to display"} /></Table.Cell>
           </Table.Row>
         )}
         {!loading && rows.map((row, index) => (
@@ -272,6 +276,7 @@ const LeaderboardTable = ({ loading, onSort, rows = [], sortBy }) => {
 };
 
 const Leaderboard = ({ downloads, end, errors = {}, start, uploads }) => {
+  useInterfaceLanguage();
   const [sortBy, setSortBy] = useState('Count');
   const [rows, setRows] = useState({
     download: asRows(downloads),
@@ -326,21 +331,21 @@ const Leaderboard = ({ downloads, end, errors = {}, start, uploads }) => {
       stackable
     >
       <Grid.Column>
-        <Header size="small"><Icon name="download" /> Downloads</Header>
+        <Header size="small"><Icon name="download" /> <LocalizedText source={"Downloads"} /></Header>
         <ReportStatus
           error={errors.download}
-          label="Download leaderboard"
+          label={interfaceText("Download leaderboard")}
           testId="compatibility-download-leaderboard-load-error"
-        />
+         {...interfaceTextProps("Download leaderboard")}/>
         <LeaderboardTable loading={loading.download} onSort={onSort} rows={rows.download} sortBy={sortBy} />
       </Grid.Column>
       <Grid.Column>
-        <Header size="small"><Icon name="upload" /> Uploads</Header>
+        <Header size="small"><Icon name="upload" /> <LocalizedText source={"Uploads"} /></Header>
         <ReportStatus
           error={errors.upload}
-          label="Upload leaderboard"
+          label={interfaceText("Upload leaderboard")}
           testId="compatibility-upload-leaderboard-load-error"
-        />
+         {...interfaceTextProps("Upload leaderboard")}/>
         <LeaderboardTable loading={loading.upload} onSort={onSort} rows={rows.upload} sortBy={sortBy} />
       </Grid.Column>
     </Grid>
@@ -351,10 +356,10 @@ const TopDirectories = ({ error, rows = [] }) => (
   <>
     <ReportStatus
       error={error}
-      label="Directory report"
+      label={interfaceText("Directory report")}
       testId="compatibility-directories-load-error"
-    />
-    <Header size="small"><Icon name="folder open" /> Directories</Header>
+     {...interfaceTextProps("Directory report")}/>
+    <Header size="small"><Icon name="folder open" /> <LocalizedText source={"Directories"} /></Header>
     <Table
       className="unstackable"
       compact="very"
@@ -362,14 +367,14 @@ const TopDirectories = ({ error, rows = [] }) => (
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell textAlign="right">#</Table.HeaderCell>
-          <Table.HeaderCell>Directory</Table.HeaderCell>
-          <Table.HeaderCell textAlign="right">Downloads</Table.HeaderCell>
-          <Table.HeaderCell textAlign="right">Distinct Users</Table.HeaderCell>
+          <Table.HeaderCell><LocalizedText source={"Directory"} /></Table.HeaderCell>
+          <Table.HeaderCell textAlign="right"><LocalizedText source={"Downloads"} /></Table.HeaderCell>
+          <Table.HeaderCell textAlign="right"><LocalizedText source={"Distinct Users"} /></Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
         {rows.length === 0 && (
-          <Table.Row><Table.Cell colSpan={4} style={{ opacity: 0.5, textAlign: 'center' }}>No data to display</Table.Cell></Table.Row>
+          <Table.Row><Table.Cell colSpan={4} style={{ opacity: 0.5, textAlign: 'center' }}><LocalizedText source={"No data to display"} /></Table.Cell></Table.Row>
         )}
         {rows.map((row, index) => {
           const parts = (row.directory || '').split(/[/\\]/u).filter(Boolean);
@@ -407,18 +412,19 @@ const DirectionButtons = ({ direction, onChange }) => (
 );
 
 const ExceptionPareto = ({ direction, loading, onDirectionChange, rows }) => {
+  useInterfaceLanguage();
   const maxCount = rows.length > 0 ? rows[0].count : 1;
   return (
     <>
-      <Header size="small"><Icon name="sort amount down" /> Error Count By Type <DirectionButtons direction={direction} onChange={onDirectionChange} /></Header>
+      <Header size="small"><Icon name="sort amount down" /> <LocalizedText source={"Error Count By Type"} />{" "}<DirectionButtons direction={direction} onChange={onDirectionChange} /></Header>
       <Table
         className="unstackable"
         compact="very"
       >
-        <Table.Header><Table.Row><Table.HeaderCell>Direction</Table.HeaderCell><Table.HeaderCell>Exception</Table.HeaderCell><Table.HeaderCell /><Table.HeaderCell textAlign="right">Count</Table.HeaderCell><Table.HeaderCell textAlign="right">Distinct Users</Table.HeaderCell></Table.Row></Table.Header>
+        <Table.Header><Table.Row><Table.HeaderCell><LocalizedText source={"Direction"} /></Table.HeaderCell><Table.HeaderCell><LocalizedText source={"Exception"} /></Table.HeaderCell><Table.HeaderCell /><Table.HeaderCell textAlign="right"><LocalizedText source={"Count"} /></Table.HeaderCell><Table.HeaderCell textAlign="right"><LocalizedText source={"Distinct Users"} /></Table.HeaderCell></Table.Row></Table.Header>
         <Table.Body>
           {loading && <Table.Row><Table.Cell colSpan={5} textAlign="center"><LoaderSegment size="small" /></Table.Cell></Table.Row>}
-          {!loading && rows.length === 0 && <Table.Row><Table.Cell colSpan={5} style={{ opacity: 0.5, textAlign: 'center' }}>No data to display</Table.Cell></Table.Row>}
+          {!loading && rows.length === 0 && <Table.Row><Table.Cell colSpan={5} style={{ opacity: 0.5, textAlign: 'center' }}><LocalizedText source={"No data to display"} /></Table.Cell></Table.Row>}
           {!loading && rows.map((row) => (
             <Table.Row key={`${row.direction}-${row.exception ?? ''}`}>
               <Table.Cell>{row.direction}</Table.Cell>
@@ -436,15 +442,15 @@ const ExceptionPareto = ({ direction, loading, onDirectionChange, rows }) => {
 
 const ExceptionList = ({ direction, loading, onDirectionChange, rows }) => (
   <>
-    <Header size="small"><Icon name="clipboard outline" /> Recent Errors <DirectionButtons direction={direction} onChange={onDirectionChange} /></Header>
+    <Header size="small"><Icon name="clipboard outline" /> <LocalizedText source={"Recent Errors"} />{" "}<DirectionButtons direction={direction} onChange={onDirectionChange} /></Header>
     <Table
       className="unstackable"
       compact="very"
     >
-      <Table.Header><Table.Row><Table.HeaderCell>Time</Table.HeaderCell><Table.HeaderCell>Direction</Table.HeaderCell><Table.HeaderCell>Username</Table.HeaderCell><Table.HeaderCell>Filename</Table.HeaderCell><Table.HeaderCell>Exception</Table.HeaderCell></Table.Row></Table.Header>
+      <Table.Header><Table.Row><Table.HeaderCell><LocalizedText source={"Time"} /></Table.HeaderCell><Table.HeaderCell><LocalizedText source={"Direction"} /></Table.HeaderCell><Table.HeaderCell><LocalizedText source={"Username"} /></Table.HeaderCell><Table.HeaderCell><LocalizedText source={"Filename"} /></Table.HeaderCell><Table.HeaderCell><LocalizedText source={"Exception"} /></Table.HeaderCell></Table.Row></Table.Header>
       <Table.Body>
         {loading && <Table.Row><Table.Cell colSpan={5} textAlign="center"><LoaderSegment size="small" /></Table.Cell></Table.Row>}
-        {!loading && rows.length === 0 && <Table.Row><Table.Cell colSpan={5} style={{ opacity: 0.5, textAlign: 'center' }}>No data to display</Table.Cell></Table.Row>}
+        {!loading && rows.length === 0 && <Table.Row><Table.Cell colSpan={5} style={{ opacity: 0.5, textAlign: 'center' }}><LocalizedText source={"No data to display"} /></Table.Cell></Table.Row>}
         {!loading && rows.map((row) => (
           <Table.Row key={`${row.direction}-${row.endedAt}-${row.filename}`}>
             <Table.Cell style={{ whiteSpace: 'nowrap' }}>{row.endedAt ? formatDate(row.endedAt) : ''}</Table.Cell>
@@ -470,6 +476,7 @@ const mergeParetoRows = (uploadRows = [], downloadRows = []) => [
 ].sort((left, right) => (right.count ?? 0) - (left.count ?? 0)).slice(0, 10);
 
 const TransferErrors = ({ data, end, start }) => {
+  useInterfaceLanguage();
   const [paretoDirection, setParetoDirection] = useState('All');
   const [recentDirection, setRecentDirection] = useState('All');
   const [paretoRows, setParetoRows] = useState(null);
@@ -559,9 +566,9 @@ const TransferErrors = ({ data, end, start }) => {
     <>
       <ReportStatus
         error={reportErrors.histogram}
-        label="Error history"
+        label={interfaceText("Error history")}
         testId="compatibility-error-history-load-error"
-      />
+       {...interfaceTextProps("Error history")}/>
       <CompatibilityGraph
         data={data.chartData}
         defaultSeries={new Set(['uploadErrors', 'downloadErrors'])}
@@ -572,9 +579,9 @@ const TransferErrors = ({ data, end, start }) => {
       />
       <ReportStatus
         error={paretoError}
-        label="Error count report"
+        label={interfaceText("Error count report")}
         testId="compatibility-error-pareto-load-error"
-      />
+       {...interfaceTextProps("Error count report")}/>
       <ExceptionPareto
         direction={paretoDirection}
         loading={paretoLoading}
@@ -586,9 +593,9 @@ const TransferErrors = ({ data, end, start }) => {
       />
       <ReportStatus
         error={recentError}
-        label="Recent error report"
+        label={interfaceText("Recent error report")}
         testId="compatibility-recent-errors-load-error"
-      />
+       {...interfaceTextProps("Recent error report")}/>
       <ExceptionList
         direction={recentDirection}
         loading={recentLoading}
@@ -603,6 +610,7 @@ const TransferErrors = ({ data, end, start }) => {
 };
 
 const HistoricalStatistics = ({ data, historyLabel, historyRanges, onHistoryRangeSelect }) => {
+  useInterfaceLanguage();
   const [activeTab, setActiveTab] = useState(0);
   const summary = data.summary ?? {};
   const reportErrors = data.reportErrors ?? {};
@@ -614,7 +622,7 @@ const HistoricalStatistics = ({ data, historyLabel, historyRanges, onHistoryRang
   const uploadParts = formatBytesParts(uploadBytes);
   const panes = [
     {
-      menuItem: { content: 'Users', icon: 'users', key: 'users' },
+      menuItem: { content: interfaceText("Users"), icon: 'users', key: 'users' },
       render: () => <Tab.Pane><Leaderboard
         downloads={data.leaderboard.download}
         end={data.historyEnd}
@@ -627,11 +635,11 @@ const HistoricalStatistics = ({ data, historyLabel, historyRanges, onHistoryRang
       /></Tab.Pane>,
     },
     {
-      menuItem: { content: 'Content', icon: 'folder open', key: 'content' },
+      menuItem: { content: interfaceText("Content"), icon: 'folder open', key: 'content' },
       render: () => <Tab.Pane><TopDirectories error={reportErrors.directories} rows={data.directories} /></Tab.Pane>,
     },
     {
-      menuItem: { content: 'Errors', icon: 'warning sign', key: 'errors' },
+      menuItem: { content: interfaceText("Errors"), icon: 'warning sign', key: 'errors' },
       render: () => <Tab.Pane><TransferErrors data={{ ...data.exceptions, chartData, reportErrors }} end={data.historyEnd} start={data.historyStart} /></Tab.Pane>,
     },
   ];
@@ -639,7 +647,7 @@ const HistoricalStatistics = ({ data, historyLabel, historyRanges, onHistoryRang
   return (
     <Segment>
       <div className="compatibility-history-heading">
-        <Header as="h4"><Icon name="history" /> History</Header>
+        <Header as="h4"><Icon name="history" /> <LocalizedText source={"History"} /></Header>
         <ButtonGroup size="mini">
           {historyRanges.map((range) => (
             <Button
@@ -654,35 +662,35 @@ const HistoricalStatistics = ({ data, historyLabel, historyRanges, onHistoryRang
       </div>
       <ReportStatus
         error={reportErrors.summary}
-        label="Transfer summary"
+        label={interfaceText("Transfer summary")}
         testId="compatibility-summary-load-error"
-      />
+       {...interfaceTextProps("Transfer summary")}/>
       <Statistic.Group
         size="small"
         widths="four"
       >
         <Statistic color="blue">
           <Statistic.Value><Icon name="arrow down" size="tiny" />{downloadParts.value}<small>{downloadParts.unit}</small></Statistic.Value>
-          <Statistic.Label>Downloaded · {formatRegionalNumber(sumCounts(summary.Download ?? {}))} files</Statistic.Label>
+          <Statistic.Label><LocalizedText source={"Downloaded ·"} />{" "}{formatRegionalNumber(sumCounts(summary.Download ?? {}))} <LocalizedText source={"files"} /></Statistic.Label>
         </Statistic>
         <Statistic color="green">
           <Statistic.Value><Icon name="arrow up" size="tiny" />{uploadParts.value}<small>{uploadParts.unit}</small></Statistic.Value>
-          <Statistic.Label>Uploaded · {formatRegionalNumber(sumCounts(summary.Upload ?? {}))} files</Statistic.Label>
+          <Statistic.Label><LocalizedText source={"Uploaded ·"} />{" "}{formatRegionalNumber(sumCounts(summary.Upload ?? {}))} <LocalizedText source={"files"} /></Statistic.Label>
         </Statistic>
         <Statistic color={shareRatio === null ? 'grey' : shareRatio > 0.66 ? 'green' : shareRatio >= 0.33 ? 'yellow' : 'red'}>
           <Statistic.Value><Icon name="chart pie" size="tiny" />{shareRatio === null ? '—' : shareRatio.toFixed(2)}</Statistic.Value>
-          <Statistic.Label>Share ratio (↑/↓)</Statistic.Label>
+          <Statistic.Label><LocalizedText source={"Share ratio (↑/↓)"} /></Statistic.Label>
         </Statistic>
         <Statistic>
           <Statistic.Value><Icon name="user" size="tiny" />{formatRegionalNumber((summary.Upload?.Succeeded?.distinctUsers ?? 0) + (summary.Download?.Succeeded?.distinctUsers ?? 0))}</Statistic.Value>
-          <Statistic.Label>Distinct peers</Statistic.Label>
+          <Statistic.Label><LocalizedText source={"Distinct peers"} /></Statistic.Label>
         </Statistic>
       </Statistic.Group>
       <ReportStatus
         error={reportErrors.histogram}
-        label="Transfer history"
+        label={interfaceText("Transfer history")}
         testId="compatibility-histogram-load-error"
-      />
+       {...interfaceTextProps("Transfer history")}/>
       <CompatibilityGraph
         data={chartData}
         defaultSeries={new Set(['uploadBytes', 'downloadBytes'])}
@@ -698,6 +706,7 @@ const HistoricalStatistics = ({ data, historyLabel, historyRanges, onHistoryRang
 };
 
 const CompatibilityDashboard = ({ runtimeProfile, server } = {}) => {
+  useInterfaceLanguage();
   const [historyLabel, setHistoryLabel] = useState('30d');
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(EMPTY_REPORT);
@@ -813,15 +822,14 @@ const CompatibilityDashboard = ({ runtimeProfile, server } = {}) => {
       }));
       if (failedReports.length > 0) {
         const firstFailure = failedReports[0];
-        const failureCount =
-          failedReports.length > 1
-            ? ` (${failedReports.length} report sections affected).`
-            : '.';
         setError(
-          `Some transfer reports could not be loaded: ${toDisplayError(
-            firstFailure.loadError,
-            'report service unavailable',
-          )}${failureCount} Showing the last successfully loaded values for affected sections.`,
+          interfaceText(
+            'Transfer report load failed. Affected sections: {count}. Showing the last successfully loaded values. Details: {message}',
+            {
+              count: failedReports.length,
+              message: toDisplayError(firstFailure.loadError, interfaceText('Report service unavailable')),
+            },
+          ),
         );
       } else {
         setError(null);
@@ -845,8 +853,7 @@ const CompatibilityDashboard = ({ runtimeProfile, server } = {}) => {
         <Segment>
           <Header as="h4">
             <Icon name="history" />
-            History
-          </Header>
+            <LocalizedText source={"History"} /></Header>
           <ButtonGroup size="mini">
             {HISTORY_RANGES.map((historyRange) => (
               <Button

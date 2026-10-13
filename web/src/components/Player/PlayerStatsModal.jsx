@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import * as listenBrainz from '../../lib/listenBrainz';
 import {
   clearListeningHistory,
@@ -24,7 +26,14 @@ import {
   TextArea,
 } from 'semantic-ui-react';
 
+const LocalizedListeningSeedBasis = ({ source }) => {
+  const match = source.match(/^(\d+) (older|local|tagged) plays$/);
+  if (match) return <LocalizedText source={`{count} ${match[2]} plays`} values={{ count: match[1] }} />;
+  return <LocalizedText source={source} />;
+};
+
 const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
+  useInterfaceLanguage();
   const fileInputRef = useRef(null);
   const [rangeDays, setRangeDays] = useState(30);
   const [importText, setImportText] = useState('');
@@ -74,7 +83,10 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
   const importHistory = () => {
     const result = importListeningHistory(importText);
     setImportStatus(
-      `${result.imported} imported, ${result.skipped} skipped as duplicates or incomplete rows.`,
+      interfaceText('{imported} rows imported; {skipped} duplicates or incomplete rows skipped.', {
+        imported: result.imported,
+        skipped: result.skipped,
+      }),
     );
     setImportText('');
     refreshStats();
@@ -89,13 +101,19 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
       const copied = await copyToClipboard(content);
       if (!mountedRef.current) return;
       setImportStatus(
-        copied
-          ? `${format.toUpperCase()} export copied for ${stats.history.length} plays.`
-          : `Prepared ${format.toUpperCase()} export for ${stats.history.length} plays; clipboard is unavailable.`,
+        interfaceText(
+          copied
+            ? 'Copied {format} export for {count} plays.'
+            : 'Prepared {format} export for {count} plays; clipboard is unavailable.',
+          { format: format.toUpperCase(), count: stats.history.length },
+        ),
       );
     } catch (error) {
       if (mountedRef.current) {
-        setImportStatus(toDisplayError(error, `Unable to copy ${format.toUpperCase()} export.`));
+        setImportStatus(toDisplayError(
+          error,
+          interfaceText('Unable to copy {format} export.', { format: format.toUpperCase() }),
+        ));
       }
     }
   };
@@ -107,7 +125,7 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
       isActive() && actionRequestIdRef.current === requestId;
     const queries = getListeningRecommendationQueries(stats, { limit: 3 });
     if (queries.length === 0) {
-      setImportStatus('No listening seeds are ready to search.');
+      setImportStatus(interfaceText('No listening seeds are ready to search.'));
       return;
     }
 
@@ -116,10 +134,10 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
       setRunningSeedSearches(true);
       const count = await searches.createBatch({ queries });
       if (!isCurrentRequest()) return;
-      setImportStatus(`Started ${count} bounded listening seed search${count === 1 ? '' : 'es'}.`);
+      setImportStatus(interfaceText('Listening seed searches started: {count}.', { count }));
     } catch {
       if (!isCurrentRequest()) return;
-      setImportStatus('Unable to start listening seed searches.');
+      setImportStatus(interfaceText('Unable to start listening seed searches.'));
     } finally {
       actionInFlightRef.current = false;
       if (isCurrentRequest()) setRunningSeedSearches(false);
@@ -133,7 +151,7 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
       isActive() && actionRequestIdRef.current === requestId;
     const queries = getListeningRecommendationQueries(stats, { limit: 5 });
     if (queries.length === 0) {
-      setImportStatus('No listening seeds are ready for Wishlist.');
+      setImportStatus(interfaceText('No listening seeds are ready for Wishlist.'));
       return;
     }
 
@@ -154,10 +172,10 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
         Promise.resolve(),
       );
       if (!isCurrentRequest()) return;
-      setImportStatus(`Added ${queries.length} listening seed${queries.length === 1 ? '' : 's'} to Wishlist for manual acquisition.`);
+      setImportStatus(interfaceText('Listening seeds added to Wishlist for manual acquisition: {count}.', { count: queries.length }));
     } catch {
       if (!isCurrentRequest()) return;
-      setImportStatus('Unable to add listening seeds to Wishlist.');
+      setImportStatus(interfaceText('Unable to add listening seeds to Wishlist.'));
     } finally {
       actionInFlightRef.current = false;
       if (isCurrentRequest()) setSavingSeedWishlist(false);
@@ -178,12 +196,12 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
       if (!isCurrentRequest()) return;
       setImportStatus(
         result.submitted > 0
-          ? `Submitted ${result.submitted} recent listen${result.submitted === 1 ? '' : 's'} to ListenBrainz.`
-          : 'No ListenBrainz token or eligible recent listens are available.',
+          ? interfaceText('ListenBrainz listens submitted: {count}.', { count: result.submitted })
+          : interfaceText('No ListenBrainz token or eligible recent listens are available.'),
       );
     } catch {
       if (!isCurrentRequest()) return;
-      setImportStatus('Unable to submit recent listens to ListenBrainz.');
+      setImportStatus(interfaceText('Unable to submit recent listens to ListenBrainz.'));
     } finally {
       actionInFlightRef.current = false;
       if (isCurrentRequest()) setScrobblingRecent(false);
@@ -201,10 +219,13 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
     readFileTextBounded(file).then((content) => {
       if (!isCurrentRequest()) return;
       setImportText(content);
-      setImportStatus(`Loaded ${file.name} for review.`);
+      setImportStatus(interfaceText('Loaded {fileName} for review.', { fileName: file.name }));
     }).catch((error) => {
       if (!isCurrentRequest()) return;
-      setImportStatus(`Could not read ${file.name}: ${toDisplayError(error)}`);
+      setImportStatus(interfaceText('Could not read {fileName}: {message}', {
+        fileName: file.name,
+        message: toDisplayError(error),
+      }));
     });
     event.target.value = '';
   };
@@ -216,7 +237,7 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
           <div className="player-stats-row" key={`${item.label || item.title}-${index}`}>
             <span>{index + 1}</span>
             <strong>{item.label || item.title}</strong>
-            <em>{item.plays ? `${item.plays} plays` : item.artist || item.album || ''}</em>
+            <em>{item.plays ? <LocalizedText source={"{plays} plays"} values={{ "plays": (item.plays) }} /> : item.artist || item.album || ''}</em>
           </div>
         ))}
       </div>
@@ -232,24 +253,23 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
       open={open}
       size="small"
     >
-      <Modal.Header>Listening Stats</Modal.Header>
+      <Modal.Header><LocalizedText source={"Listening Stats"} /></Modal.Header>
       <Modal.Content>
         <div className="player-stats-summary" data-testid="player-stats-summary">
           <Icon name="bar chart" />
           <div>
             <strong>{stats.totalPlays}</strong>
             <span>
-              local plays recorded in this browser
-              {rangeDays ? ` over ${rangeDays} days` : ' overall'}
+              <LocalizedText source={"local plays recorded in this browser"} />{rangeDays ? <LocalizedText source={"over {rangeDays} days"} values={{ "rangeDays": (rangeDays) }} /> : <LocalizedText source={"overall"} />}
             </span>
           </div>
         </div>
-        <div className="player-stats-ranges" role="group" aria-label="Listening stats range">
+        <div className="player-stats-ranges" role="group" aria-label={interfaceText("Listening stats range")} {...interfaceTextProps("Listening stats range")}>
           {[
-            { label: '7D', value: 7 },
-            { label: '30D', value: 30 },
-            { label: '90D', value: 90 },
-            { label: 'All', value: null },
+            { label: interfaceText("7D"), value: 7 },
+            { label: interfaceText("30D"), value: 30 },
+            { label: interfaceText("90D"), value: 90 },
+            { label: interfaceText("All"), value: null },
           ].map((range) => (
             <Button
               active={rangeDays === range.value}
@@ -265,23 +285,23 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
         </div>
         <div className="player-stats-grid">
           <section>
-            <div className="player-panel-title">Top Artists</div>
+            <div className="player-panel-title"><LocalizedText source={"Top Artists"} /></div>
             {renderList(stats.topArtists, 'No artist plays recorded yet.')}
           </section>
           <section>
-            <div className="player-panel-title">Top Tracks</div>
+            <div className="player-panel-title"><LocalizedText source={"Top Tracks"} /></div>
             {renderList(stats.topTracks, 'No track plays recorded yet.')}
           </section>
           <section>
-            <div className="player-panel-title">Top Genres</div>
+            <div className="player-panel-title"><LocalizedText source={"Top Genres"} /></div>
             {renderList(stats.topGenres, 'No genre metadata recorded yet.')}
           </section>
           <section>
-            <div className="player-panel-title">Recent</div>
+            <div className="player-panel-title"><LocalizedText source={"Recent"} /></div>
             {renderList(stats.recent, 'No recent plays recorded yet.')}
           </section>
           <section>
-            <div className="player-panel-title">Forgotten Favorites</div>
+            <div className="player-panel-title"><LocalizedText source={"Forgotten Favorites"} /></div>
             {renderList(
               stats.forgottenFavorites,
               'No older repeat plays outside this range yet.',
@@ -289,7 +309,7 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
           </section>
         </div>
         <section className="player-stats-recommendations">
-          <div className="player-panel-title">Recommendation Seeds</div>
+          <div className="player-panel-title"><LocalizedText source={"Recommendation Seeds"} /></div>
           {recommendationSeeds.length > 0 ? (
             <>
               <div className="player-stats-seed-list">
@@ -297,28 +317,28 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
                   <div className="player-stats-seed-row" key={`${seed.type}-${seed.query}`}>
                     <div>
                       <strong>{seed.label}</strong>
-                      <span>{seed.type} - {seed.basis}</span>
+                      <span><LocalizedText source={seed.type} /> - <LocalizedListeningSeedBasis source={seed.basis} /></span>
                     </div>
                     <Popup
-                      content="Open this local listening seed as a normal Search page query. Network search starts only after you choose to search."
+                      content={interfaceText("Open this local listening seed as a normal Search page query. Network search starts only after you choose to search.")}
                       trigger={
                         <Button
-                          aria-label={`Search ${seed.label}`}
+                          aria-label={interfaceText("Search {label}", { "label": (seed.label) })}
                           data-testid={`player-stats-search-seed-${seed.query}`}
                           icon
                           onClick={() => onOpenSearch(seed.query)}
                           size="mini"
                           type="button"
-                        >
+                         {...interfaceTextProps("Search {label}")}>
                           <Icon name="search" />
                         </Button>
                       }
-                    />
+                     {...interfaceTextProps("Open this local listening seed as a normal Search page query. Network search starts only after you choose to search.")}/>
                   </div>
                 ))}
               </div>
               <Popup
-                content="Start up to three live searches from the strongest listening seeds. This only starts searches; it does not browse peers, queue downloads, or mutate files."
+                content={interfaceText("Start up to three live searches from the strongest listening seeds. This only starts searches; it does not browse peers, queue downloads, or mutate files.")}
                 trigger={
                   <Button
                     data-testid="player-stats-start-seed-searches"
@@ -334,12 +354,11 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
                     type="button"
                   >
                     <Icon name="search" />
-                    Start Searches
-                  </Button>
+                    <LocalizedText source={"Start Searches"} /></Button>
                 }
-              />
+               {...interfaceTextProps("Start up to three live searches from the strongest listening seeds. This only starts searches; it does not browse peers, queue downloads, or mutate files.")}/>
               <Popup
-                content="Add up to five listening seeds to Wishlist as enabled manual-acquisition requests. Auto-download stays off."
+                content={interfaceText("Add up to five listening seeds to Wishlist as enabled manual-acquisition requests. Auto-download stays off.")}
                 trigger={
                   <Button
                     data-testid="player-stats-add-seeds-to-wishlist"
@@ -355,27 +374,25 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
                     type="button"
                   >
                     <Icon name="heart" />
-                    Add Wishlist
-                  </Button>
+                    <LocalizedText source={"Add Wishlist"} /></Button>
                 }
-              />
+               {...interfaceTextProps("Add up to five listening seeds to Wishlist as enabled manual-acquisition requests. Auto-download stays off.")}/>
             </>
           ) : (
             <div className="player-queue-manager-empty">
-              Play more tracks locally to build recommendation seeds.
-            </div>
+              <LocalizedText source={"Play more tracks locally to build recommendation seeds."} /></div>
           )}
         </section>
         <section className="player-stats-import">
-          <div className="player-panel-title">Media Server Import</div>
+          <div className="player-panel-title"><LocalizedText source={"Media Server Import"} /></div>
           <TextArea
-            aria-label="Paste exported media server play history"
+            aria-label={interfaceText("Paste exported media server play history")}
             data-testid="player-listening-history-import-text"
             onChange={(event) => setImportText(event.target.value)}
-            placeholder="Paste Plex, Jellyfin, Navidrome, or generic CSV/JSON play history here for local import."
+            placeholder={interfaceText("Paste Plex, Jellyfin, Navidrome, or generic CSV/JSON play history here for local import.")}
             rows={4}
             value={importText}
-          />
+           {...interfaceTextProps("Paste exported media server play history")}/>
           {importStatus ? (
             <Message compact size="mini">
               {importStatus}
@@ -384,14 +401,14 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
           <div className="player-stats-import-actions">
             <input
               accept=".csv,.json,.txt"
-              aria-label="Choose media server history file"
+              aria-label={interfaceText("Choose media server history file")}
               data-testid="player-listening-history-file"
               onChange={readImportFile}
               ref={fileInputRef}
               type="file"
-            />
+             {...interfaceTextProps("Choose media server history file")}/>
             <Popup
-              content="Choose a local CSV or JSON export from Plex, Jellyfin, Navidrome, or another media server. The file is read in this browser only."
+              content={interfaceText("Choose a local CSV or JSON export from Plex, Jellyfin, Navidrome, or another media server. The file is read in this browser only.")}
               trigger={
                 <Button
                   data-testid="player-listening-history-choose-file"
@@ -400,12 +417,11 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
                   type="button"
                 >
                   <Icon name="folder open" />
-                  Choose File
-                </Button>
+                  <LocalizedText source={"Choose File"} /></Button>
               }
-            />
+             {...interfaceTextProps("Choose a local CSV or JSON export from Plex, Jellyfin, Navidrome, or another media server. The file is read in this browser only.")}/>
             <Popup
-              content="Import the pasted or chosen play history into browser-local listening stats with duplicate suppression."
+              content={interfaceText("Import the pasted or chosen play history into browser-local listening stats with duplicate suppression.")}
               trigger={
                 <Button
                   data-testid="player-listening-history-import"
@@ -416,12 +432,11 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
                   type="button"
                 >
                   <Icon name="upload" />
-                  Import
-                </Button>
+                  <LocalizedText source={"Import"} /></Button>
               }
-            />
+             {...interfaceTextProps("Import the pasted or chosen play history into browser-local listening stats with duplicate suppression.")}/>
             <Popup
-              content="Copy the browser-local listening history as JSON for backup or review."
+              content={interfaceText("Copy the browser-local listening history as JSON for backup or review.")}
               trigger={
                 <Button
                   data-testid="player-listening-history-export-json"
@@ -434,9 +449,9 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
                   JSON
                 </Button>
               }
-            />
+             {...interfaceTextProps("Copy the browser-local listening history as JSON for backup or review.")}/>
             <Popup
-              content="Copy the browser-local listening history as CSV for media-server or spreadsheet review."
+              content={interfaceText("Copy the browser-local listening history as CSV for media-server or spreadsheet review.")}
               trigger={
                 <Button
                   data-testid="player-listening-history-export-csv"
@@ -449,9 +464,9 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
                   CSV
                 </Button>
               }
-            />
+             {...interfaceTextProps("Copy the browser-local listening history as CSV for media-server or spreadsheet review.")}/>
             <Popup
-              content="Submit up to ten recent browser-local plays to ListenBrainz using the saved token. This does not search, browse peers, download, or mutate files."
+              content={interfaceText("Submit up to ten recent browser-local plays to ListenBrainz using the saved token. This does not search, browse peers, download, or mutate files.")}
               trigger={
                 <Button
                   data-testid="player-listening-history-scrobble-recent"
@@ -467,16 +482,15 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
                   type="button"
                 >
                   <Icon name="send" />
-                  Scrobble Recent
-                </Button>
+                  <LocalizedText source={"Scrobble Recent"} /></Button>
               }
-            />
+             {...interfaceTextProps("Submit up to ten recent browser-local plays to ListenBrainz using the saved token. This does not search, browse peers, download, or mutate files.")}/>
           </div>
         </section>
       </Modal.Content>
       <Modal.Actions>
         <Popup
-          content="Clear only the browser-local listening history used for this stats view."
+          content={interfaceText("Clear only the browser-local listening history used for this stats view.")}
           trigger={
             <Button
               data-testid="player-clear-listening-history"
@@ -485,12 +499,11 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
               type="button"
             >
               <Icon name="trash alternate outline" />
-              Clear Local History
-            </Button>
+              <LocalizedText source={"Clear Local History"} /></Button>
           }
-        />
+         {...interfaceTextProps("Clear only the browser-local listening history used for this stats view.")}/>
         <Popup
-          content="Close listening stats."
+          content={interfaceText("Close listening stats.")}
           trigger={
             <Button
               data-testid="player-close-listening-stats"
@@ -499,10 +512,9 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
               type="button"
             >
               <Icon name="check" />
-              Done
-            </Button>
+              <LocalizedText source={"Done"} /></Button>
           }
-        />
+         {...interfaceTextProps("Close listening stats.")}/>
       </Modal.Actions>
     </Modal>
   );

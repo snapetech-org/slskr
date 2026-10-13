@@ -1,3 +1,4 @@
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import * as optionsApi from '../../../lib/options';
 import { toDisplayError } from '../../../lib/errors';
 import { useMountedRef } from '../../../lib/useMountedRef';
@@ -248,6 +249,7 @@ const setOptionalNumber = (document, path, value) => {
 };
 
 const AdminPolicies = ({ options = {} }) => {
+  useInterfaceLanguage();
   const remoteConfiguration = Boolean(
     getOption(options, 'remoteConfiguration', 'RemoteConfiguration'),
   );
@@ -534,7 +536,7 @@ const AdminPolicies = ({ options = {} }) => {
       }));
       setMessage({
         positive: true,
-        text: 'Policy settings saved to YAML. Restart-signalled options still require a daemon restart.',
+        text: interfaceText("Policy settings saved to YAML. Restart-signalled options still require a daemon restart."),
       });
     } catch (error) {
       if (

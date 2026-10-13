@@ -1,3 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+
+
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -31,6 +35,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const ContentDescriptorPublishingPanel = () => {
+  useInterfaceLanguage();
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -176,16 +181,14 @@ const ContentDescriptorPublishingPanel = () => {
             <Card.Content>
               <Card.Header>
                 <Icon name="cloud upload" />
-                Publish Content Descriptor
-              </Card.Header>
+                <LocalizedText source={"Publish Content Descriptor"} /></Card.Header>
               <Card.Description>
-                Publish a content descriptor to the DHT with versioning support
-              </Card.Description>
+                <LocalizedText source={"Publish a content descriptor to the DHT with versioning support"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Field>
-                  <label>ContentID</label>
+                  <label><LocalizedText source={"ContentID"} /></label>
                   <Input
                     onChange={(e) => setPublishContentId(e.target.value)}
                     placeholder="content:audio:track:mb-12345"
@@ -194,15 +197,15 @@ const ContentDescriptorPublishingPanel = () => {
                 </Form.Field>
                 <Form.Group widths="equal">
                   <Form.Field>
-                    <label>Codec</label>
+                    <label><LocalizedText source={"Codec"} /></label>
                     <Input
                       onChange={(e) => setPublishCodec(e.target.value)}
-                      placeholder="mp3, flac, etc."
+                      placeholder={interfaceText("mp3, flac, etc.")}
                       value={publishCodec}
-                    />
+                     {...interfaceTextProps("mp3, flac, etc.")}/>
                   </Form.Field>
                   <Form.Field>
-                    <label>Size (bytes)</label>
+                    <label><LocalizedText source={"Size (bytes)"} /></label>
                     <Input
                       onChange={(e) => setPublishSize(e.target.value)}
                       type="number"
@@ -216,8 +219,7 @@ const ContentDescriptorPublishingPanel = () => {
                   onClick={handlePublishDescriptor}
                   primary
                 >
-                  Publish Descriptor
-                </Button>
+                  <LocalizedText source={"Publish Descriptor"} /></Button>
               </Form>
 
               {publishResult && (
@@ -228,17 +230,16 @@ const ContentDescriptorPublishingPanel = () => {
                     </Message>
                   ) : (
                     <Message success>
-                      <Message.Header>Published Successfully</Message.Header>
+                      <Message.Header><LocalizedText source={"Published Successfully"} /></Message.Header>
                       <p>
-                        <strong>ContentID:</strong> {publishResult.contentId}
+                        <strong><LocalizedText source={"ContentID:"} /></strong> {publishResult.contentId}
                         <br />
-                        <strong>Version:</strong> {publishResult.version}
+                        <strong><LocalizedText source={"Version:"} /></strong> {publishResult.version}
                         <br />
                         <strong>TTL:</strong> {publishResult.ttl?.totalMinutes}{' '}
-                        minutes
-                        <br />
-                        <strong>Was Updated:</strong>{' '}
-                        {publishResult.wasUpdated ? 'Yes' : 'No'}
+                        <LocalizedText source={"minutes"} /><br />
+                        <strong><LocalizedText source={"Was Updated:"} /></strong>{' '}
+                        {publishResult.wasUpdated ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
                       </p>
                     </Message>
                   )}
@@ -254,22 +255,20 @@ const ContentDescriptorPublishingPanel = () => {
             <Card.Content>
               <Card.Header>
                 <Icon name="list" />
-                Batch Publish Descriptors
-              </Card.Header>
+                <LocalizedText source={"Batch Publish Descriptors"} /></Card.Header>
               <Card.Description>
-                Publish multiple content descriptors simultaneously
-              </Card.Description>
+                <LocalizedText source={"Publish multiple content descriptors simultaneously"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Field>
-                  <label>ContentIDs (one per line)</label>
+                  <label><LocalizedText source={"ContentIDs (one per line)"} /></label>
                   <TextArea
                     onChange={(e) => setBatchContentIds(e.target.value)}
-                    placeholder="content:audio:track:mb-12345&#10;content:video:movie:imdb-tt0111161&#10;..."
+                    placeholder={interfaceText("content:audio:track:mb-12345&#10;content:video:movie:imdb-tt0111161&#10;...")}
                     rows={6}
                     value={batchContentIds}
-                  />
+                   {...interfaceTextProps("content:audio:track:mb-12345&#10;content:video:movie:imdb-tt0111161&#10;...")}/>
                 </Form.Field>
                 <Button
                   disabled={!batchContentIds.trim() || publishingBatch}
@@ -277,8 +276,7 @@ const ContentDescriptorPublishingPanel = () => {
                   onClick={handlePublishBatch}
                   primary
                 >
-                  Publish Batch
-                </Button>
+                  <LocalizedText source={"Publish Batch"} /></Button>
               </Form>
 
               {batchPublishResult && (
@@ -289,25 +287,24 @@ const ContentDescriptorPublishingPanel = () => {
                     </Message>
                   ) : (
                     <Message info>
-                      <Message.Header>Batch Publish Results</Message.Header>
+                      <Message.Header><LocalizedText source={"Batch Publish Results"} /></Message.Header>
                       <p>
-                        <strong>Total Requested:</strong>{' '}
+                        <strong><LocalizedText source={"Total Requested:"} /></strong>{' '}
                         {batchPublishResult.totalRequested}
                         <br />
-                        <strong>Successfully Published:</strong>{' '}
+                        <strong><LocalizedText source={"Successfully Published:"} /></strong>{' '}
                         {batchPublishResult.successfullyPublished}
                         <br />
-                        <strong>Failed:</strong>{' '}
+                        <strong><LocalizedText source={"Failed:"} /></strong>{' '}
                         {batchPublishResult.failedToPublish}
                         <br />
-                        <strong>Skipped:</strong> {batchPublishResult.skipped}
+                        <strong><LocalizedText source={"Skipped:"} /></strong> {batchPublishResult.skipped}
                         <br />
-                        <strong>Duration:</strong>{' '}
+                        <strong><LocalizedText source={"Duration:"} /></strong>{' '}
                         {batchPublishResult.totalDuration?.totalSeconds.toFixed(
                           2,
                         )}
-                        s
-                      </p>
+                        <LocalizedText source={"s"} /></p>
                     </Message>
                   )}
                 </div>
@@ -322,47 +319,45 @@ const ContentDescriptorPublishingPanel = () => {
             <Card.Content>
               <Card.Header>
                 <Icon name="edit" />
-                Update Descriptor
-              </Card.Header>
+                <LocalizedText source={"Update Descriptor"} /></Card.Header>
               <Card.Description>
-                Update metadata for an existing published descriptor
-              </Card.Description>
+                <LocalizedText source={"Update metadata for an existing published descriptor"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Field>
-                  <label>Target ContentID</label>
+                  <label><LocalizedText source={"Target ContentID"} /></label>
                   <Input
                     onChange={(e) => setUpdateTargetId(e.target.value)}
-                    placeholder="ContentID to update"
+                    placeholder={interfaceText("ContentID to update")}
                     value={updateTargetId}
-                  />
+                   {...interfaceTextProps("ContentID to update")}/>
                 </Form.Field>
                 <Form.Group widths="equal">
                   <Form.Field>
-                    <label>New Codec</label>
+                    <label><LocalizedText source={"New Codec"} /></label>
                     <Input
                       onChange={(e) => setUpdateCodec(e.target.value)}
-                      placeholder="Leave empty to keep current"
+                      placeholder={interfaceText("Leave empty to keep current")}
                       value={updateCodec}
-                    />
+                     {...interfaceTextProps("Leave empty to keep current")}/>
                   </Form.Field>
                   <Form.Field>
-                    <label>New Size (bytes)</label>
+                    <label><LocalizedText source={"New Size (bytes)"} /></label>
                     <Input
                       onChange={(e) => setUpdateSize(e.target.value)}
-                      placeholder="Leave empty to keep current"
+                      placeholder={interfaceText("Leave empty to keep current")}
                       value={updateSize}
-                    />
+                     {...interfaceTextProps("Leave empty to keep current")}/>
                   </Form.Field>
                 </Form.Group>
                 <Form.Field>
-                  <label>New Confidence (0.0-1.0)</label>
+                  <label><LocalizedText source={"New Confidence (0.0-1.0)"} /></label>
                   <Input
                     onChange={(e) => setUpdateConfidence(e.target.value)}
-                    placeholder="Leave empty to keep current"
+                    placeholder={interfaceText("Leave empty to keep current")}
                     value={updateConfidence}
-                  />
+                   {...interfaceTextProps("Leave empty to keep current")}/>
                 </Form.Field>
                 <Button
                   disabled={!updateTargetId.trim() || updatingDescriptor}
@@ -370,8 +365,7 @@ const ContentDescriptorPublishingPanel = () => {
                   onClick={handleUpdateDescriptor}
                   primary
                 >
-                  Update Descriptor
-                </Button>
+                  <LocalizedText source={"Update Descriptor"} /></Button>
               </Form>
 
               {updateResult && (
@@ -382,14 +376,14 @@ const ContentDescriptorPublishingPanel = () => {
                     </Message>
                   ) : (
                     <Message success>
-                      <Message.Header>Update Successful</Message.Header>
+                      <Message.Header><LocalizedText source={"Update Successful"} /></Message.Header>
                       <p>
-                        <strong>ContentID:</strong> {updateResult.contentId}
+                        <strong><LocalizedText source={"ContentID:"} /></strong> {updateResult.contentId}
                         <br />
-                        <strong>Version:</strong> {updateResult.previousVersion}{' '}
+                        <strong><LocalizedText source={"Version:"} /></strong> {updateResult.previousVersion}{' '}
                         → {updateResult.newVersion}
                         <br />
-                        <strong>Updates Applied:</strong>{' '}
+                        <strong><LocalizedText source={"Updates Applied:"} /></strong>{' '}
                         {updateResult.appliedUpdates?.join(', ') || 'none'}
                       </p>
                     </Message>
@@ -406,11 +400,9 @@ const ContentDescriptorPublishingPanel = () => {
             <Card.Content>
               <Card.Header>
                 <Icon name="cogs" />
-                Publishing Management
-              </Card.Header>
+                <LocalizedText source={"Publishing Management"} /></Card.Header>
               <Card.Description>
-                Manage published descriptors and monitor publishing status
-              </Card.Description>
+                <LocalizedText source={"Manage published descriptors and monitor publishing status"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Button.Group fluid>
@@ -419,15 +411,13 @@ const ContentDescriptorPublishingPanel = () => {
                   loading={republishing}
                   onClick={handleRepublishExpiring}
                 >
-                  Republish Expiring
-                </Button>
+                  <LocalizedText source={"Republish Expiring"} /></Button>
                 <Button
                   disabled={loadingStats}
                   loading={loadingStats}
                   onClick={handleLoadPublishingStats}
                 >
-                  Load Stats
-                </Button>
+                  <LocalizedText source={"Load Stats"} /></Button>
               </Button.Group>
 
               {/* Republish Results */}
@@ -439,21 +429,20 @@ const ContentDescriptorPublishingPanel = () => {
                     </Message>
                   ) : (
                     <Message info>
-                      <Message.Header>Republish Results</Message.Header>
+                      <Message.Header><LocalizedText source={"Republish Results"} /></Message.Header>
                       <p>
-                        <strong>Checked:</strong> {republishResult.totalChecked}
+                        <strong><LocalizedText source={"Checked:"} /></strong> {republishResult.totalChecked}
                         <br />
-                        <strong>Republished:</strong>{' '}
+                        <strong><LocalizedText source={"Republished:"} /></strong>{' '}
                         {republishResult.republished}
                         <br />
-                        <strong>Failed:</strong> {republishResult.failed}
+                        <strong><LocalizedText source={"Failed:"} /></strong> {republishResult.failed}
                         <br />
-                        <strong>Still Valid:</strong>{' '}
+                        <strong><LocalizedText source={"Still Valid:"} /></strong>{' '}
                         {republishResult.stillValid}
                         <br />
-                        <strong>Duration:</strong>{' '}
-                        {republishResult.duration?.totalSeconds.toFixed(2)}s
-                      </p>
+                        <strong><LocalizedText source={"Duration:"} /></strong>{' '}
+                        {republishResult.duration?.totalSeconds.toFixed(2)}<LocalizedText source={"s"} /></p>
                     </Message>
                   )}
                 </div>
@@ -468,21 +457,20 @@ const ContentDescriptorPublishingPanel = () => {
                     </Message>
                   ) : (
                     <Message>
-                      <Message.Header>Publishing Statistics</Message.Header>
+                      <Message.Header><LocalizedText source={"Publishing Statistics"} /></Message.Header>
                       <p>
-                        <strong>Total Published:</strong>{' '}
+                        <strong><LocalizedText source={"Total Published:"} /></strong>{' '}
                         {publishingStats.totalPublishedDescriptors}
                         <br />
-                        <strong>Active Publications:</strong>{' '}
+                        <strong><LocalizedText source={"Active Publications:"} /></strong>{' '}
                         {publishingStats.activePublications}
                         <br />
-                        <strong>Expiring Soon:</strong>{' '}
+                        <strong><LocalizedText source={"Expiring Soon:"} /></strong>{' '}
                         {publishingStats.expiringSoon}
                         <br />
-                        <strong>Average TTL:</strong>{' '}
-                        {publishingStats.averageTtlHours?.toFixed(1)} hours
-                        <br />
-                        <strong>Total Storage:</strong>{' '}
+                        <strong><LocalizedText source={"Average TTL:"} /></strong>{' '}
+                        {publishingStats.averageTtlHours?.toFixed(1)} <LocalizedText source={"hours"} /><br />
+                        <strong><LocalizedText source={"Total Storage:"} /></strong>{' '}
                         {(
                           publishingStats.totalStorageBytes /
                           1_024 /
@@ -494,7 +482,7 @@ const ContentDescriptorPublishingPanel = () => {
                         Object.keys(publishingStats.publicationsByDomain)
                           .length > 0 && (
                           <div style={{ marginTop: '0.5em' }}>
-                            <strong>By Domain:</strong>
+                            <strong><LocalizedText source={"By Domain:"} /></strong>
                             {Object.entries(
                               publishingStats.publicationsByDomain,
                             ).map(([domain, count]) => (

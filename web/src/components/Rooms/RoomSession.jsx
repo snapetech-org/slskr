@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import { formatRegionalCompactDateTime } from '../../lib/util';
 import * as rooms from '../../lib/rooms';
 import { createRoomsHubConnection } from '../../lib/hubFactory';
@@ -389,20 +391,17 @@ class RoomSession extends Component {
             className="ui compact button popup-option"
             onClick={this.handleReply}
           >
-            Reply
-          </Button>
+            <LocalizedText source={"Reply"} /></Button>
           <Button
             className="ui compact button popup-option"
             onClick={this.handleUserProfile}
           >
-            User Profile
-          </Button>
+            <LocalizedText source={"User Profile"} /></Button>
           <Button
             className="ui compact button popup-option"
             onClick={this.handleBrowseShares}
           >
-            Browse Shares
-          </Button>
+            <LocalizedText source={"Browse Shares"} /></Button>
         </div>
       </Portal>
     );
@@ -421,7 +420,7 @@ class RoomSession extends Component {
               name="comments"
               size="big"
             />
-            <p>Select a room to start chatting</p>
+            <p><LocalizedText source={"Select a room to start chatting"} /></p>
           </Segment>
         </div>
       );
@@ -531,7 +530,7 @@ class RoomSession extends Component {
                   <Segment className="room-users">
                     <div className="room-users-header">
                       <Icon name="users" />
-                      Users ({room.users.length})
+                      <LocalizedText source={"Users ("} />{room.users.length})
                     </div>
                     <List
                       divided
@@ -542,7 +541,7 @@ class RoomSession extends Component {
                           <List.Content>
                             <List.Header><UserCard username={user.username}>{user.username}</UserCard></List.Header>
                             <List.Description>
-                              {Number(user.status) === 1 ? 'Away' : 'Online'}
+                              {Number(user.status) === 1 ? <LocalizedText source={"Away"} /> : <LocalizedText source={"Online"} />}
                             </List.Description>
                           </List.Content>
                         </List.Item>

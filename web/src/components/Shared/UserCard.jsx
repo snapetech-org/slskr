@@ -1,3 +1,5 @@
+import LocalizedText from "./LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import './UserCard.css';
 import { toDisplayError } from '../../lib/errors';
 import * as opinions from '../../lib/opinions';
@@ -318,8 +320,7 @@ class UserCard extends Component {
             loading
             name="spinner"
           />{' '}
-          Loading native interests
-        </span>
+          <LocalizedText source={"Loading native interests"} /></span>
       );
     }
 
@@ -331,16 +332,16 @@ class UserCard extends Component {
     const hated = asArray(interests?.hated ?? interests?.Hated);
 
     if (!interests) {
-      return <span>Click to load native Soulseek interests for {username}.</span>;
+      return <span><LocalizedText source={"Click to load native Soulseek interests for"} />{" "}{username}.</span>;
     }
 
     return (
       <div className="user-card-interest-popup">
         <div className="user-card-interest-section">
-          <strong>Liked</strong>
+          <strong><LocalizedText source={"Liked"} /></strong>
           <div>
             {liked.length === 0
-              ? 'None reported'
+              ? <LocalizedText source={"None reported"} />
               : liked.slice(0, 12).map((interest) => (
                 <span
                   className="user-card-interest user-card-interest-liked"
@@ -352,10 +353,10 @@ class UserCard extends Component {
           </div>
         </div>
         <div className="user-card-interest-section">
-          <strong>Hated</strong>
+          <strong><LocalizedText source={"Hated"} /></strong>
           <div>
             {hated.length === 0
-              ? 'None reported'
+              ? <LocalizedText source={"None reported"} />
               : hated.slice(0, 12).map((interest) => (
                 <span
                   className="user-card-interest user-card-interest-hated"
@@ -518,7 +519,7 @@ class UserCard extends Component {
                     name="heart outline"
                     size="small"
                   />
-                  <span className="user-card-stat-value">i</span>
+                  <span className="user-card-stat-value"><LocalizedText source={"i"} /></span>
                 </span>
               }
             />

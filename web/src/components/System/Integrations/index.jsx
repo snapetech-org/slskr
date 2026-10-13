@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../../lib/interfaceLocale";
 import MetadataProcessingPanel from './MetadataProcessingPanel';
 import SourceFeedIntegrationsPanel from './SourceFeedIntegrationsPanel';
 import NotificationIntegrationsPanel from './NotificationIntegrationsPanel';
@@ -33,12 +35,9 @@ const Integrations = ({ options = {}, state = {} }) => (
     <Segment>
       <Header as="h3">
         <Icon name="plug" />
-        Integrations
-      </Header>
+        <LocalizedText source={"Integrations"} /></Header>
       <p>
-        Operational status and admin actions for integrations that affect
-        connection routing, downloads, and external media managers.
-      </p>
+        <LocalizedText source={"Operational status and admin actions for integrations that affect connection routing, downloads, and external media managers."} /></p>
     </Segment>
     <VpnPanel
       options={options}

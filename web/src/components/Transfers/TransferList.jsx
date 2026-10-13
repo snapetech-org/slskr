@@ -1,5 +1,7 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import { formatBytes, getFileName } from '../../lib/util';
-import { useInterfaceLanguage } from '../../lib/interfaceLocale';
+
 import React, { Component } from 'react';
 import {
   Button,
@@ -29,7 +31,7 @@ const TransferStatus = ({ state, placeInQueue }) => {
   const label = getTransferStatusLabel(state);
   return (
     <span lang={languageFor(label)} dir={directionFor(label)}>
-      {t(label)}{placeInQueue ? ` (#${placeInQueue})` : ''}
+      {t(label)}{placeInQueue ? <LocalizedText source={"(#{placeInQueue})"} values={{ "placeInQueue": (placeInQueue) }} /> : ''}
     </span>
   );
 };
@@ -127,7 +129,7 @@ class TransferList extends Component {
                   <Table.Row>
                     <Table.HeaderCell className="transferlist-selector">
                       <Checkbox
-                        aria-label={`Select all transfers in ${directoryName}`}
+                        aria-label={interfaceText("Select all transfers in {directoryName}", { "directoryName": (directoryName) })}
                         checked={
                           files.length > 0 &&
                           files.filter((f) => !f.selected).length === 0
@@ -142,20 +144,16 @@ class TransferList extends Component {
                             ),
                           )
                         }
-                      />
+                       {...interfaceTextProps("Select all transfers in {directoryName}")}/>
                     </Table.HeaderCell>
                     <Table.HeaderCell className="transferlist-filename">
-                      File
-                    </Table.HeaderCell>
+                      <LocalizedText source={"File"} /></Table.HeaderCell>
                     <Table.HeaderCell className="transferlist-progress">
-                      Progress
-                    </Table.HeaderCell>
+                      <LocalizedText source={"Progress"} /></Table.HeaderCell>
                     <Table.HeaderCell className="transferlist-speed">
-                      Speed
-                    </Table.HeaderCell>
+                      <LocalizedText source={"Speed"} /></Table.HeaderCell>
                     <Table.HeaderCell className="transferlist-size">
-                      Size
-                    </Table.HeaderCell>
+                      <LocalizedText source={"Size"} /></Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>

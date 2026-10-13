@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import {
   CodeEditor,
   LoaderSegment,
@@ -16,6 +18,7 @@ const DebugButton = ({
   setDebugModal,
   ...props
 }) => {
+  useInterfaceLanguage();
   if (!remoteConfiguration || !debug) return null;
 
   return (
@@ -25,12 +28,12 @@ const DebugButton = ({
       onClick={() => setDebugModal(true)}
       {...props}
     >
-      Debug View
-    </ShrinkableButton>
+      <LocalizedText source={"Debug View"} /></ShrinkableButton>
   );
 };
 
 const EditButton = ({ remoteConfiguration, setEditModal, ...props }) => {
+  useInterfaceLanguage();
   if (!remoteConfiguration) {
     return (
       <ShrinkableButton
@@ -38,8 +41,7 @@ const EditButton = ({ remoteConfiguration, setEditModal, ...props }) => {
         icon="lock"
         mediaQuery="(max-width: 516px)"
       >
-        Remote Configuration Disabled
-      </ShrinkableButton>
+        <LocalizedText source={"Remote Configuration Disabled"} /></ShrinkableButton>
     );
   }
 
@@ -51,12 +53,12 @@ const EditButton = ({ remoteConfiguration, setEditModal, ...props }) => {
       primary
       {...props}
     >
-      Edit
-    </ShrinkableButton>
+      <LocalizedText source={"Edit"} /></ShrinkableButton>
   );
 };
 
 const Options = ({ options, theme }) => {
+  useInterfaceLanguage();
   const [debugModal, setDebugModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const [contents, setContents] = useState();
@@ -92,12 +94,12 @@ const Options = ({ options, theme }) => {
       <Divider />
       <Switch loading={!contents && <LoaderSegment />}>
         <CodeEditor
-          ariaLabel="Server options JSON"
+          ariaLabel={interfaceText("Server options JSON")}
           basicSetup={false}
           editable={false}
           theme={theme}
           value={contents}
-        />
+         {...interfaceTextProps("Server options JSON")}/>
       </Switch>
       <DebugModal
         onClose={() => setDebugModal(false)}

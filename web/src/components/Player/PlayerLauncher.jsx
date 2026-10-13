@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import * as collectionsAPI from '../../lib/collections';
 import { toDisplayError } from '../../lib/errors';
 import { useMountedRef } from '../../lib/useMountedRef';
@@ -46,6 +48,7 @@ const getBrowserRequestKey = (path, query, offset) =>
   JSON.stringify([path, query, offset]);
 
 const PlayerLauncher = ({ compact = false, onPlayItem }) => {
+  useInterfaceLanguage();
   const navigate = useNavigate();
   const mountedRef = useMountedRef();
   const collectionItemsRequestIdRef = useRef(0);
@@ -273,10 +276,10 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
   return (
     <div className="player-launcher">
       <Popup
-        content="Browse your collections and play an item from a playlist or share list."
+        content={interfaceText("Browse your collections and play an item from a playlist or share list.")}
         trigger={
           <Button
-            aria-label="Open collections browser"
+            aria-label={interfaceText("Open collections browser")}
             className="player-library-button"
             compact
             data-testid="player-open-collections-browser"
@@ -284,18 +287,18 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
             labelPosition={compact ? undefined : 'left'}
             onClick={openCollections}
             size="small"
-            title="Open collections browser"
-          >
+            title={interfaceText("Open collections browser")}
+           {...interfaceTextProps("Open collections browser")}>
             <Icon name="list" />
-            {compact ? null : 'Collections'}
+            {compact ? null : <LocalizedText source={"Collections"} />}
           </Button>
         }
-      />
+       {...interfaceTextProps("Browse your collections and play an item from a playlist or share list.")}/>
       <Popup
-        content="Browse shared and downloaded local audio that slskr can stream in this browser."
+        content={interfaceText("Browse shared and downloaded local audio that slskr can stream in this browser.")}
         trigger={
           <Button
-            aria-label="Open local audio file browser"
+            aria-label={interfaceText("Open local audio file browser")}
             className="player-library-button"
             compact
             data-testid="player-open-file-browser"
@@ -303,13 +306,13 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
             labelPosition={compact ? undefined : 'left'}
             onClick={openFileBrowser}
             size="small"
-            title="Open local audio file browser"
-          >
+            title={interfaceText("Open local audio file browser")}
+           {...interfaceTextProps("Open local audio file browser")}>
             <Icon name="folder open" />
-            {compact ? null : 'Files'}
+            {compact ? null : <LocalizedText source={"Files"} />}
           </Button>
         }
-      />
+       {...interfaceTextProps("Browse shared and downloaded local audio that slskr can stream in this browser.")}/>
 
       <Modal
         className="player-browser-modal"
@@ -318,15 +321,15 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
         open={collectionsOpen}
         size="large"
       >
-        <Modal.Header>Choose from Collections</Modal.Header>
+        <Modal.Header><LocalizedText source={"Choose from Collections"} /></Modal.Header>
         <Modal.Content>
           <div className="player-browser-grid">
             <Segment className="player-browser-panel">
-              <Header as="h4">Collections</Header>
+              <Header as="h4"><LocalizedText source={"Collections"} /></Header>
               {collectionsError ? (
                 <Message negative>{collectionsError}</Message>
               ) : collections.length === 0 ? (
-                <Message info>No collections found.</Message>
+                <Message info><LocalizedText source={"No collections found."} /></Message>
               ) : (
                 <Table compact selectable>
                   <Table.Body>
@@ -354,19 +357,19 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
                 {selectedCollection?.title || 'Collection Items'}
               </Header>
               {!selectedCollection ? (
-                <Message info>Select a collection to see its tracks.</Message>
+                <Message info><LocalizedText source={"Select a collection to see its tracks."} /></Message>
               ) : collectionItemsLoading ? (
-                <Message info>Loading collection items...</Message>
+                <Message info><LocalizedText source={"Loading collection items..."} /></Message>
               ) : collectionItemsError ? (
                 <Message negative>{collectionItemsError}</Message>
               ) : collectionItems.length === 0 ? (
-                <Message info>No playable items in this collection.</Message>
+                <Message info><LocalizedText source={"No playable items in this collection."} /></Message>
               ) : (
                 <Table compact>
                   <Table.Header>
                     <Table.Row>
-                      <Table.HeaderCell>Track</Table.HeaderCell>
-                      <Table.HeaderCell collapsing>Action</Table.HeaderCell>
+                      <Table.HeaderCell><LocalizedText source={"Track"} /></Table.HeaderCell>
+                      <Table.HeaderCell collapsing><LocalizedText source={"Action"} /></Table.HeaderCell>
                     </Table.Row>
                   </Table.Header>
                   <Table.Body>
@@ -382,7 +385,7 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
                         </Table.Cell>
                         <Table.Cell collapsing>
                           <Popup
-                            content="Play this collection item in the browser player."
+                            content={interfaceText("Play this collection item in the browser player.")}
                             trigger={
                               <Button
                                 data-testid={`player-play-collection-item-${item.contentId}`}
@@ -393,7 +396,7 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
                                 <Icon name="play" />
                               </Button>
                             }
-                          />
+                           {...interfaceTextProps("Play this collection item in the browser player.")}/>
                         </Table.Cell>
                       </Table.Row>
                     ))}
@@ -405,7 +408,7 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
         </Modal.Content>
         <Modal.Actions>
           <Popup
-            content="Open the full Collections page to create, edit, or share collections."
+            content={interfaceText("Open the full Collections page to create, edit, or share collections.")}
             trigger={
               <Button
                 data-testid="player-manage-collections"
@@ -415,16 +418,15 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
                 }}
               >
                 <Icon name="external alternate" />
-                Manage Collections
-              </Button>
+                <LocalizedText source={"Manage Collections"} /></Button>
             }
-          />
+           {...interfaceTextProps("Open the full Collections page to create, edit, or share collections.")}/>
           <Popup
-            content="Close the collection picker without changing playback."
+            content={interfaceText("Close the collection picker without changing playback.")}
             trigger={
-              <Button onClick={closeCollections}>Close</Button>
+              <Button onClick={closeCollections}><LocalizedText source={"Close"} /></Button>
             }
-          />
+           {...interfaceTextProps("Close the collection picker without changing playback.")}/>
         </Modal.Actions>
       </Modal>
 
@@ -435,7 +437,7 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
         open={filesOpen}
         size="fullscreen"
       >
-        <Modal.Header>Browse Local Audio Library</Modal.Header>
+        <Modal.Header><LocalizedText source={"Browse Local Audio Library"} /></Modal.Header>
         <Modal.Content>
           <div className="player-file-explorer">
             <div className="player-file-explorer-toolbar">
@@ -444,15 +446,15 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
                 fluid
                 icon="search"
                 onChange={(_, { value }) => updateBrowserQuery(value)}
-                placeholder="Search all audio by file, artist folder, album folder, or path"
+                placeholder={interfaceText("Search all audio by file, artist folder, album folder, or path")}
                 value={query}
-              />
+               {...interfaceTextProps("Search all audio by file, artist folder, album folder, or path")}/>
               <div className="player-file-explorer-counts">
                 {itemsLoading
                   ? 'Loading...'
-                  : `${shownFileCount} of ${visibleBrowserStats.totalFiles} tracks`}
+                  : <LocalizedText source={"{shownFileCount} of {totalFiles} tracks"} values={{ "shownFileCount": (shownFileCount), "totalFiles": (visibleBrowserStats.totalFiles) }} />}
                 {visibleBrowserStats.duplicatesRemoved > 0
-                  ? `, ${visibleBrowserStats.duplicatesRemoved} duplicates collapsed`
+                  ? <LocalizedText source={", {duplicatesRemoved} duplicates collapsed"} values={{ "duplicatesRemoved": (visibleBrowserStats.duplicatesRemoved) }} />
                   : ''}
               </div>
             </div>
@@ -468,9 +470,9 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
                       className="player-file-breadcrumb"
                       data-testid={`player-file-breadcrumb-${index}`}
                       onClick={() => openBrowserPath(breadcrumb.path)}
-                      title={`Open ${breadcrumb.name}`}
+                      title={interfaceText("Open {name}", { "name": (breadcrumb.name) })}
                       type="button"
-                    >
+                     {...interfaceTextProps("Open {name}")}>
                       {breadcrumb.name}
                     </button>
                   </React.Fragment>
@@ -480,18 +482,15 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
             <div className="player-file-explorer-body">
               <aside className="player-file-explorer-folders">
                 <div className="player-file-explorer-section-title">
-                  Folders
-                </div>
+                  <LocalizedText source={"Folders"} /></div>
                 {!hasCurrentBrowserData ? (
-                  browserError ? null : <Message info compact>Loading folders...</Message>
+                  browserError ? null : <Message info compact><LocalizedText source={"Loading folders..."} /></Message>
                 ) : query ? (
                   <Message info compact>
-                    Clear search to browse folders.
-                  </Message>
+                    <LocalizedText source={"Clear search to browse folders."} /></Message>
                 ) : visibleBrowserDirectories.length === 0 ? (
                   <Message info compact>
-                    No child folders here.
-                  </Message>
+                    <LocalizedText source={"No child folders here."} /></Message>
                 ) : (
                   visibleBrowserDirectories.map((directory) => (
                     <button
@@ -499,16 +498,15 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
                       data-testid={`player-file-folder-${directory.path}`}
                       key={directory.path}
                       onClick={() => openBrowserPath(directory.path)}
-                      title={`Open ${directory.name}`}
+                      title={interfaceText("Open {name}", { "name": (directory.name) })}
                       type="button"
-                    >
+                     {...interfaceTextProps("Open {name}")}>
                       <Icon name="folder" />
                       <span>
                         <strong>{directory.name}</strong>
                         <small>
-                          {directory.fileCount} tracks
-                          {directory.childDirectoryCount
-                            ? `, ${directory.childDirectoryCount} folders`
+                          {directory.fileCount} <LocalizedText source={"tracks"} />{directory.childDirectoryCount
+                            ? <LocalizedText source={", {childDirectoryCount} folders"} values={{ "childDirectoryCount": (directory.childDirectoryCount) }} />
                             : ''}
                         </small>
                       </span>
@@ -519,24 +517,24 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
 
               <section className="player-file-explorer-files">
                 <div className="player-file-explorer-section-title">
-                  {query ? 'Search Results' : browserPath || 'Library Root'}
+                  {query ? <LocalizedText source={"Search Results"} /> : browserPath || 'Library Root'}
                 </div>
                 {itemsLoading ? (
-                  <Message info>Loading audio files...</Message>
+                  <Message info><LocalizedText source={"Loading audio files..."} /></Message>
                 ) : !hasCurrentBrowserData ? null : visibleBrowserItems.length === 0 ? (
                   <Message info>
                     {query && query.length < 2
-                      ? 'Type at least two characters to search.'
-                      : 'No local audio files found here.'}
+                      ? <LocalizedText source={"Type at least two characters to search."} />
+                      : <LocalizedText source={"No local audio files found here."} />}
                   </Message>
                 ) : (
                   <Table compact selectable>
                     <Table.Header>
                       <Table.Row>
-                        <Table.HeaderCell>Track</Table.HeaderCell>
-                        <Table.HeaderCell>Location</Table.HeaderCell>
-                        <Table.HeaderCell collapsing>Copies</Table.HeaderCell>
-                        <Table.HeaderCell collapsing>Action</Table.HeaderCell>
+                        <Table.HeaderCell><LocalizedText source={"Track"} /></Table.HeaderCell>
+                        <Table.HeaderCell><LocalizedText source={"Location"} /></Table.HeaderCell>
+                        <Table.HeaderCell collapsing><LocalizedText source={"Copies"} /></Table.HeaderCell>
+                        <Table.HeaderCell collapsing><LocalizedText source={"Action"} /></Table.HeaderCell>
                       </Table.Row>
                     </Table.Header>
                     <Table.Body>
@@ -561,7 +559,7 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
                           </Table.Cell>
                           <Table.Cell collapsing>
                             <Popup
-                              content="Play this local file in the browser player."
+                              content={interfaceText("Play this local file in the browser player.")}
                               trigger={
                                 <Button
                                   aria-label={`Play ${item.fileName || item.contentId}`}
@@ -574,7 +572,7 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
                                   <Icon name="play" />
                                 </Button>
                               }
-                            />
+                             {...interfaceTextProps("Play this local file in the browser player.")}/>
                           </Table.Cell>
                         </Table.Row>
                       ))}
@@ -583,7 +581,7 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
                 )}
                 <div className="player-file-explorer-pager">
                   <Popup
-                    content="Move to the previous page of files in this folder or search."
+                    content={interfaceText("Move to the previous page of files in this folder or search.")}
                     trigger={
                       <Button
                         disabled={browserOffset === 0 || itemsLoading}
@@ -593,12 +591,11 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
                         size="small"
                       >
                         <Icon name="angle left" />
-                        Previous
-                      </Button>
+                        <LocalizedText source={"Previous"} /></Button>
                     }
-                  />
+                   {...interfaceTextProps("Move to the previous page of files in this folder or search.")}/>
                   <Popup
-                    content="Move to the next page of files in this folder or search."
+                    content={interfaceText("Move to the next page of files in this folder or search.")}
                     trigger={
                       <Button
                         disabled={!hasCurrentBrowserData || !browserHasMore || itemsLoading}
@@ -607,11 +604,10 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
                         )}
                         size="small"
                       >
-                        Next
-                        <Icon name="angle right" />
+                        <LocalizedText source={"Next"} /><Icon name="angle right" />
                       </Button>
                     }
-                  />
+                   {...interfaceTextProps("Move to the next page of files in this folder or search.")}/>
                 </div>
               </section>
             </div>
@@ -619,9 +615,9 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
         </Modal.Content>
         <Modal.Actions>
           <Popup
-            content="Close the local file browser without changing playback."
-            trigger={<Button onClick={closeFileBrowser}>Close</Button>}
-          />
+            content={interfaceText("Close the local file browser without changing playback.")}
+            trigger={<Button onClick={closeFileBrowser}><LocalizedText source={"Close"} /></Button>}
+           {...interfaceTextProps("Close the local file browser without changing playback.")}/>
         </Modal.Actions>
       </Modal>
     </div>

@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import * as searches from '../../lib/searches';
 import * as wishlistAPI from '../../lib/wishlist';
 import {
@@ -29,6 +31,7 @@ const PlayerQueueModal = ({
   open,
   queue,
 }) => {
+  useInterfaceLanguage();
   const upcoming = queue.slice(1);
   const [handoffStatus, setHandoffStatus] = useState('');
   const [searchingSimilar, setSearchingSimilar] = useState(false);
@@ -65,7 +68,7 @@ const PlayerQueueModal = ({
       mountedRef.current && openRef.current && actionRequestIdRef.current === requestId;
     const queries = getSimilarQueueSearchQueries(similarCandidates, { limit: 3 });
     if (queries.length === 0) {
-      setHandoffStatus('No similar queue candidates are ready to search.');
+      setHandoffStatus(interfaceText('No similar queue candidates are ready to search.'));
       return;
     }
 
@@ -74,10 +77,10 @@ const PlayerQueueModal = ({
       setSearchingSimilar(true);
       const count = await searches.createBatch({ queries });
       if (!isCurrentRequest()) return;
-      setHandoffStatus(`Started ${count} similar-track search${count === 1 ? '' : 'es'}.`);
+      setHandoffStatus(interfaceText('Similar-track searches started: {count}.', { count }));
     } catch {
       if (!isCurrentRequest()) return;
-      setHandoffStatus('Unable to start similar-track searches.');
+      setHandoffStatus(interfaceText('Unable to start similar-track searches.'));
     } finally {
       actionInFlightRef.current = false;
       if (isCurrentRequest()) setSearchingSimilar(false);
@@ -97,7 +100,7 @@ const PlayerQueueModal = ({
       mountedRef.current && openRef.current && actionRequestIdRef.current === requestId;
     const queries = getSimilarQueueSearchQueries(similarCandidates, { limit: 5 });
     if (queries.length === 0) {
-      setHandoffStatus('No similar queue candidates are ready for Wishlist.');
+      setHandoffStatus(interfaceText('No similar queue candidates are ready for Wishlist.'));
       return;
     }
 
@@ -118,10 +121,10 @@ const PlayerQueueModal = ({
         Promise.resolve(),
       );
       if (!isCurrentRequest()) return;
-      setHandoffStatus(`Added ${queries.length} similar-track seed${queries.length === 1 ? '' : 's'} to Wishlist.`);
+      setHandoffStatus(interfaceText('Similar-track Wishlist seeds added: {count}.', { count: queries.length }));
     } catch {
       if (!isCurrentRequest()) return;
-      setHandoffStatus('Unable to add similar-track seeds to Wishlist.');
+      setHandoffStatus(interfaceText('Unable to add similar-track seeds to Wishlist.'));
     } finally {
       actionInFlightRef.current = false;
       if (isCurrentRequest()) setSavingSimilarWishlist(false);
@@ -135,11 +138,11 @@ const PlayerQueueModal = ({
       open={open}
       size="small"
     >
-      <Modal.Header>Playback Queue</Modal.Header>
+      <Modal.Header><LocalizedText source={"Playback Queue"} /></Modal.Header>
       <Modal.Content>
         <div className="player-queue-manager">
           <section>
-            <div className="player-panel-title">Now Playing</div>
+            <div className="player-panel-title"><LocalizedText source={"Now Playing"} /></div>
             <div className="player-queue-manager-row player-queue-manager-current">
               <Icon name="play circle outline" />
               <div>
@@ -150,10 +153,10 @@ const PlayerQueueModal = ({
           </section>
           <section>
             <div className="player-queue-manager-heading">
-              <div className="player-panel-title">Upcoming</div>
+              <div className="player-panel-title"><LocalizedText source={"Upcoming"} /></div>
               <div className="player-queue-manager-actions">
                 <Popup
-                  content="Add similar recent session tracks to the upcoming queue. This only uses tracks already known to this browser session."
+                  content={interfaceText("Add similar recent session tracks to the upcoming queue. This only uses tracks already known to this browser session.")}
                   trigger={
                     <Button
                       data-testid="player-auto-queue-similar"
@@ -167,12 +170,11 @@ const PlayerQueueModal = ({
                       type="button"
                     >
                       <Icon name="magic" />
-                      Auto-fill Similar
-                    </Button>
+                      <LocalizedText source={"Auto-fill Similar"} /></Button>
                   }
-                />
+                 {...interfaceTextProps("Add similar recent session tracks to the upcoming queue. This only uses tracks already known to this browser session.")}/>
                 <Popup
-                  content="Start up to three searches from similar recent session tracks. This starts search jobs only."
+                  content={interfaceText("Start up to three searches from similar recent session tracks. This starts search jobs only.")}
                   trigger={
                     <Button
               data-testid="player-search-similar-candidates"
@@ -183,12 +185,11 @@ const PlayerQueueModal = ({
                       type="button"
                     >
                       <Icon name="search" />
-                      Search Similar
-                    </Button>
+                      <LocalizedText source={"Search Similar"} /></Button>
                   }
-                />
+                 {...interfaceTextProps("Start up to three searches from similar recent session tracks. This starts search jobs only.")}/>
                 <Popup
-                  content="Add similar recent session tracks to Wishlist as manual requests with auto-download off."
+                  content={interfaceText("Add similar recent session tracks to Wishlist as manual requests with auto-download off.")}
                   trigger={
                     <Button
               data-testid="player-wishlist-similar-candidates"
@@ -199,12 +200,11 @@ const PlayerQueueModal = ({
                       type="button"
                     >
                       <Icon name="heart" />
-                      Wishlist Similar
-                    </Button>
+                      <LocalizedText source={"Wishlist Similar"} /></Button>
                   }
-                />
+                 {...interfaceTextProps("Add similar recent session tracks to Wishlist as manual requests with auto-download off.")}/>
                 <Popup
-                  content="Remove every upcoming item while keeping the current track playing."
+                  content={interfaceText("Remove every upcoming item while keeping the current track playing.")}
                   trigger={
                     <Button
                       data-testid="player-clear-upcoming"
@@ -214,10 +214,9 @@ const PlayerQueueModal = ({
                       type="button"
                     >
                       <Icon name="trash alternate outline" />
-                      Clear Upcoming
-                    </Button>
+                      <LocalizedText source={"Clear Upcoming"} /></Button>
                   }
-                />
+                 {...interfaceTextProps("Remove every upcoming item while keeping the current track playing.")}/>
               </div>
             </div>
             {upcoming.length > 0 ? (
@@ -234,7 +233,7 @@ const PlayerQueueModal = ({
                       <span>{item.artist || item.album || item.contentId}</span>
                     </div>
                     <Popup
-                      content="Remove this upcoming item from the local playback queue."
+                      content={interfaceText("Remove this upcoming item from the local playback queue.")}
                       trigger={
                         <Button
                           aria-label={`Remove ${getTrackLabel(item)} from queue`}
@@ -247,14 +246,13 @@ const PlayerQueueModal = ({
                           <Icon name="close" />
                         </Button>
                       }
-                    />
+                     {...interfaceTextProps("Remove this upcoming item from the local playback queue.")}/>
                   </div>
                 ))}
               </div>
             ) : (
               <div className="player-queue-manager-empty">
-                No upcoming tracks.
-              </div>
+                <LocalizedText source={"No upcoming tracks."} /></div>
             )}
           </section>
           {handoffStatus ? (
@@ -263,7 +261,7 @@ const PlayerQueueModal = ({
             </Message>
           ) : null}
           <section>
-            <div className="player-panel-title">Recent</div>
+            <div className="player-panel-title"><LocalizedText source={"Recent"} /></div>
             {history.length > 0 ? (
               <div className="player-queue-manager-list">
                 {history.slice(0, 5).map((item, index) => (
@@ -281,15 +279,14 @@ const PlayerQueueModal = ({
               </div>
             ) : (
               <div className="player-queue-manager-empty">
-                No recent tracks in this session.
-              </div>
+                <LocalizedText source={"No recent tracks in this session."} /></div>
             )}
           </section>
         </div>
       </Modal.Content>
       <Modal.Actions>
         <Popup
-          content="Jump back to the previous session track, or restart the current track if there is no history."
+          content={interfaceText("Jump back to the previous session track, or restart the current track if there is no history.")}
           trigger={
             <Button
               data-testid="player-queue-previous"
@@ -298,12 +295,11 @@ const PlayerQueueModal = ({
               type="button"
             >
               <Icon name="step backward" />
-              Previous
-            </Button>
+              <LocalizedText source={"Previous"} /></Button>
           }
-        />
+         {...interfaceTextProps("Jump back to the previous session track, or restart the current track if there is no history.")}/>
         <Popup
-          content="Advance to the next queued track."
+          content={interfaceText("Advance to the next queued track.")}
           trigger={
             <Button
               data-testid="player-queue-next"
@@ -312,12 +308,11 @@ const PlayerQueueModal = ({
               type="button"
             >
               <Icon name="step forward" />
-              Next
-            </Button>
+              <LocalizedText source={"Next"} /></Button>
           }
-        />
+         {...interfaceTextProps("Advance to the next queued track.")}/>
         <Popup
-          content="Close the queue manager."
+          content={interfaceText("Close the queue manager.")}
           trigger={
             <Button
               data-testid="player-queue-close"
@@ -326,10 +321,9 @@ const PlayerQueueModal = ({
               type="button"
             >
               <Icon name="check" />
-              Done
-            </Button>
+              <LocalizedText source={"Done"} /></Button>
           }
-        />
+         {...interfaceTextProps("Close the queue manager.")}/>
       </Modal.Actions>
     </Modal>
   );

@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import * as libraryHealth from '../../../lib/libraryHealth';
 import { copyToClipboard } from '../../../lib/clipboard';
 import { toDisplayError } from '../../../lib/errors';
@@ -31,6 +33,7 @@ import {
 } from 'semantic-ui-react';
 
 const LibraryHealth = () => {
+  useInterfaceLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
   const [libraryPath, setLibraryPath] = useState('');
   const [scanning, setScanning] = useState(false);
@@ -179,7 +182,7 @@ const LibraryHealth = () => {
     if (!mountedRef.current || scanning) return;
     const path = libraryPath.trim();
     if (!path) {
-      setError('Please enter a library path');
+      setError(interfaceText("Please enter a library path"));
       return;
     }
 
@@ -275,7 +278,7 @@ const LibraryHealth = () => {
   const handleFixSelected = async () => {
     if (!mountedRef.current || fixing) return;
     if (selectedIssues.size === 0) {
-      setError('Please select issues to fix');
+      setError(interfaceText("Please select issues to fix"));
       return;
     }
 
@@ -283,7 +286,7 @@ const LibraryHealth = () => {
       selectedIssues.has(issue.issueId));
     const issueIds = getLibraryHealthSafeFixIssueIds(selectedIssueList);
     if (issueIds.length === 0) {
-      setError('Select at least one auto-fixable issue.');
+      setError(interfaceText("Select at least one auto-fixable issue."));
       return;
     }
 
@@ -299,7 +302,7 @@ const LibraryHealth = () => {
         return;
       }
       setSelectedIssues(new Set());
-      setReportMessage(`Queued remediation job for ${issueIds.length} auto-fixable issue${issueIds.length === 1 ? '' : 's'}.`);
+      setReportMessage(interfaceText('Remediation job queued for auto-fixable issues: {count}.', { count: issueIds.length }));
       // Reload issues after a delay
       scheduleSummaryReload(libraryPath);
     } catch (error_) {
@@ -333,7 +336,7 @@ const LibraryHealth = () => {
       ) {
         return;
       }
-      setReportMessage('Queued remediation job for 1 auto-fixable issue.');
+      setReportMessage(interfaceText('Remediation job queued for auto-fixable issues: {count}.', { count: 1 }));
       scheduleSummaryReload(libraryPath);
     } catch (error_) {
       if (!mountedRef.current) return;
@@ -478,7 +481,7 @@ const LibraryHealth = () => {
     });
 
     if (queries.length === 0) {
-      setError('Selected issues do not have replacement search candidates.');
+      setError(interfaceText("Selected issues do not have replacement search candidates."));
       return;
     }
 
@@ -494,7 +497,7 @@ const LibraryHealth = () => {
         return;
       }
       const startedCount = Number.isFinite(count) ? count : queries.length;
-      setReportMessage(`Started ${startedCount} bounded replacement search${startedCount === 1 ? '' : 'es'} for selected Library Health issues.`);
+      setReportMessage(interfaceText('Bounded replacement searches started for selected Library Health issues: {count}.', { count: startedCount }));
     } catch (error_) {
       if (
         mountedRef.current &&
@@ -521,10 +524,8 @@ const LibraryHealth = () => {
               <Header as="h3">
                 <Icon name="heartbeat" />
                 <Header.Content>
-                  Library Health Scanner
-                  <Header.Subheader>
-                    Detect quality issues, transcodes, and missing tracks
-                  </Header.Subheader>
+                  <LocalizedText source={"Library Health Scanner"} /><Header.Subheader>
+                    <LocalizedText source={"Detect quality issues, transcodes, and missing tracks"} /></Header.Subheader>
                 </Header.Content>
               </Header>
             </Segment>
@@ -543,15 +544,15 @@ const LibraryHealth = () => {
                     primary
                   >
                     <Icon name="search" />
-                    {scanning ? 'Scanning...' : 'Start Scan'}
+                    {scanning ? 'Scanning...' : <LocalizedText source={"Start Scan"} />}
                   </Button>
                 }
                 disabled={scanning}
                 fluid
                 onChange={(e) => setLibraryPath(e.target.value)}
-                placeholder="Enter library path (e.g., /music or C:\Music)"
+                placeholder={interfaceText("Enter library path (e.g., /music or C:\\Music)")}
                 value={libraryPath}
-              />
+               {...interfaceTextProps("Enter library path (e.g., /music or C:\\Music)")}/>
             </Segment>
           </Grid.Column>
         </Grid.Row>
@@ -570,7 +571,7 @@ const LibraryHealth = () => {
         {loading ? (
           <Grid.Row>
             <Grid.Column width={16}>
-              <LoaderSegment>Loading library health data...</LoaderSegment>
+              <LoaderSegment><LocalizedText source={"Loading library health data..."} /></LoaderSegment>
             </Grid.Column>
           </Grid.Row>
         ) : summary ? (
@@ -581,21 +582,21 @@ const LibraryHealth = () => {
                   <Statistic.Group widths="three">
                     <Statistic>
                       <Statistic.Value>{summary.totalIssues}</Statistic.Value>
-                      <Statistic.Label>Total Issues</Statistic.Label>
+                      <Statistic.Label><LocalizedText source={"Total Issues"} /></Statistic.Label>
                     </Statistic>
                     <Statistic color="red">
                       <Statistic.Value>{summary.issuesOpen}</Statistic.Value>
-                      <Statistic.Label>Open</Statistic.Label>
+                      <Statistic.Label><LocalizedText source={"Open"} /></Statistic.Label>
                     </Statistic>
                     <Statistic color="green">
                       <Statistic.Value>
                         {summary.issuesResolved}
                       </Statistic.Value>
-                      <Statistic.Label>Resolved</Statistic.Label>
+                      <Statistic.Label><LocalizedText source={"Resolved"} /></Statistic.Label>
                     </Statistic>
                   </Statistic.Group>
                   <Popup
-                    content="Copy a read-only health report for offline review. This does not fix, rescan, quarantine, search, or mutate files."
+                    content={interfaceText("Copy a read-only health report for offline review. This does not fix, rescan, quarantine, search, or mutate files.")}
                     trigger={
                       <Button
                         data-testid="library-health-copy-report"
@@ -604,10 +605,9 @@ const LibraryHealth = () => {
                         type="button"
                       >
                         <Icon name="copy" />
-                        Copy Report
-                      </Button>
+                        <LocalizedText source={"Copy Report"} /></Button>
                     }
-                  />
+                   {...interfaceTextProps("Copy a read-only health report for offline review. This does not fix, rescan, quarantine, search, or mutate files.")}/>
                   {reportMessage ? (
                     <Message
                       compact
@@ -624,14 +624,13 @@ const LibraryHealth = () => {
             <Grid.Row>
               <Grid.Column width={8}>
                 <Segment>
-                  <Header as="h4">Issues by Type</Header>
+                  <Header as="h4"><LocalizedText source={"Issues by Type"} /></Header>
                   <Table compact>
                     <Table.Header>
                       <Table.Row>
-                        <Table.HeaderCell>Type</Table.HeaderCell>
+                        <Table.HeaderCell><LocalizedText source={"Type"} /></Table.HeaderCell>
                         <Table.HeaderCell textAlign="right">
-                          Count
-                        </Table.HeaderCell>
+                          <LocalizedText source={"Count"} /></Table.HeaderCell>
                       </Table.Row>
                     </Table.Header>
                     <Table.Body>
@@ -641,15 +640,14 @@ const LibraryHealth = () => {
                             colSpan={2}
                             textAlign="center"
                           >
-                            No issues detected
-                          </Table.Cell>
+                            <LocalizedText source={"No issues detected"} /></Table.Cell>
                         </Table.Row>
                       ) : (
                         issuesByType.map((group) => (
                           <Table.Row key={group.type}>
                             <Table.Cell>
                               <Label basic>
-                                {getIssueTypeLabel(group.type)}
+                                <LocalizedText source={getIssueTypeLabel(group.type)} />
                               </Label>
                             </Table.Cell>
                             <Table.Cell textAlign="right">
@@ -665,14 +663,13 @@ const LibraryHealth = () => {
 
               <Grid.Column width={8}>
                 <Segment>
-                  <Header as="h4">Top Artists with Issues</Header>
+                  <Header as="h4"><LocalizedText source={"Top Artists with Issues"} /></Header>
                   <Table compact>
                     <Table.Header>
                       <Table.Row>
-                        <Table.HeaderCell>Artist</Table.HeaderCell>
+                        <Table.HeaderCell><LocalizedText source={"Artist"} /></Table.HeaderCell>
                         <Table.HeaderCell textAlign="right">
-                          Issues
-                        </Table.HeaderCell>
+                          <LocalizedText source={"Issues"} /></Table.HeaderCell>
                       </Table.Row>
                     </Table.Header>
                     <Table.Body>
@@ -682,8 +679,7 @@ const LibraryHealth = () => {
                             colSpan={2}
                             textAlign="center"
                           >
-                            No artist data available
-                          </Table.Cell>
+                            <LocalizedText source={"No artist data available"} /></Table.Cell>
                         </Table.Row>
                       ) : (
                         issuesByArtist.map((group, index) => (
@@ -707,8 +703,7 @@ const LibraryHealth = () => {
               <Segment placeholder>
                 <Header icon>
                   <Icon name="search" />
-                  Enter a library path and start a scan to detect issues
-                </Header>
+                  <LocalizedText source={"Enter a library path and start a scan to detect issues"} /></Header>
               </Segment>
             </Grid.Column>
           </Grid.Row>
@@ -738,11 +733,10 @@ const LibraryHealth = () => {
                   primary
                 >
                   <Icon name="wrench" />
-                  Fix {selectedIssues.size} Selected Issue
-                  {selectedIssues.size > 1 ? 's' : ''}
+                  <LocalizedText source={"Fix"} />{" "}{selectedIssues.size} <LocalizedText source={"Selected Issue"} />{selectedIssues.size > 1 ? <LocalizedText source={"s"} /> : ''}
                 </Button>
                 <Popup
-                  content="Start bounded live Soulseek replacement searches for selected replacement candidates. This starts searches only; it does not browse peers, download, quarantine, or mutate files."
+                  content={interfaceText("Start bounded live Soulseek replacement searches for selected replacement candidates. This starts searches only; it does not browse peers, download, quarantine, or mutate files.")}
                   trigger={
                     <Button
                       data-testid="library-health-run-replacement-searches"
@@ -752,19 +746,17 @@ const LibraryHealth = () => {
                       type="button"
                     >
                       <Icon name="search" />
-                      Start Replacement Searches
-                    </Button>
+                      <LocalizedText source={"Start Replacement Searches"} /></Button>
                   }
-                />
+                 {...interfaceTextProps("Start bounded live Soulseek replacement searches for selected replacement candidates. This starts searches only; it does not browse peers, download, quarantine, or mutate files.")}/>
                 <Button
                   basic
                   disabled={fixing}
                   onClick={() => setSelectedIssues(new Set())}
                 >
-                  Clear Selection
-                </Button>
+                  <LocalizedText source={"Clear Selection"} /></Button>
                 <Popup
-                  content="Copy a selected-issue action plan for review. This does not create remediation jobs, queue searches, quarantine files, or mutate files."
+                  content={interfaceText("Copy a selected-issue action plan for review. This does not create remediation jobs, queue searches, quarantine files, or mutate files.")}
                   trigger={
                     <Button
                       basic
@@ -774,12 +766,11 @@ const LibraryHealth = () => {
                       type="button"
                     >
                       <Icon name="copy" />
-                      Copy Action Plan
-                    </Button>
+                      <LocalizedText source={"Copy Action Plan"} /></Button>
                   }
-                />
+                 {...interfaceTextProps("Copy a selected-issue action plan for review. This does not create remediation jobs, queue searches, quarantine files, or mutate files.")}/>
                 <Popup
-                  content="Copy an auto-fixable issue manifest for review. This does not create a remediation job, execute safe fixes, or mutate files."
+                  content={interfaceText("Copy an auto-fixable issue manifest for review. This does not create a remediation job, execute safe fixes, or mutate files.")}
                   trigger={
                     <Button
                       basic
@@ -789,12 +780,11 @@ const LibraryHealth = () => {
                       type="button"
                     >
                       <Icon name="check circle" />
-                      Copy Safe-Fix Manifest
-                    </Button>
+                      <LocalizedText source={"Copy Safe-Fix Manifest"} /></Button>
                   }
-                />
+                 {...interfaceTextProps("Copy an auto-fixable issue manifest for review. This does not create a remediation job, execute safe fixes, or mutate files.")}/>
                 <Popup
-                  content="Copy replacement search seed queries for selected issues. This does not open Search, contact peers, download files, or mutate files."
+                  content={interfaceText("Copy replacement search seed queries for selected issues. This does not open Search, contact peers, download files, or mutate files.")}
                   trigger={
                     <Button
                       basic
@@ -804,12 +794,11 @@ const LibraryHealth = () => {
                       type="button"
                     >
                       <Icon name="search" />
-                      Copy Search Seeds
-                    </Button>
+                      <LocalizedText source={"Copy Search Seeds"} /></Button>
                   }
-                />
+                 {...interfaceTextProps("Copy replacement search seed queries for selected issues. This does not open Search, contact peers, download files, or mutate files.")}/>
                 <Popup
-                  content="Copy a manual quarantine review packet for selected risky issues. This does not change quarantine state, move files, send peer messages, or mutate files."
+                  content={interfaceText("Copy a manual quarantine review packet for selected risky issues. This does not change quarantine state, move files, send peer messages, or mutate files.")}
                   trigger={
                     <Button
                       basic
@@ -819,15 +808,14 @@ const LibraryHealth = () => {
                       type="button"
                     >
                       <Icon name="shield" />
-                      Copy Quarantine Packet
-                    </Button>
+                      <LocalizedText source={"Copy Quarantine Packet"} /></Button>
                   }
-                />
+                 {...interfaceTextProps("Copy a manual quarantine review packet for selected risky issues. This does not change quarantine state, move files, send peer messages, or mutate files.")}/>
               </Segment>
             )}
 
             {loading ? (
-              <LoaderSegment>Loading issues...</LoaderSegment>
+              <LoaderSegment><LocalizedText source={"Loading issues..."} /></LoaderSegment>
             ) : issues.length === 0 ? (
               <Segment placeholder>
                 <Header icon>
@@ -835,8 +823,7 @@ const LibraryHealth = () => {
                     color="green"
                     name="check circle"
                   />
-                  No issues detected
-                </Header>
+                  <LocalizedText source={"No issues detected"} /></Header>
               </Segment>
             ) : (
               <Table
@@ -855,15 +842,14 @@ const LibraryHealth = () => {
                         type="checkbox"
                       />
                     </Table.HeaderCell>
-                    <Table.HeaderCell>Type</Table.HeaderCell>
-                    <Table.HeaderCell>Severity</Table.HeaderCell>
-                    <Table.HeaderCell>Artist</Table.HeaderCell>
-                    <Table.HeaderCell>Track</Table.HeaderCell>
-                    <Table.HeaderCell>Reason</Table.HeaderCell>
-                    <Table.HeaderCell>Status</Table.HeaderCell>
+                    <Table.HeaderCell><LocalizedText source={"Type"} /></Table.HeaderCell>
+                    <Table.HeaderCell><LocalizedText source={"Severity"} /></Table.HeaderCell>
+                    <Table.HeaderCell><LocalizedText source={"Artist"} /></Table.HeaderCell>
+                    <Table.HeaderCell><LocalizedText source={"Track"} /></Table.HeaderCell>
+                    <Table.HeaderCell><LocalizedText source={"Reason"} /></Table.HeaderCell>
+                    <Table.HeaderCell><LocalizedText source={"Status"} /></Table.HeaderCell>
                     <Table.HeaderCell textAlign="center">
-                      Actions
-                    </Table.HeaderCell>
+                      <LocalizedText source={"Actions"} /></Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
@@ -882,7 +868,7 @@ const LibraryHealth = () => {
                           basic
                           size="small"
                         >
-                          {getIssueTypeLabel(issue.type)}
+                          <LocalizedText source={getIssueTypeLabel(issue.type)} />
                         </Label>
                       </Table.Cell>
                       <Table.Cell>
@@ -890,7 +876,7 @@ const LibraryHealth = () => {
                           color={getSeverityColor(issue.severity)}
                           size="small"
                         >
-                          {issue.severity}
+                          <LocalizedText source={issue.severity} />
                         </Label>
                       </Table.Cell>
                       <Table.Cell>{issue.artist || '-'}</Table.Cell>
@@ -915,13 +901,13 @@ const LibraryHealth = () => {
                           }
                           size="mini"
                         >
-                          {issue.status}
+                          <LocalizedText source={issue.status} />
                         </Label>
                       </Table.Cell>
                       <Table.Cell textAlign="center">
                         {issue.canAutoFix && issue.status === 'Detected' && (
                           <Popup
-                            content="Queue a remediation job for this auto-fixable issue. The backend still applies its remediation safeguards."
+                            content={interfaceText("Queue a remediation job for this auto-fixable issue. The backend still applies its remediation safeguards.")}
                             trigger={
                               <Button
                                 disabled={fixing}
@@ -930,10 +916,9 @@ const LibraryHealth = () => {
                                 size="tiny"
                               >
                                 <Icon name="wrench" />
-                                Fix
-                              </Button>
+                                <LocalizedText source={"Fix"} /></Button>
                             }
-                          />
+                           {...interfaceTextProps("Queue a remediation job for this auto-fixable issue. The backend still applies its remediation safeguards.")}/>
                         )}
                         {issue.status === 'Fixing' && (
                           <Loader
@@ -957,7 +942,7 @@ const LibraryHealth = () => {
   const panes = [
     {
       menuItem: {
-        content: 'Overview',
+        content: interfaceText("Overview"),
         icon: 'dashboard',
         key: 'overview',
       },
@@ -965,7 +950,7 @@ const LibraryHealth = () => {
     },
     {
       menuItem: {
-        content: 'All Issues',
+        content: interfaceText("All Issues"),
         icon: 'warning',
         key: 'issues',
       },

@@ -1,3 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+
+
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -28,6 +32,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const PodContentLinkingPanel = ({ contentId, setContentId, visible = true }) => {
+  useInterfaceLanguage();
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -54,7 +59,7 @@ const PodContentLinkingPanel = ({ contentId, setContentId, visible = true }) => 
 
   const handleValidateContentId = async () => {
     if (!contentId.trim()) {
-      toast.error('Content ID is required');
+      toast.error(interfaceText("Content ID is required"));
       return;
     }
 
@@ -121,17 +126,17 @@ const PodContentLinkingPanel = ({ contentId, setContentId, visible = true }) => 
 
   const handleCreateContentLinkedPod = async () => {
     if (!contentId.trim()) {
-      toast.error('Content ID is required');
+      toast.error(interfaceText("Content ID is required"));
       return;
     }
 
     if (!newPodName.trim()) {
-      toast.error('Pod name is required');
+      toast.error(interfaceText("Pod name is required"));
       return;
     }
 
     if (!contentValidation?.isValid) {
-      toast.error('Please validate the content ID first');
+      toast.error(interfaceText("Please validate the content ID first"));
       return;
     }
 
@@ -157,7 +162,7 @@ const PodContentLinkingPanel = ({ contentId, setContentId, visible = true }) => 
       };
 
       const createdPod = await mediacore.createContentLinkedPod(podRequest);
-      toast.success(`Pod "${createdPod.name}" created successfully!`);
+      toast.success(interfaceText("Pod \"{name}\" created successfully!", { "name": (createdPod.name) }));
 
       // Reset form
       setContentId('');
@@ -186,22 +191,16 @@ const PodContentLinkingPanel = ({ contentId, setContentId, visible = true }) => 
             <Card.Content>
               <Card.Header>
                 <Icon name="linkify" />
-                Pod Content Linking
-              </Card.Header>
+                <LocalizedText source={"Pod Content Linking"} /></Card.Header>
               <Card.Description>
-                Create pods linked to specific content (music, videos, etc.) for
-                focused discussions
-              </Card.Description>
-              <PodWorkflowNotice title="Can create content-linked pods">
-                Content search and validation are read-only. Creating a
-                content-linked pod can publish content identifiers and pod
-                metadata depending on visibility settings.
-              </PodWorkflowNotice>
+                <LocalizedText source={"Create pods linked to specific content (music, videos, etc.) for focused discussions"} /></Card.Description>
+              <PodWorkflowNotice title={interfaceText("Can create content-linked pods")} {...interfaceTextProps("Can create content-linked pods")}>
+                <LocalizedText source={"Content search and validation are read-only. Creating a content-linked pod can publish content identifiers and pod metadata depending on visibility settings."} /></PodWorkflowNotice>
             </Card.Content>
 
             {/* Content Linking */}
             <Card.Content>
-              <Header size="small">Content Search & Validation</Header>
+              <Header size="small"><LocalizedText source={"Content Search & Validation"} /></Header>
 
               {/* Content Search */}
               <Input
@@ -212,14 +211,13 @@ const PodContentLinkingPanel = ({ contentId, setContentId, visible = true }) => 
                     loading={contentSearchLoading}
                     onClick={() => handleSearchContent()}
                   >
-                    Search
-                  </Button>
+                    <LocalizedText source={"Search"} /></Button>
                 }
                 onChange={(e) => setContentSearchQuery(e.target.value)}
-                placeholder="Search for content (artist, album, movie, etc.)"
+                placeholder={interfaceText("Search for content (artist, album, movie, etc.)")}
                 style={{ marginBottom: '1em', width: '100%' }}
                 value={contentSearchQuery}
-              />
+               {...interfaceTextProps("Search for content (artist, album, movie, etc.)")}/>
 
               {/* Search Results */}
               {contentSearchError && (
@@ -234,7 +232,7 @@ const PodContentLinkingPanel = ({ contentId, setContentId, visible = true }) => 
 
               {contentSearchResults.length > 0 && (
                 <div style={{ marginBottom: '1em' }}>
-                  <Header size="tiny">Search Results</Header>
+                  <Header size="tiny"><LocalizedText source={"Search Results"} /></Header>
                   {contentSearchResults.map((item, index) => (
                     <Card
                       key={index}
@@ -262,14 +260,13 @@ const PodContentLinkingPanel = ({ contentId, setContentId, visible = true }) => 
                     loading={contentValidationLoading}
                     onClick={() => handleValidateContentId()}
                   >
-                    Validate
-                  </Button>
+                    <LocalizedText source={"Validate"} /></Button>
                 }
                 onChange={(e) => setContentId(e.target.value)}
-                placeholder="Content ID (e.g., content:audio:album:mb-release-id)"
+                placeholder={interfaceText("Content ID (e.g., content:audio:album:mb-release-id)")}
                 style={{ marginBottom: '1em', width: '100%' }}
                 value={contentId}
-              />
+               {...interfaceTextProps("Content ID (e.g., content:audio:album:mb-release-id)")}/>
 
               {/* Validation Result */}
               {contentValidation && (
@@ -281,8 +278,8 @@ const PodContentLinkingPanel = ({ contentId, setContentId, visible = true }) => 
                 >
                   <Message.Header>
                     {contentValidation.isValid
-                      ? '✓ Valid Content ID'
-                      : '✗ Invalid Content ID'}
+                      ? <LocalizedText source={"✓ Valid Content ID"} />
+                      : <LocalizedText source={"✗ Invalid Content ID"} />}
                   </Message.Header>
                   {!contentValidation.isValid &&
                     contentValidation.errorMessage && (
@@ -298,13 +295,13 @@ const PodContentLinkingPanel = ({ contentId, setContentId, visible = true }) => 
                   size="small"
                   style={{ marginBottom: '1em' }}
                 >
-                  <Message.Header>Content Metadata</Message.Header>
+                  <Message.Header><LocalizedText source={"Content Metadata"} /></Message.Header>
                   <p>
-                    <strong>Title:</strong> {contentMetadata.title}
+                    <strong><LocalizedText source={"Title:"} /></strong> {contentMetadata.title}
                     <br />
-                    <strong>Artist:</strong> {contentMetadata.artist}
+                    <strong><LocalizedText source={"Artist:"} /></strong> {contentMetadata.artist}
                     <br />
-                    <strong>Type:</strong> {contentMetadata.type} (
+                    <strong><LocalizedText source={"Type:"} /></strong> {contentMetadata.type} (
                     {contentMetadata.domain})
                   </p>
                 </Message>
@@ -313,30 +310,29 @@ const PodContentLinkingPanel = ({ contentId, setContentId, visible = true }) => 
               {/* Pod Creation */}
               {contentValidation?.isValid && (
                 <div>
-                  <Header size="small">Create Content-Linked Pod</Header>
+                  <Header size="small"><LocalizedText source={"Create Content-Linked Pod"} /></Header>
 
                   <Input
                     onChange={(e) => setNewPodName(e.target.value)}
-                    placeholder="Pod name (auto-filled from content)"
+                    placeholder={interfaceText("Pod name (auto-filled from content)")}
                     style={{ marginBottom: '1em', width: '100%' }}
                     value={newPodName}
-                  />
+                   {...interfaceTextProps("Pod name (auto-filled from content)")}/>
 
                   <div style={{ marginBottom: '1em' }}>
                     <label
                       htmlFor="media-core-new-pod-visibility"
                       style={{ marginRight: '1em' }}
                     >
-                      Visibility:
-                    </label>
+                      <LocalizedText source={"Visibility:"} /></label>
                     <select
                       id="media-core-new-pod-visibility"
                       onChange={(e) => setNewPodVisibility(e.target.value)}
                       value={newPodVisibility}
                     >
-                      <option value="Unlisted">Unlisted</option>
-                      <option value="Listed">Listed</option>
-                      <option value="Private">Private</option>
+                      <option value="Unlisted"><LocalizedText source={"Unlisted"} /></option>
+                      <option value="Listed"><LocalizedText source={"Listed"} /></option>
+                      <option value="Private"><LocalizedText source={"Private"} /></option>
                     </select>
                   </div>
 
@@ -346,8 +342,7 @@ const PodContentLinkingPanel = ({ contentId, setContentId, visible = true }) => 
                     loading={createPodLoading}
                     onClick={() => handleCreateContentLinkedPod()}
                   >
-                    Create Content-Linked Pod
-                  </Button>
+                    <LocalizedText source={"Create Content-Linked Pod"} /></Button>
                 </div>
               )}
             </Card.Content>

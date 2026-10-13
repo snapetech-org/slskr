@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import { formatRegionalDateTime, formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
@@ -22,6 +24,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const PodMessageBackfillPanel = ({ visible = true }) => {
+  useInterfaceLanguage();
   useRegionalFormat();
   const mountedRef = useRef(true);
 
@@ -74,7 +77,7 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
         'Failed to get backfill statistics',
       );
       setBackfillStatsError(message);
-      toast.error(`Failed to get backfill stats: ${message}`);
+      toast.error(interfaceText("Failed to get backfill stats: {message}", { "message": (message) }));
     } finally {
       setBackfillStatsLoading(false);
     }
@@ -83,7 +86,7 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
   const handleSyncPodBackfill = async () => {
     const requestedPodId = backfillPodId.trim();
     if (!requestedPodId) {
-      toast.error('Pod ID is required for backfill sync');
+      toast.error(interfaceText("Pod ID is required for backfill sync"));
       return;
     }
 
@@ -93,7 +96,7 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
       const timestamps = await mediacore.getLastSeenTimestamps(requestedPodId);
       const result = await mediacore.syncPodBackfill(requestedPodId, timestamps);
       toast.success(
-        `Backfill sync completed: ${result.totalMessagesReceived} messages received`,
+        interfaceText("Backfill sync completed: {totalMessagesReceived} messages received", { "totalMessagesReceived": (result.totalMessagesReceived) }),
       );
       // Refresh stats
       await handleGetBackfillStats();
@@ -107,7 +110,7 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
   const handleGetLastSeenTimestamps = async () => {
     const requestedPodId = backfillPodId.trim();
     if (!requestedPodId) {
-      toast.error('Pod ID is required');
+      toast.error(interfaceText("Pod ID is required"));
       return;
     }
 
@@ -130,7 +133,7 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
         'Failed to get last seen timestamps',
       );
       setLastSeenTimestampsError(message);
-      toast.error(`Failed to get last seen timestamps: ${message}`);
+      toast.error(interfaceText("Failed to get last seen timestamps: {message}", { "message": (message) }));
     } finally {
       setLastSeenTimestampsLoading(false);
     }
@@ -143,20 +146,16 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
             <Card.Content>
               <Card.Header>
                 <Icon name="sync" />
-                Pod Message Backfill
-              </Card.Header>
+                <LocalizedText source={"Pod Message Backfill"} /></Card.Header>
               <Card.Description>
-                Synchronize missed messages when peers rejoin pods
-              </Card.Description>
-              <PodWorkflowNotice title="Syncs local pod state">
-                Backfill sync uses last-seen timestamps to request missed
-                messages. Confirm the target pod before syncing all channels.
-              </PodWorkflowNotice>
+                <LocalizedText source={"Synchronize missed messages when peers rejoin pods"} /></Card.Description>
+              <PodWorkflowNotice title={interfaceText("Syncs local pod state")} {...interfaceTextProps("Syncs local pod state")}>
+                <LocalizedText source={"Backfill sync uses last-seen timestamps to request missed messages. Confirm the target pod before syncing all channels."} /></PodWorkflowNotice>
             </Card.Content>
 
             {/* Message Backfill */}
             <Card.Content>
-              <Header size="small">Backfill Management</Header>
+              <Header size="small"><LocalizedText source={"Backfill Management"} /></Header>
 
               <div style={{ marginBottom: '1em' }}>
                 <Button
@@ -165,8 +164,7 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
                   onClick={() => handleGetBackfillStats()}
                   size="small"
                 >
-                  Get Backfill Stats
-                </Button>
+                  <LocalizedText source={"Get Backfill Stats"} /></Button>
               </div>
 
               {backfillStatsError && (
@@ -177,7 +175,7 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
                 >
                   {backfillStatsError}
                   {backfillStats && (
-                    <div>Showing last successfully loaded statistics.</div>
+                    <div><LocalizedText source={"Showing last successfully loaded statistics."} /></div>
                   )}
                 </Message>
               )}
@@ -187,39 +185,38 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
                   size="small"
                   style={{ marginBottom: '1em' }}
                 >
-                  <Message.Header>Backfill Statistics</Message.Header>
+                  <Message.Header><LocalizedText source={"Backfill Statistics"} /></Message.Header>
                   <p>
-                    <strong>Requests Sent:</strong>{' '}
+                    <strong><LocalizedText source={"Requests Sent:"} /></strong>{' '}
                     {formatRegionalNumber(backfillStats.totalBackfillRequestsSent) ||
                       0}
                     <br />
-                    <strong>Requests Received:</strong>{' '}
+                    <strong><LocalizedText source={"Requests Received:"} /></strong>{' '}
                     {formatRegionalNumber(backfillStats.totalBackfillRequestsReceived) ||
                       0}
                     <br />
-                    <strong>Messages Backfilled:</strong>{' '}
+                    <strong><LocalizedText source={"Messages Backfilled:"} /></strong>{' '}
                     {formatRegionalNumber(backfillStats.totalMessagesBackfilled) ||
                       0}
                     <br />
-                    <strong>Data Transferred:</strong>{' '}
+                    <strong><LocalizedText source={"Data Transferred:"} /></strong>{' '}
                     {(
                       backfillStats.totalBackfillBytesTransferred /
                       (1_024 * 1_024)
                     ).toFixed(2)}{' '}
                     MB
                     <br />
-                    <strong>Avg Duration:</strong>{' '}
-                    {backfillStats.averageBackfillDurationMs?.toFixed(2) || 0}ms
-                    <br />
-                    <strong>Last Operation:</strong>{' '}
+                    <strong><LocalizedText source={"Avg Duration:"} /></strong>{' '}
+                    {backfillStats.averageBackfillDurationMs?.toFixed(2) || 0}<LocalizedText source={"ms"} /><br />
+                    <strong><LocalizedText source={"Last Operation:"} /></strong>{' '}
                     {backfillStats.lastBackfillOperation
                       ? formatRegionalDateTime(backfillStats.lastBackfillOperation)
-                      : 'Never'}
+                      : <LocalizedText source={"Never"} />}
                   </p>
                 </Message>
               )}
 
-              <Header size="small">Pod Backfill Sync</Header>
+              <Header size="small"><LocalizedText source={"Pod Backfill Sync"} /></Header>
               <Input
                 action={
                   <>
@@ -229,16 +226,14 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
                       loading={lastSeenTimestampsLoading}
                       onClick={() => handleGetLastSeenTimestamps()}
                     >
-                      Get Timestamps
-                    </Button>
+                      <LocalizedText source={"Get Timestamps"} /></Button>
                     <Button
                       color="green"
                       disabled={!backfillPodId.trim()}
                       loading={syncBackfillLoading}
                       onClick={() => handleSyncPodBackfill()}
                     >
-                      Sync Backfill
-                    </Button>
+                      <LocalizedText source={"Sync Backfill"} /></Button>
                   </>
                 }
                 onChange={(e) => {
@@ -249,10 +244,10 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
                     setLastSeenTimestampsLoadedFor(null);
                   }
                 }}
-                placeholder="Pod ID for backfill sync"
+                placeholder={interfaceText("Pod ID for backfill sync")}
                 style={{ marginBottom: '1em', width: '100%' }}
                 value={backfillPodId}
-              />
+               {...interfaceTextProps("Pod ID for backfill sync")}/>
 
               {lastSeenTimestampsError && (
                 <Message
@@ -264,8 +259,7 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
                   {hasCurrentLastSeenTimestamps &&
                     Object.keys(lastSeenTimestamps).length > 0 && (
                     <div>
-                      Showing last successfully loaded timestamps.
-                    </div>
+                      <LocalizedText source={"Showing last successfully loaded timestamps."} /></div>
                   )}
                 </Message>
               )}
@@ -275,7 +269,7 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
                 Object.keys(lastSeenTimestamps).length > 0 && (
                   <Message size="small">
                     <Message.Header>
-                      Last Seen Timestamps for Pod {backfillPodId}
+                      <LocalizedText source={"Last Seen Timestamps for Pod"} />{" "}{backfillPodId}
                     </Message.Header>
                     <div style={{ maxHeight: '150px', overflowY: 'auto' }}>
                       {Object.entries(lastSeenTimestamps).map(
@@ -302,7 +296,7 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
                     info
                     size="small"
                   >
-                    No last seen timestamps recorded for pod {backfillPodId}
+                    <LocalizedText source={"No last seen timestamps recorded for pod"} />{" "}{backfillPodId}
                   </Message>
                 )}
             </Card.Content>
