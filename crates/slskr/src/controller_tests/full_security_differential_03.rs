@@ -1422,10 +1422,15 @@ pub(super) fn security_controls_differential_authentication_and_jwt() {
             uuid::Uuid::new_v4().simple()
         ));
         fs::create_dir_all(&root).expect("authentication control state root");
+        let jwt_secret = format!(
+            "{}{}",
+            uuid::Uuid::new_v4().simple(),
+            uuid::Uuid::new_v4().simple()
+        );
         let jwt_env = MapEnv::default()
             .with("SLSKR_STATE_DIR", root.to_str().expect("auth state path"))
             .with("SLSKR_CONTROLLER_PROFILE", target)
-            .with("SLSKD_JWT_KEY", "0123456789abcdef0123456789abcdef")
+            .with("SLSKD_JWT_KEY", &jwt_secret)
             .with("SLSKD_JWT_TTL", "3600000")
             .with("SLSKR_API_TOKEN", "admin-token");
         let config = crate::AppConfig::from_layers(None, FileConfig::default(), &jwt_env)
