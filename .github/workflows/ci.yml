@@ -266,6 +266,14 @@ jobs:
       - run: npm --prefix web run test:bundle-budget
       - run: node web/scripts/verify-build-output.mjs
       - run: node web/scripts/smoke-subpath-build.mjs
+      - name: Install TypeScript client dependencies
+        run: npm ci --prefix client-ts
+      - name: Build TypeScript client
+        run: npm --prefix client-ts run build
+      - name: Test TypeScript client
+        run: npm --prefix client-ts test
+      - name: Lint TypeScript client
+        run: npm --prefix client-ts run lint
       - run: bash scripts/check-web-audit.sh dashboard
       - run: npm --prefix dashboard run type-check
       - run: npm --prefix dashboard run lint
