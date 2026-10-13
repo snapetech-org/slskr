@@ -104,4 +104,63 @@ if [[ "$(uname -s)" == "Linux" ]] \
   fi
 fi
 
+# Hosted Linux runners usually have a system manager but no user manager.
+# Exercise that route when passwordless sudo is available: V8 must retain its
+# normal virtual address space while the cgroup enforces resident memory.
+if [[ "$(uname -s)" == "Linux" ]] \
+  && command -v sudo >/dev/null 2>&1 \
+  && sudo -n systemctl show-environment >/dev/null 2>&1; then
+  system_manager_node_output="$(
+    SLSKR_PROCESS_MEMORY_GUARD_FORCE_SYSTEM_MANAGER=1 \
+      "$guard" node -e '
+const { execFileSync } = require("node:child_process");
+const { readFileSync } = require("node:fs");
+
+const cgroup = readFileSync("/proc/self/cgroup", "utf8")
+  .split("\n")
+  .find((line) => line.startsWith("0::"))
+  ?.slice(3);
+if (!cgroup || cgroup.includes("..")) {
+  throw new Error("systemd memory cgroup path is missing or unsafe");
+}
+let memoryMax;
+let memorySwapMax;
+try {
+  memoryMax = readFileSync(`/sys/fs/cgroup${cgroup}/memory.max`, "utf8").trim();
+  memorySwapMax = readFileSync(`/sys/fs/cgroup${cgroup}/memory.swap.max`, "utf8").trim();
+} catch (error) {
+  if (error.code !== "ENOENT") throw error;
+  const unit = process.env.SLSKR_PROCESS_MEMORY_GUARD_UNIT;
+  if (!unit) {
+    throw new Error("systemd memory cgroup files are not visible and the unit name is unavailable");
+  }
+  const properties = execFileSync("sudo", [
+    "-n", "systemctl", "show", "--property=MemoryMax", "--property=MemorySwapMax", unit,
+  ], { encoding: "utf8" });
+  memoryMax = properties.match(/^MemoryMax=(.+)$/mu)?.[1];
+  memorySwapMax = properties.match(/^MemorySwapMax=(.+)$/mu)?.[1];
+}
+if (!/^\d+$/u.test(memoryMax || "") || Number(memoryMax) > 4194304 * 1024) {
+  throw new Error(`systemd memory cgroup has unexpected limit: ${memoryMax}`);
+}
+if (!/^\d+$/u.test(memorySwapMax || "") || Number(memorySwapMax) !== 0) {
+  throw new Error(`systemd memory cgroup has unexpected swap limit: ${memorySwapMax}`);
+}
+const virtualMemoryLimit = execFileSync("bash", ["-c", "ulimit -v"], {
+  encoding: "utf8",
+}).trim();
+if (virtualMemoryLimit !== "unlimited") {
+  throw new Error(`systemd fallback applied RLIMIT_AS: ${virtualMemoryLimit}`);
+}
+const wasmMemory = new WebAssembly.Memory({ initial: 4096 });
+new Uint8Array(wasmMemory.buffer).fill(1);
+process.stdout.write("SYSTEMD_NODE_MEMORY_BOUNDARY_PASSED");
+'
+  )"
+  if [[ "$system_manager_node_output" != "SYSTEMD_NODE_MEMORY_BOUNDARY_PASSED" ]]; then
+    printf 'Process memory guard test failed: system manager Node boundary was %s\n' "$system_manager_node_output" >&2
+    exit 1
+  fi
+fi
+
 printf 'Process memory guard tests passed\n'

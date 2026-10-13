@@ -123,6 +123,7 @@ export const validation = {
         { command: 'rustc', args: ['--version'], versionCheck: { prefix: 'rustc 1.94.0', boundary: 'space-or-end' } },
         { command: 'cargo', args: ['--version'], versionCheck: { prefix: 'cargo 1.94.0', boundary: 'space-or-end' } },
       ],
+      passEnv: ['OPENSSL_SRC_PERL'],
       timeoutSeconds: 5400,
     },
     {

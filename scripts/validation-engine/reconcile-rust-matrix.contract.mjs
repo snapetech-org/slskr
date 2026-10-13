@@ -69,6 +69,15 @@ test('reconciles all five passing native Rust runner receipts from one source sn
   assert.deepEqual(result.nodes.map((node) => node.id), nodes.map(([id]) => id));
 });
 
+test('accepts passing receipts from earlier attempts of the same immutable workflow run', () => {
+  const items = receipts();
+  items[0].executionContext.github.runAttempt = '1';
+  items[4].executionContext.github.runAttempt = '3';
+  const result = reconcileRustReceipts({ receipts: items, ...identity, runAttempt: '3' });
+  assert.equal(result.status, 'passed');
+  assert.equal(result.nodes.length, 5);
+});
+
 test('rejects missing, duplicate, and unknown runner receipts', () => {
   assert.throws(() => reconcileRustReceipts({ receipts: receipts().slice(1), ...identity }), /exactly one/);
   const duplicate = receipts();
@@ -98,16 +107,21 @@ test('rejects runner identity mismatches and duplicate runner claims', () => {
   assert.throws(() => reconcileRustReceipts({ receipts: wrongNode, ...identity }), /Duplicate Rust/);
 });
 
-test('rejects receipts from another workflow run, attempt, or commit', () => {
+test('rejects receipts from another run, future or invalid attempts, or a different commit', () => {
   for (const change of [
     (items) => { items[0].executionContext.github.runId = '9999'; },
-    (items) => { items[0].executionContext.github.runAttempt = '1'; },
+    (items) => { items[0].executionContext.github.runAttempt = '3'; },
+    (items) => { items[0].executionContext.github.runAttempt = 'not-an-attempt'; },
     (items) => { items[0].candidate.commit = 'f'.repeat(40); },
   ]) {
     const items = receipts();
     change(items);
-    assert.throws(() => reconcileRustReceipts({ receipts: items, ...identity }), /different workflow run, attempt, or commit/);
+    assert.throws(() => reconcileRustReceipts({ receipts: items, ...identity }), /different workflow run|future or invalid attempt|different commit/);
   }
+  assert.throws(
+    () => reconcileRustReceipts({ receipts: receipts(), ...identity, runAttempt: 'invalid' }),
+    /run ID, attempt, and full source commit/,
+  );
 });
 
 test('rejects source, inventory and task-attestation drift', () => {

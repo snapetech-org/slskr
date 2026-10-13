@@ -12,6 +12,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.ref || github.sha }}
@@ -23,6 +24,7 @@ permissions:
 jobs:
   web-assets:
     name: Production web assets
+    if: github.event_name != 'push' || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -45,12 +47,39 @@ jobs:
           retention-days: 7
 
   rust:
-    runs-on: ubuntu-latest
+    # Main pushes and manual main runs use the shared local Linux pool.
+    runs-on: ${{ ((github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')) && fromJSON('["self-hosted","Linux","X64","host","linux-build","linux-amd64"]') || 'ubuntu-latest' }}
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
         with:
           fetch-depth: 2
+      - name: Test private runner temporary storage setup
+        if: runner.os == 'Linux'
+        run: ./scripts/test-private-runner-temp.sh
+
+      - name: Configure private runner temporary storage
+        id: private-runner-temp
+        if: runner.os == 'Linux'
+        env:
+          PRIVATE_RUNNER_TEMP_PREFIX: slskr
+        run: ./scripts/prepare-private-runner-temp.sh
+
+      - name: Limit local Cargo build parallelism
+        if: runner.environment == 'self-hosted'
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf 'CARGO_BUILD_JOBS=4\n' >> "$GITHUB_ENV"
+
+      - name: Configure private Go temporary storage
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -m 700 -- "$PRIVATE_RUNNER_TEMP/go-tmp"
+          printf 'GOTMPDIR=%s/go-tmp\n' "$PRIVATE_RUNNER_TEMP" >> "$GITHUB_ENV"
+
       - uses: dtolnay/rust-toolchain@29eef336d9b2848a0b548edc03f92a220660cdb8 # dtolnay/rust-toolchain@stable
         with:
           toolchain: 1.94.0
@@ -72,12 +101,31 @@ jobs:
           go-version: '1.25.x'
           cache-dependency-path: client-go/go.sum
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # actions/setup-python@v7.0.0
+        if: runner.environment == 'github-hosted'
         with:
           python-version: '3.12'
-      - name: Install workflow and shell linters
+      - name: Set up Python 3.12 on the local runner
+        if: runner.environment == 'self-hosted'
+        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: '0.13.0'
+          python-version: '3.12'
+          activate-environment: true
+          venv-path: ${{ steps.private-runner-temp.outputs.path || runner.temp }}/slskr-python
+          no-project: true
+          enable-cache: false
+      - name: Install workflow and shell linters on GitHub-hosted runner
+        if: runner.environment == 'github-hosted'
         run: |
           sudo apt-get update
           sudo apt-get install -y ripgrep shellcheck
+      - name: Verify workflow and shell linters on local runner
+        if: runner.environment == 'self-hosted'
+        run: |
+          command -v rg
+          command -v shellcheck
+      - name: Install actionlint
+        run: |
           go install "github.com/rhysd/actionlint/cmd/actionlint@${ACTIONLINT_VERSION}"
           echo "$HOME/go/bin" >> "$GITHUB_PATH"
       - name: Lint GitHub workflows
@@ -107,14 +155,22 @@ jobs:
       - name: Run and receipt the native Linux x64 Rust test node
         env:
           VALIDATION_NODE_ID: linux-x64
-          VALIDATION_RECEIPT_EXPORT: ${{ runner.temp }}/validation/rust-linux-x64.json
+          VALIDATION_RECEIPT_EXPORT: ${{ steps.private-runner-temp.outputs.path || runner.temp }}/validation/rust-linux-x64.json
         run: node scripts/validate-development.mjs --tests-only
+      - name: Retain Linux x64 validation task logs
+        if: failure()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # actions/upload-artifact@v7.0.1
+        with:
+          name: validation-task-logs-linux-x64
+          path: ${{ runner.temp }}/slskr-validation-*/*.log
+          if-no-files-found: ignore
+          retention-days: 7
       - name: Retain Linux x64 Rust test receipt
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # actions/upload-artifact@v7.0.1
         with:
           name: validation-rust-linux-x64
-          path: ${{ runner.temp }}/validation/rust-linux-x64.json
+          path: ${{ steps.private-runner-temp.outputs.path || runner.temp }}/validation/rust-linux-x64.json
           if-no-files-found: warn
           retention-days: 7
       - run: cargo audit
@@ -174,6 +230,7 @@ jobs:
 
   linux-aarch64:
     name: Linux AArch64
+    if: github.event_name != 'push' || github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04-arm
     timeout-minutes: 60
     steps:
@@ -201,6 +258,14 @@ jobs:
           VALIDATION_NODE_ID: linux-aarch64
           VALIDATION_RECEIPT_EXPORT: ${{ runner.temp }}/validation/rust-linux-aarch64.json
         run: node scripts/validate-development.mjs --task rust-workspace-tests
+      - name: Retain Linux AArch64 validation task logs
+        if: failure()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # actions/upload-artifact@v7.0.1
+        with:
+          name: validation-task-logs-linux-aarch64
+          path: ${{ runner.temp }}/slskr-validation-*/*.log
+          if-no-files-found: ignore
+          retention-days: 7
       - name: Retain Linux AArch64 Rust test receipt
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # actions/upload-artifact@v7.0.1
@@ -214,6 +279,7 @@ jobs:
 
   platform-builds:
     name: Platform ${{ matrix.name }}
+    if: github.event_name != 'push' || github.ref == 'refs/heads/main'
     needs: web-assets
     runs-on: ${{ matrix.os }}
     timeout-minutes: 75
@@ -302,6 +368,14 @@ jobs:
           VALIDATION_NODE_ID: ${{ matrix.name }}
           VALIDATION_RECEIPT_EXPORT: ${{ runner.temp }}/validation/rust-${{ matrix.name }}.json
         run: node scripts/validate-development.mjs --task rust-workspace-tests
+      - name: Retain ${{ matrix.name }} validation task logs
+        if: failure() && matrix.native_tests
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # actions/upload-artifact@v7.0.1
+        with:
+          name: validation-task-logs-${{ matrix.name }}
+          path: ${{ runner.temp }}/slskr-validation-*/*.log
+          if-no-files-found: ignore
+          retention-days: 7
       - name: Retain native platform Rust test receipt
         if: always() && matrix.native_tests
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # actions/upload-artifact@v7.0.1
@@ -352,7 +426,7 @@ jobs:
 
   validation-reconcile:
     name: Reconcile native Rust test nodes
-    if: always()
+    if: always() && (github.event_name != 'push' || github.ref == 'refs/heads/main')
     needs: [rust, linux-aarch64, platform-builds]
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -371,7 +445,7 @@ jobs:
           pattern: validation-rust-*
           path: ${{ runner.temp }}/validation-receipts
           merge-multiple: true
-      - name: Reconcile exact run, attempt, source and inventory
+      - name: Reconcile this run, source and inventory across retries
         run: node scripts/validation-engine/reconcile-rust-matrix.mjs --receipts "$RUNNER_TEMP/validation-receipts"
 
   package-surfaces:

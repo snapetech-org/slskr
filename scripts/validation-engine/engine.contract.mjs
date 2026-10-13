@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {
   mkdtempSync,
   mkdirSync,
+  readdirSync,
   readFileSync,
   rmSync,
   statSync,
@@ -15,6 +16,7 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import process from 'node:process';
 import { after, test } from 'node:test';
+import { validation } from './config.mjs';
 import {
   captureCandidate,
   acquireRunLock,
@@ -29,6 +31,7 @@ import {
   main as runEngine,
   parseCaseCount,
   releaseRunLock,
+  runtimeProbeCommands,
 } from './engine.mjs';
 
 const temporaryRoots = [];
@@ -295,6 +298,34 @@ test('runtime probes exclude inherited credentials and retain declared tool sett
   }
 });
 
+test('Go runtime probes disable local telemetry before reading the version', () => {
+  assert.deepEqual(runtimeProbeCommands({ command: 'go', args: ['version'] }), [
+    ['telemetry', 'off'],
+    ['version'],
+  ]);
+  assert.deepEqual(runtimeProbeCommands({ command: 'node', args: ['--version'] }), [
+    ['--version'],
+  ]);
+  if (process.platform === 'win32') {
+    assert.deepEqual(runtimeProbeCommands({ command: 'go.exe', args: ['version'] }), [
+      ['telemetry', 'off'],
+      ['version'],
+    ]);
+  }
+});
+
+test('Go telemetry can be disabled inside the isolated runtime probe', () => {
+  const { root, config } = fixture();
+  config.runtimes = [{
+    command: 'go',
+    args: ['version'],
+    env: { GOTOOLCHAIN: 'local' },
+  }];
+  const plan = createPlan(root, config);
+  assert.equal(plan.runtimes[0].available, true);
+  assert.match(plan.runtimes[0].version, /^go version go/);
+});
+
 test('test tasks reject unregistered case parsers', () => {
   const { root, config } = fixture();
   config.tasks[0].caseParser = 'repository-supplied-regex';
@@ -412,19 +443,51 @@ test('exports a private receipt only to a location beneath the system temporary 
   temporaryRoots.push(exportDirectory);
   const exportPath = path.join(exportDirectory, 'receipt.json');
   const previous = process.env.VALIDATION_RECEIPT_EXPORT;
+  const previousRunnerTemp = process.env.RUNNER_TEMP;
+  const previousContext = new Map(GITHUB_CONTEXT_KEYS.map((key) => [key, process.env[key]]));
+  assert.equal(config.tasks[0].kind, 'test');
   process.env.VALIDATION_RECEIPT_EXPORT = exportPath;
+  process.env.RUNNER_TEMP = exportDirectory;
+  // This unit test calls the engine entry point directly; its sandbox policy is
+  // covered separately, so provide a self-consistent synthetic CI identity.
+  process.env.GITHUB_ACTIONS = 'true';
+  process.env.GITHUB_RUN_ID = 'contract-test-run';
+  process.env.GITHUB_RUN_ATTEMPT = '1';
+  process.env.GITHUB_SHA = captureCandidate(root, config.inputs, discoverInventory(root, config.inventory)).commit;
+  process.env.GITHUB_WORKFLOW = 'validation-engine-contract';
+  process.env.GITHUB_JOB = 'receipt-export';
+  process.env.GITHUB_EVENT_NAME = 'workflow_dispatch';
+  process.env.VALIDATION_NODE_ID = 'contract-test';
   try {
     assert.equal(await runEngine(['--task', 'unit-tests'], root, config), 0);
     assert.equal(JSON.parse(readFileSync(exportPath, 'utf8')).status, 'passed');
     assert.equal(statSync(exportPath).mode & 0o777, 0o600);
+    const runDirectories = readdirSync(exportDirectory).filter((name) =>
+      name.startsWith('fixture-validation-'),
+    );
+    assert.equal(runDirectories.length, 1);
+    assert.equal(
+      statSync(path.join(exportDirectory, runDirectories[0], 'unit-tests.log')).mode & 0o777,
+      0o600,
+    );
   } finally {
     if (previous === undefined) delete process.env.VALIDATION_RECEIPT_EXPORT;
     else process.env.VALIDATION_RECEIPT_EXPORT = previous;
+    if (previousRunnerTemp === undefined) delete process.env.RUNNER_TEMP;
+    else process.env.RUNNER_TEMP = previousRunnerTemp;
+    for (const [key, value] of previousContext) {
+      if (value === undefined) delete process.env[key];
+      else process.env[key] = value;
+    }
   }
 });
 
 test('child environments hide inherited secrets and reject unapproved passEnv requests', async () => {
   const { root, config } = fixture();
+  assert.deepEqual(
+    validation.tasks.find((task) => task.id === 'rust-workspace-tests')?.passEnv,
+    ['OPENSSL_SRC_PERL'],
+  );
   const runRoot = mkdtempSync(path.join(os.tmpdir(), 'slskr-isolated-environment-'));
   temporaryRoots.push(runRoot);
   assert.throws(
@@ -438,6 +501,7 @@ test('child environments hide inherited secrets and reject unapproved passEnv re
     NODE_OPTIONS: '--require=/nonexistent-slskr-validation-module.cjs',
     HOME: '/operator/home',
     TMPDIR: '/operator/tmp',
+    OPENSSL_SRC_PERL: 'C:\\Strawberry\\perl\\bin\\perl.exe',
     CARGO_HOME: '/operator/cargo',
     GOPATH: '/operator/go',
     GOMODCACHE: '/operator/go/pkg/mod',
@@ -452,7 +516,9 @@ test('child environments hide inherited secrets and reject unapproved passEnv re
   Object.assign(process.env, injected);
   delete process.env.RUSTUP_HOME;
   try {
+    config.tasks[0].id = 'rust-workspace-tests';
     config.tasks[0].kind = 'check';
+    config.tasks[0].passEnv = ['OPENSSL_SRC_PERL'];
     config.tasks[0].env = { GOTOOLCHAIN: 'local' };
     config.tasks[0].command = [
       process.execPath,
@@ -460,6 +526,7 @@ test('child environments hide inherited secrets and reject unapproved passEnv re
       `const keys = ${JSON.stringify(probeKeys)}; process.stdout.write(JSON.stringify(Object.fromEntries(keys.map((name) => [name, process.env[name] ?? null]))))`,
     ];
     const result = await executePlan(root, config, createPlan(root, config), { runRoot });
+    assert.ok(result.runRoot && result.receipt.tasks[0]?.logFile, JSON.stringify(result.receipt));
     const log = path.join(result.runRoot, result.receipt.tasks[0].logFile);
     const childEnvironment = JSON.parse(readFileSync(log, 'utf8'));
     const environmentRoot = path.join(result.runRoot, `${config.tasks[0].id}-environment`);
@@ -468,6 +535,7 @@ test('child environments hide inherited secrets and reject unapproved passEnv re
     assert.equal(childEnvironment.GITHUB_TOKEN, null);
     assert.equal(childEnvironment.NODE_OPTIONS, null);
     assert.equal(childEnvironment.CARGO_HOME, path.join(result.runRoot, 'cargo-home'));
+    assert.equal(childEnvironment.OPENSSL_SRC_PERL, injected.OPENSSL_SRC_PERL);
     assert.equal(childEnvironment.GOPATH, path.join(environmentRoot, 'go'));
     assert.equal(childEnvironment.GOMODCACHE, path.join(environmentRoot, 'go', 'pkg', 'mod'));
     assert.equal(childEnvironment.GOCACHE, path.join(environmentRoot, 'go-cache'));

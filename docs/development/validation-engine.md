@@ -2,7 +2,9 @@
 
 The repository validation engine keeps SlskR's existing native test runners and
 adds a source bound inventory, explicit task plan, execution receipt, and
-same workflow attempt checks for the Rust platform test matrix.
+workflow run and source checks for the Rust platform test matrix. On a GitHub
+rerun, successful receipts from earlier attempts of that same run remain valid
+when their source and inventory identities match.
 
 ## Local commands
 
@@ -47,8 +49,10 @@ process variables, locale, timezone, and the Rust toolchain location. Each task
 receives a run-owned home, temporary, and XDG configuration/cache directory.
 Go runtime probes and tasks receive private `GOPATH`, `GOMODCACHE`, and
 `GOCACHE` locations. Cargo uses a private cache shared only within that
-validation run. Registered task settings remain task-scoped, and unapproved
-`passEnv` requests fail during planning.
+validation run. Runtime version probes turn Go telemetry off inside the
+disposable XDG configuration before reading its version, so local counter files
+cannot race probe cleanup. Registered task settings remain task-scoped, and
+unapproved `passEnv` requests fail during planning.
 `CI` is forced to `true`; Python user-site packages are disabled, and test tasks
 use `NODE_ENV=test`.
 Ambient credentials, loader options, proxy settings, workflow context, and
@@ -77,10 +81,12 @@ The required Rust workspace test runs are identified as `linux-x64`,
 `linux-aarch64`, `macos-x64`, `macos-arm64`, and `windows-x64`. Each run exports
 a short lived receipt containing the workflow run ID, attempt, source commit,
 runner OS/architecture, test task, native case count, and inventory digests.
-The reconciliation job rejects missing or duplicate runners, mismatched run or
-attempt IDs, failed or empty test results, runner identity drift, and different
-source or inventory snapshots. Package-surface checks depend on successful
-reconciliation.
+The reconciliation job rejects missing or duplicate runners, receipts from a
+different workflow run or commit, invalid or future attempt IDs, failed or
+empty test results, runner identity drift, and different source or inventory
+snapshots. It accepts a passing receipt from an earlier attempt of the same run
+because GitHub reruns only failed jobs and keeps successful jobs from the prior
+attempt. Package-surface checks depend on successful reconciliation.
 
 GitHub-hosted receipt collection is verified by GitHub Actions. A local run does
 not establish hosted runner behavior. Existing release policy, static security,

@@ -30,7 +30,9 @@ function sourceIdentity(candidate) {
 }
 
 export function reconcileRustReceipts({ receipts, runId, runAttempt, sha }) {
-  if (!runId || !runAttempt || !/^[a-f0-9]{40}$/.test(sha ?? '')) {
+  const currentAttempt = Number(runAttempt);
+  if (!runId || !Number.isSafeInteger(currentAttempt) || currentAttempt < 1 ||
+      !/^[a-f0-9]{40}$/.test(sha ?? '')) {
     fail('A GitHub run ID, attempt, and full source commit are required.');
   }
   if (!Array.isArray(receipts) || receipts.length !== EXPECTED_NODES.length) {
@@ -69,9 +71,11 @@ export function reconcileRustReceipts({ receipts, runId, runAttempt, sha }) {
         context.runner?.os !== expected.os || context.runner?.architecture !== expected.arch) {
       fail(expected.id + ' receipt does not match the configured GitHub runner identity.');
     }
-    if (String(github?.runId) !== String(runId) || String(github?.runAttempt) !== String(runAttempt) ||
+    const receiptAttempt = Number(github?.runAttempt);
+    if (String(github?.runId) !== String(runId) ||
+        !Number.isSafeInteger(receiptAttempt) || receiptAttempt < 1 || receiptAttempt > currentAttempt ||
         github?.sha !== sha || receipt.candidate?.commit !== sha) {
-      fail(expected.id + ' receipt belongs to a different workflow run, attempt, or commit.');
+      fail(expected.id + ' receipt belongs to a different workflow run, a future or invalid attempt, or a different commit.');
     }
     const candidate = receipt.candidate;
     if (!/^[a-f0-9]{40}$/.test(candidate?.tree ?? '') ||

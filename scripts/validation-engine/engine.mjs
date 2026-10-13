@@ -52,7 +52,9 @@ const INHERITED_ENVIRONMENT_KEYS = new Set([
   'MISE_DATA_DIR', 'MISE_HOME', 'NVM_DIR', 'PATH', 'PATHEXT',
   'PYENV_ROOT', 'RUSTUP_HOME', 'VOLTA_HOME', 'SYSTEMROOT', 'TZ', 'WINDIR',
 ]);
-const APPROVED_TASK_PASS_ENVIRONMENT = new Map();
+const APPROVED_TASK_PASS_ENVIRONMENT = new Map([
+  ['rust-workspace-tests', new Set(['OPENSSL_SRC_PERL'])],
+]);
 const CONTENT_MATCHERS = Object.freeze({
   rustInlineTestModule: (contents) => /#\s*\[\s*cfg\s*\(\s*test\s*\)\s*\]/.test(contents),
 });
@@ -430,19 +432,44 @@ export function isolatedRuntimeEnvironment(runtime, environmentRoot, inherited =
   );
 }
 
+function isGoRuntimeCommand(command) {
+  const executableName = path.basename(command)
+    .replace(/\.(?:bat|cmd|exe)$/iu, '')
+    .toLowerCase();
+  return executableName === 'go';
+}
+
+export function runtimeProbeCommands(runtime) {
+  const commands = [];
+  if (isGoRuntimeCommand(runtime.command)) commands.push(['telemetry', 'off']);
+  commands.push(runtime.args ?? ['--version']);
+  return commands;
+}
+
 function inspectRuntime(root, runtime) {
   const available = commandAvailable(runtime.command);
   if (!available) return { ...runtime, available, version: null, exitCode: null };
   const probeRoot = mkdtempSync(path.join(SYSTEM_TEMP_DIR, 'slskr-runtime-probe-'));
   let result;
   try {
-    result = spawnSync(runtime.command, runtime.args ?? ['--version'], {
-      cwd: root,
-      encoding: 'utf8',
-      timeout: 10_000,
-      maxBuffer: 1024 * 1024,
-      env: isolatedRuntimeEnvironment(runtime, probeRoot),
-    });
+    const env = isolatedRuntimeEnvironment(runtime, probeRoot);
+    const commands = runtimeProbeCommands(runtime);
+    const disablesGoTelemetry = isGoRuntimeCommand(runtime.command);
+    for (const [index, args] of commands.entries()) {
+      result = spawnSync(runtime.command, args, {
+        cwd: root,
+        encoding: 'utf8',
+        timeout: 10_000,
+        maxBuffer: 1024 * 1024,
+        env,
+      });
+      if (disablesGoTelemetry && index === 0 &&
+          (result?.error !== undefined || result?.status !== 0)) {
+        const detail = (result.stderr ?? '').trim();
+        fail('Could not disable Go telemetry in the isolated runtime probe.' +
+          (result.error ? ' ' + result.error.message : detail ? ' ' + detail : ''));
+      }
+    }
   } finally {
     rmSync(probeRoot, { recursive: true, force: true });
   }
@@ -792,7 +819,11 @@ export async function executePlan(root, config, plan, options = {}) {
   if (plan.repository !== config.repository || !planSha256 || hash(stable(planBody)) !== planSha256) {
     fail('Validation plan digest does not match its contents.');
   }
-  const runRoot = options.runRoot ?? mkdtempSync(path.join(os.tmpdir(), config.repository + '-validation-'));
+  const runnerTemp = process.env.RUNNER_TEMP;
+  const temporaryRoot = typeof runnerTemp === 'string' && path.isAbsolute(runnerTemp)
+    ? runnerTemp
+    : os.tmpdir();
+  const runRoot = options.runRoot ?? mkdtempSync(path.join(temporaryRoot, config.repository + '-validation-'));
   mkdirSync(runRoot, { recursive: true, mode: 0o700 });
   chmodSync(runRoot, 0o700);
   const runId = randomUUID();

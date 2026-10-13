@@ -31,6 +31,44 @@ for expected in \
   fi
 done
 
+trusted_runner_condition="((github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'))"
+trusted_runner_labels="fromJSON('[\"self-hosted\",\"Linux\",\"X64\",\"host\",\"linux-build\",\"linux-amd64\"]')"
+push_branches="$(
+  awk '
+    /^  push:$/ { in_push=1; next }
+    in_push && /^  [[:alpha:]_][[:alnum:]_-]*:/ { exit }
+    in_push && /^    branches:$/ { in_branches=1; next }
+    in_branches && /^    [[:alpha:]_][[:alnum:]_-]*:/ { exit }
+    in_branches && /^      - / {
+      branch=$0
+      sub(/^      - /, "", branch)
+      gsub(/["\047]/, "", branch)
+      print branch
+    }
+  ' .github/workflows/ci.yml
+)"
+if [[ "$push_branches" != "main" ]]; then
+  printf 'workflow release policy check failed: only main pushes may enter the self-hosted CI workflow\n' >&2
+  status=1
+fi
+if ! rg -n -F "$trusted_runner_labels" .github/workflows/ci.yml >/dev/null; then
+  printf 'workflow release policy check failed: trusted main jobs must target the shared local runner pool\n' >&2
+  status=1
+fi
+if ! rg -n -F 'CARGO_BUILD_JOBS=4' .github/workflows/ci.yml >/dev/null; then
+  printf 'workflow release policy check failed: local Cargo parallelism must be capped\n' >&2
+  status=1
+fi
+if ! rg -n -F "$trusted_runner_condition" .github/workflows/ci.yml >/dev/null; then
+  printf 'workflow release policy check failed: main-push and manual-main local runner policy is missing\n' >&2
+  status=1
+fi
+if rg -n '^[[:space:]]*runs-on:.*self-hosted' .github/workflows \
+  | rg -v -F "$trusted_runner_condition"; then
+  printf 'workflow release policy check failed: self-hosted runners must be restricted to main pushes or manual runs on main\n' >&2
+  status=1
+fi
+
 if [[ ! -f "$pin_policy" ]]; then
   printf 'workflow release policy check failed: GitHub Actions pin policy is missing: %s\n' "$pin_policy" >&2
   status=1

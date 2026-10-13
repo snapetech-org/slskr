@@ -131,12 +131,24 @@ if [[ -f docs/CHANGELOG.md ]]; then
 fi
 
 if [[ "${LOCAL_IDENTITY_SCAN_COMMITS:-0}" == "1" ]]; then
-  latest_tag="$(git tag --sort=-creatordate --list 'build-main-*' | head -n 1 || true)"
-  if [[ -z "$latest_tag" ]]; then
-    latest_tag="$(git describe --tags --abbrev=0 2>/dev/null || true)"
+  scan_base="${LOCAL_IDENTITY_SCAN_BASE_SHA:-}"
+  if [[ -n "$scan_base" ]] && ! git cat-file -e "${scan_base}^{commit}" 2>/dev/null; then
+    scan_base=""
   fi
-  if [[ -n "$latest_tag" ]]; then
-    git log --format='%s%n%b' "${latest_tag}..HEAD" |
+  if [[ -n "$scan_base" ]] && ! git merge-base --is-ancestor "$scan_base" HEAD; then
+    scan_base=""
+  fi
+  if [[ -z "$scan_base" ]] && git show-ref --verify --quiet refs/remotes/origin/main; then
+    scan_base="$(git merge-base HEAD origin/main 2>/dev/null || true)"
+  fi
+  if [[ -z "$scan_base" ]]; then
+    scan_base="$(git describe --tags --abbrev=0 --match 'release-v[0-9]*' 2>/dev/null || true)"
+  fi
+  if [[ -z "$scan_base" ]]; then
+    scan_base="$(git tag --sort=-creatordate --list 'build-main-*' | head -n 1 || true)"
+  fi
+  if [[ -n "$scan_base" ]]; then
+    git log --format='%s%n%b' "${scan_base}..HEAD" |
       sed -E '/^[[:space:]]*(Co-authored-by|Signed-off-by):[[:space:]]/d' >"$tmp_commits"
     check_file "recent commit messages" "$tmp_commits" "git log"
   fi
