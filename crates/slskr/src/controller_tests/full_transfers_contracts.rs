@@ -1592,6 +1592,166 @@ pub(super) async fn queued_outgoing_upload_accepts_remote_download_resume_reques
 
 #[cfg_attr(test, tokio::test)]
 #[cfg(feature = "full-controller-tests")]
+pub(super) async fn queued_outgoing_upload_resume_obeys_upload_slots() {
+    let (state, _receiver) = test_state_with_env(MapEnv::default().with("SLSKD_UPLOAD_SLOTS", "1"));
+    let path = std::env::temp_dir().join(format!(
+        "slskr-transfer-queued-upload-capacity-{}-resume.bin",
+        std::process::id()
+    ));
+    std::fs::write(&path, [1_u8, 2, 3, 4]).expect("write upload file");
+    add_test_share(&state, "Remote/QueuedUpload.flac", &path, 4).await;
+    {
+        let mut transfers = state.transfers.write().await;
+        let active = transfers.create(
+            1,
+            Some("busy".to_owned()),
+            "Remote/Busy.flac".to_owned(),
+            Some(path.display().to_string()),
+            Some(4),
+        );
+        transfers.update_status(active.id, "in_progress", None, None);
+        let queued = transfers.create(
+            1,
+            Some("friend".to_owned()),
+            "Remote/QueuedUpload.flac".to_owned(),
+            Some(path.display().to_string()),
+            Some(4),
+        );
+        transfers.update_status(queued.id, "queued", None, Some("Queued".to_owned()));
+    }
+
+    let listener = tokio::net::TcpListener::bind("127.0.0.1:0")
+        .await
+        .expect("listener");
+    let address = listener.local_addr().expect("local address");
+    let server_state = state.clone();
+    let server = tokio::spawn(async move {
+        let (stream, _) = listener.accept().await.expect("accept peer-message");
+        crate::handle_plain_peer_messages(
+            &server_state,
+            slskr_client::stream::PeerMessageConnection::new(stream),
+            Some("friend".to_owned()),
+        )
+        .await
+    });
+
+    let stream = tokio::net::TcpStream::connect(address)
+        .await
+        .expect("connect peer-message");
+    let mut peer = slskr_client::stream::PeerMessageConnection::new(stream);
+    peer.send(&crate::PeerMessage::TransferRequest(
+        crate::TransferRequest {
+            filename_encoding: Default::default(),
+            direction: 0,
+            token: 77,
+            filename: "Remote/QueuedUpload.flac".to_owned(),
+            size: Some(4),
+        },
+    ))
+    .await
+    .expect("send resume request");
+    assert_eq!(
+        peer.receive().await.expect("resume response"),
+        crate::PeerMessage::TransferResponse(crate::TransferResponse::Rejected {
+            token: 77,
+            reason: "Queued".to_owned(),
+        })
+    );
+    drop(peer);
+    server.await.expect("server task").expect("server result");
+
+    let transfers = state.transfers.read().await;
+    let queued = transfers
+        .entries
+        .iter()
+        .find(|entry| entry.peer_username.as_deref() == Some("friend"))
+        .expect("queued upload remains pending");
+    assert_eq!(queued.status, "queued");
+    assert_eq!(queued.reason.as_deref(), Some("Queued"));
+    assert_ne!(queued.token, 77);
+    let _ = std::fs::remove_file(path);
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
+pub(super) async fn queued_remote_download_resume_obeys_download_slots() {
+    let (state, _receiver) =
+        test_state_with_env(MapEnv::default().with("SLSKD_DOWNLOAD_SLOTS", "1"));
+    let download_path = crate::safe_download_path(&state.config.downloads_dir, "Remote/Busy.flac")
+        .expect("download path");
+    {
+        let mut transfers = state.transfers.write().await;
+        let active = transfers.create(
+            0,
+            Some("busy".to_owned()),
+            "Remote/Busy.flac".to_owned(),
+            Some(download_path.display().to_string()),
+            Some(4),
+        );
+        transfers.update_status(active.id, "in_progress", None, None);
+        let queued = transfers.create(
+            0,
+            Some("friend".to_owned()),
+            "Remote/Queued.flac".to_owned(),
+            Some(download_path.display().to_string()),
+            Some(4),
+        );
+        transfers.update_status(queued.id, "queued", None, Some("Queued".to_owned()));
+    }
+
+    let listener = tokio::net::TcpListener::bind("127.0.0.1:0")
+        .await
+        .expect("listener");
+    let address = listener.local_addr().expect("local address");
+    let server_state = state.clone();
+    let server = tokio::spawn(async move {
+        let (stream, _) = listener.accept().await.expect("accept peer-message");
+        crate::handle_plain_peer_messages(
+            &server_state,
+            slskr_client::stream::PeerMessageConnection::new(stream),
+            Some("friend".to_owned()),
+        )
+        .await
+    });
+
+    let stream = tokio::net::TcpStream::connect(address)
+        .await
+        .expect("connect peer-message");
+    let mut peer = slskr_client::stream::PeerMessageConnection::new(stream);
+    peer.send(&crate::PeerMessage::TransferRequest(
+        crate::TransferRequest {
+            filename_encoding: Default::default(),
+            direction: 1,
+            token: 77,
+            filename: "Remote/Queued.flac".to_owned(),
+            size: Some(4),
+        },
+    ))
+    .await
+    .expect("send resume request");
+    assert_eq!(
+        peer.receive().await.expect("resume response"),
+        crate::PeerMessage::TransferResponse(crate::TransferResponse::Rejected {
+            token: 77,
+            reason: "Queued".to_owned(),
+        })
+    );
+    drop(peer);
+    server.await.expect("server task").expect("server result");
+
+    let transfers = state.transfers.read().await;
+    let queued = transfers
+        .entries
+        .iter()
+        .find(|entry| entry.peer_username.as_deref() == Some("friend"))
+        .expect("queued download remains pending");
+    assert_eq!(queued.status, "queued");
+    assert_eq!(queued.reason.as_deref(), Some("Queued"));
+    assert_ne!(queued.token, 77);
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
 pub(super) async fn queue_upload_and_place_in_queue_messages_drive_the_group_scheduler() {
     let (state, _receiver) = test_state_with_env(
         MapEnv::default().with("SLSKR_FROZEN_TRANSFER_UPLOAD_JSON", r#"{"slots":1}"#),
@@ -2222,6 +2382,37 @@ pub(super) async fn downloads_do_not_make_upload_queue_appear_free_at_the_shared
         receiver.try_recv().unwrap(),
         crate::SessionCommand::RequestPeerEndpoint("bob".to_owned())
     );
+}
+
+#[cfg_attr(test, test)]
+#[cfg(feature = "full-controller-tests")]
+pub(super) fn transfer_capacity_respects_directional_and_shared_caps() {
+    let mut transfers = crate::TransferQueue::new_in_memory(16);
+    let download = transfers.create(
+        0,
+        Some("alice".to_owned()),
+        "incoming.flac".to_owned(),
+        None,
+        Some(10),
+    );
+    transfers.update_status(download.id, "in_progress", None, None);
+
+    assert!(!transfers.has_capacity_for_direction(0, 4, 1, None));
+    assert!(transfers.has_capacity_for_direction(1, 4, 1, None));
+    assert!(transfers.has_capacity_for_direction(0, 4, 2, Some(download.id)));
+
+    let upload = transfers.create(
+        1,
+        Some("bob".to_owned()),
+        "outgoing.flac".to_owned(),
+        Some("/shares/outgoing.flac".to_owned()),
+        Some(10),
+    );
+    transfers.update_status(upload.id, "accepted", None, None);
+
+    assert!(!transfers.has_capacity_for_direction(1, 4, 1, None));
+    assert!(!transfers.has_capacity_for_direction(0, 2, 4, None));
+    assert!(!transfers.has_capacity_for_direction(0, 0, 4, None));
 }
 
 #[cfg_attr(test, tokio::test)]

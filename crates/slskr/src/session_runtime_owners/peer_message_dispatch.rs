@@ -275,7 +275,9 @@ where
                     snapshot.last_error = None;
                 })
                 .await;
-            } else if !transfer_capacity_available(state, None).await {
+            } else if (request.direction != 0 || peer_username.is_none())
+                && !transfer_capacity_available(state, None).await
+            {
                 let reason = "transfer limit reached".to_owned();
                 record_transfer_rejection(
                     state,
@@ -343,14 +345,13 @@ where
                     let mut transfers = state.transfers.write().await;
                     let global_full =
                         transfers.active_count_excluding(None) >= state.config.transfer_max_active;
-                    let active_uploads = transfers
-                        .entries
-                        .iter()
-                        .filter(|entry| {
-                            entry.direction == 1 && is_active_transfer_status(&entry.status)
-                        })
-                        .count();
-                    let upload_full = request.direction == 0 && active_uploads >= upload_slots;
+                    let upload_full = request.direction == 0
+                        && !transfers.has_capacity_for_direction(
+                            1,
+                            state.config.transfer_max_active,
+                            upload_slots,
+                            None,
+                        );
                     if global_full || upload_full {
                         if request.direction == 0 {
                             peer_username.map(|username| {

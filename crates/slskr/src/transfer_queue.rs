@@ -853,6 +853,30 @@ impl TransferQueue {
             .count()
     }
 
+    pub(super) fn has_capacity_for_direction(
+        &self,
+        direction: u32,
+        max_active: usize,
+        directional_slots: usize,
+        excluding_id: Option<u64>,
+    ) -> bool {
+        if max_active == 0
+            || self.active_count_excluding(excluding_id) >= max_active
+            || directional_slots == 0
+        {
+            return false;
+        }
+        self.entries
+            .iter()
+            .filter(|entry| {
+                excluding_id != Some(entry.id)
+                    && entry.direction == direction
+                    && is_active_transfer_status(&entry.status)
+            })
+            .count()
+            < directional_slots
+    }
+
     pub(super) fn push_entry(&mut self, entry: TransferEntry) -> TransferEntry {
         let entry = bounded_transfer_entry(entry);
         self.entries.push(entry.clone());
