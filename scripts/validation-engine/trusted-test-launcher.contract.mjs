@@ -81,6 +81,9 @@ test('preserves tracked source files named token while excluding credential conf
   assert.equal(isSensitiveCandidatePath('credentials.preprod.toml'), true);
   assert.equal(isSensitiveCandidatePath('secrets-sandbox.yaml'), true);
   assert.equal(isSensitiveCandidatePath('ops/secrets-production/value.json'), true);
+  assert.equal(isSensitiveCandidatePath('ops/api-key-production/value.json'), true);
+  assert.equal(isSensitiveCandidatePath('ops/private-key.prod/value.json'), true);
+  assert.equal(isSensitiveCandidatePath('ops/client-secret-uat/value.json'), true);
   assert.equal(isSensitiveCandidatePath('ops/credentials.prod/value.json'), true);
   assert.equal(isSensitiveCandidatePath('ops/token.uat/value.json'), true);
   assert.equal(isSensitiveCandidatePath('ops/credentials.sandbox/value.json'), true);
@@ -89,6 +92,7 @@ test('preserves tracked source files named token while excluding credential conf
   assert.equal(isSensitiveCandidatePath('scripts/check-browser-token-persistence.sh'), false);
   assert.equal(isSensitiveCandidatePath('scripts/check-secret-scanning.sh'), false);
   assert.equal(isSensitiveCandidatePath('scripts/check-web-auth-credentials-differential.sh'), false);
+  assert.equal(isSensitiveCandidatePath('docs/credential-storage.md'), false);
   assert.equal(isSensitiveCandidatePath('release-notes/20261013-validation-snapshot-credential-filter.md'), false);
   assert.equal(isSensitiveCandidatePath('release-notes/20261013-validation-snapshot-credentials.md'), false);
   assert.equal(
@@ -234,6 +238,9 @@ test(
     mkdirSync(path.join(source, 'ops/secrets'), { recursive: true });
     mkdirSync(path.join(source, 'ops/production-secrets'), { recursive: true });
     mkdirSync(path.join(source, 'ops/secrets-production'), { recursive: true });
+    mkdirSync(path.join(source, 'ops/api-key-production'), { recursive: true });
+    mkdirSync(path.join(source, 'ops/private-key.prod'), { recursive: true });
+    mkdirSync(path.join(source, 'ops/client-secret-uat'), { recursive: true });
     mkdirSync(path.join(source, 'ops/credentials.prod'), { recursive: true });
     mkdirSync(path.join(source, 'ops/token.uat'), { recursive: true });
     mkdirSync(path.join(source, 'ops/credentials.sandbox'), { recursive: true });
@@ -249,6 +256,7 @@ test(
     mkdirSync(path.join(source, 'vendor/mainline/src/rpc/server'), { recursive: true });
     mkdirSync(path.join(source, 'scripts'), { recursive: true });
     mkdirSync(path.join(source, 'release-notes'), { recursive: true });
+    mkdirSync(path.join(source, 'docs'), { recursive: true });
     mkdirSync(path.join(source, 'crates/slskr/src/private_gateway_owners'), { recursive: true });
     mkdirSync(path.join(source, 'crates/slskr/data'), { recursive: true });
     writeFileSync(path.join(source, 'web/src/lib/token.js'), 'export const token = "source code";\n');
@@ -367,6 +375,10 @@ test(
     writeFileSync(path.join(source, 'packages/app/api-key.js'), 'export const API_KEY_CANARY = "hidden";\\n');
     writeFileSync(path.join(source, 'ops/secrets/production.ts'), 'export const TOKEN_CANARY = "hidden";\\n');
     writeFileSync(path.join(source, 'ops/acme-client-secret.env'), 'ACME_SECRET_CANARY=hidden');
+    writeFileSync(path.join(source, 'ops/api-key-production/value.json'), '{"api_key":"hidden"}');
+    writeFileSync(path.join(source, 'ops/private-key.prod/value.json'), '{"private_key":"hidden"}');
+    writeFileSync(path.join(source, 'ops/client-secret-uat/value.json'), '{"client_secret":"hidden"}');
+    writeFileSync(path.join(source, 'docs/credential-storage.md'), 'Credential storage is documented here.\n');
     writeFileSync(path.join(source, '.private-key.ts'), 'PRIVATE_KEY_CANARY=hidden\\n');
     writeFileSync(path.join(source, 'nested/credentials/TokenStore.ts'), 'export const source = "nested credential source";\\n');
     mkdirSync(path.join(source, 'packages/auth/scripts'), { recursive: true });
@@ -458,6 +470,9 @@ assert.equal(existsSync('/mnt/workspace/token.uat.json'), false);
 assert.equal(existsSync('/mnt/workspace/credentials.preprod.toml'), false);
 assert.equal(existsSync('/mnt/workspace/secrets-sandbox.yaml'), false);
 assert.equal(existsSync('/mnt/workspace/ops/secrets-production'), false);
+assert.equal(existsSync('/mnt/workspace/ops/api-key-production'), false);
+assert.equal(existsSync('/mnt/workspace/ops/private-key.prod'), false);
+assert.equal(existsSync('/mnt/workspace/ops/client-secret-uat'), false);
 assert.equal(existsSync('/mnt/workspace/ops/credentials.prod'), false);
 assert.equal(existsSync('/mnt/workspace/ops/token.uat'), false);
 assert.equal(existsSync('/mnt/workspace/ops/credentials.sandbox'), false);
@@ -468,6 +483,7 @@ assert.equal(readFileSync('/mnt/workspace/scripts/check-secret-scanning.sh', 'ut
 assert.equal(readFileSync('/mnt/workspace/scripts/check-web-auth-credentials-differential.sh', 'utf8'), '#!/bin/sh\\nexit 0\\n');
 assert.equal(readFileSync('/mnt/workspace/release-notes/20261013-validation-snapshot-credential-filter.md', 'utf8'), 'Validation snapshots filter secrets safely.\\n');
 assert.equal(readFileSync('/mnt/workspace/release-notes/20261013-validation-snapshot-credentials.md', 'utf8'), 'Credential matching avoids checker files.\\n');
+assert.equal(readFileSync('/mnt/workspace/docs/credential-storage.md', 'utf8'), 'Credential storage is documented here.\\n');
 assert.match(readFileSync('/mnt/workspace/crates/slskr/src/private_gateway_owners/peer_authentication.rs', 'utf8'), /peer_authentication/u);
 assert.equal(readFileSync('/mnt/workspace/crates/slskr/data/peer-controller-auth-policy.json', 'utf8'), '{"policy":"source metadata"}\\n');
 assert.equal(existsSync('/mnt/workspace/production-token.json'), false);

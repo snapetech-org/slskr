@@ -100,17 +100,18 @@ const sensitiveCredentialMaterialFile =
 const camelCaseCredentialMaterialFile =
   /(?:(?<=[a-z0-9])(?:PrivateKeys?|privateKeys?|ApiKeys?|APIKeys?|ApiTokens?|APITokens?|AccessTokens?|RefreshTokens?|ClientTokens?|ClientCredentials?|ClientSecrets?|ServiceAccountTokens?|ServiceAccountCredentials?|ServiceAccountSecrets?)|^(?:prod(?:uction)?|dev(?:elopment)?|test(?:ing)?|stage|staging|local|qa|live|github|gitlab|bitbucket|aws|azure|gcp|google|slack|discord|oauth|jwt|bearer)(?:Auth(?:entication)?|Tokens?|Credentials?|Secrets?)(?=$|[._-]))/iu;
 const qualifiedCredentialDirectoryName =
-  /^(?:[^/]+[._-](?:auth(?:entication)?|tokens?|credentials?|secrets?|private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)|(?:tokens?|credentials?|secrets?)[._-](?!(?:manager|parser|service|client|store|provider|package|module|checker|scanning|persistence|differential|filter|policy|schema|template|example|sample|source)(?:$|[._-]))[^/]+)$/iu;
+  /^(?:[^/]+[._-](?:auth(?:entication)?|tokens?|credentials?|secrets?|private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)|(?:tokens?|credentials?|secrets?|private[._-]?keys?|api[._-]?keys?|access[._-]?tokens?|refresh[._-]?tokens?|client[._-]?secrets?)[._-](?!(?:manager|parser|service|client|store|provider|package|module|checker|scanning|persistence|differential|filter|policy|schema|template|example|sample|source)(?:$|[._-]))[^/]+)$/iu;
 const sourceTreeDirectory =
   /^(?:src|source|packages|apps|web|dashboard|client-go|client-python|client-ts|crates|scripts|lib|tests?|__tests__|fixtures?)$/iu;
 const knownApiKeysPage = 'dashboard/src/pages/ApiKeys.tsx';
-const knownSourceCredentialModules = new Set([
+const knownCredentialNameExceptions = new Set([
   'src/auth.ts',
   'src/authentication.ts',
   'web/src/lib/token.js',
   'vendor/mainline/src/rpc/server/tokens.rs',
   'crates/slskr/src/private_gateway_owners/peer_authentication.rs',
   'dashboard/src/pages/ApiKeys.tsx',
+  'docs/credential-storage.md',
 ]);
 
 export function isSensitiveCandidatePath(relativePath) {
@@ -138,7 +139,7 @@ export function isSensitiveCandidatePath(relativePath) {
     qualifiedCredentialConfigFile.test(filename) ||
     (!credentialEnvironmentExampleFile.test(filename) &&
       sensitiveCredentialSourceFile &&
-      !knownSourceCredentialModules.has(normalizedPath))
+      !knownCredentialNameExceptions.has(normalizedPath))
   )
     return true;
   if (
