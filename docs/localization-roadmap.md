@@ -14,7 +14,7 @@ The shipped browser UI is the React application under `web/`. Its reachable bran
 
 ## First-pass locale order
 
-This is a practical rollout order, not a claim about these apps' actual user base. Product-level language analytics are not available. It combines global speaker estimates with online-content usage. Arabic remains a planned follow-up until its right-to-left layout review is complete:
+This is a practical rollout order, not a claim about this app's actual user base. Product-level language analytics are not available. It combines global speaker estimates with online-content usage and includes the requested Asian-language and Arabic coverage:
 
 1. Spanish (es; es-MX where the product already distinguishes it)
 2. Simplified Chinese (zh-Hans / zh-CN)
@@ -23,19 +23,24 @@ This is a practical rollout order, not a claim about these apps' actual user bas
 5. Japanese (ja)
 6. French (fr)
 7. Brazilian Portuguese (pt-BR)
-8. Korean (ko)
-9. Traditional Chinese (zh-Hant / zh-TW)
-10. Vietnamese (vi)
-11. Indonesian (id)
-
-Arabic (ar) follows this initial set after right-to-left layout is verified across core workflows at narrow and desktop widths.
+8. Arabic (ar)
+9. Korean (ko)
+10. Traditional Chinese (zh-Hant / zh-TW)
+11. Vietnamese (vi)
+12. Indonesian (id)
 
 The World Bank's 2025 report estimates Mandarin Chinese, Hindi, and Spanish at 15%, 7.6%, and 6.9% of the global population respectively; its online-content data also places German, Chinese, and Japanese among the leading languages. [World Bank, Digital Progress and Trends Report 2025](https://documents1.worldbank.org/curated/en/099112525160536089/pdf/P505350-59c98ca8-0803-4f23-b470-17f3dab010ab.pdf). W3Techs tracks website content-language share rather than app users. [W3Techs content-language survey](https://w3techs.com/technologies/cross/content_language%20/ranking). Reorder this list if maintainers later receive reliable demand signals.
 
 ## Translation boundaries and acceptance
 
-Translate interface labels, help, empty states, validation, notifications, and errors. Keep media titles, user names, filenames and paths, commands, API identifiers, protocol values, and other user-supplied content unchanged. Use the selected UI language for date, time, number, and plural formatting. Every locale must fall back to English for a missing key; CI should check placeholder parity and report missing strings. Arabic ships only after the app sets `lang` and `dir`, uses logical layout properties, and verifies the core workflows in RTL at narrow and desktop widths.
+Translate interface labels, help, empty states, validation, notifications, and errors. Keep media titles, user names, filenames and paths, commands, API identifiers, protocol values, and other user-supplied content unchanged. Use the selected UI language for date, time, number, and plural formatting. Every locale must fall back to English for a missing key; CI should check placeholder parity and report missing strings. Arabic translated labels use local `lang` and `dir` metadata. App-wide RTL still requires logical layout properties and review of core workflows at narrow and desktop widths.
 
 ## Implemented in this PR
 
-System > Experience Preferences now offers a browser-local interface-language selector for eleven locales. Primary navigation and its accessibility labels use translated strings with per-key English fallback. Other screens remain in English. Arabic remains planned after right-to-left layout review is completed at narrow and desktop widths.
+System > Experience Preferences offers a browser-local interface-language selector for twelve first-wave locales. The translated primary navigation uses per-key English fallback; Arabic navigation labels carry local language and direction metadata while the document and untranslated screens remain English and left-to-right. Full screen-level translation and app-wide RTL layout review remain outstanding.
+
+Regional formatting uses the selected preference for dates, times, counts, byte sizes, and numbers in the shipped UI. Changes re-render open screens immediately, keep working in the current tab when browser storage is blocked, and update from another tab's preference changes.
+
+## Remaining work
+
+Translate the highest-use search, transfer, room, settings, and error workflows in screen-sized catalog batches. Keep server and protocol values unchanged, and use stable message keys before translating server-originated errors or persisted notifications. Verify complete Arabic layout in real workflows before claiming app-wide RTL support.

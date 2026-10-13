@@ -26,11 +26,13 @@ const AppNavigationPrimary = ({
   navActivity,
   version,
 }) => {
-  const { t } = useInterfaceLanguage();
+  const { language, t } = useInterfaceLanguage();
   return (
               <div
                 aria-label={t('Primary navigation')}
                 className="navigation-primary"
+                lang={language}
+                dir={language === 'ar' ? 'rtl' : 'ltr'}
                 role="navigation"
               >
                 {version.isCanary && (

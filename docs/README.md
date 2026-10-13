@@ -14,7 +14,8 @@ audits.
 | [Features](FEATURES.md) | User-facing map of current slskR feature areas. |
 | [Status and support boundaries](status.md) | Which behavior is ordinary, configured, compatibility-only, or limited. |
 | [Configuration guide](configuration.md) | Config sources, network defaults, credentials, and optional features. |
-| [Troubleshooting](troubleshooting.md) | Common operator problems and focused checks. |
+| [Troubleshooting](troubleshooting.md)| [Localization roadmap](localization-roadmap.md) | Language coverage, regional preferences, and the next translation batches. |
+ | Common operator problems and focused checks. |
 | [Install guide](install.md) | Build, install, service, container, config, state, and exposure runbook. |
 | [Credential storage](credential-storage.md) | Soulseek credential-source choices, systemd credentials, Web UI behavior, and security notes. |
 | [Config example](slskr.config.example.toml) | Annotated TOML config with the supported runtime settings. |

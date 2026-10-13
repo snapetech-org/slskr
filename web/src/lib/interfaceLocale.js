@@ -10,6 +10,7 @@ export const INTERFACE_LANGUAGE_OPTIONS = [
   { key: 'ja', text: '日本語 — Japanese', value: 'ja' },
   { key: 'fr', text: 'Français — French', value: 'fr' },
   { key: 'pt-BR', text: 'Português (Brasil) — Brazilian Portuguese', value: 'pt-BR' },
+  { key: 'ar', text: 'العربية — Arabic', value: 'ar' },
   { key: 'ko', text: '한국어 — Korean', value: 'ko' },
   { key: 'zh-Hant', text: '繁體中文 — Traditional Chinese', value: 'zh-Hant' },
   { key: 'vi', text: 'Tiếng Việt — Vietnamese', value: 'vi' },
@@ -42,10 +43,10 @@ const readLanguage = () => {
   }
 };
 
-const applyDocumentLanguage = (language) => {
+const applyDocumentLanguage = (_language) => {
   if (typeof document === 'undefined') return;
-  document.documentElement.lang = language;
-  document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+  document.documentElement.lang = 'en';
+  document.documentElement.dir = 'ltr';
 };
 
 let activeLanguage = readLanguage();
@@ -70,6 +71,13 @@ export const setInterfaceLanguage = (language) => {
   activeLanguage = language;
   try { localStorage.setItem(STORAGE_KEY, language); } catch { /* Keep this tab usable without browser storage. */ }
   applyDocumentLanguage(language);
+  notify();
+};
+
+export const resetInterfaceLanguage = () => {
+  try { localStorage.removeItem(STORAGE_KEY); } catch { /* Use the browser language for this tab. */ }
+  activeLanguage = browserLanguage();
+  applyDocumentLanguage(activeLanguage);
   notify();
 };
 

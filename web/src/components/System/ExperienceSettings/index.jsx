@@ -1,6 +1,6 @@
 import { REGIONAL_FORMAT_OPTIONS } from '../../../lib/regionalFormat';
-import { INTERFACE_LANGUAGE_OPTIONS, useInterfaceLanguage } from '../../../lib/interfaceLocale';
-import { EXPERIENCE_PREFERENCES_STORAGE_KEY } from '../../../lib/util';
+import { INTERFACE_LANGUAGE_OPTIONS, resetInterfaceLanguage, useInterfaceLanguage } from '../../../lib/interfaceLocale';
+import { EXPERIENCE_PREFERENCES_STORAGE_KEY, setRegionalFormatPreference } from '../../../lib/util';
 import { copyToClipboard } from '../../../lib/clipboard';
 import { toDisplayError } from '../../../lib/errors';
 import { readBoundedJson } from '../../../lib/persistedJson';
@@ -176,6 +176,7 @@ const ExperienceSettings = () => {
       storageKey,
       JSON.stringify(normalizePreferences(form)),
     );
+    setRegionalFormatPreference(form.regionalFormat);
     setMessage(
       saved
         ? 'Experience preferences saved locally in this browser.'
@@ -184,8 +185,10 @@ const ExperienceSettings = () => {
   };
 
   const reset = () => {
+    resetInterfaceLanguage();
     const removed = removeLocalStorageItem(storageKey);
     setForm(defaults);
+    setRegionalFormatPreference(defaults.regionalFormat);
     setMessage(
       removed
         ? 'Experience preferences reset to defaults.'
