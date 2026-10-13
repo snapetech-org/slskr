@@ -1,4 +1,4 @@
-import { formatBytes, formatBytesAsUnit, getFileName } from '../../lib/util';
+import { formatBytes, getFileName } from '../../lib/util';
 import { useInterfaceLanguage } from '../../lib/interfaceLocale';
 import React, { Component } from 'react';
 import {
@@ -62,14 +62,10 @@ const safeNumber = (value) => {
 };
 
 const formatBytesTransferred = ({ size, transferred }) => {
-  const [sizeText, sizeExtension] = formatBytes(safeNumber(size), 1).split(' ');
-  const transferredText = formatBytesAsUnit(
-    safeNumber(transferred),
-    sizeExtension,
+  return `${formatBytes(safeNumber(transferred), 1)}/${formatBytes(
+    safeNumber(size),
     1,
-  );
-
-  return `${transferredText}/${sizeText} ${sizeExtension}`;
+  )}`;
 };
 
 class TransferList extends Component {
