@@ -86,8 +86,11 @@ const sensitiveCredentialName =
   /^[.]?(?:auth(?:entication)?|tokens?|credentials?|secrets?|private[-_]?keys?|api[-_]?keys?|access[-_]?tokens?|refresh[-_]?tokens?|client[-_]?secrets?)$/iu;
 const sensitiveCredentialConfigFile =
   /^[.]?(?:auth(?:entication)?|tokens?|credentials?|secrets?|private[-_]?keys?|api[-_]?keys?|access[-_]?tokens?|refresh[-_]?tokens?|client[-_]?secrets?)[.](?:json|ya?ml|toml|ini|cfg|conf|env(?:[.](?!example$)[^/]+)?|properties|xml|txt)$/iu;
-const sensitiveCredentialSourceFile =
-  /^[.]?(?:auth(?:entication)?|tokens?|credentials?|secrets?)[.](?:[cm]?js|jsx|ts|tsx|rs|go|py|rb|java|kt|cs|php|sh|sql)$/iu;
+const qualifiedCredentialSourceName =
+  /^(?:[^._-]+[._-])?(?:tokens?|credentials?|secrets?)(?:[._-](?!(?:manager|parser|service|client|store|provider|package|module|checker|scanning|persistence|differential|filter|policy|schema|template|example|sample|source)(?:$|[._-]))[^/]+)*$/iu;
+const qualifiedAuthSourceName = /^[^._-]+[._-]auth(?:entication)?$/iu;
+const credentialEnvironmentExampleFile =
+  /^[.]?(?:auth(?:entication)?|tokens?|credentials?|secrets?)[.]env[.]example$/iu;
 const qualifiedAuthConfigFile =
   /^[^/]+[._-]auth(?:entication)?[.](?:json|ya?ml|toml|ini|cfg|conf|env|properties|xml|txt)$/iu;
 const qualifiedCredentialConfigFile =
@@ -106,6 +109,8 @@ const knownSourceCredentialModules = new Set([
   'src/authentication.ts',
   'web/src/lib/token.js',
   'vendor/mainline/src/rpc/server/tokens.rs',
+  'crates/slskr/src/private_gateway_owners/peer_authentication.rs',
+  'dashboard/src/pages/ApiKeys.tsx',
 ]);
 
 export function isSensitiveCandidatePath(relativePath) {
@@ -118,12 +123,21 @@ export function isSensitiveCandidatePath(relativePath) {
 
   const filename = segments.at(-1) ?? '';
   const directories = segments.slice(0, -1);
+  const extensionSeparator = filename.lastIndexOf('.');
+  const sourceName = extensionSeparator > 0
+    ? filename.slice(0, extensionSeparator)
+    : filename;
+  const sensitiveCredentialSourceFile =
+    sensitiveCredentialName.test(sourceName) ||
+    qualifiedCredentialSourceName.test(sourceName) ||
+    qualifiedAuthSourceName.test(sourceName);
   if (
     sensitiveCredentialName.test(filename) ||
     sensitiveCredentialConfigFile.test(filename) ||
     qualifiedAuthConfigFile.test(filename) ||
     qualifiedCredentialConfigFile.test(filename) ||
-    (sensitiveCredentialSourceFile.test(filename) &&
+    (!credentialEnvironmentExampleFile.test(filename) &&
+      sensitiveCredentialSourceFile &&
       !knownSourceCredentialModules.has(normalizedPath))
   )
     return true;
