@@ -1,3 +1,5 @@
+import LocalizedText from "../components/Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../lib/interfaceLocale";
 import React from 'react';
 import { createPortal } from 'react-dom';
 
@@ -329,6 +331,7 @@ const createComponent = (baseClass, defaultAs = 'div', classFactory = () => null
   });
 
 export const Icon = React.forwardRef((props, ref) => {
+  useInterfaceLanguage();
   const {
     as: Component = 'i',
     children,
@@ -372,6 +375,7 @@ Icon.Group = createComponent('icons', 'span');
 export const ButtonGroup = createComponent('ui buttons');
 
 export const Button = React.forwardRef((props, ref) => {
+  useInterfaceLanguage();
   const {
     as,
     children,
@@ -439,6 +443,7 @@ const renderLabelIcon = (icon) => {
 };
 
 export const Label = React.forwardRef((props, ref) => {
+  useInterfaceLanguage();
   const {
     as: Component = 'span',
     children,
@@ -515,6 +520,7 @@ Item.Image = React.forwardRef((props, ref) => {
 });
 
 export const Message = React.forwardRef((props, ref) => {
+  useInterfaceLanguage();
   const {
     as: Component = 'div',
     children,
@@ -645,6 +651,7 @@ const renderInputAction = (action) => {
 };
 
 export const Input = React.forwardRef((props, ref) => {
+  useInterfaceLanguage();
   const {
     action,
     children,
@@ -723,6 +730,7 @@ export const Input = React.forwardRef((props, ref) => {
 });
 
 export const TextArea = React.forwardRef((props, ref) => {
+  useInterfaceLanguage();
   const {
     className,
     disabled,
@@ -746,6 +754,7 @@ const optionValue = (value) => value == null ? '' : String(value);
 const optionLabel = (option) => option.text ?? option.content ?? option.value;
 
 export const Dropdown = React.forwardRef((props, ref) => {
+  useInterfaceLanguage();
   const {
     children,
     className,
@@ -1043,8 +1052,7 @@ export const Dropdown = React.forwardRef((props, ref) => {
               className="item disabled"
               role="option"
             >
-              No results found.
-            </div>
+              <LocalizedText source={"No results found."} /></div>
           ) : visibleOptions.map((option, optionIndex) => {
               const isSelected = isMultiple
                 ? selectedValues.some((entry) => optionValue(entry) === optionValue(option.value))
@@ -1171,6 +1179,7 @@ Dropdown.Header = React.forwardRef((props, ref) => {
 Dropdown.Divider = createComponent('divider');
 
 const CheckboxInput = React.forwardRef((props, ref) => {
+  useInterfaceLanguage();
   const {
     checked,
     className,
@@ -1227,6 +1236,7 @@ export const Radio = React.forwardRef((props, ref) => (
 ));
 
 export const Form = React.forwardRef((props, ref) => {
+  useInterfaceLanguage();
   const {
     as: Component = 'form',
     children,
@@ -1407,6 +1417,7 @@ const renderModalAction = (action, index, close) => {
 };
 
 export const Modal = React.forwardRef((props, ref) => {
+  useInterfaceLanguage();
   const {
     actions,
     children,
@@ -1476,7 +1487,7 @@ export const Modal = React.forwardRef((props, ref) => {
       >
         {closeIcon ? (
           <button
-            aria-label="Close"
+            aria-label={interfaceText("Close")}
             className="close icon"
             onClick={close}
             style={{
@@ -1486,7 +1497,7 @@ export const Modal = React.forwardRef((props, ref) => {
               zIndex: 20,
             }}
             type="button"
-          />
+           {...interfaceTextProps("Close")}/>
         ) : null}
         {header ? <Modal.Header>{header}</Modal.Header> : null}
         {childrenOrContent(children, content)}
@@ -1576,6 +1587,7 @@ export const Popup = ({
   position,
   trigger,
 }) => {
+  useInterfaceLanguage();
   const [internalOpen, setInternalOpen] = React.useState(false);
   const isOpen = open ?? internalOpen;
   const popupContent = content === undefined && trigger ? children : content;
@@ -1630,6 +1642,7 @@ Sidebar.Pushable = createComponent('pushable');
 Sidebar.Pusher = createComponent('pusher');
 
 export const Dimmer = ({ active, children, className, ...props }) => {
+  useInterfaceLanguage();
   if (!active) return null;
   return (
     <div
@@ -1642,6 +1655,7 @@ export const Dimmer = ({ active, children, className, ...props }) => {
 };
 
 export const Loader = ({ active = true, children, className, content, ...props }) => {
+  useInterfaceLanguage();
   if (!active) return null;
   return (
     <div
@@ -1662,6 +1676,7 @@ export const Progress = ({
   total,
   ...props
 }) => {
+  useInterfaceLanguage();
   const computedPercent = percent || (total ? Math.round((value / total) * 100) : 0);
   const displayProgress = progress === true ? `${computedPercent}%` : progress;
   const progressLabel = props['aria-label'] || props.title
@@ -1697,6 +1712,7 @@ export const Pagination = ({
   totalPages = 1,
   ...props
 }) => {
+  useInterfaceLanguage();
   const pageCount = Math.max(1, Number(totalPages) || 1);
   const pages = Array.from({ length: pageCount }, (_, index) => index + 1);
   const selectPage = (event, nextPage) => {
@@ -1761,6 +1777,7 @@ export const Tab = ({
   renderActiveOnly = true,
   ...props
 }) => {
+  useInterfaceLanguage();
   const [internalActiveIndex, setInternalActiveIndex] = React.useState(defaultActiveIndex);
   const selectedIndex = activeIndex ?? internalActiveIndex;
   const selectPane = (event, nextIndex) => {

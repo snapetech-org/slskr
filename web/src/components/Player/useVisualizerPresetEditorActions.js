@@ -1,3 +1,4 @@
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import { useCallback } from 'react';
 import { removeLocalStorageItem, setLocalStorageItem } from '../../lib/storage';
 import { toDisplayError } from '../../lib/errors';
@@ -45,7 +46,7 @@ const useVisualizerPresetEditorActions = ({
       }
       if (!mountedRef.current) return;
       if (!result) {
-        setError(`No ${type} fragment is available in the active RustyMilk preset.`);
+        setError(interfaceText("No {type} fragment is available in the active RustyMilk preset.", { "type": (type) }));
         return;
       }
       const editedPreset = {
@@ -104,7 +105,7 @@ const useVisualizerPresetEditorActions = ({
       }
       if (!mountedRef.current) return;
       if (!result) {
-        setError('Native parameter editing is not available for this value.');
+        setError(interfaceText("Native parameter editing is not available for this value."));
         return;
       }
       const editedPreset = {
@@ -159,7 +160,7 @@ const useVisualizerPresetEditorActions = ({
       }
       if (!mountedRef.current) return;
       if (!result) {
-        setError('Native parameter randomization is not available for this preset.');
+        setError(interfaceText("Native parameter randomization is not available for this preset."));
         return;
       }
       const editedPreset = {

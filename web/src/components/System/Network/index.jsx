@@ -1,3 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+
+
 import * as slskrAPI from '../../../lib/slskr';
 import { toDisplayError } from '../../../lib/errors';
 import {
@@ -106,6 +110,7 @@ const getStatusColor = (server = {}) => {
 };
 
 const SoulseekSessionStatus = ({ options = {}, state = {} }) => {
+  useInterfaceLanguage();
   const server = state.server || {};
   const listeners = state.listeners || {};
   const statusText = getServerStateText(server);
@@ -119,40 +124,33 @@ const SoulseekSessionStatus = ({ options = {}, state = {} }) => {
         <Header as="h4">
           <Icon name="plug" />
           <Header.Content>
-            Soulseek Session
-            <Header.Subheader>
-              Login, credential source, and listener state for the public Soulseek network
-            </Header.Subheader>
+            <LocalizedText source={"Soulseek Session"} /><Header.Subheader>
+              <LocalizedText source={"Login, credential source, and listener state for the public Soulseek network"} /></Header.Subheader>
           </Header.Content>
         </Header>
         <Label color={getStatusColor(server)}>
-          {statusText}
+          <LocalizedText source={statusText} />
         </Label>
       </div>
       <Label.Group>
         <Label color={credentialSource === 'not configured' ? 'red' : 'blue'}>
-          credentials
-          <Label.Detail>{credentialSource}</Label.Detail>
+          <LocalizedText source={"credentials"} /><Label.Detail><LocalizedText source={credentialSource} /></Label.Detail>
         </Label>
         <Label color={autoConnect ? 'green' : 'grey'}>
-          auto-connect
-          <Label.Detail>{autoConnect ? 'on' : 'off'}</Label.Detail>
+          <LocalizedText source="auto-connect" />
+          <Label.Detail>{autoConnect ? <LocalizedText source={"on"} /> : <LocalizedText source={"off"} />}</Label.Detail>
         </Label>
         <Label color={reconnect ? 'green' : 'grey'}>
-          reconnect
-          <Label.Detail>{reconnect ? 'on' : 'off'}</Label.Detail>
+          <LocalizedText source={"reconnect"} /><Label.Detail>{reconnect ? <LocalizedText source={"on"} /> : <LocalizedText source={"off"} />}</Label.Detail>
         </Label>
         <Label color="teal">
-          server
-          <Label.Detail>{server.address || server.ipEndPoint || options.server_address || 'unset'}</Label.Detail>
+          <LocalizedText source={"server"} /><Label.Detail>{server.address || server.ipEndPoint || options.server_address || <LocalizedText source="unset" />}</Label.Detail>
         </Label>
         <Label color="teal">
-          listen
-          <Label.Detail>{options.listen_port ?? 'unset'}</Label.Detail>
+          <LocalizedText source={"listen"} /><Label.Detail>{options.listen_port ?? <LocalizedText source="unset" />}</Label.Detail>
         </Label>
         <Label color="teal">
-          advertised
-          <Label.Detail>{options.advertised_port ?? options.listen_port ?? 'unset'}</Label.Detail>
+          <LocalizedText source={"advertised"} /><Label.Detail>{options.advertised_port ?? options.listen_port ?? <LocalizedText source="unset" />}</Label.Detail>
         </Label>
       </Label.Group>
       {(listeners.regularLocalAddr || listeners.regular_local_addr ||
@@ -160,15 +158,13 @@ const SoulseekSessionStatus = ({ options = {}, state = {} }) => {
         listeners.lastError || listeners.last_error) && (
         <Label.Group>
           <Label color="blue">
-            listener
-            <Label.Detail>
-              {listeners.regularLocalAddr || listeners.regular_local_addr || 'not bound'}
+            <LocalizedText source={"listener"} /><Label.Detail>
+              {listeners.regularLocalAddr || listeners.regular_local_addr || <LocalizedText source="not bound" />}
             </Label.Detail>
           </Label>
           <Label color="purple">
-            obfuscated
-            <Label.Detail>
-              {listeners.obfuscatedLocalAddr || listeners.obfuscated_local_addr || 'not bound'}
+            <LocalizedText source={"obfuscated"} /><Label.Detail>
+              {listeners.obfuscatedLocalAddr || listeners.obfuscated_local_addr || <LocalizedText source="not bound" />}
             </Label.Detail>
           </Label>
         </Label.Group>
@@ -178,7 +174,7 @@ const SoulseekSessionStatus = ({ options = {}, state = {} }) => {
           className="network-diagnostic-message"
           negative
         >
-          <Message.Header>Soulseek connection failed</Message.Header>
+          <Message.Header><LocalizedText source={"Soulseek connection failed"} /></Message.Header>
           <p>{server.lastError}</p>
         </Message>
       )}
@@ -187,7 +183,7 @@ const SoulseekSessionStatus = ({ options = {}, state = {} }) => {
           className="network-diagnostic-message"
           warning
         >
-          <Message.Header>Listener warning</Message.Header>
+          <Message.Header><LocalizedText source={"Listener warning"} /></Message.Header>
           <p>{listeners.lastError || listeners.last_error}</p>
         </Message>
       )}
@@ -196,11 +192,9 @@ const SoulseekSessionStatus = ({ options = {}, state = {} }) => {
           className="network-diagnostic-message"
           warning
         >
-          <Message.Header>Soulseek credentials are not configured</Message.Header>
+          <Message.Header><LocalizedText source={"Soulseek credentials are not configured"} /></Message.Header>
           <p>
-            Set <code>SLSK_USERNAME</code> and <code>SLSK_PASSWORD</code>, configure
-            a credential store, or use the Connect control in the top bar.
-          </p>
+            <LocalizedText source={"Set"} />{" "}<code>SLSK_USERNAME</code> <LocalizedText source={"and"} />{" "}<code>SLSK_PASSWORD</code><LocalizedText source={", configure a credential store, or use the Connect control in the top bar."} /></p>
         </Message>
       )}
     </Segment>
@@ -208,7 +202,16 @@ const SoulseekSessionStatus = ({ options = {}, state = {} }) => {
 };
 
 // eslint-disable-next-line complexity
+const LocalizedNetworkFindingSummary = ({ source }) => {
+  const securityMatch = source.match(/^(\d+) mesh security signal(s?) visible$/);
+  if (securityMatch) return <LocalizedText source={securityMatch[2] ? "{count} mesh security signals visible" : "{count} mesh security signal visible"} values={{ count: securityMatch[1] }} />;
+  const backfillMatch = source.match(/^(\d+) pending backfill candidates$/);
+  if (backfillMatch) return <LocalizedText source="{count} pending backfill candidates" values={{ count: backfillMatch[1] }} />;
+  return <LocalizedText source={source} />;
+};
+
 const Network = ({ options = {}, state = {}, theme }) => {
+  useInterfaceLanguage();
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState(null);
   const [statsError, setStatsError] = useState(null);
@@ -308,7 +311,7 @@ const Network = ({ options = {}, state = {}, theme }) => {
         mountedRef.current &&
         syncRequestIdsRef.current[username] === requestId
       ) {
-        toast.success(`Sync initiated with ${username}`);
+        toast.success(interfaceText("Sync initiated with {username}", { "username": (username) }));
       }
     } catch (error) {
       if (
@@ -346,7 +349,7 @@ const Network = ({ options = {}, state = {}, theme }) => {
       }
 
       if (result?.error) {
-        toast.error(`Backfill failed: ${result.error}`);
+        toast.error(interfaceText("Backfill failed: {error}", { "error": (result.error) }));
         setBackfillProgress(null);
       } else {
         setBackfillProgress(
@@ -368,7 +371,7 @@ const Network = ({ options = {}, state = {}, theme }) => {
         mountedRef.current &&
         requestId === backfillRequestIdRef.current
       ) {
-        toast.error('Failed to trigger backfill from search history');
+        toast.error(interfaceText("Failed to trigger backfill from search history"));
         setBackfillProgress(null);
       }
     } finally {
@@ -433,21 +436,21 @@ const Network = ({ options = {}, state = {}, theme }) => {
   const copyNetworkHealthReport = async () => {
     if (!mountedRef.current) return;
     if (!networkHealth) {
-      toast.info('Network health is unavailable until network statistics load');
+      toast.info(interfaceText("Network health is unavailable until network statistics load"));
       return;
     }
     const report = formatNetworkHealthReport(networkHealth);
     if (navigator.clipboard?.writeText) {
       try {
         await navigator.clipboard.writeText(report);
-        toast.success('Network health report copied');
+        toast.success(interfaceText("Network health report copied"));
       } catch {
-        toast.error('Unable to copy network health report');
+        toast.error(interfaceText("Unable to copy network health report"));
       }
       return;
     }
 
-    toast.info('Clipboard unavailable; select the report text manually');
+    toast.info(interfaceText("Clipboard unavailable; select the report text manually"));
   };
 
   if (loading) {
@@ -465,12 +468,12 @@ const Network = ({ options = {}, state = {}, theme }) => {
           className="network-diagnostic-message"
           negative
         >
-          <Message.Header>Network telemetry unavailable</Message.Header>
+          <Message.Header><LocalizedText source={"Network telemetry unavailable"} /></Message.Header>
           <p>{statsError}</p>
           <p>
             {hasStats
-              ? 'Showing the last successful network snapshot until the next poll succeeds.'
-              : 'Network health and counters will remain unavailable until the daemon responds.'}
+              ? <LocalizedText source={"Showing the last successful network snapshot until the next poll succeeds."} />
+              : <LocalizedText source={"Network health and counters will remain unavailable until the daemon responds."} />}
           </p>
         </Message>
       )}
@@ -480,9 +483,9 @@ const Network = ({ options = {}, state = {}, theme }) => {
           className="network-diagnostic-message"
           warning
         >
-          <Message.Header>Mesh peer list unavailable</Message.Header>
+          <Message.Header><LocalizedText source={"Mesh peer list unavailable"} /></Message.Header>
           <p>{meshPeersError}</p>
-          <p>Existing peer data is retained until the next successful poll.</p>
+          <p><LocalizedText source={"Existing peer data is retained until the next successful poll."} /></p>
         </Message>
       )}
       {discoveredPeersError && (
@@ -491,9 +494,9 @@ const Network = ({ options = {}, state = {}, theme }) => {
           className="network-diagnostic-message"
           warning
         >
-          <Message.Header>Discovered peer list unavailable</Message.Header>
+          <Message.Header><LocalizedText source={"Discovered peer list unavailable"} /></Message.Header>
           <p>{discoveredPeersError}</p>
-          <p>Existing peer data is retained until the next successful poll.</p>
+          <p><LocalizedText source={"Existing peer data is retained until the next successful poll."} /></p>
         </Message>
       )}
       {shouldExplainLanOnlyDht && (
@@ -501,20 +504,11 @@ const Network = ({ options = {}, state = {}, theme }) => {
           className="network-diagnostic-message"
           info
         >
-          <Message.Header>LAN-only DHT is isolated</Message.Header>
+          <Message.Header><LocalizedText source={"LAN-only DHT is isolated"} /></Message.Header>
           <p>
-            DHT rendezvous is running with <code>dhtRendezvous.lanOnly: true</code>,
-            so slskr intentionally skips the public BitTorrent DHT bootstrap
-            routers. Seeing <code>0</code> DHT nodes and <code>0</code> discovered
-            peers can be expected in this privacy mode even when the overlay and
-            DHT ports are open.
-          </p>
+            <LocalizedText source={"DHT rendezvous is running with"} />{" "}<code>dhtRendezvous.lanOnly: true</code><LocalizedText source={", so slskr intentionally skips the public BitTorrent DHT bootstrap routers. Seeing"} />{" "}<code>0</code> <LocalizedText source={"DHT nodes and"} />{" "}<code>0</code> <LocalizedText source={"discovered peers can be expected in this privacy mode even when the overlay and DHT ports are open."} /></p>
           <p>
-            To discover public slskr peers through DHT rendezvous, set
-            <code> dhtRendezvous.lanOnly: false</code> and restart. Keep LAN-only
-            enabled if you want discovery limited to local or already-known
-            private peers.
-          </p>
+            <LocalizedText source={"To discover public slskr peers through DHT rendezvous, set"} /><code> dhtRendezvous.lanOnly: false</code> <LocalizedText source={"and restart. Keep LAN-only enabled if you want discovery limited to local or already-known private peers."} /></p>
         </Message>
       )}
       {shouldWarnAboutConnectivity && (
@@ -522,18 +516,12 @@ const Network = ({ options = {}, state = {}, theme }) => {
           className="network-diagnostic-message"
           warning
         >
-          <Message.Header>Connectivity diagnostics</Message.Header>
+          <Message.Header><LocalizedText source={"Connectivity diagnostics"} /></Message.Header>
           <p>
-            slskr is not seeing reachable peers yet. If you can log into the
-            Soulseek server but uploads, downloads, and peer counts stay at
-            zero, verify that your configured Soulseek listen port is reachable
-            from other peers. The default is <code>50300/tcp</code>.
+            <LocalizedText source={"slskr is not seeing reachable peers yet. If you can log into the Soulseek server but uploads, downloads, and peer counts stay at zero, verify that your configured Soulseek listen port is reachable from other peers. The default is"} />{" "}<code>50300/tcp</code>.
           </p>
           <p>
-            Check local firewall rules, router/NAT forwarding, container port
-            publishing, and any reverse-proxy setup that might expose the Web UI
-            but not the Soulseek listen port.
-          </p>
+            <LocalizedText source={"Check local firewall rules, router/NAT forwarding, container port publishing, and any reverse-proxy setup that might expose the Web UI but not the Soulseek listen port."} /></p>
         </Message>
       )}
       {shouldShowDhtExposureNotice && (
@@ -542,18 +530,11 @@ const Network = ({ options = {}, state = {}, theme }) => {
           info
           onDismiss={dismissDhtExposureConsent}
         >
-          <Message.Header>Public DHT exposure notice</Message.Header>
+          <Message.Header><LocalizedText source={"Public DHT exposure notice"} /></Message.Header>
           <p>
-            DHT rendezvous is enabled and this node can publish its public
-            endpoint into the public BitTorrent DHT. This is expected when public
-            rendezvous is enabled; this notice is only here so operators are aware
-            that other slskr peers can discover the node for mesh sync.
-          </p>
+            <LocalizedText source={"DHT rendezvous is enabled and this node can publish its public endpoint into the public BitTorrent DHT. This is expected when public rendezvous is enabled; this notice is only here so operators are aware that other slskr peers can discover the node for mesh sync."} /></p>
           <p>
-            If you want to keep mesh discovery confined to trusted local peers,
-            set <code>dht.lan_only=true</code> in configuration before long-term
-            operation.
-          </p>
+            <LocalizedText source={"If you want to keep mesh discovery confined to trusted local peers, set"} />{" "}<code>dht.lan_only=true</code> <LocalizedText source={"in configuration before long-term operation."} /></p>
         </Message>
       )}
 
@@ -566,38 +547,38 @@ const Network = ({ options = {}, state = {}, theme }) => {
           color="blue"
           icon="sitemap"
           inverted={darkTheme}
-          label="Mesh Peers"
+          label={interfaceText("Mesh Peers")}
           subLabel="slskr clients connected"
           value={hasStats ? mesh?.connectedPeerCount ?? meshPeers.length : '—'}
-        />
+         {...interfaceTextProps("Mesh Peers")}/>
         <StatCard
           color="green"
           icon="database"
           inverted={darkTheme}
-          label="Hash Entries"
+          label={interfaceText("Hash Entries")}
           subLabel={
             hasStats && hasHashDbSize
               ? `${formatBytes(hashDbSizeBytes)} on disk`
               : 'Local database'
           }
           value={hasStats ? formatNumber(hashDb?.totalEntries ?? 0) : '—'}
-        />
+         {...interfaceTextProps("Hash Entries")}/>
         <StatCard
           color="purple"
           icon="sync"
           inverted={darkTheme}
-          label="Sequence ID"
+          label={interfaceText("Sequence ID")}
           subLabel="Mesh sync position"
           value={hasStats ? hashDb?.currentSeqId ?? mesh?.localSeqId ?? 0 : '—'}
-        />
+         {...interfaceTextProps("Sequence ID")}/>
         <StatCard
           color="orange"
           icon="bolt"
           inverted={darkTheme}
-          label="Active Swarms"
+          label={interfaceText("Active Swarms")}
           subLabel="Multi-source downloads"
           value={hasStats ? swarmJobs?.length ?? 0 : '—'}
-        />
+         {...interfaceTextProps("Active Swarms")}/>
       </Card.Group>
 
       <Divider />
@@ -607,26 +588,23 @@ const Network = ({ options = {}, state = {}, theme }) => {
           <Header as="h4">
             <Icon name="heartbeat" />
             <Header.Content>
-              Network Health
-              <Header.Subheader>
-                Local readiness score from already-loaded mesh, DHT, HashDb, and security counters
-              </Header.Subheader>
+              <LocalizedText source={"Network Health"} /><Header.Subheader>
+                <LocalizedText source={"Local readiness score from already-loaded mesh, DHT, HashDb, and security counters"} /></Header.Subheader>
             </Header.Content>
           </Header>
           <Popup
-            content="Copy a local network-health report for diagnostics. This does not query peers or change network state."
+            content={interfaceText("Copy a local network-health report for diagnostics. This does not query peers or change network state.")}
             position="top center"
             trigger={
               <Button
-                aria-label="Copy network health report"
+                aria-label={interfaceText("Copy network health report")}
                 onClick={copyNetworkHealthReport}
                 size="small"
-              >
+               {...interfaceTextProps("Copy network health report")}>
                 <Icon name="copy" />
-                Copy Report
-              </Button>
+                <LocalizedText source={"Copy Report"} /></Button>
             }
-          />
+           {...interfaceTextProps("Copy a local network-health report for diagnostics. This does not query peers or change network state.")}/>
         </div>
         {networkHealth ? (
           <>
@@ -642,17 +620,15 @@ const Network = ({ options = {}, state = {}, theme }) => {
                 percent={networkHealth.score}
                 progress
               >
-                {networkHealth.label}
+                <LocalizedText source={networkHealth.label} />
               </Progress>
               {/* These four are inputs to the score above, not states of their
                   own — one neutral pill style, not four unrelated hues. */}
               <Label basic>
-                Mesh
-                <Label.Detail>{networkHealth.inputs.meshCount}</Label.Detail>
+                <LocalizedText source={"Mesh"} /><Label.Detail>{networkHealth.inputs.meshCount}</Label.Detail>
               </Label>
               <Label basic>
-                Discovered
-                <Label.Detail>{networkHealth.inputs.discoveredCount}</Label.Detail>
+                <LocalizedText source={"Discovered"} /><Label.Detail>{networkHealth.inputs.discoveredCount}</Label.Detail>
               </Label>
               <Label basic>
                 DHT
@@ -662,8 +638,7 @@ const Network = ({ options = {}, state = {}, theme }) => {
                 basic={networkHealth.inputs.securityWarningCount === 0}
                 color={networkHealth.inputs.securityWarningCount > 0 ? 'orange' : undefined}
               >
-                Security
-                <Label.Detail>{networkHealth.inputs.securityWarningCount}</Label.Detail>
+                <LocalizedText source={"Security"} /><Label.Detail>{networkHealth.inputs.securityWarningCount}</Label.Detail>
               </Label>
             </div>
             {networkHealth.findings.length > 0 ? (
@@ -692,9 +667,9 @@ const Network = ({ options = {}, state = {}, theme }) => {
                     />
                     <List.Content>
                       <List.Header>
-                        {finding.area}: {finding.summary}
+                        <LocalizedText source={finding.area} />: <LocalizedNetworkFindingSummary source={finding.summary} />
                       </List.Header>
-                      <List.Description>{finding.action}</List.Description>
+                      <List.Description><LocalizedText source={finding.action} /></List.Description>
                     </List.Content>
                   </List.Item>
                 ))}
@@ -704,11 +679,9 @@ const Network = ({ options = {}, state = {}, theme }) => {
                 className="network-diagnostic-message"
                 positive
               >
-                <Message.Header>No local network-health findings</Message.Header>
+                <Message.Header><LocalizedText source={"No local network-health findings"} /></Message.Header>
                 <p>
-                  Mesh, DHT, HashDb, and security counters look healthy from the
-                  already-loaded dashboard data.
-                </p>
+                  <LocalizedText source={"Mesh, DHT, HashDb, and security counters look healthy from the already-loaded dashboard data."} /></p>
               </Message>
             )}
           </>
@@ -717,8 +690,8 @@ const Network = ({ options = {}, state = {}, theme }) => {
             className="network-diagnostic-message"
             warning
           >
-            <Message.Header>Network health unavailable</Message.Header>
-            <p>There is no successful network snapshot to score yet.</p>
+            <Message.Header><LocalizedText source={"Network health unavailable"} /></Message.Header>
+            <p><LocalizedText source={"There is no successful network snapshot to score yet."} /></p>
           </Message>
         )}
       </Segment>
@@ -728,10 +701,8 @@ const Network = ({ options = {}, state = {}, theme }) => {
         <Header as="h4">
           <Icon name="id card" />
           <Header.Content>
-            Our Capabilities
-            <Header.Subheader>
-              What we advertise to other slskr peers
-            </Header.Subheader>
+            <LocalizedText source={"Our Capabilities"} /><Header.Subheader>
+              <LocalizedText source={"What we advertise to other slskr peers"} /></Header.Subheader>
           </Header.Content>
         </Header>
 
@@ -766,7 +737,7 @@ const Network = ({ options = {}, state = {}, theme }) => {
               </>
             )
           ) : (
-            <Label color="grey">Capabilities unavailable</Label>
+            <Label color="grey"><LocalizedText source={"Capabilities unavailable"} /></Label>
           )}
         </Label.Group>
         {obfuscation && (
@@ -775,26 +746,26 @@ const Network = ({ options = {}, state = {}, theme }) => {
             warning={obfuscation.enabled && !obfuscation.runtimeSupported}
             positive={obfuscation.enabled && obfuscation.runtimeSupported}
           >
-            <Message.Header>Soulseek Type-1 Obfuscation</Message.Header>
+            <Message.Header><LocalizedText source={"Soulseek Type-1 Obfuscation"} /></Message.Header>
             <p>{obfuscation.summary}</p>
             <Label.Group>
               <Label color={obfuscation.enabled ? 'teal' : 'grey'}>
-                {obfuscation.enabled ? 'enabled' : 'disabled'}
+                {obfuscation.enabled ? <LocalizedText source={"enabled"} /> : <LocalizedText source={"disabled"} />}
               </Label>
-              <Label color="blue">mode: {obfuscation.mode}</Label>
-              <Label color="blue">type: {obfuscation.type}</Label>
+              <Label color="blue"><LocalizedText source={"mode:"} />{" "}{obfuscation.mode}</Label>
+              <Label color="blue"><LocalizedText source={"type:"} />{" "}{obfuscation.type}</Label>
               <Label color="blue">
-                streams: {(obfuscation.supportedConnectionTypes ?? []).join(', ') || 'unset'}
+                <LocalizedText source={"streams:"} />{" "}{(obfuscation.supportedConnectionTypes ?? []).join(', ') || interfaceText('unset')}
               </Label>
               <Label color="blue">
-                obfuscated port: {obfuscation.effectiveListenPort ?? 'unset'}
+                <LocalizedText source={"obfuscated port:"} />{" "}{obfuscation.effectiveListenPort ?? interfaceText('unset')}
               </Label>
               <Label color={obfuscation.advertiseRegularPort ? 'green' : 'grey'}>
-                regular fallback:{' '}
-                {obfuscation.advertiseRegularPort ? 'advertised' : 'off'}
+                <LocalizedText source={"regular fallback:"} />{' '}
+                {obfuscation.advertiseRegularPort ? <LocalizedText source={"advertised"} /> : <LocalizedText source={"off"} />}
               </Label>
               <Label color={obfuscation.runtimeSupported ? 'green' : 'orange'}>
-                runtime: {obfuscation.runtimeState}
+                <LocalizedText source={"runtime:"} />{" "}{obfuscation.runtimeState}
               </Label>
             </Label.Group>
           </Message>

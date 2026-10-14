@@ -1,3 +1,4 @@
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import { useCallback, useEffect, useRef } from 'react';
 import { removeLocalStorageItem } from '../../lib/storage';
 import { resumeAudioGraph } from './audioGraph';
@@ -98,13 +99,13 @@ const useVisualizerEngineLifecycle = ({
         const graph = await resumeAudioGraph(audioElement);
         if (!isCurrent()) return;
         if (!graph) {
-          setError('Web Audio is not available in this browser.');
+          setError(interfaceText("Web Audio is not available in this browser."));
           setFallbackMode(true);
           return;
         }
 
         if (activeEngineType === 'rustymilk-webgl2' && !supportsWebGl2()) {
-          setError('RustyMilk WebGL2 needs WebGL2. Showing analyzer fallback.');
+          setError(interfaceText("RustyMilk WebGL2 needs WebGL2. Showing analyzer fallback."));
           setFallbackMode(true);
           return;
         }

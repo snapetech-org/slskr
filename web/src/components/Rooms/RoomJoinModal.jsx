@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import './Rooms.css';
 import { toDisplayError } from '../../lib/errors';
 import * as rooms from '../../lib/rooms';
@@ -18,6 +20,7 @@ import {
 } from 'semantic-ui-react';
 
 const RoomJoinModal = ({ joinRoom: parentJoinRoom, ...modalOptions }) => {
+  useInterfaceLanguage();
   const [open, setOpen] = useState(false);
   const [available, setAvailable] = useState([]);
   const [selected, setSelected] = useState(undefined);
@@ -149,7 +152,7 @@ const RoomJoinModal = ({ joinRoom: parentJoinRoom, ...modalOptions }) => {
     >
       <Header>
         <Icon name="comments" />
-        <Modal.Content>Join Room</Modal.Content>
+        <Modal.Content><LocalizedText source={"Join Room"} /></Modal.Content>
       </Header>
       <Modal.Content scrolling>
         {loading ? (
@@ -158,9 +161,9 @@ const RoomJoinModal = ({ joinRoom: parentJoinRoom, ...modalOptions }) => {
             inverted
           >
             <Loader
-              content="Loading Room List"
+              content={interfaceText("Loading Room List")}
               inverted
-            />
+             {...interfaceTextProps("Loading Room List")}/>
           </Dimmer>
         ) : (
           <>
@@ -169,7 +172,7 @@ const RoomJoinModal = ({ joinRoom: parentJoinRoom, ...modalOptions }) => {
                 data-testid="room-join-load-error"
                 error
               >
-                <Message.Header>Room list unavailable</Message.Header>
+                <Message.Header><LocalizedText source={"Room list unavailable"} /></Message.Header>
                 <p>{loadError}</p>
               </Message>
             )}
@@ -177,8 +180,8 @@ const RoomJoinModal = ({ joinRoom: parentJoinRoom, ...modalOptions }) => {
               fluid
               icon="filter"
               onChange={(_, event) => setFilter(event.value)}
-              placeholder="Room Filter"
-            />
+              placeholder={interfaceText("Room Filter")}
+             {...interfaceTextProps("Room Filter")}/>
             {sortedAvailable.length === 0 ? (
               <Segment
                 placeholder
@@ -186,12 +189,12 @@ const RoomJoinModal = ({ joinRoom: parentJoinRoom, ...modalOptions }) => {
               >
                 <Header icon>
                   <Icon name="comments outline" />
-                  {loadError ? 'Rooms unavailable' : 'No rooms available'}
+                  {loadError ? <LocalizedText source={"Rooms unavailable"} /> : <LocalizedText source={"No rooms available"} />}
                 </Header>
                 <p>
                   {loadError
-                    ? 'Try closing and reopening the room picker.'
-                    : 'Try refreshing or check your connection to the server.'}
+                    ? <LocalizedText source={"Try closing and reopening the room picker."} />
+                    : <LocalizedText source={"Try refreshing or check your connection to the server."} />}
                 </p>
               </Segment>
             ) : (
@@ -202,8 +205,7 @@ const RoomJoinModal = ({ joinRoom: parentJoinRoom, ...modalOptions }) => {
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell onClick={() => setSortBy('name')}>
-                      Name
-                      <Icon
+                      <LocalizedText source={"Name"} /><Icon
                         link={sortBy === 'name'}
                         name={
                           sortBy === 'name' &&
@@ -215,8 +217,7 @@ const RoomJoinModal = ({ joinRoom: parentJoinRoom, ...modalOptions }) => {
                       />
                     </Table.HeaderCell>
                     <Table.HeaderCell onClick={() => setSortBy('userCount')}>
-                      Users
-                      <Icon
+                      <LocalizedText source={"Users"} /><Icon
                         link={sortBy === 'userCount'}
                         name={
                           sortBy === 'userCount' &&
@@ -258,15 +259,14 @@ const RoomJoinModal = ({ joinRoom: parentJoinRoom, ...modalOptions }) => {
         )}
       </Modal.Content>
       <Modal.Actions>
-        <Button disabled={joining} onClick={() => close()}>Cancel</Button>
+        <Button disabled={joining} onClick={() => close()}><LocalizedText source={"Cancel"} /></Button>
         <Button
           disabled={!selected || joining}
           loading={joining}
           onClick={() => joinRoom()}
           positive
         >
-          Join
-        </Button>
+          <LocalizedText source={"Join"} /></Button>
       </Modal.Actions>
     </Modal>
   );

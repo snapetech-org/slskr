@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import {
   buildMediaServerExecutionContract,
   buildMediaServerPathDiagnostic,
@@ -24,6 +26,7 @@ import {
 import { useAsyncGuard } from './integrationsShared';
 
 const MediaServerPanel = () => {
+  useInterfaceLanguage();
   const [activeAdapterId, setActiveAdapterId] = useState(mediaServerAdapters[0].id);
   const [automationEnabled, setAutomationEnabled] = useState(() =>
     mediaServerAutomationContracts.reduce(
@@ -77,7 +80,7 @@ const MediaServerPanel = () => {
     const report = formatMediaServerSyncReport(syncPreview);
     if (!navigator.clipboard?.writeText) {
       if (asyncGuard.isCurrent(requestId)) {
-        setCopyStatus('Clipboard unavailable; copy the report from the preview text.');
+        setCopyStatus(interfaceText('Clipboard unavailable; copy the report from the preview text.'));
       }
       asyncGuard.finish(requestId);
       return;
@@ -86,11 +89,11 @@ const MediaServerPanel = () => {
     try {
       await navigator.clipboard.writeText(report);
       if (asyncGuard.isCurrent(requestId)) {
-        setCopyStatus('Media-server sync review copied.');
+        setCopyStatus(interfaceText('Media-server sync review copied.'));
       }
     } catch {
       if (asyncGuard.isCurrent(requestId)) {
-        setCopyStatus('Unable to copy media-server sync review.');
+        setCopyStatus(interfaceText('Unable to copy media-server sync review.'));
       }
     } finally {
       asyncGuard.finish(requestId);
@@ -103,7 +106,7 @@ const MediaServerPanel = () => {
     const report = formatMediaServerExecutionContractReport(executionContract);
     if (!navigator.clipboard?.writeText) {
       if (asyncGuard.isCurrent(requestId)) {
-        setCopyStatus('Clipboard unavailable; copy the execution contract manually.');
+        setCopyStatus(interfaceText('Clipboard unavailable; copy the execution contract manually.'));
       }
       asyncGuard.finish(requestId);
       return;
@@ -112,11 +115,11 @@ const MediaServerPanel = () => {
     try {
       await navigator.clipboard.writeText(report);
       if (asyncGuard.isCurrent(requestId)) {
-        setCopyStatus('Media-server execution contract copied.');
+        setCopyStatus(interfaceText('Media-server execution contract copied.'));
       }
     } catch {
       if (asyncGuard.isCurrent(requestId)) {
-        setCopyStatus('Unable to copy media-server execution contract.');
+        setCopyStatus(interfaceText('Unable to copy media-server execution contract.'));
       }
     } finally {
       asyncGuard.finish(requestId);
@@ -135,11 +138,9 @@ const MediaServerPanel = () => {
       <Card.Content>
         <Card.Header>
           <Icon name="server" />
-          Media Servers
-        </Card.Header>
+          <LocalizedText source={"Media Servers"} /></Card.Header>
         <Card.Meta>
-          Optional Plex, Jellyfin/Emby, and Navidrome integration planning and path diagnostics.
-        </Card.Meta>
+          <LocalizedText source={"Optional Plex, Jellyfin/Emby, and Navidrome integration planning and path diagnostics."} /></Card.Meta>
       </Card.Content>
       <Card.Content>
         <Card.Group
@@ -152,104 +153,101 @@ const MediaServerPanel = () => {
               key={adapter.id}
             >
               <Card.Content>
-                <Card.Header>{adapter.label}</Card.Header>
+                <Card.Header><LocalizedText source={adapter.label} /></Card.Header>
                 <Card.Meta>
-                  {adapter.requiresToken ? 'Token required' : 'No token required'}
+                  {adapter.requiresToken ? <LocalizedText source={"Token required"} /> : <LocalizedText source={"No token required"} />}
                 </Card.Meta>
                 <div className="integration-status-row">
                   {adapter.capabilities.map((capability) => (
                     <Label
                       basic
-                      key={capability}
+                      key={interfaceText(capability)}
                       size="tiny"
                     >
-                      {capability}
+                      {interfaceText(capability)}
                     </Label>
                   ))}
                 </div>
                 <Popup
-                  content={`Review ${adapter.label} sync readiness. This is local planning only and does not contact the media server.`}
+                  content={interfaceText("Review {label} sync readiness. This is local planning only and does not contact the media server.", { label: interfaceText(adapter.label) })}
                   position="top center"
                   trigger={
                     <Button
-                      aria-label={`Review ${adapter.label} sync readiness`}
+                      aria-label={interfaceText("Review {label} sync readiness", { label: interfaceText(adapter.label) })}
                       basic={activeAdapterId !== adapter.id}
                       color={activeAdapterId === adapter.id ? 'purple' : undefined}
                       onClick={() => setActiveAdapterId(adapter.id)}
                       size="tiny"
-                    >
+                     {...interfaceTextProps("Review {label} sync readiness")}>
                       <Icon name="clipboard check" />
-                      Review
-                    </Button>
+                      <LocalizedText source={"Review"} /></Button>
                   }
-                />
+                 {...interfaceTextProps("Review {label} sync readiness. This is local planning only and does not contact the media server.")}/>
               </Card.Content>
             </Card>
           ))}
         </Card.Group>
 
         <Segment className="integration-manual-import">
-          <Header as="h4">Path Diagnostics</Header>
+          <Header as="h4"><LocalizedText source={"Path Diagnostics"} /></Header>
           <p>
-            Check whether a completed file path reported by slskr maps to the
-            path a media server can scan.
-          </p>
+            <LocalizedText source={"Check whether a completed file path reported by slskr maps to the path a media server can scan."} /></p>
           <div className="media-server-path-grid">
             <Input
-              aria-label="Media server base URL"
+              aria-label={interfaceText("Media server base URL")}
               fluid
-              label="Server URL"
+              label={interfaceText("Server URL")}
               onChange={(_, { value }) => setBaseUrl(value)}
               placeholder="http://media.example.invalid"
               value={baseUrl}
-            />
+             {...interfaceTextProps("Media server base URL")}/>
             <Checkbox
-              aria-label="Media server token configured"
+              aria-label={interfaceText("Media server token configured")}
               checked={tokenConfigured}
-              label="API token stored"
+              label={interfaceText("API token stored")}
               onChange={(_, { checked }) => setTokenConfigured(Boolean(checked))}
               toggle
-            />
+             {...interfaceTextProps("Media server token configured")}/>
             <Input
-              aria-label="slskr local file path"
+              aria-label={interfaceText("slskr local file path")}
               fluid
-              label="slskr path"
+              label={interfaceText("slskr path")}
               onChange={(_, { value }) => setLocalPath(value)}
               placeholder="/downloads/complete/Artist/Album/track.flac"
               value={localPath}
-            />
+             {...interfaceTextProps("slskr local file path")}/>
             <Input
-              aria-label="Media server file path"
+              aria-label={interfaceText("Media server file path")}
               fluid
-              label="Server path"
+              label={interfaceText("Server path")}
               onChange={(_, { value }) => setServerPath(value)}
               placeholder="/library/music/Artist/Album/track.flac"
               value={serverPath}
-            />
+             {...interfaceTextProps("Media server file path")}/>
             <Input
-              aria-label="Remote path map from"
+              aria-label={interfaceText("Remote path map from")}
               fluid
-              label="Map from"
+              label={interfaceText("Map from")}
               onChange={(_, { value }) => setRemotePathFrom(value)}
               placeholder="/downloads/complete"
               value={remotePathFrom}
-            />
+             {...interfaceTextProps("Remote path map from")}/>
             <Input
-              aria-label="Remote path map to"
+              aria-label={interfaceText("Remote path map to")}
               fluid
-              label="Map to"
+              label={interfaceText("Map to")}
               onChange={(_, { value }) => setRemotePathTo(value)}
               placeholder="/library/music"
               value={remotePathTo}
-            />
+             {...interfaceTextProps("Remote path map to")}/>
           </div>
           <Message
             color={diagnostic.color}
             size="small"
           >
-            <Message.Header>{diagnostic.status}</Message.Header>
-            <p>{diagnostic.message}</p>
-            {diagnostic.mappedPath && <p>Mapped path: {diagnostic.mappedPath}</p>}
+            <Message.Header><LocalizedText source={diagnostic.status} /></Message.Header>
+            <p><LocalizedText source={diagnostic.message} /></p>
+            {diagnostic.mappedPath && <p><LocalizedText source={"Mapped path:"} />{" "}{diagnostic.mappedPath}</p>}
           </Message>
         </Segment>
 
@@ -257,22 +255,20 @@ const MediaServerPanel = () => {
           <div className="integration-section-header">
             <Header as="h4">
               <Icon name="clipboard list" />
-              Sync Review Plan
-            </Header>
+              <LocalizedText source={"Sync Review Plan"} /></Header>
             <Popup
-              content="Copy the local media-server readiness report. This does not call Plex, Jellyfin, Emby, or Navidrome."
+              content={interfaceText("Copy the local media-server readiness report. This does not call Plex, Jellyfin, Emby, or Navidrome.")}
               position="top center"
               trigger={
                 <Button
-                  aria-label="Copy media-server sync review"
+                  aria-label={interfaceText("Copy media-server sync review")}
                   onClick={copySyncReport}
                   size="small"
-                >
+                 {...interfaceTextProps("Copy media-server sync review")}>
                   <Icon name="copy" />
-                  Copy Plan
-                </Button>
+                  <LocalizedText source={"Copy Plan"} /></Button>
               }
-            />
+             {...interfaceTextProps("Copy the local media-server readiness report. This does not call Plex, Jellyfin, Emby, or Navidrome.")}/>
           </div>
           <div className="integration-status-row">
             <Label color={syncPreview.status === 'Ready for live adapter' ? 'green' : 'orange'}>
@@ -283,29 +279,28 @@ const MediaServerPanel = () => {
                     : 'warning sign'
                 }
               />
-              {syncPreview.status}
+              <LocalizedText source={syncPreview.status} />
             </Label>
-            <Label color="purple">{syncPreview.adapter.label}</Label>
+            <Label color="purple"><LocalizedText source={syncPreview.adapter.label} /></Label>
             <Label>
-              {syncPreview.readyCount}/{syncPreview.total} checks ready
-            </Label>
+              {syncPreview.readyCount}/{syncPreview.total} <LocalizedText source={"checks ready"} /></Label>
           </div>
           <Table
-            aria-label="Media server synchronization review plan"
+            aria-label={interfaceText("Media server synchronization review plan")}
             celled
             compact
             tabIndex={0}
-          >
+           {...interfaceTextProps("Media server synchronization review plan")}>
             <Table.Body>
               {syncPreview.checks.map((check) => (
                 <Table.Row key={check.label}>
-                  <Table.Cell>{check.label}</Table.Cell>
+                  <Table.Cell><LocalizedText source={check.label} /></Table.Cell>
                   <Table.Cell>
                     <Label color={check.ready ? 'green' : 'orange'}>
-                      {check.ready ? 'Ready' : 'Todo'}
+                      {check.ready ? <LocalizedText source={"Ready"} /> : <LocalizedText source={"Todo"} />}
                     </Label>
                   </Table.Cell>
-                  <Table.Cell>{check.ready ? 'No action needed.' : check.action}</Table.Cell>
+                  <Table.Cell>{check.ready ? <LocalizedText source={"No action needed."} /> : check.action}</Table.Cell>
                 </Table.Row>
               ))}
             </Table.Body>
@@ -324,22 +319,20 @@ const MediaServerPanel = () => {
           <div className="integration-section-header">
             <Header as="h4">
               <Icon name="tasks" />
-              Live Execution Contracts
-            </Header>
+              <LocalizedText source={"Live Execution Contracts"} /></Header>
             <Popup
-              content="Copy the live media-server execution contract. This documents enabled automations, blockers, rate limits, dedupe, and confirmation gates without calling a media server."
+              content={interfaceText("Copy the live media-server execution contract. This documents enabled automations, blockers, rate limits, dedupe, and confirmation gates without calling a media server.")}
               position="top center"
               trigger={
                 <Button
-                  aria-label="Copy media-server execution contract"
+                  aria-label={interfaceText("Copy media-server execution contract")}
                   onClick={copyExecutionContract}
                   size="small"
-                >
+                 {...interfaceTextProps("Copy media-server execution contract")}>
                   <Icon name="copy" />
-                  Copy Contract
-                </Button>
+                  <LocalizedText source={"Copy Contract"} /></Button>
               }
-            />
+             {...interfaceTextProps("Copy the live media-server execution contract. This documents enabled automations, blockers, rate limits, dedupe, and confirmation gates without calling a media server.")}/>
           </div>
           <div className="integration-status-row">
             <Label
@@ -356,62 +349,60 @@ const MediaServerPanel = () => {
                     : 'warning sign'
                 }
               />
-              {executionContract.status}
+              <LocalizedText source={executionContract.status} />
             </Label>
             <Label>
-              {executionContract.readyCount}/{executionContract.total} checks ready
-            </Label>
+              {executionContract.readyCount}/{executionContract.total} <LocalizedText source={"checks ready"} /></Label>
             <Label>
               {executionContract.enabledReadyCount}/{executionContract.enabledCount}{' '}
-              enabled automations ready
-            </Label>
+              <LocalizedText source={"enabled automations ready"} /></Label>
           </div>
           <div className="media-server-path-grid">
             <Checkbox
-              aria-label="Media server user mapping configured"
+              aria-label={interfaceText("Media server user mapping configured")}
               checked={userMappingConfigured}
-              label="User mapping configured"
+              label={interfaceText("User mapping configured")}
               onChange={(_, { checked }) => setUserMappingConfigured(Boolean(checked))}
               toggle
-            />
+             {...interfaceTextProps("Media server user mapping configured")}/>
             <Checkbox
-              aria-label="Require confirmation before live media-server actions"
+              aria-label={interfaceText("Require confirmation before live media-server actions")}
               checked={confirmationRequired}
-              label="Require confirmation gates"
+              label={interfaceText("Require confirmation gates")}
               onChange={(_, { checked }) => setConfirmationRequired(Boolean(checked))}
               toggle
-            />
+             {...interfaceTextProps("Require confirmation before live media-server actions")}/>
             <Input
-              aria-label="Media server rate limit per minute"
+              aria-label={interfaceText("Media server rate limit per minute")}
               fluid
-              label="Rate limit/min"
+              label={interfaceText("Rate limit/min")}
               min={1}
               onChange={(_, { value }) => setRateLimitPerMinute(value)}
               type="number"
               value={rateLimitPerMinute}
-            />
+             {...interfaceTextProps("Media server rate limit per minute")}/>
             <Input
-              aria-label="Media server dedupe window hours"
+              aria-label={interfaceText("Media server dedupe window hours")}
               fluid
-              label="Dedupe hours"
+              label={interfaceText("Dedupe hours")}
               min={1}
               onChange={(_, { value }) => setDedupeWindowHours(value)}
               type="number"
               value={dedupeWindowHours}
-            />
+             {...interfaceTextProps("Media server dedupe window hours")}/>
           </div>
           <Table
-            aria-label="Media server automation execution contracts"
+            aria-label={interfaceText("Media server automation execution contracts")}
             celled
             compact
             tabIndex={0}
-          >
+           {...interfaceTextProps("Media server automation execution contracts")}>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Automation</Table.HeaderCell>
-                <Table.HeaderCell>Enabled</Table.HeaderCell>
-                <Table.HeaderCell>Readiness</Table.HeaderCell>
-                <Table.HeaderCell>Contract</Table.HeaderCell>
+                <Table.HeaderCell><LocalizedText source={"Automation"} /></Table.HeaderCell>
+                <Table.HeaderCell><LocalizedText source={"Enabled"} /></Table.HeaderCell>
+                <Table.HeaderCell><LocalizedText source={"Readiness"} /></Table.HeaderCell>
+                <Table.HeaderCell><LocalizedText source={"Contract"} /></Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -425,22 +416,22 @@ const MediaServerPanel = () => {
                   </Table.Cell>
                   <Table.Cell>
                     <Checkbox
-                      aria-label={`Enable ${automation.label}`}
+                      aria-label={interfaceText("Enable {label}", { "label": (automation.label) })}
                       checked={automation.enabled}
                       onChange={(_, { checked }) =>
                         toggleAutomation(automation.id, checked)
                       }
                       toggle
-                    />
+                     {...interfaceTextProps("Enable {label}")}/>
                   </Table.Cell>
                   <Table.Cell>
                     <Label color={automation.ready ? 'green' : 'orange'}>
-                      {automation.ready ? 'Ready' : 'Blocked'}
+                      {automation.ready ? <LocalizedText source={"Ready"} /> : <LocalizedText source={"Blocked"} />}
                     </Label>
                   </Table.Cell>
                   <Table.Cell>
                     {automation.blockedReasons.length === 0
-                      ? 'All required gates are satisfied.'
+                      ? <LocalizedText source={"All required gates are satisfied."} />
                       : automation.blockedReasons.join(' ')}
                   </Table.Cell>
                 </Table.Row>
@@ -451,11 +442,7 @@ const MediaServerPanel = () => {
             info
             size="small"
           >
-            Live execution remains disabled until a backend adapter consumes this
-            contract. The Web UI exposes every automation toggle and blocker so
-            enablement is visible before any media-server import, scrobble,
-            acquisition queue, scan, or file action exists.
-          </Message>
+            <LocalizedText source={"Live execution remains disabled until a backend adapter consumes this contract. The Web UI exposes every automation toggle and blocker so enablement is visible before any media-server import, scrobble, acquisition queue, scan, or file action exists."} /></Message>
         </Segment>
       </Card.Content>
     </Card>

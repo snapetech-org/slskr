@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 /* eslint-disable promise/prefer-await-to-then */
 import './Browse.css';
 import * as transfers from '../../lib/transfers';
@@ -761,16 +763,16 @@ class BrowseSession extends Component {
             input={
               <input
                 data-lpignore="true"
-                placeholder="Username"
+                placeholder={interfaceText("Username")}
                 type="search"
-              />
+               {...interfaceTextProps("Username")}/>
             }
             loading={pending}
             onKeyUp={(event) => (event.key === 'Enter' ? this.browse() : '')}
-            placeholder="Username"
+            placeholder={interfaceText("Username")}
             ref={(input) => (this.inputtext = input)}
             size="big"
-          />
+           {...interfaceTextProps("Username")}/>
         </Segment>
         {pending ? (
           <Loader
@@ -779,14 +781,12 @@ class BrowseSession extends Component {
             inline="centered"
             size="big"
           >
-            Downloaded {Math.round(browseStatus.percentComplete || 0)}% of
-            Response
-          </Loader>
+            <LocalizedText source={"Downloaded"} />{" "}{Math.round(browseStatus.percentComplete || 0)}<LocalizedText source={"% of Response"} /></Loader>
         ) : (
           <div>
             {browseError ? (
               <span className="browse-error">
-                Failed to browse {username}: {browseError}
+                <LocalizedText source={"Failed to browse"} />{" "}{username}: {browseError}
               </span>
             ) : (
               <div className="browse-container">
@@ -826,14 +826,14 @@ class BrowseSession extends Component {
                             onClose={() => this.fetchUserNote(username)}
                             trigger={
                               <Icon
-                                aria-label={`Edit note for ${username}`}
+                                aria-label={interfaceText("Edit note for {username}", { "username": (username) })}
                                 color="grey"
                                 link
                                 name="pencil alternate"
                                 size="small"
                                 style={{ marginLeft: '4px', opacity: 0.5 }}
-                                title={`Edit note for ${username}`}
-                              />
+                                title={interfaceText("Edit note for {username}", { "username": (username) })}
+                               {...interfaceTextProps("Edit note for {username}")}/>
                             }
                             username={username}
                           />
@@ -842,13 +842,13 @@ class BrowseSession extends Component {
                           link
                           name="refresh"
                           onClick={this.handleRefresh}
-                          title="Refresh user's file list"
-                        />
+                          title={interfaceText("Refresh user's file list")}
+                         {...interfaceTextProps("Refresh user's file list")}/>
                       </Card.Header>
                       <Card.Meta className="browse-meta">
-                        {`${info.directories} directories, ${info.files} files`}
+                        {interfaceText("{directories} directories, {files} files", { "directories": (info.directories), "files": (info.files) })}
                         {info.lockedDirectories
-                          ? ` (${info.lockedDirectories} locked directories, ${info.lockedFiles} locked files)`
+                          ? <LocalizedText source={"({lockedDirectories} locked directories, {lockedFiles} locked files)"} values={{ "lockedDirectories": (info.lockedDirectories), "lockedFiles": (info.lockedFiles) }} />
                           : ''}
                       </Card.Meta>
                     </Card.Content>

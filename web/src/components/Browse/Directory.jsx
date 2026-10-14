@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import * as transfers from '../../lib/transfers';
 import { toDisplayError } from '../../lib/errors';
 import { formatBytes } from '../../lib/util';
@@ -158,7 +160,7 @@ class Directory extends Component {
             <span>
               <Button
                 color="green"
-                content="Download"
+                content={interfaceText("Download")}
                 disabled={downloadRequest === 'inProgress'}
                 icon="download"
                 label={{
@@ -168,7 +170,7 @@ class Directory extends Component {
                 }}
                 labelPosition="right"
                 onClick={() => this.download(username, selectedFiles)}
-              />
+               {...interfaceTextProps("Download")}/>
               {downloadRequest === 'inProgress' && (
                 <Icon
                   loading
@@ -193,7 +195,7 @@ class Directory extends Component {
                   <Label>
                     {getDownloadErrorMessage(downloadError)}
                     {downloadError?.status
-                      ? ` (HTTP ${downloadError.status} ${downloadError.statusText})`
+                      ? <LocalizedText source={"(HTTP {status} {statusText})"} values={{ "status": (downloadError.status), "statusText": (downloadError.statusText) }} />
                       : ''}
                   </Label>
                 </span>

@@ -1,5 +1,17 @@
-import React, { useSyncExternalStore } from 'react';
-import UI_LABELS from './ui-labels.json';
+import React, { useCallback, useSyncExternalStore } from 'react';
+import localeUrl0 from './locales/ui-labels.es.json?url';
+import localeUrl1 from './locales/ui-labels.zh-Hans.json?url';
+import localeUrl2 from './locales/ui-labels.hi.json?url';
+import localeUrl3 from './locales/ui-labels.de.json?url';
+import localeUrl4 from './locales/ui-labels.ja.json?url';
+import localeUrl5 from './locales/ui-labels.fr.json?url';
+import localeUrl6 from './locales/ui-labels.pt-BR.json?url';
+import localeUrl7 from './locales/ui-labels.ar.json?url';
+import localeUrl8 from './locales/ui-labels.ko.json?url';
+import localeUrl9 from './locales/ui-labels.zh-Hant.json?url';
+import localeUrl10 from './locales/ui-labels.vi.json?url';
+import localeUrl11 from './locales/ui-labels.id.json?url';
+import { urlBase } from '../config';
 
 export const INTERFACE_LANGUAGE_OPTIONS = [
   { key: 'en', text: 'English', value: 'en' },
@@ -19,18 +31,64 @@ export const INTERFACE_LANGUAGE_OPTIONS = [
 
 const STORAGE_KEY = 'slskr.interface-language';
 const supportedLanguages = new Set(INTERFACE_LANGUAGE_OPTIONS.map((option) => option.value));
-// Catalog arrays follow this order: INTERFACE_LANGUAGE_OPTIONS without English.
-const translatedLanguages = new Map(
-  INTERFACE_LANGUAGE_OPTIONS.slice(1).map(({ value }, index) => [value, index]),
-);
+const localeAssetUrls = {
+  es: localeUrl0,
+  'zh-Hans': localeUrl1,
+  hi: localeUrl2,
+  de: localeUrl3,
+  ja: localeUrl4,
+  fr: localeUrl5,
+  'pt-BR': localeUrl6,
+  ar: localeUrl7,
+  ko: localeUrl8,
+  'zh-Hant': localeUrl9,
+  vi: localeUrl10,
+  id: localeUrl11,
+};
 const listeners = new Set();
+const localeCatalogs = new Map();
+const pendingCatalogs = new Map();
+let catalogRevision = 0;
+let activeLanguage;
+let languageRequest = 0;
 
-const translationFor = (source, language) => {
-  const index = translatedLanguages.get(language);
-  return index === undefined ? undefined : UI_LABELS[source]?.[index];
+const notify = () => listeners.forEach((listener) => listener());
+const translationFor = (source, language) => localeCatalogs.get(language)?.[source];
+
+const formatInterfaceText = (source, parameters = {}) => {
+  if (typeof source !== 'string') return source;
+  const translated = translationFor(source, activeLanguage) || source;
+  return translated.replace(/\{([a-zA-Z][a-zA-Z0-9_]*)\}/g, (placeholder, name) => {
+    const value = parameters?.[name];
+    return typeof value === 'string' || typeof value === 'number'
+      ? String(value)
+      : placeholder;
+  });
 };
 
-export const getInterfaceLanguageIndex = (language) => translatedLanguages.get(language);
+export const interfaceText = (source, parameters = {}) =>
+  formatInterfaceText(source, parameters);
+
+export const interfaceTextProps = (source, parameters = {}) => {
+  const translated = translationFor(source, activeLanguage);
+  const text = formatInterfaceText(source, parameters);
+  const unresolved = typeof text === 'string' && /\{[a-zA-Z][a-zA-Z0-9_]*\}/.test(text);
+  const props = {
+    dir: translated && activeLanguage === 'ar' ? 'rtl' : 'ltr',
+    lang: translated ? activeLanguage : 'en',
+  };
+  if (!unresolved) {
+    props['aria-label'] = text;
+    props.title = text;
+  }
+  if (parameters && Object.keys(parameters).length > 0) props.parameters = parameters;
+  return props;
+};
+
+export const getInterfaceLanguageIndex = (language) => {
+  const index = INTERFACE_LANGUAGE_OPTIONS.slice(1).findIndex((option) => option.value === language);
+  return index < 0 ? undefined : index;
+};
 
 const browserLanguage = () => {
   if (typeof navigator === 'undefined') return 'en';
@@ -62,29 +120,88 @@ const applyDocumentLanguage = () => {
   document.documentElement.dir = 'ltr';
 };
 
-let activeLanguage = readLanguage();
-const notify = () => listeners.forEach((listener) => listener());
+const resolveLocaleUrl = (assetUrl) => {
+  if (assetUrl.startsWith('/')) return assetUrl;
+  if (typeof window === 'undefined') return assetUrl;
+  const basePath = String(urlBase || '') + '/';
+  return new URL(assetUrl, window.location.origin + basePath).toString();
+};
+
+const loadCatalog = (language) => {
+  if (localeCatalogs.has(language)) return Promise.resolve(localeCatalogs.get(language));
+  if (pendingCatalogs.has(language)) return pendingCatalogs.get(language);
+  const assetUrl = localeAssetUrls[language];
+  if (!assetUrl) return Promise.resolve(null);
+
+  const request = (async () => {
+    try {
+      const response = await fetch(resolveLocaleUrl(assetUrl), { credentials: 'same-origin' });
+      if (!response.ok) throw new Error('Locale catalog request failed: ' + response.status);
+      const catalog = await response.json();
+      if (!catalog || typeof catalog !== 'object' || Array.isArray(catalog)) {
+        throw new Error('Locale catalog response must be an object');
+      }
+      localeCatalogs.set(language, catalog);
+      return catalog;
+    } finally {
+      pendingCatalogs.delete(language);
+    }
+  })();
+  pendingCatalogs.set(language, request);
+  return request;
+};
+
+const loadSelectedCatalog = (language) => {
+  const request = ++languageRequest;
+  if (language === 'en') return Promise.resolve();
+  return loadCatalog(language).then(
+    () => {
+      if (request === languageRequest && activeLanguage === language) {
+        catalogRevision += 1;
+        notify();
+      }
+    },
+    () => {
+      if (request === languageRequest && activeLanguage === language) {
+        catalogRevision += 1;
+        notify();
+      }
+    },
+  );
+};
+
+const subscribe = (listener) => {
+  listeners.add(listener);
+  return () => listeners.delete(listener);
+};
+const snapshot = () => String(activeLanguage) + ':' + catalogRevision;
+
+activeLanguage = readLanguage();
 
 if (typeof window !== 'undefined') {
   window.addEventListener('storage', (event) => {
     if (event.key !== STORAGE_KEY && event.key !== null) return;
     activeLanguage = readLanguage();
-    applyDocumentLanguage(activeLanguage);
+    applyDocumentLanguage();
     notify();
+    void loadSelectedCatalog(activeLanguage);
   });
 }
 
 export const applyInitialInterfaceLanguage = () => {
   activeLanguage = readLanguage();
-  applyDocumentLanguage(activeLanguage);
+  applyDocumentLanguage();
+  notify();
+  return loadSelectedCatalog(activeLanguage);
 };
 
 export const setInterfaceLanguage = (language) => {
-  if (!supportedLanguages.has(language)) return;
+  if (!supportedLanguages.has(language)) return Promise.resolve();
   activeLanguage = language;
   try { localStorage.setItem(STORAGE_KEY, language); } catch { /* Keep this tab usable without browser storage. */ }
-  applyDocumentLanguage(language);
+  applyDocumentLanguage();
   notify();
+  return loadSelectedCatalog(language);
 };
 
 export const resetInterfaceLanguage = () => {
@@ -97,17 +214,29 @@ export const resetInterfaceLanguage = () => {
   activeLanguage = browserLanguage();
   applyDocumentLanguage();
   notify();
+  void loadSelectedCatalog(activeLanguage);
   return removed;
 };
 
 export const useInterfaceLanguage = () => {
-  const language = useSyncExternalStore(
-    (listener) => { listeners.add(listener); return () => listeners.delete(listener); },
-    () => activeLanguage,
-    () => 'en',
+  const state = useSyncExternalStore(subscribe, snapshot, () => 'en:0');
+  const [language, revision] = state.split(':');
+  const t = useCallback((source, parameters = {}) => {
+    const translated = translationFor(source, language) || source;
+    return translated.replace(/\{([a-zA-Z][a-zA-Z0-9_]*)\}/g, (placeholder, name) => {
+      const value = parameters[name];
+      return typeof value === 'string' || typeof value === 'number'
+        ? String(value)
+        : placeholder;
+    });
+  }, [language, revision]);
+  const languageFor = useCallback(
+    (source) => {
+      const translated = translationFor(source, language);
+      return translated && translated !== source ? language : 'en';
+    },
+    [language, revision],
   );
-  const t = (source) => translationFor(source, language) || source;
-  const languageFor = (source) => translationFor(source, language) ? language : 'en';
-  const directionFor = (source) => languageFor(source) === 'ar' ? 'rtl' : 'ltr';
+  const directionFor = useCallback((source) => languageFor(source) === 'ar' ? 'rtl' : 'ltr', [languageFor]);
   return { language, setLanguage: setInterfaceLanguage, t, languageFor, directionFor };
 };

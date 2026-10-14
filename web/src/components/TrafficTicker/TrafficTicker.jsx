@@ -1,9 +1,18 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
+import { formatTransferState } from '../../lib/transfers';
 import { formatBytes, formatRegionalNumber, formatRegionalTime } from '../../lib/util';
 import './TrafficTicker.css';
 import { createTransfersHubConnection } from '../../lib/hubFactory';
 import { toDisplayError } from '../../lib/errors';
 import React, { useEffect, useState } from 'react';
 import { Icon, List, Popup } from 'semantic-ui-react';
+
+const localizeActivityState = (state = '') => {
+  if (state === 'InProgress') return interfaceText('In Progress');
+  if (['Requested', 'Queued, Locally', 'Queued, Remotely'].includes(state)) return interfaceText('Queued');
+  return interfaceText(formatTransferState(state));
+};
 
 const MAX_ACTIVITIES = 50; // Keep last 50 activities
 
@@ -82,20 +91,21 @@ const formatActivity = (activity) => {
   const fileName = (typeof filename === 'string' ? filename : 'unknown file')
     .split('\\').pop().split('/').pop();
   const safeState = typeof state === 'string' ? state : 'Unknown';
+  const displayedState = localizeActivityState(safeState);
   const safeDirection = direction === 'Download' ? 'Download' : 'Upload';
   const safeUsername = typeof username === 'string' ? username : 'unknown user';
 
   if (safeState.includes('Completed')) {
     const speedText =
       averageSpeed > 0 ? ` @ ${formatBytes(averageSpeed)}/s` : '';
-    return `${safeDirection === 'Download' ? '↓' : '↑'} ${safeUsername}/${fileName} ${safeState}${speedText}`;
+    return `${safeDirection === 'Download' ? '↓' : '↑'} ${safeUsername}/${fileName} ${displayedState}${speedText}`;
   }
 
   if (safeState.includes('InProgress') && percentComplete > 0) {
     return `${safeDirection === 'Download' ? '↓' : '↑'} ${safeUsername}/${fileName} ${formatRegionalNumber(percentComplete, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%`;
   }
 
-  return `${safeDirection === 'Download' ? '↓' : '↑'} ${safeUsername}/${fileName} ${safeState}`;
+  return `${safeDirection === 'Download' ? '↓' : '↑'} ${safeUsername}/${fileName} ${displayedState}`;
 };
 
 const TrafficTicker = () => {
@@ -144,7 +154,7 @@ const TrafficTicker = () => {
     <div className="traffic-ticker">
       <div className="traffic-ticker-header">
         <Icon name="exchange" />
-        <span>Transfer Activity</span>
+        <span><LocalizedText source={"Transfer Activity"} /></span>
         <Icon
           color={connected ? 'green' : 'red'}
           name={connected ? 'wifi' : 'remove'}
@@ -161,7 +171,7 @@ const TrafficTicker = () => {
         {activities.length === 0 ? (
           <div className="traffic-ticker-empty">
             <Icon name="clock outline" />
-            <span>No recent activity</span>
+            <span><LocalizedText source={"No recent activity"} /></span>
           </div>
         ) : (
           <List
@@ -181,7 +191,7 @@ const TrafficTicker = () => {
                       size="small"
                     />
                     <Popup
-                      content={`${formatRegionalTime(activity.timestamp)} - ${activity.direction} ${activity.state}`}
+                      content={`${formatRegionalTime(activity.timestamp)} - ${interfaceText(activity.direction)} ${localizeActivityState(activity.state)}`}
                       position="top left"
                       trigger={
                         <span className="traffic-activity-text">
@@ -202,7 +212,7 @@ const TrafficTicker = () => {
               className="traffic-ticker-toggle-button"
               onClick={() => setExpanded(!expanded)}
             >
-              {expanded ? 'Show Less' : `Show ${activities.length - 10} More`}
+              {expanded ? <LocalizedText source={"Show Less"} /> : `Show ${activities.length - 10} More`}
             </button>
           </div>
         )}

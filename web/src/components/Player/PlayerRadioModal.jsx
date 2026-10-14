@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import * as searches from '../../lib/searches';
 import * as wishlistAPI from '../../lib/wishlist';
 import {
@@ -19,6 +21,7 @@ import {
 } from 'semantic-ui-react';
 
 const PlayerRadioModal = ({ current, onClose, onOpenSearch, open }) => {
+  useInterfaceLanguage();
   const plan = buildPlayerRadioPlan(current);
   const copyText = getPlayerRadioCopyText(plan);
   const [runningSearches, setRunningSearches] = useState(false);
@@ -43,10 +46,10 @@ const PlayerRadioModal = ({ current, onClose, onOpenSearch, open }) => {
     try {
       const copied = await copyToClipboard(copyText);
       if (!mountedRef.current) return;
-      setStatus(copied ? 'Radio plan copied.' : 'Radio plan prepared; clipboard is unavailable.');
+      setStatus(interfaceText(copied ? 'Radio plan copied.' : 'Radio plan prepared; clipboard is unavailable.'));
     } catch (error) {
       if (mountedRef.current) {
-        setStatus(toDisplayError(error, 'Unable to copy radio plan.'));
+        setStatus(toDisplayError(error, interfaceText('Unable to copy radio plan.')));
       }
     }
   };
@@ -64,7 +67,7 @@ const PlayerRadioModal = ({ current, onClose, onOpenSearch, open }) => {
       mountedRef.current && openRef.current && actionRequestIdRef.current === requestId;
     const queries = getPlayerRadioQueries(plan, { limit: 3 });
     if (queries.length === 0) {
-      setStatus('No smart-radio queries are ready.');
+      setStatus(interfaceText('No smart-radio queries are ready.'));
       return;
     }
 
@@ -73,10 +76,10 @@ const PlayerRadioModal = ({ current, onClose, onOpenSearch, open }) => {
       setRunningSearches(true);
       const count = await searches.createBatch({ queries });
       if (!isCurrentRequest()) return;
-      setStatus(`Started ${count} smart-radio search${count === 1 ? '' : 'es'}.`);
+      setStatus(interfaceText('Smart-radio searches started: {count}.', { count }));
     } catch {
       if (!isCurrentRequest()) return;
-      setStatus('Unable to start smart-radio searches.');
+      setStatus(interfaceText('Unable to start smart-radio searches.'));
     } finally {
       actionInFlightRef.current = false;
       if (isCurrentRequest()) setRunningSearches(false);
@@ -96,7 +99,7 @@ const PlayerRadioModal = ({ current, onClose, onOpenSearch, open }) => {
       mountedRef.current && openRef.current && actionRequestIdRef.current === requestId;
     const queries = getPlayerRadioQueries(plan, { limit: 4 });
     if (queries.length === 0) {
-      setStatus('No smart-radio queries are ready for Wishlist.');
+      setStatus(interfaceText('No smart-radio queries are ready for Wishlist.'));
       return;
     }
 
@@ -117,10 +120,10 @@ const PlayerRadioModal = ({ current, onClose, onOpenSearch, open }) => {
         Promise.resolve(),
       );
       if (!isCurrentRequest()) return;
-      setStatus(`Added ${queries.length} smart-radio seed${queries.length === 1 ? '' : 's'} to Wishlist.`);
+      setStatus(interfaceText('Smart-radio Wishlist seeds added: {count}.', { count: queries.length }));
     } catch {
       if (!isCurrentRequest()) return;
-      setStatus('Unable to add smart-radio seeds to Wishlist.');
+      setStatus(interfaceText('Unable to add smart-radio seeds to Wishlist.'));
     } finally {
       actionInFlightRef.current = false;
       if (isCurrentRequest()) setSavingWishlist(false);
@@ -134,18 +137,16 @@ const PlayerRadioModal = ({ current, onClose, onOpenSearch, open }) => {
       open={open}
       size="small"
     >
-      <Modal.Header>Smart Radio Seed</Modal.Header>
+      <Modal.Header><LocalizedText source={"Smart Radio Seed"} /></Modal.Header>
       <Modal.Content>
         <p className="player-modal-copy">
-          Build review-first radio searches from the current track. Nothing is
-          searched or queued until you choose a query.
-        </p>
+          <LocalizedText source={"Build review-first radio searches from the current track. Nothing is searched or queued until you choose a query."} /></p>
         <div className="player-radio-seed" data-testid="player-radio-seed">
           <Icon name="random" />
           <div>
             <strong>{plan.seedLabel}</strong>
             <div>
-              {plan.basis.length > 0 ? plan.basis.join(' | ') : 'Pick a track first.'}
+              {plan.basis.length > 0 ? plan.basis.join(' | ') : <LocalizedText source={"Pick a track first."} />}
             </div>
           </div>
         </div>
@@ -159,7 +160,7 @@ const PlayerRadioModal = ({ current, onClose, onOpenSearch, open }) => {
                 <code>{item.query}</code>
               </div>
               <Popup
-                content="Open this as a normal Search page query. This is the point where network search work can begin."
+                content={interfaceText("Open this as a normal Search page query. This is the point where network search work can begin.")}
                 trigger={
                   <Button
                     data-testid={`player-radio-search-${item.id}`}
@@ -168,10 +169,9 @@ const PlayerRadioModal = ({ current, onClose, onOpenSearch, open }) => {
                     type="button"
                   >
                     <Icon name="search" />
-                    Search
-                  </Button>
+                    <LocalizedText source={"Search"} /></Button>
                 }
-              />
+               {...interfaceTextProps("Open this as a normal Search page query. This is the point where network search work can begin.")}/>
             </div>
           ))}
         </div>
@@ -183,7 +183,7 @@ const PlayerRadioModal = ({ current, onClose, onOpenSearch, open }) => {
       </Modal.Content>
       <Modal.Actions>
         <Popup
-          content="Start up to three live searches from this smart-radio plan. This does not browse peers, queue downloads, or mutate files."
+          content={interfaceText("Start up to three live searches from this smart-radio plan. This does not browse peers, queue downloads, or mutate files.")}
           trigger={
             <Button
               data-testid="player-radio-start-searches"
@@ -193,12 +193,11 @@ const PlayerRadioModal = ({ current, onClose, onOpenSearch, open }) => {
               type="button"
             >
               <Icon name="search" />
-              Start Searches
-            </Button>
+              <LocalizedText source={"Start Searches"} /></Button>
           }
-        />
+         {...interfaceTextProps("Start up to three live searches from this smart-radio plan. This does not browse peers, queue downloads, or mutate files.")}/>
         <Popup
-          content="Add smart-radio seeds to Wishlist as enabled manual requests with auto-download off."
+          content={interfaceText("Add smart-radio seeds to Wishlist as enabled manual requests with auto-download off.")}
           trigger={
             <Button
               data-testid="player-radio-add-wishlist"
@@ -208,12 +207,11 @@ const PlayerRadioModal = ({ current, onClose, onOpenSearch, open }) => {
               type="button"
             >
               <Icon name="heart" />
-              Add Wishlist
-            </Button>
+              <LocalizedText source={"Add Wishlist"} /></Button>
           }
-        />
+         {...interfaceTextProps("Add smart-radio seeds to Wishlist as enabled manual requests with auto-download off.")}/>
         <Popup
-          content="Copy the generated radio search plan as plain text."
+          content={interfaceText("Copy the generated radio search plan as plain text.")}
           trigger={
             <Button
               data-testid="player-radio-copy"
@@ -222,12 +220,11 @@ const PlayerRadioModal = ({ current, onClose, onOpenSearch, open }) => {
               type="button"
             >
               <Icon name="copy outline" />
-              Copy Plan
-            </Button>
+              <LocalizedText source={"Copy Plan"} /></Button>
           }
-        />
+         {...interfaceTextProps("Copy the generated radio search plan as plain text.")}/>
         <Popup
-          content="Close smart radio without starting a search."
+          content={interfaceText("Close smart radio without starting a search.")}
           trigger={
             <Button
               data-testid="player-radio-close"
@@ -236,10 +233,9 @@ const PlayerRadioModal = ({ current, onClose, onOpenSearch, open }) => {
               type="button"
             >
               <Icon name="check" />
-              Done
-            </Button>
+              <LocalizedText source={"Done"} /></Button>
           }
-        />
+         {...interfaceTextProps("Close smart radio without starting a search.")}/>
       </Modal.Actions>
     </Modal>
   );

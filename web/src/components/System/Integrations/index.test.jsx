@@ -351,7 +351,7 @@ describe('Integrations', () => {
     await waitFor(() => {
       expect(lidarr.syncWanted).toHaveBeenCalled();
     });
-    expect(screen.getByText(/Wanted sync ran: 2 created/)).toBeInTheDocument();
+    expect(screen.getByText(/Wanted sync finished\. Created: 2;/)).toBeInTheDocument();
   });
 
   it('persists metadata and Servarr settings to YAML without exposing secrets', async () => {

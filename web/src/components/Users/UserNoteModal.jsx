@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import * as userNotes from '../../lib/userNotes';
 import { toDisplayError } from '../../lib/errors';
 import { useMountedRef } from '../../lib/useMountedRef';
@@ -5,75 +7,76 @@ import React, { useEffect, useState } from 'react';
 import { Button, Form, Header, Icon, Message, Modal } from 'semantic-ui-react';
 
 const colors = [
-  { icon: 'circle outline', text: 'None', value: null },
+  { icon: 'circle outline', get text() { return interfaceText("None"); }, value: null },
   {
     label: { circular: true, color: 'red', empty: true },
-    text: 'Red',
+    get text() { return interfaceText("Red"); },
     value: 'red',
   },
   {
     label: { circular: true, color: 'orange', empty: true },
-    text: 'Orange',
+    get text() { return interfaceText("Orange"); },
     value: 'orange',
   },
   {
     label: { circular: true, color: 'yellow', empty: true },
-    text: 'Yellow',
+    get text() { return interfaceText("Yellow"); },
     value: 'yellow',
   },
   {
     label: { circular: true, color: 'olive', empty: true },
-    text: 'Olive',
+    get text() { return interfaceText("Olive"); },
     value: 'olive',
   },
   {
     label: { circular: true, color: 'green', empty: true },
-    text: 'Green',
+    get text() { return interfaceText("Green"); },
     value: 'green',
   },
   {
     label: { circular: true, color: 'teal', empty: true },
-    text: 'Teal',
+    get text() { return interfaceText("Teal"); },
     value: 'teal',
   },
   {
     label: { circular: true, color: 'blue', empty: true },
-    text: 'Blue',
+    get text() { return interfaceText("Blue"); },
     value: 'blue',
   },
   {
     label: { circular: true, color: 'violet', empty: true },
-    text: 'Violet',
+    get text() { return interfaceText("Violet"); },
     value: 'violet',
   },
   {
     label: { circular: true, color: 'purple', empty: true },
-    text: 'Purple',
+    get text() { return interfaceText("Purple"); },
     value: 'purple',
   },
   {
     label: { circular: true, color: 'pink', empty: true },
-    text: 'Pink',
+    get text() { return interfaceText("Pink"); },
     value: 'pink',
   },
   {
     label: { circular: true, color: 'brown', empty: true },
-    text: 'Brown',
+    get text() { return interfaceText("Brown"); },
     value: 'brown',
   },
   {
     label: { circular: true, color: 'grey', empty: true },
-    text: 'Grey',
+    get text() { return interfaceText("Grey"); },
     value: 'grey',
   },
   {
     label: { circular: true, color: 'black', empty: true },
-    text: 'Black',
+    get text() { return interfaceText("Black"); },
     value: 'black',
   },
 ];
 
 const UserNoteModal = ({ onClose, trigger, username }) => {
+  useInterfaceLanguage();
   const [open, setOpen] = useState(false);
   const [note, setNote] = useState('');
   const [color, setColor] = useState(null);
@@ -200,43 +203,42 @@ const UserNoteModal = ({ onClose, trigger, username }) => {
     >
       <Header>
         <Icon name="sticky note outline" />
-        <Modal.Content>User Note: {username}</Modal.Content>
+        <Modal.Content><LocalizedText source={"User Note:"} />{" "}{username}</Modal.Content>
       </Header>
       <Modal.Content>
         <Form loading={loading}>
           <Form.Dropdown
             fluid
-            label="Color Rating"
+            label={interfaceText("Color Rating")}
             onChange={(_, { value }) => setColor(value)}
             options={colors}
-            placeholder="Select Color"
+            placeholder={interfaceText("Select Color")}
             selection
             value={color}
-          />
+           {...interfaceTextProps("Color Rating")}/>
           <Form.TextArea
-            label="Note"
+            label={interfaceText("Note")}
             onChange={(event) => setNote(event.target.value)}
-            placeholder="Enter notes about this user..."
+            placeholder={interfaceText("Enter notes about this user...")}
             rows={5}
             value={note}
-          />
+           {...interfaceTextProps("Note")}/>
           <Form.Checkbox
             checked={isHighPriority}
-            label="High Priority (Warning)"
+            label={interfaceText("High Priority (Warning)")}
             onChange={(_, { checked }) => setIsHighPriority(checked)}
-          />
+           {...interfaceTextProps("High Priority (Warning)")}/>
         </Form>
         {error ? <Message negative>{error}</Message> : null}
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={handleClose}>Cancel</Button>
+        <Button onClick={handleClose}><LocalizedText source={"Cancel"} /></Button>
         <Button
           disabled={loading}
           onClick={handleSave}
           primary
         >
-          Save
-        </Button>
+          <LocalizedText source={"Save"} /></Button>
       </Modal.Actions>
     </Modal>
   );

@@ -8,11 +8,13 @@ when their source and inventory identities match.
 
 ## GitHub runner routing
 
-Pull request and non-main validation use GitHub-hosted runners. Only trusted
-pushes to `main` and manual runs against `main` route the Rust lane to the
-server-local Linux runner. The desktop runner's temporary filesystem had
-limited free space, so the heavier trusted lane now uses the server's larger
-host disk. Runner scratch remains private to each workflow run.
+Pull request and non-main validation use GitHub-hosted runners. Trusted pushes
+to `main` and manual runs against `main` use the shared organization Linux build
+pool with the `host`, `linux-build`, and `linux-amd64` capability labels only
+when `TRUSTED_MAIN_RUNNERS_ENABLED` is exactly `true`; an unset or false flag
+keeps the lane hosted. The server-side runner-group policy allows only this
+workflow pinned to `refs/heads/main`, so public PR code cannot select the pool.
+Runner scratch remains private to each workflow run.
 
 ## Local commands
 
@@ -63,6 +65,13 @@ and engine contract tests. The default command runs all registered local tasks,
 including Rust formatting, Clippy, WASM, advisory, lint, typecheck, and build
 checks.
 
+The engine runs up to three dependency-ready tasks at once. Cargo tasks share an
+exclusive group because they write to the same Rust target tree. Web test and
+browser tasks, web build writers, and dashboard tasks that produce shared
+artifacts also use repository-specific groups. Install and build dependencies
+still gate their consumers; independent checks can overlap. Task selection,
+native case accounting, source checks, and one receipt per task are unchanged.
+
 Each execution receives a fresh private directory under the operating system's
 temporary directory. Its receipt distinguishes planned, executed, passed,
 failed, blocked, excluded, and active test cases. Logs are hashed and kept with
@@ -92,10 +101,11 @@ reports. Empty or missing test output cannot be reported as a pass.
 
 During execution, the engine writes cumulative task progress to stderr at task
 start and completion, with a heartbeat every minute for long tasks. It reports
-completed, failed, blocked, and pending tasks plus the active task and elapsed
-time. Native test-case totals update after each task finishes, since native
-runner output may be buffered. In GitHub Actions these updates appear in the
-live step log; the rendered job summary is published after the step completes.
+completed, failed, blocked, and pending tasks plus each active task and its
+elapsed time. Native test-case totals update after each task finishes, since
+native runner output may be buffered. In GitHub Actions these updates appear in
+the live step log; the rendered job summary is published after the step
+completes.
 
 Inventory globs are matched by bounded POSIX path segments (`*`, `?`, and
 `**`). Test-content filtering, runtime versions, and native result summaries use
@@ -114,6 +124,11 @@ empty test results, runner identity drift, and different source or inventory
 snapshots. It accepts a passing receipt from an earlier attempt of the same run
 because GitHub reruns only failed jobs and keeps successful jobs from the prior
 attempt. Package-surface checks depend on successful reconciliation.
+
+Pull-request concurrency cancels runs for superseded commits. The reconciliation
+job still uses `always()` to check failed platform results, and `!cancelled()`
+lets a canceled obsolete run release its concurrency slot so the newest commit
+can start. The current run remains bound to its own receipts and source.
 
 GitHub-hosted receipt collection is verified by GitHub Actions. A local run does
 not establish hosted runner behavior. Existing release policy, static security,

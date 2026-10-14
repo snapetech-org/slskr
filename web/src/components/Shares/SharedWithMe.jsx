@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import * as collectionsAPI from '../../lib/collections';
 import { toDisplayError } from '../../lib/errors';
 import { readOptionalApiResponse } from '../../lib/optionalApi';
@@ -262,8 +264,7 @@ export default class SharedWithMe extends Component {
         <Header as="h1">
           <Icon name="share" />
           <Header.Content>
-            Shared with Me
-            <Header.Subheader>Collections shared with you</Header.Subheader>
+            <LocalizedText source={"Shared with Me"} /><Header.Subheader><LocalizedText source={"Collections shared with you"} /></Header.Subheader>
           </Header.Content>
         </Header>
 
@@ -274,26 +275,25 @@ export default class SharedWithMe extends Component {
             data-testid="incoming-shares-load-error"
             error
           >
-            <Message.Header>Shared collections unavailable</Message.Header>
+            <Message.Header><LocalizedText source={"Shared collections unavailable"} /></Message.Header>
             <p>{sharesLoadError}</p>
           </Message>
         ) : shares.length === 0 ? (
           <Segment placeholder>
             <Header icon>
               <Icon name="inbox" />
-              No shares yet
-            </Header>
-            <p>Collections shared with you will appear here.</p>
+              <LocalizedText source={"No shares yet"} /></Header>
+            <p><LocalizedText source={"Collections shared with you will appear here."} /></p>
           </Segment>
         ) : (
           <Table>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Collection</Table.HeaderCell>
-                <Table.HeaderCell>Shared By</Table.HeaderCell>
-                <Table.HeaderCell>Type</Table.HeaderCell>
-                <Table.HeaderCell>Permissions</Table.HeaderCell>
-                <Table.HeaderCell>Actions</Table.HeaderCell>
+                <Table.HeaderCell><LocalizedText source={"Collection"} /></Table.HeaderCell>
+                <Table.HeaderCell><LocalizedText source={"Shared By"} /></Table.HeaderCell>
+                <Table.HeaderCell><LocalizedText source={"Type"} /></Table.HeaderCell>
+                <Table.HeaderCell><LocalizedText source={"Permissions"} /></Table.HeaderCell>
+                <Table.HeaderCell><LocalizedText source={"Actions"} /></Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -320,13 +320,13 @@ export default class SharedWithMe extends Component {
                   <Table.Cell>{share.collectionType || 'ShareList'}</Table.Cell>
                   <Table.Cell>
                     {collectionsAPI.shareGrantAllows(share.permissions, 'stream') && (
-                      <Label color="green">Stream</Label>
+                      <Label color="green"><LocalizedText source={"Stream"} /></Label>
                     )}
                     {collectionsAPI.shareGrantAllows(share.permissions, 'download') && (
-                      <Label color="blue">Download</Label>
+                      <Label color="blue"><LocalizedText source={"Download"} /></Label>
                     )}
                     {collectionsAPI.shareGrantAllows(share.permissions, 'reshare') && (
-                      <Label>Reshare</Label>
+                      <Label><LocalizedText source={"Reshare"} /></Label>
                     )}
                   </Table.Cell>
                   <Table.Cell>
@@ -336,8 +336,7 @@ export default class SharedWithMe extends Component {
                       primary
                       size="small"
                     >
-                      View Contents
-                    </Button>
+                      <LocalizedText source={"View Contents"} /></Button>
                   </Table.Cell>
                 </Table.Row>
               ))}
@@ -379,9 +378,9 @@ export default class SharedWithMe extends Component {
                   <Table>
                     <Table.Header>
                       <Table.Row>
-                        <Table.HeaderCell>Content ID</Table.HeaderCell>
-                        <Table.HeaderCell>Media Kind</Table.HeaderCell>
-                        <Table.HeaderCell>Actions</Table.HeaderCell>
+                        <Table.HeaderCell><LocalizedText source={"Content ID"} /></Table.HeaderCell>
+                        <Table.HeaderCell><LocalizedText source={"Media Kind"} /></Table.HeaderCell>
+                        <Table.HeaderCell><LocalizedText source={"Actions"} /></Table.HeaderCell>
                       </Table.Row>
                     </Table.Header>
                     <Table.Body>
@@ -421,8 +420,7 @@ export default class SharedWithMe extends Component {
                                   size="small"
                                 >
                                   <Icon name="play" />
-                                  Stream
-                                </Button>
+                                  <LocalizedText source={"Stream"} /></Button>
                               )}
                             </Table.Cell>
                           </Table.Row>
@@ -434,8 +432,7 @@ export default class SharedWithMe extends Component {
                   <Segment placeholder>
                     <Header icon>
                       <Icon name="file outline" />
-                      No items in this collection
-                    </Header>
+                      <LocalizedText source={"No items in this collection"} /></Header>
                   </Segment>
                 )}
               </div>
@@ -453,8 +450,7 @@ export default class SharedWithMe extends Component {
                 primary
               >
                 <Icon name="download" />
-                Backfill All
-              </Button>
+                <LocalizedText source={"Backfill All"} /></Button>
             )}
             {this.state.backfillResult && (
               <span
@@ -474,8 +470,7 @@ export default class SharedWithMe extends Component {
                 })
               }
             >
-              Close
-            </Button>
+              <LocalizedText source={"Close"} /></Button>
           </Modal.Actions>
         </Modal>
       </Container>

@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import { browse } from '../../../lib/shares';
 import { toDisplayError } from '../../../lib/errors';
 import { CodeEditor, LoaderSegment, Switch } from '../../Shared';
@@ -6,6 +8,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Button, Icon, Message, Modal } from 'semantic-ui-react';
 
 const ContentsModal = ({ onClose, share, theme }) => {
+  useInterfaceLanguage();
   const [loading, setLoading] = useState(true);
   const [contents, setContents] = useState();
   const [error, setError] = useState();
@@ -104,17 +107,17 @@ const ContentsModal = ({ onClose, share, theme }) => {
           loading={loading && <LoaderSegment className="modal-loader" />}
         >
           <CodeEditor
-            ariaLabel="Shared directory contents JSON"
+            ariaLabel={interfaceText("Shared directory contents JSON")}
             basicSetup={false}
             editable={false}
             style={{ minHeight: 500 }}
             theme={theme}
             value={contents || ''}
-          />
+           {...interfaceTextProps("Shared directory contents JSON")}/>
         </Switch>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={onClose}>Close</Button>
+        <Button onClick={onClose}><LocalizedText source={"Close"} /></Button>
       </Modal.Actions>
     </Modal>
   );

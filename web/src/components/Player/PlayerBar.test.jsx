@@ -660,7 +660,7 @@ describe('PlayerBar', () => {
         ],
       });
     });
-    expect(screen.getByText('Started 3 smart-radio searches.')).toBeInTheDocument();
+    expect(screen.getByText('Smart-radio searches started: 3.')).toBeInTheDocument();
 
     fireEvent.click(screen.getByTestId('player-radio-add-wishlist'));
     await waitFor(() => {
@@ -672,7 +672,7 @@ describe('PlayerBar', () => {
         }),
       );
     });
-    expect(screen.getByText('Added 4 smart-radio seeds to Wishlist.')).toBeInTheDocument();
+    expect(screen.getByText('Smart-radio Wishlist seeds added: 4.')).toBeInTheDocument();
 
     expect(screen.queryByTestId('player-radio-send-inbox')).not.toBeInTheDocument();
   });
@@ -712,7 +712,7 @@ describe('PlayerBar', () => {
         queries: ['slskr Second stream', 'slskr Local stream'],
       });
     });
-    expect(screen.getByText('Started 3 similar-track searches.')).toBeInTheDocument();
+    expect(screen.getByText('Similar-track searches started: 3.')).toBeInTheDocument();
 
     fireEvent.click(screen.getByTestId('player-wishlist-similar-candidates'));
     await waitFor(() => {
@@ -724,7 +724,7 @@ describe('PlayerBar', () => {
         }),
       );
     });
-    expect(screen.getByText('Added 2 similar-track seeds to Wishlist.')).toBeInTheDocument();
+    expect(screen.getByText('Similar-track Wishlist seeds added: 2.')).toBeInTheDocument();
 
     fireEvent.click(screen.getByTestId('player-auto-queue-similar'));
 
@@ -777,7 +777,7 @@ describe('PlayerBar', () => {
         queries: expect.arrayContaining(['Fixture Genre', 'Local stream']),
       });
     });
-    expect(screen.getByText('Started 3 bounded listening seed searches.')).toBeInTheDocument();
+    expect(screen.getByText('Listening seed searches started: 3.')).toBeInTheDocument();
 
     fireEvent.click(screen.getByTestId('player-stats-add-seeds-to-wishlist'));
     await waitFor(() => {
@@ -789,7 +789,7 @@ describe('PlayerBar', () => {
         }),
       );
     });
-    expect(screen.getByText(/Added .* listening seeds to Wishlist/)).toBeInTheDocument();
+    expect(screen.getByText(/Listening seeds added to Wishlist for manual acquisition: 3\./)).toBeInTheDocument();
 
     window.sessionStorage.setItem('slskr.listenbrainz.token', 'token-1');
     fireEvent.click(screen.getByTestId('player-listening-history-scrobble-recent'));
@@ -801,7 +801,7 @@ describe('PlayerBar', () => {
         }),
       );
     });
-    expect(screen.getByText('Submitted 1 recent listen to ListenBrainz.')).toBeInTheDocument();
+    expect(screen.getByText('ListenBrainz listens submitted: 1.')).toBeInTheDocument();
 
     fireEvent.click(screen.getByTestId('player-clear-listening-history'));
 
@@ -829,7 +829,7 @@ describe('PlayerBar', () => {
     });
     fireEvent.click(screen.getByTestId('player-listening-history-import'));
 
-    expect(screen.getByText('1 imported, 0 skipped as duplicates or incomplete rows.')).toBeInTheDocument();
+    expect(screen.getByText('1 rows imported; 0 duplicates or incomplete rows skipped.')).toBeInTheDocument();
     expect(screen.getByTestId('player-stats-summary')).toHaveTextContent(
       '1local plays recorded',
     );
