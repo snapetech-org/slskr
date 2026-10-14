@@ -17,7 +17,7 @@ import {
 } from 'semantic-ui-react';
 
 const getTrackLabel = (item) =>
-  item?.title || item?.fileName || item?.contentId || 'Untitled track';
+  item?.title || item?.fileName || item?.contentId || interfaceText('Untitled track');
 
 const PlayerQueueModal = ({
   current,
@@ -147,7 +147,7 @@ const PlayerQueueModal = ({
               <Icon name="play circle outline" />
               <div>
                 <strong>{getTrackLabel(current)}</strong>
-                <span>{current?.artist || 'No active playback'}</span>
+                <span>{current?.artist || <LocalizedText source={"No active playback"} />}</span>
               </div>
             </div>
           </section>
@@ -236,12 +236,12 @@ const PlayerQueueModal = ({
                       content={interfaceText("Remove this upcoming item from the local playback queue.")}
                       trigger={
                         <Button
-                          aria-label={`Remove ${getTrackLabel(item)} from queue`}
                           data-testid={`player-remove-queue-${item.contentId}`}
                           icon
                           onClick={() => onRemove(item.contentId)}
                           size="mini"
                           type="button"
+                         {...interfaceTextProps("Remove {track} from queue", { "track": (getTrackLabel(item)) })}
                         >
                           <Icon name="close" />
                         </Button>

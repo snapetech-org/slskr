@@ -20,35 +20,40 @@ const PlayerRatingControls = ({ current, onChange, rating }) => {
      {...interfaceTextProps("Now playing rating")}>
       {[1, 2, 3, 4, 5].map((value) => (
         <Popup
-          content={
+          content={interfaceText(
             value === rating
-              ? 'Clear this local rating.'
-              : `Rate this track ${value} out of 5 for local discovery context.`
-          }
+              ? "Clear this local rating."
+              : "Rate this track {stars} out of 5 for local discovery context.",
+            { "stars": (value) },
+          )}
           key={value}
           trigger={
             <button
-              aria-label={
-                value === rating
-                  ? `Clear ${value} star rating`
-                  : `Rate ${value} stars`
-              }
               className={[
                 'player-rating-button',
                 value <= rating ? 'player-rating-button-active' : '',
               ].filter(Boolean).join(' ')}
               data-testid={`player-rating-${value}`}
               onClick={() => onChange(value === rating ? 0 : value)}
-              title={
-                value === rating
-                  ? 'Clear this local rating.'
-                  : `Rate this track ${value} out of 5.`
-              }
               type="button"
+             {...interfaceTextProps(
+               value === rating ? "Clear rating ({stars}/5)" : "Set rating to {stars} out of 5",
+               { "stars": (value) },
+             )}
+              title={interfaceText(
+                value === rating ? "Clear this local rating." : "Rate this track {stars} out of 5.",
+                { "stars": (value) },
+              )}
             >
               <Icon name={value <= rating ? 'star' : 'star outline'} />
             </button>
           }
+         {...interfaceTextProps(
+           value === rating
+             ? "Clear this local rating."
+             : "Rate this track {stars} out of 5 for local discovery context.",
+           { "stars": (value) },
+         )}
         />
       ))}
       <span className="player-rating-summary">{interfaceText(summary.label)}</span>

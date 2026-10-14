@@ -104,7 +104,7 @@ const getPlayerBadges = (current) => {
     icon: provider === 'Mesh' ? 'share alternate' : 'music',
     key: `source-${provider}`,
     text: provider,
-    title: `Playback source: ${provider}`,
+    title: interfaceText("Playback source: {provider}", { "provider": (provider) }),
   }));
 
   const confidence = Number(current.confidence || 0);
@@ -113,7 +113,7 @@ const getPlayerBadges = (current) => {
       color: confidence >= 0.75 ? 'green' : 'yellow',
       icon: 'crosshairs',
       key: 'confidence',
-      text: `${Math.round(confidence * 100)}% match`,
+      text: interfaceText("{percent}% match", { "percent": (Math.round(confidence * 100)) }),
       title: interfaceText("Local match confidence for this now-playing item."),
     });
   }
@@ -514,10 +514,10 @@ const PlayerBar = ({ runtimeProfile } = {}) => {
           <Icon name="music" />
           <div>
             <div className="player-title">
-              {current?.title || 'Player'}
+              {current?.title || <LocalizedText source={"Player"} />}
             </div>
             <div className="player-subtitle">
-              {current?.artist || 'Ready'}
+              {current?.artist || <LocalizedText source={"Ready"} />}
             </div>
           </div>
         </div>
@@ -530,24 +530,26 @@ const PlayerBar = ({ runtimeProfile } = {}) => {
             onClick={() => setCollapsed(false)}
            {...interfaceTextProps("Expand the player drawer.")}/>
           <PlayerToolButton
-            content={playing ? 'Pause the current stream.' : 'Resume the current stream.'}
-            aria-label={playing ? 'Pause local playback' : 'Resume local playback'}
+            content={interfaceText(playing ? "Pause the current stream." : "Resume the current stream.")}
             data-testid="player-collapsed-toggle-playback"
             disabled={!current}
             icon={playing ? 'pause' : 'play'}
             onClick={togglePlayback}
+           {...interfaceTextProps(playing ? "Pause the current stream." : "Resume the current stream.")}
+            aria-label={interfaceText(playing ? "Pause local playback" : "Resume local playback")}
           />
           <PlayerToolButton
-            content={
+            content={interfaceText(
               localMuted
-                ? 'Unmute playback on this device without changing the stream.'
-                : 'Mute playback on this device without changing the stream.'
-            }
-            aria-label={localMuted ? 'Unmute local playback' : 'Mute local playback'}
+                ? "Unmute playback on this device without changing the stream."
+                : "Mute playback on this device without changing the stream.",
+            )}
             data-testid="player-collapsed-toggle-mute"
             disabled={!current}
             icon={localMuted ? 'volume off' : 'volume up'}
             onClick={() => setLocalMuted((muted) => !muted)}
+           {...interfaceTextProps(localMuted ? "Unmute playback on this device without changing the stream." : "Mute playback on this device without changing the stream.")}
+            aria-label={interfaceText(localMuted ? "Unmute local playback" : "Mute local playback")}
           />
         </div>
       </div>
@@ -577,13 +579,19 @@ const PlayerBar = ({ runtimeProfile } = {}) => {
             <div className="player-track">
               <div>
                 <div className="player-eyebrow">
-                  {playing ? <LocalizedText source={"Now playing"} /> : current ? 'Paused' : 'Ready'}
+                  {playing ? (
+                    <LocalizedText source={"Now playing"} />
+                  ) : current ? (
+                    <LocalizedText source={"Paused"} />
+                  ) : (
+                    <LocalizedText source={"Ready"} />
+                  )}
                 </div>
                 <div className="player-title">
-                  {current?.title || 'Nothing playing'}
+                  {current?.title || <LocalizedText source={"Nothing playing"} />}
                 </div>
                 <div className="player-subtitle">
-                  {current?.artist || 'Pick a collection or local audio file'}
+                  {current?.artist || <LocalizedText source={"Pick a collection or local audio file"} />}
                   {current?.album ? <LocalizedText source={"| {album}"} values={{ "album": (current.album) }} /> : ''}
                   {followingParty ? <LocalizedText source={"| Following {hostPeerId}"} values={{ "hostPeerId": (followingParty.hostPeerId) }} /> : ''}
                 </div>
@@ -642,13 +650,14 @@ const PlayerBar = ({ runtimeProfile } = {}) => {
               onClick={() => seekRelative(-15)}
              {...interfaceTextProps("Rewind local playback by 15 seconds.")}/>
             <PlayerToolButton
-              content={playing ? 'Pause the current stream.' : 'Resume the current stream.'}
-              aria-label={playing ? 'Pause local playback' : 'Resume local playback'}
+              content={interfaceText(playing ? "Pause the current stream." : "Resume the current stream.")}
               className="player-play-button"
               data-testid="player-toggle-playback"
               disabled={!current}
               icon={playing ? 'pause' : 'play'}
               onClick={togglePlayback}
+             {...interfaceTextProps(playing ? "Pause the current stream." : "Resume the current stream.")}
+              aria-label={interfaceText(playing ? "Pause local playback" : "Resume local playback")}
             />
             <PlayerToolButton
               content={interfaceText("Fast-forward local playback by 30 seconds.")}
@@ -691,57 +700,64 @@ const PlayerBar = ({ runtimeProfile } = {}) => {
              {...interfaceTextProps("Open the playback queue manager with current, upcoming, and recent session tracks.")}/>
             <PlayerToolButton
               active={localMuted}
-              content={
+              content={interfaceText(
                 localMuted
-                  ? 'Unmute playback on this device without changing the stream.'
-                  : 'Mute playback on this device without changing the stream.'
-              }
-              aria-label={localMuted ? 'Unmute local playback' : 'Mute local playback'}
+                  ? "Unmute playback on this device without changing the stream."
+                  : "Mute playback on this device without changing the stream.",
+              )}
               data-testid="player-toggle-mute"
               disabled={!current}
               icon={localMuted ? 'volume off' : 'volume up'}
               onClick={() => setLocalMuted((muted) => !muted)}
+             {...interfaceTextProps(localMuted ? "Unmute playback on this device without changing the stream." : "Mute playback on this device without changing the stream.")}
+              aria-label={interfaceText(localMuted ? "Unmute local playback" : "Mute local playback")}
             />
             <PlayerToolButton
               active={visualizerMode !== 'off'}
-              content={
+              content={interfaceText(
                 visualizerMode === 'off'
-                  ? `Show the ${runtimeProfile === 'native' ? 'MilkDrop3' : 'RustyMilk'} visualizer.`
-                  : `Hide the ${runtimeProfile === 'native' ? 'MilkDrop3' : 'RustyMilk'} visualizer.`
-              }
-              aria-label={
-                visualizerMode === 'off'
-                  ? `Show ${runtimeProfile === 'native' ? 'MilkDrop3' : 'RustyMilk'} visualizer`
-                  : `Hide ${runtimeProfile === 'native' ? 'MilkDrop3' : 'RustyMilk'} visualizer`
-              }
+                  ? "Show the {visualizer} visualizer."
+                  : "Hide the {visualizer} visualizer.",
+                { "visualizer": (runtimeProfile === 'native' ? 'MilkDrop3' : 'RustyMilk') },
+              )}
               data-testid="player-toggle-visualizer"
               icon="eye"
               onClick={toggleVisualizer}
+             {...interfaceTextProps(
+               visualizerMode === 'off' ? "Show the {visualizer} visualizer." : "Hide the {visualizer} visualizer.",
+               { "visualizer": (runtimeProfile === 'native' ? 'MilkDrop3' : 'RustyMilk') },
+             )}
+              aria-label={interfaceText(
+                visualizerMode === 'off' ? "Show {visualizer} visualizer" : "Hide {visualizer} visualizer",
+                { "visualizer": (runtimeProfile === 'native' ? 'MilkDrop3' : 'RustyMilk') },
+              )}
             />
             <PlayerToolButton
               active={eqPanelOpen}
-              content={
+              content={interfaceText(
                 eqPanelOpen
-                  ? 'Hide the equalizer panel.'
-                  : 'Show the equalizer sliders and presets.'
-              }
-              aria-label={eqPanelOpen ? 'Hide equalizer' : 'Show equalizer'}
+                  ? "Hide the equalizer panel."
+                  : "Show the equalizer sliders and presets.",
+              )}
               data-testid="player-toggle-eq"
               icon="sliders horizontal"
               onClick={() => setEqPanelOpen((open) => !open)}
+             {...interfaceTextProps(eqPanelOpen ? "Hide the equalizer panel." : "Show the equalizer sliders and presets.")}
+              aria-label={interfaceText(eqPanelOpen ? "Hide equalizer" : "Show equalizer")}
             />
             <PlayerToolButton
               active={lyricsOpen}
-              content={
+              content={interfaceText(
                 lyricsOpen
-                  ? 'Hide synced lyrics for the current track.'
-                  : 'Fetch synced lyrics for the current artist and title from LRCLIB.'
-              }
-              aria-label={lyricsOpen ? 'Hide lyrics' : 'Show lyrics'}
+                  ? "Hide synced lyrics for the current track."
+                  : "Fetch synced lyrics for the current artist and title from LRCLIB.",
+              )}
               data-testid="player-toggle-lyrics"
               disabled={!current}
               icon="align left"
               onClick={() => setLyricsOpen((open) => !open)}
+             {...interfaceTextProps(lyricsOpen ? "Hide synced lyrics for the current track." : "Fetch synced lyrics for the current artist and title from LRCLIB.")}
+              aria-label={interfaceText(lyricsOpen ? "Hide lyrics" : "Show lyrics")}
             />
             <PlayerToolButton
               content={interfaceText("Build smart-radio search seeds from the current track without starting network work yet.")}
@@ -777,28 +793,30 @@ const PlayerBar = ({ runtimeProfile } = {}) => {
              {...interfaceTextProps("Collapse the player into a small drawer bar above the footer.")}/>
             <PlayerToolButton
               active={karaokeEnabled}
-              content={
+              content={interfaceText(
                 karaokeEnabled
-                  ? 'Turn off center-channel vocal reduction.'
-                  : 'Try center-channel vocal reduction for karaoke-style playback.'
-              }
-              aria-label={karaokeEnabled ? 'Disable karaoke mode' : 'Enable karaoke mode'}
+                  ? "Turn off center-channel vocal reduction."
+                  : "Try center-channel vocal reduction for karaoke-style playback.",
+              )}
               data-testid="player-toggle-karaoke"
               disabled={!current}
               icon="microphone slash"
               onClick={() => setKaraokeEnabledState((enabled) => !enabled)}
+             {...interfaceTextProps(karaokeEnabled ? "Turn off center-channel vocal reduction." : "Try center-channel vocal reduction for karaoke-style playback.")}
+              aria-label={interfaceText(karaokeEnabled ? "Disable karaoke mode" : "Enable karaoke mode")}
             />
             <PlayerToolButton
               active={crossfadeEnabled}
-              content={
+              content={interfaceText(
                 crossfadeEnabled
-                  ? 'Disable the five-second fade between queue items.'
-                  : 'Enable a five-second fade between queue items.'
-              }
-              aria-label={crossfadeEnabled ? 'Disable crossfade' : 'Enable crossfade'}
+                  ? "Disable the five-second fade between queue items."
+                  : "Enable a five-second fade between queue items.",
+              )}
               data-testid="player-toggle-crossfade"
               icon="exchange"
               onClick={() => setCrossfadeEnabled((enabled) => !enabled)}
+             {...interfaceTextProps(crossfadeEnabled ? "Disable the five-second fade between queue items." : "Enable a five-second fade between queue items.")}
+              aria-label={interfaceText(crossfadeEnabled ? "Disable crossfade" : "Enable crossfade")}
             />
             <PlayerToolButton
               content={interfaceText("Open a tiny always-on-top spectrum window when this browser supports Document Picture-in-Picture.")}
