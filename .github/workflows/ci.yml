@@ -513,7 +513,7 @@ jobs:
 
   validation-reconcile:
     name: Reconcile native Rust test nodes
-    if: always() && (github.event_name != 'push' || github.ref == 'refs/heads/main')
+    if: always() && !cancelled() && (github.event_name != 'push' || github.ref == 'refs/heads/main')
     needs: [rust, linux-aarch64, platform-builds]
     runs-on: ubuntu-latest
     timeout-minutes: 10
