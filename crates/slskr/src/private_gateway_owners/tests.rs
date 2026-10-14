@@ -413,14 +413,28 @@ async fn gateway_certificate_identity_is_durable() {
 #[tokio::test]
 async fn shared_tcp_gateway_does_not_bind_a_second_public_tcp_socket() {
     let root = temporary_directory("gateway-shared-tcp");
-    // A UDP-selected ephemeral port may already be used by a TCP service on the host.
+    // Let TCP choose its available ephemeral port first. Windows can reserve the
+    // TCP and UDP ephemeral ranges differently, so a UDP-selected port may not
+    // be usable by the TCP listener.
     let mut shared_sockets = None;
     for _ in 0..64 {
-        let shared_udp_socket = Arc::new(StdUdpSocket::bind("127.0.0.1:0").unwrap());
-        let public_address = shared_udp_socket.local_addr().unwrap();
-        match TcpListener::bind(public_address).await {
-            Ok(public_listener) => {
-                shared_sockets = Some((public_address, shared_udp_socket, public_listener));
+        let public_listener = match TcpListener::bind("127.0.0.1:0").await {
+            Ok(listener) => listener,
+            Err(error)
+                if matches!(
+                    error.kind(),
+                    std::io::ErrorKind::AddrInUse | std::io::ErrorKind::PermissionDenied
+                ) =>
+            {
+                continue;
+            }
+            Err(error) => panic!("could not bind public TCP listener: {error}"),
+        };
+        let public_address = public_listener.local_addr().unwrap();
+        match StdUdpSocket::bind(public_address) {
+            Ok(shared_udp_socket) => {
+                shared_sockets =
+                    Some((public_address, Arc::new(shared_udp_socket), public_listener));
                 break;
             }
             Err(error)
