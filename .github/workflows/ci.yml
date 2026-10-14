@@ -160,8 +160,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -m 700 -- "$PRIVATE_RUNNER_TEMP/go-tmp"
+          mkdir -m 700 -- "$PRIVATE_RUNNER_TEMP/go-tmp" "$PRIVATE_RUNNER_TEMP/go-cache" "$PRIVATE_RUNNER_TEMP/go-mod"
           printf 'GOTMPDIR=%s/go-tmp\n' "$PRIVATE_RUNNER_TEMP" >> "$GITHUB_ENV"
+          printf 'GOCACHE=%s/go-cache\n' "$PRIVATE_RUNNER_TEMP" >> "$GITHUB_ENV"
+          printf 'GOMODCACHE=%s/go-mod\n' "$PRIVATE_RUNNER_TEMP" >> "$GITHUB_ENV"
 
       - uses: dtolnay/rust-toolchain@29eef336d9b2848a0b548edc03f92a220660cdb8 # dtolnay/rust-toolchain@stable
         with:
@@ -226,10 +228,7 @@ jobs:
       - run: scripts/check-process-memory-guard.sh
       - run: scripts/test-process-memory-guard.sh
       - run: scripts/test-live-interop-account-validation.sh
-      - name: Check audit tooling
-        env:
-          AQUA_ROOT_DIR: ${{ steps.private-runner-temp.outputs.path || runner.temp }}/aqua
-        run: scripts/check-audit-tooling.sh
+      - run: scripts/check-audit-tooling.sh
       - run: scripts/check-public-posture.sh
       - run: scripts/validate-changelog.sh
       - run: scripts/check-docs-freshness.sh
