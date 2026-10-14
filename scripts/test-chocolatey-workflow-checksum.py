@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Execute the actual workflow verifier against bounded checksum fixtures."""
 import hashlib
+import os
 from pathlib import Path
+import shlex
 import shutil
 import subprocess
 import tempfile
@@ -18,6 +20,49 @@ SHA = hashlib.sha256(PAYLOAD).hexdigest()
 POWERSHELL_TIMEOUT_SECONDS = 60
 
 
+def powershell_invocation(aqua_root, executable=None):
+    executable = executable or shutil.which('pwsh')
+    if not executable:
+        return None, None
+
+    try:
+        wrapper_lines = Path(executable).read_text().splitlines()
+    except (OSError, UnicodeError):
+        return [executable], None
+
+    exports = {}
+    proxy = None
+    for line in wrapper_lines:
+        line = line.strip()
+        if line.startswith('export '):
+            name, separator, value = line.removeprefix('export ').partition('=')
+            if separator:
+                try:
+                    parsed = shlex.split(value)
+                except ValueError:
+                    continue
+                if len(parsed) == 1:
+                    exports[name] = parsed[0]
+        elif line.startswith('exec '):
+            try:
+                command = shlex.split(line.removeprefix('exec '))
+            except ValueError:
+                continue
+            if command and Path(command[0]).name == 'pwsh':
+                proxy = command[0]
+
+    if proxy and exports.get('AQUA_ROOT_DIR') and exports.get('AQUA_CONFIG'):
+        environment = os.environ.copy()
+        environment.update(exports)
+        # The runner's Aqua wrapper may point at a root-owned shared cache. Call
+        # its proxy directly and keep lazy installation inside this test's
+        # temporary directory instead of mutating shared runner state.
+        environment['AQUA_ROOT_DIR'] = str(aqua_root)
+        return [proxy], environment
+
+    return [executable], None
+
+
 def verifier():
     text = WORKFLOW.read_text()
     section = text.split('      - name: Verify release asset checksum\n', 1)[1]
@@ -25,8 +70,40 @@ def verifier():
     return textwrap.dedent(section.split('        run: |\n', 1)[1])
 
 
+class PowerShellWrapperTests(unittest.TestCase):
+    def test_aqua_wrapper_uses_a_private_install_root(self):
+        with tempfile.TemporaryDirectory(prefix='slskr-aqua-wrapper-') as directory:
+            root = Path(directory)
+            wrapper = root / 'pwsh'
+            shared_root = root / 'shared-aqua'
+            config = root / 'aqua.yaml'
+            policy = root / 'aqua-policy.yaml'
+            wrapper.write_text(
+                '#!/usr/bin/env bash\n'
+                f'export AQUA_ROOT_DIR={shlex.quote(str(shared_root))}\n'
+                f'export AQUA_CONFIG={shlex.quote(str(config))}\n'
+                f'export AQUA_POLICY_CONFIG={shlex.quote(str(policy))}\n'
+                f'exec {shlex.quote(str(shared_root / "bin" / "pwsh"))} "$@"\n'
+            )
+            private_root = root / 'aqua-root'
+            command, environment = powershell_invocation(private_root, str(wrapper))
+
+        self.assertEqual(command, [str(shared_root / 'bin' / 'pwsh')])
+        self.assertEqual(environment['AQUA_ROOT_DIR'], str(private_root))
+        self.assertEqual(environment['AQUA_CONFIG'], str(config))
+        self.assertEqual(environment['AQUA_POLICY_CONFIG'], str(policy))
+
+
 @unittest.skipUnless(shutil.which('pwsh'), 'requires PowerShell; clean Windows runner supplies it')
 class ChecksumTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.aqua_root = tempfile.TemporaryDirectory(prefix='slskr-chocolatey-aqua-')
+        cls.addClassCleanup(cls.aqua_root.cleanup)
+        cls.pwsh_command, cls.pwsh_environment = powershell_invocation(
+            Path(cls.aqua_root.name) / 'aqua-root'
+        )
+
     def run_fixture(self, rows, succeeds):
         with tempfile.TemporaryDirectory(prefix='slskr-chocolatey-checksum-') as directory:
             root = Path(directory)
@@ -36,8 +113,9 @@ class ChecksumTests(unittest.TestCase):
             (assets / 'SHA256SUMS.txt').write_text(rows)
             script = root / 'verify.ps1'
             script.write_text(verifier())
-            result = subprocess.run(['pwsh', '-NoLogo', '-NoProfile', '-File', str(script)],
+            result = subprocess.run([*self.pwsh_command, '-NoLogo', '-NoProfile', '-File', str(script)],
                                     cwd=root, capture_output=True, text=True,
+                                    env=self.pwsh_environment,
                                     timeout=POWERSHELL_TIMEOUT_SECONDS)
             if succeeds:
                 self.assertEqual(result.returncode, 0, result.stderr)
