@@ -96,6 +96,24 @@ describe('interface language', () => {
     }
   });
 
+  it('keeps locale catalogs in key and placeholder parity with the source catalog', () => {
+    const sourceKeys = Object.keys(LOCALE_0).sort();
+    const placeholders = (text) => [...text.matchAll(/\{([a-zA-Z][a-zA-Z0-9_]*)\}/g)]
+      .map((match) => match[1])
+      .sort();
+
+    for (const [language, catalog] of Object.entries(localeCatalogs)) {
+      expect(Object.keys(catalog).sort(), `${language} catalog keys`).toEqual(sourceKeys);
+
+      for (const [source, translation] of Object.entries(catalog)) {
+        if (translation === null) continue;
+        expect(placeholders(translation), `${language}: ${source}`).toEqual(
+          placeholders(source),
+        );
+      }
+    }
+  });
+
   it('translates transfer actions and filter names in every supported language', () => {
     for (const source of bulkActionLabels) {
       expect(TRANSFER_BULK_ACTION_LABELS[source]).toHaveLength(INTERFACE_LANGUAGE_OPTIONS.length - 1);

@@ -1,4 +1,5 @@
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
+import { LocalizedPopup } from '../Shared/TooltipButton';
 import React from 'react';
 import { Button, Icon, Popup } from 'semantic-ui-react';
 import {
@@ -109,11 +110,14 @@ const VisualizerOverlayControls = ({
             type="file"
             webkitdirectory=""
           />
-          <Popup
-            content={`Cycle visualizer engine to ${getEngineLabel(getNextEngine(activeEngineType))}.`}
+          <LocalizedPopup
+            content="Cycle visualizer engine to {engine}."
+            parameters={{ engine: getEngineLabel(getNextEngine(activeEngineType)) }}
             trigger={
               <Button
-                aria-label={`Cycle visualizer engine to ${getEngineLabel(getNextEngine(activeEngineType))}`}
+                aria-label={interfaceText('Cycle visualizer engine to {engine}', {
+                  engine: getEngineLabel(getNextEngine(activeEngineType)),
+                })}
                 data-testid="visualizer-switch-engine"
                 icon
                 onClick={cycleEngineType}
@@ -245,12 +249,10 @@ const VisualizerOverlayControls = ({
                  {...interfaceTextProps("Delete the active native playlist from this browser.")}/>
               ) : null}
               {rustyMilkPresetLibrary.length > 0 ? (
-                <Popup
-                  content={
-                    rustyMilkLibraryMode === 'favorites'
-                      ? 'Reload a favorite RustyMilk preset from this browser.'
-                      : 'Reload a previously imported RustyMilk preset from this browser.'
-                  }
+                <LocalizedPopup
+                  content={rustyMilkLibraryMode === 'favorites'
+                    ? 'Reload a favorite RustyMilk preset from this browser.'
+                    : 'Reload a previously imported RustyMilk preset from this browser.'}
                   trigger={
                     <select
                       aria-label={interfaceText("RustyMilk preset library")}
@@ -261,7 +263,7 @@ const VisualizerOverlayControls = ({
                      {...interfaceTextProps("RustyMilk preset library")}>
                       <option value="">
                         {visibleRustyMilkPresetLibrary.length === 0 ? interfaceText("No matches") : (
-                          rustyMilkLibraryMode === 'favorites' ? 'Favorites' : 'Presets'
+                          rustyMilkLibraryMode === 'favorites' ? interfaceText('Favorites') : interfaceText('Presets')
                         )}
                       </option>
                       {visibleRustyMilkPresetLibrary.map((preset) => (
@@ -275,18 +277,16 @@ const VisualizerOverlayControls = ({
                 />
               ) : null}
               {rustyMilkPresetLibrary.length > 0 ? (
-                <Popup
-                  content={
-                    activeRustyMilkPresetIsFavorite
-                      ? 'Remove the active RustyMilk preset from favorites.'
-                      : 'Mark the active RustyMilk preset as a favorite.'
-                  }
+                <LocalizedPopup
+                  content={activeRustyMilkPresetIsFavorite
+                    ? 'Remove the active RustyMilk preset from favorites.'
+                    : 'Mark the active RustyMilk preset as a favorite.'}
                   trigger={
                     <Button
                       aria-label={
                         activeRustyMilkPresetIsFavorite
-                          ? 'Unfavorite active RustyMilk preset'
-                          : 'Favorite active RustyMilk preset'
+                          ? interfaceText('Unfavorite active RustyMilk preset')
+                          : interfaceText('Favorite active RustyMilk preset')
                       }
                       active={activeRustyMilkPresetIsFavorite}
                       data-testid="visualizer-toggle-native-favorite"
@@ -301,18 +301,16 @@ const VisualizerOverlayControls = ({
                 />
               ) : null}
               {rustyMilkPresetLibrary.length > 0 ? (
-                <Popup
-                  content={
-                    rustyMilkLibraryMode === 'favorites'
-                      ? 'Show all imported RustyMilk presets.'
-                      : 'Show only favorite RustyMilk presets.'
-                  }
+                <LocalizedPopup
+                  content={rustyMilkLibraryMode === 'favorites'
+                    ? 'Show all imported RustyMilk presets.'
+                    : 'Show only favorite RustyMilk presets.'}
                   trigger={
                     <Button
                       aria-label={
                         rustyMilkLibraryMode === 'favorites'
-                          ? 'Show all RustyMilk presets'
-                          : 'Show favorite RustyMilk presets'
+                          ? interfaceText('Show all RustyMilk presets')
+                          : interfaceText('Show favorite RustyMilk presets')
                       }
                       active={rustyMilkLibraryMode === 'favorites'}
                       data-testid="visualizer-toggle-native-favorites-only"
@@ -439,8 +437,9 @@ const VisualizerOverlayControls = ({
                   </select>
                 }
                {...interfaceTextProps("Choose a global RustyMilk parameter to edit on the active preset.")}/>
-              <Popup
-                content={`Adjust ${rustyMilkParameter.label.toLowerCase()} for the active RustyMilk preset before applying the edited copy locally.`}
+              <LocalizedPopup
+                content="Adjust {label} for the active RustyMilk preset before applying the edited copy locally."
+                parameters={{ label: rustyMilkParameter.label.toLowerCase() }}
                 trigger={
                   <input
                     aria-label={interfaceText("Adjust RustyMilk {label}", { "label": (rustyMilkParameter.label) })}
@@ -648,11 +647,14 @@ const VisualizerOverlayControls = ({
                   </Button>
                 }
                {...interfaceTextProps("Remove the selected custom wave from the active RustyMilk preset and persist the edited copy locally.")}/>
-              <Popup
-                content={`Native automatic preset changes: ${getRustyMilkAutomationLabel(rustyMilkAutomationMode)}. Beat mode advances after repeated detected bass beats; timed mode advances on an interval.`}
+              <LocalizedPopup
+                content="Native automatic preset changes: {mode}. Beat mode advances after repeated detected bass beats; timed mode advances on an interval."
+                parameters={{ mode: interfaceText(getRustyMilkAutomationLabel(rustyMilkAutomationMode)) }}
                 trigger={
                   <Button
-                    aria-label={`Native automatic preset changes: ${getRustyMilkAutomationLabel(rustyMilkAutomationMode)}`}
+                    aria-label={interfaceText('Native automatic preset changes: {mode}', {
+                      mode: interfaceText(getRustyMilkAutomationLabel(rustyMilkAutomationMode)),
+                    })}
                     active={rustyMilkAutomationMode !== 'off'}
                     data-testid="visualizer-native-automation"
                     icon
@@ -701,12 +703,10 @@ const VisualizerOverlayControls = ({
               ) : null}
             </>
           ) : null}
-          <Popup
-            content={
-              nativeBankNavigationDisabled
-                ? 'No imported RustyMilk presets match the current filter.'
-                : 'Load a different RustyMilk preset.'
-            }
+          <LocalizedPopup
+            content={nativeBankNavigationDisabled
+              ? 'No imported RustyMilk presets match the current filter.'
+              : 'Load a different RustyMilk preset.'}
             trigger={
               <Button
                 aria-label={interfaceText("Next visualizer preset")}

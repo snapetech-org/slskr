@@ -359,10 +359,14 @@ const Mesh = ({ runtimeProfile } = {}) => {
                   color={getHealthColor(stats?.status)}
                   name={getHealthIcon(stats?.status)}
                 />
-                <LocalizedText source={"Network Health:"} />{" "}{stats?.status || 'Unknown'}
+                <LocalizedText source={"Network Health:"} />{" "}{stats?.status
+                  ? (['Healthy', 'Unhealthy'].includes(stats.status)
+                    ? interfaceText(stats.status)
+                    : stats.status)
+                  : interfaceText('Unknown')}
               </Card.Header>
               <Card.Description>
-                {stats?.description || 'No health information available'}
+                {stats?.description || <LocalizedText source={"No health information available"} />}
               </Card.Description>
             </Card.Content>
           </Card>
@@ -504,7 +508,7 @@ const Mesh = ({ runtimeProfile } = {}) => {
                             stats?.natType === 'Direct' ? 'green' : 'yellow'
                           }
                         >
-                          {stats?.natType || 'Unknown'}
+                          {stats?.natType || <LocalizedText source={"Unknown"} />}
                         </Label>
                       </List.Description>
                     </List.Content>
@@ -530,8 +534,8 @@ const Mesh = ({ runtimeProfile } = {}) => {
                           {stats?.routingTableHealthy == null
                             ? <LocalizedText source={"Unavailable"} />
                             : stats.routingTableHealthy
-                              ? 'Healthy'
-                              : 'Unhealthy'}
+                              ? interfaceText('Healthy')
+                              : interfaceText('Unhealthy')}
                         </Label>
                         <br />
                         <Label
@@ -547,8 +551,8 @@ const Mesh = ({ runtimeProfile } = {}) => {
                           {stats?.peerConnectivityHealthy == null
                             ? <LocalizedText source={"Unavailable"} />
                             : stats.peerConnectivityHealthy
-                              ? 'Healthy'
-                              : 'Unhealthy'}
+                              ? interfaceText('Healthy')
+                              : interfaceText('Unhealthy')}
                         </Label>
                         <br />
                         <Label
@@ -564,8 +568,8 @@ const Mesh = ({ runtimeProfile } = {}) => {
                           {stats?.messageFlowHealthy == null
                             ? <LocalizedText source={"Unavailable"} />
                             : stats.messageFlowHealthy
-                              ? 'Healthy'
-                              : 'Unhealthy'}
+                              ? interfaceText('Healthy')
+                              : interfaceText('Unhealthy')}
                         </Label>
                       </List.Description>
                     </List.Content>
@@ -665,7 +669,7 @@ const Mesh = ({ runtimeProfile } = {}) => {
                       <List.Header>{user.username || user.Username}</List.Header>
                       <List.Description>
                         <LocalizedText source={"Similarity rating:"} />{' '}
-                        {user.rating ?? user.Rating ?? 'not reported'}
+                        {user.rating ?? user.Rating ?? <LocalizedText source={"not reported"} />}
                       </List.Description>
                     </List.Content>
                   </List.Item>
@@ -687,9 +691,9 @@ const Mesh = ({ runtimeProfile } = {}) => {
                     <List.Content>
                       <List.Header>{record.username}</List.Header>
                       <List.Description>
-                        {record.peerId || 'unsigned peer'}, {' '}
-                        {(record.features || []).join(', ') || 'no features'}, {' '}
-                        <LocalizedText source={"overlay port"} />{" "}{record.overlayPort || 'not advertised'}
+                        {record.peerId || <LocalizedText source={"unsigned peer"} />}, {' '}
+                        {(record.features || []).join(', ') || <LocalizedText source={"no features"} />}, {' '}
+                        <LocalizedText source={"overlay port"} />{" "}{record.overlayPort || <LocalizedText source={"not advertised"} />}
                       </List.Description>
                     </List.Content>
                   </List.Item>

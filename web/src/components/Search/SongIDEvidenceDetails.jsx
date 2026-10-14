@@ -1,5 +1,6 @@
 import LocalizedText from "../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
+import { LocalizedPopup } from '../Shared/TooltipButton';
 
 
 import React from 'react';
@@ -18,6 +19,32 @@ import {
   getSyntheticVerdictColor,
   hasScorecardSignal,
 } from './songIdPanelHelpers';
+
+const localizeKnownValue = (value, labels) => (
+  Object.prototype.hasOwnProperty.call(labels, value)
+    ? interfaceText(labels[value])
+    : value
+);
+
+const identityVerdictLabels = {
+  candidate_identity: 'Candidate identity',
+  candidate_match_found: 'Candidate match found',
+  matched: 'Matched',
+  needs_manual_review: 'Needs manual review',
+  recognized_cataloged_track: 'Recognized catalog track',
+  strong_identity: 'Strong identity',
+  unclassified: 'Unclassified',
+  weak_identity: 'Weak identity',
+};
+
+const syntheticVerdictLabels = {
+  insufficient_evidence: 'Insufficient evidence',
+  low_signal: 'Low signal',
+  moderate_suspicion: 'Moderate suspicion',
+  mixed_or_inconclusive: 'Mixed or inconclusive',
+  strong_suspicion: 'Strong suspicion',
+  unlikely: 'Unlikely',
+};
 
 const SongIDEvidenceDetails = ({
   actionLoading,
@@ -42,7 +69,7 @@ const SongIDEvidenceDetails = ({
 
   const renderSyntheticPopupContent = () => {
     if (!run?.forensicMatrix) {
-      return run?.syntheticAssessment?.summary || 'No synthetic detail available.';
+      return run?.syntheticAssessment?.summary || interfaceText('No synthetic detail available.');
     }
 
     const matrix = run.forensicMatrix;
@@ -50,7 +77,7 @@ const SongIDEvidenceDetails = ({
       <div style={{ maxWidth: 360 }}>
         <div>
           <LocalizedText source={"Synthetic score"} />{" "}{matrix.syntheticScore || 0} <LocalizedText source={"· confidence"} />{' '}
-          {matrix.confidenceScore || 0} <LocalizedText source={"· family"} />{" "}{matrix.familyLabel || 'none'}
+          {matrix.confidenceScore || 0} <LocalizedText source={"· family"} />{" "}{matrix.familyLabel || interfaceText('none')}
         </div>
         {Array.isArray(matrix.topEvidenceFor) && matrix.topEvidenceFor.length > 0 ? (
           <div style={{ marginTop: '0.5em' }}>
@@ -87,7 +114,7 @@ const SongIDEvidenceDetails = ({
         key={label}
         content={
           <div style={{ maxWidth: 360 }}>
-            <div>{lane.summary || 'No lane summary.'}</div>
+            <div>{lane.summary || interfaceText('No lane summary.')}</div>
             {metricSummary ? (
               <div style={{ marginTop: '0.5em' }}>{metricSummary}</div>
             ) : null}
@@ -96,7 +123,7 @@ const SongIDEvidenceDetails = ({
         position="top left"
         trigger={
           <Label size="tiny">
-            {label} {Math.round((lane.score || 0) * 100)}
+            <LocalizedText source={label} /> {Math.round((lane.score || 0) * 100)}
           </Label>
         }
       />
@@ -125,7 +152,9 @@ const SongIDEvidenceDetails = ({
                   color={getIdentityVerdictColor(identityVerdict)}
                   size="tiny"
                 >
-                  {identityVerdict || 'unclassified'}
+                  {identityVerdict
+                    ? localizeKnownValue(identityVerdict, identityVerdictLabels)
+                    : interfaceText('unclassified')}
                 </Label>
                 <br />
                 <strong><LocalizedText source={"Confidence:"} /></strong> {formatPercent(identityConfidence)}
@@ -149,7 +178,9 @@ const SongIDEvidenceDetails = ({
                       )}
                       size="tiny"
                     >
-                      <LocalizedText source={"Synthetic"} />{" "}{run.syntheticAssessment?.verdict || 'unknown'}
+                      <LocalizedText source={"Synthetic"} />{" "}{run.syntheticAssessment?.verdict
+                        ? localizeKnownValue(run.syntheticAssessment.verdict, syntheticVerdictLabels)
+                        : interfaceText('unknown')}
                     </Label>
                   }
                 />
@@ -161,13 +192,14 @@ const SongIDEvidenceDetails = ({
                       <LocalizedText source={"Confidence"} />{' '}
                       {run.forensicMatrix?.confidenceScore ||
                         run.syntheticAssessment?.confidence ||
-                        'low'}
+                        interfaceText('low')}
                     </Label>
                   }
                  {...interfaceTextProps("Confidence applies to the synthetic-likelihood readout only. It does not control download decisions when identity is strong.")}/>
                 {run.forensicMatrix?.familyLabel ? (
-                  <Popup
-                    content={`Known-family score ${run.forensicMatrix.knownFamilyScore || 0}. This is a hint lane, not a download-control signal.`}
+                  <LocalizedPopup
+                    content="Known-family score {score}. This is a hint lane, not a download-control signal."
+                    parameters={{ score: run.forensicMatrix.knownFamilyScore || 0 }}
                     position="top left"
                     trigger={
                       <Label size="tiny">
@@ -210,7 +242,7 @@ const SongIDEvidenceDetails = ({
             <details style={detailStyle}>
               <summary style={detailSummaryStyle}><LocalizedText source={"Scorecard"} /></summary>
               <div style={{ marginBottom: '1em' }}>
-                <Label size="tiny"><LocalizedText source={"Audio"} />{" "}{run.scorecard.analysisAudioSource || 'none'}</Label>
+                <Label size="tiny"><LocalizedText source={"Audio"} />{" "}{run.scorecard.analysisAudioSource || interfaceText('none')}</Label>
                 <Label size="tiny"><LocalizedText source={"Clips"} />{" "}{run.scorecard.clipCount || 0}</Label>
                 <Label size="tiny"><LocalizedText source={"AcoustID"} />{" "}{run.scorecard.acoustIdHitCount || 0}</Label>
                 <Label size="tiny"><LocalizedText source={"AcoustID Raw"} />{" "}{run.scorecard.rawAcoustIdHitCount || 0}</Label>
@@ -275,7 +307,7 @@ const SongIDEvidenceDetails = ({
                   <LocalizedText source={"Manifest"} />{" "}{run.provenance.manifestHint ? <LocalizedText source={"hinted"} /> : <LocalizedText source={"none"} />}
                 </Label>
                 <Label size="tiny">
-                  <LocalizedText source={"Validation"} />{" "}{run.provenance.validationState || 'unknown'}
+                  <LocalizedText source={"Validation"} />{" "}{run.provenance.validationState || interfaceText('unknown')}
                 </Label>
                 {run.provenance.verified ? (
                   <Label color="green" size="tiny">
@@ -297,7 +329,7 @@ const SongIDEvidenceDetails = ({
                 <Label size="tiny">
                   <LocalizedText source={"Score"} />{" "}{Math.round((run.aiHeuristics.artifactScore || 0) * 100)}
                 </Label>
-                <Label size="tiny">{run.aiHeuristics.artifactLabel || 'unknown'}</Label>
+                <Label size="tiny">{run.aiHeuristics.artifactLabel || interfaceText('unknown')}</Label>
                 <Label size="tiny">
                   <LocalizedText source={"Peaks"} />{" "}{run.aiHeuristics.peakCount || 0}
                 </Label>
@@ -334,7 +366,7 @@ const SongIDEvidenceDetails = ({
                       {item.heuristics ? (
                         <List.Description style={{ marginTop: '0.35em' }}>
                           <LocalizedText source={"Score"} />{" "}{Math.round((item.heuristics.artifactScore || 0) * 100)} ·
-                          {` `}<LocalizedText source={"Label"} />{" "}{item.heuristics.artifactLabel || 'unknown'}
+                          {` `}<LocalizedText source={"Label"} />{" "}{item.heuristics.artifactLabel || interfaceText('unknown')}
                         </List.Description>
                       ) : null}
                     </List.Content>
@@ -584,7 +616,7 @@ const SongIDEvidenceDetails = ({
                       <List.Description>{transcript.text}</List.Description>
                       <List.Description style={{ marginTop: '0.35em' }}>
                         <LocalizedText source={"Segments:"} />{" "}{transcript.segmentCount || 0} <LocalizedText source={"· Language:"} />{' '}
-                        {transcript.language || 'unknown'} <LocalizedText source={"· Excerpt:"} />{' '}
+                        {transcript.language || interfaceText('unknown')} <LocalizedText source={"· Excerpt:"} />{' '}
                         {transcript.excerptStartSeconds || 0}<LocalizedText source={"s /"} />{' '}
                         {transcript.excerptDurationSeconds || 0}<LocalizedText source={"s"} /></List.Description>
                       {Array.isArray(transcript.musicBrainzQueries) &&
@@ -639,7 +671,7 @@ const SongIDEvidenceDetails = ({
               <List bulleted>
                 {run.chapters.map((chapter) => (
                   <List.Item key={chapter.chapterId}>
-                    {chapter.startSeconds}s: {chapter.title || 'untitled chapter'}
+                    {chapter.startSeconds}s: {chapter.title || interfaceText('untitled chapter')}
                     {chapter.endSeconds !== null &&
                     chapter.endSeconds !== undefined
                       ? <LocalizedText source={"-> {endSeconds}s"} values={{ "endSeconds": (chapter.endSeconds) }} />

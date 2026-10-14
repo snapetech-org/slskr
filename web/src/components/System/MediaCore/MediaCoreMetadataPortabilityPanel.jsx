@@ -305,7 +305,7 @@ const MediaCoreMetadataPortabilityPanel = React.memo(() => {
                         <strong><LocalizedText source={"Recommended Strategy:"} /></strong>{' '}
                         {Object.entries(
                           conflictAnalysis.recommendedStrategies || {},
-                        ).sort(([, a], [, b]) => b - a)[0]?.[0] || 'Merge'}
+                        ).sort(([, a], [, b]) => b - a)[0]?.[0] || interfaceText('Merge')}
                       </p>
                     </Message>
                   )}

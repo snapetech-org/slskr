@@ -404,7 +404,7 @@ const PlaylistIntake = () => {
                       <Form.Group widths="equal">
                         <Form.Select
                           aria-label={interfaceText("Multi-artist tag policy for {name}", { "name": (playlist.name) })}
-                          label="Multi-artist"
+                          label={interfaceText("Multi-artist")}
                           onChange={(_event, data) =>
                             setOrganizationInput(
                               playlist,

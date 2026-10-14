@@ -339,9 +339,13 @@ const DiscographyCoveragePanel = ({ disabled }) => {
                         </List.Header>
                         <List.Description>
                           {track.artist || coverage.artistName} ·{' '}
-                          {track.recordingId || 'unknown recording'}
-                          {track.matches?.length > 0 &&
-                            ` · ${track.matches.length} verified match${track.matches.length === 1 ? '' : 'es'}`}
+                          {track.recordingId || interfaceText('unknown recording')}
+                          {track.matches?.length > 0 && interfaceText(
+                            track.matches.length === 1
+                              ? '· {count} verified match'
+                              : '· {count} verified matches',
+                            { count: track.matches.length },
+                          )}
                         </List.Description>
                       </List.Content>
                     </List.Item>

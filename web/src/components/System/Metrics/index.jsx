@@ -248,7 +248,9 @@ const Metrics = () => {
           type="button"
         >
           <Icon name="refresh" />
-          {lastUpdated ? `Updated ${formatRegionalTime(lastUpdated)}` : <LocalizedText source={"Refresh"} />}
+          {lastUpdated
+            ? <LocalizedText source={"Updated {timestamp}"} values={{ "timestamp": formatRegionalTime(lastUpdated) }} />
+            : <LocalizedText source={"Refresh"} />}
         </Button>
       </div>
 

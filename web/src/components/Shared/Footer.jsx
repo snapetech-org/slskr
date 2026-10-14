@@ -1,5 +1,5 @@
 import LocalizedText from "./LocalizedText";
-import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 
 
 import './Footer.css';
@@ -63,7 +63,7 @@ const setFooterHeightVariable = (element) => {
   }
 };
 
-class Footer extends Component {
+class FooterView extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -151,12 +151,12 @@ class Footer extends Component {
         if (slskrStats.status === 'fulfilled') {
           nextState.slskrStats = slskrStats.value;
         } else {
-          errors.push(toDisplayError(slskrStats.reason, 'slskr telemetry unavailable'));
+          errors.push(toDisplayError(slskrStats.reason, interfaceText('slskr telemetry unavailable')));
         }
         if (transportStats.status === 'fulfilled') {
           nextState.stats = transportStats.value;
         } else {
-          errors.push(toDisplayError(transportStats.reason, 'Network telemetry unavailable'));
+          errors.push(toDisplayError(transportStats.reason, interfaceText('Network telemetry unavailable')));
         }
         nextState.statsError = errors.length > 0 ? errors.join(' ') : null;
         this.setState(nextState);
@@ -165,7 +165,7 @@ class Footer extends Component {
       console.debug('Failed to fetch mesh stats:', error);
       if (this.isMountedFlag && requestId === this.requestIds.stats) {
         this.setState({
-          statsError: toDisplayError(error, 'Network telemetry unavailable'),
+          statsError: toDisplayError(error, interfaceText('Network telemetry unavailable')),
         });
       }
     }
@@ -186,7 +186,7 @@ class Footer extends Component {
       console.debug('Failed to fetch transfer speeds:', error);
       if (this.isMountedFlag && requestId === this.requestIds.speeds) {
         this.setState({
-          speedsError: toDisplayError(error, 'Transfer speeds unavailable'),
+          speedsError: toDisplayError(error, interfaceText('Transfer speeds unavailable')),
         });
       }
     }
@@ -207,7 +207,7 @@ class Footer extends Component {
       console.debug('Failed to fetch build info:', error);
       if (this.isMountedFlag && requestId === this.requestIds.buildInfo) {
         this.setState({
-          buildInfoError: toDisplayError(error, 'Build information unavailable'),
+          buildInfoError: toDisplayError(error, interfaceText('Build information unavailable')),
         });
       }
     }
@@ -305,14 +305,23 @@ class Footer extends Component {
     // Format NAT type tooltip
     const natTooltip =
       isLoggedIn && stats
-        ? `NAT Type: ${stats.natType || 'Unknown'}`
-        : 'NAT: Login to see stats';
+        ? interfaceText('NAT Type: {natType}', {
+          natType: stats.natType || interfaceText('Unknown'),
+        })
+        : interfaceText('NAT: Login to see stats');
     const telemetryErrors = [statsError, speedsError, buildInfoError]
       .filter(Boolean)
       .join(' ');
     const networkTooltip = isLoggedIn
-      ? `DHT peers: ${formatCount(displayedDhtPeers)}; DHT nodes: ${formatCount(dhtNodes)}; mesh peers: ${formatCount(meshPeers)}; hashes: ${formatCount(hashCount)}; seq: ${formatCount(seqId)}${telemetryErrors ? `; ${telemetryErrors}` : ''}`
-      : 'Login to see slskr network stats';
+      ? interfaceText('DHT peers: {dhtPeers}; DHT nodes: {dhtNodes}; mesh peers: {meshPeers}; hashes: {hashes}; seq: {seq}{errors}', {
+        dhtPeers: formatCount(displayedDhtPeers),
+        dhtNodes: formatCount(dhtNodes),
+        meshPeers: formatCount(meshPeers),
+        hashes: formatCount(hashCount),
+        seq: formatCount(seqId),
+        errors: telemetryErrors ? `; ${telemetryErrors}` : '',
+      })
+      : interfaceText('Login to see slskr network stats');
 
     return (
       <footer
@@ -357,12 +366,15 @@ class Footer extends Component {
                 target="_blank"
                 title={
                   isUpdateAvailable
-                    ? `Running ${fullBuild}; GitHub has ${latestTag || latestBuild}`
-                    : `Running ${fullBuild}`
+                  ? interfaceText('Running {currentBuild}; GitHub has {latestBuild}', {
+                    currentBuild: fullBuild,
+                    latestBuild: latestTag || latestBuild,
+                  })
+                    : interfaceText('Running {currentBuild}', { currentBuild: fullBuild })
                 }
               >
                 <Icon name={isUpdateAvailable ? 'bullhorn' : 'code branch'} />
-                <span className="slskr-footer-build-label"><LocalizedText source={"Build"} /></span>
+          <span className="slskr-footer-build-label"><LocalizedText source={"Build"} /></span>
                 <code>{currentBuild}</code>
                 {isUpdateAvailable && (
                   <span className="slskr-footer-update-label">
@@ -383,8 +395,8 @@ class Footer extends Component {
                 className="slskr-footer-speed-item"
                 title={
                   isLoggedIn
-                    ? 'Total transfer speed (upload + download)'
-                    : 'Login to see real-time speeds'
+                    ? interfaceText('Total transfer speed (upload + download)')
+                    : interfaceText('Login to see real-time speeds')
                 }
               >
                 <strong>T:</strong>{' '}
@@ -397,8 +409,8 @@ class Footer extends Component {
                 className="slskr-footer-speed-item"
                 title={
                   isLoggedIn
-                    ? 'Soulseek network speed'
-                    : 'Login to see real-time speeds'
+                    ? interfaceText('Soulseek network speed')
+                    : interfaceText('Login to see real-time speeds')
                 }
               >
                 <strong>S:</strong>{' '}
@@ -413,8 +425,8 @@ class Footer extends Component {
                 className="slskr-footer-speed-item"
                 title={
                   isLoggedIn
-                    ? 'Mesh network speed'
-                    : 'Login to see real-time speeds'
+                    ? interfaceText('Mesh network speed')
+                    : interfaceText('Login to see real-time speeds')
                 }
               >
                 <strong>M:</strong>{' '}
@@ -496,8 +508,8 @@ class Footer extends Component {
                 name="sitemap"
                 title={
                   isLoggedIn && stats
-                    ? `DHT Nodes: ${stats.dht}`
-                    : 'DHT: Login to see stats'
+                    ? interfaceText('DHT Nodes: {count}', { count: stats.dht })
+                    : interfaceText('DHT: Login to see stats')
                 }
               />
               <Icon
@@ -518,8 +530,8 @@ class Footer extends Component {
                 name="globe"
                 title={
                   isLoggedIn && stats
-                    ? `Overlay Peers: ${stats.overlay}`
-                    : 'Overlay: Login to see stats'
+                    ? interfaceText('Overlay Peers: {count}', { count: stats.overlay })
+                    : interfaceText('Overlay: Login to see stats')
                 }
               />
             </div>
@@ -529,5 +541,10 @@ class Footer extends Component {
     );
   }
 }
+
+const Footer = (props) => {
+  useInterfaceLanguage();
+  return <FooterView {...props} />;
+};
 
 export default Footer;

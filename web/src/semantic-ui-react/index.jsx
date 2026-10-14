@@ -1030,7 +1030,9 @@ export const Dropdown = React.forwardRef((props, ref) => {
         )}
         {clearable && hasValue ? (
           <Button
-            aria-label={`Clear ${rest['aria-label'] || placeholder || 'selection'}`}
+            aria-label={interfaceText('Clear {value}', {
+              value: rest['aria-label'] || placeholder || interfaceText('selection'),
+            })}
             className="clear"
             icon="close"
             onClick={handleClear}

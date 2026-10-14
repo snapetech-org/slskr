@@ -1,4 +1,4 @@
-import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import './Search.css';
 import SearchesListView from './SearchesListView';
 import { toDisplayError } from '../../lib/errors';
@@ -36,6 +36,7 @@ const searchEventIdentifier = (eventOrSearch) =>
 const SEARCH_CREATE_HYDRATION_TIMEOUT_MS = 1_500;
 
 const Searches = ({ runtimeProfile, server } = {}) => {
+  useInterfaceLanguage();
   const normalizedServer = server ?? { isConnected: false };
   const [connecting, setConnecting] = useState(true);
   const [connectionError, setConnectionError] = useState(undefined);
@@ -192,7 +193,7 @@ const Searches = ({ runtimeProfile, server } = {}) => {
           return;
         }
         if (!hubListReceived) {
-          setLoadError(toDisplayError(loadError, 'Failed to load searches'));
+          setLoadError(toDisplayError(loadError, interfaceText('Failed to load searches')));
         }
       } finally {
         if (
@@ -682,12 +683,14 @@ const Searches = ({ runtimeProfile, server } = {}) => {
   }
 
   if (error && !hasSearchData) {
-    return <ErrorSegment caption={toDisplayError(error, 'Failed to load searches')} />;
+    return <ErrorSegment caption={toDisplayError(error, interfaceText('Failed to load searches'))} />;
   }
 
   const searchDataWarning = error && hasSearchData ? (
     <Message
-      content={`${toDisplayError(error, 'Search updates are unavailable')}. Showing the last successfully loaded search data.`}
+      content={interfaceText('{error}. Showing the last successfully loaded search data.', {
+        error: toDisplayError(error, interfaceText('Search updates are unavailable')),
+      })}
       size="small"
       warning
     />

@@ -252,7 +252,7 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
                             <br />
                             <strong><LocalizedText source={"Members:"} /></strong>{' '}
                             {podMetadataResult.publishedPod?.metadata
-                              ?.memberCount || 'Unknown'}
+                              ?.memberCount || <LocalizedText source={"Unknown"} />}
                           </p>
                         </Message>
                       ) : (

@@ -733,7 +733,7 @@ class App extends Component {
                 <span><LocalizedText source={"Lost connection to slskr"} /></span>
                 <br />
                 <span>
-                  {retriesExhausted ? <LocalizedText source={"Refresh to reconnect"} /> : 'Retrying...'}
+                  {retriesExhausted ? <LocalizedText source={"Refresh to reconnect"} /> : <LocalizedText source={"Retrying..."} />}
                 </span>
               </>
             }
@@ -768,7 +768,7 @@ class App extends Component {
             }}
           >
             <Icon name="attention" />
-            <LocalizedText source={"Lost connection to slskr."} />{" "}{retriesExhausted ? <LocalizedText source={"Refresh to reconnect."} /> : 'Retrying...'}
+            <LocalizedText source={"Lost connection to slskr."} />{" "}{retriesExhausted ? <LocalizedText source={"Refresh to reconnect."} /> : <LocalizedText source={"Retrying..."} />}
           </Segment>
         )}
         <Modal

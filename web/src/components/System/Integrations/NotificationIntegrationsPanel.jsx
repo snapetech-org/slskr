@@ -366,9 +366,9 @@ const NotificationIntegrationsPanel = ({ options }) => {
                 label={interfaceText("Access Token")}
                 onChange={(_, { value }) => update('pushbulletAccessToken', value)}
                 placeholder={
-                  form.pushbulletAccessTokenConfigured
+                  interfaceText(form.pushbulletAccessTokenConfigured
                     ? 'Configured'
-                    : 'Pushbullet access token'
+                    : 'Pushbullet access token')
                 }
                 type="password"
                 value={form.pushbulletAccessToken}
@@ -470,9 +470,9 @@ const NotificationIntegrationsPanel = ({ options }) => {
                 label={interfaceText("Access Token")}
                 onChange={(_, { value }) => update('ntfyAccessToken', value)}
                 placeholder={
-                  form.ntfyAccessTokenConfigured
+                  interfaceText(form.ntfyAccessTokenConfigured
                     ? 'Configured'
-                    : 'Optional Ntfy token'
+                    : 'Optional Ntfy token')
                 }
                 type="password"
                 value={form.ntfyAccessToken}
@@ -541,9 +541,9 @@ const NotificationIntegrationsPanel = ({ options }) => {
                 label={interfaceText("User Key")}
                 onChange={(_, { value }) => update('pushoverUserKey', value)}
                 placeholder={
-                  form.pushoverUserKeyConfigured
+                  interfaceText(form.pushoverUserKeyConfigured
                     ? 'Configured'
-                    : 'Pushover user key'
+                    : 'Pushover user key')
                 }
                 type="password"
                 value={form.pushoverUserKey}
@@ -554,9 +554,9 @@ const NotificationIntegrationsPanel = ({ options }) => {
                 label={interfaceText("API Token")}
                 onChange={(_, { value }) => update('pushoverToken', value)}
                 placeholder={
-                  form.pushoverTokenConfigured
+                  interfaceText(form.pushoverTokenConfigured
                     ? 'Configured'
-                    : 'Pushover application token'
+                    : 'Pushover application token')
                 }
                 type="password"
                 value={form.pushoverToken}

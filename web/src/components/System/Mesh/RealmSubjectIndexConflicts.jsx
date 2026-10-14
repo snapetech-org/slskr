@@ -244,10 +244,10 @@ const RealmSubjectIndexConflicts = () => {
                   <Table.Row key={get(conflict, 'id', 'Id', get(conflict, 'key', 'Key'))}>
                     <Table.Cell>
                       <Label color="orange">
-                        {get(conflict, 'type', 'Type', 'unknown')}
+                        {get(conflict, 'type', 'Type', interfaceText('Unknown'))}
                       </Label>
                       <div>
-                        <strong>{get(conflict, 'key', 'Key', '-')}</strong>
+                        <strong>{get(conflict, 'key', 'Key', interfaceText('Key'))}</strong>
                       </div>
                       <div className="integration-muted-copy">
                         {get(conflict, 'description', 'Description', '-')}
@@ -280,11 +280,17 @@ const RealmSubjectIndexConflicts = () => {
                               </Label>
                               <Label basic>{authorityKey}</Label>
                               <Popup
-                                content={`${disabled ? 'Re-enable' : 'Disable'} this authority locally for review. This only changes browser review state and does not update realm governance.`}
+                                content={interfaceText(disabled
+                                  ? 'Re-enable this authority locally for review. This only changes browser review state and does not update realm governance.'
+                                  : 'Disable this authority locally for review. This only changes browser review state and does not update realm governance.')}
                                 position="top center"
                                 trigger={
                                   <Button
-                                    aria-label={`${disabled ? 'Enable' : 'Disable'} authority ${authorityKey}`}
+                                    aria-label={interfaceText(disabled
+                                      ? 'Enable authority {authorityKey}'
+                                      : 'Disable authority {authorityKey}', {
+                                        authorityKey,
+                                      })}
                                     onClick={() => toggleAuthority(authorityKey)}
                                     size="mini"
                                   >

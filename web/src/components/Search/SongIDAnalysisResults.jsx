@@ -12,6 +12,7 @@ import {
   getDedupedOptions,
   getDedupedPlans,
   getUniqueTopActions,
+  localizeSongIdRunState,
   detailStyle,
   detailSummaryStyle,
 } from './songIdPanelHelpers';
@@ -134,10 +135,10 @@ const SongIDAnalysisResults = ({
             </Header>
             <div style={{ marginBottom: '0.75em' }}>
               <Label color={getStatusColor(run.status)} size="small">
-                {run.status || 'unknown'}
+                {localizeSongIdRunState(run.status)}
               </Label>
-              <Label size="small">{run.currentStage || 'queued'}</Label>
-              <Label size="small">{run.sourceType || 'unknown'}</Label>
+              <Label size="small">{localizeSongIdRunState(run.currentStage || 'queued')}</Label>
+              <Label size="small">{run.sourceType || interfaceText('unknown')}</Label>
               {run.workerSlot !== null && run.workerSlot !== undefined ? (
                 <Label size="small"><LocalizedText source={"Worker"} />{" "}{run.workerSlot}</Label>
               ) : null}
@@ -159,7 +160,7 @@ const SongIDAnalysisResults = ({
             progress
             size="small"
           >
-            {run.currentStage || 'queued'}
+            {localizeSongIdRunState(run.currentStage || 'queued')}
           </Progress>
           {topActions.length > 0 ? (
             <>
@@ -193,7 +194,7 @@ const SongIDAnalysisResults = ({
                   return (
                     <Popup
                       key={`${action.type}-${action.label}-${index}`}
-                      content={content}
+                      content={interfaceText(content)}
                       position="top center"
                         trigger={
                           <Button

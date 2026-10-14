@@ -211,7 +211,7 @@ describe('Integrations', () => {
     await waitFor(() => {
       expect(lidarr.retryImport).toHaveBeenCalledWith('history-1');
     });
-    expect(screen.getByText('Lidarr import retry queued: 1 file(s)')).toBeInTheDocument();
+    expect(screen.getByText('Lidarr import retry queued: 1 file')).toBeInTheDocument();
   });
 
   it('shows media-server adapter cards and path diagnostics', async () => {

@@ -283,8 +283,11 @@ const NetworkDetails = ({ actions, data }) => {
             <Popup
               content={
                 backfillProgress && !backfillProgress.complete
-                  ? `Continue processing search history. ${backfillProgress.remainingSearches} of ${backfillProgress.totalSearches} searches remaining.`
-                  : 'Scan your search history to discover FLAC files from past searches. This populates the inventory with files that can be probed for content hashes, enabling multi-source downloads for those files. Processes in batches - click multiple times for large histories.'
+                  ? interfaceText('Continue processing search history. {remaining} of {total} searches remaining.', {
+                    remaining: backfillProgress.remainingSearches,
+                    total: backfillProgress.totalSearches,
+                  })
+                  : interfaceText('Scan your search history to discover FLAC files from past searches. This populates the inventory with files that can be probed for content hashes, enabling multi-source downloads for those files. Processes in batches - click multiple times for large histories.')
               }
               position="top right"
               trigger={
@@ -400,7 +403,7 @@ const NetworkDetails = ({ actions, data }) => {
                   color={hasStats && backfill?.isActive ? 'green' : 'grey'}
                   name="circle"
                 />{' '}
-                {hasStats ? (backfill?.isActive ? 'Active' : 'Idle') : '—'}
+                {hasStats ? interfaceText(backfill?.isActive ? 'Active' : 'Idle') : '—'}
               </Statistic.Value>
               <Statistic.Label><LocalizedText source={"Status"} /></Statistic.Label>
             </Statistic>
@@ -463,7 +466,7 @@ const NetworkDetails = ({ actions, data }) => {
                     color="yellow"
                     name="bolt"
                   />
-                  {job.filename?.split('/').pop() ?? 'Unknown file'}
+                  {job.filename?.split('/').pop() ?? interfaceText('Unknown file')}
                 </Card.Header>
                 <Card.Meta>
                   {job.activeSources ?? 0} <LocalizedText source={"sources •"} />{' '}

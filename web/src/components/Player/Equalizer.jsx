@@ -1,4 +1,5 @@
 import { bands, setEqGains } from './audioGraph';
+import { interfaceText, useInterfaceLanguage } from '../../lib/interfaceLocale';
 import { readBoundedJson } from '../../lib/persistedJson';
 import { getLocalStorageItem, setLocalStorageItem } from '../../lib/storage';
 import React, { useEffect, useState } from 'react';
@@ -51,6 +52,7 @@ const formatBand = (frequency) =>
   frequency >= 1000 ? `${frequency / 1000}k` : String(frequency);
 
 const Equalizer = ({ audioElement }) => {
+  useInterfaceLanguage();
   const [state, setState] = useState(readStoredState);
 
   useEffect(() => {
@@ -90,12 +92,12 @@ const Equalizer = ({ audioElement }) => {
           <Popup
             content={
               state.enabled
-                ? 'Bypass the equalizer without losing your slider settings.'
-                : 'Enable the equalizer for this browser player.'
+                ? interfaceText('Bypass the equalizer without losing your slider settings.')
+                : interfaceText('Enable the equalizer for this browser player.')
             }
             trigger={
               <Button
-                aria-label={state.enabled ? 'Disable equalizer' : 'Enable equalizer'}
+                aria-label={interfaceText(state.enabled ? 'Disable equalizer' : 'Enable equalizer')}
                 compact
                 data-testid="player-eq-toggle"
                 icon

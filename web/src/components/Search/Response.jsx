@@ -1,5 +1,6 @@
 import LocalizedText from "../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
+import { LocalizedPopup } from '../Shared/TooltipButton';
 import * as discoveryGraph from '../../lib/discoveryGraph';
 import api from '../../lib/api';
 import { safeOpenBlank } from '../../lib/safeOpen';
@@ -692,7 +693,10 @@ class Response extends Component {
               <Label>
                 {this.localizedText(this.localizedError(downloadError, 'Download failed'))}{' '}
                 {downloadError?.status &&
-                  `(HTTP ${downloadError.status} ${downloadError.statusText || ''})`}
+                  interfaceText('(HTTP {status} {statusText})', {
+                    status: downloadError.status,
+                    statusText: downloadError.statusText || '',
+                  })}
               </Label>
             </span>
           )}
@@ -818,10 +822,11 @@ class Response extends Component {
                    {...interfaceTextProps("This peer has {successful} successful downloads and {failed} failed downloads.")}/>
                 )}
                 {candidateRank?.score !== undefined && (
-                  <Popup
+                  <LocalizedPopup
                     content={candidateRank.reasons?.length > 0
                       ? 'Candidate score: {score}/100. Reasons: {reasons}'
                       : 'Candidate score: {score}/100'}
+                    parameters={{ score: candidateRank.score, reasons: candidateRank.reasons?.join(', ') }}
                     parameters={{ score: candidateRank.score, reasons: candidateRank.reasons?.join(', ') }}
                     position="top center"
                     trigger={
@@ -868,7 +873,7 @@ class Response extends Component {
                    {...interfaceTextProps("Local peer signals: {positive} positive; {negative} caution.")}/>
                 )}
                 {userNote && (
-                  <Popup
+                  <LocalizedPopup
                     content={userNote.note || 'User Note'}
                     translateContent={!userNote.note}
                     position="top center"
@@ -992,7 +997,7 @@ class Response extends Component {
                 }
                {...interfaceTextProps("Add a local caution signal for this peer/result. This only affects your browser-side review and does not publish a report.")}/>
               <Popup
-                content={isBlocked ? 'Unblock this user' : 'Block this user from search results'}
+                content={interfaceText(isBlocked ? 'Unblock this user' : 'Block this user from search results')}
                 position="top center"
                 trigger={
                   <Icon
@@ -1005,6 +1010,7 @@ class Response extends Component {
                     onClick={isBlocked ? onUnblock : onBlock}
                   />
                 }
+                {...interfaceTextProps(isBlocked ? 'Unblock this user' : 'Block this user from search results')}
               />
               <Icon
                 aria-label={this.localize('Hide search result from {username}', { username: response.username })}

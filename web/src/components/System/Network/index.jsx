@@ -548,7 +548,7 @@ const Network = ({ options = {}, state = {}, theme }) => {
           icon="sitemap"
           inverted={darkTheme}
           label={interfaceText("Mesh Peers")}
-          subLabel="slskr clients connected"
+          subLabel={<LocalizedText source={"slskr clients connected"} />}
           value={hasStats ? mesh?.connectedPeerCount ?? meshPeers.length : '—'}
          {...interfaceTextProps("Mesh Peers")}/>
         <StatCard
@@ -558,8 +558,8 @@ const Network = ({ options = {}, state = {}, theme }) => {
           label={interfaceText("Hash Entries")}
           subLabel={
             hasStats && hasHashDbSize
-              ? `${formatBytes(hashDbSizeBytes)} on disk`
-              : 'Local database'
+              ? <>{formatBytes(hashDbSizeBytes)} <LocalizedText source={"on disk"} /></>
+              : <LocalizedText source={"Local database"} />
           }
           value={hasStats ? formatNumber(hashDb?.totalEntries ?? 0) : '—'}
          {...interfaceTextProps("Hash Entries")}/>
@@ -568,7 +568,7 @@ const Network = ({ options = {}, state = {}, theme }) => {
           icon="sync"
           inverted={darkTheme}
           label={interfaceText("Sequence ID")}
-          subLabel="Mesh sync position"
+          subLabel={<LocalizedText source={"Mesh sync position"} />}
           value={hasStats ? hashDb?.currentSeqId ?? mesh?.localSeqId ?? 0 : '—'}
          {...interfaceTextProps("Sequence ID")}/>
         <StatCard
@@ -576,7 +576,7 @@ const Network = ({ options = {}, state = {}, theme }) => {
           icon="bolt"
           inverted={darkTheme}
           label={interfaceText("Active Swarms")}
-          subLabel="Multi-source downloads"
+          subLabel={<LocalizedText source={"Multi-source downloads"} />}
           value={hasStats ? swarmJobs?.length ?? 0 : '—'}
          {...interfaceTextProps("Active Swarms")}/>
       </Card.Group>

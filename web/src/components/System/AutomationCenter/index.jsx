@@ -428,8 +428,12 @@ const AutomationCenter = () => {
                   <Popup
                     content={
                       executable
-                        ? `Execute ${recipe.title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan.`
-                        : `No live backend action is available for ${recipe.title}. This recipe remains a policy preview until its backend contract exists.`
+                        ? interfaceText('Execute {title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan.', {
+                          title: interfaceText(recipe.title),
+                        })
+                        : interfaceText('No live backend action is available for {title}. This recipe remains a policy preview until its backend contract exists.', {
+                          title: interfaceText(recipe.title),
+                        })
                     }
                     position="top center"
                     trigger={

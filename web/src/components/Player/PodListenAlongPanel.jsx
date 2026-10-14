@@ -272,7 +272,7 @@ const PodListenAlongPanel = ({ channelId, compact = false, podId, user }) => {
             content={
               partyState
                 ? `${partyState.hostPeerId} ${partyState.action}: ${partyState.title || partyState.contentId}`
-                : 'No active room broadcast'
+                : interfaceText('No active room broadcast')
             }
             trigger={
               <span

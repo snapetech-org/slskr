@@ -1,3 +1,18 @@
+import { interfaceText } from '../../lib/interfaceLocale';
+
+const songIdRunStates = {
+  completed: 'Completed',
+  failed: 'Failed',
+  queued: 'Queued',
+  running: 'Running',
+  source_analysis: 'Source analysis',
+};
+
+export const localizeSongIdRunState = (value) => {
+  if (typeof value !== 'string' || !value) return interfaceText('unknown');
+  return songIdRunStates[value] ? interfaceText(songIdRunStates[value]) : value;
+};
+
 const getSyntheticVerdictColor = (verdict) => {
   switch (verdict) {
     case 'strong_suspicion':

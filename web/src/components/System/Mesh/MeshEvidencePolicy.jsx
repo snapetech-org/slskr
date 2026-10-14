@@ -334,7 +334,9 @@ const MeshEvidencePolicy = ({ runtimeProfile } = {}) => {
                     <List.Description>
                       <LocalizedText source={"Confidence"} />{" "}{entry.confidence}<LocalizedText source={"; witnesses"} />{" "}{entry.witnessCount}<LocalizedText source={"; provenance"} />{" "}{entry.provenance.trustTier}
                       {entry.reasons.length > 0
-                        ? `; rejected because ${entry.reasons.join(', ')}`
+                        ? interfaceText('; rejected because {reasons}', {
+                          reasons: entry.reasons.join(', '),
+                        })
                         : <LocalizedText source={"; accepted for local use"} />}
                     </List.Description>
                   </List.Content>

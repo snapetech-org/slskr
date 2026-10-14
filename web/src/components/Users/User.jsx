@@ -107,7 +107,7 @@ const User = ({
         ) : (
           <p className="users-network-details-empty"><LocalizedText source={"Live network details are currently unavailable."} /></p>
         )}
-        <Item.Description>{description || 'No profile description provided.'}</Item.Description>
+        <Item.Description>{description || <LocalizedText source={"No profile description provided."} />}</Item.Description>
       </Item.Content>
     </Item>
   );

@@ -167,7 +167,9 @@ class TransferList extends Component {
                       <Table.Row key={f.id || f.filename || index}>
                         <Table.Cell className="transferlist-selector">
                           <Checkbox
-                            aria-label={`Select ${getFileName(f.filename)}`}
+                            aria-label={interfaceText('Select {fileName}', {
+                              fileName: getFileName(f.filename) || interfaceText('Unknown file'),
+                            })}
                             checked={f.selected}
                             fitted
                             onChange={(event, data) =>
@@ -176,16 +178,17 @@ class TransferList extends Component {
                           />
                         </Table.Cell>
                         <Table.Cell className="transferlist-filename">
-                          {getFileName(
-                            typeof f.filename === 'string'
-                              ? f.filename
-                              : 'Unknown file',
-                          )}
+                          {typeof f.filename === 'string'
+                            ? getFileName(f.filename)
+                            : <LocalizedText source={"Unknown file"} />}
                         </Table.Cell>
                         <Table.Cell className="transferlist-progress">
                           {f.state === 'InProgress' ? (
                             <Progress
-                              aria-label={`${f.direction || 'File'} progress for ${getFileName(f.filename)}`}
+                              aria-label={interfaceText('{direction} progress for {fileName}', {
+                                direction: interfaceText(f.direction || 'File'),
+                                fileName: getFileName(f.filename) || interfaceText('Unknown file'),
+                              })}
                               color={getColor(f.state).color}
                               percent={Math.min(
                                 100,

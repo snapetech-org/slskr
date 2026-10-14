@@ -303,7 +303,7 @@ export default class SharedWithMe extends Component {
                   key={share.id}
                 >
                   <Table.Cell>
-                    <strong>{share.collectionTitle || 'Untitled'}</strong>
+                    <strong>{share.collectionTitle || <LocalizedText source={"Untitled"} />}</strong>
                     {share.collectionDescription && (
                       <div
                         style={{
@@ -316,7 +316,7 @@ export default class SharedWithMe extends Component {
                       </div>
                     )}
                   </Table.Cell>
-                  <Table.Cell>{share.ownerUserId || 'Unknown'}</Table.Cell>
+                  <Table.Cell>{share.ownerUserId || <LocalizedText source={"Unknown"} />}</Table.Cell>
                   <Table.Cell>{share.collectionType || 'ShareList'}</Table.Cell>
                   <Table.Cell>
                     {collectionsAPI.shareGrantAllows(share.permissions, 'stream') && (
@@ -362,7 +362,7 @@ export default class SharedWithMe extends Component {
           <Modal.Header>
             {selectedShare?.collectionTitle ||
               manifest?.collection?.title ||
-              'Collection Contents'}
+              <LocalizedText source={"Collection Contents"} />}
           </Modal.Header>
           <Modal.Content>
             {manifestLoading ? (
@@ -400,11 +400,11 @@ export default class SharedWithMe extends Component {
                               <code style={{ fontSize: '0.85em' }}>
                                 {item.fileName ||
                                   item.contentId?.slice(0, 32) ||
-                                  'Unknown'}
+                                  <LocalizedText source={"Unknown"} />}
                               </code>
                             </Table.Cell>
                             <Table.Cell>
-                              {item.mediaKind || 'Unknown'}
+                              {item.mediaKind || <LocalizedText source={"Unknown"} />}
                             </Table.Cell>
                             <Table.Cell>
                               {collectionsAPI.shareGrantAllows(

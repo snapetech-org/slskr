@@ -75,13 +75,13 @@ const CollapsibleSection = ({
         <Popup
           content={
             open
-              ? `Collapse the ${title.toLowerCase()} panel to free up room on the page.`
-              : `Expand the ${title.toLowerCase()} panel to inspect its contents.`
+              ? interfaceText('Collapse the {title} panel to free up room on the page.', { title: title.toLowerCase() })
+              : interfaceText('Expand the {title} panel to inspect its contents.', { title: title.toLowerCase() })
           }
           position="top center"
           trigger={
             <Button
-              aria-label={`${open ? 'Collapse' : 'Expand'} ${title}`}
+              aria-label={interfaceText(open ? 'Collapse {title}' : 'Expand {title}', { title })}
               icon
               onClick={toggleOpen}
               size="mini"
@@ -281,7 +281,7 @@ const SearchesListView = ({ actions, inputRef, state }) => {
                         name="sitemap"
                         style={{ marginRight: '0.25em' }}
                       />
-                      Pod/Mesh
+                      <LocalizedText source={"Pod/Mesh"} />
                     </label>
                   }
                   onChange={(e, { checked }) => setProviderPod(checked)}

@@ -515,7 +515,7 @@ const QuarantineJury = () => {
           </Statistic>
           <Statistic color={aggregate.totalVerdicts === 0 ? undefined : verdictColor(aggregate.recommendation)}>
             <Statistic.Value>
-              {aggregate.totalVerdicts === 0 ? <LocalizedText source={"No verdicts yet"} /> : normalizeVerdict(aggregate.recommendation)}
+              {aggregate.totalVerdicts === 0 ? <LocalizedText source={"No verdicts yet"} /> : interfaceText(normalizeVerdict(aggregate.recommendation))}
             </Statistic.Value>
             <Statistic.Label><LocalizedText source={"Recommendation"} /></Statistic.Label>
           </Statistic>
@@ -532,8 +532,8 @@ const QuarantineJury = () => {
           error
           header={
             errorContext === 'load'
-              ? 'Quarantine Jury load failed'
-              : 'Quarantine Jury action failed'
+              ? interfaceText('Quarantine Jury load failed')
+              : interfaceText('Quarantine Jury action failed')
           }
           content={String(error)}
         />
@@ -608,7 +608,7 @@ const QuarantineJury = () => {
                   </Header.Content>
                 </Header>
                 <Label color={verdictColor(aggregate.recommendation)}>
-                  {normalizeVerdict(aggregate.recommendation)}
+                  {interfaceText(normalizeVerdict(aggregate.recommendation))}
                 </Label>
               </div>
 
@@ -654,7 +654,7 @@ const QuarantineJury = () => {
                         <Table.Cell>{verdict.juror || '-'}</Table.Cell>
                         <Table.Cell>
                           <Label color={verdictColor(verdict.verdict)}>
-                            {normalizeVerdict(verdict.verdict)}
+                            {interfaceText(normalizeVerdict(verdict.verdict))}
                           </Label>
                         </Table.Cell>
                         <Table.Cell>{verdict.reason || '-'}</Table.Cell>
@@ -703,7 +703,7 @@ const QuarantineJury = () => {
                         <Table.Cell>{valueOrDash(attempt.failedJurors)}</Table.Cell>
                         <Table.Cell>
                           <Label color={attempt.success ? 'green' : 'red'}>
-                            {attempt.success ? <LocalizedText source={"Routed"} /> : attempt.errorMessage || 'Failed'}
+                            {attempt.success ? <LocalizedText source={"Routed"} /> : attempt.errorMessage || <LocalizedText source={"Failed"} />}
                           </Label>
                         </Table.Cell>
                       </Table.Row>
