@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../../lib/interfaceLocale";
 import { clearCompleted } from '../../../lib/transfers';
 import { toDisplayError } from '../../../lib/errors';
 import { useMountedRef } from '../../../lib/useMountedRef';
@@ -12,7 +14,7 @@ const clear = async ({ direction, isMounted, isInFlight, setInFlight, setState }
   try {
     await clearCompleted({ direction });
     if (isMounted()) {
-      toast.success(`Completed ${direction}s cleared!`);
+      toast.success(interfaceText("Completed {direction}s cleared!", { "direction": (direction) }));
     }
   } catch (error) {
     if (isMounted()) {
@@ -37,15 +39,11 @@ const Data = () => {
         as="h3"
         className="transfer-header"
       >
-        Transfer Data
-      </Header>
+        <LocalizedText source={"Transfer Data"} /></Header>
       <Divider />
       <p>
         <span>
-          The Uploads and Downloads pages can become unresponsive if too many
-          transfers are displayed. If you're having trouble with either page,
-          try using the buttons below to remove completed transfers.
-        </span>
+          <LocalizedText source={"The Uploads and Downloads pages can become unresponsive if too many transfers are displayed. If you're having trouble with either page, try using the buttons below to remove completed transfers."} /></span>
       </p>
       <Button
         disabled={up}
@@ -62,8 +60,7 @@ const Data = () => {
         primary
       >
         <Icon name="trash alternate" />
-        Clear All Completed Uploads
-      </Button>
+        <LocalizedText source={"Clear All Completed Uploads"} /></Button>
       <Button
         disabled={down}
         loading={down}
@@ -79,8 +76,7 @@ const Data = () => {
         primary
       >
         <Icon name="trash alternate" />
-        Clear All Completed Downloads
-      </Button>
+        <LocalizedText source={"Clear All Completed Downloads"} /></Button>
     </div>
   );
 };

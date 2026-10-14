@@ -37,10 +37,12 @@ Translate interface labels, help, empty states, validation, notifications, and e
 
 ## Implemented in this PR
 
-System > Experience Preferences offers a browser-local interface-language selector for twelve first-wave locales. The translated primary navigation uses per-key English fallback; Arabic navigation labels carry local language and direction metadata while the document and untranslated screens remain English and left-to-right. The Downloads and Uploads views now translate visible transfer statuses, empty states, bulk retry/cancel/remove choices, and the accelerated and auto-replace controls. Protocol state values and transfer metadata remain unchanged; full screen-level translation and app-wide RTL review remain outstanding.
+System > Experience Preferences offers a browser-local interface-language selector for twelve first-wave locales. The shipped Web UI has twelve locale catalogs with 4,293 entries each (51,516 locale cells total), covering browsing, search, chat, rooms, collections, player, wishlist, transfers, and system screens, including app-owned statuses, messages, and accessibility labels. The system settings tab is labeled “File sharing” to distinguish file-sharing controls from collection “Shares.” The catalog audit found no missing locale entries or placeholder mismatches. Locale JSON is fetched on demand, and startup waits for the selected or browser-detected catalog. Media and user-provided content, paths, and raw API/protocol values remain unchanged.
+
+The regional-format preference also localizes digits in track durations and audio quality values, alongside the existing dates, counts, transfer sizes, and metric/network values. Arabic strings carry local language and direction metadata.
 
 Regional formatting uses the selected preference for dates, times, counts, byte sizes, and numbers in the shipped UI. Changes re-render open screens immediately, keep working in the current tab when browser storage is blocked, and update from another tab's preference changes.
 
 ## Remaining work
 
-Translate search, room, settings, and transfer help/error messaging in screen-sized catalog batches. Keep server and protocol values unchanged, use stable message keys for server-originated errors and persisted notifications, and verify complete Arabic layout before claiming app-wide RTL support.
+The catalog translations were machine-generated and still need fluent-speaker review. Review the full Arabic layout interactively at narrow and desktop widths before claiming app-wide RTL support.

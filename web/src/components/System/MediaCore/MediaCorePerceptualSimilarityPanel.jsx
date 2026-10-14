@@ -1,3 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+
+
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -19,6 +23,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const MediaCorePerceptualSimilarityPanel = React.memo(() => {
+  useInterfaceLanguage();
   const mountedRef = useRef(true);
   useEffect(() => {
     mountedRef.current = true;
@@ -62,34 +67,32 @@ const MediaCorePerceptualSimilarityPanel = React.memo(() => {
             <Card.Content>
               <Card.Header>
                 <Icon name="chart bar" />
-                Perceptual Similarity
-              </Card.Header>
+                <LocalizedText source={"Perceptual Similarity"} /></Card.Header>
               <Card.Description>
-                Compare perceptual similarity between two ContentIDs
-              </Card.Description>
+                <LocalizedText source={"Compare perceptual similarity between two ContentIDs"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Group widths="equal">
                   <Form.Field>
-                    <label>ContentID A</label>
+                    <label><LocalizedText source={"ContentID A"} /></label>
                     <Input
                       onChange={(e) => setPerceptualContentIdA(e.target.value)}
-                      placeholder="First ContentID"
+                      placeholder={interfaceText("First ContentID")}
                       value={perceptualContentIdA}
-                    />
+                     {...interfaceTextProps("First ContentID")}/>
                   </Form.Field>
                   <Form.Field>
-                    <label>ContentID B</label>
+                    <label><LocalizedText source={"ContentID B"} /></label>
                     <Input
                       onChange={(e) => setPerceptualContentIdB(e.target.value)}
-                      placeholder="Second ContentID"
+                      placeholder={interfaceText("Second ContentID")}
                       value={perceptualContentIdB}
-                    />
+                     {...interfaceTextProps("Second ContentID")}/>
                   </Form.Field>
                 </Form.Group>
                 <Form.Field>
-                  <label>Similarity Threshold</label>
+                  <label><LocalizedText source={"Similarity Threshold"} /></label>
                   <Input
                     max="1"
                     min="0"
@@ -109,8 +112,7 @@ const MediaCorePerceptualSimilarityPanel = React.memo(() => {
                   onClick={handleComputePerceptualSimilarity}
                   primary
                 >
-                  Compute Similarity
-                </Button>
+                  <LocalizedText source={"Compute Similarity"} /></Button>
               </Form>
 
               {perceptualSimilarityResult && (
@@ -121,22 +123,22 @@ const MediaCorePerceptualSimilarityPanel = React.memo(() => {
                     </Message>
                   ) : (
                     <Message info>
-                      <Message.Header>Similarity Analysis</Message.Header>
+                      <Message.Header><LocalizedText source={"Similarity Analysis"} /></Message.Header>
                       <p>
-                        <strong>Content A:</strong>{' '}
+                        <strong><LocalizedText source={"Content A:"} /></strong>{' '}
                         {perceptualSimilarityResult.contentIdA}
                         <br />
-                        <strong>Content B:</strong>{' '}
+                        <strong><LocalizedText source={"Content B:"} /></strong>{' '}
                         {perceptualSimilarityResult.contentIdB}
                         <br />
-                        <strong>Similarity:</strong>{' '}
+                        <strong><LocalizedText source={"Similarity:"} /></strong>{' '}
                         {(perceptualSimilarityResult.similarity * 100).toFixed(
                           1,
                         )}
                         %<br />
-                        <strong>Are Similar:</strong>{' '}
-                        {perceptualSimilarityResult.isSimilar ? 'Yes' : 'No'}{' '}
-                        (threshold:{' '}
+                        <strong><LocalizedText source={"Are Similar:"} /></strong>{' '}
+                        {perceptualSimilarityResult.isSimilar ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}{' '}
+                        <LocalizedText source={"(threshold:"} />{' '}
                         {(perceptualSimilarityResult.threshold * 100).toFixed(
                           1,
                         )}

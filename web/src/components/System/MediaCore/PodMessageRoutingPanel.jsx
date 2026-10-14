@@ -1,3 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+
+
 import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
@@ -30,6 +34,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const PodMessageRoutingPanel = ({ visible = true }) => {
+  useInterfaceLanguage();
   useRegionalFormat();
   const mountedRef = useRef(true);
 
@@ -58,7 +63,7 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
 
   const handleRouteMessage = async () => {
     if (!routeMessageData.trim()) {
-      toast.warning('Please enter message JSON data');
+      toast.warning(interfaceText("Please enter message JSON data"));
       return;
     }
 
@@ -78,7 +83,7 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
 
   const handleRouteMessageToPeers = async () => {
     if (!routeToPeersMessage.trim() || !routeToPeersIds.trim()) {
-      toast.warning('Please enter message JSON and target peer IDs');
+      toast.warning(interfaceText("Please enter message JSON and target peer IDs"));
       return;
     }
 
@@ -119,7 +124,7 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
 
   const handleCheckMessageSeen = async () => {
     if (!checkMessageId.trim() || !checkPodId.trim()) {
-      toast.warning('Please enter both message ID and pod ID');
+      toast.warning(interfaceText("Please enter both message ID and pod ID"));
       return;
     }
 
@@ -140,7 +145,7 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
 
   const handleRegisterMessageSeen = async () => {
     if (!checkMessageId.trim() || !checkPodId.trim()) {
-      toast.warning('Please enter both message ID and pod ID');
+      toast.warning(interfaceText("Please enter both message ID and pod ID"));
       return;
     }
 
@@ -161,7 +166,7 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
     try {
       const result = await mediacore.cleanupSeenMessages();
       toast.success(
-        `Cleanup completed: ${result.messagesCleaned} messages cleaned, ${result.messagesRetained} retained`,
+        interfaceText("Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained", { "messagesCleaned": (result.messagesCleaned), "messagesRetained": (result.messagesRetained) }),
       );
       // Reload stats to reflect changes
       await handleLoadRoutingStats();
@@ -178,71 +183,62 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
             <Card.Content>
               <Card.Header>
                 <Icon name="send" />
-                Pod Message Routing
-              </Card.Header>
+                <LocalizedText source={"Pod Message Routing"} /></Card.Header>
               <Card.Description>
-                Decentralized message routing via overlay network with fanout
-                and deduplication for reliable pod communication
-              </Card.Description>
-              <PodWorkflowNotice title="Sends pod messages">
-                Routing actions can transmit message bodies and sender
-                identifiers to selected peers or overlay routes. Use
-                deduplication checks before resending.
-              </PodWorkflowNotice>
+                <LocalizedText source={"Decentralized message routing via overlay network with fanout and deduplication for reliable pod communication"} /></Card.Description>
+              <PodWorkflowNotice title={interfaceText("Sends pod messages")} {...interfaceTextProps("Sends pod messages")}>
+                <LocalizedText source={"Routing actions can transmit message bodies and sender identifiers to selected peers or overlay routes. Use deduplication checks before resending."} /></PodWorkflowNotice>
             </Card.Content>
 
             {/* Manual Message Routing */}
             <Card.Content>
-              <Header size="small">Manual Message Routing</Header>
+              <Header size="small"><LocalizedText source={"Manual Message Routing"} /></Header>
               <Form>
                 <Form.TextArea
-                  label="Pod Message JSON"
+                  label={interfaceText("Pod Message JSON")}
                   onChange={(e) => setRouteMessageData(e.target.value)}
                   placeholder='{"messageId": "msg123", "channelId": "pod:artist:mb:daft-punk-hash:general", "senderPeerId": "alice", "body": "Hello pod!", "timestampUnixMs": 1703123456789, "signature": "ed25519:base64-signature"}'
                   rows={4}
                   value={routeMessageData}
-                />
+                 {...interfaceTextProps("Pod Message JSON")}/>
                 <Button
                   disabled={routingMessage || !routeMessageData.trim()}
                   loading={routingMessage}
                   onClick={handleRouteMessage}
                   primary
                 >
-                  Route Message
-                </Button>
+                  <LocalizedText source={"Route Message"} /></Button>
               </Form>
 
               {routingResult && (
                 <div style={{ marginTop: '1em' }}>
                   {routingResult.error ? (
                     <Message error>
-                      <p>Failed to route message: {routingResult.error}</p>
+                      <p><LocalizedText source={"Failed to route message:"} />{" "}{routingResult.error}</p>
                     </Message>
                   ) : (
                     <Message success>
                       <Message.Header>
-                        Message Routed Successfully
-                      </Message.Header>
+                        <LocalizedText source={"Message Routed Successfully"} /></Message.Header>
                       <p>
-                        <strong>Message ID:</strong> {routingResult.messageId}
+                        <strong><LocalizedText source={"Message ID:"} /></strong> {routingResult.messageId}
                         <br />
-                        <strong>Pod ID:</strong> {routingResult.podId}
+                        <strong><LocalizedText source={"Pod ID:"} /></strong> {routingResult.podId}
                         <br />
-                        <strong>Target Peers:</strong>{' '}
+                        <strong><LocalizedText source={"Target Peers:"} /></strong>{' '}
                         {routingResult.targetPeerCount}
                         <br />
-                        <strong>Successfully Routed:</strong>{' '}
+                        <strong><LocalizedText source={"Successfully Routed:"} /></strong>{' '}
                         {routingResult.successfullyRoutedCount}
                         <br />
-                        <strong>Failed:</strong>{' '}
+                        <strong><LocalizedText source={"Failed:"} /></strong>{' '}
                         {routingResult.failedRoutingCount}
                         <br />
-                        <strong>Duration:</strong>{' '}
+                        <strong><LocalizedText source={"Duration:"} /></strong>{' '}
                         {routingResult.routingDuration?.totalMilliseconds?.toFixed(
                           0,
                         )}
-                        ms
-                      </p>
+                        <LocalizedText source={"ms"} /></p>
                     </Message>
                   )}
                 </div>
@@ -253,21 +249,21 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
               <Grid>
                 <Grid.Column width={8}>
                   {/* Route to Specific Peers */}
-                  <Header size="small">Route to Specific Peers</Header>
+                  <Header size="small"><LocalizedText source={"Route to Specific Peers"} /></Header>
                   <Form>
                     <Form.TextArea
-                      label="Pod Message JSON"
+                      label={interfaceText("Pod Message JSON")}
                       onChange={(e) => setRouteToPeersMessage(e.target.value)}
                       placeholder='{"messageId": "msg123", "channelId": "pod:artist:mb:daft-punk-hash:general", "senderPeerId": "alice", "body": "Direct message", "timestampUnixMs": 1703123456789, "signature": "ed25519:base64-signature"}'
                       rows={3}
                       value={routeToPeersMessage}
-                    />
+                     {...interfaceTextProps("Pod Message JSON")}/>
                     <Form.Input
-                      label="Target Peer IDs (comma-separated)"
+                      label={interfaceText("Target Peer IDs (comma-separated)")}
                       onChange={(e) => setRouteToPeersIds(e.target.value)}
-                      placeholder="bob,charlie,diana"
+                      placeholder={interfaceText("bob,charlie,diana")}
                       value={routeToPeersIds}
-                    />
+                     {...interfaceTextProps("Target Peer IDs (comma-separated)")}/>
                     <Button
                       disabled={
                         routingToPeers ||
@@ -278,8 +274,7 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
                       loading={routingToPeers}
                       onClick={handleRouteMessageToPeers}
                     >
-                      Route to Peers
-                    </Button>
+                      <LocalizedText source={"Route to Peers"} /></Button>
                   </Form>
 
                   {routingToPeersResult && (
@@ -297,10 +292,9 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
                           size="tiny"
                         >
                           <p>
-                            Routed to{' '}
+                            <LocalizedText source={"Routed to"} />{' '}
                             {routingToPeersResult.successfullyRoutedCount}/
-                            {routingToPeersResult.targetPeerCount} peers
-                          </p>
+                            {routingToPeersResult.targetPeerCount} <LocalizedText source={"peers"} /></p>
                         </Message>
                       )}
                     </div>
@@ -309,21 +303,21 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
 
                 <Grid.Column width={8}>
                   {/* Message Deduplication */}
-                  <Header size="small">Message Deduplication</Header>
+                  <Header size="small"><LocalizedText source={"Message Deduplication"} /></Header>
                   <Form>
                     <Form.Group widths="equal">
                       <Form.Input
-                        label="Message ID"
+                        label={interfaceText("Message ID")}
                         onChange={(e) => setCheckMessageId(e.target.value)}
-                        placeholder="msg123"
+                        placeholder={interfaceText("msg123")}
                         value={checkMessageId}
-                      />
+                       {...interfaceTextProps("Message ID")}/>
                       <Form.Input
-                        label="Pod ID"
+                        label={interfaceText("Pod ID")}
                         onChange={(e) => setCheckPodId(e.target.value)}
                         placeholder="pod:artist:mb:daft-punk-hash"
                         value={checkPodId}
-                      />
+                       {...interfaceTextProps("Pod ID")}/>
                     </Form.Group>
                     <Button.Group fluid>
                       <Button
@@ -335,15 +329,13 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
                         loading={checkingMessageSeen}
                         onClick={handleCheckMessageSeen}
                       >
-                        Check Seen
-                      </Button>
+                        <LocalizedText source={"Check Seen"} /></Button>
                       <Button
                         color="blue"
                         disabled={!checkMessageId.trim() || !checkPodId.trim()}
                         onClick={handleRegisterMessageSeen}
                       >
-                        Mark Seen
-                      </Button>
+                        <LocalizedText source={"Mark Seen"} /></Button>
                     </Button.Group>
                   </Form>
 
@@ -359,11 +351,11 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
                       ) : (
                         <Message size="tiny">
                           <p>
-                            Message{' '}
+                            <LocalizedText source={"Message"} />{' '}
                             {messageSeenResult.isSeen
-                              ? 'has been'
-                              : 'has not been'}{' '}
-                            seen in pod {messageSeenResult.podId}
+                              ? <LocalizedText source={"has been"} />
+                              : <LocalizedText source={"has not been"} />}{' '}
+                            <LocalizedText source={"seen in pod"} />{" "}{messageSeenResult.podId}
                           </p>
                         </Message>
                       )}
@@ -382,51 +374,48 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
                   onClick={handleLoadRoutingStats}
                   primary
                 >
-                  Load Routing Stats
-                </Button>
+                  <LocalizedText source={"Load Routing Stats"} /></Button>
                 <Button
                   color="red"
                   onClick={handleCleanupSeenMessages}
                 >
-                  Cleanup Seen Messages
-                </Button>
+                  <LocalizedText source={"Cleanup Seen Messages"} /></Button>
               </Button.Group>
 
               {routingStats && !routingStats.error && (
                 <div style={{ marginTop: '1em' }}>
                   <Message>
-                    <Message.Header>Message Routing Statistics</Message.Header>
+                    <Message.Header><LocalizedText source={"Message Routing Statistics"} /></Message.Header>
                     <p>
-                      <strong>Total Messages Routed:</strong>{' '}
+                      <strong><LocalizedText source={"Total Messages Routed:"} /></strong>{' '}
                       {routingStats.totalMessagesRouted}
                       <br />
-                      <strong>Total Routing Attempts:</strong>{' '}
+                      <strong><LocalizedText source={"Total Routing Attempts:"} /></strong>{' '}
                       {routingStats.totalRoutingAttempts}
                       <br />
-                      <strong>Successful Routes:</strong>{' '}
+                      <strong><LocalizedText source={"Successful Routes:"} /></strong>{' '}
                       {routingStats.successfulRoutingCount}
                       <br />
-                      <strong>Failed Routes:</strong>{' '}
+                      <strong><LocalizedText source={"Failed Routes:"} /></strong>{' '}
                       {routingStats.failedRoutingCount}
                       <br />
-                      <strong>Avg Routing Time:</strong>{' '}
-                      {routingStats.averageRoutingTimeMs.toFixed(2)}ms
-                      <br />
-                      <strong>Deduplication Items:</strong>{' '}
+                      <strong><LocalizedText source={"Avg Routing Time:"} /></strong>{' '}
+                      {routingStats.averageRoutingTimeMs.toFixed(2)}<LocalizedText source={"ms"} /><br />
+                      <strong><LocalizedText source={"Deduplication Items:"} /></strong>{' '}
                       {routingStats.activeDeduplicationItems}
                       <br />
-                      <strong>Bloom Filter Fill:</strong>{' '}
+                      <strong><LocalizedText source={"Bloom Filter Fill:"} /></strong>{' '}
                       {(routingStats.bloomFilterFillRatio * 100).toFixed(1)}%
                       <br />
-                      <strong>Est. False Positive:</strong>{' '}
+                      <strong><LocalizedText source={"Est. False Positive:"} /></strong>{' '}
                       {(routingStats.estimatedFalsePositiveRate * 100).toFixed(
                         4,
                       )}
                       %<br />
-                      <strong>Last Operation:</strong>{' '}
+                      <strong><LocalizedText source={"Last Operation:"} /></strong>{' '}
                       {routingStats.lastRoutingOperation
                         ? formatRegionalDateTime(routingStats.lastRoutingOperation)
-                        : 'Never'}
+                        : <LocalizedText source={"Never"} />}
                     </p>
                   </Message>
 
@@ -439,7 +428,7 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
                   error
                   style={{ marginTop: '1em' }}
                 >
-                  <p>Failed to load routing stats: {routingStats.error}</p>
+                  <p><LocalizedText source={"Failed to load routing stats:"} />{" "}{routingStats.error}</p>
                 </Message>
               )}
             </Card.Content>

@@ -1,3 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+
+
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -28,6 +32,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const MediaCoreContentHashingPanel = React.memo(({ supportedAlgorithms }) => {
+  useInterfaceLanguage();
   const mountedRef = useRef(true);
   useEffect(() => {
     mountedRef.current = true;
@@ -117,17 +122,15 @@ const MediaCoreContentHashingPanel = React.memo(({ supportedAlgorithms }) => {
             <Card.Content>
               <Card.Header>
                 <Icon name="sound" />
-                Audio Perceptual Hash
-              </Card.Header>
+                <LocalizedText source={"Audio Perceptual Hash"} /></Card.Header>
               <Card.Description>
-                Compute perceptual hash for audio similarity detection
-              </Card.Description>
+                <LocalizedText source={"Compute perceptual hash for audio similarity detection"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Group widths="equal">
                   <Form.Field>
-                    <label>Algorithm</label>
+                    <label><LocalizedText source={"Algorithm"} /></label>
                     <Dropdown
                       onChange={(e, { value }) => setAudioAlgorithm(value)}
                       options={
@@ -142,7 +145,7 @@ const MediaCoreContentHashingPanel = React.memo(({ supportedAlgorithms }) => {
                     />
                   </Form.Field>
                   <Form.Field>
-                    <label>Sample Rate (Hz)</label>
+                    <label><LocalizedText source={"Sample Rate (Hz)"} /></label>
                     <Input
                       onChange={(e) => setSampleRate(e.target.value)}
                       type="number"
@@ -151,13 +154,13 @@ const MediaCoreContentHashingPanel = React.memo(({ supportedAlgorithms }) => {
                   </Form.Field>
                 </Form.Group>
                 <Form.Field>
-                  <label>Audio Samples (comma-separated floats)</label>
+                  <label><LocalizedText source={"Audio Samples (comma-separated floats)"} /></label>
                   <TextArea
                     onChange={(e) => setAudioSamples(e.target.value)}
-                    placeholder="0.1, -0.2, 0.3, ... (normalized -1.0 to 1.0)"
+                    placeholder={interfaceText("0.1, -0.2, 0.3, ... (normalized -1.0 to 1.0)")}
                     rows={3}
                     value={audioSamples}
-                  />
+                   {...interfaceTextProps("0.1, -0.2, 0.3, ... (normalized -1.0 to 1.0)")}/>
                 </Form.Field>
                 <Button
                   disabled={!audioSamples.trim() || computingAudioHash}
@@ -165,8 +168,7 @@ const MediaCoreContentHashingPanel = React.memo(({ supportedAlgorithms }) => {
                   onClick={handleComputeAudioHash}
                   primary
                 >
-                  Compute Audio Hash
-                </Button>
+                  <LocalizedText source={"Compute Audio Hash"} /></Button>
               </Form>
 
               {audioHashResult && (
@@ -177,13 +179,13 @@ const MediaCoreContentHashingPanel = React.memo(({ supportedAlgorithms }) => {
                     </Message>
                   ) : (
                     <Message success>
-                      <Message.Header>Audio Hash Computed</Message.Header>
+                      <Message.Header><LocalizedText source={"Audio Hash Computed"} /></Message.Header>
                       <p>
-                        <strong>Algorithm:</strong> {audioHashResult.algorithm}
+                        <strong><LocalizedText source={"Algorithm:"} /></strong> {audioHashResult.algorithm}
                         <br />
-                        <strong>Hex Hash:</strong> {audioHashResult.hex}
+                        <strong><LocalizedText source={"Hex Hash:"} /></strong> {audioHashResult.hex}
                         <br />
-                        <strong>Sample Count:</strong>{' '}
+                        <strong><LocalizedText source={"Sample Count:"} /></strong>{' '}
                         {audioSamples.split(',').filter((s) => s.trim()).length}
                       </p>
                     </Message>
@@ -200,17 +202,15 @@ const MediaCoreContentHashingPanel = React.memo(({ supportedAlgorithms }) => {
             <Card.Content>
               <Card.Header>
                 <Icon name="image" />
-                Image Perceptual Hash
-              </Card.Header>
+                <LocalizedText source={"Image Perceptual Hash"} /></Card.Header>
               <Card.Description>
-                Compute perceptual hash for image similarity detection
-              </Card.Description>
+                <LocalizedText source={"Compute perceptual hash for image similarity detection"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Group widths="equal">
                   <Form.Field>
-                    <label>Algorithm</label>
+                    <label><LocalizedText source={"Algorithm"} /></label>
                     <Dropdown
                       onChange={(e, { value }) => setImageAlgorithm(value)}
                       options={
@@ -227,7 +227,7 @@ const MediaCoreContentHashingPanel = React.memo(({ supportedAlgorithms }) => {
                     />
                   </Form.Field>
                   <Form.Field>
-                    <label>Dimensions</label>
+                    <label><LocalizedText source={"Dimensions"} /></label>
                     <Input
                       onChange={(e) => {
                         const [w, h] = e.target.value
@@ -236,19 +236,19 @@ const MediaCoreContentHashingPanel = React.memo(({ supportedAlgorithms }) => {
                         if (!isNaN(w)) setImageWidth(w);
                         if (!isNaN(h)) setImageHeight(h);
                       }}
-                      placeholder="Width x Height"
+                      placeholder={interfaceText("Width x Height")}
                       value={`${imageWidth}x${imageHeight}`}
-                    />
+                     {...interfaceTextProps("Width x Height")}/>
                   </Form.Field>
                 </Form.Group>
                 <Form.Field>
-                  <label>Pixel Data (comma-separated bytes 0-255)</label>
+                  <label><LocalizedText source={"Pixel Data (comma-separated bytes 0-255)"} /></label>
                   <TextArea
                     onChange={(e) => setImagePixels(e.target.value)}
-                    placeholder="255, 128, 64, ... (RGBA pixel data)"
+                    placeholder={interfaceText("255, 128, 64, ... (RGBA pixel data)")}
                     rows={3}
                     value={imagePixels}
-                  />
+                   {...interfaceTextProps("255, 128, 64, ... (RGBA pixel data)")}/>
                 </Form.Field>
                 <Button
                   disabled={!imagePixels.trim() || computingImageHash}
@@ -256,8 +256,7 @@ const MediaCoreContentHashingPanel = React.memo(({ supportedAlgorithms }) => {
                   onClick={handleComputeImageHash}
                   primary
                 >
-                  Compute Image Hash
-                </Button>
+                  <LocalizedText source={"Compute Image Hash"} /></Button>
               </Form>
 
               {imageHashResult && (
@@ -268,13 +267,13 @@ const MediaCoreContentHashingPanel = React.memo(({ supportedAlgorithms }) => {
                     </Message>
                   ) : (
                     <Message success>
-                      <Message.Header>Image Hash Computed</Message.Header>
+                      <Message.Header><LocalizedText source={"Image Hash Computed"} /></Message.Header>
                       <p>
-                        <strong>Algorithm:</strong> {imageHashResult.algorithm}
+                        <strong><LocalizedText source={"Algorithm:"} /></strong> {imageHashResult.algorithm}
                         <br />
-                        <strong>Hex Hash:</strong> {imageHashResult.hex}
+                        <strong><LocalizedText source={"Hex Hash:"} /></strong> {imageHashResult.hex}
                         <br />
-                        <strong>Dimensions:</strong> {imageWidth}x{imageHeight}
+                        <strong><LocalizedText source={"Dimensions:"} /></strong> {imageWidth}<LocalizedText source={"x"} />{imageHeight}
                       </p>
                     </Message>
                   )}

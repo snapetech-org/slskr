@@ -1,3 +1,4 @@
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import SearchStatusIcon from '../SearchStatusIcon';
 import { buildDiscoveryGraph } from '../../../lib/discoveryGraph';
 import { toDisplayError } from '../../../lib/errors';
@@ -12,6 +13,7 @@ import { Icon, Popup, Table } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 
 const SearchListRow = ({ onRemove, onStop, search }) => {
+  useInterfaceLanguage();
   const [working, setWorking] = useState(false);
   const [graphData, setGraphData] = useState(null);
   const [graphLoading, setGraphLoading] = useState(false);
@@ -120,7 +122,7 @@ const SearchListRow = ({ onRemove, onStop, search }) => {
       .slice(0, 8);
 
     if (queries.length === 0) {
-      toast.error('No nearby track nodes were available to queue');
+      toast.error(interfaceText("No nearby track nodes were available to queue"));
       return;
     }
 
@@ -133,7 +135,7 @@ const SearchListRow = ({ onRemove, onStop, search }) => {
           : typeof count?.count === 'number'
             ? count.count
             : queries.length;
-        toast.success(`Started ${startedCount} nearby graph searches`);
+        toast.success(interfaceText("Started {startedCount} nearby graph searches", { "startedCount": (startedCount) }));
       }
     } catch (error) {
       if (mountedRef.current) {
@@ -162,7 +164,7 @@ const SearchListRow = ({ onRemove, onStop, search }) => {
             {search.searchText ?? search.query ?? ''}
           </Link>
           <Popup
-            content="Open a Discovery Graph for this search phrase so the query history becomes a browsable neighborhood."
+            content={interfaceText("Open a Discovery Graph for this search phrase so the query history becomes a browsable neighborhood.")}
             position="top center"
             trigger={
               <Icon
@@ -173,7 +175,7 @@ const SearchListRow = ({ onRemove, onStop, search }) => {
                 style={{ marginLeft: '0.5em' }}
               />
             }
-          />
+           {...interfaceTextProps("Open a Discovery Graph for this search phrase so the query history becomes a browsable neighborhood.")}/>
         </Table.Cell>
         <Table.Cell>{search.fileCount}</Table.Cell>
         <Table.Cell>

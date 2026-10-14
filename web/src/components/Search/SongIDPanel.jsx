@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import * as discoveryGraph from '../../lib/discoveryGraph';
 import { toDisplayError } from '../../lib/errors';
 import * as jobs from '../../lib/jobs';
@@ -26,6 +28,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { formatPercent, getRunTitle, getStatusColor } from './songIdPanelHelpers';
 
 const SongIDPanel = ({ disabled }) => {
+  useInterfaceLanguage();
   const [source, setSource] = useState('');
   const [targetDirectory, setTargetDirectory] = useState('');
   const [loading, setLoading] = useState(false);
@@ -103,7 +106,7 @@ const SongIDPanel = ({ disabled }) => {
     if (!mountedRef.current || disabled || loading) return;
     const trimmed = source.trim();
     if (!trimmed) {
-      toast.error('Provide a URL, server-side file path, or text query');
+      toast.error(interfaceText("Provide a URL, server-side file path, or text query"));
       return;
     }
 
@@ -116,7 +119,7 @@ const SongIDPanel = ({ disabled }) => {
       if (!isCurrentRequest()) return;
       setRun(result);
       setRuns((currentRuns) => [result, ...currentRuns.filter((item) => item.id !== result.id)].slice(0, 25));
-      toast.success('SongID analysis queued');
+      toast.success(interfaceText("SongID analysis queued"));
     } catch (error) {
       if (isCurrentRequest()) {
         console.error(error);
@@ -156,7 +159,7 @@ const SongIDPanel = ({ disabled }) => {
       ? candidate.searchText.trim()
       : '';
     if (!searchText) {
-      toast.error('This candidate has no searchable query');
+      toast.error(interfaceText("This candidate has no searchable query"));
       return false;
     }
 
@@ -168,7 +171,7 @@ const SongIDPanel = ({ disabled }) => {
         searchText,
       });
       if (mountedRef.current) {
-        toast.success(`Started search for ${artist} - ${title}`);
+        toast.success(interfaceText("Started search for {artist} - {title}", { "artist": (artist), "title": (title) }));
       }
     }, 'Failed to start song search');
   };
@@ -181,7 +184,7 @@ const SongIDPanel = ({ disabled }) => {
         .filter(Boolean)
       : [];
     if (validQueries.length === 0) {
-      toast.error('No candidate searches were available');
+      toast.error(interfaceText("No candidate searches were available"));
       return;
     }
 
@@ -193,14 +196,14 @@ const SongIDPanel = ({ disabled }) => {
           ? count.count
           : validQueries.length;
       if (mountedRef.current) {
-        toast.success(`Started ${startedCount} candidate searches`);
+        toast.success(interfaceText("Started {startedCount} candidate searches", { "startedCount": (startedCount) }));
       }
     }, 'Failed to start candidate searches');
   };
 
   const handleMixSearch = async (mix) => {
     if (typeof mix?.searchText !== 'string') {
-      toast.error('No mix queries were available');
+      toast.error(interfaceText("No mix queries were available"));
       return;
     }
 
@@ -209,7 +212,7 @@ const SongIDPanel = ({ disabled }) => {
       .map((value) => (value || '').trim())
       .filter(Boolean);
     if (queries.length === 0) {
-      toast.error('No mix queries were available');
+      toast.error(interfaceText("No mix queries were available"));
       return;
     }
 
@@ -224,14 +227,14 @@ const SongIDPanel = ({ disabled }) => {
         ? mix.segmentCount
         : queries.length;
       if (mountedRef.current) {
-        toast.success(`Started ${startedCount} mix search(es) for ${segmentCount} segments`);
+        toast.success(interfaceText("Started {startedCount} mix search(es) for {segmentCount} segments", { "startedCount": (startedCount), "segmentCount": (segmentCount) }));
       }
     }, 'Failed to start mix searches');
   };
 
   const handleAlbumPrepare = async (candidate) => {
     if (!candidate?.releaseId) {
-      toast.error('This album has no MusicBrainz release ID');
+      toast.error(interfaceText("This album has no MusicBrainz release ID"));
       return false;
     }
 
@@ -245,7 +248,7 @@ const SongIDPanel = ({ disabled }) => {
 
   const handleDiscography = async (candidate) => {
     if (!candidate?.artistId) {
-      toast.error('This artist has no MusicBrainz artist ID');
+      toast.error(interfaceText("This artist has no MusicBrainz artist ID"));
       return false;
     }
 
@@ -257,14 +260,14 @@ const SongIDPanel = ({ disabled }) => {
       });
       const jobId = response?.job_id || response?.jobId || 'queued';
       if (mountedRef.current) {
-        toast.success(`Planned discography job ${jobId}`);
+        toast.success(interfaceText("Planned discography job {jobId}", { "jobId": (jobId) }));
       }
     }, 'Failed to create discography job');
   };
 
   const handleMbReleaseJob = async (candidate) => {
     if (!candidate?.releaseId) {
-      toast.error('This album has no MusicBrainz release ID');
+      toast.error(interfaceText("This album has no MusicBrainz release ID"));
       return false;
     }
 
@@ -275,19 +278,19 @@ const SongIDPanel = ({ disabled }) => {
       });
       const jobId = response?.job_id || response?.jobId || 'queued';
       if (mountedRef.current) {
-        toast.success(`Planned album job ${jobId}`);
+        toast.success(interfaceText("Planned album job {jobId}", { "jobId": (jobId) }));
       }
     }, 'Failed to create album download job');
   };
 
   const copyForensicMatrix = async () => {
     if (!run?.id || !run?.forensicMatrix) {
-      toast.error('No forensic matrix is available for this SongID run');
+      toast.error(interfaceText("No forensic matrix is available for this SongID run"));
       return;
     }
 
     if (!navigator.clipboard?.writeText || copyInFlightRef.current) {
-      toast.error('Clipboard access is unavailable');
+      toast.error(interfaceText("Clipboard access is unavailable"));
       return;
     }
 
@@ -298,7 +301,7 @@ const SongIDPanel = ({ disabled }) => {
       if (!mountedRef.current) return;
       await navigator.clipboard.writeText(JSON.stringify(matrix, null, 2) || '{}');
       if (mountedRef.current) {
-        toast.success('SongID forensic matrix copied');
+        toast.success(interfaceText("SongID forensic matrix copied"));
       }
     } catch (error) {
       if (mountedRef.current) {
@@ -400,7 +403,7 @@ const SongIDPanel = ({ disabled }) => {
 
   const handlePlanAction = async (plan) => {
     if (!plan || typeof plan !== 'object') {
-      toast.error('SongID plan is unavailable');
+      toast.error(interfaceText("SongID plan is unavailable"));
       return false;
     }
 
@@ -430,7 +433,7 @@ const SongIDPanel = ({ disabled }) => {
 
   const handleOptionAction = async (option) => {
     if (!option || typeof option !== 'object') {
-      toast.error('SongID option is unavailable');
+      toast.error(interfaceText("SongID option is unavailable"));
       return false;
     }
 
@@ -474,31 +477,28 @@ const SongIDPanel = ({ disabled }) => {
       className="songid-panel"
       raised
     >
-      <Header as="h4">SongID</Header>
+      <Header as="h4"><LocalizedText source={"SongID"} /></Header>
       <p style={{ marginTop: 0 }}>
-        Identify a likely track, album, or artist from a YouTube URL, Spotify
-        URL, server-side file path, or direct text query, then fan the result
-        out into slskr actions.
-      </p>
+        <LocalizedText source={"Identify a likely track, album, or artist from a YouTube URL, Spotify URL, server-side file path, or direct text query, then fan the result out into slskr actions."} /></p>
       <Form>
         <Form.Field>
           <Input
             disabled={disabled || loading}
             onChange={(event) => setSource(event.target.value)}
-            placeholder="Paste a source URL, local server path, or text query"
+            placeholder={interfaceText("Paste a source URL, local server path, or text query")}
             value={source}
-          />
+           {...interfaceTextProps("Paste a source URL, local server path, or text query")}/>
         </Form.Field>
         <Form.Field>
           <Input
             disabled={disabled || loading}
             onChange={(event) => setTargetDirectory(event.target.value)}
-            placeholder="Optional target directory for album or discography jobs"
+            placeholder={interfaceText("Optional target directory for album or discography jobs")}
             value={targetDirectory}
-          />
+           {...interfaceTextProps("Optional target directory for album or discography jobs")}/>
         </Form.Field>
         <Popup
-          content="Analyze the source and rank likely track, album, and artist candidates so you can search or plan downloads from the result."
+          content={interfaceText("Analyze the source and rank likely track, album, and artist candidates so you can search or plan downloads from the result.")}
           position="top right"
           trigger={
             <Button
@@ -507,10 +507,9 @@ const SongIDPanel = ({ disabled }) => {
               onClick={handleAnalyze}
               primary
             >
-              Analyze with SongID
-            </Button>
+              <LocalizedText source={"Analyze with SongID"} /></Button>
           }
-        />
+         {...interfaceTextProps("Analyze the source and rank likely track, album, and artist candidates so you can search or plan downloads from the result.")}/>
       </Form>
 
       <Grid stackable columns={2} style={{ marginTop: '1em' }}>
@@ -520,17 +519,16 @@ const SongIDPanel = ({ disabled }) => {
             secondary
           >
             <Header as="h5" style={{ marginTop: 0 }}>
-              Queue
-            </Header>
+              <LocalizedText source={"Queue"} /></Header>
             {runs.length === 0 ? (
-              <p style={{ marginBottom: 0 }}>No SongID runs yet.</p>
+              <p style={{ marginBottom: 0 }}><LocalizedText source={"No SongID runs yet."} /></p>
             ) : (
               <List divided relaxed>
                 {runs.map((item) => (
                   <List.Item key={item.id}>
                     <List.Content floated="right">
                       <Popup
-                        content="Open this SongID run and follow its queue position, evidence, and download options."
+                        content={interfaceText("Open this SongID run and follow its queue position, evidence, and download options.")}
                         position="top center"
                         trigger={
                           <Button
@@ -538,12 +536,11 @@ const SongIDPanel = ({ disabled }) => {
                             onClick={() => setRun(item)}
                             primary={run?.id === item.id}
                           >
-                            View
-                          </Button>
+                            <LocalizedText source={"View"} /></Button>
                         }
-                      />
+                       {...interfaceTextProps("Open this SongID run and follow its queue position, evidence, and download options.")}/>
                       <Popup
-                        content="Open the Discovery Graph centered on this SongID run so you can inspect its neighborhood without leaving the queue."
+                        content={interfaceText("Open the Discovery Graph centered on this SongID run so you can inspect its neighborhood without leaving the queue.")}
                         position="top center"
                         trigger={
                           <Button
@@ -557,10 +554,9 @@ const SongIDPanel = ({ disabled }) => {
                             size="mini"
                             style={{ marginLeft: '0.5em' }}
                           >
-                            Graph
-                          </Button>
+                            <LocalizedText source={"Graph"} /></Button>
                         }
-                      />
+                       {...interfaceTextProps("Open the Discovery Graph centered on this SongID run so you can inspect its neighborhood without leaving the queue.")}/>
                     </List.Content>
                     <List.Content>
                       <List.Header>{getRunTitle(item)}</List.Header>
@@ -581,11 +577,11 @@ const SongIDPanel = ({ disabled }) => {
                       <List.Description style={{ marginTop: '0.35em' }}>
                         {item.queuePosition !== null &&
                         item.queuePosition !== undefined ? (
-                          <Label size="tiny">Queue {item.queuePosition}</Label>
+                          <Label size="tiny"><LocalizedText source={"Queue"} />{" "}{item.queuePosition}</Label>
                         ) : null}
                         {item.workerSlot !== null &&
                         item.workerSlot !== undefined ? (
-                          <Label size="tiny">Worker {item.workerSlot}</Label>
+                          <Label size="tiny"><LocalizedText source={"Worker"} />{" "}{item.workerSlot}</Label>
                         ) : null}
                         {item.currentStage ? (
                           <Label size="tiny">{item.currentStage}</Label>

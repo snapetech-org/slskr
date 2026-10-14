@@ -1,3 +1,5 @@
+import LocalizedText from "./Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../lib/interfaceLocale";
 import Footer from './Shared/Footer';
 import { urlBase } from '../config';
 import { toDisplayError } from '../lib/errors';
@@ -33,6 +35,7 @@ export const getHttpsHintUrl = (location) => {
 };
 
 const LoginForm = ({ error, loading, onLoginAttempt }) => {
+  useInterfaceLanguage();
   const usernameInput = useRef();
   const [state, setState] = useState(initialState);
   const [ready, setReady] = useState(false);
@@ -81,7 +84,7 @@ const LoginForm = ({ error, loading, onLoginAttempt }) => {
             textAlign="center"
           >
             <img
-              alt="slskr"
+              alt={interfaceText("slskr")}
               src={`${urlBase}/slskr-logo.png`}
               style={{
                 display: 'inline-block',
@@ -89,7 +92,7 @@ const LoginForm = ({ error, loading, onLoginAttempt }) => {
                 maxWidth: '320px',
                 width: '80%',
               }}
-            />
+             {...interfaceTextProps("slskr")}/>
           </Header>
           <Form size="large">
             <Segment raised>
@@ -102,10 +105,10 @@ const LoginForm = ({ error, loading, onLoginAttempt }) => {
                 onChange={(event) =>
                   handleChange('username', event.target.value)
                 }
-                placeholder="Username"
+                placeholder={interfaceText("Username")}
                 ref={usernameInput}
                 value={username}
-              />
+               {...interfaceTextProps("Username")}/>
               <Form.Input
                 data-testid="login-password"
                 disabled={loading}
@@ -115,10 +118,10 @@ const LoginForm = ({ error, loading, onLoginAttempt }) => {
                 onChange={(event) =>
                   handleChange('password', event.target.value)
                 }
-                placeholder="Password"
+                placeholder={interfaceText("Password")}
                 type="password"
                 value={password}
-              />
+               {...interfaceTextProps("Password")}/>
             </Segment>
             <Button
               className="login-button"
@@ -131,8 +134,7 @@ const LoginForm = ({ error, loading, onLoginAttempt }) => {
               size="large"
             >
               <Icon name="sign in" />
-              Login
-            </Button>
+              <LocalizedText source={"Login"} /></Button>
             {error && (
               <Message
                 className="login-failure"
@@ -152,8 +154,8 @@ const LoginForm = ({ error, loading, onLoginAttempt }) => {
               >
                 <Icon name="shield alternate" />
                 <Message.Content>
-                  <Message.Header>HTTPS Option</Message.Header>
-                  If your instance exposes TLS, sign in securely at{' '}
+                  <Message.Header><LocalizedText source={"HTTPS Option"} /></Message.Header>
+                  <LocalizedText source={"If your instance exposes TLS, sign in securely at"} />{' '}
                   <a className="login-https-hint-link" href={httpsUrl}>
                     {httpsUrl}
                   </a>.

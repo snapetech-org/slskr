@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../../lib/interfaceLocale";
 import '../System.css';
 import { createLogsHubConnection } from '../../../lib/hubFactory';
 import { toDisplayError } from '../../../lib/errors';
@@ -254,38 +256,33 @@ class Logs extends Component {
               active={filterLevel === 'all'}
               onClick={() => this.handleFilterChange('all')}
             >
-              All
-            </Button>
+              <LocalizedText source={"All"} /></Button>
             <Button
               active={filterLevel === 'Information'}
               color={filterLevel === 'Information' ? 'blue' : undefined}
               onClick={() => this.handleFilterChange('Information')}
             >
-              Info
-            </Button>
+              <LocalizedText source={"Info"} /></Button>
             <Button
               active={filterLevel === 'Warning'}
               color={filterLevel === 'Warning' ? 'yellow' : undefined}
               onClick={() => this.handleFilterChange('Warning')}
             >
-              Warn
-            </Button>
+              <LocalizedText source={"Warn"} /></Button>
             <Button
               active={filterLevel === 'Error'}
               color={filterLevel === 'Error' ? 'red' : undefined}
               onClick={() => this.handleFilterChange('Error')}
             >
-              Error
-            </Button>
+              <LocalizedText source={"Error"} /></Button>
             <Button
               active={filterLevel === 'Debug'}
               onClick={() => this.handleFilterChange('Debug')}
             >
-              Debug
-            </Button>
+              <LocalizedText source={"Debug"} /></Button>
           </ButtonGroup>
           <Dropdown
-            aria-label="Filter logs by severity"
+            aria-label={interfaceText("Filter logs by severity")}
             compact
             disabled={savingLevel}
             loading={savingLevel}
@@ -294,11 +291,11 @@ class Logs extends Component {
             selection
             style={{ marginLeft: '1em' }}
             value={level}
-          />
+           {...interfaceTextProps("Filter logs by severity")}/>
           <span style={{ color: '#666', marginLeft: '1em' }}>
             {connected
-              ? `Showing ${filteredLogs.length} of ${this.state.logs.length} logs`
-              : 'Connecting to logs...'}
+              ? <LocalizedText source={"Showing {filteredCount} of {totalCount} logs"} values={{ "filteredCount": (filteredLogs.length), "totalCount": (this.state.logs.length) }} />
+              : <LocalizedText source={"Connecting to logs..."} />}
           </span>
         </div>
         {error && (
@@ -306,7 +303,7 @@ class Logs extends Component {
             data-testid="logs-error"
             error
           >
-            <Message.Header>Logs unavailable</Message.Header>
+            <Message.Header><LocalizedText source={"Logs unavailable"} /></Message.Header>
             <p>{error}</p>
           </Message>
         )}
@@ -318,10 +315,10 @@ class Logs extends Component {
           >
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Timestamp</Table.HeaderCell>
-                <Table.HeaderCell>Level</Table.HeaderCell>
-                <Table.HeaderCell>Category</Table.HeaderCell>
-                <Table.HeaderCell>Message</Table.HeaderCell>
+                <Table.HeaderCell><LocalizedText source={"Timestamp"} /></Table.HeaderCell>
+                <Table.HeaderCell><LocalizedText source={"Level"} /></Table.HeaderCell>
+                <Table.HeaderCell><LocalizedText source={"Category"} /></Table.HeaderCell>
+                <Table.HeaderCell><LocalizedText source={"Message"} /></Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body className="logs-table-body">
@@ -332,8 +329,8 @@ class Logs extends Component {
                     textAlign="center"
                   >
                     {error
-                      ? 'No logs are available from the server'
-                      : 'No logs match the selected filter'}
+                      ? <LocalizedText source={"No logs are available from the server"} />
+                      : <LocalizedText source={"No logs match the selected filter"} />}
                   </Table.Cell>
                 </Table.Row>
               ) : (

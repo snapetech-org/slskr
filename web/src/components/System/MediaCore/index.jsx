@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -58,6 +60,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const MediaCore = () => {
+  useInterfaceLanguage();
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -149,8 +152,7 @@ const MediaCore = () => {
           active
           inline="centered"
         >
-          Loading MediaCore statistics...
-        </Loader>
+          <LocalizedText source={"Loading MediaCore statistics..."} /></Loader>
       </Segment>
     );
   }
@@ -158,7 +160,7 @@ const MediaCore = () => {
   if (error && !stats) {
     return (
       <Message error>
-        <Message.Header>Failed to load MediaCore statistics</Message.Header>
+        <Message.Header><LocalizedText source={"Failed to load MediaCore statistics"} /></Message.Header>
         <p>{error}</p>
       </Message>
     );
@@ -168,30 +170,24 @@ const MediaCore = () => {
     <div>
       <Header as="h2">
         <Icon name="database" />
-        MediaCore ContentID Registry
-      </Header>
+        <LocalizedText source={"MediaCore ContentID Registry"} /></Header>
 
       <Segment>
         <Header as="h3">
           <Icon name="sitemap" />
-          Pod Workflow Index
-        </Header>
+          <LocalizedText source={"Pod Workflow Index"} /></Header>
         <Message warning>
-          Pod workflows mix read-only diagnostics with operations that publish
-          metadata, membership records, messages, opinions, or key material.
-          Use this index to jump to the intended workflow before running an
-          action.
-        </Message>
+          <LocalizedText source={"Pod workflows mix read-only diagnostics with operations that publish metadata, membership records, messages, opinions, or key material. Use this index to jump to the intended workflow before running an action."} /></Message>
         <Form>
           <Form.Field>
-            <label>Workflow focus</label>
+            <label><LocalizedText source={"Workflow focus"} /></label>
             <Dropdown
-              aria-label="Pod workflow focus"
+              aria-label={interfaceText("Pod workflow focus")}
               onChange={(_, { value }) => setPodWorkflowFilter(value)}
               options={podWorkflowFilterOptions}
               selection
               value={podWorkflowFilter}
-            />
+             {...interfaceTextProps("Pod workflow focus")}/>
           </Form.Field>
         </Form>
         {podWorkflowFilter !== 'all' && (
@@ -200,18 +196,19 @@ const MediaCore = () => {
             size="small"
           >
             <Message.Content>
-              <Message.Header>Focused pod workflow</Message.Header>
-              Showing {selectedPodWorkflow?.label || 'one pod workflow'}. Choose
-              "Show all pod workflows" or use the reset action to return to the
-              complete MediaCore pod surface.
+              <Message.Header><LocalizedText source={"Focused pod workflow"} /></Message.Header>
+              <LocalizedText
+                source={"Showing {workflow}"}
+                values={{ workflow: selectedPodWorkflow?.label || 'one pod workflow' }}
+              />
+              <LocalizedText source={". Choose \"Show all pod workflows\" or use the reset action to return to the complete MediaCore pod surface."} />
               <div style={{ marginTop: '0.75em' }}>
                 <Button
                   basic
                   onClick={() => setPodWorkflowFilter('all')}
                   size="tiny"
                 >
-                  Show all pod workflows
-                </Button>
+                  <LocalizedText source={"Show all pod workflows"} /></Button>
               </div>
             </Message.Content>
           </Message>
@@ -240,22 +237,22 @@ const MediaCore = () => {
         {/* Statistics Overview */}
         <Grid.Column width={16}>
           <Segment>
-            <Header as="h3">Registry Statistics</Header>
+            <Header as="h3"><LocalizedText source={"Registry Statistics"} /></Header>
             <Statistic.Group size="small">
               <Statistic>
                 <Statistic.Value>{stats?.totalMappings || 0}</Statistic.Value>
-                <Statistic.Label>Total Mappings</Statistic.Label>
+                <Statistic.Label><LocalizedText source={"Total Mappings"} /></Statistic.Label>
               </Statistic>
               <Statistic>
                 <Statistic.Value>{stats?.totalDomains || 0}</Statistic.Value>
-                <Statistic.Label>Domains</Statistic.Label>
+                <Statistic.Label><LocalizedText source={"Domains"} /></Statistic.Label>
               </Statistic>
             </Statistic.Group>
 
             {stats?.mappingsByDomain &&
               Object.keys(stats.mappingsByDomain).length > 0 && (
                 <div style={{ marginTop: '1em' }}>
-                  <Header as="h4">Mappings by Domain</Header>
+                  <Header as="h4"><LocalizedText source={"Mappings by Domain"} /></Header>
                   <List horizontal>
                     {Object.entries(stats.mappingsByDomain).map(
                       ([domain, count]) => (
@@ -341,8 +338,7 @@ const MediaCore = () => {
             <Segment>
               <Header as="h3">
                 <Icon name="cogs" />
-                Supported Hash Algorithms
-              </Header>
+                <LocalizedText source={"Supported Hash Algorithms"} /></Header>
               <List
                 divided
                 relaxed

@@ -1,3 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+
+
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -19,6 +23,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const MediaCoreContentGraphPanel = () => {
+  useInterfaceLanguage();
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -98,30 +103,28 @@ const MediaCoreContentGraphPanel = () => {
             <Card.Content>
               <Card.Header>
                 <Icon name="sitemap" />
-                IPLD Graph Traversal
-              </Card.Header>
+                <LocalizedText source={"IPLD Graph Traversal"} /></Card.Header>
               <Card.Description>
-                Traverse content relationships following specific link types
-              </Card.Description>
+                <LocalizedText source={"Traverse content relationships following specific link types"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Group widths="equal">
                   <Form.Field>
-                    <label>Start ContentID</label>
+                    <label><LocalizedText source={"Start ContentID"} /></label>
                     <Input
                       onChange={(e) => setTraverseContentId(e.target.value)}
-                      placeholder="e.g., content:audio:track:mb-12345"
+                      placeholder={interfaceText("e.g., content:audio:track:mb-12345")}
                       value={traverseContentId}
-                    />
+                     {...interfaceTextProps("e.g., content:audio:track:mb-12345")}/>
                   </Form.Field>
                   <Form.Field>
-                    <label>Link Type</label>
+                    <label><LocalizedText source={"Link Type"} /></label>
                     <Input
                       onChange={(e) => setTraverseLinkName(e.target.value)}
-                      placeholder="e.g., album, artist, artwork"
+                      placeholder={interfaceText("e.g., album, artist, artwork")}
                       value={traverseLinkName}
-                    />
+                     {...interfaceTextProps("e.g., album, artist, artwork")}/>
                   </Form.Field>
                 </Form.Group>
                 <Button
@@ -134,8 +137,7 @@ const MediaCoreContentGraphPanel = () => {
                   onClick={handleTraverse}
                   primary
                 >
-                  Traverse Graph
-                </Button>
+                  <LocalizedText source={"Traverse Graph"} /></Button>
               </Form>
 
               {traversalResults && (
@@ -147,14 +149,13 @@ const MediaCoreContentGraphPanel = () => {
                   ) : (
                     <div>
                       <p>
-                        <strong>Traversal completed:</strong>{' '}
-                        {traversalResults.completedTraversal ? 'Yes' : 'No'}
+                        <strong><LocalizedText source={"Traversal completed:"} /></strong>{' '}
+                        {traversalResults.completedTraversal ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
                       </p>
                       <p>
                         <strong>
-                          Visited {traversalResults.visitedNodes?.length || 0}{' '}
-                          nodes
-                        </strong>
+                          <LocalizedText source={"Visited"} />{" "}{traversalResults.visitedNodes?.length || 0}{' '}
+                          <LocalizedText source={"nodes"} /></strong>
                       </p>
                       {traversalResults.visitedNodes?.length > 0 && (
                         <List
@@ -167,9 +168,7 @@ const MediaCoreContentGraphPanel = () => {
                               <List.Content>
                                 <List.Header>{node.contentId}</List.Header>
                                 <List.Description>
-                                  {node.outgoingLinks?.length || 0} outgoing
-                                  links
-                                </List.Description>
+                                  {node.outgoingLinks?.length || 0} <LocalizedText source={"outgoing links"} /></List.Description>
                               </List.Content>
                             </List.Item>
                           ))}
@@ -189,16 +188,14 @@ const MediaCoreContentGraphPanel = () => {
             <Card.Content>
               <Card.Header>
                 <Icon name="share alternate" />
-                Content Graph
-              </Card.Header>
+                <LocalizedText source={"Content Graph"} /></Card.Header>
               <Card.Description>
-                Get the complete relationship graph for a ContentID
-              </Card.Description>
+                <LocalizedText source={"Get the complete relationship graph for a ContentID"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Field>
-                  <label>ContentID</label>
+                  <label><LocalizedText source={"ContentID"} /></label>
                   <Input
                     action={
                       <Button
@@ -207,13 +204,12 @@ const MediaCoreContentGraphPanel = () => {
                         onClick={handleGetGraph}
                         primary
                       >
-                        Get Graph
-                      </Button>
+                        <LocalizedText source={"Get Graph"} /></Button>
                     }
                     onChange={(e) => setGraphContentId(e.target.value)}
-                    placeholder="Enter ContentID to get its graph"
+                    placeholder={interfaceText("Enter ContentID to get its graph")}
                     value={graphContentId}
-                  />
+                   {...interfaceTextProps("Enter ContentID to get its graph")}/>
                 </Form.Field>
               </Form>
 
@@ -226,14 +222,14 @@ const MediaCoreContentGraphPanel = () => {
                   ) : (
                     <div>
                       <p>
-                        <strong>Root:</strong> {graphResults.rootContentId}
+                        <strong><LocalizedText source={"Root:"} /></strong> {graphResults.rootContentId}
                       </p>
                       <p>
-                        <strong>Nodes:</strong>{' '}
+                        <strong><LocalizedText source={"Nodes:"} /></strong>{' '}
                         {graphResults.nodes?.length || 0}
                       </p>
                       <p>
-                        <strong>Paths:</strong>{' '}
+                        <strong><LocalizedText source={"Paths:"} /></strong>{' '}
                         {graphResults.paths?.length || 0}
                       </p>
                       {graphResults.nodes?.length > 0 && (
@@ -249,9 +245,8 @@ const MediaCoreContentGraphPanel = () => {
                                   {node.contentId}
                                 </List.Header>
                                 <List.Description style={{ fontSize: '0.8em' }}>
-                                  {node.outgoingLinks?.length || 0} outgoing,{' '}
-                                  {node.incomingLinks?.length || 0} incoming
-                                </List.Description>
+                                  {node.outgoingLinks?.length || 0} <LocalizedText source={"outgoing,"} />{' '}
+                                  {node.incomingLinks?.length || 0} <LocalizedText source={"incoming"} /></List.Description>
                               </List.Content>
                             </List.Item>
                           ))}
@@ -259,9 +254,7 @@ const MediaCoreContentGraphPanel = () => {
                             <List.Item>
                               <List.Content>
                                 <em>
-                                  ... and {graphResults.nodes.length - 5} more
-                                  nodes
-                                </em>
+                                  <LocalizedText source={"... and"} />{" "}{graphResults.nodes.length - 5} <LocalizedText source={"more nodes"} /></em>
                               </List.Content>
                             </List.Item>
                           )}
@@ -281,16 +274,14 @@ const MediaCoreContentGraphPanel = () => {
             <Card.Content>
               <Card.Header>
                 <Icon name="arrow left" />
-                Inbound Links
-              </Card.Header>
+                <LocalizedText source={"Inbound Links"} /></Card.Header>
               <Card.Description>
-                Find all content that links to a specific ContentID
-              </Card.Description>
+                <LocalizedText source={"Find all content that links to a specific ContentID"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Field>
-                  <label>Target ContentID</label>
+                  <label><LocalizedText source={"Target ContentID"} /></label>
                   <Input
                     action={
                       <Button
@@ -299,13 +290,12 @@ const MediaCoreContentGraphPanel = () => {
                         onClick={handleFindInbound}
                         primary
                       >
-                        Find Links
-                      </Button>
+                        <LocalizedText source={"Find Links"} /></Button>
                     }
                     onChange={(e) => setInboundTargetId(e.target.value)}
-                    placeholder="Find content that links to this ID"
+                    placeholder={interfaceText("Find content that links to this ID")}
                     value={inboundTargetId}
-                  />
+                   {...interfaceTextProps("Find content that links to this ID")}/>
                 </Form.Field>
               </Form>
 
@@ -319,9 +309,8 @@ const MediaCoreContentGraphPanel = () => {
                     <div>
                       <p>
                         <strong>
-                          Found {inboundResults.inboundLinks?.length || 0}{' '}
-                          inbound links
-                        </strong>
+                          <LocalizedText source={"Found"} />{" "}{inboundResults.inboundLinks?.length || 0}{' '}
+                          <LocalizedText source={"inbound links"} /></strong>
                       </p>
                       {inboundResults.inboundLinks?.length > 0 && (
                         <List

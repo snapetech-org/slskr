@@ -1,3 +1,5 @@
+import LocalizedText from "./Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../lib/interfaceLocale";
 import ModeSpecificConnectButton from './ModeSpecificConnectButton';
 import { NavLink } from 'react-router-dom';
 import {
@@ -35,11 +37,11 @@ const AppHeaderMenu = ({
   user,
 }) => (
             <Menu
-              aria-label="Session controls"
+              aria-label={interfaceText("Session controls")}
               className="right"
               inverted
               role="navigation"
-            >
+             {...interfaceTextProps("Session controls")}>
               <ModeSpecificConnectButton
                 runtimeProfile={runtimeProfile}
                 connectionWatchdog={connectionWatchdog}
@@ -64,10 +66,10 @@ const AppHeaderMenu = ({
                     className={`theme-menu ${themeMenuOpen ? 'visible' : ''}`}
                     data-testid="theme-menu"
                     role={runtimeProfile ? 'presentation' : undefined}
-                    title="Choose the web UI color theme"
-                  >
+                    title={interfaceText("Choose the web UI color theme")}
+                   {...interfaceTextProps("Choose the web UI color theme")}>
                     <Icon name="paint brush" />
-                    <span className="theme-menu-label">Theme</span>
+                    <span className="theme-menu-label"><LocalizedText source={"Theme"} /></span>
                   </Menu.Item>
                 )}
               >
@@ -98,8 +100,7 @@ const AppHeaderMenu = ({
                       />
                     </NavLink>
                   </Icon.Group>
-                  Pending Action
-                </Menu.Item>
+                  <LocalizedText source={"Pending Action"} /></Menu.Item>
               )}
               {isUpdateAvailable && (
                 <Modal
@@ -114,17 +115,15 @@ const AppHeaderMenu = ({
                           name="bullhorn"
                         />
                       </Icon.Group>
-                      New Version!
-                    </Menu.Item>
+                      <LocalizedText source={"New Version!"} /></Menu.Item>
                   }
                 >
-                  <Modal.Header>New Version!</Modal.Header>
+                  <Modal.Header><LocalizedText source={"New Version!"} /></Modal.Header>
                   <Modal.Content>
                     <p>
-                      You are currently running version{' '}
+                      <LocalizedText source={"You are currently running version"} />{' '}
                       <strong>{current}</strong>
-                      while version <strong>{latest}</strong> is available.
-                    </p>
+                      <LocalizedText source={"while version"} />{" "}<strong>{latest}</strong> <LocalizedText source={"is available."} /></p>
                   </Modal.Content>
                   <Modal.Actions>
                     <Button
@@ -133,44 +132,41 @@ const AppHeaderMenu = ({
                       primary
                       style={{ marginLeft: 0 }}
                     >
-                      See Release Notes
-                    </Button>
+                      <LocalizedText source={"See Release Notes"} /></Button>
                   </Modal.Actions>
                 </Modal>
               )}
               <NavLink to="/system">
                 <Menu.Item data-testid="nav-system">
                   <Icon name="cogs" />
-                  System
-                </Menu.Item>
+                  <LocalizedText source={"System"} /></Menu.Item>
               </NavLink>
               {isLoggedIn && (
                 <Modal
                   actions={[
                     'Cancel',
                     {
-                      content: 'Log Out',
+                      content: interfaceText("Log Out"),
                       key: 'done',
                       negative: true,
                       onClick: onLogout,
                     },
                   ]}
                   centered
-                  content="Are you sure you want to log out?"
+                  content={interfaceText("Are you sure you want to log out?")}
                   header={
                     <Header
-                      content="Confirm Log Out"
+                      content={interfaceText("Confirm Log Out")}
                       icon="sign-out"
-                    />
+                     {...interfaceTextProps("Confirm Log Out")}/>
                   }
                   size="mini"
                   trigger={
                     <Menu.Item data-testid="logout">
                       <Icon name="sign-out" />
-                      Log Out
-                    </Menu.Item>
+                      <LocalizedText source={"Log Out"} /></Menu.Item>
                   }
-                />
+                 {...interfaceTextProps("Are you sure you want to log out?")}/>
               )}
             </Menu>
 );

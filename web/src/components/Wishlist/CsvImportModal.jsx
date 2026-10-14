@@ -1,11 +1,17 @@
-import { toDisplayError } from '../../lib/errors';
 import { readFileTextBounded } from '../../lib/fileReaders';
 import { useMountedFlag } from './wishlistHooks';
+import { useInterfaceLanguage } from '../../lib/interfaceLocale';
 import React, { useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import { Button, Checkbox, Form, Icon, Modal, Popup } from 'semantic-ui-react';
 
 const CsvImportModal = ({ onClose, onImport }) => {
+  const { t, languageFor, directionFor } = useInterfaceLanguage();
+  const localized = (source) => (
+    <span lang={languageFor(source)} dir={directionFor(source)}>{t(source)}</span>
+  );
+  const localizedRef = useRef(localized);
+  localizedRef.current = localized;
   const [csvText, setCsvText] = useState('');
   const [filter, setFilter] = useState('');
   const [enabled, setEnabled] = useState(true);
@@ -27,14 +33,15 @@ const CsvImportModal = ({ onClose, onImport }) => {
       }
     } catch (error) {
       if (mountedRef.current) {
-        toast.error(`Failed to read CSV file: ${toDisplayError(error)}`);
+        console.error(error);
+        toast.error(localizedRef.current('Could not read the CSV file.'));
       }
     }
   };
 
   const handleImport = async () => {
     if (!csvText.trim()) {
-      toast.error('CSV text is required');
+      toast.error(localizedRef.current('CSV text is required.'));
       return;
     }
     if (importInFlightRef.current || !mountedRef.current) return;
@@ -63,7 +70,8 @@ const CsvImportModal = ({ onClose, onImport }) => {
         mountedRef.current &&
         requestId === operationRequestIdRef.current
       ) {
-        toast.error(`CSV import failed: ${toDisplayError(error)}`);
+        console.error(error);
+        toast.error(localizedRef.current('Could not import the CSV.'));
       }
     } finally {
       if (
@@ -84,31 +92,37 @@ const CsvImportModal = ({ onClose, onImport }) => {
     >
       <Modal.Header>
         <Icon name="file alternate outline" />
-        Import CSV Playlist
+        {localized('Import CSV Playlist')}
       </Modal.Header>
       <Modal.Content>
         <Form>
           <Form.Input
             accept=".csv,text/csv"
-            label="CSV File"
+            label={localized('CSV File')}
             onChange={handleFile}
             type="file"
           />
           <Form.TextArea
-            label="CSV Text"
+            dir={directionFor('Track name,Artist name,Album name')}
+            lang={languageFor('Track name,Artist name,Album name')}
+            label={localized('CSV Text')}
             onChange={(event) => setCsvText(event.target.value)}
-            placeholder="Track name,Artist name,Album name"
+            placeholder={t('Track name,Artist name,Album name')}
             rows={8}
             value={csvText}
           />
           <Form.Input
-            label="Filter (optional)"
+            dir={directionFor('e.g., flac OR mp3')}
+            lang={languageFor('e.g., flac OR mp3')}
+            label={localized('Filter (optional)')}
             onChange={(event) => setFilter(event.target.value)}
-            placeholder="e.g., flac OR mp3"
+            placeholder={t('e.g., flac OR mp3')}
             value={filter}
           />
           <Form.Input
-            label="Max Results"
+            dir={directionFor('Max Results')}
+            lang={languageFor('Max Results')}
+            label={localized('Max Results')}
             max={1_000}
             min={1}
             onChange={(event) =>
@@ -121,7 +135,9 @@ const CsvImportModal = ({ onClose, onImport }) => {
             <Form.Field>
               <Checkbox
                 checked={enabled}
-                label="Enabled"
+                dir={directionFor('Enabled')}
+                lang={languageFor('Enabled')}
+                label={localized('Enabled')}
                 onChange={(_, data) => setEnabled(data.checked)}
                 toggle
               />
@@ -129,7 +145,9 @@ const CsvImportModal = ({ onClose, onImport }) => {
             <Form.Field>
               <Checkbox
                 checked={autoDownload}
-                label="Auto-download matches"
+                dir={directionFor('Auto-download matches')}
+                lang={languageFor('Auto-download matches')}
+                label={localized('Auto-download matches')}
                 onChange={(_, data) => setAutoDownload(data.checked)}
                 toggle
               />
@@ -137,7 +155,9 @@ const CsvImportModal = ({ onClose, onImport }) => {
             <Form.Field>
               <Checkbox
                 checked={includeAlbum}
-                label="Include album"
+                dir={directionFor('Include album')}
+                lang={languageFor('Include album')}
+                label={localized('Include album')}
                 onChange={(_, data) => setIncludeAlbum(data.checked)}
                 toggle
               />
@@ -147,11 +167,11 @@ const CsvImportModal = ({ onClose, onImport }) => {
       </Modal.Content>
       <Modal.Actions>
         <Popup
-          content="Close the CSV importer without adding any wishlist searches."
-          trigger={<Button onClick={onClose}>Cancel</Button>}
+          content={localized('Close the CSV importer without adding any wishlist searches.')}
+          trigger={<Button onClick={onClose}>{localized('Cancel')}</Button>}
         />
         <Popup
-          content="Create wishlist searches from the parsed CSV rows using the selected options."
+          content={localized('Create wishlist searches from the parsed CSV rows using the selected options.')}
           trigger={
             <Button
               disabled={importing}
@@ -159,7 +179,7 @@ const CsvImportModal = ({ onClose, onImport }) => {
               onClick={handleImport}
               primary
             >
-              Import
+              {localized('Import')}
             </Button>
           }
         />

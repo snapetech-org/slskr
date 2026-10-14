@@ -1,9 +1,11 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import './Transfers.css';
 import * as autoReplaceLibrary from '../../lib/autoReplace';
 import { toDisplayError } from '../../lib/errors';
 import * as transfersLibrary from '../../lib/transfers';
 import { usePolling } from '../../lib/usePolling';
-import { useInterfaceLanguage } from '../../lib/interfaceLocale';
+
 import { LoaderSegment, PlaceholderSegment } from '../Shared';
 import TransferGroup from './TransferGroup';
 import TransfersHeader from './TransfersHeader';
@@ -668,13 +670,13 @@ const Transfers = ({ runtimeProfile, direction, server }) => {
         if (!mountedRef.current || requestId !== modeRequestIdsRef.current.autoReplace) return;
         setAutoReplaceEnabled(true);
         toast.info(
-          'Auto-replace enabled. Backend will check for stuck downloads periodically.',
+          interfaceText("Auto-replace enabled. Backend will check for stuck downloads periodically."),
         );
       } else {
         await autoReplaceLibrary.disableAutoReplace();
         if (!mountedRef.current || requestId !== modeRequestIdsRef.current.autoReplace) return;
         setAutoReplaceEnabled(false);
-        toast.info('Auto-replace disabled');
+        toast.info(interfaceText("Auto-replace disabled"));
       }
     } catch (error) {
       console.error('Failed to toggle auto-replace:', error);
@@ -752,7 +754,7 @@ const Transfers = ({ runtimeProfile, direction, server }) => {
           negative
         >
           <Message.Header>
-            {direction === 'download' ? 'Downloads unavailable' : 'Uploads unavailable'}
+            {direction === 'download' ? <LocalizedText source={"Downloads unavailable"} /> : <LocalizedText source={"Uploads unavailable"} />}
           </Message.Header>
           <p>{transfersLoadError}</p>
         </Message>
@@ -762,9 +764,9 @@ const Transfers = ({ runtimeProfile, direction, server }) => {
           data-testid="transfer-mode-status-error"
           warning
         >
-          <Message.Header>Download mode status unavailable</Message.Header>
+          <Message.Header><LocalizedText source={"Download mode status unavailable"} /></Message.Header>
           <p>{modeStatusError}</p>
-          <p>The mode toggles are disabled until the daemon reports their current state.</p>
+          <p><LocalizedText source={"The mode toggles are disabled until the daemon reports their current state."} /></p>
         </Message>
       )}
       {transfersLoadError ? null : transfers.length === 0 ? (

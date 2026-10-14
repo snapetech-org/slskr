@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
@@ -21,6 +23,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const MessageSearchPanel = () => {
+  useInterfaceLanguage();
   useRegionalFormat();
   const mountedRef = useMountedRef();
   const [searchQuery, setSearchQuery] = useMountedState(mountedRef, '');
@@ -63,7 +66,7 @@ const MessageSearchPanel = () => {
 
   return (
     <>
-      <Header size="small">Message Search</Header>
+      <Header size="small"><LocalizedText source={"Message Search"} /></Header>
       <Input
         action={
           <Button
@@ -72,8 +75,7 @@ const MessageSearchPanel = () => {
             loading={searchLoading}
             onClick={() => handleSearchMessages()}
           >
-            Search
-          </Button>
+            <LocalizedText source={"Search"} /></Button>
         }
         onChange={(e) => {
           const nextQuery = e.target.value;
@@ -83,16 +85,16 @@ const MessageSearchPanel = () => {
             setSearchResultsQuery(null);
           }
         }}
-        placeholder="Search messages..."
+        placeholder={interfaceText("Search messages...")}
         style={{ marginBottom: '1em', width: '100%' }}
         value={searchQuery}
-      />
+       {...interfaceTextProps("Search messages...")}/>
 
       {searchError && (
         <Message data-testid="message-search-error" negative size="small">
           {searchError}
           {hasCurrentSearchResults && searchResults.length > 0 && (
-            <div>Showing last successfully loaded results.</div>
+            <div><LocalizedText source={"Showing last successfully loaded results."} /></div>
           )}
         </Message>
       )}
@@ -100,7 +102,7 @@ const MessageSearchPanel = () => {
       {hasCurrentSearchResults && searchResults.length > 0 && (
         <Message size="small">
           <Message.Header>
-            Search Results ({searchResults.length})
+            <LocalizedText source={"Search Results ("} />{searchResults.length})
           </Message.Header>
           <div style={{ maxHeight: '300px', overflowY: 'auto' }}>
             {searchResults.map((message, index) => (
@@ -129,7 +131,7 @@ const MessageSearchPanel = () => {
         searchQuery &&
         !searchError && (
           <Message size="small" warning>
-            No messages found matching "{searchQuery}"
+            <LocalizedText source={"No messages found matching \""} />{searchQuery}"
           </Message>
         )}
     </>
