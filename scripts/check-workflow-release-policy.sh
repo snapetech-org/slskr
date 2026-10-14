@@ -82,6 +82,15 @@ if [[ "$receipt_download_policy" != *'merge-multiple: false'* ]]; then
   printf 'workflow release policy check failed: receipt artifacts must stay in separate attempt directories\n' >&2
   status=1
 fi
+reconcile_job="$(sed -n '/^  validation-reconcile:/,/^  package-surfaces:/p' .github/workflows/ci.yml)"
+if [[ "$reconcile_job" != *'if: always() && !cancelled()'* ]]; then
+  printf 'workflow release policy check failed: canceled pull-request runs must skip final receipt reconciliation\n' >&2
+  status=1
+fi
+if [[ "$reconcile_job" != *"github.event_name != 'push' || github.ref == 'refs/heads/main'"* ]]; then
+  printf 'workflow release policy check failed: receipt reconciliation must retain the main/pull-request event guard\n' >&2
+  status=1
+fi
 
 if ! rg -n -F "$main_runner_condition" .github/workflows/ci.yml >/dev/null; then
   printf 'workflow release policy check failed: local runner policy must be limited to main pushes and manual runs\n' >&2

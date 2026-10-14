@@ -123,6 +123,11 @@ snapshots. It accepts a passing receipt from an earlier attempt of the same run
 because GitHub reruns only failed jobs and keeps successful jobs from the prior
 attempt. Package-surface checks depend on successful reconciliation.
 
+Pull-request concurrency cancels runs for superseded commits. The reconciliation
+job still uses `always()` to check failed platform results, and `!cancelled()`
+lets a canceled obsolete run release its concurrency slot so the newest commit
+can start. The current run remains bound to its own receipts and source.
+
 GitHub-hosted receipt collection is verified by GitHub Actions. A local run does
 not establish hosted runner behavior. Existing release policy, static security,
 package matrix, and reproducibility checks remain explicit workflow steps and
