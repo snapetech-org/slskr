@@ -50,6 +50,16 @@ def normalize_debug_runtime_ports(value):
         value,
     )
 
+def normalize_debug_default_transfer_slots(value):
+    # Debug output includes the configuration provider. Normalize only the
+    # known bounded/unbounded defaults; YAML and environment overrides retain
+    # their concrete values in this strict comparison.
+    return re.sub(
+        r"(?m)^( {6}slots=)(?:500|2147483647|20|10)( \(DefaultValueConfigurationProvider\))$",
+        r"\1<DEFAULT_TRANSFER_SLOTS>\2",
+        value,
+    )
+
 default_identity_values = (
     "A slskd user. https://github.com/slskd/slskd",
     "A slskdN user. Unofficial fork of slskd: https://github.com/snapetech/slskdn",
@@ -147,6 +157,7 @@ for path in source.iterdir():
             value,
         )
         value = normalize_debug_runtime_ports(value)
+        value = normalize_debug_default_transfer_slots(value)
         value = normalize_default_identity_text(value)
     elif path.name.startswith("debug-options-") or path.name.startswith("debug-startup-"):
         value = {"debug": value["debug"]}
@@ -164,6 +175,7 @@ for path in source.iterdir():
             value,
         )
         value = normalize_debug_runtime_ports(value)
+        value = normalize_debug_default_transfer_slots(value)
         value = normalize_default_identity_text(value)
     elif path.name == "metrics-default.body":
         normalize_default_metrics_identity(value)
