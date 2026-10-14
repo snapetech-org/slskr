@@ -411,6 +411,20 @@ if sys.argv[3] == "yes":
 value["web"]["port"] = "<HTTP_PORT>"
 if isinstance(value["web"].get("https"), dict):
     value["web"]["https"]["port"] = "<HTTPS_PORT>"
+# slskR deliberately uses bounded default transfer slots (500 downloads and
+# 20 uploads), while the frozen upstream profiles default to unlimited
+# downloads and 10 uploads. Those safety defaults are covered by the transfer
+# policy contracts; keep this structural options comparison strict for any
+# configured value outside the two known default pairs.
+transfer_slot_defaults = {
+    "download": {500, 2147483647},
+    "upload": {20, 10},
+}
+for projection in (value.get("transfers", {}), value.get("global", {})):
+    for direction, defaults in transfer_slot_defaults.items():
+        policy = projection.get(direction)
+        if isinstance(policy, dict) and policy.get("slots") in defaults:
+            policy["slots"] = "<DEFAULT_TRANSFER_SLOTS>"
 if isinstance(value.get("dhtRendezvous"), dict):
     for key in ("dhtPort", "overlayPort", "effectiveOverlayPort"):
         if key in value["dhtRendezvous"]:
