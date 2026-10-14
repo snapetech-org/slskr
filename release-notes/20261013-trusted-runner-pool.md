@@ -6,4 +6,4 @@ action: none
 breaking: false
 ---
 
-Trusted Rust validation on main can use the restricted organization runner pool once operators enable its readiness flag. Pull requests and non-main validation stay on hosted runners.
+Trusted Rust validation on main uses the restricted organization runner pool. Pull requests and non-main validation stay on hosted runners.
