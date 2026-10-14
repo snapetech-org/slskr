@@ -32,7 +32,7 @@ for expected in \
 done
 
 main_runner_condition="((github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'))"
-trusted_runner_selector="runs-on: \${{ ${main_runner_condition} && vars.TRUSTED_MAIN_RUNNERS_ENABLED == 'true' && fromJSON('{\"group\":\"trusted-main\",\"labels\":[\"self-hosted\",\"Linux\",\"X64\",\"host\",\"linux-build\",\"linux-amd64\"]}') || 'ubuntu-latest' }}"
+trusted_runner_selector="runs-on: \${{ ${main_runner_condition} && vars.TRUSTED_MAIN_RUNNERS_ENABLED == 'true' && 'trusted-main' || 'ubuntu-latest' }}"
 push_branches="$(
   awk '
     /^  push:$/ { in_push=1; next }
