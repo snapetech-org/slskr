@@ -1096,7 +1096,7 @@ describe('MediaCore', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Get Storage Stats' }));
 
     const totalMessagesLabel = await screen.findByText('Total Messages:');
-    const storageStats = totalMessagesLabel.parentElement;
+    const storageStats = totalMessagesLabel.closest('p');
     expect(storageStats.textContent).toContain(
       new Intl.NumberFormat('fr').format(1_234),
     );
@@ -1112,7 +1112,7 @@ describe('MediaCore', () => {
       }));
     });
 
-    expect(screen.getByText('Total Messages:').parentElement.textContent).toContain(
+    expect(screen.getByText('Total Messages:').closest('p').textContent).toContain(
       new Intl.NumberFormat('de').format(1_234),
     );
 
@@ -1371,14 +1371,14 @@ describe('MediaCore', () => {
     await screen.findByText('MediaCore ContentID Registry');
 
     fireEvent.click(screen.getByRole('button', { name: 'Get Backfill Stats' }));
-    expect((await screen.findByText(/Requests Sent:/)).parentElement).toHaveTextContent(
+    expect((await screen.findByText(/Requests Sent:/)).closest('p')).toHaveTextContent(
       '3',
     );
     fireEvent.click(screen.getByRole('button', { name: 'Get Backfill Stats' }));
     expect(
       await screen.findByTestId('media-core-backfill-stats-error'),
     ).toHaveTextContent('Backfill statistics unavailable');
-    expect(screen.getByText(/Requests Sent:/).parentElement).toHaveTextContent('3');
+    expect(screen.getByText(/Requests Sent:/).closest('p')).toHaveTextContent('3');
 
     const podInput = screen.getByPlaceholderText('Pod ID for backfill sync');
     fireEvent.change(podInput, { target: { value: 'pod-1' } });
@@ -1507,14 +1507,14 @@ describe('MediaCore', () => {
     await renderOpinionQuery();
 
     fireEvent.click(screen.getByRole('button', { name: 'Get Statistics' }));
-    expect((await screen.findByText(/Average Score:/)).parentElement).toHaveTextContent(
+    expect((await screen.findByText(/Average Score:/)).closest('p')).toHaveTextContent(
       '8.0',
     );
     fireEvent.click(screen.getByRole('button', { name: 'Get Statistics' }));
     expect(
       await screen.findByTestId('media-core-opinion-statistics-error'),
     ).toHaveTextContent('Statistics refresh unavailable');
-    expect(screen.getByText(/Average Score:/).parentElement).toHaveTextContent(
+    expect(screen.getByText(/Average Score:/).closest('p')).toHaveTextContent(
       '8.0',
     );
   });
@@ -1537,7 +1537,7 @@ describe('MediaCore', () => {
     fireEvent.click(
       screen.getByRole('button', { name: 'Get Aggregated Opinions' }),
     );
-    expect((await screen.findByText(/Weighted Average:/)).parentElement).toHaveTextContent(
+    expect((await screen.findByText(/Weighted Average:/)).closest('.message')).toHaveTextContent(
       '8.50',
     );
     fireEvent.click(
@@ -1546,7 +1546,7 @@ describe('MediaCore', () => {
     expect(
       await screen.findByTestId('media-core-aggregated-opinions-error'),
     ).toHaveTextContent('Aggregate refresh unavailable');
-    expect(screen.getByText(/Weighted Average:/).parentElement).toHaveTextContent(
+    expect(screen.getByText(/Weighted Average:/).closest('.message')).toHaveTextContent(
       '8.50',
     );
   });
@@ -1596,13 +1596,13 @@ describe('MediaCore', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Get Recommendations' }));
     expect(
-      (await screen.findByText(/Recommendation:/)).parentElement,
+      (await screen.findByText(/Recommendation:/)).closest('div'),
     ).toHaveTextContent('Recommended');
     fireEvent.click(screen.getByRole('button', { name: 'Get Recommendations' }));
     expect(
       await screen.findByTestId('media-core-consensus-recommendations-error'),
     ).toHaveTextContent('Recommendation refresh unavailable');
-    expect(screen.getByText(/Recommendation:/).parentElement).toHaveTextContent(
+    expect(screen.getByText(/Recommendation:/).closest('div')).toHaveTextContent(
       'Recommended',
     );
   });

@@ -1,3 +1,5 @@
+import LocalizedText from "./Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../lib/interfaceLocale";
 import { formatRegionalDateTime, formatRegionalFixedNumber, formatRegionalNumber, formatBytes, formatSpeed, formatWait } from '../lib/util';
 import React, { useMemo, useState } from 'react';
 import { Segment } from 'semantic-ui-react';
@@ -71,6 +73,7 @@ export const HISTORY_SERIES = [
 ];
 
 const CompatibilityGraph = ({ data = [], defaultSeries, series = [] }) => {
+  useInterfaceLanguage();
   const [visible, setVisible] = useState(() => new Set(defaultSeries ?? []));
   const [hoverIndex, setHoverIndex] = useState(null);
   const width = 800;
@@ -111,7 +114,7 @@ const CompatibilityGraph = ({ data = [], defaultSeries, series = [] }) => {
   };
 
   if (data.length === 0) {
-    return <Segment className="compatibility-graph-empty">No data to display</Segment>;
+    return <Segment className="compatibility-graph-empty"><LocalizedText source={"No data to display"} /></Segment>;
   }
 
   const hovered = hoverIndex == null ? null : data[hoverIndex];
@@ -120,7 +123,7 @@ const CompatibilityGraph = ({ data = [], defaultSeries, series = [] }) => {
     <div className="compatibility-graph">
       <div className="compatibility-graph-frame">
         <svg
-          aria-label="Transfer history"
+          aria-label={interfaceText("Transfer history")}
           onMouseLeave={() => setHoverIndex(null)}
           onMouseMove={(event) => {
             const rect = event.currentTarget.getBoundingClientRect();
@@ -130,7 +133,7 @@ const CompatibilityGraph = ({ data = [], defaultSeries, series = [] }) => {
           }}
           role="img"
           viewBox={`0 0 ${width} ${height}`}
-        >
+         {...interfaceTextProps("Transfer history")}>
           <line
             className="compatibility-graph-axis"
             x1={padding.left}

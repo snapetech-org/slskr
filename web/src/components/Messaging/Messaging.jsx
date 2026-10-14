@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import './Messaging.css';
 import * as chat from '../../lib/chat';
 import {
@@ -53,6 +55,7 @@ import {
 const WORKSPACE_EVENT_REFRESH_INTERVAL_MS = 1_000;
 
 const Messaging = ({ runtimeProfile, initialKind = 'mixed', state }) => {
+  useInterfaceLanguage();
   const navigate = useNavigate();
   const [panels, setPanels] = useState(() => loadPanels());
   const [chatTarget, setChatTarget] = useState('');
@@ -666,12 +669,12 @@ const Messaging = ({ runtimeProfile, initialKind = 'mixed', state }) => {
     const message = batchMessage.trim();
 
     if (usernames.length === 0) {
-      toast.error('At least one recipient is required');
+      toast.error(interfaceText("At least one recipient is required"));
       return;
     }
 
     if (!message) {
-      toast.error('Message is required');
+      toast.error(interfaceText("Message is required"));
       return;
     }
 
@@ -687,7 +690,7 @@ const Messaging = ({ runtimeProfile, initialKind = 'mixed', state }) => {
       ) {
         return;
       }
-      toast.success(`Sent batch message to ${new Set(usernames.map((name) => name.toLowerCase())).size} users`);
+      toast.success(interfaceText("Sent batch message to {size} users", { "size": (new Set(usernames.map((name) => name.toLowerCase())).size) }));
       setBatchMessage('');
       setBatchUsernames('');
       setBatchModalOpen(false);
@@ -756,26 +759,25 @@ const Messaging = ({ runtimeProfile, initialKind = 'mixed', state }) => {
           <Segment className="messaging-toolbar">
             <div className="messaging-toolbar-title">
               <Icon name="window restore outline" />
-              Workspace
-              <Label size="small">{openPanels.length} open</Label>
+              <LocalizedText source={"Workspace"} /><Label size="small">{openPanels.length} <LocalizedText source={"open"} /></Label>
             </div>
             <Popup
-              content="Send one private message to multiple users through the native Soulseek batch command."
+              content={interfaceText("Send one private message to multiple users through the native Soulseek batch command.")}
               trigger={
                 <Button
-                  aria-label="Open batch private-message dialog"
+                  aria-label={interfaceText("Open batch private-message dialog")}
                   icon="send"
                   onClick={() => setBatchModalOpen(true)}
                   size="small"
-                  title="Batch private message"
-                />
+                  title={interfaceText("Batch private message")}
+                 {...interfaceTextProps("Open batch private-message dialog")}/>
               }
-            />
+             {...interfaceTextProps("Send one private message to multiple users through the native Soulseek batch command.")}/>
             <Popup
-              content="Collapse every open message panel into the dock."
+              content={interfaceText("Collapse every open message panel into the dock.")}
               trigger={
                 <Button
-                  aria-label="Collapse all message panels"
+                  aria-label={interfaceText("Collapse all message panels")}
                   disabled={openPanels.length === 0}
                   icon="window minimize outline"
                   onClick={() =>
@@ -784,10 +786,10 @@ const Messaging = ({ runtimeProfile, initialKind = 'mixed', state }) => {
                     )
                   }
                   size="small"
-                  title="Collapse all message panels"
-                />
+                  title={interfaceText("Collapse all message panels")}
+                 {...interfaceTextProps("Collapse all message panels")}/>
               }
-            />
+             {...interfaceTextProps("Collapse every open message panel into the dock.")}/>
           </Segment>
 
           <BatchPrivateMessageModal
@@ -852,69 +854,69 @@ const Messaging = ({ runtimeProfile, initialKind = 'mixed', state }) => {
                         {panel.type === 'chat' && (
                           <>
                             <Popup
-                              content="Open this user's profile."
+                              content={interfaceText("Open this user's profile.")}
                               trigger={
                                 <Button
-                                  aria-label={`Open ${panel.target} profile`}
+                                  aria-label={interfaceText("Open {target} profile", { "target": (panel.target) })}
                                   icon="user"
                                   onClick={() =>
                                     navigate('/users', { state: { user: panel.target } })
                                   }
                                   size="mini"
-                                  title={`Open ${panel.target} profile`}
-                                />
+                                  title={interfaceText("Open {target} profile", { "target": (panel.target) })}
+                                 {...interfaceTextProps("Open {target} profile")}/>
                               }
-                            />
+                             {...interfaceTextProps("Open this user's profile.")}/>
                             <Popup
-                              content="Permanently delete this saved message thread."
+                              content={interfaceText("Permanently delete this saved message thread.")}
                               trigger={
                                 <Button
-                                  aria-label={`Delete message thread with ${panel.target}`}
+                                  aria-label={interfaceText("Delete message thread with {target}", { "target": (panel.target) })}
                                   disabled={isWorkspaceActionPending(`chat:delete:${panel.target}`)}
                                   icon="trash alternate"
                                   negative
                                   onClick={() => deleteConversation(panel.target)}
                                   size="mini"
-                                  title={`Delete message thread with ${panel.target}`}
-                                />
+                                  title={interfaceText("Delete message thread with {target}", { "target": (panel.target) })}
+                                 {...interfaceTextProps("Delete message thread with {target}")}/>
                               }
-                            />
+                             {...interfaceTextProps("Permanently delete this saved message thread.")}/>
                           </>
                         )}
                         {panel.type === 'room' && (
                           <Popup
-                            content="Leave this room and remove it from joined rooms."
+                            content={interfaceText("Leave this room and remove it from joined rooms.")}
                             trigger={
                               <Button
-                                aria-label={`Leave room ${panel.target}`}
+                                aria-label={interfaceText("Leave room {target}", { "target": (panel.target) })}
                                 disabled={isWorkspaceActionPending(`room:leave:${panel.target}`)}
                                 icon="sign-out"
                                 negative
                                 onClick={() => leaveRoom(panel.target)}
                                 size="mini"
-                                title={`Leave room ${panel.target}`}
-                              />
+                                title={interfaceText("Leave room {target}", { "target": (panel.target) })}
+                               {...interfaceTextProps("Leave room {target}")}/>
                             }
-                          />
+                           {...interfaceTextProps("Leave this room and remove it from joined rooms.")}/>
                         )}
                         {panel.type === 'pod' && panelPodChannel && (
                           <Popup
-                            content="Leave this pod and remove its channels from Messages."
+                            content={interfaceText("Leave this pod and remove its channels from Messages.")}
                             trigger={
                               <Button
-                                aria-label={`Leave pod ${panelPodChannel.podName}`}
+                                aria-label={interfaceText("Leave pod {podName}", { "podName": (panelPodChannel.podName) })}
                                 disabled={isWorkspaceActionPending(`pod:leave:${panelPodChannel.podId}`)}
                                 icon="sign-out"
                                 negative
                                 onClick={() => leavePod(panelPodChannel)}
                                 size="mini"
-                                title={`Leave pod ${panelPodChannel.podName}`}
-                              />
+                                title={interfaceText("Leave pod {podName}", { "podName": (panelPodChannel.podName) })}
+                               {...interfaceTextProps("Leave pod {podName}")}/>
                             }
-                          />
+                           {...interfaceTextProps("Leave this pod and remove its channels from Messages.")}/>
                         )}
                         <Popup
-                          content="Collapse this panel into the message dock."
+                          content={interfaceText("Collapse this panel into the message dock.")}
                           trigger={
                             <Button
                               aria-label={`Collapse ${panelLabel(panel)}`}
@@ -924,9 +926,9 @@ const Messaging = ({ runtimeProfile, initialKind = 'mixed', state }) => {
                               title={`Collapse ${panelLabel(panel)}`}
                             />
                           }
-                        />
+                         {...interfaceTextProps("Collapse this panel into the message dock.")}/>
                         <Popup
-                          content="Close this panel without deleting the thread or leaving anything."
+                          content={interfaceText("Close this panel without deleting the thread or leaving anything.")}
                           trigger={
                             <Button
                               aria-label={`Close ${panelLabel(panel)}`}
@@ -936,7 +938,7 @@ const Messaging = ({ runtimeProfile, initialKind = 'mixed', state }) => {
                               title={`Close ${panelLabel(panel)}`}
                             />
                           }
-                        />
+                         {...interfaceTextProps("Close this panel without deleting the thread or leaving anything.")}/>
                       </div>
                     </Card.Content>
                     <Card.Content className="messaging-window-body">
@@ -976,7 +978,7 @@ const Messaging = ({ runtimeProfile, initialKind = 'mixed', state }) => {
             <div className="messaging-dock">
               {collapsedPanels.map((panel) => (
                 <Popup
-                  content="Restore this message panel."
+                  content={interfaceText("Restore this message panel.")}
                   key={panel.id}
                   trigger={
                     <Button
@@ -989,7 +991,7 @@ const Messaging = ({ runtimeProfile, initialKind = 'mixed', state }) => {
                       {panelLabel(panel)}
                     </Button>
                   }
-                />
+                 {...interfaceTextProps("Restore this message panel.")}/>
               ))}
             </div>
           )}

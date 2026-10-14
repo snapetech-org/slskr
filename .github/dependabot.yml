@@ -31,6 +31,11 @@ updates:
     cooldown:
       default-days: 7
     open-pull-requests-limit: 10
+    ignore:
+      # Coordinate TypeScript major upgrades with the parser/linter peer range.
+      - dependency-name: "typescript"
+        update-types:
+          - "version-update:semver-major"
     groups:
       dashboard-dependencies:
         patterns:

@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import * as discoveryGraph from '../../lib/discoveryGraph';
 import { useMountedRef } from '../../lib/useMountedRef';
 import * as searches from '../../lib/searches';
@@ -52,6 +54,7 @@ const normalizeResolvedTarget = (data) => {
 };
 
 const MusicBrainzLookup = ({ disabled }) => {
+  useInterfaceLanguage();
   const [releaseInput, setReleaseInput] = useState('');
   const [recordingInput, setRecordingInput] = useState('');
   const [discogsInput, setDiscogsInput] = useState('');
@@ -111,7 +114,7 @@ const MusicBrainzLookup = ({ disabled }) => {
       releaseId: typeof releaseInput === 'string' ? releaseInput.trim() || undefined : undefined,
     };
     if (!payload.releaseId && !payload.recordingId && !payload.discogsReleaseId) {
-      toast.error('Provide at least one MusicBrainz or Discogs identifier');
+      toast.error(interfaceText("Provide at least one MusicBrainz or Discogs identifier"));
       return;
     }
 
@@ -165,11 +168,10 @@ const MusicBrainzLookup = ({ disabled }) => {
       return (
         <List>
           <List.Item>
-            <List.Header>Album</List.Header>
+            <List.Header><LocalizedText source={"Album"} /></List.Header>
             <List.Description>
               {target.album.title} · {target.album.artist} ·{' '}
-              {target.album.tracks?.length ?? 0} tracks
-            </List.Description>
+              {target.album.tracks?.length ?? 0} <LocalizedText source={"tracks"} /></List.Description>
           </List.Item>
         </List>
       );
@@ -179,12 +181,12 @@ const MusicBrainzLookup = ({ disabled }) => {
       return (
         <List>
           <List.Item>
-            <List.Header>Track</List.Header>
+            <List.Header><LocalizedText source={"Track"} /></List.Header>
             <List.Description>
               {target.track.title} · {target.track.artist} ·{' '}
               {target.track.duration
                 ? `${(target.track.duration / 60_000).toFixed(2)} min`
-                : 'unknown length'}
+                : <LocalizedText source={"unknown length"} />}
             </List.Description>
           </List.Item>
         </List>
@@ -257,7 +259,7 @@ const MusicBrainzLookup = ({ disabled }) => {
       .slice(0, 8);
 
     if (queries.length === 0) {
-      toast.error('No nearby track nodes were available to queue');
+      toast.error(interfaceText("No nearby track nodes were available to queue"));
       return;
     }
 
@@ -271,7 +273,7 @@ const MusicBrainzLookup = ({ disabled }) => {
           : typeof count?.count === 'number'
             ? count.count
             : queries.length;
-        toast.success(`Started ${startedCount} nearby graph searches`);
+        toast.success(interfaceText("Started {startedCount} nearby graph searches", { "startedCount": (startedCount) }));
       }
     } catch (error) {
       console.error(error);
@@ -290,37 +292,37 @@ const MusicBrainzLookup = ({ disabled }) => {
         className="musicbrainz-lookup-segment"
         raised
       >
-        <Header as="h4">MusicBrainz / Discogs Lookup</Header>
+        <Header as="h4"><LocalizedText source={"MusicBrainz / Discogs Lookup"} /></Header>
         <Form>
           <Form.Field>
             <Input
               disabled={disabled || loading}
-              label="MusicBrainz Release ID"
+              label={interfaceText("MusicBrainz Release ID")}
               onChange={(event) => setReleaseInput(event.target.value)}
-              placeholder="e.g. 1c3b3668-..."
+              placeholder={interfaceText("e.g. 1c3b3668-...")}
               value={releaseInput}
-            />
+             {...interfaceTextProps("MusicBrainz Release ID")}/>
           </Form.Field>
           <Form.Field>
             <Input
               disabled={disabled || loading}
-              label="MusicBrainz Recording ID"
+              label={interfaceText("MusicBrainz Recording ID")}
               onChange={(event) => setRecordingInput(event.target.value)}
-              placeholder="e.g. 8af4c1b9-..."
+              placeholder={interfaceText("e.g. 8af4c1b9-...")}
               value={recordingInput}
-            />
+             {...interfaceTextProps("MusicBrainz Recording ID")}/>
           </Form.Field>
           <Form.Field>
             <Input
               disabled={disabled || loading}
-              label="Discogs Release/Master ID"
+              label={interfaceText("Discogs Release/Master ID")}
               onChange={(event) => setDiscogsInput(event.target.value)}
-              placeholder="e.g. 123456"
+              placeholder={interfaceText("e.g. 123456")}
               value={discogsInput}
-            />
+             {...interfaceTextProps("Discogs Release/Master ID")}/>
           </Form.Field>
           <Popup
-            content="Resolve a canonical MusicBrainz or Discogs target when you already know an identifier and want exact metadata."
+            content={interfaceText("Resolve a canonical MusicBrainz or Discogs target when you already know an identifier and want exact metadata.")}
             position="top center"
             trigger={
               <Button
@@ -329,12 +331,11 @@ const MusicBrainzLookup = ({ disabled }) => {
                 onClick={handleLookup}
                 primary
               >
-                Resolve target
-              </Button>
+                <LocalizedText source={"Resolve target"} /></Button>
             }
-          />
+           {...interfaceTextProps("Resolve a canonical MusicBrainz or Discogs target when you already know an identifier and want exact metadata.")}/>
           <Popup
-            content="Open the Discovery Graph around the resolved MusicBrainz target to branch into nearby releases, tracks, and artists."
+            content={interfaceText("Open the Discovery Graph around the resolved MusicBrainz target to branch into nearby releases, tracks, and artists.")}
             position="top center"
             trigger={
             <Button
@@ -342,12 +343,11 @@ const MusicBrainzLookup = ({ disabled }) => {
                 onClick={handleOpenGraph}
                 style={{ marginLeft: '0.5em' }}
               >
-                Graph
-              </Button>
+                <LocalizedText source={"Graph"} /></Button>
             }
-          />
+           {...interfaceTextProps("Open the Discovery Graph around the resolved MusicBrainz target to branch into nearby releases, tracks, and artists.")}/>
           <Popup
-            content="Open the same canonical target as a wider atlas-style discovery surface for neighborhood browsing."
+            content={interfaceText("Open the same canonical target as a wider atlas-style discovery surface for neighborhood browsing.")}
             position="top center"
             trigger={
             <Button
@@ -355,10 +355,9 @@ const MusicBrainzLookup = ({ disabled }) => {
                 onClick={handleOpenGraph}
                 style={{ marginLeft: '0.5em' }}
               >
-                Atlas
-              </Button>
+                <LocalizedText source={"Atlas"} /></Button>
             }
-          />
+           {...interfaceTextProps("Open the same canonical target as a wider atlas-style discovery surface for neighborhood browsing.")}/>
         </Form>
         {summary}
       </Segment>

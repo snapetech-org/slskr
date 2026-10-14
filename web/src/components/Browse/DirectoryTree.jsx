@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Button, Checkbox, Icon, List } from 'semantic-ui-react';
 
@@ -14,6 +16,7 @@ const DirectoryNode = ({
   selectedDirectoryName,
   selectedPaths,
 }) => {
+  useInterfaceLanguage();
   const directoryName =
     typeof directory?.name === 'string' ? directory.name : 'Unknown folder';
   const isExpanded = expandedPaths.has(directoryName);
@@ -44,11 +47,11 @@ const DirectoryNode = ({
 
           {/* Checkbox */}
           <Checkbox
-            aria-label={`Select ${folderName}`}
+            aria-label={interfaceText("Select {folderName}", { "folderName": (folderName) })}
             checked={isSelected}
             onChange={() => onToggleSelect(directory)}
             style={{ marginRight: '4px' }}
-          />
+           {...interfaceTextProps("Select {folderName}")}/>
 
           {/* Folder icon */}
           <Icon
@@ -126,6 +129,7 @@ const DirectoryTree = ({
   selectedDirectoryName,
   tree = [],
 }) => {
+  useInterfaceLanguage();
   const [expandedPaths, setExpandedPaths] = useState(new Set());
   const [selectedPaths, setSelectedPaths] = useState(new Set());
   const safeTree = useMemo(
@@ -300,15 +304,13 @@ const DirectoryTree = ({
           onClick={expandAll}
           size="tiny"
         >
-          <Icon name="expand" /> Expand All
-        </Button>
+          <Icon name="expand" /> <LocalizedText source={"Expand All"} /></Button>
         <Button
           compact
           onClick={collapseAll}
           size="tiny"
         >
-          <Icon name="compress" /> Collapse All
-        </Button>
+          <Icon name="compress" /> <LocalizedText source={"Collapse All"} /></Button>
         {selectedCount > 0 && (
           <>
             <Button
@@ -316,7 +318,7 @@ const DirectoryTree = ({
               onClick={clearSelection}
               size="tiny"
             >
-              <Icon name="x" /> Clear ({selectedCount})
+              <Icon name="x" /> <LocalizedText source={"Clear ("} />{selectedCount})
             </Button>
             <Button
               color="green"
@@ -326,8 +328,7 @@ const DirectoryTree = ({
               onClick={handleDownloadSelected}
               size="tiny"
             >
-              <Icon name="download" /> Download Selected
-            </Button>
+              <Icon name="download" /> <LocalizedText source={"Download Selected"} /></Button>
           </>
         )}
       </div>

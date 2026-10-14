@@ -32,7 +32,7 @@ for expected in \
 done
 
 main_runner_condition="((github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'))"
-trusted_runner_labels="fromJSON('[\"self-hosted\",\"Linux\",\"X64\",\"host\",\"linux-build\",\"linux-amd64\",\"kspls0\"]')"
+trusted_runner_selector="runs-on: \${{ ${main_runner_condition} && vars.TRUSTED_MAIN_RUNNERS_ENABLED == 'true' && fromJSON('{\"group\":\"trusted-main\",\"labels\":[\"self-hosted\",\"Linux\",\"X64\",\"host\",\"linux-build\",\"linux-amd64\"]}') || 'ubuntu-latest' }}"
 push_branches="$(
   awk '
     /^  push:$/ { in_push=1; next }
@@ -51,8 +51,12 @@ if [[ "$push_branches" != "main" ]]; then
   printf 'workflow release policy check failed: only main pushes may enter the self-hosted CI workflow\n' >&2
   status=1
 fi
-if ! rg -n -F "$trusted_runner_labels" .github/workflows/ci.yml >/dev/null; then
-  printf 'workflow release policy check failed: trusted Linux jobs must target the server-local runner label\n' >&2
+if ! rg -n -F "$trusted_runner_selector" .github/workflows/ci.yml >/dev/null; then
+  printf 'workflow release policy check failed: trusted Linux jobs must select the ready trusted-main group and otherwise stay hosted\n' >&2
+  status=1
+fi
+if rg -n 'kspls0' .github/workflows/ci.yml >/dev/null; then
+  printf 'workflow release policy check failed: shared-pool workflow must not pin a physical runner hostname\n' >&2
   status=1
 fi
 if ! rg -n -F 'CARGO_BUILD_JOBS=1' .github/workflows/ci.yml >/dev/null; then
@@ -96,7 +100,7 @@ if ! rg -n -F "$main_runner_condition" .github/workflows/ci.yml >/dev/null; then
   printf 'workflow release policy check failed: local runner policy must be limited to main pushes and manual runs\n' >&2
   status=1
 fi
-if rg -n '^[[:space:]]*runs-on:.*self-hosted' .github/workflows \
+if rg -n '^[[:space:]]*(runs-on|labels):.*self-hosted' .github/workflows \
   | rg -v -F "$main_runner_condition"; then
   printf 'workflow release policy check failed: self-hosted CI runners must be restricted to main pushes or manual main runs\n' >&2
   status=1

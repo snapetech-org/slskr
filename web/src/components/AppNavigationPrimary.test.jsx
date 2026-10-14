@@ -1,27 +1,31 @@
 import '@testing-library/jest-dom';
 import AppNavigationPrimary from './AppNavigationPrimary';
-import UI_LABELS from '../lib/ui-labels.json';
+import ARABIC_LABELS from '../lib/locales/ui-labels.ar.json';
 import {
-  INTERFACE_LANGUAGE_OPTIONS,
   resetInterfaceLanguage,
   setInterfaceLanguage,
 } from '../lib/interfaceLocale';
-import { cleanup, render, screen } from '@testing-library/react';
+import { act, cleanup, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import React from 'react';
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
+beforeEach(() => {
+  vi.stubGlobal('fetch', vi.fn(async () => ({
+    ok: true,
+    json: async () => ARABIC_LABELS,
+  })));
+});
 
 afterEach(() => {
   cleanup();
   resetInterfaceLanguage();
+  vi.unstubAllGlobals();
 });
 
 describe('primary navigation language metadata', () => {
-  it('keeps translated and English fallback metadata scoped to each navigation label', () => {
-    setInterfaceLanguage('ar');
-    const arabicIndex = INTERFACE_LANGUAGE_OPTIONS.slice(1).findIndex(
-      ({ value }) => value === 'ar',
-    );
+  it('keeps translated and English fallback metadata scoped to each navigation label', async () => {
+    await act(async () => { await setInterfaceLanguage('ar'); });
 
     render(
       <MemoryRouter>
@@ -36,7 +40,7 @@ describe('primary navigation language metadata', () => {
     );
 
     const navigation = screen.getByRole('navigation', {
-      name: UI_LABELS['Primary navigation'][arabicIndex],
+      name: ARABIC_LABELS['Primary navigation'],
     });
     expect(navigation).toHaveAttribute('lang', 'ar');
     expect(navigation).not.toHaveAttribute('dir', 'rtl');
@@ -46,11 +50,11 @@ describe('primary navigation language metadata', () => {
     );
     const accessibleLabel = document.getElementById('primary-navigation-label');
     expect(accessibleLabel).toHaveTextContent(
-      UI_LABELS['Primary navigation'][arabicIndex],
+      ARABIC_LABELS['Primary navigation'],
     );
     expect(accessibleLabel).toHaveAttribute('lang', 'ar');
     expect(accessibleLabel).toHaveAttribute('dir', 'rtl');
-    const translatedSearch = screen.getByText(UI_LABELS.Search[arabicIndex]);
+    const translatedSearch = screen.getByText(ARABIC_LABELS.Search);
     expect(translatedSearch).toHaveAttribute('lang', 'ar');
     expect(translatedSearch).toHaveAttribute('dir', 'rtl');
     for (const fallback of ['Canary', 'Lidarr', 'Solid']) {
@@ -61,11 +65,8 @@ describe('primary navigation language metadata', () => {
     expect(document.documentElement.dir).toBe('ltr');
   });
 
-  it('localizes the More dropdown accessible name and metadata', () => {
-    setInterfaceLanguage('ar');
-    const arabicIndex = INTERFACE_LANGUAGE_OPTIONS.slice(1).findIndex(
-      ({ value }) => value === 'ar',
-    );
+  it('localizes the More dropdown accessible name and metadata', async () => {
+    await act(async () => { await setInterfaceLanguage('ar'); });
 
     render(
       <MemoryRouter>
@@ -82,7 +83,7 @@ describe('primary navigation language metadata', () => {
     const moreDropdown = screen.getByTestId('nav-more');
     expect(moreDropdown).toHaveAttribute(
       'aria-label',
-      UI_LABELS['More navigation options'][arabicIndex],
+      ARABIC_LABELS['More navigation options'],
     );
     expect(moreDropdown).toHaveAttribute('lang', 'ar');
     expect(moreDropdown).toHaveAttribute('dir', 'rtl');

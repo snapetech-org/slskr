@@ -59,6 +59,8 @@ vi.mock('../../../lib/util', () => ({
     String(filename).replaceAll('\\', '/').split('/').slice(0, -1).join('/'),
   ),
   sleep: vi.fn(async () => undefined),
+  formatRegionalNumber: vi.fn((value) => String(value)),
+  useRegionalFormat: vi.fn(() => 'system'),
 }));
 vi.mock('../../../lib/wishlist', () => ({
   getIgnoredResults: vi.fn(),

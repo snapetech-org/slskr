@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import React, { useState } from 'react';
 import { getLocalStorageItem, setLocalStorageItem } from '../../lib/storage';
 import PlaceholderSegment from '../Shared/PlaceholderSegment';
@@ -28,6 +30,7 @@ const CollapsibleSection = ({
   storageKey,
   title,
 }) => {
+  useInterfaceLanguage();
   const [open, setOpen] = useState(() => {
     if (!storageKey) {
       return defaultOpen;
@@ -94,6 +97,7 @@ const CollapsibleSection = ({
 };
 
 const SearchesListView = ({ actions, inputRef, state }) => {
+  useInterfaceLanguage();
   const {
     acquisitionProfile,
     acquisitionProfileOptions,
@@ -122,8 +126,7 @@ const SearchesListView = ({ actions, inputRef, state }) => {
   const connectionNotice = connecting && hasSearchData ? (
     <Message info size="small">
       <Icon loading name="circle notched" />
-      Connecting to live search updates. Your loaded searches are available below.
-    </Message>
+      <LocalizedText source={"Connecting to live search updates. Your loaded searches are available below."} /></Message>
   ) : null;
 
   if (runtimeProfile === 'legacy') {
@@ -157,18 +160,18 @@ const SearchesListView = ({ actions, inputRef, state }) => {
             input={
               <input
                 data-lpignore="true"
-                placeholder="Connect to server to perform a search"
+                placeholder={interfaceText("Connect to server to perform a search")}
                 type="search"
-              />
+               {...interfaceTextProps("Connect to server to perform a search")}/>
             }
             loading={creating}
             onKeyUp={(keyUpEvent) =>
               keyUpEvent.key === 'Enter' ? create() : ''
             }
-            placeholder="Search phrase"
+            placeholder={interfaceText("Search phrase")}
             ref={inputRef}
             size="big"
-          />
+           {...interfaceTextProps("Search phrase")}/>
         </Segment>
         {Object.keys(searches).length === 0 ? (
           <PlaceholderSegment
@@ -193,8 +196,8 @@ const SearchesListView = ({ actions, inputRef, state }) => {
       {connectionNotice}
       <CollapsibleSection
         storageKey="slskr.search.section.search"
-        title="Search"
-      >
+        title={interfaceText("Search")}
+       {...interfaceTextProps("Search")}>
         <Segment className="search-segment">
           <div className="search-segment-icon">
             <Icon
@@ -206,29 +209,29 @@ const SearchesListView = ({ actions, inputRef, state }) => {
             action={
               <>
                 <Popup
-                  content="Queue this search without leaving the search page."
+                  content={interfaceText("Queue this search without leaving the search page.")}
                   position="top center"
                   trigger={
                     <Button
-                      aria-label="Queue search"
+                      aria-label={interfaceText("Queue search")}
                       disabled={creating || !normalizedServer.isConnected}
                       icon="plus"
                       onClick={create}
-                    />
+                     {...interfaceTextProps("Queue search")}/>
                   }
-                />
+                 {...interfaceTextProps("Queue this search without leaving the search page.")}/>
                 <Popup
-                  content="Start this search and open its detailed results immediately."
+                  content={interfaceText("Start this search and open its detailed results immediately.")}
                   position="top center"
                   trigger={
                     <Button
-                      aria-label="Search and open results"
+                      aria-label={interfaceText("Search and open results")}
                       disabled={creating || !normalizedServer.isConnected}
                       icon="search"
                       onClick={() => create({ navigate: true })}
-                    />
+                     {...interfaceTextProps("Search and open results")}/>
                   }
-                />
+                 {...interfaceTextProps("Start this search and open its detailed results immediately.")}/>
               </>
             }
             className="search-input"
@@ -247,10 +250,10 @@ const SearchesListView = ({ actions, inputRef, state }) => {
             }
             loading={creating}
             onKeyUp={(keyUpEvent) => (keyUpEvent.key === 'Enter' ? create() : '')}
-            placeholder="Search phrase"
+            placeholder={interfaceText("Search phrase")}
             ref={inputRef}
             size="big"
-          />
+           {...interfaceTextProps("Search phrase")}/>
           {scenePodBridgeEnabled && (
             <div
               style={{
@@ -269,8 +272,7 @@ const SearchesListView = ({ actions, inputRef, state }) => {
                 }}
               >
                 <span style={{ fontSize: '0.95em', fontWeight: 'bold' }}>
-                  Search Sources:
-                </span>
+                  <LocalizedText source={"Search Sources:"} /></span>
                 <Checkbox
                   checked={providerPod}
                   label={
@@ -293,8 +295,7 @@ const SearchesListView = ({ actions, inputRef, state }) => {
                         name="globe"
                         style={{ marginRight: '0.25em' }}
                       />
-                      Soulseek Scene
-                    </label>
+                      <LocalizedText source={"Soulseek Scene"} /></label>
                   }
                   onChange={(e, { checked }) => setProviderScene(checked)}
                   toggle
@@ -307,8 +308,7 @@ const SearchesListView = ({ actions, inputRef, state }) => {
                       fontStyle: 'italic',
                     }}
                   >
-                    <Icon name="warning" /> At least one source must be selected
-                  </span>
+                    <Icon name="warning" /> <LocalizedText source={"At least one source must be selected"} /></span>
                 )}
               </div>
             </div>
@@ -316,24 +316,23 @@ const SearchesListView = ({ actions, inputRef, state }) => {
           <div className="search-acquisition-profile-strip">
             <div className="search-acquisition-profile-label">
               <Icon name={acquisitionProfile.icon} />
-              Acquisition Profile
-            </div>
+              <LocalizedText source={"Acquisition Profile"} /></div>
             {runtimeProfile !== 'native' && (
               <Popup
-                content={`${acquisitionProfile.label}: ${acquisitionProfile.description}`}
+                content={interfaceText("{label}: {description}", { "label": (acquisitionProfile.label), "description": (acquisitionProfile.description) })}
                 position="top center"
                 trigger={
                   <Dropdown
-                    aria-label="Acquisition profile"
+                    aria-label={interfaceText("Acquisition profile")}
                     className="search-acquisition-profile-dropdown"
                     data-testid="acquisition-profile-select"
                     onChange={updateAcquisitionProfile}
                     options={acquisitionProfileOptions}
                     selection
                     value={acquisitionProfile.id}
-                  />
+                   {...interfaceTextProps("Acquisition profile")}/>
                 }
-              />
+               {...interfaceTextProps("{label}: {description}")}/>
             )}
             <span className="search-acquisition-profile-summary">
               {acquisitionProfile.summary}
@@ -344,8 +343,8 @@ const SearchesListView = ({ actions, inputRef, state }) => {
       <CollapsibleSection
         defaultOpen
         storageKey="slskr.search.section.searchResults"
-        title="Search Results"
-      >
+        title={interfaceText("Search Results")}
+       {...interfaceTextProps("Search Results")}>
         {Object.keys(searches).length === 0 ? (
           <PlaceholderSegment
             caption="No searches to display"
@@ -366,36 +365,36 @@ const SearchesListView = ({ actions, inputRef, state }) => {
       <CollapsibleSection
         defaultOpen={false}
         storageKey="slskr.search.section.songid"
-        title="SongID"
-      >
+        title={interfaceText("SongID")}
+       {...interfaceTextProps("SongID")}>
         <SongIDPanel disabled={!normalizedServer.isConnected} />
       </CollapsibleSection>
       <CollapsibleSection
         defaultOpen={false}
         storageKey="slskr.search.section.musicbrainz"
-        title="MusicBrainz Lookup"
-      >
+        title={interfaceText("MusicBrainz Lookup")}
+       {...interfaceTextProps("MusicBrainz Lookup")}>
         <MusicBrainzLookup disabled={!normalizedServer.isConnected} />
       </CollapsibleSection>
       <CollapsibleSection
         defaultOpen={false}
         storageKey="slskr.search.section.discographyCoverage"
-        title="Discography Concierge"
-      >
+        title={interfaceText("Discography Concierge")}
+       {...interfaceTextProps("Discography Concierge")}>
         <DiscographyCoveragePanel disabled={!normalizedServer.isConnected} />
       </CollapsibleSection>
       <CollapsibleSection
         defaultOpen={false}
         storageKey="slskr.search.section.artistReleaseRadar"
-        title="Artist Release Radar"
-      >
+        title={interfaceText("Artist Release Radar")}
+       {...interfaceTextProps("Artist Release Radar")}>
         <ArtistReleaseRadarPanel disabled={!normalizedServer.isConnected} />
       </CollapsibleSection>
       <CollapsibleSection
         defaultOpen={false}
         storageKey="slskr.search.section.soulseekDiscovery"
-        title="Soulseek Discovery"
-      >
+        title={interfaceText("Soulseek Discovery")}
+       {...interfaceTextProps("Soulseek Discovery")}>
         <SoulseekDiscoveryPanel
           disabled={!normalizedServer.isConnected}
           onSearch={(search) => create({ navigate: true, search })}
@@ -404,22 +403,22 @@ const SearchesListView = ({ actions, inputRef, state }) => {
       <CollapsibleSection
         defaultOpen={false}
         storageKey="slskr.search.section.federatedTaste"
-        title="Federated Taste"
-      >
+        title={interfaceText("Federated Taste")}
+       {...interfaceTextProps("Federated Taste")}>
         <FederatedTasteRecommendationsPanel disabled={!normalizedServer.isConnected} />
       </CollapsibleSection>
       <CollapsibleSection
         defaultOpen={false}
         storageKey="slskr.search.section.discoveryGraphAtlas"
-        title="Discovery Graph Atlas"
-      >
+        title={interfaceText("Discovery Graph Atlas")}
+       {...interfaceTextProps("Discovery Graph Atlas")}>
         <DiscoveryGraphAtlasPanel disabled={!normalizedServer.isConnected} />
       </CollapsibleSection>
       <CollapsibleSection
         defaultOpen={false}
         storageKey="slskr.search.section.albumCompletion"
-        title="Album Completion"
-      >
+        title={interfaceText("Album Completion")}
+       {...interfaceTextProps("Album Completion")}>
         <AlbumCompletionPanel disabled={!normalizedServer.isConnected} />
       </CollapsibleSection>
     </>

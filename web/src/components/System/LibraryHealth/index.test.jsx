@@ -154,7 +154,7 @@ describe('LibraryHealth', () => {
       });
     });
     expect(await screen.findByTestId('library-health-report-message')).toHaveTextContent(
-      'Started 1 bounded replacement search for selected Library Health issues.',
+      'Bounded replacement searches started for selected Library Health issues: 1.',
     );
 
     expect(screen.queryByTestId('library-health-send-quarantine-review')).not.toBeInTheDocument();
@@ -179,7 +179,7 @@ describe('LibraryHealth', () => {
       expect(libraryHealth.createRemediationJob).toHaveBeenCalledWith(['issue-1']);
     });
     expect(await screen.findByTestId('library-health-report-message')).toHaveTextContent(
-      'Queued remediation job for 1 auto-fixable issue.',
+      'Remediation job queued for auto-fixable issues: 1.',
     );
   });
 });

@@ -1,3 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+
+
 import './Security.css';
 import * as securityApi from '../../../lib/security';
 import { toDisplayError } from '../../../lib/errors';
@@ -18,6 +22,7 @@ import {
 } from 'semantic-ui-react';
 
 const Security = () => {
+  useInterfaceLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -70,7 +75,7 @@ const Security = () => {
           active
           inverted
         >
-          <Loader>Loading Security Status...</Loader>
+          <Loader><LocalizedText source={"Loading Security Status..."} /></Loader>
         </Dimmer>
       </Segment>
     );
@@ -79,16 +84,15 @@ const Security = () => {
   if (error && !dashboard) {
     return (
       <Message negative>
-        <Message.Header>Security Module Unavailable</Message.Header>
+        <Message.Header><LocalizedText source={"Security Module Unavailable"} /></Message.Header>
         <p>{error}</p>
-        <p>Security features may not be enabled on this server.</p>
+        <p><LocalizedText source={"Security features may not be enabled on this server."} /></p>
         <Button
           disabled={refreshing}
           onClick={fetchData}
           size="small"
         >
-          Retry
-        </Button>
+          <LocalizedText source={"Retry"} /></Button>
       </Message>
     );
   }
@@ -116,41 +120,28 @@ const Security = () => {
       <Message info>
         <Message.Header>
           <Icon name="info circle" />
-          Security System Active - No Activity Yet
-        </Message.Header>
+          <LocalizedText source={"Security System Active - No Activity Yet"} /></Message.Header>
         <p>
-          The security subsystem is running but hasn't collected data yet. This
-          is normal for:
-        </p>
+          <LocalizedText source={"The security subsystem is running but hasn't collected data yet. This is normal for:"} /></p>
         <ul>
           <li>
-            <strong>Fresh installations</strong> - Security features need time
-            to observe network activity
-          </li>
+            <strong><LocalizedText source={"Fresh installations"} /></strong> <LocalizedText source={"- Security features need time to observe network activity"} /></li>
           <li>
-            <strong>Standalone mode</strong> - Most security features activate
-            when mesh networking is enabled
-          </li>
+            <strong><LocalizedText source={"Standalone mode"} /></strong> <LocalizedText source={"- Most security features activate when mesh networking is enabled"} /></li>
           <li>
-            <strong>Low traffic</strong> - Peer reputation, violation tracking,
-            and behavioral analysis require peer interactions
-          </li>
+            <strong><LocalizedText source={"Low traffic"} /></strong> <LocalizedText source={"- Peer reputation, violation tracking, and behavioral analysis require peer interactions"} /></li>
         </ul>
         <p>
-          <strong>To activate security features:</strong>
+          <strong><LocalizedText source={"To activate security features:"} /></strong>
         </p>
         <ol>
-          <li>Connect to the Soulseek network (if not already connected)</li>
+          <li><LocalizedText source={"Connect to the Soulseek network (if not already connected)"} /></li>
           <li>
-            Enable mesh networking via DHT/Overlay (check footer for
-            connectivity)
-          </li>
-          <li>Wait for peer connections and transfer activity</li>
+            <LocalizedText source={"Enable mesh networking via DHT/Overlay (check footer for connectivity)"} /></li>
+          <li><LocalizedText source={"Wait for peer connections and transfer activity"} /></li>
         </ol>
         <p>
-          Security monitoring will begin automatically once peer activity is
-          detected. Check the <strong>Mesh</strong> tab to verify connectivity.
-        </p>
+          <LocalizedText source={"Security monitoring will begin automatically once peer activity is detected. Check the"} />{" "}<strong><LocalizedText source={"Mesh"} /></strong> <LocalizedText source={"tab to verify connectivity."} /></p>
         <Button
           disabled={refreshing}
           loading={refreshing}
@@ -159,8 +150,7 @@ const Security = () => {
           size="small"
         >
           <Icon name="refresh" />
-          Refresh Status
-        </Button>
+          <LocalizedText source={"Refresh Status"} /></Button>
       </Message>
     );
   }
@@ -170,8 +160,7 @@ const Security = () => {
       menuItem: (
         <span>
           <Icon name="shield alternate" />
-          Status
-        </span>
+          <LocalizedText source={"Status"} /></span>
       ),
       render: () => (
         <Tab.Pane>
@@ -180,10 +169,8 @@ const Security = () => {
               <Header as="h3">
                 <Icon name="shield alternate" />
                 <Header.Content>
-                  Security Status
-                  <Header.Subheader>
-                    Real-time security monitoring
-                  </Header.Subheader>
+                  <LocalizedText source={"Security Status"} /><Header.Subheader>
+                    <LocalizedText source={"Real-time security monitoring"} /></Header.Subheader>
                 </Header.Content>
               </Header>
               <Button
@@ -192,8 +179,8 @@ const Security = () => {
                 loading={refreshing}
                 onClick={fetchData}
                 size="tiny"
-                title="Refresh"
-              />
+                title={interfaceText("Refresh")}
+               {...interfaceTextProps("Refresh")}/>
             </div>
 
             <Statistic.Group
@@ -204,50 +191,46 @@ const Security = () => {
                 <Statistic.Value>
                   {stats.networkGuardStats?.globalConnections ?? 0}
                 </Statistic.Value>
-                <Statistic.Label>Active Connections</Statistic.Label>
+                <Statistic.Label><LocalizedText source={"Active Connections"} /></Statistic.Label>
               </Statistic>
               <Statistic color="teal">
                 <Statistic.Value>
                   {stats.reputationStats?.totalPeers ?? 0}
                 </Statistic.Value>
-                <Statistic.Label>Tracked Peers</Statistic.Label>
+                <Statistic.Label><LocalizedText source={"Tracked Peers"} /></Statistic.Label>
               </Statistic>
               <Statistic color="orange">
                 <Statistic.Value>
                   {stats.violationStats?.trackedIps ?? 0}
                 </Statistic.Value>
-                <Statistic.Label>Tracked Violators</Statistic.Label>
+                <Statistic.Label><LocalizedText source={"Tracked Violators"} /></Statistic.Label>
               </Statistic>
               <Statistic color="green">
                 <Statistic.Value>
                   {stats.eventStats?.totalEvents ?? 0}
                 </Statistic.Value>
-                <Statistic.Label>Security Events</Statistic.Label>
+                <Statistic.Label><LocalizedText source={"Security Events"} /></Statistic.Label>
               </Statistic>
             </Statistic.Group>
 
             <Segment>
               <Header as="h4">
                 <Icon name="info circle" />
-                Security Overview
-              </Header>
+                <LocalizedText source={"Security Overview"} /></Header>
               <p>
-                <strong>Network Guard:</strong> Rate limiting and connection
-                caps are {stats.networkGuardStats ? 'active' : 'inactive'}.
+                <strong><LocalizedText source={"Network Guard:"} /></strong> <LocalizedText source={"Rate limiting and connection caps are"} />{" "}{stats.networkGuardStats ? <LocalizedText source={"active"} /> : <LocalizedText source={"inactive"} />}.
               </p>
               <p>
-                <strong>Peer Reputation:</strong>{' '}
-                {stats.reputationStats?.trustedPeers ?? 0} trusted,{' '}
-                {stats.reputationStats?.untrustedPeers ?? 0} untrusted peers.
-              </p>
+                <strong><LocalizedText source={"Peer Reputation:"} /></strong>{' '}
+                {stats.reputationStats?.trustedPeers ?? 0} <LocalizedText source={"trusted,"} />{' '}
+                {stats.reputationStats?.untrustedPeers ?? 0} <LocalizedText source={"untrusted peers."} /></p>
               <p>
-                <strong>Violations:</strong>{' '}
-                {stats.violationStats?.trackedIps ?? 0} IPs,{' '}
-                {stats.violationStats?.trackedUsernames ?? 0} usernames tracked.
-              </p>
+                <strong><LocalizedText source={"Violations:"} /></strong>{' '}
+                {stats.violationStats?.trackedIps ?? 0} <LocalizedText source={"IPs,"} />{' '}
+                {stats.violationStats?.trackedUsernames ?? 0} <LocalizedText source={"usernames tracked."} /></p>
               <p>
-                <strong>Crypto Health:</strong> Entropy checks:{' '}
-                {stats.entropyStats?.checkCount ?? 0}, Warnings:{' '}
+                <strong><LocalizedText source={"Crypto Health:"} /></strong> <LocalizedText source={"Entropy checks:"} />{' '}
+                {stats.entropyStats?.checkCount ?? 0}<LocalizedText source={", Warnings:"} />{' '}
                 {stats.entropyStats?.warningCount ?? 0}
               </p>
             </Segment>
@@ -259,8 +242,7 @@ const Security = () => {
       menuItem: (
         <span>
           <Icon name="user secret" />
-          Adversarial
-        </span>
+          <LocalizedText source={"Adversarial"} /></span>
       ),
       render: () => (
         <Tab.Pane>

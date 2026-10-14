@@ -1,3 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+
+
 import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
@@ -30,6 +34,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const PodDhtPublishingPanel = ({ visible = true }) => {
+  useInterfaceLanguage();
   useRegionalFormat();
   const mountedRef = useRef(true);
 
@@ -54,7 +59,7 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
 
   const handlePublishPod = async () => {
     if (!podToPublish.trim()) {
-      toast.warning('Please enter pod JSON data');
+      toast.warning(interfaceText("Please enter pod JSON data"));
       return;
     }
 
@@ -74,7 +79,7 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
 
   const handleRetrievePodMetadata = async () => {
     if (!podMetadataToRetrieve.trim()) {
-      toast.warning('Please enter a pod ID');
+      toast.warning(interfaceText("Please enter a pod ID"));
       return;
     }
 
@@ -94,7 +99,7 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
 
   const handleUnpublishPod = async () => {
     if (!podToUnpublish.trim()) {
-      toast.warning('Please enter a pod ID');
+      toast.warning(interfaceText("Please enter a pod ID"));
       return;
     }
 
@@ -136,62 +141,54 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
             <Card.Content>
               <Card.Header>
                 <Icon name="podcast" />
-                PodCore DHT Publishing
-              </Card.Header>
+                <LocalizedText source={"PodCore DHT Publishing"} /></Card.Header>
               <Card.Description>
-                Publish and manage pod metadata on the decentralized DHT for
-                discovery
-              </Card.Description>
-              <PodWorkflowNotice title="Publishes pod metadata">
-                Publishing or updating a listed pod can make pod identifiers,
-                tags, focus content IDs, and descriptive metadata discoverable
-                by other mesh participants.
-              </PodWorkflowNotice>
+                <LocalizedText source={"Publish and manage pod metadata on the decentralized DHT for discovery"} /></Card.Description>
+              <PodWorkflowNotice title={interfaceText("Publishes pod metadata")} {...interfaceTextProps("Publishes pod metadata")}>
+                <LocalizedText source={"Publishing or updating a listed pod can make pod identifiers, tags, focus content IDs, and descriptive metadata discoverable by other mesh participants."} /></PodWorkflowNotice>
             </Card.Content>
 
             {/* Publish Pod */}
             <Card.Content>
-              <Header size="small">Publish Pod to DHT</Header>
+              <Header size="small"><LocalizedText source={"Publish Pod to DHT"} /></Header>
               <Form>
                 <Form.TextArea
-                  label="Pod JSON"
+                  label={interfaceText("Pod JSON")}
                   onChange={(e) => setPodToPublish(e.target.value)}
-                  placeholder='{"id": {"value": "pod:artist:mb:daft-punk-hash"}, "displayName": "Daft Punk Fans", "visibility": "Listed", "focusType": "ContentId", "focusContentId": {"domain": "audio", "type": "artist", "id": "daft-punk-hash"}, "tags": ["electronic", "french-house"], "createdAt": "2024-01-01T00:00:00Z", "createdBy": "alice", "metadata": {"description": "A community for Daft Punk fans", "memberCount": 150}}'
+                  placeholder={"{\"id\": {\"value\": \"pod:artist:mb:daft-punk-hash\"}, \"displayName\": \"Daft Punk Fans\", \"visibility\": \"Listed\", \"focusType\": \"ContentId\", \"focusContentId\": {\"domain\": \"audio\", \"type\": \"artist\", \"id\": \"daft-punk-hash\"}, \"tags\": [\"electronic\", \"french-house\"], \"createdAt\": \"2024-01-01T00:00:00Z\", \"createdBy\": \"alice\", \"metadata\": {\"description\": \"A community for Daft Punk fans\", \"memberCount\": 150}}"}
                   rows={6}
                   value={podToPublish}
-                />
+                 {...interfaceTextProps("Pod JSON")} dir="ltr"/>
                 <Button
                   disabled={publishingPod || !podToPublish.trim()}
                   loading={publishingPod}
                   onClick={handlePublishPod}
                   primary
                 >
-                  Publish Pod
-                </Button>
+                  <LocalizedText source={"Publish Pod"} /></Button>
               </Form>
 
               {podPublishingResult && (
                 <div style={{ marginTop: '1em' }}>
                   {podPublishingResult.error ? (
                     <Message error>
-                      <p>Failed to publish pod: {podPublishingResult.error}</p>
+                      <p><LocalizedText source={"Failed to publish pod:"} />{" "}{podPublishingResult.error}</p>
                     </Message>
                   ) : (
                     <Message success>
                       <Message.Header>
-                        Pod Published Successfully
-                      </Message.Header>
+                        <LocalizedText source={"Pod Published Successfully"} /></Message.Header>
                       <p>
-                        <strong>Pod ID:</strong>{' '}
+                        <strong><LocalizedText source={"Pod ID:"} /></strong>{' '}
                         {podPublishingResult.podId?.value ||
                           podPublishingResult.podId}
                         <br />
-                        <strong>DHT Key:</strong> {podPublishingResult.dhtKey}
+                        <strong><LocalizedText source={"DHT Key:"} /></strong> {podPublishingResult.dhtKey}
                         <br />
-                        <strong>Published:</strong>{' '}
+                        <strong><LocalizedText source={"Published:"} /></strong>{' '}
                         {formatRegionalDateTime(podPublishingResult.publishedAt)}
                         <br />
-                        <strong>Expires:</strong>{' '}
+                        <strong><LocalizedText source={"Expires:"} /></strong>{' '}
                         {formatRegionalDateTime(podPublishingResult.expiresAt)}
                       </p>
                     </Message>
@@ -204,14 +201,14 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
               <Grid>
                 <Grid.Column width={8}>
                   {/* Retrieve Pod Metadata */}
-                  <Header size="small">Retrieve Pod Metadata</Header>
+                  <Header size="small"><LocalizedText source={"Retrieve Pod Metadata"} /></Header>
                   <Form>
                     <Form.Input
-                      label="Pod ID"
+                      label={interfaceText("Pod ID")}
                       onChange={(e) => setPodMetadataToRetrieve(e.target.value)}
                       placeholder="pod:artist:mb:daft-punk-hash"
                       value={podMetadataToRetrieve}
-                    />
+                     {...interfaceTextProps("Pod ID")}/>
                     <Button
                       disabled={
                         retrievingPodMetadata || !podMetadataToRetrieve.trim()
@@ -220,8 +217,7 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
                       loading={retrievingPodMetadata}
                       onClick={handleRetrievePodMetadata}
                     >
-                      Retrieve Metadata
-                    </Button>
+                      <LocalizedText source={"Retrieve Metadata"} /></Button>
                   </Form>
 
                   {podMetadataResult && (
@@ -229,40 +225,39 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
                       {podMetadataResult.error ? (
                         <Message error>
                           <p>
-                            Failed to retrieve metadata:{' '}
+                            <LocalizedText source={"Failed to retrieve metadata:"} />{' '}
                             {podMetadataResult.error}
                           </p>
                         </Message>
                       ) : podMetadataResult.found ? (
                         <Message success>
                           <Message.Header>
-                            Pod Metadata Retrieved
-                          </Message.Header>
+                            <LocalizedText source={"Pod Metadata Retrieved"} /></Message.Header>
                           <p>
-                            <strong>Pod ID:</strong>{' '}
+                            <strong><LocalizedText source={"Pod ID:"} /></strong>{' '}
                             {podMetadataResult.podId?.value ||
                               podMetadataResult.podId}
                             <br />
-                            <strong>Signature Valid:</strong>{' '}
-                            {podMetadataResult.isValidSignature ? 'Yes' : 'No'}
+                            <strong><LocalizedText source={"Signature Valid:"} /></strong>{' '}
+                            {podMetadataResult.isValidSignature ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
                             <br />
-                            <strong>Retrieved:</strong>{' '}
+                            <strong><LocalizedText source={"Retrieved:"} /></strong>{' '}
                             {formatRegionalDateTime(podMetadataResult.retrievedAt)}
                             <br />
-                            <strong>Expires:</strong>{' '}
+                            <strong><LocalizedText source={"Expires:"} /></strong>{' '}
                             {formatRegionalDateTime(podMetadataResult.expiresAt)}
                             <br />
-                            <strong>Display Name:</strong>{' '}
+                            <strong><LocalizedText source={"Display Name:"} /></strong>{' '}
                             {podMetadataResult.publishedPod?.displayName}
                             <br />
-                            <strong>Members:</strong>{' '}
+                            <strong><LocalizedText source={"Members:"} /></strong>{' '}
                             {podMetadataResult.publishedPod?.metadata
                               ?.memberCount || 'Unknown'}
                           </p>
                         </Message>
                       ) : (
                         <Message warning>
-                          <p>Pod not found in DHT</p>
+                          <p><LocalizedText source={"Pod not found in DHT"} /></p>
                         </Message>
                       )}
                     </div>
@@ -271,14 +266,14 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
 
                 <Grid.Column width={8}>
                   {/* Unpublish Pod */}
-                  <Header size="small">Unpublish Pod from DHT</Header>
+                  <Header size="small"><LocalizedText source={"Unpublish Pod from DHT"} /></Header>
                   <Form>
                     <Form.Input
-                      label="Pod ID"
+                      label={interfaceText("Pod ID")}
                       onChange={(e) => setPodToUnpublish(e.target.value)}
                       placeholder="pod:artist:mb:daft-punk-hash"
                       value={podToUnpublish}
-                    />
+                     {...interfaceTextProps("Pod ID")}/>
                     <Button
                       color="red"
                       disabled={unpublishingPod || !podToUnpublish.trim()}
@@ -286,8 +281,7 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
                       loading={unpublishingPod}
                       onClick={handleUnpublishPod}
                     >
-                      Unpublish Pod
-                    </Button>
+                      <LocalizedText source={"Unpublish Pod"} /></Button>
                   </Form>
 
                   {podUnpublishResult && (
@@ -295,12 +289,12 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
                       {podUnpublishResult.error ? (
                         <Message error>
                           <p>
-                            Failed to unpublish pod: {podUnpublishResult.error}
+                            <LocalizedText source={"Failed to unpublish pod:"} />{" "}{podUnpublishResult.error}
                           </p>
                         </Message>
                       ) : (
                         <Message success>
-                          <p>Pod unpublished successfully from DHT</p>
+                          <p><LocalizedText source={"Pod unpublished successfully from DHT"} /></p>
                         </Message>
                       )}
                     </div>
@@ -318,42 +312,41 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
                   onClick={handleLoadPodPublishingStats}
                   primary
                 >
-                  Load Pod Publishing Stats
-                </Button>
+                  <LocalizedText source={"Load Pod Publishing Stats"} /></Button>
               </Button.Group>
 
               {podPublishingStats && !podPublishingStats.error && (
                 <div style={{ marginTop: '1em' }}>
                   <Message>
-                    <Message.Header>Pod Publishing Statistics</Message.Header>
+                    <Message.Header><LocalizedText source={"Pod Publishing Statistics"} /></Message.Header>
                     <p>
-                      <strong>Total Published:</strong>{' '}
+                      <strong><LocalizedText source={"Total Published:"} /></strong>{' '}
                       {podPublishingStats.totalPublished}
                       <br />
-                      <strong>Active Publications:</strong>{' '}
+                      <strong><LocalizedText source={"Active Publications:"} /></strong>{' '}
                       {podPublishingStats.activePublications}
                       <br />
-                      <strong>Expired Publications:</strong>{' '}
+                      <strong><LocalizedText source={"Expired Publications:"} /></strong>{' '}
                       {podPublishingStats.expiredPublications}
                       <br />
-                      <strong>Failed Publications:</strong>{' '}
+                      <strong><LocalizedText source={"Failed Publications:"} /></strong>{' '}
                       {podPublishingStats.failedPublications}
                       <br />
-                      <strong>Avg Publish Time:</strong>{' '}
+                      <strong><LocalizedText source={"Avg Publish Time:"} /></strong>{' '}
                       {podPublishingStats.averagePublishTime
                         ? `${podPublishingStats.averagePublishTime.totalMilliseconds.toFixed(0)}ms`
-                        : 'N/A'}
+                        : interfaceText('N/A')}
                       <br />
-                      <strong>Last Operation:</strong>{' '}
+                      <strong><LocalizedText source={"Last Operation:"} /></strong>{' '}
                       {podPublishingStats.lastPublishOperation
                         ? formatRegionalDateTime(podPublishingStats.lastPublishOperation)
-                        : 'Never'}
+                        : <LocalizedText source={"Never"} />}
                     </p>
                     {podPublishingStats.publicationsByVisibility &&
                       Object.keys(podPublishingStats.publicationsByVisibility)
                         .length > 0 && (
                         <div style={{ marginTop: '0.5em' }}>
-                          <strong>Publications by Visibility:</strong>
+                          <strong><LocalizedText source={"Publications by Visibility:"} /></strong>
                           {Object.entries(
                             podPublishingStats.publicationsByVisibility,
                           ).map(([visibility, count]) => (
@@ -377,7 +370,7 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
                   style={{ marginTop: '1em' }}
                 >
                   <p>
-                    Failed to load pod publishing stats:{' '}
+                    <LocalizedText source={"Failed to load pod publishing stats:"} />{' '}
                     {podPublishingStats.error}
                   </p>
                 </Message>

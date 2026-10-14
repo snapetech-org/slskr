@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import './Chat.css';
 import * as chat from '../../lib/chat';
 import { toDisplayError } from '../../lib/errors';
@@ -64,6 +66,7 @@ const saveTabsToStorage = (tabsToSave) => {
 };
 
 const Chat = ({ runtimeProfile, state }) => {
+  useInterfaceLanguage();
   const location = useLocation();
   const [tabs, setTabs] = useState(() => loadTabsFromStorage());
   const [activeIndex, setActiveIndex] = useState(0);
@@ -322,12 +325,11 @@ const Chat = ({ runtimeProfile, state }) => {
     return (
       <div className="chats compatibility-chat">
         <button
-          aria-label="Open a new chat tab"
+          aria-label={interfaceText("Open a new chat tab")}
           onClick={() => handleAddTab()}
           type="button"
-        >
-          Open a new chat tab
-        </button>
+         {...interfaceTextProps("Open a new chat tab")}>
+          <LocalizedText source={"Open a new chat tab"} /></button>
       </div>
     );
   }
@@ -345,9 +347,9 @@ const Chat = ({ runtimeProfile, state }) => {
           />
         </div>
         <Input
-          aria-label="Username to start a chat with"
+          aria-label={interfaceText("Username to start a chat with")}
           action={{
-            'aria-label': 'Start chat with user',
+            'aria-label': interfaceText("Start chat with user"),
             icon: 'chat',
             onClick: () => {
               if (usernameInput?.trim()) {
@@ -355,7 +357,7 @@ const Chat = ({ runtimeProfile, state }) => {
                 setUsernameInput('');
               }
             },
-            title: 'Start chat with user',
+            title: interfaceText("Start chat with user"),
           }}
           className="chat-input"
           onChange={(event) => setUsernameInput(event.target.value)}
@@ -365,35 +367,35 @@ const Chat = ({ runtimeProfile, state }) => {
               setUsernameInput('');
             }
           }}
-          placeholder="Chat with user..."
+          placeholder={interfaceText("Chat with user...")}
           size="big"
           value={usernameInput}
-        />
+         {...interfaceTextProps("Username to start a chat with")}/>
         <Popup
-          content="Reload saved conversations from the server after a browser refresh or restart."
+          content={interfaceText("Reload saved conversations from the server after a browser refresh or restart.")}
           trigger={
             <Button
-              aria-label="Reload saved conversations"
+              aria-label={interfaceText("Reload saved conversations")}
               icon="refresh"
               onClick={hydrateConversations}
-              title="Reload saved conversations"
-            />
+              title={interfaceText("Reload saved conversations")}
+             {...interfaceTextProps("Reload saved conversations")}/>
           }
-        />
+         {...interfaceTextProps("Reload saved conversations from the server after a browser refresh or restart.")}/>
       </Segment>
       {hydrationError && (
         <Segment
           data-testid="chat-conversations-error"
           negative
         >
-          Saved conversations unavailable: {hydrationError}
+          <LocalizedText source={"Saved conversations unavailable:"} />{" "}{hydrationError}
         </Segment>
       )}
       {conversations.length > 0 && (
         <Segment className="chat-recovery-rail">
           {conversations.map((conversation) => (
             <Popup
-              content="Open this saved conversation."
+              content={interfaceText("Open this saved conversation.")}
               key={conversation.username}
               trigger={
                 <Button
@@ -415,7 +417,7 @@ const Chat = ({ runtimeProfile, state }) => {
                   )}
                 </Button>
               }
-            />
+             {...interfaceTextProps("Open this saved conversation.")}/>
           ))}
         </Segment>
       )}
@@ -435,11 +437,11 @@ const Chat = ({ runtimeProfile, state }) => {
           {
             menuItem: (
               <Menu.Item
-                aria-label="Open a new chat tab"
+                aria-label={interfaceText("Open a new chat tab")}
                 key="add-tab"
                 onClick={handleAddTab}
-                title="Open a new chat tab"
-              >
+                title={interfaceText("Open a new chat tab")}
+               {...interfaceTextProps("Open a new chat tab")}>
                 <Icon name="plus" />
               </Menu.Item>
             ),

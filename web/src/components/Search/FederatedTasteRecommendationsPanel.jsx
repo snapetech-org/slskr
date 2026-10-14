@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 // <copyright file="FederatedTasteRecommendationsPanel.jsx" company="slskr Team">
 // Copyright (c) slskr Team. All rights reserved.
 // </copyright>
@@ -90,6 +92,7 @@ const responseMessage = (response, fallback) =>
     : fallback;
 
 const FederatedTasteRecommendationsPanel = ({ disabled }) => {
+  useInterfaceLanguage();
   const [error, setError] = useState('');
   const [graphPreview, setGraphPreview] = useState(null);
   const [includeSoulseekRecommendations, setIncludeSoulseekRecommendations] = useState(false);
@@ -135,11 +138,9 @@ const FederatedTasteRecommendationsPanel = ({ disabled }) => {
       const normalizedSummary = normalizeSummary(response.data);
       setSummary(normalizedSummary);
       setRecommendations(normalizedRecommendations);
-      setStatus(
-        `Loaded ${normalizedRecommendations.length} privacy-filtered recommendation${
-          normalizedRecommendations.length === 1 ? '' : 's'
-        }.`,
-      );
+      setStatus(interfaceText('Privacy-filtered recommendations loaded: {count}.', {
+        count: normalizedRecommendations.length,
+      }));
     } catch (loadError) {
       if (
         mountedRef.current &&
@@ -198,10 +199,10 @@ const FederatedTasteRecommendationsPanel = ({ disabled }) => {
       if (mountedRef.current) {
         setStatus(responseMessage(
           response,
-          `Promoted ${getTitle(recommendation.workRef)} to Wishlist.`,
+          interfaceText('Promoted {title} to Wishlist.', { title: getTitle(recommendation.workRef) }),
         ));
       }
-    }, 'Unable to promote recommendation.');
+    }, interfaceText('Unable to promote recommendation.'));
   };
 
   const subscribeRadar = async (recommendation) => {
@@ -214,10 +215,10 @@ const FederatedTasteRecommendationsPanel = ({ disabled }) => {
       if (mountedRef.current) {
         setStatus(responseMessage(
           response,
-          `Subscribed ${getCreator(recommendation.workRef)} to Release Radar.`,
+          interfaceText('Subscribed {creator} to Release Radar.', { creator: getCreator(recommendation.workRef) }),
         ));
       }
-    }, 'Unable to subscribe to Release Radar.');
+    }, interfaceText('Unable to subscribe to Release Radar.'));
   };
 
   const previewGraph = async (recommendation) => {
@@ -232,16 +233,18 @@ const FederatedTasteRecommendationsPanel = ({ disabled }) => {
       }
       if (mountedRef.current) {
         setGraphPreview(preview);
-        setStatus(`Previewed Discovery Graph for ${getTitle(recommendation.workRef)}.`);
+        setStatus(interfaceText('Discovery Graph previewed for {title}.', {
+          title: getTitle(recommendation.workRef),
+        }));
       }
-    }, 'Unable to preview Discovery Graph.');
+    }, interfaceText('Unable to preview Discovery Graph.'));
   };
 
   if (disabled) {
     return (
       <Segment raised>
-        <Header as="h4">Federated Taste Recommendations</Header>
-        <p>Connect to the server to load privacy-filtered recommendations.</p>
+        <Header as="h4"><LocalizedText source={"Federated Taste Recommendations"} /></Header>
+        <p><LocalizedText source={"Connect to the server to load privacy-filtered recommendations."} /></p>
       </Segment>
     );
   }
@@ -251,46 +254,46 @@ const FederatedTasteRecommendationsPanel = ({ disabled }) => {
       loading={loading}
       raised
     >
-      <Header as="h4">Federated Taste Recommendations</Header>
+      <Header as="h4"><LocalizedText source={"Federated Taste Recommendations"} /></Header>
       <Form>
         <Form.Group widths="equal">
           <Form.Input
-            aria-label="Taste recommendation limit"
-            label="Limit"
+            aria-label={interfaceText("Taste recommendation limit")}
+            label={interfaceText("Limit")}
             min={1}
             onChange={(event) => setLimit(event.target.value)}
             type="number"
             value={limit}
-          />
+           {...interfaceTextProps("Taste recommendation limit")}/>
           <Form.Input
-            aria-label="Minimum trusted taste sources"
-            label="Minimum trusted sources"
+            aria-label={interfaceText("Minimum trusted taste sources")}
+            label={interfaceText("Minimum trusted sources")}
             min={1}
             onChange={(event) => setMinimumTrustedSources(event.target.value)}
             type="number"
             value={minimumTrustedSources}
-          />
+           {...interfaceTextProps("Minimum trusted taste sources")}/>
           <Form.Field>
-            <label>Reveal source actors</label>
+            <label><LocalizedText source={"Reveal source actors"} /></label>
             <Checkbox
-              aria-label="Reveal federated recommendation source actors"
+              aria-label={interfaceText("Reveal federated recommendation source actors")}
               checked={includeSourceActors}
               onChange={(_event, data) => setIncludeSourceActors(data.checked)}
               toggle
-            />
+             {...interfaceTextProps("Reveal federated recommendation source actors")}/>
           </Form.Field>
           <Form.Field>
-            <label>Include Soulseek native</label>
+            <label><LocalizedText source={"Include Soulseek native"} /></label>
             <Checkbox
-              aria-label="Include Soulseek native recommendations"
+              aria-label={interfaceText("Include Soulseek native recommendations")}
               checked={includeSoulseekRecommendations}
               onChange={(_event, data) => setIncludeSoulseekRecommendations(data.checked)}
               toggle
-            />
+             {...interfaceTextProps("Include Soulseek native recommendations")}/>
           </Form.Field>
         </Form.Group>
         <Popup
-          content="Load privacy-filtered recommendations from followed federated actors. Optionally include raw native Soulseek recommendation seeds."
+          content={interfaceText("Load privacy-filtered recommendations from followed federated actors. Optionally include raw native Soulseek recommendation seeds.")}
           position="top center"
           trigger={
             <Button
@@ -301,32 +304,28 @@ const FederatedTasteRecommendationsPanel = ({ disabled }) => {
               type="button"
             >
               <Icon name="users" />
-              Load Recommendations
-            </Button>
+              <LocalizedText source={"Load Recommendations"} /></Button>
           }
-        />
+         {...interfaceTextProps("Load privacy-filtered recommendations from followed federated actors. Optionally include raw native Soulseek recommendation seeds.")}/>
       </Form>
       {status && <Message compact size="mini">{status}</Message>}
       {error && <Message compact error size="mini">{String(error)}</Message>}
       {summary && (
         <div className="search-acquisition-profile-strip">
           <Label basic>
-            Trusted actors
-            <Label.Detail>{summary.trustedActorCount}</Label.Detail>
+            <LocalizedText source={"Trusted actors"} /><Label.Detail>{summary.trustedActorCount}</Label.Detail>
           </Label>
           <Label basic>
-            Candidates
-            <Label.Detail>{summary.candidateCount}</Label.Detail>
+            <LocalizedText source={"Candidates"} /><Label.Detail>{summary.candidateCount}</Label.Detail>
           </Label>
           <Label basic>
-            Minimum sources
-            <Label.Detail>{summary.minimumTrustedSources}</Label.Detail>
+            <LocalizedText source={"Minimum sources"} /><Label.Detail>{summary.minimumTrustedSources}</Label.Detail>
           </Label>
         </div>
       )}
       {graphPreview && (
         <Message compact size="mini">
-          Graph preview: {graphPreview.nodeCount} nodes, {graphPreview.edgeCount} edges.
+          <LocalizedText source={"Graph preview: {nodes} nodes, {edges} edges."} values={{ nodes: graphPreview.nodeCount, edges: graphPreview.edgeCount }} />
         </Message>
       )}
       <List divided relaxed>
@@ -340,7 +339,7 @@ const FederatedTasteRecommendationsPanel = ({ disabled }) => {
               <List.Content>
                 <List.Header>{[creator, title].filter(Boolean).join(' - ') || title}</List.Header>
                 <List.Description>
-                  {recommendation.trustedSourceCount} trusted sources · score {Math.round((recommendation.score || 0) * 100)}%
+                  {recommendation.trustedSourceCount} <LocalizedText source={"trusted sources · score"} />{" "}{Math.round((recommendation.score || 0) * 100)}%
                 </List.Description>
                 {(recommendation.reasons || []).map((reason) => (
                   <Label basic key={reason}>{reason}</Label>
@@ -351,53 +350,50 @@ const FederatedTasteRecommendationsPanel = ({ disabled }) => {
                   </div>
                 )}
                 <Popup
-                  content="Promote this WorkRef to Wishlist through the backend review handoff without starting a download."
+                  content={interfaceText("Promote this WorkRef to Wishlist through the backend review handoff without starting a download.")}
                   position="top center"
                   trigger={
                     <Button
-                      aria-label={`Promote ${title} taste recommendation to Wishlist`}
+                      aria-label={interfaceText("Promote {title} taste recommendation to Wishlist", { "title": (title) })}
                       disabled={actionLoading}
                       onClick={() => promoteToWishlist(recommendation)}
                       size="mini"
                       type="button"
-                    >
+                     {...interfaceTextProps("Promote {title} taste recommendation to Wishlist")}>
                       <Icon name="heart" />
-                      Wishlist
-                    </Button>
+                      <LocalizedText source={"Wishlist"} /></Button>
                   }
-                />
+                 {...interfaceTextProps("Promote this WorkRef to Wishlist through the backend review handoff without starting a download.")}/>
                 <Popup
-                  content="Subscribe this artist to Release Radar using trusted scope."
+                  content={interfaceText("Subscribe this artist to Release Radar using trusted scope.")}
                   position="top center"
                   trigger={
                     <Button
-                      aria-label={`Subscribe ${title} taste recommendation to Release Radar`}
+                      aria-label={interfaceText("Subscribe {title} taste recommendation to Release Radar", { "title": (title) })}
                       disabled={actionLoading}
                       onClick={() => subscribeRadar(recommendation)}
                       size="mini"
                       type="button"
-                    >
+                     {...interfaceTextProps("Subscribe {title} taste recommendation to Release Radar")}>
                       <Icon name="rss" />
-                      Radar
-                    </Button>
+                      <LocalizedText source={"Radar"} /></Button>
                   }
-                />
+                 {...interfaceTextProps("Subscribe this artist to Release Radar using trusted scope.")}/>
                 <Popup
-                  content="Preview nearby Discovery Graph evidence for this WorkRef."
+                  content={interfaceText("Preview nearby Discovery Graph evidence for this WorkRef.")}
                   position="top center"
                   trigger={
                     <Button
-                      aria-label={`Preview ${title} taste recommendation graph`}
+                      aria-label={interfaceText("Preview {title} taste recommendation graph", { "title": (title) })}
                       disabled={actionLoading}
                       onClick={() => previewGraph(recommendation)}
                       size="mini"
                       type="button"
-                    >
+                     {...interfaceTextProps("Preview {title} taste recommendation graph")}>
                       <Icon name="share alternate" />
-                      Graph
-                    </Button>
+                      <LocalizedText source={"Graph"} /></Button>
                   }
-                />
+                 {...interfaceTextProps("Preview nearby Discovery Graph evidence for this WorkRef.")}/>
               </List.Content>
             </List.Item>
           );

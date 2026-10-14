@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import './Users.css';
 import { activeUserInfoKey } from '../../config';
 import { toDisplayError } from '../../lib/errors';
@@ -41,6 +43,7 @@ const normalizeUser = (responses, username) => {
 };
 
 const Users = () => {
+  useInterfaceLanguage();
   const location = useLocation();
   const inputRef = useRef();
   const [user, setUser] = useState();
@@ -151,8 +154,7 @@ const Users = () => {
       >
         <Icon name="users" />
         <Header.Content>
-          Users
-          <Header.Subheader>Look up a Soulseek username</Header.Subheader>
+          <LocalizedText source={"Users"} /><Header.Subheader><LocalizedText source={"Look up a Soulseek username"} /></Header.Subheader>
         </Header.Content>
       </Header>
       <Segment
@@ -170,17 +172,17 @@ const Users = () => {
             !fetching &&
             (user == null
               ? {
-                  'aria-label': 'Search for user',
+                  'aria-label': interfaceText("Search for user"),
                   icon: 'search',
                   onClick: submitUsername,
-                  title: 'Search for user',
+                  title: interfaceText("Search for user"),
                 }
               : {
-                  'aria-label': 'Clear selected user',
+                  'aria-label': interfaceText("Clear selected user"),
                   color: 'red',
                   icon: 'x',
                   onClick: clear,
-                  title: 'Clear selected user',
+                  title: interfaceText("Clear selected user"),
                 })
           }
           className="users-input"
@@ -189,19 +191,19 @@ const Users = () => {
             <input
               data-lpignore="true"
               disabled={Boolean(user) || fetching}
-              placeholder="Username"
+              placeholder={interfaceText("Username")}
               type="search"
-            />
+             {...interfaceTextProps("Username")}/>
           }
           loading={fetching}
           onChange={(event) => setUsernameInput(event.target.value)}
           onKeyUp={(event) =>
             event.key === 'Enter' ? submitUsername() : ''
           }
-          placeholder="Username"
+          placeholder={interfaceText("Username")}
           ref={inputRef}
           size="big"
-        />
+         {...interfaceTextProps("Username")}/>
       </Segment>
       {fetching ? (
         <Loader
@@ -214,7 +216,7 @@ const Users = () => {
         <div>
           {error ? (
             <span>
-              Failed to retrieve information for {selectedUsername}: {error}
+              <LocalizedText source={"Failed to retrieve information for"} />{" "}{selectedUsername}: {error}
             </span>
           ) : user == null ? (
             <PlaceholderSegment

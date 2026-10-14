@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { removeLocalStorageItem, setLocalStorageItem } from '../../lib/storage';
 import { toDisplayError } from '../../lib/errors';
@@ -773,31 +775,38 @@ const Visualizer = ({
               {nativeDebugSnapshot.format}
               {' · '}
               {nativeDebugSnapshot.presetCount}
-              {' preset'}
-              {nativeDebugSnapshot.presetCount === 1 ? '' : 's'}
+              {' '}
+              {<LocalizedText source={"preset"} />}
+              {nativeDebugSnapshot.presetCount === 1 ? '' : <LocalizedText source={"s"} />}
             </div>
             <div>
               {nativeDebugSnapshot.shapes}
-              {' shapes · '}
+              {' '}
+              {<LocalizedText source={"shapes ·"} />}
+              {' '}
               {nativeDebugSnapshot.waves}
-              {' waves · '}
+              {' '}
+              {<LocalizedText source={"waves ·"} />}
+              {' '}
               {nativeDebugSnapshot.sprites}
-              {' sprites'}
+              {' '}
+              {<LocalizedText source={"sprites"} />}
             </div>
             <div>
-              {nativeDebugSnapshot.shaderSections.warp ? 'warp' : 'no warp'}
+              {nativeDebugSnapshot.shaderSections.warp ? <LocalizedText source={"warp"} /> : <LocalizedText source={"no warp"} />}
               {' / '}
-              {nativeDebugSnapshot.shaderSections.comp ? 'comp' : 'no comp'}
+              {nativeDebugSnapshot.shaderSections.comp ? <LocalizedText source={"comp"} /> : <LocalizedText source={"no comp"} />}
             </div>
             <div>
-              {nativeFpsCap === 'full' ? 'uncapped' : `${nativeFpsCap} fps`}
+              {nativeFpsCap === 'full' ? <LocalizedText source={"uncapped"} /> : <LocalizedText source={"{nativeFpsCap} fps"} values={{ "nativeFpsCap": (nativeFpsCap) }} />}
               {' · '}
               {rustyMilkFrameMs.toFixed(1)}
-              {' ms'}
+              {' '}
+              {<LocalizedText source={"ms"} />}
             </div>
             <div>
               {nativeQualityPreset === 'custom'
-                ? 'custom quality'
+                ? <LocalizedText source={"custom quality"} />
                 : `${nativeQualityPresets[nativeQualityPreset]?.label || 'Balanced'} quality`}
               {' · '}
               {getRustyMilkWebGpuDebugLabel(nativeDebugSnapshot.webGpu)}
