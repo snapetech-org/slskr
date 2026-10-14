@@ -24,8 +24,8 @@ parts:
   slskr:
     plugin: dump
     source:
-      - on amd64: https://github.com/snapetech/slskr/releases/download/release-v0.2.52/slskr-v0.2.52-x86_64-unknown-linux-gnu.tar.gz
-      - on arm64: https://github.com/snapetech/slskr/releases/download/release-v0.2.52/slskr-v0.2.52-aarch64-unknown-linux-gnu.tar.gz
+      - on amd64: https://github.com/snapetech-org/slskr/releases/download/release-v0.2.52/slskr-v0.2.52-x86_64-unknown-linux-gnu.tar.gz
+      - on arm64: https://github.com/snapetech-org/slskr/releases/download/release-v0.2.52/slskr-v0.2.52-aarch64-unknown-linux-gnu.tar.gz
     source-type: file
     override-pull: |
       craftctl default

@@ -92,7 +92,7 @@ structural improvement to execute only after higher-priority work is stable.
 | RF-003 | Distributed mutations previously held `distributed_network` guards across SQLite work, and tree metadata plus child rows used separate transactions. Runtime updates now publish revisioned snapshots; one worker coalesces to the latest bounded snapshot after the state guard is released. `DatabaseManager` loads both tables in one read transaction and replaces both in one write transaction. Graceful shutdown now writes the latest snapshot after managed producers stop. | Database latency previously blocked distributed-state readers, and a failed child replacement could leave branch metadata and child depths from different states. | The current 622-test daemon library suite passes, including cross-table rollback, latest-snapshot persistence, file-backed reopen, startup hydration, and a shutdown-overlap regression proving a registered task is dropped before the final runtime revision reopens from SQLite. A clean-worktree native process proof at `6fb4d2f6` drives a distributed child through the existing peer listener while a real share scan is active. Graceful SIGTERM closes the child and persists the final disconnected tree; after a committed depth-7 update, SIGKILL/restart preserves both tree and child rows with SQLite integrity `ok`. The source/binary/harness-bound artifact is `benchmarks/artifacts/20260927-rf-distributed-shutdown-crash-restart.json`. | Verified locally, retained live shutdown/crash proof |
 | RF-004 | `crates/slskr/src/persistence.rs:4114-4184` was the remaining unbatched ignored-result path; the current batch uses bounded search/identity/result batches, preserves `fallback_attempts`, and adds metadata plus failure-injection rollback regressions. The production `serve` path now calls the shared `load_wishlist_store` startup helper. | Search metadata and large ignored-result updates were previously at risk. | The current 622-test daemon library suite passes. A file-backed close/reopen regression loads through the production startup helper and verifies the rehydrated ignore rule through API reads and search filtering. | Verified locally |
 | RF-005 | `crates/slskr-client/src/manager.rs:179-224` previously held the server mutex while awaiting an unbounded `send_server_message`; the first implementation batch now bounds the send and marks the session unusable after timeout/error. | A backpressured server previously blocked every indirect request and could strand the manager. | Full manager suite passes with the non-reading peer and subsequent-request regression. | Verified |
-| RF-006 | `AppState` owns a `ManagedTaskRegistry` backed by a `JoinSet`; long-lived workers, schedulers, listener managers, bridge/relay services, overlay gateway, DHT, signal/version services, Unix/HTTPS accept loops, and their HTTPS/Unix HTTP handlers are registered for joined shutdown. Plain HTTP handlers use a joined request set. Distributed parent and child socket loops now also use the managed task registry. All three listener types share a 256-connection semaphore. | Accepted HTTP work is bounded and tied to listener lifecycle; retained live HTTP/share-scan shutdown proof passes, while clean-runner coverage for other managed services remains absent. | Focused regression proves HTTPS/Unix handlers share capacity and are aborted/joined with the managed registry; existing shutdown-flush and share-scan overlap regressions pass. The retained `55be6aec` live HTTP/share-scan overlap proof passes. Downloaded clean-runner artifacts at `f9a25f9d` and `a43155de` verify shared peer TCP/UDP listener ownership, TLS capacity, client closure, and socket reuse; the latter includes three all-enabled DHT/control/data QUIC cycles with no extra UDP port. Forwarding, script, WebSocket, CLI-probe, and bounded FTP ownership have subsequent local checkpoints; joined relay cancellation cleanup and interrupted webhook outcomes have additional local checkpoints; the nine production `spawn_blocking` sites are classified in `docs/dev/blocking-work-ownership.md`; after managed async shutdown, runtime teardown now waits up to five seconds for blocking workers and logs if the deadline is reached; a focused held-worker regression verifies bounded teardown and eventual worker completion after release. An operating-system call blocked in the kernel can still outlive the Tokio runtime, so this bounds teardown without claiming to join an uninterruptible filesystem call. Windows Smoke run [`36466395263`](https://github.com/snapetech/slskr/actions/runs/36466395263) on `d4d185cc` passed the bounded blocking-shutdown regression within its 694-test Rust run; GitHub CI run [`36467270728`](https://github.com/snapetech/slskr/actions/runs/36467270728) on `6e9a6c00` also passed `cargo test --locked --workspace`, the shared peer-gateway shutdown proof, and reproducibility artifact collection. Its Linux AArch64 job passed; remaining platform jobs are active or queued. GitHub CI run `36552251952` has passed its Rust, Linux, and Web jobs; Windows Smoke run `36550557656` passed on `1dcbb95a`; GitLab pipeline 142 also passed Rust on `1dcbb95a`. The five-second runtime teardown test bounds ordinary blocked work. An in-flight uninterruptible OS syscall remains a documented platform boundary. | Verified locally and on exact-source GitHub CI run 36613453093; the 20,000-file Linux overlap, crash recovery, socket closure, SQLite integrity, Windows shutdown proof, and uninterruptible-syscall limit are documented. |
+| RF-006 | `AppState` owns a `ManagedTaskRegistry` backed by a `JoinSet`; long-lived workers, schedulers, listener managers, bridge/relay services, overlay gateway, DHT, signal/version services, Unix/HTTPS accept loops, and their HTTPS/Unix HTTP handlers are registered for joined shutdown. Plain HTTP handlers use a joined request set. Distributed parent and child socket loops now also use the managed task registry. All three listener types share a 256-connection semaphore. | Accepted HTTP work is bounded and tied to listener lifecycle; retained live HTTP/share-scan shutdown proof passes, while clean-runner coverage for other managed services remains absent. | Focused regression proves HTTPS/Unix handlers share capacity and are aborted/joined with the managed registry; existing shutdown-flush and share-scan overlap regressions pass. The retained `55be6aec` live HTTP/share-scan overlap proof passes. Downloaded clean-runner artifacts at `f9a25f9d` and `a43155de` verify shared peer TCP/UDP listener ownership, TLS capacity, client closure, and socket reuse; the latter includes three all-enabled DHT/control/data QUIC cycles with no extra UDP port. Forwarding, script, WebSocket, CLI-probe, and bounded FTP ownership have subsequent local checkpoints; joined relay cancellation cleanup and interrupted webhook outcomes have additional local checkpoints; the nine production `spawn_blocking` sites are classified in `docs/dev/blocking-work-ownership.md`; after managed async shutdown, runtime teardown now waits up to five seconds for blocking workers and logs if the deadline is reached; a focused held-worker regression verifies bounded teardown and eventual worker completion after release. An operating-system call blocked in the kernel can still outlive the Tokio runtime, so this bounds teardown without claiming to join an uninterruptible filesystem call. Windows Smoke run [`36466395263`](https://github.com/snapetech-org/slskr/actions/runs/36466395263) on `d4d185cc` passed the bounded blocking-shutdown regression within its 694-test Rust run; GitHub CI run [`36467270728`](https://github.com/snapetech-org/slskr/actions/runs/36467270728) on `6e9a6c00` also passed `cargo test --locked --workspace`, the shared peer-gateway shutdown proof, and reproducibility artifact collection. Its Linux AArch64 job passed; remaining platform jobs are active or queued. GitHub CI run `36552251952` has passed its Rust, Linux, and Web jobs; Windows Smoke run `36550557656` passed on `1dcbb95a`; GitLab pipeline 142 also passed Rust on `1dcbb95a`. The five-second runtime teardown test bounds ordinary blocked work. An in-flight uninterruptible OS syscall remains a documented platform boundary. | Verified locally and on exact-source GitHub CI run 36613453093; the 20,000-file Linux overlap, crash recovery, socket closure, SQLite integrity, Windows shutdown proof, and uninterruptible-syscall limit are documented. |
 | RF-007 | The share-index worker owns the cancellation token with the scan permit, checks it during filesystem traversal, returns `SHARE_SCAN_CANCELLED_ERROR`, and refuses to publish partial snapshots. Configuration reloads and runtime share-setting changes now share an index persistence turn; generation checks reject completed scans built from older settings before SQLite replacement or live publication. | Cancelled or stale rebuilds cannot replace a newer live or durable share index, and a settings reload preserves its pending-rescan state. | Focused shutdown and watched-reload regressions pass. A clean-worktree native process run at `55be6aec` observed a real 20,000-file scan during SIGTERM, returned 503 to the in-flight scan request, exited zero in 0.114 seconds, retained zero partial SQLite share rows, and reopened with zero files. The retained source/binary/harness-bound proof is `benchmarks/artifacts/20260927-rf-shutdown-overlap.json`. | Verified locally, retained live shutdown proof |
 
 ### P1 CI, Release, And Packaging
@@ -102,7 +102,7 @@ structural improvement to execute only after higher-priority work is stable.
 | RF-008 | `.gitlab-ci.yml:21-26` previously invoked three nonexistent Rust guard scripts. The current batch uses checked-in process guards and direct Cargo commands. | The GitLab Rust job previously could not start on a clean runner. | Static workflow policy and shell/YAML checks pass. On 2026-09-27, GitLab rejected both a normal and `--no-thin` push of `902574ad` while unpacking existing-base blob `272d9b69` (`scripts/check-controller-options-differential.sh`); local `git cat-file` reads it and GitHub accepted the tip. Fresh pushes of `b9e50c4d`, `dd10c822`, `3049b9fd`, `a4133bc4`, `c02c77bc`, `08f76d7e`, `d4d185cc`, `c81c055a`, `6e9a6c00`, `37ddb72d`, and `b42efb97` on 2026-09-28 were rejected by the same corrupt object, while GitHub accepted those tips. On 2026-09-28, the damaged loose blob was backed up at `/var/opt/gitlab/backups/object-repair-272d9b69345294fa1aa98ec3a83a9383c87be9e2-20260928/damaged.loose-object`, atomically rebuilt from the verified local blob, and confirmed by `git fsck --full --strict --no-reflogs`; GitLab `main` advanced from `576fea92` to `dc7dd5b5` across two successful pushes after repair. No GitLab pipeline has appeared since the repair (latest project pipeline remains #81 from 2026-05-17), so hosted clean-runner proof remains open. On 2026-09-28, GitLab accepted pushes through `b9679f30` and returned HTTP 200 from its internal post-receive endpoint, but direct pipeline-table inspection still found no record newer than #81 from 2026-05-17. CI is enabled and the default `.gitlab-ci.yml` path is configured; the GitLab MCP API token returns 401. Sanitized investigation is in `benchmarks/artifacts/20260928-gitlab-postreceive-pipeline-status.md`. GitLab pipelines 142 on `1dcbb95a` and 143 on `9aa410a7` passed their clean-runner jobs, including Rust, Go, Web, dashboard, TypeScript, and GitHub mirror. Pipeline 143 also ran the new tag-refspec check. The protected local PAT works through direct API; the already-running GitLab MCP process still caches its previous token. | Verified on clean GitLab runners; default-branch scheduling, all CI lanes, and branch mirroring pass. |
 | RF-009 | `.gitlab-ci.yml:162-174` previously created a GitHub release while `.github/workflows/release.yml` already owned tag publication. The current batch removes the duplicate publisher. | One tag previously could race two release creators. | Workflow policy passes. A temporary bare-repository simulation of the `github:mirror` tag refspec pushed a synthetic tag to a local bare remote pointing at commit `dc7dd5b5`, without touching real tags or releases. Clean GitLab runner proof remains open; the repaired repository accepts pushes, but no pipeline has appeared since 2026-05-17. GitLab pipeline 143 on `9aa410a7` passed `github:mirror-tag-refspec-check` against an isolated bare remote and passed `github:mirror`. No public tag or release was created by the test. | Verified on clean GitLab runner; synthetic tag refspec and branch mirror pass. |
 | RF-010 | `release-publish.yml:128-168` previously validated AUR hashes and `.SRCINFO` but did not run a clean `makepkg` source/prepare smoke. The release gate and AUR publish job now invoke `check-aur-package-smoke.sh`. | AUR source/package breakage is now exercised before publication on supported runners. | Actual hosted Docker makepkg verifies and extracts both PKGBUILDs in CI `36405007921` at `7a064d37`; retained full matrix and execution markers establish source/prepare smoke. | Verified hosted smoke at `7a064d37`; publication separate |
-| RF-011 | `windows-smoke.yml` previously filtered dashboard/client-ts changes while only building Web assets; the current filters align the job with the Rust/Web checks it actually executes. | SDK/dashboard-only changes no longer imply coverage from a Rust/Web-only job. | Workflow policy passes; Windows Smoke run `36462085991` completed on `46854887` with the Windows Rust test suite, WASM check, and Web build green. A newer attempt `36465244591` on `08f76d7e` stopped at Rust formatting before tests: its only diff was Windows CRLF versus rustfmt output line endings. The formatter gate now normalizes trailing CR for comparison; Windows Smoke run [`36466395263`](https://github.com/snapetech/slskr/actions/runs/36466395263) then passed the Rust tests, WASM check, and Web build on `d4d185cc`. | Verified; Windows Smoke `36466395263` passed after the formatter EOL fix |
+| RF-011 | `windows-smoke.yml` previously filtered dashboard/client-ts changes while only building Web assets; the current filters align the job with the Rust/Web checks it actually executes. | SDK/dashboard-only changes no longer imply coverage from a Rust/Web-only job. | Workflow policy passes; Windows Smoke run `36462085991` completed on `46854887` with the Windows Rust test suite, WASM check, and Web build green. A newer attempt `36465244591` on `08f76d7e` stopped at Rust formatting before tests: its only diff was Windows CRLF versus rustfmt output line endings. The formatter gate now normalizes trailing CR for comparison; Windows Smoke run [`36466395263`](https://github.com/snapetech-org/slskr/actions/runs/36466395263) then passed the Rust tests, WASM check, and Web build on `d4d185cc`. | Verified; Windows Smoke `36466395263` passed after the formatter EOL fix |
 | RF-012 | `client-ts/package.json` now allowlists `dist`/README publication files and the SDK gate builds, diffs, and dry-runs `npm pack`. | Published TypeScript artifacts cannot silently drift or include tests/configuration. | TypeScript package check passes with 26 allowlisted files; registry publication remains external. | Verified locally |
 | RF-013 | `check-python-client-quality.sh` now runs Black, Flake8, and mypy from a pinned temporary environment when needed; the aggregate SDK gate installs its venv before quality checks. | Python quality regressions no longer pass because host tooling is absent or the gate invokes checks in the wrong order. | Quality, 49 tests, and package gates pass. | Verified locally |
 | RF-014 | Python SDK now declares Python 3.10–3.13 support, bounded runtime/dev dependencies, `pyproject.toml`, constraints, and a package build/import check. | SDK builds and supported-runtime expectations are explicit and reproducible. | sdist/wheel build/import and `pip check` pass; clean cross-platform matrix remains external. | Verified locally |
@@ -174,7 +174,7 @@ structural improvement to execute only after higher-priority work is stable.
 | RF-060 | Browse tree repeatedly filtered full directory lists and compared selection by set size; normalized name handling differed. The current batch builds parent lookups, memoizes sanitized trees, compares set membership, and tests wide/deep/file-heavy malformed fixtures plus same-sized replacements. | Large shares previously stalled and same-size replacement trees could retain stale selection. | Browse fixture, replacement-tree, and full Web tests pass. | Verified locally |
 | RF-061 | Shared semantic wrappers used clickable divs/icons without keyboard/accessible-name semantics; dashboard navigation lacked `aria-current`. The current batch adds keyboard activation, icon roles, active navigation state, explicit browse control names, and axe checks for representative Web/dashboard shells. | Keyboard and screen-reader users previously missed controls and context. | Semantic, Browse, Sidebar, and axe tests pass. A deployed kspls0 axe audit covered all 15 maintained React routes at desktop and mobile sizes (30 views) with zero violations; the current Dashboard audit covered all six routes at both sizes (12 views), also with zero violations. Evidence: [Web axe results](../../benchmarks/artifacts/20260929-rf063-kspls0-a11y-30-views.json) and [Dashboard audit](../../benchmarks/artifacts/20260929-rf049-rf052-rf057-rf061-kspls0-dashboard.md). | Verified locally and deployed on kspls0; all 30 Web and 12 Dashboard views had zero axe violations |
 | RF-062 | Web mounted `App` without an error boundary; route try/catch could not catch descendant render failures. The current batch adds a reloadable render fallback. | One render error previously could blank the entire UI. | ErrorBoundary test and full Web tests pass. | Verified |
-| RF-063 | Web audit records responses but not request-count/cadence/accessibility budgets. The current batch preserves per-asset budgets, adds deterministic aggregate initial-JS and gzip budgets for Web/dashboard, adds local axe checks for representative shells, and records Rust Web request-count/cadence budgets across 15 desktop/mobile route pairs. | Duplicate requests, hidden-tab churn, accessibility, and aggregate regressions previously could pass. | Web/dashboard aggregate budgets, representative axe checks, and Rust Web mock request-count/cadence budgets pass locally. Hosted Live Parity run `36460398465` recorded all 30 views but exposed the wishlist budget missing one intentional post-action list refresh: desktop made 11 requests against a 10-request budget, with the repeated list request 812 ms apart. The budget now records 11 for that action path; the corrected full local audit passes all 30 views with zero errors; hosted run `36464045259` on `c02c77bc` also passed all views and retained the audit under [`live-parity-36464045259`](https://github.com/snapetech/slskr/actions/runs/36464045259/artifacts/10988987235). A separate isolated live-backend audit recorded 469 requests across 30 route views, with zero route-budget or sub-200 ms cadence violations; its strict exit was due only to protected YAML (403) and unconfigured Lidarr (503) responses. The sanitized evidence is `benchmarks/artifacts/20260927-rust-web-live-backend-cadence.md`. A fresh deployed axe audit on kspls0 then passed all 30 desktop/mobile route views with zero WCAG violations, nonce mismatches, CSP errors, or browser errors; the sanitized per-view results are in `benchmarks/artifacts/20260929-rf063-kspls0-a11y-30-views.json`. Current-source Live Parity run `36561787367` recorded 22 desktop requests against the 21-request `/collections` budget: a successful GET action was followed 725.1 ms later by an unnecessary route refresh. The native action now skips refresh after successful GET responses while retaining refresh after mutations and failed requests; the budget remains 21. Current-source Live Parity run `36565318189` on `12836668` passed both jobs; its audit records 30 views with zero errors and `/collections` desktop at 21/21 requests. The follow-up evidence is retained in `benchmarks/artifacts/20260929-rf063-successful-read-action.md`. See `benchmarks/artifacts/20260929-rf063-successful-read-action.md`. | Verified locally and on current-source Live Parity run 36565318189; prior 30-view deployed axe evidence retained |
+| RF-063 | Web audit records responses but not request-count/cadence/accessibility budgets. The current batch preserves per-asset budgets, adds deterministic aggregate initial-JS and gzip budgets for Web/dashboard, adds local axe checks for representative shells, and records Rust Web request-count/cadence budgets across 15 desktop/mobile route pairs. | Duplicate requests, hidden-tab churn, accessibility, and aggregate regressions previously could pass. | Web/dashboard aggregate budgets, representative axe checks, and Rust Web mock request-count/cadence budgets pass locally. Hosted Live Parity run `36460398465` recorded all 30 views but exposed the wishlist budget missing one intentional post-action list refresh: desktop made 11 requests against a 10-request budget, with the repeated list request 812 ms apart. The budget now records 11 for that action path; the corrected full local audit passes all 30 views with zero errors; hosted run `36464045259` on `c02c77bc` also passed all views and retained the audit under [`live-parity-36464045259`](https://github.com/snapetech-org/slskr/actions/runs/36464045259/artifacts/10988987235). A separate isolated live-backend audit recorded 469 requests across 30 route views, with zero route-budget or sub-200 ms cadence violations; its strict exit was due only to protected YAML (403) and unconfigured Lidarr (503) responses. The sanitized evidence is `benchmarks/artifacts/20260927-rust-web-live-backend-cadence.md`. A fresh deployed axe audit on kspls0 then passed all 30 desktop/mobile route views with zero WCAG violations, nonce mismatches, CSP errors, or browser errors; the sanitized per-view results are in `benchmarks/artifacts/20260929-rf063-kspls0-a11y-30-views.json`. Current-source Live Parity run `36561787367` recorded 22 desktop requests against the 21-request `/collections` budget: a successful GET action was followed 725.1 ms later by an unnecessary route refresh. The native action now skips refresh after successful GET responses while retaining refresh after mutations and failed requests; the budget remains 21. Current-source Live Parity run `36565318189` on `12836668` passed both jobs; its audit records 30 views with zero errors and `/collections` desktop at 21/21 requests. The follow-up evidence is retained in `benchmarks/artifacts/20260929-rf063-successful-read-action.md`. See `benchmarks/artifacts/20260929-rf063-successful-read-action.md`. | Verified locally and on current-source Live Parity run 36565318189; prior 30-view deployed axe evidence retained |
 | RF-064 | `AppContext.js` is active around the routed App; `/pods` renders `Messaging.jsx`, while the 1,267-line legacy `Pods.jsx` and its 870-line-only `VpnGatewayConfig.jsx` had no production import; dashboard API context and page props were reviewed for single ownership. | Dead modules and competing ownership patterns dilute refactor/test signal. | `docs/dev/web-ownership-inventory.md` records active route and API ownership, and `scripts/check-web-ownership-inventory.sh` verifies the route/context/import boundary and absence of retired modules. The unreachable Pods route-shaped component, its test/style files, and its exclusively imported VPN gateway configuration module are removed; active Messaging coverage retains pod list/detail/message failures and cancellation. The independently tested PortForwarding compatibility import remains. | Verified locally, deployed 42-route audit passed, and GitHub CI run 36613453093 plus GitLab pipeline 162 passed (source 69cf4141). |
 | RF-065 | `LyricsPane.jsx:148-159` used both `timeupdate` and a 500 ms interval for the same position update. The current batch removes the duplicate timer and adds a regression test. | Continuous duplicate state checks previously ran while lyrics were visible. | Focused LyricsPane test passes; keep the full Web suite as proof. | Verified |
 
@@ -188,8 +188,8 @@ structural improvement to execute only after higher-priority work is stable.
 | RF-069 | `web/package.json` exposes RustyMilk compatibility/performance/smoke scripts, but no workflow invokes them while `slskr-web` tracks the upstream main branch. | Web dependency drift can pass without compatibility evidence. | The performance note explicitly classifies these scripts as diagnostic-only; a scheduled threshold job remains intentionally absent. | Verified locally, diagnostic-only |
 | RF-070 | Council count files had no scan date/commit and checks regenerated only when a report was missing. | Stale counts could pass active-backlog checks. | `run-council-scan.sh` stamps the report; `check-council-freshness.sh` validates date and the SHA-256 digest of tracked scan inputs across the report, inventory, and backlog, with a negative test and all-phases/remediation wiring. Generated records are excluded so committing them cannot invalidate their own stamp, including on shallow CI checkouts. | Verified locally |
 | RF-071 | The audit PASS matrix records a SHA but not toolchain/node/npm versions, lock hashes, or retained artifact links. | A clean checkout cannot reproduce the evidence exactly. | The collector validates source/run identity, observed tool versions, required lock/config and artifact hashes, and worktree state. The GitHub Rust gate now retains metadata, coverage summary, and the Web entry point for 30 days with a direct job-summary link. Twelve regressions and local policy gates pass. The successful Rust job at `37f2e049` retained the artifact; downloaded metadata, artifact hashes, and all seven lock/three configuration hashes match that exact clean checkout. | Verified main-gate hosted retention |
-| RF-072 | `docs/live-interop-test-matrix.md:39,119` referenced absent `web/e2e/live-surfaces.spec.ts`; the current batch updates it to maintained specs and keeps historical results explicitly dated. | Operators previously could not reproduce the stated live matrix. | Docs freshness and maintained Playwright pass locally. The 2026-09-27 local matrix passed four login, one local-peer, and two social probes; its sanitized result and raw TSV hashes are in `benchmarks/artifacts/20260927-live-interop-summary.md`. On 2026-09-28, the credentialed matrix passed locally and on hosted Live Parity after validating eight unique test accounts. Hosted run [`36499213873`](https://github.com/snapetech/slskr/actions/runs/36499213873) passed both the Rust UI/API job and the credentialed public interop job; the retained interop and full parity artifacts are linked in `benchmarks/artifacts/20260928-live-interop-hosted-summary.md`. | Verified locally and hosted on current source; run 36535159086 passed |
-| RF-073 | `scripts/run-release-gate.sh:69-74` makes the slskd API compatibility smoke opt-in; `docs/release.md:41-63` intentionally assigns that smoke to scheduled/manual Live Parity. The current batch labels the skipped local check as a certification artifact requirement. | This is a policy boundary, not a code defect, but release certification could be misread if artifact freshness was not visible. | Manual run `36456533118` retained the UI audit artifact but exposed a stale cached Python target that hid `SlskdClient`; a fresh local reproduction confirmed the target collision. The smoke now installs its pinned client into unique temporary state, clears any stale summary at start, isolates config/state, keeps generated private keys outside artifacts, disables its unused HTTPS listener, and uses an available loopback port for the shared native peer TCP/UDP listener. The local smoke passes all 91 API calls. Manual Live Parity run [`36464045259`](https://github.com/snapetech/slskr/actions/runs/36464045259) passed the corrected UI audit and API smoke on `c02c77bc`; retained artifact [`live-parity-36464045259`](https://github.com/snapetech/slskr/actions/runs/36464045259/artifacts/10988987235) contains the passing 91-call summary. Its credentialed public interop job skipped because `SLSKR_LIVE_INTEROP_ENV` is absent; that matrix proof remains open under RF-072. | Verified hosted API smoke; credentialed interop tracked in RF-072 |
+| RF-072 | `docs/live-interop-test-matrix.md:39,119` referenced absent `web/e2e/live-surfaces.spec.ts`; the current batch updates it to maintained specs and keeps historical results explicitly dated. | Operators previously could not reproduce the stated live matrix. | Docs freshness and maintained Playwright pass locally. The 2026-09-27 local matrix passed four login, one local-peer, and two social probes; its sanitized result and raw TSV hashes are in `benchmarks/artifacts/20260927-live-interop-summary.md`. On 2026-09-28, the credentialed matrix passed locally and on hosted Live Parity after validating eight unique test accounts. Hosted run [`36499213873`](https://github.com/snapetech-org/slskr/actions/runs/36499213873) passed both the Rust UI/API job and the credentialed public interop job; the retained interop and full parity artifacts are linked in `benchmarks/artifacts/20260928-live-interop-hosted-summary.md`. | Verified locally and hosted on current source; run 36535159086 passed |
+| RF-073 | `scripts/run-release-gate.sh:69-74` makes the slskd API compatibility smoke opt-in; `docs/release.md:41-63` intentionally assigns that smoke to scheduled/manual Live Parity. The current batch labels the skipped local check as a certification artifact requirement. | This is a policy boundary, not a code defect, but release certification could be misread if artifact freshness was not visible. | Manual run `36456533118` retained the UI audit artifact but exposed a stale cached Python target that hid `SlskdClient`; a fresh local reproduction confirmed the target collision. The smoke now installs its pinned client into unique temporary state, clears any stale summary at start, isolates config/state, keeps generated private keys outside artifacts, disables its unused HTTPS listener, and uses an available loopback port for the shared native peer TCP/UDP listener. The local smoke passes all 91 API calls. Manual Live Parity run [`36464045259`](https://github.com/snapetech-org/slskr/actions/runs/36464045259) passed the corrected UI audit and API smoke on `c02c77bc`; retained artifact [`live-parity-36464045259`](https://github.com/snapetech-org/slskr/actions/runs/36464045259/artifacts/10988987235) contains the passing 91-call summary. Its credentialed public interop job skipped because `SLSKR_LIVE_INTEROP_ENV` is absent; that matrix proof remains open under RF-072. | Verified hosted API smoke; credentialed interop tracked in RF-072 |
 
 ## Continuation Evidence (2026-09-21)
 
@@ -1463,7 +1463,7 @@ Those modes use a separate advertised port and the dedicated obfuscated
 demultiplexer. This means a separate-port policy exists, but choosing it by
 default would change the current-parity endpoint behavior.
 
-The related [slskdN Type-1 design note](https://github.com/snapetech/slskdN/blob/main/docs/soulseek-type1-obfuscation.md)
+The related [slskdN Type-1 design note](https://github.com/snapetech-org/slskdN/blob/main/docs/soulseek-type1-obfuscation.md)
 describes the same shared-port default and a nonzero dedicated-listener option.
 The user selected the single-port policy. The shared demultiplexer now rejects
 a prefix whose plain and obfuscated forms both advertise known init forms,
@@ -5706,7 +5706,7 @@ and validating the affected feature and policy gates. The prior daemon and
 JavaScript closure evidence remains valid for its stated scope.
 
 The 2026-09-27 manually triggered Live Parity workflow run
-[36339374480](https://github.com/snapetech/slskr/actions/runs/36339374480)
+[36339374480](https://github.com/snapetech-org/slskr/actions/runs/36339374480)
 completed successfully at `5d497f55`. Its Rust UI and slskd API parity job
 passed and retained a 298-file artifact. The credentialed live-interoperability
 job produced a skipped TSV because the hosted secret is not configured; this
@@ -5797,7 +5797,7 @@ single-port TLS classification change has its focused listener proof below.
 
 Hosted Windows archive construction, archive verification, and the packaged
 binary smoke all passed at `339e6812` in GitHub CI run
-[36354468661](https://github.com/snapetech/slskr/actions/runs/36354468661).
+[36354468661](https://github.com/snapetech-org/slskr/actions/runs/36354468661).
 The macOS and all Linux platform jobs also passed at that revision. The overall
 workflow and downstream package-surface job completed successfully, including
 Debian/RPM packages for both architectures and deployment/package policy checks.
@@ -6041,7 +6041,7 @@ port. The legacy byte-level framing ambiguity remains open under RF-001.
 
 ## RF-034 Retained Shared Artifact And SDK Closure (2026-09-28 UTC)
 
-GitHub CI run [36359792162](https://github.com/snapetech/slskr/actions/runs/36359792162)
+GitHub CI run [36359792162](https://github.com/snapetech-org/slskr/actions/runs/36359792162)
 at `47440cfb` completed successfully: the Web producer, all seven platform
 archive jobs, Windows packaged-binary smoke, native AArch64 tests, Rust/security
 gates, and the downstream package/deployment job.
@@ -7817,14 +7817,14 @@ deployed concurrent-stream saturation remains open under RF-066.
 shutdown gaps. The inventory is complete; joined daemon shutdown for a blocking
 filesystem operation already inside a stalled mounted I/O remains unproved and
 is not represented as complete. Windows Smoke run
-[36462085991](https://github.com/snapetech/slskr/actions/runs/36462085991)
+[36462085991](https://github.com/snapetech-org/slskr/actions/runs/36462085991)
 passed its Rust, WASM, and Web checks on `46854887`, before the runtime teardown
 cap was added. Fresh hosted proof for that policy is pending. At the time of this 2026-09-28 checkpoint, the GitLab mirror was still blocked by the RF-008 loose object. That blob was repaired later on 2026-09-28, and GitLab pipeline 155 on 2026-09-29 passed on `b06c78ec`.
 
 ## RF-073 Live Parity Smoke Isolation (2026-09-28 UTC)
 
 The manual Live Parity run
-[36456533118](https://github.com/snapetech/slskr/actions/runs/36456533118)
+[36456533118](https://github.com/snapetech-org/slskr/actions/runs/36456533118)
 failed in the `slskd-api` import after pip warned that the pinned package's
 target directories already existed. A clean reproduction showed that an old
 empty `slskd_api` namespace directory shadows the real package when it is
@@ -7841,9 +7841,9 @@ loopback HTTP API. The peer, mesh, and DHT port settings project onto one
 dynamically selected loopback peer port; DHT rendezvous is disabled for this
 offline API smoke. The local run
 passes all 91 public `slskd-api` calls. Manual Live Parity run
-[36464045259](https://github.com/snapetech/slskr/actions/runs/36464045259) on
+[36464045259](https://github.com/snapetech-org/slskr/actions/runs/36464045259) on
 `c02c77bc` passed the UI audit and smoke; the retained
-[`live-parity-36464045259` artifact](https://github.com/snapetech/slskr/actions/runs/36464045259/artifacts/10988987235)
+[`live-parity-36464045259` artifact](https://github.com/snapetech-org/slskr/actions/runs/36464045259/artifacts/10988987235)
 contains the 91-call summary. The credentialed public interop job remains
 skipped because its repository secret is absent; that evidence remains open under
 RF-072.
@@ -7857,22 +7857,22 @@ daemon and temporary state were cleaned up.
 ## RF-063 Hosted Wishlist Request Budget (2026-09-28 UTC)
 
 Live Parity run
-[36460398465](https://github.com/snapetech/slskr/actions/runs/36460398465)
+[36460398465](https://github.com/snapetech-org/slskr/actions/runs/36460398465)
 recorded all 30 route/viewport views before failing one mock-audit budget. The
 wishlist view made nine startup requests; its exercised row action issued the
 search POST and then refreshed the wishlist with a GET, for 11 total. The
 repeated GET interval was 812 ms, above the 200 ms cadence floor. The route's
 budget is now 11 to account for that one action and refresh. Replaying the exact
 retained Web build locally passes all 30 views with no audit errors. Hosted run
-[36464045259](https://github.com/snapetech/slskr/actions/runs/36464045259) then
+[36464045259](https://github.com/snapetech-org/slskr/actions/runs/36464045259) then
 passed all 30 views and retained the audit in
-[`live-parity-36464045259`](https://github.com/snapetech/slskr/actions/runs/36464045259/artifacts/10988987235).
+[`live-parity-36464045259`](https://github.com/snapetech-org/slskr/actions/runs/36464045259/artifacts/10988987235).
 Deployed accessibility remains open.
 
 ## RF-011 Windows Smoke Current-Source Proof (2026-09-28 UTC)
 
 Windows Smoke run
-[36462085991](https://github.com/snapetech/slskr/actions/runs/36462085991)
+[36462085991](https://github.com/snapetech-org/slskr/actions/runs/36462085991)
 completed successfully on `46854887`. Its Rust tests, WASM check, and Web build
 all passed on the Windows runner, replacing the older `e7d0dd6a` evidence.
 
@@ -7886,10 +7886,10 @@ observes it complete. This prevents ordinary blocked file work from holding the
 daemon's runtime teardown open indefinitely. The log and design explicitly do
 not claim to join an operating-system call stuck in uninterruptible kernel I/O;
 Windows Smoke run
-[36466395263](https://github.com/snapetech/slskr/actions/runs/36466395263) on
+[36466395263](https://github.com/snapetech-org/slskr/actions/runs/36466395263) on
 `d4d185cc` passed the exact bounded-shutdown regression in its 694-test
 Rust run. GitHub CI run
-[36467270728](https://github.com/snapetech/slskr/actions/runs/36467270728) on
+[36467270728](https://github.com/snapetech-org/slskr/actions/runs/36467270728) on
 `6e9a6c00` passed the full locked Rust workspace tests, including the bounded
 shutdown regression, then passed the shared peer-gateway shutdown proof and
 reproducibility artifact collection. Its Linux AArch64 job passed; the other
@@ -7912,13 +7912,13 @@ shared port; no wire marker or dedicated listener is introduced.
 ## RF-011 Windows Formatter Line-Ending Check (2026-09-28 UTC)
 
 Windows Smoke run
-[36465244591](https://github.com/snapetech/slskr/actions/runs/36465244591)
+[36465244591](https://github.com/snapetech-org/slskr/actions/runs/36465244591)
 checked `08f76d7e` and stopped before Rust tests. The formatter diff showed
 identical Rust text with CRLF-only differences from the Windows checkout. The
 changed-file formatter now normalizes trailing CR on both source and rustfmt
 output before comparing. A synthetic CRLF copy passes the local gate alongside
 the ordinary LF source. Windows Smoke run
-[36466395263](https://github.com/snapetech/slskr/actions/runs/36466395263) on
+[36466395263](https://github.com/snapetech-org/slskr/actions/runs/36466395263) on
 `d4d185cc` subsequently passed its Rust tests, WASM check, and Web build.
 
 ## RF-059 kspls0 Temporary Deployed Route Audit (2026-09-28 UTC)
@@ -7981,7 +7981,7 @@ matrix now passes; the hosted receipt is recorded below.
 Eight unique account credentials from the protected local credential files
 passed the preflight. The local matrix passed four logins, one local-peer probe,
 and private-message and room-message probes. GitHub Live Parity run
-[`36499213873`](https://github.com/snapetech/slskr/actions/runs/36499213873)
+[`36499213873`](https://github.com/snapetech-org/slskr/actions/runs/36499213873)
 passed both its Rust UI/API job and credentialed public interop job on
 `506a5dd5`. The credentialed TSV artifact and full UI/API parity artifact are
 linked from the sanitized receipt in
@@ -8036,13 +8036,13 @@ process or a signed peer announcement; the separate recipient-backfill receipt
 above records that network path.
 
 GitHub Live Parity run
-[36535159086](https://github.com/snapetech/slskr/actions/runs/36535159086)
+[36535159086](https://github.com/snapetech-org/slskr/actions/runs/36535159086)
 passed on exact source commit 0aa2bae62a051d4d65ba1f880d3a6458cdb5ca02.
 Both the credentialed public interop and Rust/API parity jobs succeeded. The
 retained artifacts are
-[credentialed interop](https://github.com/snapetech/slskr/actions/runs/36535159086/artifacts/11018351308)
+[credentialed interop](https://github.com/snapetech-org/slskr/actions/runs/36535159086/artifacts/11018351308)
 and
-[full parity](https://github.com/snapetech/slskr/actions/runs/36535159086/artifacts/11018471640).
+[full parity](https://github.com/snapetech-org/slskr/actions/runs/36535159086/artifacts/11018471640).
 The ordinary push CI for this commit was still running when this receipt was
 written.
 
@@ -8733,19 +8733,19 @@ included in this work.
 
 The product source at `f63ca9bc911c7c5f400472c97efcbf568cd78b98` passed the
 complete GitHub CI matrix in run
-[`37141220791`](https://github.com/snapetech/slskr/actions/runs/37141220791),
+[`37141220791`](https://github.com/snapetech-org/slskr/actions/runs/37141220791),
 attempt 2. All 11 jobs passed, including Linux GNU and musl x64/ARM64, macOS
 Intel and Apple Silicon, Windows x64, Linux AArch64, Rust tests, production Web
 assets, and Package and deployment surfaces. The first macOS Intel artifact
 download failed with a transient DNS error; the targeted retry downloaded the
 artifact, passed native workspace tests, built and verified the release
 archive, and completed successfully. Windows Smoke run
-[`37141220632`](https://github.com/snapetech/slskr/actions/runs/37141220632)
+[`37141220632`](https://github.com/snapetech-org/slskr/actions/runs/37141220632)
 also passed. CodeQL, the release-note contract, local identity checks, and
 GitGuardian checks passed on the same source.
 
 React Nightly Audit run
-[`37141535719`](https://github.com/snapetech/slskr/actions/runs/37141535719)
+[`37141535719`](https://github.com/snapetech-org/slskr/actions/runs/37141535719)
 passed on this exact commit with a clean worktree. Its success scenario covered
 84 desktop/mobile views and 2,553 observed UI responses, with zero page errors,
 asset errors, loading states, visible error states, overflow views, or Axe
@@ -8753,7 +8753,7 @@ violations. The rendered-loading/empty, validation/server-error, and
 authorization/reconnect/restart scenarios also passed.
 
 Live Parity run
-[`37141537643`](https://github.com/snapetech/slskr/actions/runs/37141537643)
+[`37141537643`](https://github.com/snapetech-org/slskr/actions/runs/37141537643)
 passed both the Rust UI and slskd API parity job and the credentialed public
 live interop job. Its sanitized peer, login, private-message, and room-message
 smokes all reported success. GitLab pipeline

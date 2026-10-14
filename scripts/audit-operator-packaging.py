@@ -374,7 +374,7 @@ def winget_cases(local_root: Path, target_root: Path) -> dict[str, bool]:
         and "InstallerType: zip" in local_installer
         and "NestedInstallerType: portable" in local_installer
         and "PortableCommandAlias: slskr" in local_installer
-        and "InstallerUrl: https://github.com/snapetech/slskr/releases/" in local_installer
+        and "InstallerUrl: https://github.com/snapetech-org/slskr/releases/" in local_installer
     )
     target_consistent = (
         "PackageIdentifier: snapetech.slskdn" in target_version

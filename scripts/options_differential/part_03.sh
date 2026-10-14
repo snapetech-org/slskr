@@ -194,7 +194,7 @@ print(json.dumps({
     "otherBanner":has_slskdn_logo if target == "slskd" else has_slskd_logo,
     "version":"0.0.0 (0.0.0)" in log or "slskr 0.0.0" in log,
     "development":"DEVELOPMENT" in log,
-    "website":any(marker in log for marker in ("https://slskd.org", "https://github.com/snapetech/slskr")),
+    "website":any(marker in log for marker in ("https://slskd.org", "https://github.com/snapetech-org/slskr")),
 },sort_keys=True,separators=(",",":")))
 PY
   printf 'status=200\ncontent-type=application/json\n' >"$suite/no-logo-$stage.meta"

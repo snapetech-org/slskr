@@ -15,9 +15,9 @@ RUN set -eux; \
     esac; \
     test "$VERSION" != "dev"; \
     archive="slskr-${VERSION}-${rust_target}.tar.gz"; \
-    url="https://github.com/snapetech/slskr/releases/download/release-${VERSION}/${archive}"; \
+    url="https://github.com/snapetech-org/slskr/releases/download/release-${VERSION}/${archive}"; \
     curl -fsSL "$url" -o "/tmp/$archive"; \
-    curl -fsSL "https://github.com/snapetech/slskr/releases/download/release-${VERSION}/SHA256SUMS.txt" -o /tmp/SHA256SUMS.txt; \
+    curl -fsSL "https://github.com/snapetech-org/slskr/releases/download/release-${VERSION}/SHA256SUMS.txt" -o /tmp/SHA256SUMS.txt; \
     grep -Eq "^[0-9a-fA-F]{64}[[:space:]]+\\*?(\\./)?$archive$" /tmp/SHA256SUMS.txt; \
     (cd /tmp && sha256sum --check --ignore-missing SHA256SUMS.txt); \
     mkdir -p /out; \
@@ -34,7 +34,7 @@ ARG BUILD_DATE=unknown
 
 LABEL org.opencontainers.image.title="slskr" \
       org.opencontainers.image.description="Rust Soulseek daemon with bundled Web UI" \
-      org.opencontainers.image.source="https://github.com/snapetech/slskr" \
+      org.opencontainers.image.source="https://github.com/snapetech-org/slskr" \
       org.opencontainers.image.version="${VERSION}" \
       org.opencontainers.image.revision="${REVISION}" \
       org.opencontainers.image.created="${BUILD_DATE}" \

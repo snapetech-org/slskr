@@ -122,7 +122,9 @@ pub(super) async fn start_controller_version_check(state: Arc<AppState>) {
 pub(super) fn controller_releases_url(target: ControllerProfile) -> &'static str {
     match target {
         ControllerProfile::Legacy => "https://api.github.com/repos/slskd/slskd/releases/latest",
-        ControllerProfile::Native => "https://api.github.com/repos/snapetech/slskr/releases/latest",
+        ControllerProfile::Native => {
+            "https://api.github.com/repos/snapetech-org/slskr/releases/latest"
+        }
     }
 }
 

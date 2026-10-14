@@ -287,7 +287,9 @@ impl MusicBrainzIntegrationSettings {
             user_agent: env
                 .var("SLSKD_MUSICBRAINZ_USER_AGENT")
                 .or(file_config.user_agent)
-                .unwrap_or_else(|| "slskR/0.0.0 (https://github.com/snapetech/slskr)".to_owned())
+                .unwrap_or_else(|| {
+                    "slskR/0.0.0 (https://github.com/snapetech-org/slskr)".to_owned()
+                })
                 .trim()
                 .to_owned(),
             timeout_seconds: env_parse_layer(
@@ -335,7 +337,7 @@ impl Default for MusicBrainzIntegrationSettings {
     fn default() -> Self {
         Self {
             base_url: "https://musicbrainz.org/ws/2".to_owned(),
-            user_agent: "slskR/0.0.0 (https://github.com/snapetech/slskr)".to_owned(),
+            user_agent: "slskR/0.0.0 (https://github.com/snapetech-org/slskr)".to_owned(),
             timeout_seconds: 20.0,
             retry_attempts: 2,
         }

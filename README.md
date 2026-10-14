@@ -218,7 +218,7 @@ when required local config or credentials are missing.
 Release artifacts are published from tags named `release-v<semver>`:
 
 ```text
-https://github.com/snapetech/slskr/releases
+https://github.com/snapetech-org/slskr/releases
 ```
 
 Archives include the `slskr` binary and bundled web assets for Linux x86-64 and
@@ -599,7 +599,7 @@ The table below links the maintained entry points most users need first.
 Canonical repository:
 
 ```text
-https://github.com/snapetech/slskr
+https://github.com/snapetech-org/slskr
 ```
 
 ## Support

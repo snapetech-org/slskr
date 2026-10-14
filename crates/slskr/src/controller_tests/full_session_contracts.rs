@@ -65,7 +65,7 @@ pub(super) async fn force_checking_the_latest_version_awaits_a_real_github_looku
             &listener,
             serde_json::json!({
                 "tag_name": "v9.9.9-slskdn.20260101120000",
-                "html_url": "https://github.com/snapetech/slskdn/releases/tag/v9.9.9-slskdn.20260101120000",
+                "html_url": "https://github.com/snapetech-org/slskdN/releases/tag/v9.9.9-slskdn.20260101120000",
             }),
         )
         .await

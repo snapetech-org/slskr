@@ -111,8 +111,8 @@ resolver = "2"
 [workspace.package]
 edition = "2021"
 license = "AGPL-3.0-only"
-homepage = "https://github.com/snapetech/slskr"
-repository = "https://github.com/snapetech/slskr"
+homepage = "https://github.com/snapetech-org/slskr"
+repository = "https://github.com/snapetech-org/slskr"
 rust-version = "1.76"
 
 [workspace.lints.rust]

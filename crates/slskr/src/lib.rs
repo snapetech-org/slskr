@@ -1112,7 +1112,7 @@ fn print_native_product_logo() {
         " ".repeat(padding_right)
     );
     let mut banner = format!(
-        "\n\n                         slskR\n╒════════════════════════════════════════════════════════╕\n│           GNU AFFERO GENERAL PUBLIC LICENSE            │\n│                  https://github.com/snapetech/slskr    │\n│                                                        │\n│        native Soulseek client, daemon, and Web UI      │\n│{centered_version}│"
+        "\n\n                         slskR\n╒════════════════════════════════════════════════════════╕\n│           GNU AFFERO GENERAL PUBLIC LICENSE            │\n│                  https://github.com/snapetech-org/slskr    │\n│                                                        │\n│        native Soulseek client, daemon, and Web UI      │\n│{centered_version}│"
     );
     if development {
         banner.push_str("\n│■■■■■■■■■■■■■■■■■■■■► DEVELOPMENT ◄■■■■■■■■■■■■■■■■■■■■■│");

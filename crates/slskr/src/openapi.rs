@@ -35,7 +35,7 @@ impl OpenApiSpec {
                 "description": self.description,
                 "contact": {
                     "name": "slskr contributors",
-                    "url": "https://github.com/snapetech/slskr"
+                    "url": "https://github.com/snapetech-org/slskr"
                 },
                 "license": {
                     "name": "AGPL-3.0-only",

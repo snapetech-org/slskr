@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Regression guard for the class of bug reported at
-# https://github.com/snapetech/slskr/pull/58#issuecomment-5330870207:
+# https://github.com/snapetech-org/slskr/pull/58#issuecomment-5330870207:
 # a locally-hashed AUR source file (packaging/aur/*.service, *.sysusers,
 # *.tmpfiles, ...) was edited without updating the sha256sums= entry that
 # PKGBUILD/PKGBUILD-bin declare for it, which makes makepkg fail outright.

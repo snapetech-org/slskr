@@ -8,7 +8,7 @@ with the [install runbook](install.md) and
 ## 1. Install slskR
 
 Download the archive for your operating system and CPU from
-[GitHub Releases](https://github.com/snapetech/slskr/releases). Releases
+[GitHub Releases](https://github.com/snapetech-org/slskr/releases). Releases
 currently provide Linux x86-64 and AArch64 (GNU and musl), macOS Intel and
 Apple silicon, and Windows x86-64 archives.
 

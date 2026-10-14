@@ -90,11 +90,11 @@ PackageVersion: {pkgver}
 PackageLocale: en-US
 Publisher: snapetech
 PublisherUrl: https://github.com/snapetech
-PublisherSupportUrl: https://github.com/snapetech/slskr/issues
+PublisherSupportUrl: https://github.com/snapetech-org/slskr/issues
 PackageName: slskr
-PackageUrl: https://github.com/snapetech/slskr
+PackageUrl: https://github.com/snapetech-org/slskr
 License: AGPL-3.0-only
-LicenseUrl: https://github.com/snapetech/slskr/blob/main/LICENSE
+LicenseUrl: https://github.com/snapetech-org/slskr/blob/main/LICENSE
 ShortDescription: Rust Soulseek daemon with bundled Web UI
 Description: slskr is a Rust Soulseek daemon with an HTTP API, transfers, search, observability, and a bundled Web UI.
 Moniker: slskr
@@ -104,7 +104,7 @@ Tags:
   - daemon
   - webui
   - rust
-ReleaseNotesUrl: https://github.com/snapetech/slskr/releases/tag/{tag}
+ReleaseNotesUrl: https://github.com/snapetech-org/slskr/releases/tag/{tag}
 ManifestType: defaultLocale
 ManifestVersion: 1.6.0
 """)
@@ -119,7 +119,7 @@ NestedInstallerFiles:
     PortableCommandAlias: slskr
 Installers:
   - Architecture: x64
-    InstallerUrl: https://github.com/snapetech/slskr/releases/download/{tag}/slskr-{rel}-x86_64-pc-windows-msvc.zip
+    InstallerUrl: https://github.com/snapetech-org/slskr/releases/download/{tag}/slskr-{rel}-x86_64-pc-windows-msvc.zip
     InstallerSha256: {win_x64.upper()}
 ManifestType: installer
 ManifestVersion: 1.6.0
@@ -127,27 +127,27 @@ ManifestVersion: 1.6.0
 
 write("packaging/homebrew/Formula/slskr.rb", f'''class Slskr < Formula
   desc "Rust Soulseek daemon with bundled Web UI"
-  homepage "https://github.com/snapetech/slskr"
+  homepage "https://github.com/snapetech-org/slskr"
   license "AGPL-3.0-only"
   version "{pkgver}"
 
   on_macos do
     on_arm do
-      url "https://github.com/snapetech/slskr/releases/download/{tag}/slskr-{rel}-aarch64-apple-darwin.tar.gz"
+      url "https://github.com/snapetech-org/slskr/releases/download/{tag}/slskr-{rel}-aarch64-apple-darwin.tar.gz"
       sha256 "{mac_arm64}"
     end
     on_intel do
-      url "https://github.com/snapetech/slskr/releases/download/{tag}/slskr-{rel}-x86_64-apple-darwin.tar.gz"
+      url "https://github.com/snapetech-org/slskr/releases/download/{tag}/slskr-{rel}-x86_64-apple-darwin.tar.gz"
       sha256 "{mac_x64}"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/snapetech/slskr/releases/download/{tag}/slskr-{rel}-aarch64-unknown-linux-gnu.tar.gz"
+      url "https://github.com/snapetech-org/slskr/releases/download/{tag}/slskr-{rel}-aarch64-unknown-linux-gnu.tar.gz"
       sha256 "{linux_arm64}"
     else
-      url "https://github.com/snapetech/slskr/releases/download/{tag}/slskr-{rel}-x86_64-unknown-linux-gnu.tar.gz"
+      url "https://github.com/snapetech-org/slskr/releases/download/{tag}/slskr-{rel}-x86_64-unknown-linux-gnu.tar.gz"
       sha256 "{linux_x64}"
     end
   end
@@ -189,8 +189,8 @@ parts:
   slskr:
     plugin: dump
     source:
-      - on amd64: https://github.com/snapetech/slskr/releases/download/{tag}/slskr-{rel}-x86_64-unknown-linux-gnu.tar.gz
-      - on arm64: https://github.com/snapetech/slskr/releases/download/{tag}/slskr-{rel}-aarch64-unknown-linux-gnu.tar.gz
+      - on amd64: https://github.com/snapetech-org/slskr/releases/download/{tag}/slskr-{rel}-x86_64-unknown-linux-gnu.tar.gz
+      - on arm64: https://github.com/snapetech-org/slskr/releases/download/{tag}/slskr-{rel}-aarch64-unknown-linux-gnu.tar.gz
     source-type: file
     override-pull: |
       craftctl default
@@ -248,11 +248,11 @@ modules:
       - chmod +x /app/bin/slskr-wrapper
     sources:
       - type: archive
-        url: https://github.com/snapetech/slskr/releases/download/{tag}/slskr-{rel}-x86_64-unknown-linux-gnu.tar.gz
+        url: https://github.com/snapetech-org/slskr/releases/download/{tag}/slskr-{rel}-x86_64-unknown-linux-gnu.tar.gz
         sha256: {linux_x64}
         only-arches: [x86_64]
       - type: archive
-        url: https://github.com/snapetech/slskr/releases/download/{tag}/slskr-{rel}-aarch64-unknown-linux-gnu.tar.gz
+        url: https://github.com/snapetech-org/slskr/releases/download/{tag}/slskr-{rel}-aarch64-unknown-linux-gnu.tar.gz
         sha256: {linux_arm64}
         only-arches: [aarch64]
 ''')
@@ -262,7 +262,7 @@ sed -i \
   -e "s|<version>[^<]*</version>|<version>${pkgver}</version>|" \
   packaging/chocolatey/slskr.nuspec
 sed -i \
-  -e "s|^\$url = .*|\$url = \"https://github.com/snapetech/slskr/releases/download/${tag}/${win_x64}\"|" \
+  -e "s|^\$url = .*|\$url = \"https://github.com/snapetech-org/slskr/releases/download/${tag}/${win_x64}\"|" \
   -e "s|^\$checksum = .*|\$checksum = \"${win_x64_sha}\"|" \
   packaging/chocolatey/tools/chocolateyinstall.ps1
 
@@ -287,10 +287,10 @@ sed -i "s|^VERSION=\"\${SLSKR_VERSION:-.*}\"|VERSION=\"\${SLSKR_VERSION:-${pkgve
 
 sed -i \
   -e "s|^        version = .*|        version = \"${pkgver}\";|" \
-  -e "/\"x86_64-linux\" = {/,/^[[:space:]]*};/ { s|^            url = .*|            url = \"https://github.com/snapetech/slskr/releases/download/${tag}/${linux_x64}\";|; s|^            sha256 = .*|            sha256 = \"${linux_x64_sha}\";|; }" \
-  -e "/\"aarch64-linux\" = {/,/^[[:space:]]*};/ { s|^            url = .*|            url = \"https://github.com/snapetech/slskr/releases/download/${tag}/${linux_arm64}\";|; s|^            sha256 = .*|            sha256 = \"${linux_arm64_sha}\";|; }" \
-  -e "/\"x86_64-darwin\" = {/,/^[[:space:]]*};/ { s|^            url = .*|            url = \"https://github.com/snapetech/slskr/releases/download/${tag}/${mac_x64}\";|; s|^            sha256 = .*|            sha256 = \"${mac_x64_sha}\";|; }" \
-  -e "/\"aarch64-darwin\" = {/,/^[[:space:]]*};/ { s|^            url = .*|            url = \"https://github.com/snapetech/slskr/releases/download/${tag}/${mac_arm64}\";|; s|^            sha256 = .*|            sha256 = \"${mac_arm64_sha}\";|; }" \
+  -e "/\"x86_64-linux\" = {/,/^[[:space:]]*};/ { s|^            url = .*|            url = \"https://github.com/snapetech-org/slskr/releases/download/${tag}/${linux_x64}\";|; s|^            sha256 = .*|            sha256 = \"${linux_x64_sha}\";|; }" \
+  -e "/\"aarch64-linux\" = {/,/^[[:space:]]*};/ { s|^            url = .*|            url = \"https://github.com/snapetech-org/slskr/releases/download/${tag}/${linux_arm64}\";|; s|^            sha256 = .*|            sha256 = \"${linux_arm64_sha}\";|; }" \
+  -e "/\"x86_64-darwin\" = {/,/^[[:space:]]*};/ { s|^            url = .*|            url = \"https://github.com/snapetech-org/slskr/releases/download/${tag}/${mac_x64}\";|; s|^            sha256 = .*|            sha256 = \"${mac_x64_sha}\";|; }" \
+  -e "/\"aarch64-darwin\" = {/,/^[[:space:]]*};/ { s|^            url = .*|            url = \"https://github.com/snapetech-org/slskr/releases/download/${tag}/${mac_arm64}\";|; s|^            sha256 = .*|            sha256 = \"${mac_arm64_sha}\";|; }" \
   flake.nix
 
 if grep -R "CHANGE_ME" \
