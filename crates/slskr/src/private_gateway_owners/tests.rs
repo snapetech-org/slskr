@@ -414,10 +414,27 @@ async fn gateway_certificate_identity_is_durable() {
 async fn shared_tcp_gateway_does_not_bind_a_second_public_tcp_socket() {
     let root = temporary_directory("gateway-shared-tcp");
     // Windows can reserve ephemeral TCP and UDP port ranges differently.
-    // Pick a UDP port first, then bind TCP to that same available port.
-    let shared_udp_socket = Arc::new(StdUdpSocket::bind("127.0.0.1:0").unwrap());
-    let public_address = shared_udp_socket.local_addr().unwrap();
-    let _public_listener = TcpListener::bind(public_address).await.unwrap();
+    // Pick a UDP port first, then retry if a concurrent TCP test claims the
+    // same numeric port before we bind the matching TCP listener.
+    let mut shared_sockets = None;
+    for _ in 0..32 {
+        let shared_udp_socket = Arc::new(StdUdpSocket::bind("127.0.0.1:0").unwrap());
+        let public_address = shared_udp_socket.local_addr().unwrap();
+        match TcpListener::bind(public_address).await {
+            Ok(public_listener) => {
+                shared_sockets = Some((shared_udp_socket, public_address, public_listener));
+                break;
+            }
+            Err(error)
+                if matches!(
+                    error.kind(),
+                    std::io::ErrorKind::AddrInUse | std::io::ErrorKind::AddrNotAvailable
+                ) => {}
+            Err(error) => panic!("bind TCP listener for shared gateway test: {error}"),
+        }
+    }
+    let (shared_udp_socket, public_address, _public_listener) =
+        shared_sockets.expect("reserve a matching UDP and TCP port after 32 attempts");
     let gateway = Gateway::load_or_create_with_quic_and_data_policy_and_proxy_and_dht_socket_with_data_share_shared_tcp(
             public_address,
             &root,
