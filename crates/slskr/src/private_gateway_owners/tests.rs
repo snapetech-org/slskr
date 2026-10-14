@@ -413,11 +413,29 @@ async fn gateway_certificate_identity_is_durable() {
 #[tokio::test]
 async fn shared_tcp_gateway_does_not_bind_a_second_public_tcp_socket() {
     let root = temporary_directory("gateway-shared-tcp");
-    // Windows can reserve ephemeral TCP and UDP port ranges differently.
-    // Pick a UDP port first, then bind TCP to that same available port.
-    let shared_udp_socket = Arc::new(StdUdpSocket::bind("127.0.0.1:0").unwrap());
-    let public_address = shared_udp_socket.local_addr().unwrap();
-    let _public_listener = TcpListener::bind(public_address).await.unwrap();
+    // A UDP-selected ephemeral port may already be used by a TCP service on the host.
+    let mut shared_sockets = None;
+    for _ in 0..64 {
+        let shared_udp_socket = Arc::new(StdUdpSocket::bind("127.0.0.1:0").unwrap());
+        let public_address = shared_udp_socket.local_addr().unwrap();
+        match TcpListener::bind(public_address).await {
+            Ok(public_listener) => {
+                shared_sockets = Some((public_address, shared_udp_socket, public_listener));
+                break;
+            }
+            Err(error)
+                if matches!(
+                    error.kind(),
+                    std::io::ErrorKind::AddrInUse | std::io::ErrorKind::PermissionDenied
+                ) =>
+            {
+                continue;
+            }
+            Err(error) => panic!("could not bind public TCP listener: {error}"),
+        }
+    }
+    let (public_address, shared_udp_socket, _public_listener) = shared_sockets
+        .expect("could not reserve a shared ephemeral TCP/UDP port after 64 attempts");
     let gateway = Gateway::load_or_create_with_quic_and_data_policy_and_proxy_and_dht_socket_with_data_share_shared_tcp(
             public_address,
             &root,
