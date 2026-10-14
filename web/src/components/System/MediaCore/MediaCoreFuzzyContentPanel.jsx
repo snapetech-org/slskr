@@ -1,3 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+
+
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -19,6 +23,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const MediaCoreFuzzyContentPanel = React.memo(() => {
+  useInterfaceLanguage();
   const mountedRef = useRef(true);
   useEffect(() => {
     mountedRef.current = true;
@@ -62,25 +67,23 @@ const MediaCoreFuzzyContentPanel = React.memo(() => {
             <Card.Content>
               <Card.Header>
                 <Icon name="magic" />
-                Fuzzy Content Matching
-              </Card.Header>
+                <LocalizedText source={"Fuzzy Content Matching"} /></Card.Header>
               <Card.Description>
-                Find similar content using perceptual hashes and text analysis
-              </Card.Description>
+                <LocalizedText source={"Find similar content using perceptual hashes and text analysis"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Field>
-                  <label>Target ContentID</label>
+                  <label><LocalizedText source={"Target ContentID"} /></label>
                   <Input
                     onChange={(e) => setFindSimilarContentId(e.target.value)}
-                    placeholder="ContentID to find matches for"
+                    placeholder={interfaceText("ContentID to find matches for")}
                     value={findSimilarContentId}
-                  />
+                   {...interfaceTextProps("ContentID to find matches for")}/>
                 </Form.Field>
                 <Form.Group widths="equal">
                   <Form.Field>
-                    <label>Min Confidence</label>
+                    <label><LocalizedText source={"Min Confidence"} /></label>
                     <Input
                       max="1"
                       min="0"
@@ -93,7 +96,7 @@ const MediaCoreFuzzyContentPanel = React.memo(() => {
                     />
                   </Form.Field>
                   <Form.Field>
-                    <label>Max Results</label>
+                    <label><LocalizedText source={"Max Results"} /></label>
                     <Input
                       max="50"
                       min="1"
@@ -111,8 +114,7 @@ const MediaCoreFuzzyContentPanel = React.memo(() => {
                   onClick={handleFindSimilarContent}
                   primary
                 >
-                  Find Similar Content
-                </Button>
+                  <LocalizedText source={"Find Similar Content"} /></Button>
               </Form>
 
               {findSimilarResult && (
@@ -124,19 +126,17 @@ const MediaCoreFuzzyContentPanel = React.memo(() => {
                   ) : (
                     <div>
                       <p>
-                        <strong>Target:</strong>{' '}
+                        <strong><LocalizedText source={"Target:"} /></strong>{' '}
                         {findSimilarResult.targetContentId}
                       </p>
                       <p>
                         <strong>
-                          Searched {findSimilarResult.totalCandidates}{' '}
-                          candidates
-                        </strong>
+                          <LocalizedText source={"Searched"} />{" "}{findSimilarResult.totalCandidates}{' '}
+                          <LocalizedText source={"candidates"} /></strong>
                       </p>
                       <p>
                         <strong>
-                          Found {findSimilarResult.matches?.length || 0} matches
-                        </strong>
+                          <LocalizedText source={"Found"} />{" "}{findSimilarResult.matches?.length || 0} <LocalizedText source={"matches"} /></strong>
                       </p>
                       {findSimilarResult.matches?.length > 0 && (
                         <List
@@ -151,9 +151,8 @@ const MediaCoreFuzzyContentPanel = React.memo(() => {
                                   {match.candidateContentId}
                                 </List.Header>
                                 <List.Description>
-                                  Confidence:{' '}
-                                  {(match.confidence * 100).toFixed(1)}% |
-                                  Reason: {match.reason}
+                                  <LocalizedText source={"Confidence:"} />{' '}
+                                  {(match.confidence * 100).toFixed(1)}<LocalizedText source={"% | Reason:"} />{" "}{match.reason}
                                 </List.Description>
                               </List.Content>
                             </List.Item>

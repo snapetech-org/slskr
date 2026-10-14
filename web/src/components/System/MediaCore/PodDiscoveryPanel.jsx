@@ -1,3 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+
+
 import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
@@ -29,6 +33,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const PodDiscoveryPanel = ({ visible = true }) => {
+  useInterfaceLanguage();
   useRegionalFormat();
   const mountedRef = useRef(true);
 
@@ -67,7 +72,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
 
   const handleRegisterPodForDiscovery = async () => {
     if (!podToRegister.trim()) {
-      toast.warning('Please enter pod JSON data');
+      toast.warning(interfaceText("Please enter pod JSON data"));
       return;
     }
 
@@ -87,7 +92,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
 
   const handleUnregisterPodFromDiscovery = async () => {
     if (!podToUnregister.trim()) {
-      toast.warning('Please enter a pod ID');
+      toast.warning(interfaceText("Please enter a pod ID"));
       return;
     }
 
@@ -107,7 +112,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
 
   const handleDiscoverByName = async () => {
     if (!discoverByName.trim()) {
-      toast.warning('Please enter a pod name');
+      toast.warning(interfaceText("Please enter a pod name"));
       return;
     }
 
@@ -125,7 +130,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
 
   const handleDiscoverByTag = async () => {
     if (!discoverByTag.trim()) {
-      toast.warning('Please enter a tag');
+      toast.warning(interfaceText("Please enter a tag"));
       return;
     }
 
@@ -143,7 +148,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
 
   const handleDiscoverByTags = async () => {
     if (!discoverTags.trim()) {
-      toast.warning('Please enter tags (comma-separated)');
+      toast.warning(interfaceText("Please enter tags (comma-separated)"));
       return;
     }
 
@@ -178,7 +183,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
 
   const handleDiscoverByContent = async () => {
     if (!discoverByContent.trim()) {
-      toast.warning('Please enter a content ID');
+      toast.warning(interfaceText("Please enter a content ID"));
       return;
     }
 
@@ -211,7 +216,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
     try {
       const result = await mediacore.refreshPodDiscovery();
       toast.success(
-        `Discovery refresh completed: ${result.entriesRefreshed} refreshed, ${result.entriesExpired} expired`,
+        interfaceText("Discovery refresh completed: {entriesRefreshed} refreshed, {entriesExpired} expired", { "entriesRefreshed": (result.entriesRefreshed), "entriesExpired": (result.entriesExpired) }),
       );
       // Reload stats to reflect changes
       await handleLoadDiscoveryStats();
@@ -227,42 +232,35 @@ const PodDiscoveryPanel = ({ visible = true }) => {
             <Card.Content>
               <Card.Header>
                 <Icon name="search" />
-                Pod Discovery
-              </Card.Header>
+                <LocalizedText source={"Pod Discovery"} /></Card.Header>
               <Card.Description>
-                Discover pods via DHT using name slugs, tags, and content
-                associations
-              </Card.Description>
+                <LocalizedText source={"Discover pods via DHT using name slugs, tags, and content associations"} /></Card.Description>
               <PodWorkflowNotice
                 color="blue"
                 icon="info circle"
-                title="Mostly read-only discovery"
-              >
-                Search operations are read-only, but registering, updating,
-                unregistering, or refreshing discovery data changes public pod
-                discovery state.
-              </PodWorkflowNotice>
+                title={interfaceText("Mostly read-only discovery")}
+               {...interfaceTextProps("Mostly read-only discovery")}>
+                <LocalizedText source={"Search operations are read-only, but registering, updating, unregistering, or refreshing discovery data changes public pod discovery state."} /></PodWorkflowNotice>
             </Card.Content>
 
             {/* Pod Registration */}
             <Card.Content>
-              <Header size="small">Register Pod for Discovery</Header>
+              <Header size="small"><LocalizedText source={"Register Pod for Discovery"} /></Header>
               <Form>
                 <Form.TextArea
-                  label="Pod JSON (must have Visibility: Listed)"
+                  label={interfaceText("Pod JSON (must have Visibility: Listed)")}
                   onChange={(e) => setPodToRegister(e.target.value)}
                   placeholder='{"podId": "pod:artist:mb:daft-punk-hash", "name": "Daft Punk Fans", "visibility": "Listed", "focusContentId": "content:audio:artist:daft-punk", "tags": ["electronic", "french-house"]}'
                   rows={3}
                   value={podToRegister}
-                />
+                 {...interfaceTextProps("Pod JSON (must have Visibility: Listed)")}/>
                 <Button
                   disabled={registeringPod || !podToRegister.trim()}
                   loading={registeringPod}
                   onClick={handleRegisterPodForDiscovery}
                   primary
                 >
-                  Register Pod
-                </Button>
+                  <LocalizedText source={"Register Pod"} /></Button>
               </Form>
 
               {podRegistrationResult && (
@@ -270,24 +268,23 @@ const PodDiscoveryPanel = ({ visible = true }) => {
                   {podRegistrationResult.error ? (
                     <Message error>
                       <p>
-                        Failed to register pod: {podRegistrationResult.error}
+                        <LocalizedText source={"Failed to register pod:"} />{" "}{podRegistrationResult.error}
                       </p>
                     </Message>
                   ) : (
                     <Message success>
                       <Message.Header>
-                        Pod Registered for Discovery
-                      </Message.Header>
+                        <LocalizedText source={"Pod Registered for Discovery"} /></Message.Header>
                       <p>
-                        <strong>Pod ID:</strong> {podRegistrationResult.podId}
+                        <strong><LocalizedText source={"Pod ID:"} /></strong> {podRegistrationResult.podId}
                         <br />
-                        <strong>Discovery Keys:</strong>{' '}
+                        <strong><LocalizedText source={"Discovery Keys:"} /></strong>{' '}
                         {podRegistrationResult.discoveryKeys?.join(', ')}
                         <br />
-                        <strong>Registered:</strong>{' '}
+                        <strong><LocalizedText source={"Registered:"} /></strong>{' '}
                         {formatRegionalDateTime(podRegistrationResult.registeredAt)}
                         <br />
-                        <strong>Expires:</strong>{' '}
+                        <strong><LocalizedText source={"Expires:"} /></strong>{' '}
                         {formatRegionalDateTime(podRegistrationResult.expiresAt)}
                       </p>
                     </Message>
@@ -297,22 +294,21 @@ const PodDiscoveryPanel = ({ visible = true }) => {
             </Card.Content>
 
             <Card.Content>
-              <Header size="small">Unregister Pod from Discovery</Header>
+              <Header size="small"><LocalizedText source={"Unregister Pod from Discovery"} /></Header>
               <Form>
                 <Form.Input
-                  label="Pod ID"
+                  label={interfaceText("Pod ID")}
                   onChange={(e) => setPodToUnregister(e.target.value)}
                   placeholder="pod:artist:mb:daft-punk-hash"
                   value={podToUnregister}
-                />
+                 {...interfaceTextProps("Pod ID")}/>
                 <Button
                   color="red"
                   disabled={unregisteringPod || !podToUnregister.trim()}
                   loading={unregisteringPod}
                   onClick={handleUnregisterPodFromDiscovery}
                 >
-                  Unregister Pod
-                </Button>
+                  <LocalizedText source={"Unregister Pod"} /></Button>
               </Form>
 
               {podUnregistrationResult && (
@@ -320,13 +316,13 @@ const PodDiscoveryPanel = ({ visible = true }) => {
                   {podUnregistrationResult.error ? (
                     <Message error>
                       <p>
-                        Failed to unregister pod:{' '}
+                        <LocalizedText source={"Failed to unregister pod:"} />{' '}
                         {podUnregistrationResult.error}
                       </p>
                     </Message>
                   ) : (
                     <Message success>
-                      <p>Pod unregistered from discovery successfully</p>
+                      <p><LocalizedText source={"Pod unregistered from discovery successfully"} /></p>
                     </Message>
                   )}
                 </div>
@@ -337,7 +333,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
               <Grid>
                 <Grid.Column width={4}>
                   {/* Discover by Name */}
-                  <Header size="small">By Name</Header>
+                  <Header size="small"><LocalizedText source={"By Name"} /></Header>
                   <Form>
                     <Form.Input
                       onChange={(e) => setDiscoverByName(e.target.value)}
@@ -350,8 +346,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
                       loading={discoveringByName}
                       onClick={handleDiscoverByName}
                     >
-                      Discover
-                    </Button>
+                      <LocalizedText source={"Discover"} /></Button>
                   </Form>
 
                   {nameDiscoveryResult && (
@@ -368,7 +363,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
                           size="tiny"
                           success
                         >
-                          <p>Found {nameDiscoveryResult.totalFound} pods</p>
+                          <p><LocalizedText source={"Found"} />{" "}{nameDiscoveryResult.totalFound} <LocalizedText source={"pods"} /></p>
                         </Message>
                       )}
                     </div>
@@ -377,21 +372,20 @@ const PodDiscoveryPanel = ({ visible = true }) => {
 
                 <Grid.Column width={4}>
                   {/* Discover by Tag */}
-                  <Header size="small">By Tag</Header>
+                  <Header size="small"><LocalizedText source={"By Tag"} /></Header>
                   <Form>
                     <Form.Input
                       onChange={(e) => setDiscoverByTag(e.target.value)}
-                      placeholder="electronic"
+                      placeholder={interfaceText("electronic")}
                       value={discoverByTag}
-                    />
+                     {...interfaceTextProps("electronic")}/>
                     <Button
                       disabled={discoveringByTag || !discoverByTag.trim()}
                       fluid
                       loading={discoveringByTag}
                       onClick={handleDiscoverByTag}
                     >
-                      Discover
-                    </Button>
+                      <LocalizedText source={"Discover"} /></Button>
                   </Form>
 
                   {tagDiscoveryResult && (
@@ -408,7 +402,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
                           size="tiny"
                           success
                         >
-                          <p>Found {tagDiscoveryResult.totalFound} pods</p>
+                          <p><LocalizedText source={"Found"} />{" "}{tagDiscoveryResult.totalFound} <LocalizedText source={"pods"} /></p>
                         </Message>
                       )}
                     </div>
@@ -417,21 +411,20 @@ const PodDiscoveryPanel = ({ visible = true }) => {
 
                 <Grid.Column width={4}>
                   {/* Discover by Tags */}
-                  <Header size="small">By Tags (AND)</Header>
+                  <Header size="small"><LocalizedText source={"By Tags (AND)"} /></Header>
                   <Form>
                     <Form.Input
                       onChange={(e) => setDiscoverTags(e.target.value)}
-                      placeholder="electronic,french-house"
+                      placeholder={interfaceText("electronic,french-house")}
                       value={discoverTags}
-                    />
+                     {...interfaceTextProps("electronic,french-house")}/>
                     <Button
                       disabled={discoveringByTags || !discoverTags.trim()}
                       fluid
                       loading={discoveringByTags}
                       onClick={handleDiscoverByTags}
                     >
-                      Discover
-                    </Button>
+                      <LocalizedText source={"Discover"} /></Button>
                   </Form>
 
                   {tagsDiscoveryResult && (
@@ -448,7 +441,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
                           size="tiny"
                           success
                         >
-                          <p>Found {tagsDiscoveryResult.totalFound} pods</p>
+                          <p><LocalizedText source={"Found"} />{" "}{tagsDiscoveryResult.totalFound} <LocalizedText source={"pods"} /></p>
                         </Message>
                       )}
                     </div>
@@ -457,10 +450,10 @@ const PodDiscoveryPanel = ({ visible = true }) => {
 
                 <Grid.Column width={4}>
                   {/* Discover All */}
-                  <Header size="small">All Pods</Header>
+                  <Header size="small"><LocalizedText source={"All Pods"} /></Header>
                   <Form>
                     <Form.Input
-                      label="Limit"
+                      label={interfaceText("Limit")}
                       max="1000"
                       min="1"
                       onChange={(e) =>
@@ -468,15 +461,14 @@ const PodDiscoveryPanel = ({ visible = true }) => {
                       }
                       type="number"
                       value={discoverLimit}
-                    />
+                     {...interfaceTextProps("Limit")}/>
                     <Button
                       disabled={discoveringAll}
                       fluid
                       loading={discoveringAll}
                       onClick={handleDiscoverAll}
                     >
-                      Discover
-                    </Button>
+                      <LocalizedText source={"Discover"} /></Button>
                   </Form>
 
                   {allDiscoveryResult && (
@@ -493,7 +485,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
                           size="tiny"
                           success
                         >
-                          <p>Found {allDiscoveryResult.totalFound} pods</p>
+                          <p><LocalizedText source={"Found"} />{" "}{allDiscoveryResult.totalFound} <LocalizedText source={"pods"} /></p>
                         </Message>
                       )}
                     </div>
@@ -506,7 +498,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
               <Grid>
                 <Grid.Column width={8}>
                   {/* Discover by Content */}
-                  <Header size="small">By Content ID</Header>
+                  <Header size="small"><LocalizedText source={"By Content ID"} /></Header>
                   <Form>
                     <Form.Input
                       onChange={(e) => setDiscoverByContent(e.target.value)}
@@ -521,8 +513,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
                       loading={discoveringByContent}
                       onClick={handleDiscoverByContent}
                     >
-                      Discover
-                    </Button>
+                      <LocalizedText source={"Discover"} /></Button>
                   </Form>
 
                   {contentDiscoveryResult && (
@@ -539,7 +530,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
                           size="tiny"
                           success
                         >
-                          <p>Found {contentDiscoveryResult.totalFound} pods</p>
+                          <p><LocalizedText source={"Found"} />{" "}{contentDiscoveryResult.totalFound} <LocalizedText source={"pods"} /></p>
                         </Message>
                       )}
                     </div>
@@ -548,42 +539,39 @@ const PodDiscoveryPanel = ({ visible = true }) => {
 
                 <Grid.Column width={8}>
                   {/* Discovery Stats */}
-                  <Header size="small">Discovery Statistics</Header>
+                  <Header size="small"><LocalizedText source={"Discovery Statistics"} /></Header>
                   <Button.Group fluid>
                     <Button
                       disabled={loadingDiscoveryStats}
                       loading={loadingDiscoveryStats}
                       onClick={handleLoadDiscoveryStats}
                     >
-                      Load Stats
-                    </Button>
+                      <LocalizedText source={"Load Stats"} /></Button>
                     <Button
                       color="blue"
                       onClick={handleRefreshDiscovery}
                     >
-                      Refresh
-                    </Button>
+                      <LocalizedText source={"Refresh"} /></Button>
                   </Button.Group>
 
                   {discoveryStats && !discoveryStats.error && (
                     <div style={{ marginTop: '0.5em' }}>
                       <Message size="tiny">
                         <p>
-                          <strong>Registered Pods:</strong>{' '}
+                          <strong><LocalizedText source={"Registered Pods:"} /></strong>{' '}
                           {discoveryStats.totalRegisteredPods}
                           <br />
-                          <strong>Active Entries:</strong>{' '}
+                          <strong><LocalizedText source={"Active Entries:"} /></strong>{' '}
                           {discoveryStats.activeDiscoveryEntries}
                           <br />
-                          <strong>Expired Entries:</strong>{' '}
+                          <strong><LocalizedText source={"Expired Entries:"} /></strong>{' '}
                           {discoveryStats.expiredEntries}
                           <br />
-                          <strong>Avg Search Time:</strong>{' '}
+                          <strong><LocalizedText source={"Avg Search Time:"} /></strong>{' '}
                           {discoveryStats.averageDiscoveryTime?.totalMilliseconds.toFixed(
                             0,
                           )}
-                          ms
-                        </p>
+                          <LocalizedText source={"ms"} /></p>
                       </Message>
                     </div>
                   )}

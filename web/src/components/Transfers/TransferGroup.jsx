@@ -1,3 +1,4 @@
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import * as transfers from '../../lib/transfers';
 import UserCard from '../Shared/UserCard';
 import TransferList from './TransferList';
@@ -126,9 +127,9 @@ class TransferGroup extends Component {
             />
             <Link
               state={{ user: user.username }}
-              title="Browse this user's files"
+              title={interfaceText("Browse this user's files")}
               to="/browse"
-            >
+             {...interfaceTextProps("Browse this user's files")}>
               <UserCard username={user.username}>{user.username}</UserCard>
             </Link>
           </Card.Header>
@@ -156,19 +157,19 @@ class TransferGroup extends Component {
               {allRetryable && (
                 <Button
                   color="green"
-                  content={`Retry${all}`}
+                  content={interfaceText("Retry{all}", { "all": (all) })}
                   icon="redo"
                   onClick={() => this.handleRetryAll(selected)}
-                />
+                 {...interfaceTextProps("Retry{all}")}/>
               )}
               {allRetryable && anyCancellable && <Button.Or />}
               {anyCancellable && (
                 <Button
                   color="red"
-                  content={`Cancel${all}`}
+                  content={interfaceText("Cancel{all}", { "all": (all) })}
                   icon="x"
                   onClick={() => this.handleCancelAll(selected)}
-                />
+                 {...interfaceTextProps("Cancel{all}")}/>
               )}
               {(allRetryable || anyCancellable) && allRemovable && (
                 <Button.Or />
@@ -176,17 +177,17 @@ class TransferGroup extends Component {
               {allRemovable && (
                 <Button.Group>
                   <Button
-                    content={`Remove${all}`}
+                    content={interfaceText("Remove{all}", { "all": (all) })}
                     icon="trash alternate"
                     onClick={() => this.handleRemoveAll(selected)}
-                  />
+                   {...interfaceTextProps("Remove{all}")}/>
                   {direction === 'download' && (
                     <Button
                       color="red"
                       icon="trash"
                       onClick={() => this.handleRemoveAll(selected, true)}
-                      title="Remove and Delete File(s) from Disk"
-                    />
+                      title={interfaceText("Remove and Delete File(s) from Disk")}
+                     {...interfaceTextProps("Remove and Delete File(s) from Disk")}/>
                   )}
                 </Button.Group>
               )}

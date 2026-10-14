@@ -1,3 +1,4 @@
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import {
   getLocalStorageItem,
   removeLocalStorageItem,
@@ -35,7 +36,7 @@ const nativeEditableParameters = [
   {
     defaultValue: 0.9,
     key: 'decay',
-    label: 'Decay',
+    get label() { return interfaceText("Decay"); },
     max: 1,
     min: 0.5,
     step: 0.01,
@@ -43,7 +44,7 @@ const nativeEditableParameters = [
   {
     defaultValue: 1,
     key: 'zoom',
-    label: 'Zoom',
+    get label() { return interfaceText("Zoom"); },
     max: 1.5,
     min: 0.5,
     step: 0.01,
@@ -51,7 +52,7 @@ const nativeEditableParameters = [
   {
     defaultValue: 0,
     key: 'rot',
-    label: 'Rotation',
+    get label() { return interfaceText("Rotation"); },
     max: 0.5,
     min: -0.5,
     step: 0.01,
@@ -59,7 +60,7 @@ const nativeEditableParameters = [
   {
     defaultValue: 0.7,
     key: 'wave_r',
-    label: 'Wave red',
+    get label() { return interfaceText("Wave red"); },
     max: 1,
     min: 0,
     step: 0.01,
@@ -67,7 +68,7 @@ const nativeEditableParameters = [
   {
     defaultValue: 0.7,
     key: 'wave_g',
-    label: 'Wave green',
+    get label() { return interfaceText("Wave green"); },
     max: 1,
     min: 0,
     step: 0.01,
@@ -75,7 +76,7 @@ const nativeEditableParameters = [
   {
     defaultValue: 0.7,
     key: 'wave_b',
-    label: 'Wave blue',
+    get label() { return interfaceText("Wave blue"); },
     max: 1,
     min: 0,
     step: 0.01,
@@ -83,7 +84,7 @@ const nativeEditableParameters = [
   {
     defaultValue: 1,
     key: 'wave_a',
-    label: 'Wave alpha',
+    get label() { return interfaceText("Wave alpha"); },
     max: 1,
     min: 0,
     step: 0.01,
@@ -193,15 +194,15 @@ const getRustyMilkFpsCapMs = (fpsCap) => {
 const nativeQualityPresets = {
   balanced: {
     fpsCap: '60',
-    label: 'Balanced',
+    get label() { return interfaceText("Balanced"); },
   },
   efficient: {
     fpsCap: '30',
-    label: 'Efficient',
+    get label() { return interfaceText("Efficient"); },
   },
   full: {
     fpsCap: 'full',
-    label: 'Full',
+    get label() { return interfaceText("Full"); },
   },
 };
 
@@ -526,13 +527,13 @@ const getRustyMilkTextureAssetSkip = (file) => {
   if (!isNativeTextureAssetCandidateFile(file)) {
     return {
       fileName: file.name,
-      message: 'Unsupported file type.',
+      message: interfaceText("Unsupported file type."),
     };
   }
   if (file.size > nativeTextureAssetMaxBytes) {
     return {
       fileName: file.name,
-      message: 'Texture asset is larger than 1 MB.',
+      message: interfaceText("Texture asset is larger than 1 MB."),
     };
   }
   return null;
@@ -612,7 +613,7 @@ const readNativeTextureAssets = async (files) => {
     ) {
       skippedTextureAssets.push({
         fileName: file.name,
-        message: 'Texture asset import budget exceeded.',
+        message: interfaceText("Texture asset import budget exceeded."),
       });
       continue;
     }
@@ -632,7 +633,7 @@ const readNativeTextureAssets = async (files) => {
     ) {
       skippedTextureAssets.push({
         fileName: file.name,
-        message: 'Texture asset data exceeds the browser import limit.',
+        message: interfaceText("Texture asset data exceeds the browser import limit."),
       });
       continue;
     }

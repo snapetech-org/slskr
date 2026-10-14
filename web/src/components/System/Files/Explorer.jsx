@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import { deleteDirectory, deleteFile, list } from '../../../lib/files';
 import { toDisplayError } from '../../../lib/errors';
 import { formatBytes, formatDate } from '../../../lib/util';
@@ -53,19 +55,19 @@ const FileRow = ({
           actions={[
             'Cancel',
             {
-              content: 'Delete',
+              content: interfaceText("Delete"),
               key: 'done',
               negative: true,
               onClick: onDelete,
             },
           ]}
           centered
-          content={`Are you sure you want to delete file '${fullName}'?`}
+          content={interfaceText("Are you sure you want to delete file '{fullName}'?", { "fullName": (fullName) })}
           header={
             <Header
-              content="Confirm File Delete"
+              content={interfaceText("Confirm File Delete")}
               icon="trash alternate"
-            />
+             {...interfaceTextProps("Confirm File Delete")}/>
           }
           size="small"
           trigger={
@@ -77,7 +79,7 @@ const FileRow = ({
               style={{ cursor: deleting ? 'wait' : 'pointer' }}
             />
           }
-        />
+         {...interfaceTextProps("Are you sure you want to delete file '{fullName}'?")}/>
       ) : null}
     </Table.Cell>
   </Table.Row>
@@ -111,19 +113,19 @@ const DirectoryRow = ({
           actions={[
             'Cancel',
             {
-              content: 'Delete',
+              content: interfaceText("Delete"),
               key: 'done',
               negative: true,
               onClick: onDelete,
             },
           ]}
           centered
-          content={`Are you sure you want to delete directory '${fullName}'?`}
+          content={interfaceText("Are you sure you want to delete directory '{fullName}'?", { "fullName": (fullName) })}
           header={
             <Header
-              content="Confirm Directory Delete"
+              content={interfaceText("Confirm Directory Delete")}
               icon="trash alternate"
-            />
+             {...interfaceTextProps("Confirm Directory Delete")}/>
           }
           size="small"
           trigger={
@@ -135,7 +137,7 @@ const DirectoryRow = ({
               style={{ cursor: deleting ? 'wait' : 'pointer' }}
             />
           }
-        />
+         {...interfaceTextProps("Are you sure you want to delete directory '{fullName}'?")}/>
       ) : (
         ''
       )}
@@ -144,6 +146,7 @@ const DirectoryRow = ({
 );
 
 const Explorer = ({ active = true, remoteFileManagement, root }) => {
+  useInterfaceLanguage();
   const [directory, setDirectory] = useState({ directories: [], files: [] });
   const [directoryError, setDirectoryError] = useState(null);
   const [subdirectory, setSubdirectory] = useState([]);
@@ -287,7 +290,7 @@ const Explorer = ({ active = true, remoteFileManagement, root }) => {
           data-testid="files-load-error"
           error
         >
-          <Message.Header>Files unavailable</Message.Header>
+          <Message.Header><LocalizedText source={"Files unavailable"} /></Message.Header>
           <p>{directoryError}</p>
         </Message>
       ) : (
@@ -298,14 +301,11 @@ const Explorer = ({ active = true, remoteFileManagement, root }) => {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell className="explorer-list-name">
-              Name
-            </Table.HeaderCell>
+              <LocalizedText source={"Name"} /></Table.HeaderCell>
             <Table.HeaderCell className="explorer-list-date">
-              Date Modified
-            </Table.HeaderCell>
+              <LocalizedText source={"Date Modified"} /></Table.HeaderCell>
             <Table.HeaderCell className="explorer-list-size">
-              Size
-            </Table.HeaderCell>
+              <LocalizedText source={"Size"} /></Table.HeaderCell>
             <Table.HeaderCell className="explorer-list-action" />
           </Table.Row>
         </Table.Header>
@@ -320,8 +320,7 @@ const Explorer = ({ active = true, remoteFileManagement, root }) => {
                   textAlign: 'center',
                 }}
               >
-                No files or directories
-              </Table.Cell>
+                <LocalizedText source={"No files or directories"} /></Table.Cell>
             </Table.Row>
           ) : (
             <>

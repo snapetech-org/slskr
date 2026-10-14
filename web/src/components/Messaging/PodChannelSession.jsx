@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import { formatRegionalTime } from '../../lib/util';
 import * as pods from '../../lib/pods';
 import { toDisplayError } from '../../lib/errors';
@@ -29,6 +31,7 @@ import {
 } from 'semantic-ui-react';
 
 const PodChannelSession = ({ channel, state }) => {
+  useInterfaceLanguage();
   const [body, setBody] = useState('');
   const [members, setMembers] = useState([]);
   const [messages, setMessages] = useState([]);
@@ -284,7 +287,7 @@ const PodChannelSession = ({ channel, state }) => {
                 value={body}
               />
               <Popup
-                content="Send this message to the pod channel."
+                content={interfaceText("Send this message to the pod channel.")}
                 trigger={
                   <Button
                     aria-label={`Send message to ${channelLabel(channel)}`}
@@ -300,14 +303,14 @@ const PodChannelSession = ({ channel, state }) => {
                     title={`Send message to ${channelLabel(channel)}`}
                   />
                 }
-              />
+               {...interfaceTextProps("Send this message to the pod channel.")}/>
             </div>
           </Segment>
         </Segment.Group>
         <Segment className="room-users pod-message-users">
           <div className="room-users-header">
             <Icon name="users" />
-            Members ({members.length})
+            <LocalizedText source={"Members ("} />{members.length})
           </div>
           <List
             divided

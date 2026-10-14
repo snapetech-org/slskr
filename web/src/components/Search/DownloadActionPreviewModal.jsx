@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import { formatSearchActionPreview } from '../../lib/searchActionPreview';
 import { Button, Label, List, Modal, Popup } from 'semantic-ui-react';
 
@@ -14,26 +16,26 @@ const DownloadActionPreviewModal = ({
       open={open}
       size="small"
     >
-      <Modal.Header>Download action preview</Modal.Header>
+      <Modal.Header><LocalizedText source={"Download action preview"} /></Modal.Header>
       <Modal.Content>
         <List relaxed>
           <List.Item>
-            <List.Header>Source</List.Header>
+            <List.Header><LocalizedText source={"Source"} /></List.Header>
             <List.Description>{preview.username || 'unknown'}</List.Description>
           </List.Item>
           <List.Item>
-            <List.Header>Providers</List.Header>
+            <List.Header><LocalizedText source={"Providers"} /></List.Header>
             <List.Description>{preview.providerLabels.join(', ')}</List.Description>
           </List.Item>
           <List.Item>
-            <List.Header>Selected files</List.Header>
+            <List.Header><LocalizedText source={"Selected files"} /></List.Header>
             <List.Description>
-              {preview.fileCount} file{preview.fileCount === 1 ? '' : 's'}, {selectedSize}
+              {preview.fileCount} <LocalizedText source={"file"} />{preview.fileCount === 1 ? '' : <LocalizedText source={"s"} />}, {selectedSize}
             </List.Description>
           </List.Item>
           {preview.candidateScore !== null && (
             <List.Item>
-              <List.Header>Candidate score</List.Header>
+              <List.Header><LocalizedText source={"Candidate score"} /></List.Header>
               <List.Description>{preview.candidateScore}/100</List.Description>
             </List.Item>
           )}
@@ -57,7 +59,7 @@ const DownloadActionPreviewModal = ({
       </Modal.Content>
       <Modal.Actions>
         <Popup
-          content="Copy this planned action summary so you can review or export it before downloading."
+          content={interfaceText("Copy this planned action summary so you can review or export it before downloading.")}
           position="top center"
           trigger={
             <Button
@@ -65,10 +67,9 @@ const DownloadActionPreviewModal = ({
               onClick={onCopy}
             />
           }
-        />
+         {...interfaceTextProps("Copy this planned action summary so you can review or export it before downloading.")}/>
         <Button onClick={onClose}>
-          Close
-        </Button>
+          <LocalizedText source={"Close"} /></Button>
       </Modal.Actions>
     </Modal>
 );

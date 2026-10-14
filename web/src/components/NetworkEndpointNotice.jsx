@@ -1,3 +1,5 @@
+import LocalizedText from "./Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../lib/interfaceLocale";
 import React from 'react';
 import { getLocalStorageItem, setLocalStorageItem } from '../lib/storage';
 import { readBoundedJson } from '../lib/persistedJson';
@@ -189,31 +191,31 @@ const storeDismissedVpnPortNotice = (signature, portForwards) => {
 const LEGACY_INGRESS_PORTS = [
   {
     config: 'soulseek.listen_port',
-    label: 'Soulseek peer/file transfers',
+    get label() { return interfaceText("Soulseek peer/file transfers"); },
     port: 50300,
     proto: 'TCP',
   },
   {
     config: 'dht.overlay_port + dht.dht_port + overlay.quic_listen_port',
-    label: 'slskr mesh, DHT rendezvous, and QUIC overlay',
+    get label() { return interfaceText("slskr mesh, DHT rendezvous, and QUIC overlay"); },
     port: 50305,
     proto: 'TCP/UDP',
   },
   {
     config: 'mesh.overlay.listen_port',
-    label: 'legacy mesh UDP overlay',
+    get label() { return interfaceText("legacy mesh UDP overlay"); },
     port: 50400,
     proto: 'UDP',
   },
   {
     config: 'mesh.data.listen_port',
-    label: 'legacy mesh data overlay',
+    get label() { return interfaceText("legacy mesh data overlay"); },
     port: 50401,
     proto: 'UDP',
   },
   {
     config: 'mesh.overlay.quic_listen_port',
-    label: 'legacy mesh QUIC overlay',
+    get label() { return interfaceText("legacy mesh QUIC overlay"); },
     port: 50402,
     proto: 'UDP',
   },
@@ -237,7 +239,7 @@ const buildCurrentIngressPorts = (options = {}) => {
   if (soulseekListenPort === dhtOverlayPort && soulseekListenPort === dhtPort) {
     return [{
       config: 'soulseek.listen_port + dht.overlay_port + dht.dht_port + overlay.quic_listen_port',
-      label: 'Soulseek peer/file transfers, slskr mesh overlay, DHT rendezvous, and QUIC overlay',
+      label: interfaceText("Soulseek peer/file transfers, slskr mesh overlay, DHT rendezvous, and QUIC overlay"),
       port: soulseekListenPort,
       proto: 'TCP/UDP',
     }];
@@ -245,7 +247,7 @@ const buildCurrentIngressPorts = (options = {}) => {
 
   const ports = [{
     config: 'soulseek.listen_port',
-    label: 'Soulseek peer/file transfers',
+    label: interfaceText("Soulseek peer/file transfers"),
     port: soulseekListenPort,
     proto: 'TCP',
   }];
@@ -253,7 +255,7 @@ const buildCurrentIngressPorts = (options = {}) => {
   if (dhtOverlayPort === dhtPort) {
     ports.push({
       config: 'dht.overlay_port + dht.dht_port',
-      label: 'slskr mesh overlay and DHT rendezvous',
+      label: interfaceText("slskr mesh overlay and DHT rendezvous"),
       port: dhtOverlayPort,
       proto: 'TCP/UDP',
     });
@@ -261,13 +263,13 @@ const buildCurrentIngressPorts = (options = {}) => {
     ports.push(
       {
         config: 'dht.overlay_port',
-        label: 'slskr mesh overlay',
+        label: interfaceText("slskr mesh overlay"),
         port: dhtOverlayPort,
         proto: 'TCP',
       },
       {
         config: 'dht.dht_port',
-        label: 'DHT rendezvous',
+        label: interfaceText("DHT rendezvous"),
         port: dhtPort,
         proto: 'UDP',
       },
@@ -278,6 +280,7 @@ const buildCurrentIngressPorts = (options = {}) => {
 };
 
 const IngressPortList = ({ expectedPorts, title }) => {
+  useInterfaceLanguage();
   if (!expectedPorts?.length) {
     return null;
   }
@@ -306,6 +309,7 @@ const IngressPortList = ({ expectedPorts, title }) => {
 };
 
 const VpnPortChangeNotice = ({ onDismiss, options, portForwards }) => {
+  useInterfaceLanguage();
   if (!portForwards.length) {
     return null;
   }
@@ -318,34 +322,31 @@ const VpnPortChangeNotice = ({ onDismiss, options, portForwards }) => {
       <div className="network-endpoint-change-notice-body">
         <Icon name="exchange" />
         <div className="network-endpoint-change-notice-copy">
-          <strong>slskr ingress ports were reduced.</strong>
+          <strong><LocalizedText source={"slskr ingress ports were reduced."} /></strong>
           <span>
-            Older builds needed five public forwards. Current defaults need one
-            public port number on both TCP and UDP: Soulseek peer/file
-            transfers and the slskr mesh/DHT/QUIC overlay.
-          </span>
+            <LocalizedText source={"Older builds needed five public forwards. Current defaults need one public port number on both TCP and UDP: Soulseek peer/file transfers and the slskr mesh/DHT/QUIC overlay."} /></span>
           <IngressPortList
             expectedPorts={LEGACY_INGRESS_PORTS}
-            title="Used to need"
-          />
+            title={interfaceText("Used to need")}
+           {...interfaceTextProps("Used to need")}/>
           <IngressPortList
             expectedPorts={buildCurrentIngressPorts(options)}
-            title="Need now"
-          />
+            title={interfaceText("Need now")}
+           {...interfaceTextProps("Need now")}/>
         </div>
       </div>
       <Popup
-        content="Dismiss this port migration reminder until the forwarded ports change again."
+        content={interfaceText("Dismiss this port migration reminder until the forwarded ports change again.")}
         trigger={
           <Button
             basic
             compact
             icon="close"
             onClick={onDismiss}
-            title="Dismiss port migration reminder"
-          />
+            title={interfaceText("Dismiss port migration reminder")}
+           {...interfaceTextProps("Dismiss port migration reminder")}/>
         }
-      />
+       {...interfaceTextProps("Dismiss this port migration reminder until the forwarded ports change again.")}/>
     </Segment>
   );
 };

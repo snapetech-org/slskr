@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import React from 'react';
 import { ShrinkableButton } from '../../Shared';
 import {
@@ -29,6 +31,7 @@ const formatTimeAgo = (dateString) => {
 };
 
 const NetworkDetails = ({ actions, data }) => {
+  useInterfaceLanguage();
   const {
     backfill,
     backfillProgress,
@@ -60,10 +63,8 @@ const NetworkDetails = ({ actions, data }) => {
             <Header as="h4">
               <Icon name="sitemap" />
               <Header.Content>
-                Mesh Peers
-                <Header.Subheader>
-                  Connected slskr clients for hash sync
-                </Header.Subheader>
+                <LocalizedText source={"Mesh Peers"} /><Header.Subheader>
+                  <LocalizedText source={"Connected slskr clients for hash sync"} /></Header.Subheader>
               </Header.Content>
             </Header>
 
@@ -75,9 +76,8 @@ const NetworkDetails = ({ actions, data }) => {
               >
                 <Header icon>
                   <Icon name="users" />
-                  No mesh peers connected
-                </Header>
-                <p>Other slskr clients will appear here when discovered</p>
+                  <LocalizedText source={"No mesh peers connected"} /></Header>
+                <p><LocalizedText source={"Other slskr clients will appear here when discovered"} /></p>
               </Segment>
             ) : (
               <Table
@@ -86,10 +86,10 @@ const NetworkDetails = ({ actions, data }) => {
               >
                 <Table.Header>
                   <Table.Row>
-                    <Table.HeaderCell>Peer</Table.HeaderCell>
-                    <Table.HeaderCell>Seq ID</Table.HeaderCell>
-                    <Table.HeaderCell>Last Sync</Table.HeaderCell>
-                    <Table.HeaderCell>Actions</Table.HeaderCell>
+                    <Table.HeaderCell><LocalizedText source={"Peer"} /></Table.HeaderCell>
+                    <Table.HeaderCell><LocalizedText source={"Seq ID"} /></Table.HeaderCell>
+                    <Table.HeaderCell><LocalizedText source={"Last Sync"} /></Table.HeaderCell>
+                    <Table.HeaderCell><LocalizedText source={"Actions"} /></Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
@@ -116,8 +116,7 @@ const NetworkDetails = ({ actions, data }) => {
                           primary
                           size="mini"
                         >
-                          Sync
-                        </ShrinkableButton>
+                          <LocalizedText source={"Sync"} /></ShrinkableButton>
                       </Table.Cell>
                     </Table.Row>
                   ))}
@@ -133,10 +132,8 @@ const NetworkDetails = ({ actions, data }) => {
             <Header as="h4">
               <Icon name="search" />
               <Header.Content>
-                Discovered slskr Peers
-                <Header.Subheader>
-                  Peers with slskr capabilities detected
-                </Header.Subheader>
+                <LocalizedText source={"Discovered slskr Peers"} /><Header.Subheader>
+                  <LocalizedText source={"Peers with slskr capabilities detected"} /></Header.Subheader>
               </Header.Content>
             </Header>
 
@@ -148,9 +145,8 @@ const NetworkDetails = ({ actions, data }) => {
               >
                 <Header icon>
                   <Icon name="crosshairs" />
-                  No slskr peers discovered yet
-                </Header>
-                <p>Peers are discovered through searches and downloads</p>
+                  <LocalizedText source={"No slskr peers discovered yet"} /></Header>
+                <p><LocalizedText source={"Peers are discovered through searches and downloads"} /></p>
               </Segment>
             ) : (
               <List
@@ -167,7 +163,7 @@ const NetworkDetails = ({ actions, data }) => {
                     <List.Content>
                       <List.Header>{peer.username}</List.Header>
                       <List.Description>
-                        {peer.version ?? 'slskr'} • Last seen:{' '}
+                        {peer.version ?? 'slskr'} <LocalizedText source={"• Last seen:"} />{' '}
                         {formatTimeAgo(peer.lastSeenAt)}
                       </List.Description>
                     </List.Content>
@@ -176,7 +172,7 @@ const NetworkDetails = ({ actions, data }) => {
                 {discoveredPeers.length > 10 && (
                   <List.Item>
                     <List.Content>
-                      <em>...and {discoveredPeers.length - 10} more</em>
+                      <em><LocalizedText source={"And {count} more…"} values={{ count: discoveredPeers.length - 10 }} /></em>
                     </List.Content>
                   </List.Item>
                 )}
@@ -193,10 +189,8 @@ const NetworkDetails = ({ actions, data }) => {
         <Header as="h4">
           <Icon name="shield alternate" />
           <Header.Content>
-            Mesh Sync Security
-            <Header.Subheader>
-              Counters for signatures, reputation, rate limits, and quarantine
-            </Header.Subheader>
+            <LocalizedText source={"Mesh Sync Security"} /><Header.Subheader>
+              <LocalizedText source={"Counters for signatures, reputation, rate limits, and quarantine"} /></Header.Subheader>
           </Header.Content>
         </Header>
         {mesh?.warnings?.length > 0 && (
@@ -207,8 +201,7 @@ const NetworkDetails = ({ actions, data }) => {
           >
             <Message.Header>
               <Icon name="exclamation triangle" />
-              Security threshold alerts
-            </Message.Header>
+              <LocalizedText source={"Security threshold alerts"} /></Message.Header>
             <List
               bulleted
               size="small"
@@ -228,43 +221,43 @@ const NetworkDetails = ({ actions, data }) => {
             <Statistic.Value>
               {hasStats ? formatNumber(mesh?.signatureVerificationFailures ?? 0) : '—'}
             </Statistic.Value>
-            <Statistic.Label>Sig. failures</Statistic.Label>
+            <Statistic.Label><LocalizedText source={"Sig. failures"} /></Statistic.Label>
           </Statistic>
           <Statistic>
             <Statistic.Value>
               {hasStats ? formatNumber(mesh?.reputationBasedRejections ?? 0) : '—'}
             </Statistic.Value>
-            <Statistic.Label>Rep. rejections</Statistic.Label>
+            <Statistic.Label><LocalizedText source={"Rep. rejections"} /></Statistic.Label>
           </Statistic>
           <Statistic>
             <Statistic.Value>
               {hasStats ? formatNumber(mesh?.rateLimitViolations ?? 0) : '—'}
             </Statistic.Value>
-            <Statistic.Label>Rate limits</Statistic.Label>
+            <Statistic.Label><LocalizedText source={"Rate limits"} /></Statistic.Label>
           </Statistic>
           <Statistic>
             <Statistic.Value>
               {hasStats ? formatNumber(mesh?.quarantinedPeers ?? 0) : '—'}
             </Statistic.Value>
-            <Statistic.Label>Quarantined</Statistic.Label>
+            <Statistic.Label><LocalizedText source={"Quarantined"} /></Statistic.Label>
           </Statistic>
           <Statistic>
             <Statistic.Value>
               {hasStats ? formatNumber(mesh?.quarantineEvents ?? 0) : '—'}
             </Statistic.Value>
-            <Statistic.Label>Quarantine events</Statistic.Label>
+            <Statistic.Label><LocalizedText source={"Quarantine events"} /></Statistic.Label>
           </Statistic>
           <Statistic>
             <Statistic.Value>
               {hasStats ? formatNumber(mesh?.rejectedMessages ?? 0) : '—'}
             </Statistic.Value>
-            <Statistic.Label>Rejected msgs</Statistic.Label>
+            <Statistic.Label><LocalizedText source={"Rejected msgs"} /></Statistic.Label>
           </Statistic>
           <Statistic>
             <Statistic.Value>
               {hasStats ? formatNumber(mesh?.skippedEntries ?? 0) : '—'}
             </Statistic.Value>
-            <Statistic.Label>Skipped entries</Statistic.Label>
+            <Statistic.Label><LocalizedText source={"Skipped entries"} /></Statistic.Label>
           </Statistic>
         </Statistic.Group>
       </Segment>
@@ -276,10 +269,8 @@ const NetworkDetails = ({ actions, data }) => {
         <Header as="h4">
           <Icon name="database" />
           <Header.Content>
-            Hash Database
-            <Header.Subheader>
-              Content-addressed FLAC fingerprints
-            </Header.Subheader>
+            <LocalizedText source={"Hash Database"} /><Header.Subheader>
+              <LocalizedText source={"Content-addressed FLAC fingerprints"} /></Header.Subheader>
           </Header.Content>
           <span style={{ float: 'right', marginTop: '-0.5em' }}>
             {backfillProgress && !backfillProgress.complete && (
@@ -287,8 +278,7 @@ const NetworkDetails = ({ actions, data }) => {
                 size="tiny"
                 style={{ marginRight: '0.5em' }}
               >
-                {backfillProgress.remainingSearches} searches left
-              </Label>
+                {backfillProgress.remainingSearches} <LocalizedText source={"searches left"} /></Label>
             )}
             <Popup
               content={
@@ -313,14 +303,14 @@ const NetworkDetails = ({ actions, data }) => {
                   size="mini"
                 >
                   {backfillProgress && !backfillProgress.complete
-                    ? 'Continue'
-                    : 'Backfill from History'}
+                    ? <LocalizedText source={"Continue"} />
+                    : <LocalizedText source={"Backfill from History"} />}
                 </ShrinkableButton>
               }
             />
             {backfillProgress && (
               <Popup
-                content="Reset progress and start backfill from the beginning"
+                content={interfaceText("Reset progress and start backfill from the beginning")}
                 position="top right"
                 trigger={
                   <ShrinkableButton
@@ -332,10 +322,9 @@ const NetworkDetails = ({ actions, data }) => {
                     size="mini"
                     style={{ marginLeft: '0.3em' }}
                   >
-                    Reset
-                  </ShrinkableButton>
+                    <LocalizedText source={"Reset"} /></ShrinkableButton>
                 }
-              />
+               {...interfaceTextProps("Reset progress and start backfill from the beginning")}/>
             )}
           </span>
         </Header>
@@ -349,7 +338,7 @@ const NetworkDetails = ({ actions, data }) => {
             <Statistic.Value>
               {hasStats ? formatNumber(hashDb?.totalEntries ?? 0) : '—'}
             </Statistic.Value>
-            <Statistic.Label>Total Entries</Statistic.Label>
+            <Statistic.Label><LocalizedText source={"Total Entries"} /></Statistic.Label>
           </Statistic>
           <Statistic>
             <Statistic.Value>
@@ -357,19 +346,19 @@ const NetworkDetails = ({ actions, data }) => {
                 ? formatNumber(hashDb?.uniqueFiles ?? hashDb?.totalEntries ?? 0)
                 : '—'}
             </Statistic.Value>
-            <Statistic.Label>Unique Files</Statistic.Label>
+            <Statistic.Label><LocalizedText source={"Unique Files"} /></Statistic.Label>
           </Statistic>
           <Statistic>
             <Statistic.Value>
               {hasStats ? formatBytes(hashDb?.dbSizeBytes ?? 0) : '—'}
             </Statistic.Value>
-            <Statistic.Label>Database Size</Statistic.Label>
+            <Statistic.Label><LocalizedText source={"Database Size"} /></Statistic.Label>
           </Statistic>
           <Statistic>
             <Statistic.Value>
               {hasStats ? hashDb?.currentSeqId ?? 0 : '—'}
             </Statistic.Value>
-            <Statistic.Label>Sequence ID</Statistic.Label>
+            <Statistic.Label><LocalizedText source={"Sequence ID"} /></Statistic.Label>
           </Statistic>
         </Statistic.Group>
 
@@ -382,8 +371,7 @@ const NetworkDetails = ({ actions, data }) => {
               progress
               size="small"
             >
-              Coverage of shared FLACs
-            </Progress>
+              <LocalizedText source={"Coverage of shared FLACs"} /></Progress>
           </>
         )}
       </Segment>
@@ -393,10 +381,8 @@ const NetworkDetails = ({ actions, data }) => {
         <Header as="h4">
           <Icon name="clock" />
           <Header.Content>
-            Backfill Scheduler
-            <Header.Subheader>
-              Conservative discovery of hashes from non-slskr peers
-            </Header.Subheader>
+            <LocalizedText source={"Backfill Scheduler"} /><Header.Subheader>
+              <LocalizedText source={"Conservative discovery of hashes from non-slskr peers"} /></Header.Subheader>
           </Header.Content>
         </Header>
 
@@ -416,7 +402,7 @@ const NetworkDetails = ({ actions, data }) => {
                 />{' '}
                 {hasStats ? (backfill?.isActive ? 'Active' : 'Idle') : '—'}
               </Statistic.Value>
-              <Statistic.Label>Status</Statistic.Label>
+              <Statistic.Label><LocalizedText source={"Status"} /></Statistic.Label>
             </Statistic>
           </Grid.Column>
           <Grid.Column>
@@ -427,7 +413,7 @@ const NetworkDetails = ({ actions, data }) => {
               <Statistic.Value>
                 {hasStats ? backfill?.pendingCount ?? 0 : '—'}
               </Statistic.Value>
-              <Statistic.Label>Pending Files</Statistic.Label>
+              <Statistic.Label><LocalizedText source={"Pending Files"} /></Statistic.Label>
             </Statistic>
           </Grid.Column>
           <Grid.Column>
@@ -438,7 +424,7 @@ const NetworkDetails = ({ actions, data }) => {
               <Statistic.Value>
                 {hasStats ? backfill?.completedToday ?? 0 : '—'}
               </Statistic.Value>
-              <Statistic.Label>Completed Today</Statistic.Label>
+              <Statistic.Label><LocalizedText source={"Completed Today"} /></Statistic.Label>
             </Statistic>
           </Grid.Column>
           <Grid.Column>
@@ -449,7 +435,7 @@ const NetworkDetails = ({ actions, data }) => {
               <Statistic.Value>
                 {hasStats ? `${backfill?.discoveryRate ?? 0}/hr` : '—'}
               </Statistic.Value>
-              <Statistic.Label>Discovery Rate</Statistic.Label>
+              <Statistic.Label><LocalizedText source={"Discovery Rate"} /></Statistic.Label>
             </Statistic>
           </Grid.Column>
         </Grid>
@@ -461,10 +447,8 @@ const NetworkDetails = ({ actions, data }) => {
           <Header as="h4">
             <Icon name="bolt" />
             <Header.Content>
-              Active Swarm Downloads
-              <Header.Subheader>
-                Multi-source downloads in progress
-              </Header.Subheader>
+              <LocalizedText source={"Active Swarm Downloads"} /><Header.Subheader>
+                <LocalizedText source={"Multi-source downloads in progress"} /></Header.Subheader>
             </Header.Content>
           </Header>
 
@@ -482,7 +466,7 @@ const NetworkDetails = ({ actions, data }) => {
                   {job.filename?.split('/').pop() ?? 'Unknown file'}
                 </Card.Header>
                 <Card.Meta>
-                  {job.activeSources ?? 0} sources •{' '}
+                  {job.activeSources ?? 0} <LocalizedText source={"sources •"} />{' '}
                   {formatBytes(job.downloadedBytes ?? 0)} /{' '}
                   {formatBytes(job.totalBytes ?? 0)}
                 </Card.Meta>
@@ -512,8 +496,7 @@ const NetworkDetails = ({ actions, data }) => {
                     {job.workers.length > 5 && (
                       <List.Item>
                         <Label size="tiny">
-                          +{job.workers.length - 5} more
-                        </Label>
+                          +{job.workers.length - 5} <LocalizedText source={"more"} /></Label>
                       </List.Item>
                     )}
                   </List>

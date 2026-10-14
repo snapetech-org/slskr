@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import { Icon, Item } from 'semantic-ui-react';
 
 const ImagePlaceholder = () => (
@@ -10,6 +12,7 @@ const ImagePlaceholder = () => (
 );
 
 const Presence = ({ presence }) => {
+  useInterfaceLanguage();
   const label = typeof presence === 'string' && presence.trim() ? presence : 'Unknown';
   const colors = {
     Away: 'yellow',
@@ -17,7 +20,7 @@ const Presence = ({ presence }) => {
   };
 
   return (
-    <span className="users-presence" aria-label={`Presence: ${label}`}>
+    <span className="users-presence" aria-label={interfaceText("Presence: {label}", { "label": (label) })} {...interfaceTextProps("Presence: {label}")}>
       <Icon
         aria-hidden="true"
         color={colors[label] || 'grey'}
@@ -29,8 +32,9 @@ const Presence = ({ presence }) => {
 };
 
 const FreeUploadSlot = ({ hasFreeUploadSlot }) => {
+  useInterfaceLanguage();
   if (typeof hasFreeUploadSlot !== 'boolean') {
-    return <span className="users-free-upload-slot users-free-upload-slot-unknown">Unknown</span>;
+    return <span className="users-free-upload-slot users-free-upload-slot-unknown"><LocalizedText source={"Unknown"} /></span>;
   }
 
   const available = hasFreeUploadSlot;
@@ -41,7 +45,7 @@ const FreeUploadSlot = ({ hasFreeUploadSlot }) => {
         color={available ? 'green' : 'red'}
         name={available ? 'check' : 'close'}
       />
-      {available ? 'Available' : 'Unavailable'}
+      {available ? <LocalizedText source={"Available"} /> : <LocalizedText source={"Unavailable"} />}
     </span>
   );
 };
@@ -58,6 +62,7 @@ const User = ({
   uploadSlots,
   username,
 }) => {
+  useInterfaceLanguage();
   const details = [
     ['Upload slots', uploadSlots],
     ['Queue length', queueLength],
@@ -81,11 +86,11 @@ const User = ({
         <Item.Meta as="div">
           <div className="users-profile-status">
             <span className="users-profile-status-item">
-              <span className="users-profile-status-label">Presence</span>
+              <span className="users-profile-status-label"><LocalizedText source={"Presence"} /></span>
               <Presence presence={presence} />
             </span>
             <span className="users-profile-status-item">
-              <span className="users-profile-status-label">Free upload slot</span>
+              <span className="users-profile-status-label"><LocalizedText source={"Free upload slot"} /></span>
               <FreeUploadSlot hasFreeUploadSlot={hasFreeUploadSlot} />
             </span>
           </div>
@@ -100,7 +105,7 @@ const User = ({
             ))}
           </dl>
         ) : (
-          <p className="users-network-details-empty">Live network details are currently unavailable.</p>
+          <p className="users-network-details-empty"><LocalizedText source={"Live network details are currently unavailable."} /></p>
         )}
         <Item.Description>{description || 'No profile description provided.'}</Item.Description>
       </Item.Content>

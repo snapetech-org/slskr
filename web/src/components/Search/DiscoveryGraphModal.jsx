@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import * as discoveryGraph from '../../lib/discoveryGraph';
 import { writeBoundedList } from '../../lib/persistedJson';
 import { getLocalStorageItem, setLocalStorageItem } from '../../lib/storage';
@@ -44,6 +46,7 @@ const DiscoveryGraphModal = ({
   onRestoreBranch,
   open,
 }) => {
+  useInterfaceLanguage();
   const navigate = useNavigate();
   const [activeEdgeTypes, setActiveEdgeTypes] = useState([]);
   const [atlasMode, setAtlasMode] = useState(false);
@@ -136,12 +139,11 @@ const DiscoveryGraphModal = ({
 
   return (
     <Modal closeIcon onClose={onClose} open={open} size="large">
-      <Modal.Header>Discovery Graph</Modal.Header>
+      <Modal.Header><LocalizedText source={"Discovery Graph"} /></Modal.Header>
       <Modal.Content scrolling>
         {loading ? (
           <Loader active inline="centered">
-            Building neighborhood
-          </Loader>
+            <LocalizedText source={"Building neighborhood"} /></Loader>
         ) : null}
         {!loading && safeGraph ? (
           <>
@@ -167,19 +169,19 @@ const DiscoveryGraphModal = ({
             ) : null}
             <div style={{ marginBottom: '1em' }}>
               <Popup
-                content="Switch between the compact neighborhood view and a wider atlas-style map with semantic filtering."
+                content={interfaceText("Switch between the compact neighborhood view and a wider atlas-style map with semantic filtering.")}
                 position="top center"
                 trigger={
                   <Button
                     onClick={() => setAtlasMode((current) => !current)}
                     size="small"
                   >
-                    {atlasMode ? 'Compact View' : 'Atlas View'}
+                    {atlasMode ? <LocalizedText source={"Compact View"} /> : <LocalizedText source={"Atlas View"} />}
                   </Button>
                 }
-              />
+               {...interfaceTextProps("Switch between the compact neighborhood view and a wider atlas-style map with semantic filtering.")}/>
               <Popup
-                content="Open this graph in the dedicated atlas page so the neighborhood has its own addressable route and persistent workspace."
+                content={interfaceText("Open this graph in the dedicated atlas page so the neighborhood has its own addressable route and persistent workspace.")}
                 position="top center"
                 trigger={
                   <Button
@@ -195,12 +197,11 @@ const DiscoveryGraphModal = ({
                     size="small"
                     style={{ marginLeft: '0.5em' }}
                   >
-                    Full Atlas
-                  </Button>
+                    <LocalizedText source={"Full Atlas"} /></Button>
                 }
-              />
+               {...interfaceTextProps("Open this graph in the dedicated atlas page so the neighborhood has its own addressable route and persistent workspace.")}/>
               <Popup
-                content="Pin the current graph center so you can compare another node or reopen this branch later."
+                content={interfaceText("Pin the current graph center so you can compare another node or reopen this branch later.")}
                 position="top center"
                 trigger={
                   <Button
@@ -214,12 +215,11 @@ const DiscoveryGraphModal = ({
                     size="small"
                     style={{ marginLeft: '0.5em' }}
                   >
-                    Pin Center
-                  </Button>
+                    <LocalizedText source={"Pin Center"} /></Button>
                 }
-              />
+               {...interfaceTextProps("Pin the current graph center so you can compare another node or reopen this branch later.")}/>
               <Popup
-                content="Queue searches for nearby graph nodes with track-like identities so this neighborhood turns directly into acquisition work."
+                content={interfaceText("Queue searches for nearby graph nodes with track-like identities so this neighborhood turns directly into acquisition work.")}
                 position="top center"
                 trigger={
                   <Button
@@ -228,21 +228,19 @@ const DiscoveryGraphModal = ({
                     size="small"
                     style={{ marginLeft: '0.5em' }}
                   >
-                    Queue Nearby
-                  </Button>
+                    <LocalizedText source={"Queue Nearby"} /></Button>
                 }
-              />
+               {...interfaceTextProps("Queue searches for nearby graph nodes with track-like identities so this neighborhood turns directly into acquisition work.")}/>
               <Popup
-                content="Save this current branch in the browser so you can reopen the same discovery path later."
+                content={interfaceText("Save this current branch in the browser so you can reopen the same discovery path later.")}
                 position="top center"
                 trigger={
                   <Button onClick={handleSaveBranch} size="small" style={{ marginLeft: '0.5em' }}>
-                    Save Branch
-                  </Button>
+                    <LocalizedText source={"Save Branch"} /></Button>
                 }
-              />
+               {...interfaceTextProps("Save this current branch in the browser so you can reopen the same discovery path later.")}/>
               <Popup
-                content="Compare the current graph center with the pinned node by adding an explicit comparison bridge."
+                content={interfaceText("Compare the current graph center with the pinned node by adding an explicit comparison bridge.")}
                 position="top center"
                 trigger={
                   <Button
@@ -255,15 +253,14 @@ const DiscoveryGraphModal = ({
                     size="small"
                     style={{ marginLeft: '0.5em' }}
                   >
-                    Compare Pinned
-                  </Button>
+                    <LocalizedText source={"Compare Pinned"} /></Button>
                 }
-              />
+               {...interfaceTextProps("Compare the current graph center with the pinned node by adding an explicit comparison bridge.")}/>
             </div>
             {pinnedNode ? (
               <div style={{ marginBottom: '1em' }}>
                 <Label color="pink" size="tiny">
-                  Pinned {pinnedNode.label}
+                  <LocalizedText source={"Pinned"} />{" "}{pinnedNode.label}
                 </Label>
               </div>
             ) : null}
@@ -271,13 +268,11 @@ const DiscoveryGraphModal = ({
               <>
                 <Segment secondary>
                   <Header as="h5" style={{ marginTop: 0 }}>
-                    Semantic Zoom
-                  </Header>
+                    <LocalizedText source={"Semantic Zoom"} /></Header>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75em' }}>
                     <div>
                       <div style={{ fontSize: '0.85em', marginBottom: '0.35em' }}>
-                        Max depth
-                      </div>
+                        <LocalizedText source={"Max depth"} /></div>
                       <Input
                         min={0}
                         onChange={(_event, { value }) =>
@@ -291,8 +286,7 @@ const DiscoveryGraphModal = ({
                     </div>
                     <div>
                       <div style={{ fontSize: '0.85em', marginBottom: '0.35em' }}>
-                        Min weight
-                      </div>
+                        <LocalizedText source={"Min weight"} /></div>
                       <Input
                         max={1}
                         min={0}
@@ -333,7 +327,7 @@ const DiscoveryGraphModal = ({
                 </Label>
               ))}
             </div>
-            <Header as="h5">Why These Nodes Are Near</Header>
+            <Header as="h5"><LocalizedText source={"Why These Nodes Are Near"} /></Header>
             <List divided relaxed>
               {semanticEdges.slice(0, atlasMode ? 24 : 16).map((edge) => (
                 <List.Item
@@ -341,19 +335,18 @@ const DiscoveryGraphModal = ({
                 >
                   <List.Content floated="right">
                     <Popup
-                      content="Recenter the graph on this destination node and rebuild the visible neighborhood from there."
+                      content={interfaceText("Recenter the graph on this destination node and rebuild the visible neighborhood from there.")}
                       position="top center"
                       trigger={
                         <Button
                           onClick={() => onRecenter(edge.targetNodeId)}
                           size="mini"
                         >
-                          Recenter
-                        </Button>
+                          <LocalizedText source={"Recenter"} /></Button>
                       }
-                    />
+                     {...interfaceTextProps("Recenter the graph on this destination node and rebuild the visible neighborhood from there.")}/>
                     <Popup
-                      content="Pin this node so you can compare it against another branch or keep it handy while exploring."
+                      content={interfaceText("Pin this node so you can compare it against another branch or keep it handy while exploring.")}
                       position="top center"
                       trigger={
                         <Button
@@ -366,12 +359,11 @@ const DiscoveryGraphModal = ({
                           size="mini"
                           style={{ marginLeft: '0.5em' }}
                         >
-                          Pin
-                        </Button>
+                          <LocalizedText source={"Pin"} /></Button>
                       }
-                    />
+                     {...interfaceTextProps("Pin this node so you can compare it against another branch or keep it handy while exploring.")}/>
                     <Popup
-                      content="Add a direct comparison bridge between the current graph center and this node."
+                      content={interfaceText("Add a direct comparison bridge between the current graph center and this node.")}
                       position="top center"
                       trigger={
                         <Button
@@ -385,10 +377,9 @@ const DiscoveryGraphModal = ({
                           size="mini"
                           style={{ marginLeft: '0.5em' }}
                         >
-                          Compare
-                        </Button>
+                          <LocalizedText source={"Compare"} /></Button>
                       }
-                    />
+                     {...interfaceTextProps("Add a direct comparison bridge between the current graph center and this node.")}/>
                   </List.Content>
                   <List.Content>
                     <List.Header>
@@ -397,7 +388,7 @@ const DiscoveryGraphModal = ({
                     </List.Header>
                     <List.Description>
                       {edge.edgeType} · {edge.reason}
-                      {edge.provenance ? ` · ${edge.provenance}` : ''}
+                      {edge.provenance ? <LocalizedText source={"· {provenance}"} values={{ "provenance": (edge.provenance) }} /> : ''}
                     </List.Description>
                     {edge.scoreComponents &&
                     Object.keys(edge.scoreComponents).length > 0 ? (
@@ -422,12 +413,12 @@ const DiscoveryGraphModal = ({
             {savedBranches.length > 0 ? (
               <>
                 <Divider />
-                <Header as="h5">Saved Branches</Header>
+                <Header as="h5"><LocalizedText source={"Saved Branches"} /></Header>
                 <div>
                   {savedBranches.slice(0, 6).map((branch) => (
                     <Popup
                       key={branch.id}
-                      content="Reopen this saved discovery branch from the browser-local branch shelf."
+                      content={interfaceText("Reopen this saved discovery branch from the browser-local branch shelf.")}
                       position="top center"
                       trigger={
                         <Label
@@ -442,7 +433,7 @@ const DiscoveryGraphModal = ({
                           {branch.title}
                         </Label>
                       }
-                    />
+                     {...interfaceTextProps("Reopen this saved discovery branch from the browser-local branch shelf.")}/>
                   ))}
                 </div>
               </>

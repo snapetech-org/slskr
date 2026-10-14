@@ -1,3 +1,4 @@
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import BrowseSession from './BrowseSession';
 import { getLocalStorageItem, setLocalStorageItem } from '../../lib/storage';
 import {
@@ -49,6 +50,7 @@ const saveTabsToStorage = (tabsToSave) => {
 };
 
 const Browse = () => {
+  useInterfaceLanguage();
   const location = useLocation();
   const [tabs, setTabs] = useState(() => loadTabsFromStorage());
   const [activeIndex, setActiveIndex] = useState(0);
@@ -162,14 +164,14 @@ const Browse = () => {
       ...(tabs.length > 1 ? {
         action: (
           <Button
-            aria-label={`Close browse tab ${tab.label}`}
+            aria-label={interfaceText("Close browse tab {label}", { "label": (tab.label) })}
             className="browse-tab-close-action item"
             icon="close"
             key={`${tab.key}-close`}
             onClick={() => closeTabRef.current?.(tab.key)}
             size="mini"
             type="button"
-          />
+           {...interfaceTextProps("Close browse tab {label}")}/>
         ),
       } : {}),
     },
@@ -208,7 +210,7 @@ const Browse = () => {
           ...panes,
           {
             menuItem: {
-              'aria-label': 'Open a new browse tab',
+              'aria-label': interfaceText("Open a new browse tab"),
               content: <Icon name="plus" />,
               key: 'add-tab',
             },

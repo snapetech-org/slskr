@@ -1,3 +1,7 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
+
+
 import './Rooms.css';
 import { toDisplayError } from '../../lib/errors';
 import { useMountedRef } from '../../lib/useMountedRef';
@@ -5,6 +9,7 @@ import React, { useRef, useState } from 'react';
 import { Button, Header, Icon, Input, Modal, Radio } from 'semantic-ui-react';
 
 const RoomCreateModal = ({ onCreateRoom, ...modalOptions }) => {
+  useInterfaceLanguage();
   const [open, setOpen] = useState(false);
   const [roomName, setRoomName] = useState('');
   const [isPrivate, setIsPrivate] = useState(false);
@@ -18,7 +23,7 @@ const RoomCreateModal = ({ onCreateRoom, ...modalOptions }) => {
     if (!mountedRef.current || loading || createInFlightRef.current) return;
     const name = roomName.trim();
     if (!name) {
-      setError('Room name cannot be empty');
+      setError(interfaceText("Room name cannot be empty"));
       return;
     }
 
@@ -70,29 +75,27 @@ const RoomCreateModal = ({ onCreateRoom, ...modalOptions }) => {
         <Button
           color="green"
           icon
-          title="Create New Room"
-        >
+          title={interfaceText("Create New Room")}
+         {...interfaceTextProps("Create New Room")}>
           <Icon name="plus" />
-          Create Room
-        </Button>
+          <LocalizedText source={"Create Room"} /></Button>
       }
     >
       <Modal.Header>
         <Icon name="plus" />
-        Create New Room
-      </Modal.Header>
+        <LocalizedText source={"Create New Room"} /></Modal.Header>
       <Modal.Content>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div>
-            <Header as="h4">Room Name</Header>
+            <Header as="h4"><LocalizedText source={"Room Name"} /></Header>
             <Input
               error={Boolean(error)}
               fluid
               onChange={(_, { value }) => setRoomName(value)}
               onKeyPress={handleKeyPress}
-              placeholder="Enter room name..."
+              placeholder={interfaceText("Enter room name...")}
               value={roomName}
-            />
+             {...interfaceTextProps("Enter room name...")}/>
             {error && (
               <div
                 style={{ color: '#db2828', fontSize: '12px', marginTop: '4px' }}
@@ -103,7 +106,7 @@ const RoomCreateModal = ({ onCreateRoom, ...modalOptions }) => {
           </div>
 
           <div>
-            <Header as="h4">Room Type</Header>
+            <Header as="h4"><LocalizedText source={"Room Type"} /></Header>
             <div style={{ display: 'flex', gap: '24px' }}>
               <div
                 style={{ alignItems: 'center', display: 'flex', gap: '8px' }}
@@ -115,10 +118,9 @@ const RoomCreateModal = ({ onCreateRoom, ...modalOptions }) => {
                   value="public"
                 />
                 <div>
-                  <strong>Public Room</strong>
+                  <strong><LocalizedText source={"Public Room"} /></strong>
                   <div className="room-create-type-description">
-                    Anyone can join and see the room
-                  </div>
+                    <LocalizedText source={"Anyone can join and see the room"} /></div>
                 </div>
               </div>
               <div
@@ -131,10 +133,9 @@ const RoomCreateModal = ({ onCreateRoom, ...modalOptions }) => {
                   value="private"
                 />
                 <div>
-                  <strong>Private Room</strong>
+                  <strong><LocalizedText source={"Private Room"} /></strong>
                   <div className="room-create-type-description">
-                    Only invited members can join
-                  </div>
+                    <LocalizedText source={"Only invited members can join"} /></div>
                 </div>
               </div>
             </div>
@@ -142,9 +143,7 @@ const RoomCreateModal = ({ onCreateRoom, ...modalOptions }) => {
 
           <div className="room-create-note">
             <Icon name="info circle" />
-            <strong>Note:</strong> Room creation depends on server permissions.
-            Private rooms require server operator approval.
-          </div>
+            <strong><LocalizedText source={"Note:"} /></strong> <LocalizedText source={"Room creation depends on server permissions. Private rooms require server operator approval."} /></div>
         </div>
       </Modal.Content>
       <Modal.Actions>
@@ -152,8 +151,7 @@ const RoomCreateModal = ({ onCreateRoom, ...modalOptions }) => {
           disabled={loading}
           onClick={() => setOpen(false)}
         >
-          Cancel
-        </Button>
+          <LocalizedText source={"Cancel"} /></Button>
         <Button
           disabled={!roomName.trim() || loading}
           loading={loading}
@@ -161,8 +159,7 @@ const RoomCreateModal = ({ onCreateRoom, ...modalOptions }) => {
           positive
         >
           <Icon name="plus" />
-          Create Room
-        </Button>
+          <LocalizedText source={"Create Room"} /></Button>
       </Modal.Actions>
     </Modal>
   );

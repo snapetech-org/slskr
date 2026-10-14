@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import './Rooms.css';
 import { toDisplayError } from '../../lib/errors';
 import { createRoomsHubConnection } from '../../lib/hubFactory';
@@ -73,6 +75,7 @@ const saveTabsToStorage = (tabsToSave) => {
 };
 
 const Rooms = ({ runtimeProfile } = {}) => {
+  useInterfaceLanguage();
   const navigate = useNavigate();
   const [tabs, setTabs] = useState(() => loadTabsFromStorage());
   const [activeIndex, setActiveIndex] = useState(0);
@@ -412,12 +415,11 @@ const Rooms = ({ runtimeProfile } = {}) => {
     return (
       <div className="rooms compatibility-rooms">
         <button
-          aria-label="Open a new room tab"
+          aria-label={interfaceText("Open a new room tab")}
           onClick={() => handleAddTab()}
           type="button"
-        >
-          Open a new room tab
-        </button>
+         {...interfaceTextProps("Open a new room tab")}>
+          <LocalizedText source={"Open a new room tab"} /></button>
       </div>
     );
   }
@@ -456,22 +458,22 @@ const Rooms = ({ runtimeProfile } = {}) => {
               }}
               onOpen={() => fetchAvailableRooms()}
               options={roomOptions}
-              placeholder="Search existing rooms..."
+              placeholder={interfaceText("Search existing rooms...")}
               search
               selection
-            />
+             {...interfaceTextProps("Search existing rooms...")}/>
             <RoomCreateModal onCreateRoom={createRoom} />
             <Popup
-              content="Reload rooms joined by the daemon and reopen their tabs."
+              content={interfaceText("Reload rooms joined by the daemon and reopen their tabs.")}
               trigger={
                 <Button
-                  aria-label="Reload joined rooms"
+                  aria-label={interfaceText("Reload joined rooms")}
                   icon="refresh"
                   onClick={hydrateJoinedRooms}
-                  title="Reload joined rooms"
-                />
+                  title={interfaceText("Reload joined rooms")}
+                 {...interfaceTextProps("Reload joined rooms")}/>
               }
-            />
+             {...interfaceTextProps("Reload rooms joined by the daemon and reopen their tabs.")}/>
           </div>
           {(availableRoomsError || joinedRoomsError) && (
             <Message
@@ -499,11 +501,11 @@ const Rooms = ({ runtimeProfile } = {}) => {
           {
             menuItem: (
               <Menu.Item
-                aria-label="Open a new room tab"
+                aria-label={interfaceText("Open a new room tab")}
                 key="add-tab"
                 onClick={handleAddTab}
-                title="Open a new room tab"
-              >
+                title={interfaceText("Open a new room tab")}
+               {...interfaceTextProps("Open a new room tab")}>
                 <Icon name="plus" />
               </Menu.Item>
             ),

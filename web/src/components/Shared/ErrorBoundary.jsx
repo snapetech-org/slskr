@@ -1,3 +1,5 @@
+import LocalizedText from "./LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import React from 'react';
 
 class ErrorBoundary extends React.Component {
@@ -24,11 +26,10 @@ class ErrorBoundary extends React.Component {
 
     return (
       <main role="alert" className="app-error-boundary">
-        <h1>Something went wrong</h1>
-        <p>The application could not render this view.</p>
+        <h1><LocalizedText source={"Something went wrong"} /></h1>
+        <p><LocalizedText source={"The application could not render this view."} /></p>
         <button type="button" onClick={this.handleReload}>
-          Reload application
-        </button>
+          <LocalizedText source={"Reload application"} /></button>
       </main>
     );
   }

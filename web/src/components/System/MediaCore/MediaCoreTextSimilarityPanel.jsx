@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -19,6 +21,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const MediaCoreTextSimilarityPanel = React.memo(() => {
+  useInterfaceLanguage();
   const mountedRef = useRef(true);
   useEffect(() => {
     mountedRef.current = true;
@@ -58,31 +61,28 @@ const MediaCoreTextSimilarityPanel = React.memo(() => {
             <Card.Content>
               <Card.Header>
                 <Icon name="font" />
-                Text Similarity Analysis
-              </Card.Header>
+                <LocalizedText source={"Text Similarity Analysis"} /></Card.Header>
               <Card.Description>
-                Compare text strings using Levenshtein distance and phonetic
-                matching
-              </Card.Description>
+                <LocalizedText source={"Compare text strings using Levenshtein distance and phonetic matching"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Group widths="equal">
                   <Form.Field>
-                    <label>Text A</label>
+                    <label><LocalizedText source={"Text A"} /></label>
                     <Input
                       onChange={(e) => setTextSimilarityA(e.target.value)}
-                      placeholder="First text string"
+                      placeholder={interfaceText("First text string")}
                       value={textSimilarityA}
-                    />
+                     {...interfaceTextProps("First text string")}/>
                   </Form.Field>
                   <Form.Field>
-                    <label>Text B</label>
+                    <label><LocalizedText source={"Text B"} /></label>
                     <Input
                       onChange={(e) => setTextSimilarityB(e.target.value)}
-                      placeholder="Second text string"
+                      placeholder={interfaceText("Second text string")}
                       value={textSimilarityB}
-                    />
+                     {...interfaceTextProps("Second text string")}/>
                   </Form.Field>
                 </Form.Group>
                 <Button
@@ -95,8 +95,7 @@ const MediaCoreTextSimilarityPanel = React.memo(() => {
                   onClick={handleComputeTextSimilarity}
                   primary
                 >
-                  Analyze Text Similarity
-                </Button>
+                  <LocalizedText source={"Analyze Text Similarity"} /></Button>
               </Form>
 
               {textSimilarityResult && (
@@ -107,23 +106,23 @@ const MediaCoreTextSimilarityPanel = React.memo(() => {
                     </Message>
                   ) : (
                     <Message success>
-                      <Message.Header>Text Similarity Results</Message.Header>
+                      <Message.Header><LocalizedText source={"Text Similarity Results"} /></Message.Header>
                       <p>
-                        <strong>Text A:</strong> "{textSimilarityResult.textA}"
+                        <strong><LocalizedText source={"Text A:"} /></strong> "{textSimilarityResult.textA}"
                         <br />
-                        <strong>Text B:</strong> "{textSimilarityResult.textB}"
+                        <strong><LocalizedText source={"Text B:"} /></strong> "{textSimilarityResult.textB}"
                         <br />
-                        <strong>Levenshtein Similarity:</strong>{' '}
+                        <strong><LocalizedText source={"Levenshtein Similarity:"} /></strong>{' '}
                         {(
                           textSimilarityResult.levenshteinSimilarity * 100
                         ).toFixed(1)}
                         %<br />
-                        <strong>Phonetic Similarity:</strong>{' '}
+                        <strong><LocalizedText source={"Phonetic Similarity:"} /></strong>{' '}
                         {(
                           textSimilarityResult.phoneticSimilarity * 100
                         ).toFixed(1)}
                         %<br />
-                        <strong>Combined Similarity:</strong>{' '}
+                        <strong><LocalizedText source={"Combined Similarity:"} /></strong>{' '}
                         {(
                           textSimilarityResult.combinedSimilarity * 100
                         ).toFixed(1)}

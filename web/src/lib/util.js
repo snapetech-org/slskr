@@ -99,13 +99,20 @@ export const formatRegionalCompactDateTime = (value) =>
 
 export const formatSeconds = (seconds) => {
   if (seconds === undefined) return '';
-  const date = new Date(1_970, 0, 1);
-  date.setSeconds(seconds);
-  if (seconds >= 3_600) {
-    return date.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/u, '$1');
-  }
-
-  return date.toTimeString().replace(/.*(\d{2}:\d{2}).*/u, '$1');
+  const numericSeconds = Number(seconds);
+  if (!Number.isFinite(numericSeconds)) return '—';
+  const totalSeconds = Math.max(0, Math.floor(numericSeconds));
+  const formatPart = (value) => new Intl.NumberFormat(getRegionalLocale(), {
+    maximumFractionDigits: 0,
+    minimumIntegerDigits: 2,
+    useGrouping: false,
+  }).format(value);
+  const hours = Math.floor(totalSeconds / 3_600);
+  const minutes = Math.floor(totalSeconds / 60) % 60;
+  const remainder = totalSeconds % 60;
+  return hours > 0
+    ? `${formatPart(hours)}:${formatPart(minutes)}:${formatPart(remainder)}`
+    : `${formatPart(Math.floor(totalSeconds / 60))}:${formatPart(remainder)}`;
 };
 
 export const formatBytesAsUnit = (bytes, unit, decimals = 2) => {
@@ -194,14 +201,14 @@ export const formatAttributes = ({
   const isLossless = Boolean(sampleRate) && Boolean(bitDepth);
 
   if (isLossless) {
-    return `${bitDepth}/${sampleRate / 1_000}kHz`;
+    return `${formatRegionalNumber(bitDepth, { maximumFractionDigits: 0 })}/${formatRegionalNumber(sampleRate / 1_000, { maximumFractionDigits: 1 })}kHz`;
   }
 
   if (isVariableBitRate) {
-    return `${bitRate} Kbps, VBR`;
+    return `${formatRegionalNumber(bitRate, { maximumFractionDigits: 0 })} Kbps, VBR`;
   }
 
-  return bitRate ? `${bitRate} Kbps` : '';
+  return bitRate ? `${formatRegionalNumber(bitRate, { maximumFractionDigits: 0 })} Kbps` : '';
 };
 
 export const sleep = (milliseconds) => {

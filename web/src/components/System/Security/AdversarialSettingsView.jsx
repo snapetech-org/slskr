@@ -1,3 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+
+
 import { formatRegionalDateTime } from '../../../lib/util';
 import React from 'react';
 import {
@@ -20,6 +24,7 @@ import {
 } from 'semantic-ui-react';
 
 const AdversarialSettingsView = ({ actions, state }) => {
+  useInterfaceLanguage();
   const {
     activeIndex,
     error,
@@ -53,30 +58,30 @@ const AdversarialSettingsView = ({ actions, state }) => {
     updateSetting,
   } = actions;
   const profileOptions = [
-    { key: 'disabled', text: 'Disabled', value: 'Disabled' },
-    { key: 'standard', text: 'Standard (Privacy)', value: 'Standard' },
+    { key: 'disabled', text: interfaceText("Disabled"), value: 'Disabled' },
+    { key: 'standard', text: interfaceText("Standard (Privacy)"), value: 'Standard' },
     {
       key: 'enhanced',
-      text: 'Enhanced (Privacy + Anonymity)',
+      text: interfaceText("Enhanced (Privacy + Anonymity)"),
       value: 'Enhanced',
     },
-    { key: 'maximum', text: 'Maximum (All Features)', value: 'Maximum' },
-    { key: 'custom', text: 'Custom', value: 'Custom' },
+    { key: 'maximum', text: interfaceText("Maximum (All Features)"), value: 'Maximum' },
+    { key: 'custom', text: interfaceText("Custom"), value: 'Custom' },
   ];
 
   const transportOptions = [
-    { key: 'Direct', text: 'Direct', value: 'Direct' },
-    { key: 'WebSocket', text: 'WebSocket', value: 'WebSocket' },
-    { key: 'HttpTunnel', text: 'HTTP Tunnel', value: 'HttpTunnel' },
-    { key: 'Obfs4', text: 'Obfs4', value: 'Obfs4' },
-    { key: 'Meek', text: 'Meek', value: 'Meek' },
+    { key: 'Direct', text: interfaceText("Direct"), value: 'Direct' },
+    { key: 'WebSocket', text: interfaceText("WebSocket"), value: 'WebSocket' },
+    { key: 'HttpTunnel', text: interfaceText("HTTP Tunnel"), value: 'HttpTunnel' },
+    { key: 'Obfs4', text: interfaceText("Obfs4"), value: 'Obfs4' },
+    { key: 'Meek', text: interfaceText("Meek"), value: 'Meek' },
   ];
 
   const anonymityModeOptions = [
-    { key: 'Direct', text: 'Direct', value: 'Direct' },
-    { key: 'Tor', text: 'Tor', value: 'Tor' },
-    { key: 'I2P', text: 'I2P', value: 'I2P' },
-    { key: 'RelayOnly', text: 'Relay Only', value: 'RelayOnly' },
+    { key: 'Direct', text: interfaceText("Direct"), value: 'Direct' },
+    { key: 'Tor', text: interfaceText("Tor"), value: 'Tor' },
+    { key: 'I2P', text: interfaceText("I2P"), value: 'I2P' },
+    { key: 'RelayOnly', text: interfaceText("Relay Only"), value: 'RelayOnly' },
   ];
 
   const panes = [
@@ -86,19 +91,14 @@ const AdversarialSettingsView = ({ actions, state }) => {
         <Tab.Pane>
           <Header as="h3">
             <Icon name="shield alternate" />
-            Adversarial Resilience Overview
-          </Header>
+            <LocalizedText source={"Adversarial Resilience Overview"} /></Header>
           <p>
-            <strong>⚠️ WARNING:</strong> These features are designed for users
-            in repressive regimes or facing active surveillance. They are{' '}
-            <strong>ALL DISABLED BY DEFAULT</strong> and may impact performance
-            and compatibility. Only enable if you understand the security
-            implications.
-          </p>
+            <strong><LocalizedText source={"⚠️ WARNING:"} /></strong> <LocalizedText source={"These features are designed for users in repressive regimes or facing active surveillance. They are"} />{' '}
+            <strong><LocalizedText source={"ALL DISABLED BY DEFAULT"} /></strong> <LocalizedText source={"and may impact performance and compatibility. Only enable if you understand the security implications."} /></p>
 
           <Form>
             <Form.Field>
-              <label>Adversarial Profile</label>
+              <label><LocalizedText source={"Adversarial Profile"} /></label>
               <Dropdown
                 onChange={(e, { value }) => updateSetting('Profile', value)}
                 options={profileOptions}
@@ -110,34 +110,34 @@ const AdversarialSettingsView = ({ actions, state }) => {
             <Form.Field>
               <Checkbox
                 checked={settings.Enabled || false}
-                label="Enable Adversarial Features"
+                label={interfaceText("Enable Adversarial Features")}
                 onChange={(e, { checked }) => updateSetting('Enabled', checked)}
-              />
+               {...interfaceTextProps("Enable Adversarial Features")}/>
             </Form.Field>
           </Form>
 
           {settings.Enabled && (
             <>
               <Message info>
-                <Message.Header>Active Features</Message.Header>
+                <Message.Header><LocalizedText source={"Active Features"} /></Message.Header>
                 <ul>
                   {settings.Privacy?.Enabled && (
-                    <li>Privacy Layer (Traffic Analysis Protection)</li>
+                    <li><LocalizedText source={"Privacy Layer (Traffic Analysis Protection)"} /></li>
                   )}
                   {settings.Anonymity?.Enabled && (
-                    <li>Anonymity Layer (IP Protection)</li>
+                    <li><LocalizedText source={"Anonymity Layer (IP Protection)"} /></li>
                   )}
                   {settings.Transport?.Enabled && (
-                    <li>Obfuscated Transport (Anti-DPI)</li>
+                    <li><LocalizedText source={"Obfuscated Transport (Anti-DPI)"} /></li>
                   )}
                   {settings.OnionRouting?.Enabled && (
-                    <li>Onion Routing (Mesh Anonymity)</li>
+                    <li><LocalizedText source={"Onion Routing (Mesh Anonymity)"} /></li>
                   )}
                   {settings.CensorshipResistance?.Enabled && (
-                    <li>Censorship Resistance</li>
+                    <li><LocalizedText source={"Censorship Resistance"} /></li>
                   )}
                   {settings.PlausibleDeniability?.Enabled && (
-                    <li>Plausible Deniability</li>
+                    <li><LocalizedText source={"Plausible Deniability"} /></li>
                   )}
                 </ul>
               </Message>
@@ -145,8 +145,7 @@ const AdversarialSettingsView = ({ actions, state }) => {
               <Segment>
                 <Header as="h4">
                   <Icon name="signal" />
-                  Transport Status
-                </Header>
+                  <LocalizedText source={"Transport Status"} /></Header>
                 <Grid
                   columns={3}
                   stackable
@@ -163,21 +162,18 @@ const AdversarialSettingsView = ({ actions, state }) => {
                         ) : statusError ? (
                           <Label color="orange">
                             <Icon name="question circle" />
-                            Unavailable
-                          </Label>
+                            <LocalizedText source={"Unavailable"} /></Label>
                         ) : status?.AnonymityEnabled ? (
                           <Label color="green">
                             <Icon name="check" />
-                            Enabled
-                          </Label>
+                            <LocalizedText source={"Enabled"} /></Label>
                         ) : (
                           <Label color="grey">
                             <Icon name="minus" />
-                            Disabled
-                          </Label>
+                            <LocalizedText source={"Disabled"} /></Label>
                         )}
                       </Statistic.Value>
-                      <Statistic.Label>Anonymity Layer</Statistic.Label>
+                      <Statistic.Label><LocalizedText source={"Anonymity Layer"} /></Statistic.Label>
                     </Statistic>
                   </Grid.Column>
                   <Grid.Column>
@@ -192,26 +188,22 @@ const AdversarialSettingsView = ({ actions, state }) => {
                         ) : settings.Anonymity?.Mode === 'Tor' ? (
                           <Label color="orange">
                             <Icon name="shield" />
-                            Tor
-                          </Label>
+                            <LocalizedText source={"Tor"} /></Label>
                         ) : settings.Anonymity?.Mode === 'I2P' ? (
                           <Label color="purple">
                             <Icon name="privacy" />
-                            I2P
-                          </Label>
+                            <LocalizedText source={"I2P"} /></Label>
                         ) : settings.Anonymity?.Mode === 'RelayOnly' ? (
                           <Label color="blue">
                             <Icon name="chain" />
-                            Relay Only
-                          </Label>
+                            <LocalizedText source={"Relay Only"} /></Label>
                         ) : (
                           <Label color="grey">
                             <Icon name="globe" />
-                            Direct
-                          </Label>
+                            <LocalizedText source={"Direct"} /></Label>
                         )}
                       </Statistic.Value>
-                      <Statistic.Label>Transport Mode</Statistic.Label>
+                      <Statistic.Label><LocalizedText source={"Transport Mode"} /></Statistic.Label>
                     </Statistic>
                   </Grid.Column>
                   <Grid.Column>
@@ -219,10 +211,9 @@ const AdversarialSettingsView = ({ actions, state }) => {
                       <Statistic.Value>
                         <Label color="teal">
                           <Icon name="sync alternate" />
-                          Auto
-                        </Label>
+                          <LocalizedText source={"Auto"} /></Label>
                       </Statistic.Value>
-                      <Statistic.Label>Failover</Statistic.Label>
+                      <Statistic.Label><LocalizedText source={"Failover"} /></Statistic.Label>
                     </Statistic>
                   </Grid.Column>
                   <Grid.Column>
@@ -237,8 +228,7 @@ const AdversarialSettingsView = ({ actions, state }) => {
                         ) : transportError ? (
                           <Label color="orange">
                             <Icon name="question circle" />
-                            Unavailable
-                          </Label>
+                            <LocalizedText source={"Unavailable"} /></Label>
                         ) : transportStatus ? (
                           <Label
                             color={
@@ -254,11 +244,11 @@ const AdversarialSettingsView = ({ actions, state }) => {
                         ) : (
                           <Label color="grey">
                             <Icon name="question circle" />
-                            N/A
+                            <LocalizedText source="N/A" />
                           </Label>
                         )}
                       </Statistic.Value>
-                      <Statistic.Label>Transports Up</Statistic.Label>
+                      <Statistic.Label><LocalizedText source={"Transports Up"} /></Statistic.Label>
                     </Statistic>
                   </Grid.Column>
                   <Grid.Column>
@@ -273,89 +263,84 @@ const AdversarialSettingsView = ({ actions, state }) => {
                         ) : torError ? (
                           <Label color="orange">
                             <Icon name="question circle" />
-                            Unavailable
-                          </Label>
+                            <LocalizedText source={"Unavailable"} /></Label>
                         ) : torStatus ? (
                           <Label
                             color={torStatus.IsAvailable ? 'green' : 'red'}
                           >
                             <Icon name="shield alternate" />
                             {torStatus.IsAvailable
-                              ? 'Connected'
-                              : 'Disconnected'}
+                              ? <LocalizedText source={"Connected"} />
+                              : <LocalizedText source={"Disconnected"} />}
                           </Label>
                         ) : (
                           <Label color="grey">
                             <Icon name="question circle" />
-                            N/A
+                            <LocalizedText source="N/A" />
                           </Label>
                         )}
                       </Statistic.Value>
-                      <Statistic.Label>Tor Status</Statistic.Label>
+                      <Statistic.Label><LocalizedText source={"Tor Status"} /></Statistic.Label>
                     </Statistic>
                   </Grid.Column>
                 </Grid>
 
                 {(statusError || transportError || torError) && (
                   <Message warning>
-                    <Message.Header>Live status unavailable</Message.Header>
+                    <Message.Header><LocalizedText source={"Live status unavailable"} /></Message.Header>
                     <p>
-                      {statusError || transportError || torError} Refresh to
-                      retry the affected security status checks.
-                    </p>
+                      {statusError || transportError || torError} <LocalizedText source={"Refresh to retry the affected security status checks."} /></p>
                   </Message>
                 )}
 
                 {settings.Anonymity?.Mode === 'Tor' && (
                   <Message info>
-                    <Message.Header>Tor Configuration</Message.Header>
+                    <Message.Header><LocalizedText source={"Tor Configuration"} /></Message.Header>
                     <p>
-                      <strong>SOCKS Address:</strong>{' '}
+                      <strong><LocalizedText source={"SOCKS Address:"} /></strong>{' '}
                       {settings.Anonymity.Tor?.SocksAddress || '127.0.0.1:9050'}
                     </p>
                     <p>
-                      <strong>Stream Isolation:</strong>{' '}
+                      <strong><LocalizedText source={"Stream Isolation:"} /></strong>{' '}
                       {settings.Anonymity.Tor?.IsolateStreams
-                        ? 'Enabled'
-                        : 'Disabled'}
+                        ? <LocalizedText source={"Enabled"} />
+                        : <LocalizedText source={"Disabled"} />}
                     </p>
                     <p>
                       <em>
-                        Stream isolation prevents correlation attacks by using
-                        different Tor circuits per peer.
-                      </em>
+                        <LocalizedText source={"Stream isolation prevents correlation attacks by using different Tor circuits per peer."} /></em>
                     </p>
                   </Message>
                 )}
 
                 {settings.Anonymity?.Mode === 'Tor' && torStatus && (
                   <Message color={torStatus.IsAvailable ? 'green' : 'red'}>
-                    <Message.Header>Tor Status</Message.Header>
+                    <Message.Header><LocalizedText source={"Tor Status"} /></Message.Header>
                     <p>
-                      <strong>Status:</strong>{' '}
-                      {torStatus.IsAvailable ? 'Connected' : 'Disconnected'}
+                      <strong><LocalizedText source={"Status:"} /></strong>{' '}
+                      {torStatus.IsAvailable ? <LocalizedText source={"Connected"} /> : <LocalizedText source={"Disconnected"} />}
                     </p>
                     {torStatus.LastError && (
                       <p>
-                        <strong>Last Error:</strong> {torStatus.LastError}
+                        <strong><LocalizedText source={"Last Error:"} /></strong> {torStatus.LastError}
                       </p>
                     )}
                     {torStatus.LastSuccessfulConnection && (
                       <p>
-                        <strong>Last Connected:</strong>{' '}
+                        <strong><LocalizedText source={"Last Connected:"} /></strong>{' '}
                         {formatRegionalDateTime(torStatus.LastSuccessfulConnection)}
                       </p>
                     )}
                     <p>
-                      <strong>Active Connections:</strong>{' '}
+                      <strong><LocalizedText source={"Active Connections:"} /></strong>{' '}
                       {torStatus.ActiveConnections}
                     </p>
                     <p>
-                      <strong>Total Attempts:</strong>{' '}
+                      <strong><LocalizedText source={"Total Attempts:"} /></strong>{' '}
                       {torStatus.TotalConnectionsAttempted}
                     </p>
                     <p>
-                      <strong>Successful Connections:</strong>{' '}
+                      <strong><LocalizedText source={"Successful Connections:"} /></strong>{' '}
                       {torStatus.TotalConnectionsSuccessful}
                     </p>
                   </Message>
@@ -363,38 +348,33 @@ const AdversarialSettingsView = ({ actions, state }) => {
 
                 {settings.Anonymity?.Mode === 'I2P' && (
                   <Message info>
-                    <Message.Header>I2P Configuration</Message.Header>
+                    <Message.Header><LocalizedText source={"I2P Configuration"} /></Message.Header>
                     <p>
-                      <strong>SAM Address:</strong>{' '}
+                      <strong><LocalizedText source={"SAM Address:"} /></strong>{' '}
                       {settings.Anonymity.I2P?.SamAddress || '127.0.0.1:7656'}
                     </p>
                     <p>
                       <em>
-                        I2P provides peer-to-peer anonymity with better
-                        performance for persistent connections.
-                      </em>
+                        <LocalizedText source={"I2P provides peer-to-peer anonymity with better performance for persistent connections."} /></em>
                     </p>
                   </Message>
                 )}
 
                 {settings.Anonymity?.Mode === 'RelayOnly' && (
                   <Message info>
-                    <Message.Header>Relay-Only Configuration</Message.Header>
+                    <Message.Header><LocalizedText source={"Relay-Only Configuration"} /></Message.Header>
                     <p>
-                      <strong>Trusted Relays:</strong>{' '}
+                      <strong><LocalizedText source={"Trusted Relays:"} /></strong>{' '}
                       {settings.Anonymity.RelayOnly?.TrustedRelayPeers
                         ?.length || 0}{' '}
-                      configured
-                    </p>
+                      <LocalizedText source={"configured"} /></p>
                     <p>
-                      <strong>Max Chain Length:</strong>{' '}
+                      <strong><LocalizedText source={"Max Chain Length:"} /></strong>{' '}
                       {settings.Anonymity.RelayOnly?.MaxChainLength || 3}
                     </p>
                     <p>
                       <em>
-                        Never reveals your IP address - all connections route
-                        through trusted mesh relays.
-                      </em>
+                        <LocalizedText source={"Never reveals your IP address - all connections route through trusted mesh relays."} /></em>
                     </p>
                   </Message>
                 )}
@@ -408,40 +388,38 @@ const AdversarialSettingsView = ({ actions, state }) => {
       menuItem: 'Privacy',
       render: () => (
         <Tab.Pane>
-          <Header as="h4">Privacy Layer - Traffic Analysis Protection</Header>
+          <Header as="h4"><LocalizedText source={"Privacy Layer - Traffic Analysis Protection"} /></Header>
           <p>
-            Protect against traffic analysis by modifying message timing and
-            size patterns.
-          </p>
+            <LocalizedText source={"Protect against traffic analysis by modifying message timing and size patterns."} /></p>
 
           <Form>
             <Form.Field>
               <Checkbox
                 checked={settings.Privacy?.Enabled || false}
-                label="Enable Privacy Layer"
+                label={interfaceText("Enable Privacy Layer")}
                 onChange={(e, { checked }) =>
                   updateSetting('Privacy.Enabled', checked)
                 }
-              />
+               {...interfaceTextProps("Enable Privacy Layer")}/>
             </Form.Field>
 
             {settings.Privacy?.Enabled && (
               <>
-                <Header as="h5">Message Padding</Header>
+                <Header as="h5"><LocalizedText source={"Message Padding"} /></Header>
                 <Form.Field>
                   <Checkbox
                     checked={settings.Privacy.Padding?.Enabled || false}
-                    label="Enable Message Padding"
+                    label={interfaceText("Enable Message Padding")}
                     onChange={(e, { checked }) =>
                       updateSetting('Privacy.Padding.Enabled', checked)
                     }
-                  />
+                   {...interfaceTextProps("Enable Message Padding")}/>
                 </Form.Field>
 
                 {settings.Privacy.Padding?.Enabled && (
                   <>
                     <Form.Field>
-                      <label>Bucket Sizes (bytes)</label>
+                      <label><LocalizedText source={"Bucket Sizes (bytes)"} /></label>
                       {(settings.Privacy.Padding?.BucketSizes || []).map(
                         (size, index) => (
                           <Input
@@ -473,32 +451,32 @@ const AdversarialSettingsView = ({ actions, state }) => {
                         checked={
                           settings.Privacy.Padding?.UseRandomFill || false
                         }
-                        label="Use Random Fill Bytes"
+                        label={interfaceText("Use Random Fill Bytes")}
                         onChange={(e, { checked }) =>
                           updateSetting(
                             'Privacy.Padding.UseRandomFill',
                             checked,
                           )
                         }
-                      />
+                       {...interfaceTextProps("Use Random Fill Bytes")}/>
                     </Form.Field>
                   </>
                 )}
 
-                <Header as="h5">Timing Obfuscation</Header>
+                <Header as="h5"><LocalizedText source={"Timing Obfuscation"} /></Header>
                 <Form.Field>
                   <Checkbox
                     checked={settings.Privacy.Timing?.Enabled || false}
-                    label="Enable Timing Obfuscation"
+                    label={interfaceText("Enable Timing Obfuscation")}
                     onChange={(e, { checked }) =>
                       updateSetting('Privacy.Timing.Enabled', checked)
                     }
-                  />
+                   {...interfaceTextProps("Enable Timing Obfuscation")}/>
                 </Form.Field>
 
                 {settings.Privacy.Timing?.Enabled && (
                   <Form.Field>
-                    <label>Jitter Range (ms)</label>
+                    <label><LocalizedText source={"Jitter Range (ms)"} /></label>
                     <Input
                       max="500"
                       min="0"
@@ -514,20 +492,20 @@ const AdversarialSettingsView = ({ actions, state }) => {
                   </Form.Field>
                 )}
 
-                <Header as="h5">Message Batching</Header>
+                <Header as="h5"><LocalizedText source={"Message Batching"} /></Header>
                 <Form.Field>
                   <Checkbox
                     checked={settings.Privacy.Batching?.Enabled || false}
-                    label="Enable Message Batching"
+                    label={interfaceText("Enable Message Batching")}
                     onChange={(e, { checked }) =>
                       updateSetting('Privacy.Batching.Enabled', checked)
                     }
-                  />
+                   {...interfaceTextProps("Enable Message Batching")}/>
                 </Form.Field>
 
                 {settings.Privacy.Batching?.Enabled && (
                   <Form.Field>
-                    <label>Batch Window (ms)</label>
+                    <label><LocalizedText source={"Batch Window (ms)"} /></label>
                     <Input
                       max="5000"
                       min="100"
@@ -543,20 +521,20 @@ const AdversarialSettingsView = ({ actions, state }) => {
                   </Form.Field>
                 )}
 
-                <Header as="h5">Cover Traffic</Header>
+                <Header as="h5"><LocalizedText source={"Cover Traffic"} /></Header>
                 <Form.Field>
                   <Checkbox
                     checked={settings.Privacy.CoverTraffic?.Enabled || false}
-                    label="Enable Cover Traffic"
+                    label={interfaceText("Enable Cover Traffic")}
                     onChange={(e, { checked }) =>
                       updateSetting('Privacy.CoverTraffic.Enabled', checked)
                     }
-                  />
+                   {...interfaceTextProps("Enable Cover Traffic")}/>
                 </Form.Field>
 
                 {settings.Privacy.CoverTraffic?.Enabled && (
                   <Form.Field>
-                    <label>Interval (seconds)</label>
+                    <label><LocalizedText source={"Interval (seconds)"} /></label>
                     <Input
                       max="3600"
                       min="10"
@@ -583,26 +561,25 @@ const AdversarialSettingsView = ({ actions, state }) => {
       menuItem: 'Anonymity',
       render: () => (
         <Tab.Pane>
-          <Header as="h4">Anonymity Layer - IP Protection</Header>
+          <Header as="h4"><LocalizedText source={"Anonymity Layer - IP Protection"} /></Header>
           <p>
-            Route traffic through anonymizing networks to hide your IP address.
-          </p>
+            <LocalizedText source={"Route traffic through anonymizing networks to hide your IP address."} /></p>
 
           <Form>
             <Form.Field>
               <Checkbox
                 checked={settings.Anonymity?.Enabled || false}
-                label="Enable Anonymity Layer"
+                label={interfaceText("Enable Anonymity Layer")}
                 onChange={(e, { checked }) =>
                   updateSetting('Anonymity.Enabled', checked)
                 }
-              />
+               {...interfaceTextProps("Enable Anonymity Layer")}/>
             </Form.Field>
 
             {settings.Anonymity?.Enabled && (
               <>
                 <Form.Field>
-                  <label>Anonymity Mode</label>
+                  <label><LocalizedText source={"Anonymity Mode"} /></label>
                   <Dropdown
                     onChange={(e, { value }) =>
                       updateSetting('Anonymity.Mode', value)
@@ -615,9 +592,9 @@ const AdversarialSettingsView = ({ actions, state }) => {
 
                 {settings.Anonymity?.Mode === 'Tor' && (
                   <>
-                    <Header as="h5">Tor Configuration</Header>
+                    <Header as="h5"><LocalizedText source={"Tor Configuration"} /></Header>
                     <Form.Field>
-                      <label>SOCKS Address</label>
+                      <label><LocalizedText source={"SOCKS Address"} /></label>
                       <Input
                         onChange={(e) =>
                           updateSetting(
@@ -637,20 +614,20 @@ const AdversarialSettingsView = ({ actions, state }) => {
                         checked={
                           settings.Anonymity.Tor?.IsolateStreams || false
                         }
-                        label="Isolate Streams Per Peer"
+                        label={interfaceText("Isolate Streams Per Peer")}
                         onChange={(e, { checked }) =>
                           updateSetting('Anonymity.Tor.IsolateStreams', checked)
                         }
-                      />
+                       {...interfaceTextProps("Isolate Streams Per Peer")}/>
                     </Form.Field>
                   </>
                 )}
 
                 {settings.Anonymity?.Mode === 'I2P' && (
                   <>
-                    <Header as="h5">I2P Configuration</Header>
+                    <Header as="h5"><LocalizedText source={"I2P Configuration"} /></Header>
                     <Form.Field>
-                      <label>SAM Address</label>
+                      <label><LocalizedText source={"SAM Address"} /></label>
                       <Input
                         onChange={(e) =>
                           updateSetting(
@@ -668,9 +645,9 @@ const AdversarialSettingsView = ({ actions, state }) => {
 
                 {settings.Anonymity?.Mode === 'RelayOnly' && (
                   <>
-                    <Header as="h5">Relay Configuration</Header>
+                    <Header as="h5"><LocalizedText source={"Relay Configuration"} /></Header>
                     <Form.Field>
-                      <label>Max Chain Length</label>
+                      <label><LocalizedText source={"Max Chain Length"} /></label>
                       <Input
                         max="5"
                         min="1"
@@ -698,24 +675,24 @@ const AdversarialSettingsView = ({ actions, state }) => {
       menuItem: 'Transport',
       render: () => (
         <Tab.Pane>
-          <Header as="h4">Obfuscated Transport - Anti-DPI</Header>
-          <p>Use obfuscated protocols to bypass deep packet inspection.</p>
+          <Header as="h4"><LocalizedText source={"Obfuscated Transport - Anti-DPI"} /></Header>
+          <p><LocalizedText source={"Use obfuscated protocols to bypass deep packet inspection."} /></p>
 
           <Form>
             <Form.Field>
               <Checkbox
                 checked={settings.Transport?.Enabled || false}
-                label="Enable Obfuscated Transport"
+                label={interfaceText("Enable Obfuscated Transport")}
                 onChange={(e, { checked }) =>
                   updateSetting('Transport.Enabled', checked)
                 }
-              />
+               {...interfaceTextProps("Enable Obfuscated Transport")}/>
             </Form.Field>
 
             {settings.Transport?.Enabled && (
               <>
                 <Form.Field>
-                  <label>Primary Transport</label>
+                  <label><LocalizedText source={"Primary Transport"} /></label>
                   <Dropdown
                     onChange={(e, { value }) =>
                       updateSetting('Transport.PrimaryTransport', value)
@@ -728,9 +705,9 @@ const AdversarialSettingsView = ({ actions, state }) => {
 
                 {settings.Transport?.PrimaryTransport === 'WebSocket' && (
                   <>
-                    <Header as="h5">WebSocket Configuration</Header>
+                    <Header as="h5"><LocalizedText source={"WebSocket Configuration"} /></Header>
                     <Form.Field>
-                      <label>Server URL</label>
+                      <label><LocalizedText source={"Server URL"} /></label>
                       <Input
                         onChange={(e) =>
                           updateSetting(
@@ -738,9 +715,9 @@ const AdversarialSettingsView = ({ actions, state }) => {
                             e.target.value,
                           )
                         }
-                        placeholder="wss://websocket-server.example.com/tunnel"
+                        placeholder={interfaceText("wss://websocket-server.example.com/tunnel")}
                         value={settings.Transport.WebSocket?.ServerUrl || ''}
-                      />
+                       {...interfaceTextProps("wss://websocket-server.example.com/tunnel")}/>
                       <small
                         style={{
                           color: '#666',
@@ -748,28 +725,26 @@ const AdversarialSettingsView = ({ actions, state }) => {
                           marginTop: '5px',
                         }}
                       >
-                        WebSocket server that will proxy connections. Traffic
-                        appears as normal web traffic to DPI systems.
-                      </small>
+                        <LocalizedText source={"WebSocket server that will proxy connections. Traffic appears as normal web traffic to DPI systems."} /></small>
                     </Form.Field>
 
                     <Form.Field>
                       <Checkbox
                         checked={settings.Transport.WebSocket?.UseWss || false}
-                        label="Use WSS (Secure WebSocket)"
+                        label={interfaceText("Use WSS (Secure WebSocket)")}
                         onChange={(e, { checked }) =>
                           updateSetting('Transport.WebSocket.UseWss', checked)
                         }
-                      />
+                       {...interfaceTextProps("Use WSS (Secure WebSocket)")}/>
                     </Form.Field>
                   </>
                 )}
 
                 {settings.Transport?.PrimaryTransport === 'HttpTunnel' && (
                   <>
-                    <Header as="h5">HTTP Tunnel Configuration</Header>
+                    <Header as="h5"><LocalizedText source={"HTTP Tunnel Configuration"} /></Header>
                     <Form.Field>
-                      <label>Proxy URL</label>
+                      <label><LocalizedText source={"Proxy URL"} /></label>
                       <Input
                         onChange={(e) =>
                           updateSetting(
@@ -787,21 +762,19 @@ const AdversarialSettingsView = ({ actions, state }) => {
                           marginTop: '5px',
                         }}
                       >
-                        HTTP proxy server that will tunnel connections. Traffic
-                        appears as normal HTTP requests.
-                      </small>
+                        <LocalizedText source={"HTTP proxy server that will tunnel connections. Traffic appears as normal HTTP requests."} /></small>
                     </Form.Field>
 
                     <Form.Field>
-                      <label>HTTP Method</label>
+                      <label><LocalizedText source={"HTTP Method"} /></label>
                       <Dropdown
                         onChange={(e, { value }) =>
                           updateSetting('Transport.HttpTunnel.Method', value)
                         }
                         options={[
-                          { key: 'POST', text: 'POST', value: 'POST' },
-                          { key: 'GET', text: 'GET', value: 'GET' },
-                          { key: 'PUT', text: 'PUT', value: 'PUT' },
+                          { key: 'POST', text: interfaceText("POST"), value: 'POST' },
+                          { key: 'GET', text: interfaceText("GET"), value: 'GET' },
+                          { key: 'PUT', text: interfaceText("PUT"), value: 'PUT' },
                         ]}
                         selection
                         value={settings.Transport.HttpTunnel?.Method || 'POST'}
@@ -813,23 +786,23 @@ const AdversarialSettingsView = ({ actions, state }) => {
                         checked={
                           settings.Transport.HttpTunnel?.UseHttps || false
                         }
-                        label="Use HTTPS"
+                        label={interfaceText("Use HTTPS")}
                         onChange={(e, { checked }) =>
                           updateSetting(
                             'Transport.HttpTunnel.UseHttps',
                             checked,
                           )
                         }
-                      />
+                       {...interfaceTextProps("Use HTTPS")}/>
                     </Form.Field>
                   </>
                 )}
 
                 {settings.Transport?.PrimaryTransport === 'Obfs4' && (
                   <>
-                    <Header as="h5">Obfs4 Configuration</Header>
+                    <Header as="h5"><LocalizedText source={"Obfs4 Configuration"} /></Header>
                     <Form.Field>
-                      <label>Obfs4 Proxy Path</label>
+                      <label><LocalizedText source={"Obfs4 Proxy Path"} /></label>
                       <Input
                         onChange={(e) =>
                           updateSetting(
@@ -843,7 +816,7 @@ const AdversarialSettingsView = ({ actions, state }) => {
                     </Form.Field>
 
                     <Form.Field>
-                      <label>Bridge Lines</label>
+                      <label><LocalizedText source={"Bridge Lines"} /></label>
                       <small
                         style={{
                           color: '#666',
@@ -851,8 +824,7 @@ const AdversarialSettingsView = ({ actions, state }) => {
                           marginBottom: '10px',
                         }}
                       >
-                        Tor bridge lines for Obfs4 bridges (one per line)
-                      </small>
+                        <LocalizedText source={"Tor bridge lines for Obfs4 bridges (one per line)"} /></small>
                       <TextArea
                         onChange={(e) => {
                           const lines = e.target.value
@@ -860,21 +832,21 @@ const AdversarialSettingsView = ({ actions, state }) => {
                             .filter((line) => line.trim());
                           updateSetting('Transport.Obfs4.BridgeLines', lines);
                         }}
-                        placeholder="obfs4 192.0.2.1:443 1234567890ABCDEF..."
+                        placeholder={interfaceText("obfs4 192.0.2.1:443 1234567890ABCDEF...")}
                         rows={4}
                         value={(
                           settings.Transport.Obfs4?.BridgeLines || []
                         ).join('\n')}
-                      />
+                       {...interfaceTextProps("obfs4 192.0.2.1:443 1234567890ABCDEF...")}/>
                     </Form.Field>
                   </>
                 )}
 
                 {settings.Transport?.PrimaryTransport === 'Obfs4' && (
                   <>
-                    <Header as="h5">Obfs4 Configuration</Header>
+                    <Header as="h5"><LocalizedText source={"Obfs4 Configuration"} /></Header>
                     <Form.Field>
-                      <label>Bridge Lines</label>
+                      <label><LocalizedText source={"Bridge Lines"} /></label>
                       {(settings.Transport.Obfs4?.BridgeLines || []).map(
                         (line, index) => (
                           <div
@@ -918,9 +890,9 @@ const AdversarialSettingsView = ({ actions, state }) => {
 
                 {settings.Transport?.PrimaryTransport === 'Meek' && (
                   <>
-                    <Header as="h5">Meek Configuration</Header>
+                    <Header as="h5"><LocalizedText source={"Meek Configuration"} /></Header>
                     <Form.Field>
-                      <label>Bridge URL</label>
+                      <label><LocalizedText source={"Bridge URL"} /></label>
                       <Input
                         onChange={(e) =>
                           updateSetting(
@@ -938,13 +910,11 @@ const AdversarialSettingsView = ({ actions, state }) => {
                           marginTop: '5px',
                         }}
                       >
-                        Meek bridge server URL that will proxy connections
-                        through domain fronting.
-                      </small>
+                        <LocalizedText source={"Meek bridge server URL that will proxy connections through domain fronting."} /></small>
                     </Form.Field>
 
                     <Form.Field>
-                      <label>Front Domain</label>
+                      <label><LocalizedText source={"Front Domain"} /></label>
                       <Input
                         onChange={(e) =>
                           updateSetting(
@@ -962,9 +932,7 @@ const AdversarialSettingsView = ({ actions, state }) => {
                           marginTop: '5px',
                         }}
                       >
-                        Domain to front through (e.g., major CDN domains).
-                        Traffic appears to connect to this domain.
-                      </small>
+                        <LocalizedText source={"Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain."} /></small>
                     </Form.Field>
                   </>
                 )}
@@ -982,10 +950,8 @@ const AdversarialSettingsView = ({ actions, state }) => {
         <Header as="h3">
           <Icon name="user secret" />
           <Header.Content>
-            Adversarial Settings
-            <Header.Subheader>
-              Advanced privacy and anonymity features
-            </Header.Subheader>
+            <LocalizedText source={"Adversarial Settings"} /><Header.Subheader>
+              <LocalizedText source={"Advanced privacy and anonymity features"} /></Header.Subheader>
           </Header.Content>
         </Header>
         <div>
@@ -995,22 +961,22 @@ const AdversarialSettingsView = ({ actions, state }) => {
             loading={refreshingAll}
             onClick={refreshAll}
             size="tiny"
-            title="Refresh Settings & Status"
-          />
+            title={interfaceText("Refresh Settings & Status")}
+           {...interfaceTextProps("Refresh Settings & Status")}/>
           <Button
             icon="plug"
             loading={transportLoading}
             onClick={testTransportConnectivity}
             size="tiny"
-            title="Test Transport Connectivity"
-          />
+            title={interfaceText("Test Transport Connectivity")}
+           {...interfaceTextProps("Test Transport Connectivity")}/>
           <Button
             icon="shield alternate"
             loading={torLoading}
             onClick={testTorConnectivity}
             size="tiny"
-            title="Test Tor Connectivity"
-          />
+            title={interfaceText("Test Tor Connectivity")}
+           {...interfaceTextProps("Test Tor Connectivity")}/>
           <Button
             disabled={!hasChanges}
             icon="save"
@@ -1019,21 +985,20 @@ const AdversarialSettingsView = ({ actions, state }) => {
             primary
             style={{ marginLeft: '10px' }}
           >
-            Save Changes
-          </Button>
+            <LocalizedText source={"Save Changes"} /></Button>
         </div>
       </div>
 
       {error && (
         <Message negative>
-          <Message.Header>Error</Message.Header>
+          <Message.Header><LocalizedText source={"Error"} /></Message.Header>
           <p>{error}</p>
         </Message>
       )}
 
       {success && (
         <Message positive>
-          <Message.Header>Success</Message.Header>
+          <Message.Header><LocalizedText source={"Success"} /></Message.Header>
           <p>{success}</p>
         </Message>
       )}

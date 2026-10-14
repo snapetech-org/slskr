@@ -1,3 +1,4 @@
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import {
   createBatch,
   blockUser,
@@ -28,7 +29,7 @@ import {
   setLocalStorageItem,
 } from '../../../lib/storage';
 import { getAllNotes } from '../../../lib/userNotes';
-import { getDirectoryName, sleep } from '../../../lib/util';
+import { getDirectoryName, sleep, formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
 import { toDisplayError } from '../../../lib/errors';
 import * as wishlistAPI from '../../../lib/wishlist';
 import ErrorSegment from '../../Shared/ErrorSegment';
@@ -39,6 +40,8 @@ import Response from '../Response';
 import SearchDetailHeader from './SearchDetailHeader';
 import SearchResultControls from './SearchResultControls';
 import { useMountedRef } from '../../../lib/useMountedRef';
+
+
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import { Button, Confirm, Segment } from 'semantic-ui-react';
@@ -63,6 +66,11 @@ const SearchDetail = ({
   search,
   stopping,
 }) => {
+  useRegionalFormat();
+  const { t, languageFor, directionFor } = useInterfaceLanguage();
+  const localized = (source, parameters) => (
+    <span lang={languageFor(source)} dir={directionFor(source)}>{t(source, parameters)}</span>
+  );
   const { fileCount, id, lockedFileCount, responseCount, state } = search;
   const isComplete = isSearchComplete(search);
   const searchText = search.searchText ?? search.query ?? '';
@@ -169,9 +177,7 @@ const SearchDetail = ({
           requestId === requestIdsRef.current.ignore
         ) {
           console.error(error_);
-          toast.error(
-            toDisplayError(error_, 'Failed to load ignored wishlist results'),
-          );
+          toast.error(localized('Could not load ignored Wishlist results.'));
         }
       }
     };
@@ -226,7 +232,7 @@ const SearchDetail = ({
         search.wishlistItemId === wishlistItemId
       ) {
         toast.info(
-          `Ignored ${request.directory} from ${request.username} for this wishlist item`,
+          interfaceText("Ignored {directory} from {username} for this wishlist item", { "directory": (request.directory), "username": (request.username) }),
         );
       }
     } catch (error_) {
@@ -236,7 +242,7 @@ const SearchDetail = ({
         search.wishlistItemId === wishlistItemId
       ) {
         console.error(error_);
-        toast.error(toDisplayError(error_, 'Failed to ignore wishlist folder'));
+      toast.error(localized('Could not ignore this Wishlist result.'));
       }
     }
   };
@@ -288,13 +294,13 @@ const SearchDetail = ({
   const handleBlockUser = useCallback((username) => {
     const updated = blockUser(username);
     setBlockedUsers(updated);
-    toast.info(`Blocked ${username} from search results`);
+    toast.info(interfaceText("Blocked {username} from search results", { "username": (username) }));
   }, []);
 
   const handleUnblockUser = useCallback((username) => {
     const updated = unblockUser(username);
     setBlockedUsers(updated);
-    toast.info(`Unblocked ${username}`);
+    toast.info(interfaceText("Unblocked {username}", { "username": (username) }));
   }, []);
 
   // Fetch results once counts appear. Mesh responses can now arrive before
@@ -341,7 +347,8 @@ const SearchDetail = ({
         }
       } catch (getError) {
         if (!cancelled) {
-          setError(toDisplayError(getError, 'Failed to load search results'));
+          console.error(getError);
+          setError(toDisplayError(getError, 'Could not load search results. Try again later.'));
           setLoading(false);
         }
       }
@@ -513,7 +520,7 @@ const SearchDetail = ({
         requestId === requestIdsRef.current.graph
       ) {
         console.error(error_);
-        toast.error(toDisplayError(error_, 'Failed to build discovery graph'));
+        toast.error(localized('The discovery graph could not be loaded.'));
         setGraphOpen(false);
       }
     } finally {
@@ -586,21 +593,22 @@ const SearchDetail = ({
       .slice(0, 8);
 
     if (queries.length === 0) {
-      toast.error('No nearby track nodes were available to queue');
+      toast.error(localized('No nearby track nodes were available to queue'));
       return;
     }
 
     try {
       const count = await createBatch({ queries });
       if (mountedRef.current) {
-        toast.success(`Started ${count} nearby graph searches`);
+        toast.success(localized('Nearby graph searches started: {count}.', {
+          count: formatRegionalNumber(count),
+        }));
       }
     } catch (error_) {
       if (mountedRef.current) {
         console.error(error_);
-        toast.error(
-          toDisplayError(error_, 'Failed to queue nearby graph searches'),
-        );
+        console.error(error_);
+        toast.error(localized('Nearby graph searches could not be queued.'));
       }
     }
   };
@@ -613,22 +621,22 @@ const SearchDetail = ({
   const saveAsDefault = () => {
     setLocalStorageItem('slskr-default-search-filter', resultFilters);
     setHasSavedDefault(true);
-    toast.success('Search filters saved as default');
+    toast.success(localized('Search filters saved as default.'));
   };
 
   const clearSavedDefault = () => {
     removeLocalStorageItem('slskr-default-search-filter');
     setHasSavedDefault(false);
-    toast.info('Saved default filter cleared');
+    toast.info(localized('Saved default filter cleared.'));
   };
 
   const saveNamedFilter = () => {
-    const name = window.prompt('Filter name', searchText || 'Search filter');
+    const name = window.prompt(t('Filter name'), searchText || t('Search filter'));
     const next = saveSearchFilter({ name, value: resultFilters });
     setSavedFilters(next);
 
     if (name?.trim() && resultFilters.trim()) {
-      toast.success('Search filter saved');
+      toast.success(localized('Search filter saved.'));
     }
   };
 
@@ -648,7 +656,7 @@ const SearchDetail = ({
     }
 
     setSavedFilters(removeSavedSearchFilter(current.name));
-    toast.info('Saved search filter removed');
+    toast.info(localized('Saved search filter removed.'));
   };
 
   const focusAlbumCandidate = (candidate) => {
@@ -670,7 +678,7 @@ const SearchDetail = ({
       searchText,
     });
 
-    toast.success(`Saved local album rule for ${rule.albumTitle}`);
+    toast.success(localized('Saved a local album rule for {album}.', { album: rule.albumTitle }));
   };
 
   const resultCount = Array.isArray(results) ? results.length : 0;
@@ -682,14 +690,14 @@ const SearchDetail = ({
   const loaded = !removing && !creating && !loading && results !== null;
 
   if (error && results === null) {
-    return <ErrorSegment caption={toDisplayError(error, 'Failed to load search results')} />;
+    return <ErrorSegment caption={toDisplayError(error, t('Could not load search results. Try again later.'))} />;
   }
 
   return (
     <>
       {error && (
         <div data-testid="search-results-load-error">
-          <ErrorSegment caption={toDisplayError(error, 'Failed to load search results')} />
+          <ErrorSegment caption={toDisplayError(error, t('Could not load search results. Try again later.'))} />
         </div>
       )}
       <SearchDetailHeader
@@ -712,12 +720,17 @@ const SearchDetail = ({
           (results === null || results.length === 0) && (
             <LoaderSegment>
               {state === 'InProgress'
-                ? `Found ${fileCount} files ${
-                    lockedFileCount > 0
-                      ? `(plus ${lockedFileCount} locked) `
-                      : ''
-                  }from ${responseCount} users`
-                : 'Loading results...'}
+                ? lockedFileCount > 0
+                  ? localized('Found {files} files (plus {locked} locked) from {users} users.', {
+                    files: formatRegionalNumber(fileCount),
+                    locked: formatRegionalNumber(lockedFileCount),
+                    users: formatRegionalNumber(responseCount),
+                  })
+                  : localized('Found {files} files from {users} users.', {
+                    files: formatRegionalNumber(fileCount),
+                    users: formatRegionalNumber(responseCount),
+                  })
+                : localized('Loading results...')}
             </LoaderSegment>
           )
         }
@@ -774,8 +787,8 @@ const SearchDetail = ({
             role="status"
           >
             {resultCount === 0
-              ? 'No results were returned for this search.'
-              : 'No results match the current filters.'}
+              ? localized('No results were returned for this search.')
+              : localized('No results match the current filters.')}
           </Segment>
         )}
         {loaded &&
@@ -808,12 +821,21 @@ const SearchDetail = ({
             />
           ))}
         <Confirm
-          cancelButton="Keep Result"
-          confirmButton="Ignore Folder"
+          cancelButton={{
+            ...interfaceTextProps('Keep Result'),
+            content: localized('Keep Result'),
+          }}
+          confirmButton={{
+            ...interfaceTextProps('Ignore Folder'),
+            content: localized('Ignore Folder'),
+          }}
           content={ignoreRequest
-            ? `Hide “${ignoreRequest.directory}” from ${ignoreRequest.username} in every future run of this wishlist item? Other results from this user will remain visible.`
+            ? localized('Hide “{directory}” from {username} in every future run of this wishlist item? Other results from this user will remain visible.', {
+              directory: ignoreRequest.directory,
+              username: ignoreRequest.username,
+            })
             : ''}
-          header="Ignore Wishlist Folder"
+          header={localized('Ignore Wishlist Folder')}
           onCancel={() => setIgnoreRequest(null)}
           onConfirm={handleIgnoreWishlistDirectory}
           open={Boolean(ignoreRequest)}
@@ -828,9 +850,13 @@ const SearchDetail = ({
               primary
               size="large"
             >
-              Show {remainingCount > pageSize ? pageSize : remainingCount} More
-              Results{' '}
-              {`(${remainingCount} remaining, ${filteredCount} hidden by filter(s))`}
+              {localized('Show {count} More Results', {
+                count: formatRegionalNumber(remainingCount > pageSize ? pageSize : remainingCount),
+              })}{' '}
+              {localized('{remaining} remaining, {hidden} hidden by filters', {
+                remaining: formatRegionalNumber(remainingCount),
+                hidden: formatRegionalNumber(filteredCount),
+              })}
             </Button>
           ) : filteredCount > 0 ? (
             <Button
@@ -838,7 +864,9 @@ const SearchDetail = ({
               disabled
               fluid
               size="large"
-            >{`All results shown. ${filteredCount} results hidden by filter(s)`}</Button>
+            >{localized('All results shown. {count} results hidden by filters', {
+              count: formatRegionalNumber(filteredCount),
+            })}</Button>
           ) : (
             ''
           ))}

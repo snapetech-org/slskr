@@ -1,3 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+
+
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -33,6 +37,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const MediaCoreContentRegistryPanel = ({ setContentId, setError, setStats }) => {
+  useInterfaceLanguage();
   const mountedRef = useRef(true);
   const resolveExternalIdPanelRef = useRef(null);
 
@@ -71,7 +76,7 @@ const MediaCoreContentRegistryPanel = ({ setContentId, setError, setStats }) => 
       const data = await mediacore.getContentIdStats();
       setStats(data);
     } catch (error_) {
-      setError(`Failed to register: ${toDisplayError(error_)}`);
+      setError(interfaceText('Registration failed: {message}', { message: toDisplayError(error_) }));
     } finally {
       setRegistering(false);
     }
@@ -132,29 +137,27 @@ const MediaCoreContentRegistryPanel = ({ setContentId, setError, setStats }) => 
             <Card.Content>
               <Card.Header>
                 <Icon name="plus" />
-                Register ContentID Mapping
-              </Card.Header>
+                <LocalizedText source={"Register ContentID Mapping"} /></Card.Header>
               <Card.Description>
-                Map an external identifier to an internal ContentID
-              </Card.Description>
+                <LocalizedText source={"Map an external identifier to an internal ContentID"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Field>
-                  <label>External ID</label>
+                  <label><LocalizedText source={"External ID"} /></label>
                   <Input
                     onChange={(e) => setExternalId(e.target.value)}
-                    placeholder="e.g., mb:recording:12345-6789-..."
+                    placeholder={interfaceText("e.g., mb:recording:12345-6789-...")}
                     value={externalId}
-                  />
+                   {...interfaceTextProps("e.g., mb:recording:12345-6789-...")}/>
                 </Form.Field>
                 <Form.Field>
-                  <label>Content ID</label>
+                  <label><LocalizedText source={"Content ID"} /></label>
                   <Input
                     onChange={(e) => setDescriptorContentId(e.target.value)}
-                    placeholder="e.g., content:mb:recording:12345-6789-..."
+                    placeholder={interfaceText("e.g., content:mb:recording:12345-6789-...")}
                     value={descriptorContentId}
-                  />
+                   {...interfaceTextProps("e.g., content:mb:recording:12345-6789-...")}/>
                 </Form.Field>
                 <Button
                   disabled={
@@ -166,8 +169,7 @@ const MediaCoreContentRegistryPanel = ({ setContentId, setError, setStats }) => 
                   onClick={handleRegister}
                   primary
                 >
-                  Register Mapping
-                </Button>
+                  <LocalizedText source={"Register Mapping"} /></Button>
               </Form>
             </Card.Content>
           </Card>
@@ -181,16 +183,14 @@ const MediaCoreContentRegistryPanel = ({ setContentId, setError, setStats }) => 
             <Card.Content>
               <Card.Header>
                 <Icon name="check circle" />
-                ContentID Validation
-              </Card.Header>
+                <LocalizedText source={"ContentID Validation"} /></Card.Header>
               <Card.Description>
-                Validate ContentID format and extract components
-              </Card.Description>
+                <LocalizedText source={"Validate ContentID format and extract components"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Field>
-                  <label>ContentID to Validate</label>
+                  <label><LocalizedText source={"ContentID to Validate"} /></label>
                   <Input
                     action={
                       <Button
@@ -199,13 +199,12 @@ const MediaCoreContentRegistryPanel = ({ setContentId, setError, setStats }) => 
                         onClick={handleValidate}
                         primary
                       >
-                        Validate
-                      </Button>
+                        <LocalizedText source={"Validate"} /></Button>
                     }
                     onChange={(e) => setValidateContentIdInput(e.target.value)}
-                    placeholder="e.g., content:audio:track:mb-12345"
+                    placeholder={interfaceText("e.g., content:audio:track:mb-12345")}
                     value={validateContentIdInput}
-                  />
+                   {...interfaceTextProps("e.g., content:audio:track:mb-12345")}/>
                 </Form.Field>
               </Form>
 
@@ -217,20 +216,20 @@ const MediaCoreContentRegistryPanel = ({ setContentId, setError, setStats }) => 
                     </Message>
                   ) : (
                     <Message success>
-                      <Message.Header>Valid ContentID</Message.Header>
+                      <Message.Header><LocalizedText source={"Valid ContentID"} /></Message.Header>
                       <p>
-                        <strong>Domain:</strong> {validatedContent.domain}
+                        <strong><LocalizedText source={"Domain:"} /></strong> {validatedContent.domain}
                         <br />
-                        <strong>Type:</strong> {validatedContent.type}
+                        <strong><LocalizedText source={"Type:"} /></strong> {validatedContent.type}
                         <br />
                         <strong>ID:</strong> {validatedContent.id}
                         <br />
-                        <strong>Audio:</strong>{' '}
-                        {validatedContent.isAudio ? 'Yes' : 'No'} |
-                        <strong>Video:</strong>{' '}
-                        {validatedContent.isVideo ? 'Yes' : 'No'} |
-                        <strong>Image:</strong>{' '}
-                        {validatedContent.isImage ? 'Yes' : 'No'}
+                        <strong><LocalizedText source={"Audio:"} /></strong>{' '}
+                        {validatedContent.isAudio ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />} |
+                        <strong><LocalizedText source={"Video:"} /></strong>{' '}
+                        {validatedContent.isVideo ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />} |
+                        <strong><LocalizedText source={"Image:"} /></strong>{' '}
+                        {validatedContent.isImage ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
                       </p>
                     </Message>
                   )}
@@ -246,30 +245,28 @@ const MediaCoreContentRegistryPanel = ({ setContentId, setError, setStats }) => 
             <Card.Content>
               <Card.Header>
                 <Icon name="search plus" />
-                Domain Search
-              </Card.Header>
+                <LocalizedText source={"Domain Search"} /></Card.Header>
               <Card.Description>
-                Find ContentIDs by domain and optional type
-              </Card.Description>
+                <LocalizedText source={"Find ContentIDs by domain and optional type"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Group widths="equal">
                   <Form.Field>
-                    <label>Domain</label>
+                    <label><LocalizedText source={"Domain"} /></label>
                     <Input
                       onChange={(e) => setDomain(e.target.value)}
-                      placeholder="e.g., audio, video, image"
+                      placeholder={interfaceText("e.g., audio, video, image")}
                       value={domain}
-                    />
+                     {...interfaceTextProps("e.g., audio, video, image")}/>
                   </Form.Field>
                   <Form.Field>
-                    <label>Type (optional)</label>
+                    <label><LocalizedText source={"Type (optional)"} /></label>
                     <Input
                       onChange={(e) => setType(e.target.value)}
-                      placeholder="e.g., track, movie, photo"
+                      placeholder={interfaceText("e.g., track, movie, photo")}
                       value={type}
-                    />
+                     {...interfaceTextProps("e.g., track, movie, photo")}/>
                   </Form.Field>
                 </Form.Group>
                 <Button
@@ -278,8 +275,7 @@ const MediaCoreContentRegistryPanel = ({ setContentId, setError, setStats }) => 
                   onClick={handleDomainSearch}
                   primary
                 >
-                  Search Domain
-                </Button>
+                  <LocalizedText source={"Search Domain"} /></Button>
               </Form>
 
               {domainResults && (
@@ -292,9 +288,8 @@ const MediaCoreContentRegistryPanel = ({ setContentId, setError, setStats }) => 
                     <div>
                       <p>
                         <strong>
-                          Found {domainResults.contentIds?.length || 0}{' '}
-                          ContentIDs
-                        </strong>
+                          <LocalizedText source={"Found"} />{" "}{domainResults.contentIds?.length || 0}{' '}
+                          <LocalizedText source={"ContentIDs"} /></strong>
                       </p>
                       {domainResults.contentIds?.length > 0 && (
                         <List
@@ -324,12 +319,9 @@ const MediaCoreContentRegistryPanel = ({ setContentId, setError, setStats }) => 
           <Segment>
             <Header as="h3">
               <Icon name="lightbulb" />
-              ContentID Examples
-            </Header>
+              <LocalizedText source={"ContentID Examples"} /></Header>
             <p>
-              Click any example to fill the read-only resolve and validation
-              fields, plus the advanced registration fields.
-            </p>
+              <LocalizedText source={"Click any example to fill the read-only resolve and validation fields, plus the advanced registration fields."} /></p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5em' }}>
               {Object.entries(contentExamples).map(([domainName, types]) =>
                 Object.entries(types).map(([typeName, example]) => (

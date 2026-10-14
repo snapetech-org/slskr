@@ -31,6 +31,7 @@ import {
   main as runEngine,
   parseCaseCount,
   releaseRunLock,
+  runTaskPool,
   runtimeProbeCommands,
 } from './engine.mjs';
 
@@ -131,6 +132,7 @@ test('live progress summary distinguishes completed, blocked, pending, and activ
     { id: 'passed', name: 'Passed task' },
     { id: 'blocked', name: 'Blocked task' },
     { id: 'running', name: 'Long task' },
+    { id: 'another', name: 'Another task' },
   ];
   const results = new Map([
     ['passed', { status: 'passed', startedAt: '2026-10-12T00:00:00.000Z' }],
@@ -138,7 +140,146 @@ test('live progress summary distinguishes completed, blocked, pending, and activ
   ]);
   assert.equal(
     formatValidationProgress('sample', tasks, results, tasks[2], 65_000),
-    '[validation] sample: 1/3 selected tasks complete (1 passed, 0 failed, 1 blocked, 1 pending); running Long task (1m05s)',
+    '[validation] sample: 1/4 selected tasks complete (1 passed, 0 failed, 1 blocked, 2 pending); running Long task (1m05s)',
+  );
+  const running = [
+    { task: tasks[2], startedAt: Date.now() - 65_000 },
+    { task: tasks[3], startedAt: Date.now() - 125_000 },
+  ];
+  assert.match(
+    formatValidationProgress('sample', tasks, results, running),
+    /running Long task \(1m0[45]s\), Another task \(2m0[45]s\)$/,
+  );
+});
+
+test('task pool starts independent tasks together and releases dependents when ready', async () => {
+  const tasks = [
+    { id: 'first' },
+    { id: 'second' },
+    { id: 'after-first', dependsOn: ['first'] },
+    { id: 'after-second', dependsOn: ['second'] },
+  ];
+  const started = [];
+  const finish = new Map();
+  let active = 0;
+  let maximumActive = 0;
+  const pool = runTaskPool(tasks, {
+    concurrency: 2,
+    receipts: new Map(),
+    run: (task) => {
+      started.push(task.id);
+      active += 1;
+      maximumActive = Math.max(maximumActive, active);
+      return new Promise((resolve) => finish.set(task.id, () => {
+        active -= 1;
+        resolve({ taskId: task.id, status: 'passed' });
+      }));
+    },
+  });
+
+  await new Promise((resolve) => setImmediate(resolve));
+  assert.deepEqual(started, ['first', 'second']);
+  finish.get('first')();
+  await new Promise((resolve) => setImmediate(resolve));
+  assert.deepEqual(started, ['first', 'second', 'after-first']);
+  finish.get('second')();
+  await new Promise((resolve) => setImmediate(resolve));
+  assert.deepEqual(started, ['first', 'second', 'after-first', 'after-second']);
+  finish.get('after-first')();
+  finish.get('after-second')();
+
+  const result = await pool;
+  assert.equal(maximumActive, 2);
+  assert.equal(result.receipts.get('after-first').status, 'passed');
+  assert.equal(result.receipts.get('after-second').status, 'passed');
+});
+
+test('task pool serializes operations that share generated outputs', async () => {
+  const tasks = [
+    { id: 'cargo-test', concurrencyGroup: 'cargo-workspace' },
+    { id: 'cargo-clippy', concurrencyGroup: 'cargo-workspace' },
+    { id: 'python-check' },
+  ];
+  const started = [];
+  let finishCargo;
+  const pool = runTaskPool(tasks, {
+    concurrency: 3,
+    receipts: new Map(),
+    run: (task) => {
+      started.push(task.id);
+      if (task.id === 'cargo-test') {
+        return new Promise((resolve) => {
+          finishCargo = () => resolve({ taskId: task.id, status: 'passed' });
+        });
+      }
+      return Promise.resolve({ taskId: task.id, status: 'passed' });
+    },
+  });
+
+  await new Promise((resolve) => setImmediate(resolve));
+  assert.deepEqual(started, ['cargo-test', 'python-check']);
+  finishCargo();
+  await pool;
+  assert.deepEqual(started, ['cargo-test', 'python-check', 'cargo-clippy']);
+});
+
+test('task pool blocks dependent work after failure but continues independent checks', async () => {
+  const started = [];
+  const result = await runTaskPool([
+    { id: 'failed' },
+    { id: 'dependent', dependsOn: ['failed'] },
+    { id: 'independent' },
+  ], {
+    concurrency: 1,
+    receipts: new Map(),
+    run: async (task) => {
+      started.push(task.id);
+      if (task.id === 'failed') throw new Error('fixture task failure');
+      return { taskId: task.id, status: 'passed' };
+    },
+  });
+
+  assert.deepEqual(started, ['failed', 'independent']);
+  assert.equal(result.receipts.get('failed').error, 'fixture task failure');
+  assert.equal(result.receipts.get('dependent').status, 'blocked');
+  assert.equal(result.receipts.get('independent').status, 'passed');
+});
+
+test('task pool drains active work and blocks queued work when source checks fail', async () => {
+  const started = [];
+  const finish = new Map();
+  let sourceChecks = 0;
+  const pool = runTaskPool([{ id: 'first' }, { id: 'second' }, { id: 'queued' }], {
+    concurrency: 2,
+    receipts: new Map(),
+    sourceMatches: () => {
+      sourceChecks += 1;
+      if (sourceChecks > 2) throw new Error('fixture snapshot failure');
+      return true;
+    },
+    run: (task) => {
+      started.push(task.id);
+      return new Promise((resolve) => finish.set(task.id, () =>
+        resolve({ taskId: task.id, status: 'passed' })));
+    },
+  });
+
+  await new Promise((resolve) => setImmediate(resolve));
+  finish.get('first')();
+  await new Promise((resolve) => setImmediate(resolve));
+  assert.deepEqual(started, ['first', 'second']);
+  finish.get('second')();
+  const result = await pool;
+  assert.equal(result.sourceChanged, true);
+  assert.equal(result.sourceCheckFailed, true);
+  assert.equal(result.receipts.get('queued').status, 'blocked');
+  assert.match(result.receipts.get('queued').reason, /could not be verified/);
+});
+
+test('task pool rejects a concurrency limit outside the supported bound', async () => {
+  await assert.rejects(
+    runTaskPool([{ id: 'unused' }], { concurrency: 17, run: async () => ({ status: 'passed' }) }),
+    /must be an integer from 1 to 16/,
   );
 });
 
@@ -239,12 +380,14 @@ test('inventory rejects symbolic links in native test discovery scopes', () => {
 
 test('plan binds the candidate and closes test selection over its dependencies', () => {
   const { root, config } = fixture();
+  config.maxConcurrentTasks = 3;
   config.tasks.unshift({
     id: 'prepare',
     name: 'Prepare',
     stage: 'prepare',
     kind: 'setup',
     command: [process.execPath, '-e', 'process.exit(0)'],
+    concurrencyGroup: 'fixture-setup',
   });
   config.tasks[1].requiredCommands = ['python3.12'];
   config.tasks[1].dependsOn = ['prepare'];
@@ -263,6 +406,9 @@ test('plan binds the candidate and closes test selection over its dependencies',
     'prepare',
     'unit-tests',
   ]);
+  assert.equal(plan.maxConcurrentTasks, 3);
+  assert.equal(plan.tasks[0].concurrencyGroup, 'fixture-setup');
+  assert.equal(plan.tasks[1].concurrencyGroup, null);
   assert.equal(plan.inventoryCounts.unit, 1);
   assert.deepEqual(plan.tasks[1].requiredCommands, ['python3.12']);
   assert.equal(plan.prerequisites.some((item) => item.command === 'python3.12'), true);
@@ -270,6 +416,15 @@ test('plan binds the candidate and closes test selection over its dependencies',
   assert.match(plan.candidate.sourceSha256, /^[a-f0-9]{64}$/);
   assert.equal(plan.runtimes.length, 0);
   assert.match(plan.inventoryLaneDigests.unit, /^[a-f0-9]{64}$/);
+});
+
+test('plan rejects unsafe task-pool limits and resource-group identifiers', () => {
+  const { root, config } = fixture();
+  assert.throws(() => createPlan(root, { ...config, maxConcurrentTasks: 17 }), /integer from 1 to 16/);
+  assert.throws(() => createPlan(root, {
+    ...config,
+    tasks: [{ ...config.tasks[0], concurrencyGroup: 'shared output' }],
+  }), /concurrency groups must be short lowercase identifiers/);
 });
 
 test('runtime probes exclude inherited credentials and retain declared tool settings', () => {
@@ -355,6 +510,57 @@ test('native execution records passing case counts, source identity and private 
   const log = path.join(runRoot, result.receipt.tasks[0].logFile);
   assert.equal(statSync(log).mode & 0o777, 0o600);
   assert.match(readFileSync(path.join(runRoot, 'receipt.json'), 'utf8'), /"status": "passed"/);
+});
+
+test('executor runs independent tasks concurrently and keeps their receipts separate', async () => {
+  const { root, config } = fixture();
+  config.maxConcurrentTasks = 2;
+  const runRoot = mkdtempSync(path.join(os.tmpdir(), 'slskr-validation-pool-'));
+  temporaryRoots.push(runRoot);
+  const markerDirectory = path.join(runRoot, 'markers');
+  mkdirSync(markerDirectory);
+  const sharedScript = [
+    "const fs = require('node:fs');",
+    "const path = require('node:path');",
+    "const own = path.join(process.env.POOL_MARKER_DIR, process.env.POOL_MARKER_NAME);",
+    "const peer = path.join(process.env.POOL_MARKER_DIR, process.env.POOL_PEER_NAME);",
+    "fs.writeFileSync(own, 'started');",
+    '(async () => {',
+    '  const deadline = Date.now() + 5000;',
+    '  while (!fs.existsSync(peer) && Date.now() < deadline) {',
+    '    await new Promise((resolve) => setTimeout(resolve, 10));',
+    '  }',
+    "  if (!fs.existsSync(peer)) process.exitCode = 2;",
+    "  else process.stdout.write('ℹ tests 1\\nℹ pass 1\\n');",
+    '})();',
+  ].join('\n');
+  config.tasks[0].command = [process.execPath, '-e', sharedScript];
+  config.tasks[0].env = {
+    POOL_MARKER_DIR: markerDirectory,
+    POOL_MARKER_NAME: 'unit-tests',
+    POOL_PEER_NAME: 'independent-check',
+  };
+  config.tasks[0].timeoutSeconds = 8;
+  config.tasks.push({
+    id: 'independent-check',
+    name: 'Independent check',
+    stage: 'repository',
+    kind: 'check',
+    command: [process.execPath, '-e', sharedScript],
+    env: {
+      POOL_MARKER_DIR: markerDirectory,
+      POOL_MARKER_NAME: 'independent-check',
+      POOL_PEER_NAME: 'unit-tests',
+    },
+    timeoutSeconds: 8,
+  });
+
+  const plan = createPlan(root, config);
+  const result = await executePlan(root, config, plan, { runRoot });
+  assert.equal(result.exitCode, 0, JSON.stringify(result.receipt, null, 2));
+  assert.equal(result.receipt.totals.executed, 2);
+  assert.equal(result.receipt.totals.passed, 2);
+  assert.notEqual(result.receipt.tasks[0].logFile, result.receipt.tasks[1].logFile);
 });
 
 test('native execution can count individual pass events without summing their labels', async () => {

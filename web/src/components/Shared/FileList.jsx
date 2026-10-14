@@ -4,6 +4,7 @@ import {
   formatSeconds,
   getFileName,
 } from '../../lib/util';
+import { useInterfaceLanguage } from '../../lib/interfaceLocale';
 import React, { useMemo, useState } from 'react';
 import { Checkbox, Header, Icon, List, Table } from 'semantic-ui-react';
 
@@ -31,6 +32,12 @@ const FileList = ({
   onClose,
   onSelectionChange,
 }) => {
+  const { t, languageFor, directionFor } = useInterfaceLanguage();
+  const localized = (source, parameters) => (
+    <span lang={languageFor(source)} dir={directionFor(source)}>
+      {t(source, parameters)}
+    </span>
+  );
   const [folded, setFolded] = useState(false);
   const [lastSelectedIndex, setLastSelectedIndex] = useState(null);
   const safeFiles = useMemo(() => asFiles(files), [files]);
@@ -73,7 +80,9 @@ const FileList = ({
           <Icon
             aria-label={locked
               ? undefined
-              : `${folded ? 'Expand' : 'Collapse'} ${directoryName}`}
+              : t(folded ? 'Expand {directory}' : 'Collapse {directory}', { directory: directoryName })}
+            lang={locked ? undefined : languageFor(folded ? 'Expand {directory}' : 'Collapse {directory}')}
+            dir={locked ? undefined : directionFor(folded ? 'Expand {directory}' : 'Collapse {directory}')}
             link={!locked}
             name={locked ? 'lock' : folded ? 'folder' : 'folder open'}
             onClick={() => !locked && setFolded(!folded)}
@@ -83,9 +92,11 @@ const FileList = ({
 
           {Boolean(onClose) && (
             <Icon
-              aria-label={`Close file list for ${directoryName}`}
+              aria-label={t('Close file list for {directory}', { directory: directoryName })}
               className="close-button"
               color="red"
+              dir={directionFor('Close file list for {directory}')}
+              lang={languageFor('Close file list for {directory}')}
               link
               name="close"
               onClick={() => onClose()}
@@ -101,7 +112,9 @@ const FileList = ({
                 <Table.Row>
                   <Table.HeaderCell className="filelist-selector">
                     <Checkbox
-                      aria-label={`Select all files in ${directoryName}`}
+                      aria-label={t('Select all files in {directory}', { directory: directoryName })}
+                      lang={languageFor('Select all files in {directory}')}
+                      dir={directionFor('Select all files in {directory}')}
                       checked={
                         safeFiles.length > 0 &&
                         safeFiles.filter((f) => !f.selected).length === 0
@@ -114,16 +127,16 @@ const FileList = ({
                     />
                   </Table.HeaderCell>
                   <Table.HeaderCell className="filelist-filename">
-                    File
+                    {localized('File')}
                   </Table.HeaderCell>
                   <Table.HeaderCell className="filelist-size">
-                    Size
+                    {localized('Size')}
                   </Table.HeaderCell>
                   <Table.HeaderCell className="filelist-attributes">
-                    Attributes
+                    {localized('Attributes')}
                   </Table.HeaderCell>
                   <Table.HeaderCell className="filelist-length">
-                    Length
+                    {localized('Length')}
                   </Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
@@ -132,7 +145,9 @@ const FileList = ({
                     <Table.Row key={f.id || f.filename || index}>
                       <Table.Cell className="filelist-selector">
                         <Checkbox
-                          aria-label={`Select ${fileName(f)}`}
+                          aria-label={t('Select {filename}', { filename: fileName(f) })}
+                          lang={languageFor('Select {filename}')}
+                          dir={directionFor('Select {filename}')}
                           checked={Boolean(f.selected)}
                           disabled={disabled || locked}
                           fitted
@@ -143,7 +158,9 @@ const FileList = ({
                       </Table.Cell>
                       <Table.Cell className="filelist-filename">
                         {locked ? <Icon name="lock" /> : ''}
-                        {getFileName(fileName(f))}
+                        {fileName(f) === 'Unknown file'
+                          ? localized('Unknown file')
+                          : getFileName(fileName(f))}
                       </Table.Cell>
                       <Table.Cell className="filelist-size">
                         {formatBytes(safeNumber(f.size))}

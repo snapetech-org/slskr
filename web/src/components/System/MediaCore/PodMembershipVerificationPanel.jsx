@@ -1,3 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+
+
 import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
@@ -35,6 +39,7 @@ const PodMembershipVerificationPanel = React.memo(({
   verifyingMembership,
   visible,
 }) => {
+  useInterfaceLanguage();
   useRegionalFormat();
   const mountedRef = useRef(true);
   React.useEffect(() => {
@@ -67,7 +72,7 @@ const PodMembershipVerificationPanel = React.memo(({
   // Pod Membership Verification handlers
   const handleVerifyPodMembership = async () => {
     if (!verifyPodId.trim() || !verifyPeerId.trim()) {
-      toast.warning('Please enter both Pod ID and Peer ID');
+      toast.warning(interfaceText("Please enter both Pod ID and Peer ID"));
       return;
     }
 
@@ -88,7 +93,7 @@ const PodMembershipVerificationPanel = React.memo(({
 
   const handleVerifyMessage = async () => {
     if (!membershipMessageToVerify.trim()) {
-      toast.warning('Please enter a message JSON');
+      toast.warning(interfaceText("Please enter a message JSON"));
       return;
     }
 
@@ -107,7 +112,7 @@ const PodMembershipVerificationPanel = React.memo(({
 
   const handleCheckRole = async () => {
     if (!roleCheckPodId.trim() || !roleCheckPeerId.trim()) {
-      toast.warning('Please enter both Pod ID and Peer ID');
+      toast.warning(interfaceText("Please enter both Pod ID and Peer ID"));
       return;
     }
 
@@ -148,40 +153,34 @@ const PodMembershipVerificationPanel = React.memo(({
             <Card.Content>
               <Card.Header>
                 <Icon name="shield" />
-                Pod Membership Verification
-              </Card.Header>
+                <LocalizedText source={"Pod Membership Verification"} /></Card.Header>
               <Card.Description>
-                Verify membership status, message authenticity, and role
-                permissions for pod security
-              </Card.Description>
+                <LocalizedText source={"Verify membership status, message authenticity, and role permissions for pod security"} /></Card.Description>
               <PodWorkflowNotice
                 color="blue"
                 icon="check circle"
-                title="Read-only verification"
-              >
-                Verification checks should not mutate pod state, but pasted
-                messages and membership records can still contain sensitive
-                peer or signature data.
-              </PodWorkflowNotice>
+                title={interfaceText("Read-only verification")}
+               {...interfaceTextProps("Read-only verification")}>
+                <LocalizedText source={"Verification checks should not mutate pod state, but pasted messages and membership records can still contain sensitive peer or signature data."} /></PodWorkflowNotice>
             </Card.Content>
 
             {/* Membership Verification */}
             <Card.Content>
-              <Header size="small">Verify Membership Status</Header>
+              <Header size="small"><LocalizedText source={"Verify Membership Status"} /></Header>
               <Form>
                 <Form.Group widths="equal">
                   <Form.Input
-                    label="Pod ID"
+                    label={interfaceText("Pod ID")}
                     onChange={(e) => setVerifyPodId(e.target.value)}
                     placeholder="pod:artist:mb:daft-punk-hash"
                     value={verifyPodId}
-                  />
+                   {...interfaceTextProps("Pod ID")}/>
                   <Form.Input
-                    label="Peer ID"
+                    label={interfaceText("Peer ID")}
                     onChange={(e) => setVerifyPeerId(e.target.value)}
-                    placeholder="alice"
+                    placeholder={interfaceText("alice")}
                     value={verifyPeerId}
-                  />
+                   {...interfaceTextProps("Peer ID")}/>
                 </Form.Group>
                 <Button
                   disabled={
@@ -193,8 +192,7 @@ const PodMembershipVerificationPanel = React.memo(({
                   loading={verifyingMembership}
                   onClick={handleVerifyPodMembership}
                 >
-                  Verify Membership
-                </Button>
+                  <LocalizedText source={"Verify Membership"} /></Button>
               </Form>
 
               {membershipVerificationResult && (
@@ -202,26 +200,25 @@ const PodMembershipVerificationPanel = React.memo(({
                   {membershipVerificationResult.error ? (
                     <Message error>
                       <p>
-                        Failed to verify membership:{' '}
+                        <LocalizedText source={"Failed to verify membership:"} />{' '}
                         {membershipVerificationResult.error}
                       </p>
                     </Message>
                   ) : (
                     <Message success>
                       <Message.Header>
-                        Membership Verification Result
-                      </Message.Header>
+                        <LocalizedText source={"Membership Verification Result"} /></Message.Header>
                       <p>
-                        <strong>Valid Member:</strong>{' '}
+                        <strong><LocalizedText source={"Valid Member:"} /></strong>{' '}
                         {membershipVerificationResult.isValidMember
-                          ? 'Yes'
-                          : 'No'}
+                          ? <LocalizedText source={"Yes"} />
+                          : <LocalizedText source={"No"} />}
                         <br />
-                        <strong>Role:</strong>{' '}
+                        <strong><LocalizedText source={"Role:"} /></strong>{' '}
                         {membershipVerificationResult.role || 'None'}
                         <br />
-                        <strong>Banned:</strong>{' '}
-                        {membershipVerificationResult.isBanned ? 'Yes' : 'No'}
+                        <strong><LocalizedText source={"Banned:"} /></strong>{' '}
+                        {membershipVerificationResult.isBanned ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
                       </p>
                     </Message>
                   )}
@@ -233,23 +230,22 @@ const PodMembershipVerificationPanel = React.memo(({
               <Grid>
                 <Grid.Column width={8}>
                   {/* Message Verification */}
-                  <Header size="small">Verify Message Authenticity</Header>
+                  <Header size="small"><LocalizedText source={"Verify Message Authenticity"} /></Header>
                   <Form>
                     <Form.TextArea
-                      label="Pod Message JSON"
+                      label={interfaceText("Pod Message JSON")}
                       onChange={(e) => setMessageToVerify(e.target.value)}
                       placeholder='{"messageId": "msg123", "channelId": "pod:artist:mb:daft-punk-hash:general", "senderPeerId": "alice", "body": "Hello everyone!", "timestampUnixMs": 1703123456789, "signature": "ed25519:base64-signature"}'
                       rows={4}
                       value={messageToVerify}
-                    />
+                     {...interfaceTextProps("Pod Message JSON")}/>
                     <Button
                       disabled={verifyingMessage || !messageToVerify.trim()}
                       fluid
                       loading={verifyingMessage}
                       onClick={handleVerifyMessage}
                     >
-                      Verify Message
-                    </Button>
+                      <LocalizedText source={"Verify Message"} /></Button>
                   </Form>
 
                   {messageVerificationResult && (
@@ -257,33 +253,32 @@ const PodMembershipVerificationPanel = React.memo(({
                       {messageVerificationResult.error ? (
                         <Message error>
                           <p>
-                            Failed to verify message:{' '}
+                            <LocalizedText source={"Failed to verify message:"} />{' '}
                             {messageVerificationResult.error}
                           </p>
                         </Message>
                       ) : (
                         <Message info>
                           <Message.Header>
-                            Message Verification Result
-                          </Message.Header>
+                            <LocalizedText source={"Message Verification Result"} /></Message.Header>
                           <p>
-                            <strong>Valid:</strong>{' '}
-                            {messageVerificationResult.isValid ? 'Yes' : 'No'}
+                            <strong><LocalizedText source={"Valid:"} /></strong>{' '}
+                            {messageVerificationResult.isValid ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
                             <br />
-                            <strong>From Valid Member:</strong>{' '}
+                            <strong><LocalizedText source={"From Valid Member:"} /></strong>{' '}
                             {messageVerificationResult.isFromValidMember
-                              ? 'Yes'
-                              : 'No'}
+                              ? <LocalizedText source={"Yes"} />
+                              : <LocalizedText source={"No"} />}
                             <br />
-                            <strong>Not Banned:</strong>{' '}
+                            <strong><LocalizedText source={"Not Banned:"} /></strong>{' '}
                             {messageVerificationResult.isNotBanned
-                              ? 'Yes'
-                              : 'No'}
+                              ? <LocalizedText source={"Yes"} />
+                              : <LocalizedText source={"No"} />}
                             <br />
-                            <strong>Valid Signature:</strong>{' '}
+                            <strong><LocalizedText source={"Valid Signature:"} /></strong>{' '}
                             {messageVerificationResult.hasValidSignature
-                              ? 'Yes'
-                              : 'No'}
+                              ? <LocalizedText source={"Yes"} />
+                              : <LocalizedText source={"No"} />}
                           </p>
                         </Message>
                       )}
@@ -293,32 +288,32 @@ const PodMembershipVerificationPanel = React.memo(({
 
                 <Grid.Column width={8}>
                   {/* Role Checking */}
-                  <Header size="small">Check Role Permissions</Header>
+                  <Header size="small"><LocalizedText source={"Check Role Permissions"} /></Header>
                   <Form>
                     <Form.Group widths="equal">
                       <Form.Input
-                        label="Pod ID"
+                        label={interfaceText("Pod ID")}
                         onChange={(e) => setRoleCheckPodId(e.target.value)}
                         placeholder="pod:artist:mb:daft-punk-hash"
                         value={roleCheckPodId}
-                      />
+                       {...interfaceTextProps("Pod ID")}/>
                       <Form.Input
-                        label="Peer ID"
+                        label={interfaceText("Peer ID")}
                         onChange={(e) => setRoleCheckPeerId(e.target.value)}
-                        placeholder="alice"
+                        placeholder={interfaceText("alice")}
                         value={roleCheckPeerId}
-                      />
+                       {...interfaceTextProps("Peer ID")}/>
                     </Form.Group>
                     <Form.Select
-                      label="Required Role"
+                      label={interfaceText("Required Role")}
                       onChange={(e, { value }) => setRequiredRole(value)}
                       options={[
-                        { key: 'member', text: 'Member', value: 'member' },
-                        { key: 'mod', text: 'Moderator', value: 'mod' },
-                        { key: 'owner', text: 'Owner', value: 'owner' },
+                        { key: 'member', text: interfaceText("Member"), value: 'member' },
+                        { key: 'mod', text: interfaceText("Moderator"), value: 'mod' },
+                        { key: 'owner', text: interfaceText("Owner"), value: 'owner' },
                       ]}
                       value={requiredRole}
-                    />
+                     {...interfaceTextProps("Required Role")}/>
                     <Button
                       disabled={
                         checkingRole ||
@@ -329,22 +324,21 @@ const PodMembershipVerificationPanel = React.memo(({
                       loading={checkingRole}
                       onClick={handleCheckRole}
                     >
-                      Check Role
-                    </Button>
+                      <LocalizedText source={"Check Role"} /></Button>
                   </Form>
 
                   {roleCheckResult && (
                     <div style={{ marginTop: '1em' }}>
                       {roleCheckResult.error ? (
                         <Message error>
-                          <p>Failed to check role: {roleCheckResult.error}</p>
+                          <p><LocalizedText source={"Failed to check role:"} />{" "}{roleCheckResult.error}</p>
                         </Message>
                       ) : (
                         <Message>
-                          <Message.Header>Role Check Result</Message.Header>
+                          <Message.Header><LocalizedText source={"Role Check Result"} /></Message.Header>
                           <p>
-                            <strong>Has Required Role ({requiredRole}):</strong>{' '}
-                            {roleCheckResult.hasRole ? 'Yes' : 'No'}
+                            <strong><LocalizedText source={"Has Required Role ("} />{requiredRole}):</strong>{' '}
+                            {roleCheckResult.hasRole ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
                           </p>
                         </Message>
                       )}
@@ -363,37 +357,35 @@ const PodMembershipVerificationPanel = React.memo(({
                   onClick={handleLoadVerificationStats}
                   primary
                 >
-                  Load Verification Stats
-                </Button>
+                  <LocalizedText source={"Load Verification Stats"} /></Button>
               </Button.Group>
 
               {verificationStats && !verificationStats.error && (
                 <div style={{ marginTop: '1em' }}>
                   <Message>
-                    <Message.Header>Verification Statistics</Message.Header>
+                    <Message.Header><LocalizedText source={"Verification Statistics"} /></Message.Header>
                     <p>
-                      <strong>Total Verifications:</strong>{' '}
+                      <strong><LocalizedText source={"Total Verifications:"} /></strong>{' '}
                       {verificationStats.totalVerifications}
                       <br />
-                      <strong>Successful:</strong>{' '}
+                      <strong><LocalizedText source={"Successful:"} /></strong>{' '}
                       {verificationStats.successfulVerifications}
                       <br />
-                      <strong>Failed Membership:</strong>{' '}
+                      <strong><LocalizedText source={"Failed Membership:"} /></strong>{' '}
                       {verificationStats.failedMembershipChecks}
                       <br />
-                      <strong>Failed Signatures:</strong>{' '}
+                      <strong><LocalizedText source={"Failed Signatures:"} /></strong>{' '}
                       {verificationStats.failedSignatureChecks}
                       <br />
-                      <strong>Banned Rejections:</strong>{' '}
+                      <strong><LocalizedText source={"Banned Rejections:"} /></strong>{' '}
                       {verificationStats.bannedMemberRejections}
                       <br />
-                      <strong>Avg Time:</strong>{' '}
-                      {verificationStats.averageVerificationTimeMs.toFixed(2)}ms
-                      <br />
-                      <strong>Last Verification:</strong>{' '}
+                      <strong><LocalizedText source={"Avg Time:"} /></strong>{' '}
+                      {verificationStats.averageVerificationTimeMs.toFixed(2)}<LocalizedText source={"ms"} /><br />
+                      <strong><LocalizedText source={"Last Verification:"} /></strong>{' '}
                       {verificationStats.lastVerification
                         ? formatRegionalDateTime(verificationStats.lastVerification)
-                        : 'Never'}
+                        : <LocalizedText source={"Never"} />}
                     </p>
                   </Message>
                 </div>
@@ -405,7 +397,7 @@ const PodMembershipVerificationPanel = React.memo(({
                   style={{ marginTop: '1em' }}
                 >
                   <p>
-                    Failed to load verification stats: {verificationStats.error}
+                    <LocalizedText source={"Failed to load verification stats:"} />{" "}{verificationStats.error}
                   </p>
                 </Message>
               )}
