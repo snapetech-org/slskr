@@ -42,7 +42,7 @@ These interaction rules are standard for all model interfaces using this repo, i
 
 ## GitHub target safety
 
-Before a GitHub write, make sure origin resolves to snapetech/slskr. Pass --repo snapetech/slskr to GitHub CLI commands that support that flag. For gh api, use an explicit repos/snapetech/slskr/... endpoint or set GH_REPO=snapetech/slskr; gh api does not accept --repo. Run scripts/verify-github-target.sh when that script exists in the checked-out revision. If it is absent, verify the origin URL and repository with GitHub CLI before writing; if either check is ambiguous or does not identify snapetech/slskr, stop. Never use an upstream remote as a write target.
+Before a GitHub write, make sure origin resolves to snapetech-org/slskr. Pass --repo snapetech-org/slskr to GitHub CLI commands that support that flag. For gh api, use an explicit repos/snapetech-org/slskr/... endpoint or set GH_REPO=snapetech-org/slskr; gh api does not accept --repo. Run scripts/verify-github-target.sh when that script exists in the checked-out revision. If it is absent, verify the origin URL and repository with GitHub CLI before writing; if either check is ambiguous or does not identify snapetech-org/slskr, stop. Never use an upstream remote as a write target.
 
 ## Rust build and tooling
 
