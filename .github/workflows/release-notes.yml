@@ -22,23 +22,95 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
         with:
           ref: ${{ github.event.pull_request.base.sha }}
-          fetch-depth: 0
+          fetch-depth: 1
+          persist-credentials: false
 
-      - name: Fetch the pull-request head
+      - name: Read changed pull-request files
         env:
-          HEAD_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: git fetch --no-tags --depth=1 "https://github.com/${HEAD_REPOSITORY}.git" "${HEAD_SHA}"
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          gh api --paginate --jq '.[] | {filename,status,patch}' \
+            "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}/files" \
+            > "$RUNNER_TEMP/pull-request-files.jsonl"
 
       - name: Validate and preview release notes
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           PR_BODY: ${{ github.event.pull_request.body }}
         run: |
           set -euo pipefail
+          python3 - "$RUNNER_TEMP/pull-request-files.jsonl" <<'PY'
+          import json
+          import sys
+          from pathlib import Path, PurePosixPath
+
+          release_notes_dir = PurePosixPath("release-notes")
+          errors = []
+          files_jsonl = Path(sys.argv[1])
+          for line_number, line in enumerate(
+              files_jsonl.read_text(encoding="utf-8").splitlines(), start=1
+          ):
+              try:
+                  item = json.loads(line)
+              except json.JSONDecodeError as error:
+                  errors.append(f"pull-request file data line {line_number} is invalid JSON ({error})")
+                  continue
+              if not isinstance(item, dict) or not isinstance(item.get("filename"), str):
+                  errors.append(f"pull-request file data line {line_number} has no filename")
+                  continue
+
+              file_name = item["filename"]
+              path = PurePosixPath(file_name)
+              if (
+                  path.parent != release_notes_dir
+                  or path.suffix != ".md"
+                  or path.name.lower() == "readme.md"
+              ):
+                  continue
+              if item.get("status") != "added":
+                  errors.append(
+                      f"{file_name}: release-note fragments are append-only; add a new fragment instead"
+                  )
+                  continue
+
+              patch = item.get("patch")
+              if not isinstance(patch, str) or len(patch) > 16_384:
+                  errors.append(f"{file_name}: GitHub did not return a complete text patch")
+                  continue
+
+              content = []
+              for patch_line in patch.splitlines():
+                  if patch_line.startswith(("@@", "+++ ", "--- ")):
+                      continue
+                  if patch_line.startswith("\\ No newline at end of file"):
+                      continue
+                  if patch_line.startswith("+"):
+                      content.append(patch_line[1:])
+                  elif patch_line.startswith(" "):
+                      content.append(patch_line[1:])
+                  elif patch_line.startswith("-"):
+                      errors.append(f"{file_name}: unexpected removed line in an added file")
+                      break
+                  elif patch_line:
+                      errors.append(f"{file_name}: GitHub returned an unexpected patch line")
+                      break
+              else:
+                  target = Path("release-notes") / path.name
+                  if target.exists():
+                      errors.append(f"{file_name}: the new fragment already exists in the base revision")
+                      continue
+                  target.write_text("\n".join(content) + "\n", encoding="utf-8")
+
+          if errors:
+              print("Release-note pull-request validation failed:", file=sys.stderr)
+              for error in errors:
+                  print(f"- {error}", file=sys.stderr)
+              raise SystemExit(1)
+          PY
           python3 scripts/release_notes.py check \
             --base "$BASE_SHA" \
-            --head "$HEAD_SHA" \
+            --head WORKTREE \
             --pr-body-env PR_BODY \
             --summary-file "$GITHUB_STEP_SUMMARY"
