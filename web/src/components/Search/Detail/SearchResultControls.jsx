@@ -1,4 +1,7 @@
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import React from 'react';
+import { formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
+
 import SearchFilterModal from './SearchFilterModal';
 import {
   Button,
@@ -16,27 +19,32 @@ import {
 const sortDropdownOptions = [
   {
     key: 'smart',
-    text: '⭐ Smart Ranking (Best Overall)',
+    get text() { return interfaceText("⭐ Smart Ranking (Best Overall)"); },
     value: 'smart',
   },
   {
     key: 'uploadSpeed',
-    text: 'Upload Speed (Fastest to Slowest)',
+    get text() { return interfaceText("Upload Speed (Fastest to Slowest)"); },
     value: 'uploadSpeed',
   },
   {
     key: 'queueLength',
-    text: 'Queue Depth (Least to Most)',
+    get text() { return interfaceText("Queue Depth (Least to Most)"); },
     value: 'queueLength',
   },
   {
     key: 'fileCount',
-    text: 'File Count (Most to Least)',
+    get text() { return interfaceText("File Count (Most to Least)"); },
     value: 'fileCount',
   },
 ];
 
 const SearchResultControls = ({ actions, state }) => {
+  useRegionalFormat();
+  const { t, languageFor, directionFor } = useInterfaceLanguage();
+  const localized = (source, parameters) => (
+    <span lang={languageFor(source)} dir={directionFor(source)}>{t(source, parameters)}</span>
+  );
   const {
     albumCandidates,
     blockedUsers,
@@ -80,76 +88,78 @@ const SearchResultControls = ({ actions, state }) => {
             raised
           >
             <Dropdown
-              aria-label="Sort search results"
+              aria-label={t('Sort search results')}
+              lang={languageFor('Sort search results')}
+              dir={directionFor('Sort search results')}
               button
               className="search-options-sort icon"
               floating
               icon="sort"
               labeled
               onChange={(_event, { value }) => setResultSort(value)}
-              options={sortDropdownOptions}
+              options={sortDropdownOptions.map((option) => ({ ...option, text: localized(option.text) }))}
               text={
-                (sortDropdownOptions.find((o) => o.value === resultSort) ??
-                  sortDropdownOptions[0]).text
+                localized((sortDropdownOptions.find((o) => o.value === resultSort) ??
+                  sortDropdownOptions[0]).text)
               }
             />
             <Dropdown
-              aria-label="Search results per page"
+              aria-label={t('Results per page')}
+              lang={languageFor('Results per page')}
+              dir={directionFor('Results per page')}
               button
               className="search-options-pagesize"
               floating
               onChange={(_event, { value }) => handlePageSizeChange(value)}
               options={[
-                { key: '10', text: '10 per page', value: 10 },
-                { key: '25', text: '25 per page', value: 25 },
-                { key: '50', text: '50 per page', value: 50 },
-                { key: '100', text: '100 per page', value: 100 },
-                { key: 'all', text: 'Show All', value: 999_999 },
+                { key: '10', text: localized('{count} per page', { count: formatRegionalNumber(10) }), value: 10 },
+                { key: '25', text: localized('{count} per page', { count: formatRegionalNumber(25) }), value: 25 },
+                { key: '50', text: localized('{count} per page', { count: formatRegionalNumber(50) }), value: 50 },
+                { key: '100', text: localized('{count} per page', { count: formatRegionalNumber(100) }), value: 100 },
+                { key: 'all', text: localized('Show All'), value: 999_999 },
               ]}
               style={{ marginLeft: '0.5em' }}
-              text={pageSize >= 999_999 ? 'Show All' : `${pageSize} per page`}
+              text={pageSize >= 999_999 ? localized('Show All') : localized('{count} per page', { count: formatRegionalNumber(pageSize) })}
             />
             <div className="search-option-toggles">
               <Checkbox
                 checked={hideLocked}
                 className="search-options-hide-locked"
-                label="Hide Locked Results"
+                label={localized('Hide Locked Results')}
                 onChange={() => setHideLocked(!hideLocked)}
                 toggle
               />
               <Checkbox
                 checked={hideNoFreeSlots}
                 className="search-options-hide-no-slots"
-                label="Hide Results with No Free Slots"
+                label={localized('Hide Results with No Free Slots')}
                 onChange={() => setHideNoFreeSlots(!hideNoFreeSlots)}
                 toggle
               />
               <Checkbox
                 checked={hideBlockedUsers}
                 className="search-options-hide-blocked"
-                label={`Hide Blocked Users (${blockedUsers.length})`}
+                label={localized('Hide Blocked Users ({count})', { count: formatRegionalNumber(blockedUsers.length) })}
                 onChange={() => setHideBlockedUsers(!hideBlockedUsers)}
                 toggle
               />
               <Checkbox
                 checked={foldResults}
                 className="search-options-fold-results"
-                label="Fold Results"
+                label={localized('Fold Results')}
                 onChange={() => setFoldResults(!foldResults)}
                 toggle
               />
               <Popup
-                content="Fold duplicate file candidates that appear from multiple providers or peers, keeping the highest-ranked visible result and showing the folded sources as metadata."
+                content={localized('Fold duplicate file candidates that appear from multiple providers or peers, keeping the highest-ranked visible result and showing the folded sources as metadata.')}
                 position="top center"
                 trigger={
                   <Checkbox
                     checked={foldDuplicateResults}
                     className="search-options-fold-duplicates"
-                    label={`Fold Duplicates${
-                      deduplicatedResults.foldedCount > 0
-                        ? ` (${deduplicatedResults.foldedCount})`
-                        : ''
-                    }`}
+                    label={deduplicatedResults.foldedCount > 0
+                      ? localized('Fold Duplicates ({count})', { count: formatRegionalNumber(deduplicatedResults.foldedCount) })
+                      : localized('Fold Duplicates')}
                     onChange={handleFoldDuplicateResultsChange}
                     toggle
                   />
@@ -162,8 +172,8 @@ const SearchResultControls = ({ actions, state }) => {
             >
               <Icon name={search.wishlistItemId ? 'ban' : 'info circle'} />
               {search.wishlistItemId
-                ? 'Wishlist search: use “Ignore for Wishlist” below a result folder to hide that peer and folder from future runs of this wishlist item.'
-                : 'Folder ignores are available only for wishlist searches because each rule belongs to one wishlist item. Open a result from Wishlist history to use them.'}
+                ? localized('Wishlist search: use “Ignore for Wishlist” below a result folder to hide that peer and folder from future runs of this wishlist item.')
+                : localized('Folder ignores are available only for wishlist searches because each rule belongs to one wishlist item. Open a result from Wishlist history to use them.')}
             </div>
             <Input
               action={
@@ -180,7 +190,10 @@ const SearchResultControls = ({ actions, state }) => {
                         text: filter.name,
                         value: filter.name,
                       }))}
-                      title="Load saved filter"
+                      aria-label={t('Load saved filter')}
+                      lang={languageFor('Load saved filter')}
+                      dir={directionFor('Load saved filter')}
+                      title={t('Load saved filter')}
                     />
                   )}
                   {Boolean(resultFilters) && (
@@ -188,7 +201,10 @@ const SearchResultControls = ({ actions, state }) => {
                       color="red"
                       icon="x"
                       onClick={() => setResultFilters('')}
-                      title="Clear current filter"
+                      aria-label={t('Clear current filter')}
+                      lang={languageFor('Clear current filter')}
+                      dir={directionFor('Clear current filter')}
+                      title={t('Clear current filter')}
                     />
                   )}
                   {Boolean(resultFilters) && (
@@ -196,7 +212,10 @@ const SearchResultControls = ({ actions, state }) => {
                       color="teal"
                       icon="bookmark"
                       onClick={saveNamedFilter}
-                      title="Save named filter"
+                      aria-label={t('Save named filter')}
+                      lang={languageFor('Save named filter')}
+                      dir={directionFor('Save named filter')}
+                      title={t('Save named filter')}
                     />
                   )}
                   {savedFilters.some((filter) => filter.value === resultFilters) && (
@@ -204,21 +223,30 @@ const SearchResultControls = ({ actions, state }) => {
                       color="orange"
                       icon="minus circle"
                       onClick={deleteNamedFilter}
-                      title="Delete matching saved filter"
+                      aria-label={t('Delete matching saved filter')}
+                      lang={languageFor('Delete matching saved filter')}
+                      dir={directionFor('Delete matching saved filter')}
+                      title={t('Delete matching saved filter')}
                     />
                   )}
                   <Button
                     color="blue"
                     icon="save"
                     onClick={saveAsDefault}
-                    title="Save as default filter"
+                    aria-label={t('Save as default filter')}
+                    lang={languageFor('Save as default filter')}
+                    dir={directionFor('Save as default filter')}
+                    title={t('Save as default filter')}
                   />
                   {hasSavedDefault && (
                     <Button
                       color="orange"
                       icon="trash"
                       onClick={clearSavedDefault}
-                      title="Clear saved default filter"
+                      aria-label={t('Clear saved default filter')}
+                      lang={languageFor('Clear saved default filter')}
+                      dir={directionFor('Clear saved default filter')}
+                      title={t('Clear saved default filter')}
                     />
                   )}
                   <SearchFilterModal
@@ -227,7 +255,10 @@ const SearchResultControls = ({ actions, state }) => {
                     trigger={
                       <Button
                         icon
-                        title="Advanced Filters"
+                        aria-label={t('Advanced Filters')}
+                        lang={languageFor('Advanced Filters')}
+                        dir={directionFor('Advanced Filters')}
+                        title={t('Advanced Filters')}
                       >
                         <Icon name="sliders horizontal" />
                       </Button>
@@ -236,14 +267,11 @@ const SearchResultControls = ({ actions, state }) => {
                 </Button.Group>
               }
               className="search-filter"
-              label={{ content: 'Filter', icon: 'filter' }}
+              label={{ content: localized('Filter'), icon: 'filter' }}
               onChange={(_event, data) => setResultFilters(data.value)}
-              placeholder="
-                lackluster container -bothersome iscbr|isvbr islossless|islossy 
-                minbr:320 minfilesize:100mb maxfilesize:2gb minfilesinfolder:8 minlength:5000
-              "
+              placeholder={interfaceText("lackluster container -bothersome iscbr|isvbr islossless|islossy minbr:320 minfilesize:100mb maxfilesize:2gb minfilesinfolder:8 minlength:5000")}
               value={resultFilters}
-            />
+             {...interfaceTextProps("lackluster container -bothersome iscbr|isvbr islossless|islossy minbr:320 minfilesize:100mb maxfilesize:2gb minfilesinfolder:8 minlength:5000")}/>
           </Segment>
         )}
         {loaded && albumCandidates.length > 0 && (
@@ -251,8 +279,8 @@ const SearchResultControls = ({ actions, state }) => {
             className="search-album-picker-segment"
             raised
           >
-            <Header as="h4">
-              Album candidates
+            <Header as="h4" lang={languageFor('Album candidates')} dir={directionFor('Album candidates')}>
+              {t('Album candidates')}
               <Label
                 color="blue"
                 size="mini"
@@ -272,11 +300,13 @@ const SearchResultControls = ({ actions, state }) => {
                 >
                   <List.Content floated="right">
                     <Popup
-                      content="Save this visible album review as a browser-local rule preview for similar future searches. This does not alter download behavior or contact peers."
+                      content={localized('Save this visible album review as a browser-local rule preview for similar future searches. This does not alter download behavior or contact peers.')}
                       position="top center"
                       trigger={
                         <Button
-                          aria-label={`Save album rule ${candidate.albumTitle}`}
+                          aria-label={t('Save album rule for {album}', { album: candidate.albumTitle })}
+                          lang={languageFor('Save album rule for {album}')}
+                          dir={directionFor('Save album rule for {album}')}
                           icon="bookmark outline"
                           onClick={() => saveAlbumCandidateRule(candidate)}
                           size="mini"
@@ -284,11 +314,13 @@ const SearchResultControls = ({ actions, state }) => {
                       }
                     />
                     <Popup
-                      content="Focus the current result filter on this album folder name without starting another search or download."
+                      content={localized('Focus the current result filter on this album folder name without starting another search or download.')}
                       position="top center"
                       trigger={
                         <Button
-                          aria-label={`Focus album candidate ${candidate.albumTitle}`}
+                          aria-label={t('Focus album candidate {album}', { album: candidate.albumTitle })}
+                          lang={languageFor('Focus album candidate {album}')}
+                          dir={directionFor('Focus album candidate {album}')}
                           icon="filter"
                           onClick={() => focusAlbumCandidate(candidate)}
                           size="mini"
@@ -307,37 +339,41 @@ const SearchResultControls = ({ actions, state }) => {
                       </Label>
                     </List.Header>
                     <List.Description>
-                      {candidate.trackCount}/{candidate.expectedTrackCount}{' '}
-                      visible tracks · {candidate.sourceCount} source
-                      {candidate.sourceCount === 1 ? '' : 's'} ·{' '}
-                      {Math.round(candidate.completenessRatio * 100)}%
+                {t('{tracks} of {expected} visible tracks · {sources} sources · {percent}%', {
+                  tracks: formatRegionalNumber(candidate.trackCount),
+                  expected: formatRegionalNumber(candidate.expectedTrackCount),
+                  sources: formatRegionalNumber(candidate.sourceCount),
+                  percent: formatRegionalNumber(Math.round(candidate.completenessRatio * 100)),
+                })}
                     </List.Description>
                     <div className="search-album-candidate-review">
                       <span>
-                        Formats:{' '}
+                    {localized('Formats:')}{' '}
                         {candidate.formatMix
                           .map((item) => `${item.format} ${item.count}`)
                           .join(', ')}
                       </span>
                       {candidate.missingTrackNumbers.length > 0 && (
                         <span>
-                          Missing:{' '}
+                    {localized('Missing:')}{' '}
                           {candidate.missingTrackNumbers.slice(0, 8).join(', ')}
                         </span>
                       )}
                       {candidate.durationVarianceSeconds > 0 && (
                         <span>
-                          Duration spread:{' '}
-                          {Math.round(candidate.durationVarianceSeconds / 60)}m
+                    {t('Duration spread: {minutes} min', { minutes: formatRegionalNumber(Math.round(candidate.durationVarianceSeconds / 60)) })}
                         </span>
                       )}
                       {candidate.substitutionOptions.length > 0 && (
                         <span>
-                          Substitutions:{' '}
+                    {localized('Substitutions:')}{' '}
                           {candidate.substitutionOptions
                             .map(
                               (option) =>
-                                `track ${option.trackNumber} (${option.optionCount})`,
+                          t('track {number} ({count} options)', {
+                            number: formatRegionalNumber(option.trackNumber),
+                            count: formatRegionalNumber(option.optionCount),
+                          }),
                             )
                             .join(', ')}
                         </span>
@@ -347,7 +383,10 @@ const SearchResultControls = ({ actions, state }) => {
                       <div className="search-album-candidate-substitutions">
                         {candidate.substitutionOptions.slice(0, 4).map((option) => (
                           <Popup
-                            content={`Manual review options from ${option.sources.join(', ')} in ${option.formats.join(', ')}. This only describes visible alternatives; it does not select or download them.`}
+                          content={localized('Manual review options from {sources} in {formats}. This only describes visible alternatives; it does not select or download them.', {
+                            sources: option.sources.join(', '),
+                            formats: option.formats.join(', '),
+                          })}
                             key={option.trackNumber}
                             position="top center"
                             trigger={
@@ -356,8 +395,10 @@ const SearchResultControls = ({ actions, state }) => {
                                 size="tiny"
                               >
                                 <Icon name="exchange" />
-                                Track {option.trackNumber}: {option.optionCount}{' '}
-                                options
+                              {t('Track {number}: {count} options', {
+                                number: formatRegionalNumber(option.trackNumber),
+                                count: formatRegionalNumber(option.optionCount),
+                              })}
                               </Label>
                             }
                           />
@@ -375,7 +416,7 @@ const SearchResultControls = ({ actions, state }) => {
                       ))}
                       {candidate.warnings.map((warning) => (
                         <Popup
-                          content="This is a local confidence warning from visible search result metadata only; it does not reject the candidate or contact peers."
+                          content={localized('This is a local confidence warning from visible search result metadata only; it does not reject the candidate or contact peers.')}
                           key={warning}
                           position="top center"
                           trigger={

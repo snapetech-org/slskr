@@ -1,19 +1,28 @@
 import '@testing-library/jest-dom';
 import TransferList from './TransferList';
+import SPANISH_LABELS from '../../lib/locales/ui-labels.es.json';
 import { resetInterfaceLanguage, setInterfaceLanguage } from '../../lib/interfaceLocale';
 import { setRegionalFormatPreference } from '../../lib/util';
 import React from 'react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
+
+beforeEach(() => {
+  vi.stubGlobal('fetch', vi.fn(async () => ({
+    ok: true,
+    json: async () => SPANISH_LABELS,
+  })));
+});
 
 afterEach(() => {
   resetInterfaceLanguage();
   setRegionalFormatPreference('system');
+  vi.unstubAllGlobals();
 });
 
 describe('TransferList', () => {
-  it('localizes the supported aborted state as a failure', () => {
-    setInterfaceLanguage('es');
+  it('localizes the supported aborted state as a failure', async () => {
+    await act(async () => { await setInterfaceLanguage('es'); });
 
     render(
       <TransferList
@@ -34,8 +43,8 @@ describe('TransferList', () => {
     expect(screen.getByText('Fallidos')).toHaveAttribute('lang', 'es');
   });
 
-  it('translates the initializing transfer state', () => {
-    setInterfaceLanguage('es');
+  it('translates the initializing transfer state', async () => {
+    await act(async () => { await setInterfaceLanguage('es'); });
 
     render(
       <TransferList

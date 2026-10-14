@@ -1,3 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+
+
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -29,6 +33,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const MediaCoreMetadataPortabilityPanel = React.memo(() => {
+  useInterfaceLanguage();
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -141,29 +146,27 @@ const MediaCoreMetadataPortabilityPanel = React.memo(() => {
             <Card.Content>
               <Card.Header>
                 <Icon name="download" />
-                Export Metadata
-              </Card.Header>
+                <LocalizedText source={"Export Metadata"} /></Card.Header>
               <Card.Description>
-                Export metadata for ContentIDs to a portable package
-              </Card.Description>
+                <LocalizedText source={"Export metadata for ContentIDs to a portable package"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Field>
-                  <label>ContentIDs (one per line)</label>
+                  <label><LocalizedText source={"ContentIDs (one per line)"} /></label>
                   <TextArea
                     onChange={(e) => setExportContentIds(e.target.value)}
-                    placeholder="content:audio:track:mb-12345&#10;content:video:movie:imdb-tt0111161&#10;..."
+                    placeholder={interfaceText("content:audio:track:mb-12345&#10;content:video:movie:imdb-tt0111161&#10;...")}
                     rows={4}
                     value={exportContentIds}
-                  />
+                   {...interfaceTextProps("content:audio:track:mb-12345&#10;content:video:movie:imdb-tt0111161&#10;...")}/>
                 </Form.Field>
                 <Form.Field>
                   <Checkbox
                     checked={includeLinks}
-                    label="Include IPLD links"
+                    label={interfaceText("Include IPLD links")}
                     onChange={(e, { checked }) => setIncludeLinks(checked)}
-                  />
+                   {...interfaceTextProps("Include IPLD links")}/>
                 </Form.Field>
                 <Button
                   disabled={!exportContentIds.trim() || exportingMetadata}
@@ -171,8 +174,7 @@ const MediaCoreMetadataPortabilityPanel = React.memo(() => {
                   onClick={handleExportMetadata}
                   primary
                 >
-                  Export Metadata
-                </Button>
+                  <LocalizedText source={"Export Metadata"} /></Button>
               </Form>
 
               {exportResult && (
@@ -183,21 +185,21 @@ const MediaCoreMetadataPortabilityPanel = React.memo(() => {
                     </Message>
                   ) : (
                     <Message success>
-                      <Message.Header>Export Successful</Message.Header>
+                      <Message.Header><LocalizedText source={"Export Successful"} /></Message.Header>
                       <p>
-                        <strong>Version:</strong> {exportResult.version}
+                        <strong><LocalizedText source={"Version:"} /></strong> {exportResult.version}
                         <br />
-                        <strong>Entries:</strong>{' '}
+                        <strong><LocalizedText source={"Entries:"} /></strong>{' '}
                         {exportResult.metadata?.totalEntries || 0}
                         <br />
-                        <strong>Links:</strong>{' '}
+                        <strong><LocalizedText source={"Links:"} /></strong>{' '}
                         {exportResult.metadata?.totalLinks || 0}
                         <br />
-                        <strong>Checksum:</strong>{' '}
+                        <strong><LocalizedText source={"Checksum:"} /></strong>{' '}
                         {exportResult.metadata?.checksum?.slice(0, 16)}...
                       </p>
                       <details>
-                        <summary>View Package JSON</summary>
+                        <summary><LocalizedText source={"View Package JSON"} /></summary>
                         <pre
                           style={{
                             fontSize: '0.8em',
@@ -222,16 +224,14 @@ const MediaCoreMetadataPortabilityPanel = React.memo(() => {
             <Card.Content>
               <Card.Header>
                 <Icon name="upload" />
-                Import Metadata
-              </Card.Header>
+                <LocalizedText source={"Import Metadata"} /></Card.Header>
               <Card.Description>
-                Import metadata from a portable package with conflict resolution
-              </Card.Description>
+                <LocalizedText source={"Import metadata from a portable package with conflict resolution"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Field>
-                  <label>Conflict Resolution Strategy</label>
+                  <label><LocalizedText source={"Conflict Resolution Strategy"} /></label>
                   <Dropdown
                     onChange={(e, { value }) => setConflictStrategy(value)}
                     options={
@@ -249,9 +249,9 @@ const MediaCoreMetadataPortabilityPanel = React.memo(() => {
                 <Form.Field>
                   <Checkbox
                     checked={dryRun}
-                    label="Dry run (preview changes without applying)"
+                    label={interfaceText("Dry run (preview changes without applying)")}
                     onChange={(e, { checked }) => setDryRun(checked)}
-                  />
+                   {...interfaceTextProps("Dry run (preview changes without applying)")}/>
                 </Form.Field>
                 <Button
                   disabled={!importPackage.trim() || analyzingConflicts}
@@ -259,8 +259,7 @@ const MediaCoreMetadataPortabilityPanel = React.memo(() => {
                   onClick={handleAnalyzeConflicts}
                   secondary
                 >
-                  Analyze Conflicts
-                </Button>
+                  <LocalizedText source={"Analyze Conflicts"} /></Button>
                 <Button
                   disabled={!importPackage.trim() || importingMetadata}
                   loading={importingMetadata}
@@ -268,20 +267,19 @@ const MediaCoreMetadataPortabilityPanel = React.memo(() => {
                   primary
                   style={{ marginLeft: '0.5em' }}
                 >
-                  Import Metadata
-                </Button>
+                  <LocalizedText source={"Import Metadata"} /></Button>
               </Form>
 
               {/* Import Package Input */}
               <Form style={{ marginTop: '1em' }}>
                 <Form.Field>
-                  <label>Metadata Package (JSON)</label>
+                  <label><LocalizedText source={"Metadata Package (JSON)"} /></label>
                   <TextArea
                     onChange={(e) => setImportPackage(e.target.value)}
-                    placeholder="Paste exported metadata package JSON here..."
+                    placeholder={interfaceText("Paste exported metadata package JSON here...")}
                     rows={6}
                     value={importPackage}
-                  />
+                   {...interfaceTextProps("Paste exported metadata package JSON here...")}/>
                 </Form.Field>
               </Form>
 
@@ -294,17 +292,17 @@ const MediaCoreMetadataPortabilityPanel = React.memo(() => {
                     </Message>
                   ) : (
                     <Message info>
-                      <Message.Header>Conflict Analysis</Message.Header>
+                      <Message.Header><LocalizedText source={"Conflict Analysis"} /></Message.Header>
                       <p>
-                        <strong>Total Entries:</strong>{' '}
+                        <strong><LocalizedText source={"Total Entries:"} /></strong>{' '}
                         {conflictAnalysis.totalEntries}
                         <br />
-                        <strong>Conflicting:</strong>{' '}
+                        <strong><LocalizedText source={"Conflicting:"} /></strong>{' '}
                         {conflictAnalysis.conflictingEntries}
                         <br />
-                        <strong>Clean:</strong> {conflictAnalysis.cleanEntries}
+                        <strong><LocalizedText source={"Clean:"} /></strong> {conflictAnalysis.cleanEntries}
                         <br />
-                        <strong>Recommended Strategy:</strong>{' '}
+                        <strong><LocalizedText source={"Recommended Strategy:"} /></strong>{' '}
                         {Object.entries(
                           conflictAnalysis.recommendedStrategies || {},
                         ).sort(([, a], [, b]) => b - a)[0]?.[0] || 'Merge'}
@@ -323,30 +321,29 @@ const MediaCoreMetadataPortabilityPanel = React.memo(() => {
                   ) : (
                     <Message success>
                       <Message.Header>
-                        Import{' '}
+                        <LocalizedText source={"Import"} />{' '}
                         {importResult.success
-                          ? 'Successful'
-                          : 'Completed with Issues'}
+                          ? <LocalizedText source={"Successful"} />
+                          : <LocalizedText source={"Completed with Issues"} />}
                       </Message.Header>
                       <p>
-                        <strong>Processed:</strong>{' '}
+                        <strong><LocalizedText source={"Processed:"} /></strong>{' '}
                         {importResult.entriesProcessed}
                         <br />
-                        <strong>Imported:</strong>{' '}
+                        <strong><LocalizedText source={"Imported:"} /></strong>{' '}
                         {importResult.entriesImported}
                         <br />
-                        <strong>Skipped:</strong> {importResult.entriesSkipped}
+                        <strong><LocalizedText source={"Skipped:"} /></strong> {importResult.entriesSkipped}
                         <br />
-                        <strong>Conflicts Resolved:</strong>{' '}
+                        <strong><LocalizedText source={"Conflicts Resolved:"} /></strong>{' '}
                         {importResult.conflictsResolved}
                         <br />
-                        <strong>Duration:</strong>{' '}
-                        {importResult.duration?.TotalSeconds.toFixed(2)}s
-                      </p>
+                        <strong><LocalizedText source={"Duration:"} /></strong>{' '}
+                        {importResult.duration?.TotalSeconds.toFixed(2)}<LocalizedText source={"s"} /></p>
                       {importResult.errors?.length > 0 && (
                         <details>
                           <summary>
-                            Errors ({importResult.errors.length})
+                            <LocalizedText source={"Errors ("} />{importResult.errors.length})
                           </summary>
                           <List bulleted>
                             {importResult.errors.map((error, index) => (

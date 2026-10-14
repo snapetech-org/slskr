@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import React from 'react';
 import RoomCreateModal from '../Rooms/RoomCreateModal';
 import { channelLabel, normalizeConversationName } from './messagingWorkspaceState';
@@ -13,6 +15,7 @@ import {
 } from 'semantic-ui-react';
 
 const MessagingSidebar = ({ actions, state }) => {
+  useInterfaceLanguage();
   const {
     availableRoomsError,
     bridgedPodNames,
@@ -41,28 +44,27 @@ const MessagingSidebar = ({ actions, state }) => {
           <div className="messaging-sidebar-header">
             <div className="messaging-sidebar-title">
               <Icon name="comments" />
-              Messages
-            </div>
+              <LocalizedText source={"Messages"} /></div>
             <Popup
-              content="Reload saved conversations and joined rooms from the daemon."
+              content={interfaceText("Reload saved conversations and joined rooms from the daemon.")}
               trigger={
                 <Button
-                  aria-label="Refresh messages workspace"
+                  aria-label={interfaceText("Refresh messages workspace")}
                   icon="refresh"
                   onClick={() => refreshWorkspace()}
                   size="mini"
-                  title="Refresh messages workspace"
-                />
+                  title={interfaceText("Refresh messages workspace")}
+                 {...interfaceTextProps("Refresh messages workspace")}/>
               }
-            />
+             {...interfaceTextProps("Reload saved conversations and joined rooms from the daemon.")}/>
           </div>
           {workspaceError ? <Message warning>{workspaceError}</Message> : null}
 
           <div className="messaging-sidebar-section">
-            <div className="messaging-sidebar-section-title">Direct Message</div>
+            <div className="messaging-sidebar-section-title"><LocalizedText source={"Direct Message"} /></div>
             <div className="messaging-start-row">
               <Input
-                aria-label="Chat username"
+                aria-label={interfaceText("Chat username")}
                 fluid
                 onChange={(event) => setChatTarget(event.target.value)}
                 onKeyUp={(event) => {
@@ -71,15 +73,15 @@ const MessagingSidebar = ({ actions, state }) => {
                     setChatTarget('');
                   }
                 }}
-                placeholder="username"
+                placeholder={interfaceText("username")}
                 size="small"
                 value={chatTarget}
-              />
+               {...interfaceTextProps("Chat username")}/>
               <Popup
-                content="Open a direct-message panel for this user."
+                content={interfaceText("Open a direct-message panel for this user.")}
                 trigger={
                   <Button
-                    aria-label="Open direct-message panel"
+                    aria-label={interfaceText("Open direct-message panel")}
                     disabled={!chatTarget.trim()}
                     icon="comment"
                     onClick={() => {
@@ -87,17 +89,16 @@ const MessagingSidebar = ({ actions, state }) => {
                       setChatTarget('');
                     }}
                     size="small"
-                    title="Open direct-message panel"
-                  />
+                    title={interfaceText("Open direct-message panel")}
+                   {...interfaceTextProps("Open direct-message panel")}/>
                 }
-              />
+               {...interfaceTextProps("Open a direct-message panel for this user.")}/>
             </div>
           </div>
 
           <div className="messaging-sidebar-section">
             <div className="messaging-sidebar-section-title">
-              Saved Chats
-              <Label size="mini">{conversations.length}</Label>
+              <LocalizedText source={"Saved Chats"} /><Label size="mini">{conversations.length}</Label>
             </div>
             <div className="messaging-list">
               {conversations.map((conversation) => (
@@ -106,7 +107,7 @@ const MessagingSidebar = ({ actions, state }) => {
                   key={conversation.username}
                 >
                   <Popup
-                    content="Open this conversation as a workspace panel."
+                    content={interfaceText("Open this conversation as a workspace panel.")}
                     trigger={
                       <Button
                         basic
@@ -122,10 +123,9 @@ const MessagingSidebar = ({ actions, state }) => {
                         ) && (
                           <Label
                             size="mini"
-                            title="Pod direct channel is folded into this saved direct message."
-                          >
-                            pod
-                          </Label>
+                            title={interfaceText("Pod direct channel is folded into this saved direct message.")}
+                           {...interfaceTextProps("Pod direct channel is folded into this saved direct message.")}>
+                            <LocalizedText source={"pod"} /></Label>
                         )}
                         {conversation.hasUnAcknowledgedMessages && (
                           <Label
@@ -137,42 +137,42 @@ const MessagingSidebar = ({ actions, state }) => {
                         )}
                       </Button>
                     }
-                  />
+                   {...interfaceTextProps("Open this conversation as a workspace panel.")}/>
                   <Popup
-                    content="Permanently delete this saved message thread."
+                    content={interfaceText("Permanently delete this saved message thread.")}
                     trigger={
                       <Button
-                        aria-label={`Delete message thread with ${conversation.username}`}
+                        aria-label={interfaceText("Delete message thread with {username}", { "username": (conversation.username) })}
                         disabled={isWorkspaceActionPending(`chat:delete:${conversation.username}`)}
                         icon="trash alternate"
                         negative
                         onClick={() => deleteConversation(conversation.username)}
                         size="small"
-                        title={`Delete message thread with ${conversation.username}`}
-                      />
+                        title={interfaceText("Delete message thread with {username}", { "username": (conversation.username) })}
+                       {...interfaceTextProps("Delete message thread with {username}")}/>
                     }
-                  />
+                   {...interfaceTextProps("Permanently delete this saved message thread.")}/>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="messaging-sidebar-section">
-            <div className="messaging-sidebar-section-title">Join Room</div>
+            <div className="messaging-sidebar-section-title"><LocalizedText source={"Join Room"} /></div>
             <div className="messaging-start-row">
               <Dropdown
-                aria-label="Search rooms"
+                aria-label={interfaceText("Search rooms")}
                 clearable
                 fluid
                 loading={roomSearchLoading}
                 onChange={(_, { value }) => joinRoom(value)}
                 onOpen={fetchAvailableRooms}
                 options={roomOptions}
-                placeholder="Search rooms"
+                placeholder={interfaceText("Search rooms")}
                 search
                 selection
                 size="small"
-              />
+               {...interfaceTextProps("Search rooms")}/>
               <RoomCreateModal onCreateRoom={(roomName) => joinRoom(roomName)} />
             </div>
             {availableRoomsError ? (
@@ -182,8 +182,7 @@ const MessagingSidebar = ({ actions, state }) => {
 
           <div className="messaging-sidebar-section">
             <div className="messaging-sidebar-section-title">
-              Joined Rooms
-              <Label size="mini">{joinedRooms.length}</Label>
+              <LocalizedText source={"Joined Rooms"} /><Label size="mini">{joinedRooms.length}</Label>
             </div>
             <div className="messaging-list">
               {joinedRooms.map((roomName) => (
@@ -192,7 +191,7 @@ const MessagingSidebar = ({ actions, state }) => {
                   key={roomName}
                 >
                   <Popup
-                    content="Open this room as a workspace panel."
+                    content={interfaceText("Open this room as a workspace panel.")}
                     trigger={
                       <Button
                         basic
@@ -205,21 +204,21 @@ const MessagingSidebar = ({ actions, state }) => {
                         #{roomName}
                       </Button>
                     }
-                  />
+                   {...interfaceTextProps("Open this room as a workspace panel.")}/>
                   <Popup
-                    content="Leave this room and remove it from joined rooms."
+                    content={interfaceText("Leave this room and remove it from joined rooms.")}
                     trigger={
                       <Button
-                        aria-label={`Leave room ${roomName}`}
+                        aria-label={interfaceText("Leave room {roomName}", { "roomName": (roomName) })}
                         disabled={isWorkspaceActionPending(`room:leave:${roomName}`)}
                         icon="sign-out"
                         negative
                         onClick={() => leaveRoom(roomName)}
                         size="small"
-                        title={`Leave room ${roomName}`}
-                      />
+                        title={interfaceText("Leave room {roomName}", { "roomName": (roomName) })}
+                       {...interfaceTextProps("Leave room {roomName}")}/>
                     }
-                  />
+                   {...interfaceTextProps("Leave this room and remove it from joined rooms.")}/>
                 </div>
               ))}
             </div>
@@ -227,8 +226,7 @@ const MessagingSidebar = ({ actions, state }) => {
 
           <div className="messaging-sidebar-section">
             <div className="messaging-sidebar-section-title">
-              Pod Channels
-              <Label size="mini">{visiblePodChannels.length}</Label>
+              <LocalizedText source={"Pod Channels"} /><Label size="mini">{visiblePodChannels.length}</Label>
             </div>
             <div className="messaging-list">
               {visiblePodChannels.map((channel) => (
@@ -237,7 +235,7 @@ const MessagingSidebar = ({ actions, state }) => {
                   key={channel.target}
                 >
                   <Popup
-                    content="Open this pod channel in the unified message workspace."
+                    content={interfaceText("Open this pod channel in the unified message workspace.")}
                     trigger={
                       <Button
                         basic
@@ -254,21 +252,21 @@ const MessagingSidebar = ({ actions, state }) => {
                         {channelLabel(channel)}
                       </Button>
                     }
-                  />
+                   {...interfaceTextProps("Open this pod channel in the unified message workspace.")}/>
                   <Popup
-                    content="Leave this pod and remove its channels from Messages."
+                    content={interfaceText("Leave this pod and remove its channels from Messages.")}
                     trigger={
                       <Button
-                        aria-label={`Leave pod ${channel.podName}`}
+                        aria-label={interfaceText("Leave pod {podName}", { "podName": (channel.podName) })}
                         disabled={isWorkspaceActionPending(`pod:leave:${channel.podId}`)}
                         icon="sign-out"
                         negative
                         onClick={() => leavePod(channel)}
                         size="small"
-                        title={`Leave pod ${channel.podName}`}
-                      />
+                        title={interfaceText("Leave pod {podName}", { "podName": (channel.podName) })}
+                       {...interfaceTextProps("Leave pod {podName}")}/>
                     }
-                  />
+                   {...interfaceTextProps("Leave this pod and remove its channels from Messages.")}/>
                 </div>
               ))}
             </div>

@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import { formatRegionalNumber } from '../../../lib/util';
 import * as mesh from '../../../lib/mesh';
 import * as soulseekDiscovery from '../../../lib/soulseekDiscovery';
@@ -68,6 +70,7 @@ const normalizeMeshStats = (data) => {
 };
 
 const Mesh = ({ runtimeProfile } = {}) => {
+  useInterfaceLanguage();
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -181,7 +184,7 @@ const Mesh = ({ runtimeProfile } = {}) => {
       if (!request.isCurrentRequest()) return;
       setRendezvousMessage({
         positive: true,
-        text: 'Published the slskr mesh rendezvous interest on this Soulseek account.',
+        text: interfaceText("Published the slskr mesh rendezvous interest on this Soulseek account."),
       });
     } catch (error_) {
       if (!request.isCurrentRequest()) return;
@@ -208,7 +211,7 @@ const Mesh = ({ runtimeProfile } = {}) => {
       if (!request.isCurrentRequest()) return;
       setRendezvousMessage({
         positive: true,
-        text: 'Removed the slskr mesh rendezvous interest from this Soulseek account.',
+        text: interfaceText("Removed the slskr mesh rendezvous interest from this Soulseek account."),
       });
     } catch (error_) {
       if (!request.isCurrentRequest()) return;
@@ -309,8 +312,7 @@ const Mesh = ({ runtimeProfile } = {}) => {
           active
           inline="centered"
         >
-          Loading mesh statistics...
-        </Loader>
+          <LocalizedText source={"Loading mesh statistics..."} /></Loader>
       </Segment>
     );
   }
@@ -318,7 +320,7 @@ const Mesh = ({ runtimeProfile } = {}) => {
   if (error && !stats) {
     return (
       <Message error>
-        <Message.Header>Failed to load mesh statistics</Message.Header>
+        <Message.Header><LocalizedText source={"Failed to load mesh statistics"} /></Message.Header>
         <p>{error}</p>
       </Message>
     );
@@ -328,25 +330,24 @@ const Mesh = ({ runtimeProfile } = {}) => {
     <div>
       <Header as="h2">
         <Icon name="sitemap" />
-        Mesh Network Status
-      </Header>
+        <LocalizedText source={"Mesh Network Status"} /></Header>
       {error && (
         <Message
           data-testid="mesh-stats-load-error"
           error
         >
-          <Message.Header>Mesh statistics refresh failed</Message.Header>
+          <Message.Header><LocalizedText source={"Mesh statistics refresh failed"} /></Message.Header>
           <p>{error}</p>
-          <p>Showing the last successfully loaded mesh snapshot.</p>
+          <p><LocalizedText source={"Showing the last successfully loaded mesh snapshot."} /></p>
         </Message>
       )}
       <Button
-        aria-label="Refresh mesh statistics"
+        aria-label={interfaceText("Refresh mesh statistics")}
         disabled={loading}
         icon="refresh"
         loading={loading}
         onClick={fetchStats}
-      />
+       {...interfaceTextProps("Refresh mesh statistics")}/>
 
       <Grid stackable>
         {/* Overall Health Status */}
@@ -358,7 +359,7 @@ const Mesh = ({ runtimeProfile } = {}) => {
                   color={getHealthColor(stats?.status)}
                   name={getHealthIcon(stats?.status)}
                 />
-                Network Health: {stats?.status || 'Unknown'}
+                <LocalizedText source={"Network Health:"} />{" "}{stats?.status || 'Unknown'}
               </Card.Header>
               <Card.Description>
                 {stats?.description || 'No health information available'}
@@ -370,29 +371,29 @@ const Mesh = ({ runtimeProfile } = {}) => {
         {/* Key Statistics */}
         <Grid.Column width={16}>
           <Segment>
-            <Header as="h3">Network Statistics</Header>
+            <Header as="h3"><LocalizedText source={"Network Statistics"} /></Header>
             <Statistic.Group size="small">
               <Statistic>
                 <Statistic.Value>{formatCount(stats?.totalPeers)}</Statistic.Value>
-                <Statistic.Label>Total Peers</Statistic.Label>
+                <Statistic.Label><LocalizedText source={"Total Peers"} /></Statistic.Label>
               </Statistic>
               <Statistic>
                 <Statistic.Value>
                   {formatCount(stats?.activeDhtSessions)}
                 </Statistic.Value>
-                <Statistic.Label>DHT Sessions</Statistic.Label>
+                <Statistic.Label><LocalizedText source={"DHT Sessions"} /></Statistic.Label>
               </Statistic>
               <Statistic>
                 <Statistic.Value>
                   {formatCount(stats?.activeOverlaySessions)}
                 </Statistic.Value>
-                <Statistic.Label>Overlay Sessions</Statistic.Label>
+                <Statistic.Label><LocalizedText source={"Overlay Sessions"} /></Statistic.Label>
               </Statistic>
               <Statistic>
                 <Statistic.Value>
                   {formatCount(stats?.routingTableSize)}
                 </Statistic.Value>
-                <Statistic.Label>Routing Table Size</Statistic.Label>
+                <Statistic.Label><LocalizedText source={"Routing Table Size"} /></Statistic.Label>
               </Statistic>
             </Statistic.Group>
           </Segment>
@@ -403,42 +404,37 @@ const Mesh = ({ runtimeProfile } = {}) => {
           <Segment>
             <Header as="h3">
               <Icon name="plug" />
-              Connections
-            </Header>
+              <LocalizedText source={"Connections"} /></Header>
             <List
               divided
               relaxed
             >
               <List.Item>
                 <List.Content>
-                  <List.Header>DHT Nodes</List.Header>
+                  <List.Header><LocalizedText source={"DHT Nodes"} /></List.Header>
                   <List.Description>
-                    {formatCount(stats?.activeDhtSessions)} active connections
-                  </List.Description>
+                    {formatCount(stats?.activeDhtSessions)} <LocalizedText source={"active connections"} /></List.Description>
                 </List.Content>
               </List.Item>
               <List.Item>
                 <List.Content>
-                  <List.Header>Overlay Sessions</List.Header>
+                  <List.Header><LocalizedText source={"Overlay Sessions"} /></List.Header>
                   <List.Description>
-                    {formatCount(stats?.activeOverlaySessions)} active sessions
-                  </List.Description>
+                    {formatCount(stats?.activeOverlaySessions)} <LocalizedText source={"active sessions"} /></List.Description>
                 </List.Content>
               </List.Item>
               <List.Item>
                 <List.Content>
-                  <List.Header>Mirrored Sessions</List.Header>
+                  <List.Header><LocalizedText source={"Mirrored Sessions"} /></List.Header>
                   <List.Description>
-                    {formatCount(stats?.activeMirroredSessions)} relay connections
-                  </List.Description>
+                    {formatCount(stats?.activeMirroredSessions)} <LocalizedText source={"relay connections"} /></List.Description>
                 </List.Content>
               </List.Item>
               <List.Item>
                 <List.Content>
-                  <List.Header>Bootstrap Peers</List.Header>
+                  <List.Header><LocalizedText source={"Bootstrap Peers"} /></List.Header>
                   <List.Description>
-                    {formatCount(stats?.bootstrapPeers)} bootstrap nodes
-                  </List.Description>
+                    {formatCount(stats?.bootstrapPeers)} <LocalizedText source={"bootstrap nodes"} /></List.Description>
                 </List.Content>
               </List.Item>
             </List>
@@ -450,15 +446,14 @@ const Mesh = ({ runtimeProfile } = {}) => {
           <Segment>
             <Header as="h3">
               <Icon name="chart line" />
-              Performance
-            </Header>
+              <LocalizedText source={"Performance"} /></Header>
             <List
               divided
               relaxed
             >
               <List.Item>
                 <List.Content>
-                  <List.Header>DHT Operations/sec</List.Header>
+                  <List.Header><LocalizedText source={"DHT Operations/sec"} /></List.Header>
                   <List.Description>
                     {Number.isFinite(Number(stats?.dhtOperationsPerSecond))
                       ? Number(stats.dhtOperationsPerSecond).toFixed(1)
@@ -468,26 +463,23 @@ const Mesh = ({ runtimeProfile } = {}) => {
               </List.Item>
               <List.Item>
                 <List.Content>
-                  <List.Header>Messages Sent</List.Header>
+                  <List.Header><LocalizedText source={"Messages Sent"} /></List.Header>
                   <List.Description>
-                    {formatCount(stats?.messagesSent)} total messages
-                  </List.Description>
+                    {formatCount(stats?.messagesSent)} <LocalizedText source={"total messages"} /></List.Description>
                 </List.Content>
               </List.Item>
               <List.Item>
                 <List.Content>
-                  <List.Header>Messages Received</List.Header>
+                  <List.Header><LocalizedText source={"Messages Received"} /></List.Header>
                   <List.Description>
-                    {formatCount(stats?.messagesReceived)} total messages
-                  </List.Description>
+                    {formatCount(stats?.messagesReceived)} <LocalizedText source={"total messages"} /></List.Description>
                 </List.Content>
               </List.Item>
               <List.Item>
                 <List.Content>
-                  <List.Header>Peer Churn Events</List.Header>
+                  <List.Header><LocalizedText source={"Peer Churn Events"} /></List.Header>
                   <List.Description>
-                    {formatCount(stats?.peerChurnEvents)} churn events
-                  </List.Description>
+                    {formatCount(stats?.peerChurnEvents)} <LocalizedText source={"churn events"} /></List.Description>
                 </List.Content>
               </List.Item>
             </List>
@@ -499,14 +491,13 @@ const Mesh = ({ runtimeProfile } = {}) => {
           <Segment>
             <Header as="h3">
               <Icon name="shield" />
-              Network Configuration
-            </Header>
+              <LocalizedText source={"Network Configuration"} /></Header>
             <Grid>
               <Grid.Column width={8}>
                 <List>
                   <List.Item>
                     <List.Content>
-                      <List.Header>NAT Type</List.Header>
+                      <List.Header><LocalizedText source={"NAT Type"} /></List.Header>
                       <List.Description>
                         <Label
                           color={
@@ -524,7 +515,7 @@ const Mesh = ({ runtimeProfile } = {}) => {
                 <List>
                   <List.Item>
                     <List.Content>
-                      <List.Header>Health Indicators</List.Header>
+                      <List.Header><LocalizedText source={"Health Indicators"} /></List.Header>
                       <List.Description>
                         <Label
                           color={
@@ -535,9 +526,9 @@ const Mesh = ({ runtimeProfile } = {}) => {
                                 : 'red'
                           }
                         >
-                          Routing Table:{' '}
+                          <LocalizedText source={"Routing Table:"} />{' '}
                           {stats?.routingTableHealthy == null
-                            ? 'Unavailable'
+                            ? <LocalizedText source={"Unavailable"} />
                             : stats.routingTableHealthy
                               ? 'Healthy'
                               : 'Unhealthy'}
@@ -552,9 +543,9 @@ const Mesh = ({ runtimeProfile } = {}) => {
                                 : 'red'
                           }
                         >
-                          Peer Connectivity:{' '}
+                          <LocalizedText source={"Peer Connectivity:"} />{' '}
                           {stats?.peerConnectivityHealthy == null
-                            ? 'Unavailable'
+                            ? <LocalizedText source={"Unavailable"} />
                             : stats.peerConnectivityHealthy
                               ? 'Healthy'
                               : 'Unhealthy'}
@@ -569,9 +560,9 @@ const Mesh = ({ runtimeProfile } = {}) => {
                                 : 'red'
                           }
                         >
-                          Message Flow:{' '}
+                          <LocalizedText source={"Message Flow:"} />{' '}
                           {stats?.messageFlowHealthy == null
-                            ? 'Unavailable'
+                            ? <LocalizedText source={"Unavailable"} />
                             : stats.messageFlowHealthy
                               ? 'Healthy'
                               : 'Unhealthy'}
@@ -589,8 +580,7 @@ const Mesh = ({ runtimeProfile } = {}) => {
           <Segment>
             <Header as="h3">
               <Icon name="users" />
-              Soulseek Mesh Rendezvous
-            </Header>
+              <LocalizedText source={"Soulseek Mesh Rendezvous"} /></Header>
             {(!rendezvousStatusError || rendezvousStatus) && (
               <Message
                 icon
@@ -600,24 +590,18 @@ const Mesh = ({ runtimeProfile } = {}) => {
                 <Message.Content>
                   <Message.Header>
                     {rendezvousStatus?.enabled
-                      ? 'Opt-in public rendezvous is enabled'
-                      : 'Opt-in public rendezvous is disabled'}
+                      ? <LocalizedText source={"Opt-in public rendezvous is enabled"} />
+                      : <LocalizedText source={"Opt-in public rendezvous is disabled"} />}
                   </Message.Header>
                   <p>
-                    This feature uses the native Soulseek interest graph to find
-                    other slskr mesh-capable accounts. Publishing the interest
-                    tag makes this account visibly identifiable as a slskr mesh
-                    participant.
-                  </p>
+                    <LocalizedText source={"This feature uses the native Soulseek interest graph to find other slskr mesh-capable accounts. Publishing the interest tag makes this account visibly identifiable as a slskr mesh participant."} /></p>
                   <p>
-                    Interest tag:{' '}
+                    <LocalizedText source={"Interest tag:"} />{' '}
                     <code>{rendezvousStatus?.interestTag || 'slskr-mesh-v1'}</code>
                   </p>
                   {!rendezvousStatus?.enabled && (
                     <p>
-                      Enable <code>mesh.enableSoulseekRendezvous</code> in
-                      configuration before using these controls.
-                    </p>
+                      <LocalizedText source={"Enable"} />{" "}<code>mesh.enableSoulseekRendezvous</code> <LocalizedText source={"in configuration before using these controls."} /></p>
                   )}
                 </Message.Content>
               </Message>
@@ -627,9 +611,9 @@ const Mesh = ({ runtimeProfile } = {}) => {
                 data-testid="mesh-rendezvous-status-error"
                 error
               >
-                <Message.Header>Rendezvous status unavailable</Message.Header>
+                <Message.Header><LocalizedText source={"Rendezvous status unavailable"} /></Message.Header>
                 <p>{rendezvousStatusError}</p>
-                <p>Showing the last successfully loaded rendezvous status when available.</p>
+                <p><LocalizedText source={"Showing the last successfully loaded rendezvous status when available."} /></p>
               </Message>
             )}
             {rendezvousMessage && (
@@ -648,16 +632,14 @@ const Mesh = ({ runtimeProfile } = {}) => {
                 positive
               >
                 <Icon name="bullhorn" />
-                Publish Interest
-              </Button>
+                <LocalizedText source={"Publish Interest"} /></Button>
               <Button
                 disabled={!rendezvousStatus?.enabled || rendezvousLoading}
                 loading={rendezvousLoading}
                 onClick={handleRemoveRendezvousInterest}
               >
                 <Icon name="remove circle" />
-                Remove Interest
-              </Button>
+                <LocalizedText source={"Remove Interest"} /></Button>
               <Button
                 disabled={!rendezvousStatus?.enabled || rendezvousLoading}
                 loading={rendezvousLoading}
@@ -665,8 +647,7 @@ const Mesh = ({ runtimeProfile } = {}) => {
                 primary
               >
                 <Icon name="search" />
-                Load Candidates
-              </Button>
+                <LocalizedText source={"Load Candidates"} /></Button>
             </Button.Group>
             {rendezvousUsers.length > 0 && (
               <List
@@ -683,7 +664,7 @@ const Mesh = ({ runtimeProfile } = {}) => {
                     <List.Content>
                       <List.Header>{user.username || user.Username}</List.Header>
                       <List.Description>
-                        Similarity rating:{' '}
+                        <LocalizedText source={"Similarity rating:"} />{' '}
                         {user.rating ?? user.Rating ?? 'not reported'}
                       </List.Description>
                     </List.Content>
@@ -708,7 +689,7 @@ const Mesh = ({ runtimeProfile } = {}) => {
                       <List.Description>
                         {record.peerId || 'unsigned peer'}, {' '}
                         {(record.features || []).join(', ') || 'no features'}, {' '}
-                        overlay port {record.overlayPort || 'not advertised'}
+                        <LocalizedText source={"overlay port"} />{" "}{record.overlayPort || 'not advertised'}
                       </List.Description>
                     </List.Content>
                   </List.Item>

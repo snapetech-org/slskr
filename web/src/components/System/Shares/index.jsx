@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../../lib/interfaceLocale";
 import { formatRegionalNumber } from '../../../lib/util';
 import * as sharesLibrary from '../../../lib/shares';
 import * as applicationLibrary from '../../../lib/application';
@@ -22,8 +24,7 @@ const ScanButton = ({ rescan, scanPending, working }) => (
     onClick={() => rescan()}
     primary={!scanPending}
   >
-    Rescan Shares
-  </ShrinkableButton>
+    <LocalizedText source={"Rescan Shares"} /></ShrinkableButton>
 );
 
 const CancelButton = ({ cancel, working }) => (
@@ -34,8 +35,7 @@ const CancelButton = ({ cancel, working }) => (
     mediaQuery="(max-width: 516px)"
     onClick={() => cancel()}
   >
-    Cancel Scan
-  </ShrinkableButton>
+    <LocalizedText source={"Cancel Scan"} /></ShrinkableButton>
 );
 
 const Shares = ({ state = EMPTY_STATE, theme } = {}) => {
@@ -226,13 +226,11 @@ const Shares = ({ state = EMPTY_STATE, theme } = {}) => {
           scanning && (
             <LoaderSegment>
               <div>
-                <div>Scanning shares</div>
+                <div><LocalizedText source={"Scanning shares"} /></div>
                 <div className="share-scan-detail">
-                  Visited {formatRegionalNumber(Number(scanEntries))} filesystem entries
-                </div>
+                  <LocalizedText source={"Visited"} />{" "}{formatRegionalNumber(Number(scanEntries))} <LocalizedText source={"filesystem entries"} /></div>
                 <div className="share-scan-detail">
-                  Last index: {files} files in {directories} directories
-                </div>
+                  <LocalizedText source={"Last index:"} />{" "}{files} <LocalizedText source={"files in"} />{" "}{directories} <LocalizedText source={"directories"} /></div>
               </div>
             </LoaderSegment>
           )

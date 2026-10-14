@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import * as lidarr from '../../../lib/lidarr';
 import { toDisplayError } from '../../../lib/errors';
 import { useMemo, useState } from 'react';
@@ -22,6 +24,7 @@ import {
 } from './integrationsShared';
 
 const LidarrPanel = ({ options }) => {
+  useInterfaceLanguage();
   const lidarrOptions = getLidarrOptions(options);
   const [status, setStatus] = useState(null);
   const [wanted, setWanted] = useState([]);
@@ -85,9 +88,8 @@ const LidarrPanel = ({ options }) => {
       <Card.Content>
         <Card.Header>
           <Icon name="music" />
-          Lidarr
-        </Card.Header>
-        <Card.Meta>Wanted-album sync and completed-download import bridge.</Card.Meta>
+          <LocalizedText source={"Lidarr"} /></Card.Header>
+        <Card.Meta><LocalizedText source={"Wanted-album sync and completed-download import bridge."} /></Card.Meta>
       </Card.Content>
       <Card.Content>
         <div className="integration-status-row">
@@ -104,7 +106,7 @@ const LidarrPanel = ({ options }) => {
           )}
           <Label>
             <Icon name={maskedApiKey === 'Configured' ? 'key' : 'warning sign'} />
-            API Key {maskedApiKey}
+            <LocalizedText source={"API Key"} />{" "}{maskedApiKey}
           </Label>
         </div>
         <Table
@@ -118,25 +120,25 @@ const LidarrPanel = ({ options }) => {
               <Table.Cell>{valueOrDash(getOption(lidarrOptions, 'url', 'Url'))}</Table.Cell>
             </Table.Row>
             <Table.Row>
-              <Table.Cell>Timeout</Table.Cell>
+              <Table.Cell><LocalizedText source={"Timeout"} /></Table.Cell>
               <Table.Cell>
                 {valueOrDash(getOption(lidarrOptions, 'timeoutSeconds', 'TimeoutSeconds'))}
-                {' s'}
+                {<LocalizedText source={"s"} />}
               </Table.Cell>
             </Table.Row>
             <Table.Row>
-              <Table.Cell>Sync Interval</Table.Cell>
+              <Table.Cell><LocalizedText source={"Sync Interval"} /></Table.Cell>
               <Table.Cell>
                 {valueOrDash(getOption(lidarrOptions, 'syncIntervalSeconds', 'SyncIntervalSeconds'))}
-                {' s'}
+                {<LocalizedText source={"s"} />}
               </Table.Cell>
             </Table.Row>
             <Table.Row>
-              <Table.Cell>Import Mode</Table.Cell>
+              <Table.Cell><LocalizedText source={"Import Mode"} /></Table.Cell>
               <Table.Cell>{valueOrDash(getOption(lidarrOptions, 'importMode', 'ImportMode'))}</Table.Cell>
             </Table.Row>
             <Table.Row>
-              <Table.Cell>Import Path Map</Table.Cell>
+              <Table.Cell><LocalizedText source={"Import Path Map"} /></Table.Cell>
               <Table.Cell>
                 {valueOrDash(getOption(lidarrOptions, 'importPathFrom', 'ImportPathFrom'))}
                 {' -> '}
@@ -155,7 +157,7 @@ const LidarrPanel = ({ options }) => {
         )}
         <div className="integration-actions">
           <Popup
-            content="Fetch Lidarr system status using the configured URL and API key."
+            content={interfaceText("Fetch Lidarr system status using the configured URL and API key.")}
             trigger={
               <Button
                 icon
@@ -169,12 +171,11 @@ const LidarrPanel = ({ options }) => {
                 }
               >
                 <Icon name="heartbeat" />
-                Check Status
-              </Button>
+                <LocalizedText source={"Check Status"} /></Button>
             }
-          />
+           {...interfaceTextProps("Fetch Lidarr system status using the configured URL and API key.")}/>
           <Popup
-            content="Preview Lidarr wanted albums that can be synced into slskr Wishlist."
+            content={interfaceText("Preview Lidarr wanted albums that can be synced into slskr Wishlist.")}
             trigger={
               <Button
                 icon
@@ -188,12 +189,11 @@ const LidarrPanel = ({ options }) => {
                 }
               >
                 <Icon name="list" />
-                Load Wanted
-              </Button>
+                <LocalizedText source={"Load Wanted"} /></Button>
             }
-          />
+           {...interfaceTextProps("Preview Lidarr wanted albums that can be synced into slskr Wishlist.")}/>
           <Popup
-            content="Create or refresh slskr Wishlist entries from Lidarr wanted albums."
+            content={interfaceText("Create or refresh slskr Wishlist entries from Lidarr wanted albums.")}
             trigger={
               <Button
                 icon
@@ -208,12 +208,11 @@ const LidarrPanel = ({ options }) => {
                 primary
               >
                 <Icon name="sync" />
-                Sync Wanted
-              </Button>
+                <LocalizedText source={"Sync Wanted"} /></Button>
             }
-          />
+           {...interfaceTextProps("Create or refresh slskr Wishlist entries from Lidarr wanted albums.")}/>
           <Popup
-            content="Load the recent completed-download import history. Failed and skipped records can be retried when the recorded source is still available."
+            content={interfaceText("Load the recent completed-download import history. Failed and skipped records can be retried when the recorded source is still available.")}
             trigger={
               <Button
                 icon
@@ -222,17 +221,16 @@ const LidarrPanel = ({ options }) => {
                 onClick={() => run('history', loadImportHistory)}
               >
                 <Icon name="history" />
-                Load Import History
-              </Button>
+                <LocalizedText source={"Load Import History"} /></Button>
             }
-          />
+           {...interfaceTextProps("Load the recent completed-download import history. Failed and skipped records can be retried when the recorded source is still available.")}/>
         </div>
         {status && (
           <Message
             positive
             size="small"
           >
-            Lidarr responded: {status.appName || status.AppName || 'Lidarr'}{' '}
+            <LocalizedText source={"Lidarr responded:"} />{" "}{status.appName || status.AppName || 'Lidarr'}{' '}
             {status.version || status.Version || ''}
           </Message>
         )}
@@ -241,9 +239,9 @@ const LidarrPanel = ({ options }) => {
             info
             size="small"
           >
-            Wanted sync: {syncResult.createdCount ?? syncResult.CreatedCount ?? 0} created,{' '}
-            {syncResult.duplicateCount ?? syncResult.DuplicateCount ?? 0} duplicates,{' '}
-            {syncResult.skippedCount ?? syncResult.SkippedCount ?? 0} skipped.
+            <LocalizedText source={"Wanted sync:"} />{" "}{syncResult.createdCount ?? syncResult.CreatedCount ?? 0} <LocalizedText source={"created,"} />{' '}
+            {syncResult.duplicateCount ?? syncResult.DuplicateCount ?? 0} <LocalizedText source={"duplicates,"} />{' '}
+            {syncResult.skippedCount ?? syncResult.SkippedCount ?? 0} <LocalizedText source={"skipped."} />
           </Message>
         )}
         {wanted.length > 0 && (
@@ -253,8 +251,8 @@ const LidarrPanel = ({ options }) => {
           >
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Artist</Table.HeaderCell>
-                <Table.HeaderCell>Album</Table.HeaderCell>
+                <Table.HeaderCell><LocalizedText source={"Artist"} /></Table.HeaderCell>
+                <Table.HeaderCell><LocalizedText source={"Album"} /></Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -285,19 +283,18 @@ const LidarrPanel = ({ options }) => {
           <Segment>
             <Header as="h4">
               <Icon name="history" />
-              Import History
-            </Header>
+              <LocalizedText source={"Import History"} /></Header>
             <Table
               celled
               compact
             >
               <Table.Header>
                 <Table.Row>
-                  <Table.HeaderCell>Status</Table.HeaderCell>
-                  <Table.HeaderCell>Directory</Table.HeaderCell>
-                  <Table.HeaderCell>Completed</Table.HeaderCell>
-                  <Table.HeaderCell>Details</Table.HeaderCell>
-                  <Table.HeaderCell>Action</Table.HeaderCell>
+                  <Table.HeaderCell><LocalizedText source={"Status"} /></Table.HeaderCell>
+                  <Table.HeaderCell><LocalizedText source={"Directory"} /></Table.HeaderCell>
+                  <Table.HeaderCell><LocalizedText source={"Completed"} /></Table.HeaderCell>
+                  <Table.HeaderCell><LocalizedText source={"Details"} /></Table.HeaderCell>
+                  <Table.HeaderCell><LocalizedText source={"Action"} /></Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
@@ -321,14 +318,13 @@ const LidarrPanel = ({ options }) => {
                       <Table.Cell>{detail}</Table.Cell>
                       <Table.Cell>
                         <Button
-                          aria-label={`Retry Lidarr import for ${directory}`}
+                          aria-label={interfaceText("Retry Lidarr import for {directory}", { "directory": (directory) })}
                           disabled={!historyId}
                           loading={loading === 'retry'}
                           onClick={() => retryImport(historyId)}
                           size="small"
-                        >
-                          Retry
-                        </Button>
+                         {...interfaceTextProps("Retry Lidarr import for {directory}")}>
+                          <LocalizedText source={"Retry"} /></Button>
                       </Table.Cell>
                     </Table.Row>
                   );
@@ -338,10 +334,10 @@ const LidarrPanel = ({ options }) => {
           </Segment>
         )}
         <Segment className="integration-manual-import">
-          <Header as="h4">Manual Import</Header>
+          <Header as="h4"><LocalizedText source={"Manual Import"} /></Header>
           <Input
             action={{
-              content: 'Import',
+              content: interfaceText("Import"),
               disabled: !importDirectory.trim(),
               icon: 'download',
               loading: loading === 'import',
@@ -355,9 +351,9 @@ const LidarrPanel = ({ options }) => {
             }}
             fluid
             onChange={(_, { value }) => setImportDirectory(value)}
-            placeholder="Completed download directory visible to slskr..."
+            placeholder={interfaceText("Completed download directory visible to slskr...")}
             value={importDirectory}
-          />
+           {...interfaceTextProps("Completed download directory visible to slskr...")}/>
           {importResult && (
             <Message
               size="small"

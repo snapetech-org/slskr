@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import * as discoveryGraph from '../../lib/discoveryGraph';
 import api from '../../lib/api';
 import { safeOpenBlank } from '../../lib/safeOpen';
@@ -18,16 +20,52 @@ import {
   getSearchResultItemId,
 } from '../../lib/searchItemId';
 import { toDisplayError } from '../../lib/errors';
-import { formatBytes, getDirectoryName, getFileName } from '../../lib/util';
+import { formatBytes, formatRegionalNumber, getDirectoryName, getFileName, useRegionalFormat } from '../../lib/util';
 import DiscoveryGraphModal from './DiscoveryGraphModal';
 import DownloadActionPreviewModal from './DownloadActionPreviewModal';
 import FileList from '../Shared/FileList';
+import { LocalizedPopup as Popup } from '../Shared/TooltipButton';
 import UserCard from '../Shared/UserCard';
 import UserNoteModal from '../Users/UserNoteModal';
 import React, { Component } from 'react';
+
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { Button, Card, Icon, Label, Popup } from 'semantic-ui-react';
+import { Button as SemanticButton, Card, Icon, Label } from 'semantic-ui-react';
+
+const textContent = (children) => {
+  if (typeof children === 'string') return children;
+  if (Array.isArray(children)) return children.map(textContent).filter(Boolean).join(' ').trim();
+  return '';
+};
+
+const translateChildren = (children, t, parameters) => {
+  if (typeof children === 'string') return t(children, parameters);
+  if (Array.isArray(children)) return children.map((child) => translateChildren(child, t, parameters));
+  return children;
+};
+
+const Button = ({ children, content, title, parameters = {}, 'aria-label': ariaLabel, ...props }) => {
+  const { t, languageFor, directionFor } = useInterfaceLanguage();
+  const source = ariaLabel || title || (typeof content === 'string' ? content : textContent(children));
+  const translatedContent = typeof content === 'string' ? t(content, parameters) : content;
+  const translatedChildren = translateChildren(children, t, parameters);
+  return (
+    <SemanticButton
+      {...props}
+      aria-label={typeof ariaLabel === 'string' ? t(ariaLabel, parameters) : (source ? t(source, parameters) : undefined)}
+      content={translatedContent}
+      dir={source ? directionFor(source) : undefined}
+      lang={source ? languageFor(source) : undefined}
+      title={typeof title === 'string' ? t(title, parameters) : title}
+    >
+      {translatedChildren}
+    </SemanticButton>
+  );
+};
+
+Button.Group = SemanticButton.Group;
+Button.Or = SemanticButton.Or;
 
 const buildTree = (response) => {
   const files = [
@@ -75,7 +113,7 @@ const getGroupIndicator = (group) => {
     default:
       // For user-defined groups or default group, show a generic user icon
       return group && group !== 'default'
-        ? { color: 'blue', icon: 'user', tooltip: `Group: ${group}` }
+        ? { color: 'blue', icon: 'user', tooltip: 'Group: {group}', parameters: { group } }
         : null;
   }
 };
@@ -122,6 +160,30 @@ class Response extends Component {
       userGroup: 0,
     };
   }
+
+  localize = (source, parameters) => this.props.locale.t(source, parameters);
+
+  localizedText = (source, parameters) => {
+    const { languageFor, directionFor } = this.props.locale;
+    return (
+      <span lang={languageFor(source)} dir={directionFor(source)}>
+        {this.localize(source, parameters)}
+      </span>
+    );
+  };
+
+  localizedError = (error, fallback) => {
+    const source = toDisplayError(error, fallback);
+    if (
+      this.props.locale.language !== 'en' &&
+      this.props.locale.languageFor(source) === 'en'
+    ) {
+      return this.localize(fallback);
+    }
+    return this.localize(source);
+  };
+
+  formatNumber = (value) => formatRegionalNumber(value);
 
   componentDidMount() {
     this.isMountedFlag = true;
@@ -257,7 +319,7 @@ class Response extends Component {
           requestId === this.requestIds.download
         ) {
           this.setState({
-            downloadError: toDisplayError(error, 'Download failed'),
+            downloadError: this.localizedError(error, 'Download failed'),
             downloadRequest: 'error',
           });
         }
@@ -334,7 +396,7 @@ class Response extends Component {
       }
     } catch (error) {
       console.error(error);
-      toast.error(toDisplayError(error, 'Failed to load directory contents'));
+      toast.error(this.localizedText('Failed to load directory contents'));
     } finally {
       if (
         this.isMountedFlag &&
@@ -366,9 +428,10 @@ class Response extends Component {
       onQualitySignalUpdate();
     }
 
-    toast.success(
-      `Added a local caution signal for ${response.username}. Nothing was published.`,
-    );
+    toast.success(this.localizedText(
+      'Added a local caution signal for {username}. Nothing was published.',
+      { username: response.username },
+    ));
   };
 
   buildFallbackGraphRequest = () => {
@@ -400,9 +463,7 @@ class Response extends Component {
     } catch (error) {
       console.error(error);
       if (this.isMountedFlag && requestId === this.requestIds.graph) {
-        toast.error(
-          toDisplayError(error, 'Failed to build discovery graph'),
-        );
+        toast.error(this.localizedText(this.localizedError(error, 'Failed to build discovery graph')));
         this.setState({ graphOpen: false });
       }
     } finally {
@@ -457,28 +518,26 @@ class Response extends Component {
       .slice(0, 8);
 
     if (queries.length === 0) {
-      toast.error('No nearby track nodes were available to queue');
+      toast.error(this.localizedText('No nearby track nodes were available to queue'));
       return;
     }
 
     try {
       const count = await searches.createBatch({ queries });
-      toast.success(`Started ${count} nearby graph searches`);
+      toast.success(this.localizedText('Started {count} nearby graph searches', { count }));
     } catch (error) {
       console.error(error);
-      toast.error(
-        toDisplayError(error, 'Failed to queue nearby graph searches'),
-      );
+      toast.error(this.localizedText(this.localizedError(error, 'Failed to queue nearby graph searches')));
     }
   };
 
   copyPreview = async (preview) => {
     try {
       await navigator.clipboard.writeText(formatSearchActionPreview(preview));
-      toast.success('Copied action preview');
+      toast.success(this.localizedText('Copied action preview'));
     } catch (error) {
       console.error(error);
-      toast.error('Unable to copy action preview');
+      toast.error(this.localizedText('Unable to copy action preview'));
     }
   };
 
@@ -517,7 +576,7 @@ class Response extends Component {
           <Button
             basic={noSelection}
             color={noSelection ? 'grey' : 'green'}
-            content="Download"
+            content={interfaceText("Download")}
             disabled={
               noSelection ||
               this.props.disabled ||
@@ -530,38 +589,37 @@ class Response extends Component {
                 : {
                     as: 'a',
                     basic: false,
-                    content: `${selectedFiles.length} file${
-                      selectedFiles.length === 1 ? '' : 's'
-                    }, ${selectedSize}`,
+                    content: <>{this.localizedText('Files selected: {count}', { count: this.formatNumber(selectedFiles.length) })}, {selectedSize}</>,
                   }
             }
             labelPosition={noSelection ? undefined : 'right'}
             onClick={() =>
               this.download(this.props.response.username, selectedFiles)
             }
-          />
+           {...interfaceTextProps("Download")}/>
           <Popup
-            content="Preview the selected download action, route, files, size, and warnings without starting a transfer."
+            content={interfaceText("Preview the selected download action, route, files, size, and warnings without starting a transfer.")}
             position="top center"
             trigger={
               <Button
                 basic
-                content="Preview"
+                content={interfaceText("Preview")}
                 disabled={noSelection || downloadRequest === 'inProgress'}
                 icon="clipboard list"
                 onClick={() => this.setState({ previewOpen: true })}
-              />
+               {...interfaceTextProps("Preview")}/>
             }
-          />
+           {...interfaceTextProps("Preview the selected download action, route, files, size, and warnings without starting a transfer.")}/>
           {hasPodSource && selectedFiles.length > 0 && (
             <Popup
-              content={`Stream from Pod (${primarySource === 'pod' ? 'preferred' : 'available'})`}
+              content={interfaceText("Stream from Pod: {availability}.")}
+              parameters={{ availability: this.localize(primarySource === 'pod' ? 'Preferred' : 'Available') }}
               position="top center"
               trigger={
                 <Button
                   basic
                   color="blue"
-                  content="Stream"
+                  content={interfaceText("Stream")}
                   disabled={
                     noSelection ||
                     this.props.disabled ||
@@ -594,15 +652,18 @@ class Response extends Component {
                         safeOpenBlank(result.data.stream_url);
                       }
                     } catch (error) {
-                      toast.error(toDisplayError(error, 'Stream failed'));
+                      toast.error(this.localizedText(this.localizedError(error, 'Stream failed')));
                     }
                   }}
-                />
+                 {...interfaceTextProps("Stream")}/>
               }
-            />
+             {...interfaceTextProps("Stream from Pod: {availability}.")}/>
           )}
           {downloadRequest === 'inProgress' && (
             <Icon
+              aria-label={this.localize('Download in progress')}
+              lang={this.props.locale.languageFor('Download in progress')}
+              dir={this.props.locale.directionFor('Download in progress')}
               loading
               name="circle notch"
               size="large"
@@ -610,6 +671,9 @@ class Response extends Component {
           )}
           {downloadRequest === 'complete' && (
             <Icon
+              aria-label={this.localize('Download complete')}
+              lang={this.props.locale.languageFor('Download complete')}
+              dir={this.props.locale.directionFor('Download complete')}
               color="green"
               name="checkmark"
               size="large"
@@ -618,12 +682,15 @@ class Response extends Component {
           {downloadRequest === 'error' && (
             <span>
               <Icon
+                aria-label={this.localize('Download failed')}
+                lang={this.props.locale.languageFor('Download failed')}
+                dir={this.props.locale.directionFor('Download failed')}
                 color="red"
                 name="x"
                 size="large"
               />
               <Label>
-                {toDisplayError(downloadError, 'Download failed')}{' '}
+                {this.localizedText(this.localizedError(downloadError, 'Download failed'))}{' '}
                 {downloadError?.status &&
                   `(HTTP ${downloadError.status} ${downloadError.statusText || ''})`}
               </Label>
@@ -646,6 +713,7 @@ class Response extends Component {
       userNote,
     } = this.props;
     const free = response.hasFreeUploadSlot;
+    const { languageFor, directionFor } = this.props.locale;
 
     const {
       downloadError,
@@ -684,19 +752,26 @@ class Response extends Component {
           <Card.Header className="result-card-header">
             <div className="result-card-identity">
               <Icon
-                aria-label={`${isFolded ? 'Expand' : 'Collapse'} search results from ${response.username}`}
+                aria-label={this.localize(
+                  isFolded ? 'Expand search results from {username}' : 'Collapse search results from {username}',
+                  { username: response.username },
+                )}
                 className="result-card-fold"
+                lang={languageFor(isFolded ? 'Expand search results from {username}' : 'Collapse search results from {username}')}
+                dir={directionFor(isFolded ? 'Expand search results from {username}' : 'Collapse search results from {username}')}
                 link
                 name={isFolded ? 'chevron right' : 'chevron down'}
                 onClick={this.handleToggleFolded}
               />
               <span
                 className={`result-card-presence ${free ? 'free' : 'queued'}`}
-                title={free ? 'Free upload slot available' : 'No free upload slot'}
+                title={this.localize(free ? 'Free upload slot available' : 'No free upload slot')}
+                lang={languageFor(free ? 'Free upload slot available' : 'No free upload slot')}
+                dir={directionFor(free ? 'Free upload slot available' : 'No free upload slot')}
               />
               <Link
                 className="result-card-user"
-                title="Browse files"
+                title={this.localize('Browse files')}
                 to={{
                   pathname: '/browse',
                   state: { user: response.username },
@@ -714,6 +789,7 @@ class Response extends Component {
                     return indicator ? (
                       <Popup
                         content={indicator.tooltip}
+                        parameters={indicator.parameters}
                         position="top center"
                         trigger={
                           <Icon
@@ -727,7 +803,8 @@ class Response extends Component {
                   })()}
                 {downloadStats && (
                   <Popup
-                    content={`${downloadStats.successfulDownloads} successful, ${downloadStats.failedDownloads} failed downloads from this user`}
+                content={interfaceText("This peer has {successful} successful downloads and {failed} failed downloads.")}
+                    parameters={{ successful: downloadStats.successfulDownloads, failed: downloadStats.failedDownloads }}
                     position="top center"
                     trigger={
                       <Label
@@ -735,18 +812,17 @@ class Response extends Component {
                         size="tiny"
                       >
                         <Icon name="download" />
-                        {downloadStats.successfulDownloads}
+                        {this.formatNumber(downloadStats.successfulDownloads)}
                       </Label>
                     }
-                  />
+                   {...interfaceTextProps("This peer has {successful} successful downloads and {failed} failed downloads.")}/>
                 )}
                 {candidateRank?.score !== undefined && (
                   <Popup
-                    content={
-                      candidateRank.reasons?.length > 0
-                        ? `Candidate score ${candidateRank.score}/100: ${candidateRank.reasons.join(', ')}`
-                        : `Candidate score ${candidateRank.score}/100`
-                    }
+                    content={candidateRank.reasons?.length > 0
+                      ? 'Candidate score: {score}/100. Reasons: {reasons}'
+                      : 'Candidate score: {score}/100'}
+                    parameters={{ score: candidateRank.score, reasons: candidateRank.reasons?.join(', ') }}
                     position="top center"
                     trigger={
                       <Label
@@ -754,14 +830,15 @@ class Response extends Component {
                         size="tiny"
                       >
                         <Icon name="star" />
-                        {candidateRank.score}
+                        {this.formatNumber(candidateRank.score)}
                       </Label>
                     }
                   />
                 )}
                 {response.duplicateGroup?.foldedCount > 0 && (
                   <Popup
-                    content={`Folded ${response.duplicateGroup.foldedCount} duplicate candidate${response.duplicateGroup.foldedCount === 1 ? '' : 's'} from ${response.duplicateGroup.providers.join(', ')}. Toggle Fold Duplicates in Search options to inspect every source separately.`}
+                    content={interfaceText("Hidden duplicate results: {count}. Sources: {providers}. Use the Fold Duplicates search option to inspect each source.")}
+                    parameters={{ count: response.duplicateGroup.foldedCount, providers: response.duplicateGroup.providers.join(', ') }}
                     position="top center"
                     trigger={
                       <Label
@@ -769,14 +846,15 @@ class Response extends Component {
                         size="tiny"
                       >
                         <Icon name="clone" />
-                        +{response.duplicateGroup.foldedCount}
+                        +{this.formatNumber(response.duplicateGroup.foldedCount)}
                       </Label>
                     }
-                  />
+                   {...interfaceTextProps("Hidden duplicate results: {count}. Sources: {providers}. Use the Fold Duplicates search option to inspect each source.")}/>
                 )}
                 {qualityLabel && (
                   <Popup
-                    content={`Local-only peer quality: ${qualityLabel.text}. ${activeQualitySummary.positive} positive, ${activeQualitySummary.negative} caution signal${activeQualitySummary.negative === 1 ? '' : 's'}.`}
+                    content={interfaceText("Local peer signals: {positive} positive; {negative} caution.")}
+                    parameters={{ positive: activeQualitySummary.positive, negative: activeQualitySummary.negative }}
                     position="top center"
                     trigger={
                       <Label
@@ -784,14 +862,15 @@ class Response extends Component {
                         size="tiny"
                       >
                         <Icon name={qualityLabel.icon} />
-                        {qualityLabel.text}
+                        {this.localizedText(qualityLabel.text)}
                       </Label>
                     }
-                  />
+                   {...interfaceTextProps("Local peer signals: {positive} positive; {negative} caution.")}/>
                 )}
                 {userNote && (
                   <Popup
                     content={userNote.note || 'User Note'}
+                    translateContent={!userNote.note}
                     position="top center"
                     trigger={
                       <Label
@@ -809,7 +888,7 @@ class Response extends Component {
                     <>
                       {response.sourceProviders.includes('pod') && (
                         <Popup
-                          content="Available from Pod/Mesh network"
+                          content={interfaceText("Available from Pod/Mesh network")}
                           position="top center"
                           trigger={
                             <Label
@@ -819,11 +898,11 @@ class Response extends Component {
                               POD
                             </Label>
                           }
-                        />
+                         {...interfaceTextProps("Available from Pod/Mesh network")}/>
                       )}
                       {response.sourceProviders.includes('scene') && (
                         <Popup
-                          content="Available from Soulseek Scene"
+                          content={interfaceText("Available from Soulseek Scene")}
                           position="top center"
                           trigger={
                             <Label
@@ -833,21 +912,21 @@ class Response extends Component {
                               SCENE
                             </Label>
                           }
-                        />
+                         {...interfaceTextProps("Available from Soulseek Scene")}/>
                       )}
                       {response.sourceProviders.length > 1 && (
                         <Popup
-                          content={`Available from both Pod and Scene. Preferred: ${response.primarySource?.toUpperCase() || 'POD'}`}
+                          content={interfaceText("Available from {providers}. Preferred: {provider}.")}
+                          parameters={{ providers: 'Pod and Scene', provider: response.primarySource?.toUpperCase() || 'POD' }}
                           position="top center"
                           trigger={
                             <Label
                               color="teal"
                               size="tiny"
                             >
-                              POD+SCENE
-                            </Label>
+                              <LocalizedText source={"POD+SCENE"} /></Label>
                           }
-                        />
+                         {...interfaceTextProps("Available from {providers}. Preferred: {provider}.")}/>
                       )}
                     </>
                   )}
@@ -859,7 +938,7 @@ class Response extends Component {
                       link
                       name="pencil alternate"
                       size="small"
-                      title="Edit User Note"
+                      title={this.localize('Edit User Note')}
                     />
                   }
                   username={response.username}
@@ -868,61 +947,71 @@ class Response extends Component {
             </div>
             <div className="result-card-actions">
               <Popup
-                content="Open a Discovery Graph centered on this result so you can branch into adjacent identity and context instead of treating search as a flat list."
+                content={interfaceText("Open a Discovery Graph centered on this result to explore related context.")}
                 position="top center"
                 trigger={
                   <Icon
+                    aria-label={this.localize('Open Discovery Graph for {username}', { username: response.username })}
                     color="blue"
                     link
+                    lang={languageFor('Open Discovery Graph for {username}')}
+                    dir={directionFor('Open Discovery Graph for {username}')}
                     name="share alternate"
                     onClick={() => this.openDiscoveryGraph(this.buildFallbackGraphRequest())}
                   />
                 }
-              />
+               {...interfaceTextProps("Open a Discovery Graph centered on this result to explore related context.")}/>
               <Popup
-                content="Open the same result in atlas mode and browse a wider neighborhood with semantic zoom controls."
+                content={interfaceText("Open this result in atlas mode to browse a wider neighborhood with semantic zoom controls.")}
                 position="top center"
                 trigger={
                   <Icon
+                    aria-label={this.localize('Open Discovery Graph atlas for {username}', { username: response.username })}
                     color="teal"
                     link
+                    lang={languageFor('Open Discovery Graph atlas for {username}')}
+                    dir={directionFor('Open Discovery Graph atlas for {username}')}
                     name="crosshairs"
                     onClick={() => this.openDiscoveryGraph(this.buildFallbackGraphRequest())}
                   />
                 }
-              />
+               {...interfaceTextProps("Open this result in atlas mode to browse a wider neighborhood with semantic zoom controls.")}/>
               <Popup
-                content="Add a local caution signal for this peer/result. This only affects your browser-side review context and does not publish a global reputation report."
+                content={interfaceText("Add a local caution signal for this peer/result. This only affects your browser-side review and does not publish a report.")}
                 position="top center"
                 trigger={
                   <Icon
+                    aria-label={this.localize('Report suspicious result from {username}', { username: response.username })}
                     color="orange"
                     link
+                    lang={languageFor('Report suspicious result from {username}')}
+                    dir={directionFor('Report suspicious result from {username}')}
                     name="exclamation triangle"
                     onClick={this.reportSuspiciousCandidate}
                   />
                 }
-              />
+               {...interfaceTextProps("Add a local caution signal for this peer/result. This only affects your browser-side review and does not publish a report.")}/>
               <Popup
-                content={
-                  isBlocked
-                    ? 'Unblock this user'
-                    : 'Block this user from search results'
-                }
+                content={isBlocked ? 'Unblock this user' : 'Block this user from search results'}
                 position="top center"
                 trigger={
                   <Icon
+                    aria-label={this.localize(isBlocked ? 'Unblock {username}' : 'Block {username} from search results', { username: response.username })}
                     color={isBlocked ? 'orange' : 'grey'}
                     link
+                    lang={languageFor(isBlocked ? 'Unblock {username}' : 'Block {username} from search results')}
+                    dir={directionFor(isBlocked ? 'Unblock {username}' : 'Block {username} from search results')}
                     name={isBlocked ? 'ban' : 'user cancel'}
                     onClick={isBlocked ? onUnblock : onBlock}
                   />
                 }
               />
               <Icon
-                aria-label={`Hide search result from ${response.username}`}
+                aria-label={this.localize('Hide search result from {username}', { username: response.username })}
                 className="close-button"
                 color="red"
+                lang={languageFor('Hide search result from {username}')}
+                dir={directionFor('Hide search result from {username}')}
                 link
                 name="close"
                 onClick={() => this.props.onHide()}
@@ -931,8 +1020,11 @@ class Response extends Component {
           </Card.Header>
           <Card.Meta className="result-meta">
             <span>
-              Upload Speed: {uploadSpeed}, Free Upload Slot:{' '}
-              {free ? 'YES' : 'NO'}, Queue Length: {queueLength}
+              {this.localizedText('Upload speed: {speed}/s. Free upload slot: {slot}. Queue length: {queue}.', {
+                speed: uploadSpeed,
+                slot: this.localize(free ? 'Available' : 'Unavailable'),
+                queue: queueLength,
+              })}
             </span>
           </Card.Meta>
           {((!isFolded && Object.keys(tree)) || []).map((directory) => (
@@ -949,22 +1041,22 @@ class Response extends Component {
                     onClick={() =>
                       this.getFullDirectory(response.username, directory)
                     }
-                    content="Find More Files"
-                  />
+                    content={interfaceText("Find More Files")}
+                   {...interfaceTextProps("Find More Files")}/>
                   {this.props.onIgnoreDirectory && (
                     <Popup
-                      content="Hide this peer’s copy of this folder from every future run of this wishlist item without blocking the peer or hiding their other results."
+                      content={interfaceText("Hide this peer’s copy of this folder from future Wishlist searches without blocking the peer or hiding other results.")}
                       trigger={
                         <Button
                           color="red"
-                          content="Ignore for Wishlist"
+                          content={interfaceText("Ignore for Wishlist")}
                           icon="eye slash"
                           onClick={() =>
                             this.props.onIgnoreDirectory(directory)
                           }
-                        />
+                         {...interfaceTextProps("Ignore for Wishlist")}/>
                       }
-                    />
+                     {...interfaceTextProps("Hide this peer’s copy of this folder from future Wishlist searches without blocking the peer or hiding other results.")}/>
                   )}
                 </Button.Group>
               }
@@ -998,4 +1090,10 @@ class Response extends Component {
   }
 }
 
-export default Response;
+const ResponseWithLocale = (props) => {
+  const locale = useInterfaceLanguage();
+  const regionalFormat = useRegionalFormat();
+  return <Response {...props} locale={locale} regionalFormat={regionalFormat} />;
+};
+
+export default ResponseWithLocale;

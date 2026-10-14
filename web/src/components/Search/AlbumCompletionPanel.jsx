@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import { fetchAlbumCompletion } from '../../lib/musicBrainz';
 import { toDisplayError } from '../../lib/errors';
 import { useMountedRef } from '../../lib/useMountedRef';
@@ -96,8 +98,8 @@ const AlbumCompletionPanel = ({ disabled }) => {
         className="album-completion-segment"
         raised
       >
-        <Header as="h4">Album completion status</Header>
-        <p>Connect to the server to view album targets and track progress.</p>
+        <Header as="h4"><LocalizedText source={"Album completion status"} /></Header>
+        <p><LocalizedText source={"Connect to the server to view album targets and track progress."} /></p>
       </Segment>
     );
   }
@@ -109,15 +111,13 @@ const AlbumCompletionPanel = ({ disabled }) => {
       raised
     >
       <Header as="h4">
-        Album completion status
-        <Button
+        <LocalizedText source={"Album completion status"} /><Button
           disabled={loading}
           floated="right"
           onClick={loadAlbums}
           size="mini"
         >
-          Refresh
-        </Button>
+          <LocalizedText source={"Refresh"} /></Button>
       </Header>
       {error && (
         <Message
@@ -127,9 +127,7 @@ const AlbumCompletionPanel = ({ disabled }) => {
       )}
       {!albumCount && !loading && !error && (
         <p>
-          No album targets yet. Resolve a MusicBrainz release or recording to
-          start tracking completion.
-        </p>
+          <LocalizedText source={"No album targets yet. Resolve a MusicBrainz release or recording to start tracking completion."} /></p>
       )}
       <div className="album-completion-list">
         {displayAlbums.map((album) => {
@@ -155,14 +153,14 @@ const AlbumCompletionPanel = ({ disabled }) => {
                       color="orange"
                       size="mini"
                     >
-                      Discogs #{album.discogsReleaseId}
+                      <LocalizedText source={"Discogs #"} />{album.discogsReleaseId}
                     </Label>
                   )}
                 </Header>
                 <div className="album-completion-meta">
                   <span>{album.artist}</span>
                   <span>{album.releaseDate ?? 'Unknown date'}</span>
-                  <span>{ratio} tracks complete</span>
+                  <span>{ratio} <LocalizedText source={"tracks complete"} /></span>
                 </div>
               </div>
               {missingTracks.length > 0 ? (
@@ -171,8 +169,7 @@ const AlbumCompletionPanel = ({ disabled }) => {
                     as="h6"
                     className="album-missing-header"
                   >
-                    Missing tracks
-                  </Header>
+                    <LocalizedText source={"Missing tracks"} /></Header>
                   <List
                     divided
                     relaxed
@@ -191,13 +188,12 @@ const AlbumCompletionPanel = ({ disabled }) => {
                                 color="blue"
                                 size="tiny"
                               >
-                                {track.matches.length} fingerprint match
-                                {track.matches.length === 1 ? '' : 'es'}
+                                {track.matches.length} <LocalizedText source={"fingerprint match"} />{track.matches.length === 1 ? '' : <LocalizedText source={"es"} />}
                               </Label>
                             )}
                           </List.Header>
                           <List.Description>
-                            Recording ID: {track.recordingId ?? 'unknown'} ·{' '}
+                            <LocalizedText source={"Recording ID:"} />{" "}{track.recordingId ?? 'unknown'} ·{' '}
                             {formatDuration(track.durationMs)}
                           </List.Description>
                         </List.Content>
@@ -210,8 +206,7 @@ const AlbumCompletionPanel = ({ disabled }) => {
                   color="teal"
                   size="mini"
                 >
-                  Album complete
-                </Label>
+                  <LocalizedText source={"Album complete"} /></Label>
               )}
             </Segment>
           );

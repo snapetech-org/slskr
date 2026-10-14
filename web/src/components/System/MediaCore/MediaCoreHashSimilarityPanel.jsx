@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -19,6 +21,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const MediaCoreHashSimilarityPanel = React.memo(() => {
+  useInterfaceLanguage();
   const mountedRef = useRef(true);
   useEffect(() => {
     mountedRef.current = true;
@@ -60,33 +63,31 @@ const MediaCoreHashSimilarityPanel = React.memo(() => {
             <Card.Content>
               <Card.Header>
                 <Icon name="balance scale" />
-                Hash Similarity Analysis
-              </Card.Header>
+                <LocalizedText source={"Hash Similarity Analysis"} /></Card.Header>
               <Card.Description>
-                Compare perceptual hashes to determine content similarity
-              </Card.Description>
+                <LocalizedText source={"Compare perceptual hashes to determine content similarity"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Group widths="equal">
                   <Form.Field>
-                    <label>Hash A (hex)</label>
+                    <label><LocalizedText source={"Hash A (hex)"} /></label>
                     <Input
                       onChange={(e) => setHashA(e.target.value)}
-                      placeholder="First hash value (hexadecimal)"
+                      placeholder={interfaceText("First hash value (hexadecimal)")}
                       value={hashA}
-                    />
+                     {...interfaceTextProps("First hash value (hexadecimal)")}/>
                   </Form.Field>
                   <Form.Field>
-                    <label>Hash B (hex)</label>
+                    <label><LocalizedText source={"Hash B (hex)"} /></label>
                     <Input
                       onChange={(e) => setHashB(e.target.value)}
-                      placeholder="Second hash value (hexadecimal)"
+                      placeholder={interfaceText("Second hash value (hexadecimal)")}
                       value={hashB}
-                    />
+                     {...interfaceTextProps("Second hash value (hexadecimal)")}/>
                   </Form.Field>
                   <Form.Field>
-                    <label>Similarity Threshold</label>
+                    <label><LocalizedText source={"Similarity Threshold"} /></label>
                     <Input
                       max="1"
                       min="0"
@@ -105,8 +106,7 @@ const MediaCoreHashSimilarityPanel = React.memo(() => {
                   onClick={handleComputeSimilarity}
                   primary
                 >
-                  Analyze Similarity
-                </Button>
+                  <LocalizedText source={"Analyze Similarity"} /></Button>
               </Form>
 
               {similarityResult && (
@@ -118,16 +118,14 @@ const MediaCoreHashSimilarityPanel = React.memo(() => {
                   ) : (
                     <Message info>
                       <Message.Header>
-                        Similarity Analysis Results
-                      </Message.Header>
+                        <LocalizedText source={"Similarity Analysis Results"} /></Message.Header>
                       <p>
-                        <strong>Hamming Distance:</strong>{' '}
-                        {similarityResult.hammingDistance} bits
-                        <br />
-                        <strong>Similarity Score:</strong>{' '}
+                        <strong><LocalizedText source={"Hamming Distance:"} /></strong>{' '}
+                        {similarityResult.hammingDistance} <LocalizedText source={"bits"} /><br />
+                        <strong><LocalizedText source={"Similarity Score:"} /></strong>{' '}
                         {(similarityResult.similarity * 100).toFixed(1)}%<br />
-                        <strong>Are Similar:</strong>{' '}
-                        {similarityResult.areSimilar ? 'Yes' : 'No'} (threshold:{' '}
+                        <strong><LocalizedText source={"Are Similar:"} /></strong>{' '}
+                        {similarityResult.areSimilar ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />} <LocalizedText source={"(threshold:"} />{' '}
                         {(similarityResult.threshold * 100).toFixed(1)}%)
                       </p>
                     </Message>

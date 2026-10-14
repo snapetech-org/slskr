@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import './Chat.css';
 import { toDisplayError } from '../../lib/errors';
 import { useMountedRef } from '../../lib/useMountedRef';
@@ -5,6 +7,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Button, Form, Header, Icon, Input, Message, Modal } from 'semantic-ui-react';
 
 const SendMessageModal = ({ initiateConversation, ...rest }) => {
+  useInterfaceLanguage();
   const [open, setOpen] = React.useState(false);
   const [username, setUsername] = React.useState('');
   const [message, setMessage] = React.useState('');
@@ -59,36 +62,35 @@ const SendMessageModal = ({ initiateConversation, ...rest }) => {
     >
       <Header>
         <Icon name="send" />
-        <Modal.Content>Send Private Message</Modal.Content>
+        <Modal.Content><LocalizedText source={"Send Private Message"} /></Modal.Content>
       </Header>
       <Modal.Content>
         <Form>
           <Form.Field>
             <Input
               onChange={(_event, data) => setUsername(data.value)}
-              placeholder="Username"
+              placeholder={interfaceText("Username")}
               ref={usernameRef}
-            />
+             {...interfaceTextProps("Username")}/>
           </Form.Field>
           <Form.Field>
             <Input
               onChange={(_event, data) => setMessage(data.value)}
-              placeholder="Message"
-            />
+              placeholder={interfaceText("Message")}
+             {...interfaceTextProps("Message")}/>
           </Form.Field>
         </Form>
         {error ? <Message negative>{error}</Message> : null}
       </Modal.Content>
       <Modal.Actions>
-        <Button disabled={sending} onClick={() => setOpen(false)}>Cancel</Button>
+        <Button disabled={sending} onClick={() => setOpen(false)}><LocalizedText source={"Cancel"} /></Button>
         <Button
           disabled={!validInput() || sending}
           loading={sending}
           onClick={() => sendMessage()}
           positive
         >
-          Send
-        </Button>
+          <LocalizedText source={"Send"} /></Button>
       </Modal.Actions>
     </Modal>
   );

@@ -1,7 +1,10 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import React from 'react';
 import { Button, Dropdown, Form, Message, Modal } from 'semantic-ui-react';
 
 const CollectionAddItemModal = ({ actions, state }) => {
+  useInterfaceLanguage();
   const { addItemModalOpen, addingItem, itemSearchLoading, itemSearchQuery, itemSearchResults, selectedCollection } = state;
   const { onAddItem, onClose, onSearchInputChange, onSearchResultChange } = actions;
 
@@ -10,28 +13,26 @@ const CollectionAddItemModal = ({ actions, state }) => {
             onClose={onClose}
             open={addItemModalOpen}
           >
-            <Modal.Header>Add Item to {selectedCollection?.title}</Modal.Header>
+            <Modal.Header><LocalizedText source={"Add Item to"} />{" "}{selectedCollection?.title}</Modal.Header>
             <Modal.Content>
               <Form>
                 <Form.Field>
                   <label htmlFor="collection-item-search">
-                    Search for item
-                  </label>
+                    <LocalizedText source={"Search for item"} /></label>
                   <Form.Input
                     data-testid="collection-item-search-input"
                     id="collection-item-search"
-                    label="Search for item"
+                    label={interfaceText("Search for item")}
                     loading={itemSearchLoading}
                     onChange={onSearchInputChange}
-                    placeholder="Search by filename (e.g., sintel, aria, treasure)..."
+                    placeholder={interfaceText("Search by filename (e.g., sintel, aria, treasure)...")}
                     value={itemSearchQuery}
-                  />
+                   {...interfaceTextProps("Search for item")}/>
                 </Form.Field>
                 {itemSearchResults.length > 0 && (
                   <Form.Field>
                     <label htmlFor="collection-item-results">
-                      Search Results
-                    </label>
+                      <LocalizedText source={"Search Results"} /></label>
                     <Dropdown
                       data-testid="collection-item-results"
                       fluid
@@ -42,19 +43,17 @@ const CollectionAddItemModal = ({ actions, state }) => {
                         text: `${item.fileName || item.path} (${item.mediaKind || 'File'})`,
                         value: item.contentId,
                       }))}
-                      placeholder="Select an item from search results"
+                      placeholder={interfaceText("Select an item from search results")}
                       search
                       selection
-                    />
+                     {...interfaceTextProps("Select an item from search results")}/>
                   </Form.Field>
                 )}
                 {itemSearchQuery &&
                   itemSearchResults.length === 0 &&
                   !itemSearchLoading && (
                     <Message info>
-                      No results found. You can still add the search query as a
-                      content ID.
-                    </Message>
+                      <LocalizedText source={"No results found. You can still add the search query as a content ID."} /></Message>
                   )}
               </Form>
             </Modal.Content>
@@ -62,8 +61,7 @@ const CollectionAddItemModal = ({ actions, state }) => {
               <Button
                 onClick={onClose}
               >
-                Cancel
-              </Button>
+                <LocalizedText source={"Cancel"} /></Button>
               <Button
                 data-testid="collection-add-item-submit"
                 disabled={!itemSearchQuery.trim() || addingItem}
@@ -71,8 +69,7 @@ const CollectionAddItemModal = ({ actions, state }) => {
                 onClick={onAddItem}
                 primary
               >
-                Add Item
-              </Button>
+                <LocalizedText source={"Add Item"} /></Button>
             </Modal.Actions>
           </Modal>
   );

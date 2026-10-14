@@ -1,3 +1,5 @@
+import LocalizedText from "./Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../lib/interfaceLocale";
 import { lazy, useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import ErrorSegment from './Shared/ErrorSegment';
@@ -57,7 +59,7 @@ const RouteMissRedirect = () => {
           zIndex: 9_999,
         }}
       >
-        Route miss: {location.pathname}
+        <LocalizedText source={"Route miss:"} />{" "}{location.pathname}
       </div>
       <Navigate replace to="/searches" />
     </>

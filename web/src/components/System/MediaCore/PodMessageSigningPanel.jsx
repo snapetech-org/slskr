@@ -1,3 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+
+
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -27,6 +31,7 @@ const PodMessageSigningPanel = ({
   verificationResult,
   visible = true,
 }) => {
+  useInterfaceLanguage();
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -48,7 +53,7 @@ const PodMessageSigningPanel = ({
 
   const handleSignMessage = async () => {
     if (!messageToSign.trim() || !privateKeyForSigning.trim()) {
-      toast.warning('Please enter message JSON and private key');
+      toast.warning(interfaceText("Please enter message JSON and private key"));
       return;
     }
 
@@ -71,7 +76,7 @@ const PodMessageSigningPanel = ({
 
   const handleVerifySignature = async () => {
     if (!messageToVerify.trim()) {
-      toast.warning('Please enter message JSON to verify');
+      toast.warning(interfaceText("Please enter message JSON to verify"));
       return;
     }
 
@@ -120,37 +125,31 @@ const PodMessageSigningPanel = ({
             <Card.Content>
               <Card.Header>
                 <Icon name="key" />
-                Pod Message Signing
-              </Card.Header>
+                <LocalizedText source={"Pod Message Signing"} /></Card.Header>
               <Card.Description>
-                Cryptographic signing and verification of pod messages for
-                authenticity and integrity
-              </Card.Description>
-              <PodWorkflowNotice title="Handles key material">
-                Signing and key generation workflows may expose private keys or
-                signed payloads in the browser. Treat pasted keys and generated
-                output as sensitive.
-              </PodWorkflowNotice>
+                <LocalizedText source={"Cryptographic signing and verification of pod messages for authenticity and integrity"} /></Card.Description>
+              <PodWorkflowNotice title={interfaceText("Handles key material")} {...interfaceTextProps("Handles key material")}>
+                <LocalizedText source={"Signing and key generation workflows may expose private keys or signed payloads in the browser. Treat pasted keys and generated output as sensitive."} /></PodWorkflowNotice>
             </Card.Content>
 
             {/* Message Signing */}
             <Card.Content>
-              <Header size="small">Sign Pod Message</Header>
+              <Header size="small"><LocalizedText source={"Sign Pod Message"} /></Header>
               <Form>
                 <Form.TextArea
-                  label="Pod Message JSON"
+                  label={interfaceText("Pod Message JSON")}
                   onChange={(e) => setMessageToSign(e.target.value)}
                   placeholder='{"messageId": "msg123", "channelId": "pod:artist:mb:daft-punk-hash:general", "senderPeerId": "alice", "body": "Hello pod!", "timestampUnixMs": 1703123456789}'
                   rows={3}
                   value={messageToSign}
-                />
+                 {...interfaceTextProps("Pod Message JSON")}/>
                 <Form.Input
-                  label="Private Key"
+                  label={interfaceText("Private Key")}
                   onChange={(e) => setPrivateKeyForSigning(e.target.value)}
-                  placeholder="base64-encoded private key"
+                  placeholder={interfaceText("base64-encoded private key")}
                   type="password"
                   value={privateKeyForSigning}
-                />
+                 {...interfaceTextProps("Private Key")}/>
                 <Button
                   disabled={
                     signingMessage ||
@@ -161,29 +160,27 @@ const PodMessageSigningPanel = ({
                   onClick={handleSignMessage}
                   primary
                 >
-                  Sign Message
-                </Button>
+                  <LocalizedText source={"Sign Message"} /></Button>
               </Form>
 
               {signedMessageResult && (
                 <div style={{ marginTop: '1em' }}>
                   {signedMessageResult.error ? (
                     <Message error>
-                      <p>Failed to sign message: {signedMessageResult.error}</p>
+                      <p><LocalizedText source={"Failed to sign message:"} />{" "}{signedMessageResult.error}</p>
                     </Message>
                   ) : (
                     <Message success>
                       <Message.Header>
-                        Message Signed Successfully
-                      </Message.Header>
+                        <LocalizedText source={"Message Signed Successfully"} /></Message.Header>
                       <p>
-                        <strong>Message ID:</strong>{' '}
+                        <strong><LocalizedText source={"Message ID:"} /></strong>{' '}
                         {signedMessageResult.messageId}
                         <br />
-                        <strong>Channel:</strong>{' '}
+                        <strong><LocalizedText source={"Channel:"} /></strong>{' '}
                         {signedMessageResult.channelId}
                         <br />
-                        <strong>Signature:</strong>{' '}
+                        <strong><LocalizedText source={"Signature:"} /></strong>{' '}
                         {signedMessageResult.signature?.slice(0, 50)}...
                       </p>
                     </Message>
@@ -196,23 +193,22 @@ const PodMessageSigningPanel = ({
               <Grid>
                 <Grid.Column width={8}>
                   {/* Signature Verification */}
-                  <Header size="small">Verify Message Signature</Header>
+                  <Header size="small"><LocalizedText source={"Verify Message Signature"} /></Header>
                   <Form>
                     <Form.TextArea
-                      label="Pod Message JSON (with signature)"
+                      label={interfaceText("Pod Message JSON (with signature)")}
                       onChange={(e) => setMessageToVerify(e.target.value)}
                       placeholder='{"messageId": "msg123", "channelId": "pod:artist:mb:daft-punk-hash:general", "senderPeerId": "alice", "body": "Hello pod!", "timestampUnixMs": 1703123456789, "signature": "ed25519:base64-signature"}'
                       rows={4}
                       value={messageToVerify}
-                    />
+                     {...interfaceTextProps("Pod Message JSON (with signature)")}/>
                     <Button
                       disabled={verifyingSignature || !messageToVerify.trim()}
                       fluid
                       loading={verifyingSignature}
                       onClick={handleVerifySignature}
                     >
-                      Verify Signature
-                    </Button>
+                      <LocalizedText source={"Verify Signature"} /></Button>
                   </Form>
 
                   {verificationResult && (
@@ -227,7 +223,7 @@ const PodMessageSigningPanel = ({
                       ) : (
                         <Message size="tiny">
                           <p>
-                            Message {verificationResult.messageId}: Signature is{' '}
+                            <LocalizedText source={"Message"} />{" "}{verificationResult.messageId}<LocalizedText source={": Signature is"} />{' '}
                             {verificationResult.isValid ? 'VALID' : 'INVALID'}
                           </p>
                         </Message>
@@ -238,7 +234,7 @@ const PodMessageSigningPanel = ({
 
                 <Grid.Column width={8}>
                   {/* Key Pair Generation */}
-                  <Header size="small">Generate Key Pair</Header>
+                  <Header size="small"><LocalizedText source={"Generate Key Pair"} /></Header>
                   <Form>
                     <Button
                       disabled={generatingKeyPair}
@@ -246,8 +242,7 @@ const PodMessageSigningPanel = ({
                       loading={generatingKeyPair}
                       onClick={handleGenerateKeyPair}
                     >
-                      Generate New Key Pair
-                    </Button>
+                      <LocalizedText source={"Generate New Key Pair"} /></Button>
                   </Form>
 
                   {generatedKeyPair && (
@@ -264,15 +259,15 @@ const PodMessageSigningPanel = ({
                           size="tiny"
                           success
                         >
-                          <Message.Header>Key Pair Generated</Message.Header>
+                          <Message.Header><LocalizedText source={"Key Pair Generated"} /></Message.Header>
                           <p>
-                            <strong>Public Key:</strong>{' '}
+                            <strong><LocalizedText source={"Public Key:"} /></strong>{' '}
                             {generatedKeyPair.publicKey?.slice(0, 30)}...
                             <br />
-                            <strong>Private Key:</strong>{' '}
+                            <strong><LocalizedText source={"Private Key:"} /></strong>{' '}
                             {generatedKeyPair.privateKey?.slice(0, 30)}...
                             <br />
-                            <em>⚠️ Keep private key secure!</em>
+                            <em><LocalizedText source={"⚠️ Keep private key secure!"} /></em>
                           </p>
                         </Message>
                       )}
@@ -284,40 +279,36 @@ const PodMessageSigningPanel = ({
                     size="small"
                     style={{ marginTop: '1em' }}
                   >
-                    Signing Statistics
-                  </Header>
+                    <LocalizedText source={"Signing Statistics"} /></Header>
                   <Button.Group fluid>
                     <Button
                       disabled={loadingSigningStats}
                       loading={loadingSigningStats}
                       onClick={handleLoadSigningStats}
                     >
-                      Load Stats
-                    </Button>
+                      <LocalizedText source={"Load Stats"} /></Button>
                   </Button.Group>
 
                   {signingStats && !signingStats.error && (
                     <div style={{ marginTop: '0.5em' }}>
                       <Message size="tiny">
                         <p>
-                          <strong>Signatures Created:</strong>{' '}
+                          <strong><LocalizedText source={"Signatures Created:"} /></strong>{' '}
                           {signingStats.totalSignaturesCreated}
                           <br />
-                          <strong>Signatures Verified:</strong>{' '}
+                          <strong><LocalizedText source={"Signatures Verified:"} /></strong>{' '}
                           {signingStats.totalSignaturesVerified}
                           <br />
-                          <strong>Successful:</strong>{' '}
+                          <strong><LocalizedText source={"Successful:"} /></strong>{' '}
                           {signingStats.successfulVerifications}
                           <br />
-                          <strong>Failed:</strong>{' '}
+                          <strong><LocalizedText source={"Failed:"} /></strong>{' '}
                           {signingStats.failedVerifications}
                           <br />
-                          <strong>Avg Sign Time:</strong>{' '}
-                          {signingStats.averageSigningTimeMs.toFixed(2)}ms
-                          <br />
-                          <strong>Avg Verify Time:</strong>{' '}
-                          {signingStats.averageVerificationTimeMs.toFixed(2)}ms
-                        </p>
+                          <strong><LocalizedText source={"Avg Sign Time:"} /></strong>{' '}
+                          {signingStats.averageSigningTimeMs.toFixed(2)}<LocalizedText source={"ms"} /><br />
+                          <strong><LocalizedText source={"Avg Verify Time:"} /></strong>{' '}
+                          {signingStats.averageVerificationTimeMs.toFixed(2)}<LocalizedText source={"ms"} /></p>
                       </Message>
                     </div>
                   )}

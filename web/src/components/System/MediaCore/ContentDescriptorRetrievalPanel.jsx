@@ -1,3 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+
+
 import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
@@ -34,6 +38,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
+  useInterfaceLanguage();
   useRegionalFormat();
   const mountedRef = useRef(true);
 
@@ -161,7 +166,7 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
       // Reload stats to reflect changes
       await handleLoadRetrievalStats();
       toast.success(
-        `Cache cleared: ${result.entriesCleared} entries, ${result.bytesFreed} bytes freed`,
+        interfaceText("Cache cleared: {entriesCleared} entries, {bytesFreed} bytes freed", { "entriesCleared": (result.entriesCleared), "bytesFreed": (result.bytesFreed) }),
       );
     } catch (error_) {
       toast.error(`Failed to clear cache: ${toDisplayError(error_)}`);
@@ -176,16 +181,14 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
             <Card.Content>
               <Card.Header>
                 <Icon name="search" />
-                Retrieve Content Descriptor
-              </Card.Header>
+                <LocalizedText source={"Retrieve Content Descriptor"} /></Card.Header>
               <Card.Description>
-                Retrieve content descriptors from the DHT by ContentID
-              </Card.Description>
+                <LocalizedText source={"Retrieve content descriptors from the DHT by ContentID"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Field>
-                  <label>ContentID</label>
+                  <label><LocalizedText source={"ContentID"} /></label>
                   <Input
                     onChange={(e) => setRetrieveContentId(e.target.value)}
                     placeholder="content:audio:track:mb-12345"
@@ -195,9 +198,9 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
                 <Form.Field>
                   <Checkbox
                     checked={bypassCache}
-                    label="Bypass cache (force fresh retrieval)"
+                    label={interfaceText("Bypass cache (force fresh retrieval)")}
                     onChange={(e, { checked }) => setBypassCache(checked)}
-                  />
+                   {...interfaceTextProps("Bypass cache (force fresh retrieval)")}/>
                 </Form.Field>
                 <Button
                   disabled={!retrieveContentId.trim() || retrievingDescriptor}
@@ -205,8 +208,7 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
                   onClick={handleRetrieveDescriptor}
                   primary
                 >
-                  Retrieve Descriptor
-                </Button>
+                  <LocalizedText source={"Retrieve Descriptor"} /></Button>
               </Form>
 
               {retrievalResult && (
@@ -218,37 +220,36 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
                   ) : !retrievalResult.found ? (
                     <Message warning>
                       <p>
-                        Content descriptor not found for:{' '}
+                        <LocalizedText source={"Content descriptor not found for:"} />{' '}
                         {retrievalResult.contentId || retrieveContentId}
                       </p>
                     </Message>
                   ) : (
                     <Message success>
-                      <Message.Header>Descriptor Retrieved</Message.Header>
+                      <Message.Header><LocalizedText source={"Descriptor Retrieved"} /></Message.Header>
                       <p>
-                        <strong>ContentID:</strong>{' '}
+                        <strong><LocalizedText source={"ContentID:"} /></strong>{' '}
                         {retrievalResult.descriptor?.contentId}
                         <br />
-                        <strong>From Cache:</strong>{' '}
-                        {retrievalResult.fromCache ? 'Yes' : 'No'}
+                        <strong><LocalizedText source={"From Cache:"} /></strong>{' '}
+                        {retrievalResult.fromCache ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
                         <br />
-                        <strong>Retrieved:</strong>{' '}
+                        <strong><LocalizedText source={"Retrieved:"} /></strong>{' '}
                         {formatRegionalDateTime(retrievalResult.retrievedAt)}
                         <br />
-                        <strong>Duration:</strong>{' '}
+                        <strong><LocalizedText source={"Duration:"} /></strong>{' '}
                         {retrievalResult.retrievalDuration?.totalMilliseconds.toFixed(
                           0,
                         )}
-                        ms
-                        <br />
-                        <strong>Verified:</strong>{' '}
-                        {retrievalResult.verification?.isValid ? 'Yes' : 'No'}
+                        <LocalizedText source={"ms"} /><br />
+                        <strong><LocalizedText source={"Verified:"} /></strong>{' '}
+                        {retrievalResult.verification?.isValid ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
                         {retrievalResult.verification?.warnings?.length > 0 && (
-                          <span> (with warnings)</span>
+                          <span> <LocalizedText source={"(with warnings)"} /></span>
                         )}
                       </p>
                       <details>
-                        <summary>View Descriptor JSON</summary>
+                        <summary><LocalizedText source={"View Descriptor JSON"} /></summary>
                         <pre
                           style={{
                             fontSize: '0.8em',
@@ -273,22 +274,20 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
             <Card.Content>
               <Card.Header>
                 <Icon name="list alternate" />
-                Batch Descriptor Retrieval
-              </Card.Header>
+                <LocalizedText source={"Batch Descriptor Retrieval"} /></Card.Header>
               <Card.Description>
-                Retrieve multiple content descriptors simultaneously
-              </Card.Description>
+                <LocalizedText source={"Retrieve multiple content descriptors simultaneously"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Field>
-                  <label>ContentIDs (one per line)</label>
+                  <label><LocalizedText source={"ContentIDs (one per line)"} /></label>
                   <TextArea
                     onChange={(e) => setBatchRetrieveContentIds(e.target.value)}
-                    placeholder="content:audio:track:mb-12345&#10;content:video:movie:imdb-tt0111161&#10;..."
+                    placeholder={interfaceText("content:audio:track:mb-12345&#10;content:video:movie:imdb-tt0111161&#10;...")}
                     rows={6}
                     value={batchRetrieveContentIds}
-                  />
+                   {...interfaceTextProps("content:audio:track:mb-12345&#10;content:video:movie:imdb-tt0111161&#10;...")}/>
                 </Form.Field>
                 <Button
                   disabled={!batchRetrieveContentIds.trim() || retrievingBatch}
@@ -296,8 +295,7 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
                   onClick={handleRetrieveBatch}
                   primary
                 >
-                  Retrieve Batch
-                </Button>
+                  <LocalizedText source={"Retrieve Batch"} /></Button>
               </Form>
 
               {batchRetrievalResult && (
@@ -308,21 +306,20 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
                     </Message>
                   ) : (
                     <Message info>
-                      <Message.Header>Batch Retrieval Results</Message.Header>
+                      <Message.Header><LocalizedText source={"Batch Retrieval Results"} /></Message.Header>
                       <p>
-                        <strong>Requested:</strong>{' '}
+                        <strong><LocalizedText source={"Requested:"} /></strong>{' '}
                         {batchRetrievalResult.requested}
                         <br />
-                        <strong>Found:</strong> {batchRetrievalResult.found}
+                        <strong><LocalizedText source={"Found:"} /></strong> {batchRetrievalResult.found}
                         <br />
-                        <strong>Failed:</strong> {batchRetrievalResult.failed}
+                        <strong><LocalizedText source={"Failed:"} /></strong> {batchRetrievalResult.failed}
                         <br />
-                        <strong>Duration:</strong>{' '}
+                        <strong><LocalizedText source={"Duration:"} /></strong>{' '}
                         {batchRetrievalResult.totalDuration?.totalSeconds.toFixed(
                           2,
                         )}
-                        s
-                      </p>
+                        <LocalizedText source={"s"} /></p>
                     </Message>
                   )}
                 </div>
@@ -337,27 +334,25 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
             <Card.Content>
               <Card.Header>
                 <Icon name="filter" />
-                Query by Domain
-              </Card.Header>
+                <LocalizedText source={"Query by Domain"} /></Card.Header>
               <Card.Description>
-                Query content descriptors by domain and optional type
-              </Card.Description>
+                <LocalizedText source={"Query content descriptors by domain and optional type"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Group widths="equal">
                   <Form.Field>
-                    <label>Domain</label>
+                    <label><LocalizedText source={"Domain"} /></label>
                     <Dropdown
                       onChange={(e, { value }) => setQueryDomain(value)}
                       options={[
-                        { key: 'audio', text: 'Audio', value: 'audio' },
-                        { key: 'video', text: 'Video', value: 'video' },
-                        { key: 'image', text: 'Image', value: 'image' },
-                        { key: 'text', text: 'Text', value: 'text' },
+                        { key: 'audio', text: interfaceText("Audio"), value: 'audio' },
+                        { key: 'video', text: interfaceText("Video"), value: 'video' },
+                        { key: 'image', text: interfaceText("Image"), value: 'image' },
+                        { key: 'text', text: interfaceText("Text"), value: 'text' },
                         {
                           key: 'application',
-                          text: 'Application',
+                          text: interfaceText("Application"),
                           value: 'application',
                         },
                       ]}
@@ -366,15 +361,15 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
                     />
                   </Form.Field>
                   <Form.Field>
-                    <label>Type (optional)</label>
+                    <label><LocalizedText source={"Type (optional)"} /></label>
                     <Input
                       onChange={(e) => setQueryType(e.target.value)}
-                      placeholder="track, album, movie, etc."
+                      placeholder={interfaceText("track, album, movie, etc.")}
                       value={queryType}
-                    />
+                     {...interfaceTextProps("track, album, movie, etc.")}/>
                   </Form.Field>
                   <Form.Field>
-                    <label>Max Results</label>
+                    <label><LocalizedText source={"Max Results"} /></label>
                     <Input
                       max="1000"
                       min="1"
@@ -390,8 +385,7 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
                   onClick={handleQueryDescriptors}
                   primary
                 >
-                  Query Domain
-                </Button>
+                  <LocalizedText source={"Query Domain"} /></Button>
               </Form>
 
               {queryResult && (
@@ -402,26 +396,25 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
                     </Message>
                   ) : (
                     <Message>
-                      <Message.Header>Query Results</Message.Header>
+                      <Message.Header><LocalizedText source={"Query Results"} /></Message.Header>
                       <p>
-                        <strong>Domain:</strong> {queryResult.domain}
+                        <strong><LocalizedText source={"Domain:"} /></strong> {queryResult.domain}
                         {queryResult.type && (
                           <span>
                             {' '}
-                            | <strong>Type:</strong> {queryResult.type}
+                            | <strong><LocalizedText source={"Type:"} /></strong> {queryResult.type}
                           </span>
                         )}
                         <br />
-                        <strong>Found:</strong> {queryResult.totalFound}
+                        <strong><LocalizedText source={"Found:"} /></strong> {queryResult.totalFound}
                         <br />
-                        <strong>Query Time:</strong>{' '}
+                        <strong><LocalizedText source={"Query Time:"} /></strong>{' '}
                         {queryResult.queryDuration?.totalMilliseconds.toFixed(
                           0,
                         )}
-                        ms
-                        <br />
-                        <strong>Has More:</strong>{' '}
-                        {queryResult.hasMoreResults ? 'Yes' : 'No'}
+                        <LocalizedText source={"ms"} /><br />
+                        <strong><LocalizedText source={"Has More:"} /></strong>{' '}
+                        {queryResult.hasMoreResults ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
                       </p>
                     </Message>
                   )}
@@ -437,22 +430,20 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
             <Card.Content>
               <Card.Header>
                 <Icon name="shield" />
-                Descriptor Verification
-              </Card.Header>
+                <LocalizedText source={"Descriptor Verification"} /></Card.Header>
               <Card.Description>
-                Verify descriptor signature and freshness
-              </Card.Description>
+                <LocalizedText source={"Verify descriptor signature and freshness"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Form>
                 <Form.Field>
-                  <label>Descriptor JSON</label>
+                  <label><LocalizedText source={"Descriptor JSON"} /></label>
                   <TextArea
                     onChange={(e) => setVerifyDescriptor(e.target.value)}
-                    placeholder="Paste descriptor JSON to verify..."
+                    placeholder={interfaceText("Paste descriptor JSON to verify...")}
                     rows={8}
                     value={verifyDescriptor}
-                  />
+                   {...interfaceTextProps("Paste descriptor JSON to verify...")}/>
                 </Form.Field>
                 <Button
                   disabled={!verifyDescriptor.trim() || verifyingDescriptor}
@@ -460,8 +451,7 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
                   onClick={handleVerifyDescriptor}
                   primary
                 >
-                  Verify Descriptor
-                </Button>
+                  <LocalizedText source={"Verify Descriptor"} /></Button>
               </Form>
 
               {descriptorVerificationResult && (
@@ -476,31 +466,30 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
                       warning={!descriptorVerificationResult.isValid}
                     >
                       <Message.Header>
-                        Verification Result:{' '}
+                        <LocalizedText source={"Verification Result:"} />{' '}
                         {descriptorVerificationResult.isValid
-                          ? 'Valid'
-                          : 'Invalid'}
+                          ? <LocalizedText source={"Valid"} />
+                          : <LocalizedText source={"Invalid"} />}
                       </Message.Header>
                       <p>
-                        <strong>Signature Valid:</strong>{' '}
+                        <strong><LocalizedText source={"Signature Valid:"} /></strong>{' '}
                         {descriptorVerificationResult.signatureValid
-                          ? 'Yes'
-                          : 'No'}
+                          ? <LocalizedText source={"Yes"} />
+                          : <LocalizedText source={"No"} />}
                         <br />
-                        <strong>Freshness Valid:</strong>{' '}
+                        <strong><LocalizedText source={"Freshness Valid:"} /></strong>{' '}
                         {descriptorVerificationResult.freshnessValid
-                          ? 'Yes'
-                          : 'No'}
+                          ? <LocalizedText source={"Yes"} />
+                          : <LocalizedText source={"No"} />}
                         <br />
-                        <strong>Age:</strong>{' '}
+                        <strong><LocalizedText source={"Age:"} /></strong>{' '}
                         {descriptorVerificationResult.age?.totalMinutes.toFixed(
                           1,
                         )}{' '}
-                        minutes
-                      </p>
+                        <LocalizedText source={"minutes"} /></p>
                       {descriptorVerificationResult.warnings?.length > 0 && (
                         <div>
-                          <strong>Warnings:</strong>
+                          <strong><LocalizedText source={"Warnings:"} /></strong>
                           <List bulleted>
                             {descriptorVerificationResult.warnings.map(
                               (warning, index) => (
@@ -524,11 +513,9 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
             <Card.Content>
               <Card.Header>
                 <Icon name="chart line" />
-                Retrieval Management
-              </Card.Header>
+                <LocalizedText source={"Retrieval Management"} /></Card.Header>
               <Card.Description>
-                Monitor retrieval performance and manage cache
-              </Card.Description>
+                <LocalizedText source={"Monitor retrieval performance and manage cache"} /></Card.Description>
             </Card.Content>
             <Card.Content>
               <Button.Group fluid>
@@ -537,9 +524,8 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
                   loading={loadingRetrievalStats}
                   onClick={handleLoadRetrievalStats}
                 >
-                  Load Stats
-                </Button>
-                <Button onClick={handleClearRetrievalCache}>Clear Cache</Button>
+                  <LocalizedText source={"Load Stats"} /></Button>
+                <Button onClick={handleClearRetrievalCache}><LocalizedText source={"Clear Cache"} /></Button>
               </Button.Group>
 
               {/* Retrieval Stats */}
@@ -551,28 +537,27 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
                     </Message>
                   ) : (
                     <Message>
-                      <Message.Header>Retrieval Statistics</Message.Header>
+                      <Message.Header><LocalizedText source={"Retrieval Statistics"} /></Message.Header>
                       <p>
-                        <strong>Total Retrievals:</strong>{' '}
+                        <strong><LocalizedText source={"Total Retrievals:"} /></strong>{' '}
                         {retrievalStats.totalRetrievals}
                         <br />
-                        <strong>Cache Hits:</strong> {retrievalStats.cacheHits}
+                        <strong><LocalizedText source={"Cache Hits:"} /></strong> {retrievalStats.cacheHits}
                         <br />
-                        <strong>Cache Misses:</strong>{' '}
+                        <strong><LocalizedText source={"Cache Misses:"} /></strong>{' '}
                         {retrievalStats.cacheMisses}
                         <br />
-                        <strong>Hit Ratio:</strong>{' '}
+                        <strong><LocalizedText source={"Hit Ratio:"} /></strong>{' '}
                         {(retrievalStats.cacheHitRatio * 100).toFixed(1)}%<br />
-                        <strong>Avg Retrieval Time:</strong>{' '}
+                        <strong><LocalizedText source={"Avg Retrieval Time:"} /></strong>{' '}
                         {retrievalStats.averageRetrievalTime?.totalMilliseconds.toFixed(
                           0,
                         )}
-                        ms
-                        <br />
-                        <strong>Active Cache Entries:</strong>{' '}
+                        <LocalizedText source={"ms"} /><br />
+                        <strong><LocalizedText source={"Active Cache Entries:"} /></strong>{' '}
                         {retrievalStats.activeCacheEntries}
                         <br />
-                        <strong>Cache Size:</strong>{' '}
+                        <strong><LocalizedText source={"Cache Size:"} /></strong>{' '}
                         {(retrievalStats.cacheSizeBytes / 1_024).toFixed(1)} KB
                       </p>
                     </Message>

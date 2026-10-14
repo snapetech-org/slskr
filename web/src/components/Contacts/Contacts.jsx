@@ -1,3 +1,7 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
+
+
 import { formatRegionalDateTime } from '../../lib/util';
 import * as identityAPI from '../../lib/identity';
 import { toDisplayError } from '../../lib/errors';
@@ -46,6 +50,7 @@ const normalizeNearbyPeer = (peer, index) => ({
 
 const withNavigate = (WrappedComponent) => {
   const RoutedComponent = (props) => {
+    useInterfaceLanguage();
     const navigate = useNavigate();
     return (
       <WrappedComponent
@@ -344,15 +349,13 @@ class Contacts extends Component {
               <Segment placeholder>
                 <Header icon>
                   <Icon name="users" />
-                  Contacts unavailable
-                </Header>
+                  <LocalizedText source={"Contacts unavailable"} /></Header>
               </Segment>
             ) : contacts.length === 0 ? (
               <Segment placeholder>
                 <Header icon>
                   <Icon name="users" />
-                  No contacts yet
-                </Header>
+                  <LocalizedText source={"No contacts yet"} /></Header>
                 <Button
                   as="button"
                   data-testid="contacts-create-invite-empty"
@@ -360,18 +363,17 @@ class Contacts extends Component {
                   onClick={this.handleCreateInvite}
                   primary
                 >
-                  Create Invite
-                </Button>
+                  <LocalizedText source={"Create Invite"} /></Button>
               </Segment>
             ) : (
               <Table>
                 <Table.Header>
                   <Table.Row>
-                    <Table.HeaderCell>Nickname</Table.HeaderCell>
-                    <Table.HeaderCell>Peer ID</Table.HeaderCell>
-                    <Table.HeaderCell>Verified</Table.HeaderCell>
-                    <Table.HeaderCell>Last Seen</Table.HeaderCell>
-                    <Table.HeaderCell>Actions</Table.HeaderCell>
+                    <Table.HeaderCell><LocalizedText source={"Nickname"} /></Table.HeaderCell>
+                    <Table.HeaderCell><LocalizedText source={"Peer ID"} /></Table.HeaderCell>
+                    <Table.HeaderCell><LocalizedText source={"Verified"} /></Table.HeaderCell>
+                    <Table.HeaderCell><LocalizedText source={"Last Seen"} /></Table.HeaderCell>
+                    <Table.HeaderCell><LocalizedText source={"Actions"} /></Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
@@ -388,38 +390,38 @@ class Contacts extends Component {
                       </Table.Cell>
                       <Table.Cell>
                         {contact.verified ? (
-                          <Label color="green">Verified</Label>
+                          <Label color="green"><LocalizedText source={"Verified"} /></Label>
                         ) : (
-                          <Label>Unverified</Label>
+                          <Label><LocalizedText source={"Unverified"} /></Label>
                         )}
                       </Table.Cell>
                       <Table.Cell>
                         {contact.lastSeen
                           ? formatRegionalDateTime(contact.lastSeen)
-                          : 'Never'}
+                          : <LocalizedText source={"Never"} />}
                       </Table.Cell>
                       <Table.Cell>
                         <Button.Group size="small">
                           <Popup
-                            content="Open a private chat with this contact."
+                            content={interfaceText("Open a private chat with this contact.")}
                             trigger={
                               <Button
                                 icon="chat"
                                 onClick={() => this.openChat(contact)}
                               />
                             }
-                          />
+                           {...interfaceTextProps("Open a private chat with this contact.")}/>
                           <Popup
-                            content="Browse this contact's shared files."
+                            content={interfaceText("Browse this contact's shared files.")}
                             trigger={
                               <Button
                                 icon="folder open"
                                 onClick={() => this.browseContact(contact)}
                               />
                             }
-                          />
+                           {...interfaceTextProps("Browse this contact's shared files.")}/>
                           <Popup
-                            content="Remove this saved contact."
+                            content={interfaceText("Remove this saved contact.")}
                             trigger={
                               <Button
                                 disabled={mutating}
@@ -430,7 +432,7 @@ class Contacts extends Component {
                                 }
                               />
                             }
-                          />
+                           {...interfaceTextProps("Remove this saved contact.")}/>
                         </Button.Group>
                       </Table.Cell>
                     </Table.Row>
@@ -450,9 +452,9 @@ class Contacts extends Component {
                 data-testid="contacts-nearby-load-error"
                 error
               >
-                <Message.Header>Nearby peer discovery unavailable</Message.Header>
+                <Message.Header><LocalizedText source={"Nearby peer discovery unavailable"} /></Message.Header>
                 <p>{nearbyError}</p>
-                <p>Showing the last successfully discovered peers when available.</p>
+                <p><LocalizedText source={"Showing the last successfully discovered peers when available."} /></p>
               </Message>
             )}
             {nearbyLoading ? (
@@ -461,22 +463,18 @@ class Contacts extends Component {
               <Segment placeholder>
                 <Header icon>
                   <Icon name="wifi" />
-                  Nearby peers unavailable
-                </Header>
+                  <LocalizedText source={"Nearby peers unavailable"} /></Header>
                 <Button disabled={nearbyLoading} onClick={this.loadNearby}>
-                  Retry Discovery
-                </Button>
+                  <LocalizedText source={"Retry Discovery"} /></Button>
               </Segment>
             ) : nearby.length === 0 ? (
               <Segment placeholder>
                 <Header icon>
                   <Icon name="wifi" />
-                  No nearby peers found
-                </Header>
-                <p>Make sure you're on the same network and mDNS is working.</p>
+                  <LocalizedText source={"No nearby peers found"} /></Header>
+                <p><LocalizedText source={"Make sure you're on the same network and mDNS is working."} /></p>
                 <Button disabled={nearbyLoading} onClick={this.loadNearby}>
-                  Refresh
-                </Button>
+                  <LocalizedText source={"Refresh"} /></Button>
               </Segment>
             ) : (
               <List
@@ -488,9 +486,9 @@ class Contacts extends Component {
                     <List.Content>
                         <List.Header>{String(peer.displayName)}</List.Header>
                         <List.Description>
-                        Code: <code>{String(peer.peerCode)}</code>
+                        <LocalizedText source={"Code:"} />{" "}<code>{String(peer.peerCode)}</code>
                         <br />
-                        Endpoint: {String(peer.endpoint)}
+                        <LocalizedText source={"Endpoint:"} />{" "}{String(peer.endpoint)}
                       </List.Description>
                         <Button
                           disabled={mutating}
@@ -506,8 +504,7 @@ class Contacts extends Component {
                         size="small"
                         style={{ marginTop: '0.5em' }}
                       >
-                        Add Contact
-                      </Button>
+                        <LocalizedText source={"Add Contact"} /></Button>
                     </List.Content>
                   </List.Item>
                 ))}
@@ -524,8 +521,7 @@ class Contacts extends Component {
           <Header as="h1">
             <Icon name="address book" />
             <Header.Content>
-              Contacts
-              <Header.Subheader>Manage your peer contacts</Header.Subheader>
+              <LocalizedText source={"Contacts"} /><Header.Subheader><LocalizedText source={"Manage your peer contacts"} /></Header.Subheader>
             </Header.Content>
           </Header>
 
@@ -541,8 +537,7 @@ class Contacts extends Component {
               primary
             >
               <Icon name="plus" />
-              Create Invite
-            </Button>
+              <LocalizedText source={"Create Invite"} /></Button>
             <Button
               as="button"
               data-testid="contacts-add-friend"
@@ -550,12 +545,10 @@ class Contacts extends Component {
               onClick={() => this.setState({ addFriendModalOpen: true })}
             >
               <Icon name="user plus" />
-              Add Friend
-            </Button>
+              <LocalizedText source={"Add Friend"} /></Button>
             <Button disabled={nearbyLoading} onClick={this.loadNearby}>
               <Icon name="refresh" />
-              Refresh Nearby
-            </Button>
+              <LocalizedText source={"Refresh Nearby"} /></Button>
           </div>
 
           <Tab
@@ -572,9 +565,9 @@ class Contacts extends Component {
             onClose={() => this.setState({ addFriendModalOpen: false })}
             open={addFriendModalOpen}
           >
-            <Modal.Header>Add Friend from Invite</Modal.Header>
+            <Modal.Header><LocalizedText source={"Add Friend from Invite"} /></Modal.Header>
             <Modal.Content>
-              <p>Paste an invite link:</p>
+              <p><LocalizedText source={"Paste an invite link:"} /></p>
               <AddFriendForm
                 onSubmit={(inviteLink, nickname) => {
                   this.handleAddFromInvite(inviteLink, nickname);
@@ -588,9 +581,9 @@ class Contacts extends Component {
             onClose={() => this.setState({ createInviteModalOpen: false })}
             open={createInviteModalOpen}
           >
-            <Modal.Header>Invite Created</Modal.Header>
+            <Modal.Header><LocalizedText source={"Invite Created"} /></Modal.Header>
             <Modal.Content>
-              <p>Share this invite link:</p>
+              <p><LocalizedText source={"Share this invite link:"} /></p>
               <div style={{ marginBottom: '1em' }}>
                 <input
                   data-testid="contacts-invite-output"
@@ -602,7 +595,7 @@ class Contacts extends Component {
               </div>
               {inviteFriendCode && (
                 <p>
-                  Friend Code:{' '}
+                  <LocalizedText source={"Friend Code:"} />{' '}
                   <code data-testid="contacts-invite-friend-code">
                     {inviteFriendCode}
                   </code>
@@ -615,7 +608,7 @@ class Contacts extends Component {
                   textAlign="center"
                 >
                   <img
-                    alt="QR invite code"
+                    alt={interfaceText("QR invite code")}
                     data-testid="contacts-invite-qr"
                     src={inviteQrDataUrl}
                     style={{
@@ -623,7 +616,7 @@ class Contacts extends Component {
                       imageRendering: 'pixelated',
                       width: 192,
                     }}
-                  />
+                   {...interfaceTextProps("QR invite code")}/>
                 </Segment>
               )}
             </Modal.Content>
@@ -631,8 +624,7 @@ class Contacts extends Component {
               <Button
                 onClick={() => this.setState({ createInviteModalOpen: false })}
               >
-                Close
-              </Button>
+                <LocalizedText source={"Close"} /></Button>
             </Modal.Actions>
           </Modal>
         </Container>
@@ -724,15 +716,15 @@ class AddFriendForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <div style={{ marginBottom: '1em' }}>
-          <label>Invite Link:</label>
+          <label><LocalizedText source={"Invite Link:"} /></label>
           <input
             data-testid="contacts-add-invite-input"
             onChange={(e) => this.setState({ inviteLink: e.target.value })}
-            placeholder="slskr://invite/..."
+            placeholder={interfaceText("slskr://invite/...")}
             style={{ padding: '0.5em', width: '100%' }}
             type="text"
             value={this.state.inviteLink}
-          />
+           {...interfaceTextProps("slskr://invite/...")}/>
           <input
             accept="image/*"
             data-testid="contacts-add-invite-qr-file"
@@ -746,9 +738,9 @@ class AddFriendForm extends Component {
             disabled={this.state.scanning}
             icon
             onClick={() => this.fileInputRef.current?.click()}
-            title="Scan a QR invite image from your camera or photo library."
+            title={interfaceText("Scan a QR invite image from your camera or photo library.")}
             type="button"
-          >
+           {...interfaceTextProps("Scan a QR invite image from your camera or photo library.")}>
             <Icon name="qrcode" />
           </Button>
           {this.state.scanError && (
@@ -761,23 +753,22 @@ class AddFriendForm extends Component {
           )}
         </div>
         <div style={{ marginBottom: '1em' }}>
-          <label>Nickname:</label>
+          <label><LocalizedText source={"Nickname:"} /></label>
           <input
             data-testid="contacts-contact-nickname"
             onChange={(e) => this.setState({ nickname: e.target.value })}
-            placeholder="Friend's name"
+            placeholder={interfaceText("Friend's name")}
             style={{ padding: '0.5em', width: '100%' }}
             type="text"
             value={this.state.nickname}
-          />
+           {...interfaceTextProps("Friend's name")}/>
         </div>
         <Button
           data-testid="contacts-add-invite-submit"
           primary
           type="submit"
         >
-          Add Contact
-        </Button>
+          <LocalizedText source={"Add Contact"} /></Button>
       </form>
     );
   }
