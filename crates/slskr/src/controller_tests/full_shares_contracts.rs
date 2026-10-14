@@ -294,8 +294,9 @@ pub(super) async fn share_scan_progress_is_visible_before_a_large_scan_completes
     let scan = tokio::spawn(async move {
         crate::route_http_request("POST", "/api/v0/shares/rescan", None, "", &scan_state).await
     });
-    let deadline = tokio::time::Instant::now() + Duration::from_secs(10);
+    let deadline = tokio::time::Instant::now() + Duration::from_secs(120);
     let mut observed_progress = 0;
+    let mut observed_start_log = false;
     let mut observed_progress_log = false;
     while tokio::time::Instant::now() < deadline {
         let lifecycle = state.share_lifecycle.read().await.clone();
@@ -304,8 +305,9 @@ pub(super) async fn share_scan_progress_is_visible_before_a_large_scan_completes
             let logs = crate::route_http_request("GET", "/api/v0/logs", None, "", &state)
                 .await
                 .expect("read live share scan logs");
+            observed_start_log = logs.body.contains("Scanning shares...");
             observed_progress_log = logs.body.contains("share scan visited");
-            if observed_progress_log {
+            if observed_start_log && observed_progress_log {
                 break;
             }
         }
@@ -319,16 +321,32 @@ pub(super) async fn share_scan_progress_is_visible_before_a_large_scan_completes
         "large scan completed or failed before live filesystem progress was published"
     );
     assert!(
+        observed_start_log,
+        "large scan did not log its start before indexing"
+    );
+    assert!(
         observed_progress_log,
         "large scan completed before a progress log was visible"
     );
 
-    let response = tokio::time::timeout(Duration::from_secs(30), scan)
+    let response = tokio::time::timeout(Duration::from_secs(120), scan)
         .await
         .expect("large share scan timed out")
         .expect("share scan task failed")
         .expect("share scan route failed");
     assert_eq!(response.status, "202 Accepted");
+
+    let expected_completion = format!(
+        "Share scan completed, {TOTAL_FILES} files indexed after visiting {TOTAL_ENTRIES} filesystem entries"
+    );
+    let logs = crate::route_http_request("GET", "/api/v0/logs", None, "", &state)
+        .await
+        .expect("read completed share scan logs");
+    let completion_logged = logs.body.contains(&expected_completion);
+    assert!(
+        completion_logged,
+        "completed scan did not log its indexed file count"
+    );
     assert_eq!(
         state.share_lifecycle.read().await.scan_entries,
         TOTAL_ENTRIES

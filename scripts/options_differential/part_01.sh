@@ -50,6 +50,16 @@ def normalize_debug_runtime_ports(value):
         value,
     )
 
+def normalize_debug_default_transfer_slots(value):
+    # Debug output includes the configuration provider. Normalize only the
+    # known bounded/unbounded defaults; YAML and environment overrides retain
+    # their concrete values in this strict comparison.
+    return re.sub(
+        r"(?m)^( {6}slots=)(?:500|2147483647|20|10)( \(DefaultValueConfigurationProvider\))$",
+        r"\1<DEFAULT_TRANSFER_SLOTS>\2",
+        value,
+    )
+
 default_identity_values = (
     "A slskd user. https://github.com/slskd/slskd",
     "A slskdN user. Unofficial fork of slskd: https://github.com/snapetech/slskdn",
@@ -132,7 +142,7 @@ for path in source.iterdir():
         if not isinstance(value, str) or not value:
             raise SystemExit(f"invalid configuration debug view in {source}")
         value = re.sub(
-            r"/tmp/slskr-options-differential\.[^/]+/state-(?:slskd|slskdn)-configuration-(?:upstream|slskr)",
+            r"/(?:[^/\n]*/)*slskr-options-differential\.[^/]+/state-(?:slskd|slskdn)-configuration-(?:upstream|slskr)",
             "<STATE_DIR>",
             value,
         )
@@ -147,6 +157,7 @@ for path in source.iterdir():
             value,
         )
         value = normalize_debug_runtime_ports(value)
+        value = normalize_debug_default_transfer_slots(value)
         value = normalize_default_identity_text(value)
     elif path.name.startswith("debug-options-") or path.name.startswith("debug-startup-"):
         value = {"debug": value["debug"]}
@@ -154,7 +165,7 @@ for path in source.iterdir():
         value = {"pendingRestart": value["pendingRestart"]}
     elif path.name.startswith("debug-view-") and isinstance(value, str):
         value = re.sub(
-            r"/tmp/slskr-options-differential\.[^/]+/state-(?:slskd|slskdn)-debug-(?:upstream|slskr)",
+            r"/(?:[^/\n]*/)*slskr-options-differential\.[^/]+/state-(?:slskd|slskdn)-debug-(?:upstream|slskr)",
             "<STATE_DIR>",
             value,
         )
@@ -164,6 +175,7 @@ for path in source.iterdir():
             value,
         )
         value = normalize_debug_runtime_ports(value)
+        value = normalize_debug_default_transfer_slots(value)
         value = normalize_default_identity_text(value)
     elif path.name == "metrics-default.body":
         normalize_default_metrics_identity(value)
@@ -178,7 +190,7 @@ for path in source.iterdir():
         value = {"pendingRestart": value["pendingRestart"]}
     elif path.name.startswith("blacklist-validation-") and isinstance(value, str):
         value = re.sub(
-            r"/tmp/slskr-options-differential\.[^/]+/state-(?:slskd|slskdn)-blacklist-(?:upstream|slskr)",
+            r"/(?:[^/\n]*/)*slskr-options-differential\.[^/]+/state-(?:slskd|slskdn)-blacklist-(?:upstream|slskr)",
             "<STATE_DIR>",
             value,
         )
@@ -379,6 +391,13 @@ for path in source.iterdir():
         value = {"pendingRestart": value["pendingRestart"]}
     elif path.name.startswith("application-"):
         value = value["shares"]
+        if isinstance(value, dict) and "scanEntries" in value:
+            # slskR exposes this live progress counter in addition to the
+            # upstream application shape; its semantics are covered by Rust
+            # contract tests, while this differential checks shared fields.
+            scan_entries = value.pop("scanEntries")
+            if type(scan_entries) is not int or scan_entries < 0:
+                raise SystemExit(f"invalid share scan entry count in {source}: {scan_entries!r}")
     elif path.name.startswith("storage-options-"):
         value = value["directories"]
     elif path.name.startswith("options-"):
@@ -404,6 +423,20 @@ if sys.argv[3] == "yes":
 value["web"]["port"] = "<HTTP_PORT>"
 if isinstance(value["web"].get("https"), dict):
     value["web"]["https"]["port"] = "<HTTPS_PORT>"
+# slskR deliberately uses bounded default transfer slots (500 downloads and
+# 20 uploads), while the frozen upstream profiles default to unlimited
+# downloads and 10 uploads. Those safety defaults are covered by the transfer
+# policy contracts; keep this structural options comparison strict for any
+# configured value outside the two known default pairs.
+transfer_slot_defaults = {
+    "download": {500, 2147483647},
+    "upload": {20, 10},
+}
+for projection in (value.get("transfers", {}), value.get("global", {})):
+    for direction, defaults in transfer_slot_defaults.items():
+        policy = projection.get(direction)
+        if isinstance(policy, dict) and policy.get("slots") in defaults:
+            policy["slots"] = "<DEFAULT_TRANSFER_SLOTS>"
 if isinstance(value.get("dhtRendezvous"), dict):
     for key in ("dhtPort", "overlayPort", "effectiveOverlayPort"):
         if key in value["dhtRendezvous"]:

@@ -128,6 +128,10 @@ Completed across the main Rust routes:
   by keyboard, exercises a selected-row action, and fails if primary workflow,
   inspector/detail, action feedback or confirmation, hidden Developer drawer,
   bottom-player spacing, selectable live rows, or browser-error checks regress.
+- The per-route request ceiling applies to the first 500 ms of each navigation.
+  Full-workflow request totals remain in `target/ux-audit/audit.json` for
+  diagnosis, repeated endpoints remain subject to the 200 ms cadence floor,
+  and the selected search result must still issue exactly one download request.
 - No visible `GET /api/v0` text outside the Developer drawer.
 - Every page has a route-specific heading, primary action, table/list, empty
   state, and inspector/detail surface.

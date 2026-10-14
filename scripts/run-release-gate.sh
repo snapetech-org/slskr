@@ -41,6 +41,9 @@ run_optional_step() {
 }
 
 run_step "Rust debug build" cargo build --locked -q -p slskr
+# The remediation baseline runs the upstream Web UI endpoint audit, which
+# parses the local Web UI with packages from web's development dependencies.
+run_step "Install web dependencies" npm --prefix web ci
 run_step "Remediation baseline" scripts/check-remediation-baseline.sh
 run_step "Public posture check" scripts/check-public-posture.sh
 run_step "Changelog validation" scripts/validate-changelog.sh
@@ -74,7 +77,6 @@ else
   printf 'Skipped by local policy; set SLSKR_RUN_SLSKD_API_COMPAT_SMOKE=1 for the live smoke. Release certification requires a retained scheduled live-parity artifact.\n'
 fi
 
-run_step "Install web dependencies" npm --prefix web ci
 run_step "Rust web UI headless audit" node scripts/audit-rust-web-ui.mjs
 run_step "Web advisory audit" bash scripts/check-web-audit.sh web
 run_step "Web lint" npm --prefix web run lint
