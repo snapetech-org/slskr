@@ -1,3 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+
+
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -28,6 +32,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const PodJoinLeavePanel = ({ visible = true }) => {
+  useInterfaceLanguage();
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -57,7 +62,7 @@ const PodJoinLeavePanel = ({ visible = true }) => {
 
   const handleRequestJoin = async () => {
     if (!joinRequestData.trim()) {
-      toast.warning('Please enter join request JSON data');
+      toast.warning(interfaceText("Please enter join request JSON data"));
       return;
     }
 
@@ -77,7 +82,7 @@ const PodJoinLeavePanel = ({ visible = true }) => {
 
   const handleAcceptJoin = async () => {
     if (!acceptanceData.trim()) {
-      toast.warning('Please enter acceptance JSON data');
+      toast.warning(interfaceText("Please enter acceptance JSON data"));
       return;
     }
 
@@ -97,7 +102,7 @@ const PodJoinLeavePanel = ({ visible = true }) => {
 
   const handleRequestLeave = async () => {
     if (!leaveRequestData.trim()) {
-      toast.warning('Please enter leave request JSON data');
+      toast.warning(interfaceText("Please enter leave request JSON data"));
       return;
     }
 
@@ -117,7 +122,7 @@ const PodJoinLeavePanel = ({ visible = true }) => {
 
   const handleAcceptLeave = async () => {
     if (!acceptanceData.trim()) {
-      toast.warning('Please enter leave acceptance JSON data');
+      toast.warning(interfaceText("Please enter leave acceptance JSON data"));
       return;
     }
 
@@ -137,7 +142,7 @@ const PodJoinLeavePanel = ({ visible = true }) => {
 
   const handleLoadPendingRequests = async () => {
     if (!pendingPodId.trim()) {
-      toast.warning('Please enter a pod ID');
+      toast.warning(interfaceText("Please enter a pod ID"));
       return;
     }
 
@@ -168,42 +173,33 @@ const PodJoinLeavePanel = ({ visible = true }) => {
             <Card.Content>
               <Card.Header>
                 <Icon name="user plus" />
-                Pod Join/Leave Operations
-              </Card.Header>
+                <LocalizedText source={"Pod Join/Leave Operations"} /></Card.Header>
               <Card.Description>
-                Manage signed pod membership operations with Ed25519
-                verification and role-based approvals
-              </Card.Description>
-              <PodWorkflowNotice title="Publishes join and leave events">
-                Join and leave requests can expose peer IDs, requested roles,
-                public keys, signatures, and operator-provided messages.
-              </PodWorkflowNotice>
+                <LocalizedText source={"Manage signed pod membership operations with Ed25519 verification and role-based approvals"} /></Card.Description>
+              <PodWorkflowNotice title={interfaceText("Publishes join and leave events")} {...interfaceTextProps("Publishes join and leave events")}>
+                <LocalizedText source={"Join and leave requests can expose peer IDs, requested roles, public keys, signatures, and operator-provided messages."} /></PodWorkflowNotice>
               <Message info>
-                In Enforce mode, signatures use the
-                <code> ed25519:&lt;base64 signature&gt;</code> format over the
-                canonical join payload and require a fresh one-use nonce.
-              </Message>
+                <LocalizedText source={"In Enforce mode, signatures use the"} /><code> ed25519:&lt;base64 signature&gt;</code> <LocalizedText source={"format over the canonical join payload and require a fresh one-use nonce."} /></Message>
             </Card.Content>
 
             {/* Join Request */}
             <Card.Content>
-              <Header size="small">Request to Join Pod</Header>
+              <Header size="small"><LocalizedText source={"Request to Join Pod"} /></Header>
               <Form>
                 <Form.TextArea
-                  label="Join Request JSON (signed by requester)"
+                  label={interfaceText("Join Request JSON (signed by requester)")}
                   onChange={(e) => setJoinRequestData(e.target.value)}
                   placeholder='{"podId": "pod:artist:mb:daft-punk-hash", "peerId": "alice", "requestedRole": "member", "publicKey": "base64-ed25519-public-key", "timestampUnixMs": 1703123456789, "signature": "ed25519:base64-signature", "nonce": "unique-request-nonce", "message": "Please let me join!"}'
                   rows={4}
                   value={joinRequestData}
-                />
+                 {...interfaceTextProps("Join Request JSON (signed by requester)")}/>
                 <Button
                   disabled={requestingJoin || !joinRequestData.trim()}
                   loading={requestingJoin}
                   onClick={handleRequestJoin}
                   primary
                 >
-                  Submit Join Request
-                </Button>
+                  <LocalizedText source={"Submit Join Request"} /></Button>
               </Form>
 
               {joinRequestResult && (
@@ -211,21 +207,21 @@ const PodJoinLeavePanel = ({ visible = true }) => {
                   {joinRequestResult.error ? (
                     <Message error>
                       <p>
-                        Failed to submit join request: {joinRequestResult.error}
+                        <LocalizedText source={"Failed to submit join request:"} />{" "}{joinRequestResult.error}
                       </p>
                     </Message>
                   ) : (
                     <Message success>
-                      <Message.Header>Join Request Submitted</Message.Header>
+                      <Message.Header><LocalizedText source={"Join Request Submitted"} /></Message.Header>
                       <p>
-                        <strong>Pod ID:</strong> {joinRequestResult.podId}
+                        <strong><LocalizedText source={"Pod ID:"} /></strong> {joinRequestResult.podId}
                         <br />
-                        <strong>Peer ID:</strong> {joinRequestResult.peerId}
+                        <strong><LocalizedText source={"Peer ID:"} /></strong> {joinRequestResult.peerId}
                         <br />
-                        <strong>Status:</strong>{' '}
+                        <strong><LocalizedText source={"Status:"} /></strong>{' '}
                         {joinRequestResult.success
-                          ? 'Pending approval'
-                          : 'Failed'}
+                          ? <LocalizedText source={"Pending approval"} />
+                          : <LocalizedText source={"Failed"} />}
                       </p>
                     </Message>
                   )}
@@ -237,23 +233,22 @@ const PodJoinLeavePanel = ({ visible = true }) => {
               <Grid>
                 <Grid.Column width={8}>
                   {/* Accept Join */}
-                  <Header size="small">Accept Join Request</Header>
+                  <Header size="small"><LocalizedText source={"Accept Join Request"} /></Header>
                   <Form>
                     <Form.TextArea
-                      label="Acceptance JSON (signed by owner/mod)"
+                      label={interfaceText("Acceptance JSON (signed by owner/mod)")}
                       onChange={(e) => setAcceptanceData(e.target.value)}
                       placeholder='{"podId": "pod:artist:mb:daft-punk-hash", "peerId": "alice", "acceptedRole": "member", "acceptorPeerId": "bob", "acceptorPublicKey": "base64-ed25519-public-key", "timestampUnixMs": 1703123456789, "signature": "ed25519:base64-signature", "message": "Welcome!"}'
                       rows={4}
                       value={acceptanceData}
-                    />
+                     {...interfaceTextProps("Acceptance JSON (signed by owner/mod)")}/>
                     <Button
                       disabled={acceptingJoin || !acceptanceData.trim()}
                       loading={acceptingJoin}
                       onClick={handleAcceptJoin}
                       positive
                     >
-                      Accept Join
-                    </Button>
+                      <LocalizedText source={"Accept Join"} /></Button>
                   </Form>
 
                   {acceptanceResult && (
@@ -270,7 +265,7 @@ const PodJoinLeavePanel = ({ visible = true }) => {
                           size="tiny"
                           success
                         >
-                          <p>Join accepted successfully</p>
+                          <p><LocalizedText source={"Join accepted successfully"} /></p>
                         </Message>
                       )}
                     </div>
@@ -279,22 +274,21 @@ const PodJoinLeavePanel = ({ visible = true }) => {
 
                 <Grid.Column width={8}>
                   {/* Leave Request */}
-                  <Header size="small">Request to Leave Pod</Header>
+                  <Header size="small"><LocalizedText source={"Request to Leave Pod"} /></Header>
                   <Form>
                     <Form.TextArea
-                      label="Leave Request JSON (signed by member)"
+                      label={interfaceText("Leave Request JSON (signed by member)")}
                       onChange={(e) => setLeaveRequestData(e.target.value)}
                       placeholder='{"podId": "pod:artist:mb:daft-punk-hash", "peerId": "alice", "publicKey": "base64-ed25519-public-key", "timestampUnixMs": 1703123456789, "signature": "ed25519:base64-signature", "message": "Goodbye!"}'
                       rows={4}
                       value={leaveRequestData}
-                    />
+                     {...interfaceTextProps("Leave Request JSON (signed by member)")}/>
                     <Button
                       disabled={requestingLeave || !leaveRequestData.trim()}
                       loading={requestingLeave}
                       onClick={handleRequestLeave}
                     >
-                      Submit Leave Request
-                    </Button>
+                      <LocalizedText source={"Submit Leave Request"} /></Button>
                   </Form>
 
                   {leaveRequestResult && (
@@ -311,7 +305,7 @@ const PodJoinLeavePanel = ({ visible = true }) => {
                           size="tiny"
                           success
                         >
-                          <p>Leave request submitted</p>
+                          <p><LocalizedText source={"Leave request submitted"} /></p>
                         </Message>
                       )}
                     </div>
@@ -325,24 +319,22 @@ const PodJoinLeavePanel = ({ visible = true }) => {
                 <Grid.Column width={8}>
                   {/* Accept Leave */}
                   <Header size="small">
-                    Accept Leave Request (Owner/Mod Only)
-                  </Header>
+                    <LocalizedText source={"Accept Leave Request (Owner/Mod Only)"} /></Header>
                   <Form>
                     <Form.TextArea
-                      label="Leave Acceptance JSON (signed by owner/mod)"
+                      label={interfaceText("Leave Acceptance JSON (signed by owner/mod)")}
                       onChange={(e) => setAcceptanceData(e.target.value)}
                       placeholder='{"podId": "pod:artist:mb:daft-punk-hash", "peerId": "alice", "acceptorPeerId": "bob", "acceptorPublicKey": "base64-ed25519-public-key", "timestampUnixMs": 1703123456789, "signature": "ed25519:base64-signature", "message": "Farewell!"}'
                       rows={4}
                       value={acceptanceData}
-                    />
+                     {...interfaceTextProps("Leave Acceptance JSON (signed by owner/mod)")}/>
                     <Button
                       disabled={acceptingLeave || !acceptanceData.trim()}
                       loading={acceptingLeave}
                       negative
                       onClick={handleAcceptLeave}
                     >
-                      Accept Leave
-                    </Button>
+                      <LocalizedText source={"Accept Leave"} /></Button>
                   </Form>
 
                   {leaveAcceptanceResult && (
@@ -359,7 +351,7 @@ const PodJoinLeavePanel = ({ visible = true }) => {
                           size="tiny"
                           success
                         >
-                          <p>Leave accepted successfully</p>
+                          <p><LocalizedText source={"Leave accepted successfully"} /></p>
                         </Message>
                       )}
                     </div>
@@ -368,27 +360,26 @@ const PodJoinLeavePanel = ({ visible = true }) => {
 
                 <Grid.Column width={8}>
                   {/* Pending Requests */}
-                  <Header size="small">View Pending Requests</Header>
+                  <Header size="small"><LocalizedText source={"View Pending Requests"} /></Header>
                   <Form>
                     <Form.Input
-                      label="Pod ID"
+                      label={interfaceText("Pod ID")}
                       onChange={(e) => setPendingPodId(e.target.value)}
                       placeholder="pod:artist:mb:daft-punk-hash"
                       value={pendingPodId}
-                    />
+                     {...interfaceTextProps("Pod ID")}/>
                     <Button
                       disabled={loadingPendingRequests || !pendingPodId.trim()}
                       loading={loadingPendingRequests}
                       onClick={handleLoadPendingRequests}
                     >
-                      Load Pending Requests
-                    </Button>
+                      <LocalizedText source={"Load Pending Requests"} /></Button>
                   </Form>
 
                   {pendingJoinRequests && !pendingJoinRequests.error && (
                     <div style={{ marginTop: '0.5em' }}>
                       <Message size="tiny">
-                        <strong>Join Requests:</strong>{' '}
+                        <strong><LocalizedText source={"Join Requests:"} /></strong>{' '}
                         {pendingJoinRequests.pendingJoinRequests?.length || 0}
                       </Message>
                     </div>
@@ -397,7 +388,7 @@ const PodJoinLeavePanel = ({ visible = true }) => {
                   {pendingLeaveRequests && !pendingLeaveRequests.error && (
                     <div style={{ marginTop: '0.5em' }}>
                       <Message size="tiny">
-                        <strong>Leave Requests:</strong>{' '}
+                        <strong><LocalizedText source={"Leave Requests:"} /></strong>{' '}
                         {pendingLeaveRequests.pendingLeaveRequests?.length || 0}
                       </Message>
                     </div>
@@ -410,7 +401,7 @@ const PodJoinLeavePanel = ({ visible = true }) => {
                       size="tiny"
                       style={{ marginTop: '0.5em' }}
                     >
-                      <p>Failed to load pending requests</p>
+                      <p><LocalizedText source={"Failed to load pending requests"} /></p>
                     </Message>
                   )}
                 </Grid.Column>

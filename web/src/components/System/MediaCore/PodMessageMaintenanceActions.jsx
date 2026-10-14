@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../../lib/interfaceLocale";
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -74,16 +76,14 @@ const PodMessageMaintenanceActions = ({ size = 'tiny' }) => {
         onClick={handleRebuildSearchIndex}
         size={size}
       >
-        Rebuild Search Index
-      </Button>
+        <LocalizedText source={"Rebuild Search Index"} /></Button>
       <Button
         color="orange"
         loading={vacuumLoading}
         onClick={handleVacuumDatabase}
         size={size}
       >
-        Vacuum Database
-      </Button>
+        <LocalizedText source={"Vacuum Database"} /></Button>
     </>
   );
 };

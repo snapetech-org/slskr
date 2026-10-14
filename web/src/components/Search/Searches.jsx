@@ -1,3 +1,4 @@
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import './Search.css';
 import SearchesListView from './SearchesListView';
 import { toDisplayError } from '../../lib/errors';
@@ -79,9 +80,9 @@ const Searches = ({ runtimeProfile, server } = {}) => {
   const acquisitionProfileOptions = acquisitionProfiles.map((profile) => ({
     content: (
       <div>
-        <strong>{profile.label}</strong>
+        <strong>{interfaceText(profile.label)}</strong>
         <div className="search-acquisition-profile-option-summary">
-          {profile.summary}
+          {interfaceText(profile.summary)}
         </div>
       </div>
     ),
@@ -379,12 +380,12 @@ const Searches = ({ runtimeProfile, server } = {}) => {
       mountedRef.current && createRequestIdRef.current === requestId;
 
     if (!searchText) {
-      toast.error('Please enter a search phrase');
+      toast.error(interfaceText("Please enter a search phrase"));
       return;
     }
 
     if (scenePodBridgeEnabled && !providerPod && !providerScene) {
-      toast.error('Select at least one search source');
+      toast.error(interfaceText("Select at least one search source"));
       return;
     }
 

@@ -1,3 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+
+
 import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
@@ -34,6 +38,7 @@ const PodMembershipManagementPanel = ({
   verifyingMembership,
   visible = true,
 }) => {
+  useInterfaceLanguage();
   useRegionalFormat();
   const mountedRef = useRef(true);
 
@@ -67,7 +72,7 @@ const PodMembershipManagementPanel = ({
 
   const handlePublishMembership = async () => {
     if (!membershipRecord.trim()) {
-      toast.warning('Please enter membership record JSON data');
+      toast.warning(interfaceText("Please enter membership record JSON data"));
       return;
     }
 
@@ -87,7 +92,7 @@ const PodMembershipManagementPanel = ({
 
   const handleGetMembership = async () => {
     if (!membershipPodId.trim() || !membershipPeerId.trim()) {
-      toast.warning('Please enter both Pod ID and Peer ID');
+      toast.warning(interfaceText("Please enter both Pod ID and Peer ID"));
       return;
     }
 
@@ -108,7 +113,7 @@ const PodMembershipManagementPanel = ({
 
   const handleVerifyMembership = async () => {
     if (!membershipPodId.trim() || !membershipPeerId.trim()) {
-      toast.warning('Please enter both Pod ID and Peer ID');
+      toast.warning(interfaceText("Please enter both Pod ID and Peer ID"));
       return;
     }
 
@@ -129,7 +134,7 @@ const PodMembershipManagementPanel = ({
 
   const handleBanMember = async () => {
     if (!membershipPodId.trim() || !membershipPeerId.trim()) {
-      toast.warning('Please enter both Pod ID and Peer ID');
+      toast.warning(interfaceText("Please enter both Pod ID and Peer ID"));
       return;
     }
 
@@ -160,7 +165,7 @@ const PodMembershipManagementPanel = ({
 
   const handleChangeRole = async () => {
     if (!membershipPodId.trim() || !membershipPeerId.trim()) {
-      toast.warning('Please enter both Pod ID and Peer ID');
+      toast.warning(interfaceText("Please enter both Pod ID and Peer ID"));
       return;
     }
 
@@ -203,7 +208,7 @@ const PodMembershipManagementPanel = ({
     try {
       const result = await mediacore.cleanupExpiredMemberships();
       toast.success(
-        `Cleanup completed: ${result.recordsCleaned} records cleaned, ${result.errorsEncountered} errors`,
+        interfaceText("Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors", { "recordsCleaned": (result.recordsCleaned), "errorsEncountered": (result.errorsEncountered) }),
       );
       // Reload stats to reflect changes
       await handleLoadMembershipStats();
@@ -219,38 +224,31 @@ const PodMembershipManagementPanel = ({
             <Card.Content>
               <Card.Header>
                 <Icon name="users" />
-                Pod Membership Management
-              </Card.Header>
+                <LocalizedText source={"Pod Membership Management"} /></Card.Header>
               <Card.Description>
-                Manage signed membership records in DHT with role-based access
-                control
-              </Card.Description>
-              <PodWorkflowNotice title="Publishes membership state">
-                Membership records can reveal peer IDs, roles, bans, public
-                keys, and pod participation history. Verify the record before
-                publishing it.
-              </PodWorkflowNotice>
+                <LocalizedText source={"Manage signed membership records in DHT with role-based access control"} /></Card.Description>
+              <PodWorkflowNotice title={interfaceText("Publishes membership state")} {...interfaceTextProps("Publishes membership state")}>
+                <LocalizedText source={"Membership records can reveal peer IDs, roles, bans, public keys, and pod participation history. Verify the record before publishing it."} /></PodWorkflowNotice>
             </Card.Content>
 
             {/* Publish Membership */}
             <Card.Content>
-              <Header size="small">Publish Membership Record</Header>
+              <Header size="small"><LocalizedText source={"Publish Membership Record"} /></Header>
               <Form>
                 <Form.TextArea
-                  label="Membership Record JSON"
+                  label={interfaceText("Membership Record JSON")}
                   onChange={(e) => setMembershipRecord(e.target.value)}
                   placeholder='{"podId": "pod:artist:mb:daft-punk-hash", "peerId": "alice", "role": "member", "isBanned": false, "publicKey": "base64-ed25519-key", "joinedAt": "2024-01-01T00:00:00Z"}'
                   rows={4}
                   value={membershipRecord}
-                />
+                 {...interfaceTextProps("Membership Record JSON")}/>
                 <Button
                   disabled={publishingMembership || !membershipRecord.trim()}
                   loading={publishingMembership}
                   onClick={handlePublishMembership}
                   primary
                 >
-                  Publish Membership
-                </Button>
+                  <LocalizedText source={"Publish Membership"} /></Button>
               </Form>
 
               {membershipPublishResult && (
@@ -258,28 +256,27 @@ const PodMembershipManagementPanel = ({
                   {membershipPublishResult.error ? (
                     <Message error>
                       <p>
-                        Failed to publish membership:{' '}
+                        <LocalizedText source={"Failed to publish membership:"} />{' '}
                         {membershipPublishResult.error}
                       </p>
                     </Message>
                   ) : (
                     <Message success>
                       <Message.Header>
-                        Membership Published Successfully
-                      </Message.Header>
+                        <LocalizedText source={"Membership Published Successfully"} /></Message.Header>
                       <p>
-                        <strong>Pod ID:</strong> {membershipPublishResult.podId}
+                        <strong><LocalizedText source={"Pod ID:"} /></strong> {membershipPublishResult.podId}
                         <br />
-                        <strong>Peer ID:</strong>{' '}
+                        <strong><LocalizedText source={"Peer ID:"} /></strong>{' '}
                         {membershipPublishResult.peerId}
                         <br />
-                        <strong>DHT Key:</strong>{' '}
+                        <strong><LocalizedText source={"DHT Key:"} /></strong>{' '}
                         {membershipPublishResult.dhtKey}
                         <br />
-                        <strong>Published:</strong>{' '}
+                        <strong><LocalizedText source={"Published:"} /></strong>{' '}
                         {formatRegionalDateTime(membershipPublishResult.publishedAt)}
                         <br />
-                        <strong>Expires:</strong>{' '}
+                        <strong><LocalizedText source={"Expires:"} /></strong>{' '}
                         {formatRegionalDateTime(membershipPublishResult.expiresAt)}
                       </p>
                     </Message>
@@ -292,20 +289,20 @@ const PodMembershipManagementPanel = ({
               <Grid>
                 <Grid.Column width={8}>
                   {/* Get Membership */}
-                  <Header size="small">Get Membership Record</Header>
+                  <Header size="small"><LocalizedText source={"Get Membership Record"} /></Header>
                   <Form>
                     <Form.Input
-                      label="Pod ID"
+                      label={interfaceText("Pod ID")}
                       onChange={(e) => setMembershipPodId(e.target.value)}
                       placeholder="pod:artist:mb:daft-punk-hash"
                       value={membershipPodId}
-                    />
+                     {...interfaceTextProps("Pod ID")}/>
                     <Form.Input
-                      label="Peer ID"
+                      label={interfaceText("Peer ID")}
                       onChange={(e) => setMembershipPeerId(e.target.value)}
-                      placeholder="alice"
+                      placeholder={interfaceText("alice")}
                       value={membershipPeerId}
-                    />
+                     {...interfaceTextProps("Peer ID")}/>
                     <Button.Group fluid>
                       <Button
                         disabled={
@@ -316,8 +313,7 @@ const PodMembershipManagementPanel = ({
                         loading={gettingMembership}
                         onClick={handleGetMembership}
                       >
-                        Get Membership
-                      </Button>
+                        <LocalizedText source={"Get Membership"} /></Button>
                       <Button
                         disabled={
                           verifyingMembership ||
@@ -327,8 +323,7 @@ const PodMembershipManagementPanel = ({
                         loading={verifyingMembership}
                         onClick={handleVerifyMembership}
                       >
-                        Verify Membership
-                      </Button>
+                        <LocalizedText source={"Verify Membership"} /></Button>
                     </Button.Group>
                   </Form>
 
@@ -338,37 +333,37 @@ const PodMembershipManagementPanel = ({
                       {membershipResult.error ? (
                         <Message error>
                           <p>
-                            Failed to get membership: {membershipResult.error}
+                            <LocalizedText source={"Failed to get membership:"} />{" "}{membershipResult.error}
                           </p>
                         </Message>
                       ) : membershipResult.found ? (
                         <Message success>
-                          <Message.Header>Membership Found</Message.Header>
+                          <Message.Header><LocalizedText source={"Membership Found"} /></Message.Header>
                           <p>
-                            <strong>Pod ID:</strong> {membershipResult.podId}
+                            <strong><LocalizedText source={"Pod ID:"} /></strong> {membershipResult.podId}
                             <br />
-                            <strong>Peer ID:</strong> {membershipResult.peerId}
+                            <strong><LocalizedText source={"Peer ID:"} /></strong> {membershipResult.peerId}
                             <br />
-                            <strong>Role:</strong>{' '}
+                            <strong><LocalizedText source={"Role:"} /></strong>{' '}
                             {membershipResult.signedRecord?.membership?.role}
                             <br />
-                            <strong>Banned:</strong>{' '}
+                            <strong><LocalizedText source={"Banned:"} /></strong>{' '}
                             {membershipResult.signedRecord?.membership?.isBanned
-                              ? 'Yes'
-                              : 'No'}
+                              ? <LocalizedText source={"Yes"} />
+                              : <LocalizedText source={"No"} />}
                             <br />
-                            <strong>Signature Valid:</strong>{' '}
-                            {membershipResult.isValidSignature ? 'Yes' : 'No'}
+                            <strong><LocalizedText source={"Signature Valid:"} /></strong>{' '}
+                            {membershipResult.isValidSignature ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
                             <br />
-                            <strong>Joined:</strong>{' '}
+                            <strong><LocalizedText source={"Joined:"} /></strong>{' '}
                             {membershipResult.signedRecord?.membership?.joinedAt
                               ? formatRegionalDateTime(membershipResult.signedRecord.membership.joinedAt)
-                              : 'Unknown'}
+                              : <LocalizedText source={"Unknown"} />}
                           </p>
                         </Message>
                       ) : (
                         <Message warning>
-                          <p>Membership not found in DHT</p>
+                          <p><LocalizedText source={"Membership not found in DHT"} /></p>
                         </Message>
                       )}
                     </div>
@@ -380,26 +375,25 @@ const PodMembershipManagementPanel = ({
                       {membershipVerification.error ? (
                         <Message error>
                           <p>
-                            Failed to verify membership:{' '}
+                            <LocalizedText source={"Failed to verify membership:"} />{' '}
                             {membershipVerification.error}
                           </p>
                         </Message>
                       ) : (
                         <Message info>
                           <Message.Header>
-                            Membership Verification
-                          </Message.Header>
+                            <LocalizedText source={"Membership Verification"} /></Message.Header>
                           <p>
-                            <strong>Valid Member:</strong>{' '}
+                            <strong><LocalizedText source={"Valid Member:"} /></strong>{' '}
                             {membershipVerification.isValidMember
-                              ? 'Yes'
-                              : 'No'}
+                              ? <LocalizedText source={"Yes"} />
+                              : <LocalizedText source={"No"} />}
                             <br />
-                            <strong>Role:</strong>{' '}
+                            <strong><LocalizedText source={"Role:"} /></strong>{' '}
                             {membershipVerification.role || 'None'}
                             <br />
-                            <strong>Banned:</strong>{' '}
-                            {membershipVerification.isBanned ? 'Yes' : 'No'}
+                            <strong><LocalizedText source={"Banned:"} /></strong>{' '}
+                            {membershipVerification.isBanned ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
                           </p>
                         </Message>
                       )}
@@ -409,16 +403,16 @@ const PodMembershipManagementPanel = ({
 
                 <Grid.Column width={8}>
                   {/* Member Management */}
-                  <Header size="small">Member Management</Header>
+                  <Header size="small"><LocalizedText source={"Member Management"} /></Header>
 
                   {/* Ban Member */}
                   <Form style={{ marginBottom: '1em' }}>
                     <Form.Input
-                      label="Ban Reason (optional)"
+                      label={interfaceText("Ban Reason (optional)")}
                       onChange={(e) => setBanReason(e.target.value)}
-                      placeholder="Violation of community rules"
+                      placeholder={interfaceText("Violation of community rules")}
                       value={banReason}
-                    />
+                     {...interfaceTextProps("Ban Reason (optional)")}/>
                     <Button
                       color="red"
                       disabled={
@@ -430,22 +424,21 @@ const PodMembershipManagementPanel = ({
                       loading={banningMember}
                       onClick={handleBanMember}
                     >
-                      Ban Member
-                    </Button>
+                      <LocalizedText source={"Ban Member"} /></Button>
                   </Form>
 
                   {/* Change Role */}
                   <Form>
                     <Form.Select
-                      label="New Role"
+                      label={interfaceText("New Role")}
                       onChange={(e, { value }) => setNewRole(value)}
                       options={[
-                        { key: 'member', text: 'Member', value: 'member' },
-                        { key: 'mod', text: 'Moderator', value: 'mod' },
-                        { key: 'owner', text: 'Owner', value: 'owner' },
+                        { key: 'member', text: interfaceText("Member"), value: 'member' },
+                        { key: 'mod', text: interfaceText("Moderator"), value: 'mod' },
+                        { key: 'owner', text: interfaceText("Owner"), value: 'owner' },
                       ]}
                       value={newRole}
-                    />
+                     {...interfaceTextProps("New Role")}/>
                     <Button
                       color="blue"
                       disabled={
@@ -457,8 +450,7 @@ const PodMembershipManagementPanel = ({
                       loading={changingRole}
                       onClick={handleChangeRole}
                     >
-                      Change Role
-                    </Button>
+                      <LocalizedText source={"Change Role"} /></Button>
                   </Form>
 
                   {/* Management Results */}
@@ -467,7 +459,7 @@ const PodMembershipManagementPanel = ({
                       style={{ marginTop: '1em' }}
                       success
                     >
-                      <p>Member banned successfully</p>
+                      <p><LocalizedText source={"Member banned successfully"} /></p>
                     </Message>
                   )}
 
@@ -476,7 +468,7 @@ const PodMembershipManagementPanel = ({
                       style={{ marginTop: '1em' }}
                       success
                     >
-                      <p>Member role changed successfully</p>
+                      <p><LocalizedText source={"Member role changed successfully"} /></p>
                     </Message>
                   )}
                 </Grid.Column>
@@ -492,43 +484,41 @@ const PodMembershipManagementPanel = ({
                   onClick={handleLoadMembershipStats}
                   primary
                 >
-                  Load Membership Stats
-                </Button>
+                  <LocalizedText source={"Load Membership Stats"} /></Button>
                 <Button
                   color="orange"
                   onClick={handleCleanupMemberships}
                 >
-                  Cleanup Expired
-                </Button>
+                  <LocalizedText source={"Cleanup Expired"} /></Button>
               </Button.Group>
 
               {membershipStats && !membershipStats.error && (
                 <div style={{ marginTop: '1em' }}>
                   <Message>
-                    <Message.Header>Membership Statistics</Message.Header>
+                    <Message.Header><LocalizedText source={"Membership Statistics"} /></Message.Header>
                     <p>
-                      <strong>Total Memberships:</strong>{' '}
+                      <strong><LocalizedText source={"Total Memberships:"} /></strong>{' '}
                       {membershipStats.totalMemberships}
                       <br />
-                      <strong>Active Memberships:</strong>{' '}
+                      <strong><LocalizedText source={"Active Memberships:"} /></strong>{' '}
                       {membershipStats.activeMemberships}
                       <br />
-                      <strong>Banned Memberships:</strong>{' '}
+                      <strong><LocalizedText source={"Banned Memberships:"} /></strong>{' '}
                       {membershipStats.bannedMemberships}
                       <br />
-                      <strong>Expired Memberships:</strong>{' '}
+                      <strong><LocalizedText source={"Expired Memberships:"} /></strong>{' '}
                       {membershipStats.expiredMemberships}
                       <br />
-                      <strong>Last Operation:</strong>{' '}
+                      <strong><LocalizedText source={"Last Operation:"} /></strong>{' '}
                       {membershipStats.lastOperation
                         ? formatRegionalDateTime(membershipStats.lastOperation)
-                        : 'Never'}
+                        : <LocalizedText source={"Never"} />}
                     </p>
                     {membershipStats.membershipsByRole &&
                       Object.keys(membershipStats.membershipsByRole).length >
                         0 && (
                         <div style={{ marginTop: '0.5em' }}>
-                          <strong>Memberships by Role:</strong>
+                          <strong><LocalizedText source={"Memberships by Role:"} /></strong>
                           {Object.entries(
                             membershipStats.membershipsByRole,
                           ).map(([role, count]) => (
@@ -552,7 +542,7 @@ const PodMembershipManagementPanel = ({
                   style={{ marginTop: '1em' }}
                 >
                   <p>
-                    Failed to load membership stats: {membershipStats.error}
+                    <LocalizedText source={"Failed to load membership stats:"} />{" "}{membershipStats.error}
                   </p>
                 </Message>
               )}

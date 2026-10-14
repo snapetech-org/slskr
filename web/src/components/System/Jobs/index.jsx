@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import { formatRegionalDateTime, formatBytes } from '../../../lib/util';
 // <copyright file="index.jsx" company="slskr Team">
 // Copyright (c) slskr Team. All rights reserved.
@@ -45,6 +47,7 @@ const ACTIVE_JOB_STATES = new Set([
 ]);
 
 const Jobs = () => {
+  useInterfaceLanguage();
   const [jobs, setJobs] = useState([]);
   const [swarmJobs, setSwarmJobs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -237,7 +240,7 @@ const Jobs = () => {
   };
 
   const formatDate = (dateString) => {
-    if (!dateString) return 'N/A';
+    if (!dateString) return interfaceText('N/A');
     try {
       return formatRegionalDateTime(dateString);
     } catch {
@@ -253,13 +256,13 @@ const Jobs = () => {
       <Segment>
         <Header as="h3">
           <Icon name="chart bar" />
-          <Header.Content>Job Analytics</Header.Content>
+          <Header.Content><LocalizedText source={"Job Analytics"} /></Header.Content>
         </Header>
         <Grid columns={4}>
           <Grid.Column>
             <Statistic>
               <Statistic.Value>{analytics.total}</Statistic.Value>
-              <Statistic.Label>Total Jobs</Statistic.Label>
+              <Statistic.Label><LocalizedText source={"Total Jobs"} /></Statistic.Label>
             </Statistic>
           </Grid.Column>
           <Grid.Column>
@@ -271,7 +274,7 @@ const Jobs = () => {
                 />
                 {analytics.active}
               </Statistic.Value>
-              <Statistic.Label>Active</Statistic.Label>
+              <Statistic.Label><LocalizedText source={"Active"} /></Statistic.Label>
             </Statistic>
           </Grid.Column>
           <Grid.Column>
@@ -283,7 +286,7 @@ const Jobs = () => {
                 />
                 {analytics.completed}
               </Statistic.Value>
-              <Statistic.Label>Completed</Statistic.Label>
+              <Statistic.Label><LocalizedText source={"Completed"} /></Statistic.Label>
             </Statistic>
           </Grid.Column>
           <Grid.Column>
@@ -291,7 +294,7 @@ const Jobs = () => {
               <Statistic.Value>
                 {Object.keys(analytics.byType).length}
               </Statistic.Value>
-              <Statistic.Label>Job Types</Statistic.Label>
+              <Statistic.Label><LocalizedText source={"Job Types"} /></Statistic.Label>
             </Statistic>
           </Grid.Column>
         </Grid>
@@ -299,7 +302,7 @@ const Jobs = () => {
 
       {swarmError && (
         <Message negative>
-          <Message.Header>Active swarm jobs unavailable</Message.Header>
+          <Message.Header><LocalizedText source={"Active swarm jobs unavailable"} /></Message.Header>
           <p>{swarmError}</p>
         </Message>
       )}
@@ -308,9 +311,9 @@ const Jobs = () => {
           data-testid="jobs-load-error"
           error
         >
-          <Message.Header>Jobs unavailable</Message.Header>
+          <Message.Header><LocalizedText source={"Jobs unavailable"} /></Message.Header>
           <p>{jobsError}</p>
-          <p>Previously loaded jobs remain visible until the next successful refresh.</p>
+          <p><LocalizedText source={"Previously loaded jobs remain visible until the next successful refresh."} /></p>
         </Message>
       )}
 
@@ -320,10 +323,8 @@ const Jobs = () => {
           <Header as="h3">
             <Icon name="bolt" />
             <Header.Content>
-              Active Swarm Downloads
-              <Header.Subheader>
-                Multi-source downloads in progress
-              </Header.Subheader>
+              <LocalizedText source={"Active Swarm Downloads"} /><Header.Subheader>
+                <LocalizedText source={"Multi-source downloads in progress"} /></Header.Subheader>
             </Header.Content>
           </Header>
           {swarmLoading && (
@@ -345,7 +346,7 @@ const Jobs = () => {
                       {job.filename?.split('/').pop() ?? 'Unknown file'}
                     </Card.Header>
                     <Card.Meta>
-                      {job.activeSources ?? 0} sources •{' '}
+                      {job.activeSources ?? 0} <LocalizedText source={"sources •"} />{' '}
                       {formatBytes(job.downloadedBytes ?? 0)} /{' '}
                       {formatBytes(job.totalBytes ?? 0)}
                     </Card.Meta>
@@ -365,8 +366,7 @@ const Jobs = () => {
                     {job.estimatedSecondsRemaining && (
                       <Label size="tiny">
                         <Icon name="clock" />
-                        {Math.round(job.estimatedSecondsRemaining)}s remaining
-                      </Label>
+                        {Math.round(job.estimatedSecondsRemaining)}<LocalizedText source={"s remaining"} /></Label>
                     )}
                     <div style={{ marginTop: '0.5em' }}>
                       <Button
@@ -379,8 +379,7 @@ const Jobs = () => {
                         size="small"
                       >
                         <Icon name="chart bar" />
-                        View Details
-                      </Button>
+                        <LocalizedText source={"View Details"} /></Button>
                     </div>
                   </Card.Content>
                 </Card>
@@ -402,8 +401,7 @@ const Jobs = () => {
       >
         <Modal.Header>
           <Icon name="chart bar" />
-          Swarm Download Visualization
-        </Modal.Header>
+          <LocalizedText source={"Swarm Download Visualization"} /></Modal.Header>
         <Modal.Content scrolling>
           {selectedSwarmJobId && (
             <SwarmVisualization jobId={selectedSwarmJobId} />
@@ -415,7 +413,7 @@ const Jobs = () => {
       <Segment>
         <Header as="h3">
           <Icon name="tasks" />
-          <Header.Content>All Jobs</Header.Content>
+          <Header.Content><LocalizedText source={"All Jobs"} /></Header.Content>
         </Header>
 
         {/* Filters */}
@@ -424,41 +422,41 @@ const Jobs = () => {
             clearable
             onChange={(_e, { value }) => handleFilterChange('type', value)}
             options={[
-              { key: 'discography', text: 'Discography', value: 'discography' },
+              { key: 'discography', text: interfaceText("Discography"), value: 'discography' },
               {
                 key: 'label_crate',
-                text: 'Label Crate',
+                text: interfaceText("Label Crate"),
                 value: 'label_crate',
               },
             ]}
-            placeholder="Filter by Type"
+            placeholder={interfaceText("Filter by Type")}
             selection
             value={filters.type}
-          />
+           {...interfaceTextProps("Filter by Type")}/>
           <Dropdown
             clearable
             onChange={(_e, { value }) => handleFilterChange('status', value)}
             options={[
-              { key: 'pending', text: 'Pending', value: 'pending' },
-              { key: 'running', text: 'Running', value: 'running' },
-              { key: 'completed', text: 'Completed', value: 'completed' },
-              { key: 'failed', text: 'Failed', value: 'failed' },
+              { key: 'pending', text: interfaceText("Pending"), value: 'pending' },
+              { key: 'running', text: interfaceText("Running"), value: 'running' },
+              { key: 'completed', text: interfaceText("Completed"), value: 'completed' },
+              { key: 'failed', text: interfaceText("Failed"), value: 'failed' },
             ]}
-            placeholder="Filter by Status"
+            placeholder={interfaceText("Filter by Status")}
             selection
             value={filters.status}
-          />
+           {...interfaceTextProps("Filter by Status")}/>
           <Dropdown
             onChange={(_e, { value }) => handleFilterChange('sortBy', value)}
             options={[
-              { key: 'created_at', text: 'Created Date', value: 'created_at' },
-              { key: 'status', text: 'Status', value: 'status' },
-              { key: 'id', text: 'ID', value: 'id' },
+              { key: 'created_at', text: interfaceText("Created Date"), value: 'created_at' },
+              { key: 'status', text: interfaceText("Status"), value: 'status' },
+              { key: 'id', text: interfaceText("ID"), value: 'id' },
             ]}
-            placeholder="Sort By"
+            placeholder={interfaceText("Sort By")}
             selection
             value={filters.sortBy}
-          />
+           {...interfaceTextProps("Sort By")}/>
           <Button
             icon
             onClick={() =>
@@ -472,7 +470,7 @@ const Jobs = () => {
             <Icon
               name={filters.sortOrder === 'asc' ? 'sort up' : 'sort down'}
             />
-            {filters.sortOrder === 'asc' ? 'Ascending' : 'Descending'}
+            {filters.sortOrder === 'asc' ? <LocalizedText source={"Ascending"} /> : <LocalizedText source={"Descending"} />}
           </Button>
           <Button
             disabled={loading}
@@ -480,8 +478,7 @@ const Jobs = () => {
             onClick={fetchJobs}
           >
             <Icon name="refresh" />
-            Refresh
-          </Button>
+            <LocalizedText source={"Refresh"} /></Button>
         </div>
 
         {loading ? (
@@ -494,9 +491,8 @@ const Jobs = () => {
             <Segment placeholder>
               <Header icon>
                 <Icon name="inbox" />
-                No jobs found
-              </Header>
-              <p>No jobs match the current filters.</p>
+                <LocalizedText source={"No jobs found"} /></Header>
+              <p><LocalizedText source={"No jobs match the current filters."} /></p>
             </Segment>
           )
         ) : (
@@ -505,10 +501,10 @@ const Jobs = () => {
               <Table.Header>
                 <Table.Row>
                   <Table.HeaderCell>ID</Table.HeaderCell>
-                  <Table.HeaderCell>Type</Table.HeaderCell>
-                  <Table.HeaderCell>Status</Table.HeaderCell>
-                  <Table.HeaderCell>Progress</Table.HeaderCell>
-                  <Table.HeaderCell>Created</Table.HeaderCell>
+                  <Table.HeaderCell><LocalizedText source={"Type"} /></Table.HeaderCell>
+                  <Table.HeaderCell><LocalizedText source={"Status"} /></Table.HeaderCell>
+                  <Table.HeaderCell><LocalizedText source={"Progress"} /></Table.HeaderCell>
+                  <Table.HeaderCell><LocalizedText source={"Created"} /></Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
@@ -545,19 +541,17 @@ const Jobs = () => {
                             style={{ fontSize: '0.9em', marginTop: '0.25em' }}
                           >
                             {job.progress.releases_done || 0} /{' '}
-                            {job.progress.releases_total || 0} releases
-                            {job.progress.releases_failed > 0 && (
+                            {job.progress.releases_total || 0} <LocalizedText source={"releases"} />{job.progress.releases_failed > 0 && (
                               <Label
                                 color="red"
                                 size="tiny"
                               >
-                                {job.progress.releases_failed} failed
-                              </Label>
+                                {job.progress.releases_failed} <LocalizedText source={"failed"} /></Label>
                             )}
                           </div>
                         </div>
                       ) : (
-                        'N/A'
+                        interfaceText('N/A')
                       )}
                     </Table.Cell>
                     <Table.Cell>{formatDate(job.created_at)}</Table.Cell>

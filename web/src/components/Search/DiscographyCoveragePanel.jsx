@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import {
   fetchDiscographyCoverage,
   promoteDiscographyCoverageToWishlist,
@@ -21,9 +23,9 @@ import {
 } from 'semantic-ui-react';
 
 const profileOptions = [
-  { key: 'core', text: 'Core', value: 'CoreDiscography' },
-  { key: 'extended', text: 'Extended', value: 'ExtendedDiscography' },
-  { key: 'all', text: 'All releases', value: 'AllReleases' },
+  { key: 'core', get text() { return interfaceText("Core"); }, value: 'CoreDiscography' },
+  { key: 'extended', get text() { return interfaceText("Extended"); }, value: 'ExtendedDiscography' },
+  { key: 'all', get text() { return interfaceText("All releases"); }, value: 'AllReleases' },
 ];
 
 const statusColor = (status) => {
@@ -74,6 +76,7 @@ export const normalizeDiscographyCoverage = (payload) => {
 };
 
 const DiscographyCoveragePanel = ({ disabled }) => {
+  useInterfaceLanguage();
   const [artistId, setArtistId] = useState('');
   const [coverage, setCoverage] = useState(null);
   const [error, setError] = useState(null);
@@ -103,7 +106,7 @@ const DiscographyCoveragePanel = ({ disabled }) => {
       ? rawArtistId.trim()
       : '';
     if (!normalizedArtistId) {
-      toast.error('Artist MBID is required');
+      toast.error(interfaceText("Artist MBID is required"));
       return;
     }
 
@@ -196,8 +199,8 @@ const DiscographyCoveragePanel = ({ disabled }) => {
         className="discography-coverage-segment"
         raised
       >
-        <Header as="h4">Discography Concierge</Header>
-        <p>Connect to the server to map artist coverage.</p>
+        <Header as="h4"><LocalizedText source={"Discography Concierge"} /></Header>
+        <p><LocalizedText source={"Connect to the server to map artist coverage."} /></p>
       </Segment>
     );
   }
@@ -208,17 +211,17 @@ const DiscographyCoveragePanel = ({ disabled }) => {
       loading={loading}
       raised
     >
-      <Header as="h4">Discography Concierge</Header>
+      <Header as="h4"><LocalizedText source={"Discography Concierge"} /></Header>
       <Form>
         <Form.Group widths="equal">
           <Form.Field>
             <Input
               disabled={loading}
-              label="Artist MBID"
+              label={interfaceText("Artist MBID")}
               onChange={(event) => setArtistId(event.target.value)}
-              placeholder="e.g. 83d91898-..."
+              placeholder={interfaceText("e.g. 83d91898-...")}
               value={artistId}
-            />
+             {...interfaceTextProps("Artist MBID")}/>
           </Form.Field>
           <Form.Field>
             <Dropdown
@@ -233,14 +236,14 @@ const DiscographyCoveragePanel = ({ disabled }) => {
           <Form.Field>
             <Input
               disabled={loading}
-              label="Wishlist filter"
+              label={interfaceText("Wishlist filter")}
               onChange={(event) => setFilter(event.target.value)}
               value={filter}
-            />
+             {...interfaceTextProps("Wishlist filter")}/>
           </Form.Field>
         </Form.Group>
         <Popup
-          content="Build a per-release coverage map for this MusicBrainz artist using cached release data, verified HashDb evidence, and existing Wishlist seeds."
+          content={interfaceText("Build a per-release coverage map for this MusicBrainz artist using cached release data, verified HashDb evidence, and existing Wishlist seeds.")}
           position="top center"
           trigger={
             <Button
@@ -249,12 +252,11 @@ const DiscographyCoveragePanel = ({ disabled }) => {
               onClick={() => loadCoverage()}
               primary
             >
-              Map coverage
-            </Button>
+              <LocalizedText source={"Map coverage"} /></Button>
           }
-        />
+         {...interfaceTextProps("Build a per-release coverage map for this MusicBrainz artist using cached release data, verified HashDb evidence, and existing Wishlist seeds.")}/>
         <Popup
-          content="Refresh MusicBrainz release-group data before rebuilding the coverage map. This may contact MusicBrainz but does not browse Soulseek peers."
+          content={interfaceText("Refresh MusicBrainz release-group data before rebuilding the coverage map. This may contact MusicBrainz but does not browse Soulseek peers.")}
           position="top center"
           trigger={
             <Button
@@ -262,12 +264,11 @@ const DiscographyCoveragePanel = ({ disabled }) => {
               onClick={() => loadCoverage({ forceRefresh: true })}
               style={{ marginLeft: '0.5em' }}
             >
-              Refresh catalog
-            </Button>
+              <LocalizedText source={"Refresh catalog"} /></Button>
           }
-        />
+         {...interfaceTextProps("Refresh MusicBrainz release-group data before rebuilding the coverage map. This may contact MusicBrainz but does not browse Soulseek peers.")}/>
         <Popup
-          content="Create conservative Wishlist searches for currently missing tracks without starting immediate searches or downloads."
+          content={interfaceText("Create conservative Wishlist searches for currently missing tracks without starting immediate searches or downloads.")}
           position="top center"
           trigger={
             <Button
@@ -276,10 +277,9 @@ const DiscographyCoveragePanel = ({ disabled }) => {
               onClick={promoteMissing}
               style={{ marginLeft: '0.5em' }}
             >
-              Add missing to Wishlist
-            </Button>
+              <LocalizedText source={"Add missing to Wishlist"} /></Button>
           }
-        />
+         {...interfaceTextProps("Create conservative Wishlist searches for currently missing tracks without starting immediate searches or downloads.")}/>
       </Form>
       {error && (
         <Message
@@ -292,15 +292,13 @@ const DiscographyCoveragePanel = ({ disabled }) => {
           <div className="discography-coverage-summary">
             <Header as="h5">{coverage.artistName || coverage.artistId}</Header>
             <span>
-              {coverage.coveredTracks}/{coverage.totalTracks} tracks covered
-            </span>
+              {coverage.coveredTracks}/{coverage.totalTracks} <LocalizedText source={"tracks covered"} /></span>
             {coverage.promotionSuggested && (
               <Label
                 color="violet"
                 size="mini"
               >
-                completion mission
-              </Label>
+                <LocalizedText source={"completion mission"} /></Label>
             )}
           </div>
           <Progress
@@ -318,8 +316,7 @@ const DiscographyCoveragePanel = ({ disabled }) => {
                 <div className="discography-release-head">
                   <Header as="h5">{release.title || release.releaseId}</Header>
                   <span>
-                    {release.coveredTracks}/{release.totalTracks} tracks
-                  </span>
+                    {release.coveredTracks}/{release.totalTracks} <LocalizedText source={"tracks"} /></span>
                 </div>
                 <List
                   divided
@@ -337,7 +334,7 @@ const DiscographyCoveragePanel = ({ disabled }) => {
                             size="tiny"
                             style={{ marginLeft: '0.5em' }}
                           >
-                            {statusText(track.status)}
+                            <LocalizedText source={statusText(track.status)} />
                           </Label>
                         </List.Header>
                         <List.Description>

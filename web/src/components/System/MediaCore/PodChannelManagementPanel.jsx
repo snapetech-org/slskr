@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -28,6 +30,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const PodChannelManagementPanel = ({ visible = true }) => {
+  useInterfaceLanguage();
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -60,7 +63,7 @@ const PodChannelManagementPanel = ({ visible = true }) => {
   const handleGetChannels = async () => {
     const requestedPodId = channelPodId.trim();
     if (!requestedPodId) {
-      toast.error('Pod ID is required');
+      toast.error(interfaceText("Pod ID is required"));
       return;
     }
 
@@ -76,7 +79,7 @@ const PodChannelManagementPanel = ({ visible = true }) => {
     } catch (error_) {
       const message = toDisplayError(error_, 'Failed to get channels');
       setChannelsError(message);
-      toast.error(`Failed to get channels: ${message}`);
+      toast.error(interfaceText("Failed to get channels: {message}", { "message": (message) }));
     } finally {
       setChannelsLoading(false);
     }
@@ -84,12 +87,12 @@ const PodChannelManagementPanel = ({ visible = true }) => {
 
   const handleCreateChannel = async () => {
     if (!channelPodId.trim()) {
-      toast.error('Pod ID is required');
+      toast.error(interfaceText("Pod ID is required"));
       return;
     }
 
     if (!newChannelName.trim()) {
-      toast.error('Channel name is required');
+      toast.error(interfaceText("Channel name is required"));
       return;
     }
 
@@ -100,7 +103,7 @@ const PodChannelManagementPanel = ({ visible = true }) => {
         name: newChannelName,
       };
       await mediacore.createChannel(channelPodId, channel);
-      toast.success(`Channel "${newChannelName}" created successfully`);
+      toast.success(interfaceText("Channel \"{newChannelName}\" created successfully", { "newChannelName": (newChannelName) }));
       setNewChannelName('');
       // Refresh channels list
       await handleGetChannels();
@@ -113,7 +116,7 @@ const PodChannelManagementPanel = ({ visible = true }) => {
 
   const handleUpdateChannel = async (channelId) => {
     if (!editChannelName.trim()) {
-      toast.error('Channel name is required');
+      toast.error(interfaceText("Channel name is required"));
       return;
     }
 
@@ -125,7 +128,7 @@ const PodChannelManagementPanel = ({ visible = true }) => {
         name: editChannelName,
       };
       await mediacore.updateChannel(channelPodId, channelId, updatedChannel);
-      toast.success(`Channel updated successfully`);
+      toast.success(interfaceText("Channel updated successfully"));
       setEditingChannel(null);
       setEditChannelName('');
       // Refresh channels list
@@ -149,7 +152,7 @@ const PodChannelManagementPanel = ({ visible = true }) => {
     try {
       setDeleteChannelLoading(true);
       await mediacore.deleteChannel(channelPodId, channelId);
-      toast.success(`Channel "${channelName}" deleted successfully`);
+      toast.success(interfaceText("Channel \"{channelName}\" deleted successfully", { "channelName": (channelName) }));
       // Refresh channels list
       await handleGetChannels();
     } catch (error_) {
@@ -176,22 +179,16 @@ const PodChannelManagementPanel = ({ visible = true }) => {
             <Card.Content>
               <Card.Header>
                 <Icon name="hashtag" />
-                Pod Channel Management
-              </Card.Header>
+                <LocalizedText source={"Pod Channel Management"} /></Card.Header>
               <Card.Description>
-                Create, update, and manage channels within pods for organized
-                messaging
-              </Card.Description>
-              <PodWorkflowNotice title="Mutates pod structure">
-                Channel create, update, and delete actions change how pod
-                messages are organized. Deleting channels can disrupt routing
-                and history workflows.
-              </PodWorkflowNotice>
+                <LocalizedText source={"Create, update, and manage channels within pods for organized messaging"} /></Card.Description>
+              <PodWorkflowNotice title={interfaceText("Mutates pod structure")} {...interfaceTextProps("Mutates pod structure")}>
+                <LocalizedText source={"Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows."} /></PodWorkflowNotice>
             </Card.Content>
 
             {/* Channel Management */}
             <Card.Content>
-              <Header size="small">Pod Channel Operations</Header>
+              <Header size="small"><LocalizedText source={"Pod Channel Operations"} /></Header>
 
               <Input
                 action={
@@ -201,8 +198,7 @@ const PodChannelManagementPanel = ({ visible = true }) => {
                     loading={channelsLoading}
                     onClick={() => handleGetChannels()}
                   >
-                    Load Channels
-                  </Button>
+                    <LocalizedText source={"Load Channels"} /></Button>
                 }
                 onChange={(e) => {
                   const nextPodId = e.target.value;
@@ -212,10 +208,10 @@ const PodChannelManagementPanel = ({ visible = true }) => {
                     setChannelsLoadedFor(null);
                   }
                 }}
-                placeholder="Pod ID for channel management"
+                placeholder={interfaceText("Pod ID for channel management")}
                 style={{ marginBottom: '1em', width: '100%' }}
                 value={channelPodId}
-              />
+               {...interfaceTextProps("Pod ID for channel management")}/>
 
               {channelsError && (
                 <Message
@@ -225,18 +221,18 @@ const PodChannelManagementPanel = ({ visible = true }) => {
                 >
                   {channelsError}
                   {hasCurrentChannels && channels.length > 0 && (
-                    <div>Showing last successfully loaded channels.</div>
+                    <div><LocalizedText source={"Showing last successfully loaded channels."} /></div>
                   )}
                 </Message>
               )}
 
               {/* Create New Channel */}
-              <Header size="tiny">Create New Channel</Header>
+              <Header size="tiny"><LocalizedText source={"Create New Channel"} /></Header>
               <Input
                 action={
                   <>
                     <select
-                      aria-label="New channel type"
+                      aria-label={interfaceText("New channel type")}
                       onChange={(e) => setNewChannelKind(e.target.value)}
                       style={{
                         border: '1px solid #ccc',
@@ -244,10 +240,10 @@ const PodChannelManagementPanel = ({ visible = true }) => {
                         padding: '0.5em',
                       }}
                       value={newChannelKind}
-                    >
-                      <option value="General">General</option>
-                      <option value="Custom">Custom</option>
-                      <option value="Bound">Bound</option>
+                     {...interfaceTextProps("New channel type")}>
+                      <option value="General">{interfaceText("General")}</option>
+                      <option value="Custom">{interfaceText("Custom")}</option>
+                      <option value="Bound">{interfaceText("Bound")}</option>
                     </select>
                     <Button
                       color="green"
@@ -255,20 +251,19 @@ const PodChannelManagementPanel = ({ visible = true }) => {
                       loading={createChannelLoading}
                       onClick={() => handleCreateChannel()}
                     >
-                      Create
-                    </Button>
+                      <LocalizedText source={"Create"} /></Button>
                   </>
                 }
                 onChange={(e) => setNewChannelName(e.target.value)}
-                placeholder="Channel name"
+                placeholder={interfaceText("Channel name")}
                 style={{ marginBottom: '1em', width: '100%' }}
                 value={newChannelName}
-              />
+               {...interfaceTextProps("Channel name")}/>
 
               {/* Channels List */}
               {hasCurrentChannels && channels.length > 0 && (
                 <div>
-                  <Header size="tiny">Existing Channels</Header>
+                  <Header size="tiny"><LocalizedText source={"Existing Channels"} /></Header>
                   <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
                     {channels.map((channel) => (
                       <Card
@@ -291,23 +286,21 @@ const PodChannelManagementPanel = ({ visible = true }) => {
                                       }
                                       size="small"
                                     >
-                                      Save
-                                    </Button>
+                                      <LocalizedText source={"Save"} /></Button>
                                     <Button
                                       onClick={() => cancelEditingChannel()}
                                       size="small"
                                     >
-                                      Cancel
-                                    </Button>
+                                      <LocalizedText source={"Cancel"} /></Button>
                                   </>
                                 }
                                 onChange={(e) =>
                                   setEditChannelName(e.target.value)
                                 }
-                                placeholder="Channel name"
+                                placeholder={interfaceText("Channel name")}
                                 style={{ width: '100%' }}
                                 value={editChannelName}
-                              />
+                               {...interfaceTextProps("Channel name")}/>
                             </div>
                           ) : (
                             <div
@@ -326,7 +319,7 @@ const PodChannelManagementPanel = ({ visible = true }) => {
                                     marginTop: '0.25em',
                                   }}
                                 >
-                                  ID: {channel.channelId} • Type: {channel.kind}
+                                  ID: {channel.channelId} <LocalizedText source={"• Type:"} />{" "}{channel.kind}
                                   {channel.bindingInfo &&
                                     ` • Binding: ${channel.bindingInfo}`}
                                 </div>
@@ -340,8 +333,7 @@ const PodChannelManagementPanel = ({ visible = true }) => {
                                   onClick={() => startEditingChannel(channel)}
                                   size="tiny"
                                 >
-                                  Edit
-                                </Button>
+                                  <LocalizedText source={"Edit"} /></Button>
                                 <Button
                                   color="red"
                                   disabled={
@@ -357,8 +349,7 @@ const PodChannelManagementPanel = ({ visible = true }) => {
                                   }
                                   size="tiny"
                                 >
-                                  Delete
-                                </Button>
+                                  <LocalizedText source={"Delete"} /></Button>
                               </div>
                             </div>
                           )}
@@ -378,9 +369,7 @@ const PodChannelManagementPanel = ({ visible = true }) => {
                   info
                   size="small"
                 >
-                  No channels found in pod {channelPodId}. Create the first
-                  channel above.
-                </Message>
+                  <LocalizedText source={"No channels found in pod"} />{" "}{channelPodId}<LocalizedText source={". Create the first channel above."} /></Message>
               )}
             </Card.Content>
           </Card>

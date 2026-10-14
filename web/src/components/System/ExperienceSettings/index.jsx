@@ -1,9 +1,7 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, INTERFACE_LANGUAGE_OPTIONS, resetInterfaceLanguage, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import { REGIONAL_FORMAT_OPTIONS } from '../../../lib/regionalFormat';
-import {
-  INTERFACE_LANGUAGE_OPTIONS,
-  resetInterfaceLanguage,
-  useInterfaceLanguage,
-} from '../../../lib/interfaceLocale';
+
 import {
   EXPERIENCE_PREFERENCES_STORAGE_KEY,
   setRegionalFormatPreference,
@@ -90,45 +88,45 @@ const defaults = {
 const options = {
   regionalFormat: regionalFormatOptions,
   actionPreviewDensity: [
-    { key: 'compact', text: 'Compact', value: 'compact' },
-    { key: 'detailed', text: 'Detailed', value: 'detailed' },
+    { key: 'compact', get text() { return interfaceText("Compact"); }, value: 'compact' },
+    { key: 'detailed', get text() { return interfaceText("Detailed"); }, value: 'detailed' },
   ],
   approvalFilter: [
-    { key: 'all', text: 'All', value: 'all' },
-    { key: 'needs-review', text: 'Needs review', value: 'needs-review' },
-    { key: 'approved', text: 'Approved', value: 'approved' },
-    { key: 'snoozed', text: 'Snoozed', value: 'snoozed' },
+    { key: 'all', get text() { return interfaceText("All"); }, value: 'all' },
+    { key: 'needs-review', get text() { return interfaceText("Needs review"); }, value: 'needs-review' },
+    { key: 'approved', get text() { return interfaceText("Approved"); }, value: 'approved' },
+    { key: 'snoozed', get text() { return interfaceText("Snoozed"); }, value: 'snoozed' },
   ],
   explanationDetail: [
-    { key: 'compact', text: 'Compact', value: 'compact' },
-    { key: 'full', text: 'Full evidence', value: 'full' },
+    { key: 'compact', get text() { return interfaceText("Compact"); }, value: 'compact' },
+    { key: 'full', get text() { return interfaceText("Full evidence"); }, value: 'full' },
   ],
   preferredCondition: [
-    { key: 'lossless', text: 'Lossless first', value: 'lossless' },
-    { key: 'complete', text: 'Complete releases first', value: 'complete' },
-    { key: 'fastest', text: 'Fastest source first', value: 'fastest' },
+    { key: 'lossless', get text() { return interfaceText("Lossless first"); }, value: 'lossless' },
+    { key: 'complete', get text() { return interfaceText("Complete releases first"); }, value: 'complete' },
+    { key: 'fastest', get text() { return interfaceText("Fastest source first"); }, value: 'fastest' },
   ],
   radioSeedMode: [
-    { key: 'current', text: 'Current track', value: 'current' },
-    { key: 'queue', text: 'Queue context', value: 'queue' },
-    { key: 'history', text: 'Listening history', value: 'history' },
+    { key: 'current', get text() { return interfaceText("Current track"); }, value: 'current' },
+    { key: 'queue', get text() { return interfaceText("Queue context"); }, value: 'queue' },
+    { key: 'history', get text() { return interfaceText("Listening history"); }, value: 'history' },
   ],
   rankingProfile: [
-    { key: 'balanced', text: 'Balanced', value: 'balanced' },
-    { key: 'quality', text: 'Quality', value: 'quality' },
-    { key: 'availability', text: 'Availability', value: 'availability' },
+    { key: 'balanced', get text() { return interfaceText("Balanced"); }, value: 'balanced' },
+    { key: 'quality', get text() { return interfaceText("Quality"); }, value: 'quality' },
+    { key: 'availability', get text() { return interfaceText("Availability"); }, value: 'availability' },
     { key: 'network-light', text: 'Network-light', value: 'network-light' },
   ],
   scrobbleMode: [
-    { key: 'manual', text: 'Manual', value: 'manual' },
-    { key: 'review', text: 'Review before send', value: 'review' },
-    { key: 'off', text: 'Off', value: 'off' },
+    { key: 'manual', get text() { return interfaceText("Manual"); }, value: 'manual' },
+    { key: 'review', get text() { return interfaceText("Review before send"); }, value: 'review' },
+    { key: 'off', get text() { return interfaceText("Off"); }, value: 'off' },
   ],
   visualizerDefault: [
-    { key: 'last', text: 'Last used', value: 'last' },
-    { key: 'art', text: 'Album art', value: 'art' },
-    { key: 'rustymilk-webgl2', text: 'RustyMilk WebGL2', value: 'rustymilk-webgl2' },
-    { key: 'rustymilk-webgpu', text: 'RustyMilk WebGPU', value: 'rustymilk-webgpu' },
+    { key: 'last', get text() { return interfaceText("Last used"); }, value: 'last' },
+    { key: 'art', get text() { return interfaceText("Album art"); }, value: 'art' },
+    { key: 'rustymilk-webgl2', get text() { return interfaceText("RustyMilk WebGL2"); }, value: 'rustymilk-webgl2' },
+    { key: 'rustymilk-webgpu', get text() { return interfaceText("RustyMilk WebGPU"); }, value: 'rustymilk-webgpu' },
   ],
 };
 
@@ -260,12 +258,9 @@ const ExperienceSettings = () => {
       <Segment>
         <Header as="h3">
           <Icon name="compass" />
-          Experience Preferences
-        </Header>
+          <LocalizedText source={"Experience Preferences"} /></Header>
         <p>
-          Browser-local preference surface for Search, Player, and Messages
-          behavior that can be consumed by page-specific backfill.
-        </p>
+          <LocalizedText source={"Browser-local preference surface for Search, Player, and Messages behavior that can be consumed by page-specific backfill."} /></p>
       </Segment>
 
       {message && (
@@ -326,51 +321,50 @@ const ExperienceSettings = () => {
           <Card.Content>
             <Card.Header>
               <Icon name="search" />
-              Search
-            </Card.Header>
-            <Card.Meta>Ranking, duplicate folding, preferred conditions, and planned-action density.</Card.Meta>
+              <LocalizedText source={"Search"} /></Card.Header>
+            <Card.Meta><LocalizedText source={"Ranking, duplicate folding, preferred conditions, and planned-action density."} /></Card.Meta>
           </Card.Content>
           <Card.Content>
             <Form>
               <Form.Group widths="equal">
                 <Form.Select
-                  aria-label="Search ranking profile preference"
-                  label="Ranking Profile"
+                  aria-label={interfaceText("Search ranking profile preference")}
+                  label={interfaceText("Ranking Profile")}
                   onChange={(_, { value }) => update('searchRankingProfile', value)}
                   options={options.rankingProfile}
                   value={form.searchRankingProfile}
-                />
+                 {...interfaceTextProps("Search ranking profile preference")}/>
                 <Form.Select
-                  aria-label="Search preferred condition preference"
-                  label="Preferred Condition"
+                  aria-label={interfaceText("Search preferred condition preference")}
+                  label={interfaceText("Preferred Condition")}
                   onChange={(_, { value }) => update('searchPreferredCondition', value)}
                   options={options.preferredCondition}
                   value={form.searchPreferredCondition}
-                />
+                 {...interfaceTextProps("Search preferred condition preference")}/>
                 <Form.Select
-                  aria-label="Search action preview density preference"
-                  label="Action Preview Density"
+                  aria-label={interfaceText("Search action preview density preference")}
+                  label={interfaceText("Action Preview Density")}
                   onChange={(_, { value }) =>
                     update('searchActionPreviewDensity', value)
                   }
                   options={options.actionPreviewDensity}
                   value={form.searchActionPreviewDensity}
-                />
+                 {...interfaceTextProps("Search action preview density preference")}/>
               </Form.Group>
               <Popup
-                content="Fold likely duplicate results into a single review row when page support is available."
+                content={interfaceText("Fold likely duplicate results into a single review row when page support is available.")}
                 trigger={
                   <Checkbox
-                    aria-label="Enable search duplicate folding preference"
+                    aria-label={interfaceText("Enable search duplicate folding preference")}
                     checked={form.searchDuplicateFolding}
-                    label="Fold duplicate results"
+                    label={interfaceText("Fold duplicate results")}
                     onChange={(_, { checked }) =>
                       update('searchDuplicateFolding', Boolean(checked))
                     }
                     toggle
-                  />
+                   {...interfaceTextProps("Enable search duplicate folding preference")}/>
                 }
-              />
+               {...interfaceTextProps("Fold likely duplicate results into a single review row when page support is available.")}/>
             </Form>
           </Card.Content>
         </Card>
@@ -379,74 +373,73 @@ const ExperienceSettings = () => {
           <Card.Content>
             <Card.Header>
               <Icon name="play circle" />
-              Player
-            </Card.Header>
-            <Card.Meta>Queue, radio, ratings, history, scrobbling, visualizer, and keyboard behavior.</Card.Meta>
+              <LocalizedText source={"Player"} /></Card.Header>
+            <Card.Meta><LocalizedText source={"Queue, radio, ratings, history, scrobbling, visualizer, and keyboard behavior."} /></Card.Meta>
           </Card.Content>
           <Card.Content>
             <Form>
               <Form.Group widths="equal">
                 <Form.Select
-                  aria-label="Player radio seed preference"
-                  label="Radio Seed"
+                  aria-label={interfaceText("Player radio seed preference")}
+                  label={interfaceText("Radio Seed")}
                   onChange={(_, { value }) => update('playerRadioSeedMode', value)}
                   options={options.radioSeedMode}
                   value={form.playerRadioSeedMode}
-                />
+                 {...interfaceTextProps("Player radio seed preference")}/>
                 <Form.Select
-                  aria-label="Player scrobble mode preference"
-                  label="Scrobble Mode"
+                  aria-label={interfaceText("Player scrobble mode preference")}
+                  label={interfaceText("Scrobble Mode")}
                   onChange={(_, { value }) => update('playerScrobbleMode', value)}
                   options={options.scrobbleMode}
                   value={form.playerScrobbleMode}
-                />
+                 {...interfaceTextProps("Player scrobble mode preference")}/>
                 <Form.Select
-                  aria-label="Player default visualizer preference"
-                  label="Default Visualizer"
+                  aria-label={interfaceText("Player default visualizer preference")}
+                  label={interfaceText("Default Visualizer")}
                   onChange={(_, { value }) => update('playerDefaultVisualizer', value)}
                   options={options.visualizerDefault}
                   value={form.playerDefaultVisualizer}
-                />
+                 {...interfaceTextProps("Player default visualizer preference")}/>
               </Form.Group>
               <Form.Group grouped>
                 <Popup
-                  content="Allow player pages to append local similar-track queue candidates when explicit page support is available."
+                  content={interfaceText("Allow player pages to append local similar-track queue candidates when explicit page support is available.")}
                   trigger={
                     <Checkbox
-                      aria-label="Enable player queue auto-fill preference"
+                      aria-label={interfaceText("Enable player queue auto-fill preference")}
                       checked={form.playerQueueAutoFill}
-                      label="Enable queue auto-fill"
+                      label={interfaceText("Enable queue auto-fill")}
                       onChange={(_, { checked }) =>
                         update('playerQueueAutoFill', Boolean(checked))
                       }
                       toggle
-                    />
+                     {...interfaceTextProps("Enable player queue auto-fill preference")}/>
                   }
-                />
+                 {...interfaceTextProps("Allow player pages to append local similar-track queue candidates when explicit page support is available.")}/>
                 <Checkbox
-                  aria-label="Show player ratings preference"
+                  aria-label={interfaceText("Show player ratings preference")}
                   checked={form.playerShowRatings}
-                  label="Show ratings"
+                  label={interfaceText("Show ratings")}
                   onChange={(_, { checked }) =>
                     update('playerShowRatings', Boolean(checked))
                   }
-                />
+                 {...interfaceTextProps("Show player ratings preference")}/>
                 <Checkbox
-                  aria-label="Capture player history preference"
+                  aria-label={interfaceText("Capture player history preference")}
                   checked={form.playerCaptureHistory}
-                  label="Capture local history"
+                  label={interfaceText("Capture local history")}
                   onChange={(_, { checked }) =>
                     update('playerCaptureHistory', Boolean(checked))
                   }
-                />
+                 {...interfaceTextProps("Capture player history preference")}/>
                 <Checkbox
-                  aria-label="Enable player keyboard shortcuts preference"
+                  aria-label={interfaceText("Enable player keyboard shortcuts preference")}
                   checked={form.playerKeyboardShortcuts}
-                  label="Enable keyboard shortcuts"
+                  label={interfaceText("Enable keyboard shortcuts")}
                   onChange={(_, { checked }) =>
                     update('playerKeyboardShortcuts', Boolean(checked))
                   }
-                />
+                 {...interfaceTextProps("Enable player keyboard shortcuts preference")}/>
               </Form.Group>
             </Form>
           </Card.Content>
@@ -456,53 +449,52 @@ const ExperienceSettings = () => {
           <Card.Content>
             <Card.Header>
               <Icon name="comments" />
-              Messages
-            </Card.Header>
-            <Card.Meta>Dense display, pinned panels, unread badges, user filtering, and local search preference.</Card.Meta>
+              <LocalizedText source={"Messages"} /></Card.Header>
+            <Card.Meta><LocalizedText source={"Dense display, pinned panels, unread badges, user filtering, and local search preference."} /></Card.Meta>
           </Card.Content>
           <Card.Content>
             <Form>
               <Form.Group grouped>
                 <Checkbox
-                  aria-label="Enable messages dense mode preference"
+                  aria-label={interfaceText("Enable messages dense mode preference")}
                   checked={form.messagesDenseMode}
-                  label="Dense display"
+                  label={interfaceText("Dense display")}
                   onChange={(_, { checked }) =>
                     update('messagesDenseMode', Boolean(checked))
                   }
-                />
+                 {...interfaceTextProps("Enable messages dense mode preference")}/>
                 <Checkbox
-                  aria-label="Restore pinned message panels preference"
+                  aria-label={interfaceText("Restore pinned message panels preference")}
                   checked={form.messagesPinnedRestore}
-                  label="Restore pinned panels"
+                  label={interfaceText("Restore pinned panels")}
                   onChange={(_, { checked }) =>
                     update('messagesPinnedRestore', Boolean(checked))
                   }
-                />
+                 {...interfaceTextProps("Restore pinned message panels preference")}/>
                 <Checkbox
-                  aria-label="Show unread message badges preference"
+                  aria-label={interfaceText("Show unread message badges preference")}
                   checked={form.messagesUnreadBadges}
-                  label="Show unread badges"
+                  label={interfaceText("Show unread badges")}
                   onChange={(_, { checked }) =>
                     update('messagesUnreadBadges', Boolean(checked))
                   }
-                />
+                 {...interfaceTextProps("Show unread message badges preference")}/>
                 <Checkbox
-                  aria-label="Enable room user filtering preference"
+                  aria-label={interfaceText("Enable room user filtering preference")}
                   checked={form.messagesRoomUserFilter}
-                  label="Enable room user filtering"
+                  label={interfaceText("Enable room user filtering")}
                   onChange={(_, { checked }) =>
                     update('messagesRoomUserFilter', Boolean(checked))
                   }
-                />
+                 {...interfaceTextProps("Enable room user filtering preference")}/>
                 <Checkbox
-                  aria-label="Enable local message search preference"
+                  aria-label={interfaceText("Enable local message search preference")}
                   checked={form.messagesSearchEnabled}
-                  label="Enable local message search"
+                  label={interfaceText("Enable local message search")}
                   onChange={(_, { checked }) =>
                     update('messagesSearchEnabled', Boolean(checked))
                   }
-                />
+                 {...interfaceTextProps("Enable local message search preference")}/>
               </Form.Group>
             </Form>
           </Card.Content>
@@ -511,7 +503,7 @@ const ExperienceSettings = () => {
 
       <div className="integration-actions">
         <Popup
-          content="Save these preference choices to this browser. No server settings, searches, downloads, messages, or files are changed."
+          content={interfaceText("Save these preference choices to this browser. No server settings, searches, downloads, messages, or files are changed.")}
           trigger={
             <Button
               icon
@@ -520,12 +512,11 @@ const ExperienceSettings = () => {
               primary
             >
               <Icon name="save" />
-              Save Local Preferences
-            </Button>
+              <LocalizedText source={"Save Local Preferences"} /></Button>
           }
-        />
+         {...interfaceTextProps("Save these preference choices to this browser. No server settings, searches, downloads, messages, or files are changed.")}/>
         <Popup
-          content="Reset these browser-local preference choices to the slskr defaults."
+          content={interfaceText("Reset these browser-local preference choices to the slskr defaults.")}
           trigger={
             <Button
               icon
@@ -533,12 +524,11 @@ const ExperienceSettings = () => {
               onClick={reset}
             >
               <Icon name="undo" />
-              Reset
-            </Button>
+              <LocalizedText source={"Reset"} /></Button>
           }
-        />
+         {...interfaceTextProps("Reset these browser-local preference choices to the slskr defaults.")}/>
         <Popup
-          content="Copy a review report of the selected preferences for implementation handoff."
+          content={interfaceText("Copy a review report of the selected preferences for implementation handoff.")}
           trigger={
             <Button
               icon
@@ -546,10 +536,9 @@ const ExperienceSettings = () => {
               onClick={copyReport}
             >
               <Icon name="copy" />
-              Copy Report
-            </Button>
+              <LocalizedText source={"Copy Report"} /></Button>
           }
-        />
+         {...interfaceTextProps("Copy a review report of the selected preferences for implementation handoff.")}/>
       </div>
     </div>
   );

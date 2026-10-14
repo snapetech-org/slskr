@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import { formatRegionalDateTime, formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
@@ -30,6 +32,7 @@ const useMountedState = (mountedRef, initialValue) => {
 };
 
 const PodMessageStoragePanel = React.memo(({ visible }) => {
+  useInterfaceLanguage();
   useRegionalFormat();
   const mountedRef = useRef(true);
   React.useEffect(() => {
@@ -64,7 +67,7 @@ const PodMessageStoragePanel = React.memo(({ visible }) => {
       setCleanupLoading(true);
       const thirtyDaysAgo = Date.now() - 30 * 24 * 60 * 60 * 1_000;
       const result = await mediacore.cleanupMessages(thirtyDaysAgo);
-      toast.success(`Cleaned up ${result} old messages`);
+      toast.success(interfaceText("Cleaned up {result} old messages", { "result": (result) }));
       // Refresh stats after cleanup
       await handleGetStorageStats();
     } catch (error_) {
@@ -82,21 +85,16 @@ const PodMessageStoragePanel = React.memo(({ visible }) => {
             <Card.Content>
               <Card.Header>
                 <Icon name="database" />
-                Pod Message Storage
-              </Card.Header>
+                <LocalizedText source={"Pod Message Storage"} /></Card.Header>
               <Card.Description>
-                SQLite-backed message storage with full-text search and
-                retention policies
-              </Card.Description>
-              <PodWorkflowNotice title="Mutates local message storage">
-                Cleanup, rebuild, and vacuum actions affect local pod message
-                storage. Search and count actions are read-only.
-              </PodWorkflowNotice>
+                <LocalizedText source={"SQLite-backed message storage with full-text search and retention policies"} /></Card.Description>
+              <PodWorkflowNotice title={interfaceText("Mutates local message storage")} {...interfaceTextProps("Mutates local message storage")}>
+                <LocalizedText source={"Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only."} /></PodWorkflowNotice>
             </Card.Content>
 
             {/* Message Storage */}
             <Card.Content>
-              <Header size="small">Storage Management</Header>
+              <Header size="small"><LocalizedText source={"Storage Management"} /></Header>
 
               <div style={{ marginBottom: '1em' }}>
                 <Button
@@ -105,8 +103,7 @@ const PodMessageStoragePanel = React.memo(({ visible }) => {
                   onClick={() => handleGetStorageStats()}
                   size="small"
                 >
-                  Get Storage Stats
-                </Button>
+                  <LocalizedText source={"Get Storage Stats"} /></Button>
 
                 <Button
                   color="purple"
@@ -114,8 +111,7 @@ const PodMessageStoragePanel = React.memo(({ visible }) => {
                   onClick={() => handleCleanupMessages()}
                   size="small"
                 >
-                  Cleanup Old Messages (30 days)
-                </Button>
+                  <LocalizedText source={"Cleanup Old Messages (30 days)"} /></Button>
 
                 <PodMessageMaintenanceActions size="small" />
               </div>
@@ -125,29 +121,29 @@ const PodMessageStoragePanel = React.memo(({ visible }) => {
                   size="small"
                   style={{ marginBottom: '1em' }}
                 >
-                  <Message.Header>Message Storage Statistics</Message.Header>
+                  <Message.Header><LocalizedText source={"Message Storage Statistics"} /></Message.Header>
                   <p>
-                    <strong>Total Messages:</strong>{' '}
+                    <strong><LocalizedText source={"Total Messages:"} /></strong>{' '}
                     {formatRegionalNumber(storageStats.totalMessages) || 0}
                     <br />
-                    <strong>Estimated Size:</strong>{' '}
+                    <strong><LocalizedText source={"Estimated Size:"} /></strong>{' '}
                     {(storageStats.totalSizeBytes / (1_024 * 1_024)).toFixed(2)}{' '}
                     MB
                     <br />
-                    <strong>Oldest Message:</strong>{' '}
+                    <strong><LocalizedText source={"Oldest Message:"} /></strong>{' '}
                     {storageStats.oldestMessage
                       ? formatRegionalDateTime(storageStats.oldestMessage)
-                      : 'None'}
+                      : <LocalizedText source={"None"} />}
                     <br />
-                    <strong>Newest Message:</strong>{' '}
+                    <strong><LocalizedText source={"Newest Message:"} /></strong>{' '}
                     {storageStats.newestMessage
                       ? formatRegionalDateTime(storageStats.newestMessage)
-                      : 'None'}
+                      : <LocalizedText source={"None"} />}
                     <br />
-                    <strong>Pods with Messages:</strong>{' '}
+                    <strong><LocalizedText source={"Pods with Messages:"} /></strong>{' '}
                     {Object.keys(storageStats.messagesPerPod || {}).length}
                     <br />
-                    <strong>Active Channels:</strong>{' '}
+                    <strong><LocalizedText source={"Active Channels:"} /></strong>{' '}
                     {Object.keys(storageStats.messagesPerChannel || {}).length}
                   </p>
                 </Message>

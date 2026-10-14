@@ -1,21 +1,23 @@
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import { getPlayerRatingSummary } from '../../lib/playerRatings';
 import { Icon, Popup } from 'semantic-ui-react';
 
 const PlayerRatingControls = ({ current, onChange, rating }) => {
+  useInterfaceLanguage();
   if (!current) return null;
 
   const summary = getPlayerRatingSummary(current);
 
   return (
     <div
-      aria-label="Now playing rating"
+      aria-label={interfaceText("Now playing rating")}
       className={[
         'player-rating-controls',
         `player-rating-controls-${summary.tone}`,
       ].join(' ')}
       data-testid="player-rating-controls"
       role="group"
-    >
+     {...interfaceTextProps("Now playing rating")}>
       {[1, 2, 3, 4, 5].map((value) => (
         <Popup
           content={
@@ -49,7 +51,7 @@ const PlayerRatingControls = ({ current, onChange, rating }) => {
           }
         />
       ))}
-      <span className="player-rating-summary">{summary.label}</span>
+      <span className="player-rating-summary">{interfaceText(summary.label)}</span>
     </div>
   );
 };

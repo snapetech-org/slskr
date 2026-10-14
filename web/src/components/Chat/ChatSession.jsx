@@ -1,3 +1,4 @@
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import { formatRegionalCompactDateTime } from '../../lib/util';
 import './Chat.css';
 import * as chat from '../../lib/chat';
@@ -463,11 +464,11 @@ class ChatSession extends Component {
                     input={
                       <input
                         autoComplete="off"
-                        aria-label={`Message ${username}`}
+                        aria-label={interfaceText("Message {username}", { "username": (username) })}
                         data-lpignore="true"
                         id="chat-message-input"
                         type="text"
-                      />
+                       {...interfaceTextProps("Message {username}")}/>
                     }
                     onChange={(event, { value }) =>
                       this.setState({ message: value })

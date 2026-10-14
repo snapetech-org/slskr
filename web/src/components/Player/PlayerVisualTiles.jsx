@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import React, { lazy, Suspense, useRef, useState } from 'react';
 import { getLocalStorageItem } from '../../lib/storage';
 import SpectrumAnalyzer from './SpectrumAnalyzer';
@@ -23,6 +25,7 @@ export const PlayerVisualTile = ({
   onTileModeChange,
   tileMode,
 }) => {
+  useInterfaceLanguage();
   const nativeProfile = runtimeProfile === 'native';
   const tileModes = ['art', 'rustymilk-webgl2', 'rustymilk-webgpu', 'spectrum', 'scope'];
   const visualizerTileModes = ['rustymilk-webgl2', 'rustymilk-webgpu'];
@@ -122,7 +125,7 @@ export const PlayerVisualTile = ({
             tabIndex={0}
           >
             {showingVisualizer ? (
-              <Suspense fallback={<div className="player-visual-loading">Loading visualizer...</div>}>
+              <Suspense fallback={<div className="player-visual-loading"><LocalizedText source={"Loading visualizer..."} /></div>}>
                 <Visualizer
                   audioElement={audioElement}
                   compactControls
@@ -180,39 +183,40 @@ export const PlayerVisualTile = ({
           />
         ))}
         <Popup
-          content="Maximize the visualizer to the browser window."
+          content={interfaceText("Maximize the visualizer to the browser window.")}
           trigger={
             <Button
-              aria-label="Maximize visualizer to browser window"
+              aria-label={interfaceText("Maximize visualizer to browser window")}
               data-testid="player-visual-tile-fullwindow"
               icon
               onClick={showVisualizerWindow}
               size="mini"
-            >
+             {...interfaceTextProps("Maximize visualizer to browser window")}>
               <Icon name="expand arrows alternate" />
             </Button>
           }
-        />
+         {...interfaceTextProps("Maximize the visualizer to the browser window.")}/>
         <Popup
-          content="Maximize the visualizer to fullscreen."
+          content={interfaceText("Maximize the visualizer to fullscreen.")}
           trigger={
             <Button
-              aria-label="Maximize visualizer to fullscreen"
+              aria-label={interfaceText("Maximize visualizer to fullscreen")}
               data-testid="player-visual-tile-fullscreen"
               icon
               onClick={showVisualizerFullscreen}
               size="mini"
-            >
+             {...interfaceTextProps("Maximize visualizer to fullscreen")}>
               <Icon name="expand" />
             </Button>
           }
-        />
+         {...interfaceTextProps("Maximize the visualizer to fullscreen.")}/>
       </div>
     </div>
   );
 };
 
 export const PlayerAnalyzerTile = ({ audioElement, mode, onModeChange }) => {
+  useInterfaceLanguage();
   const nextMode = mode === 'spectrum' ? 'scope' : 'spectrum';
   const label = mode === 'spectrum' ? 'Spectrum bars' : 'Signal scope';
 

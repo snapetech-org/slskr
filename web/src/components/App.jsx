@@ -1,3 +1,5 @@
+import LocalizedText from "./Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../lib/interfaceLocale";
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import * as collectionsAPI from '../lib/collections';
@@ -46,9 +48,9 @@ import {
 } from 'semantic-ui-react';
 
 const THEME_OPTIONS = [
-  { key: 'slskr', text: 'slskr', value: 'slskr' },
-  { key: 'classic-dark', text: 'Classic Dark', value: 'classic-dark' },
-  { key: 'light', text: 'Light', value: 'light' },
+  { key: 'slskr', get text() { return interfaceText("slskr"); }, value: 'slskr' },
+  { key: 'classic-dark', get text() { return interfaceText("Classic Dark"); }, value: 'classic-dark' },
+  { key: 'light', get text() { return interfaceText("Light"); }, value: 'light' },
 ];
 
 const THEME_LABELS = THEME_OPTIONS.reduce(
@@ -57,9 +59,9 @@ const THEME_LABELS = THEME_OPTIONS.reduce(
 );
 
 const SOULSEEK_CREDENTIAL_STORE_OPTIONS = [
-  { key: 'memory', text: 'This session only', value: 'memory' },
-  { key: 'os', text: 'OS credential store', value: 'os' },
-  { key: 'file', text: 'Local credential file', value: 'file' },
+  { key: 'memory', get text() { return interfaceText("This session only"); }, value: 'memory' },
+  { key: 'os', get text() { return interfaceText("OS credential store"); }, value: 'os' },
+  { key: 'file', get text() { return interfaceText("Local credential file"); }, value: 'file' },
 ];
 
 const normalizeTheme = (theme) => {
@@ -728,10 +730,10 @@ class App extends Component {
           <ErrorSegment
             caption={
               <>
-                <span>Lost connection to slskr</span>
+                <span><LocalizedText source={"Lost connection to slskr"} /></span>
                 <br />
                 <span>
-                  {retriesExhausted ? 'Refresh to reconnect' : 'Retrying...'}
+                  {retriesExhausted ? <LocalizedText source={"Refresh to reconnect"} /> : 'Retrying...'}
                 </span>
               </>
             }
@@ -766,7 +768,7 @@ class App extends Component {
             }}
           >
             <Icon name="attention" />
-            Lost connection to slskr. {retriesExhausted ? 'Refresh to reconnect.' : 'Retrying...'}
+            <LocalizedText source={"Lost connection to slskr."} />{" "}{retriesExhausted ? <LocalizedText source={"Refresh to reconnect."} /> : 'Retrying...'}
           </Segment>
         )}
         <Modal
@@ -776,7 +778,7 @@ class App extends Component {
           open={soulseekCredentials.open}
           size="mini"
         >
-          <Modal.Header>Soulseek Authentication</Modal.Header>
+          <Modal.Header><LocalizedText source={"Soulseek Authentication"} /></Modal.Header>
           <Modal.Content>
             <Form
               error={Boolean(soulseekCredentials.error)}
@@ -785,25 +787,25 @@ class App extends Component {
               <Form.Input
                 autoComplete="username"
                 disabled={soulseekCredentials.pending}
-                label="Username"
+                label={interfaceText("Username")}
                 onChange={(_, data) =>
                   this.updateSoulseekCredential('username', data.value)
                 }
                 value={soulseekCredentials.username}
-              />
+               {...interfaceTextProps("Username")}/>
               <Form.Input
                 autoComplete="current-password"
                 disabled={soulseekCredentials.pending}
-                label="Password"
+                label={interfaceText("Password")}
                 onChange={(_, data) =>
                   this.updateSoulseekCredential('password', data.value)
                 }
                 type="password"
                 value={soulseekCredentials.password}
-              />
+               {...interfaceTextProps("Password")}/>
               <Form.Select
                 disabled={soulseekCredentials.pending}
-                label="Credential storage"
+                label={interfaceText("Credential storage")}
                 onChange={(_, data) =>
                   this.updateSoulseekCredential('credentialStore', data.value)
                 }
@@ -813,7 +815,7 @@ class App extends Component {
                   ),
                 )}
                 value={soulseekCredentials.credentialStore}
-              />
+               {...interfaceTextProps("Credential storage")}/>
               {soulseekCredentials.error && (
                 <Segment
                   color="red"
@@ -829,15 +831,13 @@ class App extends Component {
               disabled={soulseekCredentials.pending}
               onClick={this.closeSoulseekCredentials}
             >
-              Cancel
-            </Button>
+              <LocalizedText source={"Cancel"} /></Button>
             <Button
               loading={soulseekCredentials.pending}
               onClick={this.submitSoulseekCredentials}
               primary
             >
-              Connect
-            </Button>
+              <LocalizedText source={"Connect"} /></Button>
           </Modal.Actions>
         </Modal>
         <PlayerProvider>
@@ -953,6 +953,7 @@ class App extends Component {
 }
 
 const AppWithLocation = (props) => {
+  useInterfaceLanguage();
   const location = useLocation();
   const regionalFormat = useRegionalFormat();
   return (

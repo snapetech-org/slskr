@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import './Player.css';
 import { upsertDiscoveryShelfItem } from '../../lib/discoveryShelf';
 import * as listenBrainz from '../../lib/listenBrainz';
@@ -112,7 +114,7 @@ const getPlayerBadges = (current) => {
       icon: 'crosshairs',
       key: 'confidence',
       text: `${Math.round(confidence * 100)}% match`,
-      title: 'Local match confidence for this now-playing item.',
+      title: interfaceText("Local match confidence for this now-playing item."),
     });
   }
 
@@ -121,8 +123,8 @@ const getPlayerBadges = (current) => {
       color: 'teal',
       icon: 'check circle',
       key: 'verified',
-      text: 'Verified',
-      title: 'This item has local verification evidence.',
+      text: interfaceText("Verified"),
+      title: interfaceText("This item has local verification evidence."),
     });
   }
 
@@ -132,6 +134,7 @@ const getPlayerBadges = (current) => {
 
 
 const PlayerBar = ({ runtimeProfile } = {}) => {
+  useInterfaceLanguage();
   const navigate = useNavigate();
   const mountedRef = useMountedRef();
   const audioRef = useRef(null);
@@ -501,11 +504,11 @@ const PlayerBar = ({ runtimeProfile } = {}) => {
   if (collapsed) {
     return (
       <div
-        aria-label="Audio player"
+        aria-label={interfaceText("Audio player")}
         className="player-bar player-bar-collapsed player-bar-modern"
         role="region"
         ref={playerBarRef}
-      >
+       {...interfaceTextProps("Audio player")}>
         {audio}
         <div className="player-track player-track-lcd">
           <Icon name="music" />
@@ -520,12 +523,12 @@ const PlayerBar = ({ runtimeProfile } = {}) => {
         </div>
         <div className="player-controls player-control-cluster">
           <PlayerToolButton
-            content="Expand the player drawer."
-            aria-label="Expand player"
+            content={interfaceText("Expand the player drawer.")}
+            aria-label={interfaceText("Expand player")}
             data-testid="player-expand"
             icon="angle up"
             onClick={() => setCollapsed(false)}
-          />
+           {...interfaceTextProps("Expand the player drawer.")}/>
           <PlayerToolButton
             content={playing ? 'Pause the current stream.' : 'Resume the current stream.'}
             aria-label={playing ? 'Pause local playback' : 'Resume local playback'}
@@ -553,11 +556,11 @@ const PlayerBar = ({ runtimeProfile } = {}) => {
 
   return (
     <div
-      aria-label="Audio player"
+      aria-label={interfaceText("Audio player")}
       className="player-bar player-bar-modern"
       role="region"
       ref={playerBarRef}
-    >
+     {...interfaceTextProps("Audio player")}>
       {audio}
       <div className="player-main-deck">
         <div className="player-display">
@@ -574,15 +577,15 @@ const PlayerBar = ({ runtimeProfile } = {}) => {
             <div className="player-track">
               <div>
                 <div className="player-eyebrow">
-                  {playing ? 'Now playing' : current ? 'Paused' : 'Ready'}
+                  {playing ? <LocalizedText source={"Now playing"} /> : current ? 'Paused' : 'Ready'}
                 </div>
                 <div className="player-title">
                   {current?.title || 'Nothing playing'}
                 </div>
                 <div className="player-subtitle">
                   {current?.artist || 'Pick a collection or local audio file'}
-                  {current?.album ? ` | ${current.album}` : ''}
-                  {followingParty ? ` | Following ${followingParty.hostPeerId}` : ''}
+                  {current?.album ? <LocalizedText source={"| {album}"} values={{ "album": (current.album) }} /> : ''}
+                  {followingParty ? <LocalizedText source={"| Following {hostPeerId}"} values={{ "hostPeerId": (followingParty.hostPeerId) }} /> : ''}
                 </div>
                 {current ? (
                   <div className="player-now-playing-meta">
@@ -623,21 +626,21 @@ const PlayerBar = ({ runtimeProfile } = {}) => {
         <div className="player-control-pad">
           <div className="player-control-row player-control-row-transport">
             <PlayerToolButton
-              content="Go to the previous queue item, or restart the current stream."
-              aria-label="Previous local track"
+              content={interfaceText("Go to the previous queue item, or restart the current stream.")}
+              aria-label={interfaceText("Previous local track")}
               data-testid="player-previous"
               disabled={!current}
               icon="step backward"
               onClick={previous}
-            />
+             {...interfaceTextProps("Go to the previous queue item, or restart the current stream.")}/>
             <PlayerToolButton
-              content="Rewind local playback by 15 seconds."
-              aria-label="Rewind local playback"
+              content={interfaceText("Rewind local playback by 15 seconds.")}
+              aria-label={interfaceText("Rewind local playback")}
               data-testid="player-rewind"
               disabled={!current}
               icon="backward"
               onClick={() => seekRelative(-15)}
-            />
+             {...interfaceTextProps("Rewind local playback by 15 seconds.")}/>
             <PlayerToolButton
               content={playing ? 'Pause the current stream.' : 'Resume the current stream.'}
               aria-label={playing ? 'Pause local playback' : 'Resume local playback'}
@@ -648,29 +651,29 @@ const PlayerBar = ({ runtimeProfile } = {}) => {
               onClick={togglePlayback}
             />
             <PlayerToolButton
-              content="Fast-forward local playback by 30 seconds."
-              aria-label="Fast-forward local playback"
+              content={interfaceText("Fast-forward local playback by 30 seconds.")}
+              aria-label={interfaceText("Fast-forward local playback")}
               data-testid="player-fast-forward"
               disabled={!current}
               icon="forward"
               onClick={() => seekRelative(30)}
-            />
+             {...interfaceTextProps("Fast-forward local playback by 30 seconds.")}/>
             <PlayerToolButton
-              content="Play the next queue item."
-              aria-label="Next local track"
+              content={interfaceText("Play the next queue item.")}
+              aria-label={interfaceText("Next local track")}
               data-testid="player-next"
               disabled={!current || queue.length < 2}
               icon="step forward"
               onClick={next}
-            />
+             {...interfaceTextProps("Play the next queue item.")}/>
             <PlayerToolButton
-              content="Stop playback and clear your now-playing profile status."
-              aria-label="Stop local playback"
+              content={interfaceText("Stop playback and clear your now-playing profile status.")}
+              aria-label={interfaceText("Stop local playback")}
               data-testid="player-stop"
               disabled={!current}
               icon="stop"
               onClick={clear}
-            />
+             {...interfaceTextProps("Stop playback and clear your now-playing profile status.")}/>
           </div>
           <div className="player-control-row">
             <PlayerLauncher
@@ -679,13 +682,13 @@ const PlayerBar = ({ runtimeProfile } = {}) => {
             />
             <PlayerToolButton
               active={queueOpen}
-              content="Open the playback queue manager with current, upcoming, and recent session tracks."
-              aria-label="Open playback queue"
+              content={interfaceText("Open the playback queue manager with current, upcoming, and recent session tracks.")}
+              aria-label={interfaceText("Open playback queue")}
               data-testid="player-open-queue"
               disabled={!current}
               icon="list ol"
               onClick={() => setQueueOpen(true)}
-            />
+             {...interfaceTextProps("Open the playback queue manager with current, upcoming, and recent session tracks.")}/>
             <PlayerToolButton
               active={localMuted}
               content={
@@ -741,37 +744,37 @@ const PlayerBar = ({ runtimeProfile } = {}) => {
               onClick={() => setLyricsOpen((open) => !open)}
             />
             <PlayerToolButton
-              content="Build smart-radio search seeds from the current track without starting network work yet."
-              aria-label="Open smart radio seeds"
+              content={interfaceText("Build smart-radio search seeds from the current track without starting network work yet.")}
+              aria-label={interfaceText("Open smart radio seeds")}
               data-testid="player-open-radio"
               disabled={!current}
               icon="random"
               onClick={() => setRadioOpen(true)}
-            />
+             {...interfaceTextProps("Build smart-radio search seeds from the current track without starting network work yet.")}/>
             <PlayerToolButton
-              content="Show local listening stats recorded in this browser."
-              aria-label="Open listening stats"
+              content={interfaceText("Show local listening stats recorded in this browser.")}
+              aria-label={interfaceText("Open listening stats")}
               data-testid="player-open-listening-stats"
               icon="bar chart"
               onClick={() => setStatsOpen(true)}
-            />
+             {...interfaceTextProps("Show local listening stats recorded in this browser.")}/>
             <PlayerToolButton
               active={shelfOpen}
-              content="Open the browser-local discovery shelf built from player ratings."
-              aria-label="Open discovery shelf"
+              content={interfaceText("Open the browser-local discovery shelf built from player ratings.")}
+              aria-label={interfaceText("Open discovery shelf")}
               data-testid="player-open-discovery-shelf"
               icon="bookmark"
               onClick={() => setShelfOpen(true)}
-            />
+             {...interfaceTextProps("Open the browser-local discovery shelf built from player ratings.")}/>
           </div>
           <div className="player-control-row">
             <PlayerToolButton
-              content="Collapse the player into a small drawer bar above the footer."
-              aria-label="Collapse player"
+              content={interfaceText("Collapse the player into a small drawer bar above the footer.")}
+              aria-label={interfaceText("Collapse player")}
               data-testid="player-collapse"
               icon="angle down"
               onClick={() => setCollapsed(true)}
-            />
+             {...interfaceTextProps("Collapse the player into a small drawer bar above the footer.")}/>
             <PlayerToolButton
               active={karaokeEnabled}
               content={
@@ -798,21 +801,21 @@ const PlayerBar = ({ runtimeProfile } = {}) => {
               onClick={() => setCrossfadeEnabled((enabled) => !enabled)}
             />
             <PlayerToolButton
-              content="Open a tiny always-on-top spectrum window when this browser supports Document Picture-in-Picture."
-              aria-label="Open visualizer picture in picture"
+              content={interfaceText("Open a tiny always-on-top spectrum window when this browser supports Document Picture-in-Picture.")}
+              aria-label={interfaceText("Open visualizer picture in picture")}
               data-testid="player-document-pip"
               disabled={!current || !window.documentPictureInPicture}
               icon="window restore"
               onClick={openPictureInPicture}
-            />
+             {...interfaceTextProps("Open a tiny always-on-top spectrum window when this browser supports Document Picture-in-Picture.")}/>
             <PlayerToolButton
               active={listenBrainzToken.length > 0}
-              content="Configure ListenBrainz scrobbling for this browser."
-              aria-label="Configure ListenBrainz scrobbling"
+              content={interfaceText("Configure ListenBrainz scrobbling for this browser.")}
+              aria-label={interfaceText("Configure ListenBrainz scrobbling")}
               data-testid="player-open-integrations"
               icon="cloud upload"
               onClick={() => setIntegrationsOpen(true)}
-            />
+             {...interfaceTextProps("Configure ListenBrainz scrobbling for this browser.")}/>
           </div>
         </div>
       </div>
@@ -886,9 +889,9 @@ const PlayerBar = ({ runtimeProfile } = {}) => {
               className="player-queue-item"
               key={item.contentId}
               onClick={() => removeFromQueue(item.contentId)}
-              title="Remove this item from the visible queue."
+              title={interfaceText("Remove this item from the visible queue.")}
               type="button"
-            >
+             {...interfaceTextProps("Remove this item from the visible queue.")}>
               {item.title || item.fileName || item.contentId}
             </button>
           ))}

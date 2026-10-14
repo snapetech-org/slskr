@@ -1,6 +1,6 @@
-import { toDisplayError } from '../../lib/errors';
 import * as wishlistAPI from '../../lib/wishlist';
 import { useMountedFlag } from './wishlistHooks';
+import { useInterfaceLanguage } from '../../lib/interfaceLocale';
 import React, { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import {
@@ -16,6 +16,12 @@ import {
 } from 'semantic-ui-react';
 
 const WishlistModal = ({ item, onClose, onSave }) => {
+  const { t, languageFor, directionFor } = useInterfaceLanguage();
+  const localized = (source, parameters) => (
+    <span lang={languageFor(source)} dir={directionFor(source)}>{t(source, parameters)}</span>
+  );
+  const localizedRef = useRef(localized);
+  localizedRef.current = localized;
   const [searchText, setSearchText] = useState(item?.searchText || '');
   const [filter, setFilter] = useState(item?.filter || '');
   const [enabled, setEnabled] = useState(item?.enabled ?? true);
@@ -45,7 +51,7 @@ const WishlistModal = ({ item, onClose, onSave }) => {
       .catch((error) => {
         console.error(error);
         if (!cancelled) {
-          toast.error('Failed to load ignored wishlist folders');
+          toast.error(localizedRef.current('Could not load ignored Wishlist folders.'));
         }
       })
       .finally(() => {
@@ -74,14 +80,17 @@ const WishlistModal = ({ item, onClose, onSave }) => {
       setIgnoredResults((current) =>
         current.filter((candidate) => candidate.id !== rule.id),
       );
-      toast.info(`Restored ${rule.directory} from ${rule.username}`);
+      toast.info(localizedRef.current('Restored {directory} from {username}', {
+        directory: rule.directory,
+        username: rule.username,
+      }));
     } catch (error) {
       if (
         mountedRef.current &&
         requestId === operationRequestIdRef.current
       ) {
         console.error(error);
-        toast.error(toDisplayError(error));
+        toast.error(localizedRef.current('Could not restore this folder.'));
       }
     } finally {
       restoreInFlightRef.current = false;
@@ -90,7 +99,7 @@ const WishlistModal = ({ item, onClose, onSave }) => {
 
   const handleSave = async () => {
     if (!searchText.trim() || saving || !mountedRef.current) {
-      if (!searchText.trim()) toast.error('Search text is required');
+      if (!searchText.trim()) toast.error(localizedRef.current('Search text is required.'));
       return;
     }
 
@@ -117,7 +126,8 @@ const WishlistModal = ({ item, onClose, onSave }) => {
         mountedRef.current &&
         requestId === operationRequestIdRef.current
       ) {
-        toast.error(`Failed to save: ${toDisplayError(error)}`);
+        console.error(error);
+        toast.error(localizedRef.current('Could not save Wishlist item.'));
       }
     } finally {
       if (
@@ -137,25 +147,31 @@ const WishlistModal = ({ item, onClose, onSave }) => {
     >
       <Modal.Header>
         <Icon name="star" />
-        {isEdit ? 'Edit Wishlist Item' : 'Add to Wishlist'}
+        {localized(isEdit ? 'Edit Wishlist Item' : 'Add to Wishlist')}
       </Modal.Header>
       <Modal.Content>
         <Form>
           <Form.Input
-            label="Search Text"
+            dir={directionFor('Enter search terms...')}
+            lang={languageFor('Enter search terms...')}
+            label={localized('Search Text')}
             onChange={(event) => setSearchText(event.target.value)}
-            placeholder="Enter search terms..."
+            placeholder={t('Enter search terms...')}
             required
             value={searchText}
           />
           <Form.Input
-            label="Filter (optional)"
+            dir={directionFor('e.g., flac OR mp3')}
+            lang={languageFor('e.g., flac OR mp3')}
+            label={localized('Filter (optional)')}
             onChange={(event) => setFilter(event.target.value)}
-            placeholder="e.g., flac OR mp3"
+            placeholder={t('e.g., flac OR mp3')}
             value={filter}
           />
           <Form.Input
-            label="Max Results"
+            dir={directionFor('Max Results')}
+            lang={languageFor('Max Results')}
+            label={localized('Max Results')}
             max={1_000}
             min={10}
             onChange={(event) =>
@@ -167,7 +183,9 @@ const WishlistModal = ({ item, onClose, onSave }) => {
           <Form.Field>
             <Checkbox
               checked={enabled}
-              label="Enabled (run automatically)"
+              dir={directionFor('Enabled (run automatically)')}
+              lang={languageFor('Enabled (run automatically)')}
+              label={localized('Enabled (run automatically)')}
               onChange={(_, data) => setEnabled(data.checked)}
               toggle
             />
@@ -175,7 +193,9 @@ const WishlistModal = ({ item, onClose, onSave }) => {
           <Form.Field>
             <Checkbox
               checked={autoDownload}
-              label="Auto-download best matches"
+              dir={directionFor('Auto-download best matches')}
+              lang={languageFor('Auto-download best matches')}
+              label={localized('Auto-download best matches')}
               onChange={(_, data) => setAutoDownload(data.checked)}
               toggle
             />
@@ -186,18 +206,16 @@ const WishlistModal = ({ item, onClose, onSave }) => {
             <Header as="h4">
               <Icon name="eye slash" />
               <Header.Content>
-                Ignored Result Folders
+                {localized('Ignored Result Folders')}
                 <Header.Subheader>
-                  These peer folders stay hidden only for this wishlist item.
-                  Restore one to allow it in future searches and auto-download
-                  decisions.
+                  {localized('These peer folders stay hidden only for this Wishlist item. Restore one to allow it in future searches and auto-download decisions.')}
                 </Header.Subheader>
               </Header.Content>
             </Header>
             {loadingIgnoredResults ? (
               <Icon loading name="spinner" />
             ) : ignoredResults.length === 0 ? (
-              <span>No folders are ignored.</span>
+              localized('No folders are ignored.')
             ) : (
               <Table basic="very" compact>
                 <Table.Body>
@@ -214,10 +232,12 @@ const WishlistModal = ({ item, onClose, onSave }) => {
                       </Table.Cell>
                       <Table.Cell collapsing>
                         <Popup
-                          content="Allow this peer folder to appear again in future runs of this wishlist item."
+                          content={localized('Allow this peer folder to appear again in future runs of this wishlist item.')}
                           trigger={
                             <Button
-                              aria-label={`Restore ignored folder ${rule.directory}`}
+                              aria-label={t('Restore ignored folder {directory}', { directory: rule.directory })}
+                              lang={languageFor('Restore ignored folder {directory}')}
+                              dir={directionFor('Restore ignored folder {directory}')}
                               compact
                               icon="undo"
                               onClick={() => restoreIgnoredResult(rule)}
@@ -235,14 +255,14 @@ const WishlistModal = ({ item, onClose, onSave }) => {
         )}
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={onClose}>{localized('Cancel')}</Button>
         <Button
           disabled={saving}
           loading={saving}
           onClick={handleSave}
           primary
         >
-          {isEdit ? 'Save' : 'Add'}
+          {localized(isEdit ? 'Save' : 'Add')}
         </Button>
       </Modal.Actions>
     </Modal>

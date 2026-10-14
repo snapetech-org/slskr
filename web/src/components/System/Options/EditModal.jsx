@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import {
   getYaml,
   getYamlLocation,
@@ -12,6 +14,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Button, Icon, Message, Modal } from 'semantic-ui-react';
 
 const EditModal = ({ onClose, open, theme }) => {
+  useInterfaceLanguage();
   // eslint-disable-next-line react/hook-use-state
   const [{ error, loading }, setLoading] = useState({
     error: false,
@@ -184,14 +187,13 @@ const EditModal = ({ onClose, open, theme }) => {
     >
       <Modal.Header>
         <Icon name="edit" />
-        Edit Options
-        <Div hidden={loading}>
+        <LocalizedText source={"Edit Options"} /><Div hidden={loading}>
           <Message
             className="no-grow edit-code-header"
             warning
           >
             <Icon name="warning sign" />
-            Editing {location}
+            <LocalizedText source={"Editing"} />{" "}{location}
           </Message>
         </Div>
       </Modal.Header>
@@ -212,12 +214,12 @@ const EditModal = ({ onClose, open, theme }) => {
             }}
           >
             <CodeEditor
-              ariaLabel="Edit server options YAML"
+              ariaLabel={interfaceText("Edit server options YAML")}
               onChange={(value) => update(value)}
               style={{ minHeight: 500 }}
               theme={theme}
               value={yaml}
-            />
+             {...interfaceTextProps("Edit server options YAML")}/>
           </div>
         </Switch>
       </Modal.Content>
@@ -238,15 +240,13 @@ const EditModal = ({ onClose, open, theme }) => {
           primary
         >
           <Icon name="save" />
-          Save
-        </Button>
+          <LocalizedText source={"Save"} /></Button>
         <Button
           negative
           onClick={onClose}
         >
           <Icon name="close" />
-          Cancel
-        </Button>
+          <LocalizedText source={"Cancel"} /></Button>
       </Modal.Actions>
     </Modal>
   );

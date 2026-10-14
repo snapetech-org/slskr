@@ -1,3 +1,4 @@
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import { useCallback } from 'react';
 import { removeLocalStorageItem, setLocalStorageItem } from '../../lib/storage';
 import { toDisplayError } from '../../lib/errors';
@@ -112,7 +113,7 @@ const useVisualizerPresetFileOperations = ({
         if (!engineRef.current?.loadPresetFragmentText) {
           skipped.push({
             fileName: file.name,
-            message: 'Native fragment import is not available.',
+            message: interfaceText("Native fragment import is not available."),
           });
           continue;
         }
@@ -192,7 +193,7 @@ const useVisualizerPresetFileOperations = ({
       const selectedIndex = type === 'wave' ? selectedNativeWaveIndex : selectedNativeShapeIndex;
       const exported = engineRef.current.exportPresetFragment(type, selectedIndex);
       if (!exported) {
-        setError(`No ${type} fragment is available in the active RustyMilk preset.`);
+        setError(interfaceText("No {type} fragment is available in the active RustyMilk preset.", { "type": (type) }));
         return;
       }
       downloadTextFile(exported.fileName, exported.source);
@@ -209,7 +210,7 @@ const useVisualizerPresetFileOperations = ({
     try {
       const exported = engineRef.current.exportPresetText();
       if (!exported) {
-        setError('No RustyMilk preset is available to export.');
+        setError(interfaceText("No RustyMilk preset is available to export."));
         return;
       }
       downloadTextFile(exported.fileName, exported.source);

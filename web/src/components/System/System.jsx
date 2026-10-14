@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import './System.css';
 import { Switch } from '../Shared';
 import React, { lazy, Suspense, useEffect, useRef } from 'react';
@@ -40,12 +42,12 @@ const SwarmAnalytics = lazyPane(loadNetworkPanes, 'SwarmAnalytics');
 // Six named groups instead of one 22-item flat tab strip. Order here is the
 // order sections appear in; a pane's `section` field below assigns it to one.
 const SECTIONS = [
-  { icon: 'home', key: 'overview', title: 'Overview' },
-  { icon: 'share alternate', key: 'network', title: 'Network & Mesh' },
-  { icon: 'shield alternate', key: 'security', title: 'Security & Trust' },
-  { icon: 'magic', key: 'automation', title: 'Automation & Jobs' },
-  { icon: 'heartbeat', key: 'diagnostics', title: 'Diagnostics' },
-  { icon: 'options', key: 'advanced', title: 'Advanced' },
+  { icon: 'home', key: 'overview', get title() { return interfaceText("Overview"); } },
+  { icon: 'share alternate', key: 'network', get title() { return interfaceText("Network & Mesh"); } },
+  { icon: 'shield alternate', key: 'security', get title() { return interfaceText("Security & Trust"); } },
+  { icon: 'magic', key: 'automation', get title() { return interfaceText("Automation & Jobs"); } },
+  { icon: 'heartbeat', key: 'diagnostics', get title() { return interfaceText("Diagnostics"); } },
+  { icon: 'options', key: 'advanced', get title() { return interfaceText("Advanced"); } },
 ];
 
 const LEGACY_SYSTEM_ROUTES = [
@@ -59,6 +61,7 @@ const LEGACY_SYSTEM_ROUTES = [
 ];
 
 const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
+  useInterfaceLanguage();
   const navigate = useNavigate();
   const { tab } = useParams();
   const systemRef = useRef(null);
@@ -80,8 +83,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
           >
             <Icon name="info circle" />
           </Switch>
-          Info
-        </Menu.Item>
+          <LocalizedText source={"Info"} /></Menu.Item>
       ),
       render: () => (
         <Tab.Pane>
@@ -103,8 +105,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
             color="blue"
             name="sitemap"
           />
-          Network
-        </Menu.Item>
+          <LocalizedText source={"Network"} /></Menu.Item>
       ),
       render: () => (
         <Tab.Pane>
@@ -133,8 +134,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
           >
             <Icon name="share external" />
           </Switch>
-          Shares
-        </Menu.Item>
+          <LocalizedText source={"File sharing"} /></Menu.Item>
       ),
       render: () => (
         <Tab.Pane>
@@ -149,7 +149,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
     },
     {
       menuItem: {
-        content: 'Mesh',
+        content: interfaceText("Mesh"),
         icon: 'share alternate',
         key: 'mesh',
       },
@@ -163,7 +163,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
     },
     {
       menuItem: {
-        content: 'Bridge',
+        content: interfaceText("Bridge"),
         icon: 'exchange',
         key: 'bridge',
       },
@@ -177,7 +177,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
     },
     {
       menuItem: {
-        content: 'MediaCore',
+        content: interfaceText("MediaCore"),
         icon: 'music',
         key: 'mediacore',
       },
@@ -193,7 +193,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
     },
     {
       menuItem: {
-        content: 'Source Providers',
+        content: interfaceText("Source Providers"),
         icon: 'random',
         key: 'source-providers',
       },
@@ -207,7 +207,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
     },
     {
       menuItem: {
-        content: 'Swarm Analytics',
+        content: interfaceText("Swarm Analytics"),
         icon: 'chart line',
         key: 'swarm-analytics',
       },
@@ -221,7 +221,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
     },
     {
       menuItem: {
-        content: 'Security',
+        content: interfaceText("Security"),
         icon: 'shield alternate',
         key: 'security',
       },
@@ -235,7 +235,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
     },
     {
       menuItem: {
-        content: 'Policies',
+        content: interfaceText("Policies"),
         icon: 'sliders horizontal',
         key: 'policies',
       },
@@ -249,7 +249,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
     },
     {
       menuItem: {
-        content: 'Quarantine Jury',
+        content: interfaceText("Quarantine Jury"),
         icon: 'shield',
         key: 'quarantine-jury',
       },
@@ -263,7 +263,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
     },
     {
       menuItem: {
-        content: 'Jobs',
+        content: interfaceText("Jobs"),
         icon: 'tasks',
         key: 'jobs',
       },
@@ -277,7 +277,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
     },
     {
       menuItem: {
-        content: 'Automations',
+        content: interfaceText("Automations"),
         icon: 'magic',
         key: 'automations',
       },
@@ -291,7 +291,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
     },
     {
       menuItem: {
-        content: 'Events',
+        content: interfaceText("Events"),
         icon: 'calendar check',
         key: 'events',
       },
@@ -305,7 +305,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
     },
     {
       menuItem: {
-        content: 'Library Health',
+        content: interfaceText("Library Health"),
         icon: 'heartbeat',
         key: 'library-health',
       },
@@ -319,7 +319,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
     },
     {
       menuItem: {
-        content: 'Files',
+        content: interfaceText("Files"),
         icon: 'folder open',
         key: 'files',
       },
@@ -336,7 +336,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
     },
     {
       menuItem: {
-        content: 'Data',
+        content: interfaceText("Data"),
         icon: 'database',
         key: 'data',
       },
@@ -350,7 +350,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
     },
     {
       menuItem: {
-        content: 'Logs',
+        content: interfaceText("Logs"),
         icon: 'file outline',
         key: 'logs',
       },
@@ -364,7 +364,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
     },
     {
       menuItem: {
-        content: 'Metrics',
+        content: interfaceText("Metrics"),
         icon: 'chart bar',
         key: 'metrics',
       },
@@ -378,7 +378,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
     },
     {
       menuItem: {
-        content: 'Experience',
+        content: interfaceText("Experience"),
         icon: 'compass',
         key: 'experience',
       },
@@ -392,7 +392,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
     },
     {
       menuItem: {
-        content: 'Integrations',
+        content: interfaceText("Integrations"),
         icon: 'plug',
         key: 'integrations',
       },
@@ -409,7 +409,7 @@ const System = ({ runtimeProfile, options = {}, state = {}, theme }) => {
     },
     {
       menuItem: {
-        content: 'Options',
+        content: interfaceText("Options"),
         icon: 'options',
         key: 'options',
       },

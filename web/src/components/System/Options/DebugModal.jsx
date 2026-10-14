@@ -1,3 +1,5 @@
+import LocalizedText from "../../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import { getCurrentDebugView } from '../../../lib/options';
 import { toDisplayError } from '../../../lib/errors';
 import { CodeEditor, PlaceholderSegment, Switch } from '../../Shared';
@@ -7,6 +9,7 @@ import { toast } from 'react-toastify';
 import { Button, Icon, Modal } from 'semantic-ui-react';
 
 const DebugModal = ({ onClose, open, theme }) => {
+  useInterfaceLanguage();
   const [loading, setLoading] = useState(true);
   const [debugView, setDebugView] = useState();
   const mountedRef = useMountedRef();
@@ -58,25 +61,24 @@ const DebugModal = ({ onClose, open, theme }) => {
     >
       <Modal.Header>
         <Icon name="bug" />
-        Options (Debug View)
-      </Modal.Header>
+        <LocalizedText source={"Options (Debug View)"} /></Modal.Header>
       <Modal.Content
         className="debug-view-content"
         scrolling
       >
         <Switch loading={loading && <PlaceholderSegment loading />}>
           <CodeEditor
-            ariaLabel="Server options debug JSON"
+            ariaLabel={interfaceText("Server options debug JSON")}
             basicSetup={false}
             editable={false}
             style={{ minHeight: 500 }}
             theme={theme}
             value={debugView}
-          />
+           {...interfaceTextProps("Server options debug JSON")}/>
         </Switch>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={onClose}>Close</Button>
+        <Button onClick={onClose}><LocalizedText source={"Close"} /></Button>
       </Modal.Actions>
     </Modal>
   );

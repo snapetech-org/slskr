@@ -1,3 +1,5 @@
+import LocalizedText from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import {
   Button,
   Icon,
@@ -35,21 +37,20 @@ const PlayerIntegrationsModal = ({
         open={open}
         size="tiny"
       >
-        <Modal.Header>Player Integrations</Modal.Header>
+        <Modal.Header><LocalizedText source={"Player Integrations"} /></Modal.Header>
         <Modal.Content>
           <p className="player-modal-copy">
-            ListenBrainz submissions are opt-in and stored only in this browser.
-          </p>
+            <LocalizedText source={"ListenBrainz submissions are opt-in and stored only in this browser."} /></p>
           <Input
-            aria-label="ListenBrainz user token"
+            aria-label={interfaceText("ListenBrainz user token")}
             action={
               <Button
-                aria-label="Clear ListenBrainz token"
+                aria-label={interfaceText("Clear ListenBrainz token")}
                 data-testid="player-clear-listenbrainz-token"
                 icon
                 onClick={onClearListenBrainzToken}
                 type="button"
-              >
+               {...interfaceTextProps("Clear ListenBrainz token")}>
                 <Icon name="trash alternate outline" />
               </Button>
             }
@@ -57,23 +58,22 @@ const PlayerIntegrationsModal = ({
             fluid
             icon="cloud upload"
             onChange={onListenBrainzTokenChange}
-            placeholder="ListenBrainz token"
+            placeholder={interfaceText("ListenBrainz token")}
             size="mini"
             type="password"
             value={listenBrainzToken}
-          />
+           {...interfaceTextProps("ListenBrainz user token")}/>
           <div
             className="player-token-save-state"
             data-testid="player-listenbrainz-save-state"
           >
             <Icon name="check circle outline" />
-            Token changes are saved automatically in this browser.
-          </div>
+            <LocalizedText source={"Token changes are saved automatically in this browser."} /></div>
           <div
             className="player-external-visualizer"
             data-testid="player-external-visualizer"
           >
-            <div className="player-panel-title">External Visualizer</div>
+            <div className="player-panel-title"><LocalizedText source={"External Visualizer"} /></div>
             <div className="player-external-visualizer-summary">
               <Icon
                 name={externalVisualizerStatus?.enabled ? 'desktop' : 'ban'}
@@ -112,7 +112,7 @@ const PlayerIntegrationsModal = ({
             ) : null}
             <div className="player-external-visualizer-actions">
               <Popup
-                content="Start the configured external visualizer on the slskr host. Use this for RustyMilk or another local visualizer that captures system audio."
+                content={interfaceText("Start the configured external visualizer on the slskr host. Use this for RustyMilk or another local visualizer that captures system audio.")}
                 trigger={
                   <Button
                     data-testid="player-launch-external-visualizer"
@@ -127,12 +127,11 @@ const PlayerIntegrationsModal = ({
                     type="button"
                   >
                     <Icon name="external alternate" />
-                    Launch
-                  </Button>
+                    <LocalizedText source={"Launch"} /></Button>
                 }
-              />
+               {...interfaceTextProps("Start the configured external visualizer on the slskr host. Use this for RustyMilk or another local visualizer that captures system audio.")}/>
               <Popup
-                content="Refresh the configured external visualizer path and readiness from the server."
+                content={interfaceText("Refresh the configured external visualizer path and readiness from the server.")}
                 trigger={
                   <Button
                     data-testid="player-refresh-external-visualizer"
@@ -143,16 +142,15 @@ const PlayerIntegrationsModal = ({
                     type="button"
                   >
                     <Icon name="refresh" />
-                    Refresh
-                  </Button>
+                    <LocalizedText source={"Refresh"} /></Button>
                 }
-              />
+               {...interfaceTextProps("Refresh the configured external visualizer path and readiness from the server.")}/>
             </div>
           </div>
         </Modal.Content>
         <Modal.Actions>
           <Popup
-            content="Close settings. ListenBrainz token changes have already been saved."
+            content={interfaceText("Close settings. ListenBrainz token changes have already been saved.")}
             trigger={
               <Button
                 data-testid="player-close-integrations"
@@ -160,10 +158,9 @@ const PlayerIntegrationsModal = ({
                 primary
               >
                 <Icon name="check" />
-                Done
-              </Button>
+                <LocalizedText source={"Done"} /></Button>
             }
-          />
+           {...interfaceTextProps("Close settings. ListenBrainz token changes have already been saved.")}/>
         </Modal.Actions>
       </Modal>
 );
