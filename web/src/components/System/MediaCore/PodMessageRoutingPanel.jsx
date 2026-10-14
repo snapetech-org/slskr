@@ -2,7 +2,7 @@ import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 
 
-import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
+import { formatRegionalDateTime, useRegionalFormat, formatRegionalFixedNumber, formatRegionalNumber } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -226,18 +226,16 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
                         <strong><LocalizedText source={"Pod ID:"} /></strong> {routingResult.podId}
                         <br />
                         <strong><LocalizedText source={"Target Peers:"} /></strong>{' '}
-                        {routingResult.targetPeerCount}
+                        {formatRegionalNumber(routingResult.targetPeerCount)}
                         <br />
                         <strong><LocalizedText source={"Successfully Routed:"} /></strong>{' '}
-                        {routingResult.successfullyRoutedCount}
+                        {formatRegionalNumber(routingResult.successfullyRoutedCount)}
                         <br />
                         <strong><LocalizedText source={"Failed:"} /></strong>{' '}
-                        {routingResult.failedRoutingCount}
+                        {formatRegionalNumber(routingResult.failedRoutingCount)}
                         <br />
                         <strong><LocalizedText source={"Duration:"} /></strong>{' '}
-                        {routingResult.routingDuration?.totalMilliseconds?.toFixed(
-                          0,
-                        )}
+                        {formatRegionalFixedNumber(routingResult.routingDuration?.totalMilliseconds, 0)}
                         <LocalizedText source={"ms"} /></p>
                     </Message>
                   )}
@@ -293,8 +291,8 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
                         >
                           <p>
                             <LocalizedText source={"Routed to"} />{' '}
-                            {routingToPeersResult.successfullyRoutedCount}/
-                            {routingToPeersResult.targetPeerCount} <LocalizedText source={"peers"} /></p>
+                            {formatRegionalNumber(routingToPeersResult.successfullyRoutedCount)}/
+                            {formatRegionalNumber(routingToPeersResult.targetPeerCount)} <LocalizedText source={"peers"} /></p>
                         </Message>
                       )}
                     </div>
@@ -391,26 +389,24 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
                       {routingStats.totalMessagesRouted}
                       <br />
                       <strong><LocalizedText source={"Total Routing Attempts:"} /></strong>{' '}
-                      {routingStats.totalRoutingAttempts}
+                      {formatRegionalNumber(routingStats.totalRoutingAttempts)}
                       <br />
                       <strong><LocalizedText source={"Successful Routes:"} /></strong>{' '}
-                      {routingStats.successfulRoutingCount}
+                      {formatRegionalNumber(routingStats.successfulRoutingCount)}
                       <br />
                       <strong><LocalizedText source={"Failed Routes:"} /></strong>{' '}
-                      {routingStats.failedRoutingCount}
+                      {formatRegionalNumber(routingStats.failedRoutingCount)}
                       <br />
                       <strong><LocalizedText source={"Avg Routing Time:"} /></strong>{' '}
-                      {routingStats.averageRoutingTimeMs.toFixed(2)}<LocalizedText source={"ms"} /><br />
+                      {formatRegionalFixedNumber(routingStats.averageRoutingTimeMs, 2)}<LocalizedText source={"ms"} /><br />
                       <strong><LocalizedText source={"Deduplication Items:"} /></strong>{' '}
                       {routingStats.activeDeduplicationItems}
                       <br />
                       <strong><LocalizedText source={"Bloom Filter Fill:"} /></strong>{' '}
-                      {(routingStats.bloomFilterFillRatio * 100).toFixed(1)}%
+                      {formatRegionalFixedNumber((routingStats.bloomFilterFillRatio * 100), 1)}%
                       <br />
                       <strong><LocalizedText source={"Est. False Positive:"} /></strong>{' '}
-                      {(routingStats.estimatedFalsePositiveRate * 100).toFixed(
-                        4,
-                      )}
+                      {formatRegionalFixedNumber((routingStats.estimatedFalsePositiveRate * 100), 4)}
                       %<br />
                       <strong><LocalizedText source={"Last Operation:"} /></strong>{' '}
                       {routingStats.lastRoutingOperation

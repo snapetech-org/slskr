@@ -3670,7 +3670,7 @@
   "peers": "동료",
   "pod": "Pod",
   "pods": "Pods",
-  "preset": "사전 설정",
+  "preset": "프리셋",
   "promote": "홍보하다",
   "promote previews": "미리보기 홍보",
   "rating": "평가",
@@ -4547,5 +4547,14 @@
   "Tunnel Connected": "터널: 연결됨",
   "Tunnel Disconnected": "터널: 연결이 끊김",
   "Clear {value}": "{value} 지우기",
-  "selection": "선택"
+  "selection": "선택",
+  "Untitled album": "제목 없는 앨범",
+  "fingerprint matches": "지문 일치",
+  "Selected Issues": "선택한 문제",
+  "swarms": "다중 소스 다운로드",
+  "presets": "프리셋",
+  "Last {count} hour": "최근 {count}시간",
+  "Last {count} hours": "최근 {count}시간",
+  "auto-connect": "자동 연결",
+  "In progress": "진행 중"
 }

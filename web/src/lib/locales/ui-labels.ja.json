@@ -4547,5 +4547,14 @@
   "Tunnel Connected": "トンネル: 接続済み",
   "Tunnel Disconnected": "トンネル: 切断されました",
   "Clear {value}": "{value}をクリア",
-  "selection": "選択"
+  "selection": "選択",
+  "Untitled album": "無題のアルバム",
+  "fingerprint matches": "指紋照合",
+  "Selected Issues": "選択した問題",
+  "swarms": "マルチソースダウンロード",
+  "presets": "プリセット",
+  "Last {count} hour": "直近{count}時間",
+  "Last {count} hours": "直近{count}時間",
+  "auto-connect": "自動接続",
+  "In progress": "進行中"
 }

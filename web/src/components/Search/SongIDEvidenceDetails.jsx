@@ -1,6 +1,7 @@
 import LocalizedText from "../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import { LocalizedPopup } from '../Shared/TooltipButton';
+import { formatRegionalNumber, useRegionalFormat } from '../../lib/util';
 
 
 import React from 'react';
@@ -56,14 +57,17 @@ const SongIDEvidenceDetails = ({
   run,
 }) => {
   useInterfaceLanguage();
+  useRegionalFormat();
+  const formatPercent = (value) =>
+    formatRegionalNumber(Math.round((Number(value) || 0) * 100));
   const renderOptionScores = (item) => (
     <div style={{ marginTop: '0.35em' }}>
       <Label color="blue" size="tiny">
-        <LocalizedText source={"Overall"} />{" "}{Math.round((item.overallScore || 0) * 100)}
+        <LocalizedText source={"Overall"} />{" "}{formatPercent(item.overallScore)}
       </Label>
-      <Label size="tiny"><LocalizedText source={"Quality"} />{" "}{Math.round((item.qualityScore || 0) * 100)}</Label>
-      <Label size="tiny"><LocalizedText source={"Byzantine"} />{" "}{Math.round((item.byzantineScore || 0) * 100)}</Label>
-      <Label size="tiny"><LocalizedText source={"Ready"} />{" "}{Math.round((item.readinessScore || 0) * 100)}</Label>
+      <Label size="tiny"><LocalizedText source={"Quality"} />{" "}{formatPercent(item.qualityScore)}</Label>
+      <Label size="tiny"><LocalizedText source={"Byzantine"} />{" "}{formatPercent(item.byzantineScore)}</Label>
+      <Label size="tiny"><LocalizedText source={"Ready"} />{" "}{formatPercent(item.readinessScore)}</Label>
     </div>
   );
 
@@ -123,7 +127,7 @@ const SongIDEvidenceDetails = ({
         position="top left"
         trigger={
           <Label size="tiny">
-            <LocalizedText source={label} /> {Math.round((lane.score || 0) * 100)}
+            <LocalizedText source={label} /> {formatPercent(lane.score)}
           </Label>
         }
       />
@@ -190,9 +194,8 @@ const SongIDEvidenceDetails = ({
                   trigger={
                     <Label size="tiny">
                       <LocalizedText source={"Confidence"} />{' '}
-                      {run.forensicMatrix?.confidenceScore ||
-                        run.syntheticAssessment?.confidence ||
-                        interfaceText('low')}
+                      {formatRegionalNumber(run.forensicMatrix?.confidenceScore ||
+                        run.syntheticAssessment?.confidence) || interfaceText('low')}
                     </Label>
                   }
                  {...interfaceTextProps("Confidence applies to the synthetic-likelihood readout only. It does not control download decisions when identity is strong.")}/>
@@ -216,9 +219,7 @@ const SongIDEvidenceDetails = ({
                 {run.forensicMatrix?.perturbationStability !== undefined ? (
                   <Label size="tiny">
                     <LocalizedText source={"Stability"} />{' '}
-                    {Math.round(
-                      (run.forensicMatrix.perturbationStability || 0) * 100,
-                    )}
+                    {formatPercent(run.forensicMatrix.perturbationStability)}
                   </Label>
                 ) : null}
               </div>
@@ -243,26 +244,26 @@ const SongIDEvidenceDetails = ({
               <summary style={detailSummaryStyle}><LocalizedText source={"Scorecard"} /></summary>
               <div style={{ marginBottom: '1em' }}>
                 <Label size="tiny"><LocalizedText source={"Audio"} />{" "}{run.scorecard.analysisAudioSource || interfaceText('none')}</Label>
-                <Label size="tiny"><LocalizedText source={"Clips"} />{" "}{run.scorecard.clipCount || 0}</Label>
-                <Label size="tiny"><LocalizedText source={"AcoustID"} />{" "}{run.scorecard.acoustIdHitCount || 0}</Label>
-                <Label size="tiny"><LocalizedText source={"AcoustID Raw"} />{" "}{run.scorecard.rawAcoustIdHitCount || 0}</Label>
-                <Label size="tiny"><LocalizedText source={"SongRec"} />{" "}{run.scorecard.songRecHitCount || 0}</Label>
-                <Label size="tiny"><LocalizedText source={"SongRec Distinct"} />{" "}{run.scorecard.songRecDistinctMatchCount || 0}</Label>
-                <Label size="tiny"><LocalizedText source={"Transcript"} />{" "}{run.scorecard.transcriptCount || 0}</Label>
-                <Label size="tiny">OCR {run.scorecard.ocrCount || 0}</Label>
-                <Label size="tiny"><LocalizedText source={"Comments"} />{" "}{run.scorecard.commentFindingCount || 0}</Label>
-                <Label size="tiny"><LocalizedText source={"Timestamps"} />{" "}{run.scorecard.timestampHintCount || 0}</Label>
-                <Label size="tiny"><LocalizedText source={"Chapters"} />{" "}{run.scorecard.chapterHintCount || 0}</Label>
-                <Label size="tiny"><LocalizedText source={"Playlist Requests"} />{" "}{run.scorecard.playlistRequestCount || 0}</Label>
-                <Label size="tiny"><LocalizedText source={"AI Mentions"} />{" "}{run.scorecard.aiCommentMentionCount || 0}</Label>
-                <Label size="tiny"><LocalizedText source={"Panako"} />{" "}{run.scorecard.panakoHitCount || 0}</Label>
-                <Label size="tiny"><LocalizedText source={"Audfprint"} />{" "}{run.scorecard.audfprintHitCount || 0}</Label>
-                <Label size="tiny"><LocalizedText source={"Corpus"} />{" "}{run.scorecard.corpusMatchCount || 0}</Label>
+                <Label size="tiny"><LocalizedText source={"Clips"} />{" "}{formatRegionalNumber(run.scorecard.clipCount || 0)}</Label>
+                <Label size="tiny"><LocalizedText source={"AcoustID"} />{" "}{formatRegionalNumber(run.scorecard.acoustIdHitCount || 0)}</Label>
+                <Label size="tiny"><LocalizedText source={"AcoustID Raw"} />{" "}{formatRegionalNumber(run.scorecard.rawAcoustIdHitCount || 0)}</Label>
+                <Label size="tiny"><LocalizedText source={"SongRec"} />{" "}{formatRegionalNumber(run.scorecard.songRecHitCount || 0)}</Label>
+                <Label size="tiny"><LocalizedText source={"SongRec Distinct"} />{" "}{formatRegionalNumber(run.scorecard.songRecDistinctMatchCount || 0)}</Label>
+                <Label size="tiny"><LocalizedText source={"Transcript"} />{" "}{formatRegionalNumber(run.scorecard.transcriptCount || 0)}</Label>
+                <Label size="tiny">OCR {formatRegionalNumber(run.scorecard.ocrCount || 0)}</Label>
+                <Label size="tiny"><LocalizedText source={"Comments"} />{" "}{formatRegionalNumber(run.scorecard.commentFindingCount || 0)}</Label>
+                <Label size="tiny"><LocalizedText source={"Timestamps"} />{" "}{formatRegionalNumber(run.scorecard.timestampHintCount || 0)}</Label>
+                <Label size="tiny"><LocalizedText source={"Chapters"} />{" "}{formatRegionalNumber(run.scorecard.chapterHintCount || 0)}</Label>
+                <Label size="tiny"><LocalizedText source={"Playlist Requests"} />{" "}{formatRegionalNumber(run.scorecard.playlistRequestCount || 0)}</Label>
+                <Label size="tiny"><LocalizedText source={"AI Mentions"} />{" "}{formatRegionalNumber(run.scorecard.aiCommentMentionCount || 0)}</Label>
+                <Label size="tiny"><LocalizedText source={"Panako"} />{" "}{formatRegionalNumber(run.scorecard.panakoHitCount || 0)}</Label>
+                <Label size="tiny"><LocalizedText source={"Audfprint"} />{" "}{formatRegionalNumber(run.scorecard.audfprintHitCount || 0)}</Label>
+                <Label size="tiny"><LocalizedText source={"Corpus"} />{" "}{formatRegionalNumber(run.scorecard.corpusMatchCount || 0)}</Label>
                 <Label size="tiny">
-                  <LocalizedText source={"Provenance"} />{" "}{run.scorecard.provenanceSignalCount || 0}
+                  <LocalizedText source={"Provenance"} />{" "}{formatRegionalNumber(run.scorecard.provenanceSignalCount || 0)}
                 </Label>
                 <Label size="tiny">
-                  <LocalizedText source={"AI Heuristics"} />{" "}{run.scorecard.aiArtifactClipCount || 0}
+                  <LocalizedText source={"AI Heuristics"} />{" "}{formatRegionalNumber(run.scorecard.aiArtifactClipCount || 0)}
                 </Label>
               </div>
               {Array.isArray(run.scorecard.embeddedMetadataKeys) &&
@@ -287,9 +288,9 @@ const SongIDEvidenceDetails = ({
               <summary style={detailSummaryStyle}><LocalizedText source={"Full-Source Fingerprint"} /></summary>
               <p>
                 <strong><LocalizedText source={"Duration:"} /></strong>{' '}
-                {Math.round(run.fullSourceFingerprint.durationSeconds || 0)}<LocalizedText source={"s"} /><br />
+                {formatRegionalNumber(Math.round(run.fullSourceFingerprint.durationSeconds || 0))} s<br />
                 <strong><LocalizedText source={"Fingerprint Length:"} /></strong>{' '}
-                {run.fullSourceFingerprint.fingerprintLength || 0}
+                {formatRegionalNumber(run.fullSourceFingerprint.fingerprintLength || 0)}
                 <br />
                 <strong><LocalizedText source={"Path:"} /></strong> {run.fullSourceFingerprint.path}
               </p>
@@ -327,24 +328,24 @@ const SongIDEvidenceDetails = ({
               <summary style={detailSummaryStyle}><LocalizedText source={"AI Audio Heuristics"} /></summary>
               <div style={{ marginBottom: '1em' }}>
                 <Label size="tiny">
-                  <LocalizedText source={"Score"} />{" "}{Math.round((run.aiHeuristics.artifactScore || 0) * 100)}
+                  <LocalizedText source={"Score"} />{" "}{formatPercent(run.aiHeuristics.artifactScore)}
                 </Label>
                 <Label size="tiny">{run.aiHeuristics.artifactLabel || interfaceText('unknown')}</Label>
                 <Label size="tiny">
-                  <LocalizedText source={"Peaks"} />{" "}{run.aiHeuristics.peakCount || 0}
+                  <LocalizedText source={"Peaks"} />{" "}{formatRegionalNumber(run.aiHeuristics.peakCount || 0)}
                 </Label>
                 <Label size="tiny">
                   <LocalizedText source={"Periodicity"} />{' '}
-                  {Math.round((run.aiHeuristics.periodicityStrength || 0) * 100)}
+                  {formatPercent(run.aiHeuristics.periodicityStrength)}
                 </Label>
                 <Label size="tiny">
-                  <LocalizedText source={"Centroid"} />{" "}{Math.round(run.aiHeuristics.spectralCentroid || 0)}
+                  <LocalizedText source={"Centroid"} />{" "}{formatRegionalNumber(Math.round(run.aiHeuristics.spectralCentroid || 0))}
                 </Label>
                 <Label size="tiny">
-                  <LocalizedText source={"Flux"} />{" "}{Math.round((run.aiHeuristics.spectralFlux || 0) * 1000)}
+                  <LocalizedText source={"Flux"} />{" "}{formatRegionalNumber(Math.round((run.aiHeuristics.spectralFlux || 0) * 1000))}
                 </Label>
                 <Label size="tiny">
-                  <LocalizedText source={"Pitch"} />{" "}{Math.round((run.aiHeuristics.pitchSalience || 0) * 100)}
+                  <LocalizedText source={"Pitch"} />{" "}{formatPercent(run.aiHeuristics.pitchSalience)}
                 </Label>
               </div>
             </details>
@@ -353,7 +354,7 @@ const SongIDEvidenceDetails = ({
           {Array.isArray(run.perturbations) && run.perturbations.length > 0 ? (
             <details style={detailStyle}>
               <summary style={detailSummaryStyle}>
-                <LocalizedText source={"Perturbation Stability ("} />{run.perturbations.length})
+                <LocalizedText source={"Perturbation Stability ("} />{formatRegionalNumber(run.perturbations.length)})
               </summary>
               <List divided relaxed>
                 {run.perturbations.map((item) => (
@@ -361,11 +362,11 @@ const SongIDEvidenceDetails = ({
                     <List.Content>
                       <List.Header>{item.label}</List.Header>
                       <List.Description>
-                        <LocalizedText source={"Delta"} />{" "}{Math.round((item.baselineDelta || 0) * 100)}
+                        <LocalizedText source={"Delta"} />{" "}{formatPercent(item.baselineDelta)}
                       </List.Description>
                       {item.heuristics ? (
                         <List.Description style={{ marginTop: '0.35em' }}>
-                          <LocalizedText source={"Score"} />{" "}{Math.round((item.heuristics.artifactScore || 0) * 100)} ·
+                          <LocalizedText source={"Score"} />{" "}{formatPercent(item.heuristics.artifactScore)} ·
                           {` `}<LocalizedText source={"Label"} />{" "}{item.heuristics.artifactLabel || interfaceText('unknown')}
                         </List.Description>
                       ) : null}
@@ -385,7 +386,7 @@ const SongIDEvidenceDetails = ({
                     <List.Content>
                       <List.Header>{match.label || match.source}</List.Header>
                       <List.Description>
-                        <LocalizedText source={"Similarity"} />{" "}{Math.round((match.similarityScore || 0) * 100)}
+                        <LocalizedText source={"Similarity"} />{" "}{formatPercent(match.similarityScore)}
                       </List.Description>
                       {match.artist || match.title ? (
                         <List.Description style={{ marginTop: '0.35em' }}>
@@ -420,7 +421,7 @@ const SongIDEvidenceDetails = ({
           {Array.isArray(run.evidence) && run.evidence.length > 0 ? (
             <details style={detailStyle}>
               <summary style={detailSummaryStyle}>
-                <LocalizedText source={"Evidence ("} />{run.evidence.length})
+                <LocalizedText source={"Evidence ("} />{formatRegionalNumber(run.evidence.length)})
               </summary>
               <List bulleted>
                 {run.evidence.map((item) => (
@@ -440,7 +441,7 @@ const SongIDEvidenceDetails = ({
                       <List.Header>
                         {segment.label}{' '}
                         <Label size="tiny">
-                          {Math.round((segment.confidence || 0) * 100)}%
+                          {formatPercent(segment.confidence)}%
                         </Label>
                       </List.Header>
                       <List.Description>
@@ -502,7 +503,7 @@ const SongIDEvidenceDetails = ({
           {options.length > 0 ? (
             <details style={detailStyle}>
               <summary style={detailSummaryStyle}>
-                <LocalizedText source={"Ranked Download Options ("} />{options.length})
+                <LocalizedText source={"Ranked Download Options ("} />{formatRegionalNumber(options.length)})
               </summary>
               <List divided relaxed>
                 {options.map((option) => (
@@ -529,7 +530,7 @@ const SongIDEvidenceDetails = ({
                         <Label size="tiny">{option.mode}</Label>
                         {option.duplicateCount > 1 ? (
                           <Label color="grey" size="tiny">
-                            {option.duplicateCount} <LocalizedText source={"matches"} /></Label>
+                            {formatRegionalNumber(option.duplicateCount)} <LocalizedText source={"matches"} /></Label>
                         ) : null}
                       </List.Header>
                       <List.Description>{option.description}</List.Description>
@@ -560,16 +561,16 @@ const SongIDEvidenceDetails = ({
           {Array.isArray(run.clips) && run.clips.length > 0 ? (
             <details style={detailStyle}>
               <summary style={detailSummaryStyle}>
-                <LocalizedText source={"Clip Findings ("} />{run.clips.length})
+                <LocalizedText source={"Clip Findings ("} />{formatRegionalNumber(run.clips.length)})
               </summary>
               <List divided relaxed>
                 {run.clips.map((clip) => (
                   <List.Item key={clip.clipId}>
                     <List.Content>
                       <List.Header>
-                        {clip.profile} @ {clip.startSeconds}<LocalizedText source={"s"} /></List.Header>
+                        {clip.profile} @ {formatRegionalNumber(clip.startSeconds)}s</List.Header>
                       <List.Description>
-                        {clip.durationSeconds}<LocalizedText source={"s clip"} /></List.Description>
+                        <LocalizedText source={"Duration:"} /> {formatRegionalNumber(clip.durationSeconds)}s</List.Description>
                       {clip.acoustId ? (
                         <List.Description style={{ marginTop: '0.35em' }}>
                           <LocalizedText source={"AcoustID:"} />{" "}{clip.acoustId.artist} - {clip.acoustId.title}
@@ -593,7 +594,7 @@ const SongIDEvidenceDetails = ({
                       {clip.aiHeuristics ? (
                         <List.Description style={{ marginTop: '0.35em' }}>
                           <LocalizedText source={"AI Heuristics:"} />{" "}{clip.aiHeuristics.artifactLabel} (
-                          {Math.round((clip.aiHeuristics.artifactScore || 0) * 100)})
+                          {formatPercent(clip.aiHeuristics.artifactScore)})
                         </List.Description>
                       ) : null}
                     </List.Content>
@@ -606,7 +607,7 @@ const SongIDEvidenceDetails = ({
           {Array.isArray(run.transcripts) && run.transcripts.length > 0 ? (
             <details style={detailStyle}>
               <summary style={detailSummaryStyle}>
-                <LocalizedText source={"Transcripts ("} />{run.transcripts.length})
+                <LocalizedText source={"Transcripts ("} />{formatRegionalNumber(run.transcripts.length)})
               </summary>
               <List divided relaxed>
                 {run.transcripts.map((transcript) => (
@@ -615,10 +616,10 @@ const SongIDEvidenceDetails = ({
                       <List.Header>{transcript.source}</List.Header>
                       <List.Description>{transcript.text}</List.Description>
                       <List.Description style={{ marginTop: '0.35em' }}>
-                        <LocalizedText source={"Segments:"} />{" "}{transcript.segmentCount || 0} <LocalizedText source={"· Language:"} />{' '}
+                        <LocalizedText source={"Segments:"} />{" "}{formatRegionalNumber(transcript.segmentCount || 0)} <LocalizedText source={"· Language:"} />{' '}
                         {transcript.language || interfaceText('unknown')} <LocalizedText source={"· Excerpt:"} />{' '}
-                        {transcript.excerptStartSeconds || 0}<LocalizedText source={"s /"} />{' '}
-                        {transcript.excerptDurationSeconds || 0}<LocalizedText source={"s"} /></List.Description>
+                        {formatRegionalNumber(transcript.excerptStartSeconds || 0)}s /{' '}
+                        {formatRegionalNumber(transcript.excerptDurationSeconds || 0)}s</List.Description>
                       {Array.isArray(transcript.musicBrainzQueries) &&
                       transcript.musicBrainzQueries.length > 0 ? (
                         <List.Description style={{ marginTop: '0.35em' }}>
@@ -634,7 +635,7 @@ const SongIDEvidenceDetails = ({
 
           {Array.isArray(run.ocr) && run.ocr.length > 0 ? (
             <details style={detailStyle}>
-              <summary style={detailSummaryStyle}><LocalizedText source={"OCR ("} />{run.ocr.length})</summary>
+              <summary style={detailSummaryStyle}><LocalizedText source={"OCR ("} />{formatRegionalNumber(run.ocr.length)})</summary>
               <List bulleted>
                 {run.ocr.map((item) => (
                   <List.Item key={item.ocrId}>
@@ -648,7 +649,7 @@ const SongIDEvidenceDetails = ({
           {Array.isArray(run.comments) && run.comments.length > 0 ? (
             <details style={detailStyle}>
               <summary style={detailSummaryStyle}>
-                <LocalizedText source={"Comments ("} />{run.comments.length})
+                <LocalizedText source={"Comments ("} />{formatRegionalNumber(run.comments.length)})
               </summary>
               <List bulleted>
                 {run.comments.map((comment) => (
@@ -671,7 +672,7 @@ const SongIDEvidenceDetails = ({
               <List bulleted>
                 {run.chapters.map((chapter) => (
                   <List.Item key={chapter.chapterId}>
-                    {chapter.startSeconds}s: {chapter.title || interfaceText('untitled chapter')}
+                    {formatRegionalNumber(chapter.startSeconds)}s: {chapter.title || interfaceText('untitled chapter')}
                     {chapter.endSeconds !== null &&
                     chapter.endSeconds !== undefined
                       ? <LocalizedText source={"-> {endSeconds}s"} values={{ "endSeconds": (chapter.endSeconds) }} />
@@ -720,7 +721,7 @@ const SongIDEvidenceDetails = ({
                     position="top left"
                     trigger={
                       <Label size="tiny">
-                        <LocalizedText source={"Identity Lane"} />{" "}{Math.round((run.forensicMatrix.identityLane.score || 0) * 100)}
+                        <LocalizedText source={"Identity Lane"} />{" "}{formatPercent(run.forensicMatrix.identityLane.score)}
                       </Label>
                     }
                   />
@@ -731,7 +732,7 @@ const SongIDEvidenceDetails = ({
                     position="top left"
                     trigger={
                       <Label size="tiny">
-                        <LocalizedText source={"Confidence Lane"} />{" "}{Math.round((run.forensicMatrix.confidenceLane.score || 0) * 100)}
+                        <LocalizedText source={"Confidence Lane"} />{" "}{formatPercent(run.forensicMatrix.confidenceLane.score)}
                       </Label>
                     }
                   />
@@ -742,7 +743,7 @@ const SongIDEvidenceDetails = ({
                     position="top left"
                     trigger={
                       <Label size="tiny">
-                        <LocalizedText source={"Spectral"} />{" "}{Math.round((run.forensicMatrix.spectralArtifactLane.score || 0) * 100)}
+                        <LocalizedText source={"Spectral"} />{" "}{formatPercent(run.forensicMatrix.spectralArtifactLane.score)}
                       </Label>
                     }
                   />
@@ -753,7 +754,7 @@ const SongIDEvidenceDetails = ({
                     position="top left"
                     trigger={
                       <Label size="tiny">
-                        <LocalizedText source={"Lyrics"} />{" "}{Math.round((run.forensicMatrix.lyricsSpeechLane.score || 0) * 100)}
+                        <LocalizedText source={"Lyrics"} />{" "}{formatPercent(run.forensicMatrix.lyricsSpeechLane.score)}
                       </Label>
                     }
                   />
@@ -764,7 +765,7 @@ const SongIDEvidenceDetails = ({
                     position="top left"
                     trigger={
                       <Label size="tiny">
-                        <LocalizedText source={"Structure"} />{" "}{Math.round((run.forensicMatrix.structuralLane.score || 0) * 100)}
+                        <LocalizedText source={"Structure"} />{" "}{formatPercent(run.forensicMatrix.structuralLane.score)}
                       </Label>
                     }
                   />
@@ -775,7 +776,7 @@ const SongIDEvidenceDetails = ({
                     position="top left"
                     trigger={
                       <Label size="tiny">
-                        <LocalizedText source={"Provenance"} />{" "}{Math.round((run.forensicMatrix.provenanceLane.score || 0) * 100)}
+                        <LocalizedText source={"Provenance"} />{" "}{formatPercent(run.forensicMatrix.provenanceLane.score)}
                       </Label>
                     }
                   />

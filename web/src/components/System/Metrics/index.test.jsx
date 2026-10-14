@@ -3,7 +3,7 @@ import { getKpiMetrics } from '../../../lib/telemetry';
 import Metrics from './index';
 import { setRegionalFormatPreference } from '../../../lib/util';
 import React from 'react';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 vi.mock('../../../lib/telemetry', () => ({
@@ -45,7 +45,7 @@ describe('Metrics', () => {
   });
 
   it('formats zero byte metrics with the selected regional digits', async () => {
-    setRegionalFormatPreference('ar');
+    act(() => setRegionalFormatPreference('ar'));
     getKpiMetrics.mockResolvedValueOnce({
       process_working_set_bytes: {
         help: 'Working set bytes',
@@ -55,6 +55,24 @@ describe('Metrics', () => {
     });
 
     render(<Metrics />);
+
+    const zero = new Intl.NumberFormat('ar').format(0);
+    expect(await screen.findByText(`${zero} B`)).toBeInTheDocument();
+  });
+
+  it('reformats a mounted metric when the regional preference changes', async () => {
+    getKpiMetrics.mockResolvedValueOnce({
+      process_working_set_bytes: {
+        help: 'Working set bytes',
+        samples: [{ value: 0 }],
+        type: 'gauge',
+      },
+    });
+
+    render(<Metrics />);
+    expect(await screen.findByText('0 B')).toBeInTheDocument();
+
+    act(() => setRegionalFormatPreference('ar'));
 
     const zero = new Intl.NumberFormat('ar').format(0);
     expect(await screen.findByText(`${zero} B`)).toBeInTheDocument();

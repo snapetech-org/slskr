@@ -2,7 +2,7 @@ import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 
 
-import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
+import { formatRegionalDateTime, useRegionalFormat, formatRegionalFixedNumber, formatRegionalNumber } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -321,20 +321,20 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
                     <Message.Header><LocalizedText source={"Pod Publishing Statistics"} /></Message.Header>
                     <p>
                       <strong><LocalizedText source={"Total Published:"} /></strong>{' '}
-                      {podPublishingStats.totalPublished}
+                      {formatRegionalNumber(podPublishingStats.totalPublished)}
                       <br />
                       <strong><LocalizedText source={"Active Publications:"} /></strong>{' '}
-                      {podPublishingStats.activePublications}
+                      {formatRegionalNumber(podPublishingStats.activePublications)}
                       <br />
                       <strong><LocalizedText source={"Expired Publications:"} /></strong>{' '}
-                      {podPublishingStats.expiredPublications}
+                      {formatRegionalNumber(podPublishingStats.expiredPublications)}
                       <br />
                       <strong><LocalizedText source={"Failed Publications:"} /></strong>{' '}
-                      {podPublishingStats.failedPublications}
+                      {formatRegionalNumber(podPublishingStats.failedPublications)}
                       <br />
                       <strong><LocalizedText source={"Avg Publish Time:"} /></strong>{' '}
                       {podPublishingStats.averagePublishTime
-                        ? `${podPublishingStats.averagePublishTime.totalMilliseconds.toFixed(0)}ms`
+                        ? `${formatRegionalFixedNumber(podPublishingStats.averagePublishTime.totalMilliseconds, 0)}ms`
                         : interfaceText('N/A')}
                       <br />
                       <strong><LocalizedText source={"Last Operation:"} /></strong>{' '}

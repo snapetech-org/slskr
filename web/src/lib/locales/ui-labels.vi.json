@@ -3670,7 +3670,7 @@
   "peers": "đồng nghiệp",
   "pod": "Pod",
   "pods": "Pods",
-  "preset": "đặt trước",
+  "preset": "cài đặt sẵn",
   "promote": "khuyến khích",
   "promote previews": "quảng bá bản xem trước",
   "rating": "đánh giá",
@@ -4547,5 +4547,14 @@
   "Tunnel Connected": "Đường hầm: Đã kết nối",
   "Tunnel Disconnected": "Đường hầm: Đã ngắt kết nối",
   "Clear {value}": "Xóa {value}",
-  "selection": "lựa chọn"
+  "selection": "lựa chọn",
+  "Untitled album": "Album chưa có tiêu đề",
+  "fingerprint matches": "kết quả khớp dấu vân tay",
+  "Selected Issues": "Vấn đề đã chọn",
+  "swarms": "lượt tải xuống nhiều nguồn",
+  "presets": "cài đặt sẵn",
+  "Last {count} hour": "Trong {count} giờ qua",
+  "Last {count} hours": "Trong {count} giờ qua",
+  "auto-connect": "Kết nối tự động",
+  "In progress": "Đang thực hiện"
 }

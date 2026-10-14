@@ -57,6 +57,7 @@ import {
   getRustyMilkPresetPlaylistId,
 } from './visualizerPresetLibrary';
 import { useMountedRef } from '../../lib/useMountedRef';
+import { formatRegionalNumber, useRegionalFormat } from '../../lib/util';
 
 const Visualizer = ({
   audioElement,
@@ -66,6 +67,7 @@ const Visualizer = ({
   onEngineChange,
   onModeChange,
 }) => {
+  useRegionalFormat();
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
   const directoryInputRef = useRef(null);
@@ -774,10 +776,10 @@ const Visualizer = ({
             <div>
               {nativeDebugSnapshot.format}
               {' · '}
-              {nativeDebugSnapshot.presetCount}
+              {formatRegionalNumber(nativeDebugSnapshot.presetCount)}
               {' '}
               {<LocalizedText source={"preset"} />}
-              {nativeDebugSnapshot.presetCount === 1 ? '' : <LocalizedText source={"s"} />}
+              {nativeDebugSnapshot.presetCount === 1 ? '' : <LocalizedText source={"presets"} />}
             </div>
             <div>
               {nativeDebugSnapshot.shapes}

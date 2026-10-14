@@ -10,6 +10,7 @@ import * as session from '../../lib/session';
 import * as slskrAPI from '../../lib/slskr';
 import { getLocalStorageItem } from '../../lib/storage';
 import * as transfers from '../../lib/transfers';
+import { formatRegionalCompactNumber, formatRegionalFixedNumber, formatRegionalNumber, useRegionalFormat } from '../../lib/util';
 import { createPollingController } from '../../lib/usePolling';
 import { urlBase } from '../../config';
 import React, { Component } from 'react';
@@ -18,32 +19,32 @@ import { Icon } from 'semantic-ui-react';
 const GITHUB_BASE = 'https://github.com/snapetech/slskr';
 
 const formatSpeed = (bytesPerSec) => {
-  if (!bytesPerSec || bytesPerSec === 0) return { unit: 'B', value: '0' };
+  if (!bytesPerSec || bytesPerSec === 0) {
+    return { unit: 'B', value: formatRegionalNumber(0) };
+  }
 
   const kb = bytesPerSec / 1_024;
   const mb = kb / 1_024;
   const gb = mb / 1_024;
 
   if (gb >= 1) {
-    return { unit: 'G', value: gb.toFixed(gb >= 10 ? 1 : 2) };
+    return { unit: 'G', value: formatRegionalFixedNumber(gb, gb >= 10 ? 1 : 2) };
   }
 
   if (mb >= 1) {
-    return { unit: 'M', value: mb.toFixed(mb >= 10 ? 1 : 2) };
+    return { unit: 'M', value: formatRegionalFixedNumber(mb, mb >= 10 ? 1 : 2) };
   }
 
   if (kb >= 1) {
-    return { unit: 'K', value: kb.toFixed(kb >= 10 ? 1 : 2) };
+    return { unit: 'K', value: formatRegionalFixedNumber(kb, kb >= 10 ? 1 : 2) };
   }
 
-  return { unit: 'B', value: bytesPerSec.toFixed(0) };
+  return { unit: 'B', value: formatRegionalFixedNumber(bytesPerSec, 0) };
 };
 
 const formatCount = (value) => {
   if (value === undefined || value === null) return '—';
-  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1)}M`;
-  if (value >= 1_000) return `${(value / 1_000).toFixed(1)}K`;
-  return value.toString();
+  return formatRegionalCompactNumber(value);
 };
 
 const finiteNumberOrNull = (value) => {
@@ -476,7 +477,7 @@ class FooterView extends Component {
               {activeSwarms > 0 && (
                 <span className="slskr-footer-network-item active">
                   <Icon name="bolt" />
-                  {activeSwarms} <LocalizedText source={"swarm"} />{activeSwarms === 1 ? '' : <LocalizedText source={"s"} />}
+                  {formatRegionalNumber(activeSwarms)} <LocalizedText source={activeSwarms === 1 ? "swarm" : "swarms"} />
                 </span>
               )}
               {backfillActive && (
@@ -490,7 +491,7 @@ class FooterView extends Component {
               <span className="slskr-footer-network-item">
                 <Icon name="trophy" />
                 {karma > 0 ? '+' : ''}
-                {karma}
+                {formatRegionalNumber(karma)}
               </span>
             </a>
 
@@ -544,6 +545,7 @@ class FooterView extends Component {
 
 const Footer = (props) => {
   useInterfaceLanguage();
+  useRegionalFormat();
   return <FooterView {...props} />;
 };
 

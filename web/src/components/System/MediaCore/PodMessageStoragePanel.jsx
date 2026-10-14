@@ -1,6 +1,6 @@
 import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
-import { formatRegionalDateTime, formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
+import { formatRegionalDateTime, formatRegionalNumber, useRegionalFormat, formatRegionalFixedNumber } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -127,7 +127,7 @@ const PodMessageStoragePanel = React.memo(({ visible }) => {
                     {formatRegionalNumber(storageStats.totalMessages) || 0}
                     <br />
                     <strong><LocalizedText source={"Estimated Size:"} /></strong>{' '}
-                    {(storageStats.totalSizeBytes / (1_024 * 1_024)).toFixed(2)}{' '}
+                    {formatRegionalFixedNumber((storageStats.totalSizeBytes / (1_024 * 1_024)), 2)}{' '}
                     MB
                     <br />
                     <strong><LocalizedText source={"Oldest Message:"} /></strong>{' '}

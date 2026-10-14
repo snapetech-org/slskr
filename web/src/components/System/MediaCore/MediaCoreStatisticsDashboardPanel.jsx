@@ -2,7 +2,7 @@ import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps } from "../../../lib/interfaceLocale";
 
 
-import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
+import { formatRegionalDateTime, useRegionalFormat, formatRegionalFixedNumber, formatRegionalNumber } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -244,33 +244,33 @@ const MediaCoreStatisticsDashboardPanel = () => {
                       <Message.Header><LocalizedText source={"System Resources"} /></Message.Header>
                       <p>
                         <strong><LocalizedText source={"Working Set:"} /></strong>{' '}
-                        {(
+                        {formatRegionalFixedNumber((
                           mediaCoreDashboard.systemResources.workingSetBytes /
                           1_024 /
                           1_024
-                        ).toFixed(1)}{' '}
+                        ), 1)}{' '}
                         MB
                         <br />
                         <strong><LocalizedText source={"Private Memory:"} /></strong>{' '}
-                        {(
+                        {formatRegionalFixedNumber((
                           mediaCoreDashboard.systemResources
                             .privateMemoryBytes /
                           1_024 /
                           1_024
-                        ).toFixed(1)}{' '}
+                        ), 1)}{' '}
                         MB
                         <br />
                         <strong><LocalizedText source={"GC Memory:"} /></strong>{' '}
-                        {(
+                        {formatRegionalFixedNumber((
                           mediaCoreDashboard.systemResources
                             .gcTotalMemoryBytes /
                           1_024 /
                           1_024
-                        ).toFixed(1)}{' '}
+                        ), 1)}{' '}
                         MB
                         <br />
                         <strong><LocalizedText source={"Thread Count:"} /></strong>{' '}
-                        {mediaCoreDashboard.systemResources.threadCount}
+                        {formatRegionalNumber(mediaCoreDashboard.systemResources.threadCount)}
                       </p>
                     </Message>
                   )}
@@ -315,13 +315,13 @@ const MediaCoreStatisticsDashboardPanel = () => {
                     <Message.Header><LocalizedText source={"Registry Overview"} /></Message.Header>
                     <p>
                       <strong><LocalizedText source={"Total Mappings:"} /></strong>{' '}
-                      {contentRegistryStats.totalMappings}
+                      {formatRegionalNumber(contentRegistryStats.totalMappings)}
                       <br />
                       <strong><LocalizedText source={"Domains:"} /></strong>{' '}
-                      {contentRegistryStats.totalDomains}
+                      {formatRegionalNumber(contentRegistryStats.totalDomains)}
                       <br />
                       <strong><LocalizedText source={"Avg Mappings/Domain:"} /></strong>{' '}
-                      {contentRegistryStats.averageMappingsPerDomain.toFixed(1)}
+                      {formatRegionalFixedNumber(contentRegistryStats.averageMappingsPerDomain, 1)}
                     </p>
                     {contentRegistryStats.mappingsByDomain &&
                       Object.keys(contentRegistryStats.mappingsByDomain)
@@ -382,25 +382,23 @@ const MediaCoreStatisticsDashboardPanel = () => {
                     <Message.Header><LocalizedText source={"Cache Performance"} /></Message.Header>
                     <p>
                       <strong><LocalizedText source={"Total Retrievals:"} /></strong>{' '}
-                      {descriptorStats.totalRetrievals}
+                      {formatRegionalNumber(descriptorStats.totalRetrievals)}
                       <br />
-                      <strong><LocalizedText source={"Cache Hits:"} /></strong> {descriptorStats.cacheHits}
+                      <strong><LocalizedText source={"Cache Hits:"} /></strong> {formatRegionalNumber(descriptorStats.cacheHits)}
                       <br />
                       <strong><LocalizedText source={"Cache Misses:"} /></strong>{' '}
-                      {descriptorStats.cacheMisses}
+                      {formatRegionalNumber(descriptorStats.cacheMisses)}
                       <br />
                       <strong><LocalizedText source={"Hit Ratio:"} /></strong>{' '}
-                      {(descriptorStats.cacheHitRatio * 100).toFixed(1)}%<br />
+                      {formatRegionalFixedNumber((descriptorStats.cacheHitRatio * 100), 1)}%<br />
                       <strong><LocalizedText source={"Avg Retrieval Time:"} /></strong>{' '}
-                      {descriptorStats.averageRetrievalTime?.totalMilliseconds.toFixed(
-                        0,
-                      )}
+                      {formatRegionalFixedNumber(descriptorStats.averageRetrievalTime?.totalMilliseconds, 0)}
                       <LocalizedText source={"ms"} /><br />
                       <strong><LocalizedText source={"Active Cache Entries:"} /></strong>{' '}
-                      {descriptorStats.activeCacheEntries}
+                      {formatRegionalNumber(descriptorStats.activeCacheEntries)}
                       <br />
                       <strong><LocalizedText source={"Cache Size:"} /></strong>{' '}
-                      {(descriptorStats.cacheSizeBytes / 1_024).toFixed(1)} KB
+                      {formatRegionalFixedNumber((descriptorStats.cacheSizeBytes / 1_024), 1)} KB
                     </p>
                   </Message>
                 </div>
@@ -443,19 +441,17 @@ const MediaCoreStatisticsDashboardPanel = () => {
                     <Message.Header><LocalizedText source={"Matching Performance"} /></Message.Header>
                     <p>
                       <strong><LocalizedText source={"Total Matches:"} /></strong>{' '}
-                      {fuzzyMatchingStats.totalMatches}
+                      {formatRegionalNumber(fuzzyMatchingStats.totalMatches)}
                       <br />
                       <strong><LocalizedText source={"Success Rate:"} /></strong>{' '}
-                      {(fuzzyMatchingStats.successRate * 100).toFixed(1)}%<br />
+                      {formatRegionalFixedNumber((fuzzyMatchingStats.successRate * 100), 1)}%<br />
                       <strong><LocalizedText source={"Avg Confidence:"} /></strong>{' '}
-                      {(
+                      {formatRegionalFixedNumber((
                         fuzzyMatchingStats.averageConfidenceScore * 100
-                      ).toFixed(1)}
+                      ), 1)}
                       %<br />
                       <strong><LocalizedText source={"Avg Match Time:"} /></strong>{' '}
-                      {fuzzyMatchingStats.averageMatchingTime?.totalMilliseconds.toFixed(
-                        0,
-                      )}
+                      {formatRegionalFixedNumber(fuzzyMatchingStats.averageMatchingTime?.totalMilliseconds, 0)}
                       <LocalizedText source={"ms"} /></p>
                     {fuzzyMatchingStats.accuracyByAlgorithm &&
                       Object.keys(fuzzyMatchingStats.accuracyByAlgorithm)
@@ -470,7 +466,7 @@ const MediaCoreStatisticsDashboardPanel = () => {
                               style={{ margin: '0.2em 0' }}
                             >
                               <small>
-                                {algorithm}<LocalizedText source={": F1="} />{stats.f1Score.toFixed(2)}<LocalizedText source={", Precision="} />{stats.precision.toFixed(2)}
+                                {algorithm}<LocalizedText source={": F1="} />{formatRegionalFixedNumber(stats.f1Score, 2)}<LocalizedText source={", Precision="} />{formatRegionalFixedNumber(stats.precision, 2)}
                               </small>
                             </div>
                           ))}
@@ -520,14 +516,10 @@ const MediaCoreStatisticsDashboardPanel = () => {
                       {perceptualHashingStats.totalHashesComputed}
                       <br />
                       <strong><LocalizedText source={"Avg Computation Time:"} /></strong>{' '}
-                      {perceptualHashingStats.averageComputationTime?.totalMilliseconds.toFixed(
-                        0,
-                      )}
+                      {formatRegionalFixedNumber(perceptualHashingStats.averageComputationTime?.totalMilliseconds, 0)}
                       <LocalizedText source={"ms"} /><br />
                       <strong><LocalizedText source={"Overall Accuracy:"} /></strong>{' '}
-                      {(perceptualHashingStats.overallAccuracy * 100).toFixed(
-                        1,
-                      )}
+                      {formatRegionalFixedNumber((perceptualHashingStats.overallAccuracy * 100), 1)}
                       %<br />
                       <strong><LocalizedText source={"Duplicates Detected:"} /></strong>{' '}
                       {perceptualHashingStats.duplicateHashesDetected}
@@ -546,8 +538,8 @@ const MediaCoreStatisticsDashboardPanel = () => {
                             >
                               <small>
                                 {algorithm}: {stats.hashesComputed} <LocalizedText source={"hashes,"} />{' '}
-                                {stats.averageTime.totalMilliseconds.toFixed(0)}
-                                <LocalizedText source={"ms avg,"} />{" "}{stats.accuracy.toFixed(2)} <LocalizedText source={"accuracy"} /></small>
+                                {formatRegionalFixedNumber(stats.averageTime.totalMilliseconds, 0)}
+                                <LocalizedText source={"ms avg,"} />{" "}{formatRegionalFixedNumber(stats.accuracy, 2)} <LocalizedText source={"accuracy"} /></small>
                             </div>
                           ))}
                         </div>
@@ -593,26 +585,22 @@ const MediaCoreStatisticsDashboardPanel = () => {
                     <Message.Header><LocalizedText source={"Graph Statistics"} /></Message.Header>
                     <p>
                       <strong><LocalizedText source={"Total Links:"} /></strong>{' '}
-                      {ipldMappingStats.totalLinks}
+                      {formatRegionalNumber(ipldMappingStats.totalLinks)}
                       <br />
                       <strong><LocalizedText source={"Total Nodes:"} /></strong>{' '}
-                      {ipldMappingStats.totalNodes}
+                      {formatRegionalNumber(ipldMappingStats.totalNodes)}
                       <br />
                       <strong><LocalizedText source={"Total Graphs:"} /></strong>{' '}
-                      {ipldMappingStats.totalGraphs}
+                      {formatRegionalNumber(ipldMappingStats.totalGraphs)}
                       <br />
                       <strong><LocalizedText source={"Connectivity Ratio:"} /></strong>{' '}
-                      {(ipldMappingStats.graphConnectivityRatio * 100).toFixed(
-                        1,
-                      )}
+                      {formatRegionalFixedNumber((ipldMappingStats.graphConnectivityRatio * 100), 1)}
                       %<br />
                       <strong><LocalizedText source={"Broken Links:"} /></strong>{' '}
                       {ipldMappingStats.brokenLinksDetected}
                       <br />
                       <strong><LocalizedText source={"Avg Traversal Time:"} /></strong>{' '}
-                      {ipldMappingStats.averageTraversalTime?.totalMilliseconds.toFixed(
-                        0,
-                      )}
+                      {formatRegionalFixedNumber(ipldMappingStats.averageTraversalTime?.totalMilliseconds, 0)}
                       <LocalizedText source={"ms"} /></p>
                   </Message>
                 </div>
@@ -655,31 +643,27 @@ const MediaCoreStatisticsDashboardPanel = () => {
                     <Message.Header><LocalizedText source={"Portability Metrics"} /></Message.Header>
                     <p>
                       <strong><LocalizedText source={"Total Exports:"} /></strong>{' '}
-                      {metadataPortabilityStats.totalExports}
+                      {formatRegionalNumber(metadataPortabilityStats.totalExports)}
                       <br />
                       <strong><LocalizedText source={"Total Imports:"} /></strong>{' '}
-                      {metadataPortabilityStats.totalImports}
+                      {formatRegionalNumber(metadataPortabilityStats.totalImports)}
                       <br />
                       <strong><LocalizedText source={"Import Success Rate:"} /></strong>{' '}
-                      {(
+                      {formatRegionalFixedNumber((
                         metadataPortabilityStats.importSuccessRate * 100
-                      ).toFixed(1)}
+                      ), 1)}
                       %<br />
                       <strong><LocalizedText source={"Data Transferred:"} /></strong>{' '}
-                      {(
+                      {formatRegionalFixedNumber((
                         metadataPortabilityStats.totalDataTransferred / 1_024
-                      ).toFixed(1)}{' '}
+                      ), 1)}{' '}
                       KB
                       <br />
                       <strong><LocalizedText source={"Avg Export Time:"} /></strong>{' '}
-                      {metadataPortabilityStats.averageExportTime?.totalMilliseconds.toFixed(
-                        0,
-                      )}
+                      {formatRegionalFixedNumber(metadataPortabilityStats.averageExportTime?.totalMilliseconds, 0)}
                       <LocalizedText source={"ms"} /><br />
                       <strong><LocalizedText source={"Avg Import Time:"} /></strong>{' '}
-                      {metadataPortabilityStats.averageImportTime?.totalMilliseconds.toFixed(
-                        0,
-                      )}
+                      {formatRegionalFixedNumber(metadataPortabilityStats.averageImportTime?.totalMilliseconds, 0)}
                       <LocalizedText source={"ms"} /></p>
                   </Message>
                 </div>
@@ -722,29 +706,27 @@ const MediaCoreStatisticsDashboardPanel = () => {
                     <Message.Header><LocalizedText source={"Publishing Overview"} /></Message.Header>
                     <p>
                       <strong><LocalizedText source={"Total Published:"} /></strong>{' '}
-                      {contentPublishingStats.totalPublished}
+                      {formatRegionalNumber(contentPublishingStats.totalPublished)}
                       <br />
                       <strong><LocalizedText source={"Active Publications:"} /></strong>{' '}
-                      {contentPublishingStats.activePublications}
+                      {formatRegionalNumber(contentPublishingStats.activePublications)}
                       <br />
                       <strong><LocalizedText source={"Expired Publications:"} /></strong>{' '}
-                      {contentPublishingStats.expiredPublications}
+                      {formatRegionalNumber(contentPublishingStats.expiredPublications)}
                       <br />
                       <strong><LocalizedText source={"Success Rate:"} /></strong>{' '}
-                      {(
+                      {formatRegionalFixedNumber((
                         contentPublishingStats.publicationSuccessRate * 100
-                      ).toFixed(1)}
+                      ), 1)}
                       %<br />
                       <strong><LocalizedText source={"Republished:"} /></strong>{' '}
                       {contentPublishingStats.republishedDescriptors}
                       <br />
                       <strong><LocalizedText source={"Failed:"} /></strong>{' '}
-                      {contentPublishingStats.failedPublications}
+                      {formatRegionalNumber(contentPublishingStats.failedPublications)}
                       <br />
                       <strong><LocalizedText source={"Avg Publish Time:"} /></strong>{' '}
-                      {contentPublishingStats.averagePublishTime?.totalMilliseconds.toFixed(
-                        0,
-                      )}
+                      {formatRegionalFixedNumber(contentPublishingStats.averagePublishTime?.totalMilliseconds, 0)}
                       <LocalizedText source={"ms"} /></p>
                     {contentPublishingStats.publicationsByDomain &&
                       Object.keys(contentPublishingStats.publicationsByDomain)

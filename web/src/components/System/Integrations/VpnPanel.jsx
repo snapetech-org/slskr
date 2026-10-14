@@ -1,3 +1,4 @@
+import { useRegionalFormat } from '../../../lib/util';
 import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps } from "../../../lib/interfaceLocale";
 import {
@@ -18,6 +19,7 @@ import {
 } from './integrationsShared';
 
 const VpnPanel = ({ options, state }) => {
+  useRegionalFormat();
   const vpnOptions = getVpnOptions(options);
   const vpnState = getVpnState(state);
   const gluetun = getOption(vpnOptions, 'gluetun', 'Gluetun') || {};

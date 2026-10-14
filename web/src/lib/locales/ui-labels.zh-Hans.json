@@ -4547,5 +4547,14 @@
   "Tunnel Connected": "隧道: 已连接",
   "Tunnel Disconnected": "隧道: 已断开连接",
   "Clear {value}": "清除{value}",
-  "selection": "所选项"
+  "selection": "所选项",
+  "Untitled album": "未命名专辑",
+  "fingerprint matches": "指纹匹配",
+  "Selected Issues": "已选问题",
+  "swarms": "多源下载",
+  "presets": "预设",
+  "Last {count} hour": "最近 {count} 小时",
+  "Last {count} hours": "最近 {count} 小时",
+  "auto-connect": "自动连接",
+  "In progress": "进行中"
 }

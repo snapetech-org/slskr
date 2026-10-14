@@ -4547,5 +4547,14 @@
   "Tunnel Connected": "Tunnel: Connecté",
   "Tunnel Disconnected": "Tunnel: Déconnecté",
   "Clear {value}": "Effacer {value}",
-  "selection": "sélection"
+  "selection": "sélection",
+  "Untitled album": "Album sans titre",
+  "fingerprint matches": "correspondances d’empreintes digitales",
+  "Selected Issues": "Problèmes sélectionnés",
+  "swarms": "téléchargements multi-sources",
+  "presets": "préréglages",
+  "Last {count} hour": "Dernière heure ({count})",
+  "Last {count} hours": "Dernières {count} heures",
+  "auto-connect": "Connexion automatique",
+  "In progress": "En cours"
 }

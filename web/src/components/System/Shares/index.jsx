@@ -1,6 +1,6 @@
 import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps } from "../../../lib/interfaceLocale";
-import { formatRegionalNumber } from '../../../lib/util';
+import { formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
 import * as sharesLibrary from '../../../lib/shares';
 import * as applicationLibrary from '../../../lib/application';
 import { toDisplayError } from '../../../lib/errors';
@@ -39,6 +39,7 @@ const CancelButton = ({ cancel, working }) => (
 );
 
 const Shares = ({ state = EMPTY_STATE, theme } = {}) => {
+  useRegionalFormat();
   const [loading, setLoading] = useState(true);
   const [working, setWorking] = useState(false);
   const [monitoringScan, setMonitoringScan] = useState(false);

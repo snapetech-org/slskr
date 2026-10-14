@@ -3670,7 +3670,7 @@
   "peers": "teman sebaya",
   "pod": "Pod",
   "pods": "Pods",
-  "preset": "telah ditentukan sebelumnya",
+  "preset": "prasetel",
   "promote": "mendorong",
   "promote previews": "mempromosikan pratinjau",
   "rating": "peringkat",
@@ -4423,7 +4423,7 @@
   "Lidarr could not find a safe file to import on retry": "Lidarr tidak dapat menemukan file aman untuk diimpor saat mencoba ulang",
   "Skipped: {reason}": "Dilewati: {reason}",
   "Queued Lidarr command {commandId}": "Perintah Lidarr {commandId} masuk antrean",
-  " • Binding: {bindingInfo}": " • Binding: {bindingInfo}",
+  " • Binding: {bindingInfo}": " • Pengikatan: {bindingInfo}",
   "; rejected because {reasons}": "; ditolak karena {reasons}",
   "No health information available": "Informasi kesehatan tidak tersedia",
   "Unhealthy": "Tidak sehat",
@@ -4547,5 +4547,14 @@
   "Tunnel Connected": "Terowongan: Terhubung",
   "Tunnel Disconnected": "Terowongan: Terputus",
   "Clear {value}": "Hapus {value}",
-  "selection": "pilihan"
+  "selection": "pilihan",
+  "Untitled album": "Album tanpa judul",
+  "fingerprint matches": "kecocokan sidik jari",
+  "Selected Issues": "Masalah yang dipilih",
+  "swarms": "unduhan multi-sumber",
+  "presets": "prasetel",
+  "Last {count} hour": "{count} jam terakhir",
+  "Last {count} hours": "{count} jam terakhir",
+  "auto-connect": "Koneksi otomatis",
+  "In progress": "Sedang berlangsung"
 }

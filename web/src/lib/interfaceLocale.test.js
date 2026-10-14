@@ -15,6 +15,7 @@ import TRANSFER_BULK_ACTION_LABELS from './transfer-bulk-action-labels.json';
 import {
   INTERFACE_LANGUAGE_OPTIONS,
   applyInitialInterfaceLanguage,
+  interfaceTextProps,
   resetInterfaceLanguage,
   setInterfaceLanguage,
   useInterfaceLanguage,
@@ -160,6 +161,17 @@ describe('interface language', () => {
     await act(async () => { await setInterfaceLanguage('ar'); });
     expect(result.current.languageFor('Search')).toBe('ar');
     expect(result.current.directionFor('Search')).toBe('rtl');
+  });
+
+  it('keeps same-as-source values tagged as English and left-to-right', async () => {
+    await act(async () => { await setInterfaceLanguage('ar'); });
+
+    expect(interfaceTextProps('slskr')).toMatchObject({
+      dir: 'ltr',
+      lang: 'en',
+      'aria-label': 'slskr',
+      title: 'slskr',
+    });
   });
 
   it('uses the browser language on first use and a saved choice afterward', async () => {

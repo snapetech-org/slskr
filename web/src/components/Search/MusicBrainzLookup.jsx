@@ -4,6 +4,7 @@ import * as discoveryGraph from '../../lib/discoveryGraph';
 import { useMountedRef } from '../../lib/useMountedRef';
 import * as searches from '../../lib/searches';
 import { toDisplayError } from '../../lib/errors';
+import { formatRegionalFixedNumber, formatRegionalNumber, useRegionalFormat } from '../../lib/util';
 import { resolveTarget } from '../../lib/musicBrainz';
 import React, { useMemo, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
@@ -31,7 +32,7 @@ const normalizeResolvedTarget = (data) => {
       album: {
         ...data.album,
         artist: typeof data.album.artist === 'string' ? data.album.artist : '',
-        title: typeof data.album.title === 'string' ? data.album.title : 'Untitled album',
+        title: typeof data.album.title === 'string' && data.album.title ? data.album.title : null,
         tracks: Array.isArray(data.album.tracks)
           ? data.album.tracks.filter((track) => isObject(track))
           : [],
@@ -44,7 +45,7 @@ const normalizeResolvedTarget = (data) => {
       track: {
         ...data.track,
         artist: typeof data.track.artist === 'string' ? data.track.artist : '',
-        title: typeof data.track.title === 'string' ? data.track.title : 'Untitled track',
+        title: typeof data.track.title === 'string' && data.track.title ? data.track.title : null,
         duration: typeof data.track.duration === 'number' ? data.track.duration : 0,
       },
     };
@@ -55,6 +56,7 @@ const normalizeResolvedTarget = (data) => {
 
 const MusicBrainzLookup = ({ disabled }) => {
   useInterfaceLanguage();
+  const regionalFormat = useRegionalFormat();
   const [releaseInput, setReleaseInput] = useState('');
   const [recordingInput, setRecordingInput] = useState('');
   const [discogsInput, setDiscogsInput] = useState('');
@@ -170,8 +172,8 @@ const MusicBrainzLookup = ({ disabled }) => {
           <List.Item>
             <List.Header><LocalizedText source={"Album"} /></List.Header>
             <List.Description>
-              {target.album.title} · {target.album.artist} ·{' '}
-              {target.album.tracks?.length ?? 0} <LocalizedText source={"tracks"} /></List.Description>
+              {target.album.title || <LocalizedText source={"Untitled album"} />} · {target.album.artist} ·{' '}
+              {formatRegionalNumber(target.album.tracks?.length ?? 0)} <LocalizedText source={"tracks"} /></List.Description>
           </List.Item>
         </List>
       );
@@ -183,9 +185,9 @@ const MusicBrainzLookup = ({ disabled }) => {
           <List.Item>
             <List.Header><LocalizedText source={"Track"} /></List.Header>
             <List.Description>
-              {target.track.title} · {target.track.artist} ·{' '}
+              {target.track.title || <LocalizedText source={"Untitled track"} />} · {target.track.artist} ·{' '}
               {target.track.duration
-                ? `${(target.track.duration / 60_000).toFixed(2)} min`
+                ? `${formatRegionalFixedNumber(target.track.duration / 60_000, 2)} min`
                 : <LocalizedText source={"unknown length"} />}
             </List.Description>
           </List.Item>
@@ -194,14 +196,14 @@ const MusicBrainzLookup = ({ disabled }) => {
     }
 
     return null;
-  }, [target]);
+  }, [regionalFormat, target]);
 
   const handleOpenGraph = async () => {
     if (target?.album?.musicBrainzReleaseId) {
       await openDiscoveryGraph({
         scope: 'album',
         releaseId: target.album.musicBrainzReleaseId,
-        album: target.album.title,
+        album: target.album.title || interfaceText('Untitled album'),
         artist: target.album.artist,
       });
       return;
@@ -211,7 +213,7 @@ const MusicBrainzLookup = ({ disabled }) => {
       await openDiscoveryGraph({
         scope: 'track',
         recordingId: target.track.musicBrainzRecordingId,
-        title: target.track.title,
+        title: target.track.title || interfaceText('Untitled track'),
         artist: target.track.artist,
       });
     }

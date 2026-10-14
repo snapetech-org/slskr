@@ -3670,7 +3670,7 @@
   "peers": "pares",
   "pod": "Pod",
   "pods": "Pods",
-  "preset": "predefinido",
+  "preset": "predefinição",
   "promote": "promover",
   "promote previews": "promover prévias",
   "rating": "avaliação",
@@ -4547,5 +4547,14 @@
   "Tunnel Connected": "Túnel: Conectado",
   "Tunnel Disconnected": "Túnel: Desconectado",
   "Clear {value}": "Limpar {value}",
-  "selection": "seleção"
+  "selection": "seleção",
+  "Untitled album": "Álbum sem título",
+  "fingerprint matches": "correspondências de impressão digital",
+  "Selected Issues": "Problemas selecionados",
+  "swarms": "downloads de múltiplas fontes",
+  "presets": "predefinições",
+  "Last {count} hour": "Última hora ({count})",
+  "Last {count} hours": "Últimas {count} horas",
+  "auto-connect": "Conexão automática",
+  "In progress": "Em andamento"
 }

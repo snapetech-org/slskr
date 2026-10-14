@@ -6,6 +6,7 @@ import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
 import React, { useEffect, useRef } from 'react';
+import { formatRegionalFixedNumber, useRegionalFormat } from '../../../lib/util';
 import { Card, Form, Grid, Icon, Input, Message } from 'semantic-ui-react';
 
 const useMountedState = (mountedRef, initialValue) => {
@@ -24,6 +25,7 @@ const useMountedState = (mountedRef, initialValue) => {
 
 const MediaCorePerceptualSimilarityPanel = React.memo(() => {
   useInterfaceLanguage();
+  useRegionalFormat();
   const mountedRef = useRef(true);
   useEffect(() => {
     mountedRef.current = true;
@@ -132,16 +134,12 @@ const MediaCorePerceptualSimilarityPanel = React.memo(() => {
                         {perceptualSimilarityResult.contentIdB}
                         <br />
                         <strong><LocalizedText source={"Similarity:"} /></strong>{' '}
-                        {(perceptualSimilarityResult.similarity * 100).toFixed(
-                          1,
-                        )}
+                        {formatRegionalFixedNumber((perceptualSimilarityResult.similarity * 100), 1)}
                         %<br />
                         <strong><LocalizedText source={"Are Similar:"} /></strong>{' '}
                         {perceptualSimilarityResult.isSimilar ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}{' '}
                         <LocalizedText source={"(threshold:"} />{' '}
-                        {(perceptualSimilarityResult.threshold * 100).toFixed(
-                          1,
-                        )}
+                        {formatRegionalFixedNumber((perceptualSimilarityResult.threshold * 100), 1)}
                         %)
                       </p>
                     </Message>

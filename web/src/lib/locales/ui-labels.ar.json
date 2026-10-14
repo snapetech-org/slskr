@@ -3609,7 +3609,7 @@
   "files": "ملفات",
   "files in": "الملفات في",
   "filesystem entries": "إدخالات نظام الملفات",
-  "fingerprint match": "مباراة بصمات الأصابع",
+  "fingerprint match": "تطابق البصمة",
   "flac mp3 wav": "flac mp3 wav",
   "flac wav": "flac wav",
   "format over the canonical join payload and require a fresh one-use nonce.": "التنسيق عبر حمولة الانضمام الأساسية ويتطلب رقمًا جديدًا للاستخدام مرة واحدة.",
@@ -3670,7 +3670,7 @@
   "peers": "أقرانهم",
   "pod": "Pod",
   "pods": "Pods",
-  "preset": "محددة مسبقا",
+  "preset": "إعداد مسبق",
   "promote": "يرقي",
   "promote previews": "تعزيز المعاينات",
   "rating": "تصنيف",
@@ -4547,5 +4547,14 @@
   "Tunnel Connected": "النفق: متصل",
   "Tunnel Disconnected": "النفق: غير متصل",
   "Clear {value}": "مسح {value}",
-  "selection": "التحديد"
+  "selection": "التحديد",
+  "Untitled album": "ألبوم بلا عنوان",
+  "fingerprint matches": "تطابقات البصمة",
+  "Selected Issues": "المشكلات المحددة",
+  "swarms": "تنزيلات متعددة المصادر",
+  "presets": "إعدادات مسبقة",
+  "Last {count} hour": "الساعة الأخيرة ({count})",
+  "Last {count} hours": "آخر {count} ساعات",
+  "auto-connect": "اتصال تلقائي",
+  "In progress": "قيد التنفيذ"
 }

@@ -1,3 +1,4 @@
+import { formatRegionalFixedNumber } from '../../../lib/util';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import LocalizedText from '../../Shared/LocalizedText';
 import { useMountedRef } from '../../../lib/useMountedRef';
@@ -81,7 +82,7 @@ export const formatBytes = (value) => {
     size /= 1024;
     unit = units[index];
   }
-  return `${size.toFixed(1)} ${unit}`;
+  return `${formatRegionalFixedNumber(size, 1)} ${unit}`;
 };
 
 export const isConfigured = (value) =>

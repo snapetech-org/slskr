@@ -1,6 +1,6 @@
 import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
-import { formatRegionalDateTime, formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
+import { formatRegionalDateTime, formatRegionalNumber, useRegionalFormat, formatRegionalFixedNumber } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -200,14 +200,14 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
                       0}
                     <br />
                     <strong><LocalizedText source={"Data Transferred:"} /></strong>{' '}
-                    {(
+                    {formatRegionalFixedNumber((
                       backfillStats.totalBackfillBytesTransferred /
                       (1_024 * 1_024)
-                    ).toFixed(2)}{' '}
+                    ), 2)}{' '}
                     MB
                     <br />
                     <strong><LocalizedText source={"Avg Duration:"} /></strong>{' '}
-                    {backfillStats.averageBackfillDurationMs?.toFixed(2) || 0}<LocalizedText source={"ms"} /><br />
+                    {formatRegionalFixedNumber(backfillStats.averageBackfillDurationMs, 2) || 0}<LocalizedText source={"ms"} /><br />
                     <strong><LocalizedText source={"Last Operation:"} /></strong>{' '}
                     {backfillStats.lastBackfillOperation
                       ? formatRegionalDateTime(backfillStats.lastBackfillOperation)

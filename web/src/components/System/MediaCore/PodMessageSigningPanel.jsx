@@ -7,6 +7,7 @@ import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
 import PodWorkflowNotice from './PodWorkflowNotice';
 import React, { useEffect, useRef } from 'react';
+import { formatRegionalFixedNumber, useRegionalFormat, formatRegionalNumber } from '../../../lib/util';
 import { toast } from 'react-toastify';
 import { Card, Form, Grid, Header, Icon, Message } from 'semantic-ui-react';
 
@@ -32,6 +33,7 @@ const PodMessageSigningPanel = ({
   visible = true,
 }) => {
   useInterfaceLanguage();
+  useRegionalFormat();
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -300,15 +302,15 @@ const PodMessageSigningPanel = ({
                           {signingStats.totalSignaturesVerified}
                           <br />
                           <strong><LocalizedText source={"Successful:"} /></strong>{' '}
-                          {signingStats.successfulVerifications}
+                          {formatRegionalNumber(signingStats.successfulVerifications)}
                           <br />
                           <strong><LocalizedText source={"Failed:"} /></strong>{' '}
-                          {signingStats.failedVerifications}
+                          {formatRegionalNumber(signingStats.failedVerifications)}
                           <br />
                           <strong><LocalizedText source={"Avg Sign Time:"} /></strong>{' '}
-                          {signingStats.averageSigningTimeMs.toFixed(2)}<LocalizedText source={"ms"} /><br />
+                          {formatRegionalFixedNumber(signingStats.averageSigningTimeMs, 2)}<LocalizedText source={"ms"} /><br />
                           <strong><LocalizedText source={"Avg Verify Time:"} /></strong>{' '}
-                          {signingStats.averageVerificationTimeMs.toFixed(2)}<LocalizedText source={"ms"} /></p>
+                          {formatRegionalFixedNumber(signingStats.averageVerificationTimeMs, 2)}<LocalizedText source={"ms"} /></p>
                       </Message>
                     </div>
                   )}

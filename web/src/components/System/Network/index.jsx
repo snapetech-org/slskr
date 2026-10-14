@@ -9,10 +9,7 @@ import {
   formatNetworkHealthReport,
 } from '../../../lib/networkHealthScore';
 import { getLocalStorageItem, setLocalStorageItem } from '../../../lib/storage';
-import {
-  formatBytesFixed as formatRegionalBytes,
-  formatRegionalCompactNumber,
-} from '../../../lib/util';
+import { formatBytesFixed as formatRegionalBytes, formatRegionalCompactNumber, useRegionalFormat, formatRegionalNumber } from '../../../lib/util';
 import { useMountedRef } from '../../../lib/useMountedRef';
 import { usePolling } from '../../../lib/usePolling';
 import { LoaderSegment, ShrinkableButton } from '../../Shared';
@@ -212,6 +209,7 @@ const LocalizedNetworkFindingSummary = ({ source }) => {
 
 const Network = ({ options = {}, state = {}, theme }) => {
   useInterfaceLanguage();
+  useRegionalFormat();
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState(null);
   const [statsError, setStatsError] = useState(null);
@@ -549,7 +547,7 @@ const Network = ({ options = {}, state = {}, theme }) => {
           inverted={darkTheme}
           label={interfaceText("Mesh Peers")}
           subLabel={<LocalizedText source={"slskr clients connected"} />}
-          value={hasStats ? mesh?.connectedPeerCount ?? meshPeers.length : '—'}
+          value={hasStats ? formatNumber(mesh?.connectedPeerCount ?? meshPeers.length) : '—'}
          {...interfaceTextProps("Mesh Peers")}/>
         <StatCard
           color="green"
@@ -577,7 +575,7 @@ const Network = ({ options = {}, state = {}, theme }) => {
           inverted={darkTheme}
           label={interfaceText("Active Swarms")}
           subLabel={<LocalizedText source={"Multi-source downloads"} />}
-          value={hasStats ? swarmJobs?.length ?? 0 : '—'}
+          value={hasStats ? formatNumber(swarmJobs?.length ?? 0) : '—'}
          {...interfaceTextProps("Active Swarms")}/>
       </Card.Group>
 
@@ -617,7 +615,7 @@ const Network = ({ options = {}, state = {}, theme }) => {
                       ? 'yellow'
                       : 'red'
                 }
-                percent={networkHealth.score}
+                percent={formatRegionalNumber(networkHealth.score)}
                 progress
               >
                 <LocalizedText source={networkHealth.label} />
@@ -625,20 +623,20 @@ const Network = ({ options = {}, state = {}, theme }) => {
               {/* These four are inputs to the score above, not states of their
                   own — one neutral pill style, not four unrelated hues. */}
               <Label basic>
-                <LocalizedText source={"Mesh"} /><Label.Detail>{networkHealth.inputs.meshCount}</Label.Detail>
+                <LocalizedText source={"Mesh"} /><Label.Detail>{formatNumber(networkHealth.inputs.meshCount)}</Label.Detail>
               </Label>
               <Label basic>
-                <LocalizedText source={"Discovered"} /><Label.Detail>{networkHealth.inputs.discoveredCount}</Label.Detail>
+                <LocalizedText source={"Discovered"} /><Label.Detail>{formatNumber(networkHealth.inputs.discoveredCount)}</Label.Detail>
               </Label>
               <Label basic>
                 DHT
-                <Label.Detail>{networkHealth.inputs.dhtNodes}</Label.Detail>
+                <Label.Detail>{formatNumber(networkHealth.inputs.dhtNodes)}</Label.Detail>
               </Label>
               <Label
                 basic={networkHealth.inputs.securityWarningCount === 0}
                 color={networkHealth.inputs.securityWarningCount > 0 ? 'orange' : undefined}
               >
-                <LocalizedText source={"Security"} /><Label.Detail>{networkHealth.inputs.securityWarningCount}</Label.Detail>
+                <LocalizedText source={"Security"} /><Label.Detail>{formatNumber(networkHealth.inputs.securityWarningCount)}</Label.Detail>
               </Label>
             </div>
             {networkHealth.findings.length > 0 ? (

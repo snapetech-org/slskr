@@ -3670,7 +3670,7 @@
   "peers": "同行",
   "pod": "Pod",
   "pods": "Pods",
-  "preset": "預設",
+  "preset": "預設集",
   "promote": "推動",
   "promote previews": "推廣預覽",
   "rating": "等級",
@@ -4547,5 +4547,14 @@
   "Tunnel Connected": "隧道：已連線",
   "Tunnel Disconnected": "隧道：已中斷連線",
   "Clear {value}": "清除{value}",
-  "selection": "所選項"
+  "selection": "所選項",
+  "Untitled album": "未命名專輯",
+  "fingerprint matches": "指紋比對",
+  "Selected Issues": "已選問題",
+  "swarms": "多來源下載",
+  "presets": "預設集",
+  "Last {count} hour": "最近 {count} 小時",
+  "Last {count} hours": "最近 {count} 小時",
+  "auto-connect": "自動連線",
+  "In progress": "進行中"
 }

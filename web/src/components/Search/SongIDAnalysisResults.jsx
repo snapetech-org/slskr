@@ -1,5 +1,6 @@
 import LocalizedText from "../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
+import { formatRegionalNumber, useRegionalFormat } from '../../lib/util';
 
 
 import React from 'react';
@@ -50,17 +51,20 @@ const SongIDAnalysisResults = ({
   source,
 }) => {
   useInterfaceLanguage();
+  useRegionalFormat();
+  const formatPercent = (value) =>
+    formatRegionalNumber(Math.round((Number(value) || 0) * 100));
   const renderScores = (item) => (
     <div style={{ marginTop: '0.35em' }}>
-      <Label size="tiny"><LocalizedText source={"Identity"} />{" "}{Math.round((item.identityScore || 0) * 100)}</Label>
-      <Label size="tiny"><LocalizedText source={"Byzantine"} />{" "}{Math.round((item.byzantineScore || 0) * 100)}</Label>
+      <Label size="tiny"><LocalizedText source={"Identity"} />{" "}{formatPercent(item.identityScore)}</Label>
+      <Label size="tiny"><LocalizedText source={"Byzantine"} />{" "}{formatPercent(item.byzantineScore)}</Label>
       {item.canonicalScore ? (
         <Label color="teal" size="tiny">
-          <LocalizedText source={"Canonical"} />{" "}{Math.round((item.canonicalScore || 0) * 100)}
+          <LocalizedText source={"Canonical"} />{" "}{formatPercent(item.canonicalScore)}
         </Label>
       ) : null}
       <Label color="blue" size="tiny">
-        <LocalizedText source={"Action"} />{" "}{Math.round((item.actionScore || 0) * 100)}
+        <LocalizedText source={"Action"} />{" "}{formatPercent(item.actionScore)}
       </Label>
     </div>
   );
@@ -140,10 +144,10 @@ const SongIDAnalysisResults = ({
               <Label size="small">{localizeSongIdRunState(run.currentStage || 'queued')}</Label>
               <Label size="small">{run.sourceType || interfaceText('unknown')}</Label>
               {run.workerSlot !== null && run.workerSlot !== undefined ? (
-                <Label size="small"><LocalizedText source={"Worker"} />{" "}{run.workerSlot}</Label>
+                <Label size="small"><LocalizedText source={"Worker"} />{" "}{formatRegionalNumber(run.workerSlot)}</Label>
               ) : null}
               {run.queuePosition !== null && run.queuePosition !== undefined ? (
-                <Label size="small"><LocalizedText source={"Queue"} />{" "}{run.queuePosition}</Label>
+                <Label size="small"><LocalizedText source={"Queue"} />{" "}{formatRegionalNumber(run.queuePosition)}</Label>
               ) : null}
             </div>
             {run.summary ? <p>{run.summary}</p> : null}
@@ -251,10 +255,10 @@ const SongIDAnalysisResults = ({
                     <List.Content>
                       <List.Header>{mix.label}</List.Header>
                       <List.Description>
-                        {mix.segmentCount} <LocalizedText source={"segments · confidence"} />{" "}{Math.round((mix.confidence || 0) * 100)}
+                        {formatRegionalNumber(mix.segmentCount)} <LocalizedText source={"segments · confidence"} />{" "}{formatPercent(mix.confidence)}
                       </List.Description>
                       <List.Description>
-                        <LocalizedText source={"Identity"} />{" "}{Math.round((mix.identityScore || 0) * 100)} <LocalizedText source={"· Byzantine"} />{" "}{Math.round((mix.byzantineScore || 0) * 100)}
+                        <LocalizedText source={"Identity"} />{" "}{formatPercent(mix.identityScore)} <LocalizedText source={"· Byzantine"} />{" "}{formatPercent(mix.byzantineScore)}
                       </List.Description>
                       {mix.searchText ? (
                         <List.Description>

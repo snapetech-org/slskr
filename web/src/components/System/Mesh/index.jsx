@@ -1,6 +1,6 @@
 import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
-import { formatRegionalNumber } from '../../../lib/util';
+import { formatRegionalFixedNumber, formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
 import * as mesh from '../../../lib/mesh';
 import * as soulseekDiscovery from '../../../lib/soulseekDiscovery';
 import { toDisplayError } from '../../../lib/errors';
@@ -71,6 +71,7 @@ const normalizeMeshStats = (data) => {
 
 const Mesh = ({ runtimeProfile } = {}) => {
   useInterfaceLanguage();
+  useRegionalFormat();
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -460,7 +461,7 @@ const Mesh = ({ runtimeProfile } = {}) => {
                   <List.Header><LocalizedText source={"DHT Operations/sec"} /></List.Header>
                   <List.Description>
                     {Number.isFinite(Number(stats?.dhtOperationsPerSecond))
-                      ? Number(stats.dhtOperationsPerSecond).toFixed(1)
+                      ? formatRegionalFixedNumber(Number(stats.dhtOperationsPerSecond), 1)
                       : '—'} ops/sec
                   </List.Description>
                 </List.Content>

@@ -1,3 +1,4 @@
+import { formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
 import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import {
@@ -26,6 +27,7 @@ import {
 import { useAsyncGuard } from './integrationsShared';
 
 const MediaServerPanel = () => {
+  useRegionalFormat();
   useInterfaceLanguage();
   const [activeAdapterId, setActiveAdapterId] = useState(mediaServerAdapters[0].id);
   const [automationEnabled, setAutomationEnabled] = useState(() =>
@@ -283,7 +285,7 @@ const MediaServerPanel = () => {
             </Label>
             <Label color="purple"><LocalizedText source={syncPreview.adapter.label} /></Label>
             <Label>
-              {syncPreview.readyCount}/{syncPreview.total} <LocalizedText source={"checks ready"} /></Label>
+              {formatRegionalNumber(syncPreview.readyCount)}/{formatRegionalNumber(syncPreview.total)} <LocalizedText source={"checks ready"} /></Label>
           </div>
           <Table
             aria-label={interfaceText("Media server synchronization review plan")}
@@ -352,9 +354,9 @@ const MediaServerPanel = () => {
               <LocalizedText source={executionContract.status} />
             </Label>
             <Label>
-              {executionContract.readyCount}/{executionContract.total} <LocalizedText source={"checks ready"} /></Label>
+              {formatRegionalNumber(executionContract.readyCount)}/{formatRegionalNumber(executionContract.total)} <LocalizedText source={"checks ready"} /></Label>
             <Label>
-              {executionContract.enabledReadyCount}/{executionContract.enabledCount}{' '}
+              {formatRegionalNumber(executionContract.enabledReadyCount)}/{formatRegionalNumber(executionContract.enabledCount)}{' '}
               <LocalizedText source={"enabled automations ready"} /></Label>
           </div>
           <div className="media-server-path-grid">

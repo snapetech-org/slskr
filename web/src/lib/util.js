@@ -97,6 +97,32 @@ export const formatRegionalCompactDateTime = (value) =>
     month: 'numeric',
   }).format(value);
 
+export const formatRegionalRelativeTime = (value, { now = Date.now() } = {}) => {
+  const date = value instanceof Date ? value : new Date(value);
+  const nowTimestamp = new Date(now).getTime();
+  if (Number.isNaN(date.getTime()) || !Number.isFinite(nowTimestamp)) return 'Invalid Date';
+  const seconds = (date.getTime() - nowTimestamp) / 1_000;
+  const units = [
+    ['year', 31_536_000],
+    ['month', 2_592_000],
+    ['day', 86_400],
+    ['hour', 3_600],
+    ['minute', 60],
+    ['second', 1],
+  ];
+  let unitIndex = units.findIndex(([, unitSeconds]) => Math.abs(seconds) >= unitSeconds);
+  if (unitIndex < 0) unitIndex = units.length - 1;
+  let [unit, duration] = units[unitIndex];
+  let amount = Math.round(seconds / duration);
+  if (Math.abs(amount) >= 60 && unitIndex > 0) {
+    unitIndex -= 1;
+    [unit, duration] = units[unitIndex];
+    amount = Math.round(seconds / duration);
+  }
+  return new Intl.RelativeTimeFormat(getRegionalLocale(), { numeric: 'auto' })
+    .format(amount, unit);
+};
+
 export const formatSeconds = (seconds) => {
   if (seconds === undefined) return '';
   const numericSeconds = Number(seconds);

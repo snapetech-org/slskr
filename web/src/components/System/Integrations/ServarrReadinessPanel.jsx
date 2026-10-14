@@ -1,3 +1,4 @@
+import { formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
 import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import * as lidarr from '../../../lib/lidarr';
@@ -27,6 +28,7 @@ import {
 } from '../../../lib/servarrReadiness';
 
 const ServarrReadinessPanel = ({ options }) => {
+  useRegionalFormat();
   useInterfaceLanguage();
   const lidarrOptions = getLidarrOptions(options);
   const [copyStatus, setCopyStatus] = useState('');
@@ -180,7 +182,7 @@ const ServarrReadinessPanel = ({ options }) => {
             <LocalizedText source={summary.status} />
           </Label>
           <Label>
-            {summary.ready}/{summary.total} <LocalizedText source={"checks ready"} /></Label>
+            {formatRegionalNumber(summary.ready)}/{formatRegionalNumber(summary.total)} <LocalizedText source={"checks ready"} /></Label>
           <Label color={compatibility.supportsWantedPull ? 'green' : 'grey'}>
             <LocalizedText source={"Wanted Pull"} />{" "}{compatibility.supportsWantedPull ? <LocalizedText source={"Ready"} /> : <LocalizedText source={"Not Ready"} />}
           </Label>

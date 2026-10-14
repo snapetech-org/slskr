@@ -3670,7 +3670,7 @@
   "peers": "समकक्ष लोग",
   "pod": "Pod",
   "pods": "Pods",
-  "preset": "पूर्व निर्धारित",
+  "preset": "प्रीसेट",
   "promote": "पदोन्नति करना",
   "promote previews": "पूर्वावलोकनों को बढ़ावा दें",
   "rating": "रेटिंग",
@@ -4547,5 +4547,14 @@
   "Tunnel Connected": "टनल: कनेक्टेड",
   "Tunnel Disconnected": "टनल: डिस्कनेक्टेड",
   "Clear {value}": "{value} हटाएँ",
-  "selection": "चयन"
+  "selection": "चयन",
+  "Untitled album": "बिना शीर्षक वाला एल्बम",
+  "fingerprint matches": "फिंगरप्रिंट मिलान",
+  "Selected Issues": "चयनित समस्याएँ",
+  "swarms": "बहु-स्रोत डाउनलोड",
+  "presets": "प्रीसेट",
+  "Last {count} hour": "पिछला {count} घंटा",
+  "Last {count} hours": "पिछले {count} घंटे",
+  "auto-connect": "स्वचालित कनेक्शन",
+  "In progress": "प्रगति पर"
 }

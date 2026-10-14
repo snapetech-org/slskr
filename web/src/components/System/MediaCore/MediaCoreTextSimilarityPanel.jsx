@@ -4,6 +4,7 @@ import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
 import React, { useEffect, useRef } from 'react';
+import { formatRegionalFixedNumber, useRegionalFormat } from '../../../lib/util';
 import { Card, Form, Grid, Icon, Input, Message } from 'semantic-ui-react';
 
 const useMountedState = (mountedRef, initialValue) => {
@@ -22,6 +23,7 @@ const useMountedState = (mountedRef, initialValue) => {
 
 const MediaCoreTextSimilarityPanel = React.memo(() => {
   useInterfaceLanguage();
+  useRegionalFormat();
   const mountedRef = useRef(true);
   useEffect(() => {
     mountedRef.current = true;
@@ -113,19 +115,19 @@ const MediaCoreTextSimilarityPanel = React.memo(() => {
                         <strong><LocalizedText source={"Text B:"} /></strong> "{textSimilarityResult.textB}"
                         <br />
                         <strong><LocalizedText source={"Levenshtein Similarity:"} /></strong>{' '}
-                        {(
+                        {formatRegionalFixedNumber((
                           textSimilarityResult.levenshteinSimilarity * 100
-                        ).toFixed(1)}
+                        ), 1)}
                         %<br />
                         <strong><LocalizedText source={"Phonetic Similarity:"} /></strong>{' '}
-                        {(
+                        {formatRegionalFixedNumber((
                           textSimilarityResult.phoneticSimilarity * 100
-                        ).toFixed(1)}
+                        ), 1)}
                         %<br />
                         <strong><LocalizedText source={"Combined Similarity:"} /></strong>{' '}
-                        {(
+                        {formatRegionalFixedNumber((
                           textSimilarityResult.combinedSimilarity * 100
-                        ).toFixed(1)}
+                        ), 1)}
                         %
                       </p>
                     </Message>

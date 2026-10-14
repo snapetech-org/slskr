@@ -5,7 +5,7 @@
 import * as slskrAPI from '../../../lib/slskr';
 import Network from '.';
 import { setRegionalFormatPreference } from '../../../lib/util';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 
 vi.mock('../../../lib/slskr');
@@ -88,6 +88,18 @@ describe('Network', () => {
 
     const zero = new Intl.NumberFormat('ar').format(0);
     expect(await screen.findByText(`${zero} B on disk`)).toBeInTheDocument();
+  });
+
+  it('reformats mounted peer counts when the regional preference changes', async () => {
+    render(<Network theme="light" />);
+
+    const card = (await screen.findByText('slskr clients connected')).closest('.card');
+    expect(card).toHaveTextContent('0');
+
+    act(() => setRegionalFormatPreference('ar'));
+
+    const zero = new Intl.NumberFormat('ar').format(0);
+    await waitFor(() => expect(card).toHaveTextContent(zero));
   });
 
   it('does not score an unavailable runtime snapshot as measured health', async () => {

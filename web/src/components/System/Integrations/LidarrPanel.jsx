@@ -123,14 +123,14 @@ const LidarrPanel = ({ options }) => {
               <Table.Cell><LocalizedText source={"Timeout"} /></Table.Cell>
               <Table.Cell>
                 {valueOrDash(getOption(lidarrOptions, 'timeoutSeconds', 'TimeoutSeconds'))}
-                {<LocalizedText source={"s"} />}
+                {' s'}
               </Table.Cell>
             </Table.Row>
             <Table.Row>
               <Table.Cell><LocalizedText source={"Sync Interval"} /></Table.Cell>
               <Table.Cell>
                 {valueOrDash(getOption(lidarrOptions, 'syncIntervalSeconds', 'SyncIntervalSeconds'))}
-                {<LocalizedText source={"s"} />}
+                {' s'}
               </Table.Cell>
             </Table.Row>
             <Table.Row>
