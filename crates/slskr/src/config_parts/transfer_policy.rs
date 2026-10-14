@@ -773,7 +773,7 @@ impl ShareSettings {
                 env,
                 "SLSKR_SHARE_SCAN_MAX_FILES",
                 file_config.scan_max_files,
-                50_000_usize,
+                250_000_usize,
             )?,
             cache_tsv_enabled: legacy_cache_enabled || storage_mode == "disk",
             cache_storage_mode: storage_mode,

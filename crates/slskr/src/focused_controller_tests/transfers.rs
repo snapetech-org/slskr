@@ -289,6 +289,76 @@ async fn transfer_durability_snapshots_after_lock_and_rehydrates_in_event_order(
     let _ = fs::remove_dir_all(&state.config.state_dir);
 }
 
+#[cfg(feature = "full-controller-tests")]
+#[tokio::test]
+async fn transfer_progress_is_live_but_durable_writes_are_rate_limited() {
+    let (state, _receiver) = test_state_with_env(MapEnv::default());
+    let entry = {
+        let mut transfers = state.transfers.write().await;
+        let entry = transfers.create(
+            0,
+            Some("progress-peer".to_owned()),
+            "Remote/Progress.flac".to_owned(),
+            None,
+            Some(1_000),
+        );
+        transfers.update_status(entry.id, "in_progress", Some(0), None);
+        entry
+    };
+    crate::persist_transfer_durability(&state).await;
+
+    let events_path = crate::transfer_events_path(&state.config.state_dir);
+    let state_path = crate::transfer_state_path(&state.config.state_dir);
+    let initial_event_lines = fs::read_to_string(&events_path)
+        .expect("initial transfer events")
+        .lines()
+        .count();
+
+    for progress in 1..=32 {
+        crate::update_transfer_progress(&state, entry.id, progress).await;
+    }
+
+    assert_eq!(
+        state
+            .transfers
+            .read()
+            .await
+            .entries
+            .iter()
+            .find(|current| current.id == entry.id)
+            .expect("live transfer progress")
+            .bytes_transferred,
+        32,
+        "live transfer state must advance for every chunk"
+    );
+    let events = fs::read_to_string(&events_path).expect("rate-limited transfer events");
+    assert_eq!(
+        events.lines().count(),
+        initial_event_lines + 1,
+        "a burst of chunk updates should produce one durable progress event"
+    );
+    assert!(events.contains("\t1\tin_progress\t"));
+    assert!(!events.contains("\t32\tin_progress\t"));
+    let persisted: serde_json::Value = serde_json::from_str(
+        &fs::read_to_string(&state_path).expect("rate-limited transfer state"),
+    )
+    .expect("transfer state JSON");
+    assert_eq!(persisted["entries"][0]["bytes_transferred"], 1);
+
+    tokio::time::sleep(Duration::from_millis(1_050)).await;
+    crate::update_transfer_progress(&state, entry.id, 33).await;
+
+    let events = fs::read_to_string(&events_path).expect("later transfer progress event");
+    assert_eq!(events.lines().count(), initial_event_lines + 2);
+    assert!(events.contains("\t33\tin_progress\t"));
+    let persisted: serde_json::Value =
+        serde_json::from_str(&fs::read_to_string(&state_path).expect("later transfer state"))
+            .expect("transfer state JSON");
+    assert_eq!(persisted["entries"][0]["bytes_transferred"], 33);
+
+    let _ = fs::remove_dir_all(&state.config.state_dir);
+}
+
 #[tokio::test]
 async fn transfer_request_name_update_advances_existing_database_revision() {
     let db = crate::persistence::DatabaseManager::in_memory()
@@ -599,14 +669,65 @@ async fn transfer_batch_path_preparation_releases_transfer_lock() {
             crate::TransferRequestDetails::default(),
         );
     }
-    let (staged, failures) =
+    let (committed, staged, failures) =
         crate::commit_prepared_download_batch_transfers(&state, "peer", batch_id, vec![prepared])
             .await;
+    assert!(committed.is_empty());
     assert!(staged.is_empty());
     assert_eq!(failures.len(), 1);
     assert_eq!(failures[0].1["filename"], "Music/A.flac");
     assert_eq!(state.transfers.read().await.entries.len(), 1);
     fs::remove_dir_all(&state.config.state_dir).expect("remove transfer batch lock test state");
+}
+
+#[tokio::test]
+async fn transfer_batch_queues_entries_after_directional_capacity_is_full() {
+    let (state, _receiver) = test_state_with_env(
+        MapEnv::default()
+            .with("SLSKR_TRANSFER_MAX_ACTIVE", "1")
+            .with("SLSKR_DOWNLOAD_SLOTS", "1"),
+    );
+    let batch_id = "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb";
+    let first = crate::prepare_download_batch_transfer(
+        &state,
+        0,
+        "peer",
+        "Music/A.flac",
+        42,
+        batch_id,
+        None,
+    )
+    .await
+    .expect("prepare first batch transfer");
+    let second = crate::prepare_download_batch_transfer(
+        &state,
+        1,
+        "peer",
+        "Music/B.flac",
+        84,
+        batch_id,
+        None,
+    )
+    .await
+    .expect("prepare second batch transfer");
+
+    let (committed, dispatch, failures) = crate::commit_prepared_download_batch_transfers(
+        &state,
+        "peer",
+        batch_id,
+        vec![first, second],
+    )
+    .await;
+    assert!(failures.is_empty());
+    assert_eq!(committed.len(), 2);
+    assert_eq!(dispatch.len(), 1);
+    assert_eq!(dispatch[0].0.status, "peer_lookup");
+    assert_eq!(committed[1].status, "queued");
+    assert_eq!(
+        committed[1].reason.as_deref(),
+        Some("Local download slots exhausted")
+    );
+    fs::remove_dir_all(&state.config.state_dir).expect("remove transfer batch capacity state");
 }
 
 #[tokio::test(flavor = "current_thread")]

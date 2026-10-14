@@ -11,12 +11,18 @@ use super::{
     truncate_utf8_bytes, unix_timestamp, unix_timestamp_millis, virtual_basename, AppConfig,
     RecordListFilter, TransferEntry, MAX_TRANSFER_LOCAL_PATH_BYTES, MAX_TRANSFER_STATUS_BYTES,
 };
-use std::{collections::BTreeMap, path::PathBuf};
+use std::{
+    collections::BTreeMap,
+    path::PathBuf,
+    time::{Duration, Instant},
+};
+
+const PROGRESS_PERSIST_INTERVAL: Duration = Duration::from_secs(1);
 
 #[derive(Debug)]
 pub(super) struct TransferQueue {
     pub(super) entries: Vec<TransferEntry>,
-    pub(super) progress_persisted_at: BTreeMap<u64, u64>,
+    pub(super) progress_persisted_at: BTreeMap<u64, Instant>,
     pub(super) next_id: u64,
     pub(super) next_token: u32,
     pub(super) history_limit: usize,
@@ -347,6 +353,36 @@ impl TransferQueue {
         self.push_entry(entry)
     }
 
+    pub(super) fn accept_pending_inbound_upload_request(
+        &mut self,
+        username: &str,
+        filename: &str,
+        token: u32,
+        size: u64,
+    ) -> Option<TransferEntry> {
+        let username = bounded_transfer_username(username);
+        let filename = bounded_transfer_filename(filename);
+        let entry = self.entries.iter_mut().find(|entry| {
+            entry.direction == 1
+                && entry.peer_username.as_deref() == Some(username.as_str())
+                && entry.filename == filename
+                && entry.local_path.is_some()
+                && entry.status == "queued"
+                && entry.reason.as_deref() == Some("Queued")
+        })?;
+        entry.previous_status = Some(entry.status.clone());
+        entry.token = token;
+        entry.size = Some(size);
+        entry.status = "accepted".to_owned();
+        entry.reason = None;
+        entry.updated_at = unix_timestamp();
+        entry.updated_at_ms = next_transfer_updated_at_ms(entry.updated_at_ms);
+        let entry = entry.clone();
+        self.mark_durable_mutation(Some(entry.clone()));
+        self.updated_at = unix_timestamp();
+        Some(entry)
+    }
+
     pub(super) fn create(
         &mut self,
         direction: u32,
@@ -581,7 +617,7 @@ impl TransferQueue {
         &mut self,
         id: u64,
         bytes_transferred: u64,
-    ) -> Option<TransferEntry> {
+    ) -> Option<(TransferEntry, bool)> {
         let entry = self.entries.iter_mut().find(|entry| entry.id == id)?;
         if !is_active_transfer_status(&entry.status) {
             return None;
@@ -599,9 +635,25 @@ impl TransferQueue {
         entry.updated_at = now;
         entry.updated_at_ms = next_transfer_updated_at_ms(entry.updated_at_ms);
         let entry = entry.clone();
-        self.mark_durable_mutation(Some(entry.clone()));
+        let should_persist = self.should_persist_progress_at(&entry, Instant::now());
+        if should_persist {
+            self.mark_durable_mutation(Some(entry.clone()));
+        }
         self.updated_at = unix_timestamp();
-        Some(entry)
+        Some((entry, should_persist))
+    }
+
+    fn should_persist_progress_at(&mut self, entry: &TransferEntry, now: Instant) -> bool {
+        let should_persist = self
+            .progress_persisted_at
+            .get(&entry.id)
+            .is_none_or(|persisted_at| {
+                now.saturating_duration_since(*persisted_at) >= PROGRESS_PERSIST_INTERVAL
+            });
+        if should_persist {
+            self.progress_persisted_at.insert(entry.id, now);
+        }
+        should_persist
     }
 
     pub(super) fn update_retry_state(
@@ -624,6 +676,24 @@ impl TransferQueue {
         self.mark_durable_mutation(Some(entry.clone()));
         self.updated_at = unix_timestamp();
         Some(entry)
+    }
+
+    pub(super) fn update_active_download_retry_state(
+        &mut self,
+        id: u64,
+        attempt: u32,
+        next_attempt_at: Option<u64>,
+        reason: Option<String>,
+    ) -> Option<TransferEntry> {
+        let status = self
+            .entries
+            .iter()
+            .find(|entry| {
+                entry.id == id && matches!(entry.status.as_str(), "accepted" | "in_progress")
+            })?
+            .status
+            .clone();
+        self.update_retry_state(id, attempt, next_attempt_at, &status, reason)
     }
 
     pub(super) fn update_audio_metadata(
@@ -650,9 +720,34 @@ impl TransferQueue {
             .iter()
             .find(|entry| {
                 entry.peer_username.as_deref() == Some(username.as_str())
-                    && (entry.status == "peer_lookup" || entry.status == "peer_negotiating")
+                    && entry.status == "peer_lookup"
             })
             .cloned()
+    }
+
+    pub(super) fn claim_pending_peer_transfer(
+        &mut self,
+        id: u64,
+        max_active: usize,
+        download_slots: usize,
+    ) -> Option<TransferEntry> {
+        let transfer = self
+            .entries
+            .iter()
+            .find(|entry| entry.id == id && entry.status == "peer_lookup")?
+            .clone();
+        if transfer.direction == 0
+            && !self.has_capacity_for_direction(0, max_active, download_slots, Some(transfer.id))
+        {
+            self.update_status(
+                transfer.id,
+                "queued",
+                None,
+                Some("Local download slots exhausted".to_owned()),
+            )
+        } else {
+            self.update_status(transfer.id, "peer_negotiating", None, None)
+        }
     }
 
     pub(super) fn pending_indirect_transfer(
@@ -799,6 +894,55 @@ impl TransferQueue {
             .iter()
             .filter(|entry| id != Some(entry.id) && is_active_transfer_status(&entry.status))
             .count()
+    }
+
+    pub(super) fn has_capacity_for_direction(
+        &self,
+        direction: u32,
+        max_active: usize,
+        directional_slots: usize,
+        excluding_id: Option<u64>,
+    ) -> bool {
+        if max_active == 0
+            || self.active_count_excluding(excluding_id) >= max_active
+            || directional_slots == 0
+        {
+            return false;
+        }
+        self.entries
+            .iter()
+            .filter(|entry| {
+                excluding_id != Some(entry.id)
+                    && entry.direction == direction
+                    && is_active_transfer_status(&entry.status)
+            })
+            .count()
+            < directional_slots
+    }
+
+    pub(super) fn has_capacity_for_upload_group(
+        &self,
+        max_active: usize,
+        upload_slots: usize,
+        group_slots: usize,
+        excluding_id: Option<u64>,
+        is_in_group: impl Fn(Option<&str>) -> bool,
+    ) -> bool {
+        if !self.has_capacity_for_direction(1, max_active, upload_slots, excluding_id)
+            || group_slots == 0
+        {
+            return false;
+        }
+        self.entries
+            .iter()
+            .filter(|entry| {
+                excluding_id != Some(entry.id)
+                    && entry.direction == 1
+                    && is_active_transfer_status(&entry.status)
+                    && is_in_group(entry.peer_username.as_deref())
+            })
+            .count()
+            < group_slots
     }
 
     pub(super) fn push_entry(&mut self, entry: TransferEntry) -> TransferEntry {

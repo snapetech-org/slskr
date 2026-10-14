@@ -39,7 +39,7 @@ pub struct AppConfig {
     pub server_address: String,
     pub listen_port: u32,
     pub username: Option<String>,
-    pub password: Option<String>,
+    pub soulseek_credentials: Option<LoginCredentials>,
     pub credential_store: CredentialStoreMode,
     pub credential_file: PathBuf,
     pub auto_connect: bool,

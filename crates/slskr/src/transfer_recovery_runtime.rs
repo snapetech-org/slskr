@@ -282,7 +282,9 @@ pub(super) async fn run_transfer_rescue_cycle(
         let Some(username) = alternative.peer_username.clone() else {
             continue;
         };
-        let (replacement, persisted, previous, mutated) = {
+        let download_slots = usize::try_from(state.transfer_download_settings.read().await.slots)
+            .unwrap_or(usize::MAX);
+        let (replacement, persisted, previous, mutated, dispatch) = {
             let mut transfers = state.transfers.write().await;
             let Some(current) = transfers
                 .entries
@@ -297,6 +299,12 @@ pub(super) async fn run_transfer_rescue_cycle(
             {
                 continue;
             }
+            let dispatch = transfers.has_capacity_for_direction(
+                0,
+                state.config.transfer_max_active,
+                download_slots,
+                Some(current.id),
+            );
             let previous = transfers.mutation_snapshot();
             let original = transfers
                 .update_status(
@@ -318,21 +326,34 @@ pub(super) async fn run_transfer_rescue_cycle(
                 current.batch_id.clone(),
                 retry_request_details(&current),
             );
-            let replacement = transfers
-                .update_status(replacement.id, "peer_lookup", None, None)
-                .unwrap_or(replacement);
+            let replacement = if dispatch {
+                transfers
+                    .update_status(replacement.id, "peer_lookup", None, None)
+                    .unwrap_or(replacement)
+            } else {
+                transfers
+                    .update_status(
+                        replacement.id,
+                        "queued",
+                        None,
+                        Some("Local download slots exhausted".to_owned()),
+                    )
+                    .unwrap_or(replacement)
+            };
             let persisted = [original, replacement.clone()];
             let mutated = transfers.mutation_snapshot();
-            (replacement, persisted, previous, mutated)
+            (replacement, persisted, previous, mutated, dispatch)
         };
         if let Err(error) = persist_transfer_records(state, &persisted).await {
             rollback_transfer_mutation_if_unchanged(state, previous, mutated).await;
             return Err(error);
         };
-        permit.send(SessionCommand::TransferPeer {
-            id: replacement.id,
-            username: username.clone(),
-        });
+        if dispatch {
+            permit.send(SessionCommand::TransferPeer {
+                id: replacement.id,
+                username: username.clone(),
+            });
+        }
         tracker.retry_after.insert(
             candidate.source.id,
             now.saturating_add(state.config.transfer_rescue.retry_cooldown.as_secs()),

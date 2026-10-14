@@ -43,7 +43,8 @@ pub(super) use self::peer_negotiation::{
 mod transfer_policy;
 pub(super) use self::transfer_policy::{
     download_capacity_available, effective_transfer_group, effective_transfer_group_from,
-    inbound_upload_policy, transfer_capacity_available, transfer_group_upload_settings,
+    effective_transfer_group_from_records, inbound_upload_policy, transfer_capacity_available,
+    transfer_group_upload_settings, upload_group_slot_limit_from,
 };
 #[path = "file_transfer_runtime_owners/upload_streaming.rs"]
 mod upload_streaming;
