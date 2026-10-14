@@ -8782,3 +8782,13 @@ credentialed run details. This confirms that the public login window was still
 unavailable at 2026-10-03 19:32 UTC; it does not establish an endpoint metadata
 regression. Phase A remains open until the public service accepts the required
 logins. Phase B and Phase E remain 5/5. No product or security behavior changed.
+
+## Aggregate Web Bundle Budget Recheck (2026-10-13 UTC)
+
+The current production build contains 624,653 bytes of aggregate JavaScript
+gzip (610.013 KiB), 13 bytes above the 610 KiB cap. The minimum whole-KiB
+ceiling above that measured build is 611 KiB; this leaves 1,011 bytes of
+headroom while retaining the 1,150 KiB initial-JavaScript limit and all
+per-asset budgets. The budget checker, its unit tests, Web build, and full
+release gate are required to pass with the updated ceiling. This is internal
+build-policy maintenance; no user-facing behavior changed.
