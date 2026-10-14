@@ -226,7 +226,10 @@ jobs:
       - run: scripts/check-process-memory-guard.sh
       - run: scripts/test-process-memory-guard.sh
       - run: scripts/test-live-interop-account-validation.sh
-      - run: scripts/check-audit-tooling.sh
+      - name: Check audit tooling
+        env:
+          AQUA_ROOT_DIR: ${{ steps.private-runner-temp.outputs.path || runner.temp }}/aqua
+        run: scripts/check-audit-tooling.sh
       - run: scripts/check-public-posture.sh
       - run: scripts/validate-changelog.sh
       - run: scripts/check-docs-freshness.sh
@@ -266,6 +269,14 @@ jobs:
       - run: npm --prefix web run test:bundle-budget
       - run: node web/scripts/verify-build-output.mjs
       - run: node web/scripts/smoke-subpath-build.mjs
+      - name: Install TypeScript client dependencies
+        run: npm ci --prefix client-ts
+      - name: Build TypeScript client
+        run: npm --prefix client-ts run build
+      - name: Test TypeScript client
+        run: npm --prefix client-ts test
+      - name: Lint TypeScript client
+        run: npm --prefix client-ts run lint
       - run: bash scripts/check-web-audit.sh dashboard
       - run: npm --prefix dashboard run type-check
       - run: npm --prefix dashboard run lint
