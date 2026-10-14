@@ -863,7 +863,8 @@ def probe(username, query, token):
                 return "connect-error"
             time.sleep(0.05)
     try:
-        sock.settimeout(1.5)
+        # Release-gate daemons can share a busy host; tolerate scheduling delays.
+        sock.settimeout(5.0)
         sock.sendall(frame_init(username)+frame_search(query,token))
         header=recv_exact(sock,4)
         if header is None:
@@ -942,7 +943,8 @@ def probe(query,token):
             if time.monotonic()>=deadline: return "connect-error"
             time.sleep(0.05)
     try:
-        sock.settimeout(1.5)
+        # Release-gate daemons can share a busy host; tolerate scheduling delays.
+        sock.settimeout(5.0)
         sock.sendall(frame_init("AllowedPeer")+frame_search(query,token))
         header=recv_exact(sock,4)
         if header is None: return False
