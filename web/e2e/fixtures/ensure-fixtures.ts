@@ -1,11 +1,12 @@
 import { execFile } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { existsSync, statSync } from 'node:fs';
+import { constants as fsConstants, existsSync, statSync } from 'node:fs';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
+const quoteDiagnostic = (value: string): string => JSON.stringify(value);
 const OPTIONAL_MEDIA_FILES = [
   'music/open_goldberg/01_aria.ogg',
   'movie/sintel_512kb_stereo.mp4',
@@ -54,6 +55,7 @@ async function validateManifestFiles(
     throw new Error('Test fixtures manifest must contain a non-empty files array');
   }
 
+  const canonicalRoot = await fs.realpath(fixturesPath);
   const seen = new Set<string>();
   for (const entry of manifest.files) {
     if (
@@ -77,32 +79,66 @@ async function validateManifestFiles(
       !Number.isSafeInteger(file.bytes) ||
       file.bytes < 0
     ) {
-      throw new Error(`Test fixtures manifest contains an invalid entry for ${file.path}`);
+      throw new Error(`Test fixtures manifest contains an invalid entry for ${quoteDiagnostic(file.path)}`);
     }
     seen.add(file.path);
 
     const fullPath = path.join(fixturesPath, file.path);
-    let stat;
+    let canonicalPath: string;
     try {
-      stat = await fs.stat(fullPath);
+      canonicalPath = await fs.realpath(fullPath);
     } catch {
-      throw new Error(`Required fixture file missing: ${fullPath}`);
+      throw new Error(`Required fixture file missing: ${quoteDiagnostic(fullPath)}`);
     }
-    if (!stat.isFile()) {
-      throw new Error(`Required fixture path is not a file: ${fullPath}`);
+    const relativePath = path.relative(canonicalRoot, canonicalPath);
+    if (
+      relativePath === '..' ||
+      relativePath.startsWith(`..${path.sep}`) ||
+      path.isAbsolute(relativePath)
+    ) {
+      throw new Error(`Required fixture path escapes the fixture directory: ${quoteDiagnostic(file.path)}`);
     }
-    if (stat.size !== file.bytes) {
-      throw new Error(
-        `Fixture byte count mismatch for ${file.path}: expected ${file.bytes}, got ${stat.size}`,
+    let descriptor: fs.FileHandle;
+    try {
+      descriptor = await fs.open(
+        fullPath,
+        fsConstants.O_RDONLY | (fsConstants.O_NOFOLLOW ?? 0),
       );
+    } catch {
+      throw new Error(`Required fixture path is not a regular file: ${quoteDiagnostic(file.path)}`);
+    }
+    let contents: Buffer;
+    try {
+      const stat = await descriptor.stat();
+      const pathStat = await fs.lstat(fullPath);
+      const currentPath = await fs.realpath(fullPath);
+      const currentRelativePath = path.relative(canonicalRoot, currentPath);
+      if (
+        !stat.isFile() ||
+        pathStat.isSymbolicLink() ||
+        pathStat.dev !== stat.dev ||
+        pathStat.ino !== stat.ino ||
+        currentPath !== canonicalPath ||
+        currentRelativePath === '..' ||
+        currentRelativePath.startsWith(`..${path.sep}`) ||
+        path.isAbsolute(currentRelativePath)
+      ) {
+        throw new Error(`Required fixture path is not a stable regular file: ${quoteDiagnostic(file.path)}`);
+      }
+      if (stat.size !== file.bytes) {
+        throw new Error(
+          `Fixture byte count mismatch for ${quoteDiagnostic(file.path)}: expected ${file.bytes}, got ${stat.size}`,
+        );
+      }
+      contents = await descriptor.readFile();
+    } finally {
+      await descriptor.close();
     }
 
-    const digest = createHash('sha256')
-      .update(await fs.readFile(fullPath))
-      .digest('hex');
+    const digest = createHash('sha256').update(contents).digest('hex');
     if (digest !== file.sha256.toLowerCase()) {
       throw new Error(
-        `Fixture SHA-256 mismatch for ${file.path}: expected ${file.sha256}, got ${digest}`,
+        `Fixture SHA-256 mismatch for ${quoteDiagnostic(file.path)}: expected ${file.sha256}, got ${digest}`,
       );
     }
   }
@@ -147,7 +183,7 @@ export async function ensureFixtures(
   try {
     await fs.access(fullFixturesPath);
   } catch {
-    throw new Error(`Test fixtures directory not found: ${fullFixturesPath}`);
+    throw new Error(`Test fixtures directory not found: ${quoteDiagnostic(fullFixturesPath)}`);
   }
 
   // Check for manifest
@@ -155,7 +191,7 @@ export async function ensureFixtures(
   try {
     await fs.access(manifestPath);
   } catch {
-    throw new Error(`Test fixtures manifest not found: ${manifestPath}`);
+    throw new Error(`Test fixtures manifest not found: ${quoteDiagnostic(manifestPath)}`);
   }
 
   await validateManifestFiles(fullFixturesPath, manifestPath);
@@ -167,7 +203,7 @@ export async function ensureFixtures(
     try {
       await fs.access(dirPath);
     } catch {
-      throw new Error(`Required fixture directory missing: ${dirPath}`);
+      throw new Error(`Required fixture directory missing: ${quoteDiagnostic(dirPath)}`);
     }
   }
 

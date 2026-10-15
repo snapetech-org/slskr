@@ -214,7 +214,6 @@ const browser = await chromium.launch({
   headless: process.env.HEADLESS !== 'false',
 });
 const audit = {
-  apiResponses: [],
   apiRequestBudget: {
     enabled: !liveBackendUrl && auditScenario === 'success' && settleMs === 500,
     maximumByRoute: Object.fromEntries(apiRequestCountBudgets),
@@ -285,11 +284,6 @@ try {
             request.method(),
             requestedUrl.pathname,
           );
-          audit.apiResponses.push({
-            method: request.method(),
-            path: `${requestedUrl.pathname}${requestedUrl.search}`,
-            status: scenarioResponse.status,
-          });
           if (
             scenarioResponse.status >= 400
             && auditScenario === 'success'
@@ -397,9 +391,12 @@ try {
         apiRequestCount: apiRequests.length,
         apiRequestCountBudget: apiRequestCountBudget ?? null,
         apiRequestBudgetWindowMs: API_REQUEST_BUDGET_WINDOW_MS,
-        apiRequestMetrics,
+        apiRequestMetrics: apiRequestMetrics.map(({ count, minimumIntervalMs }) => ({
+          count,
+          minimumIntervalMs,
+        })),
         developerOpen,
-        heading,
+        headingMatches: heading === title,
         inspectorCount,
         layout,
         nativeWorkspaceCount,
@@ -409,9 +406,9 @@ try {
         rowCount,
         searchResultDownloadRequestCount,
         screenshot: `${slug}-${viewport.name}.png`,
-        selectedStatus,
-        selectedTitle,
-        toastText,
+        selectedStatusConfirmed: selectedStatus.includes('Selected'),
+        selectedTitlePresent: Boolean(selectedTitle && selectedTitle !== 'Nothing selected'),
+        toastVisible: Boolean(toastText.trim()),
         viewport: viewport.name,
       };
       audit.routes.push(routeResult);
@@ -485,10 +482,18 @@ try {
   server.close();
 }
 
-await writeFile(join(auditDir, 'audit.json'), `${JSON.stringify(audit, null, 2)}\n`);
+const persistedAudit = {
+  apiRequestBudget: audit.apiRequestBudget,
+  evidenceMode: audit.evidenceMode,
+  generatedAt: audit.generatedAt,
+  passed: audit.errors.length === 0,
+  errorCount: audit.errors.length,
+  routes: audit.routes,
+};
+await writeFile(join(auditDir, 'audit.json'), `${JSON.stringify(persistedAudit, null, 2)}\n`);
 
 if (audit.errors.length > 0) {
-  console.error(audit.errors.join('\n'));
+  console.error(`Rust web UI audit failed with ${audit.errors.length} checks.`);
   process.exit(1);
 }
 

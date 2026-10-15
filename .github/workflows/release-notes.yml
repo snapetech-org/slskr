@@ -31,9 +31,19 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           set -euo pipefail
+          expected_files=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}" --jq '.changed_files')
+          if [[ ! "$expected_files" =~ ^[0-9]+$ || "$expected_files" -gt 3000 ]]; then
+            echo "GitHub reports an invalid or unsupported pull-request file count; refusing incomplete release-note validation" >&2
+            exit 1
+          fi
           gh api --paginate --jq '.[] | {filename,status,patch}' \
             "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}/files" \
             > "$RUNNER_TEMP/pull-request-files.jsonl"
+          actual_files=$(wc -l < "$RUNNER_TEMP/pull-request-files.jsonl" | tr -d '[:space:]')
+          if [[ "$actual_files" != "$expected_files" ]]; then
+            echo "GitHub returned ${actual_files} of ${expected_files} changed files; refusing incomplete release-note validation" >&2
+            exit 1
+          fi
 
       - name: Validate and preview release notes
         env:
@@ -62,6 +72,12 @@ jobs:
                   continue
 
               file_name = item["filename"]
+              if any(ord(character) < 0x20 or ord(character) == 0x7F for character in file_name):
+                  errors.append(
+                      f"pull-request file data line {line_number} has a control character in its filename"
+                  )
+                  continue
+              safe_name = json.dumps(file_name, ensure_ascii=True)
               path = PurePosixPath(file_name)
               if (
                   path.parent != release_notes_dir
@@ -71,13 +87,13 @@ jobs:
                   continue
               if item.get("status") != "added":
                   errors.append(
-                      f"{file_name}: release-note fragments are append-only; add a new fragment instead"
+                      f"{safe_name}: release-note fragments are append-only; add a new fragment instead"
                   )
                   continue
 
               patch = item.get("patch")
               if not isinstance(patch, str) or len(patch) > 16_384:
-                  errors.append(f"{file_name}: GitHub did not return a complete text patch")
+                  errors.append(f"{safe_name}: GitHub did not return a complete text patch")
                   continue
 
               content = []
@@ -91,15 +107,15 @@ jobs:
                   elif patch_line.startswith(" "):
                       content.append(patch_line[1:])
                   elif patch_line.startswith("-"):
-                      errors.append(f"{file_name}: unexpected removed line in an added file")
+                      errors.append(f"{safe_name}: unexpected removed line in an added file")
                       break
                   elif patch_line:
-                      errors.append(f"{file_name}: GitHub returned an unexpected patch line")
+                      errors.append(f"{safe_name}: GitHub returned an unexpected patch line")
                       break
               else:
                   target = Path("release-notes") / path.name
                   if target.exists():
-                      errors.append(f"{file_name}: the new fragment already exists in the base revision")
+                      errors.append(f"{safe_name}: the new fragment already exists in the base revision")
                       continue
                   target.write_text("\n".join(content) + "\n", encoding="utf-8")
 
