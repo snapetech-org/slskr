@@ -278,7 +278,7 @@ const Chat = ({ runtimeProfile, state }) => {
       } catch (error) {
         console.error('Failed to remove conversation:', error);
         if (mountedRef.current) {
-          toast.error(`Failed to delete conversation: ${toDisplayError(error)}`);
+          toast.error(interfaceText('Failed to delete conversation: {error}', { error: toDisplayError(error) }));
         }
       } finally {
         deleteInFlightRef.current = false;

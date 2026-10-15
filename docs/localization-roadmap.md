@@ -43,6 +43,8 @@ The regional-format preference also localizes digits in track durations and audi
 
 Regional formatting uses the selected preference for dates, times, counts, byte sizes, and numbers in the shipped UI. Changes re-render open screens immediately, keep working in the current tab when browser storage is blocked, and update from another tab's preference changes.
 
+The October 15 source audit routes additional fixed copy in Browse, Chat, Messaging, Player, Rooms, Search, System, and Transfers through the existing catalog. It adds locale-aware plural handling and exact mappings for recognized app-owned error details. The source-reference test checks that every static value already passed to the localization helpers has a catalog entry. It does not find raw UI literals that bypass those helpers, so the full raw-string coverage audit remains open.
+
 ## Remaining work
 
-The catalog translations were machine-generated and still need fluent-speaker review. Review the full Arabic layout interactively at narrow and desktop widths before claiming app-wide RTL support.
+The catalog translations were machine-generated and still need fluent-speaker review. Audit any remaining raw UI literals, and review the full Arabic layout interactively at narrow and desktop widths before claiming app-wide RTL support.

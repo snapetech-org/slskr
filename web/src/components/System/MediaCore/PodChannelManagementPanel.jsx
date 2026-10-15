@@ -108,7 +108,7 @@ const PodChannelManagementPanel = ({ visible = true }) => {
       // Refresh channels list
       await handleGetChannels();
     } catch (error_) {
-      toast.error(`Failed to create channel: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to create channel: {error}', { error: toDisplayError(error_) }));
     } finally {
       setCreateChannelLoading(false);
     }
@@ -134,7 +134,7 @@ const PodChannelManagementPanel = ({ visible = true }) => {
       // Refresh channels list
       await handleGetChannels();
     } catch (error_) {
-      toast.error(`Failed to update channel: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to update channel: {error}', { error: toDisplayError(error_) }));
     } finally {
       setUpdateChannelLoading(false);
     }
@@ -156,7 +156,7 @@ const PodChannelManagementPanel = ({ visible = true }) => {
       // Refresh channels list
       await handleGetChannels();
     } catch (error_) {
-      toast.error(`Failed to delete channel: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to delete channel: {error}', { error: toDisplayError(error_) }));
     } finally {
       setDeleteChannelLoading(false);
     }

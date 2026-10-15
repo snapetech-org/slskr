@@ -154,11 +154,11 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
         checkMessageId,
         checkPodId,
       );
-      toast.success(
-        `Message registered as seen: ${result.wasNewlyRegistered ? 'New' : 'Already known'}`,
-      );
+      toast.success(interfaceText('Message registered as seen: {status}', {
+        status: interfaceText(result.wasNewlyRegistered ? 'New' : 'Already known'),
+      }));
     } catch (error_) {
-      toast.error(`Failed to register message: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to register message: {error}', { error: toDisplayError(error_) }));
     }
   };
 
@@ -171,7 +171,7 @@ const PodMessageRoutingPanel = ({ visible = true }) => {
       // Reload stats to reflect changes
       await handleLoadRoutingStats();
     } catch (error_) {
-      toast.error(`Failed to cleanup: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to cleanup: {error}', { error: toDisplayError(error_) }));
     }
   };
 

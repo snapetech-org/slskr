@@ -1,4 +1,4 @@
-import LocalizedText from "../../Shared/LocalizedText";
+import LocalizedText, { LocalizedPluralText } from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 
 
@@ -207,8 +207,10 @@ const SwarmAnalytics = () => {
               <Card.Content>
                 <Card.Header><LocalizedText source={"Performance Metrics"} /></Card.Header>
                 <Card.Meta>
-                  <LocalizedText
-                    source={timeWindow === 1 ? "Last {count} hour" : "Last {count} hours"}
+                  <LocalizedPluralText
+                    count={timeWindow}
+                    other="Last {count} hours"
+                    singular="Last {count} hour"
                     values={{ count: formatRegionalNumber(timeWindow) }}
                   />
                 </Card.Meta>

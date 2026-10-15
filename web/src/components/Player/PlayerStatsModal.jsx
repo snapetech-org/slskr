@@ -1,5 +1,5 @@
 import LocalizedText from "../Shared/LocalizedText";
-import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
+import { interfaceText, interfaceTextPlural, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import * as listenBrainz from '../../lib/listenBrainz';
 import {
   clearListeningHistory,
@@ -16,6 +16,7 @@ import { copyToClipboard } from '../../lib/clipboard';
 import { toDisplayError } from '../../lib/errors';
 import { readFileTextBounded } from '../../lib/fileReaders';
 import { useMountedRef } from '../../lib/useMountedRef';
+import { formatRegionalNumber } from '../../lib/util';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   Button,
@@ -101,11 +102,15 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
       const copied = await copyToClipboard(content);
       if (!mountedRef.current) return;
       setImportStatus(
-        interfaceText(
+        interfaceTextPlural(
+          copied
+            ? 'Copied {format} export for {count} play.'
+            : 'Prepared {format} export for {count} play; clipboard is unavailable.',
           copied
             ? 'Copied {format} export for {count} plays.'
             : 'Prepared {format} export for {count} plays; clipboard is unavailable.',
-          { format: format.toUpperCase(), count: stats.history.length },
+          stats.history.length,
+          { format: format.toUpperCase(), count: formatRegionalNumber(stats.history.length) },
         ),
       );
     } catch (error) {

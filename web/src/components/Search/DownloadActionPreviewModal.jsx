@@ -1,4 +1,4 @@
-import LocalizedText from "../Shared/LocalizedText";
+import LocalizedText, { LocalizedPluralText } from "../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import { formatSearchActionPreview } from '../../lib/searchActionPreview';
 import { formatRegionalNumber, useRegionalFormat } from '../../lib/util';
@@ -33,8 +33,12 @@ const DownloadActionPreviewModal = ({
           <List.Item>
             <List.Header><LocalizedText source={"Selected files"} /></List.Header>
             <List.Description>
-              {formatRegionalNumber(preview.fileCount)}{' '}
-              <LocalizedText source={preview.fileCount === 1 ? "file" : "files"} />, {selectedSize}
+              <LocalizedPluralText
+                count={preview.fileCount}
+                other="{count} files"
+                singular="{count} file"
+                values={{ count: formatRegionalNumber(preview.fileCount) }}
+              />, {selectedSize}
             </List.Description>
           </List.Item>
           {preview.candidateScore !== null && (

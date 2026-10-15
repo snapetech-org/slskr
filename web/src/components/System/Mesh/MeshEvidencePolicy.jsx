@@ -85,9 +85,10 @@ const MeshEvidencePolicy = ({ runtimeProfile } = {}) => {
 
   const toggleOutbound = (evidenceType, enabled) => {
     setPolicy(setMeshEvidenceOutboundEnabled(evidenceType.id, enabled));
-    toast.info(
-      `${evidenceType.label} publication ${enabled ? 'enabled' : 'disabled'}`,
-    );
+    toast.info(interfaceText('{label} publication {status}', {
+      label: interfaceText(evidenceType.label),
+      status: interfaceText(enabled ? 'enabled' : 'disabled'),
+    }));
   };
 
   const resetPolicy = () => {

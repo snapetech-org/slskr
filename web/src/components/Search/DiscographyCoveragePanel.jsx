@@ -1,4 +1,4 @@
-import LocalizedText from "../Shared/LocalizedText";
+import LocalizedText, { LocalizedPluralText } from "../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import {
   fetchDiscographyCoverage,
@@ -6,6 +6,7 @@ import {
 } from '../../lib/musicBrainz';
 import { toDisplayError } from '../../lib/errors';
 import { useMountedRef } from '../../lib/useMountedRef';
+import { formatRegionalNumber } from '../../lib/util';
 import React, { useMemo, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import {
@@ -170,9 +171,13 @@ const DiscographyCoveragePanel = ({ disabled }) => {
       ) {
         return;
       }
-      toast.success(
-        `Added ${response.data?.createdCount ?? 0} missing tracks to Wishlist`,
-      );
+      const addedCount = response.data?.createdCount ?? 0;
+      toast.success(<LocalizedPluralText
+        count={addedCount}
+        other="Added {count} missing tracks to Wishlist"
+        singular="Added {count} missing track to Wishlist"
+        values={{ count: formatRegionalNumber(addedCount) }}
+      />);
       await loadCoverage({ artistIdOverride: coverage.artistId });
     } catch (promoteError) {
       console.error(promoteError);
@@ -340,12 +345,12 @@ const DiscographyCoveragePanel = ({ disabled }) => {
                         <List.Description>
                           {track.artist || coverage.artistName} ·{' '}
                           {track.recordingId || interfaceText('unknown recording')}
-                          {track.matches?.length > 0 && interfaceText(
-                            track.matches.length === 1
-                              ? '· {count} verified match'
-                              : '· {count} verified matches',
-                            { count: track.matches.length },
-                          )}
+                          {track.matches?.length > 0 && <LocalizedPluralText
+                            count={track.matches.length}
+                            other="· {count} verified matches"
+                            singular="· {count} verified match"
+                            values={{ count: formatRegionalNumber(track.matches.length) }}
+                          />}
                         </List.Description>
                       </List.Content>
                     </List.Item>

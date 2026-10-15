@@ -76,7 +76,7 @@ const PodContentLinkingPanel = ({ contentId, setContentId, visible = true }) => 
       }
     } catch (error_) {
       setContentValidation({ error: toDisplayError(error_), isValid: false });
-      toast.error(`Failed to validate content ID: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to validate content ID: {error}', { error: toDisplayError(error_) }));
     } finally {
       setContentValidationLoading(false);
     }
@@ -95,7 +95,7 @@ const PodContentLinkingPanel = ({ contentId, setContentId, visible = true }) => 
         setNewPodName(`${metadata.artist} - ${metadata.title}`);
       }
     } catch (error_) {
-      toast.error(`Failed to get content metadata: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to get content metadata: {error}', { error: toDisplayError(error_) }));
       setContentMetadata(null);
     } finally {
       setContentMetadataLoading(false);
@@ -116,7 +116,7 @@ const PodContentLinkingPanel = ({ contentId, setContentId, visible = true }) => 
       );
       setContentSearchResults(results);
     } catch (error_) {
-      toast.error(`Failed to search content: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to search content: {error}', { error: toDisplayError(error_) }));
       setContentSearchError(toDisplayError(error_, 'Failed to search content'));
       setContentSearchResults([]);
     } finally {
@@ -172,7 +172,7 @@ const PodContentLinkingPanel = ({ contentId, setContentId, visible = true }) => 
       setContentSearchQuery('');
       setContentSearchResults([]);
     } catch (error_) {
-      toast.error(`Failed to create pod: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to create pod: {error}', { error: toDisplayError(error_) }));
     } finally {
       setCreatePodLoading(false);
     }

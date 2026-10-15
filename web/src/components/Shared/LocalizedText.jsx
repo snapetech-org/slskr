@@ -22,4 +22,29 @@ const LocalizedText = ({ as: Element = 'span', source, values, children, ...prop
   );
 };
 
+export const LocalizedPluralText = ({
+  as: Element = 'span',
+  count,
+  other,
+  singular,
+  values = {},
+  children,
+  ...props
+}) => {
+  const { directionFor, languageFor, pluralSource, tp } = useInterfaceLanguage();
+  const source = pluralSource(singular, other, count);
+  const language = languageFor(source);
+  const text = tp(singular, other, count, { count, ...values });
+
+  if (Element === 'span' && language === 'en' && Object.keys(props).length === 0) {
+    return text;
+  }
+
+  return (
+    <Element dir={directionFor(source)} lang={language} {...props}>
+      {text ?? children}
+    </Element>
+  );
+};
+
 export default LocalizedText;

@@ -213,7 +213,7 @@ const PodMembershipManagementPanel = ({
       // Reload stats to reflect changes
       await handleLoadMembershipStats();
     } catch (error_) {
-      toast.error(`Failed to cleanup: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to cleanup: {error}', { error: toDisplayError(error_) }));
     }
   };
 

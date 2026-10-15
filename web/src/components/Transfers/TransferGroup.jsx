@@ -1,4 +1,4 @@
-import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
+import { interfaceText, interfaceTextAttributes, interfaceTextProps } from "../../lib/interfaceLocale";
 import * as transfers from '../../lib/transfers';
 import UserCard from '../Shared/UserCard';
 import TransferList from './TransferList';
@@ -120,7 +120,7 @@ class TransferGroup extends Component {
         <Card.Content>
           <Card.Header>
             <Icon
-              aria-label={`${isFolded ? 'Expand' : 'Collapse'} transfers for ${user.username}`}
+              {...interfaceTextAttributes(isFolded ? 'Expand transfers for {username}' : 'Collapse transfers for {username}', { username: user.username })}
               link
               name={isFolded ? 'chevron right' : 'chevron down'}
               onClick={() => this.toggleFolded()}

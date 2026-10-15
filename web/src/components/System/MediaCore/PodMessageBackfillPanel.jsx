@@ -101,7 +101,7 @@ const PodMessageBackfillPanel = ({ visible = true }) => {
       // Refresh stats
       await handleGetBackfillStats();
     } catch (error_) {
-      toast.error(`Failed to sync pod backfill: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to sync pod backfill: {error}', { error: toDisplayError(error_) }));
     } finally {
       setSyncBackfillLoading(false);
     }

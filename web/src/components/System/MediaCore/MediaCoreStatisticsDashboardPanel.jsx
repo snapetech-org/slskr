@@ -187,7 +187,7 @@ const MediaCoreStatisticsDashboardPanel = () => {
       setContentPublishingStats(null);
       toast.success(interfaceText("MediaCore statistics have been reset"));
     } catch (error_) {
-      toast.error(`Failed to reset stats: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to reset stats: {error}', { error: toDisplayError(error_) }));
     }
   };
 

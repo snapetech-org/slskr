@@ -241,7 +241,7 @@ const SongIDPanel = ({ disabled }) => {
     return runAction(async () => {
       await musicBrainz.resolveTarget({ releaseId: candidate.releaseId });
       if (mountedRef.current) {
-        toast.success(`Prepared album target for ${candidate.title || 'album'}`);
+        toast.success(<LocalizedText source="Prepared album target for {title}" values={{ title: candidate.title || 'album' }} />);
       }
     }, 'Failed to prepare album target');
   };
