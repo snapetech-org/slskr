@@ -55,7 +55,7 @@ const MessageSearchPanel = () => {
       setSearchResultsQuery(requestedQuery);
     } catch (error_) {
       setSearchError(toDisplayError(error_, 'Failed to search messages'));
-      toast.error(`Failed to search messages: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to search messages: {error}', { error: toDisplayError(error_) }));
     } finally {
       setSearchLoading(false);
     }

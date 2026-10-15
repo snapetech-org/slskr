@@ -1,5 +1,5 @@
 import LocalizedText from "../Shared/LocalizedText";
-import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
+import { interfaceText, interfaceTextAttributes, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import * as collectionsAPI from '../../lib/collections';
 import { toDisplayError } from '../../lib/errors';
 import { useMountedRef } from '../../lib/useMountedRef';
@@ -562,12 +562,12 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
                               content={interfaceText("Play this local file in the browser player.")}
                               trigger={
                                 <Button
-                                  aria-label={`Play ${item.fileName || item.contentId}`}
+                                  {...interfaceTextAttributes('Play {fileName}', { fileName: item.fileName || item.contentId })}
                                   data-testid={`player-play-file-${item.contentId}`}
                                   icon
                                   onClick={() => playAndClose(item)}
                                   size="small"
-                                  title={`Play ${item.fileName || item.contentId}`}
+                                  title={interfaceText('Play {fileName}', { fileName: item.fileName || item.contentId })}
                                 >
                                   <Icon name="play" />
                                 </Button>

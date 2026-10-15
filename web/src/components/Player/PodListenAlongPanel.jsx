@@ -1,5 +1,5 @@
 import LocalizedText from "../Shared/LocalizedText";
-import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
+import { interfaceText, interfaceTextAttributes, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import { createListeningPartyHubConnection } from '../../lib/hubFactory';
 import { toDisplayError } from '../../lib/errors';
 import * as listeningParty from '../../lib/listeningParty';
@@ -276,10 +276,10 @@ const PodListenAlongPanel = ({ channelId, compact = false, podId, user }) => {
             }
             trigger={
               <span
-                aria-label={connected ? 'Listen Along live' : 'Listen Along offline'}
+                {...interfaceTextAttributes(connected ? 'Listen Along live' : 'Listen Along offline')}
                 className={`pod-listen-along-orb ${connected ? 'pod-listen-along-orb-live' : ''}`}
                 role="status"
-                title={connected ? 'Listen Along live' : 'Listen Along offline'}
+                title={interfaceText(connected ? 'Listen Along live' : 'Listen Along offline')}
               />
             }
           />

@@ -1,7 +1,8 @@
-import LocalizedText from "../../Shared/LocalizedText";
+import LocalizedText, { LocalizedPluralText } from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import * as lidarr from '../../../lib/lidarr';
 import { toDisplayError } from '../../../lib/errors';
+import { formatRegionalNumber } from '../../../lib/util';
 import { useMemo, useState } from 'react';
 import {
   Button,
@@ -273,12 +274,12 @@ const LidarrPanel = ({ options }) => {
             size="small"
           >
             {importRetryResult.commandId || importRetryResult.CommandId
-              ? (() => {
-                const count = importRetryResult.safeCandidateCount || importRetryResult.SafeCandidateCount || 0;
-                return count === 1
-                  ? interfaceText('Lidarr import retry queued: {count} file', { count })
-                  : interfaceText('Lidarr import retry queued: {count} files', { count });
-              })()
+              ? <LocalizedPluralText
+                count={importRetryResult.safeCandidateCount || importRetryResult.SafeCandidateCount || 0}
+                other="Lidarr import retry queued: {count} files"
+                singular="Lidarr import retry queued: {count} file"
+                values={{ count: formatRegionalNumber(importRetryResult.safeCandidateCount || importRetryResult.SafeCandidateCount || 0) }}
+              />
               : importRetryResult.skippedReason ||
                 importRetryResult.SkippedReason ||
                 interfaceText('Lidarr could not find a safe file to import on retry')}

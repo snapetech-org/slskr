@@ -37,8 +37,8 @@ const DirectoryNode = ({
             <Icon
               aria-expanded={isExpanded}
               aria-label={interfaceText(
-                isExpanded ? 'Collapse {folderName}' : 'Expand {folderName}',
-                { folderName },
+                isExpanded ? 'Collapse {directory}' : 'Expand {directory}',
+                { directory: folderName },
               )}
               name={isExpanded ? 'caret down' : 'caret right'}
               onClick={() => onToggleExpand(directoryName)}

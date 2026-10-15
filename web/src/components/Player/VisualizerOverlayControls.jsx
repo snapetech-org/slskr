@@ -1,4 +1,4 @@
-import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
+import { interfaceText, interfaceTextAttributes, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import { LocalizedPopup } from '../Shared/TooltipButton';
 import React from 'react';
 import { Button, Icon, Popup } from 'semantic-ui-react';
@@ -486,7 +486,7 @@ const VisualizerOverlayControls = ({
                 content={interfaceText("Show or hide RustyMilk debug details for the active preset.")}
                 trigger={
                   <Button
-                    aria-label={showNativeDebug ? 'Hide RustyMilk debug details' : 'Show RustyMilk debug details'}
+                    {...interfaceTextAttributes(showNativeDebug ? 'Hide RustyMilk debug details' : 'Show RustyMilk debug details')}
                     active={showNativeDebug}
                     data-testid="visualizer-toggle-native-debug"
                     icon

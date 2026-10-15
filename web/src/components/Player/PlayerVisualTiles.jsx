@@ -1,6 +1,6 @@
 import LocalizedText from "../Shared/LocalizedText";
 import { LocalizedPopup } from '../Shared/TooltipButton';
-import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
+import { interfaceText, interfaceTextAttributes, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import React, { lazy, Suspense, useRef, useState } from 'react';
 import { getLocalStorageItem } from '../../lib/storage';
 import SpectrumAnalyzer from './SpectrumAnalyzer';
@@ -226,7 +226,7 @@ export const PlayerAnalyzerTile = ({ audioElement, mode, onModeChange }) => {
       content={mode === 'spectrum' ? 'Show signal scope in this box.' : 'Show spectrum bars in this box.'}
       trigger={
         <div
-          aria-label={interfaceText('Show {mode}', {
+          {...interfaceTextAttributes('Show {mode}', {
             mode: nextMode === 'spectrum' ? interfaceText('spectrum bars') : interfaceText('signal scope'),
           })}
           className="player-analyzer-tile"

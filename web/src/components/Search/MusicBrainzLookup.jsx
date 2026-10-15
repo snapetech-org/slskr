@@ -138,11 +138,9 @@ const MusicBrainzLookup = ({ disabled }) => {
       }
       setTarget(resolvedTarget);
 
-      toast.success(
-        resolvedTarget.album
-          ? `Loaded album ${resolvedTarget.album.title}`
-          : `Loaded track ${resolvedTarget.track?.title}`,
-      );
+      toast.success(resolvedTarget.album
+        ? interfaceText('Loaded album {title}', { title: resolvedTarget.album.title })
+        : interfaceText('Loaded track {title}', { title: resolvedTarget.track?.title || '' }));
     } catch (error) {
       console.error(error);
       if (

@@ -1,5 +1,5 @@
 import LocalizedText from "../Shared/LocalizedText";
-import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
+import { interfaceText, interfaceTextAttributes, interfaceTextProps } from "../../lib/interfaceLocale";
 import { formatRegionalCompactDateTime } from '../../lib/util';
 import * as rooms from '../../lib/rooms';
 import { createRoomsHubConnection } from '../../lib/hubFactory';
@@ -493,7 +493,7 @@ class RoomSession extends Component {
                     <Segment className="room-input">
                       <Input
                         action={{
-                          'aria-label': `Send message to ${room.name || room.roomName || 'room'}`,
+                          ...interfaceTextAttributes('Send message to {room}', { room: room.name || room.roomName || 'room' }),
                           className: 'room-message-button',
                           disabled: !this.validInput() || sending,
                           icon: (
@@ -509,7 +509,7 @@ class RoomSession extends Component {
                         input={
                           <input
                             autoComplete="off"
-                            aria-label={`Message in ${room.name || room.roomName || 'room'}`}
+                            {...interfaceTextAttributes('Message in {room}', { room: room.name || room.roomName || 'room' })}
                             data-lpignore="true"
                             id="room-message-input"
                             type="text"

@@ -40,13 +40,9 @@ const PodMessageMaintenanceActions = ({ size = 'tiny' }) => {
     try {
       setRebuildIndexLoading(true);
       const result = await mediacore.rebuildSearchIndex();
-      toast.success(
-        result
-          ? 'Search index rebuilt successfully'
-          : 'Search index rebuild failed',
-      );
+      toast.success(interfaceText(result ? 'Search index rebuilt successfully' : 'Search index rebuild failed'));
     } catch (error_) {
-      toast.error(`Failed to rebuild search index: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to rebuild search index: {error}', { error: toDisplayError(error_) }));
     } finally {
       setRebuildIndexLoading(false);
     }
@@ -56,13 +52,9 @@ const PodMessageMaintenanceActions = ({ size = 'tiny' }) => {
     try {
       setVacuumLoading(true);
       const result = await mediacore.vacuumDatabase();
-      toast.success(
-        result
-          ? 'Database vacuum completed successfully'
-          : 'Database vacuum failed',
-      );
+      toast.success(interfaceText(result ? 'Database vacuum completed successfully' : 'Database vacuum failed'));
     } catch (error_) {
-      toast.error(`Failed to vacuum database: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to vacuum database: {error}', { error: toDisplayError(error_) }));
     } finally {
       setVacuumLoading(false);
     }

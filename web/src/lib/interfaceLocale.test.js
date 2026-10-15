@@ -16,11 +16,16 @@ import {
   INTERFACE_LANGUAGE_OPTIONS,
   applyInitialInterfaceLanguage,
   interfaceTextProps,
+  interfaceTextPlural,
   resetInterfaceLanguage,
   setInterfaceLanguage,
   useInterfaceLanguage,
 } from './interfaceLocale';
+import { parse } from '@babel/parser';
 import { act, renderHook } from '@testing-library/react';
+import fs from 'node:fs';
+import path from 'node:path';
+import { toDisplayError } from './errors';
 const localeCatalogs = {
   'es': LOCALE_0,
   'zh-Hans': LOCALE_1,
@@ -38,6 +43,16 @@ const localeCatalogs = {
 const UI_LABELS = Object.fromEntries(Object.keys(LOCALE_0).map((source) => [
   source, Object.values(localeCatalogs).map((locale) => locale[source]),
 ]));
+const translationForms = (translation) => (
+  typeof translation === 'string'
+    ? [translation]
+    : translation && typeof translation === 'object'
+      ? Object.values(translation)
+      : []
+);
+const defaultTranslation = (translation) => (
+  typeof translation === 'string' ? translation : translation?.other
+);
 
 const storageKey = 'slskr.interface-language';
 const bulkActionLabels = [
@@ -56,6 +71,174 @@ const bulkActionLabels = [
   'Filter downloads to remove',
 ];
 const originalLanguages = Object.getOwnPropertyDescriptor(navigator, 'languages');
+const untranslatedTechnicalExamples = new Set([
+  // These values are protocol/event examples, not app-owned prose.
+  'PrivateMessageReceived&#10;DownloadFileComplete',
+  'content:audio:track:mb-12345&#10;content:video:movie:imdb-tt0111161&#10;...',
+]);
+
+const localizationSourceReferences = () => {
+  const sourceRoot = path.resolve(process.cwd(), 'src');
+  const files = [];
+  const visitDirectory = (directory) => {
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      const fullPath = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        visitDirectory(fullPath);
+      } else if (/\.(?:js|jsx)$/.test(entry.name) && !entry.name.includes('.test.')) {
+        files.push(fullPath);
+      }
+    }
+  };
+  visitDirectory(sourceRoot);
+
+  const references = [];
+  const collectStaticTexts = (node) => {
+    if (!node) return [];
+    if (node.type === 'StringLiteral') return [node.value];
+    if (node.type === 'TemplateLiteral' && node.expressions.length === 0) {
+      return [node.quasis[0]?.value.cooked || ''];
+    }
+    if (node.type === 'ConditionalExpression') {
+      return [...collectStaticTexts(node.consequent), ...collectStaticTexts(node.alternate)];
+    }
+    if (node.type === 'LogicalExpression') return collectStaticTexts(node.right);
+    if (node.type === 'ParenthesizedExpression' || node.type === 'TSAsExpression') {
+      return collectStaticTexts(node.expression);
+    }
+    return [];
+  };
+  for (const file of files) {
+    const source = fs.readFileSync(file, 'utf8');
+    const ast = parse(source, { sourceType: 'unambiguous', plugins: ['jsx'] });
+    const relativeFile = path.relative(sourceRoot, file);
+    const sourceValues = new Map();
+    const visitSourceValues = (node) => {
+      if (!node || typeof node !== 'object') return;
+      if (node.type === 'FunctionDeclaration' && node.id?.name) {
+        const returned = [];
+        const visitFunctionBody = (child, isRoot = false) => {
+          if (!child || typeof child !== 'object') return;
+          if (!isRoot && ['FunctionDeclaration', 'FunctionExpression', 'ArrowFunctionExpression'].includes(child.type)) return;
+          if (child.type === 'ReturnStatement') returned.push(...collectStaticTexts(child.argument));
+          for (const value of Object.values(child)) {
+            if (Array.isArray(value)) value.forEach((item) => visitFunctionBody(item));
+            else if (value && typeof value === 'object') visitFunctionBody(value);
+          }
+        };
+        visitFunctionBody(node.body, true);
+        sourceValues.set(node.id.name, returned);
+      }
+      if (node.type === 'VariableDeclarator' && node.id.type === 'Identifier' && node.init) {
+        if (['ArrowFunctionExpression', 'FunctionExpression'].includes(node.init.type)) {
+          const returned = node.init.body.type === 'BlockStatement'
+            ? []
+            : collectStaticTexts(node.init.body);
+          if (node.init.body.type === 'BlockStatement') {
+            const visitFunctionBody = (child, isRoot = false) => {
+              if (!child || typeof child !== 'object') return;
+              if (!isRoot && ['FunctionDeclaration', 'FunctionExpression', 'ArrowFunctionExpression'].includes(child.type)) return;
+              if (child.type === 'ReturnStatement') returned.push(...collectStaticTexts(child.argument));
+              for (const value of Object.values(child)) {
+                if (Array.isArray(value)) value.forEach((item) => visitFunctionBody(item));
+                else if (value && typeof value === 'object') visitFunctionBody(value);
+              }
+            };
+            visitFunctionBody(node.init.body, true);
+          }
+          sourceValues.set(node.id.name, returned);
+        } else {
+          const values = collectStaticTexts(node.init);
+          if (values.length) sourceValues.set(node.id.name, values);
+        }
+      }
+      for (const [key, value] of Object.entries(node)) {
+        if (['loc', 'start', 'end', 'leadingComments', 'trailingComments', 'innerComments'].includes(key)) continue;
+        if (Array.isArray(value)) value.forEach(visitSourceValues);
+        else if (value && typeof value === 'object') visitSourceValues(value);
+      }
+    };
+    visitSourceValues(ast);
+    const collectLocalizedSourceTexts = (node) => {
+      const staticTexts = collectStaticTexts(node);
+      if (staticTexts.length) return staticTexts;
+      if (node?.type === 'Identifier') return sourceValues.get(node.name) || [];
+      if (node?.type === 'CallExpression' && node.callee.type === 'Identifier') return sourceValues.get(node.callee.name) || [];
+      return [];
+    };
+    const walk = (node) => {
+      if (!node || typeof node !== 'object') return;
+
+      if (
+        node.type === 'VariableDeclarator' &&
+        node.id.type === 'Identifier' &&
+        node.id.name === 'toDisplayError' &&
+        node.init?.params?.[1]?.type === 'AssignmentPattern'
+      ) {
+        for (const text of collectStaticTexts(node.init.params[1].right)) {
+          if (text) references.push({ file: relativeFile, line: node.init.params[1].loc.start.line, source: text });
+        }
+      }
+
+      if (
+        node.type === 'CallExpression' &&
+        node.callee.type === 'Identifier' &&
+        ['interfaceText', 'interfaceTextProps', 'interfaceTextPlural', 't', 'tp'].includes(node.callee.name)
+      ) {
+        const sourceArgumentCount = ['interfaceTextPlural', 'tp'].includes(node.callee.name) ? 2 : 1;
+        for (const argument of node.arguments.slice(0, sourceArgumentCount)) {
+          for (const text of collectStaticTexts(argument)) {
+            if (text) references.push({ file: relativeFile, line: node.loc.start.line, source: text });
+          }
+        }
+      }
+
+      if (
+        node.type === 'CallExpression' &&
+        node.callee.type === 'Identifier' &&
+        node.callee.name === 'toDisplayError' &&
+        node.arguments[1]
+      ) {
+        for (const text of collectStaticTexts(node.arguments[1])) {
+          if (text) references.push({ file: relativeFile, line: node.loc.start.line, source: text });
+        }
+      }
+
+      if (node.type === 'JSXOpeningElement') {
+        const componentName = node.name.name;
+        const attributesByComponent = {
+          LocalizedText: ['source'],
+          LocalizedPopup: ['content'],
+          LocalizedPluralText: ['singular', 'other'],
+          TooltipButton: ['aria-label', 'title', 'content', 'tooltip'],
+        };
+        for (const attribute of node.attributes) {
+          if (
+            attribute.type !== 'JSXAttribute' ||
+            !attributesByComponent[componentName]?.includes(attribute.name.name)
+          ) continue;
+          const valueNode = attribute.value?.type === 'JSXExpressionContainer'
+            ? attribute.value.expression
+            : attribute.value?.type === 'StringLiteral'
+              ? { type: 'StringLiteral', value: attribute.value.value }
+              : undefined;
+          for (const text of collectLocalizedSourceTexts(valueNode)) {
+            if (text) references.push({ file: relativeFile, line: attribute.loc.start.line, source: text });
+          }
+        }
+      }
+
+      for (const [key, value] of Object.entries(node)) {
+        if (['loc', 'start', 'end', 'leadingComments', 'trailingComments', 'innerComments'].includes(key)) continue;
+        if (Array.isArray(value)) value.forEach(walk);
+        else if (value && typeof value === 'object') walk(value);
+      }
+    };
+    walk(ast);
+  }
+
+  return references;
+};
 
 beforeEach(() => {
   vi.stubGlobal('fetch', vi.fn(async (url) => {
@@ -93,7 +276,10 @@ describe('interface language', () => {
 
     for (const [source, translations] of Object.entries(UI_LABELS)) {
       expect(translations).toHaveLength(INTERFACE_LANGUAGE_OPTIONS.length - 1);
-      expect(translations.every((value) => value === null || typeof value === 'string')).toBe(true);
+      expect(translations.every((value) => (
+        value === null || typeof value === 'string' ||
+        (value && typeof value === 'object' && !Array.isArray(value) && typeof value.other === 'string')
+      ))).toBe(true);
     }
   });
 
@@ -107,12 +293,47 @@ describe('interface language', () => {
       expect(Object.keys(catalog).sort(), `${language} catalog keys`).toEqual(sourceKeys);
 
       for (const [source, translation] of Object.entries(catalog)) {
-        if (translation === null) continue;
-        expect(placeholders(translation), `${language}: ${source}`).toEqual(
-          placeholders(source),
-        );
+        for (const form of translationForms(translation)) {
+          expect(placeholders(form), `${language}: ${source}`).toEqual(placeholders(source));
+        }
       }
     }
+  });
+
+  it('uses oscilloscope terminology and distinguishes Chinese DHT peers from nodes', () => {
+    const expectedScopes = {
+      es: 'osciloscopio',
+      'zh-Hans': '示波器',
+      hi: 'ऑसिलोस्कोप',
+      de: 'Oszilloskop',
+      ja: 'オシロスコープ',
+      fr: 'oscilloscope',
+      'pt-BR': 'osciloscópio',
+      ar: 'راسم الإشارة',
+      ko: '오실로스코프',
+      'zh-Hant': '示波器',
+      vi: 'máy hiện sóng',
+      id: 'osiloskop',
+    };
+    const dhtSummary = 'DHT peers: {dhtPeers}; DHT nodes: {dhtNodes}; mesh peers: {meshPeers}; hashes: {hashes}; seq: {seq}{errors}';
+
+    for (const [language, expected] of Object.entries(expectedScopes)) {
+      const catalog = localeCatalogs[language];
+      expect(catalog['signal scope']).toBe(expected);
+      expect(catalog['Show signal scope in this box.']).not.toMatch(/signal range|信号范围|訊號範圍|نطاق الإشارة|phạm vi tín hiệu|cakupan sinyal/iu);
+    }
+    expect(localeCatalogs['zh-Hans'][dhtSummary]).toContain('DHT 对等端: {dhtPeers}; DHT 节点: {dhtNodes}');
+    expect(localeCatalogs['zh-Hant'][dhtSummary]).toContain('DHT 對等端: {dhtPeers}; DHT 節點: {dhtNodes}');
+    expect(localeCatalogs['zh-Hant']['Message {channel}']).toBe('傳送訊息到頻道 {channel}');
+  });
+
+  it('keeps static app-owned localization callsites in every locale catalog', () => {
+    const sourceKeys = new Set(Object.keys(LOCALE_0));
+    const missing = localizationSourceReferences()
+      .filter(({ source }) => !sourceKeys.has(source) && !untranslatedTechnicalExamples.has(source))
+      .map(({ file, line, source }) => `${file}:${line}: ${JSON.stringify(source)}`);
+
+    expect(missing).toEqual([]);
   });
 
   it('translates transfer actions and filter names in every supported language', () => {
@@ -134,8 +355,9 @@ describe('interface language', () => {
       expect(result.current.language).toBe(option.value);
       for (const [source, translations] of Object.entries(UI_LABELS)) {
         const translation = option.value === 'en' ? null : translations[translationIndex];
-        const localizedLanguage = translation && translation !== source ? option.value : 'en';
-        expect(result.current.t(source)).toBe(translation || source);
+        const translatedText = defaultTranslation(translation);
+        const localizedLanguage = translatedText && translatedText !== source ? option.value : 'en';
+        expect(result.current.t(source)).toBe(translatedText || source);
         expect(result.current.languageFor(source)).toBe(localizedLanguage);
         expect(result.current.directionFor(source)).toBe(
           localizedLanguage === 'ar' ? 'rtl' : 'ltr',
@@ -161,6 +383,50 @@ describe('interface language', () => {
     await act(async () => { await setInterfaceLanguage('ar'); });
     expect(result.current.languageFor('Search')).toBe('ar');
     expect(result.current.directionFor('Search')).toBe('rtl');
+  });
+
+  it('uses Arabic plural categories for visible counts', async () => {
+    const arabicPluralSources = [
+      'Failed to {action} {count} transfers. First error: {label}: {message}',
+      'Last {count} hours',
+      '{count} Selected Issues',
+      'Lidarr import retry queued: {count} files',
+      '{count} files',
+      'swarms',
+      'fingerprint matches',
+      'Added {count} missing tracks to Wishlist',
+      '· {count} verified matches',
+      'Cleared {count} searches',
+      'Copied {format} export for {count} plays.',
+      'Prepared {format} export for {count} plays; clipboard is unavailable.',
+    ];
+    const requiredCategories = ['zero', 'one', 'two', 'few', 'many', 'other'];
+    await act(async () => { await setInterfaceLanguage('ar'); });
+
+    for (const source of arabicPluralSources) {
+      expect(Object.keys(LOCALE_7[source] || {}).sort()).toEqual(requiredCategories);
+    }
+
+    const cases = [
+      [0, '0 ملف'],
+      [1, '1 ملف'],
+      [2, '2 ملفان'],
+      [3, '3 ملفات'],
+      [11, '11 ملفًا'],
+      [100, '100 ملف'],
+    ];
+
+    for (const [count, expected] of cases) {
+      expect(interfaceTextPlural('{count} file', '{count} files', count)).toBe(expected);
+    }
+  });
+
+  it('localizes only the fixed error fallback and preserves server error detail', async () => {
+    await act(async () => { await setInterfaceLanguage('es'); });
+
+    expect(toDisplayError(null, 'Failed to load files')).toBe('No se han podido cargar los archivos');
+    expect(toDisplayError({ response: { data: { message: 'raw backend message' } } }, 'Failed to load files'))
+      .toBe('raw backend message');
   });
 
   it('keeps same-as-source values tagged as English and left-to-right', async () => {

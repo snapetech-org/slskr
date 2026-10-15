@@ -1,3 +1,5 @@
+import { interfaceText } from './interfaceLocale';
+
 export const toDisplayError = (error, fallback = 'Request failed') => {
   const value = error?.response?.data ?? error?.message ?? error;
 
@@ -11,9 +13,9 @@ export const toDisplayError = (error, fallback = 'Request failed') => {
     try {
       return JSON.stringify(value);
     } catch {
-      return fallback;
+      return interfaceText(fallback);
     }
   }
 
-  return fallback;
+  return interfaceText(fallback);
 };

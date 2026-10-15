@@ -169,7 +169,7 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
         interfaceText("Cache cleared: {entriesCleared} entries, {bytesFreed} bytes freed", { "entriesCleared": (result.entriesCleared), "bytesFreed": (result.bytesFreed) }),
       );
     } catch (error_) {
-      toast.error(`Failed to clear cache: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to clear cache: {error}', { error: toDisplayError(error_) }));
     }
   };
 
