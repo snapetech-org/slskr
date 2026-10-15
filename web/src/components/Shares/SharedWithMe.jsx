@@ -1,4 +1,4 @@
-import LocalizedText from "../Shared/LocalizedText";
+import LocalizedText, { LocalizedPluralText } from "../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import * as collectionsAPI from '../../lib/collections';
 import { toDisplayError } from '../../lib/errors';
@@ -456,8 +456,13 @@ export default class SharedWithMe extends Component {
               <span
                 style={{ color: '#666', fontSize: '0.9em', marginRight: '1em' }}
               >
-                {this.state.backfillResult.message ||
-                  `${this.state.backfillResult.backfilled ?? 0} items`}
+                {this.state.backfillResult.message || (
+                  <LocalizedPluralText
+                    count={this.state.backfillResult.backfilled ?? 0}
+                    other="{count} items"
+                    singular="{count} item"
+                  />
+                )}
               </span>
             )}
             <Button
