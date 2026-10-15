@@ -4847,5 +4847,14 @@
   "Are you sure you want to delete the channel \"{channelName}\"? This action cannot be undone.": "¿Seguro que quieres eliminar el canal \"{channelName}\"? Esta acción no se puede deshacer.",
   "Are you sure you want to unpublish pod \"{podId}\"?": "¿Seguro que quieres dejar de publicar el pod \"{podId}\"?",
   "Are you sure you want to ban member \"{peerId}\" from pod \"{podId}\"?": "¿Seguro que quieres expulsar al miembro \"{peerId}\" del pod \"{podId}\"?",
-  "Are you sure you want to reset all MediaCore statistics? This cannot be undone.": "¿Seguro que quieres restablecer todas las estadísticas de MediaCore? Esta acción no se puede deshacer."
+  "Are you sure you want to reset all MediaCore statistics? This cannot be undone.": "¿Seguro que quieres restablecer todas las estadísticas de MediaCore? Esta acción no se puede deshacer.",
+  "{label} · {nodeType} · weight {weight}": "{label} · {nodeType} · peso {weight}",
+  "{source} → {target} · {edgeType}{reason}": "{source} → {target} · {edgeType}{reason}",
+  "Assembling": "Ensamblando",
+  "Downloading": "Descargando",
+  "Unknown stage": "Etapa desconocida",
+  "Verifying": "Verificando",
+  "Verifying Final": "Verificando el resultado final",
+  "Members:\n{members}": "Miembros:\n{members}",
+  "Unknown member": "Miembro desconocido"
 }

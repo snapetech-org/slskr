@@ -267,7 +267,7 @@ class FooterView extends Component {
       );
     }
 
-    const currentBuild = buildInfo?.current || buildInfo?.full || 'unknown';
+    const currentBuild = buildInfo?.current || buildInfo?.full || interfaceText('unknown');
     const fullBuild = buildInfo?.full || currentBuild;
     const latestBuild = buildInfo?.latest || '';
     const latestTag = buildInfo?.latestTag || latestBuild;

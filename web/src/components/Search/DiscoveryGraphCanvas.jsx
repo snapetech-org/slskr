@@ -1,4 +1,6 @@
 import React from 'react';
+import { interfaceText } from '../../lib/interfaceLocale';
+import { formatRegionalNumber } from '../../lib/util';
 
 const accentColor = (accent) => {
   switch (accent) {
@@ -95,7 +97,12 @@ const DiscoveryGraphCanvas = ({
             y2={target.y}
           >
             <title>
-              {`${source.label} → ${target.label} · ${edge.edgeType}${edge.reason ? ` · ${edge.reason}` : ''}`}
+              {interfaceText('{source} → {target} · {edgeType}{reason}', {
+                source: source.label,
+                target: target.label,
+                edgeType: edge.edgeType,
+                reason: edge.reason ? ` · ${edge.reason}` : '',
+              })}
             </title>
           </line>
         );
@@ -114,7 +121,11 @@ const DiscoveryGraphCanvas = ({
             r={nodeRadius(node)}
           />
           <title>
-            {`${node.label} · ${node.nodeType} · weight ${Math.round((node.weight || 0) * 100)}`}
+            {interfaceText('{label} · {nodeType} · weight {weight}', {
+              label: node.label,
+              nodeType: node.nodeType,
+              weight: formatRegionalNumber(Math.round((node.weight || 0) * 100)),
+            })}
           </title>
           <text
             fill="#fff"

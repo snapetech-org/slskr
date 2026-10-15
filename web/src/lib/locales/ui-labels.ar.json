@@ -4945,5 +4945,14 @@
   "Are you sure you want to delete the channel \"{channelName}\"? This action cannot be undone.": "هل تريد بالتأكيد حذف القناة \"{channelName}\"؟ لا يمكن التراجع عن هذا الإجراء.",
   "Are you sure you want to unpublish pod \"{podId}\"?": "هل تريد بالتأكيد إلغاء نشر pod \"{podId}\"؟",
   "Are you sure you want to ban member \"{peerId}\" from pod \"{podId}\"?": "هل تريد بالتأكيد حظر العضو \"{peerId}\" من pod \"{podId}\"؟",
-  "Are you sure you want to reset all MediaCore statistics? This cannot be undone.": "هل تريد بالتأكيد إعادة تعيين جميع إحصاءات MediaCore؟ لا يمكن التراجع عن هذا الإجراء."
+  "Are you sure you want to reset all MediaCore statistics? This cannot be undone.": "هل تريد بالتأكيد إعادة تعيين جميع إحصاءات MediaCore؟ لا يمكن التراجع عن هذا الإجراء.",
+  "{label} · {nodeType} · weight {weight}": "{label} · {nodeType} · الوزن {weight}",
+  "{source} → {target} · {edgeType}{reason}": "{source} ← {target} · {edgeType}{reason}",
+  "Assembling": "جارٍ التجميع",
+  "Downloading": "جارٍ التنزيل",
+  "Unknown stage": "مرحلة غير معروفة",
+  "Verifying": "جارٍ التحقق",
+  "Verifying Final": "جارٍ التحقق النهائي",
+  "Members:\n{members}": "الأعضاء:\n{members}",
+  "Unknown member": "عضو غير معروف"
 }

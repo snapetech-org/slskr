@@ -4847,5 +4847,14 @@
   "Are you sure you want to delete the channel \"{channelName}\"? This action cannot be undone.": "Bạn có chắc muốn xóa kênh \"{channelName}\" không? Không thể hoàn tác thao tác này.",
   "Are you sure you want to unpublish pod \"{podId}\"?": "Bạn có chắc muốn hủy xuất bản pod \"{podId}\" không?",
   "Are you sure you want to ban member \"{peerId}\" from pod \"{podId}\"?": "Bạn có chắc muốn cấm thành viên \"{peerId}\" khỏi pod \"{podId}\" không?",
-  "Are you sure you want to reset all MediaCore statistics? This cannot be undone.": "Bạn có chắc muốn đặt lại toàn bộ thống kê MediaCore không? Không thể hoàn tác thao tác này."
+  "Are you sure you want to reset all MediaCore statistics? This cannot be undone.": "Bạn có chắc muốn đặt lại toàn bộ thống kê MediaCore không? Không thể hoàn tác thao tác này.",
+  "{label} · {nodeType} · weight {weight}": "{label} · {nodeType} · trọng số {weight}",
+  "{source} → {target} · {edgeType}{reason}": "{source} → {target} · {edgeType}{reason}",
+  "Assembling": "Đang ghép",
+  "Downloading": "Đang tải xuống",
+  "Unknown stage": "Giai đoạn không xác định",
+  "Verifying": "Đang xác minh",
+  "Verifying Final": "Đang xác minh kết quả cuối",
+  "Members:\n{members}": "Thành viên:\n{members}",
+  "Unknown member": "Thành viên không xác định"
 }

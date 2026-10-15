@@ -216,8 +216,8 @@ const localizationSourceReferences = () => {
 
       if (
         node.type === 'CallExpression' &&
-        (node.callee.type === 'Identifier' && node.callee.name === 'confirm' ||
-          node.callee.type === 'MemberExpression' && node.callee.property.type === 'Identifier' && node.callee.property.name === 'confirm') &&
+        (node.callee.type === 'Identifier' && ['confirm', 'alert'].includes(node.callee.name) ||
+          node.callee.type === 'MemberExpression' && node.callee.property.type === 'Identifier' && ['confirm', 'alert'].includes(node.callee.property.name)) &&
         node.arguments[0]
       ) {
         for (const text of collectLocalizedSourceTexts(node.arguments[0])) {
@@ -233,6 +233,7 @@ const localizationSourceReferences = () => {
           LocalizedPluralText: ['singular', 'other'],
           TooltipButton: ['aria-label', 'title', 'content', 'tooltip'],
           ActionButton: ['aria-label', 'title', 'content', 'tooltip'],
+          Button: ['aria-label', 'title', 'content', 'tooltip'],
         };
         for (const attribute of node.attributes) {
           if (
@@ -254,6 +255,153 @@ const localizationSourceReferences = () => {
         if (['loc', 'start', 'end', 'leadingComments', 'trailingComments', 'innerComments'].includes(key)) continue;
         if (Array.isArray(value)) value.forEach(walk);
         else if (value && typeof value === 'object') walk(value);
+      }
+    };
+    walk(ast);
+  }
+
+  return references;
+};
+
+const untranslatedTechnicalUiTexts = new Set([
+  // Protocol, product, format, and unit labels that are intentionally stable.
+  'EQ',
+  'JSON',
+  'CSV',
+  'localhost:',
+  'ID:',
+  'ID',
+  'PrivateServiceGateway',
+  'POD',
+  'SCENE',
+  'OCR',
+  'IP',
+  'URL',
+  'Last.fm',
+  'VPN',
+  'Mbit/s',
+  'chunks/s',
+  'TTL:',
+  'MB',
+  'KB',
+  'ed25519:<base64 signature>',
+  'ops/sec',
+  'SLSK_USERNAME',
+  'SLSK_PASSWORD',
+  'dhtRendezvous.lanOnly: true',
+  'dhtRendezvous.lanOnly: false',
+  '50300/tcp',
+  'dht.lan_only=true',
+  'DHT',
+  'multi_source',
+  'hash_db',
+  'mesh_sync',
+  'ETA',
+]);
+
+const localizationRawUiTexts = () => {
+  const sourceRoot = path.resolve(process.cwd(), 'src');
+  const files = [];
+  const visitDirectory = (directory) => {
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      const fullPath = path.join(directory, entry.name);
+      if (entry.isDirectory()) visitDirectory(fullPath);
+      else if (/\.(?:js|jsx)$/.test(entry.name) && !entry.name.includes('.test.')) files.push(fullPath);
+    }
+  };
+  const displayStrings = (node) => {
+    if (!node) return [];
+    if (node.type === 'StringLiteral') return [node.value];
+    if (node.type === 'TemplateLiteral') {
+      return [node.quasis.map((part, index) => (
+        `${part.value.cooked || ''}${index < node.expressions.length ? '{value}' : ''}`
+      )).join('')];
+    }
+    if (node.type === 'ConditionalExpression') {
+      return [...displayStrings(node.consequent), ...displayStrings(node.alternate)];
+    }
+    if (node.type === 'LogicalExpression') return displayStrings(node.right);
+    if (node.type === 'BinaryExpression' && node.operator === '+') {
+      return [...displayStrings(node.left), ...displayStrings(node.right)];
+    }
+    if (node.type === 'ParenthesizedExpression' || node.type === 'JSXExpressionContainer') {
+      return displayStrings(node.expression);
+    }
+    return [];
+  };
+  const localizedComponents = new Set([
+    'LocalizedText',
+    'LocalizedPluralText',
+    'LocalizedPopup',
+    'TooltipButton',
+  ]);
+  const references = [];
+
+  for (const file of files) {
+    const source = fs.readFileSync(file, 'utf8');
+    const ast = parse(source, { sourceType: 'unambiguous', plugins: ['jsx'] });
+    const relativeFile = path.relative(sourceRoot, file);
+    const localizedAliases = new Set();
+    const findAliases = (node) => {
+      if (!node || typeof node !== 'object') return;
+      if (
+        node.type === 'VariableDeclarator' &&
+        node.id.type === 'Identifier' &&
+        node.init?.type === 'Identifier' &&
+        ['TooltipButton', 'LocalizedPopup'].includes(node.init.name)
+      ) localizedAliases.add(node.id.name);
+      for (const [key, value] of Object.entries(node)) {
+        if (['loc', 'start', 'end', 'leadingComments', 'trailingComments', 'innerComments'].includes(key)) continue;
+        if (Array.isArray(value)) value.forEach(findAliases);
+        else if (value && typeof value === 'object') findAliases(value);
+      }
+    };
+    findAliases(ast);
+
+    const walk = (node, inheritedLocalization = false) => {
+      if (!node || typeof node !== 'object') return;
+      if (node.type === 'JSXElement') {
+        const componentName = node.openingElement.name.type === 'JSXIdentifier'
+          ? node.openingElement.name.name
+          : undefined;
+        const localized = inheritedLocalization || localizedComponents.has(componentName) || localizedAliases.has(componentName);
+        if (!localized) {
+          for (const attribute of node.openingElement.attributes) {
+            if (attribute.type !== 'JSXAttribute') continue;
+            const name = attribute.name?.name;
+            if (!['aria-label', 'title', 'placeholder', 'alt', 'label', 'content', 'header', 'description', 'tooltip'].includes(name)) continue;
+            const values = attribute.value?.type === 'StringLiteral'
+              ? [attribute.value.value]
+              : attribute.value?.type === 'JSXExpressionContainer'
+                ? displayStrings(attribute.value.expression)
+                : [];
+            for (const value of values) {
+              const example = name === 'placeholder' && (
+                /^(?:https?:\/\/|\/|-|\(\?i\)|[A-Za-z0-9_.:-]+$)/u.test(value) ||
+                value.trim().startsWith('{"')
+              );
+              if (value.trim() && !example) references.push({ file: relativeFile, line: attribute.loc.start.line, source: value.trim() });
+            }
+          }
+        }
+        for (const child of node.children) {
+          if (child.type === 'JSXText' && !localized) {
+            const value = child.value.replace(/\s+/g, ' ').trim();
+            if (value) references.push({ file: relativeFile, line: child.loc.start.line, source: value });
+          } else if (child.type === 'JSXExpressionContainer' && !localized) {
+            for (const value of displayStrings(child.expression)) {
+              if (value.trim()) references.push({ file: relativeFile, line: child.loc.start.line, source: value.trim() });
+            }
+          } else if (child.type === 'JSXElement' || child.type === 'JSXFragment') {
+            walk(child, localized);
+          }
+        }
+        return;
+      }
+      for (const [key, value] of Object.entries(node)) {
+        if (['loc', 'start', 'end', 'leadingComments', 'trailingComments', 'innerComments'].includes(key)) continue;
+        if (Array.isArray(value)) value.forEach((item) => walk(item, inheritedLocalization));
+        else if (value && typeof value === 'object') walk(value, inheritedLocalization);
       }
     };
     walk(ast);
@@ -356,6 +504,14 @@ describe('interface language', () => {
         !sourceKeys.has(source) &&
         !untranslatedTechnicalExamples.has(source)
       ))
+      .map(({ file, line, source }) => `${file}:${line}: ${JSON.stringify(source)}`);
+
+    expect(missing).toEqual([]);
+  });
+
+  it('routes static JSX interface copy through localized components or helpers', () => {
+    const missing = localizationRawUiTexts()
+      .filter(({ source }) => !untranslatedTechnicalUiTexts.has(source))
       .map(({ file, line, source }) => `${file}:${line}: ${JSON.stringify(source)}`);
 
     expect(missing).toEqual([]);

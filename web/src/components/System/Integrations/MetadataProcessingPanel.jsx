@@ -17,9 +17,9 @@ const asText = (value, fallback = '') =>
 
 const normalizeActivity = (item, index) => ({
   detail: asText(item.detail, 'In progress'),
-  filename: asText(item.filename, 'Unknown file'),
+  filename: asText(item.filename, interfaceText('Unknown file')),
   id: asText(item.id, `metadata-item-${index}`),
-  stage: asText(item.stage, 'Unknown stage'),
+  stage: asText(item.stage, interfaceText('Unknown stage')),
   startedAt: asText(item.startedAt),
   status: asText(item.status, 'unknown').toLowerCase(),
 });

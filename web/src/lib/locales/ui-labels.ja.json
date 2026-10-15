@@ -4847,5 +4847,14 @@
   "Are you sure you want to delete the channel \"{channelName}\"? This action cannot be undone.": "チャンネル「{channelName}」を削除しますか？この操作は元に戻せません。",
   "Are you sure you want to unpublish pod \"{podId}\"?": "ポッド「{podId}」の公開を取り消しますか？",
   "Are you sure you want to ban member \"{peerId}\" from pod \"{podId}\"?": "メンバー「{peerId}」をポッド「{podId}」から禁止しますか？",
-  "Are you sure you want to reset all MediaCore statistics? This cannot be undone.": "MediaCore の統計をすべてリセットしますか？この操作は元に戻せません。"
+  "Are you sure you want to reset all MediaCore statistics? This cannot be undone.": "MediaCore の統計をすべてリセットしますか？この操作は元に戻せません。",
+  "{label} · {nodeType} · weight {weight}": "{label} · {nodeType} · 重み {weight}",
+  "{source} → {target} · {edgeType}{reason}": "{source} → {target} · {edgeType}{reason}",
+  "Assembling": "組み立て中",
+  "Downloading": "ダウンロード中",
+  "Unknown stage": "不明な段階",
+  "Verifying": "検証中",
+  "Verifying Final": "最終結果を検証中",
+  "Members:\n{members}": "メンバー:\n{members}",
+  "Unknown member": "不明なメンバー"
 }

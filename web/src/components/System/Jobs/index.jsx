@@ -45,6 +45,27 @@ const ACTIVE_JOB_STATES = new Set([
   'verifying',
   'verifyingfinal',
 ]);
+const localizedJobStatus = (status) => {
+  const normalized = String(status || '').toLowerCase().replaceAll(/[^a-z]/gu, '');
+  switch (normalized) {
+    case 'assembling': return interfaceText('Assembling');
+    case 'cancelled':
+    case 'canceled': return interfaceText('Cancelled');
+    case 'complete':
+    case 'completed': return interfaceText('Completed');
+    case 'downloading': return interfaceText('Downloading');
+    case 'failed': return interfaceText('Failed');
+    case 'inprogress': return interfaceText('In Progress');
+    case 'paused': return interfaceText('Paused');
+    case 'pending': return interfaceText('Pending');
+    case 'queued': return interfaceText('Queued');
+    case 'running': return interfaceText('Running');
+    case 'skipped': return interfaceText('Skipped');
+    case 'verifying': return interfaceText('Verifying');
+    case 'verifyingfinal': return interfaceText('Verifying Final');
+    default: return status || interfaceText('unknown');
+  }
+};
 
 const Jobs = () => {
   useInterfaceLanguage();
@@ -520,7 +541,7 @@ const Jobs = () => {
                     <Table.Cell>
                       <Label color={getStatusColor(job.status)}>
                         <Icon name={getStatusIcon(job.status)} />
-                        {job.status || interfaceText('unknown')}
+                        {localizedJobStatus(job.status)}
                       </Label>
                     </Table.Cell>
                     <Table.Cell>

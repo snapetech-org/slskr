@@ -4847,5 +4847,14 @@
   "Are you sure you want to delete the channel \"{channelName}\"? This action cannot be undone.": "Möchten Sie den Kanal „{channelName}“ wirklich löschen? Dieser Vorgang kann nicht rückgängig gemacht werden.",
   "Are you sure you want to unpublish pod \"{podId}\"?": "Möchten Sie die Veröffentlichung des Pods „{podId}“ wirklich aufheben?",
   "Are you sure you want to ban member \"{peerId}\" from pod \"{podId}\"?": "Möchten Sie das Mitglied „{peerId}“ wirklich aus Pod „{podId}“ sperren?",
-  "Are you sure you want to reset all MediaCore statistics? This cannot be undone.": "Möchten Sie wirklich alle MediaCore-Statistiken zurücksetzen? Dieser Vorgang kann nicht rückgängig gemacht werden."
+  "Are you sure you want to reset all MediaCore statistics? This cannot be undone.": "Möchten Sie wirklich alle MediaCore-Statistiken zurücksetzen? Dieser Vorgang kann nicht rückgängig gemacht werden.",
+  "{label} · {nodeType} · weight {weight}": "{label} · {nodeType} · Gewicht {weight}",
+  "{source} → {target} · {edgeType}{reason}": "{source} → {target} · {edgeType}{reason}",
+  "Assembling": "Wird zusammengestellt",
+  "Downloading": "Wird heruntergeladen",
+  "Unknown stage": "Unbekannte Phase",
+  "Verifying": "Wird überprüft",
+  "Verifying Final": "Endergebnis wird überprüft",
+  "Members:\n{members}": "Mitglieder:\n{members}",
+  "Unknown member": "Unbekanntes Mitglied"
 }

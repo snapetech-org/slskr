@@ -155,10 +155,12 @@ export default class ShareGroups extends Component {
       }
       const members = requireArrayData(membersRes, 'member list');
       window.alert(
-        `Members:\n${members
+        interfaceText('Members:\n{members}', {
+          members: members
           .filter((member) => member && typeof member === 'object')
-          .map((member) => member.contactNickname || member.username || member.userId || 'Unknown member')
-          .join('\n')}`,
+          .map((member) => member.contactNickname || member.username || member.userId || interfaceText('Unknown member'))
+          .join('\n'),
+        }),
       );
     } catch (error) {
       if (

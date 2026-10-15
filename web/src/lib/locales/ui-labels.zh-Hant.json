@@ -4847,5 +4847,14 @@
   "Are you sure you want to delete the channel \"{channelName}\"? This action cannot be undone.": "確定要刪除頻道「{channelName}」嗎？此操作無法復原。",
   "Are you sure you want to unpublish pod \"{podId}\"?": "確定要取消發佈 pod「{podId}」嗎？",
   "Are you sure you want to ban member \"{peerId}\" from pod \"{podId}\"?": "確定要將成員「{peerId}」從 pod「{podId}」封鎖嗎？",
-  "Are you sure you want to reset all MediaCore statistics? This cannot be undone.": "確定要重設所有 MediaCore 統計資料嗎？此操作無法復原。"
+  "Are you sure you want to reset all MediaCore statistics? This cannot be undone.": "確定要重設所有 MediaCore 統計資料嗎？此操作無法復原。",
+  "{label} · {nodeType} · weight {weight}": "{label} · {nodeType} · 權重 {weight}",
+  "{source} → {target} · {edgeType}{reason}": "{source} → {target} · {edgeType}{reason}",
+  "Assembling": "正在組裝",
+  "Downloading": "正在下載",
+  "Unknown stage": "未知階段",
+  "Verifying": "正在驗證",
+  "Verifying Final": "正在驗證最終結果",
+  "Members:\n{members}": "成員：\n{members}",
+  "Unknown member": "未知成員"
 }

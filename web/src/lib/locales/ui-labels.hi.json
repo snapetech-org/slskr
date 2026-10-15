@@ -4847,5 +4847,14 @@
   "Are you sure you want to delete the channel \"{channelName}\"? This action cannot be undone.": "क्या आप \"{channelName}\" चैनल हटाना चाहते हैं? इसे पूर्ववत नहीं किया जा सकता।",
   "Are you sure you want to unpublish pod \"{podId}\"?": "क्या आप \"{podId}\" पॉड का प्रकाशन रद्द करना चाहते हैं?",
   "Are you sure you want to ban member \"{peerId}\" from pod \"{podId}\"?": "क्या आप सदस्य \"{peerId}\" को पॉड \"{podId}\" से प्रतिबंधित करना चाहते हैं?",
-  "Are you sure you want to reset all MediaCore statistics? This cannot be undone.": "क्या आप MediaCore के सभी आँकड़े रीसेट करना चाहते हैं? इसे पूर्ववत नहीं किया जा सकता।"
+  "Are you sure you want to reset all MediaCore statistics? This cannot be undone.": "क्या आप MediaCore के सभी आँकड़े रीसेट करना चाहते हैं? इसे पूर्ववत नहीं किया जा सकता।",
+  "{label} · {nodeType} · weight {weight}": "{label} · {nodeType} · भार {weight}",
+  "{source} → {target} · {edgeType}{reason}": "{source} → {target} · {edgeType}{reason}",
+  "Assembling": "असेंबल हो रहा है",
+  "Downloading": "डाउनलोड हो रहा है",
+  "Unknown stage": "अज्ञात चरण",
+  "Verifying": "सत्यापन हो रहा है",
+  "Verifying Final": "अंतिम परिणाम का सत्यापन हो रहा है",
+  "Members:\n{members}": "सदस्य:\n{members}",
+  "Unknown member": "अज्ञात सदस्य"
 }

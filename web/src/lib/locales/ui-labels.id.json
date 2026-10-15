@@ -4847,5 +4847,14 @@
   "Are you sure you want to delete the channel \"{channelName}\"? This action cannot be undone.": "Yakin ingin menghapus saluran \"{channelName}\"? Tindakan ini tidak dapat dibatalkan.",
   "Are you sure you want to unpublish pod \"{podId}\"?": "Yakin ingin membatalkan publikasi pod \"{podId}\"?",
   "Are you sure you want to ban member \"{peerId}\" from pod \"{podId}\"?": "Yakin ingin memblokir anggota \"{peerId}\" dari pod \"{podId}\"?",
-  "Are you sure you want to reset all MediaCore statistics? This cannot be undone.": "Yakin ingin mengatur ulang semua statistik MediaCore? Tindakan ini tidak dapat dibatalkan."
+  "Are you sure you want to reset all MediaCore statistics? This cannot be undone.": "Yakin ingin mengatur ulang semua statistik MediaCore? Tindakan ini tidak dapat dibatalkan.",
+  "{label} · {nodeType} · weight {weight}": "{label} · {nodeType} · bobot {weight}",
+  "{source} → {target} · {edgeType}{reason}": "{source} → {target} · {edgeType}{reason}",
+  "Assembling": "Sedang merakit",
+  "Downloading": "Mengunduh",
+  "Unknown stage": "Tahap tidak diketahui",
+  "Verifying": "Memverifikasi",
+  "Verifying Final": "Memverifikasi hasil akhir",
+  "Members:\n{members}": "Anggota:\n{members}",
+  "Unknown member": "Anggota tidak diketahui"
 }

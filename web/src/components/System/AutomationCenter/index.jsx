@@ -142,7 +142,7 @@ const AutomationCenter = () => {
     const scanId =
       typeof rawScanId === 'string' || typeof rawScanId === 'number'
         ? String(rawScanId)
-        : 'unknown';
+        : interfaceText('unknown');
     const report = buildAutomationExecutionReport(recipe, {
       scanId,
       started: 1,
