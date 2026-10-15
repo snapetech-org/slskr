@@ -18,6 +18,12 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.59] — 2026-10-15
+
+- [Internal-only] Aligned the runtime-boundary release check with the existing
+  bounded share-scan path and descriptor handling proof; runtime behavior is
+  unchanged.
+
 ## [0.2.58] — 2026-10-14
 
 - Corrected options and integrations parity normalization for the frozen

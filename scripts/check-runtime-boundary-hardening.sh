@@ -177,6 +177,8 @@ client_distributed_tree_source="crates/slskr-client/src/distributed_tree.rs"
 client_filter_source="crates/slskr-client/src/filters.rs"
 status=0
 
+# The traversal stack stores paths, not open directory handles. On Unix the
+# child handle is dropped before its relative path is queued.
 for anchor in \
   'ensure_private_state_dir(&config.state_dir)' \
   'state_directory_is_private_and_rejects_symlinks' \
@@ -200,7 +202,11 @@ for anchor in \
   'MAX_SHARE_SCAN_ENTRIES' \
   'share_scan_bounds_aggregate_directory_entries' \
   'MAX_SHARE_SCAN_PENDING_DIRECTORIES' \
-  'share_scan_bounds_pending_directory_descriptors' \
+  'pending_directory_paths_have_a_separate_bound' \
+  'let read_dir = match fs::read_dir(&directory)' \
+  'let mut stack = vec![PathBuf::new()]' \
+  'drop(child_directory);' \
+  'stack.push(relative)' \
   'MAX_SHARE_SCAN_TASKS' \
   'share_rebuild_routes_reject_concurrent_scans' \
   'build_share_index_with_progress(&config, cancellation, worker_progress)' \
