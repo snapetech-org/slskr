@@ -90,6 +90,18 @@ describe('Network', () => {
     expect(await screen.findByText(`${zero} B on disk`)).toBeInTheDocument();
   });
 
+  it('keeps the network health progress numeric while formatting its visible score', async () => {
+    setRegionalFormatPreference('ar');
+    render(<Network theme="light" />);
+
+    const scoreText = `(${new Intl.NumberFormat('ar').format(52)}%)`;
+    const score = await screen.findByText(scoreText);
+    const progress = score.closest('.ui.progress');
+
+    expect(progress).toHaveAttribute('aria-valuenow', '52');
+    expect(progress.querySelector('.bar')).toHaveStyle({ width: '52%' });
+  });
+
   it('reformats mounted peer counts when the regional preference changes', async () => {
     render(<Network theme="light" />);
 

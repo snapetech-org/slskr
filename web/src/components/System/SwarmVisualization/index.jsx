@@ -323,8 +323,7 @@ const SwarmVisualization = ({ jobId }) => {
                             ? 'yellow'
                             : 'red'
                       }
-                      percent={formatRegionalNumber(peer.successRate)}
-                      progress
+                      percent={peer.successRate}
                       size="small"
                     />
                     <span style={{ fontSize: '0.9em', marginLeft: '0.5em' }}>

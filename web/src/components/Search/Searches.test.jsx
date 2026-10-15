@@ -134,6 +134,21 @@ describe('Searches', () => {
     await waitFor(() => expect(library.getAll).toHaveBeenCalledTimes(1));
   });
 
+  it('stores prototype-shaped search IDs as ordinary search records', async () => {
+    library.getAll.mockResolvedValue([
+      {
+        id: '__proto__',
+        searchText: 'prototype-shaped search ID',
+        startedAt: '2026-05-15T00:00:00Z',
+      },
+    ]);
+
+    await renderSearches();
+
+    expect(await screen.findByTestId('search-list-search-text'))
+      .toHaveTextContent('prototype-shaped search ID');
+  });
+
   it('renders REST results while the search updates hub connection is pending', async () => {
     let resolveHub;
     const pendingHubStart = new Promise((resolve) => {

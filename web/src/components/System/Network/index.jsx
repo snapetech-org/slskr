@@ -615,10 +615,10 @@ const Network = ({ options = {}, state = {}, theme }) => {
                       ? 'yellow'
                       : 'red'
                 }
-                percent={formatRegionalNumber(networkHealth.score)}
-                progress
+                percent={networkHealth.score}
               >
-                <LocalizedText source={networkHealth.label} />
+                <LocalizedText source={networkHealth.label} />{' '}
+                <span>({formatRegionalNumber(networkHealth.score)}%)</span>
               </Progress>
               {/* These four are inputs to the score above, not states of their
                   own — one neutral pill style, not four unrelated hues. */}
