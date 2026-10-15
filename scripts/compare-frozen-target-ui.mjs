@@ -10,9 +10,9 @@
  */
 
 import { createServer } from 'node:http';
-import { existsSync, createReadStream } from 'node:fs';
-import { access, mkdir, readFile, stat } from 'node:fs/promises';
-import { extname, join, normalize, resolve } from 'node:path';
+import { constants as fsConstants, existsSync } from 'node:fs';
+import { access, lstat, mkdir, open, realpath, stat } from 'node:fs/promises';
+import { extname, isAbsolute, join, normalize, relative, resolve, sep } from 'node:path';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
@@ -227,19 +227,67 @@ const safePath = (root, requestPath) => {
 };
 
 const startStaticServer = async (root, runtimeProfile) => {
+  const canonicalRoot = await realpath(root);
+  const indexPath = join(canonicalRoot, 'index.html');
+  const isWithinRoot = (filePath) => {
+    const relativePath = relative(canonicalRoot, filePath);
+    return relativePath === '' || (
+      relativePath !== '..' &&
+      !relativePath.startsWith(`..${sep}`) &&
+      !isAbsolute(relativePath)
+    );
+  };
+  const readStaticFile = async (requestedPath) => {
+    const filePath = await realpath(requestedPath);
+    if (!isWithinRoot(filePath)) {
+      throw new Error('static UI path resolves outside the frozen target root');
+    }
+    const descriptor = await open(
+      filePath,
+      fsConstants.O_RDONLY | (fsConstants.O_NOFOLLOW ?? 0),
+    );
+    try {
+      const details = await descriptor.stat();
+      const namedPath = await lstat(filePath);
+      const currentPath = await realpath(filePath);
+      if (
+        !details.isFile() ||
+        namedPath.isSymbolicLink() ||
+        namedPath.dev !== details.dev ||
+        namedPath.ino !== details.ino ||
+        !isWithinRoot(currentPath)
+      ) {
+        throw new Error('static UI path is not a regular file beneath the frozen target root');
+      }
+      return { filePath, details, body: await descriptor.readFile() };
+    } finally {
+      await descriptor.close();
+    }
+  };
   const server = createServer(async (request, response) => {
     const url = new URL(request.url || '/', 'http://127.0.0.1');
-    let filePath = safePath(root, url.pathname);
+    const requestedPath = safePath(canonicalRoot, url.pathname);
+    let file;
     try {
-      const details = await stat(filePath);
-      if (!details.isFile()) filePath = join(root, 'index.html');
-    } catch {
-      filePath = join(root, 'index.html');
+      file = await readStaticFile(requestedPath);
+    } catch (error) {
+      if (error.code === 'ENOENT' || error.code === 'ENOTDIR') {
+        try {
+          file = await readStaticFile(indexPath);
+        } catch (fallbackError) {
+          response.writeHead(500, { 'content-type': 'text/plain; charset=utf-8' });
+          response.end(`static UI server error: ${fallbackError.message}`);
+          return;
+        }
+      } else {
+        response.writeHead(500, { 'content-type': 'text/plain; charset=utf-8' });
+        response.end(`static UI server error: ${error.message}`);
+        return;
+      }
     }
     try {
-      const details = await stat(filePath);
-      if (runtimeProfile && filePath === join(root, 'index.html')) {
-        const html = await readFile(filePath, 'utf8');
+      if (runtimeProfile && file.filePath === indexPath) {
+        const html = file.body.toString('utf8');
         const profileMeta = `<meta name="slskr-runtime-profile" content="${runtimeProfile}">`;
         const body = html.replace('<head>', `<head>${profileMeta}`);
         response.writeHead(200, {
@@ -252,10 +300,10 @@ const startStaticServer = async (root, runtimeProfile) => {
       }
       response.writeHead(200, {
         'cache-control': 'no-store',
-        'content-type': contentTypes.get(extname(filePath)) || 'application/octet-stream',
-        'content-length': details.size,
+        'content-type': contentTypes.get(extname(file.filePath)) || 'application/octet-stream',
+        'content-length': file.body.length,
       });
-      createReadStream(filePath).pipe(response);
+      response.end(file.body);
     } catch (error) {
       response.writeHead(500, { 'content-type': 'text/plain; charset=utf-8' });
       response.end(`static UI server error: ${error.message}`);

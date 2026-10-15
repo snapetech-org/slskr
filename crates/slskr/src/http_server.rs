@@ -1877,7 +1877,13 @@ mod tests {
 
         let mut raw = String::new();
         conn.read_to_string(&mut raw).await.unwrap();
-        assert!(raw.starts_with("HTTP/1.1 200 OK\r\n"), "got: {raw}");
-        assert!(raw.contains("/api/health"), "path not echoed: {raw}");
+        assert!(
+            raw.starts_with("HTTP/1.1 200 OK\r\n"),
+            "expected a successful HTTP response"
+        );
+        assert!(
+            raw.contains("/api/health"),
+            "expected the server to echo the request path"
+        );
     }
 }
