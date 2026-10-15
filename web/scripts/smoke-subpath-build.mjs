@@ -5,7 +5,13 @@ import { fileURLToPath } from 'url';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const buildDir = path.resolve(scriptDir, '..', 'build');
-const indexPath = path.join(buildDir, 'index.html');
+let canonicalBuildDir = buildDir;
+try {
+  canonicalBuildDir = fs.realpathSync(buildDir);
+} catch {
+  // The startup check below reports a missing build directory consistently.
+}
+const indexPath = path.join(canonicalBuildDir, 'index.html');
 const mountPath = '/slskr/';
 const deepLinkPath = '/slskr/system/info';
 
@@ -50,49 +56,99 @@ function resolveFilePath(requestPath) {
     ? 'index.html'
     : requestPath.slice(mountPath.length);
   const normalizedRelativePath = path.posix.normalize(relativePath).replace(/^(\.\.(\/|\\|$))+/, '');
-  const filePath = path.resolve(buildDir, normalizedRelativePath);
+  const filePath = path.resolve(canonicalBuildDir, normalizedRelativePath);
+  const relativePathWithinBuild = path.relative(canonicalBuildDir, filePath);
 
-  if (!filePath.startsWith(buildDir)) {
+  if (
+    relativePathWithinBuild === '..' ||
+    relativePathWithinBuild.startsWith(`..${path.sep}`) ||
+    path.isAbsolute(relativePathWithinBuild)
+  ) {
     return null;
   }
 
   return filePath;
 }
 
+function readBuildFile(filePath) {
+  let canonicalPath;
+  try {
+    canonicalPath = fs.realpathSync(filePath);
+  } catch {
+    return null;
+  }
+  const relativePath = path.relative(canonicalBuildDir, canonicalPath);
+  if (
+    relativePath === '..' ||
+    relativePath.startsWith(`..${path.sep}`) ||
+    path.isAbsolute(relativePath)
+  ) {
+    return null;
+  }
+
+  let descriptor;
+  try {
+    descriptor = fs.openSync(
+      canonicalPath,
+      fs.constants.O_RDONLY | (fs.constants.O_NOFOLLOW ?? 0),
+    );
+    const opened = fs.fstatSync(descriptor);
+    const current = fs.lstatSync(canonicalPath);
+    const currentPath = fs.realpathSync(canonicalPath);
+    const currentRelativePath = path.relative(canonicalBuildDir, currentPath);
+    if (
+      !opened.isFile() ||
+      current.isSymbolicLink() ||
+      current.dev !== opened.dev ||
+      current.ino !== opened.ino ||
+      currentRelativePath === '..' ||
+      currentRelativePath.startsWith(`..${path.sep}`) ||
+      path.isAbsolute(currentRelativePath)
+    ) {
+      return null;
+    }
+    return { filePath: canonicalPath, contents: fs.readFileSync(descriptor) };
+  } catch {
+    return null;
+  } finally {
+    if (descriptor !== undefined) fs.closeSync(descriptor);
+  }
+}
+
 function injectBaseHref(html) {
   return html.replace('<head>', `<head><base href="${mountPath}" />`);
 }
 
-if (!fs.existsSync(indexPath)) {
+if (!readBuildFile(indexPath)) {
   fail(`Missing built index.html at ${indexPath}`);
 }
 
 const server = http.createServer((req, res) => {
   const requestPath = normalizeRequestPath(req.url ?? mountPath);
-  const filePath = resolveFilePath(requestPath);
+  let filePath = resolveFilePath(requestPath);
+  let file = filePath ? readBuildFile(filePath) : null;
 
   const extension = path.extname(requestPath);
 
-  if ((!filePath || !fs.existsSync(filePath)) && !extension && requestPath.startsWith(mountPath)) {
-    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-    res.end(injectBaseHref(fs.readFileSync(indexPath, 'utf8')));
-    return;
+  if (!file && !extension && requestPath.startsWith(mountPath)) {
+    filePath = indexPath;
+    file = readBuildFile(indexPath);
   }
 
-  if (!filePath || !fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
+  if (!file) {
     res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
     res.end('Not Found');
     return;
   }
 
-  if (filePath === indexPath) {
+  if (file.filePath === indexPath) {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-    res.end(injectBaseHref(fs.readFileSync(filePath, 'utf8')));
+    res.end(injectBaseHref(file.contents.toString('utf8')));
     return;
   }
 
-  res.writeHead(200, { 'Content-Type': getContentType(filePath) });
-  fs.createReadStream(filePath).pipe(res);
+  res.writeHead(200, { 'Content-Type': getContentType(file.filePath) });
+  res.end(file.contents);
 });
 
 server.listen(0, '127.0.0.1', async () => {

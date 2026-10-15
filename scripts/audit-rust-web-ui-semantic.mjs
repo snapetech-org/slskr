@@ -172,21 +172,16 @@ const main = async () => {
     const wishlistResponses = [];
     const responseListener = (response) => {
       const url = new URL(response.url());
-      if (response.request().method() === 'POST' && url.pathname === '/api/v0/wishlist') wishlistResponses.push({ status: response.status(), body: response.request().postData() || '' });
+      if (response.request().method() === 'POST' && url.pathname === '/api/v0/wishlist') {
+        wishlistResponses.push({ status: response.status() });
+      }
     };
     page.on('response', responseListener);
     await page.locator('.wishlist-native button:visible').filter({ hasText: 'Import List' }).first().click();
     await page.waitForTimeout(1500);
     page.off('response', responseListener);
-    if (wishlistResponses.length !== 2) {
-      evidence.debug = {
-        wishlistInputs: await page.locator('input[aria-label="Search Text"]').evaluateAll((nodes) => nodes.map((node) => ({ value: node.value, classes: node.className, parent: node.parentElement?.className || '' }))),
-        wishlistButtons: await page.locator('button:visible').filter({ hasText: 'Import List' }).evaluateAll((nodes) => nodes.map((node) => ({ text: node.innerText, classes: node.className, parent: node.parentElement?.className || '' }))),
-        wishlistBody: await page.locator('body').innerText(),
-      };
-    }
     assert(wishlistResponses.length === 2 && wishlistResponses.every(({ status }) => status >= 200 && status < 300), `Import List responses: ${JSON.stringify(wishlistResponses)}`);
-    evidence.checks.push({ label: 'Import List', method: 'POST', path: '/wishlist', requests: wishlistResponses.length, statuses: wishlistResponses.map(({ status }) => status), payloads: wishlistResponses.map(({ body }) => body) });
+    evidence.checks.push({ label: 'Import List', method: 'POST', path: '/wishlist', requests: wishlistResponses.length, statuses: wishlistResponses.map(({ status }) => status) });
 
     stage = 'shared-fixture';
     const collection = await apiRequest('POST', '/collections', { title: `semantic-ui-${Date.now()}`, description: 'semantic browser proof' });
@@ -229,12 +224,19 @@ const main = async () => {
     await new Promise((resolveClose) => server.close(resolveClose));
   }
 
-  await writeFile(join(outputDir, 'semantic-audit.json'), `${JSON.stringify(evidence, null, 2)}\n`);
+  const persistedEvidence = {
+    generatedAt: evidence.generatedAt,
+    backendConfigured: Boolean(backendUrl),
+    checks: evidence.checks.map(({ label }) => label),
+    passed: evidence.errors.length === 0,
+    errorCount: evidence.errors.length,
+  };
+  await writeFile(join(outputDir, 'semantic-audit.json'), `${JSON.stringify(persistedEvidence, null, 2)}\n`);
   if (evidence.errors.length) {
-    console.error(JSON.stringify(evidence, null, 2));
+    console.error(JSON.stringify(persistedEvidence, null, 2));
     process.exitCode = 1;
   } else {
-    console.log(JSON.stringify(evidence, null, 2));
+    console.log(JSON.stringify(persistedEvidence, null, 2));
   }
 };
 

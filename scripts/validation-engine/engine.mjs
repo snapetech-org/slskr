@@ -11,6 +11,7 @@ import {
   closeSync,
   constants,
   existsSync,
+  fstatSync,
   lstatSync,
   mkdtempSync,
   mkdirSync,
@@ -103,6 +104,10 @@ export function matchesVersionCheck(versionLine, check) {
 
 function fail(message) {
   throw new Error(message);
+}
+
+function quoteDiagnostic(value) {
+  return JSON.stringify(String(value));
 }
 
 function formatElapsed(milliseconds) {
@@ -265,9 +270,9 @@ export function acquireRunLock(root, repository) {
     if (error.code !== 'EEXIST') throw error;
     let existing;
     try {
-      existing = JSON.parse(readFileSync(lockPath, 'utf8'));
+      existing = JSON.parse(readRegularFile(lockPath).toString('utf8'));
     } catch {
-      fail('A validation lock exists but cannot be read safely: ' + lockPath);
+      fail('A validation lock exists but cannot be read safely: ' + quoteDiagnostic(lockPath));
     }
     let alive = false;
     if (Number.isInteger(existing.pid) && existing.pid > 0) {
@@ -289,7 +294,9 @@ export function acquireRunLock(root, repository) {
 
 export function releaseRunLock(lock) {
   try {
-    if (readFileSync(lock.lockPath, 'utf8') === lock.contents) unlinkSync(lock.lockPath);
+    if (readRegularFile(lock.lockPath).toString('utf8') === lock.contents) {
+      unlinkSync(lock.lockPath);
+    }
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;
   }
@@ -297,6 +304,46 @@ export function releaseRunLock(lock) {
 
 function hash(value) {
   return createHash('sha256').update(value).digest('hex');
+}
+
+function isWithinDirectory(directory, candidate) {
+  const relative = path.relative(directory, candidate);
+  return relative === '' || (
+    relative !== '..' &&
+    !relative.startsWith('..' + path.sep) &&
+    !path.isAbsolute(relative)
+  );
+}
+
+function readRegularFile(filePath, root = null) {
+  const absolutePath = path.resolve(filePath);
+  const canonicalRoot = root === null ? null : realpathSync(root);
+  const initialRealPath = realpathSync(absolutePath);
+  if (canonicalRoot !== null && !isWithinDirectory(canonicalRoot, initialRealPath)) {
+    fail('Validation inventory file resolves outside the repository root: ' + quoteDiagnostic(filePath));
+  }
+
+  const descriptor = openSync(
+    absolutePath,
+    constants.O_RDONLY | (constants.O_NOFOLLOW ?? 0),
+  );
+  try {
+    const opened = fstatSync(descriptor);
+    const current = lstatSync(absolutePath);
+    const currentRealPath = realpathSync(absolutePath);
+    if (
+      !opened.isFile() ||
+      current.isSymbolicLink() ||
+      current.dev !== opened.dev ||
+      current.ino !== opened.ino ||
+      (canonicalRoot !== null && !isWithinDirectory(canonicalRoot, currentRealPath))
+    ) {
+      fail('Expected a stable regular file beneath the trusted directory: ' + quoteDiagnostic(filePath));
+    }
+    return readFileSync(descriptor);
+  } finally {
+    closeSync(descriptor);
+  }
 }
 
 function stable(value) {
@@ -395,11 +442,7 @@ function walk(root, relative = '') {
 // out with CRLF on Windows; untracked files keep byte-exact hashing below.
 function fileDigest(root, relative, normalizeLineEndings = false) {
   const filePath = path.join(root, relative);
-  const info = lstatSync(filePath);
-  if (info.isSymbolicLink() || !info.isFile()) {
-    fail('Validation inventory contains a non-regular file: ' + relative);
-  }
-  const contents = readFileSync(filePath);
+  const contents = readRegularFile(filePath, root);
   return normalizeLineEndings
     ? hash(contents.toString('utf8').replace(/\r\n/g, '\n'))
     : hash(contents);
@@ -414,18 +457,18 @@ export function discoverInventory(root, rules) {
     if (rule.contentMatcher) {
       const contentMatcher = CONTENT_MATCHERS[rule.contentMatcher];
       if (!contentMatcher) fail('Unknown inventory content matcher: ' + rule.contentMatcher);
-      matches = matches.filter(({ path: name }) => contentMatcher(readFileSync(
-        path.join(root, name), 'utf8'
-      )));
+      matches = matches.filter(({ path: name }) => contentMatcher(
+        readRegularFile(path.join(root, name), root).toString('utf8')
+      ));
     }
     if (rule.required !== false && matches.length === 0) {
       fail('Required test inventory is empty: ' + rule.id);
     }
     laneCounts[rule.id] = matches.length;
     for (const match of matches) {
-      if (match.symlink) fail('Symlink in test discovery scope: ' + match.path);
+      if (match.symlink) fail('Symlink in test discovery scope: ' + quoteDiagnostic(match.path));
       if (entriesByPath.has(match.path)) {
-        fail('Test file has duplicate ownership: ' + match.path);
+        fail('Test file has duplicate ownership: ' + quoteDiagnostic(match.path));
       }
       entriesByPath.set(match.path, {
         file: match.path,
@@ -891,6 +934,7 @@ export async function runCommand(task, root, logPath) {
   let outputBytes = 0;
   let timedOut = false;
   const logDescriptor = openSync(logPath, 'wx', 0o600);
+  const logDigest = createHash('sha256');
   const logContentLimit = MAX_LOG_BYTES - LOG_TRUNCATION_MARKER.length;
   let logBytesWritten = 0;
   let logTruncated = false;
@@ -906,6 +950,7 @@ export async function runCommand(task, root, logPath) {
     while (offset < length) {
       offset += writeSync(logDescriptor, chunk, offset, length - offset);
     }
+    logDigest.update(chunk.subarray(0, length));
     logBytesWritten += length;
     if (length < chunk.length) logTruncated = true;
   };
@@ -953,14 +998,38 @@ export async function runCommand(task, root, logPath) {
       child.once('close', (code, signal) => resolve({ code, signal, error: spawnError }));
     }).finally(() => clearTimeout(timer));
   } finally {
-    if (logTruncated) writeSync(logDescriptor, LOG_TRUNCATION_MARKER);
-    fsyncSync(logDescriptor);
-    closeSync(logDescriptor);
+    try {
+      if (logTruncated) {
+        let offset = 0;
+        while (offset < LOG_TRUNCATION_MARKER.length) {
+          offset += writeSync(
+            logDescriptor,
+            LOG_TRUNCATION_MARKER,
+            offset,
+            LOG_TRUNCATION_MARKER.length - offset,
+          );
+        }
+        logDigest.update(LOG_TRUNCATION_MARKER);
+      }
+      fsyncSync(logDescriptor);
+      const openedLog = fstatSync(logDescriptor);
+      const namedLog = lstatSync(logPath);
+      if (
+        !openedLog.isFile() ||
+        namedLog.isSymbolicLink() ||
+        namedLog.dev !== openedLog.dev ||
+        namedLog.ino !== openedLog.ino
+      ) {
+        fail('Validation task replaced its log file: ' + task.id);
+      }
+    } finally {
+      closeSync(logDescriptor);
+    }
   }
   stdout = out.value;
   stderr = err.value;
   const combined = stdout + (stdout && stderr ? '\n' : '') + stderr;
-  const logBuffer = readFileSync(logPath);
+  const logSha256 = logDigest.digest('hex');
   const activeCases = task.caseParser ? parseCaseCount(task.caseParser, combined) : null;
   const status = timedOut || exit.error || exit.code !== 0
     ? 'failed'
@@ -977,7 +1046,7 @@ export async function runCommand(task, root, logPath) {
     error: exit.error?.message,
     timedOut,
     outputBytes,
-    logSha256: hash(logBuffer),
+    logSha256,
     logFile: path.basename(logPath),
     activeCases,
     envKeys: [...new Set([
@@ -1210,12 +1279,14 @@ export async function main(argv = process.argv.slice(2), root = DEFAULT_ROOT, co
     if (!realRoots.some((directory) => actualParent === directory || actualParent.startsWith(directory + path.sep))) {
       fail('Validation receipt export resolves outside the system or runner temporary directory.');
     }
+    const canonicalTarget = path.join(actualParent, path.basename(target));
+    const descriptor = openSync(canonicalTarget, 'wx', 0o600);
     try {
-      if (lstatSync(target).isSymbolicLink()) fail('Validation receipt export cannot replace a symbolic link.');
-    } catch (error) {
-      if (error.code !== 'ENOENT') throw error;
+      writeFileSync(descriptor, JSON.stringify(result.receipt, null, 2));
+      fsyncSync(descriptor);
+    } finally {
+      closeSync(descriptor);
     }
-    writeFileSync(target, JSON.stringify(result.receipt, null, 2), { mode: 0o600 });
   }
   process.stdout.write(JSON.stringify({
     repository: loaded.repository,
@@ -1231,7 +1302,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
   main().then((code) => {
     process.exitCode = code;
   }).catch((error) => {
-    process.stderr.write(String(error?.stack ?? error) + '\n');
+    process.stderr.write(JSON.stringify(String(error?.stack ?? error)) + '\n');
     process.exitCode = 1;
   });
 }
