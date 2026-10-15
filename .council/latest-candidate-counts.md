@@ -2,14 +2,14 @@
 
 Generated from local source patterns. Counts are candidate lines, not confirmed bugs.
 
-Scan date: 2026-10-13
-Source digest: 1044a0fca23919d7650ab4eb3432cf385f7901699ab43358569c92316bc19228
+Scan date: 2026-10-15
+Source digest: c5117f4b06dc00446750b169d24012813fa0352cc608c58b3923e837bdcd198b
 
 | Candidate Class | Count |
 | --- | ---: |
 | Constructor/mutable collection candidates | 10 |
-| Protocol count/length candidates | 163 |
-| Protocol scalar emission candidates | 310 |
-| Resolver/raw stream candidates | 1087 |
-| Task/cancellation/lifecycle candidates | 1468 |
+| Protocol count/length candidates | 164 |
+| Protocol scalar emission candidates | 309 |
+| Resolver/raw stream candidates | 1093 |
+| Task/cancellation/lifecycle candidates | 1599 |
 | Example Web API candidates | 348 |

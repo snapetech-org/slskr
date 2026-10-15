@@ -18,6 +18,11 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.64] — 2026-10-15
+
+- [Internal-only] Refresh the release-gate inventory snapshots to the current
+  source digest and candidate counts.
+
 ## [0.2.63] — 2026-10-15
 
 - [Internal-only] Start platform archive builds after exact-commit Main CI while
