@@ -160,7 +160,7 @@ jobs:
 
   build:
     name: Build ${{ matrix.name }}
-    needs: [version, gate]
+    needs: [version, main-ci]
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -296,7 +296,7 @@ jobs:
   release:
     name: Publish GitHub Release
     if: startsWith(github.ref, 'refs/tags/release-v')
-    needs: [version, build]
+    needs: [version, gate, build]
     runs-on: ubuntu-latest
     outputs:
       release_body: ${{ steps.release-body.outputs.release_body }}

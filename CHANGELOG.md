@@ -18,6 +18,10 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+- [Internal-only] Start platform archive builds after exact-commit Main CI while
+  the full release gate runs; GitHub Release publication still requires the
+  gate and every archive.
+
 ## [0.2.62] — 2026-10-15
 
 - [Internal-only] Make blacklist peer probes answer server-initiated UserInfo
