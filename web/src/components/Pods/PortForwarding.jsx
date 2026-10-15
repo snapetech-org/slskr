@@ -709,7 +709,9 @@ class PortForwarding extends Component {
                 {availablePorts.length > 0 ? (
                   availablePorts.slice(0, 100).join(', ') +
                   (availablePorts.length > 100
-                    ? ` ... (+${availablePorts.length - 100} more)`
+                    ? interfaceText(' ... (+{count} more)', {
+                      count: availablePorts.length - 100,
+                    })
                     : '')
                 ) : (
                   <em>

@@ -39,7 +39,7 @@ const ShareTable = ({ onClick, shares }) => {
         >
           {shares.map((share, index) => {
             const hasLocalPath = typeof share.localPath === 'string' && share.localPath.trim() !== '';
-            const localPath = hasLocalPath ? share.localPath : 'Path unavailable';
+            const localPath = hasLocalPath ? share.localPath : interfaceText('Path unavailable');
 
             return (
               <Table.Row key={`${share.host}+${share.localPath ?? index}`}>
@@ -47,8 +47,8 @@ const ShareTable = ({ onClick, shares }) => {
               <Table.Cell>
                 <Button
                   aria-label={hasLocalPath
-                    ? `Browse shared directory ${share.localPath}`
-                    : 'Shared directory path unavailable'}
+                    ? interfaceText('Browse shared directory {path}', { path: share.localPath })
+                    : interfaceText('Shared directory path unavailable')}
                   basic
                   compact
                   disabled={!hasLocalPath}

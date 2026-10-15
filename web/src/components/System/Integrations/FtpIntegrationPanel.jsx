@@ -225,11 +225,11 @@ const FtpIntegrationPanel = ({ options }) => {
             <Icon name={form.passwordConfigured ? 'key' : 'lock'} />
             <LocalizedText source={"Password"} />{" "}{form.passwordConfigured ? <LocalizedText source={"Configured"} /> : <LocalizedText source={"Optional"} />}
           </Label>
-          {boolLabel(
-            form.overwriteExisting,
-            'Overwrite Existing',
-            'Skip Existing',
-          )}
+              {boolLabel(
+                form.overwriteExisting,
+                'Overwrite Existing',
+                'Skip Existing',
+              )}
         </div>
 
         {!remoteConfiguration && (
@@ -313,7 +313,7 @@ const FtpIntegrationPanel = ({ options }) => {
               disabled={!remoteConfiguration || saving}
               label={interfaceText("Password")}
               onChange={(_, { value }) => update('password', value)}
-              placeholder={form.passwordConfigured ? 'Configured' : 'Optional password'}
+              placeholder={interfaceText(form.passwordConfigured ? 'Configured' : 'Optional password')}
               type="password"
               value={form.password}
              {...interfaceTextProps("FTP password")}/>

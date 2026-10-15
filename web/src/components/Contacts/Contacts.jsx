@@ -42,7 +42,7 @@ const normalizeContact = (contact, index) => ({
 
 const normalizeNearbyPeer = (peer, index) => ({
   ...peer,
-  displayName: String(peer.displayName ?? peer.peerId ?? 'Unknown peer'),
+  displayName: String(peer.displayName ?? peer.peerId ?? ''),
   endpoint: String(peer.endpoint ?? ''),
   peerCode: String(peer.peerCode ?? ''),
   peerId: String(peer.peerId ?? `nearby-${index}`),
@@ -382,7 +382,7 @@ class Contacts extends Component {
                       data-testid={`contact-row-${contact.nickname || String(contact.peerId ?? '').slice(0, 8)}`}
                       key={contact.id || contact.peerId}
                     >
-                      <Table.Cell>{contact.nickname || 'Unnamed'}</Table.Cell>
+                      <Table.Cell>{contact.nickname || <LocalizedText source={"Unnamed"} />}</Table.Cell>
                       <Table.Cell>
                         <code style={{ fontSize: '0.85em' }}>
                           {String(contact.peerId ?? '').slice(0, 16)}...
@@ -484,7 +484,7 @@ class Contacts extends Component {
                 {nearby.map((peer, index) => (
                   <List.Item key={index}>
                     <List.Content>
-                        <List.Header>{String(peer.displayName)}</List.Header>
+                        <List.Header>{peer.displayName || <LocalizedText source={"Unknown peer"} />}</List.Header>
                         <List.Description>
                         <LocalizedText source={"Code:"} />{" "}<code>{String(peer.peerCode)}</code>
                         <br />

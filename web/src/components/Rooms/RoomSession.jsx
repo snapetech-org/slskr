@@ -476,7 +476,9 @@ class RoomSession extends Component {
                                   {this.formatTimestamp(message.timestamp)}
                                 </span>
                                 <span className="room-message-name">
-                                  {String(message.username ?? 'Unknown peer')}:{' '}
+                                  {message.username && message.username !== 'Unknown peer'
+                                    ? String(message.username)
+                                    : interfaceText('Unknown peer')}:{' '}
                                 </span>
                                 <span className="room-message-message">
                                   {String(message.message ?? '')}

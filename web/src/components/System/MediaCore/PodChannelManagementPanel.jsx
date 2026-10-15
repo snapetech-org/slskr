@@ -320,8 +320,10 @@ const PodChannelManagementPanel = ({ visible = true }) => {
                                   }}
                                 >
                                   ID: {channel.channelId} <LocalizedText source={"• Type:"} />{" "}{channel.kind}
-                                  {channel.bindingInfo &&
-                                    ` • Binding: ${channel.bindingInfo}`}
+                                  {channel.bindingInfo && <LocalizedText
+                                    source={" • Binding: {bindingInfo}"}
+                                    values={{ "bindingInfo": (channel.bindingInfo) }}
+                                  />}
                                 </div>
                               </div>
                               <div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import LocalizedText from './LocalizedText';
 import { toDisplayError } from '../../lib/errors';
 import { Header, Icon, Segment } from 'semantic-ui-react';
 
@@ -21,7 +22,7 @@ const ErrorSegment = ({ caption, error, icon = 'x', suppressPrefix = false }) =>
           color="red"
           name={icon}
         />
-        {!suppressPrefix && 'Error: '}
+        {!suppressPrefix && <><LocalizedText source={"Error:"} />{' '}</>}
         {displayCaption}
       </Header>
     </Segment>

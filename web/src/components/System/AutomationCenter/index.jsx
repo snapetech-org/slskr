@@ -1,6 +1,6 @@
 import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
-import { formatRegionalDateTime } from '../../../lib/util';
+import { formatRegionalDateTime, formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
 import {
   automationRecipes,
   buildAutomationExecutionReport,
@@ -56,6 +56,7 @@ const formatLastDryRun = (value) => {
 };
 
 const AutomationCenter = () => {
+  useRegionalFormat();
   useInterfaceLanguage();
   const [recipeState, setRecipeState] = useState(getAutomationRecipeState);
   const [recipeInputs, setRecipeInputs] = useState(getAutomationRecipeInputs);
@@ -120,7 +121,7 @@ const AutomationCenter = () => {
     }
 
     if (!isCurrentRequest()) return;
-    result.summary = `Ran ${result.started} Wishlist searches; ${result.failed} failed; ${result.skipped} skipped.`;
+    result.summary = `Ran ${formatRegionalNumber(result.started)} Wishlist searches; ${formatRegionalNumber(result.failed)} failed; ${formatRegionalNumber(result.skipped)} skipped.`;
     const report = buildAutomationExecutionReport(recipe, result);
     setRecipeState(setAutomationRecipeExecution(recipe.id, report, report.generatedAt));
     const status = interfaceText("{title} ran {started} bounded Wishlist searches; {failed} failed. Downloads still require normal result review.", { title: interfaceText(recipe.title), started: result.started, failed: result.failed });
@@ -262,15 +263,15 @@ const AutomationCenter = () => {
         widths="three"
       >
         <Statistic>
-          <Statistic.Value>{summary.total}</Statistic.Value>
+          <Statistic.Value>{formatRegionalNumber(summary.total)}</Statistic.Value>
           <Statistic.Label><LocalizedText source={"Recipes"} /></Statistic.Label>
         </Statistic>
         <Statistic color="green">
-          <Statistic.Value>{summary.enabled}</Statistic.Value>
+          <Statistic.Value>{formatRegionalNumber(summary.enabled)}</Statistic.Value>
           <Statistic.Label><LocalizedText source={"Enabled"} /></Statistic.Label>
         </Statistic>
         <Statistic color="orange">
-          <Statistic.Value>{summary.disabled}</Statistic.Value>
+          <Statistic.Value>{formatRegionalNumber(summary.disabled)}</Statistic.Value>
           <Statistic.Label><LocalizedText source={"Visible Disabled"} /></Statistic.Label>
         </Statistic>
       </Statistic.Group>
@@ -428,8 +429,12 @@ const AutomationCenter = () => {
                   <Popup
                     content={
                       executable
-                        ? `Execute ${recipe.title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan.`
-                        : `No live backend action is available for ${recipe.title}. This recipe remains a policy preview until its backend contract exists.`
+                        ? interfaceText('Execute {title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan.', {
+                          title: interfaceText(recipe.title),
+                        })
+                        : interfaceText('No live backend action is available for {title}. This recipe remains a policy preview until its backend contract exists.', {
+                          title: interfaceText(recipe.title),
+                        })
                     }
                     position="top center"
                     trigger={

@@ -142,7 +142,7 @@ const LoginForm = ({ error, loading, onLoginAttempt }) => {
                 negative
               >
                 <Icon name="x" />
-                {toDisplayError(error, 'Login failed')}
+                {toDisplayError(error, interfaceText('Login failed'))}
               </Message>
             )}
             {httpsUrl && (

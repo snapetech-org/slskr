@@ -15,6 +15,7 @@ import TRANSFER_BULK_ACTION_LABELS from './transfer-bulk-action-labels.json';
 import {
   INTERFACE_LANGUAGE_OPTIONS,
   applyInitialInterfaceLanguage,
+  interfaceTextProps,
   resetInterfaceLanguage,
   setInterfaceLanguage,
   useInterfaceLanguage,
@@ -96,6 +97,24 @@ describe('interface language', () => {
     }
   });
 
+  it('keeps locale catalogs in key and placeholder parity with the source catalog', () => {
+    const sourceKeys = Object.keys(LOCALE_0).sort();
+    const placeholders = (text) => [...text.matchAll(/\{([a-zA-Z][a-zA-Z0-9_]*)\}/g)]
+      .map((match) => match[1])
+      .sort();
+
+    for (const [language, catalog] of Object.entries(localeCatalogs)) {
+      expect(Object.keys(catalog).sort(), `${language} catalog keys`).toEqual(sourceKeys);
+
+      for (const [source, translation] of Object.entries(catalog)) {
+        if (translation === null) continue;
+        expect(placeholders(translation), `${language}: ${source}`).toEqual(
+          placeholders(source),
+        );
+      }
+    }
+  });
+
   it('translates transfer actions and filter names in every supported language', () => {
     for (const source of bulkActionLabels) {
       expect(TRANSFER_BULK_ACTION_LABELS[source]).toHaveLength(INTERFACE_LANGUAGE_OPTIONS.length - 1);
@@ -142,6 +161,17 @@ describe('interface language', () => {
     await act(async () => { await setInterfaceLanguage('ar'); });
     expect(result.current.languageFor('Search')).toBe('ar');
     expect(result.current.directionFor('Search')).toBe('rtl');
+  });
+
+  it('keeps same-as-source values tagged as English and left-to-right', async () => {
+    await act(async () => { await setInterfaceLanguage('ar'); });
+
+    expect(interfaceTextProps('slskr')).toMatchObject({
+      dir: 'ltr',
+      lang: 'en',
+      'aria-label': 'slskr',
+      title: 'slskr',
+    });
   });
 
   it('uses the browser language on first use and a saved choice afterward', async () => {

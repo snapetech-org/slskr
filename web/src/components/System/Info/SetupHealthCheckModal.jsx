@@ -7,6 +7,7 @@ import {
 import { toDisplayError } from '../../../lib/errors';
 import { useMountedRef } from '../../../lib/useMountedRef';
 import React, { useMemo, useRef, useState } from 'react';
+import { formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
 import { toast } from 'react-toastify';
 import {
   Button,
@@ -42,6 +43,7 @@ const copyToClipboard = async (value) => {
 };
 
 const LocalizedSetupHealthEvidence = ({ source }) => {
+  useRegionalFormat();
   const patterns = [
     [/^(\d+) share entry visible in options\.$/, "{count} share entry visible in options."],
     [/^(\d+) share entries visible in options\.$/, "{count} share entries visible in options."],
@@ -160,19 +162,19 @@ const SetupHealthCheckModal = ({ options = {}, state = {} }) => {
             size="small"
           >
             <Statistic color={summary.totals.fail ? 'red' : summary.totals.warn ? 'yellow' : 'green'}>
-              <Statistic.Value>{summary.score}</Statistic.Value>
+              <Statistic.Value>{formatRegionalNumber(summary.score)}</Statistic.Value>
               <Statistic.Label><LocalizedText source={"Score"} /></Statistic.Label>
             </Statistic>
             <Statistic color="green">
-              <Statistic.Value>{summary.totals.pass}</Statistic.Value>
+              <Statistic.Value>{formatRegionalNumber(summary.totals.pass)}</Statistic.Value>
               <Statistic.Label><LocalizedText source={"Pass"} /></Statistic.Label>
             </Statistic>
             <Statistic color="yellow">
-              <Statistic.Value>{summary.totals.warn}</Statistic.Value>
+              <Statistic.Value>{formatRegionalNumber(summary.totals.warn)}</Statistic.Value>
               <Statistic.Label><LocalizedText source={"Warn"} /></Statistic.Label>
             </Statistic>
             <Statistic color="red">
-              <Statistic.Value>{summary.totals.fail}</Statistic.Value>
+              <Statistic.Value>{formatRegionalNumber(summary.totals.fail)}</Statistic.Value>
               <Statistic.Label><LocalizedText source={"Fail"} /></Statistic.Label>
             </Statistic>
           </Statistic.Group>

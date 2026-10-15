@@ -4,6 +4,7 @@ import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
 import React, { useEffect, useRef } from 'react';
+import { formatRegionalFixedNumber, useRegionalFormat } from '../../../lib/util';
 import { Card, Form, Grid, Icon, Input, Message } from 'semantic-ui-react';
 
 const useMountedState = (mountedRef, initialValue) => {
@@ -22,6 +23,7 @@ const useMountedState = (mountedRef, initialValue) => {
 
 const MediaCoreHashSimilarityPanel = React.memo(() => {
   useInterfaceLanguage();
+  useRegionalFormat();
   const mountedRef = useRef(true);
   useEffect(() => {
     mountedRef.current = true;
@@ -123,10 +125,10 @@ const MediaCoreHashSimilarityPanel = React.memo(() => {
                         <strong><LocalizedText source={"Hamming Distance:"} /></strong>{' '}
                         {similarityResult.hammingDistance} <LocalizedText source={"bits"} /><br />
                         <strong><LocalizedText source={"Similarity Score:"} /></strong>{' '}
-                        {(similarityResult.similarity * 100).toFixed(1)}%<br />
+                        {formatRegionalFixedNumber((similarityResult.similarity * 100), 1)}%<br />
                         <strong><LocalizedText source={"Are Similar:"} /></strong>{' '}
                         {similarityResult.areSimilar ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />} <LocalizedText source={"(threshold:"} />{' '}
-                        {(similarityResult.threshold * 100).toFixed(1)}%)
+                        {formatRegionalFixedNumber((similarityResult.threshold * 100), 1)}%)
                       </p>
                     </Message>
                   )}

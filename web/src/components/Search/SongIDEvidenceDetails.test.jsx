@@ -1,7 +1,10 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { setRegionalFormatPreference } from '../../lib/util';
 import SongIDEvidenceDetails from './SongIDEvidenceDetails';
+
+afterEach(() => setRegionalFormatPreference('system'));
 
 describe('SongIDEvidenceDetails', () => {
   it('renders evidence sections and forwards segment and ranked-option actions', () => {
@@ -68,5 +71,35 @@ describe('SongIDEvidenceDetails', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Acquire candidate' }));
     expect(handleOptionAction).toHaveBeenCalledWith(option);
+  });
+
+  it('uses regional digits for visible SongID scores', () => {
+    setRegionalFormatPreference('ar');
+    const option = {
+      actionLabel: 'Acquire candidate',
+      mode: 'single',
+      optionId: 'option-1',
+      overallScore: 0.9,
+      qualityScore: 0.8,
+      readinessScore: 0.7,
+      scope: 'track',
+      title: 'Candidate recording',
+    };
+
+    render(
+      <SongIDEvidenceDetails
+        actionLoading={false}
+        copyForensicMatrix={vi.fn()}
+        copyLoading={false}
+        handleOptionAction={vi.fn()}
+        handleTrackSearchBatch={vi.fn()}
+        options={[option]}
+        run={{ evidence: [] }}
+      />,
+    );
+
+    expect(screen.getByText(/Overall/)).toHaveTextContent(
+      new Intl.NumberFormat('ar').format(90),
+    );
   });
 });

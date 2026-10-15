@@ -61,6 +61,20 @@ describe('Dropdown accessibility', () => {
 
     expect(screen.getByRole('combobox', { name: 'Seed scope' })).toBeInTheDocument();
   });
+
+  it('localizes the accessible name of a clearable selection button', () => {
+    render(
+      <Dropdown
+        aria-label="Acquisition profile"
+        clearable
+        options={[{ text: 'Fast', value: 'fast' }]}
+        value="fast"
+      />,
+    );
+
+    expect(screen.getByRole('button', { name: 'Clear Acquisition profile' }))
+      .toBeInTheDocument();
+  });
 });
 
 describe('form control labels', () => {

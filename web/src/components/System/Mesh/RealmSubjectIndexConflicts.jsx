@@ -12,6 +12,7 @@ import {
 import { toDisplayError } from '../../../lib/errors';
 import { useMountedRef } from '../../../lib/useMountedRef';
 import React, { useMemo, useRef, useState } from 'react';
+import { formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
 import {
   Button,
   Header,
@@ -29,6 +30,7 @@ const get = (source, camel, pascal, fallback = '') =>
   source?.[camel] ?? source?.[pascal] ?? fallback;
 
 const RealmSubjectIndexConflicts = () => {
+  useRegionalFormat();
   useInterfaceLanguage();
   const [copyStatus, setCopyStatus] = useState('');
   const [disabledAuthorities, setDisabledAuthorities] = useState([]);
@@ -199,19 +201,19 @@ const RealmSubjectIndexConflicts = () => {
             widths="five"
           >
             <Statistic>
-              <Statistic.Value>{summary.indexCount}</Statistic.Value>
+              <Statistic.Value>{formatRegionalNumber(summary.indexCount)}</Statistic.Value>
               <Statistic.Label><LocalizedText source={"Indexes"} /></Statistic.Label>
             </Statistic>
             <Statistic>
-              <Statistic.Value>{summary.entryCount}</Statistic.Value>
+              <Statistic.Value>{formatRegionalNumber(summary.entryCount)}</Statistic.Value>
               <Statistic.Label><LocalizedText source={"Entries"} /></Statistic.Label>
             </Statistic>
             <Statistic color={summary.conflictCount > 0 ? 'orange' : 'green'}>
-              <Statistic.Value>{summary.conflictCount}</Statistic.Value>
+              <Statistic.Value>{formatRegionalNumber(summary.conflictCount)}</Statistic.Value>
               <Statistic.Label><LocalizedText source={"Conflicts"} /></Statistic.Label>
             </Statistic>
             <Statistic>
-              <Statistic.Value>{summary.conflictTypeCount}</Statistic.Value>
+              <Statistic.Value>{formatRegionalNumber(summary.conflictTypeCount)}</Statistic.Value>
               <Statistic.Label><LocalizedText source={"Types"} /></Statistic.Label>
             </Statistic>
             <Statistic color={disabledAuthorities.length > 0 ? 'yellow' : 'grey'}>
@@ -244,10 +246,10 @@ const RealmSubjectIndexConflicts = () => {
                   <Table.Row key={get(conflict, 'id', 'Id', get(conflict, 'key', 'Key'))}>
                     <Table.Cell>
                       <Label color="orange">
-                        {get(conflict, 'type', 'Type', 'unknown')}
+                        {get(conflict, 'type', 'Type', interfaceText('Unknown'))}
                       </Label>
                       <div>
-                        <strong>{get(conflict, 'key', 'Key', '-')}</strong>
+                        <strong>{get(conflict, 'key', 'Key', interfaceText('Key'))}</strong>
                       </div>
                       <div className="integration-muted-copy">
                         {get(conflict, 'description', 'Description', '-')}
@@ -280,11 +282,17 @@ const RealmSubjectIndexConflicts = () => {
                               </Label>
                               <Label basic>{authorityKey}</Label>
                               <Popup
-                                content={`${disabled ? 'Re-enable' : 'Disable'} this authority locally for review. This only changes browser review state and does not update realm governance.`}
+                                content={interfaceText(disabled
+                                  ? 'Re-enable this authority locally for review. This only changes browser review state and does not update realm governance.'
+                                  : 'Disable this authority locally for review. This only changes browser review state and does not update realm governance.')}
                                 position="top center"
                                 trigger={
                                   <Button
-                                    aria-label={`${disabled ? 'Enable' : 'Disable'} authority ${authorityKey}`}
+                                    aria-label={interfaceText(disabled
+                                      ? 'Enable authority {authorityKey}'
+                                      : 'Disable authority {authorityKey}', {
+                                        authorityKey,
+                                      })}
                                     onClick={() => toggleAuthority(authorityKey)}
                                     size="mini"
                                   >

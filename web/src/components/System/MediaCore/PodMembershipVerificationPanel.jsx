@@ -2,7 +2,7 @@ import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 
 
-import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
+import { formatRegionalDateTime, useRegionalFormat, formatRegionalFixedNumber, formatRegionalNumber } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -366,10 +366,10 @@ const PodMembershipVerificationPanel = React.memo(({
                     <Message.Header><LocalizedText source={"Verification Statistics"} /></Message.Header>
                     <p>
                       <strong><LocalizedText source={"Total Verifications:"} /></strong>{' '}
-                      {verificationStats.totalVerifications}
+                      {formatRegionalNumber(verificationStats.totalVerifications)}
                       <br />
                       <strong><LocalizedText source={"Successful:"} /></strong>{' '}
-                      {verificationStats.successfulVerifications}
+                      {formatRegionalNumber(verificationStats.successfulVerifications)}
                       <br />
                       <strong><LocalizedText source={"Failed Membership:"} /></strong>{' '}
                       {verificationStats.failedMembershipChecks}
@@ -381,7 +381,7 @@ const PodMembershipVerificationPanel = React.memo(({
                       {verificationStats.bannedMemberRejections}
                       <br />
                       <strong><LocalizedText source={"Avg Time:"} /></strong>{' '}
-                      {verificationStats.averageVerificationTimeMs.toFixed(2)}<LocalizedText source={"ms"} /><br />
+                      {formatRegionalFixedNumber(verificationStats.averageVerificationTimeMs, 2)}<LocalizedText source={"ms"} /><br />
                       <strong><LocalizedText source={"Last Verification:"} /></strong>{' '}
                       {verificationStats.lastVerification
                         ? formatRegionalDateTime(verificationStats.lastVerification)

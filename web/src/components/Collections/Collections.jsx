@@ -686,7 +686,7 @@ export default class Collections extends Component {
                     style={{ cursor: 'pointer' }}
                   >
                     <Table.Cell>{collection.title}</Table.Cell>
-                    <Table.Cell>{collection.type || 'Playlist'}</Table.Cell>
+                    <Table.Cell>{collection.type || <LocalizedText source={"Playlist"} />}</Table.Cell>
                     <Table.Cell>{collection.itemCount || 0}</Table.Cell>
                     <Table.Cell>
                       <Button
@@ -712,7 +712,7 @@ export default class Collections extends Component {
               <Header as="h2">
                 {selectedCollection.title}
                 <Header.Subheader>
-                  {selectedCollection.type || 'Playlist'}
+                  {selectedCollection.type || <LocalizedText source={"Playlist"} />}
                 </Header.Subheader>
               </Header>
 
@@ -768,7 +768,7 @@ export default class Collections extends Component {
                           <Table.Cell>
                             {item.fileName || item.contentId || interfaceText('N/A')}
                           </Table.Cell>
-                          <Table.Cell>{item.mediaKind || 'Unknown'}</Table.Cell>
+                          <Table.Cell>{item.mediaKind || <LocalizedText source={"Unknown"} />}</Table.Cell>
                           <Table.Cell>
                             <PlayCollectionItemButton item={item} />
                             <Popup

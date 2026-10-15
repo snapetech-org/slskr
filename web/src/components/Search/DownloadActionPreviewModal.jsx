@@ -1,6 +1,7 @@
 import LocalizedText from "../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import { formatSearchActionPreview } from '../../lib/searchActionPreview';
+import { formatRegionalNumber, useRegionalFormat } from '../../lib/util';
 import { Button, Label, List, Modal, Popup } from 'semantic-ui-react';
 
 const DownloadActionPreviewModal = ({
@@ -9,7 +10,9 @@ const DownloadActionPreviewModal = ({
   open,
   preview,
   selectedSize,
-}) => (
+}) => {
+  useRegionalFormat();
+  return (
     <Modal
       closeIcon
       onClose={onClose}
@@ -30,13 +33,14 @@ const DownloadActionPreviewModal = ({
           <List.Item>
             <List.Header><LocalizedText source={"Selected files"} /></List.Header>
             <List.Description>
-              {preview.fileCount} <LocalizedText source={"file"} />{preview.fileCount === 1 ? '' : <LocalizedText source={"s"} />}, {selectedSize}
+              {formatRegionalNumber(preview.fileCount)}{' '}
+              <LocalizedText source={preview.fileCount === 1 ? "file" : "files"} />, {selectedSize}
             </List.Description>
           </List.Item>
           {preview.candidateScore !== null && (
             <List.Item>
               <List.Header><LocalizedText source={"Candidate score"} /></List.Header>
-              <List.Description>{preview.candidateScore}/100</List.Description>
+              <List.Description>{formatRegionalNumber(preview.candidateScore)}/100</List.Description>
             </List.Item>
           )}
         </List>
@@ -72,6 +76,7 @@ const DownloadActionPreviewModal = ({
           <LocalizedText source={"Close"} /></Button>
       </Modal.Actions>
     </Modal>
-);
+  );
+};
 
 export default DownloadActionPreviewModal;

@@ -515,9 +515,9 @@ const MetadataSettingsPanel = ({ options }) => {
                 label={interfaceText("Client ID")}
                 onChange={(_, { value }) => update('acoustIdClientId', value)}
                 placeholder={
-                  form.acoustIdClientIdConfigured
+                  interfaceText(form.acoustIdClientIdConfigured
                     ? 'Configured'
-                    : 'AcoustID client ID'
+                    : 'AcoustID client ID')
                 }
                 type="password"
                 value={form.acoustIdClientId}
@@ -609,7 +609,7 @@ const MetadataSettingsPanel = ({ options }) => {
                 label={interfaceText("API Key")}
                 onChange={(_, { value }) => update('lidarrApiKey', value)}
                 placeholder={
-                  form.lidarrApiKeyConfigured ? 'Configured' : 'Lidarr API key'
+                  interfaceText(form.lidarrApiKeyConfigured ? 'Configured' : 'Lidarr API key')
                 }
                 type="password"
                 value={form.lidarrApiKey}

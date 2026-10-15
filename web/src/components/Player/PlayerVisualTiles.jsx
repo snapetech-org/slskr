@@ -1,4 +1,5 @@
 import LocalizedText from "../Shared/LocalizedText";
+import { LocalizedPopup } from '../Shared/TooltipButton';
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import React, { lazy, Suspense, useRef, useState } from 'react';
 import { getLocalStorageItem } from '../../lib/storage';
@@ -30,12 +31,12 @@ export const PlayerVisualTile = ({
   const tileModes = ['art', 'rustymilk-webgl2', 'rustymilk-webgpu', 'spectrum', 'scope'];
   const visualizerTileModes = ['rustymilk-webgl2', 'rustymilk-webgpu'];
   const tileModeLabels = {
-    art: 'album art',
+    art: interfaceText('album art'),
     'rustymilk-webgl2': nativeProfile ? 'MilkDrop3 WebGL2' : 'RustyMilk WebGL2',
     'rustymilk-webgpu': nativeProfile ? 'MilkDrop3 WebGPU' : 'RustyMilk WebGPU',
     butterchurn: 'Butterchurn',
-    scope: 'signal scope',
-    spectrum: 'spectrum bars',
+    scope: interfaceText('signal scope'),
+    spectrum: interfaceText('spectrum bars'),
   };
   const tileModeIcons = {
     'rustymilk-webgl2': 'microchip',
@@ -102,15 +103,14 @@ export const PlayerVisualTile = ({
 
   return (
     <div className="player-visual-tile">
-      <Popup
-        content={
-          `Show ${tileModeLabels[nextTileMode]} in this square.`
-        }
+      <LocalizedPopup
+        content="Show {mode} in this square."
+        parameters={{ mode: tileModeLabels[nextTileMode] }}
         trigger={
           <div
-            aria-label={
-              `Show ${tileModeLabels[nextTileMode]} in player visual tile`
-            }
+            aria-label={interfaceText('Show {mode} in player visual tile', {
+              mode: tileModeLabels[nextTileMode],
+            })}
             role="button"
             className="player-visual-stage"
             data-testid="player-visual-tile"
@@ -165,12 +165,13 @@ export const PlayerVisualTile = ({
           ? ['spectrum', 'scope', 'butterchurn', 'rustymilk-webgl2', 'rustymilk-webgpu']
           : ['spectrum', 'scope', 'rustymilk-webgl2', 'rustymilk-webgpu']
         ).map((option) => (
-          <Popup
-            content={`Show ${tileModeLabels[option]}.`}
+          <LocalizedPopup
+            content="Show {mode}."
+            parameters={{ mode: tileModeLabels[option] }}
             key={option}
             trigger={
               <Button
-                aria-label={`Show ${tileModeLabels[option]}`}
+                aria-label={interfaceText('Show {mode}', { mode: tileModeLabels[option] })}
                 active={normalizedTileMode === option}
                 data-testid={`player-visual-tile-mode-${option}`}
                 icon
@@ -218,18 +219,16 @@ export const PlayerVisualTile = ({
 export const PlayerAnalyzerTile = ({ audioElement, mode, onModeChange }) => {
   useInterfaceLanguage();
   const nextMode = mode === 'spectrum' ? 'scope' : 'spectrum';
-  const label = mode === 'spectrum' ? 'Spectrum bars' : 'Signal scope';
+  const label = mode === 'spectrum' ? interfaceText('spectrum bars') : interfaceText('signal scope');
 
   return (
-    <Popup
-      content={
-        mode === 'spectrum'
-          ? 'Show signal scope in this box.'
-          : 'Show spectrum bars in this box.'
-      }
+    <LocalizedPopup
+      content={mode === 'spectrum' ? 'Show signal scope in this box.' : 'Show spectrum bars in this box.'}
       trigger={
         <div
-          aria-label={`Show ${nextMode === 'spectrum' ? 'spectrum bars' : 'signal scope'}`}
+          aria-label={interfaceText('Show {mode}', {
+            mode: nextMode === 'spectrum' ? interfaceText('spectrum bars') : interfaceText('signal scope'),
+          })}
           className="player-analyzer-tile"
           data-testid="player-analyzer-tile"
           onClick={() => onModeChange(nextMode)}

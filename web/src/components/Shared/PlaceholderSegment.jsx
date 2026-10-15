@@ -1,5 +1,6 @@
 import React from 'react';
 import { Header, Icon, Segment } from 'semantic-ui-react';
+import LocalizedText from './LocalizedText';
 
 const PlaceholderSegment = ({
   caption,
@@ -23,7 +24,7 @@ const PlaceholderSegment = ({
         icon
       >
         <Icon name={icon} />
-        {caption}
+        {typeof caption === 'string' ? <LocalizedText source={caption} /> : caption}
       </Header>
     </Segment>
   );

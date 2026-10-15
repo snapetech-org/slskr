@@ -3,6 +3,7 @@
 // </copyright>
 
 import * as jobsLibrary from '../../../lib/jobs';
+import { setRegionalFormatPreference } from '../../../lib/util';
 import SwarmVisualization from '.';
 import { render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
@@ -43,6 +44,7 @@ describe('SwarmVisualization', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+    setRegionalFormatPreference('system');
     jobsLibrary.getSwarmJobStatus.mockResolvedValue(mockJobStatus);
     jobsLibrary.getSwarmTraceSummary.mockResolvedValue(mockTraceSummary);
   });
@@ -122,18 +124,21 @@ describe('SwarmVisualization', () => {
     expect(screen.getByText('peer-2')).toBeInTheDocument();
   });
 
-  it('calculates and displays peer success rates', async () => {
+  it('keeps peer progress numeric while formatting its visible success rate', async () => {
+    setRegionalFormatPreference('ar');
     render(<SwarmVisualization jobId="swarm-1" />);
 
-    await waitFor(() => {
-      expect(screen.getByText('peer-1')).toBeInTheDocument();
-    });
+    const peer = await screen.findByText('peer-1');
+    const rate = new Intl.NumberFormat('ar', {
+      maximumFractionDigits: 1,
+      minimumFractionDigits: 1,
+    }).format((30 / 33) * 100);
+    const peerRow = peer.closest('tr');
+    const progress = peerRow.querySelector('.ui.progress');
 
-    // Peer 1: 30 completed, 2 failed, 1 timed out = 30/33 = ~90.9%
-    // Peer 2: 20 completed, 0 failed, 0 timed out = 100%
-    // Check that success rates are displayed
-    expect(screen.getByText('peer-1')).toBeInTheDocument();
-    expect(screen.getByText('peer-2')).toBeInTheDocument();
+    expect(screen.getByText(`${rate}%`)).toBeInTheDocument();
+    expect(progress).toHaveAttribute('aria-valuenow', '90.9090909090909');
+    expect(progress.querySelector('.bar')).toHaveStyle({ width: `${(30 / 33) * 100}%` });
   });
 
   it('displays chunk heatmap when job status and trace summary are available', async () => {

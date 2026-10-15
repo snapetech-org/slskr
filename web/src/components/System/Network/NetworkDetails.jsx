@@ -1,5 +1,6 @@
 import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+import { formatRegionalNumber, formatRegionalRelativeTime, useRegionalFormat } from '../../../lib/util';
 import React from 'react';
 import { ShrinkableButton } from '../../Shared';
 import {
@@ -19,19 +20,15 @@ import {
 } from 'semantic-ui-react';
 
 const formatTimeAgo = (dateString) => {
-  if (!dateString) return 'never';
+  if (!dateString) return interfaceText('Never');
   const date = new Date(dateString);
-  const now = new Date();
-  const seconds = Math.floor((now - date) / 1_000);
-
-  if (seconds < 60) return `${seconds}s ago`;
-  if (seconds < 3_600) return `${Math.floor(seconds / 60)}m ago`;
-  if (seconds < 86_400) return `${Math.floor(seconds / 3_600)}h ago`;
-  return `${Math.floor(seconds / 86_400)}d ago`;
+  if (Number.isNaN(date.getTime())) return interfaceText('Unknown date');
+  return formatRegionalRelativeTime(date);
 };
 
 const NetworkDetails = ({ actions, data }) => {
   useInterfaceLanguage();
+  useRegionalFormat();
   const {
     backfill,
     backfillProgress,
@@ -283,8 +280,11 @@ const NetworkDetails = ({ actions, data }) => {
             <Popup
               content={
                 backfillProgress && !backfillProgress.complete
-                  ? `Continue processing search history. ${backfillProgress.remainingSearches} of ${backfillProgress.totalSearches} searches remaining.`
-                  : 'Scan your search history to discover FLAC files from past searches. This populates the inventory with files that can be probed for content hashes, enabling multi-source downloads for those files. Processes in batches - click multiple times for large histories.'
+                  ? interfaceText('Continue processing search history. {remaining} of {total} searches remaining.', {
+                    remaining: backfillProgress.remainingSearches,
+                    total: backfillProgress.totalSearches,
+                  })
+                  : interfaceText('Scan your search history to discover FLAC files from past searches. This populates the inventory with files that can be probed for content hashes, enabling multi-source downloads for those files. Processes in batches - click multiple times for large histories.')
               }
               position="top right"
               trigger={
@@ -400,7 +400,7 @@ const NetworkDetails = ({ actions, data }) => {
                   color={hasStats && backfill?.isActive ? 'green' : 'grey'}
                   name="circle"
                 />{' '}
-                {hasStats ? (backfill?.isActive ? 'Active' : 'Idle') : '—'}
+                {hasStats ? interfaceText(backfill?.isActive ? 'Active' : 'Idle') : '—'}
               </Statistic.Value>
               <Statistic.Label><LocalizedText source={"Status"} /></Statistic.Label>
             </Statistic>
@@ -411,7 +411,7 @@ const NetworkDetails = ({ actions, data }) => {
               size="mini"
             >
               <Statistic.Value>
-                {hasStats ? backfill?.pendingCount ?? 0 : '—'}
+                {hasStats ? formatRegionalNumber(backfill?.pendingCount ?? 0) : '—'}
               </Statistic.Value>
               <Statistic.Label><LocalizedText source={"Pending Files"} /></Statistic.Label>
             </Statistic>
@@ -422,7 +422,7 @@ const NetworkDetails = ({ actions, data }) => {
               size="mini"
             >
               <Statistic.Value>
-                {hasStats ? backfill?.completedToday ?? 0 : '—'}
+                {hasStats ? formatRegionalNumber(backfill?.completedToday ?? 0) : '—'}
               </Statistic.Value>
               <Statistic.Label><LocalizedText source={"Completed Today"} /></Statistic.Label>
             </Statistic>
@@ -433,7 +433,7 @@ const NetworkDetails = ({ actions, data }) => {
               size="mini"
             >
               <Statistic.Value>
-                {hasStats ? `${backfill?.discoveryRate ?? 0}/hr` : '—'}
+                {hasStats ? `${formatRegionalNumber(backfill?.discoveryRate ?? 0)}/hr` : '—'}
               </Statistic.Value>
               <Statistic.Label><LocalizedText source={"Discovery Rate"} /></Statistic.Label>
             </Statistic>
@@ -463,10 +463,10 @@ const NetworkDetails = ({ actions, data }) => {
                     color="yellow"
                     name="bolt"
                   />
-                  {job.filename?.split('/').pop() ?? 'Unknown file'}
+                  {job.filename?.split('/').pop() ?? interfaceText('Unknown file')}
                 </Card.Header>
                 <Card.Meta>
-                  {job.activeSources ?? 0} <LocalizedText source={"sources •"} />{' '}
+                  {formatRegionalNumber(job.activeSources ?? 0)} <LocalizedText source={"sources •"} />{' '}
                   {formatBytes(job.downloadedBytes ?? 0)} /{' '}
                   {formatBytes(job.totalBytes ?? 0)}
                 </Card.Meta>
@@ -496,7 +496,7 @@ const NetworkDetails = ({ actions, data }) => {
                     {job.workers.length > 5 && (
                       <List.Item>
                         <Label size="tiny">
-                          +{job.workers.length - 5} <LocalizedText source={"more"} /></Label>
+                          +{formatRegionalNumber(job.workers.length - 5)} <LocalizedText source={"more"} /></Label>
                       </List.Item>
                     )}
                   </List>

@@ -2,7 +2,7 @@ import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 
 
-import { formatRegionalNumber, formatBytes } from '../../../lib/util';
+import { formatRegionalFixedNumber, formatRegionalNumber, formatBytes, useRegionalFormat } from '../../../lib/util';
 // <copyright file="index.jsx" company="slskr Team">
 // Copyright (c) slskr Team. All rights reserved.
 // </copyright>
@@ -31,6 +31,7 @@ import {
 
 const SwarmAnalytics = () => {
   useInterfaceLanguage();
+  useRegionalFormat();
   const [performanceMetrics, setPerformanceMetrics] = useState(null);
   const [peerRankings, setPeerRankings] = useState([]);
   const [efficiencyMetrics, setEfficiencyMetrics] = useState(null);
@@ -206,7 +207,10 @@ const SwarmAnalytics = () => {
               <Card.Content>
                 <Card.Header><LocalizedText source={"Performance Metrics"} /></Card.Header>
                 <Card.Meta>
-                  <LocalizedText source={"Last"} />{" "}{timeWindow} <LocalizedText source={"hour"} />{timeWindow !== 1 ? <LocalizedText source={"s"} /> : ''}
+                  <LocalizedText
+                    source={timeWindow === 1 ? "Last {count} hour" : "Last {count} hours"}
+                    values={{ count: formatRegionalNumber(timeWindow) }}
+                  />
                 </Card.Meta>
               </Card.Content>
               <Card.Content>
@@ -226,7 +230,7 @@ const SwarmAnalytics = () => {
                   <Grid.Column>
                     <Statistic>
                       <Statistic.Value>
-                        {(performanceMetrics.successRate * 100).toFixed(1)}%
+                        {formatRegionalFixedNumber(performanceMetrics.successRate * 100, 1)}%
                       </Statistic.Value>
                       <Statistic.Label><LocalizedText source={"Success Rate"} /></Statistic.Label>
                     </Statistic>
@@ -245,10 +249,7 @@ const SwarmAnalytics = () => {
                   <Grid.Column>
                     <Statistic>
                       <Statistic.Value>
-                        {performanceMetrics.averageDurationSeconds?.toFixed(
-                          1,
-                        ) ?? 0}
-                        <LocalizedText source={"s"} /></Statistic.Value>
+                        {formatRegionalFixedNumber(performanceMetrics.averageDurationSeconds ?? 0, 1)} s</Statistic.Value>
                       <Statistic.Label><LocalizedText source={"Avg Duration"} /></Statistic.Label>
                     </Statistic>
                   </Grid.Column>
@@ -277,7 +278,7 @@ const SwarmAnalytics = () => {
                   <Grid.Column>
                     <Statistic size="small">
                       <Statistic.Value>
-                        {(performanceMetrics.chunkSuccessRate * 100).toFixed(1)}
+                        {formatRegionalFixedNumber(performanceMetrics.chunkSuccessRate * 100, 1)}
                         %
                       </Statistic.Value>
                       <Statistic.Label><LocalizedText source={"Chunk Success Rate"} /></Statistic.Label>
@@ -327,7 +328,7 @@ const SwarmAnalytics = () => {
                       <label><LocalizedText source={"Redundancy Factor"} /></label>
                       <Statistic size="small">
                         <Statistic.Value>
-                          {efficiencyMetrics.redundancyFactor?.toFixed(2) ?? 0}
+                          {formatRegionalFixedNumber(efficiencyMetrics.redundancyFactor ?? 0, 2)}
                         </Statistic.Value>
                       </Statistic>
                     </div>
@@ -387,10 +388,12 @@ const SwarmAnalytics = () => {
                             percent={peer.reputationScore * 100}
                             size="tiny"
                           />
-                          {(peer.reputationScore * 100).toFixed(1)}%
+                          {formatRegionalFixedNumber(peer.reputationScore * 100, 1)}%
                         </Table.Cell>
                         <Table.Cell>
-                          {peer.averageRttMs?.toFixed(1)} <LocalizedText source={"ms"} /></Table.Cell>
+                          {peer.averageRttMs === null || peer.averageRttMs === undefined
+                            ? '—'
+                            : formatRegionalFixedNumber(peer.averageRttMs, 1)} <LocalizedText source={"ms"} /></Table.Cell>
                         <Table.Cell>
                           {formatBytes(peer.averageThroughputBytesPerSecond)}/s
                         </Table.Cell>
@@ -398,7 +401,7 @@ const SwarmAnalytics = () => {
                           {formatRegionalNumber(peer.chunksCompleted) ?? 0}
                         </Table.Cell>
                         <Table.Cell>
-                          {(peer.chunkSuccessRate * 100).toFixed(1)}%
+                          {formatRegionalFixedNumber(peer.chunkSuccessRate * 100, 1)}%
                         </Table.Cell>
                       </Table.Row>
                     ))}
@@ -442,7 +445,7 @@ const SwarmAnalytics = () => {
                       </p>
                       <p>
                         <strong><LocalizedText source={"Estimated Impact:"} /></strong>{' '}
-                        {(rec.estimatedImpact * 100).toFixed(0)}%
+                        {formatRegionalNumber(Math.round((rec.estimatedImpact || 0) * 100))}%
                       </p>
                     </Message.Content>
                   </Message>

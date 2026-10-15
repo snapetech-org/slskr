@@ -25,7 +25,7 @@ import {
   Segment,
 } from 'semantic-ui-react';
 import { v4 as uuidv4 } from 'uuid';
-import { formatPercent, getRunTitle, getStatusColor } from './songIdPanelHelpers';
+import { formatPercent, getRunTitle, getStatusColor, localizeSongIdRunState } from './songIdPanelHelpers';
 
 const SongIDPanel = ({ disabled }) => {
   useInterfaceLanguage();
@@ -565,9 +565,9 @@ const SongIDPanel = ({ disabled }) => {
                           color={getStatusColor(item.status)}
                           size="tiny"
                         >
-                          {item.status || 'unknown'}
+                          {localizeSongIdRunState(item.status)}
                         </Label>
-                        <Label size="tiny">{item.sourceType || 'unknown'}</Label>
+                        <Label size="tiny">{item.sourceType || interfaceText('unknown')}</Label>
                         {item.percentComplete ? (
                           <Label size="tiny">
                             {formatPercent(item.percentComplete)}%
@@ -584,7 +584,7 @@ const SongIDPanel = ({ disabled }) => {
                           <Label size="tiny"><LocalizedText source={"Worker"} />{" "}{item.workerSlot}</Label>
                         ) : null}
                         {item.currentStage ? (
-                          <Label size="tiny">{item.currentStage}</Label>
+                          <Label size="tiny">{localizeSongIdRunState(item.currentStage)}</Label>
                         ) : null}
                       </List.Description>
                       {item.summary ? (

@@ -199,11 +199,10 @@ const SearchBar = ({ server } = {}) => {
         onKeyDown={(event) => {
           if (event.key === 'Enter') create();
         }}
-        placeholder={
-          connected
-            ? 'Search phrase'
-            : 'Connect to server to perform a search'
-        }
+        placeholder={interfaceText(connected
+          ? 'Search phrase'
+          : 'Connect to server to perform a search')}
+       {...interfaceTextProps(connected ? 'Search phrase' : 'Connect to server to perform a search')}
         value={searchText}
       />
     </Segment>

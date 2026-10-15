@@ -180,7 +180,7 @@ const PlayerDiscoveryShelfModal = ({ onClose, open }) => {
               <div className="player-shelf-track">
                 <strong>{item.title}</strong>
                 <span>
-                  {[item.artist, item.album].filter(Boolean).join(' - ') || 'Local discovery item'}
+                  {[item.artist, item.album].filter(Boolean).join(' - ') || <LocalizedText source={"Local discovery item"} />}
                 </span>
               </div>
               <Label size="mini">

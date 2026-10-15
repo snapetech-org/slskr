@@ -1,8 +1,9 @@
 import LocalizedText from "../Shared/LocalizedText";
-import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import { fetchAlbumCompletion } from '../../lib/musicBrainz';
 import { toDisplayError } from '../../lib/errors';
 import { useMountedRef } from '../../lib/useMountedRef';
+import { formatRegionalNumber, formatSeconds, useRegionalFormat } from '../../lib/util';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Button,
@@ -15,12 +16,9 @@ import {
 
 const formatDuration = (durationMs) => {
   if (!durationMs) {
-    return 'Unknown length';
+    return interfaceText('unknown length');
   }
-
-  const minutes = Math.floor(durationMs / 60_000);
-  const seconds = Math.round((durationMs % 60_000) / 1_000);
-  return `${minutes}:${seconds.toString().padStart(2, '0')} min`;
+  return `${formatSeconds(Math.round(durationMs / 1_000))} min`;
 };
 
 const asRecords = (value) =>
@@ -32,12 +30,14 @@ const normalizeAlbum = (album, index) => ({
   ...album,
   completedTracks: Number(album.completedTracks) || 0,
   releaseId: album.releaseId || `album-${index}`,
-  title: album.title || 'Untitled album',
+  title: album.title || null,
   totalTracks: Number(album.totalTracks) || 0,
   tracks: asRecords(album.tracks),
 });
 
 const AlbumCompletionPanel = ({ disabled }) => {
+  useInterfaceLanguage();
+  useRegionalFormat();
   const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -132,10 +132,9 @@ const AlbumCompletionPanel = ({ disabled }) => {
       <div className="album-completion-list">
         {displayAlbums.map((album) => {
           const missingTracks = album.tracks.filter((track) => !track.complete);
-          const ratio =
-            album.totalTracks > 0
-              ? `${album.completedTracks}/${album.totalTracks}`
-              : '0/0';
+          const ratio = album.totalTracks > 0
+            ? `${formatRegionalNumber(album.completedTracks)}/${formatRegionalNumber(album.totalTracks)}`
+            : `${formatRegionalNumber(0)}/${formatRegionalNumber(0)}`;
           return (
             <Segment
               className="album-summary-segment"
@@ -146,7 +145,7 @@ const AlbumCompletionPanel = ({ disabled }) => {
                   as="h5"
                   className="album-completion-title"
                 >
-                  {album.title}
+                  {album.title || <LocalizedText source={"Untitled album"} />}
                   {album.discogsReleaseId && (
                     <Label
                       className="album-track-label"
@@ -159,7 +158,7 @@ const AlbumCompletionPanel = ({ disabled }) => {
                 </Header>
                 <div className="album-completion-meta">
                   <span>{album.artist}</span>
-                  <span>{album.releaseDate ?? 'Unknown date'}</span>
+                  <span>{album.releaseDate ?? <LocalizedText source={"Unknown date"} />}</span>
                   <span>{ratio} <LocalizedText source={"tracks complete"} /></span>
                 </div>
               </div>
@@ -181,14 +180,14 @@ const AlbumCompletionPanel = ({ disabled }) => {
                       >
                         <List.Content>
                           <List.Header>
-                            {track.position}. {track.title}
+                                {formatRegionalNumber(track.position)}. {track.title}
                             {track.matches?.length > 0 && (
                               <Label
                                 className="album-track-label"
                                 color="blue"
                                 size="tiny"
                               >
-                                {track.matches.length} <LocalizedText source={"fingerprint match"} />{track.matches.length === 1 ? '' : <LocalizedText source={"es"} />}
+                                {formatRegionalNumber(track.matches.length)} <LocalizedText source={track.matches.length === 1 ? "fingerprint match" : "fingerprint matches"} />
                               </Label>
                             )}
                           </List.Header>

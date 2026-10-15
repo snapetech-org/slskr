@@ -6,7 +6,7 @@ import { interfaceText, interfaceTextProps } from "../../../lib/interfaceLocale"
 
 import * as jobsLibrary from '../../../lib/jobs';
 import { toDisplayError } from '../../../lib/errors';
-import { formatBytes } from '../../../lib/util';
+import { formatBytes, formatRegionalFixedNumber, useRegionalFormat, formatRegionalNumber } from '../../../lib/util';
 import { normalizeSwarmJob } from '../../../lib/swarmJobs';
 import { useMountedRef } from '../../../lib/useMountedRef';
 import { usePolling } from '../../../lib/usePolling';
@@ -25,6 +25,7 @@ import {
 } from 'semantic-ui-react';
 
 const SwarmVisualization = ({ jobId }) => {
+  useRegionalFormat();
   const [jobStatus, setJobStatus] = useState(null);
   const [traceSummary, setTraceSummary] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -249,9 +250,7 @@ const SwarmVisualization = ({ jobId }) => {
           <Grid.Column>
             <Statistic>
               <Statistic.Value>
-                {jobStatus.chunksPerSecond
-                  ? jobStatus.chunksPerSecond.toFixed(1)
-                  : '0.0'}
+                {formatRegionalFixedNumber(jobStatus.chunksPerSecond || 0, 1)}
               </Statistic.Value>
               <Statistic.Label><LocalizedText source={"Chunks per second"} /></Statistic.Label>
             </Statistic>
@@ -306,11 +305,11 @@ const SwarmVisualization = ({ jobId }) => {
                     {peer.peerId}
                   </Table.Cell>
                   <Table.Cell>
-                    <Label color="green">{peer.chunksCompleted}</Label>
+                    <Label color="green">{formatRegionalNumber(peer.chunksCompleted)}</Label>
                   </Table.Cell>
                   <Table.Cell>
                     {peer.chunksFailed > 0 && (
-                      <Label color="red">{peer.chunksFailed}</Label>
+                      <Label color="red">{formatRegionalNumber(peer.chunksFailed)}</Label>
                     )}
                     {peer.chunksFailed === 0 && '-'}
                   </Table.Cell>
@@ -325,11 +324,10 @@ const SwarmVisualization = ({ jobId }) => {
                             : 'red'
                       }
                       percent={peer.successRate}
-                      progress
                       size="small"
                     />
                     <span style={{ fontSize: '0.9em', marginLeft: '0.5em' }}>
-                      {peer.successRate.toFixed(1)}%
+                      {formatRegionalFixedNumber(peer.successRate, 1)}%
                     </span>
                   </Table.Cell>
                 </Table.Row>

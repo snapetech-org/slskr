@@ -4,6 +4,7 @@ import {
   formatBytesFixed,
   formatRegionalCompactNumber,
   formatRegionalTime,
+  useRegionalFormat,
 } from '../../../lib/util';
 import { getKpiMetrics } from '../../../lib/telemetry';
 import { toDisplayError } from '../../../lib/errors';
@@ -167,6 +168,7 @@ const SlskrMetricsTable = ({ metrics }) => {
 
 const Metrics = () => {
   useInterfaceLanguage();
+  useRegionalFormat();
   const [metrics, setMetrics] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -248,7 +250,9 @@ const Metrics = () => {
           type="button"
         >
           <Icon name="refresh" />
-          {lastUpdated ? `Updated ${formatRegionalTime(lastUpdated)}` : <LocalizedText source={"Refresh"} />}
+          {lastUpdated
+            ? <LocalizedText source={"Updated {timestamp}"} values={{ "timestamp": formatRegionalTime(lastUpdated) }} />
+            : <LocalizedText source={"Refresh"} />}
         </Button>
       </div>
 

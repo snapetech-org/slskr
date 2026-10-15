@@ -2,7 +2,7 @@ import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 
 
-import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
+import { formatRegionalDateTime, useRegionalFormat, formatRegionalFixedNumber, formatRegionalNumber } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -363,7 +363,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
                           size="tiny"
                           success
                         >
-                          <p><LocalizedText source={"Found"} />{" "}{nameDiscoveryResult.totalFound} <LocalizedText source={"pods"} /></p>
+                          <p><LocalizedText source={"Found"} />{" "}{formatRegionalNumber(nameDiscoveryResult.totalFound)} <LocalizedText source={"pods"} /></p>
                         </Message>
                       )}
                     </div>
@@ -402,7 +402,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
                           size="tiny"
                           success
                         >
-                          <p><LocalizedText source={"Found"} />{" "}{tagDiscoveryResult.totalFound} <LocalizedText source={"pods"} /></p>
+                          <p><LocalizedText source={"Found"} />{" "}{formatRegionalNumber(tagDiscoveryResult.totalFound)} <LocalizedText source={"pods"} /></p>
                         </Message>
                       )}
                     </div>
@@ -441,7 +441,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
                           size="tiny"
                           success
                         >
-                          <p><LocalizedText source={"Found"} />{" "}{tagsDiscoveryResult.totalFound} <LocalizedText source={"pods"} /></p>
+                          <p><LocalizedText source={"Found"} />{" "}{formatRegionalNumber(tagsDiscoveryResult.totalFound)} <LocalizedText source={"pods"} /></p>
                         </Message>
                       )}
                     </div>
@@ -485,7 +485,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
                           size="tiny"
                           success
                         >
-                          <p><LocalizedText source={"Found"} />{" "}{allDiscoveryResult.totalFound} <LocalizedText source={"pods"} /></p>
+                          <p><LocalizedText source={"Found"} />{" "}{formatRegionalNumber(allDiscoveryResult.totalFound)} <LocalizedText source={"pods"} /></p>
                         </Message>
                       )}
                     </div>
@@ -530,7 +530,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
                           size="tiny"
                           success
                         >
-                          <p><LocalizedText source={"Found"} />{" "}{contentDiscoveryResult.totalFound} <LocalizedText source={"pods"} /></p>
+                          <p><LocalizedText source={"Found"} />{" "}{formatRegionalNumber(contentDiscoveryResult.totalFound)} <LocalizedText source={"pods"} /></p>
                         </Message>
                       )}
                     </div>
@@ -562,15 +562,13 @@ const PodDiscoveryPanel = ({ visible = true }) => {
                           {discoveryStats.totalRegisteredPods}
                           <br />
                           <strong><LocalizedText source={"Active Entries:"} /></strong>{' '}
-                          {discoveryStats.activeDiscoveryEntries}
+                          {formatRegionalNumber(discoveryStats.activeDiscoveryEntries)}
                           <br />
                           <strong><LocalizedText source={"Expired Entries:"} /></strong>{' '}
-                          {discoveryStats.expiredEntries}
+                          {formatRegionalNumber(discoveryStats.expiredEntries)}
                           <br />
                           <strong><LocalizedText source={"Avg Search Time:"} /></strong>{' '}
-                          {discoveryStats.averageDiscoveryTime?.totalMilliseconds.toFixed(
-                            0,
-                          )}
+                          {formatRegionalFixedNumber(discoveryStats.averageDiscoveryTime?.totalMilliseconds, 0)}
                           <LocalizedText source={"ms"} /></p>
                       </Message>
                     </div>

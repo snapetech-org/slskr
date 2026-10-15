@@ -7,6 +7,7 @@ import * as security from '../../lib/security';
 import * as soulseekDiscovery from '../../lib/soulseekDiscovery';
 import * as users from '../../lib/users';
 import React, { Component } from 'react';
+import { formatRegionalFixedNumber, formatRegionalNumber, useRegionalFormat } from '../../lib/util';
 import { Icon, Popup } from 'semantic-ui-react';
 
 const asArray = (value) =>
@@ -306,7 +307,7 @@ class UserCard extends Component {
     if (!summary || Number(summary.total ?? 0) === 0) return '?';
     const score = Number(summary.weightedScore ?? 0);
     if (Math.abs(score) < 0.05) return '0';
-    return score > 0 ? `+${score.toFixed(1)}` : score.toFixed(1);
+    return score > 0 ? `+${formatRegionalFixedNumber(score, 1)}` : formatRegionalFixedNumber(score, 1);
   };
 
   renderInterestPopup = () => {
@@ -399,7 +400,7 @@ class UserCard extends Component {
       icon: 'thumbs up outline',
       key: 'opinion',
       tooltip: opinionSummary?.total
-        ? `Canonical opinions: ${opinionSummary.positive || 0} positive, ${opinionSummary.negative || 0} negative, weighted ${Number(opinionSummary.weightedScore || 0).toFixed(2)}`
+        ? `Canonical opinions: ${formatRegionalNumber(opinionSummary.positive || 0)} positive, ${formatRegionalNumber(opinionSummary.negative || 0)} negative, weighted ${formatRegionalFixedNumber(opinionSummary.weightedScore || 0, 2)}`
         : 'No canonical opinions recorded',
       value: this.getOpinionValue(opinionSummary),
     });
@@ -532,4 +533,9 @@ class UserCard extends Component {
   }
 }
 
-export default UserCard;
+const RegionalUserCard = (props) => {
+  useRegionalFormat();
+  return <UserCard {...props} />;
+};
+
+export default RegionalUserCard;

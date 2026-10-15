@@ -343,7 +343,7 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
                         <Table.Cell>
                           <strong>{collection.title}</strong>
                           <div className="player-picker-meta">
-                            {collection.type || 'Playlist'}
+                            {collection.type || <LocalizedText source={"Playlist"} />}
                           </div>
                         </Table.Cell>
                       </Table.Row>
@@ -354,7 +354,7 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
             </Segment>
             <Segment className="player-browser-panel">
               <Header as="h4">
-                {selectedCollection?.title || 'Collection Items'}
+                {selectedCollection?.title || <LocalizedText source={"Collection Items"} />}
               </Header>
               {!selectedCollection ? (
                 <Message info><LocalizedText source={"Select a collection to see its tracks."} /></Message>
@@ -380,7 +380,7 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
                             {item.fileName || item.title || item.contentId}
                           </strong>
                           <div className="player-picker-meta">
-                            {item.mediaKind || 'Audio'}
+                            {item.mediaKind || <LocalizedText source={"Audio"} />}
                           </div>
                         </Table.Cell>
                         <Table.Cell collapsing>
@@ -451,7 +451,7 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
                {...interfaceTextProps("Search all audio by file, artist folder, album folder, or path")}/>
               <div className="player-file-explorer-counts">
                 {itemsLoading
-                  ? 'Loading...'
+                  ? <LocalizedText source={"Loading..."} />
                   : <LocalizedText source={"{shownFileCount} of {totalFiles} tracks"} values={{ "shownFileCount": (shownFileCount), "totalFiles": (visibleBrowserStats.totalFiles) }} />}
                 {visibleBrowserStats.duplicatesRemoved > 0
                   ? <LocalizedText source={", {duplicatesRemoved} duplicates collapsed"} values={{ "duplicatesRemoved": (visibleBrowserStats.duplicatesRemoved) }} />
@@ -463,7 +463,7 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
             <div className="player-file-explorer-breadcrumbs">
               {(visibleBrowserBreadcrumbs.length > 0
                 ? visibleBrowserBreadcrumbs
-                : [{ name: 'Library', path: '' }]).map((breadcrumb, index) => (
+                : [{ name: interfaceText('Library'), path: '' }]).map((breadcrumb, index) => (
                   <React.Fragment key={breadcrumb.path || 'library'}>
                     {index > 0 ? <Icon name="angle right" /> : null}
                     <button
@@ -517,7 +517,7 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
 
               <section className="player-file-explorer-files">
                 <div className="player-file-explorer-section-title">
-                  {query ? <LocalizedText source={"Search Results"} /> : browserPath || 'Library Root'}
+                  {query ? <LocalizedText source={"Search Results"} /> : browserPath || <LocalizedText source={"Library Root"} />}
                 </div>
                 {itemsLoading ? (
                   <Message info><LocalizedText source={"Loading audio files..."} /></Message>
@@ -547,8 +547,8 @@ const PlayerLauncher = ({ compact = false, onPlayItem }) => {
                           <Table.Cell>
                             <strong>{item.fileName || item.contentId}</strong>
                             <div className="player-picker-meta">
-                              {item.mediaKind || 'Audio'}
-                              {item.bytes ? ` - ${Math.round(item.bytes / 1024 / 1024)} MB` : ''}
+                              {item.mediaKind || <LocalizedText source={"Audio"} />}
+                              {item.bytes ? <LocalizedText source={" - {size} MB"} values={{ "size": Math.round(item.bytes / 1024 / 1024) }} /> : ''}
                             </div>
                           </Table.Cell>
                           <Table.Cell>

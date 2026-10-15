@@ -2,7 +2,7 @@ import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 
 
-import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
+import { formatRegionalDateTime, useRegionalFormat, formatRegionalNumber } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -498,16 +498,16 @@ const PodMembershipManagementPanel = ({
                     <Message.Header><LocalizedText source={"Membership Statistics"} /></Message.Header>
                     <p>
                       <strong><LocalizedText source={"Total Memberships:"} /></strong>{' '}
-                      {membershipStats.totalMemberships}
+                      {formatRegionalNumber(membershipStats.totalMemberships)}
                       <br />
                       <strong><LocalizedText source={"Active Memberships:"} /></strong>{' '}
-                      {membershipStats.activeMemberships}
+                      {formatRegionalNumber(membershipStats.activeMemberships)}
                       <br />
                       <strong><LocalizedText source={"Banned Memberships:"} /></strong>{' '}
-                      {membershipStats.bannedMemberships}
+                      {formatRegionalNumber(membershipStats.bannedMemberships)}
                       <br />
                       <strong><LocalizedText source={"Expired Memberships:"} /></strong>{' '}
-                      {membershipStats.expiredMemberships}
+                      {formatRegionalNumber(membershipStats.expiredMemberships)}
                       <br />
                       <strong><LocalizedText source={"Last Operation:"} /></strong>{' '}
                       {membershipStats.lastOperation

@@ -123,14 +123,14 @@ const LidarrPanel = ({ options }) => {
               <Table.Cell><LocalizedText source={"Timeout"} /></Table.Cell>
               <Table.Cell>
                 {valueOrDash(getOption(lidarrOptions, 'timeoutSeconds', 'TimeoutSeconds'))}
-                {<LocalizedText source={"s"} />}
+                {' s'}
               </Table.Cell>
             </Table.Row>
             <Table.Row>
               <Table.Cell><LocalizedText source={"Sync Interval"} /></Table.Cell>
               <Table.Cell>
                 {valueOrDash(getOption(lidarrOptions, 'syncIntervalSeconds', 'SyncIntervalSeconds'))}
-                {<LocalizedText source={"s"} />}
+                {' s'}
               </Table.Cell>
             </Table.Row>
             <Table.Row>
@@ -273,10 +273,15 @@ const LidarrPanel = ({ options }) => {
             size="small"
           >
             {importRetryResult.commandId || importRetryResult.CommandId
-              ? `Lidarr import retry queued: ${importRetryResult.safeCandidateCount || importRetryResult.SafeCandidateCount || 0} file(s)`
+              ? (() => {
+                const count = importRetryResult.safeCandidateCount || importRetryResult.SafeCandidateCount || 0;
+                return count === 1
+                  ? interfaceText('Lidarr import retry queued: {count} file', { count })
+                  : interfaceText('Lidarr import retry queued: {count} files', { count });
+              })()
               : importRetryResult.skippedReason ||
                 importRetryResult.SkippedReason ||
-                'Lidarr could not find a safe file to import on retry'}
+                interfaceText('Lidarr could not find a safe file to import on retry')}
           </Message>
         )}
         {importHistory.length > 0 && (
@@ -360,8 +365,12 @@ const LidarrPanel = ({ options }) => {
               warning={Boolean(importResult.skippedReason || importResult.SkippedReason)}
             >
               {importResult.skippedReason || importResult.SkippedReason
-                ? `Skipped: ${importResult.skippedReason || importResult.SkippedReason}`
-                : `Queued Lidarr command ${importResult.commandId || importResult.CommandId || '-'}`}
+                ? interfaceText('Skipped: {reason}', {
+                  reason: importResult.skippedReason || importResult.SkippedReason,
+                })
+                : interfaceText('Queued Lidarr command {commandId}', {
+                  commandId: importResult.commandId || importResult.CommandId || '-',
+                })}
             </Message>
           )}
         </Segment>

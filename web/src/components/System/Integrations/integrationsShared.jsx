@@ -1,4 +1,6 @@
+import { formatRegionalFixedNumber } from '../../../lib/util';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
+import LocalizedText from '../../Shared/LocalizedText';
 import { useMountedRef } from '../../../lib/useMountedRef';
 import { Icon, Label } from 'semantic-ui-react';
 
@@ -63,7 +65,7 @@ export const getVpnState = (state = {}) => getOption(state, 'vpn', 'Vpn', 'VPN')
 export const boolLabel = (value, trueText = 'Enabled', falseText = 'Disabled') => (
   <Label color={value ? 'green' : 'grey'}>
     <Icon name={value ? 'check circle' : 'minus circle'} />
-    {value ? trueText : falseText}
+    {value ? <LocalizedText source={trueText} /> : <LocalizedText source={falseText} />}
   </Label>
 );
 
@@ -80,7 +82,7 @@ export const formatBytes = (value) => {
     size /= 1024;
     unit = units[index];
   }
-  return `${size.toFixed(1)} ${unit}`;
+  return `${formatRegionalFixedNumber(size, 1)} ${unit}`;
 };
 
 export const isConfigured = (value) =>

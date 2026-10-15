@@ -1,5 +1,6 @@
 import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+import { formatRegionalFixedNumber, useRegionalFormat, formatRegionalNumber } from '../../../lib/util';
 
 
 import * as mediacore from '../../../lib/mediacore';
@@ -34,6 +35,7 @@ const useMountedState = (mountedRef, initialValue) => {
 
 const MediaCoreMetadataPortabilityPanel = React.memo(() => {
   useInterfaceLanguage();
+  useRegionalFormat();
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -295,17 +297,17 @@ const MediaCoreMetadataPortabilityPanel = React.memo(() => {
                       <Message.Header><LocalizedText source={"Conflict Analysis"} /></Message.Header>
                       <p>
                         <strong><LocalizedText source={"Total Entries:"} /></strong>{' '}
-                        {conflictAnalysis.totalEntries}
+                        {formatRegionalNumber(conflictAnalysis.totalEntries)}
                         <br />
                         <strong><LocalizedText source={"Conflicting:"} /></strong>{' '}
-                        {conflictAnalysis.conflictingEntries}
+                        {formatRegionalNumber(conflictAnalysis.conflictingEntries)}
                         <br />
-                        <strong><LocalizedText source={"Clean:"} /></strong> {conflictAnalysis.cleanEntries}
+                        <strong><LocalizedText source={"Clean:"} /></strong> {formatRegionalNumber(conflictAnalysis.cleanEntries)}
                         <br />
                         <strong><LocalizedText source={"Recommended Strategy:"} /></strong>{' '}
                         {Object.entries(
                           conflictAnalysis.recommendedStrategies || {},
-                        ).sort(([, a], [, b]) => b - a)[0]?.[0] || 'Merge'}
+                        ).sort(([, a], [, b]) => b - a)[0]?.[0] || interfaceText('Merge')}
                       </p>
                     </Message>
                   )}
@@ -328,18 +330,20 @@ const MediaCoreMetadataPortabilityPanel = React.memo(() => {
                       </Message.Header>
                       <p>
                         <strong><LocalizedText source={"Processed:"} /></strong>{' '}
-                        {importResult.entriesProcessed}
+                        {formatRegionalNumber(importResult.entriesProcessed)}
                         <br />
                         <strong><LocalizedText source={"Imported:"} /></strong>{' '}
-                        {importResult.entriesImported}
+                        {formatRegionalNumber(importResult.entriesImported)}
                         <br />
-                        <strong><LocalizedText source={"Skipped:"} /></strong> {importResult.entriesSkipped}
+                        <strong><LocalizedText source={"Skipped:"} /></strong> {formatRegionalNumber(importResult.entriesSkipped)}
                         <br />
                         <strong><LocalizedText source={"Conflicts Resolved:"} /></strong>{' '}
-                        {importResult.conflictsResolved}
+                        {formatRegionalNumber(importResult.conflictsResolved)}
                         <br />
                         <strong><LocalizedText source={"Duration:"} /></strong>{' '}
-                        {importResult.duration?.TotalSeconds.toFixed(2)}<LocalizedText source={"s"} /></p>
+                        {importResult.duration?.TotalSeconds === undefined
+                          ? '—'
+                          : formatRegionalFixedNumber(importResult.duration.TotalSeconds, 2)}s</p>
                       {importResult.errors?.length > 0 && (
                         <details>
                           <summary>

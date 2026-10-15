@@ -1,4 +1,5 @@
 import { resumeAudioGraph } from './audioGraph';
+import { interfaceText, useInterfaceLanguage } from '../../lib/interfaceLocale';
 import React, { useCallback, useEffect, useRef } from 'react';
 
 const minScopeGainPeak = 0.02;
@@ -128,6 +129,7 @@ const drawScopeLine = (ctx, points, width, height, options = {}) => {
 };
 
 const SpectrumAnalyzer = ({ audioElement, className = '', mode }) => {
+  useInterfaceLanguage();
   const canvasRef = useRef(null);
   const rafRef = useRef(null);
   const scopeLastReadRef = useRef(0);
@@ -203,7 +205,7 @@ const SpectrumAnalyzer = ({ audioElement, className = '', mode }) => {
 
   return (
     <canvas
-      aria-label={mode === 'scope' ? 'Oscilloscope' : 'Spectrum analyzer'}
+      aria-label={interfaceText(mode === 'scope' ? 'Oscilloscope' : 'Spectrum analyzer')}
       className={['player-spectrum', className].filter(Boolean).join(' ')}
       data-testid="player-spectrum"
       ref={canvasRef}

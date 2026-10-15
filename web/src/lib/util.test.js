@@ -77,6 +77,37 @@ describe('regional number formatting', () => {
     expect(utils.formatWait(0)).toBe(`${zero}s`);
   });
 
+  it('formats track durations and audio attributes with regional digits', () => {
+    utils.setRegionalFormatPreference('de');
+    expect(utils.formatSeconds(65)).toBe('01:05');
+    expect(utils.formatRegionalFixedNumber(3.67, 2)).toBe('3,67');
+    expect(utils.formatAttributes({ bitDepth: 16, sampleRate: 44_100 })).toBe(
+      '16/44,1kHz',
+    );
+
+    utils.setRegionalFormatPreference('ar');
+    const twoDigit = (value) => new Intl.NumberFormat('ar', {
+      minimumIntegerDigits: 2,
+      maximumFractionDigits: 0,
+      useGrouping: false,
+    }).format(value);
+    expect(utils.formatSeconds(65)).toBe(`${twoDigit(1)}:${twoDigit(5)}`);
+    expect(utils.formatAttributes({ bitRate: 320 })).toBe(
+      `${new Intl.NumberFormat('ar').format(320)} Kbps`,
+    );
+  });
+
+  it('formats relative times with the selected regional locale', () => {
+    const now = new Date('2026-10-14T12:00:00Z');
+    const twoMinutesAgo = new Date(now.getTime() - 120_000);
+    utils.setRegionalFormatPreference('de');
+
+    expect(utils.formatRegionalRelativeTime(twoMinutesAgo, { now })).toBe(
+      new Intl.RelativeTimeFormat('de', { numeric: 'auto' }).format(-2, 'minute'),
+    );
+    expect(utils.formatRegionalRelativeTime('not a date', { now })).toBe('Invalid Date');
+  });
+
   it('formats regional time with an explicit seconds field', () => {
     const date = new Date('2026-10-13T12:34:56Z');
     const options = { hour: '2-digit', minute: '2-digit', second: '2-digit' };

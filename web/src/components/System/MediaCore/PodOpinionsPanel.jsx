@@ -2,7 +2,7 @@ import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 
 
-import { formatRegionalDate, formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
+import { formatRegionalDate, formatRegionalDateTime, useRegionalFormat, formatRegionalFixedNumber, formatRegionalNumber } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -509,16 +509,16 @@ const PodOpinionsPanel = ({ visible = true }) => {
                   <Message.Header><LocalizedText source={"Opinion Statistics"} /></Message.Header>
                   <p>
                     <strong><LocalizedText source={"Total Opinions:"} /></strong>{' '}
-                    {opinionStatistics.totalOpinions}
+                    {formatRegionalNumber(opinionStatistics.totalOpinions)}
                     <br />
                     <strong><LocalizedText source={"Unique Variants:"} /></strong>{' '}
-                    {opinionStatistics.uniqueVariants}
+                    {formatRegionalNumber(opinionStatistics.uniqueVariants)}
                     <br />
                     <strong><LocalizedText source={"Average Score:"} /></strong>{' '}
-                    {opinionStatistics.averageScore.toFixed(1)}
+                    {formatRegionalFixedNumber(opinionStatistics.averageScore, 1)}
                     <br />
-                    <strong><LocalizedText source={"Score Range:"} /></strong> {opinionStatistics.minScore} -{' '}
-                    {opinionStatistics.maxScore}
+                    <strong><LocalizedText source={"Score Range:"} /></strong> {formatRegionalNumber(opinionStatistics.minScore)} -{' '}
+                    {formatRegionalNumber(opinionStatistics.maxScore)}
                     <br />
                     <strong><LocalizedText source={"Last Updated:"} /></strong>{' '}
                     {formatRegionalDateTime(opinionStatistics.lastUpdated)}
@@ -546,7 +546,7 @@ const PodOpinionsPanel = ({ visible = true }) => {
                             <strong><LocalizedText source={"Variant:"} /></strong>{' '}
                             {opinion.variantHash.slice(0, 8)}...
                             <br />
-                            <strong><LocalizedText source={"Score:"} /></strong> {opinion.score}/10
+                            <strong><LocalizedText source={"Score:"} /></strong> {formatRegionalNumber(opinion.score)}/10
                             {opinion.note && (
                               <>
                                 <br />
@@ -683,19 +683,19 @@ const PodOpinionsPanel = ({ visible = true }) => {
                   <Header size="tiny"><LocalizedText source={"Aggregated Opinion Results"} /></Header>
                   <Message info>
                     <strong><LocalizedText source={"Weighted Average:"} /></strong>{' '}
-                    {aggregatedOpinions.weightedAverageScore.toFixed(2)}/10
+                    {formatRegionalFixedNumber(aggregatedOpinions.weightedAverageScore, 2)}/10
                     <br />
                     <strong><LocalizedText source={"Unweighted Average:"} /></strong>{' '}
-                    {aggregatedOpinions.unweightedAverageScore.toFixed(2)}/10
+                    {formatRegionalFixedNumber(aggregatedOpinions.unweightedAverageScore, 2)}/10
                     <br />
                     <strong><LocalizedText source={"Consensus Strength:"} /></strong>{' '}
-                    {(aggregatedOpinions.consensusStrength * 100).toFixed(1)}%
+                    {formatRegionalFixedNumber((aggregatedOpinions.consensusStrength * 100), 1)}%
                     <br />
                     <strong><LocalizedText source={"Total Opinions:"} /></strong>{' '}
-                    {aggregatedOpinions.totalOpinions}
+                    {formatRegionalNumber(aggregatedOpinions.totalOpinions)}
                     <br />
                     <strong><LocalizedText source={"Unique Variants:"} /></strong>{' '}
-                    {aggregatedOpinions.uniqueVariants}
+                    {formatRegionalNumber(aggregatedOpinions.uniqueVariants)}
                     <br />
                     <strong><LocalizedText source={"Contributing Members:"} /></strong>{' '}
                     {aggregatedOpinions.contributingMembers}
@@ -717,19 +717,19 @@ const PodOpinionsPanel = ({ visible = true }) => {
                                 {variant.variantHash.slice(0, 8)}...
                                 <br />
                                 <strong><LocalizedText source={"Weighted Score:"} /></strong>{' '}
-                                {variant.weightedAverageScore.toFixed(2)}/10
+                                {formatRegionalFixedNumber(variant.weightedAverageScore, 2)}/10
                                 <br />
                                 <strong><LocalizedText source={"Unweighted Score:"} /></strong>{' '}
-                                {variant.unweightedAverageScore.toFixed(2)}/10
+                                {formatRegionalFixedNumber(variant.unweightedAverageScore, 2)}/10
                                 <br />
                                 <strong><LocalizedText source={"Opinions:"} /></strong>{' '}
-                                {variant.opinionCount}
+                                {formatRegionalNumber(variant.opinionCount)}
                                 <br />
                                 <strong><LocalizedText source={"Agreement:"} /></strong>{' '}
-                                {(
+                                {formatRegionalFixedNumber((
                                   1 -
                                   variant.scoreStandardDeviation / 5
-                                ).toFixed(2)}{' '}
+                                ), 2)}{' '}
                                 <LocalizedText source={"(lower std dev = higher agreement)"} /></div>
                             </Card.Content>
                           </Card>
@@ -788,7 +788,7 @@ const PodOpinionsPanel = ({ visible = true }) => {
                             .trim()}
                           <br />
                           <strong><LocalizedText source={"Consensus Score:"} /></strong>{' '}
-                          {(rec.consensusScore * 100).toFixed(1)}%<br />
+                          {formatRegionalFixedNumber((rec.consensusScore * 100), 1)}%<br />
                           <strong><LocalizedText source={"Reasoning:"} /></strong> {rec.reasoning}
                           <br />
                           <small>
@@ -837,12 +837,12 @@ const PodOpinionsPanel = ({ visible = true }) => {
                             <strong><LocalizedText source={"Peer:"} /></strong> {peerId.slice(0, 8)}...
                             <br />
                             <strong><LocalizedText source={"Affinity Score:"} /></strong>{' '}
-                            {(affinity.affinityScore * 100).toFixed(1)}%<br />
+                            {formatRegionalFixedNumber((affinity.affinityScore * 100), 1)}%<br />
                             <strong><LocalizedText source={"Trust Score:"} /></strong>{' '}
-                            {(affinity.trustScore * 100).toFixed(1)}%<br />
-                            <strong><LocalizedText source={"Messages:"} /></strong> {affinity.messageCount}
+                            {formatRegionalFixedNumber((affinity.trustScore * 100), 1)}%<br />
+                            <strong><LocalizedText source={"Messages:"} /></strong> {formatRegionalNumber(affinity.messageCount)}
                             <br />
-                            <strong><LocalizedText source={"Opinions:"} /></strong> {affinity.opinionCount}
+                            <strong><LocalizedText source={"Opinions:"} /></strong> {formatRegionalNumber(affinity.opinionCount)}
                             <br />
                             <small>
                               <LocalizedText source={"Last Activity:"} />{' '}

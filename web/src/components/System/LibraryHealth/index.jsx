@@ -13,6 +13,7 @@ import {
   getLibraryHealthSafeFixIssueIds,
 } from '../../../lib/libraryHealthReport';
 import { LoaderSegment } from '../../Shared';
+import { formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
 import * as searches from '../../../lib/searches';
 import { usePolling } from '../../../lib/usePolling';
 import React, { useEffect, useRef, useState } from 'react';
@@ -34,6 +35,7 @@ import {
 
 const LibraryHealth = () => {
   useInterfaceLanguage();
+  useRegionalFormat();
   const [activeIndex, setActiveIndex] = useState(0);
   const [libraryPath, setLibraryPath] = useState('');
   const [scanning, setScanning] = useState(false);
@@ -590,7 +592,7 @@ const LibraryHealth = () => {
                     </Statistic>
                     <Statistic color="green">
                       <Statistic.Value>
-                        {summary.issuesResolved}
+                        {formatRegionalNumber(summary.issuesResolved)}
                       </Statistic.Value>
                       <Statistic.Label><LocalizedText source={"Resolved"} /></Statistic.Label>
                     </Statistic>
@@ -651,7 +653,7 @@ const LibraryHealth = () => {
                               </Label>
                             </Table.Cell>
                             <Table.Cell textAlign="right">
-                              <strong>{group.count}</strong>
+                              <strong>{formatRegionalNumber(group.count)}</strong>
                             </Table.Cell>
                           </Table.Row>
                         ))
@@ -686,7 +688,7 @@ const LibraryHealth = () => {
                           <Table.Row key={index}>
                             <Table.Cell>{group.artist}</Table.Cell>
                             <Table.Cell textAlign="right">
-                              <strong>{group.count}</strong>
+                              <strong>{formatRegionalNumber(group.count)}</strong>
                             </Table.Cell>
                           </Table.Row>
                         ))
@@ -733,7 +735,7 @@ const LibraryHealth = () => {
                   primary
                 >
                   <Icon name="wrench" />
-                  <LocalizedText source={"Fix"} />{" "}{selectedIssues.size} <LocalizedText source={"Selected Issue"} />{selectedIssues.size > 1 ? <LocalizedText source={"s"} /> : ''}
+                  <LocalizedText source={"Fix"} />{" "}{formatRegionalNumber(selectedIssues.size)} <LocalizedText source={selectedIssues.size === 1 ? "Selected Issue" : "Selected Issues"} />
                 </Button>
                 <Popup
                   content={interfaceText("Start bounded live Soulseek replacement searches for selected replacement candidates. This starts searches only; it does not browse peers, download, quarantine, or mutate files.")}

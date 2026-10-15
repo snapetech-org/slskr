@@ -242,7 +242,7 @@ const PlayerStatsModal = ({ onClose, onOpenSearch, open }) => {
         ))}
       </div>
     ) : (
-      <div className="player-queue-manager-empty">{emptyText}</div>
+      <div className="player-queue-manager-empty"><LocalizedText source={emptyText} /></div>
     )
   );
 

@@ -259,7 +259,9 @@ const PodChannelSession = ({ channel, state }) => {
                         : ''}
                     </span>
                     <span className="room-message-name">
-                      {String(message.senderPeerId ?? message.username ?? 'Unknown peer')}:{' '}
+                      {message.senderPeerId ?? message.username
+                        ? String(message.senderPeerId ?? message.username)
+                        : interfaceText('Unknown peer')}:{' '}
                     </span>
                     <span className="room-message-message">
                       {String(message.body ?? '')}
@@ -272,7 +274,7 @@ const PodChannelSession = ({ channel, state }) => {
           <Segment className="pod-message-session-composer">
             <div className="messaging-start-row">
               <Input
-                aria-label={`Message ${channelLabel(channel)}`}
+                aria-label={interfaceText('Message {channel}', { channel: channelLabel(channel) })}
                 className="pod-message-session-input"
                 fluid
                 onChange={(event) => setBody(event.target.value)}
@@ -283,7 +285,9 @@ const PodChannelSession = ({ channel, state }) => {
                     });
                   }
                 }}
-                placeholder={`Message ${channel.channelName || channel.channelId}`}
+                placeholder={interfaceText('Message {channel}', {
+                  channel: channel.channelName || channel.channelId,
+                })}
                 value={body}
               />
               <Popup
@@ -318,17 +322,21 @@ const PodChannelSession = ({ channel, state }) => {
           >
             {members.map((member) => {
               const username = String(
-                member.peerId || member.username || member.PeerId || 'Unknown peer',
+                member.peerId || member.username || member.PeerId || '',
               );
 
               return (
                 <List.Item key={username}>
                   <List.Content>
                     <List.Header>
-                      <UserCard username={username}>{username}</UserCard>
+                      {username
+                        ? <UserCard username={username}>{username}</UserCard>
+                        : <LocalizedText source={"Unknown peer"} />}
                     </List.Header>
                     <List.Description>
-                      {String(member.role || member.Role || 'Member')}
+                      {member.role || member.Role
+                        ? String(member.role || member.Role)
+                        : interfaceText('Member')}
                     </List.Description>
                   </List.Content>
                 </List.Item>

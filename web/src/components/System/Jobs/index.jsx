@@ -1,6 +1,6 @@
 import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
-import { formatRegionalDateTime, formatBytes } from '../../../lib/util';
+import { formatRegionalDateTime, formatBytes, formatRegionalFixedNumber, useRegionalFormat, formatRegionalNumber } from '../../../lib/util';
 // <copyright file="index.jsx" company="slskr Team">
 // Copyright (c) slskr Team. All rights reserved.
 // </copyright>
@@ -48,6 +48,7 @@ const ACTIVE_JOB_STATES = new Set([
 
 const Jobs = () => {
   useInterfaceLanguage();
+  useRegionalFormat();
   const [jobs, setJobs] = useState([]);
   const [swarmJobs, setSwarmJobs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -261,7 +262,7 @@ const Jobs = () => {
         <Grid columns={4}>
           <Grid.Column>
             <Statistic>
-              <Statistic.Value>{analytics.total}</Statistic.Value>
+              <Statistic.Value>{formatRegionalNumber(analytics.total)}</Statistic.Value>
               <Statistic.Label><LocalizedText source={"Total Jobs"} /></Statistic.Label>
             </Statistic>
           </Grid.Column>
@@ -272,7 +273,7 @@ const Jobs = () => {
                   color="blue"
                   name="spinner"
                 />
-                {analytics.active}
+                {formatRegionalNumber(analytics.active)}
               </Statistic.Value>
               <Statistic.Label><LocalizedText source={"Active"} /></Statistic.Label>
             </Statistic>
@@ -284,7 +285,7 @@ const Jobs = () => {
                   color="green"
                   name="check circle"
                 />
-                {analytics.completed}
+                {formatRegionalNumber(analytics.completed)}
               </Statistic.Value>
               <Statistic.Label><LocalizedText source={"Completed"} /></Statistic.Label>
             </Statistic>
@@ -360,7 +361,7 @@ const Jobs = () => {
                     {job.chunksPerSecond && (
                       <Label size="tiny">
                         <Icon name="tachometer alternate" />
-                        {job.chunksPerSecond.toFixed(1)} chunks/s
+                        {formatRegionalFixedNumber(job.chunksPerSecond, 1)} chunks/s
                       </Label>
                     )}
                     {job.estimatedSecondsRemaining && (
@@ -546,7 +547,7 @@ const Jobs = () => {
                                 color="red"
                                 size="tiny"
                               >
-                                {job.progress.releases_failed} <LocalizedText source={"failed"} /></Label>
+                                {formatRegionalNumber(job.progress.releases_failed)} <LocalizedText source={"failed"} /></Label>
                             )}
                           </div>
                         </div>

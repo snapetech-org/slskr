@@ -347,7 +347,7 @@ const ArtistReleaseRadarPanel = ({ disabled }) => {
               <List.Content>
                 <List.Header>{[artist, title].filter(Boolean).join(' - ') || title}</List.Header>
                 <List.Description>
-                  {notification.sourceRealm || 'unknown realm'} · {Math.round((notification.confidence || 0) * 100)}%
+                  {notification.sourceRealm || interfaceText('unknown realm')} · {Math.round((notification.confidence || 0) * 100)}%
                 </List.Description>
                 <Popup
                   content={interfaceText("Route this radar notification to explicitly listed trusted peers through the backend route service.")}

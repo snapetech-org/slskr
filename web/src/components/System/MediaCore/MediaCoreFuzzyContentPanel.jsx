@@ -6,6 +6,7 @@ import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
 import React, { useEffect, useRef } from 'react';
+import { formatRegionalFixedNumber, useRegionalFormat } from '../../../lib/util';
 import { Card, Form, Grid, Icon, Input, List, Message } from 'semantic-ui-react';
 
 const useMountedState = (mountedRef, initialValue) => {
@@ -24,6 +25,7 @@ const useMountedState = (mountedRef, initialValue) => {
 
 const MediaCoreFuzzyContentPanel = React.memo(() => {
   useInterfaceLanguage();
+  useRegionalFormat();
   const mountedRef = useRef(true);
   useEffect(() => {
     mountedRef.current = true;
@@ -152,7 +154,7 @@ const MediaCoreFuzzyContentPanel = React.memo(() => {
                                 </List.Header>
                                 <List.Description>
                                   <LocalizedText source={"Confidence:"} />{' '}
-                                  {(match.confidence * 100).toFixed(1)}<LocalizedText source={"% | Reason:"} />{" "}{match.reason}
+                                  {formatRegionalFixedNumber((match.confidence * 100), 1)}<LocalizedText source={"% | Reason:"} />{" "}{match.reason}
                                 </List.Description>
                               </List.Content>
                             </List.Item>

@@ -71,11 +71,12 @@ export const interfaceText = (source, parameters = {}) =>
 
 export const interfaceTextProps = (source, parameters = {}) => {
   const translated = translationFor(source, activeLanguage);
+  const hasTranslation = Boolean(translated && translated !== source);
   const text = formatInterfaceText(source, parameters);
   const unresolved = typeof text === 'string' && /\{[a-zA-Z][a-zA-Z0-9_]*\}/.test(text);
   const props = {
-    dir: translated && activeLanguage === 'ar' ? 'rtl' : 'ltr',
-    lang: translated ? activeLanguage : 'en',
+    dir: hasTranslation && activeLanguage === 'ar' ? 'rtl' : 'ltr',
+    lang: hasTranslation ? activeLanguage : 'en',
   };
   if (!unresolved) {
     props['aria-label'] = text;

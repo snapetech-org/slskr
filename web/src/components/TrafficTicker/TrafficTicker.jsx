@@ -1,5 +1,5 @@
 import LocalizedText from "../Shared/LocalizedText";
-import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import { formatTransferState } from '../../lib/transfers';
 import { formatBytes, formatRegionalNumber, formatRegionalTime } from '../../lib/util';
 import './TrafficTicker.css';
@@ -30,12 +30,12 @@ const normalizeActivity = (activity) => {
     ...activity,
     averageSpeed: Math.max(0, numeric(activity.averageSpeed)),
     direction: activity.direction === 'Upload' ? 'Upload' : 'Download',
-    filename: typeof activity.filename === 'string' ? activity.filename : 'unknown file',
+    filename: typeof activity.filename === 'string' ? activity.filename : '',
     percentComplete: Math.max(0, Math.min(100, numeric(activity.percentComplete))),
     size: Math.max(0, numeric(activity.size)),
     state: typeof activity.state === 'string' ? activity.state : 'Unknown',
     timestamp: activity.timestamp || new Date().toISOString(),
-    username: typeof activity.username === 'string' ? activity.username : 'unknown user',
+    username: typeof activity.username === 'string' ? activity.username : '',
   };
 };
 
@@ -88,12 +88,12 @@ const formatActivity = (activity) => {
     state,
     username,
   } = activity;
-  const fileName = (typeof filename === 'string' ? filename : 'unknown file')
+  const fileName = (typeof filename === 'string' && filename ? filename : interfaceText('Unknown file'))
     .split('\\').pop().split('/').pop();
   const safeState = typeof state === 'string' ? state : 'Unknown';
   const displayedState = localizeActivityState(safeState);
   const safeDirection = direction === 'Download' ? 'Download' : 'Upload';
-  const safeUsername = typeof username === 'string' ? username : 'unknown user';
+  const safeUsername = typeof username === 'string' && username ? username : interfaceText('Unknown user');
 
   if (safeState.includes('Completed')) {
     const speedText =
@@ -109,6 +109,7 @@ const formatActivity = (activity) => {
 };
 
 const TrafficTicker = () => {
+  useInterfaceLanguage();
   const [activities, setActivities] = useState([]);
   const [connected, setConnected] = useState(false);
   const [expanded, setExpanded] = useState(false);
@@ -161,8 +162,8 @@ const TrafficTicker = () => {
           size="small"
           title={
             connected
-              ? 'Connected to transfer feed'
-              : 'Disconnected from transfer feed'
+              ? interfaceText('Connected to transfer feed')
+              : interfaceText('Disconnected from transfer feed')
           }
         />
       </div>
@@ -212,7 +213,9 @@ const TrafficTicker = () => {
               className="traffic-ticker-toggle-button"
               onClick={() => setExpanded(!expanded)}
             >
-              {expanded ? <LocalizedText source={"Show Less"} /> : `Show ${activities.length - 10} More`}
+              {expanded
+                ? <LocalizedText source={"Show Less"} />
+                : <LocalizedText source={"Show {count} More"} values={{ "count": activities.length - 10 }} />}
             </button>
           </div>
         )}

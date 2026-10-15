@@ -1,5 +1,5 @@
 import LocalizedText from "./LocalizedText";
-import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 
 
 import './Footer.css';
@@ -10,6 +10,7 @@ import * as session from '../../lib/session';
 import * as slskrAPI from '../../lib/slskr';
 import { getLocalStorageItem } from '../../lib/storage';
 import * as transfers from '../../lib/transfers';
+import { formatRegionalCompactNumber, formatRegionalFixedNumber, formatRegionalNumber, useRegionalFormat } from '../../lib/util';
 import { createPollingController } from '../../lib/usePolling';
 import { urlBase } from '../../config';
 import React, { Component } from 'react';
@@ -18,32 +19,32 @@ import { Icon } from 'semantic-ui-react';
 const GITHUB_BASE = 'https://github.com/snapetech/slskr';
 
 const formatSpeed = (bytesPerSec) => {
-  if (!bytesPerSec || bytesPerSec === 0) return { unit: 'B', value: '0' };
+  if (!bytesPerSec || bytesPerSec === 0) {
+    return { unit: 'B', value: formatRegionalNumber(0) };
+  }
 
   const kb = bytesPerSec / 1_024;
   const mb = kb / 1_024;
   const gb = mb / 1_024;
 
   if (gb >= 1) {
-    return { unit: 'G', value: gb.toFixed(gb >= 10 ? 1 : 2) };
+    return { unit: 'G', value: formatRegionalFixedNumber(gb, gb >= 10 ? 1 : 2) };
   }
 
   if (mb >= 1) {
-    return { unit: 'M', value: mb.toFixed(mb >= 10 ? 1 : 2) };
+    return { unit: 'M', value: formatRegionalFixedNumber(mb, mb >= 10 ? 1 : 2) };
   }
 
   if (kb >= 1) {
-    return { unit: 'K', value: kb.toFixed(kb >= 10 ? 1 : 2) };
+    return { unit: 'K', value: formatRegionalFixedNumber(kb, kb >= 10 ? 1 : 2) };
   }
 
-  return { unit: 'B', value: bytesPerSec.toFixed(0) };
+  return { unit: 'B', value: formatRegionalFixedNumber(bytesPerSec, 0) };
 };
 
 const formatCount = (value) => {
   if (value === undefined || value === null) return '—';
-  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1)}M`;
-  if (value >= 1_000) return `${(value / 1_000).toFixed(1)}K`;
-  return value.toString();
+  return formatRegionalCompactNumber(value);
 };
 
 const finiteNumberOrNull = (value) => {
@@ -63,7 +64,7 @@ const setFooterHeightVariable = (element) => {
   }
 };
 
-class Footer extends Component {
+class FooterView extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -151,12 +152,12 @@ class Footer extends Component {
         if (slskrStats.status === 'fulfilled') {
           nextState.slskrStats = slskrStats.value;
         } else {
-          errors.push(toDisplayError(slskrStats.reason, 'slskr telemetry unavailable'));
+          errors.push(toDisplayError(slskrStats.reason, interfaceText('slskr telemetry unavailable')));
         }
         if (transportStats.status === 'fulfilled') {
           nextState.stats = transportStats.value;
         } else {
-          errors.push(toDisplayError(transportStats.reason, 'Network telemetry unavailable'));
+          errors.push(toDisplayError(transportStats.reason, interfaceText('Network telemetry unavailable')));
         }
         nextState.statsError = errors.length > 0 ? errors.join(' ') : null;
         this.setState(nextState);
@@ -165,7 +166,7 @@ class Footer extends Component {
       console.debug('Failed to fetch mesh stats:', error);
       if (this.isMountedFlag && requestId === this.requestIds.stats) {
         this.setState({
-          statsError: toDisplayError(error, 'Network telemetry unavailable'),
+          statsError: toDisplayError(error, interfaceText('Network telemetry unavailable')),
         });
       }
     }
@@ -186,7 +187,7 @@ class Footer extends Component {
       console.debug('Failed to fetch transfer speeds:', error);
       if (this.isMountedFlag && requestId === this.requestIds.speeds) {
         this.setState({
-          speedsError: toDisplayError(error, 'Transfer speeds unavailable'),
+          speedsError: toDisplayError(error, interfaceText('Transfer speeds unavailable')),
         });
       }
     }
@@ -207,7 +208,7 @@ class Footer extends Component {
       console.debug('Failed to fetch build info:', error);
       if (this.isMountedFlag && requestId === this.requestIds.buildInfo) {
         this.setState({
-          buildInfoError: toDisplayError(error, 'Build information unavailable'),
+          buildInfoError: toDisplayError(error, interfaceText('Build information unavailable')),
         });
       }
     }
@@ -305,14 +306,23 @@ class Footer extends Component {
     // Format NAT type tooltip
     const natTooltip =
       isLoggedIn && stats
-        ? `NAT Type: ${stats.natType || 'Unknown'}`
-        : 'NAT: Login to see stats';
+        ? interfaceText('NAT Type: {natType}', {
+          natType: stats.natType || interfaceText('Unknown'),
+        })
+        : interfaceText('NAT: Login to see stats');
     const telemetryErrors = [statsError, speedsError, buildInfoError]
       .filter(Boolean)
       .join(' ');
     const networkTooltip = isLoggedIn
-      ? `DHT peers: ${formatCount(displayedDhtPeers)}; DHT nodes: ${formatCount(dhtNodes)}; mesh peers: ${formatCount(meshPeers)}; hashes: ${formatCount(hashCount)}; seq: ${formatCount(seqId)}${telemetryErrors ? `; ${telemetryErrors}` : ''}`
-      : 'Login to see slskr network stats';
+      ? interfaceText('DHT peers: {dhtPeers}; DHT nodes: {dhtNodes}; mesh peers: {meshPeers}; hashes: {hashes}; seq: {seq}{errors}', {
+        dhtPeers: formatCount(displayedDhtPeers),
+        dhtNodes: formatCount(dhtNodes),
+        meshPeers: formatCount(meshPeers),
+        hashes: formatCount(hashCount),
+        seq: formatCount(seqId),
+        errors: telemetryErrors ? `; ${telemetryErrors}` : '',
+      })
+      : interfaceText('Login to see slskr network stats');
 
     return (
       <footer
@@ -357,12 +367,15 @@ class Footer extends Component {
                 target="_blank"
                 title={
                   isUpdateAvailable
-                    ? `Running ${fullBuild}; GitHub has ${latestTag || latestBuild}`
-                    : `Running ${fullBuild}`
+                  ? interfaceText('Running {currentBuild}; GitHub has {latestBuild}', {
+                    currentBuild: fullBuild,
+                    latestBuild: latestTag || latestBuild,
+                  })
+                    : interfaceText('Running {currentBuild}', { currentBuild: fullBuild })
                 }
               >
                 <Icon name={isUpdateAvailable ? 'bullhorn' : 'code branch'} />
-                <span className="slskr-footer-build-label"><LocalizedText source={"Build"} /></span>
+          <span className="slskr-footer-build-label"><LocalizedText source={"Build"} /></span>
                 <code>{currentBuild}</code>
                 {isUpdateAvailable && (
                   <span className="slskr-footer-update-label">
@@ -383,8 +396,8 @@ class Footer extends Component {
                 className="slskr-footer-speed-item"
                 title={
                   isLoggedIn
-                    ? 'Total transfer speed (upload + download)'
-                    : 'Login to see real-time speeds'
+                    ? interfaceText('Total transfer speed (upload + download)')
+                    : interfaceText('Login to see real-time speeds')
                 }
               >
                 <strong>T:</strong>{' '}
@@ -397,8 +410,8 @@ class Footer extends Component {
                 className="slskr-footer-speed-item"
                 title={
                   isLoggedIn
-                    ? 'Soulseek network speed'
-                    : 'Login to see real-time speeds'
+                    ? interfaceText('Soulseek network speed')
+                    : interfaceText('Login to see real-time speeds')
                 }
               >
                 <strong>S:</strong>{' '}
@@ -413,8 +426,8 @@ class Footer extends Component {
                 className="slskr-footer-speed-item"
                 title={
                   isLoggedIn
-                    ? 'Mesh network speed'
-                    : 'Login to see real-time speeds'
+                    ? interfaceText('Mesh network speed')
+                    : interfaceText('Login to see real-time speeds')
                 }
               >
                 <strong>M:</strong>{' '}
@@ -464,7 +477,7 @@ class Footer extends Component {
               {activeSwarms > 0 && (
                 <span className="slskr-footer-network-item active">
                   <Icon name="bolt" />
-                  {activeSwarms} <LocalizedText source={"swarm"} />{activeSwarms === 1 ? '' : <LocalizedText source={"s"} />}
+                  {formatRegionalNumber(activeSwarms)} <LocalizedText source={activeSwarms === 1 ? "swarm" : "swarms"} />
                 </span>
               )}
               {backfillActive && (
@@ -478,7 +491,7 @@ class Footer extends Component {
               <span className="slskr-footer-network-item">
                 <Icon name="trophy" />
                 {karma > 0 ? '+' : ''}
-                {karma}
+                {formatRegionalNumber(karma)}
               </span>
             </a>
 
@@ -496,8 +509,8 @@ class Footer extends Component {
                 name="sitemap"
                 title={
                   isLoggedIn && stats
-                    ? `DHT Nodes: ${stats.dht}`
-                    : 'DHT: Login to see stats'
+                    ? interfaceText('DHT Nodes: {count}', { count: stats.dht })
+                    : interfaceText('DHT: Login to see stats')
                 }
               />
               <Icon
@@ -518,8 +531,8 @@ class Footer extends Component {
                 name="globe"
                 title={
                   isLoggedIn && stats
-                    ? `Overlay Peers: ${stats.overlay}`
-                    : 'Overlay: Login to see stats'
+                    ? interfaceText('Overlay Peers: {count}', { count: stats.overlay })
+                    : interfaceText('Overlay: Login to see stats')
                 }
               />
             </div>
@@ -529,5 +542,11 @@ class Footer extends Component {
     );
   }
 }
+
+const Footer = (props) => {
+  useInterfaceLanguage();
+  useRegionalFormat();
+  return <FooterView {...props} />;
+};
 
 export default Footer;

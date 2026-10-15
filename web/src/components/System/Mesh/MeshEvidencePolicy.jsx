@@ -13,6 +13,7 @@ import {
   setMeshEvidenceOutboundEnabled,
 } from '../../../lib/meshEvidencePolicy';
 import React, { useMemo, useState } from 'react';
+import { formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
 import { toast } from 'react-toastify';
 import {
   Button,
@@ -69,6 +70,7 @@ const sampleEvidence = JSON.stringify(
 );
 
 const MeshEvidencePolicy = ({ runtimeProfile } = {}) => {
+  useRegionalFormat();
   useInterfaceLanguage();
   const [policy, setPolicy] = useState(getMeshEvidencePolicy);
   const [reviewError, setReviewError] = useState('');
@@ -306,7 +308,7 @@ const MeshEvidencePolicy = ({ runtimeProfile } = {}) => {
           <div className="mesh-evidence-review-results">
             <div className="mesh-evidence-review-summary">
               <Label color="blue">
-                <LocalizedText source={"Total"} /><Label.Detail>{review.summary.total}</Label.Detail>
+                <LocalizedText source={"Total"} /><Label.Detail>{formatRegionalNumber(review.summary.total)}</Label.Detail>
               </Label>
               <Label color="green">
                 <LocalizedText source={"Accepted"} /><Label.Detail>{review.summary.accepted}</Label.Detail>
@@ -332,9 +334,11 @@ const MeshEvidencePolicy = ({ runtimeProfile } = {}) => {
                       {entry.type} · {entry.subject}
                     </List.Header>
                     <List.Description>
-                      <LocalizedText source={"Confidence"} />{" "}{entry.confidence}<LocalizedText source={"; witnesses"} />{" "}{entry.witnessCount}<LocalizedText source={"; provenance"} />{" "}{entry.provenance.trustTier}
+                      <LocalizedText source={"Confidence"} />{" "}{formatRegionalNumber(entry.confidence)}<LocalizedText source={"; witnesses"} />{" "}{formatRegionalNumber(entry.witnessCount)}<LocalizedText source={"; provenance"} />{" "}{entry.provenance.trustTier}
                       {entry.reasons.length > 0
-                        ? `; rejected because ${entry.reasons.join(', ')}`
+                        ? interfaceText('; rejected because {reasons}', {
+                          reasons: entry.reasons.join(', '),
+                        })
                         : <LocalizedText source={"; accepted for local use"} />}
                     </List.Description>
                   </List.Content>

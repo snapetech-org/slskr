@@ -2,7 +2,7 @@ import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 
 
-import { formatRegionalDateTime, useRegionalFormat } from '../../../lib/util';
+import { formatRegionalDateTime, formatRegionalFixedNumber, useRegionalFormat, formatRegionalNumber } from '../../../lib/util';
 import * as mediacore from '../../../lib/mediacore';
 import { toDisplayError } from '../../../lib/errors';
 import Button from './MediaCoreButton';
@@ -238,9 +238,7 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
                         {formatRegionalDateTime(retrievalResult.retrievedAt)}
                         <br />
                         <strong><LocalizedText source={"Duration:"} /></strong>{' '}
-                        {retrievalResult.retrievalDuration?.totalMilliseconds.toFixed(
-                          0,
-                        )}
+                        {formatRegionalFixedNumber(retrievalResult.retrievalDuration?.totalMilliseconds, 0)}
                         <LocalizedText source={"ms"} /><br />
                         <strong><LocalizedText source={"Verified:"} /></strong>{' '}
                         {retrievalResult.verification?.isValid ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
@@ -309,17 +307,16 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
                       <Message.Header><LocalizedText source={"Batch Retrieval Results"} /></Message.Header>
                       <p>
                         <strong><LocalizedText source={"Requested:"} /></strong>{' '}
-                        {batchRetrievalResult.requested}
+                        {formatRegionalNumber(batchRetrievalResult.requested)}
                         <br />
-                        <strong><LocalizedText source={"Found:"} /></strong> {batchRetrievalResult.found}
+                        <strong><LocalizedText source={"Found:"} /></strong> {formatRegionalNumber(batchRetrievalResult.found)}
                         <br />
-                        <strong><LocalizedText source={"Failed:"} /></strong> {batchRetrievalResult.failed}
+                        <strong><LocalizedText source={"Failed:"} /></strong> {formatRegionalNumber(batchRetrievalResult.failed)}
                         <br />
                         <strong><LocalizedText source={"Duration:"} /></strong>{' '}
-                        {batchRetrievalResult.totalDuration?.totalSeconds.toFixed(
-                          2,
-                        )}
-                        <LocalizedText source={"s"} /></p>
+                        {batchRetrievalResult.totalDuration?.totalSeconds === undefined
+                          ? '—'
+                          : formatRegionalFixedNumber(batchRetrievalResult.totalDuration.totalSeconds, 2)}s</p>
                     </Message>
                   )}
                 </div>
@@ -406,12 +403,10 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
                           </span>
                         )}
                         <br />
-                        <strong><LocalizedText source={"Found:"} /></strong> {queryResult.totalFound}
+                        <strong><LocalizedText source={"Found:"} /></strong> {formatRegionalNumber(queryResult.totalFound)}
                         <br />
                         <strong><LocalizedText source={"Query Time:"} /></strong>{' '}
-                        {queryResult.queryDuration?.totalMilliseconds.toFixed(
-                          0,
-                        )}
+                        {formatRegionalFixedNumber(queryResult.queryDuration?.totalMilliseconds, 0)}
                         <LocalizedText source={"ms"} /><br />
                         <strong><LocalizedText source={"Has More:"} /></strong>{' '}
                         {queryResult.hasMoreResults ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
@@ -483,9 +478,7 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
                           : <LocalizedText source={"No"} />}
                         <br />
                         <strong><LocalizedText source={"Age:"} /></strong>{' '}
-                        {descriptorVerificationResult.age?.totalMinutes.toFixed(
-                          1,
-                        )}{' '}
+                        {formatRegionalFixedNumber(descriptorVerificationResult.age?.totalMinutes, 1)}{' '}
                         <LocalizedText source={"minutes"} /></p>
                       {descriptorVerificationResult.warnings?.length > 0 && (
                         <div>
@@ -540,25 +533,23 @@ const ContentDescriptorRetrievalPanel = ({ setVerificationResult }) => {
                       <Message.Header><LocalizedText source={"Retrieval Statistics"} /></Message.Header>
                       <p>
                         <strong><LocalizedText source={"Total Retrievals:"} /></strong>{' '}
-                        {retrievalStats.totalRetrievals}
+                        {formatRegionalNumber(retrievalStats.totalRetrievals)}
                         <br />
-                        <strong><LocalizedText source={"Cache Hits:"} /></strong> {retrievalStats.cacheHits}
+                        <strong><LocalizedText source={"Cache Hits:"} /></strong> {formatRegionalNumber(retrievalStats.cacheHits)}
                         <br />
                         <strong><LocalizedText source={"Cache Misses:"} /></strong>{' '}
-                        {retrievalStats.cacheMisses}
+                        {formatRegionalNumber(retrievalStats.cacheMisses)}
                         <br />
                         <strong><LocalizedText source={"Hit Ratio:"} /></strong>{' '}
-                        {(retrievalStats.cacheHitRatio * 100).toFixed(1)}%<br />
+                        {formatRegionalFixedNumber((retrievalStats.cacheHitRatio * 100), 1)}%<br />
                         <strong><LocalizedText source={"Avg Retrieval Time:"} /></strong>{' '}
-                        {retrievalStats.averageRetrievalTime?.totalMilliseconds.toFixed(
-                          0,
-                        )}
+                        {formatRegionalFixedNumber(retrievalStats.averageRetrievalTime?.totalMilliseconds, 0)}
                         <LocalizedText source={"ms"} /><br />
                         <strong><LocalizedText source={"Active Cache Entries:"} /></strong>{' '}
-                        {retrievalStats.activeCacheEntries}
+                        {formatRegionalNumber(retrievalStats.activeCacheEntries)}
                         <br />
                         <strong><LocalizedText source={"Cache Size:"} /></strong>{' '}
-                        {(retrievalStats.cacheSizeBytes / 1_024).toFixed(1)} KB
+                        {formatRegionalFixedNumber((retrievalStats.cacheSizeBytes / 1_024), 1)} KB
                       </p>
                     </Message>
                   )}

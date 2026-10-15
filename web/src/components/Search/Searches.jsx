@@ -1,4 +1,4 @@
-import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
+import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import './Search.css';
 import SearchesListView from './SearchesListView';
 import { toDisplayError } from '../../lib/errors';
@@ -33,15 +33,26 @@ const searchEventIdentifier = (eventOrSearch) =>
   eventOrSearch?.searchId ??
   eventOrSearch?.id ??
   eventOrSearch?.token;
+
+const updateSearchRecord = (records, id, record) =>
+  new Map(records).set(String(id), record);
+
+const hasSearchRecord = (records, id) =>
+  records.has(String(id));
+
+const getSearchRecord = (records, id) =>
+  records.get(String(id));
+
 const SEARCH_CREATE_HYDRATION_TIMEOUT_MS = 1_500;
 
 const Searches = ({ runtimeProfile, server } = {}) => {
+  useInterfaceLanguage();
   const normalizedServer = server ?? { isConnected: false };
   const [connecting, setConnecting] = useState(true);
   const [connectionError, setConnectionError] = useState(undefined);
   const [loadError, setLoadError] = useState(undefined);
   const error = loadError || connectionError;
-  const [searches, setSearches] = useState({});
+  const [searches, setSearches] = useState(() => new Map());
   const [initialSearchesLoaded, setInitialSearchesLoaded] = useState(false);
   const [hasSearchData, setHasSearchData] = useState(false);
 
@@ -174,15 +185,14 @@ const Searches = ({ runtimeProfile, server } = {}) => {
         );
         setHasSearchData(true);
         setLoadError(undefined);
-        onUpdate(
-          searchRecords.reduce((accumulator, search) => {
-            const id = searchEventIdentifier(search);
-            if (id !== undefined && id !== null) {
-              accumulator[id] = { ...search, id };
-            }
-            return accumulator;
-          }, {}),
-        );
+        const recordsById = searchRecords.reduce((accumulator, search) => {
+          const id = searchEventIdentifier(search);
+          if (id !== undefined && id !== null) {
+            accumulator.set(String(id), { ...search, id });
+          }
+          return accumulator;
+        }, new Map());
+        onUpdate(recordsById);
       } catch (loadError) {
         if (
           !mounted ||
@@ -192,7 +202,7 @@ const Searches = ({ runtimeProfile, server } = {}) => {
           return;
         }
         if (!hubListReceived) {
-          setLoadError(toDisplayError(loadError, 'Failed to load searches'));
+          setLoadError(toDisplayError(loadError, interfaceText('Failed to load searches')));
         }
       } finally {
         if (
@@ -212,10 +222,11 @@ const Searches = ({ runtimeProfile, server } = {}) => {
           await loadSearches();
           return;
         }
-        onUpdate((old) => ({
-          ...old,
-          [id]: { ...mergeSearchRecords(old[id], eventOrSearch), id },
-        }));
+        onUpdate((old) => updateSearchRecord(
+          old,
+          id,
+          { ...mergeSearchRecords(getSearchRecord(old, id), eventOrSearch), id },
+        ));
         return;
       }
 
@@ -237,13 +248,14 @@ const Searches = ({ runtimeProfile, server } = {}) => {
           return;
         }
         const searchId = searchEventIdentifier(search) ?? id;
-        onUpdate((old) => ({
-          ...old,
-          [searchId]: {
-            ...mergeSearchRecords(old[searchId], search),
+        onUpdate((old) => updateSearchRecord(
+          old,
+          searchId,
+          {
+            ...mergeSearchRecords(getSearchRecord(old, searchId), search),
             id: searchId,
           },
-        }));
+        ));
       } catch (refreshError) {
         console.debug('failed to refresh search event payload', refreshError);
         if (
@@ -271,15 +283,14 @@ const Searches = ({ runtimeProfile, server } = {}) => {
       hubListReceived = true;
       setHasSearchData(true);
       setLoadError(undefined);
-      onUpdate(
-        searchesEvent.reduce((accumulator, search) => {
-          const id = searchEventIdentifier(search);
-          if (id !== undefined && id !== null) {
-            accumulator[id] = { ...search, id };
-          }
-          return accumulator;
-        }, {}),
-      );
+      const recordsById = searchesEvent.reduce((accumulator, search) => {
+        const id = searchEventIdentifier(search);
+        if (id !== undefined && id !== null) {
+          accumulator.set(String(id), { ...search, id });
+        }
+        return accumulator;
+      }, new Map());
+      onUpdate(recordsById);
       onConnected();
     });
 
@@ -293,8 +304,8 @@ const Searches = ({ runtimeProfile, server } = {}) => {
         return;
       }
       onUpdate((old) => {
-        const next = { ...old };
-        delete next[id];
+        const next = Object.assign(Object.create(null), old);
+        delete next[String(id)];
         return next;
       });
     });
@@ -454,16 +465,17 @@ const Searches = ({ runtimeProfile, server } = {}) => {
         return;
       }
 
-      setSearches((old) => ({
-        ...old,
-        [id]: {
+      setSearches((old) => updateSearchRecord(
+        old,
+        id,
+        {
           ...mergeSearchRecords(
-            mergeSearchRecords(initialSearch, old[id] ?? {}),
+            mergeSearchRecords(initialSearch, getSearchRecord(old, id) ?? {}),
             hydratedSearch,
           ),
           id,
         },
-      }));
+      ));
 
       if (ref) {
         ref.value = '';
@@ -507,8 +519,8 @@ const Searches = ({ runtimeProfile, server } = {}) => {
         return;
       }
       setSearches((old) => {
-        const next = { ...old };
-        delete next[search.id];
+        const next = new Map(old);
+        next.delete(String(search.id));
         return next;
       });
     } catch (error_) {
@@ -548,7 +560,7 @@ const Searches = ({ runtimeProfile, server } = {}) => {
       ) {
         return;
       }
-      setSearches({});
+      setSearches(new Map());
       toast.success(`Cleared ${result?.data?.deleted ?? 'all'} searches`);
     } catch (removeAllError) {
       if (
@@ -584,19 +596,20 @@ const Searches = ({ runtimeProfile, server } = {}) => {
       if (!mountedRef.current || stopRequestIdRef.current !== requestId) {
         return;
       }
-      setSearches((old) => ({
-        ...old,
-        [search.id]: {
+      setSearches((old) => updateSearchRecord(
+        old,
+        search.id,
+        {
           ...search,
           // The row callback can hold an older projection than the hub/REST
           // state. Preserve the freshest fields while forcing cancellation.
-          ...old[search.id],
+          ...getSearchRecord(old, search.id),
           endedAt: new Date().toISOString(),
           isComplete: true,
           state: 'Cancelled',
           status: 'cancelled',
         },
-      }));
+      ));
     } catch (stoppingError) {
       if (!mountedRef.current || stopRequestIdRef.current !== requestId) {
         return;
@@ -627,7 +640,7 @@ const Searches = ({ runtimeProfile, server } = {}) => {
       !searchId ||
       creating ||
       !initialSearchesLoaded ||
-      searches[searchId]
+      hasSearchRecord(searches, searchId)
     ) {
       return;
     }
@@ -650,10 +663,11 @@ const Searches = ({ runtimeProfile, server } = {}) => {
         ) {
           return;
         }
-        onUpdate((old) => ({
-          ...old,
-          [searchId]: { ...search, id: searchId },
-        }));
+        onUpdate((old) => updateSearchRecord(
+          old,
+          searchId,
+          { ...search, id: searchId },
+        ));
       } catch (loadError) {
         if (!cancelled && mountedRef.current) {
           console.debug('failed to load search details', loadError);
@@ -682,12 +696,14 @@ const Searches = ({ runtimeProfile, server } = {}) => {
   }
 
   if (error && !hasSearchData) {
-    return <ErrorSegment caption={toDisplayError(error, 'Failed to load searches')} />;
+    return <ErrorSegment caption={toDisplayError(error, interfaceText('Failed to load searches'))} />;
   }
 
   const searchDataWarning = error && hasSearchData ? (
     <Message
-      content={`${toDisplayError(error, 'Search updates are unavailable')}. Showing the last successfully loaded search data.`}
+      content={interfaceText('{error}. Showing the last successfully loaded search data.', {
+        error: toDisplayError(error, interfaceText('Search updates are unavailable')),
+      })}
       size="small"
       warning
     />
@@ -696,7 +712,7 @@ const Searches = ({ runtimeProfile, server } = {}) => {
   // if searchId is not null, there's an id in the route.
   // display the details for the search, if there is one
   if (searchId) {
-    if (searches[searchId]) {
+    if (hasSearchRecord(searches, searchId)) {
       return (
         <>
           {searchDataWarning}
@@ -707,7 +723,7 @@ const Searches = ({ runtimeProfile, server } = {}) => {
             onRemove={remove}
             onStop={stop}
             removing={removing}
-            search={searches[searchId]}
+            search={getSearchRecord(searches, searchId)}
             stopping={stopping}
           />
         </>
@@ -751,7 +767,7 @@ const Searches = ({ runtimeProfile, server } = {}) => {
           removingAll,
           runtimeProfile,
           scenePodBridgeEnabled,
-          searches,
+          searches: Array.from(searches.values()),
         }}
       />
     </>

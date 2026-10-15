@@ -1,5 +1,6 @@
 import LocalizedText from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
+import { formatRegionalFixedNumber, useRegionalFormat, formatRegionalNumber } from '../../../lib/util';
 
 
 import * as mediacore from '../../../lib/mediacore';
@@ -36,6 +37,7 @@ const useMountedState = (mountedRef, initialValue) => {
 
 const ContentDescriptorPublishingPanel = () => {
   useInterfaceLanguage();
+  useRegionalFormat();
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -290,21 +292,20 @@ const ContentDescriptorPublishingPanel = () => {
                       <Message.Header><LocalizedText source={"Batch Publish Results"} /></Message.Header>
                       <p>
                         <strong><LocalizedText source={"Total Requested:"} /></strong>{' '}
-                        {batchPublishResult.totalRequested}
+                        {formatRegionalNumber(batchPublishResult.totalRequested)}
                         <br />
                         <strong><LocalizedText source={"Successfully Published:"} /></strong>{' '}
-                        {batchPublishResult.successfullyPublished}
+                        {formatRegionalNumber(batchPublishResult.successfullyPublished)}
                         <br />
                         <strong><LocalizedText source={"Failed:"} /></strong>{' '}
                         {batchPublishResult.failedToPublish}
                         <br />
-                        <strong><LocalizedText source={"Skipped:"} /></strong> {batchPublishResult.skipped}
+                        <strong><LocalizedText source={"Skipped:"} /></strong> {formatRegionalNumber(batchPublishResult.skipped)}
                         <br />
                         <strong><LocalizedText source={"Duration:"} /></strong>{' '}
-                        {batchPublishResult.totalDuration?.totalSeconds.toFixed(
-                          2,
-                        )}
-                        <LocalizedText source={"s"} /></p>
+                        {batchPublishResult.totalDuration?.totalSeconds === undefined
+                          ? '—'
+                          : formatRegionalFixedNumber(batchPublishResult.totalDuration.totalSeconds, 2)}s</p>
                     </Message>
                   )}
                 </div>
@@ -434,15 +435,17 @@ const ContentDescriptorPublishingPanel = () => {
                         <strong><LocalizedText source={"Checked:"} /></strong> {republishResult.totalChecked}
                         <br />
                         <strong><LocalizedText source={"Republished:"} /></strong>{' '}
-                        {republishResult.republished}
+                        {formatRegionalNumber(republishResult.republished)}
                         <br />
-                        <strong><LocalizedText source={"Failed:"} /></strong> {republishResult.failed}
+                        <strong><LocalizedText source={"Failed:"} /></strong> {formatRegionalNumber(republishResult.failed)}
                         <br />
                         <strong><LocalizedText source={"Still Valid:"} /></strong>{' '}
                         {republishResult.stillValid}
                         <br />
                         <strong><LocalizedText source={"Duration:"} /></strong>{' '}
-                        {republishResult.duration?.totalSeconds.toFixed(2)}<LocalizedText source={"s"} /></p>
+                        {republishResult.duration?.totalSeconds === undefined
+                          ? '—'
+                          : formatRegionalFixedNumber(republishResult.duration.totalSeconds, 2)}s</p>
                     </Message>
                   )}
                 </div>
@@ -463,19 +466,19 @@ const ContentDescriptorPublishingPanel = () => {
                         {publishingStats.totalPublishedDescriptors}
                         <br />
                         <strong><LocalizedText source={"Active Publications:"} /></strong>{' '}
-                        {publishingStats.activePublications}
+                        {formatRegionalNumber(publishingStats.activePublications)}
                         <br />
                         <strong><LocalizedText source={"Expiring Soon:"} /></strong>{' '}
                         {publishingStats.expiringSoon}
                         <br />
                         <strong><LocalizedText source={"Average TTL:"} /></strong>{' '}
-                        {publishingStats.averageTtlHours?.toFixed(1)} <LocalizedText source={"hours"} /><br />
+                        {formatRegionalFixedNumber(publishingStats.averageTtlHours, 1)} <LocalizedText source={"hours"} /><br />
                         <strong><LocalizedText source={"Total Storage:"} /></strong>{' '}
-                        {(
+                        {formatRegionalFixedNumber((
                           publishingStats.totalStorageBytes /
                           1_024 /
                           1_024
-                        )?.toFixed(1)}{' '}
+                        ), 1)}{' '}
                         MB
                       </p>
                       {publishingStats.publicationsByDomain &&

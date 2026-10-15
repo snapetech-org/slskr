@@ -7,6 +7,7 @@ import { toDisplayError } from '../../../lib/errors';
 import { usePolling } from '../../../lib/usePolling';
 import { useMountedRef } from '../../../lib/useMountedRef';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { formatRegionalFixedNumber, useRegionalFormat, formatRegionalNumber } from '../../../lib/util';
 import {
   Button,
   Card,
@@ -121,6 +122,7 @@ const normalizeDashboard = (value) => {
 
 const Bridge = () => {
   useInterfaceLanguage();
+  useRegionalFormat();
   const [config, setConfig] = useState(null);
   const [dashboard, setDashboard] = useState(null);
   const [dashboardError, setDashboardError] = useState(null);
@@ -531,7 +533,7 @@ const Bridge = () => {
                   </Statistic>
                   <Statistic>
                     <Statistic.Value>
-                      {(stats.totalBytesProxied / 1_024 / 1_024).toFixed(2)}
+                      {formatRegionalFixedNumber((stats.totalBytesProxied / 1_024 / 1_024), 2)}
                     </Statistic.Value>
                     <Statistic.Label><LocalizedText source={"MB Proxied"} /></Statistic.Label>
                   </Statistic>
@@ -556,13 +558,13 @@ const Bridge = () => {
                 <Statistic.Group size="small">
                   <Statistic>
                     <Statistic.Value>
-                      {meshBenefits.meshPercentage.toFixed(1)}%
+                      {formatRegionalFixedNumber(meshBenefits.meshPercentage, 1)}%
                     </Statistic.Value>
                     <Statistic.Label><LocalizedText source={"Via Mesh"} /></Statistic.Label>
                   </Statistic>
                   <Statistic>
                     <Statistic.Value>
-                      {(meshBenefits.bytesViaMesh / 1_024 / 1_024).toFixed(2)}
+                      {formatRegionalFixedNumber((meshBenefits.bytesViaMesh / 1_024 / 1_024), 2)}
                     </Statistic.Value>
                     <Statistic.Label><LocalizedText source={"MB via Mesh"} /></Statistic.Label>
                   </Statistic>
@@ -609,7 +611,7 @@ const Bridge = () => {
                       <Table.Row key={client.clientId || 'client-' + index}>
                         <Table.Cell>{client.clientType}</Table.Cell>
                         <Table.Cell>{client.ipAddress}</Table.Cell>
-                        <Table.Cell>{client.requestCount}</Table.Cell>
+                        <Table.Cell>{formatRegionalNumber(client.requestCount)}</Table.Cell>
                       </Table.Row>
                     ))}
                   </Table.Body>
