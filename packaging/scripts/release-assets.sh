@@ -38,7 +38,7 @@ slskr_wait_for_asset() {
   local tag="$1"
   local asset="$2"
   local output="$3"
-  local repo="${GITHUB_REPOSITORY:-snapetech/slskr}"
+  local repo="${GITHUB_REPOSITORY:-snapetech-org/slskr}"
   local url="https://github.com/${repo}/releases/download/${tag}/${asset}"
   local auth_args=()
   if [[ -n "${GH_TOKEN:-}" ]]; then

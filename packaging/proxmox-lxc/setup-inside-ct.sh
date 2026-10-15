@@ -18,7 +18,7 @@ apt-get update -qq
 apt-get install -y -qq ca-certificates curl tar
 
 if [ -z "$VERSION" ]; then
-  VERSION="$(curl --fail --silent --show-error https://api.github.com/repos/snapetech/slskr/releases/latest \
+  VERSION="$(curl --fail --silent --show-error https://api.github.com/repos/snapetech-org/slskr/releases/latest \
     | sed -n 's/.*"tag_name":[[:space:]]*"\([^"]*\)".*/\1/p' | head -n 1)"
 fi
 [ -n "$VERSION" ] || { echo "Unable to resolve a slskR release." >&2; exit 1; }
@@ -36,9 +36,9 @@ ARCHIVE="slskr-${VERSION#release-v}-${rust_arch}-unknown-linux-gnu.tar.gz"
 WORK_DIR="$(mktemp -d)"
 trap 'rm -rf "$WORK_DIR"' EXIT
 curl --fail --location --output "${WORK_DIR}/${ARCHIVE}" \
-  "https://github.com/snapetech/slskr/releases/download/${VERSION}/${ARCHIVE}"
+  "https://github.com/snapetech-org/slskr/releases/download/${VERSION}/${ARCHIVE}"
 curl --fail --location --output "${WORK_DIR}/SHA256SUMS.txt" \
-  "https://github.com/snapetech/slskr/releases/download/${VERSION}/SHA256SUMS.txt"
+  "https://github.com/snapetech-org/slskr/releases/download/${VERSION}/SHA256SUMS.txt"
 grep -Eq "^[0-9a-fA-F]{64}[[:space:]]+\*?${ARCHIVE//./\\.}$" "${WORK_DIR}/SHA256SUMS.txt" \
   || { echo "Release checksum does not cover ${ARCHIVE}." >&2; exit 1; }
 (cd "$WORK_DIR" && sha256sum --check --ignore-missing SHA256SUMS.txt)

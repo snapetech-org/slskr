@@ -423,7 +423,7 @@ pub(super) fn resolve_peer_profile<E: ConfigEnv>(
         &["SLSKR_USER_INFO_DESCRIPTION", "SLSKD_SLSK_DESCRIPTION"],
     )
     .or(profile_user_info_description)
-    .unwrap_or_else(|| "A slskR user. https://github.com/snapetech/slskr".to_owned());
+    .unwrap_or_else(|| "A slskR user. https://github.com/snapetech-org/slskr".to_owned());
     let user_info_picture = optional_env_any(
         env,
         &[

@@ -11,7 +11,7 @@ import {
   Popup,
 } from 'semantic-ui-react';
 
-const SLSKR_RELEASES_URL = 'https://github.com/snapetech/slskr/releases';
+const SLSKR_RELEASES_URL = 'https://github.com/snapetech-org/slskr/releases';
 
 const AppHeaderMenu = ({
   connectionWatchdog,

@@ -5,8 +5,8 @@
     <version>0.2.52</version>
     <title>slskR</title>
     <authors>snapetech</authors>
-    <projectUrl>https://github.com/snapetech/slskr</projectUrl>
-    <licenseUrl>https://github.com/snapetech/slskr/blob/main/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/snapetech-org/slskr</projectUrl>
+    <licenseUrl>https://github.com/snapetech-org/slskr/blob/main/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>slskr soulseek p2p daemon</tags>
     <summary>Rust Soulseek daemon with bundled Web UI</summary>

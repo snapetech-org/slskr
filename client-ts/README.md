@@ -427,7 +427,7 @@ AGPL-3.0-only. See the repository `LICENSE` and `NOTICE` files for details.
 ## Support
 
 - Documentation: [docs/http-api.md](../docs/http-api.md)
-- GitHub Issues: [Report bugs](https://github.com/snapetech/slskr/issues)
+- GitHub Issues: [Report bugs](https://github.com/snapetech-org/slskr/issues)
 
 ## Changelog
 

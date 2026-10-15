@@ -14,7 +14,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="slskr contributors",
-    url="https://github.com/snapetech/slskr",
+    url="https://github.com/snapetech-org/slskr",
     packages=find_packages(),
     python_requires=">=3.10,<4",
     install_requires=[

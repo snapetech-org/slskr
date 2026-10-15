@@ -90,8 +90,8 @@ node:client-ts:
 
 .github_publication_defaults:
   variables:
-    GITHUB_MIRROR_URL: "git@github.com:snapetech/slskr.git"
-    GITHUB_REPOSITORY: "snapetech/slskr"
+    GITHUB_MIRROR_URL: "git@github.com:snapetech-org/slskr.git"
+    GITHUB_REPOSITORY: "snapetech-org/slskr"
 
 # External publication is intentionally gated on all earlier GitLab stages.
 # Set GITHUB_MIRROR_SSH_KEY, GITHUB_TOKEN, and GHCR_TOKEN in GitLab CI as needed.

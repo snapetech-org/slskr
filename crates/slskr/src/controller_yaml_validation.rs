@@ -1239,7 +1239,7 @@ pub(crate) fn controller_yaml_target_validation_error(
                     };
                     // Frozen native profile#65a14a8 uses integer RangeAttribute
                     // operands on this double and rounds the boundary before
-                    // validation.  Upstream correction: snapetech/slskdN#271.
+                    // validation.  Upstream correction: snapetech-org/slskdN#271.
                     if !parsed
                         .is_some_and(|value| value.is_finite() && (-0.5..=100.5).contains(&value))
                     {

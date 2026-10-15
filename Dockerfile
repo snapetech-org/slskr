@@ -29,7 +29,7 @@ ARG BUILD_DATE=unknown
 
 LABEL org.opencontainers.image.title="slskr" \
       org.opencontainers.image.description="Rust Soulseek daemon with bundled Web UI" \
-      org.opencontainers.image.source="https://github.com/snapetech/slskr" \
+      org.opencontainers.image.source="https://github.com/snapetech-org/slskr" \
       org.opencontainers.image.version="${VERSION}" \
       org.opencontainers.image.revision="${REVISION}" \
       org.opencontainers.image.created="${BUILD_DATE}" \

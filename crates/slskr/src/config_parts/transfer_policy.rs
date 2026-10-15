@@ -120,7 +120,7 @@ impl TransferAutoRetrySettings {
                 // The frozen native profile snapshot applies an integer-operand
                 // RangeAttribute to this double.  Its conversion rounds
                 // fractional boundary values, accepting -0.5 through 100.5.
-                // Upstream correction: snapetech/slskdN#271.
+                // Upstream correction: snapetech-org/slskdN#271.
                 if !value.is_finite() || !(-0.5..=100.5).contains(&value) {
                     return Err(
                         "SLSKR_TRANSFER_AUTO_RETRY_ALTERNATE_SOURCE_SIZE_TOLERANCE_PERCENT must be between 0 and 100"

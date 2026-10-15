@@ -19,7 +19,7 @@ resolve_version() {
     printf '%s\n' "$VERSION"
     return
   fi
-  curl --fail --silent --show-error https://api.github.com/repos/snapetech/slskr/releases/latest \
+  curl --fail --silent --show-error https://api.github.com/repos/snapetech-org/slskr/releases/latest \
     | sed -n 's/.*"tag_name":[[:space:]]*"\([^"]*\)".*/\1/p' | head -n 1
 }
 
@@ -45,9 +45,9 @@ ARCHIVE_PATH="${WORK_DIR}/${ARCHIVE}"
 CHECKSUMS_PATH="${WORK_DIR}/SHA256SUMS.txt"
 
 curl --fail --location --output "$ARCHIVE_PATH" \
-  "https://github.com/snapetech/slskr/releases/download/${VERSION}/${ARCHIVE}"
+  "https://github.com/snapetech-org/slskr/releases/download/${VERSION}/${ARCHIVE}"
 curl --fail --location --output "$CHECKSUMS_PATH" \
-  "https://github.com/snapetech/slskr/releases/download/${VERSION}/SHA256SUMS.txt"
+  "https://github.com/snapetech-org/slskr/releases/download/${VERSION}/SHA256SUMS.txt"
 grep -Eq "^[0-9a-fA-F]{64}[[:space:]]+\*?${ARCHIVE//./\\.}$" "$CHECKSUMS_PATH" \
   || { echo "Release checksum does not cover ${ARCHIVE}." >&2; exit 1; }
 (cd "$WORK_DIR" && sha256sum --check --ignore-missing SHA256SUMS.txt)

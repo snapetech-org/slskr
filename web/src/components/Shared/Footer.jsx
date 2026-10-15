@@ -16,7 +16,7 @@ import { urlBase } from '../../config';
 import React, { Component } from 'react';
 import { Icon } from 'semantic-ui-react';
 
-const GITHUB_BASE = 'https://github.com/snapetech/slskr';
+const GITHUB_BASE = 'https://github.com/snapetech-org/slskr';
 
 const formatSpeed = (bytesPerSec) => {
   if (!bytesPerSec || bytesPerSec === 0) {

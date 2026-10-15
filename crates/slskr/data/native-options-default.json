@@ -262,7 +262,7 @@
       "retryAttempts": 2,
       "timeout": "00:00:20",
       "timeoutSeconds": 20,
-      "userAgent": "slskr/0.0.0 (https://github.com/snapetech/slskr)"
+      "userAgent": "slskr/0.0.0 (https://github.com/snapetech-org/slskr)"
     },
     "ntfy": {
       "accessToken": "*****",
@@ -614,7 +614,7 @@
         "transfer": 60000
       }
     },
-    "description": "A slskr user. Native Soulseek client: https://github.com/snapetech/slskr",
+    "description": "A slskr user. Native Soulseek client: https://github.com/snapetech-org/slskr",
     "diagnosticLevel": "info",
     "distributedNetwork": {
       "childLimit": 25,

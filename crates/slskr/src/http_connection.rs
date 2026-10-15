@@ -41,7 +41,7 @@ where
                     // Frozen native profile#65a14a8 lets Kestrel's body-limit
                     // BadHttpRequestException reach its generic exception
                     // handler, producing a 500 Problem Details response.
-                    // Upstream correction: snapetech/slskdN#276.
+                    // Upstream correction: snapetech-org/slskdN#276.
                     let body = format!(
                         "{{\"title\":\"Internal Server Error\",\"status\":500,\"detail\":\"An unexpected error occurred.\",\"traceId\":\"{}\"}}",
                         uuid::Uuid::new_v4().simple()

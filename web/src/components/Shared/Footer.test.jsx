@@ -58,7 +58,7 @@ describe('Footer', () => {
       isUpdateAvailable: false,
       latest: '0.0.0-slskr.manual.test',
       latestTag: '0.0.0-slskr.manual.test',
-      latestUrl: 'https://github.com/snapetech/slskr/releases/tag/test',
+      latestUrl: 'https://github.com/snapetech-org/slskr/releases/tag/test',
     });
     localStorage.setItem('slskr-karma', '2');
   });
@@ -91,7 +91,7 @@ describe('Footer', () => {
       isUpdateAvailable: true,
       latest: '2026050500-slskr.221',
       latestTag: 'build-main-2026050500-slskr.221',
-      latestUrl: 'https://github.com/snapetech/slskr/releases/tag/build-main-2026050500-slskr.221',
+      latestUrl: 'https://github.com/snapetech-org/slskr/releases/tag/build-main-2026050500-slskr.221',
     });
 
     render(<Footer />);
