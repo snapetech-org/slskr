@@ -3,6 +3,7 @@ export const validation = {
   repository: 'slskr',
   maxConcurrentTasks: 3,
   inputs: [
+    'AGENTS.md',
     'Cargo.lock',
     'Cargo.toml',
     'rust-toolchain.toml',
