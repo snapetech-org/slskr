@@ -18,10 +18,14 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
-## [0.2.57] — 2026-10-13
+## [0.2.57] — 2026-10-14
 
 - Added browser-local interface-language and regional-format preferences across
   navigation, transfer states, dates, metrics, and accessibility labels.
+- Expanded Web UI localization across chat, player, SongID, search, network,
+  integrations, shares, transfers, and system screens in all twelve locales.
+- Updated the Rust TLS dependency to address four upstream security fixes.
+- Migrated repository, release, issue, and support links to `snapetech-org/slskr`.
 - Fixed release-gate baseline setup for clean checkouts and task-scoped
   temporary paths, including comparison of slskR's share-scan progress field.
 - Narrowed secret-scan exceptions to fixed synthetic token sentinels and canary
