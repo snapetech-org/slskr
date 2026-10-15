@@ -34,25 +34,14 @@ const searchEventIdentifier = (eventOrSearch) =>
   eventOrSearch?.id ??
   eventOrSearch?.token;
 
-// Search IDs come from route parameters and peer data; keep them as own data keys.
-const defineSearchRecord = (records, id, record) => {
-  Object.defineProperty(records, String(id), {
-    configurable: true,
-    enumerable: true,
-    value: record,
-    writable: true,
-  });
-  return records;
-};
-
 const updateSearchRecord = (records, id, record) =>
-  defineSearchRecord(Object.assign(Object.create(null), records), id, record);
+  new Map(records).set(String(id), record);
 
 const hasSearchRecord = (records, id) =>
-  Object.prototype.hasOwnProperty.call(records, String(id));
+  records.has(String(id));
 
 const getSearchRecord = (records, id) =>
-  hasSearchRecord(records, id) ? records[String(id)] : undefined;
+  records.get(String(id));
 
 const SEARCH_CREATE_HYDRATION_TIMEOUT_MS = 1_500;
 
@@ -63,7 +52,7 @@ const Searches = ({ runtimeProfile, server } = {}) => {
   const [connectionError, setConnectionError] = useState(undefined);
   const [loadError, setLoadError] = useState(undefined);
   const error = loadError || connectionError;
-  const [searches, setSearches] = useState(() => Object.create(null));
+  const [searches, setSearches] = useState(() => new Map());
   const [initialSearchesLoaded, setInitialSearchesLoaded] = useState(false);
   const [hasSearchData, setHasSearchData] = useState(false);
 
@@ -199,10 +188,10 @@ const Searches = ({ runtimeProfile, server } = {}) => {
         const recordsById = searchRecords.reduce((accumulator, search) => {
           const id = searchEventIdentifier(search);
           if (id !== undefined && id !== null) {
-            defineSearchRecord(accumulator, id, { ...search, id });
+            accumulator.set(String(id), { ...search, id });
           }
           return accumulator;
-        }, Object.create(null));
+        }, new Map());
         onUpdate(recordsById);
       } catch (loadError) {
         if (
@@ -297,10 +286,10 @@ const Searches = ({ runtimeProfile, server } = {}) => {
       const recordsById = searchesEvent.reduce((accumulator, search) => {
         const id = searchEventIdentifier(search);
         if (id !== undefined && id !== null) {
-          defineSearchRecord(accumulator, id, { ...search, id });
+          accumulator.set(String(id), { ...search, id });
         }
         return accumulator;
-      }, Object.create(null));
+      }, new Map());
       onUpdate(recordsById);
       onConnected();
     });
@@ -530,8 +519,8 @@ const Searches = ({ runtimeProfile, server } = {}) => {
         return;
       }
       setSearches((old) => {
-        const next = Object.assign(Object.create(null), old);
-        delete next[String(search.id)];
+        const next = new Map(old);
+        next.delete(String(search.id));
         return next;
       });
     } catch (error_) {
@@ -571,7 +560,7 @@ const Searches = ({ runtimeProfile, server } = {}) => {
       ) {
         return;
       }
-      setSearches(Object.create(null));
+      setSearches(new Map());
       toast.success(`Cleared ${result?.data?.deleted ?? 'all'} searches`);
     } catch (removeAllError) {
       if (
@@ -778,7 +767,7 @@ const Searches = ({ runtimeProfile, server } = {}) => {
           removingAll,
           runtimeProfile,
           scenePodBridgeEnabled,
-          searches,
+          searches: Array.from(searches.values()),
         }}
       />
     </>
