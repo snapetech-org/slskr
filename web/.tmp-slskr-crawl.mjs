@@ -15,10 +15,15 @@ const ignoreConsole = [
   /React Router Future Flag Warning/,
   /Download the React DevTools/,
 ];
-const ignoreFailed = [
-  /fonts\.gstatic\.com/,
-  /fonts\.googleapis\.com/,
-];
+const ignoredFontHosts = new Set(['fonts.gstatic.com', 'fonts.googleapis.com']);
+
+const isIgnoredFontRequest = url => {
+  try {
+    return ignoredFontHosts.has(new URL(url).hostname.toLowerCase());
+  } catch {
+    return false;
+  }
+};
 
 const browser = await chromium.launch();
 const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
@@ -36,7 +41,7 @@ for (const route of routes) {
   page.on('pageerror', err => events.push({ type: 'pageerror', text: err.message }));
   page.on('requestfailed', req => {
     const url = req.url();
-    if (!ignoreFailed.some(r => r.test(url))) {
+    if (!isIgnoredFontRequest(url)) {
       events.push({ type: 'requestfailed', text: `${req.method()} ${url} ${req.failure()?.errorText}` });
     }
   });
