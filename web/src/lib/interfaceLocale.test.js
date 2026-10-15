@@ -81,6 +81,7 @@ const untranslatedTechnicalExamples = new Set([
 const localizationAuditFiles = new Set([
   'components/App.jsx',
   'components/Browse/Directory.jsx',
+  'components/Browse/DirectoryTree.jsx',
   'components/Chat/Chat.jsx',
   'components/Chat/ChatSession.jsx',
   'components/Messaging/Messaging.jsx',
@@ -93,13 +94,15 @@ const localizationAuditFiles = new Set([
   'components/Player/VisualizerOverlayControls.jsx',
   'components/Rooms/RoomSession.jsx',
   'components/Rooms/Rooms.jsx',
-  'components/Shared/Footer.jsx',
   'components/Search/AlbumCompletionPanel.jsx',
   'components/Search/DiscographyCoveragePanel.jsx',
   'components/Search/DownloadActionPreviewModal.jsx',
   'components/Search/MusicBrainzLookup.jsx',
   'components/Search/Searches.jsx',
+  'components/Search/SearchesListView.jsx',
   'components/Search/SongIDPanel.jsx',
+  'components/Shared/Footer.jsx',
+  'components/Shared/LocalizedText.jsx',
   'components/System/Integrations/LidarrPanel.jsx',
   'components/System/LibraryHealth/index.jsx',
   'components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx',
@@ -117,7 +120,11 @@ const localizationAuditFiles = new Set([
   'components/System/Mesh/MeshEvidencePolicy.jsx',
   'components/System/Network/index.jsx',
   'components/System/SwarmAnalytics/index.jsx',
+  'components/Transfers/TransferGroup.jsx',
+  'components/Transfers/TransferList.jsx',
   'components/Transfers/Transfers.jsx',
+  'lib/errors.js',
+  'lib/interfaceLocale.js',
 ]);
 
 const localizationSourceReferences = () => {
