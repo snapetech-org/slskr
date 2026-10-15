@@ -26,9 +26,9 @@ or if a pinned action is missing from this ledger.
 | `docker/setup-buildx-action` | `v4.4.1` | `f87e5991a6d7451dcb8d9637bfbc97413f497069` | Docker Buildx setup for multi-architecture release images. |
 | `docker/login-action` | `v4.6.0` | `dbcb813823bdd20940b903addbd779551569679f` | GHCR and Docker Hub authentication for release images. |
 | `docker/build-push-action` | `v7.4.0` | `c3c9e263c25d99ce0380d002d59b67737d91b0dc` | Multi-architecture Docker release image build and push. |
-| `github/codeql-action/init` | `v4` | `5e316336eb4f107009e477d4bfbfff13d7250fae` | CodeQL initialization for GitHub code scanning. |
-| `github/codeql-action/autobuild` | `v4` | `5e316336eb4f107009e477d4bfbfff13d7250fae` | CodeQL autobuild for analyzable language matrix entries. |
-| `github/codeql-action/analyze` | `v4` | `5e316336eb4f107009e477d4bfbfff13d7250fae` | CodeQL SARIF upload and alert generation. |
+| `github/codeql-action/init` | `v4` | `5e316336eb4f107009e477d4bfbfff13d7250fae` | Pinned CodeQL initialization for the explicit seven-language security matrix. |
+| `github/codeql-action/autobuild` | `v4` | `5e316336eb4f107009e477d4bfbfff13d7250fae` | Reviewed CodeQL autobuild pin retained for any future language-specific build steps. |
+| `github/codeql-action/analyze` | `v4` | `5e316336eb4f107009e477d4bfbfff13d7250fae` | Pinned CodeQL SARIF upload and alert generation for the explicit language matrix. |
 
 To update an action, resolve the new trusted ref, replace the workflow SHA and the
 matching ledger row in the same change, and run the remediation baseline.

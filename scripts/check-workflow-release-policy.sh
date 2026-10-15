@@ -138,6 +138,32 @@ else
   done < <(rg -n '^[[:space:]-]*uses:[[:space:]]+[^[:space:]#]+@[^[:space:]#]+' .github/workflows)
 fi
 
+codeql_workflow=".github/workflows/codeql.yml"
+for expected in \
+  'pull_request:' \
+  'push:' \
+  'schedule:' \
+  'workflow_dispatch:' \
+  'security-events: write' \
+  'queries:' \
+  '- uses: security-extended' \
+  'language: actions' \
+  'language: c-cpp' \
+  'language: go' \
+  'language: javascript-typescript' \
+  'language: python' \
+  'language: ruby' \
+  'language: rust' \
+  'build-mode: autobuild' \
+  'build-mode: none' \
+  'github/codeql-action/init@5e316336eb4f107009e477d4bfbfff13d7250fae' \
+  'github/codeql-action/analyze@5e316336eb4f107009e477d4bfbfff13d7250fae'; do
+  if ! rg -n -F -- "$expected" "$codeql_workflow" >/dev/null; then
+    printf 'workflow release policy check failed: CodeQL coverage contract missing: %s\n' "$expected" >&2
+    status=1
+  fi
+done
+
 if ! rg -n -F 'scripts/run-security-scans.sh' .github/workflows scripts/run-release-gate.sh >/dev/null; then
   printf 'workflow release policy check failed: required security scan runner is not wired into CI/release gates\n' >&2
   status=1

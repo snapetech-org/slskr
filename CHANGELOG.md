@@ -20,6 +20,9 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [0.2.64] — 2026-10-15
 
+- [Internal-only] Replace incomplete default CodeQL coverage with a pinned
+  advanced workflow that scans Actions, C/C++, Go, JavaScript/TypeScript,
+  Python, Ruby, and Rust.
 - [Internal-only] Refresh the release-gate inventory snapshots to the current
   source digest and candidate counts.
 
