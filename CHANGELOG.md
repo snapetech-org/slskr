@@ -18,9 +18,13 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.63] — 2026-10-15
+
 - [Internal-only] Start platform archive builds after exact-commit Main CI while
   the full release gate runs; GitHub Release publication still requires the
   gate and every archive.
+- [Internal-only] Split the full transfer controller contracts into bounded
+  modules so every Rust source stays under the enforced 2,500-line limit.
 
 ## [0.2.62] — 2026-10-15
 

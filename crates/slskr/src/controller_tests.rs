@@ -444,6 +444,10 @@ use self::full_persistence_differential_02::*;
 mod full_transfers_contracts_02;
 use self::full_transfers_contracts_02::*;
 
+#[path = "controller_tests/full_transfers_contracts_03.rs"]
+mod full_transfers_contracts_03;
+use self::full_transfers_contracts_03::*;
+
 #[path = "controller_tests/full_search_contracts_02.rs"]
 mod full_search_contracts_02;
 use self::full_search_contracts_02::*;
