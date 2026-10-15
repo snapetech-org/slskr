@@ -224,6 +224,12 @@ run_target() {
   capture_mutation_suite "$base_url" "$upstream_mutations"
   stop_daemon
 
+  # Do not rebind slskR to the just-used upstream HTTP ports. The options
+  # normalizer masks these local ports, and a fresh pair avoids stale listener
+  # state from the upstream mutation requests on hosted runners.
+  port="$(pick_free_port)"
+  https_port="$(pick_free_port)"
+  base_url="http://127.0.0.1:$port"
   (
     export SLSKR_AUTH_DISABLED=true
     export SLSKR_CONTROLLER_PROFILE="$(runtime_profile_for_reference "$target")"

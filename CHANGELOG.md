@@ -18,6 +18,12 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.61] — 2026-10-15
+
+- [Internal-only] Use fresh HTTP and HTTPS ports for the slskR side of the
+  options differential after stopping the upstream daemon, avoiding hosted
+  listener rebinding conflicts without changing runtime behavior.
+
 ## [0.2.60] — 2026-10-15
 
 - [Internal-only] Rechecked the peer listener immediately before watched
