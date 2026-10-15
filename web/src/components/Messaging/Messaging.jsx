@@ -1,5 +1,5 @@
 import LocalizedText from "../Shared/LocalizedText";
-import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
+import { interfaceText, interfaceTextAttributes, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import './Messaging.css';
 import * as chat from '../../lib/chat';
 import {
@@ -537,7 +537,7 @@ const Messaging = ({ runtimeProfile, initialKind = 'mixed', state }) => {
     } catch (error) {
       console.error('Failed to join room:', error);
       if (mountedRef.current) {
-        toast.error(`Failed to join room: ${toDisplayError(error)}`);
+        toast.error(interfaceText('Failed to join room: {error}', { error: toDisplayError(error) }));
       }
     } finally {
       finishWorkspaceAction(actionKey);
@@ -573,7 +573,7 @@ const Messaging = ({ runtimeProfile, initialKind = 'mixed', state }) => {
     } catch (error) {
       console.error('Failed to leave room:', error);
       if (mountedRef.current) {
-        toast.error(`Failed to leave room: ${toDisplayError(error)}`);
+        toast.error(interfaceText('Failed to leave room: {error}', { error: toDisplayError(error) }));
       }
     } finally {
       finishWorkspaceAction(actionKey);
@@ -609,7 +609,7 @@ const Messaging = ({ runtimeProfile, initialKind = 'mixed', state }) => {
     } catch (error) {
       console.error('Failed to delete conversation:', error);
       if (mountedRef.current) {
-        toast.error(`Failed to delete conversation: ${toDisplayError(error)}`);
+        toast.error(interfaceText('Failed to delete conversation: {error}', { error: toDisplayError(error) }));
       }
     } finally {
       finishWorkspaceAction(actionKey);
@@ -654,7 +654,7 @@ const Messaging = ({ runtimeProfile, initialKind = 'mixed', state }) => {
     } catch (error) {
       console.error('Failed to leave pod:', error);
       if (mountedRef.current) {
-        toast.error(`Failed to leave pod: ${toDisplayError(error)}`);
+        toast.error(interfaceText('Failed to leave pod: {error}', { error: toDisplayError(error) }));
       }
     } finally {
       finishWorkspaceAction(actionKey);
@@ -919,11 +919,11 @@ const Messaging = ({ runtimeProfile, initialKind = 'mixed', state }) => {
                           content={interfaceText("Collapse this panel into the message dock.")}
                           trigger={
                             <Button
-                              aria-label={`Collapse ${panelLabel(panel)}`}
+                              {...interfaceTextAttributes('Collapse {panel}', { panel: panelLabel(panel) })}
                               icon="window minimize outline"
                               onClick={() => setPanelCollapsed(panel.id, true)}
                               size="mini"
-                              title={`Collapse ${panelLabel(panel)}`}
+                              title={interfaceText('Collapse {panel}', { panel: panelLabel(panel) })}
                             />
                           }
                          {...interfaceTextProps("Collapse this panel into the message dock.")}/>
@@ -931,11 +931,11 @@ const Messaging = ({ runtimeProfile, initialKind = 'mixed', state }) => {
                           content={interfaceText("Close this panel without deleting the thread or leaving anything.")}
                           trigger={
                             <Button
-                              aria-label={`Close ${panelLabel(panel)}`}
+                              {...interfaceTextAttributes('Close {panel}', { panel: panelLabel(panel) })}
                               icon="close"
                               onClick={() => closePanel(panel.id)}
                               size="mini"
-                              title={`Close ${panelLabel(panel)}`}
+                              title={interfaceText('Close {panel}', { panel: panelLabel(panel) })}
                             />
                           }
                          {...interfaceTextProps("Close this panel without deleting the thread or leaving anything.")}/>

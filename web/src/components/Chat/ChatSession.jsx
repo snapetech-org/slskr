@@ -1,4 +1,4 @@
-import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
+import { interfaceText, interfaceTextAttributes, interfaceTextProps } from "../../lib/interfaceLocale";
 import { formatRegionalCompactDateTime } from '../../lib/util';
 import './Chat.css';
 import * as chat from '../../lib/chat';
@@ -448,7 +448,7 @@ class ChatSession extends Component {
                 <Segment className="chat-input">
                   <Input
                     action={{
-                      'aria-label': `Send message to ${username}`,
+                      ...interfaceTextAttributes('Send message to {username}', { username }),
                       className: 'chat-message-button',
                       disabled: !this.validInput() || sending,
                       icon: (

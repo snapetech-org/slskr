@@ -1,8 +1,8 @@
-import LocalizedText from "../Shared/LocalizedText";
+import LocalizedText, { LocalizedPluralText } from "../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import * as transfers from '../../lib/transfers';
 import { toDisplayError } from '../../lib/errors';
-import { formatBytes } from '../../lib/util';
+import { formatBytes, formatRegionalNumber } from '../../lib/util';
 import FileList from '../Shared/FileList';
 import React, { Component } from 'react';
 import { Button, Card, Icon, Label } from 'semantic-ui-react';
@@ -166,7 +166,15 @@ class Directory extends Component {
                 label={{
                   as: 'a',
                   basic: false,
-                  content: `${selectedFiles.length} file${selectedFiles.length === 1 ? '' : 's'}, ${selectedSize}`,
+                  content: <>
+                    <LocalizedPluralText
+                      count={selectedFiles.length}
+                      other="{count} files"
+                      singular="{count} file"
+                      values={{ count: formatRegionalNumber(selectedFiles.length) }}
+                    />
+                    {`, ${selectedSize}`}
+                  </>,
                 }}
                 labelPosition="right"
                 onClick={() => this.download(username, selectedFiles)}

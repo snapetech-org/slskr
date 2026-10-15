@@ -37,12 +37,14 @@ Translate interface labels, help, empty states, validation, notifications, and e
 
 ## Implemented in this PR
 
-System > Experience Preferences offers a browser-local interface-language selector for twelve first-wave locales. The shipped Web UI has twelve locale catalogs with 4,558 entries each (54,696 locale cells total). This follow-up adds 224 source keys for remaining identified app-owned copy, including player and SongID tooltips, chat and network empty/error states, integration and security statuses, accessibility labels, and the generic clear-selection control (2,688 translation cells across all locales). The system settings tab is labeled “File sharing” to distinguish file-sharing controls from collection “Shares.” Catalog parity and placeholder checks cover every locale. Locale JSON is fetched on demand, and startup waits for the selected or browser-detected catalog. Media and user-provided content, paths, and raw API/protocol values remain unchanged.
+System > Experience Preferences offers a browser-local interface-language selector for twelve first-wave locales. This follow-up adds 138 missing source strings to each of the twelve locale catalogs (1,656 translated values), covering fixed copy in Browse, Chat, Messaging, Player, Rooms, Search, System, and Transfers. It also localizes count-sensitive messages and recognized app-owned error details. The system settings tab is labeled “File sharing” to distinguish file-sharing controls from collection “Shares.” Catalog parity and placeholder checks cover every locale. Locale JSON is fetched on demand, and startup waits for the selected or browser-detected catalog. Media and user-provided content, paths, and raw API/protocol values remain unchanged.
 
 The regional-format preference also localizes digits in track durations and audio quality values, alongside the existing dates, counts, transfer sizes, and metric/network values. Arabic strings carry local language and direction metadata.
 
 Regional formatting uses the selected preference for dates, times, counts, byte sizes, and numbers in the shipped UI. Changes re-render open screens immediately, keep working in the current tab when browser storage is blocked, and update from another tab's preference changes.
 
+The source-reference test checks every fixed localization-helper callsite in the app-owned source files changed by this PR. It does not scan untouched source modules or raw UI literals that bypass those helpers; both app-wide audits remain open.
+
 ## Remaining work
 
-The catalog translations were machine-generated and still need fluent-speaker review. Review the full Arabic layout interactively at narrow and desktop widths before claiming app-wide RTL support.
+The catalog translations were machine-generated and still need fluent-speaker review. Audit any remaining raw UI literals, and review the full Arabic layout interactively at narrow and desktop widths before claiming app-wide RTL support.

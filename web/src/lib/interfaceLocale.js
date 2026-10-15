@@ -55,10 +55,9 @@ let languageRequest = 0;
 const notify = () => listeners.forEach((listener) => listener());
 const translationFor = (source, language) => localeCatalogs.get(language)?.[source];
 
-const formatInterfaceText = (source, parameters = {}) => {
-  if (typeof source !== 'string') return source;
-  const translated = translationFor(source, activeLanguage) || source;
-  return translated.replace(/\{([a-zA-Z][a-zA-Z0-9_]*)\}/g, (placeholder, name) => {
+const replaceInterfaceValues = (translation, parameters = {}) => {
+  if (typeof translation !== 'string') return translation;
+  return translation.replace(/\{([a-zA-Z][a-zA-Z0-9_]*)\}/g, (placeholder, name) => {
     const value = parameters?.[name];
     return typeof value === 'string' || typeof value === 'number'
       ? String(value)
@@ -66,10 +65,53 @@ const formatInterfaceText = (source, parameters = {}) => {
   });
 };
 
+const formatInterfaceTextForLanguage = (source, parameters = {}, language = activeLanguage) => {
+  if (typeof source !== 'string') return source;
+  const localized = translationFor(source, language);
+  const category = typeof parameters?.count === 'number'
+    ? new Intl.PluralRules(language).select(parameters.count)
+    : 'other';
+  const translated = typeof localized === 'string' ? localized : localized?.[category] || localized?.other || source;
+  return replaceInterfaceValues(translated, parameters);
+};
+
+const formatInterfaceText = (source, parameters = {}) =>
+  formatInterfaceTextForLanguage(source, parameters, activeLanguage);
+
 export const interfaceText = (source, parameters = {}) =>
   formatInterfaceText(source, parameters);
 
-export const interfaceTextProps = (source, parameters = {}) => {
+const arabicPluralCategory = (count) => new Intl.PluralRules('ar').select(Number(count));
+
+export const interfacePluralSource = (singularSource, pluralSource, count) => {
+  return interfacePluralSourceForLanguage(singularSource, pluralSource, count, activeLanguage);
+};
+
+const interfacePluralSourceForLanguage = (singularSource, pluralSource, count, language) => {
+  const localizedPlural = translationFor(pluralSource, language);
+  if (language === 'ar' && localizedPlural && typeof localizedPlural === 'object') {
+    return pluralSource;
+  }
+  return Number(count) === 1 ? singularSource : pluralSource;
+};
+
+export const interfaceTextPlural = (singularSource, pluralSource, count, parameters = {}) => {
+  return interfaceTextPluralForLanguage(singularSource, pluralSource, count, parameters, activeLanguage);
+};
+
+const interfaceTextPluralForLanguage = (singularSource, pluralSource, count, parameters, language) => {
+  const localizedPlural = translationFor(pluralSource, language);
+  if (language === 'ar' && localizedPlural && typeof localizedPlural === 'object') {
+    const category = arabicPluralCategory(count);
+    const translated = localizedPlural[category] || localizedPlural.other || pluralSource;
+    return replaceInterfaceValues(translated, { count, ...parameters });
+  }
+
+  const source = Number(count) === 1 ? singularSource : pluralSource;
+  return formatInterfaceTextForLanguage(source, { count, ...parameters }, language);
+};
+
+export const interfaceTextAttributes = (source, parameters = {}) => {
   const translated = translationFor(source, activeLanguage);
   const hasTranslation = Boolean(translated && translated !== source);
   const text = formatInterfaceText(source, parameters);
@@ -82,6 +124,11 @@ export const interfaceTextProps = (source, parameters = {}) => {
     props['aria-label'] = text;
     props.title = text;
   }
+  return props;
+};
+
+export const interfaceTextProps = (source, parameters = {}) => {
+  const props = interfaceTextAttributes(source, parameters);
   if (parameters && Object.keys(parameters).length > 0) props.parameters = parameters;
   return props;
 };
@@ -222,15 +269,20 @@ export const resetInterfaceLanguage = () => {
 export const useInterfaceLanguage = () => {
   const state = useSyncExternalStore(subscribe, snapshot, () => 'en:0');
   const [language, revision] = state.split(':');
-  const t = useCallback((source, parameters = {}) => {
-    const translated = translationFor(source, language) || source;
-    return translated.replace(/\{([a-zA-Z][a-zA-Z0-9_]*)\}/g, (placeholder, name) => {
-      const value = parameters[name];
-      return typeof value === 'string' || typeof value === 'number'
-        ? String(value)
-        : placeholder;
-    });
-  }, [language, revision]);
+  const t = useCallback(
+    (source, parameters = {}) => formatInterfaceTextForLanguage(source, parameters, language),
+    [language, revision],
+  );
+  const tp = useCallback(
+    (singularSource, pluralSource, count, parameters = {}) =>
+      interfaceTextPluralForLanguage(singularSource, pluralSource, count, parameters, language),
+    [language, revision],
+  );
+  const pluralSource = useCallback(
+    (singularSource, pluralText, count) =>
+      interfacePluralSourceForLanguage(singularSource, pluralText, count, language),
+    [language, revision],
+  );
   const languageFor = useCallback(
     (source) => {
       const translated = translationFor(source, language);
@@ -239,5 +291,5 @@ export const useInterfaceLanguage = () => {
     [language, revision],
   );
   const directionFor = useCallback((source) => languageFor(source) === 'ar' ? 'rtl' : 'ltr', [languageFor]);
-  return { language, setLanguage: setInterfaceLanguage, t, languageFor, directionFor };
+  return { language, setLanguage: setInterfaceLanguage, t, tp, pluralSource, languageFor, directionFor };
 };

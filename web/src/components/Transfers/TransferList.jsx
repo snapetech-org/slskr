@@ -1,5 +1,5 @@
 import LocalizedText from "../Shared/LocalizedText";
-import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
+import { interfaceText, interfaceTextAttributes, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import { formatBytes, getFileName } from '../../lib/util';
 
 import React, { Component } from 'react';
@@ -114,7 +114,7 @@ class TransferList extends Component {
           size="small"
         >
           <Icon
-            aria-label={`${isFolded ? 'Expand' : 'Collapse'} ${directoryName}`}
+            {...interfaceTextAttributes(isFolded ? 'Expand {directory}' : 'Collapse {directory}', { directory: directoryName })}
             link
             name={isFolded ? 'folder' : 'folder open'}
             onClick={() => this.toggleFolded()}

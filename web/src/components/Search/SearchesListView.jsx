@@ -1,5 +1,5 @@
 import LocalizedText from "../Shared/LocalizedText";
-import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
+import { interfaceText, interfaceTextAttributes, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import React, { useState } from 'react';
 import { getLocalStorageItem, setLocalStorageItem } from '../../lib/storage';
 import PlaceholderSegment from '../Shared/PlaceholderSegment';
@@ -81,7 +81,7 @@ const CollapsibleSection = ({
           position="top center"
           trigger={
             <Button
-              aria-label={interfaceText(open ? 'Collapse {title}' : 'Expand {title}', { title })}
+              {...interfaceTextAttributes(open ? 'Collapse {title}' : 'Expand {title}', { title })}
               icon
               onClick={toggleOpen}
               size="mini"

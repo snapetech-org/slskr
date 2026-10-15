@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import Transfers from './Transfers';
+import LocalizedText, { LocalizedPluralText } from '../Shared/LocalizedText';
 import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { toast } from 'react-toastify';
@@ -287,9 +288,19 @@ describe('Transfers', () => {
     await waitFor(() => {
       expect(toast.error).toHaveBeenCalledTimes(1);
     });
-    expect(toast.error).toHaveBeenCalledWith(
-      expect.stringContaining('Failed to retry 2 transfer(s).'),
-    );
+    const toastMessage = toast.error.mock.calls[0][0];
+    expect(toastMessage.type).toBe(LocalizedPluralText);
+    expect(toastMessage.props).toMatchObject({
+      count: 2,
+      other: 'Failed to {action} {count} transfers. First error: {label}: {message}',
+      singular: 'Failed to {action} {count} transfer. First error: {label}: {message}',
+      values: {
+        action: 'retry',
+        count: '2',
+        label: 'alice/one.mp3',
+        message: 'boom',
+      },
+    });
   });
 
   it('reports unavailable download mode status instead of treating it as disabled', async () => {
@@ -340,8 +351,9 @@ describe('Transfers', () => {
         enabled: true,
       });
     });
-    expect(toast.info).toHaveBeenCalledWith(
-      expect.stringContaining('Accelerated mode enabled'),
-    );
+    const toastMessage = toast.info.mock.calls[0][0];
+    expect(toastMessage.type).toBe(LocalizedText);
+    expect(toastMessage.props.source)
+      .toBe('Accelerated mode enabled. Slow or stalled downloads can use verified alternate sources.');
   });
 });

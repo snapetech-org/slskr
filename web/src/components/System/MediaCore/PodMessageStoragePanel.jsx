@@ -56,7 +56,7 @@ const PodMessageStoragePanel = React.memo(({ visible }) => {
       setStorageStats(result);
     } catch (error_) {
       setStorageStats({ error: toDisplayError(error_) });
-      toast.error(`Failed to get storage stats: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to get storage stats: {error}', { error: toDisplayError(error_) }));
     } finally {
       setStorageStatsLoading(false);
     }
@@ -71,7 +71,7 @@ const PodMessageStoragePanel = React.memo(({ visible }) => {
       // Refresh stats after cleanup
       await handleGetStorageStats();
     } catch (error_) {
-      toast.error(`Failed to cleanup messages: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to cleanup messages: {error}', { error: toDisplayError(error_) }));
     } finally {
       setCleanupLoading(false);
     }

@@ -153,7 +153,7 @@ const PodOpinionsPanel = ({ visible = true }) => {
         await handleGetOpinions();
       }
     } catch (error_) {
-      toast.error(`Failed to publish opinion: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to publish opinion: {error}', { error: toDisplayError(error_) }));
     } finally {
       setPublishOpinionLoading(false);
     }
@@ -242,7 +242,7 @@ const PodOpinionsPanel = ({ visible = true }) => {
         await Promise.all([handleGetOpinions(), handleGetOpinionStatistics()]);
       }
     } catch (error_) {
-      toast.error(`Failed to refresh opinions: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to refresh opinions: {error}', { error: toDisplayError(error_) }));
     } finally {
       setRefreshOpinionsLoading(false);
     }
@@ -371,7 +371,7 @@ const PodOpinionsPanel = ({ visible = true }) => {
       // Refresh affinities display
       await handleGetMemberAffinities();
     } catch (error_) {
-      toast.error(`Failed to update member affinities: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to update member affinities: {error}', { error: toDisplayError(error_) }));
     } finally {
       setUpdateAffinitiesLoading(false);
     }

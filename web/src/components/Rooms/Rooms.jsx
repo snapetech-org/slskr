@@ -301,7 +301,7 @@ const Rooms = ({ runtimeProfile } = {}) => {
     } catch (error) {
       console.error('Failed to join room:', error);
       if (mountedRef.current) {
-        toast.error(`Failed to join room: ${toDisplayError(error)}`);
+        toast.error(interfaceText('Failed to join room: {error}', { error: toDisplayError(error) }));
       }
     } finally {
       finishRoomAction();
@@ -334,7 +334,7 @@ const Rooms = ({ runtimeProfile } = {}) => {
     } catch (error) {
       console.error('Failed to leave room:', error);
       if (mountedRef.current) {
-        toast.error(`Failed to leave room: ${toDisplayError(error)}`);
+        toast.error(interfaceText('Failed to leave room: {error}', { error: toDisplayError(error) }));
       }
     } finally {
       finishRoomAction();

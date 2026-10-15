@@ -1,4 +1,4 @@
-import LocalizedText from "../../Shared/LocalizedText";
+import LocalizedText, { LocalizedPluralText } from "../../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
 import * as libraryHealth from '../../../lib/libraryHealth';
 import { copyToClipboard } from '../../../lib/clipboard';
@@ -735,7 +735,13 @@ const LibraryHealth = () => {
                   primary
                 >
                   <Icon name="wrench" />
-                  <LocalizedText source={"Fix"} />{" "}{formatRegionalNumber(selectedIssues.size)} <LocalizedText source={selectedIssues.size === 1 ? "Selected Issue" : "Selected Issues"} />
+                  <LocalizedText source={"Fix"} />{" "}
+                  <LocalizedPluralText
+                    count={selectedIssues.size}
+                    other="{count} Selected Issues"
+                    singular="{count} Selected Issue"
+                    values={{ count: formatRegionalNumber(selectedIssues.size) }}
+                  />
                 </Button>
                 <Popup
                   content={interfaceText("Start bounded live Soulseek replacement searches for selected replacement candidates. This starts searches only; it does not browse peers, download, quarantine, or mutate files.")}

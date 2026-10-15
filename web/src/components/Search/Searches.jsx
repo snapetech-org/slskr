@@ -1,4 +1,5 @@
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
+import LocalizedText, { LocalizedPluralText } from "../Shared/LocalizedText";
 import './Search.css';
 import SearchesListView from './SearchesListView';
 import { toDisplayError } from '../../lib/errors';
@@ -14,6 +15,7 @@ import { encodePathSegment } from '../../lib/pathEncoding';
 import { mergeSearchRecords } from '../../lib/searchState';
 import { getLocalStorageItem, setLocalStorageItem } from '../../lib/storage';
 import { useMountedRef } from '../../lib/useMountedRef';
+import { formatRegionalNumber } from '../../lib/util';
 import * as library from '../../lib/searches';
 import ErrorSegment from '../Shared/ErrorSegment';
 import LoaderSegment from '../Shared/LoaderSegment';
@@ -561,7 +563,15 @@ const Searches = ({ runtimeProfile, server } = {}) => {
         return;
       }
       setSearches(new Map());
-      toast.success(`Cleared ${result?.data?.deleted ?? 'all'} searches`);
+      const deletedCount = result?.data?.deleted;
+      toast.success(typeof deletedCount === 'number'
+        ? <LocalizedPluralText
+          count={deletedCount}
+          other="Cleared {count} searches"
+          singular="Cleared {count} search"
+          values={{ count: formatRegionalNumber(deletedCount) }}
+        />
+        : <LocalizedText source="Cleared all searches" />);
     } catch (removeAllError) {
       if (
         !mountedRef.current ||

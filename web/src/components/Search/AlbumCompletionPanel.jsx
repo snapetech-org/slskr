@@ -1,4 +1,4 @@
-import LocalizedText from "../Shared/LocalizedText";
+import LocalizedText, { LocalizedPluralText } from "../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import { fetchAlbumCompletion } from '../../lib/musicBrainz';
 import { toDisplayError } from '../../lib/errors';
@@ -187,7 +187,12 @@ const AlbumCompletionPanel = ({ disabled }) => {
                                 color="blue"
                                 size="tiny"
                               >
-                                {formatRegionalNumber(track.matches.length)} <LocalizedText source={track.matches.length === 1 ? "fingerprint match" : "fingerprint matches"} />
+                                <LocalizedPluralText
+                                  count={track.matches.length}
+                                  other="fingerprint matches"
+                                  singular="fingerprint match"
+                                  values={{ count: formatRegionalNumber(track.matches.length) }}
+                                />
                               </Label>
                             )}
                           </List.Header>

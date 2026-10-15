@@ -82,7 +82,7 @@ const toDisplayError = (error, fallback = 'Request failed') => {
       if (typeof value[key] === 'string' && value[key].trim()) return value[key];
     }
   }
-  return fallback;
+  return interfaceText(fallback);
 };
 
 const setNavigationHeightVariable = (element) => {
@@ -944,7 +944,7 @@ class App extends Component {
           pauseOnFocusLoss
           pauseOnHover
           position="bottom-center"
-          rtl={false}
+          rtl={this.props.interfaceLanguage === 'ar'}
         />
         <Footer runtimeProfile={runtimeProfile} />
       </>
@@ -953,13 +953,14 @@ class App extends Component {
 }
 
 const AppWithLocation = (props) => {
-  useInterfaceLanguage();
+  const { language: interfaceLanguage } = useInterfaceLanguage();
   const location = useLocation();
   const regionalFormat = useRegionalFormat();
   return (
     <App
       {...props}
       location={location}
+      interfaceLanguage={interfaceLanguage}
       regionalFormat={regionalFormat}
     />
   );

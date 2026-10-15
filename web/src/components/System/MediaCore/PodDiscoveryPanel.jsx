@@ -221,7 +221,7 @@ const PodDiscoveryPanel = ({ visible = true }) => {
       // Reload stats to reflect changes
       await handleLoadDiscoveryStats();
     } catch (error_) {
-      toast.error(`Failed to refresh discovery: ${toDisplayError(error_)}`);
+      toast.error(interfaceText('Failed to refresh discovery: {error}', { error: toDisplayError(error_) }));
     }
   };
 

@@ -355,10 +355,10 @@ const Network = ({ options = {}, state = {}, theme }) => {
         );
 
         if (result?.complete) {
-          toast.success(result.message || 'Backfill complete!');
+          toast.success(result.message || <LocalizedText source="Backfill complete!" />);
         } else {
           toast.info(
-            result.message || 'Batch processed - click again to continue',
+            result.message || <LocalizedText source="Batch processed - click again to continue" />,
           );
         }
 

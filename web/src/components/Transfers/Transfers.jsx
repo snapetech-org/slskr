@@ -1,10 +1,11 @@
-import LocalizedText from "../Shared/LocalizedText";
+import LocalizedText, { LocalizedPluralText } from "../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import './Transfers.css';
 import * as autoReplaceLibrary from '../../lib/autoReplace';
 import { toDisplayError } from '../../lib/errors';
 import * as transfersLibrary from '../../lib/transfers';
 import { usePolling } from '../../lib/usePolling';
+import { formatRegionalNumber } from '../../lib/util';
 
 import { LoaderSegment, PlaceholderSegment } from '../Shared';
 import TransferGroup from './TransferGroup';
@@ -23,10 +24,21 @@ const summarizeBulkFailures = ({ action, failures }) => {
   }
 
   const [firstFailure] = failures;
+  const actionLabel = interfaceText(
+    action === 'retry' ? 'Retry' : action === 'cancel' ? 'Cancel' : 'Remove',
+  ).toLocaleLowerCase();
   toast.error(
     failures.length === 1
-      ? `Failed to ${action} ${firstFailure.label}: ${firstFailure.message}`
-      : `Failed to ${action} ${failures.length} transfer(s). First error: ${firstFailure.label}: ${firstFailure.message}`,
+      ? <LocalizedText
+        source="Failed to {action} {label}: {message}"
+        values={{ action: actionLabel, label: firstFailure.label, message: firstFailure.message }}
+      />
+      : <LocalizedPluralText
+        count={failures.length}
+        other="Failed to {action} {count} transfers. First error: {label}: {message}"
+        singular="Failed to {action} {count} transfer. First error: {label}: {message}"
+        values={{ action: actionLabel, count: formatRegionalNumber(failures.length), label: firstFailure.label, message: firstFailure.message }}
+      />,
   );
 };
 
@@ -669,19 +681,17 @@ const Transfers = ({ runtimeProfile, direction, server }) => {
         await autoReplaceLibrary.enableAutoReplace();
         if (!mountedRef.current || requestId !== modeRequestIdsRef.current.autoReplace) return;
         setAutoReplaceEnabled(true);
-        toast.info(
-          interfaceText("Auto-replace enabled. Backend will check for stuck downloads periodically."),
-        );
+        toast.info(<LocalizedText source="Auto-replace enabled. Backend will check for stuck downloads periodically." />);
       } else {
         await autoReplaceLibrary.disableAutoReplace();
         if (!mountedRef.current || requestId !== modeRequestIdsRef.current.autoReplace) return;
         setAutoReplaceEnabled(false);
-        toast.info(interfaceText("Auto-replace disabled"));
+        toast.info(<LocalizedText source="Auto-replace disabled" />);
       }
     } catch (error) {
       console.error('Failed to toggle auto-replace:', error);
       if (mountedRef.current && requestId === modeRequestIdsRef.current.autoReplace) {
-        toast.error(`Failed to toggle auto-replace: ${getErrorMessage(error)}`);
+        toast.error(<LocalizedText source="Failed to toggle auto-replace: {error}" values={{ error: getErrorMessage(error) }} />);
       }
     } finally {
       modeInFlightRef.current.autoReplace = false;
@@ -706,14 +716,16 @@ const Transfers = ({ runtimeProfile, direction, server }) => {
       if (!mountedRef.current || requestId !== modeRequestIdsRef.current.accelerated) return;
       setAcceleratedEnabled(status?.enabled ?? enabled);
       toast.info(
-        enabled
-          ? 'Accelerated mode enabled. Slow or stalled downloads can use verified alternate sources.'
-          : 'Accelerated mode disabled',
+        <LocalizedText
+          source={enabled
+            ? 'Accelerated mode enabled. Slow or stalled downloads can use verified alternate sources.'
+            : 'Accelerated mode disabled'}
+        />,
       );
     } catch (error) {
       console.error('Failed to toggle accelerated mode:', error);
       if (mountedRef.current && requestId === modeRequestIdsRef.current.accelerated) {
-        toast.error(`Failed to toggle accelerated mode: ${getErrorMessage(error)}`);
+        toast.error(<LocalizedText source="Failed to toggle accelerated mode: {error}" values={{ error: getErrorMessage(error) }} />);
       }
     } finally {
       modeInFlightRef.current.accelerated = false;

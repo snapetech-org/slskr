@@ -1,4 +1,4 @@
-import LocalizedText from "./LocalizedText";
+import LocalizedText, { LocalizedPluralText } from "./LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 
 
@@ -477,7 +477,12 @@ class FooterView extends Component {
               {activeSwarms > 0 && (
                 <span className="slskr-footer-network-item active">
                   <Icon name="bolt" />
-                  {formatRegionalNumber(activeSwarms)} <LocalizedText source={activeSwarms === 1 ? "swarm" : "swarms"} />
+                  <LocalizedPluralText
+                    count={activeSwarms}
+                    other="{count} swarms"
+                    singular="{count} swarm"
+                    values={{ count: formatRegionalNumber(activeSwarms) }}
+                  />
                 </span>
               )}
               {backfillActive && (

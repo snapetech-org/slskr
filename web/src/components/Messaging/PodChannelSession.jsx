@@ -1,5 +1,5 @@
 import LocalizedText from "../Shared/LocalizedText";
-import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
+import { interfaceText, interfaceTextAttributes, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 import { formatRegionalTime } from '../../lib/util';
 import * as pods from '../../lib/pods';
 import { toDisplayError } from '../../lib/errors';
@@ -294,7 +294,7 @@ const PodChannelSession = ({ channel, state }) => {
                 content={interfaceText("Send this message to the pod channel.")}
                 trigger={
                   <Button
-                    aria-label={`Send message to ${channelLabel(channel)}`}
+                    {...interfaceTextAttributes('Send message to {channel}', { channel: channelLabel(channel) })}
                     disabled={!body.trim() || sending}
                     icon="send"
                     loading={sending}
@@ -304,7 +304,7 @@ const PodChannelSession = ({ channel, state }) => {
                       })
                     }
                     primary
-                    title={`Send message to ${channelLabel(channel)}`}
+                    title={interfaceText('Send message to {channel}', { channel: channelLabel(channel) })}
                   />
                 }
                {...interfaceTextProps("Send this message to the pod channel.")}/>
