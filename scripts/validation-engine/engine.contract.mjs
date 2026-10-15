@@ -645,6 +645,12 @@ test('workspace run lock rejects overlap and releases only its own lock file', (
   const first = acquireRunLock(root, 'slskr');
   try {
     assert.equal(statSync(first.lockPath).mode & 0o777, 0o600);
+    const gitDirectory = spawnSync('git', ['rev-parse', '--absolute-git-dir'], {
+      cwd: root,
+      encoding: 'utf8',
+    });
+    assert.equal(gitDirectory.status, 0, gitDirectory.stderr);
+    assert.equal(path.dirname(first.lockPath), path.resolve(gitDirectory.stdout.trim()));
     assert.throws(() => acquireRunLock(root, 'slskr'), /Another validation engine run is active/);
   } finally {
     releaseRunLock(first);
@@ -652,6 +658,35 @@ test('workspace run lock rejects overlap and releases only its own lock file', (
   const second = acquireRunLock(root, 'slskr');
   releaseRunLock(second);
   assert.throws(() => readFileSync(first.lockPath, 'utf8'), { code: 'ENOENT' });
+});
+
+test('workspace run lock resolves linked-worktree metadata', () => {
+  const { root } = fixture();
+  const worktreeParent = mkdtempSync(path.join(os.tmpdir(), 'slskr-validation-worktree-'));
+  temporaryRoots.push(worktreeParent);
+  const worktree = path.join(worktreeParent, 'checkout');
+  const added = spawnSync('git', ['worktree', 'add', '--quiet', '--detach', worktree, 'HEAD'], {
+    cwd: root,
+    encoding: 'utf8',
+  });
+  assert.equal(added.status, 0, added.stderr);
+
+  const lock = acquireRunLock(worktree, 'slskr');
+  try {
+    const gitDirectory = spawnSync('git', ['rev-parse', '--absolute-git-dir'], {
+      cwd: worktree,
+      encoding: 'utf8',
+    });
+    assert.equal(gitDirectory.status, 0, gitDirectory.stderr);
+    assert.equal(path.dirname(lock.lockPath), path.resolve(gitDirectory.stdout.trim()));
+  } finally {
+    releaseRunLock(lock);
+    const removed = spawnSync('git', ['worktree', 'remove', '--force', worktree], {
+      cwd: root,
+      encoding: 'utf8',
+    });
+    assert.equal(removed.status, 0, removed.stderr);
+  }
 });
 
 test('workspace run lock refuses to overwrite a stale lock without confirmation', () => {

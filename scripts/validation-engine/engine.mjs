@@ -258,9 +258,60 @@ export async function runTaskPool(tasks, {
   return { receipts, sourceChanged, sourceCheckFailed };
 }
 
+function privateLockDirectory(directory) {
+  const suppliedMetadata = lstatSync(directory);
+  if (suppliedMetadata.isSymbolicLink() || !suppliedMetadata.isDirectory()) {
+    fail('Validation lock directory must be a regular directory.');
+  }
+  const canonicalDirectory = realpathSync(directory);
+  const metadata = lstatSync(canonicalDirectory);
+  if (metadata.isSymbolicLink() || !metadata.isDirectory()) {
+    fail('Validation lock directory must be a regular directory.');
+  }
+  if (process.platform !== 'win32') {
+    const uid = process.getuid?.();
+    if (
+      (uid !== undefined && metadata.uid !== uid) ||
+      (metadata.mode & 0o022) !== 0
+    ) {
+      fail('Validation lock directory must be owned by this user and not group- or world-writable.');
+    }
+  }
+  return canonicalDirectory;
+}
+
+function gitMetadataDirectory(root) {
+  const canonicalRoot = realpathSync(root);
+  const environment = { ...process.env };
+  delete environment.GIT_DIR;
+  delete environment.GIT_WORK_TREE;
+  delete environment.GIT_COMMON_DIR;
+  delete environment.GIT_INDEX_FILE;
+  const result = spawnSync('git', ['rev-parse', '--absolute-git-dir'], {
+    cwd: canonicalRoot,
+    encoding: 'utf8',
+    env: environment,
+    timeout: 10_000,
+    windowsHide: true,
+  });
+  if (result.error) {
+    if (result.error.code === 'ENOENT') fail('Git is required to acquire the validation lock.');
+    throw result.error;
+  }
+  if (result.status !== 0) fail('Unable to resolve Git metadata for the validation lock.');
+
+  const gitDirectory = result.stdout.trim();
+  if (!path.isAbsolute(gitDirectory)) fail('Git returned a non-absolute metadata directory.');
+  return privateLockDirectory(gitDirectory);
+}
+
 export function acquireRunLock(root, repository) {
-  const workspaceKey = hash(path.resolve(root)).slice(0, 16);
-  const lockPath = path.join(os.tmpdir(), repository + '-validation-' + workspaceKey + '.lock');
+  const canonicalRoot = realpathSync(root);
+  const workspaceKey = hash(canonicalRoot + '\0' + String(repository)).slice(0, 16);
+  const lockPath = path.join(
+    gitMetadataDirectory(canonicalRoot),
+    'slskr-validation-' + workspaceKey + '.lock',
+  );
   const lock = { pid: process.pid, startedAt: new Date().toISOString(), workspaceKey };
   const contents = JSON.stringify(lock) + '\n';
   let descriptor;

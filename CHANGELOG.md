@@ -41,6 +41,8 @@ the release is prepared. Do not rewrite audited release history.
   mark process RSS totals incomplete when procfs samples are missing.
 - Hardened local validation with a trusted test sandbox and isolated task
   environments.
+- Moved validation-run locks out of shared temporary storage to prevent
+  cross-user lock pre-creation.
 - Added startup share-scan logs for the start, periodic filesystem-entry
   progress, and final indexed-file count.
 - Returned slskd-compatible versioned search and download responses, and delivered
