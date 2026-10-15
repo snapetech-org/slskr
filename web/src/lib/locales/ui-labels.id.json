@@ -4856,5 +4856,8 @@
   "Verifying": "Memverifikasi",
   "Verifying Final": "Memverifikasi hasil akhir",
   "Members:\n{members}": "Anggota:\n{members}",
-  "Unknown member": "Anggota tidak diketahui"
+  "Unknown member": "Anggota tidak diketahui",
+  "Queued {count} file for download": "Mengantrekan {count} file untuk diunduh",
+  "Queued {count} files for download": "Mengantrekan {count} file untuk diunduh",
+  "Failed to queue download: {message}": "Gagal mengantrekan unduhan: {message}"
 }

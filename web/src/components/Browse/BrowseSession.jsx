@@ -1,6 +1,7 @@
 import LocalizedText from "../Shared/LocalizedText";
 import { LocalizedPopup } from "../Shared/TooltipButton";
-import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
+import { interfaceText, interfaceTextPlural, interfaceTextProps } from "../../lib/interfaceLocale";
+import { formatRegionalNumber } from '../../lib/util';
 /* eslint-disable promise/prefer-await-to-then */
 import './Browse.css';
 import * as transfers from '../../lib/transfers';
@@ -665,9 +666,12 @@ class BrowseSession extends Component {
             this.isMountedFlag &&
             requestId === this.downloadRequestId
           ) {
-            toast.success(
-              'Queued ' + filesToDownload.length + ' files for download',
-            );
+            toast.success(interfaceTextPlural(
+              'Queued {count} file for download',
+              'Queued {count} files for download',
+              filesToDownload.length,
+              { count: formatRegionalNumber(filesToDownload.length) },
+            ));
           }
         })
         .catch((error) => {
@@ -676,9 +680,9 @@ class BrowseSession extends Component {
             requestId === this.downloadRequestId
           ) {
             console.error(error);
-            toast.error(
-              'Failed to queue download: ' + getBrowseErrorMessage(error),
-            );
+            toast.error(interfaceText('Failed to queue download: {message}', {
+              message: getBrowseErrorMessage(error),
+            }));
           }
         })
         .finally(() => {

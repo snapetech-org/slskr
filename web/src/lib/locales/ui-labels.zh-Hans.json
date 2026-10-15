@@ -4856,5 +4856,8 @@
   "Verifying": "正在验证",
   "Verifying Final": "正在验证最终结果",
   "Members:\n{members}": "成员：\n{members}",
-  "Unknown member": "未知成员"
+  "Unknown member": "未知成员",
+  "Queued {count} file for download": "已将 {count} 个文件加入下载队列",
+  "Queued {count} files for download": "已将 {count} 个文件加入下载队列",
+  "Failed to queue download: {message}": "无法将下载加入队列：{message}"
 }

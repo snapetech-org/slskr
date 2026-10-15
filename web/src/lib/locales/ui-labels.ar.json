@@ -4954,5 +4954,15 @@
   "Verifying": "جارٍ التحقق",
   "Verifying Final": "جارٍ التحقق النهائي",
   "Members:\n{members}": "الأعضاء:\n{members}",
-  "Unknown member": "عضو غير معروف"
+  "Unknown member": "عضو غير معروف",
+  "Queued {count} file for download": "تمت إضافة {count} ملف إلى قائمة التنزيل",
+  "Queued {count} files for download": {
+    "zero": "لم تتم إضافة {count} ملف إلى قائمة التنزيل",
+    "one": "تمت إضافة {count} ملف إلى قائمة التنزيل",
+    "two": "تمت إضافة {count} ملفين إلى قائمة التنزيل",
+    "few": "تمت إضافة {count} ملفات إلى قائمة التنزيل",
+    "many": "تمت إضافة {count} ملفًا إلى قائمة التنزيل",
+    "other": "تمت إضافة {count} ملف إلى قائمة التنزيل"
+  },
+  "Failed to queue download: {message}": "تعذر إضافة التنزيل إلى قائمة الانتظار: {message}"
 }

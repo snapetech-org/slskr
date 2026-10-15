@@ -4856,5 +4856,8 @@
   "Verifying": "検証中",
   "Verifying Final": "最終結果を検証中",
   "Members:\n{members}": "メンバー:\n{members}",
-  "Unknown member": "不明なメンバー"
+  "Unknown member": "不明なメンバー",
+  "Queued {count} file for download": "ダウンロードするファイルを{count}件キューに追加しました",
+  "Queued {count} files for download": "ダウンロードするファイルを{count}件キューに追加しました",
+  "Failed to queue download: {message}": "ダウンロードをキューに追加できませんでした: {message}"
 }

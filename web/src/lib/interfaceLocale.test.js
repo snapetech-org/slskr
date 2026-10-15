@@ -297,6 +297,28 @@ const untranslatedTechnicalUiTexts = new Set([
   'hash_db',
   'mesh_sync',
   'ETA',
+  // Dynamic identifiers, names, and quantities remain data or use standard units.
+  '{value} {value}',
+  '{value} {value}: {value}',
+  '{value} KB',
+  '{value} MB',
+  '{value}m {value}s',
+  '{value} min',
+  '{value}h {value}m',
+  '{value}s',
+  '{value}ms',
+  '{value}/hr',
+  '{value}/s',
+  '{value}..',
+  '{value} - {value} {value}',
+  'RustyMilk',
+  'ShareList',
+  'Lidarr',
+  'Gluetun',
+  'slskr',
+  'slskr-mesh-v1',
+  'mesh.enableSoulseekRendezvous',
+  'min',
 ]);
 
 const localizationRawUiTexts = () => {
@@ -337,6 +359,7 @@ const localizationRawUiTexts = () => {
   ]);
   const references = [];
 
+  visitDirectory(sourceRoot);
   for (const file of files) {
     const source = fs.readFileSync(file, 'utf8');
     const ast = parse(source, { sourceType: 'unambiguous', plugins: ['jsx'] });
@@ -360,6 +383,21 @@ const localizationRawUiTexts = () => {
 
     const walk = (node, inheritedLocalization = false) => {
       if (!node || typeof node !== 'object') return;
+      if (node.type === 'CallExpression') {
+        const callee = node.callee;
+        const method = callee.type === 'MemberExpression' && callee.property.type === 'Identifier'
+          ? callee.property.name
+          : undefined;
+        const isToast = callee.type === 'MemberExpression' && callee.object.type === 'Identifier' &&
+          callee.object.name === 'toast' && ['error', 'success', 'info', 'warning', 'warn'].includes(method);
+        const isBrowserDialog = ['confirm', 'alert'].includes(method) ||
+          callee.type === 'Identifier' && ['confirm', 'alert'].includes(callee.name);
+        if ((isToast || isBrowserDialog) && node.arguments[0]) {
+          for (const value of displayStrings(node.arguments[0])) {
+            if (value.trim()) references.push({ file: relativeFile, line: node.loc.start.line, source: value.trim() });
+          }
+        }
+      }
       if (node.type === 'JSXElement') {
         const componentName = node.openingElement.name.type === 'JSXIdentifier'
           ? node.openingElement.name.name
@@ -392,7 +430,8 @@ const localizationRawUiTexts = () => {
             for (const value of displayStrings(child.expression)) {
               if (value.trim()) references.push({ file: relativeFile, line: child.loc.start.line, source: value.trim() });
             }
-          } else if (child.type === 'JSXElement' || child.type === 'JSXFragment') {
+            walk(child, localized);
+          } else if (child.type !== 'JSXText') {
             walk(child, localized);
           }
         }
@@ -407,7 +446,7 @@ const localizationRawUiTexts = () => {
     walk(ast);
   }
 
-  return references;
+  return references.filter(({ source }) => /[A-Za-z]{2,}/u.test(source));
 };
 
 beforeEach(() => {

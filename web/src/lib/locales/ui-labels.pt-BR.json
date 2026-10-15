@@ -4856,5 +4856,8 @@
   "Verifying": "Verificando",
   "Verifying Final": "Verificando o resultado final",
   "Members:\n{members}": "Membros:\n{members}",
-  "Unknown member": "Membro desconhecido"
+  "Unknown member": "Membro desconhecido",
+  "Queued {count} file for download": "Enfileirado {count} arquivo para baixar",
+  "Queued {count} files for download": "Enfileirados {count} arquivos para baixar",
+  "Failed to queue download: {message}": "Não foi possível enfileirar o download: {message}"
 }

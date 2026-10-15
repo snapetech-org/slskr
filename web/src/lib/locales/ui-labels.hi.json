@@ -4856,5 +4856,8 @@
   "Verifying": "सत्यापन हो रहा है",
   "Verifying Final": "अंतिम परिणाम का सत्यापन हो रहा है",
   "Members:\n{members}": "सदस्य:\n{members}",
-  "Unknown member": "अज्ञात सदस्य"
+  "Unknown member": "अज्ञात सदस्य",
+  "Queued {count} file for download": "डाउनलोड के लिए {count} फ़ाइल कतार में रखी गई",
+  "Queued {count} files for download": "डाउनलोड के लिए {count} फ़ाइलें कतार में रखी गईं",
+  "Failed to queue download: {message}": "डाउनलोड को कतार में नहीं जोड़ा जा सका: {message}"
 }

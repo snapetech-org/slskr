@@ -4856,5 +4856,8 @@
   "Verifying": "Verificando",
   "Verifying Final": "Verificando el resultado final",
   "Members:\n{members}": "Miembros:\n{members}",
-  "Unknown member": "Miembro desconocido"
+  "Unknown member": "Miembro desconocido",
+  "Queued {count} file for download": "Se puso en cola {count} archivo para descargar",
+  "Queued {count} files for download": "Se pusieron en cola {count} archivos para descargar",
+  "Failed to queue download: {message}": "No se pudo poner la descarga en cola: {message}"
 }

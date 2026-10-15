@@ -4856,5 +4856,8 @@
   "Verifying": "Đang xác minh",
   "Verifying Final": "Đang xác minh kết quả cuối",
   "Members:\n{members}": "Thành viên:\n{members}",
-  "Unknown member": "Thành viên không xác định"
+  "Unknown member": "Thành viên không xác định",
+  "Queued {count} file for download": "Đã xếp hàng {count} tệp để tải xuống",
+  "Queued {count} files for download": "Đã xếp hàng {count} tệp để tải xuống",
+  "Failed to queue download: {message}": "Không thể xếp hàng tải xuống: {message}"
 }

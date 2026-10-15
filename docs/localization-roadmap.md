@@ -43,8 +43,10 @@ The regional-format preference also localizes digits in track durations and audi
 
 Regional formatting uses the selected preference for dates, times, counts, byte sizes, and numbers in the shipped UI. Changes re-render open screens immediately, keep working in the current tab when browser storage is blocked, and update from another tab's preference changes.
 
-The source-reference test checks every fixed localization-helper callsite in the app-owned source files changed by this PR. It does not scan untouched source modules or raw UI literals that bypass those helpers; both app-wide audits remain open.
+The app-wide follow-up scans every JavaScript and JSX source module under `web/src` for fixed localization-helper references, localized component props, and browser confirmation and alert text. A separate JSX audit checks raw text and accessible labels, titles, placeholders, tooltips, and message content; its allowlist is limited to protocol identifiers, product names, user or library data, examples, and standard unit labels. Raw toast strings are also rejected. Both scans run in `web/src/lib/interfaceLocale.test.js`.
+
+This follow-up adds 165 source strings to each of the twelve catalogs. It routes remaining Browse and Library Health labels, player quality text, Quarantine Jury acceptance copy, destructive confirmations, search placeholders, MediaCore and job status fallbacks, graph tooltips, the Share Groups member alert, and Browse queue success and failure notifications through the existing localization helpers. The focused interface-language suite passes with source-reference, raw-JSX, toast, and dialog coverage.
 
 ## Remaining work
 
-The catalog translations were machine-generated and still need fluent-speaker review. Audit any remaining raw UI literals, and review the full Arabic layout interactively at narrow and desktop widths before claiming app-wide RTL support.
+The catalog translations were machine-generated and still need fluent-speaker review. Review the full Arabic layout interactively at narrow and desktop widths before claiming app-wide RTL support.

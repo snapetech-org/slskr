@@ -4856,5 +4856,8 @@
   "Verifying": "Wird überprüft",
   "Verifying Final": "Endergebnis wird überprüft",
   "Members:\n{members}": "Mitglieder:\n{members}",
-  "Unknown member": "Unbekanntes Mitglied"
+  "Unknown member": "Unbekanntes Mitglied",
+  "Queued {count} file for download": "{count} Datei wurde zum Download vorgemerkt",
+  "Queued {count} files for download": "{count} Dateien wurden zum Download vorgemerkt",
+  "Failed to queue download: {message}": "Download konnte nicht in die Warteschlange gestellt werden: {message}"
 }

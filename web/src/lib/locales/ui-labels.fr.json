@@ -4856,5 +4856,8 @@
   "Verifying": "Vérification en cours",
   "Verifying Final": "Vérification finale en cours",
   "Members:\n{members}": "Membres :\n{members}",
-  "Unknown member": "Membre inconnu"
+  "Unknown member": "Membre inconnu",
+  "Queued {count} file for download": "{count} fichier mis en file d’attente pour le téléchargement",
+  "Queued {count} files for download": "{count} fichiers mis en file d’attente pour le téléchargement",
+  "Failed to queue download: {message}": "Impossible de mettre le téléchargement en file d’attente : {message}"
 }
