@@ -479,8 +479,8 @@ class FooterView extends Component {
                   <Icon name="bolt" />
                   <LocalizedPluralText
                     count={activeSwarms}
-                    other="swarms"
-                    singular="swarm"
+                    other="{count} swarms"
+                    singular="{count} swarm"
                     values={{ count: formatRegionalNumber(activeSwarms) }}
                   />
                 </span>

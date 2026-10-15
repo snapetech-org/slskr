@@ -24,7 +24,9 @@ const summarizeBulkFailures = ({ action, failures }) => {
   }
 
   const [firstFailure] = failures;
-  const actionLabel = interfaceText(action === 'cancel' ? 'Cancel' : 'Remove').toLocaleLowerCase();
+  const actionLabel = interfaceText(
+    action === 'retry' ? 'Retry' : action === 'cancel' ? 'Cancel' : 'Remove',
+  ).toLocaleLowerCase();
   toast.error(
     failures.length === 1
       ? <LocalizedText
