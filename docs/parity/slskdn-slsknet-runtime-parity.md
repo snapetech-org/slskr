@@ -297,11 +297,17 @@ conflict remains open.
 
 `scripts/check-controller-options-differential.sh` now builds and launches both
 frozen daemons plus both slskR controller profiles. It compares the complete
-`GET /api/v0/options` JSON values after normalizing only instance-specific
-download directories and explicitly selected HTTP/HTTPS ports. It also compares
-the exact status, content type, and response bytes for null, array, and valid
+`GET /api/v0/options` JSON values after normalizing instance-specific download
+directories and selected HTTP/HTTPS and DHT ports, known product-specific
+default identity and description strings, the established default transfer
+slot pairs, and the empty compatibility-only download-filter shape. Configured
+non-default values remain strict. It also compares the exact status, content
+type, and response bytes for null, array, and valid
 `PATCH /api/v0/options` requests plus valid and invalid
 `POST /api/v0/options/yaml/validate` requests. Both target profiles pass.
+The integrations comparison applies the same narrow identity normalization,
+including the frozen slskdN MusicBrainz User-Agent, while preserving configured
+integration values.
 Watcher, reconnect, restart, exhaustive validation, and non-default leaf
 matrices remain open. The same gate now also launches both profiles with exact
 custom downloads/incomplete environment and CLI paths, compares the resulting

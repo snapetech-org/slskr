@@ -18,6 +18,12 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.58] — 2026-10-14
+
+- Corrected options and integrations parity normalization for the frozen
+  slskdN reference's legacy default identity strings; configured-value
+  comparisons remain strict and product behavior is unchanged.
+
 ## [0.2.57] — 2026-10-14
 
 - Added browser-local interface-language and regional-format preferences across

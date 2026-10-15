@@ -973,6 +973,7 @@ destination.mkdir(parents=True,exist_ok=True)
 default_identity_values = {
     "slskd/0.0.0 (https://github.com/slskd/slskd)",
     "slskd/0.0.0 (https://github.com/snapetech-org/slskdN)",
+    "slskd/0.0.0 (https://github.com/snapetech/slskdn)",
     "slskR/0.0.0 (https://github.com/snapetech-org/slskr)",
     "slskd",
     "slskdN",

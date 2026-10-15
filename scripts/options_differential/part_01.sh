@@ -63,9 +63,11 @@ def normalize_debug_default_transfer_slots(value):
 default_identity_values = (
     "A slskd user. https://github.com/slskd/slskd",
     "A slskdN user. Unofficial fork of slskd: https://github.com/snapetech-org/slskdN",
+    "A slskdN user. Unofficial fork of slskd: https://github.com/snapetech/slskdn",
     "A slskR user. https://github.com/snapetech-org/slskr",
     "slskd/0.0.0 (https://github.com/slskd/slskd)",
     "slskd/0.0.0 (https://github.com/snapetech-org/slskdN)",
+    "slskd/0.0.0 (https://github.com/snapetech/slskdn)",
     "slskR/0.0.0 (https://github.com/snapetech-org/slskr)",
     "slskr",
     "From slskd:",
@@ -449,6 +451,7 @@ if isinstance(value.get("dhtRendezvous"), dict):
 default_descriptions = {
     "A slskd user. https://github.com/slskd/slskd",
     "A slskdN user. Unofficial fork of slskd: https://github.com/snapetech-org/slskdN",
+    "A slskdN user. Unofficial fork of slskd: https://github.com/snapetech/slskdn",
     "A slskR user. https://github.com/snapetech-org/slskr",
 }
 if value.get("soulseek", {}).get("description") in default_descriptions:
@@ -457,6 +460,7 @@ if value.get("soulseek", {}).get("description") in default_descriptions:
 default_identity_values = {
     "slskd/0.0.0 (https://github.com/slskd/slskd)",
     "slskd/0.0.0 (https://github.com/snapetech-org/slskdN)",
+    "slskd/0.0.0 (https://github.com/snapetech/slskdn)",
     "slskR/0.0.0 (https://github.com/snapetech-org/slskr)",
     "slskd",
     "slskdN",
