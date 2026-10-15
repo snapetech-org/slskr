@@ -18,6 +18,12 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.65] — 2026-10-15
+
+- [Internal-only] Regenerate council scan and active-bughunt evidence for the
+  current source digest, then synchronize inventory freshness stamps for the
+  release gate.
+
 ## [0.2.64] — 2026-10-15
 
 - [Internal-only] Replace incomplete default CodeQL coverage with a pinned
