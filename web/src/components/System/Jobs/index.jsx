@@ -344,7 +344,7 @@ const Jobs = () => {
                         color="yellow"
                         name="bolt"
                       />
-                      {job.filename?.split('/').pop() ?? 'Unknown file'}
+                      {job.filename?.split('/').pop() ?? interfaceText('Unknown file')}
                     </Card.Header>
                     <Card.Meta>
                       {job.activeSources ?? 0} <LocalizedText source={"sources •"} />{' '}
@@ -515,12 +515,12 @@ const Jobs = () => {
                       <code>{job.id}</code>
                     </Table.Cell>
                     <Table.Cell>
-                      <Label>{job.type || 'unknown'}</Label>
+                      <Label>{job.type || interfaceText('unknown')}</Label>
                     </Table.Cell>
                     <Table.Cell>
                       <Label color={getStatusColor(job.status)}>
                         <Icon name={getStatusIcon(job.status)} />
-                        {job.status || 'unknown'}
+                        {job.status || interfaceText('unknown')}
                       </Label>
                     </Table.Cell>
                     <Table.Cell>

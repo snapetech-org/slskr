@@ -197,7 +197,7 @@ const AlbumCompletionPanel = ({ disabled }) => {
                             )}
                           </List.Header>
                           <List.Description>
-                            <LocalizedText source={"Recording ID:"} />{" "}{track.recordingId ?? 'unknown'} ·{' '}
+                            <LocalizedText source={"Recording ID:"} />{" "}{track.recordingId ?? interfaceText('unknown')} ·{' '}
                             {formatDuration(track.durationMs)}
                           </List.Description>
                         </List.Content>

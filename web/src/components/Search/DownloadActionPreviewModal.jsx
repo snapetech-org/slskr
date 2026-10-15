@@ -24,7 +24,7 @@ const DownloadActionPreviewModal = ({
         <List relaxed>
           <List.Item>
             <List.Header><LocalizedText source={"Source"} /></List.Header>
-            <List.Description>{preview.username || 'unknown'}</List.Description>
+            <List.Description>{preview.username || interfaceText('unknown')}</List.Description>
           </List.Item>
           <List.Item>
             <List.Header><LocalizedText source={"Providers"} /></List.Header>

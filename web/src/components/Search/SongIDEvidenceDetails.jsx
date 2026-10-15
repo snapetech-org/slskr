@@ -163,7 +163,7 @@ const SongIDEvidenceDetails = ({
                 <br />
                 <strong><LocalizedText source={"Confidence:"} /></strong> {formatPercent(identityConfidence)}
                 <br />
-                <strong><LocalizedText source={"Reasoning:"} /></strong> {identitySummary || 'None'}
+                <strong><LocalizedText source={"Reasoning:"} /></strong> {identitySummary || interfaceText('None')}
               </p>
             </>
           ) : null}

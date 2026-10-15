@@ -114,6 +114,9 @@ const SearchesListView = ({ actions, inputRef, state }) => {
     scenePodBridgeEnabled,
     searches,
   } = state;
+  const placeholderText = normalizedServer.isConnected
+    ? 'Search phrase'
+    : 'Connect to server to perform a search';
   const {
     create,
     remove,
@@ -240,20 +243,17 @@ const SearchesListView = ({ actions, inputRef, state }) => {
               <input
                 data-lpignore="true"
                 data-testid="search-input"
-                placeholder={
-                  normalizedServer.isConnected
-                    ? 'Search phrase'
-                    : 'Connect to server to perform a search'
-                }
+                placeholder={interfaceText(placeholderText)}
+               {...interfaceTextProps(placeholderText)}
                 type="search"
               />
             }
             loading={creating}
             onKeyUp={(keyUpEvent) => (keyUpEvent.key === 'Enter' ? create() : '')}
-            placeholder={interfaceText("Search phrase")}
+            placeholder={interfaceText(placeholderText)}
             ref={inputRef}
             size="big"
-           {...interfaceTextProps("Search phrase")}/>
+           {...interfaceTextProps(placeholderText)}/>
           {scenePodBridgeEnabled && (
             <div
               style={{

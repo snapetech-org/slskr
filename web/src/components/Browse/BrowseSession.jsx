@@ -1,4 +1,5 @@
 import LocalizedText from "../Shared/LocalizedText";
+import { LocalizedPopup } from "../Shared/TooltipButton";
 import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 /* eslint-disable promise/prefer-await-to-then */
 import './Browse.css';
@@ -635,10 +636,11 @@ class BrowseSession extends Component {
 
     if (filesToDownload.length === 0) {
       toast.info(
-        'No files found in directory: ' +
-          (typeof directory?.name === 'string'
+        interfaceText('No files found in directory: {directory}', {
+          directory: typeof directory?.name === 'string'
             ? directory.name
-            : 'selected folder'),
+            : interfaceText('selected folder'),
+        }),
       );
       return;
     }
@@ -648,11 +650,9 @@ class BrowseSession extends Component {
     if (
       // eslint-disable-next-line no-alert
       window.confirm(
-        'Download ' +
-          filesToDownload.length +
-          ' files from ' +
-          (directory.name || 'selected folder') +
-          '?',
+        interfaceText('Download the selected files from {folder}?', {
+          folder: directory.name || interfaceText('selected folder'),
+        }),
       )
     ) {
       const requestId = ++this.downloadRequestId;
@@ -710,6 +710,10 @@ class BrowseSession extends Component {
     const pending = browseState === 'pending';
     const finished = ['complete', 'error'].includes(browseState);
     const emptyTree = finished && tree.length === 0;
+    const browseButtonLabel = browseState === 'idle' ? 'Browse user files' : 'Clear browse result';
+    const browseButtonTooltip = browseState === 'idle'
+      ? "Browse this Soulseek user's shared files."
+      : 'Clear this browse result and enter another username.';
 
     const files = asRecords(selectedDirectory.files).map((f) => ({
       ...f,
@@ -734,21 +738,14 @@ class BrowseSession extends Component {
           <Input
             action={
               !pending && (
-                <Popup
-                  content={
-                    browseState === 'idle'
-                      ? "Browse this Soulseek user's shared files."
-                      : 'Clear this browse result and enter another username.'
-                  }
+                <LocalizedPopup
+                  content={browseButtonTooltip}
                   position="top center"
                   trigger={
                     <Button
-                      aria-label={
-                        browseState === 'idle'
-                          ? 'Browse user files'
-                          : 'Clear browse result'
-                      }
+                      aria-label={interfaceText(browseButtonLabel)}
                       color={browseState === 'idle' ? undefined : 'red'}
+                      {...interfaceTextProps(browseButtonLabel)}
                       icon={browseState === 'idle' ? 'search' : 'x'}
                       onClick={
                         browseState === 'idle' ? this.browse : this.clear

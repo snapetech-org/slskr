@@ -781,7 +781,15 @@ const QuarantineJury = () => {
                   <Message
                     positive
                     header={interfaceText("Release candidate accepted")}
-                    content={`${normalizeAcceptance(review.acceptance).acceptedBy} accepted this recommendation at ${formatDate(normalizeAcceptance(review.acceptance).createdAt)}.`}
+                    content={(
+                      <LocalizedText
+                        source="{acceptedBy} accepted this recommendation at {date}."
+                        values={{
+                          acceptedBy: normalizeAcceptance(review.acceptance).acceptedBy,
+                          date: formatDate(normalizeAcceptance(review.acceptance).createdAt),
+                        }}
+                      />
+                    )}
                    {...interfaceTextProps("Release candidate accepted")}/>
                 ) : (
                   <>

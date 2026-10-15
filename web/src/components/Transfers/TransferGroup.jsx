@@ -63,7 +63,7 @@ class TransferGroup extends Component {
       deleteFile &&
       // eslint-disable-next-line no-alert
       !window.confirm(
-        `Are you sure you want to PERMANENTLY delete ${selected.length} file(s) from disk? This cannot be undone.`,
+        interfaceText('Delete these selected files permanently? This cannot be undone.'),
       )
     ) {
       return;

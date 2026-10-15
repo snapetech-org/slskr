@@ -267,7 +267,7 @@ export default class Collections extends Component {
       return;
     }
     // eslint-disable-next-line no-alert
-    if (!window.confirm('Delete this collection?')) return;
+    if (!window.confirm(interfaceText('Delete this collection?'))) return;
     const requestId = ++this.requestIds.deleteCollection;
     this.setState({ deletingCollectionId: id, error: null });
 

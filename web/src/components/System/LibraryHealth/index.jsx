@@ -546,7 +546,7 @@ const LibraryHealth = () => {
                     primary
                   >
                     <Icon name="search" />
-                    {scanning ? 'Scanning...' : <LocalizedText source={"Start Scan"} />}
+                    {scanning ? <LocalizedText source="Scanning..." /> : <LocalizedText source={"Start Scan"} />}
                   </Button>
                 }
                 disabled={scanning}

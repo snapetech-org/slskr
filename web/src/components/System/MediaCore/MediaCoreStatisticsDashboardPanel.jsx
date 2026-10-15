@@ -168,7 +168,7 @@ const MediaCoreStatisticsDashboardPanel = () => {
   const handleResetMediaCoreStats = async () => {
     if (
       !confirm(
-        'Are you sure you want to reset all MediaCore statistics? This cannot be undone.',
+        interfaceText('Are you sure you want to reset all MediaCore statistics? This cannot be undone.'),
       )
     ) {
       return;

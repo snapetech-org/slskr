@@ -707,7 +707,7 @@ const Network = ({ options = {}, state = {}, theme }) => {
         <Label.Group>
           <Label color="blue">
             <Icon name="code branch" />
-            {hasStats ? capabilities?.version ?? 'unknown' : '—'}
+            {hasStats ? capabilities?.version ?? interfaceText('unknown') : '—'}
           </Label>
           {hasStats ? (
             capabilities?.features?.map((feature) => (

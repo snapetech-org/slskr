@@ -547,7 +547,10 @@ const Messaging = ({ runtimeProfile, initialKind = 'mixed', state }) => {
   const leaveRoom = async (roomName) => {
     if (
       !window.confirm(
-        `Leave room "${roomName}"? This exits the room and removes it from joined rooms.`,
+        interfaceText(
+          'Leave room "{roomName}"? This exits the room and removes it from joined rooms.',
+          { roomName },
+        ),
       )
     ) {
       return;
@@ -583,7 +586,10 @@ const Messaging = ({ runtimeProfile, initialKind = 'mixed', state }) => {
   const deleteConversation = async (username) => {
     if (
       !window.confirm(
-        `Permanently delete the saved message thread with "${username}"?`,
+        interfaceText(
+          'Permanently delete the saved message thread with "{username}"?',
+          { username },
+        ),
       )
     ) {
       return;
@@ -623,10 +629,15 @@ const Messaging = ({ runtimeProfile, initialKind = 'mixed', state }) => {
       return;
     }
 
-    const prompt =
-      channel.podId === GOLD_STAR_CLUB_POD_ID
-        ? `Permanently leave ${podName}? Gold Star Club membership is irrevocable and cannot be recovered.`
-        : `Leave pod "${podName}"? This exits the pod and removes its channels from Messages.`;
+    const prompt = channel.podId === GOLD_STAR_CLUB_POD_ID
+      ? interfaceText(
+        'Permanently leave {podName}? Gold Star Club membership is irrevocable and cannot be recovered.',
+        { podName },
+      )
+      : interfaceText(
+        'Leave pod "{podName}"? This exits the pod and removes its channels from Messages.',
+        { podName },
+      );
 
     if (!window.confirm(prompt)) {
       return;

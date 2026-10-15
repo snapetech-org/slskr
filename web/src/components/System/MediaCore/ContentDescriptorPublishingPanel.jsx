@@ -385,7 +385,7 @@ const ContentDescriptorPublishingPanel = () => {
                         → {updateResult.newVersion}
                         <br />
                         <strong><LocalizedText source={"Updates Applied:"} /></strong>{' '}
-                        {updateResult.appliedUpdates?.join(', ') || 'none'}
+                        {updateResult.appliedUpdates?.join(', ') || interfaceText('none')}
                       </p>
                     </Message>
                   )}

@@ -809,7 +809,10 @@ const Visualizer = ({
             <div>
               {nativeQualityPreset === 'custom'
                 ? <LocalizedText source={"custom quality"} />
-                : `${nativeQualityPresets[nativeQualityPreset]?.label || 'Balanced'} quality`}
+                : <LocalizedText
+                    source="{quality} quality"
+                    values={{ quality: interfaceText(nativeQualityPresets[nativeQualityPreset]?.label || 'Balanced') }}
+                  />}
               {' · '}
               {getRustyMilkWebGpuDebugLabel(nativeDebugSnapshot.webGpu)}
             </div>

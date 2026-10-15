@@ -104,7 +104,7 @@ const PodDhtPublishingPanel = ({ visible = true }) => {
     }
 
     if (
-      !confirm(`Are you sure you want to unpublish pod "${podToUnpublish}"?`)
+      !confirm(interfaceText('Are you sure you want to unpublish pod "{podId}"?', { podId: podToUnpublish }))
     ) {
       return;
     }

@@ -226,7 +226,7 @@ const PodMessageSigningPanel = ({
                         <Message size="tiny">
                           <p>
                             <LocalizedText source={"Message"} />{" "}{verificationResult.messageId}<LocalizedText source={": Signature is"} />{' '}
-                            {verificationResult.isValid ? 'VALID' : 'INVALID'}
+                            {verificationResult.isValid ? interfaceText('Valid') : interfaceText('Invalid')}
                           </p>
                         </Message>
                       )}

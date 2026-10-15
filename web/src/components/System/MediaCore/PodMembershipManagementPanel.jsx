@@ -140,7 +140,10 @@ const PodMembershipManagementPanel = ({
 
     if (
       !confirm(
-        `Are you sure you want to ban member "${membershipPeerId}" from pod "${membershipPodId}"?`,
+        interfaceText(
+          'Are you sure you want to ban member "{peerId}" from pod "{podId}"?',
+          { peerId: membershipPeerId, podId: membershipPodId },
+        ),
       )
     ) {
       return;
@@ -200,7 +203,7 @@ const PodMembershipManagementPanel = ({
 
   const handleCleanupMemberships = async () => {
     if (
-      !confirm('Are you sure you want to cleanup expired membership records?')
+      !confirm(interfaceText('Are you sure you want to clean up expired membership records?'))
     ) {
       return;
     }
@@ -390,7 +393,7 @@ const PodMembershipManagementPanel = ({
                               : <LocalizedText source={"No"} />}
                             <br />
                             <strong><LocalizedText source={"Role:"} /></strong>{' '}
-                            {membershipVerification.role || 'None'}
+                            {membershipVerification.role || interfaceText('None')}
                             <br />
                             <strong><LocalizedText source={"Banned:"} /></strong>{' '}
                             {membershipVerification.isBanned ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}

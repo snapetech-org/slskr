@@ -250,7 +250,7 @@ export default class ShareGroups extends Component {
   };
 
   handleDeleteGroup = async (id) => {
-    if (!window.confirm('Delete this share group?')) return;
+    if (!window.confirm(interfaceText('Delete this share group?'))) return;
     if (!this.beginOperation()) return;
     const requestId = ++this.requestIds.operation;
     try {
@@ -275,7 +275,7 @@ export default class ShareGroups extends Component {
   };
 
   handleRemoveMember = async (groupId, userId) => {
-    if (!window.confirm('Remove this member?')) return;
+    if (!window.confirm(interfaceText('Remove this member?'))) return;
     if (!this.beginOperation()) return;
     const requestId = ++this.requestIds.operation;
     try {

@@ -143,7 +143,10 @@ const PodChannelManagementPanel = ({ visible = true }) => {
   const handleDeleteChannel = async (channelId, channelName) => {
     if (
       !confirm(
-        `Are you sure you want to delete the channel "${channelName}"? This action cannot be undone.`,
+        interfaceText(
+          'Are you sure you want to delete the channel "{channelName}"? This action cannot be undone.',
+          { channelName },
+        ),
       )
     ) {
       return;

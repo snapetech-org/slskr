@@ -215,7 +215,7 @@ const PodMembershipVerificationPanel = React.memo(({
                           : <LocalizedText source={"No"} />}
                         <br />
                         <strong><LocalizedText source={"Role:"} /></strong>{' '}
-                        {membershipVerificationResult.role || 'None'}
+                        {membershipVerificationResult.role || interfaceText('None')}
                         <br />
                         <strong><LocalizedText source={"Banned:"} /></strong>{' '}
                         {membershipVerificationResult.isBanned ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}

@@ -293,7 +293,7 @@ class Contacts extends Component {
   };
 
   handleDeleteContact = async (id) => {
-    if (!window.confirm('Delete this contact?')) return;
+    if (!window.confirm(interfaceText('Delete this contact?'))) return;
     if (!this.beginMutation()) return;
     try {
       await identityAPI.deleteContact(id);

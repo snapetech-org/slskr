@@ -76,81 +76,7 @@ const untranslatedTechnicalExamples = new Set([
   'PrivateMessageReceived&#10;DownloadFileComplete',
   'content:audio:track:mb-12345&#10;content:video:movie:imdb-tt0111161&#10;...',
 ]);
-// The PR adds catalog coverage in these modules; untouched source modules
-// remain in the broader localization audit tracked by docs/localization-roadmap.md.
-const localizationAuditFiles = new Set([
-  'components/App.jsx',
-  'components/Browse/Directory.jsx',
-  'components/Browse/DirectoryTree.jsx',
-  'components/Chat/Chat.jsx',
-  'components/Chat/ChatSession.jsx',
-  'components/Collections/Collections.jsx',
-  'components/Contacts/Contacts.jsx',
-  'components/Messaging/Messaging.jsx',
-  'components/Messaging/PodChannelSession.jsx',
-  'components/Player/Equalizer.jsx',
-  'components/Player/PlayerLauncher.jsx',
-  'components/Player/PlayerDiscoveryShelfModal.jsx',
-  'components/Player/PlayerRadioModal.jsx',
-  'components/Player/PlayerStatsModal.jsx',
-  'components/Player/PlayerVisualTiles.jsx',
-  'components/Player/PodListenAlongPanel.jsx',
-  'components/Player/SpectrumAnalyzer.jsx',
-  'components/Player/useVisualizerPresetEditorActions.js',
-  'components/Player/useVisualizerPresetFileOperations.js',
-  'components/Player/Visualizer.jsx',
-  'components/Player/VisualizerOverlayControls.jsx',
-  'components/Player/visualizerPresetLibrary.js',
-  'components/Pods/PortForwarding.jsx',
-  'components/Rooms/RoomSession.jsx',
-  'components/Rooms/RoomCreateModal.jsx',
-  'components/Rooms/RoomJoinModal.jsx',
-  'components/Rooms/Rooms.jsx',
-  'components/ShareGroups/ShareGroups.jsx',
-  'components/Search/AlbumCompletionPanel.jsx',
-  'components/Search/ArtistReleaseRadarPanel.jsx',
-  'components/Search/DiscoveryGraphAtlasPanel.jsx',
-  'components/Search/DiscographyCoveragePanel.jsx',
-  'components/Search/DownloadActionPreviewModal.jsx',
-  'components/Search/FederatedTasteRecommendationsPanel.jsx',
-  'components/Search/MusicBrainzLookup.jsx',
-  'components/Search/Response.jsx',
-  'components/Search/Searches.jsx',
-  'components/Search/SearchesListView.jsx',
-  'components/Search/SongIDPanel.jsx',
-  'components/Shared/Footer.jsx',
-  'components/Shared/LocalizedText.jsx',
-  'components/Shares/SharedWithMe.jsx',
-  'components/System/Integrations/LidarrPanel.jsx',
-  'components/System/Events/index.jsx',
-  'components/System/Jobs/index.jsx',
-  'components/System/Logs/index.jsx',
-  'components/System/LibraryHealth/index.jsx',
-  'components/System/Bridge/index.jsx',
-  'components/System/Shares/ContentsModal.jsx',
-  'components/System/Shares/index.jsx',
-  'components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx',
-  'components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx',
-  'components/System/MediaCore/MessageSearchPanel.jsx',
-  'components/System/MediaCore/PodChannelManagementPanel.jsx',
-  'components/System/MediaCore/PodContentLinkingPanel.jsx',
-  'components/System/MediaCore/PodDiscoveryPanel.jsx',
-  'components/System/MediaCore/PodMembershipManagementPanel.jsx',
-  'components/System/MediaCore/PodMessageBackfillPanel.jsx',
-  'components/System/MediaCore/PodMessageMaintenanceActions.jsx',
-  'components/System/MediaCore/PodMessageRoutingPanel.jsx',
-  'components/System/MediaCore/PodMessageStoragePanel.jsx',
-  'components/System/MediaCore/PodOpinionsPanel.jsx',
-  'components/System/Mesh/MeshEvidencePolicy.jsx',
-  'components/System/Network/index.jsx',
-  'components/System/SwarmVisualization/index.jsx',
-  'components/System/SwarmAnalytics/index.jsx',
-  'components/Transfers/TransferGroup.jsx',
-  'components/Transfers/TransferList.jsx',
-  'components/Transfers/Transfers.jsx',
-  'lib/errors.js',
-  'lib/interfaceLocale.js',
-]);
+// Fixed localization-helper references are checked across every source module.
 
 const localizationSourceReferences = () => {
   const sourceRoot = path.resolve(process.cwd(), 'src');
@@ -168,6 +94,7 @@ const localizationSourceReferences = () => {
   visitDirectory(sourceRoot);
 
   const references = [];
+    const sourceValues = new Map();
   const collectStaticTexts = (node) => {
     if (!node) return [];
     if (node.type === 'StringLiteral') return [node.value];
@@ -183,11 +110,26 @@ const localizationSourceReferences = () => {
     }
     return [];
   };
+    const collectLocalizedSourceTexts = (node) => {
+      const staticTexts = collectStaticTexts(node);
+      if (staticTexts.length) return staticTexts;
+      if (node?.type === 'Identifier') return sourceValues.get(node.name) || [];
+      if (node?.type === 'CallExpression' && node.callee.type === 'Identifier') {
+        if (['interfaceText', 'interfaceTextProps', 't', 'toDisplayError'].includes(node.callee.name)) {
+          return collectLocalizedSourceTexts(node.arguments[0]);
+        }
+        if (['interfaceTextPlural', 'tp'].includes(node.callee.name)) {
+          return node.arguments.slice(0, 2).flatMap(collectLocalizedSourceTexts);
+        }
+        return sourceValues.get(node.callee.name) || [];
+      }
+      return [];
+    };
   for (const file of files) {
     const source = fs.readFileSync(file, 'utf8');
     const ast = parse(source, { sourceType: 'unambiguous', plugins: ['jsx'] });
     const relativeFile = path.relative(sourceRoot, file);
-    const sourceValues = new Map();
+      sourceValues.clear();
     const visitSourceValues = (node) => {
       if (!node || typeof node !== 'object') return;
       if (node.type === 'FunctionDeclaration' && node.id?.name) {
@@ -223,7 +165,7 @@ const localizationSourceReferences = () => {
           }
           sourceValues.set(node.id.name, returned);
         } else {
-          const values = collectStaticTexts(node.init);
+          const values = collectLocalizedSourceTexts(node.init);
           if (values.length) sourceValues.set(node.id.name, values);
         }
       }
@@ -234,13 +176,6 @@ const localizationSourceReferences = () => {
       }
     };
     visitSourceValues(ast);
-    const collectLocalizedSourceTexts = (node) => {
-      const staticTexts = collectStaticTexts(node);
-      if (staticTexts.length) return staticTexts;
-      if (node?.type === 'Identifier') return sourceValues.get(node.name) || [];
-      if (node?.type === 'CallExpression' && node.callee.type === 'Identifier') return sourceValues.get(node.callee.name) || [];
-      return [];
-    };
     const walk = (node) => {
       if (!node || typeof node !== 'object') return;
 
@@ -262,7 +197,7 @@ const localizationSourceReferences = () => {
       ) {
         const sourceArgumentCount = ['interfaceTextPlural', 'tp'].includes(node.callee.name) ? 2 : 1;
         for (const argument of node.arguments.slice(0, sourceArgumentCount)) {
-          for (const text of collectStaticTexts(argument)) {
+          for (const text of collectLocalizedSourceTexts(argument)) {
             if (text) references.push({ file: relativeFile, line: node.loc.start.line, source: text });
           }
         }
@@ -274,7 +209,18 @@ const localizationSourceReferences = () => {
         node.callee.name === 'toDisplayError' &&
         node.arguments[1]
       ) {
-        for (const text of collectStaticTexts(node.arguments[1])) {
+        for (const text of collectLocalizedSourceTexts(node.arguments[1])) {
+          if (text) references.push({ file: relativeFile, line: node.loc.start.line, source: text });
+        }
+      }
+
+      if (
+        node.type === 'CallExpression' &&
+        (node.callee.type === 'Identifier' && node.callee.name === 'confirm' ||
+          node.callee.type === 'MemberExpression' && node.callee.property.type === 'Identifier' && node.callee.property.name === 'confirm') &&
+        node.arguments[0]
+      ) {
+        for (const text of collectLocalizedSourceTexts(node.arguments[0])) {
           if (text) references.push({ file: relativeFile, line: node.loc.start.line, source: text });
         }
       }
@@ -286,6 +232,7 @@ const localizationSourceReferences = () => {
           LocalizedPopup: ['content'],
           LocalizedPluralText: ['singular', 'other'],
           TooltipButton: ['aria-label', 'title', 'content', 'tooltip'],
+          ActionButton: ['aria-label', 'title', 'content', 'tooltip'],
         };
         for (const attribute of node.attributes) {
           if (
@@ -405,8 +352,7 @@ describe('interface language', () => {
   it('keeps static app-owned localization callsites in every locale catalog', () => {
     const sourceKeys = new Set(Object.keys(LOCALE_0));
     const missing = localizationSourceReferences()
-      .filter(({ file, source }) => (
-        localizationAuditFiles.has(file) &&
+      .filter(({ source }) => (
         !sourceKeys.has(source) &&
         !untranslatedTechnicalExamples.has(source)
       ))
