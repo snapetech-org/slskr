@@ -476,9 +476,25 @@ def request(code, payload=b"", timeout=1.5):
         initialization = string(probe_username) + string("P") + struct.pack("<I", 0)
         connection.sendall(struct.pack("<I", len(initialization) + 1) + b"\x01" + initialization)
         connection.sendall(struct.pack("<II", len(payload) + 4, code) + payload)
-        length = struct.unpack("<I", receive_exact(connection, 4))[0]
-        frame = receive_exact(connection, length)
-        return struct.unpack("<I", frame[:4])[0], frame[4:]
+        expected_response = {4: 5, 8: 9, 15: 16, 36: 37, 40: 41}.get(code)
+        while True:
+            length = struct.unpack("<I", receive_exact(connection, 4))[0]
+            frame = receive_exact(connection, length)
+            response_code = struct.unpack("<I", frame[:4])[0]
+            response_payload = frame[4:]
+            if response_code == 15:
+                # Peers request our UserInfo when a connection starts. Answer
+                # that request before reading the reply to our own probe; this
+                # also keeps each disposable probe session protocol-complete.
+                user_info = (
+                    string("blacklist probe fixture")
+                    + b"\x00"
+                    + struct.pack("<II?", 0, 0, True)
+                )
+                connection.sendall(struct.pack("<II", len(user_info) + 4, 16) + user_info)
+                continue
+            if expected_response is None or response_code == expected_response:
+                return response_code, response_payload
     except (OSError, socket.timeout, EOFError):
         return None
     finally:

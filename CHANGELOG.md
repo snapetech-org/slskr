@@ -18,6 +18,12 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.62] — 2026-10-15
+
+- [Internal-only] Make blacklist peer probes answer server-initiated UserInfo
+  requests and wait for the matching response, avoiding timing-sensitive frame
+  ordering in frozen-client comparisons.
+
 ## [0.2.61] — 2026-10-15
 
 - [Internal-only] Use fresh HTTP and HTTPS ports for the slskR side of the
