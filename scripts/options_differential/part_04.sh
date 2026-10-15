@@ -436,11 +436,13 @@ capture_blacklist_peer_suite() {
   local label="$2"
   local listen_port="$3"
   local expected_blacklisted="$4"
+  local log="$5"
+  local target="$6"
+  local implementation="$7"
+  local allow_stale_browse_cache="${8:-false}"
   mkdir -p "$suite"
-  local captured=false
-  for _ in $(seq 1 300); do
-    if "$python_bin" - "$listen_port" "$expected_blacklisted" \
-      >"$suite/$label.body.tmp" 2>"$suite/$label.error" <<'PY'
+  if "$python_bin" - "$listen_port" "$expected_blacklisted" "$allow_stale_browse_cache" \
+    >"$suite/$label.body.tmp" 2>"$suite/$label.error" <<'PY'
 import json
 import socket
 import struct
@@ -450,6 +452,7 @@ import zlib
 
 port = int(sys.argv[1])
 expected = sys.argv[2] == "true"
+allow_stale_browse_cache = sys.argv[3] == "true"
 probe_username = f"blacklist-probe-{time.time_ns()}"
 
 def string(value):
@@ -466,19 +469,21 @@ def receive_exact(connection, length):
     return value
 
 def request(code, payload=b"", timeout=1.5):
-    connection = socket.create_connection(("127.0.0.1", port), timeout=2)
-    connection.settimeout(timeout)
-    initialization = string(probe_username) + string("P") + struct.pack("<I", 0)
-    connection.sendall(struct.pack("<I", len(initialization) + 1) + b"\x01" + initialization)
-    connection.sendall(struct.pack("<II", len(payload) + 4, code) + payload)
+    connection = None
     try:
+        connection = socket.create_connection(("127.0.0.1", port), timeout=2)
+        connection.settimeout(timeout)
+        initialization = string(probe_username) + string("P") + struct.pack("<I", 0)
+        connection.sendall(struct.pack("<I", len(initialization) + 1) + b"\x01" + initialization)
+        connection.sendall(struct.pack("<II", len(payload) + 4, code) + payload)
         length = struct.unpack("<I", receive_exact(connection, 4))[0]
         frame = receive_exact(connection, length)
         return struct.unpack("<I", frame[:4])[0], frame[4:]
-    except (socket.timeout, EOFError):
+    except (OSError, socket.timeout, EOFError):
         return None
     finally:
-        connection.close()
+        if connection is not None:
+            connection.close()
 
 def read_string(payload, offset):
     length = struct.unpack_from("<I", payload, offset)[0]
@@ -486,19 +491,30 @@ def read_string(payload, offset):
     value = payload[offset:offset + length].decode("utf-8")
     return value, offset + length
 
-user_info = request(15)
 restricted_user_info = False
-if user_info and user_info[0] == 16:
-    payload = user_info[1]
-    _, offset = read_string(payload, 0)
-    has_picture = payload[offset] != 0
-    offset += 1
-    if has_picture:
-        picture_length = struct.unpack_from("<I", payload, offset)[0]
-        offset += 4 + picture_length
-    _, queue_size = struct.unpack_from("<II", payload, offset)
-    slots_free = payload[offset + 8] != 0
-    restricted_user_info = queue_size == 2_147_483_647 and not slots_free
+user_info = None
+for _ in range(300):
+    user_info = request(15)
+    restricted_user_info = False
+    if user_info and user_info[0] == 16:
+        payload = user_info[1]
+        _, offset = read_string(payload, 0)
+        has_picture = payload[offset] != 0
+        offset += 1
+        if has_picture:
+            picture_length = struct.unpack_from("<I", payload, offset)[0]
+            offset += 4 + picture_length
+        _, queue_size = struct.unpack_from("<II", payload, offset)
+        slots_free = payload[offset + 8] != 0
+        restricted_user_info = queue_size == 2_147_483_647 and not slots_free
+        if restricted_user_info == expected:
+            break
+    time.sleep(0.1)
+else:
+    raise SystemExit(
+        f"blacklist UserInfo readiness timed out: expected={expected} "
+        f"actual={restricted_user_info if user_info else None}"
+    )
 
 browse = request(4)
 browse_empty = bool(
@@ -540,25 +556,34 @@ result = {
     "searchSuppressed": search_suppressed,
 }
 peer_checks = {key: value for key, value in result.items() if key != "searchSuppressed"}
-if any(value != expected for value in peer_checks.values()) or (expected and not search_suppressed):
+unexpected = {
+    key: value
+    for key, value in peer_checks.items()
+    if value != expected and not (allow_stale_browse_cache and key == "browseEmpty")
+}
+if unexpected or (expected and not search_suppressed):
     raise SystemExit(f"blacklist peer behavior mismatch: expected={expected} actual={result}")
 print(json.dumps(result, sort_keys=True, separators=(",", ":")))
 PY
-    then
-      mv "$suite/$label.body.tmp" "$suite/$label.body"
-      captured=true
-      break
-    fi
-    sleep 0.1
-  done
-  if [[ "$captured" != true ]]; then
-    printf '%s: ' "$label" >&2
+  then
+    mv "$suite/$label.body.tmp" "$suite/$label.body"
+    rm -f "$suite/$label.error"
+    printf 'blacklist peer behavior passed: target=%s implementation=%s probe=%s\n' \
+      "$target" "$implementation" "$label"
+    printf 'status=200\ncontent-type=application/json\n' >"$suite/$label.meta"
+  else
+    printf '%s failed: target=%s implementation=%s port=%s\n' \
+      "$label" "$target" "$implementation" "$listen_port" >&2
     cat "$suite/$label.error" >&2
+    if ss -H -ltn "sport = :$listen_port" | rg -q '^LISTEN'; then
+      printf 'peer listener is still listening\n' >&2
+    else
+      printf 'peer listener is not listening\n' >&2
+    fi
+    tail -80 "$log" >&2 || true
     rm -f "$suite/$label.body.tmp" "$suite/$label.error"
     return 1
   fi
-  rm -f "$suite/$label.error"
-  printf 'status=200\ncontent-type=application/json\n' >"$suite/$label.meta"
 }
 
 capture_blacklist_stage() {
@@ -604,23 +629,32 @@ run_blacklist_scenario() {
     wait_for_blacklist_listener "$listen_port" "$log"
     wait_for_share_files "$base_url" share 1 "$log"
     capture_blacklist_stage "$base_url" "$suite" startup-disabled
-    capture_blacklist_peer_suite "$suite" peer-startup-disabled "$listen_port" false
+    wait_for_blacklist_listener "$listen_port" "$log"
+    capture_blacklist_peer_suite \
+      "$suite" peer-startup-disabled "$listen_port" false "$log" "$target" "$implementation"
 
     write_blacklist_yaml "$state/slskd.yml" "$server_port" "$listen_port" "$share_dir" true "$cidr_file"
     wait_for_blacklist_option "$base_url" true "$cidr_file" "$log"
     wait_for_blacklist_listener "$listen_port" "$log"
     capture_blacklist_stage "$base_url" "$suite" watched-cidr
-    capture_blacklist_peer_suite "$suite" peer-watched-cidr "$listen_port" true
+    wait_for_blacklist_listener "$listen_port" "$log"
+    capture_blacklist_peer_suite \
+      "$suite" peer-watched-cidr "$listen_port" true "$log" "$target" "$implementation"
 
     write_blacklist_yaml "$state/slskd.yml" "$server_port" "$listen_port" "$share_dir" false "$p2p_file"
     wait_for_blacklist_option "$base_url" false "$p2p_file" "$log"
     wait_for_blacklist_listener "$listen_port" "$log"
-    capture_blacklist_peer_suite "$suite" peer-watched-disabled "$listen_port" false
+    # Preserve a possibly stale Browse result after the watched blacklist turns
+    # off; the strict upstream/slskR comparison still checks the observed value.
+    capture_blacklist_peer_suite \
+      "$suite" peer-watched-disabled "$listen_port" false "$log" "$target" "$implementation" true
     write_blacklist_yaml "$state/slskd.yml" "$server_port" "$listen_port" "$share_dir" true "$p2p_file"
     wait_for_blacklist_option "$base_url" true "$p2p_file" "$log"
     wait_for_blacklist_listener "$listen_port" "$log"
     capture_blacklist_stage "$base_url" "$suite" watched-p2p
-    capture_blacklist_peer_suite "$suite" peer-watched-p2p "$listen_port" true
+    wait_for_blacklist_listener "$listen_port" "$log"
+    capture_blacklist_peer_suite \
+      "$suite" peer-watched-p2p "$listen_port" true "$log" "$target" "$implementation"
 
     for validation in \
       "blacklist-validation-valid-cidr|blacklist:\n  enabled: true\n  file: '$cidr_file'\n" \
@@ -651,7 +685,9 @@ run_blacklist_scenario() {
     wait_for_fixture_active "$fixture_status" 1 "$log"
     wait_for_blacklist_listener "$listen_port" "$log"
     capture_blacklist_stage "$base_url" "$suite" restarted
-    capture_blacklist_peer_suite "$suite" peer-restarted "$listen_port" true
+    wait_for_blacklist_listener "$listen_port" "$log"
+    capture_blacklist_peer_suite \
+      "$suite" peer-restarted "$listen_port" true "$log" "$target" "$implementation"
     stop_daemon
     stop_soulseek_fixture
 

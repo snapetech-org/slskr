@@ -18,6 +18,12 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.60] — 2026-10-15
+
+- [Internal-only] Rechecked the peer listener immediately before watched
+  blacklist probes, waited on UserInfo state instead of replaying full probes,
+  and retained stale Browse-cache results for strict target comparison.
+
 ## [0.2.59] — 2026-10-15
 
 - [Internal-only] Aligned the runtime-boundary release check with the existing
