@@ -31,8 +31,6 @@ for expected in \
   fi
 done
 
-main_runner_condition="((github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'))"
-trusted_runner_selector="runs-on: \${{ ${main_runner_condition} && vars.TRUSTED_MAIN_RUNNERS_ENABLED == 'true' && fromJSON('{\"group\":\"trusted-main\",\"labels\":[\"self-hosted\",\"Linux\",\"X64\",\"host\",\"linux-build\",\"linux-amd64\"]}') || 'ubuntu-latest' }}"
 push_branches="$(
   awk '
     /^  push:$/ { in_push=1; next }
@@ -48,33 +46,13 @@ push_branches="$(
   ' .github/workflows/ci.yml
 )"
 if [[ "$push_branches" != "main" ]]; then
-  printf 'workflow release policy check failed: only main pushes may enter the self-hosted CI workflow\n' >&2
+  printf 'workflow release policy check failed: only main pushes may enter the CI workflow\n' >&2
   status=1
 fi
-if ! rg -n -F "$trusted_runner_selector" .github/workflows/ci.yml >/dev/null; then
-  printf 'workflow release policy check failed: trusted Linux jobs must select the ready trusted-main group and otherwise stay hosted\n' >&2
+if rg -n 'self-hosted|TRUSTED_MAIN_RUNNERS_ENABLED|private-runner-temp|PRIVATE_RUNNER' .github/workflows/ci.yml; then
+  printf 'workflow release policy check failed: private runner routing must be removed\n' >&2
   status=1
 fi
-if rg -n 'kspls0' .github/workflows/ci.yml >/dev/null; then
-  printf 'workflow release policy check failed: shared-pool workflow must not pin a physical runner hostname\n' >&2
-  status=1
-fi
-if ! rg -n -F 'CARGO_BUILD_JOBS=1' .github/workflows/ci.yml >/dev/null; then
-  printf 'workflow release policy check failed: local Cargo parallelism must be capped\n' >&2
-  status=1
-fi
-bootstrap_line="$(rg -n -m1 'name: Protect local runner command files before repository scripts' .github/workflows/ci.yml | cut -d: -f1)"
-repository_script_line="$(rg -n -m1 'run: ./scripts/test-private-runner-temp.sh' .github/workflows/ci.yml | cut -d: -f1)"
-if [[ -z "$bootstrap_line" || -z "$repository_script_line" || "$bootstrap_line" -ge "$repository_script_line" ]]; then
-  printf 'workflow release policy check failed: local command files must be protected before repository scripts\\n' >&2
-  status=1
-fi
-for expected in 'os.O_NOFOLLOW' 'metadata.st_nlink != 1'; do
-  if ! rg -n -F -- "$expected" .github/workflows/ci.yml >/dev/null; then
-    printf 'workflow release policy check failed: local command-file hardening is incomplete: %s\\n' "$expected" >&2
-    status=1
-  fi
-done
 missing_attempt_artifacts="$(rg -n 'name: validation-(task-logs|rust)-' .github/workflows/ci.yml | rg -Fv -- '-attempt-${{ github.run_attempt }}' || true)"
 if [[ -n "$missing_attempt_artifacts" ]]; then
   printf 'workflow release policy check failed: validation artifacts must be unique per workflow attempt\n' >&2
@@ -93,16 +71,6 @@ if [[ "$reconcile_job" != *'if: always() && !cancelled()'* ]]; then
 fi
 if [[ "$reconcile_job" != *"github.event_name != 'push' || github.ref == 'refs/heads/main'"* ]]; then
   printf 'workflow release policy check failed: receipt reconciliation must retain the main/pull-request event guard\n' >&2
-  status=1
-fi
-
-if ! rg -n -F "$main_runner_condition" .github/workflows/ci.yml >/dev/null; then
-  printf 'workflow release policy check failed: local runner policy must be limited to main pushes and manual runs\n' >&2
-  status=1
-fi
-if rg -n '^[[:space:]]*(runs-on|labels):.*self-hosted' .github/workflows \
-  | rg -v -F "$main_runner_condition"; then
-  printf 'workflow release policy check failed: self-hosted CI runners must be restricted to main pushes or manual main runs\n' >&2
   status=1
 fi
 

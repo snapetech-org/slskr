@@ -2059,7 +2059,7 @@ def operator_not_applicable_cases(
         "github-workflow-windows-smoke": (
             ".github/workflows/windows-smoke.yml",
             (
-                "runs-on: [self-hosted, Windows, X64, packer-windows]",
+                "runs-on: windows-latest",
                 "dotnet build slskd.sln --configuration Release --no-restore",
                 "dotnet test slskd.sln --configuration Release --no-build",
             ),

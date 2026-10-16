@@ -98,11 +98,10 @@ def has_runnable_powershell():
     executable = shutil.which('pwsh')
     if not executable:
         return False
-    lazy_proxy = Path(executable).resolve().name == 'aqua-proxy'
-    return not (os.environ.get('RUNNER_ENVIRONMENT') == 'self-hosted' and lazy_proxy)
+    return True
 
 
-@unittest.skipUnless(has_runnable_powershell(), 'requires runnable PowerShell; skip the shared self-hosted Aqua proxy')
+@unittest.skipUnless(has_runnable_powershell(), 'requires runnable PowerShell Core')
 class ChecksumTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
