@@ -178,6 +178,7 @@ jobs:
       - name: Prefer rustup toolchain binaries
         run: dirname "$(rustup which cargo)" >> "$GITHUB_PATH"
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # actions/setup-node@v7.1.0
+        if: runner.environment == 'github-hosted'
         with:
           node-version: '22'
           cache: npm
@@ -185,6 +186,12 @@ jobs:
             web/package-lock.json
             dashboard/package-lock.json
             client-ts/package-lock.json
+      # The trusted runner uses per-job worktrees; skip optional npm cache path
+      # resolution there so a missing cache path cannot stop the Rust checks.
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # actions/setup-node@v7.1.0
+        if: runner.environment == 'self-hosted'
+        with:
+          node-version: '22'
       - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # actions/setup-go@v7.0.0
         with:
           go-version: '1.25.x'
