@@ -7,8 +7,8 @@ candidate lines are bugs or that no bugs exist.
 
 Classification rule: any accepted row must be ledgered, fixed with behavior
 coverage, sibling-swept, and promoted into a durable gate before closure.
-# Generated: 2026-10-16T00:27:02Z
-# Source digest: 105be8532fdd5a99f60bbd096a74240048086a1f0119cd80be0db9c77a4a7bc3
+# Generated: 2026-10-16T02:56:55Z
+# Source digest: 1680182fdc480454ec3a4b3f6bcd717a1926fe45ebf3cc5b90c49e4f7159935d
 
 ## Protocol-controlled allocations and lengths
 crates/slskr-web/src/rustymilk_ui_owners/visualizer_audio_analysis.rs:21:        let frequency_bins = RefCell::new(vec![0; analyser.frequency_bin_count() as usize]);
@@ -1384,20 +1384,20 @@ scripts/check-controller-auth-profiles.sh:20:    kill "$daemon_pid" 2>/dev/null 
 scripts/check-controller-auth-profiles.sh:21:    wait "$daemon_pid" 2>/dev/null || true
 scripts/check-controller-auth-profiles.sh:34:    wait "$daemon_pid" 2>/dev/null || true
 scripts/check-controller-auth-profiles.sh:70:  tail -80 "$work_dir/$target.log" >&2 || true
-scripts/test-private-runner-temp.sh:28:  [[ -n "$private_temp" && -d "$private_temp" ]] && rmdir -- "$private_temp" 2>/dev/null || true
-scripts/test-private-runner-temp.sh:29:  [[ -L "$unsafe_link" ]] && unlink -- "$unsafe_link" 2>/dev/null || true
-scripts/test-private-runner-temp.sh:30:  [[ -f "$outside_env" ]] && unlink -- "$outside_env" 2>/dev/null || true
-scripts/test-private-runner-temp.sh:31:  [[ -f "$outside_output" ]] && unlink -- "$outside_output" 2>/dev/null || true
-scripts/test-private-runner-temp.sh:32:  [[ -f "$github_env" ]] && unlink -- "$github_env" 2>/dev/null || true
-scripts/test-private-runner-temp.sh:33:  [[ -f "$github_output" ]] && unlink -- "$github_output" 2>/dev/null || true
-scripts/test-private-runner-temp.sh:34:  [[ -d "$github_command_directory" ]] && rmdir -- "$github_command_directory" 2>/dev/null || true
-scripts/test-private-runner-temp.sh:35:  [[ -f "$unsafe_temp/github-env" ]] && unlink -- "$unsafe_temp/github-env" 2>/dev/null || true
-scripts/test-private-runner-temp.sh:36:  [[ -f "$unsafe_temp/github-output" ]] && unlink -- "$unsafe_temp/github-output" 2>/dev/null || true
-scripts/test-private-runner-temp.sh:37:  [[ -d "$unsafe_temp" ]] && rmdir -- "$unsafe_temp" 2>/dev/null || true
-scripts/test-private-runner-temp.sh:38:  [[ -d "$unsafe_parent" ]] && rmdir -- "$unsafe_parent" 2>/dev/null || true
-scripts/test-private-runner-temp.sh:39:  [[ -d "$private_temp" ]] && rmdir -- "$private_temp" 2>/dev/null || true
-scripts/test-private-runner-temp.sh:40:  [[ -d "$runner_temp" ]] && rmdir -- "$runner_temp" 2>/dev/null || true
-scripts/test-private-runner-temp.sh:41:  [[ -d "$scratch_root" ]] && rmdir -- "$scratch_root" 2>/dev/null || true
+scripts/test-private-runner-temp.sh:29:    rmdir -- "$private_temp" 2>/dev/null || true
+scripts/test-private-runner-temp.sh:32:    unlink -- "$unsafe_link" 2>/dev/null || true
+scripts/test-private-runner-temp.sh:35:    unlink -- "$outside_env" 2>/dev/null || true
+scripts/test-private-runner-temp.sh:38:    unlink -- "$outside_output" 2>/dev/null || true
+scripts/test-private-runner-temp.sh:41:    unlink -- "$github_env" 2>/dev/null || true
+scripts/test-private-runner-temp.sh:44:    unlink -- "$github_output" 2>/dev/null || true
+scripts/test-private-runner-temp.sh:47:    rmdir -- "$github_command_directory" 2>/dev/null || true
+scripts/test-private-runner-temp.sh:50:    unlink -- "$unsafe_temp/github-env" 2>/dev/null || true
+scripts/test-private-runner-temp.sh:53:    unlink -- "$unsafe_temp/github-output" 2>/dev/null || true
+scripts/test-private-runner-temp.sh:56:    rmdir -- "$unsafe_temp" 2>/dev/null || true
+scripts/test-private-runner-temp.sh:59:    rmdir -- "$unsafe_parent" 2>/dev/null || true
+scripts/test-private-runner-temp.sh:62:    rmdir -- "$private_temp" 2>/dev/null || true
+scripts/test-private-runner-temp.sh:65:    rmdir -- "$runner_temp" 2>/dev/null || true
+scripts/test-private-runner-temp.sh:68:    rmdir -- "$scratch_root" 2>/dev/null || true
 scripts/ensure-cargo-audit.sh:25:  installed_version="$("$cargo_audit" --version 2>/dev/null || true)"
 scripts/ensure-cargo-audit.sh:39:installed_version="$("$cargo_audit" --version 2>/dev/null || true)"
 scripts/run-slskdn-cross-client-interop.sh:198:' 2>/dev/null || true

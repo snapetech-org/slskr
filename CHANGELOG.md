@@ -18,6 +18,12 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.67] — 2026-10-16
+
+- [Internal-only] Make private-runner temporary-file cleanup pass the release
+  gate's ShellCheck lint.
+- [Internal-only] Refresh council evidence for the current source digest.
+
 ## [0.2.66] — 2026-10-16
 
 - [Internal-only] Use UTC for council evidence freshness and regenerate the

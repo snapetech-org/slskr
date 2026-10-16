@@ -25,20 +25,48 @@ outside_env="$scratch_root/outside-env"
 outside_output="$scratch_root/outside-output"
 
 cleanup() {
-  [[ -n "$private_temp" && -d "$private_temp" ]] && rmdir -- "$private_temp" 2>/dev/null || true
-  [[ -L "$unsafe_link" ]] && unlink -- "$unsafe_link" 2>/dev/null || true
-  [[ -f "$outside_env" ]] && unlink -- "$outside_env" 2>/dev/null || true
-  [[ -f "$outside_output" ]] && unlink -- "$outside_output" 2>/dev/null || true
-  [[ -f "$github_env" ]] && unlink -- "$github_env" 2>/dev/null || true
-  [[ -f "$github_output" ]] && unlink -- "$github_output" 2>/dev/null || true
-  [[ -d "$github_command_directory" ]] && rmdir -- "$github_command_directory" 2>/dev/null || true
-  [[ -f "$unsafe_temp/github-env" ]] && unlink -- "$unsafe_temp/github-env" 2>/dev/null || true
-  [[ -f "$unsafe_temp/github-output" ]] && unlink -- "$unsafe_temp/github-output" 2>/dev/null || true
-  [[ -d "$unsafe_temp" ]] && rmdir -- "$unsafe_temp" 2>/dev/null || true
-  [[ -d "$unsafe_parent" ]] && rmdir -- "$unsafe_parent" 2>/dev/null || true
-  [[ -d "$private_temp" ]] && rmdir -- "$private_temp" 2>/dev/null || true
-  [[ -d "$runner_temp" ]] && rmdir -- "$runner_temp" 2>/dev/null || true
-  [[ -d "$scratch_root" ]] && rmdir -- "$scratch_root" 2>/dev/null || true
+  if [[ -n "$private_temp" && -d "$private_temp" ]]; then
+    rmdir -- "$private_temp" 2>/dev/null || true
+  fi
+  if [[ -L "$unsafe_link" ]]; then
+    unlink -- "$unsafe_link" 2>/dev/null || true
+  fi
+  if [[ -f "$outside_env" ]]; then
+    unlink -- "$outside_env" 2>/dev/null || true
+  fi
+  if [[ -f "$outside_output" ]]; then
+    unlink -- "$outside_output" 2>/dev/null || true
+  fi
+  if [[ -f "$github_env" ]]; then
+    unlink -- "$github_env" 2>/dev/null || true
+  fi
+  if [[ -f "$github_output" ]]; then
+    unlink -- "$github_output" 2>/dev/null || true
+  fi
+  if [[ -d "$github_command_directory" ]]; then
+    rmdir -- "$github_command_directory" 2>/dev/null || true
+  fi
+  if [[ -f "$unsafe_temp/github-env" ]]; then
+    unlink -- "$unsafe_temp/github-env" 2>/dev/null || true
+  fi
+  if [[ -f "$unsafe_temp/github-output" ]]; then
+    unlink -- "$unsafe_temp/github-output" 2>/dev/null || true
+  fi
+  if [[ -d "$unsafe_temp" ]]; then
+    rmdir -- "$unsafe_temp" 2>/dev/null || true
+  fi
+  if [[ -d "$unsafe_parent" ]]; then
+    rmdir -- "$unsafe_parent" 2>/dev/null || true
+  fi
+  if [[ -d "$private_temp" ]]; then
+    rmdir -- "$private_temp" 2>/dev/null || true
+  fi
+  if [[ -d "$runner_temp" ]]; then
+    rmdir -- "$runner_temp" 2>/dev/null || true
+  fi
+  if [[ -d "$scratch_root" ]]; then
+    rmdir -- "$scratch_root" 2>/dev/null || true
+  fi
 }
 trap cleanup EXIT
 

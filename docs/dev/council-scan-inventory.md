@@ -1,7 +1,7 @@
 # Council Scan Inventory
 
 Scan date: 2026-10-16
-Source digest: 105be8532fdd5a99f60bbd096a74240048086a1f0119cd80be0db9c77a4a7bc3
+Source digest: 1680182fdc480454ec3a4b3f6bcd717a1926fe45ebf3cc5b90c49e4f7159935d
 
 > Council process upgrades (mirrored from slskNet.Runtime, 2026-05-06): see `bug-council-severity-schema.md`, `bug-council-sibling-search.md`, `bug-council-negative-space.md`, `bug-council-behavior-pinning.md`, and `bug-council-phases.md`. Future sweep rows on this file should adopt the severity/confidence schema; the wire-frame trust boundary is now declared and enforced by `scripts/check-council-negative-space.sh`.
 
