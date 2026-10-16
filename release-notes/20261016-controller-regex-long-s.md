@@ -1,8 +1,8 @@
 ---
 category: fixed
-audience: users, operators
-area: controller-parity
+audience: operators
+area: release-pipeline
 action: none
 breaking: false
 ---
-Case-insensitive regex filters now follow each controller profile's upstream Unicode behavior: the native profile matches long s with ASCII `s`, while legacy behavior is preserved.
+Release-gate controller regex comparisons now run frozen .NET references with invariant globalization, preventing host locale and ICU updates from changing the result. The slskR regex behavior itself is unchanged.

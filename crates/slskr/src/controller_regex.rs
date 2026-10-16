@@ -23,31 +23,6 @@ impl ControllerRegex {
         })
     }
 
-    pub(crate) fn compile_for_profile(
-        expression: &str,
-        case_sensitive: bool,
-        target: ControllerProfile,
-    ) -> Result<Self, String> {
-        if target == ControllerProfile::Legacy {
-            return Self::compile_with_timeout(
-                expression,
-                case_sensitive,
-                controller_regex_timeout(target),
-            );
-        }
-        let matcher = crate::dotnet_regex::DotNetRegex::compile_for_profile(
-            expression,
-            case_sensitive,
-            target,
-        )
-        .map_err(|error| format!("invalid regular expression {expression:?}: {error}"))?;
-        Ok(Self {
-            expression: expression.to_owned(),
-            matcher,
-            match_timeout: controller_regex_timeout(target),
-        })
-    }
-
     pub(crate) fn is_match(&self, value: &str) -> bool {
         match self.match_timeout {
             Some(timeout) => self
@@ -70,9 +45,12 @@ pub(crate) fn compile_controller_regexes(
     case_sensitive: bool,
     target: ControllerProfile,
 ) -> Result<Vec<ControllerRegex>, String> {
+    let match_timeout = controller_regex_timeout(target);
     expressions
         .iter()
-        .map(|expression| ControllerRegex::compile_for_profile(expression, case_sensitive, target))
+        .map(|expression| {
+            ControllerRegex::compile_with_timeout(expression, case_sensitive, match_timeout)
+        })
         .collect()
 }
 

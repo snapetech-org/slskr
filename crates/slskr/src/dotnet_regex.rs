@@ -1,4 +1,3 @@
-use crate::config::ControllerProfile;
 use std::sync::{
     atomic::{AtomicUsize, Ordering},
     mpsc::{self, RecvTimeoutError},
@@ -31,38 +30,17 @@ impl Drop for RegexWorkerPermit {
 pub struct DotNetRegex {
     matcher: fancy_regex::Regex,
     lowercase_input: bool,
-    fold_long_s: bool,
     may_backtrack: bool,
 }
 
 impl DotNetRegex {
     pub fn compile(expression: &str, case_sensitive: bool) -> Result<Self, String> {
-        Self::compile_with_long_s_case_fold(expression, case_sensitive, false)
-    }
-
-    pub(crate) fn compile_for_profile(
-        expression: &str,
-        case_sensitive: bool,
-        profile: ControllerProfile,
-    ) -> Result<Self, String> {
-        Self::compile_with_long_s_case_fold(
-            expression,
-            case_sensitive,
-            profile == ControllerProfile::Native,
-        )
-    }
-
-    fn compile_with_long_s_case_fold(
-        expression: &str,
-        case_sensitive: bool,
-        fold_long_s: bool,
-    ) -> Result<Self, String> {
         let conditionals = rewrite_assertion_conditionals(expression)?;
         let numbered = rewrite_dotnet_numbered_captures(&conditionals)?;
         let normalized = normalize_dotnet_pattern(&numbered)?;
         let lowercase_input = !case_sensitive && !pattern_has_inline_case_mode(&normalized);
         let normalized = if lowercase_input {
-            lowercase_dotnet_pattern_literals(&normalized, fold_long_s)
+            lowercase_dotnet_pattern_literals(&normalized)
         } else {
             normalized
         };
@@ -74,7 +52,6 @@ impl DotNetRegex {
         Ok(Self {
             matcher,
             lowercase_input,
-            fold_long_s,
             may_backtrack,
         })
     }
@@ -86,7 +63,7 @@ impl DotNetRegex {
     pub fn is_match(&self, value: &str) -> Result<bool, String> {
         let folded;
         let value = if self.lowercase_input {
-            folded = fold_dotnet_invariant_case(value, self.fold_long_s);
+            folded = value.to_lowercase();
             folded.as_str()
         } else {
             value
@@ -113,9 +90,7 @@ impl DotNetRegex {
                 "regular-expression match worker capacity is full (maximum {MAX_REGEX_MATCH_WORKERS})"
             )
         })?;
-        let folded = self
-            .lowercase_input
-            .then(|| fold_dotnet_invariant_case(value, self.fold_long_s));
+        let folded = self.lowercase_input.then(|| value.to_lowercase());
         let value = folded.as_deref().unwrap_or(value).to_owned();
         let matcher = self.matcher.clone();
         let (sender, receiver) = mpsc::sync_channel(1);
@@ -199,25 +174,7 @@ fn pattern_has_inline_case_mode(expression: &str) -> bool {
     false
 }
 
-fn fold_dotnet_invariant_case(value: &str, fold_long_s: bool) -> String {
-    let mut folded = String::with_capacity(value.len());
-    for character in value.chars() {
-        fold_dotnet_invariant_case_character(character, fold_long_s, &mut folded);
-    }
-    folded
-}
-
-fn fold_dotnet_invariant_case_character(character: char, fold_long_s: bool, folded: &mut String) {
-    // The native .NET profile folds U+017F with ASCII s; the legacy profile
-    // keeps them distinct. Rust lowercase keeps U+017F distinct in both.
-    if fold_long_s && character == '\u{017f}' {
-        folded.push('s');
-    } else {
-        folded.extend(character.to_lowercase());
-    }
-}
-
-fn lowercase_dotnet_pattern_literals(expression: &str, fold_long_s: bool) -> String {
+fn lowercase_dotnet_pattern_literals(expression: &str) -> String {
     let bytes = expression.as_bytes();
     let mut folded = String::with_capacity(expression.len());
     let mut index = 0;
@@ -291,7 +248,7 @@ fn lowercase_dotnet_pattern_literals(expression: &str, fold_long_s: bool) -> Str
             .chars()
             .next()
             .expect("index is within expression");
-        fold_dotnet_invariant_case_character(character, fold_long_s, &mut folded);
+        folded.extend(character.to_lowercase());
         index += character.len_utf8();
     }
     folded
@@ -1152,42 +1109,6 @@ mod tests {
                 "unexpected invariant case fold for {expression:?} against {value:?}"
             );
         }
-
-        let native = DotNetRegex::compile_for_profile(
-            r"^s$",
-            false,
-            crate::config::ControllerProfile::Native,
-        )
-        .expect("native case-insensitive regex");
-        assert!(native.is_match("ſ").expect("native long s case fold"));
-        let native_long_s_pattern = DotNetRegex::compile_for_profile(
-            r"^ſ$",
-            false,
-            crate::config::ControllerProfile::Native,
-        )
-        .expect("native long-s pattern");
-        assert!(native_long_s_pattern
-            .is_match("s")
-            .expect("native pattern long s case fold"));
-        let native_inline = DotNetRegex::compile_for_profile(
-            r"(?i)^s$",
-            true,
-            crate::config::ControllerProfile::Native,
-        )
-        .expect("native inline case-insensitive regex");
-        assert!(native_inline
-            .is_match("ſ")
-            .expect("native inline long s case fold"));
-
-        let case_sensitive = DotNetRegex::compile_for_profile(
-            r"^s$",
-            true,
-            crate::config::ControllerProfile::Native,
-        )
-        .expect("case-sensitive regex");
-        assert!(!case_sensitive
-            .is_match("ſ")
-            .expect("case-sensitive long s mismatch"));
     }
 
     #[test]

@@ -721,6 +721,9 @@ start_regex_runtime_daemon() {
   overlay_port="$(pick_free_port)"
   (
     if [[ "$implementation" == upstream ]]; then
+      # RegexOptions.IgnoreCase follows the current culture by default. Keep
+      # frozen-reference comparisons stable across runner locale and ICU updates.
+      export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
       mkdir -p "$root/src/slskd/bin/Release/net10.0/linux-x64/wwwroot"
       export SLSKD_APP_DIR="$state" SLSKD_NO_AUTH=true SLSKD_NO_LOGO=true
       export SLSKD_CONTENT_PATH=wwwroot

@@ -20,8 +20,8 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [0.2.70] — 2026-10-16
 
-- Align native-profile case-insensitive regex filters with the upstream Unicode
-  behavior for long s while preserving the legacy profile's behavior.
+- [Internal-only] Pin frozen controller regex probes to invariant .NET
+  globalization so runner locale and ICU updates cannot alter parity results.
 
 ## [0.2.69] — 2026-10-16
 
