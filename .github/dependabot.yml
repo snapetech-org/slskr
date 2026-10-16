@@ -40,6 +40,13 @@ updates:
       default-days: 7
     open-pull-requests-limit: 10
     ignore:
+      # Hold the React runtime bump until it fits the dashboard bundle budget.
+      - dependency-name: "react"
+        versions:
+          - ">=19.3.0"
+      - dependency-name: "react-dom"
+        versions:
+          - ">=19.3.0"
       # Coordinate TypeScript major upgrades with the parser/linter peer range.
       - dependency-name: "typescript"
         update-types:
