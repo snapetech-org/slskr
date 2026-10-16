@@ -18,6 +18,11 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.70] — 2026-10-16
+
+- Align native-profile case-insensitive regex filters with the upstream Unicode
+  behavior for long s while preserving the legacy profile's behavior.
+
 ## [0.2.69] — 2026-10-16
 
 - [Internal-only] Fix shared-runner Git fixture permissions, self-hosted Node
