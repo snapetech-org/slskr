@@ -14,12 +14,12 @@ or if a pinned action is missing from this ledger.
 | `actions/cache` | `v6.1.0` | `55cc8345863c7cc4c66a329aec7e433d2d1c52a9` | Cached pinned `cargo-audit` binaries for CI and release gates. |
 | `dtolnay/rust-toolchain` | `stable` | `29eef336d9b2848a0b548edc03f92a220660cdb8` | Rust toolchain install for CI, release, and live parity jobs. |
 | `Swatinem/rust-cache` | `v2` | `f0d9c3887740aee45f6153b24b3a6b815192ec16` | Dereferenced tag target for Rust cache setup. |
-| `actions/setup-node` | `v6` | `820762786026740c76f36085b0efc47a31fe5020` | Node setup for web, dashboard, TypeScript SDK, and live parity gates. |
+| `actions/setup-node` | `v7.1.0` | `949feb2413d6458794dcd2491c4babbbce0c15c1` | Node setup for web, dashboard, TypeScript SDK, and live parity gates; action runtime uses Node 24 and requires runner 2.327.1 or later. |
 | `actions/setup-go` | `v7.0.0` | `b7ad1dad31e06c5925ef5d2fc7ad053ef454303e` | Go SDK test setup. |
 | `actions/setup-python` | `v7.0.0` | `5fda3b95a4ea91299a34e894583c3862153e4b97` | Python SDK and slskd API compatibility smoke setup. |
 | `astral-sh/setup-uv` | `v10.3.0` | `1c37ad07a6a961277cf70c0d37d6f313000f5884` | Installs pinned uv and activates Python 3.12 on the trusted local runner. |
-| `actions/upload-artifact` | `v7.0.1` | `043fb46d1a93c77aae656e7c1c64a875d1fc6a0a` | CI platform, release archive, and live parity artifact upload. |
-| `actions/download-artifact` | `v8.0.1` | `3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c` | Release archive download before publishing. |
+| `actions/upload-artifact` | `v7.0.2` | `cf430e030ddbb5b0abf93d22962f4752f3646cd9` | CI platform, release archive, and live parity artifact upload. |
+| `actions/download-artifact` | `v8.0.2` | `9000827ccba6bdab643e8b6fd33ac0654aef8333` | Release archive download before publishing. |
 | `actions/attest-build-provenance` | `v4` | `4d101475d8b20a2381f78447822ac1eab6504dd8` | Dereferenced tag target for release asset attestations. |
 | `softprops/action-gh-release` | `v3.0.3` | `efb35369e0ad2afab669f228072c1b0d510eae64` | GitHub Release publisher. |
 | `docker/setup-qemu-action` | `v4.4.0` | `99012661954931238ded8c8b007157a8430204e1` | QEMU setup for multi-architecture Docker release images. |
