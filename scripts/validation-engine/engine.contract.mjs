@@ -56,7 +56,8 @@ function makeRoot(files = {}) {
     assert.equal(result.status, 0, result.stderr);
     return result.stdout.trim();
   };
-  git(['init', '--quiet']);
+  // Keep fixtures private even when the host Git config enables shared repos.
+  git(['-c', 'core.sharedRepository=false', 'init', '--quiet']);
   git(['config', 'user.email', 'validation-test@example.invalid']);
   git(['config', 'user.name', 'Validation Engine Test']);
   git(['add', '--all']);
