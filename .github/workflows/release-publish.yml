@@ -77,6 +77,14 @@ jobs:
       pkgver: ${{ steps.version.outputs.pkgver }}
       release_sha: ${{ steps.version.outputs.release_sha }}
     steps:
+      - name: Require main source for manual publisher retries
+        if: github.event_name == 'workflow_dispatch'
+        shell: bash
+        run: |
+          if [[ "$GITHUB_REF" != "refs/heads/main" ]]; then
+            echo "Manual publisher retries must run from main." >&2
+            exit 1
+          fi
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           ref: ${{ inputs.tag || github.event.inputs.tag || github.ref_name }}
@@ -690,11 +698,11 @@ jobs:
         with:
           name: slskr-release-metadata
           path: packaging
-      - name: Checkout current publisher logic for a manual retry
+      - name: Checkout publisher logic pinned to this manual retry
         if: github.event_name == 'workflow_dispatch'
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          ref: main
+          ref: ${{ github.sha }}
           path: release-publisher
           sparse-checkout: scripts
           sparse-checkout-cone-mode: true

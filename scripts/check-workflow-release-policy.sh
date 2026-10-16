@@ -289,6 +289,18 @@ if ! rg -n -F 'ref: ${{ inputs.tag || github.event.inputs.tag || github.ref_name
 fi
 
 for expected in \
+  'name: Checkout publisher logic pinned to this manual retry' \
+  "if: github.event_name == 'workflow_dispatch'" \
+  'ref: ${{ github.sha }}' \
+  'name: Require main source for manual publisher retries' \
+  'Manual publisher retries must run from main.'; do
+  if ! rg -n -F -- "$expected" .github/workflows/release-publish.yml >/dev/null; then
+    printf 'workflow release policy check failed: manual publisher logic must be pinned to the retry workflow commit: %s\n' "$expected" >&2
+    status=1
+  fi
+done
+
+for expected in \
   'workflow_call:' \
   'Build and push (ghcr)' \
   'platforms: linux/amd64,linux/arm64' \
