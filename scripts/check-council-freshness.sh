@@ -2,7 +2,7 @@
 set -euo pipefail
 
 repo_root="${SLSKR_COUNCIL_FRESHNESS_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
-expected_date="${SLSKR_COUNCIL_EXPECTED_DATE:-$(date +%Y-%m-%d)}"
+expected_date="${SLSKR_COUNCIL_EXPECTED_DATE:-$(date -u '+%Y-%m-%d')}"
 failed=0
 
 fail() {

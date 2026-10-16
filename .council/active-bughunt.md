@@ -7,8 +7,8 @@ candidate lines are bugs or that no bugs exist.
 
 Classification rule: any accepted row must be ledgered, fixed with behavior
 coverage, sibling-swept, and promoted into a durable gate before closure.
-# Generated: 2026-10-15T22:22:18Z
-# Source digest: 37b701a7342108c2812d625cbaca15d82668aff8501b6b3e35e009c26889fa5e
+# Generated: 2026-10-16T00:27:02Z
+# Source digest: 105be8532fdd5a99f60bbd096a74240048086a1f0119cd80be0db9c77a4a7bc3
 
 ## Protocol-controlled allocations and lengths
 crates/slskr-web/src/rustymilk_ui_owners/visualizer_audio_analysis.rs:21:        let frequency_bins = RefCell::new(vec![0; analyser.frequency_bin_count() as usize]);

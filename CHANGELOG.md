@@ -18,6 +18,11 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.66] — 2026-10-16
+
+- [Internal-only] Use UTC for council evidence freshness and regenerate the
+  release snapshots for the current scan date and source digest.
+
 ## [0.2.65] — 2026-10-15
 
 - [Internal-only] Regenerate council scan and active-bughunt evidence for the

@@ -5,8 +5,8 @@ A green all-phases council run is not proof that no bugs exist; this file
 records the active discovery piles that still need review, splitting, or
 burn-down.
 
-Scan date: 2026-10-15
-Source digest: 37b701a7342108c2812d625cbaca15d82668aff8501b6b3e35e009c26889fa5e
+Scan date: 2026-10-16
+Source digest: 105be8532fdd5a99f60bbd096a74240048086a1f0119cd80be0db9c77a4a7bc3
 
 Every council scan candidate class must have a row below with the current
 candidate count. `scripts/check-council-active-backlog.sh` fails when a class is

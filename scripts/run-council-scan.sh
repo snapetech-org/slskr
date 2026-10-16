@@ -29,7 +29,7 @@ scan_rg() {
 
 printf '# Council Scan Candidate Counts\n\n'
 printf 'Generated from local source patterns. Counts are candidate lines, not confirmed bugs.\n\n'
-printf 'Scan date: %s\n' "$(date +%Y-%m-%d)"
+printf 'Scan date: %s\n' "$(date -u '+%Y-%m-%d')"
 printf 'Source digest: %s\n\n' "$(python3 scripts/council-source-digest.py)"
 printf '| Candidate Class | Count |\n'
 printf '| --- | ---: |\n'
