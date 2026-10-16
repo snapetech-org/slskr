@@ -18,6 +18,11 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.69] — 2026-10-16
+
+- [Internal-only] Fix shared-runner Git fixture permissions, self-hosted Node
+  cache setup, and canonical Winget fork synchronization.
+
 ## [0.2.68] — 2026-10-16
 
 - [Internal-only] Route GHCR release pushes through a dedicated credential for
