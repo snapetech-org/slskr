@@ -18,6 +18,11 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.68] — 2026-10-16
+
+- [Internal-only] Route GHCR release pushes through a dedicated credential for
+  the personal account that owns the package.
+
 ## [0.2.67] — 2026-10-16
 
 - [Internal-only] Make private-runner temporary-file cleanup pass the release
