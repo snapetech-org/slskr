@@ -137,6 +137,16 @@ if ($null -eq $fork) {
     throw "GitHub fork was not available after creation: $forkUri"
 }
 
+# GitHub may redirect the authenticated user's repository URL to a fork owned
+# by an organization. Resolve the canonical owner before any write request:
+# redirects can turn authenticated POSTs into unauthenticated requests.
+$forkOwner = [string]$fork.owner.login
+if ([string]::IsNullOrWhiteSpace($forkOwner) -or [string]$fork.name -ne 'winget-pkgs') {
+    throw "GitHub returned an unexpected Winget fork: $($fork.full_name)"
+}
+$owner = $forkOwner
+$forkUri = "$apiRoot/repos/$owner/winget-pkgs"
+
 $forkBranch = [string]$fork.default_branch
 if ([string]::IsNullOrWhiteSpace($forkBranch)) {
     throw "GitHub fork has no default branch: $forkUri"

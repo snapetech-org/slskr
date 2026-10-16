@@ -7,6 +7,11 @@ on:
         description: "Release tag to publish, for example release-v<semver>"
         required: true
         type: string
+      publish_only:
+        description: "Optional manual retry scope."
+        required: false
+        type: string
+        default: all
     secrets:
       AUR_SSH_KEY:
         required: false
@@ -45,6 +50,14 @@ on:
       tag:
         description: "Release tag to publish, for example release-v<semver>"
         required: true
+      publish_only:
+        description: "Select one publisher for a targeted retry."
+        required: true
+        type: choice
+        options:
+          - all
+          - winget
+        default: all
 
 permissions:
   actions: read
@@ -117,6 +130,7 @@ jobs:
 
   aur:
     name: Publish AUR
+    if: ${{ inputs.publish_only != 'winget' }}
     needs: metadata
     runs-on: ubuntu-latest
     steps:
@@ -173,6 +187,7 @@ jobs:
 
   copr:
     name: Publish COPR
+    if: ${{ inputs.publish_only != 'winget' }}
     needs: metadata
     runs-on: ubuntu-latest
     steps:
@@ -364,6 +379,7 @@ jobs:
 
   ppa:
     name: Publish Launchpad PPA
+    if: ${{ inputs.publish_only != 'winget' }}
     needs: metadata
     runs-on: ubuntu-latest
     steps:
@@ -553,6 +569,7 @@ jobs:
 
   docker:
     name: Publish Docker Images
+    if: ${{ inputs.publish_only != 'winget' }}
     needs: metadata
     runs-on: ubuntu-latest
     env:
@@ -631,6 +648,7 @@ jobs:
 
   homebrew:
     name: Update Homebrew Tap
+    if: ${{ inputs.publish_only != 'winget' }}
     needs: metadata
     runs-on: ubuntu-latest
     steps:
@@ -672,6 +690,14 @@ jobs:
         with:
           name: slskr-release-metadata
           path: packaging
+      - name: Checkout current publisher logic for a manual retry
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: main
+          path: release-publisher
+          sparse-checkout: scripts
+          sparse-checkout-cone-mode: true
       - name: Submit manifests
         env:
           WINGETCREATE_GITHUB_TOKEN: ${{ secrets.WINGETCREATE_GITHUB_TOKEN }}
@@ -688,7 +714,8 @@ jobs:
           Copy-Item packaging/winget/snapetech.slskr.yaml $submitPath/
           Copy-Item packaging/winget/snapetech.slskr.installer.yaml $submitPath/
           Copy-Item packaging/winget/snapetech.slskr.locale.en-US.yaml $submitPath/
-          $submitScript = Join-Path $env:GITHUB_WORKSPACE 'scripts/submit-winget-release.ps1'
+          $scriptRoot = if ($env:GITHUB_EVENT_NAME -eq 'workflow_dispatch') { 'release-publisher' } else { $env:GITHUB_WORKSPACE }
+          $submitScript = Join-Path $scriptRoot 'scripts/submit-winget-release.ps1'
           & $submitScript `
             -WingetCreatePath (Join-Path $PWD 'wingetcreate.exe') `
             -SubmitPath $submitPath `
