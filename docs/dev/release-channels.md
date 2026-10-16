@@ -8,7 +8,7 @@ slskdN release system, with slskR-specific package and project names.
 
 | Channel | Target | Credentials |
 | --- | --- | --- |
-| GitHub Container Registry | `ghcr.io/snapetech/slskr` | Built-in `GITHUB_TOKEN` |
+| GitHub Container Registry | `ghcr.io/snapetech/slskr` | `GHCR_TOKEN` (classic PAT with `write:packages`) |
 | Docker Hub | `snapetech/slskr` | `DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN` |
 | AUR source package | `slskr` | `AUR_SSH_KEY` |
 | AUR binary package | `slskr-bin` | `AUR_SSH_KEY` |
@@ -25,13 +25,15 @@ slskdN release system, with slskR-specific package and project names.
 | Chocolatey | `slskr` (Windows x64) | `CHOCO_API_KEY` |
 | Nix flake | `slskr` | none |
 
-The release workflow skips credentialed channels whose secrets are not available,
-except GHCR, which publishes with the repository token. Docker Hub is a
-best-effort mirror and does not gate GHCR or the release. The Winget job submits
-a pull request to Microsoft's repository; a successful job does not mean that
-Microsoft has merged or indexed the package. Chocolatey is a separate
-manual-dispatch workflow and derives both its package version and Windows
-archive checksum from the requested release tag.
+The release workflow skips optional credentialed channels whose secrets are not
+available. GHCR publication is required and uses a classic personal access token
+because the `slskR` package belongs to the personal `snapetech` account rather
+than the `snapetech-org` repository. Docker Hub is a best-effort mirror and does
+not gate GHCR or the release. The
+Winget job submits a pull request to Microsoft's repository; a successful job
+does not mean that Microsoft has merged or indexed the package. Chocolatey is a
+separate manual-dispatch workflow and derives both its package version and
+Windows archive checksum from the requested release tag.
 
 ## Publication boundaries
 
