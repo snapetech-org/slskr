@@ -11,6 +11,8 @@ slskR is a self-hosted Soulseek client written in Rust. It ships a daemon, a
 REST API, and a bundled web UI together. It is an independent implementation
 with its own configuration and release contracts, not a fork or wrapper.
 
+For local MCP access, see the [SnapeTech MCP integration guide](./docs/integrations/snapetech-mcp.md).
+
 ## Contents
 
 - [Why slskR](#why-slskr)
