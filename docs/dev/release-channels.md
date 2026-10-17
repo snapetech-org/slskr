@@ -19,7 +19,7 @@ slskdN release system, with slskR-specific package and project names.
 | Flatpak | `io.github.slskd.slskr` (x86_64 and aarch64) | Flathub credentials managed outside this workflow |
 | Helm | `packaging/helm/slskr` (multi-arch GHCR image) | none |
 | TrueNAS SCALE | `packaging/truenas-scale/charts/slskr` (multi-arch GHCR image) | none |
-| Unraid | `packaging/unraid/slskr.xml` (multi-arch GHCR image) | none |
+| Unraid | `slskr.xml` (repository root; multi-arch GHCR image) | none |
 | Synology SPK | `packaging/synology-spk` (x86_64 or aarch64 build) | none |
 | Winget | `snapetech.slskr` (Windows x64) | `WINGETCREATE_GITHUB_TOKEN` |
 | Chocolatey | `slskr` (Windows x64) | `CHOCO_API_KEY` |
@@ -54,7 +54,10 @@ completed before describing the PPA itself as multi-architecture.
 Helm, TrueNAS, Unraid, Synology, and Nix are checked-in consumers or build
 metadata. They point at the published archives or GHCR image, but this
 repository does not claim that a separate catalog has received a publication
-unless the corresponding workflow explicitly performs that upload.
+unless the corresponding workflow explicitly performs that upload. The Unraid
+Community Apps template at the repository root (`slskr.xml`) is submitted to
+the external Community Apps catalog at `ca.unraid.net/submit`; catalog review
+and listing are external and are not performed by a slskR workflow.
 
 ## COPR Authentication
 

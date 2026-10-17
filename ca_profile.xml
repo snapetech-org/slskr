@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<CommunityApplications>
+  <Profile>
+    slskr is a self-hosted Rust Soulseek daemon, HTTP API, and bundled browser UI. This repository publishes the slskr Docker image and the Community Apps Docker template used to install it on Unraid. For help, open an issue on GitHub or join the project Discord.
+  </Profile>
+  <Icon>https://raw.githubusercontent.com/snapetech-org/slskr/main/web/public/slskr-mark.png</Icon>
+  <WebPage>https://github.com/snapetech-org/slskr</WebPage>
+  <Forum>https://github.com/snapetech-org/slskr/issues</Forum>
+  <Discord>https://discord.gg/5PyXBfvS6T</Discord>
+</CommunityApplications>

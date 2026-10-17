@@ -77,7 +77,7 @@ for expected in \
   'packaging/chocolatey/slskr.nuspec' \
   'packaging/helm/slskr/Chart.yaml' \
   'packaging/truenas-scale/charts/slskr/Chart.yaml' \
-  'packaging/unraid/slskr.xml' \
+  'slskr.xml' \
   'packaging/synology-spk/INFO'; do
   if ! rg -n -F -- "$expected" packaging/scripts/update-release-metadata.sh >/dev/null; then
     printf 'package artifact matrix check failed: release metadata refresh missing: %s\n' "$expected"
@@ -116,7 +116,7 @@ for expected in \
   if ! rg -n -F -- "$expected" \
     packaging/debian packaging/rpm packaging/snap packaging/flatpak \
     .github/workflows/release-publish.yml packaging/helm packaging/truenas-scale \
-    packaging/unraid k8s >/dev/null; then
+    slskr.xml k8s >/dev/null; then
     printf 'package artifact matrix check failed: downstream architecture/runtime token missing: %s\n' "$expected"
     status=1
   fi

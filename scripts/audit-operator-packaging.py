@@ -629,7 +629,7 @@ def truenas_cases(local_root: Path, target_root: Path) -> dict[str, bool]:
 
 
 def unraid_cases(local_root: Path, target_root: Path) -> dict[str, bool]:
-    local_path = local_root / "packaging/unraid/slskr.xml"
+    local_path = local_root / "slskr.xml"
     target_path = target_root / "packaging/unraid/slskdn.xml"
     if not local_path.is_file() or not target_path.is_file():
         return {case: False for case in CASES}

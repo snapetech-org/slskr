@@ -279,7 +279,7 @@ for values in \
 done
 
 sed -i "s|^  <Repository>.*</Repository>|  <Repository>ghcr.io/snapetech/slskr:${release_version}</Repository>|" \
-  packaging/unraid/slskr.xml
+  slskr.xml
 sed -i "s|^version=\".*\"|version=\"${pkgver}\"|" \
   packaging/synology-spk/INFO
 sed -i "s|^VERSION=\"\${SLSKR_VERSION:-.*}\"|VERSION=\"\${SLSKR_VERSION:-${pkgver}}\"|" \

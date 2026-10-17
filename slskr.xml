@@ -1,13 +1,27 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>slskr</Name>
-  <Repository>ghcr.io/snapetech/slskr:v0.2.52</Repository>
+  <Repository>ghcr.io/snapetech/slskr:v0.2.71</Repository>
   <Registry>https://ghcr.io</Registry>
   <Network>bridge</Network>
   <Branch>stable</Branch>
   <Privileged>false</Privileged>
-  <Overview>Rust Soulseek daemon with bundled Web UI.</Overview>
+  <Shell>bash</Shell>
+  <Icon>https://raw.githubusercontent.com/snapetech-org/slskr/main/web/public/slskr-mark.png</Icon>
+  <Overview>Self-hosted Rust Soulseek daemon, HTTP API, and bundled browser UI. One slskr serve process owns the Soulseek session, peer listeners, share index, transfer engine, API, event stream, and Web UI for a private, scriptable Soulseek client.</Overview>
   <WebUI>http://[IP]:[PORT:5030]/</WebUI>
+  <Support>https://github.com/snapetech-org/slskr/issues</Support>
+  <Project>https://github.com/snapetech-org/slskr</Project>
+  <TemplateURL>https://raw.githubusercontent.com/snapetech-org/slskr/main/slskr.xml</TemplateURL>
+  <ReadMe>https://raw.githubusercontent.com/snapetech-org/slskr/main/README.md</ReadMe>
+  <Discord>https://discord.gg/5PyXBfvS6T</Discord>
+  <Category>MediaApp:Music</Category>
+  <ExtraSearchTerms>soulseek slskd music p2p shares downloads daemon</ExtraSearchTerms>
+  <License>AGPL-3.0-only</License>
+  <MinVer>6.12.0</MinVer>
+  <Date>2026-10-17</Date>
+  <Screenshot>https://raw.githubusercontent.com/snapetech-org/slskr/main/docs/screenshots/webui-searches.png</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/snapetech-org/slskr/main/docs/screenshots/webui-downloads.png</Screenshot>
   <Networking>
     <Mode>bridge</Mode>
     <Port>
