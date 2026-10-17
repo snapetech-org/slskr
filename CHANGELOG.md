@@ -18,6 +18,11 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.71] — 2026-10-17
+
+- [Internal-only] Refresh date-stamped council evidence and candidate counts for
+  the current source digest.
+
 ## [0.2.70] — 2026-10-16
 
 - [Internal-only] Pin frozen controller regex probes to invariant .NET
