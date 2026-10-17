@@ -1,15 +1,16 @@
 # GitHub Actions Pin Policy
 
-slskR workflows pin external actions to reviewed 40-character commit SHAs. Version
-tags and branches are tracked here only as review context so updates happen through
-explicit code review instead of mutable workflow dependency drift.
+slskR workflows pin external actions and cross-repository reusable workflow calls
+to reviewed 40-character commit SHAs. Version tags and branches are tracked here
+only as review context so updates happen through explicit code review instead of
+mutable workflow dependency drift.
 
 Run `scripts/check-workflow-release-policy.sh` after changing `.github/workflows`.
 The gate fails if any external `uses:` reference is not pinned to a full commit SHA
-or if a pinned action is missing from this ledger.
+or if a pinned action or reusable workflow is missing from this ledger.
 
-| Action | Reviewed ref | Pinned commit | Notes |
-| --- | --- | --- | --- |
+| Pinned dependency | Reviewed ref | Pinned commit | Notes |
+ --- | --- | --- |
 | `actions/checkout` | `v6` | `3d3c42e5aac5ba805825da76410c181273ba90b1` | CI, release, live parity, local identity, and CodeQL checkout. |
 | `actions/cache` | `v6.1.0` | `55cc8345863c7cc4c66a329aec7e433d2d1c52a9` | Cached pinned `cargo-audit` binaries for CI and release gates. |
 | `dtolnay/rust-toolchain` | `stable` | `29eef336d9b2848a0b548edc03f92a220660cdb8` | Rust toolchain install for CI, release, and live parity jobs. |
@@ -29,6 +30,7 @@ or if a pinned action is missing from this ledger.
 | `github/codeql-action/init` | `v4` | `5e316336eb4f107009e477d4bfbfff13d7250fae` | Pinned CodeQL initialization for the explicit seven-language security matrix. |
 | `github/codeql-action/autobuild` | `v4` | `5e316336eb4f107009e477d4bfbfff13d7250fae` | Reviewed CodeQL autobuild pin retained for any future language-specific build steps. |
 | `github/codeql-action/analyze` | `v4` | `5e316336eb4f107009e477d4bfbfff13d7250fae` | Pinned CodeQL SARIF upload and alert generation for the explicit language matrix. |
+| `snapetech-org/slskr/.github/workflows/web-assets-validation.yml` | `713676d58f1601a8079257f3f4aeefdc0de7b7f6` | `713676d58f1601a8079257f3f4aeefdc0de7b7f6` | Audited reusable workflow for fork-only JIT web asset validation. |
 
 To update an action, resolve the new trusted ref, replace the workflow SHA and the
 matching ledger row in the same change, and run the remediation baseline.
