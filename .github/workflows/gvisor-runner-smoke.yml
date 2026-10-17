@@ -1,0 +1,25 @@
+name: gVisor runner smoke
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  smoke:
+    if: github.ref == 'refs/heads/main'
+    timeout-minutes: 5
+    runs-on:
+      group: gvisor-sandbox
+      labels: gvisor-sandbox
+    steps:
+      - name: Check runner boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(uname -s)" = Linux
+          test "$(uname -m)" = x86_64
+          test ! -S /var/run/docker.sock
+          test ! -S /run/podman/podman.sock
+          printf 'repository=%s\nrunner=%s\ncommit=%s\n' \
+            "$GITHUB_REPOSITORY" "$RUNNER_NAME" "$GITHUB_SHA"
