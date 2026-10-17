@@ -2,8 +2,8 @@
 
 Generated from local source patterns. Counts are candidate lines, not confirmed bugs.
 
-Scan date: 2026-10-16
-Source digest: e80e1136dc42b363e01704ddb6fa2b53721235a26153aa2710fdf7f49b4a6d1c
+Scan date: 2026-10-17
+Source digest: 14a11dd279cebd863aab5085bd514423b0036892c75848834fdf93457d26a419
 
 | Candidate Class | Count |
 | --- | ---: |
