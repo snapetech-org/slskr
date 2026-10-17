@@ -278,6 +278,9 @@ for values in \
   sed -i "s|^  tag: .*|  tag: \"${release_version}\"|" "$values"
 done
 
+# The checked-in Unraid Community Apps template (slskr.xml) floats on :latest
+# so catalog installs always pull the newest release. This refresh only pins
+# the ephemeral CI copy; it is not committed back to the repository.
 sed -i "s|^  <Repository>.*</Repository>|  <Repository>ghcr.io/snapetech/slskr:${release_version}</Repository>|" \
   slskr.xml
 sed -i "s|^version=\".*\"|version=\"${pkgver}\"|" \
