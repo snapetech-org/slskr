@@ -1,0 +1,24 @@
+name: slskr fork PR localization check
+on:
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  web-assets:
+    name: Web UI localization test
+    runs-on: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == true && fromJSON('["self-hosted", "linux", "x64", "public-pr-slskr"]') || 'ubuntu-latest' }}
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - name: Install web dependencies
+        run: npm --prefix web ci --allow-git=root --legacy-peer-deps --no-audit --no-fund
+      - name: Test Web UI localization coverage
+        run: npm --prefix web test -- src/lib/interfaceLocale.test.js
