@@ -9,6 +9,7 @@
   <Shell>bash</Shell>
   <Icon>https://raw.githubusercontent.com/snapetech-org/slskr/main/web/public/slskr-mark.png</Icon>
   <Overview>Self-hosted Rust Soulseek daemon, HTTP API, and bundled browser UI. One slskr serve process owns the Soulseek session, peer listeners, share index, transfer engine, API, event stream, and Web UI for a private, scriptable Soulseek client.</Overview>
+  <Description>Set SLSKR_API_TOKEN for API clients and SLSKD_PASSWORD to replace the default Web UI login (user slskr, password slskr). Shares are served from the Shares path; downloads and incomplete files use the mapped data paths.</Description>
   <WebUI>http://[IP]:[PORT:5030]/</WebUI>
   <Support>https://github.com/snapetech-org/slskr/issues</Support>
   <Project>https://github.com/snapetech-org/slskr</Project>
@@ -41,25 +42,35 @@
       <Value>0.0.0.0:5030</Value>
     </Variable>
     <Variable>
-      <Name>SLSKR_CONFIG</Name>
-      <Value>/app/config/config.toml</Value>
+      <Name>SLSKR_SHARE_DIRS</Name>
+      <Value>/app/shares</Value>
     </Variable>
     <Variable>
-      <Name>SLSKR_SHARED_DIR</Name>
-      <Value>/music</Value>
+      <Name>SLSKR_DOWNLOADS_DIR</Name>
+      <Value>/app/downloads</Value>
+    </Variable>
+    <Variable>
+      <Name>SLSKR_INCOMPLETE_DIR</Name>
+      <Value>/app/incomplete</Value>
     </Variable>
     <Variable>
       <Name>SLSKR_DOWNLOAD_FILTER_EXCLUDE</Name>
       <Value></Value>
     </Variable>
+    <Variable>
+      <Name>SLSKR_API_TOKEN</Name>
+      <Value></Value>
+    </Variable>
+    <Variable>
+      <Name>SLSKD_PASSWORD</Name>
+      <Value></Value>
+    </Variable>
   </Environment>
   <Data>
-    <Config Name="Config" Target="/app/config" Default="/mnt/user/appdata/slskr/config" Mode="rw" />
     <Config Name="Downloads" Target="/app/downloads" Default="/mnt/user/data/slskr/downloads" Mode="rw" />
     <Config Name="Incomplete" Target="/app/incomplete" Default="/mnt/user/data/slskr/incomplete" Mode="rw" />
     <Config Name="Shares" Target="/app/shares" Default="/mnt/user/data/slskr/shares" Mode="ro" />
     <Config Name="State" Target="/var/lib/slskr" Default="/mnt/user/appdata/slskr/state" Mode="rw" />
-    <Config Name="Music" Target="/music" Default="/mnt/user/music" Mode="ro" Optional="true" />
   </Data>
   <ExtraParams>--restart=unless-stopped</ExtraParams>
   <PostArgs />
