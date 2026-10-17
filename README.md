@@ -27,8 +27,8 @@ with its own configuration and release contracts, not a fork or wrapper.
   benchmark, slskR used about **16x less CPU time** and **85–89% less memory**.
   A separate connected-idle run measured about **30x less CPU time** and
   **85–95% less memory**. See the
-  [idle benchmark](./benchmarks/artifacts/20261012-idle-container-slskr-slskd.md)
-  and the [connected-idle report](./benchmarks/artifacts/20261012-live-soulseek-idle.md).
+  [performance analysis](./docs/performance-analysis.md) and the
+  [connected-idle report](./benchmarks/artifacts/20261012-live-soulseek-idle.md).
 - **One process for the daemon, API, and UI.** No sidecar or external web host.
 - **API-first.** Versioned `/api/v0/*` routes, OpenAPI, WebSocket events,
   webhooks, and TypeScript, Python, and Go clients.
