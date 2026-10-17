@@ -11,7 +11,8 @@ audits.
 | --- | --- |
 | [Project README](../README.md) | Product overview, screenshots, quick start, feature summary, and top-level links. |
 | [Getting started](getting-started.md) | First run from a release archive through login, shares, and a first search. |
-| [Features](FEATURES.md) | User-facing map of current slskR feature areas. |
+| [Feature map](FEATURES.md) | User-facing map of current slskR feature areas. |
+| [Feature guides](features/README.md) | Per-area guides for search, transfers, shares, messaging, media, integrations, mesh, API, operations, security, and localization. |
 | [Status and support boundaries](status.md) | Which behavior is ordinary, configured, compatibility-only, or limited. |
 | [Configuration guide](configuration.md) | Config sources, network defaults, credentials, and optional features. |
 | [Troubleshooting](troubleshooting.md) | Common operator problems and focused checks. |
@@ -21,6 +22,23 @@ audits.
 | [Config example](slskr.config.example.toml) | Annotated TOML config with the supported runtime settings. |
 | [Gold Star Club](gold-star-club.md) | Purpose, lifecycle, membership policy, and opt-in/opt-out configuration. |
 | [App surface](app-surface.md) | User-facing CLI, daemon, API, Web UI, auth, and compatibility surface. |
+
+## Feature Guides
+
+| Area | Guide |
+| --- | --- |
+| Feature index | [features/README.md](features/README.md) |
+| Search and discovery | [features/search-and-discovery.md](features/search-and-discovery.md) |
+| Transfers | [features/transfers.md](features/transfers.md) |
+| Shares and browse | [features/shares-and-browse.md](features/shares-and-browse.md) |
+| Messaging, rooms, and users | [features/messaging-rooms-users.md](features/messaging-rooms-users.md) |
+| Web UI and media | [features/web-ui-and-media.md](features/web-ui-and-media.md) |
+| Integrations | [features/integrations.md](features/integrations.md) |
+| Mesh, DHT, and pods | [features/mesh-dht-pods.md](features/mesh-dht-pods.md) |
+| API and automation | [features/api-and-automation.md](features/api-and-automation.md) |
+| Data and operations | [features/data-and-operations.md](features/data-and-operations.md) |
+| Security and access | [features/security-and-access.md](features/security-and-access.md) |
+| Localization | [features/localization.md](features/localization.md) |
 
 ## Web UI
 

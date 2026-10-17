@@ -14,8 +14,8 @@ with its own configuration and release contracts, not a fork or wrapper.
 ## Contents
 
 - [Why slskR](#why-slskr)
+- [Features](#features)
 - [Get started](#get-started)
-- [Use the main workflows](#use-the-main-workflows)
 - [Feature maturity](#feature-maturity)
 - [Project status and contribution](#project-status-and-contribution)
 - [Support](#support)
@@ -36,6 +36,54 @@ with its own configuration and release contracts, not a fork or wrapper.
   checks, virtual share paths, and scoped API tokens.
 - **Runs anywhere.** Linux, macOS, Windows, Docker, Kubernetes, Unraid,
   TrueNAS, Synology, and the major package managers.
+
+## Features
+
+Each area has a focused guide with workflows, API examples, limits, and the
+configuration that applies.
+
+| Feature area | What you get | Guide |
+| --- | --- | --- |
+| Search and discovery | Global, user, room, and wishlist searches; result filters; discovery helpers. | [Search guide](./docs/features/search-and-discovery.md) |
+| Transfers | Download/upload queue, resume, retry, rescue, path templates, multisource swarm, previews. | [Transfers guide](./docs/features/transfers.md) |
+| Shares and browse | Bounded share index, regex filters, virtual paths, catalog, peer browse. | [Shares guide](./docs/features/shares-and-browse.md) |
+| Messaging, rooms, and users | Private messages, rooms, watched users, contacts, notes, interests, bans. | [Messaging guide](./docs/features/messaging-rooms-users.md) |
+| Web UI and media | Shipped React UI, player, previews, collections, share groups, listening parties. | [Web UI guide](./docs/features/web-ui-and-media.md) |
+| Integrations | Spotify, Lidarr, and the optional visualizer. | [Integrations guide](./docs/features/integrations.md) |
+| Mesh, DHT, and pods | DHT rendezvous, TLS/QUIC mesh, pods, channels, room bindings, Gold Star Club. | [Mesh guide](./docs/features/mesh-dht-pods.md) |
+| API and automation | Versioned routes, auth, events, webhooks, batch, metrics, typed clients. | [API guide](./docs/features/api-and-automation.md) |
+| Data and operations | SQLite persistence, database maintenance, logs, metrics, telemetry. | [Operations guide](./docs/features/data-and-operations.md) |
+| Security and access | Bind defaults, tokens, CSRF, rate limits, webhook policy, reverse proxies. | [Security guide](./docs/features/security-and-access.md) |
+| Localization | Twelve UI locales, English fallback, locale-aware formatting. | [Localization guide](./docs/features/localization.md) |
+| Performance | Measured CPU and memory evidence, methods, and limits. | [Performance analysis](./docs/performance-analysis.md) |
+
+Also included:
+
+- Global, user, room, and scheduled wishlist searches with result filters,
+  duplicate folding, hidden/blocked-user handling, and metadata-assisted
+  follow-ups.
+- Auto-retry and rescue workers for failed, queued, slow, or stalled audio
+  downloads, with bounded alternate-source searches.
+- Offset/resume, type-1 obfuscated and indirect peer fallback, completed-path
+  templates, and hash-verified multisource swarms.
+- Share catalog, per-root file listing, peer browse, folder browse, and partial
+  browse state.
+- Private-message acknowledgements, room join/leave, watched-user stats,
+  contacts, notes, liked/hated interests, and username/IP bans.
+- Collections, share groups, playlist intake, player controls, local and peer
+  previews, and listening parties.
+- Spotify OAuth, Lidarr status/wanted/import, and a local visualizer hook.
+- Mainline DHT, TLS mesh transport, QUIC control/data, pods, member-only
+  channels, Soulseek-room bindings, hash metadata, and shadow-index discovery.
+- Versioned `/api/v0/*` routes, OpenAPI, bearer and `X-API-Key` auth, scoped
+  tokens, WebSocket events, webhooks, batch operations, and metrics/telemetry.
+- TypeScript, Python, Go, and Rust clients.
+- Optional SQLite persistence, database cleanup/vacuum, runtime log levels, and
+  health checks.
+- Loopback-first defaults, CSRF checks, rate limits, SSRF-resistant webhook
+  targets, and OS keyring, systemd, file, memory, or env credential stores.
+- Twelve interface locales with English fallback and locale-aware date, number,
+  and byte formatting.
 
 ## Get started
 
@@ -74,36 +122,19 @@ sudo install -Dm755 slskr /usr/local/bin/slskr
 slskr serve
 ```
 
-## Use the main workflows
-
-- [Search and discovery](./docs/getting-started.md#4-run-a-search-and-download) —
-  search globally, by user, or in rooms; review results and browse peers.
-- [Transfers](./docs/FEATURES.md#transfers-and-content-discovery) — queue,
-  resume, retry, and track downloads and uploads.
-- [Shares and browse](./docs/FEATURES.md#soulseek-client) — publish a bounded
-  index of your library through virtual paths.
-- [Messages and rooms](./docs/FEATURES.md#soulseek-client) — chat, join rooms,
-  watch users, and manage contacts.
-- [Web UI and media](./docs/FEATURES.md#web-ui-and-media-workflows) — player
-  controls, previews, library views, and listening parties.
-- [Integrations](./docs/install.md#third-party-integrations) — Spotify, Lidarr,
-  and visualizer workflows.
-- [HTTP API and clients](./docs/http-api.md) — REST routes, OpenAPI, events,
-  webhooks, and SDKs.
-- [System settings](./docs/configuration.md) — credentials, ports, logging,
-  metrics, and persistence.
-
 ## Feature maturity
 
 The stable baseline is the Soulseek client, Web UI, REST API, and ordinary
 single-source transfers. Optional features such as persistence, integrations,
 mesh, DHT, pods, and multisource downloads need configuration or suitable
-peers. See [Status and support boundaries](./docs/status.md) and the
-[feature map](./docs/FEATURES.md).
+peers. See [Status and support boundaries](./docs/status.md), the
+[feature map](./docs/FEATURES.md), and the
+[feature guides](./docs/features/README.md).
 
 ## Project status and contribution
 
 - [Documentation index](./docs/README.md)
+- [Feature guides](./docs/features/README.md)
 - [Architecture](./docs/architecture.md)
 - [Testing and live interop](./docs/live-interop-test-matrix.md)
 - [Release channels](./docs/dev/release-channels.md)

@@ -19,6 +19,18 @@ maintained_docs=(
   client-ts/README.md
   web/e2e/README.md
   test-data/slskr-test-fixtures/README.md
+  docs/features/README.md
+  docs/features/search-and-discovery.md
+  docs/features/transfers.md
+  docs/features/shares-and-browse.md
+  docs/features/messaging-rooms-users.md
+  docs/features/web-ui-and-media.md
+  docs/features/integrations.md
+  docs/features/mesh-dht-pods.md
+  docs/features/api-and-automation.md
+  docs/features/data-and-operations.md
+  docs/features/security-and-access.md
+  docs/features/localization.md
 )
 
 while IFS= read -r path; do

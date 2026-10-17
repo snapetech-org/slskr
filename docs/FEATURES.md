@@ -1,6 +1,7 @@
 # slskR Features
 
 This is a user-facing map of the Rust daemon's current feature areas. The
+[feature guides](features/README.md) explain how to use each area, and the
 [status guide](status.md) explains which features need configuration or an
 external service. The [HTTP API](http-api.md), [OpenAPI document](openapi.json),
 and [client libraries](CLIENT_LIBRARIES.md) document automation contracts.
