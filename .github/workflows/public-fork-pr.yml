@@ -1,0 +1,20 @@
+name: slskr fork PR validation
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: public-fork-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    name: Run disposable fork validation
+    if: >-
+      github.event.pull_request.head.repo.fork == true &&
+      github.event.pull_request.base.repo.full_name == 'snapetech-org/slskr' &&
+      github.event.pull_request.base.ref == 'main'
+    permissions:
+      contents: read
+    uses: snapetech-org/slskr/.github/workflows/web-assets-validation.yml@713676d58f1601a8079257f3f4aeefdc0de7b7f6
