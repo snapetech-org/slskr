@@ -10,23 +10,23 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        version = "0.2.52";
+        version = "0.2.71";
         sources = {
           "x86_64-linux" = {
-            url = "https://github.com/snapetech-org/slskr/releases/download/release-v0.2.52/slskr-v0.2.52-x86_64-unknown-linux-gnu.tar.gz";
-            sha256 = "0afd6d2ba92fcf37f8bd360979b48c5e163ad96ff388c60bd0c2b999bc5016f4";
+            url = "https://github.com/snapetech-org/slskr/releases/download/release-v0.2.71/slskr-v0.2.71-x86_64-unknown-linux-gnu.tar.gz";
+            sha256 = "efa3ba418d70b1c1c6466cf1d5742b4df18649f4e6c56c1442ab39ffd3621579";
           };
           "aarch64-linux" = {
-            url = "https://github.com/snapetech-org/slskr/releases/download/release-v0.2.52/slskr-v0.2.52-aarch64-unknown-linux-gnu.tar.gz";
-            sha256 = "34327c6d59af04edb6f0cdd3f13965cdd82f808934a1e54eb9acd29e1e969ddd";
+            url = "https://github.com/snapetech-org/slskr/releases/download/release-v0.2.71/slskr-v0.2.71-aarch64-unknown-linux-gnu.tar.gz";
+            sha256 = "59e58c09fd448591f8645a8336e10183db998527515f1665342e123be1711039";
           };
           "x86_64-darwin" = {
-            url = "https://github.com/snapetech-org/slskr/releases/download/release-v0.2.52/slskr-v0.2.52-x86_64-apple-darwin.tar.gz";
-            sha256 = "bc87f52510b369d3d1360d9739b5bb1c76ec8d735267bab7b86a28b13cd4213c";
+            url = "https://github.com/snapetech-org/slskr/releases/download/release-v0.2.71/slskr-v0.2.71-x86_64-apple-darwin.tar.gz";
+            sha256 = "8d3b0f72afce9919e088f5b9c6368d885598f82a5845d050f6ebd71f32c62863";
           };
           "aarch64-darwin" = {
-            url = "https://github.com/snapetech-org/slskr/releases/download/release-v0.2.52/slskr-v0.2.52-aarch64-apple-darwin.tar.gz";
-            sha256 = "19a421af93cdc436bb09660976ad5bccf2e81a8e6bd9b970363f8e3e4950c15a";
+            url = "https://github.com/snapetech-org/slskr/releases/download/release-v0.2.71/slskr-v0.2.71-aarch64-apple-darwin.tar.gz";
+            sha256 = "c0a84e8ed42aa1a0f5ddcafb96eb39f51ce2fd6f5def7b53d028240c384e015d";
           };
         };
         mkSlskr = { pname, version, sources }:
