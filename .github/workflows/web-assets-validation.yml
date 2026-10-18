@@ -6,7 +6,7 @@ permissions:
 jobs:
   web-assets:
     name: Web UI localization test
-    runs-on: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == true && fromJSON('["self-hosted", "linux", "x64", "public-pr-slskr"]') || 'ubuntu-latest' }}
+    runs-on: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == true && fromJSON('{"group":"public-fork-jit","labels":["self-hosted","linux","x64","public-pr-slskr"]}') || 'ubuntu-latest' }}
     timeout-minutes: 15
     permissions:
       contents: read
