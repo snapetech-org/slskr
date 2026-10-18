@@ -1,7 +1,7 @@
 # Council Scan Inventory
 
-Scan date: 2026-10-17
-Source digest: 14a11dd279cebd863aab5085bd514423b0036892c75848834fdf93457d26a419
+Scan date: 2026-10-18
+Source digest: de9312f8fbcc62ec1aaaa6b7235aef6ca62b715c2470ba098e3a2e5b88a3e03f
 
 > Council process upgrades (mirrored from slskNet.Runtime, 2026-05-06): see `bug-council-severity-schema.md`, `bug-council-sibling-search.md`, `bug-council-negative-space.md`, `bug-council-behavior-pinning.md`, and `bug-council-phases.md`. Future sweep rows on this file should adopt the severity/confidence schema; the wire-frame trust boundary is now declared and enforced by `scripts/check-council-negative-space.sh`.
 
@@ -71,11 +71,11 @@ adversarial corpus pass.
 | Candidate Class | Count |
 | --- | ---: |
 | Constructor/mutable collection candidates | 10 |
-| Protocol count/length candidates | 164 |
+| Protocol count/length candidates | 165 |
 | Protocol scalar emission candidates | 309 |
 | Resolver/raw stream candidates | 1093 |
 | Task/cancellation/lifecycle candidates | 1599 |
-| Example Web API candidates | 348 |
+| Example Web API candidates | 378 |
 
 ### Constructor/mutable collection candidates
 
@@ -101,6 +101,7 @@ adversarial corpus pass.
 | `decode_string_vec`, `decode_room_entries`, `decode_possible_parents` | Server protocol | Existing Guard | Low | High | Counts are decoded without preallocating count-sized vectors; room count vectors validate matching lengths. | Room list and possible parent round-trip/selection tests. |
 | `FileTransferConnection::read_chunk` and `DownloadTransfer::receive_file_from` | Client SDKs | Fixed | Medium | High | BUG-033: transfer chunk reads now reject lengths above `DEFAULT_MAX_TRANSFER_CHUNK_LEN` before allocating. | `oversized_chunk_is_rejected_before_allocation` and `receive_file_rejects_oversized_remaining_before_allocation`. |
 | `decode_file_entries`, `decode_string_vec`, `decode_possible_parents`, and shared-file browse payload parsers | Protocol + Backend/API | Fixed | Medium | High | BUG-040: calibrated Rust protocol taint lens found reader-derived counts flowing into parser loops; counts now route through `Reader::read_bounded_count` and reject impossible counts based on remaining bytes before loop execution. | `scripts/check-rust-protocol-taint-lens.sh`; peer/server/shared-file count regression tests. |
+| `crates/slskr/src/share_scanner.rs` test fixture `Vec::with_capacity(FILE_COUNT)` | Tests/Tooling | False Positive | Low | High | The peak-memory regression reserves a fixed `FILE_COUNT = 4,096` entries for a test fixture; this capacity is not derived from protocol input or filesystem enumeration. | `consuming_a_root_scan_releases_its_large_worker_payload` |
 
 ### Protocol scalar emission candidates
 
@@ -161,7 +162,7 @@ require individual review.
 | --- | --- | --- | --- | --- | --- | --- |
 | `docs/http-api-features.md` raw browser WebSocket examples | Docs/Config + Frontend/API Handling | Fixed | Medium | High | BUG-039: raw browser examples now pass the `slskr.api-token.<encoded-token>` WebSocket subprotocol instead of omitting auth. | `scripts/check-websocket-auth-coverage.sh`; docs freshness/baseline. |
 | `docs/http-api-features.md` Node.js WebSocket example | Docs/Config + Client SDKs | Fixed | Medium | High | BUG-039: Node example now uses the supported WebSocket auth subprotocol array instead of an incompatible browser-style constructor object/header pattern. | `scripts/check-websocket-auth-coverage.sh`; docs freshness/baseline. |
-| `Authorization: Bearer` curl examples | Docs/Config | Existing Guard | Low | High | Bearer auth remains a supported HTTP API auth mechanism and examples use placeholders or `SLSKR_API_TOKEN`, not hard-coded secrets. | Secret scanning and docs freshness gates. |
+| `Authorization: Bearer` curl examples | Docs/Config | Existing Guard | Low | High | The feature guides add API examples using the `$SLSKR_API_TOKEN` shell placeholder; they document supported routes without embedding credentials. Browser API tokens remain session-only, and the auth and WebSocket examples are checked against the supported client paths. | Secret scanning, `scripts/check-browser-token-persistence.sh`, WebSocket auth coverage, and docs freshness gates. |
 | `Access-Control-Allow-Origin` warning | Docs/Config | Existing Guard | Low | High | Deployment docs explicitly warn not to use wildcard CORS for authenticated browser deployments. | `scripts/check-docs-freshness.sh`. |
 | `localhost:8080` local examples | Docs/Config + Client SDKs | Existing Guard | Low | High | Localhost URLs are local dev defaults in README, SDK examples, tests, and OpenAPI server metadata; deployment docs cover production binding/auth posture separately. | Kubernetes public posture and docs freshness gates. |
 | Browser `localStorage` hits | Frontend/API Handling | Existing Guard | Low | High | Token storage regressions are covered by `scripts/check-browser-token-persistence.sh`; remaining production uses are non-secret UI preferences/caches or documented migration fallbacks, with token mentions in tests. | Browser token persistence gate. |
