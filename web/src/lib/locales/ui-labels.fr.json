@@ -4859,5 +4859,15 @@
   "Unknown member": "Membre inconnu",
   "Queued {count} file for download": "{count} fichier mis en file d’attente pour le téléchargement",
   "Queued {count} files for download": "{count} fichiers mis en file d’attente pour le téléchargement",
-  "Failed to queue download: {message}": "Impossible de mettre le téléchargement en file d’attente : {message}"
+  "Failed to queue download: {message}": "Impossible de mettre le téléchargement en file d’attente : {message}",
+  "This session only: credentials stay in daemon memory and must be entered again after a restart.": "Cette session uniquement : les identifiants restent en mémoire dans le service et doivent être ressaisis après son redémarrage.",
+  "OS credential store: credentials are saved in this operating system user's keyring and survive daemon restarts.": "Coffre d’identifiants du système : ils sont enregistrés dans le trousseau de ce système et restent disponibles après le redémarrage du service.",
+  "Local credential file: credentials are saved on disk as plaintext. Restrict filesystem access to the daemon user.": "Fichier local d’identifiants : ils sont enregistrés en clair sur le disque. Limitez l’accès au compte du service.",
+  "For systemd, configure LoadCredential in the service unit. This dialog cannot write systemd credentials.": "Avec systemd, configurez LoadCredential dans l’unité du service. Cette fenêtre ne peut pas écrire les identifiants systemd.",
+  "Read credential storage instructions": "Lire les instructions de stockage des identifiants",
+  "Soulseek credentials were accepted. Connection status is in the main app; sharing and integrations are optional.": "Les identifiants Soulseek ont été acceptés. L’état de connexion s’affiche dans l’application principale ; le partage et les intégrations sont facultatifs.",
+  "No indexed shares to display.": "Aucun partage indexé à afficher.",
+  "Sharing is optional and is not required for searching or downloading.": "Le partage est facultatif et n’est pas nécessaire pour rechercher ou télécharger.",
+  "Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers.": "L’opérateur configure les chemins partagés dans TOML ou les variables d’environnement. Les autres pairs Soulseek peuvent voir ces dossiers.",
+  "Read share setup instructions": "Lire les instructions de configuration du partage"
 }

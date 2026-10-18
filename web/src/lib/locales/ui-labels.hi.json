@@ -4859,5 +4859,15 @@
   "Unknown member": "अज्ञात सदस्य",
   "Queued {count} file for download": "डाउनलोड के लिए {count} फ़ाइल कतार में रखी गई",
   "Queued {count} files for download": "डाउनलोड के लिए {count} फ़ाइलें कतार में रखी गईं",
-  "Failed to queue download: {message}": "डाउनलोड को कतार में नहीं जोड़ा जा सका: {message}"
+  "Failed to queue download: {message}": "डाउनलोड को कतार में नहीं जोड़ा जा सका: {message}",
+  "This session only: credentials stay in daemon memory and must be entered again after a restart.": "केवल इस सत्र के लिए: क्रेडेंशियल डेमन की मेमोरी में रहेंगे और रीस्टार्ट के बाद फिर से दर्ज करने होंगे।",
+  "OS credential store: credentials are saved in this operating system user's keyring and survive daemon restarts.": "OS क्रेडेंशियल स्टोर: क्रेडेंशियल इस ऑपरेटिंग सिस्टम के कीरिंग में सहेजे जाते हैं और डेमन रीस्टार्ट के बाद भी रहते हैं।",
+  "Local credential file: credentials are saved on disk as plaintext. Restrict filesystem access to the daemon user.": "स्थानीय क्रेडेंशियल फ़ाइल: क्रेडेंशियल डिस्क पर सादे पाठ में सहेजे जाते हैं। फ़ाइल का एक्सेस केवल डेमन उपयोगकर्ता तक सीमित रखें।",
+  "For systemd, configure LoadCredential in the service unit. This dialog cannot write systemd credentials.": "systemd के लिए, सेवा यूनिट में LoadCredential कॉन्फ़िगर करें। यह डायलॉग systemd क्रेडेंशियल नहीं लिख सकता।",
+  "Read credential storage instructions": "क्रेडेंशियल संग्रहण के निर्देश पढ़ें",
+  "Soulseek credentials were accepted. Connection status is in the main app; sharing and integrations are optional.": "Soulseek क्रेडेंशियल स्वीकार किए गए। कनेक्शन की स्थिति मुख्य ऐप में दिखेगी; साझा करना और इंटीग्रेशन वैकल्पिक हैं।",
+  "No indexed shares to display.": "दिखाने के लिए कोई अनुक्रमित शेयर नहीं है।",
+  "Sharing is optional and is not required for searching or downloading.": "साझा करना वैकल्पिक है और खोज या डाउनलोड के लिए आवश्यक नहीं है।",
+  "Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers.": "ऑपरेटर TOML या एनवायरनमेंट वेरिएबल में शेयर रूट कॉन्फ़िगर करता है। साझा फ़ोल्डर अन्य Soulseek साथियों को दिखाई देते हैं।",
+  "Read share setup instructions": "शेयर सेटअप निर्देश पढ़ें"
 }

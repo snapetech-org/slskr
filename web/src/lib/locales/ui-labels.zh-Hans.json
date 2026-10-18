@@ -4859,5 +4859,15 @@
   "Unknown member": "未知成员",
   "Queued {count} file for download": "已将 {count} 个文件加入下载队列",
   "Queued {count} files for download": "已将 {count} 个文件加入下载队列",
-  "Failed to queue download: {message}": "无法将下载加入队列：{message}"
+  "Failed to queue download: {message}": "无法将下载加入队列：{message}",
+  "This session only: credentials stay in daemon memory and must be entered again after a restart.": "仅此会话：凭据保存在守护进程内存中，重启后必须重新输入。",
+  "OS credential store: credentials are saved in this operating system user's keyring and survive daemon restarts.": "操作系统凭据存储：凭据保存在此操作系统的密钥环中，守护进程重启后仍可使用。",
+  "Local credential file: credentials are saved on disk as plaintext. Restrict filesystem access to the daemon user.": "本地凭据文件：凭据以明文形式保存到磁盘。请将文件访问权限限制为守护进程用户。",
+  "For systemd, configure LoadCredential in the service unit. This dialog cannot write systemd credentials.": "对于 systemd，请在服务单元中配置 LoadCredential。此对话框无法写入 systemd 凭据。",
+  "Read credential storage instructions": "阅读凭据存储说明",
+  "Soulseek credentials were accepted. Connection status is in the main app; sharing and integrations are optional.": "Soulseek 凭据已接受。连接状态会显示在主应用中；共享和集成均为可选。",
+  "No indexed shares to display.": "没有可显示的已索引共享。",
+  "Sharing is optional and is not required for searching or downloading.": "共享为可选功能，搜索和下载不需要共享。",
+  "Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers.": "共享根目录由管理员通过 TOML 或环境变量配置。其他 Soulseek 用户可以看到这些共享文件夹。",
+  "Read share setup instructions": "阅读共享设置说明"
 }

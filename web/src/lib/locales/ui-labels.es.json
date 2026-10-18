@@ -4859,5 +4859,15 @@
   "Unknown member": "Miembro desconocido",
   "Queued {count} file for download": "Se puso en cola {count} archivo para descargar",
   "Queued {count} files for download": "Se pusieron en cola {count} archivos para descargar",
-  "Failed to queue download: {message}": "No se pudo poner la descarga en cola: {message}"
+  "Failed to queue download: {message}": "No se pudo poner la descarga en cola: {message}",
+  "This session only: credentials stay in daemon memory and must be entered again after a restart.": "Solo para esta sesión: las credenciales permanecen en la memoria del daemon y deben volver a ingresarse después de reiniciarlo.",
+  "OS credential store: credentials are saved in this operating system user's keyring and survive daemon restarts.": "Almacén de credenciales del sistema operativo: se guardan en el llavero de este sistema y siguen disponibles tras reiniciar el daemon.",
+  "Local credential file: credentials are saved on disk as plaintext. Restrict filesystem access to the daemon user.": "Archivo local de credenciales: se guardan en texto sin cifrar en el disco. Limita el acceso al usuario del daemon.",
+  "For systemd, configure LoadCredential in the service unit. This dialog cannot write systemd credentials.": "En systemd, configura LoadCredential en la unidad del servicio. Este diálogo no puede escribir credenciales de systemd.",
+  "Read credential storage instructions": "Leer instrucciones para almacenar credenciales",
+  "Soulseek credentials were accepted. Connection status is in the main app; sharing and integrations are optional.": "Se aceptaron las credenciales de Soulseek. El estado de conexión aparece en la aplicación principal; compartir e integrar son opcionales.",
+  "No indexed shares to display.": "No hay recursos compartidos indexados para mostrar.",
+  "Sharing is optional and is not required for searching or downloading.": "Compartir es opcional y no se necesita para buscar ni descargar.",
+  "Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers.": "El operador configura las rutas compartidas en TOML o variables de entorno. Otros usuarios de Soulseek pueden ver esas carpetas.",
+  "Read share setup instructions": "Leer instrucciones para configurar recursos compartidos"
 }
