@@ -834,7 +834,7 @@ class App extends Component {
                   <LocalizedText source={"For systemd, configure LoadCredential in the service unit. This dialog cannot write systemd credentials."} />{' '}
                   <a
                     href="https://github.com/snapetech-org/slskR/blob/main/docs/credential-storage.md"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     target="_blank"
                   >
                     <LocalizedText source={"Read credential storage instructions"} />

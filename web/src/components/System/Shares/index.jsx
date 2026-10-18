@@ -247,7 +247,7 @@ const Shares = ({ state = EMPTY_STATE, theme } = {}) => {
               <LocalizedText source={"Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers."} />{' '}
               <a
                 href="https://github.com/snapetech-org/slskR/blob/main/docs/features/shares-and-browse.md"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 target="_blank"
               >
                 <LocalizedText source={"Read share setup instructions"} />
