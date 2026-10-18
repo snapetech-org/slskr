@@ -40,7 +40,7 @@ for pattern in "${patterns[@]}"; do
   # is required for controller compatibility and differential fixtures.
   rg_allow_no_matches "$scan_raw" -n -i -F "$pattern" README.md PLAN.md COMPLIANCE.md NOTICE Cargo.toml crates client-go client-python client-ts web docs k8s .github
   rg_allow_no_matches "$scan_exact_filtered" -v -F 'A slskdN user. Unofficial fork of slskd: https://github.com/snapetech-org/slskdN' "$scan_raw"
-  rg_allow_no_matches "$scan_filtered" -v -i 'do not|should not|must not|unless|avoid|remove casual|presenting the repository|not copied|not copy|not import|not say|prohibited|forbidden|current web ui as the reference implementation|based on error type' "$scan_exact_filtered"
+  rg_allow_no_matches "$scan_filtered" -v -i 'do not|should not|must not|unless|avoid|remove casual|presenting the repository|not copied|not copy|not import|not say|not a fork|prohibited|forbidden|current web ui as the reference implementation|based on error type' "$scan_exact_filtered"
   matches="$(<"$scan_filtered")"
   if [[ -n "$matches" ]]; then
     printf '%s\n' "$matches"
