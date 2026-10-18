@@ -510,6 +510,50 @@ mod progress_tests {
         fs::remove_dir_all(root).expect("remove share fixture");
     }
 
+    #[test]
+    fn consuming_a_root_scan_releases_its_large_worker_payload() {
+        const FILE_COUNT: usize = 4_096;
+        let directory =
+            ShareDirectory::from_path("/music", Some("music")).expect("parse test share directory");
+        let mut entries = Vec::with_capacity(FILE_COUNT);
+        let mut local_paths = BTreeMap::new();
+        for index in 0..FILE_COUNT {
+            let filename = format!("music/album-{index:05}/track.flac");
+            local_paths.insert(
+                filename.clone(),
+                PathBuf::from(format!("/music/album-{index:05}/track.flac")),
+            );
+            entries.push(FileEntry {
+                filename_encoding: Default::default(),
+                extension_encoding: Default::default(),
+                code: 1,
+                filename,
+                size: 1,
+                extension: "flac".to_owned(),
+                attributes: Vec::new(),
+            });
+        }
+        let mut scanned = BTreeMap::from([(
+            0,
+            ShareScan {
+                entries,
+                local_paths,
+                roots: Vec::new(),
+                errors: Vec::new(),
+                cancelled: false,
+            },
+        )]);
+
+        let scan = take_share_scan(&mut scanned, 0, &directory);
+
+        assert!(
+            scanned.is_empty(),
+            "worker payload must be moved, not retained"
+        );
+        assert_eq!(scan.entries.len(), FILE_COUNT);
+        assert_eq!(scan.local_paths.len(), FILE_COUNT);
+    }
+
     #[cfg(unix)]
     #[test]
     fn wide_share_roots_are_scanned_without_retaining_every_directory_fd() {
@@ -558,13 +602,32 @@ mod progress_tests {
     }
 }
 
-#[derive(Clone, Debug)]
+// Per-root results can contain hundreds of thousands of entries; keep them move-only.
+#[derive(Debug)]
 pub(super) struct ShareScan {
     pub(super) entries: Vec<FileEntry>,
     pub(super) local_paths: BTreeMap<String, PathBuf>,
     pub(super) roots: Vec<ShareRoot>,
     pub(super) errors: Vec<String>,
     pub(super) cancelled: bool,
+}
+
+fn take_share_scan(
+    scanned: &mut BTreeMap<usize, ShareScan>,
+    index: usize,
+    directory: &ShareDirectory,
+) -> ShareScan {
+    scanned.remove(&index).unwrap_or_else(|| ShareScan {
+        entries: Vec::new(),
+        local_paths: BTreeMap::new(),
+        roots: Vec::new(),
+        errors: if directory.is_excluded {
+            Vec::new()
+        } else {
+            vec![SHARE_SCAN_WORKER_ERROR.to_owned()]
+        },
+        cancelled: false,
+    })
 }
 
 #[derive(Clone, Debug)]
@@ -777,24 +840,15 @@ fn scan_share_dirs_with_cancellation_and_progress(
                 },
             )
     });
-    let scanned = worker_scans.into_iter().collect::<BTreeMap<_, _>>();
+    // Keep one owner for each large result: cloning here doubles peak scan memory.
+    let mut scanned = worker_scans.into_iter().collect::<BTreeMap<_, _>>();
 
     let mut entries = Vec::new();
     let mut local_paths = BTreeMap::new();
     let mut root_summaries = Vec::new();
     let mut errors = Vec::new();
     for (index, directory) in ordered_directories.iter().enumerate() {
-        let mut scan = scanned.get(&index).cloned().unwrap_or_else(|| ShareScan {
-            entries: Vec::new(),
-            local_paths: BTreeMap::new(),
-            roots: Vec::new(),
-            errors: if directory.is_excluded {
-                Vec::new()
-            } else {
-                vec![SHARE_SCAN_WORKER_ERROR.to_owned()]
-            },
-            cancelled: false,
-        });
+        let mut scan = take_share_scan(&mut scanned, index, directory);
         if scan.cancelled {
             return ShareScan {
                 entries,
