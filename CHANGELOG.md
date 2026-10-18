@@ -18,6 +18,13 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.74] — 2026-10-18
+
+- Reduce peak memory during large share scans by moving per-root results into
+  the combined index instead of cloning them.
+- [Internal-only] Refresh the active bughunt inventory and date-stamped council
+  evidence for the current source digest.
+
 ## [0.2.73] — 2026-10-18
 
 - Reduce peak memory during large share scans by moving per-root results into
