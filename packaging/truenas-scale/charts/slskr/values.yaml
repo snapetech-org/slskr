@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/snapetech/slskr
-  tag: "v0.2.52"
+  tag: "v0.2.74"
   pullPolicy: IfNotPresent
 
 replicaCount: 1
