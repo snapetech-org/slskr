@@ -513,15 +513,20 @@ mod progress_tests {
     #[test]
     fn consuming_a_root_scan_releases_its_large_worker_payload() {
         const FILE_COUNT: usize = 4_096;
+        let root = std::env::temp_dir().join(format!(
+            "slskr-share-scan-memory-test-{}",
+            uuid::Uuid::new_v4()
+        ));
         let directory =
-            ShareDirectory::from_path("/music", Some("music")).expect("parse test share directory");
+            ShareDirectory::from_path(root.to_str().expect("share fixture path"), Some("music"))
+                .expect("parse test share directory");
         let mut entries = Vec::with_capacity(FILE_COUNT);
         let mut local_paths = BTreeMap::new();
         for index in 0..FILE_COUNT {
             let filename = format!("music/album-{index:05}/track.flac");
             local_paths.insert(
                 filename.clone(),
-                PathBuf::from(format!("/music/album-{index:05}/track.flac")),
+                root.join(format!("album-{index:05}/track.flac")),
             );
             entries.push(FileEntry {
                 filename_encoding: Default::default(),
