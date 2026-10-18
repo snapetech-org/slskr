@@ -4859,5 +4859,15 @@
   "Unknown member": "Anggota tidak diketahui",
   "Queued {count} file for download": "Mengantrekan {count} file untuk diunduh",
   "Queued {count} files for download": "Mengantrekan {count} file untuk diunduh",
-  "Failed to queue download: {message}": "Gagal mengantrekan unduhan: {message}"
+  "Failed to queue download: {message}": "Gagal mengantrekan unduhan: {message}",
+  "This session only: credentials stay in daemon memory and must be entered again after a restart.": "Hanya untuk sesi ini: kredensial berada di memori daemon dan harus dimasukkan kembali setelah daemon dimulai ulang.",
+  "OS credential store: credentials are saved in this operating system user's keyring and survive daemon restarts.": "Penyimpanan kredensial OS: kredensial disimpan di keyring sistem operasi ini dan tetap tersedia setelah daemon dimulai ulang.",
+  "Local credential file: credentials are saved on disk as plaintext. Restrict filesystem access to the daemon user.": "File kredensial lokal: kredensial disimpan sebagai teks biasa di disk. Batasi akses file untuk pengguna daemon.",
+  "For systemd, configure LoadCredential in the service unit. This dialog cannot write systemd credentials.": "Untuk systemd, atur LoadCredential pada unit layanan. Dialog ini tidak dapat menulis kredensial systemd.",
+  "Read credential storage instructions": "Baca petunjuk penyimpanan kredensial",
+  "Soulseek credentials were accepted. Connection status is in the main app; sharing and integrations are optional.": "Kredensial Soulseek diterima. Status koneksi ditampilkan di aplikasi utama; berbagi dan integrasi bersifat opsional.",
+  "No indexed shares to display.": "Tidak ada pembagian terindeks untuk ditampilkan.",
+  "Sharing is optional and is not required for searching or downloading.": "Berbagi bersifat opsional dan tidak diperlukan untuk mencari atau mengunduh.",
+  "Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers.": "Operator mengatur root berbagi di TOML atau variabel lingkungan. Folder yang dibagikan dapat dilihat oleh pengguna Soulseek lain.",
+  "Read share setup instructions": "Baca petunjuk penyiapan berbagi"
 }

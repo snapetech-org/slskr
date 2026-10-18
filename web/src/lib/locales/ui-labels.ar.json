@@ -4964,5 +4964,15 @@
     "many": "تمت إضافة {count} ملفًا إلى قائمة التنزيل",
     "other": "تمت إضافة {count} ملف إلى قائمة التنزيل"
   },
-  "Failed to queue download: {message}": "تعذر إضافة التنزيل إلى قائمة الانتظار: {message}"
+  "Failed to queue download: {message}": "تعذر إضافة التنزيل إلى قائمة الانتظار: {message}",
+  "This session only: credentials stay in daemon memory and must be entered again after a restart.": "هذه الجلسة فقط: تبقى بيانات الاعتماد في ذاكرة الخدمة ويجب إدخالها مجددًا بعد إعادة التشغيل.",
+  "OS credential store: credentials are saved in this operating system user's keyring and survive daemon restarts.": "مخزن بيانات اعتماد نظام التشغيل: تُحفظ بيانات الاعتماد في حلقة مفاتيح هذا النظام وتظل متاحة بعد إعادة تشغيل الخدمة.",
+  "Local credential file: credentials are saved on disk as plaintext. Restrict filesystem access to the daemon user.": "ملف بيانات اعتماد محلي: تُحفظ بيانات الاعتماد كنص عادي على القرص. قيّد الوصول إلى الملف بمستخدم الخدمة.",
+  "For systemd, configure LoadCredential in the service unit. This dialog cannot write systemd credentials.": "في systemd، أعدّ LoadCredential في وحدة الخدمة. لا يمكن لهذا الحوار كتابة بيانات اعتماد systemd.",
+  "Read credential storage instructions": "اقرأ تعليمات تخزين بيانات الاعتماد",
+  "Soulseek credentials were accepted. Connection status is in the main app; sharing and integrations are optional.": "تم قبول بيانات اعتماد Soulseek. تظهر حالة الاتصال في التطبيق الرئيسي؛ المشاركة والتكاملات اختيارية.",
+  "No indexed shares to display.": "لا توجد مشاركات مفهرسة لعرضها.",
+  "Sharing is optional and is not required for searching or downloading.": "المشاركة اختيارية وليست مطلوبة للبحث أو التنزيل.",
+  "Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers.": "يُعدّ المشغّل مجلدات المشاركة في TOML أو متغيرات البيئة. تظهر المجلدات المشتركة لمستخدمي Soulseek الآخرين.",
+  "Read share setup instructions": "اقرأ تعليمات إعداد المشاركة"
 }

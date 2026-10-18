@@ -33,7 +33,7 @@ import ErrorSegment from './Shared/ErrorSegment';
 import Footer from './Shared/Footer';
 import React, { Component, lazy, Suspense, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import {
   Button,
   Form,
@@ -588,8 +588,12 @@ class App extends Component {
         password,
         username,
       });
-      this.updateServerState(response?.data);
+      const serverState = response?.data;
+      this.updateServerState(serverState);
       this.closeSoulseekCredentials();
+      toast.info(interfaceText(
+        'Soulseek credentials were accepted. Connection status is in the main app; sharing and integrations are optional.',
+      ));
     } catch (error) {
       this.setState((previousState) => ({
         soulseekCredentials: {
@@ -816,6 +820,27 @@ class App extends Component {
                 )}
                 value={soulseekCredentials.credentialStore}
                {...interfaceTextProps("Credential storage")}/>
+              <Segment secondary size="small">
+                {soulseekCredentials.credentialStore === 'memory' && (
+                  <LocalizedText source={"This session only: credentials stay in daemon memory and must be entered again after a restart."} />
+                )}
+                {soulseekCredentials.credentialStore === 'os' && (
+                  <LocalizedText source={"OS credential store: credentials are saved in this operating system user's keyring and survive daemon restarts."} />
+                )}
+                {soulseekCredentials.credentialStore === 'file' && (
+                  <LocalizedText source={"Local credential file: credentials are saved on disk as plaintext. Restrict filesystem access to the daemon user."} />
+                )}
+                <div style={{ marginTop: '0.5rem' }}>
+                  <LocalizedText source={"For systemd, configure LoadCredential in the service unit. This dialog cannot write systemd credentials."} />{' '}
+                  <a
+                    href="https://github.com/snapetech-org/slskR/blob/main/docs/credential-storage.md"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <LocalizedText source={"Read credential storage instructions"} />
+                  </a>
+                </div>
+              </Segment>
               {soulseekCredentials.error && (
                 <Segment
                   color="red"

@@ -17,7 +17,11 @@ vi.mock('../../../lib/errors', () => ({
   toDisplayError: (error, fallback) => error?.message ?? fallback,
 }));
 vi.mock('react-toastify', () => ({ toast: { error: vi.fn() } }));
-vi.mock('semantic-ui-react', () => ({ Divider: () => <hr /> }));
+vi.mock('semantic-ui-react', () => {
+  const Message = ({ children }) => <div>{children}</div>;
+  Message.Header = ({ children }) => <h2>{children}</h2>;
+  return { Divider: () => <hr />, Message };
+});
 vi.mock('../../Shared', () => ({
   LoaderSegment: ({ children }) => <div>{children}</div>,
   ShrinkableButton: ({ children, ...props }) => <button {...props}>{children}</button>,
@@ -77,5 +81,28 @@ describe('Shares scan progress', () => {
       />,
     );
     expect(screen.getByText('Visited 1,234 filesystem entries')).toBeInTheDocument();
+  });
+
+  it('explains that sharing is optional when no shares are indexed', async () => {
+    render(
+      <Shares
+        state={{
+          directories: 0,
+          files: 0,
+          scanEntries: 0,
+          scanPending: false,
+          scanning: false,
+        }}
+      />,
+    );
+
+    expect(await screen.findByText('No indexed shares to display.')).toBeInTheDocument();
+    expect(
+      screen.getByText('Sharing is optional and is not required for searching or downloading.'),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Read share setup instructions' })).toHaveAttribute(
+      'href',
+      'https://github.com/snapetech-org/slskR/blob/main/docs/features/shares-and-browse.md',
+    );
   });
 });

@@ -4859,5 +4859,15 @@
   "Unknown member": "Membro desconhecido",
   "Queued {count} file for download": "Enfileirado {count} arquivo para baixar",
   "Queued {count} files for download": "Enfileirados {count} arquivos para baixar",
-  "Failed to queue download: {message}": "Não foi possível enfileirar o download: {message}"
+  "Failed to queue download: {message}": "Não foi possível enfileirar o download: {message}",
+  "This session only: credentials stay in daemon memory and must be entered again after a restart.": "Somente nesta sessão: as credenciais ficam na memória do daemon e devem ser informadas novamente após uma reinicialização.",
+  "OS credential store: credentials are saved in this operating system user's keyring and survive daemon restarts.": "Armazenamento de credenciais do sistema operacional: elas são salvas no chaveiro deste sistema e permanecem após reiniciar o daemon.",
+  "Local credential file: credentials are saved on disk as plaintext. Restrict filesystem access to the daemon user.": "Arquivo local de credenciais: elas são salvas em texto simples no disco. Restrinja o acesso ao usuário do daemon.",
+  "For systemd, configure LoadCredential in the service unit. This dialog cannot write systemd credentials.": "No systemd, configure LoadCredential na unidade do serviço. Este diálogo não pode gravar credenciais do systemd.",
+  "Read credential storage instructions": "Ler instruções de armazenamento de credenciais",
+  "Soulseek credentials were accepted. Connection status is in the main app; sharing and integrations are optional.": "As credenciais do Soulseek foram aceitas. O status da conexão aparece no app principal; compartilhamento e integrações são opcionais.",
+  "No indexed shares to display.": "Não há compartilhamentos indexados para exibir.",
+  "Sharing is optional and is not required for searching or downloading.": "Compartilhar é opcional e não é necessário para pesquisar ou baixar.",
+  "Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers.": "O operador configura as pastas compartilhadas em TOML ou variáveis de ambiente. Outros usuários do Soulseek podem vê-las.",
+  "Read share setup instructions": "Ler instruções de configuração de compartilhamento"
 }

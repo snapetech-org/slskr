@@ -10,7 +10,7 @@ import ExclusionTable from './ExclusionTable';
 import ShareTable from './ShareTable';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
-import { Divider } from 'semantic-ui-react';
+import { Divider, Message } from 'semantic-ui-react';
 
 const EMPTY_STATE = Object.freeze({});
 
@@ -237,10 +237,29 @@ const Shares = ({ state = EMPTY_STATE, theme } = {}) => {
           )
         }
       >
-        <ShareTable
-          onClick={setModal}
-          shares={shared}
-        />
+        {shared.length === 0 ? (
+          <Message info>
+            <Message.Header><LocalizedText source={"No indexed shares to display."} /></Message.Header>
+            <p>
+              <LocalizedText source={"Sharing is optional and is not required for searching or downloading."} />
+            </p>
+            <p>
+              <LocalizedText source={"Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers."} />{' '}
+              <a
+                href="https://github.com/snapetech-org/slskR/blob/main/docs/features/shares-and-browse.md"
+                rel="noreferrer"
+                target="_blank"
+              >
+                <LocalizedText source={"Read share setup instructions"} />
+              </a>
+            </p>
+          </Message>
+        ) : (
+          <ShareTable
+            onClick={setModal}
+            shares={shared}
+          />
+        )}
         <ExclusionTable exclusions={excluded} />
       </Switch>
       <ContentsModal

@@ -4859,5 +4859,15 @@
   "Unknown member": "Thành viên không xác định",
   "Queued {count} file for download": "Đã xếp hàng {count} tệp để tải xuống",
   "Queued {count} files for download": "Đã xếp hàng {count} tệp để tải xuống",
-  "Failed to queue download: {message}": "Không thể xếp hàng tải xuống: {message}"
+  "Failed to queue download: {message}": "Không thể xếp hàng tải xuống: {message}",
+  "This session only: credentials stay in daemon memory and must be entered again after a restart.": "Chỉ trong phiên này: thông tin đăng nhập nằm trong bộ nhớ của daemon và cần nhập lại sau khi khởi động lại.",
+  "OS credential store: credentials are saved in this operating system user's keyring and survive daemon restarts.": "Kho thông tin đăng nhập của hệ điều hành: thông tin được lưu trong keyring của hệ điều hành này và vẫn còn sau khi khởi động lại daemon.",
+  "Local credential file: credentials are saved on disk as plaintext. Restrict filesystem access to the daemon user.": "Tệp thông tin đăng nhập cục bộ: thông tin được lưu dưới dạng văn bản thuần trên đĩa. Hạn chế quyền truy cập cho người dùng daemon.",
+  "For systemd, configure LoadCredential in the service unit. This dialog cannot write systemd credentials.": "Với systemd, hãy cấu hình LoadCredential trong unit dịch vụ. Hộp thoại này không thể ghi thông tin đăng nhập systemd.",
+  "Read credential storage instructions": "Đọc hướng dẫn lưu trữ thông tin đăng nhập",
+  "Soulseek credentials were accepted. Connection status is in the main app; sharing and integrations are optional.": "Thông tin đăng nhập Soulseek đã được chấp nhận. Trạng thái kết nối hiển thị trong ứng dụng chính; chia sẻ và tích hợp là tùy chọn.",
+  "No indexed shares to display.": "Không có mục chia sẻ đã lập chỉ mục để hiển thị.",
+  "Sharing is optional and is not required for searching or downloading.": "Chia sẻ là tùy chọn, không cần thiết để tìm kiếm hoặc tải xuống.",
+  "Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers.": "Quản trị viên cấu hình thư mục chia sẻ trong TOML hoặc biến môi trường. Các thư mục này hiển thị với những người dùng Soulseek khác.",
+  "Read share setup instructions": "Đọc hướng dẫn thiết lập chia sẻ"
 }
