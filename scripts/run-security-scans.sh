@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
+export EIO_BACKEND="${SEMGREP_EIO_BACKEND:-posix}"
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
@@ -69,7 +70,7 @@ run_semgrep() {
     printf 'Excluding external parity checkout from Semgrep scan: %s\n' "$external_reference_relative"
   fi
   if command -v semgrep >/dev/null 2>&1; then
-    run_or_record "Semgrep security scan" semgrep scan --config auto --error "${semgrep_exclude_args[@]}"
+    run_or_record "Semgrep security scan" semgrep scan --jobs "${SEMGREP_JOBS:-2}" --config auto --error "${semgrep_exclude_args[@]}"
     return
   fi
 
@@ -79,12 +80,13 @@ run_semgrep() {
       return
     fi
     run_or_record "Semgrep security scan" docker run --rm \
+    -e "EIO_BACKEND=${SEMGREP_EIO_BACKEND:-posix}" \
       --user "$(id -u):$(id -g)" \
       -e HOME=/tmp \
       -v "$repo_root:/src" \
       -w /src \
       "$semgrep_image" \
-      semgrep scan --config auto --error "${semgrep_exclude_args[@]}"
+      semgrep scan --jobs "${SEMGREP_JOBS:-2}" --config auto --error "${semgrep_exclude_args[@]}"
     return
   fi
 
