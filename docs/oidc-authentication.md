@@ -50,7 +50,51 @@ The provider hint changes only the button label, bundled local logo, and
 official provider setup link. It does not select an issuer or relax OIDC
 validation. Unknown values fall back to generic OIDC.
 
-### Sign in with Apple
+For all provider IDs, official setup pages, issuer examples, and scope/claim
+caveats, use the shared [provider catalog](https://github.com/snapetech-org/seerrng/blob/main/docs/maintainers/oidc-provider-catalog.md).
+The [cross-project contract](https://github.com/snapetech-org/seerrng/blob/main/docs/maintainers/oidc-cross-project-template.md)
+documents the common security rules and records where each app deliberately
+keeps its own session and role model.
+
+## Enable, verify, and recover
+
+The controller enables OIDC only when `SLSKR_OIDC_ISSUER_URL`,
+`SLSKR_OIDC_CLIENT_ID`, `SLSKR_OIDC_CLIENT_SECRET`, and
+`SLSKR_OIDC_REDIRECT_URI` are all set. Keep the secret in the service's
+protected environment/secret source; do not commit it or put it in a client
+configuration. Register the exact public HTTPS callback shown above, including
+`web.url_base` when the Web UI is mounted under a path. A wildcard callback is
+not needed.
+
+An explicit email/domain list grants the existing controller administrator
+session to matching verified identities. `SLSKR_OIDC_ALLOW_ANY_VERIFIED_USER`
+also grants that administrator session to every verified identity accepted by
+the provider; enable it only if the provider's client assignment restricts
+access to the intended operators. Provider groups do not change this rule.
+
+After changing environment variables or provider secrets, apply the new
+service environment and start a fresh login. Verify one admitted and one
+unadmitted identity, then test local and API-token recovery before relying on
+the provider. Removing any one of the four core variables disables OIDC; retain
+the separate local/API-token paths so a bad provider configuration cannot
+lock out the controller.
+
+## Troubleshooting
+
+| Symptom | Check |
+| --- | --- |
+| Provider rejects the redirect | Compare the registered URI exactly with `SLSKR_OIDC_REDIRECT_URI`; include `web.url_base`, the public HTTPS scheme, and any nonstandard port. |
+| Discovery fails | Confirm the issuer exactly matches discovery metadata and the issuer's DNS/CA/outbound network is reachable. Private or HTTP endpoints need the explicit private-issuer opt-in. |
+| Sign-in is denied | Confirm the provider returns an email and verified claim, check exact email/domain separators, and verify the address is in the admission list. Empty admission denies by default. |
+| Callback reports missing state or nonce | Retry from the same browser and public hostname, keep cookies enabled, and verify reverse-proxy forwarded scheme/host headers. A new login creates a new short-lived transaction. |
+| Login succeeds but access is broader than expected | Review `SLSKR_OIDC_ALLOW_ANY_VERIFIED_USER` and provider-side app assignment; every admitted identity receives the controller administrator session. |
+| Apple works until the browser returns | Check the Services ID, exact fixed issuer, form-post callback, HTTPS redirect, and unexpired signed client-secret JWT. |
+
+For support, share the app version, provider ID, redacted issuer host, callback
+path, error code, and timestamp. Remove authorization codes, tokens, client
+secrets, and full callback query strings from logs or screenshots.
+
+## Sign in with Apple
 
 Set the issuer to exactly `https://appleid.apple.com`, use the Apple Services ID
 as the client ID, and put the signed client-secret JWT in
