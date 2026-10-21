@@ -19,6 +19,7 @@ audits.
 | [Localization roadmap](localization-roadmap.md) | Language coverage, regional preferences, and the next translation batches. |
 | [Install guide](install.md) | Build, install, service, container, config, state, and exposure runbook. |
 | [Credential storage](credential-storage.md) | Soulseek credential-source choices, systemd credentials, Web UI behavior, and security notes. |
+| [OpenID Connect sign-in](oidc-authentication.md) | OIDC provider setup, callback URL, admission policy, and session behavior. |
 | [Setup experience contract](design/setup-experience-contract.md) | How first-use credential entry, sharing, connection status, and optional integrations should build on the existing Web UI. |
 | [Config example](slskr.config.example.toml) | Annotated TOML config with the supported runtime settings. |
 | [Gold Star Club](gold-star-club.md) | Purpose, lifecycle, membership policy, and opt-in/opt-out configuration. |

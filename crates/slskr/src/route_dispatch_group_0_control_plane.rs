@@ -399,6 +399,34 @@ async fn route_dispatch_group_0_control_plane(
         ("GET", "/api/session/enabled") => {
             Ok(routing::ok_response(state.config.auth_required.to_string()))
         }
+        ("GET", "/api/session/oidc/enabled") => Ok(routing::ok_response(
+            serde_json::json!({
+                "enabled": state.oidc_auth.enabled(),
+                "provider": state.oidc_auth.provider_hint(),
+            })
+            .to_string(),
+        )),
+        ("GET", "/api/session/oidc/login") => Ok(crate::oidc::start_response(
+            state,
+            query_parameter(route.query, "next").as_deref(),
+        )
+        .await),
+        ("GET", "/api/session/oidc/callback") => Ok(crate::oidc::callback_page(
+            &query_parameter(route.query, "state").unwrap_or_default(),
+            &query_parameter(route.query, "code").unwrap_or_default(),
+            query_parameter(route.query, "error").is_some(),
+            &state.config.controller_web.url_base,
+        )),
+        ("POST", "/api/session/oidc/callback") => {
+            Ok(if body.trim_start().starts_with('{') {
+                crate::oidc::complete_response(state, body).await
+            } else {
+                crate::oidc::form_post_callback_page(
+                    body,
+                    &state.config.controller_web.url_base,
+                )
+            })
+        }
         ("POST", "/api/session") => {
             if route.path.starts_with("/api/v0/") {
                 if state.config.controller_headless {

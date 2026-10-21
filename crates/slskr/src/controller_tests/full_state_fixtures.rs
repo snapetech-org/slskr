@@ -263,6 +263,7 @@ pub(super) fn test_state_with_env_parts_full(
         source_discovery: RwLock::new(crate::SourceDiscoveryState::default()),
         destinations: RwLock::new(crate::DestinationStore::new()),
         db,
+        oidc_auth: crate::oidc::OidcAuth::new(config.controller_oidc.clone()),
         config,
         session_commands: sender.clone(),
         pending_user_interests: RwLock::new(BTreeMap::new()),

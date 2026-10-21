@@ -250,6 +250,7 @@ pub(super) fn test_state_with_env_and_db(
         collection_grant_persistence_lock: tokio::sync::Mutex::new(()),
         share_group_persistence_lock: tokio::sync::Mutex::new(()),
         db: db.clone(),
+        oidc_auth: crate::oidc::OidcAuth::new(config.controller_oidc.clone()),
         config,
         session_commands: sender.clone(),
         pending_user_interests: RwLock::new(BTreeMap::new()),

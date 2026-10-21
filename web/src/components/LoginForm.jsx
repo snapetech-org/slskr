@@ -3,6 +3,8 @@ import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../lib/
 import Footer from './Shared/Footer';
 import { urlBase } from '../config';
 import { toDisplayError } from '../lib/errors';
+import api from '../lib/api';
+import { getOidcProviderPresentation } from '../lib/oidcProvider';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Button,
@@ -39,6 +41,9 @@ const LoginForm = ({ error, loading, onLoginAttempt }) => {
   const usernameInput = useRef();
   const [state, setState] = useState(initialState);
   const [ready, setReady] = useState(false);
+  const [oidcEnabled, setOidcEnabled] = useState(false);
+  const [oidcProvider, setOidcProvider] = useState('generic');
+  const [oidcFailed, setOidcFailed] = useState(false);
   const httpsUrl = useMemo(() => {
     if (typeof window === 'undefined') {
       return null;
@@ -59,6 +64,25 @@ const LoginForm = ({ error, loading, onLoginAttempt }) => {
     usernameInput.current?.focus();
   }, [loading]);
 
+  useEffect(() => {
+    let active = true;
+    api.get('/session/oidc/enabled')
+      .then((response) => {
+        if (active) {
+          setOidcEnabled(response.data?.enabled === true);
+          setOidcProvider(response.data?.provider || 'generic');
+        }
+      })
+      .catch(() => {
+        if (active) {
+          setOidcEnabled(false);
+          setOidcProvider('generic');
+        }
+      });
+    setOidcFailed(new URLSearchParams(window.location.search).has('oidcError'));
+    return () => { active = false; };
+  }, []);
+
   const handleChange = (field, value) => {
     setState((currentState) => ({
       ...currentState,
@@ -67,6 +91,7 @@ const LoginForm = ({ error, loading, onLoginAttempt }) => {
   };
 
   const { password, username } = state;
+  const oidcPresentation = getOidcProviderPresentation(oidcProvider);
 
   return (
     <>
@@ -135,6 +160,34 @@ const LoginForm = ({ error, loading, onLoginAttempt }) => {
             >
               <Icon name="sign in" />
               <LocalizedText source={"Login"} /></Button>
+            {oidcEnabled && (
+              <Button
+                as="a"
+                className="login-oidc"
+                data-testid="login-oidc"
+                fluid
+                href={`${urlBase}/api/v0/session/oidc/login`}
+                size="large"
+                style={{ marginTop: '0.75rem' }}
+              >
+                <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style={{ marginRight: 8, verticalAlign: 'middle' }}>
+                  <use href={`${urlBase}/oidc-provider-icons.svg#oidc-${oidcPresentation.icon}`} />
+                </svg>
+                <LocalizedText source="Continue with {provider}" values={{ provider: oidcPresentation.label }} />
+              </Button>
+            )}
+            {oidcEnabled && (
+              <a href={oidcPresentation.setupUrl} target="_blank" rel="noopener noreferrer"
+                style={{ display: 'block', marginTop: 8, textAlign: 'center', fontSize: 12 }}>
+                <LocalizedText source="Provider setup guide" />
+              </a>
+            )}
+            {oidcFailed && (
+              <Message className="login-failure" floating negative>
+                <Icon name="x" />
+                <LocalizedText source="Identity provider sign-in failed. Check the provider and account admission settings." />
+              </Message>
+            )}
             {error && (
               <Message
                 className="login-failure"
