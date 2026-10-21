@@ -4869,5 +4869,4 @@
   "No indexed shares to display.": "Tidak ada pembagian terindeks untuk ditampilkan.",
   "Sharing is optional and is not required for searching or downloading.": "Berbagi bersifat opsional dan tidak diperlukan untuk mencari atau mengunduh.",
   "Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers.": "Operator mengatur root berbagi di TOML atau variabel lingkungan. Folder yang dibagikan dapat dilihat oleh pengguna Soulseek lain.",
-  "Read share setup instructions": "Baca petunjuk penyiapan berbagi"
-}
+  "Read share setup instructions": "Baca petunjuk penyiapan berbagi","Continue with {provider}":"Lanjutkan dengan {provider}","Provider setup guide":"Panduan penyiapan penyedia","Identity provider sign-in failed. Check the provider and account admission settings.":"Login penyedia identitas gagal. Periksa penyedia dan pengaturan penerimaan akun.","{provider} identity provider setup guide (opens in a new tab)":"Panduan penyiapan penyedia identitas {provider} (terbuka di tab baru)"}

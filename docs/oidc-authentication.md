@@ -36,10 +36,11 @@ email.
 
 Ordinary providers use authorization code with PKCE S256; Apple uses its
 documented form-post flow without PKCE. All flows use one-time state and nonce,
-server
-side code exchange, and the existing short-lived administrator JWT. Configure
-the provider and callback on HTTPS. Local/API-token authentication remains
-available as the recovery path.
+server-side code exchange, and the existing short-lived administrator JWT. The
+browser keeps the matching state transaction in tab-scoped `sessionStorage`;
+it expires after ten minutes and is consumed by the callback. Start and finish
+the attempt in the same browser tab. Configure the provider and callback on
+HTTPS. Local/API-token authentication remains available as the recovery path.
 
 The private-issuer option is for deliberate self-hosted deployments. When it
 is disabled, discovery and provider endpoints must use HTTPS and resolve only

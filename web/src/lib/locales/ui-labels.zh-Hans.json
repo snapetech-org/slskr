@@ -4869,5 +4869,4 @@
   "No indexed shares to display.": "没有可显示的已索引共享。",
   "Sharing is optional and is not required for searching or downloading.": "共享为可选功能，搜索和下载不需要共享。",
   "Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers.": "共享根目录由管理员通过 TOML 或环境变量配置。其他 Soulseek 用户可以看到这些共享文件夹。",
-  "Read share setup instructions": "阅读共享设置说明"
-}
+  "Read share setup instructions": "阅读共享设置说明","Continue with {provider}":"使用 {provider} 继续","Provider setup guide":"提供商设置指南","Identity provider sign-in failed. Check the provider and account admission settings.":"身份提供商登录失败。请检查提供商和帐户准入设置。","{provider} identity provider setup guide (opens in a new tab)":"{provider} 身份提供商设置指南（在新标签页中打开）"}

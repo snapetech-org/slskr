@@ -11,11 +11,10 @@ use std::{
 };
 
 use openidconnect::{
-    AuthType, AuthorizationCode, ClientId, ClientSecret, CsrfToken, EndpointMaybeSet,
+    core::{CoreAuthenticationFlow, CoreClient, CoreProviderMetadata, CoreResponseMode},
+    reqwest, AuthType, AuthorizationCode, ClientId, ClientSecret, CsrfToken, EndpointMaybeSet,
     EndpointNotSet, EndpointSet, IssuerUrl, Nonce, OAuth2TokenResponse, PkceCodeChallenge,
     PkceCodeVerifier, RedirectUrl, Scope, TokenResponse,
-    core::{CoreAuthenticationFlow, CoreClient, CoreProviderMetadata, CoreResponseMode},
-    reqwest,
 };
 use serde::Deserialize;
 use tokio::net::lookup_host;
@@ -446,8 +445,12 @@ pub(super) async fn start_response(
         "url": start.authorize_url,
     });
     let data = script_json(&data);
+    start_page(&data)
+}
+
+fn start_page(data: &str) -> crate::routing::HttpResponse {
     html_response(format!(
-        "<!doctype html><html><head><meta charset=\"utf-8\"><title>Signing in</title></head><body><p>Redirecting to your identity provider…</p><script>const flow={data};sessionStorage.setItem('slskr-oidc-flow',JSON.stringify({{state:flow.state,binding:flow.binding}}));location.replace(flow.url);</script></body></html>"
+        "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Signing in</title></head><body><main><h1>Signing in</h1><p role=\"status\" aria-live=\"polite\">Redirecting to your identity provider…</p></main><script>const flow={data};const prefix='slskr-oidc-flow:';for(let i=sessionStorage.length-1;i>=0;i--){{const key=sessionStorage.key(i);if(!key||!key.startsWith(prefix))continue;try{{const pending=JSON.parse(sessionStorage.getItem(key)||'null');if(!pending||pending.expiresAt<=Date.now())sessionStorage.removeItem(key)}}catch{{sessionStorage.removeItem(key)}}}}sessionStorage.setItem(prefix+flow.state,JSON.stringify({{state:flow.state,binding:flow.binding,expiresAt:Date.now()+600000}}));location.replace(flow.url);</script></body></html>"
     ))
 }
 
@@ -468,7 +471,7 @@ pub(super) fn callback_page(
     let data = script_json(&data);
     let app_root = script_json(&serde_json::json!(app_root));
     html_response(format!(
-        "<!doctype html><html><head><meta charset=\"utf-8\"><title>Signing in</title></head><body><p>Completing sign-in…</p><script>const callback={data};const appRoot={app_root};const target=location.pathname;history.replaceState(null,'',target);const transaction=JSON.parse(sessionStorage.getItem('slskr-oidc-flow')||'null');sessionStorage.removeItem('slskr-oidc-flow');if(!transaction||transaction.state!==callback.state){{location.replace(appRoot+'?oidcError=1')}}else{{fetch(target,{{method:'POST',headers:{{'Content-Type':'application/json'}},credentials:'same-origin',body:JSON.stringify({{state:callback.state,code:callback.code,binding:transaction.binding}})}}).then(async response=>{{const payload=await response.json();if(!response.ok||!payload.token)throw new Error('sign-in failed');sessionStorage.setItem('slskr-token',payload.token);location.replace(payload.returnTo||appRoot)}}).catch(()=>location.replace(appRoot+'?oidcError=1'))}}</script></body></html>"
+        "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Signing in</title></head><body><main><h1>Signing in</h1><p role=\"status\" aria-live=\"polite\">Completing sign-in…</p></main><script>const callback={data};const appRoot={app_root};const target=location.pathname;history.replaceState(null,'',target);const key='slskr-oidc-flow:'+callback.state;let transaction=null;try{{transaction=JSON.parse(sessionStorage.getItem(key)||'null')}}catch{{}}sessionStorage.removeItem(key);if(!transaction||transaction.state!==callback.state||transaction.expiresAt<=Date.now()){{location.replace(appRoot+'?oidcError=1')}}else{{fetch(target,{{method:'POST',headers:{{'Content-Type':'application/json'}},credentials:'same-origin',body:JSON.stringify({{state:callback.state,code:callback.code,binding:transaction.binding}})}}).then(async response=>{{const payload=await response.json();if(!response.ok||!payload.token)throw new Error('sign-in failed');sessionStorage.setItem('slskr-token',payload.token);location.replace(payload.returnTo||appRoot)}}).catch(()=>location.replace(appRoot+'?oidcError=1'))}}</script></body></html>"
     ))
 }
 
@@ -549,7 +552,7 @@ pub(super) fn form_post_callback_page(body: &str, url_base: &str) -> crate::rout
 fn login_error_response(app_root: &str) -> crate::routing::HttpResponse {
     let app_root = html_attribute(app_root);
     html_response(format!(
-        "<!doctype html><html><head><meta charset=\"utf-8\"><title>Sign-in failed</title></head><body><p>Single sign-on failed. Return to the app and try again.</p><a href=\"{app_root}\">Return to sign in</a></body></html>"
+        "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Sign-in failed</title></head><body><main><h1>Sign-in failed</h1><p role=\"alert\" aria-live=\"assertive\">Single sign-on failed. Return to the app and try again.</p><a href=\"{app_root}\">Return to sign in</a></main></body></html>"
     ))
 }
 
@@ -611,19 +614,40 @@ fn safe_return_to(raw: Option<&str>) -> String {
 
 #[cfg(test)]
 mod tests {
-    use super::{form_post_callback_page, json_boolean};
+    use super::{callback_page, form_post_callback_page, json_boolean, start_page};
 
     #[test]
     fn apple_form_post_returns_a_same_origin_completion_page() {
         let response = form_post_callback_page("state=flow-1&code=auth-code", "/slsk");
         assert_eq!(response.status, "200 OK");
         assert!(response.body.contains("flow-1") && response.body.contains("auth-code"));
-        assert!(
-            response
-                .body
-                .contains("sessionStorage.getItem('slskr-oidc-flow')")
-        );
+        assert!(response.body.contains("sessionStorage.getItem(key)"));
+        assert!(response
+            .body
+            .contains("key='slskr-oidc-flow:'+callback.state"));
         assert!(response.body.contains("credentials:'same-origin'"));
+    }
+
+    #[test]
+    fn start_page_stores_state_per_tab_and_expires_after_ten_minutes() {
+        let response = start_page(
+            r#"{"state":"flow-1","binding":"browser-binding","url":"https://idp.example/authorize"}"#,
+        );
+
+        assert!(response.body.contains("slskr-oidc-flow:"));
+        assert!(response.body.contains("expiresAt:Date.now()+600000"));
+        assert!(response
+            .body
+            .contains("role=\"status\" aria-live=\"polite\""));
+    }
+
+    #[test]
+    fn oidc_status_pages_have_accessible_language_and_status_landmarks() {
+        let callback = callback_page("flow-1", "auth-code", false, "/slsk");
+        assert!(callback.body.contains("<html lang=\"en\">"));
+        assert!(callback
+            .body
+            .contains("role=\"status\" aria-live=\"polite\""));
     }
 
     #[test]
@@ -636,11 +660,9 @@ mod tests {
     #[test]
     fn apple_form_post_rejects_oversized_bodies_and_provider_errors() {
         let oversized = "x".repeat(16 * 1024 + 1);
-        assert!(
-            form_post_callback_page(&oversized, "")
-                .body
-                .contains("Sign-in failed")
-        );
+        assert!(form_post_callback_page(&oversized, "")
+            .body
+            .contains("Sign-in failed"));
         assert!(
             form_post_callback_page("state=flow-1&error=access_denied", "")
                 .body
