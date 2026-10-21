@@ -18,6 +18,28 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.76] — 2026-10-21
+
+### User-facing changes
+
+#### Added
+
+- Operators can now sign in to slskR through an OpenID Connect provider, with verified-email admission and the existing controller session kept in place.
+
+#### Changed
+
+- OIDC guidance now explains exact callback setup, verified-email admission, administrator access, recovery, and provider troubleshooting for slskR operators.
+
+#### Fixed
+
+- Concurrent OIDC sign-ins now keep separate short-lived state in the browser tab. Login status and error messages are announced accessibly by assistive technology.
+- Stable slskR releases now publish matching `:main` and `:latest` aliases to GHCR and Docker Hub. Unreleased main-branch commits do not move either alias.
+- Session command queue saturation now returns `503 Service Unavailable` from HTTP routes. Stalled Soulseek server writes and pings are bounded by the configured inactivity timeout, allowing the existing reconnect path to recover the session.
+
+#### Security
+
+- Patched web dependencies and refreshed TLS trust roots address current advisories while keeping secure HTTPS connections current for slskR users.
+
 ## [0.2.74] — 2026-10-18
 
 - Reduce peak memory during large share scans by moving per-root results into
