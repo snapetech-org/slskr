@@ -726,11 +726,11 @@ pub(super) async fn legacy_route_dispatch_group_09(
              if query.trim().is_empty() {
                  return Ok(routing::bad_request_response("wishlist item has no search text"));
              }
-             let session_command_permit = match state.session_commands.reserve().await {
+             let session_command_permit = match state.session_commands.try_reserve() {
                  Ok(permit) => permit,
                  Err(_) => {
                      return Ok(routing::service_unavailable_response(
-                         "session manager is not running",
+                         "session command queue is full or the session manager is not running",
                      ));
                  }
              };

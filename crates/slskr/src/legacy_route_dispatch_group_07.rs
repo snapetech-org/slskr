@@ -106,7 +106,7 @@ pub(super) async fn legacy_route_dispatch_group_07(
             };
             let record = match dispatch_source_discovery_search(state, search_term.clone()).await {
                 Ok(record) => record,
-                Err(error) if error == "session manager is not running" => {
+                Err(error) if error == "session command queue is full or the session manager is not running" => {
                     match create_rescue_search(state, search_term.clone()).await {
                         Ok(record) => record,
                         Err(error) => {
@@ -982,11 +982,11 @@ pub(super) async fn legacy_route_dispatch_group_07(
                   (binding, append_result)
               };
               if let Some(binding) = binding.as_ref().filter(|binding| binding.kind == "dm") {
-                  let session_command_permit = match state.session_commands.reserve().await {
+                  let session_command_permit = match state.session_commands.try_reserve() {
                       Ok(permit) => permit,
                       Err(_) => {
                           return Ok(routing::service_unavailable_response(
-                              "session manager is not running",
+                              "session command queue is full or the session manager is not running",
                           ));
                       }
                   };

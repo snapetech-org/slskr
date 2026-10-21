@@ -639,11 +639,11 @@ async fn route_dispatch_group_7_media_profile_import(
                     "wishlist item has no search text",
                 ));
             }
-            let session_command_permit = match state.session_commands.reserve().await {
+            let session_command_permit = match state.session_commands.try_reserve() {
                 Ok(permit) => permit,
                 Err(_) => {
                     return Ok(routing::service_unavailable_response(
-                        "session manager is not running",
+                        "session command queue is full or the session manager is not running",
                     ));
                 }
             };

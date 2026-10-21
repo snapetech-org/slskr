@@ -126,7 +126,7 @@ async fn route_dispatch_group_6_relay_controller(
             };
             let record = match dispatch_source_discovery_search(state, search_term.clone()).await {
                 Ok(record) => record,
-                Err(error) if error == "session manager is not running" => {
+                Err(error) if error == "session command queue is full or the session manager is not running" => {
                     match create_rescue_search(state, search_term.clone()).await {
                         Ok(record) => record,
                         Err(error) => {

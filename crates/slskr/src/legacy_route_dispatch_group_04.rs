@@ -395,11 +395,11 @@ pub(super) async fn legacy_route_dispatch_group_04(
             {
                 return Ok(routing::not_found_response());
             }
-            let session_command_permit = match state.session_commands.reserve().await {
+            let session_command_permit = match state.session_commands.try_reserve() {
                 Ok(permit) => permit,
                 Err(_) => {
                     return Ok(routing::service_unavailable_response(
-                        "session manager is not running",
+                        "session command queue is full or the session manager is not running",
                     ));
                 }
             };
@@ -451,11 +451,11 @@ pub(super) async fn legacy_route_dispatch_group_04(
             if ticker.trim().is_empty() {
                 return Ok(rooms_controller_value_bad_request_response("message is required"));
             }
-            let session_command_permit = match state.session_commands.reserve().await {
+            let session_command_permit = match state.session_commands.try_reserve() {
                 Ok(permit) => permit,
                 Err(_) => {
                     return Ok(routing::service_unavailable_response(
-                        "session manager is not running",
+                        "session command queue is full or the session manager is not running",
                     ));
                 }
             };
@@ -511,11 +511,11 @@ pub(super) async fn legacy_route_dispatch_group_04(
             if username.trim().is_empty() {
                 return Ok(rooms_controller_value_bad_request_response("username is required"));
             }
-            let session_command_permit = match state.session_commands.reserve().await {
+            let session_command_permit = match state.session_commands.try_reserve() {
                 Ok(permit) => permit,
                 Err(_) => {
                     return Ok(routing::service_unavailable_response(
-                        "session manager is not running",
+                        "session command queue is full or the session manager is not running",
                     ));
                 }
             };

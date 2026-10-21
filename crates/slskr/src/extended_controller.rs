@@ -29,11 +29,11 @@ pub(super) async fn extended_controller_search_response(
             "query/searchText is required",
         ));
     };
-    let permit = match state.session_commands.reserve().await {
+    let permit = match state.session_commands.try_reserve() {
         Ok(permit) => permit,
         Err(_) => {
             return Err(routing::service_unavailable_response(
-                "session manager is not running",
+                "session command queue is full or the session manager is not running",
             ))
         }
     };
@@ -514,11 +514,11 @@ pub(super) async fn extended_controller_download_response(
         {
             return Err(response);
         }
-        let permit = match state.session_commands.reserve().await {
+        let permit = match state.session_commands.try_reserve() {
             Ok(permit) => permit,
             Err(_) => {
                 return Err(routing::service_unavailable_response(
-                    "session manager is not running",
+                    "session command queue is full or the session manager is not running",
                 ))
             }
         };

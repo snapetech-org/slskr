@@ -1134,11 +1134,11 @@ pub(super) async fn legacy_route_dispatch_group_02(
                     "matching alternative has no peer",
                 ));
             };
-            let session_command_permit = match state.session_commands.reserve().await {
+            let session_command_permit = match state.session_commands.try_reserve() {
                 Ok(permit) => permit,
                 Err(_) => {
                     return Ok(routing::service_unavailable_response(
-                        "session manager is not running",
+                        "session command queue is full or the session manager is not running",
                     ));
                 }
             };
@@ -1249,11 +1249,11 @@ pub(super) async fn legacy_route_dispatch_group_02(
 
             let mut session_command_permits = Vec::with_capacity(replacements.len());
             for _ in 0..replacements.len() {
-                match state.session_commands.reserve().await {
+                match state.session_commands.try_reserve() {
                     Ok(permit) => session_command_permits.push(permit),
                     Err(_) => {
                         return Ok(routing::service_unavailable_response(
-                            "session manager is not running",
+                            "session command queue is full or the session manager is not running",
                         ));
                     }
                 }
@@ -1691,11 +1691,11 @@ pub(super) async fn legacy_route_dispatch_group_02(
                             ));
                         }
                         if test_user_endpoint_peer_address(state, &username).is_none() {
-                            match state.session_commands.reserve().await {
+                            match state.session_commands.try_reserve() {
                                 Ok(permit) => Some(permit),
                                 Err(_) => {
                                     return Ok(routing::service_unavailable_response(
-                                        "session manager is not running",
+                                        "session command queue is full or the session manager is not running",
                                     ));
                                 }
                             }
