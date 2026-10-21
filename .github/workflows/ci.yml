@@ -15,9 +15,11 @@ on:
       - main
   workflow_dispatch:
 
+# Keep every candidate's result intact. A new push must not cancel an
+# in-progress main or pull-request validation run.
 concurrency:
-  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || (github.event_name == 'push' && github.ref == 'refs/heads/main' && github.ref) || github.run_id }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+  group: ci-${{ github.workflow }}-${{ github.run_id }}-${{ github.run_attempt }}
+  cancel-in-progress: false
 
 permissions:
   contents: read
