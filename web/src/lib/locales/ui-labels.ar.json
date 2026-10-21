@@ -4974,5 +4974,4 @@
   "No indexed shares to display.": "لا توجد مشاركات مفهرسة لعرضها.",
   "Sharing is optional and is not required for searching or downloading.": "المشاركة اختيارية وليست مطلوبة للبحث أو التنزيل.",
   "Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers.": "يُعدّ المشغّل مجلدات المشاركة في TOML أو متغيرات البيئة. تظهر المجلدات المشتركة لمستخدمي Soulseek الآخرين.",
-  "Read share setup instructions": "اقرأ تعليمات إعداد المشاركة"
-}
+  "Read share setup instructions": "اقرأ تعليمات إعداد المشاركة","Continue with {provider}":"المتابعة باستخدام {provider}","Provider setup guide":"دليل إعداد موفّر الهوية","Identity provider sign-in failed. Check the provider and account admission settings.":"تعذّر تسجيل الدخول عبر موفّر الهوية. تحقّق من الموفّر وإعدادات السماح بالحساب.","{provider} identity provider setup guide (opens in a new tab)":"دليل إعداد موفّر الهوية {provider} (يفتح في علامة تبويب جديدة)"}

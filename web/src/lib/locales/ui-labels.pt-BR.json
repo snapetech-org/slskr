@@ -4869,5 +4869,4 @@
   "No indexed shares to display.": "Não há compartilhamentos indexados para exibir.",
   "Sharing is optional and is not required for searching or downloading.": "Compartilhar é opcional e não é necessário para pesquisar ou baixar.",
   "Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers.": "O operador configura as pastas compartilhadas em TOML ou variáveis de ambiente. Outros usuários do Soulseek podem vê-las.",
-  "Read share setup instructions": "Ler instruções de configuração de compartilhamento"
-}
+  "Read share setup instructions": "Ler instruções de configuração de compartilhamento","Continue with {provider}":"Continuar com {provider}","Provider setup guide":"Guia de configuração do provedor","Identity provider sign-in failed. Check the provider and account admission settings.":"Falha ao entrar pelo provedor de identidade. Verifique o provedor e as configurações de admissão de contas.","{provider} identity provider setup guide (opens in a new tab)":"Guia de configuração do provedor de identidade {provider} (abre em uma nova aba)"}
