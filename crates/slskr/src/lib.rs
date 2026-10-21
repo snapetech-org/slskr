@@ -103,6 +103,7 @@ mod native_compat_controller;
 mod notification_runtime;
 mod now_playing_store;
 mod oauth_state;
+mod oidc;
 #[allow(
     dead_code,
     reason = "OpenAPI generation is a supported developer surface"

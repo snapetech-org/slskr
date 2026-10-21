@@ -129,6 +129,18 @@ impl AppConfig {
             file_config.web.logging,
             file_config.web.https,
         )?;
+        let controller_oidc = resolve_controller_oidc(env)?;
+        if !controller_oidc.redirect_uri.is_empty() {
+            let callback = openidconnect::url::Url::parse(&controller_oidc.redirect_uri)
+                .map_err(|_| "SLSKR_OIDC_REDIRECT_URI must be an absolute URL".to_owned())?;
+            let base = controller_web.url_base.trim_end_matches('/');
+            let expected_path = format!("{base}/api/v0/session/oidc/callback");
+            if callback.path() != expected_path {
+                return Err(format!(
+                    "SLSKR_OIDC_REDIRECT_URI path must match web.url_base and end at {expected_path}"
+                ));
+            }
+        }
         let controller_api_keys =
             resolve_controller_api_keys(env, controller_profile, file_config.auth.api_keys)?;
         let SoulseekIdentity {
@@ -671,6 +683,7 @@ impl AppConfig {
             controller_metrics_password,
             controller_web_auth_username,
             controller_web_auth_password,
+            controller_oidc,
             controller_web_jwt_key,
             controller_web_jwt_key_configured,
             controller_web_jwt_ttl_millis,

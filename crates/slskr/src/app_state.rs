@@ -120,6 +120,7 @@ pub(super) struct AppState {
     pub(super) rate_limiter: rate_limit::RateLimiter,
     pub(super) soulseek_safety: rate_limit::SoulseekSafetyLimiter,
     pub(super) oauth_states: RwLock<OAuthStateStore>,
+    pub(super) oidc_auth: crate::oidc::OidcAuth,
     pub(super) spotify_connection: RwLock<SpotifyConnectionStore>,
     pub(super) spotify_token_gate: Semaphore,
     pub(super) stream_tickets: RwLock<PreviewStreamTicketStore>,
