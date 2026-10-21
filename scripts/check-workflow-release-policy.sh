@@ -312,14 +312,13 @@ for expected in \
   fi
 done
 
-ci_cancel_policy='cancel-in-progress: ${{ github.event_name == '\''pull_request'\'' || (github.event_name == '\''push'\'' && github.ref == '\''refs/heads/main'\'') }}'
-if ! rg -n -F -- "$ci_cancel_policy" .github/workflows/ci.yml >/dev/null; then
-  printf 'workflow release policy check failed: superseded PR and main-push validations must be canceled\n' >&2
+if ! rg -n -F -- 'cancel-in-progress: false' .github/workflows/ci.yml >/dev/null; then
+  printf 'workflow release policy check failed: validation runs must not cancel earlier attempts\n' >&2
   status=1
 fi
-ci_group_policy='group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || (github.event_name == '\''push'\'' && github.ref == '\''refs/heads/main'\'' && github.ref) || github.run_id }}'
+ci_group_policy='group: ci-${{ github.workflow }}-${{ github.run_id }}-${{ github.run_attempt }}'
 if ! rg -n -F -- "$ci_group_policy" .github/workflows/ci.yml >/dev/null; then
-  printf 'workflow release policy check failed: PRs must group by number, main pushes by branch, and manual runs independently\n' >&2
+  printf 'workflow release policy check failed: every CI run attempt must keep its own concurrency group\n' >&2
   status=1
 fi
 
