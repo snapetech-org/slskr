@@ -41,10 +41,47 @@ if [[ "$push_branches" != "main" ]]; then
   printf 'workflow release policy check failed: only main pushes may enter the CI workflow\n' >&2
   status=1
 fi
-if rg -n 'self-hosted|TRUSTED_MAIN_RUNNERS_ENABLED|private-runner-temp|PRIVATE_RUNNER' .github/workflows/ci.yml; then
-  printf 'workflow release policy check failed: private runner routing must be removed\n' >&2
+for job in web-assets controller-regex-parity rust platform-builds validation-reconcile package-surfaces; do
+  job_block="$(sed -n "/^  $job:/,/^  [A-Za-z0-9_-]*:/p" .github/workflows/ci.yml)"
+  if [[ "$job_block" != *"ng-shared-main-jit"* ||
+        "$job_block" != *"github.event_name == 'push'"* ||
+        "$job_block" != *"github.event_name == 'workflow_dispatch'"* ||
+        "$job_block" != *"github.ref == 'refs/heads/main'"* ||
+        "$job_block" != *"||"* ]]; then
+    printf 'workflow release policy check failed: %s must route only trusted main work to the shared pool\n' "$job" >&2
+    status=1
+  fi
+done
+route_count="$(rg -n -F 'ng-shared-main-jit' .github/workflows/ci.yml | wc -l)"
+if [[ "$route_count" -ne 6 ]]; then
+  printf 'workflow release policy check failed: unexpected shared runner route count in CI\n' >&2
   status=1
 fi
+for workflow in codeql.yml semgrep-community.yml local-identity-leaks.yml trivy-filesystem.yml; do
+  workflow_path=".github/workflows/$workflow"
+  if [[ ! -f "$workflow_path" ]] ||
+     ! rg -n -F 'ng-shared-main-jit' "$workflow_path" >/dev/null ||
+     ! rg -n -F "github.event_name == 'push'" "$workflow_path" >/dev/null ||
+     ! rg -n -F "github.event_name == 'workflow_dispatch'" "$workflow_path" >/dev/null ||
+     ! rg -n -F "github.event_name == 'schedule'" "$workflow_path" >/dev/null ||
+     ! rg -n -F "github.ref == 'refs/heads/main'" "$workflow_path" >/dev/null ||
+     ! rg -n -F "|| 'ubuntu-latest'" "$workflow_path" >/dev/null; then
+    printf 'workflow release policy check failed: %s must use the pool only for trusted main scans\n' "$workflow_path" >&2
+    status=1
+  fi
+done
+for workflow in .github/workflows/*.yml; do
+  if ! rg -q -F 'ng-shared-main-jit' "$workflow"; then
+    continue
+  fi
+  case "${workflow##*/}" in
+    ci.yml|codeql.yml|local-identity-leaks.yml|semgrep-community.yml|trivy-filesystem.yml) ;;
+    *)
+      printf 'workflow release policy check failed: unexpected shared runner route in %s\n' "$workflow" >&2
+      status=1
+      ;;
+  esac
+done
 missing_attempt_artifacts="$(rg -n 'name: validation-(task-logs|rust)-' .github/workflows/ci.yml | rg -Fv -- '-attempt-${{ github.run_attempt }}' || true)"
 if [[ -n "$missing_attempt_artifacts" ]]; then
   printf 'workflow release policy check failed: validation artifacts must be unique per workflow attempt\n' >&2
