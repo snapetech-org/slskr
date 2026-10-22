@@ -54,19 +54,6 @@ def allowed(path: str, key: str, value: str) -> bool:
     haystack = f"{path} {key} {value}".lower()
     if any(term in haystack for term in placeholder_terms):
         return True
-    # The validation-engine contracts use these fixed sentinels to prove
-    # credential scrubbing and filename filtering; exempt only those fixture
-    # literals, not other values in the contract files.
-    if path == "scripts/validation-engine/engine.contract.mjs" and value in {
-        "synthetic-runtime-token",
-        "synthetic-github-token",
-    }:
-        return True
-    if (
-        path == "scripts/validation-engine/trusted-test-launcher.contract.mjs"
-        and re.fullmatch(r"[A-Z0-9_]+_CANARY", value)
-    ):
-        return True
     if "storagekey" in key.lower():
         return True
     if value.startswith("$(") or value.startswith("${") or value.startswith("$"):
