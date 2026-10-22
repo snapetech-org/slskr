@@ -44,6 +44,9 @@ fi
 for job in web-assets controller-regex-parity rust platform-builds validation-reconcile package-surfaces; do
   job_block="$(sed -n "/^  $job:/,/^  [A-Za-z0-9_-]*:/p" .github/workflows/ci.yml)"
   if [[ "$job_block" != *"ng-shared-main-jit"* ||
+        "$job_block" != *"ng-shared-main-slskr"* ||
+        "$job_block" != *"ng-main-run-{0}"* ||
+        "$job_block" != *"github.run_id"* ||
         "$job_block" != *"github.event_name == 'push'"* ||
         "$job_block" != *"github.event_name == 'workflow_dispatch'"* ||
         "$job_block" != *"github.ref == 'refs/heads/main'"* ||
@@ -61,6 +64,9 @@ for workflow in codeql.yml semgrep-community.yml local-identity-leaks.yml trivy-
   workflow_path=".github/workflows/$workflow"
   if [[ ! -f "$workflow_path" ]] ||
      ! rg -n -F 'ng-shared-main-jit' "$workflow_path" >/dev/null ||
+     ! rg -n -F 'ng-shared-main-slskr' "$workflow_path" >/dev/null ||
+     ! rg -n -F 'ng-main-run-{0}' "$workflow_path" >/dev/null ||
+     ! rg -n -F 'github.run_id' "$workflow_path" >/dev/null ||
      ! rg -n -F "github.event_name == 'push'" "$workflow_path" >/dev/null ||
      ! rg -n -F "github.event_name == 'workflow_dispatch'" "$workflow_path" >/dev/null ||
      ! rg -n -F "github.event_name == 'schedule'" "$workflow_path" >/dev/null ||
