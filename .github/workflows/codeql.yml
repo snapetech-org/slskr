@@ -56,8 +56,15 @@ jobs:
           go-version: '1.25.x'
           cache-dependency-path: client-go/go.sum
 
+      - name: Set up Node.js for JavaScript analysis
+        if: matrix.language == 'javascript-typescript'
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # actions/setup-node@v7.1.0
+        with:
+          node-version: '22.23.4'
+          package-manager-cache: false
+
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@5e316336eb4f107009e477d4bfbfff13d7250fae # github/codeql-action/init@v4
+        uses: github/codeql-action/init@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # github/codeql-action/init@v4
         with:
           languages: ${{ matrix.language }}
           build-mode: ${{ matrix.build-mode }}
@@ -66,6 +73,6 @@ jobs:
               - uses: security-extended
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@5e316336eb4f107009e477d4bfbfff13d7250fae # github/codeql-action/analyze@v4
+        uses: github/codeql-action/analyze@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # github/codeql-action/analyze@v4
         with:
           category: /language:${{ matrix.language }}
