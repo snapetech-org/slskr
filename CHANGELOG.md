@@ -38,7 +38,7 @@ the release is prepared. Do not rewrite audited release history.
 
 #### Security
 
-- Patched web dependencies and refreshed TLS trust roots address current advisories while keeping secure HTTPS connections current for slskR users.
+- Patched web dependencies and refreshed TLS trust roots address current advisories while keeping secure HTTPS connections current for slskR users. Node.js CI and container builds are pinned to the patched 22.23.4 runtime.
 
 ## [0.2.74] — 2026-10-18
 
