@@ -4869,5 +4869,4 @@
   "No indexed shares to display.": "表示できるインデックス済み共有はありません。",
   "Sharing is optional and is not required for searching or downloading.": "共有は任意で、検索やダウンロードには必要ありません。",
   "Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers.": "共有ルートは TOML または環境変数で管理者が設定します。共有フォルダーは他の Soulseek ピアから見えます。",
-  "Read share setup instructions": "共有の設定手順を読む"
-}
+  "Read share setup instructions": "共有の設定手順を読む","Continue with {provider}":"{provider} で続行","Provider setup guide":"プロバイダー設定ガイド","Identity provider sign-in failed. Check the provider and account admission settings.":"ID プロバイダーでのサインインに失敗しました。プロバイダーとアカウントの許可設定を確認してください。","{provider} identity provider setup guide (opens in a new tab)":"{provider} ID プロバイダー設定ガイド（新しいタブで開きます）"}

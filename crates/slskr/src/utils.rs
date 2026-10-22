@@ -176,6 +176,12 @@ pub fn route_requires_auth(config: &AppConfig, path: &str) -> bool {
         && path != "/api/version"
         && path != "/api/capabilities"
         && path != "/api/session/enabled"
+        && !matches!(
+            path,
+            "/api/session/oidc/enabled"
+                | "/api/session/oidc/login"
+                | "/api/session/oidc/callback"
+        )
 }
 
 #[derive(Clone, Copy, Debug, Eq, Ord, PartialEq, PartialOrd)]
@@ -343,6 +349,10 @@ pub(crate) struct AdminJwtClaims {
     pub exp: u64,
     pub iss: String,
     pub aud: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub oidc_issuer: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub oidc_subject: Option<String>,
 }
 
 pub(crate) fn issue_admin_jwt(
@@ -351,6 +361,43 @@ pub(crate) fn issue_admin_jwt(
     ttl_millis: u64,
     username: &str,
     now: u64,
+) -> Option<(String, AdminJwtClaims)> {
+    issue_admin_jwt_with_identity(
+        jwt_key,
+        controller_profile,
+        ttl_millis,
+        username,
+        now,
+        None,
+    )
+}
+
+pub(crate) fn issue_oidc_admin_jwt(
+    jwt_key: &str,
+    controller_profile: crate::config::ControllerProfile,
+    ttl_millis: u64,
+    username: &str,
+    now: u64,
+    issuer: &str,
+    subject: &str,
+) -> Option<(String, AdminJwtClaims)> {
+    issue_admin_jwt_with_identity(
+        jwt_key,
+        controller_profile,
+        ttl_millis,
+        username,
+        now,
+        Some((issuer, subject)),
+    )
+}
+
+fn issue_admin_jwt_with_identity(
+    jwt_key: &str,
+    controller_profile: crate::config::ControllerProfile,
+    ttl_millis: u64,
+    username: &str,
+    now: u64,
+    oidc_identity: Option<(&str, &str)>,
 ) -> Option<(String, AdminJwtClaims)> {
     let issuer = match controller_profile {
         crate::config::ControllerProfile::Legacy => "slskd",
@@ -366,6 +413,8 @@ pub(crate) fn issue_admin_jwt(
         exp: now.saturating_add(ttl_millis / 1000),
         iss: issuer.to_owned(),
         aud: issuer.to_owned(),
+        oidc_issuer: oidc_identity.map(|(issuer, _)| issuer.to_owned()),
+        oidc_subject: oidc_identity.map(|(_, subject)| subject.to_owned()),
     };
     let header = URL_SAFE_NO_PAD.encode(br#"{"alg":"HS256","typ":"JWT"}"#);
     let payload = URL_SAFE_NO_PAD.encode(serde_json::to_vec(&claims).ok()?);
@@ -564,6 +613,9 @@ pub fn authorize_controller_route_from(
     if !config.auth_required {
         return Ok(());
     }
+    if is_public_oidc_route(method, normalize_api_path(path)) {
+        return Ok(());
+    }
     let policy = controller_route_auth_policy(config.controller_profile, method, path)
         .unwrap_or_else(|| {
             let normalized = normalize_api_path(path);
@@ -597,6 +649,9 @@ pub fn authorize_controller_route_from(
 }
 
 pub fn controller_route_requires_principal(config: &AppConfig, method: &str, path: &str) -> bool {
+    if is_public_oidc_route(method, normalize_api_path(path)) {
+        return false;
+    }
     controller_route_auth_policy(config.controller_profile, method, path).map_or_else(
         || {
             let normalized = normalize_api_path(path);
@@ -850,6 +905,9 @@ pub fn normalize_api_path(path: &str) -> &str {
         "/api/v0/browse-responses" => "/api/browse-responses",
         "/api/v0/session" => "/api/session",
         "/api/v0/session/enabled" => "/api/session/enabled",
+        "/api/v0/session/oidc/enabled" => "/api/session/oidc/enabled",
+        "/api/v0/session/oidc/login" => "/api/session/oidc/login",
+        "/api/v0/session/oidc/callback" => "/api/session/oidc/callback",
         "/api/v0/session/connect" => "/api/session/connect",
         "/api/v0/session/disconnect" => "/api/session/disconnect",
         "/api/v0/session/ping" => "/api/session/ping",
@@ -876,6 +934,16 @@ pub fn normalize_api_path(path: &str) -> &str {
         "/api/v0/portforwarding/start" => "/api/port-forwarding/start",
         _ => path,
     }
+}
+
+fn is_public_oidc_route(method: &str, path: &str) -> bool {
+    matches!(
+        (method, path),
+        ("GET", "/api/session/oidc/enabled")
+            | ("GET", "/api/session/oidc/login")
+            | ("GET", "/api/session/oidc/callback")
+            | ("POST", "/api/session/oidc/callback")
+    )
 }
 
 pub fn search_token_path(path: &str, suffix: &str) -> Option<u32> {

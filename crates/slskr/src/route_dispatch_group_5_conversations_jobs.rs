@@ -151,11 +151,11 @@ async fn route_dispatch_group_5_conversations_jobs(
                 Err(error) => return Ok(routing::bad_request_response(&error.to_string())),
             };
 
-            let session_command_permit = match state.session_commands.reserve().await {
+            let session_command_permit = match state.session_commands.try_reserve() {
                 Ok(permit) => permit,
                 Err(_) => {
                     return Ok(routing::service_unavailable_response(
-                        "session manager is not running",
+                        "session command queue is full or the session manager is not running",
                     ));
                 }
             };
@@ -220,11 +220,11 @@ async fn route_dispatch_group_5_conversations_jobs(
                     "Soulseek server connection is not ready",
                 ));
             }
-            let session_command_permit = match state.session_commands.reserve().await {
+            let session_command_permit = match state.session_commands.try_reserve() {
                 Ok(permit) => permit,
                 Err(_) => {
                     return Ok(routing::service_unavailable_response(
-                        "session manager is not running",
+                        "session command queue is full or the session manager is not running",
                     ));
                 }
             };

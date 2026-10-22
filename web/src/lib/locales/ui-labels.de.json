@@ -4869,5 +4869,4 @@
   "No indexed shares to display.": "Keine indizierten Freigaben zum Anzeigen.",
   "Sharing is optional and is not required for searching or downloading.": "Freigaben sind optional und für Suche und Downloads nicht erforderlich.",
   "Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers.": "Der Betreiber richtet Freigabepfade in TOML oder Umgebungsvariablen ein. Freigegebene Ordner sind für andere Soulseek-Peers sichtbar.",
-  "Read share setup instructions": "Anleitung zum Einrichten von Freigaben"
-}
+  "Read share setup instructions": "Anleitung zum Einrichten von Freigaben","Continue with {provider}":"Mit {provider} fortfahren","Provider setup guide":"Einrichtungsanleitung des Anbieters","Identity provider sign-in failed. Check the provider and account admission settings.":"Die Anmeldung beim Identitätsanbieter ist fehlgeschlagen. Überprüfen Sie den Anbieter und die Kontozulassungseinstellungen.","{provider} identity provider setup guide (opens in a new tab)":"Einrichtungsanleitung für den Identitätsanbieter {provider} (wird in einem neuen Tab geöffnet)"}

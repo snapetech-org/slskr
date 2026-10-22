@@ -377,11 +377,11 @@ async fn route_dispatch_group_2_search_rooms(
                 None => return Ok(routing::bad_request_response("body is required")),
             };
 
-            let session_command_permit = match state.session_commands.reserve().await {
+            let session_command_permit = match state.session_commands.try_reserve() {
                 Ok(permit) => permit,
                 Err(_) => {
                     return Ok(routing::service_unavailable_response(
-                        "session manager is not running",
+                        "session command queue is full or the session manager is not running",
                     ));
                 }
             };
@@ -481,11 +481,11 @@ async fn route_dispatch_group_2_search_rooms(
             {
                 return Ok(routing::not_found_response());
             }
-            let session_command_permit = match state.session_commands.reserve().await {
+            let session_command_permit = match state.session_commands.try_reserve() {
                 Ok(permit) => permit,
                 Err(_) => {
                     return Ok(routing::service_unavailable_response(
-                        "session manager is not running",
+                        "session command queue is full or the session manager is not running",
                     ));
                 }
             };
@@ -533,11 +533,11 @@ async fn route_dispatch_group_2_search_rooms(
             {
                 return Ok(routing::not_found_response());
             }
-            let session_command_permit = match state.session_commands.reserve().await {
+            let session_command_permit = match state.session_commands.try_reserve() {
                 Ok(permit) => permit,
                 Err(_) => {
                     return Ok(routing::service_unavailable_response(
-                        "session manager is not running",
+                        "session command queue is full or the session manager is not running",
                     ));
                 }
             };
@@ -585,7 +585,7 @@ async fn route_dispatch_group_2_search_rooms(
                 .is_err()
             {
                 return Ok(routing::service_unavailable_response(
-                    "session manager is not running",
+                    "session command queue is full or the session manager is not running",
                 ));
             }
             Ok(routing::accepted_response("{}".to_string()))

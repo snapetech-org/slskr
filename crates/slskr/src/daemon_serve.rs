@@ -856,6 +856,7 @@ pub(super) async fn serve(invocation: ServeInvocation) -> Result<(), String> {
         source_discovery: RwLock::new(SourceDiscoveryState::default()),
         destinations: RwLock::new(destination_store),
         db,
+        oidc_auth: oidc::OidcAuth::new(config.controller_oidc.clone()),
         config,
         session_commands,
         pending_user_interests: RwLock::new(BTreeMap::new()),

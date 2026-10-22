@@ -71,6 +71,7 @@ sqlx-sqlite = { version = "0.9", default-features = false, features = ["bundled"
 chrono = { version = "0.4", features = ["serde"] }
 uuid = { version = "1", features = ["v4", "serde"] }
 reqwest = { version = "0.12", default-features = false, features = ["json", "multipart", "rustls-tls", "stream"] }
+openidconnect = { version = "4.0.1", default-features = false, features = ["accept-string-booleans", "reqwest", "rustls-tls"] }
 aes = "0.9"
 cbc = { version = "0.2", features = ["alloc"] }
 oxixml-io = "0.1.2"
@@ -82,6 +83,7 @@ sha2 = "0.11"
 hex = "0.4"
 rand = "0.10"
 ring = "0.17"
+subtle = "2.6"
 fancy-regex = "0.19"
 rcgen = { version = "0.14", default-features = false, features = ["crypto", "ring"] }
 tracing = "0.1"

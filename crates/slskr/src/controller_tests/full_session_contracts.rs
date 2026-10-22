@@ -142,6 +142,50 @@ pub(super) async fn session_control_routes_fail_when_manager_is_not_running() {
 
 #[cfg_attr(test, tokio::test)]
 #[cfg(feature = "full-controller-tests")]
+pub(super) async fn session_command_routes_return_when_queue_is_full() {
+    let (state, _receiver) = test_state();
+    state.session.write().await.state = "connected";
+    let queue_capacity = state.session_commands.capacity();
+    assert!(queue_capacity > 0);
+    for _ in 0..queue_capacity {
+        state
+            .session_commands
+            .try_send(crate::SessionCommand::Ping)
+            .expect("fill session command queue");
+    }
+
+    for (path, body, expected_status) in [
+        ("/api/session/ping", "", "503 Service Unavailable"),
+        (
+            "/api/searches",
+            r#"{"query":"probe","timeout":60000,"filterResponses":false,"minimumResponseFileCount":1,"minimumPeerUploadSpeed":0}"#,
+            "503 Service Unavailable",
+        ),
+        (
+            "/api/v0/searches",
+            r#"{"searchText":"probe","timeout":60000,"filterResponses":false,"minimumResponseFileCount":1,"minimumPeerUploadSpeed":0}"#,
+            "503 Service Unavailable",
+        ),
+        (
+            "/api/discovery/start",
+            r#"{"searchTerm":"probe"}"#,
+            "200 OK",
+        ),
+    ] {
+        let response = tokio::time::timeout(
+            std::time::Duration::from_millis(250),
+            crate::route_http_request("POST", path, None, body, &state),
+        )
+        .await
+        .expect("saturated queue must not stall HTTP handlers")
+        .expect("route response");
+
+        assert_eq!(response.status, expected_status, "{path}");
+    }
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
 pub(super) async fn daemon_outbound_capability_probe_requires_matching_signed_acknowledgement() {
     use ed25519_dalek::SigningKey;
 

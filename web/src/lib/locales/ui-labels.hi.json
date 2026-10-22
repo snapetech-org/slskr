@@ -4869,5 +4869,4 @@
   "No indexed shares to display.": "दिखाने के लिए कोई अनुक्रमित शेयर नहीं है।",
   "Sharing is optional and is not required for searching or downloading.": "साझा करना वैकल्पिक है और खोज या डाउनलोड के लिए आवश्यक नहीं है।",
   "Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers.": "ऑपरेटर TOML या एनवायरनमेंट वेरिएबल में शेयर रूट कॉन्फ़िगर करता है। साझा फ़ोल्डर अन्य Soulseek साथियों को दिखाई देते हैं।",
-  "Read share setup instructions": "शेयर सेटअप निर्देश पढ़ें"
-}
+  "Read share setup instructions": "शेयर सेटअप निर्देश पढ़ें","Continue with {provider}":"‏{provider} के साथ जारी रखें","Provider setup guide":"प्रदाता सेटअप गाइड","Identity provider sign-in failed. Check the provider and account admission settings.":"पहचान प्रदाता साइन-इन विफल हुआ। प्रदाता और खाता प्रवेश सेटिंग जाँचें।","{provider} identity provider setup guide (opens in a new tab)":"{provider} पहचान प्रदाता सेटअप मार्गदर्शिका (नए टैब में खुलेगी)"}

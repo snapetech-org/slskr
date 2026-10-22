@@ -141,6 +141,7 @@ peers. See [Status and support boundaries](./docs/status.md), the
 - [Testing and live interop](./docs/live-interop-test-matrix.md)
 - [Release channels](./docs/dev/release-channels.md)
 - [API reference](./docs/http-api.md)
+- [OIDC sign-in runbook](./docs/oidc-authentication.md) · [shared provider catalog](https://github.com/snapetech-org/seerrng/blob/main/docs/maintainers/oidc-provider-catalog.md)
 
 slskR is an independent Rust implementation. It pursues compatibility with
 useful Soulseek workflows but is not a fork of any other client.

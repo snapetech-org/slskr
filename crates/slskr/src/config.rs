@@ -128,6 +128,7 @@ pub struct AppConfig {
     pub controller_metrics_password: String,
     pub controller_web_auth_username: String,
     pub controller_web_auth_password: String,
+    pub controller_oidc: ControllerOidcSettings,
     pub controller_web_jwt_key: String,
     pub controller_web_jwt_key_configured: bool,
     pub controller_web_jwt_ttl_millis: u64,
@@ -282,9 +283,10 @@ pub use transfer_policy::{
 };
 #[path = "config_parts/web_security.rs"]
 mod web_security;
-pub use web_security::TrustedProxyCidr;
+pub use web_security::{ControllerOidcSettings, TrustedProxyCidr};
 use web_security::{
     resolve_api_and_web_hardening, resolve_auth_disabled, resolve_controller_api_keys,
-    resolve_controller_web, resolve_controller_web_auth, trusted_proxy_cidrs_from_layers,
-    ApiAndWebHardeningSettings, ControllerWebAuthSettings, ControllerWebResolution,
+    resolve_controller_oidc, resolve_controller_web, resolve_controller_web_auth,
+    trusted_proxy_cidrs_from_layers, ApiAndWebHardeningSettings, ControllerWebAuthSettings,
+    ControllerWebResolution,
 };

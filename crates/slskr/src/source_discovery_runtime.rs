@@ -4,11 +4,9 @@ pub(super) async fn dispatch_source_discovery_search(
     state: &AppState,
     query: String,
 ) -> Result<SearchRecord, String> {
-    let permit = state
-        .session_commands
-        .reserve()
-        .await
-        .map_err(|_| "session manager is not running".to_owned())?;
+    let permit = state.session_commands.try_reserve().map_err(|_| {
+        "session command queue is full or the session manager is not running".to_owned()
+    })?;
     let record = create_rescue_search(state, query.clone()).await?;
     permit.send(SessionCommand::Search {
         token: record.token,

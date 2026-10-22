@@ -4869,5 +4869,4 @@
   "No indexed shares to display.": "Không có mục chia sẻ đã lập chỉ mục để hiển thị.",
   "Sharing is optional and is not required for searching or downloading.": "Chia sẻ là tùy chọn, không cần thiết để tìm kiếm hoặc tải xuống.",
   "Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers.": "Quản trị viên cấu hình thư mục chia sẻ trong TOML hoặc biến môi trường. Các thư mục này hiển thị với những người dùng Soulseek khác.",
-  "Read share setup instructions": "Đọc hướng dẫn thiết lập chia sẻ"
-}
+  "Read share setup instructions": "Đọc hướng dẫn thiết lập chia sẻ","Continue with {provider}":"Tiếp tục với {provider}","Provider setup guide":"Hướng dẫn thiết lập nhà cung cấp","Identity provider sign-in failed. Check the provider and account admission settings.":"Đăng nhập bằng nhà cung cấp danh tính thất bại. Hãy kiểm tra nhà cung cấp và cài đặt quyền truy cập tài khoản.","{provider} identity provider setup guide (opens in a new tab)":"Hướng dẫn thiết lập nhà cung cấp danh tính {provider} (mở trong tab mới)"}

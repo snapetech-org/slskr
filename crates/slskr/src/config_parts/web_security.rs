@@ -124,6 +124,124 @@ pub(super) struct ControllerWebAuthSettings {
     pub(super) controller_web_jwt_ttl_millis: u64,
 }
 
+#[derive(Clone)]
+pub struct ControllerOidcSettings {
+    pub provider: String,
+    pub issuer_url: String,
+    pub client_id: String,
+    pub client_secret: String,
+    pub redirect_uri: String,
+    pub allowed_emails: String,
+    pub allowed_email_domains: String,
+    pub allow_any_verified_user: bool,
+    pub allow_private_issuer: bool,
+}
+
+impl std::fmt::Debug for ControllerOidcSettings {
+    fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        formatter
+            .debug_struct("ControllerOidcSettings")
+            .field("provider", &self.provider)
+            .field("issuer_url", &self.issuer_url)
+            .field("client_id", &self.client_id)
+            .field("client_secret", &"[REDACTED]")
+            .field("redirect_uri", &self.redirect_uri)
+            .field("allowed_emails", &self.allowed_emails)
+            .field("allowed_email_domains", &self.allowed_email_domains)
+            .field("allow_any_verified_user", &self.allow_any_verified_user)
+            .field("allow_private_issuer", &self.allow_private_issuer)
+            .finish()
+    }
+}
+
+pub(super) fn resolve_controller_oidc<E: ConfigEnv>(
+    env: &E,
+) -> Result<ControllerOidcSettings, String> {
+    let provider = env.var("SLSKR_OIDC_PROVIDER").unwrap_or_default();
+    let issuer_url = env.var("SLSKR_OIDC_ISSUER_URL").unwrap_or_default();
+    let client_id = env.var("SLSKR_OIDC_CLIENT_ID").unwrap_or_default();
+    let client_secret = env.var("SLSKR_OIDC_CLIENT_SECRET").unwrap_or_default();
+    let redirect_uri = env.var("SLSKR_OIDC_REDIRECT_URI").unwrap_or_default();
+    let allowed_emails = env
+        .var("SLSKR_OIDC_ALLOWED_EMAILS")
+        .unwrap_or_default();
+    let allowed_email_domains = env
+        .var("SLSKR_OIDC_ALLOWED_EMAIL_DOMAINS")
+        .unwrap_or_default();
+    let allow_any_verified_user = env_bool_layer(
+        env,
+        "SLSKR_OIDC_ALLOW_ANY_VERIFIED_USER",
+        false,
+    )?;
+    let allow_private_issuer = env_bool_layer(
+        env,
+        "SLSKR_OIDC_ALLOW_PRIVATE_ISSUER",
+        false,
+    )?;
+    let core = [&issuer_url, &client_id, &client_secret, &redirect_uri];
+    let extras = !allowed_emails.trim().is_empty()
+        || !allowed_email_domains.trim().is_empty()
+        || allow_any_verified_user
+        || allow_private_issuer;
+    if core.iter().all(|value| value.trim().is_empty()) {
+        if extras {
+            return Err("SLSKR_OIDC_* admission settings require issuer, client ID, client secret, and redirect URI".to_owned());
+        }
+        return Ok(ControllerOidcSettings {
+            provider,
+            issuer_url,
+            client_id,
+            client_secret,
+            redirect_uri,
+            allowed_emails,
+            allowed_email_domains,
+            allow_any_verified_user,
+            allow_private_issuer,
+        });
+    }
+    if !core.iter().all(|value| !value.trim().is_empty()) {
+        return Err("SLSKR_OIDC_ISSUER_URL, CLIENT_ID, CLIENT_SECRET, and REDIRECT_URI must be configured together".to_owned());
+    }
+    if client_id.len() > 512 || client_secret.len() > 4096 {
+        return Err("SLSKR_OIDC client ID or secret exceeds the supported length".to_owned());
+    }
+    let issuer = openidconnect::url::Url::parse(&issuer_url)
+        .map_err(|_| "SLSKR_OIDC_ISSUER_URL must be an absolute URL".to_owned())?;
+    if issuer.host_str().is_none()
+        || !issuer.username().is_empty()
+        || issuer.password().is_some()
+        || issuer.query().is_some()
+        || issuer.fragment().is_some()
+        || !(issuer.scheme() == "https"
+            || (allow_private_issuer && issuer.scheme() == "http"))
+    {
+        return Err("SLSKR_OIDC_ISSUER_URL must use HTTPS (or HTTP with SLSKR_OIDC_ALLOW_PRIVATE_ISSUER=true) and contain no credentials, query, or fragment".to_owned());
+    }
+    let callback = openidconnect::url::Url::parse(&redirect_uri)
+        .map_err(|_| "SLSKR_OIDC_REDIRECT_URI must be an absolute URL".to_owned())?;
+    if callback.scheme() != "https"
+        || callback.host_str().is_none()
+        || !callback.username().is_empty()
+        || callback.password().is_some()
+        || callback.query().is_some()
+        || callback.fragment().is_some()
+        || !callback.path().ends_with("/api/v0/session/oidc/callback")
+    {
+        return Err("SLSKR_OIDC_REDIRECT_URI must be HTTPS and end at /api/v0/session/oidc/callback".to_owned());
+    }
+    Ok(ControllerOidcSettings {
+        provider,
+        issuer_url,
+        client_id,
+        client_secret,
+        redirect_uri,
+        allowed_emails,
+        allowed_email_domains,
+        allow_any_verified_user,
+        allow_private_issuer,
+    })
+}
+
 #[allow(clippy::too_many_arguments)]
 pub(super) fn resolve_controller_web_auth<E: ConfigEnv>(
     env: &E,

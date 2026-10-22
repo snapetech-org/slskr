@@ -4869,5 +4869,4 @@
   "No indexed shares to display.": "표시할 색인된 공유 항목이 없습니다.",
   "Sharing is optional and is not required for searching or downloading.": "공유는 선택 사항이며 검색이나 다운로드에 필요하지 않습니다.",
   "Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers.": "공유 루트는 운영자가 TOML 또는 환경 변수로 설정합니다. 공유 폴더는 다른 Soulseek 피어에게 표시됩니다.",
-  "Read share setup instructions": "공유 설정 안내 읽기"
-}
+  "Read share setup instructions": "공유 설정 안내 읽기","Continue with {provider}":"{provider}(으)로 계속","Provider setup guide":"공급자 설정 가이드","Identity provider sign-in failed. Check the provider and account admission settings.":"ID 공급자 로그인에 실패했습니다. 공급자 및 계정 허용 설정을 확인하세요.","{provider} identity provider setup guide (opens in a new tab)":"{provider} ID 공급자 설정 가이드(새 탭에서 열림)"}

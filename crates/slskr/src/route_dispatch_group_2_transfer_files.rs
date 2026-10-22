@@ -259,11 +259,11 @@ async fn route_dispatch_group_2_transfer_files(
                             ));
                         }
                         if test_user_endpoint_peer_address(state, &username).is_none() {
-                            match state.session_commands.reserve().await {
+                            match state.session_commands.try_reserve() {
                                 Ok(permit) => Some(permit),
                                 Err(_) => {
                                     return Ok(routing::service_unavailable_response(
-                                        "session manager is not running",
+                                        "session command queue is full or the session manager is not running",
                                     ));
                                 }
                             }
@@ -661,11 +661,11 @@ async fn route_dispatch_group_2_transfer_files(
                 ));
             }
             let session_command_permit = if route.path.starts_with("/api/v0/") {
-                match state.session_commands.reserve().await {
+                match state.session_commands.try_reserve() {
                     Ok(permit) => Some(permit),
                     Err(_) => {
                         return Ok(routing::service_unavailable_response(
-                            "session manager is not running",
+                            "session command queue is full or the session manager is not running",
                         ));
                     }
                 }

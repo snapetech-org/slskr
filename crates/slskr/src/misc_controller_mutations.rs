@@ -654,11 +654,11 @@ pub(super) async fn misc_controller_mutation_response(
                 "username/peerId and message are required",
             ));
         };
-        let permit = match state.session_commands.reserve().await {
+        let permit = match state.session_commands.try_reserve() {
             Ok(permit) => permit,
             Err(_) => {
                 return Some(routing::service_unavailable_response(
-                    "session manager is not running",
+                    "session command queue is full or the session manager is not running",
                 ))
             }
         };
@@ -677,11 +677,11 @@ pub(super) async fn misc_controller_mutation_response(
         else {
             return Some(routing::bad_request_response("username/peerId is required"));
         };
-        let permit = match state.session_commands.reserve().await {
+        let permit = match state.session_commands.try_reserve() {
             Ok(permit) => permit,
             Err(_) => {
                 return Some(routing::service_unavailable_response(
-                    "session manager is not running",
+                    "session command queue is full or the session manager is not running",
                 ))
             }
         };

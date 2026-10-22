@@ -183,7 +183,10 @@ jobs:
           path: ${{ runner.temp }}/validation/rust-linux-x64.json
           if-no-files-found: warn
           retention-days: 7
-      - run: cargo audit
+      # RUSTSEC-2023-0071 has no upstream fix. openidconnect uses rsa here to
+      # verify provider ID tokens with public keys; this app has no RSA
+      # private-key operations for the advisory to expose.
+      - run: cargo audit --ignore RUSTSEC-2023-0071
       - run: scripts/run-security-scans.sh
       - run: bash scripts/check-web-audit.sh
       - run: npm --prefix web run lint
