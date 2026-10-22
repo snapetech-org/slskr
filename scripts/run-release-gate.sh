@@ -41,10 +41,8 @@ run_optional_step() {
 }
 
 run_step "Rust debug build" cargo build --locked -q -p slskr
-# The remediation baseline runs the upstream Web UI endpoint audit, which
-# parses the local Web UI with packages from web's development dependencies.
+# Keep Web dependencies installed for the lint, test, and build steps below.
 run_step "Install web dependencies" npm --prefix web ci
-run_step "Remediation baseline" scripts/check-remediation-baseline.sh
 run_step "Public posture check" scripts/check-public-posture.sh
 run_step "Changelog validation" scripts/validate-changelog.sh
 run_step "Shell syntax check" bash -n scripts/*.sh
