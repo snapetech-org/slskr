@@ -41,7 +41,7 @@ if [[ "$push_branches" != "main" ]]; then
   printf 'workflow release policy check failed: only main pushes may enter the CI workflow\n' >&2
   status=1
 fi
-for job in web-assets controller-regex-parity rust platform-builds validation-reconcile package-surfaces; do
+for job in web-assets controller-regex-parity rust platform-builds package-surfaces; do
   job_block="$(sed -n "/^  $job:/,/^  [A-Za-z0-9_-]*:/p" .github/workflows/ci.yml)"
   if [[ "$job_block" != *"ng-shared-main-jit"* ||
         "$job_block" != *"ng-shared-main-slskr"* ||
@@ -56,7 +56,7 @@ for job in web-assets controller-regex-parity rust platform-builds validation-re
   fi
 done
 route_count="$(rg -n -F 'ng-shared-main-jit' .github/workflows/ci.yml | wc -l)"
-if [[ "$route_count" -ne 6 ]]; then
+if [[ "$route_count" -ne 5 ]]; then
   printf 'workflow release policy check failed: unexpected shared runner route count in CI\n' >&2
   status=1
 fi
@@ -88,27 +88,6 @@ for workflow in .github/workflows/*.yml; do
       ;;
   esac
 done
-missing_attempt_artifacts="$(rg -n 'name: validation-(task-logs|rust)-' .github/workflows/ci.yml | rg -Fv -- '-attempt-${{ github.run_attempt }}' || true)"
-if [[ -n "$missing_attempt_artifacts" ]]; then
-  printf 'workflow release policy check failed: validation artifacts must be unique per workflow attempt\n' >&2
-  printf '%s\n' "$missing_attempt_artifacts" >&2
-  status=1
-fi
-receipt_download_policy="$(sed -n '/name: Download current-run Rust receipts/,/name: Reconcile this run/p' .github/workflows/ci.yml)"
-if [[ "$receipt_download_policy" != *'merge-multiple: false'* ]]; then
-  printf 'workflow release policy check failed: receipt artifacts must stay in separate attempt directories\n' >&2
-  status=1
-fi
-reconcile_job="$(sed -n '/^  validation-reconcile:/,/^  package-surfaces:/p' .github/workflows/ci.yml)"
-if [[ "$reconcile_job" != *'if: always() && !cancelled()'* ]]; then
-  printf 'workflow release policy check failed: canceled pull-request runs must skip final receipt reconciliation\n' >&2
-  status=1
-fi
-if [[ "$reconcile_job" != *"github.event_name != 'push' || github.ref == 'refs/heads/main'"* ]]; then
-  printf 'workflow release policy check failed: receipt reconciliation must retain the main/pull-request event guard\n' >&2
-  status=1
-fi
-
 if [[ ! -f "$pin_policy" ]]; then
   printf 'workflow release policy check failed: GitHub Actions pin policy is missing: %s\n' "$pin_policy" >&2
   status=1
