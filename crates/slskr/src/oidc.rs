@@ -612,6 +612,61 @@ fn safe_return_to(raw: Option<&str>) -> String {
     value.to_owned()
 }
 
+fn constant_time_equal(left: &[u8], right: &[u8]) -> bool {
+    use subtle::ConstantTimeEq;
+    left.len() == right.len() && bool::from(left.ct_eq(right))
+}
+
+async fn ensure_public_target(url: &openidconnect::url::Url) -> Result<(), &'static str> {
+    let host = url.host_str().ok_or("OIDC provider host is missing")?;
+    let port = url
+        .port_or_known_default()
+        .ok_or("OIDC provider port is missing")?;
+    let addresses = lookup_host((host, port))
+        .await
+        .map_err(|_| "OIDC provider host could not be resolved")?
+        .collect::<Vec<SocketAddr>>();
+    if addresses.is_empty() || addresses.iter().any(|address| !is_public_ip(address.ip())) {
+        return Err("OIDC provider resolves to a private or reserved address");
+    }
+    Ok(())
+}
+
+fn is_public_ip(ip: IpAddr) -> bool {
+    match ip {
+        IpAddr::V4(ip) => public_ipv4(ip),
+        IpAddr::V6(ip) => public_ipv6(ip),
+    }
+}
+
+fn public_ipv4(ip: Ipv4Addr) -> bool {
+    let [a, b, c, _] = ip.octets();
+    !(ip.is_unspecified()
+        || ip.is_loopback()
+        || ip.is_private()
+        || ip.is_link_local()
+        || ip.is_broadcast()
+        || ip.is_multicast()
+        || a == 0
+        || (a == 100 && (64..=127).contains(&b))
+        || (a == 192 && b == 0 && c == 0)
+        || (a == 192 && b == 0 && c == 2)
+        || (a == 198 && (b == 18 || b == 19 || (b == 51 && c == 100)))
+        || (a == 203 && b == 0 && c == 113)
+        || a >= 224)
+}
+
+fn public_ipv6(ip: Ipv6Addr) -> bool {
+    let segments = ip.segments();
+    !(ip.is_unspecified()
+        || ip.is_loopback()
+        || ip.is_multicast()
+        || (segments[0] & 0xfe00) == 0xfc00
+        || (segments[0] & 0xffc0) == 0xfe80
+        || (segments[0] & 0xe000) != 0x2000
+        || (segments[0] == 0x2001 && segments[1] == 0x0db8))
+}
+
 #[cfg(test)]
 mod tests {
     use super::{callback_page, form_post_callback_page, json_boolean, start_page};
@@ -678,59 +733,4 @@ mod tests {
         assert!(!json_boolean(Some(&serde_json::json!("false"))));
         assert!(!json_boolean(Some(&serde_json::json!("yes"))));
     }
-}
-
-fn constant_time_equal(left: &[u8], right: &[u8]) -> bool {
-    use subtle::ConstantTimeEq;
-    left.len() == right.len() && bool::from(left.ct_eq(right))
-}
-
-async fn ensure_public_target(url: &openidconnect::url::Url) -> Result<(), &'static str> {
-    let host = url.host_str().ok_or("OIDC provider host is missing")?;
-    let port = url
-        .port_or_known_default()
-        .ok_or("OIDC provider port is missing")?;
-    let addresses = lookup_host((host, port))
-        .await
-        .map_err(|_| "OIDC provider host could not be resolved")?
-        .collect::<Vec<SocketAddr>>();
-    if addresses.is_empty() || addresses.iter().any(|address| !is_public_ip(address.ip())) {
-        return Err("OIDC provider resolves to a private or reserved address");
-    }
-    Ok(())
-}
-
-fn is_public_ip(ip: IpAddr) -> bool {
-    match ip {
-        IpAddr::V4(ip) => public_ipv4(ip),
-        IpAddr::V6(ip) => public_ipv6(ip),
-    }
-}
-
-fn public_ipv4(ip: Ipv4Addr) -> bool {
-    let [a, b, c, _] = ip.octets();
-    !(ip.is_unspecified()
-        || ip.is_loopback()
-        || ip.is_private()
-        || ip.is_link_local()
-        || ip.is_broadcast()
-        || ip.is_multicast()
-        || a == 0
-        || (a == 100 && (64..=127).contains(&b))
-        || (a == 192 && b == 0 && c == 0)
-        || (a == 192 && b == 0 && c == 2)
-        || (a == 198 && (b == 18 || b == 19 || (b == 51 && c == 100)))
-        || (a == 203 && b == 0 && c == 113)
-        || a >= 224)
-}
-
-fn public_ipv6(ip: Ipv6Addr) -> bool {
-    let segments = ip.segments();
-    !(ip.is_unspecified()
-        || ip.is_loopback()
-        || ip.is_multicast()
-        || (segments[0] & 0xfe00) == 0xfc00
-        || (segments[0] & 0xffc0) == 0xfe80
-        || (segments[0] & 0xe000) != 0x2000
-        || (segments[0] == 0x2001 && segments[1] == 0x0db8))
 }
