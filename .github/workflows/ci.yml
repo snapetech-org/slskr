@@ -474,7 +474,10 @@ jobs:
   package-surfaces:
     name: Package and deployment surfaces
     needs: [platform-builds, validation-reconcile]
-    runs-on: ubuntu-latest
+    # Multiarch Debian and RPM packaging depends on matching Ubuntu Ports
+    # versions; keep this job on the stable LTS image instead of the moving
+    # ubuntu-latest label.
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6

@@ -30,6 +30,8 @@ or if a pinned action or reusable workflow is missing from this ledger.
 | `github/codeql-action/init` | `v4` | `5e316336eb4f107009e477d4bfbfff13d7250fae` | Pinned CodeQL initialization for the explicit seven-language security matrix. |
 | `github/codeql-action/autobuild` | `v4` | `5e316336eb4f107009e477d4bfbfff13d7250fae` | Reviewed CodeQL autobuild pin retained for any future language-specific build steps. |
 | `github/codeql-action/analyze` | `v4` | `5e316336eb4f107009e477d4bfbfff13d7250fae` | Pinned CodeQL SARIF upload and alert generation for the explicit language matrix. |
+| `github/codeql-action/upload-sarif` | `v4.38.3` | `24c54180a607b1449ed407dd24f251e4e9147c8d` | SARIF upload for the pinned Semgrep Community workflow. |
+| `aquasecurity/setup-trivy` | `v0.2.6` | `3fb12ec12f41e471780db15c232d5dd185dcb514` | Pins the Trivy install script checkout to a reviewed commit. |
 | `snapetech-org/slskr/.github/workflows/web-assets-validation.yml` | `713676d58f1601a8079257f3f4aeefdc0de7b7f6` | `713676d58f1601a8079257f3f4aeefdc0de7b7f6` | Audited reusable workflow for fork-only JIT web asset validation. |
 
 To update an action, resolve the new trusted ref, replace the workflow SHA and the
