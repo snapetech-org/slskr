@@ -4,7 +4,6 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
 
-ledger="docs/dev/bug-burndown-ledger.md"
 transport_deriver="scripts/derive-universal-transport-evidence.py"
 transport_capability_deriver="scripts/derive-universal-transport-capability-evidence.py"
 transport_test="scripts/test-universal-transport-evidence.py"
@@ -38,11 +37,6 @@ scripts/with-process-memory-guard.sh python3 scripts/test-controller-inventory-o
 scripts/with-process-memory-guard.sh python3 "$transport_test"
 scripts/with-process-memory-guard.sh python3 "$lifecycle_test"
 
-if ! rg -n '^\| BUG-022 .* \| Verified \|$' "$ledger" >/dev/null; then
-  printf 'audit tooling check failed: BUG-022 must stay verified in council ledger\n' >&2
-  status=1
-fi
-
 cargo metadata --locked --format-version 1 --no-deps >/dev/null
 cargo tree --locked -d >/dev/null
 
@@ -52,11 +46,6 @@ for expected in 'cargo metadata --locked --format-version 1 --no-deps' 'cargo tr
     status=1
   fi
 done
-
-if ! rg -n -F 'scripts/check-audit-tooling.sh' scripts/check-remediation-baseline.sh docs/dev/bug-burndown-ledger.md >/dev/null; then
-  printf 'audit tooling check failed: audit tooling gate is not registered\n' >&2
-  status=1
-fi
 
 if [[ "$status" -ne 0 ]]; then
   exit "$status"

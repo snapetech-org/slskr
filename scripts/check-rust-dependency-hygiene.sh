@@ -4,7 +4,6 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
 
-ledger="docs/dev/bug-burndown-ledger.md"
 policy="docs/dev/rust-dependency-hygiene.md"
 status=0
 
@@ -42,7 +41,7 @@ if [[ -n "$unexpected" ]]; then
 fi
 
 if [[ -n "$missing" ]]; then
-  printf 'rust dependency hygiene note: duplicate roots resolved; update %s and BUG-021:\n%s\n' "$policy" "$missing"
+  printf 'rust dependency hygiene note: duplicate roots resolved; update %s with the following roots:\n%s\n' "$policy" "$missing"
 fi
 
 for root in base64 getrandom hashbrown memchr rand rand_core regex-automata syn webpki-roots; do
@@ -51,11 +50,6 @@ for root in base64 getrandom hashbrown memchr rand rand_core regex-automata syn 
     status=1
   fi
 done
-
-if ! rg -n '^\| BUG-021 .* \| Verified \|$' "$ledger" >/dev/null; then
-  printf 'rust dependency hygiene failed: BUG-021 must stay verified in council ledger\n' >&2
-  status=1
-fi
 
 if [[ "$status" -ne 0 ]]; then
   exit "$status"

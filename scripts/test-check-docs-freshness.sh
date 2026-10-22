@@ -44,10 +44,6 @@ for path in "${maintained_files[@]}"; do
   mkdir -p "$tmp_root/$(dirname "$path")"
   cp "$repo_root/$path" "$tmp_root/$path"
 done
-mkdir -p "$tmp_root/docs/dev"
-printf '%s\n' '| BUG-030 docs freshness | Docs | Low | High | Evidence | Impact | Verified |' \
-  > "$tmp_root/docs/dev/bug-burndown-ledger.md"
-
 SLSKR_DOCS_FRESHNESS_ROOT="$tmp_root" \
   "$repo_root/scripts/check-docs-freshness.sh" >/dev/null
 

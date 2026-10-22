@@ -1,7 +1,7 @@
-# slskr Historical Remediation Baseline
+# slskr Historical Remediation Notes
 
-This document is the dated remediation baseline for the initial cleanup and
-the historical phase decisions recorded below. The active whole-project
+This document records the initial cleanup and the historical phase decisions
+listed below. The active whole-project
 refactor status now lives in
 [`docs/dev/refactoring-efficiency-plan.md`](docs/dev/refactoring-efficiency-plan.md)
 and its evidence ledger
@@ -17,9 +17,6 @@ If you find yourself writing `FINAL_*.md`, `*_COMPLETION_*.md`, or
 ## 0. Historical snapshot (2026-05-13)
 
 - `cargo test --workspace` passes.
-- `scripts/check-remediation-baseline.sh` passes.
-- `scripts/run-bug-council-all-phases.sh` passes and all current council
-  candidate classes are classified/guarded at the fresh scan counts.
 - `scripts/check-release-package.sh` passes for the runtime crates.
 - The standalone `slskr-cli` crate is gone; smoke/probe commands live in
   `crates/slskr/src/cli.rs` and are exposed through the `slskr` binary.
@@ -34,7 +31,7 @@ If you find yourself writing `FINAL_*.md`, `*_COMPLETION_*.md`, or
 | `crates/slskr-protocol`       | TRUST      | Real Soulseek wire codecs, 7 test files, all passing                |
 | `crates/slskr-client`         | TRUST      | Real session/listener/transfer runtime, 14 test files, all passing  |
 | `crates/slskr/src/cli.rs`     | TRUST      | Real smoke/probe commands the README documents                      |
-| `scripts/`                    | TRUST      | Remediation, release, live-soak, Proton matrix, SDK, and council gates are wired into repeatable checks |
+| `scripts/`                    | TRUST      | Release, live-soak, Proton matrix, and SDK checks are wired into repeatable validation |
 | `docs/`                       | TRUST      | Active docs are gate-checked for freshness/drift; stale archive docs are deleted |
 | `crates/slskr` (bin)          | TRUST      | Single-binary daemon/API/WebSocket/runtime surface is covered by route, storage, transfer, event, auth, and package gates |
 | `crates/slskr-web` and `web/` | TRUST      | Rust WebUI and React reference surfaces are covered by route inventory, focused UI tests, and WebSocket auth gates |

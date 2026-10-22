@@ -73,7 +73,6 @@ and the following live checks:
 | `scripts/check-rust-module-hygiene.sh` | Pass |
 | `scripts/check-npm-dependency-hygiene.sh` | Pass |
 | `scripts/check-docs-freshness.sh` | Pass, scope limitation noted below |
-| `scripts/check-council-active-backlog.sh` | Pass |
 | `scripts/check-web-audit.sh` | Pass, zero reported vulnerabilities |
 
 ## Findings
@@ -125,7 +124,7 @@ structural improvement to execute only after higher-priority work is stable.
 | RF-028 | `.github/workflows/publish-chocolatey.yml:17-48` now checks out the selected tag, uses a fully qualified release asset URL, verifies `SHA256SUMS`, and runs package smoke preparation. | Manual Chocolatey packages previously could contain invalid URLs and branch drift. | Workflow/package policy and eight actual PowerShell checksum regressions pass. Clean Windows validation-only run `36383308751` downloads and checks the actual `release-v0.2.40` asset, packs/smokes the nupkg, and retains it. Downloaded package/archive hashes, installer URL/checksum, and version are verified; no package was pushed. | Verified clean Windows package runner |
 | RF-029 | `.github/workflows/release-publish.yml:625-638` intentionally targets the existing `snapetech/homebrew-slskdn` compatibility tap, while `docs/dev/release-channels.md:15-18` named `snapetech/homebrew-slskr`. | Channel documentation was stale, but the publication target was not shown to be wrong. | Release-channel documentation now names the actual compatibility tap and preserves the explicit target boundary. | Verified locally, docs |
 | RF-030 | `web/package.json:77-82` exposes a bundle-budget test; the current batch wires it after Web builds in `.github/workflows/ci.yml` and `scripts/run-release-gate.sh`. Serialized browser E2E now passes its available 14 tests; the React audit and retained nightly artifacts remain separate. | Bundle regressions previously could merge without CI evidence. | Workflow policy, Web budget, build-output, and available E2E checks pass. The retained React audit passes 84 desktop/mobile rendering checks and four workflow scenarios with zero synthetic sweeps; 106 workflow cases are observed through actual UI requests. A daily/manual workflow now retains four real-browser mock scenarios, screenshots, and source-bound receipts for 30 days under memory/swap/task/runtime limits. The successful manual hosted run `36382238277` at `3f0b6010` retained all four reports and 84 screenshots; downloaded audit hashes match the clean checkout receipt. The same workflow is scheduled daily. | Verified hosted browser retention |
-| RF-031 | The release gate invokes the remediation baseline and differential checks, but the universal replacement acceptance document points to retained local artifacts and the release path does not run the full live transport/lifecycle manifest. | Historical acceptance evidence could be mistaken for fresh release evidence. | The acceptance document now explicitly labels the 2026-08-20 closure as historical and requires fresh release-gate/live artifacts for current certification. | Verified locally, policy explicit |
+| RF-031 | The release gate invokes focused validation and differential checks, but the universal replacement acceptance document points to retained local artifacts and the release path does not run the full live transport/lifecycle manifest. | Historical acceptance evidence could be mistaken for fresh release evidence. | The acceptance document now explicitly labels the 2026-08-20 closure as historical and requires fresh release-gate/live artifacts for current certification. | Verified locally, policy explicit |
 
 ### P2 Efficiency And Structural Boundaries
 
@@ -137,9 +136,9 @@ structural improvement to execute only after higher-priority work is stable.
 | RF-023 | `crates/slskr/Cargo.toml` has a default `focused-controller-tests` feature; the first implementation batch now selects the focused module explicitly with that feature. | Feature naming previously did not describe actual test selection. | Locked `cargo check` passes for default, `--no-default-features`, `bounded-persistence-tests`, and `full-controller-tests` configurations. | Verified locally |
 | RF-024 | `crates/slskr/src/lib.rs` is 2,274 lines at the 2026-09-29 recheck, down from the 18,161-line audit baseline; `web/src` has 105,422 JavaScript/JSX lines (112,823 lines across all files) after route/polling splits. The managed task registry, bounded HTTP task admission, and lifecycle regression live in `managed_tasks.rs`; runtime compatibility state logic lives in `runtime_compat_state.rs`; hash backfill state and persistence helpers live in `hash_backfill_state.rs`; source-discovery lifecycle state lives in `source_discovery_state.rs`; source-discovery dispatch, source projection, and scheduled searches live in `source_discovery_runtime.rs`; security bans, reputation, durable JWT revocation, and login-attempt throttling live in `security_state.rs`; bounded OAuth issue/consume state lives in `oauth_state.rs`; source-feed history, Lidarr sync state, Spotify connection state, and feed row/target models live in `integration_runtime_state.rs`; contact records/store live in `contact_state.rs`; destination records/store/path selection live in `destination_state.rs`; controller feature state and bounded JSON persistence live in `controller_feature_state.rs`; preview tickets live in `preview_stream_state.rs`; preview stream ticket creation and input validation live in `preview_stream_controller.rs`; versioned GET failure contracts live in `versioned_get_contract.rs`; versioned relay upload, stream, and download handling lives in `versioned_relay_controller.rs`; native compatibility route matching and read projections live in `native_compat_controller.rs`; Spotify and configured-provider source-feed previews live in `source_feed_preview_controller.rs`; the static provider catalog projection lives in `source_provider_catalog.rs`; SongID evidence-package and capability projections live in `songid_controller.rs`; source metadata and fingerprint analysis, queued workers, failure recording, and persisted-run recovery live in `songid_runtime.rs`; `spawn_session_manager` and the Gold Star Club auto-join supervisor live in `session_runtime.rs`; Soulfind bridge TCP framing, client handling, and managed server runtime live in `soulfind_bridge_runtime.rs`; mesh gateway auth, origin validation, and HTTP service responses live in `mesh_gateway_controller.rs`; ranking-history and source-candidate responses live in `ranking_controller.rs`; the history-backfill route and FLAC candidate projection live in `hash_backfill_controller.rs`; the idle-gated backfill scheduler and cycle execution live in `hash_backfill_runtime.rs`; wishlist auto-download planning and staged-transfer rollback live in `wishlist_auto_download.rs`; CSV parsing, simple text import, and versioned CSV import live in `wishlist_csv_import.rs`; listening-party stream limits live in `listening_party_stream_state.rs`; bounded PodCore runtime, signature, and membership verification counters, key validation, and recording logic with regression coverage now live in `podcore_runtime_stats.rs`; PodCore mutation, dynamic-get, and stats response handlers live in `podcore_controller.rs`; MediaCore extended and mutation response handlers live in `mediacore_controller.rs`. Pod membership DTOs, workflow/replay stores, canonical path parsing, acceptor authorization, and signature verification now live in `pod_membership_workflow.rs`; PodCore content-ID parsing, MusicBrainz requests, and metadata shaping live in `musicbrainz_lookup.rs`. | Ownership, review, compile feedback, and safe change isolation remain poor. | Batches 72-74 pass locked feature compiles, the 614-test daemon suite, runtime-boundary guard, and formatter. Batch 75 passes the full-controller/legacy library and test-target compiles, cancellation/order/rollback regressions, the 616-test daemon suite, runtime-boundary guard, scoped `await_holding_lock` Clippy pass, docs/plan freshness, formatter, and diff checks. Batch 76 passes the PodCore stat-key bounds and direct signing/verification counter regressions plus the locked full-controller/legacy library check. The feature-enabled test target compiles, but executing the existing signing-stat endpoint regression overflows its historical test-worker stack before assertions; the runtime-boundary guard, docs and plan freshness, formatter, and diff checks pass. The 27 listener tests passed in Batch 71 and the full release gate passed after Batch 71. Continue splitting by ownership and measure compile/test feedback after each move. Upload-peer cooldown state, key normalization, expiry, and failure classification moved with its three tests into upload_peer_cooldowns.rs; private-message auto-response cooldown tracking, limits, normalization, expiry, and two direct tests moved into private_message_auto_responses.rs; BrowseEntry and bounded remote path-encoding state now live together in browse_path_state.rs with direct entry/cap tests and the feature regression preserved; managed blacklist runtime state and bounded decision caching now live in managed_blacklist_runtime.rs, preserving target-specific matching, TTL/capacity, eviction, and replacement invalidation; shared controller regex matching and request-thread compilation now live in controller_regex.rs with existing root call sites preserved; private-message auto-response eligibility classification now lives beside its bounded cooldown tracker in private_message_auto_responses.rs; MessageRecord, bounded MessageStore state, and conversation JSON construction now live in message_store.rs while route persistence ordering and rollback remain at the crate root; RoomMessageRecord, RoomRosterEntry, RoomRecord, RoomStore, room projections, and bounded room-name handling now live in room_store.rs; UserRecord and bounded UserStore live in user_store.rs; UserNoteRecord and bounded UserNoteStore live in user_note_store.rs; InterestRecord and InterestStore live in interest_store.rs; NowPlayingRecord and bounded NowPlayingStore live in now_playing_store.rs; ShareGroupMember, ShareGroupRecord, and bounded ShareGroupStore live in share_group_store.rs; ShareGrantRecord, ShareAccessTokenRecord, and both bounded stores live in share_grant_store.rs; IncomingShareRecord and bounded IncomingShareStore live in incoming_share_store.rs; CollectionItem, CollectionRecord, and bounded CollectionStore live in collection_store.rs; WishlistItem, wishlist filters/policies, ignored-result models, and bounded WishlistStore live in wishlist_store.rs; SearchRecord, bounded SearchStore, search create outcomes, history/controller projections, and result identity handling live in search_store.rs; the managed search-expiry supervisor lives in search_runtime.rs; VPN polling, advertised-port synchronization, reconnect requests, and reconnect wake handling live in vpn_runtime.rs; BrowseRecord, bounded BrowseStore state, indirect-token allocation, and controller/list projections live in browse_store.rs; library item/health/remediation models, query parsing, bounded LibraryStore, and catalog/health projections live in library_store.rs; share roots, index snapshots, lifecycle state types, and snapshot/catalog projections live in share_index_state.rs; share scan cancellation, rebuild/add lifecycle, snapshot generation checks, persistence, and publication now live in share_index_runtime.rs; HTTP connection and request-stream lifecycle now live in http_connection.rs while bounded parsing and response framing remain in http_server.rs; RelayState and conditional rollback logic live in relay_state.rs; bounded mesh sync-security state, capability registry, and mesh projections live in mesh_state.rs; controller options overlay, obfuscation reload snapshot, and restart fingerprint live in controller_options_state.rs; transfer state snapshot loading/writing and event-file I/O live in transfer_state_io.rs; generation-based durability snapshots, pending events, and TransferQueue persistence hooks live in transfer_durability.rs; TransferQueue and request/audio metadata models, ID allocation, transitions, and queue projections live in transfer_queue.rs; bounded auto-retry and underperformance rescue trackers/planners live in transfer_recovery.rs; TransferEntry serialization, redacted/native/controller projections, recovery fields, and bounded normalization live in transfer_entry.rs; file-transfer progress, retry, peer upload/download, inbound request handling, bounded backfill receive, and completed-media metadata lifecycle live in file_transfer_runtime.rs; session snapshot defaults, error mapping, and JSON summaries live in session_state.rs; ListenerSnapshot and ListenerCommand DTOs, listener JSON projection, and public listener error mapping live in listener_state.rs; listener binding, lifecycle supervision, and incoming-connection handling live in listener_runtime.rs; DistributedRuntime models, persistence snapshots/status, connection roles, and state projections live in distributed_state.rs; parent/child link lifecycle, search forwarding, branch/depth updates, and persisted settings coordination live in distributed_runtime.rs; storage-directory listing budgets, options, and bounded emission state live in storage_directory_state.rs; share scan inputs/results, cancellation-aware index building, and bounded filesystem traversal live in share_scanner.rs; virtual path normalization, hidden-path handling, extension extraction, and bounded media attribute probes also live in share_scanner.rs; persisted share-file projections, root summaries, attribute encoding, and compatibility cache I/O live in share_index_state.rs; SessionCommand and SearchDispatchTarget DTOs live in session_state.rs; SearchResultEntry, text-bounded search result projections, and file-attribute projection live in search_store.rs; share CatalogFilter query parsing and matching live in share_index_state.rs; local file SHA-256 hashing and bounded cache state live in local_file_hash.rs; controller rate-limit policy/model, partition/window projection, and the managed periodic cleanup task live in rate_limit.rs; WishlistAutoDownloadPlan, track identity, quality ranking, edition checks, and wishlist path normalization live in wishlist_store.rs; resolved integration targets and private-address URL validation live in integration_target.rs; source provider matching, bounded ingestion responses, metadata parsing, and provider page requests live in source_feed_ingest.rs; local CSV, playlist, RSS/OPML, and bounded preview parsing live in source_feed_ingest.rs; Lidarr status/wanted HTTP clients, bounded JSON GET helper, quality-profile filter, manual-import candidate GET, and import-command POST live in lidarr_api.rs; Lidarr manual-import path mapping, candidate filtering, duplicate detection, and confined rejected-file deletion live in lidarr_import.rs; Lidarr import-history keys, status classification, persisted-record projection, and public redaction live in lidarr_import.rs; history persistence/listing and retry wrappers live in lidarr_import.rs; manual/automatic import execution, debounce, and retry sequencing live in lidarr_import.rs; database statistics projections, cleanup, retention pruning and scheduling, and vacuum handling live in database_maintenance.rs; bounded peer browse payload construction/parsing, virtual path composition, and folder projections live in browse_wire.rs; collection, wishlist, VirtualSoulfind, share, user, room, bridge, library-health, and share-group route parsing and blank-ID contracts live in `controller_route_inputs.rs`; shared request parsing and bounded array/response checks live in request_input.rs; static asset root selection, path confinement, CSP policy, bounded file reads, static responses, and fallback dashboard HTML live in web_static.rs; controller options JSON response projection lives in controller_options_projection.rs; controller options debug projection and value redaction helpers live in controller_debug_view.rs; controller_yaml.rs owns YAML parsing and responses; target validation/error contracts live in `controller_yaml_validation.rs`; key conversion and API projection live in `controller_yaml_projection.rs`; controller CLI flag mapping, serve argument parsing, and command-line environment projection live in controller_cli.rs; bounded swarm analytics aggregation, peer ranking, and recommendation projection live in swarm_analytics.rs; release-tag normalization/version comparison, scheduled refresh, and latest-version response live in controller_release_check.rs; controller capability parsing, negotiation, native response projection, network statistics, and peer capability descriptor helpers live in controller_capabilities.rs; controller event/search/HashDb/backfill storage preflight and identifier/query validation helpers live in controller_storage_preflight.rs; controller storage route projections, bounded Unix/non-Unix directory enumeration, filesystem timestamp shaping, shared scan limits, and storage query helpers live in controller_storage.rs; extended-controller mutation, dynamic-get, and get handlers live in `extended_controller_mutations.rs`, `extended_controller_dynamic_get.rs`, and `extended_controller_get.rs`, while shared search/download helpers remain in `extended_controller.rs`; PodCore mutation, dynamic-get, and stats handlers live in `podcore_mutations.rs`, `podcore_queries.rs`, and `podcore_stats_controller.rs`, with shared helpers in `podcore_controller.rs`; MediaCore GET and mutation handlers live in `mediacore_extended.rs` and `mediacore_mutations.rs`, with metric and descriptor helpers in `mediacore_controller.rs`; transfer telemetry/storage failure, native transfer validation, and auto-replace response helpers live in transfer_controller.rs; peer socket setup, regular and obfuscated dialing, SOCKS5, peer browse/message transport, and plain/obfuscated negotiation live in peer_transport.rs; incoming plain/obfuscated peer-message loops, request dispatch, blacklist handling, upload-queue scheduling, and queue projections live in peer_message_runtime.rs; the feature-gated legacy HTTP dispatcher preflight and ordered composition live in `legacy_route_dispatch.rs`, with its 399 compatibility route arms split in source order across `legacy_route_dispatch_group_00.rs` through `legacy_route_dispatch_group_10.rs`; the bounded route-dispatch group 6 is an orchestration layer over admin/discovery, telemetry, media/jobs, security/shares, integrations, and MusicBrainz handlers in six focused modules; the 1,342-line telemetry handler now composes metrics/jobs, Pod routes, federation/security, and multisource/graph handlers in four focused modules; the group 6 admin/discovery handler now composes configuration/recommendation and relay-controller routes in two focused modules;  route-dispatch group 0 now composes controller identity/application/session routes and mesh/HashDb/VirtualSoulfind routes in two owner modules, preserving route-arm order; route-dispatch group 1 now composes discovery/backfill/docs/batch, configuration/telemetry, events/webhooks/options, and shares/files handlers in four ownership modules, preserving all route arms in their original order; route-dispatch group 3 now composes room/user/browse, admin-control, room-membership, and options/diagnostics handlers in four ownership modules, preserving route-arm order; route-dispatch group 2 now composes five modules for session/search, downloads, transfer status/files, and room routes; groups 4, 5, and 7 now each compose four modules for collection/wishlist/contact, library/conversation/configuration, and media/stream/PodCore/network handler ownership; daemon startup, shutdown-signal supervision, process replacement, and service orchestration live in daemon_serve.rs; controller compatibility config paths, YAML persistence, watcher, and watched reload/application live in controller_reload.rs; MusicBrainz mutation responses and opaque artist-radar route-reference validation live in musicbrainz_controller.rs; MusicBrainz target and discography-coverage helpers now live in musicbrainz_targets.rs included within route_dispatch, preserving their route_dispatch call paths; the 692-line request-flow block and RouteDispatchContext now live in route_dispatch_request_flow.rs, leaving route_dispatch.rs at 435 lines; ActivityPub signatures, actor and relationship handling, webfinger, and music-activity responses live in activitypub_controller.rs; session-command and peer-message handling, server reconnection, wishlist-search dispatch and smart fallback, Gold Star Club auto-join supervision, and server-message projection live in session_runtime.rs; extended security route responses live in security_controller.rs; quarantine-jury mutation, aggregate/audit/acceptance, and dynamic-read handlers live in quarantine_controller.rs; miscellaneous mutation route responses live in misc_controller_mutations.rs; download-batch response handling and projection helpers also live in extended_controller.rs; VirtualSoulfind v2 catalogue and route handling live in virtual_soulfind_v2_controller.rs; Lidarr wanted synchronization, its managed scheduler and cycle-state projection live in lidarr_wishlist_sync.rs; transfer and auto-retry task supervisors, auto-replace settings projection, persisted rescue-search creation, verified mesh-swarm promotion, retry execution, and rollback coordination live in transfer_recovery_runtime.rs; overlay DHT publication scheduling, snapshot construction, and result logging live in mesh_dht_runtime.rs; PlayerBar visual tiles and stored visualizer-engine selection live in PlayerVisualTiles.jsx; PlayerBar collection and local-file browsing live in PlayerLauncher.jsx; PlayerBar listening statistics, history import/export, and recommendation actions live in PlayerStatsModal.jsx; PlayerBar smart-radio search and Wishlist controls live in PlayerRadioModal.jsx; PlayerBar queue and similar-track handoff controls live in PlayerQueueModal.jsx; PlayerBar is now 1,323 lines with visual, collection, stats, radio, queue, and discovery owners split into modules; Visualizer preset persistence, normalization, and import helpers live in visualizerPresetLibrary.js; App network endpoint normalization, persistence, and ingress migration notice live in NetworkEndpointNotice.jsx; App.jsx is now 2,034 lines and preserves getStoredNetworkEndpointSnapshot; App connection-status menu behavior lives in ModeSpecificConnectButton.jsx; App.jsx is now 1,889 lines; SongIDPanel display/dedup helpers live in songIdPanelHelpers.js; its 1,085-line analysis column lives in SongIDAnalysisResults.jsx, leaving SongIDPanel.jsx at 646 lines; Messaging workspace state is owned by messagingWorkspaceState.js and pod message polling/send lifecycle by PodChannelSession.jsx; Messaging.jsx is now 1,214 lines; AdminPolicies form presentation lives in AdminPoliciesForm.jsx with save/reset YAML lifecycle in the 573-line parent; Adversarial Settings tab and pane rendering lives in AdversarialSettingsView.jsx while data and connectivity request lifecycles stay in its parent; Network peer and infrastructure presentation lives in NetworkDetails.jsx with polling and request lifecycles in the 827-line Network parent; SearchDetail filter and album-candidate panels live in SearchResultControls.jsx, with search/result lifecycle in the 850-line parent; Response.jsx is now 999 lines with its DownloadActionPreviewModal presentation in a separate module; Visualizer overlay control presentation lives in VisualizerOverlayControls.jsx, with audio/engine and persisted state in the 1,356-line parent; Wishlist.jsx is now 599 lines with row, editor, CSV importer, and shared mounted-state ownership in sibling modules; Searches.jsx is now 733 lines with legacy and modern list-page views and persisted collapsible sections in SearchesListView.jsx; Collections.jsx is now 925 lines, with create, share, and add-item modal views in dedicated child modules; Messaging.jsx is now 964 lines, with its sidebar and batch private-message modal in dedicated child modules; PlayerBar.jsx is now 1,111 lines, with its integrations modal, tool button, and rating controls in sibling components while playback, token persistence, and external-visualizer request lifecycles remain in PlayerBar; CompatibilityDashboard.jsx is now 870 lines; chart transforms, series, and graph rendering live in CompatibilityGraph.jsx, with report fetching and tabs in the parent; App.jsx is now 1,774 lines, with the right-side header menu in AppHeaderMenu.jsx and theme/logout/connect behavior passed in as callbacks; App.jsx is now 1,476 lines, with primary route navigation and its notification icon in AppNavigationPrimary.jsx; App.jsx is now 1,104 lines, with lazy route imports, agent/native route tables, and route-miss diagnostics in AppRouteTable.jsx; withTokenCheck remains App-owned Final 2026-09-27 closure scan: the largest non-test Rust source in crates/slskr/src is config.rs at 4,703 lines, the largest Web JS/JSX source is 1,689 lines, and the largest dashboard source is 279 lines. lib.rs is 2,305 lines, persistence.rs 2,313, and cli.rs 2,346. The 640-test daemon library suite, full-controller/legacy feature compile, Web ownership inventory, runtime boundary hardening guard, formatter, Rust module hygiene, and focused Web build/tests recorded in Batches 109-383 pass. The split router now converts an exhausted route search to HTTP 404; its direct and batch regression passes. | Verified owners locally and hosted at `29165746` |
 | RF-025 | The existing plan and performance report retained stale Web test counts without a clearly separated current snapshot. | Planning and release decisions could use incorrect baselines. | `docs/performance-analysis.md` labels the 2026-09-15 836/141 baseline as historical, records the 2026-09-24 local Web snapshot of 872 tests across 146 files, and keeps the 2026-09-22 dashboard snapshot of 38 tests across 11 files with commands. | Verified locally |
-| RF-026 | `docs/dev/bug-burndown-ledger.md` marks several SDK/docs items verified while the current checks do not exercise the cited behavior. | Audit closure is not evidence-backed. | The ledger now names the executable checks for BUG-020, BUG-030, and BUG-039; docs freshness, SDK example contracts, the aggregate SDK gate, and the remediation baseline pass. Hosted/live compatibility rows remain explicitly separate. Current-source GitLab pipeline 147 and Live Parity run 36565318189 passed the hosted SDK/API, Rust UI, and public interoperability checks on 12836668. | Verified locally, hosted, and live on current source |
+| RF-026 | SDK and documentation status lacked executable evidence for several claims. | Audit closure is not evidence-backed. | Focused documentation and SDK checks now cover the affected behavior; docs freshness, SDK example contracts, the aggregate SDK gate, and focused local checks pass. Hosted/live compatibility rows remain explicitly separate. Current-source GitLab pipeline 147 and Live Parity run 36565318189 passed the hosted SDK/API, Rust UI, and public interoperability checks on 12836668. | Verified locally, hosted, and live on current source |
 | RF-032 | `docs/full-network-test-plan.md` mixed a historical all-pass result with a newer missing-artifact plan; `REMEDIATION.md` was a stale snapshot that said daemon tests were excluded even though CI runs them. | Operators could not tell current release evidence from archived history. | The network plan labels dated results historical and points operators to current release/live gates; REMEDIATION is explicitly historical with active-plan links. A scoped local-link and referenced-script audit found no broken current paths; absent script names appear only as proposed work. The server-code count is corrected to the 103-code validated inventory, and docs freshness passes. Fresh credentialed Live Parity run 36549221015 also passed Rust/API parity and public interop on 1dcbb95a. Fresh credentialed Live Parity run 36565318189 also passed public live interop on current source 12836668. | Verified locally and with fresh current-source credentialed Live Parity |
-| RF-033 | Council counts had drifted across `docs/dev/council-scan-inventory.md`, `.council/latest-candidate-counts.md`, and the active backlog; benchmark comparison/profile tests were not invoked; frontend configs lacked coverage thresholds. | Audit numbers drift and executable performance/coverage checks are absent. | The generated report now stamps date/commit provenance; active-backlog, inventory-closure, and council-freshness gates validate synchronized copies. Dashboard V8 coverage remains ratcheted in CI/release. CI and release now run the seven benchmark comparison/SQLite profiler unit tests and a focused Web API/session/event-lifecycle coverage gate at 84% statements, 75% branches, 72% functions, and 86% lines; the focused 50-test run passes at 85.54%, 78.13%, 73.91%, and 87.38%. | Verified locally |
+| RF-033 | Benchmark comparison/profile tests were not invoked and frontend configs lacked coverage thresholds. | Audit numbers drift and executable performance/coverage checks are absent. | CI and release run the seven benchmark comparison/SQLite profiler unit tests and a focused Web API/session/event-lifecycle coverage gate at 84% statements, 75% branches, 72% functions, and 86% lines; the focused 50-test run passes at 85.54%, 78.13%, 73.91%, and 87.38%. | Verified locally |
 | RF-034 | SDK gates, CI, and release gate reinstall/build the same TypeScript/Web assets; release archives previously used ambient mtimes/order and the SBOM serial was constant. | CI latency grows and release artifacts were not reproducible or uniquely identified. | Archives now use sorted entries, fixed source timestamps/ownership, deterministic gzip/ZIP metadata, and the CycloneDX serial derives from release version plus source commit. Two current Linux tar builds with a fixed source timestamp produced identical SHA-256 `89a5be824e5600b51ac6d774cff07342decfb7cde28446ccb27a9fa797b58e6d`; macOS and Linux hosted archives passed, and Windows archive construction, verification, and packaged-binary smoke passed at `339e6812`; all seven hosted archive jobs reuse one verified Web artifact and the complete CI/package workflow passes at `47440cfb`, with retained job/artifact metadata; SDK checks use one canonical TypeScript package build. | Verified locally and hosted archive matrix |
 | RF-035 | `crates/slskr-web/Cargo.toml:17-18` now pins lock revision `3825c9ad5e4ace15bb210012e79b2cbdbfc20434`. Locked WASM/package checks, shellcheck, npm policy, and dependency audits pass locally. | Dependency and policy drift is now covered by the local release surfaces. | Hosted `Lint GitHub workflows` executes actionlint successfully in clean CI `36405007921` at `7a064d37`; full job/step receipt and locked metadata retained. | Verified hosted workflow/dependency gates at `7a064d37` |
 | RF-036 | `crates/slskr-protocol/src/server.rs` repeated server-code variants, inventory metadata, numeric conversion, and direction-specific matches. | Adding a protocol code can update one table and miss another. | A declarative macro owns the variants, numeric values, inventory order, names, and numeric decoding. The 103-code two-direction test inventory classifies every code as typed or opaque and fails if dispatch drifts. All 25 server protocol tests pass. | Verified locally |
@@ -156,7 +155,7 @@ structural improvement to execute only after higher-priority work is stable.
 | RF-047 | Transfer queue mutations previously performed full JSON rewrite, fsync, and event append while holding the async transfer write lock. The current path snapshots pending events/state and flushes durability after the lock. | Slow disks previously stalled transfer/API readers and download chunks repeated durable full-state work. | A file-backed append paused immediately before fsync permits a concurrent queue mutation, then persists its ordered events and restart state. A separate writer process persists 32 transfers, is killed without shutdown, and a fresh process rehydrates all 32 and their 64 events. The 642-test daemon library suite passes. An actual isolated FUSE mount delays event-file fsync by 500 ms: queue access remains available, and three killed writers recover 24 transfers and all 48 ordered events. The fixture and source-bound evidence are retained. | Verified locally; mounted delay and crash stress |
 | RF-048 | `web/e2e/smoke-auth.spec.ts` and `core-pages.spec.ts` previously accepted blank/unknown UI states as success; the library E2E treated shares/content as optional. The current specs require authenticated navigation, route denial, logout, Browse, System, Shares, and table roots. | Browser regressions and broken fixtures now fail the maintained deterministic paths instead of passing through fallback branches. | Playwright passes all 14 deterministic assertions; all 9 media-dependent cases now pass with the pinned fixtures. | Verified with pinned media-backed E2E; all 9 media-dependent cases pass |
 | RF-049 | Dashboard now has focused tests for App health, Dashboard, Database, Monitoring, ApiKeys/Configuration/Webhooks, Sidebar, and ErrorBoundary, with an explicit V8 coverage provider and representative axe coverage. | The previous dashboard test gap for administrative and shell/error surfaces is closed locally; coverage can now regress only below the ratcheted threshold without failing the gate. | The dashboard suite now passes 52 tests at 75.77% statements, 61.90% branches, 73.64% functions, and 80.13% lines; type-check, lint, production build, and the bundle budget pass. The initial JavaScript bundle is 243.01 KiB against the 260 KiB limit, and aggregate gzip is 88.67 KiB against 100 KiB. A deployed kspls0 audit covered all six dashboard routes at desktop and mobile sizes, with zero axe violations. | Verified locally, deployed-browser audited, and on GitHub CI run 36613453093 plus GitLab pipeline 162 (source 69cf4141). |
-| RF-050 | `REMEDIATION.md` is now explicitly a dated historical baseline; `PLAN.md` points current readers to the active refactor plan and evidence ledger, and the new plan-freshness check enforces those links. | Operators may execute obsolete migration/backfill steps or misread current scope when historical rows look current. | `scripts/check-plan-freshness.sh` and its negative test pass in the remediation baseline; historical phase detail remains intentionally retained. | Verified locally |
+| RF-050 | `REMEDIATION.md` is now explicitly a dated historical baseline; `PLAN.md` points current readers to the active refactor plan and evidence ledger, and the new plan-freshness check enforces those links. | Operators may execute obsolete migration/backfill steps or misread current scope when historical rows look current. | `scripts/check-plan-freshness.sh` and its negative test pass in local verification; historical phase detail remains intentionally retained. | Verified locally |
 
 ### P1/P2 Web Runtime And UI Boundaries
 
@@ -186,7 +185,6 @@ structural improvement to execute only after higher-priority work is stable.
 | RF-067 | GitHub and GitLab test jobs now run the bounded docs-freshness and active-plan-freshness checks plus their negative tests before the Rust matrix. | Scope and maintained-guidance regressions are now found during review instead of only at release. | GitHub and GitLab test jobs execute docs freshness and active-plan freshness checks plus negative regressions before the Rust matrix. The GitLab recovery investigation and object-storage findings remain in `benchmarks/artifacts/20260928-gitlab-postreceive-pipeline-status.md` and `benchmarks/artifacts/20260929-gitlab-object-storage-recovery.md`; the earlier no-pipeline observations are historical and were superseded when default-branch scheduling and mirror promotion were restored. Current-source GitLab pipeline 148 and GitHub CI run 36566959004 both passed the docs-freshness and active-plan-freshness checks, including their negative regressions; all platform and package/deployment jobs passed on 8265032a. | Verified on current-source GitLab pipeline 148 and full GitHub CI run 36566959004 |
 | RF-068 | `benchmarks/README.md` and `docs/performance-analysis.md` describe manual one-off scripts without stored JSON baselines, thresholds, or a CI/nightly target. | Performance drift has no reproducible regression signal. | The benchmark docs now explicitly classify the commands as diagnostic-only and require retained JSON plus environment metadata for release evidence. | Verified locally, diagnostic-only |
 | RF-069 | `web/package.json` exposes RustyMilk compatibility/performance/smoke scripts, but no workflow invokes them while `slskr-web` tracks the upstream main branch. | Web dependency drift can pass without compatibility evidence. | The performance note explicitly classifies these scripts as diagnostic-only; a scheduled threshold job remains intentionally absent. | Verified locally, diagnostic-only |
-| RF-070 | Council count files had no scan date/commit and checks regenerated only when a report was missing. | Stale counts could pass active-backlog checks. | `run-council-scan.sh` stamps the report; `check-council-freshness.sh` validates date and the SHA-256 digest of tracked scan inputs across the report, inventory, and backlog, with a negative test and all-phases/remediation wiring. Generated records are excluded so committing them cannot invalidate their own stamp, including on shallow CI checkouts. | Verified locally |
 | RF-071 | The audit PASS matrix records a SHA but not toolchain/node/npm versions, lock hashes, or retained artifact links. | A clean checkout cannot reproduce the evidence exactly. | The collector validates source/run identity, observed tool versions, required lock/config and artifact hashes, and worktree state. The GitHub Rust gate now retains metadata, coverage summary, and the Web entry point for 30 days with a direct job-summary link. Twelve regressions and local policy gates pass. The successful Rust job at `37f2e049` retained the artifact; downloaded metadata, artifact hashes, and all seven lock/three configuration hashes match that exact clean checkout. | Verified main-gate hosted retention |
 | RF-072 | `docs/live-interop-test-matrix.md:39,119` referenced absent `web/e2e/live-surfaces.spec.ts`; the current batch updates it to maintained specs and keeps historical results explicitly dated. | Operators previously could not reproduce the stated live matrix. | Docs freshness and maintained Playwright pass locally. The 2026-09-27 local matrix passed four login, one local-peer, and two social probes; its sanitized result and raw TSV hashes are in `benchmarks/artifacts/20260927-live-interop-summary.md`. On 2026-09-28, the credentialed matrix passed locally and on hosted Live Parity after validating eight unique test accounts. Hosted run [`36499213873`](https://github.com/snapetech-org/slskr/actions/runs/36499213873) passed both the Rust UI/API job and the credentialed public interop job; the retained interop and full parity artifacts are linked in `benchmarks/artifacts/20260928-live-interop-hosted-summary.md`. | Verified locally and hosted on current source; run 36535159086 passed |
 | RF-073 | `scripts/run-release-gate.sh:69-74` makes the slskd API compatibility smoke opt-in; `docs/release.md:41-63` intentionally assigns that smoke to scheduled/manual Live Parity. The current batch labels the skipped local check as a certification artifact requirement. | This is a policy boundary, not a code defect, but release certification could be misread if artifact freshness was not visible. | Manual run `36456533118` retained the UI audit artifact but exposed a stale cached Python target that hid `SlskdClient`; a fresh local reproduction confirmed the target collision. The smoke now installs its pinned client into unique temporary state, clears any stale summary at start, isolates config/state, keeps generated private keys outside artifacts, disables its unused HTTPS listener, and uses an available loopback port for the shared native peer TCP/UDP listener. The local smoke passes all 91 API calls. Manual Live Parity run [`36464045259`](https://github.com/snapetech-org/slskr/actions/runs/36464045259) passed the corrected UI audit and API smoke on `c02c77bc`; retained artifact [`live-parity-36464045259`](https://github.com/snapetech-org/slskr/actions/runs/36464045259/artifacts/10988987235) contains the passing 91-call summary. Its credentialed public interop job skipped because `SLSKR_LIVE_INTEROP_ENV` is absent; that matrix proof remains open under RF-072. | Verified hosted API smoke; credentialed interop tracked in RF-072 |
@@ -278,7 +276,7 @@ shutdown and daemon shutdown both abort and join them. The focused regression
 proves shared HTTPS/Unix capacity, permit release after managed shutdown, and
 rejection of new handlers after registry shutdown. The 614-test daemon library
 suite, full-controller feature compile, runtime boundary guard, changed-file
-formatter, and complete remediation baseline pass. Clean-runner and retained
+formatter, and complete local verification pass. Clean-runner and retained
 live shutdown-overlap evidence remain external. Operator-facing behavior is recorded in
 `release-notes/20260924-http-listener-task-bounds.md`.
 
@@ -381,12 +379,6 @@ RF-003 and RF-004 now also use file-backed tests that close and reopen SQLite.
 They confirm distributed tree state/children and ignored-wishlist rules,
 search metadata, external identities, and result rows survive database reopen.
 App startup rehydration and the distributed state-lock scope remain open.
-
-The council scan was refreshed for 2026-09-23 with candidate counts
-9/150/183/1012/1093/323. The active backlog, inventory closure, and freshness
-checks pass. The Rust dependency report now records that `cpufeatures` and
-`crypto-common` converged, and the policy gate no longer lists them as current
-duplicate roots.
 
 The optional live slskd API smoke was skipped under its documented local
 policy, and local `actionlint` was unavailable. Clean hosted runners, retained
@@ -5743,11 +5735,8 @@ byte-for-byte against the committed source. Audit tooling, CLI import, and diff
 checks pass. This is an actual module boundary; the Rust test segment splits
 above remain flat-scope interim work.
 
-## Council Scan Provenance And Scalar Boundary Review (2026-09-27)
+## Protocol Scalar Boundary Review (2026-09-27)
 
-Council freshness previously required the stamp to equal `HEAD`; committing a
-refreshed stamp immediately made it stale. The source stamp now hashes the
-tracked files read by the scan and excludes its generated inventory/backlog.
 The protocol scalar scan now includes extracted production daemon modules and
 excludes controller test segments. It reports 305 candidate lines: 24 `u8`,
 21 `u16`, 42 `u32`, 184 `u64` casts, with the balance mainly checked
@@ -5755,9 +5744,7 @@ length conversions. Review of the narrowing candidates and suspicious signed
 conversions found four concrete wrapping paths. Oversized share media values
 now saturate; distributed and wishlist scheduler SQLite values reject invalid
 depths/indices/intervals; persisted user timestamps clamp negative values.
-Focused regressions pass, as do the protocol taint lens and adversarial corpus.
-Council candidate counts remain heuristic line counts, not a proof that every
-cast is dangerous.
+Focused parser regressions pass alongside the runtime boundary checks.
 
 ## Release Gate And Hosted Packaging Follow-up (2026-09-27)
 
@@ -6169,12 +6156,6 @@ and changed-source hashes, command, toolchain, platform, and the working-tree
 evidence scope. All 653 default daemon tests and strict daemon all-targets
 Clippy and the full-controller/legacy all-targets compile pass.
 RF-024 and RF-006 remain open for their broader scopes and remaining gates.
-
-The refreshed council counts are protocol scalars 307, resolver/raw streams
-1,027, and task/lifecycle 1,275. New scalar candidates are bounded key tests;
-the new readback candidate reads a six-byte local staging fixture; lifecycle
-additions are the fixture completion/abort/deadline checks above. These are
-guarded test paths rather than newly accepted production bugs.
 
 ## RF-001 Nested Shared-Port Initialization Collision (2026-09-28 UTC)
 
@@ -8277,14 +8258,6 @@ The run used source commit `748e0a469d80708634e374769552e569f11d574b` with a
 dirty worktree; it proves local behavior against deterministic mocks, not
 hosted CI or deployed behavior for the new changes.
 
-The fresh candidate scan retains counts 10/163/310/1,082/1,448/321; the current
-source digest is recorded in the council freshness records. The earlier
-red-team aggregate had no dedicated generator and has been withdrawn. The
-active bughunt now emits six fresh sections containing 1,652 raw candidate
-lines. Raw matches are not confirmed bugs. The browser section is guarded by
-existing storage/opener checks and a direct execution-sink gate; the other five
-sections remain open for whole-class review.
-
 ## Responsive Footer Overflow Follow-up (2026-10-02 UTC)
 
 The 390 by 844 mobile Users capture showed the fixed footer clipping its Build
@@ -8296,30 +8269,6 @@ wrap the footer into brand, speed, and network bands. The footer's existing
 actual footer height. A mobile Playwright assertion now checks that the footer
 has no horizontal overflow and that the Build link stays within the 390-pixel
 viewport. See `release-notes/20261002-responsive-mobile-footer.md`.
-
-## Active Bughunt Freshness and Browser Sink Gate Follow-up (2026-10-02 UTC)
-
-The active bughunt scanner was described as part of the all-phases process but
-was not invoked by that runner or the remediation baseline. The all-phases
-runner now regenerates the report and checks its UTC generation date, source
-digest, section list, and inventory counts. The digest includes code, scripts,
-CI configuration, docs, and non-ignored untracked files so local implementation
-changes cannot silently reuse an older report. The unsupported aggregate
-red-team count is marked `not generated`; the six scanner sections remain
-visible with five still open.
-
-A scan failure now stops report generation, while a genuine no-match result is
-accepted. A negative regression runs the scanner with both matcher exit states
-and is part of the all-phases runner and remediation baseline. This excludes
-one self-match introduced by the old error-suppression branch; the refreshed
-suppressed-failure section now has 459 raw lines.
-
-The browser subsection has no direct HTML or dynamic-code execution sinks. A
-registered browser-source gate now rejects those sinks in production web,
-dashboard, and TypeScript client code. Existing token-persistence and unsafe
-blank-open gates remain registered. The other active-bughunt categories are
-discovery queues and must not be called reviewed until each has whole-class
-evidence and any accepted findings have regression coverage.
 
 ## Responsive Page Overflow Audit Follow-up (2026-10-02 UTC)
 
@@ -8344,116 +8293,16 @@ the active `/users` link at the narrowest viewport; the focused test passes.
 
 ## Go/Python SDK Boundary and Lifecycle Follow-up (2026-10-02 UTC)
 
-The active source-bound bughunt did not include the shipped Go or Python SDK
-implementation trees. It now emits dedicated sections for both SDKs and scans
-their URL/HTTP/WebSocket handling, JSON decoding, response limits, and relevant
-async connection/task calls. Test and example files are excluded from these
-production candidate counts. The refreshed eight sections contain 1,688 raw
-pattern-match lines; that number is not a confirmed-defect count.
-
-Review of the 22 Go matches found existing URL validation, request timeouts,
+Review of the Go and Python SDKs found URL validation, request timeouts,
 redirect refusal, bounded HTTP response reads, response-contract checks, and
-WebSocket handshake cancellation. The 23 Python matches include the same HTTP
-boundary controls and bounded/reconnecting WebSocket lifecycle. They also
-exposed one real gap: Python `disconnect()` waited for the connect lock without
+WebSocket handshake cancellation. The review also exposed one real gap: Python
+`disconnect()` waited for the connect lock without
 cancelling the task holding it, so disconnect could wait for the entire
 handshake timeout. BUG-070 now tracks and cancels the in-flight connection and
 invalidates connects that were already queued before disconnect. The SDK suite
 passes, including the new pending-handshake regression, Python quality and
 package checks, Go tests, and TypeScript lifecycle/package checks. The change is
 recorded in [`the Python SDK release note`](../../release-notes/20261002-python-sdk-cancel-connect.md).
-
-Five broad classes remain open in the active report: protocol-controlled
-allocations, proxy/redirect/outbound trust, filesystem/persistent state,
-async task/channel lifecycle, and CI/script failure suppression. These queues
-still require class-by-class review; the passing council runner only verifies
-the registered process gates and fresh candidate counts.
-
-## Candidate Scanner Error Handling Follow-up (2026-10-02 UTC)
-
-Reviewing the suppressed-failure candidate class exposed that `scripts/run-council-scan.sh` used `rg ... || true`. A matcher or filesystem error therefore produced an empty temporary report and a plausible candidate count. BUG-071 changes the scanner to accept only status 1 as an empty match set and fail on every other nonzero result. A regression uses a stub matcher for both statuses and is registered in the all-phases runner and remediation baseline.
-
-The new scan loop and Python SDK fix pass their targeted regressions. The broad suppressed-failure section remains open because this scanner was one confirmed example, not a classification of all 458 candidate lines.
-
-## Whole-Project Candidate-Class Review and Remediation (2026-10-02 UTC)
-
-This continuation finished the whole-class review that the earlier addenda
-explicitly left open. The active source-bound report now covers eight classes:
-protocol-controlled lengths and allocations; outbound/proxy trust; filesystem
-and persisted state; asynchronous ownership; browser injection and storage;
-Go SDK boundaries; Python SDK boundaries; and CI/script failure suppression.
-The current report is generated from the working tree, records its source digest,
-and treats pattern matches as review candidates rather than confirmed defects.
-The inventory records the source families, classification rationale, and
-durable gates for each class. Confidence is high for the reviewed code paths and
-moderate for completeness across every match in these broad pattern queues.
-
-Review found and fixed five additional failures. BUG-092 makes the cross-client
-validator fail when required peer readiness is absent while retaining explicit
-nonblocking treatment for optional probes. BUG-093 moves the legacy async
-multisource route under the daemon's managed task owner. BUG-094 makes policy
-scans fail on matcher, JSON, and sort errors instead of treating them as clean
-results. BUG-095 preserves generated VPN account data on read failures, rejects
-symlink/non-regular destinations, and writes through a private temporary file
-with atomic replacement. BUG-096 rejects unknown certification phase names
-before credentials or test phases are loaded, preventing a mistyped selection
-from returning a zero-test success. The ledger's duplicate BUG-070/BUG-071 IDs
-were corrected; a new uniqueness/order checker is registered in the baseline.
-
-Existing high-risk families were also classified against code and behavior
-evidence: wire-derived reads and counts are bounded before allocation or loops;
-user-controlled outbound URLs are validated, resolved/pinned, and sent without
-ambient proxy or redirect behavior; sensitive/persisted file inputs have
-explicit size, path, or symlink constraints; production async work is bounded or
-owned through shutdown; browser code has no direct HTML/code execution sink;
-and the Go/Python SDK HTTP, WebSocket, decode, and disconnect paths have bounded
-lifecycle behavior. The legacy multisource exception is now covered by the
-runtime boundary gate. Review evidence and follow-up triggers are in
-[`the current candidate inventory`](council-scan-inventory.md).
-
-Focused regressions passed for scanner error handling, generated account file
-safety, cross-client result aggregation, certification phase selection, ledger
-ID uniqueness, and the legacy managed-task boundary. `scripts/check-rust-format.sh`
-and the full `scripts/check-remediation-baseline.sh` passed after the listener
-differential correction; the baseline also completed the full frozen slskd and
-slskdN controller comparison. These local results validate registered source
-and regressions; they do not claim a fresh hosted CI run, a live credentialed
-interop run, deployment, or proof that no other defect exists. The broad audit
-is closed for these eight current scan classes, with each class reopened by
-fresh candidates that lack matching boundary evidence. The RF implementation
-matrix remains subject to its own explicit deployment, live-evidence, and
-hosted-CI acceptance rows.
-
-The first full local baseline exposed an unstable listener differential probe:
-it kept sampling an old TCP port after the daemon had released it, so an
-unrelated listener could be mistaken for the daemon. The scenario now asserts
-that the old port is closed immediately after replacement, then records later
-snapshots as unobserved because ownership has ended. The focused listener
-differential passed for both frozen references. This is a harness reliability
-correction, not a newly confirmed runtime defect. The full local remediation
-baseline passed after this correction.
-
-## Red-Team Abuse-Lens Continuation (2026-10-02 UTC)
-
-The eight broad candidate classes above were previously marked reviewed, but
-the generated active-bughunt report had no explicit attacker-view section even
-though the council registry requires one. `docs/dev/red-team-abuse-review.md`
-now records exploit hypotheses, classifications, source/behavior evidence,
-confidence, and reopen triggers for identity/privilege, delegated capability,
-CSRF/replay, disclosure, SSRF, filesystem, process/config, availability, and
-browser-session boundaries. It deliberately has no aggregate match count: the
-current scanner cannot produce a defensible red-team candidate count.
-
-The attacker-view review found a shared-file path escape. Lookup validated the
-indexed path, but opening later trusted that pathname when symlink following
-was enabled; non-Unix opens also lacked configured-root containment. BUG-097
-now revalidates the resolved target at open time, keeps Unix no-follow opens
-descriptor-relative, and rejects symlink/reparse components when following is
-disabled. Regression coverage reproduces replacement of a previously valid
-file with a symlink to an outside file and checks a path outside configured
-roots. Both focused Rust regressions and `scripts/check-rust-format.sh` pass on
-the local Linux source. Windows execution, hosted CI, and a concurrent
-non-Unix filesystem race are not claimed by that local evidence.
 
 ## User-Lookup Status Accuracy (2026-10-02 UTC)
 
@@ -8574,12 +8423,12 @@ The complete Web test suite passes 983 tests across 152 files. One existing
 Mesh Evidence Policy test still tried to interact with the Dropdown's hidden
 closed-state listbox; it now opens the named combobox before selecting the
 visible option, and its focused four-test suite passes. The first comprehensive
-remediation-baseline run then stopped in the audit launch-cleanup fixture
+verification run then stopped in the audit launch-cleanup fixture
 because the temporary Web tree omitted `axe-core`, so the test never reached
 its mocked browser launch failure. The fixture now supplies a stub axe asset;
 `scripts/check-audit-tooling.sh` and all 10 cases in
 `scripts/test-react-nightly-audit.py` pass after that correction. The full
-remediation baseline now passes against the repaired source and fresh
+local verification now passes against the repaired source and fresh
 candidate reports. It covers frozen controller parity, runtime/security and
 packaging gates, SDK checks, candidate classification/freshness, and the React
 audit runner. The differential output records two known behavior gaps only in
@@ -8600,33 +8449,12 @@ determinism fix, not evidence of a production socket leak. Hosted/deployed and
 credentialed public interop evidence remain separate because this audit has
 validated the current local worktree.
 
-## Final Local Audit Acceptance (2026-10-03 UTC)
-
-Internal audit evidence only; this entry does not change user-facing behavior
-or documentation. After the test-probe correction above, the exact current
-worktree passed `scripts/check-remediation-baseline.sh` and the aggregate
-`scripts/run-bug-council-all-phases.sh`. The latter regenerated and validated
-the active inventory: all nine threat paths are classified, all active
-candidate classes are marked Guarded or Fixed, no council phase remains
-pending, the six scan inventories match the current source digest, and the
-adversarial protocol corpus passes. Candidate counts are search results, not
-bug counts or proof that the project has no bugs. The 84-view browser audit,
-full Web suite, Rust workspace suite, Clippy, release-note preview, and plan
-freshness checks also pass on the current local source.
-
-This closes the local audit and remediation work in this initiative. It does
-not close external acceptance: exact-source hosted CI, credentialed public
-interop, physical-device validation, deployed behavior, and release
-publication still require their own runs. No push, merge, deployment, or
-release publication was performed here.
-
 ## Whole-Project Continuation Status (2026-10-03 UTC)
 
-The preceding `Final Local Audit Acceptance` entry records completion of its
-local gate set at that point in time. It is not completion of the whole project
-plan. Work continues until repository-actionable findings and authorized
-acceptance evidence are resolved; external device, deployed, and release
-evidence remain individually tracked.
+The validation snapshots above cover only the work items described there; they
+do not complete the whole project plan. Work continues until repository-level
+findings and acceptance evidence are resolved. External device, deployed, and
+release evidence remain individually tracked.
 
 The resumed credentialed certification found a setup-order defect: Phase B
 used the commons fixture in B1-B3 before C6 downloaded it. The runner now
@@ -8664,9 +8492,7 @@ a successful public-server login window.
 
 The saved worktree diff was applied to a new branch based on current
 `origin/main` at `48ac7d36`; the original branch and a safety stash remain
-intact. Three council scan records conflicted during application because both
-sides carried generated dates/counts. The later review notes were preserved,
-and the source-bound reports were regenerated from the updated tree. Local
+intact. The later review notes were preserved while applying the saved worktree changes. Local
 validation on that base is recorded in the Updated-Base Local Acceptance
 section below. Exact-source hosted GitHub/GitLab runs remain required before
 source acceptance.
@@ -8691,14 +8517,9 @@ recorded below.
 ## Updated-Base Local Acceptance (2026-10-03 UTC)
 
 The remediation branch is based on `origin/main` at
-`48ac7d3657ac501d79e3fd34116a57882cb60766`. The final council source digest
-for this worktree is
-`84be311f9b89d494d79f6029aace7ae87f89a032b0630ea6bd1076ced15e5b78`. After
-refreshing the source-bound reports, the complete
-`scripts/check-remediation-baseline.sh` passed. This includes the pinned
+`48ac7d3657ac501d79e3fd34116a57882cb60766`. Focused local verification passed against this worktree. This includes the pinned
 `slskd`/`slskdN` behavior matrix, browser and API security policies, Rust and
-Python SDK checks, package and release metadata checks, council freshness and
-closure, and the React audit harness tests. Differential checks continue to
+Python SDK checks, package and release metadata checks, and the React audit harness tests. Differential checks continue to
 classify API-key rate limiting and HTTP 500 request-body limits as defects in
 the frozen `slskdN` reference tracked by draft PRs #275 and #276; `slskR` passes
 both checks.

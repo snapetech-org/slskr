@@ -29,7 +29,7 @@ if [[ -f PLAN.md ]] && ! rg -n -F 'docs/dev/refactor-audit-20260915.md' PLAN.md 
   status=1
 fi
 
-if [[ -f REMEDIATION.md ]] && ! rg -n '^# slskr Historical Remediation Baseline$' REMEDIATION.md >/dev/null; then
+if [[ -f REMEDIATION.md ]] && ! rg -n '^# slskr Historical Remediation Notes$' REMEDIATION.md >/dev/null; then
   printf 'plan freshness check failed: REMEDIATION.md is not marked as historical\n' >&2
   status=1
 fi

@@ -35,4 +35,4 @@ or if a pinned action or reusable workflow is missing from this ledger.
 | `snapetech-org/slskr/.github/workflows/web-assets-validation.yml` | `713676d58f1601a8079257f3f4aeefdc0de7b7f6` | `713676d58f1601a8079257f3f4aeefdc0de7b7f6` | Audited reusable workflow for fork-only JIT web asset validation. |
 
 To update an action, resolve the new trusted ref, replace the workflow SHA and the
-matching ledger row in the same change, and run the remediation baseline.
+matching policy row in the same change, and run focused verification.

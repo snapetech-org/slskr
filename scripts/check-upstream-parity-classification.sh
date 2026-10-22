@@ -131,7 +131,7 @@ check_repo() {
         src/*|config/*)
           requires_explicit=1
           ;;
-        docs/*|memory-bank/*|tests/*|test/*|examples/*|.github/*|packaging/*|Formula/*|scripts/*|tools/*|vendor/*|publish/*|bin/*|analyzers/*|.council/*|.cursor/*|.kilo/*|*.md|.gitlab-ci.yml|flake.nix|Dockerfile|coverage-baseline.json|task_validation_*|.gitignore|.dockerignore)
+        docs/*|memory-bank/*|tests/*|test/*|examples/*|.github/*|packaging/*|Formula/*|scripts/*|tools/*|vendor/*|publish/*|bin/*|analyzers/*|.cursor/*|.kilo/*|*.md|.gitlab-ci.yml|flake.nix|Dockerfile|coverage-baseline.json|task_validation_*|.gitignore|.dockerignore)
           ;;
         *)
           requires_explicit=1
@@ -203,7 +203,7 @@ check_delta_repo() {
         src/*|config/*)
           requires_explicit=1
           ;;
-        docs/*|memory-bank/*|tests/*|test/*|examples/*|.github/*|packaging/*|Formula/*|scripts/*|tools/*|vendor/*|publish/*|bin/*|analyzers/*|.council/*|.cursor/*|.kilo/*|*.md|.gitlab-ci.yml|flake.nix|Dockerfile|coverage-baseline.json|task_validation_*|.gitignore|.dockerignore)
+        docs/*|memory-bank/*|tests/*|test/*|examples/*|.github/*|packaging/*|Formula/*|scripts/*|tools/*|vendor/*|publish/*|bin/*|analyzers/*|.cursor/*|.kilo/*|*.md|.gitlab-ci.yml|flake.nix|Dockerfile|coverage-baseline.json|task_validation_*|.gitignore|.dockerignore)
           ;;
         *)
           requires_explicit=1

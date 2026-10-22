@@ -4,7 +4,6 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
 
-ledger="docs/dev/bug-burndown-ledger.md"
 status=0
 
 if rg -n '^#!\[allow\([^]]*dead_code' crates --glob '!target/**'; then
@@ -18,11 +17,6 @@ for file in crates/slskr/src/lib.rs crates/slskr/src/webhooks.rs crates/slskr/sr
     status=1
   fi
 done
-
-if ! rg -n '^\| BUG-025 .* \| Verified \|$' "$ledger" >/dev/null; then
-  printf 'rust module hygiene failed: BUG-025 must stay verified in council ledger\n' >&2
-  status=1
-fi
 
 # Contract suites must retain real module ownership after RF-024.
 if ! python3 - <<'PY_CHECK'

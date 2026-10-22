@@ -18,13 +18,7 @@ if ! "$python_bin" -c 'import black, flake8, mypy' >/dev/null 2>&1; then
   python_bin="$quality_venv/bin/python"
 fi
 
-ledger="docs/dev/bug-burndown-ledger.md"
 status=0
-
-if ! rg -n '^\| BUG-019 .* \| Verified \|$' "$ledger" >/dev/null; then
-  printf 'python client quality check failed: BUG-019 must stay verified in council ledger\n' >&2
-  status=1
-fi
 
 "$python_bin" - <<'PY'
 import ast

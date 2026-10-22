@@ -29,11 +29,6 @@ if ! rg -n 'trusted_proxy_rate_limit_addr_rejects_spoofed_leftmost_hop' "${contr
   status=1
 fi
 
-if ! rg -n 'BUG-008 .*Verified' docs/dev/bug-burndown-ledger.md >/dev/null; then
-  printf 'rate-limit proxy policy check failed: BUG-008 must be marked verified in the council ledger\n' >&2
-  status=1
-fi
-
 if ! rg -n --fixed-strings -- 'authenticated_rate_limit_user_key' crates/slskr/src/request_security.rs >/dev/null ||
    ! rg -n --fixed-strings -- 'if !utils::is_authorized_from(config, authorization, cookie, remote_addr)' crates/slskr/src/request_security.rs >/dev/null ||
    ! rg -n --fixed-strings -- '.map(|token| rate_limit_user_key(&token))' crates/slskr/src/request_security.rs >/dev/null ||

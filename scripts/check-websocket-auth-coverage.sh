@@ -4,19 +4,7 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
 
-ledger="docs/dev/bug-burndown-ledger.md"
 status=0
-
-require_ledger_item() {
-  local id="$1"
-  if ! rg -n "^\| ${id} \|" "$ledger" >/dev/null; then
-    printf 'websocket auth coverage check failed: %s is missing from council ledger\n' "$id" >&2
-    status=1
-  fi
-}
-
-require_ledger_item BUG-003
-require_ledger_item BUG-004
 
 if ! rg -n 'GET", "/api/events/ws"|websocket_path == "/api/events/ws"' \
   crates/slskr/src/http_connection.rs >/dev/null; then

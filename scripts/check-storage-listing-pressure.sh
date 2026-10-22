@@ -60,11 +60,6 @@ if ! rg -n 'controller_rate_limit_policy\(' crates/slskr/src/http_connection.rs 
   status=1
 fi
 
-if ! rg -n 'BUG-009 .*Verified' docs/dev/bug-burndown-ledger.md >/dev/null; then
-  printf 'storage listing pressure check failed: BUG-009 must be marked verified in the council ledger\n' >&2
-  status=1
-fi
-
 if [[ "$status" -ne 0 ]]; then
   exit "$status"
 fi

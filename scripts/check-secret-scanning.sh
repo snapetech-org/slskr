@@ -4,13 +4,7 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
 
-ledger="docs/dev/bug-burndown-ledger.md"
 status=0
-
-if ! rg -n '^\| BUG-016 .* \| Verified \|$' "$ledger" >/dev/null; then
-  printf 'secret scanning check failed: BUG-016 must stay verified in council ledger\n' >&2
-  status=1
-fi
 
 for ignored in .env web/.env.local .secrets; do
   if ! git check-ignore -q "$ignored"; then

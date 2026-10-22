@@ -4,15 +4,7 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
 
-ledger="docs/dev/bug-burndown-ledger.md"
 status=0
-
-for id in BUG-005 BUG-006 BUG-007; do
-  if ! rg -n "^\| ${id} \|" "$ledger" >/dev/null; then
-    printf 'webhook outbound policy check failed: %s is missing from council ledger\n' "$id" >&2
-    status=1
-  fi
-done
 
 if ! rg -n 'validate_webhook_url_for_registration\(&url\)' \
   crates/slskr/src/route_dispatch_group_1_events.rs >/dev/null ||

@@ -44,15 +44,11 @@ the release is prepared. Do not rewrite audited release history.
 
 - Reduce peak memory during large share scans by moving per-root results into
   the combined index instead of cloning them.
-- [Internal-only] Refresh the active bughunt inventory and date-stamped council
-  evidence for the current source digest.
 
 ## [0.2.73] — 2026-10-18
 
 - Reduce peak memory during large share scans by moving per-root results into
   the combined index instead of cloning them.
-- [Internal-only] Refresh date-stamped council evidence and candidate counts for
-  the current source digest.
 
 ## [0.2.72] — 2026-10-18
 
@@ -61,8 +57,6 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [0.2.71] — 2026-10-17
 
-- [Internal-only] Refresh date-stamped council evidence and candidate counts for
-  the current source digest.
 
 ## [0.2.70] — 2026-10-16
 
@@ -83,26 +77,18 @@ the release is prepared. Do not rewrite audited release history.
 
 - [Internal-only] Make private-runner temporary-file cleanup pass the release
   gate's ShellCheck lint.
-- [Internal-only] Refresh council evidence for the current source digest.
 
 ## [0.2.66] — 2026-10-16
 
-- [Internal-only] Use UTC for council evidence freshness and regenerate the
-  release snapshots for the current scan date and source digest.
 
 ## [0.2.65] — 2026-10-15
 
-- [Internal-only] Regenerate council scan and active-bughunt evidence for the
-  current source digest, then synchronize inventory freshness stamps for the
-  release gate.
 
 ## [0.2.64] — 2026-10-15
 
 - [Internal-only] Replace incomplete default CodeQL coverage with a pinned
   advanced workflow that scans Actions, C/C++, Go, JavaScript/TypeScript,
   Python, Ruby, and Rust.
-- [Internal-only] Refresh the release-gate inventory snapshots to the current
-  source digest and candidate counts.
 
 ## [0.2.63] — 2026-10-15
 

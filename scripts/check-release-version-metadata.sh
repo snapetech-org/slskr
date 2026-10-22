@@ -4,13 +4,7 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
 
-ledger="docs/dev/bug-burndown-ledger.md"
 status=0
-
-if ! rg -n '^\| BUG-015 .* \| Verified \|$' "$ledger" >/dev/null; then
-  printf 'release version metadata check failed: BUG-015 must stay verified in council ledger\n' >&2
-  status=1
-fi
 
 if ! rg -n -F 'internal/unpublished Cargo crates intentionally remain at `0.0.0`' docs/release.md >/dev/null; then
   printf 'release version metadata check failed: docs/release.md must document internal 0.0.0 crate policy\n' >&2

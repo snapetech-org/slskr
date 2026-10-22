@@ -3670,10 +3670,6 @@
       "lines": 138
     },
     {
-      "path": "scripts/check-remediation-baseline.sh",
-      "lines": 138
-    },
-    {
       "path": "web/src/components/Shared/Footer.test.jsx",
       "lines": 138
     },
@@ -4182,10 +4178,6 @@
       "lines": 90
     },
     {
-      "path": "scripts/check-council-sweep-counts.sh",
-      "lines": 89
-    },
-    {
       "path": "crates/slskr/src/session_runtime_owners/incoming_search.rs",
       "lines": 88
     },
@@ -4290,10 +4282,6 @@
       "lines": 82
     },
     {
-      "path": "scripts/run-council-active-bughunt.sh",
-      "lines": 82
-    },
-    {
       "path": "web/src/lib/autoReplace.test.js",
       "lines": 82
     },
@@ -4358,10 +4346,6 @@
       "lines": 79
     },
     {
-      "path": "scripts/check-council-negative-space.sh",
-      "lines": 79
-    },
-    {
       "path": "scripts/probe-natpmp-mapping.sh",
       "lines": 79
     },
@@ -4410,10 +4394,6 @@
       "lines": 76
     },
     {
-      "path": "scripts/scan-bug-council-candidates.sh",
-      "lines": 76
-    },
-    {
       "path": "web/.tmp-slskr-crawl.mjs",
       "lines": 76
     },
@@ -4442,10 +4422,6 @@
       "lines": 75
     },
     {
-      "path": "scripts/check-bug-council-all-phases.sh",
-      "lines": 75
-    },
-    {
       "path": "web/src/components/Search/DiscoveryGraphAtlas.jsx",
       "lines": 75
     },
@@ -4459,10 +4435,6 @@
     },
     {
       "path": "crates/slskr/src/cli_smoke_soak.rs",
-      "lines": 74
-    },
-    {
-      "path": "scripts/check-rust-protocol-taint-lens.sh",
       "lines": 74
     },
     {
@@ -4646,10 +4618,6 @@
       "lines": 67
     },
     {
-      "path": "scripts/check-council-active-backlog.sh",
-      "lines": 67
-    },
-    {
       "path": "web/e2e/harness/MultiPeerHarness.ts",
       "lines": 67
     },
@@ -4722,10 +4690,6 @@
       "lines": 63
     },
     {
-      "path": "scripts/check-council-loop.sh",
-      "lines": 62
-    },
-    {
       "path": "web/src/components/Collections/CreateCollectionModal.jsx",
       "lines": 62
     },
@@ -4764,10 +4728,6 @@
     {
       "path": "web/src/registerServiceWorker.test.js",
       "lines": 61
-    },
-    {
-      "path": "scripts/run-council-scan.sh",
-      "lines": 60
     },
     {
       "path": "web/src/lib/users.test.js",
@@ -4822,10 +4782,6 @@
       "lines": 57
     },
     {
-      "path": "scripts/council-source-digest.py",
-      "lines": 57
-    },
-    {
       "path": "web/src/components/Player/Equalizer.test.jsx",
       "lines": 57
     },
@@ -4867,14 +4823,6 @@
     },
     {
       "path": "scripts/check-audit-tooling.sh",
-      "lines": 55
-    },
-    {
-      "path": "scripts/check-council-freshness.sh",
-      "lines": 55
-    },
-    {
-      "path": "scripts/check-council-inventory-closure.sh",
       "lines": 55
     },
     {
@@ -5178,10 +5126,6 @@
       "lines": 38
     },
     {
-      "path": "scripts/check-remediation-script-registry.sh",
-      "lines": 38
-    },
-    {
       "path": "scripts/check-unsafe-blank-opens.sh",
       "lines": 38
     },
@@ -5247,10 +5191,6 @@
     },
     {
       "path": "scripts/check-typescript-client-package.sh",
-      "lines": 34
-    },
-    {
-      "path": "scripts/run-bug-council-all-phases.sh",
       "lines": 34
     },
     {
@@ -5347,10 +5287,6 @@
     },
     {
       "path": "dashboard/vite.config.ts",
-      "lines": 30
-    },
-    {
-      "path": "scripts/test-check-council-freshness.sh",
       "lines": 30
     },
     {
@@ -5554,10 +5490,6 @@
       "lines": 16
     },
     {
-      "path": "docs/dev/council-calibration/rust-protocol-taint-bad.rs",
-      "lines": 16
-    },
-    {
       "path": "packaging/scripts/push-aur-repo.sh",
       "lines": 16
     },
@@ -5650,10 +5582,6 @@
       "lines": 13
     },
     {
-      "path": "docs/dev/council-calibration/rust-protocol-taint-good.rs",
-      "lines": 13
-    },
-    {
       "path": "scripts/check-release-package.sh",
       "lines": 13
     },
@@ -5743,10 +5671,6 @@
     },
     {
       "path": "packaging/chocolatey/tools/chocolateyinstall.ps1",
-      "lines": 5
-    },
-    {
-      "path": "scripts/run-council-bughunt.sh",
       "lines": 5
     },
     {

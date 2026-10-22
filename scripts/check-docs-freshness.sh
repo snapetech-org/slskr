@@ -4,7 +4,6 @@ set -euo pipefail
 repo_root="${SLSKR_DOCS_FRESHNESS_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 cd "$repo_root"
 
-ledger="docs/dev/bug-burndown-ledger.md"
 status=0
 
 maintained_docs=(
@@ -46,16 +45,6 @@ for path in "${maintained_docs[@]}"; do
     status=1
   fi
 done
-
-if [[ ! -f "$ledger" ]]; then
-  printf 'docs freshness check failed: council ledger is missing: %s\n' "$ledger" >&2
-  status=1
-fi
-
-if [[ -f "$ledger" ]] && ! rg -n '^\| BUG-030 .* \| Verified \|$' "$ledger" >/dev/null; then
-  printf 'docs freshness check failed: BUG-030 must stay verified in council ledger\n' >&2
-  status=1
-fi
 
 stale_patterns=(
   'http_api_'

@@ -4,13 +4,7 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
 
-ledger="docs/dev/bug-burndown-ledger.md"
 status=0
-
-if ! rg -n '^\| BUG-024 .* \| Verified \|$' "$ledger" >/dev/null; then
-  printf 'transfer event growth check failed: BUG-024 must stay verified in council ledger\n' >&2
-  status=1
-fi
 
 for expected in \
   'MAX_TRANSFER_EVENTS_BYTES' \

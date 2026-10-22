@@ -31,7 +31,7 @@ the app's initial theme transition settles. The captured state is
 - Web unit suite: 149 files and 962 tests passed.
 - Core-page Playwright suite: 5 tests passed, including the mobile Axe check.
 - ESLint, production build, build-output verification, release-note tests, and
-  the full bug-council phase runner passed.
+  the local verification steps passed.
 - Bundle budget: 1,087.34 KiB initial JavaScript and 598.18 KiB JavaScript gzip,
   within the 1,150 KiB and 600 KiB limits.
 

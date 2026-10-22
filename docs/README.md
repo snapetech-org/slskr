@@ -120,18 +120,6 @@ The `docs/dev/` directory holds audit ledgers and internal review playbooks:
 
 | Document | Use it for |
 | --- | --- |
-| [Bug council playbook](dev/council-bughunt-playbook.md) | Review and bug-hunt process. |
-| [Council scan inventory](dev/council-scan-inventory.md) | Cross-cutting scan inventory. |
-| [Bug burndown ledger](dev/bug-burndown-ledger.md) | Bug remediation ledger. |
-| [Active backlog](dev/bug-council-active-backlog.md) | Open audit backlog. |
-| [Severity schema](dev/bug-council-severity-schema.md) | Finding severity definitions. |
-| [Scan registry](dev/bug-council-scan-registry.md) | Scan registry and ownership notes. |
-| [Behavior pinning](dev/bug-council-behavior-pinning.md) | Behavior pinning guidance. |
-| [Negative space](dev/bug-council-negative-space.md) | Missing-test and omitted-surface review notes. |
-| [Sibling search](dev/bug-council-sibling-search.md) | Similar-code search process. |
-| [Adversarial fuzz](dev/bug-council-adversarial-fuzz.md) | Fuzz and adversarial-input review notes. |
-| [Roslyn analyzers](dev/bug-council-roslyn-analyzers.md) | Legacy analyzer notes retained for migration context. |
-| [Bug council phases](dev/bug-council-phases.md) | Audit phase plan. |
 | [Refactor and efficiency plan](dev/refactoring-efficiency-plan.md) | Living whole-project refactor backlog and execution status. |
 | [Whole-project refactor audit](dev/refactor-audit-20260915.md) | Evidence snapshot, findings, priorities, and validation requirements from the 2026-09-15 review. |
 | [Refactor handoff](dev/refactor-handoff-20260915.md) | Current dirty-worktree handoff, validation baseline, residual work, and safe resume procedure. |
