@@ -16,10 +16,10 @@ on:
       - main
   workflow_dispatch:
 
-# Preserve main builds; cancel superseded PR checks for the same pull request.
+# Keep every validation attempt isolated so retries are never canceled or conflated.
 concurrency:
-  group: ng-ci-${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.run_id }}-${{ github.event.action == 'edited' && 'metadata' || 'code' }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' || github.event_name == 'pull_request_target' }}
+  group: ci-${{ github.workflow }}-${{ github.run_id }}-${{ github.run_attempt }}
+  cancel-in-progress: false
 
 permissions:
   contents: read
