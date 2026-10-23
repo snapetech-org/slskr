@@ -60,7 +60,7 @@ if [[ "$route_count" -ne 5 ]]; then
   printf 'workflow release policy check failed: unexpected shared runner route count in CI\n' >&2
   status=1
 fi
-for workflow in codeql.yml semgrep-community.yml local-identity-leaks.yml trivy-filesystem.yml; do
+for workflow in codeql.yml semgrep-community.yml trivy-filesystem.yml; do
   workflow_path=".github/workflows/$workflow"
   if [[ ! -f "$workflow_path" ]] ||
      ! rg -n -F 'ng-shared-main-jit' "$workflow_path" >/dev/null ||
@@ -81,7 +81,7 @@ for workflow in .github/workflows/*.yml; do
     continue
   fi
   case "${workflow##*/}" in
-    ci.yml|codeql.yml|local-identity-leaks.yml|semgrep-community.yml|trivy-filesystem.yml) ;;
+    ci.yml|codeql.yml|semgrep-community.yml|trivy-filesystem.yml) ;;
     *)
       printf 'workflow release policy check failed: unexpected shared runner route in %s\n' "$workflow" >&2
       status=1
@@ -138,8 +138,8 @@ for expected in \
   'language: rust' \
   'build-mode: autobuild' \
   'build-mode: none' \
-  'github/codeql-action/init@5e316336eb4f107009e477d4bfbfff13d7250fae' \
-  'github/codeql-action/analyze@5e316336eb4f107009e477d4bfbfff13d7250fae'; do
+  'github/codeql-action/init@9b3254085494b55a0f7c4c2b3d2d52cc712ce370' \
+  'github/codeql-action/analyze@9b3254085494b55a0f7c4c2b3d2d52cc712ce370'; do
   if ! rg -n -F -- "$expected" "$codeql_workflow" >/dev/null; then
     printf 'workflow release policy check failed: CodeQL coverage contract missing: %s\n' "$expected" >&2
     status=1
