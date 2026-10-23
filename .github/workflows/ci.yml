@@ -79,10 +79,10 @@ jobs:
       - uses: Swatinem/rust-cache@f0d9c3887740aee45f6153b24b3a6b815192ec16 # Swatinem/rust-cache@v2
       - name: Prefer rustup toolchain binaries
         run: dirname "$(rustup which cargo)" >> "$GITHUB_PATH"
-      - name: Install ripgrep
+      - name: Install Linux build dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y ripgrep
+          sudo apt-get install -y pkg-config libssl-dev ripgrep
       - name: Build daemon for protocol differential
         run: cargo build --locked -p slskr
       - name: Record .NET runtime used by the upstream references
@@ -135,7 +135,7 @@ jobs:
       - name: Install workflow and shell linters
         run: |
           sudo apt-get update
-          sudo apt-get install -y ripgrep shellcheck
+          sudo apt-get install -y pkg-config libssl-dev ripgrep shellcheck
       - name: Install actionlint
         run: |
           go install "github.com/rhysd/actionlint/cmd/actionlint@${ACTIONLINT_VERSION}"
@@ -274,7 +274,7 @@ jobs:
       - name: Install musl toolchain
         run: |
           sudo apt-get update
-          sudo apt-get install -y musl-tools
+          sudo apt-get install -y musl-tools pkg-config libssl-dev
       - name: Check native GNU build
         run: cargo check --locked --workspace --all-targets
       - name: Run native Linux AArch64 Rust tests
@@ -298,22 +298,22 @@ jobs:
           - name: linux-x64
             os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
-            apt: ''
+            apt: pkg-config libssl-dev
             native_tests: false
           - name: linux-musl-x64
             os: ubuntu-latest
             target: x86_64-unknown-linux-musl
-            apt: musl-tools
+            apt: musl-tools pkg-config libssl-dev
             native_tests: false
           - name: linux-arm64
             os: ubuntu-24.04-arm
             target: aarch64-unknown-linux-gnu
-            apt: ''
+            apt: pkg-config libssl-dev
             native_tests: false
           - name: linux-musl-arm64
             os: ubuntu-24.04-arm
             target: aarch64-unknown-linux-musl
-            apt: musl-tools
+            apt: musl-tools pkg-config libssl-dev
             native_tests: false
           - name: macos-x64
             os: macos-15-intel

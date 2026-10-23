@@ -135,7 +135,19 @@ if [[ -n "$systemd_manager" ]]; then
   if [[ "$systemd_manager" == "system" ]]; then
     systemd_run_arguments+=(--uid="$(id -u)")
   fi
-  "${systemd_run_prefix[@]}" "${systemd_run_arguments[@]}" "$@"
+  systemd_command=("$@")
+  if [[ "${systemd_command[0]}" != */* ]]; then
+    resolved_command="$(type -P -- "${systemd_command[0]}" || true)"
+    if [[ -z "$resolved_command" ]]; then
+      printf '[process-memory-guard] command not found on PATH: %s\n' "${systemd_command[0]}" >&2
+      exit 127
+    fi
+    # systemd resolves ExecStart before applying EnvironmentFile, so a
+    # command available only through the caller's PATH (for example the
+    # Node version installed by setup-node) must be passed by absolute path.
+    systemd_command[0]="$resolved_command"
+  fi
+  "${systemd_run_prefix[@]}" "${systemd_run_arguments[@]}" "${systemd_command[@]}"
   exit "$?"
 fi
 
