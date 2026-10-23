@@ -31,7 +31,7 @@ or if a pinned action or reusable workflow is missing from this ledger.
 | `github/codeql-action/init` | `v4` | `9b3254085494b55a0f7c4c2b3d2d52cc712ce370` | Pinned CodeQL initialization for the explicit seven-language security matrix. |
 | `github/codeql-action/autobuild` | `v4` | `9b3254085494b55a0f7c4c2b3d2d52cc712ce370` | Reviewed CodeQL autobuild pin retained for any future language-specific build steps. |
 | `github/codeql-action/analyze` | `v4` | `9b3254085494b55a0f7c4c2b3d2d52cc712ce370` | Pinned CodeQL SARIF upload and alert generation for the explicit language matrix. |
-| `github/codeql-action/upload-sarif` | `v4.39.0` | `6f2ac81f5cd81fe351a197ba0b00d91d03cd2aee` | SARIF upload for the pinned Semgrep Community workflow; matches the upstream v4.39.0 release. |
+| `github/codeql-action/upload-sarif` | `v4.39.1` | `9b3254085494b55a0f7c4c2b3d2d52cc712ce370` | SARIF upload for the pinned Semgrep Community workflow; matches the upstream v4.39.1 release. |
 | `aquasecurity/setup-trivy` | `v0.3.1` | `81e514348e19b6112ce2a7e3ecbafe19c1e1f567` | Pins the Trivy install action to v0.3.1, including the fix for invalid action metadata expressions. |
 | `snapetech-org/slskr/.github/workflows/web-assets-validation.yml` | `4696e66c557477c2fe708fc19bd765ce56ed23fc` | `4696e66c557477c2fe708fc19bd765ce56ed23fc` | Audited fork-only web validation workflow; uses the restricted `public-fork-jit` runner group and pins Node.js 22.23.4. |
 
