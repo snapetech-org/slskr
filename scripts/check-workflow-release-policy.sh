@@ -55,6 +55,20 @@ for job in web-assets controller-regex-parity rust platform-builds package-surfa
     status=1
   fi
 done
+controller_parity_job="$(sed -n '/^  controller-regex-parity:/,/^  [A-Za-z0-9_-]*:/p' .github/workflows/ci.yml)"
+if [[ "$controller_parity_job" != *'DOTNET_INSTALL_DIR: ${{ github.workspace }}/.dotnet'* ||
+      "$controller_parity_job" != *"DOTNET_VERSION: '10.0.402'"* ||
+      "$controller_parity_job" != *"actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68"* ||
+      "$controller_parity_job" != *'dotnet-version: ${{ env.DOTNET_VERSION }}'* ]]; then
+  printf 'workflow release policy check failed: controller regex parity must install its pinned .NET SDK into the workspace\n' >&2
+  status=1
+fi
+dotnet_setup_line="$(rg -n -m 1 -F 'uses: actions/setup-dotnet@' .github/workflows/ci.yml | cut -d: -f1 || true)"
+dotnet_info_line="$(rg -n -m 1 -F 'name: Record .NET runtime used by the upstream references' .github/workflows/ci.yml | cut -d: -f1 || true)"
+if [[ -z "$dotnet_setup_line" || -z "$dotnet_info_line" || "$dotnet_setup_line" -ge "$dotnet_info_line" ]]; then
+  printf 'workflow release policy check failed: controller parity must install .NET before using dotnet\n' >&2
+  status=1
+fi
 route_count="$(rg -n -F 'ng-shared-main-jit' .github/workflows/ci.yml | wc -l)"
 if [[ "$route_count" -ne 5 ]]; then
   printf 'workflow release policy check failed: unexpected shared runner route count in CI\n' >&2

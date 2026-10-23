@@ -18,6 +18,7 @@ or if a pinned action or reusable workflow is missing from this ledger.
 | `actions/setup-node` | `v7.1.0` | `949feb2413d6458794dcd2491c4babbbce0c15c1` | Node setup for web, dashboard, TypeScript SDK, and live parity gates; action runtime uses Node 24 and requires runner 2.327.1 or later. |
 | `actions/setup-go` | `v7.0.0` | `b7ad1dad31e06c5925ef5d2fc7ad053ef454303e` | Go SDK test setup. |
 | `actions/setup-python` | `v7.0.0` | `5fda3b95a4ea91299a34e894583c3862153e4b97` | Python SDK and slskd API compatibility smoke setup. |
+| `actions/setup-dotnet` | `v6.0.0` | `a98b56852c35b8e3190ac28c8c2271da59106c68` | Workspace-local .NET 10 SDK for controller regex differential builds on JIT runners. |
 | `astral-sh/setup-uv` | `v10.3.0` | `1c37ad07a6a961277cf70c0d37d6f313000f5884` | Installs pinned uv and activates Python 3.12 on the trusted local runner. |
 | `actions/upload-artifact` | `v7.0.2` | `cf430e030ddbb5b0abf93d22962f4752f3646cd9` | CI platform, release archive, and live parity artifact upload. |
 | `actions/download-artifact` | `v8.0.2` | `9000827ccba6bdab643e8b6fd33ac0654aef8333` | Release archive download before publishing. |
