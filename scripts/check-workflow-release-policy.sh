@@ -55,6 +55,13 @@ for job in web-assets controller-regex-parity rust platform-builds package-surfa
     status=1
   fi
 done
+controller_parity_job="$(sed -n '/^  controller-regex-parity:/,/^  [A-Za-z0-9_-]*:/p' .github/workflows/ci.yml)"
+if [[ "$controller_parity_job" != *'DOTNET_INSTALL_DIR: ${{ github.workspace }}/.dotnet'* ||
+      "$controller_parity_job" != *"actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68"* ||
+      "$controller_parity_job" != *'dotnet-version: ${{ env.DOTNET_VERSION }}'* ]]; then
+  printf 'workflow release policy check failed: controller regex parity must install its pinned .NET SDK into the workspace\n' >&2
+  status=1
+fi
 route_count="$(rg -n -F 'ng-shared-main-jit' .github/workflows/ci.yml | wc -l)"
 if [[ "$route_count" -ne 5 ]]; then
   printf 'workflow release policy check failed: unexpected shared runner route count in CI\n' >&2
@@ -138,8 +145,8 @@ for expected in \
   'language: rust' \
   'build-mode: autobuild' \
   'build-mode: none' \
-  'github/codeql-action/init@5e316336eb4f107009e477d4bfbfff13d7250fae' \
-  'github/codeql-action/analyze@5e316336eb4f107009e477d4bfbfff13d7250fae'; do
+  'github/codeql-action/init@9b3254085494b55a0f7c4c2b3d2d52cc712ce370' \
+  'github/codeql-action/analyze@9b3254085494b55a0f7c4c2b3d2d52cc712ce370'; do
   if ! rg -n -F -- "$expected" "$codeql_workflow" >/dev/null; then
     printf 'workflow release policy check failed: CodeQL coverage contract missing: %s\n' "$expected" >&2
     status=1

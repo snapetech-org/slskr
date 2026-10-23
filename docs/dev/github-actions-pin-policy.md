@@ -18,6 +18,7 @@ or if a pinned action or reusable workflow is missing from this ledger.
 | `actions/setup-node` | `v7.1.0` | `949feb2413d6458794dcd2491c4babbbce0c15c1` | Node setup for web, dashboard, TypeScript SDK, and live parity gates; action runtime uses Node 24 and requires runner 2.327.1 or later. |
 | `actions/setup-go` | `v7.0.0` | `b7ad1dad31e06c5925ef5d2fc7ad053ef454303e` | Go SDK test setup. |
 | `actions/setup-python` | `v7.0.0` | `5fda3b95a4ea91299a34e894583c3862153e4b97` | Python SDK and slskd API compatibility smoke setup. |
+| `actions/setup-dotnet` | `v6.0.0` | `a98b56852c35b8e3190ac28c8c2271da59106c68` | Workspace-local .NET 10 SDK for controller regex differential builds on JIT runners. |
 | `astral-sh/setup-uv` | `v10.3.0` | `1c37ad07a6a961277cf70c0d37d6f313000f5884` | Installs pinned uv and activates Python 3.12 on the trusted local runner. |
 | `actions/upload-artifact` | `v7.0.2` | `cf430e030ddbb5b0abf93d22962f4752f3646cd9` | CI platform, release archive, and live parity artifact upload. |
 | `actions/download-artifact` | `v8.0.2` | `9000827ccba6bdab643e8b6fd33ac0654aef8333` | Release archive download before publishing. |
@@ -27,9 +28,9 @@ or if a pinned action or reusable workflow is missing from this ledger.
 | `docker/setup-buildx-action` | `v4.4.1` | `f87e5991a6d7451dcb8d9637bfbc97413f497069` | Docker Buildx setup for multi-architecture release images. |
 | `docker/login-action` | `v4.6.0` | `dbcb813823bdd20940b903addbd779551569679f` | GHCR and Docker Hub authentication for release images. |
 | `docker/build-push-action` | `v7.4.0` | `c3c9e263c25d99ce0380d002d59b67737d91b0dc` | Multi-architecture Docker release image build and push. |
-| `github/codeql-action/init` | `v4` | `5e316336eb4f107009e477d4bfbfff13d7250fae` | Pinned CodeQL initialization for the explicit seven-language security matrix. |
+| `github/codeql-action/init` | `v4` | `9b3254085494b55a0f7c4c2b3d2d52cc712ce370` | Pinned CodeQL initialization for the explicit seven-language security matrix. |
 | `github/codeql-action/autobuild` | `v4` | `5e316336eb4f107009e477d4bfbfff13d7250fae` | Reviewed CodeQL autobuild pin retained for any future language-specific build steps. |
-| `github/codeql-action/analyze` | `v4` | `5e316336eb4f107009e477d4bfbfff13d7250fae` | Pinned CodeQL SARIF upload and alert generation for the explicit language matrix. |
+| `github/codeql-action/analyze` | `v4` | `9b3254085494b55a0f7c4c2b3d2d52cc712ce370` | Pinned CodeQL SARIF upload and alert generation for the explicit language matrix. |
 | `github/codeql-action/upload-sarif` | `v4.38.3` | `24c54180a607b1449ed407dd24f251e4e9147c8d` | SARIF upload for the pinned Semgrep Community workflow. |
 | `aquasecurity/setup-trivy` | `v0.2.6` | `3fb12ec12f41e471780db15c232d5dd185dcb514` | Pins the Trivy install script checkout to a reviewed commit. |
 | `snapetech-org/slskr/.github/workflows/web-assets-validation.yml` | `713676d58f1601a8079257f3f4aeefdc0de7b7f6` | `713676d58f1601a8079257f3f4aeefdc0de7b7f6` | Audited reusable workflow for fork-only JIT web asset validation. |
