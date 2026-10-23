@@ -74,7 +74,7 @@ if [[ "$route_count" -ne 5 ]]; then
   printf 'workflow release policy check failed: unexpected shared runner route count in CI\n' >&2
   status=1
 fi
-for workflow in codeql.yml semgrep-community.yml local-identity-leaks.yml trivy-filesystem.yml; do
+for workflow in codeql.yml semgrep-community.yml trivy-filesystem.yml; do
   workflow_path=".github/workflows/$workflow"
   if [[ ! -f "$workflow_path" ]] ||
      ! rg -n -F 'ng-shared-main-jit' "$workflow_path" >/dev/null ||
@@ -95,7 +95,7 @@ for workflow in .github/workflows/*.yml; do
     continue
   fi
   case "${workflow##*/}" in
-    ci.yml|codeql.yml|local-identity-leaks.yml|semgrep-community.yml|trivy-filesystem.yml) ;;
+    ci.yml|codeql.yml|semgrep-community.yml|trivy-filesystem.yml) ;;
     *)
       printf 'workflow release policy check failed: unexpected shared runner route in %s\n' "$workflow" >&2
       status=1

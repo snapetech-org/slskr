@@ -29,7 +29,7 @@ or if a pinned action or reusable workflow is missing from this ledger.
 | `docker/login-action` | `v4.6.0` | `dbcb813823bdd20940b903addbd779551569679f` | GHCR and Docker Hub authentication for release images. |
 | `docker/build-push-action` | `v7.4.0` | `c3c9e263c25d99ce0380d002d59b67737d91b0dc` | Multi-architecture Docker release image build and push. |
 | `github/codeql-action/init` | `v4` | `9b3254085494b55a0f7c4c2b3d2d52cc712ce370` | Pinned CodeQL initialization for the explicit seven-language security matrix. |
-| `github/codeql-action/autobuild` | `v4` | `5e316336eb4f107009e477d4bfbfff13d7250fae` | Reviewed CodeQL autobuild pin retained for any future language-specific build steps. |
+| `github/codeql-action/autobuild` | `v4` | `9b3254085494b55a0f7c4c2b3d2d52cc712ce370` | Reviewed CodeQL autobuild pin retained for any future language-specific build steps. |
 | `github/codeql-action/analyze` | `v4` | `9b3254085494b55a0f7c4c2b3d2d52cc712ce370` | Pinned CodeQL SARIF upload and alert generation for the explicit language matrix. |
 | `github/codeql-action/upload-sarif` | `v4.38.3` | `24c54180a607b1449ed407dd24f251e4e9147c8d` | SARIF upload for the pinned Semgrep Community workflow. |
 | `aquasecurity/setup-trivy` | `v0.2.6` | `3fb12ec12f41e471780db15c232d5dd185dcb514` | Pins the Trivy install script checkout to a reviewed commit. |
