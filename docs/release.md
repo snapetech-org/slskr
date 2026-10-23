@@ -70,7 +70,7 @@ To validate a released Chocolatey package on a clean Windows runner without
 publishing it, dispatch the existing workflow with `publish=false`:
 
 ```sh
-tag="$(git describe --tags --match 'release-v*' --abbrev=0)"
+tag="$(git describe --tags --match 'v*' --match 'release-v*' --abbrev=0)"
 gh workflow run publish-chocolatey.yml --ref main -f tag="$tag" -f publish=false
 ```
 
@@ -152,15 +152,15 @@ The release workflow uses the same native runner and target mapping:
 Push a tag named:
 
 ```text
-release-v<semver>
+v<semver>
 ```
 
-Tag-triggered releases intentionally use the `release-v<semver>` convention,
-for example `release-v1.2.3` or `release-v1.2.3-rc.1`. Plain `v*` tags and
-loose `release-*` tags are not release triggers. Commits pushed to `main` build
+New tag-triggered releases use the `v<semver>` convention, for example `v1.2.3`
+or `v1.2.3-rc.1`. Existing `release-v*` releases remain available under their
+original tags. Loose `release-*` tags are not release triggers. Commits pushed to `main` build
 short-lived CI test archives but do not create GitHub release assets, and the
 release workflow does not provide a manual dispatch path; a full release
-requires a `release-v<semver>` tag on `main`.
+requires a `v<semver>` tag on `main`.
 
 For a tag build, the workflow creates a GitHub Release and uploads all archives
 plus `SHA256SUMS.txt`, `slskr-cyclonedx.json`, and
@@ -171,7 +171,7 @@ announcement using the `DISCORD_RELEASE_WEBHOOK_URL` repository secret.
 
 The internal/unpublished Cargo crates intentionally remain at `0.0.0`. Binary
 and archive version metadata comes from the release workflow. Tag builds derive
-the artifact version from `release-v<semver>`, and local/manual archive tests
+the artifact version from `v<semver>`, and local/manual archive tests
 can still pass `SLSKR_RELEASE_VERSION` directly to
 `scripts/build-release-archive.sh`.
 Archive roots are named `slskr-<version>-<target>` so the published package

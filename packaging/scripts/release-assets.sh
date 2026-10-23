@@ -20,7 +20,7 @@ slskr_release_tag_from_version() {
   local version="$1"
   version="${version#release-}"
   version="${version#v}"
-  printf 'release-v%s\n' "$version"
+  printf 'v%s\n' "$version"
 }
 
 slskr_sha256() {

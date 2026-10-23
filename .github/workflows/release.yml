@@ -13,7 +13,7 @@ env:
 on:
   push:
     tags:
-      - 'release-v*'
+      - 'v*'
 
 permissions:
   actions: read
@@ -33,12 +33,12 @@ jobs:
       - id: version
         shell: bash
         run: |
-          tag_pattern='^release-v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?$'
+          tag_pattern='^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?$'
           if [[ ! "$GITHUB_REF_NAME" =~ $tag_pattern ]]; then
-            printf 'Release tags must use release-v<semver>, got %s\n' "$GITHUB_REF_NAME" >&2
+            printf 'Release tags must use v<semver>, got %s\n' "$GITHUB_REF_NAME" >&2
             exit 1
           fi
-          version="${GITHUB_REF_NAME#release-}"
+          version="$GITHUB_REF_NAME"
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
   main-ci:
@@ -296,7 +296,7 @@ jobs:
 
   release:
     name: Publish GitHub Release
-    if: startsWith(github.ref, 'refs/tags/release-v')
+    if: startsWith(github.ref, 'refs/tags/v')
     needs: [version, gate, build]
     runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest' }}
     outputs:
@@ -404,7 +404,7 @@ jobs:
 
   downstream-publish:
     name: Publish Downstream Packages
-    if: startsWith(github.ref, 'refs/tags/release-v')
+    if: startsWith(github.ref, 'refs/tags/v')
     needs: [release]
     permissions:
       actions: read
@@ -433,7 +433,7 @@ jobs:
 
   discord:
     name: Announce Discord Release
-    if: startsWith(github.ref, 'refs/tags/release-v')
+    if: startsWith(github.ref, 'refs/tags/v')
     needs: [version, release, downstream-publish]
     runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest' }}
     steps:

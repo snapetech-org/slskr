@@ -41,15 +41,18 @@ if [[ "$push_branches" != "main" ]]; then
   printf 'workflow release policy check failed: only main pushes may enter the CI workflow\n' >&2
   status=1
 fi
+approved_events='["push","workflow_dispatch","schedule","release","repository_dispatch"]'
+event_gate="contains(fromJSON('$approved_events'), github.event_name)"
+ref_gate="github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v'))"
 for job in web-assets controller-regex-parity rust platform-builds package-surfaces; do
   job_block="$(sed -n "/^  $job:/,/^  [A-Za-z0-9_-]*:/p" .github/workflows/ci.yml)"
   if [[ "$job_block" != *"ng-shared-main-jit"* ||
         "$job_block" != *"ng-shared-main-slskr"* ||
         "$job_block" != *"ng-main-run-{0}"* ||
         "$job_block" != *"github.run_id"* ||
-        "$job_block" != *"github.event_name == 'push'"* ||
-        "$job_block" != *"github.event_name == 'workflow_dispatch'"* ||
-        "$job_block" != *"github.ref == 'refs/heads/main'"* ||
+        "$job_block" != *"$event_gate"* ||
+        "$job_block" != *"$ref_gate"* ||
+        "$job_block" != *"github.run_attempt > 1"* ||
         "$job_block" != *"||"* ]]; then
     printf 'workflow release policy check failed: %s must route only trusted main work to the shared pool\n' "$job" >&2
     status=1
@@ -95,7 +98,7 @@ for workflow in .github/workflows/*.yml; do
     continue
   fi
   case "${workflow##*/}" in
-    ci.yml|codeql.yml|semgrep-community.yml|trivy-filesystem.yml) ;;
+    ci.yml|codeql.yml|semgrep-community.yml|trivy-filesystem.yml|release.yml|release-publish.yml) ;;
     *)
       printf 'workflow release policy check failed: unexpected shared runner route in %s\n' "$workflow" >&2
       status=1
@@ -259,13 +262,13 @@ if ! rg -n -F 'Locale::Maketext::Simple' scripts/select-windows-perl.ps1 >/dev/n
   status=1
 fi
 
-if ! rg -n -F "release-v*" .github/workflows/release.yml >/dev/null; then
-  printf 'workflow release policy check failed: release-v tag trigger was not found\n' >&2
+if ! rg -n -F "v*" .github/workflows/release.yml >/dev/null; then
+  printf 'workflow release policy check failed: v tag trigger was not found\n' >&2
   status=1
 fi
 
 if rg -n -F "workflow_dispatch:" .github/workflows/release.yml >/dev/null; then
-  printf 'workflow release policy check failed: release workflow must only run from release-v tags\n' >&2
+  printf 'workflow release policy check failed: release workflow must only run from v tags\n' >&2
   status=1
 fi
 
@@ -340,13 +343,22 @@ for expected in \
   fi
 done
 
-if ! rg -n -F -- 'cancel-in-progress: false' .github/workflows/ci.yml >/dev/null; then
-  printf 'workflow release policy check failed: validation runs must not cancel earlier attempts\n' >&2
-  status=1
-fi
-ci_group_policy='group: ci-${{ github.workflow }}-${{ github.run_id }}-${{ github.run_attempt }}'
-if ! rg -n -F -- "$ci_group_policy" .github/workflows/ci.yml >/dev/null; then
-  printf 'workflow release policy check failed: every CI run attempt must keep its own concurrency group\n' >&2
+if ! python3 - .github/workflows/ci.yml <<'PYTHON'
+import sys
+from pathlib import Path
+
+text = Path(sys.argv[1]).read_text()
+group = next((line.strip() for line in text.splitlines() if line.strip().startswith("group:")), "")
+cancel = next((line.strip() for line in text.splitlines() if line.strip().startswith("cancel-in-progress:")), "")
+if not group.startswith("group: ng-ci-${{ github.workflow }}-${{ github.event_name }}-"):
+    raise SystemExit("CI concurrency group must be scoped to this workflow and event")
+if not group.endswith("-${{ github.run_attempt }}"):
+    raise SystemExit("each CI run attempt must keep its own concurrency group")
+if cancel != "cancel-in-progress: ${{ github.event_name == 'pull_request' || github.event_name == 'pull_request_target' }}":
+    raise SystemExit("only superseded PR validation may be cancelled")
+PYTHON
+then
+  printf 'workflow release policy check failed: CI concurrency must preserve main attempts and scope cancellation to superseded PR checks\n' >&2
   status=1
 fi
 
@@ -396,15 +408,15 @@ done
 
 for expected in \
   'tag_pattern=' \
-  'release-v<semver>' \
+  'v<semver>' \
   'Require Main CI' \
   'for _ in {1..240}' \
   '--workflow CI' \
   '--branch main' \
   '--commit "$RELEASE_SHA"' \
   'needs: [version, main-ci]' \
-  "startsWith(github.ref, 'refs/tags/release-v')" \
-  'version="${GITHUB_REF_NAME#release-}"' \
+  "startsWith(github.ref, 'refs/tags/v')" \
+  'version="$GITHUB_REF_NAME"' \
   'DISCORD_RELEASE_WEBHOOK_URL' \
   'Announce Discord Release' \
   'scripts/release_notes.py' \
@@ -418,8 +430,8 @@ for expected in \
   fi
 done
 
-if ! rg -n -F 'release-v<semver>' docs/release.md >/dev/null; then
-  printf 'workflow release policy check failed: release docs must document release-v<semver>\n' >&2
+if ! rg -n -F 'v<semver>' docs/release.md >/dev/null; then
+  printf 'workflow release policy check failed: release docs must document v<semver>\n' >&2
   status=1
 fi
 
