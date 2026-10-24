@@ -1005,10 +1005,7 @@ fn controller_yaml_value<'a>(
     for key in path.split('.') {
         let mapping = current.as_mapping()?;
         current = mapping.iter().find_map(|(candidate, value)| {
-            candidate
-                .as_str()
-                .filter(|candidate| normalize_yaml_key(candidate) == normalize_yaml_key(key))
-                .map(|_| value)
+            (normalize_yaml_key(candidate) == normalize_yaml_key(key)).then_some(value)
         })?;
     }
     Some(current)
@@ -1022,10 +1019,7 @@ fn controller_yaml_value_case_insensitive<'a>(
     for key in path.split('.') {
         let mapping = current.as_mapping()?;
         current = mapping.iter().find_map(|(candidate, value)| {
-            candidate
-                .as_str()
-                .filter(|candidate| normalize_yaml_key(candidate) == normalize_yaml_key(key))
-                .map(|_| value)
+            (normalize_yaml_key(candidate) == normalize_yaml_key(key)).then_some(value)
         })?;
     }
     Some(current)
@@ -1039,13 +1033,11 @@ fn normalize_yaml_key(value: &str) -> String {
         .collect()
 }
 
-fn yaml_mapping_key(mapping: &serde_yaml::Mapping, name: &str) -> Option<serde_yaml::Value> {
+fn yaml_mapping_key(mapping: &serde_yaml::Mapping, name: &str) -> Option<String> {
     let normalized = normalize_yaml_key(name);
-    mapping.keys().find_map(|key| {
-        key.as_str()
-            .filter(|candidate| normalize_yaml_key(candidate) == normalized)
-            .map(|_| key.clone())
-    })
+    mapping
+        .keys()
+        .find_map(|key| (normalize_yaml_key(key) == normalized).then(|| key.clone()))
 }
 
 fn yaml_mapping_value_mut<'a>(
@@ -1066,10 +1058,7 @@ fn yaml_take_mapping_value(
 
 fn merge_missing_yaml_values(target: &mut serde_yaml::Mapping, source: serde_yaml::Mapping) {
     for (key, value) in source {
-        let Some(name) = key.as_str() else {
-            continue;
-        };
-        if let Some(existing) = yaml_mapping_value_mut(target, name) {
+        if let Some(existing) = yaml_mapping_value_mut(target, &key) {
             if let (serde_yaml::Value::Mapping(existing), serde_yaml::Value::Mapping(source)) =
                 (existing, value)
             {
@@ -1096,10 +1085,7 @@ fn normalize_top_level_yaml_alias(
             merge_missing_yaml_values(canonical, legacy);
         }
     } else {
-        root.insert(
-            serde_yaml::Value::String(canonical_name.to_owned()),
-            legacy_value,
-        );
+        root.insert(canonical_name.to_owned(), legacy_value);
     }
 }
 
@@ -1115,10 +1101,7 @@ pub(super) fn normalize_controller_yaml(root: &mut serde_yaml::Value) {
         if let serde_yaml::Value::Sequence(directories) = shares {
             let directories = std::mem::take(directories);
             let mut normalized = serde_yaml::Mapping::new();
-            normalized.insert(
-                serde_yaml::Value::String("directories".to_owned()),
-                serde_yaml::Value::Sequence(directories),
-            );
+            normalized.insert("directories", serde_yaml::Value::Sequence(directories));
             *shares = serde_yaml::Value::Mapping(normalized);
         }
     }
@@ -1142,10 +1125,7 @@ pub(super) fn normalize_controller_yaml(root: &mut serde_yaml::Value) {
                     merge_missing_yaml_values(existing, upload);
                 }
             } else {
-                transfers.insert(
-                    serde_yaml::Value::String("limits".to_owned()),
-                    upload_limits,
-                );
+                transfers.insert("limits", upload_limits);
             }
         }
     }
@@ -1165,10 +1145,9 @@ pub(super) fn validate_controller_yaml_shape(
     }
     match value {
         serde_yaml::Value::Mapping(mapping) => {
-            for (key, child) in mapping {
-                if !matches!(key, serde_yaml::Value::String(_)) {
-                    return Err("controller YAML keys must be strings".to_owned());
-                }
+            // noyalib's Mapping can only represent string keys; invalid YAML
+            // key types are rejected while deserializing into Value.
+            for child in mapping.values() {
                 validate_controller_yaml_shape(child, depth + 1, nodes)?;
             }
         }
