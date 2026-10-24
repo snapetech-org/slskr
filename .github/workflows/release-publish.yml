@@ -70,7 +70,7 @@ env:
 jobs:
   metadata:
     name: Prepare Dynamic Release Metadata
-    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest' }}
+    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-metadata"]}}', github.run_id)) || 'ubuntu-latest' }}
     outputs:
       tag: ${{ steps.version.outputs.tag }}
       release_version: ${{ steps.version.outputs.release_version }}
@@ -155,7 +155,7 @@ jobs:
     name: Publish AUR
     if: ${{ inputs.publish_only != 'winget' }}
     needs: metadata
-    runs-on: ${{ contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v'))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest' }}
+    runs-on: ${{ contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v'))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-aur"]}}', github.run_id)) || 'ubuntu-latest' }}
     permissions:
       contents: read
     steps:
@@ -214,7 +214,7 @@ jobs:
     name: Publish COPR
     if: ${{ inputs.publish_only != 'winget' }}
     needs: metadata
-    runs-on: ${{ contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v'))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest' }}
+    runs-on: ${{ contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v'))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-copr"]}}', github.run_id)) || 'ubuntu-latest' }}
     permissions:
       contents: read
     steps:
@@ -408,7 +408,7 @@ jobs:
     name: Publish Launchpad PPA
     if: ${{ inputs.publish_only != 'winget' }}
     needs: metadata
-    runs-on: ${{ contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v'))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest' }}
+    runs-on: ${{ contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v'))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-ppa"]}}', github.run_id)) || 'ubuntu-latest' }}
     permissions:
       contents: read
     steps:
@@ -558,7 +558,7 @@ jobs:
     name: Publish Docker Images
     if: ${{ inputs.publish_only != 'winget' }}
     needs: metadata
-    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest' }}
+    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-docker"]}}', github.run_id)) || 'ubuntu-latest' }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -644,7 +644,7 @@ jobs:
     name: Update Homebrew Tap
     if: ${{ inputs.publish_only != 'winget' }}
     needs: metadata
-    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest' }}
+    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-homebrew"]}}', github.run_id)) || 'ubuntu-latest' }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:

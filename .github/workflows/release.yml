@@ -26,7 +26,7 @@ concurrency:
 jobs:
   version:
     name: Version
-    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest' }}
+    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-version"]}}', github.run_id)) || 'ubuntu-latest' }}
     outputs:
       version: ${{ steps.version.outputs.version }}
     steps:
@@ -43,7 +43,7 @@ jobs:
 
   main-ci:
     name: Require Main CI
-    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest' }}
+    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-main-ci"]}}', github.run_id)) || 'ubuntu-latest' }}
     steps:
       - name: Wait for CI on release commit
         shell: bash
@@ -92,7 +92,7 @@ jobs:
   gate:
     name: Release Gate
     needs: [version, main-ci]
-    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest' }}
+    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-gate"]}}', github.run_id)) || 'ubuntu-latest' }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
       - name: Check out frozen controller parity references
@@ -162,7 +162,7 @@ jobs:
   build:
     name: Build ${{ matrix.name }}
     needs: [version, main-ci]
-    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && contains(fromJSON('["ubuntu-latest","ubuntu-24.04"]'), matrix.os) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || matrix.os }}
+    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && contains(fromJSON('["ubuntu-latest","ubuntu-24.04"]'), matrix.os) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) || matrix.os }}
     strategy:
       fail-fast: false
       matrix:
@@ -298,7 +298,7 @@ jobs:
     name: Publish GitHub Release
     if: startsWith(github.ref, 'refs/tags/v')
     needs: [version, gate, build]
-    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest' }}
+    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-release"]}}', github.run_id)) || 'ubuntu-latest' }}
     outputs:
       release_body: ${{ steps.release-body.outputs.release_body }}
     permissions:
@@ -435,7 +435,7 @@ jobs:
     name: Announce Discord Release
     if: startsWith(github.ref, 'refs/tags/v')
     needs: [version, release, downstream-publish]
-    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest' }}
+    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-discord"]}}', github.run_id)) || 'ubuntu-latest' }}
     steps:
       - name: Post release announcement
         shell: bash
