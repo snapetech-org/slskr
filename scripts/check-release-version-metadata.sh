@@ -59,8 +59,8 @@ for manifest in sorted((root / "crates").glob("*/Cargo.toml")):
             raise SystemExit(f"{manifest}: internal dependency {dep} version {version} does not match package version {crate_versions.get(dep)}")
 
 release_doc = (root / "docs/release.md").read_text(encoding="utf-8")
-if "release-v<semver>" not in release_doc:
-    raise SystemExit("docs/release.md must keep release-v<semver> as the artifact version source")
+if "v<semver>" not in release_doc:
+    raise SystemExit("docs/release.md must keep v<semver> as the artifact version source")
 PY
 
 if [[ "$status" -ne 0 ]]; then

@@ -145,7 +145,7 @@ if [[ "${LOCAL_IDENTITY_SCAN_COMMITS:-0}" == "1" ]]; then
     fi
   fi
   if [[ -z "$scan_base" ]]; then
-    scan_base="$(git describe --tags --abbrev=0 --match 'release-v[0-9]*' 2>/dev/null || true)"
+    scan_base="$(git describe --tags --abbrev=0 --match 'v[0-9]*' --match 'release-v[0-9]*' 2>/dev/null || true)"
   fi
   if [[ -z "$scan_base" ]]; then
     scan_base="$(git tag --sort=-creatordate --list 'build-main-*' | head -n 1 || true)"
