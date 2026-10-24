@@ -155,7 +155,9 @@ jobs:
     name: Publish AUR
     if: ${{ inputs.publish_only != 'winget' }}
     needs: metadata
-    runs-on: ubuntu-latest
+    runs-on: ${{ contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v'))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest' }}
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -212,7 +214,9 @@ jobs:
     name: Publish COPR
     if: ${{ inputs.publish_only != 'winget' }}
     needs: metadata
-    runs-on: ubuntu-latest
+    runs-on: ${{ contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v'))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest' }}
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -404,7 +408,9 @@ jobs:
     name: Publish Launchpad PPA
     if: ${{ inputs.publish_only != 'winget' }}
     needs: metadata
-    runs-on: ubuntu-latest
+    runs-on: ${{ contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v'))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest' }}
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -466,52 +472,16 @@ jobs:
           cd "$src"
           dch --package slskr --newversion "${version}-1ppa$(date +%Y%m%d%H%M)~jammy" --distribution jammy "Release ${{ needs.metadata.outputs.tag }}"
           debuild -S -sa -d -k"${PPA_GPG_KEY}"
-      - name: Preflight Launchpad PPA upload
+      - name: Preflight Launchpad SFTP upload
         env:
           LAUNCHPAD_SFTP_KEY: ${{ secrets.LAUNCHPAD_SFTP_KEY }}
         run: |
           set -euo pipefail
-          if [[ -n "${LAUNCHPAD_SFTP_KEY:-}" ]]; then
-            sftp_ipv4="$(getent ahostsv4 ppa.launchpad.net | awk '$2 == "STREAM" { print $1; exit }')"
-            if [[ -n "$sftp_ipv4" ]]; then
-              echo "Pinning ppa.launchpad.net to IPv4 ${sftp_ipv4} for PPA SFTP upload"
-              echo "${sftp_ipv4} ppa.launchpad.net" | sudo tee -a /etc/hosts
-              if python3 - <<'PY'
-          import socket
-
-          with socket.create_connection(("ppa.launchpad.net", 22), timeout=120) as sock:
-              print(f"Connected to {sock.getpeername()[0]}:{sock.getpeername()[1]} over SSH")
-          PY
-              then
-                echo "SLSKR_PPA_UPLOAD_METHOD=sftp" >> "$GITHUB_ENV"
-                exit 0
-              fi
-              echo "::warning::Launchpad PPA SFTP endpoint is not reachable; trying FTP fallback"
-            else
-              echo "::warning::Unable to resolve IPv4 for Launchpad SFTP; trying FTP fallback"
-            fi
-          fi
-
-          ftp_ipv4="$(getent ahostsv4 ppa.launchpad.net | awk '$2 == "STREAM" { print $1; exit }')"
-          if [[ -z "$ftp_ipv4" ]]; then
-            echo "::error::Unable to resolve an IPv4 address for ppa.launchpad.net"
-            getent ahosts ppa.launchpad.net || true
+          if [[ -z "${LAUNCHPAD_SFTP_KEY:-}" ]]; then
+            echo "::error::LAUNCHPAD_SFTP_KEY is required; anonymous FTP fallback is disabled."
             exit 1
           fi
-
-          echo "Pinning ppa.launchpad.net to IPv4 ${ftp_ipv4} for PPA FTP upload"
-          echo "${ftp_ipv4} ppa.launchpad.net" | sudo tee -a /etc/hosts
-          if ! python3 - <<'PY'
-          import socket
-
-          with socket.create_connection(("ppa.launchpad.net", 21), timeout=120) as sock:
-              print(f"Connected to {sock.getpeername()[0]}:{sock.getpeername()[1]} over FTP")
-          PY
-          then
-            echo "::error::Launchpad PPA FTP endpoint is not reachable over IPv4"
-            exit 1
-          fi
-          echo "SLSKR_PPA_UPLOAD_METHOD=ftp" >> "$GITHUB_ENV"
+          echo "SLSKR_PPA_UPLOAD_METHOD=sftp" >> "$GITHUB_ENV"
       - name: Upload to PPA
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
@@ -533,13 +503,27 @@ jobs:
           fi
           gpg --verify "$dsc"
           user="${LAUNCHPAD_SFTP_USER:-keefshape}"
-          uploaded=0
-          if [[ "${SLSKR_PPA_UPLOAD_METHOD:-ftp}" == "sftp" && -n "${LAUNCHPAD_SFTP_KEY:-}" ]]; then
-            mkdir -p ~/.ssh
-            printf '%s\n' "$LAUNCHPAD_SFTP_KEY" > ~/.ssh/launchpad_ppa
-            chmod 600 ~/.ssh/launchpad_ppa
-            ssh-keyscan -T 30 -t rsa,ecdsa,ed25519 ppa.launchpad.net >> ~/.ssh/known_hosts 2>/dev/null || true
-            cat >> ~/.ssh/config <<EOF
+          if [[ -z "${LAUNCHPAD_SFTP_KEY:-}" ]]; then
+            echo "::error::LAUNCHPAD_SFTP_KEY is required; refusing insecure PPA upload."
+            exit 1
+          fi
+          if [[ ! "$user" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$ ]]; then
+            echo "::error::Invalid Launchpad SFTP username."
+            exit 1
+          fi
+          install -d -m 0700 ~/.ssh
+          printf '%s\n' "$LAUNCHPAD_SFTP_KEY" > ~/.ssh/launchpad_ppa
+          chmod 0600 ~/.ssh/launchpad_ppa
+          cat > ~/.ssh/known_hosts <<'EOF'
+          ppa.launchpad.net ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA0aKz5UTUndYgIGG7dQBV+HaeuEZJ2xPHo2DS2iSKvUL4xNMSAY4UguNW+pX56nAQmZKIZZ8MaEvSj6zMEDiq6HFfn5JcTlM80UwlnyKe8B8p7Nk06PPQLrnmQt5fh0HmEcZx+JU9TZsfCHPnX7MNz4ELfZE6cFsclClrKim3BHUIGq//t93DllB+h4O9LHjEUsQ1Sr63irDLSutkLJD6RXchjROXkNirlcNVHH/jwLWR5RcYilNX7S5bIkK8NlWPjsn/8Ua5O7I9/YoE97PpO6i73DTGLh5H9JN/SITwCKBkgSDWUt61uPK3Y11Gty7o2lWsBjhBUm2Y38CBsoGmBw==
+          EOF
+          expected_fingerprint='SHA256:MGq+4hxD7RduVTcfwlwwboZnsgJC6SL/NltM8ye+gNg'
+          actual_fingerprint="$(ssh-keygen -lf ~/.ssh/known_hosts -E sha256 | awk '{print $2}')"
+          [[ "$actual_fingerprint" == "$expected_fingerprint" ]] || {
+            echo 'Pinned Launchpad SSH host key fingerprint mismatch.' >&2
+            exit 1
+          }
+          cat > ~/.ssh/config <<EOF
           Host ppa.launchpad.net
             HostName ppa.launchpad.net
             User ${user}
@@ -549,46 +533,26 @@ jobs:
             PasswordAuthentication no
             KbdInteractiveAuthentication no
             NumberOfPasswordPrompts 0
-            StrictHostKeyChecking accept-new
+            StrictHostKeyChecking yes
+            UserKnownHostsFile ~/.ssh/known_hosts
+            GlobalKnownHostsFile /dev/null
+            ProxyCommand nc -X connect -x 10.0.2.100:3128 %h %p
             ConnectTimeout 60
             ServerAliveInterval 30
             ServerAliveCountMax 4
           EOF
-            cat > ~/.dput.cf <<EOF
+          chmod 0600 ~/.ssh/config ~/.ssh/known_hosts
+          cat > ~/.dput.cf <<EOF
           [slskr-ppa-sftp]
           fqdn = ppa.launchpad.net
           method = sftp
           incoming = ~keefshape/ubuntu/slskdn/
           login = ${user}
-          # We already ran gpg --verify on the .changes and .dsc above, and
-          # Launchpad re-verifies the signature server-side. dput's own client
-          # check misparses modern GnuPG status output (SignatureVerifyError: 0),
-          # which was forcing every SFTP upload to fail over to anonymous FTP.
+          # The .changes and .dsc were verified above; Launchpad also verifies them.
           allow_unsigned_uploads = 1
           EOF
-
-            echo "Uploading $(basename "$changes") to Launchpad PPA over SFTP"
-            if timeout --preserve-status 1800 dput --config ~/.dput.cf slskr-ppa-sftp "$changes"; then
-              uploaded=1
-            else
-              echo "::warning::Launchpad SFTP upload failed; trying anonymous FTP fallback"
-            fi
-          fi
-
-          if [[ "$uploaded" -ne 1 ]]; then
-            cat > ~/.dput.cf <<'EOF'
-          [slskr-ppa-ftp]
-          fqdn = ppa.launchpad.net
-          method = ftp
-          incoming = ~keefshape/ubuntu/slskdn/
-          passive_ftp = 1
-          login = anonymous
-          # See slskr-ppa-sftp: signature is verified above and by Launchpad.
-          allow_unsigned_uploads = 1
-          EOF
-            echo "Uploading $(basename "$changes") to Launchpad PPA over anonymous FTP"
-            timeout --preserve-status 1800 dput --config ~/.dput.cf slskr-ppa-ftp "$changes"
-          fi
+          echo "Uploading $(basename "$changes") to Launchpad PPA over pinned SFTP"
+          timeout --preserve-status 1800 dput --config ~/.dput.cf slskr-ppa-sftp "$changes"
 
   docker:
     name: Publish Docker Images

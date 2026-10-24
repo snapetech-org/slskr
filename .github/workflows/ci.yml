@@ -1,5 +1,8 @@
 # ng-runner-policy: hosted-first-v1
 name: CI
+run-name: >-
+  ${{ github.event_name == 'workflow_dispatch' && inputs.pr_number != '' &&
+      format('owner-pr:{0}:{1}:{2}', inputs.pr_number, inputs.pr_sha, inputs.target_run_id) || github.workflow }}
 
 env:
   ACTIONLINT_VERSION: v1.7.12
@@ -14,9 +17,25 @@ on:
   push:
     branches:
       - main
+  pull_request_target:
+    branches: [main]
+    types: [opened, reopened, synchronize, ready_for_review, edited]
   workflow_dispatch:
+    inputs:
 
 # Preserve main builds; cancel superseded PR checks for the same pull request.
+      pr_number:
+        description: Trusted owner PR number (set only by the metadata dispatcher)
+        required: false
+        type: string
+      pr_sha:
+        description: Exact owner PR head SHA
+        required: false
+        type: string
+      target_run_id:
+        description: Successful metadata-only pull_request_target run ID
+        required: false
+        type: string
 concurrency:
   group: ng-ci-${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.run_id }}-${{ github.event.action == 'edited' && 'metadata' || 'code' }}-${{ github.run_attempt }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' || github.event_name == 'pull_request_target' }}
@@ -27,15 +46,30 @@ permissions:
 jobs:
   web-assets:
     name: Production web assets
-    if: github.event_name != 'push' || github.ref == 'refs/heads/main'
-    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest' }}
+    if: >-
+      ((github.event_name == 'workflow_dispatch' &&
+      (github.actor == 'snapetech' || github.actor == 'github-actions[bot]') &&
+      inputs.pr_number != '' && inputs.pr_sha != '' && inputs.target_run_id != '' &&
+      github.ref == 'refs/heads/main') && (github.event_name != 'push' || github.ref == 'refs/heads/main')) || ((github.event_name != 'pull_request_target' &&
+      (github.event_name != 'pull_request' || github.actor != 'snapetech' ||
+       github.event.pull_request.user.login != 'snapetech' ||
+       github.event.pull_request.head.repo.full_name != github.repository ||
+       github.event.pull_request.head.repo.id != github.repository_id ||
+       github.event.pull_request.base.ref != 'main') &&
+      (github.event_name != 'workflow_dispatch' ||
+       (inputs.pr_number == '' && inputs.pr_sha == '' && inputs.target_run_id == ''))) && (github.event_name != 'push' || github.ref == 'refs/heads/main'))
+    runs-on: ${{ (github.event_name == 'workflow_dispatch' && (github.actor == 'snapetech' || github.actor == 'github-actions[bot]') && inputs.pr_number != '' && inputs.pr_sha != '' && inputs.target_run_id != '' && github.ref == 'refs/heads/main') && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-web-assets"]}}', github.run_id)) || (!(github.event_name == 'workflow_dispatch' && (github.actor == 'snapetech' || github.actor == 'github-actions[bot]') && inputs.pr_number != '' && inputs.pr_sha != '' && inputs.target_run_id != '' && github.ref == 'refs/heads/main') && ((vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest')) }}
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
+        with:
+          ref: ${{ inputs.pr_sha != '' && inputs.pr_sha || (github.sha) }}
+          persist-credentials: false
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # actions/setup-node@v7.1.0
         with:
+          package-manager-cache: ${{ inputs.pr_number == '' }}
           node-version: '22.23.4'
-          cache: npm
+          cache: ${{ inputs.pr_number == '' && 'npm' || '' }}
           cache-dependency-path: web/package-lock.json
       - name: Build production web assets
         run: |
@@ -52,8 +86,20 @@ jobs:
           retention-days: 7
 
   controller-regex-parity:
+    if: >-
+      ((github.event_name == 'workflow_dispatch' &&
+      (github.actor == 'snapetech' || github.actor == 'github-actions[bot]') &&
+      inputs.pr_number != '' && inputs.pr_sha != '' && inputs.target_run_id != '' &&
+      github.ref == 'refs/heads/main')) || ((github.event_name != 'pull_request_target' &&
+      (github.event_name != 'pull_request' || github.actor != 'snapetech' ||
+       github.event.pull_request.user.login != 'snapetech' ||
+       github.event.pull_request.head.repo.full_name != github.repository ||
+       github.event.pull_request.head.repo.id != github.repository_id ||
+       github.event.pull_request.base.ref != 'main') &&
+      (github.event_name != 'workflow_dispatch' ||
+       (inputs.pr_number == '' && inputs.pr_sha == '' && inputs.target_run_id == ''))))
     name: Controller regex parity
-    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest' }}
+    runs-on: ${{ (github.event_name == 'workflow_dispatch' && (github.actor == 'snapetech' || github.actor == 'github-actions[bot]') && inputs.pr_number != '' && inputs.pr_sha != '' && inputs.target_run_id != '' && github.ref == 'refs/heads/main') && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-controller-regex-parity"]}}', github.run_id)) || (!(github.event_name == 'workflow_dispatch' && (github.actor == 'snapetech' || github.actor == 'github-actions[bot]') && inputs.pr_number != '' && inputs.pr_sha != '' && inputs.target_run_id != '' && github.ref == 'refs/heads/main') && ((vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest')) }}
     timeout-minutes: 20
     env:
       DOTNET_VERSION: '10.0.402'
@@ -62,6 +108,8 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
         with:
           fetch-depth: 2
+          ref: ${{ inputs.pr_sha != '' && inputs.pr_sha || (github.sha) }}
+          persist-credentials: false
       - name: Check out frozen controller parity references
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
         with:
@@ -80,6 +128,7 @@ jobs:
         with:
           toolchain: 1.94.0
       - uses: Swatinem/rust-cache@f0d9c3887740aee45f6153b24b3a6b815192ec16 # Swatinem/rust-cache@v2
+        if: inputs.pr_number == ''
       - name: Prefer rustup toolchain binaries
         run: dirname "$(rustup which cargo)" >> "$GITHUB_PATH"
       - name: Install Linux build dependencies
@@ -105,31 +154,48 @@ jobs:
         run: scripts/check-controller-options-differential.sh
 
   rust:
+    if: >-
+      ((github.event_name == 'workflow_dispatch' &&
+      (github.actor == 'snapetech' || github.actor == 'github-actions[bot]') &&
+      inputs.pr_number != '' && inputs.pr_sha != '' && inputs.target_run_id != '' &&
+      github.ref == 'refs/heads/main')) || ((github.event_name != 'pull_request_target' &&
+      (github.event_name != 'pull_request' || github.actor != 'snapetech' ||
+       github.event.pull_request.user.login != 'snapetech' ||
+       github.event.pull_request.head.repo.full_name != github.repository ||
+       github.event.pull_request.head.repo.id != github.repository_id ||
+       github.event.pull_request.base.ref != 'main') &&
+      (github.event_name != 'workflow_dispatch' ||
+       (inputs.pr_number == '' && inputs.pr_sha == '' && inputs.target_run_id == ''))))
     # Trusted main Rust validation uses the isolated shared pool.
-    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest' }}
+    runs-on: ${{ (github.event_name == 'workflow_dispatch' && (github.actor == 'snapetech' || github.actor == 'github-actions[bot]') && inputs.pr_number != '' && inputs.pr_sha != '' && inputs.target_run_id != '' && github.ref == 'refs/heads/main') && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-rust"]}}', github.run_id)) || (!(github.event_name == 'workflow_dispatch' && (github.actor == 'snapetech' || github.actor == 'github-actions[bot]') && inputs.pr_number != '' && inputs.pr_sha != '' && inputs.target_run_id != '' && github.ref == 'refs/heads/main') && ((vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || 'ubuntu-latest')) }}
     timeout-minutes: 360
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
         with:
           fetch-depth: 2
+          ref: ${{ inputs.pr_sha != '' && inputs.pr_sha || (github.sha) }}
+          persist-credentials: false
       - uses: dtolnay/rust-toolchain@29eef336d9b2848a0b548edc03f92a220660cdb8 # dtolnay/rust-toolchain@stable
         with:
           toolchain: 1.94.0
           components: clippy, rustfmt
           targets: wasm32-unknown-unknown
       - uses: Swatinem/rust-cache@f0d9c3887740aee45f6153b24b3a6b815192ec16 # Swatinem/rust-cache@v2
+        if: inputs.pr_number == ''
       - name: Prefer rustup toolchain binaries
         run: dirname "$(rustup which cargo)" >> "$GITHUB_PATH"
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # actions/setup-node@v7.1.0
         with:
+          package-manager-cache: ${{ inputs.pr_number == '' }}
           node-version: '22.23.4'
-          cache: npm
+          cache: ${{ inputs.pr_number == '' && 'npm' || '' }}
           cache-dependency-path: |
             web/package-lock.json
             dashboard/package-lock.json
             client-ts/package-lock.json
       - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # actions/setup-go@v7.0.0
         with:
+          cache: ${{ inputs.pr_number == '' }}
           go-version: '1.25.x'
           cache-dependency-path: client-go/go.sum
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # actions/setup-python@v7.0.0
@@ -150,6 +216,7 @@ jobs:
       - name: Lint GitHub workflows
         run: actionlint
       - name: Restore cargo-audit
+        if: inputs.pr_number == ''
         id: cargo-audit-cache
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # actions/cache@v6.1.0
         with:
@@ -261,7 +328,15 @@ jobs:
 
   linux-aarch64:
     name: Linux AArch64
-    if: github.event_name != 'push' || github.ref == 'refs/heads/main'
+    if: >-
+      (github.event_name != 'pull_request_target' &&
+      (github.event_name != 'pull_request' || github.actor != 'snapetech' ||
+       github.event.pull_request.user.login != 'snapetech' ||
+       github.event.pull_request.head.repo.full_name != github.repository ||
+       github.event.pull_request.head.repo.id != github.repository_id ||
+       github.event.pull_request.base.ref != 'main') &&
+      (github.event_name != 'workflow_dispatch' ||
+       (inputs.pr_number == '' && inputs.pr_sha == '' && inputs.target_run_id == ''))) && (github.event_name != 'push' || github.ref == 'refs/heads/main')
     runs-on: ubuntu-24.04-arm
     timeout-minutes: 120
     steps:
@@ -292,9 +367,18 @@ jobs:
 
   platform-builds:
     name: Platform ${{ matrix.name }}
-    if: github.event_name != 'push' || github.ref == 'refs/heads/main'
+    if: >-
+      (github.event_name != 'pull_request_target' &&
+      (github.event_name != 'pull_request' || github.actor != 'snapetech' ||
+       github.event.pull_request.user.login != 'snapetech' ||
+       github.event.pull_request.head.repo.full_name != github.repository ||
+       github.event.pull_request.head.repo.id != github.repository_id ||
+       github.event.pull_request.base.ref != 'main') &&
+      (github.event_name != 'workflow_dispatch' ||
+       (inputs.pr_number == '' && inputs.pr_sha == '' && inputs.target_run_id == ''))) &&
+      (github.event_name != 'push' || github.ref == 'refs/heads/main')
     needs: web-assets
-    runs-on: ${{ (vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && matrix.os == 'ubuntu-latest' && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || matrix.os }}
+    runs-on: ${{ (github.event_name == 'workflow_dispatch' && (github.actor == 'snapetech' || github.actor == 'github-actions[bot]') && inputs.pr_number != '' && inputs.pr_sha != '' && inputs.target_run_id != '' && github.ref == 'refs/heads/main') && ((matrix.name == 'linux-x64' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-platform-linux-x64"]}}', github.run_id))) || (matrix.name == 'linux-musl-x64' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-platform-linux-musl-x64"]}}', github.run_id)))) || (!(github.event_name == 'workflow_dispatch' && (github.actor == 'snapetech' || github.actor == 'github-actions[bot]') && inputs.pr_number != '' && inputs.pr_sha != '' && inputs.target_run_id != '' && github.ref == 'refs/heads/main') && ((vars.NG_HOSTED_FIRST != 'true' || vars.NG_FORCE_JIT == 'true' || github.run_attempt > 1) && matrix.os == 'ubuntu-latest' && (contains(fromJSON('["push","workflow_dispatch","schedule","release","repository_dispatch"]'), github.event_name) && (github.ref == 'refs/heads/main' || (github.ref_type == 'tag' && startsWith(github.ref_name, 'v')))) && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) || matrix.os)) }}
     timeout-minutes: 120
     env:
       CARGO_NET_GIT_FETCH_WITH_CLI: true
@@ -341,6 +425,8 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
         with:
           fetch-depth: 2
+          ref: ${{ inputs.pr_sha != '' && inputs.pr_sha || (github.sha) }}
+          persist-credentials: false
       - uses: dtolnay/rust-toolchain@29eef336d9b2848a0b548edc03f92a220660cdb8 # dtolnay/rust-toolchain@stable
         with:
           toolchain: 1.94.0
@@ -349,8 +435,10 @@ jobs:
             wasm32-unknown-unknown
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # actions/setup-node@v7.1.0
         with:
+          package-manager-cache: ${{ inputs.pr_number == '' }}
           node-version: '22.23.4'
       - uses: Swatinem/rust-cache@f0d9c3887740aee45f6153b24b3a6b815192ec16 # Swatinem/rust-cache@v2
+        if: inputs.pr_number == ''
       - name: Prefer rustup toolchain binaries
         shell: bash
         run: dirname "$(rustup which cargo)" >> "$GITHUB_PATH"
@@ -419,7 +507,114 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
+  owner-platform-linux-x64:
+    name: Trusted owner PR platform linux-x64
+    if: >-
+      github.event_name == 'workflow_dispatch' &&
+      (github.actor == 'snapetech' || github.actor == 'github-actions[bot]') &&
+      inputs.pr_number != '' && inputs.pr_sha != '' && inputs.target_run_id != '' &&
+      github.ref == 'refs/heads/main'
+    needs: web-assets
+    runs-on: ${{ (github.event_name == 'workflow_dispatch' && (github.actor == 'snapetech' || github.actor == 'github-actions[bot]') && inputs.pr_number != '' && inputs.pr_sha != '' && inputs.target_run_id != '' && github.ref == 'refs/heads/main') && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-platform-linux-x64"]}}', github.run_id)) }}
+    timeout-minutes: 120
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
+        with:
+          fetch-depth: 2
+          ref: ${{ inputs.pr_sha }}
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@29eef336d9b2848a0b548edc03f92a220660cdb8 # dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.94.0
+          targets: |
+            x86_64-unknown-linux-gnu
+            wasm32-unknown-unknown
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # actions/setup-node@v7.1.0
+        with:
+          package-manager-cache: false
+          node-version: '22.23.4'
+      - name: Prefer rustup toolchain binaries
+        shell: bash
+        run: dirname "$(rustup which cargo)" >> "$GITHUB_PATH"
+      - name: Install native packages
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pkg-config libssl-dev
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # actions/download-artifact@v8.0.2
+        with:
+          name: ci-web-assets
+          path: web/build
+      - name: Build release archive
+        shell: bash
+        env:
+          SLSKR_RELEASE_VERSION: ci-${{ inputs.pr_sha }}
+        run: scripts/build-release-archive.sh --target 'x86_64-unknown-linux-gnu' --skip-web-build
+      - name: Verify release archive
+        shell: bash
+        run: scripts/verify-release-artifacts.sh target/dist
+
+  owner-platform-linux-musl-x64:
+    name: Trusted owner PR platform linux-musl-x64
+    if: >-
+      github.event_name == 'workflow_dispatch' &&
+      (github.actor == 'snapetech' || github.actor == 'github-actions[bot]') &&
+      inputs.pr_number != '' && inputs.pr_sha != '' && inputs.target_run_id != '' &&
+      github.ref == 'refs/heads/main'
+    needs: web-assets
+    runs-on: ${{ (github.event_name == 'workflow_dispatch' && (github.actor == 'snapetech' || github.actor == 'github-actions[bot]') && inputs.pr_number != '' && inputs.pr_sha != '' && inputs.target_run_id != '' && github.ref == 'refs/heads/main') && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-platform-linux-musl-x64"]}}', github.run_id)) }}
+    timeout-minutes: 120
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
+        with:
+          fetch-depth: 2
+          ref: ${{ inputs.pr_sha }}
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@29eef336d9b2848a0b548edc03f92a220660cdb8 # dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.94.0
+          targets: |
+            x86_64-unknown-linux-musl
+            wasm32-unknown-unknown
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # actions/setup-node@v7.1.0
+        with:
+          package-manager-cache: false
+          node-version: '22.23.4'
+      - name: Prefer rustup toolchain binaries
+        shell: bash
+        run: dirname "$(rustup which cargo)" >> "$GITHUB_PATH"
+      - name: Install native packages
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y musl-tools pkg-config libssl-dev
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # actions/download-artifact@v8.0.2
+        with:
+          name: ci-web-assets
+          path: web/build
+      - name: Build release archive
+        shell: bash
+        env:
+          SLSKR_RELEASE_VERSION: ci-${{ inputs.pr_sha }}
+        run: scripts/build-release-archive.sh --target 'x86_64-unknown-linux-musl' --skip-web-build
+      - name: Verify release archive
+        shell: bash
+        run: scripts/verify-release-artifacts.sh target/dist
+
   package-surfaces:
+    if: >-
+      (github.event_name != 'pull_request_target' &&
+      (github.event_name != 'pull_request' || github.actor != 'snapetech' ||
+       github.event.pull_request.user.login != 'snapetech' ||
+       github.event.pull_request.head.repo.full_name != github.repository ||
+       github.event.pull_request.head.repo.id != github.repository_id ||
+       github.event.pull_request.base.ref != 'main') &&
+      (github.event_name != 'workflow_dispatch' ||
+       (inputs.pr_number == '' && inputs.pr_sha == '' && inputs.target_run_id == '')))
     name: Package and deployment surfaces
     needs: [platform-builds, rust, linux-aarch64]
     # Multiarch Debian and RPM packaging depends on matching Ubuntu Ports
@@ -537,3 +732,75 @@ jobs:
               --define "_topdir $rpm_top" \
               "$rpm_top/SPECS/slskr.spec"
           done
+
+  dispatch-owner-pr:
+    name: Dispatch trusted owner PR validation
+    if: >-
+      github.event_name == 'pull_request_target' &&
+      github.actor == 'snapetech' &&
+      github.event.pull_request.user.login == 'snapetech' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.head.repo.id == github.repository_id &&
+      github.event.pull_request.base.ref == 'main'
+    runs-on: ${{ (github.event_name == 'pull_request_target' && github.actor == 'snapetech' && github.event.pull_request.user.login == 'snapetech' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.repo.id == github.repository_id && github.event.pull_request.base.ref == 'main') && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-owner-pr-dispatcher"]}}', github.run_id)) }}
+    permissions:
+      actions: write
+      contents: none
+    steps:
+      - name: Dispatch PR-head validation from main
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_SHA: ${{ github.event.pull_request.head.sha }}
+          TARGET_RUN_ID: ${{ github.run_id }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import json,os,re
+          from urllib.request import Request,urlopen
+          expected='snapetech-org/slskr'
+          repository=os.environ['GITHUB_REPOSITORY'];number=os.environ['PR_NUMBER'];sha=os.environ['PR_SHA'].lower();target=os.environ['TARGET_RUN_ID'];token=os.environ['GH_TOKEN']
+          if repository.lower()!=expected.lower() or not re.fullmatch(r'[1-9][0-9]*',number) or not re.fullmatch(r'[0-9a-f]{40}',sha) or not re.fullmatch(r'[1-9][0-9]*',target):raise SystemExit('invalid PR claim')
+          payload=json.dumps({"ref": "main", "inputs": {"pr_number": number, "pr_sha": sha, "target_run_id": target}}).encode()
+          request=Request(
+            'https://api.github.com/repos/snapetech-org/slskr/actions/workflows/ci.yml/dispatches',
+            data=payload,headers={'Accept':'application/vnd.github+json','Authorization':f'Bearer {token}','Content-Type':'application/json','X-GitHub-Api-Version':'2022-11-28'},method='POST')
+          with urlopen(request,timeout=20) as response:
+            if response.status!=204:raise SystemExit(f'dispatch HTTP {response.status}')
+          PY
+
+  report-owner-pr-check:
+    name: Report trusted owner PR validation
+    needs: [web-assets, controller-regex-parity, rust, owner-platform-linux-x64, owner-platform-linux-musl-x64]
+    if: >-
+      always() &&
+      github.event_name == 'workflow_dispatch' &&
+      (github.actor == 'snapetech' || github.actor == 'github-actions[bot]') &&
+      inputs.pr_number != '' && inputs.pr_sha != '' && inputs.target_run_id != '' &&
+      github.ref == 'refs/heads/main'
+    runs-on: ${{ (github.event_name == 'workflow_dispatch' && (github.actor == 'snapetech' || github.actor == 'github-actions[bot]') && inputs.pr_number != '' && inputs.pr_sha != '' && inputs.target_run_id != '' && github.ref == 'refs/heads/main') && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-owner-pr-reporter"]}}', github.run_id)) }}
+    permissions:
+      checks: write
+      contents: none
+    steps:
+      - name: Attach validation result to the PR head
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ inputs.pr_number }}
+          PR_SHA: ${{ inputs.pr_sha }}
+          VALIDATION_RUN_ID: ${{ github.run_id }}
+          VALIDATION_RESULTS: '{"web-assets":"${{ needs.web-assets.result }}","controller-regex-parity":"${{ needs.controller-regex-parity.result }}","rust":"${{ needs.rust.result }}","owner-platform-linux-x64":"${{ needs.owner-platform-linux-x64.result }}","owner-platform-linux-musl-x64":"${{ needs.owner-platform-linux-musl-x64.result }}"}'
+        run: |
+          python3 - <<'PY'
+          import json,os,re
+          from urllib.request import Request,urlopen
+          number=os.environ['PR_NUMBER'];sha=os.environ['PR_SHA'].lower();results=json.loads(os.environ['VALIDATION_RESULTS'])
+          if not re.fullmatch(r'[1-9][0-9]*',number) or not re.fullmatch(r'[0-9a-f]{40}',sha) or not results:raise SystemExit('invalid PR check claim')
+          conclusion='success' if all(v=='success' for v in results.values()) else 'failure'
+          summary='Main-pinned, no-secret owner PR validation:\n'+'\n'.join(f'- {n}: {v}' for n,v in results.items())
+          run_id=os.environ['VALIDATION_RUN_ID']
+          payload=json.dumps({"name": "SlskR owner PR validation", "head_sha": sha, "external_id": run_id, "status": "completed", "conclusion": conclusion, "details_url": "https://github.com/snapetech-org/slskr/actions/runs/" + run_id, "output": {"title": "Owner PR validation " + conclusion, "summary": summary}}).encode()
+          request=Request('https://api.github.com/repos/snapetech-org/slskr/check-runs',data=payload,headers={'Accept':'application/vnd.github+json','Authorization':f"Bearer {os.environ['GH_TOKEN']}",'Content-Type':'application/json','X-GitHub-Api-Version':'2022-11-28'},method='POST')
+          with urlopen(request,timeout=20) as response:
+            if response.status not in {201,202}:raise SystemExit(f'check HTTP {response.status}')
+          PY
