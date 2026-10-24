@@ -18,6 +18,10 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+### Security
+
+- Replace the unmaintained YAML parser dependency with the pinned safe Rust parser and update `ctutils` to 0.4.4.
+
 ## [0.2.76] — 2026-10-21
 
 ### User-facing changes

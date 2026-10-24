@@ -199,30 +199,27 @@ pub(super) async fn update_download_filter(state: &AppState, body: &str) -> Http
             Ok(_) | Err(_) => {
                 return routing::bad_request_response(
                     "Existing configuration is not a YAML mapping",
-                )
+                );
             }
         }
     };
     let serde_yaml::Value::Mapping(root) = &mut yaml else {
         return routing::bad_request_response("Existing configuration is not a YAML mapping");
     };
-    let filters_key = serde_yaml::Value::String("filters".to_owned());
-    let download_key = serde_yaml::Value::String("download".to_owned());
-    let exclude_key = serde_yaml::Value::String("exclude".to_owned());
     let filters = root
-        .entry(filters_key)
+        .entry("filters")
         .or_insert_with(|| serde_yaml::Value::Mapping(serde_yaml::Mapping::new()));
     let serde_yaml::Value::Mapping(filters) = filters else {
         return routing::bad_request_response("filters must be a YAML mapping");
     };
     let download = filters
-        .entry(download_key)
+        .entry("download")
         .or_insert_with(|| serde_yaml::Value::Mapping(serde_yaml::Mapping::new()));
     let serde_yaml::Value::Mapping(download) = download else {
         return routing::bad_request_response("filters.download must be a YAML mapping");
     };
     download.insert(
-        exclude_key,
+        "exclude",
         serde_yaml::Value::Sequence(terms.into_iter().map(serde_yaml::Value::String).collect()),
     );
     let yaml_text = match serde_yaml::to_string(&yaml) {
@@ -230,7 +227,7 @@ pub(super) async fn update_download_filter(state: &AppState, body: &str) -> Http
         Err(error) => {
             return routing::service_unavailable_response(&format!(
                 "failed to serialize configuration: {error}"
-            ))
+            ));
         }
     };
     // The shared controller YAML writer accepts the target's JSON-string

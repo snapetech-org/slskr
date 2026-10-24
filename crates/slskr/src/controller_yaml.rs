@@ -46,10 +46,9 @@ fn validate_controller_yaml_node(
     }
     match value {
         serde_yaml::Value::Mapping(mapping) => {
-            for (key, value) in mapping {
-                if !matches!(key, serde_yaml::Value::String(_)) {
-                    return Err("Invalid YAML configuration".to_owned());
-                }
+            // noyalib's Mapping can only represent string keys; invalid YAML
+            // key types are rejected while deserializing into Value.
+            for value in mapping.values() {
                 validate_controller_yaml_node(value, depth + 1, nodes)?;
             }
         }
@@ -59,7 +58,7 @@ fn validate_controller_yaml_node(
             }
         }
         serde_yaml::Value::Tagged(tagged) => {
-            validate_controller_yaml_node(&tagged.value, depth + 1, nodes)?;
+            validate_controller_yaml_node(tagged.value(), depth + 1, nodes)?;
         }
         _ => {}
     }
