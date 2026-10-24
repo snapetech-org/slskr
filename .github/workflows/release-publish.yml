@@ -40,7 +40,9 @@ on:
       DOCKERHUB_TOKEN:
         required: false
       GHCR_TOKEN:
-        required: true
+        required: false
+      GHCR_LEGACY_TOKEN:
+        required: false
       TAP_GITHUB_TOKEN:
         required: false
       WINGETCREATE_GITHUB_TOKEN:
@@ -597,11 +599,21 @@ jobs:
             echo 'Docker Hub publisher credentials are required for stable releases.' >&2
             exit 1
           fi
+      - name: Require GHCR publisher credentials
+        env:
+          GHCR_PUBLISH_TOKEN: ${{ secrets.GHCR_LEGACY_TOKEN || secrets.GHCR_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "$GHCR_PUBLISH_TOKEN" ]]; then
+            echo 'GHCR_LEGACY_TOKEN or GHCR_TOKEN is required to publish stable images.' >&2
+            exit 1
+          fi
       - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # docker/login-action@v4.6.0
         with:
           registry: ghcr.io
           username: snapetech
-          password: ${{ secrets.GHCR_TOKEN }}
+          password: ${{ secrets.GHCR_LEGACY_TOKEN || secrets.GHCR_TOKEN }}
       - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # docker/login-action@v4.6.0
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
