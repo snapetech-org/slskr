@@ -23,22 +23,10 @@ for expected in \
   fi
 done
 
-push_branches="$(
-  awk '
-    /^  push:$/ { in_push=1; next }
-    in_push && /^  [[:alpha:]_][[:alnum:]_-]*:/ { exit }
-    in_push && /^    branches:$/ { in_branches=1; next }
-    in_branches && /^    [[:alpha:]_][[:alnum:]_-]*:/ { exit }
-    in_branches && /^      - / {
-      branch=$0
-      sub(/^      - /, "", branch)
-      gsub(/["\047]/, "", branch)
-      print branch
-    }
-  ' .github/workflows/ci.yml
-)"
-if [[ "$push_branches" != "main" ]]; then
-  printf 'workflow release policy check failed: only main pushes may enter the CI workflow\n' >&2
+if ! rg -q '^    tags:' .github/workflows/ci.yml ||
+   rg -q '^    branches:' .github/workflows/ci.yml ||
+   rg -q '^  pull_request(_target)?:' .github/workflows/ci.yml; then
+  printf 'workflow release policy check failed: CI must run only on tags or manual dispatch\n' >&2
   status=1
 fi
 for job in web-assets controller-regex-parity rust platform-builds package-surfaces; do
@@ -136,9 +124,7 @@ fi
 
 codeql_workflow=".github/workflows/codeql.yml"
 for expected in \
-  'pull_request:' \
   'push:' \
-  'schedule:' \
   'workflow_dispatch:' \
   'security-events: write' \
   'queries:' \
@@ -168,7 +154,6 @@ fi
 for expected in \
   'name: Live Parity' \
   'workflow_dispatch:' \
-  'schedule:' \
   'node scripts/audit-rust-web-ui.mjs' \
   'scripts/run-slskd-api-compat-smoke.sh' \
   'SLSKR_SLSKD_API_SMOKE_DIR: target/slskd-api-smoke' \
@@ -198,8 +183,6 @@ for expected in \
 done
 
 for expected in \
-  'schedule:' \
-  "cron: '43 8 * * *'" \
   'timeout-minutes: 25' \
   'python3 scripts/run-react-nightly-audit.py' \
   '--property=MemoryMax=4G --property=MemorySwapMax=0' \
@@ -331,11 +314,10 @@ done
 
 for expected in \
   'push:' \
-  'branches:' \
-  '- main' \
+  'tags:' \
   'cargo audit'; do
   if ! rg -n -F -- "$expected" .github/workflows/ci.yml >/dev/null; then
-    printf 'workflow release policy check failed: CI must run advisory coverage on main pushes; missing token: %s\n' "$expected" >&2
+    printf 'workflow release policy check failed: CI must retain tag-only advisory coverage; missing token: %s\n' "$expected" >&2
     status=1
   fi
 done

@@ -2,15 +2,12 @@ name: React Nightly Audit
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '43 8 * * *'
-
 permissions:
   contents: read
 
 concurrency:
   group: react-nightly-audit-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   browser-workflows:

@@ -5,9 +5,9 @@ env:
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '17 9 * * 1'
-
+  push:
+    tags:
+      - '**'
 permissions:
   contents: read
 

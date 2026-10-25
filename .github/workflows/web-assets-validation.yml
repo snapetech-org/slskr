@@ -1,6 +1,9 @@
 name: slskr fork PR localization check
 on:
   workflow_call:
+  push:
+    tags:
+      - '**'
 permissions:
   contents: read
 jobs:
