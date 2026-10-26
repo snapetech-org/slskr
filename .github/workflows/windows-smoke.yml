@@ -1,11 +1,12 @@
 # ng-runner-policy: private-jit-only-v1
+# packer-windows-jit-v1
 name: Windows Smoke
 
 on:
   workflow_dispatch:
   push:
     tags:
-      - '**'
+      - 'release-v*'
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: false
@@ -18,7 +19,7 @@ env:
 
 jobs:
   rust:
-    runs-on: ${{ fromJSON(format('{{"group":"packer-windows","labels":["self-hosted","Windows","X64","packer-windows","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-rust"]}}', github.run_id)) }}
+    runs-on: ${{ fromJSON(format('{{"group":"packer-windows","labels":["self-hosted","Windows","X64","on-demand","packer-windows","slskR","gha-{0}-rust"]}}', github.run_id)) }}
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
