@@ -1,3 +1,4 @@
+# ng-runner-policy: private-jit-only-v1
 name: Publish Downstream Packages
 
 on:
@@ -72,7 +73,7 @@ env:
 jobs:
   metadata:
     name: Prepare Dynamic Release Metadata
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-metadata"]}}', github.run_id)) }}
     outputs:
       tag: ${{ steps.version.outputs.tag }}
       release_version: ${{ steps.version.outputs.release_version }}
@@ -142,7 +143,7 @@ jobs:
     name: Publish AUR
     if: ${{ inputs.publish_only != 'winget' }}
     needs: metadata
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-aur"]}}', github.run_id)) }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -199,7 +200,7 @@ jobs:
     name: Publish COPR
     if: ${{ inputs.publish_only != 'winget' }}
     needs: metadata
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-copr"]}}', github.run_id)) }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -391,7 +392,7 @@ jobs:
     name: Publish Launchpad PPA
     if: ${{ inputs.publish_only != 'winget' }}
     needs: metadata
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-ppa"]}}', github.run_id)) }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -581,7 +582,7 @@ jobs:
     name: Publish Docker Images
     if: ${{ inputs.publish_only != 'winget' }}
     needs: metadata
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-docker"]}}', github.run_id)) }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -677,7 +678,7 @@ jobs:
     name: Update Homebrew Tap
     if: ${{ inputs.publish_only != 'winget' }}
     needs: metadata
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-homebrew"]}}', github.run_id)) }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -708,7 +709,7 @@ jobs:
   winget:
     name: Submit Winget PR
     needs: metadata
-    runs-on: windows-latest
+    runs-on: ${{ fromJSON(format('{{"group":"packer-windows","labels":["self-hosted","Windows","X64","packer-windows","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-winget"]}}', github.run_id)) }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
