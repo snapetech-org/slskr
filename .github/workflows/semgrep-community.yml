@@ -1,10 +1,22 @@
 # ng-runner-policy: private-jit-only-v1
 name: Semgrep Community Edition
+run-name: ${{ format('action:{0}:pool:{1}', inputs.action_tag, inputs.runner_pool_tag) }}
 
 on:
-  push:
-    tags: ['**']
   workflow_dispatch:
+    inputs:
+      action_tag:
+        description: Action to run
+        required: true
+        type: choice
+        options:
+          - semgrep
+      runner_pool_tag:
+        description: Private ephemeral JIT runner pool
+        required: true
+        type: choice
+        options:
+          - private
 
 permissions:
   contents: read

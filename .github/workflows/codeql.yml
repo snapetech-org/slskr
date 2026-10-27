@@ -1,14 +1,23 @@
 # ng-runner-policy: private-jit-only-v1
 name: CodeQL
+run-name: ${{ format('action:{0}:pool:{1}', inputs.action_tag, inputs.runner_pool_tag) }}
 
 on:
-  push:
-    tags:
-      - '**'
   workflow_dispatch:
+    inputs:
+      action_tag:
+        description: Action to run
+        type: choice
+        required: true
+        options: [codeql]
+      runner_pool_tag:
+        description: Private ephemeral JIT runner pool
+        type: choice
+        required: true
+        options: [private]
 
 concurrency:
-  group: ng-scan-codeql-${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  group: ng-scan-codeql-${{ github.run_id }}-${{ github.run_attempt }}
   cancel-in-progress: false
 
 permissions:
@@ -17,6 +26,7 @@ permissions:
 jobs:
   analyze:
     name: Analyze ${{ matrix.language }}
+    if: inputs.action_tag == 'codeql' && inputs.runner_pool_tag == 'private'
     runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) }}
     timeout-minutes: 120
     permissions:

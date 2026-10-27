@@ -1,5 +1,7 @@
 # ng-runner-policy: private-jit-only-v1
+# packer-windows-jit-v1
 name: Release
+run-name: ${{ format('action:{0}:pool:{1}:tag:{2}', inputs.action_tag, inputs.runner_pool_tag, inputs.tag) }}
 
 env:
   CARGO_AUDIT_VERSION: 0.22.1
@@ -11,10 +13,24 @@ env:
   WASM_BINDGEN_CLI_VERSION: 0.2.120
 
 on:
-  push:
-    tags:
-      - 'release-v*'
-
+  workflow_dispatch:
+    inputs:
+      action_tag:
+        description: Action to run
+        required: true
+        type: choice
+        options:
+          - release
+      runner_pool_tag:
+        description: Private ephemeral JIT runner pool
+        required: true
+        type: choice
+        options:
+          - private
+      tag:
+        description: Release tag; must match the selected ref
+        required: true
+        type: string
 permissions:
   actions: read
   contents: read
@@ -33,12 +49,13 @@ jobs:
       - id: version
         shell: bash
         run: |
-          tag_pattern='^release-v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?$'
+          tag_pattern='^(release-)?v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?$'
           if [[ ! "$GITHUB_REF_NAME" =~ $tag_pattern ]]; then
-            printf 'Release tags must use release-v<semver>, got %s\n' "$GITHUB_REF_NAME" >&2
+            printf 'Release tags must use v<semver>, got %s\n' "$GITHUB_REF_NAME" >&2
             exit 1
           fi
           version="${GITHUB_REF_NAME#release-}"
+          version="${version#v}"
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
   main-ci:
@@ -50,43 +67,55 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           RELEASE_SHA: ${{ github.sha }}
+          RELEASE_TAG: ${{ github.ref_name }}
+          REQUESTED_TAG: ${{ inputs.tag }}
         run: |
+          if [[ "$RELEASE_TAG" != "$REQUESTED_TAG" ]]; then
+            printf 'Selected ref %s does not match requested release tag %s\n' "$RELEASE_TAG" "$REQUESTED_TAG" >&2
+            exit 1
+          fi
           for _ in {1..240}; do
-            run_json="$(
+            runs_json="$(
               gh run list \
                 --repo "$GITHUB_REPOSITORY" \
-                --workflow CI \
-                --branch main \
+                --workflow ci.yml \
                 --commit "$RELEASE_SHA" \
-                --limit 1 \
-                --json databaseId,status,conclusion,url \
-                --jq '.[0] // empty'
+                --limit 20 \
+                --json event,displayTitle,headBranch,headSha,status,conclusion,url
             )"
+            run_json="$(jq -c \
+              --arg tag "$RELEASE_TAG" \
+              --arg sha "$RELEASE_SHA" \
+              '[.[] | select(
+                .event == "workflow_dispatch" and
+                .displayTitle == ("action:test:pool:private:tag:" + $tag) and
+                .headBranch == $tag and
+                .headSha == $sha
+              )] | .[0] // empty' <<<"$runs_json")"
 
             if [[ -z "$run_json" ]]; then
-              printf 'No CI run for %s on main yet; waiting...\n' "$RELEASE_SHA"
-              sleep 30
-              continue
+              echo "No explicit private CI dispatch exists for release tag $RELEASE_TAG." >&2
+              echo "Run CI on that tag with action=test and runner_pool_tag=private first." >&2
+              exit 1
             fi
 
             status="$(jq -r '.status' <<<"$run_json")"
             conclusion="$(jq -r '.conclusion // ""' <<<"$run_json")"
             url="$(jq -r '.url' <<<"$run_json")"
-            printf 'CI run for %s: %s %s %s\n' "$RELEASE_SHA" "$status" "$conclusion" "$url"
+            printf 'Tagged private CI for %s: %s %s %s\n' "$RELEASE_TAG" "$status" "$conclusion" "$url"
 
             if [[ "$status" == "completed" && "$conclusion" == "success" ]]; then
               exit 0
             fi
 
             if [[ "$status" == "completed" ]]; then
-              printf 'Release commit CI did not pass: %s\n' "$url" >&2
+              printf 'CI for release tag %s did not pass: %s\n' "$RELEASE_TAG" "$url" >&2
               exit 1
             fi
 
             sleep 30
           done
-
-          printf 'Timed out waiting for CI on release commit %s\n' "$RELEASE_SHA" >&2
+          printf 'Timed out waiting for tagged private CI on %s\n' "$RELEASE_TAG" >&2
           exit 1
 
   gate:
@@ -162,7 +191,7 @@ jobs:
   build:
     name: Build ${{ matrix.name }}
     needs: [version, main-ci]
-    runs-on: ${{ matrix.os == 'ubuntu-latest' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) || matrix.os == 'ubuntu-24.04-arm' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","arm64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-15-intel' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","macOS","X64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-15' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","macOS","ARM64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) || fromJSON(format('{{"group":"packer-windows","labels":["self-hosted","Windows","X64","packer-windows","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) }}
+    runs-on: ${{ matrix.os == 'ubuntu-latest' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) || matrix.os == 'ubuntu-24.04-arm' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","arm64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-15-intel' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","macOS","X64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-15' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","macOS","ARM64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) || fromJSON(format('{{"group":"packer-windows","labels":["self-hosted","Windows","X64","on-demand","packer-windows","slskR","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) }}
     strategy:
       fail-fast: false
       matrix:
@@ -296,7 +325,7 @@ jobs:
 
   release:
     name: Publish GitHub Release
-    if: startsWith(github.ref, 'refs/tags/release-v')
+    if: startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v')
     needs: [version, gate, build]
     runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-release"]}}', github.run_id)) }}
     outputs:
@@ -404,7 +433,7 @@ jobs:
 
   downstream-publish:
     name: Publish Downstream Packages
-    if: startsWith(github.ref, 'refs/tags/release-v')
+    if: startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v')
     needs: [release]
     permissions:
       actions: read
@@ -412,6 +441,8 @@ jobs:
       packages: write
     uses: ./.github/workflows/release-publish.yml
     with:
+      action_tag: release
+      runner_pool_tag: private
       tag: ${{ github.ref_name }}
     secrets:
       AUR_SSH_KEY: ${{ secrets.AUR_SSH_KEY }}
@@ -434,7 +465,7 @@ jobs:
 
   discord:
     name: Announce Discord Release
-    if: startsWith(github.ref, 'refs/tags/release-v')
+    if: startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v')
     needs: [version, release, downstream-publish]
     runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-discord"]}}', github.run_id)) }}
     steps:

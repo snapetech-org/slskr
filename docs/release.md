@@ -70,7 +70,7 @@ To validate a released Chocolatey package on a clean Windows runner without
 publishing it, dispatch the existing workflow with `publish=false`:
 
 ```sh
-tag="$(git describe --tags --match 'release-v*' --abbrev=0)"
+tag="$(git describe --tags --match 'v*' --match 'release-v*' --abbrev=0)"
 gh workflow run publish-chocolatey.yml --ref main -f tag="$tag" -f publish=false
 ```
 
@@ -107,7 +107,7 @@ archive contents without attempting to execute a foreign-platform binary.
 ## Release notes and changelog
 
 User-facing, security, operational, and user-facing documentation changes add
-one new validated fragment under `release-notes/`. Pull-request validation
+one new validated fragment under `release-notes/`. The validation workflow
 requires that fragment or an explicit internal-only selection, and fragments
 are append-only. Each fragment records its category, audience, product area,
 required action, and breaking-change status.
@@ -122,7 +122,7 @@ The tag workflow publishes a concise curated body as `release/RELEASE_NOTES.md`
 and sends that same summary in the Discord embed. It also uploads the complete
 machine-validated fragment assembly as `release/RELEASE_NOTES_FULL.md`, keeping
 the release page readable without discarding detailed change history. The
-pull-request job exposes a separate capture-metadata table so the source
+validation job exposes a separate capture-metadata table so the source
 fragment fields remain auditable. Keep `CHANGELOG.md` append-only at the
 release-section level and move shipped `## [Unreleased]` bullets into a dated
 section when preparing a release; the CI and tag workflows reject a missing or
@@ -130,8 +130,8 @@ placeholder section.
 
 ## CI and release matrix
 
-The `CI` workflow runs the platform matrix on every pull request and push to
-`main`. Each matrix job builds a target archive, verifies its checksum and
+The `CI` workflow runs only from its explicit workflow dispatch or a matching
+build tag. Each matrix job builds a target archive, verifies its checksum and
 layout, and uploads the archive for seven days so a platform-specific build can
 be downloaded for testing. Native workspace tests run on Linux x64, Linux
 AArch64, both macOS architectures, and Windows; the additional musl jobs smoke
@@ -141,26 +141,25 @@ The release workflow uses the same native runner and target mapping:
 
 | Target | CI and release runner | Rust target | CI exercise |
 | --- | --- | --- | --- |
-| `linux-x64` | `ubuntu-latest` | `x86_64-unknown-linux-gnu` | Full Linux tests and archive smoke |
-| `linux-musl-x64` | `ubuntu-latest` | `x86_64-unknown-linux-musl` | Static archive build and smoke |
-| `linux-arm64` | `ubuntu-24.04-arm` | `aarch64-unknown-linux-gnu` | Full AArch64 tests and archive smoke |
-| `linux-musl-arm64` | `ubuntu-24.04-arm` | `aarch64-unknown-linux-musl` | Static archive build and smoke |
-| `macos-x64` | `macos-15-intel` | `x86_64-apple-darwin` | Native workspace tests and archive smoke |
-| `macos-arm64` | `macos-15` | `aarch64-apple-darwin` | Native workspace tests and archive smoke |
-| `windows-x64` | `windows-latest` | `x86_64-pc-windows-msvc` | Native workspace tests and archive smoke |
+| `linux-x64` | Private JIT Linux x64 | `x86_64-unknown-linux-gnu` | Full Linux tests and archive smoke |
+| `linux-musl-x64` | Private JIT Linux x64 | `x86_64-unknown-linux-musl` | Static archive build and smoke |
+| `linux-arm64` | Private JIT Linux ARM64 | `aarch64-unknown-linux-gnu` | Full AArch64 tests and archive smoke |
+| `linux-musl-arm64` | Private JIT Linux ARM64 | `aarch64-unknown-linux-musl` | Static archive build and smoke |
+| `macos-x64` | Private JIT macOS x64 | `x86_64-apple-darwin` | Native workspace tests and archive smoke |
+| `macos-arm64` | Private JIT macOS ARM64 | `aarch64-apple-darwin` | Native workspace tests and archive smoke |
+| `windows-x64` | Private JIT Windows x64 | `x86_64-pc-windows-msvc` | Native workspace tests and archive smoke |
 
 Push a tag named:
 
 ```text
-release-v<semver>
+v<semver>
 ```
 
-Tag-triggered releases intentionally use the `release-v<semver>` convention,
-for example `release-v1.2.3` or `release-v1.2.3-rc.1`. Plain `v*` tags and
-loose `release-*` tags are not release triggers. Commits pushed to `main` build
-short-lived CI test archives but do not create GitHub release assets, and the
-release workflow does not provide a manual dispatch path; a full release
-requires a `release-v<semver>` tag on `main`.
+New tag-triggered releases use `v<semver>`, for example `v1.2.3` or
+`v1.2.3-rc.1`. Existing `release-v<semver>` tags remain supported for
+compatibility. Loose `release-*` tags are not release triggers. Commits pushed
+to `main` do not start workflows. A full release requires a `v<semver>` tag on
+`main`.
 
 For a tag build, the workflow creates a GitHub Release and uploads all archives
 plus `SHA256SUMS.txt`, `slskr-cyclonedx.json`, and
@@ -171,7 +170,7 @@ announcement using the `DISCORD_RELEASE_WEBHOOK_URL` repository secret.
 
 The internal/unpublished Cargo crates intentionally remain at `0.0.0`. Binary
 and archive version metadata comes from the release workflow. Tag builds derive
-the artifact version from `release-v<semver>`, and local/manual archive tests
+the artifact version from `v<semver>` (or a legacy `release-v<semver>` tag), and local/manual archive tests
 can still pass `SLSKR_RELEASE_VERSION` directly to
 `scripts/build-release-archive.sh`.
 Archive roots are named `slskr-<version>-<target>` so the published package

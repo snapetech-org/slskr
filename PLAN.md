@@ -194,10 +194,9 @@ After init, message connections are tagged by a single character: `P` peer-messa
 - Install/service runbook. *(done initial cut: see `docs/install.md` for build/install, config/state paths, user/system service units, container shape, and exposure rules)*
 - App/API parity backlog. *(started: `docs/legacy-port-harvest.md` captures config/API/service requirements and sequencing for the bundled app)*
 - CLI consolidation. *(done: smoke/probe commands are exposed as `slskr` subcommands and the standalone `slskr-cli` crate has been removed from the workspace)*
-- Public repo/package rename. *(permission-gated/deferred: do not rename repository, packages, crates, namespaces, images, or user-visible app identifiers without explicit maintainer approval)*
 - 24h soak test (search + transfer + distributed-tree health). *(harness exists and focused VPN-backed live/proton matrices passed; rerun `scripts/run-live-soak-24h.sh` before release tagging when credentials and Proton namespaces are intentionally available)*
 - License posture. *(done: project is AGPL-3.0-only from first public release, with stock AGPL text in `LICENSE` and concise project-specific notices in `NOTICE`; no third-party additional terms imported)*
-- Tag `0.1.0`, publish to internal registry. *(blocked until 24h soak passes and public-posture scrub is reviewed)*
+- Tag `0.1.0`, publish to internal registry. *(blocked until the 24h soak and public-posture checks pass)*
 
 ## Current verification
 

@@ -1,10 +1,23 @@
 # ng-runner-policy: private-jit-only-v1
 # packer-windows-jit-v1
 name: Publish Chocolatey
+run-name: ${{ format('action:{0}:pool:{1}', inputs.action_tag, inputs.runner_pool_tag) }}
 
 on:
   workflow_dispatch:
     inputs:
+      action_tag:
+        description: Action to run
+        required: true
+        type: choice
+        options:
+          - release
+      runner_pool_tag:
+        description: Private ephemeral JIT runner pool
+        required: true
+        type: choice
+        options:
+          - private
       tag:
         description: Release tag to publish
         required: true
@@ -67,8 +80,8 @@ jobs:
           RELEASE_TAG: ${{ inputs.tag }}
         run: |
           $ErrorActionPreference = "Stop"
-          if ($env:RELEASE_TAG -notmatch '^release-v(?<version>[0-9]+\.[0-9]+\.[0-9]+(?:[-+][0-9A-Za-z.-]+)?)$') {
-            throw "Expected a release-v<semver> tag, got $env:RELEASE_TAG"
+          if ($env:RELEASE_TAG -notmatch '^(?:release-)?v(?<version>[0-9]+\.[0-9]+\.[0-9]+(?:[-+][0-9A-Za-z.-]+)?)$') {
+            throw "Expected a v<semver> tag, got $env:RELEASE_TAG"
           }
           "PACKAGE_VERSION=$($Matches['version'])" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
       - name: Render and pack Chocolatey artifact

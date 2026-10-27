@@ -242,13 +242,18 @@ if ! rg -n -F 'Locale::Maketext::Simple' scripts/select-windows-perl.ps1 >/dev/n
   status=1
 fi
 
+if ! rg -n -F "'v*'" .github/workflows/release.yml >/dev/null; then
+  printf 'workflow release policy check failed: v* tag trigger was not found\n' >&2
+  status=1
+fi
+
 if ! rg -n -F "release-v*" .github/workflows/release.yml >/dev/null; then
-  printf 'workflow release policy check failed: release-v tag trigger was not found\n' >&2
+  printf 'workflow release policy check failed: legacy release-v tags must remain supported\n' >&2
   status=1
 fi
 
 if rg -n -F "workflow_dispatch:" .github/workflows/release.yml >/dev/null; then
-  printf 'workflow release policy check failed: release workflow must only run from release-v tags\n' >&2
+  printf 'workflow release policy check failed: release workflow must only run from v* or legacy release-v tags\n' >&2
   status=1
 fi
 
@@ -378,7 +383,7 @@ done
 
 for expected in \
   'tag_pattern=' \
-  'release-v<semver>' \
+  'v<semver>' \
   'Require Main CI' \
   'for _ in {1..240}' \
   '--workflow CI' \
@@ -386,7 +391,9 @@ for expected in \
   '--commit "$RELEASE_SHA"' \
   'needs: [version, main-ci]' \
   "startsWith(github.ref, 'refs/tags/release-v')" \
+  "startsWith(github.ref, 'refs/tags/v')" \
   'version="${GITHUB_REF_NAME#release-}"' \
+  'version="${version#v}"' \
   'DISCORD_RELEASE_WEBHOOK_URL' \
   'Announce Discord Release' \
   'scripts/release_notes.py' \
@@ -400,8 +407,8 @@ for expected in \
   fi
 done
 
-if ! rg -n -F 'release-v<semver>' docs/release.md >/dev/null; then
-  printf 'workflow release policy check failed: release docs must document release-v<semver>\n' >&2
+if ! rg -n -F 'v<semver>' docs/release.md >/dev/null; then
+  printf 'workflow release policy check failed: release docs must document v<semver>\n' >&2
   status=1
 fi
 
