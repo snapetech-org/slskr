@@ -2,12 +2,11 @@
 
 For any user-facing change, add one structured fragment under `release-notes/`
 describing it. A single fragment may cover related user-facing changes in the
-same pull request. Keep shipped fragments unchanged.
+same commit. Keep shipped fragments unchanged.
 
-For internal-only work, no fragment is needed. In a pull request, either select
-the internal-only option in the template or put `release-note: none` on its own
-line in the description. When a direct push or merge check reads commit
-messages, put the same marker on its own line in the commit message.
+For internal-only work, no fragment is needed. Put `release-note: none` on its
+own line in the commit message when validation needs to identify the change as
+internal.
 
 Each fragment contains YAML-style frontmatter with exactly these fields:
 
@@ -33,5 +32,5 @@ python3 scripts/release_notes.py preview --base <base> --head <head>
 ```
 
 The preview is grouped by category for the GitHub release and Discord
-announcement. Pull-request checks also append capture metadata showing the
+announcement. Validation checks also append capture metadata showing the
 fragment, audience, area, action, and breaking status.

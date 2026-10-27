@@ -18,6 +18,6 @@ Date: 2026-09-23
 
 Policy:
 
-- New duplicate roots must be reviewed before release.
+- Keep dependency roots explicit and document why duplicate versions remain.
 - Direct dependencies should not be added at older major versions when a workspace-compatible newer family is already present.
 - `scripts/check-rust-dependency-hygiene.sh` fails if `cargo tree -d -p slskr` reports duplicate roots outside the table above.
