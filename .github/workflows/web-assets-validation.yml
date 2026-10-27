@@ -1,16 +1,28 @@
 # ng-runner-policy: private-jit-only-v1
-name: slskr fork PR localization check
+name: slskr Web UI localization validation
+run-name: ${{ format('action:{0}:pool:{1}', inputs.action_tag, inputs.runner_pool_tag) }}
 on:
   workflow_call:
-  push:
-    tags:
-      - '**'
+  workflow_dispatch:
+    inputs:
+      action_tag:
+        description: Action to run
+        required: true
+        type: choice
+        options:
+          - test
+      runner_pool_tag:
+        description: Private ephemeral JIT runner pool
+        required: true
+        type: choice
+        options:
+          - private
 permissions:
   contents: read
 jobs:
   web-assets:
     name: Web UI localization test
-    runs-on: ${{ github.event_name == 'pull_request' && fromJSON('{"group":"public-fork-jit","labels":["self-hosted","linux","x64","public-pr-slskr"]}') || fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-web-assets"]}}', github.run_id)) }}
+    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-web-assets"]}}', github.run_id)) }}
     timeout-minutes: 15
     permissions:
       contents: read

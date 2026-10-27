@@ -1,13 +1,24 @@
 # ng-runner-policy: private-jit-only-v1
 name: Windows Smoke
+run-name: ${{ format('action:{0}:pool:{1}', inputs.action_tag, inputs.runner_pool_tag) }}
 
 on:
   workflow_dispatch:
-  push:
-    tags:
-      - '**'
+    inputs:
+      action_tag:
+        description: Action to run
+        required: true
+        type: choice
+        options:
+          - test
+      runner_pool_tag:
+        description: Private ephemeral JIT runner pool
+        required: true
+        type: choice
+        options:
+          - private
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
+  group: ${{ github.workflow }}-${{ github.run_id }}
   cancel-in-progress: false
 
 permissions:

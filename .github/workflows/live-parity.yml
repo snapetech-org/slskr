@@ -1,14 +1,25 @@
 # ng-runner-policy: private-jit-only-v1
 name: Live Parity
+run-name: ${{ format('action:{0}:pool:{1}', inputs.action_tag, inputs.runner_pool_tag) }}
 
 env:
   WASM_BINDGEN_CLI_VERSION: 0.2.120
 
 on:
   workflow_dispatch:
-  push:
-    tags:
-      - '**'
+    inputs:
+      action_tag:
+        description: Action to run
+        required: true
+        type: choice
+        options:
+          - test
+      runner_pool_tag:
+        description: Private ephemeral JIT runner pool
+        required: true
+        type: choice
+        options:
+          - private
 permissions:
   contents: read
 

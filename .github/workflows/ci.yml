@@ -1,5 +1,6 @@
 # ng-runner-policy: private-jit-only-v1
 name: CI
+run-name: ${{ format('action:{0}:pool:{1}{2}', inputs.action_tag, inputs.runner_pool_tag, startsWith(github.ref, 'refs/tags/') && format(':tag:{0}', github.ref_name) || '') }}
 
 env:
   ACTIONLINT_VERSION: v1.7.12
@@ -10,10 +11,20 @@ env:
   SLSKR_TRIVY_IMAGE: aquasec/trivy:0.72.0
 
 on:
-  push:
-    tags:
-      - '**'
   workflow_dispatch:
+    inputs:
+      action_tag:
+        description: Action to run
+        required: true
+        type: choice
+        options:
+          - test
+      runner_pool_tag:
+        description: Private ephemeral JIT runner pool
+        required: true
+        type: choice
+        options:
+          - private
 
 # Keep every validation attempt isolated so retries are never canceled or conflated.
 concurrency:

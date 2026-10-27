@@ -1,14 +1,22 @@
 # ng-runner-policy: private-jit-only-v1
 name: Sync Unraid GHCR aliases
+run-name: ${{ format('action:{0}:pool:{1}', inputs.action_tag, inputs.runner_pool_tag) }}
 
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows:
-      - Release
-    types:
-      - completed
-
+    inputs:
+      action_tag:
+        description: Action to run
+        required: true
+        type: choice
+        options:
+          - sync
+      runner_pool_tag:
+        description: Private ephemeral JIT runner pool
+        required: true
+        type: choice
+        options:
+          - private
 permissions:
   contents: read
 
@@ -19,13 +27,9 @@ concurrency:
 jobs:
   sync:
     if: >-
+      github.event_name == 'workflow_dispatch' &&
       github.repository == 'snapetech-org/slskr' &&
-      ((github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
-       (github.event_name == 'workflow_run' &&
-        github.event.workflow_run.conclusion == 'success' &&
-        github.event.workflow_run.event == 'push' &&
-        github.event.workflow_run.head_repository.full_name == github.repository &&
-        (startsWith(github.event.workflow_run.head_branch, 'v') || startsWith(github.event.workflow_run.head_branch, 'release-v'))))
+      github.ref == 'refs/heads/main'
     runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-sync"]}}', github.run_id)) }}
     timeout-minutes: 10
     permissions:

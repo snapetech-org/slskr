@@ -1,5 +1,6 @@
 # ng-runner-policy: private-jit-only-v1
 name: Release
+run-name: ${{ format('action:{0}:pool:{1}:tag:{2}', inputs.action_tag, inputs.runner_pool_tag, inputs.tag) }}
 
 env:
   CARGO_AUDIT_VERSION: 0.22.1
@@ -11,12 +12,24 @@ env:
   WASM_BINDGEN_CLI_VERSION: 0.2.120
 
 on:
-  push:
-    tags:
-      - 'v*'
-      # Keep existing release-v tags valid while new releases use v*.
-      - 'release-v*'
-
+  workflow_dispatch:
+    inputs:
+      action_tag:
+        description: Action to run
+        required: true
+        type: choice
+        options:
+          - release
+      runner_pool_tag:
+        description: Private ephemeral JIT runner pool
+        required: true
+        type: choice
+        options:
+          - private
+      tag:
+        description: Release tag; must match the selected ref
+        required: true
+        type: string
 permissions:
   actions: read
   contents: read
@@ -53,43 +66,55 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           RELEASE_SHA: ${{ github.sha }}
+          RELEASE_TAG: ${{ github.ref_name }}
+          REQUESTED_TAG: ${{ inputs.tag }}
         run: |
+          if [[ "$RELEASE_TAG" != "$REQUESTED_TAG" ]]; then
+            printf 'Selected ref %s does not match requested release tag %s\n' "$RELEASE_TAG" "$REQUESTED_TAG" >&2
+            exit 1
+          fi
           for _ in {1..240}; do
-            run_json="$(
+            runs_json="$(
               gh run list \
                 --repo "$GITHUB_REPOSITORY" \
-                --workflow CI \
-                --branch main \
+                --workflow ci.yml \
                 --commit "$RELEASE_SHA" \
-                --limit 1 \
-                --json databaseId,status,conclusion,url \
-                --jq '.[0] // empty'
+                --limit 20 \
+                --json event,displayTitle,headBranch,headSha,status,conclusion,url
             )"
+            run_json="$(jq -c \
+              --arg tag "$RELEASE_TAG" \
+              --arg sha "$RELEASE_SHA" \
+              '[.[] | select(
+                .event == "workflow_dispatch" and
+                .displayTitle == ("action:test:pool:private:tag:" + $tag) and
+                .headBranch == $tag and
+                .headSha == $sha
+              )] | .[0] // empty' <<<"$runs_json")"
 
             if [[ -z "$run_json" ]]; then
-              printf 'No CI run for %s on main yet; waiting...\n' "$RELEASE_SHA"
-              sleep 30
-              continue
+              echo "No explicit private CI dispatch exists for release tag $RELEASE_TAG." >&2
+              echo "Run CI on that tag with action=test and runner_pool_tag=private first." >&2
+              exit 1
             fi
 
             status="$(jq -r '.status' <<<"$run_json")"
             conclusion="$(jq -r '.conclusion // ""' <<<"$run_json")"
             url="$(jq -r '.url' <<<"$run_json")"
-            printf 'CI run for %s: %s %s %s\n' "$RELEASE_SHA" "$status" "$conclusion" "$url"
+            printf 'Tagged private CI for %s: %s %s %s\n' "$RELEASE_TAG" "$status" "$conclusion" "$url"
 
             if [[ "$status" == "completed" && "$conclusion" == "success" ]]; then
               exit 0
             fi
 
             if [[ "$status" == "completed" ]]; then
-              printf 'Release commit CI did not pass: %s\n' "$url" >&2
+              printf 'CI for release tag %s did not pass: %s\n' "$RELEASE_TAG" "$url" >&2
               exit 1
             fi
 
             sleep 30
           done
-
-          printf 'Timed out waiting for CI on release commit %s\n' "$RELEASE_SHA" >&2
+          printf 'Timed out waiting for tagged private CI on %s\n' "$RELEASE_TAG" >&2
           exit 1
 
   gate:
@@ -415,6 +440,8 @@ jobs:
       packages: write
     uses: ./.github/workflows/release-publish.yml
     with:
+      action_tag: release
+      runner_pool_tag: private
       tag: ${{ github.ref_name }}
     secrets:
       AUR_SSH_KEY: ${{ secrets.AUR_SSH_KEY }}

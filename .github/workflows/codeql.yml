@@ -1,5 +1,6 @@
 # ng-runner-policy: private-jit-only-v1
 name: CodeQL
+run-name: ${{ format('action:{0}:pool:{1}', inputs.action_tag, inputs.runner_pool_tag) }}
 
 on:
   workflow_dispatch:
