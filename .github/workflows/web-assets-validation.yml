@@ -6,7 +6,14 @@ permissions:
 jobs:
   web-assets:
     name: Web UI localization test
-    runs-on: ubuntu-latest
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.fork == true &&
+      github.event.pull_request.base.repo.full_name == 'snapetech-org/slskr' &&
+      github.event.pull_request.base.ref == 'main'
+    runs-on:
+      group: public-fork-jit
+      labels: [self-hosted, linux, x64, public-pr-slskr, ng-public-run-${{ github.run_id }}]
     timeout-minutes: 15
     permissions:
       contents: read
