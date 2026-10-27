@@ -5,7 +5,7 @@ on:
   workflow_call:
     inputs:
       tag:
-        description: "Release tag to publish, for example release-v<semver>"
+        description: "Release tag to publish, for example v<semver>"
         required: true
         type: string
       publish_only:
@@ -51,7 +51,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Release tag to publish, for example release-v<semver>"
+        description: "Release tag to publish, for example v<semver>"
         required: true
       publish_only:
         description: "Select one publisher for a targeted retry."
