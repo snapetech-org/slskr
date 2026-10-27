@@ -17,4 +17,4 @@ jobs:
       github.event.pull_request.base.ref == 'main'
     permissions:
       contents: read
-    uses: snapetech-org/slskr/.github/workflows/web-assets-validation.yml@c25990a59a8471ee99c88bfe7bcb97239d6541db
+    uses: snapetech-org/slskr/.github/workflows/web-assets-validation.yml@6d5b051207ec0566de2e685743be1969dc2562dd
