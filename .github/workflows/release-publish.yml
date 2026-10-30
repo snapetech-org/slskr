@@ -632,12 +632,12 @@ jobs:
             echo 'GHCR_LEGACY_TOKEN or GHCR_TOKEN is required to publish stable images.' >&2
             exit 1
           fi
-      - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # docker/login-action@v4.6.0
+      - uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6 # docker/login-action@v4.7.0
         with:
           registry: ghcr.io
           username: snapetech
           password: ${{ secrets.GHCR_LEGACY_TOKEN || secrets.GHCR_TOKEN }}
-      - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # docker/login-action@v4.6.0
+      - uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6 # docker/login-action@v4.7.0
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
