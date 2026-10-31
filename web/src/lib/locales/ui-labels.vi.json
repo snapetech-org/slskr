@@ -3576,7 +3576,7 @@
   "created,": "tạo,",
   "credentials": "thông tin xác thực",
   "custom quality": "chất lượng tùy chỉnh",
-  "dht": "dht",
+  "dht": "DHT",
   "directories": "thư mục",
   "disabled": "Đã tắt",
   "discovered peers can be expected in this privacy mode even when the overlay and DHT ports are open.": "Các đồng nghiệp được phát hiện có thể được mong đợi ở chế độ riêng tư này ngay cả khi lớp phủ và cổng DHT đang mở.",

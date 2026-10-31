@@ -3576,7 +3576,7 @@
   "created,": "생성,",
   "credentials": "신임장",
   "custom quality": "맞춤 품질",
-  "dht": "dht",
+  "dht": "DHT",
   "directories": "디렉토리",
   "disabled": "비활성화됨",
   "discovered peers can be expected in this privacy mode even when the overlay and DHT ports are open.": "오버레이 및 DHT 포트가 열려 있는 경우에도 이 개인 정보 보호 모드에서는 검색된 피어를 예상할 수 있습니다.",

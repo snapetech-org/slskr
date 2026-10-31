@@ -3576,7 +3576,7 @@
   "created,": "创建，",
   "credentials": "证书",
   "custom quality": "定制品质",
-  "dht": "dht",
+  "dht": "DHT",
   "directories": "目录",
   "disabled": "已停用",
   "discovered peers can be expected in this privacy mode even when the overlay and DHT ports are open.": "即使覆盖和 DHT 端口打开，也可以在此隐私模式下发现已发现的对等点。",

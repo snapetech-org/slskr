@@ -3576,7 +3576,7 @@
   "created,": "dibuat,",
   "credentials": "kredensial",
   "custom quality": "kualitas khusus",
-  "dht": "dht",
+  "dht": "DHT",
   "directories": "direktori",
   "disabled": "dinonaktifkan",
   "discovered peers can be expected in this privacy mode even when the overlay and DHT ports are open.": "rekan yang ditemukan dapat diharapkan dalam mode privasi ini bahkan ketika port overlay dan DHT terbuka.",

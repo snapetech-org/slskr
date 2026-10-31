@@ -3576,7 +3576,7 @@
   "created,": "बनाया था,",
   "credentials": "साख",
   "custom quality": "कस्टम गुणवत्ता",
-  "dht": "dht",
+  "dht": "DHT",
   "directories": "निर्देशिका",
   "disabled": "अक्षम",
   "discovered peers can be expected in this privacy mode even when the overlay and DHT ports are open.": "ओवरले और DHT पोर्ट खुले होने पर भी इस गोपनीयता मोड में खोजे गए साथियों की अपेक्षा की जा सकती है।",

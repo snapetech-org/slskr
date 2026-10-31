@@ -3576,7 +3576,7 @@
   "created,": "作成された、",
   "credentials": "資格",
   "custom quality": "カスタム品質",
-  "dht": "dht",
+  "dht": "DHT",
   "directories": "ディレクトリ",
   "disabled": "無効",
   "discovered peers can be expected in this privacy mode even when the overlay and DHT ports are open.": "オーバーレイ ポートと DHT ポートが開いている場合でも、このプライバシー モードでは、検出されたピアが期待されます。",

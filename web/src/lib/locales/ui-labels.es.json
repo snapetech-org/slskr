@@ -3576,7 +3576,7 @@
   "created,": "creado,",
   "credentials": "cartas credenciales",
   "custom quality": "calidad personalizada",
-  "dht": "dht",
+  "dht": "DHT",
   "directories": "directorios",
   "disabled": "desactivado",
   "discovered peers can be expected in this privacy mode even when the overlay and DHT ports are open.": "Se pueden esperar pares descubiertos en este modo de privacidad incluso cuando los puertos superpuestos y DHT estén abiertos.",

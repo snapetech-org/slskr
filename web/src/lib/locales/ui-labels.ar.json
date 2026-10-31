@@ -3576,7 +3576,7 @@
   "created,": "مخلوق،",
   "credentials": "أوراق اعتماد",
   "custom quality": "جودة مخصصة",
-  "dht": "dht",
+  "dht": "DHT",
   "directories": "الدلائل",
   "disabled": "معطّل",
   "discovered peers can be expected in this privacy mode even when the overlay and DHT ports are open.": "يمكن توقع النظراء المكتشفين في وضع الخصوصية هذا حتى عندما يكون التراكب ومنافذ DHT مفتوحة.",
