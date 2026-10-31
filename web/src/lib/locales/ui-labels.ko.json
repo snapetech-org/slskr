@@ -2412,7 +2412,7 @@
   "Perturbation Stability (": "섭동 안정성(",
   "Phonetic Similarity:": "음성학적 유사성:",
   "Pick a track first.": "먼저 트랙을 선택하세요.",
-  "Pin": "핀",
+  "Pin": "고정",
   "Pin Center": "핀 센터",
   "Pin the current graph center so you can compare another node or reopen this branch later.": "현재 그래프 센터를 고정하면 다른 노드를 비교하거나 나중에 이 분기를 다시 열 수 있습니다.",
   "Pin this node so you can compare it against another branch or keep it handy while exploring.": "이 노드를 고정하여 다른 분기와 비교하거나 탐색하는 동안 편리하게 사용할 수 있습니다.",
@@ -4869,4 +4869,9 @@
   "No indexed shares to display.": "표시할 색인된 공유 항목이 없습니다.",
   "Sharing is optional and is not required for searching or downloading.": "공유는 선택 사항이며 검색이나 다운로드에 필요하지 않습니다.",
   "Share roots are configured by the operator in TOML or environment variables. Shared folders are visible to other Soulseek peers.": "공유 루트는 운영자가 TOML 또는 환경 변수로 설정합니다. 공유 폴더는 다른 Soulseek 피어에게 표시됩니다.",
-  "Read share setup instructions": "공유 설정 안내 읽기","Continue with {provider}":"{provider}(으)로 계속","Provider setup guide":"공급자 설정 가이드","Identity provider sign-in failed. Check the provider and account admission settings.":"ID 공급자 로그인에 실패했습니다. 공급자 및 계정 허용 설정을 확인하세요.","{provider} identity provider setup guide (opens in a new tab)":"{provider} ID 공급자 설정 가이드(새 탭에서 열림)"}
+  "Read share setup instructions": "공유 설정 안내 읽기",
+  "Continue with {provider}": "{provider}(으)로 계속",
+  "Provider setup guide": "공급자 설정 가이드",
+  "Identity provider sign-in failed. Check the provider and account admission settings.": "ID 공급자 로그인에 실패했습니다. 공급자 및 계정 허용 설정을 확인하세요.",
+  "{provider} identity provider setup guide (opens in a new tab)": "{provider} ID 공급자 설정 가이드(새 탭에서 열림)"
+}
