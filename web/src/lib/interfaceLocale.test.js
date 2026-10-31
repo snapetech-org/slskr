@@ -685,6 +685,8 @@ describe('interface language', () => {
 
     expect(toDisplayError(null, 'Failed to load saved conversations'))
       .toBe('No se pudieron cargar las conversaciones guardadas');
+    expect(toDisplayError({ response: { data: ' \n\t' } }, 'Failed to load saved conversations'))
+      .toBe('No se pudieron cargar las conversaciones guardadas');
     expect(toDisplayError({ response: { data: { message: 'raw backend message' } } }, 'Failed to load saved conversations'))
       .toBe('raw backend message');
   });
