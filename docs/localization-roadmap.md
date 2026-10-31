@@ -50,3 +50,7 @@ This follow-up adds 165 source strings to each of the twelve catalogs. It routes
 ## Remaining work
 
 The catalog translations were machine-generated and still need fluent-speaker review. Review the full Arabic layout interactively at narrow and desktop widths before claiming app-wide RTL support.
+
+## Focused catalog audit (2026-10-30)
+
+A semantic pass reviewed the 224 IDs added by PR #165 across all twelve locales (2,688 target values), plus key and placeholder integrity for the merged 4,558-ID catalogs. It corrected 25 clear copy errors in swarm, release-candidate, player, and file-sharing labels. Current main adds 317 more IDs; all twelve catalogs contain every one, and their placeholders match. The remaining English-identical values in those additions are dynamic-value templates or standard technical terms and units. These focused corrections do not add per-string native-review provenance: the machine-generated catalogs still need fluent-speaker review, and Arabic RTL review remains outstanding.
