@@ -23,9 +23,7 @@ on:
         description: Private ephemeral JIT runner pool
         required: true
         type: choice
-        options:
-          - private
-
+        options: [private]
 # Keep every validation attempt isolated so retries are never canceled or conflated.
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.run_id }}-${{ github.run_attempt }}
@@ -37,8 +35,19 @@ permissions:
 jobs:
   web-assets:
     name: Production web assets
-    if: github.event_name != 'push' || github.ref == 'refs/heads/main'
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) }}
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/release-v')) &&
+          inputs.action_tag == 'test' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        github.event_name != 'push' || github.ref == 'refs/heads/main'
+      )
+    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-web-assets"]}}', github.run_id)) }}
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
@@ -63,7 +72,19 @@ jobs:
 
   controller-regex-parity:
     name: Controller regex parity
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) }}
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/release-v')) &&
+          inputs.action_tag == 'test' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        true
+      )
+    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-controller-regex-parity"]}}', github.run_id)) }}
     timeout-minutes: 20
     env:
       DOTNET_VERSION: '10.0.402'
@@ -116,7 +137,19 @@ jobs:
 
   rust:
     # Trusted main Rust validation uses the isolated shared pool.
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) }}
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/release-v')) &&
+          inputs.action_tag == 'test' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        true
+      )
+    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-rust"]}}', github.run_id)) }}
     timeout-minutes: 360
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
@@ -271,7 +304,18 @@ jobs:
 
   linux-aarch64:
     name: Linux AArch64
-    if: github.event_name != 'push' || github.ref == 'refs/heads/main'
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/release-v')) &&
+          inputs.action_tag == 'test' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        github.event_name != 'push' || github.ref == 'refs/heads/main'
+      )
     runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","arm64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-linux-aarch64"]}}', github.run_id)) }}
     timeout-minutes: 120
     steps:
@@ -302,9 +346,20 @@ jobs:
 
   platform-builds:
     name: Platform ${{ matrix.name }}
-    if: github.event_name != 'push' || github.ref == 'refs/heads/main'
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/release-v')) &&
+          inputs.action_tag == 'test' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        github.event_name != 'push' || github.ref == 'refs/heads/main'
+      )
     needs: web-assets
-    runs-on: ${{ matrix.os == 'ubuntu-latest' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds"]}}', github.run_id, strategy.job-index)) || matrix.os == 'ubuntu-24.04-arm' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","arm64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-15-intel' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","macOS","X64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-15' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","macOS","ARM64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds"]}}', github.run_id, strategy.job-index)) || fromJSON(format('{{"group":"packer-windows","labels":["self-hosted","Windows","X64","packer-windows","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds"]}}', github.run_id, strategy.job-index)) }}
+    runs-on: ${{ matrix.os == 'linux-x64' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds"]}}', github.run_id, strategy.job-index)) || matrix.os == 'linux-arm64' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","arm64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-x64' && fromJSON(format('{{"group":"private-apple-builds","labels":["self-hosted","macOS","X64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds","private-apple"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-arm64' && fromJSON(format('{{"group":"private-apple-builds","labels":["self-hosted","macOS","ARM64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds","private-apple"]}}', github.run_id, strategy.job-index)) || fromJSON(format('{{"group":"packer-windows","labels":["self-hosted","Windows","X64","packer-windows","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds"]}}', github.run_id, strategy.job-index)) }}
     timeout-minutes: 120
     env:
       CARGO_NET_GIT_FETCH_WITH_CLI: true
@@ -313,37 +368,37 @@ jobs:
       matrix:
         include:
           - name: linux-x64
-            os: ubuntu-latest
+            os: linux-x64
             target: x86_64-unknown-linux-gnu
             apt: pkg-config libssl-dev
             native_tests: false
           - name: linux-musl-x64
-            os: ubuntu-latest
+            os: linux-x64
             target: x86_64-unknown-linux-musl
             apt: musl-tools pkg-config libssl-dev
             native_tests: false
           - name: linux-arm64
-            os: ubuntu-24.04-arm
+            os: linux-arm64
             target: aarch64-unknown-linux-gnu
             apt: pkg-config libssl-dev
             native_tests: false
           - name: linux-musl-arm64
-            os: ubuntu-24.04-arm
+            os: linux-arm64
             target: aarch64-unknown-linux-musl
             apt: musl-tools pkg-config libssl-dev
             native_tests: false
           - name: macos-x64
-            os: macos-15-intel
+            os: macos-x64
             target: x86_64-apple-darwin
             apt: ''
             native_tests: true
           - name: macos-arm64
-            os: macos-15
+            os: macos-arm64
             target: aarch64-apple-darwin
             apt: ''
             native_tests: true
           - name: windows-x64
-            os: windows-latest
+            os: windows-x64
             target: x86_64-pc-windows-msvc
             apt: ''
             native_tests: true
@@ -434,8 +489,20 @@ jobs:
     needs: [platform-builds, rust, linux-aarch64]
     # Multiarch Debian and RPM packaging depends on matching Ubuntu Ports
     # versions; keep this job on the stable LTS image instead of the moving
-    # ubuntu-latest label.
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) }}
+    # linux-x64 label.
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/release-v')) &&
+          inputs.action_tag == 'test' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        true
+      )
+    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-package-surfaces"]}}', github.run_id)) }}
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6

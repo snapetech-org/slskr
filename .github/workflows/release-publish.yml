@@ -69,8 +69,7 @@ on:
         description: Private ephemeral JIT runner pool
         required: true
         type: choice
-        options:
-          - private
+        options: [private]
       tag:
         description: "Release tag to publish, for example v<semver>"
         required: true
@@ -93,7 +92,18 @@ env:
 
 jobs:
   metadata:
-    if: ${{ inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private' }}
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          github.ref == 'refs/heads/main' &&
+          inputs.action_tag == 'release' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private'
+      )
     name: Prepare Dynamic Release Metadata
     runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-metadata"]}}', github.run_id)) }}
     outputs:
@@ -163,7 +173,18 @@ jobs:
 
   aur:
     name: Publish AUR
-    if: ${{ inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private' && (inputs.publish_only != 'winget') }}
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          github.ref == 'refs/heads/main' &&
+          inputs.action_tag == 'release' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private' && (inputs.publish_only != 'winget')
+      )
     needs: metadata
     runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-aur"]}}', github.run_id)) }}
     steps:
@@ -220,7 +241,18 @@ jobs:
 
   copr:
     name: Publish COPR
-    if: ${{ inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private' && (inputs.publish_only != 'winget') }}
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          github.ref == 'refs/heads/main' &&
+          inputs.action_tag == 'release' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private' && (inputs.publish_only != 'winget')
+      )
     needs: metadata
     runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-copr"]}}', github.run_id)) }}
     steps:
@@ -412,7 +444,18 @@ jobs:
 
   ppa:
     name: Publish Launchpad PPA
-    if: ${{ inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private' && (inputs.publish_only != 'winget') }}
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          github.ref == 'refs/heads/main' &&
+          inputs.action_tag == 'release' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private' && (inputs.publish_only != 'winget')
+      )
     needs: metadata
     runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-ppa"]}}', github.run_id)) }}
     steps:
@@ -602,7 +645,18 @@ jobs:
 
   docker:
     name: Publish Docker Images
-    if: ${{ inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private' && (inputs.publish_only != 'winget') }}
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          github.ref == 'refs/heads/main' &&
+          inputs.action_tag == 'release' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private' && (inputs.publish_only != 'winget')
+      )
     needs: metadata
     runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-docker"]}}', github.run_id)) }}
     steps:
@@ -698,7 +752,18 @@ jobs:
 
   homebrew:
     name: Update Homebrew Tap
-    if: ${{ inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private' && (inputs.publish_only != 'winget') }}
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          github.ref == 'refs/heads/main' &&
+          inputs.action_tag == 'release' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private' && (inputs.publish_only != 'winget')
+      )
     needs: metadata
     runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-homebrew"]}}', github.run_id)) }}
     steps:
@@ -729,7 +794,18 @@ jobs:
           git push
 
   winget:
-    if: ${{ inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private' }}
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          github.ref == 'refs/heads/main' &&
+          inputs.action_tag == 'release' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private'
+      )
     name: Submit Winget PR
     needs: metadata
     runs-on: ${{ fromJSON(format('{{"group":"packer-windows","labels":["self-hosted","Windows","X64","packer-windows","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-winget"]}}', github.run_id)) }}

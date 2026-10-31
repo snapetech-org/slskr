@@ -15,8 +15,7 @@ on:
         description: Private ephemeral JIT runner pool
         required: true
         type: choice
-        options:
-          - private
+        options: [private]
 concurrency:
   group: ${{ github.workflow }}-${{ github.run_id }}
   cancel-in-progress: false
@@ -29,6 +28,18 @@ env:
 
 jobs:
   rust:
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          github.ref == 'refs/heads/main' &&
+          inputs.action_tag == 'test' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        true
+      )
     runs-on: ${{ fromJSON(format('{{"group":"packer-windows","labels":["self-hosted","Windows","X64","packer-windows","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-rust"]}}', github.run_id)) }}
     timeout-minutes: 45
     steps:

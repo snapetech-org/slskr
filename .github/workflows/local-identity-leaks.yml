@@ -15,9 +15,19 @@ on:
         description: Private ephemeral JIT runner pool
         required: true
         type: choice
+        options: [private]
+      action:
+        description: Run the private security scan
+        required: true
+        type: choice
+        options:
+          - scan
+      runner_pool:
+        description: Select the private ephemeral runner pool
+        required: true
+        type: choice
         options:
           - private
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: false
@@ -27,6 +37,18 @@ permissions:
 
 jobs:
   local-identity-leaks:
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          github.ref == 'refs/heads/main' &&
+          inputs.action_tag == 'scan' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        github.event_name == 'workflow_dispatch' && inputs.action == 'scan' && inputs.runner_pool == 'private' && github.ref == 'refs/heads/main'
+      )
     runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-local-identity-leaks"]}}', github.run_id)) }}
     steps:
       - name: Checkout
