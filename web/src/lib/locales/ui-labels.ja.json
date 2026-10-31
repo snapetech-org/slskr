@@ -2523,7 +2523,7 @@
   "Prepare Album": "アルバムを準備する",
   "Presence": "面前",
   "Presence: {label}": "存在: {label}",
-  "Preview Lidarr wanted albums that can be synced into slskr Wishlist.": "slskr ウィッシュリストに同期できる Lidarr の希望アルバムをプレビューします。",
+  "Preview Lidarr wanted albums that can be synced into slskr Wishlist.": "Lidarrで不足・未取得として登録されているアルバムのうち、slskrのウィッシュリストに同期できるものをプレビューします。",
   "Preview Organization": "プレビュー組織",
   "Preview Playlist": "プレイリストをプレビューする",
   "Preview nearby Discovery Graph evidence for this WorkRef.": "この WorkRef の近くの Discovery Graph 証拠をプレビューします。",

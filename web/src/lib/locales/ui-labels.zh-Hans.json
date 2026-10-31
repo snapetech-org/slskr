@@ -2523,7 +2523,7 @@
   "Prepare Album": "准备相册",
   "Presence": "在场",
   "Presence: {label}": "存在：{label}",
-  "Preview Lidarr wanted albums that can be synced into slskr Wishlist.": "预览 Lidarr 想要的可以同步到 slskr 愿望清单的专辑。",
+  "Preview Lidarr wanted albums that can be synced into slskr Wishlist.": "预览 Lidarr 中标记为缺失且待获取、可同步到 slskr 愿望清单的专辑。",
   "Preview Organization": "预览组织",
   "Preview Playlist": "预览播放列表",
   "Preview nearby Discovery Graph evidence for this WorkRef.": "预览此 WorkRef 的附近 Discovery Graph 证据。",
