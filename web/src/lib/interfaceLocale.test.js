@@ -536,6 +536,44 @@ describe('interface language', () => {
     expect(localeCatalogs['zh-Hant']['Message {channel}']).toBe('傳送訊息到頻道 {channel}');
   });
 
+  it('keeps audited swarm and release-candidate labels semantically consistent', () => {
+    const swarmLabels = {
+      es: 'enjambres',
+      'zh-Hans': '群集',
+      hi: 'झुंड',
+      de: 'Schwärme',
+      ja: '群れ',
+      fr: 'essaims',
+      'pt-BR': 'enxames',
+      ko: '스웜',
+      'zh-Hant': '群集',
+      vi: 'cụm',
+      id: 'swarm',
+    };
+
+    for (const [language, expected] of Object.entries(swarmLabels)) {
+      expect(localeCatalogs[language].swarms, `${language} swarms`).toBe(expected);
+    }
+    expect(localeCatalogs.ar.swarms.other).toBe('أسراب');
+    expect(localeCatalogs['pt-BR']['Candidate identity']).toBe('Identidade do candidato');
+    expect(localeCatalogs['pt-BR']['Cycle visualizer engine to {engine}'])
+      .toBe('Alternar o mecanismo do visualizador para {engine}');
+    expect(localeCatalogs.id['Path unavailable']).toBe('Jalur tidak tersedia');
+    expect(localeCatalogs.ja['Adjust {label} for the active RustyMilk preset before applying the edited copy locally.'])
+      .toBe('編集したコピーをローカルで適用する前に、アクティブなRustyMilkプリセットの{label}を調整してください。');
+    expect(localeCatalogs.ko['Adjust {label} for the active RustyMilk preset before applying the edited copy locally.'])
+      .toBe('편집한 복사본을 로컬에 적용하기 전에 활성 RustyMilk 프리셋의 {label}을(를) 조정하세요.');
+    expect(localeCatalogs.ar['Release Candidate']).toBe('النسخة المرشحة للإصدار');
+    expect(localeCatalogs.ar['Accept Release Candidate']).toBe('قبول النسخة المرشحة للإصدار');
+    expect(localeCatalogs.es['Release Candidate']).toBe('Versión candidata');
+    expect(localeCatalogs.es['Accept Release Candidate']).toBe('Aceptar versión candidata');
+    expect(localeCatalogs['pt-BR']['Release Candidate']).toBe('Versão candidata');
+    expect(localeCatalogs['pt-BR']['Accept Release Candidate']).toBe('Aceitar versão candidata');
+    expect(localeCatalogs.vi['Release Candidate']).toBe('Bản phát hành ứng viên');
+    expect(localeCatalogs.vi['Accept Release Candidate']).toBe('Chấp nhận bản phát hành ứng viên');
+    expect(localeCatalogs.id['Accept Release Candidate']).toBe('Terima kandidat rilis');
+  });
+
   it('keeps static app-owned localization callsites in every locale catalog', () => {
     const sourceKeys = new Set(Object.keys(LOCALE_0));
     const missing = localizationSourceReferences()
