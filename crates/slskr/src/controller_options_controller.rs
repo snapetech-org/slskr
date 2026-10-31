@@ -677,6 +677,10 @@ pub(super) fn json_object_field_ci<'a>(
         .map(|(_, value)| value)
 }
 
+const UNSUPPORTED_NOTIFICATION_TITLE_LANGUAGE: &str = "Unsupported notification title language";
+const UNSUPPORTED_NOTIFICATION_TITLE_LANGUAGE_CODE: &str =
+    "unsupported_notification_title_language";
+
 pub(super) fn options_model_binding_problem_response() -> HttpResponse {
     HttpResponse {
         status: "400 Bad Request",
@@ -758,7 +762,7 @@ pub(super) fn normalize_controller_options_overlay(
                         crate::config::SUPPORTED_NOTIFICATION_LANGUAGES.contains(language)
                     })
                     .map(str::to_owned)
-                    .ok_or_else(|| "Unsupported notification title language".to_owned())
+                    .ok_or_else(|| UNSUPPORTED_NOTIFICATION_TITLE_LANGUAGE.to_owned())
             })
             .transpose()?;
         if target == ControllerProfile::Native {
@@ -773,11 +777,19 @@ pub(super) fn normalize_controller_options_overlay(
     Ok(serde_json::Value::Object(normalized))
 }
 
+fn controller_options_overlay_error_response(error: &str) -> HttpResponse {
+    if error == UNSUPPORTED_NOTIFICATION_TITLE_LANGUAGE {
+        routing::bad_request_response_with_code(UNSUPPORTED_NOTIFICATION_TITLE_LANGUAGE_CODE, error)
+    } else {
+        routing::bad_request_response(error)
+    }
+}
+
 pub(super) async fn apply_controller_options_overlay(body: &str, state: &AppState) -> HttpResponse {
     let overlay = match normalize_controller_options_overlay(body, state.config.controller_profile)
     {
         Ok(overlay) => overlay,
-        Err(error) => return routing::bad_request_response(&error),
+        Err(error) => return controller_options_overlay_error_response(&error),
     };
     let listen_changed = overlay
         .get("soulseek")
@@ -852,6 +864,26 @@ mod notification_language_tests {
                 assert!(normalize_controller_options_overlay(&body.to_string(), target,).is_err());
             }
         }
+    }
+
+    #[test]
+    fn only_unsupported_notification_language_uses_a_stable_localizable_error_code() {
+        let unsupported =
+            controller_options_overlay_error_response(UNSUPPORTED_NOTIFICATION_TITLE_LANGUAGE);
+        let unsupported_body: serde_json::Value = serde_json::from_str(&unsupported.body).unwrap();
+        assert_eq!(
+            unsupported_body["code"],
+            UNSUPPORTED_NOTIFICATION_TITLE_LANGUAGE_CODE
+        );
+        assert_eq!(
+            unsupported_body["error"],
+            UNSUPPORTED_NOTIFICATION_TITLE_LANGUAGE
+        );
+
+        let generic = controller_options_overlay_error_response("Invalid options overlay");
+        let generic_body: serde_json::Value = serde_json::from_str(&generic.body).unwrap();
+        assert_eq!(generic_body["error"], "Invalid options overlay");
+        assert!(generic_body.get("code").is_none());
     }
 }
 

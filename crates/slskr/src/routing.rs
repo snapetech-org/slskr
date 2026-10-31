@@ -191,6 +191,14 @@ pub fn bad_request_response(message: &str) -> HttpResponse {
     }
 }
 
+pub fn bad_request_response_with_code(code: &str, message: &str) -> HttpResponse {
+    HttpResponse {
+        status: "400 Bad Request",
+        content_type: "application/json",
+        body: serde_json::json!({"code": code, "error": message}).to_string(),
+    }
+}
+
 pub fn created_response(body: String) -> HttpResponse {
     HttpResponse {
         status: "201 Created",
@@ -264,5 +272,23 @@ pub fn not_implemented_response(message: &str) -> HttpResponse {
         status: "501 Not Implemented",
         content_type: "application/json",
         body: format!("{{\"error\":\"{}\"}}", crate::config::json_escape(message)),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::bad_request_response_with_code;
+
+    #[test]
+    fn coded_bad_request_keeps_legacy_error_text_and_adds_stable_code() {
+        let response = bad_request_response_with_code(
+            "unsupported_notification_title_language",
+            "Unsupported notification title language",
+        );
+        let body: serde_json::Value = serde_json::from_str(&response.body).unwrap();
+
+        assert_eq!(response.status, "400 Bad Request");
+        assert_eq!(body["code"], "unsupported_notification_title_language");
+        assert_eq!(body["error"], "Unsupported notification title language");
     }
 }
