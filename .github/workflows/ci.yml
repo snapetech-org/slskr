@@ -1,3 +1,4 @@
+# packer-windows-jit-v1
 # ng-runner-policy: private-jit-only-v1
 name: CI
 run-name: ${{ format('action:{0}:pool:{1}{2}', inputs.action_tag, inputs.runner_pool_tag, startsWith(github.ref, 'refs/tags/') && format(':tag:{0}', github.ref_name) || '') }}
@@ -359,7 +360,7 @@ jobs:
         github.event_name != 'push' || github.ref == 'refs/heads/main'
       )
     needs: web-assets
-    runs-on: ${{ matrix.os == 'linux-x64' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds"]}}', github.run_id, strategy.job-index)) || matrix.os == 'linux-arm64' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","arm64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-x64' && fromJSON(format('{{"group":"private-apple-builds","labels":["self-hosted","macOS","X64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds","private-apple"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-arm64' && fromJSON(format('{{"group":"private-apple-builds","labels":["self-hosted","macOS","ARM64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds","private-apple"]}}', github.run_id, strategy.job-index)) || fromJSON(format('{{"group":"packer-windows","labels":["self-hosted","Windows","X64","packer-windows","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds"]}}', github.run_id, strategy.job-index)) }}
+    runs-on: ${{ matrix.os == 'linux-x64' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds"]}}', github.run_id, strategy.job-index)) || matrix.os == 'linux-arm64' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","arm64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-x64' && fromJSON(format('{{"group":"private-apple-builds","labels":["self-hosted","macOS","X64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds","private-apple"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-arm64' && fromJSON(format('{{"group":"private-apple-builds","labels":["self-hosted","macOS","ARM64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds","private-apple"]}}', github.run_id, strategy.job-index)) || fromJSON(format('{{"group":"packer-windows","labels":["self-hosted","Windows","X64","on-demand","packer-windows","slskR","gha-{0}-{1}-platform-builds"]}}', github.run_id, strategy.job-index)) }}
     timeout-minutes: 120
     env:
       CARGO_NET_GIT_FETCH_WITH_CLI: true
@@ -483,7 +484,6 @@ jobs:
             target/dist/*.sha256
           if-no-files-found: error
           retention-days: 7
-
   package-surfaces:
     name: Package and deployment surfaces
     needs: [platform-builds, rust, linux-aarch64]
@@ -614,4 +614,3 @@ jobs:
               --define "_topdir $rpm_top" \
               "$rpm_top/SPECS/slskr.spec"
           done
-
