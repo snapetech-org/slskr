@@ -9,9 +9,13 @@ Run `scripts/check-workflow-release-policy.sh` after changing `.github/workflows
 The gate fails if any external `uses:` reference is not pinned to a full commit SHA
 or if a pinned action or reusable workflow is missing from this ledger.
 
+CodeQL analysis is disabled by organization policy. Semgrep and Trivy workflows
+remain active and report findings in workflow logs; no `github/codeql-action`
+workflow action is allowed.
+
 | Pinned dependency | Reviewed ref | Pinned commit | Notes |
  --- | --- | --- |
-| `actions/checkout` | `v6` | `3d3c42e5aac5ba805825da76410c181273ba90b1` | CI, release, live parity, local identity, and CodeQL checkout. |
+| `actions/checkout` | `v6` | `3d3c42e5aac5ba805825da76410c181273ba90b1` | CI, release, live parity, and local identity workflows. |
 | `actions/cache` | `v6.1.0` | `55cc8345863c7cc4c66a329aec7e433d2d1c52a9` | Cached pinned `cargo-audit` binaries for CI and release gates. |
 | `dtolnay/rust-toolchain` | `stable` | `29eef336d9b2848a0b548edc03f92a220660cdb8` | Rust toolchain install for CI, release, and live parity jobs. |
 | `Swatinem/rust-cache` | `v2` | `f0d9c3887740aee45f6153b24b3a6b815192ec16` | Dereferenced tag target for Rust cache setup. |
@@ -28,10 +32,6 @@ or if a pinned action or reusable workflow is missing from this ledger.
 | `docker/setup-buildx-action` | `v4.4.1` | `f87e5991a6d7451dcb8d9637bfbc97413f497069` | Docker Buildx setup for multi-architecture release images. |
 | `docker/login-action` | `v4.6.0` | `dbcb813823bdd20940b903addbd779551569679f` | GHCR and Docker Hub authentication for release images. |
 | `docker/build-push-action` | `v7.4.0` | `c3c9e263c25d99ce0380d002d59b67737d91b0dc` | Multi-architecture Docker release image build and push. |
-| `github/codeql-action/init` | `v4` | `9b3254085494b55a0f7c4c2b3d2d52cc712ce370` | Pinned CodeQL initialization for the explicit seven-language security matrix. |
-| `github/codeql-action/autobuild` | `v4` | `9b3254085494b55a0f7c4c2b3d2d52cc712ce370` | Reviewed CodeQL autobuild pin retained for any future language-specific build steps. |
-| `github/codeql-action/analyze` | `v4` | `9b3254085494b55a0f7c4c2b3d2d52cc712ce370` | Pinned CodeQL SARIF upload and alert generation for the explicit language matrix. |
-| `github/codeql-action/upload-sarif` | `v4.38.3` | `24c54180a607b1449ed407dd24f251e4e9147c8d` | SARIF upload for the pinned Semgrep Community workflow. |
 | `aquasecurity/setup-trivy` | `v0.2.6` | `3fb12ec12f41e471780db15c232d5dd185dcb514` | Pins the Trivy install script checkout to a reviewed commit. |
 | `snapetech-org/slskr/.github/workflows/web-assets-validation.yml` | `713676d58f1601a8079257f3f4aeefdc0de7b7f6` | `713676d58f1601a8079257f3f4aeefdc0de7b7f6` | Audited reusable workflow for fork-only JIT web asset validation. |
 

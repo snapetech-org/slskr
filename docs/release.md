@@ -130,12 +130,14 @@ placeholder section.
 
 ## CI and release matrix
 
-The `CI` workflow runs only from its explicit workflow dispatch or a matching
-build tag. Each matrix job builds a target archive, verifies its checksum and
-layout, and uploads the archive for seven days so a platform-specific build can
-be downloaded for testing. Native workspace tests run on Linux x64, Linux
-AArch64, both macOS architectures, and Windows; the additional musl jobs smoke
-test their built static binary through the same archive verifier.
+The `CI` workflow is started with a manual dispatch using `action_tag=test` and
+`runner_pool_tag=private`. For a release, dispatch it on the release tag and
+wait for the exact-tag, exact-commit run to pass. Each matrix job builds a target
+archive, verifies its checksum and layout, and uploads the archive for seven
+days so a platform-specific build can be downloaded for testing. Native
+workspace tests run on Linux x64, Linux AArch64, both macOS architectures, and
+Windows; the additional musl jobs smoke test their built static binary through
+the same archive verifier.
 
 The release workflow uses the same native runner and target mapping:
 
@@ -149,19 +151,23 @@ The release workflow uses the same native runner and target mapping:
 | `macos-arm64` | Private JIT macOS ARM64 | `aarch64-apple-darwin` | Native workspace tests and archive smoke |
 | `windows-x64` | Private JIT Windows x64 | `x86_64-pc-windows-msvc` | Native workspace tests and archive smoke |
 
-Push a tag named:
+Create and push a version tag named:
 
 ```text
 v<semver>
 ```
 
-New tag-triggered releases use `v<semver>`, for example `v1.2.3` or
-`v1.2.3-rc.1`. Existing `release-v<semver>` tags remain supported for
-compatibility. Loose `release-*` tags are not release triggers. Commits pushed
-to `main` do not start workflows. A full release requires a `v<semver>` tag on
-`main`.
+Use `v<semver>`, for example `v1.2.3` or `v1.2.3-rc.1`. Existing
+`release-v<semver>` tags remain supported for compatibility. Commits pushed to
+`main` do not start CI or release workflows. After the tag exists, manually
+dispatch CI on that tag with `action_tag=test` and
+`runner_pool_tag=private`. Once that exact run succeeds, manually dispatch
+Release on the same tag with `action_tag=release`, `runner_pool_tag=private`,
+and the identical `tag` input. The release workflow checks the selected ref,
+requested tag, and successful private CI result before publishing. Use a tag
+pointing to the reviewed `main` commit.
 
-For a tag build, the workflow creates a GitHub Release and uploads all archives
+For a release build, the workflow creates a GitHub Release and uploads all archives
 plus `SHA256SUMS.txt`, `slskr-cyclonedx.json`, and
 `slskr-dependency-manifest.json`. The JSON manifests are included in the
 release checksum file and build-provenance attestation subjects.
