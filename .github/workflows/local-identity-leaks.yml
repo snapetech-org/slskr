@@ -1,21 +1,10 @@
 # ng-runner-policy: private-jit-only-v1
 name: Local Identity Leak Check
-run-name: ${{ format('action:{0}:pool:{1}', inputs.action_tag, inputs.runner_pool_tag) }}
+run-name: ${{ format('action:{0}:pool:{1}', inputs.action, inputs.runner_pool) }}
 
 on:
   workflow_dispatch:
     inputs:
-      action_tag:
-        description: Action to run
-        required: true
-        type: choice
-        options:
-          - scan
-      runner_pool_tag:
-        description: Private ephemeral JIT runner pool
-        required: true
-        type: choice
-        options: [private]
       action:
         description: Run the private security scan
         required: true
@@ -42,8 +31,7 @@ jobs:
         github.event_name != 'workflow_dispatch' ||
         (
           github.ref == 'refs/heads/main' &&
-          inputs.action_tag == 'scan' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.action == 'scan' && inputs.runner_pool == 'private'
         )
       ) &&
       (
