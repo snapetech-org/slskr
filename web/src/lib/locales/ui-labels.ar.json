@@ -4978,5 +4978,9 @@
   "Continue with {provider}": "المتابعة باستخدام {provider}",
   "Provider setup guide": "دليل إعداد موفّر الهوية",
   "Identity provider sign-in failed. Check the provider and account admission settings.": "تعذّر تسجيل الدخول عبر موفّر الهوية. تحقّق من الموفّر وإعدادات السماح بالحساب.",
-  "{provider} identity provider setup guide (opens in a new tab)": "دليل إعداد موفّر الهوية {provider} (يفتح في علامة تبويب جديدة)"
+  "{provider} identity provider setup guide (opens in a new tab)": "دليل إعداد موفّر الهوية {provider} (يفتح في علامة تبويب جديدة)",
+  "Notification title language": "لغة عناوين الإشعارات",
+  "Choose the language used for app-authored notification titles. Message text and notification prefixes stay unchanged.": "اختر اللغة المستخدمة في عناوين الإشعارات التي ينشئها التطبيق. يظل نص الرسائل وبادئات الإشعارات دون تغيير.",
+  "Private Message from {username}": "رسالة خاصة من {username}",
+  "Room Mention by {username} in {room}": "أشار إليك {username} في {room}"
 }

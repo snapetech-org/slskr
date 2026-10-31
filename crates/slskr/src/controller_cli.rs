@@ -187,6 +187,7 @@ fn controller_cli_environment_name(flag: &str) -> Option<(&'static str, bool)> {
         "--youtube-api-key" => ("SLSKD_YOUTUBE_API_KEY", true),
         "--lastfm" => ("SLSKD_LASTFM", false),
         "--lastfm-api-key" => ("SLSKD_LASTFM_API_KEY", true),
+        "--notification-language" => ("SLSKD_NOTIFICATION_LANGUAGE", true),
         "--ntfy" => ("SLSKD_NTFY", false),
         "--ntfy-url" => ("SLSKD_NTFY_URL", true),
         "--ntfy-token" => ("SLSKD_NTFY_TOKEN", true),

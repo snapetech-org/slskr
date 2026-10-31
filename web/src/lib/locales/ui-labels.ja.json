@@ -4873,5 +4873,9 @@
   "Continue with {provider}": "{provider} で続行",
   "Provider setup guide": "プロバイダー設定ガイド",
   "Identity provider sign-in failed. Check the provider and account admission settings.": "ID プロバイダーでのサインインに失敗しました。プロバイダーとアカウントの許可設定を確認してください。",
-  "{provider} identity provider setup guide (opens in a new tab)": "{provider} ID プロバイダー設定ガイド（新しいタブで開きます）"
+  "{provider} identity provider setup guide (opens in a new tab)": "{provider} ID プロバイダー設定ガイド（新しいタブで開きます）",
+  "Notification title language": "通知タイトルの言語",
+  "Choose the language used for app-authored notification titles. Message text and notification prefixes stay unchanged.": "アプリが作成する通知タイトルの言語を選択します。メッセージ本文と通知プレフィックスは変更されません。",
+  "Private Message from {username}": "{username} さんからのプライベートメッセージ",
+  "Room Mention by {username} in {room}": "{room}で{username}さんにメンションされました"
 }

@@ -163,6 +163,11 @@ export const buildNotificationForm = (options = {}) => {
   const pushover = getPushoverOptions(options);
 
   return {
+    notificationLanguage: getOption(
+      getIntegrationsOptions(options),
+      'notificationLanguage',
+      'notification_language',
+    ) || 'en',
     ntfyAccessToken: '',
     ntfyAccessTokenConfigured: isConfigured(
       getOption(ntfy, 'accessToken', 'AccessToken'),

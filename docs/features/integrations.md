@@ -63,6 +63,18 @@ SLSKR_EXTERNAL_VISUALIZER_COMMAND=/usr/local/bin/visualizer
 SLSKR_EXTERNAL_VISUALIZER_LAUNCH_ENABLED=true
 ```
 
+## Notification titles
+
+Pushbullet, Ntfy, and Pushover notification titles can use the configured
+notification language. Choose **Notification title language** in the
+Notifications settings, or set `integrations.notification_language` in YAML or
+`SLSKD_NOTIFICATION_LANGUAGE` in the environment. Supported values are `en`,
+`es`, `zh-Hans`, `hi`, `de`, `ja`, `fr`, `pt-BR`, `ar`, `ko`, `zh-Hant`, `vi`,
+and `id`; English is the default. This server setting is separate from the
+browser's interface language. It translates only app-authored title text; the
+message body, notification prefix, username, and room-name content are
+preserved.
+
 ## Setup and boundaries
 
 The [install runbook](../install.md#third-party-integrations) has the

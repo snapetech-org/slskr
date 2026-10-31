@@ -626,6 +626,10 @@ const CONTROLLER_YAML_CORE_MAPPINGS: &[(&str, &str)] = &[
     ("integrations.youtube.api_key", "SLSKD_YOUTUBE_API_KEY"),
     ("integrations.lastfm.enabled", "SLSKD_LASTFM"),
     ("integrations.lastfm.api_key", "SLSKD_LASTFM_API_KEY"),
+    (
+        "integrations.notification_language",
+        "SLSKD_NOTIFICATION_LANGUAGE",
+    ),
     ("integrations.ntfy.enabled", "SLSKD_NTFY"),
     ("integrations.ntfy.url", "SLSKD_NTFY_URL"),
     ("integrations.ntfy.access_token", "SLSKD_NTFY_TOKEN"),

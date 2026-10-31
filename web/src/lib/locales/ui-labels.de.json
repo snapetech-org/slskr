@@ -4873,5 +4873,9 @@
   "Continue with {provider}": "Mit {provider} fortfahren",
   "Provider setup guide": "Einrichtungsanleitung des Anbieters",
   "Identity provider sign-in failed. Check the provider and account admission settings.": "Die Anmeldung beim Identitätsanbieter ist fehlgeschlagen. Überprüfen Sie den Anbieter und die Kontozulassungseinstellungen.",
-  "{provider} identity provider setup guide (opens in a new tab)": "Einrichtungsanleitung für den Identitätsanbieter {provider} (wird in einem neuen Tab geöffnet)"
+  "{provider} identity provider setup guide (opens in a new tab)": "Einrichtungsanleitung für den Identitätsanbieter {provider} (wird in einem neuen Tab geöffnet)",
+  "Notification title language": "Sprache der Benachrichtigungstitel",
+  "Choose the language used for app-authored notification titles. Message text and notification prefixes stay unchanged.": "Wähle die Sprache für von der App verfasste Benachrichtigungstitel. Nachrichtentext und Benachrichtigungspräfixe bleiben unverändert.",
+  "Private Message from {username}": "Private Nachricht von {username}",
+  "Room Mention by {username} in {room}": "Erwähnung von {username} im Raum {room}"
 }

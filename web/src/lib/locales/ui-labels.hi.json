@@ -4873,5 +4873,9 @@
   "Continue with {provider}": "‏{provider} के साथ जारी रखें",
   "Provider setup guide": "प्रदाता सेटअप गाइड",
   "Identity provider sign-in failed. Check the provider and account admission settings.": "पहचान प्रदाता साइन-इन विफल हुआ। प्रदाता और खाता प्रवेश सेटिंग जाँचें।",
-  "{provider} identity provider setup guide (opens in a new tab)": "{provider} पहचान प्रदाता सेटअप मार्गदर्शिका (नए टैब में खुलेगी)"
+  "{provider} identity provider setup guide (opens in a new tab)": "{provider} पहचान प्रदाता सेटअप मार्गदर्शिका (नए टैब में खुलेगी)",
+  "Notification title language": "सूचना शीर्षकों की भाषा",
+  "Choose the language used for app-authored notification titles. Message text and notification prefixes stay unchanged.": "ऐप द्वारा लिखे गए सूचना शीर्षकों के लिए भाषा चुनें। संदेश का पाठ और सूचना उपसर्ग अपरिवर्तित रहेंगे।",
+  "Private Message from {username}": "{username} से निजी संदेश",
+  "Room Mention by {username} in {room}": "{room} में {username} ने आपका उल्लेख किया"
 }

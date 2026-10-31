@@ -1,0 +1,54 @@
+{
+  "en": {
+    "privateMessage": "Private Message from {username}",
+    "roomMention": "Room Mention by {username} in {room}"
+  },
+  "es": {
+    "privateMessage": "Mensaje privado de {username}",
+    "roomMention": "Mención de {username} en {room}"
+  },
+  "zh-Hans": {
+    "privateMessage": "来自 {username} 的私信",
+    "roomMention": "{username} 在 {room} 中提到了你"
+  },
+  "hi": {
+    "privateMessage": "{username} से निजी संदेश",
+    "roomMention": "{room} में {username} ने आपका उल्लेख किया"
+  },
+  "de": {
+    "privateMessage": "Private Nachricht von {username}",
+    "roomMention": "Erwähnung von {username} im Raum {room}"
+  },
+  "ja": {
+    "privateMessage": "{username} さんからのプライベートメッセージ",
+    "roomMention": "{room}で{username}さんにメンションされました"
+  },
+  "fr": {
+    "privateMessage": "Message privé de {username}",
+    "roomMention": "Mention de {username} dans {room}"
+  },
+  "pt-BR": {
+    "privateMessage": "Mensagem privada de {username}",
+    "roomMention": "Menção de {username} em {room}"
+  },
+  "ar": {
+    "privateMessage": "رسالة خاصة من {username}",
+    "roomMention": "أشار إليك {username} في {room}"
+  },
+  "ko": {
+    "privateMessage": "{username}님의 비공개 메시지",
+    "roomMention": "{room}에서 {username}님이 회원님을 언급했습니다"
+  },
+  "zh-Hant": {
+    "privateMessage": "來自 {username} 的私訊",
+    "roomMention": "{username} 在 {room} 中提到了你"
+  },
+  "vi": {
+    "privateMessage": "Tin nhắn riêng từ {username}",
+    "roomMention": "{username} đã nhắc đến bạn trong {room}"
+  },
+  "id": {
+    "privateMessage": "Pesan pribadi dari {username}",
+    "roomMention": "{username} menyebut Anda di {room}"
+  }
+}

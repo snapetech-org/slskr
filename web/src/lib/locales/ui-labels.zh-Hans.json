@@ -4873,5 +4873,9 @@
   "Continue with {provider}": "使用 {provider} 继续",
   "Provider setup guide": "提供商设置指南",
   "Identity provider sign-in failed. Check the provider and account admission settings.": "身份提供商登录失败。请检查提供商和帐户准入设置。",
-  "{provider} identity provider setup guide (opens in a new tab)": "{provider} 身份提供商设置指南（在新标签页中打开）"
+  "{provider} identity provider setup guide (opens in a new tab)": "{provider} 身份提供商设置指南（在新标签页中打开）",
+  "Notification title language": "通知标题语言",
+  "Choose the language used for app-authored notification titles. Message text and notification prefixes stay unchanged.": "选择应用编写的通知标题所用的语言。消息内容和通知前缀保持不变。",
+  "Private Message from {username}": "来自 {username} 的私信",
+  "Room Mention by {username} in {room}": "{username} 在 {room} 中提到了你"
 }

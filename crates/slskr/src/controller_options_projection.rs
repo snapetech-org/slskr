@@ -782,6 +782,8 @@ pub(super) fn controller_options_json(
         response["integration"]["lastFm"]["enabled"] =
             serde_json::json!(config.integrations.lastfm.enabled);
         response["integration"]["lastFm"]["apiKey"] = serde_json::json!("*****");
+        response["integration"]["notificationLanguage"] =
+            serde_json::json!(config.integrations.notification_language);
         let musicbrainz_timeout_seconds = config.integrations.musicbrainz.timeout_seconds;
         let musicbrainz_timeout_seconds = if musicbrainz_timeout_seconds.fract() == 0.0 {
             serde_json::json!(musicbrainz_timeout_seconds as i64)
@@ -1260,6 +1262,9 @@ pub(super) fn controller_options_json(
         merge_json_objects(&mut response, &overlay.effective);
     }
     if include_volatile_overlay {
+        if let Some(language) = overlay.notification_language.as_deref() {
+            response["integration"]["notificationLanguage"] = serde_json::json!(language);
+        }
         if let Some(swagger) = overlay.watched_controller_swagger {
             response["feature"]["swagger"] = serde_json::json!(swagger);
         }

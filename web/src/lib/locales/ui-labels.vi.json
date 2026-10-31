@@ -4873,5 +4873,9 @@
   "Continue with {provider}": "Tiếp tục với {provider}",
   "Provider setup guide": "Hướng dẫn thiết lập nhà cung cấp",
   "Identity provider sign-in failed. Check the provider and account admission settings.": "Đăng nhập bằng nhà cung cấp danh tính thất bại. Hãy kiểm tra nhà cung cấp và cài đặt quyền truy cập tài khoản.",
-  "{provider} identity provider setup guide (opens in a new tab)": "Hướng dẫn thiết lập nhà cung cấp danh tính {provider} (mở trong tab mới)"
+  "{provider} identity provider setup guide (opens in a new tab)": "Hướng dẫn thiết lập nhà cung cấp danh tính {provider} (mở trong tab mới)",
+  "Notification title language": "Ngôn ngữ tiêu đề thông báo",
+  "Choose the language used for app-authored notification titles. Message text and notification prefixes stay unchanged.": "Chọn ngôn ngữ dùng cho tiêu đề thông báo do ứng dụng tạo. Nội dung tin nhắn và tiền tố thông báo giữ nguyên.",
+  "Private Message from {username}": "Tin nhắn riêng từ {username}",
+  "Room Mention by {username} in {room}": "{username} đã nhắc đến bạn trong {room}"
 }

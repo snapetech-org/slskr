@@ -744,14 +744,29 @@ pub(super) fn normalize_controller_options_overlay(
         }
     }
 
-    if target == ControllerProfile::Native {
-        if let Some(integration) = json_object_field_ci(object, "integration") {
-            if !integration.is_object() {
-                return Err("Invalid options overlay".to_owned());
-            }
+    if let Some(integration) = json_object_field_ci(object, "integration") {
+        if !integration.is_object() {
+            return Err("Invalid options overlay".to_owned());
+        }
+        let integration = controller_yaml_api_projection(integration.clone());
+        let notification_language = integration
+            .get("notificationLanguage")
+            .map(|language| {
+                language
+                    .as_str()
+                    .filter(|language| {
+                        crate::config::SUPPORTED_NOTIFICATION_LANGUAGES.contains(language)
+                    })
+                    .map(str::to_owned)
+                    .ok_or_else(|| "Unsupported notification title language".to_owned())
+            })
+            .transpose()?;
+        if target == ControllerProfile::Native {
+            normalized.insert("integration".to_owned(), integration);
+        } else if let Some(language) = notification_language {
             normalized.insert(
                 "integration".to_owned(),
-                controller_yaml_api_projection(integration.clone()),
+                serde_json::json!({"notificationLanguage": language}),
             );
         }
     }
@@ -784,6 +799,16 @@ pub(super) async fn apply_controller_options_overlay(body: &str, state: &AppStat
                 PrivateMessageAutoResponseTracker::default();
         }
     }
+    if let Some(language) = overlay
+        .pointer("/integration/notificationLanguage")
+        .and_then(serde_json::Value::as_str)
+    {
+        state
+            .integration_settings
+            .write()
+            .await
+            .notification_language = language.to_owned();
+    }
     state.options_overlay.write().await.apply(overlay.clone());
     if listen_changed
         && state.config.controller_profile == ControllerProfile::Native
@@ -802,6 +827,31 @@ pub(super) async fn apply_controller_options_overlay(body: &str, state: &AppStat
         status: "200 OK",
         content_type: "application/json; charset=utf-8",
         body: overlay.to_string(),
+    }
+}
+
+#[cfg(test)]
+mod notification_language_tests {
+    use super::*;
+
+    #[test]
+    fn options_overlay_accepts_supported_notification_languages_only() {
+        for target in [ControllerProfile::Native, ControllerProfile::Legacy] {
+            let overlay = normalize_controller_options_overlay(
+                r#"{"integration":{"notificationLanguage":"zh-Hant","ntfy":{"enabled":true}}}"#,
+                target,
+            )
+            .unwrap();
+            assert_eq!(overlay["integration"]["notificationLanguage"], "zh-Hant");
+            if target == ControllerProfile::Native {
+                assert_eq!(overlay["integration"]["ntfy"]["enabled"], true);
+            }
+
+            for value in [serde_json::json!("en-US"), serde_json::json!(null)] {
+                let body = serde_json::json!({"integration": {"notificationLanguage": value}});
+                assert!(normalize_controller_options_overlay(&body.to_string(), target,).is_err());
+            }
+        }
     }
 }
 

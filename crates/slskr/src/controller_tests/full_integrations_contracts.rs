@@ -1185,6 +1185,7 @@ pub(super) fn notification_integrations_match_frozen_defaults_layers_and_validat
         None,
         FileConfig::default(),
         &MapEnv::default()
+            .with("SLSKD_NOTIFICATION_LANGUAGE", "fr")
             .with("SLSKD_NTFY", "true")
             .with("SLSKD_NTFY_URL", "https://ntfy.sh/fixture")
             .with("SLSKD_NTFY_TOKEN", "ntfy-secret")
@@ -1200,6 +1201,19 @@ pub(super) fn notification_integrations_match_frozen_defaults_layers_and_validat
             .with("SLSKD_PUSHBULLET_COOLDOWN_TIME", "1234"),
     )
     .expect("configured notifications");
+    assert_eq!(config.integrations.notification_language, "fr");
+    let mut options_overlay = crate::ControllerOptionsOverlayState::default();
+    options_overlay.notification_language = Some("en".to_owned());
+    let current_options = serde_json::from_str::<serde_json::Value>(
+        &crate::controller_options_json(&config, &options_overlay, true),
+    )
+    .expect("current options projection must be valid JSON");
+    let startup_options = serde_json::from_str::<serde_json::Value>(
+        &crate::controller_options_json(&config, &options_overlay, false),
+    )
+    .expect("startup options projection must be valid JSON");
+    assert_eq!(current_options["integration"]["notificationLanguage"], "en");
+    assert_eq!(startup_options["integration"]["notificationLanguage"], "fr");
     assert!(config.integrations.ntfy.notify_on_private_message);
     assert!(config.integrations.ntfy.notify_on_room_mention);
     assert_eq!(config.integrations.ntfy.notification_prefix, "Ntfy Prefix");
@@ -1250,6 +1264,14 @@ pub(super) fn notification_integrations_match_frozen_defaults_layers_and_validat
         pushbullet_error,
         "The Enabled field is true, but no AccessToken has been specified."
     );
+    let notification_language_error = crate::AppConfig::from_layers(
+        None,
+        FileConfig::default(),
+        &MapEnv::default().with("SLSKD_NOTIFICATION_LANGUAGE", "en-US"),
+    )
+    .expect_err("unsupported notification locale must fail");
+    assert!(notification_language_error
+        .starts_with("integrations.notification_language must be one of: en, es, zh-Hans"));
 }
 
 #[cfg_attr(test, tokio::test)]

@@ -4873,5 +4873,9 @@
   "Continue with {provider}": "{provider}(으)로 계속",
   "Provider setup guide": "공급자 설정 가이드",
   "Identity provider sign-in failed. Check the provider and account admission settings.": "ID 공급자 로그인에 실패했습니다. 공급자 및 계정 허용 설정을 확인하세요.",
-  "{provider} identity provider setup guide (opens in a new tab)": "{provider} ID 공급자 설정 가이드(새 탭에서 열림)"
+  "{provider} identity provider setup guide (opens in a new tab)": "{provider} ID 공급자 설정 가이드(새 탭에서 열림)",
+  "Notification title language": "알림 제목 언어",
+  "Choose the language used for app-authored notification titles. Message text and notification prefixes stay unchanged.": "앱에서 작성하는 알림 제목에 사용할 언어를 선택하세요. 메시지 본문과 알림 접두사는 변경되지 않습니다.",
+  "Private Message from {username}": "{username}님의 비공개 메시지",
+  "Room Mention by {username} in {room}": "{room}에서 {username}님이 회원님을 언급했습니다"
 }

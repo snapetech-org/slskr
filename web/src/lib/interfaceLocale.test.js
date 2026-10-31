@@ -509,6 +509,23 @@ describe('interface language', () => {
     }
   });
 
+  it('localizes notification titles in every directly translated language', () => {
+    const titleSources = [
+      'Private Message from {username}',
+      'Room Mention by {username} in {room}',
+    ];
+
+    expect(Object.keys(localeCatalogs)).toHaveLength(12);
+    for (const catalog of Object.values(localeCatalogs)) {
+      expect(catalog['Notification title language']).not.toBe(
+        'Notification title language',
+      );
+      for (const source of titleSources) {
+        expect(catalog[source]).not.toBe(source);
+      }
+    }
+  });
+
   it('uses oscilloscope terminology and distinguishes Chinese DHT peers from nodes', () => {
     const expectedScopes = {
       es: 'osciloscopio',

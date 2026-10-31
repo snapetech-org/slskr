@@ -4873,5 +4873,9 @@
   "Continue with {provider}": "Lanjutkan dengan {provider}",
   "Provider setup guide": "Panduan penyiapan penyedia",
   "Identity provider sign-in failed. Check the provider and account admission settings.": "Login penyedia identitas gagal. Periksa penyedia dan pengaturan penerimaan akun.",
-  "{provider} identity provider setup guide (opens in a new tab)": "Panduan penyiapan penyedia identitas {provider} (terbuka di tab baru)"
+  "{provider} identity provider setup guide (opens in a new tab)": "Panduan penyiapan penyedia identitas {provider} (terbuka di tab baru)",
+  "Notification title language": "Bahasa judul notifikasi",
+  "Choose the language used for app-authored notification titles. Message text and notification prefixes stay unchanged.": "Pilih bahasa untuk judul notifikasi yang dibuat aplikasi. Isi pesan dan awalan notifikasi tidak berubah.",
+  "Private Message from {username}": "Pesan pribadi dari {username}",
+  "Room Mention by {username} in {room}": "{username} menyebut Anda di {room}"
 }

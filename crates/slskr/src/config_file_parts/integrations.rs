@@ -3,6 +3,8 @@ use super::*;
 #[derive(Debug, Default, Deserialize)]
 #[serde(default, deny_unknown_fields)]
 pub struct IntegrationsFileConfig {
+    #[serde(alias = "notificationLanguage")]
+    pub(in crate::config) notification_language: Option<String>,
     pub(in crate::config) spotify: SpotifyFileConfig,
     pub(in crate::config) lidarr: LidarrFileConfig,
     pub(in crate::config) chromaprint: ChromaprintFileConfig,
