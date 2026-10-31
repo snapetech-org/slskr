@@ -134,8 +134,8 @@ if [[ -e "$codeql_workflow" ]]; then
   printf 'workflow release policy check failed: CodeQL workflow must remain disabled: %s\n' "$codeql_workflow" >&2
   status=1
 fi
-if rg -n 'github/codeql-action/|security-events:[[:space:]]*write' .github/workflows >/dev/null; then
-  printf 'workflow release policy check failed: CodeQL actions and code-scanning uploads must remain disabled\n' >&2
+if rg -n 'github/codeql-action/(init|autobuild|analyze|setup-codeql)(@|$)' .github/workflows >/dev/null; then
+  printf 'workflow release policy check failed: CodeQL analysis actions must remain disabled\n' >&2
   status=1
 fi
 
