@@ -23,26 +23,39 @@ for expected in \
   fi
 done
 
-if ! rg -q '^    tags:' .github/workflows/ci.yml ||
-   rg -q '^    branches:' .github/workflows/ci.yml ||
-   rg -q '^  pull_request(_target)?:' .github/workflows/ci.yml; then
-  printf 'workflow release policy check failed: CI must run only on tags or manual dispatch\n' >&2
+if ! rg -q '^  workflow_dispatch:' .github/workflows/ci.yml ||
+   rg -q '^  (push|pull_request|pull_request_target|schedule):' .github/workflows/ci.yml; then
+  printf 'workflow release policy check failed: CI must remain manually dispatched\n' >&2
   status=1
 fi
-for job in web-assets controller-regex-parity rust platform-builds package-surfaces; do
+for expected in \
+  'action_tag:' \
+  '- test' \
+  'runner_pool_tag:' \
+  '- private'; do
+  if ! rg -n -F -- "$expected" .github/workflows/ci.yml >/dev/null; then
+    printf 'workflow release policy check failed: CI dispatch input is missing: %s\n' "$expected" >&2
+    status=1
+  fi
+done
+if rg -n 'NG_HOSTED_FIRST|runs-on:[[:space:]]*(["\x27])?(ubuntu|macos|windows)-' .github/workflows >/dev/null; then
+  printf 'workflow release policy check failed: hosted runner routing is not allowed\n' >&2
+  status=1
+fi
+for job in web-assets controller-regex-parity rust linux-aarch64 platform-builds package-surfaces; do
   job_block="$(sed -n "/^  $job:/,/^  [A-Za-z0-9_-]*:/p" .github/workflows/ci.yml)"
   if [[ "$job_block" != *"ng-shared-main-jit"* ||
         "$job_block" != *"ng-shared-main-slskr"* ||
         "$job_block" != *"ng-main-run-{0}"* ||
-        "$job_block" != *"github.run_id"* ||
-        "$job_block" != *"github.event_name == 'push'"* ||
-        "$job_block" != *"github.event_name == 'workflow_dispatch'"* ||
-        "$job_block" != *"github.ref == 'refs/heads/main'"* ||
-        "$job_block" != *"||"* ]]; then
-    printf 'workflow release policy check failed: %s must route only trusted main work to the shared pool\n' "$job" >&2
+        "$job_block" != *"github.run_id"* ]]; then
+    printf 'workflow release policy check failed: %s must use the private per-run JIT pool\n' "$job" >&2
     status=1
   fi
 done
+if ! rg -n -F '"group":"packer-windows"' .github/workflows/ci.yml >/dev/null; then
+  printf 'workflow release policy check failed: Windows CI must use the private Packer JIT group\n' >&2
+  status=1
+fi
 controller_parity_job="$(sed -n '/^  controller-regex-parity:/,/^  [A-Za-z0-9_-]*:/p' .github/workflows/ci.yml)"
 if [[ "$controller_parity_job" != *'DOTNET_INSTALL_DIR: ${{ github.workspace }}/.dotnet'* ||
       "$controller_parity_job" != *"DOTNET_VERSION: '10.0.402'"* ||
@@ -57,24 +70,18 @@ if [[ -z "$dotnet_setup_line" || -z "$dotnet_info_line" || "$dotnet_setup_line" 
   printf 'workflow release policy check failed: controller parity must install .NET before using dotnet\n' >&2
   status=1
 fi
-route_count="$(rg -n -F 'ng-shared-main-jit' .github/workflows/ci.yml | wc -l)"
-if [[ "$route_count" -ne 5 ]]; then
-  printf 'workflow release policy check failed: unexpected shared runner route count in CI\n' >&2
-  status=1
-fi
-for workflow in codeql.yml semgrep-community.yml trivy-filesystem.yml; do
+for workflow in semgrep-community.yml trivy-filesystem.yml; do
   workflow_path=".github/workflows/$workflow"
+  workflow_events="$(sed -n '1,/^jobs:/p' "$workflow_path")"
   if [[ ! -f "$workflow_path" ]] ||
      ! rg -n -F 'ng-shared-main-jit' "$workflow_path" >/dev/null ||
      ! rg -n -F 'ng-shared-main-slskr' "$workflow_path" >/dev/null ||
      ! rg -n -F 'ng-main-run-{0}' "$workflow_path" >/dev/null ||
      ! rg -n -F 'github.run_id' "$workflow_path" >/dev/null ||
-     ! rg -n -F "github.event_name == 'push'" "$workflow_path" >/dev/null ||
-     ! rg -n -F "github.event_name == 'workflow_dispatch'" "$workflow_path" >/dev/null ||
-     ! rg -n -F "github.event_name == 'schedule'" "$workflow_path" >/dev/null ||
-     ! rg -n -F "github.ref == 'refs/heads/main'" "$workflow_path" >/dev/null ||
-     ! rg -n -F "|| 'ubuntu-latest'" "$workflow_path" >/dev/null; then
-    printf 'workflow release policy check failed: %s must use the pool only for trusted main scans\n' "$workflow_path" >&2
+     ! rg -n -F 'workflow_dispatch:' <<<"$workflow_events" >/dev/null ||
+     ! rg -n -F -- '- private' "$workflow_path" >/dev/null ||
+     rg -n -F 'NG_HOSTED_FIRST' "$workflow_path" >/dev/null; then
+    printf 'workflow release policy check failed: %s must use private JIT for manual scans\n' "$workflow_path" >&2
     status=1
   fi
 done
@@ -83,7 +90,7 @@ for workflow in .github/workflows/*.yml; do
     continue
   fi
   case "${workflow##*/}" in
-    ci.yml|codeql.yml|semgrep-community.yml|trivy-filesystem.yml) ;;
+    ci.yml|semgrep-community.yml|trivy-filesystem.yml|live-parity.yml|local-identity-leaks.yml|react-nightly-audit.yml|release-publish.yml|release.yml|sync-unraid-legacy-ghcr.yml|web-assets-validation.yml) ;;
     *)
       printf 'workflow release policy check failed: unexpected shared runner route in %s\n' "$workflow" >&2
       status=1
@@ -123,28 +130,14 @@ else
 fi
 
 codeql_workflow=".github/workflows/codeql.yml"
-for expected in \
-  'push:' \
-  'workflow_dispatch:' \
-  'security-events: write' \
-  'queries:' \
-  '- uses: security-extended' \
-  'language: actions' \
-  'language: c-cpp' \
-  'language: go' \
-  'language: javascript-typescript' \
-  'language: python' \
-  'language: ruby' \
-  'language: rust' \
-  'build-mode: autobuild' \
-  'build-mode: none' \
-  'github/codeql-action/init@9b3254085494b55a0f7c4c2b3d2d52cc712ce370' \
-  'github/codeql-action/analyze@9b3254085494b55a0f7c4c2b3d2d52cc712ce370'; do
-  if ! rg -n -F -- "$expected" "$codeql_workflow" >/dev/null; then
-    printf 'workflow release policy check failed: CodeQL coverage contract missing: %s\n' "$expected" >&2
-    status=1
-  fi
-done
+if [[ -e "$codeql_workflow" ]]; then
+  printf 'workflow release policy check failed: CodeQL workflow must remain disabled: %s\n' "$codeql_workflow" >&2
+  status=1
+fi
+if rg -n 'github/codeql-action/(init|autobuild|analyze|setup-codeql)(@|$)' .github/workflows >/dev/null; then
+  printf 'workflow release policy check failed: CodeQL analysis actions must remain disabled\n' >&2
+  status=1
+fi
 
 if ! rg -n -F 'scripts/run-security-scans.sh' .github/workflows scripts/run-release-gate.sh >/dev/null; then
   printf 'workflow release policy check failed: required security scan runner is not wired into CI/release gates\n' >&2
@@ -242,20 +235,22 @@ if ! rg -n -F 'Locale::Maketext::Simple' scripts/select-windows-perl.ps1 >/dev/n
   status=1
 fi
 
-if ! rg -n -F "'v*'" .github/workflows/release.yml >/dev/null; then
-  printf 'workflow release policy check failed: v* tag trigger was not found\n' >&2
+release_events="$(sed -n '1,/^jobs:/p' .github/workflows/release.yml)"
+if ! rg -n -F 'workflow_dispatch:' <<<"$release_events" >/dev/null ||
+   rg -n '^  (push|release|schedule):' <<<"$release_events" >/dev/null; then
+  printf 'workflow release policy check failed: release must be manually dispatched for a selected tag\n' >&2
   status=1
 fi
-
-if ! rg -n -F "release-v*" .github/workflows/release.yml >/dev/null; then
-  printf 'workflow release policy check failed: legacy release-v tags must remain supported\n' >&2
-  status=1
-fi
-
-if rg -n -F "workflow_dispatch:" .github/workflows/release.yml >/dev/null; then
-  printf 'workflow release policy check failed: release workflow must only run from v* or legacy release-v tags\n' >&2
-  status=1
-fi
+for expected in \
+  'description: Release tag; must match the selected ref' \
+  'REQUESTED_TAG: ${{ inputs.tag }}' \
+  'if [[ "$RELEASE_TAG" != "$REQUESTED_TAG" ]]' \
+  'tag_pattern='; do
+  if ! rg -n -F -- "$expected" .github/workflows/release.yml >/dev/null; then
+    printf 'workflow release policy check failed: release tag validation is missing: %s\n' "$expected" >&2
+    status=1
+  fi
+done
 
 if rg -n -F "types: [published]" .github/workflows/release-publish.yml >/dev/null; then
   printf 'workflow release policy check failed: downstream package publish must be dispatched after release assets are uploaded\n' >&2
@@ -317,16 +312,6 @@ for dockerfile in Dockerfile packaging/docker/release.Dockerfile; do
   done
 done
 
-for expected in \
-  'push:' \
-  'tags:' \
-  'cargo audit'; do
-  if ! rg -n -F -- "$expected" .github/workflows/ci.yml >/dev/null; then
-    printf 'workflow release policy check failed: CI must retain tag-only advisory coverage; missing token: %s\n' "$expected" >&2
-    status=1
-  fi
-done
-
 if ! rg -n -F -- 'cancel-in-progress: false' .github/workflows/ci.yml >/dev/null; then
   printf 'workflow release policy check failed: validation runs must not cancel earlier attempts\n' >&2
   status=1
@@ -358,8 +343,14 @@ for expected in \
   fi
 done
 
-if rg -n 'runs-on:[[:space:]]*\[self-hosted|packer-windows' .github/workflows .github/WINDOWS_RUNNER.md >/dev/null; then
-  printf 'workflow release policy check failed: current Windows workflows/docs must not refer to retired self-hosted runners\n' >&2
+for workflow in ci release release-publish publish-chocolatey windows-smoke; do
+  if ! rg -n -F 'packer-windows' ".github/workflows/${workflow}.yml" >/dev/null; then
+    printf 'workflow release policy check failed: Windows jobs must use the private Packer JIT group: %s\n' "$workflow" >&2
+    status=1
+  fi
+done
+if rg -n 'runs-on:[[:space:]]*(["\x27])?(ubuntu|macos|windows)-|NG_HOSTED_FIRST' .github/workflows >/dev/null; then
+  printf 'workflow release policy check failed: hosted runner labels or fallback routing are not allowed\n' >&2
   status=1
 fi
 
@@ -386,9 +377,10 @@ for expected in \
   'v<semver>' \
   'Require Main CI' \
   'for _ in {1..240}' \
-  '--workflow CI' \
-  '--branch main' \
+  '--workflow ci.yml' \
   '--commit "$RELEASE_SHA"' \
+  '.event == "workflow_dispatch"' \
+  '.displayTitle == ("action:test:pool:private:tag:" + $tag)' \
   'needs: [version, main-ci]' \
   "startsWith(github.ref, 'refs/tags/release-v')" \
   "startsWith(github.ref, 'refs/tags/v')" \
@@ -424,13 +416,9 @@ for expected in \
   fi
 done
 
-if ! rg -n -F '`macos-15-intel`' docs/release.md >/dev/null; then
-  printf 'workflow release policy check failed: release docs must document the current macOS Intel runner\n' >&2
-  status=1
-fi
-
-if rg -n -F "'release-*'" .github/workflows/release.yml >/dev/null; then
-  printf 'workflow release policy check failed: broad release-* tag trigger must not return\n' >&2
+if ! rg -n -F '`macos-x64`' docs/release.md >/dev/null ||
+   ! rg -n -F 'Private JIT macOS x64' docs/release.md >/dev/null; then
+  printf 'workflow release policy check failed: release docs must document the private macOS x64 target\n' >&2
   status=1
 fi
 
