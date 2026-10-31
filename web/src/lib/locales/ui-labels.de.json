@@ -2612,7 +2612,7 @@
   "Pushbullet private message notifications": "Pushbullet-Benachrichtigungen für private Nachrichten",
   "Pushbullet retry attempts": "Pushbullet-Wiederholungsversuche",
   "Pushbullet room mention notifications": "Pushbullet-Raumerwähnungsbenachrichtigungen",
-  "Pushover": "Schwächling",
+  "Pushover": "Pushover",
   "Pushover API token": "Pushover API-Token",
   "Pushover Secrets": "Pushover-Geheimnisse",
   "Pushover notification prefix": "Präfix für Pushover-Benachrichtigung",
