@@ -4898,11 +4898,11 @@
   "Pushover needs an API token before notifications can be sent.": "Pushover needs an API token before notifications can be sent.",
   "Spotify needs a client ID before account connection or provider imports can run.": "Spotify needs a client ID before account connection or provider imports can run.",
   "YouTube needs a Data API key before playlist expansion can run.": "YouTube needs a Data API key before playlist expansion can run.",
-  "Selected group has no members to share with.": "चयनित समूह में साझा करने के लिए कोई सदस्य नहीं है。",
-  "Request failed. Check the CSRF token, local identity, and invite configuration.": "अनुरोध विफल हुआ। CSRF टोकन, स्थानीय पहचान और आमंत्रण कॉन्फ़िगरेशन की जाँच करें。",
-  "Authentication required. Please refresh the page.": "प्रमाणीकरण आवश्यक है। कृपया पृष्ठ रीफ़्रेश करें。",
-  "Not authorized.": "आपको अनुमति नहीं है。",
-  "Identity & Friends is disabled, or the invite endpoint was not found.": "Identity & Friends अक्षम है या आमंत्रण एंडपॉइंट नहीं मिला。",
-  "Server error. Please check server logs.": "सर्वर त्रुटि। कृपया सर्वर लॉग देखें。",
-  "Failed to create invite. Please ensure Identity & Friends is enabled and configured.": "आमंत्रण नहीं बनाया जा सका। कृपया सुनिश्चित करें कि Identity & Friends सक्षम और कॉन्फ़िगर किया गया है。"
+  "Selected group has no members to share with.": "चयनित समूह में साझा करने के लिए कोई सदस्य नहीं है।",
+  "Request failed. Check the CSRF token, local identity, and invite configuration.": "अनुरोध विफल हुआ। CSRF टोकन, स्थानीय पहचान और आमंत्रण कॉन्फ़िगरेशन की जाँच करें।",
+  "Authentication required. Please refresh the page.": "प्रमाणीकरण आवश्यक है। कृपया पृष्ठ रीफ़्रेश करें।",
+  "Not authorized.": "आपको अनुमति नहीं है।",
+  "Identity & Friends is disabled, or the invite endpoint was not found.": "Identity & Friends अक्षम है या आमंत्रण एंडपॉइंट नहीं मिला।",
+  "Server error. Please check server logs.": "सर्वर त्रुटि। कृपया सर्वर लॉग देखें।",
+  "Failed to create invite. Please ensure Identity & Friends is enabled and configured.": "आमंत्रण नहीं बनाया जा सका। कृपया सुनिश्चित करें कि Identity & Friends सक्षम और कॉन्फ़िगर किया गया है।"
 }
