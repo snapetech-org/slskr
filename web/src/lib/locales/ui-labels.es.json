@@ -5434,5 +5434,6 @@
   "wishlist item has no search text": "El elemento de la lista de deseos no contiene texto de búsqueda.",
   "Hermit": "Privado",
   "Friends only": "Solo amigos",
-  "Enforce": "Exigir firmas"
+  "Enforce": "Exigir firmas",
+  "Use browser settings": "Usar la configuración del navegador"
 }

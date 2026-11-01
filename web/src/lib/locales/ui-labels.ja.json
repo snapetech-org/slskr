@@ -5434,5 +5434,6 @@
   "wishlist item has no search text": "ウィッシュリスト項目に検索テキストがありません。",
   "Hermit": "非公開",
   "Friends only": "友達のみ",
-  "Enforce": "署名を必須にする"
+  "Enforce": "署名を必須にする",
+  "Use browser settings": "ブラウザーの設定を使用する"
 }
