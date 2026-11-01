@@ -2413,7 +2413,7 @@
   "Phonetic Similarity:": "语音相似度：",
   "Pick a track first.": "首先选择一个曲目。",
   "Pin": "固定",
-  "Pin Center": "销中心",
+  "Pin Center": "固定图形中心",
   "Pin the current graph center so you can compare another node or reopen this branch later.": "固定当前图形中心，以便您可以比较另一个节点或稍后重新打开此分支。",
   "Pin this node so you can compare it against another branch or keep it handy while exploring.": "固定此节点，以便您可以将其与另一个分支进行比较或在探索时将其放在手边。",
   "Pin this route target as the comparison point for the current atlas branch.": "将此路线目标固定为当前图集分支的比较点。",

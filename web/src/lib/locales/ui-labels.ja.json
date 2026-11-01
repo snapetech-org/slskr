@@ -2413,7 +2413,7 @@
   "Phonetic Similarity:": "音声の類似性:",
   "Pick a track first.": "まずトラックを選択します。",
   "Pin": "ピン留め",
-  "Pin Center": "ピンセンター",
+  "Pin Center": "グラフの中心を固定",
   "Pin the current graph center so you can compare another node or reopen this branch later.": "現在のグラフの中心を固定して、別のノードを比較したり、後でこのブランチを再度開いたりできるようにします。",
   "Pin this node so you can compare it against another branch or keep it handy while exploring.": "このノードを固定すると、別のブランチと比較したり、探索中に手元に置いておくことができます。",
   "Pin this route target as the comparison point for the current atlas branch.": "このルート ターゲットを現在のアトラス ブランチの比較ポイントとして固定します。",
