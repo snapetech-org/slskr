@@ -1,15 +1,17 @@
 import React from 'react';
-import LocalizedText from './LocalizedText';
-import { toDisplayError } from '../../lib/errors';
+import LocalizedText, { LocalizedErrorOutput } from './LocalizedText';
+import { isDisplayErrorOutput, toDisplayErrorOutput } from '../../lib/errors';
 import { Header, Icon, Segment } from 'semantic-ui-react';
 
 const ErrorSegment = ({ caption, error, icon = 'x', suppressPrefix = false }) => {
   const rawCaption = caption ?? error;
   const displayCaption = React.isValidElement(rawCaption)
-    || typeof rawCaption === 'string'
-    || typeof rawCaption === 'number'
     ? rawCaption
-    : toDisplayError(rawCaption);
+    : isDisplayErrorOutput(rawCaption)
+      ? <LocalizedErrorOutput output={rawCaption} />
+      : typeof rawCaption === 'string' || typeof rawCaption === 'number'
+        ? <bdi dir="auto" lang="und">{String(rawCaption)}</bdi>
+        : <LocalizedErrorOutput output={toDisplayErrorOutput(rawCaption)} />;
 
   return (
     <Segment

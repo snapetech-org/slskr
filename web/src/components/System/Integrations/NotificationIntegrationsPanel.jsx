@@ -1,11 +1,11 @@
-import LocalizedText from "../../Shared/LocalizedText";
+import LocalizedText, { LocalizedErrorOutput } from "../../Shared/LocalizedText";
 import {
   INTERFACE_LANGUAGE_OPTIONS,
   interfaceText,
   interfaceTextProps,
   useInterfaceLanguage,
 } from "../../../lib/interfaceLocale";
-import { toDisplayError } from '../../../lib/errors';
+import { toDisplayErrorOutput } from '../../../lib/errors';
 import * as optionsApi from '../../../lib/options';
 import * as YAML from 'yaml';
 import React, { useEffect, useState } from 'react';
@@ -178,13 +178,13 @@ const NotificationIntegrationsPanel = ({ options }) => {
       markSecretsConfigured(overlay);
       setMessage({
         positive: true,
-        text: interfaceText("Notification integration settings applied for this running daemon."),
+        source: "Notification integration settings applied for this running daemon.",
       });
     } catch (error) {
       if (!asyncGuard.isCurrent(requestId)) return;
       setMessage({
         negative: true,
-        text: toDisplayError(
+        output: toDisplayErrorOutput(
           error,
           'Failed to apply notification integration settings.',
         ),
@@ -286,13 +286,13 @@ const NotificationIntegrationsPanel = ({ options }) => {
       markSecretsConfigured(overlay);
       setMessage({
         positive: true,
-        text: interfaceText("Notification integration settings saved to YAML."),
+        source: "Notification integration settings saved to YAML.",
       });
     } catch (error) {
       if (!asyncGuard.isCurrent(requestId)) return;
       setMessage({
         negative: true,
-        text: toDisplayError(
+        output: toDisplayErrorOutput(
           error,
           'Failed to save notification integration settings.',
         ),
@@ -357,7 +357,9 @@ const NotificationIntegrationsPanel = ({ options }) => {
             positive={message.positive}
             size="small"
           >
-            {message.text}
+            {message.source
+              ? <LocalizedText source={message.source} />
+              : <LocalizedErrorOutput output={message.output} />}
           </Message>
         )}
         {missingRequiredSettings.length > 0 && (

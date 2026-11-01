@@ -1,10 +1,10 @@
-import LocalizedText from "../Shared/LocalizedText";
+import LocalizedText, { LocalizedErrorOutput } from "../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
 
 
 import { formatRegionalDateTime } from '../../lib/util';
 import * as identityAPI from '../../lib/identity';
-import { toDisplayError } from '../../lib/errors';
+import { toDisplayErrorOutput } from '../../lib/errors';
 import ErrorSegment from '../Shared/ErrorSegment';
 import LoaderSegment from '../Shared/LoaderSegment';
 import TooltipButton from '../Shared/TooltipButton';
@@ -134,7 +134,7 @@ class Contacts extends Component {
         }
       } else {
         if (this.isMountedFlag && requestId === this.requestIds.contacts) {
-          const contactsError = toDisplayError(
+          const contactsError = toDisplayErrorOutput(
             error,
             'Failed to load contacts',
           );
@@ -165,7 +165,7 @@ class Contacts extends Component {
     } catch (error) {
       if (this.isMountedFlag && requestId === this.requestIds.nearby) {
         this.setState({
-          nearbyError: toDisplayError(error, 'Nearby peer discovery unavailable'),
+          nearbyError: toDisplayErrorOutput(error, 'Nearby peer discovery unavailable'),
           nearbyLoading: false,
         });
       }
@@ -194,7 +194,7 @@ class Contacts extends Component {
     } catch (error) {
       if (this.isMountedFlag) {
         this.setState({
-          error: toDisplayError(error, 'Failed to add contact from invite'),
+          error: toDisplayErrorOutput(error, 'Failed to add contact from invite'),
         });
       }
     } finally {
@@ -211,7 +211,7 @@ class Contacts extends Component {
     } catch (error) {
       if (this.isMountedFlag) {
         this.setState({
-          error: toDisplayError(error, 'Failed to add discovered contact'),
+          error: toDisplayErrorOutput(error, 'Failed to add discovered contact'),
         });
       }
     } finally {
@@ -262,18 +262,18 @@ class Contacts extends Component {
       const url = error?.response?.config?.url || '';
       const errorMessage =
         status === 400
-          ? 'Request failed. Check the CSRF token, local identity, and invite configuration.'
+          ? toDisplayErrorOutput(null, 'Request failed. Check the CSRF token, local identity, and invite configuration.')
           : status === 401
-            ? 'Authentication required. Please refresh the page.'
+            ? toDisplayErrorOutput(null, 'Authentication required. Please refresh the page.')
             : status === 403
-              ? 'Not authorized.'
+              ? toDisplayErrorOutput(null, 'Not authorized.')
               : status === 404
                 ? url.includes('/api/v0/api/v0')
                   ? `Endpoint not found: ${url} (possible route mismatch)`
-                  : 'Identity & Friends is disabled, or the invite endpoint was not found.'
+                  : toDisplayErrorOutput(null, 'Identity & Friends is disabled, or the invite endpoint was not found.')
                 : status >= 500
-                  ? 'Server error. Please check server logs.'
-                  : toDisplayError(error, 'Failed to create invite');
+                  ? toDisplayErrorOutput(null, 'Server error. Please check server logs.')
+                  : toDisplayErrorOutput(error, 'Failed to create invite');
 
       if (
         this.isMountedFlag &&
@@ -283,7 +283,7 @@ class Contacts extends Component {
           createInviteModalOpen: false,
           error:
             errorMessage ||
-            'Failed to create invite. Please ensure Identity & Friends is enabled and configured.',
+            toDisplayErrorOutput(null, 'Failed to create invite. Please ensure Identity & Friends is enabled and configured.'),
           inviteQrDataUrl: null,
         });
       }
@@ -302,7 +302,7 @@ class Contacts extends Component {
     } catch (error) {
       if (this.isMountedFlag) {
         this.setState({
-          error: toDisplayError(error, 'Failed to delete contact'),
+          error: toDisplayErrorOutput(error, 'Failed to delete contact'),
         });
       }
     } finally {
@@ -453,7 +453,7 @@ class Contacts extends Component {
                 error
               >
                 <Message.Header><LocalizedText source={"Nearby peer discovery unavailable"} /></Message.Header>
-                <p>{nearbyError}</p>
+                <p><LocalizedErrorOutput output={nearbyError} /></p>
                 <p><LocalizedText source={"Showing the last successfully discovered peers when available."} /></p>
               </Message>
             )}
@@ -692,7 +692,7 @@ class AddFriendForm extends Component {
         this.isMountedFlag &&
         requestId === this.scanRequestId
       ) {
-        this.setState({ scanError: toDisplayError(error, 'QR scan failed.') });
+        this.setState({ scanError: toDisplayErrorOutput(error, 'QR scan failed.') });
       }
     } finally {
       event.target.value = '';
@@ -748,7 +748,7 @@ class AddFriendForm extends Component {
               data-testid="contacts-qr-scan-error"
               style={{ color: '#9f3a38', marginTop: '0.5em' }}
             >
-              {this.state.scanError}
+              <LocalizedErrorOutput output={this.state.scanError} />
             </p>
           )}
         </div>

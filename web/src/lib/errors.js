@@ -1,16 +1,36 @@
 import { interfaceText } from './interfaceLocale';
 import { isAppServerErrorMessage } from './serverErrorMessageAllowlist';
 
-export const toDisplayError = (error, fallback = 'Request failed') => {
+const displayErrorOutputBrand = Symbol('slskr.display-error-output');
+
+const localizedOutput = (source) => Object.freeze({
+  [displayErrorOutputBrand]: true,
+  kind: 'localized',
+  source,
+});
+
+const opaqueOutput = (text) => Object.freeze({
+  [displayErrorOutputBrand]: true,
+  kind: 'opaque',
+  text,
+});
+
+export const isDisplayErrorOutput = (value) =>
+  Boolean(value && typeof value === 'object' && value[displayErrorOutputBrand] === true);
+
+export const toDisplayErrorOutput = (error, fallback = 'Request failed') => {
+  if (isDisplayErrorOutput(error)) return error;
+
   const value = error?.response?.data ?? error?.message ?? error;
   const preserveRemoteDetail = error?.isRemoteShareError === true;
+  const fallbackOutput = () => localizedOutput(fallback);
 
-  if (typeof value === 'number') return String(value);
+  if (typeof value === 'number') return opaqueOutput(String(value));
   if (typeof value === 'string') {
-    if (!value.trim()) return interfaceText(fallback);
+    if (!value.trim()) return fallbackOutput();
     return !preserveRemoteDetail && isAppServerErrorMessage(value)
-      ? interfaceText(value)
-      : value;
+      ? localizedOutput(value)
+      : opaqueOutput(value);
   }
 
   if (value && typeof value === 'object') {
@@ -18,7 +38,7 @@ export const toDisplayError = (error, fallback = 'Request failed') => {
       !preserveRemoteDetail &&
       value.code === 'unsupported_notification_title_language'
     ) {
-      return interfaceText('Unsupported notification title language');
+      return localizedOutput('Unsupported notification title language');
     }
 
     const hasUnknownCode =
@@ -30,17 +50,26 @@ export const toDisplayError = (error, fallback = 'Request failed') => {
         return !preserveRemoteDetail &&
           !hasUnknownCode &&
           isAppServerErrorMessage(value[key])
-          ? interfaceText(value[key])
-          : value[key];
+          ? localizedOutput(value[key])
+          : opaqueOutput(value[key]);
       }
     }
 
     try {
-      return JSON.stringify(value);
+      const serialized = JSON.stringify(value);
+      return opaqueOutput(typeof serialized === 'string' ? serialized : String(value));
     } catch {
-      return interfaceText(fallback);
+      return fallbackOutput();
     }
   }
 
-  return interfaceText(fallback);
+  return fallbackOutput();
+};
+
+// Keep the string helper for existing toast and interpolation callsites.
+// Rendered message components should use toDisplayErrorOutput so localized
+// app copy and opaque server/provider details retain separate text metadata.
+export const toDisplayError = (error, fallback = 'Request failed') => {
+  const output = toDisplayErrorOutput(error, fallback);
+  return output.kind === 'localized' ? interfaceText(output.source) : output.text;
 };

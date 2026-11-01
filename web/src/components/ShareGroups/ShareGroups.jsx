@@ -2,7 +2,7 @@ import LocalizedText from "../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import { formatRegionalDate } from '../../lib/util';
 import * as collectionsAPI from '../../lib/collections';
-import { toDisplayError } from '../../lib/errors';
+import { toDisplayErrorOutput } from '../../lib/errors';
 import * as identityAPI from '../../lib/identity';
 import { readOptionalApiResponse } from '../../lib/optionalApi';
 import ErrorSegment from '../Shared/ErrorSegment';
@@ -130,7 +130,7 @@ export default class ShareGroups extends Component {
     } catch (error) {
       if (this.isMountedFlag && requestId === this.requestIds.data) {
         this.setState({
-          error: toDisplayError(error, 'Failed to load share groups'),
+          error: toDisplayErrorOutput(error, 'Failed to load share groups'),
           loading: false,
         });
       }
@@ -168,7 +168,7 @@ export default class ShareGroups extends Component {
         requestId === this.requestIds.members
       ) {
         console.error('[ShareGroups] Failed to load group members:', error);
-        this.setState({ error: toDisplayError(error, 'Failed to load group members') });
+        this.setState({ error: toDisplayErrorOutput(error, 'Failed to load group members') });
       }
     } finally {
       this.membersInFlight = false;
@@ -198,7 +198,7 @@ export default class ShareGroups extends Component {
       }
       console.error('[ShareGroups] Create group error:', error);
       this.setState({
-        error: toDisplayError(error, 'Failed to create share group'),
+        error: toDisplayErrorOutput(error, 'Failed to create share group'),
       });
     } finally {
       this.finishOperation();
@@ -244,7 +244,7 @@ export default class ShareGroups extends Component {
         return;
       }
       this.setState({
-        error: toDisplayError(error, 'Failed to add member'),
+        error: toDisplayErrorOutput(error, 'Failed to add member'),
       });
     } finally {
       this.finishOperation();
@@ -269,7 +269,7 @@ export default class ShareGroups extends Component {
         this.isMountedFlag &&
         requestId === this.requestIds.operation
       ) {
-        this.setState({ error: toDisplayError(error, 'Failed to delete share group') });
+        this.setState({ error: toDisplayErrorOutput(error, 'Failed to delete share group') });
       }
     } finally {
       this.finishOperation();
@@ -294,7 +294,7 @@ export default class ShareGroups extends Component {
         this.isMountedFlag &&
         requestId === this.requestIds.operation
       ) {
-        this.setState({ error: toDisplayError(error, 'Failed to remove group member') });
+        this.setState({ error: toDisplayErrorOutput(error, 'Failed to remove group member') });
       }
     } finally {
       this.finishOperation();

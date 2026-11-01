@@ -2,7 +2,7 @@ import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../l
 import LocalizedText, { LocalizedPluralText } from "../Shared/LocalizedText";
 import './Search.css';
 import SearchesListView from './SearchesListView';
-import { toDisplayError } from '../../lib/errors';
+import { toDisplayError, toDisplayErrorOutput } from '../../lib/errors';
 import {
   acquisitionProfiles,
   getAcquisitionProfile,
@@ -155,7 +155,7 @@ const Searches = ({ runtimeProfile, server } = {}) => {
       return;
     }
     setConnecting(false);
-    setConnectionError(toDisplayError(connectionError, 'Disconnected'));
+    setConnectionError(toDisplayErrorOutput(connectionError, 'Disconnected'));
   };
 
   const onUpdate = (update) => {
@@ -204,7 +204,7 @@ const Searches = ({ runtimeProfile, server } = {}) => {
           return;
         }
         if (!hubListReceived) {
-          setLoadError(toDisplayError(loadError, interfaceText('Failed to load searches')));
+          setLoadError(toDisplayErrorOutput(loadError, 'Failed to load searches'));
         }
       } finally {
         if (
@@ -317,11 +317,11 @@ const Searches = ({ runtimeProfile, server } = {}) => {
     });
 
     searchHub.onreconnecting((connectionError) =>
-      onConnectionError(toDisplayError(connectionError, 'Disconnected')),
+      onConnectionError(connectionError),
     );
     searchHub.onreconnected(() => onConnected());
     searchHub.onclose((connectionError) =>
-      onConnectionError(toDisplayError(connectionError, 'Disconnected')),
+      onConnectionError(connectionError),
     );
 
     const connect = async () => {
@@ -706,7 +706,7 @@ const Searches = ({ runtimeProfile, server } = {}) => {
   }
 
   if (error && !hasSearchData) {
-    return <ErrorSegment caption={toDisplayError(error, interfaceText('Failed to load searches'))} />;
+    return <ErrorSegment caption={toDisplayErrorOutput(error, 'Failed to load searches')} />;
   }
 
   const searchDataWarning = error && hasSearchData ? (
