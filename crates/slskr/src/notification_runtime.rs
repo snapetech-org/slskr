@@ -6,9 +6,26 @@ enum NotificationTitleKind {
     RoomMention,
 }
 
+fn is_bidi_formatting_control(character: char) -> bool {
+    matches!(
+        character,
+        '\u{061c}'
+            | '\u{200e}'
+            | '\u{200f}'
+            | '\u{202a}'..='\u{202e}'
+            | '\u{2066}'..='\u{206f}'
+    )
+}
+
+fn sanitize_notification_title_value(value: &str) -> String {
+    value
+        .chars()
+        .filter(|character| !is_bidi_formatting_control(*character))
+        .collect()
+}
+
 fn interpolate_notification_title(
     template: &str,
-    language: &str,
     username: &str,
     room: &str,
 ) -> String {
@@ -32,12 +49,11 @@ fn interpolate_notification_title(
             _ => None,
         };
         if let Some(value) = value {
-            if language == "ar" {
+            let value = sanitize_notification_title_value(value);
+            if !value.is_empty() {
                 rendered.push('\u{2068}');
-                rendered.push_str(value);
+                rendered.push_str(&value);
                 rendered.push('\u{2069}');
-            } else {
-                rendered.push_str(value);
             }
         } else {
             rendered.push_str(placeholder);
@@ -76,7 +92,7 @@ fn notification_title(
         .and_then(|locale| locale.get(catalog_key))
         .and_then(serde_json::Value::as_str)
         .unwrap_or(source);
-    interpolate_notification_title(template, localized_language, username, room)
+    interpolate_notification_title(template, username, room)
 }
 
 async fn send_ntfy_notification(
@@ -336,7 +352,7 @@ mod tests {
     fn notification_titles_use_selected_locale_and_preserve_opaque_values() {
         assert_eq!(
             notification_title("en", NotificationTitleKind::PrivateMessage, "peer/name", "",),
-            "Private Message from peer/name"
+            "Private Message from \u{2068}peer/name\u{2069}"
         );
         assert_eq!(
             notification_title(
@@ -345,7 +361,7 @@ mod tests {
                 "peer/name",
                 "room:one",
             ),
-            "Mención de peer/name en room:one"
+            "Mención de \u{2068}peer/name\u{2069} en \u{2068}room:one\u{2069}"
         );
         assert_eq!(
             notification_title("ar", NotificationTitleKind::PrivateMessage, "peer/name", "",),
@@ -358,7 +374,33 @@ mod tests {
                 "peer/name",
                 "room:one",
             ),
-            "Room Mention by peer/name in room:one"
+            "Room Mention by \u{2068}peer/name\u{2069} in \u{2068}room:one\u{2069}"
+        );
+    }
+
+    #[test]
+    fn notification_titles_isolate_rtl_values_in_ltr_templates() {
+        assert_eq!(
+            notification_title(
+                "es",
+                NotificationTitleKind::RoomMention,
+                "שלום 2025",
+                "غرفة 1",
+            ),
+            "Mención de \u{2068}שלום 2025\u{2069} en \u{2068}غرفة 1\u{2069}"
+        );
+    }
+
+    #[test]
+    fn notification_titles_strip_embedded_bidi_controls_before_isolating_values() {
+        assert_eq!(
+            notification_title(
+                "ar",
+                NotificationTitleKind::RoomMention,
+                "peer\u{202e}name\u{2069}",
+                "Mix\u{2068}room\u{202c}",
+            ),
+            "أشار إليك \u{2068}peername\u{2069} في \u{2068}Mixroom\u{2069}"
         );
     }
 
@@ -368,11 +410,11 @@ mod tests {
         let room = "Mix{username}";
         assert_eq!(
             notification_title("en", NotificationTitleKind::PrivateMessage, username, "",),
-            "Private Message from peer{room}"
+            "Private Message from \u{2068}peer{room}\u{2069}"
         );
         assert_eq!(
             notification_title("en", NotificationTitleKind::RoomMention, username, room,),
-            "Room Mention by peer{room} in Mix{username}"
+            "Room Mention by \u{2068}peer{room}\u{2069} in \u{2068}Mix{username}\u{2069}"
         );
         assert_eq!(
             notification_title("ar", NotificationTitleKind::RoomMention, username, room,),
