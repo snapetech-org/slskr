@@ -1,6 +1,6 @@
 // Exact app-authored fixed response messages. The display component uses a locale
-// translation only when the active catalog has a translated target; missing targets
-// stay explicitly English until the queued catalog translation pass lands.
+// translation only when the active catalog has a translated target. Missing target
+// entries remain explicitly English until their translations are available.
 // Excludes fixed /api/pods errors whose web client exposes statusText instead of the response body.
 export const APP_SERVER_ERROR_MESSAGES = new Set([
   "A required query value is missing",
