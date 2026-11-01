@@ -1,5 +1,6 @@
-// Exact app-owned fixed response messages covered by the web error display path.
-// Generated from the slskR response-helper audit; dynamic values and unknown details stay raw.
+// Exact app-authored fixed response messages. The display component uses a locale
+// translation only when the active catalog has a translated target; missing targets
+// stay explicitly English until the queued catalog translation pass lands.
 // Excludes fixed /api/pods errors whose web client exposes statusText instead of the response body.
 export const APP_SERVER_ERROR_MESSAGES = new Set([
   "A required query value is missing",

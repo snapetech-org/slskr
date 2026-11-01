@@ -3,9 +3,9 @@ import { isAppServerErrorMessage } from './serverErrorMessageAllowlist';
 
 const displayErrorOutputBrand = Symbol('slskr.display-error-output');
 
-const localizedOutput = (source) => Object.freeze({
+const appOutput = (source) => Object.freeze({
   [displayErrorOutputBrand]: true,
-  kind: 'localized',
+  kind: 'app',
   source,
 });
 
@@ -23,13 +23,13 @@ export const toDisplayErrorOutput = (error, fallback = 'Request failed') => {
 
   const value = error?.response?.data ?? error?.message ?? error;
   const preserveRemoteDetail = error?.isRemoteShareError === true;
-  const fallbackOutput = () => localizedOutput(fallback);
+  const fallbackOutput = () => appOutput(fallback);
 
   if (typeof value === 'number') return opaqueOutput(String(value));
   if (typeof value === 'string') {
     if (!value.trim()) return fallbackOutput();
     return !preserveRemoteDetail && isAppServerErrorMessage(value)
-      ? localizedOutput(value)
+      ? appOutput(value)
       : opaqueOutput(value);
   }
 
@@ -38,7 +38,7 @@ export const toDisplayErrorOutput = (error, fallback = 'Request failed') => {
       !preserveRemoteDetail &&
       value.code === 'unsupported_notification_title_language'
     ) {
-      return localizedOutput('Unsupported notification title language');
+      return appOutput('Unsupported notification title language');
     }
 
     const hasUnknownCode =
@@ -50,7 +50,7 @@ export const toDisplayErrorOutput = (error, fallback = 'Request failed') => {
         return !preserveRemoteDetail &&
           !hasUnknownCode &&
           isAppServerErrorMessage(value[key])
-          ? localizedOutput(value[key])
+          ? appOutput(value[key])
           : opaqueOutput(value[key]);
       }
     }
@@ -68,8 +68,8 @@ export const toDisplayErrorOutput = (error, fallback = 'Request failed') => {
 
 // Keep the string helper for existing toast and interpolation callsites.
 // Rendered message components should use toDisplayErrorOutput so localized
-// app copy and opaque server/provider details retain separate text metadata.
+// app-authored copy and opaque server/provider details retain separate text metadata.
 export const toDisplayError = (error, fallback = 'Request failed') => {
   const output = toDisplayErrorOutput(error, fallback);
-  return output.kind === 'localized' ? interfaceText(output.source) : output.text;
+  return output.kind === 'app' ? interfaceText(output.source) : output.text;
 };

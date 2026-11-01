@@ -1,5 +1,8 @@
 import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../lib/interfaceLocale";
-import LocalizedText, { LocalizedPluralText } from "../Shared/LocalizedText";
+import LocalizedText, {
+  LocalizedErrorOutput,
+  LocalizedPluralText,
+} from "../Shared/LocalizedText";
 import './Search.css';
 import SearchesListView from './SearchesListView';
 import { toDisplayError, toDisplayErrorOutput } from '../../lib/errors';
@@ -48,7 +51,7 @@ const getSearchRecord = (records, id) =>
 const SEARCH_CREATE_HYDRATION_TIMEOUT_MS = 1_500;
 
 const Searches = ({ runtimeProfile, server } = {}) => {
-  useInterfaceLanguage();
+  const { directionFor, languageFor, t } = useInterfaceLanguage();
   const normalizedServer = server ?? { isConnected: false };
   const [connecting, setConnecting] = useState(true);
   const [connectionError, setConnectionError] = useState(undefined);
@@ -709,11 +712,19 @@ const Searches = ({ runtimeProfile, server } = {}) => {
     return <ErrorSegment caption={toDisplayErrorOutput(error, 'Failed to load searches')} />;
   }
 
+  const searchWarningSource = '{error}. Showing the last successfully loaded search data.';
+  const searchWarningParts = t(searchWarningSource).split('{error}');
   const searchDataWarning = error && hasSearchData ? (
     <Message
-      content={interfaceText('{error}. Showing the last successfully loaded search data.', {
-        error: toDisplayError(error, interfaceText('Search updates are unavailable')),
-      })}
+      content={(
+        <span dir={directionFor(searchWarningSource)} lang={languageFor(searchWarningSource)}>
+          {searchWarningParts[0]}
+          <LocalizedErrorOutput
+            output={toDisplayErrorOutput(error, 'Search updates are unavailable')}
+          />
+          {searchWarningParts.slice(1).join('{error}')}
+        </span>
+      )}
       size="small"
       warning
     />

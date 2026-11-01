@@ -39,6 +39,30 @@ const getFederationWarningSource = (warning) => {
   }
 };
 
+const federationExposureSources = Object.freeze({
+  Hermit: 'Hermit',
+  FriendsOnly: 'Friends only',
+  Public: 'Public',
+  Custom: 'Custom',
+});
+
+const signatureModeSources = Object.freeze({
+  Off: 'Off',
+  Warn: 'Warn',
+  Enforce: 'Enforce',
+});
+
+const localizedStatusValue = (value, sources) => {
+  const source = typeof value === 'string' &&
+    Object.prototype.hasOwnProperty.call(sources, value)
+    ? sources[value]
+    : undefined;
+
+  return source
+    ? <LocalizedText source={source} />
+    : <bdi dir="auto" lang="und">{valueOrDash(value)}</bdi>;
+};
+
 const FederationDiagnosticsPanel = () => {
   const [diagnostics, setDiagnostics] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -113,7 +137,8 @@ const FederationDiagnosticsPanel = () => {
           {boolLabel(federation.enabled, 'Federation On', 'Federation Off')}
           <Label>
             <Icon name="privacy" />
-            <LocalizedText source={"Exposure:"} />{" "}{valueOrDash(federation.exposure)}
+            <LocalizedText source={"Exposure:"} />{" "}
+            {localizedStatusValue(federation.exposure, federationExposureSources)}
           </Label>
           {boolLabel(publishing.enabled, 'Publishing On', 'Publishing Off')}
           {boolLabel(
@@ -138,19 +163,25 @@ const FederationDiagnosticsPanel = () => {
             </Table.Row>
             <Table.Row>
               <Table.Cell><LocalizedText source={"Publishable domains"} /></Table.Cell>
-              <Table.Cell>{publishing.publishableDomains?.join(', ') || '-'}</Table.Cell>
+              <Table.Cell>
+                <bdi dir="auto" lang="und">
+                  {publishing.publishableDomains?.join(', ') || '-'}
+                </bdi>
+              </Table.Cell>
             </Table.Row>
             <Table.Row>
               <Table.Cell><LocalizedText source={"Publishing visibility"} /></Table.Cell>
-              <Table.Cell>{valueOrDash(publishing.defaultVisibility)}</Table.Cell>
+              <Table.Cell>
+                <bdi dir="auto" lang="und">{valueOrDash(publishing.defaultVisibility)}</bdi>
+              </Table.Cell>
             </Table.Row>
             <Table.Row>
               <Table.Cell><LocalizedText source={"Pod join signatures"} /></Table.Cell>
-              <Table.Cell>{valueOrDash(pods.joinSignatureMode)}</Table.Cell>
+              <Table.Cell>{localizedStatusValue(pods.joinSignatureMode, signatureModeSources)}</Table.Cell>
             </Table.Row>
             <Table.Row>
               <Table.Cell><LocalizedText source={"Pod message signatures"} /></Table.Cell>
-              <Table.Cell>{valueOrDash(pods.messageSignatureMode)}</Table.Cell>
+              <Table.Cell>{localizedStatusValue(pods.messageSignatureMode, signatureModeSources)}</Table.Cell>
             </Table.Row>
             <Table.Row>
               <Table.Cell><LocalizedText source={"Mesh self peer ID"} /></Table.Cell>

@@ -49,8 +49,15 @@ export const LocalizedPluralText = ({
 };
 
 export const LocalizedErrorOutput = ({ output }) => {
+  const { language, languageFor } = useInterfaceLanguage();
   if (!isDisplayErrorOutput(output)) return null;
-  if (output.kind === 'localized') return <LocalizedText source={output.source} />;
+  if (output.kind === 'app') {
+    const translationLanguage = languageFor(output.source);
+    if (language === 'en' || translationLanguage === language) {
+      return <LocalizedText source={output.source} />;
+    }
+    return <bdi dir="ltr" lang="en">{output.source}</bdi>;
+  }
   return <bdi dir="auto" lang="und">{output.text}</bdi>;
 };
 
