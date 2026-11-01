@@ -4897,5 +4897,12 @@
   "Pushover needs a user key before notifications can be sent.": "Pushover needs a user key before notifications can be sent.",
   "Pushover needs an API token before notifications can be sent.": "Pushover needs an API token before notifications can be sent.",
   "Spotify needs a client ID before account connection or provider imports can run.": "Spotify needs a client ID before account connection or provider imports can run.",
-  "YouTube needs a Data API key before playlist expansion can run.": "YouTube needs a Data API key before playlist expansion can run."
+  "YouTube needs a Data API key before playlist expansion can run.": "YouTube needs a Data API key before playlist expansion can run.",
+  "Selected group has no members to share with.": "所選群組沒有可供分享的成員。",
+  "Request failed. Check the CSRF token, local identity, and invite configuration.": "要求失敗。請檢查 CSRF 權杖、本機身分資訊和邀請設定。",
+  "Authentication required. Please refresh the page.": "需要驗證身分。請重新整理頁面。",
+  "Not authorized.": "未獲授權。",
+  "Identity & Friends is disabled, or the invite endpoint was not found.": "Identity & Friends 已停用，或找不到邀請端點。",
+  "Server error. Please check server logs.": "伺服器錯誤。請檢查伺服器記錄。",
+  "Failed to create invite. Please ensure Identity & Friends is enabled and configured.": "無法建立邀請。請確認 Identity & Friends 已啟用並完成設定。"
 }

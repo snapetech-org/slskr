@@ -4897,5 +4897,12 @@
   "Pushover needs a user key before notifications can be sent.": "Pushover needs a user key before notifications can be sent.",
   "Pushover needs an API token before notifications can be sent.": "Pushover needs an API token before notifications can be sent.",
   "Spotify needs a client ID before account connection or provider imports can run.": "Spotify needs a client ID before account connection or provider imports can run.",
-  "YouTube needs a Data API key before playlist expansion can run.": "YouTube needs a Data API key before playlist expansion can run."
+  "YouTube needs a Data API key before playlist expansion can run.": "YouTube needs a Data API key before playlist expansion can run.",
+  "Selected group has no members to share with.": "Grup yang dipilih tidak memiliki anggota untuk diajak berbagi.",
+  "Request failed. Check the CSRF token, local identity, and invite configuration.": "Permintaan gagal. Periksa token CSRF, identitas lokal, dan konfigurasi undangan.",
+  "Authentication required. Please refresh the page.": "Autentikasi diperlukan. Silakan muat ulang halaman.",
+  "Not authorized.": "Tidak berwenang.",
+  "Identity & Friends is disabled, or the invite endpoint was not found.": "Identity & Friends dinonaktifkan atau endpoint undangan tidak ditemukan.",
+  "Server error. Please check server logs.": "Kesalahan server. Periksa log server.",
+  "Failed to create invite. Please ensure Identity & Friends is enabled and configured.": "Undangan gagal dibuat. Pastikan Identity & Friends diaktifkan dan dikonfigurasi."
 }

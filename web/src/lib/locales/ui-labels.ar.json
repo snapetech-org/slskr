@@ -5002,5 +5002,12 @@
   "Pushover needs a user key before notifications can be sent.": "Pushover needs a user key before notifications can be sent.",
   "Pushover needs an API token before notifications can be sent.": "Pushover needs an API token before notifications can be sent.",
   "Spotify needs a client ID before account connection or provider imports can run.": "Spotify needs a client ID before account connection or provider imports can run.",
-  "YouTube needs a Data API key before playlist expansion can run.": "YouTube needs a Data API key before playlist expansion can run."
+  "YouTube needs a Data API key before playlist expansion can run.": "YouTube needs a Data API key before playlist expansion can run.",
+  "Selected group has no members to share with.": "لا تضم المجموعة المحددة أعضاءً يمكن مشاركة المحتوى معهم.",
+  "Request failed. Check the CSRF token, local identity, and invite configuration.": "فشل الطلب. تحقق من رمز CSRF والهوية المحلية وإعدادات الدعوات.",
+  "Authentication required. Please refresh the page.": "المصادقة مطلوبة. يُرجى تحديث الصفحة.",
+  "Not authorized.": "غير مصرح لك.",
+  "Identity & Friends is disabled, or the invite endpoint was not found.": "ميزة Identity & Friends معطلة، أو لم يتم العثور على نقطة نهاية الدعوات.",
+  "Server error. Please check server logs.": "خطأ في الخادم. يُرجى مراجعة سجلات الخادم.",
+  "Failed to create invite. Please ensure Identity & Friends is enabled and configured.": "تعذر إنشاء الدعوة. تأكد من تفعيل Identity & Friends وإعداده."
 }

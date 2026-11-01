@@ -4897,5 +4897,12 @@
   "Pushover needs a user key before notifications can be sent.": "Pushover needs a user key before notifications can be sent.",
   "Pushover needs an API token before notifications can be sent.": "Pushover needs an API token before notifications can be sent.",
   "Spotify needs a client ID before account connection or provider imports can run.": "Spotify needs a client ID before account connection or provider imports can run.",
-  "YouTube needs a Data API key before playlist expansion can run.": "YouTube needs a Data API key before playlist expansion can run."
+  "YouTube needs a Data API key before playlist expansion can run.": "YouTube needs a Data API key before playlist expansion can run.",
+  "Selected group has no members to share with.": "Nhóm đã chọn không có thành viên nào để chia sẻ.",
+  "Request failed. Check the CSRF token, local identity, and invite configuration.": "Yêu cầu thất bại. Hãy kiểm tra mã thông báo CSRF, danh tính cục bộ và cấu hình lời mời.",
+  "Authentication required. Please refresh the page.": "Cần xác thực. Vui lòng tải lại trang.",
+  "Not authorized.": "Không có quyền.",
+  "Identity & Friends is disabled, or the invite endpoint was not found.": "Identity & Friends đã bị tắt hoặc không tìm thấy điểm cuối lời mời.",
+  "Server error. Please check server logs.": "Lỗi máy chủ. Vui lòng kiểm tra nhật ký máy chủ.",
+  "Failed to create invite. Please ensure Identity & Friends is enabled and configured.": "Không thể tạo lời mời. Hãy đảm bảo Identity & Friends đã được bật và cấu hình."
 }

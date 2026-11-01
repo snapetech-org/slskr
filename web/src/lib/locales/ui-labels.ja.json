@@ -4897,5 +4897,12 @@
   "Pushover needs a user key before notifications can be sent.": "Pushover needs a user key before notifications can be sent.",
   "Pushover needs an API token before notifications can be sent.": "Pushover needs an API token before notifications can be sent.",
   "Spotify needs a client ID before account connection or provider imports can run.": "Spotify needs a client ID before account connection or provider imports can run.",
-  "YouTube needs a Data API key before playlist expansion can run.": "YouTube needs a Data API key before playlist expansion can run."
+  "YouTube needs a Data API key before playlist expansion can run.": "YouTube needs a Data API key before playlist expansion can run.",
+  "Selected group has no members to share with.": "選択したグループには共有できるメンバーがいません。",
+  "Request failed. Check the CSRF token, local identity, and invite configuration.": "リクエストに失敗しました。CSRF トークン、ローカル ID、招待の設定を確認してください。",
+  "Authentication required. Please refresh the page.": "認証が必要です。ページを更新してください。",
+  "Not authorized.": "許可されていません。",
+  "Identity & Friends is disabled, or the invite endpoint was not found.": "Identity & Friends が無効か、招待エンドポイントが見つかりませんでした。",
+  "Server error. Please check server logs.": "サーバーエラーです。サーバーログを確認してください。",
+  "Failed to create invite. Please ensure Identity & Friends is enabled and configured.": "招待を作成できませんでした。Identity & Friends が有効で設定済みであることを確認してください。"
 }
