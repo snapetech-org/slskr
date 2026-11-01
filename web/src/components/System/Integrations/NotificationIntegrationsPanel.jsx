@@ -77,24 +77,18 @@ const NotificationIntegrationsPanel = ({ options }) => {
     form.pushbulletEnabled &&
       !form.pushbulletAccessTokenConfigured &&
       !form.pushbulletAccessToken.trim() &&
-      interfaceText(
-        'Pushbullet needs an access token before notifications can be sent.',
-      ),
+      'Pushbullet needs an access token before notifications can be sent.',
     form.ntfyEnabled &&
       !form.ntfyUrl.trim() &&
-      interfaceText('Ntfy needs a topic URL before notifications can be sent.'),
+      'Ntfy needs a topic URL before notifications can be sent.',
     form.pushoverEnabled &&
       !form.pushoverUserKeyConfigured &&
       !form.pushoverUserKey.trim() &&
-      interfaceText(
-        'Pushover needs a user key before notifications can be sent.',
-      ),
+      'Pushover needs a user key before notifications can be sent.',
     form.pushoverEnabled &&
       !form.pushoverTokenConfigured &&
       !form.pushoverToken.trim() &&
-      interfaceText(
-        'Pushover needs an API token before notifications can be sent.',
-      ),
+      'Pushover needs an API token before notifications can be sent.',
   ].filter(Boolean);
 
   const buildOverlay = () => {
@@ -371,7 +365,12 @@ const NotificationIntegrationsPanel = ({ options }) => {
             size="small"
             warning
           >
-            <Message.List items={missingRequiredSettings} />
+            <Message.List
+              items={missingRequiredSettings.map((source) => ({
+                key: source,
+                content: <LocalizedText source={source} />,
+              }))}
+            />
           </Message>
         )}
 

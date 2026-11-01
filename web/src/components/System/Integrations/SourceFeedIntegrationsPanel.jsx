@@ -56,21 +56,15 @@ const SourceFeedIntegrationsPanel = ({ options }) => {
     form.spotifyEnabled &&
       !form.spotifyConfigured &&
       !form.spotifyClientId.trim() &&
-      interfaceText(
-        'Spotify needs a client ID before account connection or provider imports can run.',
-      ),
+      'Spotify needs a client ID before account connection or provider imports can run.',
     form.youTubeEnabled &&
       !form.youTubeConfigured &&
       !form.youTubeApiKey.trim() &&
-      interfaceText(
-        'YouTube needs a Data API key before playlist expansion can run.',
-      ),
+      'YouTube needs a Data API key before playlist expansion can run.',
     form.lastFmEnabled &&
       !form.lastFmConfigured &&
       !form.lastFmApiKey.trim() &&
-      interfaceText(
-        'Last.fm needs an API key before loved/recent/top imports can run.',
-      ),
+      'Last.fm needs an API key before loved/recent/top imports can run.',
   ].filter(Boolean);
   const inferredSpotifyRedirectUri =
     form.spotifyRedirectUri.trim() ||
@@ -279,7 +273,12 @@ const SourceFeedIntegrationsPanel = ({ options }) => {
             size="small"
             warning
           >
-            <Message.List items={missingRequiredSettings} />
+            <Message.List
+              items={missingRequiredSettings.map((source) => ({
+                key: source,
+                content: <LocalizedText source={source} />,
+              }))}
+            />
           </Message>
         )}
 

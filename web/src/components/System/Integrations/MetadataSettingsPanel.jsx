@@ -161,26 +161,22 @@ const MetadataSettingsPanel = ({ options }) => {
   const missingRequiredSettings = [
     form.chromaprintEnabled &&
       !form.chromaprintFfmpegPath.trim() &&
-      interfaceText('Chromaprint needs an ffmpeg executable path.'),
+      'Chromaprint needs an ffmpeg executable path.',
     form.acoustIdEnabled &&
       !form.acoustIdClientIdConfigured &&
       !form.acoustIdClientId.trim() &&
-      interfaceText(
-        'AcoustID needs a client ID before fingerprint lookups can run.',
-      ),
+      'AcoustID needs a client ID before fingerprint lookups can run.',
     form.lidarrEnabled &&
       !form.lidarrUrl.trim() &&
-      interfaceText('Lidarr needs an absolute base URL.'),
+      'Lidarr needs an absolute base URL.',
     form.lidarrEnabled &&
       !form.lidarrApiKeyConfigured &&
       !form.lidarrApiKey.trim() &&
-      interfaceText('Lidarr needs an API key.'),
+      'Lidarr needs an API key.',
     form.lidarrAutoImportCompleted &&
       Boolean(form.lidarrImportPathFrom.trim()) !==
         Boolean(form.lidarrImportPathTo.trim()) &&
-      interfaceText(
-        'Lidarr import path mapping needs both source and destination prefixes.',
-      ),
+      'Lidarr import path mapping needs both source and destination prefixes.',
   ].filter(Boolean);
 
   const buildPatch = () => {
@@ -423,7 +419,12 @@ const MetadataSettingsPanel = ({ options }) => {
             size="small"
             warning
           >
-            <Message.List items={missingRequiredSettings} />
+            <Message.List
+              items={missingRequiredSettings.map((source) => ({
+                key: source,
+                content: <LocalizedText source={source} />,
+              }))}
+            />
           </Message>
         )}
 

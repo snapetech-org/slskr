@@ -1,5 +1,5 @@
 import LocalizedText from "../../Shared/LocalizedText";
-import { interfaceText, interfaceTextProps } from "../../../lib/interfaceLocale";
+import { interfaceTextProps } from "../../../lib/interfaceLocale";
 
 
 import * as federationDiagnostics from '../../../lib/federationDiagnostics';
@@ -20,30 +20,22 @@ import {
   valueOrDash,
 } from './integrationsShared';
 
-const localizeFederationWarning = (warning) => {
+const getFederationWarningSource = (warning) => {
   switch (warning) {
     case 'Federation is enabled but federation.baseUrl is not configured.':
-      return interfaceText(
-        'Federation is enabled but federation.baseUrl is not configured.',
-      );
+      return 'Federation is enabled but federation.baseUrl is not configured.';
     case 'Public federation is enabled while HTTP signature verification is disabled.':
-      return interfaceText(
-        'Public federation is enabled while HTTP signature verification is disabled.',
-      );
+      return 'Public federation is enabled while HTTP signature verification is disabled.';
     case 'Federation publishing is enabled while social federation is disabled.':
-      return interfaceText(
-        'Federation publishing is enabled while social federation is disabled.',
-      );
+      return 'Federation publishing is enabled while social federation is disabled.';
     case 'Federation publishing defaults to public without moderation approval.':
-      return interfaceText(
-        'Federation publishing defaults to public without moderation approval.',
-      );
+      return 'Federation publishing defaults to public without moderation approval.';
     case 'Pod join signatures are not enforced.':
-      return interfaceText('Pod join signatures are not enforced.');
+      return 'Pod join signatures are not enforced.';
     case 'Pod message signatures are not enforced.':
-      return interfaceText('Pod message signatures are not enforced.');
+      return 'Pod message signatures are not enforced.';
     default:
-      return warning;
+      return undefined;
   }
 };
 
@@ -89,9 +81,16 @@ const FederationDiagnosticsPanel = () => {
   const pods = diagnostics?.pods || {};
   const mesh = diagnostics?.mesh || {};
   const warningMessages = diagnostics?.warnings || [];
-  const warnings = Array.isArray(warningMessages)
-    ? warningMessages.map(localizeFederationWarning)
-    : warningMessages;
+  const warnings = Array.isArray(warningMessages) ? warningMessages : [];
+  const warningItems = warnings.map((warning, index) => {
+    const source = getFederationWarningSource(warning);
+    return {
+      key: `federation-warning-${index}`,
+      content: source
+        ? <LocalizedText source={source} />
+        : <bdi dir="auto" lang="und">{warning}</bdi>,
+    };
+  });
 
   return (
     <Card fluid>
@@ -169,7 +168,7 @@ const FederationDiagnosticsPanel = () => {
             warning
           >
             <Message.Header><LocalizedText source={"Federation posture warnings"} /></Message.Header>
-            <Message.List items={warnings} />
+            <Message.List items={warningItems} />
           </Message>
         )}
         {!loading && warnings.length === 0 && diagnostics && (
