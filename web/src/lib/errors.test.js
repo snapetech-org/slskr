@@ -91,7 +91,7 @@ describe('toDisplayError', () => {
       'pod revocation storage is unavailable',
     ];
 
-    expect(APP_SERVER_ERROR_MESSAGES.size).toBe(537);
+    expect(APP_SERVER_ERROR_MESSAGES.size).toBe(538);
     for (const message of statusTextOnlyPodMessages) {
       expect(APP_SERVER_ERROR_MESSAGES.has(message)).toBe(false);
       expect(

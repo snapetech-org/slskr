@@ -100,6 +100,7 @@ export const APP_SERVER_ERROR_MESSAGES = new Set([
   "Failed to route message",
   "Failed to select canonical variant",
   "Failed to start port forwarding",
+  "Failed to sync with peer",
   "Failed to unregister pod",
   "Failed to update configuration file",
   "Failed to update descriptor",
