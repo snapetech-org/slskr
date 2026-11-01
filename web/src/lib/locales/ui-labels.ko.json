@@ -1682,7 +1682,7 @@
   "Fuzzy Content Matching": "퍼지 콘텐츠 일치",
   "Fuzzy Matching": "퍼지 매칭",
   "GC Memory:": "GC 메모리:",
-  "GET": "얻다",
+  "GET": "GET",
   "Generate Key Pair": "키 쌍 생성",
   "Generate New Key Pair": "새 키 쌍 생성",
   "Get Aggregated Opinions": "종합적인 의견 얻기",
@@ -2362,8 +2362,8 @@
   "Overwrite files already present at the remote FTP path instead of skipping them.": "원격 FTP 경로에 이미 있는 파일을 건너뛰는 대신 덮어씁니다.",
   "Owner": "소유자",
   "POD+SCENE": "포드+씬",
-  "POST": "우편",
-  "PUT": "놓다",
+  "POST": "POST",
+  "PUT": "PUT",
   "Panako": "Panako",
   "Partial completion allowed": "부분 완료가 허용됨",
   "Pass": "통과하다",
@@ -4877,5 +4877,6 @@
   "Notification title language": "알림 제목 언어",
   "Choose the language used for app-authored notification titles. Message text and notification prefixes stay unchanged.": "앱에서 작성하는 알림 제목에 사용할 언어를 선택하세요. 메시지 본문과 알림 접두사는 변경되지 않습니다.",
   "Private Message from {username}": "{username}님의 비공개 메시지",
-  "Room Mention by {username} in {room}": "{room}에서 {username}님이 회원님을 언급했습니다"
+  "Room Mention by {username} in {room}": "{room}에서 {username}님이 회원님을 언급했습니다",
+  "Unsupported notification title language": "알림 제목 언어가 지원되지 않습니다"
 }

@@ -1682,7 +1682,7 @@
   "Fuzzy Content Matching": "फ़ज़ी सामग्री मिलान",
   "Fuzzy Matching": "फजी मिलान",
   "GC Memory:": "जीसी मेमोरी:",
-  "GET": "पाना",
+  "GET": "GET",
   "Generate Key Pair": "कुंजी युग्म उत्पन्न करें",
   "Generate New Key Pair": "नई कुंजी जोड़ी उत्पन्न करें",
   "Get Aggregated Opinions": "एकत्रित राय प्राप्त करें",
@@ -2362,8 +2362,8 @@
   "Overwrite files already present at the remote FTP path instead of skipping them.": "दूरस्थ एफ़टीपी पथ पर पहले से मौजूद फ़ाइलों को छोड़ने के बजाय उन्हें अधिलेखित करें।",
   "Owner": "मालिक",
   "POD+SCENE": "पीओडी+दृश्य",
-  "POST": "डाक",
-  "PUT": "रखना",
+  "POST": "POST",
+  "PUT": "PUT",
   "Panako": "Panako",
   "Partial completion allowed": "आंशिक समापन की अनुमति",
   "Pass": "उत्तीर्ण",
@@ -4877,5 +4877,6 @@
   "Notification title language": "सूचना शीर्षकों की भाषा",
   "Choose the language used for app-authored notification titles. Message text and notification prefixes stay unchanged.": "ऐप द्वारा लिखे गए सूचना शीर्षकों के लिए भाषा चुनें। संदेश का पाठ और सूचना उपसर्ग अपरिवर्तित रहेंगे।",
   "Private Message from {username}": "{username} से निजी संदेश",
-  "Room Mention by {username} in {room}": "{room} में {username} ने आपका उल्लेख किया"
+  "Room Mention by {username} in {room}": "{room} में {username} ने आपका उल्लेख किया",
+  "Unsupported notification title language": "सूचना शीर्षक की भाषा समर्थित नहीं है"
 }

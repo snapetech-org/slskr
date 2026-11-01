@@ -1682,7 +1682,7 @@
   "Fuzzy Content Matching": "ファジーコンテンツマッチング",
   "Fuzzy Matching": "ファジーマッチング",
   "GC Memory:": "GC メモリ:",
-  "GET": "得る",
+  "GET": "GET",
   "Generate Key Pair": "キーペアの生成",
   "Generate New Key Pair": "新しいキーペアの生成",
   "Get Aggregated Opinions": "集約された意見を取得する",
@@ -2362,8 +2362,8 @@
   "Overwrite files already present at the remote FTP path instead of skipping them.": "リモート FTP パスにすでに存在するファイルをスキップするのではなく上書きします。",
   "Owner": "所有者",
   "POD+SCENE": "ポッド+シーン",
-  "POST": "役職",
-  "PUT": "置く",
+  "POST": "POST",
+  "PUT": "PUT",
   "Panako": "Panako",
   "Partial completion allowed": "部分的な完了は許可されています",
   "Pass": "合格",
@@ -4877,5 +4877,6 @@
   "Notification title language": "通知タイトルの言語",
   "Choose the language used for app-authored notification titles. Message text and notification prefixes stay unchanged.": "アプリが作成する通知タイトルの言語を選択します。メッセージ本文と通知プレフィックスは変更されません。",
   "Private Message from {username}": "{username} さんからのプライベートメッセージ",
-  "Room Mention by {username} in {room}": "{room}で{username}さんにメンションされました"
+  "Room Mention by {username} in {room}": "{room}で{username}さんにメンションされました",
+  "Unsupported notification title language": "通知タイトルの言語はサポートされていません"
 }

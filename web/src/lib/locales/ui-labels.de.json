@@ -1682,7 +1682,7 @@
   "Fuzzy Content Matching": "Fuzzy-Content-Matching",
   "Fuzzy Matching": "Fuzzy-Matching",
   "GC Memory:": "GC-Speicher:",
-  "GET": "ERHALTEN",
+  "GET": "GET",
   "Generate Key Pair": "Schlüsselpaar generieren",
   "Generate New Key Pair": "Neues Schlüsselpaar generieren",
   "Get Aggregated Opinions": "Erhalten Sie aggregierte Meinungen",
@@ -2363,7 +2363,7 @@
   "Owner": "Eigentümer",
   "POD+SCENE": "POD+SZENE",
   "POST": "POST",
-  "PUT": "SETZEN",
+  "PUT": "PUT",
   "Panako": "Panako",
   "Partial completion allowed": "Teilweise Fertigstellung erlaubt",
   "Pass": "Passieren",
@@ -4877,5 +4877,6 @@
   "Notification title language": "Sprache der Benachrichtigungstitel",
   "Choose the language used for app-authored notification titles. Message text and notification prefixes stay unchanged.": "Wähle die Sprache für von der App verfasste Benachrichtigungstitel. Nachrichtentext und Benachrichtigungspräfixe bleiben unverändert.",
   "Private Message from {username}": "Private Nachricht von {username}",
-  "Room Mention by {username} in {room}": "Erwähnung von {username} im Raum {room}"
+  "Room Mention by {username} in {room}": "Erwähnung von {username} im Raum {room}",
+  "Unsupported notification title language": "Sprache für Benachrichtigungstitel wird nicht unterstützt"
 }

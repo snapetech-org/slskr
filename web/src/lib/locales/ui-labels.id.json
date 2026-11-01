@@ -1682,7 +1682,7 @@
   "Fuzzy Content Matching": "Pencocokan Konten Fuzzy",
   "Fuzzy Matching": "Pencocokan Fuzzy",
   "GC Memory:": "Memori GC:",
-  "GET": "MENDAPATKAN",
+  "GET": "GET",
   "Generate Key Pair": "Hasilkan Pasangan Kunci",
   "Generate New Key Pair": "Hasilkan Pasangan Kunci Baru",
   "Get Aggregated Opinions": "Dapatkan Pendapat Gabungan",
@@ -2362,8 +2362,8 @@
   "Overwrite files already present at the remote FTP path instead of skipping them.": "Timpa file yang sudah ada di jalur FTP jarak jauh alih-alih melewatkannya.",
   "Owner": "Pemilik",
   "POD+SCENE": "POD+ADEGAN",
-  "POST": "POS",
-  "PUT": "MELETAKKAN",
+  "POST": "POST",
+  "PUT": "PUT",
   "Panako": "Panako",
   "Partial completion allowed": "Penyelesaian sebagian diperbolehkan",
   "Pass": "Lulus",
@@ -4877,5 +4877,6 @@
   "Notification title language": "Bahasa judul notifikasi",
   "Choose the language used for app-authored notification titles. Message text and notification prefixes stay unchanged.": "Pilih bahasa untuk judul notifikasi yang dibuat aplikasi. Isi pesan dan awalan notifikasi tidak berubah.",
   "Private Message from {username}": "Pesan pribadi dari {username}",
-  "Room Mention by {username} in {room}": "{username} menyebut Anda di {room}"
+  "Room Mention by {username} in {room}": "{username} menyebut Anda di {room}",
+  "Unsupported notification title language": "Bahasa judul notifikasi tidak didukung"
 }

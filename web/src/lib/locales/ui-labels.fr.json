@@ -1682,7 +1682,7 @@
   "Fuzzy Content Matching": "Correspondance de contenu flou",
   "Fuzzy Matching": "Correspondance floue",
   "GC Memory:": "Mémoire CPG :",
-  "GET": "OBTENIR",
+  "GET": "GET",
   "Generate Key Pair": "Générer une paire de clés",
   "Generate New Key Pair": "Générer une nouvelle paire de clés",
   "Get Aggregated Opinions": "Obtenez des opinions globales",
@@ -2362,8 +2362,8 @@
   "Overwrite files already present at the remote FTP path instead of skipping them.": "Écrasez les fichiers déjà présents sur le chemin FTP distant au lieu de les ignorer.",
   "Owner": "Propriétaire",
   "POD+SCENE": "POD+SCÈNE",
-  "POST": "POSTE",
-  "PUT": "METTRE",
+  "POST": "POST",
+  "PUT": "PUT",
   "Panako": "Panako",
   "Partial completion allowed": "Achèvement partiel autorisé",
   "Pass": "Passer",
@@ -2413,7 +2413,7 @@
   "Phonetic Similarity:": "Similitude phonétique :",
   "Pick a track first.": "Choisissez d'abord une piste.",
   "Pin": "Épingler",
-  "Pin Center": "Centre de l'épingle",
+  "Pin Center": "Épingler le centre",
   "Pin the current graph center so you can compare another node or reopen this branch later.": "Épinglez le centre du graphique actuel afin de pouvoir comparer un autre nœud ou rouvrir cette branche plus tard.",
   "Pin this node so you can compare it against another branch or keep it handy while exploring.": "Épinglez ce nœud pour pouvoir le comparer à une autre branche ou le garder à portée de main lors de l'exploration.",
   "Pin this route target as the comparison point for the current atlas branch.": "Épinglez cette cible d'itinéraire comme point de comparaison pour la branche actuelle de l'atlas.",
@@ -4877,5 +4877,6 @@
   "Notification title language": "Langue des titres de notification",
   "Choose the language used for app-authored notification titles. Message text and notification prefixes stay unchanged.": "Choisissez la langue des titres de notification rédigés par l’application. Le texte des messages et les préfixes de notification restent inchangés.",
   "Private Message from {username}": "Message privé de {username}",
-  "Room Mention by {username} in {room}": "Mention de {username} dans {room}"
+  "Room Mention by {username} in {room}": "Mention de {username} dans {room}",
+  "Unsupported notification title language": "La langue du titre de notification n’est pas prise en charge"
 }

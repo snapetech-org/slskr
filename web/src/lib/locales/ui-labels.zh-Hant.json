@@ -1682,7 +1682,7 @@
   "Fuzzy Content Matching": "模糊內容匹配",
   "Fuzzy Matching": "模糊匹配",
   "GC Memory:": "氣相層析記憶體：",
-  "GET": "得到",
+  "GET": "GET",
   "Generate Key Pair": "產生密鑰對",
   "Generate New Key Pair": "產生新的密鑰對",
   "Get Aggregated Opinions": "獲取匯總意見",
@@ -2362,8 +2362,8 @@
   "Overwrite files already present at the remote FTP path instead of skipping them.": "覆蓋遠端 FTP 路徑中已存在的文件，而不是跳過它們。",
   "Owner": "擁有者",
   "POD+SCENE": "吊艙+場景",
-  "POST": "郵政",
-  "PUT": "放",
+  "POST": "POST",
+  "PUT": "PUT",
   "Panako": "Panako",
   "Partial completion allowed": "允許部分完成",
   "Pass": "經過",
@@ -4877,5 +4877,6 @@
   "Notification title language": "通知標題語言",
   "Choose the language used for app-authored notification titles. Message text and notification prefixes stay unchanged.": "選擇應用程式撰寫的通知標題所使用的語言。訊息內容和通知前綴保持不變。",
   "Private Message from {username}": "來自 {username} 的私訊",
-  "Room Mention by {username} in {room}": "{username} 在 {room} 中提到了你"
+  "Room Mention by {username} in {room}": "{username} 在 {room} 中提到了你",
+  "Unsupported notification title language": "不支援通知標題所用的語言"
 }

@@ -1682,7 +1682,7 @@
   "Fuzzy Content Matching": "Coincidencia de contenido difuso",
   "Fuzzy Matching": "Coincidencia difusa",
   "GC Memory:": "Memoria del CG:",
-  "GET": "CONSEGUIR",
+  "GET": "GET",
   "Generate Key Pair": "Generar par de claves",
   "Generate New Key Pair": "Generar nuevo par de claves",
   "Get Aggregated Opinions": "Obtenga opiniones agregadas",
@@ -2362,8 +2362,8 @@
   "Overwrite files already present at the remote FTP path instead of skipping them.": "Sobrescriba los archivos que ya están presentes en la ruta FTP remota en lugar de omitirlos.",
   "Owner": "Dueño",
   "POD+SCENE": "POD+ESCENA",
-  "POST": "CORREO",
-  "PUT": "PONER",
+  "POST": "POST",
+  "PUT": "PUT",
   "Panako": "Panako",
   "Partial completion allowed": "Se permite la finalización parcial",
   "Pass": "Aprobar",
@@ -4877,5 +4877,6 @@
   "Notification title language": "Idioma de los títulos de notificación",
   "Choose the language used for app-authored notification titles. Message text and notification prefixes stay unchanged.": "Elige el idioma de los títulos de notificación escritos por la aplicación. El texto de los mensajes y los prefijos de notificación no cambian.",
   "Private Message from {username}": "Mensaje privado de {username}",
-  "Room Mention by {username} in {room}": "Mención de {username} en {room}"
+  "Room Mention by {username} in {room}": "Mención de {username} en {room}",
+  "Unsupported notification title language": "El idioma del título de la notificación no es compatible"
 }

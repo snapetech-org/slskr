@@ -1682,7 +1682,7 @@
   "Fuzzy Content Matching": "So khớp nội dung mờ",
   "Fuzzy Matching": "Kết hợp mờ",
   "GC Memory:": "Bộ nhớ GC:",
-  "GET": "LẤY",
+  "GET": "GET",
   "Generate Key Pair": "Tạo cặp khóa",
   "Generate New Key Pair": "Tạo cặp khóa mới",
   "Get Aggregated Opinions": "Nhận ý kiến ​​​​tổng hợp",
@@ -2362,8 +2362,8 @@
   "Overwrite files already present at the remote FTP path instead of skipping them.": "Ghi đè lên các tập tin đã có trên đường dẫn FTP từ xa thay vì bỏ qua chúng.",
   "Owner": "Người sở hữu",
   "POD+SCENE": "POD+Cảnh",
-  "POST": "BƯU KIỆN",
-  "PUT": "ĐẶT",
+  "POST": "POST",
+  "PUT": "PUT",
   "Panako": "Panako",
   "Partial completion allowed": "Cho phép hoàn thành một phần",
   "Pass": "Vượt qua",
@@ -4877,5 +4877,6 @@
   "Notification title language": "Ngôn ngữ tiêu đề thông báo",
   "Choose the language used for app-authored notification titles. Message text and notification prefixes stay unchanged.": "Chọn ngôn ngữ dùng cho tiêu đề thông báo do ứng dụng tạo. Nội dung tin nhắn và tiền tố thông báo giữ nguyên.",
   "Private Message from {username}": "Tin nhắn riêng từ {username}",
-  "Room Mention by {username} in {room}": "{username} đã nhắc đến bạn trong {room}"
+  "Room Mention by {username} in {room}": "{username} đã nhắc đến bạn trong {room}",
+  "Unsupported notification title language": "Ngôn ngữ tiêu đề thông báo không được hỗ trợ"
 }
