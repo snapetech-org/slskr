@@ -77,18 +77,24 @@ const NotificationIntegrationsPanel = ({ options }) => {
     form.pushbulletEnabled &&
       !form.pushbulletAccessTokenConfigured &&
       !form.pushbulletAccessToken.trim() &&
-      'Pushbullet needs an access token before notifications can be sent.',
+      interfaceText(
+        'Pushbullet needs an access token before notifications can be sent.',
+      ),
     form.ntfyEnabled &&
       !form.ntfyUrl.trim() &&
-      'Ntfy needs a topic URL before notifications can be sent.',
+      interfaceText('Ntfy needs a topic URL before notifications can be sent.'),
     form.pushoverEnabled &&
       !form.pushoverUserKeyConfigured &&
       !form.pushoverUserKey.trim() &&
-      'Pushover needs a user key before notifications can be sent.',
+      interfaceText(
+        'Pushover needs a user key before notifications can be sent.',
+      ),
     form.pushoverEnabled &&
       !form.pushoverTokenConfigured &&
       !form.pushoverToken.trim() &&
-      'Pushover needs an API token before notifications can be sent.',
+      interfaceText(
+        'Pushover needs an API token before notifications can be sent.',
+      ),
   ].filter(Boolean);
 
   const buildOverlay = () => {

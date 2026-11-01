@@ -56,15 +56,21 @@ const SourceFeedIntegrationsPanel = ({ options }) => {
     form.spotifyEnabled &&
       !form.spotifyConfigured &&
       !form.spotifyClientId.trim() &&
-      'Spotify needs a client ID before account connection or provider imports can run.',
+      interfaceText(
+        'Spotify needs a client ID before account connection or provider imports can run.',
+      ),
     form.youTubeEnabled &&
       !form.youTubeConfigured &&
       !form.youTubeApiKey.trim() &&
-      'YouTube needs a Data API key before playlist expansion can run.',
+      interfaceText(
+        'YouTube needs a Data API key before playlist expansion can run.',
+      ),
     form.lastFmEnabled &&
       !form.lastFmConfigured &&
       !form.lastFmApiKey.trim() &&
-      'Last.fm needs an API key before loved/recent/top imports can run.',
+      interfaceText(
+        'Last.fm needs an API key before loved/recent/top imports can run.',
+      ),
   ].filter(Boolean);
   const inferredSpotifyRedirectUri =
     form.spotifyRedirectUri.trim() ||

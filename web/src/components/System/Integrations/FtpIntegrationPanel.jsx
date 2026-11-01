@@ -84,7 +84,9 @@ const FtpIntegrationPanel = ({ options }) => {
   const missingRequiredSettings = [
     form.enabled &&
       !form.address.trim() &&
-      'FTP needs a server address before completed downloads can be uploaded.',
+      interfaceText(
+        'FTP needs a server address before completed downloads can be uploaded.',
+      ),
   ].filter(Boolean);
 
   const buildOverlay = () => {

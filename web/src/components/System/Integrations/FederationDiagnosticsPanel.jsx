@@ -20,6 +20,33 @@ import {
   valueOrDash,
 } from './integrationsShared';
 
+const localizeFederationWarning = (warning) => {
+  switch (warning) {
+    case 'Federation is enabled but federation.baseUrl is not configured.':
+      return interfaceText(
+        'Federation is enabled but federation.baseUrl is not configured.',
+      );
+    case 'Public federation is enabled while HTTP signature verification is disabled.':
+      return interfaceText(
+        'Public federation is enabled while HTTP signature verification is disabled.',
+      );
+    case 'Federation publishing is enabled while social federation is disabled.':
+      return interfaceText(
+        'Federation publishing is enabled while social federation is disabled.',
+      );
+    case 'Federation publishing defaults to public without moderation approval.':
+      return interfaceText(
+        'Federation publishing defaults to public without moderation approval.',
+      );
+    case 'Pod join signatures are not enforced.':
+      return interfaceText('Pod join signatures are not enforced.');
+    case 'Pod message signatures are not enforced.':
+      return interfaceText('Pod message signatures are not enforced.');
+    default:
+      return warning;
+  }
+};
+
 const FederationDiagnosticsPanel = () => {
   const [diagnostics, setDiagnostics] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -61,7 +88,10 @@ const FederationDiagnosticsPanel = () => {
   const publishing = diagnostics?.publishing || {};
   const pods = diagnostics?.pods || {};
   const mesh = diagnostics?.mesh || {};
-  const warnings = diagnostics?.warnings || [];
+  const warningMessages = diagnostics?.warnings || [];
+  const warnings = Array.isArray(warningMessages)
+    ? warningMessages.map(localizeFederationWarning)
+    : warningMessages;
 
   return (
     <Card fluid>

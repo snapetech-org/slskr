@@ -161,22 +161,26 @@ const MetadataSettingsPanel = ({ options }) => {
   const missingRequiredSettings = [
     form.chromaprintEnabled &&
       !form.chromaprintFfmpegPath.trim() &&
-      'Chromaprint needs an ffmpeg executable path.',
+      interfaceText('Chromaprint needs an ffmpeg executable path.'),
     form.acoustIdEnabled &&
       !form.acoustIdClientIdConfigured &&
       !form.acoustIdClientId.trim() &&
-      'AcoustID needs a client ID before fingerprint lookups can run.',
+      interfaceText(
+        'AcoustID needs a client ID before fingerprint lookups can run.',
+      ),
     form.lidarrEnabled &&
       !form.lidarrUrl.trim() &&
-      'Lidarr needs an absolute base URL.',
+      interfaceText('Lidarr needs an absolute base URL.'),
     form.lidarrEnabled &&
       !form.lidarrApiKeyConfigured &&
       !form.lidarrApiKey.trim() &&
-      'Lidarr needs an API key.',
+      interfaceText('Lidarr needs an API key.'),
     form.lidarrAutoImportCompleted &&
       Boolean(form.lidarrImportPathFrom.trim()) !==
         Boolean(form.lidarrImportPathTo.trim()) &&
-      'Lidarr import path mapping needs both source and destination prefixes.',
+      interfaceText(
+        'Lidarr import path mapping needs both source and destination prefixes.',
+      ),
   ].filter(Boolean);
 
   const buildPatch = () => {
