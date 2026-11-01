@@ -1986,23 +1986,6 @@ def operator_not_applicable_cases(
             ),
             "Frozen local-identity workflow only scans release-facing text and commit history; it produces no installable or runnable product artifact.",
         ),
-        "github-workflow-codeql": (
-            ".github/workflows/codeql.yml",
-            (
-                "github/codeql-action/init@v3",
-                "github/codeql-action/analyze@v3",
-                "dotnet build src/slskd/slskd.csproj --no-restore --configuration Release",
-            ),
-            (
-                "dotnet publish",
-                "docker/build-push-action",
-                "docker push",
-                "softprops/action-gh-release",
-                "dpkg-buildpackage",
-                "rpmbuild",
-            ),
-            "Frozen CodeQL workflow only builds for static security analysis; it produces no installable or runnable product artifact.",
-        ),
         "github-workflow-ci-enhancements": (
             ".github/workflows/ci-enhancements.yml",
             (
