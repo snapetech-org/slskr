@@ -1,0 +1,134 @@
+{
+  "review": "regional format system option",
+  "worktree_head": "7463907d381621d132d2ab8df86923365d7e67dd",
+  "worktree_dirty": true,
+  "source_id": "Use browser settings",
+  "source_sha256": "02d22d3f39bcd8ede35aa7a2ae6a0059dfe2c0acfc7a08501f469238ee01c443",
+  "context_files": {
+    "web/src/components/System/ExperienceSettings/index.jsx": "ba7826de4b32bc9506d5926e6243623ccc3104da43706ce7a57fe4b17bcf2f30",
+    "web/src/lib/regionalFormat.js": "b52a0b377a2d0638399735d8560ce4bc1f2864b592e1157d4a757c8398843bb4"
+  },
+  "context": "This is the regional-format dropdown option whose system value delegates date, time, and number formatting to browser settings.",
+  "decisions": [
+    {
+      "locale": "es",
+      "target": "Usar la configuración del navegador",
+      "target_sha256": "474d5298ddf7426d09676f730b5916191c4ad0516cd2cd5c108fd7bcc45000b5",
+      "catalog_path": "web/src/lib/locales/ui-labels.es.json",
+      "catalog_file_sha256": "fab50f4cac1b305ac7bbebf38f55cd9d6256a95756a66fe940f4404732c8c4c5",
+      "status": "accepted",
+      "confidence": "high",
+      "reason": "Natural and contextually correct label for selecting browser-controlled regional formatting."
+    },
+    {
+      "locale": "zh-Hans",
+      "target": "使用浏览器设置",
+      "target_sha256": "0aedc4a789ed9eca66999ce1fee72d068f924875f6935b618a758b4a47b42fc7",
+      "catalog_path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "catalog_file_sha256": "365c4c51e7cee40e79b37607319dd4dbe1345dcee77f085dd6f7fa1ad307881b",
+      "status": "accepted",
+      "confidence": "high",
+      "reason": "Natural and contextually correct label for selecting browser-controlled regional formatting."
+    },
+    {
+      "locale": "hi",
+      "target": "ब्राउज़र सेटिंग का उपयोग करें",
+      "target_sha256": "05c3ab89424caf22e10074b0f73cd66e104fdf0adc4f08a46f04b213ea71966a",
+      "catalog_path": "web/src/lib/locales/ui-labels.hi.json",
+      "catalog_file_sha256": "fe80e06cccb908e4f8f7f2295a28d844effe29a247858f2196281949ae92f547",
+      "status": "accepted",
+      "confidence": "high",
+      "reason": "Natural and contextually correct label for selecting browser-controlled regional formatting."
+    },
+    {
+      "locale": "de",
+      "target": "Browsereinstellungen verwenden",
+      "target_sha256": "b0c8aec40b73fb0cc9719f90749e53262fa0a55d8babfbae9ff7876dbb5bd743",
+      "catalog_path": "web/src/lib/locales/ui-labels.de.json",
+      "catalog_file_sha256": "27b9ecb1aefbe6a2cae22736d886c03088fe76d2fd3c7845be886db965aad3e6",
+      "status": "accepted",
+      "confidence": "high",
+      "reason": "Natural and contextually correct label for selecting browser-controlled regional formatting."
+    },
+    {
+      "locale": "ja",
+      "target": "ブラウザーの設定を使用する",
+      "target_sha256": "b15f4ee105087914090df558abc9d7f9cc41150dfb06c01b7bbda3abfdafcffd",
+      "catalog_path": "web/src/lib/locales/ui-labels.ja.json",
+      "catalog_file_sha256": "0ca95fc5c9f0b4cee791ab71d0283b151136946da5e9383f366d5a16f5a7541e",
+      "status": "accepted",
+      "confidence": "high",
+      "reason": "Natural and contextually correct label for selecting browser-controlled regional formatting."
+    },
+    {
+      "locale": "fr",
+      "target": "Utiliser les paramètres du navigateur",
+      "target_sha256": "81a1a26ddcd048c4b0e1467a4de147754c9c0fa86480f66d6be127387b3ada2f",
+      "catalog_path": "web/src/lib/locales/ui-labels.fr.json",
+      "catalog_file_sha256": "3e384ba1d4b111ab1f13dc80010ff6e854863bc2f2ed863ab9a72eaf9b1dccec",
+      "status": "accepted",
+      "confidence": "high",
+      "reason": "Natural and contextually correct label for selecting browser-controlled regional formatting."
+    },
+    {
+      "locale": "pt-BR",
+      "target": "Usar as configurações do navegador",
+      "target_sha256": "70b107579b56107aa7e3ea04c98266a63e16812646e02cae2aca3376b2858637",
+      "catalog_path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "catalog_file_sha256": "4babb54558c6c224304c2c62ea1303cdad90c5f931bb936e92402323a5759ce9",
+      "status": "accepted",
+      "confidence": "high",
+      "reason": "Natural and contextually correct label for selecting browser-controlled regional formatting."
+    },
+    {
+      "locale": "ar",
+      "target": "استخدم إعدادات المتصفح",
+      "target_sha256": "69778e0f3d896e638630fe830b28be8ef0533db8eec4ad53f6ee93876d895808",
+      "catalog_path": "web/src/lib/locales/ui-labels.ar.json",
+      "catalog_file_sha256": "85aa499a0ac019fa7b6323e9cc2fbdd5363dd39cb5e328e5baa5c47b84f3c3c6",
+      "status": "accepted",
+      "confidence": "high",
+      "reason": "Natural and contextually correct label for selecting browser-controlled regional formatting."
+    },
+    {
+      "locale": "ko",
+      "target": "브라우저 설정 사용",
+      "target_sha256": "43638885f23c6248bf7a336c7bd3dd63e111281c3f74138a90c1ae67e14acdea",
+      "catalog_path": "web/src/lib/locales/ui-labels.ko.json",
+      "catalog_file_sha256": "5636a4b1a4bf325d6c03031b8b3ef34db7d04936c8216343e55b2d36fa544bcd",
+      "status": "accepted",
+      "confidence": "high",
+      "reason": "Natural and contextually correct label for selecting browser-controlled regional formatting."
+    },
+    {
+      "locale": "zh-Hant",
+      "target": "使用瀏覽器設定",
+      "target_sha256": "457e363ecc85be937c2c0f8d05fb439a92baa47d6ecb1510a065f34179a24ba1",
+      "catalog_path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "catalog_file_sha256": "2945bee74a8ffc61db44b8a0bac113ba9f20a159657925c7f3dbc7d1647ce89c",
+      "status": "accepted",
+      "confidence": "high",
+      "reason": "Natural and contextually correct label for selecting browser-controlled regional formatting."
+    },
+    {
+      "locale": "vi",
+      "target": "Sử dụng cài đặt của trình duyệt",
+      "target_sha256": "241dc9e91fe36381f1866dc8bcfcc0f55fd4a46552f4854b9c61abb444179b9c",
+      "catalog_path": "web/src/lib/locales/ui-labels.vi.json",
+      "catalog_file_sha256": "91fac84a2ab6ebcfbe6f33cdf0302e0350b676e4cd69be796edc86509e856184",
+      "status": "accepted",
+      "confidence": "high",
+      "reason": "Natural and contextually correct label for selecting browser-controlled regional formatting."
+    },
+    {
+      "locale": "id",
+      "target": "Gunakan setelan browser",
+      "target_sha256": "9e034a7001c208a4a56c802ecb3ec46c906fd2f46094e3898b90314630a99778",
+      "catalog_path": "web/src/lib/locales/ui-labels.id.json",
+      "catalog_file_sha256": "ca0975bbcc408d4d3c146aba26c4e5480a0233b0cac603cd530ea82bb07681d8",
+      "status": "accepted",
+      "confidence": "high",
+      "reason": "Natural and contextually correct label for selecting browser-controlled regional formatting."
+    }
+  ]
+}

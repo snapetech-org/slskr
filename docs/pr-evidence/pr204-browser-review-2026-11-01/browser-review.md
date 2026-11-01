@@ -1,6 +1,7 @@
 # slskR PR #204 headed localization review
 
-- Reviewed code head: `223aac4ddb24ec869d15a4078c66d8037cd7f9dc`
+- Initial review code head: `223aac4ddb24ec869d15a4078c66d8037cd7f9dc`
+- Follow-up code head: `8deec4a0a4f88430005f221cc6598ad34f0002b3`
 - Route: `/system/experience` in the native runtime profile
 - Browser: isolated headed Chrome in the persistent Agentic VM, 1440 × 1000
 - Preview: task-local Vite server with a synthetic local session and mocked API/Hub; no production account or external integrations were used
@@ -14,9 +15,9 @@ The review covered primary navigation, the Advanced → Experience settings page
 - `Capture local history` is rendered as geographic/local-area history in the observed locales. In this Player section it means browser-local playback/listening history.
 - `Player radio seed preference` uses the gamer/player sense in multiple locales despite the section being the audio player; review it with the product's audio-player term.
 - The Automation & Jobs navigation label uses the employment sense in Spanish, Brazilian Portuguese, Hindi, Vietnamese, and Indonesian; review it in the scheduled-task sense.
-- `Use browser settings` remains English in the regional-format selector by design: regional-format choices carry their own locale/pronunciation metadata, and the `system` option is explicitly anchored to English in the existing component test.
+- The first pass found `Use browser settings` in English in the regional-format selector. The follow-up localizes the system option using the selected interface language. An independent review accepted all 12 locale values at high confidence in this dropdown context; exact-cell records are in `docs/localization/pr204-regional-format-key-review-2026-11-01.json` (SHA-256 `69738b673bd97016f9783c9be6f35041a0000335e95aa6c19eb64f266f33cd86`).
 
-Catalog corrections are being reconciled against exact cell hashes and the pinned semantic review. The screenshots in this directory record the first headed pass; they will be refreshed after corrections.
+The scrobble, local-history, radio-seed, and scheduled-jobs findings are still being reconciled against exact cell hashes and the pinned semantic review. The original 12 screenshots record the first headed pass. `id-followup-8deec4a0.png` records the localized regional-format option on the follow-up head; the full 12-locale screenshot set will be refreshed after the remaining catalog corrections.
 
 ## Screenshots
 
