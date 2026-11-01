@@ -1,0 +1,554 @@
+{
+  "schema_version": 1,
+  "batch": "independent-5380-5399-all-12-locales",
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "pr_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_index_range": [
+    5380,
+    5399
+  ],
+  "source_index_method": "zero-based Python lexical sort of frozen source-inventory source_id values",
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "selection_rule": "Selected exact current cells only when review-ledger status was not-reviewed, current-cells status was unreviewed, and no terminal accepted/correction-needed/held record matched exact current source and target hashes in the central accumulator, frozen review evidence, or pinned PR translation-review ledger. Exact accepted base review-ledger carries and exact prior terminal accepted/correction-needed records are recorded separately. Source/context uncertainty is held.",
+  "generation": {
+    "reviewed_cell_decisions_sha256": "0269d1d1fd4c61b32fd7b26811ab96b8b09210fecf119c60ce498add6ea60ad1",
+    "progress_json_sha256": "53e2ed0aee88b93f965f32412e5b9becfd54f46a7aa4c7d79439ece6db4d87f2",
+    "review_ledger_sha256": "ffa2fce046085a9a46543ba01dd6a40c0fc02475313d3e833489edf49c73d784",
+    "current_cells_sha256": "2158d0cb1da7aef1e1b20ed7fb829d3afd63d14d5758caffb8b8581873673ba1",
+    "source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+    "freeze_manifest_sha256": "69713333eddc3d326cc28acb3a0c2f57edbe4f9fab77e31ddc95c5c8981c9013",
+    "pr_translation_review_ledger_path": "docs/localization/pr204-translation-review-2026-11-01.jsonl",
+    "pr_translation_review_ledger_sha256": "27ab430e61b7cb5628150121afc1b565e38af9cd2dc2608d3aebd65fce99220e",
+    "progress_accumulator_sha256": "0269d1d1fd4c61b32fd7b26811ab96b8b09210fecf119c60ce498add6ea60ad1",
+    "pr_state": "OPEN",
+    "evidence_file_count": 724,
+    "generation_evidence_scan_sha256": "f8683d215ab40ed40e5061d7b5e5d0511b49663215cf7cef6c5fa2a3aaa21aa7"
+  },
+  "counts": {
+    "range_cells": 240,
+    "eligible_pending": 210,
+    "decisions": 210,
+    "base_review_ledger_exact_accepted_carries": 12,
+    "exact_terminal_accepted_evidence_carries": 14,
+    "exact_terminal_carry_cells": 26,
+    "terminal_exclusions": 4,
+    "pending_exact_terminal_overlaps": 0,
+    "accepted": 143,
+    "correction_needed": 61,
+    "held": 6,
+    "carry_statuses": {
+      "accepted": 26
+    },
+    "carry_eligibility": {
+      "base_review_ledger_exact_accepted_carry": 12,
+      "exact_terminal_accepted_evidence_carry": 14
+    },
+    "per_locale": {
+      "ar": {
+        "accepted": 13,
+        "correction-needed": 5,
+        "held": 0
+      },
+      "de": {
+        "accepted": 14,
+        "correction-needed": 4,
+        "held": 0
+      },
+      "es": {
+        "accepted": 15,
+        "correction-needed": 3,
+        "held": 0
+      },
+      "fr": {
+        "accepted": 14,
+        "correction-needed": 4,
+        "held": 0
+      },
+      "hi": {
+        "accepted": 14,
+        "correction-needed": 4,
+        "held": 0
+      },
+      "id": {
+        "accepted": 13,
+        "correction-needed": 5,
+        "held": 0
+      },
+      "ja": {
+        "accepted": 9,
+        "correction-needed": 7,
+        "held": 1
+      },
+      "ko": {
+        "accepted": 12,
+        "correction-needed": 4,
+        "held": 1
+      },
+      "pt-BR": {
+        "accepted": 12,
+        "correction-needed": 4,
+        "held": 1
+      },
+      "vi": {
+        "accepted": 9,
+        "correction-needed": 7,
+        "held": 1
+      },
+      "zh-Hans": {
+        "accepted": 9,
+        "correction-needed": 7,
+        "held": 1
+      },
+      "zh-Hant": {
+        "accepted": 9,
+        "correction-needed": 7,
+        "held": 1
+      }
+    },
+    "per_source_index": {
+      "5380": {
+        "accepted": 11,
+        "correction-needed": 1,
+        "held": 0
+      },
+      "5381": {
+        "accepted": 1,
+        "correction-needed": 11,
+        "held": 0
+      },
+      "5382": {
+        "accepted": 12,
+        "correction-needed": 0,
+        "held": 0
+      },
+      "5383": {
+        "accepted": 5,
+        "correction-needed": 7,
+        "held": 0
+      },
+      "5384": {
+        "accepted": 12,
+        "correction-needed": 0,
+        "held": 0
+      },
+      "5385": {
+        "accepted": 0,
+        "correction-needed": 0,
+        "held": 6
+      },
+      "5386": {
+        "accepted": 7,
+        "correction-needed": 5,
+        "held": 0
+      },
+      "5387": {
+        "accepted": 9,
+        "correction-needed": 3,
+        "held": 0
+      },
+      "5388": {
+        "accepted": 8,
+        "correction-needed": 4,
+        "held": 0
+      },
+      "5389": {
+        "accepted": 0,
+        "correction-needed": 12,
+        "held": 0
+      },
+      "5390": {
+        "accepted": 12,
+        "correction-needed": 0,
+        "held": 0
+      },
+      "5391": {
+        "accepted": 12,
+        "correction-needed": 0,
+        "held": 0
+      },
+      "5392": {
+        "accepted": 7,
+        "correction-needed": 5,
+        "held": 0
+      },
+      "5393": {
+        "accepted": 12,
+        "correction-needed": 0,
+        "held": 0
+      },
+      "5394": {
+        "accepted": 12,
+        "correction-needed": 0,
+        "held": 0
+      },
+      "5395": {
+        "accepted": 0,
+        "correction-needed": 12,
+        "held": 0
+      },
+      "5396": {
+        "accepted": 12,
+        "correction-needed": 0,
+        "held": 0
+      },
+      "5397": {
+        "accepted": 6,
+        "correction-needed": 0,
+        "held": 0
+      },
+      "5398": {
+        "accepted": 0,
+        "correction-needed": 0,
+        "held": 0
+      },
+      "5399": {
+        "accepted": 5,
+        "correction-needed": 1,
+        "held": 0
+      }
+    }
+  },
+  "file_sha256": {
+    "selection.jsonl": "169590b692c2dad33f5c6b9e3431e0315ffecd4314f61a55b447d91173c0c857",
+    "decisions.jsonl": "8717f36686f01e9388402a7e1fe89796a213e2709e72123ef5956b9e36c5162f",
+    "carries.jsonl": "64f04733fce1b2f900b435d48dc70afc208b2b8045c7ca1866caacbf576efcfb",
+    "terminal-exclusions.jsonl": "1540bdb0cdb3c17eeb298e6a2f99ce9c9566855f92aae4747f3efbe063265540",
+    "generation-evidence-scan-manifest.jsonl": "f8683d215ab40ed40e5061d7b5e5d0511b49663215cf7cef6c5fa2a3aaa21aa7",
+    "final-evidence-scan-manifest.jsonl": "f8683d215ab40ed40e5061d7b5e5d0511b49663215cf7cef6c5fa2a3aaa21aa7"
+  },
+  "review_context": {
+    "source_context_by_index": {
+      "5380": {
+        "paths": [
+          "web/src/components/Shared/Footer.jsx",
+          "web/src/lib/networkHealthScore.js"
+        ],
+        "lines": [
+          "477-485",
+          "34"
+        ],
+        "description": "Footer count of active peer-to-peer swarm download jobs; “swarm” is the P2P download-group term.",
+        "git_blob_ids": {
+          "web/src/components/Shared/Footer.jsx": "c94f4403699a76ac44d5e4823e2e9e86ba8cc3fb",
+          "web/src/lib/networkHealthScore.js": "26523f0fbf48bdd35fcab5ca8cac7d94d6265042"
+        }
+      },
+      "5381": {
+        "paths": [
+          "web/src/lib/listeningHistory.js",
+          "web/src/components/Player/PlayerStatsModal.jsx"
+        ],
+        "lines": [
+          "412-418",
+          "30-33"
+        ],
+        "description": "Count of tagged listening-history playback events used as a recommendation seed; “plays” are audio playbacks, not theater or game plays.",
+        "git_blob_ids": {
+          "web/src/lib/listeningHistory.js": "69c7e1d0b3a81d7970369bac0a6a121ec2d29213",
+          "web/src/components/Player/PlayerStatsModal.jsx": "6a26dc806b563672712209ade6cdbba3d998bad3"
+        }
+      },
+      "5382": {
+        "paths": [
+          "web/src/components/Transfers/TransferList.jsx"
+        ],
+        "lines": [
+          "188"
+        ],
+        "description": "Accessible progress label for an in-progress file transfer; direction is a localized Upload/Download/File value and filename is interpolated.",
+        "git_blob_ids": {
+          "web/src/components/Transfers/TransferList.jsx": "6b0cc627ee092390cde17aa8330a8d7cb24202d3"
+        }
+      },
+      "5383": {
+        "paths": [
+          "web/src/components/Browse/BrowseSession.jsx"
+        ],
+        "lines": [
+          "850"
+        ],
+        "description": "Browse-session metadata counting directories and files returned for a remote user directory.",
+        "git_blob_ids": {
+          "web/src/components/Browse/BrowseSession.jsx": "f23f2c0599eedac1b028b37c0a89383602c46186"
+        }
+      },
+      "5384": {
+        "paths": [
+          "web/src/components/Search/Searches.jsx"
+        ],
+        "lines": [
+          "715-727"
+        ],
+        "description": "Warning combines a formatted search error with a sentence that the last successfully loaded search data remains displayed.",
+        "git_blob_ids": {
+          "web/src/components/Search/Searches.jsx": "d34bb36eb5bff99447ff3ba91a802bf9eb709c21"
+        }
+      },
+      "5385": {
+        "paths": [],
+        "lines": [],
+        "description": "The source string is absent from live non-locale code in the pinned tree; only catalog entries were found. Its placement and UI context cannot be confirmed.",
+        "git_blob_ids": {}
+      },
+      "5386": {
+        "paths": [
+          "web/src/components/Player/PlayerStatsModal.jsx"
+        ],
+        "lines": [
+          "84-94"
+        ],
+        "description": "Listening-history import result reports imported rows and rows skipped because they were duplicates or incomplete.",
+        "git_blob_ids": {
+          "web/src/components/Player/PlayerStatsModal.jsx": "6a26dc806b563672712209ade6cdbba3d998bad3"
+        }
+      },
+      "5387": {
+        "paths": [
+          "web/src/components/System/Mesh/MeshEvidencePolicy.jsx"
+        ],
+        "lines": [
+          "86-92",
+          "200-215"
+        ],
+        "description": "Toast and controls for enabling or disabling outbound publication of a Mesh evidence type; the setting remains local policy state.",
+        "git_blob_ids": {
+          "web/src/components/System/Mesh/MeshEvidencePolicy.jsx": "2d8c7f594e9d3dc09192182cd1a7beefbc300f6d"
+        }
+      },
+      "5388": {
+        "paths": [
+          "web/src/components/System/Mesh/MeshEvidencePolicy.jsx"
+        ],
+        "lines": [
+          "86-92",
+          "200-215"
+        ],
+        "description": "Toast and controls for enabling or disabling outbound publication of a Mesh evidence type; the setting remains local policy state.",
+        "git_blob_ids": {
+          "web/src/components/System/Mesh/MeshEvidencePolicy.jsx": "2d8c7f594e9d3dc09192182cd1a7beefbc300f6d"
+        }
+      },
+      "5389": {
+        "paths": [
+          "web/src/components/System/Mesh/MeshEvidencePolicy.jsx"
+        ],
+        "lines": [
+          "86-92",
+          "200-215"
+        ],
+        "description": "Toast reports outbound Mesh evidence publication status; label is the evidence type and status is localized enabled/disabled.",
+        "git_blob_ids": {
+          "web/src/components/System/Mesh/MeshEvidencePolicy.jsx": "2d8c7f594e9d3dc09192182cd1a7beefbc300f6d"
+        }
+      },
+      "5390": {
+        "paths": [
+          "web/src/components/Search/DiscoveryGraphCanvas.jsx"
+        ],
+        "lines": [
+          "124-128"
+        ],
+        "description": "Graph tooltip labels a node, gives its node type, and shows weight as a rounded percentage.",
+        "git_blob_ids": {
+          "web/src/components/Search/DiscoveryGraphCanvas.jsx": "ba213baf579f37adcb205ebdc19ea7550d472f23"
+        }
+      },
+      "5391": {
+        "paths": [
+          "web/src/components/Search/SearchesListView.jsx"
+        ],
+        "lines": [
+          "322-335"
+        ],
+        "description": "Popup combines acquisition-profile label with its localized description.",
+        "git_blob_ids": {
+          "web/src/components/Search/SearchesListView.jsx": "a8864fa20454a01cf52bd7d2043e5e3c5e5ba854"
+        }
+      },
+      "5392": {
+        "paths": [
+          "web/src/components/Player/useExternalVisualizerControl.js"
+        ],
+        "lines": [
+          "70-80"
+        ],
+        "description": "Success message is shown only when an external visualizer launch result says started; this means starting a program, not releasing a product.",
+        "git_blob_ids": {
+          "web/src/components/Player/useExternalVisualizerControl.js": "edf037640a0fa6ca0ebd301e3b635b43ba1ef84c"
+        }
+      },
+      "5393": {
+        "paths": [
+          "web/src/components/Player/Visualizer.jsx"
+        ],
+        "lines": [
+          "803-806"
+        ],
+        "description": "Native visualizer debug display shows the FPS cap; fps is a protected technical unit.",
+        "git_blob_ids": {
+          "web/src/components/Player/Visualizer.jsx": "5631f83bc692fd33264a4203c48706d4f1ab70bb"
+        }
+      },
+      "5394": {
+        "paths": [
+          "web/src/components/Player/PlayerBar.jsx"
+        ],
+        "lines": [
+          "116"
+        ],
+        "description": "Now-playing badge shows local match confidence as a percentage.",
+        "git_blob_ids": {
+          "web/src/components/Player/PlayerBar.jsx": "4ba36606819dc376ce16b1e605353250e5f25b50"
+        }
+      },
+      "5395": {
+        "paths": [
+          "web/src/components/Player/PlayerStatsModal.jsx"
+        ],
+        "lines": [
+          "245"
+        ],
+        "description": "Track statistics list shows the number of times each item was played in listening history.",
+        "git_blob_ids": {
+          "web/src/components/Player/PlayerStatsModal.jsx": "6a26dc806b563672712209ade6cdbba3d998bad3"
+        }
+      },
+      "5396": {
+        "paths": [
+          "web/src/components/LoginForm.jsx"
+        ],
+        "lines": [
+          "182-185"
+        ],
+        "description": "Accessible name for the identity-provider setup-guide link; the anchor opens the provider guide in a new browser tab.",
+        "git_blob_ids": {
+          "web/src/components/LoginForm.jsx": "295f46788a2f3a7660bfafc90ca35f63d028d556"
+        }
+      },
+      "5397": {
+        "paths": [
+          "web/src/components/Player/Visualizer.jsx"
+        ],
+        "lines": [
+          "808-816"
+        ],
+        "description": "Native visualizer debug display shows the translated rendering-quality preset (Balanced, Efficient, Full).",
+        "git_blob_ids": {
+          "web/src/components/Player/Visualizer.jsx": "5631f83bc692fd33264a4203c48706d4f1ab70bb"
+        }
+      },
+      "5399": {
+        "paths": [
+          "web/src/components/Pods/PortForwarding.jsx"
+        ],
+        "lines": [
+          "812",
+          "919"
+        ],
+        "description": "Pod and tunnel status tables show elapsed seconds since their last activity timestamp.",
+        "git_blob_ids": {
+          "web/src/components/Pods/PortForwarding.jsx": "7eaacd44ed04d2ee5d71e7db466fe43b1fa39da1"
+        }
+      },
+      "5398": {
+        "paths": [
+          "web/src/components/Search/Detail/SearchDetail.jsx"
+        ],
+        "lines": [
+          "856-860"
+        ],
+        "description": "Show-more search-results button reports remaining unshown results and results hidden by filters.",
+        "git_blob_ids": {
+          "web/src/components/Search/Detail/SearchDetail.jsx": "86b09d942fc98d6269004ae960e227732a79484f"
+        }
+      }
+    },
+    "target_fingerprint_method": "SHA-256 of raw UTF-8 strings; canonical UTF-8 JSON with sorted keys, ensure_ascii=false, compact separators for Arabic plural-object targets. Live PR catalog, frozen current-cell record, and review-ledger hashes matched across the range.",
+    "placeholder_check": "Source and every current/proposed target variant were checked for exact placeholder multiset preservation. All proposed targets preserve required placeholders; the “fps” unit is preserved.",
+    "protected_literals": "Dynamic placeholders are retained. Context checks include transfer direction and filename, Mesh publication state, external visualizer launch, identity-provider setup guide opening in a new tab, and elapsed seconds.",
+    "carry_summary": "12 exact accepted base review-ledger carries at indices 5385 and 5398 across ar/de/es/fr/hi/id; 14 exact accepted terminal evidence carries at 5397–5399 in the other six locales. Four exact correction-needed terminal records at ja 5397 and ja/zh-Hans/zh-Hant 5399 were excluded.",
+    "semantic_summary": "Correction proposals fix tagged audio plays confused with theater/game plays; directory count labels; import/skipped row wording; Mesh publication terminology and status phrasing; external visualizer launch phrasing; play-count grammar; Japanese P2P swarm wording; and Indonesian seconds unit. Six pending {filtered}/{total} searches cells are held because the pinned tree contains no non-locale usage for that key.",
+    "review_limit": "Machine semantic review only; no native-speaker signoff is claimed. Evidence-only; no catalog, source, shared ledger, findings, PR body, tests/builds, browser work, or CI/workflow files were modified."
+  },
+  "worktree_status": [
+    "?? qa-runtime/",
+    "?? web/vite.l10n-review.config.mjs"
+  ],
+  "finalization": {
+    "reviewed_cell_decisions_sha256": "0269d1d1fd4c61b32fd7b26811ab96b8b09210fecf119c60ce498add6ea60ad1",
+    "progress_json_sha256": "53e2ed0aee88b93f965f32412e5b9becfd54f46a7aa4c7d79439ece6db4d87f2",
+    "review_ledger_sha256": "ffa2fce046085a9a46543ba01dd6a40c0fc02475313d3e833489edf49c73d784",
+    "current_cells_sha256": "2158d0cb1da7aef1e1b20ed7fb829d3afd63d14d5758caffb8b8581873673ba1",
+    "source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+    "pr_translation_review_ledger_sha256": "27ab430e61b7cb5628150121afc1b565e38af9cd2dc2608d3aebd65fce99220e",
+    "pr_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+    "tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+    "pr_state": "OPEN",
+    "pending_revalidated": 210,
+    "base_review_ledger_exact_accepted_carries_revalidated": 12,
+    "exact_terminal_accepted_evidence_carries_revalidated": 14,
+    "terminal_exclusions": 4,
+    "pending_exact_terminal_overlaps": 0,
+    "matching_exact_terminal_evidence_rows_for_pending": 0,
+    "evidence_file_count": 724,
+    "final_evidence_scan_sha256": "f8683d215ab40ed40e5061d7b5e5d0511b49663215cf7cef6c5fa2a3aaa21aa7",
+    "eligibility_unchanged": true,
+    "worktree_status": [
+      "?? qa-runtime/",
+      "?? web/vite.l10n-review.config.mjs"
+    ],
+    "held_cells": [
+      {
+        "source_index": 5385,
+        "locale": "ja",
+        "source_id": "{filtered} / {total} searches",
+        "reason": "no pinned non-locale callsite/source placement"
+      },
+      {
+        "source_index": 5385,
+        "locale": "ko",
+        "source_id": "{filtered} / {total} searches",
+        "reason": "no pinned non-locale callsite/source placement"
+      },
+      {
+        "source_index": 5385,
+        "locale": "pt-BR",
+        "source_id": "{filtered} / {total} searches",
+        "reason": "no pinned non-locale callsite/source placement"
+      },
+      {
+        "source_index": 5385,
+        "locale": "vi",
+        "source_id": "{filtered} / {total} searches",
+        "reason": "no pinned non-locale callsite/source placement"
+      },
+      {
+        "source_index": 5385,
+        "locale": "zh-Hans",
+        "source_id": "{filtered} / {total} searches",
+        "reason": "no pinned non-locale callsite/source placement"
+      },
+      {
+        "source_index": 5385,
+        "locale": "zh-Hant",
+        "source_id": "{filtered} / {total} searches",
+        "reason": "no pinned non-locale callsite/source placement"
+      }
+    ]
+  }
+}
