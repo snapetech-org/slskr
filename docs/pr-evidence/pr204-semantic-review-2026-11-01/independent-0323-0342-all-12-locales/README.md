@@ -20,4 +20,4 @@ python3 verify_batch.py \
   --prior-audit /path/to/slskr-populated-catalog-review-7ff45482-20261101
 ```
 
-Verifier SHA-256: `9e81f923edb04929c0447cf321872c417537ea16d8e96a6daf6bc245717d2957`.
+Verifier SHA-256: `fdd2f54810debb080f1ebe8f4ce9e6755295c771b6ed0bdd164bfa54e20ca4d0`.

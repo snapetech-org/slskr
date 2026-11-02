@@ -163,7 +163,7 @@ def main():
   k=(cand['source_id'],cand['locale']);ctx=gm[k];old=catbefore['ko'][k[0]];new=catafter['ko'][k[0]]
   if k[1]!='ko' or cand['source_index']!=ids.index(k[0]) or ctx['current_target_text']!=old or ctx['current_target_sha256']!=vsha(old):fail('Korean group exact baseline mismatch '+str(k))
   if cand['proposed_target']!=new or cand['proposed_target_sha256']!=vsha(new) or '발견함' not in new or '검색함' in new:fail('Korean group term application mismatch '+str(k))
-  if gp[k]['baseline_target_sha256']!=vsha(old) or gp[k]['final_target_sha256']!=vsha(new):fail('Korean group applied ledger mismatch '+str(k))
+  if gp[k]['baseline_target_sha256']!=vsha(old) or gp[k]['final_target_sha256']!=vsha(new) or gp[k].get('status')!='corrected' or gp[k].get('target_text')!=new or gp[k].get('target_sha256')!=vsha(new):fail('Korean group applied ledger mismatch '+str(k))
  for r in gctx:
   if r['source_sha256']!=vsha(r['source_id']):fail('Korean context source hash mismatch')
   exact=allprior.get((r['source_id'],r['locale'],r['source_sha256'],r['current_target_sha256']),[])

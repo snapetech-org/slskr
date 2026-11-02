@@ -204,7 +204,8 @@
     ],
     "status": "applied in catalog commit a65ba4693c4f613f470509ab882f7532e40b11ef",
     "verification_script": "verify_korean_discovery_group.py",
-    "verification_sha256": "f5a73b1e9df99b60c7eb4b286078a332ffde6bbd20aa36e85e56df208797b1cb"
+    "verification_sha256": "f5a73b1e9df99b60c7eb4b286078a332ffde6bbd20aa36e85e56df208797b1cb",
+    "applied_sha256": "32599dce0529f82ecea55b6ea681fd8900db14a0ae35aee277cdb444179cadf1"
   },
   "final_audit": {
     "file": "reviewed-cell-audit.jsonl",
@@ -228,7 +229,7 @@
   "group_applied_file": {
     "file": "korean-discovery-inbox-group-applied.jsonl",
     "rows": 4,
-    "sha256": "62730fe33679a127a6ce134dfec993e673b34a4ff085dfe192c3d9d599292c77"
+    "sha256": "32599dce0529f82ecea55b6ea681fd8900db14a0ae35aee277cdb444179cadf1"
   },
   "headed_visual_review": {
     "file": "headed-visual-check.md",
@@ -318,5 +319,5 @@
     "keys": 20,
     "prior_correction_needed_reassessed": 45
   },
-  "verifier_sha256": "9e81f923edb04929c0447cf321872c417537ea16d8e96a6daf6bc245717d2957"
+  "verifier_sha256": "fdd2f54810debb080f1ebe8f4ce9e6755295c771b6ed0bdd164bfa54e20ca4d0"
 }

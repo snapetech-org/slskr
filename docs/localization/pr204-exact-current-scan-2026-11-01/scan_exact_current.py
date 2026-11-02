@@ -15,7 +15,7 @@ REPO=args.repo.resolve();AUDIT=args.prior_audit.resolve();OUTPUT=args.output.res
 HEAD=args.head;SOURCE=args.source_head
 LOCALES=['ar','de','es','fr','hi','id','ja','ko','pt-BR','vi','zh-Hans','zh-Hant']
 TERMINAL={'accepted','correction-needed','held','keep','corrected'}
-ALIASES={'source_id':['source_id','message_id','id'],'source_sha':['source_sha256'],'target_sha':['target_sha256','current_target_sha256'],'status':['status','review_outcome']}
+ALIASES={'source_id':['source_id','sourceId','message_id','id'],'source_sha':['source_sha256','sourceSha256'],'target_sha':['target_sha256','current_target_sha256','reviewed_target_after_sha256','final_target_sha256','target_after_sha256','targetSha256','currentTargetSha256','reviewedTargetAfterSha256','finalTargetSha256'],'status':['status','review_outcome']}
 def sha(raw):return hashlib.sha256(raw).hexdigest()
 def norm(v):return str(v or '').strip().lower().replace('_','-')
 def pick(d,names):
@@ -59,6 +59,28 @@ files=sorted({p for p in files if p.is_file()})
 resolution_path=REPO/'docs/pr-evidence/pr204-semantic-review-2026-11-01/exact-conflict-resolution-1494972d-2026-11-01/conflict-resolutions.jsonl'
 resolutions=[json.loads(line) for line in resolution_path.read_text(encoding='utf-8').splitlines() if line.strip()]
 suppress={(ref['root'],ref['path'],ref['line']) for row in resolutions for ref in row['supersedes']}
+# An exact accepted-unchanged cross-review explicitly supersedes the older
+# disposition(s) it reassessed. Require the record's source and target hashes
+# to match the current catalog before suppressing its cited prior rows.
+unchanged_path=REPO/'docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/accepted-unchanged.jsonl'
+if unchanged_path.is_file():
+ candidate_path=unchanged_path.with_name('candidate-cell-audit.jsonl')
+ candidate_records=[]
+ if candidate_path.is_file():
+  candidate_records=[(n,json.loads(line)) for n,line in enumerate(candidate_path.read_text(encoding='utf-8').splitlines(),1) if line.strip()]
+ candidate_rel=candidate_path.relative_to(REPO).as_posix()
+ for row in [json.loads(line) for line in unchanged_path.read_text(encoding='utf-8').splitlines() if line.strip()]:
+  sid=row.get('sourceId',row.get('source_id'));loc=row.get('locale');c=cells.get((sid,loc))
+  if row.get('disposition')!='accepted-unchanged' or c is None:continue
+  if row.get('sourceSha256')!=c['source_sha256'] or row.get('currentTargetSha256')!=c['target_sha256']:continue
+  suppress.update((ref['root'],ref['path'],ref['line']) for ref in row.get('priorExactMatches',[]))
+  # The batch's pre-cross-review candidate audit records a provisional
+  # correction-needed status for this same exact cell. The accepted-unchanged
+  # disposition is the final cross-reviewed status, so suppress only that
+  # precisely matched candidate row.
+  for line_no,candidate in candidate_records:
+   if candidate.get('source_id')==sid and candidate.get('locale')==loc and candidate.get('baseline_target_sha256')==c['target_sha256'] and candidate.get('status')=='correction-needed':
+    suppress.add(('pr-review-head',candidate_rel,line_no))
 bycell=collections.defaultdict(list);manifest=[]
 for p in files:
  raw=p.read_bytes();root='prior-audit-7ff' if AUDIT in p.parents else 'pr-review-head';base=AUDIT if root=='prior-audit-7ff' else REPO
