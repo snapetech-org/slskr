@@ -1,0 +1,62 @@
+{
+  "cellCount": 240,
+  "counts": {
+    "accept-current": 184,
+    "accept-proposal": 53,
+    "hold": 0,
+    "propose-additional-correction": 0,
+    "revise-proposal": 3
+  },
+  "files": [
+    {
+      "bytes": 1576,
+      "path": "README.md",
+      "sha256": "0bf5a84d6ef6565df48dabde28a508182ecb6b323fd4588da64e5437e16e1321"
+    },
+    {
+      "bytes": 6693,
+      "path": "boundary-reattestation.jsonl",
+      "sha256": "47aa5b2d8c0663056b1d3d5951c5d7c249eee885da72f0e673e6e54dbd99c275"
+    },
+    {
+      "bytes": 37470,
+      "path": "caller-pin-reattestation.jsonl",
+      "sha256": "97f0001eb6bf4a3cbcaf5fcbdfbc93ae1b5845b2589cf0f7d617645b6fbc96d8"
+    },
+    {
+      "bytes": 3378,
+      "path": "catalog-pins.json",
+      "sha256": "0385595e0b0b70f098d613d9f4caf828bf2f069e5013016012390b8d363df137"
+    },
+    {
+      "bytes": 754430,
+      "path": "cell-crossreview.jsonl",
+      "sha256": "dbe4135ecddbe404224dbc61bc73353c0c9cf68abfb236b2d034b35ac990b30d"
+    },
+    {
+      "bytes": 15466,
+      "path": "cross_review.py",
+      "sha256": "a416e6045c09b1549395e536fa2da3e7b0a719dcb4fc42b8ff3b9343cbe55fb6"
+    },
+    {
+      "bytes": 847,
+      "path": "live-reattestation.json",
+      "sha256": "e8bba628de25089da20ab76bf50f18b6181657db6118eb00aa52ca616f2ed31c"
+    },
+    {
+      "bytes": 3073,
+      "path": "summary.json",
+      "sha256": "4c4a67170a33a23dea5314d72e265674bfee9b41a8cf486df729f19a3dd73038"
+    }
+  ],
+  "head": "074dfc70d584707a215e87cb1fd1969198f76b2e",
+  "primaryInputManifestSha256": "5fc1356ce3e4fb9a51493e16f8c571c7f7085cdc521017084871441297ee4cf2",
+  "primaryInputSha256SUMS": "795f78c0325657a347788a56696ace3ed73c0063e9f685e0ebb9dfb0d94fa66e",
+  "primaryProposalCount": 56,
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "schemaVersion": 1,
+  "sourceCount": 20,
+  "tree": "9914a55bdfb938408a4bf1f98bb5ed98c24b78a8",
+  "window": "W823-W842"
+}

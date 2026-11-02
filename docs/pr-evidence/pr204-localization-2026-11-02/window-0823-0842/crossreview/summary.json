@@ -1,0 +1,122 @@
+{
+  "acceptedProposalCount": 53,
+  "additionalCorrections": 0,
+  "boundaryCells": 24,
+  "browserReview": false,
+  "callerFiles": 31,
+  "callerPins": 51,
+  "catalogsReattested": 12,
+  "cellCount": 240,
+  "counts": {
+    "accept-current": 184,
+    "accept-proposal": 53,
+    "hold": 0,
+    "propose-additional-correction": 0,
+    "revise-proposal": 3
+  },
+  "currentProtectedMismatchCells": 0,
+  "finalProtectedMismatchCells": 0,
+  "head": "074dfc70d584707a215e87cb1fd1969198f76b2e",
+  "holdCount": 0,
+  "livePullRequest": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "074dfc70d584707a215e87cb1fd1969198f76b2e",
+    "isDraft": true,
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "markupMismatchCells": 0,
+  "nativeSpeakerApproval": false,
+  "perLocale": {
+    "ar": {
+      "accept-current": 11,
+      "accept-proposal": 9
+    },
+    "de": {
+      "accept-current": 19,
+      "accept-proposal": 1
+    },
+    "es": {
+      "accept-current": 17,
+      "accept-proposal": 3
+    },
+    "fr": {
+      "accept-current": 16,
+      "accept-proposal": 4
+    },
+    "hi": {
+      "accept-current": 13,
+      "accept-proposal": 6,
+      "revise-proposal": 1
+    },
+    "id": {
+      "accept-current": 17,
+      "accept-proposal": 3
+    },
+    "ja": {
+      "accept-current": 9,
+      "accept-proposal": 11
+    },
+    "ko": {
+      "accept-current": 13,
+      "accept-proposal": 7
+    },
+    "pt-BR": {
+      "accept-current": 19,
+      "accept-proposal": 1
+    },
+    "vi": {
+      "accept-current": 16,
+      "accept-proposal": 4
+    },
+    "zh-Hans": {
+      "accept-current": 17,
+      "accept-proposal": 2,
+      "revise-proposal": 1
+    },
+    "zh-Hant": {
+      "accept-current": 17,
+      "accept-proposal": 2,
+      "revise-proposal": 1
+    }
+  },
+  "placeholderMismatchCells": 0,
+  "primaryProposalCount": 56,
+  "pullRequest": 204,
+  "remoteBranchHead": "074dfc70d584707a215e87cb1fd1969198f76b2e",
+  "repository": "snapetech-org/slskR",
+  "repositoryModified": false,
+  "revisedProposalCount": 3,
+  "schemaVersion": 1,
+  "sourceCount": 20,
+  "sourceNotes": [
+    "Confirmation gates are confirmation safeguards in the media-server execution contract; literal gates are misleading.",
+    "Conflict terms are about record/metadata conflicts, not interpersonal disputes.",
+    "Artist coverage is used in the Discography Concierge caller and means discography coverage.",
+    "The Chinese 本机 translations of native Soulseek mean local machine and should be changed to 原生."
+  ],
+  "testsBuildsCiRun": false,
+  "tree": "9914a55bdfb938408a4bf1f98bb5ed98c24b78a8",
+  "window": "W823-W842",
+  "worktree": {
+    "branch": "codex/slskr-l10n-audit-20261030",
+    "head": "074dfc70d584707a215e87cb1fd1969198f76b2e",
+    "status": "",
+    "tree": "9914a55bdfb938408a4bf1f98bb5ed98c24b78a8"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "catalogs": [
+    {
+      "blob": "3293fc61c27f0c25503822626904246388b8ab8e",
+      "fileSha256": "e7e5ff341de3ce92360e487b108ceb07545d10b0d58d4112a2ff4d1bfa4fb04e",
+      "keyCount": 5441,
+      "locale": "ar",
+      "path": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "blob": "dad78c70a3ea409b01141ddd5fbce1a06cea7004",
+      "fileSha256": "2b9f85165f1e20d27d390624bd5e94602778511ba49a233a6d4c6809381c51d5",
+      "keyCount": 5441,
+      "locale": "de",
+      "path": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "blob": "c2a8ee834ac7e2ad94776705727b0e9289b5ddd5",
+      "fileSha256": "989d5e70b5090ab3c04da54f563f5b02e2a31cc1ed6504df41540fa5b18a0f8f",
+      "keyCount": 5441,
+      "locale": "es",
+      "path": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "blob": "5a9c2c5cb5d7bc803c4d1f10bd5496316277b015",
+      "fileSha256": "85562e9d7b1e772e297d93b363f64bc2379cd212a9b310d39bdc423b653f1566",
+      "keyCount": 5441,
+      "locale": "fr",
+      "path": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "blob": "528d98600cd6bbdb4ce864a9a9974b6c5fdd8a69",
+      "fileSha256": "0bced13b7824c92475251406ee409d91295f6471d59a682f31acc94fc9b8d322",
+      "keyCount": 5441,
+      "locale": "hi",
+      "path": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "blob": "ea3f3de341ea56eeaf778440e884b5ab24f2062a",
+      "fileSha256": "2769834a83ff278e3c688fba3d14c75263f0f4d4f95dc81d4efb276b221bd0dd",
+      "keyCount": 5441,
+      "locale": "id",
+      "path": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "blob": "5d56598958f0edf4b9dcc4c385db86604b97ea3b",
+      "fileSha256": "cfd26c776bf76f7178649aebc4c2469399fc0c537ee73bd2f99a471ff449c174",
+      "keyCount": 5441,
+      "locale": "ja",
+      "path": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "blob": "2e0ae08e882a09aad75012bb59ea348060a2c260",
+      "fileSha256": "7094cb6cedfeab65a13d95d501e46cc805bab5dd42025049c55d955078c602d2",
+      "keyCount": 5441,
+      "locale": "ko",
+      "path": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "blob": "abf76f5253f356cf8c6395777ed8d6cc02bb1e20",
+      "fileSha256": "4bd3d8970375753356ff2d9b09d25adb94054310387f972abaea359a960c9227",
+      "keyCount": 5441,
+      "locale": "pt-BR",
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "blob": "450f70fc8a35f610924da4a754a05e04a0bd3c26",
+      "fileSha256": "0eba9c0933fc0a2d94b74a79f4eb4cabada6f8373061abb818cc908199e3da1c",
+      "keyCount": 5441,
+      "locale": "vi",
+      "path": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "blob": "b8787d224bfe05e120eac6461055059edd79f141",
+      "fileSha256": "c3e70eeeb2a2f37e77e96f790632578258cfb2bb43b522a4bef44664aa6ca180",
+      "keyCount": 5441,
+      "locale": "zh-Hans",
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "blob": "e1f1de5fbf367eb662b72c2ac8df5d1920012d87",
+      "fileSha256": "fcdc4e714372d4310871e065ec0c7864170f8bae87fe6ae22709048760a64a9d",
+      "keyCount": 5441,
+      "locale": "zh-Hant",
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    }
+  ],
+  "head": "074dfc70d584707a215e87cb1fd1969198f76b2e",
+  "orderedKeyCount": 5441,
+  "orderedKeySetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2",
+  "tree": "9914a55bdfb938408a4bf1f98bb5ed98c24b78a8"
+}

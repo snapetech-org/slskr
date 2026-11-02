@@ -3822,7 +3822,7 @@
   "Configure the media-server base URL before enabling live scans.": "Konfigurieren Sie die Basis-URL des Medienservers, bevor Sie Live-Scans aktivieren.",
   "Configured URL base: {urlBase}": "Konfigurierte URL-Basis: {urlBase}",
   "Configured import success": "Erfolgreicher Bibliotheksimport in einen konfigurierten Medienserver",
-  "Confirmation gates required": "Bestätigungstore erforderlich",
+  "Confirmation gates required": "Bestätigung erforderlich",
   "Confirmed file actions": "Bestätigte Dateiaktionen",
   "Connected state is not true.": "Der verbundene Zustand ist nicht wahr.",
   "Connected state is true.": "Der verbundene Zustand ist wahr.",

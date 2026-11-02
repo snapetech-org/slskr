@@ -1,0 +1,23 @@
+{
+  "boundaryCellCount": 24,
+  "callerPinCount": 51,
+  "catalogCount": 12,
+  "livePullRequest": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "074dfc70d584707a215e87cb1fd1969198f76b2e",
+    "isDraft": true,
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "manifestSha256": "5fc1356ce3e4fb9a51493e16f8c571c7f7085cdc521017084871441297ee4cf2",
+  "passed": true,
+  "primarySha256SUMS": "795f78c0325657a347788a56696ace3ed73c0063e9f685e0ebb9dfb0d94fa66e",
+  "remoteBranchHead": "074dfc70d584707a215e87cb1fd1969198f76b2e",
+  "worktree": {
+    "branch": "codex/slskr-l10n-audit-20261030",
+    "head": "074dfc70d584707a215e87cb1fd1969198f76b2e",
+    "status": "",
+    "tree": "9914a55bdfb938408a4bf1f98bb5ed98c24b78a8"
+  }
+}

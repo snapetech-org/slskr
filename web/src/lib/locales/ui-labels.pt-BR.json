@@ -3822,7 +3822,7 @@
   "Configure the media-server base URL before enabling live scans.": "Configure a URL base do servidor de mídia antes de ativar as varreduras ao vivo.",
   "Configured URL base: {urlBase}": "Base URL configurada: {urlBase}",
   "Configured import success": "Importação da biblioteca bem-sucedida para um servidor de mídia configurado",
-  "Confirmation gates required": "Portas de confirmação necessárias",
+  "Confirmation gates required": "Confirmação necessária",
   "Confirmed file actions": "Ações de arquivo confirmadas",
   "Connected state is not true.": "O estado conectado não é verdadeiro.",
   "Connected state is true.": "O estado conectado é verdadeiro.",
