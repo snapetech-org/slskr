@@ -1,0 +1,33 @@
+# Runtime context at PR #204 head 2e5ed6c18fcc2ce513c42cb5ff657cc14678f04c (tree 00fbb9f3f3ed8397ddedf04d89be7b01d0f66866)
+
+The exact PR head adds docs only after code/catalog source head 7ff454828398de6a3cfb72fe7f0ed21fe419425b (tree 9e9f2aa743c4ff3236af8f99619803bdc3a37152). All locale catalogs match that source snapshot.
+
+## `web/src/components/Search/Detail/SearchResultControls.jsx` — lines 17–27; blob `f6ec8606ad6420be75d2cde695815e31b86bd448`, SHA-256 `1f2880630f893cfc8361fb40a4ad4e9e07d01da96202b7ac36054c860124da46`
+
+17: } from 'semantic-ui-react';
+18:
+19: const sortDropdownOptions = [
+20:   {
+21:     key: 'smart',
+22:     get text() { return interfaceText("⭐ Smart Ranking (Best Overall)"); },
+23:     value: 'smart',
+24:   },
+25:   {
+26:     key: 'uploadSpeed',
+27:     get text() { return interfaceText("Upload Speed (Fastest to Slowest)"); },
+
+## `web/src/components/Search/Detail/SearchDetail.jsx` — lines 365–375; blob `86b09d942fc98d6269004ae960e227732a79484f`, SHA-256 `7bc9e9f25a2cc9e78f0e4d0bf67a2837315e7763c953d38553a6707c36bb16b8`
+
+365:   // sets, so memoize it.
+366:   const rankedAndFilteredResults = useMemo(() => {
+367:     const sortOptions = {
+368:       fileCount: { field: 'fileCount', order: 'desc' },
+369:       queueLength: { field: 'queueLength', order: 'asc' },
+370:       smart: { field: 'smartScore', order: 'desc' },
+371:       uploadSpeed: { field: 'uploadSpeed', order: 'desc' },
+372:     };
+373:
+374:     const { field, order } = sortOptions[resultSort] ?? sortOptions.smart;
+375:
+
+The dropdown defines `smart` as the default sort option, labels it “⭐ Smart Ranking (Best Overall)”, and renders that localized label in the search controls. SearchDetail maps `smart` to `smartScore` in descending order. This anchors “best overall” to the smart result-ranking option.
