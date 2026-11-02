@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "exactHeadTreeRecheckedAfterReview": true,
+  "livePrOpenDraftAtPinnedHead": true,
+  "worktreeClean": true,
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "decisionCounts": {
+    "accept-current": 150,
+    "propose-correction": 41,
+    "hold-locale-terminology": 1,
+    "hold-no-direct-caller": 36,
+    "hold-source-ambiguity": 12
+  },
+  "callerContextPinCount": 49,
+  "sourceLiteralCallerPins": 32,
+  "supportingCallerContextPins": 17,
+  "testReferences": 0,
+  "noDirectCallerSources": [
+    "Close the dialog without joining a Soulseek room.",
+    "Close this dialog without saving the current result filter.",
+    "Close this preview and return to the selected files without starting a transfer."
+  ],
+  "priorW722RowsReattested": 12,
+  "priorW722CorrectionCandidatesCurrent": 6,
+  "priorW722AcceptedTargetsCurrent": 6,
+  "priorW722CallerPinsStillExact": 11,
+  "placeholderFailures": 0,
+  "protectedLiteralFailures": 0,
+  "catalogDeltaAttested": true,
+  "nativeSpeakerApproval": false,
+  "repoOrPrModified": false,
+  "testsBuildsScansCiWorkflowsRun": false
+}

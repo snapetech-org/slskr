@@ -1,0 +1,102 @@
+{
+  "additionalCorrections": 2,
+  "additionalFindings": 5,
+  "additionalRefinements": 3,
+  "callerEvidence": {
+    "callerMismatches": 0,
+    "callerReferences": 49,
+    "noDirectCallerSourceIds": [
+      "Close the dialog without joining a Soulseek room.",
+      "Close this dialog without saving the current result filter.",
+      "Close this preview and return to the selected files without starting a transfer."
+    ],
+    "testReferences": 0,
+    "uniqueCallerFiles": 13,
+    "uniqueCallerLines": 48
+  },
+  "candidateAdjudicationCounts": {
+    "accept-current": 145,
+    "accept-primary-candidate": 40,
+    "add-missed-correction": 2,
+    "add-missed-refinement": 3,
+    "retain-hold": 49,
+    "revise-primary-candidate": 1
+  },
+  "cells": 240,
+  "confidence": "moderate",
+  "finalAcceptCurrent": 145,
+  "finalCorrections": 43,
+  "finalDispositions": {
+    "accept-current": 145,
+    "hold-locale-terminology": 1,
+    "hold-no-direct-caller": 36,
+    "hold-source-ambiguity": 12,
+    "propose-correction": 43,
+    "propose-refinement": 3
+  },
+  "finalHolds": 49,
+  "finalRefinements": 3,
+  "head": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "holds": {
+    "localeTerminologyCell": {
+      "locale": "vi",
+      "sourceIndex": 724
+    },
+    "localeTerminologyCells": 1,
+    "noDirectCallerCells": 36,
+    "sourceAmbiguityCells": 12,
+    "sourceAmbiguitySource": "Close this panel without deleting the thread or leaving anything.",
+    "unclaimedSources": [
+      "Close the dialog without joining a Soulseek room.",
+      "Close this dialog without saving the current result filter.",
+      "Close this preview and return to the selected files without starting a transfer."
+    ]
+  },
+  "isDraft": true,
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "nativeSpeakerApproval": "outstanding",
+  "outputPath": "/mnt/disks/scratch/task-scratch/slskr-pr204-W723-742-crossreview-by-root-child-20261102",
+  "primaryCandidateAgreements": 40,
+  "primaryCandidateRevisions": 1,
+  "primaryCorrectionCandidates": 41,
+  "priorW722": {
+    "priorCallerRefsReattested": 11,
+    "priorLedgerBlob": "3ece3810495f5e8e932e83a147504d2027c6cfb1",
+    "priorLedgerPath": "docs/pr-evidence/pr204-localization-2026-11-02/window-703-722/primary/primary-review-ledger.jsonl",
+    "priorLedgerSha256": "22b35238c9cc10d09aa96b0e647b4171f8a183dfd55670eb63e097467aead50c",
+    "priorPrimaryRowsReattested": 12,
+    "priorRecommendationsStillCurrent": 12,
+    "sourceId": "Close",
+    "sourceIndex": 722
+  },
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "repositoryOrPullRequestModified": false,
+  "schemaVersion": 1,
+  "sourceIds": 20,
+  "sourcePositionRange": [
+    723,
+    742
+  ],
+  "state": "OPEN",
+  "structuralChecks": {
+    "markupMismatchCount": 0,
+    "placeholderMismatchCount": 0,
+    "protectedLiteralMismatchCount": 0
+  },
+  "testsBuildsScansCiBrowserOrWorkflowWork": false,
+  "tree": "ebf75888b3087e83fe2327495c17611802925f71"
+}

@@ -1,0 +1,64 @@
+{
+  "afterReview": {
+    "checkedAtUtc": "2026-11-02T15:52:49.670240+00:00",
+    "livePullRequest": {
+      "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+      "headRefName": "codex/slskr-l10n-audit-20261030",
+      "headRefOid": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/slskr/pull/204"
+    },
+    "stage": "after-cross-review",
+    "worktree": {
+      "head": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+      "status": "",
+      "tree": "ebf75888b3087e83fe2327495c17611802925f71"
+    }
+  },
+  "beforeReview": {
+    "checkedAtUtc": "2026-11-02T15:52:48.221888+00:00",
+    "livePullRequest": {
+      "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+      "headRefName": "codex/slskr-l10n-audit-20261030",
+      "headRefOid": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/slskr/pull/204"
+    },
+    "stage": "before-cross-review",
+    "worktree": {
+      "head": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+      "status": "",
+      "tree": "ebf75888b3087e83fe2327495c17611802925f71"
+    }
+  },
+  "callerFilesReattested": 13,
+  "callerGapSourceIds": [
+    "Close the dialog without joining a Soulseek room.",
+    "Close this dialog without saving the current result filter.",
+    "Close this preview and return to the selected files without starting a transfer."
+  ],
+  "callerMismatches": 0,
+  "callerReferencesReattested": 49,
+  "catalogsReattested": 12,
+  "expectedHead": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "expectedTree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "localeCellsReattested": 240,
+  "priorBoundary": {
+    "priorCallerRefsReattested": 11,
+    "priorLedgerBlob": "3ece3810495f5e8e932e83a147504d2027c6cfb1",
+    "priorLedgerPath": "docs/pr-evidence/pr204-localization-2026-11-02/window-703-722/primary/primary-review-ledger.jsonl",
+    "priorLedgerSha256": "22b35238c9cc10d09aa96b0e647b4171f8a183dfd55670eb63e097467aead50c",
+    "priorPrimaryRowsReattested": 12,
+    "priorRecommendationsStillCurrent": 12,
+    "sourceId": "Close",
+    "sourceIndex": 722
+  },
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "sourceContextRowsReattested": 20,
+  "sourceIdsReattested": 20,
+  "sourceInventoryRowsReattested": 5437,
+  "worktreeUnmodified": true
+}

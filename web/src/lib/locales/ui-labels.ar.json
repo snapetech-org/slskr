@@ -122,7 +122,7 @@
   "Track name,Artist name,Album name": "اسم المقطع، اسم الفنان، اسم الألبوم",
   "Auto-download matches": "تنزيل النتائج المتطابقة تلقائيًا",
   "Include album": "تضمين الألبوم",
-  "Close the CSV importer without adding any wishlist searches.": "إغلاق مستورد CSV دون إضافة عمليات بحث إلى قائمة الأمنيات.",
+  "Close the CSV importer without adding any wishlist searches.": "إغلاق مستورد CSV دون إضافة أي عمليات بحث إلى قائمة الرغبات.",
   "Create wishlist searches from the parsed CSV rows using the selected options.": "إنشاء عمليات بحث من صفوف CSV المقروءة باستخدام الخيارات المحددة.",
   "Import": "استيراد",
   "CSV text is required.": "نص CSV مطلوب.",
