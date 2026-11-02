@@ -1,0 +1,80 @@
+{
+  "all12CatalogsSameKeyOrder": true,
+  "all12CatalogsSameKeySet": true,
+  "allCurrentAndCandidateMarkupMatchSource": true,
+  "allCurrentAndCandidatePlaceholdersMatchSource": true,
+  "allCurrentAndCandidateProtectedLiteralsMatchSource": true,
+  "allCurrentAndCandidateValuesStrings": true,
+  "allWindowSourceValuesMatchEnglishKeys": true,
+  "attestedHead": "3a4c26a7faf1dacbd8f3a382d47243b7063a262d",
+  "attestedTree": "9059d27001d306ea6b064560137ff2a51dd19021",
+  "boundaryLocaleCells": 276,
+  "boundaryRows": 23,
+  "callerPinsMatched": 63,
+  "candidateCount": 106,
+  "candidateIcuSelectorCount": 0,
+  "cellCount": 240,
+  "currentIcuSelectorCount": 0,
+  "localeCount": 12,
+  "placeholderFindings": {
+    "Configured URL base: {urlBase}": {
+      "candidateTargets": 6,
+      "currentAcrossLocales": {
+        "ar": {
+          "urlBase": 1
+        },
+        "de": {
+          "urlBase": 1
+        },
+        "es": {
+          "urlBase": 1
+        },
+        "fr": {
+          "urlBase": 1
+        },
+        "hi": {
+          "urlBase": 1
+        },
+        "id": {
+          "urlBase": 1
+        },
+        "ja": {
+          "urlBase": 1
+        },
+        "ko": {
+          "urlBase": 1
+        },
+        "pt-BR": {
+          "urlBase": 1
+        },
+        "vi": {
+          "urlBase": 1
+        },
+        "zh-Hans": {
+          "urlBase": 1
+        },
+        "zh-Hant": {
+          "urlBase": 1
+        }
+      },
+      "source": {
+        "urlBase": 1
+      }
+    }
+  },
+  "priorSourceCellDispositionsReused": 0,
+  "protectedLiteralTokensReviewed": [
+    "ListenBrainz",
+    "API",
+    "URL"
+  ],
+  "scopeNote": "The maintained localization roadmap says to localize the shipped web application and exclude the non-shipped standalone dashboard. The raw Configuration label in dashboard/src is outside this catalog scope; the web Bridge heading is localized.",
+  "sortedKeyCount": 5440,
+  "sortedKeySetSha256": "67d1c36a5a42dfc3472b902d1ab93f7cb6f40a816dc6a86b72f84cdddbfb5dbb",
+  "sourceCount": 20,
+  "sourceIcuSelectorCount": 0,
+  "sourceIndexWindow": [
+    802,
+    821
+  ]
+}

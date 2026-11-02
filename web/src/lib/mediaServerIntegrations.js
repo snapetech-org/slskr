@@ -258,7 +258,10 @@ export const buildMediaServerExecutionContract = ({
   };
 };
 
-export const formatMediaServerSyncReport = (preview) => {
+export const formatMediaServerSyncReport = (
+  preview,
+  translate = (source) => source,
+) => {
   const lines = [
     'slskr media-server sync review',
     `Adapter: ${preview.adapter.label}`,
@@ -276,14 +279,17 @@ export const formatMediaServerSyncReport = (preview) => {
   preview.checks.forEach((check) => {
     lines.push(`- ${check.ready ? 'READY' : 'PENDING'}: ${check.label}`);
     if (!check.ready) {
-      lines.push(`  Action: ${check.action}`);
+      lines.push(`  Action: ${translate(check.action)}`);
     }
   });
 
   return lines.join('\n');
 };
 
-export const formatMediaServerExecutionContractReport = (contract) => {
+export const formatMediaServerExecutionContractReport = (
+  contract,
+  translate = (source) => source,
+) => {
   const lines = [
     'slskr media-server execution contract',
     `Adapter: ${contract.adapter?.label || 'Unknown'}`,
@@ -299,7 +305,7 @@ export const formatMediaServerExecutionContractReport = (contract) => {
   contract.checks.forEach((check) => {
     lines.push(`- ${check.ready ? 'READY' : 'BLOCKED'}: ${check.label}`);
     if (!check.ready) {
-      lines.push(`  Action: ${check.action}`);
+      lines.push(`  Action: ${translate(check.action)}`);
     }
   });
 

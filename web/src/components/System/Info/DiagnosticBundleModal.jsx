@@ -25,7 +25,7 @@ const copyToClipboard = async (value) => {
 };
 
 const DiagnosticBundleModal = ({ options = {}, state = {} }) => {
-  useInterfaceLanguage();
+  const { t } = useInterfaceLanguage();
   const [open, setOpen] = useState(false);
   const [copying, setCopying] = useState(false);
   const copyingRef = useRef(false);
@@ -35,8 +35,9 @@ const DiagnosticBundleModal = ({ options = {}, state = {} }) => {
       buildDiagnosticBundle({
         options,
         state,
+        translate: t,
       }),
-    [options, state],
+    [options, state, t],
   );
 
   const copyBundle = async () => {

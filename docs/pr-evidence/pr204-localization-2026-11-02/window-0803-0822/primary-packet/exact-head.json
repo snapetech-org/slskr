@@ -1,0 +1,14 @@
+{
+  "attestedAtUtc": "2026-11-02T17:23:31.978474+00:00",
+  "baseRefName": "main",
+  "head": "3a4c26a7faf1dacbd8f3a382d47243b7063a262d",
+  "headReattestationRequiredIfChanged": true,
+  "headRefName": "codex/slskr-l10n-audit-20261030",
+  "isDraft": true,
+  "livePrQueryUsed": "gh pr view 204 --repo snapetech-org/slskR --json state,isDraft,headRefOid,headRefName,baseRefName,url",
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "state": "OPEN",
+  "tree": "9059d27001d306ea6b064560137ff2a51dd19021",
+  "url": "https://github.com/snapetech-org/slskR/pull/204"
+}

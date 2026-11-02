@@ -328,7 +328,10 @@ export const buildSetupHealthChecks = ({ options = {}, state = {} } = {}) => {
   };
 };
 
-export const formatSetupHealthReport = (summary) => {
+export const formatSetupHealthReport = (
+  summary,
+  translate = (source) => source,
+) => {
   const lines = [
     'slskr setup health check',
     `Readiness: ${summary.readiness}`,
@@ -340,7 +343,9 @@ export const formatSetupHealthReport = (summary) => {
   if (summary.nextSteps.length > 0) {
     lines.push('Next steps:');
     summary.nextSteps.forEach((item) => {
-      lines.push(`- [${item.severity.toUpperCase()}] ${item.area}: ${item.action}`);
+      lines.push(
+        `- [${item.severity.toUpperCase()}] ${item.area}: ${translate(item.action)}`,
+      );
     });
     lines.push('');
   }
@@ -348,7 +353,7 @@ export const formatSetupHealthReport = (summary) => {
   summary.checks.forEach((item) => {
     lines.push(`[${item.status.toUpperCase()}] ${item.group} / ${item.area}: ${item.summary}`);
     lines.push(`Evidence: ${item.evidence}`);
-    lines.push(`Action: ${item.action}`);
+    lines.push(`Action: ${translate(item.action)}`);
     lines.push('');
   });
 

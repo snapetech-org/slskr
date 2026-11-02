@@ -1,0 +1,148 @@
+{
+  "allCatalogsHaveSameKeySet": true,
+  "allCatalogsSameKeyOrder": true,
+  "attestedHead": "3a4c26a7faf1dacbd8f3a382d47243b7063a262d",
+  "attestedTree": "9059d27001d306ea6b064560137ff2a51dd19021",
+  "catalogCount": 12,
+  "icuSelectorCountInCurrentCells": 0,
+  "icuSelectorCountInSourceSlice": 0,
+  "keyCount": 5440,
+  "locales": [
+    {
+      "fileSha256": "a6e839b242b07aa7bbbbda1f6968dad0341da99da2b0939c4df0fe80049d8d80",
+      "gitBlob": "dfe5d8db2dd50cd18fa7a4d7d2bd4a38c9e02a50",
+      "keyCount": 5440,
+      "locale": "ar",
+      "path": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "fileSha256": "e7a93e92825514d6c2268e742d7d599aceb53fb0bc52ced49e211c5620f5683e",
+      "gitBlob": "66ed9756aaa0b8b4e949def82ee0c690ef12165a",
+      "keyCount": 5440,
+      "locale": "de",
+      "path": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "fileSha256": "946ecc35fedb02eebf5a34add4d98659795668d0f070979d7d25037b6316ed27",
+      "gitBlob": "b80cfcbad1aeeb7b149f74a656f5e8166a01d3d7",
+      "keyCount": 5440,
+      "locale": "es",
+      "path": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "fileSha256": "1651d1e52ae97966f6ef5c60111c35085786c95ef62b412b1d0bea36fd46b5bf",
+      "gitBlob": "c48600ca77045c36bb24c1c8867b8f7e40209e05",
+      "keyCount": 5440,
+      "locale": "fr",
+      "path": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "fileSha256": "aa33d9e9034ecfce49796fa7ad08ded79f7d6d911b11559d78e600adce82ed4e",
+      "gitBlob": "76c2e5b27cee95bf50fb6f5485070154ede31ba5",
+      "keyCount": 5440,
+      "locale": "hi",
+      "path": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "fileSha256": "77f3f3cbdc656487f1009394da96f7595aa7a217d3cd70f3e52ebe615d3b71a5",
+      "gitBlob": "27079016dd30ef1c35ef98de45727e4771b65145",
+      "keyCount": 5440,
+      "locale": "id",
+      "path": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "fileSha256": "26bcccd71c897ebf32f3913d1522354255d4900a9a0bd889b3163922d08cef0d",
+      "gitBlob": "ea8171c91db13b4eb2631dc4d843c14d5f9183b6",
+      "keyCount": 5440,
+      "locale": "ja",
+      "path": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "fileSha256": "a4e5eadb2436e5a1917cdd25a06e766f8aa960c93f3bb44c55b25150b175c1f1",
+      "gitBlob": "360025059744ff1d9a7d8d37334dd9c540714652",
+      "keyCount": 5440,
+      "locale": "ko",
+      "path": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "fileSha256": "4c32a759f1a3bcda98b9a0de82c570fb5bdd8f701f7280509f19f08520ee601d",
+      "gitBlob": "efc4392de4b594269610518c66348957b43c888c",
+      "keyCount": 5440,
+      "locale": "pt-BR",
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "fileSha256": "4cd62bffd4c96248f46462344edd9ad1610704e1196ae1272f1a7a829a6501a3",
+      "gitBlob": "3c7833d5fd3177b92f0c8f8321ff10a87da7db6f",
+      "keyCount": 5440,
+      "locale": "vi",
+      "path": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "fileSha256": "c39d584d66437b75f475769ca1b31284118b247ea768b6d632722922486ed51a",
+      "gitBlob": "c2ad923c4882f5586ad5ceb86a129d01bd493a66",
+      "keyCount": 5440,
+      "locale": "zh-Hans",
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "fileSha256": "1fed2a7901bffa184962899aa93a84eb6c6ea2730d6ddcf08cb615e45ff5cf81",
+      "gitBlob": "5ed214e44870502c0113333c9c9f6e521ac019f6",
+      "keyCount": 5440,
+      "locale": "zh-Hant",
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    }
+  ],
+  "orderedInventoryDefinition": "Lexically sorted exact key set, not JSON insertion order.",
+  "placeholderKeysInSourceSlice": {
+    "Configured URL base: {urlBase}": {
+      "urlBase": 1
+    }
+  },
+  "protectedLiteralFindings": {
+    "Configure ListenBrainz scrobbling": [
+      {
+        "count": 1,
+        "token": "ListenBrainz"
+      }
+    ],
+    "Configure ListenBrainz scrobbling for this browser.": [
+      {
+        "count": 1,
+        "token": "ListenBrainz"
+      }
+    ],
+    "Configure an API key before relying on mutating API clients or automation integrations.": [
+      {
+        "count": 2,
+        "token": "API"
+      }
+    ],
+    "Configure the media-server base URL before enabling live scans.": [
+      {
+        "count": 1,
+        "token": "URL"
+      }
+    ],
+    "Configured URL base: {urlBase}": [
+      {
+        "count": 1,
+        "token": "URL"
+      }
+    ]
+  },
+  "protectedLiteralsReviewed": [
+    "ListenBrainz",
+    "API",
+    "URL"
+  ],
+  "sortedKeySetSha256": "67d1c36a5a42dfc3472b902d1ab93f7cb6f40a816dc6a86b72f84cdddbfb5dbb",
+  "sourceSlice": {
+    "label": "W803–W822",
+    "zeroBasedIndicesInclusive": [
+      802,
+      821
+    ]
+  },
+  "sourceValuesAllStrings": true
+}

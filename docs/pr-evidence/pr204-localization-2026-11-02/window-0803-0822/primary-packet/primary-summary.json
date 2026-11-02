@@ -1,0 +1,55 @@
+{
+  "attestedHead": "3a4c26a7faf1dacbd8f3a382d47243b7063a262d",
+  "attestedTree": "9059d27001d306ea6b064560137ff2a51dd19021",
+  "callerLocalizationGaps": [
+    {
+      "file": "web/src/components/System/Integrations/LidarrPanel.jsx",
+      "finding": "maskedApiKey contains raw English Configured and is rendered as text without LocalizedText/interfaceText; translation proposals do not display in this row until its caller is localized.",
+      "lines": [
+        44,
+        109
+      ],
+      "sourceId": "Configured",
+      "sourceIndexZeroBased": 815,
+      "windowLabel": "W816"
+    }
+  ],
+  "candidateCount": 106,
+  "cellCount": 240,
+  "cellHolds": 0,
+  "confidence": "moderate",
+  "decisionCounts": {
+    "accept-current": 134,
+    "propose-correction": 80,
+    "propose-refinement": 26
+  },
+  "keyCount": 20,
+  "localeCount": 12,
+  "nativeSpeakerReviewRequired": true,
+  "priorReviewCoverage": {
+    "exactHashPriorReviewCells": 0,
+    "freshlyReviewedCells": 240,
+    "priorMatchingReviewRecords": 0,
+    "reusedDispositions": 0
+  },
+  "pullRequest": 204,
+  "readOnly": true,
+  "repository": "snapetech-org/slskR",
+  "sourceIndexZeroBasedInclusive": [
+    802,
+    821
+  ],
+  "validation": {
+    "all12CatalogsSameKeySet": true,
+    "all240CurrentValuesStrings": true,
+    "allCurrentMarkupMatchesSource": true,
+    "allCurrentPlaceholdersMatchSource": true,
+    "allCurrentProtectedLiteralsMatch": true,
+    "allRecommendedPlaceholderMarkupProtectedLiteralChecksPass": true,
+    "currentCellIcuSelectors": 0,
+    "placeholder": "W817 has {urlBase} once in source and every current/proposed target.",
+    "protectedLiterals": "ListenBrainz, API, and URL preserve exact spelling/case in current and proposed targets.",
+    "sourceIcuSelectors": 0
+  },
+  "windowLabel": "W803–W822"
+}

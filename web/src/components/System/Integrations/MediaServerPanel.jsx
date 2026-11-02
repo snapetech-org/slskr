@@ -28,7 +28,7 @@ import { useAsyncGuard } from './integrationsShared';
 
 const MediaServerPanel = () => {
   useRegionalFormat();
-  useInterfaceLanguage();
+  const { t } = useInterfaceLanguage();
   const [activeAdapterId, setActiveAdapterId] = useState(mediaServerAdapters[0].id);
   const [automationEnabled, setAutomationEnabled] = useState(() =>
     mediaServerAutomationContracts.reduce(
@@ -79,7 +79,7 @@ const MediaServerPanel = () => {
   const copySyncReport = async () => {
     const requestId = asyncGuard.begin();
     if (requestId === null) return;
-    const report = formatMediaServerSyncReport(syncPreview);
+    const report = formatMediaServerSyncReport(syncPreview, t);
     if (!navigator.clipboard?.writeText) {
       if (asyncGuard.isCurrent(requestId)) {
         setCopyStatus(interfaceText('Clipboard unavailable; copy the report from the preview text.'));
@@ -105,7 +105,7 @@ const MediaServerPanel = () => {
   const copyExecutionContract = async () => {
     const requestId = asyncGuard.begin();
     if (requestId === null) return;
-    const report = formatMediaServerExecutionContractReport(executionContract);
+    const report = formatMediaServerExecutionContractReport(executionContract, t);
     if (!navigator.clipboard?.writeText) {
       if (asyncGuard.isCurrent(requestId)) {
         setCopyStatus(interfaceText('Clipboard unavailable; copy the execution contract manually.'));
@@ -302,7 +302,13 @@ const MediaServerPanel = () => {
                       {check.ready ? <LocalizedText source={"Ready"} /> : <LocalizedText source={"Todo"} />}
                     </Label>
                   </Table.Cell>
-                  <Table.Cell>{check.ready ? <LocalizedText source={"No action needed."} /> : check.action}</Table.Cell>
+                  <Table.Cell>
+                    {check.ready ? (
+                      <LocalizedText source={"No action needed."} />
+                    ) : (
+                      <LocalizedText source={check.action} />
+                    )}
+                  </Table.Cell>
                 </Table.Row>
               ))}
             </Table.Body>

@@ -1,0 +1,90 @@
+{
+  "attestedAtUtc": "2026-11-02T17:36:07.177445+00:00",
+  "boundaryLocaleCells": 276,
+  "boundarySourceRows": 23,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "callerGapFindings": {
+    "W814CopiedExecutionContractRawEnglish": 1,
+    "W815DirectRawEnglishReadinessAndCopy": 1,
+    "W816DirectRawEnglishCaller": 1,
+    "callerIntegrationHoldCells": 36,
+    "copiedMediaServerReportLocaleCells": 24,
+    "detailedCallerGapEvidenceLines": 10,
+    "directRawUiLocaleCells": 24,
+    "secondaryExportOnlyLocaleCells": 24,
+    "secondaryPlainTextSetupHealthExports": 2,
+    "secondarySetupHealthExportLocaleCells": 24,
+    "uniqueSourceLocaleCellsWithKnownRawOutput": 60
+  },
+  "callerPinCount": 63,
+  "candidateCount": 106,
+  "candidateDispositionCounts": {
+    "accept-proposal": 106
+  },
+  "cellCount": 240,
+  "head": "3a4c26a7faf1dacbd8f3a382d47243b7063a262d",
+  "independentCellDispositionCounts": {
+    "accept-current": 134,
+    "accept-proposal": 106
+  },
+  "livePrEnd": {
+    "baseRefName": "main",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "3a4c26a7faf1dacbd8f3a382d47243b7063a262d",
+    "isDraft": true,
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "livePrStart": {
+    "baseRefName": "main",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "3a4c26a7faf1dacbd8f3a382d47243b7063a262d",
+    "isDraft": true,
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "localeCount": 12,
+  "nativeSpeakerReviewStillUseful": true,
+  "notes": [
+    "All 106 proposals are accepted on semantic grounds; the independent cross-review did not change their target text.",
+    "W816 Configured is localized in the catalog, but LidarrPanel.jsx assigns raw English at line 44, compares it for icon state at 109, and renders it at 110; the affected display requires caller localization.",
+    "W814 Configure an explicit media-server user mapping... is used in a raw plain-text copied execution-contract report; its catalog value does not reach that output.",
+    "W815 is raw in the media-server readiness row and copied sync report. W812 and W813 are localized in the setup-health modal but remain raw in copied setup-health reports and diagnostic-bundle JSON.",
+    "The separate dashboard/src Configuration literal is outside this localization scope per docs/localization-roadmap.md, which specifies the shipped web application and excludes the non-shipped dashboard.",
+    "No separate primary INPUT-SHA256SUMS file is present; all 15 files listed in the supplied primary SHA256SUMS were independently verified."
+  ],
+  "packetFiles": [
+    "README.md",
+    "primary-input-integrity.json",
+    "structural-integrity.json",
+    "caller-pin-reattestation.jsonl",
+    "cell-crossreview.jsonl",
+    "candidate-adjudication.jsonl",
+    "boundary-cell-reattestation.jsonl",
+    "caller-gap-findings.jsonl",
+    "secondary-export-gaps.jsonl",
+    "summary.json",
+    "cross_review.py",
+    "SHA256SUMS"
+  ],
+  "primaryCandidateDecisionCounts": {
+    "propose-correction": 80,
+    "propose-refinement": 26
+  },
+  "priorSourceCellDispositionsReused": 0,
+  "pullRequest": 204,
+  "readOnly": true,
+  "remoteHeadEnd": "3a4c26a7faf1dacbd8f3a382d47243b7063a262d",
+  "remoteHeadStart": "3a4c26a7faf1dacbd8f3a382d47243b7063a262d",
+  "repository": "snapetech-org/slskR",
+  "semanticCandidateRejections": 0,
+  "semanticCandidateRevisions": 0,
+  "semanticCellHolds": 0,
+  "sourceCount": 20,
+  "sourceIndicesInclusive": [
+    802,
+    821
+  ],
+  "tree": "9059d27001d306ea6b064560137ff2a51dd19021",
+  "windowLabel": "W803–W822"
+}

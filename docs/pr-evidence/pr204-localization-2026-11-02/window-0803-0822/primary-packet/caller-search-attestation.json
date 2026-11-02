@@ -1,0 +1,474 @@
+{
+  "attestedHead": "3a4c26a7faf1dacbd8f3a382d47243b7063a262d",
+  "attestedTree": "9059d27001d306ea6b064560137ff2a51dd19021",
+  "callerPinCount": 63,
+  "excluded": [
+    "web/src/lib/locales/ui-labels.*.json",
+    "generated/untracked files"
+  ],
+  "limits": "This scan attests direct quoted source literals in tracked code. Dynamically assembled text or keys supplied only by runtime data would not appear as exact source-literal matches.",
+  "matchingRule": "Exact source key enclosed in matching single or double quotes in tracked JS/JSX/TS/TSX/Rust/Python/Go source; occurrence count retained per line.",
+  "perSource": {
+    "Compute perceptual hash for image similarity detection": {
+      "exactLiteralLineCount": 1,
+      "references": [
+        {
+          "kind": "localized-component",
+          "line": 207,
+          "path": "web/src/components/System/MediaCore/MediaCoreContentHashingPanel.jsx"
+        }
+      ],
+      "sourceIndexZeroBased": 802,
+      "windowLabel": "W803"
+    },
+    "Confidence": {
+      "exactLiteralLineCount": 3,
+      "references": [
+        {
+          "kind": "localized-component",
+          "line": 196,
+          "path": "web/src/components/Search/SongIDEvidenceDetails.jsx"
+        },
+        {
+          "kind": "localized-component",
+          "line": 711,
+          "path": "web/src/components/Search/SongIDEvidenceDetails.jsx"
+        },
+        {
+          "kind": "localized-component",
+          "line": 338,
+          "path": "web/src/components/System/Mesh/MeshEvidencePolicy.jsx"
+        }
+      ],
+      "sourceIndexZeroBased": 803,
+      "windowLabel": "W804"
+    },
+    "Confidence Lane": {
+      "exactLiteralLineCount": 1,
+      "references": [
+        {
+          "kind": "localized-component",
+          "line": 735,
+          "path": "web/src/components/Search/SongIDEvidenceDetails.jsx"
+        }
+      ],
+      "sourceIndexZeroBased": 804,
+      "windowLabel": "W805"
+    },
+    "Confidence applies to the synthetic-likelihood readout only. It does not control download decisions when identity is strong.": {
+      "exactLiteralLineCount": 2,
+      "references": [
+        {
+          "kind": "localized-call",
+          "line": 192,
+          "path": "web/src/components/Search/SongIDEvidenceDetails.jsx"
+        },
+        {
+          "kind": "localized-props",
+          "line": 201,
+          "path": "web/src/components/Search/SongIDEvidenceDetails.jsx"
+        }
+      ],
+      "sourceIndexZeroBased": 805,
+      "windowLabel": "W806"
+    },
+    "Confidence:": {
+      "exactLiteralLineCount": 2,
+      "references": [
+        {
+          "kind": "localized-component",
+          "line": 164,
+          "path": "web/src/components/Search/SongIDEvidenceDetails.jsx"
+        },
+        {
+          "kind": "localized-component",
+          "line": 156,
+          "path": "web/src/components/System/MediaCore/MediaCoreFuzzyContentPanel.jsx"
+        }
+      ],
+      "sourceIndexZeroBased": 806,
+      "windowLabel": "W807"
+    },
+    "Configuration": {
+      "exactLiteralLineCount": 2,
+      "references": [
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 29,
+          "path": "dashboard/src/components/Sidebar.tsx"
+        },
+        {
+          "kind": "localized-component",
+          "line": 374,
+          "path": "web/src/components/System/Bridge/index.jsx"
+        }
+      ],
+      "sourceIndexZeroBased": 807,
+      "windowLabel": "W808"
+    },
+    "Configuration updated. Restart bridge service to apply changes.": {
+      "exactLiteralLineCount": 8,
+      "references": [
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 571,
+          "path": "crates/slskr/src/controller_tests/full_bridge_differential.rs"
+        },
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 482,
+          "path": "crates/slskr/src/controller_tests/full_bridge_differential_02.rs"
+        },
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 385,
+          "path": "crates/slskr/src/controller_tests/full_lifecycle_differential.rs"
+        },
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 805,
+          "path": "crates/slskr/src/legacy_route_dispatch_group_06.rs"
+        },
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 830,
+          "path": "crates/slskr/src/legacy_route_dispatch_group_06.rs"
+        },
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 465,
+          "path": "crates/slskr/src/route_dispatch_group_5_configuration_bridge.rs"
+        },
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 490,
+          "path": "crates/slskr/src/route_dispatch_group_5_configuration_bridge.rs"
+        },
+        {
+          "kind": "localized-call",
+          "line": 239,
+          "path": "web/src/components/System/Bridge/index.jsx"
+        }
+      ],
+      "sourceIndexZeroBased": 808,
+      "windowLabel": "W809"
+    },
+    "Configure ListenBrainz scrobbling": {
+      "exactLiteralLineCount": 1,
+      "references": [
+        {
+          "kind": "localized-call",
+          "line": 832,
+          "path": "web/src/components/Player/PlayerBar.jsx"
+        }
+      ],
+      "sourceIndexZeroBased": 809,
+      "windowLabel": "W810"
+    },
+    "Configure ListenBrainz scrobbling for this browser.": {
+      "exactLiteralLineCount": 2,
+      "references": [
+        {
+          "kind": "localized-call",
+          "line": 831,
+          "path": "web/src/components/Player/PlayerBar.jsx"
+        },
+        {
+          "kind": "localized-props",
+          "line": 836,
+          "path": "web/src/components/Player/PlayerBar.jsx"
+        }
+      ],
+      "sourceIndexZeroBased": 810,
+      "windowLabel": "W811"
+    },
+    "Configure a download folder before starting acquisition workflows.": {
+      "exactLiteralLineCount": 1,
+      "references": [
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 204,
+          "path": "web/src/lib/setupHealthCheck.js"
+        }
+      ],
+      "sourceIndexZeroBased": 811,
+      "windowLabel": "W812"
+    },
+    "Configure an API key before relying on mutating API clients or automation integrations.": {
+      "exactLiteralLineCount": 1,
+      "references": [
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 180,
+          "path": "web/src/lib/setupHealthCheck.js"
+        }
+      ],
+      "sourceIndexZeroBased": 812,
+      "windowLabel": "W813"
+    },
+    "Configure an explicit media-server user mapping before importing or exporting user-scoped activity.": {
+      "exactLiteralLineCount": 1,
+      "references": [
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 194,
+          "path": "web/src/lib/mediaServerIntegrations.js"
+        }
+      ],
+      "sourceIndexZeroBased": 813,
+      "windowLabel": "W814"
+    },
+    "Configure the media-server base URL before enabling live scans.": {
+      "exactLiteralLineCount": 1,
+      "references": [
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 102,
+          "path": "web/src/lib/mediaServerIntegrations.js"
+        }
+      ],
+      "sourceIndexZeroBased": 814,
+      "windowLabel": "W815"
+    },
+    "Configured": {
+      "exactLiteralLineCount": 27,
+      "references": [
+        {
+          "kind": "localized-call",
+          "line": 473,
+          "path": "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx"
+        },
+        {
+          "kind": "localized-call",
+          "line": 507,
+          "path": "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx"
+        },
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 600,
+          "path": "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx"
+        },
+        {
+          "kind": "localized-component",
+          "line": 188,
+          "path": "web/src/components/System/Integrations/FederationDiagnosticsPanel.jsx"
+        },
+        {
+          "kind": "localized-component",
+          "line": 222,
+          "path": "web/src/components/System/Integrations/FtpIntegrationPanel.jsx"
+        },
+        {
+          "kind": "localized-component",
+          "line": 226,
+          "path": "web/src/components/System/Integrations/FtpIntegrationPanel.jsx"
+        },
+        {
+          "kind": "localized-call",
+          "line": 321,
+          "path": "web/src/components/System/Integrations/FtpIntegrationPanel.jsx"
+        },
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 44,
+          "path": "web/src/components/System/Integrations/LidarrPanel.jsx"
+        },
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 109,
+          "path": "web/src/components/System/Integrations/LidarrPanel.jsx"
+        },
+        {
+          "kind": "localized-component",
+          "line": 391,
+          "path": "web/src/components/System/Integrations/MetadataSettingsPanel.jsx"
+        },
+        {
+          "kind": "localized-component",
+          "line": 396,
+          "path": "web/src/components/System/Integrations/MetadataSettingsPanel.jsx"
+        },
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 524,
+          "path": "web/src/components/System/Integrations/MetadataSettingsPanel.jsx"
+        },
+        {
+          "kind": "localized-call",
+          "line": 617,
+          "path": "web/src/components/System/Integrations/MetadataSettingsPanel.jsx"
+        },
+        {
+          "kind": "localized-component",
+          "line": 323,
+          "path": "web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx"
+        },
+        {
+          "kind": "localized-component",
+          "line": 328,
+          "path": "web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx"
+        },
+        {
+          "kind": "localized-component",
+          "line": 341,
+          "path": "web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx"
+        },
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 419,
+          "path": "web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx"
+        },
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 523,
+          "path": "web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx"
+        },
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 594,
+          "path": "web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx"
+        },
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 607,
+          "path": "web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx"
+        },
+        {
+          "kind": "localized-component",
+          "line": 240,
+          "path": "web/src/components/System/Integrations/SourceFeedIntegrationsPanel.jsx"
+        },
+        {
+          "kind": "localized-component",
+          "line": 245,
+          "path": "web/src/components/System/Integrations/SourceFeedIntegrationsPanel.jsx"
+        },
+        {
+          "kind": "localized-component",
+          "line": 250,
+          "path": "web/src/components/System/Integrations/SourceFeedIntegrationsPanel.jsx"
+        },
+        {
+          "kind": "localized-call",
+          "line": 317,
+          "path": "web/src/components/System/Integrations/SourceFeedIntegrationsPanel.jsx"
+        },
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 328,
+          "path": "web/src/components/System/Integrations/SourceFeedIntegrationsPanel.jsx"
+        },
+        {
+          "kind": "localized-call",
+          "line": 397,
+          "path": "web/src/components/System/Integrations/SourceFeedIntegrationsPanel.jsx"
+        },
+        {
+          "kind": "localized-call",
+          "line": 426,
+          "path": "web/src/components/System/Integrations/SourceFeedIntegrationsPanel.jsx"
+        }
+      ],
+      "sourceIndexZeroBased": 815,
+      "windowLabel": "W816"
+    },
+    "Configured URL base: {urlBase}": {
+      "exactLiteralLineCount": 1,
+      "references": [
+        {
+          "kind": "localized-component",
+          "line": 64,
+          "path": "web/src/components/System/Info/SetupHealthCheckModal.jsx"
+        }
+      ],
+      "sourceIndexZeroBased": 816,
+      "windowLabel": "W817"
+    },
+    "Configured import success": {
+      "exactLiteralLineCount": 2,
+      "references": [
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 219,
+          "path": "crates/slskr-web/src/web_action_owners/experience_action_models.rs"
+        },
+        {
+          "kind": "raw-or-non-ui-literal",
+          "line": 91,
+          "path": "web/src/lib/automationRecipes.js"
+        }
+      ],
+      "sourceIndexZeroBased": 817,
+      "windowLabel": "W818"
+    },
+    "Confirm Delete": {
+      "exactLiteralLineCount": 1,
+      "references": [
+        {
+          "kind": "localized-helper",
+          "line": 184,
+          "path": "web/src/components/Wishlist/WishlistItemRow.jsx"
+        }
+      ],
+      "sourceIndexZeroBased": 818,
+      "windowLabel": "W819"
+    },
+    "Confirm Directory Delete": {
+      "exactLiteralLineCount": 2,
+      "references": [
+        {
+          "kind": "localized-call",
+          "line": 126,
+          "path": "web/src/components/System/Files/Explorer.jsx"
+        },
+        {
+          "kind": "localized-props",
+          "line": 128,
+          "path": "web/src/components/System/Files/Explorer.jsx"
+        }
+      ],
+      "sourceIndexZeroBased": 819,
+      "windowLabel": "W820"
+    },
+    "Confirm File Delete": {
+      "exactLiteralLineCount": 2,
+      "references": [
+        {
+          "kind": "localized-call",
+          "line": 68,
+          "path": "web/src/components/System/Files/Explorer.jsx"
+        },
+        {
+          "kind": "localized-props",
+          "line": 70,
+          "path": "web/src/components/System/Files/Explorer.jsx"
+        }
+      ],
+      "sourceIndexZeroBased": 820,
+      "windowLabel": "W821"
+    },
+    "Confirm Log Out": {
+      "exactLiteralLineCount": 2,
+      "references": [
+        {
+          "kind": "localized-call",
+          "line": 159,
+          "path": "web/src/components/AppHeaderMenu.jsx"
+        },
+        {
+          "kind": "localized-props",
+          "line": 161,
+          "path": "web/src/components/AppHeaderMenu.jsx"
+        }
+      ],
+      "sourceIndexZeroBased": 821,
+      "windowLabel": "W822"
+    }
+  },
+  "searchScope": [
+    "web/src/",
+    "crates/",
+    "dashboard/src/"
+  ],
+  "trackedSourceFileCount": 1162
+}

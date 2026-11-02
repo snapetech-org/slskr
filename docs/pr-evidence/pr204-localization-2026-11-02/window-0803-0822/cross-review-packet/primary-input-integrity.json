@@ -1,0 +1,240 @@
+{
+  "allCallerPinsMatch": true,
+  "boundaryLocaleCellRowsReattested": 276,
+  "callerPinsIndependentlyScanned": 63,
+  "callerPinsProvided": 63,
+  "candidatesProvided": 106,
+  "currentCatalogs": [
+    {
+      "fileSha256": "a6e839b242b07aa7bbbbda1f6968dad0341da99da2b0939c4df0fe80049d8d80",
+      "gitBlob": "dfe5d8db2dd50cd18fa7a4d7d2bd4a38c9e02a50",
+      "keyCount": 5440,
+      "locale": "ar",
+      "matchesPrimaryCatalogAttestation": true,
+      "path": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "fileSha256": "e7a93e92825514d6c2268e742d7d599aceb53fb0bc52ced49e211c5620f5683e",
+      "gitBlob": "66ed9756aaa0b8b4e949def82ee0c690ef12165a",
+      "keyCount": 5440,
+      "locale": "de",
+      "matchesPrimaryCatalogAttestation": true,
+      "path": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "fileSha256": "946ecc35fedb02eebf5a34add4d98659795668d0f070979d7d25037b6316ed27",
+      "gitBlob": "b80cfcbad1aeeb7b149f74a656f5e8166a01d3d7",
+      "keyCount": 5440,
+      "locale": "es",
+      "matchesPrimaryCatalogAttestation": true,
+      "path": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "fileSha256": "1651d1e52ae97966f6ef5c60111c35085786c95ef62b412b1d0bea36fd46b5bf",
+      "gitBlob": "c48600ca77045c36bb24c1c8867b8f7e40209e05",
+      "keyCount": 5440,
+      "locale": "fr",
+      "matchesPrimaryCatalogAttestation": true,
+      "path": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "fileSha256": "aa33d9e9034ecfce49796fa7ad08ded79f7d6d911b11559d78e600adce82ed4e",
+      "gitBlob": "76c2e5b27cee95bf50fb6f5485070154ede31ba5",
+      "keyCount": 5440,
+      "locale": "hi",
+      "matchesPrimaryCatalogAttestation": true,
+      "path": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "fileSha256": "77f3f3cbdc656487f1009394da96f7595aa7a217d3cd70f3e52ebe615d3b71a5",
+      "gitBlob": "27079016dd30ef1c35ef98de45727e4771b65145",
+      "keyCount": 5440,
+      "locale": "id",
+      "matchesPrimaryCatalogAttestation": true,
+      "path": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "fileSha256": "26bcccd71c897ebf32f3913d1522354255d4900a9a0bd889b3163922d08cef0d",
+      "gitBlob": "ea8171c91db13b4eb2631dc4d843c14d5f9183b6",
+      "keyCount": 5440,
+      "locale": "ja",
+      "matchesPrimaryCatalogAttestation": true,
+      "path": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "fileSha256": "a4e5eadb2436e5a1917cdd25a06e766f8aa960c93f3bb44c55b25150b175c1f1",
+      "gitBlob": "360025059744ff1d9a7d8d37334dd9c540714652",
+      "keyCount": 5440,
+      "locale": "ko",
+      "matchesPrimaryCatalogAttestation": true,
+      "path": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "fileSha256": "4c32a759f1a3bcda98b9a0de82c570fb5bdd8f701f7280509f19f08520ee601d",
+      "gitBlob": "efc4392de4b594269610518c66348957b43c888c",
+      "keyCount": 5440,
+      "locale": "pt-BR",
+      "matchesPrimaryCatalogAttestation": true,
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "fileSha256": "4cd62bffd4c96248f46462344edd9ad1610704e1196ae1272f1a7a829a6501a3",
+      "gitBlob": "3c7833d5fd3177b92f0c8f8321ff10a87da7db6f",
+      "keyCount": 5440,
+      "locale": "vi",
+      "matchesPrimaryCatalogAttestation": true,
+      "path": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "fileSha256": "c39d584d66437b75f475769ca1b31284118b247ea768b6d632722922486ed51a",
+      "gitBlob": "c2ad923c4882f5586ad5ceb86a129d01bd493a66",
+      "keyCount": 5440,
+      "locale": "zh-Hans",
+      "matchesPrimaryCatalogAttestation": true,
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "fileSha256": "1fed2a7901bffa184962899aa93a84eb6c6ea2730d6ddcf08cb615e45ff5cf81",
+      "gitBlob": "5ed214e44870502c0113333c9c9f6e521ac019f6",
+      "keyCount": 5440,
+      "locale": "zh-Hant",
+      "matchesPrimaryCatalogAttestation": true,
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    }
+  ],
+  "currentCellsProvided": 240,
+  "currentInventorySha256": "67d1c36a5a42dfc3472b902d1ab93f7cb6f40a816dc6a86b72f84cdddbfb5dbb",
+  "currentSourceInventoryMatchesLive": true,
+  "currentSourceInventoryRows": 5440,
+  "englishSourceCatalog": {
+    "fileSha256": null,
+    "gitBlob": null,
+    "keyCount": 5440,
+    "path": "source text is the literal translation key; no English ui-labels catalog file is present",
+    "sourceHashRule": "SHA-256 of each exact English source string (the JSON key); the repo does not contain ui-labels.en.json."
+  },
+  "inputManifestNote": "No separate INPUT-SHA256SUMS exists; the supplied primary packet SHA256SUMS covers the listed packet files.",
+  "primaryFileChecks": [
+    {
+      "actualSha256": "7e353ff9f43cfb4cd37a2b722f7402af978744996a84fb1e1302f5c48acd19ac",
+      "expectedSha256": "7e353ff9f43cfb4cd37a2b722f7402af978744996a84fb1e1302f5c48acd19ac",
+      "matches": true,
+      "path": "README.md",
+      "sizeBytes": 1794
+    },
+    {
+      "actualSha256": "260322db2fa772f39e824759e637ca6d1a676d09a8e145ce635a54d3a5352e04",
+      "expectedSha256": "260322db2fa772f39e824759e637ca6d1a676d09a8e145ce635a54d3a5352e04",
+      "matches": true,
+      "path": "build_packet.py",
+      "sizeBytes": 34749
+    },
+    {
+      "actualSha256": "b6f785bf454ac39724c49243944a9675b52b8a7b0d6ff18c52f7d068684df5f5",
+      "expectedSha256": "b6f785bf454ac39724c49243944a9675b52b8a7b0d6ff18c52f7d068684df5f5",
+      "matches": true,
+      "path": "caller-context-pins.jsonl",
+      "sizeBytes": 54636
+    },
+    {
+      "actualSha256": "fda3bd5f30db3ca0139222cac47d3005ff455c349b1150ca521f93daa8346c01",
+      "expectedSha256": "fda3bd5f30db3ca0139222cac47d3005ff455c349b1150ca521f93daa8346c01",
+      "matches": true,
+      "path": "caller-search-attestation.json",
+      "sizeBytes": 14601
+    },
+    {
+      "actualSha256": "c7c69b17ed0caf03c2631863b08c9094783cf90b1c8fcee9a6b0a9a0a03c61a2",
+      "expectedSha256": "c7c69b17ed0caf03c2631863b08c9094783cf90b1c8fcee9a6b0a9a0a03c61a2",
+      "matches": true,
+      "path": "catalog-and-inventory-attestation.json",
+      "sizeBytes": 4723
+    },
+    {
+      "actualSha256": "a5e35bb58b7ce0bf890f609c7efd5d6b49ee230978c5f1dd22c3dfe747ef1da3",
+      "expectedSha256": "a5e35bb58b7ce0bf890f609c7efd5d6b49ee230978c5f1dd22c3dfe747ef1da3",
+      "matches": true,
+      "path": "correction-candidates.jsonl",
+      "sizeBytes": 254393
+    },
+    {
+      "actualSha256": "449a1e384d44696cbe81245d9900d11e75260f5c58a04417c4070c483fc59732",
+      "expectedSha256": "449a1e384d44696cbe81245d9900d11e75260f5c58a04417c4070c483fc59732",
+      "matches": true,
+      "path": "current-cells.jsonl",
+      "sizeBytes": 639218
+    },
+    {
+      "actualSha256": "67d1c36a5a42dfc3472b902d1ab93f7cb6f40a816dc6a86b72f84cdddbfb5dbb",
+      "expectedSha256": "67d1c36a5a42dfc3472b902d1ab93f7cb6f40a816dc6a86b72f84cdddbfb5dbb",
+      "matches": true,
+      "path": "current-source-inventory.jsonl",
+      "sizeBytes": 967665
+    },
+    {
+      "actualSha256": "4d46d91cc683e986b5852e73e5d69f407eedf1e75cb6b72929741d2dd2845bee",
+      "expectedSha256": "4d46d91cc683e986b5852e73e5d69f407eedf1e75cb6b72929741d2dd2845bee",
+      "matches": true,
+      "path": "exact-head.json",
+      "sizeBytes": 574
+    },
+    {
+      "actualSha256": "449a1e384d44696cbe81245d9900d11e75260f5c58a04417c4070c483fc59732",
+      "expectedSha256": "449a1e384d44696cbe81245d9900d11e75260f5c58a04417c4070c483fc59732",
+      "matches": true,
+      "path": "primary-review-ledger.jsonl",
+      "sizeBytes": 639218
+    },
+    {
+      "actualSha256": "484babb16a709cf6e6f4e1bc15ca21878fa6cd8ae363a9f03881b759159e9ca7",
+      "expectedSha256": "484babb16a709cf6e6f4e1bc15ca21878fa6cd8ae363a9f03881b759159e9ca7",
+      "matches": true,
+      "path": "primary-summary.json",
+      "sizeBytes": 1794
+    },
+    {
+      "actualSha256": "b9e66524d22d003d265e5425c12ed06b0011a68aa26a90137eab01c3e9204c67",
+      "expectedSha256": "b9e66524d22d003d265e5425c12ed06b0011a68aa26a90137eab01c3e9204c67",
+      "matches": true,
+      "path": "prior-disposition-reattestation.jsonl",
+      "sizeBytes": 124412
+    },
+    {
+      "actualSha256": "32498abcb3061a42aea5fa899fa6dd55c6411c59163cbc24ba80b7c049c1ef38",
+      "expectedSha256": "32498abcb3061a42aea5fa899fa6dd55c6411c59163cbc24ba80b7c049c1ef38",
+      "matches": true,
+      "path": "prior-review-coverage.json",
+      "sizeBytes": 369
+    },
+    {
+      "actualSha256": "6d77a35fc51e4db08a268dede0b7d37a06ec011b99fb8fe85484bd666afc6cba",
+      "expectedSha256": "6d77a35fc51e4db08a268dede0b7d37a06ec011b99fb8fe85484bd666afc6cba",
+      "matches": true,
+      "path": "source-context.jsonl",
+      "sizeBytes": 5085
+    },
+    {
+      "actualSha256": "addb53f34ddfc0037a923ca2d57aeb57169071349149c7e048a17dd0fd5bd79f",
+      "expectedSha256": "addb53f34ddfc0037a923ca2d57aeb57169071349149c7e048a17dd0fd5bd79f",
+      "matches": true,
+      "path": "window-boundary-reattestation.jsonl",
+      "sizeBytes": 4800
+    }
+  ],
+  "primaryFilesListed": 15,
+  "primaryLedgerEqualsCurrentCells": true,
+  "primaryManifestPath": "/mnt/disks/scratch/task-scratch/slskr-pr204-W803-822-primary-20261102/packet/SHA256SUMS",
+  "primaryManifestSha256": "e3e9c88cb0d8960a2ad8b41ae96b88c8ce0f1a91342ea7dbdbdd65899e50a7af",
+  "primaryManifestVerified": true,
+  "primaryPacketPath": "/mnt/disks/scratch/task-scratch/slskr-pr204-W803-822-primary-20261102/packet",
+  "priorCoverage": {
+    "cellsReviewedFresh": 240,
+    "dispositionsReused": 0,
+    "evidenceScope": "tracked docs/pr-evidence/pr204-localization-2026-11-02 JSONL records available at the attested head",
+    "exactHashPriorReviewCells": 0,
+    "note": "No source-window-specific review dispositions were found; source inventory rows are not review decisions.",
+    "priorMatchingReviewRecords": 0
+  },
+  "separateInputManifestPresent": false,
+  "windowBoundarySourceRowsProvided": 23
+}

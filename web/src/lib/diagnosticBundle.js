@@ -39,6 +39,7 @@ export const buildDiagnosticBundle = ({
   location = typeof window === 'undefined' ? undefined : window.location,
   options = {},
   state = {},
+  translate = (source) => source,
 } = {}) => {
   const setupHealth = buildSetupHealthChecks({
     options,
@@ -60,13 +61,16 @@ export const buildDiagnosticBundle = ({
     options: redactDiagnosticValue(options),
     setupHealth: {
       checks: setupHealth.checks.map((item) => ({
-        action: item.action,
+        action: translate(item.action),
         area: item.area,
         group: item.group,
         status: item.status,
         summary: item.summary,
       })),
-      nextSteps: setupHealth.nextSteps,
+      nextSteps: setupHealth.nextSteps.map((item) => ({
+        ...item,
+        action: translate(item.action),
+      })),
       readiness: setupHealth.readiness,
       score: setupHealth.score,
       totals: setupHealth.totals,
