@@ -1,29 +1,29 @@
 {
-  "head": "ad7c283dfe84f31b52f5a27c363a605fe068e36c",
-  "head_tree": "d0a2faeba016b57850767fe0903b67621d61bc6c",
+  "head": "8885ff0dee176cd79169cdcc36e5e26b830054a6",
+  "head_tree": "fdf4893020e1f79c31c93eaecd737ad8d5aeae83",
   "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
   "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
   "source_ids": 5437,
   "cell_count": 65244,
   "catalog_file_sha256": {
-    "web/src/lib/locales/ui-labels.ar.json": "a5d9499a65f808b7c19dd015f92f20b6e4f98f7f98dca2001ed97adfe1090cd6",
-    "web/src/lib/locales/ui-labels.de.json": "8371aa46899d01ac3e01b8eb47c811b778b64473a90bdd7a35ed38187d314796",
-    "web/src/lib/locales/ui-labels.es.json": "ffe0efd4595640b46addb8217ef506d6d07759a92cb98ea0a655b60e810ead74",
-    "web/src/lib/locales/ui-labels.fr.json": "c8b1c82e85c9c1737e269e888f9e48973fb4573cfc7b4bf194f0527ec13ba474",
-    "web/src/lib/locales/ui-labels.hi.json": "7b3685f302fabca1cee3df076c74ae91cae643732d74f00682c276da83e13776",
-    "web/src/lib/locales/ui-labels.id.json": "1e77eb75d42fcf1db435bd0a6fa3b55c14e7ee588c3f9ecf06322253dbe4ef0f",
-    "web/src/lib/locales/ui-labels.ja.json": "0bd27fbf47e83d20daeebe30e58295bcc8190f74c51eb10109f9fe57a8ca29bd",
-    "web/src/lib/locales/ui-labels.ko.json": "5aa742e08c6cf764774f25b9f3cd443e426784fa810ec20f7e4090cf3fc094de",
-    "web/src/lib/locales/ui-labels.pt-BR.json": "fa9e0a44840a6a72477fd4a94070759040f84c94760aeabc509679ebf1f13b67",
-    "web/src/lib/locales/ui-labels.vi.json": "204052e60d62b50c248176e8f6fbe22d87f5d0d16d6e8a8a37f2486e2e7dcd17",
-    "web/src/lib/locales/ui-labels.zh-Hans.json": "492f94bcb290b6c8e9ff5df7216279e1e8d9f24b6c01910f87ba25e16b1dd5c9",
-    "web/src/lib/locales/ui-labels.zh-Hant.json": "273f90ef0ef9e9732022ed5c0f701ac9dc8b22f01f4e8ea19282e7cff6f3d259"
+    "web/src/lib/locales/ui-labels.ar.json": "397c93c45dfd35330a29c91bd07305eb2daf11092c853583a8e715991eab66a8",
+    "web/src/lib/locales/ui-labels.de.json": "2f19f4635b03580fe68b5914bcbf48492390cc1a5ed1df1253d25d1fbb30ba36",
+    "web/src/lib/locales/ui-labels.es.json": "1abbf70a894fdbe29bd25fbc946fa5ebb1b8ec6108fc1381912a53a645e4f33a",
+    "web/src/lib/locales/ui-labels.fr.json": "ca66e361be9b2860c72bb14417a6d2dc3177daa712407b908ee80aa343670c57",
+    "web/src/lib/locales/ui-labels.hi.json": "51b281f8d426a92738c8d8b15cc85aaf0b491fe96602baf62e0a787dd3a56a0c",
+    "web/src/lib/locales/ui-labels.id.json": "8b5dfea481e6fc50eb2e0248b1c7f40a2a8fd9d8203d37dbcf7c75d8f32bc02c",
+    "web/src/lib/locales/ui-labels.ja.json": "3250c7f2f246b8764f97181d71f63b0b24f6480fef915b234f2db3dc776635d6",
+    "web/src/lib/locales/ui-labels.ko.json": "9ae538d3ed6b4f9c34a99990903e9ebe2c1b34f5b179daf7b63b0d7942c3d298",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "67cd01a0a541416ea48f24eee745f53610507096c81fd4ea69e153b3bc7774e6",
+    "web/src/lib/locales/ui-labels.vi.json": "c6157459eafe56d73aadf494f16052a46f855e50036d24af737b4c3a9ee0d813",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "49bd08a6fb3086b10a94414717b0a46de7036b97d2522e462be73350291c7624",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "c74b1efbb2c006010c7ba716df40676666a57f7afea5ff2b75f6c3e74b767593"
   },
   "structured_plural_cells": {
     "ar": 15
   },
-  "evidence_files_scanned": 994,
-  "evidence_scan_manifest_sha256": "d05dc6b06d346040c8eda51d14415663802a5f2405c6164372dc74041d82bc23",
+  "evidence_files_scanned": 1009,
+  "evidence_scan_manifest_sha256": "a106e8eb119b77ed7a2e776cc96eaf916e910e466589412cd793a28b77b0a76c",
   "evidence_file_manifest": [
     {
       "root": "pr-review-head",
@@ -1728,6 +1728,96 @@
       "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/verification-run.json",
       "bytes": 4203,
       "sha256": "c30c407027f9795f819ad355490ae697c75e94ed9189cc7f4eae3fba8efc6afc"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0423-0442-all-12-locales/accepted-dispositions.jsonl",
+      "bytes": 231769,
+      "sha256": "6ab43f79631a7224f55fa97e2ab4e0001e5a2479ffc23cbc9d252ca866490117"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0423-0442-all-12-locales/applied-corrections.jsonl",
+      "bytes": 75420,
+      "sha256": "170dc08e32ed00c7ff1bca3b1b96cb8b60bf14e927b0cefc232e7ebaeba1977b"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0423-0442-all-12-locales/caller-pins.json",
+      "bytes": 9133,
+      "sha256": "06c1d278725685f323f24aa5c0579b31202a185c4e4b2d664dc01658ab1e9a87"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0423-0442-all-12-locales/candidate-cell-audit.jsonl",
+      "bytes": 19562,
+      "sha256": "39a550f60412d167efc7db7894be0dffe58726972da902bfd72313615030cad6"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0423-0442-all-12-locales/candidate-plan.jsonl",
+      "bytes": 55111,
+      "sha256": "fd70f76933cfa5d719360d07c7576f847e76c1da809ed9a8e619ef548d7d4d37"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0423-0442-all-12-locales/candidate-review-input.jsonl",
+      "bytes": 366005,
+      "sha256": "c68844048a55fb0972c6b816689f0559af7408352952824e094ec5befe0f483d"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0423-0442-all-12-locales/post-apply-verification.json",
+      "bytes": 2786,
+      "sha256": "c58a57ca9f5d99e0d01d047aef8c5b8931a344ef248b4d95b7416de968f173f1"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0423-0442-all-12-locales/prepare-summary.json",
+      "bytes": 3540,
+      "sha256": "200856dad4feab0a821edd4f9ed4c39c3019d3c12a38417d28e747e630136811"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0423-0442-all-12-locales/prior-evidence-scan-manifest.jsonl",
+      "bytes": 210156,
+      "sha256": "e1f0de2401ec856cbb7869b0a706c97c2edc8d793640d7ee2b0ef332324034bf"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0423-0442-all-12-locales/reviewed-cell-audit.jsonl",
+      "bytes": 364635,
+      "sha256": "a2ee43f937c66f97290d91fdef59b1d265acec87ce3cfb7496af9c3de83582f3"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0423-0442-all-12-locales/root-disposition-ledger.jsonl",
+      "bytes": 65277,
+      "sha256": "fadf1cbb42b6115dfb71ffe35d66916212c8d793527d146767ae6cfc9ff7a334"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0423-0442-all-12-locales/root-verification-report.json",
+      "bytes": 1263,
+      "sha256": "44a9908f8294a30532cf6e0fdac66b01d7a9b3a6f4fecd779c79ce868aa1c395"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0423-0442-all-12-locales/selection.jsonl",
+      "bytes": 147991,
+      "sha256": "90db37aa69f5e026dc8faac7f35767485dfcd5ab9ac8ca45b3789ee312124f97"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0423-0442-all-12-locales/source-inventory.jsonl",
+      "bytes": 724742,
+      "sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0423-0442-all-12-locales/status-ledger-summary.json",
+      "bytes": 1436,
+      "sha256": "679a57de2b3aded4a8e42db4dcb6167c8c5211fd301c48c46f13f51ac604c3b9"
     },
     {
       "root": "pr-review-head",
@@ -5991,322 +6081,101 @@
     }
   ],
   "unique_current_cell_status_counts": {
-    "accepted": 23980,
-    "corrected": 629,
-    "correction-needed": 10435,
+    "accepted": 24079,
+    "corrected": 661,
+    "correction-needed": 10411,
     "held": 297,
-    "unreviewed": 29903
+    "unreviewed": 29796
   },
   "per_locale_exact_status_counts": {
     "ar": {
-      "accepted": 1372,
-      "corrected": 59,
-      "correction-needed": 1057,
+      "accepted": 1391,
+      "corrected": 60,
+      "correction-needed": 1056,
       "held": 13,
-      "unreviewed": 2936
+      "unreviewed": 2917
     },
     "de": {
-      "accepted": 1406,
-      "corrected": 52,
-      "correction-needed": 839,
+      "accepted": 1422,
+      "corrected": 56,
+      "correction-needed": 836,
       "held": 11,
-      "unreviewed": 3129
+      "unreviewed": 3112
     },
     "es": {
-      "accepted": 1353,
-      "corrected": 56,
-      "correction-needed": 1067,
+      "accepted": 1369,
+      "corrected": 60,
+      "correction-needed": 1064,
       "held": 10,
-      "unreviewed": 2951
+      "unreviewed": 2934
     },
     "fr": {
-      "accepted": 1362,
-      "corrected": 54,
-      "correction-needed": 1010,
+      "accepted": 1380,
+      "corrected": 56,
+      "correction-needed": 1008,
       "held": 11,
-      "unreviewed": 3000
+      "unreviewed": 2982
     },
     "hi": {
-      "accepted": 1348,
-      "corrected": 71,
-      "correction-needed": 1084,
+      "accepted": 1367,
+      "corrected": 72,
+      "correction-needed": 1083,
       "held": 15,
-      "unreviewed": 2919
+      "unreviewed": 2900
     },
     "id": {
-      "accepted": 1354,
-      "corrected": 62,
-      "correction-needed": 1052,
+      "accepted": 1370,
+      "corrected": 66,
+      "correction-needed": 1049,
       "held": 11,
-      "unreviewed": 2958
+      "unreviewed": 2941
     },
     "ja": {
-      "accepted": 2771,
-      "corrected": 36,
-      "correction-needed": 590,
+      "accepted": 2770,
+      "corrected": 38,
+      "correction-needed": 589,
       "held": 38,
       "unreviewed": 2002
     },
     "ko": {
       "accepted": 2667,
-      "corrected": 41,
-      "correction-needed": 690,
+      "corrected": 44,
+      "correction-needed": 687,
       "held": 39,
       "unreviewed": 2000
     },
     "pt-BR": {
-      "accepted": 2661,
-      "corrected": 43,
-      "correction-needed": 695,
+      "accepted": 2660,
+      "corrected": 46,
+      "correction-needed": 693,
       "held": 36,
       "unreviewed": 2002
     },
     "vi": {
-      "accepted": 2438,
-      "corrected": 63,
-      "correction-needed": 897,
+      "accepted": 2437,
+      "corrected": 67,
+      "correction-needed": 894,
       "held": 37,
       "unreviewed": 2002
     },
     "zh-Hans": {
-      "accepted": 2631,
-      "corrected": 46,
-      "correction-needed": 720,
+      "accepted": 2630,
+      "corrected": 48,
+      "correction-needed": 719,
       "held": 38,
       "unreviewed": 2002
     },
     "zh-Hant": {
-      "accepted": 2617,
-      "corrected": 46,
-      "correction-needed": 734,
+      "accepted": 2616,
+      "corrected": 48,
+      "correction-needed": 733,
       "held": 38,
       "unreviewed": 2002
     }
   },
-  "unreviewed_source_index_count": 3601,
-  "unreviewed_cells": 29903,
+  "unreviewed_source_index_count": 3582,
+  "unreviewed_cells": 29796,
   "first_100_unreviewed_indices": {
-    "424": {
-      "source_id": "Average Score:",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "425": {
-      "source_id": "Average TTL:",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "426": {
-      "source_id": "Avg Computation Time:",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "427": {
-      "source_id": "Avg Confidence:",
-      "fresh_locale_count": 5,
-      "fresh_locales": [
-        "ar",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "428": {
-      "source_id": "Avg Duration",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "429": {
-      "source_id": "Avg Duration:",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "430": {
-      "source_id": "Avg Export Time:",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "431": {
-      "source_id": "Avg Import Time:",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "432": {
-      "source_id": "Avg Mappings/Domain:",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "433": {
-      "source_id": "Avg Match Time:",
-      "fresh_locale_count": 2,
-      "fresh_locales": [
-        "ar",
-        "hi"
-      ]
-    },
-    "434": {
-      "source_id": "Avg Publish Time:",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "435": {
-      "source_id": "Avg RTT",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "436": {
-      "source_id": "Avg Retrieval Time:",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "437": {
-      "source_id": "Avg Routing Time:",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "438": {
-      "source_id": "Avg Search Time:",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "439": {
-      "source_id": "Avg Sign Time:",
-      "fresh_locale_count": 4,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "fr",
-        "hi"
-      ]
-    },
-    "440": {
-      "source_id": "Avg Speed",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "441": {
-      "source_id": "Avg Throughput",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "442": {
-      "source_id": "Avg Time:",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
     "443": {
       "source_id": "Avg Traversal Time:",
       "fresh_locale_count": 6,
@@ -7210,6 +7079,223 @@
       "fresh_locale_count": 1,
       "fresh_locales": [
         "de"
+      ]
+    },
+    "564": {
+      "source_id": "Canary",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "565": {
+      "source_id": "Cancel",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "566": {
+      "source_id": "Cancel Scan",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "567": {
+      "source_id": "Cancelled",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "571": {
+      "source_id": "Candidate score",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "572": {
+      "source_id": "Candidate score: {score}/100",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "573": {
+      "source_id": "Candidate score: {score}/100. Reasons: {reasons}",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "574": {
+      "source_id": "Candidates",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "575": {
+      "source_id": "Canonical",
+      "fresh_locale_count": 3,
+      "fresh_locales": [
+        "de",
+        "es",
+        "fr"
+      ]
+    },
+    "576": {
+      "source_id": "Canonical support from",
+      "fresh_locale_count": 3,
+      "fresh_locales": [
+        "de",
+        "es",
+        "id"
+      ]
+    },
+    "577": {
+      "source_id": "Canonical variants:",
+      "fresh_locale_count": 4,
+      "fresh_locales": [
+        "de",
+        "es",
+        "fr",
+        "id"
+      ]
+    },
+    "579": {
+      "source_id": "Capabilities unavailable",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "582": {
+      "source_id": "Category",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "583": {
+      "source_id": "Censorship Resistance",
+      "fresh_locale_count": 5,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi"
+      ]
+    },
+    "584": {
+      "source_id": "Centroid",
+      "fresh_locale_count": 5,
+      "fresh_locales": [
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "585": {
+      "source_id": "Certificate PFX (optional)",
+      "fresh_locale_count": 5,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "id"
+      ]
+    },
+    "586": {
+      "source_id": "Certificate Password",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "590": {
+      "source_id": "Change Role",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "591": {
+      "source_id": "Changed fields",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
       ]
     }
   },
