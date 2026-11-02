@@ -44,5 +44,129 @@
     "ui-labels.vi.json": "6352c638bf71a00d6eba537ac4e824ff941a5dc5d8e97b8666d2f535ca60e55b",
     "ui-labels.zh-Hans.json": "8c3d660041e0db166714208af6e47d6b92d94de8fcce9c9051892ce975ad18f1",
     "ui-labels.zh-Hant.json": "bdaa61feeed1ac4a0dfff3854fb76a2c2c74fbf6f72afee4b2c7bea36933bba2"
+  },
+  "planningEstimateReconciliation": {
+    "previousPlanningTargetCells": 6564,
+    "authoritativeDeliveredTargetCells": 6588,
+    "additionalCells": 24,
+    "additionalEnumDisplayIds": 2,
+    "enumDisplayIdsInFinalAudit": [
+      "Enforce",
+      "Friends only",
+      "Hermit"
+    ],
+    "sourceAudit": {
+      "input": "docs/localization/pr204-pending-translation-cells-9c6dcb22.jsonl",
+      "sha256": "027ba04ae68b21057b305650cc3523108686114fd16964f88ef31b12e89be835",
+      "sourceIds": 549,
+      "targetCells": 6588,
+      "cellsByCategory": {
+        "allowlistedServerErrorMissingTargets": 6324,
+        "existingEnglishIdenticalUiTargets": 228,
+        "federationSignatureEnumDisplayLabels": 36
+      }
+    },
+    "verifiedCatalogHead": "751e54a9dc514684e611bb6e350366775b1f38c7",
+    "verifiedCatalogTree": "5e4c9549bd8613245d021c3e742eeab78bc0a953",
+    "sourceCatalogHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+    "sourceCatalogTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+    "perLocale": {
+      "ar": {
+        "targetCells": 549,
+        "missingKeys": 0,
+        "nulls": 0,
+        "blankValues": 0,
+        "sourceIdenticalValues": 0,
+        "sourceAndTargetLedgerHashesMatched": 549
+      },
+      "de": {
+        "targetCells": 549,
+        "missingKeys": 0,
+        "nulls": 0,
+        "blankValues": 0,
+        "sourceIdenticalValues": 0,
+        "sourceAndTargetLedgerHashesMatched": 549
+      },
+      "es": {
+        "targetCells": 549,
+        "missingKeys": 0,
+        "nulls": 0,
+        "blankValues": 0,
+        "sourceIdenticalValues": 0,
+        "sourceAndTargetLedgerHashesMatched": 549
+      },
+      "fr": {
+        "targetCells": 549,
+        "missingKeys": 0,
+        "nulls": 0,
+        "blankValues": 0,
+        "sourceIdenticalValues": 0,
+        "sourceAndTargetLedgerHashesMatched": 549
+      },
+      "hi": {
+        "targetCells": 549,
+        "missingKeys": 0,
+        "nulls": 0,
+        "blankValues": 0,
+        "sourceIdenticalValues": 0,
+        "sourceAndTargetLedgerHashesMatched": 549
+      },
+      "id": {
+        "targetCells": 549,
+        "missingKeys": 0,
+        "nulls": 0,
+        "blankValues": 0,
+        "sourceIdenticalValues": 0,
+        "sourceAndTargetLedgerHashesMatched": 549
+      },
+      "ja": {
+        "targetCells": 549,
+        "missingKeys": 0,
+        "nulls": 0,
+        "blankValues": 0,
+        "sourceIdenticalValues": 0,
+        "sourceAndTargetLedgerHashesMatched": 549
+      },
+      "ko": {
+        "targetCells": 549,
+        "missingKeys": 0,
+        "nulls": 0,
+        "blankValues": 0,
+        "sourceIdenticalValues": 0,
+        "sourceAndTargetLedgerHashesMatched": 549
+      },
+      "pt-BR": {
+        "targetCells": 549,
+        "missingKeys": 0,
+        "nulls": 0,
+        "blankValues": 0,
+        "sourceIdenticalValues": 0,
+        "sourceAndTargetLedgerHashesMatched": 549
+      },
+      "vi": {
+        "targetCells": 549,
+        "missingKeys": 0,
+        "nulls": 0,
+        "blankValues": 0,
+        "sourceIdenticalValues": 0,
+        "sourceAndTargetLedgerHashesMatched": 549
+      },
+      "zh-Hans": {
+        "targetCells": 549,
+        "missingKeys": 0,
+        "nulls": 0,
+        "blankValues": 0,
+        "sourceIdenticalValues": 0,
+        "sourceAndTargetLedgerHashesMatched": 549
+      },
+      "zh-Hant": {
+        "targetCells": 549,
+        "missingKeys": 0,
+        "nulls": 0,
+        "blankValues": 0,
+        "sourceIdenticalValues": 0,
+        "sourceAndTargetLedgerHashesMatched": 549
+      }
+    }
   }
 }
