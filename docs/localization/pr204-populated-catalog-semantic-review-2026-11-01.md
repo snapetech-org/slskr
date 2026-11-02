@@ -5,7 +5,7 @@
 - Pull request: #204 remains open draft. The reviewed source/catalog revision is pinned at code head `7ff454828398de6a3cfb72fe7f0ed21fe419425b`, tree `9e9f2aa743c4ff3236af8f99619803bdc3a37152`; subsequent commits in this workstream contain evidence/docs only.
 - Direct catalog workload: 65,244 populated cells across 12 locales.
 - Cumulative review ledger after batch `5380–5399`: 49,024 reviewed or carried; 16,220 remain unreviewed. Dispositions: 37,861 accepted, 10,901 correction-needed, 262 held.
-- No catalog values have been changed from this populated-catalog audit. Correction proposals remain unapplied until the audit closes.
+- No catalog values have been changed from this exhaustive populated-catalog audit; its correction proposals remain unapplied while that audit is open. Separate exact-hash semantic windows applied eleven high-confidence proposals from indices 0–19, 43–62, 63–82, and 83–102. Their refreshed corrected-target ledger is `docs/pr-evidence/pr204-semantic-review-2026-11-01/applied-high-confidence-corrections-2026-11-01/applied-corrections.jsonl`; seven moderate-confidence suggestions remain unapplied.
 
 ## Window 5380–5399
 
