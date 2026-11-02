@@ -1,0 +1,43 @@
+{
+  "packetStatus": "sealed-third-party-adjudication",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "livePullRequest": {
+    "state": "OPEN",
+    "isDraft": true,
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "5f295feea832b3078c52d92d9268cd6446f804a5",
+    "baseRefName": "main"
+  },
+  "queriedAtUtc": "2026-11-02T21:52:41+00:00",
+  "exactHead": "5f295feea832b3078c52d92d9268cd6446f804a5",
+  "exactTree": "22c6c11a817777e2a0df3987acd5fc6bf938c9a7",
+  "primaryPacket": {
+    "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0883-0902-primary-20261102",
+    "sha256SumsSha256": "9572fd737e7c7b7ac5ff05c8cb6870ad630861bcf5481b55ad7b69c5b20170de",
+    "manifestSha256": "6aaa8184681c19728391cd3c64c6a4f6df358bc55fd838635a6564b86d09b901",
+    "reviewLedgerSha256": "a4cfb35b692c4ec394aac23013d84c0eb06001c30759d77011de091a95557a87"
+  },
+  "crossReviewPacket": {
+    "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0883-0902-crossreview-20261102",
+    "sha256SumsSha256": "0f393af14d7d78cda0e81e356abb1ce04326d32268efba40bc84f25857cf56ca",
+    "inputAttestationSha256": "84461df45618147f1abb72842e843f0939504508d7273a6708e3dbcc5b66d166",
+    "ledgerSha256": "dd2bada1bf135e7d416b9ad4c15728b107b528f1d397daecadbfda5c52d30771",
+    "externalReferencesSha256": "5c1fa565b77dc8b85a3430c2a40d5177c22e858f94f2aad9f8a3c900af2c1016"
+  },
+  "sourceAndCallerPins": {
+    "sourceWindowSha256": "f14a3e37379bfadf344c01827aa49a71ca881c30684643f9df5644314ec7e75c",
+    "callerPinsSha256": "0f43614cc5c7af84265cb5975fe0c7d83436d905525c2a2e2899e2bb1ae50166",
+    "glossaryPinsSha256": "36beb9aaa51ed832da705e377a6351c5edcf3b388c016d37c3073f4799001b07",
+    "catalogPinsSha256": "327db29ef5942a156180b58d978d7ac47f1bc91a0bc90e46e299e852a975bc9f"
+  },
+  "reviewedRows": {
+    "primaryProposals": 111,
+    "crossReviewedAcceptCurrentSampleRetained": 59,
+    "adjudicationRows": 113,
+    "additionalCorrections": 2
+  },
+  "repositoryEdits": false,
+  "testsBuildsScansCiBrowserRun": false,
+  "nativeSpeakerApproval": false
+}

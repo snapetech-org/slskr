@@ -1,0 +1,326 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W883-W902",
+  "zeroBasedSourceIndexInclusive": [
+    882,
+    901
+  ],
+  "head": "5f295feea832b3078c52d92d9268cd6446f804a5",
+  "tree": "22c6c11a817777e2a0df3987acd5fc6bf938c9a7",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "sourceCount": 20,
+  "cellCount": 240,
+  "counts": {
+    "accept-current": 129,
+    "propose-correction": 111
+  },
+  "candidateCorrectionCount": 111,
+  "holdCount": 0,
+  "catalogKeyCount": 5441,
+  "catalogsReattested": 12,
+  "callerFiles": 11,
+  "callerPins": 28,
+  "callerGaps": [],
+  "placeholderMismatches": 0,
+  "markupMismatches": 0,
+  "protectedLiteralMismatches": 0,
+  "localeFormalityChecks": 240,
+  "localeFormalityCheckResult": "pass: neutral interface copy; no second-person or imperative forms introduced",
+  "localeFormalitySummary": [
+    {
+      "locale": "ar",
+      "directCatalog": "web/src/lib/locales/ui-labels.ar.json",
+      "catalogKeysetMatch": true,
+      "terminologyReferenceSourceIndex": 870,
+      "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+      "visualOrRtlValidation": "not performed"
+    },
+    {
+      "locale": "de",
+      "directCatalog": "web/src/lib/locales/ui-labels.de.json",
+      "catalogKeysetMatch": true,
+      "terminologyReferenceSourceIndex": 870,
+      "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+      "visualOrRtlValidation": "not performed"
+    },
+    {
+      "locale": "es",
+      "directCatalog": "web/src/lib/locales/ui-labels.es.json",
+      "catalogKeysetMatch": true,
+      "terminologyReferenceSourceIndex": 870,
+      "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+      "visualOrRtlValidation": "not performed"
+    },
+    {
+      "locale": "fr",
+      "directCatalog": "web/src/lib/locales/ui-labels.fr.json",
+      "catalogKeysetMatch": true,
+      "terminologyReferenceSourceIndex": 870,
+      "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+      "visualOrRtlValidation": "not performed"
+    },
+    {
+      "locale": "hi",
+      "directCatalog": "web/src/lib/locales/ui-labels.hi.json",
+      "catalogKeysetMatch": true,
+      "terminologyReferenceSourceIndex": 870,
+      "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+      "visualOrRtlValidation": "not performed"
+    },
+    {
+      "locale": "id",
+      "directCatalog": "web/src/lib/locales/ui-labels.id.json",
+      "catalogKeysetMatch": true,
+      "terminologyReferenceSourceIndex": 870,
+      "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+      "visualOrRtlValidation": "not performed"
+    },
+    {
+      "locale": "ja",
+      "directCatalog": "web/src/lib/locales/ui-labels.ja.json",
+      "catalogKeysetMatch": true,
+      "terminologyReferenceSourceIndex": 870,
+      "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+      "visualOrRtlValidation": "not performed"
+    },
+    {
+      "locale": "ko",
+      "directCatalog": "web/src/lib/locales/ui-labels.ko.json",
+      "catalogKeysetMatch": true,
+      "terminologyReferenceSourceIndex": 870,
+      "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+      "visualOrRtlValidation": "not performed"
+    },
+    {
+      "locale": "pt-BR",
+      "directCatalog": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "catalogKeysetMatch": true,
+      "terminologyReferenceSourceIndex": 870,
+      "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+      "visualOrRtlValidation": "not performed"
+    },
+    {
+      "locale": "vi",
+      "directCatalog": "web/src/lib/locales/ui-labels.vi.json",
+      "catalogKeysetMatch": true,
+      "terminologyReferenceSourceIndex": 870,
+      "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+      "visualOrRtlValidation": "not performed"
+    },
+    {
+      "locale": "zh-Hans",
+      "directCatalog": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "catalogKeysetMatch": true,
+      "terminologyReferenceSourceIndex": 870,
+      "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+      "visualOrRtlValidation": "not performed"
+    },
+    {
+      "locale": "zh-Hant",
+      "directCatalog": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "catalogKeysetMatch": true,
+      "terminologyReferenceSourceIndex": 870,
+      "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+      "visualOrRtlValidation": "not performed"
+    }
+  ],
+  "unsourcedInheritedTargetSuffixIndices": [
+    892,
+    900,
+    901
+  ],
+  "nativeSpeakerApproval": false,
+  "headedBrowserReview": false,
+  "repositoryModified": false,
+  "sourceIds": [
+    "Content Registry",
+    "Content Search & Validation",
+    "Content descriptor not found for:",
+    "Content search and validation are read-only. Creating a content-linked pod can publish content identifiers and pod metadata depending on visibility settings.",
+    "Content-addressed FLAC fingerprints",
+    "ContentID",
+    "ContentID A",
+    "ContentID B",
+    "ContentID Examples",
+    "ContentID Validation",
+    "ContentID is required",
+    "ContentID to Validate",
+    "ContentID to find matches for",
+    "ContentID to update",
+    "ContentID:",
+    "ContentIDs",
+    "ContentIDs (one per line)",
+    "ContentId cannot be blank.",
+    "ContentId is required",
+    "ContentId is required."
+  ],
+  "boundarySourceIndices": [
+    881,
+    902
+  ],
+  "boundarySourceIds": [
+    "Content Publishing",
+    "Continue"
+  ],
+  "localeOrder": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "allSevenPullRequestsBeforeSelection": [
+    {
+      "repository": "seerrng",
+      "pullRequest": 418,
+      "baseRefOid": "221d8e0d542802da7529cd272c928cc747677e5c",
+      "headRefName": "codex/seerrng-localization-overhaul-20261028",
+      "headRefOid": "9242898e23f7f25d515d10b5b0b51df322e395fb",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/seerrng/pull/418"
+    },
+    {
+      "repository": "chaptarrng",
+      "pullRequest": 190,
+      "baseRefOid": "03274100af783fdffaca4dd8436e163dc6b18795",
+      "headRefName": "codex/chaptarrng-localization-complete-20261031",
+      "headRefOid": "961d3102ad3098ee188a6c87a0c88eea5f5ab332",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/chaptarrng/pull/190"
+    },
+    {
+      "repository": "QuestarrNG",
+      "pullRequest": 155,
+      "baseRefOid": "e188cd0c74c73071c94b04915e1babac2d2bf386",
+      "headRefName": "codex/localization-foundations-20261028",
+      "headRefOid": "be131f2d42988bb8f4a271e4df428985da15b53b",
+      "isDraft": false,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/QuestarrNG/pull/155"
+    },
+    {
+      "repository": "ROMarrNG",
+      "pullRequest": 70,
+      "baseRefOid": "bcd1eb41b5cdf8202acb5cf8e365e14761b743b5",
+      "headRefName": "task/localization-translation-review-20261030",
+      "headRefOid": "8e3820252b0c362e18e421b3a73e7ff1478d32a0",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/ROMarrNG/pull/70"
+    },
+    {
+      "repository": "slskR",
+      "pullRequest": 204,
+      "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+      "headRefName": "codex/slskr-l10n-audit-20261030",
+      "headRefOid": "5f295feea832b3078c52d92d9268cd6446f804a5",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/slskr/pull/204"
+    },
+    {
+      "repository": "slskdN",
+      "pullRequest": 409,
+      "baseRefOid": "f25d263a2a7cdb2c8f76c40c346cb10f749a9356",
+      "headRefName": "codex/slskdn-oidc-tooltip-localization-20261030",
+      "headRefOid": "fa097f9aa044a63981d0c16f6daa53837f815333",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/slskdN/pull/409"
+    },
+    {
+      "repository": "TorrentNG",
+      "pullRequest": 243,
+      "baseRefOid": "0de7ddcf2f16a4399da8fd7904dc35f458b4837c",
+      "headRefName": "codex/torrentng-localization-audit-20261030",
+      "headRefOid": "11ff6fa2618e842e92716b7e92867769200e32e5",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/TorrentNG/pull/243"
+    }
+  ],
+  "allSevenPullRequestsAfterSelection": [
+    {
+      "repository": "seerrng",
+      "pullRequest": 418,
+      "baseRefOid": "221d8e0d542802da7529cd272c928cc747677e5c",
+      "headRefName": "codex/seerrng-localization-overhaul-20261028",
+      "headRefOid": "9242898e23f7f25d515d10b5b0b51df322e395fb",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/seerrng/pull/418"
+    },
+    {
+      "repository": "chaptarrng",
+      "pullRequest": 190,
+      "baseRefOid": "03274100af783fdffaca4dd8436e163dc6b18795",
+      "headRefName": "codex/chaptarrng-localization-complete-20261031",
+      "headRefOid": "961d3102ad3098ee188a6c87a0c88eea5f5ab332",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/chaptarrng/pull/190"
+    },
+    {
+      "repository": "QuestarrNG",
+      "pullRequest": 155,
+      "baseRefOid": "e188cd0c74c73071c94b04915e1babac2d2bf386",
+      "headRefName": "codex/localization-foundations-20261028",
+      "headRefOid": "be131f2d42988bb8f4a271e4df428985da15b53b",
+      "isDraft": false,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/QuestarrNG/pull/155"
+    },
+    {
+      "repository": "ROMarrNG",
+      "pullRequest": 70,
+      "baseRefOid": "bcd1eb41b5cdf8202acb5cf8e365e14761b743b5",
+      "headRefName": "task/localization-translation-review-20261030",
+      "headRefOid": "8e3820252b0c362e18e421b3a73e7ff1478d32a0",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/ROMarrNG/pull/70"
+    },
+    {
+      "repository": "slskR",
+      "pullRequest": 204,
+      "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+      "headRefName": "codex/slskr-l10n-audit-20261030",
+      "headRefOid": "5f295feea832b3078c52d92d9268cd6446f804a5",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/slskr/pull/204"
+    },
+    {
+      "repository": "slskdN",
+      "pullRequest": 409,
+      "baseRefOid": "f25d263a2a7cdb2c8f76c40c346cb10f749a9356",
+      "headRefName": "codex/slskdn-oidc-tooltip-localization-20261030",
+      "headRefOid": "fa097f9aa044a63981d0c16f6daa53837f815333",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/slskdN/pull/409"
+    },
+    {
+      "repository": "TorrentNG",
+      "pullRequest": 243,
+      "baseRefOid": "0de7ddcf2f16a4399da8fd7904dc35f458b4837c",
+      "headRefName": "codex/torrentng-localization-audit-20261030",
+      "headRefOid": "11ff6fa2618e842e92716b7e92867769200e32e5",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/TorrentNG/pull/243"
+    }
+  ],
+  "testBuildCISecurityScansRun": false,
+  "targetedSourceCallerSearchRun": true
+}

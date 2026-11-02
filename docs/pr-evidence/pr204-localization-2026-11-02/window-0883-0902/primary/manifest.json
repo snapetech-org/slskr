@@ -1,0 +1,88 @@
+{
+  "packetStatus": "sealed-primary",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W883-W902",
+  "head": "5f295feea832b3078c52d92d9268cd6446f804a5",
+  "tree": "22c6c11a817777e2a0df3987acd5fc6bf938c9a7",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "sourceCount": 20,
+  "cellCount": 240,
+  "counts": {
+    "accept-current": 129,
+    "propose-correction": 111
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1624,
+      "sha256": "2a55a73ee50ab0a99dfed8646501d40752ab743b4cd1a92c808b031fca3d1f04"
+    },
+    {
+      "path": "boundary-pins.jsonl",
+      "bytes": 6848,
+      "sha256": "3b5fca579f90040ac545a470faca66741b4d5d7e4193912f2987ff6acd84e4e7"
+    },
+    {
+      "path": "caller-gaps.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "catalog-pins.jsonl",
+      "bytes": 2642,
+      "sha256": "327db29ef5942a156180b58d978d7ac47f1bc91a0bc90e46e299e852a975bc9f"
+    },
+    {
+      "path": "glossary-reference-pins.jsonl",
+      "bytes": 12648,
+      "sha256": "36beb9aaa51ed832da705e377a6351c5edcf3b388c016d37c3073f4799001b07"
+    },
+    {
+      "path": "live-head-after-selection.json",
+      "bytes": 3228,
+      "sha256": "e6343476c8b22c80127f5f06547c0267ff67286e0b8dea80b4707eee1bb8934c"
+    },
+    {
+      "path": "live-head.json",
+      "bytes": 3229,
+      "sha256": "8a2a1564420649c5b76a4061fc315166cdf28b1426c5472a0ca58e65b8e651ae"
+    },
+    {
+      "path": "locale-formality-checks.jsonl",
+      "bytes": 46892,
+      "sha256": "beb5929d88c34848afd605f232c16534af2ddf36e30734a0dee483458a83d365"
+    },
+    {
+      "path": "locale-formality-summary.json",
+      "bytes": 4361,
+      "sha256": "722b5e4024eff36e969408fdca20eee2cebfdc4eb6704bcb7c136aafae166715"
+    },
+    {
+      "path": "review-ledger.jsonl",
+      "bytes": 252467,
+      "sha256": "a4cfb35b692c4ec394aac23013d84c0eb06001c30759d77011de091a95557a87"
+    },
+    {
+      "path": "source-caller-pins.jsonl",
+      "bytes": 25552,
+      "sha256": "0f43614cc5c7af84265cb5975fe0c7d83436d905525c2a2e2899e2bb1ae50166"
+    },
+    {
+      "path": "source-window-and-boundaries.jsonl",
+      "bytes": 3669,
+      "sha256": "f14a3e37379bfadf344c01827aa49a71ca881c30684643f9df5644314ec7e75c"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 12045,
+      "sha256": "1b11fbe27d704a7ea09ac80dec9f94b62f1932f19042c85b6f99440c12e3ddb1"
+    },
+    {
+      "path": "terminology-sources.md",
+      "bytes": 3537,
+      "sha256": "6045b2deb9ee0802299ea35781143b6eb845e307807bfa3785b153b1d8fe9be4"
+    }
+  ],
+  "sha256SumsSha256": "9572fd737e7c7b7ac5ff05c8cb6870ad630861bcf5481b55ad7b69c5b20170de"
+}

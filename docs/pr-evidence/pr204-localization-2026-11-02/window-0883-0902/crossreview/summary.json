@@ -1,0 +1,60 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W883-W902",
+  "head": "5f295feea832b3078c52d92d9268cd6446f804a5",
+  "tree": "22c6c11a817777e2a0df3987acd5fc6bf938c9a7",
+  "crossReviewedCells": 172,
+  "primaryProposedCells": 111,
+  "primaryProposalsAccepted": 110,
+  "primaryNoOpReclassified": 1,
+  "sampledAcceptCurrentCells": 60,
+  "sampledAcceptCurrentRetained": 59,
+  "additionalCorrections": 2,
+  "sampleOverlapWithAdditionalCorrection": 1,
+  "approvedFinalChanges": 112,
+  "unchangedReviewedCells": 60,
+  "primaryHolds": 0,
+  "crossReviewHolds": 0,
+  "localeCount": 12,
+  "sampledAcceptCurrentPerLocale": 5,
+  "findings": [
+    {
+      "sourceIndex": 889,
+      "locale": "ko",
+      "kind": "primary-no-op",
+      "action": "retain-current",
+      "detail": "The primary “correction” is byte-for-byte identical to the target already present."
+    },
+    {
+      "sourceIndex": 888,
+      "locale": "zh-Hans",
+      "kind": "additional-correction",
+      "action": "remove-inconsistent-space",
+      "from": "内容 ID A",
+      "to": "内容ID A",
+      "detail": "Matches paired B target and exact locale glossary term."
+    },
+    {
+      "sourceIndex": 888,
+      "locale": "zh-Hant",
+      "kind": "additional-correction",
+      "action": "remove-inconsistent-space",
+      "from": "內容 ID A",
+      "to": "內容ID A",
+      "detail": "Matches paired B target and exact locale glossary term."
+    }
+  ],
+  "nativeSpeakerApproval": false,
+  "headedBrowserAcceptance": false,
+  "repositoryModified": false,
+  "testsBuildCIScansOrBrowserRun": false,
+  "livePrAtReview": {
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "5f295feea832b3078c52d92d9268cd6446f804a5",
+    "isDraft": true,
+    "number": 204,
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  }
+}

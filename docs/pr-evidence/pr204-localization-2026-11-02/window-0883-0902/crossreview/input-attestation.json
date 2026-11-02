@@ -1,0 +1,12 @@
+{
+  "primaryPacketPath": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0883-0902-primary-20261102",
+  "primaryManifestSha256": "6aaa8184681c19728391cd3c64c6a4f6df358bc55fd838635a6564b86d09b901",
+  "primarySha256sumsFileSha256": "9572fd737e7c7b7ac5ff05c8cb6870ad630861bcf5481b55ad7b69c5b20170de",
+  "primaryChecksumsVerified": true,
+  "exactHeadAndTreeVerified": true,
+  "livePrHeadVerified": true,
+  "sourceCells": 240,
+  "crossReviewCells": 172,
+  "catalogSnapshotRepositoryPath": "/home/keith/Documents/code/task-worktrees/localization-20261102-slskr",
+  "catalogsComparedUsingGitShowAtHead": "5f295feea832b3078c52d92d9268cd6446f804a5"
+}

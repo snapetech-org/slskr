@@ -1,0 +1,98 @@
+[
+  {
+    "locale": "ar",
+    "directCatalog": "web/src/lib/locales/ui-labels.ar.json",
+    "catalogKeysetMatch": true,
+    "terminologyReferenceSourceIndex": 870,
+    "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+    "visualOrRtlValidation": "not performed"
+  },
+  {
+    "locale": "de",
+    "directCatalog": "web/src/lib/locales/ui-labels.de.json",
+    "catalogKeysetMatch": true,
+    "terminologyReferenceSourceIndex": 870,
+    "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+    "visualOrRtlValidation": "not performed"
+  },
+  {
+    "locale": "es",
+    "directCatalog": "web/src/lib/locales/ui-labels.es.json",
+    "catalogKeysetMatch": true,
+    "terminologyReferenceSourceIndex": 870,
+    "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+    "visualOrRtlValidation": "not performed"
+  },
+  {
+    "locale": "fr",
+    "directCatalog": "web/src/lib/locales/ui-labels.fr.json",
+    "catalogKeysetMatch": true,
+    "terminologyReferenceSourceIndex": 870,
+    "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+    "visualOrRtlValidation": "not performed"
+  },
+  {
+    "locale": "hi",
+    "directCatalog": "web/src/lib/locales/ui-labels.hi.json",
+    "catalogKeysetMatch": true,
+    "terminologyReferenceSourceIndex": 870,
+    "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+    "visualOrRtlValidation": "not performed"
+  },
+  {
+    "locale": "id",
+    "directCatalog": "web/src/lib/locales/ui-labels.id.json",
+    "catalogKeysetMatch": true,
+    "terminologyReferenceSourceIndex": 870,
+    "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+    "visualOrRtlValidation": "not performed"
+  },
+  {
+    "locale": "ja",
+    "directCatalog": "web/src/lib/locales/ui-labels.ja.json",
+    "catalogKeysetMatch": true,
+    "terminologyReferenceSourceIndex": 870,
+    "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+    "visualOrRtlValidation": "not performed"
+  },
+  {
+    "locale": "ko",
+    "directCatalog": "web/src/lib/locales/ui-labels.ko.json",
+    "catalogKeysetMatch": true,
+    "terminologyReferenceSourceIndex": 870,
+    "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+    "visualOrRtlValidation": "not performed"
+  },
+  {
+    "locale": "pt-BR",
+    "directCatalog": "web/src/lib/locales/ui-labels.pt-BR.json",
+    "catalogKeysetMatch": true,
+    "terminologyReferenceSourceIndex": 870,
+    "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+    "visualOrRtlValidation": "not performed"
+  },
+  {
+    "locale": "vi",
+    "directCatalog": "web/src/lib/locales/ui-labels.vi.json",
+    "catalogKeysetMatch": true,
+    "terminologyReferenceSourceIndex": 870,
+    "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+    "visualOrRtlValidation": "not performed"
+  },
+  {
+    "locale": "zh-Hans",
+    "directCatalog": "web/src/lib/locales/ui-labels.zh-Hans.json",
+    "catalogKeysetMatch": true,
+    "terminologyReferenceSourceIndex": 870,
+    "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+    "visualOrRtlValidation": "not performed"
+  },
+  {
+    "locale": "zh-Hant",
+    "directCatalog": "web/src/lib/locales/ui-labels.zh-Hant.json",
+    "catalogKeysetMatch": true,
+    "terminologyReferenceSourceIndex": 870,
+    "formality": "Neutral headings, input labels, placeholders, and impersonal error/safety copy; no second-person or imperative forms introduced.",
+    "visualOrRtlValidation": "not performed"
+  }
+]
