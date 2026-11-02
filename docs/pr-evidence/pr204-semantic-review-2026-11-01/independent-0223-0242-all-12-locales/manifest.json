@@ -1,0 +1,225 @@
+{
+  "application_head": "5d0156003b5805b27c78b1289722a64ab30234a8",
+  "application_parent": "77af2a3c0fe50724e7021ced9b9fcd2f5fa61500",
+  "application_tree": "b9b0b5fc9b4c6e971be0c4179606ef6687ceb4a7",
+  "applied_corrections_ledger_sha256": "7fea4f12a576ce8337013114224c4ecded6778318fcd1e3600935c0dd7fb5dcb",
+  "batch": "independent-0223-0242-all-12-locales",
+  "batch_plan_sha256": "0a97d11d3ae874ddd8690be188fe0ca8278f8002e584bdcb663d62d0a3330902",
+  "browser_recapture_required": true,
+  "candidate_ledger_sha256": "31e64e95e86e212537131526220b36431c884d236d7b60ede3239804d6e5ac3d",
+  "candidate_supplement_sha256": "f9e0a3c6c8238200301927d40b7687390e7546cb9057f1b89739417f6d860d2e",
+  "catalog_cell_count": 65244,
+  "catalog_sha256_after": {
+    "web/src/lib/locales/ui-labels.ar.json": "b552bf07ddad5ab3f3eba84470eb3eedff453ec10cbdde3d72a9942a29a136ad",
+    "web/src/lib/locales/ui-labels.de.json": "c3b958f3272257866794c9585dbce5a361f74d37670b6f6c93a2c4966d8da655",
+    "web/src/lib/locales/ui-labels.es.json": "b1f54a96a5021b804ee3919ac9698fb92c828d6352b1579e8016bc0344960a18",
+    "web/src/lib/locales/ui-labels.fr.json": "d2a4dc588cf517e76b09706a7c79bb887a54ee36feccc7ef647a2539e4054a60",
+    "web/src/lib/locales/ui-labels.hi.json": "faba4d6c06e3fb16eadea0394a0c89ef8fcf6034dced2395d90c3395cc1ac89a",
+    "web/src/lib/locales/ui-labels.id.json": "58a8248e3114aaa76c2a1deb4a52b3d70661c6709d7aac61a6e98b846d104367",
+    "web/src/lib/locales/ui-labels.ja.json": "ac2a23fda32a3a0c63fb7295c64fe0f9646a3c35e623c42e8022c5d7873d03ab",
+    "web/src/lib/locales/ui-labels.ko.json": "31a517f3706c8ef934c59161e826b7b6b5f4a689a3e0ee1bde0bc05184906a36",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "3596021da653bd975b70bdb9ec7bdf92e6fbee8dc58e46cc05fb973d412ba1dc",
+    "web/src/lib/locales/ui-labels.vi.json": "95a7ccafd9f963997e03666544b5e52055b5de7c1446708537c9deabdf64be95",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "ce53e0ad5dfdb9433d59a22ec7fc51ad173df4c13166d92133ed742035e56f8f",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "095b57e9322610d3cd4080fdc4ad3394ac8e83f7acbb0783e0d4c01ebcad7be3"
+  },
+  "catalog_sha256_before": {
+    "web/src/lib/locales/ui-labels.ar.json": "b9296aa2a97d356b354467592bdde2bd3ccd7ddab6788da28ea2740d16b42967",
+    "web/src/lib/locales/ui-labels.de.json": "6acd39320e5b49928409a7cbba8faac0108045371183751c54b1bdc3a7edaad8",
+    "web/src/lib/locales/ui-labels.es.json": "97bd6291da38b8cf58c92dc6b57b8bd4c80a98d0faae48cb9ea17e310434ca23",
+    "web/src/lib/locales/ui-labels.fr.json": "db9a73b188ed4eef4e6a6f0bd4e21ae197dcceb16f1d3a22db220d4912819d50",
+    "web/src/lib/locales/ui-labels.hi.json": "5c8004cf6df65bb653ad0a396ee4dce2bac9906b0f25e5464df6c5352866fc9d",
+    "web/src/lib/locales/ui-labels.id.json": "b1781f7893d77988e7cc21333a58b20e58ede03020bd6b7e29e00dce8e5f5e76",
+    "web/src/lib/locales/ui-labels.ja.json": "ac2a23fda32a3a0c63fb7295c64fe0f9646a3c35e623c42e8022c5d7873d03ab",
+    "web/src/lib/locales/ui-labels.ko.json": "da6c6d081bb34e0f8c1560ab388eaaff72662e5a0cd9e9286b98368666f92bef",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "e57cc2c39cc4ff873fa4837fd092c5861f29b2575c5713de3a30f824d9af4535",
+    "web/src/lib/locales/ui-labels.vi.json": "89ade0211c2e96ee2f950116ea471e42578b2a120f024bd5f7f94df7802584ea",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "a8a78eade1d37d18c483de015a47a68a5473217399db2c8fafd7b22a03d5b128",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "9273dfaa8280eea3ebd0bae8ecf92979ef0ced643e55d16bb81e2aa41c234643"
+  },
+  "conflict_reconciliation_rows": 1,
+  "correction_catalog_file_count": 11,
+  "corrections_applied": 25,
+  "final_window_partition": {
+    "accepted_carries": 132,
+    "conflicts": 0,
+    "fresh_accepted": 83,
+    "fresh_corrected": 6,
+    "holds": 0,
+    "prior_accepted_correction_resolved_by_cross_review": 1,
+    "prior_corrections_applied": 18
+  },
+  "fresh_audit_cell_count": 89,
+  "full_cell_audit_count": 240,
+  "locale_quality_confidence": "moderate without native-speaker approval",
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "native_speaker_approval": false,
+  "overlap_partition_at_review_head": {
+    "conflicts": 0,
+    "fresh": 89,
+    "prior_accepted": 133,
+    "prior_correction-needed": 18
+  },
+  "per_locale_review_head_partition": {
+    "ar": {
+      "new": 12,
+      "prior_accepted": 4,
+      "prior_correction-needed": 4
+    },
+    "de": {
+      "new": 15,
+      "prior_accepted": 4,
+      "prior_correction-needed": 1
+    },
+    "es": {
+      "new": 16,
+      "prior_accepted": 4
+    },
+    "fr": {
+      "new": 16,
+      "prior_accepted": 4
+    },
+    "hi": {
+      "new": 15,
+      "prior_accepted": 3,
+      "prior_correction-needed": 2
+    },
+    "id": {
+      "new": 15,
+      "prior_accepted": 4,
+      "prior_correction-needed": 1
+    },
+    "ja": {
+      "prior_accepted": 20
+    },
+    "ko": {
+      "prior_accepted": 17,
+      "prior_correction-needed": 3
+    },
+    "pt-BR": {
+      "prior_accepted": 19,
+      "prior_correction-needed": 1
+    },
+    "vi": {
+      "prior_accepted": 16,
+      "prior_correction-needed": 4
+    },
+    "zh-Hans": {
+      "prior_accepted": 19,
+      "prior_correction-needed": 1
+    },
+    "zh-Hant": {
+      "prior_accepted": 19,
+      "prior_correction-needed": 1
+    }
+  },
+  "placeholder_and_literal_checks": {
+    "cells_checked": 240,
+    "icu_messages": 0,
+    "placeholder_sets_preserved": true,
+    "protected_literals_changed": 0,
+    "protected_literals_checked": true
+  },
+  "prior_accepted_conflict_resolution": {
+    "locale": "pt-BR",
+    "resolution": "root independent review accepted corrected target and explicitly superseded the exact prior accepted status",
+    "source_id": "Algorithm Accuracy:"
+  },
+  "prior_overlap_scan": {
+    "canonical_manifest_sha256": "98e622a8fb4166f3626082d3d0e578038f1f7238b7a76dfbf64356f017db894b",
+    "input_count": 810,
+    "manifest_file_sha256": "4890b85e614d91cf0550a8d94c6edcdbc504df555d0110e29291c3d090d97221"
+  },
+  "review_head": "77af2a3c0fe50724e7021ced9b9fcd2f5fa61500",
+  "review_tree": "365a3fef336340c614d84a4a0fae9a4b3375f38d",
+  "root_apply_plan_sha256": "c794e9fe7c571fb38725d2813829681d21f337d1055ddb1c22ff1a896c8762a5",
+  "root_cross_review_ledger_sha256": "1dfc44cdd0d5b8b18430fa213c98cee0b647f8c1124269b61a8b3ace4f9daf62",
+  "selected_cell_count": 240,
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_context": {
+    "evidence_text_sha256": "e090e8600eb9b9bf728921bfb4c5c85776e45f950d06942ae00a1c9b0f836f9a",
+    "file": "source-context.txt",
+    "git_blob_ids": {
+      "web/src/components/PlaylistIntake/PlaylistIntake.jsx": "162c8fb6dff17671f35471b4bae605da08b90447",
+      "web/src/components/Search/AlbumCompletionPanel.jsx": "ad0be5147a9b213cd72b3566081424c68436144f",
+      "web/src/components/Search/Detail/SearchResultControls.jsx": "f6ec8606ad6420be75d2cde695815e31b86bd448",
+      "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx": "2aa163337ab944a655b7869ea98297beda838627",
+      "web/src/components/Search/MusicBrainzLookup.jsx": "c4a8467e5c292f4f38b8e7e31ba8bb2efc51822d",
+      "web/src/components/Search/SearchesListView.jsx": "a8864fa20454a01cf52bd7d2043e5e3c5e5ba854",
+      "web/src/components/Search/SongIDAnalysisResults.jsx": "ddae669325bb2abe51c7b5c80fc1546174350e73",
+      "web/src/components/System/ExperienceSettings/index.jsx": "fbe8caabfc30e03809dc5ae7051bddb731986956",
+      "web/src/components/System/Integrations/LidarrPanel.jsx": "3bb24c3fb94ceb4815dce12999fbacb898437e83",
+      "web/src/components/System/Integrations/MetadataSettingsPanel.jsx": "0d0ffc8e16a072970a51604bd95d76f7f796669f",
+      "web/src/components/System/LibraryHealth/index.jsx": "644c76751793b2bd45057a0191a054d74f547d36",
+      "web/src/components/System/MediaCore/MediaCoreContentHashingPanel.jsx": "cbe36436c936b1fcca220da0915288759f5a0aa3",
+      "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx": "2abab8a5496df8cdd48e7acf32b479c7ecba6c23",
+      "web/src/components/System/Shares/ShareTable.jsx": "1d10c4519f2e4348eba4b514a0270a474c47118c",
+      "web/src/lib/acquisitionProfiles.js": "8708137fd8763e4a33bec1571a14f28153ee4189",
+      "web/src/lib/mediaServerIntegrations.js": "cb7ea2f94c4db646873aad3fab6a59ebaefad341",
+      "web/src/lib/playlistIntake.js": "c7e71e5895094e5450e8ab82deeaba34c3c373fb"
+    },
+    "sha256": {
+      "web/src/components/PlaylistIntake/PlaylistIntake.jsx": "a978f80c022835c003d35db99b38037dee622c6456d9cbc46688f810867e3ae6",
+      "web/src/components/Search/AlbumCompletionPanel.jsx": "4309592946899eff2dfca8c0eebe775116eeed5b18cabde7129b19e33c9075f5",
+      "web/src/components/Search/Detail/SearchResultControls.jsx": "1f2880630f893cfc8361fb40a4ad4e9e07d01da96202b7ac36054c860124da46",
+      "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx": "9ab139ea6514100de0cef711e2aa5e26745bcc9936c965a9028c2591e6338471",
+      "web/src/components/Search/MusicBrainzLookup.jsx": "74ebbf919451330b3bf0749e808d44d916e3b9d96bbfbb3acddba01ccd97c430",
+      "web/src/components/Search/SearchesListView.jsx": "a412a0815d836e14c0e62feb36be929c1792bc64bcf10f213520c4609d028482",
+      "web/src/components/Search/SongIDAnalysisResults.jsx": "f1468f5e7ffc69840fe8ff8317518f55ed02a2c727c84d35df87ad6a1c0fde28",
+      "web/src/components/System/ExperienceSettings/index.jsx": "ba7826de4b32bc9506d5926e6243623ccc3104da43706ce7a57fe4b17bcf2f30",
+      "web/src/components/System/Integrations/LidarrPanel.jsx": "6fff815fc95b10400d84970dfa25f8bdf05d5bb360d719a3cf7f1cc62bcab8ea",
+      "web/src/components/System/Integrations/MetadataSettingsPanel.jsx": "e5aaf906b4cfc6e17ef8706bc95efb660b0eda2748bf2dad1c411ee9621d6339",
+      "web/src/components/System/LibraryHealth/index.jsx": "93770b1489c22b54d631d90b593a86e0eca30ca4475d3b1472c1af60604c1d2b",
+      "web/src/components/System/MediaCore/MediaCoreContentHashingPanel.jsx": "ab7783c0f29868f38cd4d7a94eaafd992bf03948b4ba8be76a8a5045e16ed601",
+      "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx": "34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60",
+      "web/src/components/System/Shares/ShareTable.jsx": "4ff14bb5e9d7ed6ab181811b832a2d30d3f52411eb35e8f3205b75473628a180",
+      "web/src/lib/acquisitionProfiles.js": "014d4977e503569f658b3809d918b6401b3b6e9699e4228a28a16760c4b0282b",
+      "web/src/lib/mediaServerIntegrations.js": "7e97c9c2c5bb798c28fdb21b7028e0abc093ec7b7fe97e9179887bc7ef668e05",
+      "web/src/lib/playlistIntake.js": "d5569d0d7e861a1521ddce103b27bdd1b93f3a0352a998de1fc3322cd419bade"
+    }
+  },
+  "source_ids": [
+    "Album",
+    "Album / 01 - Artist - Title",
+    "Album Complete",
+    "Album Completion",
+    "Album ReplayGain after import",
+    "Album art",
+    "Album candidates",
+    "Album complete",
+    "Album completion status",
+    "Album title",
+    "Albums",
+    "Algorithm",
+    "Algorithm Accuracy:",
+    "Algorithm Breakdown:",
+    "Algorithm:",
+    "Alias",
+    "Aligned",
+    "All",
+    "All Games",
+    "All Issues"
+  ],
+  "source_index_end_inclusive": 242,
+  "source_index_start": 223,
+  "source_key_count": 5437,
+  "visual_check": {
+    "file": "headed-visual-check.md",
+    "sha256": "c723e2a0900821da670469acc28e0d9f713d9187cd74f9fd89b9aecfbd9d0478",
+    "status": "blocked"
+  }
+}

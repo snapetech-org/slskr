@@ -1,0 +1,490 @@
+Exact source/context bundle for source catalog commit 7ff454828398de6a3cfb72fe7f0ed21fe419425b (tree 9e9f2aa743c4ff3236af8f99619803bdc3a37152).
+Each excerpt is read from the pinned commit; line numbers are source line numbers.
+
+### web/src/components/Search/DiscoveryGraphAtlasPanel.jsx | blob 2aa163337ab944a655b7869ea98297beda838627 | sha256 9ab139ea6514100de0cef711e2aa5e26745bcc9936c965a9028c2591e6338471
+-- lines 20-35
+20:   List,
+21:   Popup,
+22:   Segment,
+23: } from 'semantic-ui-react';
+24: 
+25: const scopeOptions = [
+26:   { key: 'songid_run', get text() { return interfaceText("Song / Unknown Seed"); }, value: 'songid_run' },
+27:   { key: 'track', get text() { return interfaceText("Track"); }, value: 'track' },
+28:   { key: 'album', get text() { return interfaceText("Album"); }, value: 'album' },
+29:   { key: 'artist', get text() { return interfaceText("Artist"); }, value: 'artist' },
+30: ];
+31: 
+32: const normalizeGraph = (payload) => {
+33:   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
+34:     return null;
+35:   }
+-- lines 330-348
+330:               onChange={(event) => setArtist(event.target.value)}
+331:               placeholder={interfaceText("Artist name")}
+332:               value={artist}
+333:              {...interfaceTextProps("Artist")}/>
+334:           </Form.Field>
+335:           <Form.Field>
+336:             <Input
+337:               disabled={disabled || loading}
+338:               label={interfaceText("Album")}
+339:               onChange={(event) => setAlbum(event.target.value)}
+340:               placeholder={interfaceText("Album title")}
+341:               value={album}
+342:              {...interfaceTextProps("Album")}/>
+343:           </Form.Field>
+344:           <Form.Field>
+345:             <Input
+346:               disabled={disabled || loading}
+347:               label={interfaceText("Title")}
+348:               onChange={(event) => setTitle(event.target.value)}
+
+### web/src/components/Search/MusicBrainzLookup.jsx | blob c4a8467e5c292f4f38b8e7e31ba8bb2efc51822d | sha256 74ebbf919451330b3bf0749e808d44d916e3b9d96bbfbb3acddba01ccd97c430
+-- lines 165-176
+165:     }
+166: 
+167:     if (target.album) {
+168:       return (
+169:         <List>
+170:           <List.Item>
+171:             <List.Header><LocalizedText source={"Album"} /></List.Header>
+172:             <List.Description>
+173:               {target.album.title || <LocalizedText source={"Untitled album"} />} · {target.album.artist} ·{' '}
+174:               {formatRegionalNumber(target.album.tracks?.length ?? 0)} <LocalizedText source={"tracks"} /></List.Description>
+175:           </List.Item>
+176:         </List>
+
+### web/src/components/System/Integrations/LidarrPanel.jsx | blob 3bb24c3fb94ceb4815dce12999fbacb898437e83 | sha256 6fff815fc95b10400d84970dfa25f8bdf05d5bb360d719a3cf7f1cc62bcab8ea
+-- lines 250-260
+250:             celled
+251:             compact
+252:           >
+253:             <Table.Header>
+254:               <Table.Row>
+255:                 <Table.HeaderCell><LocalizedText source={"Artist"} /></Table.HeaderCell>
+256:                 <Table.HeaderCell><LocalizedText source={"Album"} /></Table.HeaderCell>
+257:               </Table.Row>
+258:             </Table.Header>
+259:             <Table.Body>
+260:               {wanted.slice(0, 10).map((album) => (
+
+### web/src/lib/playlistIntake.js | blob c7e71e5895094e5450e8ab82deeaba34c3c373fb | sha256 d5569d0d7e861a1521ddce103b27bdd1b93f3a0352a998de1fc3322cd419bade
+-- lines 16-31
+16: export const organizationPathTemplates = [
+17:   {
+18:     key: 'artist-album-track-title',
+19:     text: 'Artist / Album / 01 - Title',
+20:     value: '{artist}/{album}/{trackNumber} - {title}',
+21:   },
+22:   {
+23:     key: 'album-track-artist-title',
+24:     text: 'Album / 01 - Artist - Title',
+25:     value: '{album}/{trackNumber} - {artist} - {title}',
+26:   },
+27:   {
+28:     key: 'playlist-track-artist-title',
+29:     text: 'Playlist / 01 - Artist - Title',
+30:     value: '{playlist}/{trackNumber} - {artist} - {title}',
+31:   },
+-- lines 70-85
+70: export const replayGainPolicies = [
+71:   {
+72:     key: 'skip',
+73:     text: 'Do not run ReplayGain',
+74:     value: 'skip',
+75:   },
+76:   {
+77:     key: 'album',
+78:     text: 'Album ReplayGain after import',
+79:     value: 'album',
+80:   },
+81:   {
+82:     key: 'track',
+83:     text: 'Track ReplayGain after import',
+84:     value: 'track',
+85:   },
+-- lines 745-760
+745:     generatedAt,
+746:     networkImpact:
+747:       'Tag and organization dry run only; no tag write, cover-art write, ReplayGain run, file move, provider lookup, Soulseek search, peer browse, or download has started.',
+748:     options: {
+749:       ...normalizedOptions,
+750:       albumTitle,
+751:     },
+752:     replayGainAction:
+753:       normalizedOptions.replayGainPolicy === 'skip'
+754:         ? 'ReplayGain will not run.'
+755:         : `${normalizedOptions.replayGainPolicy === 'album' ? 'Album' : 'Track'} ReplayGain would run after explicit import approval.`,
+756:     skippedTracks: skippedTracks.map((track) => ({
+757:       reason: `${track.state} rows are not included in tag-write previews.`,
+758:       title: [track.artist, track.title].filter(Boolean).join(' - ') || track.title,
+759:       trackId: track.id,
+760:     })),
+
+### web/src/lib/acquisitionProfiles.js | blob 8708137fd8763e4a33bec1571a14f28153ee4189 | sha256 014d4977e503569f658b3809d918b6401b3b6e9699e4228a28a16760c4b0282b
+-- lines 17-25
+17:   },
+18:   {
+19:     description: 'Prefer complete album folders with coherent release evidence.',
+20:     icon: 'list alternate outline',
+21:     id: 'album-complete',
+22:     label: 'Album Complete',
+23:     summary: 'Expected track count, folder consistency, album-first ranking.',
+24:   },
+25:   {
+
+### web/src/components/Search/SearchesListView.jsx | blob a8864fa20454a01cf52bd7d2043e5e3c5e5ba854 | sha256 a412a0815d836e14c0e62feb36be929c1792bc64bcf10f213520c4609d028482
+-- lines 414-426
+414:        {...interfaceTextProps("Discovery Graph Atlas")}>
+415:         <DiscoveryGraphAtlasPanel disabled={!normalizedServer.isConnected} />
+416:       </CollapsibleSection>
+417:       <CollapsibleSection
+418:         defaultOpen={false}
+419:         storageKey="slskr.search.section.albumCompletion"
+420:         title={interfaceText("Album Completion")}
+421:        {...interfaceTextProps("Album Completion")}>
+422:         <AlbumCompletionPanel disabled={!normalizedServer.isConnected} />
+423:       </CollapsibleSection>
+424:     </>
+425:   );
+426: };
+
+### web/src/components/System/ExperienceSettings/index.jsx | blob fbe8caabfc30e03809dc5ae7051bddb731986956 | sha256 ba7826de4b32bc9506d5926e6243623ccc3104da43706ce7a57fe4b17bcf2f30
+-- lines 112-123
+112:   scrobbleMode: [
+113:     { key: 'manual', get text() { return interfaceText("Manual"); }, value: 'manual' },
+114:     { key: 'review', get text() { return interfaceText("Review before send"); }, value: 'review' },
+115:     { key: 'off', get text() { return interfaceText("Off"); }, value: 'off' },
+116:   ],
+117:   visualizerDefault: [
+118:     { key: 'last', get text() { return interfaceText("Last used"); }, value: 'last' },
+119:     { key: 'art', get text() { return interfaceText("Album art"); }, value: 'art' },
+120:     { key: 'rustymilk-webgl2', get text() { return interfaceText("RustyMilk WebGL2"); }, value: 'rustymilk-webgl2' },
+121:     { key: 'rustymilk-webgpu', get text() { return interfaceText("RustyMilk WebGPU"); }, value: 'rustymilk-webgpu' },
+122:   ],
+123: };
+
+### web/src/components/Search/Detail/SearchResultControls.jsx | blob f6ec8606ad6420be75d2cde695815e31b86bd448 | sha256 1f2880630f893cfc8361fb40a4ad4e9e07d01da96202b7ac36054c860124da46
+-- lines 277-290
+277:         {loaded && albumCandidates.length > 0 && (
+278:           <Segment
+279:             className="search-album-picker-segment"
+280:             raised
+281:           >
+282:             <Header as="h4" lang={languageFor('Album candidates')} dir={directionFor('Album candidates')}>
+283:               {t('Album candidates')}
+284:               <Label
+285:                 color="blue"
+286:                 size="mini"
+287:               >
+288:                 {albumCandidates.length}
+289:               </Label>
+290:             </Header>
+
+### web/src/components/Search/AlbumCompletionPanel.jsx | blob ad0be5147a9b213cd72b3566081424c68436144f | sha256 4309592946899eff2dfca8c0eebe775116eeed5b18cabde7129b19e33c9075f5
+-- lines 95-135
+95:   if (disabled) {
+96:     return (
+97:       <Segment
+98:         className="album-completion-segment"
+99:         raised
+100:       >
+101:         <Header as="h4"><LocalizedText source={"Album completion status"} /></Header>
+102:         <p><LocalizedText source={"Connect to the server to view album targets and track progress."} /></p>
+103:       </Segment>
+104:     );
+105:   }
+106: 
+107:   return (
+108:     <Segment
+109:       className="album-completion-segment"
+110:       loading={loading}
+111:       raised
+112:     >
+113:       <Header as="h4">
+114:         <LocalizedText source={"Album completion status"} /><Button
+115:           disabled={loading}
+116:           floated="right"
+117:           onClick={loadAlbums}
+118:           size="mini"
+119:         >
+120:           <LocalizedText source={"Refresh"} /></Button>
+121:       </Header>
+122:       {error && (
+123:         <Message
+124:           content={String(error)}
+125:           negative
+126:         />
+127:       )}
+128:       {!albumCount && !loading && !error && (
+129:         <p>
+130:           <LocalizedText source={"No album targets yet. Resolve a MusicBrainz release or recording to start tracking completion."} /></p>
+131:       )}
+132:       <div className="album-completion-list">
+133:         {displayAlbums.map((album) => {
+134:           const missingTracks = album.tracks.filter((track) => !track.complete);
+135:           const ratio = album.totalTracks > 0
+-- lines 205-216
+205:                     ))}
+206:                   </List>
+207:                 </div>
+208:               ) : (
+209:                 <Label
+210:                   color="teal"
+211:                   size="mini"
+212:                 >
+213:                   <LocalizedText source={"Album complete"} /></Label>
+214:               )}
+215:             </Segment>
+216:           );
+
+### web/src/components/PlaylistIntake/PlaylistIntake.jsx | blob 162c8fb6dff17671f35471b4bae605da08b90447 | sha256 a978f80c022835c003d35db99b38037dee622c6456d9cbc46688f810867e3ae6
+-- lines 378-390
+378:                         <LocalizedText source={"Dry-run tag, cover-art, ReplayGain, and path decisions before any file write."} /></Header.Subheader>
+379:                     </Header>
+380:                     <Form>
+381:                       <Form.Group widths="equal">
+382:                         <Form.Input
+383:                           aria-label={interfaceText("Organization album title for {name}", { "name": (playlist.name) })}
+384:                           label={interfaceText("Album title")}
+385:                           onChange={(event) =>
+386:                             setOrganizationInput(
+387:                               playlist,
+388:                               'albumTitle',
+389:                               event.target.value,
+390:                             )
+
+### web/src/components/Search/SongIDAnalysisResults.jsx | blob ddae669325bb2abe51c7b5c80fc1546174350e73 | sha256 f1468f5e7ffc69840fe8ff8317518f55ed02a2c727c84d35df87ad6a1c0fde28
+-- lines 386-400
+386:                 ))}
+387:               </List>
+388:             </>
+389:           ) : null}
+390: 
+391:           {Array.isArray(run.albums) && run.albums.length > 0 ? (
+392:             <>
+393:               <Header as="h5"><LocalizedText source={"Albums"} /></Header>
+394:               <List divided relaxed>
+395:                 {run.albums.map((candidate) => (
+396:                   <List.Item key={candidate.candidateId}>
+397:                     <List.Content floated="right">
+398:                       <Button.Group size="small">
+399:                         <Popup
+400:                           content={interfaceText("Resolve and cache this MusicBrainz release in slskr so album completion and downstream download workflows can use it.")}
+
+### web/src/components/System/Integrations/MetadataSettingsPanel.jsx | blob 0d0ffc8e16a072970a51604bd95d76f7f796669f | sha256 e5aaf906b4cfc6e17ef8706bc95efb660b0eda2748bf2dad1c411ee9621d6339
+-- lines 448-462
+448:                  {...interfaceTextProps("Enable Chromaprint fingerprinting")}/>
+449:               }
+450:              {...interfaceTextProps("Enable local audio fingerprint generation through ffmpeg and Chromaprint. This only changes YAML; scans still run through explicit feature workflows.")}/>
+451:             <Form.Group widths="equal">
+452:               <Form.Select
+453:                 aria-label={interfaceText("Chromaprint algorithm")}
+454:                 disabled={!remoteConfiguration || saving}
+455:                 label={interfaceText("Algorithm")}
+456:                 onChange={(_, { value }) => update('chromaprintAlgorithm', value)}
+457:                 options={chromaprintAlgorithmOptions}
+458:                 value={form.chromaprintAlgorithm}
+459:                {...interfaceTextProps("Chromaprint algorithm")}/>
+460:               <Form.Input
+461:                 aria-label={interfaceText("Chromaprint ffmpeg path")}
+462:                 disabled={!remoteConfiguration || saving}
+
+### web/src/components/System/MediaCore/MediaCoreContentHashingPanel.jsx | blob cbe36436c936b1fcca220da0915288759f5a0aa3 | sha256 ab7783c0f29868f38cd4d7a94eaafd992bf03948b4ba8be76a8a5045e16ed601
+-- lines 125-140
+125:                 <LocalizedText source={"Audio Perceptual Hash"} /></Card.Header>
+126:               <Card.Description>
+127:                 <LocalizedText source={"Compute perceptual hash for audio similarity detection"} /></Card.Description>
+128:             </Card.Content>
+129:             <Card.Content>
+130:               <Form>
+131:                 <Form.Group widths="equal">
+132:                   <Form.Field>
+133:                     <label><LocalizedText source={"Algorithm"} /></label>
+134:                     <Dropdown
+135:                       onChange={(e, { value }) => setAudioAlgorithm(value)}
+136:                       options={
+137:                         supportedAlgorithms?.algorithms?.map((alg) => ({
+138:                           key: alg,
+139:                           text: alg,
+140:                           value: alg,
+-- lines 174-190
+174:               {audioHashResult && (
+175:                 <div style={{ marginTop: '1em' }}>
+176:                   {audioHashResult.error ? (
+177:                     <Message error>
+178:                       <p>{audioHashResult.error}</p>
+179:                     </Message>
+180:                   ) : (
+181:                     <Message success>
+182:                       <Message.Header><LocalizedText source={"Audio Hash Computed"} /></Message.Header>
+183:                       <p>
+184:                         <strong><LocalizedText source={"Algorithm:"} /></strong> {audioHashResult.algorithm}
+185:                         <br />
+186:                         <strong><LocalizedText source={"Hex Hash:"} /></strong> {audioHashResult.hex}
+187:                         <br />
+188:                         <strong><LocalizedText source={"Sample Count:"} /></strong>{' '}
+189:                         {audioSamples.split(',').filter((s) => s.trim()).length}
+190:                       </p>
+-- lines 205-220
+205:                 <LocalizedText source={"Image Perceptual Hash"} /></Card.Header>
+206:               <Card.Description>
+207:                 <LocalizedText source={"Compute perceptual hash for image similarity detection"} /></Card.Description>
+208:             </Card.Content>
+209:             <Card.Content>
+210:               <Form>
+211:                 <Form.Group widths="equal">
+212:                   <Form.Field>
+213:                     <label><LocalizedText source={"Algorithm"} /></label>
+214:                     <Dropdown
+215:                       onChange={(e, { value }) => setImageAlgorithm(value)}
+216:                       options={
+217:                         supportedAlgorithms?.algorithms
+218:                           ?.filter((alg) => alg !== 'ChromaPrint')
+219:                           .map((alg) => ({
+220:                             key: alg,
+-- lines 262-278
+262:               {imageHashResult && (
+263:                 <div style={{ marginTop: '1em' }}>
+264:                   {imageHashResult.error ? (
+265:                     <Message error>
+266:                       <p>{imageHashResult.error}</p>
+267:                     </Message>
+268:                   ) : (
+269:                     <Message success>
+270:                       <Message.Header><LocalizedText source={"Image Hash Computed"} /></Message.Header>
+271:                       <p>
+272:                         <strong><LocalizedText source={"Algorithm:"} /></strong> {imageHashResult.algorithm}
+273:                         <br />
+274:                         <strong><LocalizedText source={"Hex Hash:"} /></strong> {imageHashResult.hex}
+275:                         <br />
+276:                         <strong><LocalizedText source={"Dimensions:"} /></strong> {imageWidth}<LocalizedText source={"x"} />{imageHeight}
+277:                       </p>
+278:                     </Message>
+
+### web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx | blob 2abab8a5496df8cdd48e7acf32b479c7ecba6c23 | sha256 34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60
+-- lines 456-474
+456:                     {fuzzyMatchingStats.accuracyByAlgorithm &&
+457:                       Object.keys(fuzzyMatchingStats.accuracyByAlgorithm)
+458:                         .length > 0 && (
+459:                         <div style={{ marginTop: '0.5em' }}>
+460:                           <strong><LocalizedText source={"Algorithm Accuracy:"} /></strong>
+461:                           {Object.entries(
+462:                             fuzzyMatchingStats.accuracyByAlgorithm,
+463:                           ).map(([algorithm, stats]) => (
+464:                             <div
+465:                               key={algorithm}
+466:                               style={{ margin: '0.2em 0' }}
+467:                             >
+468:                               <small>
+469:                                 {algorithm}<LocalizedText source={": F1="} />{formatRegionalFixedNumber(stats.f1Score, 2)}<LocalizedText source={", Precision="} />{formatRegionalFixedNumber(stats.precision, 2)}
+470:                               </small>
+471:                             </div>
+472:                           ))}
+473:                         </div>
+474:                       )}
+-- lines 527-544
+527:                     {perceptualHashingStats.statsByAlgorithm &&
+528:                       Object.keys(perceptualHashingStats.statsByAlgorithm)
+529:                         .length > 0 && (
+530:                         <div style={{ marginTop: '0.5em' }}>
+531:                           <strong><LocalizedText source={"Algorithm Breakdown:"} /></strong>
+532:                           {Object.entries(
+533:                             perceptualHashingStats.statsByAlgorithm,
+534:                           ).map(([algorithm, stats]) => (
+535:                             <div
+536:                               key={algorithm}
+537:                               style={{ margin: '0.2em 0' }}
+538:                             >
+539:                               <small>
+540:                                 {algorithm}: {stats.hashesComputed} <LocalizedText source={"hashes,"} />{' '}
+541:                                 {formatRegionalFixedNumber(stats.averageTime.totalMilliseconds, 0)}
+542:                                 <LocalizedText source={"ms avg,"} />{" "}{formatRegionalFixedNumber(stats.accuracy, 2)} <LocalizedText source={"accuracy"} /></small>
+543:                             </div>
+544:                           ))}
+
+### web/src/components/System/Shares/ShareTable.jsx | blob 1d10c4519f2e4348eba4b514a0270a474c47118c | sha256 4ff14bb5e9d7ed6ab181811b832a2d30d3f52411eb35e8f3205b75473628a180
+-- lines 9-22
+9:     <Table data-testid="system-shares-table">
+10:       <Table.Header>
+11:         <Table.Row>
+12:           <Table.HeaderCell><LocalizedText source={"Host"} /></Table.HeaderCell>
+13:           <Table.HeaderCell><LocalizedText source={"Local Path"} /></Table.HeaderCell>
+14:           <Table.HeaderCell className="share-count-column">
+15:             <LocalizedText source={"Directories"} /></Table.HeaderCell>
+16:           <Table.HeaderCell className="share-count-column">
+17:             <LocalizedText source={"Files"} /></Table.HeaderCell>
+18:           <Table.HeaderCell><LocalizedText source={"Alias"} /></Table.HeaderCell>
+19:           <Table.HeaderCell><LocalizedText source={"Remote Path"} /></Table.HeaderCell>
+20:         </Table.Row>
+21:       </Table.Header>
+22:       <Table.Body>
+
+### web/src/lib/mediaServerIntegrations.js | blob cb7ea2f94c4db646873aad3fab6a59ebaefad341 | sha256 7e97c9c2c5bb798c28fdb21b7028e0abc093ec7b7fe97e9179887bc7ef668e05
+-- lines 35-75
+35:   const normalizedLocal = normalizePath(localPath);
+36:   const normalizedServer = normalizePath(serverPath);
+37:   const normalizedFrom = normalizePath(remotePathFrom);
+38:   const normalizedTo = normalizePath(remotePathTo);
+39: 
+40:   if (!normalizedLocal || !normalizedServer) {
+41:     return {
+42:       color: 'grey',
+43:       message: 'Enter both paths to check whether slskr and the media server agree.',
+44:       status: 'Incomplete',
+45:     };
+46:   }
+47: 
+48:   if (normalizedLocal === normalizedServer) {
+49:     return {
+50:       color: 'green',
+51:       message: 'Paths match exactly. A media-server scan can reference the same completed files.',
+52:       status: 'Aligned',
+53:     };
+54:   }
+55: 
+56:   if (
+57:     normalizedFrom &&
+58:     normalizedTo &&
+59:     normalizedLocal.startsWith(normalizedFrom)
+60:   ) {
+61:     const mapped = `${normalizedTo}${normalizedLocal.slice(normalizedFrom.length)}`;
+62:     return {
+63:       color: mapped === normalizedServer ? 'green' : 'yellow',
+64:       mappedPath: mapped,
+65:       message:
+66:         mapped === normalizedServer
+67:           ? 'Remote path mapping translates the slskr path to the media-server path.'
+68:           : 'Remote path mapping applies, but the translated path does not match the media-server path.',
+69:       status: mapped === normalizedServer ? 'Mapped' : 'Mapping Mismatch',
+70:     };
+71:   }
+72: 
+73:   return {
+74:     color: 'orange',
+75:     message: 'Paths differ and no matching remote path map was provided.',
+
+### web/src/components/System/LibraryHealth/index.jsx | blob 644c76751793b2bd45057a0191a054d74f547d36 | sha256 93770b1489c22b54d631d90b593a86e0eca30ca4475d3b1472c1af60604c1d2b
+-- lines 950-966
+950:   const panes = [
+951:     {
+952:       menuItem: {
+953:         content: interfaceText("Overview"),
+954:         icon: 'dashboard',
+955:         key: 'overview',
+956:       },
+957:       render: () => <OverviewPane />,
+958:     },
+959:     {
+960:       menuItem: {
+961:         content: interfaceText("All Issues"),
+962:         icon: 'warning',
+963:         key: 'issues',
+964:       },
+965:       render: () => <IssuesPane />,
+966:     },
+
+### Caller search notes
+The exact source key “All Games” has no exact literal match under web/src at this pinned source commit. Its translations were reviewed as a standalone selector label; no stronger UI context was found.
+The remaining source keys have direct caller/context excerpts above. “Album” has multiple callers as a graph filter, MusicBrainz result heading, Lidarr table column, and playlist intake type.

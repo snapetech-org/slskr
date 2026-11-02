@@ -1,29 +1,29 @@
 {
-  "head": "fdbf906cc1cf51015f0fa89a931c8619bc3907ee",
-  "head_tree": "e34cfbcec862c477ba65633db46313e564e99896",
+  "head": "5d0156003b5805b27c78b1289722a64ab30234a8",
+  "head_tree": "b9b0b5fc9b4c6e971be0c4179606ef6687ceb4a7",
   "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
   "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
   "source_ids": 5437,
   "cell_count": 65244,
   "catalog_file_sha256": {
-    "web/src/lib/locales/ui-labels.ar.json": "b9296aa2a97d356b354467592bdde2bd3ccd7ddab6788da28ea2740d16b42967",
-    "web/src/lib/locales/ui-labels.de.json": "6acd39320e5b49928409a7cbba8faac0108045371183751c54b1bdc3a7edaad8",
-    "web/src/lib/locales/ui-labels.es.json": "97bd6291da38b8cf58c92dc6b57b8bd4c80a98d0faae48cb9ea17e310434ca23",
-    "web/src/lib/locales/ui-labels.fr.json": "db9a73b188ed4eef4e6a6f0bd4e21ae197dcceb16f1d3a22db220d4912819d50",
-    "web/src/lib/locales/ui-labels.hi.json": "5c8004cf6df65bb653ad0a396ee4dce2bac9906b0f25e5464df6c5352866fc9d",
-    "web/src/lib/locales/ui-labels.id.json": "b1781f7893d77988e7cc21333a58b20e58ede03020bd6b7e29e00dce8e5f5e76",
+    "web/src/lib/locales/ui-labels.ar.json": "b552bf07ddad5ab3f3eba84470eb3eedff453ec10cbdde3d72a9942a29a136ad",
+    "web/src/lib/locales/ui-labels.de.json": "c3b958f3272257866794c9585dbce5a361f74d37670b6f6c93a2c4966d8da655",
+    "web/src/lib/locales/ui-labels.es.json": "b1f54a96a5021b804ee3919ac9698fb92c828d6352b1579e8016bc0344960a18",
+    "web/src/lib/locales/ui-labels.fr.json": "d2a4dc588cf517e76b09706a7c79bb887a54ee36feccc7ef647a2539e4054a60",
+    "web/src/lib/locales/ui-labels.hi.json": "faba4d6c06e3fb16eadea0394a0c89ef8fcf6034dced2395d90c3395cc1ac89a",
+    "web/src/lib/locales/ui-labels.id.json": "58a8248e3114aaa76c2a1deb4a52b3d70661c6709d7aac61a6e98b846d104367",
     "web/src/lib/locales/ui-labels.ja.json": "ac2a23fda32a3a0c63fb7295c64fe0f9646a3c35e623c42e8022c5d7873d03ab",
-    "web/src/lib/locales/ui-labels.ko.json": "da6c6d081bb34e0f8c1560ab388eaaff72662e5a0cd9e9286b98368666f92bef",
-    "web/src/lib/locales/ui-labels.pt-BR.json": "e57cc2c39cc4ff873fa4837fd092c5861f29b2575c5713de3a30f824d9af4535",
-    "web/src/lib/locales/ui-labels.vi.json": "89ade0211c2e96ee2f950116ea471e42578b2a120f024bd5f7f94df7802584ea",
-    "web/src/lib/locales/ui-labels.zh-Hans.json": "a8a78eade1d37d18c483de015a47a68a5473217399db2c8fafd7b22a03d5b128",
-    "web/src/lib/locales/ui-labels.zh-Hant.json": "9273dfaa8280eea3ebd0bae8ecf92979ef0ced643e55d16bb81e2aa41c234643"
+    "web/src/lib/locales/ui-labels.ko.json": "31a517f3706c8ef934c59161e826b7b6b5f4a689a3e0ee1bde0bc05184906a36",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "3596021da653bd975b70bdb9ec7bdf92e6fbee8dc58e46cc05fb973d412ba1dc",
+    "web/src/lib/locales/ui-labels.vi.json": "95a7ccafd9f963997e03666544b5e52055b5de7c1446708537c9deabdf64be95",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "ce53e0ad5dfdb9433d59a22ec7fc51ad173df4c13166d92133ed742035e56f8f",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "095b57e9322610d3cd4080fdc4ad3394ac8e83f7acbb0783e0d4c01ebcad7be3"
   },
   "structured_plural_cells": {
     "ar": 15
   },
-  "evidence_files_scanned": 810,
-  "evidence_scan_manifest_sha256": "98e622a8fb4166f3626082d3d0e578038f1f7238b7a76dfbf64356f017db894b",
+  "evidence_files_scanned": 826,
+  "evidence_scan_manifest_sha256": "67f47ac525a88cc31c1a7441d4c2f8da76ec977a9941a2dafb7b8d0eb189f0ee",
   "evidence_file_manifest": [
     {
       "root": "pr-review-head",
@@ -624,6 +624,102 @@
       "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0203-0222-all-12-locales/terminal-exclusions.jsonl",
       "bytes": 28528,
       "sha256": "1bff57d3f182d5363ef00ecf336f47c28c62e1b7f7d50b92281c6621c9e2fcd2"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0223-0242-all-12-locales/applied-corrections.jsonl",
+      "bytes": 47462,
+      "sha256": "7fea4f12a576ce8337013114224c4ecded6778318fcd1e3600935c0dd7fb5dcb"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0223-0242-all-12-locales/candidate-corrections.jsonl",
+      "bytes": 22306,
+      "sha256": "31e64e95e86e212537131526220b36431c884d236d7b60ede3239804d6e5ac3d"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0223-0242-all-12-locales/candidate-supplement.jsonl",
+      "bytes": 1096,
+      "sha256": "f9e0a3c6c8238200301927d40b7687390e7546cb9057f1b89739417f6d860d2e"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0223-0242-all-12-locales/carries.jsonl",
+      "bytes": 118408,
+      "sha256": "d6ace2bcf46983d9e67615475b87aca5498fbbba4064709d64255c27996b9f1d"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0223-0242-all-12-locales/conflict-holds.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0223-0242-all-12-locales/conflict-reconciliation.jsonl",
+      "bytes": 1512,
+      "sha256": "a0a9d21aafaa3c73e514795272b5f1c8df0aef183a2c74044900a1367c82fb56"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0223-0242-all-12-locales/decisions.jsonl",
+      "bytes": 174105,
+      "sha256": "d7d50827b81b99a6bff880d5c6a9ee57765dc2ca45f2d041de8b94a88d56ad77"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0223-0242-all-12-locales/manifest.json",
+      "bytes": 11454,
+      "sha256": "3e81aa14f898e9ed0bb4a4059796a17e2b46c5e470ac2d65db27ed84e6014c24"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0223-0242-all-12-locales/prior-evidence-scan-manifest.jsonl",
+      "bytes": 165123,
+      "sha256": "4890b85e614d91cf0550a8d94c6edcdbc504df555d0110e29291c3d090d97221"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0223-0242-all-12-locales/reviewed-cell-audit.jsonl",
+      "bytes": 529615,
+      "sha256": "9dc82a3b8bd4d4e701e263d86806751c750fc9c3a30dc53048009125acad4f6d"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0223-0242-all-12-locales/root-apply-plan.jsonl",
+      "bytes": 14172,
+      "sha256": "c794e9fe7c571fb38725d2813829681d21f337d1055ddb1c22ff1a896c8762a5"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0223-0242-all-12-locales/root-cross-review.jsonl",
+      "bytes": 29449,
+      "sha256": "1dfc44cdd0d5b8b18430fa213c98cee0b647f8c1124269b61a8b3ace4f9daf62"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0223-0242-all-12-locales/selection-before-corrections.jsonl",
+      "bytes": 153037,
+      "sha256": "0a97d11d3ae874ddd8690be188fe0ca8278f8002e584bdcb663d62d0a3330902"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0223-0242-all-12-locales/selection.jsonl",
+      "bytes": 198797,
+      "sha256": "9aef7e058b0ebed182f75410291c592766c41b8d138a30facaa4c0b55c5b6d2c"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0223-0242-all-12-locales/source-pins.json",
+      "bytes": 4093,
+      "sha256": "6acaa92c7e195863ff2bad15e34d8f1c2b65b22aedb0f9e896922c103925b076"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0223-0242-all-12-locales/terminal-exclusions.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "root": "pr-review-head",
@@ -4887,54 +4983,54 @@
     }
   ],
   "unique_current_cell_status_counts": {
-    "accepted": 23415,
-    "corrected": 168,
-    "correction-needed": 10832,
+    "accepted": 23497,
+    "corrected": 193,
+    "correction-needed": 10814,
     "held": 289,
-    "unreviewed": 30540
+    "unreviewed": 30451
   },
   "per_locale_exact_status_counts": {
     "ar": {
-      "accepted": 1280,
-      "corrected": 18,
-      "correction-needed": 1089,
+      "accepted": 1292,
+      "corrected": 22,
+      "correction-needed": 1085,
       "held": 12,
-      "unreviewed": 3038
+      "unreviewed": 3026
     },
     "de": {
-      "accepted": 1304,
-      "corrected": 22,
-      "correction-needed": 864,
+      "accepted": 1318,
+      "corrected": 24,
+      "correction-needed": 863,
       "held": 10,
-      "unreviewed": 3237
+      "unreviewed": 3222
     },
     "es": {
-      "accepted": 1259,
-      "corrected": 16,
+      "accepted": 1273,
+      "corrected": 18,
       "correction-needed": 1096,
       "held": 9,
-      "unreviewed": 3057
+      "unreviewed": 3041
     },
     "fr": {
-      "accepted": 1263,
-      "corrected": 17,
+      "accepted": 1277,
+      "corrected": 19,
       "correction-needed": 1039,
       "held": 10,
-      "unreviewed": 3108
+      "unreviewed": 3092
     },
     "hi": {
-      "accepted": 1260,
-      "corrected": 21,
-      "correction-needed": 1117,
+      "accepted": 1274,
+      "corrected": 24,
+      "correction-needed": 1115,
       "held": 14,
-      "unreviewed": 3025
+      "unreviewed": 3010
     },
     "id": {
-      "accepted": 1260,
-      "corrected": 18,
-      "correction-needed": 1086,
+      "accepted": 1275,
+      "corrected": 19,
+      "correction-needed": 1085,
       "held": 10,
-      "unreviewed": 3063
+      "unreviewed": 3048
     },
     "ja": {
       "accepted": 2771,
@@ -4945,228 +5041,43 @@
     },
     "ko": {
       "accepted": 2667,
-      "corrected": 6,
-      "correction-needed": 723,
+      "corrected": 9,
+      "correction-needed": 720,
       "held": 39,
       "unreviewed": 2002
     },
     "pt-BR": {
-      "accepted": 2661,
-      "corrected": 5,
-      "correction-needed": 733,
+      "accepted": 2660,
+      "corrected": 7,
+      "correction-needed": 732,
       "held": 36,
       "unreviewed": 2002
     },
     "vi": {
       "accepted": 2438,
-      "corrected": 18,
-      "correction-needed": 942,
+      "corrected": 22,
+      "correction-needed": 938,
       "held": 37,
       "unreviewed": 2002
     },
     "zh-Hans": {
       "accepted": 2633,
-      "corrected": 8,
-      "correction-needed": 757,
+      "corrected": 9,
+      "correction-needed": 756,
       "held": 37,
       "unreviewed": 2002
     },
     "zh-Hant": {
       "accepted": 2619,
-      "corrected": 8,
-      "correction-needed": 771,
+      "corrected": 9,
+      "correction-needed": 770,
       "held": 37,
       "unreviewed": 2002
     }
   },
-  "unreviewed_source_index_count": 3719,
-  "unreviewed_cells": 30540,
+  "unreviewed_source_index_count": 3703,
+  "unreviewed_cells": 30451,
   "first_100_unreviewed_indices": {
-    "223": {
-      "source_id": "Album",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "225": {
-      "source_id": "Album Complete",
-      "fresh_locale_count": 5,
-      "fresh_locales": [
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "226": {
-      "source_id": "Album Completion",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "228": {
-      "source_id": "Album art",
-      "fresh_locale_count": 3,
-      "fresh_locales": [
-        "de",
-        "es",
-        "fr"
-      ]
-    },
-    "229": {
-      "source_id": "Album candidates",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "230": {
-      "source_id": "Album complete",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "231": {
-      "source_id": "Album completion status",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "232": {
-      "source_id": "Album title",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "233": {
-      "source_id": "Albums",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "234": {
-      "source_id": "Algorithm",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "235": {
-      "source_id": "Algorithm Accuracy:",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "236": {
-      "source_id": "Algorithm Breakdown:",
-      "fresh_locale_count": 5,
-      "fresh_locales": [
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "238": {
-      "source_id": "Alias",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "240": {
-      "source_id": "All",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "241": {
-      "source_id": "All Games",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "242": {
-      "source_id": "All Issues",
-      "fresh_locale_count": 4,
-      "fresh_locales": [
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
     "243": {
       "source_id": "All Jobs",
       "fresh_locale_count": 2,
@@ -6116,6 +6027,189 @@
         "fr",
         "hi",
         "id"
+      ]
+    },
+    "397": {
+      "source_id": "Auto-download best matches",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "398": {
+      "source_id": "Auto-download matches",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "399": {
+      "source_id": "Auto-download synced Wishlist items",
+      "fresh_locale_count": 5,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "id"
+      ]
+    },
+    "401": {
+      "source_id": "Auto-import completed downloads",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "402": {
+      "source_id": "Auto-replace disabled",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "403": {
+      "source_id": "Auto-replace enabled. Backend will check for stuck downloads periodically.",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "406": {
+      "source_id": "Automatic",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "408": {
+      "source_id": "Automation",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "409": {
+      "source_id": "Automation & Jobs",
+      "fresh_locale_count": 1,
+      "fresh_locales": [
+        "de"
+      ]
+    },
+    "410": {
+      "source_id": "Automation Center",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "414": {
+      "source_id": "Automations",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "415": {
+      "source_id": "Availability",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "416": {
+      "source_id": "Available",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "417": {
+      "source_id": "Available Ports",
+      "fresh_locale_count": 5,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "id"
+      ]
+    },
+    "418": {
+      "source_id": "Available from Pod/Mesh network",
+      "fresh_locale_count": 5,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "id"
+      ]
+    },
+    "419": {
+      "source_id": "Available from Soulseek Scene",
+      "fresh_locale_count": 5,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi"
       ]
     }
   },

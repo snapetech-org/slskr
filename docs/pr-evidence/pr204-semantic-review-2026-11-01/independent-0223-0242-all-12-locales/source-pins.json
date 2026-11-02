@@ -1,0 +1,42 @@
+{
+  "git_blob_ids": {
+    "web/src/components/PlaylistIntake/PlaylistIntake.jsx": "162c8fb6dff17671f35471b4bae605da08b90447",
+    "web/src/components/Search/AlbumCompletionPanel.jsx": "ad0be5147a9b213cd72b3566081424c68436144f",
+    "web/src/components/Search/Detail/SearchResultControls.jsx": "f6ec8606ad6420be75d2cde695815e31b86bd448",
+    "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx": "2aa163337ab944a655b7869ea98297beda838627",
+    "web/src/components/Search/MusicBrainzLookup.jsx": "c4a8467e5c292f4f38b8e7e31ba8bb2efc51822d",
+    "web/src/components/Search/SearchesListView.jsx": "a8864fa20454a01cf52bd7d2043e5e3c5e5ba854",
+    "web/src/components/Search/SongIDAnalysisResults.jsx": "ddae669325bb2abe51c7b5c80fc1546174350e73",
+    "web/src/components/System/ExperienceSettings/index.jsx": "fbe8caabfc30e03809dc5ae7051bddb731986956",
+    "web/src/components/System/Integrations/LidarrPanel.jsx": "3bb24c3fb94ceb4815dce12999fbacb898437e83",
+    "web/src/components/System/Integrations/MetadataSettingsPanel.jsx": "0d0ffc8e16a072970a51604bd95d76f7f796669f",
+    "web/src/components/System/LibraryHealth/index.jsx": "644c76751793b2bd45057a0191a054d74f547d36",
+    "web/src/components/System/MediaCore/MediaCoreContentHashingPanel.jsx": "cbe36436c936b1fcca220da0915288759f5a0aa3",
+    "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx": "2abab8a5496df8cdd48e7acf32b479c7ecba6c23",
+    "web/src/components/System/Shares/ShareTable.jsx": "1d10c4519f2e4348eba4b514a0270a474c47118c",
+    "web/src/lib/acquisitionProfiles.js": "8708137fd8763e4a33bec1571a14f28153ee4189",
+    "web/src/lib/mediaServerIntegrations.js": "cb7ea2f94c4db646873aad3fab6a59ebaefad341",
+    "web/src/lib/playlistIntake.js": "c7e71e5895094e5450e8ab82deeaba34c3c373fb"
+  },
+  "sha256": {
+    "web/src/components/PlaylistIntake/PlaylistIntake.jsx": "a978f80c022835c003d35db99b38037dee622c6456d9cbc46688f810867e3ae6",
+    "web/src/components/Search/AlbumCompletionPanel.jsx": "4309592946899eff2dfca8c0eebe775116eeed5b18cabde7129b19e33c9075f5",
+    "web/src/components/Search/Detail/SearchResultControls.jsx": "1f2880630f893cfc8361fb40a4ad4e9e07d01da96202b7ac36054c860124da46",
+    "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx": "9ab139ea6514100de0cef711e2aa5e26745bcc9936c965a9028c2591e6338471",
+    "web/src/components/Search/MusicBrainzLookup.jsx": "74ebbf919451330b3bf0749e808d44d916e3b9d96bbfbb3acddba01ccd97c430",
+    "web/src/components/Search/SearchesListView.jsx": "a412a0815d836e14c0e62feb36be929c1792bc64bcf10f213520c4609d028482",
+    "web/src/components/Search/SongIDAnalysisResults.jsx": "f1468f5e7ffc69840fe8ff8317518f55ed02a2c727c84d35df87ad6a1c0fde28",
+    "web/src/components/System/ExperienceSettings/index.jsx": "ba7826de4b32bc9506d5926e6243623ccc3104da43706ce7a57fe4b17bcf2f30",
+    "web/src/components/System/Integrations/LidarrPanel.jsx": "6fff815fc95b10400d84970dfa25f8bdf05d5bb360d719a3cf7f1cc62bcab8ea",
+    "web/src/components/System/Integrations/MetadataSettingsPanel.jsx": "e5aaf906b4cfc6e17ef8706bc95efb660b0eda2748bf2dad1c411ee9621d6339",
+    "web/src/components/System/LibraryHealth/index.jsx": "93770b1489c22b54d631d90b593a86e0eca30ca4475d3b1472c1af60604c1d2b",
+    "web/src/components/System/MediaCore/MediaCoreContentHashingPanel.jsx": "ab7783c0f29868f38cd4d7a94eaafd992bf03948b4ba8be76a8a5045e16ed601",
+    "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx": "34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60",
+    "web/src/components/System/Shares/ShareTable.jsx": "4ff14bb5e9d7ed6ab181811b832a2d30d3f52411eb35e8f3205b75473628a180",
+    "web/src/lib/acquisitionProfiles.js": "014d4977e503569f658b3809d918b6401b3b6e9699e4228a28a16760c4b0282b",
+    "web/src/lib/mediaServerIntegrations.js": "7e97c9c2c5bb798c28fdb21b7028e0abc093ec7b7fe97e9179887bc7ef668e05",
+    "web/src/lib/playlistIntake.js": "d5569d0d7e861a1521ddce103b27bdd1b93f3a0352a998de1fc3322cd419bade"
+  },
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152"
+}
