@@ -959,7 +959,6 @@
   "Cache performance and retrieval statistics": "Thống kê truy xuất và hiệu suất bộ đệm",
   "Can create content-linked pods": "Có thể tạo Pod liên kết với nội dung",
   "Cancel Scan": "Hủy quét",
-  "Cancel{all}": "Hủy{all}",
   "Candidates": "Mục đề xuất",
   "Canonical": "Chuẩn",
   "Canonical support from": "Bản ghi chuẩn được hỗ trợ bởi",
@@ -2840,7 +2839,6 @@
   "Retry Lidarr import for {directory}": "Thử lại nhập Lidarr cho {directory}",
   "Retry Max Delay ms": "Thử lại Độ trễ tối đa ms",
   "Retry Partial Files": "Thử lại một phần tệp",
-  "Retry{all}": "Thử lại{all}",
   "Return to the full imported RustyMilk preset bank without deleting this playlist.": "Quay lại ngân hàng cài sẵn RustyMilk đã nhập đầy đủ mà không xóa danh sách phát này.",
   "Return to the previous RustyMilk preset, or move backward in the local preset library.": "Quay lại cài đặt trước RustyMilk trước đó hoặc di chuyển lùi về thư viện cài sẵn cục bộ.",
   "Return visualizer to the player bar.": "Đưa trình hiển thị trở lại thanh trình phát.",
@@ -5439,5 +5437,7 @@
   "Hermit": "Riêng tư",
   "Friends only": "Chỉ bạn bè",
   "Enforce": "Bắt buộc chữ ký",
-  "Use browser settings": "Sử dụng cài đặt của trình duyệt"
+  "Use browser settings": "Sử dụng cài đặt của trình duyệt",
+  "Retry selected": "Thử lại các mục đã chọn",
+  "Cancel selected": "Hủy các mục đã chọn"
 }

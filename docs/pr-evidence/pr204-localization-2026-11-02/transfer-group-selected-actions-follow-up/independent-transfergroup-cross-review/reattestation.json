@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "head": "aa106d2505de8c9ace2d7d6dbf2af9777651947d",
+  "tree": "f99e717b4b77c8da098e7b8fc163926d4d32e926",
+  "livePr": {
+    "headRefOid": "aa106d2505de8c9ace2d7d6dbf2af9777651947d",
+    "isDraft": true,
+    "state": "OPEN"
+  },
+  "worktreeClean": true,
+  "primarySha256ChecksVerified": true,
+  "primaryInputHashes": {
+    "SHA256SUMS": "fed536b261f92e36f39e65392906baf49e8bd0795fbdbd57592904ec248acf7d",
+    "new-targets.jsonl": "c963d5305cd4ee8a8152d80522b87676bab9bdf3d19ce3404f7fa1bc4c7846db",
+    "retire-all-keys.jsonl": "e47d9023effc7dc8df9a0716794fc4b7fca5529d381cbcc140f721dae656b13d",
+    "recommendation.json": "742b0dfa4e815fc9324f2f204b04d234be1ed76926fbb0bb1e4400622320f8b4"
+  },
+  "catalogsReattested": 12,
+  "newTargetsReattested": 36,
+  "legacyRowsReattested": 36,
+  "callerSourceLinesReattested": 33,
+  "removeSemanticEvidenceLinesReattested": 22,
+  "oldKeyCodeReferences": 6,
+  "oldKeyReferencesOutsideTransferGroup": 0,
+  "result": "pass"
+}

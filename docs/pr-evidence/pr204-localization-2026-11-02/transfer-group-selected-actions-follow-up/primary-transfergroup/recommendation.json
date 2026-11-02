@@ -1,0 +1,470 @@
+{
+  "allAllSourceOccurrencesAtHead": {
+    "greppedWebSrcRows": 42,
+    "note": "The three caller source IDs occur only in TransferGroup; each old key exists in all 12 direct locale catalogs. No other live web/src {all} key was found.",
+    "otherLiveWebSourceOccurrences": 0,
+    "sourceIds": [
+      "Retry{all}",
+      "Cancel{all}",
+      "Remove{all}"
+    ],
+    "sourceOccurrenceLineCount": 6
+  },
+  "catalogAttestations": [
+    {
+      "blob": "f8bd6f4635b1001947df4fb28054af5d9e43fc40",
+      "fileSha256": "709a14a649a9f18b2c9667c8ac6d1c753489df241bbb71717e39e4a5117b1aa0",
+      "locale": "ar",
+      "path": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "blob": "c7bfb9a129da6a6642c839f0867e521acf5432be",
+      "fileSha256": "dd50d30ce6963c7d6bc299177d953bf154d23eabc948d2409f5641697ce929a2",
+      "locale": "de",
+      "path": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "blob": "14d41c52472dd98cdfa7c7ccebbd5b2d6444c637",
+      "fileSha256": "ae44125d37fc5e816412a2f5c3f5d034cd1fe64b9b554d3a2047408af190fb82",
+      "locale": "es",
+      "path": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "blob": "d68f3bc5cac07da2598b4b794f9d85e8084059d6",
+      "fileSha256": "7543d291282e4d226368e1e22f789585ee1365d0174411e88c4265c8f9688595",
+      "locale": "fr",
+      "path": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "blob": "e66448f970b6439ee9c309943e93e76c8c9e9df5",
+      "fileSha256": "79c7e08fab985c1341bb6b97d09ae7efe6581051890abe576c6422901190d952",
+      "locale": "hi",
+      "path": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "blob": "588fa3897a41626eb059bc9b399f5f081676017c",
+      "fileSha256": "52c328a2b6a4f0898b2919c934b3594de8a8b2ce8c2dcd65ba892d8dc21354ad",
+      "locale": "id",
+      "path": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "blob": "bbfd4b1a40166191f28c1f14f9090ea405d233cd",
+      "fileSha256": "c96b6f0f643ec0e723aebd871ed39ff132533b897eba379628278331f9e47a3b",
+      "locale": "ja",
+      "path": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "blob": "004f11687ff587ca7caba8ed31b14d3eb229a086",
+      "fileSha256": "e5371300dc1d8a61f583bc497f67368e5e7b6ad589f1dc481f8be38fcb0919a8",
+      "locale": "ko",
+      "path": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "blob": "4a6e6cdf8ca8003937e92e4a6421da5d85f81097",
+      "fileSha256": "d27a4c535f77a9c6a09f37ba2338fc37377825a7e8fee0d03a16e77f9a029b0f",
+      "locale": "pt-BR",
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "blob": "0a27f63aed5e9b1e9f473bf783785514eadc46fa",
+      "fileSha256": "9b084447575c4ced7da0d5b8d301dc9d93d92b8e4732d730b2b86e6781e8a9de",
+      "locale": "vi",
+      "path": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "blob": "fd9bcb47bdcb37fa350b8b8d6c9649dfc51c330f",
+      "fileSha256": "af01a4b29e4ecbf5a7152911e0c7476dff4e09979fc6849de97a7df6c3b1373e",
+      "locale": "zh-Hans",
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "blob": "2dff56034ecd59264551683cb0e0125ba48071a2",
+      "fileSha256": "ea1e8649db618e393a343d61f12919e7cf5f7ef4122de3f98318cb04da8b7e05",
+      "locale": "zh-Hant",
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    }
+  ],
+  "caveats": [
+    "Targets are machine-reviewed proposals; native-speaker review remains appropriate before publication.",
+    "French/Hindi/Indonesian/Japanese/Korean/Vietnamese Remove selected targets add the list context to distinguish removal from disk deletion.",
+    "The code branch should use explicit complete English IDs, not construct a translated adjective/suffix at runtime.",
+    "Some complete selected-action labels are longer than the current suffix form; review the compact transfer button group at narrow widths when visual validation is available."
+  ],
+  "counts": {
+    "cancelAllLocaleCellsResolvedIfLegacyKeysRemoved": 12,
+    "legacyPlaceholderEntriesToRemove": 36,
+    "localeCoverage": 12,
+    "newEnglishIds": 3,
+    "oldKeys": 3,
+    "otherAllLocaleCellsResolvedIfLegacyKeysRemoved": 24,
+    "reviewedLocaleTargets": 36
+  },
+  "existingSingleActionTranslations": {
+    "ar": {
+      "Cancel": "إلغاء",
+      "Remove": "إزالة",
+      "Retry": "إعادة المحاولة"
+    },
+    "de": {
+      "Cancel": "Abbrechen",
+      "Remove": "Entfernen",
+      "Retry": "Erneut versuchen"
+    },
+    "es": {
+      "Cancel": "Cancelar",
+      "Remove": "Quitar",
+      "Retry": "Reintentar"
+    },
+    "fr": {
+      "Cancel": "Annuler",
+      "Remove": "Supprimer",
+      "Retry": "Réessayer"
+    },
+    "hi": {
+      "Cancel": "रद्द करें",
+      "Remove": "हटाएँ",
+      "Retry": "पुनः प्रयास करें"
+    },
+    "id": {
+      "Cancel": "Batal",
+      "Remove": "Hapus",
+      "Retry": "Coba lagi"
+    },
+    "ja": {
+      "Cancel": "キャンセル",
+      "Remove": "削除",
+      "Retry": "再試行"
+    },
+    "ko": {
+      "Cancel": "취소",
+      "Remove": "제거",
+      "Retry": "다시 시도"
+    },
+    "pt-BR": {
+      "Cancel": "Cancelar",
+      "Remove": "Remover",
+      "Retry": "Tentar novamente"
+    },
+    "vi": {
+      "Cancel": "Hủy",
+      "Remove": "Xóa",
+      "Retry": "Thử lại"
+    },
+    "zh-Hans": {
+      "Cancel": "取消",
+      "Remove": "移除",
+      "Retry": "重试"
+    },
+    "zh-Hant": {
+      "Cancel": "取消",
+      "Remove": "移除",
+      "Retry": "重試"
+    }
+  },
+  "holdResolution": {
+    "alsoResolves": [
+      "Retry{all} in all 12 locales",
+      "Remove{all} in all 12 locales"
+    ],
+    "condition": "Apply the caller variant selection and remove all 12 obsolete Cancel{all} catalog entries; this clears the six prior locale-B holds plus the same stale key in the other six locales.",
+    "resolves12CancelAllCells": true,
+    "totalLegacyCatalogEntriesRecommendedForRemoval": 36
+  },
+  "legacyPlaceholderRowsPath": "retire-all-keys.jsonl",
+  "legacyPlaceholderRowsSha256": "e47d9023effc7dc8df9a0716794fc4b7fca5529d381cbcc140f721dae656b13d",
+  "livePullRequest": {
+    "head": "aa106d2505de8c9ace2d7d6dbf2af9777651947d",
+    "isDraft": true,
+    "state": "OPEN",
+    "tree": "f99e717b4b77c8da098e7b8fc163926d4d32e926"
+  },
+  "newIds": [
+    "Retry selected",
+    "Cancel selected",
+    "Remove selected"
+  ],
+  "newTranslationRowsPath": "new-targets.jsonl",
+  "newTranslationRowsSha256": "c963d5305cd4ee8a8152d80522b87676bab9bdf3d19ce3404f7fa1bc4c7846db",
+  "pullRequest": 204,
+  "removeSemantics": {
+    "handler": "handleRemoveAll(selected) uses default deleteFile=false and calls removeAll(selected,false); it removes transfer entries without deleting files.",
+    "separateDestructiveAction": "The adjacent download-only button calls handleRemoveAll(selected,true) and carries the title “Remove and Delete File(s) from Disk”.",
+    "translationGuidance": "Keep Remove selected distinguishable from disk deletion. French, Hindi, Indonesian, Japanese, Korean, and Vietnamese targets explicitly say removal from the list; other locales use a non-delete/remove verb distinct from their delete-file wording."
+  },
+  "repository": "snapetech-org/slskR",
+  "schemaVersion": 1,
+  "sourceCallerPins": {
+    "interfaceLocale": {
+      "blob": "72dfea05f86bcf0ab02882a85c6e8d4a0cb0dabf",
+      "fileSha256": "16eb5f119655805f48845e026ee12fd517fae6de871091bd9be2e5b7f1d310ea",
+      "lineEvidence": [
+        {
+          "line": 56,
+          "lineSha256": "5b4b54f72e522eea3bcc9fec059d0290e71d7434c2adbc8af72c8d059d0420c8",
+          "path": "web/src/lib/interfaceLocale.js",
+          "text": "const translationFor = (source, language) => localeCatalogs.get(language)?.[source];"
+        },
+        {
+          "line": 68,
+          "lineSha256": "34a25e5952887c60d29c05dc0ab956bcd5548dade04880d81594a5a884fd8c54",
+          "path": "web/src/lib/interfaceLocale.js",
+          "text": "const formatInterfaceTextForLanguage = (source, parameters = {}, language = activeLanguage) => {"
+        },
+        {
+          "line": 70,
+          "lineSha256": "df018638bf0bcb3790bbc1a3b847f7009a9256e7631c4834783dadb978057854",
+          "path": "web/src/lib/interfaceLocale.js",
+          "text": "  const localized = translationFor(source, language);"
+        },
+        {
+          "line": 74,
+          "lineSha256": "6abc6aba06d6aaf2df826223860dc196ba90aca807e753ce68303dc0d2ae8719",
+          "path": "web/src/lib/interfaceLocale.js",
+          "text": "  const translated = typeof localized === 'string' ? localized : localized?.[category] || localized?.other || source;"
+        },
+        {
+          "line": 75,
+          "lineSha256": "f15b0f0624b9da77e9407006fc70ce4f55173ebca12769b7aa7cba313e5ab8b7",
+          "path": "web/src/lib/interfaceLocale.js",
+          "text": "  return replaceInterfaceValues(translated, parameters);"
+        },
+        {
+          "line": 81,
+          "lineSha256": "ede6947f896eeca421eead5c43a91bbfe391226de3bc6352e49f9bc7eaca80bb",
+          "path": "web/src/lib/interfaceLocale.js",
+          "text": "export const interfaceText = (source, parameters = {}) =>"
+        },
+        {
+          "line": 82,
+          "lineSha256": "caa75cdd1ea4867b75cc679446d9a4e0a91089745538248e7ebdbda9885cfc09",
+          "path": "web/src/lib/interfaceLocale.js",
+          "text": "  formatInterfaceText(source, parameters);"
+        },
+        {
+          "line": 114,
+          "lineSha256": "959a85f6f01019eace678b081687dbf0e169d707003c34c67a34b7f947f08472",
+          "path": "web/src/lib/interfaceLocale.js",
+          "text": "export const interfaceTextAttributes = (source, parameters = {}) => {"
+        },
+        {
+          "line": 118,
+          "lineSha256": "9cb7a0fe07c1da2ec867124f3dbb00edb8854e617529c26d5d86b75316b40ae3",
+          "path": "web/src/lib/interfaceLocale.js",
+          "text": "  const unresolved = typeof text === 'string' && /\\{[a-zA-Z][a-zA-Z0-9_]*\\}/.test(text);"
+        },
+        {
+          "line": 120,
+          "lineSha256": "19d8d3ad538d8840518cc93ac5f1b25fe81ee9b617464b963186c4aa88bcda3d",
+          "path": "web/src/lib/interfaceLocale.js",
+          "text": "    dir: hasTranslation && activeLanguage === 'ar' ? 'rtl' : 'ltr',"
+        },
+        {
+          "line": 121,
+          "lineSha256": "33599f48f4dd6eea7b96ccb492eeb61d40c40ba49264a61a5bde1623be5c317f",
+          "path": "web/src/lib/interfaceLocale.js",
+          "text": "    lang: hasTranslation ? activeLanguage : 'en',"
+        },
+        {
+          "line": 123,
+          "lineSha256": "bf2f49ca3da8afcbdce8dc4b7a2e205e6b21ba9d9b8b6d4d7924f6998d7808b3",
+          "path": "web/src/lib/interfaceLocale.js",
+          "text": "  if (!unresolved) {"
+        },
+        {
+          "line": 125,
+          "lineSha256": "d1aafe6574bff8f2cc60cb47bdd3db531f99ffac87295ecb1bcdb8515fa8be91",
+          "path": "web/src/lib/interfaceLocale.js",
+          "text": "    props.title = text;"
+        },
+        {
+          "line": 130,
+          "lineSha256": "068348dd0763951dec7bad4deedbb5475347a7c4924583e76189fe07883be962",
+          "path": "web/src/lib/interfaceLocale.js",
+          "text": "export const interfaceTextProps = (source, parameters = {}) => {"
+        },
+        {
+          "line": 131,
+          "lineSha256": "d7438acf13810d893e558ccbad6fdc7a02c75e75e004263576604cb25841e495",
+          "path": "web/src/lib/interfaceLocale.js",
+          "text": "  const props = interfaceTextAttributes(source, parameters);"
+        }
+      ],
+      "path": "web/src/lib/interfaceLocale.js"
+    },
+    "transferGroup": {
+      "blob": "489191988e137700c6e3c26a38b01d80807839c2",
+      "fileSha256": "73e4d6bb7a4cb5475d8e9fe98e227bea4983529d4a6e21d287359f033a8dc519",
+      "lineEvidence": [
+        {
+          "line": 53,
+          "lineSha256": "9b27b5e5df3a21b955c37d0a91a47f9d7ebd2b5a9f969af9584a293ac5089c23",
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "  handleRetryAll = async (selected) => {"
+        },
+        {
+          "line": 57,
+          "lineSha256": "16dbeeac32e9424da0467cc87f8e148d483d14e50b5189edee3bca2ef29c8570",
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "  handleCancelAll = async (selected) => {"
+        },
+        {
+          "line": 61,
+          "lineSha256": "caffa2d404c0363e94f929da8bbe1465fae09d248f7f3fb5b57342b85e5c3e92",
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "  handleRemoveAll = async (selected, deleteFile = false) => {"
+        },
+        {
+          "line": 66,
+          "lineSha256": "121ceadfe0d362a770d837c784a02b6f2e6ee79335032056bdf2fcbec502ee9e",
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "        interfaceText('Delete these selected files permanently? This cannot be undone.'),"
+        },
+        {
+          "line": 72,
+          "lineSha256": "fa3d3f2fe39673ef83d498d4e2be1d6fc5616aa7e48c88d96e64252fcefc7e11",
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "    await this.props.removeAll(selected, deleteFile);"
+        },
+        {
+          "line": 101,
+          "lineSha256": "b46e0e36866042c6688f249e9a5780e1f683dbeeb0ba425cf364353dc1c5884a",
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "    const selected = this.getSelectedFiles();"
+        },
+        {
+          "line": 102,
+          "lineSha256": "5f4d9d95821a1d4fef3152162b6a36850725cabd153c8c0824b8779e532c36fd",
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "    const all = selected.length > 1 ? ' Selected' : '';"
+        },
+        {
+          "line": 104,
+          "lineSha256": "ee183f689a2f119fdbd795474be8ef75cb32fdcdf458d4b0fb24dcf422644dae",
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "    const allRetryable ="
+        },
+        {
+          "line": 107,
+          "lineSha256": "a44937087fef30d65dba292ed92f311d8aa16c8c1a8438c9d04b6806e95df6d3",
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "    const anyCancellable = selected.some((f) =>"
+        },
+        {
+          "line": 110,
+          "lineSha256": "ea7ccc59594d8ed2b874409d1a7b5fd33f3706fb362b6980c2dd321153baada5",
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "    const allRemovable ="
+        },
+        {
+          "line": 160,
+          "lineSha256": "1b66dacf1849017915280fcef2531b17b25412fca9805712ed0e874259c67a61",
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "                  content={interfaceText(\"Retry{all}\", { \"all\": (all) })}"
+        },
+        {
+          "line": 163,
+          "lineSha256": "4b5741db1bf4c1d773a3174b8e726b7154ee26020c25fe9c9731b6af14c8754a",
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "                 {...interfaceTextProps(\"Retry{all}\")}/>"
+        },
+        {
+          "line": 169,
+          "lineSha256": "4ec1f4d27c61bf99dc1252b2e7b0f12da226a6a1b2dfbc7dcbbbb0805f7818ea",
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "                  content={interfaceText(\"Cancel{all}\", { \"all\": (all) })}"
+        },
+        {
+          "line": 172,
+          "lineSha256": "b62fa423d1ab09e2058dcef7d44a777ee94a0fa52f99600fe0a238b2911cf172",
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "                 {...interfaceTextProps(\"Cancel{all}\")}/>"
+        },
+        {
+          "line": 180,
+          "lineSha256": "12dead261045447464ca5f699690ea2cc2db087077e0d69ce3ef6ecf61644aa8",
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "                    content={interfaceText(\"Remove{all}\", { \"all\": (all) })}"
+        },
+        {
+          "line": 183,
+          "lineSha256": "a50e3fcc1d412f86879bd77aa9fe9d57fab319ec466a1e525a657bb92981915d",
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "                   {...interfaceTextProps(\"Remove{all}\")}/>"
+        },
+        {
+          "line": 188,
+          "lineSha256": "59c66838581b70a673c47b5896e70e6e1c18cb4cb7435bc9143126ec1536ec14",
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "                      onClick={() => this.handleRemoveAll(selected, true)}"
+        },
+        {
+          "line": 189,
+          "lineSha256": "3ee16305540348c0f618082b1c80a74c281bd45bb523fb6d49dbe734e43b7a3b",
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "                      title={interfaceText(\"Remove and Delete File(s) from Disk\")}"
+        }
+      ],
+      "path": "web/src/components/Transfers/TransferGroup.jsx"
+    }
+  },
+  "sourceEditPlan": {
+    "addSourceSelectionLines": [],
+    "file": "web/src/components/Transfers/TransferGroup.jsx",
+    "helperRationale": "interfaceText performs an exact key lookup and returns a complete translated string. interfaceTextProps computes the same text for title/aria-label. Passing the same full variant to both avoids English suffix concatenation, supports locale-specific word order, and yields no unresolved {all} placeholder.",
+    "newEnglishSourceIds": [
+      {
+        "placeholderSet": [],
+        "sha256": "d4d28fa24f2b89bd2bba42f560ed723eb2c4202943ce63e482abfc4b4992db6c",
+        "sourceId": "Retry selected"
+      },
+      {
+        "placeholderSet": [],
+        "sha256": "34e18e5e5389ea6faf6da1035fb9a112f200c8412e8a5d9d848320063edc3507",
+        "sourceId": "Cancel selected"
+      },
+      {
+        "placeholderSet": [],
+        "sha256": "78d22b05b5081f5276035a4118378217933602ae17ec815ef8c7df5e7c3db1e1",
+        "sourceId": "Remove selected"
+      }
+    ],
+    "recommendedCodeSnippet": "const selected = this.getSelectedFiles();\nconst hasMultipleSelected = selected.length > 1;\n\n// Retry button\ncontent={interfaceText(hasMultipleSelected ? 'Retry selected' : 'Retry')}\n{...interfaceTextProps(hasMultipleSelected ? 'Retry selected' : 'Retry')}\n\n// Cancel button\ncontent={interfaceText(hasMultipleSelected ? 'Cancel selected' : 'Cancel')}\n{...interfaceTextProps(hasMultipleSelected ? 'Cancel selected' : 'Cancel')}\n\n// Remove button\ncontent={interfaceText(hasMultipleSelected ? 'Remove selected' : 'Remove')}\n{...interfaceTextProps(hasMultipleSelected ? 'Remove selected' : 'Remove')}",
+    "removeLine": {
+      "new": "const hasMultipleSelected = selected.length > 1;",
+      "old": "const all = selected.length > 1 ? ' Selected' : '';"
+    },
+    "replaceButtonCalls": [
+      {
+        "newContent": "interfaceText(hasMultipleSelected ? 'Retry selected' : 'Retry')",
+        "newProps": "interfaceTextProps(hasMultipleSelected ? 'Retry selected' : 'Retry')",
+        "oldContent": "interfaceText(\"Retry{all}\", { \"all\": (all) })",
+        "oldProps": "interfaceTextProps(\"Retry{all}\")"
+      },
+      {
+        "newContent": "interfaceText(hasMultipleSelected ? 'Cancel selected' : 'Cancel')",
+        "newProps": "interfaceTextProps(hasMultipleSelected ? 'Cancel selected' : 'Cancel')",
+        "oldContent": "interfaceText(\"Cancel{all}\", { \"all\": (all) })",
+        "oldProps": "interfaceTextProps(\"Cancel{all}\")"
+      },
+      {
+        "newContent": "interfaceText(hasMultipleSelected ? 'Remove selected' : 'Remove')",
+        "newProps": "interfaceTextProps(hasMultipleSelected ? 'Remove selected' : 'Remove')",
+        "oldContent": "interfaceText(\"Remove{all}\", { \"all\": (all) })",
+        "oldProps": "interfaceTextProps(\"Remove{all}\")"
+      }
+    ],
+    "threshold": "Preserve selected.length > 1; exactly one selected item continues to use the existing Retry/Cancel/Remove source key. The new variants are direct static string arguments to interfaceText and interfaceTextProps so source discovery can see every English ID."
+  },
+  "task": "Read-only caller-fix and translation proposal for TransferGroup multi-selection action labels",
+  "validation": {
+    "all36LegacyTargetsRetainExpectedAllPlaceholder": true,
+    "all36TargetsHaveNoPlaceholdersOrMarkup": true,
+    "allBaseActionsPresentInAllLocales": true,
+    "liveHeadTreeVerified": true,
+    "nativeSpeakerApproval": false,
+    "newIdsAbsentFromCurrentCatalogs": true,
+    "repositoryOrPrChangesMade": false,
+    "testsBuildsScansCI": false
+  },
+  "worktreeReads": "Immutable git objects at the pinned live PR commit; no worktree files were modified."
+}

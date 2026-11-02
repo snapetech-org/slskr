@@ -1,0 +1,48 @@
+{
+  "head": "aa106d2505de8c9ace2d7d6dbf2af9777651947d",
+  "tree": "f99e717b4b77c8da098e7b8fc163926d4d32e926",
+  "sourceHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "sourceInventoryRows": 5437,
+  "sourceInventorySha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "sourcePositionsUseFrozenInventoryOrder": true,
+  "sourceBaselineCatalogKeySetMatchesInventory": true,
+  "liveCatalogs": {
+    "ja": {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "blob": "bbfd4b1a40166191f28c1f14f9090ea405d233cd",
+      "fileSha256": "c96b6f0f643ec0e723aebd871ed39ff132533b897eba379628278331f9e47a3b",
+      "keyCount": 5441
+    },
+    "ko": {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "blob": "004f11687ff587ca7caba8ed31b14d3eb229a086",
+      "fileSha256": "e5371300dc1d8a61f583bc497f67368e5e7b6ad589f1dc481f8be38fcb0919a8",
+      "keyCount": 5441
+    },
+    "pt-BR": {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "blob": "4a6e6cdf8ca8003937e92e4a6421da5d85f81097",
+      "fileSha256": "d27a4c535f77a9c6a09f37ba2338fc37377825a7e8fee0d03a16e77f9a029b0f",
+      "keyCount": 5441
+    },
+    "vi": {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "blob": "0a27f63aed5e9b1e9f473bf783785514eadc46fa",
+      "fileSha256": "9b084447575c4ced7da0d5b8d301dc9d93d92b8e4732d730b2b86e6781e8a9de",
+      "keyCount": 5441
+    },
+    "zh-Hans": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "blob": "fd9bcb47bdcb37fa350b8b8d6c9649dfc51c330f",
+      "fileSha256": "af01a4b29e4ecbf5a7152911e0c7476dff4e09979fc6849de97a7df6c3b1373e",
+      "keyCount": 5441
+    },
+    "zh-Hant": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "blob": "2dff56034ecd59264551683cb0e0125ba48071a2",
+      "fileSha256": "ea1e8649db618e393a343d61f12919e7cf5f7ef4122de3f98318cb04da8b7e05",
+      "keyCount": 5441
+    }
+  }
+}

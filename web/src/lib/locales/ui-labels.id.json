@@ -959,7 +959,6 @@
   "Cache performance and retrieval statistics": "Statistik kinerja dan pengambilan cache",
   "Can create content-linked pods": "Dapat membuat Pods yang tertaut ke konten",
   "Cancel Scan": "Batalkan Pemindaian",
-  "Cancel{all}": "Batalkan{all}",
   "Candidates": "Kandidat",
   "Canonical": "Kanonik",
   "Canonical support from": "Dukungan kanonik dari",
@@ -2840,7 +2839,6 @@
   "Retry Lidarr import for {directory}": "Coba lagi impor Lidarr untuk {directory}",
   "Retry Max Delay ms": "Coba lagi Penundaan Maks ms",
   "Retry Partial Files": "Coba lagi sebagian file",
-  "Retry{all}": "Coba lagi{all}",
   "Return to the full imported RustyMilk preset bank without deleting this playlist.": "Kembali ke bank preset RustyMilk yang diimpor secara penuh tanpa menghapus daftar putar ini.",
   "Return to the previous RustyMilk preset, or move backward in the local preset library.": "Kembali ke preset RustyMilk sebelumnya, atau mundur ke perpustakaan preset lokal.",
   "Return visualizer to the player bar.": "Kembalikan visualisator ke bilah pemutar.",
@@ -5439,5 +5437,7 @@
   "Hermit": "Pribadi",
   "Friends only": "Hanya teman",
   "Enforce": "Tanda tangan wajib",
-  "Use browser settings": "Gunakan setelan browser"
+  "Use browser settings": "Gunakan setelan browser",
+  "Retry selected": "Coba lagi item yang dipilih",
+  "Cancel selected": "Batalkan item yang dipilih"
 }

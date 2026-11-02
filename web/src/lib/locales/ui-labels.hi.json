@@ -959,7 +959,6 @@
   "Cache performance and retrieval statistics": "कैश प्रदर्शन और पुनर्प्राप्ति आँकड़े",
   "Can create content-linked pods": "कंटेंट से जुड़े Pods बना सकते हैं",
   "Cancel Scan": "स्कैन रद्द करें",
-  "Cancel{all}": "रद्द करें{all}",
   "Candidates": "सुझाए गए आइटम",
   "Canonical": "मानक",
   "Canonical support from": "मानक रिकॉर्डिंग का समर्थन करने वाले",
@@ -2840,7 +2839,6 @@
   "Retry Lidarr import for {directory}": "{directory} के लिए Lidarr आयात का पुनः प्रयास करें",
   "Retry Max Delay ms": "पुनः प्रयास करें अधिकतम विलंब एमएस",
   "Retry Partial Files": "आंशिक फ़ाइलें पुनः प्रयास करें",
-  "Retry{all}": "पुनः प्रयास करें{all}",
   "Return to the full imported RustyMilk preset bank without deleting this playlist.": "इस प्लेलिस्ट को हटाए बिना पूर्ण आयातित RustyMilk प्रीसेट बैंक पर वापस लौटें।",
   "Return to the previous RustyMilk preset, or move backward in the local preset library.": "पिछले RustyMilk प्रीसेट पर लौटें, या स्थानीय प्रीसेट लाइब्रेरी में पीछे की ओर जाएँ।",
   "Return visualizer to the player bar.": "विज़ुअलाइज़र को प्लेयर बार पर लौटाएँ।",
@@ -5439,5 +5437,7 @@
   "Hermit": "निजी",
   "Friends only": "केवल मित्र",
   "Enforce": "हस्ताक्षर अनिवार्य",
-  "Use browser settings": "ब्राउज़र सेटिंग का उपयोग करें"
+  "Use browser settings": "ब्राउज़र सेटिंग का उपयोग करें",
+  "Retry selected": "चयनित आइटम फिर से आज़माएँ",
+  "Cancel selected": "चयनित आइटम रद्द करें"
 }

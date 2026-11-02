@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "livePullRequest": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "aa106d2505de8c9ace2d7d6dbf2af9777651947d",
+    "isDraft": true,
+    "state": "OPEN"
+  },
+  "head": "aa106d2505de8c9ace2d7d6dbf2af9777651947d",
+  "tree": "f99e717b4b77c8da098e7b8fc163926d4d32e926",
+  "sourceHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "localeBReviewObservedHead": "9d3aae249503d1732cc890a650052c85c57b2919",
+  "localeBReviewObservedTree": "ec98bce9f26fc3fbef2968ba3e2b737b1d7fa214",
+  "primaryPacket": "/mnt/disks/scratch/task-scratch/slskr-pr204-W563-582-primary-20261102/packet",
+  "primarySha256SumsSha256": "6877ec3993379826689d17b2d5d4bbb812661d19ce1f7d9ebc90cf38877bd589",
+  "firstCrossreviewPacket": "/mnt/disks/scratch/task-scratch/slskr-pr204-W563-582-crossreview-20261102",
+  "firstCrossreviewSha256SumsSha256": "1d078fd3528e7c6d49adf0068fc3c8dd62590cb4c8fa71088696c566e4ff9a26",
+  "localeBPacket": "/mnt/disks/scratch/task-scratch/slskr-pr204-W563-582-crossreview-20261102/locale-b-by-b",
+  "localeBSha256SumsSha256": "666346295eb3beff251129a8d1e26df0019d901ecc896f9294daa592c89bd27b",
+  "sharedParentWorktreeWasDirty": true,
+  "liveFilesReadFromExactGitCommitObjects": true,
+  "repoOrPrModified": false,
+  "testsBuildsScansCI": false
+}

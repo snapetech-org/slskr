@@ -100,6 +100,7 @@ class TransferGroup extends Component {
 
     const selected = this.getSelectedFiles();
     const all = selected.length > 1 ? ' Selected' : '';
+    const hasMultipleSelected = selected.length > 1;
 
     const allRetryable =
       selected.filter((f) => transfers.isStateRetryable(f.state)).length ===
@@ -157,19 +158,27 @@ class TransferGroup extends Component {
               {allRetryable && (
                 <Button
                   color="green"
-                  content={interfaceText("Retry{all}", { "all": (all) })}
+                  content={interfaceText(
+                    hasMultipleSelected ? 'Retry selected' : 'Retry',
+                  )}
                   icon="redo"
                   onClick={() => this.handleRetryAll(selected)}
-                 {...interfaceTextProps("Retry{all}")}/>
+                 {...interfaceTextProps(
+                    hasMultipleSelected ? 'Retry selected' : 'Retry',
+                  )}/>
               )}
               {allRetryable && anyCancellable && <Button.Or />}
               {anyCancellable && (
                 <Button
                   color="red"
-                  content={interfaceText("Cancel{all}", { "all": (all) })}
+                  content={interfaceText(
+                    hasMultipleSelected ? 'Cancel selected' : 'Cancel',
+                  )}
                   icon="x"
                   onClick={() => this.handleCancelAll(selected)}
-                 {...interfaceTextProps("Cancel{all}")}/>
+                 {...interfaceTextProps(
+                    hasMultipleSelected ? 'Cancel selected' : 'Cancel',
+                  )}/>
               )}
               {(allRetryable || anyCancellable) && allRemovable && (
                 <Button.Or />

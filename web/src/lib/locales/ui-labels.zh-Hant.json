@@ -959,12 +959,11 @@
   "Cache performance and retrieval statistics": "快取效能和檢索統計",
   "Can create content-linked pods": "可以建立內容連結的 Pod",
   "Cancel Scan": "取消掃描",
-  "Cancel{all}": "取消{all}",
   "Candidates": "候選作品",
   "Canonical": "規範",
   "Canonical support from": "規範支持來自",
   "Canonical variants:": "規範變體：",
-  "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.": "限制 RustyMilk 渲染以降低 GPU 負載，或不限制渲染以獲得最大平滑度。",
+  "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.": "限制 RustyMilk 渲染以降低 GPU 負載，或不限制渲染以獲得最流暢的體驗。",
   "Capabilities unavailable": "功能不可用",
   "Capture local history": "記錄此瀏覽器中的播放歷史",
   "Capture player history preference": "播放歷史記錄偏好設定",
@@ -2840,7 +2839,6 @@
   "Retry Lidarr import for {directory}": "重試 Lidarr 導入 {directory}",
   "Retry Max Delay ms": "重試最大延遲 ms",
   "Retry Partial Files": "重試部分文件",
-  "Retry{all}": "重試{all}",
   "Return to the full imported RustyMilk preset bank without deleting this playlist.": "傳回完整匯入的 RustyMilk 預設庫，而不刪除此播放清單。",
   "Return to the previous RustyMilk preset, or move backward in the local preset library.": "返回到先前的 RustyMilk 預設，或在本機預設庫中向後移動。",
   "Return visualizer to the player bar.": "將視覺化工具返回播放器列。",
@@ -5439,5 +5437,7 @@
   "Hermit": "私人",
   "Friends only": "僅限好友",
   "Enforce": "強制簽章",
-  "Use browser settings": "使用瀏覽器設定"
+  "Use browser settings": "使用瀏覽器設定",
+  "Retry selected": "重試所選項目",
+  "Cancel selected": "取消所選項目"
 }

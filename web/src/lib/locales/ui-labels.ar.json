@@ -959,7 +959,6 @@
   "Cache performance and retrieval statistics": "أداء ذاكرة التخزين المؤقت وإحصائيات الاسترجاع",
   "Can create content-linked pods": "يمكن إنشاء Pods مرتبطة بالمحتوى",
   "Cancel Scan": "إلغاء المسح",
-  "Cancel{all}": "إلغاء{all}",
   "Candidates": "عناصر مرشحة",
   "Canonical": "قياسي",
   "Canonical support from": "دعم التسجيل القياسي من",
@@ -2840,7 +2839,6 @@
   "Retry Lidarr import for {directory}": "أعد محاولة استيراد Lidarr لـ {directory}",
   "Retry Max Delay ms": "إعادة المحاولة الحد الأقصى للتأخير مللي ثانية",
   "Retry Partial Files": "إعادة محاولة الملفات الجزئية",
-  "Retry{all}": "إعادة المحاولة{all}",
   "Return to the full imported RustyMilk preset bank without deleting this playlist.": "ارجع إلى بنك RustyMilk المستورد بالكامل والمجهز مسبقًا دون حذف قائمة التشغيل هذه.",
   "Return to the previous RustyMilk preset, or move backward in the local preset library.": "ارجع إلى إعداد RustyMilk السابق، أو انتقل للخلف في مكتبة الإعداد المسبق المحلية.",
   "Return visualizer to the player bar.": "قم بإرجاع المتخيل إلى شريط المشغل.",
@@ -5544,5 +5542,7 @@
   "Hermit": "خاص",
   "Friends only": "الأصدقاء فقط",
   "Enforce": "إلزام التوقيعات",
-  "Use browser settings": "استخدم إعدادات المتصفح"
+  "Use browser settings": "استخدم إعدادات المتصفح",
+  "Retry selected": "إعادة محاولة العناصر المحددة",
+  "Cancel selected": "إلغاء العناصر المحددة"
 }

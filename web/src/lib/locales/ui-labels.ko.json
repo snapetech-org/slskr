@@ -959,10 +959,9 @@
   "Cache performance and retrieval statistics": "캐시 성능 및 가져오기 통계",
   "Can create content-linked pods": "콘텐츠에 연결된 Pod를 만들 수 있습니다.",
   "Cancel Scan": "스캔 취소",
-  "Cancel{all}": "취소{all}",
   "Candidates": "후보 항목",
   "Canonical": "정규",
-  "Canonical support from": "정규 판정을 뒷받침하는",
+  "Canonical support from": "정규 녹음을 뒷받침하는",
   "Canonical variants:": "정규 버전 변형:",
   "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.": "GPU 부하를 낮추기 위해 RustyMilk 렌더링을 제한하거나 최대 부드러움을 위해 제한하지 않은 채로 두십시오.",
   "Capabilities unavailable": "사용할 수 없는 기능",
@@ -2840,7 +2839,6 @@
   "Retry Lidarr import for {directory}": "{directory}에 대해 Lidarr 가져오기 재시도",
   "Retry Max Delay ms": "재시도 최대 지연 시간(ms)",
   "Retry Partial Files": "부분 파일 재시도",
-  "Retry{all}": "재시도{all}",
   "Return to the full imported RustyMilk preset bank without deleting this playlist.": "이 재생목록을 삭제하지 않고 전체 가져온 RustyMilk 프리셋 뱅크로 돌아가세요.",
   "Return to the previous RustyMilk preset, or move backward in the local preset library.": "이전 RustyMilk 사전 설정으로 돌아가거나 로컬 사전 설정 라이브러리에서 뒤로 이동하세요.",
   "Return visualizer to the player bar.": "시각화 도우미를 플레이어 표시줄로 되돌립니다.",
@@ -5439,5 +5437,7 @@
   "Hermit": "비공개",
   "Friends only": "친구만",
   "Enforce": "서명 필수",
-  "Use browser settings": "브라우저 설정 사용"
+  "Use browser settings": "브라우저 설정 사용",
+  "Retry selected": "선택한 항목을 다시 시도",
+  "Cancel selected": "선택한 항목을 취소"
 }

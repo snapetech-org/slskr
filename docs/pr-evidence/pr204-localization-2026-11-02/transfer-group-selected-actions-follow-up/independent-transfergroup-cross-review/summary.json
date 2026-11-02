@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "task": "Independent cross-review of packet-only TransferGroup selected-label proposal",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "state": "OPEN",
+  "isDraft": true,
+  "exactHead": "aa106d2505de8c9ace2d7d6dbf2af9777651947d",
+  "exactTree": "f99e717b4b77c8da098e7b8fc163926d4d32e926",
+  "newTargetRows": 36,
+  "newTargetDispositions": {
+    "accept": 24,
+    "refine": 0,
+    "hold": 12
+  },
+  "legacyKeyRows": 36,
+  "legacyKeyDispositions": {
+    "retire-after-source-rewrite": 24,
+    "hold": 12
+  },
+  "totalLedgerRows": 72,
+  "sourceEditPlanDecision": "partial-hold",
+  "currentOldKeyCodeReferences": 6,
+  "coveredOldKeyCodeReferences": 6,
+  "otherOldKeyCodeReferences": 0,
+  "removeSemanticsReviewedForAllLocales": 12,
+  "catalogMismatches": 0,
+  "callerPinMismatches": 0,
+  "targetHashMismatches": 0,
+  "placeholderOrMarkupFailures": 0,
+  "blockers": [
+    "Remove vs disk-delete caller behavior conflicts: normal remove=true also deletes the local path in the pinned active route."
+  ],
+  "nativeSpeakerApproval": false,
+  "browserReview": false
+}
