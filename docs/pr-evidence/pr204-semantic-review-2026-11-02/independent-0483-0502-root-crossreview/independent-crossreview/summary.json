@@ -1,0 +1,73 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "pinnedHead": "0a1c497c67637eb2c129cde23299efe4d9f79651",
+  "pinnedTree": "3e100c36e1c51c09e509cb3009ef6d20d22d3a18",
+  "primaryLedgerPath": "/mnt/disks/scratch/task-scratch/slskr-pr204-W483-502-20261102/primary-review-ledger.jsonl",
+  "primaryLedgerSha256": "fdd61acab11e1d0ee78c0249b654885edf7f34f4b27376ede41aecc94b69e493",
+  "sourceInventoryPath": "/mnt/disks/scratch/task-scratch/slskr-pr204-W483-502-20261102/packet/source-inventory.jsonl",
+  "sourceInventorySha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "sourceInventoryRows": 5437,
+  "sourceInventoryHashesReattested": 5437,
+  "sourceInventoryHashMismatches": 0,
+  "sourceContextPath": "/mnt/disks/scratch/task-scratch/slskr-pr204-W483-502-20261102/packet/source-context.jsonl",
+  "sourceContextSha256": "bcd0eba113962e3f5cc9b0cb14a8edf574b318be63909d0001335bdcbc3d1c82",
+  "reviewWindow": "483–502",
+  "rowsReviewed": 240,
+  "rowsExpected": 240,
+  "coverageComplete": true,
+  "sourceCurrentRowsReattested": 240,
+  "sourceCurrentMismatches": 0,
+  "uniqueCallerPinsReattested": 25,
+  "callerPinMismatches": 0,
+  "sourceContextRowsWithoutDirectCaller": [
+    492,
+    493
+  ],
+  "decisions": {
+    "accept-current": 121,
+    "accept-proposal": 112,
+    "propose-missed-correction": 4,
+    "refine-proposal": 3
+  },
+  "primaryProposalsReviewed": 115,
+  "primaryProposalsAcceptedAsWritten": 112,
+  "primaryProposalsRefined": 3,
+  "missedCorrectionsAdded": 4,
+  "holds": 0,
+  "noOpPrimaryProposals": 0,
+  "placeholderParityFailures": 0,
+  "protectedLiteralFailures": 0,
+  "extraFindings": [
+    {
+      "sourceIndex": 486,
+      "sourceId": "Blacklist rejected downloads",
+      "locale": "de",
+      "target": "Quellen abgelehnter Downloads zur Blacklist hinzufügen",
+      "reason": "The checkbox tooltip excludes the rejected Wishlist peer and remote directory; the current target instead blacklists downloads."
+    },
+    {
+      "sourceIndex": 489,
+      "sourceId": "Block {username} from search results",
+      "locale": "es",
+      "target": "Bloquear a {username} en los resultados de búsqueda",
+      "reason": "The current accessible name omits the search scope."
+    },
+    {
+      "sourceIndex": 489,
+      "sourceId": "Block {username} from search results",
+      "locale": "fr",
+      "target": "Bloquer {username} dans les résultats de recherche",
+      "reason": "The current accessible name omits the search scope."
+    },
+    {
+      "sourceIndex": 489,
+      "sourceId": "Block {username} from search results",
+      "locale": "hi",
+      "target": "{username} को खोज परिणामों से ब्लॉक करें",
+      "reason": "Removes leading U+200F RIGHT-TO-LEFT MARK from an LTR Hindi label."
+    }
+  ],
+  "nativeSpeakerReviewPerformed": false,
+  "unresolvedConcerns": "No semantic holds. Cross-review is not native-speaker approval; targeted native review remains useful for idiom in 12 locales."
+}
