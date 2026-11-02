@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "candidatePacketSha256": "88e51551286eae1f371454f5274ac493fa8938899ddde5347a8fcaeffc6e9433",
+  "rootDecisionsSha256": "98db66ed7e1a8154b239c1de69a2ee039c649cb15af69346db3dbb4ed1f969e4",
+  "rows": 63,
+  "decisionCounts": {
+    "accept": 38,
+    "keep": 8,
+    "refine": 17
+  },
+  "applyCount": 55,
+  "keepCount": 8,
+  "perLocale": {
+    "ar": {
+      "accept": 4,
+      "keep": 1,
+      "refine": 1
+    },
+    "de": {
+      "accept": 4,
+      "keep": 1,
+      "refine": 1
+    },
+    "es": {
+      "accept": 4,
+      "keep": 1,
+      "refine": 1
+    },
+    "fr": {
+      "accept": 3,
+      "keep": 1,
+      "refine": 1
+    },
+    "hi": {
+      "accept": 9,
+      "keep": 1,
+      "refine": 2
+    },
+    "id": {
+      "accept": 6,
+      "keep": 1,
+      "refine": 1
+    },
+    "ja": {
+      "refine": 2
+    },
+    "ko": {
+      "refine": 2
+    },
+    "pt-BR": {
+      "accept": 2,
+      "refine": 1
+    },
+    "vi": {
+      "accept": 2,
+      "refine": 3
+    },
+    "zh-Hans": {
+      "accept": 2,
+      "keep": 1,
+      "refine": 1
+    },
+    "zh-Hant": {
+      "accept": 2,
+      "keep": 1,
+      "refine": 1
+    }
+  },
+  "planSha256": "745dbdbfa8431bacd34cda6a698d5b063aa34ee6419da465e0bf870554eaff19",
+  "nativeSpeakerApproval": false
+}

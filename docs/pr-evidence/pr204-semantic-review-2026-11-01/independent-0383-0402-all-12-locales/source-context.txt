@@ -1,0 +1,298 @@
+# slskR semantic review source and caller context: 383–402
+
+PR #204 exact review head `6f8d2b252131a2b68f85d66eb5210e0b6e9f6511` / tree `2fece646fa9dcb6892cad5233b7c79eb08997c24`.
+Source and caller snapshot `7ff454828398de6a3cfb72fe7f0ed21fe419425b` / tree `9e9f2aa743c4ff3236af8f99619803bdc3a37152`. All pinned caller Git blobs are identical at both commits.
+
+## Findings tied to source context
+
+- Index 385, `Authentication, API keys, HTTPS, CORS-adjacent rate limits, and restart cues.`: Security and Access card summary listing authentication, API keys, HTTPS, CORS, rate limits and restart cues. The wording “CORS-adjacent” is layout shorthand; caller context must establish whether the rate limits are related to CORS or simply nearby controls. Caller: `web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx:387-400`.
+
+- Index 386, `Auto`: Short state/mode label. Appears as the transport mode for a Failover statistic and as the automatic-download state opposite Manual. Caller: `web/src/components/System/Security/AdversarialSettingsView.jsx:206-216; web/src/components/System/SourceProviders/index.jsx:278-283`.
+
+- Index 389, `Auto replace interval seconds`: Accessible label for the numeric auto-replacement interval field; value is expressed in seconds. Caller: `web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx:292-301`.
+
+- Index 390, `Auto replace max retries`: Accessible label for the numeric maximum retry count for automatic stuck-download replacement. Caller: `web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx:312-319`.
+
+- Index 391, `Auto replace size threshold`: Accessible label for a percentage tolerance used to compare alternate-source file sizes before replacing a stuck download. Caller: `web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx:302-310`.
+
+- Index 392, `Auto-Replace`: Toggle label for the automatic replacement feature in the Transfers header. Caller: `web/src/components/Transfers/TransfersHeader.jsx:240-258`.
+
+- Index 393, `Auto-Replace (automatic stuck-download replacement)`: Self-contained parenthetical description of the Auto-Replace feature. The exact string has no direct literal callsite in web/src or crates/slskr/src at the pinned source head; the related translated feature toggle is shown in the caller context. Caller: `No direct exact-string callsite at pinned source head; related feature contexts: web/src/components/Transfers/TransfersHeader.jsx:240-258; web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx:321-330`.
+
+- Index 394, `Auto-Replace Interval`: Visible label for the numeric interval in the Admin Policies Transfer Policy form. Caller: `web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx:292-301`.
+
+- Index 395, `Auto-Replace Off`: Off state of the Admin Policies automatic-replacement setting. Caller: `web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx:205-216`.
+
+- Index 396, `Auto-Replace On`: On state of the Admin Policies automatic-replacement setting. Caller: `web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx:205-216`.
+
+- Index 397, `Auto-download best matches`: Wishlist checkbox enabling automatic downloads of the best matches, and the corresponding per-item tooltip. Caller: `web/src/components/Wishlist/WishlistModal.jsx:193-201; web/src/components/Wishlist/WishlistItemRow.jsx:105-112`.
+
+- Index 398, `Auto-download matches`: CSV Wishlist-import checkbox that enables downloading matches automatically. Caller: `web/src/components/Wishlist/CsvImportModal.jsx:145-154`.
+
+- Index 399, `Auto-download synced Wishlist items`: Lidarr setting to auto-download synced Wishlist items according to Wishlist rules. Caller: `web/src/components/System/Integrations/MetadataSettingsPanel.jsx:647-660`.
+
+- Index 400, `Auto-fill Similar`: Player Queue action adding similar recent-session tracks to the upcoming queue; the adjacent tooltip describes the action. Caller: `web/src/components/Player/PlayerQueueModal.jsx:154-175`.
+
+- Index 401, `Auto-import completed downloads`: Lidarr setting that sends completed slskr download directories to manual import. Caller: `web/src/components/System/Integrations/MetadataSettingsPanel.jsx:661-675`.
+
+- Index 402, `Auto-replace disabled`: Toast shown after the user disables Auto-Replace in Transfers. Caller: `web/src/components/Transfers/Transfers.jsx:680-690; web/src/components/Transfers/TransfersHeader.jsx:240-258`.
+
+## Pinned caller excerpts
+
+### `web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx` — blob `90f3e1d29a4b514a1877693e131e92b66b8050aa`, SHA-256 `17241e796b943988d339bac74569f5a5d4e8889194cad1221d0b9c8bc1b82a9e`
+
+Lines 205–216:
+205:         <Card fluid>
+206:           <Card.Content>
+207:             <Card.Header>
+208:               <Icon name="exchange" />
+209:               <LocalizedText source={"Transfer Policy"} /></Card.Header>
+210:             <Card.Meta><LocalizedText source={"Slots, speed ceilings, auto-replace, and schedule enablement."} /></Card.Meta>
+211:           </Card.Content>
+212:           <Card.Content>
+213:             <div className="integration-status-row">
+214:               {boolLabel(form.scheduledLimitsEnabled, 'Schedules On', 'Schedules Off')}
+215:               {boolLabel(form.autoReplaceStuck, 'Auto-Replace On', 'Auto-Replace Off')}
+216:             </div>
+
+Lines 292–330:
+292:               <Form.Group widths="equal">
+293:                 <Form.Input
+294:                   aria-label={interfaceText("Auto replace interval seconds")}
+295:                   disabled={!remoteConfiguration || saving}
+296:                   label={interfaceText("Auto-Replace Interval")}
+297:                   min={60}
+298:                   onChange={(_, { value }) => update('autoReplaceInterval', value)}
+299:                   type="number"
+300:                   value={form.autoReplaceInterval}
+301:                  {...interfaceTextProps("Auto replace interval seconds")}/>
+302:                 <Form.Input
+303:                   aria-label={interfaceText("Auto replace size threshold")}
+304:                   disabled={!remoteConfiguration || saving}
+305:                   label={interfaceText("Size Threshold %")}
+306:                   min={0}
+307:                   onChange={(_, { value }) => update('autoReplaceThreshold', value)}
+308:                   type="number"
+309:                   value={form.autoReplaceThreshold}
+310:                  {...interfaceTextProps("Auto replace size threshold")}/>
+311:                 <Form.Input
+312:                   aria-label={interfaceText("Auto replace max retries")}
+313:                   disabled={!remoteConfiguration || saving}
+314:                   label={interfaceText("Max Retries")}
+315:                   min={0}
+316:                   onChange={(_, { value }) => update('autoReplaceMaxRetries', value)}
+317:                   type="number"
+318:                   value={form.autoReplaceMaxRetries}
+319:                  {...interfaceTextProps("Auto replace max retries")}/>
+320:               </Form.Group>
+321:               <Form.Group grouped>
+322:                 <Popup
+323:                   content={interfaceText("Enable automatic replacement of stuck downloads with alternative sources.")}
+324:                   trigger={
+325:                     <Checkbox
+326:                       aria-label={interfaceText("Enable auto replace stuck downloads")}
+327:                       checked={form.autoReplaceStuck}
+328:                       disabled={!remoteConfiguration || saving}
+329:                       label={interfaceText("Enable auto-replace stuck downloads")}
+330:                       onChange={(_, { checked }) =>
+
+Lines 387–400:
+387:         <Card fluid>
+388:           <Card.Content>
+389:             <Card.Header>
+390:               <Icon name="lock" />
+391:               <LocalizedText source={"Security and Access"} /></Card.Header>
+392:             <Card.Meta><LocalizedText source={"Authentication, API keys, HTTPS, CORS-adjacent rate limits, and restart cues."} /></Card.Meta>
+393:           </Card.Content>
+394:           <Card.Content>
+395:             <div className="integration-status-row">
+396:               {boolLabel(!form.noAuth, 'Auth On', 'No Auth')}
+397:               {boolLabel(form.jwtConfigured, 'JWT Key Set', 'JWT Key Missing')}
+398:               {boolLabel(form.apiKeyConfigured, 'API Key Set', 'API Key Missing')}
+399:               {boolLabel(!form.httpsDisabled, 'HTTPS On', 'HTTPS Off')}
+400:               {boolLabel(
+
+### `web/src/components/System/Security/AdversarialSettingsView.jsx` — blob `adcacdd123faf82a315da746fab3243adf5ea6a3`, SHA-256 `5b2dfa095ba281bae2b5ef66e17901b38c7d2a68d9bef52c5f016ce3352db72d`
+
+Lines 206–216:
+206:                       <Statistic.Label><LocalizedText source={"Transport Mode"} /></Statistic.Label>
+207:                     </Statistic>
+208:                   </Grid.Column>
+209:                   <Grid.Column>
+210:                     <Statistic size="small">
+211:                       <Statistic.Value>
+212:                         <Label color="teal">
+213:                           <Icon name="sync alternate" />
+214:                           <LocalizedText source={"Auto"} /></Label>
+215:                       </Statistic.Value>
+216:                       <Statistic.Label><LocalizedText source={"Failover"} /></Statistic.Label>
+
+### `web/src/components/System/SourceProviders/index.jsx` — blob `b776fdcbf40703674082b79be9c75e84d03839e9`, SHA-256 `1f056026eede462d5e5410afe292d84103e6204288a6fa26a6cfb6647b2b9462`
+
+Lines 278–283:
+278:                 <div className="source-provider-title-row">
+279:                   <Card.Header>{policy.profileName}</Card.Header>
+280:                   <Label color={policy.autoDownloadEnabled ? 'green' : 'grey'}>
+281:                     <Icon name={policy.autoDownloadEnabled ? 'play' : 'pause'} />
+282:                     {policy.autoDownloadEnabled ? <LocalizedText source={"Auto"} /> : <LocalizedText source={"Manual"} />}
+283:                   </Label>
+
+### `web/src/components/Transfers/TransfersHeader.jsx` — blob `de01ff39c31f0ac094b95fba0a15f40f709f605c`, SHA-256 `57f43a6851d991b9241b73a0f9ff08636573a49282033722f7350fb7f2a44d6f`
+
+Lines 240–258:
+240:         <Popup
+241:           content={interfaceText("Automatically find and replace stuck downloads with alternative sources. Replacements must be within {autoReplaceThreshold}% file size.", { "autoReplaceThreshold": (autoReplaceThreshold) })}
+242:           position="bottom right"
+243:           trigger={
+244:             <Checkbox
+245:               checked={autoReplaceEnabled}
+246:               className="auto-replace-toggle"
+247:               disabled={
+248:                 !server.isConnected ||
+249:                 autoReplaceChanging ||
+250:                 Boolean(modeStatusError)
+251:               }
+252:               hidden={direction === 'upload'}
+253:               label={localizedText('Auto-Replace')}
+254:               onChange={(_, data) => onAutoReplaceChange?.(data.checked)}
+255:               toggle
+256:             />
+257:           }
+258:          {...interfaceTextProps("Automatically find and replace stuck downloads with alternative sources. Replacements must be within {autoReplaceThreshold}% file size.")}/>
+
+### `web/src/components/Wishlist/WishlistModal.jsx` — blob `16b4aa4c5a2ab57b1a0c2f6581e99dfdd4b24727`, SHA-256 `49f9f293410dec17e1d3c335ba49218fb7b351aa04a7bfc3ae107b138bf06582`
+
+Lines 193–201:
+193:           <Form.Field>
+194:             <Checkbox
+195:               checked={autoDownload}
+196:               dir={directionFor('Auto-download best matches')}
+197:               lang={languageFor('Auto-download best matches')}
+198:               label={localized('Auto-download best matches')}
+199:               onChange={(_, data) => setAutoDownload(data.checked)}
+200:               toggle
+201:             />
+
+### `web/src/components/Wishlist/WishlistItemRow.jsx` — blob `cbc2e023f27b0cd4362391c295562862de51b49b`, SHA-256 `b7252496aad45e77b718dae85e6d6cb298f1591bc77633c7957ba1806c384d6b`
+
+Lines 105–112:
+105:       <Table.Cell textAlign="center">
+106:         <Popup
+107:           content={localized('Auto-download best matches')}
+108:           trigger={
+109:             <Icon
+110:               color={item.autoDownload ? 'green' : 'grey'}
+111:               name={item.autoDownload ? 'download' : 'download'}
+112:             />
+
+### `web/src/components/Wishlist/CsvImportModal.jsx` — blob `1d903eda3b3f4988847b4e646809337791feaeff`, SHA-256 `fbe532b944fcce8d11e6027944a206b88c9dfea87a1f185f45249fb5ee4ddd3e`
+
+Lines 145–154:
+145:             <Form.Field>
+146:               <Checkbox
+147:                 checked={autoDownload}
+148:                 dir={directionFor('Auto-download matches')}
+149:                 lang={languageFor('Auto-download matches')}
+150:                 label={localized('Auto-download matches')}
+151:                 onChange={(_, data) => setAutoDownload(data.checked)}
+152:                 toggle
+153:               />
+154:             </Form.Field>
+
+### `web/src/components/System/Integrations/MetadataSettingsPanel.jsx` — blob `0d0ffc8e16a072970a51604bd95d76f7f796669f`, SHA-256 `e5aaf906b4cfc6e17ef8706bc95efb660b0eda2748bf2dad1c411ee9621d6339`
+
+Lines 647–675:
+647:               <Popup
+648:                 content={interfaceText("Allow Lidarr-created Wishlist items to auto-download according to Wishlist rules.")}
+649:                 trigger={
+650:                   <Checkbox
+651:                     aria-label={interfaceText("Enable Lidarr auto-download setting")}
+652:                     checked={form.lidarrAutoDownload}
+653:                     disabled={!remoteConfiguration || saving}
+654:                     label={interfaceText("Auto-download synced Wishlist items")}
+655:                     onChange={(_, { checked }) =>
+656:                       update('lidarrAutoDownload', checked)
+657:                     }
+658:                    {...interfaceTextProps("Enable Lidarr auto-download setting")}/>
+659:                 }
+660:                {...interfaceTextProps("Allow Lidarr-created Wishlist items to auto-download according to Wishlist rules.")}/>
+661:               <Popup
+662:                 content={interfaceText("Allow completed slskr download directories to be sent to Lidarr manual import.")}
+663:                 trigger={
+664:                   <Checkbox
+665:                     aria-label={interfaceText("Enable Lidarr completed import setting")}
+666:                     checked={form.lidarrAutoImportCompleted}
+667:                     disabled={!remoteConfiguration || saving}
+668:                     label={interfaceText("Auto-import completed downloads")}
+669:                     onChange={(_, { checked }) =>
+670:                       update('lidarrAutoImportCompleted', checked)
+671:                     }
+672:                    {...interfaceTextProps("Enable Lidarr completed import setting")}/>
+673:                 }
+674:                {...interfaceTextProps("Allow completed slskr download directories to be sent to Lidarr manual import.")}/>
+675:             </Form.Group>
+
+### `web/src/components/Player/PlayerQueueModal.jsx` — blob `8bdaf63060b6c9995f89f991500563aa06869593`, SHA-256 `dbfe2ed6f8e0bf5b68fa51db9305473b19b63fe3a4d601c975b0cdeebd74c048`
+
+Lines 154–175:
+154:           <section>
+155:             <div className="player-queue-manager-heading">
+156:               <div className="player-panel-title"><LocalizedText source={"Upcoming"} /></div>
+157:               <div className="player-queue-manager-actions">
+158:                 <Popup
+159:                   content={interfaceText("Add similar recent session tracks to the upcoming queue. This only uses tracks already known to this browser session.")}
+160:                   trigger={
+161:                     <Button
+162:                       data-testid="player-auto-queue-similar"
+163:                       disabled={similarCandidates.length === 0}
+164:                       onClick={() =>
+165:                         onAutoQueueSimilar(
+166:                           similarCandidates.map((candidate) => candidate.item),
+167:                         )
+168:                       }
+169:                       size="mini"
+170:                       type="button"
+171:                     >
+172:                       <Icon name="magic" />
+173:                       <LocalizedText source={"Auto-fill Similar"} /></Button>
+174:                   }
+175:                  {...interfaceTextProps("Add similar recent session tracks to the upcoming queue. This only uses tracks already known to this browser session.")}/>
+
+### `web/src/components/Transfers/Transfers.jsx` — blob `00f3488b547c2f6e4d97fbd6d0931b724ea3c17d`, SHA-256 `744da23792a1fac5929a4802600b1cc7f238a3f3fabe1f33ded598b2b546b662`
+
+Lines 680–690:
+680:       if (enabled) {
+681:         await autoReplaceLibrary.enableAutoReplace();
+682:         if (!mountedRef.current || requestId !== modeRequestIdsRef.current.autoReplace) return;
+683:         setAutoReplaceEnabled(true);
+684:         toast.info(<LocalizedText source="Auto-replace enabled. Backend will check for stuck downloads periodically." />);
+685:       } else {
+686:         await autoReplaceLibrary.disableAutoReplace();
+687:         if (!mountedRef.current || requestId !== modeRequestIdsRef.current.autoReplace) return;
+688:         setAutoReplaceEnabled(false);
+689:         toast.info(<LocalizedText source="Auto-replace disabled" />);
+690:       }
+
+### `web/src/components/System/Integrations/LidarrPanel.jsx` — blob `3bb24c3fb94ceb4815dce12999fbacb898437e83`, SHA-256 `6fff815fc95b10400d84970dfa25f8bdf05d5bb360d719a3cf7f1cc62bcab8ea`
+
+Lines 95–110:
+95:       <Card.Content>
+96:         <div className="integration-status-row">
+97:           {boolLabel(enabled)}
+98:           {boolLabel(
+99:             getOption(lidarrOptions, 'syncWantedToWishlist', 'SyncWantedToWishlist'),
+100:             'Wanted Sync',
+101:             'Wanted Sync Off',
+102:           )}
+103:           {boolLabel(
+104:             getOption(lidarrOptions, 'autoImportCompleted', 'AutoImportCompleted'),
+105:             'Auto Import',
+106:             'Auto Import Off',
+107:           )}
+108:           <Label>
+109:             <Icon name={maskedApiKey === 'Configured' ? 'key' : 'warning sign'} />
+110:             <LocalizedText source={"API Key"} />{" "}{maskedApiKey}
+
+## Review checks
+
+All 240 cells are populated and reconciled against exact source/current-target hashes. Review covers meaning, source context, placeholders, ICU syntax, and protected literals. The selected source keys contain no placeholders or ICU expressions. The exact source string at index 393 has no direct literal callsite in the pinned non-locale source; its related feature-label context is included and this limitation is recorded. Sixty-three exact-cell correction candidates are prepared for independent cross-review; no catalog change is proposed before that review. Native-speaker approval is not claimed.

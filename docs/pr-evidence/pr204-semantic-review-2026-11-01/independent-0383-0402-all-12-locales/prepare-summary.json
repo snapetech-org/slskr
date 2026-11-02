@@ -1,0 +1,111 @@
+{
+  "head": "6f8d2b252131a2b68f85d66eb5210e0b6e9f6511",
+  "head_tree": "2fece646fa9dcb6892cad5233b7c79eb08997c24",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_ids": 5437,
+  "frozen_source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "selected_source_indices": [
+    383,
+    402
+  ],
+  "selected_source_ids": [
+    "Authentication disabled",
+    "Authentication required. Please refresh the page.",
+    "Authentication, API keys, HTTPS, CORS-adjacent rate limits, and restart cues.",
+    "Auto",
+    "Auto Import",
+    "Auto Import Off",
+    "Auto replace interval seconds",
+    "Auto replace max retries",
+    "Auto replace size threshold",
+    "Auto-Replace",
+    "Auto-Replace (automatic stuck-download replacement)",
+    "Auto-Replace Interval",
+    "Auto-Replace Off",
+    "Auto-Replace On",
+    "Auto-download best matches",
+    "Auto-download matches",
+    "Auto-download synced Wishlist items",
+    "Auto-fill Similar",
+    "Auto-import completed downloads",
+    "Auto-replace disabled"
+  ],
+  "catalog_sha256": {
+    "web/src/lib/locales/ui-labels.ar.json": "29b60949cceb52a576f9abf4a3ce152b9c3a5d3999e754dda39d32a24df36906",
+    "web/src/lib/locales/ui-labels.de.json": "ac2e0ceb9f0a489c3b73d702b6ef23fba73d21d769db6920df4e0f83238f03d3",
+    "web/src/lib/locales/ui-labels.es.json": "c2328a7ebffd4381f2ee0524eb85c919229296961162a1f039878d92a6c2e626",
+    "web/src/lib/locales/ui-labels.fr.json": "76651792512c8c179641d94abeddc241af632eebbdcfacddccc9dcdb913e382a",
+    "web/src/lib/locales/ui-labels.hi.json": "8d1ed602a68506e0b8ba99d038fe93a2bf257e06e9fe2450c9adc6b0d4326229",
+    "web/src/lib/locales/ui-labels.id.json": "ba7dfe1f6bb0c7e5885c1b4e5f2f186a31cfd39019a7a1a7bddb3ebbbb809908",
+    "web/src/lib/locales/ui-labels.ja.json": "8459939522975137cecea848c15de453bf5cfd079ec0746d88695cc8839ac337",
+    "web/src/lib/locales/ui-labels.ko.json": "d2dbae82b7b93ccc833240cda0de0846b10d6fab33441addcb95cb2086e4fe3e",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "aab9a238f29f08787a6988e81f542e21130539cc7973061e80be4f123b863e13",
+    "web/src/lib/locales/ui-labels.vi.json": "bbd2386e984ee26658bbddffe6feb2b2209916c1a85305008c55d48f64d1a91d",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "ed3c68faf6d9abc662f28473090560ed06c0516e3873c7d7f7b2b4f86fe0cde2",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "0c85f05926596d930ee71852c66c4bd54fd788013e87315fa1b2d01573801e65"
+  },
+  "overlap_input_count": 954,
+  "overlap_manifest_sha256": "3bf4b8decdd85420bce6ce4fd4be28d579740f6770fc1c1106c90c3cd9c7a16f",
+  "counts": {
+    "prior_accepted": 132,
+    "prior_correction-needed": 51,
+    "new": 57
+  },
+  "per_locale": {
+    "ar": {
+      "prior_accepted": 6,
+      "prior_correction-needed": 3,
+      "new": 11
+    },
+    "de": {
+      "prior_accepted": 6,
+      "prior_correction-needed": 5,
+      "new": 9
+    },
+    "es": {
+      "prior_accepted": 6,
+      "prior_correction-needed": 5,
+      "new": 9
+    },
+    "fr": {
+      "prior_accepted": 6,
+      "prior_correction-needed": 4,
+      "new": 10
+    },
+    "hi": {
+      "prior_accepted": 4,
+      "prior_correction-needed": 8,
+      "new": 8
+    },
+    "id": {
+      "prior_accepted": 4,
+      "prior_correction-needed": 6,
+      "new": 10
+    },
+    "ja": {
+      "prior_accepted": 18,
+      "prior_correction-needed": 2
+    },
+    "ko": {
+      "prior_accepted": 18,
+      "prior_correction-needed": 2
+    },
+    "pt-BR": {
+      "prior_accepted": 17,
+      "prior_correction-needed": 3
+    },
+    "vi": {
+      "prior_accepted": 15,
+      "prior_correction-needed": 5
+    },
+    "zh-Hans": {
+      "prior_accepted": 16,
+      "prior_correction-needed": 4
+    },
+    "zh-Hant": {
+      "prior_accepted": 16,
+      "prior_correction-needed": 4
+    }
+  }
+}

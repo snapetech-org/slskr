@@ -1,0 +1,48 @@
+{
+  "review_head": "6f8d2b252131a2b68f85d66eb5210e0b6e9f6511",
+  "review_tree": "2fece646fa9dcb6892cad5233b7c79eb08997c24",
+  "source_commit": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "window": [
+    383,
+    402
+  ],
+  "selected_populated_cells": 240,
+  "candidate_count": 63,
+  "prior_overlap_dispositions": {
+    "prior_accepted": 132,
+    "prior_correction-needed": 51,
+    "new": 57
+  },
+  "candidate_counts": {
+    "prior_correction_needed": 51,
+    "fresh": 12
+  },
+  "candidate_counts_by_source_index": {
+    "385": 12,
+    "386": 1,
+    "389": 8,
+    "390": 6,
+    "391": 7,
+    "392": 1,
+    "393": 8,
+    "395": 2,
+    "396": 2,
+    "399": 1,
+    "400": 12,
+    "401": 1,
+    "402": 2
+  },
+  "decision_counts": {
+    "accepted-prior-exact-carry": 132,
+    "candidate-correction-pending-cross-review": 63,
+    "accepted-fresh-current": 45
+  },
+  "caller_file_count": 11,
+  "selection_sha256": "334cfe2cda3bd0599b6065bf34c91c8d6f15a2689c375637b27e2311936045e1",
+  "candidate_sha256": "88e51551286eae1f371454f5274ac493fa8938899ddde5347a8fcaeffc6e9433",
+  "cell_audit_sha256": "84f841b9366d0253ef8b90f696cd9d5af8241f66b4a4125ee1efa7318fb50e6c",
+  "source_context_sha256": "d8a4aeb50c63ae76ae2ab88afbe5af779c8f9fca2675cbccac4d31e34410b719",
+  "source_pins_sha256": "286fe238f076c48ea8b09ddc0fe9707f69ae3a2d227a03a884cb56f508c5d5e8",
+  "prior_evidence_manifest_sha256": "098db4cd5b0227496b381f431c36133ffc2d1733e6a686f9d4c3995c0f0b6efa"
+}

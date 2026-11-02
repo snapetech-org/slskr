@@ -1,29 +1,29 @@
 {
-  "head": "267269fc7179e9445efae7ab2ed66ac95fce9a5e",
-  "head_tree": "9f17ede96f077d66dfcfbe4ba7766dbf35f750db",
+  "head": "83aef2e22cede4041943bd0d612357e152e7a9b5",
+  "head_tree": "927bae235b4b57ac51a64389e6becadd75b133c3",
   "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
   "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
   "source_ids": 5437,
   "cell_count": 65244,
   "catalog_file_sha256": {
-    "web/src/lib/locales/ui-labels.ar.json": "29b60949cceb52a576f9abf4a3ce152b9c3a5d3999e754dda39d32a24df36906",
-    "web/src/lib/locales/ui-labels.de.json": "ac2e0ceb9f0a489c3b73d702b6ef23fba73d21d769db6920df4e0f83238f03d3",
-    "web/src/lib/locales/ui-labels.es.json": "c2328a7ebffd4381f2ee0524eb85c919229296961162a1f039878d92a6c2e626",
-    "web/src/lib/locales/ui-labels.fr.json": "76651792512c8c179641d94abeddc241af632eebbdcfacddccc9dcdb913e382a",
-    "web/src/lib/locales/ui-labels.hi.json": "8d1ed602a68506e0b8ba99d038fe93a2bf257e06e9fe2450c9adc6b0d4326229",
-    "web/src/lib/locales/ui-labels.id.json": "ba7dfe1f6bb0c7e5885c1b4e5f2f186a31cfd39019a7a1a7bddb3ebbbb809908",
-    "web/src/lib/locales/ui-labels.ja.json": "8459939522975137cecea848c15de453bf5cfd079ec0746d88695cc8839ac337",
-    "web/src/lib/locales/ui-labels.ko.json": "d2dbae82b7b93ccc833240cda0de0846b10d6fab33441addcb95cb2086e4fe3e",
-    "web/src/lib/locales/ui-labels.pt-BR.json": "aab9a238f29f08787a6988e81f542e21130539cc7973061e80be4f123b863e13",
-    "web/src/lib/locales/ui-labels.vi.json": "bbd2386e984ee26658bbddffe6feb2b2209916c1a85305008c55d48f64d1a91d",
-    "web/src/lib/locales/ui-labels.zh-Hans.json": "ed3c68faf6d9abc662f28473090560ed06c0516e3873c7d7f7b2b4f86fe0cde2",
-    "web/src/lib/locales/ui-labels.zh-Hant.json": "0c85f05926596d930ee71852c66c4bd54fd788013e87315fa1b2d01573801e65"
+    "web/src/lib/locales/ui-labels.ar.json": "44eaca86bcb3f44dde0a73e5ccc39a181df15b9b57715dd2f91db7a72c7a088c",
+    "web/src/lib/locales/ui-labels.de.json": "17756367e6464bdf9b0eed71145a0bc357677e94231b72e39ddc58f41efeb6d6",
+    "web/src/lib/locales/ui-labels.es.json": "5e0c0984c801950cbf0c7b3faa3e944c1f4898c02eef5d621dff0eba8812b070",
+    "web/src/lib/locales/ui-labels.fr.json": "e0a75b45c122fcb24fd168f3559bf56846523fe6d5152ba6f6f6cfafbbd0e508",
+    "web/src/lib/locales/ui-labels.hi.json": "65463ad5943f1b22f085cd47a0da09848bb56bb92e31d7d3e0ddc19138653d78",
+    "web/src/lib/locales/ui-labels.id.json": "96c6a37c6d5cacb8ccbeb9633da210690c1e33527d95ddcd48691fd79cc3e048",
+    "web/src/lib/locales/ui-labels.ja.json": "08ff6584c6023791f2a6bc890d27eef8797306c0c76f4a87bfa9ac87ae22a754",
+    "web/src/lib/locales/ui-labels.ko.json": "bff0605fe04305f91c857011d9f202141918c3e4b04716271f5fc96fb5ff0e72",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "6f68bd590bdad20efcd96dd78d1d5e411d51f68adaea86308bbfa4b789b822d8",
+    "web/src/lib/locales/ui-labels.vi.json": "4a1cac8315cec65639d6327b354c3072960fd0b03a809ad75f0d96980493d59d",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "387c3989ec914c22ac0d4ab12e05e0fd329705079e2886a28fe5884d9c331354",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "48ac788db8bf5aa8d18c556b2a4df668f7913d3076540da017318bcad0e5b5d1"
   },
   "structured_plural_cells": {
     "ar": 15
   },
-  "evidence_files_scanned": 954,
-  "evidence_scan_manifest_sha256": "3bf4b8decdd85420bce6ce4fd4be28d579740f6770fc1c1106c90c3cd9c7a16f",
+  "evidence_files_scanned": 969,
+  "evidence_scan_manifest_sha256": "e4479934b1981fd5fc1173b7aa4230757a9ecb163b936e91547de63d5ca00b91",
   "evidence_file_manifest": [
     {
       "root": "pr-review-head",
@@ -1488,6 +1488,96 @@
       "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0363-0382-all-12-locales/source-pins.json",
       "bytes": 4538,
       "sha256": "bfb535d501abea7cabc01a95ba6393eee99522c4e70a6392b317d3d790f2d29b"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/accepted-dispositions.jsonl",
+      "bytes": 214719,
+      "sha256": "0bb84a646a2cecb32b6eeda824e35999321d1d6303ffa11601eccaa1140ab7df"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/applied-corrections.jsonl",
+      "bytes": 84544,
+      "sha256": "869e95099f0e18fe2b381770729e00f2e62b3b821aa83e39b4065e2afd115af7"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/apply-summary.json",
+      "bytes": 4275,
+      "sha256": "4eec128a051bc12284880b50ddbfd9cc5d87f34aa748b83f8a8f07a0c98dd9ab"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/candidate-corrections.jsonl",
+      "bytes": 110209,
+      "sha256": "88e51551286eae1f371454f5274ac493fa8938899ddde5347a8fcaeffc6e9433"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/post-apply-verification.json",
+      "bytes": 1905,
+      "sha256": "cecf61a256e4748aee12ea6ffbcb9e3b8a8c63e1f7b80f329faa61ed3381bee9"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/prepare-summary.json",
+      "bytes": 3862,
+      "sha256": "ab22a23e0e66984e9d901e08b5b2e5d7059a0d3d7af337087dca93ec6dead6dc"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/prior-evidence-scan-manifest.jsonl",
+      "bytes": 200227,
+      "sha256": "098db4cd5b0227496b381f431c36133ffc2d1733e6a686f9d4c3995c0f0b6efa"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/review-summary.json",
+      "bytes": 1510,
+      "sha256": "949a97c437a0de0a233fea703c5df9ddf11840dd3a265ec8ce24a1cf6711a899"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/reviewed-cell-audit.jsonl",
+      "bytes": 254248,
+      "sha256": "84f841b9366d0253ef8b90f696cd9d5af8241f66b4a4125ee1efa7318fb50e6c"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/root-apply-plan-summary.json",
+      "bytes": 1264,
+      "sha256": "ef6ad728485b4746d4ee418f03f13f6c0f07bf492c58337398fe0b25eae20ed9"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/root-apply-plan.jsonl",
+      "bytes": 103637,
+      "sha256": "745dbdbfa8431bacd34cda6a698d5b063aa34ee6419da465e0bf870554eaff19"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/root-cross-review.jsonl",
+      "bytes": 91612,
+      "sha256": "98db66ed7e1a8154b239c1de69a2ee039c649cb15af69346db3dbb4ed1f969e4"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/root-decisions.jsonl",
+      "bytes": 91612,
+      "sha256": "98db66ed7e1a8154b239c1de69a2ee039c649cb15af69346db3dbb4ed1f969e4"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/selection.jsonl",
+      "bytes": 175061,
+      "sha256": "334cfe2cda3bd0599b6065bf34c91c8d6f15a2689c375637b27e2311936045e1"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/source-pins.json",
+      "bytes": 4150,
+      "sha256": "286fe238f076c48ea8b09ddc0fe9707f69ae3a2d227a03a884cb56f508c5d5e8"
     },
     {
       "root": "pr-review-head",
@@ -5751,214 +5841,103 @@
     }
   ],
   "unique_current_cell_status_counts": {
-    "accepted": 23865,
-    "corrected": 519,
-    "correction-needed": 10541,
+    "accepted": 23910,
+    "corrected": 574,
+    "correction-needed": 10492,
     "held": 289,
-    "unreviewed": 30030
+    "unreviewed": 29979
   },
   "per_locale_exact_status_counts": {
     "ar": {
-      "accepted": 1352,
-      "corrected": 51,
-      "correction-needed": 1063,
+      "accepted": 1360,
+      "corrected": 56,
+      "correction-needed": 1060,
       "held": 12,
-      "unreviewed": 2959
+      "unreviewed": 2949
     },
     "de": {
-      "accepted": 1385,
-      "corrected": 45,
-      "correction-needed": 846,
+      "accepted": 1393,
+      "corrected": 50,
+      "correction-needed": 841,
       "held": 10,
-      "unreviewed": 3151
+      "unreviewed": 3143
     },
     "es": {
-      "accepted": 1333,
-      "corrected": 48,
-      "correction-needed": 1075,
+      "accepted": 1341,
+      "corrected": 53,
+      "correction-needed": 1070,
       "held": 9,
-      "unreviewed": 2972
+      "unreviewed": 2964
     },
     "fr": {
-      "accepted": 1341,
-      "corrected": 47,
-      "correction-needed": 1017,
+      "accepted": 1350,
+      "corrected": 51,
+      "correction-needed": 1013,
       "held": 10,
-      "unreviewed": 3022
+      "unreviewed": 3013
     },
     "hi": {
-      "accepted": 1334,
-      "corrected": 55,
-      "correction-needed": 1097,
+      "accepted": 1338,
+      "corrected": 66,
+      "correction-needed": 1089,
       "held": 14,
-      "unreviewed": 2937
+      "unreviewed": 2930
     },
     "id": {
-      "accepted": 1336,
-      "corrected": 50,
-      "correction-needed": 1062,
+      "accepted": 1344,
+      "corrected": 57,
+      "correction-needed": 1056,
       "held": 10,
-      "unreviewed": 2979
+      "unreviewed": 2970
     },
     "ja": {
       "accepted": 2771,
-      "corrected": 29,
-      "correction-needed": 597,
+      "corrected": 31,
+      "correction-needed": 595,
       "held": 38,
       "unreviewed": 2002
     },
     "ko": {
       "accepted": 2667,
-      "corrected": 32,
-      "correction-needed": 699,
+      "corrected": 34,
+      "correction-needed": 697,
       "held": 39,
       "unreviewed": 2000
     },
     "pt-BR": {
       "accepted": 2660,
-      "corrected": 35,
-      "correction-needed": 704,
+      "corrected": 38,
+      "correction-needed": 701,
       "held": 36,
       "unreviewed": 2002
     },
     "vi": {
       "accepted": 2438,
-      "corrected": 51,
-      "correction-needed": 909,
+      "corrected": 56,
+      "correction-needed": 904,
       "held": 37,
       "unreviewed": 2002
     },
     "zh-Hans": {
       "accepted": 2631,
-      "corrected": 38,
-      "correction-needed": 729,
+      "corrected": 41,
+      "correction-needed": 726,
       "held": 37,
       "unreviewed": 2002
     },
     "zh-Hant": {
       "accepted": 2617,
-      "corrected": 38,
-      "correction-needed": 743,
+      "corrected": 41,
+      "correction-needed": 740,
       "held": 37,
       "unreviewed": 2002
     }
   },
-  "unreviewed_source_index_count": 3625,
-  "unreviewed_cells": 30030,
+  "unreviewed_source_index_count": 3615,
+  "unreviewed_cells": 29979,
   "first_100_unreviewed_indices": {
-    "386": {
-      "source_id": "Auto",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "390": {
-      "source_id": "Auto replace max retries",
-      "fresh_locale_count": 3,
-      "fresh_locales": [
-        "ar",
-        "fr",
-        "id"
-      ]
-    },
-    "391": {
-      "source_id": "Auto replace size threshold",
-      "fresh_locale_count": 1,
-      "fresh_locales": [
-        "ar"
-      ]
-    },
-    "392": {
-      "source_id": "Auto-Replace",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
     "393": {
       "source_id": "Auto-Replace (automatic stuck-download replacement)",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "394": {
-      "source_id": "Auto-Replace Interval",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "397": {
-      "source_id": "Auto-download best matches",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "398": {
-      "source_id": "Auto-download matches",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "399": {
-      "source_id": "Auto-download synced Wishlist items",
-      "fresh_locale_count": 5,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "id"
-      ]
-    },
-    "401": {
-      "source_id": "Auto-import completed downloads",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "402": {
-      "source_id": "Auto-replace disabled",
       "fresh_locale_count": 6,
       "fresh_locales": [
         "ar",
@@ -6968,6 +6947,122 @@
     },
     "537": {
       "source_id": "Bulk actions ({count})",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "538": {
+      "source_id": "Bulk wishlist filter",
+      "fresh_locale_count": 5,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi"
+      ]
+    },
+    "539": {
+      "source_id": "Bundle",
+      "fresh_locale_count": 4,
+      "fresh_locales": [
+        "ar",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "540": {
+      "source_id": "By Content ID",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "541": {
+      "source_id": "By Domain:",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "542": {
+      "source_id": "By Name",
+      "fresh_locale_count": 5,
+      "fresh_locales": [
+        "ar",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "543": {
+      "source_id": "By Tag",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "544": {
+      "source_id": "By Tags (AND)",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "545": {
+      "source_id": "Bypass cache (force fresh retrieval)",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "547": {
+      "source_id": "Bytes Served",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "548": {
+      "source_id": "Bytes by Source",
       "fresh_locale_count": 6,
       "fresh_locales": [
         "ar",
