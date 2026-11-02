@@ -999,7 +999,7 @@
   "Choose a global RustyMilk parameter to edit on the active preset.": "활성 사전 설정에서 편집하려면 전역 RustyMilk 매개변수를 선택하세요.",
   "Choose a local CSV or JSON export from Plex, Jellyfin, Navidrome, or another media server. The file is read in this browser only.": "Plex, Jellyfin, Navidrome 또는 다른 미디어 서버에서 로컬 CSV 또는 JSON 내보내기를 선택합니다. 이 브라우저에서만 파일을 읽을 수 있습니다.",
   "Choose from Collections": "컬렉션에서 선택",
-  "Choose how long RustyMilk should wait before timed preset changes.": "시간 제한이 있는 사전 설정이 변경되기 전에 RustyMilk가 기다려야 하는 시간을 선택하세요.",
+  "Choose how long RustyMilk should wait before timed preset changes.": "타이머에 따라 프리셋을 변경하기 전에 RustyMilk가 기다릴 시간을 선택하세요.",
   "Choose how many detected bass beats should pass before RustyMilk advances to another preset.": "RustyMilk가 다른 사전 설정으로 진행하기 전에 감지된 베이스 비트 수를 선택하세요.",
   "Choose media server history file": "미디어 서버 기록 파일 선택",
   "Choose the web UI color theme": "웹 UI 색상 테마 선택",

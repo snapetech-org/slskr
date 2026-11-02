@@ -1000,7 +1000,7 @@
   "Choose a local CSV or JSON export from Plex, Jellyfin, Navidrome, or another media server. The file is read in this browser only.": "從 Plex、Jellyfin、Navidrome 或其他媒體伺服器選擇本機 CSV 或 JSON 匯出。該文件只能在此瀏覽器中讀取。",
   "Choose from Collections": "從合集中選擇",
   "Choose how long RustyMilk should wait before timed preset changes.": "選擇 RustyMilk 在定時預設變更之前應等待的時間。",
-  "Choose how many detected bass beats should pass before RustyMilk advances to another preset.": "選擇在 RustyMilk 前進到另一個預設之前應經過多少檢測到的低音節拍。",
+  "Choose how many detected bass beats should pass before RustyMilk advances to another preset.": "選擇 RustyMilk 在偵測到多少個低音節拍後切換到另一個預設。",
   "Choose media server history file": "選擇媒體伺服器歷史文件",
   "Choose the web UI color theme": "選擇 Web UI 顏色主題",
   "Choose which custom shape from the active RustyMilk preset should be exported or removed.": "選擇應匯出或刪除活動 RustyMilk 預設中的哪個自訂形狀。",

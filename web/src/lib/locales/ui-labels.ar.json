@@ -999,7 +999,7 @@
   "Choose a global RustyMilk parameter to edit on the active preset.": "اختر معلمة RustyMilk عامة لتحريرها على الإعداد المسبق النشط.",
   "Choose a local CSV or JSON export from Plex, Jellyfin, Navidrome, or another media server. The file is read in this browser only.": "اختر تصدير CSV أو JSON محليًا من Plex أو Jellyfin أو Navidrome أو خادم وسائط آخر. تتم قراءة الملف في هذا المتصفح فقط.",
   "Choose from Collections": "اختر من المجموعات",
-  "Choose how long RustyMilk should wait before timed preset changes.": "اختر المدة التي يجب أن ينتظرها RustyMilk قبل إجراء تغييرات محددة مسبقًا.",
+  "Choose how long RustyMilk should wait before timed preset changes.": "اختر مدة انتظار RustyMilk قبل أن يبدّل الإعداد المسبق وفقًا للمؤقّت.",
   "Choose how many detected bass beats should pass before RustyMilk advances to another preset.": "اختر عدد دقات الجهير المكتشفة التي يجب أن تمر قبل أن يتقدم RustyMilk إلى إعداد مسبق آخر.",
   "Choose media server history file": "اختر ملف محفوظات خادم الوسائط",
   "Choose the web UI color theme": "اختر سمة لون واجهة مستخدم الويب",
