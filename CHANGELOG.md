@@ -18,6 +18,12 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+### User-facing changes
+
+#### Changed
+
+- Refine MediaCore graph-traversal, backfill, and synchronization status wording across all 12 direct locales.
+
 ### Security
 
 - Replace the unmaintained YAML parser dependency with the pinned safe Rust parser and update `ctutils` to 0.4.4.

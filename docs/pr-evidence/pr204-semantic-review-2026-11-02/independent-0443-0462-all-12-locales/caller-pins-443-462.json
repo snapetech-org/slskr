@@ -1,0 +1,309 @@
+{
+  "pins": {
+    "Avg Traversal Time:": [
+      {
+        "occurrences": [
+          {
+            "line": 602,
+            "text": "<strong><LocalizedText source={\"Avg Traversal Time:\"} /></strong>{' '}"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+        "sha256": "34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60"
+      }
+    ],
+    "Avg Uptime": [
+      {
+        "occurrences": [
+          {
+            "line": 767,
+            "text": "<Statistic.Label><LocalizedText source={\"Avg Uptime\"} /></Statistic.Label>"
+          }
+        ],
+        "path": "web/src/components/Pods/PortForwarding.jsx",
+        "sha256": "3db4aa88c36b9c57f077c61f82541043d2787bc55f3289992b69403e942c326d"
+      }
+    ],
+    "Avg Verify Time:": [
+      {
+        "occurrences": [
+          {
+            "line": 312,
+            "text": "<strong><LocalizedText source={\"Avg Verify Time:\"} /></strong>{' '}"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/PodMessageSigningPanel.jsx",
+        "sha256": "8454b7b025260cf083324f52ea29f806f0ff4c188beec949fd13061e31e41972"
+      }
+    ],
+    "Awaiting Quorum": [
+      {
+        "occurrences": [
+          {
+            "line": 617,
+            "text": "{aggregate.quorumReached ? <LocalizedText source={\"Quorum Reached\"} /> : <LocalizedText source={\"Awaiting Quorum\"} />}"
+          }
+        ],
+        "path": "web/src/components/System/QuarantineJury/index.jsx",
+        "sha256": "7db0e17e031d499390af6681f4e430209de5b052c7816a7c3f054baa6c1211b2"
+      }
+    ],
+    "Away": [
+      {
+        "occurrences": [
+          {
+            "line": 546,
+            "text": "{Number(user.status) === 1 ? <LocalizedText source={\"Away\"} /> : <LocalizedText source={\"Online\"} />}"
+          }
+        ],
+        "path": "web/src/components/Rooms/RoomSession.jsx",
+        "sha256": "eed6f07edf153e470a9806f947f0cc500c9748a2c612034ed4bc330387053335"
+      }
+    ],
+    "Backend": [],
+    "Backend search job queued. Download selection still requires normal search-result review.": [
+      {
+        "occurrences": [
+          {
+            "line": 241,
+            "text": "'Backend search job queued. Download selection still requires normal search-result review.',"
+          }
+        ],
+        "path": "web/src/lib/acquisitionPlans.js",
+        "sha256": "3cba8307133b13178436ba2b6f19c401f4791317ca07cc1466b09a36bd8511da"
+      }
+    ],
+    "Backend search job requested from approved Discovery Inbox acquisition plan.": [
+      {
+        "occurrences": [
+          {
+            "line": 214,
+            "text": "'Backend search job requested from approved Discovery Inbox acquisition plan.',"
+          }
+        ],
+        "path": "web/src/lib/acquisitionPlans.js",
+        "sha256": "3cba8307133b13178436ba2b6f19c401f4791317ca07cc1466b09a36bd8511da"
+      }
+    ],
+    "Backfill": [
+      {
+        "occurrences": [
+          {
+            "line": 149,
+            "text": "<LocalizedText source={\"Pod Message Backfill\"} /></Card.Header>"
+          },
+          {
+            "line": 236,
+            "text": "<LocalizedText source={\"Sync Backfill\"} /></Button>"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/PodMessageBackfillPanel.jsx",
+        "sha256": "a1b1127673baab77d8478398b3d26aa5080a73741a2230d2065f69272df3b364"
+      },
+      {
+        "occurrences": [
+          {
+            "line": 85,
+            "text": "get label() { return interfaceText(\"Backfill\"); },"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/mediaCoreWorkflows.js",
+        "sha256": "4b6d0b450c6fe806dc001f6d14e0c6bfca09cef6c9a32b779df7a5c0cd275a17"
+      },
+      {
+        "occurrences": [
+          {
+            "line": 107,
+            "text": "area: 'Backfill',"
+          }
+        ],
+        "path": "web/src/lib/networkHealthScore.js",
+        "sha256": "9058b1d95ffcdf8d2c467b47cdcf3a9cede3f96000580f6b82f04220d0e5bea4"
+      }
+    ],
+    "Backfill All": [
+      {
+        "occurrences": [
+          {
+            "line": 454,
+            "text": "<LocalizedText source={\"Backfill All\"} /></Button>"
+          }
+        ],
+        "path": "web/src/components/Shares/SharedWithMe.jsx",
+        "sha256": "02db6d3dd2c4fee5f07f1211a59e2880090ba1729f628a4f3f540013884b9162"
+      }
+    ],
+    "Backfill Management": [
+      {
+        "occurrences": [
+          {
+            "line": 158,
+            "text": "<Header size=\"small\"><LocalizedText source={\"Backfill Management\"} /></Header>"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/PodMessageBackfillPanel.jsx",
+        "sha256": "a1b1127673baab77d8478398b3d26aa5080a73741a2230d2065f69272df3b364"
+      }
+    ],
+    "Backfill Scheduler": [
+      {
+        "occurrences": [
+          {
+            "line": 384,
+            "text": "<LocalizedText source={\"Backfill Scheduler\"} /><Header.Subheader>"
+          }
+        ],
+        "path": "web/src/components/System/Network/NetworkDetails.jsx",
+        "sha256": "ea93b702834e5be75f28204abefc4fa6f3d60f5c950cce168ceb2fcf7051c33e"
+      }
+    ],
+    "Backfill Statistics": [
+      {
+        "occurrences": [
+          {
+            "line": 188,
+            "text": "<Message.Header><LocalizedText source={\"Backfill Statistics\"} /></Message.Header>"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/PodMessageBackfillPanel.jsx",
+        "sha256": "a1b1127673baab77d8478398b3d26aa5080a73741a2230d2065f69272df3b364"
+      }
+    ],
+    "Backfill complete!": [
+      {
+        "occurrences": [
+          {
+            "line": 358,
+            "text": "toast.success(result.message || <LocalizedText source=\"Backfill complete!\" />);"
+          }
+        ],
+        "path": "web/src/components/System/Network/index.jsx",
+        "sha256": "81f45c3ef9dd9a153979cd39594b3eab4fd0cccc226654647fc3a022f97fe005"
+      }
+    ],
+    "Backfill failed": [
+      {
+        "occurrences": [
+          {
+            "line": 142,
+            "text": "return { error: toDisplayError(error, 'Backfill failed'), success: false };"
+          }
+        ],
+        "path": "web/src/lib/runtimeCapabilities.js",
+        "sha256": "437469723cda7d0947bc208fee2957eaec4e39542174417a73bff3ec15f2fbe6"
+      },
+      {
+        "occurrences": [
+          {
+            "line": 162,
+            "text": "return { error: toDisplayError(error, 'Backfill failed'), success: false };"
+          }
+        ],
+        "path": "web/src/lib/slskr.js",
+        "sha256": "1d149fd579d2b357e289e264d91a037a05d812133dd687ba98d99e43ebb846b3"
+      }
+    ],
+    "Backfill failed: {error}": [
+      {
+        "occurrences": [
+          {
+            "line": 350,
+            "text": "toast.error(interfaceText(\"Backfill failed: {error}\", { \"error\": (result.error) }));"
+          }
+        ],
+        "path": "web/src/components/System/Network/index.jsx",
+        "sha256": "81f45c3ef9dd9a153979cd39594b3eab4fd0cccc226654647fc3a022f97fe005"
+      }
+    ],
+    "Backfill from History": [
+      {
+        "occurrences": [
+          {
+            "line": 307,
+            "text": ": <LocalizedText source={\"Backfill from History\"} />}"
+          }
+        ],
+        "path": "web/src/components/System/Network/NetworkDetails.jsx",
+        "sha256": "ea93b702834e5be75f28204abefc4fa6f3d60f5c950cce168ceb2fcf7051c33e"
+      }
+    ],
+    "Backfill sync completed: {totalMessagesReceived} messages received": [
+      {
+        "occurrences": [
+          {
+            "line": 99,
+            "text": "interfaceText(\"Backfill sync completed: {totalMessagesReceived} messages received\", { \"totalMessagesReceived\": (result.totalMessagesReceived) }),"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/PodMessageBackfillPanel.jsx",
+        "sha256": "a1b1127673baab77d8478398b3d26aa5080a73741a2230d2065f69272df3b364"
+      }
+    ],
+    "Backfill sync uses last-seen timestamps to request missed messages. Confirm the target pod before syncing all channels.": [
+      {
+        "occurrences": [
+          {
+            "line": 153,
+            "text": "<LocalizedText source={\"Backfill sync uses last-seen timestamps to request missed messages. Confirm the target pod before syncing all channels.\"} /></PodWorkflowNotice>"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/PodMessageBackfillPanel.jsx",
+        "sha256": "a1b1127673baab77d8478398b3d26aa5080a73741a2230d2065f69272df3b364"
+      }
+    ],
+    "Balanced": [
+      {
+        "occurrences": [
+          {
+            "line": 814,
+            "text": "values={{ quality: interfaceText(nativeQualityPresets[nativeQualityPreset]?.label || 'Balanced') }}"
+          }
+        ],
+        "path": "web/src/components/Player/Visualizer.jsx",
+        "sha256": "546afd14c4bd50150b662282b7aad3a5a7e6725971d1ee64e48440612fed1a9e"
+      },
+      {
+        "occurrences": [
+          {
+            "line": 527,
+            "text": "<option value=\"balanced\">{interfaceText(\"Balanced\")}</option>"
+          }
+        ],
+        "path": "web/src/components/Player/VisualizerOverlayControls.jsx",
+        "sha256": "5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4"
+      },
+      {
+        "occurrences": [
+          {
+            "line": 197,
+            "text": "get label() { return interfaceText(\"Balanced\"); },"
+          }
+        ],
+        "path": "web/src/components/Player/visualizerPresetLibrary.js",
+        "sha256": "eaa880764a42ac057e5c51b211ed08ab79223c2cb57036ebfa19b92fd8e655d9"
+      },
+      {
+        "occurrences": [
+          {
+            "line": 107,
+            "text": "{ key: 'balanced', get text() { return interfaceText(\"Balanced\"); }, value: 'balanced' },"
+          }
+        ],
+        "path": "web/src/components/System/ExperienceSettings/index.jsx",
+        "sha256": "ba7826de4b32bc9506d5926e6243623ccc3104da43706ce7a57fe4b17bcf2f30"
+      },
+      {
+        "occurrences": [
+          {
+            "line": 24,
+            "text": "title: 'Balanced',"
+          }
+        ],
+        "path": "web/src/lib/audioVerification.js",
+        "sha256": "61d6932f9af3019413555945d894288510bf067cce49e32479215464f296954e"
+      }
+    ]
+  },
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152"
+}

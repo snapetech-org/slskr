@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "liveState": "OPEN/DRAFT/CLEAN",
+  "prHead": "e64d0d17ba0ee14144220a786b3f2fac7210f3d4",
+  "prTree": "1cd02ac0825eda073cb422d79986c24f3096c6ce",
+  "window": "443-462",
+  "candidatePlanSha256": "e72f4b54239d1ead00d255b2922a27a3b3fbdea7599654feddd61d669c5c4207",
+  "independentLedgerSha256": "b30e22b4d8c587c92013f50e786d126546f7f494d9992dda8d9b9fec92dd9422",
+  "rootLedgerSha256": "bb0a958187efd3fb8100d89c2070eb243c2fc7dafdd135cae9da0ad809726f7d",
+  "rootRows": 148,
+  "rootDecisionCounts": {
+    "accept-as-proposed": 130,
+    "refine": 17,
+    "keep-current-already-satisfied": 1
+  },
+  "nativeSpeakerApproval": false,
+  "catalogsModified": false,
+  "workflowsModified": false,
+  "testsBuildsCiReleasesTagsMerges": false
+}

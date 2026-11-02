@@ -1,0 +1,76 @@
+{
+  "already_satisfied_current": 1,
+  "caller_pins_sha256": "a2c8094f350136fe933118d38df4e5696acb6d121fa2f4dd0cd7f4b1478b58c0",
+  "candidate_cells": 147,
+  "candidate_counts_by_locale": {
+    "ar": 13,
+    "de": 13,
+    "es": 14,
+    "fr": 11,
+    "hi": 12,
+    "id": 14,
+    "ja": 14,
+    "ko": 15,
+    "pt-BR": 15,
+    "vi": 16,
+    "zh-Hans": 5,
+    "zh-Hant": 5
+  },
+  "candidate_counts_by_source": {
+    "443": 4,
+    "445": 1,
+    "446": 2,
+    "447": 9,
+    "449": 4,
+    "450": 11,
+    "451": 10,
+    "452": 12,
+    "453": 10,
+    "454": 10,
+    "455": 10,
+    "456": 9,
+    "457": 9,
+    "458": 10,
+    "459": 12,
+    "460": 12,
+    "461": 12
+  },
+  "candidate_sha256": "e72f4b54239d1ead00d255b2922a27a3b3fbdea7599654feddd61d669c5c4207",
+  "candidate_status_overlap": {
+    "prior_correction-needed": 147
+  },
+  "catalog_sha256": {
+    "web/src/lib/locales/ui-labels.ar.json": "397c93c45dfd35330a29c91bd07305eb2daf11092c853583a8e715991eab66a8",
+    "web/src/lib/locales/ui-labels.de.json": "2f19f4635b03580fe68b5914bcbf48492390cc1a5ed1df1253d25d1fbb30ba36",
+    "web/src/lib/locales/ui-labels.es.json": "1abbf70a894fdbe29bd25fbc946fa5ebb1b8ec6108fc1381912a53a645e4f33a",
+    "web/src/lib/locales/ui-labels.fr.json": "ca66e361be9b2860c72bb14417a6d2dc3177daa712407b908ee80aa343670c57",
+    "web/src/lib/locales/ui-labels.hi.json": "51b281f8d426a92738c8d8b15cc85aaf0b491fe96602baf62e0a787dd3a56a0c",
+    "web/src/lib/locales/ui-labels.id.json": "8b5dfea481e6fc50eb2e0248b1c7f40a2a8fd9d8203d37dbcf7c75d8f32bc02c",
+    "web/src/lib/locales/ui-labels.ja.json": "3250c7f2f246b8764f97181d71f63b0b24f6480fef915b234f2db3dc776635d6",
+    "web/src/lib/locales/ui-labels.ko.json": "9ae538d3ed6b4f9c34a99990903e9ebe2c1b34f5b179daf7b63b0d7942c3d298",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "67cd01a0a541416ea48f24eee745f53610507096c81fd4ea69e153b3bc7774e6",
+    "web/src/lib/locales/ui-labels.vi.json": "c6157459eafe56d73aadf494f16052a46f855e50036d24af737b4c3a9ee0d813",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "49bd08a6fb3086b10a94414717b0a46de7036b97d2522e462be73350291c7624",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "c74b1efbb2c006010c7ba716df40676666a57f7afea5ff2b75f6c3e74b767593"
+  },
+  "native_speaker_approved": false,
+  "no_direct_caller_keys": [
+    "Backend"
+  ],
+  "overlap_manifest_canonical_sha256": "a106e8eb119b77ed7a2e776cc96eaf916e910e466589412cd793a28b77b0a76c",
+  "overlap_manifest_file_sha256": "e64c831605f685ede96e0182aa9137746121eb1c94997f5ab100b123b4a19112",
+  "pr_head": "e64d0d17ba0ee14144220a786b3f2fac7210f3d4",
+  "pr_tree": "1cd02ac0825eda073cb422d79986c24f3096c6ce",
+  "reviewed_audit_sha256": "aa7939e12c7e2e6ec09d724b17b3ff3032c9bc3ae38637d6e49911a2436eaab5",
+  "selection_sha256": "d1fe816fb5bcc5f7030254eb8c810e02e3622fc00f3abb61c0c790632c1fb241",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "unchanged_cells": 93,
+  "window_cells": 240,
+  "window_disposition_counts": {
+    "accept-unchanged": 92,
+    "already-satisfied-current": 1,
+    "correction-candidate": 147
+  }
+}

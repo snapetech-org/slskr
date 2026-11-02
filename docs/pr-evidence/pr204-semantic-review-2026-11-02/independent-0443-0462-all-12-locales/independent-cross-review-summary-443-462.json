@@ -1,0 +1,34 @@
+{
+  "already_satisfied_prior_correction_row": {
+    "decision": "keep-current-already-satisfied",
+    "locale": "hi",
+    "source_index": 450,
+    "target_sha256": "4a911a10d1db75b23371976230011d8adb2bc8ebcbcc472e2f168740444d954c"
+  },
+  "candidate_decisions": {
+    "accept_as_proposed": 130,
+    "keep_or_hold": 0,
+    "refine": 17
+  },
+  "candidate_plan_sha256": "e72f4b54239d1ead00d255b2922a27a3b3fbdea7599654feddd61d669c5c4207",
+  "candidate_rows": 147,
+  "confidence": "moderate",
+  "exact_current_hash_and_placeholder_preflight": "passed independently for all 147 proposed rows and their pinned caller blobs",
+  "full_audit_sha256": "aa7939e12c7e2e6ec09d724b17b3ff3032c9bc3ae38637d6e49911a2436eaab5",
+  "independent_ledger_sha256": "b30e22b4d8c587c92013f50e786d126546f7f494d9992dda8d9b9fec92dd9422",
+  "native_speaker_approved": false,
+  "notes": [
+    "Source index 451 has exact callers in both Pod missed-message workflow and network/hash backfill status; a message-sync-only translation is too narrow.",
+    "Source index 460 requires count-neutral labeling in Arabic, German, Spanish, French, Hindi, and pt-BR to avoid singular/plural mismatch.",
+    "Source index 454 Vietnamese refinement uses a scheduler noun rather than a schedule noun."
+  ],
+  "pr_head": "e64d0d17ba0ee14144220a786b3f2fac7210f3d4",
+  "pr_tree": "1cd02ac0825eda073cb422d79986c24f3096c6ce",
+  "refinements_by_source": {
+    "Backfill": 10,
+    "Backfill Scheduler": 1,
+    "Backfill sync completed: {totalMessagesReceived} messages received": 6
+  },
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152"
+}
