@@ -1,29 +1,29 @@
 {
-  "head": "e3b1667bcec64e3b41c124e66ea6b29cc88102b9",
-  "head_tree": "baa6d9cb0a7683372c7a6130aa10147b0c880141",
+  "head": "cc55673a362e627e256dc45cd90c9fe5c28c163f",
+  "head_tree": "739ba38688b25d02002a6f044cb393b4996de836",
   "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
   "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
   "source_ids": 5437,
   "cell_count": 65244,
   "catalog_file_sha256": {
-    "web/src/lib/locales/ui-labels.ar.json": "273877f1321418c432f0f077667bcc374203c7e3b092caef1978e332c6fdf281",
-    "web/src/lib/locales/ui-labels.de.json": "31da85bb30b50f121d3e15eb36f6e599c490f1fab6a9442fef720b3951004cb3",
-    "web/src/lib/locales/ui-labels.es.json": "799a0cd8580870ef04dc0340f7535ffc8f37e6ccd2a1f9358deb4165b68cc8c6",
-    "web/src/lib/locales/ui-labels.fr.json": "c93f97e919289dbbf30efe417bbd5df2d254efd4fd2e811e65629dbcc37e59cf",
-    "web/src/lib/locales/ui-labels.hi.json": "dff2396339dd44db66909b336245db0ed629e136aefd0c9fc4e32ca2a4b32b0a",
-    "web/src/lib/locales/ui-labels.id.json": "5ffe9e697048b41f6a67bbd3fe76046582ddccf17ee4f535a1a47fe98dee6f2d",
-    "web/src/lib/locales/ui-labels.ja.json": "35218904466567f0c98cbb631e30af2d813f2eea719bf66a06f9984e5874b10e",
-    "web/src/lib/locales/ui-labels.ko.json": "5636a4b1a4bf325d6c03031b8b3ef34db7d04936c8216343e55b2d36fa544bcd",
-    "web/src/lib/locales/ui-labels.pt-BR.json": "5d66fed4d95c212350e7f29df2d70b94381cf086df8cfdac04bfc48f0c1b9372",
-    "web/src/lib/locales/ui-labels.vi.json": "91fac84a2ab6ebcfbe6f33cdf0302e0350b676e4cd69be796edc86509e856184",
-    "web/src/lib/locales/ui-labels.zh-Hans.json": "365c4c51e7cee40e79b37607319dd4dbe1345dcee77f085dd6f7fa1ad307881b",
-    "web/src/lib/locales/ui-labels.zh-Hant.json": "2945bee74a8ffc61db44b8a0bac113ba9f20a159657925c7f3dbc7d1647ce89c"
+    "web/src/lib/locales/ui-labels.ar.json": "946f80466d4ebe707debff6b42441d2d798025a1bfc3c33ae7facbbf62eb03a8",
+    "web/src/lib/locales/ui-labels.de.json": "00cdfdae47a06caf66adb13306abc9b32e114be856c82ebfa81581e7fdfc41f0",
+    "web/src/lib/locales/ui-labels.es.json": "74c59c4de2cfb5c2e10fb4fad9fb14bd6aae4156bd32b492be75966628e2a5ea",
+    "web/src/lib/locales/ui-labels.fr.json": "09f0d381a05a07a411e69fec61f7910214123995c46148fac5b3e81957576ce0",
+    "web/src/lib/locales/ui-labels.hi.json": "d9e69e82e8109c56348e922d82e7a14368692a0eb683f3849bc17a5d0e1de9e1",
+    "web/src/lib/locales/ui-labels.id.json": "933bdd7d30f640e5829ce1f3e43089908467e45e427b3302564226b862a4d165",
+    "web/src/lib/locales/ui-labels.ja.json": "045a2c7fa70287b27be670a9af5d4998e191fc0181a9a5dff5e4546644c83b38",
+    "web/src/lib/locales/ui-labels.ko.json": "057f6c5b89b0dda26772be9ca355a25afe9e551178ea9fe123d86b4d48a42531",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "b5826aea44f78810655073fc478d2bccdf28b9c9c15965e06a3e048e39fc060c",
+    "web/src/lib/locales/ui-labels.vi.json": "209e966043348a3ab8a38cff3ece7a2a3cb5db4b298038b61711597095f05b1f",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "a15769121461a656a28c4cea28af0b4c304ceecd27ef8eee46a785cf5ef94939",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "939c420556eb5111db37379867c51251c4faf21f8d6643e26093113fb360d67b"
   },
   "structured_plural_cells": {
     "ar": 15
   },
-  "evidence_files_scanned": 784,
-  "evidence_scan_manifest_sha256": "6d0f20a4f88773121c3f20b3f644c8740560af242976214342eeeab51a6fe87b",
+  "evidence_files_scanned": 794,
+  "evidence_scan_manifest_sha256": "671da42aab3c65c85b32dcafba14aa25b70ff63f60b0048ad6b5b1adf82f4764",
   "evidence_file_manifest": [
     {
       "root": "pr-review-head",
@@ -492,6 +492,66 @@
       "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0163-0182-all-12-locales/terminal-exclusions.jsonl",
       "bytes": 45206,
       "sha256": "fa9e8b826866c891bdf50b4cbc72b265624fc649f8e7d783f6180966a6c67f40"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0183-0202-all-12-locales/applied-corrections.jsonl",
+      "bytes": 105503,
+      "sha256": "ac21337cd22ccff47d23cb724c3fb4a7009e330144ef4697aa3a4d3cd2f05b8a"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0183-0202-all-12-locales/carries.jsonl",
+      "bytes": 134777,
+      "sha256": "3d5bf3d9111eb46b2c06417c991a4994670064d56eedcc6d48ad8b8a5e2a9dd5"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0183-0202-all-12-locales/conflict-holds.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0183-0202-all-12-locales/decisions.jsonl",
+      "bytes": 134623,
+      "sha256": "ba1f30dae9c3e9ef122094d66083f86103b688813f44083a12770b20712e69e9"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0183-0202-all-12-locales/manifest.json",
+      "bytes": 11303,
+      "sha256": "ec772a9b02e7feb4790a12aee5abe36a61d28ceb820ace353c20d4d6164ddecf"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0183-0202-all-12-locales/prior-evidence-scan-manifest.jsonl",
+      "bytes": 158771,
+      "sha256": "35f8f19d903e47f610baf4616d9b70dcf08511b691b01ada5a6bc6486996ed71"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0183-0202-all-12-locales/reviewed-cell-audit.jsonl",
+      "bytes": 299565,
+      "sha256": "f92fc8de260f82d93a650e5a6e45f1ea7915dd98528f99b207cd52f5a8894323"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0183-0202-all-12-locales/selection-before-corrections.jsonl",
+      "bytes": 187983,
+      "sha256": "12ad793dfc2ebebd86a4403c166ee69fa95f2d0d9f3562142d6c2643850305c4"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0183-0202-all-12-locales/selection.jsonl",
+      "bytes": 188564,
+      "sha256": "d102c1e3055c1c5ffac95ffa61d55a2fec75493f8c5ac31e67967fbf613a5eaf"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0183-0202-all-12-locales/terminal-exclusions.jsonl",
+      "bytes": 7808,
+      "sha256": "10748da76c9ff4f394376fa53ffc7bde713810a9e289d3d21a78cb42abf3708d"
     },
     {
       "root": "pr-review-head",
@@ -4731,227 +4791,101 @@
     }
   ],
   "unique_current_cell_status_counts": {
-    "accepted": 23317,
-    "corrected": 38,
-    "correction-needed": 10957,
+    "accepted": 23377,
+    "corrected": 82,
+    "correction-needed": 10917,
     "held": 289,
-    "unreviewed": 30643
+    "unreviewed": 30579
   },
   "per_locale_exact_status_counts": {
     "ar": {
-      "accepted": 1264,
-      "corrected": 6,
-      "correction-needed": 1099,
+      "accepted": 1274,
+      "corrected": 8,
+      "correction-needed": 1098,
       "held": 12,
-      "unreviewed": 3056
+      "unreviewed": 3045
     },
     "de": {
-      "accepted": 1287,
-      "corrected": 9,
-      "correction-needed": 877,
+      "accepted": 1298,
+      "corrected": 11,
+      "correction-needed": 875,
       "held": 10,
-      "unreviewed": 3254
+      "unreviewed": 3243
     },
     "es": {
-      "accepted": 1241,
-      "corrected": 5,
-      "correction-needed": 1107,
+      "accepted": 1252,
+      "corrected": 7,
+      "correction-needed": 1105,
       "held": 9,
-      "unreviewed": 3075
+      "unreviewed": 3064
     },
     "fr": {
-      "accepted": 1246,
-      "corrected": 6,
-      "correction-needed": 1049,
+      "accepted": 1256,
+      "corrected": 8,
+      "correction-needed": 1048,
       "held": 10,
-      "unreviewed": 3126
+      "unreviewed": 3115
     },
     "hi": {
-      "accepted": 1244,
-      "corrected": 6,
-      "correction-needed": 1131,
+      "accepted": 1254,
+      "corrected": 10,
+      "correction-needed": 1128,
       "held": 14,
-      "unreviewed": 3042
+      "unreviewed": 3031
     },
     "id": {
-      "accepted": 1246,
-      "corrected": 4,
-      "correction-needed": 1099,
+      "accepted": 1254,
+      "corrected": 7,
+      "correction-needed": 1097,
       "held": 10,
-      "unreviewed": 3078
+      "unreviewed": 3069
     },
     "ja": {
       "accepted": 2771,
-      "corrected": 1,
-      "correction-needed": 625,
+      "corrected": 7,
+      "correction-needed": 619,
       "held": 38,
       "unreviewed": 2002
     },
     "ko": {
       "accepted": 2667,
-      "correction-needed": 729,
+      "corrected": 2,
+      "correction-needed": 727,
       "held": 39,
       "unreviewed": 2002
     },
     "pt-BR": {
       "accepted": 2661,
-      "corrected": 1,
-      "correction-needed": 737,
+      "corrected": 4,
+      "correction-needed": 734,
       "held": 36,
       "unreviewed": 2002
     },
     "vi": {
       "accepted": 2438,
-      "correction-needed": 960,
+      "corrected": 6,
+      "correction-needed": 954,
       "held": 37,
       "unreviewed": 2002
     },
     "zh-Hans": {
       "accepted": 2633,
-      "correction-needed": 765,
+      "corrected": 6,
+      "correction-needed": 759,
       "held": 37,
       "unreviewed": 2002
     },
     "zh-Hant": {
       "accepted": 2619,
-      "correction-needed": 779,
+      "corrected": 6,
+      "correction-needed": 773,
       "held": 37,
       "unreviewed": 2002
     }
   },
-  "unreviewed_source_index_count": 3737,
-  "unreviewed_cells": 30643,
+  "unreviewed_source_index_count": 3726,
+  "unreviewed_cells": 30579,
   "first_100_unreviewed_indices": {
-    "183": {
-      "source_id": "Add similar recent session tracks to the upcoming queue. This only uses tracks already known to this browser session.",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "185": {
-      "source_id": "Add the next batch of matching results to the current list.",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "187": {
-      "source_id": "Add to Wishlist",
-      "fresh_locale_count": 5,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi"
-      ]
-    },
-    "190": {
-      "source_id": "Add {item} to Wishlist",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "191": {
-      "source_id": "Added a local caution signal for {username}. Nothing was published.",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "192": {
-      "source_id": "Added to wishlist",
-      "fresh_locale_count": 5,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi"
-      ]
-    },
-    "197": {
-      "source_id": "Added {normalizedSearchText} to Wishlist for review",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "198": {
-      "source_id": "Address",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "199": {
-      "source_id": "Adjust RustyMilk {label}",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "201": {
-      "source_id": "Administrator",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "202": {
-      "source_id": "Advance to the next queued track.",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
     "203": {
       "source_id": "Advanced",
       "fresh_locale_count": 3,
@@ -5964,6 +5898,133 @@
         "fr",
         "hi",
         "id"
+      ]
+    },
+    "360": {
+      "source_id": "At least one source must be selected",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "364": {
+      "source_id": "Atlas",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "365": {
+      "source_id": "Atlas View",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "366": {
+      "source_id": "Attributes",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "367": {
+      "source_id": "Audfprint",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "369": {
+      "source_id": "Audience",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "370": {
+      "source_id": "Audio",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "371": {
+      "source_id": "Audio Hash Computed",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "372": {
+      "source_id": "Audio Perceptual Hash",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "373": {
+      "source_id": "Audio Properties",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "374": {
+      "source_id": "Audio Samples (comma-separated floats)",
+      "fresh_locale_count": 1,
+      "fresh_locales": [
+        "de"
       ]
     }
   },

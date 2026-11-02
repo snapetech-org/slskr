@@ -1,0 +1,261 @@
+
+===== 183: Add similar recent session tracks to the upcoming queue. This only uses tracks already known to this browser session. =====
+web/src/components/Player/PlayerQueueModal.jsx-154-          <section>
+web/src/components/Player/PlayerQueueModal.jsx-155-            <div className="player-queue-manager-heading">
+web/src/components/Player/PlayerQueueModal.jsx-156-              <div className="player-panel-title"><LocalizedText source={"Upcoming"} /></div>
+web/src/components/Player/PlayerQueueModal.jsx-157-              <div className="player-queue-manager-actions">
+web/src/components/Player/PlayerQueueModal.jsx-158-                <Popup
+web/src/components/Player/PlayerQueueModal.jsx:159:                  content={interfaceText("Add similar recent session tracks to the upcoming queue. This only uses tracks already known to this browser session.")}
+web/src/components/Player/PlayerQueueModal.jsx-160-                  trigger={
+web/src/components/Player/PlayerQueueModal.jsx-161-                    <Button
+web/src/components/Player/PlayerQueueModal.jsx-162-                      data-testid="player-auto-queue-similar"
+web/src/components/Player/PlayerQueueModal.jsx-163-                      disabled={similarCandidates.length === 0}
+web/src/components/Player/PlayerQueueModal.jsx-164-                      onClick={() =>
+--
+web/src/components/Player/PlayerQueueModal.jsx-170-                      type="button"
+web/src/components/Player/PlayerQueueModal.jsx-171-                    >
+web/src/components/Player/PlayerQueueModal.jsx-172-                      <Icon name="magic" />
+web/src/components/Player/PlayerQueueModal.jsx-173-                      <LocalizedText source={"Auto-fill Similar"} /></Button>
+web/src/components/Player/PlayerQueueModal.jsx-174-                  }
+web/src/components/Player/PlayerQueueModal.jsx:175:                 {...interfaceTextProps("Add similar recent session tracks to the upcoming queue. This only uses tracks already known to this browser session.")}/>
+web/src/components/Player/PlayerQueueModal.jsx-176-                <Popup
+web/src/components/Player/PlayerQueueModal.jsx-177-                  content={interfaceText("Start up to three searches from similar recent session tracks. This starts search jobs only.")}
+web/src/components/Player/PlayerQueueModal.jsx-178-                  trigger={
+web/src/components/Player/PlayerQueueModal.jsx-179-                    <Button
+web/src/components/Player/PlayerQueueModal.jsx-180-              data-testid="player-search-similar-candidates"
+
+===== 185: Add the next batch of matching results to the current list. =====
+[no runtime callsite]
+
+===== 187: Add to Wishlist =====
+web/src/components/Wishlist/WishlistModal.jsx-145-      open
+web/src/components/Wishlist/WishlistModal.jsx-146-      size="small"
+web/src/components/Wishlist/WishlistModal.jsx-147-    >
+web/src/components/Wishlist/WishlistModal.jsx-148-      <Modal.Header>
+web/src/components/Wishlist/WishlistModal.jsx-149-        <Icon name="star" />
+web/src/components/Wishlist/WishlistModal.jsx:150:        {localized(isEdit ? 'Edit Wishlist Item' : 'Add to Wishlist')}
+web/src/components/Wishlist/WishlistModal.jsx-151-      </Modal.Header>
+web/src/components/Wishlist/WishlistModal.jsx-152-      <Modal.Content>
+web/src/components/Wishlist/WishlistModal.jsx-153-        <Form>
+web/src/components/Wishlist/WishlistModal.jsx-154-          <Form.Input
+web/src/components/Wishlist/WishlistModal.jsx-155-            dir={directionFor('Enter search terms...')}
+
+===== 190: Add {item} to Wishlist =====
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-312-         {...interfaceTextProps("Start a normal Soulseek search for this recommendation.")}/>
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-313-        <Popup
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-314-          content={interfaceText("Save this raw recommendation to Wishlist for manual review.")}
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-315-          trigger={
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-316-            <Button
+web/src/components/Search/SoulseekDiscoveryPanel.jsx:317:              aria-label={interfaceText("Add {item} to Wishlist", { "item": (recommendation.item) })}
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-318-              disabled={loading || wishlistLoading}
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-319-              icon="bookmark outline"
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-320-              onClick={() => addToWishlist(recommendation.item)}
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-321-              size="mini"
+web/src/components/Search/SoulseekDiscoveryPanel.jsx:322:             {...interfaceTextProps("Add {item} to Wishlist")}/>
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-323-          }
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-324-         {...interfaceTextProps("Save this raw recommendation to Wishlist for manual review.")}/>
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-325-      </List.Content>
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-326-      <List.Icon name="music" />
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-327-      <List.Content>
+
+===== 191: Added a local caution signal for {username}. Nothing was published. =====
+web/src/components/Search/Response.jsx-428-    if (onQualitySignalUpdate) {
+web/src/components/Search/Response.jsx-429-      onQualitySignalUpdate();
+web/src/components/Search/Response.jsx-430-    }
+web/src/components/Search/Response.jsx-431-
+web/src/components/Search/Response.jsx-432-    toast.success(this.localizedText(
+web/src/components/Search/Response.jsx:433:      'Added a local caution signal for {username}. Nothing was published.',
+web/src/components/Search/Response.jsx-434-      { username: response.username },
+web/src/components/Search/Response.jsx-435-    ));
+web/src/components/Search/Response.jsx-436-  };
+web/src/components/Search/Response.jsx-437-
+web/src/components/Search/Response.jsx-438-  buildFallbackGraphRequest = () => {
+
+===== 192: Added to wishlist =====
+web/src/components/Wishlist/Wishlist.jsx-285-        if (!mountedRef.current) return;
+web/src/components/Wishlist/Wishlist.jsx-286-        toast.success(translateRef.current('Wishlist item updated'));
+web/src/components/Wishlist/Wishlist.jsx-287-      } else {
+web/src/components/Wishlist/Wishlist.jsx-288-        await wishlistAPI.create(item);
+web/src/components/Wishlist/Wishlist.jsx-289-        if (!mountedRef.current) return;
+web/src/components/Wishlist/Wishlist.jsx:290:        toast.success(translateRef.current('Added to wishlist'));
+web/src/components/Wishlist/Wishlist.jsx-291-      }
+web/src/components/Wishlist/Wishlist.jsx-292-
+web/src/components/Wishlist/Wishlist.jsx-293-      await loadItems();
+web/src/components/Wishlist/Wishlist.jsx-294-    } finally {
+web/src/components/Wishlist/Wishlist.jsx-295-      finishOperation();
+
+===== 197: Added {normalizedSearchText} to Wishlist for review =====
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-279-      });
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-280-      if (
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-281-        mountedRef.current &&
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-282-        requestId === actionRequestIdRef.current
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-283-      ) {
+web/src/components/Search/SoulseekDiscoveryPanel.jsx:284:        toast.success(interfaceText("Added {normalizedSearchText} to Wishlist for review", { "normalizedSearchText": (normalizedSearchText) }));
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-285-      }
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-286-    } catch (wishlistError) {
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-287-      if (
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-288-        mountedRef.current &&
+web/src/components/Search/SoulseekDiscoveryPanel.jsx-289-        requestId === actionRequestIdRef.current
+
+===== 198: Address =====
+web/src/lib/security.js-59-
+web/src/lib/security.js-60-/**
+web/src/lib/security.js-61- * Ban an IP address
+web/src/lib/security.js-62- */
+web/src/lib/security.js-63-export const banIp = async (
+web/src/lib/security.js:64:  ipAddress,
+web/src/lib/security.js-65-  reason,
+web/src/lib/security.js-66-  duration = null,
+web/src/lib/security.js-67-  permanent = false,
+web/src/lib/security.js-68-) => {
+web/src/lib/security.js-69-  return (
+web/src/lib/security.js-70-    await api.post(`${baseUrl}/bans/ip`, {
+web/src/lib/security.js-71-      duration,
+web/src/lib/security.js:72:      ipAddress,
+web/src/lib/security.js-73-      permanent,
+web/src/lib/security.js-74-      reason,
+web/src/lib/security.js-75-    })
+web/src/lib/security.js-76-  ).data;
+web/src/lib/security.js-77-};
+web/src/lib/security.js-78-
+web/src/lib/security.js-79-/**
+web/src/lib/security.js-80- * Unban an IP address
+web/src/lib/security.js-81- */
+web/src/lib/security.js:82:export const unbanIp = async (ipAddress) => {
+web/src/lib/security.js-83-  return (
+web/src/lib/security.js:84:    await api.delete(`${baseUrl}/bans/ip/${encodeURIComponent(ipAddress)}`)
+web/src/lib/security.js-85-  ).data;
+web/src/lib/security.js-86-};
+web/src/lib/security.js-87-
+web/src/lib/security.js-88-/**
+web/src/lib/security.js-89- * Ban a username
+--
+web/src/components/System/Security/AdversarialSettingsView.jsx-295-
+web/src/components/System/Security/AdversarialSettingsView.jsx-296-                {settings.Anonymity?.Mode === 'Tor' && (
+web/src/components/System/Security/AdversarialSettingsView.jsx-297-                  <Message info>
+web/src/components/System/Security/AdversarialSettingsView.jsx-298-                    <Message.Header><LocalizedText source={"Tor Configuration"} /></Message.Header>
+web/src/components/System/Security/AdversarialSettingsView.jsx-299-                    <p>
+web/src/components/System/Security/AdversarialSettingsView.jsx:300:                      <strong><LocalizedText source={"SOCKS Address:"} /></strong>{' '}
+web/src/components/System/Security/AdversarialSettingsView.jsx:301:                      {settings.Anonymity.Tor?.SocksAddress || '127.0.0.1:9050'}
+web/src/components/System/Security/AdversarialSettingsView.jsx-302-                    </p>
+web/src/components/System/Security/AdversarialSettingsView.jsx-303-                    <p>
+web/src/components/System/Security/AdversarialSettingsView.jsx-304-                      <strong><LocalizedText source={"Stream Isolation:"} /></strong>{' '}
+web/src/components/System/Security/AdversarialSettingsView.jsx-305-                      {settings.Anonymity.Tor?.IsolateStreams
+web/src/components/System/Security/AdversarialSettingsView.jsx-306-                        ? <LocalizedText source={"Enabled"} />
+--
+web/src/components/System/Security/AdversarialSettingsView.jsx-348-
+web/src/components/System/Security/AdversarialSettingsView.jsx-349-                {settings.Anonymity?.Mode === 'I2P' && (
+web/src/components/System/Security/AdversarialSettingsView.jsx-350-                  <Message info>
+web/src/components/System/Security/AdversarialSettingsView.jsx-351-                    <Message.Header><LocalizedText source={"I2P Configuration"} /></Message.Header>
+web/src/components/System/Security/AdversarialSettingsView.jsx-352-                    <p>
+web/src/components/System/Security/AdversarialSettingsView.jsx:353:                      <strong><LocalizedText source={"SAM Address:"} /></strong>{' '}
+web/src/components/System/Security/AdversarialSettingsView.jsx:354:                      {settings.Anonymity.I2P?.SamAddress || '127.0.0.1:7656'}
+web/src/components/System/Security/AdversarialSettingsView.jsx-355-                    </p>
+web/src/components/System/Security/AdversarialSettingsView.jsx-356-                    <p>
+web/src/components/System/Security/AdversarialSettingsView.jsx-357-                      <em>
+web/src/components/System/Security/AdversarialSettingsView.jsx-358-                        <LocalizedText source={"I2P provides peer-to-peer anonymity with better performance for persistent connections."} /></em>
+web/src/components/System/Security/AdversarialSettingsView.jsx-359-                    </p>
+--
+web/src/components/System/Security/AdversarialSettingsView.jsx-592-
+web/src/components/System/Security/AdversarialSettingsView.jsx-593-                {settings.Anonymity?.Mode === 'Tor' && (
+web/src/components/System/Security/AdversarialSettingsView.jsx-594-                  <>
+web/src/components/System/Security/AdversarialSettingsView.jsx-595-                    <Header as="h5"><LocalizedText source={"Tor Configuration"} /></Header>
+web/src/components/System/Security/AdversarialSettingsView.jsx-596-                    <Form.Field>
+web/src/components/System/Security/AdversarialSettingsView.jsx:597:                      <label><LocalizedText source={"SOCKS Address"} /></label>
+web/src/components/System/Security/AdversarialSettingsView.jsx-598-                      <Input
+web/src/components/System/Security/AdversarialSettingsView.jsx-599-                        onChange={(e) =>
+web/src/components/System/Security/AdversarialSettingsView.jsx-600-                          updateSetting(
+web/src/components/System/Security/AdversarialSettingsView.jsx:601:                            'Anonymity.Tor.SocksAddress',
+web/src/components/System/Security/AdversarialSettingsView.jsx-602-                            e.target.value,
+web/src/components/System/Security/AdversarialSettingsView.jsx-603-                          )
+web/src/components/System/Security/AdversarialSettingsView.jsx-604-                        }
+web/src/components/System/Security/AdversarialSettingsView.jsx-605-                        value={
+web/src/components/System/Security/AdversarialSettingsView.jsx:606:                          settings.Anonymity.Tor?.SocksAddress ||
+web/src/components/System/Security/AdversarialSettingsView.jsx-607-                          '127.0.0.1:9050'
+web/src/components/System/Security/AdversarialSettingsView.jsx-608-                        }
+web/src/components/System/Security/AdversarialSettingsView.jsx-609-                      />
+web/src/components/System/Security/AdversarialSettingsView.jsx-610-                    </Form.Field>
+web/src/components/System/Security/AdversarialSettingsView.jsx-611-
+--
+web/src/components/System/Security/AdversarialSettingsView.jsx-625-
+web/src/components/System/Security/AdversarialSettingsView.jsx-626-                {settings.Anonymity?.Mode === 'I2P' && (
+web/src/components/System/Security/AdversarialSettingsView.jsx-627-                  <>
+web/src/components/System/Security/AdversarialSettingsView.jsx-628-                    <Header as="h5"><LocalizedText source={"I2P Configuration"} /></Header>
+web/src/components/System/Security/AdversarialSettingsView.jsx-629-                    <Form.Field>
+web/src/components/System/Security/AdversarialSettingsView.jsx:630:                      <label><LocalizedText source={"SAM Address"} /></label>
+web/src/components/System/Security/AdversarialSettingsView.jsx-631-                      <Input
+web/src/components/System/Security/AdversarialSettingsView.jsx-632-                        onChange={(e) =>
+web/src/components/System/Security/AdversarialSettingsView.jsx-633-                          updateSetting(
+web/src/components/System/Security/AdversarialSettingsView.jsx:634:                            'Anonymity.I2P.SamAddress',
+web/src/components/System/Security/AdversarialSettingsView.jsx-635-                            e.target.value,
+web/src/components/System/Security/AdversarialSettingsView.jsx-636-                          )
+web/src/components/System/Security/AdversarialSettingsView.jsx-637-                        }
+web/src/components/System/Security/AdversarialSettingsView.jsx-638-                        value={
+web/src/components/System/Security/AdversarialSettingsView.jsx:639:                          settings.Anonymity.I2P?.SamAddress || '127.0.0.1:7656'
+web/src/components/System/Security/AdversarialSettingsView.jsx-640-                        }
+web/src/components/System/Security/AdversarialSettingsView.jsx-641-                      />
+web/src/components/System/Security/AdversarialSettingsView.jsx-642-                    </Form.Field>
+web/src/components/System/Security/AdversarialSettingsView.jsx-643-                  </>
+web/src/components/System/Security/AdversarialSettingsView.jsx-644-                )}
+--
+
+===== 199: Adjust RustyMilk {label} =====
+web/src/components/Player/VisualizerOverlayControls.jsx-440-              <LocalizedPopup
+web/src/components/Player/VisualizerOverlayControls.jsx-441-                content="Adjust {label} for the active RustyMilk preset before applying the edited copy locally."
+web/src/components/Player/VisualizerOverlayControls.jsx-442-                parameters={{ label: rustyMilkParameter.label.toLowerCase() }}
+web/src/components/Player/VisualizerOverlayControls.jsx-443-                trigger={
+web/src/components/Player/VisualizerOverlayControls.jsx-444-                  <input
+web/src/components/Player/VisualizerOverlayControls.jsx:445:                    aria-label={interfaceText("Adjust RustyMilk {label}", { "label": (rustyMilkParameter.label) })}
+web/src/components/Player/VisualizerOverlayControls.jsx-446-                    className="player-visualizer-native-range"
+web/src/components/Player/VisualizerOverlayControls.jsx-447-                    data-testid="visualizer-native-parameter-value"
+web/src/components/Player/VisualizerOverlayControls.jsx-448-                    max={rustyMilkParameter.max}
+web/src/components/Player/VisualizerOverlayControls.jsx-449-                    min={rustyMilkParameter.min}
+web/src/components/Player/VisualizerOverlayControls.jsx-450-                    onChange={updateRustyMilkParameterDraft}
+web/src/components/Player/VisualizerOverlayControls.jsx-451-                    step={rustyMilkParameter.step}
+web/src/components/Player/VisualizerOverlayControls.jsx-452-                    type="range"
+web/src/components/Player/VisualizerOverlayControls.jsx-453-                    value={rustyMilkParameterValue}
+web/src/components/Player/VisualizerOverlayControls.jsx:454:                   {...interfaceTextProps("Adjust RustyMilk {label}")}/>
+web/src/components/Player/VisualizerOverlayControls.jsx-455-                }
+web/src/components/Player/VisualizerOverlayControls.jsx-456-              />
+web/src/components/Player/VisualizerOverlayControls.jsx-457-              <Popup
+web/src/components/Player/VisualizerOverlayControls.jsx-458-                content={interfaceText("Apply the selected RustyMilk parameter value and save the edited preset in this browser.")}
+web/src/components/Player/VisualizerOverlayControls.jsx-459-                trigger={
+
+===== 201: Administrator =====
+web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx-515-                  onChange={(_, { value }) => update('apiKeyRole', value)}
+web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx-516-                  options={[
+web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx-517-                    { key: 'ReadOnly', text: interfaceText("ReadOnly"), value: 'ReadOnly' },
+web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx-518-                    { key: 'ReadWrite', text: interfaceText("ReadWrite"), value: 'ReadWrite' },
+web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx-519-                    {
+web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx:520:                      key: 'Administrator',
+web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx:521:                      text: interfaceText("Administrator"),
+web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx:522:                      value: 'Administrator',
+web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx-523-                    },
+web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx-524-                  ]}
+web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx-525-                  value={form.apiKeyRole}
+web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx-526-                 {...interfaceTextProps("API key role")}/>
+web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx-527-              </Form.Group>
+
+===== 202: Advance to the next queued track. =====
+web/src/components/Player/PlayerQueueModal.jsx-297-              <Icon name="step backward" />
+web/src/components/Player/PlayerQueueModal.jsx-298-              <LocalizedText source={"Previous"} /></Button>
+web/src/components/Player/PlayerQueueModal.jsx-299-          }
+web/src/components/Player/PlayerQueueModal.jsx-300-         {...interfaceTextProps("Jump back to the previous session track, or restart the current track if there is no history.")}/>
+web/src/components/Player/PlayerQueueModal.jsx-301-        <Popup
+web/src/components/Player/PlayerQueueModal.jsx:302:          content={interfaceText("Advance to the next queued track.")}
+web/src/components/Player/PlayerQueueModal.jsx-303-          trigger={
+web/src/components/Player/PlayerQueueModal.jsx-304-            <Button
+web/src/components/Player/PlayerQueueModal.jsx-305-              data-testid="player-queue-next"
+web/src/components/Player/PlayerQueueModal.jsx-306-              disabled={queue.length < 2}
+web/src/components/Player/PlayerQueueModal.jsx-307-              onClick={onNext}
+web/src/components/Player/PlayerQueueModal.jsx-308-              type="button"
+web/src/components/Player/PlayerQueueModal.jsx-309-            >
+web/src/components/Player/PlayerQueueModal.jsx-310-              <Icon name="step forward" />
+web/src/components/Player/PlayerQueueModal.jsx-311-              <LocalizedText source={"Next"} /></Button>
+web/src/components/Player/PlayerQueueModal.jsx-312-          }
+web/src/components/Player/PlayerQueueModal.jsx:313:         {...interfaceTextProps("Advance to the next queued track.")}/>
+web/src/components/Player/PlayerQueueModal.jsx-314-        <Popup
+web/src/components/Player/PlayerQueueModal.jsx-315-          content={interfaceText("Close the queue manager.")}
+web/src/components/Player/PlayerQueueModal.jsx-316-          trigger={
+web/src/components/Player/PlayerQueueModal.jsx-317-            <Button
+web/src/components/Player/PlayerQueueModal.jsx-318-              data-testid="player-queue-close"
