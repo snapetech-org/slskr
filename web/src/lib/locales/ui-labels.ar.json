@@ -855,7 +855,7 @@
   "Available from Soulseek Scene": "متاح من المشهد Soulseek",
   "Available ports are unavailable.": "تعذر جلب المنافذ المتاحة.",
   "Available ports for forwarding (1024-65535):": "المنافذ المتاحة لإعادة التوجيه (1024-65535):",
-  "Available ports unavailable": "المنافذ المتاحة غير متاحة",
+  "Available ports unavailable": "تعذّر تحميل المنافذ المتاحة",
   "Average Score:": "متوسط ​​النتيجة:",
   "Average TTL:": "متوسط ​​مدة البقاء:",
   "Avg Computation Time:": "متوسط ​​وقت الحساب:",

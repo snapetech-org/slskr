@@ -1,0 +1,31 @@
+{
+  "result": "PASS",
+  "window": "423-442",
+  "prHead": "98001f35f1cf33283190b96e60c3e65f01625929",
+  "prTree": "44280b39a053203e711d31503cf4552e23e09f8b",
+  "sourceHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "reviewedCells": 240,
+  "candidateRows": 32,
+  "dispositions": {
+    "accept": 32,
+    "refine": 0,
+    "keep": 0,
+    "hold": 0
+  },
+  "reviewedCellAuditSha256": "c68844048a55fb0972c6b816689f0559af7408352952824e094ec5befe0f483d",
+  "candidatePlanSha256": "fd70f76933cfa5d719360d07c7576f847e76c1da809ed9a8e619ef548d7d4d37",
+  "callerPinBundleSha256": "06c1d278725685f323f24aa5c0579b31202a185c4e4b2d664dc01658ab1e9a87",
+  "selectionSha256": "90db37aa69f5e026dc8faac7f35767485dfcd5ab9ac8ca45b3789ee312124f97",
+  "priorOverlapManifestSha256": "e1f0de2401ec856cbb7869b0a706c97c2edc8d793640d7ee2b0ef332324034bf",
+  "rootLedgerSha256": "fadf1cbb42b6115dfb71ffe35d66916212c8d793527d146767ae6cfc9ff7a334",
+  "callerFiles": 5,
+  "callerOccurrences": 33,
+  "localeCatalogs": 12,
+  "currentCellValuesAndHashes": "passed",
+  "sourceAndCallerPins": "passed",
+  "placeholdersAndProtectedLiterals": "passed",
+  "repoWorktree": "clean",
+  "nativeSpeakerApproved": false,
+  "catalogsChanged": false
+}

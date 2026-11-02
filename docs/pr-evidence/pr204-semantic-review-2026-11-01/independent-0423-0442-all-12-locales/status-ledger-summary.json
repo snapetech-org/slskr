@@ -1,0 +1,45 @@
+{
+  "browser_review": "not required for this text-only statistics/error-label pass; no headed browser or build run",
+  "cell_dispositions": {
+    "accepted-unchanged": 208,
+    "corrected": 32
+  },
+  "changed_by_prior_disposition": {
+    "fresh_correction": 3,
+    "previously_accepted_refined": 5,
+    "prior_correction_needed_resolved": 24
+  },
+  "native_speaker_approved": false,
+  "overlap_manifest_canonical_sha256": "d05dc6b06d346040c8eda51d14415663802a5f2405c6164372dc74041d82bc23",
+  "overlap_manifest_file_sha256": "e1f0de2401ec856cbb7869b0a706c97c2edc8d793640d7ee2b0ef332324034bf",
+  "per_locale_changed": {
+    "ar": 1,
+    "de": 4,
+    "es": 4,
+    "fr": 2,
+    "hi": 1,
+    "id": 4,
+    "ja": 2,
+    "ko": 3,
+    "pt-BR": 3,
+    "vi": 4,
+    "zh-Hans": 2,
+    "zh-Hant": 2
+  },
+  "pr_baseline_head": "98001f35f1cf33283190b96e60c3e65f01625929",
+  "pr_baseline_tree": "44280b39a053203e711d31503cf4552e23e09f8b",
+  "prior_overlap": {
+    "new": 107,
+    "prior_accepted": 109,
+    "prior_correction-needed": 24
+  },
+  "root_candidate_count": 32,
+  "root_dispositions": {
+    "accept": 32
+  },
+  "selection_sha256": "90db37aa69f5e026dc8faac7f35767485dfcd5ab9ac8ca45b3789ee312124f97",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "window": "423-442"
+}
