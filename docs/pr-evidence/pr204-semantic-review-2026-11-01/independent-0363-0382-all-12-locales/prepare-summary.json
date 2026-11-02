@@ -1,0 +1,111 @@
+{
+  "head": "61155e37280a60d025fda50e9115a5ef2f5cd45f",
+  "head_tree": "d58ce3c148365d8d4bccd997cc4e1c561d81f76e",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_ids": 5437,
+  "frozen_source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "selected_source_indices": [
+    363,
+    382
+  ],
+  "selected_source_ids": [
+    "At most 100 cache keys may be invalidated",
+    "Atlas",
+    "Atlas View",
+    "Attributes",
+    "Audfprint",
+    "Audfprint:",
+    "Audience",
+    "Audio",
+    "Audio Hash Computed",
+    "Audio Perceptual Hash",
+    "Audio Properties",
+    "Audio Samples (comma-separated floats)",
+    "Audio player",
+    "Audio sample count exceeds the one-hour analysis limit",
+    "Audio samples are required",
+    "Audio:",
+    "Auth Off",
+    "Auth On",
+    "Authenticated peer identity is required",
+    "Authenticated recipient identity is required"
+  ],
+  "catalog_sha256": {
+    "web/src/lib/locales/ui-labels.ar.json": "326eb53c14ce63b3370d17de4294ffbf88c3250bd5f66449eba5690484f6b75f",
+    "web/src/lib/locales/ui-labels.de.json": "a38b99d70ea867bffa423a90c4dac04f8a5fad2afcb24db3c8ef0fd037b7c548",
+    "web/src/lib/locales/ui-labels.es.json": "0cb82c80086c88880f46a5fa5f7969482d08fce6fb6e0820b5f62d82ad798914",
+    "web/src/lib/locales/ui-labels.fr.json": "9ac5bed0ae287b60e38ac0feaea229af00aae0bb6c0f213163a65d87df3731c3",
+    "web/src/lib/locales/ui-labels.hi.json": "543f6be3e06fc6b217b60ac65b1351bf47ac7314d1ab7a343cd613d74efbb69e",
+    "web/src/lib/locales/ui-labels.id.json": "869dbfa14a84ab9ba71333470c35d85248586d185afbe2cf7ff3e6e51e9bf177",
+    "web/src/lib/locales/ui-labels.ja.json": "96c5b4bd4bbfb1d01fcf8b994ff0cf1c447348083bbd5726fb5f85b81f6864e3",
+    "web/src/lib/locales/ui-labels.ko.json": "56be06b93ce10555f22386620eb02cc38a647e6743ab26b919a5071f20f40d9b",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "c22c89cb0e63a3de5013e17cdfda688d3cc507f70f26714108877c29da8c9570",
+    "web/src/lib/locales/ui-labels.vi.json": "88da4e678c7b2942a3df1b4d079d52cef178cfe95e09b8b744851e3ee1b7586f",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "f52159ea00f224e3cd5aa642ff1adcf8c47251236b758592c705ea9ad1dba4e8",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "3c3e7dba053cb36f1e446c9b3c1af8a55e9944988bd80a6ba674d11f87da546b"
+  },
+  "overlap_input_count": 942,
+  "overlap_manifest_sha256": "de98c00808fff6077e8f3f7d94fd38a7004f7b0cc1ea911e07afa395f05ca1c6",
+  "counts": {
+    "prior_accepted": 147,
+    "new": 61,
+    "prior_correction-needed": 32
+  },
+  "per_locale": {
+    "ar": {
+      "prior_accepted": 8,
+      "new": 10,
+      "prior_correction-needed": 2
+    },
+    "de": {
+      "prior_accepted": 8,
+      "new": 11,
+      "prior_correction-needed": 1
+    },
+    "es": {
+      "prior_accepted": 8,
+      "new": 10,
+      "prior_correction-needed": 2
+    },
+    "fr": {
+      "prior_accepted": 8,
+      "new": 10,
+      "prior_correction-needed": 2
+    },
+    "hi": {
+      "prior_accepted": 8,
+      "new": 10,
+      "prior_correction-needed": 2
+    },
+    "id": {
+      "prior_accepted": 7,
+      "new": 10,
+      "prior_correction-needed": 3
+    },
+    "ja": {
+      "prior_accepted": 17,
+      "prior_correction-needed": 3
+    },
+    "ko": {
+      "prior_accepted": 18,
+      "prior_correction-needed": 2
+    },
+    "pt-BR": {
+      "prior_accepted": 17,
+      "prior_correction-needed": 3
+    },
+    "vi": {
+      "prior_accepted": 16,
+      "prior_correction-needed": 4
+    },
+    "zh-Hans": {
+      "prior_accepted": 16,
+      "prior_correction-needed": 4
+    },
+    "zh-Hant": {
+      "prior_accepted": 16,
+      "prior_correction-needed": 4
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "review_head": "61155e37280a60d025fda50e9115a5ef2f5cd45f",
+  "review_tree": "d58ce3c148365d8d4bccd997cc4e1c561d81f76e",
+  "source_commit": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "window": [
+    363,
+    382
+  ],
+  "selected_populated_cells": 240,
+  "candidate_count": 40,
+  "candidate_counts_by_source_index": {
+    "369": 12,
+    "370": 2,
+    "371": 4,
+    "372": 1,
+    "374": 8,
+    "378": 1,
+    "381": 12
+  },
+  "overlap_dispositions": {
+    "prior_accepted": 147,
+    "new": 61,
+    "prior_correction-needed": 32
+  },
+  "per_locale_overlap": {
+    "ar": {
+      "prior_accepted": 8,
+      "new": 10,
+      "prior_correction-needed": 2
+    },
+    "de": {
+      "prior_accepted": 8,
+      "new": 11,
+      "prior_correction-needed": 1
+    },
+    "es": {
+      "prior_accepted": 8,
+      "new": 10,
+      "prior_correction-needed": 2
+    },
+    "fr": {
+      "prior_accepted": 8,
+      "new": 10,
+      "prior_correction-needed": 2
+    },
+    "hi": {
+      "prior_accepted": 8,
+      "new": 10,
+      "prior_correction-needed": 2
+    },
+    "id": {
+      "prior_accepted": 7,
+      "new": 10,
+      "prior_correction-needed": 3
+    },
+    "ja": {
+      "prior_accepted": 17,
+      "prior_correction-needed": 3
+    },
+    "ko": {
+      "prior_accepted": 18,
+      "prior_correction-needed": 2
+    },
+    "pt-BR": {
+      "prior_accepted": 17,
+      "prior_correction-needed": 3
+    },
+    "vi": {
+      "prior_accepted": 16,
+      "prior_correction-needed": 4
+    },
+    "zh-Hans": {
+      "prior_accepted": 16,
+      "prior_correction-needed": 4
+    },
+    "zh-Hant": {
+      "prior_accepted": 16,
+      "prior_correction-needed": 4
+    }
+  },
+  "decision_counts": {
+    "accepted-prior-exact-carry": 147,
+    "accepted-fresh-current": 53,
+    "corrected-root-approved": 40
+  },
+  "fresh_reviewed_accepted": 53,
+  "prior_accepted_exact_carries": 147,
+  "prior_correction_needed_candidates": 32,
+  "fresh_correction_candidates": 8,
+  "caller_file_count": 12,
+  "selection_sha256": "2db18fedbebf09997109512216bfa6cbd97ac675bf58ccdc94a9db0052ceda26",
+  "candidate_sha256": "ba33bee8a5196ee9f570caed213b9df84ff15acec21bbf482de0752400f468ce",
+  "cell_audit_sha256": "ddd3a9de9955f6a9164ba4b4fa1683b5d10076e8636d5626ab0475ec25fdda0e",
+  "source_context_sha256": "8a1f53478cea2b6128e0173b9be72c8ed3c68597fe4a7075b5435fa608fc0233",
+  "source_pins_sha256": "bfb535d501abea7cabc01a95ba6393eee99522c4e70a6392b317d3d790f2d29b",
+  "prior_overlap_manifest_sha256": "2988014cc52bb130b91279ed3f74d580627950cb62ad73ee724ec0f8dddce453",
+  "prior_prepare_summary_sha256": "d0c7feef1c749ea1e64045ac770b104c44cf3e3abe2dc4847febc27a0e682fde",
+  "root_cross_review": {
+    "dispositions": {
+      "accepted": 40,
+      "refined": 0,
+      "held": 0
+    },
+    "root_decisions_sha256": "2eff0b89297490fe1a2409ecb593e558f4bbd4344a1dfb1710bf252769892fbf",
+    "candidate_packet_sha256": "ba33bee8a5196ee9f570caed213b9df84ff15acec21bbf482de0752400f468ce"
+  },
+  "applied_corrections_sha256": "f3ec3caea024f0e2fbb01ce839b295917f9fa6eaaed43e9bf78b5a16ac2acf49"
+}

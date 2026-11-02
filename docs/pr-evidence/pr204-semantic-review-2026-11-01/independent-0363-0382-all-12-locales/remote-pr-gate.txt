@@ -1,0 +1,4 @@
+Verified before candidate preparation:
+- `git ls-remote origin refs/heads/codex/slskr-l10n-audit-20261030` -> 61155e37280a60d025fda50e9115a5ef2f5cd45f
+- `gh pr view 204 --json state,isDraft,mergeStateStatus,headRefOid,headRefName,url` -> OPEN, draft=true, CLEAN, head=61155e37280a60d025fda50e9115a5ef2f5cd45f, branch=codex/slskr-l10n-audit-20261030
+- PR URL: https://github.com/snapetech-org/slskr/pull/204
