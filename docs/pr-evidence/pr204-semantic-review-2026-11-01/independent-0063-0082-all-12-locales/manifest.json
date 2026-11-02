@@ -1,0 +1,521 @@
+{
+  "schema_version": 1,
+  "batch": "independent-0063-0082-all-12-locales",
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "pr_state": "OPEN",
+  "pr_draft": true,
+  "pr_branch": "codex/slskr-l10n-audit-20261030",
+  "review_head": "9650a6f9ef70bf23a0dc861156e751729c7a4604",
+  "review_tree": "f2fcb8b930ea9e594b677ded121e6b3324cfd3b8",
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_catalog_tree_current_at_pr_head": true,
+  "pr_head_changes_after_source_catalog_head": "documentation/evidence only; no non-doc changes",
+  "direct_catalog": {
+    "source_ids": 5437,
+    "locales": [
+      "ar",
+      "de",
+      "es",
+      "fr",
+      "hi",
+      "id",
+      "ja",
+      "ko",
+      "pt-BR",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "slots": 65244,
+    "populated_cells": 65244,
+    "blank_cells": 0,
+    "structured_plural_cells": 15,
+    "structured_plural_locale_counts": {
+      "ar": 15
+    },
+    "catalog_sha256": {
+      "web/src/lib/locales/ui-labels.ar.json": "85aa499a0ac019fa7b6323e9cc2fbdd5363dd39cb5e328e5baa5c47b84f3c3c6",
+      "web/src/lib/locales/ui-labels.de.json": "27b9ecb1aefbe6a2cae22736d886c03088fe76d2fd3c7845be886db965aad3e6",
+      "web/src/lib/locales/ui-labels.es.json": "fab50f4cac1b305ac7bbebf38f55cd9d6256a95756a66fe940f4404732c8c4c5",
+      "web/src/lib/locales/ui-labels.fr.json": "3e384ba1d4b111ab1f13dc80010ff6e854863bc2f2ed863ab9a72eaf9b1dccec",
+      "web/src/lib/locales/ui-labels.hi.json": "fe80e06cccb908e4f8f7f2295a28d844effe29a247858f2196281949ae92f547",
+      "web/src/lib/locales/ui-labels.id.json": "ca0975bbcc408d4d3c146aba26c4e5480a0233b0cac603cd530ea82bb07681d8",
+      "web/src/lib/locales/ui-labels.ja.json": "0ca95fc5c9f0b4cee791ab71d0283b151136946da5e9383f366d5a16f5a7541e",
+      "web/src/lib/locales/ui-labels.ko.json": "5636a4b1a4bf325d6c03031b8b3ef34db7d04936c8216343e55b2d36fa544bcd",
+      "web/src/lib/locales/ui-labels.pt-BR.json": "4babb54558c6c224304c2c62ea1303cdad90c5f931bb936e92402323a5759ce9",
+      "web/src/lib/locales/ui-labels.vi.json": "91fac84a2ab6ebcfbe6f33cdf0302e0350b676e4cd69be796edc86509e856184",
+      "web/src/lib/locales/ui-labels.zh-Hans.json": "365c4c51e7cee40e79b37607319dd4dbe1345dcee77f085dd6f7fa1ad307881b",
+      "web/src/lib/locales/ui-labels.zh-Hant.json": "2945bee74a8ffc61db44b8a0bac113ba9f20a159657925c7f3dbc7d1647ce89c"
+    }
+  },
+  "source_index_range": [
+    63,
+    82
+  ],
+  "source_index_method": "zero-based Python lexical sort of the 5,437 frozen source-inventory source_id values",
+  "window_accounting": {
+    "source_keys": 20,
+    "cell_slots": 240,
+    "populated_cells": 240,
+    "fresh_cells": 83,
+    "prior_terminal_cells": 152,
+    "conflict_hold_cells": 5,
+    "fresh_statuses": {
+      "accepted": 79,
+      "correction-needed": 4
+    },
+    "prior_unconflicted_statuses": {
+      "accepted": 138,
+      "correction-needed": 14
+    },
+    "prior_accepted_carries": 138,
+    "prior_correction_needed_exclusions": 14,
+    "prior_held_exclusions": 0,
+    "unresolved_conflict_cells": 5,
+    "final_unconflicted_dispositions": {
+      "accepted": 217,
+      "correction-needed": 18
+    },
+    "pending_exact_terminal_overlaps": 0,
+    "conflicting_exact_prior_statuses": 5
+  },
+  "per_locale": {
+    "ar": {
+      "fresh": {
+        "accepted": 11
+      },
+      "prior": {
+        "accepted": 5,
+        "correction-needed": 4
+      },
+      "conflict_holds": 0
+    },
+    "de": {
+      "fresh": {
+        "accepted": 14,
+        "correction-needed": 1
+      },
+      "prior": {
+        "accepted": 5
+      },
+      "conflict_holds": 0
+    },
+    "es": {
+      "fresh": {
+        "accepted": 15
+      },
+      "prior": {
+        "accepted": 4,
+        "correction-needed": 1
+      },
+      "conflict_holds": 0
+    },
+    "fr": {
+      "fresh": {
+        "accepted": 14,
+        "correction-needed": 1
+      },
+      "prior": {
+        "accepted": 5
+      },
+      "conflict_holds": 0
+    },
+    "hi": {
+      "fresh": {
+        "accepted": 10,
+        "correction-needed": 2
+      },
+      "prior": {
+        "accepted": 5,
+        "correction-needed": 3
+      },
+      "conflict_holds": 0
+    },
+    "id": {
+      "fresh": {
+        "accepted": 15
+      },
+      "prior": {
+        "accepted": 5
+      },
+      "conflict_holds": 0
+    },
+    "ja": {
+      "fresh": {},
+      "prior": {
+        "accepted": 19
+      },
+      "conflict_holds": 1
+    },
+    "ko": {
+      "fresh": {},
+      "prior": {
+        "accepted": 19
+      },
+      "conflict_holds": 1
+    },
+    "pt-BR": {
+      "fresh": {},
+      "prior": {
+        "accepted": 19,
+        "correction-needed": 1
+      },
+      "conflict_holds": 0
+    },
+    "vi": {
+      "fresh": {},
+      "prior": {
+        "accepted": 14,
+        "correction-needed": 5
+      },
+      "conflict_holds": 1
+    },
+    "zh-Hans": {
+      "fresh": {},
+      "prior": {
+        "accepted": 19
+      },
+      "conflict_holds": 1
+    },
+    "zh-Hant": {
+      "fresh": {},
+      "prior": {
+        "accepted": 19
+      },
+      "conflict_holds": 1
+    }
+  },
+  "selection_rule": "Fresh review only for populated current cells with no exact terminal semantic record matching source ID, locale, source hash, and target hash. Exact accepted cells carry; correction-needed/held cells are excluded; contradictory records remain conflict holds.",
+  "prior_overlap_scan": {
+    "scanned_json_evidence_files": 724,
+    "manifest_file": "prior-evidence-scan-manifest.jsonl",
+    "manifest_sha256": "4070cef23bdb0087f5317613a2bcb991062e1405506b43d3ac9563240a529123",
+    "canonical_input_manifest_sha256": "9fba586c356bde41276025290ee74d78db8dfa5466bea38003a20827ed892602",
+    "analysis_summary_sha256": "ee7143b9d55aba3a6c59844ef158e573aaeb5ba03ab153b43543fa217b5e0bbe",
+    "input_root_ids": [
+      "prior-audit-7ff",
+      "pr-review-head"
+    ]
+  },
+  "source_context": {
+    "file": "source-context.txt",
+    "evidence_text_sha256": "6c4d1b66c9a34fc2236190f2b5ee3efee12f828ef8aeaefb185f3589358acc81",
+    "runtime_files": [
+      "web/src/components/CompatibilityDashboard.jsx",
+      "web/src/components/Player/PlayerStatsModal.jsx",
+      "web/src/components/Search/SongIDEvidenceDetails.jsx",
+      "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx",
+      "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+      "web/src/components/System/MediaCore/PodMessageSigningPanel.jsx",
+      "web/src/components/System/Mesh/MeshEvidencePolicy.jsx",
+      "web/src/components/System/Security/AdversarialSettingsView.jsx",
+      "web/src/lib/acquisitionRequests.js"
+    ],
+    "sha256": {
+      "web/src/components/CompatibilityDashboard.jsx": "1e85738718ef2de4dc40358f746163cabb6192fca4072a8bf30ba0e133dbd27f",
+      "web/src/components/Player/PlayerStatsModal.jsx": "ea9a17c1e064db7ec5f70c095a9bd0fb4f15476428007bf3472fcd7b2c5a4292",
+      "web/src/components/Search/SongIDEvidenceDetails.jsx": "4a90c2dfd31302a93964fed1f0642a56909bab926324519eb77c94cda6139f65",
+      "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx": "17241e796b943988d339bac74569f5a5d4e8889194cad1221d0b9c8bc1b82a9e",
+      "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx": "34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60",
+      "web/src/components/System/MediaCore/PodMessageSigningPanel.jsx": "8454b7b025260cf083324f52ea29f806f0ff4c188beec949fd13061e31e41972",
+      "web/src/components/System/Mesh/MeshEvidencePolicy.jsx": "b4dd46c29e740ea03bf84898655b413fc02bfe6274fbaa1c9964ed59e9c475a7",
+      "web/src/components/System/Security/AdversarialSettingsView.jsx": "5b2dfa095ba281bae2b5ef66e17901b38c7d2a68d9bef52c5f016ce3352db72d",
+      "web/src/lib/acquisitionRequests.js": "0ad4096633725af850231922cc185a179393c3334aaf70fdee08c5c8a43b19fc"
+    },
+    "git_blob_ids": {
+      "web/src/components/CompatibilityDashboard.jsx": "831b00821cf5999e39ce586eab76d81bfdbdbb82",
+      "web/src/components/Player/PlayerStatsModal.jsx": "6a26dc806b563672712209ade6cdbba3d998bad3",
+      "web/src/components/Search/SongIDEvidenceDetails.jsx": "a6a0eb1e9843801ff94e590a22878899f3d2bca2",
+      "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx": "90f3e1d29a4b514a1877693e131e92b66b8050aa",
+      "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx": "2abab8a5496df8cdd48e7acf32b479c7ecba6c23",
+      "web/src/components/System/MediaCore/PodMessageSigningPanel.jsx": "bfa628f90b21349b4686799aa6dc40b46ab70832",
+      "web/src/components/System/Mesh/MeshEvidencePolicy.jsx": "2d8c7f594e9d3dc09192182cd1a7beefbc300f6d",
+      "web/src/components/System/Security/AdversarialSettingsView.jsx": "adcacdd123faf82a315da746fab3243adf5ea6a3",
+      "web/src/lib/acquisitionRequests.js": "3b89ad55924c0e4e84b1c005898b35f7e8e5b169"
+    },
+    "reviewed_source_keys": [
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      70,
+      73,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81
+    ]
+  },
+  "language_references": [
+    {
+      "title": "Council for German Orthography, Official German Orthography Rules (2024), § E3",
+      "url": "https://www.rechtschreibrat.com/DOX/RfdR_Amtliches-Regelwerk_2024.pdf",
+      "supports": "For uppercase German text, SS or capital ẞ may represent ß; a lowercase ß in an all-caps word is inconsistent."
+    }
+  ],
+  "correction_candidates": [
+    {
+      "source_index": 65,
+      "locale": "fr",
+      "current": ":F1=",
+      "proposal": ": F1=",
+      "issue_type": "locale_native_punctuation"
+    },
+    {
+      "source_index": 66,
+      "locale": "hi",
+      "current": ": हस्ताक्षर है",
+      "proposal": ": हस्ताक्षर की स्थिति",
+      "issue_type": "locale_fragment_word_order"
+    },
+    {
+      "source_index": 70,
+      "locale": "hi",
+      "current": "; गवाहों",
+      "proposal": "; गवाहों की संख्या",
+      "issue_type": "locale_fragment_grammar"
+    },
+    {
+      "source_index": 79,
+      "locale": "de",
+      "current": "ALLES STANDARDMÄßIG DEAKTIVIERT",
+      "proposal": "ALLES STANDARDMÄSSIG DEAKTIVIERT",
+      "issue_type": "uppercase_german_orthography"
+    }
+  ],
+  "conflict_holds": [
+    {
+      "source_index": 68,
+      "source_id": "; provenance",
+      "locale": "ko",
+      "conflicting_statuses": [
+        "accepted",
+        "correction-needed"
+      ],
+      "exact_refs": [
+        {
+          "status": "correction-needed",
+          "batch": null,
+          "finding_id": "CAT-435fc46cb8c6",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 6793
+        },
+        {
+          "status": "correction-needed",
+          "batch": "old-remaining-0060-0078",
+          "finding_id": null,
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/old-remaining-0060-0078.jsonl",
+          "line": 50
+        },
+        {
+          "status": "accepted",
+          "batch": null,
+          "finding_id": null,
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-lex-0060-0074.jsonl",
+          "line": 50
+        },
+        {
+          "status": "correction-needed",
+          "batch": null,
+          "finding_id": null,
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/decisions-old-remaining-0060-0078.jsonl",
+          "line": 50
+        }
+      ]
+    },
+    {
+      "source_index": 68,
+      "source_id": "; provenance",
+      "locale": "vi",
+      "conflicting_statuses": [
+        "accepted",
+        "correction-needed"
+      ],
+      "exact_refs": [
+        {
+          "status": "correction-needed",
+          "batch": null,
+          "finding_id": "CAT-3691e2b6264c",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 6794
+        },
+        {
+          "status": "correction-needed",
+          "batch": "old-remaining-0060-0078",
+          "finding_id": null,
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/old-remaining-0060-0078.jsonl",
+          "line": 52
+        },
+        {
+          "status": "accepted",
+          "batch": null,
+          "finding_id": null,
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-lex-0060-0074.jsonl",
+          "line": 52
+        },
+        {
+          "status": "correction-needed",
+          "batch": null,
+          "finding_id": null,
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/decisions-old-remaining-0060-0078.jsonl",
+          "line": 52
+        }
+      ]
+    },
+    {
+      "source_index": 68,
+      "source_id": "; provenance",
+      "locale": "zh-Hans",
+      "conflicting_statuses": [
+        "accepted",
+        "correction-needed"
+      ],
+      "exact_refs": [
+        {
+          "status": "correction-needed",
+          "batch": null,
+          "finding_id": "CAT-160bd9929ab7",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 6795
+        },
+        {
+          "status": "correction-needed",
+          "batch": "old-remaining-0060-0078",
+          "finding_id": null,
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/old-remaining-0060-0078.jsonl",
+          "line": 53
+        },
+        {
+          "status": "accepted",
+          "batch": null,
+          "finding_id": null,
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-lex-0060-0074.jsonl",
+          "line": 53
+        },
+        {
+          "status": "correction-needed",
+          "batch": null,
+          "finding_id": null,
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/decisions-old-remaining-0060-0078.jsonl",
+          "line": 53
+        }
+      ]
+    },
+    {
+      "source_index": 68,
+      "source_id": "; provenance",
+      "locale": "zh-Hant",
+      "conflicting_statuses": [
+        "accepted",
+        "correction-needed"
+      ],
+      "exact_refs": [
+        {
+          "status": "correction-needed",
+          "batch": null,
+          "finding_id": "CAT-c6290820ec64",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 6796
+        },
+        {
+          "status": "correction-needed",
+          "batch": "old-remaining-0060-0078",
+          "finding_id": null,
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/old-remaining-0060-0078.jsonl",
+          "line": 54
+        },
+        {
+          "status": "accepted",
+          "batch": null,
+          "finding_id": null,
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-lex-0060-0074.jsonl",
+          "line": 54
+        },
+        {
+          "status": "correction-needed",
+          "batch": null,
+          "finding_id": null,
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/decisions-old-remaining-0060-0078.jsonl",
+          "line": 54
+        }
+      ]
+    },
+    {
+      "source_index": 71,
+      "source_id": "A download path is configured.",
+      "locale": "ja",
+      "conflicting_statuses": [
+        "accepted",
+        "correction-needed"
+      ],
+      "exact_refs": [
+        {
+          "status": "accepted",
+          "batch": "old-remaining-0120-0134",
+          "finding_id": null,
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/old-remaining-0120-0134.jsonl",
+          "line": 19
+        },
+        {
+          "status": "correction-needed",
+          "batch": null,
+          "finding_id": null,
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-lex-0060-0074.jsonl",
+          "line": 79
+        },
+        {
+          "status": "accepted",
+          "batch": null,
+          "finding_id": null,
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-remaining-0120-0134.jsonl",
+          "line": 19
+        }
+      ]
+    }
+  ],
+  "placeholder_and_literal_checks": {
+    "fresh_cells_checked": 83,
+    "placeholder_sets_preserved": true,
+    "icu_messages": 0,
+    "protected_literals_preserved_or_flagged": true,
+    "current_punctuation_flag": [
+      {
+        "source_index": 65,
+        "locale": "fr",
+        "missing": "space after colon",
+        "proposed": ": F1="
+      }
+    ]
+  },
+  "native_speaker_approval": false,
+  "catalog_or_source_changes_made": false,
+  "correction_suggestions_applied": false,
+  "tests_builds_ci_or_release_actions_run": false,
+  "browser_recapture_required": false
+}
