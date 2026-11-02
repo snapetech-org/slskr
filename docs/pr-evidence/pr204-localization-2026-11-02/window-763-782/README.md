@@ -6,4 +6,4 @@ Final dispositions: 196 accept-current, 43 corrections, 1 refinement, and no hol
 
 The review reattested 70 caller/context/test references across 24 files and all 12 W762 boundary values. “Collections — full sets and 1G1R” has no direct caller; it was accepted as clear standalone UI copy, with `1G1R` preserved in all locales.
 
-The complete primary and independent cross-review packets, apply plan, readback, and checksums are retained here. This window has no post-apply headed-browser review; qualified native-speaker approval remains outstanding. No workflow changes, releases, tags, or merges were made.
+The complete primary and independent cross-review packets, apply plan, readback, and checksums are retained here. This window has no post-apply headed-browser review; qualified native-speaker approval remains outstanding. The commit-time Semgrep Community Edition hook scanned one staged cross-review builder Python file with `p/default` (290 rules; zero findings); it did not scan product source. No tests, builds, CI, workflow changes, releases, tags, or merges were performed.
