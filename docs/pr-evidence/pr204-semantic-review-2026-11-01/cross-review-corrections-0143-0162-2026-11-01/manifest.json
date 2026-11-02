@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "review_batch": "independent-0143-0162-all-12-locales",
+  "correction_batch": "cross-review-corrections-0143-0162-2026-11-01",
+  "application_parent_head": "2f7794cec0592ffd1a24490a5441b3ee7d1c728d",
+  "application_parent_tree": "aa0c195ecf045fef9545ddbdc7df4a0da305943b",
+  "application_head": "e3b1667bcec64e3b41c124e66ea6b29cc88102b9",
+  "application_tree": "baa6d9cb0a7683372c7a6130aa10147b0c880141",
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_context_bundle": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0143-0162-all-12-locales/source-context.txt",
+  "source_context_sha256": "281d7b2c78f9a95bb54a6c87d37d08ec6e08adb3d953402e3270579eb0f494ea",
+  "corrections": 3,
+  "affected_catalogs": 2,
+  "catalog_paths": [
+    "web/src/lib/locales/ui-labels.fr.json",
+    "web/src/lib/locales/ui-labels.hi.json"
+  ],
+  "ledger_file": "applied-corrections.jsonl",
+  "ledger_sha256": "5be6e7b92f78d6ca272165e21bfa8cf01f3d3a9becad4e9f5995b61e50fa53f2",
+  "native_speaker_approval": false,
+  "test_build_ci_release_or_tag": false
+}

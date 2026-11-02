@@ -1,0 +1,343 @@
+{
+  "schema_version": 1,
+  "batch": "independent-0163-0182-all-12-locales",
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "pr_state": "OPEN",
+  "pr_draft": true,
+  "pr_branch": "codex/slskr-l10n-audit-20261030",
+  "review_head": "a4dbef9a1dda24e104bdd5f8a6315ca7d6f3d541",
+  "review_tree": "3a00691cd5615fafa0026457afc19af3806e5329",
+  "application_parent_head": "a4dbef9a1dda24e104bdd5f8a6315ca7d6f3d541",
+  "application_head": "2f7794cec0592ffd1a24490a5441b3ee7d1c728d",
+  "application_tree": "aa0c195ecf045fef9545ddbdc7df4a0da305943b",
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_catalog_tree_current_at_review_head": false,
+  "direct_catalog": {
+    "source_ids": 5437,
+    "locales": [
+      "ar",
+      "de",
+      "es",
+      "fr",
+      "hi",
+      "id",
+      "ja",
+      "ko",
+      "pt-BR",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "slots": 65244,
+    "populated_cells": 65244,
+    "blank_cells": 0,
+    "structured_plural_cells": 15,
+    "structured_plural_locale_counts": {
+      "ar": 15
+    },
+    "catalog_sha256_before": {
+      "web/src/lib/locales/ui-labels.ar.json": "7c8ead1aac5fc068c975386962539b468e1d8c0f24818763299f84ff2a9a066d",
+      "web/src/lib/locales/ui-labels.de.json": "d21604fea328e80fb893b1016c2f51048a1217ef408fa06d452ac6e3a0431489",
+      "web/src/lib/locales/ui-labels.es.json": "9c78d6f87597629c543d1985208c4aeb3a4a7db2233114f0bb5fb3f9b3f961d5",
+      "web/src/lib/locales/ui-labels.fr.json": "a43c8e3246fc0f6a7a57687853e89ae95fc1a381772b37955d929663f58882e0",
+      "web/src/lib/locales/ui-labels.hi.json": "cc63a5b2b1a1c562166fea66af5a5ecca08ed19e90f5e98e1c77ce37adf4c6db",
+      "web/src/lib/locales/ui-labels.id.json": "cc59d115e6bb4f729339f4f78e922853b6a3093e0bd5ba0fa1d87f6f4c1bea06",
+      "web/src/lib/locales/ui-labels.ja.json": "35218904466567f0c98cbb631e30af2d813f2eea719bf66a06f9984e5874b10e",
+      "web/src/lib/locales/ui-labels.ko.json": "5636a4b1a4bf325d6c03031b8b3ef34db7d04936c8216343e55b2d36fa544bcd",
+      "web/src/lib/locales/ui-labels.pt-BR.json": "5d66fed4d95c212350e7f29df2d70b94381cf086df8cfdac04bfc48f0c1b9372",
+      "web/src/lib/locales/ui-labels.vi.json": "91fac84a2ab6ebcfbe6f33cdf0302e0350b676e4cd69be796edc86509e856184",
+      "web/src/lib/locales/ui-labels.zh-Hans.json": "365c4c51e7cee40e79b37607319dd4dbe1345dcee77f085dd6f7fa1ad307881b",
+      "web/src/lib/locales/ui-labels.zh-Hant.json": "2945bee74a8ffc61db44b8a0bac113ba9f20a159657925c7f3dbc7d1647ce89c"
+    },
+    "catalog_sha256_after_application": {
+      "web/src/lib/locales/ui-labels.ar.json": "273877f1321418c432f0f077667bcc374203c7e3b092caef1978e332c6fdf281",
+      "web/src/lib/locales/ui-labels.de.json": "31da85bb30b50f121d3e15eb36f6e599c490f1fab6a9442fef720b3951004cb3",
+      "web/src/lib/locales/ui-labels.es.json": "799a0cd8580870ef04dc0340f7535ffc8f37e6ccd2a1f9358deb4165b68cc8c6",
+      "web/src/lib/locales/ui-labels.fr.json": "27d407db40d58d06ed89ef560d0575cba2e87bd51061226ef1e16a015c7a16e0",
+      "web/src/lib/locales/ui-labels.hi.json": "e5afba533d8ffedf2b8fc09c29db2c376569966d15567f8aec24e8a2451ded05",
+      "web/src/lib/locales/ui-labels.id.json": "5ffe9e697048b41f6a67bbd3fe76046582ddccf17ee4f535a1a47fe98dee6f2d",
+      "web/src/lib/locales/ui-labels.ja.json": "35218904466567f0c98cbb631e30af2d813f2eea719bf66a06f9984e5874b10e",
+      "web/src/lib/locales/ui-labels.ko.json": "5636a4b1a4bf325d6c03031b8b3ef34db7d04936c8216343e55b2d36fa544bcd",
+      "web/src/lib/locales/ui-labels.pt-BR.json": "5d66fed4d95c212350e7f29df2d70b94381cf086df8cfdac04bfc48f0c1b9372",
+      "web/src/lib/locales/ui-labels.vi.json": "91fac84a2ab6ebcfbe6f33cdf0302e0350b676e4cd69be796edc86509e856184",
+      "web/src/lib/locales/ui-labels.zh-Hans.json": "365c4c51e7cee40e79b37607319dd4dbe1345dcee77f085dd6f7fa1ad307881b",
+      "web/src/lib/locales/ui-labels.zh-Hant.json": "2945bee74a8ffc61db44b8a0bac113ba9f20a159657925c7f3dbc7d1647ce89c"
+    }
+  },
+  "source_index_range": [
+    163,
+    182
+  ],
+  "source_index_method": "zero-based Python lexical sort of the 5,437 direct catalog source IDs",
+  "window_accounting": {
+    "source_keys": 20,
+    "cell_slots": 240,
+    "populated_cells": 240,
+    "fresh_cells": 71,
+    "fresh_statuses": {
+      "accepted": 66,
+      "correction-needed": 3,
+      "held": 2
+    },
+    "prior_accepted_carries": 116,
+    "prior_correction_needed_cells_before_application": 53,
+    "prior_correction_needed_exclusions_after_application": 43,
+    "exact_corrections_applied": 10,
+    "unresolved_conflict_cells": 0,
+    "disposition_partition": {
+      "fresh": 71,
+      "accepted_carries": 116,
+      "correction_needed_exclusions": 43,
+      "corrected": 10,
+      "conflict_holds": 0
+    },
+    "terminal_statuses_after_review": {
+      "accepted": 182,
+      "corrected": 10,
+      "correction-needed": 46,
+      "held": 2
+    },
+    "pending_exact_terminal_overlaps": 0,
+    "conflicting_exact_prior_statuses": 0
+  },
+  "per_locale": {
+    "ar": {
+      "fresh": {
+        "accepted": 11,
+        "held": 1
+      },
+      "accepted_carry": 3,
+      "correction_needed_exclusion": 3,
+      "corrected": 2,
+      "held_exclusion": 0
+    },
+    "de": {
+      "fresh": {
+        "accepted": 11
+      },
+      "accepted_carry": 5,
+      "correction_needed_exclusion": 2,
+      "corrected": 2,
+      "held_exclusion": 0
+    },
+    "es": {
+      "fresh": {
+        "accepted": 12
+      },
+      "accepted_carry": 2,
+      "correction_needed_exclusion": 4,
+      "corrected": 2,
+      "held_exclusion": 0
+    },
+    "fr": {
+      "fresh": {
+        "accepted": 12,
+        "held": 1
+      },
+      "accepted_carry": 2,
+      "correction_needed_exclusion": 4,
+      "corrected": 1,
+      "held_exclusion": 0
+    },
+    "hi": {
+      "fresh": {
+        "correction-needed": 3,
+        "accepted": 9
+      },
+      "accepted_carry": 5,
+      "correction_needed_exclusion": 2,
+      "corrected": 1,
+      "held_exclusion": 0
+    },
+    "id": {
+      "fresh": {
+        "accepted": 11
+      },
+      "accepted_carry": 3,
+      "correction_needed_exclusion": 4,
+      "corrected": 2,
+      "held_exclusion": 0
+    },
+    "ja": {
+      "fresh": {},
+      "accepted_carry": 17,
+      "correction_needed_exclusion": 3,
+      "corrected": 0,
+      "held_exclusion": 0
+    },
+    "ko": {
+      "fresh": {},
+      "accepted_carry": 16,
+      "correction_needed_exclusion": 4,
+      "corrected": 0,
+      "held_exclusion": 0
+    },
+    "pt-BR": {
+      "fresh": {},
+      "accepted_carry": 16,
+      "correction_needed_exclusion": 4,
+      "corrected": 0,
+      "held_exclusion": 0
+    },
+    "vi": {
+      "fresh": {},
+      "accepted_carry": 17,
+      "correction_needed_exclusion": 3,
+      "corrected": 0,
+      "held_exclusion": 0
+    },
+    "zh-Hans": {
+      "fresh": {},
+      "accepted_carry": 15,
+      "correction_needed_exclusion": 5,
+      "corrected": 0,
+      "held_exclusion": 0
+    },
+    "zh-Hant": {
+      "fresh": {},
+      "accepted_carry": 15,
+      "correction_needed_exclusion": 5,
+      "corrected": 0,
+      "held_exclusion": 0
+    }
+  },
+  "selection_rule": "Fresh review only for populated current cells with no exact terminal semantic record matching source ID, locale, source hash, and current target hash. Exact accepted cells carry. Exact correction-needed cells remain excluded unless an exact prior high-confidence proposal is revalidated and applied. Ambiguous context stays held.",
+  "prior_overlap_scan": {
+    "scanned_json_evidence_files": 772,
+    "manifest_file": "prior-evidence-scan-manifest.jsonl",
+    "manifest_sha256": "54b6d650032937279c3b2c63acfb32d5f3f82b7997984ef875456b98b5cdcad2",
+    "canonical_input_manifest_sha256": "167f3406bacfdb118bcc9742cf0781887879df2cdba6d1b0a95e14c5cb4106d3",
+    "input_roots": [
+      "prior-audit-7ff",
+      "pr-review-head"
+    ]
+  },
+  "source_context": {
+    "file": "source-context.txt",
+    "evidence_text_sha256": "29c5d2151a995847442c67600e97c14b7755c264a5378eb484adbd35399ef7fe",
+    "runtime_files": [
+      "web/src/components/ShareGroups/ShareGroups.jsx",
+      "web/src/components/Wishlist/Wishlist.jsx",
+      "web/src/components/Player/PlayerRadioModal.jsx",
+      "web/src/components/Player/PlayerStatsModal.jsx",
+      "web/src/components/Search/DiscoveryGraphModal.jsx",
+      "web/src/components/Search/Response.jsx",
+      "web/src/lib/mediaServerIntegrations.js",
+      "web/src/lib/setupHealthCheck.js",
+      "web/src/components/System/Info/SetupHealthCheckModal.jsx",
+      "web/src/components/Search/DiscographyCoveragePanel.jsx",
+      "web/src/components/Player/PlayerQueueModal.jsx"
+    ],
+    "sha256": {
+      "web/src/components/ShareGroups/ShareGroups.jsx": "d3a467377b0d3ce0e08c6623ac01b8c53616c41828715716ef94f274f92dea6e",
+      "web/src/components/Wishlist/Wishlist.jsx": "74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7",
+      "web/src/components/Player/PlayerRadioModal.jsx": "aca1220b0e5e3e8f3bf6503dfcf2429dea3d96976f0cb01ff141b45ec1ac4d72",
+      "web/src/components/Player/PlayerStatsModal.jsx": "ea9a17c1e064db7ec5f70c095a9bd0fb4f15476428007bf3472fcd7b2c5a4292",
+      "web/src/components/Search/DiscoveryGraphModal.jsx": "26307d2ebbe1002688d340ea9c98c6012db15efd2e1dfd754b59a37c67cc49a8",
+      "web/src/components/Search/Response.jsx": "da0ccb703c38cf3a444e9d79fba30cd62191f15277ec339b287529d121cbe6de",
+      "web/src/lib/mediaServerIntegrations.js": "7e97c9c2c5bb798c28fdb21b7028e0abc093ec7b7fe97e9179887bc7ef668e05",
+      "web/src/lib/setupHealthCheck.js": "254e98de004fc19ae7c71dd47527adb1cc39fe52473323a1aa3b7e4f32d5cb0a",
+      "web/src/components/System/Info/SetupHealthCheckModal.jsx": "e6ee08c0afc902eb823da61b338fa8e138a8edfc6c3eae6847a937caae77ca34",
+      "web/src/components/Search/DiscographyCoveragePanel.jsx": "d1fdb70100b0fa7f3d38a3f0d37766e71e1efc45b8f4f47ee44684c5d173090a",
+      "web/src/components/Player/PlayerQueueModal.jsx": "dbfe2ed6f8e0bf5b68fa51db9305473b19b63fe3a4d601c975b0cdeebd74c048"
+    },
+    "git_blob_ids": {
+      "web/src/components/ShareGroups/ShareGroups.jsx": "b9e41426dfb0f920200d982653d8ab2ff98622ba",
+      "web/src/components/Wishlist/Wishlist.jsx": "54d5e35d9f027ea547f746df800fabd491c3bed7",
+      "web/src/components/Player/PlayerRadioModal.jsx": "5e3a902b2470733f61fb12378f9ecee2cf3a3e3b",
+      "web/src/components/Player/PlayerStatsModal.jsx": "6a26dc806b563672712209ade6cdbba3d998bad3",
+      "web/src/components/Search/DiscoveryGraphModal.jsx": "e0b366ffd69b72f779d80bf5de35e0bc2ef52245",
+      "web/src/components/Search/Response.jsx": "8bee962fc708202a785758d9da1193ea4de59337",
+      "web/src/lib/mediaServerIntegrations.js": "cb7ea2f94c4db646873aad3fab6a59ebaefad341",
+      "web/src/lib/setupHealthCheck.js": "ac6f54149388e953852dc230f781fa52bac238e7",
+      "web/src/components/System/Info/SetupHealthCheckModal.jsx": "12888648d84d393c08dc3f865ee09a7c1750e394",
+      "web/src/components/Search/DiscographyCoveragePanel.jsx": "30a767356c47e5198976ddbac4ce657320f15b03",
+      "web/src/components/Player/PlayerQueueModal.jsx": "8bdaf63060b6c9995f89f991500563aa06869593"
+    },
+    "reviewed_source_keys": [
+      "Add Member to",
+      "Add New",
+      "Add New Game",
+      "Add Search",
+      "Add Torrent",
+      "Add Wishlist",
+      "Add Your First Search",
+      "Add a contact or Soulseek username to this share group.",
+      "Add a direct comparison bridge between the current graph center and this node.",
+      "Add a local caution signal for this peer/result. This only affects your browser-side review and does not publish a report.",
+      "Add a remote path map or align completed-download and library paths.",
+      "Add at least one result condition before saving.",
+      "Add at least one shared folder before expecting uploads or public browse results.",
+      "Add credentials or disable: {providers}.",
+      "Add from Contacts",
+      "Add missing to Wishlist",
+      "Add one saved search to the Wishlist. Enabled entries run later using the normal scheduler.",
+      "Add or review automation recipes only after diagnostics are clean.",
+      "Add searches to your wishlist and they'll run automatically.",
+      "Add similar recent session tracks to Wishlist as manual requests with auto-download off."
+    ]
+  },
+  "correction_candidates": [
+    {
+      "source_index": 163,
+      "source_id": "Add Member to",
+      "locale": "hi",
+      "target_text": "इसमें सदस्य जोड़ें",
+      "target_sha256": "188a56c39091e1dd0ef9d165d47ba6fe6b66775c621dde7eb263d171fb260af2",
+      "proposed_target": "सदस्य जोड़ें:",
+      "proposed_target_sha256": "cf4db8a3c412fd41fa3bbdba540b1b85c34915c3931f9c0151bd36b55df4d6a0",
+      "confidence": "moderate",
+      "issue_type": "appended_group_title_order",
+      "review_note": "The modal appends the group name after this fragment. “इसमें सदस्य जोड़ें [group]” places a locative before the appended name and reads awkwardly. “सदस्य जोड़ें: [group]” is a concise heading that fits the code’s fixed fragment order."
+    },
+    {
+      "source_index": 171,
+      "source_id": "Add a direct comparison bridge between the current graph center and this node.",
+      "locale": "hi",
+      "target_text": "वर्तमान ग्राफ केंद्र और इस नोड के बीच एक सीधा तुलना पुल जोड़ें।",
+      "target_sha256": "e00f84bb044b3f658a8b5a61e0cf026b2d44c1c8a45c05e1076886dec5e4a9bd",
+      "proposed_target": "वर्तमान ग्राफ केंद्र और इस नोड के बीच एक सीधा तुलनात्मक सेतु जोड़ें।",
+      "proposed_target_sha256": "712c62fd2fd87e679d48df95526dd210f9a2645555214184530d045615b43643",
+      "confidence": "moderate",
+      "issue_type": "graph_bridge_compound",
+      "review_note": "The literal “सीधा तुलना पुल” is awkward as a Hindi compound. The proposal keeps the graph-center/node relation and expresses a direct comparison bridge more naturally; retain for locale review."
+    },
+    {
+      "source_index": 174,
+      "source_id": "Add at least one result condition before saving.",
+      "locale": "hi",
+      "target_text": "सहेजने से पहले कम से कम एक परिणाम शर्त जोड़ें।",
+      "target_sha256": "12d814290c3b3a41848a1036e1b758ebe7af1a0a9e643f80aaa91808bd02bd18",
+      "proposed_target": "सहेजने से पहले परिणामों के लिए कम से कम एक शर्त जोड़ें।",
+      "proposed_target_sha256": "3dfb06675419621c359353f361134cdc70dc13f996a2ba20baa1e0c9ebb92911",
+      "confidence": "moderate",
+      "issue_type": "result_condition_phrase",
+      "review_note": "The source requires at least one result filter condition before saving. This proposal keeps the quantity, result scope, and timing while avoiding the compressed compound “परिणाम शर्त.”"
+    }
+  ],
+  "applied_correction_ledger": "applied-corrections.jsonl",
+  "applied_correction_ledger_sha256": "0d8496db4569def6d05ed20d6481f1a3ed805cb74868239672cf740b1120754f",
+  "cell_review_matrix": "reviewed-cell-audit.jsonl",
+  "cell_review_matrix_sha256": "0159f47b4759e0b24cbe038200b52d8acb9caa5042642b05b2f2e8296f4aef20",
+  "placeholder_and_literal_checks": {
+    "cells_checked": 240,
+    "placeholder_sets_preserved": true,
+    "icu_messages": 0,
+    "protected_literals_preserved": true
+  },
+  "native_speaker_approval": false,
+  "catalog_or_source_changes_made": true,
+  "correction_suggestions_applied": true,
+  "tests_builds_ci_or_release_actions_run": false,
+  "browser_recapture_required": true,
+  "browser_blocker": "A compatible source-built isolated backend is unavailable; the available stale binary is incompatible and the shared daemon cannot be used.",
+  "verification_head_is_dynamic_docs_head": true,
+  "visual_check": {
+    "file": "headed-visual-check.md",
+    "sha256": "6b28581662490884c061b1dd9f98c28e379e0e9541cfbd79151bb81cbed0f06a",
+    "status": "blocked",
+    "reason": "A compatible source-built isolated backend is unavailable; the available stale binary is incompatible and the shared daemon cannot be used."
+  }
+}

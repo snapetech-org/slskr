@@ -1,0 +1,290 @@
+# Exact runtime context: independent semantic review, source indices 163–182
+
+PR review head: `a4dbef9a1dda24e104bdd5f8a6315ca7d6f3d541` / tree `3a00691cd5615fafa0026457afc19af3806e5329`.
+Catalog correction application: `2f7794cec0592ffd1a24490a5441b3ee7d1c728d` / tree `aa0c195ecf045fef9545ddbdc7df4a0da305943b` (parent `a4dbef9a1dda24e104bdd5f8a6315ca7d6f3d541`).
+Runtime/source snapshot: `7ff454828398de6a3cfb72fe7f0ed21fe419425b` / tree `9e9f2aa743c4ff3236af8f99619803bdc3a37152`.
+All runtime excerpts below are read from the pinned source commit. File hashes and blob IDs are retained.
+
+Fresh cells: 71; exact accepted carries: 116; exact prior correction-needed cells: 53; high-confidence fixes applied: 10; exact conflicts: 0. All 240 current values were checked for semantic meaning, placeholders, ICU syntax, and source-protected literals.
+
+## Runtime excerpts
+
+### `web/src/components/ShareGroups/ShareGroups.jsx` — blob `b9e41426dfb0f920200d982653d8ab2ff98622ba`, SHA-256 `d3a467377b0d3ce0e08c6623ac01b8c53616c41828715716ef94f274f92dea6e`
+
+Lines 394–408:
+394:                   <Table.Cell>
+395:                     <Button
+396:                       data-testid="group-add-member"
+397:                       onClick={() =>
+398:                         this.setState({
+399:                           addMemberModalOpen: true,
+400:                           selectedGroup: group,
+401:                         })
+402:                       }
+403:                       primary
+404:                       size="small"
+405:                       tooltip="Add a contact or Soulseek username to this share group."
+406:                     >
+407:                       <LocalizedText source={"Add Member"} /></Button>
+408:                     <Button
+
+Lines 474–489:
+474:           open={addMemberModalOpen}
+475:         >
+476:           <Modal.Header><LocalizedText source={"Add Member to"} />{" "}{selectedGroup?.name}</Modal.Header>
+477:           <Modal.Content>
+478:             {contacts.length > 0 ? (
+479:               <Form>
+480:                 <Form.Field>
+481:                   <label><LocalizedText source={"Add from Contacts"} /></label>
+482:                   <Dropdown
+483:                     data-testid="group-member-picker"
+484:                     fluid
+485:                     onChange={(e, { value }) =>
+486:                       this.setState({
+487:                         selectedContactId: value,
+488:                       })
+489:                     }
+
+### `web/src/components/Wishlist/Wishlist.jsx` — blob `54d5e35d9f027ea547f746df800fabd491c3bed7`, SHA-256 `74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7`
+
+Lines 362–386:
+362:           floated="left"
+363:         >
+364:           <Icon name="star" />
+365:           <Header.Content>
+366:             {localized('Wishlist')}
+367:             <Header.Subheader>
+368:               {localized('Saved searches that run automatically')}
+369:             </Header.Subheader>
+370:           </Header.Content>
+371:         </Header>
+372:         <Popup
+373:           content={localized('Add one saved search to the Wishlist. Enabled entries run later using the normal scheduler.')}
+374:           trigger={
+375:             <Button
+376:               floated="right"
+377:               icon
+378:               labelPosition="left"
+379:               onClick={handleAdd}
+380:               primary
+381:             >
+382:               <Icon name="plus" />
+383:               {localized('Add Search')}
+384:             </Button>
+385:           }
+386:         />
+
+Lines 540–553:
+540:             >
+541:               <Icon name="star outline" />
+542:               {localized('No wishlist items yet')}
+543:             </Header>
+544:             <p>
+545:               {localized("Add searches to your wishlist and they'll run automatically.")}
+546:             </p>
+547:             <Button
+548:               onClick={handleAdd}
+549:               primary
+550:             >
+551:               {localized('Add Your First Search')}
+552:             </Button>
+553:           </Segment>
+
+### `web/src/components/Player/PlayerRadioModal.jsx` — blob `5e3a902b2470733f61fb12378f9ecee2cf3a3e3b`, SHA-256 `aca1220b0e5e3e8f3bf6503dfcf2429dea3d96976f0cb01ff141b45ec1ac4d72`
+
+Lines 198–212:
+198:          {...interfaceTextProps("Start up to three live searches from this smart-radio plan. This does not browse peers, queue downloads, or mutate files.")}/>
+199:         <Popup
+200:           content={interfaceText("Add smart-radio seeds to Wishlist as enabled manual requests with auto-download off.")}
+201:           trigger={
+202:             <Button
+203:               data-testid="player-radio-add-wishlist"
+204:               disabled={!plan.ready || savingWishlist || runningSearches}
+205:               loading={savingWishlist}
+206:               onClick={addRadioWishlist}
+207:               type="button"
+208:             >
+209:               <Icon name="heart" />
+210:               <LocalizedText source={"Add Wishlist"} /></Button>
+211:           }
+212:          {...interfaceTextProps("Add smart-radio seeds to Wishlist as enabled manual requests with auto-download off.")}/>
+
+### `web/src/components/Player/PlayerStatsModal.jsx` — blob `6a26dc806b563672712209ade6cdbba3d998bad3`, SHA-256 `ea9a17c1e064db7ec5f70c095a9bd0fb4f15476428007bf3472fcd7b2c5a4292`
+
+Lines 375–384:
+375:                     }
+376:                     loading={savingSeedWishlist}
+377:                     onClick={addSeedsToWishlist}
+378:                     size="mini"
+379:                     type="button"
+380:                   >
+381:                     <Icon name="heart" />
+382:                     <LocalizedText source={"Add Wishlist"} /></Button>
+383:                 }
+384:                {...interfaceTextProps("Add up to five listening seeds to Wishlist as enabled manual-acquisition requests. Auto-download stays off.")}/>
+
+### `web/src/components/Search/DiscoveryGraphModal.jsx` — blob `e0b366ffd69b72f779d80bf5de35e0bc2ef52245`, SHA-256 `26307d2ebbe1002688d340ea9c98c6012db15efd2e1dfd754b59a37c67cc49a8`
+
+Lines 364–383:
+364:                      {...interfaceTextProps("Pin this node so you can compare it against another branch or keep it handy while exploring.")}/>
+365:                     <Popup
+366:                       content={interfaceText("Add a direct comparison bridge between the current graph center and this node.")}
+367:                       position="top center"
+368:                       trigger={
+369:                         <Button
+370:                           onClick={() =>
+371:                             onCompare &&
+372:                             onCompare(
+373:                               edge.targetNodeId,
+374:                               nodeMap[edge.targetNodeId]?.label || edge.targetNodeId,
+375:                             )
+376:                           }
+377:                           size="mini"
+378:                           style={{ marginLeft: '0.5em' }}
+379:                         >
+380:                           <LocalizedText source={"Compare"} /></Button>
+381:                       }
+382:                      {...interfaceTextProps("Add a direct comparison bridge between the current graph center and this node.")}/>
+383:                   </List.Content>
+
+### `web/src/components/Search/Response.jsx` — blob `8bee962fc708202a785758d9da1193ea4de59337`, SHA-256 `da0ccb703c38cf3a444e9d79fba30cd62191f15277ec339b287529d121cbe6de`
+
+Lines 983–1000:
+983:                {...interfaceTextProps("Open this result in atlas mode to browse a wider neighborhood with semantic zoom controls.")}/>
+984:               <Popup
+985:                 content={interfaceText("Add a local caution signal for this peer/result. This only affects your browser-side review and does not publish a report.")}
+986:                 position="top center"
+987:                 trigger={
+988:                   <Icon
+989:                     aria-label={this.localize('Report suspicious result from {username}', { username: response.username })}
+990:                     color="orange"
+991:                     link
+992:                     lang={languageFor('Report suspicious result from {username}')}
+993:                     dir={directionFor('Report suspicious result from {username}')}
+994:                     name="exclamation triangle"
+995:                     onClick={this.reportSuspiciousCandidate}
+996:                   />
+997:                 }
+998:                {...interfaceTextProps("Add a local caution signal for this peer/result. This only affects your browser-side review and does not publish a report.")}/>
+999:               <Popup
+1000:                 content={interfaceText(isBlocked ? 'Unblock this user' : 'Block this user from search results')}
+
+### `web/src/lib/mediaServerIntegrations.js` — blob `cb7ea2f94c4db646873aad3fab6a59ebaefad341`, SHA-256 `7e97c9c2c5bb798c28fdb21b7028e0abc093ec7b7fe97e9179887bc7ef668e05`
+
+Lines 105–119:
+105:     },
+106:     {
+107:       action: 'Store an API token or app token before any live media-server call.',
+108:       label: 'Token configured',
+109:       ready: Boolean(tokenConfigured),
+110:     },
+111:     {
+112:       action: 'Add a remote path map or align completed-download and library paths.',
+113:       label: 'Path mapping ready',
+114:       ready: ['Aligned', 'Mapped'].includes(pathDiagnostic.status),
+115:     },
+116:   ];
+117:   const readyCount = checks.filter((check) => check.ready).length;
+118: 
+119:   return {
+
+### `web/src/lib/setupHealthCheck.js` — blob `ac6f54149388e953852dc230f781fa52bac238e7`, SHA-256 `254e98de004fc19ae7c71dd47527adb1cc39fe52473323a1aa3b7e4f32d5cb0a`
+
+Lines 191–200:
+191:     check({
+192:       action: shares.length
+193:         ? 'Review share paths if peers cannot browse your library.'
+194:         : 'Add at least one shared folder before expecting uploads or public browse results.',
+195:       area: 'Shares',
+196:       evidence: `${shares.length} share ${shares.length === 1 ? 'entry' : 'entries'} visible in options.`,
+197:       group: 'Storage',
+198:       status: shares.length ? 'pass' : 'warn',
+199:       summary: shares.length ? 'Shares configured' : 'No shares configured',
+200:     }),
+
+Lines 275–285:
+275:     check({
+276:       action: automationRecipes.length
+277:         ? 'Review recipe dry-run reports before enabling unattended actions.'
+278:         : 'Add or review automation recipes only after diagnostics are clean.',
+279:       area: 'Automation visibility',
+280:       evidence: `${automationRecipes.length} automation recipe ${automationRecipes.length === 1 ? 'entry' : 'entries'} visible in state.`,
+281:       group: 'Operations',
+282:       status: 'pass',
+283:       summary: automationRecipes.length ? 'Automation visible' : 'No automation state visible',
+284:     }),
+285:   ];
+
+### `web/src/components/System/Info/SetupHealthCheckModal.jsx` — blob `12888648d84d393c08dc3f865ee09a7c1750e394`, SHA-256 `e6ee08c0afc902eb823da61b338fa8e138a8edfc6c3eae6847a937caae77ca34`
+
+Lines 68–72:
+68: const LocalizedSetupHealthAction = ({ source }) => {
+69:   const providerMatch = source.match(/^Add credentials or disable: (.*)\.$/);
+70:   if (providerMatch) return <LocalizedText source="Add credentials or disable: {providers}." values={{ providers: providerMatch[1] }} />;
+71:   return <LocalizedText source={source} />;
+72: };
+
+### `web/src/components/Search/DiscographyCoveragePanel.jsx` — blob `30a767356c47e5198976ddbac4ce657320f15b03`, SHA-256 `d1fdb70100b0fa7f3d38a3f0d37766e71e1efc45b8f4f47ee44684c5d173090a`
+
+Lines 275–287:
+275:         <Popup
+276:           content={interfaceText("Create conservative Wishlist searches for currently missing tracks without starting immediate searches or downloads.")}
+277:           position="top center"
+278:           trigger={
+279:             <Button
+280:               disabled={!coverage || missingCount === 0 || promoting}
+281:               loading={promoting}
+282:               onClick={promoteMissing}
+283:               style={{ marginLeft: '0.5em' }}
+284:             >
+285:               <LocalizedText source={"Add missing to Wishlist"} /></Button>
+286:           }
+287:          {...interfaceTextProps("Create conservative Wishlist searches for currently missing tracks without starting immediate searches or downloads.")}/>
+
+### `web/src/components/Player/PlayerQueueModal.jsx` — blob `8bdaf63060b6c9995f89f991500563aa06869593`, SHA-256 `dbfe2ed6f8e0bf5b68fa51db9305473b19b63fe3a4d601c975b0cdeebd74c048`
+
+Lines 190–205:
+190:                  {...interfaceTextProps("Start up to three searches from similar recent session tracks. This starts search jobs only.")}/>
+191:                 <Popup
+192:                   content={interfaceText("Add similar recent session tracks to Wishlist as manual requests with auto-download off.")}
+193:                   trigger={
+194:                     <Button
+195:               data-testid="player-wishlist-similar-candidates"
+196:               disabled={similarCandidates.length === 0 || savingSimilarWishlist || searchingSimilar}
+197:                       loading={savingSimilarWishlist}
+198:                       onClick={addSimilarWishlist}
+199:                       size="mini"
+200:                       type="button"
+201:                     >
+202:                       <Icon name="heart" />
+203:                       <LocalizedText source={"Wishlist Similar"} /></Button>
+204:                   }
+205:                  {...interfaceTextProps("Add similar recent session tracks to Wishlist as manual requests with auto-download off.")}/>
+
+## Per-key context and disposition
+
+- Index 163, `Add Member to` — web/src/components/ShareGroups/ShareGroups.jsx: The modal header displays this translated fragment followed by a literal space and the selected share-group name. Review: Names adding a member to the selected group. Hindi’s current fragment awkwardly places a locative before the appended group title; record a moderate correction suggestion without changing the catalog.
+- Index 164, `Add New` — no non-locale caller in pinned source tree: No non-locale caller for the exact generic key was found in the pinned source tree. The source text itself is an incomplete generic action label. Review: Arabic has a gender/object mismatch risk and French omits “new”; hold these two cells because the missing runtime object prevents a safe target decision. Other translations preserve the generic add-new action.
+- Index 165, `Add New Game` — no non-locale caller in pinned source tree: No non-locale caller for the exact key was found in the pinned source tree. “Add New Game” names both the action and object. Review: Arabic, German, Hindi, and Indonesian preserve the new-game action; Spanish and French use natural “add a game” buttons, where newness is implicit in adding.
+- Index 166, `Add Search` — web/src/components/Wishlist/Wishlist.jsx: Button in the Wishlist page header that opens the saved-search form. Review: Adds a saved search; all fresh targets convey that action.
+- Index 167, `Add Torrent` — no non-locale caller in pinned source tree: No non-locale caller for the exact key was found in the pinned source tree. Review: The standalone source is the generic torrent-add action; each fresh translation names the torrent object and add action.
+- Index 168, `Add Wishlist` — web/src/components/Player/PlayerRadioModal.jsx: Heart-action button in the smart-radio modal; its tooltip says it adds generated radio seeds to the existing Wishlist as manual requests. Review: All twelve current values previously read like creating a wishlist instead of adding entries to it. Six high-confidence locale corrections are applied in this batch; the remaining prior suggestions are lower confidence and excluded.
+- Index 169, `Add Your First Search` — web/src/components/Wishlist/Wishlist.jsx: Primary empty-state button below the explanatory Wishlist sentence. Review: Adds the user’s first saved search. All fresh targets preserve “your first search.”
+- Index 170, `Add a contact or Soulseek username to this share group.` — web/src/components/ShareGroups/ShareGroups.jsx: Tooltip on the Add Member button in the share-group table. Review: The target must preserve the Soulseek product name and describe adding either a contact or a Soulseek username to the group.
+- Index 171, `Add a direct comparison bridge between the current graph center and this node.` — web/src/components/Search/DiscoveryGraphModal.jsx: Tooltip attached to the Compare action between graph nodes; it describes the edge from the current center to the selected node. Review: Describes adding a direct comparison bridge in the discovery graph. The Hindi compound is awkwardly literal and remains a moderate suggestion.
+- Index 172, `Add a local caution signal for this peer/result. This only affects your browser-side review and does not publish a report.` — web/src/components/Search/Response.jsx: Tooltip on the local caution/report icon for a search result. It explicitly says the action only affects browser-side review and does not publish a report. Review: All six fresh values preserve local-only scope and the no-report behavior.
+- Index 173, `Add a remote path map or align completed-download and library paths.` — web/src/lib/mediaServerIntegrations.js: Setup/readiness action for media-server integrations, displayed when path mapping is absent or needs alignment. Review: The English distinguishes remote-path mappings from completed-download paths and library paths. Six prior exact correction suggestions remain moderate and excluded.
+- Index 174, `Add at least one result condition before saving.` — no non-locale caller in pinned source tree: No non-locale caller for the exact key was found in the pinned source tree. The full sentence says to add a result condition before saving. Review: The fresh values preserve the minimum-one requirement, result-condition object, and before-save timing.
+- Index 175, `Add at least one shared folder before expecting uploads or public browse results.` — web/src/lib/setupHealthCheck.js: Setup health action shown when no shared folders are configured; it warns uploads and public browse results will be unavailable. Review: The source specifically means uploads from the shared library. Three prior translations use a term that can also mean downloads/load; their moderate corrections remain excluded.
+- Index 176, `Add credentials or disable: {providers}.` — web/src/components/System/Info/SetupHealthCheckModal.jsx: Setup health modal interpolation for providers missing credentials. Review: All twelve exact carried values preserve the `{providers}` runtime placeholder.
+- Index 177, `Add from Contacts` — web/src/components/ShareGroups/ShareGroups.jsx: Form label above the contact picker inside the selected share group’s Add Member modal. Review: Adds an existing contact to the selected group; all fresh values preserve the contact-source relation.
+- Index 178, `Add missing to Wishlist` — web/src/components/Search/DiscographyCoveragePanel.jsx: Button in Discography Coverage; its tooltip says it creates conservative Wishlist searches for currently missing tracks without starting searches or downloads. Review: The current exact targets omit the track object or use a fragment that is awkward in this button. Twelve moderate source-linked suggestions remain correction-needed and are excluded.
+- Index 179, `Add one saved search to the Wishlist. Enabled entries run later using the normal scheduler.` — web/src/components/Wishlist/Wishlist.jsx: Tooltip on the Add Search button. It asks for one saved search in the Wishlist and says enabled entries run later through the regular scheduler. Review: Fresh French and Hindi values preserve the singular quantity, destination, and scheduler behavior. Four high-confidence prior corrections restore the omitted Wishlist destination; three lower-confidence findings remain excluded.
+- Index 180, `Add or review automation recipes only after diagnostics are clean.` — web/src/lib/setupHealthCheck.js: Setup health action shown when no automation recipes are visible. The condition is that diagnostics found no issues. Review: Eight prior targets interpret “clean diagnostics” literally or as completed diagnostics. Their moderate corrections remain excluded.
+- Index 181, `Add searches to your wishlist and they'll run automatically.` — web/src/components/Wishlist/Wishlist.jsx: Empty-state explanatory sentence above the Add Your First Search button. Review: Fresh Arabic, German, Spanish, French, and Hindi values preserve the plural saved-search action and automatic scheduling.
+- Index 182, `Add similar recent session tracks to Wishlist as manual requests with auto-download off.` — web/src/components/Player/PlayerQueueModal.jsx: Tooltip on the similar-session-track Wishlist button; the button adds manual requests with auto-download off. Review: Fresh Arabic, German, Spanish, French, and Indonesian values preserve similar recent session tracks, manual requests, and disabled auto-download.
+
+## No-caller inventory
+
+An exact recursive source search at the pinned code head found no non-locale caller for `Add New`, `Add New Game`, `Add Torrent`, or `Add at least one result condition before saving.` The source keys remain reviewable as complete action labels/sentences; Arabic and French `Add New` remain held because the omitted generic object affects their wording.
