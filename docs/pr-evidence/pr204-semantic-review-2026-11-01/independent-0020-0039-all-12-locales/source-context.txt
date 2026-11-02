@@ -1,0 +1,165 @@
+# Runtime source context at PR #204 code head 7ff454828398de6a3cfb72fe7f0ed21fe419425b (tree 9e9f2aa743c4ff3236af8f99619803bdc3a37152)
+
+The review head 0a75de663b5fe26fea017cec60cc1151f51e1c81 (tree 5411a445b8aacadd2a37081ca516fda001707204) adds evidence/docs only after this source/catalog snapshot. All cited runtime files and locale catalogs match the frozen source snapshot.
+
+## `web/src/components/CompatibilityDashboard.jsx` — blob `831b00821cf5999e39ce586eab76d81bfdbdbb82`, SHA-256 `1e85738718ef2de4dc40358f746163cabb6192fca4072a8bf30ba0e133dbd27f`
+
+Lines 32–39:
+32: const HISTORY_RANGES = [
+33:   { buckets: 24, days: 1, get label() { return interfaceText("24h"); } },
+34:   { buckets: 84, days: 7, get label() { return interfaceText("7d"); } },
+35:   { buckets: 60, days: 30, get label() { return interfaceText("30d"); } },
+36:   { buckets: 90, days: 90, get label() { return interfaceText("90d"); } },
+37:   { buckets: 90, days: 180, get label() { return interfaceText("180d"); } },
+38:   { buckets: 100, days: 365, get label() { return interfaceText("1y"); } },
+39:   { buckets: 100, days: null, get label() { return interfaceText("All"); } },
+
+## `web/src/components/Player/VisualizerOverlayControls.jsx` — blob `0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf`, SHA-256 `5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4`
+
+Lines 680–684:
+680:                       <option value={8}>{interfaceText("8 beats")}</option>
+681:                       <option value={16}>{interfaceText("16 beats")}</option>
+682:                     </select>
+683:                   }
+684:                  {...interfaceTextProps("Choose how many detected bass beats should pass before RustyMilk advances to another preset.")}/>
+
+Lines 694–699:
+694:                       onChange={updateRustyMilkAutomationInterval}
+695:                       value={rustyMilkAutomationSettings.timedIntervalSeconds}
+696:                      {...interfaceTextProps("RustyMilk timed preset interval")}>
+697:                     <option value={15}>{interfaceText("15 sec")}</option>
+698:                     <option value={30}>{interfaceText("30 sec")}</option>
+699:                     <option value={60}>{interfaceText("60 sec")}</option>
+
+## `web/src/components/Pods/PortForwarding.jsx` — blob `7eaacd44ed04d2ee5d71e7db466fe43b1fa39da1`, SHA-256 `3db4aa88c36b9c57f077c61f82541043d2787bc55f3289992b69403e942c326d`
+
+Lines 637–643:
+637:                         <Table.Cell>{forwarding.activeConnections}</Table.Cell>
+638:                         <Table.Cell>
+639:                           {forwarding.bytesForwarded > 0
+640:                             ? `${(forwarding.bytesForwarded / 1_024).toFixed(1)} KB`
+641:                             : <LocalizedText source={"0 KB"} />}
+642:                         </Table.Cell>
+643:                         <Table.Cell>
+
+## `web/src/components/Search/SongIDEvidenceDetails.jsx` — blob `a6a0eb1e9843801ff94e590a22878899f3d2bca2`, SHA-256 `4a90c2dfd31302a93964fed1f0642a56909bab926324519eb77c94cda6139f65`
+
+Lines 673–681:
+673:                 {run.chapters.map((chapter) => (
+674:                   <List.Item key={chapter.chapterId}>
+675:                     {formatRegionalNumber(chapter.startSeconds)}s: {chapter.title || interfaceText('untitled chapter')}
+676:                     {chapter.endSeconds !== null &&
+677:                     chapter.endSeconds !== undefined
+678:                       ? <LocalizedText source={"-> {endSeconds}s"} values={{ "endSeconds": (chapter.endSeconds) }} />
+679:                       : ''}
+680:                   </List.Item>
+681:                 ))}
+
+## `web/src/components/System/Integrations/VpnPanel.jsx` — blob `2e7b0b69c983f748d36f0bb28806c8e7cf52281f`, SHA-256 `0a0d7906caec861c09deeae449bf4ef725a6933e5dace0667248160f4c833333`
+
+Lines 121–128:
+121:                   </Table.Cell>
+122:                   <Table.Cell>
+123:                     {forward.localPort || '-'}
+124:                     {forward.targetPort && forward.targetPort !== forward.publicPort
+125:                       ? <LocalizedText source={"-> {targetPort}"} values={{ "targetPort": (forward.targetPort) }} />
+126:                       : ''}
+127:                   </Table.Cell>
+128:                 </Table.Row>
+
+## `web/src/components/System/MediaCore/MediaCoreContentGraphPanel.jsx` — blob `0f87bd8c15132da224683d3bf8c18614996089a0`, SHA-256 `3b19490e2733effe92ea6d6dd713996dfe1a6a0d908bfe8f8976d5360fb5df65`
+
+Lines 254–261:
+254:                             <List.Item>
+255:                               <List.Content>
+256:                                 <em>
+257:                                   <LocalizedText source={"... and"} />{" "}{graphResults.nodes.length - 5} <LocalizedText source={"more nodes"} /></em>
+258:                               </List.Content>
+259:                             </List.Item>
+260:                           )}
+261:                         </List>
+
+## `web/src/components/System/MediaCore/MediaCoreContentHashingPanel.jsx` — blob `cbe36436c936b1fcca220da0915288759f5a0aa3`, SHA-256 `ab7783c0f29868f38cd4d7a94eaafd992bf03948b4ba8be76a8a5045e16ed601`
+
+Lines 157–165:
+157:                   <label><LocalizedText source={"Audio Samples (comma-separated floats)"} /></label>
+158:                   <TextArea
+159:                     onChange={(e) => setAudioSamples(e.target.value)}
+160:                     placeholder={interfaceText("0.1, -0.2, 0.3, ... (normalized -1.0 to 1.0)")}
+161:                     rows={3}
+162:                     value={audioSamples}
+163:                    {...interfaceTextProps("0.1, -0.2, 0.3, ... (normalized -1.0 to 1.0)")}/>
+164:                 </Form.Field>
+165:                 <Button
+
+## `web/src/components/System/MediaCore/PodChannelManagementPanel.jsx` — blob `c91e5e8e4250fda54163c8b7841aa9852754ff14`, SHA-256 `3ef47356d5cd5942894965fda3bc2999b654b0812a0c7274f85779b78dc99f9d`
+
+Lines 373–380:
+373:                 <Message
+374:                   info
+375:                   size="small"
+376:                 >
+377:                   <LocalizedText source={"No channels found in pod"} />{" "}{channelPodId}<LocalizedText source={". Create the first channel above."} /></Message>
+378:               )}
+379:             </Card.Content>
+380:           </Card>
+
+## `web/src/components/System/MediaCore/index.jsx` — blob `3b10ec6694284377cffbb3ba2faa1f9fb34178a6`, SHA-256 `0abae2eda1f152ad8520fa0d9600adb2e16bbc2309e34910061763edac0e7135`
+
+Lines 199–214:
+199:               <Message.Header><LocalizedText source={"Focused pod workflow"} /></Message.Header>
+200:               <LocalizedText
+201:                 source={"Showing {workflow}"}
+202:                 values={{ workflow: selectedPodWorkflow?.label || 'one pod workflow' }}
+203:               />
+204:               <LocalizedText source={". Choose \"Show all pod workflows\" or use the reset action to return to the complete MediaCore pod surface."} />
+205:               <div style={{ marginTop: '0.75em' }}>
+206:                 <Button
+207:                   basic
+208:                   onClick={() => setPodWorkflowFilter('all')}
+209:                   size="tiny"
+210:                 >
+211:                   <LocalizedText source={"Show all pod workflows"} /></Button>
+212:               </div>
+213:             </Message.Content>
+214:           </Message>
+
+## `web/src/components/System/MediaCore/mediaCoreWorkflows.js` — blob `0d3ef156b458c7d62138cc11708691781f84cf07`, SHA-256 `4b6d0b450c6fe806dc001f6d14e0c6bfca09cef6c9a32b779df7a5c0cd275a17`
+
+Lines 111–117:
+111:   },
+112: ];
+113:
+114: export const podWorkflowFilterOptions = [
+115:   { key: 'all', get text() { return interfaceText("Show all pod workflows"); }, value: 'all' },
+116:   ...podWorkflowSections.map((section) => ({
+117:     key: section.href,
+
+## `web/src/components/System/Security/index.jsx` — blob `5a3b5cd919daa818d106031ecc70a31cde4c14a2`, SHA-256 `dc055397cbd4afe380d4b0c5c0f3af3c1077719fea1854ec4116cf2367ca2743`
+
+Lines 126–134:
+126:         <ul>
+127:           <li>
+128:             <strong><LocalizedText source={"Fresh installations"} /></strong> <LocalizedText source={"- Security features need time to observe network activity"} /></li>
+129:           <li>
+130:             <strong><LocalizedText source={"Standalone mode"} /></strong> <LocalizedText source={"- Most security features activate when mesh networking is enabled"} /></li>
+131:           <li>
+132:             <strong><LocalizedText source={"Low traffic"} /></strong> <LocalizedText source={"- Peer reputation, violation tracking, and behavioral analysis require peer interactions"} /></li>
+133:         </ul>
+134:         <p>
+
+## `web/src/components/System/SwarmAnalytics/index.jsx` — blob `6b4db5a84a05d1ffdb560e0e2c8d2708590f3ded`, SHA-256 `b020adc0f11520ad1fe52080fdf1d90fe717c3dea9a3c5379973b31514d88c9d`
+
+Lines 46–53:
+46:
+47:   const timeWindowOptions = [
+48:     { key: '1', text: interfaceText("1 hour"), value: 1 },
+49:     { key: '6', text: interfaceText("6 hours"), value: 6 },
+50:     { key: '24', text: interfaceText("24 hours"), value: 24 },
+51:     { key: '72', text: interfaceText("3 days"), value: 72 },
+52:     { key: '168', text: interfaceText("7 days"), value: 168 },
+53:   ];
+
+## Arabic compatibility-history day shorthand
+
+In `CompatibilityDashboard.jsx`, labels `7d`, `30d`, `90d`, and `180d` all select day ranges (7, 30, 90, and 180 days). The Arabic catalog uses `7 د`, `30 د`, `90 د`, and `180 د` for those same options. This same-component comparison supports the intended compact day meaning of the Arabic `د` in this selected label.
