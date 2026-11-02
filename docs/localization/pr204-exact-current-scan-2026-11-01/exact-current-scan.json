@@ -1,29 +1,29 @@
 {
-  "head": "83aef2e22cede4041943bd0d612357e152e7a9b5",
-  "head_tree": "927bae235b4b57ac51a64389e6becadd75b133c3",
+  "head": "ad7c283dfe84f31b52f5a27c363a605fe068e36c",
+  "head_tree": "d0a2faeba016b57850767fe0903b67621d61bc6c",
   "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
   "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
   "source_ids": 5437,
   "cell_count": 65244,
   "catalog_file_sha256": {
-    "web/src/lib/locales/ui-labels.ar.json": "44eaca86bcb3f44dde0a73e5ccc39a181df15b9b57715dd2f91db7a72c7a088c",
-    "web/src/lib/locales/ui-labels.de.json": "17756367e6464bdf9b0eed71145a0bc357677e94231b72e39ddc58f41efeb6d6",
-    "web/src/lib/locales/ui-labels.es.json": "5e0c0984c801950cbf0c7b3faa3e944c1f4898c02eef5d621dff0eba8812b070",
-    "web/src/lib/locales/ui-labels.fr.json": "e0a75b45c122fcb24fd168f3559bf56846523fe6d5152ba6f6f6cfafbbd0e508",
-    "web/src/lib/locales/ui-labels.hi.json": "65463ad5943f1b22f085cd47a0da09848bb56bb92e31d7d3e0ddc19138653d78",
-    "web/src/lib/locales/ui-labels.id.json": "96c6a37c6d5cacb8ccbeb9633da210690c1e33527d95ddcd48691fd79cc3e048",
-    "web/src/lib/locales/ui-labels.ja.json": "08ff6584c6023791f2a6bc890d27eef8797306c0c76f4a87bfa9ac87ae22a754",
-    "web/src/lib/locales/ui-labels.ko.json": "bff0605fe04305f91c857011d9f202141918c3e4b04716271f5fc96fb5ff0e72",
-    "web/src/lib/locales/ui-labels.pt-BR.json": "6f68bd590bdad20efcd96dd78d1d5e411d51f68adaea86308bbfa4b789b822d8",
-    "web/src/lib/locales/ui-labels.vi.json": "4a1cac8315cec65639d6327b354c3072960fd0b03a809ad75f0d96980493d59d",
-    "web/src/lib/locales/ui-labels.zh-Hans.json": "387c3989ec914c22ac0d4ab12e05e0fd329705079e2886a28fe5884d9c331354",
-    "web/src/lib/locales/ui-labels.zh-Hant.json": "48ac788db8bf5aa8d18c556b2a4df668f7913d3076540da017318bcad0e5b5d1"
+    "web/src/lib/locales/ui-labels.ar.json": "a5d9499a65f808b7c19dd015f92f20b6e4f98f7f98dca2001ed97adfe1090cd6",
+    "web/src/lib/locales/ui-labels.de.json": "8371aa46899d01ac3e01b8eb47c811b778b64473a90bdd7a35ed38187d314796",
+    "web/src/lib/locales/ui-labels.es.json": "ffe0efd4595640b46addb8217ef506d6d07759a92cb98ea0a655b60e810ead74",
+    "web/src/lib/locales/ui-labels.fr.json": "c8b1c82e85c9c1737e269e888f9e48973fb4573cfc7b4bf194f0527ec13ba474",
+    "web/src/lib/locales/ui-labels.hi.json": "7b3685f302fabca1cee3df076c74ae91cae643732d74f00682c276da83e13776",
+    "web/src/lib/locales/ui-labels.id.json": "1e77eb75d42fcf1db435bd0a6fa3b55c14e7ee588c3f9ecf06322253dbe4ef0f",
+    "web/src/lib/locales/ui-labels.ja.json": "0bd27fbf47e83d20daeebe30e58295bcc8190f74c51eb10109f9fe57a8ca29bd",
+    "web/src/lib/locales/ui-labels.ko.json": "5aa742e08c6cf764774f25b9f3cd443e426784fa810ec20f7e4090cf3fc094de",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "fa9e0a44840a6a72477fd4a94070759040f84c94760aeabc509679ebf1f13b67",
+    "web/src/lib/locales/ui-labels.vi.json": "204052e60d62b50c248176e8f6fbe22d87f5d0d16d6e8a8a37f2486e2e7dcd17",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "492f94bcb290b6c8e9ff5df7216279e1e8d9f24b6c01910f87ba25e16b1dd5c9",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "273f90ef0ef9e9732022ed5c0f701ac9dc8b22f01f4e8ea19282e7cff6f3d259"
   },
   "structured_plural_cells": {
     "ar": 15
   },
-  "evidence_files_scanned": 969,
-  "evidence_scan_manifest_sha256": "57a3433fba6c4dc1d699f2d4f7b4ebd56349bb496b5e4371b0feaa759af2f9ec",
+  "evidence_files_scanned": 994,
+  "evidence_scan_manifest_sha256": "d05dc6b06d346040c8eda51d14415663802a5f2405c6164372dc74041d82bc23",
   "evidence_file_manifest": [
     {
       "root": "pr-review-head",
@@ -1515,6 +1515,18 @@
     },
     {
       "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/held-disposition-verification.json",
+      "bytes": 622,
+      "sha256": "9bf7d81a60fb1094d369e3cb93ba99013cca4b00e2738273f8bc076a65e74cc1"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/held-dispositions.jsonl",
+      "bytes": 20849,
+      "sha256": "571c07920b356dcc70b8aaa3e2abe093a729efc22b19148df088fed6fc591096"
+    },
+    {
+      "root": "pr-review-head",
       "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/post-apply-verification.json",
       "bytes": 2194,
       "sha256": "e2b3b3bf3d563f8192a99369e7fec18631ffb8ce570f13df88985d0cfdce20dc"
@@ -1578,6 +1590,144 @@
       "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/source-pins.json",
       "bytes": 4150,
       "sha256": "286fe238f076c48ea8b09ddc0fe9707f69ae3a2d227a03a884cb56f508c5d5e8"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/accepted-dispositions.jsonl",
+      "bytes": 210713,
+      "sha256": "5dd2b9f0a60da759e37ae5fd127f4c2f5be961edec1804240420a57c138e19ff"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/accepted-unchanged.jsonl",
+      "bytes": 2373,
+      "sha256": "1012984d5bcb1a4c360102b676f903a045f6432de7cae7533cec2848da5ea143"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/applied-corrections.jsonl",
+      "bytes": 102641,
+      "sha256": "1e64820f01e8794a1abe6634550548b5f20926691960808d75f307c244ef7009"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/apply-summary.json",
+      "bytes": 3789,
+      "sha256": "b2c9bec7b2891da31897a9a30752ddc1526991cee7a826ee7f79be543a64de27"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/candidate-cell-audit.jsonl",
+      "bytes": 41159,
+      "sha256": "b54b2ae739c570a7e8b051b73a326be8ee0c46f4e9c6538b08fb1cc718100dff"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/candidate-verification-403-422.json",
+      "bytes": 31251,
+      "sha256": "46367aad0f019d1bd40bf93021c4f09bba9cdc961e5bf6ba895594e322e663e0"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/independent-full-crossreview/decision-ledger.jsonl",
+      "bytes": 81613,
+      "sha256": "8bcf2290103054847606a12aebd33a2fe0ed183afa1cc276d37701c7d872258f"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/independent-review-403-412/correction-candidates.jsonl",
+      "bytes": 28095,
+      "sha256": "33f46a96ea54b2874a497bd7a6d90ab2f5ad7e99b28fe75e28471b626e0f2d87"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/independent-review-403-412/review-ledger.jsonl",
+      "bytes": 117185,
+      "sha256": "b2c467f0e2e3e9be7c704b9300c731f5df5b90a0d61fbaf19bd509f4f90a3d1a"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/independent-review-403-412/summary.json",
+      "bytes": 4285,
+      "sha256": "cb159ba8f4a978a7fa17781e4e5b493fb28e3fa8f92a2085639829d2ae369a06"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/post-apply-verification.json",
+      "bytes": 4342,
+      "sha256": "0bc45b38fec0ea284c4a861755d3ef7ad7013821d5123755e33c1bdc0a4d3763"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/prepare-summary.json",
+      "bytes": 3956,
+      "sha256": "fcc6d08d096150a37af87f7e2fbda48ee00e37877a1aa5125ab93e2b9e83ba5d"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/prior-evidence-scan-manifest.jsonl",
+      "bytes": 203873,
+      "sha256": "02fb8387d036ea2f71bd9063f5d52fe795dce530d4a9a89a1537df6a7f11fe23"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/reconciled-apply-plan-403-422.jsonl",
+      "bytes": 55264,
+      "sha256": "4d3aafa574492d5419f70e7785aeb2d430a9f56a4fb40501ef67fa791988bd42"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/reconciled-decision-ledger-403-422.jsonl",
+      "bytes": 100001,
+      "sha256": "d114916eef6c00aec1a2946c341ed3817440d01a9a67ee46b4b4fa114e6336f9"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/reconciliation-verification-403-422.json",
+      "bytes": 1125,
+      "sha256": "ea8f97aabdf951949124a64dd48293bf071a87e9836e43d281f0965910614a61"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/reviewed-cell-audit.jsonl",
+      "bytes": 393423,
+      "sha256": "a892175490349dbc5f180218c0a298dd1ec5da98a4fee772515a07d28a60f8d8"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/root-candidate-plan-403-422.jsonl",
+      "bytes": 113759,
+      "sha256": "6be16eab6537f68578d7373b0c70235af8e9117511de8e2b7a2a19ff649ab8c7"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/root-candidate-summary-403-422.json",
+      "bytes": 5414,
+      "sha256": "07b4ba52db3414398def7dd22246a1fd7dcdb19edaf949630c2de01848edb234"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/selection.jsonl",
+      "bytes": 173114,
+      "sha256": "999e5dce9ffa93e36b0db0527c94b2bf7ba013a3869d199ae2d08de24a29d939"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/status-ledger-summary-403-422.json",
+      "bytes": 1185,
+      "sha256": "e237946e86dd2bc8b7d0c1fa5bdbe100f1295452156b42e219cb1ca3a870fde9"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/status-ledger-summary.json",
+      "bytes": 1185,
+      "sha256": "caf63a3494cc4a7638cb2ca7eff623de1dacdf0a25953487bc25ca40b29e6e53"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0403-0422-all-12-locales/verification-run.json",
+      "bytes": 4203,
+      "sha256": "c30c407027f9795f819ad355490ae697c75e94ed9189cc7f4eae3fba8efc6afc"
     },
     {
       "root": "pr-review-head",
@@ -5841,261 +5991,101 @@
     }
   ],
   "unique_current_cell_status_counts": {
-    "accepted": 23910,
-    "corrected": 574,
-    "correction-needed": 10492,
-    "held": 289,
-    "unreviewed": 29979
+    "accepted": 23980,
+    "corrected": 629,
+    "correction-needed": 10435,
+    "held": 297,
+    "unreviewed": 29903
   },
   "per_locale_exact_status_counts": {
     "ar": {
-      "accepted": 1360,
-      "corrected": 56,
-      "correction-needed": 1060,
-      "held": 12,
-      "unreviewed": 2949
+      "accepted": 1372,
+      "corrected": 59,
+      "correction-needed": 1057,
+      "held": 13,
+      "unreviewed": 2936
     },
     "de": {
-      "accepted": 1393,
-      "corrected": 50,
-      "correction-needed": 841,
-      "held": 10,
-      "unreviewed": 3143
+      "accepted": 1406,
+      "corrected": 52,
+      "correction-needed": 839,
+      "held": 11,
+      "unreviewed": 3129
     },
     "es": {
-      "accepted": 1341,
-      "corrected": 53,
-      "correction-needed": 1070,
-      "held": 9,
-      "unreviewed": 2964
+      "accepted": 1353,
+      "corrected": 56,
+      "correction-needed": 1067,
+      "held": 10,
+      "unreviewed": 2951
     },
     "fr": {
-      "accepted": 1350,
-      "corrected": 51,
-      "correction-needed": 1013,
-      "held": 10,
-      "unreviewed": 3013
+      "accepted": 1362,
+      "corrected": 54,
+      "correction-needed": 1010,
+      "held": 11,
+      "unreviewed": 3000
     },
     "hi": {
-      "accepted": 1338,
-      "corrected": 66,
-      "correction-needed": 1089,
-      "held": 14,
-      "unreviewed": 2930
+      "accepted": 1348,
+      "corrected": 71,
+      "correction-needed": 1084,
+      "held": 15,
+      "unreviewed": 2919
     },
     "id": {
-      "accepted": 1344,
-      "corrected": 57,
-      "correction-needed": 1056,
-      "held": 10,
-      "unreviewed": 2970
+      "accepted": 1354,
+      "corrected": 62,
+      "correction-needed": 1052,
+      "held": 11,
+      "unreviewed": 2958
     },
     "ja": {
       "accepted": 2771,
-      "corrected": 31,
-      "correction-needed": 595,
+      "corrected": 36,
+      "correction-needed": 590,
       "held": 38,
       "unreviewed": 2002
     },
     "ko": {
       "accepted": 2667,
-      "corrected": 34,
-      "correction-needed": 697,
+      "corrected": 41,
+      "correction-needed": 690,
       "held": 39,
       "unreviewed": 2000
     },
     "pt-BR": {
-      "accepted": 2660,
-      "corrected": 38,
-      "correction-needed": 701,
+      "accepted": 2661,
+      "corrected": 43,
+      "correction-needed": 695,
       "held": 36,
       "unreviewed": 2002
     },
     "vi": {
       "accepted": 2438,
-      "corrected": 56,
-      "correction-needed": 904,
+      "corrected": 63,
+      "correction-needed": 897,
       "held": 37,
       "unreviewed": 2002
     },
     "zh-Hans": {
       "accepted": 2631,
-      "corrected": 41,
-      "correction-needed": 726,
-      "held": 37,
+      "corrected": 46,
+      "correction-needed": 720,
+      "held": 38,
       "unreviewed": 2002
     },
     "zh-Hant": {
       "accepted": 2617,
-      "corrected": 41,
-      "correction-needed": 740,
-      "held": 37,
+      "corrected": 46,
+      "correction-needed": 734,
+      "held": 38,
       "unreviewed": 2002
     }
   },
-  "unreviewed_source_index_count": 3615,
-  "unreviewed_cells": 29979,
+  "unreviewed_source_index_count": 3601,
+  "unreviewed_cells": 29903,
   "first_100_unreviewed_indices": {
-    "393": {
-      "source_id": "Auto-Replace (automatic stuck-download replacement)",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "403": {
-      "source_id": "Auto-replace enabled. Backend will check for stuck downloads periodically.",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "406": {
-      "source_id": "Automatic",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "408": {
-      "source_id": "Automation",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "409": {
-      "source_id": "Automation & Jobs",
-      "fresh_locale_count": 1,
-      "fresh_locales": [
-        "de"
-      ]
-    },
-    "410": {
-      "source_id": "Automation Center",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "414": {
-      "source_id": "Automations",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "415": {
-      "source_id": "Availability",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "416": {
-      "source_id": "Available",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "417": {
-      "source_id": "Available Ports",
-      "fresh_locale_count": 5,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "id"
-      ]
-    },
-    "418": {
-      "source_id": "Available from Pod/Mesh network",
-      "fresh_locale_count": 5,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "id"
-      ]
-    },
-    "419": {
-      "source_id": "Available from Soulseek Scene",
-      "fresh_locale_count": 5,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi"
-      ]
-    },
-    "420": {
-      "source_id": "Available from {providers}. Preferred: {provider}.",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "422": {
-      "source_id": "Available ports for forwarding (1024-65535):",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
     "424": {
       "source_id": "Average Score:",
       "fresh_locale_count": 6,
@@ -7072,9 +7062,158 @@
         "hi",
         "id"
       ]
+    },
+    "549": {
+      "source_id": "Byzantine",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "550": {
+      "source_id": "CBR",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "551": {
+      "source_id": "CPU Seconds",
+      "fresh_locale_count": 5,
+      "fresh_locales": [
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "552": {
+      "source_id": "CSV File",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "553": {
+      "source_id": "CSV Text",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "555": {
+      "source_id": "CSV text is required.",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "556": {
+      "source_id": "Cache Hits:",
+      "fresh_locale_count": 3,
+      "fresh_locales": [
+        "de",
+        "hi",
+        "id"
+      ]
+    },
+    "557": {
+      "source_id": "Cache Misses:",
+      "fresh_locale_count": 1,
+      "fresh_locales": [
+        "hi"
+      ]
+    },
+    "558": {
+      "source_id": "Cache Performance",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "559": {
+      "source_id": "Cache Size:",
+      "fresh_locale_count": 5,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "id"
+      ]
+    },
+    "560": {
+      "source_id": "Cache cleared: {entriesCleared} entries, {bytesFreed} bytes freed",
+      "fresh_locale_count": 2,
+      "fresh_locales": [
+        "hi",
+        "id"
+      ]
+    },
+    "561": {
+      "source_id": "Cache performance and retrieval statistics",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "562": {
+      "source_id": "Calendar",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "563": {
+      "source_id": "Can create content-linked pods",
+      "fresh_locale_count": 1,
+      "fresh_locales": [
+        "de"
+      ]
     }
   },
   "conflicts": [],
-  "superseded_exact_records": 103,
+  "superseded_exact_records": 153,
   "conflict_resolution_rows": 25
 }

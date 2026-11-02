@@ -1,0 +1,98 @@
+{
+  "after_target_hash_checks": 55,
+  "all_pass": true,
+  "baseline_head": "087ea7ca6fed28c59dabe9639d8984ea8f061aa1",
+  "before_target_hash_checks": 55,
+  "catalog_commit": "ad7c283dfe84f31b52f5a27c363a605fe068e36c",
+  "catalog_key_count_each_locale": 5437,
+  "catalog_tree": "d0a2faeba016b57850767fe0903b67621d61bc6c",
+  "changed_catalogs": [
+    {
+      "keys_changed": 3,
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "sha256": "a5d9499a65f808b7c19dd015f92f20b6e4f98f7f98dca2001ed97adfe1090cd6"
+    },
+    {
+      "keys_changed": 2,
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "sha256": "8371aa46899d01ac3e01b8eb47c811b778b64473a90bdd7a35ed38187d314796"
+    },
+    {
+      "keys_changed": 3,
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "sha256": "ffe0efd4595640b46addb8217ef506d6d07759a92cb98ea0a655b60e810ead74"
+    },
+    {
+      "keys_changed": 3,
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "sha256": "c8b1c82e85c9c1737e269e888f9e48973fb4573cfc7b4bf194f0527ec13ba474"
+    },
+    {
+      "keys_changed": 5,
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "sha256": "7b3685f302fabca1cee3df076c74ae91cae643732d74f00682c276da83e13776"
+    },
+    {
+      "keys_changed": 5,
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "sha256": "1e77eb75d42fcf1db435bd0a6fa3b55c14e7ee588c3f9ecf06322253dbe4ef0f"
+    },
+    {
+      "keys_changed": 5,
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "sha256": "0bd27fbf47e83d20daeebe30e58295bcc8190f74c51eb10109f9fe57a8ca29bd"
+    },
+    {
+      "keys_changed": 7,
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "sha256": "5aa742e08c6cf764774f25b9f3cd443e426784fa810ec20f7e4090cf3fc094de"
+    },
+    {
+      "keys_changed": 5,
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "sha256": "fa9e0a44840a6a72477fd4a94070759040f84c94760aeabc509679ebf1f13b67"
+    },
+    {
+      "keys_changed": 7,
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "sha256": "204052e60d62b50c248176e8f6fbe22d87f5d0d16d6e8a8a37f2486e2e7dcd17"
+    },
+    {
+      "keys_changed": 5,
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "sha256": "492f94bcb290b6c8e9ff5df7216279e1e8d9f24b6c01910f87ba25e16b1dd5c9"
+    },
+    {
+      "keys_changed": 5,
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "sha256": "273f90ef0ef9e9732022ed5c0f701ac9dc8b22f01f4e8ea19282e7cff6f3d259"
+    }
+  ],
+  "changed_locale_catalogs": 12,
+  "changed_target_count": 55,
+  "exact_changed_key_set": "pass",
+  "file_hashes_after": {
+    "web/src/lib/locales/ui-labels.ar.json": "a5d9499a65f808b7c19dd015f92f20b6e4f98f7f98dca2001ed97adfe1090cd6",
+    "web/src/lib/locales/ui-labels.de.json": "8371aa46899d01ac3e01b8eb47c811b778b64473a90bdd7a35ed38187d314796",
+    "web/src/lib/locales/ui-labels.es.json": "ffe0efd4595640b46addb8217ef506d6d07759a92cb98ea0a655b60e810ead74",
+    "web/src/lib/locales/ui-labels.fr.json": "c8b1c82e85c9c1737e269e888f9e48973fb4573cfc7b4bf194f0527ec13ba474",
+    "web/src/lib/locales/ui-labels.hi.json": "7b3685f302fabca1cee3df076c74ae91cae643732d74f00682c276da83e13776",
+    "web/src/lib/locales/ui-labels.id.json": "1e77eb75d42fcf1db435bd0a6fa3b55c14e7ee588c3f9ecf06322253dbe4ef0f",
+    "web/src/lib/locales/ui-labels.ja.json": "0bd27fbf47e83d20daeebe30e58295bcc8190f74c51eb10109f9fe57a8ca29bd",
+    "web/src/lib/locales/ui-labels.ko.json": "5aa742e08c6cf764774f25b9f3cd443e426784fa810ec20f7e4090cf3fc094de",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "fa9e0a44840a6a72477fd4a94070759040f84c94760aeabc509679ebf1f13b67",
+    "web/src/lib/locales/ui-labels.vi.json": "204052e60d62b50c248176e8f6fbe22d87f5d0d16d6e8a8a37f2486e2e7dcd17",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "492f94bcb290b6c8e9ff5df7216279e1e8d9f24b6c01910f87ba25e16b1dd5c9",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "273f90ef0ef9e9732022ed5c0f701ac9dc8b22f01f4e8ea19282e7cff6f3d259"
+  },
+  "git_diff_check": "passed",
+  "key_order_and_parity": "pass",
+  "native_speaker_approved": false,
+  "out_of_scope_paths": 0,
+  "placeholder_checks": 55,
+  "protected_literal_checks": 55,
+  "source_hash_checks": 55,
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "tests_builds_ci_run": false
+}

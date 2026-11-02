@@ -1,0 +1,111 @@
+{
+  "head": "087ea7ca6fed28c59dabe9639d8984ea8f061aa1",
+  "head_tree": "444ac3f3b8fed739ffaae5a149379cf9c706343c",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_ids": 5437,
+  "frozen_source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "selected_source_indices": [
+    403,
+    422
+  ],
+  "selected_source_ids": [
+    "Auto-replace enabled. Backend will check for stuck downloads periodically.",
+    "Auto-tagging",
+    "Auto-tagging failed ({exceptionType})",
+    "Automatic",
+    "Automatically find and replace stuck downloads with alternative sources. Replacements must be within {autoReplaceThreshold}% file size.",
+    "Automation",
+    "Automation & Jobs",
+    "Automation Center",
+    "Automation history report copied.",
+    "Automation visibility",
+    "Automation visible",
+    "Automations",
+    "Availability",
+    "Available",
+    "Available Ports",
+    "Available from Pod/Mesh network",
+    "Available from Soulseek Scene",
+    "Available from {providers}. Preferred: {provider}.",
+    "Available ports are unavailable.",
+    "Available ports for forwarding (1024-65535):"
+  ],
+  "catalog_sha256": {
+    "web/src/lib/locales/ui-labels.ar.json": "44eaca86bcb3f44dde0a73e5ccc39a181df15b9b57715dd2f91db7a72c7a088c",
+    "web/src/lib/locales/ui-labels.de.json": "17756367e6464bdf9b0eed71145a0bc357677e94231b72e39ddc58f41efeb6d6",
+    "web/src/lib/locales/ui-labels.es.json": "5e0c0984c801950cbf0c7b3faa3e944c1f4898c02eef5d621dff0eba8812b070",
+    "web/src/lib/locales/ui-labels.fr.json": "e0a75b45c122fcb24fd168f3559bf56846523fe6d5152ba6f6f6cfafbbd0e508",
+    "web/src/lib/locales/ui-labels.hi.json": "65463ad5943f1b22f085cd47a0da09848bb56bb92e31d7d3e0ddc19138653d78",
+    "web/src/lib/locales/ui-labels.id.json": "96c6a37c6d5cacb8ccbeb9633da210690c1e33527d95ddcd48691fd79cc3e048",
+    "web/src/lib/locales/ui-labels.ja.json": "08ff6584c6023791f2a6bc890d27eef8797306c0c76f4a87bfa9ac87ae22a754",
+    "web/src/lib/locales/ui-labels.ko.json": "bff0605fe04305f91c857011d9f202141918c3e4b04716271f5fc96fb5ff0e72",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "6f68bd590bdad20efcd96dd78d1d5e411d51f68adaea86308bbfa4b789b822d8",
+    "web/src/lib/locales/ui-labels.vi.json": "4a1cac8315cec65639d6327b354c3072960fd0b03a809ad75f0d96980493d59d",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "387c3989ec914c22ac0d4ab12e05e0fd329705079e2886a28fe5884d9c331354",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "48ac788db8bf5aa8d18c556b2a4df668f7913d3076540da017318bcad0e5b5d1"
+  },
+  "overlap_input_count": 969,
+  "overlap_manifest_sha256": "57a3433fba6c4dc1d699f2d4f7b4ebd56349bb496b5e4371b0feaa759af2f9ec",
+  "counts": {
+    "new": 70,
+    "prior_accepted": 115,
+    "prior_correction-needed": 55
+  },
+  "per_locale": {
+    "ar": {
+      "new": 12,
+      "prior_accepted": 5,
+      "prior_correction-needed": 3
+    },
+    "de": {
+      "new": 13,
+      "prior_accepted": 5,
+      "prior_correction-needed": 2
+    },
+    "es": {
+      "new": 12,
+      "prior_accepted": 5,
+      "prior_correction-needed": 3
+    },
+    "fr": {
+      "new": 12,
+      "prior_accepted": 5,
+      "prior_correction-needed": 3
+    },
+    "hi": {
+      "new": 10,
+      "prior_accepted": 5,
+      "prior_correction-needed": 5
+    },
+    "id": {
+      "new": 11,
+      "prior_accepted": 5,
+      "prior_correction-needed": 4
+    },
+    "ja": {
+      "prior_accepted": 15,
+      "prior_correction-needed": 5
+    },
+    "ko": {
+      "prior_correction-needed": 7,
+      "prior_accepted": 13
+    },
+    "pt-BR": {
+      "prior_accepted": 14,
+      "prior_correction-needed": 6
+    },
+    "vi": {
+      "prior_correction-needed": 7,
+      "prior_accepted": 13
+    },
+    "zh-Hans": {
+      "prior_accepted": 15,
+      "prior_correction-needed": 5
+    },
+    "zh-Hant": {
+      "prior_accepted": 15,
+      "prior_correction-needed": 5
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "caller_file_pins": {
+    "403": {
+      "line_refs": [
+        {
+          "line": 684,
+          "text": "        toast.info(<LocalizedText source=\"Auto-replace enabled. Backend will check for stuck downloads periodically.\" />);"
+        }
+      ],
+      "path": "web/src/components/Transfers/Transfers.jsx",
+      "sha256": "744da23792a1fac5929a4802600b1cc7f238a3f3fabe1f33ded598b2b546b662"
+    },
+    "405": {
+      "line_refs": [
+        {
+          "line": 59,
+          "text": "    [/^Auto-tagging failed \\((.*)\\)$/, 'Auto-tagging failed ({exceptionType})', (m) => ({ exceptionType: m[1] })],"
+        }
+      ],
+      "path": "web/src/components/System/Integrations/MetadataProcessingPanel.jsx",
+      "sha256": "272ca1bfb95dd1884a4e8c6a4dd92b7d9e1d959dad96b4736e130dd3dd9cd914"
+    },
+    "407": {
+      "line_refs": [
+        {
+          "line": 241,
+          "text": "          content={interfaceText(\"Automatically find and replace stuck downloads with alternative sources. Replacements must be within {autoReplaceThreshold}% file size.\", { \"autoReplaceThreshold\": (autoReplaceThreshold) })}"
+        },
+        {
+          "line": 258,
+          "text": "         {...interfaceTextProps(\"Automatically find and replace stuck downloads with alternative sources. Replacements must be within {autoReplaceThreshold}% file size.\")}/>"
+        }
+      ],
+      "path": "web/src/components/Transfers/TransfersHeader.jsx",
+      "sha256": "57f43a6851d991b9241b73a0f9ff08636573a49282033722f7350fb7f2a44d6f"
+    },
+    "409": {
+      "line_refs": [
+        {
+          "line": 48,
+          "text": "  { icon: 'magic', key: 'automation', get title() { return interfaceText(\"Automation & Jobs\"); } },"
+        }
+      ],
+      "path": "web/src/components/System/System.jsx",
+      "sha256": "41f2b7416cf6503df69aad6265f0df06fa3b7ee44d476b9e710ab5bf83ed2f0f"
+    },
+    "415": {
+      "line_refs": [
+        {
+          "line": 109,
+          "text": "    { key: 'availability', get text() { return interfaceText(\"Availability\"); }, value: 'availability' },"
+        }
+      ],
+      "path": "web/src/components/System/ExperienceSettings/index.jsx",
+      "sha256": "ba7826de4b32bc9506d5926e6243623ccc3104da43706ce7a57fe4b17bcf2f30"
+    },
+    "417": {
+      "line_refs": [
+        {
+          "line": 687,
+          "text": "                  <Statistic.Label><LocalizedText source={\"Available Ports\"} /></Statistic.Label>"
+        }
+      ],
+      "path": "web/src/components/Pods/PortForwarding.jsx",
+      "sha256": "3db4aa88c36b9c57f077c61f82541043d2787bc55f3289992b69403e942c326d"
+    },
+    "418": {
+      "line_refs": [
+        {
+          "line": 896,
+          "text": "                          content={interfaceText(\"Available from Pod/Mesh network\")}"
+        },
+        {
+          "line": 906,
+          "text": "                         {...interfaceTextProps(\"Available from Pod/Mesh network\")}/>"
+        }
+      ],
+      "path": "web/src/components/Search/Response.jsx",
+      "sha256": "da0ccb703c38cf3a444e9d79fba30cd62191f15277ec339b287529d121cbe6de"
+    },
+    "419": {
+      "line_refs": [
+        {
+          "line": 910,
+          "text": "                          content={interfaceText(\"Available from Soulseek Scene\")}"
+        },
+        {
+          "line": 920,
+          "text": "                         {...interfaceTextProps(\"Available from Soulseek Scene\")}/>"
+        }
+      ],
+      "path": "web/src/components/Search/Response.jsx",
+      "sha256": "da0ccb703c38cf3a444e9d79fba30cd62191f15277ec339b287529d121cbe6de"
+    },
+    "421": {
+      "line_refs": [
+        {
+          "line": 719,
+          "text": "                      ? <LocalizedText source={\"Available ports are unavailable.\"} />"
+        }
+      ],
+      "path": "web/src/components/Pods/PortForwarding.jsx",
+      "sha256": "3db4aa88c36b9c57f077c61f82541043d2787bc55f3289992b69403e942c326d"
+    },
+    "422": {
+      "line_refs": [
+        {
+          "line": 697,
+          "text": "              <p><LocalizedText source={\"Available ports for forwarding (1024-65535):\"} /></p>"
+        }
+      ],
+      "path": "web/src/components/Pods/PortForwarding.jsx",
+      "sha256": "3db4aa88c36b9c57f077c61f82541043d2787bc55f3289992b69403e942c326d"
+    }
+  },
+  "candidate_count": 56,
+  "candidate_plan_sha256": "6be16eab6537f68578d7373b0c70235af8e9117511de8e2b7a2a19ff649ab8c7",
+  "candidates_per_source_index": {
+    "403": 2,
+    "405": 1,
+    "407": 12,
+    "409": 10,
+    "415": 3,
+    "417": 1,
+    "418": 2,
+    "419": 7,
+    "421": 12,
+    "422": 6
+  },
+  "dispositions": {
+    "exact_conflicts": 0,
+    "fresh_accepts": 69,
+    "fresh_corrections_proposed": 1,
+    "fresh_values_reviewed": 70,
+    "prior_accepted_carries": 115,
+    "prior_correction_needed_candidates": 55
+  },
+  "note": "No catalog writes or tests/builds were performed. Review window built at exact PR head; source/context callers are pinned to the original source commit.",
+  "overlap_manifest_sha256": "57a3433fba6c4dc1d699f2d4f7b4ebd56349bb496b5e4371b0feaa759af2f9ec",
+  "pr_head": "087ea7ca6fed28c59dabe9639d8984ea8f061aa1",
+  "pr_tree": "444ac3f3b8fed739ffaae5a149379cf9c706343c",
+  "selection_sha256": "999e5dce9ffa93e36b0db0527c94b2bf7ba013a3869d199ae2d08de24a29d939",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152"
+}

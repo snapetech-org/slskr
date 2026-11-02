@@ -1,0 +1,27 @@
+{
+  "accepted_dispositions": 185,
+  "accepted_unchanged_supersessions": 1,
+  "applied_corrections": 55,
+  "artifact_sha256": {
+    "accepted-dispositions.jsonl": "5dd2b9f0a60da759e37ae5fd127f4c2f5be961edec1804240420a57c138e19ff",
+    "accepted-unchanged.jsonl": "1012984d5bcb1a4c360102b676f903a045f6432de7cae7533cec2848da5ea143",
+    "applied-corrections.jsonl": "1e64820f01e8794a1abe6634550548b5f20926691960808d75f307c244ef7009",
+    "candidate-cell-audit.jsonl": "b54b2ae739c570a7e8b051b73a326be8ee0c46f4e9c6538b08fb1cc718100dff",
+    "reviewed-cell-audit.jsonl": "162658fd6aa75165bc7d4a4839e6fb783d967feabcb534d4fba9917f6bcce481"
+  },
+  "baseline_head": "087ea7ca6fed28c59dabe9639d8984ea8f061aa1",
+  "candidate_cells": 56,
+  "catalog_commit": "ad7c283dfe84f31b52f5a27c363a605fe068e36c",
+  "catalog_tree": "d0a2faeba016b57850767fe0903b67621d61bc6c",
+  "native_speaker_approved": false,
+  "reviewed_cells": 240,
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "status_counts": {
+    "accepted-carry": 115,
+    "accepted-current": 1,
+    "accepted-fresh": 69,
+    "corrected": 55
+  },
+  "window": "403-422"
+}

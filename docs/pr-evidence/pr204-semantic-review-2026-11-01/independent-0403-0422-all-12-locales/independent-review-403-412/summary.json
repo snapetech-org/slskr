@@ -1,0 +1,85 @@
+{
+  "accepted_carry": 70,
+  "accepted_fresh": 25,
+  "caller_pins": {
+    "web/src/components/System/AutomationCenter/index.jsx": {
+      "bytes": 19174,
+      "git_blob": "c80e09d7a45fc31d2b9573711e62f14b7215fb1f",
+      "lines": {
+        "221": "      if (mountedRef.current) setCopyStatus(interfaceText('Automation history report copied.'));"
+      },
+      "sha256": "3e5392f8a4f4d0ed7e6e6191e5cbbb12e1f34689a13d7c40d22e26b56398628d",
+      "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b"
+    },
+    "web/src/components/System/Integrations/MetadataProcessingPanel.jsx": {
+      "bytes": 6070,
+      "git_blob": "5671edd94c281a6c8914b1ffc1ee53c1fc263441",
+      "lines": {
+        "59": "    [/^Auto-tagging failed \\((.*)\\)$/, 'Auto-tagging failed ({exceptionType})', (m) => ({ exceptionType: m[1] })],"
+      },
+      "sha256": "272ca1bfb95dd1884a4e8c6a4dd92b7d9e1d959dad96b4736e130dd3dd9cd914",
+      "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b"
+    },
+    "web/src/components/System/System.jsx": {
+      "bytes": 14712,
+      "git_blob": "a3883b39c29b38485b5bfcadcf4039f18012c1a3",
+      "lines": {
+        "48": "  { icon: 'magic', key: 'automation', get title() { return interfaceText(\"Automation & Jobs\"); } },"
+      },
+      "sha256": "41f2b7416cf6503df69aad6265f0df06fa3b7ee44d476b9e710ab5bf83ed2f0f",
+      "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b"
+    },
+    "web/src/components/Transfers/Transfers.jsx": {
+      "bytes": 25148,
+      "git_blob": "00f3488b547c2f6e4d97fbd6d0931b724ea3c17d",
+      "lines": {
+        "684": "        toast.info(<LocalizedText source=\"Auto-replace enabled. Backend will check for stuck downloads periodically.\" />);"
+      },
+      "sha256": "744da23792a1fac5929a4802600b1cc7f238a3f3fabe1f33ded598b2b546b662",
+      "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b"
+    },
+    "web/src/components/Transfers/TransfersHeader.jsx": {
+      "bytes": 9771,
+      "git_blob": "de01ff39c31f0ac094b95fba0a15f40f709f605c",
+      "lines": {
+        "241": "          content={interfaceText(\"Automatically find and replace stuck downloads with alternative sources. Replacements must be within {autoReplaceThreshold}% file size.\", { \"autoReplaceThreshold\": (autoReplaceThreshold) })}",
+        "258": "         {...interfaceTextProps(\"Automatically find and replace stuck downloads with alternative sources. Replacements must be within {autoReplaceThreshold}% file size.\")}/>"
+      },
+      "sha256": "57f43a6851d991b9241b73a0f9ff08636573a49282033722f7350fb7f2a44d6f",
+      "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b"
+    },
+    "web/src/components/Wishlist/Wishlist.jsx": {
+      "bytes": 20126,
+      "git_blob": "54d5e35d9f027ea547f746df800fabd491c3bed7",
+      "lines": {
+        "461": "              {localized('Automatic')}"
+      },
+      "sha256": "74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7",
+      "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b"
+    },
+    "web/src/lib/setupHealthCheck.js": {
+      "bytes": 12192,
+      "git_blob": "ac6f54149388e953852dc230f781fa52bac238e7",
+      "lines": {
+        "279": "      area: 'Automation visibility',"
+      },
+      "sha256": "254e98de004fc19ae7c71dd47527adb1cc39fe52473323a1aa3b7e4f32d5cb0a",
+      "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b"
+    }
+  },
+  "cells": 120,
+  "correction_candidates": 25,
+  "holds": 0,
+  "pr_head": "087ea7ca6fed28c59dabe9639d8984ea8f061aa1",
+  "pr_tree": "444ac3f3b8fed739ffaae5a149379cf9c706343c",
+  "prior_findings_sha256": "2d981e8b82e9d7080c04ebd26ca2971c704d954c3b3a39ccb4aa436b211b0ccd",
+  "rationale_note": "Prior accepted cells are exact-hash carries; new cells are context-reviewed; all exact prior correction-needed cells in this subwindow have a proposed replacement. Native speaker signoff is not claimed.",
+  "selection_input": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-e05-window5420-audit-20261101/independent-0403-0422-087ea7ca-20261102/selection.jsonl",
+  "selection_sha256": "999e5dce9ffa93e36b0db0527c94b2bf7ba013a3869d199ae2d08de24a29d939",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "window": [
+    403,
+    412
+  ]
+}

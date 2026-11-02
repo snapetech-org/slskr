@@ -59,25 +59,32 @@ files=sorted({p for p in files if p.is_file()})
 resolution_path=REPO/'docs/pr-evidence/pr204-semantic-review-2026-11-01/exact-conflict-resolution-1494972d-2026-11-01/conflict-resolutions.jsonl'
 resolutions=[json.loads(line) for line in resolution_path.read_text(encoding='utf-8').splitlines() if line.strip()]
 suppress={(ref['root'],ref['path'],ref['line']) for row in resolutions for ref in row['supersedes']}
-# An exact accepted-unchanged cross-review explicitly supersedes the older
-# disposition(s) it reassessed. Require the record's source and target hashes
-# to match the current catalog before suppressing its cited prior rows.
-unchanged_path=REPO/'docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/accepted-unchanged.jsonl'
-if unchanged_path.is_file():
- candidate_path=unchanged_path.with_name('candidate-cell-audit.jsonl')
+# Exact accepted-unchanged and held cross-reviews supersede only their cited
+# historical exact records and same-window provisional correction candidates.
+# Discover these per-window ledgers so reconciliation stays current as batches
+# are added. A keep/hold remains held; it is never converted to accepted.
+decision_paths=[]
+for pattern in ('accepted-unchanged.jsonl','held-dispositions.jsonl'):
+ decision_paths.extend((REPO/'docs/pr-evidence/pr204-semantic-review-2026-11-01').rglob(pattern))
+for decision_path in sorted(set(decision_paths)):
+ if not decision_path.is_file():continue
+ candidate_path=decision_path.with_name('candidate-cell-audit.jsonl')
  candidate_records=[]
  if candidate_path.is_file():
   candidate_records=[(n,json.loads(line)) for n,line in enumerate(candidate_path.read_text(encoding='utf-8').splitlines(),1) if line.strip()]
  candidate_rel=candidate_path.relative_to(REPO).as_posix()
- for row in [json.loads(line) for line in unchanged_path.read_text(encoding='utf-8').splitlines() if line.strip()]:
+ for row in [json.loads(line) for line in decision_path.read_text(encoding='utf-8').splitlines() if line.strip()]:
   sid=row.get('sourceId',row.get('source_id'));loc=row.get('locale');c=cells.get((sid,loc))
-  if row.get('disposition')!='accepted-unchanged' or c is None:continue
-  if row.get('sourceSha256')!=c['source_sha256'] or row.get('currentTargetSha256')!=c['target_sha256']:continue
+  disposition=row.get('disposition')
+  allowed={'accepted-unchanged','held-current'}
+  if disposition not in allowed or c is None:continue
+  target_key='currentTargetSha256' if disposition=='accepted-unchanged' else 'target_sha256'
+  source_key='sourceSha256' if disposition=='accepted-unchanged' else 'source_sha256'
+  if row.get(source_key)!=c['source_sha256'] or row.get(target_key)!=c['target_sha256']:continue
   suppress.update((ref['root'],ref['path'],ref['line']) for ref in row.get('priorExactMatches',[]))
-  # The batch's pre-cross-review candidate audit records a provisional
-  # correction-needed status for this same exact cell. The accepted-unchanged
-  # disposition is the final cross-reviewed status, so suppress only that
-  # precisely matched candidate row.
+  suppress.update((ref['root'],ref['path'],ref['line']) for ref in row.get('provisionalExactMatches',[]))
+  # Suppress only the same-window provisional correction row for this exact
+  # source/locale/current-target tuple. A later target change won't match.
   for line_no,candidate in candidate_records:
    if candidate.get('source_id')==sid and candidate.get('locale')==loc and candidate.get('baseline_target_sha256')==c['target_sha256'] and candidate.get('status')=='correction-needed':
     suppress.add(('pr-review-head',candidate_rel,line_no))
