@@ -1,5 +1,4 @@
 import LocalizedText from "./Shared/LocalizedText";
-import { interfaceText, interfaceTextProps } from "../lib/interfaceLocale";
 import * as relayAPI from '../lib/relay';
 import { connect, disconnect } from '../lib/server';
 import { Icon, Menu } from 'semantic-ui-react';
@@ -49,7 +48,7 @@ const ModeSpecificConnectButton = ({
             />
           )}
         </Icon.Group>
-        <LocalizedText source={"Controller"} />{" "}{controller?.state}
+        <LocalizedText source={"Controller"} />{" "}<LocalizedText source={controller?.state} />
       </Menu.Item>
     );
   } else {
@@ -138,7 +137,7 @@ const ModeSpecificConnectButton = ({
             name={icon}
           />
         </Icon.Group>
-        {label}
+        <LocalizedText source={label} />
       </Menu.Item>
     );
   }

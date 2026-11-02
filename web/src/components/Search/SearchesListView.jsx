@@ -335,7 +335,7 @@ const SearchesListView = ({ actions, inputRef, state }) => {
                {...interfaceTextProps("{label}: {description}")}/>
             )}
             <span className="search-acquisition-profile-summary">
-              {acquisitionProfile.summary}
+              <LocalizedText source={acquisitionProfile.summary} />
             </span>
           </div>
         </Segment>
