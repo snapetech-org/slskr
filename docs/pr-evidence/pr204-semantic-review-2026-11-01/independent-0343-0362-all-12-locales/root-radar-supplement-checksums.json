@@ -1,0 +1,8 @@
+{
+  "candidate_file": "candidate-supplement-artist-release-radar-six.jsonl",
+  "candidate_file_sha256": "43d4c00728a4b0f82d462c90dee599521c20157e1b5df6412649c8132cf1833e",
+  "root_decisions": "root-radar-supplement-decisions.jsonl",
+  "root_decisions_sha256": "d6addee4fbae79b2297d8c0ae905441f9e7ffad6cd04854bf65da3503bca8f77",
+  "root_summary": "root-radar-supplement-summary.json",
+  "root_summary_sha256": "f2469cdc2720820af3be5f4dbe1bda19172341fa748c3696265d30598925e58f"
+}

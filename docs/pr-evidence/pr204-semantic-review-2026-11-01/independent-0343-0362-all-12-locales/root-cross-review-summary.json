@@ -1,0 +1,13 @@
+{
+  "application": "slskR",
+  "window": "343-362",
+  "review_head": "7b53e289f3b4b121be4b1b49c997ebb65b02ed8a",
+  "review_tree": "1b7831ff560924250e1c5ebcc256f4cbf02d30b8",
+  "candidate_file_sha256": "16206067e6b33036642e4e510226c8873efeb65d308feedb6c35e11facaa9263",
+  "candidate_count": 16,
+  "accepted": 14,
+  "refined": 2,
+  "held": 0,
+  "applied": 16,
+  "notes": "Six cells at index 343 name Artist Release Radar; ten cells at index 349 describe paths from confirmed, completed downloads. Japanese and Korean feature labels retain language-appropriate release terminology."
+}

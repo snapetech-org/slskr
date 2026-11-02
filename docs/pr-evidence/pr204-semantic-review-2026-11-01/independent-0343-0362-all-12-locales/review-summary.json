@@ -1,0 +1,101 @@
+{
+  "review_head": "7b53e289f3b4b121be4b1b49c997ebb65b02ed8a",
+  "review_tree": "1b7831ff560924250e1c5ebcc256f4cbf02d30b8",
+  "application_heads": [
+    "264a780f0b752cf2d84dab058838428b3a4195d6",
+    "f10e8e62b4d8cc5249b8c31a42dcac060b555143"
+  ],
+  "application_head": "f10e8e62b4d8cc5249b8c31a42dcac060b555143",
+  "application_tree": "5df1b00dec1184f83618029e391ada2ad29de30d",
+  "application_parent": "264a780f0b752cf2d84dab058838428b3a4195d6",
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_ids": 5437,
+  "window_indices": [
+    343,
+    362
+  ],
+  "window_cells": 240,
+  "fresh_cells": 36,
+  "fresh_statuses": {
+    "accepted": 30,
+    "corrected": 6
+  },
+  "accepted_carries": 188,
+  "prior_correction_needed_reassessed": 16,
+  "initial_exact_status_conflicts": 0,
+  "root_cross_review": {
+    "candidate_cells": 22,
+    "accepted": 20,
+    "refined": 2,
+    "held": 0,
+    "applied": 22
+  },
+  "final_statuses": {
+    "accepted": 218,
+    "corrected": 22,
+    "held": 0,
+    "unreviewed": 0
+  },
+  "per_locale": {
+    "ar": {
+      "corrected": 1,
+      "accepted": 19
+    },
+    "de": {
+      "corrected": 1,
+      "accepted": 19
+    },
+    "es": {
+      "corrected": 2,
+      "accepted": 18
+    },
+    "fr": {
+      "corrected": 2,
+      "accepted": 18
+    },
+    "hi": {
+      "corrected": 2,
+      "accepted": 18
+    },
+    "id": {
+      "corrected": 2,
+      "accepted": 18
+    },
+    "ja": {
+      "corrected": 2,
+      "accepted": 18
+    },
+    "ko": {
+      "corrected": 2,
+      "accepted": 18
+    },
+    "pt-BR": {
+      "corrected": 2,
+      "accepted": 18
+    },
+    "vi": {
+      "corrected": 2,
+      "accepted": 18
+    },
+    "zh-Hans": {
+      "corrected": 2,
+      "accepted": 18
+    },
+    "zh-Hant": {
+      "corrected": 2,
+      "accepted": 18
+    }
+  },
+  "native_speaker_approval": false,
+  "source_context_sha256": "95990c57e3cf299816ba169abeb83f557f6791592797dcb49adf20b031d010b1",
+  "source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "candidate_plan_sha256": "16206067e6b33036642e4e510226c8873efeb65d308feedb6c35e11facaa9263",
+  "candidate_supplement_sha256": "43d4c00728a4b0f82d462c90dee599521c20157e1b5df6412649c8132cf1833e",
+  "root_review_sha256": "051aafdf584a03db11eb342c513b75a968478c1fe93ed8264825411d4dd86b53",
+  "root_supplement_review_sha256": "d6addee4fbae79b2297d8c0ae905441f9e7ffad6cd04854bf65da3503bca8f77",
+  "root_apply_plan_sha256": "5f2f82cd7f88df40ae3c1b0d71b0c70246654843909a873249964da414d16736",
+  "root_supplement_apply_plan_sha256": "f0789c4e7ce04aba5fb90af752f1e82722b9a3226d80d6670d1f5002fe9ce151",
+  "applied_corrections_sha256": "a219cd80bd3dcdbb9b0ad2bb74eeca5b3ca1b681e7f0b66fbece45c8f762735e",
+  "prior_evidence_input_count": 916
+}

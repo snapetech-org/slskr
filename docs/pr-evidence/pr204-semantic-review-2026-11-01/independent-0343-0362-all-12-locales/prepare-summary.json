@@ -1,0 +1,109 @@
+{
+  "head": "7b53e289f3b4b121be4b1b49c997ebb65b02ed8a",
+  "head_tree": "1b7831ff560924250e1c5ebcc256f4cbf02d30b8",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_ids": 5437,
+  "frozen_source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "selected_source_indices": [
+    343,
+    362
+  ],
+  "selected_source_ids": [
+    "Artist Release Radar",
+    "Artist and title are required",
+    "Artist name",
+    "Artist:",
+    "Artists",
+    "Ascending",
+    "Ask the selected media server to scan confirmed completed-download paths.",
+    "Asks configured media servers to rescan after successful library imports.",
+    "Assembling",
+    "At least one ContentID is required",
+    "At least one ContentID is required for export",
+    "At least one MusicBrainz identifier is required",
+    "At least one descriptor is required",
+    "At least one file is required",
+    "At least one link is required",
+    "At least one non-empty ContentID is required",
+    "At least one recipient is required",
+    "At least one source must be selected",
+    "At least one username is required",
+    "At least one wishlist item ID is required"
+  ],
+  "catalog_sha256": {
+    "web/src/lib/locales/ui-labels.ar.json": "2d59553ee2869e7f5781a4b77aeecfcc9411a65115b8f72b154be6e05ca65cea",
+    "web/src/lib/locales/ui-labels.de.json": "7fd7d7d7b41abae5e4790a37bd0a8a65f45689052939000f3fe076ebfeb9499d",
+    "web/src/lib/locales/ui-labels.es.json": "636c714cbf1a0a7cd4c718b4b622f3cbc70f58193a6344a78fce240c4a219cb9",
+    "web/src/lib/locales/ui-labels.fr.json": "c5ee67efa3d51b3517dc1715a1347d671037bf013208a6fee4b147a8a9d952cc",
+    "web/src/lib/locales/ui-labels.hi.json": "ac6ca4e00ed9681c34d519cfdc016e3eec850a9441b2de85c63107a8da817aac",
+    "web/src/lib/locales/ui-labels.id.json": "3b756c7127f85464e9c30c2a8ca318201accbc3dbcaeefbaf6f1904d08fd546b",
+    "web/src/lib/locales/ui-labels.ja.json": "e239b8cf3a299d5d388fa2f0f1c87aff1568088860d30825ac6f9f2d48eb2f1d",
+    "web/src/lib/locales/ui-labels.ko.json": "f70021359e5d1477ea85fd95cce2a75137c06a40c7cc8e3fef27778d83bd321a",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "8e0bb8aadee4f7e026913329e0f479e5acc93b62085e0f50aabefd6d1246056a",
+    "web/src/lib/locales/ui-labels.vi.json": "3ba5f43818c17ade21c21bc9b1765fe69036940e301e1466e65b5af4dd4ef7de",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "67d45f29918620b4f4b704349bb309b39699d3ab648ef444c9567a5ca71371df",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "b4c7cf8c1e6cde9d354beec50b614fc71364afa68060136b1c3c0071f9e0c03f"
+  },
+  "overlap_input_count": 916,
+  "overlap_manifest_sha256": "52a5da26d8b11beb902886df065d9faf30d61c1e8f6f027eb4ca332cc4320ace",
+  "counts": {
+    "new": 36,
+    "prior_correction-needed": 16,
+    "prior_accepted": 188
+  },
+  "per_locale": {
+    "ar": {
+      "new": 6,
+      "prior_accepted": 14
+    },
+    "de": {
+      "new": 6,
+      "prior_accepted": 14
+    },
+    "es": {
+      "new": 6,
+      "prior_accepted": 13,
+      "prior_correction-needed": 1
+    },
+    "fr": {
+      "new": 6,
+      "prior_accepted": 13,
+      "prior_correction-needed": 1
+    },
+    "hi": {
+      "new": 6,
+      "prior_accepted": 13,
+      "prior_correction-needed": 1
+    },
+    "id": {
+      "new": 6,
+      "prior_accepted": 13,
+      "prior_correction-needed": 1
+    },
+    "ja": {
+      "prior_correction-needed": 2,
+      "prior_accepted": 18
+    },
+    "ko": {
+      "prior_correction-needed": 2,
+      "prior_accepted": 18
+    },
+    "pt-BR": {
+      "prior_correction-needed": 2,
+      "prior_accepted": 18
+    },
+    "vi": {
+      "prior_correction-needed": 2,
+      "prior_accepted": 18
+    },
+    "zh-Hans": {
+      "prior_correction-needed": 2,
+      "prior_accepted": 18
+    },
+    "zh-Hant": {
+      "prior_correction-needed": 2,
+      "prior_accepted": 18
+    }
+  }
+}
