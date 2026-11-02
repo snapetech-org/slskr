@@ -1,0 +1,627 @@
+# Runtime source context at PR #204 code/catalog source 7ff454828398de6a3cfb72fe7f0ed21fe419425b (tree 9e9f2aa743c4ff3236af8f99619803bdc3a37152)
+
+The exact catalog review head is 2eb1b192fcc384712de9b73dab96426d57f2ddf1 (tree d27a73371f5096f666bc02c1c78892503c36153a). Source/caller files are read from the pinned source commit above.
+
+## Source and context notes
+
+- Index 323, `Approve this dry-run snapshot for later import review. This records source/proposed metadata only and does not write tags or move files.` — `web/src/components/PlaylistIntake/PlaylistIntake.jsx:469-484`: Playlist Intake snapshot-approval tooltip; it explains that approval stores source/proposed metadata for later import review without writing tags or moving files.
+- Index 324, `Approved` — `web/src/components/System/ExperienceSettings/index.jsx:86-91; web/src/lib/acquisitionRequests.js:6-11`: Approved state label used both in the approval filter and the acquisition-request state map.
+- Index 325, `Approved in Discovery Inbox for the next acquisition step.` — `web/src/lib/acquisitionRequests.js:6-11`: Summary of an approved acquisition request in the Discovery Inbox, describing its next acquisition step.
+- Index 326, `Approved tag and organization snapshot for {playlistName}` — `web/src/components/PlaylistIntake/PlaylistIntake.jsx:139-147`: Status message after approving a Playlist Intake tag-organization snapshot; {playlistName} is the playlist name.
+- Index 327, `Are Similar:` — `web/src/components/System/MediaCore/MediaCoreHashSimilarityPanel.jsx:120-132; web/src/components/System/MediaCore/MediaCorePerceptualSimilarityPanel.jsx:128-144`: Boolean result followed by localized Yes/No and a threshold percentage in both hash and perceptual-similarity panels; this is a predicate, not a noun meaning “similarities”.
+- Index 328, `Are you sure you want restart the application?` — `web/src/components/System/Info/index.jsx:106-131`: Confirmation text shown before restarting the application.
+- Index 329, `Are you sure you want to ban member "{peerId}" from pod "{podId}"?` — `web/src/components/System/MediaCore/PodMembershipManagementPanel.jsx:135-160`: Confirmation for banning a member identified by {peerId} from the federation pod identified by {podId}; both placeholders must remain unchanged.
+- Index 330, `Are you sure you want to clean up expired membership records?` — `web/src/components/System/MediaCore/PodMembershipManagementPanel.jsx:204-213`: Confirmation before cleaning up expired membership records.
+- Index 331, `Are you sure you want to delete directory '{fullName}'?` — `web/src/components/System/Files/Explorer.jsx:118-140`: File Explorer confirmation before deleting a directory named by {fullName}.
+- Index 332, `Are you sure you want to delete file '{fullName}'?` — `web/src/components/System/Files/Explorer.jsx:58-82`: File Explorer confirmation before deleting a file named by {fullName}.
+- Index 333, `Are you sure you want to delete the channel "{channelName}"? This action cannot be undone.` — `web/src/components/System/MediaCore/PodChannelManagementPanel.jsx:138-155`: Confirmation before deleting a pod channel named by {channelName}; source explicitly says deletion cannot be undone.
+- Index 334, `Are you sure you want to log out?` — `web/src/components/AppHeaderMenu.jsx:148-170`: Confirmation in the app-header menu before logging the user out.
+- Index 335, `Are you sure you want to reset all MediaCore statistics? This cannot be undone.` — `web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx:168-183`: Confirmation before resetting every MediaCore statistic; source explicitly says the action cannot be undone.
+- Index 336, `Are you sure you want to shut the application down? You'll need to manually start it again.` — `web/src/components/System/Info/index.jsx:75-101`: Confirmation before shutting down the application; it warns that the application must be started manually afterward. German/Spanish/French pronouns must agree with their feminine application nouns.
+- Index 337, `Are you sure you want to unpublish pod "{podId}"?` — `web/src/components/System/MediaCore/PodDhtPublishingPanel.jsx:100-114`: Confirmation before withdrawing the named federation pod from DHT publication; {podId} is the pod identifier.
+- Index 338, `Artist` — `web/src/components/Search/DiscoveryGraphAtlasPanel.jsx:24-35,329-333; web/src/components/System/Integrations/LidarrPanel.jsx:250-260; web/src/components/System/LibraryHealth/index.jsx:667-677,850-860`: Generic Artist field/table heading, used for an artist selector and table columns; not a proper name.
+- Index 339, `Artist - Title, one row per track, or simple CSV artist,title` — `web/src/components/PlaylistIntake/PlaylistIntake.jsx:241-249; web/src/lib/playlistIntake.js:155-195`: Playlist Intake textarea placeholder listing supported Artist - Title lines or simple CSV rows; the parser splits each comma-delimited row into artist and title values and does not parse a header row.
+- Index 340, `Artist / Album / 01 - Title` — `web/src/lib/playlistIntake.js:16-31`: Sample folder organization path option in Playlist Intake.
+- Index 341, `Artist MBID` — `web/src/components/Search/ArtistReleaseRadarPanel.jsx:221-237; web/src/components/Search/DiscographyCoveragePanel.jsx:219-231; web/src/components/Search/DiscoveryGraphAtlasPanel.jsx:354-363`: Artist MusicBrainz identifier field label; preserve the acronym MBID.
+- Index 342, `Artist MBID is required` — `web/src/components/Search/ArtistReleaseRadarPanel.jsx:110-121; web/src/components/Search/DiscographyCoveragePanel.jsx:104-112`: Validation message for the required Artist MusicBrainz identifier field; preserve the acronym MBID.
+
+## Pinned caller excerpts
+
+### `web/src/components/PlaylistIntake/PlaylistIntake.jsx` — Git blob `162c8fb6dff17671f35471b4bae605da08b90447`, SHA-256 `a978f80c022835c003d35db99b38037dee622c6456d9cbc46688f810867e3ae6`
+
+Lines 139–147:
+139:   const approveTagOrganizationSnapshot = (playlist) => {
+140:     setItems(approvePlaylistTagOrganizationPlan(playlist.id));
+141:     setStatus(interfaceText("Approved tag and organization snapshot for {playlistName}", { playlistName: playlist.name }));
+142:   };
+143:
+144:   const clearTagOrganizationSnapshot = (playlist) => {
+145:     setItems(clearPlaylistTagOrganizationApproval(playlist.id));
+146:     setStatus(interfaceText("Cleared tag and organization snapshot for {playlistName}", { playlistName: playlist.name }));
+147:   };
+
+Lines 241–249:
+241:         <Form.Field>
+242:           <label><LocalizedText source={"Playlist rows"} /></label>
+243:           <TextArea
+244:             aria-label={interfaceText("Playlist rows")}
+245:             onChange={(event) => setContent(event.target.value)}
+246:             placeholder={interfaceText("Artist - Title, one row per track, or simple CSV artist,title")}
+247:             rows={6}
+248:             value={content}
+249:            {...interfaceTextProps("Playlist rows")}/>
+
+Lines 469–495:
+469:                       <Popup
+470:                         content={interfaceText("Approve this dry-run snapshot for later import review. This records source/proposed metadata only and does not write tags or move files.")}
+471:                         position="top center"
+472:                         trigger={
+473:                           <Button
+474:                             aria-label={interfaceText("Approve tag organization snapshot for {name}", { "name": (playlist.name) })}
+475:                             disabled={!playlist.organizationPlan}
+476:                             icon
+477:                             onClick={() => approveTagOrganizationSnapshot(playlist)}
+478:                             size="small"
+479:                             type="button"
+480:                            {...interfaceTextProps("Approve tag organization snapshot for {name}")}>
+481:                             <Icon name="check circle outline" />
+482:                             <LocalizedText source={"Approve Snapshot"} /></Button>
+483:                         }
+484:                        {...interfaceTextProps("Approve this dry-run snapshot for later import review. This records source/proposed metadata only and does not write tags or move files.")}/>
+485:                       <Popup
+486:                         content={interfaceText("Clear the approved snapshot while keeping the dry-run preview available for more edits.")}
+487:                         position="top center"
+488:                         trigger={
+489:                           <Button
+490:                             aria-label={interfaceText("Clear tag organization snapshot for {name}", { "name": (playlist.name) })}
+491:                             disabled={!playlist.organizationApproval}
+492:                             icon
+493:                             onClick={() => clearTagOrganizationSnapshot(playlist)}
+494:                             size="small"
+495:                             type="button"
+
+### `web/src/lib/acquisitionRequests.js` — Git blob `3b89ad55924c0e4e84b1c005898b35f7e8e5b169`, SHA-256 `0ad4096633725af850231922cc185a179393c3334aaf70fdee08c5c8a43b19fc`
+
+Lines 6–45:
+6: export const acquisitionRequestStates = {
+7:   approved: {
+8:     color: 'green',
+9:     label: 'Approved',
+10:     summary: 'Approved in Discovery Inbox for the next acquisition step.',
+11:   },
+12:   automatic: {
+13:     color: 'blue',
+14:     label: 'Automatic',
+15:     summary: 'Enabled and allowed to auto-download through Wishlist policy.',
+16:   },
+17:   disabled: {
+18:     color: 'grey',
+19:     label: 'Disabled',
+20:     summary: 'Saved but not eligible for scheduled wishlist processing.',
+21:   },
+22:   failed: {
+23:     color: 'red',
+24:     label: 'Failed',
+25:     summary: 'A previous acquisition/import attempt failed and needs review.',
+26:   },
+27:   imported: {
+28:     color: 'teal',
+29:     label: 'Imported',
+30:     summary: 'The request has been imported into the library.',
+31:   },
+32:   rejected: {
+33:     color: 'red',
+34:     label: 'Rejected',
+35:     summary: 'Rejected in Discovery Inbox and suppressed for the same evidence.',
+36:   },
+37:   review: {
+38:     color: 'yellow',
+39:     label: 'Review',
+40:     summary: 'Waiting in Discovery Inbox for approval or rejection.',
+41:   },
+42:   snoozed: {
+43:     color: 'grey',
+44:     label: 'Snoozed',
+45:     summary: 'Snoozed in Discovery Inbox until later review.',
+
+### `web/src/components/System/ExperienceSettings/index.jsx` — Git blob `fbe8caabfc30e03809dc5ae7051bddb731986956`, SHA-256 `ba7826de4b32bc9506d5926e6243623ccc3104da43706ce7a57fe4b17bcf2f30`
+
+Lines 86–91:
+86:   approvalFilter: [
+87:     { key: 'all', get text() { return interfaceText("All"); }, value: 'all' },
+88:     { key: 'needs-review', get text() { return interfaceText("Needs review"); }, value: 'needs-review' },
+89:     { key: 'approved', get text() { return interfaceText("Approved"); }, value: 'approved' },
+90:     { key: 'snoozed', get text() { return interfaceText("Snoozed"); }, value: 'snoozed' },
+91:   ],
+
+### `web/src/components/System/MediaCore/MediaCoreHashSimilarityPanel.jsx` — Git blob `ef421bb767cd96a6f14922aa0b110b53952cbdfe`, SHA-256 `561f920034eae2f1768a420fa0b714fcc0a80ed0aff0ce254fd0a12c703997af`
+
+Lines 120–132:
+120:                   ) : (
+121:                     <Message info>
+122:                       <Message.Header>
+123:                         <LocalizedText source={"Similarity Analysis Results"} /></Message.Header>
+124:                       <p>
+125:                         <strong><LocalizedText source={"Hamming Distance:"} /></strong>{' '}
+126:                         {similarityResult.hammingDistance} <LocalizedText source={"bits"} /><br />
+127:                         <strong><LocalizedText source={"Similarity Score:"} /></strong>{' '}
+128:                         {formatRegionalFixedNumber((similarityResult.similarity * 100), 1)}%<br />
+129:                         <strong><LocalizedText source={"Are Similar:"} /></strong>{' '}
+130:                         {similarityResult.areSimilar ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />} <LocalizedText source={"(threshold:"} />{' '}
+131:                         {formatRegionalFixedNumber((similarityResult.threshold * 100), 1)}%)
+132:                       </p>
+
+### `web/src/components/System/MediaCore/MediaCorePerceptualSimilarityPanel.jsx` — Git blob `5f6ed7d6493ad4e5dbf6a03f00a023440f9c27df`, SHA-256 `caf1ea1ae9193df532a3c6919b184841da53bd2db8b2996e99fa49e309da253e`
+
+Lines 128–144:
+128:                       <Message.Header><LocalizedText source={"Similarity Analysis"} /></Message.Header>
+129:                       <p>
+130:                         <strong><LocalizedText source={"Content A:"} /></strong>{' '}
+131:                         {perceptualSimilarityResult.contentIdA}
+132:                         <br />
+133:                         <strong><LocalizedText source={"Content B:"} /></strong>{' '}
+134:                         {perceptualSimilarityResult.contentIdB}
+135:                         <br />
+136:                         <strong><LocalizedText source={"Similarity:"} /></strong>{' '}
+137:                         {formatRegionalFixedNumber((perceptualSimilarityResult.similarity * 100), 1)}
+138:                         %<br />
+139:                         <strong><LocalizedText source={"Are Similar:"} /></strong>{' '}
+140:                         {perceptualSimilarityResult.isSimilar ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}{' '}
+141:                         <LocalizedText source={"(threshold:"} />{' '}
+142:                         {formatRegionalFixedNumber((perceptualSimilarityResult.threshold * 100), 1)}
+143:                         %)
+144:                       </p>
+
+### `web/src/components/System/Info/index.jsx` — Git blob `fe9e307633e6343f52d3bbeacb4111fc357d9f3f`, SHA-256 `2ab81f30d00db61b6ef3c4c6ac2a67628ff0328224d1f662825b7ff57772ac57`
+
+Lines 75–132:
+75:             'Cancel',
+76:             {
+77:               content: interfaceText("Shut Down"),
+78:               key: 'done',
+79:               negative: true,
+80:               onClick: shutdown,
+81:             },
+82:           ]}
+83:           centered
+84:           content={interfaceText("Are you sure you want to shut the application down? You'll need to manually start it again.")}
+85:           header={
+86:             <Header
+87:               content={interfaceText("Confirm Shutdown")}
+88:               icon="redo"
+89:              {...interfaceTextProps("Confirm Shutdown")}/>
+90:           }
+91:           size="mini"
+92:           trigger={
+93:             <ShrinkableButton
+94:               disabled={!contents}
+95:               icon="shutdown"
+96:               mediaQuery="(max-width: 686px)"
+97:               negative
+98:             >
+99:               <LocalizedText source={"Shut Down"} /></ShrinkableButton>
+100:           }
+101:          {...interfaceTextProps("Are you sure you want to shut the application down? You'll need to manually start it again.")}/>
+102:         <Modal
+103:           actions={[
+104:             'Cancel',
+105:             {
+106:               content: interfaceText("Restart"),
+107:               key: 'done',
+108:               negative: true,
+109:               onClick: restart,
+110:             },
+111:           ]}
+112:           centered
+113:           content={interfaceText("Are you sure you want restart the application?")}
+114:           header={
+115:             <Header
+116:               content={interfaceText("Confirm Restart")}
+117:               icon="redo"
+118:              {...interfaceTextProps("Confirm Restart")}/>
+119:           }
+120:           size="mini"
+121:           trigger={
+122:             <ShrinkableButton
+123:               color={pendingRestart ? 'yellow' : undefined}
+124:               disabled={!contents}
+125:               icon="redo"
+126:               mediaQuery="(max-width: 686px)"
+127:               negative={!pendingRestart}
+128:             >
+129:               <LocalizedText source={"Restart"} /></ShrinkableButton>
+130:           }
+131:          {...interfaceTextProps("Are you sure you want restart the application?")}/>
+132:       </div>
+
+### `web/src/components/System/MediaCore/PodMembershipManagementPanel.jsx` — Git blob `dd436ce3710d00f6436ec497ab9df9863e763723`, SHA-256 `d1ed549ca3edbb54571c3091ace817fcdecab5e073f17ce81768df6fe14d2953`
+
+Lines 135–160:
+135:   const handleBanMember = async () => {
+136:     if (!membershipPodId.trim() || !membershipPeerId.trim()) {
+137:       toast.warning(interfaceText("Please enter both Pod ID and Peer ID"));
+138:       return;
+139:     }
+140:
+141:     if (
+142:       !confirm(
+143:         interfaceText(
+144:           'Are you sure you want to ban member "{peerId}" from pod "{podId}"?',
+145:           { peerId: membershipPeerId, podId: membershipPodId },
+146:         ),
+147:       )
+148:     ) {
+149:       return;
+150:     }
+151:
+152:     try {
+153:       setBanningMember(true);
+154:       setBanResult(null);
+155:       const result = await mediacore.banMember(
+156:         membershipPodId,
+157:         membershipPeerId,
+158:         banReason || null,
+159:       );
+160:       setBanResult(result);
+
+Lines 204–213:
+204:   const handleCleanupMemberships = async () => {
+205:     if (
+206:       !confirm(interfaceText('Are you sure you want to clean up expired membership records?'))
+207:     ) {
+208:       return;
+209:     }
+210:
+211:     try {
+212:       const result = await mediacore.cleanupExpiredMemberships();
+213:       toast.success(
+
+### `web/src/components/System/Files/Explorer.jsx` — Git blob `ab4c5ed3b5c4c5315c6f46ee40ee2ad254f6daa3`, SHA-256 `cffd906eba54004f1ffb86a41fc41ef568514f0300872c40e657bd0fd8dcf0fe`
+
+Lines 58–82:
+58:               content: interfaceText("Delete"),
+59:               key: 'done',
+60:               negative: true,
+61:               onClick: onDelete,
+62:             },
+63:           ]}
+64:           centered
+65:           content={interfaceText("Are you sure you want to delete file '{fullName}'?", { "fullName": (fullName) })}
+66:           header={
+67:             <Header
+68:               content={interfaceText("Confirm File Delete")}
+69:               icon="trash alternate"
+70:              {...interfaceTextProps("Confirm File Delete")}/>
+71:           }
+72:           size="small"
+73:           trigger={
+74:             <Icon
+75:               color="red"
+76:               disabled={deleting}
+77:               loading={deleting}
+78:               name="trash alternate"
+79:               style={{ cursor: deleting ? 'wait' : 'pointer' }}
+80:             />
+81:           }
+82:          {...interfaceTextProps("Are you sure you want to delete file '{fullName}'?")}/>
+
+Lines 118–140:
+118:               negative: true,
+119:               onClick: onDelete,
+120:             },
+121:           ]}
+122:           centered
+123:           content={interfaceText("Are you sure you want to delete directory '{fullName}'?", { "fullName": (fullName) })}
+124:           header={
+125:             <Header
+126:               content={interfaceText("Confirm Directory Delete")}
+127:               icon="trash alternate"
+128:              {...interfaceTextProps("Confirm Directory Delete")}/>
+129:           }
+130:           size="small"
+131:           trigger={
+132:             <Icon
+133:               color="red"
+134:               disabled={deleting}
+135:               loading={deleting}
+136:               name="trash alternate"
+137:               style={{ cursor: deleting ? 'wait' : 'pointer' }}
+138:             />
+139:           }
+140:          {...interfaceTextProps("Are you sure you want to delete directory '{fullName}'?")}/>
+
+### `web/src/components/System/MediaCore/PodChannelManagementPanel.jsx` — Git blob `c91e5e8e4250fda54163c8b7841aa9852754ff14`, SHA-256 `3ef47356d5cd5942894965fda3bc2999b654b0812a0c7274f85779b78dc99f9d`
+
+Lines 138–155:
+138:     } finally {
+139:       setUpdateChannelLoading(false);
+140:     }
+141:   };
+142:
+143:   const handleDeleteChannel = async (channelId, channelName) => {
+144:     if (
+145:       !confirm(
+146:         interfaceText(
+147:           'Are you sure you want to delete the channel "{channelName}"? This action cannot be undone.',
+148:           { channelName },
+149:         ),
+150:       )
+151:     ) {
+152:       return;
+153:     }
+154:
+155:     try {
+
+### `web/src/components/AppHeaderMenu.jsx` — Git blob `bfb81bb9841551f6d11707f2844674f1a92398cd`, SHA-256 `5023bafc3e795ffd3107f9305e637b97f563768d42873546a8d0ebaf7ed8a569`
+
+Lines 148–170:
+148:                     {
+149:                       content: interfaceText("Log Out"),
+150:                       key: 'done',
+151:                       negative: true,
+152:                       onClick: onLogout,
+153:                     },
+154:                   ]}
+155:                   centered
+156:                   content={interfaceText("Are you sure you want to log out?")}
+157:                   header={
+158:                     <Header
+159:                       content={interfaceText("Confirm Log Out")}
+160:                       icon="sign-out"
+161:                      {...interfaceTextProps("Confirm Log Out")}/>
+162:                   }
+163:                   size="mini"
+164:                   trigger={
+165:                     <Menu.Item data-testid="logout">
+166:                       <Icon name="sign-out" />
+167:                       <LocalizedText source={"Log Out"} /></Menu.Item>
+168:                   }
+169:                  {...interfaceTextProps("Are you sure you want to log out?")}/>
+170:               )}
+
+### `web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx` — Git blob `2abab8a5496df8cdd48e7acf32b479c7ecba6c23`, SHA-256 `34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60`
+
+Lines 168–183:
+168:   const handleResetMediaCoreStats = async () => {
+169:     if (
+170:       !confirm(
+171:         interfaceText('Are you sure you want to reset all MediaCore statistics? This cannot be undone.'),
+172:       )
+173:     ) {
+174:       return;
+175:     }
+176:
+177:     try {
+178:       await mediacore.resetMediaCoreStats();
+179:       // Clear all displayed stats
+180:       setMediaCoreDashboard(null);
+181:       setContentRegistryStats(null);
+182:       setDescriptorStats(null);
+183:       setFuzzyMatchingStats(null);
+
+### `web/src/components/System/MediaCore/PodDhtPublishingPanel.jsx` — Git blob `e3f016a10d5dd9a2514231bc25e6b81f1a71177f`, SHA-256 `b54d9f456b6b638a12794f54ebd6f9005a8fb1797d177ef4774e42fbade22493`
+
+Lines 100–114:
+100:   const handleUnpublishPod = async () => {
+101:     if (!podToUnpublish.trim()) {
+102:       toast.warning(interfaceText("Please enter a pod ID"));
+103:       return;
+104:     }
+105:
+106:     if (
+107:       !confirm(interfaceText('Are you sure you want to unpublish pod "{podId}"?', { podId: podToUnpublish }))
+108:     ) {
+109:       return;
+110:     }
+111:
+112:     try {
+113:       setUnpublishingPod(true);
+114:       setPodUnpublishResult(null);
+
+### `web/src/components/Search/DiscoveryGraphAtlasPanel.jsx` — Git blob `2aa163337ab944a655b7869ea98297beda838627`, SHA-256 `9ab139ea6514100de0cef711e2aa5e26745bcc9936c965a9028c2591e6338471`
+
+Lines 24–35:
+24:
+25: const scopeOptions = [
+26:   { key: 'songid_run', get text() { return interfaceText("Song / Unknown Seed"); }, value: 'songid_run' },
+27:   { key: 'track', get text() { return interfaceText("Track"); }, value: 'track' },
+28:   { key: 'album', get text() { return interfaceText("Album"); }, value: 'album' },
+29:   { key: 'artist', get text() { return interfaceText("Artist"); }, value: 'artist' },
+30: ];
+31:
+32: const normalizeGraph = (payload) => {
+33:   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
+34:     return null;
+35:   }
+
+Lines 329–333:
+329:               label={interfaceText("Artist")}
+330:               onChange={(event) => setArtist(event.target.value)}
+331:               placeholder={interfaceText("Artist name")}
+332:               value={artist}
+333:              {...interfaceTextProps("Artist")}/>
+
+Lines 354–363:
+354:         <Form.Group widths="equal">
+355:           <Form.Field>
+356:             <Input
+357:               disabled={disabled || loading}
+358:               label={interfaceText("Artist MBID")}
+359:               onChange={(event) => setArtistId(event.target.value)}
+360:               placeholder={interfaceText("Optional artist id")}
+361:               value={artistId}
+362:              {...interfaceTextProps("Artist MBID")}/>
+363:           </Form.Field>
+
+### `web/src/components/System/Integrations/LidarrPanel.jsx` — Git blob `3bb24c3fb94ceb4815dce12999fbacb898437e83`, SHA-256 `6fff815fc95b10400d84970dfa25f8bdf05d5bb360d719a3cf7f1cc62bcab8ea`
+
+Lines 250–260:
+250:             celled
+251:             compact
+252:           >
+253:             <Table.Header>
+254:               <Table.Row>
+255:                 <Table.HeaderCell><LocalizedText source={"Artist"} /></Table.HeaderCell>
+256:                 <Table.HeaderCell><LocalizedText source={"Album"} /></Table.HeaderCell>
+257:               </Table.Row>
+258:             </Table.Header>
+259:             <Table.Body>
+260:               {wanted.slice(0, 10).map((album) => (
+
+### `web/src/components/System/LibraryHealth/index.jsx` — Git blob `644c76751793b2bd45057a0191a054d74f547d36`, SHA-256 `93770b1489c22b54d631d90b593a86e0eca30ca4475d3b1472c1af60604c1d2b`
+
+Lines 667–677:
+667:                 <Segment>
+668:                   <Header as="h4"><LocalizedText source={"Top Artists with Issues"} /></Header>
+669:                   <Table compact>
+670:                     <Table.Header>
+671:                       <Table.Row>
+672:                         <Table.HeaderCell><LocalizedText source={"Artist"} /></Table.HeaderCell>
+673:                         <Table.HeaderCell textAlign="right">
+674:                           <LocalizedText source={"Issues"} /></Table.HeaderCell>
+675:                       </Table.Row>
+676:                     </Table.Header>
+677:                     <Table.Body>
+
+Lines 850–860:
+850:                         type="checkbox"
+851:                       />
+852:                     </Table.HeaderCell>
+853:                     <Table.HeaderCell><LocalizedText source={"Type"} /></Table.HeaderCell>
+854:                     <Table.HeaderCell><LocalizedText source={"Severity"} /></Table.HeaderCell>
+855:                     <Table.HeaderCell><LocalizedText source={"Artist"} /></Table.HeaderCell>
+856:                     <Table.HeaderCell><LocalizedText source={"Track"} /></Table.HeaderCell>
+857:                     <Table.HeaderCell><LocalizedText source={"Reason"} /></Table.HeaderCell>
+858:                     <Table.HeaderCell><LocalizedText source={"Status"} /></Table.HeaderCell>
+859:                     <Table.HeaderCell textAlign="center">
+860:                       <LocalizedText source={"Actions"} /></Table.HeaderCell>
+
+### `web/src/lib/playlistIntake.js` — Git blob `c7e71e5895094e5450e8ab82deeaba34c3c373fb`, SHA-256 `d5569d0d7e861a1521ddce103b27bdd1b93f3a0352a998de1fc3322cd419bade`
+
+Lines 16–31:
+16: export const organizationPathTemplates = [
+17:   {
+18:     key: 'artist-album-track-title',
+19:     text: 'Artist / Album / 01 - Title',
+20:     value: '{artist}/{album}/{trackNumber} - {title}',
+21:   },
+22:   {
+23:     key: 'album-track-artist-title',
+24:     text: 'Album / 01 - Artist - Title',
+25:     value: '{album}/{trackNumber} - {artist} - {title}',
+26:   },
+27:   {
+28:     key: 'playlist-track-artist-title',
+29:     text: 'Playlist / 01 - Artist - Title',
+30:     value: '{playlist}/{trackNumber} - {artist} - {title}',
+31:   },
+
+Lines 155–195:
+155: const addDays = (timestamp, days) =>
+156:   new Date(new Date(timestamp).getTime() + days * 24 * 60 * 60 * 1_000).toISOString();
+157:
+158: const calculateNextRefreshAt = (playlist, timestamp = now()) => {
+159:   if (!playlist.mirrorEnabled || !playlist.refreshAutomationEnabled) return '';
+160:   return addDays(timestamp, normalizeCooldownDays(playlist.refreshCooldownDays));
+161: };
+162:
+163: const parseCsvLine = (line) => {
+164:   const columns = line.split(',').map((column) => column.trim().replace(/^"|"$/g, ''));
+165:   return {
+166:     artist: columns[0] || '',
+167:     title: columns[1] || columns[0] || '',
+168:   };
+169: };
+170:
+171: const parseTextLine = (line) => {
+172:   const [artist, title] = line.includes(' - ')
+173:     ? line.split(' - ', 2).map((part) => part.trim())
+174:     : ['', line.trim()];
+175:
+176:   return {
+177:     artist,
+178:     title,
+179:   };
+180: };
+181:
+182: const parsePlaylistRows = (content = '') => {
+183:   const boundedContent = normalizeContent(content);
+184:   const rows = boundedContent
+185:     .split(/\r?\n/)
+186:     .map((line) => line.trim())
+187:     .filter((line) => line && !line.startsWith('#'));
+188:
+189:   return rows.slice(0, maxPlaylistTracks).map((line, index) => {
+190:     const parsed = line.includes(',') ? parseCsvLine(line) : parseTextLine(line);
+191:     const title = parsed.title || line;
+192:
+193:     return {
+194:       artist: normalizeText(parsed.artist),
+195:       id: uuidv4(),
+
+### `web/src/components/Search/ArtistReleaseRadarPanel.jsx` — Git blob `c5576accb0ef5597c0be91cd509b95b8f8bb82a2`, SHA-256 `018f81a495a5189a497b0ac0f67899e7bc55f9a05598765006db7d70d9e43567`
+
+Lines 110–121:
+110:   const subscribe = async () => {
+111:     if (
+112:       !mountedRef.current ||
+113:       disabled ||
+114:       operationInFlightRef.current
+115:     ) {
+116:       return;
+117:     }
+118:     if (!artistId.trim()) {
+119:       toast.error(interfaceText("Artist MBID is required"));
+120:       return;
+121:     }
+
+Lines 221–237:
+221:   return (
+222:     <Segment raised>
+223:       <Header as="h4"><LocalizedText source={"Artist Release Radar"} /></Header>
+224:       <Form>
+225:         <Form.Group widths="equal">
+226:           <Form.Input
+227:             aria-label={interfaceText("Release radar artist MBID")}
+228:             label={interfaceText("Artist MBID")}
+229:             onChange={(event) => setArtistId(event.target.value)}
+230:             value={artistId}
+231:            {...interfaceTextProps("Release radar artist MBID")}/>
+232:           <Form.Input
+233:             aria-label={interfaceText("Release radar artist name")}
+234:             label={interfaceText("Artist name")}
+235:             onChange={(event) => setArtistName(event.target.value)}
+236:             value={artistName}
+237:            {...interfaceTextProps("Release radar artist name")}/>
+
+### `web/src/components/Search/DiscographyCoveragePanel.jsx` — Git blob `30a767356c47e5198976ddbac4ce657320f15b03`, SHA-256 `d1fdb70100b0fa7f3d38a3f0d37766e71e1efc45b8f4f47ee44684c5d173090a`
+
+Lines 104–112:
+104:   const loadCoverage = async ({ forceRefresh = false, artistIdOverride } = {}) => {
+105:     const rawArtistId = artistIdOverride ?? artistId;
+106:     const normalizedArtistId = typeof rawArtistId === 'string'
+107:       ? rawArtistId.trim()
+108:       : '';
+109:     if (!normalizedArtistId) {
+110:       toast.error(interfaceText("Artist MBID is required"));
+111:       return;
+112:     }
+
+Lines 219–231:
+219:       <Header as="h4"><LocalizedText source={"Discography Concierge"} /></Header>
+220:       <Form>
+221:         <Form.Group widths="equal">
+222:           <Form.Field>
+223:             <Input
+224:               disabled={loading}
+225:               label={interfaceText("Artist MBID")}
+226:               onChange={(event) => setArtistId(event.target.value)}
+227:               placeholder={interfaceText("e.g. 83d91898-...")}
+228:               value={artistId}
+229:              {...interfaceTextProps("Artist MBID")}/>
+230:           </Form.Field>
+231:           <Form.Field>
+
+## Review-wide checks
+
+All 240 selected cells are non-empty at the exact catalog review head. Existing terminal records are carried only when source ID, locale, source hash, and current target hash match exactly. The 67 fresh cells are reviewed against the caller contexts above. The two template placeholders `{peerId}` and `{podId}` remain exact in the ban confirmation; `{fullName}` remains exact in file/directory confirmations; `{playlistName}` occurs only in the already accepted status key at index 326. The playlist CSV example contains literal `artist,title`; MBID and MediaCore are preserved as technical/product labels. No ICU message syntax occurs in this window. Native-speaker approval is not claimed.

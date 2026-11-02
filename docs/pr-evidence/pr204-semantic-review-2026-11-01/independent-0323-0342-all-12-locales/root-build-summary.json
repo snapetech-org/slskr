@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "window": "323-342",
+  "reviewHead": "2eb1b192fcc384712de9b73dab96426d57f2ddf1",
+  "reviewTree": "d27a73371f5096f666bc02c1c78892503c36153a",
+  "sourceCatalogHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceCatalogTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "mainCandidatePlanSha256": "21a0c0ca2e0025ef42475b8341c4cc375f7acfe91bb1d86c9602f9c575baf2f6",
+  "mainCandidateCount": 46,
+  "coordinatedGroupCandidatePlanSha256": "f4948754f552e395073cab20e6ec32bc6809ebf836a5a62bc50c7cc3d33186c4",
+  "coordinatedGroupCandidateCount": 4,
+  "rootLedgerSha256": "78fd9eb826f104ed50a38b561d4f210e09091cbad6e691eab8dc55c49760f8ae",
+  "applyPlanSha256": "f8f5bef17279617f80d21257216cf29e7b3e83c9ffd01d5d3435e43e3610e0da",
+  "reviewRows": 49,
+  "dispositionCounts": {
+    "refined": 6,
+    "accepted-unchanged": 2,
+    "accepted": 41
+  },
+  "applyCount": 47,
+  "nativeSpeakerReview": "not_provided",
+  "held": 0,
+  "conflicts": 0,
+  "exactHashPreflight": "pending local verification against review head before application"
+}
+root-cross-review.jsonl 78fd9eb826f104ed50a38b561d4f210e09091cbad6e691eab8dc55c49760f8ae 116436
+root-apply-plan.jsonl f8f5bef17279617f80d21257216cf29e7b3e83c9ffd01d5d3435e43e3610e0da 99822
+root-cross-review-summary.json 1a16f25e4b3a6e59796a9f692061e241a4b1c25111e24aef0bbd2e64f00bd351 1055
