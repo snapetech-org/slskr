@@ -1,29 +1,29 @@
 {
-  "head": "5d0156003b5805b27c78b1289722a64ab30234a8",
-  "head_tree": "b9b0b5fc9b4c6e971be0c4179606ef6687ceb4a7",
+  "head": "d0399855c23aa8dca9b92786c602d0be6ba9733b",
+  "head_tree": "d2cf82fc77e004c19b39df94edc307a24d766797",
   "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
   "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
   "source_ids": 5437,
   "cell_count": 65244,
   "catalog_file_sha256": {
-    "web/src/lib/locales/ui-labels.ar.json": "b552bf07ddad5ab3f3eba84470eb3eedff453ec10cbdde3d72a9942a29a136ad",
-    "web/src/lib/locales/ui-labels.de.json": "c3b958f3272257866794c9585dbce5a361f74d37670b6f6c93a2c4966d8da655",
-    "web/src/lib/locales/ui-labels.es.json": "b1f54a96a5021b804ee3919ac9698fb92c828d6352b1579e8016bc0344960a18",
-    "web/src/lib/locales/ui-labels.fr.json": "d2a4dc588cf517e76b09706a7c79bb887a54ee36feccc7ef647a2539e4054a60",
-    "web/src/lib/locales/ui-labels.hi.json": "faba4d6c06e3fb16eadea0394a0c89ef8fcf6034dced2395d90c3395cc1ac89a",
-    "web/src/lib/locales/ui-labels.id.json": "58a8248e3114aaa76c2a1deb4a52b3d70661c6709d7aac61a6e98b846d104367",
-    "web/src/lib/locales/ui-labels.ja.json": "ac2a23fda32a3a0c63fb7295c64fe0f9646a3c35e623c42e8022c5d7873d03ab",
-    "web/src/lib/locales/ui-labels.ko.json": "31a517f3706c8ef934c59161e826b7b6b5f4a689a3e0ee1bde0bc05184906a36",
-    "web/src/lib/locales/ui-labels.pt-BR.json": "3596021da653bd975b70bdb9ec7bdf92e6fbee8dc58e46cc05fb973d412ba1dc",
-    "web/src/lib/locales/ui-labels.vi.json": "95a7ccafd9f963997e03666544b5e52055b5de7c1446708537c9deabdf64be95",
-    "web/src/lib/locales/ui-labels.zh-Hans.json": "ce53e0ad5dfdb9433d59a22ec7fc51ad173df4c13166d92133ed742035e56f8f",
-    "web/src/lib/locales/ui-labels.zh-Hant.json": "095b57e9322610d3cd4080fdc4ad3394ac8e83f7acbb0783e0d4c01ebcad7be3"
+    "web/src/lib/locales/ui-labels.ar.json": "60a34f5ad6659ce3ed429392a6e0d79f10bdbf3891570b14777de33a9c28f84f",
+    "web/src/lib/locales/ui-labels.de.json": "832d0471a04d5440bc86558d760fe65300300228c2579207c021fef64504c32c",
+    "web/src/lib/locales/ui-labels.es.json": "f33f795282610afba24f427b22a8a0a1f3757d5f20a35bf62cca0b54f5352c0e",
+    "web/src/lib/locales/ui-labels.fr.json": "383d7adf2a5ec652ba7230fbe15085e4b67d2e7efd24a276e2705c5913ce5c1b",
+    "web/src/lib/locales/ui-labels.hi.json": "3144b8ccecfc2fb2c81b604253726331fffa8a0f63ed686f90bdbf9bb32d3a16",
+    "web/src/lib/locales/ui-labels.id.json": "1d9da1e80060beee64c6e6d50079c0e2fea01c084bc038bac8116f053a748426",
+    "web/src/lib/locales/ui-labels.ja.json": "ef60aeaaf5ce0f2b978f0157d493a64ae88db5af764e30122d805cb25cd8c023",
+    "web/src/lib/locales/ui-labels.ko.json": "7e456353d8cd6a4d44e8dc8fbe31bfc2e950ad7ec464e68b9feebeff38cbee94",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "f4ab90d3b3a6806f3912cebffd5d89f4e825b3ed80506e6e903fb58e694e8790",
+    "web/src/lib/locales/ui-labels.vi.json": "48dbcd0b9906c834eacb6d46b3aae4c400886860238e348996de3c71fbb8ee82",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "8c826eebb4efb4996e966950adf2020f1358ebdcb7e5298d99f92676061f8ce9",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "11747cb04dd11943782a404ba868844a0ecaffb04e6f9d300f00c97487e0998f"
   },
   "structured_plural_cells": {
     "ar": 15
   },
-  "evidence_files_scanned": 826,
-  "evidence_scan_manifest_sha256": "67f47ac525a88cc31c1a7441d4c2f8da76ec977a9941a2dafb7b8d0eb189f0ee",
+  "evidence_files_scanned": 842,
+  "evidence_scan_manifest_sha256": "fddfef5b9bee844d9108ea1700e1e553dd8aa55886dda404c76f7826105780e9",
   "evidence_file_manifest": [
     {
       "root": "pr-review-head",
@@ -718,6 +718,102 @@
     {
       "root": "pr-review-head",
       "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0223-0242-all-12-locales/terminal-exclusions.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0243-0262-all-12-locales/applied-corrections.jsonl",
+      "bytes": 211256,
+      "sha256": "23876d39ceb6700eb933072cd21ea994e138e7b27274d00d59dd43210fe85727"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0243-0262-all-12-locales/candidate-corrections.jsonl",
+      "bytes": 96867,
+      "sha256": "52c4c04b35c578436ef7bbea6ab7601868f5e2666bb33e2be1521f11abf1c7d7"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0243-0262-all-12-locales/carries.jsonl",
+      "bytes": 75757,
+      "sha256": "c8c1105912291850600f70c6f52b66e3663ad345dab1c47ccab8e700e5d1142f"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0243-0262-all-12-locales/conflict-holds.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0243-0262-all-12-locales/conflict-reconciliation.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0243-0262-all-12-locales/decisions.jsonl",
+      "bytes": 200700,
+      "sha256": "f93ab8d96d4762a7cf261b312b62251852ef5bb602fa04c8fec7eafb2b0e2538"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0243-0262-all-12-locales/manifest.json",
+      "bytes": 10278,
+      "sha256": "1845d633eb7b58fd53d95830473d3226075ec9ee64c3b83e35254043d91b1181"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0243-0262-all-12-locales/prior-evidence-scan-manifest.jsonl",
+      "bytes": 168999,
+      "sha256": "da5496d95deb56fa50c602494f4cc768e7e1d36bb673bce5e6dc6bebfbaea3d1"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0243-0262-all-12-locales/reviewed-cell-audit.jsonl",
+      "bytes": 611028,
+      "sha256": "3f76152be03da445a4bb8ce864e08a1ab523e32dee3d90d1a6a598d83e52c8b0"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0243-0262-all-12-locales/root-apply-plan.jsonl",
+      "bytes": 55537,
+      "sha256": "b9030722ce56b0ea2a2da6795c7c5bf8f39b4ff69c9bec7ad82285284343536f"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0243-0262-all-12-locales/root-cross-review-summary.json",
+      "bytes": 621,
+      "sha256": "aa0e262fd3e18ca4d55472f87a90b65fa63f4216c0f145b10ad64e34022d8ab7"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0243-0262-all-12-locales/root-cross-review.jsonl",
+      "bytes": 120680,
+      "sha256": "3d840984024cb24829e5cc7173fa47589cbbe54ef9f36a77312f0bfc7756a2e0"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0243-0262-all-12-locales/selection-before-corrections.jsonl",
+      "bytes": 178130,
+      "sha256": "642994223ae0da0d0647b7bd0176066d16b4e71189934805e33fa6203954fdfe"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0243-0262-all-12-locales/selection.jsonl",
+      "bytes": 237279,
+      "sha256": "f9f92c9550ad175c9f72c1df6c6fdab58120775916de4bac0ff769f8c0ad14f6"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0243-0262-all-12-locales/source-pins.json",
+      "bytes": 3463,
+      "sha256": "51d50e5ed24e2493be8959a2f9b9c744bdc02c8e48f9aacef16330927094b1d2"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0243-0262-all-12-locales/terminal-exclusions.jsonl",
       "bytes": 0,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
@@ -4983,299 +5079,101 @@
     }
   ],
   "unique_current_cell_status_counts": {
-    "accepted": 23497,
-    "corrected": 193,
-    "correction-needed": 10814,
+    "accepted": 23576,
+    "corrected": 276,
+    "correction-needed": 10742,
     "held": 289,
-    "unreviewed": 30451
+    "unreviewed": 30361
   },
   "per_locale_exact_status_counts": {
     "ar": {
-      "accepted": 1292,
-      "corrected": 22,
-      "correction-needed": 1085,
+      "accepted": 1305,
+      "corrected": 29,
+      "correction-needed": 1079,
       "held": 12,
-      "unreviewed": 3026
+      "unreviewed": 3012
     },
     "de": {
-      "accepted": 1318,
-      "corrected": 24,
-      "correction-needed": 863,
+      "accepted": 1334,
+      "corrected": 28,
+      "correction-needed": 860,
       "held": 10,
-      "unreviewed": 3222
+      "unreviewed": 3205
     },
     "es": {
-      "accepted": 1273,
-      "corrected": 18,
-      "correction-needed": 1096,
+      "accepted": 1285,
+      "corrected": 26,
+      "correction-needed": 1090,
       "held": 9,
-      "unreviewed": 3041
+      "unreviewed": 3027
     },
     "fr": {
-      "accepted": 1277,
-      "corrected": 19,
-      "correction-needed": 1039,
+      "accepted": 1288,
+      "corrected": 28,
+      "correction-needed": 1032,
       "held": 10,
-      "unreviewed": 3092
+      "unreviewed": 3079
     },
     "hi": {
-      "accepted": 1274,
-      "corrected": 24,
-      "correction-needed": 1115,
+      "accepted": 1288,
+      "corrected": 30,
+      "correction-needed": 1112,
       "held": 14,
-      "unreviewed": 3010
+      "unreviewed": 2993
     },
     "id": {
-      "accepted": 1275,
-      "corrected": 19,
-      "correction-needed": 1085,
+      "accepted": 1288,
+      "corrected": 26,
+      "correction-needed": 1080,
       "held": 10,
-      "unreviewed": 3048
+      "unreviewed": 3033
     },
     "ja": {
       "accepted": 2771,
-      "corrected": 11,
-      "correction-needed": 615,
+      "corrected": 15,
+      "correction-needed": 611,
       "held": 38,
       "unreviewed": 2002
     },
     "ko": {
       "accepted": 2667,
-      "corrected": 9,
-      "correction-needed": 720,
+      "corrected": 14,
+      "correction-needed": 715,
       "held": 39,
       "unreviewed": 2002
     },
     "pt-BR": {
       "accepted": 2660,
-      "corrected": 7,
-      "correction-needed": 732,
+      "corrected": 14,
+      "correction-needed": 725,
       "held": 36,
       "unreviewed": 2002
     },
     "vi": {
       "accepted": 2438,
-      "corrected": 22,
-      "correction-needed": 938,
+      "corrected": 30,
+      "correction-needed": 930,
       "held": 37,
       "unreviewed": 2002
     },
     "zh-Hans": {
       "accepted": 2633,
-      "corrected": 9,
-      "correction-needed": 756,
+      "corrected": 18,
+      "correction-needed": 747,
       "held": 37,
       "unreviewed": 2002
     },
     "zh-Hant": {
       "accepted": 2619,
-      "corrected": 9,
-      "correction-needed": 770,
+      "corrected": 18,
+      "correction-needed": 761,
       "held": 37,
       "unreviewed": 2002
     }
   },
-  "unreviewed_source_index_count": 3703,
-  "unreviewed_cells": 30451,
+  "unreviewed_source_index_count": 3685,
+  "unreviewed_cells": 30361,
   "first_100_unreviewed_indices": {
-    "243": {
-      "source_id": "All Jobs",
-      "fresh_locale_count": 2,
-      "fresh_locales": [
-        "de",
-        "es"
-      ]
-    },
-    "244": {
-      "source_id": "All Pods",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "245": {
-      "source_id": "All Sources",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "246": {
-      "source_id": "All imported",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "247": {
-      "source_id": "All loaded transfers are complete",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "248": {
-      "source_id": "All releases",
-      "fresh_locale_count": 5,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "hi",
-        "id"
-      ]
-    },
-    "250": {
-      "source_id": "All results shown. {count} results hidden by filters",
-      "fresh_locale_count": 4,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "hi",
-        "id"
-      ]
-    },
-    "251": {
-      "source_id": "All slskr Metrics",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "252": {
-      "source_id": "Allow FTP certificate validation failures for self-signed or untrusted certificates.",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "253": {
-      "source_id": "Allow Lidarr to replace existing files during completed-download import.",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "254": {
-      "source_id": "Allow Lidarr-created Wishlist items to auto-download according to Wishlist rules.",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "255": {
-      "source_id": "Allow completed slskr download directories to be sent to Lidarr manual import.",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "257": {
-      "source_id": "Allow download",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "258": {
-      "source_id": "Allow legacy Soulseek clients to connect via bridge",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "259": {
-      "source_id": "Allow listeners who join from the directory to stream this party's current track from this slskr node.",
-      "fresh_locale_count": 1,
-      "fresh_locales": [
-        "hi"
-      ]
-    },
-    "260": {
-      "source_id": "Allow mesh streaming for broadcast",
-      "fresh_locale_count": 4,
-      "fresh_locales": [
-        "de",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "261": {
-      "source_id": "Allow no-auth access from explicitly configured non-loopback CIDRs.",
-      "fresh_locale_count": 4,
-      "fresh_locales": [
-        "de",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "262": {
-      "source_id": "Allow player pages to append local similar-track queue candidates when explicit page support is available.",
-      "fresh_locale_count": 4,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "hi"
-      ]
-    },
     "263": {
       "source_id": "Allow remote no-auth CIDRs",
       "fresh_locale_count": 6,
@@ -6208,6 +6106,215 @@
         "ar",
         "de",
         "es",
+        "fr",
+        "hi"
+      ]
+    },
+    "420": {
+      "source_id": "Available from {providers}. Preferred: {provider}.",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "422": {
+      "source_id": "Available ports for forwarding (1024-65535):",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "424": {
+      "source_id": "Average Score:",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "425": {
+      "source_id": "Average TTL:",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "426": {
+      "source_id": "Avg Computation Time:",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "427": {
+      "source_id": "Avg Confidence:",
+      "fresh_locale_count": 5,
+      "fresh_locales": [
+        "ar",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "428": {
+      "source_id": "Avg Duration",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "429": {
+      "source_id": "Avg Duration:",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "430": {
+      "source_id": "Avg Export Time:",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "431": {
+      "source_id": "Avg Import Time:",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "432": {
+      "source_id": "Avg Mappings/Domain:",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "433": {
+      "source_id": "Avg Match Time:",
+      "fresh_locale_count": 2,
+      "fresh_locales": [
+        "ar",
+        "hi"
+      ]
+    },
+    "434": {
+      "source_id": "Avg Publish Time:",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "435": {
+      "source_id": "Avg RTT",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "436": {
+      "source_id": "Avg Retrieval Time:",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "437": {
+      "source_id": "Avg Routing Time:",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "438": {
+      "source_id": "Avg Search Time:",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "439": {
+      "source_id": "Avg Sign Time:",
+      "fresh_locale_count": 4,
+      "fresh_locales": [
+        "ar",
+        "de",
         "fr",
         "hi"
       ]
