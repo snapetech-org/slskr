@@ -1,0 +1,386 @@
+# Runtime source context at PR #204 code/catalog source head 7ff454828398de6a3cfb72fe7f0ed21fe419425b (tree 9e9f2aa743c4ff3236af8f99619803bdc3a37152)
+
+The exact review/catalog head is 365677abe637fe720608fa05e8c250ea600deea0 (tree b2e90645ec85eb04d907845f0d048eb78bed0005). Its locale catalogs include 15 previously applied exact-hash corrections; runtime source files remain at the pinned source head. Current catalog file hashes are recorded in manifest.json.
+
+The 240-cell selection records every locale value. Fresh per-cell decisions are made only for exact current source/locale/source-hash/target-hash cells without a terminal prior disposition.
+
+## Runtime callsites
+
+### `web/src/components/System/Integrations/MetadataSettingsPanel.jsx` — Git blob `0d0ffc8e16a072970a51604bd95d76f7f796669f`, SHA-256 `e5aaf906b4cfc6e17ef8706bc95efb660b0eda2748bf2dad1c411ee9621d6339`
+
+Lines 516–530:
+516:             <Form.Group widths="equal">
+517:               <Form.Input
+518:                 aria-label={interfaceText("AcoustID client ID")}
+519:                 disabled={!remoteConfiguration || saving}
+520:                 label={interfaceText("Client ID")}
+521:                 onChange={(_, { value }) => update('acoustIdClientId', value)}
+522:                 placeholder={
+523:                   interfaceText(form.acoustIdClientIdConfigured
+524:                     ? 'Configured'
+525:                     : 'AcoustID client ID')
+526:                 }
+527:                 type="password"
+528:                 value={form.acoustIdClientId}
+529:                {...interfaceTextProps("AcoustID client ID")}/>
+530:               <Form.Input
+
+### `web/src/components/Search/SearchesListView.jsx` — Git blob `a8864fa20454a01cf52bd7d2043e5e3c5e5ba854`, SHA-256 `a412a0815d836e14c0e62feb36be929c1792bc64bcf10f213520c4609d028482`
+
+Lines 316–340:
+316:           <div className="search-acquisition-profile-strip">
+317:             <div className="search-acquisition-profile-label">
+318:               <Icon name={acquisitionProfile.icon} />
+319:               <LocalizedText source={"Acquisition Profile"} /></div>
+320:             {runtimeProfile !== 'native' && (
+321:               <Popup
+322:                 content={interfaceText("{label}: {description}", { "label": (acquisitionProfile.label), "description": (acquisitionProfile.description) })}
+323:                 position="top center"
+324:                 trigger={
+325:                   <Dropdown
+326:                     aria-label={interfaceText("Acquisition profile")}
+327:                     className="search-acquisition-profile-dropdown"
+328:                     data-testid="acquisition-profile-select"
+329:                     onChange={updateAcquisitionProfile}
+330:                     options={acquisitionProfileOptions}
+331:                     selection
+332:                     value={acquisitionProfile.id}
+333:                    {...interfaceTextProps("Acquisition profile")}/>
+334:                 }
+335:                {...interfaceTextProps("{label}: {description}")}/>
+336:             )}
+337:             <span className="search-acquisition-profile-summary">
+338:               {acquisitionProfile.summary}
+339:             </span>
+340:           </div>
+
+### `web/src/components/Player/PlayerLauncher.jsx` — Git blob `54f6f98454f46a957dc0e00c78660965412f025e`, SHA-256 `6942fcea65ad86549e0114f765ec9ce50a7ad4497828d4d5b79373dfb32ce720`
+
+Lines 365–376:
+365:               ) : collectionItems.length === 0 ? (
+366:                 <Message info><LocalizedText source={"No playable items in this collection."} /></Message>
+367:               ) : (
+368:                 <Table compact>
+369:                   <Table.Header>
+370:                     <Table.Row>
+371:                       <Table.HeaderCell><LocalizedText source={"Track"} /></Table.HeaderCell>
+372:                       <Table.HeaderCell collapsing><LocalizedText source={"Action"} /></Table.HeaderCell>
+373:                     </Table.Row>
+374:                   </Table.Header>
+375:                   <Table.Body>
+376:                     {collectionItems.map((item) => (
+
+Lines 530–542:
+530:                 ) : (
+531:                   <Table compact selectable>
+532:                     <Table.Header>
+533:                       <Table.Row>
+534:                         <Table.HeaderCell><LocalizedText source={"Track"} /></Table.HeaderCell>
+535:                         <Table.HeaderCell><LocalizedText source={"Location"} /></Table.HeaderCell>
+536:                         <Table.HeaderCell collapsing><LocalizedText source={"Copies"} /></Table.HeaderCell>
+537:                         <Table.HeaderCell collapsing><LocalizedText source={"Action"} /></Table.HeaderCell>
+538:                       </Table.Row>
+539:                     </Table.Header>
+540:                     <Table.Body>
+541:                       {visibleBrowserItems.map((item) => (
+542:                         <Table.Row
+
+### `web/src/components/Search/SongIDAnalysisResults.jsx` — Git blob `ddae669325bb2abe51c7b5c80fc1546174350e73`, SHA-256 `f1468f5e7ffc69840fe8ff8317518f55ed02a2c727c84d35df87ad6a1c0fde28`
+
+Lines 60–70:
+60:       <Label size="tiny"><LocalizedText source={"Byzantine"} />{" "}{formatPercent(item.byzantineScore)}</Label>
+61:       {item.canonicalScore ? (
+62:         <Label color="teal" size="tiny">
+63:           <LocalizedText source={"Canonical"} />{" "}{formatPercent(item.canonicalScore)}
+64:         </Label>
+65:       ) : null}
+66:       <Label color="blue" size="tiny">
+67:         <LocalizedText source={"Action"} />{" "}{formatPercent(item.actionScore)}
+68:       </Label>
+69:     </div>
+70:   );
+
+### `web/src/components/System/Integrations/LidarrPanel.jsx` — Git blob `3bb24c3fb94ceb4815dce12999fbacb898437e83`, SHA-256 `6fff815fc95b10400d84970dfa25f8bdf05d5bb360d719a3cf7f1cc62bcab8ea`
+
+Lines 298–310:
+298:                 <Table.Row>
+299:                   <Table.HeaderCell><LocalizedText source={"Status"} /></Table.HeaderCell>
+300:                   <Table.HeaderCell><LocalizedText source={"Directory"} /></Table.HeaderCell>
+301:                   <Table.HeaderCell><LocalizedText source={"Completed"} /></Table.HeaderCell>
+302:                   <Table.HeaderCell><LocalizedText source={"Details"} /></Table.HeaderCell>
+303:                   <Table.HeaderCell><LocalizedText source={"Action"} /></Table.HeaderCell>
+304:                 </Table.Row>
+305:               </Table.Header>
+306:               <Table.Body>
+307:                 {importHistory.map((record) => {
+308:                   const historyId = record.id || record.Id || record.historyId;
+309:                   const directory = record.directory || record.Directory || '-';
+310:                   const detail =
+
+### `web/src/components/System/ExperienceSettings/index.jsx` — Git blob `fbe8caabfc30e03809dc5ae7051bddb731986956`, SHA-256 `ba7826de4b32bc9506d5926e6243623ccc3104da43706ce7a57fe4b17bcf2f30`
+
+Lines 345–353:
+345:                 <Form.Select
+346:                   aria-label={interfaceText("Search action preview density preference")}
+347:                   label={interfaceText("Action Preview Density")}
+348:                   onChange={(_, { value }) =>
+349:                     update('searchActionPreviewDensity', value)
+350:                   }
+351:                   options={options.actionPreviewDensity}
+352:                   value={form.searchActionPreviewDensity}
+353:                  {...interfaceTextProps("Search action preview density preference")}/>
+
+### `web/src/components/Collections/Collections.jsx` — Git blob `c72ea0939c55ba47ed090e0d5ac3f67dd47b06c0`, SHA-256 `0ae47fbae62cd1c65e120eb02a41e4941c8aec5e1d5f037361f41365539c44ed`
+
+Lines 674–684:
+674:               <Table.Header>
+675:                 <Table.Row>
+676:                   <Table.HeaderCell><LocalizedText source={"Title"} /></Table.HeaderCell>
+677:                   <Table.HeaderCell><LocalizedText source={"Type"} /></Table.HeaderCell>
+678:                   <Table.HeaderCell><LocalizedText source={"Items"} /></Table.HeaderCell>
+679:                   <Table.HeaderCell><LocalizedText source={"Actions"} /></Table.HeaderCell>
+680:                 </Table.Row>
+681:               </Table.Header>
+682:               <Table.Body>
+683:                 {collections.map((collection) => (
+684:                   <Table.Row
+
+Lines 755–766:
+755:                 ) : (
+756:                   <Table>
+757:                     <Table.Header>
+758:                       <Table.Row>
+759:                         <Table.HeaderCell><LocalizedText source={"File Name"} /></Table.HeaderCell>
+760:                         <Table.HeaderCell><LocalizedText source={"Media Kind"} /></Table.HeaderCell>
+761:                         <Table.HeaderCell><LocalizedText source={"Actions"} /></Table.HeaderCell>
+762:                       </Table.Row>
+763:                     </Table.Header>
+764:                     <Table.Body>
+765:                       {selectedCollectionItems.map((item, index) => (
+766:                         <Table.Row
+
+### `web/src/components/Contacts/Contacts.jsx` — Git blob `bf516a826f0e6a30691f06dbee952f1b96d5a9b1`, SHA-256 `bf147a0e2de3f6a602ed9e3a8b4df9a850e7c033d55549980a5448c9e074622a`
+
+Lines 370–382:
+370:                 <Table.Header>
+371:                   <Table.Row>
+372:                     <Table.HeaderCell><LocalizedText source={"Nickname"} /></Table.HeaderCell>
+373:                     <Table.HeaderCell><LocalizedText source={"Peer ID"} /></Table.HeaderCell>
+374:                     <Table.HeaderCell><LocalizedText source={"Verified"} /></Table.HeaderCell>
+375:                     <Table.HeaderCell><LocalizedText source={"Last Seen"} /></Table.HeaderCell>
+376:                     <Table.HeaderCell><LocalizedText source={"Actions"} /></Table.HeaderCell>
+377:                   </Table.Row>
+378:                 </Table.Header>
+379:                 <Table.Body>
+380:                   {contacts.map((contact) => (
+381:                     <Table.Row
+382:                       data-testid={`contact-row-${contact.nickname || String(contact.peerId ?? '').slice(0, 8)}`}
+
+### `web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx` — Git blob `90f3e1d29a4b514a1877693e131e92b66b8050aa`, SHA-256 `17241e796b943988d339bac74569f5a5d4e8889194cad1221d0b9c8bc1b82a9e`
+
+Lines 70–83:
+70:       <Card.Group
+71:         itemsPerRow={1}
+72:         stackable
+73:       >
+74:         <Card fluid>
+75:           <Card.Content>
+76:             <Card.Header>
+77:               <Icon name="bolt" />
+78:               <LocalizedText source={"Actions: Webhooks and Scripts"} /></Card.Header>
+79:             <Card.Meta><LocalizedText source={"Event hooks, remote targets, command hooks, and retry shape."} /></Card.Meta>
+80:           </Card.Content>
+81:           <Card.Content>
+82:             <Form>
+83:               <Form.Group grouped>
+
+### `web/src/components/System/Jobs/index.jsx` — Git blob `d107affda28da2a86c3cbf22175cdf0898c6fa68`, SHA-256 `9e9f1caffccf25f2d9259e9295e3ad9f500acb30ba6150c976acf5762f4b0f16`
+
+Lines 291–300:
+291:             <Statistic>
+292:               <Statistic.Value>
+293:                 <Icon
+294:                   color="blue"
+295:                   name="spinner"
+296:                 />
+297:                 {formatRegionalNumber(analytics.active)}
+298:               </Statistic.Value>
+299:               <Statistic.Label><LocalizedText source={"Active"} /></Statistic.Label>
+300:             </Statistic>
+
+### `web/src/components/System/SourceProviders/index.jsx` — Git blob `b776fdcbf40703674082b79be9c75e84d03839e9`, SHA-256 `1f056026eede462d5e5410afe292d84103e6204288a6fa26a6cfb6647b2b9462`
+
+Lines 188–235:
+188:         <Statistic.Group
+189:           className="source-providers-summary"
+190:           size="small"
+191:         >
+192:           <Statistic>
+193:             <Statistic.Value>{activeCount}</Statistic.Value>
+194:             <Statistic.Label><LocalizedText source={"Active"} /></Statistic.Label>
+195:           </Statistic>
+196:           <Statistic>
+197:             <Statistic.Value>{providers.length}</Statistic.Value>
+198:             <Statistic.Label><LocalizedText source={"Known"} /></Statistic.Label>
+199:           </Statistic>
+200:           <Statistic>
+201:             <Statistic.Value>{configuredCount}</Statistic.Value>
+202:             <Statistic.Label><LocalizedText source={"Ready"} /></Statistic.Label>
+203:           </Statistic>
+204:         </Statistic.Group>
+205:         {!catalog.acquisitionPlanningEnabled && (
+206:           <Message
+207:             info
+208:             header={interfaceText("Acquisition planning is disabled")}
+209:             content={interfaceText("Providers remain visible here so enablement gaps are inspectable before automation is turned on.")}
+210:            {...interfaceTextProps("Acquisition planning is disabled")}/>
+211:         )}
+212:       </Segment>
+213:       <Card.Group
+214:         className="source-provider-grid"
+215:         itemsPerRow={3}
+216:         stackable
+217:       >
+218:         {providers.map((provider) => (
+219:           <Card
+220:             className="source-provider-card"
+221:             key={provider.id}
+222:           >
+223:             <Card.Content>
+224:               <div className="source-provider-title-row">
+225:                 <Card.Header>{provider.name}</Card.Header>
+226:                 <Label color={provider.active ? 'green' : 'grey'}>
+227:                   <Icon name={provider.active ? 'check circle' : 'pause circle'} />
+228:                   {provider.active ? <LocalizedText source={"Active"} /> : <LocalizedText source={"Disabled"} />}
+229:                 </Label>
+230:               </div>
+231:               <Card.Meta>{provider.domain}</Card.Meta>
+232:               <Card.Description>{provider.description}</Card.Description>
+233:               <div className="source-provider-labels">
+234:                 <Label color={riskColor(provider.riskLevel)}>
+235:                   {provider.riskLevel}
+
+### `web/src/components/Pods/PortForwarding.jsx` — Git blob `7eaacd44ed04d2ee5d71e7db466fe43b1fa39da1`, SHA-256 `3db4aa88c36b9c57f077c61f82541043d2787bc55f3289992b69403e942c326d`
+
+Lines 628–638:
+628:                             {forwarding.destinationHost}:
+629:                             {forwarding.destinationPort}
+630:                           </code>
+631:                         </Table.Cell>
+632:                         <Table.Cell>
+633:                           <Label color={forwarding.isActive ? 'green' : 'red'}>
+634:                             {forwarding.isActive ? <LocalizedText source={"Active"} /> : <LocalizedText source={"Inactive"} />}
+635:                           </Label>
+636:                         </Table.Cell>
+637:                         <Table.Cell>{forwarding.activeConnections}</Table.Cell>
+638:                         <Table.Cell>
+
+### `web/src/components/System/Mesh/RealmSubjectIndexConflicts.jsx` — Git blob `e92234a2e51f863d6eac8cd118996ded83d17130`, SHA-256 `3bac8e97e2b8089e594183384842acd8d20c7cf0b7a05f9a76ac01ef02b72e77`
+
+Lines 274–284:
+274:                         return (
+275:                           <Segment
+276:                             compact
+277:                             key={`${authorityKey}:${get(value, 'value', 'Value')}`}
+278:                           >
+279:                             <div className="integration-status-row">
+280:                               <Label color={disabled ? 'grey' : 'green'}>
+281:                                 {disabled ? <LocalizedText source={"Locally disabled"} /> : <LocalizedText source={"Active"} />}
+282:                               </Label>
+283:                               <Label basic>{authorityKey}</Label>
+284:                               <Popup
+
+### `web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx` — Git blob `4f3c8484d8d23746369ce7619ab4e017849dfb89`, SHA-256 `8cb1922e358f7229d7f8147f41e18bffa3146283c270a5844393fc72f755c6ca`
+
+Lines 546–551:
+546:                         {formatRegionalFixedNumber(retrievalStats.averageRetrievalTime?.totalMilliseconds, 0)}
+547:                         <LocalizedText source={"ms"} /><br />
+548:                         <strong><LocalizedText source={"Active Cache Entries:"} /></strong>{' '}
+549:                         {formatRegionalNumber(retrievalStats.activeCacheEntries)}
+550:                         <br />
+551:                         <strong><LocalizedText source={"Cache Size:"} /></strong>{' '}
+
+### `web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx` — Git blob `2abab8a5496df8cdd48e7acf32b479c7ecba6c23`, SHA-256 `34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60`
+
+Lines 395–400:
+395:                       {formatRegionalFixedNumber(descriptorStats.averageRetrievalTime?.totalMilliseconds, 0)}
+396:                       <LocalizedText source={"ms"} /><br />
+397:                       <strong><LocalizedText source={"Active Cache Entries:"} /></strong>{' '}
+398:                       {formatRegionalNumber(descriptorStats.activeCacheEntries)}
+399:                       <br />
+400:                       <strong><LocalizedText source={"Cache Size:"} /></strong>{' '}
+
+### `web/src/components/System/MediaCore/PodMessageStoragePanel.jsx` — Git blob `980239bb8fca9ebd9151bd91d2808b17deff0990`, SHA-256 `1419f1e1f2b02a8ef3810f5c92b61e884b5da9249381cfb6d586fe7d6235ded0`
+
+Lines 142–148:
+142:                     <br />
+143:                     <strong><LocalizedText source={"Pods with Messages:"} /></strong>{' '}
+144:                     {Object.keys(storageStats.messagesPerPod || {}).length}
+145:                     <br />
+146:                     <strong><LocalizedText source={"Active Channels:"} /></strong>{' '}
+147:                     {Object.keys(storageStats.messagesPerChannel || {}).length}
+148:                   </p>
+
+### `web/src/components/System/Bridge/index.jsx` — Git blob `2ebcb45755514fd7f281cdf96fd40046605d1906`, SHA-256 `cdb2bf06a4066615fbdcbbffdd552b504db80aff3003c2e60ac3de43162ec666`
+
+Lines 515–522:
+515:                 <Statistic.Group size="small">
+516:                   <Statistic>
+517:                     <Statistic.Value>
+518:                       {stats.currentConnections || 0}
+519:                     </Statistic.Value>
+520:                     <Statistic.Label><LocalizedText source={"Active Connections"} /></Statistic.Label>
+521:                   </Statistic>
+522:                   <Statistic>
+
+### `web/src/components/System/Security/index.jsx` — Git blob `5a3b5cd919daa818d106031ecc70a31cde4c14a2`, SHA-256 `dc055397cbd4afe380d4b0c5c0f3af3c1077719fea1854ec4116cf2367ca2743`
+
+Lines 190–195:
+190:               <Statistic color="blue">
+191:                 <Statistic.Value>
+192:                   {stats.networkGuardStats?.globalConnections ?? 0}
+193:                 </Statistic.Value>
+194:                 <Statistic.Label><LocalizedText source={"Active Connections"} /></Statistic.Label>
+195:               </Statistic>
+
+### `web/src/components/System/Security/AdversarialSettingsView.jsx` — Git blob `adcacdd123faf82a315da746fab3243adf5ea6a3`, SHA-256 `5b2dfa095ba281bae2b5ef66e17901b38c7d2a68d9bef52c5f016ce3352db72d`
+
+Lines 334–337:
+334:                     <p>
+335:                       <strong><LocalizedText source={"Active Connections:"} /></strong>{' '}
+336:                       {torStatus.ActiveConnections}
+337:                     </p>
+
+### `web/src/components/System/MediaCore/PodDiscoveryPanel.jsx` — Git blob `c79ee3cf9b70c20fbb819aae0925b3b52c0dbe89`, SHA-256 `c17c245776bcb87bb6089ff3836ff6b6061081ad2d0935d4dd15bff3aff928af`
+
+Lines 560–568:
+560:                         <p>
+561:                           <strong><LocalizedText source={"Registered Pods:"} /></strong>{' '}
+562:                           {discoveryStats.totalRegisteredPods}
+563:                           <br />
+564:                           <strong><LocalizedText source={"Active Entries:"} /></strong>{' '}
+565:                           {formatRegionalNumber(discoveryStats.activeDiscoveryEntries)}
+566:                           <br />
+567:                           <strong><LocalizedText source={"Expired Entries:"} /></strong>{' '}
+568:                           {formatRegionalNumber(discoveryStats.expiredEntries)}
+
+## Source-key review notes
+
+- Index 123, `AcoustID client ID` — `web/src/components/System/Integrations/MetadataSettingsPanel.jsx`: Accessible name and fallback placeholder for the AcoustID client ID credential input. Review note: The translation preserves the AcoustID product name and identifies its client ID.
+- Index 127, `Acquisition Profile` — `web/src/components/Search/SearchesListView.jsx`: Visible heading above the acquisition-profile strip in search results. Review note: The label names the profile used for search result acquisition/routing.
+- Index 129, `Acquisition profile` — `web/src/components/Search/SearchesListView.jsx`: Accessible name for the acquisition-profile dropdown used when selecting a search acquisition profile. Review note: The target names the same profile concept as the neighboring visible heading, with normal locale capitalization.
+- Index 130, `Acquisition profile {profile}: {description}` — `web/src/components/Search/SearchesListView.jsx`: The catalog contains this parameterized acquisition-profile template, but an exact caller for the full key is absent at the pinned source head. The active search UI interpolates profile label and description through a separate generic `{label}: {description}` source. Review note: The six fresh translations preserve both `{profile}` and `{description}` exactly and retain the profile/description relationship. Runtime placement for this exact catalog key is not established.
+- Index 132, `Action` — `web/src/components/Player/PlayerLauncher.jsx`: Table column heading for a player action, with repeated use in the action queue. Also used as a scorecard term in SongID analysis and a table column in Lidarr integration. Review note: The target is the singular noun “Action” as a column/category label, not an imperative verb.
+- Index 133, `Action Preview Density` — `web/src/components/System/ExperienceSettings/index.jsx`: Form select label for the density preference applied to search action previews. Review note: The target describes preview density/compactness as a user setting.
+- Index 135, `Actions` — `web/src/components/Collections/Collections.jsx`: Plural table column heading for row-level actions; the same label is used in contacts and other action tables. Review note: The target is plural and suits a table column containing per-row controls.
+- Index 136, `Actions: Webhooks and Scripts` — `web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx`: Card header for the administrative settings governing actions, webhooks, and scripts. Review note: The target retains the section scope and represents webhook/script integrations; `Webhooks` is a technical term, not a secret or runtime identifier.
+- Index 137, `Active` — `web/src/components/Pods/PortForwarding.jsx`: Status value for one forwarding row; also appears as a single provider/realm status and as the label for active-count statistics. Review note: Spanish and French plural forms can match the count statistics but conflict with the single-row status use. The shared source key has number-agreement ambiguity; proposed singular forms remain unapplied.
+- Index 138, `Active Cache Entries:` — `web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx`: Metric label immediately preceding the number of active descriptor-cache entries; repeated in the MediaCore statistics dashboard. Review note: The translation names the active cache-entry count and preserves the colon/value-label structure.
+- Index 139, `Active Channels:` — `web/src/components/System/MediaCore/PodMessageStoragePanel.jsx`: Metric label before the number of channels that contain messages. Review note: The target identifies the active channel count and preserves the colon.
+- Index 140, `Active Connections` — `web/src/components/System/Bridge/index.jsx`: Statistic label before the active-connection total; also used in Security statistics. Review note: This source has no colon; the target labels an active connection count.
+- Index 141, `Active Connections:` — `web/src/components/System/Security/AdversarialSettingsView.jsx`: Label before the active-connection count reported by the Tor status object. Review note: The target labels a count and preserves the source colon using locale-appropriate spacing.
+- Index 142, `Active Entries:` — `web/src/components/System/MediaCore/PodDiscoveryPanel.jsx`: Metric label before the number of active discovery entries. Review note: The target identifies active entries and preserves the colon/value structure.
+
+The fresh AcoustID credential key preserves the `AcoustID` protected product literal. The parameterized acquisition template preserves `{profile}` and `{description}` in every reviewed fresh value; the braces are substitution placeholders, not an ICU plural/select message.
+
+The Spanish and French `Active` candidates are moderate-confidence only: the exact same source label appears both on individual active-status rows and beside active-count statistics. Suggestions remain unapplied until the reused key’s contexts are reconciled.
