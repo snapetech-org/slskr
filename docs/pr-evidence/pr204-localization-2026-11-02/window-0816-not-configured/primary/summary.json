@@ -1,0 +1,19 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "head": "3a4c26a7faf1dacbd8f3a382d47243b7063a262d",
+  "tree": "9059d27001d306ea6b064560137ff2a51dd19021",
+  "source": "Not configured",
+  "sourcePath": "web/src/components/System/Integrations/LidarrPanel.jsx",
+  "sourceCallsites": 1,
+  "directLocales": 12,
+  "missingCells": 12,
+  "proposals": 12,
+  "placeholders": "none",
+  "protectedLiterals": "none",
+  "reviewStatus": "primary complete; independent cross-review pending; do not apply before cross-review",
+  "worktreeHeadRemainsBase": true,
+  "worktreeHasUncommittedW803Application": true,
+  "noTestsBuildsOrCI": true
+}

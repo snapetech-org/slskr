@@ -1,0 +1,12 @@
+{
+  "head": "3a4c26a7faf1dacbd8f3a382d47243b7063a262d",
+  "tree": "9059d27001d306ea6b064560137ff2a51dd19021",
+  "sourcePath": "web/src/components/System/Integrations/LidarrPanel.jsx",
+  "sourceBlobOid": "3bb24c3fb94ceb4815dce12999fbacb898437e83",
+  "sourceFileSha256": "1ffd38e6a6f23d725a35a2a52ed9f317a3c10bcff285a83b09ded775eaca976f",
+  "sourceOccurrence": {
+    "line": 44,
+    "lineText": "    return apiKey ? 'Configured' : 'Not configured';"
+  },
+  "primaryReview": "missing exact catalog key across all 12 direct locale catalogs"
+}

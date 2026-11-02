@@ -1123,6 +1123,7 @@
   "Configure ListenBrainz scrobbling": "Thiết lập gửi lịch sử nghe đến ListenBrainz",
   "Configure ListenBrainz scrobbling for this browser.": "Hãy thiết lập gửi lịch sử nghe từ trình duyệt này đến ListenBrainz.",
   "Configured": "Đã định cấu hình",
+  "Not configured": "Chưa được cấu hình",
   "Confirm Directory Delete": "Xác nhận xóa thư mục",
   "Confirm File Delete": "Xác nhận xóa tệp",
   "Confirm Log Out": "Xác nhận đăng xuất",

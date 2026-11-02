@@ -1123,6 +1123,7 @@
   "Configure ListenBrainz scrobbling": "ListenBrainzへの再生履歴送信を設定",
   "Configure ListenBrainz scrobbling for this browser.": "このブラウザーでListenBrainzに再生履歴を送信するよう設定します。",
   "Configured": "設定済み",
+  "Not configured": "未設定",
   "Confirm Directory Delete": "ディレクトリ削除の確認",
   "Confirm File Delete": "ファイル削除の確認",
   "Confirm Log Out": "ログアウトの確認",

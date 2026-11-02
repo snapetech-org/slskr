@@ -1123,6 +1123,7 @@
   "Configure ListenBrainz scrobbling": "ListenBrainz 재생 기록 전송 설정",
   "Configure ListenBrainz scrobbling for this browser.": "이 브라우저에서 ListenBrainz로 재생 기록을 전송하도록 설정합니다.",
   "Configured": "구성됨",
+  "Not configured": "구성되지 않음",
   "Confirm Directory Delete": "디렉터리 삭제 확인",
   "Confirm File Delete": "파일 삭제 확인",
   "Confirm Log Out": "로그아웃 확인",

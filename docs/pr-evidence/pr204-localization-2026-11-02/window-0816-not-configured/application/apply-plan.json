@@ -1,0 +1,130 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "input_head": "eb0a4b9e51e5d52ecade154c3bcfde152f39eb7f",
+  "input_tree": "6dc321d066407fc212541720f38b15b5bab3dbfc",
+  "source_key": "Not configured",
+  "source_path": "web/src/components/System/Integrations/LidarrPanel.jsx",
+  "source_file_sha256": "231d7df12d9f20d3c8b534fecdfe32937ebbe4ea040c81e652c6c7adefeabee1",
+  "caller_reverified": {
+    "falsey_api_key_branch": true,
+    "status_rendered_through_LocalizedText": true
+  },
+  "placement": "insert immediately after the existing Configured status in each locale catalog",
+  "primary_pin_discrepancy": {
+    "claimed_source_file_sha256": "1ffd38e6a6f23d725a35a2a52ed9f317a3c10bcff285a83b09ded775eaca976f",
+    "recomputed_pinned_source_file_sha256": "6fff815fc95b10400d84970dfa25f8bdf05d5bb360d719a3cf7f1cc62bcab8ea",
+    "source_blob_oid_matches_pinned_commit": true,
+    "live_caller_rechecked_at_input_head": true
+  },
+  "accepted_cells": [
+    {
+      "locale": "ar",
+      "target": "لم يتم تكوينه",
+      "target_sha256_utf8": "9bf0b8ef75a87cee5d9fa7b74fe8b07243a1e0f34f19957acee6fea10566d4ab",
+      "primary_disposition": "primary-proposal",
+      "independent_disposition": "accept-primary-proposal",
+      "current_target_before": null,
+      "catalog_file_sha256_before": "821eb178b7e6185a0803c4278d1ef5f93dba0e8bace0ea0c6be018075a780e1b"
+    },
+    {
+      "locale": "de",
+      "target": "Nicht konfiguriert",
+      "target_sha256_utf8": "875bfe5313e77d300c8b076a16fb6a5d00d8230c49b80efa3227205d0bf2345f",
+      "primary_disposition": "primary-proposal",
+      "independent_disposition": "accept-primary-proposal",
+      "current_target_before": null,
+      "catalog_file_sha256_before": "ebba4887e7dc103573c2c4186ebb2fe1ac734ca2598e780f2a20a091a45eb9f1"
+    },
+    {
+      "locale": "es",
+      "target": "Sin configurar",
+      "target_sha256_utf8": "8cbe82eda079e7137c48bd770ec473fafd23a3c347b6f44c032e81737e3bdb26",
+      "primary_disposition": "primary-proposal",
+      "independent_disposition": "accept-primary-proposal",
+      "current_target_before": null,
+      "catalog_file_sha256_before": "699cd5d6028404a55e45b94ca5b058ca5120894482b80b935b0c40d6444339fc"
+    },
+    {
+      "locale": "fr",
+      "target": "Non configurée",
+      "target_sha256_utf8": "f0a4250b4b693b0d9bf12b1fc072a9e2a2f60529242e619171236887638446a8",
+      "primary_disposition": "primary-proposal",
+      "independent_disposition": "accept-primary-proposal",
+      "current_target_before": null,
+      "catalog_file_sha256_before": "8732ef3edc10969094bbdddf1a0458bf90cd21f2c9b8318a28ab62e45c205c8a"
+    },
+    {
+      "locale": "hi",
+      "target": "कॉन्फ़िगर नहीं है",
+      "target_sha256_utf8": "25fd4b007ba12e85f02f221da859fddeb508fac6f08fff4437919def2ee07850",
+      "primary_disposition": "primary-proposal",
+      "independent_disposition": "accept-primary-proposal",
+      "current_target_before": null,
+      "catalog_file_sha256_before": "0db062d5886e65f7537d09d4e58e552b199ff81c69e755d52460ad2c7f90bee7"
+    },
+    {
+      "locale": "id",
+      "target": "Belum dikonfigurasi",
+      "target_sha256_utf8": "fa9c8cf660a0cf0479b18aaa85c42b0d0bb11a3a0639f4ccb6e76732d821edb9",
+      "primary_disposition": "primary-proposal",
+      "independent_disposition": "accept-primary-proposal",
+      "current_target_before": null,
+      "catalog_file_sha256_before": "6e7e2cce1d86a1070f9bbc9f364200d12958fd388c1eea496fc40f981b33d332"
+    },
+    {
+      "locale": "ja",
+      "target": "未設定",
+      "target_sha256_utf8": "6213305916949e4cb658c65cce44c82b2db645dce0b3d4a4e8dc6783abc4ba9a",
+      "primary_disposition": "primary-proposal",
+      "independent_disposition": "accept-primary-proposal",
+      "current_target_before": null,
+      "catalog_file_sha256_before": "c647c032955a4fdbd9e380c4d5142768f5202a8a94a9b60465d4f4ce61cb4255"
+    },
+    {
+      "locale": "ko",
+      "target": "구성되지 않음",
+      "target_sha256_utf8": "5b1f1a50118aacb04c3bb17591c120cdcb8e79acd4d7ca6de094b8b54dd8180e",
+      "primary_disposition": "primary-proposal",
+      "independent_disposition": "accept-primary-proposal",
+      "current_target_before": null,
+      "catalog_file_sha256_before": "ac4e9214a04aa1aaa0bd26c44433217e7f08b8e4421f2c0c5638005e2920ae29"
+    },
+    {
+      "locale": "pt-BR",
+      "target": "Não configurada",
+      "target_sha256_utf8": "af37ac94e9f04a4f7d231e612f765dd2398ae534d0e15a8c11b869647ee3444d",
+      "primary_disposition": "primary-proposal",
+      "independent_disposition": "accept-primary-proposal",
+      "current_target_before": null,
+      "catalog_file_sha256_before": "5c460355af2e9976eb764ccb147d6ada5a673314eb30001932a270918311623d"
+    },
+    {
+      "locale": "vi",
+      "target": "Chưa được cấu hình",
+      "target_sha256_utf8": "2293a77af7845ec501de36803f83a23d19f2f16a04adbbb78c4672f30427d9cc",
+      "primary_disposition": "primary-proposal",
+      "independent_disposition": "accept-primary-proposal",
+      "current_target_before": null,
+      "catalog_file_sha256_before": "085681de3e8b5171a1217000e4476e5198eee8f187e7b05ac38db7d12b9c4a79"
+    },
+    {
+      "locale": "zh-Hans",
+      "target": "未配置",
+      "target_sha256_utf8": "80a57e03f0717f9106a3154ec94c249dd1019831c8d8e3a354b619e55ba49753",
+      "primary_disposition": "primary-proposal",
+      "independent_disposition": "accept-primary-proposal",
+      "current_target_before": null,
+      "catalog_file_sha256_before": "d7ab2d67ea9d2054347640a6605c7aa425cef258bde106d4901844ac1b9c3789"
+    },
+    {
+      "locale": "zh-Hant",
+      "target": "未設定",
+      "target_sha256_utf8": "6213305916949e4cb658c65cce44c82b2db645dce0b3d4a4e8dc6783abc4ba9a",
+      "primary_disposition": "primary-proposal",
+      "independent_disposition": "accept-primary-proposal",
+      "current_target_before": null,
+      "catalog_file_sha256_before": "06eec8d1805f60f8da1600148d267b28ba76e15500be1a6cb0dadf1c4ab0fe44"
+    }
+  ]
+}

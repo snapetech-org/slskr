@@ -1123,6 +1123,7 @@
   "Configure ListenBrainz scrobbling": "配置 ListenBrainz 听歌记录同步",
   "Configure ListenBrainz scrobbling for this browser.": "为此浏览器配置 ListenBrainz 听歌记录同步。",
   "Configured": "已配置",
+  "Not configured": "未配置",
   "Confirm Directory Delete": "确认目录删除",
   "Confirm File Delete": "确认文件删除",
   "Confirm Log Out": "确认退出登录",

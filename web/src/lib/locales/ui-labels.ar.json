@@ -1123,6 +1123,7 @@
   "Configure ListenBrainz scrobbling": "اضبط إرسال سجل الاستماع إلى ListenBrainz",
   "Configure ListenBrainz scrobbling for this browser.": "اضبط إرسال سجل الاستماع إلى ListenBrainz لهذا المتصفح.",
   "Configured": "تم تكوينه",
+  "Not configured": "لم يتم تكوينه",
   "Confirm Directory Delete": "تأكيد حذف المجلد",
   "Confirm File Delete": "تأكيد حذف الملف",
   "Confirm Log Out": "تأكيد تسجيل الخروج",

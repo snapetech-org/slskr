@@ -1123,6 +1123,7 @@
   "Configure ListenBrainz scrobbling": "ListenBrainz स्क्रोब्लिंग कॉन्फ़िगर करें",
   "Configure ListenBrainz scrobbling for this browser.": "इस ब्राउज़र के लिए ListenBrainz स्क्रोब्लिंग कॉन्फ़िगर करें।",
   "Configured": "कॉन्फ़िगर किया गया",
+  "Not configured": "कॉन्फ़िगर नहीं है",
   "Confirm Directory Delete": "निर्देशिका हटाने की पुष्टि करें",
   "Confirm File Delete": "फ़ाइल हटाने की पुष्टि करें",
   "Confirm Log Out": "लॉग आउट की पुष्टि करें",

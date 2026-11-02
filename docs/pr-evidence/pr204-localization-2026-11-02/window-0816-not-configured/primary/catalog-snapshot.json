@@ -1,0 +1,103 @@
+{
+  "head": "3a4c26a7faf1dacbd8f3a382d47243b7063a262d",
+  "tree": "9059d27001d306ea6b064560137ff2a51dd19021",
+  "catalogs": [
+    {
+      "locale": "ar",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json",
+      "baseBlobOid": "dfe5d8db2dd50cd18fa7a4d7d2bd4a38c9e02a50",
+      "baseFileSha256": "a6e839b242b07aa7bbbbda1f6968dad0341da99da2b0939c4df0fe80049d8d80",
+      "orderedKeyCount": 5440,
+      "sourceKeyPresent": false
+    },
+    {
+      "locale": "de",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json",
+      "baseBlobOid": "66ed9756aaa0b8b4e949def82ee0c690ef12165a",
+      "baseFileSha256": "e7a93e92825514d6c2268e742d7d599aceb53fb0bc52ced49e211c5620f5683e",
+      "orderedKeyCount": 5440,
+      "sourceKeyPresent": false
+    },
+    {
+      "locale": "es",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json",
+      "baseBlobOid": "b80cfcbad1aeeb7b149f74a656f5e8166a01d3d7",
+      "baseFileSha256": "946ecc35fedb02eebf5a34add4d98659795668d0f070979d7d25037b6316ed27",
+      "orderedKeyCount": 5440,
+      "sourceKeyPresent": false
+    },
+    {
+      "locale": "fr",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json",
+      "baseBlobOid": "c48600ca77045c36bb24c1c8867b8f7e40209e05",
+      "baseFileSha256": "1651d1e52ae97966f6ef5c60111c35085786c95ef62b412b1d0bea36fd46b5bf",
+      "orderedKeyCount": 5440,
+      "sourceKeyPresent": false
+    },
+    {
+      "locale": "hi",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json",
+      "baseBlobOid": "76c2e5b27cee95bf50fb6f5485070154ede31ba5",
+      "baseFileSha256": "aa33d9e9034ecfce49796fa7ad08ded79f7d6d911b11559d78e600adce82ed4e",
+      "orderedKeyCount": 5440,
+      "sourceKeyPresent": false
+    },
+    {
+      "locale": "id",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json",
+      "baseBlobOid": "27079016dd30ef1c35ef98de45727e4771b65145",
+      "baseFileSha256": "77f3f3cbdc656487f1009394da96f7595aa7a217d3cd70f3e52ebe615d3b71a5",
+      "orderedKeyCount": 5440,
+      "sourceKeyPresent": false
+    },
+    {
+      "locale": "ja",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json",
+      "baseBlobOid": "ea8171c91db13b4eb2631dc4d843c14d5f9183b6",
+      "baseFileSha256": "26bcccd71c897ebf32f3913d1522354255d4900a9a0bd889b3163922d08cef0d",
+      "orderedKeyCount": 5440,
+      "sourceKeyPresent": false
+    },
+    {
+      "locale": "ko",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json",
+      "baseBlobOid": "360025059744ff1d9a7d8d37334dd9c540714652",
+      "baseFileSha256": "a4e5eadb2436e5a1917cdd25a06e766f8aa960c93f3bb44c55b25150b175c1f1",
+      "orderedKeyCount": 5440,
+      "sourceKeyPresent": false
+    },
+    {
+      "locale": "pt-BR",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "baseBlobOid": "efc4392de4b594269610518c66348957b43c888c",
+      "baseFileSha256": "4c32a759f1a3bcda98b9a0de82c570fb5bdd8f701f7280509f19f08520ee601d",
+      "orderedKeyCount": 5440,
+      "sourceKeyPresent": false
+    },
+    {
+      "locale": "vi",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json",
+      "baseBlobOid": "3c7833d5fd3177b92f0c8f8321ff10a87da7db6f",
+      "baseFileSha256": "4cd62bffd4c96248f46462344edd9ad1610704e1196ae1272f1a7a829a6501a3",
+      "orderedKeyCount": 5440,
+      "sourceKeyPresent": false
+    },
+    {
+      "locale": "zh-Hans",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "baseBlobOid": "c2ad923c4882f5586ad5ceb86a129d01bd493a66",
+      "baseFileSha256": "c39d584d66437b75f475769ca1b31284118b247ea768b6d632722922486ed51a",
+      "orderedKeyCount": 5440,
+      "sourceKeyPresent": false
+    },
+    {
+      "locale": "zh-Hant",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "baseBlobOid": "5ed214e44870502c0113333c9c9f6e521ac019f6",
+      "baseFileSha256": "1fed2a7901bffa184962899aa93a84eb6c6ea2730d6ddcf08cb615e45ff5cf81",
+      "orderedKeyCount": 5440,
+      "sourceKeyPresent": false
+    }
+  ],
+  "all12MissingSourceKey": true
+}

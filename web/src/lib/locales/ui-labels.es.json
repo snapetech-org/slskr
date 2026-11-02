@@ -1123,6 +1123,7 @@
   "Configure ListenBrainz scrobbling": "Configurar el scrobbling ListenBrainz",
   "Configure ListenBrainz scrobbling for this browser.": "Configure el scrobbling ListenBrainz para este navegador.",
   "Configured": "Configurado",
+  "Not configured": "Sin configurar",
   "Confirm Directory Delete": "Confirmar eliminación del directorio",
   "Confirm File Delete": "Confirmar eliminación de archivo",
   "Confirm Log Out": "Confirmar cierre de sesión",
