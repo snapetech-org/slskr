@@ -4974,7 +4974,7 @@
   "Each link requires a non-empty name and target": "Cada link exige um nome e um destino não vazios. (campos de API: \"links, name, target\")",
   "Empty payload": "Carga útil vazia.",
   "Existing configuration is not a YAML mapping": "A configuração existente não é um mapeamento YAML.",
-  "ExternalId is required": "ExternalId é obrigatório. (campos de API: \"externalId\")",
+  "ExternalId is required": "ExternalId é obrigatório. (campo da API: \"externalId\")",
   "Failed to check message seen status": "Falha ao verificar se a mensagem foi visualizada.",
   "Failed to check role": "Falha ao verificar a função.",
   "Failed to cleanup expired memberships": "Falha ao limpar as associações expiradas.",
