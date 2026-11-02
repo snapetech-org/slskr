@@ -1,0 +1,18 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pr_number": 204,
+  "input_head": "e4908e742db9f31a84c6aaaad43f4427c2db649b",
+  "input_tree": "93843e9d75c9d6846140346e80567be989d832af",
+  "fixed_modal_string_actions": 5,
+  "localized_confirm_fallbacks": [
+    "Cancel",
+    "OK"
+  ],
+  "catalogs_updated": 12,
+  "new_key": "OK",
+  "keys_per_locale_after": 5438,
+  "key_order_parity": true,
+  "native_speaker_approval": false,
+  "browser_review_at_exact_head": false,
+  "tests_builds_scans_ci_workflows_releases_tags_merges": false
+}

@@ -1378,6 +1378,7 @@
   "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain.": "ドメインからフロントスルー (主要な CDN ドメインなど)。トラフィックはこのドメインに接続しているようです。",
   "Domains": "ドメイン",
   "Done": "終わり",
+  "OK": "OK",
   "Download Album": "アルバムをダウンロード",
   "Download Best Album": "ベストアルバムをダウンロード",
   "Download KiB/s": "ダウンロード KiB/秒",

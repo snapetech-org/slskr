@@ -1378,6 +1378,7 @@
   "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain.": "डोमेन टू फ्रंट थ्रू (उदाहरण के लिए, प्रमुख सीडीएन डोमेन)। ट्रैफ़िक इस डोमेन से कनेक्ट होता प्रतीत होता है.",
   "Domains": "डोमेन",
   "Done": "हो गया",
+  "OK": "ठीक है",
   "Download Album": "एल्बम डाउनलोड करें",
   "Download Best Album": "सर्वश्रेष्ठ एल्बम डाउनलोड करें",
   "Download KiB/s": "KiB/s डाउनलोड करें",

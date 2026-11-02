@@ -1378,6 +1378,7 @@
   "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain.": "المجال إلى الأمام من خلال (على سبيل المثال، مجالات CDN الرئيسية). يبدو أن حركة المرور تتصل بهذا المجال.",
   "Domains": "المجالات",
   "Done": "منتهي",
+  "OK": "موافق",
   "Download Album": "تحميل الالبوم",
   "Download Best Album": "تحميل افضل البوم",
   "Download KiB/s": "تنزيل كيلوبايت/ثانية",

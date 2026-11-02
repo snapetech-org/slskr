@@ -1378,6 +1378,7 @@
   "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain.": "Domínio para front-through (por exemplo, principais domínios CDN). O tráfego parece se conectar a este domínio.",
   "Domains": "Domínios",
   "Done": "Feito",
+  "OK": "OK",
   "Download Album": "Baixar álbum",
   "Download Best Album": "Baixe o melhor álbum",
   "Download KiB/s": "Baixar KiB/s",

@@ -1378,6 +1378,7 @@
   "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain.": "Tên miền ở phía trước (ví dụ: các miền CDN chính). Lưu lượng truy cập dường như kết nối với tên miền này.",
   "Domains": "Tên miền",
   "Done": "Xong",
+  "OK": "Đồng ý",
   "Download Album": "Tải Album xuống",
   "Download Best Album": "Tải xuống Album hay nhất",
   "Download KiB/s": "Tải xuống KiB/s",

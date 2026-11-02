@@ -1378,6 +1378,7 @@
   "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain.": "前置域（例如，主要 CDN 域）。流量似乎連接到該域。",
   "Domains": "網域",
   "Done": "完畢",
+  "OK": "確定",
   "Download Album": "下載專輯",
   "Download Best Album": "下載最佳專輯",
   "Download KiB/s": "下載 KiB/秒",

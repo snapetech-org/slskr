@@ -1378,6 +1378,7 @@
   "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain.": "앞으로 통과할 도메인(예: 주요 CDN 도메인) 트래픽이 이 도메인으로 연결되는 것 같습니다.",
   "Domains": "도메인",
   "Done": "완료",
+  "OK": "확인",
   "Download Album": "앨범 다운로드",
   "Download Best Album": "베스트 앨범 다운로드",
   "Download KiB/s": "KiB/초 다운로드",

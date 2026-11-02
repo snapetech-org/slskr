@@ -1378,6 +1378,7 @@
   "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain.": "Domain ke depan (misalnya, domain CDN utama). Lalu lintas tampaknya terhubung ke domain ini.",
   "Domains": "Domain",
   "Done": "Selesai",
+  "OK": "Oke",
   "Download Album": "Unduh Albumnya",
   "Download Best Album": "Unduh Album Terbaik",
   "Download KiB/s": "Unduh KiB/s",
