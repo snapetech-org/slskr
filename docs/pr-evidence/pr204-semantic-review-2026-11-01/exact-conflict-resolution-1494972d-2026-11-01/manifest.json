@@ -87,6 +87,8 @@
   "pre_scan_summary_sha256": "f1aebedd8563a4012caaa66999f39fed720b303e66140e68f72b2d10d0207e6c",
   "prior_conflict_snapshot": "prior-conflicts.json",
   "prior_conflict_snapshot_sha256": "ea000862d3f560aa26013779f35e0ac0eb141268538eeee1d7fe9af04af935ec",
+  "prior_evidence_file_manifest": "prior-evidence-file-manifest.jsonl",
+  "prior_evidence_file_manifest_count": 28,
   "prior_evidence_file_manifest_sha256": "7930dddb77f6b50562b433fecee1891ba11ebf7f9c9f79d8f7626976b779e627",
   "protected_literals_checked": 11,
   "pull_request": 204,
