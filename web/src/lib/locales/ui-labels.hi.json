@@ -3798,7 +3798,7 @@
   "Apply evidence only from directly trusted peers and contacts.": "सीधे भरोसेमंद नेटवर्क पीयर और संपर्कों से मिले साक्ष्य ही लागू करें।",
   "Apply trusted peer and realm-curated evidence with provenance.": "विश्वसनीय नेटवर्क पीयर और विश्वसनीय क्षेत्रों द्वारा चुने गए साक्ष्य को उनकी उत्पत्ति सहित लागू करें।",
   "Artist / Album / 01 - Title": "कलाकार/एल्बम/01 - शीर्षक",
-  "Ask the selected media server to scan confirmed completed-download paths.": "चयनित मीडिया सर्वर से पुष्टि किए गए पूर्ण-डाउनलोड पथों को स्कैन करने के लिए कहें।",
+  "Ask the selected media server to scan confirmed completed-download paths.": "चयनित मीडिया सर्वर से पूर्ण हो चुके डाउनलोड के पुष्टि किए गए पथों को स्कैन करने के लिए कहें।",
   "Asks configured media servers to rescan after successful library imports.": "सफल लाइब्रेरी आयात के बाद कॉन्फ़िगर किए गए मीडिया सर्वर को पुनः स्कैन करने के लिए कहता है।",
   "Authentication disabled": "प्रमाणीकरण अक्षम किया गया",
   "Automation history report copied.": "स्वचालन इतिहास रिपोर्ट की प्रतिलिपि बनाई गई.",

@@ -3798,7 +3798,7 @@
   "Apply evidence only from directly trusted peers and contacts.": "Aplique únicamente evidencias de nodos pares y contactos en los que confía directamente.",
   "Apply trusted peer and realm-curated evidence with provenance.": "Aplique evidencias confiables de nodos pares y evidencias seleccionadas por reinos de confianza, con su procedencia.",
   "Artist / Album / 01 - Title": "Artista / Álbum / 01 - Título",
-  "Ask the selected media server to scan confirmed completed-download paths.": "Solicite al servidor de medios seleccionado que escanee las rutas de descarga completadas confirmadas.",
+  "Ask the selected media server to scan confirmed completed-download paths.": "Solicite al servidor multimedia seleccionado que analice las rutas confirmadas de las descargas completadas.",
   "Asks configured media servers to rescan after successful library imports.": "Solicita a los servidores de medios configurados que vuelvan a escanear después de importar correctamente la biblioteca.",
   "Authentication disabled": "Autenticación deshabilitada",
   "Automation history report copied.": "Se copió el informe del historial de automatización.",

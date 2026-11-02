@@ -3798,7 +3798,7 @@
   "Apply evidence only from directly trusted peers and contacts.": "Terapkan bukti hanya dari node peer dan kontak yang dipercaya secara langsung.",
   "Apply trusted peer and realm-curated evidence with provenance.": "Terapkan bukti tepercaya dari node peer dan bukti yang dikurasi oleh ranah tepercaya, beserta asal-usulnya.",
   "Artist / Album / 01 - Title": "Artis / Album / 01 - Judul",
-  "Ask the selected media server to scan confirmed completed-download paths.": "Minta server media yang dipilih untuk memindai jalur pengunduhan yang telah dikonfirmasi dan telah selesai.",
+  "Ask the selected media server to scan confirmed completed-download paths.": "Minta server media yang dipilih memindai jalur unduhan yang dipastikan telah selesai.",
   "Asks configured media servers to rescan after successful library imports.": "Meminta server media yang dikonfigurasi untuk memindai ulang setelah impor perpustakaan berhasil.",
   "Authentication disabled": "Otentikasi dinonaktifkan",
   "Automation history report copied.": "Laporan riwayat otomatisasi disalin.",
