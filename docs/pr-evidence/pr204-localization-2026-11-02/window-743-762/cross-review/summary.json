@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "state": "OPEN",
+  "isDraft": true,
+  "head": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "tree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "sourceWindow": [
+    743,
+    762
+  ],
+  "sourceIds": 20,
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "cells": 240,
+  "primaryDispositionCounts": {
+    "accept-current": 197,
+    "propose-correction": 43
+  },
+  "crossReviewDispositionCounts": {
+    "accept-current": 187,
+    "propose-refinement": 1,
+    "propose-correction": 52
+  },
+  "perLocale": {
+    "ar": {
+      "accept-current": 15,
+      "propose-correction": 4,
+      "propose-refinement": 1,
+      "hold": 0
+    },
+    "de": {
+      "accept-current": 18,
+      "propose-correction": 2,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "es": {
+      "accept-current": 16,
+      "propose-correction": 4,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "fr": {
+      "accept-current": 17,
+      "propose-correction": 3,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "hi": {
+      "accept-current": 16,
+      "propose-correction": 4,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "id": {
+      "accept-current": 17,
+      "propose-correction": 3,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "ja": {
+      "accept-current": 16,
+      "propose-correction": 4,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "ko": {
+      "accept-current": 14,
+      "propose-correction": 6,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "pt-BR": {
+      "accept-current": 16,
+      "propose-correction": 4,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "vi": {
+      "accept-current": 14,
+      "propose-correction": 6,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "zh-Hans": {
+      "accept-current": 15,
+      "propose-correction": 5,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "zh-Hant": {
+      "accept-current": 13,
+      "propose-correction": 7,
+      "propose-refinement": 0,
+      "hold": 0
+    }
+  },
+  "primaryCorrectionCandidates": 43,
+  "primaryCandidatesAccepted": 42,
+  "primaryCandidateRevisions": 1,
+  "additionalCrossReviewCandidates": 10,
+  "finalCandidateCount": 53,
+  "finalTargetsDifferFromPrimary": 11,
+  "callerReferences": 67,
+  "callerPinKinds": {
+    "source-reference": 44,
+    "cancel-closes-without-recording-acceptance": 1,
+    "close-panel-action": 1,
+    "collapse-all-tree-action": 1,
+    "collapse-all-panels-action": 1,
+    "dock-destination-action-context": 1,
+    "player-collapse-state-change": 1,
+    "compact-player-state-change": 1,
+    "panel-collapse-action": 2,
+    "exit-fullscreen-and-return-to-player": 1,
+    "directory-tree-toggle-action": 1,
+    "file-list-toggle-action": 1,
+    "transfer-list-toggle-action": 1,
+    "test-reference": 8,
+    "shared-manifest-modal-fallback-heading": 1,
+    "collection-list-empty-selection-context": 1
+  },
+  "callerFiles": 26,
+  "uniqueCallerLines": 64,
+  "sourceIdsWithNoDirectCallers": 0,
+  "priorReusedCorrectionsAndAcceptancesReattested": 90,
+  "freshlyReviewedCellsInPrimaryWindow": 150,
+  "W742BoundaryCellsReattested": 12,
+  "placeholderFailures": 0,
+  "markupFailures": 0,
+  "punctuationFailures": 0,
+  "protectedLiteralFailures": 0,
+  "heldCells": 0,
+  "confidence": "moderate",
+  "nativeSpeakerApproval": "outstanding",
+  "repositoryOrPrModified": false,
+  "testsBuildsScansCIorBrowserRun": false,
+  "workflowFilesTouched": false,
+  "outputPath": "/mnt/disks/scratch/task-scratch/slskr-pr204-W743-762-crossreview-by-agent-20261102/packet"
+}

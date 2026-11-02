@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "overrides": {
+    "746|ar": {
+      "disposition": "propose-refinement",
+      "target": "رمز:",
+      "rationale": "The caller shows a numeric peerCode after this label. رمز is the standard UI word for a numeric code; شفرة can also mean cipher. The colon is preserved."
+    },
+    "750|es": {
+      "disposition": "propose-correction",
+      "target": "Contrae todos los paneles de mensajes abiertos en el dock de mensajes.",
+      "rationale": "The caller collapses message panels into a UI dock. Muelle means a physical pier/dock and is misleading in this interface; the borrowed UI term dock identifies the destination."
+    },
+    "750|hi": {
+      "disposition": "propose-correction",
+      "target": "सभी खुले संदेश पैनलों को संदेश डॉक में समेटें।",
+      "rationale": "गोदी means a lap or landing-stage and is a false-friend rendering of the UI dock. This target names the message dock and retains the collapse action."
+    },
+    "753|ar": {
+      "disposition": "propose-correction",
+      "target": "صغّر المشغّل إلى شريط صغير أعلى تذييل الصفحة.",
+      "rationale": "The current target translates “drawer bar” literally. The caller renders a compact player bar above the page footer; this target states that resulting layout."
+    },
+    "753|de": {
+      "disposition": "propose-correction",
+      "target": "Klappen Sie den Player in eine kleine Leiste über der Fußzeile ein.",
+      "rationale": "Schubladenleiste is a literal furniture drawer. The caller collapses the player to a small horizontal bar above the footer."
+    },
+    "753|es": {
+      "disposition": "propose-correction",
+      "target": "Contrae el reproductor en una barra pequeña sobre el pie de página.",
+      "rationale": "Barra de cajón is a literal furniture drawer. The caller collapses the player to a small horizontal bar above the footer."
+    },
+    "755|es": {
+      "disposition": "propose-correction",
+      "target": "Contrae este panel para guardarlo en el dock de mensajes.",
+      "rationale": "The caller puts a collapsed panel in the shared message dock. The current “panel de mensajes” omits that destination; this candidate names the dock."
+    },
+    "756|ar": {
+      "disposition": "propose-correction",
+      "target": "طيّ عارض الصوت",
+      "rationale": "The control exits visualizer fullscreen and returns the audio visualization to the player bar. مُحلّل الصوت means audio analyzer, a different function; عارض الصوت names the display being collapsed."
+    },
+    "762|es": {
+      "disposition": "propose-correction",
+      "target": "Elementos de la colección no disponibles",
+      "rationale": "Collections.jsx reports that loading items in a user-created collection failed. Artículos de colección usually means collectible items; this target describes the collection’s elements."
+    },
+    "762|fr": {
+      "disposition": "propose-correction",
+      "target": "Éléments de la collection indisponibles",
+      "rationale": "Collections.jsx reports that loading items in a user-created collection failed. Objets de collection suggests collectible objects; this target describes elements belonging to the collection."
+    },
+    "762|pt-BR": {
+      "disposition": "propose-correction",
+      "target": "Itens da coleção indisponíveis",
+      "rationale": "Collections.jsx reports that loading items in a user-created collection failed. Adding da clarifies that the items belong to this collection, rather than being collectibles."
+    }
+  },
+  "overrideCount": 11,
+  "proposalReview": {
+    "primaryCandidateCount": 43,
+    "primaryCandidatesAccepted": 42,
+    "primaryCandidateRevisions": 1,
+    "newCandidates": 10
+  },
+  "limitations": "Machine review only; native-speaker approval remains outstanding."
+}

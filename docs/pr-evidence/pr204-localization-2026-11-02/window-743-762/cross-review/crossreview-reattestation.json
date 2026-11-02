@@ -1,0 +1,415 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "livePullRequestBefore": {
+    "baseRefName": "main",
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+    "isDraft": true,
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "livePullRequestAfter": {
+    "baseRefName": "main",
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+    "isDraft": true,
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "expectedHead": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "expectedTree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "headAfterReview": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "treeAfterReview": "ebf75888b3087e83fe2327495c17611802925f71",
+  "worktree": "/mnt/disks/scratch/task-worktrees/localization-20261102/slskr-pr204-w503-522",
+  "worktreeClean": true,
+  "sourceInventoryPath": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/frozen-inputs/source-inventory.jsonl",
+  "sourceInventorySha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "sourceIdsAttested": 20,
+  "sourceAndCurrentCellsAttested": 240,
+  "currentTargetMismatches": [],
+  "targetCatalogsAttested": {
+    "ar": {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "blob": "ee6059c505a4a57ddd1aa199bcb39af8b523e49b",
+      "sha256": "a00bff46a89ab3fb7c45cfa851354f46a4915cf640f03bf57e1ba8bc976fc8e9",
+      "bytes": 512275,
+      "keys": 5440
+    },
+    "de": {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "blob": "8cedf119cb61308f999abc576c3c8eb7df8ee03e",
+      "sha256": "76f6b9e30faf15e201f00d4004e3b2ed7b7110dfb86db8f0c1844a772db68bc8",
+      "bytes": 442873,
+      "keys": 5440
+    },
+    "es": {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "blob": "ba8ae008a285c9ae778fc68ac29e6c98b6c9a2db",
+      "sha256": "7e654724771d92061f3f3031e495b8c16fc2d942fe4f73eeb8914a40e000ce53",
+      "bytes": 443702,
+      "keys": 5440
+    },
+    "fr": {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "blob": "4f00cf80bc5ffd6a110c7e43cf7b6151f53f2ade",
+      "sha256": "bbdfdae078a0c33c4789725d37eb1ca0f4e3e39fe5e53429968ca1565d3dfc11",
+      "bytes": 454732,
+      "keys": 5440
+    },
+    "hi": {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "blob": "8bfb77040ea5f11e584b5f6116a27b8bae24f39b",
+      "sha256": "f1d0c8682337d0654c4199117940caa7b0fa3e1129b64711ab523f949de55618",
+      "bytes": 675761,
+      "keys": 5440
+    },
+    "id": {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "blob": "80b68b5a822fcd67ca28097130362cc2293b281e",
+      "sha256": "c18b65e150cd65e1b8bf064314f71d317f47a1d0ded57caaec0607085e975e82",
+      "bytes": 409318,
+      "keys": 5440
+    },
+    "ja": {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "blob": "69d097947d2264b2977279532d13461c0c908c8d",
+      "sha256": "9dc8b7bfe98332e5ad9edabcdbfb0c02439f33b700c30da24faf2a0fae10d038",
+      "bytes": 490752,
+      "keys": 5440
+    },
+    "ko": {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "blob": "e2b5813ad9758ee0c1e2b9757f9b6711c4c34d49",
+      "sha256": "a9cf5dc146eb95d07a54dcb51e1a61c1879766fcd9dfac0c7a87087b45e2bea3",
+      "bytes": 441795,
+      "keys": 5440
+    },
+    "pt-BR": {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "blob": "ecb745c964a3150afeb0c659a7d5384ac0a3a167",
+      "sha256": "55784629eacb6c1b3ac49a84ca9434cd0ce34ea0ce6a7b272c572ae74977f3b4",
+      "bytes": 438407,
+      "keys": 5440
+    },
+    "vi": {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "blob": "fc777bee1de10a5ba0c0c5f9efcbe25893435fdb",
+      "sha256": "0d23f73af90773febc9cd12be8356d999d772e981b3ced25239d5d1eb7b45d4e",
+      "bytes": 473966,
+      "keys": 5440
+    },
+    "zh-Hans": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "blob": "03f32a74761700505aa33692da8be2e311847288",
+      "sha256": "f53106f318b62b972b5ebe15aa5a54bc59d87f9de0abc00ca926a01bee79994d",
+      "bytes": 382437,
+      "keys": 5440
+    },
+    "zh-Hant": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "blob": "7a1d1ff77abe50060d172c70800add497d13e75d",
+      "sha256": "77f75a92460589fe3add5924299d8184d928137e4e406d6824d5081ebc2d417b",
+      "bytes": 383151,
+      "keys": 5440
+    }
+  },
+  "callerContextRowsAttested": 20,
+  "callerPinReattestation": {
+    "uniqueCallerReferences": 67,
+    "uniqueCallerFiles": 26,
+    "callerFiles": {
+      "web/src/components/Search/Detail/SearchFilterModal.jsx": {
+        "blob": "7765f8e075878a6f8a883eaca82ed2b8ee4ed94e",
+        "sha256": "b842680bae7a555b34814b900a55e3bca05485fdad27b10411c47c5c63034968"
+      },
+      "web/src/components/System/QuarantineJury/index.jsx": {
+        "blob": "808a1ce533e535bd5c15a8e5c61244ac13c979e4",
+        "sha256": "7db0e17e031d499390af6681f4e430209de5b052c7816a7c3f054baa6c1211b2"
+      },
+      "web/src/components/Messaging/Messaging.jsx": {
+        "blob": "3955cb840e5787884f1762e2cb60506c72c59c13",
+        "sha256": "924a274e6ae870ddfc906ef6102a52886b511662b0d800fd39b130d9805a4959"
+      },
+      "web/src/components/Contacts/Contacts.jsx": {
+        "blob": "bf516a826f0e6a30691f06dbee952f1b96d5a9b1",
+        "sha256": "bf147a0e2de3f6a602ed9e3a8b4df9a850e7c033d55549980a5448c9e074622a"
+      },
+      "crates/slskr/src/private_gateway_owners/mesh_content_projection.rs": {
+        "blob": "d64ad5947de7ff2fd2bd396ca60a61de54335fd0",
+        "sha256": "005058af9cb5f42f93016cd17349bd78841adea5e61d5debc623bf8320e9f9b6"
+      },
+      "web/src/components/System/MediaCore/ContentDescriptorPublishingPanel.jsx": {
+        "blob": "c51d4085b6d2b180844a9e8091406f527651229b",
+        "sha256": "375e2a926789a74af0efa132bf4bdf8f74606287bdb3ac9499f937eb3a3755f6"
+      },
+      "web/src/components/Browse/DirectoryTree.jsx": {
+        "blob": "3a29b0a04ff2f0012dff2987beda99dad435eb43",
+        "sha256": "1a32df7e28719921907ab174030850dcc09098099c6f69f6b0dbcc86ba7d1514"
+      },
+      "web/src/components/Player/PlayerBar.jsx": {
+        "blob": "4ba36606819dc376ce16b1e605353250e5f25b50",
+        "sha256": "545be10b605b6dd2dbe9d1e14d6442e5b331166e6910acb023bc06246e4cbb7d"
+      },
+      "web/src/components/Search/Response.jsx": {
+        "blob": "8bee962fc708202a785758d9da1193ea4de59337",
+        "sha256": "da0ccb703c38cf3a444e9d79fba30cd62191f15277ec339b287529d121cbe6de"
+      },
+      "web/src/components/Search/SearchesListView.jsx": {
+        "blob": "22f0f4a4bfdd5e3469b9681a03028aba8b269969",
+        "sha256": "46dddce98d3a57b202d8768822f43e3035b209980cca75fd355f0ea4da1b268a"
+      },
+      "web/src/components/Player/VisualizerOverlayControls.jsx": {
+        "blob": "0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf",
+        "sha256": "5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4"
+      },
+      "web/src/components/Shared/FileList.jsx": {
+        "blob": "15b08f65a7d0b704eccaeca2972844bc03775e19",
+        "sha256": "f373875d4cc6dfdc0d5096791c163343d9ede675a3fdf0be2c311a9231382296"
+      },
+      "web/src/components/Transfers/TransferList.jsx": {
+        "blob": "6b0cc627ee092390cde17aa8330a8d7cb24202d3",
+        "sha256": "5db7fa14417829b11cd41eb78614b114bb747c5c5fbdc2842c24dfc924066491"
+      },
+      "crates/slskr-web/src/native_row_rendering.rs": {
+        "blob": "aa7ce7f37f47c19fc155fc5580055bf8bc115609",
+        "sha256": "6f161e300327ff4abbcce8bb0bd864f1925411321a399c48204591de96abdd65"
+      },
+      "crates/slskr-web/src/native_workspace_panels.rs": {
+        "blob": "23c6eff37a404e9250f1e9735da1f93ca3bf3862",
+        "sha256": "862c69b514e6cff0df95741c51bce2ae8b933b5cad14319008968541ddcaa49d"
+      },
+      "crates/slskr-web/src/route_data_projection.rs": {
+        "blob": "100cc3f0440cd2a0d8ed95e4c2cf9cb2def86387",
+        "sha256": "cf54298c2b5861f20667af9865cc89acb4083655d47725b9f4466f21502cc346"
+      },
+      "crates/slskr-web/src/route_reference_panels.rs": {
+        "blob": "d61e7d99f08bf1325231c9d2ee49d6d38330b476",
+        "sha256": "f84a6c236077ca22872ac3b79781ff5f10aacb7879143720a5ad43ba8ba18666"
+      },
+      "crates/slskr-web/src/route_workflow_rendering.rs": {
+        "blob": "653c99e718b35250385bc2d89fbc89c7c18a3a6f",
+        "sha256": "efd2a909c953003101231eb41eb533bfc92391964b1aaf170c4b132590cffcfb"
+      },
+      "web/src/components/Collections/Collections.jsx": {
+        "blob": "c72ea0939c55ba47ed090e0d5ac3f67dd47b06c0",
+        "sha256": "0ae47fbae62cd1c65e120eb02a41e4941c8aec5e1d5f037361f41365539c44ed"
+      },
+      "web/src/components/Shares/SharedWithMe.jsx": {
+        "blob": "8ccbf1c56d38223e7b70ac7f6478c3b8b4f429b3",
+        "sha256": "02db6d3dd2c4fee5f07f1211a59e2880090ba1729f628a4f3f540013884b9162"
+      },
+      "web/src/lib/watchlists.js": {
+        "blob": "5a22b80c4e5d58818a5a18235441e73ba84dc570",
+        "sha256": "a8a777a28191b567f05f7aa52add783080b386fba5589040d32bb26d1566fa06"
+      },
+      "crates/slskr/src/controller_tests/full_library_contracts.rs": {
+        "blob": "34ecb4d4934b67171aebf14c1bcc17dc9a376d92",
+        "sha256": "cb98ce5bc75a18727317b31b6e81f51225fdbc995eedac45ca208fa5d70b9322"
+      },
+      "crates/slskr/src/controller_tests/full_messaging_differential.rs": {
+        "blob": "fa7574ad4d85ef9820b99286c287ac36c763d7d6",
+        "sha256": "baa4bd416418c6175d46f757b30645b216bae32a4f540855bd6a1b25b7858cc9"
+      },
+      "web/src/components/Player/PlayerLauncher.jsx": {
+        "blob": "54f6f98454f46a957dc0e00c78660965412f025e",
+        "sha256": "6942fcea65ad86549e0114f765ec9ce50a7ad4497828d4d5b79373dfb32ce720"
+      },
+      "web/src/components/Collections/Collections.test.jsx": {
+        "blob": "926653082fc3db2fea24a189b004728039b109f0",
+        "sha256": "4ddd90094e8a53643809072f317618c0c10b24518d58d10b790cb557c6fc6a65"
+      },
+      "web/src/components/Player/PlayerBar.test.jsx": {
+        "blob": "34d8d92cbaa281634d1bb95d935945a4b71a3859",
+        "sha256": "6b824047dec4a33fe997dd90efb6de0bcdb6210033738f9d3542894ae0a68f73"
+      }
+    },
+    "callerLineErrors": [],
+    "sourceIdsWithNoDirectCallers": []
+  },
+  "callerPinKinds": {
+    "source-reference": 44,
+    "cancel-closes-without-recording-acceptance": 1,
+    "close-panel-action": 1,
+    "collapse-all-tree-action": 1,
+    "collapse-all-panels-action": 1,
+    "dock-destination-action-context": 1,
+    "player-collapse-state-change": 1,
+    "compact-player-state-change": 1,
+    "panel-collapse-action": 2,
+    "exit-fullscreen-and-return-to-player": 1,
+    "directory-tree-toggle-action": 1,
+    "file-list-toggle-action": 1,
+    "transfer-list-toggle-action": 1,
+    "test-reference": 8,
+    "shared-manifest-modal-fallback-heading": 1,
+    "collection-list-empty-selection-context": 1
+  },
+  "sourceIdsWithDirectCallers": [
+    743,
+    744,
+    745,
+    746,
+    747,
+    748,
+    749,
+    750,
+    751,
+    752,
+    753,
+    754,
+    755,
+    756,
+    757,
+    758,
+    759,
+    760,
+    761,
+    762
+  ],
+  "priorAuditRowsReattested": 240,
+  "candidateRowsAttested": 43,
+  "placeholderMismatches": 0,
+  "markupMismatches": 0,
+  "punctuationCompatibilityFailures": 0,
+  "priorBoundarySourceIndex": 742,
+  "priorBoundaryCellsAttested": 12,
+  "priorBoundaryCells": [
+    {
+      "sourceIndex": 742,
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "locale": "ar",
+      "currentTargetSha256": "b8fc1b2c4992053aa06c0303c40421c4a85b56f85fd5e1112a370a1eba31d035",
+      "priorDecision": "hold-no-direct-caller",
+      "priorRowSha256": "f230bd0173a66ed12e0029d6407ab9d9be486953aa4401ff0cf96c0138a18c4c",
+      "matchesFrozenPriorPacket": true,
+      "matchesBoundaryReattestation": true,
+      "matchesLiveCatalog": true
+    },
+    {
+      "sourceIndex": 742,
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "locale": "de",
+      "currentTargetSha256": "19367a2e2bf6943909a2d1fe2eba37b6dc72c3ea201a4e35749591d62953e5e8",
+      "priorDecision": "hold-no-direct-caller",
+      "priorRowSha256": "524cc908eb6cdd51a8316fd22937878b24acd208bf0b255dd4d07923b388801c",
+      "matchesFrozenPriorPacket": true,
+      "matchesBoundaryReattestation": true,
+      "matchesLiveCatalog": true
+    },
+    {
+      "sourceIndex": 742,
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "locale": "es",
+      "currentTargetSha256": "200aa95b0d35935adeae136f4b661dcabf94d28f97bcd41968f5c33cfe180dcd",
+      "priorDecision": "hold-no-direct-caller",
+      "priorRowSha256": "3b7fd38e301fcafef2c60adf46bfa234afae7edaa98d43d582b855ba2529c0cf",
+      "matchesFrozenPriorPacket": true,
+      "matchesBoundaryReattestation": true,
+      "matchesLiveCatalog": true
+    },
+    {
+      "sourceIndex": 742,
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "locale": "fr",
+      "currentTargetSha256": "ef544bc02e171b4f9b965defb33164e28f05574b284c26e7eedebfaeff1bbd11",
+      "priorDecision": "hold-no-direct-caller",
+      "priorRowSha256": "9e67817ccb3c96fcd7a5163a88278a1ffb0f16f88ff6f7a793cb9ef176a38a8f",
+      "matchesFrozenPriorPacket": true,
+      "matchesBoundaryReattestation": true,
+      "matchesLiveCatalog": true
+    },
+    {
+      "sourceIndex": 742,
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "locale": "hi",
+      "currentTargetSha256": "7914037c25b13d20b8f89da0ccb5aa09757579ec45d188ebdcae74c3e388cd53",
+      "priorDecision": "hold-no-direct-caller",
+      "priorRowSha256": "a6eed55d5f1b6e35653f0d2eb08c5d97a82292ba2d1c315543b194f985e6920a",
+      "matchesFrozenPriorPacket": true,
+      "matchesBoundaryReattestation": true,
+      "matchesLiveCatalog": true
+    },
+    {
+      "sourceIndex": 742,
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "locale": "id",
+      "currentTargetSha256": "b9f4cbb7a8f5cbbd229d5ab88df57e2ccfb04ff4bd5b82f245d16f003c78fc5c",
+      "priorDecision": "hold-no-direct-caller",
+      "priorRowSha256": "4d9951c5c8765f105d9b48c751695e9b8453400662f0557720c334e44add431f",
+      "matchesFrozenPriorPacket": true,
+      "matchesBoundaryReattestation": true,
+      "matchesLiveCatalog": true
+    },
+    {
+      "sourceIndex": 742,
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "locale": "ja",
+      "currentTargetSha256": "07de1f9134f03c5d71aa764dc090adddf240428c87b8fe96de77e0880a003553",
+      "priorDecision": "hold-no-direct-caller",
+      "priorRowSha256": "6f5dfdced7ade0c29082fce27a95f196b03ecf0f02bf143c572f29ffe7d70d3d",
+      "matchesFrozenPriorPacket": true,
+      "matchesBoundaryReattestation": true,
+      "matchesLiveCatalog": true
+    },
+    {
+      "sourceIndex": 742,
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "locale": "ko",
+      "currentTargetSha256": "7fa04778c6387fd5eef226cb4b19b2381569350e54ddc7e806c9f2878bc21498",
+      "priorDecision": "hold-no-direct-caller",
+      "priorRowSha256": "404fbcd31a10d1313dcddcd5a7b69db8b16ead3064cd5730567a4332cce318ef",
+      "matchesFrozenPriorPacket": true,
+      "matchesBoundaryReattestation": true,
+      "matchesLiveCatalog": true
+    },
+    {
+      "sourceIndex": 742,
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "locale": "pt-BR",
+      "currentTargetSha256": "a20d81d3e5f2f4ab989f721b434599a1973f23e3e1cc3e092d71df1f49eef914",
+      "priorDecision": "hold-no-direct-caller",
+      "priorRowSha256": "1bc62fa0b35af285dc8cce14428cbc9d6b6b182411be093be3c865a1c27f0314",
+      "matchesFrozenPriorPacket": true,
+      "matchesBoundaryReattestation": true,
+      "matchesLiveCatalog": true
+    },
+    {
+      "sourceIndex": 742,
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "locale": "vi",
+      "currentTargetSha256": "5a2e4a7e3ed50abfe946251d25f5ce7a38b5dfa4245ca380d44de4b60744679d",
+      "priorDecision": "hold-no-direct-caller",
+      "priorRowSha256": "fa4ac4521b3a40ed061183fb06a3c8f05c6b8da4bb026bd0c5a8bc2a0842ea3d",
+      "matchesFrozenPriorPacket": true,
+      "matchesBoundaryReattestation": true,
+      "matchesLiveCatalog": true
+    },
+    {
+      "sourceIndex": 742,
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "locale": "zh-Hans",
+      "currentTargetSha256": "a3a065315719a2bc6ca1f0c1c4a2316588e583af585dc731e82513d025fe3c45",
+      "priorDecision": "hold-no-direct-caller",
+      "priorRowSha256": "cd48a3959f4337b907f0190439a76fdcb378076fc37f4c90bff1f6822ce4285f",
+      "matchesFrozenPriorPacket": true,
+      "matchesBoundaryReattestation": true,
+      "matchesLiveCatalog": true
+    },
+    {
+      "sourceIndex": 742,
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "locale": "zh-Hant",
+      "currentTargetSha256": "14abb7eca565af7a9fb9ddb53ae5d560c35d71dab056677462997bc9e8dfa3ce",
+      "priorDecision": "hold-no-direct-caller",
+      "priorRowSha256": "5fac97c3d9f4cc6239cbcccc75c71097f95f54ce98d098572f8c888fc3d055e1",
+      "matchesFrozenPriorPacket": true,
+      "matchesBoundaryReattestation": true,
+      "matchesLiveCatalog": true
+    }
+  ],
+  "checks": "pass",
+  "checkedAtUtc": "2026-11-02T16:02:08Z"
+}

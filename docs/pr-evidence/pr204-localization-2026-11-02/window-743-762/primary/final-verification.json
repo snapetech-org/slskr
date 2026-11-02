@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "exactHeadTreeRecheckedAfterReview": true,
+  "livePrOpenDraftAtPinnedHead": true,
+  "worktreeClean": true,
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "decisionCounts": {
+    "accept-current": 197,
+    "propose-correction": 43
+  },
+  "candidateCells": 43,
+  "heldCells": 0,
+  "callerContextPinCount": 67,
+  "sourceLiteralCallerPins": 44,
+  "supportingCallerContextPins": 15,
+  "testReferences": 8,
+  "sourceIdsWithNoDirectCallers": [],
+  "priorDispositionRowsReattested": 240,
+  "priorAcceptedRowsReused": 78,
+  "priorCorrectionRowsReused": 12,
+  "freshNotReviewedCellsReviewed": 150,
+  "freshCorrectionCandidates": 31,
+  "previousBoundaryTargetsReattested": 12,
+  "placeholderFailures": 0,
+  "protectedLiteralFailures": 0,
+  "punctuationMismatches": 0,
+  "catalogDeltaAttested": true,
+  "nativeSpeakerApproval": false,
+  "repoOrPrModified": false,
+  "testsBuildsScansCiWorkflowsRun": false
+}

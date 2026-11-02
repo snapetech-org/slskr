@@ -1,0 +1,335 @@
+{
+  "schemaVersion": 1,
+  "task": "slskR PR #204 W743–762 primary semantic review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "tree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "sourceBaselineHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceBaselineTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "sourcePositions": [
+    743,
+    762
+  ],
+  "sourceIds": 20,
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "cells": 240,
+  "counts": {
+    "accept-current": 197,
+    "propose-correction": 43
+  },
+  "candidateCells": 43,
+  "heldCells": 0,
+  "freshlyReviewedCells": 150,
+  "reusedPriorDispositionCells": 90,
+  "reusedPriorCounts": {
+    "accepted": 78,
+    "correction-needed": 12
+  },
+  "freshReviewCounts": {
+    "accept-current": 119,
+    "propose-correction": 31
+  },
+  "holdGroups": [],
+  "callerRefactorNeeds": [],
+  "sourceIdsWithNoDirectCallers": [],
+  "freshCorrections": [
+    {
+      "sourceId": "Code:",
+      "locale": "ko",
+      "target": "코드:",
+      "rationale": "The adjacent value is peerCode, a numeric contact code. 암호 means password/cipher; 코드 names the displayed identifier. Preserve the label colon.",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "Codec",
+      "locale": "vi",
+      "target": "Bộ mã hóa/giải mã",
+      "rationale": "The field stores a media codec, which encodes and decodes. Bộ giải mã names a decoder only and loses half the technical meaning.",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "Collapse All",
+      "locale": "ko",
+      "target": "모두 접기",
+      "rationale": "The DirectoryTree action folds directory branches. 축소 suggests reducing size; 접기 is the tree-collapse action.",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "Collapse all message panels",
+      "locale": "ja",
+      "target": "すべてのメッセージパネルを折りたたむ",
+      "rationale": "Remove the unnatural spacing inside メッセージ パネル; the compact UI label retains the action and target.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse all message panels",
+      "locale": "vi",
+      "target": "Thu gọn tất cả bảng tin nhắn",
+      "rationale": "The target says notification panels (bảng thông báo), while the caller collapses chat/message panels. Use tin nhắn for message.",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "Collapse every open message panel into the dock.",
+      "locale": "ja",
+      "target": "開いているすべてのメッセージパネルをドックに折りたたみます。",
+      "rationale": "Remove the unnatural space in メッセージ パネル. The caller uses a UI dock for all collapsed message panels.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse every open message panel into the dock.",
+      "locale": "ko",
+      "target": "열려 있는 모든 메시지 패널을 메시지 도크로 접습니다.",
+      "rationale": "The action folds panels into the message dock; the current English Dock and 축소 do not clearly name that UI destination or fold action.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse every open message panel into the dock.",
+      "locale": "vi",
+      "target": "Thu gọn mọi bảng tin nhắn đang mở vào khu vực chứa các bảng đã thu gọn.",
+      "rationale": "The current wording says notification panels and toolbar. The caller folds message panels into the area that holds collapsed panels.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse every open message panel into the dock.",
+      "locale": "zh-Hans",
+      "target": "将所有打开的消息面板折叠到消息停靠栏中。",
+      "rationale": "扩展坞 means a physical docking station. The caller’s dock is the UI area where collapsed message panels are kept.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse every open message panel into the dock.",
+      "locale": "zh-Hant",
+      "target": "將所有開啟的訊息面板折疊到訊息停靠列中。",
+      "rationale": "擴充座 suggests a physical docking station. The caller’s dock is the UI area where collapsed message panels are kept.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse player",
+      "locale": "pt-BR",
+      "target": "Recolher o reprodutor",
+      "rationale": "Jogador normally means a person/player in a game. This control collapses the media player, so use reprodutor.",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "Collapse the player into a small drawer bar above the footer.",
+      "locale": "ja",
+      "target": "プレーヤーをフッター上の小さなバーに縮小します。",
+      "rationale": "The UI renders a compact horizontal bar, not a furniture drawer; describe the resulting player bar.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse the player into a small drawer bar above the footer.",
+      "locale": "ko",
+      "target": "플레이어를 푸터 위의 작은 막대로 축소합니다.",
+      "rationale": "The UI renders a compact horizontal bar, not a furniture drawer; describe the resulting player bar.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse the player into a small drawer bar above the footer.",
+      "locale": "pt-BR",
+      "target": "Reduza o player a uma pequena barra acima do rodapé.",
+      "rationale": "Remove the literal furniture phrase barra de gaveta; the caller reduces the player to a short bar above the footer.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse the player into a small drawer bar above the footer.",
+      "locale": "vi",
+      "target": "Thu gọn trình phát thành một thanh nhỏ phía trên chân trang.",
+      "rationale": "Remove the literal ngăn kéo (drawer); the caller renders the collapsed player as a small bar above the footer.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse the player into a small drawer bar above the footer.",
+      "locale": "zh-Hans",
+      "target": "将播放器缩小为页脚上方的小栏。",
+      "rationale": "抽屉栏 is a literal furniture drawer. The caller reduces the audio player to a compact bar above the footer.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse the player into a small drawer bar above the footer.",
+      "locale": "zh-Hant",
+      "target": "將播放器收合為頁尾上方的小型控制列。",
+      "rationale": "抽屜欄 is a literal furniture drawer. The caller reduces the audio player to a compact control bar above the footer.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse this panel into the message dock.",
+      "locale": "ja",
+      "target": "このパネルを折りたたんでメッセージドックに入れます。",
+      "rationale": "Remove the unnatural space in メッセージ ドック; this is a UI dock destination, not a separate message label.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse this panel into the message dock.",
+      "locale": "ko",
+      "target": "이 패널을 메시지 도크로 접으세요.",
+      "rationale": "독 commonly reads as poison; 도크 is the borrowed UI term for the dock that holds collapsed message panels.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse this panel into the message dock.",
+      "locale": "pt-BR",
+      "target": "Recolha este painel no dock de mensagens.",
+      "rationale": "Encaixe de mensagens reads as a fitting/slot rather than the UI message dock; the product context is a dock for collapsed panels.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse this panel into the message dock.",
+      "locale": "vi",
+      "target": "Thu gọn bảng này vào khu vực chứa bảng tin nhắn đã thu gọn.",
+      "rationale": "Thanh tin nhắn is a message bar rather than the dock area that holds collapsed panels; describe the destination by its function.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse this panel into the message dock.",
+      "locale": "zh-Hans",
+      "target": "将此面板折叠到消息停靠栏中。",
+      "rationale": "底座 means a physical base. The caller’s destination is the UI message dock where collapsed panels are kept.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse this panel into the message dock.",
+      "locale": "zh-Hant",
+      "target": "將此面板折疊到訊息停靠列中。",
+      "rationale": "底座 means a physical base. The caller’s destination is the UI message dock where collapsed panels are kept.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse visualizer",
+      "locale": "ko",
+      "target": "비주얼라이저 접기",
+      "rationale": "시각화 도우미 means a visualization helper, not the audio visualizer panel. Use the common borrowed UI feature name.",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "Collapse visualizer",
+      "locale": "vi",
+      "target": "Thu gọn trình trực quan hóa âm thanh",
+      "rationale": "The current phrase means a generic display/viewer. This control collapses the audio visualization panel.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse visualizer",
+      "locale": "zh-Hans",
+      "target": "折叠音频可视化工具",
+      "rationale": "The caller operates the audio visualizer, not an unspecified visualization tool; name the audio context.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collapse visualizer",
+      "locale": "zh-Hant",
+      "target": "收合音訊視覺化工具",
+      "rationale": "The caller operates the audio visualizer, not an unspecified visualization tool; name the audio context.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collection Contents",
+      "locale": "zh-Hant",
+      "target": "合輯內容",
+      "rationale": "The collection object is consistently translated as 合輯 elsewhere in this catalog; align this modal heading with that product term.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collection Items",
+      "locale": "zh-Hant",
+      "target": "合輯項目",
+      "rationale": "The collection object is consistently translated as 合輯 elsewhere in this catalog; align this list heading with that product term.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collection items unavailable",
+      "locale": "zh-Hans",
+      "target": "合集项目不可用",
+      "rationale": "收藏品 means collectibles/favorites. This is an error for items belonging to a user-created collection; use the catalog’s 合集项目 term.",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "Collection items unavailable",
+      "locale": "zh-Hant",
+      "target": "合輯項目無法使用",
+      "rationale": "收藏品 means collectibles/favorites. This is an error for items belonging to a user-created collection; use the catalog’s 合輯項目 term.",
+      "confidence": "high"
+    }
+  ],
+  "perLocale": {
+    "ar": {
+      "accept-current": 17,
+      "propose-correction": 3
+    },
+    "de": {
+      "accept-current": 19,
+      "propose-correction": 1
+    },
+    "es": {
+      "accept-current": 20
+    },
+    "fr": {
+      "accept-current": 18,
+      "propose-correction": 2
+    },
+    "hi": {
+      "accept-current": 17,
+      "propose-correction": 3
+    },
+    "id": {
+      "accept-current": 17,
+      "propose-correction": 3
+    },
+    "ja": {
+      "accept-current": 16,
+      "propose-correction": 4
+    },
+    "ko": {
+      "accept-current": 14,
+      "propose-correction": 6
+    },
+    "pt-BR": {
+      "accept-current": 17,
+      "propose-correction": 3
+    },
+    "vi": {
+      "accept-current": 14,
+      "propose-correction": 6
+    },
+    "zh-Hans": {
+      "accept-current": 15,
+      "propose-correction": 5
+    },
+    "zh-Hant": {
+      "accept-current": 13,
+      "propose-correction": 7
+    }
+  },
+  "callerReferences": 67,
+  "callerFiles": 26,
+  "priorReattestations": 240,
+  "priorAcceptedRowsReused": 78,
+  "priorCorrectionRowsReused": 12,
+  "priorNotReviewedCellsFreshlyReviewed": 150,
+  "priorSourceHashMismatches": 0,
+  "priorTargetHashMismatches": 0,
+  "placeholderFailures": 0,
+  "protectedLiteralFailures": 0,
+  "punctuationFlags": [],
+  "nativeSpeakerApproval": false,
+  "nativeSpeakerReviewRequired": true,
+  "testsBuildsScansCiWorkflowsRan": false,
+  "repositoryOrPrModified": false,
+  "catalogDeltaNote": "Each live locale catalog has seven keys outside and four frozen keys absent from the 5,437-key inventory; see manifest.json. These catalog deltas are outside the 20 reviewed source IDs.",
+  "reuseMethod": "Only the 78 accepted and 12 correction-needed prior audit rows were reused, after exact source SHA-256 and current target SHA-256 reattestation against the live PR. The other 150 prior not-reviewed rows were reviewed fresh here; older machine-review suggestions for those cells were not adopted as decisions.",
+  "boundaryReattestation": "Source indices 742 and 743 are adjacent and non-overlapping; all 12 W742 live targets match the prior W723–742 packet current-target hashes."
+}

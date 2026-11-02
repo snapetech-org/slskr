@@ -1,0 +1,7 @@
+# slskR PR #204 W743–762 independent cross-review
+
+- PR #204 remained OPEN/DRAFT at `32903976fabe543f89dd5950245ba11dd77c8eb3` / tree `ebf75888b3087e83fe2327495c17611802925f71` before and after review.
+- Independently re-read and verified all 240 current cells across 20 source IDs and 12 locales, the pinned source-inventory rows, 20 source contexts, 67 caller/context/test pins across 26 files, and all 43 primary correction candidates.
+- Primary candidates accepted: 42. One candidate was revised: Arabic “Collapse visualizer” used a word for “audio analyzer.” The cross-review also added 10 candidates for missed clear issues in Arabic Code, Spanish/Hindi message dock labels, Arabic/German/Spanish drawer-bar descriptions, Spanish collapse-to-dock wording, and Spanish/French/PT-BR collection-item wording.
+- Final dispositions: {'accept-current': 187, 'propose-refinement': 1, 'propose-correction': 52}. No cells remain held. W742’s 12 adjacent live targets were rechecked against the prior packet.
+- Caller pins include 44 direct source references, 15 supporting context references, and 8 test references; every source has a direct caller. Placeholder, markup, punctuation-compatibility, and protected-literal checks pass. Machine review confidence is moderate; native-speaker approval remains outstanding. No repository/PR edits, tests, builds, scans, CI, browser actions, or workflow changes were made.
