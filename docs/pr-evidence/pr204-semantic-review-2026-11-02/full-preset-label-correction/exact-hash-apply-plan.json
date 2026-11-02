@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "task": "slskR exact-hash correction for Chinese Full preset label",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "inputHead": "c0255ca319b9d5b3bba06980fc97ddb72072f759",
+  "inputTree": "0773b762a309cad8e102e7b159eeef00a0eaf1d9",
+  "sourceIndex": 1823,
+  "sourceId": "Full",
+  "sourceSha256": "008dacb6d1e85bd8c0ae9661c4472810ef75537f690dd75d77fc74ca62f78fec",
+  "changes": [
+    {
+      "locale": "zh-Hans",
+      "targetFile": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "sourceId": "Full",
+      "currentTarget": "满的",
+      "currentTargetSha256": "f4ca054074aede1a8b0b7d1ad5924170db92cc12875309cf418c1ac138227a21",
+      "target": "不设上限",
+      "targetSha256": "b94cae13412a205ba2d07e58c7d43bddf7488b141d976a05014365da5b74d6a6",
+      "catalogBlobAtInputHead": "b2bb7f5fd9d9f1111d8c4e7fa7c85331f0e2e9e7",
+      "rationale": "The Full quality preset maps to no rendering FPS cap; this concise label expresses that option instead of meaning filled/full."
+    },
+    {
+      "locale": "zh-Hant",
+      "targetFile": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "sourceId": "Full",
+      "currentTarget": "滿的",
+      "currentTargetSha256": "b5c9d97d0e7b94f6b324e05b701ed7c6bcf64991637cb4ed82e8b4a1b45d9868",
+      "target": "不設上限",
+      "targetSha256": "0956cf9a0afcbb938245bcccc5c5dbfa3b01a4b4393e64a5bca2181f63761451",
+      "catalogBlobAtInputHead": "5dccfbd01d692a65f4e5f4d56202200ca189e83e",
+      "rationale": "The Full quality preset maps to no rendering FPS cap; this concise label expresses that option instead of meaning filled/full."
+    }
+  ],
+  "count": 2,
+  "review": "Independent cross-review found the current Chinese labels mean full/filled; the exact selector maps Full to uncapped rendering. Root reviewed the caller context and accepted the no-cap wording."
+}

@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "task": "Chinese RustyMilk Full quality-preset label follow-up",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "pinnedHistoricalHead": "f9a852b0f914b53510013dcedbeb3e332275b92d",
+  "pinnedHistoricalTree": "bbbfde5fa90f60b656bc4d1a551afaf4cc645742",
+  "livePullRequestAtInitialCheck": {
+    "state": "OPEN",
+    "isDraft": true,
+    "headRefOid": "f9a852b0f914b53510013dcedbeb3e332275b92d"
+  },
+  "currentLivePullRequest": {
+    "headRefOid": "c0255ca319b9d5b3bba06980fc97ddb72072f759",
+    "isDraft": true,
+    "state": "OPEN"
+  },
+  "currentHead": "c0255ca319b9d5b3bba06980fc97ddb72072f759",
+  "currentTree": "0773b762a309cad8e102e7b159eeef00a0eaf1d9",
+  "currentTreeVerifiedViaGitHubApi": "0773b762a309cad8e102e7b159eeef00a0eaf1d9",
+  "source": {
+    "sourceId": "Full",
+    "sourceIndex": 1823,
+    "sourceInventoryLineNumber": 1824,
+    "sourceSha256": "008dacb6d1e85bd8c0ae9661c4472810ef75537f690dd75d77fc74ca62f78fec",
+    "sourceInventoryPath": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/frozen-inputs/source-inventory.jsonl",
+    "sourceInventorySha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+    "sourceBaselineHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+    "sourceBaselineTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152"
+  },
+  "callerContext": {
+    "qualitySelectorAndTooltipAtCurrentHead": [
+      {
+        "path": "web/src/components/Player/VisualizerOverlayControls.jsx",
+        "line": 518,
+        "lineText": "                content={interfaceText(\"Choose a RustyMilk quality preset. Efficient lowers GPU load, Balanced caps at 60 FPS, and Full leaves rendering uncapped.\")}",
+        "lineSha256": "c7113e082873b7fe89f3b06288e3c4139e357fbac0bf25a440db76eb732cd680",
+        "fileBlob": "0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf",
+        "fileSha256": "5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4"
+      },
+      {
+        "path": "web/src/components/Player/VisualizerOverlayControls.jsx",
+        "line": 529,
+        "lineText": "                    <option value=\"full\">{interfaceText(\"Full\")}</option>",
+        "lineSha256": "013200aef8c28eeda7363aa3bbeb616a4d19bf3f6a5aac432b3a92c7af7d9faf",
+        "fileBlob": "0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf",
+        "fileSha256": "5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4"
+      },
+      {
+        "path": "web/src/components/Player/VisualizerOverlayControls.jsx",
+        "line": 533,
+        "lineText": "               {...interfaceTextProps(\"Choose a RustyMilk quality preset. Efficient lowers GPU load, Balanced caps at 60 FPS, and Full leaves rendering uncapped.\")}/>",
+        "lineSha256": "4ceeb0bb8df852453aab5aba9df83cadf88cafecae09e395152643bbe33bd70b",
+        "fileBlob": "0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf",
+        "fileSha256": "5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4"
+      }
+    ],
+    "presetFpsMappingAtCurrentHead": [
+      {
+        "path": "web/src/components/Player/visualizerPresetLibrary.js",
+        "line": 187,
+        "lineText": "const getRustyMilkFpsCapMs = (fpsCap) => {",
+        "lineSha256": "d5c71c12dac00bdb22d1d7baac1516c58e3f3174ff47b596ceb4dc697675dadf",
+        "fileBlob": "6794eb93c94e325625bf6fece44bcff553fd8d86",
+        "fileSha256": "eaa880764a42ac057e5c51b211ed08ab79223c2cb57036ebfa19b92fd8e655d9"
+      },
+      {
+        "path": "web/src/components/Player/visualizerPresetLibrary.js",
+        "line": 188,
+        "lineText": "  if (fpsCap === '60') return 1000 / 60;",
+        "lineSha256": "43c6c7c27464cb9a8146444bfb96a9d74c5b2d749a769d15c1da366328dc157b",
+        "fileBlob": "6794eb93c94e325625bf6fece44bcff553fd8d86",
+        "fileSha256": "eaa880764a42ac057e5c51b211ed08ab79223c2cb57036ebfa19b92fd8e655d9"
+      },
+      {
+        "path": "web/src/components/Player/visualizerPresetLibrary.js",
+        "line": 189,
+        "lineText": "  if (fpsCap === '30') return 1000 / 30;",
+        "lineSha256": "cc3ea67404a7086a472cea0fb1fc82439e8c0de820b9314bf5df23e7d389d255",
+        "fileBlob": "6794eb93c94e325625bf6fece44bcff553fd8d86",
+        "fileSha256": "eaa880764a42ac057e5c51b211ed08ab79223c2cb57036ebfa19b92fd8e655d9"
+      },
+      {
+        "path": "web/src/components/Player/visualizerPresetLibrary.js",
+        "line": 190,
+        "lineText": "  if (fpsCap === '24') return 1000 / 24;",
+        "lineSha256": "744ff0adc846c0eca925fd4c63a9242871b60895fb056496e879e59839d76395",
+        "fileBlob": "6794eb93c94e325625bf6fece44bcff553fd8d86",
+        "fileSha256": "eaa880764a42ac057e5c51b211ed08ab79223c2cb57036ebfa19b92fd8e655d9"
+      },
+      {
+        "path": "web/src/components/Player/visualizerPresetLibrary.js",
+        "line": 191,
+        "lineText": "  return 0;",
+        "lineSha256": "df0bfe87b3c0c07ad0d196474e136cf048a195c1f4cf42fdf4866c7309f4677a",
+        "fileBlob": "6794eb93c94e325625bf6fece44bcff553fd8d86",
+        "fileSha256": "eaa880764a42ac057e5c51b211ed08ab79223c2cb57036ebfa19b92fd8e655d9"
+      },
+      {
+        "path": "web/src/components/Player/visualizerPresetLibrary.js",
+        "line": 194,
+        "lineText": "const nativeQualityPresets = {",
+        "lineSha256": "2e479abb22bf92372a4129ac13b84d8598acb5c068435156d28ee3b4b787bf50",
+        "fileBlob": "6794eb93c94e325625bf6fece44bcff553fd8d86",
+        "fileSha256": "eaa880764a42ac057e5c51b211ed08ab79223c2cb57036ebfa19b92fd8e655d9"
+      },
+      {
+        "path": "web/src/components/Player/visualizerPresetLibrary.js",
+        "line": 203,
+        "lineText": "  full: {",
+        "lineSha256": "cdcc760fee54bce0ff46f2bc684bc031e6bb71f742b121bf7384245fb77058aa",
+        "fileBlob": "6794eb93c94e325625bf6fece44bcff553fd8d86",
+        "fileSha256": "eaa880764a42ac057e5c51b211ed08ab79223c2cb57036ebfa19b92fd8e655d9"
+      },
+      {
+        "path": "web/src/components/Player/visualizerPresetLibrary.js",
+        "line": 204,
+        "lineText": "    fpsCap: 'full',",
+        "lineSha256": "7ba4b3fb950d1ab2170e5a6da080d5c7ae3109b74dc3a0f783df4aedf0542e90",
+        "fileBlob": "6794eb93c94e325625bf6fece44bcff553fd8d86",
+        "fileSha256": "eaa880764a42ac057e5c51b211ed08ab79223c2cb57036ebfa19b92fd8e655d9"
+      },
+      {
+        "path": "web/src/components/Player/visualizerPresetLibrary.js",
+        "line": 205,
+        "lineText": "    get label() { return interfaceText(\"Full\"); },",
+        "lineSha256": "34180a47e0bd0b72523cc8dddb55693939bdee8b2845ddd5e12e1b50845b02d1",
+        "fileBlob": "6794eb93c94e325625bf6fece44bcff553fd8d86",
+        "fileSha256": "eaa880764a42ac057e5c51b211ed08ab79223c2cb57036ebfa19b92fd8e655d9"
+      }
+    ],
+    "callerFilesUnchangedFromF9": true,
+    "directSourceIdCallers": [
+      "web/src/components/Player/VisualizerOverlayControls.jsx:529",
+      "web/src/components/Player/visualizerPresetLibrary.js:205"
+    ],
+    "semanticContext": "The quality selector labels option value full with this source ID; the adjacent tooltip explicitly says Full leaves rendering uncapped. The native preset model maps full to fpsCap full, and the frame-interval helper returns zero for the uncapped value. The separate Full FPS label at VisualizerOverlayControls.jsx:510 is a different source ID.",
+    "separateSourceId": "Full FPS"
+  },
+  "localeTargets": {
+    "zh-Hans": {
+      "targetFile": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "sourceId": "Full",
+      "currentTargetAtF9": "满的",
+      "currentTargetAtCurrentHead": "满的",
+      "currentTargetSha256AtF9": "f4ca054074aede1a8b0b7d1ad5924170db92cc12875309cf418c1ac138227a21",
+      "currentTargetSha256AtCurrentHead": "f4ca054074aede1a8b0b7d1ad5924170db92cc12875309cf418c1ac138227a21",
+      "targetUnchangedFromF9": true,
+      "catalogBlobAtF9": "9d0046ecb6ba641f7f3a6cb73a2ef01678c61e94",
+      "catalogBlobAtCurrentHead": "b2bb7f5fd9d9f1111d8c4e7fa7c85331f0e2e9e7",
+      "catalogFileSha256AtF9": "0a76c2cdf551cf034ceaad30a0d10fac6701747c9976e766c107c0bd10a8e772",
+      "catalogFileSha256AtCurrentHead": "35b98b887be2091c8b1de58e38ab0ec8fcbf103ec2579c66e5222a91037d89c7",
+      "currentLinePinAtCurrentHead": {
+        "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+        "line": 1678,
+        "lineText": "  \"Full\": \"满的\",",
+        "lineSha256": "4a3cb95c0ffba180472573cf4050328084a40673796e05f218ab9cc69502f5b1",
+        "fileBlob": "b2bb7f5fd9d9f1111d8c4e7fa7c85331f0e2e9e7",
+        "fileSha256": "35b98b887be2091c8b1de58e38ab0ec8fcbf103ec2579c66e5222a91037d89c7"
+      },
+      "recommendedTarget": "不设上限",
+      "recommendedTargetSha256": "b94cae13412a205ba2d07e58c7d43bddf7488b141d976a05014365da5b74d6a6",
+      "rationale": "The Full quality preset maps to no rendering FPS cap; this concise label expresses that option instead of meaning filled/full."
+    },
+    "zh-Hant": {
+      "targetFile": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "sourceId": "Full",
+      "currentTargetAtF9": "滿的",
+      "currentTargetAtCurrentHead": "滿的",
+      "currentTargetSha256AtF9": "b5c9d97d0e7b94f6b324e05b701ed7c6bcf64991637cb4ed82e8b4a1b45d9868",
+      "currentTargetSha256AtCurrentHead": "b5c9d97d0e7b94f6b324e05b701ed7c6bcf64991637cb4ed82e8b4a1b45d9868",
+      "targetUnchangedFromF9": true,
+      "catalogBlobAtF9": "74aaba3b2a01fa5f6470b28d161bde7d7908be72",
+      "catalogBlobAtCurrentHead": "5dccfbd01d692a65f4e5f4d56202200ca189e83e",
+      "catalogFileSha256AtF9": "ef6d196ea89ec6a19c6076e452c103be4bb41ba83c6e598f33fd243faeefcffe",
+      "catalogFileSha256AtCurrentHead": "34fa6330b1dc22b85eb9551ee20c1ac63cc3e28acf6df68d0d8c095c19a65949",
+      "currentLinePinAtCurrentHead": {
+        "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+        "line": 1678,
+        "lineText": "  \"Full\": \"滿的\",",
+        "lineSha256": "2eaecd104c9e84d546e2a130da721007cada4c32493ee4fd781911cca42ce919",
+        "fileBlob": "5dccfbd01d692a65f4e5f4d56202200ca189e83e",
+        "fileSha256": "34fa6330b1dc22b85eb9551ee20c1ac63cc3e28acf6df68d0d8c095c19a65949"
+      },
+      "recommendedTarget": "不設上限",
+      "recommendedTargetSha256": "0956cf9a0afcbb938245bcccc5c5dbfa3b01a4b4393e64a5bca2181f63761451",
+      "rationale": "The Full quality preset maps to no rendering FPS cap; this concise label expresses that option instead of meaning filled/full."
+    }
+  },
+  "worktreeHandling": "The shared W503–522 worktree had concurrent changes from the parent task. It was not modified or used for mutable file reads; data was read from immutable commit objects at f9 and c025.",
+  "recommendationConfidence": "moderate",
+  "nativeSpeakerApproval": false,
+  "repositoryOrPRChanges": false,
+  "testsBuildsScansCIOrWorkflowsRun": false
+}

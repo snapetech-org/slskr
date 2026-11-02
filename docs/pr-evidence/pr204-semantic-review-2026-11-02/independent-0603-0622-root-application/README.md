@@ -12,7 +12,7 @@ The independent review re-attested 504 caller references across 42 unique caller
 
 ## Scope and remaining review
 
-A related Chinese `Full` preset label was flagged as a separate source row outside this batch; its exact caller and proposed wording are being recorded in a follow-up packet for the next sequential review. Qualified native-speaker approval remains outstanding; this machine-assisted review does not establish it.
+A separate Chinese `Full` preset-label defect at source index 1823, identified during cross-review, was corrected to no-cap wording for zh-Hans/zh-Hant in [the focused follow-up](../full-preset-label-correction/README.md); it is outside W603–622. Qualified native-speaker approval remains outstanding; this machine-assisted review does not establish it.
 
 Only the twelve locale catalogs changed. No source or workflow files changed. No tests, builds, scans, CI jobs, releases, tags or merges were run or created. PR #204 remains open and draft.
 
