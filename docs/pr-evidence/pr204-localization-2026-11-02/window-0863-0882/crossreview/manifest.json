@@ -1,0 +1,142 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W863-W882",
+  "head": "72597bcf3c71f586040cd882506dff8dcbf6c804",
+  "tree": "98f7304db2e39ad722121c24047f5f06aa515663",
+  "state": "OPEN",
+  "isDraft": true,
+  "crossreviewCellCount": 240,
+  "crossreviewDispositionCounts": {
+    "accept-proposal": 56,
+    "revise-proposal": 12,
+    "accept-current": 172
+  },
+  "primaryManifestSha256": "be0e9f821f84ae878b9cba3bb95e89e400f71437239f1a1bbee17ed826d903f7",
+  "primarySha256SumsSha256": "aaeee1a02507f830796ed72959adbc31177df9dfd7e2bf0d7236137962b46209",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1398,
+      "sha256": "c6bf59eb0635604001c741e44b6602799975e48371fc981428d9ac383f2f2d99"
+    },
+    {
+      "path": "SHA256SUMS",
+      "bytes": 2255,
+      "sha256": "a347cfd9b3ebbc0920051b0c655703f49e48ea322fe3d2d51bb8a02e2999af1f"
+    },
+    {
+      "path": "batch-ar-de-es-fr-hi-id/README.md",
+      "bytes": 1790,
+      "sha256": "a74e112e5474c4f39b40a8f4eea82bdb5bb97639c60611a3ff8282b9be8c034f"
+    },
+    {
+      "path": "batch-ar-de-es-fr-hi-id/SHA256SUMS",
+      "bytes": 676,
+      "sha256": "f5892037ccded4cfb8c933bc2f20d9f354c9bf063d940f30a1c9f77121d9b1ca"
+    },
+    {
+      "path": "batch-ar-de-es-fr-hi-id/build_batch.py",
+      "bytes": 21851,
+      "sha256": "cef5e47b3b918793c79aa40ab597d44d133c4bc8f2118a2cdb855bc292e174e9"
+    },
+    {
+      "path": "batch-ar-de-es-fr-hi-id/caller-reattestation.jsonl",
+      "bytes": 27745,
+      "sha256": "7af1f9b516cbd1e6a4141dd087f56613d22da814dc82070fc70e78eb957bfc19"
+    },
+    {
+      "path": "batch-ar-de-es-fr-hi-id/catalog-reattestation.jsonl",
+      "bytes": 4982,
+      "sha256": "143d844441503585dbef07919cb0bce233b1bdbd8326c7ef0d89c296c593146c"
+    },
+    {
+      "path": "batch-ar-de-es-fr-hi-id/crossreview-ledger.jsonl",
+      "bytes": 268323,
+      "sha256": "11066ef2873ed9df150535edcb41e616b5c1aa0e6b9f4dce205982e2d9f3cb3d"
+    },
+    {
+      "path": "batch-ar-de-es-fr-hi-id/manifest.json",
+      "bytes": 1889,
+      "sha256": "750c263628b5bf15fd7f0221820dd9dfa26b9b32a4ef1c8f1826932182307683"
+    },
+    {
+      "path": "batch-ar-de-es-fr-hi-id/manifest.sha256",
+      "bytes": 80,
+      "sha256": "91ec6e68896e7ac691db0ddd65d2d8c7fa1e944cc0286028c8a2576835258f69"
+    },
+    {
+      "path": "batch-ar-de-es-fr-hi-id/summary.json",
+      "bytes": 4159,
+      "sha256": "b70e7bffbff8a5ad1e219c827c3296c3cbaa96fa6d9c47e72e584d1f17a8bce9"
+    },
+    {
+      "path": "batch-ja-ko-ptbr-vi-zh-attestation.json",
+      "bytes": 6632,
+      "sha256": "3a1ae14763b816fd84a149eca44b41b2a58be6decfb2e05655de08c38bedb2eb"
+    },
+    {
+      "path": "batch-ja-ko-ptbr-vi-zh.jsonl",
+      "bytes": 195958,
+      "sha256": "77b4f8643a51f66174b8339bb8d00589bf5718bfb4910588a14683c1bccf76d5"
+    },
+    {
+      "path": "caller-pin-reattestation.jsonl",
+      "bytes": 24649,
+      "sha256": "b7e0a7229280ee0afc2b5915ac0ad009b0e0dcad3973677b129324b153d060e2"
+    },
+    {
+      "path": "capture_live.py",
+      "bytes": 1142,
+      "sha256": "4d5283f0f1dd7c35a73962b0fd1d383a2269e19c43a7f51f0706add2e4f23c1e"
+    },
+    {
+      "path": "catalog-reattestation.jsonl",
+      "bytes": 4142,
+      "sha256": "f49de0d49b2d24b0d4d8dc496a5012f2c6283b501bd5600d60681f07b9d2a275"
+    },
+    {
+      "path": "crossreview-ledger.jsonl",
+      "bytes": 566902,
+      "sha256": "2d80da693a0ace3ba9c2683914511233866a6f00c065c92b75a8a29ed8506fae"
+    },
+    {
+      "path": "full-window-structural-reattestation.json",
+      "bytes": 4646,
+      "sha256": "853170c388ddca868394472ee6ba819702e818cb8d300f02561c1d29adc7f25e"
+    },
+    {
+      "path": "live-prs-after.json",
+      "bytes": 3902,
+      "sha256": "05c0499e84b060ad3869d7a767dc416471ffafb7839cbfee095c20b9c668f688"
+    },
+    {
+      "path": "live-prs-before.json",
+      "bytes": 3903,
+      "sha256": "27660a64eba60659dd2750f2a816cb2b4bdca15ef8c44cf697ac3a4137a7c1eb"
+    },
+    {
+      "path": "primary-input-SHA256SUMS",
+      "bytes": 851,
+      "sha256": "aaeee1a02507f830796ed72959adbc31177df9dfd7e2bf0d7236137962b46209"
+    },
+    {
+      "path": "primary-input-manifest.json",
+      "bytes": 1998,
+      "sha256": "be0e9f821f84ae878b9cba3bb95e89e400f71437239f1a1bbee17ed826d903f7"
+    },
+    {
+      "path": "primary-input-review-ledger.jsonl",
+      "bytes": 179023,
+      "sha256": "e2fea414ecac9ec6714a2afb2f2b42927697cd522bbdcb46a7e2b209a1734e3c"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 13905,
+      "sha256": "0a299fd006b8a4aa0df3e427279e59e45881f842cce0b84bdb25fa5570c055ba"
+    }
+  ],
+  "sha256SumsSha256": "a347cfd9b3ebbc0920051b0c655703f49e48ea322fe3d2d51bb8a02e2999af1f",
+  "nativeSpeakerApproval": "outstanding",
+  "repositoryEdited": false
+}

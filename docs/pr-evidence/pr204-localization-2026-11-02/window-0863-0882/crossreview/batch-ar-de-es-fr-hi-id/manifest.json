@@ -1,0 +1,63 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W863-W882",
+  "assignedLocales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id"
+  ],
+  "head": "72597bcf3c71f586040cd882506dff8dcbf6c804",
+  "tree": "98f7304db2e39ad722121c24047f5f06aa515663",
+  "primaryInput": {
+    "directory": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0863-0882-primary-20261102",
+    "sha256SumsSha256": "aaeee1a02507f830796ed72959adbc31177df9dfd7e2bf0d7236137962b46209",
+    "manifestSha256": "be0e9f821f84ae878b9cba3bb95e89e400f71437239f1a1bbee17ed826d903f7",
+    "reviewLedgerSha256": "e2fea414ecac9ec6714a2afb2f2b42927697cd522bbdcb46a7e2b209a1734e3c"
+  },
+  "cellCount": 120,
+  "dispositionCounts": {
+    "accept-current": 88,
+    "accept-proposal": 32
+  },
+  "callerPinsReattested": 27,
+  "catalogLocalesReattested": 12,
+  "sharedCatalogKeyCount": 5441,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1790,
+      "sha256": "a74e112e5474c4f39b40a8f4eea82bdb5bb97639c60611a3ff8282b9be8c034f"
+    },
+    {
+      "path": "crossreview-ledger.jsonl",
+      "bytes": 268323,
+      "sha256": "11066ef2873ed9df150535edcb41e616b5c1aa0e6b9f4dce205982e2d9f3cb3d"
+    },
+    {
+      "path": "caller-reattestation.jsonl",
+      "bytes": 27745,
+      "sha256": "7af1f9b516cbd1e6a4141dd087f56613d22da814dc82070fc70e78eb957bfc19"
+    },
+    {
+      "path": "catalog-reattestation.jsonl",
+      "bytes": 4982,
+      "sha256": "143d844441503585dbef07919cb0bce233b1bdbd8326c7ef0d89c296c593146c"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 4159,
+      "sha256": "b70e7bffbff8a5ad1e219c827c3296c3cbaa96fa6d9c47e72e584d1f17a8bce9"
+    },
+    {
+      "path": "build_batch.py",
+      "bytes": 21851,
+      "sha256": "cef5e47b3b918793c79aa40ab597d44d133c4bc8f2118a2cdb855bc292e174e9"
+    }
+  ],
+  "nativeSpeakerApproval": false,
+  "repositoryModified": false
+}

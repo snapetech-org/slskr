@@ -1,0 +1,22 @@
+{"sourceId": "Consensus for destructive actions", "sourceIndex": 861, "sourceSha256": "af9e2ffdefe544774f06a03956167099f9c0cb054bcbd5b3adc2359273d1a691", "windowLabel": 862}
+{"sourceId": "Conservative Network", "sourceIndex": 862, "sourceSha256": "ab05a05e8e0b6ae60d6adffa4fdccd126c77eddcf7b4e710009ad23940d9f770", "windowLabel": 863}
+{"sourceId": "Conservative discovery of hashes from non-slskr peers", "sourceIndex": 863, "sourceSha256": "1fce215621111787b6d8b535ed6718a3bab1dfe86fea8a3ccfd1efc71323180e", "windowLabel": 864}
+{"sourceId": "Contacts", "sourceIndex": 864, "sourceSha256": "b450645debe2cf0a590edd7f78d36eccd465027d389652dc30d6350542587c04", "windowLabel": 865}
+{"sourceId": "Contacts unavailable", "sourceIndex": 865, "sourceSha256": "3430e3b2e95a981126eb937ea824b70e935186115bc24d84dfe2b5012d644ed1", "windowLabel": 866}
+{"sourceId": "Content", "sourceIndex": 866, "sourceSha256": "47bd29075f8b8019f0beec6d86beda7c9bf67aaf05053dcbe0b3bcb63968517f", "windowLabel": 867}
+{"sourceId": "Content A:", "sourceIndex": 867, "sourceSha256": "b79d365e886a6595d0b27db4696d249866aa4b88c48bd947b1fd07d9fb8a11fb", "windowLabel": 868}
+{"sourceId": "Content B:", "sourceIndex": 868, "sourceSha256": "38fceae2f8ce2c313be7b419bec7a08ebd97021c04c3a5f9d6a683360572114e", "windowLabel": 869}
+{"sourceId": "Content Graph", "sourceIndex": 869, "sourceSha256": "9ca77df74253a6fefe3ae8cb0b8ee42c5259ac154cc6a650f440b02717beac9c", "windowLabel": 870}
+{"sourceId": "Content ID", "sourceIndex": 870, "sourceSha256": "23c1cb78a3b43747eb37cbb594038d0dd2c415e8e5f4a7f706d32aa04ff471bb", "windowLabel": 871}
+{"sourceId": "Content ID (e.g., content:audio:album:mb-id)", "sourceIndex": 871, "sourceSha256": "a7660d166f9842fed4de02603883f54a6439199693936bc2c9ca93e8c3cb733d", "windowLabel": 872}
+{"sourceId": "Content ID (e.g., content:audio:album:mb-release-id)", "sourceIndex": 872, "sourceSha256": "349102fe2a438f4ca884d7d3831e7b2a4a3308e1cae9099149e47ee2c52f1cee", "windowLabel": 873}
+{"sourceId": "Content ID and variant hash are required", "sourceIndex": 873, "sourceSha256": "900ca0fbffc21527fa105ed86563ad7523e9ef32013321e796ad03e304e0322b", "windowLabel": 874}
+{"sourceId": "Content ID is required", "sourceIndex": 874, "sourceSha256": "ae3d719cf03f858c2d0400167d08771d7caf341d8a98542232ff1af63bc97d5b", "windowLabel": 875}
+{"sourceId": "Content ID mappings and domain statistics", "sourceIndex": 875, "sourceSha256": "dcaa03355b935310acde2577be9cd9852d4d8b5cb5f25b0aa4dd758a9162435c", "windowLabel": 876}
+{"sourceId": "Content ID must be a JSON string", "sourceIndex": 876, "sourceSha256": "d7ae637fcaba5745b595538011b7d8e63f28eb78f7e6517ef42fe66871d35c32", "windowLabel": 877}
+{"sourceId": "Content ID:", "sourceIndex": 877, "sourceSha256": "1d6c9c749752dd436e5f05efd42f17cc6aabb59916cb4fcde64b8aaaa4ef27a6", "windowLabel": 878}
+{"sourceId": "Content Linking", "sourceIndex": 878, "sourceSha256": "a96efeb5aa38eaf5ce4c6aaa96413f4ecb87d18ff65a725f3a3f756c574069b1", "windowLabel": 879}
+{"sourceId": "Content Metadata", "sourceIndex": 879, "sourceSha256": "1dc6759d70bfb3718a98c4a632f1f676d0354297b737d11980735fa32f6d972a", "windowLabel": 880}
+{"sourceId": "Content Opinions", "sourceIndex": 880, "sourceSha256": "1c398e7298c2c9b8e176417a93142b6f7071ede3400045a3d137ef066b534034", "windowLabel": 881}
+{"sourceId": "Content Publishing", "sourceIndex": 881, "sourceSha256": "30ca76ac54169bbebe3ba4e698b9dcf1447e6a3d8c5ef1b8e15b318fd7fcab78", "windowLabel": 882}
+{"sourceId": "Content Registry", "sourceIndex": 882, "sourceSha256": "f7e7093dbf09c564509d000eac15f30d48123ac1d9df162646b9d7d678b1e67c", "windowLabel": 883}

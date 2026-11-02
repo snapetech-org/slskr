@@ -1,0 +1,182 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "72597bcf3c71f586040cd882506dff8dcbf6c804",
+  "tree": "98f7304db2e39ad722121c24047f5f06aa515663",
+  "primaryManifestSha256": "be0e9f821f84ae878b9cba3bb95e89e400f71437239f1a1bbee17ed826d903f7",
+  "batchLocales": [
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "batchCellCount": 120,
+  "batchDispositionCounts": {
+    "accept-proposal": 24,
+    "revise-proposal": 12,
+    "accept-current": 84
+  },
+  "perLocaleCellCounts": {
+    "ja": 20,
+    "ko": 20,
+    "pt-BR": 20,
+    "vi": 20,
+    "zh-Hans": 20,
+    "zh-Hant": 20
+  },
+  "fullWindowSourceCurrentTargetRowsReattested": 240,
+  "directCatalogsReattested": 12,
+  "catalogKeysEach": 5441,
+  "catalogKeySetsIdentical": true,
+  "callerPinsReattested": 27,
+  "callerFiles": 15,
+  "callerGaps": 0,
+  "placeholderMismatches": 0,
+  "markupMismatches": 0,
+  "protectedLiteralMismatches": 0,
+  "icuPatternsInWindow": 0,
+  "machineReviewOnly": true,
+  "nativeSpeakerApproval": "outstanding",
+  "repositoryEdited": false,
+  "testsBuildsScansCIorBrowserUsed": false,
+  "materialRevisions": [
+    {
+      "sourceIndex": 863,
+      "locale": "vi",
+      "reviewedFinal": "Phát hiện có chọn lọc các hash từ peer bên ngoài slskr",
+      "reason": "The Backfill Scheduler subtitle refers to a selective discovery process, not hashes that themselves are limited. This wording expresses selective discovery and keeps peers outside slskr."
+    },
+    {
+      "sourceIndex": 865,
+      "locale": "zh-Hans",
+      "reviewedFinal": "联系人不可用",
+      "reason": "The caller is an empty-state header shown when the contacts request fails. 联系方式 means contact methods/details, while this page is the contacts list; align the error label with 联系人."
+    },
+    {
+      "sourceIndex": 865,
+      "locale": "zh-Hant",
+      "reviewedFinal": "聯絡人不可用",
+      "reason": "The caller is an empty-state header shown when the contacts request fails. 聯絡方式 means contact methods/details, while this page is the contacts list; align the error label with 聯絡人."
+    },
+    {
+      "sourceIndex": 867,
+      "locale": "ko",
+      "reviewedFinal": "콘텐츠 A:",
+      "reason": "Keep the same product term 콘텐츠 used for Content B and the Content ID labels; retain A as the comparison-side identifier."
+    },
+    {
+      "sourceIndex": 867,
+      "locale": "zh-Hans",
+      "reviewedFinal": "内容 A：",
+      "reason": "The caller presents two comparison results as Content A and Content B. Preserve the paired Latin side markers instead of converting A to 一 while B is 乙."
+    },
+    {
+      "sourceIndex": 867,
+      "locale": "zh-Hant",
+      "reviewedFinal": "內容 A：",
+      "reason": "The caller presents two comparison results as Content A and Content B. Preserve the paired Latin side markers instead of converting A to 一 while B is 乙."
+    },
+    {
+      "sourceIndex": 868,
+      "locale": "ko",
+      "reviewedFinal": "콘텐츠 B:",
+      "reason": "Keep the same product term 콘텐츠 used for Content A and the Content ID labels; retain B as the comparison-side identifier."
+    },
+    {
+      "sourceIndex": 868,
+      "locale": "zh-Hans",
+      "reviewedFinal": "内容 B：",
+      "reason": "The caller presents two comparison results as Content A and Content B. Preserve the paired Latin side markers instead of converting A to 一 while B is 乙."
+    },
+    {
+      "sourceIndex": 868,
+      "locale": "zh-Hant",
+      "reviewedFinal": "內容 B：",
+      "reason": "The caller presents two comparison results as Content A and Content B. Preserve the paired Latin side markers instead of converting A to 一 while B is 乙."
+    },
+    {
+      "sourceIndex": 875,
+      "locale": "pt-BR",
+      "reviewedFinal": "Mapeamentos de ID do conteúdo e estatísticas de domínio",
+      "reason": "The current title leaves Content ID in English although the adjacent Content ID labels are localized as ID do conteúdo. Use consistent Brazilian Portuguese terminology."
+    },
+    {
+      "sourceIndex": 875,
+      "locale": "vi",
+      "reviewedFinal": "Ánh xạ ID nội dung và thống kê tên miền",
+      "reason": "The current title leaves Content ID in English although adjacent Content ID labels are localized as ID nội dung. Use consistent Vietnamese terminology."
+    },
+    {
+      "sourceIndex": 875,
+      "locale": "zh-Hant",
+      "reviewedFinal": "內容 ID 映射與網域統計資訊",
+      "reason": "For the statistics dashboard this refers to registry mappings by internet domain. 網域 is the locale-specific term for an internet domain, and 資訊 uses Traditional Chinese orthography."
+    }
+  ],
+  "currentProtectedLiteralMismatchCount": 11,
+  "currentProtectedLiteralMismatchRows": [
+    {
+      "sourceIndex": 871,
+      "locale": "vi",
+      "missingToken": "content:audio:album:mb-id"
+    },
+    {
+      "sourceIndex": 871,
+      "locale": "zh-Hans",
+      "missingToken": "content:audio:album:mb-id"
+    },
+    {
+      "sourceIndex": 871,
+      "locale": "zh-Hant",
+      "missingToken": "content:audio:album:mb-id"
+    },
+    {
+      "sourceIndex": 872,
+      "locale": "zh-Hans",
+      "missingToken": "content:audio:album:mb-release-id"
+    },
+    {
+      "sourceIndex": 872,
+      "locale": "zh-Hant",
+      "missingToken": "content:audio:album:mb-release-id"
+    }
+  ],
+  "primaryProposalProtectedLiteralMismatchCount": 0,
+  "reviewedPrimaryFinalProtectedLiteralMismatchCount": 0,
+  "batchCurrentProtectedLiteralMismatchCount": 5,
+  "batchProtectedLiteralMismatchFindings": "The five current-target failures in this batch are all fixed by primary proposals; no reviewed final fails.",
+  "note": "Across all 240 rows, current targets have 11 exact example-token mismatches. The proposals and reviewed primary finals restore every protected token. This batch accounts for five current-target mismatches; none remains in its reviewed finals.",
+  "perLocaleDispositionCounts": {
+    "ja": {
+      "accept-proposal": 2,
+      "accept-current": 18
+    },
+    "ko": {
+      "accept-proposal": 3,
+      "accept-current": 15,
+      "revise-proposal": 2
+    },
+    "pt-BR": {
+      "accept-proposal": 5,
+      "accept-current": 14,
+      "revise-proposal": 1
+    },
+    "vi": {
+      "accept-proposal": 4,
+      "revise-proposal": 2,
+      "accept-current": 14
+    },
+    "zh-Hans": {
+      "accept-proposal": 5,
+      "accept-current": 12,
+      "revise-proposal": 3
+    },
+    "zh-Hant": {
+      "accept-proposal": 5,
+      "accept-current": 11,
+      "revise-proposal": 4
+    }
+  }
+}

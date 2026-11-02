@@ -1,0 +1,145 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "72597bcf3c71f586040cd882506dff8dcbf6c804",
+  "tree": "98f7304db2e39ad722121c24047f5f06aa515663",
+  "cellCount": 240,
+  "sourceCurrentProposalFinalHashRowsReattested": 240,
+  "currentProtectedLiteralMismatchCount": 11,
+  "currentProtectedLiteralMismatchRows": [
+    {
+      "sourceIndex": 871,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-id)",
+      "locale": "es",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-id"
+      ],
+      "value": "ID de contenido (por ejemplo, contenido:audio:álbum:mb-id)"
+    },
+    {
+      "sourceIndex": 871,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-id)",
+      "locale": "hi",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-id"
+      ],
+      "value": "सामग्री आईडी (जैसे, सामग्री:ऑडियो:एल्बम:एमबी-आईडी)"
+    },
+    {
+      "sourceIndex": 871,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-id)",
+      "locale": "id",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-id"
+      ],
+      "value": "ID Konten (misalnya, konten:audio:album:mb-id)"
+    },
+    {
+      "sourceIndex": 871,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-id)",
+      "locale": "vi",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-id"
+      ],
+      "value": "ID nội dung (ví dụ: nội dung:audio:album:mb-id)"
+    },
+    {
+      "sourceIndex": 871,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-id)",
+      "locale": "zh-Hans",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-id"
+      ],
+      "value": "内容 ID（例如内容：音频：专辑：mb-id）"
+    },
+    {
+      "sourceIndex": 871,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-id)",
+      "locale": "zh-Hant",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-id"
+      ],
+      "value": "內容 ID（例如內容：音訊：專輯：mb-id）"
+    },
+    {
+      "sourceIndex": 872,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-release-id)",
+      "locale": "es",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-release-id"
+      ],
+      "value": "ID de contenido (por ejemplo, contenido:audio:álbum:mb-release-id)"
+    },
+    {
+      "sourceIndex": 872,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-release-id)",
+      "locale": "hi",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-release-id"
+      ],
+      "value": "सामग्री आईडी (जैसे, सामग्री:ऑडियो:एल्बम:एमबी-रिलीज़-आईडी)"
+    },
+    {
+      "sourceIndex": 872,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-release-id)",
+      "locale": "id",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-release-id"
+      ],
+      "value": "ID Konten (misalnya, konten:audio:album:mb-release-id)"
+    },
+    {
+      "sourceIndex": 872,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-release-id)",
+      "locale": "zh-Hans",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-release-id"
+      ],
+      "value": "内容 ID（例如内容：音频：专辑：mb-release-id）"
+    },
+    {
+      "sourceIndex": 872,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-release-id)",
+      "locale": "zh-Hant",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-release-id"
+      ],
+      "value": "內容 ID（例如內容：音訊：專輯：mb-release-id）"
+    }
+  ],
+  "primaryProposalProtectedLiteralMismatchCount": 0,
+  "reviewedFinalProtectedLiteralMismatchCount": 0,
+  "placeholderMismatches": 0,
+  "markupMismatches": 0,
+  "icuPatternCount": 0,
+  "protectedTokensBySourceIndex": {
+    "863": [
+      "slskr"
+    ],
+    "871": [
+      "content:audio:album:mb-id"
+    ],
+    "872": [
+      "content:audio:album:mb-release-id"
+    ],
+    "873": [
+      "contentId",
+      "variantHash"
+    ],
+    "876": [
+      "JSON"
+    ]
+  },
+  "note": "The 11 current-target mismatches are exact protected example tokens translated within Content ID examples; accepted proposals restore the exact code-shaped tokens. The exclusion component of non-slskr is language-translated while exact lowercase product identifier slskr remains unchanged."
+}
