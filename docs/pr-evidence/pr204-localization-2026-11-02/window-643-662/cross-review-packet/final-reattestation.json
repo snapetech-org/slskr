@@ -1,0 +1,15 @@
+{
+  "all240CellsMatchAtFinalHead": true,
+  "all30CallerPinsMatchAtFinalHead": true,
+  "attestedAtUtc": "2026-11-02T13:58:57Z",
+  "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "headRefName": "codex/slskr-l10n-audit-20261030",
+  "headRefOid": "86ad391ca248ec50fa4049de0a0f08ee55010441",
+  "isDraft": true,
+  "pullRequest": 204,
+  "repository": "snapetech-org/SlskR",
+  "state": "OPEN",
+  "tree": "f773836319b92b6b8799cdda1695e7da09622941",
+  "unchangedSinceInitialSnapshot": true,
+  "url": "https://github.com/snapetech-org/slskr/pull/204"
+}

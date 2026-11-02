@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W643–662",
+  "primaryDispositionCounts": {
+    "accept-current": 98,
+    "propose-refinement": 58,
+    "propose-correction": 60,
+    "preserved-prior-disposition": 12,
+    "hold-source-behavior-mismatch": 12
+  },
+  "crossReviewDispositionCounts": {
+    "accept-current": 96,
+    "accept-primary-proposal": 118,
+    "missed-issue": 2,
+    "hold-source-behavior-mismatch": 12,
+    "preserved-prior-disposition": 12
+  },
+  "catalogCellsApplied": 120,
+  "catalogsChanged": 12,
+  "catalogKeyCountPerLocale": 5441,
+  "sourceBehaviorHolds": "12 Cleanup Expired cells held because the live route clears all pending joins and leaves without expiry filtering.",
+  "nativeSpeakerApproval": false,
+  "testsBuildsScansCiOrBrowserWorkRun": false,
+  "releaseOrTagActions": false,
+  "workflowFilesTouched": false
+}

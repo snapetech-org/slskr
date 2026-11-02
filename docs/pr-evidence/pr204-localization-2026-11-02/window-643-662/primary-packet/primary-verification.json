@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "head": "aa106d2505de8c9ace2d7d6dbf2af9777651947d",
+  "tree": "f99e717b4b77c8da098e7b8fc163926d4d32e926",
+  "window": [
+    643,
+    662
+  ],
+  "sourceInventorySha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "cellCount": 240,
+  "uniqueCellCount": 240,
+  "callerPinCount": 312,
+  "callerFiles": 12,
+  "sourceCurrentPlaceholderFailures": 0,
+  "sourceRecommendedPlaceholderFailures": 0,
+  "sourceCurrentMarkupFailures": 0,
+  "sourceRecommendedMarkupFailures": 0,
+  "protectedLiteralChecks": 36,
+  "protectedLiteralCandidateFailures": 0,
+  "priorExactMatchCount": 12,
+  "heldCells": 12,
+  "readOnlyReview": true,
+  "repoOrPRModified": false,
+  "testsBuildsScansCiOrWorkflowsRun": false
+}

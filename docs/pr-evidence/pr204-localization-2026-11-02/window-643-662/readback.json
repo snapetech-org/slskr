@@ -1,0 +1,943 @@
+{
+  "schemaVersion": 1,
+  "headBeforeApply": "86ad391ca248ec50fa4049de0a0f08ee55010441",
+  "cellCount": 120,
+  "catalogs": [
+    {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "keyCount": 5441,
+      "changedCells": 11,
+      "fileSha256": "a938e9c4c003e6dbdf15a41f489e1ee75ec86189a1cb8d41f28360fb7d340ada",
+      "targets": [
+        {
+          "sourceIndex": 644,
+          "sourceId": "Chunk Progress Heatmap",
+          "locale": "ar",
+          "value": "خريطة حرارية لتقدم القطع",
+          "sha256": "88e795b2ff82304a38424c23a2cd3900d11121d2cfda6b48a2470d539ca6ccbf"
+        },
+        {
+          "sourceIndex": 646,
+          "sourceId": "Chunk Utilization",
+          "locale": "ar",
+          "value": "معدل استخدام القطع",
+          "sha256": "ceee066dea8737b7666f9df738e6cc652812d912074126311acd5381620455a2"
+        },
+        {
+          "sourceIndex": 648,
+          "sourceId": "Chunks Completed",
+          "locale": "ar",
+          "value": "القطع المكتملة",
+          "sha256": "c2a4ca337a9bab886218a8050c87d957f15fe5780ff97533b4c8ab8ee53b4760"
+        },
+        {
+          "sourceIndex": 649,
+          "sourceId": "Chunks Failed",
+          "locale": "ar",
+          "value": "القطع الفاشلة",
+          "sha256": "3c6ff81496ae55477903ff7fe8929255caa76da5d0de7f6011c5ba2e2314d15a"
+        },
+        {
+          "sourceIndex": 654,
+          "sourceId": "Clean:",
+          "locale": "ar",
+          "value": "إدخالات بلا تعارض:",
+          "sha256": "4464073ae565d58ae25edb6d3b29175032eb2f0dffe7d76c92473e96331fc377"
+        },
+        {
+          "sourceIndex": 655,
+          "sourceId": "Cleaned up {result} old messages",
+          "locale": "ar",
+          "value": "اكتمل تنظيف الرسائل القديمة. العدد: {result}",
+          "sha256": "f197edcfe4135cf93ebd8dd50a7f417c8da16ad1d1fc158a175a7b4f4f6bc68d"
+        },
+        {
+          "sourceIndex": 658,
+          "sourceId": "Cleanup Seen Messages",
+          "locale": "ar",
+          "value": "تنظيف سجلات الرسائل التي تم تسجيل الاطّلاع عليها",
+          "sha256": "09da8d0156afa826673b9ab0c9fecbc345f162c03898b5e71ca1ede061cdf4d2"
+        },
+        {
+          "sourceIndex": 659,
+          "sourceId": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained",
+          "locale": "ar",
+          "value": "اكتمل التنظيف: عدد سجلات الرسائل المنظفة {messagesCleaned}، وعدد السجلات المحتفظ بها {messagesRetained}.",
+          "sha256": "4cf6ceaf19814597d24dfd0a956305eebe29d93cd7543e5b3f718996970caa8a"
+        },
+        {
+          "sourceIndex": 660,
+          "sourceId": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors",
+          "locale": "ar",
+          "value": "اكتمل التنظيف: عدد السجلات المنظفة {recordsCleaned}، وعدد الأخطاء {errorsEncountered}.",
+          "sha256": "1792602f9e2ec5e02fd03737ed64a0072329bca270617bc0e6e0ad996fb93906"
+        },
+        {
+          "sourceIndex": 661,
+          "sourceId": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.",
+          "locale": "ar",
+          "value": "تؤثر إجراءات التنظيف وإعادة بناء الفهرس وVACUUM في تخزين رسائل Pod المحلي. أما إجراءات البحث والعدّ فهي للقراءة فقط.",
+          "sha256": "b47315266a00c3db1c773c7193c8dbdd51e3e79d30367307fa836ef19543906e"
+        },
+        {
+          "sourceIndex": 662,
+          "sourceId": "Clear (",
+          "locale": "ar",
+          "value": "إلغاء تحديد (",
+          "sha256": "f9cd48513d6a62adbfc49ba9788fb77f9376c461212bbe9a1d22c6fe9f58d7e2"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "keyCount": 5441,
+      "changedCells": 12,
+      "fileSha256": "d6ac8b9befdc5db8f5f190de3a6fc62660af4a7656c2bc43c09640204798ebd3",
+      "targets": [
+        {
+          "sourceIndex": 644,
+          "sourceId": "Chunk Progress Heatmap",
+          "locale": "hi",
+          "value": "डेटा खंडों की प्रगति का हीटमैप",
+          "sha256": "cc0e2b3304f5b82cb2feebb585eef376b7e96f621bd73ecaa6fc5163d04b6219"
+        },
+        {
+          "sourceIndex": 647,
+          "sourceId": "Chunks",
+          "locale": "hi",
+          "value": "खंड",
+          "sha256": "6d19fb9efb3314342b69010026bd1a29a332bd1c9bed390fae8cdaef9778ff05"
+        },
+        {
+          "sourceIndex": 648,
+          "sourceId": "Chunks Completed",
+          "locale": "hi",
+          "value": "पूर्ण किए गए खंड",
+          "sha256": "e9a53bfd3c95dcf3751f3e0b6da6affd18ecc01475db6440a0af3c86eeb99fb0"
+        },
+        {
+          "sourceIndex": 649,
+          "sourceId": "Chunks Failed",
+          "locale": "hi",
+          "value": "विफल खंड",
+          "sha256": "e6874272629e0bd56b5d5b4fc52d3ffa1133e2c891c9fa61bb55e11279b3debc"
+        },
+        {
+          "sourceIndex": 650,
+          "sourceId": "Chunks per second",
+          "locale": "hi",
+          "value": "प्रति सेकंड खंड",
+          "sha256": "64b6afb5e2c7779b7c8ddc2085eb23c869cab4666d1191ea9a6d6459927307ec"
+        },
+        {
+          "sourceIndex": 654,
+          "sourceId": "Clean:",
+          "locale": "hi",
+          "value": "विवाद-रहित प्रविष्टियाँ:",
+          "sha256": "6ae14c348f34f0583e71f9165d483314908b22f96ec5f008527b22b46e37f326"
+        },
+        {
+          "sourceIndex": 655,
+          "sourceId": "Cleaned up {result} old messages",
+          "locale": "hi",
+          "value": "{result} पुराने संदेश हटाए गए",
+          "sha256": "6f8057e3d1341ced39e4affa24f739995b5f403db21069277764d09330fcbb5d"
+        },
+        {
+          "sourceIndex": 658,
+          "sourceId": "Cleanup Seen Messages",
+          "locale": "hi",
+          "value": "देखे गए संदेशों के रिकॉर्ड साफ़ करें",
+          "sha256": "41bc23d641c5845119d583a4cd47b5764e272a6b5d1432066c7b14c3ee5512e6"
+        },
+        {
+          "sourceIndex": 659,
+          "sourceId": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained",
+          "locale": "hi",
+          "value": "सफ़ाई पूरी हुई: {messagesCleaned} देखे गए संदेशों के रिकॉर्ड साफ़ किए गए, {messagesRetained} रिकॉर्ड रखे गए।",
+          "sha256": "f7a3a720ad662e33cc568b3b13a209568fd213892f76579e3128debc36ea6747"
+        },
+        {
+          "sourceIndex": 660,
+          "sourceId": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors",
+          "locale": "hi",
+          "value": "सफ़ाई पूरी हुई: {recordsCleaned} रिकॉर्ड साफ़ किए गए, {errorsEncountered} त्रुटियाँ हुईं।",
+          "sha256": "93b06b51dc1becc7d405fc98c2bd78f310ee73ceebd3c0f93085f69d2e25d845"
+        },
+        {
+          "sourceIndex": 661,
+          "sourceId": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.",
+          "locale": "hi",
+          "value": "सफ़ाई, इंडेक्स पुनर्निर्माण और VACUUM कार्रवाइयाँ Pod के स्थानीय संदेश भंडारण को प्रभावित करती हैं। खोज और गणना की कार्रवाइयाँ केवल-पठन हैं।",
+          "sha256": "bcf27d4808eff22bc9a858fe3c3c8d78a3ed441b84cb15ea05402c9bfe8c4f6b"
+        },
+        {
+          "sourceIndex": 662,
+          "sourceId": "Clear (",
+          "locale": "hi",
+          "value": "चयन हटाएँ (",
+          "sha256": "d2358d8275c0fe27a1f88eb2f9b8eb85cb5d5214e6b7b1f8e657e7353eee496c"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "keyCount": 5441,
+      "changedCells": 11,
+      "fileSha256": "e2f2578f8ac58f4f6ab154ac74b7f811142bd93bc31f4c4915703d5c7a369407",
+      "targets": [
+        {
+          "sourceIndex": 644,
+          "sourceId": "Chunk Progress Heatmap",
+          "locale": "vi",
+          "value": "Bản đồ nhiệt tiến độ khối",
+          "sha256": "45b602c1de1c8dd2827830e130f5e301542d1907083a84bbf90d9fd5b9b0e2be"
+        },
+        {
+          "sourceIndex": 646,
+          "sourceId": "Chunk Utilization",
+          "locale": "vi",
+          "value": "Mức sử dụng khối",
+          "sha256": "a80740ec35feab4b46bce525da130feb400a2e1f4fefd81f5d273c5b2bd3467e"
+        },
+        {
+          "sourceIndex": 648,
+          "sourceId": "Chunks Completed",
+          "locale": "vi",
+          "value": "Khối đã hoàn thành",
+          "sha256": "949733edcdf0ac05b31c7f55cf5d10438512256fdac127ae482701c86202586d"
+        },
+        {
+          "sourceIndex": 649,
+          "sourceId": "Chunks Failed",
+          "locale": "vi",
+          "value": "Khối bị lỗi",
+          "sha256": "6099416905434583990c472c4839c0a365e467feb4ed4fc5822429c38294bd92"
+        },
+        {
+          "sourceIndex": 654,
+          "sourceId": "Clean:",
+          "locale": "vi",
+          "value": "Mục không xung đột:",
+          "sha256": "929683b6dbc292b94a022abba1759c14e969c7a096cef211874df49e647a309f"
+        },
+        {
+          "sourceIndex": 655,
+          "sourceId": "Cleaned up {result} old messages",
+          "locale": "vi",
+          "value": "Đã xóa {result} tin nhắn cũ",
+          "sha256": "0f6e9a7c16ab3a984ee064e9a007055c5b5e937882b7b698fea703668ea766e3"
+        },
+        {
+          "sourceIndex": 658,
+          "sourceId": "Cleanup Seen Messages",
+          "locale": "vi",
+          "value": "Dọn dẹp bản ghi tin nhắn đã xem",
+          "sha256": "0e6e20cf14caebba9d122a019c9e530d79a10d7ba9b08ee304dbe9d2528754ee"
+        },
+        {
+          "sourceIndex": 659,
+          "sourceId": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained",
+          "locale": "vi",
+          "value": "Đã dọn dẹp: xóa bản ghi của {messagesCleaned} tin nhắn đã xem, giữ lại {messagesRetained} bản ghi.",
+          "sha256": "4e5ffef5d195429a5be3ff8a3f665fe45c71997aa86dc8c34cd568bbdce34168"
+        },
+        {
+          "sourceIndex": 660,
+          "sourceId": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors",
+          "locale": "vi",
+          "value": "Đã dọn dẹp: xóa {recordsCleaned} bản ghi và gặp {errorsEncountered} lỗi.",
+          "sha256": "91a1966b3b8d69bf617258ffce7180c937af2cd9a9aed09854e18a5aa2a9d900"
+        },
+        {
+          "sourceIndex": 661,
+          "sourceId": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.",
+          "locale": "vi",
+          "value": "Các thao tác dọn dẹp, xây dựng lại chỉ mục và VACUUM ảnh hưởng đến kho lưu trữ tin nhắn Pod cục bộ. Thao tác tìm kiếm và đếm chỉ đọc dữ liệu.",
+          "sha256": "36f83ea619c7d3dc1a744f4170b85951895bda8e604e7b06568825528bf3158f"
+        },
+        {
+          "sourceIndex": 662,
+          "sourceId": "Clear (",
+          "locale": "vi",
+          "value": "Bỏ chọn (",
+          "sha256": "f81d8dd719f0da39ba714c886b791baa7d9c696b3b744f1225a99bdc87628f30"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "keyCount": 5441,
+      "changedCells": 13,
+      "fileSha256": "d522cdc9a65a5db2d0f276b5d3c01aada447041f527daa1ad666a3281a6eb1ba",
+      "targets": [
+        {
+          "sourceIndex": 645,
+          "sourceId": "Chunk Success Rate",
+          "locale": "pt-BR",
+          "value": "Taxa de sucesso dos blocos",
+          "sha256": "7484646aafe18afb3d78234f356b9ddd8f916278b720e3db792064900bbb8ec6"
+        },
+        {
+          "sourceIndex": 646,
+          "sourceId": "Chunk Utilization",
+          "locale": "pt-BR",
+          "value": "Utilização dos blocos",
+          "sha256": "a777353225e4d204529886d3ef49bfeab24f83bbc93964cdfa0979578b1d5cb6"
+        },
+        {
+          "sourceIndex": 647,
+          "sourceId": "Chunks",
+          "locale": "pt-BR",
+          "value": "Blocos",
+          "sha256": "dce7bba2abb3ba03022f38b4911bf946fe8830a09cdc43cfd87862c45f259eee"
+        },
+        {
+          "sourceIndex": 648,
+          "sourceId": "Chunks Completed",
+          "locale": "pt-BR",
+          "value": "Blocos concluídos",
+          "sha256": "2aa1ca94570f5388f643a7e98257f3b3afa3eff9231b4074bb0d9b766a8011ee"
+        },
+        {
+          "sourceIndex": 649,
+          "sourceId": "Chunks Failed",
+          "locale": "pt-BR",
+          "value": "Blocos com falha",
+          "sha256": "9ff135c5c5cee6cd5de75e40a3d94e9a7525619ba7e8f210e0272790c107645d"
+        },
+        {
+          "sourceIndex": 650,
+          "sourceId": "Chunks per second",
+          "locale": "pt-BR",
+          "value": "Blocos por segundo",
+          "sha256": "c6a4786e1780ad5c740ada78959e0e810e2742646399531ee65d148000d75e31"
+        },
+        {
+          "sourceIndex": 654,
+          "sourceId": "Clean:",
+          "locale": "pt-BR",
+          "value": "Entradas sem conflitos:",
+          "sha256": "3f266d92c40ad53bc5e6f109ec7c21b28001227a3bd7332e3ac63b99026affba"
+        },
+        {
+          "sourceIndex": 655,
+          "sourceId": "Cleaned up {result} old messages",
+          "locale": "pt-BR",
+          "value": "{result} mensagens antigas foram removidas",
+          "sha256": "5735173612fb7f8adf752201c272497e68dae0cae22b868ee7e3541023350b97"
+        },
+        {
+          "sourceIndex": 658,
+          "sourceId": "Cleanup Seen Messages",
+          "locale": "pt-BR",
+          "value": "Limpar registros de mensagens vistas",
+          "sha256": "756082abbf14c2042dc659ff6c4f2d6c1eebb32a0cbfe24501c5fa37fd1f8f4c"
+        },
+        {
+          "sourceIndex": 659,
+          "sourceId": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained",
+          "locale": "pt-BR",
+          "value": "Limpeza concluída: {messagesCleaned} registros de mensagens vistas removidos, {messagesRetained} mantidos.",
+          "sha256": "b9ff2e80d26b4fd75fcd23c4cbe73b8a116ec1b60b245f59b7bbc37a58547be2"
+        },
+        {
+          "sourceIndex": 660,
+          "sourceId": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors",
+          "locale": "pt-BR",
+          "value": "Limpeza concluída: {recordsCleaned} registros removidos, {errorsEncountered} erros encontrados.",
+          "sha256": "b3725de6bb08833986e5f0e34fbd1d6ffc8d22016938770f8c554ea922638ec5"
+        },
+        {
+          "sourceIndex": 661,
+          "sourceId": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.",
+          "locale": "pt-BR",
+          "value": "As ações de limpeza, reconstrução do índice e VACUUM afetam o armazenamento local de mensagens do Pod. As ações de pesquisa e contagem são somente leitura.",
+          "sha256": "a387e34316bdb6efbb19de59895abfad70c2a182650d921ebb8eea1ac31d304c"
+        },
+        {
+          "sourceIndex": 662,
+          "sourceId": "Clear (",
+          "locale": "pt-BR",
+          "value": "Limpar seleção (",
+          "sha256": "c9ddb4a089e29ed9e7accaa209776ddc821d92e865680a7d4c933c8edaabd3d1"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "keyCount": 5441,
+      "changedCells": 12,
+      "fileSha256": "73aa07d9537bd74e00bd8c4e54fe2b30441d82f135260cc93f1c806f54e67b13",
+      "targets": [
+        {
+          "sourceIndex": 646,
+          "sourceId": "Chunk Utilization",
+          "locale": "fr",
+          "value": "Utilisation des fragments",
+          "sha256": "7342ca1defc69461c2ca707169261d70248573786071b17da5f96b9823fdfd39"
+        },
+        {
+          "sourceIndex": 647,
+          "sourceId": "Chunks",
+          "locale": "fr",
+          "value": "Fragments",
+          "sha256": "b4f6df3d63caa505900ed1a586effcf3e154cbb9a392794f18b7ea958abd4a01"
+        },
+        {
+          "sourceIndex": 648,
+          "sourceId": "Chunks Completed",
+          "locale": "fr",
+          "value": "Fragments terminés",
+          "sha256": "e71677a237592c6a0b2de1c0900ee8d22b83c6693d4d100827ad79c6229210aa"
+        },
+        {
+          "sourceIndex": 649,
+          "sourceId": "Chunks Failed",
+          "locale": "fr",
+          "value": "Fragments en échec",
+          "sha256": "c8eeeb67fbd264cac564ebf7e631bbc65981e7b96b913c2fc0977ed1140989ae"
+        },
+        {
+          "sourceIndex": 650,
+          "sourceId": "Chunks per second",
+          "locale": "fr",
+          "value": "Fragments par seconde",
+          "sha256": "c1beff4e53d6e00fdbbe8c91245e91c7b6cf3711cf967d3ce47a83a3a985a710"
+        },
+        {
+          "sourceIndex": 654,
+          "sourceId": "Clean:",
+          "locale": "fr",
+          "value": "Entrées sans conflit :",
+          "sha256": "296384e986d8b8a6cce5f5412c859bdb7b9025844a11dbe39694f5f26ba845f0"
+        },
+        {
+          "sourceIndex": 655,
+          "sourceId": "Cleaned up {result} old messages",
+          "locale": "fr",
+          "value": "Nettoyage terminé : {result} anciens messages supprimés.",
+          "sha256": "06cf50abac696a0359a8a5305c15d63647f322e76f55d47edc4c6a5d2e054c21"
+        },
+        {
+          "sourceIndex": 658,
+          "sourceId": "Cleanup Seen Messages",
+          "locale": "fr",
+          "value": "Nettoyer les entrées de messages vus",
+          "sha256": "55cbeef7697c0a63f1a5be7724ea3f0caadadc86a9c8664cee05d5601d9872ee"
+        },
+        {
+          "sourceIndex": 659,
+          "sourceId": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained",
+          "locale": "fr",
+          "value": "Nettoyage terminé : {messagesCleaned} enregistrements de messages vus nettoyés ; {messagesRetained} conservés.",
+          "sha256": "902d299f018dc2728fba7b5d941335979ceb044df7bc81180f891dfb15967514"
+        },
+        {
+          "sourceIndex": 660,
+          "sourceId": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors",
+          "locale": "fr",
+          "value": "Nettoyage terminé : {recordsCleaned} enregistrements nettoyés, {errorsEncountered} erreurs rencontrées.",
+          "sha256": "4afca46c59d1377945bdbc316f2d5c88d0c3d6ef9b6f90ff4cbb7084d5e75ed0"
+        },
+        {
+          "sourceIndex": 661,
+          "sourceId": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.",
+          "locale": "fr",
+          "value": "Les actions de nettoyage, de reconstruction de l’index et de VACUUM affectent le stockage local des messages de Pod. Les actions de recherche et de comptage sont en lecture seule.",
+          "sha256": "778351de22ec412a051dfa3fcb2828b796e07b24a35d3efa4dc2684873ffec6b"
+        },
+        {
+          "sourceIndex": 662,
+          "sourceId": "Clear (",
+          "locale": "fr",
+          "value": "Désélectionner (",
+          "sha256": "c38b03b3427f5e48483a6444b8951a965cca443aedd50b5076722ef0afd598e4"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "keyCount": 5441,
+      "changedCells": 10,
+      "fileSha256": "ec5eae5343cabfceea76d9d6499bd4f073c9ae53e6606a6f409cf0da41964f56",
+      "targets": [
+        {
+          "sourceIndex": 647,
+          "sourceId": "Chunks",
+          "locale": "de",
+          "value": "Chunks",
+          "sha256": "b37e2fc666aed55e52af821d893ee8e04e69bb5cfd4d72a33274f01239cfc338"
+        },
+        {
+          "sourceIndex": 648,
+          "sourceId": "Chunks Completed",
+          "locale": "de",
+          "value": "Abgeschlossene Chunks",
+          "sha256": "6aab021239ca89babe03fe9986277aa2c3efeaa24b11f5cb2e1d582981666ae9"
+        },
+        {
+          "sourceIndex": 649,
+          "sourceId": "Chunks Failed",
+          "locale": "de",
+          "value": "Fehlgeschlagene Chunks",
+          "sha256": "5daa932bf0c4cb1028db2f137e9e0519a7ac1a36d0c88f419d433af168646f0f"
+        },
+        {
+          "sourceIndex": 654,
+          "sourceId": "Clean:",
+          "locale": "de",
+          "value": "Konfliktfreie Einträge:",
+          "sha256": "9f0ef3d33aac1b9d2a1c5c3db007815a1e3b2c97b8be266238c2545e35be7c78"
+        },
+        {
+          "sourceIndex": 655,
+          "sourceId": "Cleaned up {result} old messages",
+          "locale": "de",
+          "value": "Es wurden {result} alte Nachrichten bereinigt.",
+          "sha256": "10f8da2b1ad67b53433375add9b5a0ca8832db022db4819807ff18040f422dc9"
+        },
+        {
+          "sourceIndex": 658,
+          "sourceId": "Cleanup Seen Messages",
+          "locale": "de",
+          "value": "Einträge zu gesehenen Nachrichten bereinigen",
+          "sha256": "30eadadbe507ca0e83a1c8fe92c9ee2f4d122609564b145af858dcba4b1d2692"
+        },
+        {
+          "sourceIndex": 659,
+          "sourceId": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained",
+          "locale": "de",
+          "value": "Bereinigung abgeschlossen: {messagesCleaned} Einträge zu gesehenen Nachrichten bereinigt, {messagesRetained} beibehalten.",
+          "sha256": "80b2247d5e16826ac3e7347a3a8160cea374acdc1abc4d550a2408860d6176ce"
+        },
+        {
+          "sourceIndex": 660,
+          "sourceId": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors",
+          "locale": "de",
+          "value": "Bereinigung abgeschlossen: {recordsCleaned} Datensätze bereinigt, {errorsEncountered} Fehler aufgetreten.",
+          "sha256": "b84f47cc158361f4050aa387fa0d0e60ae5d792643856556fdabb892dda30c46"
+        },
+        {
+          "sourceIndex": 661,
+          "sourceId": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.",
+          "locale": "de",
+          "value": "Bereinigungs-, Indexneuaufbau- und VACUUM-Aktionen wirken sich auf den lokalen Nachrichtenspeicher von Pod aus. Such- und Zählaktionen sind schreibgeschützt.",
+          "sha256": "ff3db49cd52a5f7c8d04e65119f36d3ac828af015027f98b4da96167949e2525"
+        },
+        {
+          "sourceIndex": 662,
+          "sourceId": "Clear (",
+          "locale": "de",
+          "value": "Auswahl aufheben (",
+          "sha256": "ea6dde84f41acbc9a971192eaf49fe384fde91c8de844eff4644777619e5cc9b"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "keyCount": 5441,
+      "changedCells": 9,
+      "fileSha256": "a5927761364a11845b18d1ea1d27e9c3e438a2e3a59a6900bff798c46a26d2ed",
+      "targets": [
+        {
+          "sourceIndex": 647,
+          "sourceId": "Chunks",
+          "locale": "es",
+          "value": "Fragmentos",
+          "sha256": "023b326283640dc18690c354369390b262e9055165d41387d0c534cb09c5c76e"
+        },
+        {
+          "sourceIndex": 650,
+          "sourceId": "Chunks per second",
+          "locale": "es",
+          "value": "Fragmentos por segundo",
+          "sha256": "f3f43e6d39db866757fbbf3358d9b344d44515090bfc6b5417181df3a1c824f3"
+        },
+        {
+          "sourceIndex": 654,
+          "sourceId": "Clean:",
+          "locale": "es",
+          "value": "Entradas sin conflictos:",
+          "sha256": "5a3e6d7721f8e3ec9740426534565fb75253157dabfd0794ef09f4fb2e403f42"
+        },
+        {
+          "sourceIndex": 655,
+          "sourceId": "Cleaned up {result} old messages",
+          "locale": "es",
+          "value": "Se eliminaron {result} mensajes antiguos.",
+          "sha256": "aa5783ee3a36165664ffb1feb845176a1fed384111fd3d03b890552d9a1838be"
+        },
+        {
+          "sourceIndex": 658,
+          "sourceId": "Cleanup Seen Messages",
+          "locale": "es",
+          "value": "Limpiar registros de mensajes vistos",
+          "sha256": "b440360c2385bff11f55ef89fa0e7a3a1e262c6605cc1f2a7ba6a785bfa10762"
+        },
+        {
+          "sourceIndex": 659,
+          "sourceId": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained",
+          "locale": "es",
+          "value": "Limpieza completada: se limpiaron {messagesCleaned} registros de mensajes vistos y se conservaron {messagesRetained}.",
+          "sha256": "f99157f96e09f9b30efafb5824e6e631cdaf2d5778b9a90c13c505013fe17c57"
+        },
+        {
+          "sourceIndex": 660,
+          "sourceId": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors",
+          "locale": "es",
+          "value": "Limpieza completada: se depuraron {recordsCleaned} registros y se encontraron {errorsEncountered} errores.",
+          "sha256": "5edcd4a2f561576543f106d62f184a20e83185a7fef4fcaab73e5160d9919bb1"
+        },
+        {
+          "sourceIndex": 661,
+          "sourceId": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.",
+          "locale": "es",
+          "value": "Las acciones de limpieza, reconstrucción del índice y VACUUM afectan al almacenamiento local de mensajes de Pod. Las acciones de búsqueda y recuento son de solo lectura.",
+          "sha256": "e266e573b083cc0689efe551d6dde17ca94b89533e9eadd5aadb868e80e9f818"
+        },
+        {
+          "sourceIndex": 662,
+          "sourceId": "Clear (",
+          "locale": "es",
+          "value": "Quitar selección (",
+          "sha256": "494729857215be49ffbc785b0573f58d6a545b275d2dc25209e284cf1cb38f5d"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "keyCount": 5441,
+      "changedCells": 9,
+      "fileSha256": "c1ac32ff3ad71ed7cca980936844938b0991a2e6a0068777a6b875ec4c2535dd",
+      "targets": [
+        {
+          "sourceIndex": 648,
+          "sourceId": "Chunks Completed",
+          "locale": "ja",
+          "value": "完了したチャンク数",
+          "sha256": "9897e37c4daf41ff01737e81535b1079810c3d8617288aca36a71ef6a49a03d2"
+        },
+        {
+          "sourceIndex": 649,
+          "sourceId": "Chunks Failed",
+          "locale": "ja",
+          "value": "失敗したチャンク数",
+          "sha256": "d1d1ffa00a07b977841b7cc8f11d389b42766107c5e20f61d99b99d6ee0ecbf8"
+        },
+        {
+          "sourceIndex": 654,
+          "sourceId": "Clean:",
+          "locale": "ja",
+          "value": "競合のない項目：",
+          "sha256": "aa51361328a94587ab1de4c0b9ca1326c3ec2756496001c5b3fcd1ae1a853c2b"
+        },
+        {
+          "sourceIndex": 655,
+          "sourceId": "Cleaned up {result} old messages",
+          "locale": "ja",
+          "value": "古いメッセージを {result} 件削除しました",
+          "sha256": "cdc0458716c25726ab2e1d34713507c0bc5361490ca8abea74df3508370bbcf1"
+        },
+        {
+          "sourceIndex": 658,
+          "sourceId": "Cleanup Seen Messages",
+          "locale": "ja",
+          "value": "閲覧済みメッセージの記録を整理",
+          "sha256": "a2c3eb41710462540305a558860eb122ab441c332fe4476432fb421ab2b176ed"
+        },
+        {
+          "sourceIndex": 659,
+          "sourceId": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained",
+          "locale": "ja",
+          "value": "クリーンアップ完了: 閲覧済みメッセージの記録を {messagesCleaned} 件整理し、{messagesRetained} 件を保持しました。",
+          "sha256": "3712c0abcdb58c455ceb568c5faebed2bdbc852ea34d01b0966bfaf10c6970a6"
+        },
+        {
+          "sourceIndex": 660,
+          "sourceId": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors",
+          "locale": "ja",
+          "value": "クリーンアップ完了: {recordsCleaned} 件のレコードを整理し、{errorsEncountered} 件のエラーが発生しました。",
+          "sha256": "48c6c188ab983b835e6bab4e48af666e33fc70fdce61599ceb1af21b28cd0e0f"
+        },
+        {
+          "sourceIndex": 661,
+          "sourceId": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.",
+          "locale": "ja",
+          "value": "クリーンアップ、インデックス再構築、VACUUM の各操作は、ローカル Pod メッセージストレージに影響します。検索と件数確認の操作は読み取り専用です。",
+          "sha256": "edc32d7fc7443dcd514ad432cb4d3c72a1f93f9fa46c7d18868ca602e37f3ec1"
+        },
+        {
+          "sourceIndex": 662,
+          "sourceId": "Clear (",
+          "locale": "ja",
+          "value": "選択解除 (",
+          "sha256": "67420b9486a6454073871362f5f98c6e491fef62be90e523d588d2b7ce3dbeac"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "keyCount": 5441,
+      "changedCells": 8,
+      "fileSha256": "0499a57da40cdf6d21534be9d51e49906819d8f217f5c5831e79958f94820d64",
+      "targets": [
+        {
+          "sourceIndex": 648,
+          "sourceId": "Chunks Completed",
+          "locale": "ko",
+          "value": "완료된 청크 수",
+          "sha256": "3625b7e13f3907e7412d83aea99abfdd50fc0b3209b1c103263ca71909662561"
+        },
+        {
+          "sourceIndex": 649,
+          "sourceId": "Chunks Failed",
+          "locale": "ko",
+          "value": "실패한 청크 수",
+          "sha256": "66386a4d1dd44ea3310165a84c7ef464855532507182bcbd7f779c21c9e6309f"
+        },
+        {
+          "sourceIndex": 654,
+          "sourceId": "Clean:",
+          "locale": "ko",
+          "value": "충돌 없는 항목:",
+          "sha256": "58b33e244af6059d5fc87a88384b9a28cc670b9ebc3fff43f4d357377132f072"
+        },
+        {
+          "sourceIndex": 658,
+          "sourceId": "Cleanup Seen Messages",
+          "locale": "ko",
+          "value": "열람된 메시지 기록 정리",
+          "sha256": "9a8547c50ffe467d529269e7718b88fff7a7c8af6ca9ba6c14435b1bce13be06"
+        },
+        {
+          "sourceIndex": 659,
+          "sourceId": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained",
+          "locale": "ko",
+          "value": "정리 완료: 열람된 메시지 기록 {messagesCleaned}개를 정리하고 {messagesRetained}개를 유지했습니다.",
+          "sha256": "55bf40346777ed8a39dd851f15962c047ad3a8d57c087a4e4cad781a22a4818e"
+        },
+        {
+          "sourceIndex": 660,
+          "sourceId": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors",
+          "locale": "ko",
+          "value": "정리 완료: 레코드 {recordsCleaned}개를 정리했고 오류 {errorsEncountered}개가 발생했습니다.",
+          "sha256": "26506a92b4cf1bb2e0409e04145ea4640e06fabe0df1c45f7312865bb519a5ed"
+        },
+        {
+          "sourceIndex": 661,
+          "sourceId": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.",
+          "locale": "ko",
+          "value": "정리, 인덱스 재구축 및 VACUUM 작업은 로컬 Pod 메시지 저장소에 영향을 미칩니다. 검색 및 개수 확인 작업은 읽기 전용입니다.",
+          "sha256": "285bb867274fc2b5aa0e18a9cea8ffa41c249644033b5f552dc3f7616be0cd69"
+        },
+        {
+          "sourceIndex": 662,
+          "sourceId": "Clear (",
+          "locale": "ko",
+          "value": "선택 해제 (",
+          "sha256": "f079cae52ceb670c34f85d526cc31c0579e74889b00ddaf9317c6cf079298d8a"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "keyCount": 5441,
+      "changedCells": 9,
+      "fileSha256": "e83f06cd79f76399b73ace3907d422f49f047c8e1969fa85c74acb1cb0f6a23e",
+      "targets": [
+        {
+          "sourceIndex": 648,
+          "sourceId": "Chunks Completed",
+          "locale": "zh-Hans",
+          "value": "已完成块数",
+          "sha256": "baac3129730edd84b13636cc41e1e30162ba541c937df3d94b8099d4efc3934f"
+        },
+        {
+          "sourceIndex": 649,
+          "sourceId": "Chunks Failed",
+          "locale": "zh-Hans",
+          "value": "失败块数",
+          "sha256": "f6acd32874bd9cf344885f990ce5189eb3168bb7cf7c2234da20a0d665fc3c49"
+        },
+        {
+          "sourceIndex": 654,
+          "sourceId": "Clean:",
+          "locale": "zh-Hans",
+          "value": "无冲突条目：",
+          "sha256": "fe4b06143f7a449dbf2edef66628bf3c3cedd9d92e8916ec00f3a27bc4138004"
+        },
+        {
+          "sourceIndex": 655,
+          "sourceId": "Cleaned up {result} old messages",
+          "locale": "zh-Hans",
+          "value": "已清理 {result} 条旧消息",
+          "sha256": "dbdb8662bdde697eba10a17e6514acb88421b3a5c495c53b20f139d07a8b7055"
+        },
+        {
+          "sourceIndex": 658,
+          "sourceId": "Cleanup Seen Messages",
+          "locale": "zh-Hans",
+          "value": "清理已查看消息的记录",
+          "sha256": "4e93c475879e3f8ec0b81f38a97815ee804fb8c18697389213f11014cd9d73cc"
+        },
+        {
+          "sourceIndex": 659,
+          "sourceId": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained",
+          "locale": "zh-Hans",
+          "value": "清理完成：已清理 {messagesCleaned} 条已查看消息的记录，保留 {messagesRetained} 条。",
+          "sha256": "2f0fcdbbd1cc8c4576a1670776863e5947e74dfa948d090a57fefe207e62a829"
+        },
+        {
+          "sourceIndex": 660,
+          "sourceId": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors",
+          "locale": "zh-Hans",
+          "value": "清理完成：已清理 {recordsCleaned} 条记录，遇到 {errorsEncountered} 个错误。",
+          "sha256": "cfd5db7caff9257990c7bcf9da2a08fc59cbeda0737d8250561a25a2ae9182f4"
+        },
+        {
+          "sourceIndex": 661,
+          "sourceId": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.",
+          "locale": "zh-Hans",
+          "value": "清理、重建索引和 VACUUM 操作会影响本地 Pod 消息存储。搜索和计数操作为只读。",
+          "sha256": "db6608eaef7b7661809742be5e0f9b3486c52a697ee0ae162c3fad6876a568a9"
+        },
+        {
+          "sourceIndex": 662,
+          "sourceId": "Clear (",
+          "locale": "zh-Hans",
+          "value": "取消选择 (",
+          "sha256": "454491ec66c7c6abceaa706db92fde1e4dc6b9164ef0c76eb1f6023226cdd07d"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "keyCount": 5441,
+      "changedCells": 9,
+      "fileSha256": "6b7b32ff0030b69bb609b3af0a3e141bc767c7de34a6b4fbee01a7570d7cf1a4",
+      "targets": [
+        {
+          "sourceIndex": 648,
+          "sourceId": "Chunks Completed",
+          "locale": "zh-Hant",
+          "value": "已完成區塊數",
+          "sha256": "ea0178de78a7a7e8e6377410173e484e3452a9ae4952a735e0bfe8403396e322"
+        },
+        {
+          "sourceIndex": 649,
+          "sourceId": "Chunks Failed",
+          "locale": "zh-Hant",
+          "value": "失敗區塊數",
+          "sha256": "9903df4e8b57a385ab0edd11b25de552dd9adf0771b7852d2d60bb4a5cef9476"
+        },
+        {
+          "sourceIndex": 654,
+          "sourceId": "Clean:",
+          "locale": "zh-Hant",
+          "value": "無衝突項目：",
+          "sha256": "98bb49104edc7c082f3e9c386e0225c779e98377a004ece8d053c731c2981367"
+        },
+        {
+          "sourceIndex": 655,
+          "sourceId": "Cleaned up {result} old messages",
+          "locale": "zh-Hant",
+          "value": "已清理 {result} 則舊訊息",
+          "sha256": "d3d4710bf22df1f2aa11af2eff26b4df9355bbe31a99bafa214f824914554cea"
+        },
+        {
+          "sourceIndex": 658,
+          "sourceId": "Cleanup Seen Messages",
+          "locale": "zh-Hant",
+          "value": "清理已檢視訊息的記錄",
+          "sha256": "67f806e61a6dbf3e7667e69648a301cb8820154bd1db6d7822488ee174ebdb83"
+        },
+        {
+          "sourceIndex": 659,
+          "sourceId": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained",
+          "locale": "zh-Hant",
+          "value": "清理完成：已清理 {messagesCleaned} 筆已檢視訊息的記錄，保留 {messagesRetained} 筆。",
+          "sha256": "8abaffcb5d992364aba5503cfadb8a526ca70f9a824d461df3c86c4cd4a1b779"
+        },
+        {
+          "sourceIndex": 660,
+          "sourceId": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors",
+          "locale": "zh-Hant",
+          "value": "清理完成：已清理 {recordsCleaned} 筆記錄，遇到 {errorsEncountered} 個錯誤。",
+          "sha256": "4d4343031138a7e4e8b14bbbf4ae0d11b884bf178029215c2939a020c2d18ee4"
+        },
+        {
+          "sourceIndex": 661,
+          "sourceId": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.",
+          "locale": "zh-Hant",
+          "value": "清理、重建索引和 VACUUM 操作會影響本地 Pod 訊息儲存。搜尋和計數操作僅供讀取。",
+          "sha256": "b4bc2590fcc1a6eb1c5cbd7f03bd8e00a3ef2797090f8e8e78f8bacdac842d82"
+        },
+        {
+          "sourceIndex": 662,
+          "sourceId": "Clear (",
+          "locale": "zh-Hant",
+          "value": "取消選取 (",
+          "sha256": "73bb9361d9363567f83ce468b982637896bc7dcafd8500d5ded993879f497b0a"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "keyCount": 5441,
+      "changedCells": 7,
+      "fileSha256": "a30da7556f1a398c9e3bb7a150fc0d40378a3aa9193ba195c187f58166c9cf21",
+      "targets": [
+        {
+          "sourceIndex": 654,
+          "sourceId": "Clean:",
+          "locale": "id",
+          "value": "Entri tanpa konflik:",
+          "sha256": "4082bee3682b8839ba5ad8d47a849a6cab0de0bf56392019d169a20b5d201d4e"
+        },
+        {
+          "sourceIndex": 655,
+          "sourceId": "Cleaned up {result} old messages",
+          "locale": "id",
+          "value": "{result} pesan lama telah dibersihkan",
+          "sha256": "e9ee01a237a04bbf797e1ea100379e17a825efbb6a229fbc9559b4825fd62aba"
+        },
+        {
+          "sourceIndex": 658,
+          "sourceId": "Cleanup Seen Messages",
+          "locale": "id",
+          "value": "Bersihkan catatan pesan yang telah dilihat",
+          "sha256": "d757c7cc132c47b89dfe2a42092b048cf73e138f5163394c1ab658e81a787db9"
+        },
+        {
+          "sourceIndex": 659,
+          "sourceId": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained",
+          "locale": "id",
+          "value": "Pembersihan selesai: catatan untuk {messagesCleaned} pesan yang telah dilihat dibersihkan; {messagesRetained} catatan dipertahankan.",
+          "sha256": "5abd74553e3cef4a5b6f6fa4974c749b13fd4b53bd994d520097bd46b2f7e0dc"
+        },
+        {
+          "sourceIndex": 660,
+          "sourceId": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors",
+          "locale": "id",
+          "value": "Pembersihan selesai: {recordsCleaned} catatan dibersihkan, {errorsEncountered} kesalahan ditemukan.",
+          "sha256": "17aed04794bb1908606a5dfc260896f76113726a3fa29bb6d5f2aa3904965a63"
+        },
+        {
+          "sourceIndex": 661,
+          "sourceId": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.",
+          "locale": "id",
+          "value": "Tindakan pembersihan, pembangunan ulang indeks, dan VACUUM memengaruhi penyimpanan pesan lokal Pod. Tindakan pencarian dan penghitungan hanya-baca.",
+          "sha256": "e0349cc1606c7dffa6db032a3cccb4cd83f93704c50f3c6cb043c2351372eae9"
+        },
+        {
+          "sourceIndex": 662,
+          "sourceId": "Clear (",
+          "locale": "id",
+          "value": "Batalkan pilihan (",
+          "sha256": "a47cdb07412a5c4c747a9ad32a3677dae9798273284906ef99d3aec97b818f4c"
+        }
+      ]
+    }
+  ]
+}

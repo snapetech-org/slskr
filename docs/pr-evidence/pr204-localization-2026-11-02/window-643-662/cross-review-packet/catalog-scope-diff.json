@@ -1,0 +1,984 @@
+{
+  "allLocaleKeyChanges": [
+    {
+      "change": "added",
+      "key": "Cancel selected",
+      "locale": "ar",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Cancel{all}",
+      "locale": "ar",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 568
+    },
+    {
+      "change": "added",
+      "key": "Retry selected",
+      "locale": "ar",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Retry{all}",
+      "locale": "ar",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 3621
+    },
+    {
+      "change": "added",
+      "key": "Cancel selected",
+      "locale": "de",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Cancel{all}",
+      "locale": "de",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 568
+    },
+    {
+      "change": "added",
+      "key": "Retry selected",
+      "locale": "de",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Retry{all}",
+      "locale": "de",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 3621
+    },
+    {
+      "change": "added",
+      "key": "Cancel selected",
+      "locale": "es",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Cancel{all}",
+      "locale": "es",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 568
+    },
+    {
+      "change": "added",
+      "key": "Retry selected",
+      "locale": "es",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Retry{all}",
+      "locale": "es",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 3621
+    },
+    {
+      "change": "added",
+      "key": "Cancel selected",
+      "locale": "fr",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Cancel{all}",
+      "locale": "fr",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 568
+    },
+    {
+      "change": "added",
+      "key": "Retry selected",
+      "locale": "fr",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Retry{all}",
+      "locale": "fr",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 3621
+    },
+    {
+      "change": "added",
+      "key": "Cancel selected",
+      "locale": "hi",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Cancel{all}",
+      "locale": "hi",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 568
+    },
+    {
+      "change": "added",
+      "key": "Retry selected",
+      "locale": "hi",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Retry{all}",
+      "locale": "hi",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 3621
+    },
+    {
+      "change": "added",
+      "key": "Cancel selected",
+      "locale": "id",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Cancel{all}",
+      "locale": "id",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 568
+    },
+    {
+      "change": "added",
+      "key": "Retry selected",
+      "locale": "id",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Retry{all}",
+      "locale": "id",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 3621
+    },
+    {
+      "change": "added",
+      "key": "Cancel selected",
+      "locale": "ja",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "modified",
+      "key": "Cancelled",
+      "locale": "ja",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 567
+    },
+    {
+      "change": "removed",
+      "key": "Cancel{all}",
+      "locale": "ja",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 568
+    },
+    {
+      "change": "modified",
+      "key": "Canonical support from",
+      "locale": "ja",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 576
+    },
+    {
+      "change": "added",
+      "key": "Retry selected",
+      "locale": "ja",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Retry{all}",
+      "locale": "ja",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 3621
+    },
+    {
+      "change": "added",
+      "key": "Cancel selected",
+      "locale": "ko",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Cancel{all}",
+      "locale": "ko",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 568
+    },
+    {
+      "change": "modified",
+      "key": "Canonical support from",
+      "locale": "ko",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 576
+    },
+    {
+      "change": "added",
+      "key": "Retry selected",
+      "locale": "ko",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Retry{all}",
+      "locale": "ko",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 3621
+    },
+    {
+      "change": "added",
+      "key": "Cancel selected",
+      "locale": "pt-BR",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Cancel{all}",
+      "locale": "pt-BR",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 568
+    },
+    {
+      "change": "added",
+      "key": "Retry selected",
+      "locale": "pt-BR",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Retry{all}",
+      "locale": "pt-BR",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 3621
+    },
+    {
+      "change": "added",
+      "key": "Cancel selected",
+      "locale": "vi",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Cancel{all}",
+      "locale": "vi",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 568
+    },
+    {
+      "change": "added",
+      "key": "Retry selected",
+      "locale": "vi",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Retry{all}",
+      "locale": "vi",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 3621
+    },
+    {
+      "change": "added",
+      "key": "Cancel selected",
+      "locale": "zh-Hans",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Cancel{all}",
+      "locale": "zh-Hans",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 568
+    },
+    {
+      "change": "modified",
+      "key": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.",
+      "locale": "zh-Hans",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 578
+    },
+    {
+      "change": "added",
+      "key": "Retry selected",
+      "locale": "zh-Hans",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Retry{all}",
+      "locale": "zh-Hans",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 3621
+    },
+    {
+      "change": "added",
+      "key": "Cancel selected",
+      "locale": "zh-Hant",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Cancel{all}",
+      "locale": "zh-Hant",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 568
+    },
+    {
+      "change": "modified",
+      "key": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.",
+      "locale": "zh-Hant",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 578
+    },
+    {
+      "change": "added",
+      "key": "Retry selected",
+      "locale": "zh-Hant",
+      "outsideReviewedWindow": true,
+      "sourceIndex": null
+    },
+    {
+      "change": "removed",
+      "key": "Retry{all}",
+      "locale": "zh-Hant",
+      "outsideReviewedWindow": true,
+      "sourceIndex": 3621
+    }
+  ],
+  "changedPaths": [
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/README.md",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/SHA256SUMS",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/apply-plan.jsonl",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/apply-summary.json",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/independent-transfergroup-cross-review/INPUT_SHA256SUMS",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/independent-transfergroup-cross-review/README.md",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/independent-transfergroup-cross-review/SHA256SUMS",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/independent-transfergroup-cross-review/build_crossreview.py",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/independent-transfergroup-cross-review/cross-review-ledger.jsonl",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/independent-transfergroup-cross-review/primary-new-targets.jsonl",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/independent-transfergroup-cross-review/primary-retire-all-keys.jsonl",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/independent-transfergroup-cross-review/reattestation.json",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/independent-transfergroup-cross-review/source-edit-plan-crossreview.json",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/independent-transfergroup-cross-review/summary.json",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/independent-transfergroup-cross-review/task.json",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/primary-transfergroup/SHA256SUMS",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/primary-transfergroup/new-targets.jsonl",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/primary-transfergroup/recommendation.json",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/primary-transfergroup/retire-all-keys.jsonl",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/readback.jsonl",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/window-563-582-live-readback/SHA256SUMS",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/window-563-582-live-readback/root-live-readback.json",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/window-563-582-reconciliation/README.md",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/window-563-582-reconciliation/SHA256SUMS",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/window-563-582-reconciliation/action-ledger.jsonl",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/window-563-582-reconciliation/build_reconciliation.py",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/window-563-582-reconciliation/caller-pin-reattestation.jsonl",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/window-563-582-reconciliation/input-attestation.json",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/window-563-582-reconciliation/source-catalog-attestation.json",
+    "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/window-563-582-reconciliation/summary.json",
+    "web/src/components/Transfers/TransferGroup.jsx",
+    "web/src/lib/locales/ui-labels.ar.json",
+    "web/src/lib/locales/ui-labels.de.json",
+    "web/src/lib/locales/ui-labels.es.json",
+    "web/src/lib/locales/ui-labels.fr.json",
+    "web/src/lib/locales/ui-labels.hi.json",
+    "web/src/lib/locales/ui-labels.id.json",
+    "web/src/lib/locales/ui-labels.ja.json",
+    "web/src/lib/locales/ui-labels.ko.json",
+    "web/src/lib/locales/ui-labels.pt-BR.json",
+    "web/src/lib/locales/ui-labels.vi.json",
+    "web/src/lib/locales/ui-labels.zh-Hans.json",
+    "web/src/lib/locales/ui-labels.zh-Hant.json"
+  ],
+  "inputParent": "aa106d2505de8c9ace2d7d6dbf2af9777651947d",
+  "knownFollowUpPrefix": "docs/pr-evidence/pr204-localization-2026-11-02/transfer-group-selected-actions-follow-up/",
+  "liveHead": "86ad391ca248ec50fa4049de0a0f08ee55010441",
+  "liveTree": "f773836319b92b6b8799cdda1695e7da09622941",
+  "localeCatalogs": [
+    {
+      "addedKeys": [
+        "Cancel selected",
+        "Retry selected"
+      ],
+      "keyChanges": [
+        {
+          "change": "added",
+          "key": "Cancel selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Cancel{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 568
+        },
+        {
+          "change": "added",
+          "key": "Retry selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Retry{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 3621
+        }
+      ],
+      "liveFileBlob": "03756da57abde7ba2fba7fc16f28ce03e7bf2a2d",
+      "liveFileSha256": "5d27ce82eae3850ba7c60c264c02bdb709b2cc8fe68f4ff5078da7ad80317255",
+      "locale": "ar",
+      "modifiedKeys": [],
+      "parentFileBlob": "f8bd6f4635b1001947df4fb28054af5d9e43fc40",
+      "parentFileSha256": "709a14a649a9f18b2c9667c8ac6d1c753489df241bbb71717e39e4a5117b1aa0",
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "removedKeys": [
+        "Cancel{all}",
+        "Retry{all}"
+      ]
+    },
+    {
+      "addedKeys": [
+        "Cancel selected",
+        "Retry selected"
+      ],
+      "keyChanges": [
+        {
+          "change": "added",
+          "key": "Cancel selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Cancel{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 568
+        },
+        {
+          "change": "added",
+          "key": "Retry selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Retry{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 3621
+        }
+      ],
+      "liveFileBlob": "515896c192c2e2934cdeae2f8460f94890e5a3a0",
+      "liveFileSha256": "73e4617a25ae28b9e5de4cfbefe7832006fcfd6de5e885a6e22e15b748bdd7c4",
+      "locale": "de",
+      "modifiedKeys": [],
+      "parentFileBlob": "c7bfb9a129da6a6642c839f0867e521acf5432be",
+      "parentFileSha256": "dd50d30ce6963c7d6bc299177d953bf154d23eabc948d2409f5641697ce929a2",
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "removedKeys": [
+        "Cancel{all}",
+        "Retry{all}"
+      ]
+    },
+    {
+      "addedKeys": [
+        "Cancel selected",
+        "Retry selected"
+      ],
+      "keyChanges": [
+        {
+          "change": "added",
+          "key": "Cancel selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Cancel{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 568
+        },
+        {
+          "change": "added",
+          "key": "Retry selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Retry{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 3621
+        }
+      ],
+      "liveFileBlob": "c58874eb8f18e3b4ce8c11f8eb6c9d25fc351a9c",
+      "liveFileSha256": "e1c25a0950b0b75ce16688d9df4781db07f0665e72a25f0f8d38bda69677fa2e",
+      "locale": "es",
+      "modifiedKeys": [],
+      "parentFileBlob": "14d41c52472dd98cdfa7c7ccebbd5b2d6444c637",
+      "parentFileSha256": "ae44125d37fc5e816412a2f5c3f5d034cd1fe64b9b554d3a2047408af190fb82",
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "removedKeys": [
+        "Cancel{all}",
+        "Retry{all}"
+      ]
+    },
+    {
+      "addedKeys": [
+        "Cancel selected",
+        "Retry selected"
+      ],
+      "keyChanges": [
+        {
+          "change": "added",
+          "key": "Cancel selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Cancel{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 568
+        },
+        {
+          "change": "added",
+          "key": "Retry selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Retry{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 3621
+        }
+      ],
+      "liveFileBlob": "1ad730a3e3ff43236faf990660a923e9afe490fd",
+      "liveFileSha256": "b928c132fabf571d4a2be6bb269ec34fe070855bfb6e5e9f7a1d1ddf76d25c60",
+      "locale": "fr",
+      "modifiedKeys": [],
+      "parentFileBlob": "d68f3bc5cac07da2598b4b794f9d85e8084059d6",
+      "parentFileSha256": "7543d291282e4d226368e1e22f789585ee1365d0174411e88c4265c8f9688595",
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "removedKeys": [
+        "Cancel{all}",
+        "Retry{all}"
+      ]
+    },
+    {
+      "addedKeys": [
+        "Cancel selected",
+        "Retry selected"
+      ],
+      "keyChanges": [
+        {
+          "change": "added",
+          "key": "Cancel selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Cancel{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 568
+        },
+        {
+          "change": "added",
+          "key": "Retry selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Retry{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 3621
+        }
+      ],
+      "liveFileBlob": "1f22793131f3ebe8c943e1b8877fa8032b170fce",
+      "liveFileSha256": "98909042bd664d82596bf586af7b6e7d5918251e3c0ce7a49f2a56f4ffda534a",
+      "locale": "hi",
+      "modifiedKeys": [],
+      "parentFileBlob": "e66448f970b6439ee9c309943e93e76c8c9e9df5",
+      "parentFileSha256": "79c7e08fab985c1341bb6b97d09ae7efe6581051890abe576c6422901190d952",
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "removedKeys": [
+        "Cancel{all}",
+        "Retry{all}"
+      ]
+    },
+    {
+      "addedKeys": [
+        "Cancel selected",
+        "Retry selected"
+      ],
+      "keyChanges": [
+        {
+          "change": "added",
+          "key": "Cancel selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Cancel{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 568
+        },
+        {
+          "change": "added",
+          "key": "Retry selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Retry{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 3621
+        }
+      ],
+      "liveFileBlob": "2646195def6d6359fc2ae8b1285f161b35525f3a",
+      "liveFileSha256": "dd75df301fe5bd9cc590e6c35b44a0f3d552c5aa02629c135ed4505c12eb48dd",
+      "locale": "id",
+      "modifiedKeys": [],
+      "parentFileBlob": "588fa3897a41626eb059bc9b399f5f081676017c",
+      "parentFileSha256": "52c328a2b6a4f0898b2919c934b3594de8a8b2ce8c2dcd65ba892d8dc21354ad",
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "removedKeys": [
+        "Cancel{all}",
+        "Retry{all}"
+      ]
+    },
+    {
+      "addedKeys": [
+        "Cancel selected",
+        "Retry selected"
+      ],
+      "keyChanges": [
+        {
+          "change": "added",
+          "key": "Cancel selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "modified",
+          "key": "Cancelled",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 567
+        },
+        {
+          "change": "removed",
+          "key": "Cancel{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 568
+        },
+        {
+          "change": "modified",
+          "key": "Canonical support from",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 576
+        },
+        {
+          "change": "added",
+          "key": "Retry selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Retry{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 3621
+        }
+      ],
+      "liveFileBlob": "b1e1793f156e00c97d8b1dfc8f204f2259fb8c81",
+      "liveFileSha256": "ad841cae8b58db52305ed16000c59608fc6252744a4769a222c6d762fb344902",
+      "locale": "ja",
+      "modifiedKeys": [
+        "Cancelled",
+        "Canonical support from"
+      ],
+      "parentFileBlob": "bbfd4b1a40166191f28c1f14f9090ea405d233cd",
+      "parentFileSha256": "c96b6f0f643ec0e723aebd871ed39ff132533b897eba379628278331f9e47a3b",
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "removedKeys": [
+        "Cancel{all}",
+        "Retry{all}"
+      ]
+    },
+    {
+      "addedKeys": [
+        "Cancel selected",
+        "Retry selected"
+      ],
+      "keyChanges": [
+        {
+          "change": "added",
+          "key": "Cancel selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Cancel{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 568
+        },
+        {
+          "change": "modified",
+          "key": "Canonical support from",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 576
+        },
+        {
+          "change": "added",
+          "key": "Retry selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Retry{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 3621
+        }
+      ],
+      "liveFileBlob": "0b1e861a0ebe4db31ad28a410a2297ed55707b73",
+      "liveFileSha256": "4d9879176929892a8e3d2872694875b45341d708f404a0970b71f2835a9a9a8c",
+      "locale": "ko",
+      "modifiedKeys": [
+        "Canonical support from"
+      ],
+      "parentFileBlob": "004f11687ff587ca7caba8ed31b14d3eb229a086",
+      "parentFileSha256": "e5371300dc1d8a61f583bc497f67368e5e7b6ad589f1dc481f8be38fcb0919a8",
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "removedKeys": [
+        "Cancel{all}",
+        "Retry{all}"
+      ]
+    },
+    {
+      "addedKeys": [
+        "Cancel selected",
+        "Retry selected"
+      ],
+      "keyChanges": [
+        {
+          "change": "added",
+          "key": "Cancel selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Cancel{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 568
+        },
+        {
+          "change": "added",
+          "key": "Retry selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Retry{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 3621
+        }
+      ],
+      "liveFileBlob": "54cb52b2e8f09cbc0906a264981a43ec36deb8c3",
+      "liveFileSha256": "757c84b6a1d4ecf6372f50cbc44132ab06680305727d5cb9802c06150000c4c6",
+      "locale": "pt-BR",
+      "modifiedKeys": [],
+      "parentFileBlob": "4a6e6cdf8ca8003937e92e4a6421da5d85f81097",
+      "parentFileSha256": "d27a4c535f77a9c6a09f37ba2338fc37377825a7e8fee0d03a16e77f9a029b0f",
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "removedKeys": [
+        "Cancel{all}",
+        "Retry{all}"
+      ]
+    },
+    {
+      "addedKeys": [
+        "Cancel selected",
+        "Retry selected"
+      ],
+      "keyChanges": [
+        {
+          "change": "added",
+          "key": "Cancel selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Cancel{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 568
+        },
+        {
+          "change": "added",
+          "key": "Retry selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Retry{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 3621
+        }
+      ],
+      "liveFileBlob": "02fd9dae433831acb271794f5f182f8db0ea31ee",
+      "liveFileSha256": "f2abb2ac42ef728f582342b3332f55290dde86c930ed17a60acdbf0e735bb2b8",
+      "locale": "vi",
+      "modifiedKeys": [],
+      "parentFileBlob": "0a27f63aed5e9b1e9f473bf783785514eadc46fa",
+      "parentFileSha256": "9b084447575c4ced7da0d5b8d301dc9d93d92b8e4732d730b2b86e6781e8a9de",
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "removedKeys": [
+        "Cancel{all}",
+        "Retry{all}"
+      ]
+    },
+    {
+      "addedKeys": [
+        "Cancel selected",
+        "Retry selected"
+      ],
+      "keyChanges": [
+        {
+          "change": "added",
+          "key": "Cancel selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Cancel{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 568
+        },
+        {
+          "change": "modified",
+          "key": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 578
+        },
+        {
+          "change": "added",
+          "key": "Retry selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Retry{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 3621
+        }
+      ],
+      "liveFileBlob": "db79a853b7e8376ff14ffe2c0a3f5289ec6808f6",
+      "liveFileSha256": "f2475d084556fc26abab89c6882b0aff59a84689cf96b9cf40be50a7012cf667",
+      "locale": "zh-Hans",
+      "modifiedKeys": [
+        "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness."
+      ],
+      "parentFileBlob": "fd9bcb47bdcb37fa350b8b8d6c9649dfc51c330f",
+      "parentFileSha256": "af01a4b29e4ecbf5a7152911e0c7476dff4e09979fc6849de97a7df6c3b1373e",
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "removedKeys": [
+        "Cancel{all}",
+        "Retry{all}"
+      ]
+    },
+    {
+      "addedKeys": [
+        "Cancel selected",
+        "Retry selected"
+      ],
+      "keyChanges": [
+        {
+          "change": "added",
+          "key": "Cancel selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Cancel{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 568
+        },
+        {
+          "change": "modified",
+          "key": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 578
+        },
+        {
+          "change": "added",
+          "key": "Retry selected",
+          "outsideReviewedWindow": true,
+          "sourceIndex": null
+        },
+        {
+          "change": "removed",
+          "key": "Retry{all}",
+          "outsideReviewedWindow": true,
+          "sourceIndex": 3621
+        }
+      ],
+      "liveFileBlob": "1037a8cc13cdea5ef4cb8acb37f860ef51cd4866",
+      "liveFileSha256": "fe84afc1b77e5fbedcab783d47c91aa6bc3dc7bf5431f6cf5fb878585b90c4dd",
+      "locale": "zh-Hant",
+      "modifiedKeys": [
+        "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness."
+      ],
+      "parentFileBlob": "2dff56034ecd59264551683cb0e0125ba48071a2",
+      "parentFileSha256": "ea1e8649db618e393a343d61f12919e7cf5f7ef4122de3f98318cb04da8b7e05",
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "removedKeys": [
+        "Cancel{all}",
+        "Retry{all}"
+      ]
+    }
+  ],
+  "reviewedWindowCellOrKeyChanges": [],
+  "unexpectedPaths": [],
+  "windowValuesUnchangedAcrossParentAndHead": true
+}
