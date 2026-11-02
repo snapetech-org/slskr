@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "task": "slskR PR #204 W763–782 primary semantic review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "tree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "sourceBaselineHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceBaselineTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "sourcePositions": [
+    763,
+    782
+  ],
+  "sourceIds": 20,
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "cells": 240,
+  "counts": {
+    "propose-correction": 43,
+    "accept-current": 197
+  },
+  "candidateCells": 43,
+  "heldCells": 0,
+  "freshlyReviewedCells": 120,
+  "reusedPriorDispositionCells": 120,
+  "reusedPriorCounts": {
+    "correction-needed": 15,
+    "accepted": 105
+  },
+  "freshReviewCounts": {
+    "accept-current": 92,
+    "propose-correction": 28
+  },
+  "holdGroups": [],
+  "sourceIdsWithNoDirectCallers": [
+    "Collections — full sets and 1G1R"
+  ],
+  "standaloneNoCallerDisposition": "All six locale targets for “Collections — full sets and 1G1R” were assessed on the source wording alone; each conveys collections/full sets and retains 1G1R. No standalone semantic blocker remained.",
+  "callerRefactorNeeds": [],
+  "freshCorrections": [
+    {
+      "sourceId": "Collection shares unavailable",
+      "locale": "ja",
+      "target": "コレクションの共有項目を利用できません",
+      "rationale": "The error is for collection share records/items failing to load, not for sharing a collection. The current wording can read as collection sharing being unavailable.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collection shares unavailable",
+      "locale": "ko",
+      "target": "컬렉션의 공유 항목을 사용할 수 없습니다.",
+      "rationale": "The error is for the collection’s shared items; 컬렉션 공유 can mean the act of sharing a collection. Name the shared items.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collection shares unavailable",
+      "locale": "vi",
+      "target": "Các mục chia sẻ của bộ sưu tập không khả dụng",
+      "rationale": "The error is for shared items associated with a collection, not the availability of the act of sharing a collection.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collection shares unavailable",
+      "locale": "zh-Hans",
+      "target": "合集共享项不可用",
+      "rationale": "The Shares section lists shared records/items for a collection; the current 收藏 can read as favorites and does not name those records.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collection shares unavailable",
+      "locale": "zh-Hant",
+      "target": "合輯中的共享項目無法使用",
+      "rationale": "The Shares section lists shared items belonging to a collection; 收藏 suggests favorites rather than the collection’s shared records.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collections shared with you",
+      "locale": "zh-Hant",
+      "target": "與您共享的合輯",
+      "rationale": "Use the catalog’s term 合輯 for the user-created collection; 收藏 here can mean favorites/collected items.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collections shared with you will appear here.",
+      "locale": "zh-Hans",
+      "target": "与您共享的合集将在此处显示。",
+      "rationale": "收藏 can mean favorites; this empty state is about user-created collections shared with the account.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collections shared with you will appear here.",
+      "locale": "zh-Hant",
+      "target": "與您共享的合輯將顯示於此處。",
+      "rationale": "收藏 can mean favorites; use the product term 合輯 for user-created collections shared with the account.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Collections unavailable",
+      "locale": "zh-Hans",
+      "target": "合集不可用",
+      "rationale": "无法收藏 means “unable to favorite/collect”; the error reports that the user-created collections list is unavailable.",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "Collections unavailable",
+      "locale": "zh-Hant",
+      "target": "合輯無法使用",
+      "rationale": "無法收藏 means “unable to favorite/collect”; the error reports that the user-created collections list is unavailable.",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "Collections — full sets and 1G1R",
+      "locale": "zh-Hant",
+      "target": "合輯 — 完整套組與 1G1R",
+      "rationale": "Use the catalog’s established Traditional Chinese term 合輯 for Collections. Preserve the exact technical literal 1G1R. This unattached string is reviewed standalone only.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Comments (",
+      "locale": "zh-Hans",
+      "target": "评论 ( ",
+      "rationale": "The JSX appends the count and an ASCII closing parenthesis. Retain the matching ASCII opening parenthesis and source trailing separator space; the full-width opener currently mismatches the appended close.",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "Comments (",
+      "locale": "zh-Hant",
+      "target": "評論 ( ",
+      "rationale": "The JSX appends the count and an ASCII closing parenthesis. Retain the matching ASCII opening parenthesis and source trailing separator space; the full-width opener currently mismatches the appended close.",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "Compact",
+      "locale": "pt-BR",
+      "target": "Compacto",
+      "rationale": "This is a density/mode option label, not the action verb compactar. Use an adjective naming the compact mode.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Compact",
+      "locale": "zh-Hans",
+      "target": "紧凑",
+      "rationale": "袖珍的 means pocket-sized. The caller uses this as the compact density/detail mode.",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "Compact",
+      "locale": "zh-Hant",
+      "target": "緊湊",
+      "rationale": "袖珍的 means pocket-sized. The caller uses this as the compact density/detail mode.",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "Compare",
+      "locale": "ko",
+      "target": "비교",
+      "rationale": "This is a button action for comparing a graph node. The dictionary-form verb 비교하다 reads like a sentence/dictionary entry rather than a concise button label.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Compare Pinned",
+      "locale": "ja",
+      "target": "ピン留めされたノードと比較",
+      "rationale": "The caller compares the graph center with the pinned node; the current phrase says a pinned comparison rather than what is compared.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Compare Pinned",
+      "locale": "ko",
+      "target": "고정된 노드와 비교",
+      "rationale": "The caller compares the graph center with the pinned node; the current phrase says a fixed comparison rather than what is compared.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Compare Pinned",
+      "locale": "pt-BR",
+      "target": "Comparar com o nó fixado",
+      "rationale": "The caller compares the graph center with the pinned node; the current phrase leaves the comparison target unclear.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Compare Pinned",
+      "locale": "vi",
+      "target": "So sánh với nút được ghim",
+      "rationale": "The caller compares the graph center with the pinned node; the current phrase does not state what is pinned.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Compare Pinned",
+      "locale": "zh-Hans",
+      "target": "与固定节点比较",
+      "rationale": "The caller compares the graph center with the pinned node; the current phrase “比较固定” is malformed/unclear.",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "Compare Pinned",
+      "locale": "zh-Hant",
+      "target": "與固定節點比較",
+      "rationale": "The caller compares the graph center with the pinned node; the current phrase “比較固定” is malformed/unclear.",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "Compare perceptual hashes to determine content similarity",
+      "locale": "vi",
+      "target": "So sánh các giá trị băm cảm nhận để xác định độ tương đồng nội dung",
+      "rationale": "In this hash-similarity tool, perceptual refers to perceptual hashes, not cognitive recognition. Use the established image/audio term “băm cảm nhận”.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Compare perceptual similarity between two ContentIDs",
+      "locale": "vi",
+      "target": "So sánh độ tương đồng cảm nhận giữa hai ContentID",
+      "rationale": "This is a perceptual similarity algorithm over two ContentIDs, not general cognitive similarity. Preserve the exact ContentID token.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Compare text strings using Levenshtein distance and phonetic matching",
+      "locale": "ko",
+      "target": "Levenshtein 거리와 발음 기반 매칭을 사용하여 텍스트 문자열을 비교합니다.",
+      "rationale": "음성 일치 can mean matching voices. The panel compares text with pronunciation/phonetic matching, so state that basis.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Compare text strings using Levenshtein distance and phonetic matching",
+      "locale": "zh-Hans",
+      "target": "使用 Levenshtein 距离和发音匹配比较文本字符串",
+      "rationale": "编辑距离 means generic edit distance and omits the named Levenshtein algorithm. Preserve the algorithm name and phonetic text-matching meaning.",
+      "confidence": "moderate"
+    },
+    {
+      "sourceId": "Compare text strings using Levenshtein distance and phonetic matching",
+      "locale": "zh-Hant",
+      "target": "使用 Levenshtein 距離和發音匹配比較文字字串",
+      "rationale": "編輯距離 means generic edit distance and omits the named Levenshtein algorithm. Preserve the algorithm name and phonetic text-matching meaning.",
+      "confidence": "moderate"
+    }
+  ],
+  "perLocale": {
+    "ar": {
+      "propose-correction": 4,
+      "accept-current": 16
+    },
+    "de": {
+      "accept-current": 19,
+      "propose-correction": 1
+    },
+    "es": {
+      "propose-correction": 2,
+      "accept-current": 18
+    },
+    "fr": {
+      "propose-correction": 2,
+      "accept-current": 18
+    },
+    "hi": {
+      "propose-correction": 3,
+      "accept-current": 17
+    },
+    "id": {
+      "propose-correction": 3,
+      "accept-current": 17
+    },
+    "ja": {
+      "propose-correction": 2,
+      "accept-current": 18
+    },
+    "ko": {
+      "propose-correction": 4,
+      "accept-current": 16
+    },
+    "pt-BR": {
+      "accept-current": 18,
+      "propose-correction": 2
+    },
+    "vi": {
+      "propose-correction": 4,
+      "accept-current": 16
+    },
+    "zh-Hans": {
+      "propose-correction": 7,
+      "accept-current": 13
+    },
+    "zh-Hant": {
+      "propose-correction": 9,
+      "accept-current": 11
+    }
+  },
+  "callerReferences": 70,
+  "callerFiles": 24,
+  "priorRowsReattested": 240,
+  "priorAcceptedRowsReused": 105,
+  "priorCorrectionRowsReused": 15,
+  "freshNotReviewedRows": 120,
+  "priorSourceHashMismatches": 0,
+  "priorTargetHashMismatches": 0,
+  "placeholderFailures": 0,
+  "protectedLiteralFailures": 0,
+  "punctuationMismatchCount": 0,
+  "openingDelimiterFailures": 0,
+  "protectedLiteralPolicy": {
+    "1G1R": "exact ASCII literal; retained in all 12 locales"
+  },
+  "technicalTermPolicy": {
+    "ContentID": "Reviewed as the case-sensitive name of an identifier type; translated descriptively in some locales (including prior accepted Arabic), retained in other targets and fresh Vietnamese wording. No evidence indicates that the rendered label is a machine-parsed token.",
+    "Levenshtein": "named algorithm reviewed; standard Japanese transliteration accepted, fresh Korean/Chinese candidates retain Latin name."
+  },
+  "nativeSpeakerApproval": false,
+  "nativeSpeakerReviewRequired": true,
+  "testsBuildsScansCiWorkflowsRan": false,
+  "repositoryOrPrModified": false,
+  "catalogDeltaNote": "Each live locale catalog has seven keys outside and four frozen keys absent from the 5,437-key inventory; see manifest.json.",
+  "reuseMethod": "Only the prior audit’s 105 accepted and 15 correction-needed rows were reused, after exact live source/current-target hash reattestation. The 120 not-reviewed cells were independently reviewed. Existing old machine suggestions for those cells were not adopted as decisions.",
+  "boundaryReattestation": "Source indices 762 and 763 are adjacent and non-overlapping; all 12 current targets at 762 match the W743–762 packet current-target hashes. Index 783 is Complete."
+}

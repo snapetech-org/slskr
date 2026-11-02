@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "head": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "tree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "window": [
+    763,
+    782
+  ],
+  "cellCount": 240,
+  "uniqueCellCount": 240,
+  "candidateCells": 43,
+  "heldCells": 0,
+  "acceptedCurrentCells": 197,
+  "freshCells": 120,
+  "freshCandidates": 28,
+  "callerPinCount": 70,
+  "sourceCurrentPlaceholderFailures": 0,
+  "candidatePlaceholderFailures": 0,
+  "protectedLiteralFailures": 0,
+  "punctuationMismatchCount": 0,
+  "openingDelimiterFailures": 0,
+  "priorAcceptedRowsReused": 105,
+  "priorCorrectionRowsReused": 15,
+  "freshNotReviewedCellsReviewed": 120,
+  "priorSourceHashMismatches": 0,
+  "priorTargetHashMismatches": 0,
+  "previousBoundaryRowsReattested": 12,
+  "repoAppliedDecisionMatches": 0,
+  "nativeSpeakerApproval": false,
+  "readOnly": true,
+  "repoOrPrModified": false,
+  "testsBuildsScansCiOrWorkflowsRun": false
+}

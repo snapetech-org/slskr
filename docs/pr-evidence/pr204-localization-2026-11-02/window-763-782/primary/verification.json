@@ -1,0 +1,23 @@
+{
+  "exactPrHeadTree": true,
+  "livePrHeadMatches": true,
+  "sourceBaselineAncestor": true,
+  "worktreeClean": true,
+  "sourceInventoryReproduced": true,
+  "selectedWindowMatches": true,
+  "windowAdjacentToPreviousSourceIndex762AndNextIndex783": true,
+  "nonOverlapWithW703_722W723_742W743_762": true,
+  "allPinnedSourceKeysPresentInCatalogs": true,
+  "sourceCurrentPlaceholderParityFailures": 0,
+  "pluralMapCellCount": 0,
+  "priorCellsReattested": 240,
+  "priorAcceptedAndCorrectionRowsReused": 120,
+  "freshNotReviewedCells": 120,
+  "priorSourceHashMismatches": 0,
+  "priorTargetHashMismatches": 0,
+  "repoAppliedDecisionMatches": 0,
+  "noDirectCallerSourceIds": [
+    "Collections — full sets and 1G1R"
+  ],
+  "nativeSpeakerApproval": false
+}

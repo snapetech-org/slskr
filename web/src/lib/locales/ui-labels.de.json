@@ -1094,7 +1094,7 @@
   "Compact": "Kompakt",
   "Compact View": "Kompakte Ansicht",
   "Compare": "Vergleichen",
-  "Compare Pinned": "Vergleichen Angepinnt",
+  "Compare Pinned": "Mit dem angehefteten Knoten vergleichen",
   "Compare perceptual hashes to determine content similarity": "Vergleichen Sie Wahrnehmungs-Hashes, um die Ähnlichkeit von Inhalten zu bestimmen",
   "Compare perceptual similarity between two ContentIDs": "Vergleichen Sie die Wahrnehmungsähnlichkeit zwischen zwei Content-IDs",
   "Compare text strings using Levenshtein distance and phonetic matching": "Vergleichen Sie Textzeichenfolgen mithilfe der Levenshtein-Distanz und der phonetischen Übereinstimmung",

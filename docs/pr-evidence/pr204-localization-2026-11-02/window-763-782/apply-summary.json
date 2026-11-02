@@ -1,0 +1,28 @@
+{
+  "task": "slskR PR #204 W763-782 exact-hash reviewed application",
+  "reviewInputHead": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "reviewInputTree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "applyInputHead": "77a1e481b475381ac45172cf7fd3f5a5c460d7c0",
+  "applyInputTree": "d4dae6999b34c2060d7662caddbc348917026411",
+  "reviewedCells": 240,
+  "appliedCellChanges": 44,
+  "finalDispositions": {
+    "accept-current": 196,
+    "propose-correction": 43,
+    "propose-refinement": 1,
+    "hold": 0
+  },
+  "primaryCandidatesAccepted": 40,
+  "primaryCandidatesRevised": 3,
+  "additionalCrossReviewRefinements": 1,
+  "retainedHolds": 0,
+  "callerReferencesReattested": 70,
+  "catalogKeysPerLocale": 5440,
+  "sourceCurrentTargetHashesReattestedAtApplyHead": 240,
+  "reviewedTargetsVerifiedAfterApply": 240,
+  "placeholderMarkupProtectedLiteralMismatches": 0,
+  "nativeSpeakerApproval": false,
+  "postApplyBrowserReview": false,
+  "testsBuildsCiRun": false,
+  "releasesTagsMerges": false
+}

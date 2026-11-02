@@ -1,0 +1,151 @@
+{
+  "attestedHead": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "attestedTree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "sourceInventorySha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "previousWindow": [
+    743,
+    762
+  ],
+  "currentWindow": [
+    763,
+    782
+  ],
+  "nextSourceIndex": 783,
+  "adjacent": true,
+  "nonOverlappingWithW703_722AndW723_742AndW743_762": true,
+  "previousPacketPath": "/mnt/disks/scratch/task-scratch/slskr-pr204-W743-762-primary-20261102/packet",
+  "previousBoundaryTargetsReattested": [
+    {
+      "locale": "ar",
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "previousRowSha256": "b46beafcca15876ecfa5b15e8860eab3cbae6efec9d46eac8f349a9a5dc4e697",
+      "previousCurrentTargetSha256": "50683229ea2427acc65898ac46bab9de24f93d654fe3d3c2e28a84254f766fa8",
+      "liveTarget": "عناصر المجموعة غير متوفرة",
+      "liveTargetSha256": "50683229ea2427acc65898ac46bab9de24f93d654fe3d3c2e28a84254f766fa8",
+      "targetUnchanged": true,
+      "previousDecision": "accept-current"
+    },
+    {
+      "locale": "de",
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "previousRowSha256": "9c4d097eb203b5b1fb5fa752da47a9fd9392753d3f0090e738e449554a76b303",
+      "previousCurrentTargetSha256": "1c12ab9efcdbc76715626c3d2e261599e08550a3c21a018a337db9927848857d",
+      "liveTarget": "Sammlungsartikel nicht verfügbar",
+      "liveTargetSha256": "1c12ab9efcdbc76715626c3d2e261599e08550a3c21a018a337db9927848857d",
+      "targetUnchanged": true,
+      "previousDecision": "propose-correction"
+    },
+    {
+      "locale": "es",
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "previousRowSha256": "f224c146294634ee62af339161158c47a4408df7bf197e0d6b3e4e0ba0646e36",
+      "previousCurrentTargetSha256": "710f888984ccc91a14099ceb8aaa5cdce1b61256452ac4076d5cc4dabeacf0cc",
+      "liveTarget": "Artículos de colección no disponibles",
+      "liveTargetSha256": "710f888984ccc91a14099ceb8aaa5cdce1b61256452ac4076d5cc4dabeacf0cc",
+      "targetUnchanged": true,
+      "previousDecision": "accept-current"
+    },
+    {
+      "locale": "fr",
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "previousRowSha256": "b958e0814f055be34629d70bea600b1ea7a0e5dfba976c24eb81b146aa2fa5e0",
+      "previousCurrentTargetSha256": "f7543a5ab0906178bbf570302b22e87434f8ad21318da7a9387eb706d8be1034",
+      "liveTarget": "Objets de collection indisponibles",
+      "liveTargetSha256": "f7543a5ab0906178bbf570302b22e87434f8ad21318da7a9387eb706d8be1034",
+      "targetUnchanged": true,
+      "previousDecision": "accept-current"
+    },
+    {
+      "locale": "hi",
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "previousRowSha256": "75c16d2507a56eef5da8c348958a50cb5681908459f759b63a86ac8c52b5a435",
+      "previousCurrentTargetSha256": "1f43a503d2951d12c3f8f1bec19e4aeda435df2349be78bb6ebd5e9851d14cb2",
+      "liveTarget": "संग्रहण आइटम अनुपलब्ध",
+      "liveTargetSha256": "1f43a503d2951d12c3f8f1bec19e4aeda435df2349be78bb6ebd5e9851d14cb2",
+      "targetUnchanged": true,
+      "previousDecision": "propose-correction"
+    },
+    {
+      "locale": "id",
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "previousRowSha256": "7da434ac58378f201f07f8769ddcbde9626495737faf3fb528c897236e1edab0",
+      "previousCurrentTargetSha256": "9ba73c22009ec1950c6dd572cb33e45729e8feb64ea9aeadc1576b3f8da6d6a3",
+      "liveTarget": "Item koleksi tidak tersedia",
+      "liveTargetSha256": "9ba73c22009ec1950c6dd572cb33e45729e8feb64ea9aeadc1576b3f8da6d6a3",
+      "targetUnchanged": true,
+      "previousDecision": "accept-current"
+    },
+    {
+      "locale": "ja",
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "previousRowSha256": "e3285ba22d7c9097bb591075e61446d262a26768b5cbc229eb2f2f0f56363476",
+      "previousCurrentTargetSha256": "028c8c2c56878dc21acf404bafcbe5ea982efd82a7fe37aee35868ff82b4246b",
+      "liveTarget": "コレクションアイテムが利用不可",
+      "liveTargetSha256": "028c8c2c56878dc21acf404bafcbe5ea982efd82a7fe37aee35868ff82b4246b",
+      "targetUnchanged": true,
+      "previousDecision": "accept-current"
+    },
+    {
+      "locale": "ko",
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "previousRowSha256": "4988cbf7faf92f7461fb524de1369697d34f8f956daff948a7949587c6f9d32b",
+      "previousCurrentTargetSha256": "94d2f9ee78059895108bd2aa9b6e694780b2a7fb55029264067914b896f6cda5",
+      "liveTarget": "컬렉션 항목을 사용할 수 없습니다",
+      "liveTargetSha256": "94d2f9ee78059895108bd2aa9b6e694780b2a7fb55029264067914b896f6cda5",
+      "targetUnchanged": true,
+      "previousDecision": "accept-current"
+    },
+    {
+      "locale": "pt-BR",
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "previousRowSha256": "8ad3984b831894b18d9c55efc330fc7ed14717eff9b78fc0ec669d82415f83e7",
+      "previousCurrentTargetSha256": "3e307e2c1f8c72e38b98cbd1d9edf789a96d043de75eca03f13dfa8f20010529",
+      "liveTarget": "Itens de coleção indisponíveis",
+      "liveTargetSha256": "3e307e2c1f8c72e38b98cbd1d9edf789a96d043de75eca03f13dfa8f20010529",
+      "targetUnchanged": true,
+      "previousDecision": "accept-current"
+    },
+    {
+      "locale": "vi",
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "previousRowSha256": "bd0b526f550559754d0450635d2c289a667ff2ac7303b051e53acdc8da285e83",
+      "previousCurrentTargetSha256": "16a79727ca10880aebd886b3d8c8f546a8d39c50bbbba11ab4be4014418bc156",
+      "liveTarget": "Mục bộ sưu tập không có sẵn",
+      "liveTargetSha256": "16a79727ca10880aebd886b3d8c8f546a8d39c50bbbba11ab4be4014418bc156",
+      "targetUnchanged": true,
+      "previousDecision": "accept-current"
+    },
+    {
+      "locale": "zh-Hans",
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "previousRowSha256": "4f3aec12bc3a7a73b57d41f1c647788d6785f0c8fa82bae000363ac0e5fe2b3b",
+      "previousCurrentTargetSha256": "d410ff1a642aa7d62fe9fbe50b69d7262f103638527c7251200d8b25b4e94980",
+      "liveTarget": "收藏品不可用",
+      "liveTargetSha256": "d410ff1a642aa7d62fe9fbe50b69d7262f103638527c7251200d8b25b4e94980",
+      "targetUnchanged": true,
+      "previousDecision": "propose-correction"
+    },
+    {
+      "locale": "zh-Hant",
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "previousRowSha256": "156118f6d4d6c6176a0e24d1f5ffb5a751a568c5d2a83d1a66425fbc42d45359",
+      "previousCurrentTargetSha256": "d410ff1a642aa7d62fe9fbe50b69d7262f103638527c7251200d8b25b4e94980",
+      "liveTarget": "收藏品不可用",
+      "liveTargetSha256": "d410ff1a642aa7d62fe9fbe50b69d7262f103638527c7251200d8b25b4e94980",
+      "targetUnchanged": true,
+      "previousDecision": "propose-correction"
+    }
+  ]
+}

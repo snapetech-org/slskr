@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "overrides": {
+    "763|id": {
+      "disposition": "propose-correction",
+      "target": "Daftar berbagi koleksi tidak tersedia",
+      "rationale": "The caller shows a Shares table of collection share records with audience and permissions. “Berbagi koleksi” alone can describe the act of sharing a collection; adding “Daftar” makes clear that the share list is unavailable."
+    },
+    "772|zh-Hans": {
+      "disposition": "propose-correction",
+      "target": "评论 (",
+      "rationale": "The JSX immediately appends the count and an ASCII closing parenthesis. Keep the ASCII opening delimiter and the source space before it, but remove the proposed extra space after “(” so the rendered count is not separated from its opening delimiter."
+    },
+    "772|zh-Hant": {
+      "disposition": "propose-correction",
+      "target": "評論 (",
+      "rationale": "The JSX immediately appends the count and an ASCII closing parenthesis. Keep the ASCII opening delimiter and the source space before it, but remove the proposed extra space after “(” so the rendered count is not separated from its opening delimiter."
+    },
+    "775|hi": {
+      "disposition": "propose-refinement",
+      "target": "तुलना करें",
+      "rationale": "The direct caller is a per-node comparison button. “तुलना करना” is understandable as an infinitive label, but the imperative action label “तुलना करें” matches the adjacent Hindi “Compare Pinned” button and is clearer as a button action."
+    }
+  },
+  "primaryCandidateCount": 43,
+  "primaryCandidatesAccepted": 40,
+  "primaryCandidateRevisions": 3,
+  "additionalCrossReviewCandidates": 1,
+  "standaloneNoDirectCallerSource": "Collections — full sets and 1G1R",
+  "standaloneDisposition": "Reviewed from source wording alone; all targets convey collections/full sets and preserve exact 1G1R.",
+  "notes": [
+    "The Indonesian primary proposal for Collection shares unavailable could describe sharing a collection; the final target says that the collection share list is unavailable.",
+    "The two Chinese Comments ( proposals retained an extra space between the ASCII opening parenthesis and the appended count; the final targets remove that extra space.",
+    "The Hindi Compare refinement uses a direct action label consistent with Compare Pinned.",
+    "W762 live target values match all 12 final targets in the W743–762 cross-review after the intervening localization commits."
+  ],
+  "nativeSpeakerApproval": "outstanding"
+}

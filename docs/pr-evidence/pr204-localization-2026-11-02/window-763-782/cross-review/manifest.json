@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "liveHead": "77a1e481b475381ac45172cf7fd3f5a5c460d7c0",
+  "liveTree": "d4dae6999b34c2060d7662caddbc348917026411",
+  "primaryHead": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "primaryTree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "scope": {
+    "sourcePositions": [
+      763,
+      782
+    ],
+    "sourceIds": 20,
+    "locales": [
+      "ar",
+      "de",
+      "es",
+      "fr",
+      "hi",
+      "id",
+      "ja",
+      "ko",
+      "pt-BR",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "cells": 240
+  },
+  "primaryPacket": {
+    "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-W763-782-primary-20261102/packet",
+    "sha256sumsSha256": "5610d250fbaa8f0168959f5b9de756375e6af52e0a249e24c2db26fb6e4a7fe4",
+    "manifestSha256": "60cbe26c41f758d8a9587ed8149ffefc0cac9b0a99bfdacc80475436796eaa72",
+    "currentCellsSha256": "eed6d6dcb5c7692a104ba3c0993dd6c3ccc27aeaf177fe4ca59d2327c2ceb2d1",
+    "primaryLedgerSha256": "bdc3a4031f674a4da17268fa9b9cac2405883762c6675d53c2630b852b7221b2",
+    "candidatesSha256": "fb2e9d42e599daf0e619c247d5a00b238d445dec33a46ae6f5a9394abb1cc7ce",
+    "sourceContextSha256": "92ab8e68060a7da77efee1c5bfd1d733d7be378c2ec6dc3c13f6c173a4b32200",
+    "callerPinsSha256": "28b984f83f9f4fcb9cf2e46b4a8bbaeb72e1a27e8a3dbaa91f3435d58801f4b9"
+  },
+  "previousW743Packets": {
+    "primaryManifestSha256": "918af329b724b6f558339b682353265afab8ae71f0c386a3eacd38b11c7cd0a7",
+    "crossReviewManifestSha256": "2ced7e4fc0bbfea01f774962f14832c55db8d9bb3d2bdaa7b561d1fed8aab392",
+    "crossReviewLedgerSha256": "169b9164ffa178dd93269e0793281076f8e7ea9c3e1ad9f11828ae97e85843c8"
+  },
+  "sourceInventory": {
+    "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/frozen-inputs/source-inventory.jsonl",
+    "sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+    "keys": 5437
+  },
+  "currentReattestation": {
+    "path": "crossreview-reattestation.json",
+    "sha256": "e1f9a66d6ee5c6c5563e9c16b1e6497e8573adb2a491bcabef30cf4b1e093334",
+    "checks": "pass"
+  },
+  "ledger": {
+    "path": "crossreview-ledger.jsonl",
+    "rows": 240,
+    "sha256": "b1e088e33eff66459103f7be2dd81f0f1567eb7e590c9d5911b8c292b162cf9c",
+    "dispositions": {
+      "propose-correction": 43,
+      "accept-current": 196,
+      "propose-refinement": 1
+    }
+  },
+  "callerPins": {
+    "path": "crossreview-caller-pins.jsonl",
+    "rows": 70,
+    "sha256": "77fccc4873655e09d074336c3e1a78df989e5e57d65f4c0d08aef49eff9e22a8"
+  },
+  "callerContexts": {
+    "path": "crossreview-caller-contexts.jsonl",
+    "rows": 20,
+    "sha256": "ed92d22124efebb673dda7d1caec5ca7f4604ebcb0ee908e9780fd2d54ec78a0"
+  },
+  "W762Boundary": {
+    "path": "crossreview-w762-boundary.json",
+    "cells": 12,
+    "matchesFinalTargets": 12,
+    "sha256": "09478a81a9688faab3f937296850c1c50f9da640378315848578ef0e2c5e92a2"
+  },
+  "findingsSha256": "bb38fc6ed5240c6a70e2fac904c6e38666311e05efb0108e6b039d2eb3e6844a",
+  "summarySha256": "557beb2be495d39aaebcd36cbbb5bd9dff495b299efb105d7cd94c65a3aa2f74",
+  "readmeSha256": "24b71d04b245e34641d1c72e5d58efdaf0e9fe4b0272eb63d99df7573b780721",
+  "builderSha256": "645a488fe1a215f92138ab82362d5e183551c71f7c602c3c10ebb7b9e5c57b5b",
+  "artifactFiles": {
+    "README.md": {
+      "sha256": "24b71d04b245e34641d1c72e5d58efdaf0e9fe4b0272eb63d99df7573b780721",
+      "bytes": 1891
+    },
+    "build_crossreview_packet.py": {
+      "sha256": "645a488fe1a215f92138ab82362d5e183551c71f7c602c3c10ebb7b9e5c57b5b",
+      "bytes": 33865
+    },
+    "crossreview-caller-contexts.jsonl": {
+      "sha256": "ed92d22124efebb673dda7d1caec5ca7f4604ebcb0ee908e9780fd2d54ec78a0",
+      "bytes": 63697
+    },
+    "crossreview-caller-pins.jsonl": {
+      "sha256": "77fccc4873655e09d074336c3e1a78df989e5e57d65f4c0d08aef49eff9e22a8",
+      "bytes": 80481
+    },
+    "crossreview-findings.json": {
+      "sha256": "bb38fc6ed5240c6a70e2fac904c6e38666311e05efb0108e6b039d2eb3e6844a",
+      "bytes": 2576
+    },
+    "crossreview-ledger.jsonl": {
+      "sha256": "b1e088e33eff66459103f7be2dd81f0f1567eb7e590c9d5911b8c292b162cf9c",
+      "bytes": 815197
+    },
+    "crossreview-reattestation.json": {
+      "sha256": "e1f9a66d6ee5c6c5563e9c16b1e6497e8573adb2a491bcabef30cf4b1e093334",
+      "bytes": 24010
+    },
+    "crossreview-w762-boundary.json": {
+      "sha256": "09478a81a9688faab3f937296850c1c50f9da640378315848578ef0e2c5e92a2",
+      "bytes": 10419
+    },
+    "summary.json": {
+      "sha256": "557beb2be495d39aaebcd36cbbb5bd9dff495b299efb105d7cd94c65a3aa2f74",
+      "bytes": 4186
+    }
+  },
+  "nativeSpeakerApproval": "outstanding",
+  "repositoryOrPrModified": false,
+  "testsBuildsScansCIorBrowserRun": false,
+  "workflowFilesTouched": false
+}

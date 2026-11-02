@@ -1,0 +1,9 @@
+# slskR PR #204 W763–782 independent cross-review
+
+- The primary packet was frozen at `32903976fabe543f89dd5950245ba11dd77c8eb3` / `ebf75888b3087e83fe2327495c17611802925f71`. PR #204 is currently OPEN/DRAFT at `77a1e481b475381ac45172cf7fd3f5a5c460d7c0` / tree `d4dae6999b34c2060d7662caddbc348917026411`; the exact current worktree was clean before and after review.
+- Reattested 240 source/current-target cells across 20 IDs and 12 locales at the current head. All 240 current target strings and hashes still match the frozen primary inputs; the locale catalog blobs were re-pinned at the new head.
+- Independently reviewed all 43 primary corrections and all 197 accept-current cells. Final dispositions: {'propose-correction': 43, 'accept-current': 196, 'propose-refinement': 1}. The cross-review revises three primary targets (Indonesian Collection shares unavailable; both Chinese Comments ( labels) and adds one Hindi Compare refinement.
+- Reattested 70 source, context, and test references across 24 files. Every ID except “Collections — full sets and 1G1R” has a direct caller; that label was reviewed standalone and exact `1G1R` is preserved in all 12 locales.
+- Reattested all 240 prior-audit statuses and hashes: {'correction-needed': 15, 'accepted': 105, 'not-reviewed': 120}. The 105 accepted and 15 correction-needed cells were reused only after exact source/target hash reattestation; the 120 not-reviewed cells remain fresh reviews.
+- W762’s 12 live target values were checked against the W743–762 cross-review at the current head. All 12 match its final targets; 7 changed from the pre-commit packet boundary.
+- Placeholder, markup, punctuation, protected-literal, and opening-delimiter checks pass. Confidence is moderate; native-speaker approval remains outstanding. No repository/PR edits, tests, builds, scans, CI, browser work, or workflow changes were made.
