@@ -1,29 +1,29 @@
 {
-  "head": "d0399855c23aa8dca9b92786c602d0be6ba9733b",
-  "head_tree": "d2cf82fc77e004c19b39df94edc307a24d766797",
+  "head": "48211078d858e9dfbbc2fb2bc74d65cd54c58f0f",
+  "head_tree": "741d3be561eab466fcf5f79776d3e8350b2895e2",
   "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
   "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
   "source_ids": 5437,
   "cell_count": 65244,
   "catalog_file_sha256": {
-    "web/src/lib/locales/ui-labels.ar.json": "60a34f5ad6659ce3ed429392a6e0d79f10bdbf3891570b14777de33a9c28f84f",
-    "web/src/lib/locales/ui-labels.de.json": "832d0471a04d5440bc86558d760fe65300300228c2579207c021fef64504c32c",
-    "web/src/lib/locales/ui-labels.es.json": "f33f795282610afba24f427b22a8a0a1f3757d5f20a35bf62cca0b54f5352c0e",
-    "web/src/lib/locales/ui-labels.fr.json": "383d7adf2a5ec652ba7230fbe15085e4b67d2e7efd24a276e2705c5913ce5c1b",
-    "web/src/lib/locales/ui-labels.hi.json": "3144b8ccecfc2fb2c81b604253726331fffa8a0f63ed686f90bdbf9bb32d3a16",
-    "web/src/lib/locales/ui-labels.id.json": "1d9da1e80060beee64c6e6d50079c0e2fea01c084bc038bac8116f053a748426",
+    "web/src/lib/locales/ui-labels.ar.json": "8d6093b08243d8c113a91082aedb2d3ca4db0002933164b5b993142706fc1456",
+    "web/src/lib/locales/ui-labels.de.json": "e71d440020618485c9807ee3d6130c2cc8c0a943a4ce9e59c879e6cc25fd9a24",
+    "web/src/lib/locales/ui-labels.es.json": "1c2dc6dc96697c7ecee6ba25c5829e54d0a7861beaf48e34d1fccfbcf770a675",
+    "web/src/lib/locales/ui-labels.fr.json": "24dcf0ee1608368e2df238ce7f43cff1f8c3d9dcca25b5e2f7712c7d96708a1e",
+    "web/src/lib/locales/ui-labels.hi.json": "46c514128702527e6740d35ec2f426f4e0c6d2fb234f09af2e346638c8823e94",
+    "web/src/lib/locales/ui-labels.id.json": "269924d98332b78b759558e1b0426ee255ddcd46d292aa4f170b8b7420b18de1",
     "web/src/lib/locales/ui-labels.ja.json": "ef60aeaaf5ce0f2b978f0157d493a64ae88db5af764e30122d805cb25cd8c023",
     "web/src/lib/locales/ui-labels.ko.json": "7e456353d8cd6a4d44e8dc8fbe31bfc2e950ad7ec464e68b9feebeff38cbee94",
-    "web/src/lib/locales/ui-labels.pt-BR.json": "f4ab90d3b3a6806f3912cebffd5d89f4e825b3ed80506e6e903fb58e694e8790",
-    "web/src/lib/locales/ui-labels.vi.json": "48dbcd0b9906c834eacb6d46b3aae4c400886860238e348996de3c71fbb8ee82",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "0de60739787750de428d6fc4d4fc8a6553aaca48085dfb76770c710996daa126",
+    "web/src/lib/locales/ui-labels.vi.json": "2be61bc7329276cea157b533a9e7f463921acc45157726d731428a1d3a6e9464",
     "web/src/lib/locales/ui-labels.zh-Hans.json": "8c826eebb4efb4996e966950adf2020f1358ebdcb7e5298d99f92676061f8ce9",
     "web/src/lib/locales/ui-labels.zh-Hant.json": "11747cb04dd11943782a404ba868844a0ecaffb04e6f9d300f00c97487e0998f"
   },
   "structured_plural_cells": {
     "ar": 15
   },
-  "evidence_files_scanned": 842,
-  "evidence_scan_manifest_sha256": "fddfef5b9bee844d9108ea1700e1e553dd8aa55886dda404c76f7826105780e9",
+  "evidence_files_scanned": 858,
+  "evidence_scan_manifest_sha256": "f6dbcd12b6f5b0fa87af1ab8739ddafa77172e49f3d79e20c3500b8e0346a624",
   "evidence_file_manifest": [
     {
       "root": "pr-review-head",
@@ -814,6 +814,102 @@
     {
       "root": "pr-review-head",
       "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0243-0262-all-12-locales/terminal-exclusions.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0263-0282-all-12-locales/applied-corrections.jsonl",
+      "bytes": 43082,
+      "sha256": "f2d17f180a0cf1c372f685469d8a95178e6f621c94ec6a06e796b64f718e2c50"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0263-0282-all-12-locales/candidate-corrections.jsonl",
+      "bytes": 27999,
+      "sha256": "8ab9e8e8c2d259cf02d985feb592641fd660df24e6a990049a1a13e8499c08ad"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0263-0282-all-12-locales/carries.jsonl",
+      "bytes": 401354,
+      "sha256": "1dbaddb615f2d326b3afe2eb70fd56252e082dbf42765f3fa9c891a317608381"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0263-0282-all-12-locales/conflict-holds.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0263-0282-all-12-locales/conflict-reconciliation.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0263-0282-all-12-locales/decisions.jsonl",
+      "bytes": 61063,
+      "sha256": "31f05884ef18811dc92671e6789aa7084112514f9cc73d84cb10a2c31230155f"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0263-0282-all-12-locales/manifest.json",
+      "bytes": 11478,
+      "sha256": "3179b095aa6f6df8e1a34fd8ec929f830507d17f2165e8fce6c813bbe2190e90"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0263-0282-all-12-locales/prior-evidence-scan-manifest.jsonl",
+      "bytes": 172876,
+      "sha256": "563166ac95576e403643a23033d68aeb6e6e8da7c6e373fe7c314e0e45fc9c31"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0263-0282-all-12-locales/reviewed-cell-audit.jsonl",
+      "bytes": 657358,
+      "sha256": "4fc42b9ae0c1b13057854e17a0fc2883e6e2e4122c94529121dbae863db44391"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0263-0282-all-12-locales/root-apply-plan.jsonl",
+      "bytes": 11410,
+      "sha256": "30e54209464ff65e7f712c51d874e4a433aa98d6f22ddef3c4c283af096c9e94"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0263-0282-all-12-locales/root-cross-review-summary.json",
+      "bytes": 660,
+      "sha256": "99b7fa1343580e33964f227e0de4ab4cb987a9a6f3c4b81e394c9d79fa5e023d"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0263-0282-all-12-locales/root-cross-review.jsonl",
+      "bytes": 25019,
+      "sha256": "863f30995df14ad349335fa2bd143c2345d8b68e93082e8692f45786345ce5a4"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0263-0282-all-12-locales/selection-before-corrections.jsonl",
+      "bytes": 190630,
+      "sha256": "c96804c3e14afde4b94e4a884af0ebf2d5212c6090ce739dcc0818d8a5060e02"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0263-0282-all-12-locales/selection.jsonl",
+      "bytes": 202911,
+      "sha256": "304c495cce0febe6e2a0308c44d766be725a685fde0623df246367709f04cfd5"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0263-0282-all-12-locales/source-pins.json",
+      "bytes": 2407,
+      "sha256": "c064bb085dbf246162c0b64063582ffccce529828d7f3fcd72d2bf5e06defb47"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0263-0282-all-12-locales/terminal-exclusions.jsonl",
       "bytes": 0,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
@@ -5079,54 +5175,54 @@
     }
   ],
   "unique_current_cell_status_counts": {
-    "accepted": 23576,
-    "corrected": 276,
-    "correction-needed": 10742,
+    "accepted": 23598,
+    "corrected": 290,
+    "correction-needed": 10731,
     "held": 289,
-    "unreviewed": 30361
+    "unreviewed": 30336
   },
   "per_locale_exact_status_counts": {
     "ar": {
-      "accepted": 1305,
-      "corrected": 29,
+      "accepted": 1309,
+      "corrected": 30,
       "correction-needed": 1079,
       "held": 12,
-      "unreviewed": 3012
+      "unreviewed": 3007
     },
     "de": {
-      "accepted": 1334,
-      "corrected": 28,
-      "correction-needed": 860,
+      "accepted": 1338,
+      "corrected": 30,
+      "correction-needed": 858,
       "held": 10,
-      "unreviewed": 3205
+      "unreviewed": 3201
     },
     "es": {
-      "accepted": 1285,
-      "corrected": 26,
+      "accepted": 1289,
+      "corrected": 27,
       "correction-needed": 1090,
       "held": 9,
-      "unreviewed": 3027
+      "unreviewed": 3022
     },
     "fr": {
-      "accepted": 1288,
-      "corrected": 28,
-      "correction-needed": 1032,
+      "accepted": 1292,
+      "corrected": 29,
+      "correction-needed": 1031,
       "held": 10,
-      "unreviewed": 3079
+      "unreviewed": 3075
     },
     "hi": {
-      "accepted": 1288,
-      "corrected": 30,
-      "correction-needed": 1112,
+      "accepted": 1292,
+      "corrected": 31,
+      "correction-needed": 1111,
       "held": 14,
-      "unreviewed": 2993
+      "unreviewed": 2989
     },
     "id": {
-      "accepted": 1288,
-      "corrected": 26,
-      "correction-needed": 1080,
+      "accepted": 1290,
+      "corrected": 29,
+      "correction-needed": 1078,
       "held": 10,
-      "unreviewed": 3033
+      "unreviewed": 3030
     },
     "ja": {
       "accepted": 2771,
@@ -5144,15 +5240,15 @@
     },
     "pt-BR": {
       "accepted": 2660,
-      "corrected": 14,
-      "correction-needed": 725,
+      "corrected": 18,
+      "correction-needed": 721,
       "held": 36,
       "unreviewed": 2002
     },
     "vi": {
       "accepted": 2438,
-      "corrected": 30,
-      "correction-needed": 930,
+      "corrected": 31,
+      "correction-needed": 929,
       "held": 37,
       "unreviewed": 2002
     },
@@ -5171,64 +5267,9 @@
       "unreviewed": 2002
     }
   },
-  "unreviewed_source_index_count": 3685,
-  "unreviewed_cells": 30361,
+  "unreviewed_source_index_count": 3680,
+  "unreviewed_cells": 30336,
   "first_100_unreviewed_indices": {
-    "263": {
-      "source_id": "Allow remote no-auth CIDRs",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "264": {
-      "source_id": "Allow slow or stalled downloads to use verified alternate sources. Soulseek peers use sequential failover; true multipart chunking is reserved for trusted slskr mesh peers.",
-      "fresh_locale_count": 2,
-      "fresh_locales": [
-        "ar",
-        "es"
-      ]
-    },
-    "265": {
-      "source_id": "Allow streaming",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "266": {
-      "source_id": "Allow this peer folder to appear again in future runs of this wishlist item.",
-      "fresh_locale_count": 5,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi"
-      ]
-    },
-    "267": {
-      "source_id": "Allow this webhook to call a target with a self-signed or otherwise untrusted certificate.",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
     "291": {
       "source_id": "Analytics time window",
       "fresh_locale_count": 6,
@@ -6317,6 +6358,66 @@
         "de",
         "fr",
         "hi"
+      ]
+    },
+    "440": {
+      "source_id": "Avg Speed",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "441": {
+      "source_id": "Avg Throughput",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "442": {
+      "source_id": "Avg Time:",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "443": {
+      "source_id": "Avg Traversal Time:",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "444": {
+      "source_id": "Avg Uptime",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
       ]
     }
   },
