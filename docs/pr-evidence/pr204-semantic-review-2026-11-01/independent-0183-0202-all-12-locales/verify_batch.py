@@ -86,6 +86,19 @@ def main():
  if sum(isinstance(v,(dict,list)) for cat in after_cats.values() for v in cat.values())!=15:die('structured plural cell census mismatch')
  if changed!=set(by_patch):die('catalog application changed cells outside correction ledger')
  current={loc:json.loads(git(repo,'show',f'HEAD:web/src/lib/locales/ui-labels.{loc}.json',raw=True).decode('utf-8')) for loc in LOCALES}
+ follow_dir=bundle.parent/'cross-review-183-202-follow-up-195-ptbr'
+ follow_rows=read_jsonl(follow_dir/'refinement.jsonl');root_ledger=(follow_dir/'parent-cross-review-44.jsonl').read_bytes()
+ if sha(root_ledger)!='540ae4de10b019726dee36779d802115bf102b5a35cec77b71eb74b876ce045b':die('parent cross-review ledger checksum mismatch')
+ root_rows=read_jsonl(follow_dir/'parent-cross-review-44.jsonl')
+ if len(root_rows)!=44 or len(follow_rows)!=1:die('parent cross-review/addendum row count mismatch')
+ root_ref=[x for x in root_rows if x['sourceIndex']==195 and x['locale']=='pt-BR']
+ if len(root_ref)!=1 or root_ref[0]['crossReviewDisposition']!='refined-and-accepted':die('unique pt-BR parent refinement missing')
+ follow=follow_rows[0];follow_key=(follow['source_id'],follow['locale'])
+ if follow_key!=(root_ref[0]['source'],root_ref[0]['locale']) or (follow['previous_target'],follow['previous_target_sha256'],follow['current_target'],follow['current_target_sha256'])!=(root_ref[0]['currentAppliedTarget'],root_ref[0]['expectedCurrentAppliedTargetHash'],root_ref[0]['crossReviewedTarget'],root_ref[0]['crossReviewedTargetHash']):die('parent refinement exact text/hash mismatch')
+ if follow['source_sha256']!=root_ref[0]['sourceHash']:die('parent refinement source hash mismatch')
+ if follow['cross_review_ledger_sha256']!=sha(root_ledger) or follow['review_baseline_head']!=root_ref[0]['currentPrHead']:die('parent refinement provenance mismatch')
+ if git(repo,'rev-parse',f"{follow['application_head']}^{{tree}}")!=follow['application_tree'] or git(repo,'merge-base','--is-ancestor',follow['application_head'],'HEAD')!='':die('parent refinement application pin mismatch')
+ if current[follow_key[1]].get(follow_key[0])!=follow['current_target'] or sha(current[follow_key[1]][follow_key[0]].encode('utf-8'))!=follow['current_target_sha256']:die('current parent-refined target mismatch')
  for cell in pre:
   k=pair(cell);matches=prior.get(k,[]);statuses=sorted({x['status'] for x in matches});disp='conflict' if len(statuses)>1 else ('prior_'+statuses[0] if statuses else 'new')
   if (cell['prior_exact_matches'],cell['disposition'])!=(matches,disp):die(f'exact prior status mismatch {k}')
@@ -101,7 +114,9 @@ def main():
    elif cell['disposition']!='prior_correction-needed':die(f'correction applied outside eligible row {k}')
   else:
    if target!=cell['target_text'] or final['target_text']!=cell['target_text']:die(f'unchanged target moved {k}')
-  if current[k[1]].get(k[0])!=final['target_text']:die(f'current catalog differs from final selection {k}')
+  current_target=current[k[1]].get(k[0])
+  if current_target!=final['target_text']:
+   if k!=follow_key or final['target_text']!=follow['previous_target'] or current_target!=follow['current_target']:die(f'current catalog differs without exact cross-review follow-up {k}')
  if collections.Counter(x['disposition'] for x in selection)!=collections.Counter({'new':62,'prior_accepted':127,'prior_correction-needed':7,'corrected-this-pass':44}):die('final selection partition mismatch')
  if collections.Counter(x['status'] for x in decisions)!=collections.Counter({'accepted':60,'correction-needed':2,'corrected':2}):die('fresh decision totals mismatch')
  # Every fresh cell has a complete context, exact pins, placeholder/ICU checks, and a disposition.

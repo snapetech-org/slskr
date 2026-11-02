@@ -1,29 +1,29 @@
 {
-  "head": "cc55673a362e627e256dc45cd90c9fe5c28c163f",
-  "head_tree": "739ba38688b25d02002a6f044cb393b4996de836",
+  "head": "fdbf906cc1cf51015f0fa89a931c8619bc3907ee",
+  "head_tree": "e34cfbcec862c477ba65633db46313e564e99896",
   "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
   "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
   "source_ids": 5437,
   "cell_count": 65244,
   "catalog_file_sha256": {
-    "web/src/lib/locales/ui-labels.ar.json": "946f80466d4ebe707debff6b42441d2d798025a1bfc3c33ae7facbbf62eb03a8",
-    "web/src/lib/locales/ui-labels.de.json": "00cdfdae47a06caf66adb13306abc9b32e114be856c82ebfa81581e7fdfc41f0",
-    "web/src/lib/locales/ui-labels.es.json": "74c59c4de2cfb5c2e10fb4fad9fb14bd6aae4156bd32b492be75966628e2a5ea",
-    "web/src/lib/locales/ui-labels.fr.json": "09f0d381a05a07a411e69fec61f7910214123995c46148fac5b3e81957576ce0",
-    "web/src/lib/locales/ui-labels.hi.json": "d9e69e82e8109c56348e922d82e7a14368692a0eb683f3849bc17a5d0e1de9e1",
-    "web/src/lib/locales/ui-labels.id.json": "933bdd7d30f640e5829ce1f3e43089908467e45e427b3302564226b862a4d165",
-    "web/src/lib/locales/ui-labels.ja.json": "045a2c7fa70287b27be670a9af5d4998e191fc0181a9a5dff5e4546644c83b38",
-    "web/src/lib/locales/ui-labels.ko.json": "057f6c5b89b0dda26772be9ca355a25afe9e551178ea9fe123d86b4d48a42531",
-    "web/src/lib/locales/ui-labels.pt-BR.json": "b5826aea44f78810655073fc478d2bccdf28b9c9c15965e06a3e048e39fc060c",
-    "web/src/lib/locales/ui-labels.vi.json": "209e966043348a3ab8a38cff3ece7a2a3cb5db4b298038b61711597095f05b1f",
-    "web/src/lib/locales/ui-labels.zh-Hans.json": "a15769121461a656a28c4cea28af0b4c304ceecd27ef8eee46a785cf5ef94939",
-    "web/src/lib/locales/ui-labels.zh-Hant.json": "939c420556eb5111db37379867c51251c4faf21f8d6643e26093113fb360d67b"
+    "web/src/lib/locales/ui-labels.ar.json": "b9296aa2a97d356b354467592bdde2bd3ccd7ddab6788da28ea2740d16b42967",
+    "web/src/lib/locales/ui-labels.de.json": "6acd39320e5b49928409a7cbba8faac0108045371183751c54b1bdc3a7edaad8",
+    "web/src/lib/locales/ui-labels.es.json": "97bd6291da38b8cf58c92dc6b57b8bd4c80a98d0faae48cb9ea17e310434ca23",
+    "web/src/lib/locales/ui-labels.fr.json": "db9a73b188ed4eef4e6a6f0bd4e21ae197dcceb16f1d3a22db220d4912819d50",
+    "web/src/lib/locales/ui-labels.hi.json": "5c8004cf6df65bb653ad0a396ee4dce2bac9906b0f25e5464df6c5352866fc9d",
+    "web/src/lib/locales/ui-labels.id.json": "b1781f7893d77988e7cc21333a58b20e58ede03020bd6b7e29e00dce8e5f5e76",
+    "web/src/lib/locales/ui-labels.ja.json": "ac2a23fda32a3a0c63fb7295c64fe0f9646a3c35e623c42e8022c5d7873d03ab",
+    "web/src/lib/locales/ui-labels.ko.json": "da6c6d081bb34e0f8c1560ab388eaaff72662e5a0cd9e9286b98368666f92bef",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "e57cc2c39cc4ff873fa4837fd092c5861f29b2575c5713de3a30f824d9af4535",
+    "web/src/lib/locales/ui-labels.vi.json": "89ade0211c2e96ee2f950116ea471e42578b2a120f024bd5f7f94df7802584ea",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "a8a78eade1d37d18c483de015a47a68a5473217399db2c8fafd7b22a03d5b128",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "9273dfaa8280eea3ebd0bae8ecf92979ef0ced643e55d16bb81e2aa41c234643"
   },
   "structured_plural_cells": {
     "ar": 15
   },
-  "evidence_files_scanned": 794,
-  "evidence_scan_manifest_sha256": "671da42aab3c65c85b32dcafba14aa25b70ff63f60b0048ad6b5b1adf82f4764",
+  "evidence_files_scanned": 810,
+  "evidence_scan_manifest_sha256": "98e622a8fb4166f3626082d3d0e578038f1f7238b7a76dfbf64356f017db894b",
   "evidence_file_manifest": [
     {
       "root": "pr-review-head",
@@ -48,6 +48,18 @@
       "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/applied-high-confidence-corrections-2026-11-01/manifest.json",
       "bytes": 4207,
       "sha256": "0b60bf07ce0929d88045646c06863b6d9e66e19f2114d3cc5bdfa0911826417e"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/cross-review-183-202-follow-up-195-ptbr/parent-cross-review-44.jsonl",
+      "bytes": 80870,
+      "sha256": "540ae4de10b019726dee36779d802115bf102b5a35cec77b71eb74b876ce045b"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/cross-review-183-202-follow-up-195-ptbr/refinement.jsonl",
+      "bytes": 1611,
+      "sha256": "b92b5c55f86a6015b775845c615e99d6af0c7cd54e14a337c5a156aa8724ac4e"
     },
     {
       "root": "pr-review-head",
@@ -555,6 +567,66 @@
     },
     {
       "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0203-0222-all-12-locales/applied-corrections.jsonl",
+      "bytes": 243216,
+      "sha256": "dd9766f48f6547d30fb7c961a7ee3573ed3bc02cd1766e71204bf292186c5c04"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0203-0222-all-12-locales/carries.jsonl",
+      "bytes": 201954,
+      "sha256": "a415baebd2c6741f73ac125d69fd8cddcce110a89b1e1305fe559a2235539fdc"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0203-0222-all-12-locales/conflict-holds.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0203-0222-all-12-locales/decisions.jsonl",
+      "bytes": 74902,
+      "sha256": "3aa65251ef21c78f84ac6584418fe4ee2355726040b470251c66bcc40406d130"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0203-0222-all-12-locales/manifest.json",
+      "bytes": 9541,
+      "sha256": "d8aaa34faa207e76bbb0f6e8ffa96b733a86fe151f8dc9d6ba832764e902ed66"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0203-0222-all-12-locales/prior-evidence-scan-manifest.jsonl",
+      "bytes": 161192,
+      "sha256": "4babbe89fcc1af332294543bc2db467e3a887ca2c54875d796c04f09e4a9f1de"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0203-0222-all-12-locales/reviewed-cell-audit.jsonl",
+      "bytes": 425961,
+      "sha256": "e4d04402d22eb1d1b400802e05e341bd0ab3e5a539b40279f3aea16653f01faf"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0203-0222-all-12-locales/selection-before-corrections.jsonl",
+      "bytes": 182432,
+      "sha256": "6d2e7402e9ff3234ced32aad7335959d094839460a9b5705a22b8d3cad068cfe"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0203-0222-all-12-locales/selection.jsonl",
+      "bytes": 425961,
+      "sha256": "e4d04402d22eb1d1b400802e05e341bd0ab3e5a539b40279f3aea16653f01faf"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0203-0222-all-12-locales/terminal-exclusions.jsonl",
+      "bytes": 28528,
+      "sha256": "1bff57d3f182d5363ef00ecf336f47c28c62e1b7f7d50b92281c6621c9e2fcd2"
+    },
+    {
+      "root": "pr-review-head",
       "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-5380-5399-all-12-locales/carries.jsonl",
       "bytes": 31859,
       "sha256": "64f04733fce1b2f900b435d48dc70afc208b2b8045c7ca1866caacbf576efcfb"
@@ -666,6 +738,30 @@
       "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-5420-5436-all-12-locales/terminal-exclusions.jsonl",
       "bytes": 53755,
       "sha256": "56b54cb99e734b5b6e890cd3cbc58af17e136d0a349bd6ba8d4006297580a374"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/root-cross-review-203-222-follow-up-2026-11-02/refinement.jsonl",
+      "bytes": 1615,
+      "sha256": "0acbda239c7326742c9730bdb88fbbce0ad9781c16c2b5b9374216b5d9b7e2ca"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/root-cross-review-203-222-follow-up-2026-11-02/root-cross-review-86.jsonl",
+      "bytes": 131967,
+      "sha256": "8634de78c160b0cba6f5309ff02baaa30451fff02a2272cc85dcaea676ff2d14"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/root-cross-review-203-222-follow-up-2026-11-02/root-cross-review-summary.json",
+      "bytes": 1278,
+      "sha256": "c43c834bb71ba0d2538d2b2a6cd19fce1a52fb27760c847f4fff2630b3dd8808"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/root-cross-review-203-222-follow-up-2026-11-02/root-refinement-apply-plan.jsonl",
+      "bytes": 1149,
+      "sha256": "9067e22a39b6135de4f5fdb79b75e2f567c5fdad78e9c2e73a88bc1187ff01c8"
     },
     {
       "root": "prior-audit-7ff",
@@ -4791,182 +4887,101 @@
     }
   ],
   "unique_current_cell_status_counts": {
-    "accepted": 23377,
-    "corrected": 82,
-    "correction-needed": 10917,
+    "accepted": 23415,
+    "corrected": 168,
+    "correction-needed": 10832,
     "held": 289,
-    "unreviewed": 30579
+    "unreviewed": 30540
   },
   "per_locale_exact_status_counts": {
     "ar": {
-      "accepted": 1274,
-      "corrected": 8,
-      "correction-needed": 1098,
+      "accepted": 1280,
+      "corrected": 18,
+      "correction-needed": 1089,
       "held": 12,
-      "unreviewed": 3045
+      "unreviewed": 3038
     },
     "de": {
-      "accepted": 1298,
-      "corrected": 11,
-      "correction-needed": 875,
+      "accepted": 1304,
+      "corrected": 22,
+      "correction-needed": 864,
       "held": 10,
-      "unreviewed": 3243
+      "unreviewed": 3237
     },
     "es": {
-      "accepted": 1252,
-      "corrected": 7,
-      "correction-needed": 1105,
+      "accepted": 1259,
+      "corrected": 16,
+      "correction-needed": 1096,
       "held": 9,
-      "unreviewed": 3064
+      "unreviewed": 3057
     },
     "fr": {
-      "accepted": 1256,
-      "corrected": 8,
-      "correction-needed": 1048,
+      "accepted": 1263,
+      "corrected": 17,
+      "correction-needed": 1039,
       "held": 10,
-      "unreviewed": 3115
+      "unreviewed": 3108
     },
     "hi": {
-      "accepted": 1254,
-      "corrected": 10,
-      "correction-needed": 1128,
+      "accepted": 1260,
+      "corrected": 21,
+      "correction-needed": 1117,
       "held": 14,
-      "unreviewed": 3031
+      "unreviewed": 3025
     },
     "id": {
-      "accepted": 1254,
-      "corrected": 7,
-      "correction-needed": 1097,
+      "accepted": 1260,
+      "corrected": 18,
+      "correction-needed": 1086,
       "held": 10,
-      "unreviewed": 3069
+      "unreviewed": 3063
     },
     "ja": {
       "accepted": 2771,
-      "corrected": 7,
-      "correction-needed": 619,
+      "corrected": 11,
+      "correction-needed": 615,
       "held": 38,
       "unreviewed": 2002
     },
     "ko": {
       "accepted": 2667,
-      "corrected": 2,
-      "correction-needed": 727,
+      "corrected": 6,
+      "correction-needed": 723,
       "held": 39,
       "unreviewed": 2002
     },
     "pt-BR": {
       "accepted": 2661,
-      "corrected": 4,
-      "correction-needed": 734,
+      "corrected": 5,
+      "correction-needed": 733,
       "held": 36,
       "unreviewed": 2002
     },
     "vi": {
       "accepted": 2438,
-      "corrected": 6,
-      "correction-needed": 954,
+      "corrected": 18,
+      "correction-needed": 942,
       "held": 37,
       "unreviewed": 2002
     },
     "zh-Hans": {
       "accepted": 2633,
-      "corrected": 6,
-      "correction-needed": 759,
+      "corrected": 8,
+      "correction-needed": 757,
       "held": 37,
       "unreviewed": 2002
     },
     "zh-Hant": {
       "accepted": 2619,
-      "corrected": 6,
-      "correction-needed": 773,
+      "corrected": 8,
+      "correction-needed": 771,
       "held": 37,
       "unreviewed": 2002
     }
   },
-  "unreviewed_source_index_count": 3726,
-  "unreviewed_cells": 30579,
+  "unreviewed_source_index_count": 3719,
+  "unreviewed_cells": 30540,
   "first_100_unreviewed_indices": {
-    "203": {
-      "source_id": "Advanced",
-      "fresh_locale_count": 3,
-      "fresh_locales": [
-        "ar",
-        "es",
-        "fr"
-      ]
-    },
-    "204": {
-      "source_id": "Advanced Filters",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "205": {
-      "source_id": "Advanced Search Filters",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "206": {
-      "source_id": "Advanced privacy and anonymity features",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "216": {
-      "source_id": "Affinity Score:",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "220": {
-      "source_id": "Agent Mode",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "221": {
-      "source_id": "Aggregated Opinion Results",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
     "223": {
       "source_id": "Album",
       "fresh_locale_count": 6,
@@ -6025,6 +6040,82 @@
       "fresh_locale_count": 1,
       "fresh_locales": [
         "de"
+      ]
+    },
+    "375": {
+      "source_id": "Audio player",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "386": {
+      "source_id": "Auto",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "390": {
+      "source_id": "Auto replace max retries",
+      "fresh_locale_count": 3,
+      "fresh_locales": [
+        "ar",
+        "fr",
+        "id"
+      ]
+    },
+    "391": {
+      "source_id": "Auto replace size threshold",
+      "fresh_locale_count": 1,
+      "fresh_locales": [
+        "ar"
+      ]
+    },
+    "392": {
+      "source_id": "Auto-Replace",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "393": {
+      "source_id": "Auto-Replace (automatic stuck-download replacement)",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "394": {
+      "source_id": "Auto-Replace Interval",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
       ]
     }
   },

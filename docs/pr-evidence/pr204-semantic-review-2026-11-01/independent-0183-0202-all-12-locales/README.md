@@ -10,6 +10,8 @@ The two fresh correction-needed rows remain unchanged: Arabic `Added a local cau
 
 `reviewed-cell-audit.jsonl` records all 240 target values and checks meaning/status, source context, placeholders, ICU syntax, and protected literals. Structured Arabic plural-object cells are handled as structured catalog values. RustyMilk is preserved as a product literal. No native-speaker approval is claimed.
 
+The parent cross-reviewed all 44 corrections at exact head `6a8415d2` and accepted 43 as applied. The remaining pt-BR source #195 refinement is documented and applied in the separate `../cross-review-183-202-follow-up-195-ptbr/` addendum; this historical 44-row application ledger and its baseline targets are unchanged. The verifier recognizes only that exact source/locale/old-target/new-target override when checking the current catalog.
+
 A headed visual check is blocked. The exact worktree has no `web/node_modules`, no isolated compatible API backend is available, and the only live API daemon is the shared slskR service on ports 5030/50305. That daemon was not used. Building a source-compatible backend is outside this review pass’s no-build boundary. See `headed-visual-check.md`; browser recapture remains required after an isolated exact-branch preview becomes available.
 
 No tests, builds, CI, workflow edits, releases, or tags were performed.
