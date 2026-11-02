@@ -1,0 +1,28 @@
+{
+  "git_blob_ids": {
+    "crates/slskr/src/podcore_mutations.rs": "09e8252602a617bc76e76bfaafc38cf270acf097",
+    "crates/slskr/src/podcore_queries.rs": "1bcafa27f853c182295586c484acdee1a4bb4d06",
+    "crates/slskr/src/podcore_stats_controller.rs": "49b3cbda8443584aadbc63f3d33777366eefa6a8",
+    "web/src/components/Collections/CollectionShareModal.jsx": "c992500ac8fbac7126cd206e012c3509cde6a1e9",
+    "web/src/components/Search/DiscographyCoveragePanel.jsx": "30a767356c47e5198976ddbac4ce657320f15b03",
+    "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx": "90f3e1d29a4b514a1877693e131e92b66b8050aa",
+    "web/src/components/System/MediaCore/PodMessageRoutingPanel.jsx": "4e205e85e50775e0d1e69802884f30d6b1c32ed5",
+    "web/src/components/Transfers/TransfersHeader.jsx": "de01ff39c31f0ac094b95fba0a15f40f709f605c",
+    "web/src/components/Wishlist/WishlistModal.jsx": "16b4aa4c5a2ab57b1a0c2f6581e99dfdd4b24727",
+    "web/src/lib/setupHealthCheck.js": "ac6f54149388e953852dc230f781fa52bac238e7"
+  },
+  "sha256": {
+    "crates/slskr/src/podcore_mutations.rs": "8de3802d6daaa1239c00a645802a658ef63031b975cc5edadf3d1482f2182a3a",
+    "crates/slskr/src/podcore_queries.rs": "e2b4d40fdc61540d678a90c2befeba011ff5929ef29342b853a0e1be97684dfc",
+    "crates/slskr/src/podcore_stats_controller.rs": "aa8157129dbde7741f7238f674618f42303ae72d007dae580fbb983a0aad2d11",
+    "web/src/components/Collections/CollectionShareModal.jsx": "939b1c1492f12bda662f93753d34eedbbf2bd45997e3e838278f9832e3c29d78",
+    "web/src/components/Search/DiscographyCoveragePanel.jsx": "d1fdb70100b0fa7f3d38a3f0d37766e71e1efc45b8f4f47ee44684c5d173090a",
+    "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx": "17241e796b943988d339bac74569f5a5d4e8889194cad1221d0b9c8bc1b82a9e",
+    "web/src/components/System/MediaCore/PodMessageRoutingPanel.jsx": "d69c4b642ea560fd3f53688927cce8f6fea9f93923aa89f4924f640631cda32b",
+    "web/src/components/Transfers/TransfersHeader.jsx": "57f43a6851d991b9241b73a0f9ff08636573a49282033722f7350fb7f2a44d6f",
+    "web/src/components/Wishlist/WishlistModal.jsx": "49f9f293410dec17e1d3c335ba49218fb7b351aa04a7bfc3ae107b138bf06582",
+    "web/src/lib/setupHealthCheck.js": "254e98de004fc19ae7c71dd47527adb1cc39fe52473323a1aa3b7e4f32d5cb0a"
+  },
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152"
+}
