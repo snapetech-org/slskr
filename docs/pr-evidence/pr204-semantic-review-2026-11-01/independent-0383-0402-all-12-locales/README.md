@@ -10,7 +10,7 @@ Catalog application commit `83aef2e22cede4041943bd0d612357e152e7a9b5` / tree `92
 
 Headed browser review remains blocked for this exact branch because `web/node_modules` is absent and previewing would require dependency installation or build output. No browser session, desktop, or screenshots were used for this window. Re-capture in the Agentic VM when a no-build preview for the exact branch is available.
 
-No tests, builds, CI, workflow edits, releases, or tags were run. The next contiguous source window is 403–422.
+The docs commit hook automatically ran Semgrep Community Edition locally on four Python files and reported zero findings. That automatic scan ran outside the private-JIT-only route; it was not rerun. No tests, builds, CI, workflow edits, releases, or tags were run. The next contiguous source window is 403–422.
 
 Re-run `verify_candidate_preflight.py` with the prior-audit archive to validate the baseline packet. Run `verify_batch.py` from the repository root to validate the catalog application and evidence bundle:
 

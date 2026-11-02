@@ -31,5 +31,13 @@
     "web/src/lib/locales/ui-labels.zh-Hant.json": "48ac788db8bf5aa8d18c556b2a4df668f7913d3076540da017318bcad0e5b5d1"
   },
   "git_diff_check": "passed",
-  "native_speaker_approval": false
+  "native_speaker_approval": false,
+  "automaticCommitHookScan": {
+    "tool": "Semgrep Community Edition",
+    "trigger": "automatic commit hook during docs commit 6349a0a264ce528af3d5a616de197d662a838977",
+    "filesScanned": 4,
+    "findings": 0,
+    "execution": "local host outside private JIT",
+    "rerun": false
+  }
 }
