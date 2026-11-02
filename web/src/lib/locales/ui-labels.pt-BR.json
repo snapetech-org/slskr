@@ -4208,7 +4208,7 @@
   "Mini-map": "Minimapa",
   "skipped.": "ignorado.",
   "Showing {filteredCount} of {totalCount} logs": "Mostrando {filteredCount} de registros {totalCount}",
-  "Added {interest} as a hated interest.": "{interest} foi adicionado à lista de interesses indesejados.",
+  "Added {interest} as a hated interest.": "O interesse “{interest}” foi adicionado à lista de interesses indesejados.",
   "Added {interest} as an interest.": "Adicionado {interest} como interesse.",
   "Anonymity status is unavailable": "O status de anonimato não está disponível",
   "Bounded replacement searches started for selected Library Health issues: {count}.": "Pesquisas de substituição limitadas foram iniciadas para problemas selecionados do Library Health: {count}.",
