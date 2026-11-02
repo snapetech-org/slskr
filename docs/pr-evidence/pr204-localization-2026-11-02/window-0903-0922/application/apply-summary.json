@@ -1,0 +1,17 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W903-W922",
+  "inputHead": "b1e814ef11d55fd1710d0e2522df14fee9ff0a70",
+  "inputTree": "50fef41fa1abcfcceb9a99cfd756ae014e51e286",
+  "reviewedCells": 240,
+  "changedCells": 42,
+  "changedLocaleCatalogs": 12,
+  "retainedCatalogOnlyHolds": 12,
+  "noOpRevisedProposal": 1,
+  "fullWindowReadbacks": 240,
+  "placeholderMarkupProtectedLiteralChecks": "passed for all 240 final targets",
+  "catalogKeySetsAndOrder": "identical before and after",
+  "nativeSpeakerApproval": false,
+  "testsBuildScansCIOrBrowserRun": false
+}

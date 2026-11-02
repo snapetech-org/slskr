@@ -1,0 +1,196 @@
+{
+  "additionalCorrections": [
+    {
+      "sourceIndex": 912,
+      "windowLabel": 913,
+      "sourceId": "Cooldown Milliseconds",
+      "locale": "es",
+      "kind": "additional-correction",
+      "from": "Milisegundos de enfriamiento",
+      "to": "Tiempo de espera (milisegundos)",
+      "confidence": "moderate",
+      "detail": "Cooldown is rendered as Período de espera in this same automation flow, while Milisegundos de enfriamiento suggests physical cooling. Use the wait-interval term and make the unit explicit."
+    },
+    {
+      "sourceIndex": 912,
+      "windowLabel": 913,
+      "sourceId": "Cooldown Milliseconds",
+      "locale": "fr",
+      "kind": "additional-correction",
+      "from": "Millisecondes de temps de recharge",
+      "to": "Délai d’attente (millisecondes)",
+      "confidence": "moderate",
+      "detail": "Cooldown is rendered as Délai d’attente in the paired automation label, while temps de recharge suggests recharging. Align the unit label with the wait-interval term."
+    },
+    {
+      "sourceIndex": 912,
+      "windowLabel": 913,
+      "sourceId": "Cooldown Milliseconds",
+      "locale": "pt-BR",
+      "kind": "additional-correction",
+      "from": "Milissegundos de resfriamento",
+      "to": "Tempo de espera (milissegundos)",
+      "confidence": "moderate",
+      "detail": "Cooldown is rendered as Tempo de espera in the paired automation label, while resfriamento suggests physical cooling. Align the unit label and identify milliseconds as its unit."
+    },
+    {
+      "sourceIndex": 912,
+      "windowLabel": 913,
+      "sourceId": "Cooldown Milliseconds",
+      "locale": "vi",
+      "kind": "additional-correction",
+      "from": "Thời gian hồi chiêu mili giây",
+      "to": "Thời gian chờ (mili giây)",
+      "confidence": "moderate",
+      "detail": "The paired automation label uses Thời gian chờ, while hồi chiêu carries a game ability/recharge sense. Align the unit label with the wait interval and state the unit."
+    },
+    {
+      "sourceIndex": 914,
+      "windowLabel": 915,
+      "sourceId": "Copied {format} export for {count} play.",
+      "locale": "de",
+      "kind": "additional-correction",
+      "from": "{count} Wiedergabe für den {format}-Export kopiert.",
+      "to": "Export im Format {format} für {count} Wiedergabe kopiert.",
+      "confidence": "moderate",
+      "detail": "The source says the format export is copied for one play, but the current German makes Wiedergabe the object of kopiert. The caller selects the singular source for one history entry and copies the export string, so name the export as the copied object."
+    },
+    {
+      "sourceIndex": 915,
+      "windowLabel": 916,
+      "sourceId": "Copied {format} export for {count} plays.",
+      "locale": "de",
+      "kind": "additional-correction",
+      "from": "{count} Wiedergaben für den {format}-Export kopiert.",
+      "to": "Export im Format {format} für {count} Wiedergaben kopiert.",
+      "confidence": "moderate",
+      "detail": "The source says the format export is copied for multiple plays, but the current German makes Wiedergaben the object of kopiert. The caller copies the export string; make Export the object and keep the play count as its qualifier."
+    }
+  ],
+  "primaryDispositionRevision": [
+    {
+      "sourceIndex": 903,
+      "windowLabel": 904,
+      "sourceId": "Continue processing search history. {remaining} of {total} searches remaining.",
+      "locale": "es",
+      "kind": "revise-primary-proposal",
+      "from": "Continúe procesando el historial de búsquedas. Quedan {remaining} de {total} búsquedas.",
+      "to": "Continúa procesando el historial de búsquedas. Quedan {remaining} de {total} búsquedas.",
+      "confidence": "moderate",
+      "detail": "The primary changes an existing tú imperative to formal usted. The same Spanish catalog uses tú imperatives in comparable user-facing instructions (Explora, Únete, Detén, Cierra), so retain Continúa for product voice consistency.",
+      "referencePins": [
+        "same-locale-register-pins.jsonl"
+      ]
+    }
+  ],
+  "terminologyWatch": [
+    {
+      "sourceIndex": 910,
+      "windowLabel": 911,
+      "sourceId": "Controller",
+      "locale": "de",
+      "currentTarget": "Regler",
+      "disposition": "retain-current-with-review-note",
+      "confidence": "low",
+      "detail": "Regler can denote a regulator/control device and may be awkward for a software relay connection label. The evidence is insufficient to prescribe a better German term, so the cell remains unchanged pending fluent review."
+    }
+  ],
+  "holds": [
+    {
+      "sourceIndex": 909,
+      "windowLabel": 910,
+      "sourceId": "Control the local review panel shown with song search results.",
+      "locale": "ar",
+      "disposition": "hold",
+      "detail": "No exact source-literal production caller is present at this head; keep the current catalog value without semantic approval."
+    },
+    {
+      "sourceIndex": 909,
+      "windowLabel": 910,
+      "sourceId": "Control the local review panel shown with song search results.",
+      "locale": "de",
+      "disposition": "hold",
+      "detail": "No exact source-literal production caller is present at this head; keep the current catalog value without semantic approval."
+    },
+    {
+      "sourceIndex": 909,
+      "windowLabel": 910,
+      "sourceId": "Control the local review panel shown with song search results.",
+      "locale": "es",
+      "disposition": "hold",
+      "detail": "No exact source-literal production caller is present at this head; keep the current catalog value without semantic approval."
+    },
+    {
+      "sourceIndex": 909,
+      "windowLabel": 910,
+      "sourceId": "Control the local review panel shown with song search results.",
+      "locale": "fr",
+      "disposition": "hold",
+      "detail": "No exact source-literal production caller is present at this head; keep the current catalog value without semantic approval."
+    },
+    {
+      "sourceIndex": 909,
+      "windowLabel": 910,
+      "sourceId": "Control the local review panel shown with song search results.",
+      "locale": "hi",
+      "disposition": "hold",
+      "detail": "No exact source-literal production caller is present at this head; keep the current catalog value without semantic approval."
+    },
+    {
+      "sourceIndex": 909,
+      "windowLabel": 910,
+      "sourceId": "Control the local review panel shown with song search results.",
+      "locale": "id",
+      "disposition": "hold",
+      "detail": "No exact source-literal production caller is present at this head; keep the current catalog value without semantic approval."
+    },
+    {
+      "sourceIndex": 909,
+      "windowLabel": 910,
+      "sourceId": "Control the local review panel shown with song search results.",
+      "locale": "ja",
+      "disposition": "hold",
+      "detail": "No exact source-literal production caller is present at this head; keep the current catalog value without semantic approval."
+    },
+    {
+      "sourceIndex": 909,
+      "windowLabel": 910,
+      "sourceId": "Control the local review panel shown with song search results.",
+      "locale": "ko",
+      "disposition": "hold",
+      "detail": "No exact source-literal production caller is present at this head; keep the current catalog value without semantic approval."
+    },
+    {
+      "sourceIndex": 909,
+      "windowLabel": 910,
+      "sourceId": "Control the local review panel shown with song search results.",
+      "locale": "pt-BR",
+      "disposition": "hold",
+      "detail": "No exact source-literal production caller is present at this head; keep the current catalog value without semantic approval."
+    },
+    {
+      "sourceIndex": 909,
+      "windowLabel": 910,
+      "sourceId": "Control the local review panel shown with song search results.",
+      "locale": "vi",
+      "disposition": "hold",
+      "detail": "No exact source-literal production caller is present at this head; keep the current catalog value without semantic approval."
+    },
+    {
+      "sourceIndex": 909,
+      "windowLabel": 910,
+      "sourceId": "Control the local review panel shown with song search results.",
+      "locale": "zh-Hans",
+      "disposition": "hold",
+      "detail": "No exact source-literal production caller is present at this head; keep the current catalog value without semantic approval."
+    },
+    {
+      "sourceIndex": 909,
+      "windowLabel": 910,
+      "sourceId": "Control the local review panel shown with song search results.",
+      "locale": "zh-Hant",
+      "disposition": "hold",
+      "detail": "No exact source-literal production caller is present at this head; keep the current catalog value without semantic approval."
+    }
+  ]
+}

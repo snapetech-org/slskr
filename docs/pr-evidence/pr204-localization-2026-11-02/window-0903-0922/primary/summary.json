@@ -1,0 +1,189 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W903-W922",
+  "zeroBasedSourceIndexInclusive": [
+    902,
+    921
+  ],
+  "head": "b1e814ef11d55fd1710d0e2522df14fee9ff0a70",
+  "tree": "50fef41fa1abcfcceb9a99cfd756ae014e51e286",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "state": "OPEN",
+  "isDraft": true,
+  "sourceCount": 20,
+  "cellCount": 240,
+  "counts": {
+    "correction": 29,
+    "refinement": 8,
+    "accept-current": 191,
+    "hold": 12
+  },
+  "proposalKindCounts": {
+    "correction": 29,
+    "refinement": 8
+  },
+  "proposedValueChanges": 37,
+  "holdCellCount": 12,
+  "catalogKeyCount": 5441,
+  "catalogsReattested": 12,
+  "callerPins": 20,
+  "callerFiles": 15,
+  "callerGapSources": 1,
+  "callerGaps": [
+    {
+      "sourceIndex": 909,
+      "windowLabel": 910,
+      "sourceId": "Control the local review panel shown with song search results.",
+      "reason": "No exact source string-literal caller exists in production web/src at this head; the catalog-only entry is held pending source/caller confirmation.",
+      "targetLocales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id",
+        "ja",
+        "ko",
+        "pt-BR",
+        "vi",
+        "zh-Hans",
+        "zh-Hant"
+      ]
+    }
+  ],
+  "placeholderMismatches": 0,
+  "markupMismatches": 0,
+  "protectedLiteralMismatches": 0,
+  "punctuationFindings": [],
+  "allArabicPluralCategoriesPresent": true,
+  "arabicPluralPlaceholderParity": "exact",
+  "catalogKeysetsIdentical": true,
+  "sourceIds": [
+    "Continue",
+    "Continue processing search history. {remaining} of {total} searches remaining.",
+    "Continue with {provider}",
+    "Continuous",
+    "Contract",
+    "Contributing Members:",
+    "Control URL",
+    "Control the local review panel shown with song search results.",
+    "Controller",
+    "Cooldown",
+    "Cooldown Milliseconds",
+    "Copied action preview",
+    "Copied {format} export for {count} play.",
+    "Copied {format} export for {count} plays.",
+    "Copies",
+    "Copy",
+    "Copy Action Plan",
+    "Copy Contract",
+    "Copy Discovery Graph branch report",
+    "Copy History"
+  ],
+  "boundarySourceIndices": [
+    901,
+    922
+  ],
+  "boundarySourceIds": [
+    "ContentId is required.",
+    "Copy Plan"
+  ],
+  "priorBoundaryReattestation": {
+    "priorWindow": "W883-W902",
+    "priorHead": "5f295feea832b3078c52d92d9268cd6446f804a5",
+    "priorTree": "22c6c11a817777e2a0df3987acd5fc6bf938c9a7",
+    "previousW902FinalMatchesCurrent": true,
+    "W903StartMatchesPreviousFollowingBoundary": true
+  },
+  "allSevenPullRequestsAtSelection": [
+    {
+      "repository": "SeerrNG",
+      "pullRequest": 418,
+      "baseRefOid": "221d8e0d542802da7529cd272c928cc747677e5c",
+      "headRefName": "codex/seerrng-localization-overhaul-20261028",
+      "headRefOid": "7329f0ffb34d46042dbf1b165046e21c4f4d45e3",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/seerrng/pull/418"
+    },
+    {
+      "repository": "chaptarrng",
+      "pullRequest": 190,
+      "baseRefOid": "03274100af783fdffaca4dd8436e163dc6b18795",
+      "headRefName": "codex/chaptarrng-localization-complete-20261031",
+      "headRefOid": "c0a098e4e2b23117860c6e6827c1e84485273a7a",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/chaptarrng/pull/190"
+    },
+    {
+      "repository": "QuestarrNG",
+      "pullRequest": 155,
+      "baseRefOid": "e188cd0c74c73071c94b04915e1babac2d2bf386",
+      "headRefName": "codex/localization-foundations-20261028",
+      "headRefOid": "0ea966692f4dec72e8830ebc1f085549968c587e",
+      "isDraft": false,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/QuestarrNG/pull/155"
+    },
+    {
+      "repository": "ROMarrNG",
+      "pullRequest": 70,
+      "baseRefOid": "bcd1eb41b5cdf8202acb5cf8e365e14761b743b5",
+      "headRefName": "task/localization-translation-review-20261030",
+      "headRefOid": "8e3820252b0c362e18e421b3a73e7ff1478d32a0",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/ROMarrNG/pull/70"
+    },
+    {
+      "repository": "slskR",
+      "pullRequest": 204,
+      "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+      "headRefName": "codex/slskr-l10n-audit-20261030",
+      "headRefOid": "b1e814ef11d55fd1710d0e2522df14fee9ff0a70",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/slskr/pull/204"
+    },
+    {
+      "repository": "slskdN",
+      "pullRequest": 409,
+      "baseRefOid": "f25d263a2a7cdb2c8f76c40c346cb10f749a9356",
+      "headRefName": "codex/slskdn-oidc-tooltip-localization-20261030",
+      "headRefOid": "0a6cbdcb606de1888045df358427eb2b81c85546",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/slskdN/pull/409"
+    },
+    {
+      "repository": "TorrentNG",
+      "pullRequest": 243,
+      "baseRefOid": "0de7ddcf2f16a4399da8fd7904dc35f458b4837c",
+      "headRefName": "codex/torrentng-localization-audit-20261030",
+      "headRefOid": "11ff6fa2618e842e92716b7e92867769200e32e5",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/TorrentNG/pull/243"
+    }
+  ],
+  "nativeSpeakerApproval": false,
+  "headedBrowserAcceptance": false,
+  "testsBuildScansCiOrBrowserRun": false,
+  "repositoryModified": false,
+  "localeOrder": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ]
+}
