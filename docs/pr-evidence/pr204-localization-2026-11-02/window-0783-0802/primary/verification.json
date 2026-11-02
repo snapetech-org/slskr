@@ -1,0 +1,22 @@
+{
+  "attestedHead": "2d004e38fe7cf76f8d51f36d19c14c34fb497649",
+  "attestedTree": "7d114d519f4e6ad0a14a4a3fe048fde017551748",
+  "boundaryMismatches": 0,
+  "boundaryTargetsMatched": 12,
+  "callerPins": 36,
+  "candidateRows": 108,
+  "freshNotReviewedCells": 150,
+  "heldRows": 0,
+  "localeCells": 240,
+  "markupFailures": 0,
+  "placeholderFailures": 0,
+  "prOpenDraft": true,
+  "priorRowsReattested": 240,
+  "priorSourceHashMismatches": 0,
+  "priorTargetHashMismatches": 0,
+  "protectedLiteralFailures": 0,
+  "repoWorktreeClean": true,
+  "repositoryOrPrModified": false,
+  "schemaVersion": 1,
+  "sourceRows": 20
+}

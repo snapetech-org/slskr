@@ -1,0 +1,357 @@
+{
+  "arabic_plural_map_validation": {
+    "categories": [
+      "zero",
+      "one",
+      "two",
+      "few",
+      "many",
+      "other"
+    ],
+    "empty_or_blank_forms": 0,
+    "maps": 15,
+    "placeholders_valid": true
+  },
+  "current_pr_head_rechecked": false,
+  "dispositions": {
+    "accept-current": 158,
+    "correction-needed": 7,
+    "hold": 15
+  },
+  "dynamic_action_template_design": {
+    "caller_context": "web/src/components/Transfers/Transfers.jsx:21-42, 495-512, 542-555, 592-622",
+    "finite_actions": [
+      "retry",
+      "cancel",
+      "remove"
+    ],
+    "issue": "A localized button label is interpolated as a grammar fragment for retry, cancel, and remove. Some languages need a different verb form or sentence frame per action.",
+    "not_applied": true,
+    "source_id": "Failed to {action} {count} transfers. First error: {label}: {message}",
+    "suggested_design": [
+      "Replace dynamic {action} with three localized plural message keys selected by the finite action value.",
+      "Example English keys: Failed to retry {count} transfers. First error: {label}: {message}; Failed to cancel {count} transfers. First error: {label}: {message}; Failed to remove {count} transfers. First error: {label}: {message}.",
+      "Translators can then restructure each full sentence naturally. Keep opaque {label} and {message} values unchanged."
+    ]
+  },
+  "finding": "False positive: no blank Arabic entries. Every flagged value is a six-category plural map with six nonempty strings.",
+  "hold_count": 15,
+  "hold_summary": [
+    {
+      "current_target_sha256": "14dfedd99be0e59ee9cf7d3094d9ff6a27e8d471e561f2333c5e7ce8dd7deffc",
+      "locale": "ar",
+      "reason": "Prior terminal disposition reused after exact source and target hash match. This target is an ICU plural map with six Arabic categories. A reliable decision requires checking zero/one/two/few/many/other noun forms against the runtime plural selection; retain the current map pending qualified Arabic review. Cell remains held pending qualified locale review.",
+      "source_id": "Cleared {count} searches",
+      "source_index": 703
+    },
+    {
+      "current_target_sha256": "8fd43d9d0d3c9ef629627717f4b04555f43ed817e3d803365de9a1f684da54d6",
+      "locale": "hi",
+      "reason": "Hindi action labels are polite imperatives (पुनः प्रयास करें, रद्द करें, हटाएँ), while this sentence frame needs inflected verbs. The current concatenation is not grammatical for the finite action set; hold pending action-specific full-message strings or a qualified Hindi rewrite.",
+      "source_id": "Failed to {action} {count} transfers. First error: {label}: {message}",
+      "source_index": 1699
+    },
+    {
+      "current_target_sha256": "756763d7ee2405b9e6536495ac67ef7c18ac8a413143fdfc252ef5e9bbc3ee61",
+      "locale": "id",
+      "reason": "The action slot receives button labels (Coba lagi, Batal, Hapus), which do not consistently fit “Gagal {action} {count} transfer” as a sentence. Hold pending action-specific full-message strings or a qualified Indonesian rewrite.",
+      "source_id": "Failed to {action} {count} transfers. First error: {label}: {message}",
+      "source_index": 1699
+    },
+    {
+      "current_target_sha256": "3396fd283f769cd9f1d8a47f04a3b9773ce5216f357eea22720134c3f0c1d32f",
+      "locale": "ar",
+      "reason": "The exact standalone source key “swarms” has no production caller in pinned web/src; it occurs only in locale tests. The translation cannot be tied to a rendered UI context. Hold semantic attestation until a production caller or authoritative context is identified.",
+      "source_id": "swarms",
+      "source_index": 5274
+    },
+    {
+      "current_target_sha256": "7546a319ad638cd756c1666e8141e4c1c8ebfbfc0ebb4fb90eeee3cb689ad858",
+      "locale": "de",
+      "reason": "The exact standalone source key “swarms” has no production caller in pinned web/src; it occurs only in locale tests. The translation cannot be tied to a rendered UI context. Hold semantic attestation until a production caller or authoritative context is identified.",
+      "source_id": "swarms",
+      "source_index": 5274
+    },
+    {
+      "current_target_sha256": "052f46e129216fca1d62b883a065dd07ab7778ffc0b20df9422fab0d2320444d",
+      "locale": "es",
+      "reason": "The exact standalone source key “swarms” has no production caller in pinned web/src; it occurs only in locale tests. The translation cannot be tied to a rendered UI context. Hold semantic attestation until a production caller or authoritative context is identified.",
+      "source_id": "swarms",
+      "source_index": 5274
+    },
+    {
+      "current_target_sha256": "d2cca1b85e0a3214978d4ecf082726fc17a4218bd1a30f65a925e71e0839270a",
+      "locale": "fr",
+      "reason": "The exact standalone source key “swarms” has no production caller in pinned web/src; it occurs only in locale tests. The translation cannot be tied to a rendered UI context. Hold semantic attestation until a production caller or authoritative context is identified.",
+      "source_id": "swarms",
+      "source_index": 5274
+    },
+    {
+      "current_target_sha256": "05d7f695c0bd25c0d7330e3026eaa63842383cff628491f7da496bfd3d0abd9a",
+      "locale": "hi",
+      "reason": "The exact standalone source key “swarms” has no production caller in pinned web/src; it occurs only in locale tests. The translation cannot be tied to a rendered UI context. Hold semantic attestation until a production caller or authoritative context is identified.",
+      "source_id": "swarms",
+      "source_index": 5274
+    },
+    {
+      "current_target_sha256": "44eb92b46360c22af3395633b6e3014a30afa97b02305b385c51d3feebceda9c",
+      "locale": "id",
+      "reason": "The exact standalone source key “swarms” has no production caller in pinned web/src; it occurs only in locale tests. The translation cannot be tied to a rendered UI context. Hold semantic attestation until a production caller or authoritative context is identified.",
+      "source_id": "swarms",
+      "source_index": 5274
+    },
+    {
+      "current_target_sha256": "5c7a477051795dd98672bcc33638dc29924e05c06ab96222129d403bcd723974",
+      "locale": "ja",
+      "reason": "The exact standalone source key “swarms” has no production caller in pinned web/src; it occurs only in locale tests. The translation cannot be tied to a rendered UI context. Hold semantic attestation until a production caller or authoritative context is identified.",
+      "source_id": "swarms",
+      "source_index": 5274
+    },
+    {
+      "current_target_sha256": "a4e7581f031eb4e85e736a544d35cf54141107e232ff781d2e2beaa5681e9256",
+      "locale": "ko",
+      "reason": "The exact standalone source key “swarms” has no production caller in pinned web/src; it occurs only in locale tests. The translation cannot be tied to a rendered UI context. Hold semantic attestation until a production caller or authoritative context is identified.",
+      "source_id": "swarms",
+      "source_index": 5274
+    },
+    {
+      "current_target_sha256": "f6cb84f891367c563f3d182a67d65d94348747f42ec505e81fb7d271e549cfa2",
+      "locale": "pt-BR",
+      "reason": "The exact standalone source key “swarms” has no production caller in pinned web/src; it occurs only in locale tests. The translation cannot be tied to a rendered UI context. Hold semantic attestation until a production caller or authoritative context is identified.",
+      "source_id": "swarms",
+      "source_index": 5274
+    },
+    {
+      "current_target_sha256": "8e21f94d133b510296ee411cc03b24d61e102b5bf63eaadd30af0337c63db0df",
+      "locale": "vi",
+      "reason": "The exact standalone source key “swarms” has no production caller in pinned web/src; it occurs only in locale tests. The translation cannot be tied to a rendered UI context. Hold semantic attestation until a production caller or authoritative context is identified.",
+      "source_id": "swarms",
+      "source_index": 5274
+    },
+    {
+      "current_target_sha256": "a7ec2ed3d887d130b1bdd8892f2424885052082f2b4ee7563fa17502d9ffd87f",
+      "locale": "zh-Hans",
+      "reason": "The exact standalone source key “swarms” has no production caller in pinned web/src; it occurs only in locale tests. The translation cannot be tied to a rendered UI context. Hold semantic attestation until a production caller or authoritative context is identified.",
+      "source_id": "swarms",
+      "source_index": 5274
+    },
+    {
+      "current_target_sha256": "a7ec2ed3d887d130b1bdd8892f2424885052082f2b4ee7563fa17502d9ffd87f",
+      "locale": "zh-Hant",
+      "reason": "The exact standalone source key “swarms” has no production caller in pinned web/src; it occurs only in locale tests. The translation cannot be tied to a rendered UI context. Hold semantic attestation until a production caller or authoritative context is identified.",
+      "source_id": "swarms",
+      "source_index": 5274
+    }
+  ],
+  "native_speaker_approval": false,
+  "no_repository_files_modified": true,
+  "pinned_head": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "pinned_tree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "prior_evidence_audit": {
+    "exact_hash_terminal_cells_reused": 48,
+    "nonmatching_terminal_dispositions_reused": 0,
+    "rule": "A prior disposition is reusable only when both source SHA-256 and current target SHA-256 match exactly.",
+    "unhashed_or_nonterminal_metadata_records_not_reused": 13
+  },
+  "prior_exact_hash_coverage": {
+    "cells": 48,
+    "dispositions": {
+      "accept-current": 44,
+      "correction-needed": 3,
+      "hold": 1
+    },
+    "rule": "Reused only when source SHA-256 and current target SHA-256 both exactly matched.",
+    "source_ids": [
+      "Added {count} missing tracks to Wishlist",
+      "Cleared {count} searches",
+      "{count} swarms",
+      "· {count} verified matches"
+    ]
+  },
+  "proposal_count": 7,
+  "proposal_summary": [
+    {
+      "current_target_sha256": "6932e419d1185fd4aec327e4e709562d598caf7f95ca10a49a0e843d651747cc",
+      "locale": "id",
+      "proposed_target": "Menambahkan {count} trek yang belum ada ke Wishlist",
+      "proposed_target_sha256": "e7f4a74c5284b0edd63e0a1bd4ffc0a7a2b8a97d50b3886c31e435f49e8f76fa",
+      "source_id": "Added {count} missing tracks to Wishlist",
+      "source_index": 194
+    },
+    {
+      "current_target_sha256": "76e69863bb17b004c73d14a8c92aafa9af99a03692e3cb90e95c82810160a330",
+      "locale": "de",
+      "proposed_target": "{count} Transfers ließen sich nicht {action}. Erster Fehler: {label}: {message}",
+      "proposed_target_sha256": "74ff891f7506646488ded930488f69dbfb19b266e7b5b2fb3e2ae1233be168bb",
+      "source_id": "Failed to {action} {count} transfers. First error: {label}: {message}",
+      "source_index": 1699
+    },
+    {
+      "current_target_sha256": "3ff1d64d26fadf3bdd84d8153a5b10aa4349344584641963f7b038bd5b4428d2",
+      "locale": "ko",
+      "proposed_target": "Lidarr 가져오기 재시도가 대기열에 추가됨: 파일 {count}개",
+      "proposed_target_sha256": "bbd59d5039003e4c983e70046be686203fbdb3e6f31ad02fcefce643dcd42960",
+      "source_id": "Lidarr import retry queued: {count} files",
+      "source_index": 2165
+    },
+    {
+      "current_target_sha256": "4e20216470b5d59a88303935a47fe01c659c39a21f3b3b9a1eee3b851e1e4597",
+      "locale": "pt-BR",
+      "proposed_target": "Nova tentativa de importação do Lidarr enfileirada: {count} arquivos",
+      "proposed_target_sha256": "b7f2e128aa77ff463fcf40171cac27d1362791f2a5c81f7966a03aae5a8c9f1b",
+      "source_id": "Lidarr import retry queued: {count} files",
+      "source_index": 2165
+    },
+    {
+      "current_target_sha256": "a13d41df344c0599b55916bb64916da94f013a309fec1a95db45f247ff47bc8b",
+      "locale": "vi",
+      "proposed_target": "Đã đưa {count} tệp vào hàng đợi để thử nhập lại bằng Lidarr",
+      "proposed_target_sha256": "3b4f338fbcbca84d41a0c90b020db2093f5c7f57f68a5b3ce0320fb0eefd3379",
+      "source_id": "Lidarr import retry queued: {count} files",
+      "source_index": 2165
+    },
+    {
+      "current_target_sha256": "d44621a004ec127e8e490d5484052accc9e24856f82da73ce6433355ce5609fd",
+      "locale": "ja",
+      "proposed_target": "P2Pスウォーム数: {count}",
+      "proposed_target_sha256": "4671e71bebddc5d18b722652978c5153ffcf3c42ed20f3b070dc93c46abf9dd2",
+      "source_id": "{count} swarms",
+      "source_index": 5380
+    },
+    {
+      "current_target_sha256": "118dbee0c34e5143e8aa63ca3e7ef02bca954be0f044e239c13ba9f446511faf",
+      "locale": "ja",
+      "proposed_target": "· 確認済みの一致 {count} 件",
+      "proposed_target_sha256": "f6bf5e399df570eb2e19711f5438266409d661f21b95299c2723602bedfcf0f6",
+      "source_id": "· {count} verified matches",
+      "source_index": 5428
+    }
+  ],
+  "pull_request": 204,
+  "reattestation_required_before_application": true,
+  "reported_current_pr_head": "2d004e38",
+  "repository": "snapetech-org/slskR",
+  "review_kind": "primary machine-assisted semantic review; not native-speaker signoff",
+  "scope": {
+    "direct_locales": [
+      "ar",
+      "de",
+      "es",
+      "fr",
+      "hi",
+      "id",
+      "ja",
+      "ko",
+      "pt-BR",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "flagged_source_keys": 15,
+    "review_cells": 180
+  },
+  "source_positions": [
+    {
+      "inventory_position_1based": 195,
+      "source_id": "Added {count} missing tracks to Wishlist",
+      "source_index": 194,
+      "source_sha256": "7cb8b0f951f87a5809f7e79c006f5fcadb2d5688a7a61782388dd7a052f6998c"
+    },
+    {
+      "inventory_position_1based": 704,
+      "source_id": "Cleared {count} searches",
+      "source_index": 703,
+      "source_sha256": "a7ebf6df1008bf290ababa583faa3ffa39b297f4755669eaa0506e95e64a00e8"
+    },
+    {
+      "inventory_position_1based": 915,
+      "source_id": "Copied {format} export for {count} plays.",
+      "source_index": 914,
+      "source_sha256": "0ff11134c7b81e1f737897fcc4a2e7d38d5a3e8d02aa1ca6477758b886dc683b"
+    },
+    {
+      "inventory_position_1based": 1700,
+      "source_id": "Failed to {action} {count} transfers. First error: {label}: {message}",
+      "source_index": 1699,
+      "source_sha256": "7ca076fbdba33e74091c4f7347642402258d4635effaf96b387a9fed525d6bbb"
+    },
+    {
+      "inventory_position_1based": 2117,
+      "source_id": "Last {count} hours",
+      "source_index": 2116,
+      "source_sha256": "2a1b71258382e598dcf94aa9626800a786368a11d1e7a565d0552621822fa69c"
+    },
+    {
+      "inventory_position_1based": 2166,
+      "source_id": "Lidarr import retry queued: {count} files",
+      "source_index": 2165,
+      "source_sha256": "1fe30bb55a3de7fb7a38979bf039b21534a5e60f7fe70683869310a70fe49e9f"
+    },
+    {
+      "inventory_position_1based": 3148,
+      "source_id": "Prepared {format} export for {count} plays; clipboard is unavailable.",
+      "source_index": 3147,
+      "source_sha256": "823ce2a4ef83199b01d889dff1384dca443377a13a6e421b7ec911364fba22f9"
+    },
+    {
+      "inventory_position_1based": 3327,
+      "source_id": "Queued {count} files for download",
+      "source_index": 3326,
+      "source_sha256": "b7087e2b713b88a6ce38411ace70e101b5cdb08e1b195a88ceb5fd03a3870668"
+    },
+    {
+      "inventory_position_1based": 5001,
+      "source_id": "fingerprint matches",
+      "source_index": 5000,
+      "source_sha256": "485c7bf7e82f304d6052a3072de4291e23e77e97543623e4712c3ef6cc46d5fc"
+    },
+    {
+      "inventory_position_1based": 5275,
+      "source_id": "swarms",
+      "source_index": 5274,
+      "source_sha256": "7996910b4b12da7d6029e2e63d7e67d41dbf7b36587e2e0574ae1519c3e7534f"
+    },
+    {
+      "inventory_position_1based": 5358,
+      "source_id": "{count} Selected Issues",
+      "source_index": 5357,
+      "source_sha256": "cc9e07f67eb991a655af7a9b199847733f53cc0b46d119a8ea31714789bac320"
+    },
+    {
+      "inventory_position_1based": 5368,
+      "source_id": "{count} files",
+      "source_index": 5367,
+      "source_sha256": "63352fdc2cd6bbbfb4ac957d4fb6e0b03eda6d5240381ec7a0f3a9b8db3a231f"
+    },
+    {
+      "inventory_position_1based": 5370,
+      "source_id": "{count} items",
+      "source_index": 5369,
+      "source_sha256": "f65216b3ac8c5249886b85261ea5a5dc6818f3d3c0f33b7499d04724f5c12235"
+    },
+    {
+      "inventory_position_1based": 5381,
+      "source_id": "{count} swarms",
+      "source_index": 5380,
+      "source_sha256": "0261a4bf5b60e88840d648f829214089687ee449f1d8c7073a6653fef09df169"
+    },
+    {
+      "inventory_position_1based": 5429,
+      "source_id": "· {count} verified matches",
+      "source_index": 5428,
+      "source_sha256": "a6b8102489274ba8027eb56fc0050c928c24bfea6a73842421944f780fc1f04d"
+    }
+  ],
+  "tests_builds_packages_CI_or_browser_used": false,
+  "validation": {
+    "all_placeholders_preserved": true,
+    "all_targets_nonempty": true,
+    "all_targets_present": true,
+    "detected_protected_literals_preserved": true,
+    "markup_free": true,
+    "target_types": {
+      "plural-map": 15,
+      "string": 165
+    }
+  }
+}

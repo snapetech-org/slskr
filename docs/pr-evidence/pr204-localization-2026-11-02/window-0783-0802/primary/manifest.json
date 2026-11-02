@@ -1,0 +1,235 @@
+{
+  "attestedHead": "2d004e38fe7cf76f8d51f36d19c14c34fb497649",
+  "attestedTree": "7d114d519f4e6ad0a14a4a3fe048fde017551748",
+  "callerPinCount": 36,
+  "callerPinPaths": [
+    "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx",
+    "web/src/components/System/AdminPolicies/index.jsx",
+    "web/src/components/System/Data/index.jsx",
+    "web/src/components/System/ExperienceSettings/index.jsx",
+    "web/src/components/System/Integrations/FtpIntegrationPanel.jsx",
+    "web/src/components/System/Integrations/LidarrPanel.jsx",
+    "web/src/components/System/Integrations/MediaServerPanel.jsx",
+    "web/src/components/System/Integrations/MetadataProcessingPanel.jsx",
+    "web/src/components/System/Integrations/ServarrReadinessPanel.jsx",
+    "web/src/components/System/Jobs/index.jsx",
+    "web/src/components/System/MediaCore/MediaCoreContentHashingPanel.jsx",
+    "web/src/components/System/MediaCore/MediaCoreMetadataPortabilityPanel.jsx",
+    "web/src/components/System/MediaCore/MediaCorePerceptualSimilarityPanel.jsx",
+    "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+    "web/src/components/System/Network/NetworkDetails.jsx",
+    "web/src/components/System/SwarmVisualization/index.jsx",
+    "web/src/components/TrafficTicker/TrafficTicker.jsx",
+    "web/src/components/Transfers/TransfersHeader.jsx",
+    "web/src/lib/mediaServerIntegrations.js",
+    "web/src/lib/servarrReadiness.js",
+    "web/src/lib/transfers.js"
+  ],
+  "catalogs": [
+    {
+      "catalogBlob": "adc21d9e930d87492c354a52733bf1670fcd7f6f",
+      "catalogBytes": 512307,
+      "catalogFileSha256": "6ddd60221d1341de7520b5cdc8a6f141ebd613bcb0efafc6b1bc89c0ee41002c",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json",
+      "locale": "ar"
+    },
+    {
+      "catalogBlob": "507dc3c2013bdc9d30b42e8f1a728b3a4665e306",
+      "catalogBytes": 442905,
+      "catalogFileSha256": "5dae1cd1c7923adc8ce884abd5d1d4de7468d4d013de3e3c7a58dbb47ff07488",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json",
+      "locale": "de"
+    },
+    {
+      "catalogBlob": "f3becf77e8cc90a85cd6719d4d7e4ef8712f6f67",
+      "catalogBytes": 443782,
+      "catalogFileSha256": "f94dac1dde1a42b2ed41f71d3eed94dfce0341dc5f329614f434091fbab87328",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json",
+      "locale": "es"
+    },
+    {
+      "catalogBlob": "58801d037f949d11e0d27bb0b0f04718a22dea80",
+      "catalogBytes": 454770,
+      "catalogFileSha256": "03c3b13505346c21a03f39d7e439681f0ef134fc3fd090c281b217b94baaf9e5",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json",
+      "locale": "fr"
+    },
+    {
+      "catalogBlob": "da9f38803d719a8d17a9d8ae92c1437326f32a98",
+      "catalogBytes": 675905,
+      "catalogFileSha256": "e7ed57e9eca2021df2598a82812ea3346d883c744cdd607a6de3c7b99661a4d1",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json",
+      "locale": "hi"
+    },
+    {
+      "catalogBlob": "bd0d0ad8e32a0cafe8596ef98cf230f74334c0f1",
+      "catalogBytes": 409391,
+      "catalogFileSha256": "650ec50f37e6821cd8276a11bdeeef33c88adc310d07c179f701eeae043baef5",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json",
+      "locale": "id"
+    },
+    {
+      "catalogBlob": "878db9a63803137972f779a4e41c5b7d98a7da91",
+      "catalogBytes": 490760,
+      "catalogFileSha256": "b39cc412c8bca9d4f7651f27e6f030ffed2177a0db2a51885605a3875044d8f8",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json",
+      "locale": "ja"
+    },
+    {
+      "catalogBlob": "d1b30828691374d78478d60b6041ce8255d223ae",
+      "catalogBytes": 441837,
+      "catalogFileSha256": "21777b3e9f2b57bdcf7d6573a75cc2233be398147f6d945d9ea3d56d1be0ff5d",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json",
+      "locale": "ko"
+    },
+    {
+      "catalogBlob": "1f1e979c54cc1f5fc1895b2a16643919f8d40a2e",
+      "catalogBytes": 438416,
+      "catalogFileSha256": "9a59fd4f529673858701eb3d0b1192cad8f7a7a00aaf15561da0e9985564edd0",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "locale": "pt-BR"
+    },
+    {
+      "catalogBlob": "99a80ba5cd4fc3b72fcf1fb1b61328d0cda7dffb",
+      "catalogBytes": 474129,
+      "catalogFileSha256": "d5020d6c8fef22554ff13d3654e8f81e8579314250387fa7c8a9cd4b2a5cf56b",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json",
+      "locale": "vi"
+    },
+    {
+      "catalogBlob": "b8f92bd1bba18be27ec469f738c0b29566b19b52",
+      "catalogBytes": 382473,
+      "catalogFileSha256": "5c7e75bcb7f65428a3f2306e82d486be119d3781e85ff58b4de6cbba385a9c0e",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "locale": "zh-Hans"
+    },
+    {
+      "catalogBlob": "a8a51a9a58c456dff849685647b4299e18659e50",
+      "catalogBytes": 383220,
+      "catalogFileSha256": "982feced664dea8d9e81f361ee16d219e48bd09c6d54c731b80ed3a79f2a7fed",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "locale": "zh-Hant"
+    }
+  ],
+  "cells": 240,
+  "initialPrState": {
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "2d004e38fe7cf76f8d51f36d19c14c34fb497649",
+    "isDraft": true,
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "inputEvidence": [
+    {
+      "bytes": 724742,
+      "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/frozen-inputs/source-inventory.jsonl",
+      "sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313"
+    },
+    {
+      "bytes": 3852430,
+      "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/carried-findings.jsonl",
+      "sha256": "74bebf786f978ae25ae3055c6e81d815fd90741da42774b3d0492cc90c8323a6"
+    },
+    {
+      "bytes": 57220,
+      "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-W763-782-root-apply-20261102/readback.jsonl",
+      "sha256": "a800522255eb95027eb212d147a1af1c933aef337e11f90a43728fcf94b61cca"
+    },
+    {
+      "bytes": 2671853,
+      "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/review-ledger/ar.jsonl",
+      "sha256": "250ca00dafb7cedf44fc6c8157e23b7d2837fd6344458974a90b8794688e2473"
+    },
+    {
+      "bytes": 2600431,
+      "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/review-ledger/de.jsonl",
+      "sha256": "e7339aed43da1162888a992ceb73e0605390d7e4bd4275263daf8edea3965c7c"
+    },
+    {
+      "bytes": 2603867,
+      "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/review-ledger/es.jsonl",
+      "sha256": "bb26659faae524b630fdcf363ad223597caf07ab1ae326444be2fe44227a19d2"
+    },
+    {
+      "bytes": 2613866,
+      "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/review-ledger/fr.jsonl",
+      "sha256": "6bfc6443cc7503b8d9200eed8d74cbae308516ca105fcb42a3d0166b52cb0968"
+    },
+    {
+      "bytes": 2834858,
+      "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/review-ledger/hi.jsonl",
+      "sha256": "8ba304ec25889e2756dbfffcff9c7923819ca06213413a1b2fb5d9b5d87c11bb"
+    },
+    {
+      "bytes": 2569801,
+      "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/review-ledger/id.jsonl",
+      "sha256": "846fdff5bd10e61601f05a4b65a33d776c4b15bb3ecbe315a32a82c3a107eff4"
+    },
+    {
+      "bytes": 2596637,
+      "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/review-ledger/ja.jsonl",
+      "sha256": "f1774a8a07d9786488fdabd827457faaf6dd1e7f466ae69d44eefbe59bceecd2"
+    },
+    {
+      "bytes": 2547127,
+      "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/review-ledger/ko.jsonl",
+      "sha256": "26d067249bc1bc6bf5a5528da8003943211df352e5bac5b874ec17529a216a23"
+    },
+    {
+      "bytes": 2576194,
+      "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/review-ledger/pt-BR.jsonl",
+      "sha256": "19fd85eca48f8fac41d6f480d99fbc93b6a1bad45b78ad9a6973814f103f9574"
+    },
+    {
+      "bytes": 2579048,
+      "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/review-ledger/vi.jsonl",
+      "sha256": "e480e8373fb5af6c1f67e1a72c1beb0795d0985db529823d72045d40b7cae963"
+    },
+    {
+      "bytes": 2542422,
+      "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/review-ledger/zh-Hans.jsonl",
+      "sha256": "57081825392d16b3f5b06d590cf2e5d8d20465989c6a13556fb0311fc9526a5f"
+    },
+    {
+      "bytes": 2543119,
+      "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/review-ledger/zh-Hant.jsonl",
+      "sha256": "85a26b622383c254eee89fea15c029e45656c3b085e1fdb86cef86389657c20b"
+    }
+  ],
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "noRepoOrPrChanges": true,
+  "outputPath": "/mnt/disks/scratch/task-scratch/slskr-pr204-W783-802-primary-20261102/packet",
+  "priorDispositionReuseRule": "Only exact source and current-target hash matches are reused; all 150 not-reviewed cells are independently assessed.",
+  "priorStatuses": {
+    "accepted": 61,
+    "correction-needed": 29,
+    "not-reviewed": 150
+  },
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "schemaVersion": 1,
+  "sourceIds": 20,
+  "sourceInventoryPath": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/frozen-inputs/source-inventory.jsonl",
+  "sourceInventoryRows": 5437,
+  "sourceInventorySha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "sourcePositions": [
+    783,
+    802
+  ],
+  "task": "slskR PR #204 W783-802 primary semantic review",
+  "worktree": "/mnt/disks/scratch/task-worktrees/localization-20261102/slskr-pr204-W763-782-apply",
+  "worktreeCleanAtFreeze": true
+}

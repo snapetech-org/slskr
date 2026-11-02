@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "task": "slskR PR #204 W783–802 independent cross-review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "attestedHead": "2d004e38fe7cf76f8d51f36d19c14c34fb497649",
+  "attestedTree": "7d114d519f4e6ad0a14a4a3fe048fde017551748",
+  "primaryPacket": "/mnt/disks/scratch/task-scratch/slskr-pr204-W783-802-primary-20261102/packet",
+  "primaryInputIntegrity": "primary-input-integrity.json",
+  "sourceIndexMapping": {
+    "primary": [
+      783,
+      802
+    ],
+    "current": [
+      782,
+      801
+    ],
+    "shift": -1
+  },
+  "rows": {
+    "sourceOrdinalReattestations": 20,
+    "liveCells": 240,
+    "callerPins": 36,
+    "priorDispositions": 240,
+    "w782Boundary": 12,
+    "candidateCrossReviews": 108,
+    "newW790Findings": 4,
+    "heldCells": 24,
+    "fullCellFinalDispositions": 240
+  },
+  "repositoryOrPrModified": false
+}

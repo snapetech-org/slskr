@@ -1,0 +1,25 @@
+{
+  "pinned_input_head": "2d004e38fe7cf76f8d51f36d19c14c34fb497649",
+  "catalogs": 12,
+  "keys_per_catalog": 5440,
+  "catalog_key_sets_identical": true,
+  "reviewed_cells_reattested": 180,
+  "cell_dispositions": {
+    "accept-current": 158,
+    "propose-correction": 7,
+    "hold": 15
+  },
+  "candidate_cross_review": {
+    "accept-primary-proposal": 6,
+    "revise-primary-proposal": 1
+  },
+  "applied_corrections": 7,
+  "readback_exact": 7,
+  "held_cells_preserved": 15,
+  "arabic_maps_checked": 15,
+  "all_arabic_forms_nonempty_and_placeholders_match": true,
+  "source_hashes_and_current_target_hashes_match": true,
+  "caller_context_reviewed_at_pinned_head": true,
+  "native_speaker_approval": false,
+  "tests_builds_scans_ci_workflows_releases_tags_merges": "none performed or changed"
+}

@@ -1,0 +1,79 @@
+{
+  "task": "slskR PR #204 W783–802 independent cross-review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "livePrState": {
+    "repository": "snapetech-org/slskR",
+    "number": 204,
+    "state": "open",
+    "draft": true,
+    "head": "2d004e38fe7cf76f8d51f36d19c14c34fb497649",
+    "headRef": "codex/slskr-l10n-audit-20261030",
+    "baseRef": "main",
+    "tree": "7d114d519f4e6ad0a14a4a3fe048fde017551748",
+    "url": "https://github.com/snapetech-org/slskr/pull/204",
+    "passed": true
+  },
+  "head": "2d004e38fe7cf76f8d51f36d19c14c34fb497649",
+  "tree": "7d114d519f4e6ad0a14a4a3fe048fde017551748",
+  "primaryInputSha256Verified": true,
+  "primaryPacketFilesVerified": 16,
+  "sourceRows": 20,
+  "primarySourceOrdinalRange": [
+    783,
+    802
+  ],
+  "currentSourceOrdinals": [
+    782,
+    801
+  ],
+  "ordinalShift": -1,
+  "currentSourceInventoryRows": 5440,
+  "currentSourceInventorySha256": "67d1c36a5a42dfc3472b902d1ab93f7cb6f40a816dc6a86b72f84cdddbfb5dbb",
+  "localeCount": 12,
+  "cellsReattested": 240,
+  "callerPinsReattested": 36,
+  "priorRowsReattested": 240,
+  "priorDispositionCountsObservedInChangedFiles": {
+    "not-reviewed": 150,
+    "correction-needed": 29,
+    "accepted": 61
+  },
+  "priorSourceOrTargetHashMismatches": 0,
+  "priorLedgerFilesExpected": 12,
+  "priorLedgerFilesHashMatchingPrimary": 0,
+  "priorLedgerFilesHashMismatched": 12,
+  "priorLinkageStatus": "stale-unverified",
+  "priorDispositionReusedForCrossReview": false,
+  "priorFindingRecordsReattested": 29,
+  "w782BoundaryRows": 12,
+  "w782PreviousAppliedReadbackFileSha256": "a800522255eb95027eb212d147a1af1c933aef337e11f90a43728fcf94b61cca",
+  "w782PrimaryOrdinal": 782,
+  "w782CurrentOrdinal": 781,
+  "liveIndex782Source": "Complete",
+  "candidateRowsAdjudicated": 108,
+  "candidateVerdicts": {
+    "accept-primary-proposal": 70,
+    "revise-primary-proposal": 14,
+    "hold-pending-caller-refactor": 24
+  },
+  "newW790Findings": 4,
+  "heldCells": 24,
+  "fullCellFinalDispositionCounts": {
+    "accept-current": 128,
+    "accept-primary-proposal": 70,
+    "revise-primary-proposal": 14,
+    "hold-pending-caller-refactor": 24,
+    "add-new-correction": 4
+  },
+  "placeholderParityPassedCells": 240,
+  "markupFreePassedCells": 240,
+  "protectedLiteralPassedCells": 240,
+  "nativeSpeakerApproval": false,
+  "limitations": [
+    "Machine cross-review; native-speaker approval remains outstanding.",
+    "W785/W796 targets remain held pending caller refactoring.",
+    "No repository or PR writes; no tests, builds, scans, CI, browser actions, workflow edits, or releases."
+  ],
+  "repositoryOrPrModified": false
+}

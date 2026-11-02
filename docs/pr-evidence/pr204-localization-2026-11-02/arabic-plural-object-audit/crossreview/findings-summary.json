@@ -1,0 +1,163 @@
+{
+  "candidateCounts": {
+    "accepted": 6,
+    "revised": 1,
+    "rejected": 0,
+    "held": 0,
+    "total": 7
+  },
+  "holdCounts": {
+    "upheld": 15,
+    "released": 0,
+    "total": 15,
+    "byKind": {
+      "qualified-locale-morphology": 1,
+      "dynamic-action-grammar": 2,
+      "missing-production-caller": 12
+    }
+  },
+  "finalCellDispositions": {
+    "accept-current": 158,
+    "propose-correction": 7,
+    "hold": 15
+  },
+  "newProposalRevisions": [
+    {
+      "source_id": "· {count} verified matches",
+      "current_source_index": 5431,
+      "locale": "ja",
+      "oldProposal": "· 確認済みの一致 {count} 件",
+      "oldProposalSha256": "f6bf5e399df570eb2e19711f5438266409d661f21b95299c2723602bedfcf0f6",
+      "finalProposal": "· 検証済みの一致 {count} 件",
+      "finalProposalSha256": "14498629844595b167692f3a1dc3441baa8b2caf19fb60741c8bae219d0d784b",
+      "rationale": "The caller uses this as a track-level verified-match badge. “検証済み” matches the source’s verified meaning and is already used for “Verified” elsewhere in the Japanese catalog; adding “の” fixes the current stiff compound. The bullet and Japanese counter form stay in place."
+    }
+  ],
+  "heldIssueSummary": [
+    {
+      "source_id": "Cleared {count} searches",
+      "current_source_index": 703,
+      "locale": "ar",
+      "current_target_sha256": "14dfedd99be0e59ee9cf7d3094d9ff6a27e8d471e561f2333c5e7ce8dd7deffc",
+      "holdKind": "qualified-locale-morphology",
+      "independentAssessment": "UPHOLD: all six Arabic forms are present, nonempty, and selected by the exact runtime categories; the singular/dual/plural split is coherent on inspection. Keep the locale hold for qualified Arabic morphology signoff; this review is not native-speaker approval."
+    },
+    {
+      "source_id": "Failed to {action} {count} transfers. First error: {label}: {message}",
+      "current_source_index": 1700,
+      "locale": "hi",
+      "current_target_sha256": "8fd43d9d0d3c9ef629627717f4b04555f43ed817e3d803365de9a1f684da54d6",
+      "holdKind": "dynamic-action-grammar",
+      "independentAssessment": "UPHOLD: the caller inserts polite imperative labels (पुनः प्रयास करें, रद्द करें, हटाएँ) into a sentence frame that needs an inflected verb. One frame does not compose naturally for all three actions; use action-specific full messages or qualified Hindi review."
+    },
+    {
+      "source_id": "Failed to {action} {count} transfers. First error: {label}: {message}",
+      "current_source_index": 1700,
+      "locale": "id",
+      "current_target_sha256": "756763d7ee2405b9e6536495ac67ef7c18ac8a413143fdfc252ef5e9bbc3ee61",
+      "holdKind": "dynamic-action-grammar",
+      "independentAssessment": "UPHOLD: the caller inserts button labels Coba lagi, Batal, and Hapus into “Gagal {action} {count} transfer”. These labels do not form a consistent grammatical action phrase in this frame; use action-specific full messages or qualified Indonesian review."
+    },
+    {
+      "source_id": "swarms",
+      "current_source_index": 5277,
+      "locale": "ar",
+      "current_target_sha256": "3396fd283f769cd9f1d8a47f04a3b9773ce5216f357eea22720134c3f0c1d32f",
+      "holdKind": "missing-production-caller",
+      "independentAssessment": "UPHOLD: exact standalone key has no production source/template call at the pinned head; the only exact keyed use found is a locale test. The separate “{count} swarms” key has a Footer caller, but that does not establish the context for this standalone label."
+    },
+    {
+      "source_id": "swarms",
+      "current_source_index": 5277,
+      "locale": "de",
+      "current_target_sha256": "7546a319ad638cd756c1666e8141e4c1c8ebfbfc0ebb4fb90eeee3cb689ad858",
+      "holdKind": "missing-production-caller",
+      "independentAssessment": "UPHOLD: exact standalone key has no production source/template call at the pinned head; the only exact keyed use found is a locale test. The separate “{count} swarms” key has a Footer caller, but that does not establish the context for this standalone label."
+    },
+    {
+      "source_id": "swarms",
+      "current_source_index": 5277,
+      "locale": "es",
+      "current_target_sha256": "052f46e129216fca1d62b883a065dd07ab7778ffc0b20df9422fab0d2320444d",
+      "holdKind": "missing-production-caller",
+      "independentAssessment": "UPHOLD: exact standalone key has no production source/template call at the pinned head; the only exact keyed use found is a locale test. The separate “{count} swarms” key has a Footer caller, but that does not establish the context for this standalone label."
+    },
+    {
+      "source_id": "swarms",
+      "current_source_index": 5277,
+      "locale": "fr",
+      "current_target_sha256": "d2cca1b85e0a3214978d4ecf082726fc17a4218bd1a30f65a925e71e0839270a",
+      "holdKind": "missing-production-caller",
+      "independentAssessment": "UPHOLD: exact standalone key has no production source/template call at the pinned head; the only exact keyed use found is a locale test. The separate “{count} swarms” key has a Footer caller, but that does not establish the context for this standalone label."
+    },
+    {
+      "source_id": "swarms",
+      "current_source_index": 5277,
+      "locale": "hi",
+      "current_target_sha256": "05d7f695c0bd25c0d7330e3026eaa63842383cff628491f7da496bfd3d0abd9a",
+      "holdKind": "missing-production-caller",
+      "independentAssessment": "UPHOLD: exact standalone key has no production source/template call at the pinned head; the only exact keyed use found is a locale test. The separate “{count} swarms” key has a Footer caller, but that does not establish the context for this standalone label."
+    },
+    {
+      "source_id": "swarms",
+      "current_source_index": 5277,
+      "locale": "id",
+      "current_target_sha256": "44eb92b46360c22af3395633b6e3014a30afa97b02305b385c51d3feebceda9c",
+      "holdKind": "missing-production-caller",
+      "independentAssessment": "UPHOLD: exact standalone key has no production source/template call at the pinned head; the only exact keyed use found is a locale test. The separate “{count} swarms” key has a Footer caller, but that does not establish the context for this standalone label."
+    },
+    {
+      "source_id": "swarms",
+      "current_source_index": 5277,
+      "locale": "ja",
+      "current_target_sha256": "5c7a477051795dd98672bcc33638dc29924e05c06ab96222129d403bcd723974",
+      "holdKind": "missing-production-caller",
+      "independentAssessment": "UPHOLD: exact standalone key has no production source/template call at the pinned head; the only exact keyed use found is a locale test. The separate “{count} swarms” key has a Footer caller, but that does not establish the context for this standalone label."
+    },
+    {
+      "source_id": "swarms",
+      "current_source_index": 5277,
+      "locale": "ko",
+      "current_target_sha256": "a4e7581f031eb4e85e736a544d35cf54141107e232ff781d2e2beaa5681e9256",
+      "holdKind": "missing-production-caller",
+      "independentAssessment": "UPHOLD: exact standalone key has no production source/template call at the pinned head; the only exact keyed use found is a locale test. The separate “{count} swarms” key has a Footer caller, but that does not establish the context for this standalone label."
+    },
+    {
+      "source_id": "swarms",
+      "current_source_index": 5277,
+      "locale": "pt-BR",
+      "current_target_sha256": "f6cb84f891367c563f3d182a67d65d94348747f42ec505e81fb7d271e549cfa2",
+      "holdKind": "missing-production-caller",
+      "independentAssessment": "UPHOLD: exact standalone key has no production source/template call at the pinned head; the only exact keyed use found is a locale test. The separate “{count} swarms” key has a Footer caller, but that does not establish the context for this standalone label."
+    },
+    {
+      "source_id": "swarms",
+      "current_source_index": 5277,
+      "locale": "vi",
+      "current_target_sha256": "8e21f94d133b510296ee411cc03b24d61e102b5bf63eaadd30af0337c63db0df",
+      "holdKind": "missing-production-caller",
+      "independentAssessment": "UPHOLD: exact standalone key has no production source/template call at the pinned head; the only exact keyed use found is a locale test. The separate “{count} swarms” key has a Footer caller, but that does not establish the context for this standalone label."
+    },
+    {
+      "source_id": "swarms",
+      "current_source_index": 5277,
+      "locale": "zh-Hans",
+      "current_target_sha256": "a7ec2ed3d887d130b1bdd8892f2424885052082f2b4ee7563fa17502d9ffd87f",
+      "holdKind": "missing-production-caller",
+      "independentAssessment": "UPHOLD: exact standalone key has no production source/template call at the pinned head; the only exact keyed use found is a locale test. The separate “{count} swarms” key has a Footer caller, but that does not establish the context for this standalone label."
+    },
+    {
+      "source_id": "swarms",
+      "current_source_index": 5277,
+      "locale": "zh-Hant",
+      "current_target_sha256": "a7ec2ed3d887d130b1bdd8892f2424885052082f2b4ee7563fa17502d9ffd87f",
+      "holdKind": "missing-production-caller",
+      "independentAssessment": "UPHOLD: exact standalone key has no production source/template call at the pinned head; the only exact keyed use found is a locale test. The separate “{count} swarms” key has a Footer caller, but that does not establish the context for this standalone label."
+    }
+  ],
+  "additionalFindings": [
+    "Primary source indexes are stale against the updated current source inventory for 12 of the 15 source keys; the current corrected indexes and shifts are recorded.",
+    "All 180 current target values and hashes still match the primary packet at the exact live head, although all 12 full catalog-file hashes changed since the primary head due unrelated localization updates.",
+    "The revised Japanese option `· 検証済みの一致 {count} 件` is accepted as the revised proposal; it preserves the bullet and placeholder and uses the catalog’s existing 検証済み term for verified."
+  ]
+}

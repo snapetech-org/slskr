@@ -1,0 +1,28 @@
+{
+  "pinned_input_head": "2d004e38fe7cf76f8d51f36d19c14c34fb497649",
+  "pinned_input_tree": "7d114d519f4e6ad0a14a4a3fe048fde017551748",
+  "locales": 12,
+  "keys_per_catalog": 5440,
+  "catalog_key_sets_identical": true,
+  "reviewed_cells_reattested": 240,
+  "caller_pins_independently_reattested": 36,
+  "primary_candidate_rows": 108,
+  "cross_review_candidate_outcomes": {
+    "accept-primary-proposal": 70,
+    "revise-primary-proposal": 14,
+    "hold-pending-caller-refactor": 24
+  },
+  "new_independent_corrections": 4,
+  "final_adjudication_counts": {
+    "accept-current": 128,
+    "correction-cross-reviewed": 84,
+    "hold-caller-refactor": 24,
+    "correction-new-independent-finding": 4
+  },
+  "applied_corrections": 88,
+  "readback_exact": 88,
+  "held_cells_preserved": 24,
+  "prior_ledger_file_provenance": "12/12 referenced ledger file hashes differed; row data rechecked; no prior dispositions reused as cross-review authority",
+  "native_speaker_approval": false,
+  "tests_builds_scans_ci_workflows_releases_tags_merges": "none performed or changed"
+}

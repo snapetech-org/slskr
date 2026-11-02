@@ -1,0 +1,14 @@
+{
+  "repository": "snapetech-org/slskR",
+  "number": 204,
+  "state": "open",
+  "draft": true,
+  "head": "2d004e38fe7cf76f8d51f36d19c14c34fb497649",
+  "headRef": "codex/slskr-l10n-audit-20261030",
+  "baseRef": "main",
+  "tree": "7d114d519f4e6ad0a14a4a3fe048fde017551748",
+  "url": "https://github.com/snapetech-org/slskr/pull/204",
+  "passed": true,
+  "exactExpectedHead": true,
+  "exactExpectedTree": true
+}
