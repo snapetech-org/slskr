@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "root_rows": 70,
+  "independent_rows": 70,
+  "final_target_matches": 70,
+  "refined_against_independent": [
+    {
+      "locale": "hi",
+      "source_id": "Batch private-message recipients",
+      "final_target": "निजी संदेश के कई प्राप्तकर्ता"
+    },
+    {
+      "locale": "id",
+      "source_id": "Batch Window (ms)",
+      "final_target": "Rentang waktu pengelompokan pesan (ms)"
+    },
+    {
+      "locale": "id",
+      "source_id": "Batch private-message recipients",
+      "final_target": "Daftar penerima pesan pribadi"
+    },
+    {
+      "locale": "ja",
+      "source_id": "Batch private-message recipients",
+      "final_target": "一括送信の宛先"
+    },
+    {
+      "locale": "vi",
+      "source_id": "Batch private-message recipients",
+      "final_target": "Danh sách người nhận tin nhắn riêng"
+    }
+  ],
+  "root_ledger_sha256_initial": "06b9c9a580d7020c32c097bcd07f6aaaaa0f2a484c09b2edfd38eaf2d5ece4b6",
+  "independent_ledger_sha256": "0fba25a3d783665542a2bff7d02ca7198a5ff6e76f73da18f4449a51071f6c0f",
+  "root_final_ledger_sha256": "2d4e918c3560d4ad3793d84f5f8568d81f129dc20c8c603a05e69970bea0583f"
+}

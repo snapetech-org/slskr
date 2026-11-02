@@ -1,0 +1,49 @@
+{
+  "independent_ledger_sha256": "0fba25a3d783665542a2bff7d02ca7198a5ff6e76f73da18f4449a51071f6c0f",
+  "matching_keys": 70,
+  "root_ledger_sha256": "06b9c9a580d7020c32c097bcd07f6aaaaa0f2a484c09b2edfd38eaf2d5ece4b6",
+  "schema_version": 1,
+  "target_disagreements": [
+    {
+      "id": "hi:Batch private-message recipients",
+      "independent_target": "निजी संदेश के कई प्राप्तकर्ता",
+      "locale": "hi",
+      "rationale": "The exact caller is an accessible name for the multi-recipient field. The proposed sentence repeats that the message is sent to multiple recipients; this noun phrase states the recipient field naturally while the dialog title supplies batch context.",
+      "root_target": "कई प्राप्तकर्ताओं को भेजे जाने वाले निजी संदेश के प्राप्तकर्ता",
+      "source_id": "Batch private-message recipients"
+    },
+    {
+      "id": "id:Batch Window (ms)",
+      "independent_target": "Rentang waktu pengelompokan pesan (ms)",
+      "locale": "id",
+      "rationale": "The caller is a 100–5000 ms delay for grouping messages. Correcting only the misspelled unit leaves the unclear literal “batch window”; this concise target names the duration and what is grouped.",
+      "root_target": "Jendela Batch (ms)",
+      "source_id": "Batch Window (ms)"
+    },
+    {
+      "id": "id:Batch private-message recipients",
+      "independent_target": "Daftar penerima pesan pribadi",
+      "locale": "id",
+      "rationale": "The exact caller is an accessible name for the comma-separated recipient textarea. A recipient-list label is natural and matches the field; the enclosing dialog title supplies the batch context.",
+      "root_target": "Penerima pesan pribadi ke beberapa orang",
+      "source_id": "Batch private-message recipients"
+    },
+    {
+      "id": "ja:Batch private-message recipients",
+      "independent_target": "一括送信の宛先",
+      "locale": "ja",
+      "rationale": "The caller labels the multi-recipient address field. This is a more natural Japanese field label for a batch-send destination than the compressed compound 一括送信先.",
+      "root_target": "一括送信先",
+      "source_id": "Batch private-message recipients"
+    },
+    {
+      "id": "vi:Batch private-message recipients",
+      "independent_target": "Danh sách người nhận tin nhắn riêng",
+      "locale": "vi",
+      "rationale": "The caller is an accessible name for a comma-separated list. Naming the recipient list is more natural and precise than the proposed phrase, which redundantly says the message is sent to multiple people.",
+      "root_target": "Người nhận tin nhắn gửi cho nhiều người",
+      "source_id": "Batch private-message recipients"
+    }
+  ],
+  "target_matches": 65
+}

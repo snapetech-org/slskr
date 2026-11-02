@@ -1,0 +1,68 @@
+{
+  "candidate_rows_reviewed": 70,
+  "candidates_by_locale": {
+    "ar": 7,
+    "de": 5,
+    "es": 7,
+    "fr": 5,
+    "hi": 5,
+    "id": 9,
+    "ja": 8,
+    "ko": 4,
+    "pt-BR": 3,
+    "vi": 6,
+    "zh-Hans": 5,
+    "zh-Hant": 6
+  },
+  "catalogs_modified": false,
+  "dispositions": {
+    "accept_proposal": 65,
+    "refine_proposal": 5
+  },
+  "live_state_at_review": {
+    "draft": true,
+    "head": "549bb55fe009246362cfd75e9f5fbfe5a66bb101",
+    "merge_state": "CLEAN",
+    "state": "OPEN"
+  },
+  "native_speaker_approval": false,
+  "packet_input_sha256": "da99e6a1d40e2f0f90503f1e4a033e2001e7555f1af00d2c388b1669762468ab",
+  "pr": "snapetech-org/slskR#204",
+  "refined_cells": [
+    {
+      "locale": "id",
+      "source_id": "Batch Window (ms)",
+      "target": "Rentang waktu pengelompokan pesan (ms)"
+    },
+    {
+      "locale": "hi",
+      "source_id": "Batch private-message recipients",
+      "target": "निजी संदेश के कई प्राप्तकर्ता"
+    },
+    {
+      "locale": "id",
+      "source_id": "Batch private-message recipients",
+      "target": "Daftar penerima pesan pribadi"
+    },
+    {
+      "locale": "ja",
+      "source_id": "Batch private-message recipients",
+      "target": "一括送信の宛先"
+    },
+    {
+      "locale": "vi",
+      "source_id": "Batch private-message recipients",
+      "target": "Danh sách người nhận tin nhắn riêng"
+    }
+  ],
+  "retained_cells_not_in_scope": 170,
+  "root_crossreview_comparison": {
+    "comparison_file": "root-comparison.json",
+    "matching_candidate_keys": 70,
+    "target_disagreements": 5,
+    "target_matches": 65
+  },
+  "root_crossreview_input_sha256": "06b9c9a580d7020c32c097bcd07f6aaaaa0f2a484c09b2edfd38eaf2d5ece4b6",
+  "task": "Independent semantic cross-review of W463–482 correction candidates",
+  "tests_builds_ci_run": false
+}

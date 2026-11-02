@@ -1,0 +1,230 @@
+{
+  "branch_tree_is_source_ancestor": true,
+  "caller_files": {
+    "web/src/components/Messaging/BatchPrivateMessageModal.jsx": 5,
+    "web/src/components/Messaging/Messaging.jsx": 1,
+    "web/src/components/Search/SongIDAnalysisResults.jsx": 1,
+    "web/src/components/System/Integrations/FederationDiagnosticsPanel.jsx": 1,
+    "web/src/components/System/Integrations/MetadataSettingsPanel.jsx": 3,
+    "web/src/components/System/Integrations/VpnPanel.jsx": 1,
+    "web/src/components/System/MediaCore/ContentDescriptorPublishingPanel.jsx": 2,
+    "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx": 2,
+    "web/src/components/System/MediaCore/PodMembershipManagementPanel.jsx": 6,
+    "web/src/components/System/MediaCore/PodMembershipVerificationPanel.jsx": 2,
+    "web/src/components/System/Network/index.jsx": 1,
+    "web/src/components/System/Security/AdversarialSettingsView.jsx": 1,
+    "web/src/components/Users/UserNoteModal.jsx": 1,
+    "web/src/lib/mediaServerIntegrations.js": 1,
+    "web/src/lib/servarrReadiness.js": 1
+  },
+  "catalogs": {
+    "ar": {
+      "bytes": 511336,
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "sha256": "c830f9ee72cfe0063d34a3f27e0d9645b9ea252c759a74f56abe7dc5d30c162d",
+      "source_keys": 5437
+    },
+    "de": {
+      "bytes": 442323,
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "sha256": "489e8f3b6b52e91ebff269554e05c12eef38d174f283821926c31e9fd19f44d3",
+      "source_keys": 5437
+    },
+    "es": {
+      "bytes": 443007,
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "sha256": "67460c3f778b015063611604cab21943252c251dfc79b6ce208e474e806ec1a8",
+      "source_keys": 5437
+    },
+    "fr": {
+      "bytes": 454045,
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "sha256": "b6cf19d1c1f364606590c6a3c995af35ad0d32de904dbbcd91466856c57c05d6",
+      "source_keys": 5437
+    },
+    "hi": {
+      "bytes": 674304,
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "sha256": "f236177bd681505f45279152b36b22d88602941607908117cb1250912186660f",
+      "source_keys": 5437
+    },
+    "id": {
+      "bytes": 408696,
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "sha256": "9f7659b0401c8505e737b4310557d791bc4e4f6908f2c51166a904ad11070366",
+      "source_keys": 5437
+    },
+    "ja": {
+      "bytes": 490663,
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "sha256": "c7c7584c2b5538025a5d9453ea47cd312afc16e18d54d6ba4adb94de95e2a4a0",
+      "source_keys": 5437
+    },
+    "ko": {
+      "bytes": 441214,
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "sha256": "7e8f00eb831277cd0154256197873c9fec3246fa07f2925933c4b38472599c19",
+      "source_keys": 5437
+    },
+    "pt-BR": {
+      "bytes": 437765,
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "sha256": "24eaa6d65cb4ad1f6a33ee9a611c2e556129053accac513fed6e38a8a5190c94",
+      "source_keys": 5437
+    },
+    "vi": {
+      "bytes": 473309,
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "sha256": "2c2791701056b996505836ab53d783556244e3d4c8ee7ea71b23e78d427cd380",
+      "source_keys": 5437
+    },
+    "zh-Hans": {
+      "bytes": 381968,
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "sha256": "bbc3faceda2b2972f5dbf3715311d5160ce29771638c9372c809fde1ddf94856",
+      "source_keys": 5437
+    },
+    "zh-Hant": {
+      "bytes": 382664,
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "sha256": "31b6eb4f7eea714dbc075671f704070937c8ded6cbb5be119b493f9e3ed48ffa",
+      "source_keys": 5437
+    }
+  },
+  "catalogs_modified": false,
+  "correction_candidates": 70,
+  "decisions": {
+    "accept-current": 170,
+    "confirm-prior-correction": 65,
+    "new-correction-candidate": 4,
+    "reopen-prior-accepted": 1
+  },
+  "freeze_manifest_declared_source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "freeze_manifest_sha256": "69713333eddc3d326cc28acb3a0c2f57edbe4f9fab77e31ddc95c5c8981c9013",
+  "live_pr_state": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "549bb55fe009246362cfd75e9f5fbfe5a66bb101",
+    "isDraft": true,
+    "mergeStateStatus": "CLEAN",
+    "mergeable": "MERGEABLE",
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "native_speaker_approval": false,
+  "per_locale": {
+    "ar": {
+      "accept-current": 13,
+      "confirm-prior-correction": 6,
+      "new-correction-candidate": 1
+    },
+    "de": {
+      "accept-current": 15,
+      "confirm-prior-correction": 5
+    },
+    "es": {
+      "accept-current": 13,
+      "confirm-prior-correction": 5,
+      "new-correction-candidate": 2
+    },
+    "fr": {
+      "accept-current": 15,
+      "confirm-prior-correction": 5
+    },
+    "hi": {
+      "accept-current": 15,
+      "confirm-prior-correction": 5
+    },
+    "id": {
+      "accept-current": 11,
+      "confirm-prior-correction": 8,
+      "new-correction-candidate": 1
+    },
+    "ja": {
+      "accept-current": 12,
+      "confirm-prior-correction": 8
+    },
+    "ko": {
+      "accept-current": 16,
+      "confirm-prior-correction": 3,
+      "reopen-prior-accepted": 1
+    },
+    "pt-BR": {
+      "accept-current": 17,
+      "confirm-prior-correction": 3
+    },
+    "vi": {
+      "accept-current": 14,
+      "confirm-prior-correction": 6
+    },
+    "zh-Hans": {
+      "accept-current": 15,
+      "confirm-prior-correction": 5
+    },
+    "zh-Hant": {
+      "accept-current": 14,
+      "confirm-prior-correction": 6
+    }
+  },
+  "placeholders_in_selected_source_ids": 0,
+  "pr_head": "549bb55fe009246362cfd75e9f5fbfe5a66bb101",
+  "pr_tree": "86f59f722e25c1a90d5bc348da68c27247088271",
+  "prior_conflicts": [],
+  "prior_evidence_inputs": 1023,
+  "prior_evidence_inputs_sha256": "75df6eb3b3230e372507bd9ed3c1681279d94ee41e9a52bf75591eb347a2d42d",
+  "prior_exact_match_cells": 162,
+  "prior_exact_match_raw_records": 359,
+  "prior_exact_match_records": 197,
+  "protected_literal_tokens_contextual_only": true,
+  "pull_request": 204,
+  "repository": "snapetech-org/slskR",
+  "schema_version": 1,
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_ids": 5437,
+  "source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "source_runtime_diff_from_source_head_to_pr_head": [],
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "target_locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "tests_builds_scans_ci_workflows_releases_tags_merges": false,
+  "window_cells": 240,
+  "window_indices": [
+    463,
+    482
+  ],
+  "window_source_ids": [
+    "Ban Member",
+    "Ban Reason (optional)",
+    "Bandwidth Limit",
+    "Banned Memberships:",
+    "Banned Rejections:",
+    "Banned:",
+    "Base URL",
+    "Base URL configured",
+    "Batch Descriptor Retrieval",
+    "Batch Private Message",
+    "Batch Publish Descriptors",
+    "Batch Publish Results",
+    "Batch Retrieval Results",
+    "Batch Window (ms)",
+    "Batch private message",
+    "Batch private-message body",
+    "Batch private-message recipients",
+    "Batch processed - click again to continue",
+    "Best Next Actions",
+    "Black"
+  ],
+  "worktree_status": ""
+}
