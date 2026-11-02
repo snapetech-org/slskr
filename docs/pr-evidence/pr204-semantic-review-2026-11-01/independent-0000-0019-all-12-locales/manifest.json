@@ -1,0 +1,333 @@
+{
+  "schema_version": 1,
+  "batch": "independent-0000-0019-all-12-locales",
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "pr_state": "OPEN",
+  "pr_draft": true,
+  "pr_branch": "codex/slskr-l10n-audit-20261030",
+  "review_head": "36c98eceea4c8cd016b2fe5092e563b17fcf3f32",
+  "review_tree": "bfe3d3cfbb4c2bb1eda75c29833028d72492bf3c",
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_catalog_tree_current_at_pr_head": true,
+  "pr_head_changes_after_source_catalog_head": "documentation/evidence only; no non-doc changes",
+  "direct_catalog": {
+    "source_ids": 5437,
+    "locales": [
+      "ar",
+      "de",
+      "es",
+      "fr",
+      "hi",
+      "id",
+      "ja",
+      "ko",
+      "pt-BR",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "slots": 65244,
+    "populated_cells": 65244,
+    "blank_cells": 0,
+    "structured_plural_cells": 15,
+    "structured_plural_locale_counts": {
+      "ar": 15
+    },
+    "catalog_sha256": {
+      "web/src/lib/locales/ui-labels.ar.json": "85aa499a0ac019fa7b6323e9cc2fbdd5363dd39cb5e328e5baa5c47b84f3c3c6",
+      "web/src/lib/locales/ui-labels.de.json": "27b9ecb1aefbe6a2cae22736d886c03088fe76d2fd3c7845be886db965aad3e6",
+      "web/src/lib/locales/ui-labels.es.json": "fab50f4cac1b305ac7bbebf38f55cd9d6256a95756a66fe940f4404732c8c4c5",
+      "web/src/lib/locales/ui-labels.fr.json": "3e384ba1d4b111ab1f13dc80010ff6e854863bc2f2ed863ab9a72eaf9b1dccec",
+      "web/src/lib/locales/ui-labels.hi.json": "fe80e06cccb908e4f8f7f2295a28d844effe29a247858f2196281949ae92f547",
+      "web/src/lib/locales/ui-labels.id.json": "ca0975bbcc408d4d3c146aba26c4e5480a0233b0cac603cd530ea82bb07681d8",
+      "web/src/lib/locales/ui-labels.ja.json": "0ca95fc5c9f0b4cee791ab71d0283b151136946da5e9383f366d5a16f5a7541e",
+      "web/src/lib/locales/ui-labels.ko.json": "5636a4b1a4bf325d6c03031b8b3ef34db7d04936c8216343e55b2d36fa544bcd",
+      "web/src/lib/locales/ui-labels.pt-BR.json": "4babb54558c6c224304c2c62ea1303cdad90c5f931bb936e92402323a5759ce9",
+      "web/src/lib/locales/ui-labels.vi.json": "91fac84a2ab6ebcfbe6f33cdf0302e0350b676e4cd69be796edc86509e856184",
+      "web/src/lib/locales/ui-labels.zh-Hans.json": "365c4c51e7cee40e79b37607319dd4dbe1345dcee77f085dd6f7fa1ad307881b",
+      "web/src/lib/locales/ui-labels.zh-Hant.json": "2945bee74a8ffc61db44b8a0bac113ba9f20a159657925c7f3dbc7d1647ce89c"
+    }
+  },
+  "source_index_range": [
+    0,
+    19
+  ],
+  "source_index_method": "zero-based Python lexical sort of the 5,437 frozen source-inventory source_id values",
+  "window_accounting": {
+    "source_keys": 20,
+    "cell_slots": 240,
+    "populated_cells": 240,
+    "fresh_cells": 76,
+    "prior_terminal_cells": 164,
+    "fresh_statuses": {
+      "accepted": 69,
+      "correction-needed": 7
+    },
+    "prior_statuses": {
+      "accepted": 112,
+      "correction-needed": 45,
+      "held": 7
+    },
+    "prior_accepted_carries": 112,
+    "prior_correction_needed_exclusions": 45,
+    "prior_held_exclusions": 7,
+    "final_statuses": {
+      "accepted": 181,
+      "correction-needed": 52,
+      "held": 7
+    },
+    "pending_exact_terminal_overlaps": 0,
+    "conflicting_exact_prior_statuses": 0
+  },
+  "per_locale": {
+    "ar": {
+      "fresh": {
+        "accepted": 9,
+        "correction-needed": 3
+      },
+      "prior": {
+        "accepted": 3,
+        "correction-needed": 5
+      }
+    },
+    "de": {
+      "fresh": {
+        "accepted": 12,
+        "correction-needed": 2
+      },
+      "prior": {
+        "accepted": 3,
+        "correction-needed": 3
+      }
+    },
+    "es": {
+      "fresh": {
+        "accepted": 12
+      },
+      "prior": {
+        "accepted": 3,
+        "correction-needed": 5
+      }
+    },
+    "fr": {
+      "fresh": {
+        "accepted": 12,
+        "correction-needed": 1
+      },
+      "prior": {
+        "accepted": 3,
+        "correction-needed": 4
+      }
+    },
+    "hi": {
+      "fresh": {
+        "accepted": 12,
+        "correction-needed": 1
+      },
+      "prior": {
+        "accepted": 3,
+        "correction-needed": 3,
+        "held": 1
+      }
+    },
+    "id": {
+      "fresh": {
+        "accepted": 12
+      },
+      "prior": {
+        "accepted": 3,
+        "correction-needed": 5
+      }
+    },
+    "ja": {
+      "fresh": {},
+      "prior": {
+        "accepted": 16,
+        "correction-needed": 3,
+        "held": 1
+      }
+    },
+    "ko": {
+      "fresh": {},
+      "prior": {
+        "accepted": 14,
+        "correction-needed": 5,
+        "held": 1
+      }
+    },
+    "pt-BR": {
+      "fresh": {},
+      "prior": {
+        "accepted": 16,
+        "correction-needed": 3,
+        "held": 1
+      }
+    },
+    "vi": {
+      "fresh": {},
+      "prior": {
+        "accepted": 14,
+        "correction-needed": 5,
+        "held": 1
+      }
+    },
+    "zh-Hans": {
+      "fresh": {},
+      "prior": {
+        "accepted": 17,
+        "correction-needed": 2,
+        "held": 1
+      }
+    },
+    "zh-Hant": {
+      "fresh": {},
+      "prior": {
+        "accepted": 17,
+        "correction-needed": 2,
+        "held": 1
+      }
+    }
+  },
+  "selection_rule": "Fresh review only for populated current cells with no exact terminal semantic record matching source ID, locale, source hash, and target hash. Exact accepted cells carry; correction-needed and held cells are excluded.",
+  "prior_overlap_scan": {
+    "scanned_json_evidence_files": 706,
+    "manifest_file": "prior-evidence-scan-manifest.jsonl",
+    "manifest_sha256": "723e4035ebfc15d965f296708a3d91f0ef927907fdacfccc420b9b7f900cb3a0",
+    "canonical_input_manifest_sha256": "9943607cadbf0b012ab09470e8824a71480c723cc7822906400b1a2e78788d1d",
+    "analysis_summary_sha256": "926d9288bb915d5dbe857c23a12cfca2a4228b36fd65bb9298c7eb6f1abe884d",
+    "input_root_ids": [
+      "prior-audit-7ff",
+      "pr-review-head"
+    ]
+  },
+  "source_context": {
+    "file": "source-context.txt",
+    "evidence_text_sha256": "8c0dd528365ffa5c23bd23823126d2b8875238cee819f25d724981a55716d62a",
+    "runtime_files": [
+      "web/src/components/App.jsx",
+      "web/src/components/Browse/BrowseSession.jsx",
+      "web/src/components/Browse/Directory.jsx",
+      "web/src/components/Player/PlayerLauncher.jsx",
+      "web/src/components/Player/VisualizerOverlayControls.jsx",
+      "web/src/components/Search/Response.jsx",
+      "web/src/components/Search/SongIDEvidenceDetails.jsx",
+      "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx",
+      "web/src/components/System/MediaCore/MediaCoreFuzzyContentPanel.jsx",
+      "web/src/components/System/MediaCore/MediaCoreHashSimilarityPanel.jsx",
+      "web/src/components/System/MediaCore/MediaCorePerceptualSimilarityPanel.jsx",
+      "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+      "web/src/components/System/MediaCore/PodOpinionsPanel.jsx",
+      "web/src/components/System/Network/index.jsx",
+      "web/src/components/System/Security/index.jsx",
+      "web/src/components/Transfers/TransferList.jsx"
+    ],
+    "sha256": {
+      "web/src/components/App.jsx": "a5916ac10ad34353fa35b414e8aeae2f7080887899d69c28c39adf7f46b75b47",
+      "web/src/components/Browse/BrowseSession.jsx": "2a15c62b380fa43e1186bcffc002b6d3a93460fe54f0cf743ca92f3b987f641e",
+      "web/src/components/Browse/Directory.jsx": "7c6b347c6851f0d85a4cdcef49041626396ec6850d404c4e1e991e6a9dbd5a2e",
+      "web/src/components/Player/PlayerLauncher.jsx": "6942fcea65ad86549e0114f765ec9ce50a7ad4497828d4d5b79373dfb32ce720",
+      "web/src/components/Player/VisualizerOverlayControls.jsx": "5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4",
+      "web/src/components/Search/Response.jsx": "da0ccb703c38cf3a444e9d79fba30cd62191f15277ec339b287529d121cbe6de",
+      "web/src/components/Search/SongIDEvidenceDetails.jsx": "4a90c2dfd31302a93964fed1f0642a56909bab926324519eb77c94cda6139f65",
+      "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx": "8cb1922e358f7229d7f8147f41e18bffa3146283c270a5844393fc72f755c6ca",
+      "web/src/components/System/MediaCore/MediaCoreFuzzyContentPanel.jsx": "f2f45f7a3e14734355ae9234b504039d43121d73da544df09509434e849ad18f",
+      "web/src/components/System/MediaCore/MediaCoreHashSimilarityPanel.jsx": "561f920034eae2f1768a420fa0b714fcc0a80ed0aff0ce254fd0a12c703997af",
+      "web/src/components/System/MediaCore/MediaCorePerceptualSimilarityPanel.jsx": "caf1ea1ae9193df532a3c6919b184841da53bd2db8b2996e99fa49e309da253e",
+      "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx": "34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60",
+      "web/src/components/System/MediaCore/PodOpinionsPanel.jsx": "181f034d5b6354dd10f5b383e42aefc0fd9ae7d63572eda99c78facda268f27f",
+      "web/src/components/System/Network/index.jsx": "81f45c3ef9dd9a153979cd39594b3eab4fd0cccc226654647fc3a022f97fe005",
+      "web/src/components/System/Security/index.jsx": "dc055397cbd4afe380d4b0c5c0f3af3c1077719fea1854ec4116cf2367ca2743",
+      "web/src/components/Transfers/TransferList.jsx": "5db7fa14417829b11cd41eb78614b114bb747c5c5fbdc2842c24dfc924066491"
+    },
+    "git_blob_ids": {
+      "web/src/components/App.jsx": "91799690ed97c8b6c90195924a410e7a919d257b",
+      "web/src/components/Browse/BrowseSession.jsx": "f23f2c0599eedac1b028b37c0a89383602c46186",
+      "web/src/components/Browse/Directory.jsx": "8f60fc38f61dc1ad5eaa5ed9975a4884b1156b84",
+      "web/src/components/Player/PlayerLauncher.jsx": "54f6f98454f46a957dc0e00c78660965412f025e",
+      "web/src/components/Player/VisualizerOverlayControls.jsx": "0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf",
+      "web/src/components/Search/Response.jsx": "8bee962fc708202a785758d9da1193ea4de59337",
+      "web/src/components/Search/SongIDEvidenceDetails.jsx": "a6a0eb1e9843801ff94e590a22878899f3d2bca2",
+      "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx": "4f3c8484d8d23746369ce7619ab4e017849dfb89",
+      "web/src/components/System/MediaCore/MediaCoreFuzzyContentPanel.jsx": "de8807b88672ece1f3881a566684011a9ea2089b",
+      "web/src/components/System/MediaCore/MediaCoreHashSimilarityPanel.jsx": "ef421bb767cd96a6f14922aa0b110b53952cbdfe",
+      "web/src/components/System/MediaCore/MediaCorePerceptualSimilarityPanel.jsx": "5f6ed7d6493ad4e5dbf6a03f00a023440f9c27df",
+      "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx": "2abab8a5496df8cdd48e7acf32b479c7ecba6c23",
+      "web/src/components/System/MediaCore/PodOpinionsPanel.jsx": "89eea2680f5cfacdc5c8000080c2e00229967df0",
+      "web/src/components/System/Network/index.jsx": "2df958dba38d5ca7841043940d0d2b9f9c238658",
+      "web/src/components/System/Security/index.jsx": "5a3b5cd919daa818d106031ecc70a31cde4c14a2",
+      "web/src/components/Transfers/TransferList.jsx": "6b0cc627ee092390cde17aa8330a8d7cb24202d3"
+    },
+    "reviewed_source_keys": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      19
+    ],
+    "source_index_19_note": "Runtime callsite is present in System/Security/index.jsx; dash is used as a list marker; German uses an en-dash typographic equivalent."
+  },
+  "placeholder_and_literal_checks": {
+    "fresh_cells_checked": 76,
+    "placeholder_sets_preserved": true,
+    "icu_messages": 0,
+    "protected_literals_preserved_or_flagged": true,
+    "arabic_separator_corrections": [
+      {
+        "source_index": 13,
+        "locale": "ar",
+        "from": "omitted leading comma",
+        "to": "Arabic comma and space"
+      },
+      {
+        "source_index": 14,
+        "locale": "ar",
+        "from": "omitted leading comma",
+        "to": "Arabic comma and space"
+      },
+      {
+        "source_index": 15,
+        "locale": "ar",
+        "from": "omitted leading comma",
+        "to": "Arabic comma and space"
+      }
+    ]
+  },
+  "connect_label_evidence": {
+    "source_id": "Connect",
+    "rendered_in": "web/src/components/App.jsx",
+    "catalog_path_pattern": "web/src/lib/locales/ui-labels.{locale}.json",
+    "targets": {
+      "ar": "يتصل",
+      "de": "Verbinden",
+      "es": "Conectar",
+      "fr": "Connecter",
+      "hi": "जोड़ना",
+      "id": "Menghubungkan"
+    },
+    "catalog_sha256": {
+      "ar": "85aa499a0ac019fa7b6323e9cc2fbdd5363dd39cb5e328e5baa5c47b84f3c3c6",
+      "de": "27b9ecb1aefbe6a2cae22736d886c03088fe76d2fd3c7845be886db965aad3e6",
+      "es": "fab50f4cac1b305ac7bbebf38f55cd9d6256a95756a66fe940f4404732c8c4c5",
+      "fr": "3e384ba1d4b111ab1f13dc80010ff6e854863bc2f2ed863ab9a72eaf9b1dccec",
+      "hi": "fe80e06cccb908e4f8f7f2295a28d844effe29a247858f2196281949ae92f547",
+      "id": "ca0975bbcc408d4d3c146aba26c4e5480a0233b0cac603cd530ea82bb07681d8"
+    }
+  },
+  "native_speaker_approval": false,
+  "catalog_or_source_changes_made": false,
+  "correction_suggestions_applied": false,
+  "tests_builds_ci_or_release_actions_run": false,
+  "browser_recapture_required": false
+}
