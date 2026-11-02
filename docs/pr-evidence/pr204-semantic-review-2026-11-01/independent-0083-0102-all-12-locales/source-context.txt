@@ -1,0 +1,88 @@
+# Runtime source context at PR #204 code head 7ff454828398de6a3cfb72fe7f0ed21fe419425b (tree 9e9f2aa743c4ff3236af8f99619803bdc3a37152)
+
+Review head 0f41d9a694fadd4a29384e8fa1d2927d7941c539 (tree 82fd7fa3bab336ca722fd143d537e905440c3ccb) adds documentation only after this source/catalog snapshot. Cited runtime files and locale catalogs match the frozen source snapshot.
+
+## `web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx` — blob `90f3e1d29a4b514a1877693e131e92b66b8050aa`, SHA-256 `17241e796b943988d339bac74569f5a5d4e8889194cad1221d0b9c8bc1b82a9e`
+
+Lines 496–501:
+496:                   aria-label={interfaceText("API key policy name")}
+497:                   disabled={!remoteConfiguration || saving}
+498:                   label={interfaceText("API Key Name")}
+499:                   onChange={(_, { value }) => update('apiKeyName', value)}
+500:                   value={form.apiKeyName}
+501:                  {...interfaceTextProps("API key policy name")}/>
+
+Lines 530–542:
+530:                   aria-label={interfaceText("API key CIDR allowlist")}
+531:                   disabled={!remoteConfiguration || saving}
+532:                   label={interfaceText("API CIDRs")}
+533:                   onChange={(_, { value }) => update('apiKeyCidr', value)}
+534:                   value={form.apiKeyCidr}
+535:                  {...interfaceTextProps("API key CIDR allowlist")}/>
+536:                 <Form.Input
+537:                   aria-label={interfaceText("API key scopes")}
+538:                   disabled={!remoteConfiguration || saving}
+539:                   label={interfaceText("API Scopes")}
+540:                   onChange={(_, { value }) => update('apiKeyScopes', value)}
+541:                   value={form.apiKeyScopes}
+542:                  {...interfaceTextProps("API key scopes")}/>
+
+Lines 617–623:
+617:                   aria-label={interfaceText("API rate limit window seconds")}
+618:                   disabled={!remoteConfiguration || saving}
+619:                   label={interfaceText("API Window sec")}
+620:                   onChange={(_, { value }) => update('rateLimitApiWindow', value)}
+621:                   type="number"
+622:                   value={form.rateLimitApiWindow}
+623:                  {...interfaceTextProps("API rate limit window seconds")}/>
+
+## `web/src/components/System/Integrations/MediaServerPanel.jsx` — blob `f0e320beceb19f9253fc8e687a5ffac0028f67d5`, SHA-256 `e8620c11fc3d54760a3332e5f791468029796fe21dc611cd1ef7fe7152c5d15d`
+
+Lines 206–212:
+206:             <Checkbox
+207:               aria-label={interfaceText("Media server token configured")}
+208:               checked={tokenConfigured}
+209:               label={interfaceText("API token stored")}
+210:               onChange={(_, { checked }) => setTokenConfigured(Boolean(checked))}
+211:               toggle
+212:              {...interfaceTextProps("Media server token configured")}/>
+
+## `web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx` — blob `327b7f895fdc64b4010aaa3bd787e5f38e64fb58`, SHA-256 `1cc2a189124afc784443085977608cf70ef9c1009143a110e74af7adb8e9f028`
+
+Lines 600–610:
+600:               <Form.Input
+601:                 aria-label={interfaceText("Pushover API token")}
+602:                 disabled={!remoteConfiguration || saving}
+603:                 label={interfaceText("API Token")}
+604:                 onChange={(_, { value }) => update('pushoverToken', value)}
+605:                 placeholder={
+606:                   interfaceText(form.pushoverTokenConfigured
+607:                     ? 'Configured'
+608:                     : 'Pushover application token')
+609:                 }
+610:                 type="password"
+
+## `web/src/components/Transfers/TransfersHeader.jsx` — blob `de01ff39c31f0ac094b95fba0a15f40f709f605c`, SHA-256 `57f43a6851d991b9241b73a0f9ff08636573a49282033722f7350fb7f2a44d6f`
+
+Lines 226–238:
+226:               className="accelerated-downloads-toggle"
+227:               disabled={
+228:                 !server.isConnected ||
+229:                 acceleratedChanging ||
+230:                 Boolean(modeStatusError)
+231:               }
+232:               hidden={direction === 'upload'}
+233:               label={localizedText('Accelerated')}
+234:               onChange={(_, data) => onAcceleratedChange?.(data.checked)}
+235:               toggle
+236:             />
+237:           }
+238:          {...interfaceTextProps("Allow slow or stalled downloads to use verified alternate sources. Soulseek peers use sequential failover; true multipart chunking is reserved for trusted slskr mesh peers.")}/>
+
+## Hindi CIDR field cross-reference
+
+`API key CIDR allowlist` labels the `apiKeyCidr` field; the visible neighboring label is `API CIDRs`. Hindi translates that visible label as `API सीआईडीआर` and this accessible name as `API कुंजी सीआईडीआर अनुमति सूची`, retaining API in Latin and transliterating CIDR consistently.
+
+## German compound notes
+
+The German catalog already uses `API-Schlüssel` (`API Key`) and `API-Token` (`API Token`). The fresh targets `API Schlüssel-CIDR-Zulassungsliste` and `API Ratenbegrenzungsfenster in Sekunden` omit that hyphen after the initial abbreviation; the proposed forms use the same local pattern.
