@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "head": "260312e31a9b2b8b153db831696f2f4a82f1f83a",
+  "tree": "f35a21696bca556901aa0c12a5ff6d191f8071a9",
+  "window": [
+    683,
+    702
+  ],
+  "cellCount": 240,
+  "uniqueCellCount": 240,
+  "callerPinCount": 29,
+  "sourceCurrentPlaceholderFailures": 0,
+  "sourceRecommendedPlaceholderFailures": 0,
+  "heldCells": 36,
+  "reviewReadOnly": true,
+  "repoOrPrModified": false,
+  "testsBuildsScansCiOrWorkflowsRun": false,
+  "nativeSpeakerApproval": false
+}

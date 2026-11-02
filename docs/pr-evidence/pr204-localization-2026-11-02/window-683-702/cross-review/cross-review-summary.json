@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "independent read-only exact-head localization cross-review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "state": "OPEN",
+  "draft": true,
+  "head": "260312e31a9b2b8b153db831696f2f4a82f1f83a",
+  "tree": "f35a21696bca556901aa0c12a5ff6d191f8071a9",
+  "window": [
+    683,
+    702
+  ],
+  "sourceIds": 20,
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "cellsReviewed": 240,
+  "dispositionCounts": {
+    "accept-current": 186,
+    "preserve-no-caller-hold": 36,
+    "accept-primary-correction": 18
+  },
+  "primaryCorrections": 18,
+  "primaryCorrectionsAccepted": 18,
+  "primaryCorrectionsRejected": 0,
+  "additionalCorrectionsOrRefinements": 0,
+  "noCallerHoldCells": 36,
+  "noCallerHoldSources": [
+    "Clear old searches",
+    "Clear selection",
+    "Clear the current selection without changing any searches."
+  ],
+  "catalogFilesReattested": 12,
+  "sourceRowsReattested": 20,
+  "callerLinePinsReattested": 29,
+  "placeholderFailures": 0,
+  "markupFailures": 0,
+  "protectedLiteralFailures": 0,
+  "nativeSpeakerApproval": false,
+  "nativeSpeakerReviewRequired": true,
+  "repositoryOrPrModified": false,
+  "testsBuildsScansCIWorkflowsBrowserOrReleaseRun": false,
+  "confidence": "high for exact pins and mechanical checks; moderate for semantic judgments pending native-speaker review",
+  "notes": [
+    "Accepted the updated German candidate for “Clear this browse result and enter another username.”; it names the current file view rather than a search result.",
+    "All three no-caller source groups remain unchanged and unendorsed.",
+    "No additional candidate was clear enough to add beyond the 18 primary corrections."
+  ],
+  "inputPrimaryChecksums": {
+    "README.md": "4b96e7ec0597fa65ba96c8857b0872b88aa501e3b706fbd141427520688d176b",
+    "caller-context-pins.jsonl": "e88dcada207d052e36e85641b550b1d478c9da67e1a604a0018a6088fbe81f1d",
+    "correction-candidates.jsonl": "df84f41def7801a0d75bf011e3e6207f7318aec1d53e15cc5c6f029019d86d11",
+    "current-cells.jsonl": "a65c02b29ce0176f3ebb87ee775fb435c38475682f6ca84ec11f445900f32ef8",
+    "freeze-manifest.json": "69713333eddc3d326cc28acb3a0c2f57edbe4f9fab77e31ddc95c5c8981c9013",
+    "freeze-manifest.sha256": "6b55c43f308d219957ad425d12c916589efc4a0abd6a85a7788675eef6bb7836",
+    "held-cells.jsonl": "678f2c6f168dd4557a291e3c93e6918e9fd428530358b5d5146c9b7569bdd0bd",
+    "manifest.json": "c4b3e0df91c5fe25c2b5a13d926c4ba5b3057eb62a183843285c8d87eed7b54c",
+    "primary-review-ledger.jsonl": "4cbb969af4427aa496ff6a8955119b60b27ac7c7fbfcee07463920b1eedaff66",
+    "primary-summary.json": "168914bf7ce14bba4a7ef5365aede4be795128dcf51fa42d86e18653141638d9",
+    "primary-verification.json": "dec896542d0c8412202473ef42c62df8d0169720bdce0e21c850814d78d771f6",
+    "prior-evidence-matches.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "review-input.jsonl": "a65c02b29ce0176f3ebb87ee775fb435c38475682f6ca84ec11f445900f32ef8",
+    "source-context.jsonl": "48a7e12c0d1a31c18f177e5d95aa8ddd860d7232cb684996bbe39bfc2bf46661",
+    "source-current-attestation.jsonl": "2f124206c376eefe7ebce93c81042ab902869933ab3a11873e5e3caa49c5b37c",
+    "source-inventory.jsonl": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+    "verification.json": "9cc31673f03b26abdb9a607e6be01cd523a5862a20dae73d4ba1035c17ea9afc"
+  }
+}

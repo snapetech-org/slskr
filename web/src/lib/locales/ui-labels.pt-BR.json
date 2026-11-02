@@ -4086,7 +4086,7 @@
   "Auto-tagging": "Etiquetagem automática",
   "Auto-tagging failed ({exceptionType})": "Falha na etiquetagem automática ({exceptionType})",
   "Chromaprint is not configured": "Chromaprint não está configurado",
-  "Cleared tag and organization snapshot for {playlistName}": "Tag limpa e instantâneo da organização para {playlistName}",
+  "Cleared tag and organization snapshot for {playlistName}": "Snapshot de organização de tags removido para {playlistName}.",
   "Created playlist collection for {playlistName} with {count} planned rows": "Coleção de playlist criada para {playlistName} com {count} linhas planejadas",
   "Existing hash reused": "Hash existente reutilizado",
   "File is too small for hashing": "O arquivo é muito pequeno para hash",

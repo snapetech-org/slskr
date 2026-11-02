@@ -1044,7 +1044,7 @@
   "Clear only the browser-local listening history used for this stats view.": "僅清除用於此統計檢視的瀏覽器本機收聽記錄。",
   "Clear search to browse folders.": "清除搜尋以瀏覽資料夾。",
   "Clear selected user": "清除選定的用戶",
-  "Clear tag organization snapshot for {name}": "{name} 的清晰標籤組織快照",
+  "Clear tag organization snapshot for {name}": "清除 {name} 的標籤組織快照",
   "Clear the RustyMilk preset search filter.": "清除 RustyMilk 預設搜尋過濾器。",
   "Clear the approved snapshot while keeping the dry-run preview available for more edits.": "清除已核准的快照，同時保留試運行預覽以進行更多編輯。",
   "Click any example to fill the read-only resolve and validation fields, plus the advanced registration fields.": "按一下任何範例以填寫唯讀解析和驗證欄位以及進階註冊欄位。",

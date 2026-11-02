@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "task": "slskR PR #204 W683–702 primary semantic review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "260312e31a9b2b8b153db831696f2f4a82f1f83a",
+  "tree": "f35a21696bca556901aa0c12a5ff6d191f8071a9",
+  "sourceBaselineHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceBaselineTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "sourcePositions": [
+    683,
+    702
+  ],
+  "sourceIds": 20,
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "cells": 240,
+  "counts": {
+    "accept-current": 186,
+    "hold-no-direct-caller": 36,
+    "propose-correction": 18
+  },
+  "candidateCells": 18,
+  "heldCells": 36,
+  "perLocale": {
+    "ar": {
+      "accept-current": 15,
+      "hold-no-direct-caller": 3,
+      "propose-correction": 2
+    },
+    "de": {
+      "accept-current": 14,
+      "hold-no-direct-caller": 3,
+      "propose-correction": 3
+    },
+    "es": {
+      "accept-current": 15,
+      "hold-no-direct-caller": 3,
+      "propose-correction": 2
+    },
+    "fr": {
+      "accept-current": 15,
+      "hold-no-direct-caller": 3,
+      "propose-correction": 2
+    },
+    "hi": {
+      "accept-current": 14,
+      "hold-no-direct-caller": 3,
+      "propose-correction": 3
+    },
+    "id": {
+      "accept-current": 15,
+      "hold-no-direct-caller": 3,
+      "propose-correction": 2
+    },
+    "ja": {
+      "accept-current": 17,
+      "hold-no-direct-caller": 3
+    },
+    "ko": {
+      "accept-current": 17,
+      "hold-no-direct-caller": 3
+    },
+    "pt-BR": {
+      "accept-current": 16,
+      "hold-no-direct-caller": 3,
+      "propose-correction": 1
+    },
+    "vi": {
+      "accept-current": 16,
+      "hold-no-direct-caller": 3,
+      "propose-correction": 1
+    },
+    "zh-Hans": {
+      "accept-current": 16,
+      "hold-no-direct-caller": 3,
+      "propose-correction": 1
+    },
+    "zh-Hant": {
+      "accept-current": 16,
+      "hold-no-direct-caller": 3,
+      "propose-correction": 1
+    }
+  },
+  "callerReferences": 29,
+  "priorEvidenceMatches": 0,
+  "placeholderFailures": 0,
+  "nativeSpeakerApproval": false,
+  "nativeSpeakerReviewRequired": true,
+  "testsBuildsScansCiWorkflowsRan": false,
+  "repositoryOrPrModified": false
+}
