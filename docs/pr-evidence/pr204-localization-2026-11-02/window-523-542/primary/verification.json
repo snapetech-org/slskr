@@ -1,0 +1,18 @@
+{
+  "all_240_current_values_and_hashes": "pass",
+  "caller_source_pr_file_hash_blob_excerpt_pins": "pass",
+  "candidate_count_and_hashes": "pass",
+  "candidate_placeholder_sets": "pass",
+  "catalog_file_sha_blob_pins": "pass",
+  "catalog_modified": false,
+  "no_op_source_caller_gap": "pass",
+  "pr_head_and_tree": "pass",
+  "prior_exact_source_current_hashes": "pass",
+  "prior_routed_rows_in_window": 0,
+  "prior_stale_matches": 0,
+  "schema_version": 1,
+  "source_head_and_tree": "pass",
+  "source_inventory_indices_hashes": "pass",
+  "tests_builds_scans_ci_workflows_releases_tags_merges": false,
+  "worktree_clean": true
+}

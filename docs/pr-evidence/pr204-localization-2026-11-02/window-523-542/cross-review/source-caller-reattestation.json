@@ -1,0 +1,3636 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pr_number": 204,
+  "pr_head": "fa712d12ec3a41ed5e4f2e264f6b550ddbdaba6e",
+  "pr_tree": "9f1111e6d75f082af5a0cf4bf346ad12b71cdfd1",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_is_merge_base": true,
+  "worktree_clean": true,
+  "source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "source_inventory_indexing": "zero-based JSONL row index",
+  "catalogs": [
+    {
+      "locale": "ar",
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "sha256": "fa84f9bfd93ff4b3b061fe9298448c5f57d0964a7f302885063c113dc7c3f6d9",
+      "blob_oid": "f963b51851d24596058d3eb335cdd5005be06eb7",
+      "source_keys": 5437
+    },
+    {
+      "locale": "de",
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "sha256": "d952d10b8ce9de3f619b5b952f90e19bf2d08321aa719710bae6861a3ba0d32b",
+      "blob_oid": "d9f43bb1f883d0fdf6890d9b4accdcca98fff17e",
+      "source_keys": 5437
+    },
+    {
+      "locale": "es",
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "sha256": "c57e8f4bd62dd6378467294c01fb4f73f74d630b0ece17959303d523948a5898",
+      "blob_oid": "010f1d0ae29cbc0c8e6786ae77e80fc6f6b1fbe9",
+      "source_keys": 5437
+    },
+    {
+      "locale": "fr",
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "sha256": "c6f79c3ce6d6beccf7ece8dad5232f97c0f5aaf59b2aec6e93f21616334de762",
+      "blob_oid": "d3da03d2f9275775b581484918b52daf0c1a5497",
+      "source_keys": 5437
+    },
+    {
+      "locale": "hi",
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "sha256": "9b1116d702a838126c789e17d64082eb455321a7d1e047383bdc447e08d71530",
+      "blob_oid": "161bcdf1a8e55c63863adabb91455b78bc8c3b2e",
+      "source_keys": 5437
+    },
+    {
+      "locale": "id",
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "sha256": "b55d71c8f02a39c67758101cba0f19bc3a569501146771e08c8e3f8b2c502bcf",
+      "blob_oid": "0681d13e5a1cbd949cedb47ce503512d7ba5e87d",
+      "source_keys": 5437
+    },
+    {
+      "locale": "ja",
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "sha256": "920f95310299bc86c9b27c85f214b65c37d46e2bffdecac48ed18e7b1a0485f3",
+      "blob_oid": "daadf6a5939ed158d20949f7698b06fc00ea3fd0",
+      "source_keys": 5437
+    },
+    {
+      "locale": "ko",
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "sha256": "14ac435bbc87ad2cf6ea2a909ad06b634c43d891927bdd7dcc341da6da93b40e",
+      "blob_oid": "4aa06b32c91d446afd17534d2c166f7e1a03935e",
+      "source_keys": 5437
+    },
+    {
+      "locale": "pt-BR",
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "sha256": "9d48f4e2a177a581e9bc9c7ff2461ed0b5b7f0987dd9eab401bfef07601c8e02",
+      "blob_oid": "2d870b6f90ab5ac59d99458cd32481af92c6e1e9",
+      "source_keys": 5437
+    },
+    {
+      "locale": "vi",
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "sha256": "9e391a9e479ddcc9d86aec0c620abafd389cedcd6ca33e213bc22990ef8fb15f",
+      "blob_oid": "e7db16cade7d3e676f6355642104e0f5dc6e80e7",
+      "source_keys": 5437
+    },
+    {
+      "locale": "zh-Hans",
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "sha256": "8327b72a4e062aa98d2468222cd71a2f1a592c7e55367e47227a2c8eeca3c54a",
+      "blob_oid": "ecfabeb56fa6ef805f00b2cfece70f4ad085ee81",
+      "source_keys": 5437
+    },
+    {
+      "locale": "zh-Hant",
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "sha256": "8f4d8b7c6d84685479cabf78ba7ef0738d9047299e73c8d8b9783ba298cd3da5",
+      "blob_oid": "39c66584c074fa61aa036710eb630dfea23cff0c",
+      "source_keys": 5437
+    }
+  ],
+  "cell_count": 240,
+  "cell_source_current_hash_mismatches": 0,
+  "catalog_file_hash_and_git_blob_pins": "pass",
+  "caller_pin_records": 46,
+  "caller_pin_file_blob_excerpt_errors": 0,
+  "source_contexts": [
+    {
+      "source_index": 523,
+      "source_id": "Browse user files",
+      "source_sha256": "6d55526c18f01ba1a07b4d6c2a1f6ee4e0f1073228409f44160244305168f60a",
+      "inventory_row_zero_based": 523,
+      "inventory_source_id_matches": true,
+      "caller_status": "direct-caller-pinned",
+      "localized_pin_count": 1,
+      "supporting_pin_count": 2,
+      "source_code_exact_occurrence_count": 4,
+      "source_code_occurrences": [
+        {
+          "path": "client-ts/README.md",
+          "line": 179,
+          "text": "- `browseUser(username, params)` - Browse user files"
+        },
+        {
+          "path": "examples/README.md",
+          "line": 148,
+          "text": "# Browse user files"
+        },
+        {
+          "path": "web/src/components/Browse/BrowseSession.jsx",
+          "line": 717,
+          "text": "    const browseButtonLabel = browseState === 'idle' ? 'Browse user files' : 'Clear browse result';"
+        },
+        {
+          "path": "web/src/components/Browse/BrowseSession.test.jsx",
+          "line": 12,
+          "text": "      screen.getByRole('button', { name: 'Browse user files' }),"
+        }
+      ],
+      "caller_pins": [
+        {
+          "path": "web/src/components/Browse/BrowseSession.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 717,
+          "excerpt_lines": [
+            714,
+            715,
+            716,
+            717,
+            718,
+            719,
+            720
+          ],
+          "source_file_hash": "2a15c62b380fa43e1186bcffc002b6d3a93460fe54f0cf743ca92f3b987f641e",
+          "source_blob_oid": "f23f2c0599eedac1b028b37c0a89383602c46186",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "2a15c62b380fa43e1186bcffc002b6d3a93460fe54f0cf743ca92f3b987f641e",
+          "pr_blob_oid": "f23f2c0599eedac1b028b37c0a89383602c46186",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/Browse/BrowseSession.jsx",
+          "kind": "supporting-context",
+          "line": 750,
+          "excerpt_lines": [
+            747,
+            748,
+            749,
+            750,
+            751,
+            752,
+            753
+          ],
+          "source_file_hash": "2a15c62b380fa43e1186bcffc002b6d3a93460fe54f0cf743ca92f3b987f641e",
+          "source_blob_oid": "f23f2c0599eedac1b028b37c0a89383602c46186",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "2a15c62b380fa43e1186bcffc002b6d3a93460fe54f0cf743ca92f3b987f641e",
+          "pr_blob_oid": "f23f2c0599eedac1b028b37c0a89383602c46186",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/Browse/BrowseSession.jsx",
+          "kind": "supporting-context",
+          "line": 752,
+          "excerpt_lines": [
+            749,
+            750,
+            751,
+            752,
+            753,
+            754,
+            755
+          ],
+          "source_file_hash": "2a15c62b380fa43e1186bcffc002b6d3a93460fe54f0cf743ca92f3b987f641e",
+          "source_blob_oid": "f23f2c0599eedac1b028b37c0a89383602c46186",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "2a15c62b380fa43e1186bcffc002b6d3a93460fe54f0cf743ca92f3b987f641e",
+          "pr_blob_oid": "f23f2c0599eedac1b028b37c0a89383602c46186",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        }
+      ]
+    },
+    {
+      "source_index": 524,
+      "source_id": "Browse your collections and play an item from a playlist or share list.",
+      "source_sha256": "5f20d23b2d3c7a3a1c1ff993f561f19ba9ca8addcae6f06b2bc58e8687689f20",
+      "inventory_row_zero_based": 524,
+      "inventory_source_id_matches": true,
+      "caller_status": "direct-caller-pinned",
+      "localized_pin_count": 2,
+      "supporting_pin_count": 0,
+      "source_code_exact_occurrence_count": 2,
+      "source_code_occurrences": [
+        {
+          "path": "web/src/components/Player/PlayerLauncher.jsx",
+          "line": 279,
+          "text": "        content={interfaceText(\"Browse your collections and play an item from a playlist or share list.\")}"
+        },
+        {
+          "path": "web/src/components/Player/PlayerLauncher.jsx",
+          "line": 296,
+          "text": "       {...interfaceTextProps(\"Browse your collections and play an item from a playlist or share list.\")}/>"
+        }
+      ],
+      "caller_pins": [
+        {
+          "path": "web/src/components/Player/PlayerLauncher.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 279,
+          "excerpt_lines": [
+            276,
+            277,
+            278,
+            279,
+            280,
+            281,
+            282
+          ],
+          "source_file_hash": "6942fcea65ad86549e0114f765ec9ce50a7ad4497828d4d5b79373dfb32ce720",
+          "source_blob_oid": "54f6f98454f46a957dc0e00c78660965412f025e",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "6942fcea65ad86549e0114f765ec9ce50a7ad4497828d4d5b79373dfb32ce720",
+          "pr_blob_oid": "54f6f98454f46a957dc0e00c78660965412f025e",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/Player/PlayerLauncher.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 296,
+          "excerpt_lines": [
+            293,
+            294,
+            295,
+            296,
+            297,
+            298,
+            299
+          ],
+          "source_file_hash": "6942fcea65ad86549e0114f765ec9ce50a7ad4497828d4d5b79373dfb32ce720",
+          "source_blob_oid": "54f6f98454f46a957dc0e00c78660965412f025e",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "6942fcea65ad86549e0114f765ec9ce50a7ad4497828d4d5b79373dfb32ce720",
+          "pr_blob_oid": "54f6f98454f46a957dc0e00c78660965412f025e",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        }
+      ]
+    },
+    {
+      "source_index": 525,
+      "source_id": "Browser-local preference surface for Search, Player, and Messages behavior that can be consumed by page-specific backfill.",
+      "source_sha256": "bb6ab62f15c8e6bca8575ed34b67244c8be66ef98a4a65763e574a0a0c49b8e2",
+      "inventory_row_zero_based": 525,
+      "inventory_source_id_matches": true,
+      "caller_status": "direct-caller-pinned",
+      "localized_pin_count": 1,
+      "supporting_pin_count": 0,
+      "source_code_exact_occurrence_count": 1,
+      "source_code_occurrences": [
+        {
+          "path": "web/src/components/System/ExperienceSettings/index.jsx",
+          "line": 264,
+          "text": "          <LocalizedText source={\"Browser-local preference surface for Search, Player, and Messages behavior that can be consumed by page-specific backfill.\"} /></p>"
+        }
+      ],
+      "caller_pins": [
+        {
+          "path": "web/src/components/System/ExperienceSettings/index.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 264,
+          "excerpt_lines": [
+            261,
+            262,
+            263,
+            264,
+            265,
+            266,
+            267
+          ],
+          "source_file_hash": "ba7826de4b32bc9506d5926e6243623ccc3104da43706ce7a57fe4b17bcf2f30",
+          "source_blob_oid": "fbe8caabfc30e03809dc5ae7051bddb731986956",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "ba7826de4b32bc9506d5926e6243623ccc3104da43706ce7a57fe4b17bcf2f30",
+          "pr_blob_oid": "fbe8caabfc30e03809dc5ae7051bddb731986956",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        }
+      ]
+    },
+    {
+      "source_index": 526,
+      "source_id": "Bucket Sizes (bytes)",
+      "source_sha256": "3b8439b54833d4fd9db7fc98b9a0905d444c52c274c13032f5d32be8d286f72f",
+      "inventory_row_zero_based": 526,
+      "inventory_source_id_matches": true,
+      "caller_status": "direct-caller-pinned",
+      "localized_pin_count": 1,
+      "supporting_pin_count": 0,
+      "source_code_exact_occurrence_count": 1,
+      "source_code_occurrences": [
+        {
+          "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+          "line": 422,
+          "text": "                      <label><LocalizedText source={\"Bucket Sizes (bytes)\"} /></label>"
+        }
+      ],
+      "caller_pins": [
+        {
+          "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 422,
+          "excerpt_lines": [
+            419,
+            420,
+            421,
+            422,
+            423,
+            424,
+            425
+          ],
+          "source_file_hash": "5b2dfa095ba281bae2b5ef66e17901b38c7d2a68d9bef52c5f016ce3352db72d",
+          "source_blob_oid": "adcacdd123faf82a315da746fab3243adf5ea6a3",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "5b2dfa095ba281bae2b5ef66e17901b38c7d2a68d9bef52c5f016ce3352db72d",
+          "pr_blob_oid": "adcacdd123faf82a315da746fab3243adf5ea6a3",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        }
+      ]
+    },
+    {
+      "source_index": 527,
+      "source_id": "Build",
+      "source_sha256": "bdd254b65baac169f6ac50e8175ce6d930c1fcb086dec59808d3e0170ae2291d",
+      "inventory_row_zero_based": 527,
+      "inventory_source_id_matches": true,
+      "caller_status": "direct-caller-pinned",
+      "localized_pin_count": 1,
+      "supporting_pin_count": 0,
+      "source_code_exact_occurrence_count": 344,
+      "source_code_occurrences": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "line": 60,
+          "text": "      - name: Build production web assets"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "line": 125,
+          "text": "      - name: Build daemon for protocol differential"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "line": 253,
+          "text": "      - name: Build TypeScript client"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "line": 452,
+          "text": "      - name: Build release archive"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "line": 577,
+          "text": "      - name: Build Debian packages for amd64 and arm64"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "line": 597,
+          "text": "      - name: Build RPMs for x86_64 and aarch64"
+        },
+        {
+          "path": ".github/workflows/live-parity.yml",
+          "line": 114,
+          "text": "      - name: Build daemon for live interoperability"
+        },
+        {
+          "path": ".github/workflows/release-publish.yml",
+          "line": 391,
+          "text": "      - name: Build and upload SRPM"
+        },
+        {
+          "path": ".github/workflows/release-publish.yml",
+          "line": 486,
+          "text": "      - name: Build source package"
+        },
+        {
+          "path": ".github/workflows/release-publish.yml",
+          "line": 719,
+          "text": "      - name: Build and push (ghcr)"
+        },
+        {
+          "path": ".github/workflows/release-publish.yml",
+          "line": 737,
+          "text": "      - name: Build and push (Docker Hub)"
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "line": 230,
+          "text": "    name: Build ${{ matrix.name }}"
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "line": 343,
+          "text": "      - name: Build archive"
+        },
+        {
+          "path": ".github/workflows/sync-unraid-legacy-ghcr.yml",
+          "line": 46,
+          "text": "      - name: Set up Buildx"
+        },
+        {
+          "path": "PLAN.md",
+          "line": 231,
+          "text": "- Build full daemon, API, and web UI into the new `slskr` app crate/binary."
+        },
+        {
+          "path": "README.md",
+          "line": 96,
+          "text": "- [Build from source](./docs/install.md#build)"
+        },
+        {
+          "path": "REMEDIATION.md",
+          "line": 137,
+          "text": "- [x] **0.2** Build was already clean; no `RequestSecurityHeaders` fix required."
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-e2e-owned-build-commands.json",
+          "line": 10,
+          "text": "    \"web/e2e/harness/BuildOwner.ts\": \"a05f41c9b5af1e265edcf5f7d7f45b33c8b04df085c61bafdc4cf670e55a63ed\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-59dd-complete-matrix.json",
+          "line": 44,
+          "text": "            \"name\": \"Build production web assets\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-59dd-complete-matrix.json",
+          "line": 749,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-59dd-complete-matrix.json",
+          "line": 904,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-59dd-complete-matrix.json",
+          "line": 1059,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-59dd-complete-matrix.json",
+          "line": 1214,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-59dd-complete-matrix.json",
+          "line": 1369,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-59dd-complete-matrix.json",
+          "line": 1524,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-59dd-complete-matrix.json",
+          "line": 1679,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-59dd-complete-matrix.json",
+          "line": 1802,
+          "text": "            \"name\": \"Build Debian packages for amd64 and arm64\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-59dd-complete-matrix.json",
+          "line": 1810,
+          "text": "            \"name\": \"Build RPMs for x86_64 and aarch64\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-7a-complete-matrix.json",
+          "line": 44,
+          "text": "            \"name\": \"Build production web assets\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-7a-complete-matrix.json",
+          "line": 765,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-7a-complete-matrix.json",
+          "line": 920,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-7a-complete-matrix.json",
+          "line": 1075,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-7a-complete-matrix.json",
+          "line": 1230,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-7a-complete-matrix.json",
+          "line": 1385,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-7a-complete-matrix.json",
+          "line": 1540,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-7a-complete-matrix.json",
+          "line": 1695,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-7a-complete-matrix.json",
+          "line": 1818,
+          "text": "            \"name\": \"Build Debian packages for amd64 and arm64\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-7a-complete-matrix.json",
+          "line": 1826,
+          "text": "            \"name\": \"Build RPMs for x86_64 and aarch64\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-a431-complete-matrix.json",
+          "line": 49,
+          "text": "            \"name\": \"Build production web assets\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-a431-complete-matrix.json",
+          "line": 754,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-a431-complete-matrix.json",
+          "line": 909,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-a431-complete-matrix.json",
+          "line": 1064,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-a431-complete-matrix.json",
+          "line": 1219,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-a431-complete-matrix.json",
+          "line": 1374,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-a431-complete-matrix.json",
+          "line": 1529,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-a431-complete-matrix.json",
+          "line": 1684,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-a431-complete-matrix.json",
+          "line": 1807,
+          "text": "            \"name\": \"Build Debian packages for amd64 and arm64\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-a431-complete-matrix.json",
+          "line": 1815,
+          "text": "            \"name\": \"Build RPMs for x86_64 and aarch64\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-cf37-complete-matrix.json",
+          "line": 618,
+          "text": "            \"name\": \"Build production web assets\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-cf37-complete-matrix.json",
+          "line": 757,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-cf37-complete-matrix.json",
+          "line": 912,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-cf37-complete-matrix.json",
+          "line": 1067,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-cf37-complete-matrix.json",
+          "line": 1222,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-cf37-complete-matrix.json",
+          "line": 1377,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-cf37-complete-matrix.json",
+          "line": 1532,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-cf37-complete-matrix.json",
+          "line": 1687,
+          "text": "            \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-cf37-complete-matrix.json",
+          "line": 1810,
+          "text": "            \"name\": \"Build Debian packages for amd64 and arm64\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-hosted-cf37-complete-matrix.json",
+          "line": 1818,
+          "text": "            \"name\": \"Build RPMs for x86_64 and aarch64\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-native-style-owner-extraction.json",
+          "line": 131,
+          "text": "    \"releaseBuild\": {"
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-shared-web-hosted-archive-matrix.json",
+          "line": 21,
+          "text": "          \"name\": \"Build production web assets\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-shared-web-hosted-archive-matrix.json",
+          "line": 39,
+          "text": "          \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-shared-web-hosted-archive-matrix.json",
+          "line": 65,
+          "text": "          \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-shared-web-hosted-archive-matrix.json",
+          "line": 91,
+          "text": "          \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-shared-web-hosted-archive-matrix.json",
+          "line": 117,
+          "text": "          \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-shared-web-hosted-archive-matrix.json",
+          "line": 143,
+          "text": "          \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-shared-web-hosted-archive-matrix.json",
+          "line": 169,
+          "text": "          \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-shared-web-hosted-archive-matrix.json",
+          "line": 195,
+          "text": "          \"name\": \"Build release archive\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf059-kspls0-deployed-route-audit.md",
+          "line": 6,
+          "text": "## Build and runtime"
+        },
+        {
+          "path": "client-go/batch.go",
+          "line": 42,
+          "text": "// BatchBuilder helps build batch operations"
+        },
+        {
+          "path": "client-go/batch.go",
+          "line": 43,
+          "text": "type BatchBuilder struct {"
+        },
+        {
+          "path": "client-go/batch.go",
+          "line": 49,
+          "text": "// NewBatchBuilder creates a new batch builder"
+        },
+        {
+          "path": "client-go/batch.go",
+          "line": 50,
+          "text": "func (c *Client) NewBatchBuilder() *BatchBuilder {"
+        },
+        {
+          "path": "client-go/batch.go",
+          "line": 51,
+          "text": "\treturn &BatchBuilder{"
+        },
+        {
+          "path": "client-go/batch.go",
+          "line": 58,
+          "text": "func (b *BatchBuilder) Get(path string, opID *string) *BatchBuilder {"
+        },
+        {
+          "path": "client-go/batch.go",
+          "line": 70,
+          "text": "func (b *BatchBuilder) Post(path string, body interface{}, opID *string) *BatchBuilder {"
+        },
+        {
+          "path": "client-go/batch.go",
+          "line": 83,
+          "text": "func (b *BatchBuilder) Put(path string, body interface{}, opID *string) *BatchBuilder {"
+        },
+        {
+          "path": "client-go/batch.go",
+          "line": 95,
+          "text": "func (b *BatchBuilder) Delete(path string, opID *string) *BatchBuilder {"
+        },
+        {
+          "path": "client-go/batch.go",
+          "line": 106,
+          "text": "func (b *BatchBuilder) Size() int {"
+        },
+        {
+          "path": "client-go/batch.go",
+          "line": 110,
+          "text": "func (b *BatchBuilder) operationID(opID *string) string {"
+        },
+        {
+          "path": "client-go/batch.go",
+          "line": 133,
+          "text": "func (b *BatchBuilder) Clear() *BatchBuilder {"
+        },
+        {
+          "path": "client-go/batch.go",
+          "line": 140,
+          "text": "func (b *BatchBuilder) GetOperations() []BatchOperation {"
+        },
+        {
+          "path": "client-go/batch.go",
+          "line": 209,
+          "text": "func (b *BatchBuilder) Execute(ctx context.Context) (*BatchResponse, error) {"
+        },
+        {
+          "path": "client-go/batch_test.go",
+          "line": 13,
+          "text": "func TestBatchBuilderOwnsNestedRequestBodies(t *testing.T) {"
+        },
+        {
+          "path": "client-go/batch_test.go",
+          "line": 20,
+          "text": "\tbuilder := client.NewBatchBuilder().Post(\"/api/searches\", body, nil)"
+        },
+        {
+          "path": "client-go/batch_test.go",
+          "line": 39,
+          "text": "func TestBatchBuilderSupportsAnyJSONBody(t *testing.T) {"
+        },
+        {
+          "path": "client-go/batch_test.go",
+          "line": 42,
+          "text": "\tbuilder := client.NewBatchBuilder().Post(\"/api/searches\", values, nil).Put(\"/api/config\", \"compact\", nil)"
+        },
+        {
+          "path": "client-go/batch_test.go",
+          "line": 76,
+          "text": "func TestBatchBuilderAvoidsGeneratedIDCollisions(t *testing.T) {"
+        },
+        {
+          "path": "client-go/batch_test.go",
+          "line": 78,
+          "text": "\tbuilder := client.NewBatchBuilder()"
+        },
+        {
+          "path": "client-go/batch_test.go",
+          "line": 88,
+          "text": "func TestBatchBuilderRejectsDuplicateIDsBeforeSending(t *testing.T) {"
+        },
+        {
+          "path": "client-go/batch_test.go",
+          "line": 90,
+          "text": "\tbuilder := client.NewBatchBuilder()"
+        },
+        {
+          "path": "client-go/batch_test.go",
+          "line": 142,
+          "text": "\t\t\tbuilder := NewClient(server.URL, \"token\").NewBatchBuilder()"
+        },
+        {
+          "path": "client-go/batch_test.go",
+          "line": 166,
+          "text": "\tbuilder := NewClient(server.URL, \"token\").NewBatchBuilder()"
+        },
+        {
+          "path": "client-go/examples/advanced_usage.go",
+          "line": 92,
+          "text": "\tbatch := client.NewBatchBuilder()"
+        },
+        {
+          "path": "client-go/examples/advanced_usage.go",
+          "line": 124,
+          "text": "\tbatch := client.NewBatchBuilder()"
+        },
+        {
+          "path": "client-go/examples/batch_operations.go",
+          "line": 21,
+          "text": "\tbatch := client.NewBatchBuilder()"
+        },
+        {
+          "path": "client-go/examples/integration_example.go",
+          "line": 181,
+          "text": "\tbatch := client.NewBatchBuilder()"
+        },
+        {
+          "path": "client-python/slskr/__init__.py",
+          "line": 15,
+          "text": "from .batch import BatchClient, BatchBuilder"
+        },
+        {
+          "path": "client-python/slskr/__init__.py",
+          "line": 22,
+          "text": "    \"BatchBuilder\","
+        },
+        {
+          "path": "client-python/slskr/batch.py",
+          "line": 72,
+          "text": "class BatchBuilder:"
+        },
+        {
+          "path": "client-python/slskr/batch.py",
+          "line": 73,
+          "text": "    \"\"\"Builder for batch operations\"\"\""
+        },
+        {
+          "path": "client-python/slskr/batch.py",
+          "line": 90,
+          "text": "    def get(self, path: str, op_id: str = None) -> \"BatchBuilder\":"
+        },
+        {
+          "path": "client-python/slskr/batch.py",
+          "line": 96,
+          "text": "    def post(self, path: str, body: Dict, op_id: str = None) -> \"BatchBuilder\":"
+        },
+        {
+          "path": "client-python/slskr/batch.py",
+          "line": 102,
+          "text": "    def put(self, path: str, body: Dict, op_id: str = None) -> \"BatchBuilder\":"
+        },
+        {
+          "path": "client-python/slskr/batch.py",
+          "line": 108,
+          "text": "    def delete(self, path: str, op_id: str = None) -> \"BatchBuilder\":"
+        },
+        {
+          "path": "client-python/slskr/batch.py",
+          "line": 114,
+          "text": "    def add_operations(self, ops: List[BatchOperation]) -> \"BatchBuilder\":"
+        },
+        {
+          "path": "client-python/slskr/batch.py",
+          "line": 123,
+          "text": "    def clear(self) -> \"BatchBuilder\":"
+        },
+        {
+          "path": "client-python/slskr/batch.py",
+          "line": 183,
+          "text": "    def builder(self) -> BatchBuilder:"
+        },
+        {
+          "path": "client-python/slskr/batch.py",
+          "line": 185,
+          "text": "        return BatchBuilder(self.client)"
+        },
+        {
+          "path": "client-python/tests/test_client.py",
+          "line": 13,
+          "text": "from slskr import BatchClient, BatchBuilder, SlskrClient, WebSocketClient"
+        },
+        {
+          "path": "client-python/tests/test_client.py",
+          "line": 342,
+          "text": "    builder = BatchBuilder(client).get(\"/api/health\", op_id=\"op-1\")"
+        },
+        {
+          "path": "client-python/tests/test_client.py",
+          "line": 360,
+          "text": "    builder = BatchBuilder(client).get(\"/api/health\", op_id=\"op-1\")"
+        },
+        {
+          "path": "client-python/tests/test_client.py",
+          "line": 367,
+          "text": "    builder = BatchBuilder(client)"
+        },
+        {
+          "path": "client-python/tests/test_client.py",
+          "line": 416,
+          "text": "    builder = BatchBuilder(SlskrClient(\"https://example.test\", \"token\"))"
+        },
+        {
+          "path": "client-python/tests/test_client.py",
+          "line": 428,
+          "text": "    builder = BatchBuilder(SlskrClient(\"https://example.test\", \"token\"))"
+        },
+        {
+          "path": "client-python/tests/test_client.py",
+          "line": 439,
+          "text": "    builder = BatchBuilder(client)"
+        },
+        {
+          "path": "client-ts/dist/batch-client.d.ts",
+          "line": 13,
+          "text": "    builder(): BatchBuilder;"
+        },
+        {
+          "path": "client-ts/dist/batch-client.d.ts",
+          "line": 31,
+          "text": "export declare class BatchBuilder {"
+        },
+        {
+          "path": "client-ts/dist/batch-client.js",
+          "line": 6,
+          "text": "exports.BatchBuilder = exports.BatchClient = exports.maxBatchOperations = void 0;"
+        },
+        {
+          "path": "client-ts/dist/batch-client.js",
+          "line": 67,
+          "text": "        return new BatchBuilder(this.client);"
+        },
+        {
+          "path": "client-ts/dist/batch-client.js",
+          "line": 104,
+          "text": "class BatchBuilder {"
+        },
+        {
+          "path": "client-ts/dist/batch-client.js",
+          "line": 238,
+          "text": "exports.BatchBuilder = BatchBuilder;"
+        },
+        {
+          "path": "client-ts/src/batch-client.test.ts",
+          "line": 1,
+          "text": "import { BatchBuilder, BatchClient, maxBatchOperations } from './batch-client';"
+        },
+        {
+          "path": "client-ts/src/batch-client.test.ts",
+          "line": 25,
+          "text": "    const builder = new BatchBuilder(client);"
+        },
+        {
+          "path": "client-ts/src/batch-client.test.ts",
+          "line": 39,
+          "text": "    const builder = new BatchBuilder(client).post('/api/searches', body);"
+        },
+        {
+          "path": "client-ts/src/batch-client.test.ts",
+          "line": 59,
+          "text": "    const builder = new BatchBuilder(client).addOperations(["
+        },
+        {
+          "path": "client-ts/src/batch-client.test.ts",
+          "line": 91,
+          "text": "    const builder = new BatchBuilder(client).addOperations(["
+        },
+        {
+          "path": "client-ts/src/batch-client.ts",
+          "line": 82,
+          "text": "  builder(): BatchBuilder {"
+        },
+        {
+          "path": "client-ts/src/batch-client.ts",
+          "line": 83,
+          "text": "    return new BatchBuilder(this.client);"
+        },
+        {
+          "path": "client-ts/src/batch-client.ts",
+          "line": 130,
+          "text": "export class BatchBuilder {"
+        },
+        {
+          "path": "crates/slskr-web/README.md",
+          "line": 18,
+          "text": "Build it with:"
+        },
+        {
+          "path": "crates/slskr-web/src/native_row_rendering.rs",
+          "line": 487,
+          "text": "        RouteKind::DiscoveryGraph => vec![primary_action, \"Queue Nearby\", \"Build Atlas\"],"
+        },
+        {
+          "path": "crates/slskr-web/src/native_tab_rendering.rs",
+          "line": 841,
+          "text": "            &[\"Build Atlas\", \"Queue Nearby\"]"
+        },
+        {
+          "path": "crates/slskr-web/src/native_workspace_panels.rs",
+          "line": 1094,
+          "text": "            r#\"<div class=\"slskr-native-grid discovery-graph-native\"><section class=\"slskr-native-main\"><h3>Discovery Graph Atlas</h3><div class=\"slskr-native-command-row\"><input aria-label=\"Artist Name\" placeholder=\"Artist Name\"><input aria-label=\"Album Title\" placeholder=\"Album Title\"><input aria-label=\"Track Title or Seed Label\" placeholder=\"Track Title or Seed Label\"><button type=\"button\">Build Atlas</button><button type=\"button\">Queue Nearby</button></div><div class=\"slskr-native-graph\"><span>Artist</span><span>Album</span><span>Track</span><span>Query</span></div>{preview}</section><aside class=\"slskr-native-side\"><h3>Recommendations</h3>{route_table}</aside></div>\"#,"
+        },
+        {
+          "path": "crates/slskr-web/src/route_catalog.rs",
+          "line": 1516,
+          "text": "            label: \"Build Discovery Graph\","
+        },
+        {
+          "path": "crates/slskr-web/src/route_controls.rs",
+          "line": 270,
+          "text": "            &[\"Build Discovery Graph\"]"
+        },
+        {
+          "path": "crates/slskr-web/src/route_reference_panels.rs",
+          "line": 100,
+          "text": "                vec![\"Build Atlas\", \"Queue Nearby\"],"
+        },
+        {
+          "path": "crates/slskr-web/src/route_workflow_rendering.rs",
+          "line": 204,
+          "text": "        RouteKind::DiscoveryGraph => r#\"<form class=\"slskr-toolbar slskr-workflow-toolbar\"><input class=\"slskr-toolbar-input\" value=\"\" placeholder=\"Artist or query\" aria-label=\"Seed artist or query\"><select aria-label=\"Source\"><option>Search history</option><option>Playlist</option><option>MusicBrainz</option></select><button type=\"button\" class=\"slskr-toolbar-command primary\" data-slskr-toolbar-action=\"0\">Build graph</button></form>\"#.to_string(),"
+        },
+        {
+          "path": "crates/slskr-web/src/web_tests/native_actions.rs",
+          "line": 54,
+          "text": "    assert!(integrations.contains(\"Build Discovery Graph\"));"
+        },
+        {
+          "path": "crates/slskr-web/src/web_tests/native_actions.rs",
+          "line": 63,
+          "text": "        (\"/discovery-graph\", \"Build Atlas\", \"Build Discovery Graph\"),"
+        },
+        {
+          "path": "crates/slskr-web/src/web_tests/native_actions.rs",
+          "line": 135,
+          "text": "        (\"/discovery-graph\", &[\"Queue Nearby\", \"Build Atlas\"]),"
+        },
+        {
+          "path": "crates/slskr-web/src/web_tests/workflow_rendering.rs",
+          "line": 52,
+          "text": "            \"Build graph\","
+        },
+        {
+          "path": "crates/slskr/build.rs",
+          "line": 1,
+          "text": "//! Build script for slskr"
+        },
+        {
+          "path": "crates/slskr/build.rs",
+          "line": 56,
+          "text": "        println!(\"Building webui...\");"
+        },
+        {
+          "path": "crates/slskr/src/activitypub_controller.rs",
+          "line": 164,
+          "text": "/// Matches the oracle's real `BuildSigningString`. Only the pseudo-headers"
+        },
+        {
+          "path": "crates/slskr/src/bloom_filter.rs",
+          "line": 40,
+          "text": "    /// Builds an empty filter sized for `expected_items` at `false_positive_rate`,"
+        },
+        {
+          "path": "crates/slskr/src/bloom_filter.rs",
+          "line": 158,
+          "text": "/// Matches native profile's `LibraryBloomDiffService.BuildSaltedItem`: salt, a"
+        },
+        {
+          "path": "crates/slskr/src/controller_regex.rs",
+          "line": 62,
+          "text": "    std::thread::Builder::new()"
+        },
+        {
+          "path": "crates/slskr/src/controller_reload.rs",
+          "line": 95,
+          "text": "    std::thread::Builder::new()"
+        },
+        {
+          "path": "crates/slskr/src/controller_tests/full_bounded_runners.rs",
+          "line": 9,
+          "text": "    tokio::runtime::Builder::new_multi_thread()"
+        },
+        {
+          "path": "crates/slskr/src/controller_tests/full_bounded_runners.rs",
+          "line": 22,
+          "text": "    std::thread::Builder::new()"
+        },
+        {
+          "path": "crates/slskr/src/controller_tests/full_federation_contracts.rs",
+          "line": 88,
+          "text": "    std::thread::Builder::new()"
+        },
+        {
+          "path": "crates/slskr/src/controller_tests/full_federation_differential.rs",
+          "line": 369,
+          "text": "    std::thread::Builder::new()"
+        },
+        {
+          "path": "crates/slskr/src/controller_tests/full_federation_differential.rs",
+          "line": 406,
+          "text": "    std::thread::Builder::new()"
+        },
+        {
+          "path": "crates/slskr/src/controller_tests/full_federation_differential.rs",
+          "line": 410,
+          "text": "            tokio::runtime::Builder::new_current_thread()"
+        },
+        {
+          "path": "crates/slskr/src/controller_tests/full_federation_differential.rs",
+          "line": 608,
+          "text": "    std::thread::Builder::new()"
+        },
+        {
+          "path": "crates/slskr/src/controller_tests/full_federation_differential.rs",
+          "line": 612,
+          "text": "            tokio::runtime::Builder::new_current_thread()"
+        },
+        {
+          "path": "crates/slskr/src/controller_tests/full_protocol_differential.rs",
+          "line": 495,
+          "text": "    // SoulseekProtocolParser.cs.  Build the expected payloads separately"
+        },
+        {
+          "path": "crates/slskr/src/controller_tests/full_route_fixtures.rs",
+          "line": 283,
+          "text": "    let server = std::thread::Builder::new()"
+        },
+        {
+          "path": "crates/slskr/src/controller_tests/full_route_fixtures.rs",
+          "line": 375,
+          "text": "    let server = std::thread::Builder::new()"
+        },
+        {
+          "path": "crates/slskr/src/controller_tests/full_route_fixtures.rs",
+          "line": 512,
+          "text": "    let http = std::thread::Builder::new()"
+        },
+        {
+          "path": "crates/slskr/src/controller_tests/full_route_fixtures.rs",
+          "line": 642,
+          "text": "    let http = std::thread::Builder::new()"
+        },
+        {
+          "path": "crates/slskr/src/controller_tests/full_route_fixtures.rs",
+          "line": 762,
+          "text": "    let server = std::thread::Builder::new()"
+        },
+        {
+          "path": "crates/slskr/src/controller_tests/full_security_contracts.rs",
+          "line": 1730,
+          "text": "    std::thread::Builder::new()"
+        },
+        {
+          "path": "crates/slskr/src/controller_tests/quarantine_verdict_fixture.rs",
+          "line": 1,
+          "text": "/// Builds a verdict body with a real, self-consistent signature --"
+        },
+        {
+          "path": "crates/slskr/src/daemon_runtime_setup.rs",
+          "line": 197,
+          "text": "        use std::os::unix::fs::{DirBuilderExt, PermissionsExt};"
+        },
+        {
+          "path": "crates/slskr/src/daemon_runtime_setup.rs",
+          "line": 199,
+          "text": "        let mut builder = std::fs::DirBuilder::new();"
+        },
+        {
+          "path": "crates/slskr/src/daemon_runtime_setup.rs",
+          "line": 260,
+          "text": "        use std::os::unix::fs::DirBuilderExt;"
+        },
+        {
+          "path": "crates/slskr/src/daemon_runtime_setup.rs",
+          "line": 262,
+          "text": "        let mut builder = std::fs::DirBuilder::new();"
+        },
+        {
+          "path": "crates/slskr/src/daemon_runtime_shutdown.rs",
+          "line": 29,
+          "text": "        let runtime = tokio::runtime::Builder::new_current_thread()"
+        },
+        {
+          "path": "crates/slskr/src/dht.rs",
+          "line": 66,
+          "text": "    /// Build the rendezvous node on the shared public UDP socket."
+        },
+        {
+          "path": "crates/slskr/src/dotnet_regex.rs",
+          "line": 48,
+          "text": "        let matcher = fancy_regex::RegexBuilder::new(&normalized)"
+        },
+        {
+          "path": "crates/slskr/src/dotnet_regex.rs",
+          "line": 97,
+          "text": "        std::thread::Builder::new()"
+        },
+        {
+          "path": "crates/slskr/src/feature_mutation_controller.rs",
+          "line": 1314,
+          "text": "/// Matches the oracle's real `TasteRecommendationService.BuildSearchText`:"
+        },
+        {
+          "path": "crates/slskr/src/http_connection.rs",
+          "line": 973,
+          "text": "        // Build extra headers. ASP.NET Core's frozen global limiter does not"
+        },
+        {
+          "path": "crates/slskr/src/lib.rs",
+          "line": 1073,
+          "text": "    let runtime = tokio::runtime::Builder::new_multi_thread()"
+        },
+        {
+          "path": "crates/slskr/src/multisource.rs",
+          "line": 862,
+          "text": "    let mut builder = fs::DirBuilder::new();"
+        },
+        {
+          "path": "crates/slskr/src/multisource.rs",
+          "line": 865,
+          "text": "        use std::os::unix::fs::DirBuilderExt;"
+        },
+        {
+          "path": "crates/slskr/src/musicbrainz_controller.rs",
+          "line": 1036,
+          "text": "/// Matches the oracle's real `TasteRecommendationService.BuildWishlistFilter`."
+        },
+        {
+          "path": "crates/slskr/src/musicbrainz_controller.rs",
+          "line": 1223,
+          "text": "/// Matches the oracle's real `MusicBrainzOverlayService.BuildExportReview`,"
+        },
+        {
+          "path": "crates/slskr/src/musicbrainz_controller.rs",
+          "line": 1347,
+          "text": "        // BuildExportReview shape the approve-export flow validates"
+        },
+        {
+          "path": "crates/slskr/src/oidc.rs",
+          "line": 294,
+          "text": "        let inner = reqwest::ClientBuilder::new()"
+        },
+        {
+          "path": "crates/slskr/src/quarantine_controller.rs",
+          "line": 236,
+          "text": "/// Builds the real quorum-based aggregate for a quarantine-jury request,"
+        },
+        {
+          "path": "crates/slskr/src/quarantine_controller.rs",
+          "line": 237,
+          "text": "/// matching the oracle's `BuildAggregate`: groups stored verdicts by type"
+        },
+        {
+          "path": "crates/slskr/src/quarantine_controller.rs",
+          "line": 430,
+          "text": "/// Matches the oracle's `QuarantineJuryService.BuildAuditStatus`."
+        },
+        {
+          "path": "crates/slskr/src/quarantine_controller.rs",
+          "line": 444,
+          "text": "/// Matches the oracle's `QuarantineJuryService.BuildAuditEntry`: real"
+        },
+        {
+          "path": "crates/slskr/src/routing.rs",
+          "line": 143,
+          "text": "// Response Builders"
+        },
+        {
+          "path": "crates/slskr/src/signalr_ws.rs",
+          "line": 94,
+          "text": "/// Build the response consumed by the JavaScript SignalR client before it"
+        },
+        {
+          "path": "crates/slskr/src/songid_controller.rs",
+          "line": 6,
+          "text": "/// Matches the oracle's real `SongIdService.BuildEvidencePackage`/"
+        },
+        {
+          "path": "crates/slskr/src/songid_controller.rs",
+          "line": 218,
+          "text": "    /// Builds the \"available\" flag and reason for a capability that"
+        },
+        {
+          "path": "crates/slskr/src/vpn.rs",
+          "line": 156,
+          "text": ") -> reqwest::RequestBuilder {"
+        },
+        {
+          "path": "docs/CLIENT_LIBRARIES.md",
+          "line": 103,
+          "text": "# Build and execute batch operations"
+        },
+        {
+          "path": "docs/CLIENT_LIBRARIES.md",
+          "line": 363,
+          "text": "batch := client.NewBatchBuilder()"
+        },
+        {
+          "path": "docs/CLIENT_LIBRARIES.md",
+          "line": 485,
+          "text": "builder := client.NewBatchBuilder()"
+        },
+        {
+          "path": "docs/README.md",
+          "line": 20,
+          "text": "| [Install guide](install.md) | Build, install, service, container, config, state, and exposure runbook. |"
+        },
+        {
+          "path": "docs/dev/github-actions-pin-policy.md",
+          "line": 28,
+          "text": "| `docker/setup-buildx-action` | `v4.4.1` | `f87e5991a6d7451dcb8d9637bfbc97413f497069` | Docker Buildx setup for multi-architecture release images. |"
+        },
+        {
+          "path": "docs/dev/refactor-handoff-20260915.md",
+          "line": 102,
+          "text": "### Web, Build, And Packaging"
+        },
+        {
+          "path": "docs/dev/refactoring-efficiency-plan.md",
+          "line": 5792,
+          "text": "## RF-034 Shared Web Asset Build (2026-09-27)"
+        },
+        {
+          "path": "docs/dev/refactoring-efficiency-plan.md",
+          "line": 6729,
+          "text": "empty browser evidence and removes stale reports before every launch. Build and focused scenario commands have five-minute deadlines; the full"
+        },
+        {
+          "path": "docs/dev/refactoring-efficiency-plan.md",
+          "line": 6898,
+          "text": "256, and full/closed/oversized admission never blocks. Builds without the"
+        },
+        {
+          "path": "docs/dev/refactoring-efficiency-plan.md",
+          "line": 7492,
+          "text": "## RF-006/RF-066 Owned E2E Build Commands (2026-09-28 UTC)"
+        },
+        {
+          "path": "docs/dev/refactoring-efficiency-plan.md",
+          "line": 7495,
+          "text": "`BuildOwner.ts` now owns commands with a ten-minute deadline, POSIX process-group"
+        },
+        {
+          "path": "docs/dev/refactoring-efficiency-plan.md",
+          "line": 8156,
+          "text": "## RF-051/RF-053/RF-054/RF-055/RF-056 Current-Build Browser Proof (2026-09-29 UTC)"
+        },
+        {
+          "path": "docs/dev/refactoring-efficiency-plan.md",
+          "line": 8263,
+          "text": "The 390 by 844 mobile Users capture showed the fixed footer clipping its Build"
+        },
+        {
+          "path": "docs/dev/refactoring-efficiency-plan.md",
+          "line": 8270,
+          "text": "has no horizontal overflow and that the Build link stays within the 390-pixel"
+        },
+        {
+          "path": "docs/dev/refactoring-efficiency-plan.md",
+          "line": 8437,
+          "text": "checks. Builds of the frozen comparison projects also emit their existing"
+        },
+        {
+          "path": "docs/features/web-ui-and-media.md",
+          "line": 36,
+          "text": "## Build and run the UI"
+        },
+        {
+          "path": "docs/full-network-test-plan.md",
+          "line": 349,
+          "text": "### Build & Unit Tests"
+        },
+        {
+          "path": "docs/http-api.md",
+          "line": 817,
+          "text": "1. Build slskr with HTTP API support:"
+        },
+        {
+          "path": "docs/install.md",
+          "line": 10,
+          "text": "## Build"
+        },
+        {
+          "path": "docs/release.md",
+          "line": 86,
+          "text": "Build the host archive:"
+        },
+        {
+          "path": "docs/rust-web-ui.md",
+          "line": 14,
+          "text": "- Build script: `scripts/build-rust-web.sh`"
+        },
+        {
+          "path": "docs/rust-web-ui.md",
+          "line": 25,
+          "text": "## Build"
+        },
+        {
+          "path": "flake.nix",
+          "line": 36,
+          "text": "            nativeBuildInputs = [ pkgs.makeWrapper ];"
+        },
+        {
+          "path": "packaging/debian/control",
+          "line": 7,
+          "text": "Build-Depends: debhelper-compat (= 13), findutils, tar"
+        },
+        {
+          "path": "packaging/rpm/slskr.spec",
+          "line": 16,
+          "text": "BuildRequires:  systemd-rpm-macros"
+        },
+        {
+          "path": "release-notes/20260816-rust-command-coverage.md",
+          "line": 8,
+          "text": "Build-safety checks now cover Cargo run, audit, metadata, tree, and benchmark entry points so repository Rust commands and their runtime children inherit the exclusive lock and memory ceiling."
+        },
+        {
+          "path": "release-notes/20260928-hosted-browser-audit-deadline.md",
+          "line": 8,
+          "text": "The full nightly desktop/mobile browser scenario now allows eight minutes on hosted runners. Build and focused workflow deadlines remain five minutes, with the existing service and job limits. Partial reports from timed-out runs remain failed evidence and owned work is cleaned up."
+        },
+        {
+          "path": "scripts/audit-operator-packaging.py",
+          "line": 161,
+          "text": "            all_present(source, (\"Source:\", \"Package:\", \"Build-Depends:\"))"
+        },
+        {
+          "path": "scripts/audit-parity-manifest.py",
+          "line": 2,
+          "text": "\"\"\"Build the frozen, externally observable parity work manifest."
+        },
+        {
+          "path": "scripts/build-release-archive.sh",
+          "line": 16,
+          "text": "Builds the slskr binary and creates a release archive containing:"
+        },
+        {
+          "path": "scripts/check-workflow-release-policy.sh",
+          "line": 289,
+          "text": "  'Build and push (ghcr)' \\"
+        },
+        {
+          "path": "scripts/parity_not_applicable.py",
+          "line": 587,
+          "text": "    elif source.endswith(\"Common/CodeQuality/RegressionBuildTask.cs\") and ("
+        },
+        {
+          "path": "scripts/run-cross-client-validation.sh",
+          "line": 93,
+          "text": "  detail=\"$( { tail -n 40 \"$stdout_file\"; grep -E '^(error:|FAILED|Failed|Build FAILED|Test Run Failed|warning |thread |panicked|Unhandled exception)' \"$stderr_file\" || true; } | sanitize_detail )\""
+        },
+        {
+          "path": "scripts/run-release-gate.sh",
+          "line": 85,
+          "text": "run_step \"Build web\" npm --prefix web run build"
+        },
+        {
+          "path": "scripts/run-release-gate.sh",
+          "line": 95,
+          "text": "run_step \"Build dashboard\" npm --prefix dashboard run build"
+        },
+        {
+          "path": "scripts/run-slskdn-cross-client-interop.sh",
+          "line": 522,
+          "text": "# Build before either daemon starts. slskdN's test endpoint overrides live in its"
+        },
+        {
+          "path": "vendor/mainline/src/dht.rs",
+          "line": 66,
+          "text": "pub struct DhtBuilder(Config);"
+        },
+        {
+          "path": "vendor/mainline/src/dht.rs",
+          "line": 68,
+          "text": "impl DhtBuilder {"
+        },
+        {
+          "path": "vendor/mainline/src/dht.rs",
+          "line": 190,
+          "text": "        thread::Builder::new()"
+        },
+        {
+          "path": "vendor/mainline/src/dht.rs",
+          "line": 206,
+          "text": "    pub fn builder() -> DhtBuilder {"
+        },
+        {
+          "path": "vendor/mainline/src/dht.rs",
+          "line": 207,
+          "text": "        DhtBuilder::default()"
+        },
+        {
+          "path": "vendor/mainline/src/dht.rs",
+          "line": 215,
+          "text": "    /// Create a new DHT node that is running in [Server mode][DhtBuilder::server_mode] as"
+        },
+        {
+          "path": "vendor/mainline/src/dht.rs",
+          "line": 728,
+          "text": "/// Builder for creating a [Testnet] with custom configuration."
+        },
+        {
+          "path": "vendor/mainline/src/dht.rs",
+          "line": 751,
+          "text": "pub struct TestnetBuilder {"
+        },
+        {
+          "path": "vendor/mainline/src/dht.rs",
+          "line": 757,
+          "text": "impl TestnetBuilder {"
+        },
+        {
+          "path": "vendor/mainline/src/dht.rs",
+          "line": 793,
+          "text": "    /// Build the testnet."
+        },
+        {
+          "path": "vendor/mainline/src/dht.rs",
+          "line": 837,
+          "text": "    pub fn builder(count: usize) -> TestnetBuilder {"
+        },
+        {
+          "path": "vendor/mainline/src/dht.rs",
+          "line": 838,
+          "text": "        TestnetBuilder::new(count)"
+        },
+        {
+          "path": "vendor/mainline/src/lib.rs",
+          "line": 22,
+          "text": "pub use dht::{Dht, DhtBuilder, SharedUdpIngress, Testnet, TestnetBuilder};"
+        },
+        {
+          "path": "vendor/mainline/src/rpc.rs",
+          "line": 168,
+          "text": "    /// If [crate::DhtBuilder::public_ip] was set, this is what will be returned"
+        },
+        {
+          "path": "vendor/mainline/src/rpc.rs",
+          "line": 178,
+          "text": "    /// but if [crate::DhtBuilder::server_mode] was set to true, then whether or not this node is firewalled"
+        },
+        {
+          "path": "vendor/mainline/src/rpc/info.rs",
+          "line": 29,
+          "text": "    /// If [crate::DhtBuilder::public_ip] was set, this is what will be returned"
+        },
+        {
+          "path": "vendor/mainline/src/rpc/info.rs",
+          "line": 38,
+          "text": "    /// but if [crate::DhtBuilder::server_mode] was set to true, then whether or not this node is firewalled"
+        },
+        {
+          "path": "web/README.md",
+          "line": 29,
+          "text": "## Build And Test"
+        },
+        {
+          "path": "web/e2e/README.md",
+          "line": 122,
+          "text": "### Build command ownership"
+        },
+        {
+          "path": "web/e2e/core-pages.spec.ts",
+          "line": 117,
+          "text": "            if (!build) throw new Error('Build link was not rendered');"
+        },
+        {
+          "path": "web/e2e/harness-lifecycle.spec.ts",
+          "line": 8,
+          "text": "import { runOwnedCommand, SharedBuildOwner } from './harness/BuildOwner';"
+        },
+        {
+          "path": "web/e2e/harness-lifecycle.spec.ts",
+          "line": 69,
+          "text": "  const owner = new SharedBuildOwner();"
+        },
+        {
+          "path": "web/e2e/harness-lifecycle.spec.ts",
+          "line": 105,
+          "text": "    awaitBuild(owner: SharedBuildOwner, build: (signal: AbortSignal) => Promise<void>): Promise<void>;"
+        },
+        {
+          "path": "web/e2e/harness-lifecycle.spec.ts",
+          "line": 107,
+          "text": "  const pending = internal.awaitBuild(new SharedBuildOwner(), (signal) => runOwnedCommand(process.execPath, ['-e', `require('fs').writeFileSync(${JSON.stringify(pidFile)}, String(process.pid)); setInterval(() => {}, 1000)`], process.cwd(), signal));"
+        },
+        {
+          "path": "web/e2e/harness/BuildOwner.ts",
+          "line": 59,
+          "text": "      failure ??= signal.reason ?? new Error('Build command cancelled');"
+        },
+        {
+          "path": "web/e2e/harness/BuildOwner.ts",
+          "line": 81,
+          "text": "type Build = {"
+        },
+        {
+          "path": "web/e2e/harness/BuildOwner.ts",
+          "line": 88,
+          "text": "export class SharedBuildOwner {"
+        },
+        {
+          "path": "web/e2e/harness/BuildOwner.ts",
+          "line": 89,
+          "text": "  private current?: Build;"
+        },
+        {
+          "path": "web/e2e/harness/BuildOwner.ts",
+          "line": 100,
+          "text": "      const job: Build = { controller, consumers: 0, promise: Promise.resolve() };"
+        },
+        {
+          "path": "web/e2e/harness/BuildOwner.ts",
+          "line": 118,
+          "text": "        const reason = signal.reason ?? new Error('Build consumer cancelled');"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 8,
+          "text": "import { runOwnedCommand, SharedBuildOwner } from './BuildOwner';"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 228,
+          "text": "  private static webBuildOwner = new SharedBuildOwner();"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 230,
+          "text": "  private static binaryBuildOwner = new SharedBuildOwner();"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 234,
+          "text": "  private pendingBuilds = new Set<Promise<void>>();"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 278,
+          "text": "    const rustBuildInputs = ["
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 287,
+          "text": "    if (await buildOutputIsFresh(releasePath, rustBuildInputs)) {"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 291,
+          "text": "    if (await buildOutputIsFresh(debugPath, rustBuildInputs)) {"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 296,
+          "text": "    await this.ensureBinaryBuild(repoRoot);"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 308,
+          "text": "  private async awaitBuild(owner: SharedBuildOwner, build: (signal: AbortSignal) => Promise<void>): Promise<void> {"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 310,
+          "text": "    this.pendingBuilds.add(pending);"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 314,
+          "text": "      this.pendingBuilds.delete(pending);"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 318,
+          "text": "  private async ensureBinaryBuild(repoRoot: string): Promise<void> {"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 319,
+          "text": "    await this.awaitBuild(SlskrNode.binaryBuildOwner, (signal) =>"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 329,
+          "text": "  private async ensureWebBuild(repoRoot: string): Promise<string> {"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 330,
+          "text": "    const webBuildPath = path.join(repoRoot, 'web', 'build');"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 331,
+          "text": "    const webBuildInputs = ["
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 340,
+          "text": "    if (await buildOutputIsFresh(path.join(webBuildPath, 'index.html'), webBuildInputs)) {"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 341,
+          "text": "      return webBuildPath;"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 345,
+          "text": "    await this.awaitBuild(SlskrNode.webBuildOwner, async (signal) => {"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 357,
+          "text": "      await fs.access(webBuildPath);"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 360,
+          "text": "        `Web build not found at ${webBuildPath} after \\`npm run build\\`.`,"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 364,
+          "text": "    return webBuildPath;"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 387,
+          "text": "    const webBuildPath = await this.ensureWebBuild(repoRoot);"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 507,
+          "text": "    const contentPath = path.relative(path.dirname(binaryPath), webBuildPath);"
+        },
+        {
+          "path": "web/e2e/harness/SlskrNode.ts",
+          "line": 995,
+          "text": "    await Promise.allSettled([...this.pendingBuilds]);"
+        },
+        {
+          "path": "web/scripts/audit-react-webui.mjs",
+          "line": 588,
+          "text": "      const resolvedBuildDir = path.resolve(buildDir);"
+        },
+        {
+          "path": "web/scripts/audit-react-webui.mjs",
+          "line": 589,
+          "text": "      let filePath = path.resolve(resolvedBuildDir, `.${decodedPath}`);"
+        },
+        {
+          "path": "web/scripts/audit-react-webui.mjs",
+          "line": 590,
+          "text": "      if (filePath !== resolvedBuildDir && !filePath.startsWith(`${resolvedBuildDir}${path.sep}`)) {"
+        },
+        {
+          "path": "web/scripts/audit-react-webui.mjs",
+          "line": 596,
+          "text": "        filePath = path.join(resolvedBuildDir, 'index.html');"
+        },
+        {
+          "path": "web/scripts/audit-react-webui.mjs",
+          "line": 603,
+          "text": "        filePath = path.join(resolvedBuildDir, 'index.html');"
+        },
+        {
+          "path": "web/scripts/smoke-subpath-build.mjs",
+          "line": 8,
+          "text": "let canonicalBuildDir = buildDir;"
+        },
+        {
+          "path": "web/scripts/smoke-subpath-build.mjs",
+          "line": 10,
+          "text": "  canonicalBuildDir = fs.realpathSync(buildDir);"
+        },
+        {
+          "path": "web/scripts/smoke-subpath-build.mjs",
+          "line": 14,
+          "text": "const indexPath = path.join(canonicalBuildDir, 'index.html');"
+        },
+        {
+          "path": "web/scripts/smoke-subpath-build.mjs",
+          "line": 59,
+          "text": "  const filePath = path.resolve(canonicalBuildDir, normalizedRelativePath);"
+        },
+        {
+          "path": "web/scripts/smoke-subpath-build.mjs",
+          "line": 60,
+          "text": "  const relativePathWithinBuild = path.relative(canonicalBuildDir, filePath);"
+        },
+        {
+          "path": "web/scripts/smoke-subpath-build.mjs",
+          "line": 63,
+          "text": "    relativePathWithinBuild === '..' ||"
+        },
+        {
+          "path": "web/scripts/smoke-subpath-build.mjs",
+          "line": 64,
+          "text": "    relativePathWithinBuild.startsWith(`..${path.sep}`) ||"
+        },
+        {
+          "path": "web/scripts/smoke-subpath-build.mjs",
+          "line": 65,
+          "text": "    path.isAbsolute(relativePathWithinBuild)"
+        },
+        {
+          "path": "web/scripts/smoke-subpath-build.mjs",
+          "line": 73,
+          "text": "function readBuildFile(filePath) {"
+        },
+        {
+          "path": "web/scripts/smoke-subpath-build.mjs",
+          "line": 80,
+          "text": "  const relativePath = path.relative(canonicalBuildDir, canonicalPath);"
+        },
+        {
+          "path": "web/scripts/smoke-subpath-build.mjs",
+          "line": 98,
+          "text": "    const currentRelativePath = path.relative(canonicalBuildDir, currentPath);"
+        },
+        {
+          "path": "web/scripts/smoke-subpath-build.mjs",
+          "line": 122,
+          "text": "if (!readBuildFile(indexPath)) {"
+        },
+        {
+          "path": "web/scripts/smoke-subpath-build.mjs",
+          "line": 129,
+          "text": "  let file = filePath ? readBuildFile(filePath) : null;"
+        },
+        {
+          "path": "web/scripts/smoke-subpath-build.mjs",
+          "line": 135,
+          "text": "    file = readBuildFile(indexPath);"
+        },
+        {
+          "path": "web/src/components/Browse/BrowseSession.jsx",
+          "line": 548,
+          "text": "    // Build direct parent lookups once instead of filtering every depth list"
+        },
+        {
+          "path": "web/src/components/Player/PlayerBar.jsx",
+          "line": 763,
+          "text": "              content={interfaceText(\"Build smart-radio search seeds from the current track without starting network work yet.\")}"
+        },
+        {
+          "path": "web/src/components/Player/PlayerBar.jsx",
+          "line": 769,
+          "text": "             {...interfaceTextProps(\"Build smart-radio search seeds from the current track without starting network work yet.\")}/>"
+        },
+        {
+          "path": "web/src/components/Player/PlayerRadioModal.jsx",
+          "line": 143,
+          "text": "          <LocalizedText source={\"Build review-first radio searches from the current track. Nothing is searched or queued until you choose a query.\"} /></p>"
+        },
+        {
+          "path": "web/src/components/Search/DiscographyCoveragePanel.jsx",
+          "line": 251,
+          "text": "          content={interfaceText(\"Build a per-release coverage map for this MusicBrainz artist using cached release data, verified HashDb evidence, and existing Wishlist seeds.\")}"
+        },
+        {
+          "path": "web/src/components/Search/DiscographyCoveragePanel.jsx",
+          "line": 262,
+          "text": "         {...interfaceTextProps(\"Build a per-release coverage map for this MusicBrainz artist using cached release data, verified HashDb evidence, and existing Wishlist seeds.\")}/>"
+        },
+        {
+          "path": "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx",
+          "line": 169,
+          "text": "  const handleBuild = async () => {"
+        },
+        {
+          "path": "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx",
+          "line": 194,
+          "text": "    await handleBuild();"
+        },
+        {
+          "path": "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx",
+          "line": 384,
+          "text": "          content={interfaceText(\"Build a persistent atlas in-page from the current seed fields instead of opening a temporary modal.\")}"
+        },
+        {
+          "path": "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx",
+          "line": 390,
+          "text": "              onClick={handleBuild}"
+        },
+        {
+          "path": "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx",
+          "line": 393,
+          "text": "              <LocalizedText source={\"Build Atlas\"} /></Button>"
+        },
+        {
+          "path": "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx",
+          "line": 395,
+          "text": "         {...interfaceTextProps(\"Build a persistent atlas in-page from the current seed fields instead of opening a temporary modal.\")}/>"
+        },
+        {
+          "path": "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx",
+          "line": 631,
+          "text": "          <LocalizedText source={\"Build an atlas from a seed above or restore a saved branch.\"} /></Segment>"
+        },
+        {
+          "path": "web/src/components/Search/DiscoveryGraphModal.jsx",
+          "line": 146,
+          "text": "            <LocalizedText source={\"Building neighborhood\"} /></Loader>"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "line": 104,
+          "text": "    void this.fetchBuildInfo();"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "line": 196,
+          "text": "  fetchBuildInfo = async () => {"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "line": 203,
+          "text": "      const buildInfo = await application.getBuild({ checkForUpdates: true });"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "line": 211,
+          "text": "          buildInfoError: toDisplayError(error, interfaceText('Build information unavailable')),"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "line": 270,
+          "text": "    const currentBuild = buildInfo?.current || buildInfo?.full || interfaceText('unknown');"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "line": 271,
+          "text": "    const fullBuild = buildInfo?.full || currentBuild;"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "line": 272,
+          "text": "    const latestBuild = buildInfo?.latest || '';"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "line": 273,
+          "text": "    const latestTag = buildInfo?.latestTag || latestBuild;"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "line": 370,
+          "text": "                  ? interfaceText('Running {currentBuild}; GitHub has {latestBuild}', {"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "line": 371,
+          "text": "                    currentBuild: fullBuild,"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "line": 372,
+          "text": "                    latestBuild: latestTag || latestBuild,"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "line": 374,
+          "text": "                    : interfaceText('Running {currentBuild}', { currentBuild: fullBuild })"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "line": 378,
+          "text": "          <span className=\"slskr-footer-build-label\"><LocalizedText source={\"Build\"} /></span>"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "line": 379,
+          "text": "                <code>{currentBuild}</code>"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "line": 382,
+          "text": "                    <LocalizedText source={\"update\"} />{\" \"}{latestBuild}"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.test.jsx",
+          "line": 7,
+          "text": "const { getBuild, getSlskrStats, getStats, getSpeeds, isLoggedIn } = vi.hoisted(() => ({"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.test.jsx",
+          "line": 8,
+          "text": "  getBuild: vi.fn(),"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.test.jsx",
+          "line": 16,
+          "text": "  getBuild,"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.test.jsx",
+          "line": 55,
+          "text": "    getBuild.mockResolvedValue({"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.test.jsx",
+          "line": 88,
+          "text": "    getBuild.mockResolvedValue({"
+        },
+        {
+          "path": "web/src/components/Shared/Footer.test.jsx",
+          "line": 112,
+          "text": "    expect(getBuild).not.toHaveBeenCalled();"
+        },
+        {
+          "path": "web/src/components/Shared/UserCard.jsx",
+          "line": 382,
+          "text": "    // Build compact stats display - always show placeholders if no data"
+        },
+        {
+          "path": "web/src/lib/api.js",
+          "line": 19,
+          "text": " * Builds an API URL from a relative path, ensuring no double-prefixing."
+        },
+        {
+          "path": "web/src/lib/application.js",
+          "line": 30,
+          "text": "export const getBuild = async ({ checkForUpdates = true } = {}) => {"
+        },
+        {
+          "path": "web/src/lib/coreServiceContracts.test.js",
+          "line": 38,
+          "text": "    await expect(application.getBuild()).resolves.toEqual({ version: '1.0.0' });"
+        },
+        {
+          "path": "web/src/lib/coreServiceContracts.test.js",
+          "line": 61,
+          "text": "    ['application build', application.getBuild, { data: 'build' }],"
+        },
+        {
+          "path": "web/src/lib/hubFactory.js",
+          "line": 4,
+          "text": "  HubConnectionBuilder,"
+        },
+        {
+          "path": "web/src/lib/hubFactory.js",
+          "line": 344,
+          "text": "  new HubConnectionBuilder()"
+        },
+        {
+          "path": "web/src/lib/hubFactory.test.js",
+          "line": 14,
+          "text": "  class HubConnectionBuilder {"
+        },
+        {
+          "path": "web/src/lib/hubFactory.test.js",
+          "line": 43,
+          "text": "    HubConnectionBuilder,"
+        }
+      ],
+      "caller_pins": [
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 378,
+          "excerpt_lines": [
+            375,
+            376,
+            377,
+            378,
+            379,
+            380,
+            381
+          ],
+          "source_file_hash": "48191fa2f0257b1afa3dbc4bc8c23673fbb11e54bffb8848a9885ea34d03fb1a",
+          "source_blob_oid": "c94f4403699a76ac44d5e4823e2e9e86ba8cc3fb",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "48191fa2f0257b1afa3dbc4bc8c23673fbb11e54bffb8848a9885ea34d03fb1a",
+          "pr_blob_oid": "c94f4403699a76ac44d5e4823e2e9e86ba8cc3fb",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        }
+      ]
+    },
+    {
+      "source_index": 528,
+      "source_id": "Build Atlas",
+      "source_sha256": "1f2e78593c18641304280ec8d41be4aa9a3912405c1aba56d3b342046226da2f",
+      "inventory_row_zero_based": 528,
+      "inventory_source_id_matches": true,
+      "caller_status": "direct-caller-pinned",
+      "localized_pin_count": 1,
+      "supporting_pin_count": 2,
+      "source_code_exact_occurrence_count": 7,
+      "source_code_occurrences": [
+        {
+          "path": "crates/slskr-web/src/native_row_rendering.rs",
+          "line": 487,
+          "text": "        RouteKind::DiscoveryGraph => vec![primary_action, \"Queue Nearby\", \"Build Atlas\"],"
+        },
+        {
+          "path": "crates/slskr-web/src/native_tab_rendering.rs",
+          "line": 841,
+          "text": "            &[\"Build Atlas\", \"Queue Nearby\"]"
+        },
+        {
+          "path": "crates/slskr-web/src/native_workspace_panels.rs",
+          "line": 1094,
+          "text": "            r#\"<div class=\"slskr-native-grid discovery-graph-native\"><section class=\"slskr-native-main\"><h3>Discovery Graph Atlas</h3><div class=\"slskr-native-command-row\"><input aria-label=\"Artist Name\" placeholder=\"Artist Name\"><input aria-label=\"Album Title\" placeholder=\"Album Title\"><input aria-label=\"Track Title or Seed Label\" placeholder=\"Track Title or Seed Label\"><button type=\"button\">Build Atlas</button><button type=\"button\">Queue Nearby</button></div><div class=\"slskr-native-graph\"><span>Artist</span><span>Album</span><span>Track</span><span>Query</span></div>{preview}</section><aside class=\"slskr-native-side\"><h3>Recommendations</h3>{route_table}</aside></div>\"#,"
+        },
+        {
+          "path": "crates/slskr-web/src/route_reference_panels.rs",
+          "line": 100,
+          "text": "                vec![\"Build Atlas\", \"Queue Nearby\"],"
+        },
+        {
+          "path": "crates/slskr-web/src/web_tests/native_actions.rs",
+          "line": 63,
+          "text": "        (\"/discovery-graph\", \"Build Atlas\", \"Build Discovery Graph\"),"
+        },
+        {
+          "path": "crates/slskr-web/src/web_tests/native_actions.rs",
+          "line": 135,
+          "text": "        (\"/discovery-graph\", &[\"Queue Nearby\", \"Build Atlas\"]),"
+        },
+        {
+          "path": "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx",
+          "line": 393,
+          "text": "              <LocalizedText source={\"Build Atlas\"} /></Button>"
+        }
+      ],
+      "caller_pins": [
+        {
+          "path": "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 393,
+          "excerpt_lines": [
+            390,
+            391,
+            392,
+            393,
+            394,
+            395,
+            396
+          ],
+          "source_file_hash": "9ab139ea6514100de0cef711e2aa5e26745bcc9936c965a9028c2591e6338471",
+          "source_blob_oid": "2aa163337ab944a655b7869ea98297beda838627",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "9ab139ea6514100de0cef711e2aa5e26745bcc9936c965a9028c2591e6338471",
+          "pr_blob_oid": "2aa163337ab944a655b7869ea98297beda838627",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "crates/slskr-web/src/native_row_rendering.rs",
+          "kind": "supporting-context",
+          "line": 487,
+          "excerpt_lines": [
+            484,
+            485,
+            486,
+            487,
+            488,
+            489,
+            490
+          ],
+          "source_file_hash": "6f161e300327ff4abbcce8bb0bd864f1925411321a399c48204591de96abdd65",
+          "source_blob_oid": "aa7ce7f37f47c19fc155fc5580055bf8bc115609",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "6f161e300327ff4abbcce8bb0bd864f1925411321a399c48204591de96abdd65",
+          "pr_blob_oid": "aa7ce7f37f47c19fc155fc5580055bf8bc115609",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "crates/slskr-web/src/native_tab_rendering.rs",
+          "kind": "supporting-context",
+          "line": 841,
+          "excerpt_lines": [
+            838,
+            839,
+            840,
+            841,
+            842,
+            843,
+            844
+          ],
+          "source_file_hash": "d3ad7316bcdb69f3c64a3a7ab2211a1d5646f3bb997a938e8d9c2998ab31ab10",
+          "source_blob_oid": "5cbb9ace4ec143aa7acccee8192371b70ae92e1a",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "d3ad7316bcdb69f3c64a3a7ab2211a1d5646f3bb997a938e8d9c2998ab31ab10",
+          "pr_blob_oid": "5cbb9ace4ec143aa7acccee8192371b70ae92e1a",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        }
+      ]
+    },
+    {
+      "source_index": 529,
+      "source_id": "Build a per-release coverage map for this MusicBrainz artist using cached release data, verified HashDb evidence, and existing Wishlist seeds.",
+      "source_sha256": "a60a28f96c4352ee529d302a80c9afee434495e556411939e99a486a7fe20669",
+      "inventory_row_zero_based": 529,
+      "inventory_source_id_matches": true,
+      "caller_status": "direct-caller-pinned",
+      "localized_pin_count": 2,
+      "supporting_pin_count": 2,
+      "source_code_exact_occurrence_count": 2,
+      "source_code_occurrences": [
+        {
+          "path": "web/src/components/Search/DiscographyCoveragePanel.jsx",
+          "line": 251,
+          "text": "          content={interfaceText(\"Build a per-release coverage map for this MusicBrainz artist using cached release data, verified HashDb evidence, and existing Wishlist seeds.\")}"
+        },
+        {
+          "path": "web/src/components/Search/DiscographyCoveragePanel.jsx",
+          "line": 262,
+          "text": "         {...interfaceTextProps(\"Build a per-release coverage map for this MusicBrainz artist using cached release data, verified HashDb evidence, and existing Wishlist seeds.\")}/>"
+        }
+      ],
+      "caller_pins": [
+        {
+          "path": "web/src/components/Search/DiscographyCoveragePanel.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 251,
+          "excerpt_lines": [
+            248,
+            249,
+            250,
+            251,
+            252,
+            253,
+            254
+          ],
+          "source_file_hash": "d1fdb70100b0fa7f3d38a3f0d37766e71e1efc45b8f4f47ee44684c5d173090a",
+          "source_blob_oid": "30a767356c47e5198976ddbac4ce657320f15b03",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "d1fdb70100b0fa7f3d38a3f0d37766e71e1efc45b8f4f47ee44684c5d173090a",
+          "pr_blob_oid": "30a767356c47e5198976ddbac4ce657320f15b03",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/Search/DiscographyCoveragePanel.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 262,
+          "excerpt_lines": [
+            259,
+            260,
+            261,
+            262,
+            263,
+            264,
+            265
+          ],
+          "source_file_hash": "d1fdb70100b0fa7f3d38a3f0d37766e71e1efc45b8f4f47ee44684c5d173090a",
+          "source_blob_oid": "30a767356c47e5198976ddbac4ce657320f15b03",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "d1fdb70100b0fa7f3d38a3f0d37766e71e1efc45b8f4f47ee44684c5d173090a",
+          "pr_blob_oid": "30a767356c47e5198976ddbac4ce657320f15b03",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/Search/DiscographyCoveragePanel.jsx",
+          "kind": "supporting-context",
+          "line": 231,
+          "excerpt_lines": [
+            228,
+            229,
+            230,
+            231,
+            232,
+            233,
+            234
+          ],
+          "source_file_hash": "d1fdb70100b0fa7f3d38a3f0d37766e71e1efc45b8f4f47ee44684c5d173090a",
+          "source_blob_oid": "30a767356c47e5198976ddbac4ce657320f15b03",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "d1fdb70100b0fa7f3d38a3f0d37766e71e1efc45b8f4f47ee44684c5d173090a",
+          "pr_blob_oid": "30a767356c47e5198976ddbac4ce657320f15b03",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/Search/DiscographyCoveragePanel.jsx",
+          "kind": "supporting-context",
+          "line": 279,
+          "excerpt_lines": [
+            276,
+            277,
+            278,
+            279,
+            280,
+            281,
+            282
+          ],
+          "source_file_hash": "d1fdb70100b0fa7f3d38a3f0d37766e71e1efc45b8f4f47ee44684c5d173090a",
+          "source_blob_oid": "30a767356c47e5198976ddbac4ce657320f15b03",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "d1fdb70100b0fa7f3d38a3f0d37766e71e1efc45b8f4f47ee44684c5d173090a",
+          "pr_blob_oid": "30a767356c47e5198976ddbac4ce657320f15b03",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        }
+      ]
+    },
+    {
+      "source_index": 530,
+      "source_id": "Build a persistent atlas in-page from the current seed fields instead of opening a temporary modal.",
+      "source_sha256": "1b625be856ce548cd4aa3b29ede756c81a4c6241a83ebd71cd21594d904bcdc8",
+      "inventory_row_zero_based": 530,
+      "inventory_source_id_matches": true,
+      "caller_status": "direct-caller-pinned",
+      "localized_pin_count": 2,
+      "supporting_pin_count": 1,
+      "source_code_exact_occurrence_count": 2,
+      "source_code_occurrences": [
+        {
+          "path": "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx",
+          "line": 384,
+          "text": "          content={interfaceText(\"Build a persistent atlas in-page from the current seed fields instead of opening a temporary modal.\")}"
+        },
+        {
+          "path": "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx",
+          "line": 395,
+          "text": "         {...interfaceTextProps(\"Build a persistent atlas in-page from the current seed fields instead of opening a temporary modal.\")}/>"
+        }
+      ],
+      "caller_pins": [
+        {
+          "path": "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 384,
+          "excerpt_lines": [
+            381,
+            382,
+            383,
+            384,
+            385,
+            386,
+            387
+          ],
+          "source_file_hash": "9ab139ea6514100de0cef711e2aa5e26745bcc9936c965a9028c2591e6338471",
+          "source_blob_oid": "2aa163337ab944a655b7869ea98297beda838627",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "9ab139ea6514100de0cef711e2aa5e26745bcc9936c965a9028c2591e6338471",
+          "pr_blob_oid": "2aa163337ab944a655b7869ea98297beda838627",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 395,
+          "excerpt_lines": [
+            392,
+            393,
+            394,
+            395,
+            396,
+            397,
+            398
+          ],
+          "source_file_hash": "9ab139ea6514100de0cef711e2aa5e26745bcc9936c965a9028c2591e6338471",
+          "source_blob_oid": "2aa163337ab944a655b7869ea98297beda838627",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "9ab139ea6514100de0cef711e2aa5e26745bcc9936c965a9028c2591e6338471",
+          "pr_blob_oid": "2aa163337ab944a655b7869ea98297beda838627",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx",
+          "kind": "supporting-context",
+          "line": 388,
+          "excerpt_lines": [
+            385,
+            386,
+            387,
+            388,
+            389,
+            390,
+            391
+          ],
+          "source_file_hash": "9ab139ea6514100de0cef711e2aa5e26745bcc9936c965a9028c2591e6338471",
+          "source_blob_oid": "2aa163337ab944a655b7869ea98297beda838627",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "9ab139ea6514100de0cef711e2aa5e26745bcc9936c965a9028c2591e6338471",
+          "pr_blob_oid": "2aa163337ab944a655b7869ea98297beda838627",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        }
+      ]
+    },
+    {
+      "source_index": 531,
+      "source_id": "Build an atlas from a seed above or restore a saved branch.",
+      "source_sha256": "05c963d66fcc88b98b2d289f3a00e4f7fb613b43d1d3bfc2f91977528cefe48f",
+      "inventory_row_zero_based": 531,
+      "inventory_source_id_matches": true,
+      "caller_status": "direct-caller-pinned",
+      "localized_pin_count": 1,
+      "supporting_pin_count": 0,
+      "source_code_exact_occurrence_count": 1,
+      "source_code_occurrences": [
+        {
+          "path": "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx",
+          "line": 631,
+          "text": "          <LocalizedText source={\"Build an atlas from a seed above or restore a saved branch.\"} /></Segment>"
+        }
+      ],
+      "caller_pins": [
+        {
+          "path": "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 631,
+          "excerpt_lines": [
+            628,
+            629,
+            630,
+            631,
+            632,
+            633,
+            634
+          ],
+          "source_file_hash": "9ab139ea6514100de0cef711e2aa5e26745bcc9936c965a9028c2591e6338471",
+          "source_blob_oid": "2aa163337ab944a655b7869ea98297beda838627",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "9ab139ea6514100de0cef711e2aa5e26745bcc9936c965a9028c2591e6338471",
+          "pr_blob_oid": "2aa163337ab944a655b7869ea98297beda838627",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        }
+      ]
+    },
+    {
+      "source_index": 532,
+      "source_id": "Build information unavailable",
+      "source_sha256": "e81214bb50585b9a8f75624fa2f7235f0a93a5a826cf43562be3fdb5b4d62df3",
+      "inventory_row_zero_based": 532,
+      "inventory_source_id_matches": true,
+      "caller_status": "direct-caller-pinned",
+      "localized_pin_count": 1,
+      "supporting_pin_count": 2,
+      "source_code_exact_occurrence_count": 1,
+      "source_code_occurrences": [
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "line": 211,
+          "text": "          buildInfoError: toDisplayError(error, interfaceText('Build information unavailable')),"
+        }
+      ],
+      "caller_pins": [
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 211,
+          "excerpt_lines": [
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214
+          ],
+          "source_file_hash": "48191fa2f0257b1afa3dbc4bc8c23673fbb11e54bffb8848a9885ea34d03fb1a",
+          "source_blob_oid": "c94f4403699a76ac44d5e4823e2e9e86ba8cc3fb",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "48191fa2f0257b1afa3dbc4bc8c23673fbb11e54bffb8848a9885ea34d03fb1a",
+          "pr_blob_oid": "c94f4403699a76ac44d5e4823e2e9e86ba8cc3fb",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "kind": "supporting-context",
+          "line": 377,
+          "excerpt_lines": [
+            374,
+            375,
+            376,
+            377,
+            378,
+            379,
+            380
+          ],
+          "source_file_hash": "48191fa2f0257b1afa3dbc4bc8c23673fbb11e54bffb8848a9885ea34d03fb1a",
+          "source_blob_oid": "c94f4403699a76ac44d5e4823e2e9e86ba8cc3fb",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "48191fa2f0257b1afa3dbc4bc8c23673fbb11e54bffb8848a9885ea34d03fb1a",
+          "pr_blob_oid": "c94f4403699a76ac44d5e4823e2e9e86ba8cc3fb",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/Shared/Footer.jsx",
+          "kind": "supporting-context",
+          "line": 379,
+          "excerpt_lines": [
+            376,
+            377,
+            378,
+            379,
+            380,
+            381,
+            382
+          ],
+          "source_file_hash": "48191fa2f0257b1afa3dbc4bc8c23673fbb11e54bffb8848a9885ea34d03fb1a",
+          "source_blob_oid": "c94f4403699a76ac44d5e4823e2e9e86ba8cc3fb",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "48191fa2f0257b1afa3dbc4bc8c23673fbb11e54bffb8848a9885ea34d03fb1a",
+          "pr_blob_oid": "c94f4403699a76ac44d5e4823e2e9e86ba8cc3fb",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        }
+      ]
+    },
+    {
+      "source_index": 533,
+      "source_id": "Build result-filter conditions without memorizing the filter syntax.",
+      "source_sha256": "adb45392d03ce8b024243a780ee07b3fb71a638cd08f6c5bff37c9f0147d2a53",
+      "inventory_row_zero_based": 533,
+      "inventory_source_id_matches": true,
+      "caller_status": "no-direct-localization-caller",
+      "localized_pin_count": 0,
+      "supporting_pin_count": 0,
+      "source_code_exact_occurrence_count": 0,
+      "source_code_occurrences": [],
+      "caller_pins": []
+    },
+    {
+      "source_index": 534,
+      "source_id": "Build review-first radio searches from the current track. Nothing is searched or queued until you choose a query.",
+      "source_sha256": "aa045d2b69e2fc85f14c8d807ee57804d95c06c1a2864a269db913c47dd5b7bf",
+      "inventory_row_zero_based": 534,
+      "inventory_source_id_matches": true,
+      "caller_status": "direct-caller-pinned",
+      "localized_pin_count": 1,
+      "supporting_pin_count": 0,
+      "source_code_exact_occurrence_count": 1,
+      "source_code_occurrences": [
+        {
+          "path": "web/src/components/Player/PlayerRadioModal.jsx",
+          "line": 143,
+          "text": "          <LocalizedText source={\"Build review-first radio searches from the current track. Nothing is searched or queued until you choose a query.\"} /></p>"
+        }
+      ],
+      "caller_pins": [
+        {
+          "path": "web/src/components/Player/PlayerRadioModal.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 143,
+          "excerpt_lines": [
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            146
+          ],
+          "source_file_hash": "aca1220b0e5e3e8f3bf6503dfcf2429dea3d96976f0cb01ff141b45ec1ac4d72",
+          "source_blob_oid": "5e3a902b2470733f61fb12378f9ecee2cf3a3e3b",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "aca1220b0e5e3e8f3bf6503dfcf2429dea3d96976f0cb01ff141b45ec1ac4d72",
+          "pr_blob_oid": "5e3a902b2470733f61fb12378f9ecee2cf3a3e3b",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        }
+      ]
+    },
+    {
+      "source_index": 535,
+      "source_id": "Build smart-radio search seeds from the current track without starting network work yet.",
+      "source_sha256": "bbfe2394f787145a8c6da641387d669d9aee3c8e0371a26026871af2ef16b255",
+      "inventory_row_zero_based": 535,
+      "inventory_source_id_matches": true,
+      "caller_status": "direct-caller-pinned",
+      "localized_pin_count": 2,
+      "supporting_pin_count": 0,
+      "source_code_exact_occurrence_count": 2,
+      "source_code_occurrences": [
+        {
+          "path": "web/src/components/Player/PlayerBar.jsx",
+          "line": 763,
+          "text": "              content={interfaceText(\"Build smart-radio search seeds from the current track without starting network work yet.\")}"
+        },
+        {
+          "path": "web/src/components/Player/PlayerBar.jsx",
+          "line": 769,
+          "text": "             {...interfaceTextProps(\"Build smart-radio search seeds from the current track without starting network work yet.\")}/>"
+        }
+      ],
+      "caller_pins": [
+        {
+          "path": "web/src/components/Player/PlayerBar.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 763,
+          "excerpt_lines": [
+            760,
+            761,
+            762,
+            763,
+            764,
+            765,
+            766
+          ],
+          "source_file_hash": "545be10b605b6dd2dbe9d1e14d6442e5b331166e6910acb023bc06246e4cbb7d",
+          "source_blob_oid": "4ba36606819dc376ce16b1e605353250e5f25b50",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "545be10b605b6dd2dbe9d1e14d6442e5b331166e6910acb023bc06246e4cbb7d",
+          "pr_blob_oid": "4ba36606819dc376ce16b1e605353250e5f25b50",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/Player/PlayerBar.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 769,
+          "excerpt_lines": [
+            766,
+            767,
+            768,
+            769,
+            770,
+            771,
+            772
+          ],
+          "source_file_hash": "545be10b605b6dd2dbe9d1e14d6442e5b331166e6910acb023bc06246e4cbb7d",
+          "source_blob_oid": "4ba36606819dc376ce16b1e605353250e5f25b50",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "545be10b605b6dd2dbe9d1e14d6442e5b331166e6910acb023bc06246e4cbb7d",
+          "pr_blob_oid": "4ba36606819dc376ce16b1e605353250e5f25b50",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        }
+      ]
+    },
+    {
+      "source_index": 536,
+      "source_id": "Building neighborhood",
+      "source_sha256": "43973002257493711b6ac04a152064c2f3c8af7262991b1088064f023b784345",
+      "inventory_row_zero_based": 536,
+      "inventory_source_id_matches": true,
+      "caller_status": "direct-caller-pinned",
+      "localized_pin_count": 1,
+      "supporting_pin_count": 2,
+      "source_code_exact_occurrence_count": 1,
+      "source_code_occurrences": [
+        {
+          "path": "web/src/components/Search/DiscoveryGraphModal.jsx",
+          "line": 146,
+          "text": "            <LocalizedText source={\"Building neighborhood\"} /></Loader>"
+        }
+      ],
+      "caller_pins": [
+        {
+          "path": "web/src/components/Search/DiscoveryGraphModal.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 146,
+          "excerpt_lines": [
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149
+          ],
+          "source_file_hash": "26307d2ebbe1002688d340ea9c98c6012db15efd2e1dfd754b59a37c67cc49a8",
+          "source_blob_oid": "e0b366ffd69b72f779d80bf5de35e0bc2ef52245",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "26307d2ebbe1002688d340ea9c98c6012db15efd2e1dfd754b59a37c67cc49a8",
+          "pr_blob_oid": "e0b366ffd69b72f779d80bf5de35e0bc2ef52245",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/Search/DiscoveryGraphModal.jsx",
+          "kind": "supporting-context",
+          "line": 138,
+          "excerpt_lines": [
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141
+          ],
+          "source_file_hash": "26307d2ebbe1002688d340ea9c98c6012db15efd2e1dfd754b59a37c67cc49a8",
+          "source_blob_oid": "e0b366ffd69b72f779d80bf5de35e0bc2ef52245",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "26307d2ebbe1002688d340ea9c98c6012db15efd2e1dfd754b59a37c67cc49a8",
+          "pr_blob_oid": "e0b366ffd69b72f779d80bf5de35e0bc2ef52245",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/Search/DiscoveryGraphModal.jsx",
+          "kind": "supporting-context",
+          "line": 150,
+          "excerpt_lines": [
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153
+          ],
+          "source_file_hash": "26307d2ebbe1002688d340ea9c98c6012db15efd2e1dfd754b59a37c67cc49a8",
+          "source_blob_oid": "e0b366ffd69b72f779d80bf5de35e0bc2ef52245",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "26307d2ebbe1002688d340ea9c98c6012db15efd2e1dfd754b59a37c67cc49a8",
+          "pr_blob_oid": "e0b366ffd69b72f779d80bf5de35e0bc2ef52245",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        }
+      ]
+    },
+    {
+      "source_index": 537,
+      "source_id": "Bulk actions ({count})",
+      "source_sha256": "d073aa7a256dbe318426725f66506fc1182103e0ffcf1765bb8f21a84f63ca36",
+      "inventory_row_zero_based": 537,
+      "inventory_source_id_matches": true,
+      "caller_status": "direct-caller-pinned",
+      "localized_pin_count": 1,
+      "supporting_pin_count": 2,
+      "source_code_exact_occurrence_count": 1,
+      "source_code_occurrences": [
+        {
+          "path": "web/src/components/Wishlist/Wishlist.jsx",
+          "line": 485,
+          "text": "            {localized('Bulk actions ({count})', { count: formatRegionalNumber(selectedIds.size) })}"
+        }
+      ],
+      "caller_pins": [
+        {
+          "path": "web/src/components/Wishlist/Wishlist.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 485,
+          "excerpt_lines": [
+            482,
+            483,
+            484,
+            485,
+            486,
+            487,
+            488
+          ],
+          "source_file_hash": "74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7",
+          "source_blob_oid": "54d5e35d9f027ea547f746df800fabd491c3bed7",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7",
+          "pr_blob_oid": "54d5e35d9f027ea547f746df800fabd491c3bed7",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/Wishlist/Wishlist.jsx",
+          "kind": "supporting-context",
+          "line": 476,
+          "excerpt_lines": [
+            473,
+            474,
+            475,
+            476,
+            477,
+            478,
+            479
+          ],
+          "source_file_hash": "74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7",
+          "source_blob_oid": "54d5e35d9f027ea547f746df800fabd491c3bed7",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7",
+          "pr_blob_oid": "54d5e35d9f027ea547f746df800fabd491c3bed7",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/Wishlist/Wishlist.jsx",
+          "kind": "supporting-context",
+          "line": 489,
+          "excerpt_lines": [
+            486,
+            487,
+            488,
+            489,
+            490,
+            491,
+            492
+          ],
+          "source_file_hash": "74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7",
+          "source_blob_oid": "54d5e35d9f027ea547f746df800fabd491c3bed7",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7",
+          "pr_blob_oid": "54d5e35d9f027ea547f746df800fabd491c3bed7",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        }
+      ]
+    },
+    {
+      "source_index": 538,
+      "source_id": "Bulk wishlist filter",
+      "source_sha256": "a446df0f2b3af12d0081bb5d24061079e942fa67392ef2d035e89f30fccca8a9",
+      "inventory_row_zero_based": 538,
+      "inventory_source_id_matches": true,
+      "caller_status": "direct-caller-pinned",
+      "localized_pin_count": 3,
+      "supporting_pin_count": 0,
+      "source_code_exact_occurrence_count": 4,
+      "source_code_occurrences": [
+        {
+          "path": "web/src/components/Wishlist/Wishlist.jsx",
+          "line": 489,
+          "text": "              aria-label={t('Bulk wishlist filter')}"
+        },
+        {
+          "path": "web/src/components/Wishlist/Wishlist.jsx",
+          "line": 490,
+          "text": "              lang={languageFor('Bulk wishlist filter')}"
+        },
+        {
+          "path": "web/src/components/Wishlist/Wishlist.jsx",
+          "line": 491,
+          "text": "              dir={directionFor('Bulk wishlist filter')}"
+        },
+        {
+          "path": "web/src/components/Wishlist/Wishlist.test.jsx",
+          "line": 175,
+          "text": "    fireEvent.change(screen.getByLabelText('Bulk wishlist filter'), {"
+        }
+      ],
+      "caller_pins": [
+        {
+          "path": "web/src/components/Wishlist/Wishlist.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 489,
+          "excerpt_lines": [
+            486,
+            487,
+            488,
+            489,
+            490,
+            491,
+            492
+          ],
+          "source_file_hash": "74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7",
+          "source_blob_oid": "54d5e35d9f027ea547f746df800fabd491c3bed7",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7",
+          "pr_blob_oid": "54d5e35d9f027ea547f746df800fabd491c3bed7",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/Wishlist/Wishlist.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 490,
+          "excerpt_lines": [
+            487,
+            488,
+            489,
+            490,
+            491,
+            492,
+            493
+          ],
+          "source_file_hash": "74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7",
+          "source_blob_oid": "54d5e35d9f027ea547f746df800fabd491c3bed7",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7",
+          "pr_blob_oid": "54d5e35d9f027ea547f746df800fabd491c3bed7",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/Wishlist/Wishlist.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 491,
+          "excerpt_lines": [
+            488,
+            489,
+            490,
+            491,
+            492,
+            493,
+            494
+          ],
+          "source_file_hash": "74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7",
+          "source_blob_oid": "54d5e35d9f027ea547f746df800fabd491c3bed7",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7",
+          "pr_blob_oid": "54d5e35d9f027ea547f746df800fabd491c3bed7",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        }
+      ]
+    },
+    {
+      "source_index": 539,
+      "source_id": "Bundle",
+      "source_sha256": "f2daa18861b5c952ff3f26d8a4afb31058606710eb161c875fec41ba89ebd5ff",
+      "inventory_row_zero_based": 539,
+      "inventory_source_id_matches": true,
+      "caller_status": "direct-caller-pinned",
+      "localized_pin_count": 1,
+      "supporting_pin_count": 2,
+      "source_code_exact_occurrence_count": 65,
+      "source_code_occurrences": [
+        {
+          "path": "PLAN.md",
+          "line": 190,
+          "text": "- Bundled app crate. *(done current cut: `crates/slskr` is the product binary, owns `slskr serve`, smoke/probe subcommands, HTTP API, WebSocket event feed, background session manager, listener ownership, share indexing, browse/search/message/room/user/transfer projections, direct and indirect peer/file-transfer execution, SQLite-backed app stores, auth/rate-limit/CSP/public-posture guards, live matrix proof, and release package checks; remaining work is production hardening rather than app scaffolding)*"
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-tracked-source-ownership-inventory.json",
+          "line": 3621,
+          "text": "      \"path\": \"web/src/components/System/Info/DiagnosticBundleModal.jsx\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-tracked-source-ownership-inventory.json",
+          "line": 4245,
+          "text": "      \"path\": \"web/src/lib/diagnosticBundle.test.js\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-tracked-source-ownership-inventory.json",
+          "line": 4321,
+          "text": "      \"path\": \"web/src/lib/diagnosticBundle.js\","
+        },
+        {
+          "path": "benchmarks/artifacts/20260928-rf-tracked-source-ownership-inventory.json",
+          "line": 4405,
+          "text": "      \"path\": \"web/src/components/System/Info/DiagnosticBundleModal.test.jsx\","
+        },
+        {
+          "path": "benchmarks/artifacts/20261002-mobile-navigation-audit.md",
+          "line": 35,
+          "text": "- Bundle budget: 1,087.34 KiB initial JavaScript and 598.18 KiB JavaScript gzip,"
+        },
+        {
+          "path": "crates/slskr-web/src/native_row_rendering.rs",
+          "line": 522,
+          "text": "            \"Diagnostic Bundle\","
+        },
+        {
+          "path": "crates/slskr-web/src/native_tab_rendering.rs",
+          "line": 427,
+          "text": "                \"Diagnostic Bundle\","
+        },
+        {
+          "path": "crates/slskr-web/src/native_tab_rendering.rs",
+          "line": 467,
+          "text": "                \"Diagnostic Bundle\","
+        },
+        {
+          "path": "crates/slskr-web/src/native_tab_rendering.rs",
+          "line": 502,
+          "text": "                \"Diagnostic Bundle\","
+        },
+        {
+          "path": "crates/slskr-web/src/native_tab_rendering.rs",
+          "line": 692,
+          "text": "                \"Diagnostic Bundle\","
+        },
+        {
+          "path": "crates/slskr-web/src/native_tab_rendering.rs",
+          "line": 737,
+          "text": "                \"Diagnostic Bundle\","
+        },
+        {
+          "path": "crates/slskr-web/src/native_tab_rendering.rs",
+          "line": 767,
+          "text": "                \"Diagnostic Bundle\","
+        },
+        {
+          "path": "crates/slskr-web/src/native_tab_rendering.rs",
+          "line": 781,
+          "text": "                \"Diagnostic Bundle\","
+        },
+        {
+          "path": "crates/slskr-web/src/native_tab_rendering.rs",
+          "line": 820,
+          "text": "        (RouteKind::System, \"Info\") => &[\"Check for Updates\", \"Diagnostic Bundle\"],"
+        },
+        {
+          "path": "crates/slskr-web/src/native_workspace_panels.rs",
+          "line": 203,
+          "text": "                \"Diagnostic Bundle\","
+        },
+        {
+          "path": "crates/slskr-web/src/native_workspace_panels.rs",
+          "line": 1315,
+          "text": "            r#\"<div class=\"slskr-native-grid system-native\"><section class=\"slskr-native-main\"><h3>System</h3><div class=\"slskr-native-operator-bands\"><span>Connection</span><span>Shares</span><span>Database</span><span>Events</span><span>Preferences</span><span>Automation</span></div>{config}{route_table}</section><aside class=\"slskr-native-side\"><h3>Operator Actions</h3>{preview}<button type=\"button\">Check for Updates</button><button type=\"button\">Get Privileges</button><button type=\"button\">Diagnostic Bundle</button><button type=\"button\">Setup Health</button></aside></div>\"#,"
+        },
+        {
+          "path": "crates/slskr-web/src/native_workspace_panels.rs",
+          "line": 1322,
+          "text": "                \"Diagnostic Bundle\","
+        },
+        {
+          "path": "crates/slskr-web/src/route_catalog.rs",
+          "line": 1607,
+          "text": "            label: \"Diagnostic Bundle\","
+        },
+        {
+          "path": "crates/slskr-web/src/route_controls.rs",
+          "line": 341,
+          "text": "        (RouteKind::System, \"diagnostic bundle\") => &[\"Diagnostic Bundle\"],"
+        },
+        {
+          "path": "crates/slskr-web/src/route_reference_panels.rs",
+          "line": 258,
+          "text": "                vec![\"Check for Updates\", \"Get Privileges\", \"Diagnostic Bundle\", \"Setup Health\"],"
+        },
+        {
+          "path": "crates/slskr-web/src/rustymilk_ui_owners/visualizer_library_actions.rs",
+          "line": 334,
+          "text": "        set_player_status(document, \"Bundled RustyMilk presets cannot be removed\");"
+        },
+        {
+          "path": "crates/slskr-web/src/web_tests/native_actions.rs",
+          "line": 93,
+          "text": "        (\"/system\", \"Diagnostic Bundle\", \"Diagnostic Bundle\"),"
+        },
+        {
+          "path": "crates/slskr-web/src/web_tests/native_actions.rs",
+          "line": 164,
+          "text": "            &[\"Rescan shares\", \"Vacuum database\", \"Diagnostic Bundle\"],"
+        },
+        {
+          "path": "crates/slskr-web/src/web_tests/workflow_rendering.rs",
+          "line": 603,
+          "text": "        \"Diagnostic Bundle\","
+        },
+        {
+          "path": "crates/slskr-web/src/web_tests/workflow_rendering.rs",
+          "line": 746,
+          "text": "                \"Diagnostic Bundle\","
+        },
+        {
+          "path": "crates/slskr/src/openapi.rs",
+          "line": 452,
+          "text": "        const ui = SwaggerUIBundle({{"
+        },
+        {
+          "path": "crates/slskr/src/openapi.rs",
+          "line": 456,
+          "text": "                SwaggerUIBundle.presets.apis,"
+        },
+        {
+          "path": "crates/slskr/src/openapi.rs",
+          "line": 457,
+          "text": "                SwaggerUIBundle.SwaggerUIStandalonePreset"
+        },
+        {
+          "path": "crates/slskr/src/openapi.rs",
+          "line": 496,
+          "text": "        \"window.onload=function(){{window.ui=SwaggerUIBundle({{url:{spec_url:?},dom_id:'#swagger-ui',deepLinking:true,presets:[SwaggerUIBundle.presets.apis,SwaggerUIStandalonePreset],layout:'StandaloneLayout'}});}};\""
+        },
+        {
+          "path": "dashboard/package-lock.json",
+          "line": 1283,
+          "text": "      \"inBundle\": true,"
+        },
+        {
+          "path": "dashboard/package-lock.json",
+          "line": 1294,
+          "text": "      \"inBundle\": true,"
+        },
+        {
+          "path": "dashboard/package-lock.json",
+          "line": 1304,
+          "text": "      \"inBundle\": true,"
+        },
+        {
+          "path": "dashboard/package-lock.json",
+          "line": 1314,
+          "text": "      \"inBundle\": true,"
+        },
+        {
+          "path": "dashboard/package-lock.json",
+          "line": 1332,
+          "text": "      \"inBundle\": true,"
+        },
+        {
+          "path": "dashboard/package-lock.json",
+          "line": 1342,
+          "text": "      \"inBundle\": true,"
+        },
+        {
+          "path": "dashboard/tsconfig.json",
+          "line": 13,
+          "text": "    \"moduleResolution\": \"Bundler\","
+        },
+        {
+          "path": "docs/architecture.md",
+          "line": 15,
+          "text": "    App --> Web[Bundled React assets]"
+        },
+        {
+          "path": "docs/dev/refactor-audit-20260915.md",
+          "line": 124,
+          "text": "| RF-030 | `web/package.json:77-82` exposes a bundle-budget test; the current batch wires it after Web builds in `.github/workflows/ci.yml` and `scripts/run-release-gate.sh`. Serialized browser E2E now passes its available 14 tests; the React audit and retained nightly artifacts remain separate. | Bundle regressions previously could merge without CI evidence. | Workflow policy, Web budget, build-output, and available E2E checks pass; retain browser/nightly artifacts before full verification. | In progress |"
+        },
+        {
+          "path": "docs/dev/refactoring-efficiency-plan.md",
+          "line": 126,
+          "text": "| RF-030 | `web/package.json:77-82` exposes a bundle-budget test; the current batch wires it after Web builds in `.github/workflows/ci.yml` and `scripts/run-release-gate.sh`. Serialized browser E2E now passes its available 14 tests; the React audit and retained nightly artifacts remain separate. | Bundle regressions previously could merge without CI evidence. | Workflow policy, Web budget, build-output, and available E2E checks pass. The retained React audit passes 84 desktop/mobile rendering checks and four workflow scenarios with zero synthetic sweeps; 106 workflow cases are observed through actual UI requests. A daily/manual workflow now retains four real-browser mock scenarios, screenshots, and source-bound receipts for 30 days under memory/swap/task/runtime limits. The successful manual hosted run `36382238277` at `3f0b6010` retained all four reports and 84 screenshots; downloaded audit hashes match the clean checkout receipt. The same workflow is scheduled daily. | Verified hosted browser retention |"
+        },
+        {
+          "path": "docs/dev/refactoring-efficiency-plan.md",
+          "line": 8503,
+          "text": "## Aggregate Web Bundle Budget Rebaseline (2026-10-03 UTC)"
+        },
+        {
+          "path": "docs/dev/refactoring-efficiency-plan.md",
+          "line": 8607,
+          "text": "## Aggregate Web Bundle Budget Recheck (2026-10-13 UTC)"
+        },
+        {
+          "path": "scripts/build-native-styles.py",
+          "line": 2,
+          "text": "\"\"\"Bundle ordered native Web style owners into the existing single CSS asset.\"\"\""
+        },
+        {
+          "path": "scripts/test_check_web_bundle_budget.py",
+          "line": 19,
+          "text": "class WebBundleBudgetTests(unittest.TestCase):"
+        },
+        {
+          "path": "test-data/slskr-test-fixtures/book/treasure_island_pg120.txt",
+          "line": 4324,
+          "text": "Tramp, my lad. Bundle out of this, please, hand over hand, and double"
+        },
+        {
+          "path": "web/src/components/System/Info/DiagnosticBundleModal.jsx",
+          "line": 3,
+          "text": "import { buildDiagnosticBundle } from '../../../lib/diagnosticBundle';"
+        },
+        {
+          "path": "web/src/components/System/Info/DiagnosticBundleModal.jsx",
+          "line": 27,
+          "text": "const DiagnosticBundleModal = ({ options = {}, state = {} }) => {"
+        },
+        {
+          "path": "web/src/components/System/Info/DiagnosticBundleModal.jsx",
+          "line": 35,
+          "text": "      buildDiagnosticBundle({"
+        },
+        {
+          "path": "web/src/components/System/Info/DiagnosticBundleModal.jsx",
+          "line": 42,
+          "text": "  const copyBundle = async () => {"
+        },
+        {
+          "path": "web/src/components/System/Info/DiagnosticBundleModal.jsx",
+          "line": 79,
+          "text": "            <LocalizedText source={\"Diagnostic Bundle\"} /></Button>"
+        },
+        {
+          "path": "web/src/components/System/Info/DiagnosticBundleModal.jsx",
+          "line": 91,
+          "text": "          <LocalizedText source={\"Diagnostic Bundle\"} /></Modal.Header>"
+        },
+        {
+          "path": "web/src/components/System/Info/DiagnosticBundleModal.jsx",
+          "line": 98,
+          "text": "          <Header as=\"h4\"><LocalizedText source={\"Bundle\"} /></Header>"
+        },
+        {
+          "path": "web/src/components/System/Info/DiagnosticBundleModal.jsx",
+          "line": 115,
+          "text": "                onClick={copyBundle}"
+        },
+        {
+          "path": "web/src/components/System/Info/DiagnosticBundleModal.jsx",
+          "line": 139,
+          "text": "export default DiagnosticBundleModal;"
+        },
+        {
+          "path": "web/src/components/System/Info/DiagnosticBundleModal.test.jsx",
+          "line": 1,
+          "text": "import DiagnosticBundleModal from './DiagnosticBundleModal';"
+        },
+        {
+          "path": "web/src/components/System/Info/DiagnosticBundleModal.test.jsx",
+          "line": 5,
+          "text": "describe('DiagnosticBundleModal', () => {"
+        },
+        {
+          "path": "web/src/components/System/Info/DiagnosticBundleModal.test.jsx",
+          "line": 16,
+          "text": "      <DiagnosticBundleModal"
+        },
+        {
+          "path": "web/src/components/System/Info/DiagnosticBundleModal.test.jsx",
+          "line": 60,
+          "text": "      <DiagnosticBundleModal"
+        },
+        {
+          "path": "web/src/components/System/Info/index.jsx",
+          "line": 4,
+          "text": "import DiagnosticBundleModal from './DiagnosticBundleModal';"
+        },
+        {
+          "path": "web/src/components/System/Info/index.jsx",
+          "line": 61,
+          "text": "            <DiagnosticBundleModal"
+        },
+        {
+          "path": "web/src/lib/diagnosticBundle.js",
+          "line": 36,
+          "text": "export const buildDiagnosticBundle = ({"
+        },
+        {
+          "path": "web/src/lib/diagnosticBundle.test.js",
+          "line": 2,
+          "text": "  buildDiagnosticBundle,"
+        },
+        {
+          "path": "web/src/lib/diagnosticBundle.test.js",
+          "line": 4,
+          "text": "} from './diagnosticBundle';"
+        },
+        {
+          "path": "web/src/lib/diagnosticBundle.test.js",
+          "line": 6,
+          "text": "describe('diagnosticBundle', () => {"
+        },
+        {
+          "path": "web/src/lib/diagnosticBundle.test.js",
+          "line": 36,
+          "text": "    const bundle = buildDiagnosticBundle({"
+        }
+      ],
+      "caller_pins": [
+        {
+          "path": "web/src/components/System/Info/DiagnosticBundleModal.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 98,
+          "excerpt_lines": [
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101
+          ],
+          "source_file_hash": "1e2a0f920bf77147e49c8e1b8f443cb041d2b690779ec723a73451384d975947",
+          "source_blob_oid": "7fbb6f03a1f648328c75f735c79b5f85de1376c2",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "1e2a0f920bf77147e49c8e1b8f443cb041d2b690779ec723a73451384d975947",
+          "pr_blob_oid": "7fbb6f03a1f648328c75f735c79b5f85de1376c2",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/System/Info/DiagnosticBundleModal.jsx",
+          "kind": "supporting-context",
+          "line": 103,
+          "excerpt_lines": [
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106
+          ],
+          "source_file_hash": "1e2a0f920bf77147e49c8e1b8f443cb041d2b690779ec723a73451384d975947",
+          "source_blob_oid": "7fbb6f03a1f648328c75f735c79b5f85de1376c2",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "1e2a0f920bf77147e49c8e1b8f443cb041d2b690779ec723a73451384d975947",
+          "pr_blob_oid": "7fbb6f03a1f648328c75f735c79b5f85de1376c2",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/System/Info/DiagnosticBundleModal.jsx",
+          "kind": "supporting-context",
+          "line": 104,
+          "excerpt_lines": [
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107
+          ],
+          "source_file_hash": "1e2a0f920bf77147e49c8e1b8f443cb041d2b690779ec723a73451384d975947",
+          "source_blob_oid": "7fbb6f03a1f648328c75f735c79b5f85de1376c2",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "1e2a0f920bf77147e49c8e1b8f443cb041d2b690779ec723a73451384d975947",
+          "pr_blob_oid": "7fbb6f03a1f648328c75f735c79b5f85de1376c2",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        }
+      ]
+    },
+    {
+      "source_index": 540,
+      "source_id": "By Content ID",
+      "source_sha256": "115f12d4ec2fc24a99912f8381fdc5b050b09e8ece1a6a86a762a5657cce1d11",
+      "inventory_row_zero_based": 540,
+      "inventory_source_id_matches": true,
+      "caller_status": "direct-caller-pinned",
+      "localized_pin_count": 1,
+      "supporting_pin_count": 2,
+      "source_code_exact_occurrence_count": 1,
+      "source_code_occurrences": [
+        {
+          "path": "web/src/components/System/MediaCore/PodDiscoveryPanel.jsx",
+          "line": 501,
+          "text": "                  <Header size=\"small\"><LocalizedText source={\"By Content ID\"} /></Header>"
+        }
+      ],
+      "caller_pins": [
+        {
+          "path": "web/src/components/System/MediaCore/PodDiscoveryPanel.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 501,
+          "excerpt_lines": [
+            498,
+            499,
+            500,
+            501,
+            502,
+            503,
+            504
+          ],
+          "source_file_hash": "c17c245776bcb87bb6089ff3836ff6b6061081ad2d0935d4dd15bff3aff928af",
+          "source_blob_oid": "c79ee3cf9b70c20fbb819aae0925b3b52c0dbe89",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "c17c245776bcb87bb6089ff3836ff6b6061081ad2d0935d4dd15bff3aff928af",
+          "pr_blob_oid": "c79ee3cf9b70c20fbb819aae0925b3b52c0dbe89",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/System/MediaCore/PodDiscoveryPanel.jsx",
+          "kind": "supporting-context",
+          "line": 496,
+          "excerpt_lines": [
+            493,
+            494,
+            495,
+            496,
+            497,
+            498,
+            499
+          ],
+          "source_file_hash": "c17c245776bcb87bb6089ff3836ff6b6061081ad2d0935d4dd15bff3aff928af",
+          "source_blob_oid": "c79ee3cf9b70c20fbb819aae0925b3b52c0dbe89",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "c17c245776bcb87bb6089ff3836ff6b6061081ad2d0935d4dd15bff3aff928af",
+          "pr_blob_oid": "c79ee3cf9b70c20fbb819aae0925b3b52c0dbe89",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/System/MediaCore/PodDiscoveryPanel.jsx",
+          "kind": "supporting-context",
+          "line": 511,
+          "excerpt_lines": [
+            508,
+            509,
+            510,
+            511,
+            512,
+            513,
+            514
+          ],
+          "source_file_hash": "c17c245776bcb87bb6089ff3836ff6b6061081ad2d0935d4dd15bff3aff928af",
+          "source_blob_oid": "c79ee3cf9b70c20fbb819aae0925b3b52c0dbe89",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "c17c245776bcb87bb6089ff3836ff6b6061081ad2d0935d4dd15bff3aff928af",
+          "pr_blob_oid": "c79ee3cf9b70c20fbb819aae0925b3b52c0dbe89",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        }
+      ]
+    },
+    {
+      "source_index": 541,
+      "source_id": "By Domain:",
+      "source_sha256": "d2f57e00b46529949c66f7dc013dedb7c02063a76cd2a7b972c64c4779859711",
+      "inventory_row_zero_based": 541,
+      "inventory_source_id_matches": true,
+      "caller_status": "direct-caller-pinned",
+      "localized_pin_count": 1,
+      "supporting_pin_count": 2,
+      "source_code_exact_occurrence_count": 1,
+      "source_code_occurrences": [
+        {
+          "path": "web/src/components/System/MediaCore/ContentDescriptorPublishingPanel.jsx",
+          "line": 488,
+          "text": "                            <strong><LocalizedText source={\"By Domain:\"} /></strong>"
+        }
+      ],
+      "caller_pins": [
+        {
+          "path": "web/src/components/System/MediaCore/ContentDescriptorPublishingPanel.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 488,
+          "excerpt_lines": [
+            485,
+            486,
+            487,
+            488,
+            489,
+            490,
+            491
+          ],
+          "source_file_hash": "375e2a926789a74af0efa132bf4bdf8f74606287bdb3ac9499f937eb3a3755f6",
+          "source_blob_oid": "c51d4085b6d2b180844a9e8091406f527651229b",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "375e2a926789a74af0efa132bf4bdf8f74606287bdb3ac9499f937eb3a3755f6",
+          "pr_blob_oid": "c51d4085b6d2b180844a9e8091406f527651229b",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/System/MediaCore/ContentDescriptorPublishingPanel.jsx",
+          "kind": "supporting-context",
+          "line": 484,
+          "excerpt_lines": [
+            481,
+            482,
+            483,
+            484,
+            485,
+            486,
+            487
+          ],
+          "source_file_hash": "375e2a926789a74af0efa132bf4bdf8f74606287bdb3ac9499f937eb3a3755f6",
+          "source_blob_oid": "c51d4085b6d2b180844a9e8091406f527651229b",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "375e2a926789a74af0efa132bf4bdf8f74606287bdb3ac9499f937eb3a3755f6",
+          "pr_blob_oid": "c51d4085b6d2b180844a9e8091406f527651229b",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/System/MediaCore/ContentDescriptorPublishingPanel.jsx",
+          "kind": "supporting-context",
+          "line": 499,
+          "excerpt_lines": [
+            496,
+            497,
+            498,
+            499,
+            500,
+            501,
+            502
+          ],
+          "source_file_hash": "375e2a926789a74af0efa132bf4bdf8f74606287bdb3ac9499f937eb3a3755f6",
+          "source_blob_oid": "c51d4085b6d2b180844a9e8091406f527651229b",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "375e2a926789a74af0efa132bf4bdf8f74606287bdb3ac9499f937eb3a3755f6",
+          "pr_blob_oid": "c51d4085b6d2b180844a9e8091406f527651229b",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        }
+      ]
+    },
+    {
+      "source_index": 542,
+      "source_id": "By Name",
+      "source_sha256": "b393c1bcac2fc68c1a4804f33e80665f8748ceb9a3a4581dc61c075fff9be32a",
+      "inventory_row_zero_based": 542,
+      "inventory_source_id_matches": true,
+      "caller_status": "direct-caller-pinned",
+      "localized_pin_count": 1,
+      "supporting_pin_count": 2,
+      "source_code_exact_occurrence_count": 1,
+      "source_code_occurrences": [
+        {
+          "path": "web/src/components/System/MediaCore/PodDiscoveryPanel.jsx",
+          "line": 336,
+          "text": "                  <Header size=\"small\"><LocalizedText source={\"By Name\"} /></Header>"
+        }
+      ],
+      "caller_pins": [
+        {
+          "path": "web/src/components/System/MediaCore/PodDiscoveryPanel.jsx",
+          "kind": "localized-or-contextual-source",
+          "line": 336,
+          "excerpt_lines": [
+            333,
+            334,
+            335,
+            336,
+            337,
+            338,
+            339
+          ],
+          "source_file_hash": "c17c245776bcb87bb6089ff3836ff6b6061081ad2d0935d4dd15bff3aff928af",
+          "source_blob_oid": "c79ee3cf9b70c20fbb819aae0925b3b52c0dbe89",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "c17c245776bcb87bb6089ff3836ff6b6061081ad2d0935d4dd15bff3aff928af",
+          "pr_blob_oid": "c79ee3cf9b70c20fbb819aae0925b3b52c0dbe89",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/System/MediaCore/PodDiscoveryPanel.jsx",
+          "kind": "supporting-context",
+          "line": 331,
+          "excerpt_lines": [
+            328,
+            329,
+            330,
+            331,
+            332,
+            333,
+            334
+          ],
+          "source_file_hash": "c17c245776bcb87bb6089ff3836ff6b6061081ad2d0935d4dd15bff3aff928af",
+          "source_blob_oid": "c79ee3cf9b70c20fbb819aae0925b3b52c0dbe89",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "c17c245776bcb87bb6089ff3836ff6b6061081ad2d0935d4dd15bff3aff928af",
+          "pr_blob_oid": "c79ee3cf9b70c20fbb819aae0925b3b52c0dbe89",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        },
+        {
+          "path": "web/src/components/System/MediaCore/PodDiscoveryPanel.jsx",
+          "kind": "supporting-context",
+          "line": 345,
+          "excerpt_lines": [
+            342,
+            343,
+            344,
+            345,
+            346,
+            347,
+            348
+          ],
+          "source_file_hash": "c17c245776bcb87bb6089ff3836ff6b6061081ad2d0935d4dd15bff3aff928af",
+          "source_blob_oid": "c79ee3cf9b70c20fbb819aae0925b3b52c0dbe89",
+          "source_verified": true,
+          "source_excerpt_lines_verified": true,
+          "pr_file_hash": "c17c245776bcb87bb6089ff3836ff6b6061081ad2d0935d4dd15bff3aff928af",
+          "pr_blob_oid": "c79ee3cf9b70c20fbb819aae0925b3b52c0dbe89",
+          "pr_verified": true,
+          "pr_excerpt_lines_verified": true
+        }
+      ]
+    }
+  ],
+  "direct_localization_caller_source_count": 19,
+  "no_direct_localization_caller_source_count": 1,
+  "no_direct_localization_caller_source": "Build result-filter conditions without memorizing the filter syntax.",
+  "no_caller_locale_cell_no_op_count": 12,
+  "no_direct_caller_source_code_occurrences": 0,
+  "prior_exact_match_records": 457,
+  "prior_exact_matches_with_source_and_current_target_hashes": 457,
+  "prior_stale_matches": 0,
+  "prior_routed_bridge_download_failed_matches": 0,
+  "packet_input_files_checksum_verified": 20,
+  "packet_input_checksum_failures": 0
+}

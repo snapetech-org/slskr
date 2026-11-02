@@ -1,0 +1,45 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pr_number": 204,
+  "input_head": "fa712d12ec3a41ed5e4f2e264f6b550ddbdaba6e",
+  "input_tree": "9f1111e6d75f082af5a0cf4bf346ad12b71cdfd1",
+  "window": [
+    523,
+    542
+  ],
+  "cross_review_rows": 240,
+  "applied_rows": 97,
+  "applied_dispositions": {
+    "accepted": 91,
+    "refined": 2,
+    "missed": 4
+  },
+  "updates_by_locale": {
+    "ar": 7,
+    "de": 8,
+    "es": 8,
+    "fr": 5,
+    "hi": 6,
+    "id": 7,
+    "ja": 8,
+    "ko": 7,
+    "pt-BR": 7,
+    "vi": 12,
+    "zh-Hans": 11,
+    "zh-Hant": 11
+  },
+  "catalog_count": 12,
+  "keys_per_locale": 5437,
+  "packet_sha256": "d5c53e20c85ec8bd128c0a3adae5b724294bee3205cf768e3e4b0e21e84a1b7f",
+  "independent_ledger_sha256": "d9969708e5eeb99938924764d6c0ae29d1b3f837a99ade83eac9dce536987780",
+  "apply_plan_sha256": "b16f7faaef2c52f2e9d52ff22c07aa6fce178913fc8567c750156f60ee967591",
+  "native_speaker_approval": false,
+  "tests_builds_scans_ci_workflows_releases_tags_merges": false,
+  "cross_review_dispositions": {
+    "accepted": 221,
+    "refined": 2,
+    "missed": 4,
+    "held": 1,
+    "no-op": 12
+  }
+}
