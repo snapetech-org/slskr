@@ -786,7 +786,7 @@
   "Allow mesh streaming for broadcast": "السماح ببث محتوى الغرفة عبر الشبكة المتداخلة.",
   "Allow no-auth access from explicitly configured non-loopback CIDRs.": "السماح بالوصول دون مصادقة من نطاقات CIDR المُعدّة صراحةً وغير المخصصة لعناوين الاسترجاع.",
   "Allow player pages to append local similar-track queue candidates when explicit page support is available.": "السماح لصفحات المشغل بإلحاق المرشحين المحليين لقائمة انتظار المسار المماثل عند توفر دعم صريح للصفحة.",
-  "Allow remote no-auth CIDRs": "السماح بأرقام CIDRs عن بعد بدون مصادقة",
+  "Allow remote no-auth CIDRs": "السماح بنطاقات CIDR البعيدة دون مصادقة",
   "Allow slow or stalled downloads to use verified alternate sources. Soulseek peers use sequential failover; true multipart chunking is reserved for trusted slskr mesh peers.": "السماح للتنزيلات البطيئة أو المتوقفة باستخدام مصادر بديلة تم التحقق منها. يستخدم أقران Soulseek تجاوز الفشل المتسلسل؛ يتم حجز القطع متعدد الأجزاء الحقيقي لأقران شبكة slskr الموثوق بهم.",
   "Allow streaming": "السماح بالبث",
   "Allow this webhook to call a target with a self-signed or otherwise untrusted certificate.": "اسمح لخطاف الويب هذا باستدعاء هدف باستخدام شهادة موقعة ذاتيًا أو غير موثوقة.",

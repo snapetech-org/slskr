@@ -787,7 +787,7 @@
   "Allow no-auth access from explicitly configured non-loopback CIDRs.": "स्पष्ट रूप से कॉन्फ़िगर किए गए गैर-लूपबैक सीआईडीआर से नो-ऑथ एक्सेस की अनुमति दें।",
   "Allow player pages to append local similar-track queue candidates when explicit page support is available.": "स्पष्ट पृष्ठ समर्थन उपलब्ध होने पर, प्लेयर पेजों को स्थानीय कतार में समान ट्रैक के विकल्प जोड़ने की अनुमति दें।",
   "Allow remote no-auth CIDRs": "रिमोट नो-ऑथ सीआईडीआर की अनुमति दें",
-  "Allow slow or stalled downloads to use verified alternate sources. Soulseek peers use sequential failover; true multipart chunking is reserved for trusted slskr mesh peers.": "सत्यापित वैकल्पिक स्रोतों का उपयोग करने के लिए धीमे या रुके हुए डाउनलोड की अनुमति दें। Soulseek सहकर्मी अनुक्रमिक विफलता का उपयोग करते हैं; ट्रू मल्टीपार्ट चंकिंग विश्वसनीय slskr मेश साथियों के लिए आरक्षित है।",
+  "Allow slow or stalled downloads to use verified alternate sources. Soulseek peers use sequential failover; true multipart chunking is reserved for trusted slskr mesh peers.": "धीमे या अटके हुए डाउनलोड को सत्यापित वैकल्पिक स्रोतों का उपयोग करने दें। Soulseek पीयर क्रमिक फ़ेलओवर का उपयोग करते हैं; वास्तविक मल्टीपार्ट चंकिंग केवल विश्वसनीय slskr मेश पीयर के लिए आरक्षित है।",
   "Allow streaming": "स्ट्रीमिंग की अनुमति दें",
   "Allow this webhook to call a target with a self-signed or otherwise untrusted certificate.": "इस वेबहुक को स्व-हस्ताक्षरित या अन्यथा अविश्वसनीय प्रमाणपत्र के साथ लक्ष्य को कॉल करने की अनुमति दें।",
   "Analytics time window": "विश्लेषिकी समय विंडो",

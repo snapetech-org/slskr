@@ -787,7 +787,7 @@
   "Allow no-auth access from explicitly configured non-loopback CIDRs.": "Cho phép truy cập không cần xác thực từ các CIDR không vòng lặp được định cấu hình rõ ràng.",
   "Allow player pages to append local similar-track queue candidates when explicit page support is available.": "Cho phép các trang trình phát thêm các bản nhạc tương tự vào hàng đợi cục bộ khi có hỗ trợ rõ ràng cho trang đó.",
   "Allow remote no-auth CIDRs": "Cho phép CIDR không xác thực từ xa",
-  "Allow slow or stalled downloads to use verified alternate sources. Soulseek peers use sequential failover; true multipart chunking is reserved for trusted slskr mesh peers.": "Cho phép tải xuống chậm hoặc bị đình trệ để sử dụng các nguồn thay thế đã được xác minh. Các đồng nghiệp Soulseek sử dụng chuyển đổi dự phòng tuần tự; phân đoạn nhiều phần thực sự được dành riêng cho các đồng nghiệp lưới slskr đáng tin cậy.",
+  "Allow slow or stalled downloads to use verified alternate sources. Soulseek peers use sequential failover; true multipart chunking is reserved for trusted slskr mesh peers.": "Cho phép các tác vụ tải xuống chậm hoặc bị đình trệ sử dụng nguồn thay thế đã xác minh. Các peer Soulseek dùng failover tuần tự; việc chia tệp thành nhiều khối thực sự chỉ dành cho các peer mesh slskr đáng tin cậy.",
   "Allow streaming": "Cho phép phát trực tuyến",
   "Allow this webhook to call a target with a self-signed or otherwise untrusted certificate.": "Cho phép webhook này gọi mục tiêu bằng chứng chỉ tự ký hoặc không đáng tin cậy.",
   "Analytics time window": "Khoảng thời gian phân tích",

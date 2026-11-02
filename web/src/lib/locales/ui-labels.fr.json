@@ -787,7 +787,7 @@
   "Allow no-auth access from explicitly configured non-loopback CIDRs.": "Autoriser l’accès sans authentification depuis des plages CIDR explicitement configurées, hors boucle locale.",
   "Allow player pages to append local similar-track queue candidates when explicit page support is available.": "Autoriser les pages du lecteur à compléter la file d’attente locale avec des morceaux similaires lorsque la page est explicitement prise en charge.",
   "Allow remote no-auth CIDRs": "Autoriser les CIDR distants sans authentification",
-  "Allow slow or stalled downloads to use verified alternate sources. Soulseek peers use sequential failover; true multipart chunking is reserved for trusted slskr mesh peers.": "Autorisez les téléchargements lents ou bloqués à utiliser des sources alternatives vérifiées. Les homologues Soulseek utilisent le basculement séquentiel ; le véritable regroupement en plusieurs parties est réservé aux homologues de maillage slskr de confiance.",
+  "Allow slow or stalled downloads to use verified alternate sources. Soulseek peers use sequential failover; true multipart chunking is reserved for trusted slskr mesh peers.": "Autorisez les téléchargements lents ou bloqués à utiliser des sources alternatives vérifiées. Les pairs Soulseek utilisent un basculement séquentiel ; le véritable téléchargement en plusieurs blocs est réservé aux pairs du maillage slskr de confiance.",
   "Allow streaming": "Autoriser le streaming",
   "Allow this webhook to call a target with a self-signed or otherwise untrusted certificate.": "Autorisez ce webhook à appeler une cible avec un certificat auto-signé ou non fiable.",
   "Analytics time window": "Fenêtre de temps d'analyse",
