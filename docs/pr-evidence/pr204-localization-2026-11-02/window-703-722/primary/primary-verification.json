@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "head": "8b2f1f5fb216fb9946e823c5dff86d5e76a30b84",
+  "tree": "90225bd501256ac84c520105e714df9fc9d6aefc",
+  "window": [
+    703,
+    722
+  ],
+  "cellCount": 240,
+  "uniqueCellCount": 240,
+  "callerPinCount": 36,
+  "sourceCurrentPlaceholderFailures": 0,
+  "candidatePlaceholderFailures": 0,
+  "candidateProtectedLiteralFailures": 0,
+  "pluralMapCells": 1,
+  "heldCells": 13,
+  "reviewReadOnly": true,
+  "repoOrPrModified": false,
+  "testsBuildsScansCiOrWorkflowsRun": false,
+  "nativeSpeakerApproval": false,
+  "pluralMapHashMethod": "SHA-256 of compact UTF-8 JSON with sorted category keys; scalar string targets hash raw UTF-8"
+}

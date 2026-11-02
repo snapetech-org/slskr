@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "task": "slskR PR #204 W703–722 primary semantic review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "8b2f1f5fb216fb9946e823c5dff86d5e76a30b84",
+  "tree": "90225bd501256ac84c520105e714df9fc9d6aefc",
+  "sourceBaselineHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceBaselineTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "sourcePositions": [
+    703,
+    722
+  ],
+  "sourceIds": 20,
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "cells": 240,
+  "counts": {
+    "hold-plural-morphology": 1,
+    "accept-current": 160,
+    "hold-caller-fragment": 12,
+    "propose-correction": 67
+  },
+  "candidateCells": 67,
+  "heldCells": 13,
+  "holdGroups": [
+    "Arabic ICU plural map for Cleared {count} searches; validate all six plural categories with a native reviewer.",
+    "All 12 Click to load native Soulseek interests for fragments; caller appends username after localized text without placeholder."
+  ],
+  "perLocale": {
+    "ar": {
+      "hold-plural-morphology": 1,
+      "accept-current": 14,
+      "hold-caller-fragment": 1,
+      "propose-correction": 4
+    },
+    "de": {
+      "accept-current": 13,
+      "hold-caller-fragment": 1,
+      "propose-correction": 6
+    },
+    "es": {
+      "accept-current": 16,
+      "hold-caller-fragment": 1,
+      "propose-correction": 3
+    },
+    "fr": {
+      "accept-current": 17,
+      "hold-caller-fragment": 1,
+      "propose-correction": 2
+    },
+    "hi": {
+      "accept-current": 10,
+      "hold-caller-fragment": 1,
+      "propose-correction": 9
+    },
+    "id": {
+      "accept-current": 16,
+      "hold-caller-fragment": 1,
+      "propose-correction": 3
+    },
+    "ja": {
+      "accept-current": 14,
+      "hold-caller-fragment": 1,
+      "propose-correction": 5
+    },
+    "ko": {
+      "accept-current": 12,
+      "hold-caller-fragment": 1,
+      "propose-correction": 7
+    },
+    "pt-BR": {
+      "accept-current": 16,
+      "hold-caller-fragment": 1,
+      "propose-correction": 3
+    },
+    "vi": {
+      "accept-current": 10,
+      "hold-caller-fragment": 1,
+      "propose-correction": 9
+    },
+    "zh-Hans": {
+      "accept-current": 11,
+      "hold-caller-fragment": 1,
+      "propose-correction": 8
+    },
+    "zh-Hant": {
+      "accept-current": 11,
+      "hold-caller-fragment": 1,
+      "propose-correction": 8
+    }
+  },
+  "callerReferences": 36,
+  "callerFiles": 28,
+  "priorEvidenceMatches": 0,
+  "placeholderFailures": 0,
+  "protectedLiteralCandidateFailures": 0,
+  "nativeSpeakerApproval": false,
+  "nativeSpeakerReviewRequired": true,
+  "testsBuildsScansCiWorkflowsRan": false,
+  "repositoryOrPrModified": false,
+  "pluralMapHashMethod": "SHA-256 of compact UTF-8 JSON with sorted category keys; scalar string targets hash raw UTF-8"
+}

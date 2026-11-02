@@ -1,0 +1,71 @@
+{
+  "groups": [
+    {
+      "allCategoriesPresent": true,
+      "categories": [
+        "few",
+        "many",
+        "one",
+        "other",
+        "two",
+        "zero"
+      ],
+      "cells": 1,
+      "disposition": "hold-native-arabic-plural-review",
+      "eachCategoryPreservesPlaceholder": true,
+      "expectedArabicPluralCategories": [
+        "zero",
+        "one",
+        "two",
+        "few",
+        "many",
+        "other"
+      ],
+      "locale": "ar",
+      "placeholder": "{count}",
+      "rationale": "The six branches and placeholder are structurally complete. Keep the current map provisional until qualified Arabic review checks the noun forms against ICU category selection.",
+      "sourceId": "Cleared {count} searches",
+      "sourceIndex": 703,
+      "targetType": "structured-icu-plural-map"
+    },
+    {
+      "callerPin": {
+        "fileBlob": "feb239764cd94d24d1776136d103636738e29c62",
+        "line": 336,
+        "lineText": "return <span><LocalizedText source={\"Click to load native Soulseek interests for\"} />{\" \"}{username}.</span>;",
+        "path": "web/src/components/Shared/UserCard.jsx"
+      },
+      "cells": 12,
+      "concatenation": "<LocalizedText source={\"Click to load native Soulseek interests for\"} />{\" \"}{username}.",
+      "currentTargetsPreserved": true,
+      "disposition": "hold-source-refactor-required",
+      "locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id",
+        "ja",
+        "ko",
+        "pt-BR",
+        "vi",
+        "zh-Hans",
+        "zh-Hant"
+      ],
+      "localizedTextSupportsValues": true,
+      "recommendedSourceRefactor": {
+        "component": "<LocalizedText source={\"Click to load native Soulseek interests for {username}.\"} values={{ username }} />",
+        "protectedLiteral": "Soulseek",
+        "reason": "Interpolate the username into one complete localizable sentence so each language can place it naturally.",
+        "requiredPlaceholder": "{username}",
+        "sourceId": "Click to load native Soulseek interests for {username}."
+      },
+      "sourceId": "Click to load native Soulseek interests for",
+      "sourceIndex": 705,
+      "valuesImplementation": "const text = typeof source === 'string' ? t(source, values) : children;"
+    }
+  ],
+  "head": "8b2f1f5fb216fb9946e823c5dff86d5e76a30b84",
+  "tree": "90225bd501256ac84c520105e714df9fc9d6aefc"
+}

@@ -1,0 +1,73 @@
+{"locale": "de", "matchesReviewedTarget": true, "sourceId": "Client", "sourceIndex": 706, "targetSha256": "0c77fe09ab336a3e57cc2b6804a9bac65e19a27782b5a9c815d585e894c3b7f2"}
+{"locale": "hi", "matchesReviewedTarget": true, "sourceId": "Client", "sourceIndex": 706, "targetSha256": "5bf2924d9672dd5f8a88bb33870263014627fdba653a50a2b59782137d4a91d9"}
+{"locale": "ko", "matchesReviewedTarget": true, "sourceId": "Client", "sourceIndex": 706, "targetSha256": "b367c7d58dda9e88b7c0bccb78fb17468638e65f25dcb17a26dc629ba1247326"}
+{"locale": "vi", "matchesReviewedTarget": true, "sourceId": "Client", "sourceIndex": 706, "targetSha256": "d6e299d410d9dcbb950b532eb7718b2df184a393ab450bffd8f1a16642fa0ba9"}
+{"locale": "zh-Hans", "matchesReviewedTarget": true, "sourceId": "Client", "sourceIndex": 706, "targetSha256": "477581b84e505d10e22035af5e1e12cd18866268a64b3301fbcc9f79530a7ac0"}
+{"locale": "zh-Hant", "matchesReviewedTarget": true, "sourceId": "Client", "sourceIndex": 706, "targetSha256": "8c663806bdb96bb759e20d9f79ef488af9c3864e4549db0a79ad1ea4c4dfe8a2"}
+{"locale": "de", "matchesReviewedTarget": true, "sourceId": "Client ID", "sourceIndex": 707, "targetSha256": "2fb2cd9295fab1a7f3b7f0cbdd9f5bc002683cb99e9eb4295f613a2b05c9f201"}
+{"locale": "hi", "matchesReviewedTarget": true, "sourceId": "Client ID", "sourceIndex": 707, "targetSha256": "6716f88e028a968d156f90e68b606c5425bbbaabe75c237dd4c90df353e47db8"}
+{"locale": "vi", "matchesReviewedTarget": true, "sourceId": "Client ID", "sourceIndex": 707, "targetSha256": "a67e26680ec334a4a059130df5fb7435d706b0a282d0df91f470a3a2ef23e7cc"}
+{"locale": "zh-Hans", "matchesReviewedTarget": true, "sourceId": "Client ID", "sourceIndex": 707, "targetSha256": "92ceb36a3d2cea413de80b910943c570e8e7196718149521bea78a26c613d2f6"}
+{"locale": "zh-Hant", "matchesReviewedTarget": true, "sourceId": "Client ID", "sourceIndex": 707, "targetSha256": "9d01676f56babf7f6fa9808b3b780c80be80952067cfc7df692208cd1f211ba4"}
+{"locale": "de", "matchesReviewedTarget": true, "sourceId": "Client ID:", "sourceIndex": 708, "targetSha256": "2f0e915c609ebf6bbfecf8a3aec2e0b12af326ec02767b75ce99c5d899b5161b"}
+{"locale": "hi", "matchesReviewedTarget": true, "sourceId": "Client ID:", "sourceIndex": 708, "targetSha256": "218ecf77abb4032ec75433a02f1a7909de9aaf055e97bc42e1516a31370d7e1f"}
+{"locale": "vi", "matchesReviewedTarget": true, "sourceId": "Client ID:", "sourceIndex": 708, "targetSha256": "67b562ca4097468a29da19a0bcbd8ba4bc0eeb560cecdedd49f3bcfa7864e4f1"}
+{"locale": "zh-Hans", "matchesReviewedTarget": true, "sourceId": "Client ID:", "sourceIndex": 708, "targetSha256": "71a1a306dc759cd72b996205eba2aaf88200296778222814fd080deebfb3dd61"}
+{"locale": "zh-Hant", "matchesReviewedTarget": true, "sourceId": "Client ID:", "sourceIndex": 708, "targetSha256": "401cd6dedba029e0375f5cafc855fadfa42535cb2a392c5ff1636adc78b18d29"}
+{"locale": "hi", "matchesReviewedTarget": true, "sourceId": "Client Secret", "sourceIndex": 709, "targetSha256": "8339703b9443e3366a11c82b29a1cdfe554dc90f10bbc0ac9cb875e8acdc5d9a"}
+{"locale": "ko", "matchesReviewedTarget": true, "sourceId": "Client Secret", "sourceIndex": 709, "targetSha256": "7a1d0efa7200c9d9e8dae4811cb9e10add3d250512affccaf62b8a38d20cf277"}
+{"locale": "vi", "matchesReviewedTarget": true, "sourceId": "Client Secret", "sourceIndex": 709, "targetSha256": "2f3a60ca204d5e5edd1212727f8cb31a166301a8c690f61359c9c83b8517d72e"}
+{"locale": "zh-Hans", "matchesReviewedTarget": true, "sourceId": "Client Secret", "sourceIndex": 709, "targetSha256": "7183484f9a9f4fb76f3bd9bb2734ee51205edd09561936c07c527f53b81cfc32"}
+{"locale": "zh-Hant", "matchesReviewedTarget": true, "sourceId": "Client Secret", "sourceIndex": 709, "targetSha256": "cc99f3eb3515e255e09554f31c80872d79206d9d2d1df79d277c8b644b77dbf4"}
+{"locale": "de", "matchesReviewedTarget": true, "sourceId": "Client details are unavailable;", "sourceIndex": 710, "targetSha256": "419740ad00a90f6648c19d55b2a6d8d8649120248ecc81cda70dcc4c549641c0"}
+{"locale": "hi", "matchesReviewedTarget": true, "sourceId": "Client details are unavailable;", "sourceIndex": 710, "targetSha256": "4cfe8c09e86f7112e9b281cd1bd52a75f5579ef6921af3d400d037befd1e2074"}
+{"locale": "ja", "matchesReviewedTarget": true, "sourceId": "Client details are unavailable;", "sourceIndex": 710, "targetSha256": "35bdc5dfb1f665d89c4f2a7d690de60e9a377409d01dfd653d71d1421c664308"}
+{"locale": "vi", "matchesReviewedTarget": true, "sourceId": "Client details are unavailable;", "sourceIndex": 710, "targetSha256": "1b2f1d5f0fcca9b42298415867d21bd16bd52ce32bd9320627836d50f3cef82c"}
+{"locale": "zh-Hans", "matchesReviewedTarget": true, "sourceId": "Client details are unavailable;", "sourceIndex": 710, "targetSha256": "bcc9c6354e81d0fcd77d7cf0c0cbabf50cbc161e4c0203a17afc413f2a9f8c98"}
+{"locale": "zh-Hant", "matchesReviewedTarget": true, "sourceId": "Client details are unavailable;", "sourceIndex": 710, "targetSha256": "394612c0821d5511ed672949120b2cff5008fb9d99b1d102c78a3c700a74a114"}
+{"locale": "ar", "matchesReviewedTarget": true, "sourceId": "Clip Findings (", "sourceIndex": 711, "targetSha256": "ae06d28029d2f32661bb8ccaf358b5b82f4f910fbd8722bfad9d3c98cb07cb17"}
+{"locale": "hi", "matchesReviewedTarget": true, "sourceId": "Clip Findings (", "sourceIndex": 711, "targetSha256": "8ec6e72da2264ec954d73be54483e85fe76948b418be556349eca5f7460b296d"}
+{"locale": "pt-BR", "matchesReviewedTarget": true, "sourceId": "Clip Findings (", "sourceIndex": 711, "targetSha256": "da4e7ce5ae347d5573a2a0fdd88a0a8577b431e23c48bed1704070620bdc9bd9"}
+{"locale": "vi", "matchesReviewedTarget": true, "sourceId": "Clip Findings (", "sourceIndex": 711, "targetSha256": "dc55c4f3fe5bcb538e0f294fd8999017bc72c505bcb1c3016d4487b0cb00c45f"}
+{"locale": "zh-Hans", "matchesReviewedTarget": true, "sourceId": "Clip Findings (", "sourceIndex": 711, "targetSha256": "e79d9c4da43a8185461fe812e41b085b4e375aac6f490c528f8c087ddfd26273"}
+{"locale": "zh-Hant", "matchesReviewedTarget": true, "sourceId": "Clip Findings (", "sourceIndex": 711, "targetSha256": "7c10fccf5ef5f6d34e526c6cd52cee72bd651a93481a3d1db70ce5fbc9b574be"}
+{"locale": "ar", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the Servarr review manually.", "sourceIndex": 713, "targetSha256": "a44264b8683fe127f5dc9d4070c64bb0779896259c103727dc8ac9728d2a9588"}
+{"locale": "de", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the Servarr review manually.", "sourceIndex": 713, "targetSha256": "c5818d37454960c1fa9f6584ca9d6b06e5c19737482d3f3c0b568537db893bd0"}
+{"locale": "es", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the Servarr review manually.", "sourceIndex": 713, "targetSha256": "370a21dc0ae85095c337f3504dd494b0c24351d83c19528bc012d0699ff6224d"}
+{"locale": "fr", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the Servarr review manually.", "sourceIndex": 713, "targetSha256": "e16c7f75ea5411b4b351b40e42410dc137f87ce4cc9e77db8216884c3617607a"}
+{"locale": "hi", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the Servarr review manually.", "sourceIndex": 713, "targetSha256": "67a7bccbd6fd0eed44b0c91c6c9232c634ccaa5f54825eccc501c601043c9769"}
+{"locale": "id", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the Servarr review manually.", "sourceIndex": 713, "targetSha256": "60e0ef77755da6d9e0f35ccdfb3ffd301c3e1c28dfccfc3334a37e86c8af6ae4"}
+{"locale": "ja", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the Servarr review manually.", "sourceIndex": 713, "targetSha256": "d5ad6fe913ef6962ebd92ac194de10492869da8a8d4501d582007e3ed4172feb"}
+{"locale": "ko", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the Servarr review manually.", "sourceIndex": 713, "targetSha256": "e2e610e40b5abe69c332510eaed31886352b55a813d109be46670e2c730ff7dc"}
+{"locale": "pt-BR", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the Servarr review manually.", "sourceIndex": 713, "targetSha256": "0279ad878d0f92f9e070c7c3e76df9b73943ea0421a884c303e7f30001c83f95"}
+{"locale": "vi", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the Servarr review manually.", "sourceIndex": 713, "targetSha256": "a60ff3c6a341cb41d62a542a368ffff3e44f340ce8b3ef73a6c6bf2d5b4d7336"}
+{"locale": "zh-Hans", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the Servarr review manually.", "sourceIndex": 713, "targetSha256": "9e6e4f758420a0760d27dda7eed120ad5b3641588cc5dc65841f07ecad4afbf7"}
+{"locale": "zh-Hant", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the Servarr review manually.", "sourceIndex": 713, "targetSha256": "322f0f543f888cc16770535436d71686b7847dd3f8ef1c695982c4eb7e87efeb"}
+{"locale": "ar", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the execution contract manually.", "sourceIndex": 715, "targetSha256": "bad4b76de22d7470ea8cf619f1693a32e0fd22b0d88556e2b52e1f7bc1beebef"}
+{"locale": "es", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the execution contract manually.", "sourceIndex": 715, "targetSha256": "8da6f8770650637fa62c2c461046aafe4a3badafc162f0480cf7bb2b6782e341"}
+{"locale": "ja", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the report from the preview text.", "sourceIndex": 716, "targetSha256": "cf7d684b2fb8448986bbda1db2998ba70d41a4eee5c70316ecde9479f5e94c4e"}
+{"locale": "ko", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the report from the preview text.", "sourceIndex": 716, "targetSha256": "4488a08f9747d7f626820684f2564c544425cd07cce5bd47d2b70de32a75691e"}
+{"locale": "de", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the request summary manually.", "sourceIndex": 717, "targetSha256": "0c8fdf4de8c20304c60eb95b7c022694720b30c904aa9bce1e148bffb09f804f"}
+{"locale": "es", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the request summary manually.", "sourceIndex": 717, "targetSha256": "f6e0ce942565e00c66f69d4954035d48671ab68da29d0ea82316315c7700ba0c"}
+{"locale": "fr", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the request summary manually.", "sourceIndex": 717, "targetSha256": "0f44b74b9c3334d3b2b2e7801c81d0d904627c6efa108ee39ef300637663f669"}
+{"locale": "ja", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the request summary manually.", "sourceIndex": 717, "targetSha256": "cc5d191c91889a828118e2d77cfb158efcc44aed6e81d83026ffaeb7e5d5f89c"}
+{"locale": "pt-BR", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the request summary manually.", "sourceIndex": 717, "targetSha256": "68c647b991254065d2274481b8930b07bdf3673ae1c5ce40ce58591767c2e080"}
+{"locale": "vi", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the request summary manually.", "sourceIndex": 717, "targetSha256": "69ba3a83864c0392243fc03ebc2ddb6890587d5a3ffcf1e9bbe4995991d27efa"}
+{"locale": "ja", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the visible conflict report manually.", "sourceIndex": 718, "targetSha256": "ed1a02fdeae36bd9856e9c30ab7be6d5e9a55fe36cd0f580ea45669367de54cc"}
+{"locale": "ko", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; copy the visible conflict report manually.", "sourceIndex": 718, "targetSha256": "9e83391a8ccbf368ed1839de757ce85a5bdbf3bbf15832311ae34933e8d1cd50"}
+{"locale": "ja", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; select the report text manually", "sourceIndex": 719, "targetSha256": "02ae8381c5249600298621ec365b551d938726f93d5ea32abfa4b3cffa3b8d93"}
+{"locale": "ko", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; select the report text manually", "sourceIndex": 719, "targetSha256": "96e809845e4a7f38f9e67b86ee115c6e4a740feaab7d8cb28a6202eadd4e81d9"}
+{"locale": "id", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; select the review results manually", "sourceIndex": 720, "targetSha256": "06303de81d624a20a539c457d7f8cfbdf90bfa2e90a55a98980313ee4e1653ed"}
+{"locale": "ja", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; select the review results manually", "sourceIndex": 720, "targetSha256": "88cdab0b7f34a1e56ffbe6dcf2f47bd73491e442716c589f714b331d9f889aba"}
+{"locale": "ko", "matchesReviewedTarget": true, "sourceId": "Clipboard unavailable; select the review results manually", "sourceIndex": 720, "targetSha256": "397f87be327c0ea1a34c579380d7d7b28b5e7113a839d8b711bb5251678dbbaf"}
+{"locale": "ar", "matchesReviewedTarget": true, "sourceId": "Clips", "sourceIndex": 721, "targetSha256": "f6e1566618c08699831a1570bd82b06adde64c4a6763752d7b839a828e752c78"}
+{"locale": "hi", "matchesReviewedTarget": true, "sourceId": "Clips", "sourceIndex": 721, "targetSha256": "afa6a219f58365a3ba06153a78749c54c75a2ea2620a4969f06a11eed9d65ac5"}
+{"locale": "vi", "matchesReviewedTarget": true, "sourceId": "Clips", "sourceIndex": 721, "targetSha256": "d8cbe7c43ee25ac18e736bd393879998d7eebbc4b80c523f75fd48987a8faaf2"}
+{"locale": "zh-Hans", "matchesReviewedTarget": true, "sourceId": "Clips", "sourceIndex": 721, "targetSha256": "a55030640f90008b841852cc15226e3dcdeee3d5a5e00137162aa2de49205d27"}
+{"locale": "zh-Hant", "matchesReviewedTarget": true, "sourceId": "Clips", "sourceIndex": 721, "targetSha256": "0a0ed1200146cf285949224620b34dfd620aa15da337298f96f22ea0ce620340"}
+{"locale": "ar", "matchesReviewedTarget": true, "sourceId": "Close", "sourceIndex": 722, "targetSha256": "ca90c297b099ab59f2c5f69a8e7385f9fefc62f8dc08b8e5efb3a0fb262b1a64"}
+{"locale": "es", "matchesReviewedTarget": true, "sourceId": "Close", "sourceIndex": 722, "targetSha256": "aeccae342e4bd0a70ded84675569da91c5efb3894e35929cafd851cda763a6aa"}
+{"locale": "hi", "matchesReviewedTarget": true, "sourceId": "Close", "sourceIndex": 722, "targetSha256": "ef9cca4a55ee043090d3e9cdd265290e84d656e43f00e9de974299ebe5f85755"}
+{"locale": "id", "matchesReviewedTarget": true, "sourceId": "Close", "sourceIndex": 722, "targetSha256": "c2321fe2ff9c12a4d46ab149866232d8c601e46fbd06220dbec50f4348fecb8c"}
+{"locale": "ja", "matchesReviewedTarget": true, "sourceId": "Close", "sourceIndex": 722, "targetSha256": "f6c244f98893cd951392f88864ef16a239999b2e95a6cebf5f6aa8d670460637"}
+{"locale": "ko", "matchesReviewedTarget": true, "sourceId": "Close", "sourceIndex": 722, "targetSha256": "1e8c10206f5b35bd96122e14038b5afd38e326a758874332b3931d6db9b25259"}

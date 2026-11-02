@@ -1,0 +1,44 @@
+{
+  "task": "slskR PR #204 W703-722 exact-hash reviewed application",
+  "inputHead": "8b2f1f5fb216fb9946e823c5dff86d5e76a30b84",
+  "inputTree": "90225bd501256ac84c520105e714df9fc9d6aefc",
+  "reviewedCells": 240,
+  "appliedCellChanges": 73,
+  "changedLocales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "perLocale": {
+    "ar": 5,
+    "de": 6,
+    "es": 4,
+    "fr": 2,
+    "hi": 9,
+    "id": 3,
+    "ja": 8,
+    "ko": 8,
+    "pt-BR": 3,
+    "vi": 9,
+    "zh-Hans": 8,
+    "zh-Hant": 8
+  },
+  "perDisposition": {
+    "add-correction": 8,
+    "confirm-primary-correction": 63,
+    "refine-primary-correction": 2
+  },
+  "heldCellsUnchanged": 13,
+  "nativeSpeakerApproval": false,
+  "testsBuildsScansCIWorkflowsRun": false,
+  "releasesTagsMerges": false
+}

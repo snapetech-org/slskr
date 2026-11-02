@@ -1,0 +1,148 @@
+{
+  "additionalCorrections": 8,
+  "arabicPluralMap": {
+    "categories": [
+      "few",
+      "many",
+      "one",
+      "other",
+      "two",
+      "zero"
+    ],
+    "nativeSpeakerApproval": false,
+    "placeholderPerBranch": "{count}",
+    "type": "structured ICU plural map"
+  },
+  "callerFiles": 28,
+  "callerPinsReattested": 36,
+  "catalogBlobsReattested": 12,
+  "currentLocaleCellsReattested": 240,
+  "expectedLiveState": "OPEN/DRAFT",
+  "head": "8b2f1f5fb216fb9946e823c5dff86d5e76a30b84",
+  "heldCells": 13,
+  "holdGroups": {
+    "arabicPluralMap": 1,
+    "usernameFragment": 12
+  },
+  "markupTagFailures": 0,
+  "nativeSpeakerApproval": false,
+  "nativeSpeakerReviewRequired": true,
+  "noRepositoryPrOrWorkflowChanges": true,
+  "noTestsBuildsScansCIOrBrowserRun": true,
+  "outOfWindowCatalogDeltasNotSemanticallyReviewed": {
+    "addedKeys": [
+      "Cancel selected",
+      "Connecting",
+      "Connection Failed",
+      "OK",
+      "Reconnecting",
+      "Retry selected"
+    ],
+    "changedValueKey": "Full",
+    "removedKeys": [
+      {
+        "key": "Retry{all}",
+        "sourcePosition": 3621
+      },
+      {
+        "key": "Cancel{all}",
+        "sourcePosition": 568
+      }
+    ],
+    "sourcePosition": 1823
+  },
+  "perLocale": {
+    "ar": {
+      "add-correction": 1,
+      "confirm-primary-correction": 4,
+      "hold-native-arabic-plural-review": 1,
+      "hold-source-refactor-required": 1,
+      "retain-current": 13
+    },
+    "de": {
+      "confirm-primary-correction": 6,
+      "hold-source-refactor-required": 1,
+      "retain-current": 13
+    },
+    "es": {
+      "add-correction": 1,
+      "confirm-primary-correction": 3,
+      "hold-source-refactor-required": 1,
+      "retain-current": 15
+    },
+    "fr": {
+      "confirm-primary-correction": 1,
+      "hold-source-refactor-required": 1,
+      "refine-primary-correction": 1,
+      "retain-current": 17
+    },
+    "hi": {
+      "confirm-primary-correction": 9,
+      "hold-source-refactor-required": 1,
+      "retain-current": 10
+    },
+    "id": {
+      "confirm-primary-correction": 3,
+      "hold-source-refactor-required": 1,
+      "retain-current": 16
+    },
+    "ja": {
+      "add-correction": 3,
+      "confirm-primary-correction": 5,
+      "hold-source-refactor-required": 1,
+      "retain-current": 11
+    },
+    "ko": {
+      "add-correction": 3,
+      "confirm-primary-correction": 4,
+      "hold-source-refactor-required": 1,
+      "refine-primary-correction": 1,
+      "retain-current": 9,
+      "retain-current-primary-candidate-no-op": 2
+    },
+    "pt-BR": {
+      "confirm-primary-correction": 3,
+      "hold-source-refactor-required": 1,
+      "retain-current": 16
+    },
+    "vi": {
+      "confirm-primary-correction": 9,
+      "hold-source-refactor-required": 1,
+      "retain-current": 10
+    },
+    "zh-Hans": {
+      "confirm-primary-correction": 8,
+      "hold-source-refactor-required": 1,
+      "retain-current": 11
+    },
+    "zh-Hant": {
+      "confirm-primary-correction": 8,
+      "hold-source-refactor-required": 1,
+      "retain-current": 11
+    }
+  },
+  "placeholderFailures": 0,
+  "primaryProposalsReviewed": 67,
+  "priorAcceptedCircuitBuildingCellsPreserved": 12,
+  "priorAcceptedCircuitBuildingChanged": 0,
+  "proposalOutcomes": {
+    "confirmedExactly": 63,
+    "noOpRetainedCurrent": 2,
+    "refined": 2
+  },
+  "protectedLiteralFailures": 0,
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "retainedCurrent": 152,
+  "retainedCurrentIncludingNoOpCandidates": 154,
+  "reviewedSourcePositions": [
+    703,
+    722
+  ],
+  "schemaVersion": 1,
+  "selectedWindowCatalogChangesSinceW563Head": 0,
+  "sourceRowsReattested": 20,
+  "task": "Independent slskR PR #204 W703–722 cross-review",
+  "tree": "90225bd501256ac84c520105e714df9fc9d6aefc",
+  "usernameInterpolationRefactorRequired": true
+}

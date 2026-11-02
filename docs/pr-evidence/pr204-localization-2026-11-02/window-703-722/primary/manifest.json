@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "livePullRequest": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "8b2f1f5fb216fb9946e823c5dff86d5e76a30b84",
+    "isDraft": true,
+    "mergeStateStatus": "CLEAN",
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "head": "8b2f1f5fb216fb9946e823c5dff86d5e76a30b84",
+  "tree": "90225bd501256ac84c520105e714df9fc9d6aefc",
+  "sourceBaselineHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceBaselineTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "sourceInventory": {
+    "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/frozen-inputs/source-inventory.jsonl",
+    "sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+    "keyCount": 5437
+  },
+  "sourceWindow": [
+    703,
+    722
+  ],
+  "sourceIds": 20,
+  "sourceIdBoundary": {
+    "703": "Cleared {count} searches",
+    "722": "Close"
+  },
+  "previousWindow": {
+    "sourceWindow": [
+      683,
+      702
+    ],
+    "nonOverlapping": true,
+    "evidencePath": "task-scratch/slskr-pr204-W683-702-primary-20261102/packet"
+  },
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "cells": 240,
+  "catalogs": {
+    "ar": {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "bytes": 512303,
+      "sha256": "0a32e28e5fe94b84ebbaf1909a51e9af54d65155278b1e240cf314b040bf3d10",
+      "blobOid": "f4521db2a87865cdb9d3ae29c35e1b8fa8f8f9aa",
+      "keyCount": 5441
+    },
+    "de": {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "bytes": 442888,
+      "sha256": "0ff5da2443b63fe60f2c127ed0660a33f122e73b731ef10644f03b314b92b4d1",
+      "blobOid": "c294a9ed9df83206237f397a7924e622493bc1af",
+      "keyCount": 5441
+    },
+    "es": {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "bytes": 443723,
+      "sha256": "33eddfa34afdc0094fdd31ea1e565153971ecf5b42d2d9846eb7f2dafc9b2a47",
+      "blobOid": "4212ce5994785bad840c2efdecc35b1be839a9ef",
+      "keyCount": 5441
+    },
+    "fr": {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "bytes": 454751,
+      "sha256": "f5af63c92d7303e43c18ecfd7899e9c8dee24a32b55921d88da0eed31db84ddb",
+      "blobOid": "1448cab274e0d01692ce817d4e0c61153248b509",
+      "keyCount": 5441
+    },
+    "hi": {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "bytes": 675801,
+      "sha256": "3c13c8c0da1cf7b4dbbbbc64e446f5c0d207fdba7a3f50efe51e5a81f946491d",
+      "blobOid": "24154c3ce99504a78693c21a65af1ed1d9331dd9",
+      "keyCount": 5441
+    },
+    "id": {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "bytes": 409339,
+      "sha256": "08b3d81c4afa68b1550ffb901fc260079d317fa7aab40724753d85adb6a375c9",
+      "blobOid": "dc5844c436f3742f6af8458ea740632cceae0780",
+      "keyCount": 5441
+    },
+    "ja": {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "bytes": 490716,
+      "sha256": "6ff90334c0c957e5cdafdd153103ccaf100476ebe5c908c443658a234b923862",
+      "blobOid": "6ffbe76ffee5ef6c2dcbc0c89c8a961be73a219b",
+      "keyCount": 5441
+    },
+    "ko": {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "bytes": 441807,
+      "sha256": "2224e24bb866d3be1c91d39cd800f2d789d103c6502f856401ee25bddd386f02",
+      "blobOid": "9808b0fd124a88f3c7181c054482cea81cbb6c15",
+      "keyCount": 5441
+    },
+    "pt-BR": {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "bytes": 438412,
+      "sha256": "6e1fd4b2712b40fcb201a21196517070dc37f0c8454b82048917cf9262694615",
+      "blobOid": "985abf306936895514b34460b85255b2a8e29110",
+      "keyCount": 5441
+    },
+    "vi": {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "bytes": 473915,
+      "sha256": "7bdccac3e7cad9f55cc47bcab6ddc62f533af91c0de72a457f5747f45773bb7e",
+      "blobOid": "221ec306a00a068247285fcff0b6ad90c6594364",
+      "keyCount": 5441
+    },
+    "zh-Hans": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "bytes": 382429,
+      "sha256": "c5cf808fdfea82318070534376d99d1af923d84df35ae8fc0e670015ab833c22",
+      "blobOid": "c173e0a4826416d3cf12b083ddd56178e2ba11bc",
+      "keyCount": 5441
+    },
+    "zh-Hant": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "bytes": 383143,
+      "sha256": "8e1d8c42c5acf35e9e1ee2c5fd6287d28b0491c3d0d56c840cca16588ddf6b1d",
+      "blobOid": "9852a63f37730194a6ae7a36a81a5965cea1b25a",
+      "keyCount": 5441
+    }
+  },
+  "catalogKeysOutsidePinnedSourceInventory": [
+    "OK",
+    "Connecting",
+    "Connection Failed",
+    "Reconnecting"
+  ],
+  "callerReferences": 36,
+  "uniqueCallerFiles": [
+    "web/src/components/Contacts/Contacts.jsx",
+    "web/src/components/Player/PlayerBar.test.jsx",
+    "web/src/components/Player/PlayerLauncher.jsx",
+    "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx",
+    "web/src/components/Search/DownloadActionPreviewModal.jsx",
+    "web/src/components/Search/Searches.jsx",
+    "web/src/components/Search/SongIDEvidenceDetails.jsx",
+    "web/src/components/Search/SongIDPanel.jsx",
+    "web/src/components/Shared/UserCard.jsx",
+    "web/src/components/Shares/SharedWithMe.jsx",
+    "web/src/components/Solid/SolidSettings.jsx",
+    "web/src/components/System/AutomationCenter/index.jsx",
+    "web/src/components/System/Bridge/index.jsx",
+    "web/src/components/System/Info/DiagnosticBundleModal.jsx",
+    "web/src/components/System/Info/SetupHealthCheckModal.jsx",
+    "web/src/components/System/Integrations/MediaServerPanel.jsx",
+    "web/src/components/System/Integrations/MetadataSettingsPanel.jsx",
+    "web/src/components/System/Integrations/ServarrReadinessPanel.jsx",
+    "web/src/components/System/Integrations/SourceFeedIntegrationsPanel.jsx",
+    "web/src/components/System/MediaCore/MediaCoreContentRegistryPanel.jsx",
+    "web/src/components/System/Mesh/MeshEvidencePolicy.jsx",
+    "web/src/components/System/Mesh/RealmSubjectIndexConflicts.jsx",
+    "web/src/components/System/Network/index.jsx",
+    "web/src/components/System/Options/DebugModal.jsx",
+    "web/src/components/System/Shares/ContentsModal.jsx",
+    "web/src/components/Wishlist/Wishlist.jsx",
+    "web/src/lib/interfaceLocale.test.js",
+    "web/src/semantic-ui-react/index.jsx"
+  ],
+  "uniqueCallerLines": 36,
+  "sourceIdsWithNoDirectCallers": [],
+  "priorEvidenceMatches": 0,
+  "priorReviewFile": {
+    "path": "docs/localization/pr204-translation-review-2026-11-01.jsonl",
+    "blobOid": "ac532def0973f2d8abc9baa00d3b1c19b5843822",
+    "bytes": 2753515,
+    "sha256": "27ab430e61b7cb5628150121afc1b565e38af9cd2dc2608d3aebd65fce99220e"
+  },
+  "placeholderParityFailures": 0,
+  "pluralMapCells": {
+    "ar": [
+      "few",
+      "many",
+      "one",
+      "other",
+      "two",
+      "zero"
+    ]
+  },
+  "nativeSpeakerApproval": false,
+  "pluralMapHashMethod": "SHA-256 of compact UTF-8 JSON with sorted category keys; scalar string targets hash raw UTF-8"
+}
