@@ -1,0 +1,1061 @@
+{
+  "baseline_head": "1494972d86c8fddf62078328376d4aefca07f051",
+  "baseline_tree": "1c0b3e16e721dfe623cf4239ae3bd4f9fbfc86d3",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "evidence_scan_manifest_sha256": "2b13e14d491eef03539469fca6e69fb56d5dbe67693e761695a4488a12d42b94",
+  "evidence_files_scanned": 756,
+  "conflicts": [
+    [
+      2046,
+      "Item Recs",
+      "ar",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "carried-findings.jsonl",
+          "line": 333,
+          "batch": null,
+          "finding_id": "CAT-8276a2d6eb82"
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/cross-review-adjudication-2030-2049.jsonl",
+          "line": 14,
+          "batch": "cross-review-adjudication-2030-2049",
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      2046,
+      "Item Recs",
+      "de",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "carried-findings.jsonl",
+          "line": 1191,
+          "batch": null,
+          "finding_id": "CAT-f420a895b04d"
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/cross-review-adjudication-2030-2049.jsonl",
+          "line": 15,
+          "batch": "cross-review-adjudication-2030-2049",
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      2046,
+      "Item Recs",
+      "es",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "carried-findings.jsonl",
+          "line": 1990,
+          "batch": null,
+          "finding_id": "CAT-74e7652c6822"
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/cross-review-adjudication-2030-2049.jsonl",
+          "line": 16,
+          "batch": "cross-review-adjudication-2030-2049",
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      5318,
+      "user note capacity is full",
+      "es",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/new-0500-0509.jsonl",
+          "line": 99,
+          "batch": "new-0500-0509",
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-new-0500-0509.jsonl",
+          "line": 99,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/reassessments/late-reassessment-0508-0518.jsonl",
+          "line": 6,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      71,
+      "A download path is configured.",
+      "ja",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/old-remaining-0120-0134.jsonl",
+          "line": 19,
+          "batch": "old-remaining-0120-0134",
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-lex-0060-0074.jsonl",
+          "line": 79,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-remaining-0120-0134.jsonl",
+          "line": 19,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      1170,
+      "Discovery Graph previewed for {title}.",
+      "ja",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/old-remaining-0300-0314.jsonl",
+          "line": 55,
+          "batch": "old-remaining-0300-0314",
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-remaining-0300-0314.jsonl",
+          "line": 55,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-remaining-1170-1189-decisions.jsonl",
+          "line": 1,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      68,
+      "; provenance",
+      "ko",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 6793,
+          "batch": null,
+          "finding_id": "CAT-435fc46cb8c6"
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/old-remaining-0060-0078.jsonl",
+          "line": 50,
+          "batch": "old-remaining-0060-0078",
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-lex-0060-0074.jsonl",
+          "line": 50,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/decisions-old-remaining-0060-0078.jsonl",
+          "line": 50,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      5325,
+      "username and password are required",
+      "ko",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 6092,
+          "batch": null,
+          "finding_id": "CAT-ca99dc79c901"
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/new-0510-0519.jsonl",
+          "line": 56,
+          "batch": "new-0510-0519",
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-new-0510-0519.jsonl",
+          "line": 56,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/reassessments/late-reassessment-0508-0518.jsonl",
+          "line": 1,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      5326,
+      "username and password must be supplied together",
+      "ko",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 6104,
+          "batch": null,
+          "finding_id": "CAT-96611a5a01c9"
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/new-0510-0519.jsonl",
+          "line": 68,
+          "batch": "new-0510-0519",
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-new-0510-0519.jsonl",
+          "line": 68,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/reassessments/late-reassessment-0508-0518.jsonl",
+          "line": 2,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      5327,
+      "username is required",
+      "ko",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 6116,
+          "batch": null,
+          "finding_id": "CAT-d590c58e7903"
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/new-0510-0519.jsonl",
+          "line": 80,
+          "batch": "new-0510-0519",
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-new-0510-0519.jsonl",
+          "line": 80,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/reassessments/late-reassessment-0508-0518.jsonl",
+          "line": 3,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      5328,
+      "username is required for user search",
+      "ko",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 6128,
+          "batch": null,
+          "finding_id": "CAT-a6bf4e627895"
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/new-0510-0519.jsonl",
+          "line": 92,
+          "batch": "new-0510-0519",
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-new-0510-0519.jsonl",
+          "line": 92,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/reassessments/late-reassessment-0508-0518.jsonl",
+          "line": 4,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      5329,
+      "username is too long",
+      "ko",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 6140,
+          "batch": null,
+          "finding_id": "CAT-dccc40950673"
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/new-0510-0519.jsonl",
+          "line": 104,
+          "batch": "new-0510-0519",
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-new-0510-0519.jsonl",
+          "line": 104,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/reassessments/late-reassessment-0508-0518.jsonl",
+          "line": 5,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      1170,
+      "Discovery Graph previewed for {title}.",
+      "pt-BR",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/old-remaining-0300-0314.jsonl",
+          "line": 57,
+          "batch": "old-remaining-0300-0314",
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-remaining-0300-0314.jsonl",
+          "line": 57,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-remaining-1170-1189-decisions.jsonl",
+          "line": 3,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      1463,
+      "ExternalId is required",
+      "pt-BR",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 8629,
+          "batch": null,
+          "finding_id": "CAT-382b419a8665"
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/new-0070-0079.jsonl",
+          "line": 9,
+          "batch": "new-0070-0079",
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-cross-review-1463-ptbr-singular-api-field.jsonl",
+          "line": 1,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-new-0070-0079.jsonl",
+          "line": 9,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-remaining-1450-1469-decisions.jsonl",
+          "line": 81,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      2113,
+      "Last seen timestamps are required",
+      "pt-BR",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 10156,
+          "batch": null,
+          "finding_id": "CAT-2f7295b92956"
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/cross-review-2113-last-seen.jsonl",
+          "line": 1,
+          "batch": "cross-review-2113-last-seen",
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/new-0130-0139.jsonl",
+          "line": 21,
+          "batch": "new-0130-0139",
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-new-0130-0139.jsonl",
+          "line": 21,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-remaining-2110-2129-excluded-exact-prior-decisions.jsonl",
+          "line": 3,
+          "batch": "new-0130-0139",
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/supplemental-cross-review-2113-last-seen.jsonl",
+          "line": 1,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      68,
+      "; provenance",
+      "vi",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 6794,
+          "batch": null,
+          "finding_id": "CAT-3691e2b6264c"
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/old-remaining-0060-0078.jsonl",
+          "line": 52,
+          "batch": "old-remaining-0060-0078",
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-lex-0060-0074.jsonl",
+          "line": 52,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/decisions-old-remaining-0060-0078.jsonl",
+          "line": 52,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      2113,
+      "Last seen timestamps are required",
+      "vi",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 10157,
+          "batch": null,
+          "finding_id": "CAT-d900d20c1399"
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/cross-review-2113-last-seen.jsonl",
+          "line": 2,
+          "batch": "cross-review-2113-last-seen",
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/new-0130-0139.jsonl",
+          "line": 22,
+          "batch": "new-0130-0139",
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-new-0130-0139.jsonl",
+          "line": 22,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-remaining-2110-2129-excluded-exact-prior-decisions.jsonl",
+          "line": 4,
+          "batch": "new-0130-0139",
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/supplemental-cross-review-2113-last-seen.jsonl",
+          "line": 2,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      68,
+      "; provenance",
+      "zh-Hans",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 6795,
+          "batch": null,
+          "finding_id": "CAT-160bd9929ab7"
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/old-remaining-0060-0078.jsonl",
+          "line": 53,
+          "batch": "old-remaining-0060-0078",
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-lex-0060-0074.jsonl",
+          "line": 53,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/decisions-old-remaining-0060-0078.jsonl",
+          "line": 53,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      1447,
+      "Export active RustyMilk preset",
+      "zh-Hans",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 8593,
+          "batch": null,
+          "finding_id": "CAT-dd4d41c3af98"
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/batch-old-remaining-1430-1449.jsonl",
+          "line": 107,
+          "batch": "batch-old-remaining-1430-1449",
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-cross-review-1447-active-term-supplement.jsonl",
+          "line": 1,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-remaining-1430-1449-decisions.jsonl",
+          "line": 107,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      1170,
+      "Discovery Graph previewed for {title}.",
+      "zh-Hans",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/old-remaining-0300-0314.jsonl",
+          "line": 59,
+          "batch": "old-remaining-0300-0314",
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-remaining-0300-0314.jsonl",
+          "line": 59,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-remaining-1170-1189-decisions.jsonl",
+          "line": 5,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      2113,
+      "Last seen timestamps are required",
+      "zh-Hans",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 10158,
+          "batch": null,
+          "finding_id": "CAT-e1e90daab812"
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/cross-review-2113-last-seen.jsonl",
+          "line": 3,
+          "batch": "cross-review-2113-last-seen",
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/new-0130-0139.jsonl",
+          "line": 23,
+          "batch": "new-0130-0139",
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-new-0130-0139.jsonl",
+          "line": 23,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-remaining-2110-2129-excluded-exact-prior-decisions.jsonl",
+          "line": 5,
+          "batch": "new-0130-0139",
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/supplemental-cross-review-2113-last-seen.jsonl",
+          "line": 3,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      68,
+      "; provenance",
+      "zh-Hant",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 6796,
+          "batch": null,
+          "finding_id": "CAT-c6290820ec64"
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/old-remaining-0060-0078.jsonl",
+          "line": 54,
+          "batch": "old-remaining-0060-0078",
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-lex-0060-0074.jsonl",
+          "line": 54,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/decisions-old-remaining-0060-0078.jsonl",
+          "line": 54,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      1447,
+      "Export active RustyMilk preset",
+      "zh-Hant",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 8594,
+          "batch": null,
+          "finding_id": "CAT-e3d8ddf5dd41"
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/batch-old-remaining-1430-1449.jsonl",
+          "line": 108,
+          "batch": "batch-old-remaining-1430-1449",
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-cross-review-1447-active-term-supplement.jsonl",
+          "line": 2,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-remaining-1430-1449-decisions.jsonl",
+          "line": 108,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      1170,
+      "Discovery Graph previewed for {title}.",
+      "zh-Hant",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/old-remaining-0300-0314.jsonl",
+          "line": 60,
+          "batch": "old-remaining-0300-0314",
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-remaining-0300-0314.jsonl",
+          "line": 60,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-remaining-1170-1189-decisions.jsonl",
+          "line": 6,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ],
+    [
+      2113,
+      "Last seen timestamps are required",
+      "zh-Hant",
+      [
+        "accepted",
+        "correction-needed"
+      ],
+      [
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "findings.jsonl",
+          "line": 10159,
+          "batch": null,
+          "finding_id": "CAT-fad187a176bc"
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/cross-review-2113-last-seen.jsonl",
+          "line": 4,
+          "batch": "cross-review-2113-last-seen",
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/chunks/new-0130-0139.jsonl",
+          "line": 24,
+          "batch": "new-0130-0139",
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-new-0130-0139.jsonl",
+          "line": 24,
+          "batch": null,
+          "finding_id": null
+        },
+        {
+          "status": "accepted",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/batch-old-remaining-2110-2129-excluded-exact-prior-decisions.jsonl",
+          "line": 6,
+          "batch": "new-0130-0139",
+          "finding_id": null
+        },
+        {
+          "status": "correction-needed",
+          "root": "prior-audit-7ff",
+          "path": "review-evidence/inputs/supplemental-cross-review-2113-last-seen.jsonl",
+          "line": 4,
+          "batch": null,
+          "finding_id": null
+        }
+      ]
+    ]
+  ]
+}
