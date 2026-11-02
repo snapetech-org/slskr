@@ -1,29 +1,29 @@
 {
-  "head": "48211078d858e9dfbbc2fb2bc74d65cd54c58f0f",
-  "head_tree": "741d3be561eab466fcf5f79776d3e8350b2895e2",
+  "head": "5e60557627c148475d9ba753acdcc83fd8027b85",
+  "head_tree": "a01cf45e07dc21c62bc3ac7c7fa5e48268fc5063",
   "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
   "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
   "source_ids": 5437,
   "cell_count": 65244,
   "catalog_file_sha256": {
-    "web/src/lib/locales/ui-labels.ar.json": "8d6093b08243d8c113a91082aedb2d3ca4db0002933164b5b993142706fc1456",
-    "web/src/lib/locales/ui-labels.de.json": "e71d440020618485c9807ee3d6130c2cc8c0a943a4ce9e59c879e6cc25fd9a24",
-    "web/src/lib/locales/ui-labels.es.json": "1c2dc6dc96697c7ecee6ba25c5829e54d0a7861beaf48e34d1fccfbcf770a675",
-    "web/src/lib/locales/ui-labels.fr.json": "24dcf0ee1608368e2df238ce7f43cff1f8c3d9dcca25b5e2f7712c7d96708a1e",
-    "web/src/lib/locales/ui-labels.hi.json": "46c514128702527e6740d35ec2f426f4e0c6d2fb234f09af2e346638c8823e94",
-    "web/src/lib/locales/ui-labels.id.json": "269924d98332b78b759558e1b0426ee255ddcd46d292aa4f170b8b7420b18de1",
-    "web/src/lib/locales/ui-labels.ja.json": "ef60aeaaf5ce0f2b978f0157d493a64ae88db5af764e30122d805cb25cd8c023",
-    "web/src/lib/locales/ui-labels.ko.json": "7e456353d8cd6a4d44e8dc8fbe31bfc2e950ad7ec464e68b9feebeff38cbee94",
-    "web/src/lib/locales/ui-labels.pt-BR.json": "0de60739787750de428d6fc4d4fc8a6553aaca48085dfb76770c710996daa126",
-    "web/src/lib/locales/ui-labels.vi.json": "2be61bc7329276cea157b533a9e7f463921acc45157726d731428a1d3a6e9464",
-    "web/src/lib/locales/ui-labels.zh-Hans.json": "8c826eebb4efb4996e966950adf2020f1358ebdcb7e5298d99f92676061f8ce9",
-    "web/src/lib/locales/ui-labels.zh-Hant.json": "11747cb04dd11943782a404ba868844a0ecaffb04e6f9d300f00c97487e0998f"
+    "web/src/lib/locales/ui-labels.ar.json": "53f688da529cd0135b7ac2cf18581c0710b5d28a83145678700f38191ea549b4",
+    "web/src/lib/locales/ui-labels.de.json": "486bde7b02cd3d57a88e4088166ca44bc4b8a56a75584b3f054b380909126415",
+    "web/src/lib/locales/ui-labels.es.json": "149b231db8d8cc5e9dbe63bcc8ac71f2e2d7c7d800312cb9631fec5cf473c8e8",
+    "web/src/lib/locales/ui-labels.fr.json": "c0f2e1ca0702ba4320ba0dba56b412c819c06f6cad9324de38873cbb135f1af3",
+    "web/src/lib/locales/ui-labels.hi.json": "4af6e7b9851d445dbfe251d650a860cec1ea88a0e4e9997f561b49dddb13f34f",
+    "web/src/lib/locales/ui-labels.id.json": "2c30f935ceb9fa9c294d1aae3800d7a7f8198b687f1604c82419f4be8d60b8d8",
+    "web/src/lib/locales/ui-labels.ja.json": "6b544f3be6f8712b5d0c85642179589bfb398338f81511d2c73f9cccf2382d18",
+    "web/src/lib/locales/ui-labels.ko.json": "d2b1003a7d7de613ec16ab6be0ed83fd7f77ff4be7bd521469ebd0d13c22a51b",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "e237a2304f628f3301618abb15aab5ba03e4800fa16fef41a1ec1af3119f6e89",
+    "web/src/lib/locales/ui-labels.vi.json": "5ed7f12f2245878e8096120f477361d74b3f9ed6b0fb61f0e75ca6eb23eb5f00",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "e9fc1c7328052dba8f88618b78422d8fd1a7a6a68dc91ea6d16b3ca08c7367c5",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "8cadca8952ac729ec2cee22cf5123355940429d0ed0837380ccd38c6ee2b2067"
   },
   "structured_plural_cells": {
     "ar": 15
   },
-  "evidence_files_scanned": 858,
-  "evidence_scan_manifest_sha256": "f6dbcd12b6f5b0fa87af1ab8739ddafa77172e49f3d79e20c3500b8e0346a624",
+  "evidence_files_scanned": 876,
+  "evidence_scan_manifest_sha256": "ef8f47c8ede572c774e6c9387eca12e534f1102ba361f9a13ea713ce5b073266",
   "evidence_file_manifest": [
     {
       "root": "pr-review-head",
@@ -910,6 +910,114 @@
     {
       "root": "pr-review-head",
       "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0263-0282-all-12-locales/terminal-exclusions.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0283-0302-all-12-locales/applied-corrections.jsonl",
+      "bytes": 114187,
+      "sha256": "487ae98ff46d523ce477c87f2f64b69f8981cf256a762a56473be3f946727c03"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0283-0302-all-12-locales/candidate-corrections.jsonl",
+      "bytes": 77284,
+      "sha256": "7e2438110b21fd01c125d8bd3d5b248f24b286c7884337287723d72c5af46703"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0283-0302-all-12-locales/candidate-main-input.jsonl",
+      "bytes": 71771,
+      "sha256": "d143db6de16f3b5d4ca41f6b427912014f7e90b48a1d70a21b3677de6a35ea42"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0283-0302-all-12-locales/candidate-supplement.jsonl",
+      "bytes": 5513,
+      "sha256": "8aba7094c2358837295a8a2a8c1f2112bf6b667e6171aac1ccf2a5bc985f100a"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0283-0302-all-12-locales/carries.jsonl",
+      "bytes": 124629,
+      "sha256": "d19381a4e58b37fcfe74985a973d54c6eb454c2fb5c10a36df6e4325ea52b0dc"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0283-0302-all-12-locales/conflict-holds.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0283-0302-all-12-locales/conflict-reconciliation.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0283-0302-all-12-locales/decisions.jsonl",
+      "bytes": 148694,
+      "sha256": "53d16a7fca7fd3e6d51decb716cc5e783f7550d7b2c9001dfc077b300ec52399"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0283-0302-all-12-locales/manifest.json",
+      "bytes": 11601,
+      "sha256": "ef76d64e84c0a6f87a839bf059c0c4c81dc9530a139e2e7ae0cc4f1f1ef2d50c"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0283-0302-all-12-locales/prior-evidence-scan-manifest.jsonl",
+      "bytes": 176751,
+      "sha256": "8b0eed1ebc4a913d622274dbb055cf258e7400ee678bc75689cab34ae919a20a"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0283-0302-all-12-locales/reviewed-cell-audit.jsonl",
+      "bytes": 649573,
+      "sha256": "210d7fade23bad88fbc1d58e97327fb941e8ba9c53eb25bacd95cb29994e831c"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0283-0302-all-12-locales/root-apply-plan.jsonl",
+      "bytes": 28992,
+      "sha256": "2d87c27a7893c32a2eefd0fce755c44812b48cea2c8eb45e043255e2615134a8"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0283-0302-all-12-locales/root-cross-review-summary.json",
+      "bytes": 487,
+      "sha256": "b8ce5230ab97af6b3c81326575fbeca62b690232b10b9c21d1085b97c4abb8d6"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0283-0302-all-12-locales/root-cross-review.jsonl",
+      "bytes": 71464,
+      "sha256": "9cb1c6b3a01c60ab1e61ed8e9283f1e3ffaf1039f4c040088235122127f5109e"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0283-0302-all-12-locales/selection-before-corrections.jsonl",
+      "bytes": 175413,
+      "sha256": "8a5d85e405bcaa552b0b00e553ef8ba6aa5bb26e672db303f1b4c460c35375f6"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0283-0302-all-12-locales/selection.jsonl",
+      "bytes": 187841,
+      "sha256": "71761b6a33a3f5df9b790ce502ca2bb340219def91ccb8bdf383fe0284ebab3a"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0283-0302-all-12-locales/source-pins.json",
+      "bytes": 15783,
+      "sha256": "ca0317bb8abbea672c60170413c5cc40515243abf2b8fca8cbc7c7b6908e22d1"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0283-0302-all-12-locales/terminal-exclusions.jsonl",
       "bytes": 0,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
@@ -5175,227 +5283,101 @@
     }
   ],
   "unique_current_cell_status_counts": {
-    "accepted": 23598,
-    "corrected": 290,
-    "correction-needed": 10731,
+    "accepted": 23648,
+    "corrected": 333,
+    "correction-needed": 10698,
     "held": 289,
-    "unreviewed": 30336
+    "unreviewed": 30276
   },
   "per_locale_exact_status_counts": {
     "ar": {
-      "accepted": 1309,
-      "corrected": 30,
-      "correction-needed": 1079,
+      "accepted": 1315,
+      "corrected": 37,
+      "correction-needed": 1073,
       "held": 12,
-      "unreviewed": 3007
+      "unreviewed": 3000
     },
     "de": {
-      "accepted": 1338,
-      "corrected": 30,
-      "correction-needed": 858,
+      "accepted": 1347,
+      "corrected": 33,
+      "correction-needed": 856,
       "held": 10,
-      "unreviewed": 3201
+      "unreviewed": 3191
     },
     "es": {
-      "accepted": 1289,
-      "corrected": 27,
-      "correction-needed": 1090,
+      "accepted": 1299,
+      "corrected": 29,
+      "correction-needed": 1089,
       "held": 9,
-      "unreviewed": 3022
+      "unreviewed": 3011
     },
     "fr": {
-      "accepted": 1292,
-      "corrected": 29,
-      "correction-needed": 1031,
+      "accepted": 1302,
+      "corrected": 33,
+      "correction-needed": 1028,
       "held": 10,
-      "unreviewed": 3075
+      "unreviewed": 3064
     },
     "hi": {
-      "accepted": 1292,
-      "corrected": 31,
-      "correction-needed": 1111,
+      "accepted": 1297,
+      "corrected": 39,
+      "correction-needed": 1108,
       "held": 14,
-      "unreviewed": 2989
+      "unreviewed": 2979
     },
     "id": {
-      "accepted": 1290,
-      "corrected": 29,
-      "correction-needed": 1078,
+      "accepted": 1300,
+      "corrected": 32,
+      "correction-needed": 1076,
       "held": 10,
-      "unreviewed": 3030
+      "unreviewed": 3019
     },
     "ja": {
       "accepted": 2771,
-      "corrected": 15,
-      "correction-needed": 611,
+      "corrected": 17,
+      "correction-needed": 609,
       "held": 38,
       "unreviewed": 2002
     },
     "ko": {
       "accepted": 2667,
-      "corrected": 14,
-      "correction-needed": 715,
+      "corrected": 17,
+      "correction-needed": 712,
       "held": 39,
       "unreviewed": 2002
     },
     "pt-BR": {
       "accepted": 2660,
-      "corrected": 18,
-      "correction-needed": 721,
+      "corrected": 20,
+      "correction-needed": 719,
       "held": 36,
       "unreviewed": 2002
     },
     "vi": {
       "accepted": 2438,
-      "corrected": 31,
-      "correction-needed": 929,
+      "corrected": 34,
+      "correction-needed": 926,
       "held": 37,
       "unreviewed": 2002
     },
     "zh-Hans": {
       "accepted": 2633,
-      "corrected": 18,
-      "correction-needed": 747,
+      "corrected": 21,
+      "correction-needed": 744,
       "held": 37,
       "unreviewed": 2002
     },
     "zh-Hant": {
       "accepted": 2619,
-      "corrected": 18,
-      "correction-needed": 761,
+      "corrected": 21,
+      "correction-needed": 758,
       "held": 37,
       "unreviewed": 2002
     }
   },
-  "unreviewed_source_index_count": 3680,
-  "unreviewed_cells": 30336,
+  "unreviewed_source_index_count": 3669,
+  "unreviewed_cells": 30276,
   "first_100_unreviewed_indices": {
-    "291": {
-      "source_id": "Analytics time window",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "292": {
-      "source_id": "Analytics unavailable",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "293": {
-      "source_id": "Analyze Conflicts",
-      "fresh_locale_count": 5,
-      "fresh_locales": [
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "294": {
-      "source_id": "Analyze Similarity",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "295": {
-      "source_id": "Analyze Text Similarity",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "296": {
-      "source_id": "Analyze the source and rank likely track, album, and artist candidates so you can search or plan downloads from the result.",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "297": {
-      "source_id": "Analyze with SongID",
-      "fresh_locale_count": 4,
-      "fresh_locales": [
-        "ar",
-        "es",
-        "fr",
-        "id"
-      ]
-    },
-    "299": {
-      "source_id": "Anonymity Layer",
-      "fresh_locale_count": 5,
-      "fresh_locales": [
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "300": {
-      "source_id": "Anonymity Layer (IP Protection)",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "301": {
-      "source_id": "Anonymity Layer - IP Protection",
-      "fresh_locale_count": 5,
-      "fresh_locales": [
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "302": {
-      "source_id": "Anonymity Mode",
-      "fresh_locale_count": 5,
-      "fresh_locales": [
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
     "304": {
       "source_id": "Anyone can join and see the room",
       "fresh_locale_count": 4,
@@ -6416,6 +6398,132 @@
         "de",
         "es",
         "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "445": {
+      "source_id": "Avg Verify Time:",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "446": {
+      "source_id": "Awaiting Quorum",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "448": {
+      "source_id": "Backend",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "462": {
+      "source_id": "Balanced",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "463": {
+      "source_id": "Ban Member",
+      "fresh_locale_count": 2,
+      "fresh_locales": [
+        "fr",
+        "hi"
+      ]
+    },
+    "464": {
+      "source_id": "Ban Reason (optional)",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "465": {
+      "source_id": "Bandwidth Limit",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "466": {
+      "source_id": "Banned Memberships:",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "469": {
+      "source_id": "Base URL",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "470": {
+      "source_id": "Base URL configured",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "471": {
+      "source_id": "Batch Descriptor Retrieval",
+      "fresh_locale_count": 4,
+      "fresh_locales": [
+        "de",
+        "es",
         "hi",
         "id"
       ]
