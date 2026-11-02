@@ -1,0 +1,422 @@
+{
+  "schema_version": 1,
+  "batch": "independent-0143-0162-all-12-locales",
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "pr_state": "OPEN",
+  "pr_draft": true,
+  "pr_branch": "codex/slskr-l10n-audit-20261030",
+  "review_head": "82494e758b7a78abd34812264a57a2a80bcc4c5c",
+  "review_tree": "ab984cf0c7043479b07264ccede7800c46d71db2",
+  "application_parent_head": "82494e758b7a78abd34812264a57a2a80bcc4c5c",
+  "application_head": "f4d5d8818028162266e56d027b7966f300bb6474",
+  "application_tree": "c4a4f0d55c8d206d19fe7c1b15f9b661f48e82a7",
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_catalog_tree_current_at_review_head": false,
+  "direct_catalog": {
+    "source_ids": 5437,
+    "locales": [
+      "ar",
+      "de",
+      "es",
+      "fr",
+      "hi",
+      "id",
+      "ja",
+      "ko",
+      "pt-BR",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "slots": 65244,
+    "populated_cells": 65244,
+    "blank_cells": 0,
+    "structured_plural_cells": 15,
+    "structured_plural_locale_counts": {
+      "ar": 15
+    },
+    "catalog_sha256_before": {
+      "web/src/lib/locales/ui-labels.ar.json": "4ad7eec11cc1d30afd0129e6aac7002669df7cc3f91d59c868115f970f70b5df",
+      "web/src/lib/locales/ui-labels.de.json": "85d2cccea96e3b597d723feef0c007b76976108f6c5c53a0123765bf6253d896",
+      "web/src/lib/locales/ui-labels.es.json": "5bb3094c1ca1ce25d2da577cd9d405338798571f2cd97cd9e6da063e3447bf75",
+      "web/src/lib/locales/ui-labels.fr.json": "203216db3f4f745128a89772b7680f401e4b9d7b4d978f4d932d1649f08762bd",
+      "web/src/lib/locales/ui-labels.hi.json": "2cf595937e1ddcdc94e42044c71bc42cd3f4b7445ca0509ec6e9fbf5d636b76b",
+      "web/src/lib/locales/ui-labels.id.json": "ca0975bbcc408d4d3c146aba26c4e5480a0233b0cac603cd530ea82bb07681d8",
+      "web/src/lib/locales/ui-labels.ja.json": "35218904466567f0c98cbb631e30af2d813f2eea719bf66a06f9984e5874b10e",
+      "web/src/lib/locales/ui-labels.ko.json": "5636a4b1a4bf325d6c03031b8b3ef34db7d04936c8216343e55b2d36fa544bcd",
+      "web/src/lib/locales/ui-labels.pt-BR.json": "5d66fed4d95c212350e7f29df2d70b94381cf086df8cfdac04bfc48f0c1b9372",
+      "web/src/lib/locales/ui-labels.vi.json": "91fac84a2ab6ebcfbe6f33cdf0302e0350b676e4cd69be796edc86509e856184",
+      "web/src/lib/locales/ui-labels.zh-Hans.json": "365c4c51e7cee40e79b37607319dd4dbe1345dcee77f085dd6f7fa1ad307881b",
+      "web/src/lib/locales/ui-labels.zh-Hant.json": "2945bee74a8ffc61db44b8a0bac113ba9f20a159657925c7f3dbc7d1647ce89c"
+    },
+    "catalog_sha256_after_application": {
+      "web/src/lib/locales/ui-labels.ar.json": "7c8ead1aac5fc068c975386962539b468e1d8c0f24818763299f84ff2a9a066d",
+      "web/src/lib/locales/ui-labels.de.json": "d21604fea328e80fb893b1016c2f51048a1217ef408fa06d452ac6e3a0431489",
+      "web/src/lib/locales/ui-labels.es.json": "9c78d6f87597629c543d1985208c4aeb3a4a7db2233114f0bb5fb3f9b3f961d5",
+      "web/src/lib/locales/ui-labels.fr.json": "a43c8e3246fc0f6a7a57687853e89ae95fc1a381772b37955d929663f58882e0",
+      "web/src/lib/locales/ui-labels.hi.json": "cc63a5b2b1a1c562166fea66af5a5ecca08ed19e90f5e98e1c77ce37adf4c6db",
+      "web/src/lib/locales/ui-labels.id.json": "cc59d115e6bb4f729339f4f78e922853b6a3093e0bd5ba0fa1d87f6f4c1bea06",
+      "web/src/lib/locales/ui-labels.ja.json": "35218904466567f0c98cbb631e30af2d813f2eea719bf66a06f9984e5874b10e",
+      "web/src/lib/locales/ui-labels.ko.json": "5636a4b1a4bf325d6c03031b8b3ef34db7d04936c8216343e55b2d36fa544bcd",
+      "web/src/lib/locales/ui-labels.pt-BR.json": "5d66fed4d95c212350e7f29df2d70b94381cf086df8cfdac04bfc48f0c1b9372",
+      "web/src/lib/locales/ui-labels.vi.json": "91fac84a2ab6ebcfbe6f33cdf0302e0350b676e4cd69be796edc86509e856184",
+      "web/src/lib/locales/ui-labels.zh-Hans.json": "365c4c51e7cee40e79b37607319dd4dbe1345dcee77f085dd6f7fa1ad307881b",
+      "web/src/lib/locales/ui-labels.zh-Hant.json": "2945bee74a8ffc61db44b8a0bac113ba9f20a159657925c7f3dbc7d1647ce89c"
+    }
+  },
+  "source_index_range": [
+    143,
+    162
+  ],
+  "source_index_method": "zero-based Python lexical sort of the 5,437 current catalog source IDs",
+  "window_accounting": {
+    "source_keys": 20,
+    "cell_slots": 240,
+    "populated_cells": 240,
+    "fresh_cells": 87,
+    "fresh_statuses": {
+      "accepted": 84,
+      "correction-needed": 3
+    },
+    "prior_accepted_carries": 103,
+    "prior_correction_needed_exclusions": 42,
+    "prior_held_exclusions": 0,
+    "exact_corrections_applied": 8,
+    "unresolved_conflict_cells": 0,
+    "disposition_partition": {
+      "corrected-this-pass": 8,
+      "new": 87,
+      "prior_accepted": 103,
+      "prior_correction-needed": 42
+    },
+    "terminal_statuses_after_review": {
+      "accepted": 187,
+      "corrected": 8,
+      "correction-needed": 45
+    },
+    "pending_exact_terminal_overlaps": 0,
+    "conflicting_exact_prior_statuses": 0
+  },
+  "per_locale": {
+    "ar": {
+      "fresh": {
+        "accepted": 15
+      },
+      "accepted_carry": 1,
+      "correction_needed_exclusion": 2,
+      "corrected": 2
+    },
+    "de": {
+      "fresh": {
+        "accepted": 14
+      },
+      "accepted_carry": 1,
+      "correction_needed_exclusion": 4,
+      "corrected": 1
+    },
+    "es": {
+      "fresh": {
+        "accepted": 14
+      },
+      "accepted_carry": 1,
+      "correction_needed_exclusion": 4,
+      "corrected": 1
+    },
+    "fr": {
+      "fresh": {
+        "accepted": 13,
+        "correction-needed": 2
+      },
+      "accepted_carry": 1,
+      "correction_needed_exclusion": 3,
+      "corrected": 1
+    },
+    "hi": {
+      "fresh": {
+        "accepted": 15,
+        "correction-needed": 1
+      },
+      "accepted_carry": 1,
+      "correction_needed_exclusion": 2,
+      "corrected": 1
+    },
+    "id": {
+      "fresh": {
+        "accepted": 13
+      },
+      "accepted_carry": 1,
+      "correction_needed_exclusion": 4,
+      "corrected": 2
+    },
+    "ja": {
+      "fresh": {},
+      "accepted_carry": 17,
+      "correction_needed_exclusion": 3,
+      "corrected": 0
+    },
+    "ko": {
+      "fresh": {},
+      "accepted_carry": 17,
+      "correction_needed_exclusion": 3,
+      "corrected": 0
+    },
+    "pt-BR": {
+      "fresh": {},
+      "accepted_carry": 18,
+      "correction_needed_exclusion": 2,
+      "corrected": 0
+    },
+    "vi": {
+      "fresh": {},
+      "accepted_carry": 17,
+      "correction_needed_exclusion": 3,
+      "corrected": 0
+    },
+    "zh-Hans": {
+      "fresh": {},
+      "accepted_carry": 14,
+      "correction_needed_exclusion": 6,
+      "corrected": 0
+    },
+    "zh-Hant": {
+      "fresh": {},
+      "accepted_carry": 14,
+      "correction_needed_exclusion": 6,
+      "corrected": 0
+    }
+  },
+  "selection_rule": "Fresh review only for populated current cells with no exact terminal semantic record matching source ID, locale, source hash, and current target hash. Exact accepted cells carry. Exact correction-needed/held cells are excluded unless a high-confidence exact-hash correction is applied with a new current target record. Contradictory exact prior statuses are conflict holds.",
+  "prior_overlap_scan": {
+    "scanned_json_evidence_files": 763,
+    "manifest_file": "prior-evidence-scan-manifest.jsonl",
+    "manifest_sha256": "f7cef3f2bd91544b45694d38d325d797994de69c59945a7ceb4dbf0dbc1f5a0c",
+    "canonical_input_manifest_sha256": "9272035cf98e77a9ff2a4f192910ee0288b9d015e719fa9ab812f8b929eb2458",
+    "input_roots": [
+      "prior-audit-7ff",
+      "pr-review-head"
+    ]
+  },
+  "source_context": {
+    "file": "source-context.txt",
+    "evidence_text_sha256": "281d7b2c78f9a95bb54a6c87d37d08ec6e08adb3d953402e3270579eb0f494ea",
+    "runtime_files": [
+      "web/src/components/System/Security/AdversarialSettingsView.jsx",
+      "web/src/components/System/MediaCore/PodMembershipManagementPanel.jsx",
+      "web/src/components/System/MediaCore/ContentDescriptorPublishingPanel.jsx",
+      "web/src/components/System/Jobs/index.jsx",
+      "web/src/components/System/Network/index.jsx",
+      "web/src/components/Pods/PortForwarding.jsx",
+      "web/src/components/System/SwarmVisualization/index.jsx",
+      "crates/slskr-web/src/route_workflow_rendering.rs",
+      "web/src/lib/mediaServerIntegrations.js",
+      "web/src/components/Wishlist/WishlistModal.jsx",
+      "web/src/components/Contacts/Contacts.jsx",
+      "web/src/components/Search/SoulseekDiscoveryPanel.jsx",
+      "web/src/components/Collections/CollectionAddItemModal.jsx",
+      "web/src/components/ShareGroups/ShareGroups.jsx"
+    ],
+    "sha256": {
+      "web/src/components/System/Security/AdversarialSettingsView.jsx": "5b2dfa095ba281bae2b5ef66e17901b38c7d2a68d9bef52c5f016ce3352db72d",
+      "web/src/components/System/MediaCore/PodMembershipManagementPanel.jsx": "d1ed549ca3edbb54571c3091ace817fcdecab5e073f17ce81768df6fe14d2953",
+      "web/src/components/System/MediaCore/ContentDescriptorPublishingPanel.jsx": "375e2a926789a74af0efa132bf4bdf8f74606287bdb3ac9499f937eb3a3755f6",
+      "web/src/components/System/Jobs/index.jsx": "9e9f1caffccf25f2d9259e9295e3ad9f500acb30ba6150c976acf5762f4b0f16",
+      "web/src/components/System/Network/index.jsx": "81f45c3ef9dd9a153979cd39594b3eab4fd0cccc226654647fc3a022f97fe005",
+      "web/src/components/Pods/PortForwarding.jsx": "3db4aa88c36b9c57f077c61f82541043d2787bc55f3289992b69403e942c326d",
+      "web/src/components/System/SwarmVisualization/index.jsx": "175c3ab9e3f12c87ccdca0981085e48c4ada93d71cdbe4bcdd3552989429a9b9",
+      "crates/slskr-web/src/route_workflow_rendering.rs": "efd2a909c953003101231eb41eb533bfc92391964b1aaf170c4b132590cffcfb",
+      "web/src/lib/mediaServerIntegrations.js": "7e97c9c2c5bb798c28fdb21b7028e0abc093ec7b7fe97e9179887bc7ef668e05",
+      "web/src/components/Wishlist/WishlistModal.jsx": "49f9f293410dec17e1d3c335ba49218fb7b351aa04a7bfc3ae107b138bf06582",
+      "web/src/components/Contacts/Contacts.jsx": "bf147a0e2de3f6a602ed9e3a8b4df9a850e7c033d55549980a5448c9e074622a",
+      "web/src/components/Search/SoulseekDiscoveryPanel.jsx": "a2c4a4f8e044b355515d2da6bf5da217dd4cea2b4aa7394ca95e753be3900bef",
+      "web/src/components/Collections/CollectionAddItemModal.jsx": "409ee50e50ea161c8fe8d9ac62ebc29eba10ae278ea5d542202a1d79000e21ab",
+      "web/src/components/ShareGroups/ShareGroups.jsx": "d3a467377b0d3ce0e08c6623ac01b8c53616c41828715716ef94f274f92dea6e"
+    },
+    "git_blob_ids": {
+      "web/src/components/System/Security/AdversarialSettingsView.jsx": "adcacdd123faf82a315da746fab3243adf5ea6a3",
+      "web/src/components/System/MediaCore/PodMembershipManagementPanel.jsx": "dd436ce3710d00f6436ec497ab9df9863e763723",
+      "web/src/components/System/MediaCore/ContentDescriptorPublishingPanel.jsx": "c51d4085b6d2b180844a9e8091406f527651229b",
+      "web/src/components/System/Jobs/index.jsx": "d107affda28da2a86c3cbf22175cdf0898c6fa68",
+      "web/src/components/System/Network/index.jsx": "2df958dba38d5ca7841043940d0d2b9f9c238658",
+      "web/src/components/Pods/PortForwarding.jsx": "7eaacd44ed04d2ee5d71e7db466fe43b1fa39da1",
+      "web/src/components/System/SwarmVisualization/index.jsx": "7d2cece5f049ff490ba90e2148e515a5597df1ce",
+      "crates/slskr-web/src/route_workflow_rendering.rs": "653c99e718b35250385bc2d89fbc89c7c18a3a6f",
+      "web/src/lib/mediaServerIntegrations.js": "cb7ea2f94c4db646873aad3fab6a59ebaefad341",
+      "web/src/components/Wishlist/WishlistModal.jsx": "16b4aa4c5a2ab57b1a0c2f6581e99dfdd4b24727",
+      "web/src/components/Contacts/Contacts.jsx": "bf516a826f0e6a30691f06dbee952f1b96d5a9b1",
+      "web/src/components/Search/SoulseekDiscoveryPanel.jsx": "e883d53a782c25322644a6f24f7e35862341dc30",
+      "web/src/components/Collections/CollectionAddItemModal.jsx": "9ec31ddf1a0a640ed31a0be463a70362f6ca4720",
+      "web/src/components/ShareGroups/ShareGroups.jsx": "b9e41426dfb0f920200d982653d8ab2ff98622ba"
+    },
+    "reviewed_source_keys": [
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
+      158,
+      159,
+      160,
+      161,
+      162
+    ]
+  },
+  "correction_candidates": [
+    {
+      "source_index": 146,
+      "source_id": "Active Swarm Downloads",
+      "locale": "fr",
+      "target_text": "Téléchargements d'essaims actifs",
+      "target_sha256": "4c632686ca9c017aa0203ea3c8c49fbd80fe4879720561d5dd32281fa5954f10",
+      "proposed_target": "Téléchargements actifs en mode essaim",
+      "proposed_target_sha256": "738a3536f41add4a7d51fd8e70e19360efb7a668f2c34acd6244fbaf7da8f349",
+      "confidence": "moderate",
+      "issue_type": "ambiguous_swarm_modifier_scope"
+    },
+    {
+      "source_index": 155,
+      "source_id": "Add Forwarding",
+      "locale": "fr",
+      "target_text": "Ajouter un transfert",
+      "target_sha256": "2f7a038af2c458527c359df684d568b8dc87fd2d649cd66909fb9dbd5b0e2ea8",
+      "proposed_target": "Ajouter une redirection",
+      "proposed_target_sha256": "4fd02fbbc9788bc53b70cb53c9802514a5452f86b08ac0c358913fbb2f0a215f",
+      "confidence": "moderate",
+      "issue_type": "terminology_consistency"
+    },
+    {
+      "source_index": 161,
+      "source_id": "Add Item to",
+      "locale": "hi",
+      "target_text": "इसमें आइटम जोड़ें",
+      "target_sha256": "6d55fa2588ceb73086a0477dd4f64c102cfca6ffc5768c310d429f1bc8559d41",
+      "proposed_target": "आइटम जोड़ें:",
+      "proposed_target_sha256": "34f15f50c04aa2e6a23728fa1ff150f2d09c899466f2904900bc6406283fcd0f",
+      "confidence": "moderate",
+      "issue_type": "concatenated_header_word_order"
+    }
+  ],
+  "applied_correction_ledger": "applied-corrections.jsonl",
+  "applied_correction_ledger_sha256": "a00ef17efad6775a9fd9004249eb13e3515e5cf6307fe273f061bfc1192c32ac",
+  "placeholder_and_literal_checks": {
+    "fresh_cells_checked": 87,
+    "placeholder_sets_preserved": true,
+    "icu_messages": 0,
+    "protected_literals_preserved_or_documented": true
+  },
+  "native_speaker_approval": false,
+  "catalog_or_source_changes_made": true,
+  "correction_suggestions_applied": true,
+  "tests_builds_ci_or_release_actions_run": false,
+  "browser_recapture_required": true,
+  "verification_head_is_dynamic_docs_head": true,
+  "overall_exact_status_counts_after_review": {
+    "accepted": 23251,
+    "corrected": 25,
+    "correction-needed": 10967,
+    "held": 287,
+    "unreviewed": 30714,
+    "conflicts": 0
+  },
+  "unreviewed_source_id_count_after_review": 3750,
+  "per_locale_exact_status_counts_after_review": {
+    "ar": {
+      "accepted": 1253,
+      "corrected": 4,
+      "correction-needed": 1101,
+      "held": 11,
+      "unreviewed": 3068
+    },
+    "de": {
+      "accepted": 1276,
+      "corrected": 7,
+      "correction-needed": 879,
+      "held": 10,
+      "unreviewed": 3265
+    },
+    "es": {
+      "accepted": 1229,
+      "corrected": 3,
+      "correction-needed": 1109,
+      "held": 9,
+      "unreviewed": 3087
+    },
+    "fr": {
+      "accepted": 1234,
+      "corrected": 3,
+      "correction-needed": 1052,
+      "held": 9,
+      "unreviewed": 3139
+    },
+    "hi": {
+      "accepted": 1235,
+      "corrected": 4,
+      "correction-needed": 1130,
+      "held": 14,
+      "unreviewed": 3054
+    },
+    "id": {
+      "accepted": 1235,
+      "corrected": 2,
+      "correction-needed": 1101,
+      "held": 10,
+      "unreviewed": 3089
+    },
+    "ja": {
+      "accepted": 2771,
+      "corrected": 1,
+      "correction-needed": 625,
+      "held": 38,
+      "unreviewed": 2002
+    },
+    "ko": {
+      "accepted": 2667,
+      "corrected": 0,
+      "correction-needed": 729,
+      "held": 39,
+      "unreviewed": 2002
+    },
+    "pt-BR": {
+      "accepted": 2661,
+      "corrected": 1,
+      "correction-needed": 737,
+      "held": 36,
+      "unreviewed": 2002
+    },
+    "vi": {
+      "accepted": 2438,
+      "corrected": 0,
+      "correction-needed": 960,
+      "held": 37,
+      "unreviewed": 2002
+    },
+    "zh-Hans": {
+      "accepted": 2633,
+      "corrected": 0,
+      "correction-needed": 765,
+      "held": 37,
+      "unreviewed": 2002
+    },
+    "zh-Hant": {
+      "accepted": 2619,
+      "corrected": 0,
+      "correction-needed": 779,
+      "held": 37,
+      "unreviewed": 2002
+    }
+  },
+  "browser_recapture_reason": "Attempted in an isolated headed Agent GUI browser. The exact-branch Vite preview loaded but could not establish its required API session because no source-compatible isolated backend was available; screenshot and snapshot show a lost-connection page. The shared daemon and stale standalone binary were not used.",
+  "headed_visual_check_file": "headed-visual-check.md",
+  "headed_visual_check_sha256": "3e7cf25ce5d1d85bb19fa1d640e726de73e2484532514307ace222130ecbef30"
+}
