@@ -1,0 +1,27 @@
+{
+  "callerEvidence": "web/src/components/Search/SongIDEvidenceDetails.jsx:342 reads run.aiHeuristics.spectralCentroid.",
+  "sources": [
+    {
+      "locale": "fr",
+      "source": "Journées d’Informatique Musicales (JIM), proceedings PDF",
+      "url": "https://www.musinfo.fr/images/recherche/JIM2014_Actes_maquette_006.pdf",
+      "term": "centroïde spectral",
+      "use": "Technical French name for the audio spectral-centroid feature."
+    },
+    {
+      "locale": "es",
+      "source": "Universidad de la República, audio-feature thesis PDF",
+      "url": "https://www.colibri.udelar.edu.uy/jspui/bitstream/20.500.12008/5222/1/FLM15.pdf",
+      "term": "centroide espectral",
+      "use": "Spanish technical term for this metric; the thesis describes it as the spectral center of mass."
+    },
+    {
+      "locale": "pt-BR",
+      "source": "Universidade Tecnológica Federal do Paraná, repository thesis PDF",
+      "url": "https://repositorio.utfpr.edu.br/jspui/bitstream/1/29125/1/classificacaoautomaticainstrumentosmusicais.pdf",
+      "term": "centróide espectral",
+      "use": "Portuguese technical term for spectral centroid; current “Centróide” is already a direct centroid translation."
+    }
+  ],
+  "useLimit": "These sources support the spectral nature of the caller metric and the listed terminology only; no native-speaker signoff is claimed."
+}

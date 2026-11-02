@@ -1,0 +1,19 @@
+{
+  "status": "pass",
+  "currentWindow": [
+    583,
+    602
+  ],
+  "currentFirstSourceId": "Censorship Resistance",
+  "currentLastSourceId": "Chapters",
+  "cellCount": 240,
+  "previousWindow": [
+    563,
+    582
+  ],
+  "previousPacket": "/mnt/disks/scratch/task-scratch/slskr-pr204-W563-582-primary-20261102/packet",
+  "sourceIdSetsDisjoint": true,
+  "contiguousIndices": true,
+  "attestedHead": "2f7483fdaa753e22f6d335a03f15db7d1d82b20f",
+  "attestedTree": "54ee16a812a5bda7871f3ef3ad7ff0cf3bf678e0"
+}

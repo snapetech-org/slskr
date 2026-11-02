@@ -1,0 +1,26 @@
+{
+  "exactPrHeadTree": true,
+  "livePrHeadMatches": true,
+  "sourceBaselineAncestor": true,
+  "worktreeClean": true,
+  "sourceInventoryReproduced": true,
+  "selectedWindowMatches": true,
+  "allPinnedSourceKeysPresentInCatalogs": true,
+  "catalogExtraKeysAttestedOutsidePinnedInventory": [
+    "OK"
+  ],
+  "currentCellCount": 240,
+  "sourceRowCount": 20,
+  "callerPinsReattestedAtHead": true,
+  "targetCatalogBlobsReattestedAtHead": true,
+  "sourceTargetPlaceholderParityFailures": 0,
+  "priorEvidenceMatches": 12,
+  "nativeSpeakerApproval": false,
+  "all240CellsIndependentlyReviewed": true,
+  "allCandidateHashesVerified": true,
+  "allCandidatePlaceholderSetsMatchSource": true,
+  "allCurrentTargetsReattestedAtHead": true,
+  "allCallerPinsReattestedAtHead": true,
+  "priorCorrectionHashesMatchCurrent": true,
+  "sourceKeyAmbiguityHeldForSplit": true
+}

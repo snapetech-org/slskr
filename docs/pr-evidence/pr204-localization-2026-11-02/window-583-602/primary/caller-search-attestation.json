@@ -1,0 +1,18 @@
+{
+  "attestedHead": "2f7483fdaa753e22f6d335a03f15db7d1d82b20f",
+  "attestedTree": "54ee16a812a5bda7871f3ef3ad7ff0cf3bf678e0",
+  "sourceIds": 20,
+  "sourceIdsWithDirectCallerPins": 20,
+  "sourceIdsWithNoDirectCallers": [],
+  "callerPinRecords": 48,
+  "uniqueCallerFiles": 18,
+  "allCallerLinesAndBlobsReattested": true,
+  "notableSharedKey": {
+    "sourceId": "Channels",
+    "callerPaths": [
+      "web/src/components/System/Integrations/MetadataSettingsPanel.jsx",
+      "web/src/components/System/MediaCore/mediaCoreWorkflows.js"
+    ],
+    "meaningCollision": "Chromaprint audio-channel count and Pod messaging channels share one source key."
+  }
+}

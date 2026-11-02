@@ -1,0 +1,25 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "livePullRequest": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "2f7483fdaa753e22f6d335a03f15db7d1d82b20f",
+    "isDraft": true,
+    "mergeStateStatus": "CLEAN",
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "worktreeHead": "2f7483fdaa753e22f6d335a03f15db7d1d82b20f",
+  "worktreeTree": "54ee16a812a5bda7871f3ef3ad7ff0cf3bf678e0",
+  "worktreeStatus": "## HEAD (no branch)",
+  "sourceBaselineHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceBaselineTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "sourceWindow": [
+    583,
+    602
+  ],
+  "sourceIds": 20,
+  "cells": 240,
+  "nativeSpeakerApproval": false
+}

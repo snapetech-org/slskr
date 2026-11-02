@@ -1,0 +1,86 @@
+{
+  "reviewType": "targeted-secondary-corroboration",
+  "scope": "A targeted reviewer independently scanned retained current/prior-correction rows and specifically rechecked the listed proposals; this is not a second complete review of all primary candidates.",
+  "attestedHead": "2f7483fdaa753e22f6d335a03f15db7d1d82b20f",
+  "attestedTree": "54ee16a812a5bda7871f3ef3ad7ff0cf3bf678e0",
+  "nativeSpeakerApproval": false,
+  "rows": [
+    {
+      "sourceId": "Centroid",
+      "locale": "vi",
+      "sourceIndex": 584,
+      "reviewerDisposition": "missed-by-primary-confirmed",
+      "currentTarget": "trung tâm",
+      "currentTargetSha256": "e899e9d97d130f3c4b4895127a0d96fc0a09c7bd2dafd581df2e93022858f80e",
+      "recommendedTarget": "Trọng tâm phổ",
+      "recommendedTargetSha256": "9f02fa5c8ad1ea1af949fd85c607ae7984f442542063212ad2a00babef7c34cb",
+      "reason": "The pinned caller value is spectralCentroid; the current translation is generic. The Vietnamese technical term is supported by the cited terminology reference."
+    },
+    {
+      "sourceId": "Channel ID is required",
+      "locale": "ja",
+      "sourceIndex": 595,
+      "reviewerDisposition": "refinement-confirmed",
+      "currentTarget": "チャネルIDが必要です。 (APIフィールド： \"channelId\")",
+      "currentTargetSha256": "e8473afc9e3c135afc2a40a23f875affde2fb5c8e19e0870d0bb0426f8f1e3c8",
+      "recommendedTarget": "チャンネルIDが必要です。 (APIフィールド： \"channelId\")",
+      "recommendedTargetSha256": "5e2be28f89b20aec502bddf2c5c26aea995e49ccd8943afb1fbc5a622724048e",
+      "reason": "Matches adjacent チャンネルID, チャンネル名, and チャンネル： while preserving the exact API token."
+    },
+    {
+      "sourceId": "Certificate PFX (optional)",
+      "locale": "hi",
+      "sourceIndex": 585,
+      "reviewerDisposition": "primary-proposal-confirmed",
+      "currentTarget": "प्रमाणपत्र पीएफएक्स (वैकल्पिक)",
+      "currentTargetSha256": "fa445eca892afc29772171de75332e9e3abb2432dbbb52106035cb0a18c8dce3",
+      "recommendedTarget": "प्रमाणपत्र PFX (वैकल्पिक)",
+      "recommendedTargetSha256": "b60ce1d73799882d481445c8e62f25bc38875807d9a322c0a93af95e644f2386",
+      "reason": "Preserves the exact certificate-format acronym."
+    },
+    {
+      "sourceId": "Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows.",
+      "locale": "ja",
+      "sourceIndex": 596,
+      "reviewerDisposition": "primary-proposal-confirmed",
+      "currentTarget": "チャネルの作成、更新、および削除のアクションにより、ポッド メッセージの編成方法が変更されます。チャネルを削除すると、ルーティングと履歴のワークフローが中断される可能性があります。",
+      "currentTargetSha256": "2fe5f10fbe032cb81689e636031cc7b1e4920998a4df0afb7e3e151300a5007a",
+      "recommendedTarget": "チャンネルの作成、更新、および削除の操作により、Podメッセージの編成方法が変わります。チャンネルを削除すると、ルーティングと履歴のワークフローが中断される可能性があります。",
+      "recommendedTargetSha256": "9052cc7bbbef840e6ab4df76aa73a655ad9bd54a6c4198ed09d03891c1b0e766",
+      "reason": "Retains the warning consequences, uses the established product name Pod, and aligns channel terminology with adjacent labels."
+    },
+    {
+      "sourceId": "Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows.",
+      "locale": "zh-Hant",
+      "sourceIndex": 596,
+      "reviewerDisposition": "additional-keep-row-consistency-refinement",
+      "currentTarget": "頻道建立、更新和刪除操作會變更 Pod 訊息的組織方式。刪除通道可能會中斷路由和歷史工作流程。",
+      "currentTargetSha256": "761b0c40e31805a4e3e3d31046883a9f7a619f5ef4d15c91e92466c91816e7a6",
+      "recommendedTarget": "頻道建立、更新和刪除操作會變更 Pod 訊息的組織方式。刪除頻道可能會中斷路由和歷史工作流程。",
+      "recommendedTargetSha256": "f9daf9f6adfb487b1acfe750d5bcc4d2b9deb54e01bb4170798a94a18d345be6",
+      "reason": "The same Pod-channel warning uses 頻道 in the first mention, 通道 in the second, while adjacent zh-Hant channel labels use 頻道. Standardize both mentions."
+    }
+  ],
+  "styleObservationsNotPromoted": [
+    {
+      "sourceId": "Chapters",
+      "locale": "id",
+      "currentTarget": "bab",
+      "currentTargetSha256": "ecdd97405c79b408ee7791029d05d2b57893d9b06a1282531e0df729daefcef5",
+      "possibleStyleVariant": "Bab",
+      "possibleStyleVariantSha256": "363e192fa6fe377b1c90a333c9852267c484dc530eac2d6a103c6e15511ec215",
+      "decision": "keep-current",
+      "reason": "Low-confidence capitalization-only observation; no semantic defect established."
+    },
+    {
+      "sourceId": "Chapters",
+      "locale": "vi",
+      "currentTarget": "chương",
+      "currentTargetSha256": "bf353bc9a963688be2d81698f2f1a614fafe89fe375037dd0c11e65a4bfa524d",
+      "possibleStyleVariant": "Chương",
+      "possibleStyleVariantSha256": "2d157977e9afba4897031596c7132a0fa745c3b62431a97707c2d9c5d82c91a3",
+      "decision": "keep-current",
+      "reason": "Low-confidence capitalization-only observation; no semantic defect established."
+    }
+  ]
+}

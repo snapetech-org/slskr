@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "exactHead": "2f7483fdaa753e22f6d335a03f15db7d1d82b20f",
+  "exactTree": "54ee16a812a5bda7871f3ef3ad7ff0cf3bf678e0",
+  "sourceId": "Channel ID is required",
+  "locale": "ja",
+  "sourceSha256": "67bbe5fa7bc5d6d2be4fe71be7e504e586b7e1956202f881d70fd8259dd00f7d",
+  "currentTarget": "チャネルIDが必要です。 (APIフィールド： \"channelId\")",
+  "currentTargetSha256": "e8473afc9e3c135afc2a40a23f875affde2fb5c8e19e0870d0bb0426f8f1e3c8",
+  "finalTarget": "チャンネルIDが必要です。 (APIフィールド： \"channelId\")",
+  "finalTargetSha256": "5e2be28f89b20aec502bddf2c5c26aea995e49ccd8943afb1fbc5a622724048e",
+  "reviewReconciliation": [
+    {
+      "reviewer": "independent-cross-review-a",
+      "initialDisposition": "accept-current",
+      "evidence": "cross-review-independent-a/cross-review-ledger.jsonl",
+      "note": "A later exact-row recheck explicitly revised this decision after comparing the 10 pinned Pod Channel Management callers with adjacent Japanese labels."
+    },
+    {
+      "reviewer": "independent-cross-review-a-followup",
+      "disposition": "refinement",
+      "confidence": "moderate",
+      "note": "Use チャンネルID to match adjacent チャンネルID, チャンネル名, and チャンネル名は必須です while preserving the exact channelId API field token."
+    },
+    {
+      "reviewer": "targeted-independent-review-b",
+      "disposition": "refinement",
+      "confidence": "moderate",
+      "note": "Ten pinned callers show this API error in Pod Channel Management toasts; adjacent labels use チャンネル. The current チャネル variant is acceptable Japanese but inconsistent in this same messaging domain."
+    },
+    {
+      "reviewer": "independent-cross-review-root",
+      "disposition": "refinement",
+      "confidence": "moderate",
+      "note": "Matches adjacent Japanese Channel ID/Channel name labels and user-facing Pod channel terminology; exact API field token retained."
+    }
+  ],
+  "finalDecision": "Apply the consensus refinement after the initial independent reviewer re-attested the exact row and revised its disposition; the token channelId remains unchanged.",
+  "nativeSpeakerApproval": false
+}

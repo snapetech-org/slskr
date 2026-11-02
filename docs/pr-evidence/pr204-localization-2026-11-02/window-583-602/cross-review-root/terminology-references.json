@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "locale": "vi",
+      "term": "Trọng tâm phổ",
+      "sourceId": "Centroid",
+      "title": "Tìm kiếm âm thanh theo nội dung – Bách khoa Toàn thư Việt Nam",
+      "url": "https://bktt.vn/T%C3%ACm_ki%E1%BA%BFm_%C3%A2m_thanh_theo_n%E1%BB%99i_dung",
+      "claim": "For audio spectral features, the page calls the midpoint of spectral energy distribution “trọng tâm phổ” and says it is also brightness.",
+      "location": "section on frequency-domain features, lines 78–79",
+      "accessed": "2026-11-02"
+    }
+  ]
+}

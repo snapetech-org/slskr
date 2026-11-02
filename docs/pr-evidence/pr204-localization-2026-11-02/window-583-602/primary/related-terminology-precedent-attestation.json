@@ -1,0 +1,12 @@
+{
+  "sourceId": "Can create content-linked pods",
+  "sourcePosition": 563,
+  "currentHead": "2f7483fdaa753e22f6d335a03f15db7d1d82b20f",
+  "currentTree": "54ee16a812a5bda7871f3ef3ad7ff0cf3bf678e0",
+  "crossReviewLedger": "/mnt/disks/scratch/task-scratch/slskr-pr204-W563-582-crossreview-20261102/cross-review-ledger.jsonl",
+  "crossReviewLedgerSha256": "cb5b505005b9aac67d47a4dde3ce1cde575dc1cb89771a674a1f704c40c9aecf",
+  "crossReviewSha256SumsSha256": "1d078fd3528e7c6d49adf0068fc3c8dd62590cb4c8fa71088696c566e4ff9a26",
+  "priorPacketChecksumVerified": true,
+  "localeCount": 12,
+  "allCurrentValuesMatchPriorRecommendations": true
+}

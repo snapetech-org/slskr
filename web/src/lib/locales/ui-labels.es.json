@@ -978,7 +978,7 @@
   "Channel \"{channelName}\" deleted successfully": "Canal \"{channelName}\" eliminado exitosamente",
   "Channel \"{newChannelName}\" created successfully": "Canal \"{newChannelName}\" creado exitosamente",
   "Channel ID": "ID de canal",
-  "Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows.": "Las acciones de creación, actualización y eliminación de canales cambian la forma en que se organizan los mensajes del pod. La eliminación de canales puede interrumpir los flujos de trabajo de enrutamiento e historial.",
+  "Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows.": "Las acciones de creación, actualización y eliminación de canales cambian la forma en que se organizan los mensajes del Pod. La eliminación de canales puede interrumpir los flujos de trabajo de enrutamiento e historial.",
   "Channel name": "Nombre del canal",
   "Channel name is required": "El nombre del canal es obligatorio.",
   "Channel updated successfully": "Canal actualizado exitosamente",

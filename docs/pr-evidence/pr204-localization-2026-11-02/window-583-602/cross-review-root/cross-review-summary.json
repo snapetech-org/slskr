@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "2f7483fdaa753e22f6d335a03f15db7d1d82b20f",
+  "tree": "54ee16a812a5bda7871f3ef3ad7ff0cf3bf678e0",
+  "sourceBaselineHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceBaselineTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "reviewWindow": {
+    "start": 583,
+    "end": 602
+  },
+  "sourceIds": 20,
+  "locales": 12,
+  "cells": 240,
+  "dispositions": {
+    "accepted": 235,
+    "refined": 2,
+    "missed": 1,
+    "held": 2,
+    "acceptedPrimaryCandidates": 31,
+    "acceptedPriorCorrections": 11,
+    "acceptedCurrent": 193
+  },
+  "perLocale": {
+    "ar": {
+      "accepted-current": 17,
+      "accepted-primary-candidate": 2,
+      "accepted-prior-correction": 1
+    },
+    "de": {
+      "accepted-current": 19,
+      "accepted-prior-correction": 1
+    },
+    "es": {
+      "accepted-current": 18,
+      "accepted-primary-candidate": 1,
+      "accepted-prior-correction": 1
+    },
+    "fr": {
+      "accepted-current": 12,
+      "accepted-primary-candidate": 7,
+      "accepted-prior-correction": 1
+    },
+    "hi": {
+      "accepted-current": 16,
+      "accepted-primary-candidate": 3,
+      "accepted-prior-correction": 1
+    },
+    "id": {
+      "accepted-current": 17,
+      "accepted-primary-candidate": 2,
+      "accepted-prior-correction": 1
+    },
+    "ja": {
+      "accepted-current": 17,
+      "accepted-primary-candidate": 2,
+      "refined": 1
+    },
+    "ko": {
+      "accepted-current": 15,
+      "accepted-primary-candidate": 4,
+      "accepted-prior-correction": 1
+    },
+    "pt-BR": {
+      "accepted-current": 18,
+      "accepted-primary-candidate": 1,
+      "accepted-prior-correction": 1
+    },
+    "vi": {
+      "accepted-current": 17,
+      "accepted-primary-candidate": 1,
+      "accepted-prior-correction": 1,
+      "missed": 1
+    },
+    "zh-Hans": {
+      "accepted-current": 14,
+      "accepted-primary-candidate": 4,
+      "accepted-prior-correction": 1,
+      "held": 1
+    },
+    "zh-Hant": {
+      "accepted-current": 13,
+      "accepted-primary-candidate": 4,
+      "accepted-prior-correction": 1,
+      "held": 1,
+      "refined": 1
+    }
+  },
+  "primaryCandidates": 31,
+  "primaryCandidatesAccepted": 31,
+  "primaryCandidateRefinements": 0,
+  "primaryCandidateRejections": 0,
+  "priorCorrectionHashesRechecked": 12,
+  "priorCorrectionRefinements": 1,
+  "missedCorrectionCount": 1,
+  "heldCellCount": 2,
+  "noDirectCallerSourceIds": [],
+  "placeholderMismatches": 0,
+  "protectedLiteralMismatches": 0,
+  "sourceKeyAmbiguity": [
+    "Channels"
+  ],
+  "extraCatalogKeyOutsideWindow": "OK",
+  "nativeSpeakerApproval": false,
+  "nativeSpeakerReviewRequired": true,
+  "repoModified": false,
+  "testsBuildsCiRun": false,
+  "secondaryKeepRowRefinements": 1
+}
