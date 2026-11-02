@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W663–682",
+  "sourceIds": 20,
+  "cellsReviewed": 240,
+  "independentDispositionCounts": {
+    "accepted-current": 154,
+    "accepted-primary-candidate": 56,
+    "refined-primary-candidate": 1,
+    "refined-current-translation": 5,
+    "held-no-direct-caller": 24
+  },
+  "catalogCellsChanged": 62,
+  "catalogKeyCountPerLocale": 5441,
+  "nativeSpeakerApproval": false,
+  "browserReview": false,
+  "testsBuildsScansCiWorkflowsReleasesTagsMerges": false,
+  "workflowFilesTouched": false
+}

@@ -1,0 +1,210 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "livePrState": "OPEN",
+  "isDraft": true,
+  "url": "https://github.com/snapetech-org/slskr/pull/204",
+  "head": "6a7f2ae61df6c5ecbc4fa1471949735fa3a956c4",
+  "tree": "17b851a1d79c4aeac2e19b560f6dc845fcd8c404",
+  "worktree": "/mnt/disks/scratch/task-worktrees/localization-20261102/slskr-pr204-w503-522",
+  "worktreeHeadAtReview": "6a7f2ae61df6c5ecbc4fa1471949735fa3a956c4",
+  "worktreeTreeAtReview": "17b851a1d79c4aeac2e19b560f6dc845fcd8c404",
+  "worktreeMatchesLivePr": true,
+  "expectedCommitObjectPresent": true,
+  "worktreeClean": true,
+  "worktreeDirtyObserved": false,
+  "worktreeReadMethod": "all source/catalog/caller evidence read from git objects at the exact pinned commit",
+  "sourceWindow": [
+    663,
+    682
+  ],
+  "sourceIds": 20,
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "cells": 240,
+  "primaryPacketSumsVerified": true,
+  "primaryPacketSha256SumsSha256": "191198db9a9b7d91a9465f7b3ddf24a6f7a0253c36e29c27ce0c777459def12e",
+  "primaryFreezeManifestSha256": "69713333eddc3d326cc28acb3a0c2f57edbe4f9fab77e31ddc95c5c8981c9013",
+  "sourceInventorySha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "sourceContextSha256": "fdbcb8e7c4b237415018d1c92d8725dc9b11312709717ca06f57a7622251d5f9",
+  "currentCellsSha256": "30f67af73f4e164181362c4f45119460ca2061fae5650ef783a5f6ebd5a07610",
+  "primaryLedgerSha256": "c23cd5f76d60851a8b5713eb828292efb04457d9ffd5115928c41e16ad8bfba3",
+  "candidateFileSha256": "0df26351460c60ca2ea482b51a9c469d9108437651d2c2c8c7b22c4ab62687f7",
+  "holdFileSha256": "198819f03e46c9292f3f8e0944206bf3bb290370c97b4ba1c49f41fdadcbbc9b",
+  "frozenCatalogs": {
+    "ar": {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "blob": "03756da57abde7ba2fba7fc16f28ce03e7bf2a2d",
+      "sha256": "5d27ce82eae3850ba7c60c264c02bdb709b2cc8fe68f4ff5078da7ad80317255",
+      "bytes": 512055
+    },
+    "de": {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "blob": "515896c192c2e2934cdeae2f8460f94890e5a3a0",
+      "sha256": "73e4617a25ae28b9e5de4cfbefe7832006fcfd6de5e885a6e22e15b748bdd7c4",
+      "bytes": 442755
+    },
+    "es": {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "blob": "c58874eb8f18e3b4ce8c11f8eb6c9d25fc351a9c",
+      "sha256": "e1c25a0950b0b75ce16688d9df4781db07f0665e72a25f0f8d38bda69677fa2e",
+      "bytes": 443548
+    },
+    "fr": {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "blob": "1ad730a3e3ff43236faf990660a923e9afe490fd",
+      "sha256": "b928c132fabf571d4a2be6bb269ec34fe070855bfb6e5e9f7a1d1ddf76d25c60",
+      "bytes": 454608
+    },
+    "hi": {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "blob": "1f22793131f3ebe8c943e1b8877fa8032b170fce",
+      "sha256": "98909042bd664d82596bf586af7b6e7d5918251e3c0ce7a49f2a56f4ffda534a",
+      "bytes": 675361
+    },
+    "id": {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "blob": "2646195def6d6359fc2ae8b1285f161b35525f3a",
+      "sha256": "dd75df301fe5bd9cc590e6c35b44a0f3d552c5aa02629c135ed4505c12eb48dd",
+      "bytes": 409199
+    },
+    "ja": {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "blob": "b1e1793f156e00c97d8b1dfc8f204f2259fb8c81",
+      "sha256": "ad841cae8b58db52305ed16000c59608fc6252744a4769a222c6d762fb344902",
+      "bytes": 490731
+    },
+    "ko": {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "blob": "0b1e861a0ebe4db31ad28a410a2297ed55707b73",
+      "sha256": "4d9879176929892a8e3d2872694875b45341d708f404a0970b71f2835a9a9a8c",
+      "bytes": 441660
+    },
+    "pt-BR": {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "blob": "54cb52b2e8f09cbc0906a264981a43ec36deb8c3",
+      "sha256": "757c84b6a1d4ecf6372f50cbc44132ab06680305727d5cb9802c06150000c4c6",
+      "bytes": 438284
+    },
+    "vi": {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "blob": "02fd9dae433831acb271794f5f182f8db0ea31ee",
+      "sha256": "f2abb2ac42ef728f582342b3332f55290dde86c930ed17a60acdbf0e735bb2b8",
+      "bytes": 473836
+    },
+    "zh-Hans": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "blob": "db79a853b7e8376ff14ffe2c0a3f5289ec6808f6",
+      "sha256": "f2475d084556fc26abab89c6882b0aff59a84689cf96b9cf40be50a7012cf667",
+      "bytes": 382343
+    },
+    "zh-Hant": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "blob": "1037a8cc13cdea5ef4cb8acb37f860ef51cd4866",
+      "sha256": "fe84afc1b77e5fbedcab783d47c91aa6bc3dc7bf5431f6cf5fb878585b90c4dd",
+      "bytes": 383051
+    }
+  },
+  "catalogs": {
+    "ar": {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "blob": "3f558a0e95db9d1d11ac8c137ff480b403d53128",
+      "sha256": "a938e9c4c003e6dbdf15a41f489e1ee75ec86189a1cb8d41f28360fb7d340ada",
+      "bytes": 512210
+    },
+    "de": {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "blob": "44ec3e8da7d95d29ce4cf31e97ead444f8e51c27",
+      "sha256": "ec5eae5343cabfceea76d9d6499bd4f073c9ae53e6606a6f409cf0da41964f56",
+      "bytes": 442844
+    },
+    "es": {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "blob": "af3ce9ba8d137addd34c84a379e2dc0182aab0f3",
+      "sha256": "a5927761364a11845b18d1ea1d27e9c3e438a2e3a59a6900bff798c46a26d2ed",
+      "bytes": 443654
+    },
+    "fr": {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "blob": "86d4ffbcf7fcb2d6106c66ea102d10067e595816",
+      "sha256": "73aa07d9537bd74e00bd8c4e54fe2b30441d82f135260cc93f1c806f54e67b13",
+      "bytes": 454706
+    },
+    "hi": {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "blob": "850e8fa36fdfb963a10606b48d8e28f6723dd09b",
+      "sha256": "d6ac8b9befdc5db8f5f190de3a6fc62660af4a7656c2bc43c09640204798ebd3",
+      "bytes": 675535
+    },
+    "id": {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "blob": "a475b95414e74b3c346d43afc3fc45371843009d",
+      "sha256": "a30da7556f1a398c9e3bb7a150fc0d40378a3aa9193ba195c187f58166c9cf21",
+      "bytes": 409285
+    },
+    "ja": {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "blob": "5e53d81766d9465d9658837b652b884c9d173e95",
+      "sha256": "c1ac32ff3ad71ed7cca980936844938b0991a2e6a0068777a6b875ec4c2535dd",
+      "bytes": 490680
+    },
+    "ko": {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "blob": "aea02c744067fe0148d9c7ab77d5536e794ab6b9",
+      "sha256": "0499a57da40cdf6d21534be9d51e49906819d8f217f5c5831e79958f94820d64",
+      "bytes": 441767
+    },
+    "pt-BR": {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "blob": "36de7fbc08496dab81d346759c3e1b9aae050ebf",
+      "sha256": "d522cdc9a65a5db2d0f276b5d3c01aada447041f527daa1ad666a3281a6eb1ba",
+      "bytes": 438370
+    },
+    "vi": {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "blob": "655e794f2d6539f470d14d5e017e5ec685ff9815",
+      "sha256": "e2f2578f8ac58f4f6ab154ac74b7f811142bd93bc31f4c4915703d5c7a369407",
+      "bytes": 473825
+    },
+    "zh-Hans": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "blob": "1e4b87434a4006ec387e303d16c9516e05db6af2",
+      "sha256": "e83f06cd79f76399b73ace3907d422f49f047c8e1969fa85c74acb1cb0f6a23e",
+      "bytes": 382422
+    },
+    "zh-Hant": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "blob": "9421fdb8b2162d000d54c1430830449e36bc7985",
+      "sha256": "6b7b32ff0030b69bb609b3af0a3e141bc767c7de34a6b4fbee01a7570d7cf1a4",
+      "bytes": 383133
+    }
+  },
+  "catalogMismatches": 0,
+  "sourceValuesReattested": 20,
+  "cellValuesReattested": 240,
+  "cellMismatches": 0,
+  "callerReferenceRecordsReattested": 29,
+  "uniqueCallerLinesReattested": 29,
+  "uniqueCallerFiles": 15,
+  "callerMismatches": 0,
+  "placeholdersRechecked": 240,
+  "placeholderMismatches": 0,
+  "markupRechecked": 240,
+  "markupMismatches": 0,
+  "protectedLiteralChecks": 24,
+  "protectedLiteralMismatches": 0,
+  "status": "pass",
+  "reattestedAtUtc": "2026-11-02T14:11:36Z"
+}

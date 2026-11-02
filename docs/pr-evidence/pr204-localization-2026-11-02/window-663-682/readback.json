@@ -1,0 +1,537 @@
+{
+  "schemaVersion": 1,
+  "headBeforeApply": "6a7f2ae61df6c5ecbc4fa1471949735fa3a956c4",
+  "cellsReadBack": 62,
+  "catalogs": [
+    {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "keyCount": 5441,
+      "changedCells": 5,
+      "fileSha256": "6ff90334c0c957e5cdafdd153103ccaf100476ebe5c908c443658a234b923862",
+      "targets": [
+        {
+          "sourceIndex": 667,
+          "sourceId": "Clear Filter",
+          "locale": "ja",
+          "value": "フィルターをクリア",
+          "sha256": "3258e3f0cc79108373490176a6d18db29f56f84cb68a21ee3520c101951c5016"
+        },
+        {
+          "sourceIndex": 674,
+          "sourceId": "Clear Shelf",
+          "locale": "ja",
+          "value": "ディスカバリーシェルフを空にする",
+          "sha256": "f0e8a6dad22fc359f68ebeafaacde80a52ad07856bbdf51e0b63e94887fdad87"
+        },
+        {
+          "sourceIndex": 676,
+          "sourceId": "Clear Upcoming",
+          "locale": "ja",
+          "value": "再生待ちの曲をすべてキューから外す",
+          "sha256": "867fd8fbb24c34583ec48417a74143a165516375e1d21aa8551539a1e85b7ad1"
+        },
+        {
+          "sourceIndex": 677,
+          "sourceId": "Clear active native playlist",
+          "locale": "ja",
+          "value": "アクティブなローカルプレイリストの選択を解除",
+          "sha256": "c533da29c729ea499c38995ba0337a63ae45fc44a7fe62ad7afe7dd95ff91c24"
+        },
+        {
+          "sourceIndex": 680,
+          "sourceId": "Clear browser-local discovery shelf review items. This does not affect files or ratings.",
+          "locale": "ja",
+          "value": "ブラウザー内のディスカバリーシェルフのレビュー項目を消去します。ファイルや評価には影響しません。",
+          "sha256": "62ee682ff4e74e1b599ddf31fbc82235af6f0e0c2faf4aaa224ebb9664266175"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "keyCount": 5441,
+      "changedCells": 6,
+      "fileSha256": "e22bc5b5ca80937a35f18df41b86492ad84b7f81db3d24a3cd66bc5fd2761fb5",
+      "targets": [
+        {
+          "sourceIndex": 668,
+          "sourceId": "Clear ListenBrainz token",
+          "locale": "de",
+          "value": "ListenBrainz-Token löschen",
+          "sha256": "441ef6a4cf03af7e6b1624d486176102853cad581514fbbfd04164a47ce4641a"
+        },
+        {
+          "sourceIndex": 672,
+          "sourceId": "Clear RustyMilk preset search",
+          "locale": "de",
+          "value": "RustyMilk-Preset-Suche löschen",
+          "sha256": "11a75371e8643c31618592fbe724d98482b2d766e0909367e5d62b43a3541318"
+        },
+        {
+          "sourceIndex": 674,
+          "sourceId": "Clear Shelf",
+          "locale": "de",
+          "value": "Discovery-Regal leeren",
+          "sha256": "b58f92c3d7b96e7682f820435b91676d3d7373d125ed2c5a73df403d3829599d"
+        },
+        {
+          "sourceIndex": 676,
+          "sourceId": "Clear Upcoming",
+          "locale": "de",
+          "value": "Kommende Titel entfernen",
+          "sha256": "9668e1d3fd02ee0c4c061a3bc7af0226fac4dbace6b41bd5a0387a4842e6358b"
+        },
+        {
+          "sourceIndex": 677,
+          "sourceId": "Clear active native playlist",
+          "locale": "de",
+          "value": "Auswahl der aktiven lokalen Playlist aufheben",
+          "sha256": "74cabd8bf7809fd63a85650624cf4222599504819072d14fa3b72577c21a8cf6"
+        },
+        {
+          "sourceIndex": 679,
+          "sourceId": "Clear browse result",
+          "locale": "de",
+          "value": "Browsergebnis zurücksetzen",
+          "sha256": "b018d876e55daa4a4130cff75d826bf258037df13314f3e21e7fe3d4656234ce"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "keyCount": 5441,
+      "changedCells": 6,
+      "fileSha256": "efb825f86e8141292af4d7ce26ccc35c3e5f240bbf84dfee7fa43dadd1ed33c9",
+      "targets": [
+        {
+          "sourceIndex": 669,
+          "sourceId": "Clear Local History",
+          "locale": "zh-Hans",
+          "value": "清除本地历史记录",
+          "sha256": "09e846ec5ee5f633eb19e2401713d56fe6add1a89e87d53c57432733b707731b"
+        },
+        {
+          "sourceIndex": 674,
+          "sourceId": "Clear Shelf",
+          "locale": "zh-Hans",
+          "value": "清空探索架",
+          "sha256": "7525edb8d28f4fd582c993dcca92757c4a059a9abe05dab3eb4c1c09e20bf6b6"
+        },
+        {
+          "sourceIndex": 675,
+          "sourceId": "Clear Snapshot",
+          "locale": "zh-Hans",
+          "value": "清除快照",
+          "sha256": "0a8a5b13fbb44512e4d54e9f61046b88cc586108f1195e993eea438280943080"
+        },
+        {
+          "sourceIndex": 676,
+          "sourceId": "Clear Upcoming",
+          "locale": "zh-Hans",
+          "value": "清空待播列表",
+          "sha256": "b12e385a3fa1afcd1d3813f727330322a46114ff0754fc26ef6131ea67e92f41"
+        },
+        {
+          "sourceIndex": 677,
+          "sourceId": "Clear active native playlist",
+          "locale": "zh-Hans",
+          "value": "取消选择当前本地播放列表",
+          "sha256": "3ff151653c9c140674ab1b9e1ecfdaea2ae0f8ca55d69b5e6af75ef9029e564e"
+        },
+        {
+          "sourceIndex": 680,
+          "sourceId": "Clear browser-local discovery shelf review items. This does not affect files or ratings.",
+          "locale": "zh-Hans",
+          "value": "清除浏览器本地探索架中的审查项目。这不会影响文件或评分。",
+          "sha256": "655bfba09210cbeaabfcd35b67412b246b7891be2e08c02531b7f25acbc21a48"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "keyCount": 5441,
+      "changedCells": 6,
+      "fileSha256": "26d116c0114814d80ce484714a54afa4ee4a4f77efc371ff40cb77127c380e89",
+      "targets": [
+        {
+          "sourceIndex": 669,
+          "sourceId": "Clear Local History",
+          "locale": "zh-Hant",
+          "value": "清除本機歷史記錄",
+          "sha256": "784edb85ffa60a70a48abec7a8dd0fe1e2ab69e43815d172800296ec39c36e42"
+        },
+        {
+          "sourceIndex": 674,
+          "sourceId": "Clear Shelf",
+          "locale": "zh-Hant",
+          "value": "清空探索架",
+          "sha256": "7525edb8d28f4fd582c993dcca92757c4a059a9abe05dab3eb4c1c09e20bf6b6"
+        },
+        {
+          "sourceIndex": 675,
+          "sourceId": "Clear Snapshot",
+          "locale": "zh-Hant",
+          "value": "清除快照",
+          "sha256": "0a8a5b13fbb44512e4d54e9f61046b88cc586108f1195e993eea438280943080"
+        },
+        {
+          "sourceIndex": 676,
+          "sourceId": "Clear Upcoming",
+          "locale": "zh-Hant",
+          "value": "清空待播清單",
+          "sha256": "2844f0640d9cf16e7ac8626bbb936c263c0682e097cc62abb3351ae830051bab"
+        },
+        {
+          "sourceIndex": 677,
+          "sourceId": "Clear active native playlist",
+          "locale": "zh-Hant",
+          "value": "取消選取目前的本機播放清單",
+          "sha256": "21fe8c4dc93baec5a4ee82a8112f809a3189d64b7628304cae5fd6bc32ee6003"
+        },
+        {
+          "sourceIndex": 680,
+          "sourceId": "Clear browser-local discovery shelf review items. This does not affect files or ratings.",
+          "locale": "zh-Hant",
+          "value": "清除瀏覽器本地探索架中的審查項目。這不會影響檔案或評分。",
+          "sha256": "7d94b976fc8ba1b87b41237ff9c7514a32f45ec97fa0ada97e2bf3995393a798"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "keyCount": 5441,
+      "changedCells": 5,
+      "fileSha256": "f65ab8d817ee001e099606a4ae58b6fafece4c2ad47af552602791f147f4273e",
+      "targets": [
+        {
+          "sourceIndex": 671,
+          "sourceId": "Clear Quality",
+          "locale": "es",
+          "value": "Borrar el filtro de calidad",
+          "sha256": "1efb4a43dbf1df561a33384629cc1e574b3c05765a1240820d30a0fc5e5d8191"
+        },
+        {
+          "sourceIndex": 672,
+          "sourceId": "Clear RustyMilk preset search",
+          "locale": "es",
+          "value": "Borrar la búsqueda de presets de RustyMilk",
+          "sha256": "e9d31e2c5076ea532a3980db52bd02369eeaa12c4f38ed39c72c29756f9dff33"
+        },
+        {
+          "sourceIndex": 674,
+          "sourceId": "Clear Shelf",
+          "locale": "es",
+          "value": "Vaciar el estante de descubrimiento",
+          "sha256": "ff03cce1d0915a307f08eca40f15a46fad26c988d407546fdbae96d0b11df1c5"
+        },
+        {
+          "sourceIndex": 676,
+          "sourceId": "Clear Upcoming",
+          "locale": "es",
+          "value": "Quitar los próximos elementos de la cola",
+          "sha256": "9bd7ad840a6f52f96f3c4e14b4876a59b7f59e786450649b5c496918f0f3600f"
+        },
+        {
+          "sourceIndex": 677,
+          "sourceId": "Clear active native playlist",
+          "locale": "es",
+          "value": "Quitar la selección de la lista nativa activa",
+          "sha256": "e3454062360e5f7e9fb8a217b6e86906dab508c2bc162b6badaea211e4cf4f7a"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "keyCount": 5441,
+      "changedCells": 5,
+      "fileSha256": "2224e24bb866d3be1c91d39cd800f2d789d103c6502f856401ee25bddd386f02",
+      "targets": [
+        {
+          "sourceIndex": 671,
+          "sourceId": "Clear Quality",
+          "locale": "ko",
+          "value": "품질 필터 지우기",
+          "sha256": "ec13b94f759f5f493e076b80954c779faf0bf19c1966df2767e20fdc544a8ed5"
+        },
+        {
+          "sourceIndex": 674,
+          "sourceId": "Clear Shelf",
+          "locale": "ko",
+          "value": "디스커버리 선반 비우기",
+          "sha256": "c95595d0f5ce471267c8221a43bb5eff6df31defdf56c66076f18dd5e4debe5e"
+        },
+        {
+          "sourceIndex": 676,
+          "sourceId": "Clear Upcoming",
+          "locale": "ko",
+          "value": "대기 중인 곡 모두 지우기",
+          "sha256": "58ac6c306f770af06a2adaa0259288cef247419e886049756d9fc1382abca559"
+        },
+        {
+          "sourceIndex": 677,
+          "sourceId": "Clear active native playlist",
+          "locale": "ko",
+          "value": "활성 로컬 재생목록 선택 해제",
+          "sha256": "268f49d4464cdd7da76fd0b8e3959f23bcb219c4617bb66f0e73d745314701cc"
+        },
+        {
+          "sourceIndex": 680,
+          "sourceId": "Clear browser-local discovery shelf review items. This does not affect files or ratings.",
+          "locale": "ko",
+          "value": "브라우저 로컬 디스커버리 선반의 검토 항목을 지웁니다. 파일이나 평점에는 영향을 주지 않습니다.",
+          "sha256": "536ba2141b1286fb9a01fb71adb6bf8ee95a7b1f4f0d3791f11118a3c8bba6b9"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "keyCount": 5441,
+      "changedCells": 6,
+      "fileSha256": "6b8c5def693b44392477da6178cc6b730095bb3cfafcaee23370e32c1aa4451f",
+      "targets": [
+        {
+          "sourceIndex": 671,
+          "sourceId": "Clear Quality",
+          "locale": "pt-BR",
+          "value": "Limpar filtro de qualidade",
+          "sha256": "fd520cd6bb55aed1c6c8e6ddedc8e5e755d25a194e0fc29c89702e15859052b1"
+        },
+        {
+          "sourceIndex": 672,
+          "sourceId": "Clear RustyMilk preset search",
+          "locale": "pt-BR",
+          "value": "Limpar a busca de presets do RustyMilk",
+          "sha256": "6e9a7c0194dfd283e735b0d400301eab1880b9451d5600c3a6dd055392988b04"
+        },
+        {
+          "sourceIndex": 674,
+          "sourceId": "Clear Shelf",
+          "locale": "pt-BR",
+          "value": "Esvaziar a prateleira de descoberta",
+          "sha256": "ef7c259eff811baf70d513f8fae065860fe0624f4a890b471971bff3ffa818dd"
+        },
+        {
+          "sourceIndex": 676,
+          "sourceId": "Clear Upcoming",
+          "locale": "pt-BR",
+          "value": "Limpar a fila de próximas músicas",
+          "sha256": "de16c4e7a87cf8f4f4addd8bf1ce7007624bcad9acac23bb8dafedfb2ba18e56"
+        },
+        {
+          "sourceIndex": 677,
+          "sourceId": "Clear active native playlist",
+          "locale": "pt-BR",
+          "value": "Desmarcar a playlist local ativa",
+          "sha256": "a6049b19a8c5b8c8a049918da95b71575966e4911a8582cc8be9b8117f2a7f2e"
+        },
+        {
+          "sourceIndex": 680,
+          "sourceId": "Clear browser-local discovery shelf review items. This does not affect files or ratings.",
+          "locale": "pt-BR",
+          "value": "Limpe os itens de revisão da prateleira de descoberta local do navegador. Isso não afeta arquivos ou avaliações.",
+          "sha256": "c8c8d32b1b8509bb9f087071fcf085312e4384e4f8d4b2f8561281d285df10d6"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "keyCount": 5441,
+      "changedCells": 5,
+      "fileSha256": "e8bcd56ec45ccfeffa91eb6232a3696f35d9c22161059e751befb20155f3286e",
+      "targets": [
+        {
+          "sourceIndex": 672,
+          "sourceId": "Clear RustyMilk preset search",
+          "locale": "ar",
+          "value": "مسح البحث عن إعدادات RustyMilk المسبقة",
+          "sha256": "9679d0a8e7371d5f0114149eb50426281e15eb944e9d05b5a1f10682c05b506d"
+        },
+        {
+          "sourceIndex": 674,
+          "sourceId": "Clear Shelf",
+          "locale": "ar",
+          "value": "إفراغ رف الاكتشاف",
+          "sha256": "248941578c168cd6d9e14dac47a315d367773ee87b883b92d72a0066eb11283e"
+        },
+        {
+          "sourceIndex": 675,
+          "sourceId": "Clear Snapshot",
+          "locale": "ar",
+          "value": "مسح اللقطة المعتمدة",
+          "sha256": "00c55855a7c4df5e139ccd5a214aa0bd07f07896df15e09fc4eb54166f18d2ee"
+        },
+        {
+          "sourceIndex": 676,
+          "sourceId": "Clear Upcoming",
+          "locale": "ar",
+          "value": "إفراغ قائمة الانتظار القادمة",
+          "sha256": "a2074c8969e5ca560c8a28119082d40a89bcecd2b9a5c593d1f9803996451d09"
+        },
+        {
+          "sourceIndex": 677,
+          "sourceId": "Clear active native playlist",
+          "locale": "ar",
+          "value": "إلغاء تحديد قائمة التشغيل المحلية النشطة",
+          "sha256": "f84b81d9fd2c9c526ea440e70958b9e0dfa5e40ea8eac47ec3e25c27b8bf1a1c"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "keyCount": 5441,
+      "changedCells": 6,
+      "fileSha256": "978def5efa200f280260191ebf88dfc4fb5c9bea53bcd21b40161883396ab274",
+      "targets": [
+        {
+          "sourceIndex": 672,
+          "sourceId": "Clear RustyMilk preset search",
+          "locale": "vi",
+          "value": "Xóa bộ lọc tìm kiếm preset RustyMilk",
+          "sha256": "531ad49ce42f6a51f2eb3a1be7b01c8a93dc8407830f84cdc5f78bd5d134b1dd"
+        },
+        {
+          "sourceIndex": 674,
+          "sourceId": "Clear Shelf",
+          "locale": "vi",
+          "value": "Dọn trống kệ khám phá",
+          "sha256": "314df8d7e0337ec493b4118ad6f3b0b947b351dd0d6f148e3953a18beafb3960"
+        },
+        {
+          "sourceIndex": 675,
+          "sourceId": "Clear Snapshot",
+          "locale": "vi",
+          "value": "Xóa bản chụp đã duyệt",
+          "sha256": "1b42c6b3c8b3b6629d8a67a3f9f668e4dd1d4a835c93717024d57fbcb125a952"
+        },
+        {
+          "sourceIndex": 676,
+          "sourceId": "Clear Upcoming",
+          "locale": "vi",
+          "value": "Xóa các bài hát khỏi danh sách chờ phát",
+          "sha256": "ae57056e6e7ccd93e9d824dd2cf457ab44e5140b04b7e428ae4ffc8bcac5adb5"
+        },
+        {
+          "sourceIndex": 677,
+          "sourceId": "Clear active native playlist",
+          "locale": "vi",
+          "value": "Bỏ chọn danh sách phát cục bộ đang hoạt động",
+          "sha256": "e2290890d041c73b9d7491939bd96503d077b23a19dfde360e55ca6b01191820"
+        },
+        {
+          "sourceIndex": 680,
+          "sourceId": "Clear browser-local discovery shelf review items. This does not affect files or ratings.",
+          "locale": "vi",
+          "value": "Xóa các mục đánh giá trên kệ khám phá lưu trong trình duyệt. Việc này không ảnh hưởng đến tệp hay điểm đánh giá.",
+          "sha256": "29310c987a9ff1a4e208ca036c87443d89bd480da0f0b4cd9a828ee9778cdc4c"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "keyCount": 5441,
+      "changedCells": 5,
+      "fileSha256": "385e9184265c580c93a71f7593f467a9b182a2540449e7615ca94200dc79dbe5",
+      "targets": [
+        {
+          "sourceIndex": 673,
+          "sourceId": "Clear Selection",
+          "locale": "hi",
+          "value": "चयन साफ़ करें",
+          "sha256": "536eecb55109db12099505b5a4f8762053e74633fd8fed3c9c65f7c17521b1a3"
+        },
+        {
+          "sourceIndex": 674,
+          "sourceId": "Clear Shelf",
+          "locale": "hi",
+          "value": "डिस्कवरी शेल्फ़ खाली करें",
+          "sha256": "0f93f59cb7e64482912808e7525482538aadf34ff732d3dc1217affa5100e63a"
+        },
+        {
+          "sourceIndex": 676,
+          "sourceId": "Clear Upcoming",
+          "locale": "hi",
+          "value": "आगामी सूची से सभी गीत हटाएँ",
+          "sha256": "066ae557faf46363b06340de5587a83e61815e71b55ab7d6782e52a4922d853f"
+        },
+        {
+          "sourceIndex": 677,
+          "sourceId": "Clear active native playlist",
+          "locale": "hi",
+          "value": "सक्रिय स्थानीय प्लेलिस्ट का चयन हटाएँ",
+          "sha256": "1a91eccbac25d45557caf33ad64caabfbf28470594a2692d3f2e326f60bfc047"
+        },
+        {
+          "sourceIndex": 680,
+          "sourceId": "Clear browser-local discovery shelf review items. This does not affect files or ratings.",
+          "locale": "hi",
+          "value": "ब्राउज़र की स्थानीय डिस्कवरी शेल्फ़ के समीक्षा आइटम साफ़ करें। इससे फ़ाइलों या रेटिंग पर कोई प्रभाव नहीं पड़ता।",
+          "sha256": "fe9b521ce7b0e2831b44479feb42340242b12ba2470a944f76b34ad12ea89bd6"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "keyCount": 5441,
+      "changedCells": 3,
+      "fileSha256": "5458205d916ea19e3dd55c306dbce4426b871990d9534dce67028cbf4a782a59",
+      "targets": [
+        {
+          "sourceIndex": 674,
+          "sourceId": "Clear Shelf",
+          "locale": "fr",
+          "value": "Vider l’étagère Découverte",
+          "sha256": "5c833096b9bba64e309e639960e8883b62840da1dd80645ade687a610813def7"
+        },
+        {
+          "sourceIndex": 676,
+          "sourceId": "Clear Upcoming",
+          "locale": "fr",
+          "value": "Vider la file d’attente à venir",
+          "sha256": "df349c4a0ee5881a924b61f36c189109918cab563a9e05250615eb59a672ccde"
+        },
+        {
+          "sourceIndex": 677,
+          "sourceId": "Clear active native playlist",
+          "locale": "fr",
+          "value": "Désélectionner la playlist native active",
+          "sha256": "97fb5dee14a1f0d3a6f571e390f637efaa20e8b78568a0995e26f3c599bddef5"
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "keyCount": 5441,
+      "changedCells": 4,
+      "fileSha256": "7f70ef8f4108cbb7fab859ae74e8d85bb5a7cbd69d6b2a1bb8fc0b20237e8661",
+      "targets": [
+        {
+          "sourceIndex": 674,
+          "sourceId": "Clear Shelf",
+          "locale": "id",
+          "value": "Kosongkan Rak Penemuan",
+          "sha256": "e8698b914dc5ff473715663ecfec0a814a9051c9f382d0e7c751038c7e19d816"
+        },
+        {
+          "sourceIndex": 676,
+          "sourceId": "Clear Upcoming",
+          "locale": "id",
+          "value": "Kosongkan antrean berikutnya",
+          "sha256": "2bed899dc948bb0fc6109d897f100712767b1993682a43613455856ca91d4d70"
+        },
+        {
+          "sourceIndex": 677,
+          "sourceId": "Clear active native playlist",
+          "locale": "id",
+          "value": "Batalkan pemilihan playlist lokal aktif",
+          "sha256": "677df847fbbd23541659762907a87d556eb72fc79fd44d5859d6f870f8d5a67a"
+        },
+        {
+          "sourceIndex": 680,
+          "sourceId": "Clear browser-local discovery shelf review items. This does not affect files or ratings.",
+          "locale": "id",
+          "value": "Hapus item tinjauan dari rak penemuan lokal di browser. Ini tidak memengaruhi file atau rating.",
+          "sha256": "57003a129684774b864367d7a6a82078933b7df911620700ac0d42a403a6f2d5"
+        }
+      ]
+    }
+  ]
+}
