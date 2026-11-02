@@ -954,7 +954,7 @@
   "Cache Hits:": "कैश हिट्स:",
   "Cache Misses:": "कैश मिस:",
   "Cache Performance": "कैश प्रदर्शन",
-  "Cache Size:": "कैचे आकार:",
+  "Cache Size:": "कैश का आकार:",
   "Cache cleared: {entriesCleared} entries, {bytesFreed} bytes freed": "कैश साफ़ किया गया: {entriesCleared} प्रविष्टियाँ, {bytesFreed} बाइट्स मुक्त",
   "Cache performance and retrieval statistics": "कैश प्रदर्शन और पुनर्प्राप्ति आँकड़े",
   "Can create content-linked pods": "कंटेंट-लिंक्ड पॉड बना सकते हैं",

@@ -1,0 +1,127 @@
+{
+  "all_candidate_placeholder_sets_match_source": true,
+  "all_current_cell_prior_hashes_reverified": true,
+  "candidate_cells_by_source": {
+    "Bypass cache (force fresh retrieval)": 4,
+    "Byzantine": 1,
+    "CPU Seconds": 1,
+    "Cache Hits:": 6,
+    "Cache Misses:": 9,
+    "Cache Size:": 1,
+    "Cache cleared: {entriesCleared} entries, {bytesFreed} bytes freed": 10,
+    "Cache performance and retrieval statistics": 1
+  },
+  "catalog_modified": false,
+  "cell_count": 240,
+  "confirmed_prior_correction_candidates": 24,
+  "conflicts": [],
+  "correction_candidate_cells": 33,
+  "decisions": {
+    "accept-current": 195,
+    "confirm-prior-correction": 24,
+    "no-op-no-direct-localized-caller": 12,
+    "refine-prior-correction": 1,
+    "reopen-prior-accepted": 8
+  },
+  "exact_prior_match_records": 397,
+  "locale_count": 12,
+  "native_speaker_approval": false,
+  "native_speaker_review_required": true,
+  "new_correction_candidates": 0,
+  "no_direct_localized_caller_source_ids": [
+    "Calendar"
+  ],
+  "no_op_cells": 12,
+  "per_locale": {
+    "ar": {
+      "accept-current": 15,
+      "confirm-prior-correction": 3,
+      "no-op-no-direct-localized-caller": 1,
+      "refine-prior-correction": 1
+    },
+    "de": {
+      "accept-current": 17,
+      "confirm-prior-correction": 2,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "es": {
+      "accept-current": 16,
+      "confirm-prior-correction": 3,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "fr": {
+      "accept-current": 16,
+      "confirm-prior-correction": 3,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "hi": {
+      "accept-current": 18,
+      "confirm-prior-correction": 1,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "id": {
+      "accept-current": 17,
+      "confirm-prior-correction": 1,
+      "no-op-no-direct-localized-caller": 1,
+      "reopen-prior-accepted": 1
+    },
+    "ja": {
+      "accept-current": 18,
+      "confirm-prior-correction": 1,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "ko": {
+      "accept-current": 14,
+      "confirm-prior-correction": 3,
+      "no-op-no-direct-localized-caller": 1,
+      "reopen-prior-accepted": 2
+    },
+    "pt-BR": {
+      "accept-current": 16,
+      "confirm-prior-correction": 2,
+      "no-op-no-direct-localized-caller": 1,
+      "reopen-prior-accepted": 1
+    },
+    "vi": {
+      "accept-current": 16,
+      "confirm-prior-correction": 3,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "zh-Hans": {
+      "accept-current": 17,
+      "confirm-prior-correction": 1,
+      "no-op-no-direct-localized-caller": 1,
+      "reopen-prior-accepted": 1
+    },
+    "zh-Hant": {
+      "accept-current": 15,
+      "confirm-prior-correction": 1,
+      "no-op-no-direct-localized-caller": 1,
+      "reopen-prior-accepted": 3
+    }
+  },
+  "placeholder_source_keys": [
+    "Cache cleared: {entriesCleared} entries, {bytesFreed} bytes freed"
+  ],
+  "pr_head": "255dc8789cf130c9fee39ab94f84a00fab79d215",
+  "pr_number": 204,
+  "pr_tree": "afdc0f69e5ed99e84e689fb6b2f20c1fe74dea54",
+  "primary_reviewed_cells": 228,
+  "prior_routed_cells_preserved": 12,
+  "prior_routed_dispositions": {
+    "accepted": 12
+  },
+  "refined_prior_correction_candidates": 1,
+  "reopened_prior_acceptances": 8,
+  "repository": "snapetech-org/slskR",
+  "review_window_indices": [
+    543,
+    562
+  ],
+  "schema_version": 1,
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_key_count": 20,
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "stale_prior_match_records": 0,
+  "tests_builds_scans_ci_workflows_releases_tags_merges": false
+}

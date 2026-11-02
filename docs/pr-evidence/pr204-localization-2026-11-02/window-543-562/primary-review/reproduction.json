@@ -1,0 +1,20 @@
+{
+  "builds_run": false,
+  "catalogs_modified": false,
+  "ci_run": false,
+  "commands": [
+    "python3 prepare_packet.py",
+    "python3 build_primary_ledger.py",
+    "python3 finalize_packet.py"
+  ],
+  "finalize_script": "../finalize_packet.py",
+  "finalize_script_sha256": "dabcd4962029802045753f00d12da4116534da37e5081010771c656342112270",
+  "head": "255dc8789cf130c9fee39ab94f84a00fab79d215",
+  "prepare_script": "../prepare_packet.py",
+  "prepare_script_sha256": "a52e50aa903e0312e9b68d45b353a5c93e94c19b464a4312698eda1b8dc7cece",
+  "primary_script": "../build_primary_ledger.py",
+  "primary_script_sha256": "d50cd54d8808cd249d1a3ea6bb6fcf81d4208ff35f89fb26d3fa57de94874ec6",
+  "release_cut": false,
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "tests_run": false
+}

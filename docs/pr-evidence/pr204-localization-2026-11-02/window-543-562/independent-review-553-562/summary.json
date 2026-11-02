@@ -1,0 +1,103 @@
+{
+  "caller_pin_records": 12,
+  "caller_pinned_source_ids": 9,
+  "caller_source_pr_blob_file_excerpt_checks": "pass",
+  "catalog_modified": false,
+  "cell_count": 120,
+  "correction_count": 27,
+  "dispositions": {
+    "accept-current": 81,
+    "correction": 27,
+    "no-op-no-direct-localized-caller": 12
+  },
+  "live_pr": {
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "255dc8789cf130c9fee39ab94f84a00fab79d215",
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskR/pull/204"
+  },
+  "locale_count": 12,
+  "native_speaker_approval": false,
+  "native_speaker_review_required": true,
+  "no_direct_localization_caller_source_ids": [
+    "Calendar"
+  ],
+  "per_locale": {
+    "ar": {
+      "accept-current": 6,
+      "correction": 3,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "de": {
+      "accept-current": 7,
+      "correction": 2,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "es": {
+      "accept-current": 6,
+      "correction": 3,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "fr": {
+      "accept-current": 6,
+      "correction": 3,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "hi": {
+      "accept-current": 8,
+      "correction": 1,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "id": {
+      "accept-current": 7,
+      "correction": 2,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "ja": {
+      "accept-current": 9,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "ko": {
+      "accept-current": 6,
+      "correction": 3,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "pt-BR": {
+      "accept-current": 6,
+      "correction": 3,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "vi": {
+      "accept-current": 6,
+      "correction": 3,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "zh-Hans": {
+      "accept-current": 8,
+      "correction": 1,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "zh-Hant": {
+      "accept-current": 6,
+      "correction": 3,
+      "no-op-no-direct-localized-caller": 1
+    }
+  },
+  "placeholders_check": "pass",
+  "pr_head": "255dc8789cf130c9fee39ab94f84a00fab79d215",
+  "pr_tree": "afdc0f69e5ed99e84e689fb6b2f20c1fe74dea54",
+  "prior_w523_w542_noop_hold_boundary": "pass",
+  "pull_request": 204,
+  "repository": "snapetech-org/slskR",
+  "schema_version": 1,
+  "source_current_checks": "pass",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_key_count": 10,
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "tests_builds_scans_ci_workflows_releases_tags_merges": false,
+  "window_indices": [
+    553,
+    562
+  ],
+  "worktree_status": ""
+}

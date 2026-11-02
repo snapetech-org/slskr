@@ -1,0 +1,58 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "input_head": "255dc8789cf130c9fee39ab94f84a00fab79d215",
+  "input_tree": "afdc0f69e5ed99e84e689fb6b2f20c1fe74dea54",
+  "review_window_source_indices": [
+    543,
+    562
+  ],
+  "cells_reviewed": 240,
+  "primary_corrections": 33,
+  "independently_reconciled_cells": 240,
+  "independent_disposition_differences": 0,
+  "independent_candidate_differences": 0,
+  "dispositions": {
+    "accept_current": 195,
+    "exact_reviewed_correction": 33,
+    "no_op_no_direct_localized_caller": 12,
+    "held": 0
+  },
+  "applied_corrections": 33,
+  "corrections_by_locale": {
+    "ar": 4,
+    "de": 2,
+    "es": 3,
+    "fr": 3,
+    "hi": 1,
+    "id": 2,
+    "ja": 1,
+    "ko": 5,
+    "pt-BR": 3,
+    "vi": 3,
+    "zh-Hans": 2,
+    "zh-Hant": 4
+  },
+  "catalog_keys_by_locale": {
+    "ar": 5437,
+    "de": 5437,
+    "es": 5437,
+    "fr": 5437,
+    "hi": 5437,
+    "id": 5437,
+    "ja": 5437,
+    "ko": 5437,
+    "pt-BR": 5437,
+    "vi": 5437,
+    "zh-Hans": 5437,
+    "zh-Hant": 5437
+  },
+  "exact_target_readbacks_passed": 33,
+  "source_and_target_hashes_reverified": true,
+  "placeholder_parity": "pass",
+  "pre_application_worktree_clean": true,
+  "pr_open_and_draft_at_application": true,
+  "native_speaker_approval": false,
+  "browser_review_current_head": false,
+  "tests_builds_scans_ci_workflows_releases_tags_merges": false
+}

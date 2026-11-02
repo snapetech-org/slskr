@@ -1,0 +1,212 @@
+{
+  "caller_context_records": 10,
+  "catalogs": {
+    "ar": {
+      "blob_oid": "eef0a844732e71c9cfb22500f99857aaaa391a26",
+      "bytes": 511628,
+      "keys": 5437,
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "sha256": "324b0223934d56db3c868b60150897bff22fe16d7b6dca3d4d21014cd3c876b3"
+    },
+    "de": {
+      "blob_oid": "53eca7526eeb4816f93c0d6b431138b7570270a3",
+      "bytes": 442474,
+      "keys": 5437,
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "sha256": "adf15ed33193dbc3bddbb7f9134c7350fdeb1a1697eea6a8809064db16163560"
+    },
+    "es": {
+      "blob_oid": "9336ece275b49c9ef97d26fc5b0e154e316cf721",
+      "bytes": 443177,
+      "keys": 5437,
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "sha256": "06b6e349a1fefbdaa0e93340f4ab47aad505a53a64b0ffeca52b3042a3100e7c"
+    },
+    "fr": {
+      "blob_oid": "74feecaba8c7cf8c31b8a86bbdcfc3087b7cf839",
+      "bytes": 454210,
+      "keys": 5437,
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "sha256": "d2e2796481db79daeabe2e764d8579a2fecdb2130560127bbabf95af2e19affa"
+    },
+    "hi": {
+      "blob_oid": "7eb4ea4c61ac2c0658934948ab899699f761c11e",
+      "bytes": 674820,
+      "keys": 5437,
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "sha256": "622ae3af3210a8abbf7a3be0f3855de92d5ea6dba302cf7049f1ff767c9d260a"
+    },
+    "id": {
+      "blob_oid": "3dc9070775752b4c6a0f5f41421fd05fb1d585b3",
+      "bytes": 408879,
+      "keys": 5437,
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "sha256": "7c658648a5c5fc5a53d3a94372c7c113d7485d648d6c1fc33c190d20cb80e793"
+    },
+    "ja": {
+      "blob_oid": "9ffa2a72b92a9ef146d42c4db7df5a61a1c81d51",
+      "bytes": 490519,
+      "keys": 5437,
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "sha256": "bceb8625e59094bcdbb5ff835814669d4ad623a9b0590075642dabbb4b0ce4ba"
+    },
+    "ko": {
+      "blob_oid": "40abdc81085f3a81e64d772f7dc0d994c8e7ca35",
+      "bytes": 441344,
+      "keys": 5437,
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "sha256": "82b1704a6f64806b2712c7e9f6a401fdd26af5e6e68615122f09779fbba0c2a4"
+    },
+    "pt-BR": {
+      "blob_oid": "b9f42d601fc98953e2a9bb9549be605e338a3ba5",
+      "bytes": 437925,
+      "keys": 5437,
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "sha256": "62e9ecb999882b3eb46082de2eedf216f6dc499a59e2e48b3379a5e65a477425"
+    },
+    "vi": {
+      "blob_oid": "26400f382e09d9cd18f26844a37b33c788109591",
+      "bytes": 473454,
+      "keys": 5437,
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "sha256": "bc57cd717a199a8e27dd0006c25a06dde32e15b0ce259e59ab5aa1514dff583c"
+    },
+    "zh-Hans": {
+      "blob_oid": "4a7d7f7dc92da07753b20089daadd930bbbc7280",
+      "bytes": 382079,
+      "keys": 5437,
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "sha256": "1cf03e1360719ecf937116e2aa709e7b663a01a4e10330acba6cd67e65ddba2b"
+    },
+    "zh-Hant": {
+      "blob_oid": "37978f2b92689f13a515fcb17af24c2464d6604b",
+      "bytes": 382787,
+      "keys": 5437,
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "sha256": "30054d591ce65d6c3a5112fea9d820ab97e80a46ed7d48e2a4ab31201c1c6024"
+    }
+  },
+  "cells": 120,
+  "checks_run": false,
+  "correction_candidates": [
+    {
+      "current_target_sha256": "c5261d14451757c17fecf960d6e7ec00622029eaa6290db823aa7b863d3555c0",
+      "current_text": "キャッシュをバイパスします (新しい取得を強制します)",
+      "locale": "ja",
+      "prior_finding_id": "CAT-40da21a2d01d",
+      "proposed_target_sha256": "eeae0f375595d20fd6e24ff27dcc6974445a5614e386b038883a7cb7f8e6c104",
+      "proposed_text": "キャッシュをバイパス（最新データを強制取得）",
+      "source_id": "Bypass cache (force fresh retrieval)",
+      "source_sha256": "32bcd8818b301874de37a5da6bc179ed12303ce1d5f6e5502d829d31b1de463f"
+    },
+    {
+      "current_target_sha256": "7ab79f8a7081f4953a5bb47a399ed644db28df1c98ed5130d778729e73a83cd2",
+      "current_text": "캐시 우회(새로 검색 강제)",
+      "locale": "ko",
+      "prior_finding_id": "CAT-f4fb5459935b",
+      "proposed_target_sha256": "e1392e9463eaf2dc4ae126bdbd19cd1184d1b0a9bca931943fddc26d099b15e3",
+      "proposed_text": "캐시 우회(새로 가져오도록 강제)",
+      "source_id": "Bypass cache (force fresh retrieval)",
+      "source_sha256": "32bcd8818b301874de37a5da6bc179ed12303ce1d5f6e5502d829d31b1de463f"
+    },
+    {
+      "current_target_sha256": "0ecbe98785a138b0992293677deed8dc75fac1f0a7d6b040772e5dcb388b484c",
+      "current_text": "绕过缓存（强制新鲜检索）",
+      "locale": "zh-Hans",
+      "prior_finding_id": "CAT-95ec2373e08c",
+      "proposed_target_sha256": "7a15cd6a740460595b04ac45fafe9a1e446a7317c27bd3d58e43777f2482680d",
+      "proposed_text": "绕过缓存（强制重新获取）",
+      "source_id": "Bypass cache (force fresh retrieval)",
+      "source_sha256": "32bcd8818b301874de37a5da6bc179ed12303ce1d5f6e5502d829d31b1de463f"
+    },
+    {
+      "current_target_sha256": "b70218f77c5f602c170bda18850890446bbd93340622d18eb1944504df47bf9c",
+      "current_text": "繞過快取（強制新鮮檢索）",
+      "locale": "zh-Hant",
+      "prior_finding_id": "CAT-2cc326f8f22d",
+      "proposed_target_sha256": "96502eae868cb777426b90c1a69fd252fda72394754554eb51017d0e4b11506e",
+      "proposed_text": "繞過快取（強制重新擷取）",
+      "source_id": "Bypass cache (force fresh retrieval)",
+      "source_sha256": "32bcd8818b301874de37a5da6bc179ed12303ce1d5f6e5502d829d31b1de463f"
+    },
+    {
+      "current_target_sha256": "a530b8272b2915a8706b35509c665c4ebdbf24dd252ee10fbc62faf8b40a606c",
+      "current_text": "복잡한",
+      "locale": "ko",
+      "prior_finding_id": "CAT-64eaf9704680",
+      "proposed_target_sha256": "402541c93d04861d636720dc8567ac57f0f2a1dad574769cd19aeb76563a1896",
+      "proposed_text": "비잔틴",
+      "source_id": "Byzantine",
+      "source_sha256": "819dbf1f29e866f1a16dd9a53cd463373b4c84c21c6ab374c2e21e9b13465731"
+    },
+    {
+      "current_target_sha256": "c3da63ca24eb5f5c8feba48951b7b61ded555006a24980145063363c88f6ff68",
+      "current_text": "ثانية وحدة المعالجة المركزية",
+      "locale": "ar",
+      "prior_finding_id": "CAT-17372adfc422",
+      "proposed_target_sha256": "870b119cff0128273bc48db6b026cc0e0d59b8ccd5a5580b4ca750ddf8c5643a",
+      "proposed_text": "ثواني وحدة المعالجة المركزية",
+      "source_id": "CPU Seconds",
+      "source_sha256": "17d2b3a918ca33fa93fa02bb5d232bc1ca45ac1b3693635176d416971b8ca70e"
+    }
+  ],
+  "dispositions": {
+    "accept-current": 114,
+    "correction": 6
+  },
+  "live_pr": {
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "255dc8789cf130c9fee39ab94f84a00fab79d215",
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "locale_order": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "native_speaker_signoff": false,
+  "no_op_cells": 0,
+  "pr_head": "255dc8789cf130c9fee39ab94f84a00fab79d215",
+  "pr_tree": "afdc0f69e5ed99e84e689fb6b2f20c1fe74dea54",
+  "preserved_prior_boundary": {
+    "held_source_id": "Build information unavailable",
+    "no_op_source_id": "Build result-filter conditions without memorizing the filter syntax.",
+    "overlap_cells": 0,
+    "window": "523-542"
+  },
+  "prior_window_disjoint": true,
+  "pull_request": 204,
+  "repo_or_pr_modified": false,
+  "repository": "snapetech-org/slskR",
+  "review_method_note": "Independent source/context review of all 120 current cells; older audit candidates were consulted after initial cell inspection and each matching source/current/candidate hash was re-attested at the exact PR head.",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_ids": [
+    "By Tag",
+    "By Tags (AND)",
+    "Bypass cache (force fresh retrieval)",
+    "Bypass the equalizer without losing your slider settings.",
+    "Bytes Served",
+    "Bytes by Source",
+    "Byzantine",
+    "CBR",
+    "CPU Seconds",
+    "CSV File"
+  ],
+  "source_ids_with_direct_localization_callers": 10,
+  "source_ids_without_direct_localization_callers": [],
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "window_indices": [
+    543,
+    552
+  ]
+}

@@ -946,7 +946,7 @@
   "By Name": "名前で",
   "By Tag": "タグ別",
   "By Tags (AND)": "タグ別 (AND)",
-  "Bypass cache (force fresh retrieval)": "キャッシュをバイパスします (新しい取得を強制します)",
+  "Bypass cache (force fresh retrieval)": "キャッシュをバイパス（最新データを強制取得）",
   "Bytes Served": "提供されたバイト数",
   "Bytes by Source": "ソース別のバイト数",
   "Byzantine": "ビザンチン",

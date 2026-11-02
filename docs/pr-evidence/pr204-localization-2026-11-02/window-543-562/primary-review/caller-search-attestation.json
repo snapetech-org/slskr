@@ -1,0 +1,421 @@
+{
+  "all_source_and_caller_pins_reverified": true,
+  "caller_files": {
+    "web/src/components/Player/Equalizer.jsx": 1,
+    "web/src/components/Search/Detail/SearchFilterModal.jsx": 2,
+    "web/src/components/Search/SongIDAnalysisResults.jsx": 1,
+    "web/src/components/Search/SongIDEvidenceDetails.jsx": 1,
+    "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx": 6,
+    "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx": 8,
+    "web/src/components/System/MediaCore/PodDiscoveryPanel.jsx": 4,
+    "web/src/components/System/Metrics/index.jsx": 1,
+    "web/src/components/System/SwarmVisualization/index.jsx": 2,
+    "web/src/components/Wishlist/CsvImportModal.jsx": 3,
+    "web/src/lib/errors.js": 1,
+    "web/src/lib/serverErrorMessageAllowlist.js": 1
+  },
+  "literal_localization_caller_source_ids": 18,
+  "localized_error_allowlist_entry_pins": 1,
+  "localized_error_path_source_ids": [
+    "CSV did not contain any track rows"
+  ],
+  "localized_literal_caller_pins": 23,
+  "no_direct_localization_caller_source_ids": [
+    "Calendar"
+  ],
+  "pr_head": "255dc8789cf130c9fee39ab94f84a00fab79d215",
+  "pr_tree": "afdc0f69e5ed99e84e689fb6b2f20c1fe74dea54",
+  "schema_version": 1,
+  "search_results": [
+    {
+      "allowlist_entry_count": 0,
+      "caller_status": "direct-caller-pinned",
+      "direct_localization_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 375,
+          "path": "web/src/components/System/MediaCore/PodDiscoveryPanel.jsx",
+          "text": "                  <Header size=\"small\"><LocalizedText source={\"By Tag\"} /></Header>"
+        }
+      ],
+      "source_id": "By Tag",
+      "source_index": 543,
+      "source_literal_occurrences": 1,
+      "source_sha256": "43a06ec669797dd3214c8e7bcc570aca76c6c9fdf76ccb9847e3ab9f88b25963"
+    },
+    {
+      "allowlist_entry_count": 0,
+      "caller_status": "direct-caller-pinned",
+      "direct_localization_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 414,
+          "path": "web/src/components/System/MediaCore/PodDiscoveryPanel.jsx",
+          "text": "                  <Header size=\"small\"><LocalizedText source={\"By Tags (AND)\"} /></Header>"
+        }
+      ],
+      "source_id": "By Tags (AND)",
+      "source_index": 544,
+      "source_literal_occurrences": 1,
+      "source_sha256": "59f0f00539047288ba2029f86cfd24f1453b2e931e19e0c0f0f808475eb64aff"
+    },
+    {
+      "allowlist_entry_count": 0,
+      "caller_status": "direct-caller-pinned",
+      "direct_localization_literal_caller_count": 2,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 201,
+          "path": "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx",
+          "text": "                    label={interfaceText(\"Bypass cache (force fresh retrieval)\")}"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 203,
+          "path": "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx",
+          "text": "                   {...interfaceTextProps(\"Bypass cache (force fresh retrieval)\")}/>"
+        }
+      ],
+      "source_id": "Bypass cache (force fresh retrieval)",
+      "source_index": 545,
+      "source_literal_occurrences": 2,
+      "source_sha256": "32bcd8818b301874de37a5da6bc179ed12303ce1d5f6e5502d829d31b1de463f"
+    },
+    {
+      "allowlist_entry_count": 0,
+      "caller_status": "direct-caller-pinned",
+      "direct_localization_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 95,
+          "path": "web/src/components/Player/Equalizer.jsx",
+          "text": "                ? interfaceText('Bypass the equalizer without losing your slider settings.')"
+        }
+      ],
+      "source_id": "Bypass the equalizer without losing your slider settings.",
+      "source_index": 546,
+      "source_literal_occurrences": 1,
+      "source_sha256": "6d4f739b6b4a8da93a4bc1bd915b942ade5fc3294c1e47fd970e1daa5182074c"
+    },
+    {
+      "allowlist_entry_count": 0,
+      "caller_status": "direct-caller-pinned",
+      "direct_localization_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 296,
+          "path": "web/src/components/System/SwarmVisualization/index.jsx",
+          "text": "                <Table.HeaderCell><LocalizedText source={\"Bytes Served\"} /></Table.HeaderCell>"
+        }
+      ],
+      "source_id": "Bytes Served",
+      "source_index": 547,
+      "source_literal_occurrences": 1,
+      "source_sha256": "c168672f853f3fbd91387be157482b2aff38261afc97e88ef99788ff9e978bed"
+    },
+    {
+      "allowlist_entry_count": 0,
+      "caller_status": "direct-caller-pinned",
+      "direct_localization_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 500,
+          "path": "web/src/components/System/SwarmVisualization/index.jsx",
+          "text": "                  <LocalizedText source={\"Bytes by Source\"} /></Header>"
+        }
+      ],
+      "source_id": "Bytes by Source",
+      "source_index": 548,
+      "source_literal_occurrences": 1,
+      "source_sha256": "02c345586b79402d46bfd561174f9e2abefbe7c184e5145beea9c16f216ae758"
+    },
+    {
+      "allowlist_entry_count": 0,
+      "caller_status": "direct-caller-pinned",
+      "direct_localization_literal_caller_count": 2,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 60,
+          "path": "web/src/components/Search/SongIDAnalysisResults.jsx",
+          "text": "      <Label size=\"tiny\"><LocalizedText source={\"Byzantine\"} />{\" \"}{formatPercent(item.byzantineScore)}</Label>"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 69,
+          "path": "web/src/components/Search/SongIDEvidenceDetails.jsx",
+          "text": "      <Label size=\"tiny\"><LocalizedText source={\"Byzantine\"} />{\" \"}{formatPercent(item.byzantineScore)}</Label>"
+        }
+      ],
+      "source_id": "Byzantine",
+      "source_index": 549,
+      "source_literal_occurrences": 2,
+      "source_sha256": "819dbf1f29e866f1a16dd9a53cd463373b4c84c21c6ab374c2e21e9b13465731"
+    },
+    {
+      "allowlist_entry_count": 0,
+      "caller_status": "direct-caller-pinned",
+      "direct_localization_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "other-exact-source-literal",
+          "line": 101,
+          "path": "web/src/components/Search/Detail/SearchFilterModal.jsx",
+          "text": "                {...inputLanguage('CBR')}"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 102,
+          "path": "web/src/components/Search/Detail/SearchFilterModal.jsx",
+          "text": "                label={localized('CBR')}"
+        }
+      ],
+      "source_id": "CBR",
+      "source_index": 550,
+      "source_literal_occurrences": 2,
+      "source_sha256": "a447086100ddfdd3fc2b18f4568f88d804642ab4a21b09d26926f1894dfa4e63"
+    },
+    {
+      "allowlist_entry_count": 0,
+      "caller_status": "direct-caller-pinned",
+      "direct_localization_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 79,
+          "path": "web/src/components/System/Metrics/index.jsx",
+          "text": "      { key: 'process_cpu_seconds_total', get label() { return interfaceText(\"CPU Seconds\"); }, format: formatNumber },"
+        }
+      ],
+      "source_id": "CPU Seconds",
+      "source_index": 551,
+      "source_literal_occurrences": 1,
+      "source_sha256": "17d2b3a918ca33fa93fa02bb5d232bc1ca45ac1b3693635176d416971b8ca70e"
+    },
+    {
+      "allowlist_entry_count": 0,
+      "caller_status": "direct-caller-pinned",
+      "direct_localization_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 101,
+          "path": "web/src/components/Wishlist/CsvImportModal.jsx",
+          "text": "            label={localized('CSV File')}"
+        }
+      ],
+      "source_id": "CSV File",
+      "source_index": 552,
+      "source_literal_occurrences": 1,
+      "source_sha256": "b93b939f2b0dd2cc24befe08971c7077929983caa686171d3881bc224eece82e"
+    },
+    {
+      "allowlist_entry_count": 0,
+      "caller_status": "direct-caller-pinned",
+      "direct_localization_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 108,
+          "path": "web/src/components/Wishlist/CsvImportModal.jsx",
+          "text": "            label={localized('CSV Text')}"
+        }
+      ],
+      "source_id": "CSV Text",
+      "source_index": 553,
+      "source_literal_occurrences": 1,
+      "source_sha256": "c4ae2ffc5891255b40a04757d8c07d31bb7300c7d38a334e0bd5c08fc5f32e71"
+    },
+    {
+      "allowlist_entry_count": 1,
+      "caller_status": "localized-error-path-pinned",
+      "direct_localization_literal_caller_count": 0,
+      "matches": [
+        {
+          "kind": "other-exact-source-literal",
+          "line": 144,
+          "path": "crates/slskr/src/wishlist_csv_import.rs",
+          "text": "        return routing::bad_request_response(\"CSV did not contain any track rows\");"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 206,
+          "path": "crates/slskr/src/wishlist_csv_import.rs",
+          "text": "        return routing::bad_request_response(\"CSV did not contain any track rows\");"
+        },
+        {
+          "kind": "app-server-error-allowlist-entry",
+          "line": 45,
+          "path": "web/src/lib/serverErrorMessageAllowlist.js",
+          "text": "  \"CSV did not contain any track rows\","
+        }
+      ],
+      "source_id": "CSV did not contain any track rows",
+      "source_index": 554,
+      "source_literal_occurrences": 3,
+      "source_sha256": "0da5c31113ddbe8e9fa1ab5ac022579c076b77e089912c55eb738e3e29738063"
+    },
+    {
+      "allowlist_entry_count": 0,
+      "caller_status": "direct-caller-pinned",
+      "direct_localization_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 44,
+          "path": "web/src/components/Wishlist/CsvImportModal.jsx",
+          "text": "      toast.error(localizedRef.current('CSV text is required.'));"
+        }
+      ],
+      "source_id": "CSV text is required.",
+      "source_index": 555,
+      "source_literal_occurrences": 1,
+      "source_sha256": "ad019d8cc9752d83cc8c4a036781b2f1d1638493ebc478407464e5156786c2ea"
+    },
+    {
+      "allowlist_entry_count": 0,
+      "caller_status": "direct-caller-pinned",
+      "direct_localization_literal_caller_count": 2,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 538,
+          "path": "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx",
+          "text": "                        <strong><LocalizedText source={\"Cache Hits:\"} /></strong> {formatRegionalNumber(retrievalStats.cacheHits)}"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 387,
+          "path": "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+          "text": "                      <strong><LocalizedText source={\"Cache Hits:\"} /></strong> {formatRegionalNumber(descriptorStats.cacheHits)}"
+        }
+      ],
+      "source_id": "Cache Hits:",
+      "source_index": 556,
+      "source_literal_occurrences": 2,
+      "source_sha256": "86c0a808c089fe6b7b2dacaa76f4db433638645c15b3fe0536b9f5aabcdfbc97"
+    },
+    {
+      "allowlist_entry_count": 0,
+      "caller_status": "direct-caller-pinned",
+      "direct_localization_literal_caller_count": 2,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 540,
+          "path": "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx",
+          "text": "                        <strong><LocalizedText source={\"Cache Misses:\"} /></strong>{' '}"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 389,
+          "path": "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+          "text": "                      <strong><LocalizedText source={\"Cache Misses:\"} /></strong>{' '}"
+        }
+      ],
+      "source_id": "Cache Misses:",
+      "source_index": 557,
+      "source_literal_occurrences": 2,
+      "source_sha256": "73fb3d1197330ba05a2de84a69f63b1d92fa3d877d4c750e46d8f18167ac3778"
+    },
+    {
+      "allowlist_entry_count": 0,
+      "caller_status": "direct-caller-pinned",
+      "direct_localization_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 382,
+          "path": "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+          "text": "                    <Message.Header><LocalizedText source={\"Cache Performance\"} /></Message.Header>"
+        }
+      ],
+      "source_id": "Cache Performance",
+      "source_index": 558,
+      "source_literal_occurrences": 1,
+      "source_sha256": "bd9e58d2d15d9b3c18567e7d62f1a2fdb8000d72d44b8f01069b90361fb4cb99"
+    },
+    {
+      "allowlist_entry_count": 0,
+      "caller_status": "direct-caller-pinned",
+      "direct_localization_literal_caller_count": 2,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 551,
+          "path": "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx",
+          "text": "                        <strong><LocalizedText source={\"Cache Size:\"} /></strong>{' '}"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 400,
+          "path": "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+          "text": "                      <strong><LocalizedText source={\"Cache Size:\"} /></strong>{' '}"
+        }
+      ],
+      "source_id": "Cache Size:",
+      "source_index": 559,
+      "source_literal_occurrences": 2,
+      "source_sha256": "463d5bcf82f75745e0afbb89801e854d0815d7429af180a78788ac1e5bf00539"
+    },
+    {
+      "allowlist_entry_count": 0,
+      "caller_status": "direct-caller-pinned",
+      "direct_localization_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 169,
+          "path": "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx",
+          "text": "        interfaceText(\"Cache cleared: {entriesCleared} entries, {bytesFreed} bytes freed\", { \"entriesCleared\": (result.entriesCleared), \"bytesFreed\": (result.bytesFreed) }),"
+        }
+      ],
+      "source_id": "Cache cleared: {entriesCleared} entries, {bytesFreed} bytes freed",
+      "source_index": 560,
+      "source_literal_occurrences": 1,
+      "source_sha256": "3e6462a3ab2e12ac3b70ae7b294f1fcb8bdb822b5f750b61d72e9ea6eac71f57"
+    },
+    {
+      "allowlist_entry_count": 0,
+      "caller_status": "direct-caller-pinned",
+      "direct_localization_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 368,
+          "path": "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+          "text": "                <LocalizedText source={\"Cache performance and retrieval statistics\"} /></Card.Description>"
+        }
+      ],
+      "source_id": "Cache performance and retrieval statistics",
+      "source_index": 561,
+      "source_literal_occurrences": 1,
+      "source_sha256": "1659ba85e3daecfb43f638e96744679c916c749ad8cd55afe492e4360c0a2c32"
+    },
+    {
+      "allowlist_entry_count": 0,
+      "caller_status": "no-direct-localization-caller",
+      "direct_localization_literal_caller_count": 0,
+      "matches": [],
+      "source_id": "Calendar",
+      "source_index": 562,
+      "source_literal_occurrences": 0,
+      "source_sha256": "d5d0a30b517e3beab07609d7e54c378db5e15066f22280af453f587f7eec7474"
+    }
+  ],
+  "search_scope": "tracked runtime source under web/src, crates/slskr-web/src, and crates/slskr/src; exact quoted literals in JS/JSX/TS/TSX/Rust files; locale catalogs, tests, and docs excluded",
+  "source_context_rows": 20,
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_window": [
+    543,
+    562
+  ],
+  "supporting_pins": 7
+}
