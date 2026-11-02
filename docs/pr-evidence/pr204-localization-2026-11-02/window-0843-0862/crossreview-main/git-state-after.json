@@ -1,0 +1,10 @@
+{
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "clean": true,
+  "head": "b52b7c9abd112328a70d9e811d3b6aa2d4feb8e6",
+  "host": "kspld0",
+  "stage": "after",
+  "statusPorcelain": "",
+  "tree": "d7a46bce75c76e3a74736b85175f7fa412324f39",
+  "worktree": "/home/keith/Documents/code/task-worktrees/localization-20261102-slskr"
+}

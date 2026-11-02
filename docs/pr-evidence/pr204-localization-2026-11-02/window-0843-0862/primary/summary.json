@@ -1,0 +1,83 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W843-W862",
+  "zeroBasedSourceIndexInclusive": [
+    842,
+    861
+  ],
+  "head": "b52b7c9abd112328a70d9e811d3b6aa2d4feb8e6",
+  "tree": "d7a46bce75c76e3a74736b85175f7fa412324f39",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "sourceCount": 20,
+  "cellCount": 240,
+  "counts": {
+    "accept-current": 189,
+    "propose-correction": 51
+  },
+  "correctionCandidateCount": 51,
+  "holdCount": 0,
+  "catalogKeyCount": 5441,
+  "catalogsReattested": 12,
+  "callerFiles": 25,
+  "callerPins": 94,
+  "callerGaps": [
+    {
+      "sourceIndex": 848,
+      "sourceId": "Connecting to Soulseek…",
+      "reason": "No production caller containing this source text was found at the exact PR head; review is limited to the self-contained status label and catalog parity."
+    }
+  ],
+  "priorReviewReusedCells": 24,
+  "placeholderMismatches": 0,
+  "markupMismatches": 0,
+  "protectedSoulseekMismatches": 0,
+  "nativeSpeakerApproval": false,
+  "headedBrowserReview": false,
+  "testsBuildsCiRun": false,
+  "repositoryModified": false,
+  "sourceIds": [
+    "Connected Clients (",
+    "Connected slskr clients for hash sync",
+    "Connected state is not true.",
+    "Connected state is true.",
+    "Connected to transfer feed",
+    "Connecting",
+    "Connecting to Soulseek…",
+    "Connecting to live search updates. Your loaded searches are available below.",
+    "Connecting to logs...",
+    "Connection Failed",
+    "Connection Timeout Milliseconds",
+    "Connection lost",
+    "Connections",
+    "Connectivity",
+    "Connectivity Ratio:",
+    "Connectivity diagnostics",
+    "Consensus Recommendations",
+    "Consensus Score:",
+    "Consensus Strength:",
+    "Consensus for destructive actions"
+  ],
+  "boundarySourceIndices": [
+    841,
+    862
+  ],
+  "boundarySourceIds": [
+    "Connected",
+    "Conservative Network"
+  ],
+  "localeOrder": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ]
+}

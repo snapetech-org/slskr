@@ -1,0 +1,17 @@
+{
+  "base": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "expectedHead": "b52b7c9abd112328a70d9e811d3b6aa2d4feb8e6",
+  "expectedTree": "d7a46bce75c76e3a74736b85175f7fa412324f39",
+  "head": "b52b7c9abd112328a70d9e811d3b6aa2d4feb8e6",
+  "isDraft": true,
+  "passed": true,
+  "pullRequestState": "open",
+  "remoteHead": "b52b7c9abd112328a70d9e811d3b6aa2d4feb8e6",
+  "tree": "d7a46bce75c76e3a74736b85175f7fa412324f39",
+  "worktree": {
+    "head": "b52b7c9abd112328a70d9e811d3b6aa2d4feb8e6",
+    "status": "",
+    "tree": "d7a46bce75c76e3a74736b85175f7fa412324f39"
+  }
+}

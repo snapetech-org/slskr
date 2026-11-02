@@ -1,0 +1,61 @@
+{
+  "allSevenHeadsAgreeAtStart": true,
+  "catalogs": {
+    "allExactFileHashesAndBlobsMatch": true,
+    "count": 12,
+    "orderedKeyCounts": [
+      5441,
+      5441,
+      5441,
+      5441,
+      5441,
+      5441,
+      5441,
+      5441,
+      5441,
+      5441,
+      5441,
+      5441
+    ]
+  },
+  "head": "b52b7c9abd112328a70d9e811d3b6aa2d4feb8e6",
+  "hiIdViSubsetPacket": {
+    "filesChecked": 6,
+    "newCorrections": 3,
+    "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0843-0862-crossreview-hidvi-20261102",
+    "reviewedCells": 60,
+    "sha256SumsSha256": "d2da2499c42195d2c5d36e8c64a632da95f30c84114ff6c36ddb5d076afc9a1d"
+  },
+  "mainCrossReviewPacket": {
+    "filesChecked": 18,
+    "manifestSha256": "117cf4b0290f9d1bfe68ba817da28fe0b4897d485240c2ac90388830cea1fa49",
+    "newCorrections": 10,
+    "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0843-0862-crossreview-20261102",
+    "reviewedCells": 180,
+    "revisedPrimaryProposals": 1,
+    "sha256SumsSha256": "e1a00fa4329811b34fe66aec0efccb648e34c59a8ec0ac02ce06a056746f50d6"
+  },
+  "primaryPacket": {
+    "callerPins": 94,
+    "catalogCount": 12,
+    "cells": 240,
+    "filesChecked": 11,
+    "manifestSha256": "e5206b2c70039b5c04d8239821cc8b8b4461e9a9837580dd15bead317d0e71fa",
+    "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0843-0862-primary-20261102",
+    "sha256SumsSha256": "81ffdd1fa4c359a1b5fb9a0dfdb1ddaab5a6981f7039e87910123ea1a1c8c7c7"
+  },
+  "pullRequest": 204,
+  "recordedAtUtc": "2026-11-02T19:34:58.713683+00:00",
+  "repository": "snapetech-org/slskR",
+  "selectedCallerPinsExact": true,
+  "selectedCells": 14,
+  "selectedCurrentTargetsExact": true,
+  "tree": "d7a46bce75c76e3a74736b85175f7fa412324f39",
+  "worktree": {
+    "clean": true,
+    "head": "b52b7c9abd112328a70d9e811d3b6aa2d4feb8e6",
+    "path": "/home/keith/Documents/code/task-worktrees/localization-20261102-slskr",
+    "statusPorcelain": "",
+    "tree": "d7a46bce75c76e3a74736b85175f7fa412324f39"
+  }
+}

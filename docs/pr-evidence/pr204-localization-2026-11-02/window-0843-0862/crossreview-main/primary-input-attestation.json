@@ -1,0 +1,81 @@
+{
+  "allTwelveCatalogsReattested": true,
+  "callerPinRowsReattested": 94,
+  "inputFileChecks": [
+    {
+      "actualSha256": "3de7cc00c8e5eb308c59646caddfa0348ec793fc44638e91efb46c8d3b01c424",
+      "expectedSha256": "3de7cc00c8e5eb308c59646caddfa0348ec793fc44638e91efb46c8d3b01c424",
+      "matches": true,
+      "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0843-0862-primary-20261102/README.md"
+    },
+    {
+      "actualSha256": "b67fbbfc3c3dae9fb2d8ecd8fb5e195cb9a60bf9d9dc36496b8b256c39b59815",
+      "expectedSha256": "b67fbbfc3c3dae9fb2d8ecd8fb5e195cb9a60bf9d9dc36496b8b256c39b59815",
+      "matches": true,
+      "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0843-0862-primary-20261102/boundary-pins.jsonl"
+    },
+    {
+      "actualSha256": "69cf7bf70793e3c9a2a6b517cb2dc301ce52778e9e2ea00f35237f5d26ead083",
+      "expectedSha256": "69cf7bf70793e3c9a2a6b517cb2dc301ce52778e9e2ea00f35237f5d26ead083",
+      "matches": true,
+      "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0843-0862-primary-20261102/build_packet.py"
+    },
+    {
+      "actualSha256": "ec5dd5ca4d41896b4c20828e1ece76086852fb9b3cc73c438c9e525dedd45348",
+      "expectedSha256": "ec5dd5ca4d41896b4c20828e1ece76086852fb9b3cc73c438c9e525dedd45348",
+      "matches": true,
+      "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0843-0862-primary-20261102/caller-gaps.jsonl"
+    },
+    {
+      "actualSha256": "3628a5882617741af530c2b9e476a53fc8ee7c409e03e438f9a687e240729d5a",
+      "expectedSha256": "3628a5882617741af530c2b9e476a53fc8ee7c409e03e438f9a687e240729d5a",
+      "matches": true,
+      "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0843-0862-primary-20261102/catalog-pins.jsonl"
+    },
+    {
+      "actualSha256": "c8a87c4c6ce3bd28b6c117b7adcd90ed0bf0969db0cc59f6a72fd78eeb1ff37f",
+      "expectedSha256": "c8a87c4c6ce3bd28b6c117b7adcd90ed0bf0969db0cc59f6a72fd78eeb1ff37f",
+      "matches": true,
+      "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0843-0862-primary-20261102/live-head.json"
+    },
+    {
+      "actualSha256": "74e5d842500fca06817f5061b7bd1c8e2395342ff15ad7573af3412a2c0e6aad",
+      "expectedSha256": "74e5d842500fca06817f5061b7bd1c8e2395342ff15ad7573af3412a2c0e6aad",
+      "matches": true,
+      "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0843-0862-primary-20261102/prior-review-reattestation.jsonl"
+    },
+    {
+      "actualSha256": "3edb7d5ed42e8c91df4e7283cb6725bdf4e5627e557b33c327d8cc561fdb66a7",
+      "expectedSha256": "3edb7d5ed42e8c91df4e7283cb6725bdf4e5627e557b33c327d8cc561fdb66a7",
+      "matches": true,
+      "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0843-0862-primary-20261102/review-ledger.jsonl"
+    },
+    {
+      "actualSha256": "b48b6c6db768de8c1013236ce63545ad9e43cadf3c87cbca7a69041bdd994a3d",
+      "expectedSha256": "b48b6c6db768de8c1013236ce63545ad9e43cadf3c87cbca7a69041bdd994a3d",
+      "matches": true,
+      "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0843-0862-primary-20261102/source-caller-pins.jsonl"
+    },
+    {
+      "actualSha256": "9b7de76bd62198210e79433d55b56fbc399c535c864723171d13fb8af9003e28",
+      "expectedSha256": "9b7de76bd62198210e79433d55b56fbc399c535c864723171d13fb8af9003e28",
+      "matches": true,
+      "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0843-0862-primary-20261102/source-window-and-boundaries.jsonl"
+    },
+    {
+      "actualSha256": "8d4a76eb6de314ce9cdf4f50079fec885c1dda1c0f3f038d1dd2032c03b8cee3",
+      "expectedSha256": "8d4a76eb6de314ce9cdf4f50079fec885c1dda1c0f3f038d1dd2032c03b8cee3",
+      "matches": true,
+      "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0843-0862-primary-20261102/summary.json"
+    }
+  ],
+  "manifestSha256": "e5206b2c70039b5c04d8239821cc8b8b4461e9a9837580dd15bead317d0e71fa",
+  "packetPath": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0843-0862-primary-20261102",
+  "reviewLedgerRowsReattested": 240,
+  "sha256SumsSha256": "81ffdd1fa4c359a1b5fb9a0dfdb1ddaab5a6981f7039e87910123ea1a1c8c7c7",
+  "windowSortedKeyIndices": [
+    842,
+    861
+  ],
+  "windowSourceRowsReattested": 20
+}

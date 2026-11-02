@@ -1,0 +1,94 @@
+{
+  "files": [
+    {
+      "bytes": 3320,
+      "path": "INPUT-SHA256SUMS",
+      "sha256": "fde845e271baf8b5dd85bacacb227fd348fce4e8d5f395f9e2b435f9346b0772"
+    },
+    {
+      "bytes": 3167,
+      "path": "README.md",
+      "sha256": "3cce106306bbf4deec1634e478895de5b23e42475179baad55af5cd9f8865c28"
+    },
+    {
+      "bytes": 30974,
+      "path": "build_crossreview.py",
+      "sha256": "e95db337f0683c54e38b8e2b4d79fdc0c51a6e6142f7e4fe7f0995cc62d46568"
+    },
+    {
+      "bytes": 430,
+      "path": "caller-gap.json",
+      "sha256": "f3f26331d77cc5da265807c31b0f553ae94f1fc4f4169615334345edb00a6d3a"
+    },
+    {
+      "bytes": 75198,
+      "path": "caller-reattestation.jsonl",
+      "sha256": "eae2f0e7c7c9fb9f00bb928c0e881da1add23b737c0b27c202eeed499b91b067"
+    },
+    {
+      "bytes": 4886,
+      "path": "catalog-reattestation.jsonl",
+      "sha256": "70007172ea44800e053396535127341b85bdbc319325c922047782472db87e6e"
+    },
+    {
+      "bytes": 19968,
+      "path": "correction-candidates.jsonl",
+      "sha256": "8b65d83ccf323538987b1ef5f520c92285a19695532885e9f1eb6d94c88c8099"
+    },
+    {
+      "bytes": 476586,
+      "path": "crossreview-ledger.jsonl",
+      "sha256": "754cea747086ed12afcd7193e1e28ae2e703920b9d6a5860a0789aa5c6efb855"
+    },
+    {
+      "bytes": 327,
+      "path": "git-state-after.json",
+      "sha256": "e3bf9e8fdc6f46e767c0da07658d4c4bd7088ec93c893d0197ddb1026b1a26df"
+    },
+    {
+      "bytes": 328,
+      "path": "git-state-before.json",
+      "sha256": "427478d5e9eb457bb17e51575e48d6d6ff68c53540f6b0f51b5dcc1d6da64f4e"
+    },
+    {
+      "bytes": 6485,
+      "path": "live-pr-heads.json",
+      "sha256": "0ddb2616010402ce083189191960b6fd1bd1d256a40dc2b4ebf912f08cf8998b"
+    },
+    {
+      "bytes": 4158,
+      "path": "primary-input-attestation.json",
+      "sha256": "1d2a612a404fd2de391c1415af7a706c66e8d1d6a075b0ddea492671f00953c6"
+    },
+    {
+      "bytes": 2876,
+      "path": "prior-review-attestation.json",
+      "sha256": "968a92882f2cf819b7a0c993065148796c82ef416b634a3c2da0dd9463500600"
+    },
+    {
+      "bytes": 20414,
+      "path": "prior-review-reattestation.jsonl",
+      "sha256": "5bb8908c8ddc5df6ef21a2abcdee1be056290fca434f7a692afc6d00f15f0997"
+    },
+    {
+      "bytes": 163,
+      "path": "remote-branch-attestation.json",
+      "sha256": "148d403ee6319e7e216430fa3d774efdecf30e96d7809a0f8cace2bb4dee8c14"
+    },
+    {
+      "bytes": 3707,
+      "path": "source-window-reattestation.jsonl",
+      "sha256": "0f6d4d35e339be7ce4f3779c844cc47fc3afeb5500b56b5405f6b42c0fdac9b5"
+    },
+    {
+      "bytes": 1780,
+      "path": "summary.json",
+      "sha256": "3153cc3b71793596ef9d07841e65ed4929ea20f4e95f5e30fd679d780a07676e"
+    }
+  ],
+  "head": "b52b7c9abd112328a70d9e811d3b6aa2d4feb8e6",
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "tree": "d7a46bce75c76e3a74736b85175f7fa412324f39",
+  "window": "W843-W862"
+}
