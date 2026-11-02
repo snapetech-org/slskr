@@ -1,0 +1,22 @@
+{"sourceId": "Copy History", "sourceIndex": 921, "sourceSha256": "0a5ce94749505867d1e336c6c7525b9cdd9f6308de6504543ccf468eb1fbdcd4", "windowLabel": 922}
+{"sourceId": "Copy Plan", "sourceIndex": 922, "sourceSha256": "350ef9b4967767a189365de20f1c63fe3068394a737ee7ab3bf063c91e0e53c5", "windowLabel": 923}
+{"sourceId": "Copy Quarantine Packet", "sourceIndex": 923, "sourceSha256": "5396907751710c501dd83f63d73c212e318afa4c577ef6a3f1bf206bdc415d00", "windowLabel": 924}
+{"sourceId": "Copy Report", "sourceIndex": 924, "sourceSha256": "54b8e0c0c268c1549af4247c132b7ed7664ac1676996831e86f5aaf52f17a303", "windowLabel": 925}
+{"sourceId": "Copy Review", "sourceIndex": 925, "sourceSha256": "f5def6c3cff760813097ffdffb4181e1466398f5c939969b171692dc7fb7156c", "windowLabel": 926}
+{"sourceId": "Copy Safe-Fix Manifest", "sourceIndex": 926, "sourceSha256": "10ec2e506f382656f48625b0d5678ea9b9fabd2435eb6400c666be13b767fcd7", "windowLabel": 927}
+{"sourceId": "Copy Search Seeds", "sourceIndex": 927, "sourceSha256": "b2e1b67705fd893bbc5e500821a1ab1893672b895c994af54d7fe1c519f5aee5", "windowLabel": 928}
+{"sourceId": "Copy Servarr compatibility review", "sourceIndex": 928, "sourceSha256": "7b8abca55e86c948b6c0ff51821acc7ef86bb5fd369150eff6eae52a5c66d8a7", "windowLabel": 929}
+{"sourceId": "Copy SongID forensic matrix JSON", "sourceIndex": 929, "sourceSha256": "20f5b35e800fc6a0b999054ee4bdc7dda1d16aff1c2679fc7545d38ca7610122", "windowLabel": 930}
+{"sourceId": "Copy Wishlist request review", "sourceIndex": 930, "sourceSha256": "7aef22ffc4f3825a521b0f81aa67ee0c5b7ade8943160bccd15349654ff62d47", "windowLabel": 931}
+{"sourceId": "Copy a branch review report with visible node families, edge families, suggested routes, and nearby search seeds.", "sourceIndex": 931, "sourceSha256": "39cb7f834b7fc3a1b9b559204f0e50d55b942e8d8dab6cf823cfb1ba6a252237", "windowLabel": 932}
+{"sourceId": "Copy a local network-health report for diagnostics. This does not query peers or change network state.", "sourceIndex": 932, "sourceSha256": "f13177a60e0bbd1d2b46fe1d0491c4162a13df53cd2476df31537be9186245d7", "windowLabel": 933}
+{"sourceId": "Copy a manual quarantine review packet for selected risky issues. This does not change quarantine state, move files, send peer messages, or mutate files.", "sourceIndex": 933, "sourceSha256": "b484994da46dc1e235e8f985eff8e6de061fc58fe18fe3715852e51506d04206", "windowLabel": 934}
+{"sourceId": "Copy a read-only health report for offline review. This does not fix, rescan, quarantine, search, or mutate files.", "sourceIndex": 934, "sourceSha256": "32bbff5ea1d39f9f46503a1d698c5ffd3d825f4dd15d8bf6d7e372a544c4dcf0", "windowLabel": 935}
+{"sourceId": "Copy a review report of the selected preferences for implementation handoff.", "sourceIndex": 935, "sourceSha256": "be82d7bd7a9a452638be5116e61028d1d6d484175221aede31cd12fba2955397", "windowLabel": 936}
+{"sourceId": "Copy a selected-issue action plan for review. This does not create remediation jobs, queue searches, quarantine files, or mutate files.", "sourceIndex": 936, "sourceSha256": "ca3aa0bb56ccb0394ed933abbaf48cd695a8678daf6e15248c28de7b7f008303", "windowLabel": 937}
+{"sourceId": "Copy a short report of these browser-local choices to include with a support request.", "sourceIndex": 937, "sourceSha256": "05a9f307fe3f3abf9711205c6df4189b9dcf21a49a0543b1c203c39217fd5dea", "windowLabel": 938}
+{"sourceId": "Copy a text report of the current shelf policy preview for review. This does not apply any action.", "sourceIndex": 938, "sourceSha256": "337aa0a7ea3ef3ae106597878fe7d90b293438210255b8f2f09e4eac5d718926", "windowLabel": 939}
+{"sourceId": "Copy a text report of the current tag and organization dry run. This does not write tags, move files, run ReplayGain, or contact providers.", "sourceIndex": 939, "sourceSha256": "f75cabab76f5a17e4cc7e946d5d54b91b0aee75d35d09a901f1327a7f67dbfae", "windowLabel": 940}
+{"sourceId": "Copy an auto-fixable issue manifest for review. This does not create a remediation job, execute safe fixes, or mutate files.", "sourceIndex": 940, "sourceSha256": "2a2e72dd0e9b1702ffdc740c16f203424669e94d25e7169373adfd3f094722d4", "windowLabel": 941}
+{"sourceId": "Copy automation review history", "sourceIndex": 941, "sourceSha256": "02d19b1532d820d5c0fd541cdd3a4257e8dd04ba1146de76d483762d16df6895", "windowLabel": 942}
+{"sourceId": "Copy diagnostic bundle", "sourceIndex": 942, "sourceSha256": "87e3626ce67c0c3f05f59676e0382304d12a40940e94d6f7eb38b23f79359707", "windowLabel": 943}
