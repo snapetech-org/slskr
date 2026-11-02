@@ -1,0 +1,401 @@
+{
+  "schema_version": 1,
+  "batch": "independent-0103-0122-all-12-locales",
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "pr_state": "OPEN",
+  "pr_draft": true,
+  "pr_branch": "codex/slskr-l10n-audit-20261030",
+  "review_head": "f4d295b2df50fbce0d56c7b0b94b35ea87211d36",
+  "review_tree": "332e09992fd20eb5b0183a77be627732629edca7",
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_catalog_tree_current_at_pr_head": false,
+  "catalog_review_head": "f4d295b2df50fbce0d56c7b0b94b35ea87211d36",
+  "catalog_review_tree": "332e09992fd20eb5b0183a77be627732629edca7",
+  "pr_head_changes_after_source_catalog_head": "11 exact-hash high-confidence corrections in five locale catalogs plus documentation; runtime source files unchanged",
+  "direct_catalog": {
+    "source_ids": 5437,
+    "locales": [
+      "ar",
+      "de",
+      "es",
+      "fr",
+      "hi",
+      "id",
+      "ja",
+      "ko",
+      "pt-BR",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "slots": 65244,
+    "populated_cells": 65244,
+    "blank_cells": 0,
+    "structured_plural_cells": 15,
+    "structured_plural_locale_counts": {
+      "ar": 15
+    },
+    "catalog_sha256": {
+      "web/src/lib/locales/ui-labels.ar.json": "4ad7eec11cc1d30afd0129e6aac7002669df7cc3f91d59c868115f970f70b5df",
+      "web/src/lib/locales/ui-labels.de.json": "ad7d9d792d2266774a0ded93a9485f73fa227ebc2309bf6b5a6bfa7807af266b",
+      "web/src/lib/locales/ui-labels.es.json": "ab7448f6acc3045db2faad52a0c35e8d7f55257033d2cc4f2f2d854b75a4de9c",
+      "web/src/lib/locales/ui-labels.fr.json": "e2a3cb0a681e229e59db632bdf3176fc7e410683f4fda8efe3543b33054414ed",
+      "web/src/lib/locales/ui-labels.hi.json": "2cf595937e1ddcdc94e42044c71bc42cd3f4b7445ca0509ec6e9fbf5d636b76b",
+      "web/src/lib/locales/ui-labels.id.json": "ca0975bbcc408d4d3c146aba26c4e5480a0233b0cac603cd530ea82bb07681d8",
+      "web/src/lib/locales/ui-labels.ja.json": "0ca95fc5c9f0b4cee791ab71d0283b151136946da5e9383f366d5a16f5a7541e",
+      "web/src/lib/locales/ui-labels.ko.json": "5636a4b1a4bf325d6c03031b8b3ef34db7d04936c8216343e55b2d36fa544bcd",
+      "web/src/lib/locales/ui-labels.pt-BR.json": "4babb54558c6c224304c2c62ea1303cdad90c5f931bb936e92402323a5759ce9",
+      "web/src/lib/locales/ui-labels.vi.json": "91fac84a2ab6ebcfbe6f33cdf0302e0350b676e4cd69be796edc86509e856184",
+      "web/src/lib/locales/ui-labels.zh-Hans.json": "365c4c51e7cee40e79b37607319dd4dbe1345dcee77f085dd6f7fa1ad307881b",
+      "web/src/lib/locales/ui-labels.zh-Hant.json": "2945bee74a8ffc61db44b8a0bac113ba9f20a159657925c7f3dbc7d1647ce89c"
+    }
+  },
+  "source_index_range": [
+    103,
+    122
+  ],
+  "source_index_method": "zero-based Python lexical sort of the 5,437 current catalog source IDs",
+  "window_accounting": {
+    "source_keys": 20,
+    "cell_slots": 240,
+    "populated_cells": 240,
+    "fresh_cells": 71,
+    "prior_terminal_cells": 169,
+    "conflict_hold_cells": 0,
+    "fresh_statuses": {
+      "accepted": 64,
+      "correction-needed": 7
+    },
+    "prior_unconflicted_statuses": {
+      "accepted": 117,
+      "correction-needed": 52
+    },
+    "prior_accepted_carries": 117,
+    "prior_correction_needed_exclusions": 52,
+    "prior_held_exclusions": 0,
+    "unresolved_conflict_cells": 0,
+    "final_unconflicted_dispositions": {
+      "accepted": 181,
+      "correction-needed": 59
+    },
+    "pending_exact_terminal_overlaps": 0,
+    "conflicting_exact_prior_statuses": 0
+  },
+  "per_locale": {
+    "ar": {
+      "fresh": {
+        "accepted": 12
+      },
+      "prior": {
+        "accepted": 5,
+        "correction-needed": 3
+      }
+    },
+    "de": {
+      "fresh": {
+        "correction-needed": 2,
+        "accepted": 10
+      },
+      "prior": {
+        "accepted": 5,
+        "correction-needed": 3
+      }
+    },
+    "es": {
+      "fresh": {
+        "correction-needed": 2,
+        "accepted": 10
+      },
+      "prior": {
+        "accepted": 5,
+        "correction-needed": 3
+      }
+    },
+    "fr": {
+      "fresh": {
+        "correction-needed": 1,
+        "accepted": 11
+      },
+      "prior": {
+        "accepted": 4,
+        "correction-needed": 4
+      }
+    },
+    "hi": {
+      "fresh": {
+        "correction-needed": 1,
+        "accepted": 11
+      },
+      "prior": {
+        "accepted": 5,
+        "correction-needed": 3
+      }
+    },
+    "id": {
+      "fresh": {
+        "correction-needed": 1,
+        "accepted": 10
+      },
+      "prior": {
+        "accepted": 4,
+        "correction-needed": 5
+      }
+    },
+    "ja": {
+      "fresh": {},
+      "prior": {
+        "accepted": 15,
+        "correction-needed": 5
+      }
+    },
+    "ko": {
+      "fresh": {},
+      "prior": {
+        "accepted": 15,
+        "correction-needed": 5
+      }
+    },
+    "pt-BR": {
+      "fresh": {},
+      "prior": {
+        "accepted": 17,
+        "correction-needed": 3
+      }
+    },
+    "vi": {
+      "fresh": {},
+      "prior": {
+        "accepted": 17,
+        "correction-needed": 3
+      }
+    },
+    "zh-Hans": {
+      "fresh": {},
+      "prior": {
+        "accepted": 13,
+        "correction-needed": 7
+      }
+    },
+    "zh-Hant": {
+      "fresh": {},
+      "prior": {
+        "accepted": 12,
+        "correction-needed": 8
+      }
+    }
+  },
+  "selection_rule": "Fresh review only for populated current cells with no exact terminal semantic record matching source ID, locale, source hash, and current target hash. Exact accepted cells carry; correction-needed/held cells are excluded; contradictory records are conflict holds.",
+  "prior_overlap_scan": {
+    "scanned_json_evidence_files": 740,
+    "manifest_file": "prior-evidence-scan-manifest.jsonl",
+    "manifest_sha256": "30c36313331369d6084e40747c9f0670fbbc61dc5c58a8ec49c58f2c4579fea0",
+    "canonical_input_manifest_sha256": "3d3eff2b14c4ad519ec49ebd8ae3f550cd9a6dca1b5a903cf6dedbc90f4baedb",
+    "input_roots": [
+      "prior-audit-7ff",
+      "pr-review-head"
+    ]
+  },
+  "source_context": {
+    "file": "source-context.txt",
+    "evidence_text_sha256": "84e56c7f2fac2f4b2fa8d560eb46bbd250365922bcf9933e62061ed306136b74",
+    "runtime_files": [
+      "web/src/components/Transfers/Transfers.jsx",
+      "web/src/components/System/MediaCore/PodJoinLeavePanel.jsx",
+      "web/src/components/System/QuarantineJury/index.jsx",
+      "web/src/components/System/Mesh/MeshEvidencePolicy.jsx",
+      "web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx",
+      "web/src/components/System/Integrations/MetadataSettingsPanel.jsx",
+      "web/src/components/Search/SongIDEvidenceDetails.jsx"
+    ],
+    "sha256": {
+      "web/src/components/Transfers/Transfers.jsx": "744da23792a1fac5929a4802600b1cc7f238a3f3fabe1f33ded598b2b546b662",
+      "web/src/components/System/MediaCore/PodJoinLeavePanel.jsx": "b2b05d9ac4074f60bc81f8f70c07d4d9943be023fadea5b84dffef8c447c7169",
+      "web/src/components/System/QuarantineJury/index.jsx": "7db0e17e031d499390af6681f4e430209de5b052c7816a7c3f054baa6c1211b2",
+      "web/src/components/System/Mesh/MeshEvidencePolicy.jsx": "b4dd46c29e740ea03bf84898655b413fc02bfe6274fbaa1c9964ed59e9c475a7",
+      "web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx": "1cc2a189124afc784443085977608cf70ef9c1009143a110e74af7adb8e9f028",
+      "web/src/components/System/Integrations/MetadataSettingsPanel.jsx": "e5aaf906b4cfc6e17ef8706bc95efb660b0eda2748bf2dad1c411ee9621d6339",
+      "web/src/components/Search/SongIDEvidenceDetails.jsx": "4a90c2dfd31302a93964fed1f0642a56909bab926324519eb77c94cda6139f65"
+    },
+    "git_blob_ids": {
+      "web/src/components/Transfers/Transfers.jsx": "00f3488b547c2f6e4d97fbd6d0931b724ea3c17d",
+      "web/src/components/System/MediaCore/PodJoinLeavePanel.jsx": "b244f791d0e8a476e5ff90c6f7ea2cc76cfebf70",
+      "web/src/components/System/QuarantineJury/index.jsx": "808a1ce533e535bd5c15a8e5c61244ac13c979e4",
+      "web/src/components/System/Mesh/MeshEvidencePolicy.jsx": "2d8c7f594e9d3dc09192182cd1a7beefbc300f6d",
+      "web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx": "327b7f895fdc64b4010aaa3bd787e5f38e64fb58",
+      "web/src/components/System/Integrations/MetadataSettingsPanel.jsx": "0d0ffc8e16a072970a51604bd95d76f7f796669f",
+      "web/src/components/Search/SongIDEvidenceDetails.jsx": "a6a0eb1e9843801ff94e590a22878899f3d2bca2"
+    },
+    "reviewed_source_keys": [
+      103,
+      104,
+      105,
+      108,
+      109,
+      110,
+      112,
+      113,
+      115,
+      117,
+      118,
+      121,
+      122
+    ]
+  },
+  "correction_candidates": [
+    {
+      "source_index": 104,
+      "source_id": "Accept Join",
+      "locale": "de",
+      "current": "Akzeptieren Sie den Beitritt",
+      "current_sha256": "e128161205b85bf301a9a0b3fb6136971be570d27b5024b8f0c5bc6678b923a3",
+      "proposal": "Beitritt annehmen",
+      "proposal_sha256": "95bd5c045d194f28324c094fa38765a43694808cad0b1d6685f37141ed05013f",
+      "confidence": "high",
+      "issue_type": "locale_ui_button_style",
+      "applied_in_review_pass": false
+    },
+    {
+      "source_index": 104,
+      "source_id": "Accept Join",
+      "locale": "es",
+      "current": "Aceptar Unirse",
+      "current_sha256": "20ae764e49202e4bc09271ffb22f4dc52ac65a72aeb689a237e2f59775627e33",
+      "proposal": "Aceptar la incorporación",
+      "proposal_sha256": "fa8e464d5c3a49fb8dcc3aa0cb5e3f0f61f336019ae4e3194e1b2789de20667a",
+      "confidence": "moderate",
+      "issue_type": "locale_ui_button_construction",
+      "applied_in_review_pass": false
+    },
+    {
+      "source_index": 104,
+      "source_id": "Accept Join",
+      "locale": "fr",
+      "current": "Accepter Rejoindre",
+      "current_sha256": "206d7f314a6dbfd8ab51f728f12c9a45891496af70375a8d764990c2e6f6deae",
+      "proposal": "Accepter l’adhésion",
+      "proposal_sha256": "dc72f6e686bd28170f15128e88b9079c17187c7013be371cee2eb7ea1ee81e59",
+      "confidence": "high",
+      "issue_type": "locale_grammar",
+      "applied_in_review_pass": false
+    },
+    {
+      "source_index": 104,
+      "source_id": "Accept Join",
+      "locale": "hi",
+      "current": "शामिल हों स्वीकार करें",
+      "current_sha256": "abe3fe8da43fe0c7a248698e7d9efa3bef921b4ca16e6e4325a33eb4ae36eace",
+      "proposal": "जुड़ने का अनुरोध स्वीकार करें",
+      "proposal_sha256": "47949c74809795da537847d75b2fc18f6d783b3a07fddb75c5093fddee46eef6",
+      "confidence": "moderate",
+      "issue_type": "locale_ui_button_word_order",
+      "applied_in_review_pass": false
+    },
+    {
+      "source_index": 104,
+      "source_id": "Accept Join",
+      "locale": "id",
+      "current": "Terima Gabung",
+      "current_sha256": "0a65508e0d026bf82b8e511c55f904d21df9e0798658fb94a02fe480f30cf66d",
+      "proposal": "Setujui permintaan bergabung",
+      "proposal_sha256": "6af41fe30169a9c5496c16b550fdf0e3115cae8ad254fbaac96266b10472dc1f",
+      "confidence": "moderate",
+      "issue_type": "locale_ui_button_construction",
+      "applied_in_review_pass": false
+    },
+    {
+      "source_index": 105,
+      "source_id": "Accept Join Request",
+      "locale": "de",
+      "current": "Nehmen Sie die Beitrittsanfrage an",
+      "current_sha256": "f4937082a1026011ab7f4e1ed2164a42ae2df52116e42b6e05a9922b7df454c8",
+      "proposal": "Beitrittsanfrage annehmen",
+      "proposal_sha256": "a1dce8688f187302ae3471434aa4ee3fa903747daeb665ed66503ab0d952560c",
+      "confidence": "high",
+      "issue_type": "locale_ui_button_style",
+      "applied_in_review_pass": false
+    },
+    {
+      "source_index": 105,
+      "source_id": "Accept Join Request",
+      "locale": "es",
+      "current": "Aceptar solicitud de unión",
+      "current_sha256": "c6eac380fab393a57c385b813222eede98520a73470079e72e4bf822593e70ca",
+      "proposal": "Aceptar la solicitud para unirse",
+      "proposal_sha256": "6eabe4fe3ee625a8ad9f4506ecac2b7ee4863edaf300de8a2641cb844ed9efb4",
+      "confidence": "high",
+      "issue_type": "locale_phrase_clarity",
+      "applied_in_review_pass": false
+    }
+  ],
+  "placeholder_and_literal_checks": {
+    "fresh_cells_checked": 71,
+    "placeholder_sets_preserved": true,
+    "icu_messages": 0,
+    "protected_literals_preserved_or_documented": true,
+    "current_target_issues": [
+      {
+        "source_index": 104,
+        "source_id": "Accept Join",
+        "locale": "de",
+        "issue": "locale_ui_button_style",
+        "proposal": "Beitritt annehmen",
+        "confidence": "high"
+      },
+      {
+        "source_index": 104,
+        "source_id": "Accept Join",
+        "locale": "es",
+        "issue": "locale_ui_button_construction",
+        "proposal": "Aceptar la incorporación",
+        "confidence": "moderate"
+      },
+      {
+        "source_index": 104,
+        "source_id": "Accept Join",
+        "locale": "fr",
+        "issue": "locale_grammar",
+        "proposal": "Accepter l’adhésion",
+        "confidence": "high"
+      },
+      {
+        "source_index": 104,
+        "source_id": "Accept Join",
+        "locale": "hi",
+        "issue": "locale_ui_button_word_order",
+        "proposal": "जुड़ने का अनुरोध स्वीकार करें",
+        "confidence": "moderate"
+      },
+      {
+        "source_index": 104,
+        "source_id": "Accept Join",
+        "locale": "id",
+        "issue": "locale_ui_button_construction",
+        "proposal": "Setujui permintaan bergabung",
+        "confidence": "moderate"
+      },
+      {
+        "source_index": 105,
+        "source_id": "Accept Join Request",
+        "locale": "de",
+        "issue": "locale_ui_button_style",
+        "proposal": "Beitrittsanfrage annehmen",
+        "confidence": "high"
+      },
+      {
+        "source_index": 105,
+        "source_id": "Accept Join Request",
+        "locale": "es",
+        "issue": "locale_phrase_clarity",
+        "proposal": "Aceptar la solicitud para unirse",
+        "confidence": "high"
+      }
+    ]
+  },
+  "native_speaker_approval": false,
+  "catalog_or_source_changes_made": false,
+  "correction_suggestions_applied": false,
+  "tests_builds_ci_or_release_actions_run": false,
+  "browser_recapture_required": false
+}
