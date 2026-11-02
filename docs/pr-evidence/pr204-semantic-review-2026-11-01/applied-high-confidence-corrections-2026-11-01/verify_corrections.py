@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Verify exact-hash high-confidence semantic corrections in slskR PR #204."""
+import argparse
 import collections
 import hashlib
 import json
@@ -31,9 +32,20 @@ def target_sha(value):
 def placeholders(value):
     return sorted(set(re.findall(r'\{([^{}]+)\}', value)))
 
+def nonempty(value):
+    if isinstance(value, str):
+        return bool(value.strip())
+    if isinstance(value, dict):
+        return bool(value) and all(nonempty(child) for child in value.values())
+    if isinstance(value, list):
+        return bool(value) and all(nonempty(child) for child in value)
+    return False
+
 
 def main():
-    repo = Path.cwd().resolve()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--repo', type=Path, default=Path.cwd())
+    repo = parser.parse_args().repo.resolve()
     bundle = Path(__file__).resolve().parent
     manifest = json.loads((bundle / 'manifest.json').read_text(encoding='utf-8'))
     if git(repo, 'cat-file', '-e', f'{BASE}^{{commit}}') is None:
@@ -54,6 +66,7 @@ def main():
 
     before_catalogs = {}
     after_catalogs = {}
+    structured = collections.Counter()
     for locale in LOCALES:
         path = f'web/src/lib/locales/ui-labels.{locale}.json'
         before_raw = git(repo, 'show', f'{BASE}:{path}', raw=True)
@@ -66,8 +79,13 @@ def main():
         after_catalogs[locale] = json.loads(after_raw.decode('utf-8'))
         if set(before_catalogs[locale]) != set(after_catalogs[locale]) or len(after_catalogs[locale]) != 5437:
             fail(f'catalog key inventory changed: {locale}')
-        if any(not isinstance(v, str) or not v.strip() for v in after_catalogs[locale].values()):
-            fail(f'blank or structured value found: {locale}')
+        for value in after_catalogs[locale].values():
+            if isinstance(value, (dict, list)):
+                structured[locale] += 1
+            if not nonempty(value):
+                fail(f'blank catalog value: {locale}')
+    if structured != collections.Counter({'ar': 15}):
+        fail(f'unexpected structured plural inventory: {dict(structured)}')
 
     expected = {}
     for row in rows:
