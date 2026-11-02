@@ -1,29 +1,29 @@
 {
-  "head": "1471c2ff54e543f4409f43a0a8e2897d93448349",
-  "head_tree": "25092459c5e8c2bae28b7c762eb7e27db35ba775",
+  "head": "a892d9735199dcd0f905498dba022e3e89f8ce9e",
+  "head_tree": "3dac36d064c52f79acea81b07c40ee12608e2349",
   "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
   "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
   "source_ids": 5437,
   "cell_count": 65244,
   "catalog_file_sha256": {
-    "web/src/lib/locales/ui-labels.ar.json": "64cdd9fd1dde93bda472523e0b6fc4e13b01ed2f7d78a4d65665fe48922bbddb",
-    "web/src/lib/locales/ui-labels.de.json": "5a783e30c0863a3d523c353e3b24314f7741c3595c61d9f16e144f2be6fecfa3",
-    "web/src/lib/locales/ui-labels.es.json": "bf9bbde1fb4a850afaac1f4a524277228a5a75b704dae260288ed5d563618832",
-    "web/src/lib/locales/ui-labels.fr.json": "fd5125188d452cec459c9ec7edc650eef85d56851e87350419862442a5f2ccb1",
-    "web/src/lib/locales/ui-labels.hi.json": "2d6e588cf77e3ce1112f57c6afd97f5e592f0dfa1a900dc8594cc46f115b058b",
-    "web/src/lib/locales/ui-labels.id.json": "4dcbd521c8db8845d8fc84a6d13e010eee92f05d9978c92e6999d91c8076f380",
-    "web/src/lib/locales/ui-labels.ja.json": "a8ce5f1c2162b43fa2301120de66c48c447105a86c40cfc53ba5e276871b550c",
-    "web/src/lib/locales/ui-labels.ko.json": "a3c83d8b78ffffcf9e6e01b4abee34f8339c33dd420c64b6e990a80fc216ae82",
-    "web/src/lib/locales/ui-labels.pt-BR.json": "ffbcf4263829c02c2ee265e3ab1fb46e1eb57c16ef0c178babb70d91c293cd27",
-    "web/src/lib/locales/ui-labels.vi.json": "6be79c8145ad2dc9590a6529bbe0ce67a668193bd8ca9fdca55baace67549956",
-    "web/src/lib/locales/ui-labels.zh-Hans.json": "fc2a17cfa6acd0301bf299c89fad975542633cb2af2513dcf1bd16eab0af68c6",
-    "web/src/lib/locales/ui-labels.zh-Hant.json": "0f9ce9801faeb703b0c7f07b47d86a26183726a22af7c1548ed4e57da51e7036"
+    "web/src/lib/locales/ui-labels.ar.json": "2d59553ee2869e7f5781a4b77aeecfcc9411a65115b8f72b154be6e05ca65cea",
+    "web/src/lib/locales/ui-labels.de.json": "7fd7d7d7b41abae5e4790a37bd0a8a65f45689052939000f3fe076ebfeb9499d",
+    "web/src/lib/locales/ui-labels.es.json": "636c714cbf1a0a7cd4c718b4b622f3cbc70f58193a6344a78fce240c4a219cb9",
+    "web/src/lib/locales/ui-labels.fr.json": "c5ee67efa3d51b3517dc1715a1347d671037bf013208a6fee4b147a8a9d952cc",
+    "web/src/lib/locales/ui-labels.hi.json": "ac6ca4e00ed9681c34d519cfdc016e3eec850a9441b2de85c63107a8da817aac",
+    "web/src/lib/locales/ui-labels.id.json": "3b756c7127f85464e9c30c2a8ca318201accbc3dbcaeefbaf6f1904d08fd546b",
+    "web/src/lib/locales/ui-labels.ja.json": "e239b8cf3a299d5d388fa2f0f1c87aff1568088860d30825ac6f9f2d48eb2f1d",
+    "web/src/lib/locales/ui-labels.ko.json": "f70021359e5d1477ea85fd95cce2a75137c06a40c7cc8e3fef27778d83bd321a",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "8e0bb8aadee4f7e026913329e0f479e5acc93b62085e0f50aabefd6d1246056a",
+    "web/src/lib/locales/ui-labels.vi.json": "3ba5f43818c17ade21c21bc9b1765fe69036940e301e1466e65b5af4dd4ef7de",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "67d45f29918620b4f4b704349bb309b39699d3ab648ef444c9567a5ca71371df",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "b4c7cf8c1e6cde9d354beec50b614fc71364afa68060136b1c3c0071f9e0c03f"
   },
   "structured_plural_cells": {
     "ar": 15
   },
-  "evidence_files_scanned": 892,
-  "evidence_scan_manifest_sha256": "1933aca9142d98f9a25c11d4872d7238b8a6ec446750215974f1f28f742be031",
+  "evidence_files_scanned": 916,
+  "evidence_scan_manifest_sha256": "52a5da26d8b11beb902886df065d9faf30d61c1e8f6f027eb4ca332cc4320ace",
   "evidence_file_manifest": [
     {
       "root": "pr-review-head",
@@ -1116,6 +1116,150 @@
       "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0303-0322-all-12-locales/terminal-exclusions.jsonl",
       "bytes": 0,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/accepted-unchanged.jsonl",
+      "bytes": 4209,
+      "sha256": "40293b6ba1eb30a2ecfdeae16116477940e323d1daf74271d5ab39f171a14a38"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/applied-corrections.jsonl",
+      "bytes": 80395,
+      "sha256": "1dcb23daee0e19e82da35e2f283e221d2cd5b1ff39170e060e998bae1e0dd337"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/build-output.json",
+      "bytes": 3627,
+      "sha256": "795a364d56d3a4ae131080abd6412cd3862be3584872dd1f10e65f1c1aef7308"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/candidate-cell-audit.jsonl",
+      "bytes": 121831,
+      "sha256": "f3f90a6bd803aebebffccd7e400741ed3282bb3e2afeb04296bcee7fede96ef6"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/candidate-corrections.jsonl",
+      "bytes": 90437,
+      "sha256": "21a0c0ca2e0025ef42475b8341c4cc375f7acfe91bb1d86c9602f9c575baf2f6"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/carries.jsonl",
+      "bytes": 281711,
+      "sha256": "65148e682f2320bd180dfea315023cee8ce2ac75a3a769c5c0cece4ef44a432f"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/catalog-application-manifest.json",
+      "bytes": 4462,
+      "sha256": "d678a593f45200837807985c0f65512c82209942ad9c78afde0d393699b24c73"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/decisions.jsonl",
+      "bytes": 137564,
+      "sha256": "568ab38adaa87ad52fb3592a921e2d9947c6588ac9dcf6bc0bf80409889c571f"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/evidence-summary.json",
+      "bytes": 2145,
+      "sha256": "85a724eedab98ec9af7ce6cd632500d494e2fa482f89255925f0b97a208fcbc0"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/korean-discovery-inbox-group-applied.jsonl",
+      "bytes": 6614,
+      "sha256": "32599dce0529f82ecea55b6ea681fd8900db14a0ae35aee277cdb444179cadf1"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/korean-discovery-inbox-group-candidates.jsonl",
+      "bytes": 6702,
+      "sha256": "f4948754f552e395073cab20e6ec32bc6809ebf836a5a62bc50c7cc3d33186c4"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/korean-discovery-inbox-group-context-48.jsonl",
+      "bytes": 51333,
+      "sha256": "3f019a82e0a6ff60912cf94cb70923c6c880c0934510e33fbf622bedeef1252a"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/manifest.json",
+      "bytes": 16026,
+      "sha256": "315b6a52cd82ad35cb38d8d323ae28cf411fa55c5378dc10075a26a941bb9ca7"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/prepare-summary.json",
+      "bytes": 4367,
+      "sha256": "5a6f6a3e84abb8246df1a67943ef8f9b596c6719059f757db245434e959cbc9e"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/prior-evidence-scan-manifest.jsonl",
+      "bytes": 185016,
+      "sha256": "c3251c3f0ea75d83796d53cf1862b27cdf3b7d54e84b27ee62e626b96f57c781"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/review-summary.json",
+      "bytes": 3894,
+      "sha256": "84d9d9909dcead5cf0e92ac10f948be9fc7a86b81086efb4ab435549041a412f"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/reviewed-cell-audit.jsonl",
+      "bytes": 580898,
+      "sha256": "d7a83c6a37a0d11894d17ca4c3aba05bc2e256324631d93682b527ea60061a2e"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/root-apply-plan.jsonl",
+      "bytes": 99822,
+      "sha256": "f8f5bef17279617f80d21257216cf29e7b3e83c9ffd01d5d3435e43e3610e0da"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/root-build-summary.json",
+      "bytes": 1345,
+      "sha256": "d2e2f1e9cf7fbb7c0e01c520d92cd4a84832840e5b7f06b0c507524296feffab"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/root-cross-review-summary.json",
+      "bytes": 1195,
+      "sha256": "469a82878aa353629f0eff1cf7cc32893ef06729491d367f1b0188e997ae5696"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/root-cross-review.jsonl",
+      "bytes": 116436,
+      "sha256": "78fd9eb826f104ed50a38b561d4f210e09091cbad6e691eab8dc55c49760f8ae"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/selection-before-corrections.jsonl",
+      "bytes": 185766,
+      "sha256": "beca7196835da1ea9a76d52d19bcf9a61139dce6499ecf0aadab8f214964fc2e"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/selection.jsonl",
+      "bytes": 237508,
+      "sha256": "61aa25f87cab02a71d58c162ce2e15fc7e624f9194c192e19ba90ba3cdcd685f"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/source-pins.json",
+      "bytes": 8618,
+      "sha256": "1f18703fcf282278401d85aabea1037e0fedbef730646e595b1b63e164e0db53"
     },
     {
       "root": "pr-review-head",
@@ -5379,240 +5523,101 @@
     }
   ],
   "unique_current_cell_status_counts": {
-    "accepted": 23714,
-    "corrected": 410,
-    "correction-needed": 10635,
+    "accepted": 23782,
+    "corrected": 457,
+    "correction-needed": 10589,
     "held": 289,
-    "unreviewed": 30196
+    "unreviewed": 30127
   },
   "per_locale_exact_status_counts": {
     "ar": {
-      "accepted": 1326,
-      "corrected": 44,
-      "correction-needed": 1068,
+      "accepted": 1338,
+      "corrected": 47,
+      "correction-needed": 1065,
       "held": 12,
-      "unreviewed": 2987
+      "unreviewed": 2975
     },
     "de": {
-      "accepted": 1360,
-      "corrected": 39,
-      "correction-needed": 850,
+      "accepted": 1371,
+      "corrected": 41,
+      "correction-needed": 847,
       "held": 10,
-      "unreviewed": 3178
+      "unreviewed": 3168
     },
     "es": {
-      "accepted": 1308,
-      "corrected": 39,
-      "correction-needed": 1082,
+      "accepted": 1319,
+      "corrected": 43,
+      "correction-needed": 1078,
       "held": 9,
-      "unreviewed": 2999
+      "unreviewed": 2988
     },
     "fr": {
-      "accepted": 1316,
-      "corrected": 38,
-      "correction-needed": 1024,
+      "accepted": 1327,
+      "corrected": 42,
+      "correction-needed": 1020,
       "held": 10,
-      "unreviewed": 3049
+      "unreviewed": 3038
     },
     "hi": {
-      "accepted": 1310,
-      "corrected": 45,
-      "correction-needed": 1103,
+      "accepted": 1321,
+      "corrected": 49,
+      "correction-needed": 1100,
       "held": 14,
-      "unreviewed": 2965
+      "unreviewed": 2953
     },
     "id": {
-      "accepted": 1310,
-      "corrected": 41,
-      "correction-needed": 1070,
+      "accepted": 1322,
+      "corrected": 44,
+      "correction-needed": 1066,
       "held": 10,
-      "unreviewed": 3006
+      "unreviewed": 2995
     },
     "ja": {
       "accepted": 2771,
-      "corrected": 21,
-      "correction-needed": 605,
+      "corrected": 24,
+      "correction-needed": 602,
       "held": 38,
       "unreviewed": 2002
     },
     "ko": {
       "accepted": 2667,
-      "corrected": 21,
-      "correction-needed": 708,
+      "corrected": 28,
+      "correction-needed": 703,
       "held": 39,
-      "unreviewed": 2002
+      "unreviewed": 2000
     },
     "pt-BR": {
       "accepted": 2660,
-      "corrected": 26,
-      "correction-needed": 713,
+      "corrected": 30,
+      "correction-needed": 709,
       "held": 36,
       "unreviewed": 2002
     },
     "vi": {
       "accepted": 2438,
-      "corrected": 40,
-      "correction-needed": 920,
+      "corrected": 45,
+      "correction-needed": 915,
       "held": 37,
       "unreviewed": 2002
     },
     "zh-Hans": {
       "accepted": 2631,
-      "corrected": 28,
-      "correction-needed": 739,
+      "corrected": 32,
+      "correction-needed": 735,
       "held": 37,
       "unreviewed": 2002
     },
     "zh-Hant": {
       "accepted": 2617,
-      "corrected": 28,
-      "correction-needed": 753,
+      "corrected": 32,
+      "correction-needed": 749,
       "held": 37,
       "unreviewed": 2002
     }
   },
-  "unreviewed_source_index_count": 3654,
-  "unreviewed_cells": 30196,
+  "unreviewed_source_index_count": 3642,
+  "unreviewed_cells": 30127,
   "first_100_unreviewed_indices": {
-    "323": {
-      "source_id": "Approve this dry-run snapshot for later import review. This records source/proposed metadata only and does not write tags or move files.",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "324": {
-      "source_id": "Approved",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "325": {
-      "source_id": "Approved in Discovery Inbox for the next acquisition step.",
-      "fresh_locale_count": 4,
-      "fresh_locales": [
-        "ar",
-        "es",
-        "fr",
-        "hi"
-      ]
-    },
-    "327": {
-      "source_id": "Are Similar:",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "328": {
-      "source_id": "Are you sure you want restart the application?",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "331": {
-      "source_id": "Are you sure you want to delete directory '{fullName}'?",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "332": {
-      "source_id": "Are you sure you want to delete file '{fullName}'?",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "334": {
-      "source_id": "Are you sure you want to log out?",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "336": {
-      "source_id": "Are you sure you want to shut the application down? You'll need to manually start it again.",
-      "fresh_locale_count": 3,
-      "fresh_locales": [
-        "ar",
-        "hi",
-        "id"
-      ]
-    },
-    "338": {
-      "source_id": "Artist",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "341": {
-      "source_id": "Artist MBID",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "342": {
-      "source_id": "Artist MBID is required",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
     "343": {
       "source_id": "Artist Release Radar",
       "fresh_locale_count": 6,
@@ -6614,9 +6619,143 @@
         "hi",
         "id"
       ]
+    },
+    "493": {
+      "source_id": "Blocklist",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "495": {
+      "source_id": "Blue",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "497": {
+      "source_id": "Bootstrap Peers",
+      "fresh_locale_count": 2,
+      "fresh_locales": [
+        "de",
+        "fr"
+      ]
+    },
+    "499": {
+      "source_id": "Bound",
+      "fresh_locale_count": 2,
+      "fresh_locales": [
+        "de",
+        "fr"
+      ]
+    },
+    "501": {
+      "source_id": "Bridge",
+      "fresh_locale_count": 4,
+      "fresh_locales": [
+        "de",
+        "es",
+        "fr",
+        "hi"
+      ]
+    },
+    "505": {
+      "source_id": "Bridge URL",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "507": {
+      "source_id": "Broadcast current track to room",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "509": {
+      "source_id": "Broadcast your current local player track to this room.",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "510": {
+      "source_id": "Broken Links:",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "511": {
+      "source_id": "Brown",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "512": {
+      "source_id": "Browse",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "513": {
+      "source_id": "Browse Files",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
     }
   },
   "conflicts": [],
-  "superseded_exact_records": 97,
+  "superseded_exact_records": 103,
   "conflict_resolution_rows": 25
 }
