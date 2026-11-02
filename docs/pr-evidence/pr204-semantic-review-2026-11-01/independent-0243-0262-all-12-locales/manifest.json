@@ -1,0 +1,170 @@
+{
+  "application_head": "333df9a62f1a2d54186cc966ee0658b0c5d83de7",
+  "application_parent": "b70b68e0cc297d5a0a7f7ace6a47d3c950e22470",
+  "application_tree": "c4d442838f1932d7d3171a95944fb4ae94d7d2d2",
+  "applied_corrections_ledger_sha256": "23876d39ceb6700eb933072cd21ea994e138e7b27274d00d59dd43210fe85727",
+  "baseline_status_counts": {
+    "new": 90,
+    "prior_accepted": 78,
+    "prior_correction-needed": 72
+  },
+  "batch": "independent-0243-0262-all-12-locales",
+  "browser_recapture_required": true,
+  "candidate_ledger_sha256": "52c4c04b35c578436ef7bbea6ab7601868f5e2666bb33e2be1521f11abf1c7d7",
+  "catalog_cell_count": 65244,
+  "catalog_sha256_after": {
+    "web/src/lib/locales/ui-labels.ar.json": "60a34f5ad6659ce3ed429392a6e0d79f10bdbf3891570b14777de33a9c28f84f",
+    "web/src/lib/locales/ui-labels.de.json": "832d0471a04d5440bc86558d760fe65300300228c2579207c021fef64504c32c",
+    "web/src/lib/locales/ui-labels.es.json": "f33f795282610afba24f427b22a8a0a1f3757d5f20a35bf62cca0b54f5352c0e",
+    "web/src/lib/locales/ui-labels.fr.json": "383d7adf2a5ec652ba7230fbe15085e4b67d2e7efd24a276e2705c5913ce5c1b",
+    "web/src/lib/locales/ui-labels.hi.json": "3144b8ccecfc2fb2c81b604253726331fffa8a0f63ed686f90bdbf9bb32d3a16",
+    "web/src/lib/locales/ui-labels.id.json": "1d9da1e80060beee64c6e6d50079c0e2fea01c084bc038bac8116f053a748426",
+    "web/src/lib/locales/ui-labels.ja.json": "ef60aeaaf5ce0f2b978f0157d493a64ae88db5af764e30122d805cb25cd8c023",
+    "web/src/lib/locales/ui-labels.ko.json": "7e456353d8cd6a4d44e8dc8fbe31bfc2e950ad7ec464e68b9feebeff38cbee94",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "f4ab90d3b3a6806f3912cebffd5d89f4e825b3ed80506e6e903fb58e694e8790",
+    "web/src/lib/locales/ui-labels.vi.json": "48dbcd0b9906c834eacb6d46b3aae4c400886860238e348996de3c71fbb8ee82",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "8c826eebb4efb4996e966950adf2020f1358ebdcb7e5298d99f92676061f8ce9",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "11747cb04dd11943782a404ba868844a0ecaffb04e6f9d300f00c97487e0998f"
+  },
+  "catalog_sha256_before": {
+    "web/src/lib/locales/ui-labels.ar.json": "b552bf07ddad5ab3f3eba84470eb3eedff453ec10cbdde3d72a9942a29a136ad",
+    "web/src/lib/locales/ui-labels.de.json": "c3b958f3272257866794c9585dbce5a361f74d37670b6f6c93a2c4966d8da655",
+    "web/src/lib/locales/ui-labels.es.json": "b1f54a96a5021b804ee3919ac9698fb92c828d6352b1579e8016bc0344960a18",
+    "web/src/lib/locales/ui-labels.fr.json": "d2a4dc588cf517e76b09706a7c79bb887a54ee36feccc7ef647a2539e4054a60",
+    "web/src/lib/locales/ui-labels.hi.json": "faba4d6c06e3fb16eadea0394a0c89ef8fcf6034dced2395d90c3395cc1ac89a",
+    "web/src/lib/locales/ui-labels.id.json": "58a8248e3114aaa76c2a1deb4a52b3d70661c6709d7aac61a6e98b846d104367",
+    "web/src/lib/locales/ui-labels.ja.json": "ac2a23fda32a3a0c63fb7295c64fe0f9646a3c35e623c42e8022c5d7873d03ab",
+    "web/src/lib/locales/ui-labels.ko.json": "31a517f3706c8ef934c59161e826b7b6b5f4a689a3e0ee1bde0bc05184906a36",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "3596021da653bd975b70bdb9ec7bdf92e6fbee8dc58e46cc05fb973d412ba1dc",
+    "web/src/lib/locales/ui-labels.vi.json": "95a7ccafd9f963997e03666544b5e52055b5de7c1446708537c9deabdf64be95",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "ce53e0ad5dfdb9433d59a22ec7fc51ad173df4c13166d92133ed742035e56f8f",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "095b57e9322610d3cd4080fdc4ad3394ac8e83f7acbb0783e0d4c01ebcad7be3"
+  },
+  "correction_catalog_file_count": 12,
+  "corrections_applied": 83,
+  "final_status_counts": {
+    "accepted": 157,
+    "corrected": 83
+  },
+  "final_window_partition": {
+    "accepted_carries": 78,
+    "conflicts": 0,
+    "fresh_accepted": 79,
+    "fresh_corrected": 11,
+    "holds": 0,
+    "prior_corrections_applied": 72
+  },
+  "fresh_audit_cell_count": 90,
+  "frozen_source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "full_cell_audit_count": 240,
+  "locale_quality_confidence": "moderate without native-speaker approval",
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "native_speaker_approval": false,
+  "overlap_partition_at_review_head": {
+    "new": 90,
+    "prior_accepted": 78,
+    "prior_correction-needed": 72
+  },
+  "placeholder_and_literal_checks": {
+    "cells_checked": 240,
+    "icu_messages": 0,
+    "placeholder_sets_preserved": true,
+    "protected_literals_changed": 0,
+    "protected_literals_checked": true
+  },
+  "prior_overlap_scan": {
+    "canonical_manifest_sha256": "67f47ac525a88cc31c1a7441d4c2f8da76ec977a9941a2dafb7b8d0eb189f0ee",
+    "input_count": 826,
+    "manifest_file_sha256": "da5496d95deb56fa50c602494f4cc768e7e1d36bb673bce5e6dc6bebfbaea3d1"
+  },
+  "review_head": "b70b68e0cc297d5a0a7f7ace6a47d3c950e22470",
+  "review_tree": "ca40b695c4ab3a2f0485791246ecffb1c0dc249e",
+  "root_apply_plan_sha256": "b9030722ce56b0ea2a2da6795c7c5bf8f39b4ff69c9bec7ad82285284343536f",
+  "root_cross_review_ledger_sha256": "3d840984024cb24829e5cc7173fa47589cbbe54ef9f36a77312f0bfc7756a2e0",
+  "root_dispositions": {
+    "accepted-proposal": 71,
+    "refined": 12
+  },
+  "selected_cell_count": 240,
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_context": {
+    "evidence_text_sha256": "87330bc055d37d6398deac792f7f1437f4c47cee0b0dd200fdb4868cbc8280c3",
+    "file": "source-context.txt",
+    "git_blob_ids": {
+      "web/src/components/Collections/CollectionShareModal.jsx": "c992500ac8fbac7126cd206e012c3509cde6a1e9",
+      "web/src/components/Player/PodListenAlongPanel.jsx": "46cefa0ad94487776bb2bcf1f7f171d51e7c1b3f",
+      "web/src/components/Player/VisualizerOverlayControls.jsx": "0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf",
+      "web/src/components/Search/Detail/SearchDetail.jsx": "86b09d942fc98d6269004ae960e227732a79484f",
+      "web/src/components/Search/DiscographyCoveragePanel.jsx": "30a767356c47e5198976ddbac4ce657320f15b03",
+      "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx": "90f3e1d29a4b514a1877693e131e92b66b8050aa",
+      "web/src/components/System/Bridge/index.jsx": "2ebcb45755514fd7f281cdf96fd40046605d1906",
+      "web/src/components/System/ExperienceSettings/index.jsx": "fbe8caabfc30e03809dc5ae7051bddb731986956",
+      "web/src/components/System/Integrations/FtpIntegrationPanel.jsx": "81cb196f7be0d388c0dd2988f283990d958ae7fa",
+      "web/src/components/System/Integrations/MediaServerPanel.jsx": "f0e320beceb19f9253fc8e687a5ffac0028f67d5",
+      "web/src/components/System/Integrations/MetadataSettingsPanel.jsx": "0d0ffc8e16a072970a51604bd95d76f7f796669f",
+      "web/src/components/System/Jobs/index.jsx": "d107affda28da2a86c3cbf22175cdf0898c6fa68",
+      "web/src/components/System/MediaCore/PodDiscoveryPanel.jsx": "c79ee3cf9b70c20fbb819aae0925b3b52c0dbe89",
+      "web/src/components/System/Metrics/index.jsx": "b56dcd7e659a938f47f1a96f2ef2a0550b100876"
+    },
+    "sha256": {
+      "web/src/components/Collections/CollectionShareModal.jsx": "939b1c1492f12bda662f93753d34eedbbf2bd45997e3e838278f9832e3c29d78",
+      "web/src/components/Player/PodListenAlongPanel.jsx": "e1b87651a33685f5c46840e4d819b7f37f4171cb1fe28811e41fb3d2d9c95ca1",
+      "web/src/components/Player/VisualizerOverlayControls.jsx": "5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4",
+      "web/src/components/Search/Detail/SearchDetail.jsx": "7bc9e9f25a2cc9e78f0e4d0bf67a2837315e7763c953d38553a6707c36bb16b8",
+      "web/src/components/Search/DiscographyCoveragePanel.jsx": "d1fdb70100b0fa7f3d38a3f0d37766e71e1efc45b8f4f47ee44684c5d173090a",
+      "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx": "17241e796b943988d339bac74569f5a5d4e8889194cad1221d0b9c8bc1b82a9e",
+      "web/src/components/System/Bridge/index.jsx": "cdb2bf06a4066615fbdcbbffdd552b504db80aff3003c2e60ac3de43162ec666",
+      "web/src/components/System/ExperienceSettings/index.jsx": "ba7826de4b32bc9506d5926e6243623ccc3104da43706ce7a57fe4b17bcf2f30",
+      "web/src/components/System/Integrations/FtpIntegrationPanel.jsx": "71a1dfcb043820f9f5ef0a4ee7d142fb308e7943f049b0dbdb9b60d22a4724a0",
+      "web/src/components/System/Integrations/MediaServerPanel.jsx": "e8620c11fc3d54760a3332e5f791468029796fe21dc611cd1ef7fe7152c5d15d",
+      "web/src/components/System/Integrations/MetadataSettingsPanel.jsx": "e5aaf906b4cfc6e17ef8706bc95efb660b0eda2748bf2dad1c411ee9621d6339",
+      "web/src/components/System/Jobs/index.jsx": "9e9f1caffccf25f2d9259e9295e3ad9f500acb30ba6150c976acf5762f4b0f16",
+      "web/src/components/System/MediaCore/PodDiscoveryPanel.jsx": "c17c245776bcb87bb6089ff3836ff6b6061081ad2d0935d4dd15bff3aff928af",
+      "web/src/components/System/Metrics/index.jsx": "148984c1547bfbae3134d4591d74c28268aea15ee26c06357b11910d07a629e0"
+    }
+  },
+  "source_ids": [
+    "All Jobs",
+    "All Pods",
+    "All Sources",
+    "All imported",
+    "All loaded transfers are complete",
+    "All releases",
+    "All required gates are satisfied.",
+    "All results shown. {count} results hidden by filters",
+    "All slskr Metrics",
+    "Allow FTP certificate validation failures for self-signed or untrusted certificates.",
+    "Allow Lidarr to replace existing files during completed-download import.",
+    "Allow Lidarr-created Wishlist items to auto-download according to Wishlist rules.",
+    "Allow completed slskr download directories to be sent to Lidarr manual import.",
+    "Allow directory listeners to stream the current track from this node.",
+    "Allow download",
+    "Allow legacy Soulseek clients to connect via bridge",
+    "Allow listeners who join from the directory to stream this party's current track from this slskr node.",
+    "Allow mesh streaming for broadcast",
+    "Allow no-auth access from explicitly configured non-loopback CIDRs.",
+    "Allow player pages to append local similar-track queue candidates when explicit page support is available."
+  ],
+  "source_index_end_inclusive": 262,
+  "source_index_start": 243,
+  "source_key_count": 5437,
+  "visual_check": {
+    "file": "headed-visual-check.md",
+    "sha256": "0b8c6542ed3b6d5ad903fae8b0280673d4a7e36075301578cdfb9bbcbeac7bbc",
+    "status": "blocked"
+  }
+}
