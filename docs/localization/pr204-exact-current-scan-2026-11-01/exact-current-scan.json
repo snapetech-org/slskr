@@ -23,7 +23,7 @@
     "ar": 15
   },
   "evidence_files_scanned": 969,
-  "evidence_scan_manifest_sha256": "e4479934b1981fd5fc1173b7aa4230757a9ecb163b936e91547de63d5ca00b91",
+  "evidence_scan_manifest_sha256": "57a3433fba6c4dc1d699f2d4f7b4ebd56349bb496b5e4371b0feaa759af2f9ec",
   "evidence_file_manifest": [
     {
       "root": "pr-review-head",
@@ -1516,8 +1516,8 @@
     {
       "root": "pr-review-head",
       "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0383-0402-all-12-locales/post-apply-verification.json",
-      "bytes": 1905,
-      "sha256": "cecf61a256e4748aee12ea6ffbcb9e3b8a8c63e1f7b80f329faa61ed3381bee9"
+      "bytes": 2194,
+      "sha256": "e2b3b3bf3d563f8192a99369e7fec18631ffb8ce570f13df88985d0cfdce20dc"
     },
     {
       "root": "pr-review-head",
