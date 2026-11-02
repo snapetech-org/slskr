@@ -1,29 +1,29 @@
 {
-  "head": "a892d9735199dcd0f905498dba022e3e89f8ce9e",
-  "head_tree": "3dac36d064c52f79acea81b07c40ee12608e2349",
+  "head": "e6d128e2ec47f6ce2fedca03505bf0c2312a959c",
+  "head_tree": "bccc76adfd26481457c562eca5d2d86fa24076d5",
   "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
   "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
   "source_ids": 5437,
   "cell_count": 65244,
   "catalog_file_sha256": {
-    "web/src/lib/locales/ui-labels.ar.json": "2d59553ee2869e7f5781a4b77aeecfcc9411a65115b8f72b154be6e05ca65cea",
-    "web/src/lib/locales/ui-labels.de.json": "7fd7d7d7b41abae5e4790a37bd0a8a65f45689052939000f3fe076ebfeb9499d",
-    "web/src/lib/locales/ui-labels.es.json": "636c714cbf1a0a7cd4c718b4b622f3cbc70f58193a6344a78fce240c4a219cb9",
-    "web/src/lib/locales/ui-labels.fr.json": "c5ee67efa3d51b3517dc1715a1347d671037bf013208a6fee4b147a8a9d952cc",
-    "web/src/lib/locales/ui-labels.hi.json": "ac6ca4e00ed9681c34d519cfdc016e3eec850a9441b2de85c63107a8da817aac",
-    "web/src/lib/locales/ui-labels.id.json": "3b756c7127f85464e9c30c2a8ca318201accbc3dbcaeefbaf6f1904d08fd546b",
-    "web/src/lib/locales/ui-labels.ja.json": "e239b8cf3a299d5d388fa2f0f1c87aff1568088860d30825ac6f9f2d48eb2f1d",
-    "web/src/lib/locales/ui-labels.ko.json": "f70021359e5d1477ea85fd95cce2a75137c06a40c7cc8e3fef27778d83bd321a",
-    "web/src/lib/locales/ui-labels.pt-BR.json": "8e0bb8aadee4f7e026913329e0f479e5acc93b62085e0f50aabefd6d1246056a",
-    "web/src/lib/locales/ui-labels.vi.json": "3ba5f43818c17ade21c21bc9b1765fe69036940e301e1466e65b5af4dd4ef7de",
-    "web/src/lib/locales/ui-labels.zh-Hans.json": "67d45f29918620b4f4b704349bb309b39699d3ab648ef444c9567a5ca71371df",
-    "web/src/lib/locales/ui-labels.zh-Hant.json": "b4c7cf8c1e6cde9d354beec50b614fc71364afa68060136b1c3c0071f9e0c03f"
+    "web/src/lib/locales/ui-labels.ar.json": "326eb53c14ce63b3370d17de4294ffbf88c3250bd5f66449eba5690484f6b75f",
+    "web/src/lib/locales/ui-labels.de.json": "a38b99d70ea867bffa423a90c4dac04f8a5fad2afcb24db3c8ef0fd037b7c548",
+    "web/src/lib/locales/ui-labels.es.json": "0cb82c80086c88880f46a5fa5f7969482d08fce6fb6e0820b5f62d82ad798914",
+    "web/src/lib/locales/ui-labels.fr.json": "9ac5bed0ae287b60e38ac0feaea229af00aae0bb6c0f213163a65d87df3731c3",
+    "web/src/lib/locales/ui-labels.hi.json": "543f6be3e06fc6b217b60ac65b1351bf47ac7314d1ab7a343cd613d74efbb69e",
+    "web/src/lib/locales/ui-labels.id.json": "869dbfa14a84ab9ba71333470c35d85248586d185afbe2cf7ff3e6e51e9bf177",
+    "web/src/lib/locales/ui-labels.ja.json": "96c5b4bd4bbfb1d01fcf8b994ff0cf1c447348083bbd5726fb5f85b81f6864e3",
+    "web/src/lib/locales/ui-labels.ko.json": "56be06b93ce10555f22386620eb02cc38a647e6743ab26b919a5071f20f40d9b",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "c22c89cb0e63a3de5013e17cdfda688d3cc507f70f26714108877c29da8c9570",
+    "web/src/lib/locales/ui-labels.vi.json": "88da4e678c7b2942a3df1b4d079d52cef178cfe95e09b8b744851e3ee1b7586f",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "f52159ea00f224e3cd5aa642ff1adcf8c47251236b758592c705ea9ad1dba4e8",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "3c3e7dba053cb36f1e446c9b3c1af8a55e9944988bd80a6ba674d11f87da546b"
   },
   "structured_plural_cells": {
     "ar": 15
   },
-  "evidence_files_scanned": 916,
-  "evidence_scan_manifest_sha256": "52a5da26d8b11beb902886df065d9faf30d61c1e8f6f027eb4ca332cc4320ace",
+  "evidence_files_scanned": 942,
+  "evidence_scan_manifest_sha256": "de98c00808fff6077e8f3f7d94fd38a7004f7b0cc1ea911e07afa395f05ca1c6",
   "evidence_file_manifest": [
     {
       "root": "pr-review-head",
@@ -1260,6 +1260,162 @@
       "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0323-0342-all-12-locales/source-pins.json",
       "bytes": 8618,
       "sha256": "1f18703fcf282278401d85aabea1037e0fedbef730646e595b1b63e164e0db53"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/applied-corrections.jsonl",
+      "bytes": 40263,
+      "sha256": "a219cd80bd3dcdbb9b0ad2bb74eeca5b3ca1b681e7f0b66fbece45c8f762735e"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/applied-radar-supplement.jsonl",
+      "bytes": 11850,
+      "sha256": "4e1af93abcadc0a3f1141e0d45b08e5a2f6b5cf4446f4c9beeb5175ceda9ae9f"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/candidate-cell-audit.jsonl",
+      "bytes": 72924,
+      "sha256": "3510015f21d91594b2ef037649667358414ba7699cf3e93554f8ca07bbf012c6"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/candidate-corrections.jsonl",
+      "bytes": 31256,
+      "sha256": "16206067e6b33036642e4e510226c8873efeb65d308feedb6c35e11facaa9263"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/candidate-supplement-artist-release-radar-six.jsonl",
+      "bytes": 7802,
+      "sha256": "43d4c00728a4b0f82d462c90dee599521c20157e1b5df6412649c8132cf1833e"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/carries.jsonl",
+      "bytes": 436537,
+      "sha256": "a3d30e9e11fdc77fa87dc673c07743f379cefd9948122fd5f5c53b6fbce6c291"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/combined-root-review-summary.json",
+      "bytes": 500,
+      "sha256": "68ff15ab1e7e154bb2508d37396356e9c0bd2c9748c2ebb295378718950b5c05"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/decisions.jsonl",
+      "bytes": 51504,
+      "sha256": "07d9c160832d9fcc4ce5e796e7f60d8a7e181a75474abf952762651fcf6f1a6d"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/fresh-correction-decisions.jsonl",
+      "bytes": 17126,
+      "sha256": "e50bc667954aa792ae8f3e6c1bf8112a4cf5b79c5211c397cba287c6c4e0ae67"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/manifest.json",
+      "bytes": 14917,
+      "sha256": "95123b203f27dfcbaceab1eca54595050960e874bb430806be345d79d02c6e9b"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/post-pending-16-cell-revalidation.json",
+      "bytes": 5515,
+      "sha256": "246efe98a29ebf8c08c2ac2fb19587b646e16e4f4ad248e0114dbce8cb368dcc"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/prepare-summary.json",
+      "bytes": 3914,
+      "sha256": "b2764988f3d135161c0b91471d79e3c7c49697ed8df430f966853b061e24f46f"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/prior-evidence-scan-manifest.jsonl",
+      "bytes": 190899,
+      "sha256": "44e2e45da114c570cd98e8047277aa0cc98a1d5830df56f5a4fa058aa0d4d81c"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/review-summary.json",
+      "bytes": 2844,
+      "sha256": "bc22701edffba0e7290871f520109a1f367b29df3389b9e53cbabb891aa19f18"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/reviewed-cell-audit.jsonl",
+      "bytes": 560965,
+      "sha256": "8b15319e8b23ff9d53942b7c7ff67b5be251318dec83af08110bc830e086845f"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/root-apply-plan-radar-supplement.jsonl",
+      "bytes": 8066,
+      "sha256": "f0789c4e7ce04aba5fb90af752f1e82722b9a3226d80d6670d1f5002fe9ce151"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/root-apply-plan.jsonl",
+      "bytes": 11059,
+      "sha256": "5f2f82cd7f88df40ae3c1b0d71b0c70246654843909a873249964da414d16736"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/root-cross-review-summary.json",
+      "bytes": 581,
+      "sha256": "4f32e1b0f1890cbcc415af6b1b558de8d397df332f2538fa7c22534e8e118f40"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/root-cross-review.jsonl",
+      "bytes": 21101,
+      "sha256": "051aafdf584a03db11eb342c513b75a968478c1fe93ed8264825411d4dd86b53"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/root-radar-supplement-checksums.json",
+      "bytes": 478,
+      "sha256": "2f48e7ffffcad9d3ab07a4396f5cee2b663f038590ca0902ffdb519a2287c1c1"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/root-radar-supplement-decisions.jsonl",
+      "bytes": 6422,
+      "sha256": "d6addee4fbae79b2297d8c0ae905441f9e7ffad6cd04854bf65da3503bca8f77"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/root-radar-supplement-summary.json",
+      "bytes": 602,
+      "sha256": "f2469cdc2720820af3be5f4dbe1bda19172341fa748c3696265d30598925e58f"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/selection-before-corrections.jsonl",
+      "bytes": 183510,
+      "sha256": "a3d500942969133d4c85c08de9ff855139b48258f17f0881292e4a53070aba1d"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/selection.jsonl",
+      "bytes": 192449,
+      "sha256": "07d5edc1724669a2c1f5273d4b897e9dfc885567b8bda9458431104ea71cbe14"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/source-inventory.jsonl",
+      "bytes": 724742,
+      "sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313"
+    },
+    {
+      "root": "pr-review-head",
+      "path": "docs/pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/source-pins.json",
+      "bytes": 6709,
+      "sha256": "6b5c4ebba431c3623c87cc2ae2dfff9c88e86285391a2765bb2355de1623101e"
     },
     {
       "root": "pr-review-head",
@@ -5523,173 +5679,101 @@
     }
   ],
   "unique_current_cell_status_counts": {
-    "accepted": 23782,
-    "corrected": 457,
-    "correction-needed": 10589,
+    "accepted": 23812,
+    "corrected": 479,
+    "correction-needed": 10573,
     "held": 289,
-    "unreviewed": 30127
+    "unreviewed": 30091
   },
   "per_locale_exact_status_counts": {
     "ar": {
-      "accepted": 1338,
-      "corrected": 47,
+      "accepted": 1343,
+      "corrected": 48,
       "correction-needed": 1065,
       "held": 12,
-      "unreviewed": 2975
+      "unreviewed": 2969
     },
     "de": {
-      "accepted": 1371,
-      "corrected": 41,
+      "accepted": 1376,
+      "corrected": 42,
       "correction-needed": 847,
       "held": 10,
-      "unreviewed": 3168
+      "unreviewed": 3162
     },
     "es": {
-      "accepted": 1319,
-      "corrected": 43,
-      "correction-needed": 1078,
+      "accepted": 1324,
+      "corrected": 45,
+      "correction-needed": 1077,
       "held": 9,
-      "unreviewed": 2988
+      "unreviewed": 2982
     },
     "fr": {
-      "accepted": 1327,
-      "corrected": 42,
-      "correction-needed": 1020,
+      "accepted": 1332,
+      "corrected": 44,
+      "correction-needed": 1019,
       "held": 10,
-      "unreviewed": 3038
+      "unreviewed": 3032
     },
     "hi": {
-      "accepted": 1321,
-      "corrected": 49,
-      "correction-needed": 1100,
+      "accepted": 1326,
+      "corrected": 51,
+      "correction-needed": 1099,
       "held": 14,
-      "unreviewed": 2953
+      "unreviewed": 2947
     },
     "id": {
-      "accepted": 1322,
-      "corrected": 44,
-      "correction-needed": 1066,
+      "accepted": 1327,
+      "corrected": 46,
+      "correction-needed": 1065,
       "held": 10,
-      "unreviewed": 2995
+      "unreviewed": 2989
     },
     "ja": {
       "accepted": 2771,
-      "corrected": 24,
-      "correction-needed": 602,
+      "corrected": 26,
+      "correction-needed": 600,
       "held": 38,
       "unreviewed": 2002
     },
     "ko": {
       "accepted": 2667,
-      "corrected": 28,
-      "correction-needed": 703,
+      "corrected": 30,
+      "correction-needed": 701,
       "held": 39,
       "unreviewed": 2000
     },
     "pt-BR": {
       "accepted": 2660,
-      "corrected": 30,
-      "correction-needed": 709,
+      "corrected": 32,
+      "correction-needed": 707,
       "held": 36,
       "unreviewed": 2002
     },
     "vi": {
       "accepted": 2438,
-      "corrected": 45,
-      "correction-needed": 915,
+      "corrected": 47,
+      "correction-needed": 913,
       "held": 37,
       "unreviewed": 2002
     },
     "zh-Hans": {
       "accepted": 2631,
-      "corrected": 32,
-      "correction-needed": 735,
+      "corrected": 34,
+      "correction-needed": 733,
       "held": 37,
       "unreviewed": 2002
     },
     "zh-Hant": {
       "accepted": 2617,
-      "corrected": 32,
-      "correction-needed": 749,
+      "corrected": 34,
+      "correction-needed": 747,
       "held": 37,
       "unreviewed": 2002
     }
   },
-  "unreviewed_source_index_count": 3642,
-  "unreviewed_cells": 30127,
+  "unreviewed_source_index_count": 3636,
+  "unreviewed_cells": 30091,
   "first_100_unreviewed_indices": {
-    "343": {
-      "source_id": "Artist Release Radar",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "345": {
-      "source_id": "Artist name",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "347": {
-      "source_id": "Artists",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "348": {
-      "source_id": "Ascending",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "359": {
-      "source_id": "At least one recipient is required",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
-    "360": {
-      "source_id": "At least one source must be selected",
-      "fresh_locale_count": 6,
-      "fresh_locales": [
-        "ar",
-        "de",
-        "es",
-        "fr",
-        "hi",
-        "id"
-      ]
-    },
     "364": {
       "source_id": "Atlas",
       "fresh_locale_count": 6,
@@ -6744,6 +6828,76 @@
     },
     "513": {
       "source_id": "Browse Files",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "514": {
+      "source_id": "Browse Local Audio Library",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "515": {
+      "source_id": "Browse Shares",
+      "fresh_locale_count": 4,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "fr",
+        "hi"
+      ]
+    },
+    "516": {
+      "source_id": "Browse available Soulseek rooms and join the selected room.",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "517": {
+      "source_id": "Browse files",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "518": {
+      "source_id": "Browse shared and downloaded local audio that slskr can stream in this browser.",
+      "fresh_locale_count": 6,
+      "fresh_locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id"
+      ]
+    },
+    "521": {
+      "source_id": "Browse this contact's shared files.",
       "fresh_locale_count": 6,
       "fresh_locales": [
         "ar",

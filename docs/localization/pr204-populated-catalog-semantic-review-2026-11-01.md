@@ -2,13 +2,21 @@
 
 ## Latest exact-current status
 
-- PR #204 remains open as a draft. The exact-current catalog scan is pinned to evidence head `a892d9735199dcd0f905498dba022e3e89f8ce9e` / tree `3dac36d064c52f79acea81b07c40ee12608e2349`; the latest catalog application is `a65ba4693c4f613f470509ab882f7532e40b11ef` / tree `f174eb839e00c23493c9a418392f589ad6d59597`. Source/runtime context remains `7ff454828398de6a3cfb72fe7f0ed21fe419425b` / tree `9e9f2aa743c4ff3236af8f99619803bdc3a37152`.
+- PR #204 remains open as a draft. The exact-current catalog scan is pinned to evidence head `e6d128e2ec47f6ce2fedca03505bf0c2312a959c` / tree `bccc76adfd26481457c562eca5d2d86fa24076d5`; the latest catalog application is `f10e8e62b4d8cc5249b8c31a42dcac060b555143` / tree `5df1b00dec1184f83618029e391ada2ad29de30d`. Source/runtime context remains `7ff454828398de6a3cfb72fe7f0ed21fe419425b` / tree `9e9f2aa743c4ff3236af8f99619803bdc3a37152`.
 - Direct catalogs contain 65,244 populated cells across twelve locales, with no missing keys, nulls, or blanks. The source-linked rollout target remains 6,588 translation cells; that audit is complete.
-- Exact-current reconciliation scanned 916 evidence files and honored 103 exact supersession references across 25 conflict/status reconciliation rows. Current unique-cell statuses: **23,782 accepted, 457 corrected, 10,589 correction-needed, 289 held, zero conflicts, and 30,127 unreviewed** across 3,642 source IDs. Evidence-input manifest SHA-256: `52a5da26d8b11beb902886df065d9faf30d61c1e8f6f027eb4ca332cc4320ace`; scan report SHA-256: `f250ca922b6713cce6b20f75803475b79cc176c6fb0c6457a740c643db09f3a6`.
-- Per-locale unreviewed counts: ar 2,975; de 3,168; es 2,988; fr 3,038; hi 2,953; id 2,995; ja 2,002; ko 2,000; pt-BR 2,002; vi 2,002; zh-Hans 2,002; zh-Hant 2,002. The next disjoint semantic window is 343–362.
-- Whole-catalog review continues; 30,127 populated cells remain unreviewed and 10,589 current cells remain correction-needed. No release or tag was cut.
+- Exact-current reconciliation scanned 942 evidence files and honored 103 exact supersession references across 25 conflict/status reconciliation rows. Current unique-cell statuses: **23,812 accepted, 479 corrected, 10,573 correction-needed, 289 held, zero conflicts, and 30,091 unreviewed** across 5,437 source IDs. Evidence-input manifest SHA-256: `de98c00808fff6077e8f3f7d94fd38a7004f7b0cc1ea911e07afa395f05ca1c6`; scan report SHA-256: `1b686839725116d22d7832adf7da5115cb966abcd9d62cb012e9f4aebd2ab825`.
+- Per-locale unreviewed counts: ar 2,969, de 3,162, es 2,982, fr 3,032, hi 2,947, id 2,989, ja 2,002, ko 2,000, pt-BR 2,002, vi 2,002, zh-Hans 2,002, zh-Hant 2,002. The next contiguous semantic window is 363–382.
+- Whole-catalog review continues; 30,091 populated cells remain unreviewed and 10,573 current cells remain correction-needed. No release or tag was cut.
 
 The exact-current report and rerunnable scanner are in [`pr204-exact-current-scan-2026-11-01`](pr204-exact-current-scan-2026-11-01/).
+
+## Independent semantic window: source indices 343–362
+
+This all-locale window covers 20 consecutive source keys and all 240 populated cells. At exact review head `7b53e289f3b4b121be4b1b49c997ebb65b02ed8a` / tree `1b7831ff560924250e1c5ebcc256f4cbf02d30b8`, exact-hash overlap reconciliation found 36 fresh cells, 188 accepted carries, and 16 prior correction-needed cells, with zero conflicts. Fresh review accepted 30 cells and identified six additional missing Radar labels; root cross-review accepted all six after checking the exact Search caller and neighboring feature terminology. Root cross-review accepted 20 of 22 correction targets and refined two. All 22 approved corrections were applied, leaving 218 accepted and 22 corrected cells in this window.
+
+The catalog updates are `264a780f0b752cf2d84dab058838428b3a4195d6` / tree `0c3e467c5fded41678a865802c8794ab936baee1` (16 targets) and `f10e8e62b4d8cc5249b8c31a42dcac060b555143` / tree `5df1b00dec1184f83618029e391ada2ad29de30d` (six fresh targets). The six-cell supplement was revalidated against the live PR after the first commit was pushed. Evidence, exact overlap manifest, all-cell audit, source pins, two root reviews, two application plans and verifier are in [`independent-0343-0362-all-12-locales`](../pr-evidence/pr204-semantic-review-2026-11-01/independent-0343-0362-all-12-locales/). The 240-cell verifier passes 916 exact prior evidence inputs, 18 caller pins, all 22 exact changes, placeholders, protected literals, ICU checks and checksums. Native-speaker approval is false.
+
+Headed visual review remains blocked because this exact worktree has no `web/node_modules`; preview would require dependency installation or build output. Browser recapture remains outstanding in the Agentic VM. No tests, builds, CI, workflow edits, releases, or tags were run.
 
 ## Independent semantic window: source indices 323–342
 
