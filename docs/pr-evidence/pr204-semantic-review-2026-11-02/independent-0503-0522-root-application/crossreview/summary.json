@@ -1,0 +1,45 @@
+{
+  "caller_file_pins": 47,
+  "caller_pins": "pass",
+  "candidate_records": 49,
+  "catalog_cell_hash_checks": "pass",
+  "catalog_modified": false,
+  "cell_count": 240,
+  "dispositions": {
+    "accept": 184,
+    "hold": 12,
+    "missed": 10,
+    "no-op": 24,
+    "refine": 10
+  },
+  "exact_prior_proposal_matches": 20,
+  "locale_count": 12,
+  "missed_candidates": 10,
+  "native_speaker_review_required": true,
+  "no_direct_localization_caller_source_ids": [
+    "Browse",
+    "Browse available Soulseek rooms and join the selected room."
+  ],
+  "no_op_cells": 24,
+  "out_of_window_alerts": 12,
+  "packet_digest_field_mismatches": 2,
+  "placeholder_checks": "pass",
+  "pr_head": "7bf9f91c0f34269434fee70cd2f7067afeaf6122",
+  "pr_tree": "b598a6ad004a504037e64ebf541b5c9e01d54765",
+  "primary_proposals": 39,
+  "primary_proposals_accepted": 29,
+  "primary_proposals_refined": 10,
+  "prior_routed_byte_identity": "pass",
+  "prior_routed_holds": 12,
+  "reopened_prior_acceptances_without_exact_proposal_target": 19,
+  "source_count": 20,
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_indices": [
+    503,
+    522
+  ],
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "task": "Independent cross-review of slskR PR #204 W503–522",
+  "tests_builds_scans_ci_workflows_releases_tags_merges": false,
+  "unique_caller_occurrences": 44
+}

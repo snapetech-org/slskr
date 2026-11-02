@@ -1,0 +1,19 @@
+{
+  "caller_blob_hashes_match_source_and_pr_heads": true,
+  "catalog_cells": 240,
+  "catalogs_modified": false,
+  "ci_run": false,
+  "current_target_hashes_match_exact_head": true,
+  "fresh_candidate_rows": 39,
+  "live_pr_draft": true,
+  "live_pr_state": "OPEN",
+  "placeholder_sets_match": true,
+  "pr_head": "7bf9f91c0f34269434fee70cd2f7067afeaf6122",
+  "pr_tree": "b598a6ad004a504037e64ebf541b5c9e01d54765",
+  "prior_routed_rows": 12,
+  "prior_routed_rows_byte_identical": true,
+  "repo_status": "",
+  "source_ids": 20,
+  "tests_run": false,
+  "verified": true
+}

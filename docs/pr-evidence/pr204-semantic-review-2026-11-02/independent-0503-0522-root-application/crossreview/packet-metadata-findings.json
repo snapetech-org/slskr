@@ -1,0 +1,19 @@
+{
+  "all_input_packet_files_sha256_verified": true,
+  "findings": [
+    {
+      "actual_file": "current-cells.jsonl",
+      "actual_sha256": "c407594c08d3146f9bcd1480a787376e392c23645ab76d0c3076b3c08c89e6f5",
+      "field": "freeze-manifest.json.current_cells_sha256",
+      "finding": "recorded digest does not match packaged file",
+      "recorded_sha256": "2158d0cb1da7aef1e1b20ed7fb829d3afd63d14d5758caffb8b8581873673ba1"
+    },
+    {
+      "actual_file": "prior-evidence-scan-manifest.jsonl",
+      "actual_sha256": "76f46c73d45a0477de55943d5fc92568b373029e6aad98195dafd211edfbc821",
+      "field": "preparation-summary.json.prior_evidence_input_manifest_sha256",
+      "finding": "recorded digest does not match packaged file",
+      "recorded_sha256": "2f5dae06da65842ccbca19e521438b4abf3546b2c6496ac9733f3521f9a48d49"
+    }
+  ]
+}

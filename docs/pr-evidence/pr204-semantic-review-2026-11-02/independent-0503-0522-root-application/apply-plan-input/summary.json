@@ -1,0 +1,52 @@
+{
+  "all_current_values_reverified_against_exact_pr_head": true,
+  "all_source_current_final_hashes_pinned": true,
+  "catalog_modified": false,
+  "cell_count": 240,
+  "dispositions": {
+    "accept": 184,
+    "hold": 12,
+    "missed": 10,
+    "no-op": 24,
+    "refine": 10
+  },
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "native_speaker_review_required": true,
+  "plan_status": "not applied",
+  "planned_target_changes": 49,
+  "planned_target_changes_breakdown": {
+    "accepted_primary_proposals": 29,
+    "independent_missed_candidates": 10,
+    "refined_primary_proposals": 10
+  },
+  "pr_head": "7bf9f91c0f34269434fee70cd2f7067afeaf6122",
+  "pr_tree": "b598a6ad004a504037e64ebf541b5c9e01d54765",
+  "prior_routed_rows_byte_identical": true,
+  "source_count": 20,
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_indices": [
+    503,
+    522
+  ],
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "task": "Read-only exact-hash apply plan for slskR PR #204 W503–522",
+  "unchanged_breakdown": {
+    "accepted_current_targets": 155,
+    "no_op_unreachable_cells": 24,
+    "prior_routed_holds": 12
+  },
+  "unchanged_cell_count": 191
+}
