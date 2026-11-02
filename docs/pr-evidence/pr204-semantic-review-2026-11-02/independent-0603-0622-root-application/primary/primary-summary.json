@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "f9a852b0f914b53510013dcedbeb3e332275b92d",
+  "tree": "bbbfde5fa90f60b656bc4d1a551afaf4cc645742",
+  "reviewWindow": [
+    603,
+    622
+  ],
+  "sourceIds": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "dispositions": {
+    "accept-current": 177,
+    "propose-correction": 58,
+    "propose-refinement": 5
+  },
+  "candidateCells": 63,
+  "heldCells": 0,
+  "perLocale": {
+    "ar": {
+      "accept-current": 15,
+      "propose-correction": 5
+    },
+    "de": {
+      "accept-current": 14,
+      "propose-correction": 5,
+      "propose-refinement": 1
+    },
+    "es": {
+      "accept-current": 14,
+      "propose-correction": 5,
+      "propose-refinement": 1
+    },
+    "fr": {
+      "accept-current": 14,
+      "propose-correction": 6
+    },
+    "hi": {
+      "accept-current": 12,
+      "propose-correction": 7,
+      "propose-refinement": 1
+    },
+    "id": {
+      "accept-current": 14,
+      "propose-correction": 6
+    },
+    "ja": {
+      "accept-current": 16,
+      "propose-correction": 3,
+      "propose-refinement": 1
+    },
+    "ko": {
+      "accept-current": 16,
+      "propose-correction": 4
+    },
+    "pt-BR": {
+      "accept-current": 14,
+      "propose-correction": 5,
+      "propose-refinement": 1
+    },
+    "vi": {
+      "accept-current": 14,
+      "propose-correction": 6
+    },
+    "zh-Hans": {
+      "accept-current": 17,
+      "propose-correction": 3
+    },
+    "zh-Hant": {
+      "accept-current": 17,
+      "propose-correction": 3
+    }
+  },
+  "callerReferences": 45,
+  "callerFiles": 28,
+  "priorEvidenceMatches": 0,
+  "placeholderFailures": 0,
+  "nativeSpeakerApproval": false,
+  "nativeSpeakerReviewRequired": true,
+  "reviewerNote": "Machine-assisted primary semantic review based on pinned caller source and target catalog context. Independent exact-head cross-review is still required."
+}

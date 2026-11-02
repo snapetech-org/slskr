@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "livePullRequest": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "f9a852b0f914b53510013dcedbeb3e332275b92d",
+    "isDraft": true,
+    "mergeStateStatus": "CLEAN",
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "head": "f9a852b0f914b53510013dcedbeb3e332275b92d",
+  "tree": "bbbfde5fa90f60b656bc4d1a551afaf4cc645742",
+  "sourceBaselineHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceBaselineTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "sourceInventory": {
+    "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/frozen-inputs/source-inventory.jsonl",
+    "sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+    "keyCount": 5437
+  },
+  "sourceWindow": [
+    603,
+    622
+  ],
+  "sourceIds": 20,
+  "sourceIdBoundary": {
+    "603": "Chat",
+    "622": "Choose from Collections"
+  },
+  "previousWindow": {
+    "sourceWindow": [
+      583,
+      602
+    ],
+    "nonOverlapping": true,
+    "evidencePath": "docs/pr-evidence/pr204-localization-2026-11-02/window-583-602"
+  },
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "cells": 240,
+  "catalogs": {
+    "ar": {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "bytes": 511743,
+      "sha256": "a2870ee53ac50945c5ddd91c874a90b46fa2710788b9ca395c77d6b4180828c3",
+      "blobOid": "6a8dd0b89fa5a2b4c1c732fccce8874671bc736f",
+      "keyCount": 5438
+    },
+    "de": {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "bytes": 442552,
+      "sha256": "be811994e443ceef3f1ad488501037c8c405b82feb05adbf67f7822db75125ff",
+      "blobOid": "0ddc4cc0d7f009317057df80bd155e8cef213f43",
+      "keyCount": 5438
+    },
+    "es": {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "bytes": 443282,
+      "sha256": "b088e10f91f64a6f68b341bca9dab2b8a48683b91005306ce3d38b113d863178",
+      "blobOid": "7a05865946029b33ce08bf255f5ff2158db6106b",
+      "keyCount": 5438
+    },
+    "fr": {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "bytes": 454276,
+      "sha256": "b4340449ee66b64dc244e9098cfdb658a016cafacd6ae50524ff4dcb44dd35d9",
+      "blobOid": "9c69be9a839ffe5b36287f45e0b70440fa74cd5b",
+      "keyCount": 5438
+    },
+    "hi": {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "bytes": 674977,
+      "sha256": "59b016af01b7ba0e7c18d1c4becb83361aa74695cfd1b4f3074da49ebadf936a",
+      "blobOid": "8377a456f029d42454243c343aa00bd3abeadbde",
+      "keyCount": 5438
+    },
+    "id": {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "bytes": 408960,
+      "sha256": "e37284895de895f7a5bb207046c5294a5e4560eeef6828da9e41d13a0d5ae01e",
+      "blobOid": "d0b066f286620c25fd8d3c7af15eb7568b084fe8",
+      "keyCount": 5438
+    },
+    "ja": {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "bytes": 490546,
+      "sha256": "28a61bf317c1a38550275ee6ebba1aaaa733ed3c62318c8df788053b488a22a1",
+      "blobOid": "4477cc7c9c909dbe3e373f81f1a8f59a735d99a4",
+      "keyCount": 5438
+    },
+    "ko": {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "bytes": 441446,
+      "sha256": "6afc74bb462a84871f25c3d13797d22bbe4368c62949e632cd4e2a713edd5ec1",
+      "blobOid": "2d3bfb4a7e12c9186799d3f289acad4e714a42c4",
+      "keyCount": 5438
+    },
+    "pt-BR": {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "bytes": 438003,
+      "sha256": "1baa8ece15a29a90e7da06c2370c0a19d564380e71c8e7bc9d65ce0bfcfc136b",
+      "blobOid": "d326e1e6dd311b0b7547c1aaf74de8336566728e",
+      "keyCount": 5438
+    },
+    "vi": {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "bytes": 473529,
+      "sha256": "5653976acb48168307b15aa494ecc88abefa7ed95b729e0c094cd1bdf77916ba",
+      "blobOid": "355282b5fdb93fa9aeb8b34b54facc52c47afdef",
+      "keyCount": 5438
+    },
+    "zh-Hans": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "bytes": 382143,
+      "sha256": "0a76c2cdf551cf034ceaad30a0d10fac6701747c9976e766c107c0bd10a8e772",
+      "blobOid": "9d0046ecb6ba641f7f3a6cb73a2ef01678c61e94",
+      "keyCount": 5438
+    },
+    "zh-Hant": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "bytes": 382851,
+      "sha256": "ef6d196ea89ec6a19c6076e452c103be4bb41ba83c6e598f33fd243faeefcffe",
+      "blobOid": "74aaba3b2a01fa5f6470b28d161bde7d7908be72",
+      "keyCount": 5438
+    }
+  },
+  "catalogKeysOutsidePinnedSourceInventory": [
+    "OK"
+  ],
+  "callerReferences": 45,
+  "uniqueCallerFiles": [
+    "crates/slskr-web/src/native_tab_rendering.rs",
+    "crates/slskr-web/src/native_workspace_panels.rs",
+    "crates/slskr-web/src/route_catalog.rs",
+    "crates/slskr-web/src/route_controls.rs",
+    "crates/slskr-web/src/route_reference_panels.rs",
+    "crates/slskr-web/src/web_action_owners/experience_action_models.rs",
+    "crates/slskr-web/src/web_action_owners/native_form_values.rs",
+    "crates/slskr-web/src/web_tests/native_actions.rs",
+    "web/src/components/AppNavigationPrimary.jsx",
+    "web/src/components/Chat/Chat.jsx",
+    "web/src/components/Chat/Chat.test.jsx",
+    "web/src/components/Messaging/Messaging.test.jsx",
+    "web/src/components/Messaging/MessagingSidebar.jsx",
+    "web/src/components/Player/PlayerLauncher.jsx",
+    "web/src/components/Player/PlayerStatsModal.jsx",
+    "web/src/components/Player/VisualizerOverlayControls.jsx",
+    "web/src/components/System/Info/index.jsx",
+    "web/src/components/System/Integrations/LidarrPanel.jsx",
+    "web/src/components/System/Integrations/MediaServerPanel.jsx",
+    "web/src/components/System/Integrations/ServarrReadinessPanel.jsx",
+    "web/src/components/System/Integrations/index.test.jsx",
+    "web/src/components/System/MediaCore/ContentDescriptorPublishingPanel.jsx",
+    "web/src/components/System/MediaCore/MediaCoreMetadataPortabilityPanel.jsx",
+    "web/src/components/System/MediaCore/PodMembershipVerificationPanel.jsx",
+    "web/src/components/System/MediaCore/PodMessageRoutingPanel.jsx",
+    "web/src/components/System/Network/index.jsx",
+    "web/src/lib/automationRecipes.js",
+    "web/src/lib/networkHealthScore.js"
+  ],
+  "uniqueCallerLines": 45,
+  "sourceIdsWithNoDirectCallers": [],
+  "priorEvidenceMatches": 0,
+  "priorReviewFile": {
+    "path": "docs/localization/pr204-translation-review-2026-11-01.jsonl",
+    "blobOid": "ac532def0973f2d8abc9baa00d3b1c19b5843822",
+    "bytes": 2753515,
+    "sha256": "27ab430e61b7cb5628150121afc1b565e38af9cd2dc2608d3aebd65fce99220e"
+  },
+  "placeholderParityFailures": 0,
+  "nativeSpeakerApproval": false
+}
