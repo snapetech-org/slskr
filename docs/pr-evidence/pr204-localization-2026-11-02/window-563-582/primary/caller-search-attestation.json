@@ -1,0 +1,792 @@
+{
+  "all_exact_literal_matches": 84,
+  "caller_files": {
+    "crates/slskr-web/src/native_row_rendering.rs": 1,
+    "crates/slskr-web/src/native_workspace_panels.rs": 1,
+    "crates/slskr-web/src/search_planning_owners/search_previews.rs": 1,
+    "crates/slskr-web/src/web_action_owners/experience_action_models.rs": 2,
+    "web/src/components/App.jsx": 1,
+    "web/src/components/AppHeaderMenu.jsx": 1,
+    "web/src/components/AppNavigationPrimary.jsx": 2,
+    "web/src/components/Chat/SendMessageModal.jsx": 1,
+    "web/src/components/Collections/CollectionAddItemModal.jsx": 1,
+    "web/src/components/Collections/CollectionShareModal.jsx": 1,
+    "web/src/components/Collections/CreateCollectionModal.jsx": 1,
+    "web/src/components/Messaging/BatchPrivateMessageModal.jsx": 1,
+    "web/src/components/Player/VisualizerOverlayControls.jsx": 3,
+    "web/src/components/Pods/PortForwarding.jsx": 1,
+    "web/src/components/Rooms/RoomCreateModal.jsx": 1,
+    "web/src/components/Rooms/RoomJoinModal.jsx": 1,
+    "web/src/components/Search/Detail/SearchFilterModal.jsx": 1,
+    "web/src/components/Search/DownloadActionPreviewModal.jsx": 2,
+    "web/src/components/Search/FederatedTasteRecommendationsPanel.jsx": 2,
+    "web/src/components/Search/Response.jsx": 4,
+    "web/src/components/Search/SearchStatusIcon.jsx": 2,
+    "web/src/components/Search/SongIDAnalysisResults.jsx": 7,
+    "web/src/components/Search/SongIDEvidenceDetails.jsx": 6,
+    "web/src/components/ShareGroups/ShareGroups.jsx": 2,
+    "web/src/components/Shared/TooltipButton.jsx": 2,
+    "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx": 1,
+    "web/src/components/System/ExperienceSettings/index.jsx": 5,
+    "web/src/components/System/Files/Explorer.jsx": 2,
+    "web/src/components/System/Info/index.jsx": 2,
+    "web/src/components/System/Jobs/index.jsx": 2,
+    "web/src/components/System/Logs/index.jsx": 2,
+    "web/src/components/System/MediaCore/PodChannelManagementPanel.jsx": 1,
+    "web/src/components/System/MediaCore/PodContentLinkingPanel.jsx": 2,
+    "web/src/components/System/Network/index.jsx": 2,
+    "web/src/components/System/Options/EditModal.jsx": 1,
+    "web/src/components/System/QuarantineJury/index.jsx": 1,
+    "web/src/components/System/Shares/index.jsx": 3,
+    "web/src/components/Transfers/TransferGroup.jsx": 4,
+    "web/src/components/Transfers/Transfers.jsx": 1,
+    "web/src/components/Transfers/TransfersHeader.jsx": 5,
+    "web/src/components/Users/UserNoteModal.jsx": 1,
+    "web/src/components/Wishlist/CsvImportModal.jsx": 1,
+    "web/src/components/Wishlist/WishlistItemRow.jsx": 2,
+    "web/src/components/Wishlist/WishlistModal.jsx": 1,
+    "web/src/semantic-ui-react/index.jsx": 1
+  },
+  "localized_literal_caller_pins": 49,
+  "nonlocalized_exact_occurrences": 35,
+  "pr_head": "7e99edecbdea10580cc5e8d198930a82f076b834",
+  "pr_tree": "55de069f88c197ab8ddd3c773c1f10e5cb86abd5",
+  "raw_occurrence_pins": 9,
+  "schema_version": 1,
+  "search_results": [
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 197,
+          "path": "web/src/components/System/MediaCore/PodContentLinkingPanel.jsx",
+          "text": "              <PodWorkflowNotice title={interfaceText(\"Can create content-linked pods\")} {...interfaceTextProps(\"Can create content-linked pods\")}>"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 0,
+      "source_id": "Can create content-linked pods",
+      "source_index": 563,
+      "source_literal_occurrences": 1,
+      "source_sha256": "ec72121387a9cbff024c7570e0663c10cd3d055cf16cd85d6f968a6c1e1993c8"
+    },
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "label-helper-localization",
+          "line": 58,
+          "path": "web/src/components/AppNavigationPrimary.jsx",
+          "text": "                    {label('Canary')}"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 0,
+      "source_id": "Canary",
+      "source_index": 564,
+      "source_literal_occurrences": 1,
+      "source_sha256": "bd6617f00a64af4a5fa955f29eb1fcf18a651ccfe39fa7a30fb97b4482341ff1"
+    },
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 22,
+      "matches": [
+        {
+          "kind": "other-exact-source-literal",
+          "line": 490,
+          "path": "crates/slskr-web/src/native_row_rendering.rs",
+          "text": "        RouteKind::Downloads => vec![primary_action, \"Retry\", \"Cancel\", \"Remove\"],"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 447,
+          "path": "crates/slskr-web/src/route_data_projection.rs",
+          "text": "                                \"Cancel\""
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 474,
+          "path": "crates/slskr-web/src/route_data_projection.rs",
+          "text": "                                        \"Cancel\""
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 145,
+          "path": "crates/slskr-web/src/route_reference_panels.rs",
+          "text": "                vec![\"Retry\", \"Cancel\", \"Remove\", \"Clear Completed\"],"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 300,
+          "path": "crates/slskr-web/src/route_workflow_rendering.rs",
+          "text": "                (\"Open Sessions/01 Theme.flac\", \"peer1 / 42% / 1.2 MB/s\", \"ETA 03:10\", \"Cancel\"),"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 849,
+          "path": "web/src/components/App.jsx",
+          "text": "              <LocalizedText source={\"Cancel\"} /></Button>"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 147,
+          "path": "web/src/components/AppHeaderMenu.jsx",
+          "text": "                    'Cancel',"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 86,
+          "path": "web/src/components/Chat/SendMessageModal.jsx",
+          "text": "        <Button disabled={sending} onClick={() => setOpen(false)}><LocalizedText source={\"Cancel\"} /></Button>"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 64,
+          "path": "web/src/components/Collections/CollectionAddItemModal.jsx",
+          "text": "                <LocalizedText source={\"Cancel\"} /></Button>"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 67,
+          "path": "web/src/components/Collections/CollectionShareModal.jsx",
+          "text": "                <LocalizedText source={\"Cancel\"} /></Button>"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 49,
+          "path": "web/src/components/Collections/CreateCollectionModal.jsx",
+          "text": "                <LocalizedText source={\"Cancel\"} /></Button>"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 40,
+          "path": "web/src/components/Messaging/BatchPrivateMessageModal.jsx",
+          "text": "                <LocalizedText source={\"Cancel\"} /></Button>"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 1109,
+          "path": "web/src/components/Pods/PortForwarding.jsx",
+          "text": "              <LocalizedText source={\"Cancel\"} /></Button>"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 154,
+          "path": "web/src/components/Rooms/RoomCreateModal.jsx",
+          "text": "          <LocalizedText source={\"Cancel\"} /></Button>"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 262,
+          "path": "web/src/components/Rooms/RoomJoinModal.jsx",
+          "text": "        <Button disabled={joining} onClick={() => close()}><LocalizedText source={\"Cancel\"} /></Button>"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 349,
+          "path": "web/src/components/Search/Detail/SearchFilterModal.jsx",
+          "text": "        <ActionButton onClick={() => setOpen(false)} tooltip=\"Close without applying these search filters.\">{localized('Cancel')}</ActionButton>"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 451,
+          "path": "web/src/components/ShareGroups/ShareGroups.jsx",
+          "text": "              <LocalizedText source={\"Cancel\"} /></Button>"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 539,
+          "path": "web/src/components/ShareGroups/ShareGroups.jsx",
+          "text": "              <LocalizedText source={\"Cancel\"} /></Button>"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 56,
+          "path": "web/src/components/System/Files/Explorer.jsx",
+          "text": "            'Cancel',"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 114,
+          "path": "web/src/components/System/Files/Explorer.jsx",
+          "text": "            'Cancel',"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 75,
+          "path": "web/src/components/System/Info/index.jsx",
+          "text": "            'Cancel',"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 104,
+          "path": "web/src/components/System/Info/index.jsx",
+          "text": "            'Cancel',"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 297,
+          "path": "web/src/components/System/MediaCore/PodChannelManagementPanel.jsx",
+          "text": "                                      <LocalizedText source={\"Cancel\"} /></Button>"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 249,
+          "path": "web/src/components/System/Options/EditModal.jsx",
+          "text": "          <LocalizedText source={\"Cancel\"} /></Button>"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 866,
+          "path": "web/src/components/System/QuarantineJury/index.jsx",
+          "text": "                <LocalizedText source={\"Cancel\"} /></Button>"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 28,
+          "path": "web/src/components/Transfers/Transfers.jsx",
+          "text": "    action === 'retry' ? 'Retry' : action === 'cancel' ? 'Cancel' : 'Remove',"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 193,
+          "path": "web/src/components/Transfers/TransfersHeader.jsx",
+          "text": "          {localizedBulkAction('Cancel', cancelOption)}"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 235,
+          "path": "web/src/components/Users/UserNoteModal.jsx",
+          "text": "        <Button onClick={handleClose}><LocalizedText source={\"Cancel\"} /></Button>"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 171,
+          "path": "web/src/components/Wishlist/CsvImportModal.jsx",
+          "text": "          trigger={<Button onClick={onClose}>{localized('Cancel')}</Button>}"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 176,
+          "path": "web/src/components/Wishlist/WishlistItemRow.jsx",
+          "text": "            ...interfaceTextProps('Cancel'),"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 177,
+          "path": "web/src/components/Wishlist/WishlistItemRow.jsx",
+          "text": "            content: localized('Cancel'),"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 258,
+          "path": "web/src/components/Wishlist/WishlistModal.jsx",
+          "text": "        <Button onClick={onClose}>{localized('Cancel')}</Button>"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 1574,
+          "path": "web/src/semantic-ui-react/index.jsx",
+          "text": "      {renderConfirmButton(cancelButton, 'Cancel', onCancel, false)}"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 11,
+      "source_id": "Cancel",
+      "source_index": 565,
+      "source_literal_occurrences": 33,
+      "source_sha256": "19766ed6ccb2f4a32778eed80d1928d2c87a18d7c275ccb163ec6709d3eb2e27"
+    },
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 38,
+          "path": "web/src/components/System/Shares/index.jsx",
+          "text": "    <LocalizedText source={\"Cancel Scan\"} /></ShrinkableButton>"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 0,
+      "source_id": "Cancel Scan",
+      "source_index": 566,
+      "source_literal_occurrences": 1,
+      "source_sha256": "5085d45a3a7c9248134623644e6ea2867a97bc3ca11893182b86216fc3328dd4"
+    },
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 5,
+      "matches": [
+        {
+          "kind": "other-exact-source-literal",
+          "line": 91,
+          "path": "crates/slskr/src/browse_store.rs",
+          "text": "        \"cancelled\" => \"Cancelled\","
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 880,
+          "path": "crates/slskr/src/extended_controller.rs",
+          "text": "        \"cancelled\" => \"Cancelled\","
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 1473,
+          "path": "crates/slskr/src/lib.rs",
+          "text": "        \"cancelled\" => \"Cancelled\","
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 19,
+          "path": "crates/slskr/src/search_persistence.rs",
+          "text": "        \"cancelled\" | \"canceled\" | \"Cancelled\" | \"Canceled\" => Some(\"cancelled\"),"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 29,
+          "path": "crates/slskr/src/search_persistence.rs",
+          "text": "        \"cancelled\" => \"Cancelled\","
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 446,
+          "path": "crates/slskr/src/transfer_controller.rs",
+          "text": "        \"cancelled\" => \"Cancelled\","
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 1028,
+          "path": "crates/slskr/src/transfer_controller.rs",
+          "text": "                \"Cancelled\" | \"Failed\" | \"Rejected\""
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 1077,
+          "path": "crates/slskr/src/transfer_controller.rs",
+          "text": "                \"Cancelled\" | \"Failed\" | \"Rejected\""
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 299,
+          "path": "crates/slskr/src/transfer_entry.rs",
+          "text": "        \"Cancelled\""
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 321,
+          "path": "crates/slskr/src/transfer_entry.rs",
+          "text": "    let completed_at = matches!(state, \"Completed\" | \"Failed\" | \"Cancelled\")"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 139,
+          "path": "crates/slskr/src/transfer_queue.rs",
+          "text": "                    \"cancelled\" | \"Cancelled\" => \"cancelled\","
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 218,
+          "path": "crates/slskr/src/virtual_soulfind_v2.rs",
+          "text": "                \"Cancelled\","
+        },
+        {
+          "kind": "localized-dynamic-status-value",
+          "line": 71,
+          "path": "web/src/components/Search/SearchStatusIcon.jsx",
+          "text": "    case 'cancelled': return 'Cancelled';"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 622,
+          "path": "web/src/components/Search/Searches.jsx",
+          "text": "          state: 'Cancelled',"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 900,
+          "path": "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx",
+          "text": "                    <Table.HeaderCell><LocalizedText source={\"Cancelled\"} /></Table.HeaderCell>"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 192,
+          "path": "web/src/components/System/AdminPolicies/index.jsx",
+          "text": "    retentionDownloadCancelled: String(getOption(retentionDownload, 'cancelled', 'Cancelled') ?? ''),"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 210,
+          "path": "web/src/components/System/AdminPolicies/index.jsx",
+          "text": "    retentionUploadCancelled: String(getOption(retentionUpload, 'cancelled', 'Cancelled') ?? ''),"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 53,
+          "path": "web/src/components/System/Jobs/index.jsx",
+          "text": "    case 'canceled': return interfaceText('Cancelled');"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 47,
+          "path": "web/src/components/TrafficTicker/TrafficTicker.jsx",
+          "text": "    state.includes('Cancelled') ||"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 71,
+          "path": "web/src/components/TrafficTicker/TrafficTicker.jsx",
+          "text": "    state.includes('Cancelled') ||"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 23,
+          "path": "web/src/components/Transfers/TransferList.jsx",
+          "text": "  'Completed, Cancelled': 'Cancelled',"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 20,
+          "path": "web/src/components/Transfers/TransfersHeader.jsx",
+          "text": "    case 'Cancelled':"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 56,
+          "path": "web/src/components/Transfers/TransfersHeader.jsx",
+          "text": "    case 'Cancelled':"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 169,
+          "path": "web/src/components/Transfers/TransfersHeader.jsx",
+          "text": "            { key: 'cancelled', text: localizedText('Cancelled'), value: 'Cancelled' },"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 213,
+          "path": "web/src/components/Transfers/TransfersHeader.jsx",
+          "text": "            { key: 'cancelled', text: localizedText('Cancelled'), value: 'Cancelled' },"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 80,
+          "path": "web/src/lib/searchState.js",
+          "text": "      cancelled: 'Cancelled',"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 71,
+          "path": "web/src/lib/setupHealthCheck.js",
+          "text": "  ).filter((item) => !['Completed', 'Cancelled', 'Failed'].includes(item.state)).length;"
+        },
+        {
+          "kind": "other-exact-source-literal",
+          "line": 266,
+          "path": "web/src/lib/transfers.js",
+          "text": "      return 'Cancelled';"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 23,
+      "source_id": "Cancelled",
+      "source_index": 567,
+      "source_literal_occurrences": 28,
+      "source_sha256": "d353a99eb4556847ceeb3c306ac886cf6b4fa13043eb1864b9aeb0607fd5f2cc"
+    },
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 2,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 169,
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "                  content={interfaceText(\"Cancel{all}\", { \"all\": (all) })}"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 172,
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "text": "                 {...interfaceTextProps(\"Cancel{all}\")}/>"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 0,
+      "source_id": "Cancel{all}",
+      "source_index": 568,
+      "source_literal_occurrences": 2,
+      "source_sha256": "58343c139839e9eae249a869acc719a7ef687857adb699f3b11e6df0edfc623b"
+    },
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "localized-source-map-entry",
+          "line": 31,
+          "path": "web/src/components/Search/SongIDEvidenceDetails.jsx",
+          "text": "  candidate_identity: 'Candidate identity',"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 0,
+      "source_id": "Candidate identity",
+      "source_index": 569,
+      "source_literal_occurrences": 1,
+      "source_sha256": "0f8e28d7cd4bd875877b5463e60114d043a30b346f1c04fe5deb79c6b6e54ac8"
+    },
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "localized-source-map-entry",
+          "line": 32,
+          "path": "web/src/components/Search/SongIDEvidenceDetails.jsx",
+          "text": "  candidate_match_found: 'Candidate match found',"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 0,
+      "source_id": "Candidate match found",
+      "source_index": 570,
+      "source_literal_occurrences": 1,
+      "source_sha256": "f7309c68b626de146589ff1003213b294562a699534739d97b6c3925c451355b"
+    },
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 46,
+          "path": "web/src/components/Search/DownloadActionPreviewModal.jsx",
+          "text": "              <List.Header><LocalizedText source={\"Candidate score\"} /></List.Header>"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 0,
+      "source_id": "Candidate score",
+      "source_index": 571,
+      "source_literal_occurrences": 1,
+      "source_sha256": "d975c7eae1c30f9c0464f81cfb9cd3b49aad8441390d8a0400da510b18b1df8b"
+    },
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "other-exact-source-literal",
+          "line": 215,
+          "path": "crates/slskr-web/src/search_planning_owners/search_previews.rs",
+          "text": "        lines.push(format!(\"Candidate score: {score}/100\"));"
+        },
+        {
+          "kind": "localized-popup-content",
+          "line": 828,
+          "path": "web/src/components/Search/Response.jsx",
+          "text": "                      : 'Candidate score: {score}/100'}"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 1,
+      "source_id": "Candidate score: {score}/100",
+      "source_index": 572,
+      "source_literal_occurrences": 2,
+      "source_sha256": "e88c9f2f4d91248326438913ffd41c1e50ed6679fa22ed5bdbd8d55ea694ca8b"
+    },
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "localized-popup-content",
+          "line": 827,
+          "path": "web/src/components/Search/Response.jsx",
+          "text": "                      ? 'Candidate score: {score}/100. Reasons: {reasons}'"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 0,
+      "source_id": "Candidate score: {score}/100. Reasons: {reasons}",
+      "source_index": 573,
+      "source_literal_occurrences": 1,
+      "source_sha256": "e0ccaf626017fbebbb0c6e2ade413497c84b2082b2833286cd9bb15e71e07d25"
+    },
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 319,
+          "path": "web/src/components/Search/FederatedTasteRecommendationsPanel.jsx",
+          "text": "            <LocalizedText source={\"Candidates\"} /><Label.Detail>{summary.candidateCount}</Label.Detail>"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 0,
+      "source_id": "Candidates",
+      "source_index": 574,
+      "source_literal_occurrences": 1,
+      "source_sha256": "fdc9c0f69d6aa8ead8ee5b9b734f38953215318ccfeb66ec0a99a4c2652c9b5a"
+    },
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 63,
+          "path": "web/src/components/Search/SongIDAnalysisResults.jsx",
+          "text": "          <LocalizedText source={\"Canonical\"} />{\" \"}{formatPercent(item.canonicalScore)}"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 0,
+      "source_id": "Canonical",
+      "source_index": 575,
+      "source_literal_occurrences": 1,
+      "source_sha256": "782621d03699b3741c7977a212b58f042e8bf0120a560e33307698c566e24e89"
+    },
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 2,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 454,
+          "path": "web/src/components/Search/SongIDAnalysisResults.jsx",
+          "text": "                          <LocalizedText source={\"Canonical support from\"} />{\" \"}{candidate.canonicalSupportCount} <LocalizedText source={\"track candidate(s)\"} /></List.Description>"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 511,
+          "path": "web/src/components/Search/SongIDAnalysisResults.jsx",
+          "text": "                          <LocalizedText source={\"Canonical support from\"} />{\" \"}{candidate.canonicalSupportCount} <LocalizedText source={\"track candidate(s)\"} /></List.Description>"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 0,
+      "source_id": "Canonical support from",
+      "source_index": 576,
+      "source_literal_occurrences": 2,
+      "source_sha256": "ff6c640baa80b451c20b24414ba63d7050b4c751463ea4f84cad8b9b70200749"
+    },
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 379,
+          "path": "web/src/components/Search/SongIDAnalysisResults.jsx",
+          "text": "                          <LocalizedText source={\"Canonical variants:\"} />{\" \"}{candidate.canonicalVariantCount}"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 0,
+      "source_id": "Canonical variants:",
+      "source_index": 577,
+      "source_literal_occurrences": 1,
+      "source_sha256": "92df3d489be84f57a4d40e70a9d93e13eb0494ac18ba9c9c85385028c2df9051"
+    },
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 2,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 501,
+          "path": "web/src/components/Player/VisualizerOverlayControls.jsx",
+          "text": "                content={interfaceText(\"Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.\")}"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 516,
+          "path": "web/src/components/Player/VisualizerOverlayControls.jsx",
+          "text": "               {...interfaceTextProps(\"Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.\")}/>"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 0,
+      "source_id": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.",
+      "source_index": 578,
+      "source_literal_occurrences": 2,
+      "source_sha256": "d56276356dfd7dc290367ff0c9f322b47a0f333c79a965bd335c1a19b4141c04"
+    },
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 738,
+          "path": "web/src/components/System/Network/index.jsx",
+          "text": "            <Label color=\"grey\"><LocalizedText source={\"Capabilities unavailable\"} /></Label>"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 0,
+      "source_id": "Capabilities unavailable",
+      "source_index": 579,
+      "source_literal_occurrences": 1,
+      "source_sha256": "a1611f8e3f194c4558c634dc7fb0b12effb6abbe16f294262cc977fc0fd11737"
+    },
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 431,
+          "path": "web/src/components/System/ExperienceSettings/index.jsx",
+          "text": "                  label={interfaceText(\"Capture local history\")}"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 0,
+      "source_id": "Capture local history",
+      "source_index": 580,
+      "source_literal_occurrences": 1,
+      "source_sha256": "013af8e5644de9628a78d35d22e93f34cd5ef7954e25d06158cb11030f2a559c"
+    },
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 2,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 429,
+          "path": "web/src/components/System/ExperienceSettings/index.jsx",
+          "text": "                  aria-label={interfaceText(\"Capture player history preference\")}"
+        },
+        {
+          "kind": "direct-localization-call",
+          "line": 435,
+          "path": "web/src/components/System/ExperienceSettings/index.jsx",
+          "text": "                 {...interfaceTextProps(\"Capture player history preference\")}/>"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 0,
+      "source_id": "Capture player history preference",
+      "source_index": 581,
+      "source_literal_occurrences": 2,
+      "source_sha256": "94f7089ea729096b24e2fe7cdc0b47fbc98ee4c8427580bf628126e6e8b90db9"
+    },
+    {
+      "caller_status": "direct-caller-pinned",
+      "localized_literal_caller_count": 1,
+      "matches": [
+        {
+          "kind": "direct-localization-call",
+          "line": 320,
+          "path": "web/src/components/System/Logs/index.jsx",
+          "text": "                <Table.HeaderCell><LocalizedText source={\"Category\"} /></Table.HeaderCell>"
+        }
+      ],
+      "nonlocalized_exact_literal_count": 0,
+      "source_id": "Category",
+      "source_index": 582,
+      "source_literal_occurrences": 1,
+      "source_sha256": "292c06f0045a45d044be282b132b7055ae224e18e02b523a451d8ea96fadfd24"
+    }
+  ],
+  "search_scope": "Tracked runtime source under web/src, crates/slskr-web/src, and crates/slskr/src; exact quoted string literals in JS/JSX/TS/TSX/Rust; locale catalogs, test trees, and docs excluded.",
+  "source_and_caller_pins_reverified": true,
+  "source_context_rows": 20,
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_window": [
+    563,
+    582
+  ],
+  "supporting_pins": 30
+}

@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "scope_note": "Follow-ups are caller/source observations only. They are not catalog candidates and are outside the 120 assigned cells.",
+  "items": [
+    {
+      "id": "CALLER-565-Cancel",
+      "kind": "caller-side-localization-bypass",
+      "source_id": "Cancel",
+      "summary": "The caller-search evidence has 11 exact raw Cancel literals outside localization calls. Follow up on these caller surfaces; do not add catalog candidates for them.",
+      "evidence": [
+        {
+          "path": "crates/slskr-web/src/native_row_rendering.rs",
+          "line": 490
+        },
+        {
+          "path": "crates/slskr-web/src/route_data_projection.rs",
+          "line": 447
+        },
+        {
+          "path": "crates/slskr-web/src/route_data_projection.rs",
+          "line": 474
+        },
+        {
+          "path": "crates/slskr-web/src/route_reference_panels.rs",
+          "line": 145
+        },
+        {
+          "path": "crates/slskr-web/src/route_workflow_rendering.rs",
+          "line": 300
+        },
+        {
+          "path": "web/src/components/AppHeaderMenu.jsx",
+          "line": 147
+        },
+        {
+          "path": "web/src/components/System/Files/Explorer.jsx",
+          "line": 56
+        },
+        {
+          "path": "web/src/components/System/Files/Explorer.jsx",
+          "line": 114
+        },
+        {
+          "path": "web/src/components/System/Info/index.jsx",
+          "line": 75
+        },
+        {
+          "path": "web/src/components/System/Info/index.jsx",
+          "line": 104
+        },
+        {
+          "path": "web/src/semantic-ui-react/index.jsx",
+          "line": 1574
+        }
+      ]
+    },
+    {
+      "id": "CALLER-572-Candidate-score",
+      "kind": "caller-side-localization-bypass",
+      "source_id": "Candidate score: {score}/100",
+      "summary": "One native preview emits the exact English label directly; route this for caller localization, not a catalog correction.",
+      "evidence": [
+        {
+          "path": "crates/slskr-web/src/search_planning_owners/search_previews.rs",
+          "line": 215
+        }
+      ]
+    },
+    {
+      "id": "CALLER-568-Cancel-all",
+      "kind": "caller-side-source-rewrite",
+      "source_id": "Cancel{all}",
+      "summary": "The caller supplies literal English “ Selected” for multiple selections. All six assigned locale cells remain held until the suffix is localized or the caller is rewritten.",
+      "evidence": [
+        {
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "line": 169
+        },
+        {
+          "path": "web/src/components/Transfers/TransferGroup.jsx",
+          "line": 172
+        }
+      ]
+    },
+    {
+      "id": "OUT-OF-SCOPE-track-candidate-s",
+      "kind": "adjacent-catalog-key-review",
+      "source_id": "track candidate(s)",
+      "summary": "This adjacent key is outside the assigned W563–582 cells. Current translations read as tracking candidates/people, so route it for a separate source-key review. No replacement text is proposed here.",
+      "evidence": [
+        {
+          "path": "web/src/components/Search/SongIDAnalysisResults.jsx",
+          "line": 454
+        },
+        {
+          "path": "web/src/components/Search/SongIDAnalysisResults.jsx",
+          "line": 511
+        }
+      ],
+      "current_targets": {
+        "ja": "候補を追跡する",
+        "ko": "트랙 후보자",
+        "pt-BR": "rastrear candidato(s)",
+        "vi": "theo dõi (các) ứng viên",
+        "zh-Hans": "跟踪候选人",
+        "zh-Hant": "跟蹤候選人"
+      }
+    }
+  ]
+}

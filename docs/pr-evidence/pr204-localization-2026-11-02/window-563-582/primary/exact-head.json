@@ -1,0 +1,116 @@
+{
+  "all_240_source_current_hashes": "pass",
+  "caller_context_records": 20,
+  "caller_pin_records": 88,
+  "caller_search_status": "pass",
+  "catalogs": {
+    "ar": {
+      "blob_oid": "f638acfe3cf10b48c16e759979b57b93c7cf4dd4",
+      "bytes": 511721,
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "sha256": "a574702d921204c7554bc5320dfd1b245ee346000fb7c6e9c36e85b4bb709d3d",
+      "source_keys": 5437
+    },
+    "de": {
+      "blob_oid": "5733187cc10c9fd170eee06b9f7f98289757fe04",
+      "bytes": 442490,
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "sha256": "26876a741733ae9cb73aafc4086471eb7bc549d5738a1584c2bddc32b98752f2",
+      "source_keys": 5437
+    },
+    "es": {
+      "blob_oid": "55de91139774cf8f827f0327a2623f2210b1527f",
+      "bytes": 443196,
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "sha256": "f315b7da7a9cde6629122d1c874fb0102f4424128a7d12b7f57c0f71e06fcdd1",
+      "source_keys": 5437
+    },
+    "fr": {
+      "blob_oid": "93b80257d510d840012e2e5b411c59e70a492790",
+      "bytes": 454220,
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "sha256": "17c65156f796530f51e7de28b99db5dab0f328e303b3475bf5f9858e3f0e232b",
+      "source_keys": 5437
+    },
+    "hi": {
+      "blob_oid": "a0261af2feec6570e0d7f4efa58be35b7783aade",
+      "bytes": 674824,
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "sha256": "99358bd6517e4827493af5d335c4ecc909b27bcaad73bb882745db3681201e82",
+      "source_keys": 5437
+    },
+    "id": {
+      "blob_oid": "2cbfe23de993f020c0a430ae826d24a2578821b7",
+      "bytes": 408886,
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "sha256": "262b2244cd24ec7a328dc12a019a4a24c9e0b0f7a49ca951bbef1aeacaf7e9ab",
+      "source_keys": 5437
+    },
+    "ja": {
+      "blob_oid": "668833a097b829aabef172eb2087c967084ff652",
+      "bytes": 490510,
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "sha256": "56131b7611bbc9ccd6a61d732d24a7ee657a8b0342b280b6409cff88429115f3",
+      "source_keys": 5437
+    },
+    "ko": {
+      "blob_oid": "67db297a7d6fb3c98ff12e0bc3b41165bd5d23ff",
+      "bytes": 441393,
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "sha256": "c5eebc5cf2a5645f8c14fd34a5535fcf97c95c43eb639c58b784954c5b1af754",
+      "source_keys": 5437
+    },
+    "pt-BR": {
+      "blob_oid": "0d93a5c4403bfcf3c74248c48ea5c5d6cacb35ac",
+      "bytes": 437937,
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "sha256": "10e98549809b71bda5d32ad8e815bcb7814d60800a12ccb321733f3c820607eb",
+      "source_keys": 5437
+    },
+    "vi": {
+      "blob_oid": "77d7a90f67df012686204a9efa6540ad0ef37475",
+      "bytes": 473472,
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "sha256": "3c8c5f5914cbe2a86c8a1f74e490b7f8731f8b926d5eee140a557e2de61dec5e",
+      "source_keys": 5437
+    },
+    "zh-Hans": {
+      "blob_oid": "1269a1aa5255f12dd0314290b68629a39b85619d",
+      "bytes": 382092,
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "sha256": "91fe8b24e70c339d80acbb9e1a37d162f9c1262c5475731fe77300a11c4b0f33",
+      "source_keys": 5437
+    },
+    "zh-Hant": {
+      "blob_oid": "53d2d154135baeb074bf79d84969a37443cc367c",
+      "bytes": 382800,
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "sha256": "953b40004f4991987a4fcfb759afc3577469f01cea922c1fabec36376fc9bbf2",
+      "source_keys": 5437
+    }
+  },
+  "catalogs_modified": false,
+  "checks_run": false,
+  "direct_localization_caller_count": 20,
+  "live_pr": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "7e99edecbdea10580cc5e8d198930a82f076b834",
+    "isDraft": true,
+    "mergeStateStatus": "CLEAN",
+    "mergeable": "MERGEABLE",
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "live_pr_head_reverified": "7e99edecbdea10580cc5e8d198930a82f076b834",
+  "no_direct_localization_caller_source_ids": [],
+  "pr_tree": "55de069f88c197ab8ddd3c773c1f10e5cb86abd5",
+  "pull_request": 204,
+  "repository": "snapetech-org/slskR",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_is_merge_base": true,
+  "source_runtime_diff_excluding_locales": [],
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "verified_head": "7e99edecbdea10580cc5e8d198930a82f076b834",
+  "worktree_status": ""
+}

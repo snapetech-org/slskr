@@ -1,0 +1,62 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pr_number": 204,
+  "input_head": "7e99edecbdea10580cc5e8d198930a82f076b834",
+  "input_tree": "55de069f88c197ab8ddd3c773c1f10e5cb86abd5",
+  "window": [
+    563,
+    582
+  ],
+  "cross_review_rows": 240,
+  "applied_rows": 76,
+  "applied_dispositions": {
+    "accepted_primary": 66,
+    "refined": 6,
+    "missed": 2,
+    "root_adjudicated_overrides": 2
+  },
+  "updates_by_locale": {
+    "ar": 8,
+    "es": 5,
+    "fr": 6,
+    "hi": 9,
+    "id": 5,
+    "ja": 8,
+    "ko": 7,
+    "pt-BR": 7,
+    "vi": 9,
+    "de": 4,
+    "zh-Hans": 4,
+    "zh-Hant": 4
+  },
+  "catalog_count": 12,
+  "keys_per_locale": {
+    "ar": 5437,
+    "de": 5437,
+    "es": 5437,
+    "fr": 5437,
+    "hi": 5437,
+    "id": 5437,
+    "ja": 5437,
+    "ko": 5437,
+    "pt-BR": 5437,
+    "vi": 5437,
+    "zh-Hans": 5437,
+    "zh-Hant": 5437
+  },
+  "held_rows": 12,
+  "no_op_rows": 152,
+  "native_speaker_approval": false,
+  "tests_builds_scans_ci_workflows_releases_tags_merges": false,
+  "browser_review_at_exact_head": false,
+  "primary_packet_sha256": "6877ec3993379826689d17b2d5d4bbb812661d19ce1f7d9ebc90cf38877bd589",
+  "cross_review_packet_sha256": "1d078fd3528e7c6d49adf0068fc3c8dd62590cb4c8fa71088696c566e4ff9a26",
+  "root_adjudicated_overrides": 2,
+  "raw_cross_review_dispositions": {
+    "accepted": 68,
+    "refined": 6,
+    "missed": 2,
+    "held": 12,
+    "no_op": 152
+  }
+}

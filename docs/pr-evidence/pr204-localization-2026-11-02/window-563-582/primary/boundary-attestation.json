@@ -1,0 +1,152 @@
+{
+  "current_window": {
+    "held_cells": 12,
+    "held_source_id": "Cancel{all}",
+    "held_source_index": 568,
+    "hold_reason": "The caller supplies literal English “ Selected” in {all}; catalog targets cannot localize that suffix.",
+    "indices": [
+      563,
+      582
+    ],
+    "no_op_cells": 0,
+    "source_ids": [
+      "Can create content-linked pods",
+      "Canary",
+      "Cancel",
+      "Cancel Scan",
+      "Cancelled",
+      "Cancel{all}",
+      "Candidate identity",
+      "Candidate match found",
+      "Candidate score",
+      "Candidate score: {score}/100",
+      "Candidate score: {score}/100. Reasons: {reasons}",
+      "Candidates",
+      "Canonical",
+      "Canonical support from",
+      "Canonical variants:",
+      "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.",
+      "Capabilities unavailable",
+      "Capture local history",
+      "Capture player history preference",
+      "Category"
+    ]
+  },
+  "overlapping_indices": [],
+  "overlapping_source_ids": [],
+  "pr_head": "7e99edecbdea10580cc5e8d198930a82f076b834",
+  "pr_tree": "55de069f88c197ab8ddd3c773c1f10e5cb86abd5",
+  "previous_window": {
+    "held_cells": 0,
+    "indices": [
+      543,
+      562
+    ],
+    "no_op_cells": 12,
+    "no_op_decisions": [
+      {
+        "current_target_sha256": "c6c25b9b516fca479b563688274593111288fbae3adb68ef85c07f9ca32fd916",
+        "locale": "ar",
+        "source_id": "Calendar",
+        "source_sha256": "d5d0a30b517e3beab07609d7e54c378db5e15066f22280af453f587f7eec7474"
+      },
+      {
+        "current_target_sha256": "36f1504f51182fee12f9ec58467cf09c2c5f871ef4f242af4a8a56713827ad57",
+        "locale": "de",
+        "source_id": "Calendar",
+        "source_sha256": "d5d0a30b517e3beab07609d7e54c378db5e15066f22280af453f587f7eec7474"
+      },
+      {
+        "current_target_sha256": "68de201e0ef3fd85950e35462b7342c40fe59a47e306f913f0e74da0357c6722",
+        "locale": "es",
+        "source_id": "Calendar",
+        "source_sha256": "d5d0a30b517e3beab07609d7e54c378db5e15066f22280af453f587f7eec7474"
+      },
+      {
+        "current_target_sha256": "b65d9008e899b623f856565410108f289f8ee03e26e09f45487e154963f008a5",
+        "locale": "fr",
+        "source_id": "Calendar",
+        "source_sha256": "d5d0a30b517e3beab07609d7e54c378db5e15066f22280af453f587f7eec7474"
+      },
+      {
+        "current_target_sha256": "6527f9069857b1e8419d91f06d9974c1407ad31abc480f592610e5dabbad9d83",
+        "locale": "hi",
+        "source_id": "Calendar",
+        "source_sha256": "d5d0a30b517e3beab07609d7e54c378db5e15066f22280af453f587f7eec7474"
+      },
+      {
+        "current_target_sha256": "36f1504f51182fee12f9ec58467cf09c2c5f871ef4f242af4a8a56713827ad57",
+        "locale": "id",
+        "source_id": "Calendar",
+        "source_sha256": "d5d0a30b517e3beab07609d7e54c378db5e15066f22280af453f587f7eec7474"
+      },
+      {
+        "current_target_sha256": "e6f6d06c444531e329f2862930b7f343dcabb882ff47d6617a27006bb03f3e10",
+        "locale": "ja",
+        "source_id": "Calendar",
+        "source_sha256": "d5d0a30b517e3beab07609d7e54c378db5e15066f22280af453f587f7eec7474"
+      },
+      {
+        "current_target_sha256": "965833d955bd6c16d185e01737f998f56ea8d3918944a7227dfcee415bfae12f",
+        "locale": "ko",
+        "source_id": "Calendar",
+        "source_sha256": "d5d0a30b517e3beab07609d7e54c378db5e15066f22280af453f587f7eec7474"
+      },
+      {
+        "current_target_sha256": "b667fcdd17dac31192947a286a66c4d8bef6c6f0499a9d1fec5ab4f12372bee1",
+        "locale": "pt-BR",
+        "source_id": "Calendar",
+        "source_sha256": "d5d0a30b517e3beab07609d7e54c378db5e15066f22280af453f587f7eec7474"
+      },
+      {
+        "current_target_sha256": "be87b3025462ef7e287fbe2bf0fac627db802545260504e5356dab401c2cf4c0",
+        "locale": "vi",
+        "source_id": "Calendar",
+        "source_sha256": "d5d0a30b517e3beab07609d7e54c378db5e15066f22280af453f587f7eec7474"
+      },
+      {
+        "current_target_sha256": "a00f295cfbb0b1b3cb12ee87f2a0529da73839215f66ec758797a4d867e449fd",
+        "locale": "zh-Hans",
+        "source_id": "Calendar",
+        "source_sha256": "d5d0a30b517e3beab07609d7e54c378db5e15066f22280af453f587f7eec7474"
+      },
+      {
+        "current_target_sha256": "6180b5e1ceec8c6203e900b8a9e0e6be2f32129a1210728366dfa918d674d7c4",
+        "locale": "zh-Hant",
+        "source_id": "Calendar",
+        "source_sha256": "d5d0a30b517e3beab07609d7e54c378db5e15066f22280af453f587f7eec7474"
+      }
+    ],
+    "no_op_source_id": "Calendar",
+    "no_op_source_index": 562,
+    "packet_path": "/mnt/disks/scratch/task-scratch/slskr-pr204-W543-562-primary-20261102/packet",
+    "sha256sums_file_sha256": "4c0df1173bd330f30fe1fba0bef90ee95239d0f29d2f318955ba5e5e5e9a0f7d",
+    "source_ids": [
+      "By Tag",
+      "By Tags (AND)",
+      "Bypass cache (force fresh retrieval)",
+      "Bypass the equalizer without losing your slider settings.",
+      "Bytes Served",
+      "Bytes by Source",
+      "Byzantine",
+      "CBR",
+      "CPU Seconds",
+      "CSV File",
+      "CSV Text",
+      "CSV did not contain any track rows",
+      "CSV text is required.",
+      "Cache Hits:",
+      "Cache Misses:",
+      "Cache Performance",
+      "Cache Size:",
+      "Cache cleared: {entriesCleared} entries, {bytesFreed} bytes freed",
+      "Cache performance and retrieval statistics",
+      "Calendar"
+    ],
+    "verified_packet_files": 25
+  },
+  "pull_request": 204,
+  "repository": "snapetech-org/slskR",
+  "schema_version": 1,
+  "status": "pass"
+}
