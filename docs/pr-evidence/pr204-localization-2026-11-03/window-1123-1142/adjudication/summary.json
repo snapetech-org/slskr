@@ -1,0 +1,33 @@
+{
+  "title": "Root ratification: slskR PR #204 W1123-W1142",
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "head": "dba3af4fcddf494bc0ca7da48d3f61d6f75f769c",
+  "tree": "7d83b6559bc28ee385f7da9b7c84eb46a91388f6",
+  "window": "W1123-W1142",
+  "cellCount": 240,
+  "sourceCount": 20,
+  "localeCount": 12,
+  "rootDispositionCounts": {
+    "RATIFY_CURRENT_TARGET": 162,
+    "RATIFY_PRIMARY_CANDIDATE": 31,
+    "RATIFY_BLIND_CANDIDATE": 24,
+    "RATIFY_CROSS_AUDIT_CANDIDATE": 3,
+    "HOLD_NO_DIRECT_LOCALIZED_CALLER": 12,
+    "HOLD_QUALIFIED_TERMINOLOGY_REVIEW": 8
+  },
+  "approvedChangeCount": 58,
+  "heldCellCount": 20,
+  "callerlessHoldCount": 12,
+  "terminologyHoldCount": 8,
+  "orderedKeyCount": 5441,
+  "orderedKeySetMatchesAcrossAll12Locales": true,
+  "placeholderMarkupNumericAndHttpsMismatches": 0,
+  "catalogKeyOrderWasNotModified": true,
+  "nativeSpeakerApproval": false,
+  "headedBrowserAcceptance": false,
+  "repositoryOrPullRequestMutated": false,
+  "testsBuildsScansCIWorkflowsRun": false,
+  "reviewBasis": "Candidate-free primary and independent blind reviews followed by exact-head cross-audit. All 240 cells are ratified from pinned live input; machine review is not qualified native-speaker approval."
+}

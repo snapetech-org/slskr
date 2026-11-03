@@ -1,0 +1,12 @@
+{
+  "url": "https://github.com/snapetech-org/slskr/pull/204",
+  "repository": "snapetech-org/slskr",
+  "number": 204,
+  "state": "open",
+  "merged": false,
+  "base": "main",
+  "headBranch": "codex/slskr-l10n-audit-20261030",
+  "headSha": "dba3af4fcddf494bc0ca7da48d3f61d6f75f769c",
+  "headTree": "7d83b6559bc28ee385f7da9b7c84eb46a91388f6",
+  "verification": "Requeried live GitHub PR API before writing this ledger; live head SHA and branch match the candidate-free input manifest."
+}

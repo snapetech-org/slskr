@@ -1,0 +1,175 @@
+{
+  "blindPrimaryComparison": {
+    "blindProposalCount": 57,
+    "crossAuditDisagreementRows": 55,
+    "differentCoarseDispositionCount": 24,
+    "differentEffectiveTargetCount": 35,
+    "primaryProposalCount": 35
+  },
+  "blindPrimaryInputsMatch": true,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "callerPinsValidated": true,
+  "callerReferenceCount": 64,
+  "catalogPinsValidated": true,
+  "cellCount": 240,
+  "disagreementExtract": "disagreements.jsonl",
+  "head": "dba3af4fcddf494bc0ca7da48d3f61d6f75f769c",
+  "historicalSourceOrdinals": "not claimed; current one-based sorted catalog positions are used",
+  "holdCount": 20,
+  "ledger": "cross-audit-ledger.jsonl",
+  "livePrVerification": "live-pr-verification.json",
+  "localeCount": 12,
+  "nativeSpeakerApproval": "pending; machine-assisted review is not qualified native-speaker approval",
+  "noDirectLocalizedCallerSourceIds": [
+    "Directory {directory} is locked"
+  ],
+  "outcomeCounts": {
+    "HOLD_NO_DIRECT_CALLER": 12,
+    "HOLD_TERM": 8,
+    "KEEP_CURRENT": 162,
+    "WIN_BLIND": 24,
+    "WIN_CROSS_AUDIT": 3,
+    "WIN_PRIMARY": 31
+  },
+  "outcomeCountsByLocale": {
+    "ar": {
+      "HOLD_NO_DIRECT_CALLER": 1,
+      "KEEP_CURRENT": 12,
+      "WIN_BLIND": 1,
+      "WIN_PRIMARY": 6
+    },
+    "de": {
+      "HOLD_NO_DIRECT_CALLER": 1,
+      "HOLD_TERM": 1,
+      "KEEP_CURRENT": 14,
+      "WIN_BLIND": 1,
+      "WIN_PRIMARY": 3
+    },
+    "es": {
+      "HOLD_NO_DIRECT_CALLER": 1,
+      "KEEP_CURRENT": 15,
+      "WIN_BLIND": 2,
+      "WIN_PRIMARY": 2
+    },
+    "fr": {
+      "HOLD_NO_DIRECT_CALLER": 1,
+      "KEEP_CURRENT": 11,
+      "WIN_BLIND": 4,
+      "WIN_PRIMARY": 4
+    },
+    "hi": {
+      "HOLD_NO_DIRECT_CALLER": 1,
+      "HOLD_TERM": 2,
+      "KEEP_CURRENT": 14,
+      "WIN_BLIND": 1,
+      "WIN_PRIMARY": 2
+    },
+    "id": {
+      "HOLD_NO_DIRECT_CALLER": 1,
+      "KEEP_CURRENT": 13,
+      "WIN_BLIND": 3,
+      "WIN_PRIMARY": 3
+    },
+    "ja": {
+      "HOLD_NO_DIRECT_CALLER": 1,
+      "HOLD_TERM": 1,
+      "KEEP_CURRENT": 17,
+      "WIN_BLIND": 1
+    },
+    "ko": {
+      "HOLD_NO_DIRECT_CALLER": 1,
+      "HOLD_TERM": 1,
+      "KEEP_CURRENT": 13,
+      "WIN_BLIND": 3,
+      "WIN_CROSS_AUDIT": 1,
+      "WIN_PRIMARY": 1
+    },
+    "pt-BR": {
+      "HOLD_NO_DIRECT_CALLER": 1,
+      "KEEP_CURRENT": 15,
+      "WIN_BLIND": 2,
+      "WIN_PRIMARY": 2
+    },
+    "vi": {
+      "HOLD_NO_DIRECT_CALLER": 1,
+      "HOLD_TERM": 1,
+      "KEEP_CURRENT": 13,
+      "WIN_BLIND": 4,
+      "WIN_PRIMARY": 1
+    },
+    "zh-Hans": {
+      "HOLD_NO_DIRECT_CALLER": 1,
+      "HOLD_TERM": 1,
+      "KEEP_CURRENT": 12,
+      "WIN_BLIND": 1,
+      "WIN_CROSS_AUDIT": 1,
+      "WIN_PRIMARY": 4
+    },
+    "zh-Hant": {
+      "HOLD_NO_DIRECT_CALLER": 1,
+      "HOLD_TERM": 1,
+      "KEEP_CURRENT": 13,
+      "WIN_BLIND": 1,
+      "WIN_CROSS_AUDIT": 1,
+      "WIN_PRIMARY": 3
+    }
+  },
+  "pullRequest": 204,
+  "recommendedWinnerCount": 58,
+  "repository": "snapetech-org/slskr",
+  "repositoryOrPrModified": false,
+  "rtlSensitiveNotesPreserved": true,
+  "sourceCount": 20,
+  "sourceCurrentContextAndCallerRowsValidated": true,
+  "sourcePositions": {
+    "first": 1123,
+    "last": 1142,
+    "nextBoundary": "Disable karaoke mode",
+    "previousBoundary": "Diagnostic bundle copied"
+  },
+  "specificFindings": {
+    "authorityTerms": "Keep six current target cells held: de, ja, ko, vi, zh-Hans, zh-Hant. The caller confirms the key interpolation but does not resolve identity-authority vs permission terminology.",
+    "directoryRequiredApiNote": "Recommend removing the unsupported “API fields: directory” suffix in all twelve locales. The pinned English server error and localized display source are only “Directory is required”; the API route context does not make that appended field note part of the source string.",
+    "frenchDirectoryReport": "Recommend Rapport sur les répertoires; the caller is a Compatibility Dashboard report of filesystem directories.",
+    "frenchLoopback": "Recommend loopback instead of bouclage; this is the network deployment mode.",
+    "hindiHttpsListener": "Hold both the standalone listener label and the safety warning sentence pending a qualified network term; do not promote लिसनर or retain श्रोता as approved.",
+    "httpsWarningOtherSixLocales": {
+      "es": "Recommend blind service-of-listening wording and retain localhost.",
+      "fr": "Recommend blind service d’écoute wording and retain localhost.",
+      "hi": "Hold pending the listener term; current message has the right off polarity but uses a human-listener word and transliterates localhost.",
+      "id": "Recommend primary listener loanword and explicit keep-disabled instruction with exact localhost.",
+      "pt-BR": "Recommend blind serviço de escuta wording and retain exact localhost.",
+      "vi": "Recommend blind dịch vụ lắng nghe wording, keep the option off, and retain exact localhost."
+    },
+    "indonesianDimensions": "Recommend Dimensi/Dimensi: instead of Ukuran/Ukuran: for image width-by-height labels.",
+    "indonesianHttpsListener": "Recommend Nonaktifkan listener HTTPS and the safety sentence with the same listener loan term; it is a concise network-setting label and retains localhost.",
+    "koreanDirectory": "Recommend consistent 디렉터리 spelling for Directory and Directory report; use 디렉터리가 필요합니다. for Directory is required (no API suffix, normal full stop).",
+    "vietnameseCrossfade": "Recommend primary Tắt hiệu ứng crossfade; the caller describes a five-second audio fade between queue items and the code toggles crossfadeEnabled. Native-speaker confirmation remains pending.",
+    "vietnameseHttpsListener": "Recommend Tắt dịch vụ lắng nghe HTTPS; repeat this phrase in the warning and preserve localhost, then keep the option disabled."
+  },
+  "structuralValidation": {
+    "allStructuralAndRequiredTechnicalChecksPass": true,
+    "httpsAcronymLosses": 0,
+    "localhostRawLiteralPreservedRows": 11,
+    "loopbackConceptRows": 12,
+    "loopbackTermPreservedRows": 12,
+    "markupParityErrors": 0,
+    "numericSourceValues": 0,
+    "numericTokenLosses": 0,
+    "placeholderParityErrors": 0,
+    "primaryAndBlindProposalHttpsAcronymLosses": 0,
+    "primaryAndBlindProposalPlaceholderMarkupNumericMismatches": 0,
+    "technicalLocalhostRows": 12
+  },
+  "testsBuildsScansBrowserOrCiRun": false,
+  "title": "Independent cross-audit: slskR PR #204 W1123-W1142",
+  "tree": "7d83b6559bc28ee385f7da9b7c84eb46a91388f6",
+  "verifiedInputFiles": {
+    "README.md": "35aaccafdcc395e2dd56dd0227fe6c6d6799e8f76512965dab4be74694fb4f9b",
+    "catalog-file-pins.json": "64eae4d7c7f59b758c331fcba6f1ee2db0a84a8fe17678233036d2a99265fc9b",
+    "current-target-cells.jsonl": "bdc047e36f0339195cbeaf44aef851bdc76df9e15e61ca11412b6b9bed849f05",
+    "manifest.json": "bf4fbf438f51b9428118919d5df7f518d5ec28cec350649c766bfdc6e13a0676",
+    "source-contexts.jsonl": "c1f051f59f51c4a75f7eb7375707192991fb3b67c42dcf059eba18b894154bc8"
+  },
+  "window": "W1123-W1142; 20 source IDs × 12 locales = 240 cells"
+}

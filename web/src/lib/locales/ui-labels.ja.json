@@ -4964,7 +4964,7 @@
   "Destination is not allowed by the Pod private-gateway policy": "Podのプライベートゲートウェイポリシーで宛先が許可されていません。",
   "Destination must be relative and stay within the download root": "宛先は相対パスで、ダウンロードルート内に収まる必要があります。 (APIフィールド： \"destination\")",
   "Destination port must be between 1 and 65535": "宛先ポートは1から65535の範囲で指定してください。 (APIフィールド： \"destinationPort\")",
-  "Directory is required": "ディレクトリが必要です。 (APIフィールド： \"directory\")",
+  "Directory is required": "ディレクトリが必要です。",
   "Discovery Graph request is required.": "探索グラフのリクエストが必要です。",
   "DisplayName is required.": "DisplayNameが必要です。 (APIフィールド： \"displayName\")",
   "Domain is required": "ドメインが必要です。 (APIフィールド： \"domain\")",
