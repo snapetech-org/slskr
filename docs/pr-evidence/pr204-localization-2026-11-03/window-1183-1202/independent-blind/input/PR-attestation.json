@@ -1,0 +1,17 @@
+{
+  "baseRefName": "main",
+  "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "draft": true,
+  "headRefName": "codex/slskr-l10n-audit-20261030",
+  "headRefOid": "8e60a51ec25967df115a3fd8c42872abbec58d8a",
+  "localWorktree": "/mnt/disks/scratch/task-worktrees/localization-20261103/slskr-pr204-w1123-1142-apply",
+  "localWorktreeBranch": "codex/slskr-pr204-w1123-20261103",
+  "localWorktreeHead": "8e60a51ec25967df115a3fd8c42872abbec58d8a",
+  "localWorktreeStatusClean": true,
+  "localWorktreeTree": "c2ec31432943730f0a8f3ee87687c46b6a4400c2",
+  "pullRequest": 204,
+  "remotePullRef": "refs/pull/204/head",
+  "remotePullRefHead": "8e60a51ec25967df115a3fd8c42872abbec58d8a",
+  "repository": "snapetech-org/slskR",
+  "state": "open"
+}

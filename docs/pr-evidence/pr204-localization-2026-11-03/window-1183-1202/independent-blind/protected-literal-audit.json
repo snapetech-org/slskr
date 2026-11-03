@@ -1,0 +1,24 @@
+{
+  "candidateViolations": [],
+  "currentValueViolations": [
+    {
+      "currentCount": 0,
+      "literal": "CDN",
+      "locale": "hi",
+      "position": 1198,
+      "sourceCount": 1
+    }
+  ],
+  "exactProtectedTermsBySource": {
+    "1188": [
+      "DisplayName"
+    ],
+    "1193": [
+      "ReplayGain"
+    ],
+    "1198": [
+      "CDN"
+    ]
+  },
+  "note": "No runtime expressions were evaluated. Current Hindi W1198 transliterates CDN as सीडीएन; W1198 is held in all locales and future candidates must preserve the exact acronym."
+}

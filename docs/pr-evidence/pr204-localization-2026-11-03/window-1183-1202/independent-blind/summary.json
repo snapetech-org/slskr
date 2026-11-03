@@ -1,0 +1,82 @@
+{
+  "artifact": "slskR PR #204 independent blind semantic review W1183-W1202",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "callerReferencesVerified": 37,
+  "candidateFreeChecksumListSha256": "eec2b61e39754e909ed0bb9c31ce703ddea12f774787fdd2039cea6b8434f18e",
+  "candidateFreeManifestSha256": "1fd98200a643810a07df00665fc5f6de986e835a47b59d4f7d08f34d49b579b0",
+  "changesByLocale": {
+    "ar": 8,
+    "de": 5,
+    "es": 5,
+    "fr": 3,
+    "hi": 6,
+    "id": 6,
+    "ja": 5,
+    "ko": 7,
+    "pt-BR": 4,
+    "vi": 12,
+    "zh-Hans": 8,
+    "zh-Hant": 8
+  },
+  "changesByPosition": {
+    "1183": 3,
+    "1184": 12,
+    "1188": 11,
+    "1189": 1,
+    "1190": 4,
+    "1191": 9,
+    "1194": 3,
+    "1195": 3,
+    "1197": 11,
+    "1199": 2,
+    "1200": 3,
+    "1201": 3,
+    "1202": 12
+  },
+  "decisionCounts": {
+    "accept-current": 151,
+    "correction": 58,
+    "hold": 12,
+    "refinement": 19
+  },
+  "head": "8e60a51ec25967df115a3fd8c42872abbec58d8a",
+  "holdCount": 12,
+  "holdsByPosition": {
+    "1198": 12
+  },
+  "isDraft": true,
+  "localeCount": 12,
+  "markupChecks": 240,
+  "markupMismatchCount": 0,
+  "nativeSpeakerApproval": false,
+  "numericTokenChecks": 240,
+  "numericTokenMismatchCount": 0,
+  "placeholderChecks": 240,
+  "placeholderMismatchCount": 0,
+  "protectedLiteralCandidateViolations": 0,
+  "protectedLiteralCurrentViolationDetails": [
+    {
+      "currentCount": 0,
+      "literal": "CDN",
+      "locale": "hi",
+      "position": 1198,
+      "sourceCount": 1
+    }
+  ],
+  "protectedLiteralCurrentViolations": 1,
+  "pullRequest": 204,
+  "pullRequestUrl": "https://github.com/snapetech-org/slskr/pull/204",
+  "rank1198Boundary": "hold all 12 locales pending product-approved domain-fronting terminology; preserve exact CDN in any future target",
+  "recommendedChanges": 77,
+  "repository": "snapetech-org/slskr",
+  "repositoryOrPREdited": false,
+  "reviewMode": "independent blind; source/current and caller evidence only; primary ledger and prior targets not inspected",
+  "reviewedCells": 240,
+  "runtimeExpressionsEvaluated": false,
+  "sourceCount": 20,
+  "state": "OPEN",
+  "testsBuildsScansCIWorkflowBrowserMergeReleaseOrTagActions": false,
+  "tree": "c2ec31432943730f0a8f3ee87687c46b6a4400c2",
+  "verifiedInputChecksumEntries": 8,
+  "window": "W1183-W1202"
+}

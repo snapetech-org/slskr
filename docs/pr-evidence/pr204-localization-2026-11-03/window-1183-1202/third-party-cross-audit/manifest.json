@@ -1,0 +1,54 @@
+{
+  "artifact": "slskR PR #204 W1183-W1202 third-party cross-audit",
+  "sealed": true,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "8e60a51ec25967df115a3fd8c42872abbec58d8a",
+  "tree": "c2ec31432943730f0a8f3ee87687c46b6a4400c2",
+  "rowCount": 240,
+  "callerReferenceCount": 37,
+  "disagreementCount": 54,
+  "decisionCounts": {
+    "accept-current": 161,
+    "refinement": 4,
+    "correction": 63,
+    "hold": 12
+  },
+  "files": [
+    {
+      "name": "README.md",
+      "bytes": 1053,
+      "sha256": "e88513bb0694df0665659f6e1246d627acafce95214410003394328002e4a6d4"
+    },
+    {
+      "name": "build_cross_audit.py",
+      "bytes": 34675,
+      "sha256": "a7ac04ec9c392bac9fe29d610ff38d6305126cb318e0f067e1bff319f8f6fd61"
+    },
+    {
+      "name": "caller-reference-audit.jsonl",
+      "bytes": 11451,
+      "sha256": "f1523443310bb20f7c46a7a88185926571f2e4710a06b19caab17c431edec344"
+    },
+    {
+      "name": "cross-audit-ledger.jsonl",
+      "bytes": 506995,
+      "sha256": "ee5eecbb5d5539a30541e5722a909d63ad78bdf5edb749f493b5a2fc69eeb3bd"
+    },
+    {
+      "name": "disagreements.jsonl",
+      "bytes": 30924,
+      "sha256": "442a54cbfe373f11bdf02c042dcf674523e54f4dcd96db4d657f171f1ffec156"
+    },
+    {
+      "name": "input-verification.json",
+      "bytes": 10114,
+      "sha256": "647afe1ef4fb7a0d07c86ac6fdc5eaa24d444063e100543a5dbd2dc120c5a5f3"
+    },
+    {
+      "name": "summary.json",
+      "bytes": 1983,
+      "sha256": "047ed956773d2dfb95046427869117571340330224304c4323e255c10006a8e3"
+    }
+  ]
+}

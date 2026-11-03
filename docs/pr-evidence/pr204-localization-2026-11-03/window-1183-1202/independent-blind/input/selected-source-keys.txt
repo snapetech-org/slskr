@@ -1,0 +1,20 @@
+Discovery shelf expiry days
+Dismiss
+Dismiss port migration reminder
+Dismiss this port migration reminder until the forwarded ports change again.
+Display Name:
+DisplayName is required.
+Dissenting jurors
+Distinct Users
+Distinct peers
+Do not change cover art
+Do not run ReplayGain
+Domain
+Domain Search
+Domain configured
+Domain is required
+Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain.
+Domain:
+Domains
+Domains:
+Done
