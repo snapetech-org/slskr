@@ -1,0 +1,46 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "window": "W1063-W1082",
+  "inputHead": "328f33ba8dda766539e0b9cded6f94e5d0d8f716",
+  "inputTree": "84d625d3d2a60b263e9dfcca7e31e3fb3bee0904",
+  "cleanInputManifestSha256": "2911a144a4c066fa129f9315c4e908e6a0581b306fc8f05fcf98758162bd906d",
+  "rootBlindLedgerSha256": "5691f78dd0c3685b016a117d929d3a420fd0b52979b575215588247fc1fce4ac",
+  "rootBlindChecksumListSha256": "8fa6e399fd698220b3a71aa95f49533f6c80b09d6d0f11baf6286a69eac0514b",
+  "primaryLedgerSha256": "b02022b3e9d75fac941583c5d64b13ebf443419514617cc8da75c8c0a57f8972",
+  "primaryChecksumListSha256": "5d5a28b4830325cdcbd68598c8359bc8bcbf8e4a54166b419e2649b97e46234f",
+  "supplementalBlindLedgerSha256": "d8f365272b3175d07fbc306c5d7dadc9dac8b5ef13ec9ddf007ed8c21d127e70",
+  "supplementalBlindChecksumListSha256": "87df12a527256ff7d222db02d442bec3b73c094500c4ec2f1ceea076fbc25ac1",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "callerReferences": 54,
+  "rootDispositionProposalCounts": {
+    "accept-current": 137,
+    "refinement": 18,
+    "correction": 73,
+    "hold-context": 12
+  },
+  "exactTargetChangesProposed": 91,
+  "holds": [
+    {
+      "position": 1081,
+      "sourceId": "Delete Selected",
+      "locales": 12
+    }
+  ],
+  "localizedErrorRenderPathReattestedFor": [
+    "Data points must be between 2 and 168"
+  ],
+  "placeholderMismatches": 0,
+  "protectedLiteralMismatches": 0,
+  "catalogMutationPerformed": false,
+  "ratified": false,
+  "testsBuildsScansCIWorkflowsRun": false,
+  "notes": [
+    "Root proposal is complete but unratified; do not apply.",
+    "Proposes retaining 12 W1081 catalog-only cells as holds.",
+    "The 12 W1065 cells are accepted-current after exact production localization path reattestation.",
+    "Primary/root/supplemental disagreements are included cell-by-cell for review."
+  ]
+}

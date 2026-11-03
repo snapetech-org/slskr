@@ -1,0 +1,54 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "window": "W1063-W1082",
+  "inputHead": "328f33ba8dda766539e0b9cded6f94e5d0d8f716",
+  "inputTree": "84d625d3d2a60b263e9dfcca7e31e3fb3bee0904",
+  "sourceIdOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "windowSourceSha256": "827427571dbd12e9d2faf31d22a79d573a247e0984bf21160c8205945437a9c3",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "selectedPositions": [
+    1063,
+    1082
+  ],
+  "selectedSourceIds": [
+    "Data Transferred",
+    "Data Transferred:",
+    "Data points must be between 2 and 168",
+    "Database Size",
+    "Database vacuum completed successfully",
+    "Database vacuum failed",
+    "Date Modified",
+    "Date, time, and number format",
+    "Debug",
+    "Debug View",
+    "Decay",
+    "Decentralized message routing via overlay network with fanout and deduplication for reliable pod communication",
+    "Dedupe hours",
+    "Dedupe window configured",
+    "Deduplication Items:",
+    "Default Visualizer",
+    "Degraded",
+    "Delete",
+    "Delete Selected",
+    "Delete active native playlist"
+  ],
+  "callerReferences": 54,
+  "noCallerSourceIds": [
+    "Delete Selected"
+  ],
+  "primaryLedgerSha256": "b02022b3e9d75fac941583c5d64b13ebf443419514617cc8da75c8c0a57f8972",
+  "primaryProposalCount": 74,
+  "dispositions": {
+    "accept-current": 154,
+    "correction": 45,
+    "refinement": 29,
+    "hold-context": 12
+  },
+  "nativeSpeakerReview": false,
+  "heldPositions": [
+    1081
+  ]
+}

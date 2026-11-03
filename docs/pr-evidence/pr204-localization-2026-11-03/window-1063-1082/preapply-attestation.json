@@ -1,0 +1,504 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "prState": "OPEN",
+  "isDraft": true,
+  "inputHead": "328f33ba8dda766539e0b9cded6f94e5d0d8f716",
+  "inputTree": "84d625d3d2a60b263e9dfcca7e31e3fb3bee0904",
+  "observedHead": "328f33ba8dda766539e0b9cded6f94e5d0d8f716",
+  "observedTree": "84d625d3d2a60b263e9dfcca7e31e3fb3bee0904",
+  "remoteHead": "328f33ba8dda766539e0b9cded6f94e5d0d8f716",
+  "worktreeCleanBeforeEvidenceCopy": true,
+  "cleanInputManifestSha256": "2911a144a4c066fa129f9315c4e908e6a0581b306fc8f05fcf98758162bd906d",
+  "cleanInputChecksumListSha256": "83a76443e8ac1dbcc441a59b0305b560473b4b1789ad3cba8fcf219e23d93885",
+  "ratifiedLedgerSha256": "990ec452dc376a80edd5aa589f88b8f5a9c42b5037a831500aa813a5c299a9bb",
+  "authorizedChanges": 91,
+  "authorizedHolds": 12,
+  "heldPosition": 1081,
+  "localeCatalogs": 12,
+  "localeKeyCount": 5441,
+  "catalogPinsReattested": [
+    {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "sha256": "199090f0c4f5964301908ffe72421a14dc65b275d79d3b307e0de4c949e71b22",
+      "gitBlob": "73275776bc88968dfdce039fc64ee250b748bf9f",
+      "keyCount": 5441
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "sha256": "33069c555111a892b8bf840733c79e9da8edae53d5ee9453210fb4bf727ca01d",
+      "gitBlob": "d65c4332a03e29fcedc8ba5841a539224eac883e",
+      "keyCount": 5441
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "sha256": "8ccee28c4030e55c7f5d39666a47827bb033593080343e999402e8ed88e5973a",
+      "gitBlob": "5729bea4b278a2b1e072b380998e271a04509aae",
+      "keyCount": 5441
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "sha256": "1f0dad21c97072e37135823a6c773e950f468084f2850209fab8ab0f25bd6e75",
+      "gitBlob": "934dde55cae068bd2988d7972c5a08f67fce9313",
+      "keyCount": 5441
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "sha256": "a9fa7473051aa37d93ac895f1d8f7fe9e392f1525c76678249ce91e4acfcba27",
+      "gitBlob": "d5a3a9dcb72cdfb8f7199c15bf671b0eed51d397",
+      "keyCount": 5441
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "sha256": "373c16198880c298873ee8cea1b9909dabdbfdf409866c63ad0048efa266ab9b",
+      "gitBlob": "8c4318f5b1c5fb2c7c887d2e01c0261c6dad2693",
+      "keyCount": 5441
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "sha256": "1524f318ca6cd340a93eee9fe32fbf6bad2afd7893a945c8de31219b934926fd",
+      "gitBlob": "45dedb81cf04b319011fa9042fef4f856c8c9b53",
+      "keyCount": 5441
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "sha256": "cd7e20be2af14e881326055b2562b1d5be1eafc27ff896d3462f870e61211b45",
+      "gitBlob": "aeae39a33240241ec574af478fba0990c2db0b9f",
+      "keyCount": 5441
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "sha256": "1324cd571c9394363e613f2c2cbc65be3d6c489ecded8a67d7ca555d0d85aec1",
+      "gitBlob": "adf643db147ffaf45b9356bdc5e88f80e886f88b",
+      "keyCount": 5441
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "sha256": "ac3fb4b9c71be82e98a9900a727c326eb330d307d41a87e206989352e8f65b8a",
+      "gitBlob": "5facc3161ab9393423919f3928314683ef2dba1e",
+      "keyCount": 5441
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "sha256": "138451f88624e57c2dfe69dd71525f8c477b8083fd3e5b875bfbfde751f7187c",
+      "gitBlob": "b83f261246e2a70b2e50b412943dbb4d232c0508",
+      "keyCount": 5441
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "sha256": "7e6e1cebb029ce6d3937bfe66412afb805fb7920447ede711c6e6b953638235e",
+      "gitBlob": "56bbe5e9b88e4ccd48c9502a70bb5186f809992f",
+      "keyCount": 5441
+    }
+  ],
+  "sourceAndCallerReferencesReattested": [
+    {
+      "sourceId": "Data Transferred",
+      "path": "web/src/components/Pods/PortForwarding.jsx",
+      "line": 608,
+      "fileSha256": "3db4aa88c36b9c57f077c61f82541043d2787bc55f3289992b69403e942c326d",
+      "gitBlob": "7eaacd44ed04d2ee5d71e7db466fe43b1fa39da1"
+    },
+    {
+      "sourceId": "Data Transferred",
+      "path": "web/src/components/Pods/PortForwarding.jsx",
+      "line": 750,
+      "fileSha256": "3db4aa88c36b9c57f077c61f82541043d2787bc55f3289992b69403e942c326d",
+      "gitBlob": "7eaacd44ed04d2ee5d71e7db466fe43b1fa39da1"
+    },
+    {
+      "sourceId": "Data Transferred",
+      "path": "web/src/components/Pods/PortForwarding.jsx",
+      "line": 888,
+      "fileSha256": "3db4aa88c36b9c57f077c61f82541043d2787bc55f3289992b69403e942c326d",
+      "gitBlob": "7eaacd44ed04d2ee5d71e7db466fe43b1fa39da1"
+    },
+    {
+      "sourceId": "Data Transferred:",
+      "path": "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+      "line": 656,
+      "fileSha256": "34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60",
+      "gitBlob": "2abab8a5496df8cdd48e7acf32b479c7ecba6c23"
+    },
+    {
+      "sourceId": "Data Transferred:",
+      "path": "web/src/components/System/MediaCore/PodMessageBackfillPanel.jsx",
+      "line": 202,
+      "fileSha256": "a1b1127673baab77d8478398b3d26aa5080a73741a2230d2065f69272df3b364",
+      "gitBlob": "a10fea57aff9f5a2c76d676f23f8ef212277cc69"
+    },
+    {
+      "sourceId": "Data points must be between 2 and 168",
+      "path": "crates/slskr/src/controller_tests/full_swarm_analytics_contracts.rs",
+      "line": 155,
+      "fileSha256": "4b07620d1390b8187084dd084396bbc1cce391a315bffda9b104a2d6ba5b7520",
+      "gitBlob": "90d8bca093a80a62f78d8a3c8c4e937ed8432956"
+    },
+    {
+      "sourceId": "Data points must be between 2 and 168",
+      "path": "crates/slskr/src/legacy_route_dispatch_group_07.rs",
+      "line": 704,
+      "fileSha256": "f0a6a49d70f2dfcad5654a42942a0251dc8a9dfbacb949a9c3cba8dc3eeea07d",
+      "gitBlob": "448304fe862c4d7e56dbe406e27848d80201bedd"
+    },
+    {
+      "sourceId": "Data points must be between 2 and 168",
+      "path": "crates/slskr/src/route_dispatch_group_6_relay_controller.rs",
+      "line": 733,
+      "fileSha256": "4f86420157140550b3d16f5309e16defc02c338658a628d26c10739797263ffe",
+      "gitBlob": "3a6f8f9bb2c3f8ea69e741499b7af3e9dbc1c4f4"
+    },
+    {
+      "sourceId": "Data points must be between 2 and 168",
+      "path": "web/src/lib/serverErrorMessageAllowlist.js",
+      "line": 58,
+      "fileSha256": "de7bf779c371f2a93d106124d32051b39836c0e7cd557e314c11f7755ce004bc",
+      "gitBlob": "d9eed15e55416d5e5fa06657c9c86b287b9b3260"
+    },
+    {
+      "sourceId": "Database Size",
+      "path": "web/src/components/System/Network/NetworkDetails.jsx",
+      "line": 355,
+      "fileSha256": "ea93b702834e5be75f28204abefc4fa6f3d60f5c950cce168ceb2fcf7051c33e",
+      "gitBlob": "e2007ae26e923d742d85cfdcaf4295053ed24429"
+    },
+    {
+      "sourceId": "Database vacuum completed successfully",
+      "path": "web/src/components/System/MediaCore/PodMessageMaintenanceActions.jsx",
+      "line": 55,
+      "fileSha256": "78894ee784eea137c01e91427f8675af4a8915c658cfce32b75d9024ba4ec129",
+      "gitBlob": "82b5bea6127ad5c3298dcc0c51673c345e464842"
+    },
+    {
+      "sourceId": "Database vacuum failed",
+      "path": "web/src/components/System/MediaCore/PodMessageMaintenanceActions.jsx",
+      "line": 55,
+      "fileSha256": "78894ee784eea137c01e91427f8675af4a8915c658cfce32b75d9024ba4ec129",
+      "gitBlob": "82b5bea6127ad5c3298dcc0c51673c345e464842"
+    },
+    {
+      "sourceId": "Date Modified",
+      "path": "web/src/components/System/Files/Explorer.jsx",
+      "line": 306,
+      "fileSha256": "cffd906eba54004f1ffb86a41fc41ef568514f0300872c40e657bd0fd8dcf0fe",
+      "gitBlob": "ab4c5ed3b5c4c5315c6f46ee40ee2ad254f6daa3"
+    },
+    {
+      "sourceId": "Date, time, and number format",
+      "path": "web/src/components/System/ExperienceSettings/index.jsx",
+      "line": 312,
+      "fileSha256": "ba7826de4b32bc9506d5926e6243623ccc3104da43706ce7a57fe4b17bcf2f30",
+      "gitBlob": "fbe8caabfc30e03809dc5ae7051bddb731986956"
+    },
+    {
+      "sourceId": "Debug",
+      "path": "crates/slskr-web/src/native_tab_rendering.rs",
+      "line": 568,
+      "fileSha256": "d3ad7316bcdb69f3c64a3a7ab2211a1d5646f3bb997a938e8d9c2998ab31ab10",
+      "gitBlob": "5cbb9ace4ec143aa7acccee8192371b70ae92e1a"
+    },
+    {
+      "sourceId": "Debug",
+      "path": "crates/slskr-web/src/native_tab_rendering.rs",
+      "line": 912,
+      "fileSha256": "d3ad7316bcdb69f3c64a3a7ab2211a1d5646f3bb997a938e8d9c2998ab31ab10",
+      "gitBlob": "5cbb9ace4ec143aa7acccee8192371b70ae92e1a"
+    },
+    {
+      "sourceId": "Debug",
+      "path": "crates/slskr-web/src/route_shell_runtime.rs",
+      "line": 10,
+      "fileSha256": "d8cac1c196aaa69c81f5cb2b62a14641c07a5607c1f0381690eddc0649d314bb",
+      "gitBlob": "47c02a1ed60cbafb45ee6f6a16e1110d28e2bac5"
+    },
+    {
+      "sourceId": "Debug",
+      "path": "crates/slskr/src/legacy_route_dispatch_group_01.rs",
+      "line": 569,
+      "fileSha256": "cc5efe8a0c9f7eef6adf3f56dd350487d7d45c5871b91eb93b3144c8e2fe527e",
+      "gitBlob": "bcc7ab2e7dbe652cecdf595f1f771dba707efd50"
+    },
+    {
+      "sourceId": "Debug",
+      "path": "crates/slskr/src/legacy_route_dispatch_group_01.rs",
+      "line": 579,
+      "fileSha256": "cc5efe8a0c9f7eef6adf3f56dd350487d7d45c5871b91eb93b3144c8e2fe527e",
+      "gitBlob": "bcc7ab2e7dbe652cecdf595f1f771dba707efd50"
+    },
+    {
+      "sourceId": "Debug",
+      "path": "crates/slskr/src/logging.rs",
+      "line": 72,
+      "fileSha256": "89dad72addd227c6662367abf74e90808f3304663bb2435a10f6afafb29c052e",
+      "gitBlob": "b9f540861b89ba3f2057ec799c46e66881c0cce1"
+    },
+    {
+      "sourceId": "Debug",
+      "path": "crates/slskr/src/route_dispatch_group_1_events.rs",
+      "line": 174,
+      "fileSha256": "ea8e11221f5ea161570ace7bb6166c71c70c1da160fe9300b6b1cdbc9e4e2a35",
+      "gitBlob": "e7f8e05ee21d29981e2da7b8b5c02f2bd2ba1f2c"
+    },
+    {
+      "sourceId": "Debug",
+      "path": "crates/slskr/src/route_dispatch_group_1_events.rs",
+      "line": 184,
+      "fileSha256": "ea8e11221f5ea161570ace7bb6166c71c70c1da160fe9300b6b1cdbc9e4e2a35",
+      "gitBlob": "e7f8e05ee21d29981e2da7b8b5c02f2bd2ba1f2c"
+    },
+    {
+      "sourceId": "Debug",
+      "path": "web/src/components/System/Logs/index.jsx",
+      "line": 23,
+      "fileSha256": "f7c0ef618697a0d41a099ff6a1996179af25122bae7e2d10452033a7c1fead26",
+      "gitBlob": "c61368fce26317a94713f10457565e0d26c041af"
+    },
+    {
+      "sourceId": "Debug",
+      "path": "web/src/components/System/Logs/index.jsx",
+      "line": 279,
+      "fileSha256": "f7c0ef618697a0d41a099ff6a1996179af25122bae7e2d10452033a7c1fead26",
+      "gitBlob": "c61368fce26317a94713f10457565e0d26c041af"
+    },
+    {
+      "sourceId": "Debug",
+      "path": "web/src/components/System/Logs/index.jsx",
+      "line": 280,
+      "fileSha256": "f7c0ef618697a0d41a099ff6a1996179af25122bae7e2d10452033a7c1fead26",
+      "gitBlob": "c61368fce26317a94713f10457565e0d26c041af"
+    },
+    {
+      "sourceId": "Debug",
+      "path": "web/src/components/System/Logs/index.jsx",
+      "line": 282,
+      "fileSha256": "f7c0ef618697a0d41a099ff6a1996179af25122bae7e2d10452033a7c1fead26",
+      "gitBlob": "c61368fce26317a94713f10457565e0d26c041af"
+    },
+    {
+      "sourceId": "Debug",
+      "path": "web/src/components/System/Logs/index.jsx",
+      "line": 339,
+      "fileSha256": "f7c0ef618697a0d41a099ff6a1996179af25122bae7e2d10452033a7c1fead26",
+      "gitBlob": "c61368fce26317a94713f10457565e0d26c041af"
+    },
+    {
+      "sourceId": "Debug",
+      "path": "web/src/lib/options.js",
+      "line": 3,
+      "fileSha256": "5211b74d0c1139e07f26d1e1992fe3d3602ce726c0d6d9893e11e4a44e2f0e75",
+      "gitBlob": "c81acbfb9350e2e43f306eaee24058d55e02800c"
+    },
+    {
+      "sourceId": "Debug View",
+      "path": "web/src/components/System/Options/index.jsx",
+      "line": 31,
+      "fileSha256": "7dde0cfdd41f8351caa9a63ae88e7dbdc6653185ae654537e9b0b241ce5c12f3",
+      "gitBlob": "fda024fdcc336132412a5ea583ee975e7115c5f6"
+    },
+    {
+      "sourceId": "Decay",
+      "path": "crates/slskr-web/src/route_shell_runtime.rs",
+      "line": 10,
+      "fileSha256": "d8cac1c196aaa69c81f5cb2b62a14641c07a5607c1f0381690eddc0649d314bb",
+      "gitBlob": "47c02a1ed60cbafb45ee6f6a16e1110d28e2bac5"
+    },
+    {
+      "sourceId": "Decay",
+      "path": "web/src/components/Player/visualizerPresetLibrary.js",
+      "line": 39,
+      "fileSha256": "eaa880764a42ac057e5c51b211ed08ab79223c2cb57036ebfa19b92fd8e655d9",
+      "gitBlob": "6794eb93c94e325625bf6fece44bcff553fd8d86"
+    },
+    {
+      "sourceId": "Decentralized message routing via overlay network with fanout and deduplication for reliable pod communication",
+      "path": "web/src/components/System/MediaCore/PodMessageRoutingPanel.jsx",
+      "line": 188,
+      "fileSha256": "d69c4b642ea560fd3f53688927cce8f6fea9f93923aa89f4924f640631cda32b",
+      "gitBlob": "4e205e85e50775e0d1e69802884f30d6b1c32ed5"
+    },
+    {
+      "sourceId": "Dedupe hours",
+      "path": "web/src/components/System/Integrations/MediaServerPanel.jsx",
+      "line": 395,
+      "fileSha256": "6a455897150bf618cd4c1402010c2ce410e0d912831545ffd2d404444bd03b0d",
+      "gitBlob": "d1b9a25375b5ab6c0223099c861fae99ebc6801d"
+    },
+    {
+      "sourceId": "Dedupe window configured",
+      "path": "web/src/lib/mediaServerIntegrations.js",
+      "line": 214,
+      "fileSha256": "7d477ed1486dbda8c93e63c7479e5f55973b06fc13e359b1d8331cbc51f52c0f",
+      "gitBlob": "7e7ac0ce6695f166eadd00570509a2724eff7859"
+    },
+    {
+      "sourceId": "Deduplication Items:",
+      "path": "web/src/components/System/MediaCore/PodMessageRoutingPanel.jsx",
+      "line": 402,
+      "fileSha256": "d69c4b642ea560fd3f53688927cce8f6fea9f93923aa89f4924f640631cda32b",
+      "gitBlob": "4e205e85e50775e0d1e69802884f30d6b1c32ed5"
+    },
+    {
+      "sourceId": "Default Visualizer",
+      "path": "crates/slskr-web/src/web_action_owners/experience_action_models.rs",
+      "line": 73,
+      "fileSha256": "bc48b3216c58cbcf544ead0dd373dd1fcd76cb681abdd615f9c6e6b7d6c215cc",
+      "gitBlob": "74164de1cba6d7aa11c27c1e114030fc9f609b54"
+    },
+    {
+      "sourceId": "Default Visualizer",
+      "path": "web/src/components/System/ExperienceSettings/index.jsx",
+      "line": 399,
+      "fileSha256": "ba7826de4b32bc9506d5926e6243623ccc3104da43706ce7a57fe4b17bcf2f30",
+      "gitBlob": "fbe8caabfc30e03809dc5ae7051bddb731986956"
+    },
+    {
+      "sourceId": "Degraded",
+      "path": "web/src/components/System/Mesh/index.jsx",
+      "line": 287,
+      "fileSha256": "340958d0f4ed24d66e5f8f80571b59cfe49fe42ca51fdbc24246153b9d3b4fa9",
+      "gitBlob": "66079910d4a01dacea0610cc78727aa20307b930"
+    },
+    {
+      "sourceId": "Degraded",
+      "path": "web/src/components/System/Mesh/index.jsx",
+      "line": 300,
+      "fileSha256": "340958d0f4ed24d66e5f8f80571b59cfe49fe42ca51fdbc24246153b9d3b4fa9",
+      "gitBlob": "66079910d4a01dacea0610cc78727aa20307b930"
+    },
+    {
+      "sourceId": "Degraded",
+      "path": "web/src/lib/networkHealthScore.js",
+      "line": 130,
+      "fileSha256": "9058b1d95ffcdf8d2c467b47cdcf3a9cede3f96000580f6b82f04220d0e5bea4",
+      "gitBlob": "26523f0fbf48bdd35fcab5ca8cac7d94d6265042"
+    },
+    {
+      "sourceId": "Delete",
+      "path": "crates/slskr/src/controller_tests/full_pods_differential_02.rs",
+      "line": 1594,
+      "fileSha256": "fba7bab5bfdd20a28b828969040f5aabc6ccf6d5daedad9d3266edf18b3131d4",
+      "gitBlob": "135550a3d520133f97800d2ca34d31a8aa4fa7d4"
+    },
+    {
+      "sourceId": "Delete",
+      "path": "web/src/components/Collections/Collections.jsx",
+      "line": 704,
+      "fileSha256": "0ae47fbae62cd1c65e120eb02a41e4941c8aec5e1d5f037361f41365539c44ed",
+      "gitBlob": "c72ea0939c55ba47ed090e0d5ac3f67dd47b06c0"
+    },
+    {
+      "sourceId": "Delete",
+      "path": "web/src/components/Search/Detail/SearchDetailHeader.jsx",
+      "line": 59,
+      "fileSha256": "dff924e5f154de109da1658068e6e366b0eee26af28b632b31e4d8a0affd6eac",
+      "gitBlob": "851668f1b2c08a8e2d5603302b817e108ca67c0e"
+    },
+    {
+      "sourceId": "Delete",
+      "path": "web/src/components/ShareGroups/ShareGroups.jsx",
+      "line": 415,
+      "fileSha256": "d3a467377b0d3ce0e08c6623ac01b8c53616c41828715716ef94f274f92dea6e",
+      "gitBlob": "b9e41426dfb0f920200d982653d8ab2ff98622ba"
+    },
+    {
+      "sourceId": "Delete",
+      "path": "web/src/components/System/Files/Explorer.jsx",
+      "line": 58,
+      "fileSha256": "cffd906eba54004f1ffb86a41fc41ef568514f0300872c40e657bd0fd8dcf0fe",
+      "gitBlob": "ab4c5ed3b5c4c5315c6f46ee40ee2ad254f6daa3"
+    },
+    {
+      "sourceId": "Delete",
+      "path": "web/src/components/System/Files/Explorer.jsx",
+      "line": 116,
+      "fileSha256": "cffd906eba54004f1ffb86a41fc41ef568514f0300872c40e657bd0fd8dcf0fe",
+      "gitBlob": "ab4c5ed3b5c4c5315c6f46ee40ee2ad254f6daa3"
+    },
+    {
+      "sourceId": "Delete",
+      "path": "web/src/components/System/MediaCore/PodChannelManagementPanel.jsx",
+      "line": 357,
+      "fileSha256": "3ef47356d5cd5942894965fda3bc2999b654b0812a0c7274f85779b78dc99f9d",
+      "gitBlob": "c91e5e8e4250fda54163c8b7841aa9852754ff14"
+    },
+    {
+      "sourceId": "Delete",
+      "path": "web/src/components/Wishlist/WishlistItemRow.jsx",
+      "line": 170,
+      "fileSha256": "b7252496aad45e77b718dae85e6d6cb298f1591bc77633c7957ba1806c384d6b",
+      "gitBlob": "cbc2e023f27b0cd4362391c295562862de51b49b"
+    },
+    {
+      "sourceId": "Delete",
+      "path": "web/src/components/Wishlist/WishlistItemRow.jsx",
+      "line": 171,
+      "fileSha256": "b7252496aad45e77b718dae85e6d6cb298f1591bc77633c7957ba1806c384d6b",
+      "gitBlob": "cbc2e023f27b0cd4362391c295562862de51b49b"
+    },
+    {
+      "sourceId": "Delete",
+      "path": "web/src/components/Wishlist/WishlistItemRow.jsx",
+      "line": 172,
+      "fileSha256": "b7252496aad45e77b718dae85e6d6cb298f1591bc77633c7957ba1806c384d6b",
+      "gitBlob": "cbc2e023f27b0cd4362391c295562862de51b49b"
+    },
+    {
+      "sourceId": "Delete",
+      "path": "web/src/components/Wishlist/WishlistItemRow.jsx",
+      "line": 180,
+      "fileSha256": "b7252496aad45e77b718dae85e6d6cb298f1591bc77633c7957ba1806c384d6b",
+      "gitBlob": "cbc2e023f27b0cd4362391c295562862de51b49b"
+    },
+    {
+      "sourceId": "Delete",
+      "path": "web/src/components/Wishlist/WishlistItemRow.jsx",
+      "line": 181,
+      "fileSha256": "b7252496aad45e77b718dae85e6d6cb298f1591bc77633c7957ba1806c384d6b",
+      "gitBlob": "cbc2e023f27b0cd4362391c295562862de51b49b"
+    },
+    {
+      "sourceId": "Delete active native playlist",
+      "path": "web/src/components/Player/VisualizerOverlayControls.jsx",
+      "line": 240,
+      "fileSha256": "5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4",
+      "gitBlob": "0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf"
+    },
+    {
+      "sourceId": "Delete active native playlist",
+      "path": "web/src/components/Player/VisualizerOverlayControls.jsx",
+      "line": 245,
+      "fileSha256": "5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4",
+      "gitBlob": "0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf"
+    }
+  ],
+  "supplementalRenderPathFilesReattested": [
+    {
+      "path": "crates/slskr/src/route_dispatch_group_6_relay_controller.rs",
+      "fileSha256": "4f86420157140550b3d16f5309e16defc02c338658a628d26c10739797263ffe",
+      "gitBlob": "3a6f8f9bb2c3f8ea69e741499b7af3e9dbc1c4f4"
+    },
+    {
+      "path": "web/src/lib/serverErrorMessageAllowlist.js",
+      "fileSha256": "de7bf779c371f2a93d106124d32051b39836c0e7cd557e314c11f7755ce004bc",
+      "gitBlob": "d9eed15e55416d5e5fa06657c9c86b287b9b3260"
+    },
+    {
+      "path": "web/src/lib/errors.js",
+      "fileSha256": "7f162f5b8715dd15b1b2cbd2e7578f09285f1c5655b55fde9851543d8ca625d4",
+      "gitBlob": "8f5d27d79d93facb8275058d3e37613699dc6970"
+    },
+    {
+      "path": "web/src/lib/swarmAnalytics.js",
+      "fileSha256": "b826502946e3eac881575cfe8aef01fe49a4d07637c057ae2b922c12057804c2",
+      "gitBlob": "01d4b56c2bbe25ff1c6824542e6a369f8f89e980"
+    },
+    {
+      "path": "web/src/components/System/SwarmAnalytics/index.jsx",
+      "fileSha256": "b020adc0f11520ad1fe52080fdf1d90fe717c3dea9a3c5379973b31514d88c9d",
+      "gitBlob": "6b4db5a84a05d1ffdb560e0e2c8d2708590f3ded"
+    }
+  ],
+  "testsBuildsScansCIWorkflowsRun": false,
+  "attestedAtUtc": "2026-11-03T03:58:27Z"
+}

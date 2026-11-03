@@ -1,0 +1,11 @@
+{
+  "ratifiedBy": "/root",
+  "ratifiedLedgerPath": "root-ratification/ratified-adjudication.jsonl",
+  "ratifiedLedgerSha256": "990ec452dc376a80edd5aa589f88b8f5a9c42b5037a831500aa813a5c299a9bb",
+  "ratificationSummarySha256": "16833e8bee3ce529863fea438b1ec1bf1a5c6fc4814da5cdb55392906a79b466",
+  "authorizedChanges": 91,
+  "authorizedHolds": 12,
+  "heldPosition": 1081,
+  "authorization": "Apply the exact 91 changes in the ratified ledger. Use browser-local wording for the four W1082 ar/hi/id/vi cells; retain the 12 W1081 Delete Selected holds. Reattest live PR #204 and all pins immediately before application; verify all 240 cells, ordered catalogs, then commit and push the existing branch. Do not run tests/builds/scans/CI, touch workflows, merge, release, or tag.",
+  "recordedAtUtc": "2026-11-03T03:58:51Z"
+}

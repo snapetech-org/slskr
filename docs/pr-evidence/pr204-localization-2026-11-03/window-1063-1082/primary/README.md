@@ -1,0 +1,5 @@
+# Private primary packet — slskR PR #204 W1063–W1082
+
+Exact input head `328f33ba8dda766539e0b9cded6f94e5d0d8f716`, tree `84d625d3d2a60b263e9dfcca7e31e3fb3bee0904`. The review covers 20 sorted source IDs × 12 direct locales (240 cells) and is pinned to the clean input packet. All proposals include current/source/catalog hashes, caller status, and a context rationale. The input-only packet was sealed separately before primary review. Root has now sealed the independent strict-blind ledger; this primary packet is ready for comparison and adjudication.
+
+Primary dispositions: {'accept-current': 142, 'correction': 45, 'hold-context': 24, 'refinement': 29}. The input has 54 exact caller references; `Delete Selected` has no exact production string caller. Position 1065 is a backend validation string with no pinned localized error renderer. Both positions 1065 and 1081 remain held in all 12 locales. No catalog files have been changed. This is machine-assisted review, not native-speaker approval.

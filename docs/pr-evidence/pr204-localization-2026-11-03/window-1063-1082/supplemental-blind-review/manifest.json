@@ -1,0 +1,80 @@
+{
+  "artifact": "independent blind supplemental audit",
+  "window": "W1063-W1082",
+  "packetHead": "328f33ba8dda766539e0b9cded6f94e5d0d8f716",
+  "packetTree": "84d625d3d2a60b263e9dfcca7e31e3fb3bee0904",
+  "inputScope": "/mnt/disks/scratch/task-scratch/slskr-pr204-w1063-1082-20261103/clean-input",
+  "inputPacketDigests": {
+    "README.md": "b3ec954bedcc6c6c87e2cb3d911478052fc3e7c30b550599275b4083a2170a96",
+    "catalog-file-pins.json": "1f2612a0f8e8ff24b56b12b163c70b31427de7e0ec60bc2825bacdaf5b74a3ab",
+    "current-target-cells.jsonl": "1c43dce6c931bdbb0a95e754f5d148372adec695bc13d79db066c9b25b88d500",
+    "manifest.json": "2911a144a4c066fa129f9315c4e908e6a0581b306fc8f05fcf98758162bd906d",
+    "source-contexts.jsonl": "c76a5fad5fb7d40d0b286939740e9b3fb475d9bb85589c5571a3b9595c0d12ae"
+  },
+  "inputManifestSha256": "2911a144a4c066fa129f9315c4e908e6a0581b306fc8f05fcf98758162bd906d",
+  "cellsAudited": 120,
+  "sourcesAudited": 20,
+  "localesAudited": [
+    "ar",
+    "fr",
+    "hi",
+    "id",
+    "ko",
+    "vi"
+  ],
+  "placeholders": {
+    "cellsWithPlaceholders": 0,
+    "cellsWithoutPlaceholders": 120
+  },
+  "dispositionCounts": {
+    "accept-current": 60,
+    "correction": 23,
+    "refinement": 37,
+    "hold-context": 0
+  },
+  "perLocaleCounts": {
+    "ar": {
+      "accept-current": 11,
+      "correction": 4,
+      "refinement": 5,
+      "hold-context": 0
+    },
+    "fr": {
+      "accept-current": 12,
+      "correction": 4,
+      "refinement": 4,
+      "hold-context": 0
+    },
+    "hi": {
+      "accept-current": 7,
+      "correction": 3,
+      "refinement": 10,
+      "hold-context": 0
+    },
+    "id": {
+      "accept-current": 9,
+      "correction": 5,
+      "refinement": 6,
+      "hold-context": 0
+    },
+    "ko": {
+      "accept-current": 12,
+      "correction": 4,
+      "refinement": 4,
+      "hold-context": 0
+    },
+    "vi": {
+      "accept-current": 9,
+      "correction": 3,
+      "refinement": 8,
+      "hold-context": 0
+    }
+  },
+  "scopeAttestation": "Read only clean-input packet files; did not inspect repository/API, primary proposals, or review outputs.",
+  "generatedOutputs": [
+    "review-cells.jsonl",
+    "notes.md",
+    "manifest.json",
+    "SHA256SUMS.txt"
+  ]
+}

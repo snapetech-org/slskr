@@ -1,0 +1,40 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "window": "W1063-W1082",
+  "inputHead": "328f33ba8dda766539e0b9cded6f94e5d0d8f716",
+  "inputTree": "84d625d3d2a60b263e9dfcca7e31e3fb3bee0904",
+  "sourceOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "windowSourceSha256": "827427571dbd12e9d2faf31d22a79d573a247e0984bf21160c8205945437a9c3",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "callerReferences": 54,
+  "dispositions": {
+    "accept-current": 154,
+    "correction": 45,
+    "refinement": 29,
+    "hold-context": 12
+  },
+  "plannedCandidates": 74,
+  "heldPositions": [
+    1081
+  ],
+  "confidence": "moderate",
+  "nativeSpeakerReview": false,
+  "sourceHashMismatches": 0,
+  "currentTargetHashMismatches": 0,
+  "placeholderMismatches": 0,
+  "protectedLiteralMismatches": 0,
+  "repositoryOrApiInspected": true,
+  "testsBuildsScansCIWorkflowsRun": false,
+  "notes": [
+    "Primary packet remains private until the independent strict-blind review has sealed its ledger.",
+    "No catalog edits have been applied.",
+    "Position 1065 has a pinned localized production render path through the SwarmAnalytics page, the app-server error allowlist, and toDisplayError/interfaceText."
+  ],
+  "localizedApiErrorPathSources": [
+    "Data points must be between 2 and 168"
+  ],
+  "sourceAndCallerCodeInspected": true
+}

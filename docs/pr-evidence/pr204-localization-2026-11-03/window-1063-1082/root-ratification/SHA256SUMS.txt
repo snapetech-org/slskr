@@ -1,0 +1,3 @@
+5d66f47ffae012ea4da819ed62a13285b8f2d087637a1863865379caba77bf8d  README.md
+16833e8bee3ce529863fea438b1ec1bf1a5c6fc4814da5cdb55392906a79b466  ratification-summary.json
+990ec452dc376a80edd5aa589f88b8f5a9c42b5037a831500aa813a5c299a9bb  ratified-adjudication.jsonl
