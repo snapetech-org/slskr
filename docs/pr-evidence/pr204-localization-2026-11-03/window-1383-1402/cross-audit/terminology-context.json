@@ -1,0 +1,230 @@
+{
+  "head": "b5da2589b6e8f2d4b0c0faab28bcdf0481e42438",
+  "keys": [
+    "Swarm Analytics",
+    "Swarm Download Status",
+    "No swarm job selected",
+    "Error Loading Swarm Data"
+  ],
+  "locales": {
+    "ar": {
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json",
+      "catalogPin": {
+        "byteCount": 513243,
+        "gitBlob": "cf66f94405565eadde7bbb112b46b697c43434fd",
+        "keyCount": 5441,
+        "lineCount": 5548,
+        "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+        "path": "web/src/lib/locales/ui-labels.ar.json",
+        "sha256": "7ab99366e257888a66d177190be5b97412095bd9698f785f8f601347fbcf4fa3"
+      },
+      "labels": {
+        "Error Loading Swarm Data": "حدث خطأ أثناء تحميل بيانات السرب",
+        "No swarm job selected": "لم يتم تحديد مهمة سرب",
+        "Swarm Analytics": "تحليلات سرب",
+        "Swarm Download Status": "حالة تنزيل سرب"
+      }
+    },
+    "de": {
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json",
+      "catalogPin": {
+        "byteCount": 443093,
+        "gitBlob": "044ee8a444f30872c44fd254d6bc44cd6f388435",
+        "keyCount": 5441,
+        "lineCount": 5443,
+        "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+        "path": "web/src/lib/locales/ui-labels.de.json",
+        "sha256": "ce8d6cbfefcf91e913389787bd23bb48ae203b7f2a446f202632502288fe7ddc"
+      },
+      "labels": {
+        "Error Loading Swarm Data": "Fehler beim Laden der Schwarmdaten",
+        "No swarm job selected": "Kein Schwarmjob ausgewählt",
+        "Swarm Analytics": "Schwarmanalyse",
+        "Swarm Download Status": "Schwarm-Download-Status"
+      }
+    },
+    "es": {
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json",
+      "catalogPin": {
+        "byteCount": 444636,
+        "gitBlob": "f90cbbb00c1cbbd81e28f330dec4db9b20f30da2",
+        "keyCount": 5441,
+        "lineCount": 5443,
+        "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+        "path": "web/src/lib/locales/ui-labels.es.json",
+        "sha256": "b28a3767f7c2b18b37c0c9cdf03f79c8471d3d2d4f0c8b69ed7adeff8ac3c683"
+      },
+      "labels": {
+        "Error Loading Swarm Data": "Error al cargar datos de enjambre",
+        "No swarm job selected": "No se seleccionó ningún trabajo de enjambre",
+        "Swarm Analytics": "Análisis de enjambre",
+        "Swarm Download Status": "Estado de descarga del enjambre"
+      }
+    },
+    "fr": {
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json",
+      "catalogPin": {
+        "byteCount": 455687,
+        "gitBlob": "4d20499e8fd0f510ac3e011fc72f67e24f3b6f11",
+        "keyCount": 5441,
+        "lineCount": 5443,
+        "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+        "path": "web/src/lib/locales/ui-labels.fr.json",
+        "sha256": "914007890c720a957c7d7dcdb6df9897af5b6cc73eeef617283d5ee7f81bce09"
+      },
+      "labels": {
+        "Error Loading Swarm Data": "Erreur lors du chargement des données d'essaim",
+        "No swarm job selected": "Aucun travail en essaim sélectionné",
+        "Swarm Analytics": "Analyse des essaims",
+        "Swarm Download Status": "Statut de téléchargement de l'essaim"
+      }
+    },
+    "hi": {
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json",
+      "catalogPin": {
+        "byteCount": 677955,
+        "gitBlob": "de64e4de45d743be96c803679112e6ae1dac700a",
+        "keyCount": 5441,
+        "lineCount": 5443,
+        "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+        "path": "web/src/lib/locales/ui-labels.hi.json",
+        "sha256": "e3d1a0043259c883e203d78165399218d4b92bd9f3d61ff9ab9f82d566af55d1"
+      },
+      "labels": {
+        "Error Loading Swarm Data": "झुंड डेटा लोड करने में त्रुटि",
+        "No swarm job selected": "कोई झुंड कार्य चयनित नहीं",
+        "Swarm Analytics": "झुंड विश्लेषिकी",
+        "Swarm Download Status": "झुंड डाउनलोड स्थिति"
+      }
+    },
+    "id": {
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json",
+      "catalogPin": {
+        "byteCount": 410046,
+        "gitBlob": "a4931d47325de71a662e3fa24e992cbee3dd3ee6",
+        "keyCount": 5441,
+        "lineCount": 5443,
+        "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+        "path": "web/src/lib/locales/ui-labels.id.json",
+        "sha256": "f5750144e98f5eec7cabeb0ad618e3afc59ccdc414540bb568a00d153e0a1f97"
+      },
+      "labels": {
+        "Error Loading Swarm Data": "Kesalahan Memuat Data Kawanan",
+        "No swarm job selected": "Tidak ada pekerjaan gerombolan yang dipilih",
+        "Swarm Analytics": "Analisis Kawanan",
+        "Swarm Download Status": "Status Unduhan Kawanan"
+      }
+    },
+    "ja": {
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json",
+      "catalogPin": {
+        "byteCount": 491198,
+        "gitBlob": "3f2cb879eadef8f7dd9bc25576c4cdab48a4e6e4",
+        "keyCount": 5441,
+        "lineCount": 5443,
+        "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+        "path": "web/src/lib/locales/ui-labels.ja.json",
+        "sha256": "c2741488db827dd5fce35f1889ac6aa7a481611dae1a6fb2b593f86d6a4e9bef"
+      },
+      "labels": {
+        "Error Loading Swarm Data": "Swarm データのロード中にエラーが発生しました",
+        "No swarm job selected": "swarm ジョブが選択されていません",
+        "Swarm Analytics": "群れ分析",
+        "Swarm Download Status": "Swarm ダウンロードステータス"
+      }
+    },
+    "ko": {
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json",
+      "catalogPin": {
+        "byteCount": 442375,
+        "gitBlob": "1ceb06388e4f1e3cee3dce9bfc0f7fe2212cf521",
+        "keyCount": 5441,
+        "lineCount": 5443,
+        "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+        "path": "web/src/lib/locales/ui-labels.ko.json",
+        "sha256": "3ac8fdcbaf62efd639f1a680b5e674accf204f25329d950104856bb2e8641d94"
+      },
+      "labels": {
+        "Error Loading Swarm Data": "Swarm 데이터를 로드하는 중 오류가 발생했습니다.",
+        "No swarm job selected": "선택한 스웜 작업이 없습니다.",
+        "Swarm Analytics": "스웜 분석",
+        "Swarm Download Status": "스웜 다운로드 상태"
+      }
+    },
+    "pt-BR": {
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "catalogPin": {
+        "byteCount": 439279,
+        "gitBlob": "d7cb5ef14fdca6f31c95fc0b8859cc251c58e757",
+        "keyCount": 5441,
+        "lineCount": 5443,
+        "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+        "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+        "sha256": "bf8d361382db1874787ff4246b0eec912240f4ba3cd47babbcc97e906fdebf47"
+      },
+      "labels": {
+        "Error Loading Swarm Data": "Erro ao carregar dados do Swarm",
+        "No swarm job selected": "Nenhum trabalho de enxame selecionado",
+        "Swarm Analytics": "Análise de enxame",
+        "Swarm Download Status": "Status de download do enxame"
+      }
+    },
+    "vi": {
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json",
+      "catalogPin": {
+        "byteCount": 475296,
+        "gitBlob": "e53f9d421173dd78707e32178edb50721fb2e2f7",
+        "keyCount": 5441,
+        "lineCount": 5443,
+        "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+        "path": "web/src/lib/locales/ui-labels.vi.json",
+        "sha256": "08b5f18853ce1914a876f3fe36412539b96073a605381661d2fda26c10858b89"
+      },
+      "labels": {
+        "Error Loading Swarm Data": "Lỗi khi tải dữ liệu bầy đàn",
+        "No swarm job selected": "Không có công việc bầy đàn nào được chọn",
+        "Swarm Analytics": "Phân tích bầy đàn",
+        "Swarm Download Status": "Trạng thái tải xuống của đàn"
+      }
+    },
+    "zh-Hans": {
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "catalogPin": {
+        "byteCount": 382985,
+        "gitBlob": "dfea606fb64a8219771bc2f9a0cffbc1e44015bc",
+        "keyCount": 5441,
+        "lineCount": 5443,
+        "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+        "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+        "sha256": "8ab9c141474ea5a72fe5b08977b6fcc47598ba4ff61259e9fd266d5508b15524"
+      },
+      "labels": {
+        "Error Loading Swarm Data": "加载 Swarm 数据时出错",
+        "No swarm job selected": "未选择集群作业",
+        "Swarm Analytics": "群体分析",
+        "Swarm Download Status": "Swarm 下载状态"
+      }
+    },
+    "zh-Hant": {
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "catalogPin": {
+        "byteCount": 383745,
+        "gitBlob": "33921f342c0b8add57d69a95ee24c4b6f7b22ab7",
+        "keyCount": 5441,
+        "lineCount": 5443,
+        "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+        "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+        "sha256": "0c9d171ea4b7e2908a327a8f8565bcbf2ea45532665bfb9893b868b62941063b"
+      },
+      "labels": {
+        "Error Loading Swarm Data": "載入 Swarm 資料時出錯",
+        "No swarm job selected": "未選擇集群作業",
+        "Swarm Analytics": "群體分析",
+        "Swarm Download Status": "Swarm 下載狀態"
+      }
+    }
+  },
+  "method": "read-only git show at exact PR head",
+  "note": "Confirms that current Swarm wording at source rank 1387 matches sibling feature labels in the same exact-head locale catalogs; custom Spanish, Brazilian Portuguese, and Korean targets align to sibling terminology.",
+  "tree": "36ae6ecf3b705995fbd549cb8650d6458936df91"
+}

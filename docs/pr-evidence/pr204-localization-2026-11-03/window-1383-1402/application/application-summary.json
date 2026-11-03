@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "reviewedBaseHead": "b5da2589b6e8f2d4b0c0faab28bcdf0481e42438",
+  "reviewedBaseTree": "36ae6ecf3b705995fbd549cb8650d6458936df91",
+  "status": "applied-uncommitted",
+  "reviewedCells": 240,
+  "decisionCounts": {
+    "accept-current": 183,
+    "correction": 47,
+    "refinement": 10
+  },
+  "changedCells": 57,
+  "changedCatalogFiles": 12,
+  "readbackCells": 240,
+  "readbackMismatches": 0,
+  "catalogKeyCountPerLocale": 5441,
+  "orderedKeySetsPreserved": true,
+  "nonTargetCatalogChanges": 0,
+  "arabicPluralCategoryObjectsPreserved": 15,
+  "priorHoldsReattestedAndUnchanged": 35,
+  "newHolds": 0,
+  "testsBuildsScansCI": "not run",
+  "browserAndNativeSpeakerReview": "pending",
+  "workflowsTouched": false,
+  "mergeReleaseTag": "not performed",
+  "evidencePath": "docs/pr-evidence/pr204-localization-2026-11-03/window-1383-1402",
+  "releaseNotePath": "release-notes/20261103-slskr-review-window-1383-1402.md"
+}

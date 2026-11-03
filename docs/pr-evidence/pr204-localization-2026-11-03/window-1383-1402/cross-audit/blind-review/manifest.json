@@ -1,0 +1,183 @@
+{
+  "activity": {
+    "browserReview": "not performed",
+    "primaryLedgerOrProposalValuesFromOtherReviewersOpened": 0,
+    "releaseOrTag": "not performed",
+    "repositoryFilesOpened": 0,
+    "testsBuildsCI": "not run"
+  },
+  "applicationStatus": "review evidence only; no repository/catalog/PR mutation",
+  "artifact": "slskR PR #204 W1383-W1402 primary localization review",
+  "baseRef": "main",
+  "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "head": "b5da2589b6e8f2d4b0c0faab28bcdf0481e42438",
+  "inputPins": {
+    "candidateFreeChecksumListSha256": "f23606c20a24aebb33e7a5b79690a43bc54864da6fb516d3526828f7a1f192c1",
+    "candidateFreeInputOnly": true,
+    "candidateFreeManifestSha256": "305e53b328c07083e7144ecbb33d52fe64fc1b08a794848a7dcec61a29a701ed",
+    "currentTargetCellsSha256": "b7ba66684e56128ea2397b4fdd7d678c2313b709f5b1b0684a38d1b0a4224eba",
+    "inputPacketHashes": {
+      "PR-attestation.json": "8a6f3c019712fa6bc742c838daeb7202f591b3c4c2daee4e39f8e5f9d3e75190",
+      "README.md": "6c705ea8d560ad754bf7997c0c394987d0e2eaf3c13dfe9af1a266a540347c6a",
+      "caller-resolution-holds.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "catalog-file-pins.json": "151438d5fc87535f7c5309e41116e89a603cc219dbc501e3b8bc8ba0cb28ccf3",
+      "catalog-structure.jsonl": "d89c5e172451b7c47759ebb327aa9e6cefcdb69ce2bd3197e1e11d0cdef09d43",
+      "current-target-cells.jsonl": "b7ba66684e56128ea2397b4fdd7d678c2313b709f5b1b0684a38d1b0a4224eba",
+      "localization-runtime-context.json": "5d4f833cf0691c7f65a3354ea22bba7c28c2f86ad74bdf5267ff369f7ac789ed",
+      "manifest.json": "305e53b328c07083e7144ecbb33d52fe64fc1b08a794848a7dcec61a29a701ed",
+      "prior-hold-reattestation.jsonl": "ed49f4ce8c2bfc63660572fe16fbcd062d1ddb7692bcea22b5dfc12f876d71c3",
+      "prior-selection-reattestation.jsonl": "4409240e9331b688bdfd631ef5787775a13452364951f586ad9ecb3db3a0108c",
+      "selected-source-keys.txt": "937fbff574d9f918b8e7a9fbf3c22f8ba6f1c350815eb49152e250c80e290821",
+      "source-contexts.jsonl": "0b064a9036e609ff154c4ce3936a9f64e9b2511e5180cf46ae269fc4b69b8a74",
+      "source-order-lineage.json": "3f9c2a56ca1bb5a209f056d56ae8341682a229b8ea5c3965b23e8103a9140169",
+      "source-queue.jsonl": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+      "source-window-boundaries.jsonl": "2be3890fadde5a6a99f90f140ece5a74fd71a1256536681a57012a2f022a2fa1",
+      "verify-candidate-free.py": "331d3b2b3101cb4256429ea7ac9beb4632416f444797d8ddbbd615e96209464c"
+    },
+    "localizationRuntimeContextSha256": "5d4f833cf0691c7f65a3354ea22bba7c28c2f86ad74bdf5267ff369f7ac789ed",
+    "sourceContextsSha256": "0b064a9036e609ff154c4ce3936a9f64e9b2511e5180cf46ae269fc4b69b8a74",
+    "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+    "sourceQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45"
+  },
+  "liveRefAttestation": {
+    "baseRef": "main",
+    "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "branchRef": "refs/heads/codex/slskr-l10n-audit-20261030",
+    "branchRefSha": "b5da2589b6e8f2d4b0c0faab28bcdf0481e42438",
+    "draft": true,
+    "headRef": "codex/slskr-l10n-audit-20261030",
+    "headSha": "b5da2589b6e8f2d4b0c0faab28bcdf0481e42438",
+    "method": "GitHub PR metadata endpoint, Git refs endpoint, and commit endpoint; metadata/ref/tree values matched exact task pins",
+    "pullRequest": 204,
+    "repository": "snapetech-org/slskr",
+    "schemaVersion": 1,
+    "state": "open",
+    "tree": "36ae6ecf3b705995fbd549cb8650d6458936df91",
+    "verifiedAtUtc": "2026-11-03T17:33:11Z"
+  },
+  "liveRefAttestationSha256": "adc4e916ff86d3fb6e04ac5cbd3791a06685e5d2e739123fd4f8fc00633d894f",
+  "nativeSpeakerReview": "not performed; no native-speaker approval claimed",
+  "priorPreservation": {
+    "changedPriorHolds": 0,
+    "holdsReattested": 35,
+    "priorHoldReattestationSha256": "ed49f4ce8c2bfc63660572fe16fbcd062d1ddb7692bcea22b5dfc12f876d71c3",
+    "priorSelectionReattestationSha256": "4409240e9331b688bdfd631ef5787775a13452364951f586ad9ecb3db3a0108c",
+    "selectedRowsReattested": 140
+  },
+  "pullRequest": 204,
+  "range": [
+    1383,
+    1402
+  ],
+  "repository": "snapetech-org/slskR",
+  "review": {
+    "callerContextConfidenceCounts": {
+      "high": 240
+    },
+    "callerOccurrences": 51,
+    "callerReferences": 49,
+    "callerlessPositions": [],
+    "cells": 240,
+    "confidenceCounts": {
+      "moderate": 240
+    },
+    "decisionCounts": {
+      "accept-current": 182,
+      "correction": 46,
+      "refinement": 12
+    },
+    "decisionCountsByLocale": {
+      "ar": {
+        "accept-current": 14,
+        "correction": 5,
+        "refinement": 1
+      },
+      "de": {
+        "accept-current": 15,
+        "correction": 4,
+        "refinement": 1
+      },
+      "es": {
+        "accept-current": 16,
+        "correction": 2,
+        "refinement": 2
+      },
+      "fr": {
+        "accept-current": 17,
+        "correction": 3
+      },
+      "hi": {
+        "accept-current": 13,
+        "correction": 7
+      },
+      "id": {
+        "accept-current": 15,
+        "correction": 4,
+        "refinement": 1
+      },
+      "ja": {
+        "accept-current": 16,
+        "correction": 2,
+        "refinement": 2
+      },
+      "ko": {
+        "accept-current": 15,
+        "correction": 3,
+        "refinement": 2
+      },
+      "pt-BR": {
+        "accept-current": 17,
+        "correction": 2,
+        "refinement": 1
+      },
+      "vi": {
+        "accept-current": 14,
+        "correction": 4,
+        "refinement": 2
+      },
+      "zh-Hans": {
+        "accept-current": 15,
+        "correction": 5
+      },
+      "zh-Hant": {
+        "accept-current": 15,
+        "correction": 5
+      }
+    },
+    "holdCount": 0,
+    "localeCount": 12,
+    "localeOrder": [
+      "es",
+      "zh-Hans",
+      "hi",
+      "de",
+      "ja",
+      "fr",
+      "pt-BR",
+      "ar",
+      "ko",
+      "zh-Hant",
+      "vi",
+      "id"
+    ],
+    "proposalCount": 58,
+    "sourceCount": 20,
+    "tokenCheckFailures": {
+      "markupPreserved": 0,
+      "numericTokensPreserved": 0,
+      "placeholderSequencePreserved": 0,
+      "protectedLiteralsPreserved": 0
+    }
+  },
+  "reviewDecisionsSha256": "607536a6f1e89b0eefbed504c789160880a366779fba3a4767f3404d1f1106cb",
+  "schemaVersion": 1,
+  "sealedLedger": {
+    "byteCount": 485114,
+    "orderedCellIdsSha256": "c05bacda59fd600eba3c62fe16c84a831f1cd012e422c58f07c694ec19680950",
+    "path": "primary-ledger.jsonl",
+    "sha256": "798d4bad4d4951fd122d75998dc6e213e8f93f3783ec7d6cd3650d7fc3815746"
+  },
+  "tree": "36ae6ecf3b705995fbd549cb8650d6458936df91",
+  "window": "W1383-W1402"
+}

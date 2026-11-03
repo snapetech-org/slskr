@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 1,
+  "head": "b5da2589b6e8f2d4b0c0faab28bcdf0481e42438",
+  "tree": "36ae6ecf3b705995fbd549cb8650d6458936df91",
+  "sourceLookupKeySetCount": 5441,
+  "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "sourceQueuePath": "source-queue.jsonl",
+  "sourceQueueFileSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+  "localesInRuntimeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "localeCatalogs": {
+    "es": {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "byteCount": 444636,
+      "lineCount": 5443,
+      "sha256": "b28a3767f7c2b18b37c0c9cdf03f79c8471d3d2d4f0c8b69ed7adeff8ac3c683",
+      "gitBlob": "f90cbbb00c1cbbd81e28f330dec4db9b20f30da2",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "zh-Hans": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "byteCount": 382985,
+      "lineCount": 5443,
+      "sha256": "8ab9c141474ea5a72fe5b08977b6fcc47598ba4ff61259e9fd266d5508b15524",
+      "gitBlob": "dfea606fb64a8219771bc2f9a0cffbc1e44015bc",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "hi": {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "byteCount": 677955,
+      "lineCount": 5443,
+      "sha256": "e3d1a0043259c883e203d78165399218d4b92bd9f3d61ff9ab9f82d566af55d1",
+      "gitBlob": "de64e4de45d743be96c803679112e6ae1dac700a",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "de": {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "byteCount": 443093,
+      "lineCount": 5443,
+      "sha256": "ce8d6cbfefcf91e913389787bd23bb48ae203b7f2a446f202632502288fe7ddc",
+      "gitBlob": "044ee8a444f30872c44fd254d6bc44cd6f388435",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "ja": {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "byteCount": 491198,
+      "lineCount": 5443,
+      "sha256": "c2741488db827dd5fce35f1889ac6aa7a481611dae1a6fb2b593f86d6a4e9bef",
+      "gitBlob": "3f2cb879eadef8f7dd9bc25576c4cdab48a4e6e4",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "fr": {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "byteCount": 455687,
+      "lineCount": 5443,
+      "sha256": "914007890c720a957c7d7dcdb6df9897af5b6cc73eeef617283d5ee7f81bce09",
+      "gitBlob": "4d20499e8fd0f510ac3e011fc72f67e24f3b6f11",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "pt-BR": {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "byteCount": 439279,
+      "lineCount": 5443,
+      "sha256": "bf8d361382db1874787ff4246b0eec912240f4ba3cd47babbcc97e906fdebf47",
+      "gitBlob": "d7cb5ef14fdca6f31c95fc0b8859cc251c58e757",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "ar": {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "byteCount": 513243,
+      "lineCount": 5548,
+      "sha256": "7ab99366e257888a66d177190be5b97412095bd9698f785f8f601347fbcf4fa3",
+      "gitBlob": "cf66f94405565eadde7bbb112b46b697c43434fd",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "ko": {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "byteCount": 442375,
+      "lineCount": 5443,
+      "sha256": "3ac8fdcbaf62efd639f1a680b5e674accf204f25329d950104856bb2e8641d94",
+      "gitBlob": "1ceb06388e4f1e3cee3dce9bfc0f7fe2212cf521",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "zh-Hant": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "byteCount": 383745,
+      "lineCount": 5443,
+      "sha256": "0c9d171ea4b7e2908a327a8f8565bcbf2ea45532665bfb9893b868b62941063b",
+      "gitBlob": "33921f342c0b8add57d69a95ee24c4b6f7b22ab7",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "vi": {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "byteCount": 475296,
+      "lineCount": 5443,
+      "sha256": "08b5f18853ce1914a876f3fe36412539b96073a605381661d2fda26c10858b89",
+      "gitBlob": "e53f9d421173dd78707e32178edb50721fb2e2f7",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "id": {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "byteCount": 410046,
+      "lineCount": 5443,
+      "sha256": "f5750144e98f5eec7cabeb0ad618e3afc59ccdc414540bb568a00d153e0a1f97",
+      "gitBlob": "a4931d47325de71a662e3fa24e992cbee3dd3ee6",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    }
+  },
+  "localeRuntime": {
+    "path": "web/src/lib/interfaceLocale.js",
+    "byteCount": 11530,
+    "lineCount": 302,
+    "sha256": "16eb5f119655805f48845e026ee12fd517fae6de871091bd9be2e5b7f1d310ea",
+    "gitBlob": "72dfea05f86bcf0ab02882a85c6e8d4a0cb0dabf"
+  },
+  "callerFiles": {
+    "web/src/components/CompatibilityDashboard.jsx": {
+      "path": "web/src/components/CompatibilityDashboard.jsx",
+      "byteCount": 32620,
+      "lineCount": 882,
+      "sha256": "1e85738718ef2de4dc40358f746163cabb6192fca4072a8bf30ba0e133dbd27f",
+      "gitBlob": "831b00821cf5999e39ce586eab76d81bfdbdbb82"
+    },
+    "web/src/components/Pods/PortForwarding.jsx": {
+      "path": "web/src/components/Pods/PortForwarding.jsx",
+      "byteCount": 39883,
+      "lineCount": 1129,
+      "sha256": "3db4aa88c36b9c57f077c61f82541043d2787bc55f3289992b69403e942c326d",
+      "gitBlob": "7eaacd44ed04d2ee5d71e7db466fe43b1fa39da1"
+    },
+    "web/src/components/Shared/ErrorSegment.jsx": {
+      "path": "web/src/components/Shared/ErrorSegment.jsx",
+      "byteCount": 1092,
+      "lineCount": 34,
+      "sha256": "fa5a94a731441fd9d6d7b6d3ab408b20a6871df89720a1c345388150441cbff0",
+      "gitBlob": "1324b64d7a193b411d7604db0ae52205feb56239"
+    },
+    "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx": {
+      "path": "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx",
+      "byteCount": 53474,
+      "lineCount": 1043,
+      "sha256": "17241e796b943988d339bac74569f5a5d4e8889194cad1221d0b9c8bc1b82a9e",
+      "gitBlob": "90f3e1d29a4b514a1877693e131e92b66b8050aa"
+    },
+    "web/src/components/System/AdminPolicies/index.jsx": {
+      "path": "web/src/components/System/AdminPolicies/index.jsx",
+      "byteCount": 26021,
+      "lineCount": 575,
+      "sha256": "c86a11ae6fe12a4a387f92fd35907ab7e225cf22be0b7057988d17cf63e8ba7f",
+      "gitBlob": "df800a08777dcb589a180c88dcc2679490bc84ad"
+    },
+    "web/src/components/System/Bridge/index.jsx": {
+      "path": "web/src/components/System/Bridge/index.jsx",
+      "byteCount": 21563,
+      "lineCount": 628,
+      "sha256": "cdb2bf06a4066615fbdcbbffdd552b504db80aff3003c2e60ac3de43162ec666",
+      "gitBlob": "2ebcb45755514fd7f281cdf96fd40046605d1906"
+    },
+    "web/src/components/System/Events/index.jsx": {
+      "path": "web/src/components/System/Events/index.jsx",
+      "byteCount": 7582,
+      "lineCount": 248,
+      "sha256": "30ad62dd5e19526856dbceff08f329a937f12e1cf34650c06cb4ee94c89f71c2",
+      "gitBlob": "34a8d41bffbb245ce694977f1e2e143ae59f35b0"
+    },
+    "web/src/components/System/Integrations/SourceFeedIntegrationsPanel.jsx": {
+      "path": "web/src/components/System/Integrations/SourceFeedIntegrationsPanel.jsx",
+      "byteCount": 19301,
+      "lineCount": 483,
+      "sha256": "3535dd1d9d37b9f01a451ad1b8220c864db8a0d3e6c074b9290eaf71b738af4e",
+      "gitBlob": "6a8c88b73cbf55eec7d7ac0d23b8d86005b854be"
+    },
+    "web/src/components/System/Logs/index.jsx": {
+      "path": "web/src/components/System/Logs/index.jsx",
+      "byteCount": 11318,
+      "lineCount": 363,
+      "sha256": "f7c0ef618697a0d41a099ff6a1996179af25122bae7e2d10452033a7c1fead26",
+      "gitBlob": "c61368fce26317a94713f10457565e0d26c041af"
+    },
+    "web/src/components/System/MediaCore/MediaCoreMetadataPortabilityPanel.jsx": {
+      "path": "web/src/components/System/MediaCore/MediaCoreMetadataPortabilityPanel.jsx",
+      "byteCount": 14701,
+      "lineCount": 371,
+      "sha256": "d0a786e8d6c7c42ad22862d08b64ddcf4a3003417ca8a9459e766cbd136a2c03",
+      "gitBlob": "194d820df304d56eb107142812814c2ff4d6524b"
+    },
+    "web/src/components/System/MediaCore/PodMessageRoutingPanel.jsx": {
+      "path": "web/src/components/System/MediaCore/PodMessageRoutingPanel.jsx",
+      "byteCount": 18706,
+      "lineCount": 437,
+      "sha256": "d69c4b642ea560fd3f53688927cce8f6fea9f93923aa89f4924f640631cda32b",
+      "gitBlob": "4e205e85e50775e0d1e69802884f30d6b1c32ed5"
+    },
+    "web/src/components/System/MediaCore/PodMessageStoragePanel.jsx": {
+      "path": "web/src/components/System/MediaCore/PodMessageStoragePanel.jsx",
+      "byteCount": 6404,
+      "lineCount": 161,
+      "sha256": "1419f1e1f2b02a8ef3810f5c92b61e884b5da9249381cfb6d586fe7d6235ded0",
+      "gitBlob": "980239bb8fca9ebd9151bd91d2808b17deff0990"
+    },
+    "web/src/components/System/Mesh/MeshEvidencePolicy.jsx": {
+      "path": "web/src/components/System/Mesh/MeshEvidencePolicy.jsx",
+      "byteCount": 14258,
+      "lineCount": 356,
+      "sha256": "b4dd46c29e740ea03bf84898655b413fc02bfe6274fbaa1c9964ed59e9c475a7",
+      "gitBlob": "2d8c7f594e9d3dc09192182cd1a7beefbc300f6d"
+    },
+    "web/src/components/System/Mesh/RealmSubjectIndexConflicts.jsx": {
+      "path": "web/src/components/System/Mesh/RealmSubjectIndexConflicts.jsx",
+      "byteCount": 12920,
+      "lineCount": 324,
+      "sha256": "7f4c9a172e08b50027271c856dca10f7270a23f7bba89ca1488cb6561ae62a77",
+      "gitBlob": "355a03884b50ecd5b45287aa89f538919a17f70a"
+    },
+    "web/src/components/System/Security/AdversarialSettingsView.jsx": {
+      "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+      "byteCount": 41904,
+      "lineCount": 1018,
+      "sha256": "5b2dfa095ba281bae2b5ef66e17901b38c7d2a68d9bef52c5f016ce3352db72d",
+      "gitBlob": "adcacdd123faf82a315da746fab3243adf5ea6a3"
+    },
+    "web/src/components/System/Security/index.jsx": {
+      "path": "web/src/components/System/Security/index.jsx",
+      "byteCount": 9420,
+      "lineCount": 267,
+      "sha256": "dc055397cbd4afe380d4b0c5c0f3af3c1077719fea1854ec4116cf2367ca2743",
+      "gitBlob": "5a3b5cd919daa818d106031ecc70a31cde4c14a2"
+    },
+    "web/src/components/System/SwarmAnalytics/index.jsx": {
+      "path": "web/src/components/System/SwarmAnalytics/index.jsx",
+      "byteCount": 18016,
+      "lineCount": 475,
+      "sha256": "b020adc0f11520ad1fe52080fdf1d90fe717c3dea9a3c5379973b31514d88c9d",
+      "gitBlob": "6b4db5a84a05d1ffdb560e0e2c8d2708590f3ded"
+    },
+    "web/src/components/System/SwarmVisualization/index.jsx": {
+      "path": "web/src/components/System/SwarmVisualization/index.jsx",
+      "byteCount": 18035,
+      "lineCount": 536,
+      "sha256": "175c3ab9e3f12c87ccdca0981085e48c4ada93d71cdbe4bcdd3552989429a9b9",
+      "gitBlob": "7d2cece5f049ff490ba90e2148e515a5597df1ce"
+    },
+    "web/src/components/TrafficTicker/TrafficTicker.jsx": {
+      "path": "web/src/components/TrafficTicker/TrafficTicker.jsx",
+      "byteCount": 7793,
+      "lineCount": 227,
+      "sha256": "53101216362dacc7fa23ed8de50c9bb6bb4345ce076775f98ec199b25471ff5b",
+      "gitBlob": "bc893fb019904bfc9ad5c48358a2db0dc1c676de"
+    },
+    "web/src/components/Transfers/TransferList.jsx": {
+      "path": "web/src/components/Transfers/TransferList.jsx",
+      "byteCount": 9339,
+      "lineCount": 252,
+      "sha256": "5db7fa14417829b11cd41eb78614b114bb747c5c5fbdc2842c24dfc924066491",
+      "gitBlob": "6b0cc627ee092390cde17aa8330a8d7cb24202d3"
+    },
+    "web/src/components/Transfers/TransfersHeader.jsx": {
+      "path": "web/src/components/Transfers/TransfersHeader.jsx",
+      "byteCount": 9771,
+      "lineCount": 264,
+      "sha256": "57f43a6851d991b9241b73a0f9ff08636573a49282033722f7350fb7f2a44d6f",
+      "gitBlob": "de01ff39c31f0ac094b95fba0a15f40f709f605c"
+    },
+    "web/src/lib/options.js": {
+      "path": "web/src/lib/options.js",
+      "byteCount": 1620,
+      "lineCount": 66,
+      "sha256": "5211b74d0c1139e07f26d1e1992fe3d3602ce726c0d6d9893e11e4a44e2f0e75",
+      "gitBlob": "c81acbfb9350e2e43f306eaee24058d55e02800c"
+    },
+    "web/src/lib/setupHealthCheck.js": {
+      "path": "web/src/lib/setupHealthCheck.js",
+      "byteCount": 12270,
+      "lineCount": 361,
+      "sha256": "76784b15cf7c25e871b7034028f5f5705ffb3f672f8f44b02a2ecac8d6f10a8b",
+      "gitBlob": "20cef4352e429331c4e7ac996867c02036a0992c"
+    },
+    "web/src/lib/transfers.js": {
+      "path": "web/src/lib/transfers.js",
+      "byteCount": 11407,
+      "lineCount": 371,
+      "sha256": "c3887c3dcafd43e6446e1ef0e7447adb134b0fe6d7445af71b5ab71a3768a0f0",
+      "gitBlob": "d9d4afb3641d95727146d55d8761b3ab3f891f41"
+    }
+  }
+}
