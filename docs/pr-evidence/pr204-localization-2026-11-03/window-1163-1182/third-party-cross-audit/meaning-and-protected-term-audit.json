@@ -1,0 +1,73 @@
+{
+  "assessment": "No primary or blind candidate drops DHT or lowercase slskr. Sixteen exactly identical proposals were checked in caller context and none changes source meaning or an exact protected literal. The most consequential disagreements are listed above; the identified risky/ambiguous cells are held or resolved to the wording that preserves the source meaning.",
+  "blindCandidateProtectedLiteralViolations": 0,
+  "meaningOrTerminologyDisagreements": [
+    {
+      "blind": "5 proposals and 7 accept-current dispositions",
+      "finding": "The blind proposals preserve DHT but use unapproved Pod loanwords/localized nouns. The primary's terminology hold is retained across all 12 locales until the product glossary approves Pod wording.",
+      "locales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id",
+        "ja",
+        "ko",
+        "pt-BR",
+        "vi",
+        "zh-Hans",
+        "zh-Hant"
+      ],
+      "position": 1164,
+      "primary": "hold all locales",
+      "term": "Pod"
+    },
+    {
+      "blindDisposition": "hold",
+      "finding": "The primary's المكتشفون can denote discoverers and may invert the discovered-peer count label; the blind review holds because count agreement is unresolved. Third party holds.",
+      "locale": "ar",
+      "position": 1165,
+      "primaryProposal": "المكتشفون"
+    },
+    {
+      "blindProposal": "Pares de slskr descubiertos",
+      "finding": "The proposals distinguish detected (detectados) from discovered (descubiertos). The source and caller say discovered peers; third party chooses the blind wording.",
+      "locale": "es",
+      "position": 1167,
+      "primaryProposal": "Pares de slskr detectados"
+    },
+    {
+      "blindProposal": "डिस्कवरी ग्राफ़ एटलस",
+      "finding": "खोज can read as search, while the neighboring localized feature label uses डिस्कवरी ग्राफ़. Third party chooses the blind wording for feature-term consistency.",
+      "locale": "hi",
+      "position": 1170,
+      "primaryProposal": "खोज ग्राफ़ एटलस"
+    },
+    {
+      "blind": "hold",
+      "finding": "The player-rating context does not disambiguate caution from warning/risk/preference; third party holds both.",
+      "locales": [
+        "zh-Hans",
+        "zh-Hant"
+      ],
+      "position": 1179,
+      "primary": "accept-current"
+    },
+    {
+      "blind": "hold",
+      "finding": "Variable count morphology is underdetermined; third party holds pending native Arabic wording.",
+      "locale": "ar",
+      "position": 1180,
+      "primary": "accept-current"
+    }
+  ],
+  "primaryCandidateProtectedLiteralViolations": 0,
+  "protectedExactLiterals": [
+    "DHT",
+    "slskr"
+  ],
+  "sharedExactProposalCells": 16,
+  "sharedExactProposalsChangingMeaningOrProtectedTerms": 0,
+  "thirdPartyCandidateProtectedLiteralViolations": 0
+}

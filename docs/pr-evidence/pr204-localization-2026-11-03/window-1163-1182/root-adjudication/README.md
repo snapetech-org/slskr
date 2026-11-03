@@ -1,0 +1,3 @@
+# slskR PR #204 W1163-W1182 root adjudication
+
+Root reviewed the primary and blind ledgers, independent cross-audit, and pinned caller context. The 240-cell ledger retains every accept-current and hold decision; the apply plan contains 64 reviewed changes. Two Japanese Discovery terms were overridden after caller comparison: ranks 1166 and 1167 use 発見 for “discovered,” keeping 検出 reserved for the adjacent “detected” capability wording. Holds include unapproved Pod terminology and unresolved native-language wording. This machine-assisted review is not qualified native-speaker approval or headed browser acceptance.

@@ -1,0 +1,62 @@
+{
+  "web/src/lib/locales/ui-labels.ar.json": {
+    "gitBlob": "832159f9990ba225b0d2a539fc07a3b7c94d74de",
+    "keyCount": 5441,
+    "sha256": "25f0e5ba321f0f805147a43ebbfc40c9f2fad9095885309a1c2639bee27e0314"
+  },
+  "web/src/lib/locales/ui-labels.de.json": {
+    "gitBlob": "7bc59957e71c640f813f52025607e995dbb3f065",
+    "keyCount": 5441,
+    "sha256": "f575ca88a289a338b86ec00c16271a8dacfa9fb5bff2598256741d6def129007"
+  },
+  "web/src/lib/locales/ui-labels.es.json": {
+    "gitBlob": "0a3997a4781f009fce0b4971965fbb01aea5e329",
+    "keyCount": 5441,
+    "sha256": "edbf55fa2b8606f02caa4523e104acf32778d6ec40ace33068e3d893ab6370a1"
+  },
+  "web/src/lib/locales/ui-labels.fr.json": {
+    "gitBlob": "91dce3338ce296d99d2ebfce5d8f4f27de2245b5",
+    "keyCount": 5441,
+    "sha256": "9d3f6bae20ffe8b6b23f9b9f508ff11b6032762b5517f62b2406ffb9c952f073"
+  },
+  "web/src/lib/locales/ui-labels.hi.json": {
+    "gitBlob": "884883f84cf0a4c6814b7088ee34edef8c4f6358",
+    "keyCount": 5441,
+    "sha256": "b1c46195e698252fd3dcba011aa4f66601a61155a44d3843fd411ed055941f95"
+  },
+  "web/src/lib/locales/ui-labels.id.json": {
+    "gitBlob": "1bc0cc8c4ae47b4705c16a83fec6a87d2bdc11d3",
+    "keyCount": 5441,
+    "sha256": "c4d00e0a58dd73b2ac17be2f49328c8e38b241bbfbf43ce41e19dd6467b914f9"
+  },
+  "web/src/lib/locales/ui-labels.ja.json": {
+    "gitBlob": "becce9b75ccacb451442c02e9523bc4a43cbdf0d",
+    "keyCount": 5441,
+    "sha256": "87ec606e9b32a1ae0ca88531a832c3be59c9e817b79f16200ebcebcd4c00f453"
+  },
+  "web/src/lib/locales/ui-labels.ko.json": {
+    "gitBlob": "0edc2eb3d2ced0410d4b440c6b51c6f4198bc214",
+    "keyCount": 5441,
+    "sha256": "d186f92f2edf31c8eee2e55f62a8fca3d51edb1c7be315ed3f3652f1b434c830"
+  },
+  "web/src/lib/locales/ui-labels.pt-BR.json": {
+    "gitBlob": "bced9d2864e6a4f5371fc6ddd06666c6148ecbc2",
+    "keyCount": 5441,
+    "sha256": "62718f198ba5607a98f6def2359c2ee8ae4b9dddeea06cbed994fa1f03d54558"
+  },
+  "web/src/lib/locales/ui-labels.vi.json": {
+    "gitBlob": "b3eaa96329af5bd6a6b61ea71f0dab9f43159a5b",
+    "keyCount": 5441,
+    "sha256": "e66ac3df5e7941bf3a7491b3f4005dbb34028bb6345a36d01fc49fc21802f297"
+  },
+  "web/src/lib/locales/ui-labels.zh-Hans.json": {
+    "gitBlob": "e8b883c75b4ec23ca8d04e6203f01461e14a1208",
+    "keyCount": 5441,
+    "sha256": "bf2df3f344ca72a0a408d2c4d6e96d1d2a3db5a8db791f366c12d40d749f3d76"
+  },
+  "web/src/lib/locales/ui-labels.zh-Hant.json": {
+    "gitBlob": "edbd70b718123329fc2605134d79d4b7f3ee5164",
+    "keyCount": 5441,
+    "sha256": "ddc463d3a8d84f0a91f02187d98a7b252d844c2394c2295371d713e90a26fa4a"
+  }
+}

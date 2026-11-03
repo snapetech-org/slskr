@@ -1,0 +1,15 @@
+{
+  "baseRefName": "main",
+  "candidateFreeInputHead": "9aa58492ee693d8ca0f2c027a3ee5b8438639f91",
+  "candidateFreeInputTree": "b9ebab27d1f24932be0c623cf894a78115b6f2bb",
+  "headRefName": "codex/slskr-l10n-audit-20261030",
+  "headRefOid": "9aa58492ee693d8ca0f2c027a3ee5b8438639f91",
+  "isDraft": true,
+  "pullRequest": 204,
+  "pullRequestState": "OPEN",
+  "remoteBranch": "codex/slskr-l10n-audit-20261030",
+  "remoteBranchHead": "9aa58492ee693d8ca0f2c027a3ee5b8438639f91",
+  "repository": "snapetech-org/slskr",
+  "tree": "b9ebab27d1f24932be0c623cf894a78115b6f2bb",
+  "verification": "passed"
+}
