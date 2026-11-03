@@ -1,0 +1,18 @@
+{
+  "head": "75e769d2d7b5b16d91a3826e90ffcf39c85fba96",
+  "locale": "ar",
+  "sourceId": "Copy the complete forensic matrix JSON for this SongID run without changing ranking, downloads, or local files.",
+  "rootFinalTarget": "انسخ مصفوفة التحليل الجنائي الرقمي الكاملة JSON لتشغيل SongID هذا، دون تغيير الترتيب أو التنزيلات أو الملفات المحلية.",
+  "evidence": [
+    {
+      "sourceId": "Open the Discovery Graph centered on this SongID run so you can inspect its neighborhood without leaving the queue.",
+      "target": "افتح الرسم البياني للاستكشاف المتمركز حول تشغيل SongID هذا حتى تتمكن من فحص المنطقة المجاورة له دون مغادرة قائمة الانتظار.",
+      "targetSha256": "9a2085b1f32ec769be5f64d570e00b5525c78d8c3c5228d8397dabab1f30b0ab"
+    },
+    {
+      "sourceId": "Open this SongID run and follow its queue position, evidence, and download options.",
+      "target": "افتح تشغيل SongID هذا واتبع موقع قائمة الانتظار والأدلة وخيارات التنزيل.",
+      "targetSha256": "274a3694a634137a51e886a11b14700165c6db8fae962911a5398bebb279f583"
+    }
+  ]
+}

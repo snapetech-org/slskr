@@ -1,0 +1,97 @@
+{
+  "base": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "callerFiles": 13,
+  "callerGaps": [
+    {
+      "reason": "No exact production source-string-literal caller exists in tracked web/src at this head; the value remains held pending source/caller confirmation.",
+      "sourceId": "Copy download action preview",
+      "sourceIndex": 943,
+      "targetLocales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id",
+        "ja",
+        "ko",
+        "pt-BR",
+        "vi",
+        "zh-Hans",
+        "zh-Hant"
+      ],
+      "windowLabel": 944
+    }
+  ],
+  "callerPins": 38,
+  "catalogKeyCount": 5441,
+  "catalogKeysetsIdentical": true,
+  "catalogsReattested": 12,
+  "cellCount": 240,
+  "counts": {
+    "accept-current": 145,
+    "correction": 72,
+    "hold": 12,
+    "refinement": 11
+  },
+  "currentProtectedFailures": [
+    {
+      "locale": "de",
+      "missing": [
+        "SongID"
+      ],
+      "sourceIndex": 955
+    },
+    {
+      "locale": "hi",
+      "missing": [
+        "SongID"
+      ],
+      "sourceIndex": 955
+    }
+  ],
+  "head": "75e769d2d7b5b16d91a3826e90ffcf39c85fba96",
+  "headedBrowserAcceptance": false,
+  "holdCellCount": 12,
+  "holdSources": [
+    {
+      "reason": "No exact production source-string-literal caller exists in tracked web/src at this head; the value remains held pending source/caller confirmation.",
+      "sourceId": "Copy download action preview",
+      "sourceIndex": 943,
+      "windowLabel": 944
+    }
+  ],
+  "isDraft": true,
+  "localeCount": 12,
+  "markupMismatches": 0,
+  "nativeSpeakerApproval": false,
+  "newWindowAdjacentBoundaryCells": 36,
+  "placeholderMismatches": 0,
+  "priorBoundaryCellsReattested": 24,
+  "priorCallerPinsReattested": 42,
+  "priorWindow": "W923-W942",
+  "priorWindowCellReadbacksReattested": 240,
+  "priorWindowHoldCellsPreserved": 12,
+  "priorWindowReadbacksMatchingCurrent": 240,
+  "proposalKindCounts": {
+    "correction": 72,
+    "refinement": 11
+  },
+  "proposedValueChanges": 83,
+  "protectedLiteralCurrentFailureCells": 2,
+  "protectedLiteralFinalFailureCells": 0,
+  "pullRequest": 204,
+  "punctuationMismatches": 0,
+  "repository": "snapetech-org/slskR",
+  "sourceCount": 20,
+  "state": "OPEN",
+  "testsBuildScansCiOrBrowserRun": false,
+  "tree": "2cbcf109d666e2197a302a7b85b96c133f059136",
+  "window": "W943-W962",
+  "worktreeStatusAtPin": "",
+  "zeroBasedSourceIndexInclusive": [
+    942,
+    961
+  ]
+}

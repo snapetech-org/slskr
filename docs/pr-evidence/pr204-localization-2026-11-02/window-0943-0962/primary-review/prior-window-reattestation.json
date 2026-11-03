@@ -1,0 +1,32 @@
+{
+  "allPriorBoundaryPinsMatch": true,
+  "allPriorCallerPinsMatch": true,
+  "boundaryRowsReattested": 24,
+  "callerPinsReattested": 42,
+  "crossReviewChecksumVerification": {
+    "exitCode": 0,
+    "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0923-0942-crossreview-20261102/SHA256SUMS",
+    "stderr": "",
+    "verifiedEntries": 10
+  },
+  "finalCellCount": 240,
+  "finalReadbacksMatchingNewHead": 240,
+  "head": "ca71c6c90cbe6c1fa9ef0307a57b214e61e022b5",
+  "holdSourceIndices": [
+    937
+  ],
+  "holdsPreserved": 12,
+  "markupMismatches": [],
+  "placeholderMismatches": [],
+  "primaryChecksumVerification": {
+    "exitCode": 0,
+    "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0923-0942-primary-20261102/SHA256SUMS",
+    "stderr": "",
+    "verifiedEntries": 19
+  },
+  "priorStructuralResult": "PASS",
+  "protectedLiteralFailures": [],
+  "punctuationMismatches": [],
+  "tree": "a35194c508f9b40f28ed75480fc20182a086c55d",
+  "window": "W923-W942"
+}

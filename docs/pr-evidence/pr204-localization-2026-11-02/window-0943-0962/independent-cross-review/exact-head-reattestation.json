@@ -1,0 +1,185 @@
+{
+  "base": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "callerFileChecks": [
+    {
+      "fileSha256": "0f5765df8fa9e0a353291497a6235d6805dc56982772d8280d9b727a692fd268",
+      "gitBlob": "af4948166db87055c8bd295b16a5d23326478c05",
+      "path": "web/src/components/System/Info/DiagnosticBundleModal.jsx"
+    },
+    {
+      "fileSha256": "3e5392f8a4f4d0ed7e6e6191e5cbbb12e1f34689a13d7c40d22e26b56398628d",
+      "gitBlob": "c80e09d7a45fc31d2b9573711e62f14b7215fb1f",
+      "path": "web/src/components/System/AutomationCenter/index.jsx"
+    },
+    {
+      "fileSha256": "6a455897150bf618cd4c1402010c2ce410e0d912831545ffd2d404444bd03b0d",
+      "gitBlob": "d1b9a25375b5ab6c0223099c861fae99ebc6801d",
+      "path": "web/src/components/System/Integrations/MediaServerPanel.jsx"
+    },
+    {
+      "fileSha256": "b4dd46c29e740ea03bf84898655b413fc02bfe6274fbaa1c9964ed59e9c475a7",
+      "gitBlob": "2d8c7f594e9d3dc09192182cd1a7beefbc300f6d",
+      "path": "web/src/components/System/Mesh/MeshEvidencePolicy.jsx"
+    },
+    {
+      "fileSha256": "81f45c3ef9dd9a153979cd39594b3eab4fd0cccc226654647fc3a022f97fe005",
+      "gitBlob": "2df958dba38d5ca7841043940d0d2b9f9c238658",
+      "path": "web/src/components/System/Network/index.jsx"
+    },
+    {
+      "fileSha256": "3bac8e97e2b8089e594183384842acd8d20c7cf0b7a05f9a76ac01ef02b72e77",
+      "gitBlob": "e92234a2e51f863d6eac8cd118996ded83d17130",
+      "path": "web/src/components/System/Mesh/RealmSubjectIndexConflicts.jsx"
+    },
+    {
+      "fileSha256": "93770b1489c22b54d631d90b593a86e0eca30ca4475d3b1472c1af60604c1d2b",
+      "gitBlob": "644c76751793b2bd45057a0191a054d74f547d36",
+      "path": "web/src/components/System/LibraryHealth/index.jsx"
+    },
+    {
+      "fileSha256": "df183f2ff5844a33448ef3891224ab8a7069b5c938a20b996031db8dc98dbe08",
+      "gitBlob": "91f22f17055fd3e202b107d8b3a4bd1d805b9ea6",
+      "path": "web/src/components/System/Info/SetupHealthCheckModal.jsx"
+    },
+    {
+      "fileSha256": "a978f80c022835c003d35db99b38037dee622c6456d9cbc46688f810867e3ae6",
+      "gitBlob": "162c8fb6dff17671f35471b4bae605da08b90447",
+      "path": "web/src/components/PlaylistIntake/PlaylistIntake.jsx"
+    },
+    {
+      "fileSha256": "ea9a17c1e064db7ec5f70c095a9bd0fb4f15476428007bf3472fcd7b2c5a4292",
+      "gitBlob": "6a26dc806b563672712209ade6cdbba3d998bad3",
+      "path": "web/src/components/Player/PlayerStatsModal.jsx"
+    },
+    {
+      "fileSha256": "4a90c2dfd31302a93964fed1f0642a56909bab926324519eb77c94cda6139f65",
+      "gitBlob": "a6a0eb1e9843801ff94e590a22878899f3d2bca2",
+      "path": "web/src/components/Search/SongIDEvidenceDetails.jsx"
+    },
+    {
+      "fileSha256": "aca1220b0e5e3e8f3bf6503dfcf2429dea3d96976f0cb01ff141b45ec1ac4d72",
+      "gitBlob": "5e3a902b2470733f61fb12378f9ecee2cf3a3e3b",
+      "path": "web/src/components/Player/PlayerRadioModal.jsx"
+    },
+    {
+      "fileSha256": "b3fee3039f668534ce542821af6d67d913eacca0aa378dd9584a93225a0fd7f9",
+      "gitBlob": "fe7e6898ed57e7600640ed2e713e3b9d0776a485",
+      "path": "web/src/components/System/Integrations/ServarrReadinessPanel.jsx"
+    }
+  ],
+  "callerLinePinsVerified": 38,
+  "catalogChecks": [
+    {
+      "fileSha256": "5ddfbe1dede5c3be962a3ca9bcd39ba1edc20f377f99d9e175629c59eec43d8a",
+      "gitBlob": "c2c77c87c411b1c94b0735a16ca9c785386c7fd4",
+      "locale": "ar",
+      "path": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "fileSha256": "dadda77379cef664b3c410125852185d5f4ffac67c29e8bb2bf0572e99638eb6",
+      "gitBlob": "ed1d6bd9b783d40e94362acb701d226939814b06",
+      "locale": "de",
+      "path": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "fileSha256": "41cdf19acd3b2666825a1abe88c56fb53196bc71b16a6350513a5de11c3ef481",
+      "gitBlob": "09f2d942adeb5be3dec2addac2547d25661d2a4c",
+      "locale": "es",
+      "path": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "fileSha256": "b9d50a239825f3e46d3c5c34a162a913dab39d22d23c5ce1ccbdac04e5febb38",
+      "gitBlob": "b5091f476bc7521b805d2b5adc730954cced551a",
+      "locale": "fr",
+      "path": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "fileSha256": "11987f31c60784cc67e7cd135307cd241e9fbc9b17bb19fe1163e7812210d548",
+      "gitBlob": "1c46e6ebfefa56ef81f1d1ae889be85703e78699",
+      "locale": "hi",
+      "path": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "fileSha256": "09f483703839ca66ae674c65eb168b36d65fd6a8ede5ee931565027cc0525f94",
+      "gitBlob": "b48b93116a2feb3aefaf1ad5fb243a28e8f33c50",
+      "locale": "id",
+      "path": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "fileSha256": "b6404aab225eab4691dc550c118395904a4246ebd57e380e68aeeb98f2effa0b",
+      "gitBlob": "88c12a6b581fc857ea3611c24d743f08c7c9b1c1",
+      "locale": "ja",
+      "path": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "fileSha256": "7e45c5d132861d391b0b9274e3c565158ca2728a1562faea3e9ec8b7697ad543",
+      "gitBlob": "e664e452fdac53bf2f4c0923ed23da58f6b36604",
+      "locale": "ko",
+      "path": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "fileSha256": "f50c56e82a500d3b70451c42f3b41a65318c6795c72ba3f77fbc8ae308d13619",
+      "gitBlob": "a0f1c2a0c967a61ca980a709ef85f2a60477c7ac",
+      "locale": "pt-BR",
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "fileSha256": "9e11b17125b002e3dbd68260ff01d56e4f0aedb0b71485f8e86b090191beaab2",
+      "gitBlob": "d5b79c7b52eecf51382cdf659343dec7eb0fdd93",
+      "locale": "vi",
+      "path": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "fileSha256": "183a22b7b966cd39b5aba2161ee33c72e5ee7bb49e35cb65302b721f31aea0c6",
+      "gitBlob": "3df35fc3c053c33026bd3d9262ef13766ae01915",
+      "locale": "zh-Hans",
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "fileSha256": "9bf2ed5ed014fae2db824e3354e41b1ad8fe80e9c4faf40b2a2c5648bcdea3b2",
+      "gitBlob": "076b961dca1090a2eed1f8d29222910bbc46e3d7",
+      "locale": "zh-Hant",
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    }
+  ],
+  "exactHeadReattestedAtUtc": "2026-11-03T00:01:17.314584+00:00",
+  "expectedAndObservedHead": "75e769d2d7b5b16d91a3826e90ffcf39c85fba96",
+  "expectedAndObservedTree": "2cbcf109d666e2197a302a7b85b96c133f059136",
+  "inputHashes": {
+    "SHA256SUMS": "fc7ca25a0e47976be11e00ee7816400efbed343f59c601b24374ba6aaeee13af",
+    "adjacent-boundary-readbacks.jsonl": "25bdfdf7899e549cf10e0aff5e435b2304b4120ae0bb5e4192ad9b8590d2cba1",
+    "caller-pins.jsonl": "5f5257727b542642316af5040a8a458a1f0983b292dc041942acb97d7afec93f",
+    "catalog-pins.jsonl": "6d90b6b4c560338b0f4c9882113e7523db67e950c5399541adc41884fc697f04",
+    "live-pr-reattestation.json": "44b6c6955074be6752d0c6b4e70b368150dd0c63e5ea5bad1ec0dc2ad572d568",
+    "primary-review-ledger.jsonl": "de3f6913202db552873639db5429a640692e9105a8fc16394280538a180770d3",
+    "same-head-terminology-pins.jsonl": "33e4e7fee8fc43a9940e310f21c05f90f053423beff176725778e1262f191071",
+    "source-inventory.jsonl": "81754f31706d4b70d9870aad3a68316b5c3b47c0bbfae853d024a6cff8175875"
+  },
+  "inputScratch": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0943-0962-primary-20261102",
+  "isDraft": true,
+  "localBranch": "codex/slskr-l10n-audit-20261030",
+  "localHead": "75e769d2d7b5b16d91a3826e90ffcf39c85fba96",
+  "localTree": "2cbcf109d666e2197a302a7b85b96c133f059136",
+  "localWorktree": "/home/keith/Documents/code/task-worktrees/localization-20261102-slskr",
+  "noRepoOrPRChanges": true,
+  "noTestsBuildsScansCIOrBrowser": true,
+  "prUrl": "https://github.com/snapetech-org/slskr/pull/204",
+  "pullRequest": 204,
+  "remoteBranchHead": "75e769d2d7b5b16d91a3826e90ffcf39c85fba96",
+  "remotePullHead": "75e769d2d7b5b16d91a3826e90ffcf39c85fba96",
+  "repository": "snapetech-org/slskR",
+  "state": "OPEN",
+  "verifiedCallerFiles": 13,
+  "verifiedCallerPinRows": 38,
+  "verifiedCatalogLocales": 12,
+  "w959HeaderLinePin": {
+    "fileSha256": "6a455897150bf618cd4c1402010c2ce410e0d912831545ffd2d404444bd03b0d",
+    "gitBlob": "d1b9a25375b5ab6c0223099c861fae99ebc6801d",
+    "line": 330,
+    "lineSha256": "6d9ca308a42ac44e921017bf2694b4c4f3ceed2dc71fd15e4629d8f913c6fc3e",
+    "lineText": "              <LocalizedText source={\"Live Execution Contracts\"} /></Header>",
+    "path": "web/src/components/System/Integrations/MediaServerPanel.jsx"
+  },
+  "worktreeStatus": "clean"
+}

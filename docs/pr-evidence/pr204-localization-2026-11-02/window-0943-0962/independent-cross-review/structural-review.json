@@ -1,0 +1,57 @@
+{
+  "additionalCorrections": 2,
+  "callerGapHeldCells": 12,
+  "cellCount": 240,
+  "crossreviewVerdicts": {
+    "accept-current": 143,
+    "accept-primary-proposal": 83,
+    "hold": 12,
+    "revise-primary-current": 2
+  },
+  "currentProtectedLiteralFailures": [
+    {
+      "locale": "de",
+      "missing": [
+        "SongID"
+      ],
+      "sourceIndex": 955
+    },
+    {
+      "locale": "hi",
+      "missing": [
+        "SongID"
+      ],
+      "sourceIndex": 955
+    }
+  ],
+  "finalProtectedLiteralFailures": [],
+  "icuExpressionsFound": 0,
+  "independentDispositions": {
+    "accept-current": 143,
+    "correction": 74,
+    "hold": 12,
+    "refinement": 11
+  },
+  "localeCount": 12,
+  "localeList": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "markupMismatches": 0,
+  "placeholderMismatches": 0,
+  "primaryProposals": 83,
+  "primaryProposalsAccepted": 83,
+  "punctuationMismatchesFromPinnedAudit": 0,
+  "result": "PASS_WITH_TWO_ADDITIONAL_W945_TRANSLATION_CORRECTIONS_AND_12_W944_CALLER_HOLDS",
+  "sourceCount": 20
+}

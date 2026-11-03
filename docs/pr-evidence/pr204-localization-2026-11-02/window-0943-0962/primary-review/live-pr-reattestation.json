@@ -1,0 +1,22 @@
+{
+  "apiTreeAtSelection": "2cbcf109d666e2197a302a7b85b96c133f059136",
+  "apiTreeBeforeSeal": "2cbcf109d666e2197a302a7b85b96c133f059136",
+  "base": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "draft": true,
+  "head": "75e769d2d7b5b16d91a3826e90ffcf39c85fba96",
+  "localHeadAtSelection": "75e769d2d7b5b16d91a3826e90ffcf39c85fba96",
+  "localHeadBeforeSeal": "75e769d2d7b5b16d91a3826e90ffcf39c85fba96",
+  "localTreeAtSelection": "2cbcf109d666e2197a302a7b85b96c133f059136",
+  "localTreeBeforeSeal": "2cbcf109d666e2197a302a7b85b96c133f059136",
+  "pullRequest": 204,
+  "reattestedAtUtc": "2026-11-02T23:42:54.717699+00:00",
+  "remoteBranchHeadAtSelection": "75e769d2d7b5b16d91a3826e90ffcf39c85fba96",
+  "remoteBranchHeadBeforeSeal": "75e769d2d7b5b16d91a3826e90ffcf39c85fba96",
+  "repository": "snapetech-org/slskR",
+  "state": "open",
+  "tree": "2cbcf109d666e2197a302a7b85b96c133f059136",
+  "url": "https://github.com/snapetech-org/slskr/pull/204",
+  "worktreeStatusAtSelection": "",
+  "worktreeStatusBeforeSeal": ""
+}
