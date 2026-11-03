@@ -6,7 +6,7 @@ from collections import Counter
 HERE=Path(__file__).resolve()
 APP=HERE.parent
 EVIDENCE=APP.parent
-REPO=HERE.parents[4]
+REPO=HERE.parents[5]
 BUNDLE=EVIDENCE/'review-bundle'
 def sha_bytes(b): return hashlib.sha256(b).hexdigest()
 def sha_text(s): return sha_bytes(s.encode('utf-8'))
