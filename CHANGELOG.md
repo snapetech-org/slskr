@@ -24,6 +24,7 @@ the release is prepared. Do not rewrite audited release history.
 
 - Refine MediaCore graph-traversal, backfill, and synchronization status wording across all 12 direct locales.
 - Localize reviewed media-server and setup-health actions in status views, copied reports, and diagnostic bundles across the direct locales.
+- Refine reviewed cryptographic, DHT, and visualizer wording across the 12 direct locales.
 
 ### Security
 

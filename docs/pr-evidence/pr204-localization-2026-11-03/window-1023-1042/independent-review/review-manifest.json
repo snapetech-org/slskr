@@ -1,0 +1,495 @@
+{
+  "artifact": "slskR PR #204 W1023–W1042 independent semantic review",
+  "createdUtc": "2026-11-03T02:35:33Z",
+  "inputBundle": "/mnt/disks/scratch/task-scratch/slskr-pr204-w1023-1042-clean-input-20261103",
+  "outputDirectory": "/mnt/disks/scratch/task-scratch/slskr-pr204-w1023-1042-review-output-20261103",
+  "livePullRequest": {
+    "repository": "snapetech-org/slskR",
+    "number": 204,
+    "state": "OPEN",
+    "isDraft": true,
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "head": "26a34849f39f533f4ad0562a02a01182ca2b3e2e",
+    "tree": "ef72f18c4591c23e0d59635c6467f4905d678dcf",
+    "verification": "Re-attested with gh pr view limited to headRefOid/headRefName/state/isDraft and gh api commit tree."
+  },
+  "cleanInputChecksums": {
+    "status": "pass",
+    "files": {
+      "README.md": "b63b15ec35ea55f65a09dda2621341cce6f831294cb4d0d5a931b0fb94c829bd",
+      "caller-pins.jsonl": "24c99915dd1a39a0d7ed3e56fcfb4a8d17a51f11bed4f1aa1bf7aea6b423205f",
+      "manifest.json": "b11ced5db24620538c63b2c9c794e7be377ddf55008bb71f8b35bf5c4997a4d3",
+      "source-only-input.jsonl": "c340a899c8156a30517c9708f5acde09bbceff5c975fdd79619444dc29c60fda"
+    }
+  },
+  "pinVerification": {
+    "status": "pass",
+    "sourceRows": 20,
+    "sourceSha256Pins": 20,
+    "localeCells": 240,
+    "rawCurrentSha256Pins": 240,
+    "liveCatalogFiles": 12,
+    "liveCatalogShaAndBlobPins": 12,
+    "callerContextRefs": 32,
+    "callerFiles": 18,
+    "productionCallerPins": 20,
+    "productionCallerPinsVerifiedAgainstSourceInput": true,
+    "placeholderOccurrencesChecked": 36,
+    "filePins": [
+      {
+        "kind": "catalog",
+        "path": "web/src/lib/locales/ui-labels.ar.json",
+        "sha256": "7a34fea5e69deb9409e7bfe2f8bcf381b1cdf28963f90a90bb4bd58b2da0e600",
+        "gitBlob": "ae64950ce5f38f321ac3577195e2657c7c54f957",
+        "status": "pass"
+      },
+      {
+        "kind": "catalog",
+        "path": "web/src/lib/locales/ui-labels.de.json",
+        "sha256": "86c0868984d628dda2c1b293cd54042a8921deaae77448f075d528dd5f481bae",
+        "gitBlob": "8791183a177330c1445af9f3b7ebac6ee8e60964",
+        "status": "pass"
+      },
+      {
+        "kind": "catalog",
+        "path": "web/src/lib/locales/ui-labels.es.json",
+        "sha256": "b8ebfc539da446b7842744103d6445a3adf84e843848ef79434c8bccd1693370",
+        "gitBlob": "f31e9345de977f13bdb97c92faa1e21ba4423c34",
+        "status": "pass"
+      },
+      {
+        "kind": "catalog",
+        "path": "web/src/lib/locales/ui-labels.fr.json",
+        "sha256": "94d9a193ba8a749026e5fbbc7a9a8a1bc538a60979bcdf7c7874f81fc4ad52e4",
+        "gitBlob": "69f98cda4bde5e3502ddc72e4b885474bf1f7e63",
+        "status": "pass"
+      },
+      {
+        "kind": "catalog",
+        "path": "web/src/lib/locales/ui-labels.hi.json",
+        "sha256": "5db7090d338d5061f7e37f109a1da35ec1ef2f6763cda74436473dae963f1657",
+        "gitBlob": "547258906ab78fdbb8b9ffb54feb2ee252a52c0a",
+        "status": "pass"
+      },
+      {
+        "kind": "catalog",
+        "path": "web/src/lib/locales/ui-labels.id.json",
+        "sha256": "3c7f6ee3794f32c63dcea7a5bc362e488f4c5330f8c5f42e5fefc1c4cf696cd8",
+        "gitBlob": "4a71c2cefc4c6d503555d6a191f804b4257fa290",
+        "status": "pass"
+      },
+      {
+        "kind": "catalog",
+        "path": "web/src/lib/locales/ui-labels.ja.json",
+        "sha256": "8e87df5d0b8c170fc25b47fd8471b976b6d49bcebce8c29b1c77550f6b8ffb1e",
+        "gitBlob": "1da493238c9d50a9bbd91685208afa97a2a2ef8e",
+        "status": "pass"
+      },
+      {
+        "kind": "catalog",
+        "path": "web/src/lib/locales/ui-labels.ko.json",
+        "sha256": "edb10b33330eab35b3b42b2dd056c7f57375fd86777d2185f0dcc1aaa49cfbb1",
+        "gitBlob": "57c7dbd3e1514d422e32e0c35d6d1161eb2d0b3e",
+        "status": "pass"
+      },
+      {
+        "kind": "catalog",
+        "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+        "sha256": "25a334ee5f7880f02dc418128491af6f53574fac2f3838dcefe988ea0ef57fec",
+        "gitBlob": "b99fb73e59032dbfc0188abe300ca876516103d2",
+        "status": "pass"
+      },
+      {
+        "kind": "catalog",
+        "path": "web/src/lib/locales/ui-labels.vi.json",
+        "sha256": "8723023d49a762c679c09280bd524dbf099801104b905df226bca23b45a1db3e",
+        "gitBlob": "51f5256fbd646ba0e4562c5c6d9c3e36f9b3f025",
+        "status": "pass"
+      },
+      {
+        "kind": "catalog",
+        "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+        "sha256": "76c6faf0240a431178793b5a5ecd5e594481dc4a099d5211e4e9db74b4bbccc7",
+        "gitBlob": "afe2391db6c6050e02a0efa2745055803b055bad",
+        "status": "pass"
+      },
+      {
+        "kind": "catalog",
+        "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+        "sha256": "2af2f900735d24ff311740b1527732760c8f7a9ca5ad04320cd9d28e955e0f27",
+        "gitBlob": "3e8a0aaf8459944f4f50f5e5f3ab1ff5aacc2f26",
+        "status": "pass"
+      },
+      {
+        "kind": "caller",
+        "path": "web/src/components/System/Security/index.jsx",
+        "sha256": "dc055397cbd4afe380d4b0c5c0f3af3c1077719fea1854ec4116cf2367ca2743",
+        "gitBlob": "5a3b5cd919daa818d106031ecc70a31cde4c14a2",
+        "status": "pass"
+      },
+      {
+        "kind": "caller",
+        "path": "web/src/components/System/MediaCore/PodMessageSigningPanel.jsx",
+        "sha256": "8454b7b025260cf083324f52ea29f806f0ff4c188beec949fd13061e31e41972",
+        "gitBlob": "bfa628f90b21349b4686799aa6dc40b46ab70832",
+        "status": "pass"
+      },
+      {
+        "kind": "caller",
+        "path": "web/src/lib/serverErrorMessageAllowlist.js",
+        "sha256": "de7bf779c371f2a93d106124d32051b39836c0e7cd557e314c11f7755ce004bc",
+        "gitBlob": "d9eed15e55416d5e5fa06657c9c86b287b9b3260",
+        "status": "pass"
+      },
+      {
+        "kind": "caller",
+        "path": "web/src/components/System/ExperienceSettings/index.jsx",
+        "sha256": "ba7826de4b32bc9506d5926e6243623ccc3104da43706ce7a57fe4b17bcf2f30",
+        "gitBlob": "fbe8caabfc30e03809dc5ae7051bddb731986956",
+        "status": "pass"
+      },
+      {
+        "kind": "caller",
+        "path": "web/src/components/Player/Equalizer.jsx",
+        "sha256": "d00c1fa1da6096223f30afad00400359eb48ebe5d384b59de07df42ec23ea80b",
+        "gitBlob": "52def24e1f2a68259b867e2bffd1380fd0a307ed",
+        "status": "pass"
+      },
+      {
+        "kind": "caller",
+        "path": "web/src/components/Player/VisualizerOverlayControls.jsx",
+        "sha256": "5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4",
+        "gitBlob": "0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf",
+        "status": "pass"
+      },
+      {
+        "kind": "caller",
+        "path": "web/src/components/System/Integrations/FederationDiagnosticsPanel.jsx",
+        "sha256": "186454b1cb2be599b506dfd0d4de42979e46a42a8eaf3e4e468c72a99155dc8e",
+        "gitBlob": "57977653e5bcf0a33236e0c6cff38bd23845fb4a",
+        "status": "pass"
+      },
+      {
+        "kind": "caller",
+        "path": "web/src/components/System/MediaCore/PodChannelManagementPanel.jsx",
+        "sha256": "3ef47356d5cd5942894965fda3bc2999b654b0812a0c7274f85779b78dc99f9d",
+        "gitBlob": "c91e5e8e4250fda54163c8b7841aa9852754ff14",
+        "status": "pass"
+      },
+      {
+        "kind": "caller",
+        "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+        "sha256": "5b2dfa095ba281bae2b5ef66e17901b38c7d2a68d9bef52c5f016ce3352db72d",
+        "gitBlob": "adcacdd123faf82a315da746fab3243adf5ea6a3",
+        "status": "pass"
+      },
+      {
+        "kind": "caller",
+        "path": "web/src/lib/interfaceLocale.test.js",
+        "sha256": "610ed3f1dedcdacf3e0d39be2beb0e1f7df9361a908a2df6b17f455d49506880",
+        "gitBlob": "ff4e3e52e16984dd3c998e133eab59fb292980a8",
+        "status": "pass"
+      },
+      {
+        "kind": "caller",
+        "path": "web/src/lib/networkHealthScore.js",
+        "sha256": "9058b1d95ffcdf8d2c467b47cdcf3a9cede3f96000580f6b82f04220d0e5bea4",
+        "gitBlob": "26523f0fbf48bdd35fcab5ca8cac7d94d6265042",
+        "status": "pass"
+      },
+      {
+        "kind": "caller",
+        "path": "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx",
+        "sha256": "17241e796b943988d339bac74569f5a5d4e8889194cad1221d0b9c8bc1b82a9e",
+        "gitBlob": "90f3e1d29a4b514a1877693e131e92b66b8050aa",
+        "status": "pass"
+      },
+      {
+        "kind": "caller",
+        "path": "web/src/components/System/MediaCore/PodDhtPublishingPanel.jsx",
+        "sha256": "b54d9f456b6b638a12794f54ebd6f9005a8fb1797d177ef4774e42fbade22493",
+        "gitBlob": "e3f016a10d5dd9a2514231bc25e6b81f1a71177f",
+        "status": "pass"
+      },
+      {
+        "kind": "caller",
+        "path": "web/src/components/System/MediaCore/PodMembershipManagementPanel.jsx",
+        "sha256": "d1ed549ca3edbb54571c3091ace817fcdecab5e073f17ce81768df6fe14d2953",
+        "gitBlob": "dd436ce3710d00f6436ec497ab9df9863e763723",
+        "status": "pass"
+      },
+      {
+        "kind": "caller",
+        "path": "web/src/components/System/Mesh/index.jsx",
+        "sha256": "340958d0f4ed24d66e5f8f80571b59cfe49fe42ca51fdbc24246153b9d3b4fa9",
+        "gitBlob": "66079910d4a01dacea0610cc78727aa20307b930",
+        "status": "pass"
+      },
+      {
+        "kind": "caller",
+        "path": "web/src/components/Shared/Footer.jsx",
+        "sha256": "48191fa2f0257b1afa3dbc4bc8c23673fbb11e54bffb8848a9885ea34d03fb1a",
+        "gitBlob": "c94f4403699a76ac44d5e4823e2e9e86ba8cc3fb",
+        "status": "pass"
+      },
+      {
+        "kind": "caller",
+        "path": "web/src/components/System/MediaCore/index.test.jsx",
+        "sha256": "5fed53b0f1d657f8183a8af36693382ed77853d3d1a20225231c7f4b10330989",
+        "gitBlob": "8a0b4ea744f843ed0df5600a628590dfd669c191",
+        "status": "pass"
+      },
+      {
+        "kind": "caller",
+        "path": "web/src/components/System/MediaCore/mediaCoreWorkflows.js",
+        "sha256": "4b6d0b450c6fe806dc001f6d14e0c6bfca09cef6c9a32b779df7a5c0cd275a17",
+        "gitBlob": "0d3ef156b458c7d62138cc11708691781f84cf07",
+        "status": "pass"
+      }
+    ]
+  },
+  "reviewScope": {
+    "sourcePositions": [
+      1023,
+      1042
+    ],
+    "sourceIds": 20,
+    "locales": [
+      "ar",
+      "de",
+      "es",
+      "fr",
+      "hi",
+      "id",
+      "ja",
+      "ko",
+      "pt-BR",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "cells": 240,
+    "dispositions": {
+      "accept-current": 154,
+      "refine": 38,
+      "hold-context": 48
+    },
+    "sourceSummary": [
+      {
+        "sourcePosition": 1023,
+        "sourceId": "Crypto Health:",
+        "sourceSha256": "f908d426b1b88663a640f1a5b6987a29ebff75398021d02bfd0a93c830ab53bf",
+        "callerStatus": "exact-quoted-production-literal-found",
+        "dispositions": {
+          "accept-current": 5,
+          "refine": 7
+        },
+        "rationale": "The security panel places this heading beside entropy-check and warning counts, so accepted targets retain the cryptographic-health meaning."
+      },
+      {
+        "sourcePosition": 1024,
+        "sourceId": "Cryptographic signing and verification of pod messages for authenticity and integrity",
+        "sourceSha256": "a5acc2eeec69bc4aa78021d1901970a6268c85a3510114cb179b6ed959ce5de5",
+        "callerStatus": "exact-quoted-production-literal-found",
+        "dispositions": {
+          "refine": 4,
+          "accept-current": 8
+        },
+        "rationale": "التوقيع المشفر reads as an encrypted signature, and صحتها is correctness rather than message authenticity; the source is about cryptographic signatures."
+      },
+      {
+        "sourcePosition": 1025,
+        "sourceId": "CsvText is required",
+        "sourceSha256": "dfa0e1d2243a085ec444b3ed117ea29d95314f5a4034ba584d683da16b3a7c58",
+        "callerStatus": "no-exact-production-localization-literal-found",
+        "dispositions": {
+          "hold-context": 12
+        },
+        "rationale": "The only pinned source context is an error-allowlist entry, with no exact production localization caller; hold until the displayed error path is verified. The target adds an API-field gloss whose rendered use is not established."
+      },
+      {
+        "sourcePosition": 1026,
+        "sourceId": "Current track",
+        "sourceSha256": "6492196a52e526dc1a8d82e4b8c3b20fc3bb63d6b99f17ebad09d6afa686f2bf",
+        "callerStatus": "exact-quoted-production-literal-found",
+        "dispositions": {
+          "accept-current": 11,
+          "refine": 1
+        },
+        "rationale": "The radio seed-mode choices group the current track with queue context and listening history; accepted targets identify the current audio track."
+      },
+      {
+        "sourcePosition": 1027,
+        "sourceId": "Custom",
+        "sourceSha256": "494ca78f7374e46fb2de9ad9f2dbd4aaae89b50b2ca044177a1566a59e06627e",
+        "callerStatus": "exact-quoted-production-literal-found",
+        "dispositions": {
+          "accept-current": 3,
+          "refine": 9
+        },
+        "rationale": "Across the verified preset, visualizer, channel-type, and security-setting callers, “Custom” means user-defined or customized."
+      },
+      {
+        "sourcePosition": 1028,
+        "sourceId": "Cycle visualizer engine to {engine}",
+        "sourceSha256": "b5602babd67089eaf9cafb4159dfaac7f3bcdc7a1dd724a815e1be127759135e",
+        "callerStatus": "exact-quoted-production-literal-found",
+        "dispositions": {
+          "accept-current": 12
+        },
+        "rationale": "The aria label tells the user to switch the visualizer engine to the next engine; accepted targets preserve the {engine} value."
+      },
+      {
+        "sourcePosition": 1029,
+        "sourceId": "Cycle visualizer engine to {engine}.",
+        "sourceSha256": "d3b8e4d5b8e8db370e158f8f7cbadfc4c0667ce4ceb58698ac427d7cbd6479e3",
+        "callerStatus": "exact-quoted-production-literal-found",
+        "dispositions": {
+          "accept-current": 12
+        },
+        "rationale": "The tooltip describes switching to the next visualizer engine; accepted targets preserve {engine} and sentence punctuation."
+      },
+      {
+        "sourcePosition": 1030,
+        "sourceId": "DHT",
+        "sourceSha256": "ca87e1eae03e38a7314b1033c96acb911fde2da350547473984d0095c462f431",
+        "callerStatus": "no-exact-production-localization-literal-found",
+        "dispositions": {
+          "hold-context": 12
+        },
+        "rationale": "The available references are tests and a dynamic network-health area value, with no exact production localization caller; hold whether these locale cells are rendered."
+      },
+      {
+        "sourcePosition": 1031,
+        "sourceId": "DHT Announce sec",
+        "sourceSha256": "98e0953818094d6cbec2bf99aaab8a5b86143426504b6e6c2bc43e3f7af37ea8",
+        "callerStatus": "exact-quoted-production-literal-found",
+        "dispositions": {
+          "refine": 12
+        },
+        "rationale": "The target reads as “DHT announces a second”; it omits the interval measured in seconds."
+      },
+      {
+        "sourcePosition": 1032,
+        "sourceId": "DHT Bootstrap Routers",
+        "sourceSha256": "b723006cf4a134708d23f6afce3f90f0b65ee2df339395d69d854e1909ddf6d8",
+        "callerStatus": "exact-quoted-production-literal-found",
+        "dispositions": {
+          "accept-current": 12
+        },
+        "rationale": "The settings field names the DHT bootstrap-router list, and the router.bittorrent.com placeholder supports that networking meaning."
+      },
+      {
+        "sourcePosition": 1033,
+        "sourceId": "DHT Key:",
+        "sourceSha256": "1139bdc9c63845da6bda9786c86c0034fb8138c2952191a70a7765830fd15d2a",
+        "callerStatus": "exact-quoted-production-literal-found",
+        "dispositions": {
+          "accept-current": 12
+        },
+        "rationale": "The label introduces a DHT key value in pod publishing and membership results."
+      },
+      {
+        "sourcePosition": 1034,
+        "sourceId": "DHT Nodes",
+        "sourceSha256": "3425fdaef3bf6e47aa2ef219b1aef615d2025272c3385b3f456fa50bdaa9b4c5",
+        "callerStatus": "exact-quoted-production-literal-found",
+        "dispositions": {
+          "accept-current": 12
+        },
+        "rationale": "The mesh view labels its active DHT node list."
+      },
+      {
+        "sourcePosition": 1035,
+        "sourceId": "DHT Nodes: {count}",
+        "sourceSha256": "257890881f7337d13b968227c96af8e4ddf5ac0681d39860255f7361371a3433",
+        "callerStatus": "exact-quoted-production-literal-found",
+        "dispositions": {
+          "accept-current": 12
+        },
+        "rationale": "The footer reports a count of DHT nodes; accepted targets preserve the {count} placeholder."
+      },
+      {
+        "sourcePosition": 1036,
+        "sourceId": "DHT Off",
+        "sourceSha256": "3090c6aad269802fab2cd44f58664b9c1a10ffc7a99d97d59f1fe0a1c8cbdfe7",
+        "callerStatus": "no-exact-production-localization-literal-found",
+        "dispositions": {
+          "hold-context": 12
+        },
+        "rationale": "The source appears as a boolLabel argument but the pinned input does not verify that the helper localizes its arguments; hold renderability."
+      },
+      {
+        "sourcePosition": 1037,
+        "sourceId": "DHT On",
+        "sourceSha256": "af04a8f9c87cfcf231c2af5d371402405d9fbc36dabbb24a2b6054a9e909c632",
+        "callerStatus": "no-exact-production-localization-literal-found",
+        "dispositions": {
+          "hold-context": 12
+        },
+        "rationale": "The source appears as a boolLabel argument but the pinned input does not verify that the helper localizes its arguments; hold renderability."
+      },
+      {
+        "sourcePosition": 1038,
+        "sourceId": "DHT Operations/sec",
+        "sourceSha256": "88c43e5bf49d9f9cbb8456e7f9d55e667f909335ecf541dfc19f1bc14d920ad2",
+        "callerStatus": "exact-quoted-production-literal-found",
+        "dispositions": {
+          "accept-current": 12
+        },
+        "rationale": "The mesh statistic is DHT operations per second."
+      },
+      {
+        "sourcePosition": 1039,
+        "sourceId": "DHT Publishing",
+        "sourceSha256": "bfd1c69a7d349483df28f908837c353d2014962f1093a4ba3a1a6f7d2d2b50bf",
+        "callerStatus": "exact-quoted-production-literal-found",
+        "dispositions": {
+          "accept-current": 9,
+          "refine": 3
+        },
+        "rationale": "The workflow card publishes or retrieves pod metadata through DHT workflows."
+      },
+      {
+        "sourcePosition": 1040,
+        "sourceId": "DHT Sessions",
+        "sourceSha256": "8317cc6e7eeea265eeb6a6c9cc4e978927491d321c31122fbd0bda8ff8807368",
+        "callerStatus": "exact-quoted-production-literal-found",
+        "dispositions": {
+          "accept-current": 12
+        },
+        "rationale": "The mesh statistic labels active DHT sessions."
+      },
+      {
+        "sourcePosition": 1041,
+        "sourceId": "DHT UDP Port",
+        "sourceSha256": "5fad9c035d09ca428f570f139c8688c609bb21a396e1990765adc80c9587e7fa",
+        "callerStatus": "exact-quoted-production-literal-found",
+        "dispositions": {
+          "accept-current": 11,
+          "refine": 1
+        },
+        "rationale": "The admin field is the UDP port used by DHT."
+      },
+      {
+        "sourcePosition": 1042,
+        "sourceId": "DHT UDP port",
+        "sourceSha256": "0f7171b0f3955545c664ccb135b345bcd2b6d41bc99455a44da502db18fd9415",
+        "callerStatus": "exact-quoted-production-literal-found",
+        "dispositions": {
+          "accept-current": 11,
+          "refine": 1
+        },
+        "rationale": "The lower-case source is the accessible label for the same DHT UDP port field."
+      }
+    ]
+  },
+  "reviewLimits": [
+    "Semantic review only; no catalog changes applied.",
+    "Held cells have no disposition on the translation or runtime path.",
+    "No native-speaker approval is claimed.",
+    "No repository/PR changes, tests, builds, or CI were performed.",
+    "Prior-window data was not used; no cross-window comparison was performed before sealing."
+  ],
+  "repoStatus": "Not inspected or modified; all review inputs came from the sanitized bundle and exact-head remote pins."
+}

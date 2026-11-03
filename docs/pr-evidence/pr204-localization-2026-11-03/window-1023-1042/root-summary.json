@@ -1,0 +1,30 @@
+{
+  "window": "W1023-W1042",
+  "reviewedCells": 240,
+  "changedCells": 67,
+  "rootDispositionCounts": {
+    "accept-current": 125,
+    "refinement": 26,
+    "correction": 41,
+    "hold": 48
+  },
+  "primaryDispositionCounts": {
+    "accept-current": 163,
+    "correction": 52,
+    "refinement": 25
+  },
+  "blindDispositionCounts": {
+    "accept-current": 154,
+    "refine": 38,
+    "hold-context": 48
+  },
+  "changedSourceIds": 15,
+  "heldSourceIds": [
+    "CsvText is required",
+    "DHT",
+    "DHT Off",
+    "DHT On"
+  ],
+  "manualRootResolutions": 2,
+  "nativeSpeakerApproval": false
+}
