@@ -9,3 +9,6 @@ The only held cells are all 12 locales for source position 1227 (`Download selec
 `report.md` is the sealed cross-audit report. `summary.json` records counts by cell and source position. `attestation.json` records source-pin verification and the checksum lineage for the candidate-free packet, primary review, and independent blind review. The blind review assessed current targets only; it did not see selected candidates. This package does not grant release approval or substitute for qualified locale review.
 
 Run `python3 verify_cross_audit_evidence.py --repo /path/to/slskR` to check the package checksums and read back all 240 catalog cells. `SHA256SUMS.txt` covers every file in this package except itself.
+
+
+The checked-in packet now includes the candidate-free `input/`, `primary-review/`, and `independent-blind-review/` directories, plus `application/` with the 240-cell change plan, exact readback, and summary at the applied catalog head. The root checksum manifest covers every file in this package except itself.

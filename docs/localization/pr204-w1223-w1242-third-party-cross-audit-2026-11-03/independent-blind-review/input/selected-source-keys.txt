@@ -1,0 +1,20 @@
+Download retry attempts
+Download retry delay milliseconds
+Download retry incomplete strategy
+Download retry max delay milliseconds
+Download selected files
+Download succeeded retention minutes
+Download the selected files from {folder}?
+DownloadFileComplete
+Downloaded
+Downloaded or prepared for import review.
+Downloaded ·
+Downloaders
+Downloading
+Downloads
+Downloads Active
+Downloads Queued
+Downloads Total
+Downloads after approval
+Downloads unavailable
+Dropped Requests

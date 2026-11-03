@@ -1,0 +1,19 @@
+{
+  "sealed": true,
+  "sealedDate": "2026-11-03",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "1bb6a4c0d9ac2407ad3ab1191fe454d6661d4763",
+  "tree": "c92bb8f15ec61d538168b41859d9146bad91ae66",
+  "candidateFreeInputManifestSha256": "fddc720597ace3e2598efd690cd5b6e07a9fa23b9120e2513cab8a34cc1c9b95",
+  "runtimeContextSha256": "8b9b5c80910f3bcc5f627d7f18fcdd381b7ff4432c7abb6143684d1f3356db69",
+  "inputPacketSha256SumsFileSha256": "352f2373e9b0fde26263b4802baf0ee1e8d8973d7705f21afd3041499778efb5",
+  "blindLedger": "blind-ledger.jsonl",
+  "blindLedgerSha256": "9c6ae855a4727a67ca657c8463fc6b1272ff3a5fc36543a982e9b2c654c3c87d",
+  "blindLedgerRows": 240,
+  "blindSummary": "blind-summary.json",
+  "blindSummarySha256": "f2d83ea664b6ee24c7be95fb93b6ea2b29c468ab15aeec135750b44bd68e056b",
+  "otherReviewOutputsConsultedBeforeSeal": false,
+  "otherReviewOutputsConsultedAfterSeal": false,
+  "sealScope": "Candidate-free packet and pinned source/runtime/caller context only; included exact no-caller holds unchanged; no release approval."
+}

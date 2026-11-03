@@ -1,0 +1,142 @@
+{
+  "localeOptionOrder": [
+    "en",
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "lookupAndPlaceholderContext": [
+    {
+      "endLine": 64,
+      "lines": [
+        {
+          "line": 55,
+          "lineSha256": "6b709ca7798c8d95ed098a6128290bbb89fe70433e056137841e8f9efef8e87d",
+          "text": "const notify = () => listeners.forEach((listener) => listener());"
+        },
+        {
+          "line": 56,
+          "lineSha256": "5b4b54f72e522eea3bcc9fec059d0290e71d7434c2adbc8af72c8d059d0420c8",
+          "text": "const translationFor = (source, language) => localeCatalogs.get(language)?.[source];"
+        },
+        {
+          "line": 57,
+          "lineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "text": ""
+        },
+        {
+          "line": 58,
+          "lineSha256": "b69d53bfc23c9556aa9fbc67d712cfe31ee605c4ee54000c1cef0a3abf551847",
+          "text": "const replaceInterfaceValues = (translation, parameters = {}) => {"
+        },
+        {
+          "line": 59,
+          "lineSha256": "652ca893783c965bee217f1073816b253355cb59b2161cf5d005b73cf52284f5",
+          "text": "  if (typeof translation !== 'string') return translation;"
+        },
+        {
+          "line": 60,
+          "lineSha256": "2986f803fd2c5c71b91de50adfd2fd40f8bc59689b3f11cffe9e0271168c7b1f",
+          "text": "  return translation.replace(/\\{([a-zA-Z][a-zA-Z0-9_]*)\\}/g, (placeholder, name) => {"
+        },
+        {
+          "line": 61,
+          "lineSha256": "cdfa5fde051f4f40099208519d50b49ccaccd6b1a858a93edbcd5885e91b7652",
+          "text": "    const value = parameters?.[name];"
+        },
+        {
+          "line": 62,
+          "lineSha256": "7a78aa90fb0418d21edc7c20063cb0416157a2ae55aa60207c9ace39d1dc8cf4",
+          "text": "    return typeof value === 'string' || typeof value === 'number'"
+        },
+        {
+          "line": 63,
+          "lineSha256": "c8f6c53b658aec6b37d9245eb9db91c685a9108b7308716139ef81e41976d72b",
+          "text": "      ? String(value)"
+        },
+        {
+          "line": 64,
+          "lineSha256": "967e4b989b64cc1134d0854ddc0d9b54dfba7cdbcff802559af270c13416561d",
+          "text": "      : placeholder;"
+        }
+      ],
+      "marker": "const translationFor =",
+      "startLine": 55
+    },
+    {
+      "endLine": 66,
+      "lines": [
+        {
+          "line": 57,
+          "lineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "text": ""
+        },
+        {
+          "line": 58,
+          "lineSha256": "b69d53bfc23c9556aa9fbc67d712cfe31ee605c4ee54000c1cef0a3abf551847",
+          "text": "const replaceInterfaceValues = (translation, parameters = {}) => {"
+        },
+        {
+          "line": 59,
+          "lineSha256": "652ca893783c965bee217f1073816b253355cb59b2161cf5d005b73cf52284f5",
+          "text": "  if (typeof translation !== 'string') return translation;"
+        },
+        {
+          "line": 60,
+          "lineSha256": "2986f803fd2c5c71b91de50adfd2fd40f8bc59689b3f11cffe9e0271168c7b1f",
+          "text": "  return translation.replace(/\\{([a-zA-Z][a-zA-Z0-9_]*)\\}/g, (placeholder, name) => {"
+        },
+        {
+          "line": 61,
+          "lineSha256": "cdfa5fde051f4f40099208519d50b49ccaccd6b1a858a93edbcd5885e91b7652",
+          "text": "    const value = parameters?.[name];"
+        },
+        {
+          "line": 62,
+          "lineSha256": "7a78aa90fb0418d21edc7c20063cb0416157a2ae55aa60207c9ace39d1dc8cf4",
+          "text": "    return typeof value === 'string' || typeof value === 'number'"
+        },
+        {
+          "line": 63,
+          "lineSha256": "c8f6c53b658aec6b37d9245eb9db91c685a9108b7308716139ef81e41976d72b",
+          "text": "      ? String(value)"
+        },
+        {
+          "line": 64,
+          "lineSha256": "967e4b989b64cc1134d0854ddc0d9b54dfba7cdbcff802559af270c13416561d",
+          "text": "      : placeholder;"
+        },
+        {
+          "line": 65,
+          "lineSha256": "8918205c87aec718d8ed26668abe0962b53a36e38887e5434ec02d59639e3ec1",
+          "text": "  });"
+        },
+        {
+          "line": 66,
+          "lineSha256": "df3982fd610173599241fca93c7c866683f58f541eced1c2098102145477164c",
+          "text": "};"
+        }
+      ],
+      "marker": "const replaceInterfaceValues =",
+      "startLine": 57
+    }
+  ],
+  "note": "Caller lines and runtime expressions are preserved verbatim; runtime values are not evaluated or rewritten.",
+  "path": "web/src/lib/interfaceLocale.js",
+  "pin": {
+    "byteCount": 11530,
+    "gitBlob": "72dfea05f86bcf0ab02882a85c6e8d4a0cb0dabf",
+    "lineCount": 302,
+    "path": "web/src/lib/interfaceLocale.js",
+    "sha256": "16eb5f119655805f48845e026ee12fd517fae6de871091bd9be2e5b7f1d310ea"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "PRBodyRead": false,
+  "PRQueriedFields": [
+    "number",
+    "state",
+    "headRefName",
+    "headRefOid",
+    "baseRefName",
+    "baseRefOid"
+  ],
+  "baseRefName": "main",
+  "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "commitTree": "c92bb8f15ec61d538168b41859d9146bad91ae66",
+  "headRefName": "codex/slskr-l10n-audit-20261030",
+  "headRefOid": "1bb6a4c0d9ac2407ad3ab1191fe454d6661d4763",
+  "localCheckoutBranch": "codex/disable-codeql-slskr-20261031",
+  "localCheckoutHead": "47df5418538ad60e2f67a7971ba666c572a33f1d",
+  "localCheckoutTree": "f12268d40e8a0d7d84a420597a1d4d2dc31bbfd8",
+  "localCheckoutWorkingTreeClean": true,
+  "pullRequest": 204,
+  "remoteBranchAndPullRefMatch": true,
+  "remoteBranchHead": "1bb6a4c0d9ac2407ad3ab1191fe454d6661d4763",
+  "remoteBranchRef": "refs/heads/codex/slskr-l10n-audit-20261030",
+  "remotePullRef": "refs/pull/204/head",
+  "remotePullRefHead": "1bb6a4c0d9ac2407ad3ab1191fe454d6661d4763",
+  "repository": "snapetech-org/slskR",
+  "sourceReadMode": "git show <pinned head>:<path>; no checkout or repository mutation",
+  "state": "OPEN"
+}
