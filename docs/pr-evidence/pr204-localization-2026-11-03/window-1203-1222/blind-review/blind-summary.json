@@ -1,0 +1,1092 @@
+{
+  "artifact": "Independent blind review — slskR PR #204 W1203–W1222",
+  "reviewMode": "Blind; only candidate-free input packet inspected; primary output and proposals were not opened.",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "state": "OPEN",
+  "draft": true,
+  "head": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+  "tree": "ba62eed0bd600a8f69bb6c0cbefe99da7ee47623",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "baseRef": "main",
+  "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "remoteBranchHead": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+  "remotePullRefHead": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+  "inputDirectory": "/mnt/disks/scratch/task-scratch/slskr-pr204-w1203-1222-input-20261103/clean-input",
+  "inputChecksumListSha256": "4525f64eec71544375b5af2a44592e0560b6fa904e3bcc9e14dc6715236dd1d3",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "callerReferenceCount": 86,
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "positionRange": [
+    1203,
+    1222
+  ],
+  "dispositionCounts": {
+    "accept-current": 144,
+    "correction/refinement proposal": 72,
+    "hold": 24
+  },
+  "callerResolutionHolds": {
+    "positions": [
+      1206,
+      1216
+    ],
+    "cells": 24,
+    "reasons": {
+      "1206": null,
+      "1216": null
+    }
+  },
+  "disagreementFindings": [
+    {
+      "position": 1207,
+      "finding": "Current “Download KiB/s” translations often read as an action and omit the field’s speed-limit meaning."
+    },
+    {
+      "position": 1209,
+      "finding": "“Download Slots” was rendered as slot machines or as an action in multiple locales despite a global numeric slots field."
+    },
+    {
+      "position": 1211,
+      "finding": "Several “Download approval” targets read as an instruction to download an approval rather than approval for downloads."
+    },
+    {
+      "position": 1212,
+      "finding": "Current cancelled-retention labels read as download commands rather than retention duration fields."
+    },
+    {
+      "position": 1214,
+      "finding": "Current errored-retention labels read as download commands rather than retention duration fields."
+    },
+    {
+      "position": 1218,
+      "finding": "The caller is a downloads leaderboard status label; many current targets read as an instruction to download the leaderboard."
+    },
+    {
+      "position": 1222,
+      "finding": "Hindi “unavailable” does not precisely match the caller branch for a missing/unconfigured download path."
+    }
+  ],
+  "structuralChecks": {
+    "allPlaceholderChecksPass": true,
+    "allMarkupChecksPass": true,
+    "allNumericChecksPass": true,
+    "allRecommendedProtectedLiteralsPass": true,
+    "placeholderBearingPositions": [],
+    "markupBearingPositions": [],
+    "numericBearingPositions": [],
+    "protectedLiteralBearingPositions": [
+      1207
+    ],
+    "currentKiBPerSecondExactCount": 7,
+    "recommendedKiBPerSecondExactCount": 12
+  },
+  "corrections": [
+    {
+      "reviewId": "W1203-W1222-1207-es",
+      "position": 1207,
+      "sourceKey": "Download KiB/s",
+      "locale": "es",
+      "currentTarget": "Descargar KiB/s",
+      "recommendedTarget": "Límite de velocidad de descarga (KiB/s)",
+      "recommendedTargetSha256": "70081947dccf8f37fbb34430f0f4bf5fa1adc68bcfb07406c18fa727b106135a",
+      "rationale": "The pinned caller is a numeric downloadSpeedLimit field with aria-label “Global download speed limit.” The current wording does not explicitly identify this value as a rate limit; the proposal does and preserves the KiB/s unit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1207-zh-Hans",
+      "position": 1207,
+      "sourceKey": "Download KiB/s",
+      "locale": "zh-Hans",
+      "currentTarget": "下载 KiB/秒",
+      "recommendedTarget": "下载速度上限 (KiB/s)",
+      "recommendedTargetSha256": "045719e5b7b27c14241d6c387df9dd654cac262258b06904aac2387dda39a624",
+      "rationale": "The pinned caller is a numeric downloadSpeedLimit field with aria-label “Global download speed limit.” The current wording does not explicitly identify this value as a rate limit; the proposal does and preserves the KiB/s unit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1207-hi",
+      "position": 1207,
+      "sourceKey": "Download KiB/s",
+      "locale": "hi",
+      "currentTarget": "KiB/s डाउनलोड करें",
+      "recommendedTarget": "डाउनलोड गति सीमा (KiB/s)",
+      "recommendedTargetSha256": "31dfa2d9c1cd43f0cc431ca57b56ccfa81485e324fec34e9cb7f512837d50cf1",
+      "rationale": "The pinned caller is a numeric downloadSpeedLimit field with aria-label “Global download speed limit.” The current wording does not explicitly identify this value as a rate limit; the proposal does and preserves the KiB/s unit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1207-de",
+      "position": 1207,
+      "sourceKey": "Download KiB/s",
+      "locale": "de",
+      "currentTarget": "Laden Sie KiB/s herunter",
+      "recommendedTarget": "Download-Geschwindigkeitslimit (KiB/s)",
+      "recommendedTargetSha256": "db0e58b4415d9d251d076d708f9535caef05c62969e3b417cf6a84690b48c6c1",
+      "rationale": "The pinned caller is a numeric downloadSpeedLimit field with aria-label “Global download speed limit.” The current wording does not explicitly identify this value as a rate limit; the proposal does and preserves the KiB/s unit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1207-ja",
+      "position": 1207,
+      "sourceKey": "Download KiB/s",
+      "locale": "ja",
+      "currentTarget": "ダウンロード KiB/秒",
+      "recommendedTarget": "ダウンロード速度の上限 (KiB/s)",
+      "recommendedTargetSha256": "964a7f870375f6d786c8cf7c5efcf553aa60155e7e854ca6d478f8c35fc8dc46",
+      "rationale": "The pinned caller is a numeric downloadSpeedLimit field with aria-label “Global download speed limit.” The current wording does not explicitly identify this value as a rate limit; the proposal does and preserves the KiB/s unit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1207-fr",
+      "position": 1207,
+      "sourceKey": "Download KiB/s",
+      "locale": "fr",
+      "currentTarget": "Télécharger des KiB/s",
+      "recommendedTarget": "Limite de vitesse de téléchargement (KiB/s)",
+      "recommendedTargetSha256": "c99e24790f7b4b1cf7b6f5401e963fc097624934d4cb91493329a11d5899f57c",
+      "rationale": "The pinned caller is a numeric downloadSpeedLimit field with aria-label “Global download speed limit.” The current wording does not explicitly identify this value as a rate limit; the proposal does and preserves the KiB/s unit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1207-pt-BR",
+      "position": 1207,
+      "sourceKey": "Download KiB/s",
+      "locale": "pt-BR",
+      "currentTarget": "Baixar KiB/s",
+      "recommendedTarget": "Limite de velocidade de download (KiB/s)",
+      "recommendedTargetSha256": "71f163119387c8c5070f779c1c73f250a297f09391d1dd52c0ef5c1751feedcf",
+      "rationale": "The pinned caller is a numeric downloadSpeedLimit field with aria-label “Global download speed limit.” The current wording does not explicitly identify this value as a rate limit; the proposal does and preserves the KiB/s unit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1207-ar",
+      "position": 1207,
+      "sourceKey": "Download KiB/s",
+      "locale": "ar",
+      "currentTarget": "تنزيل كيلوبايت/ثانية",
+      "recommendedTarget": "الحد الأقصى لسرعة التنزيل (KiB/s)",
+      "recommendedTargetSha256": "ee77161b1d534ad4cda23001c6aee7fc78982294cb68069908313055a63ff010",
+      "rationale": "The pinned caller is a numeric downloadSpeedLimit field with aria-label “Global download speed limit.” The current wording does not explicitly identify this value as a rate limit; the proposal does and preserves the KiB/s unit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1207-ko",
+      "position": 1207,
+      "sourceKey": "Download KiB/s",
+      "locale": "ko",
+      "currentTarget": "KiB/초 다운로드",
+      "recommendedTarget": "다운로드 속도 제한 (KiB/s)",
+      "recommendedTargetSha256": "27329f60875180e90850c29539858b0189142b8eeaa22f7869d2dc6b0c50f488",
+      "rationale": "The pinned caller is a numeric downloadSpeedLimit field with aria-label “Global download speed limit.” The current wording does not explicitly identify this value as a rate limit; the proposal does and preserves the KiB/s unit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1207-zh-Hant",
+      "position": 1207,
+      "sourceKey": "Download KiB/s",
+      "locale": "zh-Hant",
+      "currentTarget": "下載 KiB/秒",
+      "recommendedTarget": "下載速度上限 (KiB/s)",
+      "recommendedTargetSha256": "40ad0aee59e7a4ddacd42d4fdf209791c8c9ee3ba5eb0a134ddda43b664b943e",
+      "rationale": "The pinned caller is a numeric downloadSpeedLimit field with aria-label “Global download speed limit.” The current wording does not explicitly identify this value as a rate limit; the proposal does and preserves the KiB/s unit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1207-vi",
+      "position": 1207,
+      "sourceKey": "Download KiB/s",
+      "locale": "vi",
+      "currentTarget": "Tải xuống KiB/s",
+      "recommendedTarget": "Giới hạn tốc độ tải xuống (KiB/s)",
+      "recommendedTargetSha256": "ae51b587de8f4e7b61f6398822d627b26746242b467044110f14cefbbce4e60b",
+      "rationale": "The pinned caller is a numeric downloadSpeedLimit field with aria-label “Global download speed limit.” The current wording does not explicitly identify this value as a rate limit; the proposal does and preserves the KiB/s unit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1207-id",
+      "position": 1207,
+      "sourceKey": "Download KiB/s",
+      "locale": "id",
+      "currentTarget": "Unduh KiB/s",
+      "recommendedTarget": "Batas kecepatan unduhan (KiB/s)",
+      "recommendedTargetSha256": "30e0c4c967eea66e4dad813e851e779e23d1cb438a43895ae004d8d6d10102af",
+      "rationale": "The pinned caller is a numeric downloadSpeedLimit field with aria-label “Global download speed limit.” The current wording does not explicitly identify this value as a rate limit; the proposal does and preserves the KiB/s unit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1208-es",
+      "position": 1208,
+      "sourceKey": "Download Selected",
+      "locale": "es",
+      "currentTarget": "Descargar Seleccionado",
+      "recommendedTarget": "Descargar los elementos seleccionados",
+      "recommendedTargetSha256": "e01391cc06db083fd7d431fc4314f76fed22155ae72ccb9fe3d835d0e64e01dc",
+      "rationale": "The caller is an action button for a selection of files/tree entries. Current wording is singular or leaves the selected object implicit in this locale; the proposal makes the selected items the object of the download action.",
+      "confidence": "moderate"
+    },
+    {
+      "reviewId": "W1203-W1222-1208-hi",
+      "position": 1208,
+      "sourceKey": "Download Selected",
+      "locale": "hi",
+      "currentTarget": "चयनित डाउनलोड करें",
+      "recommendedTarget": "चयनित आइटम डाउनलोड करें",
+      "recommendedTargetSha256": "196d417347535bd8420f1bcbabbd86f26298ddff471141d049ae423ebeef97be",
+      "rationale": "The caller is an action button for a selection of files/tree entries. Current wording is singular or leaves the selected object implicit in this locale; the proposal makes the selected items the object of the download action.",
+      "confidence": "moderate"
+    },
+    {
+      "reviewId": "W1203-W1222-1208-pt-BR",
+      "position": 1208,
+      "sourceKey": "Download Selected",
+      "locale": "pt-BR",
+      "currentTarget": "Baixar selecionado",
+      "recommendedTarget": "Baixar os itens selecionados",
+      "recommendedTargetSha256": "3ceee42159c365479aea3f89628849eadc1daadba00c7efbc8944e5523fd009a",
+      "rationale": "The caller is an action button for a selection of files/tree entries. Current wording is singular or leaves the selected object implicit in this locale; the proposal makes the selected items the object of the download action.",
+      "confidence": "moderate"
+    },
+    {
+      "reviewId": "W1203-W1222-1208-ko",
+      "position": 1208,
+      "sourceKey": "Download Selected",
+      "locale": "ko",
+      "currentTarget": "선택한 다운로드",
+      "recommendedTarget": "선택한 항목 다운로드",
+      "recommendedTargetSha256": "912e8b483ca7837149acf013c0f8bd8494096be53a0f277325b8afefc3e7087d",
+      "rationale": "The caller is an action button for a selection of files/tree entries. Current wording is singular or leaves the selected object implicit in this locale; the proposal makes the selected items the object of the download action.",
+      "confidence": "moderate"
+    },
+    {
+      "reviewId": "W1203-W1222-1208-vi",
+      "position": 1208,
+      "sourceKey": "Download Selected",
+      "locale": "vi",
+      "currentTarget": "Tải xuống đã chọn",
+      "recommendedTarget": "Tải các mục đã chọn xuống",
+      "recommendedTargetSha256": "f7c66ddfff3bd78f32641944a84708a356bc3b2a4adbbcc6ce48e5dec7a1494b",
+      "rationale": "The caller is an action button for a selection of files/tree entries. Current wording is singular or leaves the selected object implicit in this locale; the proposal makes the selected items the object of the download action.",
+      "confidence": "moderate"
+    },
+    {
+      "reviewId": "W1203-W1222-1209-es",
+      "position": 1209,
+      "sourceKey": "Download Slots",
+      "locale": "es",
+      "currentTarget": "Descargar tragamonedas",
+      "recommendedTarget": "Número máximo de descargas simultáneas",
+      "recommendedTargetSha256": "d7be4560e4ec04d978eaddff3c16c57f28dce203120e5413031c76fbeb78ec07",
+      "rationale": "The pinned caller is a numeric global downloadSlots setting. The current target does not clearly identify the configured count of concurrent downloads in this locale; the proposal names that capacity.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1209-zh-Hans",
+      "position": 1209,
+      "sourceKey": "Download Slots",
+      "locale": "zh-Hans",
+      "currentTarget": "下载老虎机",
+      "recommendedTarget": "最大同时下载数",
+      "recommendedTargetSha256": "87c1099746c559cb704bfe2c7eb8095e99691e9d3b9f1a364f6919bf4d8fb2d5",
+      "rationale": "The pinned caller is a numeric global downloadSlots setting. The current target does not clearly identify the configured count of concurrent downloads in this locale; the proposal names that capacity.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1209-hi",
+      "position": 1209,
+      "sourceKey": "Download Slots",
+      "locale": "hi",
+      "currentTarget": "स्लॉट डाउनलोड करें",
+      "recommendedTarget": "अधिकतम एक साथ डाउनलोड की संख्या",
+      "recommendedTargetSha256": "7edf6cd8b1e8acb2ee44a14702aaa0d91b76e158431022061eb661d7fff17ba5",
+      "rationale": "The pinned caller is a numeric global downloadSlots setting. The current target does not clearly identify the configured count of concurrent downloads in this locale; the proposal names that capacity.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1209-de",
+      "position": 1209,
+      "sourceKey": "Download Slots",
+      "locale": "de",
+      "currentTarget": "Slots herunterladen",
+      "recommendedTarget": "Maximale Anzahl gleichzeitiger Downloads",
+      "recommendedTargetSha256": "23476041c06364163d40398bab51d722a5c90580b438f843ee33948e96cd2b85",
+      "rationale": "The pinned caller is a numeric global downloadSlots setting. The current target does not clearly identify the configured count of concurrent downloads in this locale; the proposal names that capacity.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1209-ja",
+      "position": 1209,
+      "sourceKey": "Download Slots",
+      "locale": "ja",
+      "currentTarget": "ダウンロードスロット",
+      "recommendedTarget": "同時ダウンロードの最大数",
+      "recommendedTargetSha256": "ba0e34339a19263415f45ac5da25348cae7624db633e77af0c42183cd31b7cb6",
+      "rationale": "The pinned caller is a numeric global downloadSlots setting. The current target does not clearly identify the configured count of concurrent downloads in this locale; the proposal names that capacity.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1209-fr",
+      "position": 1209,
+      "sourceKey": "Download Slots",
+      "locale": "fr",
+      "currentTarget": "Machines à sous de téléchargement",
+      "recommendedTarget": "Nombre maximal de téléchargements simultanés",
+      "recommendedTargetSha256": "59ef16ccbff36bd08f7e6ccc118c921d098c904e7a741534b98467abd29b8845",
+      "rationale": "The pinned caller is a numeric global downloadSlots setting. The current target does not clearly identify the configured count of concurrent downloads in this locale; the proposal names that capacity.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1209-pt-BR",
+      "position": 1209,
+      "sourceKey": "Download Slots",
+      "locale": "pt-BR",
+      "currentTarget": "Baixar caça-níqueis",
+      "recommendedTarget": "Número máximo de downloads simultâneos",
+      "recommendedTargetSha256": "035b7b9785e73d7d21da8976b8068d8f1bcb846e4e75bf007a83d39fda541ec3",
+      "rationale": "The pinned caller is a numeric global downloadSlots setting. The current target does not clearly identify the configured count of concurrent downloads in this locale; the proposal names that capacity.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1209-ar",
+      "position": 1209,
+      "sourceKey": "Download Slots",
+      "locale": "ar",
+      "currentTarget": "تنزيل فتحات",
+      "recommendedTarget": "الحد الأقصى لعدد التنزيلات المتزامنة",
+      "recommendedTargetSha256": "9a9b713450879fae7ca5d5d784e6c9cb3b09cd6775a0345feeb38adf4c983ffe",
+      "rationale": "The pinned caller is a numeric global downloadSlots setting. The current target does not clearly identify the configured count of concurrent downloads in this locale; the proposal names that capacity.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1209-ko",
+      "position": 1209,
+      "sourceKey": "Download Slots",
+      "locale": "ko",
+      "currentTarget": "슬롯 다운로드",
+      "recommendedTarget": "최대 동시 다운로드 수",
+      "recommendedTargetSha256": "d0e85d9e8d6c45bddd8519894e3582eafb9e7ac99d10df955ea32e85a68a194e",
+      "rationale": "The pinned caller is a numeric global downloadSlots setting. The current target does not clearly identify the configured count of concurrent downloads in this locale; the proposal names that capacity.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1209-zh-Hant",
+      "position": 1209,
+      "sourceKey": "Download Slots",
+      "locale": "zh-Hant",
+      "currentTarget": "下載老虎機",
+      "recommendedTarget": "最大同時下載數",
+      "recommendedTargetSha256": "4c9aff2e7b778b519261b43cfd235b1d7b59f050f4c40f8b7118c2dcd36b2d53",
+      "rationale": "The pinned caller is a numeric global downloadSlots setting. The current target does not clearly identify the configured count of concurrent downloads in this locale; the proposal names that capacity.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1209-vi",
+      "position": 1209,
+      "sourceKey": "Download Slots",
+      "locale": "vi",
+      "currentTarget": "Tải xuống máy đánh bạc",
+      "recommendedTarget": "Số lượt tải xuống đồng thời tối đa",
+      "recommendedTargetSha256": "d31c9a6bf6f1b399711db0c34a42c0418c24b54082dbfea3fbdb85bee495eee9",
+      "rationale": "The pinned caller is a numeric global downloadSlots setting. The current target does not clearly identify the configured count of concurrent downloads in this locale; the proposal names that capacity.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1209-id",
+      "position": 1209,
+      "sourceKey": "Download Slots",
+      "locale": "id",
+      "currentTarget": "Unduh Slot",
+      "recommendedTarget": "Jumlah maksimum unduhan bersamaan",
+      "recommendedTargetSha256": "514ecfebc3060e404a8e36936a2e402288aed1ffdce1a0890e5ef990fddfe254",
+      "rationale": "The pinned caller is a numeric global downloadSlots setting. The current target does not clearly identify the configured count of concurrent downloads in this locale; the proposal names that capacity.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1211-es",
+      "position": 1211,
+      "sourceKey": "Download approval",
+      "locale": "es",
+      "currentTarget": "Descargar aprobación",
+      "recommendedTarget": "Aprobación de descargas",
+      "recommendedTargetSha256": "04116df40be657ddd7971d121a1cc587ca6864ea04c137720c3189633511d83a",
+      "rationale": "The pinned caller uses this as an automation recipe approvalGate, with Downloads after approval as the file impact. Current wording in this locale reads as downloading the approval; the proposal expresses approval for downloads.",
+      "confidence": "moderate"
+    },
+    {
+      "reviewId": "W1203-W1222-1211-hi",
+      "position": 1211,
+      "sourceKey": "Download approval",
+      "locale": "hi",
+      "currentTarget": "अनुमोदन डाउनलोड करें",
+      "recommendedTarget": "डाउनलोड की स्वीकृति",
+      "recommendedTargetSha256": "7796a3865727b092b8f57c7d13dfdc2b99ca1f6aa5797d5efdf84956e649d927",
+      "rationale": "The pinned caller uses this as an automation recipe approvalGate, with Downloads after approval as the file impact. Current wording in this locale reads as downloading the approval; the proposal expresses approval for downloads.",
+      "confidence": "moderate"
+    },
+    {
+      "reviewId": "W1203-W1222-1211-de",
+      "position": 1211,
+      "sourceKey": "Download approval",
+      "locale": "de",
+      "currentTarget": "Genehmigung herunterladen",
+      "recommendedTarget": "Freigabe für Downloads",
+      "recommendedTargetSha256": "b97a3742e5a066d8ba7f4556dfc70bbf61c4c92a896eefe8093e07ee41d33d39",
+      "rationale": "The pinned caller uses this as an automation recipe approvalGate, with Downloads after approval as the file impact. Current wording in this locale reads as downloading the approval; the proposal expresses approval for downloads.",
+      "confidence": "moderate"
+    },
+    {
+      "reviewId": "W1203-W1222-1211-fr",
+      "position": 1211,
+      "sourceKey": "Download approval",
+      "locale": "fr",
+      "currentTarget": "Télécharger l'approbation",
+      "recommendedTarget": "Approbation des téléchargements",
+      "recommendedTargetSha256": "be53ac1cf377d2c4467ef345190908cfdf4ef4055dace43f59217338a9e18720",
+      "rationale": "The pinned caller uses this as an automation recipe approvalGate, with Downloads after approval as the file impact. Current wording in this locale reads as downloading the approval; the proposal expresses approval for downloads.",
+      "confidence": "moderate"
+    },
+    {
+      "reviewId": "W1203-W1222-1211-pt-BR",
+      "position": 1211,
+      "sourceKey": "Download approval",
+      "locale": "pt-BR",
+      "currentTarget": "Baixar aprovação",
+      "recommendedTarget": "Aprovação de downloads",
+      "recommendedTargetSha256": "bf823ac78935796d83da83cda98de1d6c24d13823667857cecab6e743ae95f35",
+      "rationale": "The pinned caller uses this as an automation recipe approvalGate, with Downloads after approval as the file impact. Current wording in this locale reads as downloading the approval; the proposal expresses approval for downloads.",
+      "confidence": "moderate"
+    },
+    {
+      "reviewId": "W1203-W1222-1211-ar",
+      "position": 1211,
+      "sourceKey": "Download approval",
+      "locale": "ar",
+      "currentTarget": "تنزيل الموافقة",
+      "recommendedTarget": "الموافقة على التنزيل",
+      "recommendedTargetSha256": "c8b51c523aa738d014e8b300bc82ca298641c349d84d0a76b416dda85507d90c",
+      "rationale": "The pinned caller uses this as an automation recipe approvalGate, with Downloads after approval as the file impact. Current wording in this locale reads as downloading the approval; the proposal expresses approval for downloads.",
+      "confidence": "moderate"
+    },
+    {
+      "reviewId": "W1203-W1222-1211-ko",
+      "position": 1211,
+      "sourceKey": "Download approval",
+      "locale": "ko",
+      "currentTarget": "승인 다운로드",
+      "recommendedTarget": "다운로드 승인",
+      "recommendedTargetSha256": "ebdbb928c4c296e63f6db4d4751a1b5efb37fed9e437f0fdb11ce844d7a0b252",
+      "rationale": "The pinned caller uses this as an automation recipe approvalGate, with Downloads after approval as the file impact. Current wording in this locale reads as downloading the approval; the proposal expresses approval for downloads.",
+      "confidence": "moderate"
+    },
+    {
+      "reviewId": "W1203-W1222-1211-id",
+      "position": 1211,
+      "sourceKey": "Download approval",
+      "locale": "id",
+      "currentTarget": "Unduh persetujuan",
+      "recommendedTarget": "Persetujuan unduhan",
+      "recommendedTargetSha256": "717d7ec978b5987cec141302fb43272f2615f5c7c4cd2c6580ca6175837d298b",
+      "rationale": "The pinned caller uses this as an automation recipe approvalGate, with Downloads after approval as the file impact. Current wording in this locale reads as downloading the approval; the proposal expresses approval for downloads.",
+      "confidence": "moderate"
+    },
+    {
+      "reviewId": "W1203-W1222-1212-es",
+      "position": 1212,
+      "sourceKey": "Download cancelled retention minutes",
+      "locale": "es",
+      "currentTarget": "Descargar minutos de retención cancelados",
+      "recommendedTarget": "Tiempo de retención de descargas canceladas (minutos)",
+      "recommendedTargetSha256": "4a3ec4ed6e63f1f7bc99a350e2197c8e2b9f40bc4a882cdf02f208ed2bb70d1a",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadCancelled is a retention value for cancelled downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1212-zh-Hans",
+      "position": 1212,
+      "sourceKey": "Download cancelled retention minutes",
+      "locale": "zh-Hans",
+      "currentTarget": "下载已取消的保留分钟数",
+      "recommendedTarget": "已取消下载的保留时长（分钟）",
+      "recommendedTargetSha256": "e0afef1cc19244ecc9c68df6c650df414161f260748623c6b0bbfb3ae39c848a",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadCancelled is a retention value for cancelled downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1212-hi",
+      "position": 1212,
+      "sourceKey": "Download cancelled retention minutes",
+      "locale": "hi",
+      "currentTarget": "रद्द किए गए अवधारण मिनट डाउनलोड करें",
+      "recommendedTarget": "रद्द किए गए डाउनलोड को रखने की अवधि (मिनट)",
+      "recommendedTargetSha256": "cc59cbac04248e2a70bd15e91b525a30b3d5f3f771625a5727e833f6bc202cf2",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadCancelled is a retention value for cancelled downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1212-de",
+      "position": 1212,
+      "sourceKey": "Download cancelled retention minutes",
+      "locale": "de",
+      "currentTarget": "Laden Sie stornierte Aufbewahrungsminuten herunter",
+      "recommendedTarget": "Aufbewahrungsdauer abgebrochener Downloads (Minuten)",
+      "recommendedTargetSha256": "5141f64fd0e107db9820ec81fa244709e0806014ff4c09f9499082dfd05d2aa4",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadCancelled is a retention value for cancelled downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1212-ja",
+      "position": 1212,
+      "sourceKey": "Download cancelled retention minutes",
+      "locale": "ja",
+      "currentTarget": "キャンセルされた保存時間のダウンロード",
+      "recommendedTarget": "キャンセルされたダウンロードの保持期間（分）",
+      "recommendedTargetSha256": "78e42c5a848412068cff7070a28a41eadbd5869f48bc756aa17dbe4a649acd34",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadCancelled is a retention value for cancelled downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1212-fr",
+      "position": 1212,
+      "sourceKey": "Download cancelled retention minutes",
+      "locale": "fr",
+      "currentTarget": "Télécharger les minutes de rétention annulées",
+      "recommendedTarget": "Durée de conservation des téléchargements annulés (minutes)",
+      "recommendedTargetSha256": "462e827b2476fce9fa8102c88fbe928fbade1ee7f0c08648ffe6316c47455d1f",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadCancelled is a retention value for cancelled downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1212-pt-BR",
+      "position": 1212,
+      "sourceKey": "Download cancelled retention minutes",
+      "locale": "pt-BR",
+      "currentTarget": "Baixar minutos de retenção cancelados",
+      "recommendedTarget": "Tempo de retenção de downloads cancelados (minutos)",
+      "recommendedTargetSha256": "e2773bf8677a50bfe2cd28c54e8c477dd005f2c87948118c2784d1d7c2146224",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadCancelled is a retention value for cancelled downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1212-ar",
+      "position": 1212,
+      "sourceKey": "Download cancelled retention minutes",
+      "locale": "ar",
+      "currentTarget": "قم بتنزيل دقائق الاحتفاظ الملغاة",
+      "recommendedTarget": "مدة الاحتفاظ بالتنزيلات الملغاة (بالدقائق)",
+      "recommendedTargetSha256": "32c14adb873d675d15130c238e7f26b4bd1451a758b7027fc369aa3010bc002c",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadCancelled is a retention value for cancelled downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1212-ko",
+      "position": 1212,
+      "sourceKey": "Download cancelled retention minutes",
+      "locale": "ko",
+      "currentTarget": "취소된 보존 시간(분) 다운로드",
+      "recommendedTarget": "취소된 다운로드 보관 기간(분)",
+      "recommendedTargetSha256": "c72a75a144bf8c98a84f98e396daaaac97f304b4692dd928965bc20f7c108911",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadCancelled is a retention value for cancelled downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1212-zh-Hant",
+      "position": 1212,
+      "sourceKey": "Download cancelled retention minutes",
+      "locale": "zh-Hant",
+      "currentTarget": "下載已取消的保留分鐘數",
+      "recommendedTarget": "已取消下載的保留時間（分鐘）",
+      "recommendedTargetSha256": "43f816e2de2f6db5c9ef3469c01fbbb554539a4b30ae592498882668df5ed5e3",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadCancelled is a retention value for cancelled downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1212-vi",
+      "position": 1212,
+      "sourceKey": "Download cancelled retention minutes",
+      "locale": "vi",
+      "currentTarget": "Tải xuống số phút lưu giữ đã hủy",
+      "recommendedTarget": "Thời gian lưu giữ các lượt tải xuống đã hủy (phút)",
+      "recommendedTargetSha256": "d0fd844919fbbf3ce0a675252faeddfdff907c052baf02c97bb3cf5c86d6977b",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadCancelled is a retention value for cancelled downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1212-id",
+      "position": 1212,
+      "sourceKey": "Download cancelled retention minutes",
+      "locale": "id",
+      "currentTarget": "Unduh menit retensi yang dibatalkan",
+      "recommendedTarget": "Durasi penyimpanan unduhan yang dibatalkan (menit)",
+      "recommendedTargetSha256": "16ae1bc8d8b89f10d2d9a1867f5afa742c4c88c8fe4e829b0c77b68ce76dafd3",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadCancelled is a retention value for cancelled downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1214-es",
+      "position": 1214,
+      "sourceKey": "Download errored retention minutes",
+      "locale": "es",
+      "currentTarget": "Descargar actas de retención con errores",
+      "recommendedTarget": "Tiempo de retención de descargas con errores (minutos)",
+      "recommendedTargetSha256": "a3679a763ea2b60d2c3a585cc269a08516dd5db6533f62fb1cacfc103d86af12",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadErrored is a retention value for errored downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1214-zh-Hans",
+      "position": 1214,
+      "sourceKey": "Download errored retention minutes",
+      "locale": "zh-Hans",
+      "currentTarget": "下载错误的保留分钟数",
+      "recommendedTarget": "出错下载的保留时长（分钟）",
+      "recommendedTargetSha256": "a1728bccfca40643f6ff18a4faad99815ee3ea36967ea12e835500a86cfdfaf9",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadErrored is a retention value for errored downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1214-hi",
+      "position": 1214,
+      "sourceKey": "Download errored retention minutes",
+      "locale": "hi",
+      "currentTarget": "त्रुटिपूर्ण अवधारण मिनट डाउनलोड करें",
+      "recommendedTarget": "त्रुटि वाले डाउनलोड रखने की अवधि (मिनट)",
+      "recommendedTargetSha256": "b233ce022e061174d5d51d36680174cc13bd04a3844908bd51ff2ae0416be904",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadErrored is a retention value for errored downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1214-de",
+      "position": 1214,
+      "sourceKey": "Download errored retention minutes",
+      "locale": "de",
+      "currentTarget": "Laden Sie fehlerhafte Aufbewahrungsminuten herunter",
+      "recommendedTarget": "Aufbewahrungsdauer fehlerhafter Downloads (Minuten)",
+      "recommendedTargetSha256": "161ed57250561ecaf34ac127fb833e789a5f0acc56ff3b39b1d5d7772f33cfac",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadErrored is a retention value for errored downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1214-ja",
+      "position": 1214,
+      "sourceKey": "Download errored retention minutes",
+      "locale": "ja",
+      "currentTarget": "ダウンロードエラーの保存時間（分）",
+      "recommendedTarget": "エラーが発生したダウンロードの保持期間（分）",
+      "recommendedTargetSha256": "398f4ff1a5274a02352d1bad208182216a9c0a1e010d51ba2b04572828c9eb48",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadErrored is a retention value for errored downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1214-fr",
+      "position": 1214,
+      "sourceKey": "Download errored retention minutes",
+      "locale": "fr",
+      "currentTarget": "Télécharger les minutes de rétention erronées",
+      "recommendedTarget": "Durée de conservation des téléchargements ayant échoué (minutes)",
+      "recommendedTargetSha256": "f95e71627e13f4085f39ea7277de1b627a184693d14aa6703c91832d33bc552b",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadErrored is a retention value for errored downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1214-pt-BR",
+      "position": 1214,
+      "sourceKey": "Download errored retention minutes",
+      "locale": "pt-BR",
+      "currentTarget": "Baixar minutos de retenção com erros",
+      "recommendedTarget": "Tempo de retenção de downloads com erro (minutos)",
+      "recommendedTargetSha256": "78109667490ebca58f32c8627a8e0a2f3314fac680dc80546c0dc59eb984226f",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadErrored is a retention value for errored downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1214-ar",
+      "position": 1214,
+      "sourceKey": "Download errored retention minutes",
+      "locale": "ar",
+      "currentTarget": "قم بتنزيل دقائق الاستبقاء التي بها أخطاء",
+      "recommendedTarget": "مدة الاحتفاظ بالتنزيلات التي حدث بها خطأ (بالدقائق)",
+      "recommendedTargetSha256": "e5d20795ca99036f960bcb9700b8b06e4c5ad36eba7e550a8085df11b5186312",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadErrored is a retention value for errored downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1214-ko",
+      "position": 1214,
+      "sourceKey": "Download errored retention minutes",
+      "locale": "ko",
+      "currentTarget": "오류가 발생한 보존 시간(분) 다운로드",
+      "recommendedTarget": "오류가 발생한 다운로드 보관 기간(분)",
+      "recommendedTargetSha256": "f03e1c463cca1d22b36572f28a350c43e3deea212a569e9ab08a5d0244f6a438",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadErrored is a retention value for errored downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1214-zh-Hant",
+      "position": 1214,
+      "sourceKey": "Download errored retention minutes",
+      "locale": "zh-Hant",
+      "currentTarget": "下載錯誤的保留分鐘數",
+      "recommendedTarget": "發生錯誤的下載保留時間（分鐘）",
+      "recommendedTargetSha256": "4ce8e79876731bd9d7323101ea47a6c76129f204f2e0228a7fb5a9b95136f0fd",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadErrored is a retention value for errored downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1214-vi",
+      "position": 1214,
+      "sourceKey": "Download errored retention minutes",
+      "locale": "vi",
+      "currentTarget": "Tải xuống số phút lưu giữ bị lỗi",
+      "recommendedTarget": "Thời gian lưu giữ các lượt tải xuống bị lỗi (phút)",
+      "recommendedTargetSha256": "5ba2af7b72650dd467d4656e473846a92641575ff880bd7535f6ff4e003be79b",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadErrored is a retention value for errored downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1214-id",
+      "position": 1214,
+      "sourceKey": "Download errored retention minutes",
+      "locale": "id",
+      "currentTarget": "Unduh menit retensi yang error",
+      "recommendedTarget": "Durasi penyimpanan unduhan yang mengalami kesalahan (menit)",
+      "recommendedTargetSha256": "b17a5f9c50791a8dec92bda25c70e02915277bad61e001c8e45c18525b066a1f",
+      "rationale": "The current calque leaves the relation unclear and can read as downloading retention minutes. The pinned numeric field retentionDownloadErrored is a retention value for errored downloads; the proposal makes the retention-period-in-minutes meaning explicit.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1218-es",
+      "position": 1218,
+      "sourceKey": "Download leaderboard",
+      "locale": "es",
+      "currentTarget": "Descargar tabla de clasificación",
+      "recommendedTarget": "Tabla de clasificación de descargas",
+      "recommendedTargetSha256": "ed464991ed2b3fb1a8b6d88d8781f8da5ec5855591c363a8b999241c6cfc388f",
+      "rationale": "The caller supplies this label to the status of reports.getLeaderboard({direction: \"Download\"}) under a Downloads heading. The current wording reads as a command to download the leaderboard; the proposal labels the ranking of downloads.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1218-hi",
+      "position": 1218,
+      "sourceKey": "Download leaderboard",
+      "locale": "hi",
+      "currentTarget": "लीडरबोर्ड डाउनलोड करें",
+      "recommendedTarget": "डाउनलोड की रैंकिंग",
+      "recommendedTargetSha256": "55b17260f69ed02e763f0f4c92819f9f1416835fc4b46ee6c9a2ad2e6fb7a672",
+      "rationale": "The caller supplies this label to the status of reports.getLeaderboard({direction: \"Download\"}) under a Downloads heading. The current wording reads as a command to download the leaderboard; the proposal labels the ranking of downloads.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1218-de",
+      "position": 1218,
+      "sourceKey": "Download leaderboard",
+      "locale": "de",
+      "currentTarget": "Bestenliste herunterladen",
+      "recommendedTarget": "Bestenliste für Downloads",
+      "recommendedTargetSha256": "ee57015ffd4c76bf790918759c4ddbf70baca6675f502becd851619cdd633684",
+      "rationale": "The caller supplies this label to the status of reports.getLeaderboard({direction: \"Download\"}) under a Downloads heading. The current wording reads as a command to download the leaderboard; the proposal labels the ranking of downloads.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1218-ja",
+      "position": 1218,
+      "sourceKey": "Download leaderboard",
+      "locale": "ja",
+      "currentTarget": "リーダーボードをダウンロード",
+      "recommendedTarget": "ダウンロードのランキング",
+      "recommendedTargetSha256": "ab57de4adb9c5f31e1f7c83c516f8f34bc042ebf49fbb05d702110e83263254f",
+      "rationale": "The caller supplies this label to the status of reports.getLeaderboard({direction: \"Download\"}) under a Downloads heading. The current wording reads as a command to download the leaderboard; the proposal labels the ranking of downloads.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1218-fr",
+      "position": 1218,
+      "sourceKey": "Download leaderboard",
+      "locale": "fr",
+      "currentTarget": "Télécharger le classement",
+      "recommendedTarget": "Classement des téléchargements",
+      "recommendedTargetSha256": "d932c1c70cd83997eb22e391898c3a402a5e9b24e948e2dc826679fdaec155a2",
+      "rationale": "The caller supplies this label to the status of reports.getLeaderboard({direction: \"Download\"}) under a Downloads heading. The current wording reads as a command to download the leaderboard; the proposal labels the ranking of downloads.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1218-pt-BR",
+      "position": 1218,
+      "sourceKey": "Download leaderboard",
+      "locale": "pt-BR",
+      "currentTarget": "Baixar placar",
+      "recommendedTarget": "Classificação de downloads",
+      "recommendedTargetSha256": "8051b6cc69e3e4c2ae619255688dc04c49c1373f99b5d657cc2004167303cb75",
+      "rationale": "The caller supplies this label to the status of reports.getLeaderboard({direction: \"Download\"}) under a Downloads heading. The current wording reads as a command to download the leaderboard; the proposal labels the ranking of downloads.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1218-ar",
+      "position": 1218,
+      "sourceKey": "Download leaderboard",
+      "locale": "ar",
+      "currentTarget": "تحميل المتصدرين",
+      "recommendedTarget": "تصنيف التنزيلات",
+      "recommendedTargetSha256": "131592640fe6b0cd44cc527aefb9ac93dfa15970bb735e5eff66f2ece2b0d55f",
+      "rationale": "The caller supplies this label to the status of reports.getLeaderboard({direction: \"Download\"}) under a Downloads heading. The current wording reads as a command to download the leaderboard; the proposal labels the ranking of downloads.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1218-ko",
+      "position": 1218,
+      "sourceKey": "Download leaderboard",
+      "locale": "ko",
+      "currentTarget": "리더보드 다운로드",
+      "recommendedTarget": "다운로드 순위표",
+      "recommendedTargetSha256": "c1e5bf43392aa18c3c3676c84c9899211209d86788f982311d19e137dece6af5",
+      "rationale": "The caller supplies this label to the status of reports.getLeaderboard({direction: \"Download\"}) under a Downloads heading. The current wording reads as a command to download the leaderboard; the proposal labels the ranking of downloads.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1218-vi",
+      "position": 1218,
+      "sourceKey": "Download leaderboard",
+      "locale": "vi",
+      "currentTarget": "Tải xuống bảng xếp hạng",
+      "recommendedTarget": "Bảng xếp hạng lượt tải xuống",
+      "recommendedTargetSha256": "48327bd2f96447e39661c9182a1d41e428aa0b7c09eac004a9abe68affb6bbc4",
+      "rationale": "The caller supplies this label to the status of reports.getLeaderboard({direction: \"Download\"}) under a Downloads heading. The current wording reads as a command to download the leaderboard; the proposal labels the ranking of downloads.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1218-id",
+      "position": 1218,
+      "sourceKey": "Download leaderboard",
+      "locale": "id",
+      "currentTarget": "Unduh papan peringkat",
+      "recommendedTarget": "Papan peringkat unduhan",
+      "recommendedTargetSha256": "e626d07d49c48446ea39181cf6fc1eae2903cab247ace7ffa991da78e2efe25f",
+      "rationale": "The caller supplies this label to the status of reports.getLeaderboard({direction: \"Download\"}) under a Downloads heading. The current wording reads as a command to download the leaderboard; the proposal labels the ranking of downloads.",
+      "confidence": "high"
+    },
+    {
+      "reviewId": "W1203-W1222-1222-hi",
+      "position": 1222,
+      "sourceKey": "Download path missing",
+      "locale": "hi",
+      "currentTarget": "डाउनलोड पथ अनुपलब्ध है",
+      "recommendedTarget": "डाउनलोड पथ सेट नहीं है",
+      "recommendedTargetSha256": "64f92faa07dffdbed3359326d6f717b5ba76928abe4c20f4467acfa5a04eedc3",
+      "rationale": "The pinned caller selects this message when the configured downloads path has no value. “Unavailable” can imply an existing path cannot be accessed; the proposal says the path is not configured.",
+      "confidence": "moderate"
+    }
+  ],
+  "holds": [
+    {
+      "reviewId": "W1203-W1222-1206-es",
+      "position": 1206,
+      "sourceKey": "Download Clients",
+      "locale": "es",
+      "currentTarget": "Clientes de descarga",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1206-zh-Hans",
+      "position": 1206,
+      "sourceKey": "Download Clients",
+      "locale": "zh-Hans",
+      "currentTarget": "下载客户端",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1206-hi",
+      "position": 1206,
+      "sourceKey": "Download Clients",
+      "locale": "hi",
+      "currentTarget": "डाउनलोड क्लाइंट",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1206-de",
+      "position": 1206,
+      "sourceKey": "Download Clients",
+      "locale": "de",
+      "currentTarget": "Download-Clients",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1206-ja",
+      "position": 1206,
+      "sourceKey": "Download Clients",
+      "locale": "ja",
+      "currentTarget": "ダウンロードクライアント",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1206-fr",
+      "position": 1206,
+      "sourceKey": "Download Clients",
+      "locale": "fr",
+      "currentTarget": "Clients de téléchargement",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1206-pt-BR",
+      "position": 1206,
+      "sourceKey": "Download Clients",
+      "locale": "pt-BR",
+      "currentTarget": "Clientes de download",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1206-ar",
+      "position": 1206,
+      "sourceKey": "Download Clients",
+      "locale": "ar",
+      "currentTarget": "عملاء التنزيل",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1206-ko",
+      "position": 1206,
+      "sourceKey": "Download Clients",
+      "locale": "ko",
+      "currentTarget": "다운로드 클라이언트",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1206-zh-Hant",
+      "position": 1206,
+      "sourceKey": "Download Clients",
+      "locale": "zh-Hant",
+      "currentTarget": "下載用戶端",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1206-vi",
+      "position": 1206,
+      "sourceKey": "Download Clients",
+      "locale": "vi",
+      "currentTarget": "Ứng dụng tải xuống",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1206-id",
+      "position": 1206,
+      "sourceKey": "Download Clients",
+      "locale": "id",
+      "currentTarget": "Klien unduhan",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1216-es",
+      "position": 1216,
+      "sourceKey": "Download filters",
+      "locale": "es",
+      "currentTarget": "Filtros de descarga",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1216-zh-Hans",
+      "position": 1216,
+      "sourceKey": "Download filters",
+      "locale": "zh-Hans",
+      "currentTarget": "下载筛选器",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1216-hi",
+      "position": 1216,
+      "sourceKey": "Download filters",
+      "locale": "hi",
+      "currentTarget": "डाउनलोड फ़िल्टर",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1216-de",
+      "position": 1216,
+      "sourceKey": "Download filters",
+      "locale": "de",
+      "currentTarget": "Downloadfilter",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1216-ja",
+      "position": 1216,
+      "sourceKey": "Download filters",
+      "locale": "ja",
+      "currentTarget": "ダウンロードフィルター",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1216-fr",
+      "position": 1216,
+      "sourceKey": "Download filters",
+      "locale": "fr",
+      "currentTarget": "Filtres de téléchargement",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1216-pt-BR",
+      "position": 1216,
+      "sourceKey": "Download filters",
+      "locale": "pt-BR",
+      "currentTarget": "Filtros de download",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1216-ar",
+      "position": 1216,
+      "sourceKey": "Download filters",
+      "locale": "ar",
+      "currentTarget": "عوامل تصفية التنزيل",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1216-ko",
+      "position": 1216,
+      "sourceKey": "Download filters",
+      "locale": "ko",
+      "currentTarget": "다운로드 필터",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1216-zh-Hant",
+      "position": 1216,
+      "sourceKey": "Download filters",
+      "locale": "zh-Hant",
+      "currentTarget": "下載篩選器",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1216-vi",
+      "position": 1216,
+      "sourceKey": "Download filters",
+      "locale": "vi",
+      "currentTarget": "Bộ lọc tải xuống",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "reviewId": "W1203-W1222-1216-id",
+      "position": 1216,
+      "sourceKey": "Download filters",
+      "locale": "id",
+      "currentTarget": "Filter unduhan",
+      "rationale": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    }
+  ],
+  "limitations": [
+    "Machine review only; no native-speaker approval.",
+    "Opaque runtime placeholder values are not evaluated or rewritten.",
+    "The review relies on exact callers and adjacent context pinned in the candidate-free packet."
+  ]
+}

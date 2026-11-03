@@ -1,0 +1,379 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "primary semantic review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W1203-W1222",
+  "reviewedAtUtc": "2026-11-03T08:18:20+00:00",
+  "head": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+  "tree": "ba62eed0bd600a8f69bb6c0cbefe99da7ee47623",
+  "liveAttestation": {
+    "prState": "OPEN",
+    "draft": true,
+    "headRef": "codex/slskr-l10n-audit-20261030",
+    "headSha": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+    "baseRef": "main",
+    "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "remotePullRefHead": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+    "remoteBranchRef": "refs/heads/codex/slskr-l10n-audit-20261030",
+    "remoteBranchHead": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+    "commitApiTree": "ba62eed0bd600a8f69bb6c0cbefe99da7ee47623",
+    "localWorktree": "/mnt/disks/scratch/task-worktrees/localization-20261103/slskr-pr204-w1183-1202-apply-20261103",
+    "localWorktreeBranch": "",
+    "localWorktreeHead": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+    "localWorktreeTree": "ba62eed0bd600a8f69bb6c0cbefe99da7ee47623",
+    "localWorktreeStatusClean": true
+  },
+  "candidateFreeInput": {
+    "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-w1203-1222-input-20261103/clean-input",
+    "sha256SumsSha256": "4525f64eec71544375b5af2a44592e0560b6fa904e3bcc9e14dc6715236dd1d3",
+    "fileChecksums": {
+      "PR-attestation.json": "7cdb953ebb9405ad6e16244d861a1ac121e87b63e95c28db48e3930142af3f1b",
+      "README.md": "00491f173f26b657ea785f52c47aab25b3a82d472d006e050910520645c2bc0b",
+      "caller-resolution-holds.jsonl": "5d07a18d7fba3b175fc2ba4a0e392c41631e7e36d1b5c4d2f284e13356fdf71e",
+      "catalog-file-pins.json": "ac6f3288f20706e5e231fc4974f22c100117cd988e0ed2fbfc6e2bab5a3e5efb",
+      "current-target-cells.jsonl": "487debc83276a1dd549c2068f2db34c8103d1d1ff6eca5bff85079fce313000e",
+      "final-live-pr-verification.json": "c84ba3f3aea82d51e78e3d88ea68090bc21b764c97e55e090094722509e34823",
+      "localization-runtime-context.json": "07c408f78d2c710a54133ec8d1688c065c00ff400ef34893edaece9113a2a871",
+      "manifest.json": "1a5b1c58ab7bc7ca5c6c7c9b67a2cf24d65bc950a34dffb35ad83d8f0d81d725",
+      "selected-source-keys.txt": "4a6dbee2fff975fb60eb2c3c071b2f4fb0b7a9e01e8b049404b6881d54f52e9d",
+      "source-contexts.jsonl": "bf3377197b31124eefbbc9d9e561ee217e8b262f84b8f3edf349539759a9d283",
+      "source-queue.jsonl": "da4f6b93e7d3f05c03b3dbd7a39959c8990a5089b78ea8b850b568aa2de38236",
+      "source-window-boundaries.jsonl": "8d1643b213250edb7ab924a7488bf5aac0f04b7772c86cb193c795541f7acc6c"
+    },
+    "cellCount": 240,
+    "sourceCount": 20,
+    "localeOrder": [
+      "es",
+      "zh-Hans",
+      "hi",
+      "de",
+      "ja",
+      "fr",
+      "pt-BR",
+      "ar",
+      "ko",
+      "zh-Hant",
+      "vi",
+      "id"
+    ]
+  },
+  "counts": {
+    "totalCells": 240,
+    "acceptCurrent": 139,
+    "correction": 72,
+    "refinement": 5,
+    "hold": 24,
+    "nativeSpeakerApproval": false
+  },
+  "holdPositions": [
+    {
+      "position": 1206,
+      "sourceKey": "Download Clients",
+      "locales": [
+        "es",
+        "zh-Hans",
+        "hi",
+        "de",
+        "ja",
+        "fr",
+        "pt-BR",
+        "ar",
+        "ko",
+        "zh-Hant",
+        "vi",
+        "id"
+      ],
+      "reason": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    },
+    {
+      "position": 1216,
+      "sourceKey": "Download filters",
+      "locales": [
+        "es",
+        "zh-Hans",
+        "hi",
+        "de",
+        "ja",
+        "fr",
+        "pt-BR",
+        "ar",
+        "ko",
+        "zh-Hant",
+        "vi",
+        "id"
+      ],
+      "reason": "No exact quoted source-key caller or pinned runtime consumer was resolved in the current production caller scan; hold this source in all locales pending caller resolution."
+    }
+  ],
+  "protectedLiteralReview": {
+    "KiB/s": {
+      "position": 1207,
+      "currentTargetsMissingExactLiteral": [
+        "zh-Hans",
+        "ja",
+        "ar",
+        "ko",
+        "zh-Hant"
+      ],
+      "proposedTargetsPreserveExactLiteral": true
+    }
+  },
+  "placeholderReview": {
+    "mismatchesInInput": 0,
+    "proposedTargetMismatchCount": 0
+  },
+  "markupReview": "No markup tokens are present in the selected source strings or proposed targets.",
+  "countsByLocale": {
+    "es": {
+      "accept-current": 10,
+      "refinement": 1,
+      "hold": 2,
+      "correction": 7
+    },
+    "zh-Hans": {
+      "accept-current": 14,
+      "hold": 2,
+      "correction": 4
+    },
+    "hi": {
+      "accept-current": 11,
+      "hold": 2,
+      "correction": 6,
+      "refinement": 1
+    },
+    "de": {
+      "accept-current": 12,
+      "hold": 2,
+      "correction": 6
+    },
+    "ja": {
+      "accept-current": 14,
+      "hold": 2,
+      "correction": 4
+    },
+    "fr": {
+      "accept-current": 12,
+      "hold": 2,
+      "correction": 6
+    },
+    "pt-BR": {
+      "accept-current": 11,
+      "hold": 2,
+      "correction": 7
+    },
+    "ar": {
+      "accept-current": 9,
+      "correction": 9,
+      "hold": 2
+    },
+    "ko": {
+      "accept-current": 11,
+      "hold": 2,
+      "correction": 7
+    },
+    "zh-Hant": {
+      "accept-current": 14,
+      "hold": 2,
+      "correction": 4
+    },
+    "vi": {
+      "accept-current": 11,
+      "refinement": 2,
+      "hold": 2,
+      "correction": 5
+    },
+    "id": {
+      "accept-current": 10,
+      "hold": 2,
+      "correction": 7,
+      "refinement": 1
+    }
+  },
+  "countsByPosition": [
+    {
+      "position": 1203,
+      "sourceKey": "Download",
+      "counts": {
+        "accept-current": 12
+      },
+      "callerReferenceCount": 54
+    },
+    {
+      "position": 1204,
+      "sourceKey": "Download Album",
+      "counts": {
+        "accept-current": 11,
+        "correction": 1
+      },
+      "callerReferenceCount": 1
+    },
+    {
+      "position": 1205,
+      "sourceKey": "Download Best Album",
+      "counts": {
+        "refinement": 2,
+        "accept-current": 9,
+        "correction": 1
+      },
+      "callerReferenceCount": 1
+    },
+    {
+      "position": 1206,
+      "sourceKey": "Download Clients",
+      "counts": {
+        "hold": 12
+      },
+      "callerReferenceCount": 0
+    },
+    {
+      "position": 1207,
+      "sourceKey": "Download KiB/s",
+      "counts": {
+        "correction": 12
+      },
+      "callerReferenceCount": 1
+    },
+    {
+      "position": 1208,
+      "sourceKey": "Download Selected",
+      "counts": {
+        "correction": 5,
+        "accept-current": 6,
+        "refinement": 1
+      },
+      "callerReferenceCount": 1
+    },
+    {
+      "position": 1209,
+      "sourceKey": "Download Slots",
+      "counts": {
+        "correction": 11,
+        "accept-current": 1
+      },
+      "callerReferenceCount": 1
+    },
+    {
+      "position": 1210,
+      "sourceKey": "Download action preview",
+      "counts": {
+        "accept-current": 12
+      },
+      "callerReferenceCount": 1
+    },
+    {
+      "position": 1211,
+      "sourceKey": "Download approval",
+      "counts": {
+        "correction": 8,
+        "accept-current": 4
+      },
+      "callerReferenceCount": 1
+    },
+    {
+      "position": 1212,
+      "sourceKey": "Download cancelled retention minutes",
+      "counts": {
+        "correction": 12
+      },
+      "callerReferenceCount": 2
+    },
+    {
+      "position": 1213,
+      "sourceKey": "Download complete",
+      "counts": {
+        "accept-current": 12
+      },
+      "callerReferenceCount": 3
+    },
+    {
+      "position": 1214,
+      "sourceKey": "Download errored retention minutes",
+      "counts": {
+        "correction": 12
+      },
+      "callerReferenceCount": 2
+    },
+    {
+      "position": 1215,
+      "sourceKey": "Download failed",
+      "counts": {
+        "accept-current": 12
+      },
+      "callerReferenceCount": 6
+    },
+    {
+      "position": 1216,
+      "sourceKey": "Download filters",
+      "counts": {
+        "hold": 12
+      },
+      "callerReferenceCount": 0
+    },
+    {
+      "position": 1217,
+      "sourceKey": "Download in progress",
+      "counts": {
+        "accept-current": 11,
+        "refinement": 1
+      },
+      "callerReferenceCount": 3
+    },
+    {
+      "position": 1218,
+      "sourceKey": "Download leaderboard",
+      "counts": {
+        "correction": 10,
+        "accept-current": 2
+      },
+      "callerReferenceCount": 2
+    },
+    {
+      "position": 1219,
+      "sourceKey": "Download mode status unavailable",
+      "counts": {
+        "accept-current": 11,
+        "refinement": 1
+      },
+      "callerReferenceCount": 2
+    },
+    {
+      "position": 1220,
+      "sourceKey": "Download not allowed for this share",
+      "counts": {
+        "accept-current": 12
+      },
+      "callerReferenceCount": 3
+    },
+    {
+      "position": 1221,
+      "sourceKey": "Download path configured",
+      "counts": {
+        "accept-current": 12
+      },
+      "callerReferenceCount": 1
+    },
+    {
+      "position": 1222,
+      "sourceKey": "Download path missing",
+      "counts": {
+        "accept-current": 12
+      },
+      "callerReferenceCount": 1
+    }
+  ],
+  "scopeNote": "All 240 cells reviewed against the candidate-free source/context packet and exact-head callers. No repository or PR changes were made. This primary review is not native-speaker approval.",
+  "finalReattestation": {
+    "state": "OPEN",
+    "draft": true,
+    "headRef": "codex/slskr-l10n-audit-20261030",
+    "headSha": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+    "pullRefHead": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+    "branchRef": "refs/heads/codex/slskr-l10n-audit-20261030",
+    "branchHead": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+    "commitApiTree": "ba62eed0bd600a8f69bb6c0cbefe99da7ee47623",
+    "localWorktreeHead": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+    "localWorktreeTree": "ba62eed0bd600a8f69bb6c0cbefe99da7ee47623",
+    "localWorktreeStatusClean": true
+  }
+}

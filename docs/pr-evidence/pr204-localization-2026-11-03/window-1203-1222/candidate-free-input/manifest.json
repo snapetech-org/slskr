@@ -1,0 +1,190 @@
+{
+  "baseRef": "main",
+  "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "boundaryFile": "source-window-boundaries.jsonl",
+  "boundaryRowCount": 22,
+  "callerFileCount": 28,
+  "callerReferenceCount": 86,
+  "callerResolutionHoldCount": 24,
+  "callerResolutionHoldPositions": [
+    1206,
+    1216
+  ],
+  "candidateFreeInputOnly": true,
+  "cellCount": 240,
+  "commitApiTree": "ba62eed0bd600a8f69bb6c0cbefe99da7ee47623",
+  "draft": true,
+  "head": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+  "headRef": "codex/slskr-l10n-audit-20261030",
+  "localWorktree": "/mnt/disks/scratch/task-worktrees/localization-20261103/slskr-pr204-w1183-1202-apply-20261103",
+  "localWorktreeBranch": "",
+  "localWorktreeHead": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+  "localWorktreeStatusClean": true,
+  "localWorktreeTree": "ba62eed0bd600a8f69bb6c0cbefe99da7ee47623",
+  "localeCount": 12,
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "nativeSpeakerApproval": false,
+  "nextBoundaryPosition": 1223,
+  "opaqueRuntimeValuesPolicy": "Caller lines and runtime expressions are captured verbatim from pinned source files; values are not evaluated, inferred, or rewritten.",
+  "placeholderTokenSequenceMismatchCount": 0,
+  "previousBoundaryPosition": 1202,
+  "proposedTranslationsIncluded": false,
+  "pullRequest": 204,
+  "remoteBranchHead": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+  "remoteBranchRef": "refs/heads/codex/slskr-l10n-audit-20261030",
+  "remotePullRefHead": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+  "repository": "snapetech-org/slskR",
+  "selectedPositions": [
+    1203,
+    1222
+  ],
+  "selectionRule": "One-based positions 1203–1222 in the 5,441 unique English source lookup keys shared by the 12 runtime locale catalogs; keys are sorted lexicographically by exact Unicode string and source strings are direct catalog lookup keys.",
+  "semanticReviewIncluded": false,
+  "sourceContextRows": 20,
+  "sourceCount": 20,
+  "sourceIds": [
+    {
+      "callerReferenceCount": 54,
+      "position": 1203,
+      "sourceKey": "Download",
+      "sourceKeySha256": "d6eafe82359100423c93c5ce53c352c1b51ca1e699215fcec3f5c5dd9bf12d24"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1204,
+      "sourceKey": "Download Album",
+      "sourceKeySha256": "4dda378c06938d8de05852459a3836b6f195642e1cd0b43ac35f3faf9c8bdb5a"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1205,
+      "sourceKey": "Download Best Album",
+      "sourceKeySha256": "98735cf629947aa6b32a18c1124ffcd1cc4734ee2f30429cb84cb81ca5328259"
+    },
+    {
+      "callerReferenceCount": 0,
+      "position": 1206,
+      "sourceKey": "Download Clients",
+      "sourceKeySha256": "aea530a371cf7636faf97ce775f40fedcaad96c0c735aad26b9a4a891df37d73"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1207,
+      "sourceKey": "Download KiB/s",
+      "sourceKeySha256": "d9c44b59c46bd3b0e29e653b696d22fb753b3eafbe18513457dc7cfc323b53dc"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1208,
+      "sourceKey": "Download Selected",
+      "sourceKeySha256": "bf99ac442d15f95321ebb00063a71710564a2c469677ed2afad3a9c85ef3650d"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1209,
+      "sourceKey": "Download Slots",
+      "sourceKeySha256": "a5d000769e75c5be9341ffc4b85795b911697570a83b5601b2829ca012dcbc31"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1210,
+      "sourceKey": "Download action preview",
+      "sourceKeySha256": "a0a85873a7f4364fc0ca3ecfa2e35865994beb2b2a16353926632f6f045149b8"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1211,
+      "sourceKey": "Download approval",
+      "sourceKeySha256": "804c1df4e5ef29868ec81bceb377f7ba7fc7cc17158abb2751523f6c74b0cb78"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1212,
+      "sourceKey": "Download cancelled retention minutes",
+      "sourceKeySha256": "d8b4098df5bfd5e4e4f149c429bade6400e5937cb6030a011523df4a984edb23"
+    },
+    {
+      "callerReferenceCount": 3,
+      "position": 1213,
+      "sourceKey": "Download complete",
+      "sourceKeySha256": "2063789a989169967cf624b5130c998cd31335663b70f82dc119b817c4028bbf"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1214,
+      "sourceKey": "Download errored retention minutes",
+      "sourceKeySha256": "26a7b4457c742aa0eef123bb029d884e11c1df16d937eed5e747fe8784bfa8b6"
+    },
+    {
+      "callerReferenceCount": 6,
+      "position": 1215,
+      "sourceKey": "Download failed",
+      "sourceKeySha256": "eae34ccbc4432c1358da668b091e7c952fe8be24b02dd4f8ec5ea2edef5ca1a4"
+    },
+    {
+      "callerReferenceCount": 0,
+      "position": 1216,
+      "sourceKey": "Download filters",
+      "sourceKeySha256": "2a2ee9106386c47e6dd5ec61089cd66de98375c55df3993f0e03f2856f9ff3f5"
+    },
+    {
+      "callerReferenceCount": 3,
+      "position": 1217,
+      "sourceKey": "Download in progress",
+      "sourceKeySha256": "15ab574345cf98ee645d11488009dfb2e28d5a4e66724b1df7a54a67c8098634"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1218,
+      "sourceKey": "Download leaderboard",
+      "sourceKeySha256": "87d5e18eab33fbae9888f1e8895354b2ee90b83bfb55b51a2c111e5a0281ae68"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1219,
+      "sourceKey": "Download mode status unavailable",
+      "sourceKeySha256": "688f6e35a19eca9f9d3a64b19815c6e34ef80a2cd37f54b071d3e9ee17a37b49"
+    },
+    {
+      "callerReferenceCount": 3,
+      "position": 1220,
+      "sourceKey": "Download not allowed for this share",
+      "sourceKeySha256": "94509de3770dd24b051cff9e4316f9567ca3c295e678f27d11eb3f8bd25cc723"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1221,
+      "sourceKey": "Download path configured",
+      "sourceKeySha256": "8411433cfbd8a5fcd5577fde1ed363f027a084a3b5774fd228c33693011cf67e"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1222,
+      "sourceKey": "Download path missing",
+      "sourceKeySha256": "030a1b1d9c5117eef218ea3ec7f7d7b975f1b086894e0a1dc2ea2ac87bb55183"
+    }
+  ],
+  "sourceLookupKeyOrderHashFormat": "SHA-256 of all unique source keys sorted lexicographically, one exact key per line, trailing newline.",
+  "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "sourceQueueCount": 5441,
+  "sourceQueueFile": "source-queue.jsonl",
+  "sourceQueueFileSha256": "da4f6b93e7d3f05c03b3dbd7a39959c8990a5089b78ea8b850b568aa2de38236",
+  "sourceQueueOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "sourceRecordCount": 5441,
+  "state": "open",
+  "tree": "ba62eed0bd600a8f69bb6c0cbefe99da7ee47623",
+  "window": "W1203-W1222"
+}
