@@ -1,0 +1,29 @@
+{
+  "method": "streamed source ID and disposition field check; no prior candidate/proposal field was used as review guidance",
+  "nativeSpeakerApproval": false,
+  "previousDispositionRowsForSelectedSources": 0,
+  "scope": "all tracked docs/pr-evidence JSONL files in the pinned repo tree",
+  "selectedSourceCount": 20,
+  "sourceIds": [
+    "Could not save browser preferences.",
+    "Could not save this filter in browser storage.",
+    "Could not update Wishlist filters.",
+    "Count",
+    "Counters for signatures, reputation, rate limits, and quarantine",
+    "Cover Traffic",
+    "Cover art",
+    "Cover art policy for {name}",
+    "Coverage of shared FLACs",
+    "Create",
+    "Create Collection",
+    "Create Content-Linked Pod",
+    "Create Group",
+    "Create Invite",
+    "Create New Channel",
+    "Create New Room",
+    "Create Playlist",
+    "Create Room",
+    "Create Share Group",
+    "Create Your First Group"
+  ]
+}

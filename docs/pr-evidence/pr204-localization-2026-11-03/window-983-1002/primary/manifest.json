@@ -1,0 +1,74 @@
+{
+  "artifacts": [
+    {
+      "bytes": 354,
+      "path": "INPUT-SHA256SUMS",
+      "sha256": "06a9ce0a9ceccc7f2a54be669e4e498303ff339e8e111eec9590374113f9247e"
+    },
+    {
+      "bytes": 3239,
+      "path": "README.md",
+      "sha256": "907247dd2dfbf3a826c72f1a3c7e7180b4fca35e65fd183c61be6e0b81d87929"
+    },
+    {
+      "bytes": 4034,
+      "path": "catalog-pins.jsonl",
+      "sha256": "62b9e316b196c1777aa333c44cda1927d9984a3ba45449ac5f06eb5d9bb617af"
+    },
+    {
+      "bytes": 6131,
+      "path": "input-attestation.json",
+      "sha256": "1dfe5c598cd4e4b0f83c77fa8cfbb234eb2b20829570ebc7218a6bd2f738d985"
+    },
+    {
+      "bytes": 455645,
+      "path": "primary-review-ledger.jsonl",
+      "sha256": "28b2a31cd39a3216836b7a2fe7ac3781daefd3e89d60613596aa34a20ef96088"
+    },
+    {
+      "bytes": 931,
+      "path": "review-history-attestation.json",
+      "sha256": "eee94220a19326749592f7db2171134d6c797aa9972c62aa70766defe03f74ea"
+    },
+    {
+      "bytes": 3900,
+      "path": "selection-evidence.json",
+      "sha256": "a39811f908bbde83454781c31a7223fa26fa27f985995795ea1a9d25e4f1a1fa"
+    },
+    {
+      "bytes": 120011,
+      "path": "source-only-input.jsonl",
+      "sha256": "32e6b0689a63c688915a7236beeaed3973714d8cfbb6028c552ca47fdd6eff7c"
+    },
+    {
+      "bytes": 2942,
+      "path": "summary.json",
+      "sha256": "53aba75876556cdf329b9b759c0872cb6b868a6a8a35895c1fbdbe89063dc3b3"
+    }
+  ],
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "counts": {
+    "accept-current": 165,
+    "correction": 40,
+    "hold": 24,
+    "refinement": 11
+  },
+  "head": "09a614a66f1104fe530773fb17c79ed6338aed02",
+  "isDraft": true,
+  "nativeSpeakerApproval": false,
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "repositoryOrPREdits": "none",
+  "state": "OPEN",
+  "task": "slskR PR #204 W983-W1002 primary localization review",
+  "testsBuildScansCIOrBrowser": "not run",
+  "tree": "963f283311ae39dfa5fc289386d99dcc0dac2f90",
+  "url": "https://github.com/snapetech-org/slskr/pull/204",
+  "window": {
+    "cellCount": 240,
+    "firstPosition": 983,
+    "lastPosition": 1002,
+    "localeCount": 12,
+    "sourceCount": 20
+  }
+}
