@@ -1,0 +1,62 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "window": "W1143-W1162",
+  "inputHead": "20c66f7889c564fae5db1128d7dde22b512fc5be",
+  "inputTree": "85e82d73c6c191ea4875850d3c1afff7bae5c63a",
+  "cleanInputManifestSha256": "e022466fdb5d4c4b32b320c307aacca177bb1030c3830913258aacdfcf487b60",
+  "cleanInputChecksumListSha256": "eae55e59af6b52af384ba318d1cad378a063bb350c07d933d051da22be70592a",
+  "sourceIdOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "windowSourceSha256": "45b9ccc70633209accaeddf90b7508a8081733faeecbd6d36514b7dfb08e59da",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "callerReferences": 67,
+  "callerlessSourceIds": [
+    "Disable this authority locally for review. This only changes browser review state and does not update realm governance."
+  ],
+  "dispositions": {
+    "accept-current": 188,
+    "correction": 23,
+    "hold": 12,
+    "refinement": 17
+  },
+  "proposedChanges": 40,
+  "changesByPosition": {
+    "1144": 12,
+    "1145": 1,
+    "1147": 2,
+    "1150": 11,
+    "1157": 4,
+    "1160": 8,
+    "1162": 2
+  },
+  "changesByLocale": {
+    "ar": 3,
+    "de": 3,
+    "es": 3,
+    "fr": 3,
+    "hi": 2,
+    "id": 3,
+    "ja": 2,
+    "ko": 3,
+    "pt-BR": 3,
+    "vi": 5,
+    "zh-Hans": 5,
+    "zh-Hant": 5
+  },
+  "holdsByPosition": {
+    "1146": 12
+  },
+  "sourceHashMismatches": 0,
+  "currentTargetHashMismatches": 0,
+  "candidateHashMismatches": 0,
+  "placeholderMismatches": 0,
+  "numericTokenMismatches": 0,
+  "protectedLiteralMismatches": 0,
+  "confidence": "moderate",
+  "nativeSpeakerReview": false,
+  "independentBlindReview": false,
+  "catalogsOrRepositoryChanged": false,
+  "testsBuildsScansCIOrWorkflowChanges": false
+}
