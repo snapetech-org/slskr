@@ -1,0 +1,49 @@
+{
+  "baseRef": "main",
+  "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "blindDispositionCounts": {
+    "accept-current": 190,
+    "correction": 31,
+    "refinement": 19
+  },
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "browserReviewPerformed": false,
+  "callerLineReferencesReattested": 27,
+  "callerReferenceCount": 27,
+  "candidateFreeBaselineProtectedLiteralMismatches": 9,
+  "carriedHoldsReattestedUnchanged": 35,
+  "catalogPreimagesReattested": 240,
+  "cellCount": 240,
+  "cellsWithAnyReviewerDisagreement": 51,
+  "crossDispositionCounts": {
+    "accept-current": 177,
+    "correction": 50,
+    "refinement": 13
+  },
+  "currentWindowHolds": 0,
+  "draftAtSeal": true,
+  "head": "44b37bd94385128d5bb5287aa1545901282bdfcb",
+  "localeCount": 12,
+  "nativeSpeakerReviewPerformed": false,
+  "primaryDispositionCounts": {
+    "accept-current": 182,
+    "correction": 46,
+    "refinement": 12
+  },
+  "priorSelectionsReattested": 200,
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "repositoryCatalogPRWorkflowModified": false,
+  "result": "PASS",
+  "reviewerDispositionDisagreements": 35,
+  "reviewerTargetDisagreements": 43,
+  "selectedChanges": 63,
+  "selectedProtectedLiteralRepairs": 9,
+  "sourceCount": 20,
+  "sourceFilesReattested": 29,
+  "sourcePinCount": 29,
+  "stateAtSeal": "OPEN",
+  "testsBuildsScansCIOrBrowserRun": false,
+  "tree": "02c3f149a079c67b010d973dd02ca15776ad1610",
+  "window": "W1443-W1462"
+}

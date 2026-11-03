@@ -1,0 +1,20 @@
+Expiring Soon:
+Explicit evidence publication opt-in
+Export Metadata
+Export RustyMilk shape fragment
+Export RustyMilk wave fragment
+Export Successful
+Export active RustyMilk preset
+Export confirmed local plays or ratings back to the selected media server profile.
+Export metadata for ContentIDs to a portable package
+Export the active RustyMilk preset text after any local edits.
+Export the selected custom shape in the active RustyMilk preset as a .shape fragment.
+Export the selected custom wave in the active RustyMilk preset as a .wave fragment.
+Export/import operations and conflict resolution
+Exposure:
+Extended
+External ID
+External ID to Resolve
+External ID:
+External Servarr apps should use a scoped API key, not an operator session.
+External Visualizer

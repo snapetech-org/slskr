@@ -1,0 +1,153 @@
+{
+  "carriedHoldsPreserved": 35,
+  "catalogFiles": [
+    {
+      "changedTargetCount": 6,
+      "keyCount": 5441,
+      "keyOrderSha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "nonTargetValuesPreserved": true,
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "postApplyFileSha256": "35bcea63bdb4d81db51694a5a67832ed4ba6740ba669460d12b9de74fe862a04",
+      "preApplyFileSha256": "796acf0195232729a81741e963a268f3bf96b370bf762c1e04bca748f335ca0f",
+      "preApplyGitBlob": "9f8101a8a011afda4116cd8ddeff0201f8ba7383"
+    },
+    {
+      "changedTargetCount": 5,
+      "keyCount": 5441,
+      "keyOrderSha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "nonTargetValuesPreserved": true,
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "postApplyFileSha256": "2990d10d4cbb633f26151ce7151c5b989dafa84999239fdb61b434193a631582",
+      "preApplyFileSha256": "31e90296b6294255853179506c549bd7887c1bbba80e7c95d44ae2b2beee5e40",
+      "preApplyGitBlob": "2a6e1749e024704d50a88a27e052b1741f70fa98"
+    },
+    {
+      "changedTargetCount": 7,
+      "keyCount": 5441,
+      "keyOrderSha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "nonTargetValuesPreserved": true,
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "postApplyFileSha256": "a827ed1e85cd4af20fb12eb9cebb625482a76ff92090525d210abe6af4448f1c",
+      "preApplyFileSha256": "a9e803db7943b207fe7fffe880c4f7a79243d0beab2ec8722f901bca733d018d",
+      "preApplyGitBlob": "1d402fedd58f8e5e73dd315daf3baa431a3ffea9"
+    },
+    {
+      "changedTargetCount": 2,
+      "keyCount": 5441,
+      "keyOrderSha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "nonTargetValuesPreserved": true,
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "postApplyFileSha256": "aa988bfc08e4416656d1109bea5b906740d5413f8c8e721d3d0e73d2628e5c5a",
+      "preApplyFileSha256": "d29c38718ea7365eec57c73baf03bba78186136de66add637d1a6f2983220fb6",
+      "preApplyGitBlob": "fd3ef712fd290b6986f578b96b384ef51870b6de"
+    },
+    {
+      "changedTargetCount": 3,
+      "keyCount": 5441,
+      "keyOrderSha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "nonTargetValuesPreserved": true,
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "postApplyFileSha256": "bdb42ae93f17e1efeaa8559e9aa7bffe133bbdb2ebb13c0690bf4d4f4e3e294f",
+      "preApplyFileSha256": "711d30bf775fb1c57d4e1de6d5977ce3315c27cf2ed9906000c8972d87348fdd",
+      "preApplyGitBlob": "b6d2c7085c80d1763bedebdd6286687d2f4c98f6"
+    },
+    {
+      "changedTargetCount": 5,
+      "keyCount": 5441,
+      "keyOrderSha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "nonTargetValuesPreserved": true,
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "postApplyFileSha256": "e7fdad114e135698f06b76bd026f8893e263e1708ebf953ca409c0f1c73210d0",
+      "preApplyFileSha256": "3bfc5e79bc90eeb6c9947c57076796f229f81a13af8752d946f43f472c0e3e04",
+      "preApplyGitBlob": "b8ea7ea7e26f2244d3a2592481c68b08cf1bc929"
+    },
+    {
+      "changedTargetCount": 3,
+      "keyCount": 5441,
+      "keyOrderSha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "nonTargetValuesPreserved": true,
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "postApplyFileSha256": "7abb734b14f947e0372fbfbdfd89113e0128cb11624e6db53b96252d5f98951b",
+      "preApplyFileSha256": "94b0baaddafb6248e38258315a39e697a2eb186f193d6f8f09726c259caf049a",
+      "preApplyGitBlob": "dd57cc14aa340f28b11057c6dd0ceae2beed5bfc"
+    },
+    {
+      "changedTargetCount": 12,
+      "keyCount": 5441,
+      "keyOrderSha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "nonTargetValuesPreserved": true,
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "postApplyFileSha256": "1f56ce5290ca48e62958acb4594a6a33cc5a4f5713a656b4a494c74e64368e3f",
+      "preApplyFileSha256": "c25faff33367f61222f559ddd8b4cfbc083a93aae0b6a1b906b6c19bbfa22774",
+      "preApplyGitBlob": "9a0a0a7690a596527c3ca64834319670f2420f13"
+    },
+    {
+      "changedTargetCount": 4,
+      "keyCount": 5441,
+      "keyOrderSha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "nonTargetValuesPreserved": true,
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "postApplyFileSha256": "8dd980825e4b550671e164142815bc77faf58ad8ea141d305af1d15b718f9b80",
+      "preApplyFileSha256": "8c20faab149c16036ddcb65d99cdc9058bf9414db446361635046ecef487c941",
+      "preApplyGitBlob": "19f32950ac555d440b9dbe6007ce718915874592"
+    },
+    {
+      "changedTargetCount": 5,
+      "keyCount": 5441,
+      "keyOrderSha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "nonTargetValuesPreserved": true,
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "postApplyFileSha256": "f8ffa516db46e38c223501e6434bd400233eaac3c27baf8bdffdf8db9405d8ff",
+      "preApplyFileSha256": "19272c3d1557c8e54f2cf4d2f9a60611f27458e7a73e466fac0c8cbd7ee28198",
+      "preApplyGitBlob": "ee58dc3b746c616fc30c5e2c77be865833f1f639"
+    },
+    {
+      "changedTargetCount": 5,
+      "keyCount": 5441,
+      "keyOrderSha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "nonTargetValuesPreserved": true,
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "postApplyFileSha256": "b75654d732be80b350d2d2e742c5fa52d500398d48a64cff13477cd585311873",
+      "preApplyFileSha256": "9557d59ca10dac05af3b585c037397adc0e458b286335ba84c591aa3aa56bdbe",
+      "preApplyGitBlob": "ef7d2422bc2fd23c5deedfba589e97d8acee5966"
+    },
+    {
+      "changedTargetCount": 6,
+      "keyCount": 5441,
+      "keyOrderSha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "nonTargetValuesPreserved": true,
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "postApplyFileSha256": "b5d51c74b9941fcdae2705f220625812501e76fe2894175b4d1be4b534f933a0",
+      "preApplyFileSha256": "d9de69a5517ed3bbf646d6aa4fb92794db5419bfb0a40eb2e86e4953d06ce3a4",
+      "preApplyGitBlob": "8cad3ac0a81d54573da45af02672c5c1374f5471"
+    }
+  ],
+  "catalogKeyCountsAndOrderPreserved": true,
+  "changedPaths": [
+    "web/src/lib/locales/ui-labels.ar.json",
+    "web/src/lib/locales/ui-labels.de.json",
+    "web/src/lib/locales/ui-labels.es.json",
+    "web/src/lib/locales/ui-labels.fr.json",
+    "web/src/lib/locales/ui-labels.hi.json",
+    "web/src/lib/locales/ui-labels.id.json",
+    "web/src/lib/locales/ui-labels.ja.json",
+    "web/src/lib/locales/ui-labels.ko.json",
+    "web/src/lib/locales/ui-labels.pt-BR.json",
+    "web/src/lib/locales/ui-labels.vi.json",
+    "web/src/lib/locales/ui-labels.zh-Hans.json",
+    "web/src/lib/locales/ui-labels.zh-Hant.json"
+  ],
+  "corrections": 50,
+  "currentWindowHolds": 0,
+  "nonTargetValuesPreserved": true,
+  "parentHead": "44b37bd94385128d5bb5287aa1545901282bdfcb",
+  "parentTree": "02c3f149a079c67b010d973dd02ca15776ad1610",
+  "priorSelectionsReattested": 200,
+  "refinements": 13,
+  "result": "PASS",
+  "retainedCurrentCells": 177,
+  "reviewedCellsReadBack": 240,
+  "schemaVersion": 1,
+  "selectedChangesReadBack": 63,
+  "workflowsChanged": false
+}

@@ -1,0 +1,243 @@
+{
+  "acceptCurrent": 190,
+  "artifact": "slskR PR #204 W1443-W1462 independent blind review",
+  "baselinePlaceholderMarkupNumericMismatchCounts": {
+    "markup": 0,
+    "numeric": 0,
+    "placeholders": 0
+  },
+  "baselineProtectedLiteralMismatchCells": [
+    {
+      "locale": "es",
+      "missing": [
+        "ID"
+      ],
+      "position": 1458,
+      "sourceKey": "External ID"
+    },
+    {
+      "locale": "hi",
+      "missing": [
+        "ID"
+      ],
+      "position": 1458,
+      "sourceKey": "External ID"
+    },
+    {
+      "locale": "ar",
+      "missing": [
+        "ID"
+      ],
+      "position": 1458,
+      "sourceKey": "External ID"
+    },
+    {
+      "locale": "hi",
+      "missing": [
+        "ID"
+      ],
+      "position": 1459,
+      "sourceKey": "External ID to Resolve"
+    },
+    {
+      "locale": "ar",
+      "missing": [
+        "ID"
+      ],
+      "position": 1459,
+      "sourceKey": "External ID to Resolve"
+    },
+    {
+      "locale": "es",
+      "missing": [
+        "ID"
+      ],
+      "position": 1460,
+      "sourceKey": "External ID:"
+    },
+    {
+      "locale": "hi",
+      "missing": [
+        "ID"
+      ],
+      "position": 1460,
+      "sourceKey": "External ID:"
+    },
+    {
+      "locale": "fr",
+      "missing": [
+        "ID"
+      ],
+      "position": 1460,
+      "sourceKey": "External ID:"
+    },
+    {
+      "locale": "ar",
+      "missing": [
+        "ID"
+      ],
+      "position": 1460,
+      "sourceKey": "External ID:"
+    }
+  ],
+  "baselineProtectedLiteralMismatchCount": 9,
+  "callerlessCurrentPositions": [],
+  "carryForwardHoldFailures": 0,
+  "carryForwardHoldsReattested": 35,
+  "carryForwardHoldsUnchanged": 35,
+  "cellCount": 240,
+  "changedTargets": 50,
+  "corrections": 31,
+  "dispositionCounts": {
+    "accept-current": 190,
+    "correction": 31,
+    "refinement": 19
+  },
+  "exactBoundaryPositions": {
+    "first": 1443,
+    "last": 1462,
+    "next": 1463,
+    "previous": 1442
+  },
+  "exactCallerContextLinesReattested": 243,
+  "exactCallerFilesReattested": 12,
+  "head": "44b37bd94385128d5bb5287aa1545901282bdfcb",
+  "holds": 0,
+  "localeCount": 12,
+  "manualProtectedLiteralCheckCount": 96,
+  "manualProtectedLiteralFailures": 0,
+  "nextBoundarySourceKey": "External visualizer did not launch.",
+  "pinnedSourceFileCount": 29,
+  "positionSummary": [
+    {
+      "accept-current": 12,
+      "position": 1443,
+      "sourceKey": "Expiring Soon:"
+    },
+    {
+      "accept-current": 2,
+      "position": 1444,
+      "refinement": 10,
+      "sourceKey": "Explicit evidence publication opt-in"
+    },
+    {
+      "accept-current": 12,
+      "position": 1445,
+      "sourceKey": "Export Metadata"
+    },
+    {
+      "accept-current": 12,
+      "position": 1446,
+      "sourceKey": "Export RustyMilk shape fragment"
+    },
+    {
+      "accept-current": 10,
+      "position": 1447,
+      "refinement": 2,
+      "sourceKey": "Export RustyMilk wave fragment"
+    },
+    {
+      "accept-current": 12,
+      "position": 1448,
+      "sourceKey": "Export Successful"
+    },
+    {
+      "accept-current": 11,
+      "position": 1449,
+      "refinement": 1,
+      "sourceKey": "Export active RustyMilk preset"
+    },
+    {
+      "accept-current": 2,
+      "correction": 10,
+      "position": 1450,
+      "sourceKey": "Export confirmed local plays or ratings back to the selected media server profile."
+    },
+    {
+      "accept-current": 12,
+      "position": 1451,
+      "sourceKey": "Export metadata for ContentIDs to a portable package"
+    },
+    {
+      "accept-current": 11,
+      "position": 1452,
+      "refinement": 1,
+      "sourceKey": "Export the active RustyMilk preset text after any local edits."
+    },
+    {
+      "accept-current": 12,
+      "position": 1453,
+      "sourceKey": "Export the selected custom shape in the active RustyMilk preset as a .shape fragment."
+    },
+    {
+      "accept-current": 12,
+      "position": 1454,
+      "sourceKey": "Export the selected custom wave in the active RustyMilk preset as a .wave fragment."
+    },
+    {
+      "accept-current": 11,
+      "correction": 1,
+      "position": 1455,
+      "sourceKey": "Export/import operations and conflict resolution"
+    },
+    {
+      "accept-current": 8,
+      "correction": 3,
+      "position": 1456,
+      "refinement": 1,
+      "sourceKey": "Exposure:"
+    },
+    {
+      "accept-current": 10,
+      "correction": 2,
+      "position": 1457,
+      "sourceKey": "Extended"
+    },
+    {
+      "accept-current": 9,
+      "correction": 3,
+      "position": 1458,
+      "sourceKey": "External ID"
+    },
+    {
+      "accept-current": 10,
+      "correction": 2,
+      "position": 1459,
+      "sourceKey": "External ID to Resolve"
+    },
+    {
+      "accept-current": 8,
+      "correction": 4,
+      "position": 1460,
+      "sourceKey": "External ID:"
+    },
+    {
+      "accept-current": 7,
+      "correction": 2,
+      "position": 1461,
+      "refinement": 3,
+      "sourceKey": "External Servarr apps should use a scoped API key, not an operator session."
+    },
+    {
+      "accept-current": 7,
+      "correction": 4,
+      "position": 1462,
+      "refinement": 1,
+      "sourceKey": "External Visualizer"
+    }
+  ],
+  "priorSelectedRowsReattested": 200,
+  "priorSelectionFailures": 0,
+  "pullRequest": 204,
+  "refinements": 19,
+  "repository": "snapetech-org/slskR",
+  "reviewScope": "Review evidence only; no repo, catalog, PR, or workflow files edited; no tests, builds, scans, or CI invoked.",
+  "selectedTargetTokenFailures": 0,
+  "selectedTargetTokenMismatchCounts": {},
+  "sourceCount": 20,
+  "tree": "02c3f149a079c67b010d973dd02ca15776ad1610",
+  "window": [
+    1443,
+    1462
+  ]
+}
