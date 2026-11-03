@@ -1324,7 +1324,7 @@
   "Descriptor Retrieved": "Descriptor recuperado",
   "Descriptor Verification": "Verificación de descriptores",
   "Detailed": "Detallado",
-  "Detailed peer contribution and performance metrics require trace data. This may not be available for all swarm downloads.": "Las métricas detalladas de rendimiento y contribución de los pares requieren datos de seguimiento. Es posible que esto no esté disponible para todas las descargas de swarm.",
+  "Detailed peer contribution and performance metrics require trace data. This may not be available for all swarm downloads.": "Las métricas detalladas de rendimiento y contribución de los pares requieren datos de seguimiento. Es posible que estos datos no estén disponibles para todas las descargas en la red de pares.",
   "Details": "Detalles",
   "Detect quality issues, transcodes, and missing tracks": "Detecta problemas de calidad, transcodificaciones y pistas faltantes",
   "Diagnostic Bundle": "Paquete de diagnóstico",

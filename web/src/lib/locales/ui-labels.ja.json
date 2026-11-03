@@ -1321,7 +1321,7 @@
   "Description": "説明",
   "Descriptor JSON": "記述子 JSON",
   "Descriptor Retrieval": "記述子の取得",
-  "Descriptor Retrieved": "取得された記述子",
+  "Descriptor Retrieved": "記述子を取得しました",
   "Descriptor Verification": "記述子の検証",
   "Detailed": "詳細",
   "Detailed peer contribution and performance metrics require trace data. This may not be available for all swarm downloads.": "詳細なピアの貢献度およびパフォーマンス メトリクスにはトレース データが必要です。これは、すべての swarm ダウンロードで利用できるわけではありません。",

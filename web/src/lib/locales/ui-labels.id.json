@@ -1321,7 +1321,7 @@
   "Description": "Keterangan",
   "Descriptor JSON": "Deskriptor JSON",
   "Descriptor Retrieval": "Pengambilan Deskriptor",
-  "Descriptor Retrieved": "Deskriptor Diakses",
+  "Descriptor Retrieved": "Deskriptor berhasil diambil",
   "Descriptor Verification": "Verifikasi Deskriptor",
   "Detailed": "Terperinci",
   "Detailed peer contribution and performance metrics require trace data. This may not be available for all swarm downloads.": "Kontribusi rekan yang terperinci dan metrik kinerja memerlukan data jejak. Ini mungkin tidak tersedia untuk semua unduhan gerombolan.",
