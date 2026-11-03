@@ -1,0 +1,30 @@
+{
+  "livePrReattestation": {
+    "state": "open",
+    "draft": true,
+    "branch": "codex/slskr-l10n-audit-20261030",
+    "head": "6ccefe07d8154acbc08e34249ef7039dc5bc1f08",
+    "tree": "e0c1d1341be45ed73bd30cf027b479ce3b5bb95d",
+    "branchRef": "6ccefe07d8154acbc08e34249ef7039dc5bc1f08",
+    "pullRef": "6ccefe07d8154acbc08e34249ef7039dc5bc1f08"
+  },
+  "verifiedPackets": {
+    "candidateFreeInputPath": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1323-1342-primary-20261103/input-v4",
+    "candidateFreeManifestSha256": "fe7d3accc794f33a7e0fa4c8bda6f7a741d10b0abcfbb7f92f93746b64f2dad1",
+    "candidateFreeChecksumListSha256": "c59efa7958cee2ef8fed0b9bb61e2b170fd9d3f4f4cbc116baac3a7a98974f7f",
+    "primaryReviewPath": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1323-1342-primary-20261103/primary-review-v2",
+    "primarySummarySha256": "ead9ae547d4848b927d6a45d92a9cb97da9b5add1bdf90321af9bb437b244309",
+    "primaryChecksumListSha256": "97afc12e33f62d478f07f5c7e5819b8bf12c7e1c2016f11281865abaebe47d9c",
+    "blindReviewPath": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1323-1342-independent-blind-20261103",
+    "blindSummarySha256": "4c1668e6ced136585e46a88917cd684be6923c73e1288f44c870b35e5ba96e5a",
+    "blindChecksumListSha256": "54d2c623e2bbb7b9337d5a86378a5e9b465d74e96355fa3a4de5f2ab22910b56"
+  },
+  "candidateFreeVerifier": "PASS",
+  "primaryVerifier": "PASS",
+  "blindVerifier": "PASS",
+  "rootLedgerCells": 240,
+  "rootPlanChanges": 43,
+  "carryForwardHoldRows": 22,
+  "carryForwardUnchanged": true,
+  "noRepoOrPrWrites": true
+}

@@ -1,0 +1,57 @@
+{
+  "artifact": "slskR PR #204 W1323-W1342 primary semantic review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "pin": {
+    "head": "6ccefe07d8154acbc08e34249ef7039dc5bc1f08",
+    "tree": "e0c1d1341be45ed73bd30cf027b479ce3b5bb95d",
+    "branch": "codex/slskr-l10n-audit-20261030",
+    "state": "OPEN",
+    "draft": true,
+    "base": "main",
+    "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba"
+  },
+  "candidateFreeInput": {
+    "path": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1323-1342-primary-20261103/input-v4",
+    "manifestSha256": "fe7d3accc794f33a7e0fa4c8bda6f7a741d10b0abcfbb7f92f93746b64f2dad1",
+    "checksumListSha256": "c59efa7958cee2ef8fed0b9bb61e2b170fd9d3f4f4cbc116baac3a7a98974f7f",
+    "verifier": "PASS"
+  },
+  "window": {
+    "firstPosition": 1323,
+    "lastPosition": 1342,
+    "sourceCount": 20,
+    "localeCount": 12,
+    "cellCount": 240
+  },
+  "counts": {
+    "propose": 40,
+    "retain": 199,
+    "hold": 1
+  },
+  "callerlessHolds": 0,
+  "semanticHolds": [
+    {
+      "position": 1335,
+      "sourceKey": "Enable publication of {label}. This remains local policy state until backend federation is wired.",
+      "locale": "vi",
+      "reason": "The caller establishes local-only publication policy and a future backend federation connection, but the exact Vietnamese technical term for software federation/wiring is uncertain from available locale terminology. Preserve the current target pending native terminology review."
+    }
+  ],
+  "structuralMismatchCounts": {
+    "placeholderMismatchCount": 0,
+    "markupMismatchCount": 0,
+    "numericTokenMismatchCount": 0,
+    "protectedLiteralMismatchCount": 0
+  },
+  "finalTargetsWithHiddenFormatCharacters": 0,
+  "terminologyReferences": 36,
+  "reviewedCells": 240,
+  "createdAtUtc": "2026-11-03T13:56:31.182609+00:00",
+  "notPerformed": [
+    "repository or PR edits",
+    "tests",
+    "builds",
+    "CI"
+  ]
+}

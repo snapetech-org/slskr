@@ -1473,7 +1473,7 @@
   "Enable mesh networking via DHT/Overlay (check footer for connectivity)": "Aktivieren Sie Mesh-Netzwerke über DHT/Overlay (überprüfen Sie die Fußzeile auf Konnektivität).",
   "Enable messages dense mode preference": "Aktivieren Sie die Einstellung für den dichten Nachrichtenmodus",
   "Enable player keyboard shortcuts preference": "Aktivieren Sie die Einstellung für die Tastaturkürzel des Players",
-  "Enable player queue auto-fill preference": "Aktivieren Sie die Einstellung zum automatischen Füllen der Spielerwarteschlange",
+  "Enable player queue auto-fill preference": "Aktivieren Sie die Einstellung zum automatischen Auffüllen der Player-Warteschlange",
   "Enable queue auto-fill": "Aktivieren Sie das automatische Füllen der Warteschlange",
   "Enable release radar subscription": "Aktivieren Sie das Release-Radar-Abonnement",
   "Enable rescue mode": "Aktivieren Sie den Rettungsmodus",

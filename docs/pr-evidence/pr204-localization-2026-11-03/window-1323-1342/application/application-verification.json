@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "result": "PASS",
+  "parentHead": "6ccefe07d8154acbc08e34249ef7039dc5bc1f08",
+  "parentTree": "e0c1d1341be45ed73bd30cf027b479ce3b5bb95d",
+  "readbackCells": 240,
+  "selectedUpdates": 43,
+  "retains": 196,
+  "holds": 1,
+  "carryForwardHolds": 22,
+  "carryForwardHoldsPreserved": true,
+  "catalogCount": 12,
+  "catalogKeyOrderPreserved": true,
+  "nonTargetValuesPreserved": true,
+  "catalogFiles": [
+    {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "postApplyFileSha256": "7c975a6729de738ecbd0812859bcf81f33ae0dc60a0a0e446098e302233a6404",
+      "changedTargetCount": 5
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "postApplyFileSha256": "27ee51e76b8854e95f8e4a156f9cb5a576b281ebf16a91f7703644329bf6cbce",
+      "changedTargetCount": 3
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "postApplyFileSha256": "0f3c1d8dcddfc675fcded096f9edff388530fd01a2bd851fb7871343feb91e45",
+      "changedTargetCount": 2
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "postApplyFileSha256": "0bed141887296096150ed1180879f24a35cd7f3e4a988efce41b53d1d346f01f",
+      "changedTargetCount": 1
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "postApplyFileSha256": "761b2e10264f334fe07ed8aacf62d56aa19f1143f3288f23133343ab6b2f3039",
+      "changedTargetCount": 2
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "postApplyFileSha256": "3b56929a8e41dbcdee16d3cff0a49ab8875cff8034752528acf417807ed69dec",
+      "changedTargetCount": 6
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "postApplyFileSha256": "345c6d3dfabc5399176eb21964ec6c53ebe42ad9641dd996386620ba35448b50",
+      "changedTargetCount": 4
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "postApplyFileSha256": "27cc1e31de8f513154b8775d9d505cce729cf87dfecb5f65b5a630554232992b",
+      "changedTargetCount": 5
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "postApplyFileSha256": "db9b0d9fe8af4adc0f7a98201774d0ce4ee83e10dbb3e9a52b3c39fb798fb04c",
+      "changedTargetCount": 3
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "postApplyFileSha256": "efebcd9d4ef600dfd9cb652e5685cc16a24665bf15981034042fc20fcb8512d2",
+      "changedTargetCount": 5
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "postApplyFileSha256": "6cba997475994a6284d0f5d28faed181706f795c455b8dd280be37a417bbb2b0",
+      "changedTargetCount": 4
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "postApplyFileSha256": "324287a5243a3fa63def4c6cf3c547400c5bffce381a411b3eb778562acae1b3",
+      "changedTargetCount": 3
+    }
+  ]
+}

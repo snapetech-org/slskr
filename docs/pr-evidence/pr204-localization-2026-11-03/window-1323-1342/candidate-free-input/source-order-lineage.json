@@ -1,0 +1,47 @@
+{
+  "selectionRule": "One-based positions in the 5,441 unique English source lookup keys sorted lexicographically by exact Unicode string.",
+  "previousCandidateFreeInputPath": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1303-1322-primary-20261103/input",
+  "previousCandidateFreeHead": "f46b8b2322f4b944f39f34d5bb8d55852ba330c8",
+  "previousCandidateFreeManifestSha256": "3145ccef78adbea528fe062d053ba90067207c4c49611ba43994da78383b244c",
+  "previousCandidateFreeChecksumListSha256": "d30a1b2aa55a13eb0b33a116cfbf965494b675bbedf3acb9a6fbc61c53ead652",
+  "previousSourceQueueSha256": "da4f6b93e7d3f05c03b3dbd7a39959c8990a5089b78ea8b850b568aa2de38236",
+  "previousWindowSelectedPositions": [
+    1303,
+    1322
+  ],
+  "previousWindowNextBoundaryPosition": 1323,
+  "currentHeadCommittedSourceQueuePath": "docs/pr-evidence/pr204-localization-2026-11-03/window-1283-1302/review-bundle/candidate-free-input/source-queue.jsonl",
+  "currentHeadCommittedSourceQueueBlob": "5e82aea920438c5debfac306c98a07f234ba1f21",
+  "currentHeadCommittedSourceQueueMatchesPreviousInput": true,
+  "liveCatalogSourceKeySetCount": 5441,
+  "liveCatalogSourceKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "liveCatalogOrderMatchesPreviousQueue": true,
+  "selectedPositions": [
+    1323,
+    1342
+  ],
+  "firstSelected": {
+    "position": 1323,
+    "sourceKey": "Enable equalizer",
+    "sourceKeySha256": "b74b5d9df0d7f751c81e77b39fb2b2aa415dbad67acce77f9faef640b1411572",
+    "historicalSourceOrdinal": null
+  },
+  "lastSelected": {
+    "position": 1342,
+    "sourceKey": "Enable scheduled speed limits",
+    "sourceKeySha256": "8a816f4951296ec609c045ec838bd973852c8da555f9754ac00661fd44c1de2d",
+    "historicalSourceOrdinal": null
+  },
+  "previousBoundary": {
+    "position": 1322,
+    "sourceKey": "Enable download schedules",
+    "sourceKeySha256": "8fc4a7b77fc4ea74e5398624535f1b8a686aea54e322efad0ce5af82849a6405"
+  },
+  "nextBoundary": {
+    "position": 1343,
+    "sourceKey": "Enable scheduled upload speed limits under global upload policy.",
+    "sourceKeySha256": "a0958957d32556b541e714602366aa93aa388ca10e46c9f84b7f15be209abf97",
+    "role": "next-boundary-W1323-W1342"
+  },
+  "historicalSourceOrdinalsClaimed": false
+}

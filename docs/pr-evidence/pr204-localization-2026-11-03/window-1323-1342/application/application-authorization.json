@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "parentHead": "6ccefe07d8154acbc08e34249ef7039dc5bc1f08",
+  "parentTree": "e0c1d1341be45ed73bd30cf027b479ce3b5bb95d",
+  "approvedUpdateCount": 43,
+  "preservedCurrentWindowHolds": 1,
+  "preservedCarryForwardHolds": 22,
+  "authority": "The user explicitly instructed completion of translation and review work and authorized commit, push, and pull-request updates.",
+  "prohibitedActions": [
+    "release",
+    "tag",
+    "merge",
+    "workflow edit",
+    "test",
+    "build",
+    "scan",
+    "CI dispatch"
+  ]
+}

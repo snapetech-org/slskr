@@ -1,0 +1,16 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "state": "OPEN",
+  "draft": true,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "head": "6ccefe07d8154acbc08e34249ef7039dc5bc1f08",
+  "tree": "e0c1d1341be45ed73bd30cf027b479ce3b5bb95d",
+  "baseRef": "main",
+  "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "branchRef": "6ccefe07d8154acbc08e34249ef7039dc5bc1f08",
+  "pullRef": "6ccefe07d8154acbc08e34249ef7039dc5bc1f08",
+  "sourceAttestationPath": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1323-1342-primary-20261103/input-v4/PR-attestation.json",
+  "sourceAttestationSha256": "0d2cb8e3957e533812d881c66daa45fb8011a70eaf49b8b1bd15ebf2100e0f59",
+  "attestedAtUtc": "2026-11-03T13:51:36.262166+00:00"
+}
