@@ -1,0 +1,30 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "window": "W1043-W1062",
+  "inputHead": "a5603a2349006684a454953ca746b8a93c5c9f1e",
+  "inputTree": "04ae03079fbc2dd7c00897025f4b3a344912239c",
+  "sourceOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "windowSourceSha256": "c09b47fbdb5a159d7686c235f27d245e59317586b4dc86ce8f3469c59030ac7f",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "callerReferences": 41,
+  "dispositions": {
+    "correction": 66,
+    "hold-context": 12,
+    "accept-current": 157,
+    "refinement": 5
+  },
+  "plannedCandidates": 71,
+  "heldPositions": [
+    1044
+  ],
+  "confidence": "moderate",
+  "nativeSpeakerReview": false,
+  "notes": [
+    "Primary packet remains private task scratch pending completion of the independent blind review.",
+    "No catalog edits have been applied.",
+    "The backend error string lacks an exact UI render path at the pinned head, despite its generic allowlist entry."
+  ]
+}

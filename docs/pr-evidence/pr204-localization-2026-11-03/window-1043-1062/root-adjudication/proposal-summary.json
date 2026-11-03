@@ -1,0 +1,47 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "window": "W1043-W1062",
+  "inputHead": "a5603a2349006684a454953ca746b8a93c5c9f1e",
+  "inputTree": "04ae03079fbc2dd7c00897025f4b3a344912239c",
+  "sourceOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "windowSourceSha256": "c09b47fbdb5a159d7686c235f27d245e59317586b4dc86ce8f3469c59030ac7f",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "callerReferences": 41,
+  "primaryLedgerSha256": "dc7c6b77ba6032a2602814a3a9b209eaf9549326151c116492a81d217d14c257",
+  "blindLedgerSha256": "2163906da102b9833bd09920e7d829a4f5a30b722a2423c82182cf9402b2daaf",
+  "cleanInputManifestSha256": "3f63c42360ca88399198141d4d2b31e6851b81e041ba6da02bebc1767b915f3d",
+  "cleanInputChecksumManifestSha256": "86ce3f8b0a908087f76ef9d4ae4274672bd18ffaf647aa60165fa16caef57e20",
+  "blindChecksumManifestSha256": "c1693971e693ffd6b3e5ccf199a56173ed2b8e26c8841c843f3f443be6518161",
+  "blindSummarySha256": "03199106fd41ff374b5164c82d308d59ef3c106bfea0a259619e23d8eec635c2",
+  "blindReviewManifestSha256": "fb2876d5977c850d2292546c708680a3699c2ca5ce69355ec33d96bbffd265d4",
+  "rootDispositionProposalCounts": {
+    "correction": 72,
+    "accept-current": 129,
+    "hold-context": 12,
+    "refinement": 27
+  },
+  "exactTargetChangesProposed": 99,
+  "holds": [
+    {
+      "position": 1044,
+      "sourceId": "DHT body must be an object",
+      "locales": 12
+    }
+  ],
+  "ratified": false,
+  "catalogApplyPerformed": false,
+  "testBuildScanWorkflowChangesPerformed": false,
+  "all240CurrentHashesAndCatalogPinsCarried": true,
+  "placeholderMismatches": 0,
+  "protectedLiteralMismatches": 0,
+  "notes": [
+    "The independent review ledger was sealed from the clean-input checksum manifest; its metadata now distinguishes the checksum-file SHA (86ce...) from the raw manifest.json SHA (3f63...).",
+    "This is a complete 240-cell adjudication proposal, not a ratified apply plan.",
+    "Retains 12 DHT body error cells as held because no exact localized UI rendering path is pinned.",
+    "All 48 W1023-W1042 holds remain outside this window and unmodified.",
+    "Root ratification is required before exact-hash application."
+  ]
+}
