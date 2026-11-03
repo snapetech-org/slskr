@@ -1,0 +1,21 @@
+{
+  "applicationApproved": true,
+  "head": "4b6f9b925ac7ec1243f3003fa0792c3b50e4560e",
+  "holds": 0,
+  "nativeSpeakerApproval": false,
+  "pullRequest": 204,
+  "releaseApproved": false,
+  "repository": "snapetech-org/slskR",
+  "reviewedPackets": {
+    "blindLedgerSha256": "218b1f5edfb3ff013c5831501eaeb37149e5fee0c813ce1c60c0231543cd59dd",
+    "candidateFreeManifestJsonSha256": "a6a0cda29d0c5126eddceff843a1744be3711ae016344cd55824360c80b6dfb3",
+    "crossAuditLedgerSha256": "82d829ae5279d588c1dd49817d56ec2b4afc9e4a87e724e3b9fb70e0f108b48a",
+    "primaryLedgerSha256": "d7d8daf61e1dc91672eadd77702fdb4c9578f9cb8875c03f2d9536a31398eb43"
+  },
+  "rootReviewComplete": true,
+  "selectedChangeCount": 68,
+  "selectedChangesSha256": "39b4e4c5778a135f777f9aae449ee622544ed8d5233540007c3da32f4032a45c",
+  "selectionRule": "Apply exactly the root cross-audit ledger rows where rootTarget differs from currentTarget.",
+  "tree": "31c708cdb279e427ddb2082e297be382209489d3",
+  "window": "W1263-W1282"
+}

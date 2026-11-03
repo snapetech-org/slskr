@@ -1,0 +1,16 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "state": "OPEN",
+  "draft": true,
+  "baseRefName": "main",
+  "headRefName": "codex/slskr-l10n-audit-20261030",
+  "headRefOid": "4b6f9b925ac7ec1243f3003fa0792c3b50e4560e",
+  "tree": "31c708cdb279e427ddb2082e297be382209489d3",
+  "liveApiRechecked": true,
+  "branchRefHead": "4b6f9b925ac7ec1243f3003fa0792c3b50e4560e",
+  "pullRefHead": "4b6f9b925ac7ec1243f3003fa0792c3b50e4560e",
+  "candidateFreeInputChecksumListSha256": "2ebc53e962b957244e1e89e16848dbc833baffd3d027089bfb11e2dd28d70c56",
+  "candidateFreeManifestJsonSha256": "a6a0cda29d0c5126eddceff843a1744be3711ae016344cd55824360c80b6dfb3",
+  "recheckedAtUtc": "2026-11-03T11:20:28.927136+00:00"
+}

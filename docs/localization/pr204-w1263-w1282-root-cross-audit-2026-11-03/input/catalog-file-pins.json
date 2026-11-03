@@ -1,0 +1,242 @@
+{
+  "callerFiles": {
+    "crates/slskr/src/controller_tests/full_native_api_differential.rs": {
+      "byteCount": 79610,
+      "gitBlob": "3df252341d0eede08f88765edede1c751ce2dc36",
+      "lineCount": 2309,
+      "path": "crates/slskr/src/controller_tests/full_native_api_differential.rs",
+      "sha256": "6f65f04abd40026e62bebfc0d30a542d66247139046079d61457a51f2632a4c2"
+    },
+    "crates/slskr/src/now_playing_store.rs": {
+      "byteCount": 8491,
+      "gitBlob": "c4b66e74897e77ad2deb9fba0d7d4af4b80b1f0f",
+      "lineCount": 248,
+      "path": "crates/slskr/src/now_playing_store.rs",
+      "sha256": "bed50d23af935712e771902fc4beff1b9fbe1f88568f2ef1fa7c2604e67ad12f"
+    },
+    "web/src/components/Browse/BrowseSession.jsx": {
+      "byteCount": 28903,
+      "gitBlob": "f23f2c0599eedac1b028b37c0a89383602c46186",
+      "lineCount": 888,
+      "path": "web/src/components/Browse/BrowseSession.jsx",
+      "sha256": "2a15c62b380fa43e1186bcffc002b6d3a93460fe54f0cf743ca92f3b987f641e"
+    },
+    "web/src/components/Player/VisualizerOverlayControls.jsx": {
+      "byteCount": 38871,
+      "gitBlob": "0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf",
+      "lineCount": 792,
+      "path": "web/src/components/Player/VisualizerOverlayControls.jsx",
+      "sha256": "5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4"
+    },
+    "web/src/components/Player/visualizerPresetLibrary.js": {
+      "byteCount": 24485,
+      "gitBlob": "6794eb93c94e325625bf6fece44bcff553fd8d86",
+      "lineCount": 760,
+      "path": "web/src/components/Player/visualizerPresetLibrary.js",
+      "sha256": "eaa880764a42ac057e5c51b211ed08ab79223c2cb57036ebfa19b92fd8e655d9"
+    },
+    "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx": {
+      "byteCount": 53474,
+      "gitBlob": "90f3e1d29a4b514a1877693e131e92b66b8050aa",
+      "lineCount": 1043,
+      "path": "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx",
+      "sha256": "17241e796b943988d339bac74569f5a5d4e8889194cad1221d0b9c8bc1b82a9e"
+    },
+    "web/src/components/System/Bridge/index.jsx": {
+      "byteCount": 21563,
+      "gitBlob": "2ebcb45755514fd7f281cdf96fd40046605d1906",
+      "lineCount": 628,
+      "path": "web/src/components/System/Bridge/index.jsx",
+      "sha256": "cdb2bf06a4066615fbdcbbffdd552b504db80aff3003c2e60ac3de43162ec666"
+    },
+    "web/src/components/System/Integrations/MetadataSettingsPanel.jsx": {
+      "byteCount": 35742,
+      "gitBlob": "0d0ffc8e16a072970a51604bd95d76f7f796669f",
+      "lineCount": 827,
+      "path": "web/src/components/System/Integrations/MetadataSettingsPanel.jsx",
+      "sha256": "e5aaf906b4cfc6e17ef8706bc95efb660b0eda2748bf2dad1c411ee9621d6339"
+    },
+    "web/src/components/System/Mesh/RealmSubjectIndexConflicts.jsx": {
+      "byteCount": 12920,
+      "gitBlob": "355a03884b50ecd5b45287aa89f538919a17f70a",
+      "lineCount": 324,
+      "path": "web/src/components/System/Mesh/RealmSubjectIndexConflicts.jsx",
+      "sha256": "7f4c9a172e08b50027271c856dca10f7270a23f7bba89ca1488cb6561ae62a77"
+    },
+    "web/src/components/System/Mesh/index.jsx": {
+      "byteCount": 26919,
+      "gitBlob": "66079910d4a01dacea0610cc78727aa20307b930",
+      "lineCount": 719,
+      "path": "web/src/components/System/Mesh/index.jsx",
+      "sha256": "340958d0f4ed24d66e5f8f80571b59cfe49fe42ca51fdbc24246153b9d3b4fa9"
+    },
+    "web/src/components/System/Options/EditModal.jsx": {
+      "byteCount": 7097,
+      "gitBlob": "94dabbce21b357730f07c86ded7aed79cffbe9f3",
+      "lineCount": 255,
+      "path": "web/src/components/System/Options/EditModal.jsx",
+      "sha256": "c3fc13d2b2c736611d9a9e86ed61aaa4c30f18dd372b4befeebd9e5365d5ef5c"
+    },
+    "web/src/components/System/Security/AdversarialSettingsView.jsx": {
+      "byteCount": 41904,
+      "gitBlob": "adcacdd123faf82a315da746fab3243adf5ea6a3",
+      "lineCount": 1018,
+      "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+      "sha256": "5b2dfa095ba281bae2b5ef66e17901b38c7d2a68d9bef52c5f016ce3352db72d"
+    },
+    "web/src/components/System/SwarmAnalytics/index.jsx": {
+      "byteCount": 18016,
+      "gitBlob": "6b4db5a84a05d1ffdb560e0e2c8d2708590f3ded",
+      "lineCount": 475,
+      "path": "web/src/components/System/SwarmAnalytics/index.jsx",
+      "sha256": "b020adc0f11520ad1fe52080fdf1d90fe717c3dea9a3c5379973b31514d88c9d"
+    },
+    "web/src/lib/networkHealthScore.js": {
+      "byteCount": 4724,
+      "gitBlob": "26523f0fbf48bdd35fcab5ca8cac7d94d6265042",
+      "lineCount": 160,
+      "path": "web/src/lib/networkHealthScore.js",
+      "sha256": "9058b1d95ffcdf8d2c467b47cdcf3a9cede3f96000580f6b82f04220d0e5bea4"
+    },
+    "web/src/lib/playlistIntake.js": {
+      "byteCount": 28319,
+      "gitBlob": "c7e71e5895094e5450e8ab82deeaba34c3c373fb",
+      "lineCount": 911,
+      "path": "web/src/lib/playlistIntake.js",
+      "sha256": "d5569d0d7e861a1521ddce103b27bdd1b93f3a0352a998de1fc3322cd419bade"
+    },
+    "web/src/lib/serverErrorMessageAllowlist.js": {
+      "byteCount": 21330,
+      "gitBlob": "d9eed15e55416d5e5fa06657c9c86b287b9b3260",
+      "lineCount": 547,
+      "path": "web/src/lib/serverErrorMessageAllowlist.js",
+      "sha256": "de7bf779c371f2a93d106124d32051b39836c0e7cd557e314c11f7755ce004bc"
+    }
+  },
+  "head": "4b6f9b925ac7ec1243f3003fa0792c3b50e4560e",
+  "localeCatalogs": {
+    "ar": {
+      "byteCount": 513073,
+      "gitBlob": "8ee588e69668488494b44adc1bef93fc5ee2efb5",
+      "keyCount": 5441,
+      "lineCount": 5548,
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "sha256": "acf32a631383d87c3a351449e0ac239c5abb845a46fb56c82734c6257d9c2dfe"
+    },
+    "de": {
+      "byteCount": 443149,
+      "gitBlob": "3c9941166e7d764f7be1554b9550ec36be4f37a1",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "sha256": "6f3718c5ad30ce8e5fa932e7bfc2dd1bcdc151ac3a30e0afdcb169691aa9008b"
+    },
+    "es": {
+      "byteCount": 444299,
+      "gitBlob": "0e6a1de1033532088ee5c3af3e9485be5845d8fd",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "sha256": "ac5eab1260db024b7a9140d7f361a5eecaaa8733e4057c926ec34c95b0feec84"
+    },
+    "fr": {
+      "byteCount": 455458,
+      "gitBlob": "04de395accce6aa5628ff24cc0503768f1af63ae",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "sha256": "e62336a09b4e94d5a0070bb45c135776f7ec3690d6533478bc736cf341074494"
+    },
+    "hi": {
+      "byteCount": 677328,
+      "gitBlob": "1753d62f6c8538dfe96532c34d8306c9f65680ea",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "sha256": "f208173491999c4388202bd49ef3a416adc8d2f7ccb46714c81eafbd884c08fd"
+    },
+    "id": {
+      "byteCount": 409801,
+      "gitBlob": "45b94f5a667e836514c8533b4ade7fa055e3bab9",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "sha256": "e53efe78f0b0053d54ed104aed5e164866ea23955bb43e6281ea7c27dfd1e989"
+    },
+    "ja": {
+      "byteCount": 491001,
+      "gitBlob": "084305671d4781cae44ad4dd5004e281f6e81f0b",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "sha256": "8989d0c0560818e13db27afeafd40a1b798d6722e6e8c1040a6e5d359c15d59d"
+    },
+    "ko": {
+      "byteCount": 442207,
+      "gitBlob": "646fe7391d03539c30af5c3c85681e0d0fa015b4",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "sha256": "0a9575b164ff702ce39ae40933c039468e347a82a41bc6ab84f7e62fcaccabe1"
+    },
+    "pt-BR": {
+      "byteCount": 438958,
+      "gitBlob": "3f55bf6362e0310e328fe16fdbffd9926600c4b4",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "sha256": "a07c49dc186cd45d31e69dc63d3d6af8dca8f1478a6c8bbee9c7f1727c91b62c"
+    },
+    "vi": {
+      "byteCount": 474980,
+      "gitBlob": "0700ae58e86efb11538c654bd81f437938948ac4",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "sha256": "400012afc5e21ed38b431f26ff5e017fbd75853baab7001df53fd7061e38bd4a"
+    },
+    "zh-Hans": {
+      "byteCount": 382818,
+      "gitBlob": "f0e09d0981c97fe58b4451af2afbcf649723e389",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "sha256": "53def7d8a76b58128d22118fd804d7423fcf083b28476d2a8370d7ddec6448c8"
+    },
+    "zh-Hant": {
+      "byteCount": 383577,
+      "gitBlob": "ac670242f9dcb573873dc213ab6857a183c6abc8",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "sha256": "a088a6cda8d6d2387163570b3871ddb25e7f8f2f20658405aa2f2a703e68e3d0"
+    }
+  },
+  "localeRuntime": {
+    "byteCount": 11530,
+    "gitBlob": "72dfea05f86bcf0ab02882a85c6e8d4a0cb0dabf",
+    "lineCount": 302,
+    "path": "web/src/lib/interfaceLocale.js",
+    "sha256": "16eb5f119655805f48845e026ee12fd517fae6de871091bd9be2e5b7f1d310ea"
+  },
+  "localesInRuntimeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "schemaVersion": 1,
+  "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "sourceLookupKeySetCount": 5441,
+  "sourceQueueFileSha256": "da4f6b93e7d3f05c03b3dbd7a39959c8990a5089b78ea8b850b568aa2de38236",
+  "sourceQueuePath": "source-queue.jsonl",
+  "tree": "31c708cdb279e427ddb2082e297be382209489d3"
+}

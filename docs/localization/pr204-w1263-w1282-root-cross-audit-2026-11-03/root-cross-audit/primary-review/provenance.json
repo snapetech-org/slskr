@@ -1,0 +1,22 @@
+{
+  "blindReviewUsed": false,
+  "candidateFreeInput": "/mnt/disks/scratch/task-scratch/slskr-pr204-w1263-1282-input-20261103/clean-input",
+  "candidateFreeInputChecksumFileSha256": "2ebc53e962b957244e1e89e16848dbc833baffd3d027089bfb11e2dd28d70c56",
+  "candidateFreeInputManifestSha256": "a6a0cda29d0c5126eddceff843a1744be3711ae016344cd55824360c80b6dfb3",
+  "crossAuditUsed": false,
+  "head": "4b6f9b925ac7ec1243f3003fa0792c3b50e4560e",
+  "previousHoldEvidence": {
+    "currentHeadExactQuotedProductionCallerCount": 0,
+    "currentHeadVerification": "/mnt/disks/scratch/task-scratch/slskr-pr204-w1263-1282-primary-20261103/review/prior-hold-verification.json",
+    "disposition": "preserved unchanged; outside W1263-W1282",
+    "holdCount": 12,
+    "position": 1257,
+    "priorInputChecksumFile": "/mnt/disks/scratch/task-scratch/slskr-pr204-w1243-1262-input-20261103/clean-input/SHA256SUMS.txt",
+    "sourceKey": "Ecosystem"
+  },
+  "reviewSourcePolicy": "Primary decisions were made from the candidate-free packet only: source keys, current targets, pinned caller contexts, locale catalog pins, and placeholder/runtime context. No blind or cross-audit output was consulted.",
+  "reviewType": "primary semantic review",
+  "reviewerType": "machine-assisted primary; no native-speaker approval asserted",
+  "tree": "31c708cdb279e427ddb2082e297be382209489d3",
+  "window": "W1263-W1282"
+}

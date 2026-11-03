@@ -1,0 +1,187 @@
+{
+  "baseRef": "main",
+  "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "boundaryFile": "source-window-boundaries.jsonl",
+  "boundaryRowCount": 22,
+  "callerFileCount": 16,
+  "callerReferenceCount": 37,
+  "callerResolutionHoldCount": 0,
+  "callerResolutionHoldPositions": [],
+  "candidateFreeInputOnly": true,
+  "cellCount": 240,
+  "commitApiTree": "31c708cdb279e427ddb2082e297be382209489d3",
+  "draft": true,
+  "head": "4b6f9b925ac7ec1243f3003fa0792c3b50e4560e",
+  "headRef": "codex/slskr-l10n-audit-20261030",
+  "localWorktree": "/mnt/disks/scratch/task-worktrees/localization-20261103/slskr-pr204-w1243-apply-20261103",
+  "localWorktreeBranch": "",
+  "localWorktreeHead": "4b6f9b925ac7ec1243f3003fa0792c3b50e4560e",
+  "localWorktreeStatusClean": true,
+  "localWorktreeTree": "31c708cdb279e427ddb2082e297be382209489d3",
+  "localeCount": 12,
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "nativeSpeakerApproval": false,
+  "nextBoundaryPosition": 1283,
+  "opaqueRuntimeValuesPolicy": "Caller lines and runtime expressions are captured verbatim from pinned source files; values are not evaluated, inferred, or rewritten.",
+  "placeholderTokenSequenceMismatchCount": 0,
+  "previousBoundaryPosition": 1262,
+  "proposedTranslationsIncluded": false,
+  "pullRequest": 204,
+  "remoteBranchHead": "4b6f9b925ac7ec1243f3003fa0792c3b50e4560e",
+  "remoteBranchRef": "refs/heads/codex/slskr-l10n-audit-20261030",
+  "remotePullRefHead": "4b6f9b925ac7ec1243f3003fa0792c3b50e4560e",
+  "repository": "snapetech-org/slskR",
+  "selectedPositions": [
+    1263,
+    1282
+  ],
+  "selectionRule": "One-based positions 1263–1282 in the 5,441 unique English source lookup keys shared by the 12 runtime locale catalogs; keys are sorted lexicographically by exact Unicode string and source strings are direct catalog lookup keys.",
+  "semanticReviewIncluded": false,
+  "sourceContextRows": 20,
+  "sourceCount": 20,
+  "sourceIds": [
+    {
+      "callerReferenceCount": 3,
+      "position": 1263,
+      "sourceKey": "Edit note for {username}",
+      "sourceKeySha256": "f0aec98704e81c5d22c42a23a7eb6edc3c698d65a7233cf73457d11a7e1d98f8"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1264,
+      "sourceKey": "Edit server options YAML",
+      "sourceKeySha256": "7b365eae0fc3dbb90caab66ba286af0e48cbdc6900f7e366ac62b19e2d02959d"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1265,
+      "sourceKey": "Editing",
+      "sourceKeySha256": "fab4539d26e078ca276a7559935cefdc55149ea5815f449139a1419584193cd2"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1266,
+      "sourceKey": "Efficiency Metrics",
+      "sourceKeySha256": "852278678f73d235a406aafb82cf97b04c4c227637f136b2d0cb782a8200098a"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1267,
+      "sourceKey": "Efficient",
+      "sourceKeySha256": "9bd2448fa5cf6d622bffb860a3e28f91785b0390219f8d2de5271dca36687fbb"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1268,
+      "sourceKey": "Embed cover art",
+      "sourceKeySha256": "dc17351d51c0fe5763f0c65933d0e67b9e266870d3c305bf72108a58e74c0205"
+    },
+    {
+      "callerReferenceCount": 3,
+      "position": 1269,
+      "sourceKey": "Empty payload",
+      "sourceKeySha256": "597203b9655466dd4df6838f6c5df145ddcf6bccfc6ed5f560660c85b4ae3ede"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1270,
+      "sourceKey": "Enable",
+      "sourceKeySha256": "5342e09f2729fbc6514528e727aeb9857afb31719d43568e6b18661ace7d1014"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1271,
+      "sourceKey": "Enable AcoustID",
+      "sourceKeySha256": "4ebe8c30366a24f03a5db4b5b70ff37dbfde89891920bf4b6489ffab8eafa8d7"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1272,
+      "sourceKey": "Enable AcoustID lookup",
+      "sourceKeySha256": "6abb7ad6378f292b95148840f5a550c83984dedd7697c6530433b73e66d5a811"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1273,
+      "sourceKey": "Enable AcoustID metadata lookup for existing fingerprint workflows. Saving this does not submit audio or contact AcoustID immediately.",
+      "sourceKeySha256": "4b4526b3ff9c443768bede63dd960848d7a8478c8284c48db507dab619f6496b"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1274,
+      "sourceKey": "Enable Adversarial Features",
+      "sourceKeySha256": "784618ca7d406b6c11b5caf72996b8fbc23d5df90f422dea025a9952561af660"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1275,
+      "sourceKey": "Enable Anonymity Layer",
+      "sourceKeySha256": "63d8fac000ddad54460fec00a79849e1150c0b673f128f735c13be57c8a3e0f1"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1276,
+      "sourceKey": "Enable Bridge",
+      "sourceKeySha256": "5924fdc938140e63a190857c011bbf3eb89daf2aa8bee5687db32d355ecd5d37"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1277,
+      "sourceKey": "Enable Chromaprint",
+      "sourceKeySha256": "2ee1d5e5bdf52170596d82b03552300d62c250741d0cd79f2becfcb533908287"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1278,
+      "sourceKey": "Enable Chromaprint fingerprinting",
+      "sourceKeySha256": "a180f34f87723fe1d0e1970811341ca013ae75c738bbe9b6a5df21f5da28b5e9"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1279,
+      "sourceKey": "Enable Cover Traffic",
+      "sourceKeySha256": "3af99f7d261ab6a27ffbc808243743e1415fcb75f18ee11791b84add64b98715"
+    },
+    {
+      "callerReferenceCount": 3,
+      "position": 1280,
+      "sourceKey": "Enable DHT rendezvous",
+      "sourceKeySha256": "63ce8198287fa3acc8d44fd1135839265906e3421f6c89caa9d6aa65d005578c"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1281,
+      "sourceKey": "Enable DHT rendezvous only if you want mesh peer discovery.",
+      "sourceKeySha256": "a15be1db2f833cd5bb81ce11ca5b10e32aaf25353efa73098b5dd195577007e2"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1282,
+      "sourceKey": "Enable DHT rendezvous. Disable this when you want no DHT peer discovery.",
+      "sourceKeySha256": "140a15a3559c2d7fc4658bf87e03d903e86fdc72dec6e84c61afcad4e62a1116"
+    }
+  ],
+  "sourceLookupKeyOrderHashFormat": "SHA-256 of all unique source keys sorted lexicographically, one exact key per line, trailing newline.",
+  "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "sourceQueueCount": 5441,
+  "sourceQueueFile": "source-queue.jsonl",
+  "sourceQueueFileSha256": "da4f6b93e7d3f05c03b3dbd7a39959c8990a5089b78ea8b850b568aa2de38236",
+  "sourceQueueOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "sourceRecordCount": 5441,
+  "state": "open",
+  "tree": "31c708cdb279e427ddb2082e297be382209489d3",
+  "window": "W1263-W1282"
+}

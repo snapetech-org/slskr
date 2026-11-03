@@ -1,0 +1,17 @@
+{
+  "base": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "blindPinnedStateMatchesLiveHead": true,
+  "branchRef": "codex/slskr-l10n-audit-20261030",
+  "branchRefHead": "4b6f9b925ac7ec1243f3003fa0792c3b50e4560e",
+  "candidateFreePinnedStateMatchesLiveHead": true,
+  "capturedAtUtc": "2026-11-03T11:32:30.437748Z",
+  "head": "4b6f9b925ac7ec1243f3003fa0792c3b50e4560e",
+  "merged": false,
+  "primaryPinnedStateMatchesLiveHead": true,
+  "pullRefHead": "4b6f9b925ac7ec1243f3003fa0792c3b50e4560e",
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "sourceChangesMade": false,
+  "state": "open",
+  "tree": "31c708cdb279e427ddb2082e297be382209489d3"
+}
