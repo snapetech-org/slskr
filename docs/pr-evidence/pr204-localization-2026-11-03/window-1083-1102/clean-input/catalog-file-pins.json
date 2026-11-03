@@ -1,0 +1,50 @@
+{
+  "web/src/lib/locales/ui-labels.ar.json": {
+    "sha256": "ad5757728f880879cc5acb8b06e3329b0da4c56c8fb6ead38f49d211f64c3040",
+    "gitBlob": "13b464d8084ca7050b140b6b41d8cbe60c3e7488"
+  },
+  "web/src/lib/locales/ui-labels.de.json": {
+    "sha256": "9c859fc96e7d081a63d860aece700ac146141c081be64df65ace457b9be37f1c",
+    "gitBlob": "da332c6f56d913436ef5ef72d5fa11f1accced50"
+  },
+  "web/src/lib/locales/ui-labels.es.json": {
+    "sha256": "99718ea921b9eded3ef98592d34c6ed532ccbfafeb7beaf3091003e37d479939",
+    "gitBlob": "1000b78989b98338533052134e3cd00e7c6889a5"
+  },
+  "web/src/lib/locales/ui-labels.fr.json": {
+    "sha256": "77e6b1bf0cac0b65fdbf485f5bba1561d9f6f7c2e8c40f61d503f943c07027d8",
+    "gitBlob": "314b09fdb8e3e6306699d48d2c961ee7b5edb395"
+  },
+  "web/src/lib/locales/ui-labels.hi.json": {
+    "sha256": "3bc5185e6d684afc566eb152d82e28e3c0d09128d55b279088f50e25d221d03a",
+    "gitBlob": "4f534d2c3a53da72270f28e4a1df073ba284f1f9"
+  },
+  "web/src/lib/locales/ui-labels.id.json": {
+    "sha256": "741f28cfd470d27e148ec5477b46488f2554d2e8cc8c28164500e2dfd1b812a6",
+    "gitBlob": "bb186e875ccae5394a189a0daa7dc0a9a9504177"
+  },
+  "web/src/lib/locales/ui-labels.ja.json": {
+    "sha256": "5eec1cd09c7794ce2e0cb2552e0b7f337b5fe0e0ede561bf3eaf49beb0ec345c",
+    "gitBlob": "a6c5140e7bf6b2a2aff058aae50d71ec6fdac156"
+  },
+  "web/src/lib/locales/ui-labels.ko.json": {
+    "sha256": "98a00b65cb4defb8b60bff20df471c5cc731246f62f75299087a3e175b636df1",
+    "gitBlob": "a842aab52578192503e36e8baa5d4a904e38350f"
+  },
+  "web/src/lib/locales/ui-labels.pt-BR.json": {
+    "sha256": "33b720a42802961f21f6c9d9adb71031cd016c9f61c02cc73e244e6465cf7bc0",
+    "gitBlob": "6f546a51630ce35958d3afe49089642061f2ba8a"
+  },
+  "web/src/lib/locales/ui-labels.vi.json": {
+    "sha256": "6bab2b46b660e4ecf02261f6b2308d522c577219cc809f0eb5aad9a4994ef774",
+    "gitBlob": "013a80502116357fad1707e2db6f23a4ea62bcdb"
+  },
+  "web/src/lib/locales/ui-labels.zh-Hans.json": {
+    "sha256": "27ab28da41420f51f428b726b64044b3fcbcadee83f02ead39c7b0177e8bb475",
+    "gitBlob": "7d1195e8443374a24f2bbf5375d9dc6e77ff41ac"
+  },
+  "web/src/lib/locales/ui-labels.zh-Hant.json": {
+    "sha256": "ae80debc222df073a36262fb5d724f5409370b7d453b4ea5eb96f6184561c90c",
+    "gitBlob": "67df61db29c65613686468d9dee28092f26e7c9f"
+  }
+}

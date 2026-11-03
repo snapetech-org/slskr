@@ -1,0 +1,29 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "window": "W1083-W1102",
+  "status": "root-ratified translation adjudication; no repository or PR changes applied",
+  "inputHead": "e1d9eb920ee121d8c108b098e94f0f3d2b440256",
+  "inputTree": "1d274f797f620482f4f344e7cf67de27e75e5568",
+  "inputManifestSha256": "73af07cb20c3a1aca99456481bc8124ccc5b7fd81e404a365751e21dddcae818",
+  "rootBlindLedgerSha256": "0b98666a81e962e18d79d6cfcd1a7a3afbbb83dee83e6b4d38d5ca20a9cf5fd4",
+  "primaryLedgerSha256": "3b4faa3e52cafc9a2777566603f93eef699c472346fba84b91fd9e2c1b1ee45c",
+  "independentAuditSha256": "75abf160e8958a4263d4c6dfb344d6e2b40d1dc81731491bc211b4b0f963b510",
+  "proposalLedgerSha256": "9725328c68e36de7c725e9f80b29dce6969e173630959cceb9404149d7a3919c",
+  "ratifiedLedgerSha256": "b762231e258b23eb83ebaa44f00f76411e2a2fd453bc9f21562b7523fc424c5a",
+  "cellCount": 240,
+  "sourceCount": 20,
+  "localeCount": 12,
+  "targetChanges": 80,
+  "finalDispositions": {
+    "accept-current": 136,
+    "correction": 51,
+    "hold-context": 24,
+    "refinement": 29
+  },
+  "placeholderParity": true,
+  "contextHolds": 24,
+  "independentAuditFinding": "French W1083 eligibility wording changed from “sont concernés” to “sont éligibles”; all other independent findings passed or were held for absent pinned caller context.",
+  "nativeSpeakerReview": false,
+  "repoOrPrMutated": false
+}

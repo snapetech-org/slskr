@@ -1,0 +1,82 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "livePullRequest": {
+    "state": "open",
+    "draft": true,
+    "head": "e1d9eb920ee121d8c108b098e94f0f3d2b440256",
+    "tree": "1d274f797f620482f4f344e7cf67de27e75e5568",
+    "headMatchesFrozenInput": true,
+    "treeMatchesFrozenInput": true
+  },
+  "result": "No blocking meaning or placeholder defects found in the v2 proposal. One small French clarity improvement is recommended before ratification.",
+  "window": {
+    "positions": [
+      1083,
+      1102
+    ],
+    "sourceIds": 20,
+    "locales": 12,
+    "cells": 240,
+    "targetChanges": 80,
+    "finalDispositions": {
+      "correction": 51,
+      "accept-current": 136,
+      "hold-context": 24,
+      "refinement": 29
+    }
+  },
+  "packetIntegrity": {
+    "cleanInputChecksumListSha256": "99c9eb286c405187ddb540dc1318ff6eac5c0c9ed6f89f1b7f663f470473cf00",
+    "rootBlindLedgerSha256": "0b98666a81e962e18d79d6cfcd1a7a3afbbb83dee83e6b4d38d5ca20a9cf5fd4",
+    "rootBlindChecksumListSha256": "a1394fde5d501130887bc30d39b419223f9f1f9a141b907978fa7771e9f4fbcc",
+    "primaryLedgerSha256": "3b4faa3e52cafc9a2777566603f93eef699c472346fba84b91fd9e2c1b1ee45c",
+    "primaryChecksumListSha256": "ede0d0935126ad667d2f328ad6a7d66477086e1b6c406154a8dd2b4352d9e632",
+    "proposalChecksumListSha256": "b585179935c35bb519fbe4f355ceccde41590857ba3673488efd4613cbbd8f75",
+    "checksumFailures": 0,
+    "placeholderMismatches": 0,
+    "protectedLiteralMismatches": 0
+  },
+  "findings": [
+    {
+      "severity": "minor clarity",
+      "position": 1083,
+      "locale": "fr",
+      "source": "Delete completed files that Lidarr rejects during automatic import. Only direct files in the completed directory are eligible.",
+      "proposal": "Supprimez les fichiers terminés que Lidarr refuse lors de l’importation automatique. Seuls les fichiers situés directement dans le dossier des téléchargements terminés sont concernés.",
+      "recommendation": "Replace “sont concernés” with “sont éligibles” to preserve the source’s explicit eligibility condition: “Seuls les fichiers situés directement dans le dossier des téléchargements terminés sont éligibles.”"
+    },
+    {
+      "severity": "none",
+      "positionRange": [
+        1090,
+        1091
+      ],
+      "finding": "All 24 cells remain unchanged with hold-context. The frozen input records no pinned production caller for either source, so the holds are justified."
+    },
+    {
+      "severity": "pass",
+      "position": 1095,
+      "finding": "All 12 current values are accepted. The exact render path reaches LocalizedPopup and calls the translator; the Arabic wording agrees with the pinned glossary."
+    },
+    {
+      "severity": "pass",
+      "positionRange": [
+        1083,
+        1102
+      ],
+      "finding": "Reviewed all 80 proposed target changes for source meaning, contextual terminology, variable placement, and naturalness. The shared corrections cover direct-child completed-download eligibility, conversation-participant wording, browser-local playlist semantics, numerical Delta, Demucs-separated stems, and compact message display."
+    }
+  ],
+  "limitations": [
+    "This is an independent machine review, not qualified native-speaker signoff.",
+    "No headed browser session was used for this audit."
+  ],
+  "evidence": [
+    "../clean-input/manifest.json",
+    "../root-strict-blind/summary.json",
+    "../primary-private/summary.json",
+    "../adjudication-proposal-v2/summary.json",
+    "../adjudication-proposal-v2/render-path-evidence.json"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "window": "W1083-W1102",
+  "inputHead": "e1d9eb920ee121d8c108b098e94f0f3d2b440256",
+  "inputTree": "1d274f797f620482f4f344e7cf67de27e75e5568",
+  "sourceIdOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "windowSourceSha256": "3938b39471c24139918902de990427089ea5b96f1a93bb7e793b8f7a52f00cd3",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "selectedPositions": [
+    1083,
+    1102
+  ],
+  "selectedSourceIds": [
+    "Delete completed files that Lidarr rejects during automatic import. Only direct files in the completed directory are eligible.",
+    "Delete completed search {search}",
+    "Delete matching saved filter",
+    "Delete message thread with {target}",
+    "Delete message thread with {username}",
+    "Delete rejected downloads",
+    "Delete the active native playlist from this browser.",
+    "Delete the completed search {search} and its response history.",
+    "Delete the selected completed searches from search history.",
+    "Delete these selected files permanently? This cannot be undone.",
+    "Delete this collection?",
+    "Delete this contact?",
+    "Delete this share group and remove its collection access.",
+    "Delete this share group?",
+    "Delete wishlist item {search}?",
+    "Delta",
+    "Demucs Stems",
+    "Dense display",
+    "Dense display, pinned panels, unread badges, user filtering, and local search preference.",
+    "Depth"
+  ],
+  "callerReferences": 28,
+  "noCallerSourceIds": [
+    "Delete the completed search {search} and its response history.",
+    "Delete the selected completed searches from search history."
+  ],
+  "primaryLedgerSha256": "3b4faa3e52cafc9a2777566603f93eef699c472346fba84b91fd9e2c1b1ee45c",
+  "primaryProposalCount": 53,
+  "dispositions": {
+    "refinement": 21,
+    "accept-current": 151,
+    "correction": 32,
+    "hold-context": 36
+  },
+  "heldPositions": [
+    1090,
+    1091,
+    1095
+  ],
+  "nativeSpeakerReview": false
+}

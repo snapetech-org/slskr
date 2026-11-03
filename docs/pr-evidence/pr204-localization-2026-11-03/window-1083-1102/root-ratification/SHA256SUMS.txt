@@ -1,0 +1,3 @@
+fa7fe6cbf02efb9ecd1f6a2a5053970f18a5635fd8c99aac01fa5ecfdc8f8e82  README.md
+b762231e258b23eb83ebaa44f00f76411e2a2fd453bc9f21562b7523fc424c5a  adjudication-ratified.jsonl
+d82b7b291388877bc7fb1f19297575b966c94fd80167a6223f0fedd524102af7  summary.json

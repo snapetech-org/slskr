@@ -1,0 +1,45 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "head": "e1d9eb920ee121d8c108b098e94f0f3d2b440256",
+  "tree": "1d274f797f620482f4f344e7cf67de27e75e5568",
+  "window": "W1083-W1102",
+  "cleanInputManifestSha256": "73af07cb20c3a1aca99456481bc8124ccc5b7fd81e404a365751e21dddcae818",
+  "cleanInputChecksumListSha256": "99c9eb286c405187ddb540dc1318ff6eac5c0c9ed6f89f1b7f663f470473cf00",
+  "rootBlindLedgerSha256": "0b98666a81e962e18d79d6cfcd1a7a3afbbb83dee83e6b4d38d5ca20a9cf5fd4",
+  "rootBlindChecksumListSha256": "a1394fde5d501130887bc30d39b419223f9f1f9a141b907978fa7771e9f4fbcc",
+  "primaryLedgerSha256": "3b4faa3e52cafc9a2777566603f93eef699c472346fba84b91fd9e2c1b1ee45c",
+  "primaryChecksumListSha256": "ede0d0935126ad667d2f328ad6a7d66477086e1b6c406154a8dd2b4352d9e632",
+  "sourceIdOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "windowSourceSha256": "3938b39471c24139918902de990427089ea5b96f1a93bb7e793b8f7a52f00cd3",
+  "livePrReadOnlyReattestation": {
+    "state": "open",
+    "branch": "codex/slskr-l10n-audit-20261030",
+    "head": "e1d9eb920ee121d8c108b098e94f0f3d2b440256",
+    "tree": "1d274f797f620482f4f344e7cf67de27e75e5568"
+  },
+  "renderPathEvidence": {
+    "path": "render-path-evidence.json",
+    "sha256": "3100c56787b91d7b0896fe1db245b5c7056e7ee81c12c64ed964d90ebd6243c9",
+    "files": [
+      {
+        "path": "web/src/components/ShareGroups/ShareGroups.jsx",
+        "gitBlob": "b9e41426dfb0f920200d982653d8ab2ff98622ba"
+      },
+      {
+        "path": "web/src/components/Shared/TooltipButton.jsx",
+        "gitBlob": "366f49cbfb31fe7963e7215261f3524d28039b3c"
+      },
+      {
+        "path": "web/src/lib/locales/ui-labels.ar.json",
+        "gitBlob": "13b464d8084ca7050b140b6b41d8cbe60c3e7488"
+      }
+    ]
+  },
+  "supersedesUnratifiedProposal": {
+    "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-w1083-1102-20261103/adjudication-proposal",
+    "adjudicationLedgerSha256": "2cfdd6933dd5d485e4a4bc360a23ee9f96b609550d8cecf33256a154a19e8860",
+    "checksumListSha256": "feb74bd94733192beb2fece448d587b575327a55d21f011e97f86588cf75ae1e"
+  }
+}

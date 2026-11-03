@@ -1,0 +1,131 @@
+{
+  "evidenceId": "W1095-tooltip-render-path-at-e1d9eb920ee121d8",
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "prState": "open",
+  "head": "e1d9eb920ee121d8c108b098e94f0f3d2b440256",
+  "tree": "1d274f797f620482f4f344e7cf67de27e75e5568",
+  "verificationMethod": "Read-only GitHub contents/commit API at the exact pinned head; Git blob IDs recomputed from returned file bytes.",
+  "renderPath": [
+    {
+      "path": "web/src/components/ShareGroups/ShareGroups.jsx",
+      "gitBlob": "b9e41426dfb0f920200d982653d8ab2ff98622ba",
+      "lines": [
+        {
+          "line": 10,
+          "text": "import TooltipButton from '../Shared/TooltipButton';"
+        },
+        {
+          "line": 24,
+          "text": "const Button = TooltipButton;"
+        },
+        {
+          "line": 413,
+          "text": "                      tooltip=\"Delete this share group and remove its collection access.\""
+        }
+      ],
+      "finding": "ShareGroups imports TooltipButton, aliases its Button to TooltipButton, and supplies the exact W1095 tooltip literal."
+    },
+    {
+      "path": "web/src/components/Shared/TooltipButton.jsx",
+      "gitBlob": "366f49cbfb31fe7963e7215261f3524d28039b3c",
+      "lines": [
+        {
+          "line": 5,
+          "text": "export const LocalizedPopup = ({ content, parameters = {}, translateContent = true, textDirection, textLanguage, ...props }) => {"
+        },
+        {
+          "line": 6,
+          "text": "  const { t, languageFor, directionFor } = useInterfaceLanguage();"
+        },
+        {
+          "line": 7,
+          "text": "  const popupContent = typeof content === 'string' && translateContent"
+        },
+        {
+          "line": 8,
+          "text": "    ? <span lang={textLanguage || languageFor(content)} dir={textDirection || directionFor(content)}>{t(content, parameters)}</span>"
+        },
+        {
+          "line": 11,
+          "text": "  return <Popup {...props} content={popupContent} />;"
+        },
+        {
+          "line": 35,
+          "text": "  tooltip,"
+        },
+        {
+          "line": 50,
+          "text": "  const inferredSource = ariaLabel || title || getText(children) || getText(buttonContent) ||"
+        },
+        {
+          "line": 51,
+          "text": "    (typeof tooltip === 'string' ? tooltip : undefined);"
+        },
+        {
+          "line": 67,
+          "text": "  const content = tooltip || title || inferredSource;"
+        },
+        {
+          "line": 73,
+          "text": "  return ("
+        },
+        {
+          "line": 74,
+          "text": "    <LocalizedPopup"
+        },
+        {
+          "line": 75,
+          "text": "      content={content}"
+        },
+        {
+          "line": 76,
+          "text": "      parameters={parameters}"
+        },
+        {
+          "line": 80,
+          "text": "      trigger={button}"
+        },
+        {
+          "line": 81,
+          "text": "    />"
+        }
+      ],
+      "finding": "LocalizedPopup defaults translateContent to true and passes string content through t(content, parameters). TooltipButton derives popup content from tooltip and wraps it in LocalizedPopup."
+    }
+  ],
+  "arabicGlossary": {
+    "path": "web/src/lib/locales/ui-labels.ar.json",
+    "gitBlob": "13b464d8084ca7050b140b6b41d8cbe60c3e7488",
+    "manifestCatalogSha256": "ad5757728f880879cc5acb8b06e3329b0da4c56c8fb6ead38f49d211f64c3040",
+    "entries": [
+      {
+        "source": "Collection",
+        "target": "مجموعة"
+      },
+      {
+        "source": "Collections",
+        "target": "المجموعات"
+      },
+      {
+        "source": "Collections shared with you",
+        "target": "المجموعات المشتركة معك"
+      },
+      {
+        "source": "Share Groups",
+        "target": "مجموعات المشاركة"
+      },
+      {
+        "source": "Failed to load shared collections",
+        "target": "تعذر تحميل المجموعات المشتركة"
+      },
+      {
+        "source": "Delete this share group and remove its collection access.",
+        "target": "احذف مجموعة المشاركة هذه وألغِ صلاحيتها للوصول إلى المجموعات المشتركة."
+      }
+    ],
+    "finding": "The pinned Arabic catalog distinguishes Share Groups (مجموعات المشاركة) from shared collections (المجموعات المشتركة). Its existing W1095 value uses the established shared-collections wording, so current Arabic is valid and no correction is justified."
+  },
+  "conclusion": "The exact W1095 tooltip reaches the localized popup path at the pinned PR head. All twelve cells can leave hold-context; use accept-current for every locale because their current targets are valid under the verified caller context."
+}
