@@ -1,0 +1,20 @@
+Enforce security hardening
+Enforce web security hardening
+Enhanced (Privacy + Anonymity)
+Enter ContentID to get its graph
+Enter a Library Health path before starting the scan.
+Enter a library path and start a scan to detect issues
+Enter a realm id before loading subject-index conflicts.
+Enter both paths to check whether slskr and the media server agree.
+Enter collection title
+Enter external ID to resolve...
+Enter fullscreen visualizer
+Enter group name
+Enter library path (e.g., /music or C:\Music)
+Enter library path (e.g., /music or C:\\Music)
+Enter notes about this user...
+Enter room name...
+Enter search terms...
+Enter true fullscreen.
+Enter username
+Entries

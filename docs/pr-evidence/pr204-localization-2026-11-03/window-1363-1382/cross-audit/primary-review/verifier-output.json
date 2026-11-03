@@ -1,0 +1,20 @@
+{
+  "callerlessPosition1376HeldAcrossLocales": true,
+  "cells": 240,
+  "dispositions": {
+    "accept-current": 203,
+    "correction": 7,
+    "hold": 12,
+    "refinement": 18
+  },
+  "fileHashesVerified": [
+    "README.md",
+    "input-verification.json",
+    "review-ledger.jsonl",
+    "source-context-evidence.jsonl",
+    "verify-primary-ledger.py"
+  ],
+  "result": "PASS",
+  "sourceContexts": 20,
+  "unresolvedPathExampleMismatchCells": 2
+}

@@ -1,0 +1,16 @@
+{
+  "allProposedTokenChecksPass": true,
+  "blindInputChecksums": "PASS",
+  "blindInputVerifier": "PASS",
+  "callerlessHolds": 12,
+  "callerlessPosition": 1376,
+  "coherenceRows": 36,
+  "holds": 12,
+  "inputChecksumListSha256": "c72ccd868a1cf1b50a0ceacde2e0cbc6a287ac25b50b97705704b2d9aae66b76",
+  "inputManifestSha256": "3c6004617e8d0986362a7cfe4bb919654165d8935a07dc8eaf20ab69aba6ae18",
+  "promptsSha256": "dc7c20a02c28f157434e37b5aa486d4b4b7db24c79422295ecd9b08746a8f77d",
+  "proposals": 228,
+  "result": "PASS",
+  "rows": 240,
+  "sourceContextsSha256": "7e3823fee026cf9322d82d359383f1a4ecad70e656abf5b73607b49611b1e384"
+}

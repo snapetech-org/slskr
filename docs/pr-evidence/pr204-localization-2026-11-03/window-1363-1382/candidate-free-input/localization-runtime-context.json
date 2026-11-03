@@ -1,0 +1,276 @@
+{
+  "path": "web/src/lib/interfaceLocale.js",
+  "pin": {
+    "path": "web/src/lib/interfaceLocale.js",
+    "byteCount": 11530,
+    "lineCount": 302,
+    "sha256": "16eb5f119655805f48845e026ee12fd517fae6de871091bd9be2e5b7f1d310ea",
+    "gitBlob": "72dfea05f86bcf0ab02882a85c6e8d4a0cb0dabf"
+  },
+  "localeOptionOrder": [
+    "en",
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "lookupAndPlaceholderContext": [
+    {
+      "marker": "export const INTERFACE_LANGUAGE_OPTIONS",
+      "startLine": 15,
+      "endLine": 25,
+      "lines": [
+        {
+          "line": 15,
+          "lineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "text": ""
+        },
+        {
+          "line": 16,
+          "lineSha256": "f800c08f3318e5015a1da34ef7138564933541330d6594049bc3fa31974e5d95",
+          "text": "export const INTERFACE_LANGUAGE_OPTIONS = ["
+        },
+        {
+          "line": 17,
+          "lineSha256": "d7373199107e2a9f6a6348c7404a7f15e2b77d03cfa8b17194e9019ca47c1b06",
+          "text": "  { key: 'en', text: 'English', value: 'en' },"
+        },
+        {
+          "line": 18,
+          "lineSha256": "5887910c76a64d573e79d307f50eb169f19022401273a731c33bbf1ff18317d1",
+          "text": "  { key: 'es', text: 'Español — Spanish', value: 'es' },"
+        },
+        {
+          "line": 19,
+          "lineSha256": "c85286b7f6fcab74696dfcf0a1fb65e2693f3bb6a52843edd3df3e95c27948ca",
+          "text": "  { key: 'zh-Hans', text: '简体中文 — Simplified Chinese', value: 'zh-Hans' },"
+        },
+        {
+          "line": 20,
+          "lineSha256": "7305f323ba32f8cb66cee3a26d42ee98485e29a8f503071e00998ae7d519d418",
+          "text": "  { key: 'hi', text: 'हिन्दी — Hindi', value: 'hi' },"
+        },
+        {
+          "line": 21,
+          "lineSha256": "a646305446649af85f78e4624474c30fa6343d64880f9d035c76742bbbec8833",
+          "text": "  { key: 'de', text: 'Deutsch — German', value: 'de' },"
+        },
+        {
+          "line": 22,
+          "lineSha256": "8c14983a8461a493513af2a17d73897856e15a3990d6540bbf5cc02452aafa4d",
+          "text": "  { key: 'ja', text: '日本語 — Japanese', value: 'ja' },"
+        },
+        {
+          "line": 23,
+          "lineSha256": "470985b8e85f6d13d79a168fa65a93c5771ea3d9ceb934b9b13140721b239d3d",
+          "text": "  { key: 'fr', text: 'Français — French', value: 'fr' },"
+        },
+        {
+          "line": 24,
+          "lineSha256": "cddcc0cc3ddcc102c00d3ef5505f6364809b597964583f210119e2b70cde66eb",
+          "text": "  { key: 'pt-BR', text: 'Português (Brasil) — Brazilian Portuguese', value: 'pt-BR' },"
+        },
+        {
+          "line": 25,
+          "lineSha256": "9f853b7375d2f5b47befe1a2d4ea0395e3ca8a75ce263cccd620ecf0d26a8684",
+          "text": "  { key: 'ar', text: 'العربية — Arabic', value: 'ar' },"
+        }
+      ]
+    },
+    {
+      "marker": "const translationFor =",
+      "startLine": 55,
+      "endLine": 65,
+      "lines": [
+        {
+          "line": 55,
+          "lineSha256": "6b709ca7798c8d95ed098a6128290bbb89fe70433e056137841e8f9efef8e87d",
+          "text": "const notify = () => listeners.forEach((listener) => listener());"
+        },
+        {
+          "line": 56,
+          "lineSha256": "5b4b54f72e522eea3bcc9fec059d0290e71d7434c2adbc8af72c8d059d0420c8",
+          "text": "const translationFor = (source, language) => localeCatalogs.get(language)?.[source];"
+        },
+        {
+          "line": 57,
+          "lineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "text": ""
+        },
+        {
+          "line": 58,
+          "lineSha256": "b69d53bfc23c9556aa9fbc67d712cfe31ee605c4ee54000c1cef0a3abf551847",
+          "text": "const replaceInterfaceValues = (translation, parameters = {}) => {"
+        },
+        {
+          "line": 59,
+          "lineSha256": "652ca893783c965bee217f1073816b253355cb59b2161cf5d005b73cf52284f5",
+          "text": "  if (typeof translation !== 'string') return translation;"
+        },
+        {
+          "line": 60,
+          "lineSha256": "2986f803fd2c5c71b91de50adfd2fd40f8bc59689b3f11cffe9e0271168c7b1f",
+          "text": "  return translation.replace(/\\{([a-zA-Z][a-zA-Z0-9_]*)\\}/g, (placeholder, name) => {"
+        },
+        {
+          "line": 61,
+          "lineSha256": "cdfa5fde051f4f40099208519d50b49ccaccd6b1a858a93edbcd5885e91b7652",
+          "text": "    const value = parameters?.[name];"
+        },
+        {
+          "line": 62,
+          "lineSha256": "7a78aa90fb0418d21edc7c20063cb0416157a2ae55aa60207c9ace39d1dc8cf4",
+          "text": "    return typeof value === 'string' || typeof value === 'number'"
+        },
+        {
+          "line": 63,
+          "lineSha256": "c8f6c53b658aec6b37d9245eb9db91c685a9108b7308716139ef81e41976d72b",
+          "text": "      ? String(value)"
+        },
+        {
+          "line": 64,
+          "lineSha256": "967e4b989b64cc1134d0854ddc0d9b54dfba7cdbcff802559af270c13416561d",
+          "text": "      : placeholder;"
+        },
+        {
+          "line": 65,
+          "lineSha256": "8918205c87aec718d8ed26668abe0962b53a36e38887e5434ec02d59639e3ec1",
+          "text": "  });"
+        }
+      ]
+    },
+    {
+      "marker": "const replaceInterfaceValues =",
+      "startLine": 57,
+      "endLine": 67,
+      "lines": [
+        {
+          "line": 57,
+          "lineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "text": ""
+        },
+        {
+          "line": 58,
+          "lineSha256": "b69d53bfc23c9556aa9fbc67d712cfe31ee605c4ee54000c1cef0a3abf551847",
+          "text": "const replaceInterfaceValues = (translation, parameters = {}) => {"
+        },
+        {
+          "line": 59,
+          "lineSha256": "652ca893783c965bee217f1073816b253355cb59b2161cf5d005b73cf52284f5",
+          "text": "  if (typeof translation !== 'string') return translation;"
+        },
+        {
+          "line": 60,
+          "lineSha256": "2986f803fd2c5c71b91de50adfd2fd40f8bc59689b3f11cffe9e0271168c7b1f",
+          "text": "  return translation.replace(/\\{([a-zA-Z][a-zA-Z0-9_]*)\\}/g, (placeholder, name) => {"
+        },
+        {
+          "line": 61,
+          "lineSha256": "cdfa5fde051f4f40099208519d50b49ccaccd6b1a858a93edbcd5885e91b7652",
+          "text": "    const value = parameters?.[name];"
+        },
+        {
+          "line": 62,
+          "lineSha256": "7a78aa90fb0418d21edc7c20063cb0416157a2ae55aa60207c9ace39d1dc8cf4",
+          "text": "    return typeof value === 'string' || typeof value === 'number'"
+        },
+        {
+          "line": 63,
+          "lineSha256": "c8f6c53b658aec6b37d9245eb9db91c685a9108b7308716139ef81e41976d72b",
+          "text": "      ? String(value)"
+        },
+        {
+          "line": 64,
+          "lineSha256": "967e4b989b64cc1134d0854ddc0d9b54dfba7cdbcff802559af270c13416561d",
+          "text": "      : placeholder;"
+        },
+        {
+          "line": 65,
+          "lineSha256": "8918205c87aec718d8ed26668abe0962b53a36e38887e5434ec02d59639e3ec1",
+          "text": "  });"
+        },
+        {
+          "line": 66,
+          "lineSha256": "df3982fd610173599241fca93c7c866683f58f541eced1c2098102145477164c",
+          "text": "};"
+        },
+        {
+          "line": 67,
+          "lineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "text": ""
+        }
+      ]
+    },
+    {
+      "marker": "const formatInterfaceTextForLanguage =",
+      "startLine": 67,
+      "endLine": 77,
+      "lines": [
+        {
+          "line": 67,
+          "lineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "text": ""
+        },
+        {
+          "line": 68,
+          "lineSha256": "34a25e5952887c60d29c05dc0ab956bcd5548dade04880d81594a5a884fd8c54",
+          "text": "const formatInterfaceTextForLanguage = (source, parameters = {}, language = activeLanguage) => {"
+        },
+        {
+          "line": 69,
+          "lineSha256": "0d828712f930db9b55e453f860d0795cf0e21f31c0832617d07da543834c1ee4",
+          "text": "  if (typeof source !== 'string') return source;"
+        },
+        {
+          "line": 70,
+          "lineSha256": "df018638bf0bcb3790bbc1a3b847f7009a9256e7631c4834783dadb978057854",
+          "text": "  const localized = translationFor(source, language);"
+        },
+        {
+          "line": 71,
+          "lineSha256": "66dc157bd5d5e99cb4718056e4073bfbe4319b163408d5e06b7f7120220e58cf",
+          "text": "  const category = typeof parameters?.count === 'number'"
+        },
+        {
+          "line": 72,
+          "lineSha256": "7cdfa70121690f45a2d7f6cca8b723530258d52974f38f62a723328007c833f5",
+          "text": "    ? new Intl.PluralRules(language).select(parameters.count)"
+        },
+        {
+          "line": 73,
+          "lineSha256": "0c521cdd801f8f63479ae442a4d0ba9d9f3de24eb1c41a9e94629dd487f26147",
+          "text": "    : 'other';"
+        },
+        {
+          "line": 74,
+          "lineSha256": "6abc6aba06d6aaf2df826223860dc196ba90aca807e753ce68303dc0d2ae8719",
+          "text": "  const translated = typeof localized === 'string' ? localized : localized?.[category] || localized?.other || source;"
+        },
+        {
+          "line": 75,
+          "lineSha256": "f15b0f0624b9da77e9407006fc70ce4f55173ebca12769b7aa7cba313e5ab8b7",
+          "text": "  return replaceInterfaceValues(translated, parameters);"
+        },
+        {
+          "line": 76,
+          "lineSha256": "df3982fd610173599241fca93c7c866683f58f541eced1c2098102145477164c",
+          "text": "};"
+        },
+        {
+          "line": 77,
+          "lineSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "text": ""
+        }
+      ]
+    }
+  ],
+  "note": "Source-call expressions and parameter values are retained verbatim; only string or numeric parameters replace named placeholders, and missing translations fall back to source text."
+}

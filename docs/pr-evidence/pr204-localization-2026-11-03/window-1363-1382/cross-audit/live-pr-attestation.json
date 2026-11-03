@@ -1,0 +1,28 @@
+{
+  "baseRefName": "main",
+  "candidateFreeManifestWorktreeCurrentlyPresent": false,
+  "candidateFreeManifestWorktreePath": "/home/keith/Documents/code/task-scratch/slskr-pr204-next-candidatefree-20261103/repo",
+  "headRefName": "codex/slskr-l10n-audit-20261030",
+  "headRefOid": "281c39ec0cdb3677d7d523b7c4f0cd0d52bbf14c",
+  "headTree": "777b234b1aa3cb7a2c9fd560b2c0fecc4e7fe49d",
+  "isDraft": true,
+  "liveBranchRefOid": "281c39ec0cdb3677d7d523b7c4f0cd0d52bbf14c",
+  "livePullRefOid": "281c39ec0cdb3677d7d523b7c4f0cd0d52bbf14c",
+  "pullRequest": 204,
+  "queriedAtUtc": "2026-11-03T16:35:32.905101+00:00",
+  "queryCommands": [
+    "gh pr view 204 --repo snapetech-org/slskR --json number,state,headRefName,headRefOid,baseRefName,url,isDraft",
+    "gh api repos/snapetech-org/slskR/git/matching-refs/heads/codex/slskr-l10n-audit-20261030 --jq .[0].object.sha",
+    "gh api repos/snapetech-org/slskR/pulls/204 --jq .head.sha",
+    "gh api repos/snapetech-org/slskR/commits/281c39ec0cdb3677d7d523b7c4f0cd0d52bbf14c --jq .commit.tree.sha"
+  ],
+  "repository": "snapetech-org/slskR",
+  "state": "OPEN",
+  "url": "https://github.com/snapetech-org/slskr/pull/204",
+  "verifiedWorktree": {
+    "head": "281c39ec0cdb3677d7d523b7c4f0cd0d52bbf14c",
+    "path": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1343-1362-apply-20261103/repo",
+    "status": "clean",
+    "tree": "777b234b1aa3cb7a2c9fd560b2c0fecc4e7fe49d"
+  }
+}

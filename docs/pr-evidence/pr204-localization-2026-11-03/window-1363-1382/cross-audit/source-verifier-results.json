@@ -1,0 +1,17 @@
+{
+  "blindReview": {
+    "returnCode": 0,
+    "stderr": "",
+    "stdout": "PASS: slskR W1363-W1382 blind ledger covers 240 cells; 228 proposals and all 12 callerless rank-1376 cells are held; exact input pins, all token checks, three per-locale coherence groups, and checksums pass."
+  },
+  "candidateFreeInput": {
+    "returnCode": 0,
+    "stderr": "",
+    "stdout": "{\n  \"result\": \"PASS\",\n  \"head\": \"281c39ec0cdb3677d7d523b7c4f0cd0d52bbf14c\",\n  \"tree\": \"777b234b1aa3cb7a2c9fd560b2c0fecc4e7fe49d\",\n  \"positions\": [\n    1363,\n    1382\n  ],\n  \"cells\": 240,\n  \"sourceQueueOrderSha256\": \"dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983\",\n  \"callerReferences\": 33,\n  \"callerlessPositions\": [\n    1376\n  ],\n  \"priorHoldsReattested\": 23,\n  \"changedPriorHolds\": 0,\n  \"priorSelectedRowsReattested\": 120,\n  \"mismatchCounts\": {\n    \"placeholderSequenceMismatchCount\": 0,\n    \"markupMismatchCount\": 0,\n    \"numericTokenMismatchCount\": 0,\n    \"protectedLiteralMismatchCount\": 2\n  },\n  \"manifestSha256\": \"fc43ea14fc3e04f94c1d99a29cb5007e662123011665d18992432487228ce6ac\",\n  \"checksumListSha256\": \"e8ef35c49b2e3e2eced98ae787c34ca0ed09a3b6870aaa6129f54a445488daf3\"\n}"
+  },
+  "primaryReview": {
+    "returnCode": 0,
+    "stderr": "",
+    "stdout": "{\n  \"callerlessPosition1376HeldAcrossLocales\": true,\n  \"cells\": 240,\n  \"dispositions\": {\n    \"accept-current\": 203,\n    \"correction\": 7,\n    \"hold\": 12,\n    \"refinement\": 18\n  },\n  \"fileHashesVerified\": [\n    \"README.md\",\n    \"input-verification.json\",\n    \"review-ledger.jsonl\",\n    \"source-context-evidence.jsonl\",\n    \"verifier-output.json\",\n    \"verify-primary-ledger.py\"\n  ],\n  \"result\": \"PASS\",\n  \"sourceContexts\": 20,\n  \"unresolvedPathExampleMismatchCells\": 2\n}"
+  }
+}

@@ -1,0 +1,530 @@
+[
+  {
+    "group": "securityHardening",
+    "locale": "es",
+    "positions": [
+      1363,
+      1364
+    ],
+    "rationale": "The accessible web-specific label retains the same security-hardening term as the visible checkbox label and adds only the web scope.",
+    "result": "pass",
+    "terms": [
+      "Aplicar el refuerzo de seguridad",
+      "Aplicar el refuerzo de seguridad web"
+    ]
+  },
+  {
+    "group": "libraryPathAndScan",
+    "locale": "es",
+    "positions": [
+      1367,
+      1368,
+      1375
+    ],
+    "rationale": "Library/path/scan wording stays consistent across the validation, empty state, and path placeholder; Library Health is retained as the named feature.",
+    "result": "pass",
+    "terms": [
+      "Introduce una ruta de Library Health antes de iniciar el análisis.",
+      "Introduce una ruta de biblioteca e inicia un análisis para detectar problemas.",
+      "Introduce la ruta de la biblioteca (p. ej., /music o C:\\Music)"
+    ]
+  },
+  {
+    "group": "fullscreenVisualizer",
+    "locale": "es",
+    "positions": [
+      1373,
+      1380
+    ],
+    "rationale": "The button label and popup share the locale's fullscreen term; the popup adds the true-mode distinction.",
+    "result": "pass",
+    "terms": [
+      "Abrir el visualizador en pantalla completa",
+      "Entrar en pantalla completa real."
+    ]
+  },
+  {
+    "group": "securityHardening",
+    "locale": "zh-Hans",
+    "positions": [
+      1363,
+      1364
+    ],
+    "rationale": "The accessible web-specific label retains the same security-hardening term as the visible checkbox label and adds only the web scope.",
+    "result": "pass",
+    "terms": [
+      "强制实施安全加固",
+      "强制实施 Web 安全加固"
+    ]
+  },
+  {
+    "group": "libraryPathAndScan",
+    "locale": "zh-Hans",
+    "positions": [
+      1367,
+      1368,
+      1375
+    ],
+    "rationale": "Library/path/scan wording stays consistent across the validation, empty state, and path placeholder; Library Health is retained as the named feature.",
+    "result": "pass",
+    "terms": [
+      "请先输入 Library Health 路径，再开始扫描。",
+      "输入媒体库路径并开始扫描以检测问题",
+      "输入媒体库路径（例如 /music 或 C:\\Music）"
+    ]
+  },
+  {
+    "group": "fullscreenVisualizer",
+    "locale": "zh-Hans",
+    "positions": [
+      1373,
+      1380
+    ],
+    "rationale": "The button label and popup share the locale's fullscreen term; the popup adds the true-mode distinction.",
+    "result": "pass",
+    "terms": [
+      "全屏显示可视化效果",
+      "进入真正的全屏模式。"
+    ]
+  },
+  {
+    "group": "securityHardening",
+    "locale": "hi",
+    "positions": [
+      1363,
+      1364
+    ],
+    "rationale": "The accessible web-specific label retains the same security-hardening term as the visible checkbox label and adds only the web scope.",
+    "result": "pass",
+    "terms": [
+      "सुरक्षा सुदृढ़ीकरण लागू करें",
+      "वेब सुरक्षा सुदृढ़ीकरण लागू करें"
+    ]
+  },
+  {
+    "group": "libraryPathAndScan",
+    "locale": "hi",
+    "positions": [
+      1367,
+      1368,
+      1375
+    ],
+    "rationale": "Library/path/scan wording stays consistent across the validation, empty state, and path placeholder; Library Health is retained as the named feature.",
+    "result": "pass",
+    "terms": [
+      "स्कैन शुरू करने से पहले Library Health का पथ दर्ज करें।",
+      "समस्याओं का पता लगाने के लिए लाइब्रेरी का पथ दर्ज करें और स्कैन शुरू करें",
+      "लाइब्रेरी का पथ दर्ज करें (जैसे, /music या C:\\Music)"
+    ]
+  },
+  {
+    "group": "fullscreenVisualizer",
+    "locale": "hi",
+    "positions": [
+      1373,
+      1380
+    ],
+    "rationale": "The button label and popup share the locale's fullscreen term; the popup adds the true-mode distinction.",
+    "result": "pass",
+    "terms": [
+      "विज़ुअलाइज़र को फ़ुलस्क्रीन में खोलें",
+      "वास्तविक फ़ुलस्क्रीन मोड में जाएँ।"
+    ]
+  },
+  {
+    "group": "securityHardening",
+    "locale": "de",
+    "positions": [
+      1363,
+      1364
+    ],
+    "rationale": "The accessible web-specific label retains the same security-hardening term as the visible checkbox label and adds only the web scope.",
+    "result": "pass",
+    "terms": [
+      "Sicherheitshärtung erzwingen",
+      "Web-Sicherheitshärtung erzwingen"
+    ]
+  },
+  {
+    "group": "libraryPathAndScan",
+    "locale": "de",
+    "positions": [
+      1367,
+      1368,
+      1375
+    ],
+    "rationale": "Library/path/scan wording stays consistent across the validation, empty state, and path placeholder; Library Health is retained as the named feature.",
+    "result": "pass",
+    "terms": [
+      "Geben Sie vor dem Start des Scans einen Pfad für Library Health ein.",
+      "Geben Sie einen Bibliothekspfad ein und starten Sie einen Scan, um Probleme zu erkennen.",
+      "Bibliothekspfad eingeben (z. B. /music oder C:\\Music)"
+    ]
+  },
+  {
+    "group": "fullscreenVisualizer",
+    "locale": "de",
+    "positions": [
+      1373,
+      1380
+    ],
+    "rationale": "The button label and popup share the locale's fullscreen term; the popup adds the true-mode distinction.",
+    "result": "pass",
+    "terms": [
+      "Visualizer im Vollbild öffnen",
+      "In den echten Vollbildmodus wechseln."
+    ]
+  },
+  {
+    "group": "securityHardening",
+    "locale": "ja",
+    "positions": [
+      1363,
+      1364
+    ],
+    "rationale": "The accessible web-specific label retains the same security-hardening term as the visible checkbox label and adds only the web scope.",
+    "result": "pass",
+    "terms": [
+      "セキュリティ強化を強制する",
+      "Web セキュリティ強化を強制する"
+    ]
+  },
+  {
+    "group": "libraryPathAndScan",
+    "locale": "ja",
+    "positions": [
+      1367,
+      1368,
+      1375
+    ],
+    "rationale": "Library/path/scan wording stays consistent across the validation, empty state, and path placeholder; Library Health is retained as the named feature.",
+    "result": "pass",
+    "terms": [
+      "スキャンを開始する前に、Library Health のパスを入力してください。",
+      "問題を検出するには、ライブラリのパスを入力してスキャンを開始してください。",
+      "ライブラリのパスを入力（例: /music または C:\\Music）"
+    ]
+  },
+  {
+    "group": "fullscreenVisualizer",
+    "locale": "ja",
+    "positions": [
+      1373,
+      1380
+    ],
+    "rationale": "The button label and popup share the locale's fullscreen term; the popup adds the true-mode distinction.",
+    "result": "pass",
+    "terms": [
+      "ビジュアライザーを全画面表示にする",
+      "真の全画面表示に切り替えます。"
+    ]
+  },
+  {
+    "group": "securityHardening",
+    "locale": "fr",
+    "positions": [
+      1363,
+      1364
+    ],
+    "rationale": "The accessible web-specific label retains the same security-hardening term as the visible checkbox label and adds only the web scope.",
+    "result": "pass",
+    "terms": [
+      "Imposer le renforcement de la sécurité",
+      "Imposer le renforcement de la sécurité Web"
+    ]
+  },
+  {
+    "group": "libraryPathAndScan",
+    "locale": "fr",
+    "positions": [
+      1367,
+      1368,
+      1375
+    ],
+    "rationale": "Library/path/scan wording stays consistent across the validation, empty state, and path placeholder; Library Health is retained as the named feature.",
+    "result": "pass",
+    "terms": [
+      "Saisissez un chemin Library Health avant de lancer l’analyse.",
+      "Saisissez un chemin de bibliothèque et lancez une analyse pour détecter les problèmes.",
+      "Saisissez le chemin de la bibliothèque (ex. : /music ou C:\\Music)"
+    ]
+  },
+  {
+    "group": "fullscreenVisualizer",
+    "locale": "fr",
+    "positions": [
+      1373,
+      1380
+    ],
+    "rationale": "The button label and popup share the locale's fullscreen term; the popup adds the true-mode distinction.",
+    "result": "pass",
+    "terms": [
+      "Afficher le visualiseur en plein écran",
+      "Passer en véritable plein écran."
+    ]
+  },
+  {
+    "group": "securityHardening",
+    "locale": "pt-BR",
+    "positions": [
+      1363,
+      1364
+    ],
+    "rationale": "The accessible web-specific label retains the same security-hardening term as the visible checkbox label and adds only the web scope.",
+    "result": "pass",
+    "terms": [
+      "Exigir o reforço da segurança",
+      "Exigir o reforço da segurança web"
+    ]
+  },
+  {
+    "group": "libraryPathAndScan",
+    "locale": "pt-BR",
+    "positions": [
+      1367,
+      1368,
+      1375
+    ],
+    "rationale": "Library/path/scan wording stays consistent across the validation, empty state, and path placeholder; Library Health is retained as the named feature.",
+    "result": "pass",
+    "terms": [
+      "Informe um caminho do Library Health antes de iniciar a verificação.",
+      "Informe um caminho da biblioteca e inicie uma verificação para detectar problemas.",
+      "Informe o caminho da biblioteca (por exemplo, /music ou C:\\Music)"
+    ]
+  },
+  {
+    "group": "fullscreenVisualizer",
+    "locale": "pt-BR",
+    "positions": [
+      1373,
+      1380
+    ],
+    "rationale": "The button label and popup share the locale's fullscreen term; the popup adds the true-mode distinction.",
+    "result": "pass",
+    "terms": [
+      "Abrir visualizador em tela cheia",
+      "Entrar em tela cheia de verdade."
+    ]
+  },
+  {
+    "group": "securityHardening",
+    "locale": "ar",
+    "positions": [
+      1363,
+      1364
+    ],
+    "rationale": "The accessible web-specific label retains the same security-hardening term as the visible checkbox label and adds only the web scope.",
+    "result": "pass",
+    "terms": [
+      "فرض تشديد الأمان",
+      "فرض تشديد أمان الويب"
+    ]
+  },
+  {
+    "group": "libraryPathAndScan",
+    "locale": "ar",
+    "positions": [
+      1367,
+      1368,
+      1375
+    ],
+    "rationale": "Library/path/scan wording stays consistent across the validation, empty state, and path placeholder; Library Health is retained as the named feature.",
+    "result": "pass",
+    "terms": [
+      "أدخل مسار Library Health قبل بدء الفحص.",
+      "أدخل مسارًا للمكتبة وابدأ فحصًا لاكتشاف المشكلات.",
+      "أدخل مسار المكتبة (مثال: /music أو C:\\Music)"
+    ]
+  },
+  {
+    "group": "fullscreenVisualizer",
+    "locale": "ar",
+    "positions": [
+      1373,
+      1380
+    ],
+    "rationale": "The button label and popup share the locale's fullscreen term; the popup adds the true-mode distinction.",
+    "result": "pass",
+    "terms": [
+      "فتح العارض المرئي بملء الشاشة",
+      "الدخول إلى وضع ملء الشاشة الحقيقي."
+    ]
+  },
+  {
+    "group": "securityHardening",
+    "locale": "ko",
+    "positions": [
+      1363,
+      1364
+    ],
+    "rationale": "The accessible web-specific label retains the same security-hardening term as the visible checkbox label and adds only the web scope.",
+    "result": "pass",
+    "terms": [
+      "보안 강화 강제 적용",
+      "웹 보안 강화 강제 적용"
+    ]
+  },
+  {
+    "group": "libraryPathAndScan",
+    "locale": "ko",
+    "positions": [
+      1367,
+      1368,
+      1375
+    ],
+    "rationale": "Library/path/scan wording stays consistent across the validation, empty state, and path placeholder; Library Health is retained as the named feature.",
+    "result": "pass",
+    "terms": [
+      "검사를 시작하기 전에 Library Health 경로를 입력하세요.",
+      "문제를 감지하려면 라이브러리 경로를 입력하고 검사를 시작하세요.",
+      "라이브러리 경로 입력(예: /music 또는 C:\\Music)"
+    ]
+  },
+  {
+    "group": "fullscreenVisualizer",
+    "locale": "ko",
+    "positions": [
+      1373,
+      1380
+    ],
+    "rationale": "The button label and popup share the locale's fullscreen term; the popup adds the true-mode distinction.",
+    "result": "pass",
+    "terms": [
+      "시각화 도구를 전체 화면으로 열기",
+      "진정한 전체 화면 모드로 전환합니다."
+    ]
+  },
+  {
+    "group": "securityHardening",
+    "locale": "zh-Hant",
+    "positions": [
+      1363,
+      1364
+    ],
+    "rationale": "The accessible web-specific label retains the same security-hardening term as the visible checkbox label and adds only the web scope.",
+    "result": "pass",
+    "terms": [
+      "強制執行安全強化",
+      "強制執行 Web 安全強化"
+    ]
+  },
+  {
+    "group": "libraryPathAndScan",
+    "locale": "zh-Hant",
+    "positions": [
+      1367,
+      1368,
+      1375
+    ],
+    "rationale": "Library/path/scan wording stays consistent across the validation, empty state, and path placeholder; Library Health is retained as the named feature.",
+    "result": "pass",
+    "terms": [
+      "請先輸入 Library Health 路徑，再開始掃描。",
+      "輸入媒體庫路徑並開始掃描以偵測問題",
+      "輸入媒體庫路徑（例如 /music 或 C:\\Music）"
+    ]
+  },
+  {
+    "group": "fullscreenVisualizer",
+    "locale": "zh-Hant",
+    "positions": [
+      1373,
+      1380
+    ],
+    "rationale": "The button label and popup share the locale's fullscreen term; the popup adds the true-mode distinction.",
+    "result": "pass",
+    "terms": [
+      "全螢幕顯示視覺化效果",
+      "進入真正的全螢幕模式。"
+    ]
+  },
+  {
+    "group": "securityHardening",
+    "locale": "vi",
+    "positions": [
+      1363,
+      1364
+    ],
+    "rationale": "The accessible web-specific label retains the same security-hardening term as the visible checkbox label and adds only the web scope.",
+    "result": "pass",
+    "terms": [
+      "Bắt buộc tăng cường bảo mật",
+      "Bắt buộc tăng cường bảo mật web"
+    ]
+  },
+  {
+    "group": "libraryPathAndScan",
+    "locale": "vi",
+    "positions": [
+      1367,
+      1368,
+      1375
+    ],
+    "rationale": "Library/path/scan wording stays consistent across the validation, empty state, and path placeholder; Library Health is retained as the named feature.",
+    "result": "pass",
+    "terms": [
+      "Nhập đường dẫn Library Health trước khi bắt đầu quét.",
+      "Nhập đường dẫn thư viện và bắt đầu quét để phát hiện sự cố.",
+      "Nhập đường dẫn thư viện (ví dụ: /music hoặc C:\\Music)"
+    ]
+  },
+  {
+    "group": "fullscreenVisualizer",
+    "locale": "vi",
+    "positions": [
+      1373,
+      1380
+    ],
+    "rationale": "The button label and popup share the locale's fullscreen term; the popup adds the true-mode distinction.",
+    "result": "pass",
+    "terms": [
+      "Mở trình trực quan hóa toàn màn hình",
+      "Chuyển sang chế độ toàn màn hình thực sự."
+    ]
+  },
+  {
+    "group": "securityHardening",
+    "locale": "id",
+    "positions": [
+      1363,
+      1364
+    ],
+    "rationale": "The accessible web-specific label retains the same security-hardening term as the visible checkbox label and adds only the web scope.",
+    "result": "pass",
+    "terms": [
+      "Terapkan penguatan keamanan",
+      "Terapkan penguatan keamanan web"
+    ]
+  },
+  {
+    "group": "libraryPathAndScan",
+    "locale": "id",
+    "positions": [
+      1367,
+      1368,
+      1375
+    ],
+    "rationale": "Library/path/scan wording stays consistent across the validation, empty state, and path placeholder; Library Health is retained as the named feature.",
+    "result": "pass",
+    "terms": [
+      "Masukkan jalur Library Health sebelum memulai pemindaian.",
+      "Masukkan jalur pustaka dan mulai pemindaian untuk mendeteksi masalah.",
+      "Masukkan jalur pustaka (misalnya, /music atau C:\\Music)"
+    ]
+  },
+  {
+    "group": "fullscreenVisualizer",
+    "locale": "id",
+    "positions": [
+      1373,
+      1380
+    ],
+    "rationale": "The button label and popup share the locale's fullscreen term; the popup adds the true-mode distinction.",
+    "result": "pass",
+    "terms": [
+      "Buka visualizer dalam layar penuh",
+      "Masuk ke mode layar penuh sebenarnya."
+    ]
+  }
+]

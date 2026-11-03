@@ -1,0 +1,81 @@
+{
+  "artifact": "slskR PR #204 W1363-W1382 sealed primary semantic review",
+  "baseRef": "main",
+  "callerlessHoldCellCount": 12,
+  "callerlessHoldPosition": 1376,
+  "candidateFreeInputOnly": true,
+  "cellCount": 240,
+  "dispositionCounts": {
+    "accept-current": 203,
+    "correction": 7,
+    "hold": 12,
+    "refinement": 18
+  },
+  "files": {
+    "README.md": "ec88977d57bec4f945d54e7f840378d602c23c0e0314ce004508b6a1d15c2608",
+    "input-verification.json": "81391ecced2b7e02911a1568d0d0fd80bda4987775615b73f51e216c9813f271",
+    "review-ledger.jsonl": "293efff51c367a78763c78a3d0363b5ccabaa142e0f1e2191ef4d95b0f27563f",
+    "source-context-evidence.jsonl": "de1a2ee611c5844b22b060a355102cdd14020b8ab5dfcd244f9d764895fe279c",
+    "verifier-output.json": "478f52ff5aeaea58852f4863395247bf42273efe0475a542910627450f24c95c",
+    "verify-primary-ledger.py": "3bc02e9b0abcf757193e60e72022ec15ea74944477f7ffa82173c66bd2fc3a8d"
+  },
+  "head": "281c39ec0cdb3677d7d523b7c4f0cd0d52bbf14c",
+  "headRef": "codex/slskr-l10n-audit-20261030",
+  "inputManifestSha256": "fc43ea14fc3e04f94c1d99a29cb5007e662123011665d18992432487228ce6ac",
+  "inputPacketPath": "/home/keith/Documents/code/task-scratch/slskr-pr204-next-candidatefree-20261103/candidate-free-input",
+  "inputVerifierResult": {
+    "callerReferences": 33,
+    "callerlessPositions": [
+      1376
+    ],
+    "cells": 240,
+    "changedPriorHolds": 0,
+    "checksumListSha256": "e8ef35c49b2e3e2eced98ae787c34ca0ed09a3b6870aaa6129f54a445488daf3",
+    "head": "281c39ec0cdb3677d7d523b7c4f0cd0d52bbf14c",
+    "manifestSha256": "fc43ea14fc3e04f94c1d99a29cb5007e662123011665d18992432487228ce6ac",
+    "mismatchCounts": {
+      "markupMismatchCount": 0,
+      "numericTokenMismatchCount": 0,
+      "placeholderSequenceMismatchCount": 0,
+      "protectedLiteralMismatchCount": 2
+    },
+    "positions": [
+      1363,
+      1382
+    ],
+    "priorHoldsReattested": 23,
+    "priorSelectedRowsReattested": 120,
+    "result": "PASS",
+    "sourceQueueOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+    "tree": "777b234b1aa3cb7a2c9fd560b2c0fecc4e7fe49d"
+  },
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "nativeSpeakerReview": "not performed",
+  "positions": [
+    1363,
+    1382
+  ],
+  "primaryReviewScope": "Candidate-free source and production caller context only; no blind packet or other review material consulted.",
+  "priorCarryForwardHoldsChanged": 0,
+  "priorCarryForwardHoldsReattestedByInputVerifier": 23,
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "repositoryOrPrEdits": false,
+  "sourceCount": 20,
+  "testsBuildsOrCiRun": false,
+  "tree": "777b234b1aa3cb7a2c9fd560b2c0fecc4e7fe49d",
+  "unresolvedPathExampleMismatchCells": 2
+}
