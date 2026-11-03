@@ -1,0 +1,24 @@
+{
+  "result": "PASS",
+  "head": "727500e46852a5b6578e571781693857510943d9",
+  "tree": "c71165c20fc6ba7d49d563898ea2ec8e1e448672",
+  "positions": [
+    1403,
+    1422
+  ],
+  "cells": 240,
+  "sourceQueueOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "callerReferences": 30,
+  "callerlessPositions": [],
+  "priorHoldsReattested": 35,
+  "changedPriorHolds": 0,
+  "priorSelectedRowsReattested": 160,
+  "mismatchCounts": {
+    "placeholderSequenceMismatchCount": 0,
+    "markupMismatchCount": 0,
+    "numericTokenMismatchCount": 2,
+    "protectedLiteralMismatchCount": 0
+  },
+  "manifestSha256": "0ecb7a69e8892b53dfdea64aac207d2e478baa912038f5c4845cba5c5872e068",
+  "checksumListSha256": "56773cbe0504f7daf871c2c6c8740ecc88ab8e1322bbec530f25318986bd1a2b"
+}

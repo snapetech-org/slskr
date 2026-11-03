@@ -1,0 +1,25 @@
+{
+  "inputVerifier": "PASS",
+  "cellCount": 240,
+  "decisionCounts": {
+    "accept-current": 176,
+    "correction": 53,
+    "refinement": 11
+  },
+  "confidenceCounts": {
+    "moderate": 216,
+    "high": 24
+  },
+  "baselineDiagnostics": {
+    "placeholderSequenceMismatchCount": 0,
+    "markupMismatchCount": 0,
+    "numericTokenMismatchCount": 2,
+    "protectedLiteralMismatchCount": 0
+  },
+  "reviewedDiagnostics": {
+    "placeholderSequenceMismatchCount": 0,
+    "markupMismatchCount": 0,
+    "numericTokenMismatchCount": 0,
+    "protectedLiteralMismatchCount": 0
+  }
+}

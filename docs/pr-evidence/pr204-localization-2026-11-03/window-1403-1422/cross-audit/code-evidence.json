@@ -1,0 +1,89 @@
+{
+  "files": [
+    {
+      "fileSha256": "24d9494cf78e88fdc700da54a99139ebd67d6c2b608d033b9d7d8dd312c2c706",
+      "gitBlob": "16b7b3ec33fe15748e47a45c397b58d0d35d9387",
+      "path": "web/src/lib/automationRecipes.js",
+      "selectedLines": [
+        {
+          "line": 75,
+          "text": "    title: 'Wishlist Retry',"
+        },
+        {
+          "line": 88,
+          "text": "    title: 'Library Health Scan',"
+        }
+      ]
+    },
+    {
+      "fileSha256": "3ef47356d5cd5942894965fda3bc2999b654b0812a0c7274f85779b78dc99f9d",
+      "gitBlob": "c91e5e8e4250fda54163c8b7841aa9852754ff14",
+      "path": "web/src/components/System/MediaCore/PodChannelManagementPanel.jsx",
+      "selectedLines": [
+        {
+          "line": 117,
+          "text": "  const handleUpdateChannel = async (channelId) => {"
+        },
+        {
+          "line": 126,
+          "text": "        channelId,"
+        },
+        {
+          "line": 143,
+          "text": "  const handleDeleteChannel = async (channelId, channelName) => {"
+        },
+        {
+          "line": 147,
+          "text": "          'Are you sure you want to delete the channel \"{channelName}\"? This action cannot be undone.',"
+        },
+        {
+          "line": 157,
+          "text": "      await mediacore.deleteChannel(channelPodId, channelId);"
+        },
+        {
+          "line": 170,
+          "text": "    setEditChannelName(channel.name);"
+        },
+        {
+          "line": 269,
+          "text": "                  <Header size=\"tiny\"><LocalizedText source={\"Existing Channels\"} /></Header>"
+        },
+        {
+          "line": 271,
+          "text": "                    {channels.map((channel) => ("
+        },
+        {
+          "line": 273,
+          "text": "                        key={channel.channelId}"
+        },
+        {
+          "line": 317,
+          "text": "                                <strong>{channel.name}</strong>"
+        },
+        {
+          "line": 325,
+          "text": "                                  ID: {channel.channelId} <LocalizedText source={\"• Type:\"} />{\" \"}{channel.kind}"
+        },
+        {
+          "line": 326,
+          "text": "                                  {channel.bindingInfo && <LocalizedText"
+        },
+        {
+          "line": 335,
+          "text": "                                    channel.name.toLowerCase() === 'general' &&"
+        },
+        {
+          "line": 345,
+          "text": "                                    channel.name.toLowerCase() === 'general' &&"
+        }
+      ]
+    }
+  ],
+  "head": "727500e46852a5b6578e571781693857510943d9",
+  "notes": [
+    "Automation recipe source titles are Wishlist Retry and Library Health Scan.",
+    "The message at position 1416 literally names Wishlist Retry and Library Health; the exact catalog entries for those literal keys are pinned separately.",
+    "PodChannelManagementPanel stores channelId, name, kind, and supports channel create/edit/delete, confirming a digital channel object for zh-Hant 頻道."
+  ],
+  "tree": "c71165c20fc6ba7d49d563898ea2ec8e1e448672"
+}

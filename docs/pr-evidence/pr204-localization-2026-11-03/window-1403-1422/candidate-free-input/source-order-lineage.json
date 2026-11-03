@@ -1,0 +1,167 @@
+{
+  "selectionRule": "One-based positions in exact Unicode lexicographic order of all current English source lookup keys shared by twelve locale catalogs.",
+  "currentWindow": "W1403-W1422",
+  "currentSelectedPositions": [
+    1403,
+    1422
+  ],
+  "previousBoundaryPosition": 1402,
+  "nextBoundaryPosition": 1423,
+  "previousCandidateFreeWindow": "W1383-W1402",
+  "previousCandidateFreeHead": "b5da2589b6e8f2d4b0c0faab28bcdf0481e42438",
+  "previousCandidateFreeTree": "36ae6ecf3b705995fbd549cb8650d6458936df91",
+  "previousCandidateFreeManifestSha256": "305e53b328c07083e7144ecbb33d52fe64fc1b08a794848a7dcec61a29a701ed",
+  "previousCandidateFreeChecksumListSha256": "f23606c20a24aebb33e7a5b79690a43bc54864da6fb516d3526828f7a1f192c1",
+  "previousSourceQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+  "previousWindowSelectedPositions": [
+    1383,
+    1402
+  ],
+  "previousWindowNextBoundaryPosition": 1403,
+  "currentHeadCommittedSourceQueuePath": "docs/pr-evidence/pr204-localization-2026-11-03/window-1383-1402/cross-audit/candidate-free-input/source-queue.jsonl",
+  "currentHeadCommittedSourceQueueBlob": "8307c50b195f633d766d23c85530f23317cb128d",
+  "currentHeadCommittedSourceQueueMatchesCurrentQueue": true,
+  "liveCatalogSourceKeySetCount": 5441,
+  "liveCatalogSourceKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "liveCatalogOrderMatchesPreviousQueue": true,
+  "priorSelectionWindowCount": 8,
+  "priorSelectedSourceCount": 160,
+  "priorSelectionsAllMatchCurrentQueue": true,
+  "priorSelectionArtifacts": [
+    {
+      "window": "W1203-W1222",
+      "path": "docs/pr-evidence/pr204-localization-2026-11-03/window-1203-1222/candidate-free-input",
+      "head": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+      "tree": "ba62eed0bd600a8f69bb6c0cbefe99da7ee47623",
+      "manifestSha256": "1a5b1c58ab7bc7ca5c6c7c9b67a2cf24d65bc950a34dffb35ad83d8f0d81d725",
+      "checksumListSha256": "4525f64eec71544375b5af2a44592e0560b6fa904e3bcc9e14dc6715236dd1d3",
+      "sourceQueueSha256": "da4f6b93e7d3f05c03b3dbd7a39959c8990a5089b78ea8b850b568aa2de38236",
+      "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+      "selectedPositions": [
+        1203,
+        1222
+      ]
+    },
+    {
+      "window": "W1243-W1262",
+      "path": "docs/pr-evidence/pr204-localization-2026-11-03/window-1243-1262/candidate-free-input",
+      "head": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+      "tree": "0ead1eb1678b4df05ca7feec9776c0319d4eefd3",
+      "manifestSha256": "f7a0a24e2cb76edf2f2a43b7792a1c3fdeba90d471bbc2288833b3eeb386d82e",
+      "checksumListSha256": "a298dd57d888a652a89e0936881beb3b2897f83f07b93d9bc8f1f22560691c5b",
+      "sourceQueueSha256": "da4f6b93e7d3f05c03b3dbd7a39959c8990a5089b78ea8b850b568aa2de38236",
+      "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+      "selectedPositions": [
+        1243,
+        1262
+      ]
+    },
+    {
+      "window": "W1283-W1302",
+      "path": "docs/pr-evidence/pr204-localization-2026-11-03/window-1283-1302/review-bundle/candidate-free-input",
+      "head": "55ca2ae0788bfd79daab5cc49f49ebb608593e98",
+      "tree": "d5677673b766d572102bba249af2ab69095dea0d",
+      "manifestSha256": "6f4f7bc3ed5d3d8097916cf37aa4a2b9ee043141cd1814aa880b673c593de944",
+      "checksumListSha256": "abbb1b89549b82072fcbf5fce3c6ae580cc5bd499b4fe5dadd5df7bd0c567f89",
+      "sourceQueueSha256": "da4f6b93e7d3f05c03b3dbd7a39959c8990a5089b78ea8b850b568aa2de38236",
+      "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+      "selectedPositions": [
+        1283,
+        1302
+      ]
+    },
+    {
+      "window": "W1303-W1322",
+      "path": "docs/pr-evidence/pr204-localization-2026-11-03/window-1303-1322/candidate-free-input",
+      "head": "f46b8b2322f4b944f39f34d5bb8d55852ba330c8",
+      "tree": "4eba98f951a745dac6b5332bd6796bf57c7037e2",
+      "manifestSha256": "3145ccef78adbea528fe062d053ba90067207c4c49611ba43994da78383b244c",
+      "checksumListSha256": "d30a1b2aa55a13eb0b33a116cfbf965494b675bbedf3acb9a6fbc61c53ead652",
+      "sourceQueueSha256": "da4f6b93e7d3f05c03b3dbd7a39959c8990a5089b78ea8b850b568aa2de38236",
+      "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+      "selectedPositions": [
+        1303,
+        1322
+      ]
+    },
+    {
+      "window": "W1323-W1342",
+      "path": "docs/pr-evidence/pr204-localization-2026-11-03/window-1323-1342/candidate-free-input",
+      "head": "6ccefe07d8154acbc08e34249ef7039dc5bc1f08",
+      "tree": "e0c1d1341be45ed73bd30cf027b479ce3b5bb95d",
+      "manifestSha256": "fe7d3accc794f33a7e0fa4c8bda6f7a741d10b0abcfbb7f92f93746b64f2dad1",
+      "checksumListSha256": "c59efa7958cee2ef8fed0b9bb61e2b170fd9d3f4f4cbc116baac3a7a98974f7f",
+      "sourceQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+      "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+      "selectedPositions": [
+        1323,
+        1342
+      ]
+    },
+    {
+      "window": "W1343-W1362",
+      "path": "docs/pr-evidence/pr204-localization-2026-11-03/window-1343-1362/candidate-free-input",
+      "head": "130462c56f75d3c8fc2a90663a48c0474ad1208b",
+      "tree": "47aba96d79eb57d6024fb358ee59cde931f0de3b",
+      "manifestSha256": "d11af73c2178f0789b5429ece69811719e7d50b54bbcef08c93fda352376834e",
+      "checksumListSha256": "7a77ceaae645ea04165ba88924ce6bed87d7650c52d7d91ef9e3f98b386327b3",
+      "sourceQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+      "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+      "selectedPositions": [
+        1343,
+        1362
+      ]
+    },
+    {
+      "window": "W1363-W1382",
+      "path": "docs/pr-evidence/pr204-localization-2026-11-03/window-1363-1382/candidate-free-input",
+      "head": "281c39ec0cdb3677d7d523b7c4f0cd0d52bbf14c",
+      "tree": "777b234b1aa3cb7a2c9fd560b2c0fecc4e7fe49d",
+      "manifestSha256": "fc43ea14fc3e04f94c1d99a29cb5007e662123011665d18992432487228ce6ac",
+      "checksumListSha256": "e8ef35c49b2e3e2eced98ae787c34ca0ed09a3b6870aaa6129f54a445488daf3",
+      "sourceQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+      "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+      "selectedPositions": [
+        1363,
+        1382
+      ]
+    },
+    {
+      "window": "W1383-W1402",
+      "path": "docs/pr-evidence/pr204-localization-2026-11-03/window-1383-1402/cross-audit/candidate-free-input",
+      "head": "b5da2589b6e8f2d4b0c0faab28bcdf0481e42438",
+      "tree": "36ae6ecf3b705995fbd549cb8650d6458936df91",
+      "manifestSha256": "305e53b328c07083e7144ecbb33d52fe64fc1b08a794848a7dcec61a29a701ed",
+      "checksumListSha256": "f23606c20a24aebb33e7a5b79690a43bc54864da6fb516d3526828f7a1f192c1",
+      "sourceQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+      "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+      "selectedPositions": [
+        1383,
+        1402
+      ]
+    }
+  ],
+  "firstSelected": {
+    "position": 1403,
+    "sourceKey": "Event text filter",
+    "sourceKeySha256": "7e785286e3c810f86a1fcb00ed68c212832540167c8eee9003a399f6507738cd",
+    "historicalSourceOrdinal": null
+  },
+  "lastSelected": {
+    "position": 1422,
+    "sourceKey": "Existing hash reused",
+    "sourceKeySha256": "2a9a730c4ee481641dde42f0a2aee2981041d6f72d38b0103caf2d6cd0b5ea46",
+    "historicalSourceOrdinal": null
+  },
+  "previousBoundary": {
+    "position": 1402,
+    "sourceKey": "Event retention days",
+    "sourceKeySha256": "8a5514bb347a594667835716799626d8154bd5371d9507a31e2d40ef1fa245c1"
+  },
+  "nextBoundary": {
+    "position": 1423,
+    "sourceKey": "Existing peer data is retained until the next successful poll.",
+    "sourceKeySha256": "dc7b540d9f36b7195124a64e5352e37ad3b85206e942841d7df905b69ad66559"
+  },
+  "historicalSourceOrdinalsClaimed": false
+}
