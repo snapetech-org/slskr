@@ -1,0 +1,22 @@
+{
+  "artifact": "slskR PR #204 W1283-W1302 exact-hash application plan",
+  "parentHead": "55ca2ae0788bfd79daab5cc49f49ebb608593e98",
+  "parentTree": "d5677673b766d572102bba249af2ab69095dea0d",
+  "positions": [
+    1283,
+    1302
+  ],
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "selectedUpdates": 145,
+  "acceptCurrent": 95,
+  "holds": 0,
+  "candidateFreeManifestSha256": "6f4f7bc3ed5d3d8097916cf37aa4a2b9ee043141cd1814aa880b673c593de944",
+  "candidateFreeChecksumListSha256": "abbb1b89549b82072fcbf5fce3c6ae580cc5bd499b4fe5dadd5df7bd0c567f89",
+  "crossAuditLedgerSha256": "7f2b43e6b2ed350ccc2c9f1b5199aeea5a11a63bf2c9a70883b6c0119ea04fe0",
+  "crossAuditSummarySha256": "6f7223ce6928fd8898ae1e45367dc10a2fe90cafde433de3db9ec2ba87594c82",
+  "crossAuditChecksumListSha256": "8f16381d194fc7dd08d285764f8d3d830af03734c4eaf59d4b31968451fe0f24",
+  "authorizationSha256": "3fee9d354d7cc4824a67ae544a4c812f3be9da95a9e0f424cca7e792980edeb1",
+  "planSha256": "e78430019cc62807abc45baeb297f944933e8fcc0bf7f57c4aec79ce71885284"
+}

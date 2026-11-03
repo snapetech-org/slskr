@@ -1,0 +1,15 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "state": "OPEN",
+  "draft": true,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "head": "55ca2ae0788bfd79daab5cc49f49ebb608593e98",
+  "tree": "d5677673b766d572102bba249af2ab69095dea0d",
+  "baseRef": "main",
+  "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "branchRef": "55ca2ae0788bfd79daab5cc49f49ebb608593e98",
+  "pullRef": "55ca2ae0788bfd79daab5cc49f49ebb608593e98",
+  "attestedAtUtc": "2026-11-03T12:00:08.766040+00:00",
+  "method": "GitHub GraphQL selected fields, GitHub commit tree API, and git ls-remote; PR body not requested"
+}
