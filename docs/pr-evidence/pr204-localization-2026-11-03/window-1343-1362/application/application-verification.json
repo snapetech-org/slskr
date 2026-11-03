@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "result": "PASS",
+  "parentHead": "130462c56f75d3c8fc2a90663a48c0474ad1208b",
+  "parentTree": "47aba96d79eb57d6024fb358ee59cde931f0de3b",
+  "readbackCells": 240,
+  "selectedUpdates": 58,
+  "corrections": 54,
+  "refinements": 4,
+  "acceptCurrent": 182,
+  "holds": 0,
+  "carryForwardHolds": 23,
+  "carryForwardHoldsPreserved": true,
+  "catalogCount": 12,
+  "catalogKeyOrderPreserved": true,
+  "nonTargetValuesPreserved": true,
+  "catalogFiles": [
+    {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "postApplyFileSha256": "fe1a0ab359aa43c1adc08dda66e8f091b77baf8143c8cb2427bf368eb22e36f7",
+      "changedTargetCount": 6
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "postApplyFileSha256": "2c0000f046d93e11cec4d7941290d543bed7dbcad8759c3da55509c9f5a05bd6",
+      "changedTargetCount": 3
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "postApplyFileSha256": "b29f7d8066abb0eaa23addf4decc2127859240cf8b2ad90ec965f27ac62325d4",
+      "changedTargetCount": 6
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "postApplyFileSha256": "e532c6c87b12561f981f9883b570895391ca2fa8a227b1c7d048941309e737f2",
+      "changedTargetCount": 3
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "postApplyFileSha256": "54da4b7634f7673501c406e5c01dd62055c7a586fe2aa2f7c91eebe1a63d8daf",
+      "changedTargetCount": 4
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "postApplyFileSha256": "4407c36f06d9dfcceb03cf106e2ae11ba88e233eba99b36fa5e5b7ece97f58c3",
+      "changedTargetCount": 6
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "postApplyFileSha256": "e88c6a4656bc8276519b07166405f43d0577f2f26dabc9679eb300a16a8d3378",
+      "changedTargetCount": 7
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "postApplyFileSha256": "8cfeeed82d8482f7c4b8513329e5bb2445927ae577c275bacf644f6d16a43a09",
+      "changedTargetCount": 6
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "postApplyFileSha256": "ae0c5bf6a38ce15c21c5835073fca302bf301bd2ad9c883565d3244990ccf382",
+      "changedTargetCount": 3
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "postApplyFileSha256": "18438cd58568e5e54cc6ac637efc281b86909814bf355eb1078cbf4cbcb26280",
+      "changedTargetCount": 3
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "postApplyFileSha256": "74eab6b6081f38aed98b1114ba1a7c2b4b37901cf563f7eaad3c04d88b08eac0",
+      "changedTargetCount": 6
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "postApplyFileSha256": "de717606220cc7ba5a323db99e8752644e825848dfca32da75d0927a1dcf80c7",
+      "changedTargetCount": 5
+    }
+  ]
+}

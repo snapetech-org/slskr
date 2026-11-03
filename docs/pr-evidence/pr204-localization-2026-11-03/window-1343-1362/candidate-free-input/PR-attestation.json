@@ -1,0 +1,21 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "state": "OPEN",
+  "draft": true,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "head": "130462c56f75d3c8fc2a90663a48c0474ad1208b",
+  "tree": "47aba96d79eb57d6024fb358ee59cde931f0de3b",
+  "baseRef": "main",
+  "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "branchRef": "130462c56f75d3c8fc2a90663a48c0474ad1208b",
+  "pullRef": "130462c56f75d3c8fc2a90663a48c0474ad1208b",
+  "localWorktree": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1343-1362-primary-20261103/repo",
+  "localWorktreeHead": "130462c56f75d3c8fc2a90663a48c0474ad1208b",
+  "localWorktreeTree": "47aba96d79eb57d6024fb358ee59cde931f0de3b",
+  "localWorktreeBranch": "detached",
+  "localWorktreeStatusClean": true,
+  "parentCommit": "6ccefe07d8154acbc08e34249ef7039dc5bc1f08",
+  "attestedAtUtc": "2026-11-03T14:58:30.093540+00:00",
+  "method": "live gh PR fields, gh commit object, git ls-remote, clean pinned worktree"
+}

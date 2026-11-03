@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W1343-W1362",
+  "head": "130462c56f75d3c8fc2a90663a48c0474ad1208b",
+  "tree": "47aba96d79eb57d6024fb358ee59cde931f0de3b",
+  "candidateFreeInputManifestSha256": "d11af73c2178f0789b5429ece69811719e7d50b54bbcef08c93fda352376834e",
+  "candidateFreeInputChecksumListSha256": "7a77ceaae645ea04165ba88924ce6bed87d7650c52d7d91ef9e3f98b386327b3",
+  "sourceIds": 20,
+  "locales": 12,
+  "cells": 240,
+  "dispositions": {
+    "accept-current": 197,
+    "refinement": 8,
+    "correction": 35
+  },
+  "proposedChanges": 43,
+  "proposedChangesByPosition": {
+    "1344": 12,
+    "1345": 8,
+    "1348": 7,
+    "1349": 2,
+    "1350": 1,
+    "1354": 2,
+    "1357": 2,
+    "1358": 2,
+    "1360": 1,
+    "1361": 6
+  },
+  "proposedChangesByLocale": {
+    "es": 5,
+    "zh-Hans": 1,
+    "hi": 6,
+    "de": 2,
+    "ja": 3,
+    "fr": 4,
+    "pt-BR": 6,
+    "ar": 5,
+    "ko": 2,
+    "zh-Hant": 1,
+    "vi": 5,
+    "id": 3
+  },
+  "holds": 0,
+  "candidateFreeBaselineMismatchCounts": {
+    "placeholderSequenceMismatchCount": 0,
+    "markupMismatchCount": 0,
+    "numericTokenMismatchCount": 0,
+    "protectedLiteralMismatchCount": 0
+  },
+  "allCellsIndependentlyReviewed": true,
+  "sourceCallerContextUsed": true,
+  "candidateFreeInputOnly": true,
+  "primaryReviewReadBeforeSeal": false,
+  "nativeSpeakerApproval": false,
+  "exactHeadBrowserReview": false,
+  "catalogSourceAdditionsNeededForThisWindow": false,
+  "reviewedAtUTC": "2026-11-03T15:15:06.807753+00:00"
+}

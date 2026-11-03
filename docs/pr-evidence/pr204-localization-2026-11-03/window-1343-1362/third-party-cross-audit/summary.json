@@ -1,0 +1,1599 @@
+{
+  "artifact": "Third-party localization cross-audit resolution",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "130462c56f75d3c8fc2a90663a48c0474ad1208b",
+  "tree": "47aba96d79eb57d6024fb358ee59cde931f0de3b",
+  "window": {
+    "firstPosition": 1343,
+    "lastPosition": 1362,
+    "sourceCount": 20,
+    "localeCount": 12,
+    "cellCount": 240
+  },
+  "candidateFreeInput": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1343-1362-primary-20261103/input",
+  "primaryReview": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1343-1362-primary-20261103/primary-review",
+  "blindReview": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1343-1362-primary-20261103/blind-review",
+  "pins": {
+    "candidateFreeManifestSha256": "d11af73c2178f0789b5429ece69811719e7d50b54bbcef08c93fda352376834e",
+    "candidateFreeChecksumListSha256": "7a77ceaae645ea04165ba88924ce6bed87d7650c52d7d91ef9e3f98b386327b3",
+    "primaryManifestSha256": "c59adb03e97bfdfb24afe3831cbbbb3142a0fe120650902881b14fcf16fcea1d",
+    "primaryChecksumListSha256": "677c6e65a5a8edebe82d4d223f35b18df7c134e1cc6cd6345c6e6337cda4d701",
+    "blindChecksumListSha256": "5f464b097c17d44704a520d37c651c3b653e57e9df47af2e271436002d4939f3",
+    "blindProvenanceSha256": "55b79b13a8ee7910985a05fb615d813aeef823981ddb4bf448983a3ab9f30c7f",
+    "runtimeContextSha256": "d476c425b4c17edf442cdb04b9a92f34bb5d99fd770ce42f3c6db439234ec69b"
+  },
+  "comparison": {
+    "allCellsCompared": 240,
+    "exactTargetAndDispositionAgreementCount": 183,
+    "targetDisagreementCount": 57,
+    "dispositionDisagreementCount": 27,
+    "adjudicatedDisagreementCount": 57,
+    "remainingTargetDisagreements": 0,
+    "remainingDispositionDisagreements": 0,
+    "agreeingTargets": [
+      {
+        "position": 1343,
+        "locale": "ar",
+        "target": "تمكين حدود سرعة التحميل المجدولة بموجب سياسة التحميل العالمية.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1343,
+        "locale": "de",
+        "target": "Aktivieren Sie geplante Upload-Geschwindigkeitsbegrenzungen gemäß der globalen Upload-Richtlinie.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1343,
+        "locale": "es",
+        "target": "Habilite los límites de velocidad de carga programados según la política de carga global.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1343,
+        "locale": "fr",
+        "target": "Activez les limites de vitesse d'envoi planifiées dans le cadre de la politique globale d'envoi.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1343,
+        "locale": "hi",
+        "target": "वैश्विक अपलोड नीति के तहत निर्धारित अपलोड गति सीमा सक्षम करें।",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1343,
+        "locale": "id",
+        "target": "Aktifkan batas kecepatan unggahan terjadwal berdasarkan kebijakan unggahan global.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1343,
+        "locale": "ja",
+        "target": "グローバル アップロード ポリシーで、スケジュールされたアップロード速度制限を有効にします。",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1343,
+        "locale": "ko",
+        "target": "글로벌 업로드 정책에 따라 예약된 업로드 속도 제한을 활성화합니다.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1343,
+        "locale": "pt-BR",
+        "target": "Ative os limites de velocidade de upload programados na política de upload global.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1343,
+        "locale": "zh-Hans",
+        "target": "在全局上传策略下启用计划上传速度限制。",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1343,
+        "locale": "zh-Hant",
+        "target": "在全域上傳策略下啟用計劃上傳速度限制。",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1345,
+        "locale": "de",
+        "target": "Aktivieren Sie strenge Start- und Anforderungsprüfungen zur Härtung für exponierte Bereitstellungen.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1345,
+        "locale": "ko",
+        "target": "노출된 배포에 대해 엄격한 시작 및 요청 강화 검사를 활성화합니다.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1345,
+        "locale": "zh-Hans",
+        "target": "对暴露的部署启用严格的启动和请求强化检查。",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1345,
+        "locale": "zh-Hant",
+        "target": "對暴露的部署啟用嚴格的啟動和請求強化檢查。",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1346,
+        "locale": "ar",
+        "target": "فعّل المعادل لمشغل المتصفح هذا.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1346,
+        "locale": "de",
+        "target": "Den Equalizer für diesen Browser-Player aktivieren.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1346,
+        "locale": "es",
+        "target": "Activar el ecualizador para este reproductor del navegador.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1346,
+        "locale": "fr",
+        "target": "Activer l’égaliseur pour ce lecteur dans le navigateur.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1346,
+        "locale": "hi",
+        "target": "इस ब्राउज़र प्लेयर के लिए इक्वलाइज़र चालू करें।",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1346,
+        "locale": "id",
+        "target": "Aktifkan equalizer untuk pemutar browser ini.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1346,
+        "locale": "ja",
+        "target": "このブラウザプレーヤーでイコライザーを有効にします。",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1346,
+        "locale": "ko",
+        "target": "이 브라우저 플레이어에서 이퀄라이저를 활성화합니다.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1346,
+        "locale": "pt-BR",
+        "target": "Ativar o equalizador para este player do navegador.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1346,
+        "locale": "vi",
+        "target": "Bật bộ cân bằng cho trình phát trên trình duyệt này.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1346,
+        "locale": "zh-Hans",
+        "target": "为此浏览器播放器启用均衡器。",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1346,
+        "locale": "zh-Hant",
+        "target": "為此瀏覽器播放器啟用等化器。",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1347,
+        "locale": "ar",
+        "target": "تمكين سياسة الحد الأقصى للسرعة المجدولة ذات المستوى الأعلى القديمة في YAML.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1347,
+        "locale": "de",
+        "target": "Aktivieren Sie die alte Richtlinie für geplante Geschwindigkeitsbegrenzungen der obersten Ebene in YAML.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1347,
+        "locale": "es",
+        "target": "Habilite la política de límite de velocidad programada de nivel superior heredada en YAML.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1347,
+        "locale": "fr",
+        "target": "Activez la stratégie de limitation de vitesse programmée de niveau supérieur héritée dans YAML.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1347,
+        "locale": "hi",
+        "target": "YAML में लीगेसी शीर्ष-स्तरीय निर्धारित गति-सीमा नीति सक्षम करें।",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1347,
+        "locale": "id",
+        "target": "Aktifkan kebijakan batas kecepatan terjadwal tingkat atas yang lama di YAML.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1347,
+        "locale": "ja",
+        "target": "YAML で従来のトップレベルのスケジュールされた速度制限ポリシーを有効にします。",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1347,
+        "locale": "ko",
+        "target": "YAML에서 레거시 최상위 예약 속도 제한 정책을 활성화합니다.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1347,
+        "locale": "pt-BR",
+        "target": "Ative a política herdada de limite de velocidade agendada de nível superior em YAML.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1347,
+        "locale": "vi",
+        "target": "Kích hoạt chính sách giới hạn tốc độ theo lịch trình cấp cao nhất cũ trong YAML.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1347,
+        "locale": "zh-Hans",
+        "target": "在 YAML 中启用旧的顶级计划限速策略。",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1347,
+        "locale": "zh-Hant",
+        "target": "在 YAML 中啟用舊的頂級計劃限速策略。",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1348,
+        "locale": "fr",
+        "target": "Activez les politiques de secours en cas de sous-performance pour les téléchargements en file d'attente ou bloqués.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1348,
+        "locale": "ja",
+        "target": "キューに入れられたダウンロードまたは停止したダウンロードに対するパフォーマンス不足の救済ポリシーを有効にします。",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1348,
+        "locale": "ko",
+        "target": "대기 중이거나 중단된 다운로드에 대해 성능 저하 복구 정책을 활성화합니다.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1349,
+        "locale": "de",
+        "target": "Aktivieren Sie geplante Geschwindigkeitsbegrenzungen zum Hochladen",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1349,
+        "locale": "es",
+        "target": "Habilitar límites de velocidad de carga programados",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1349,
+        "locale": "hi",
+        "target": "अपलोड निर्धारित गति सीमा सक्षम करें",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1349,
+        "locale": "id",
+        "target": "Aktifkan batas kecepatan unggah terjadwal",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1349,
+        "locale": "ja",
+        "target": "アップロードのスケジュールされた速度制限を有効にする",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1349,
+        "locale": "ko",
+        "target": "업로드 예약 속도 제한 활성화",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1349,
+        "locale": "pt-BR",
+        "target": "Ativar limites de velocidade programados para upload",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1349,
+        "locale": "vi",
+        "target": "Bật giới hạn tốc độ tải lên theo lịch trình",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1349,
+        "locale": "zh-Hans",
+        "target": "启用上传计划速度限制",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1349,
+        "locale": "zh-Hant",
+        "target": "啟用上傳計劃速度限制",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1350,
+        "locale": "de",
+        "target": "Aktivieren Sie Upload-Zeitpläne",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1350,
+        "locale": "es",
+        "target": "Habilitar horarios de carga",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1350,
+        "locale": "fr",
+        "target": "Activer les planifications d'envoi",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1350,
+        "locale": "hi",
+        "target": "अपलोड शेड्यूल सक्षम करें",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1350,
+        "locale": "id",
+        "target": "Aktifkan jadwal unggah",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1350,
+        "locale": "ja",
+        "target": "アップロードスケジュールを有効にする",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1350,
+        "locale": "ko",
+        "target": "업로드 일정 활성화",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1350,
+        "locale": "pt-BR",
+        "target": "Ativar agendamentos de upload",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1350,
+        "locale": "vi",
+        "target": "Bật lịch tải lên",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1350,
+        "locale": "zh-Hans",
+        "target": "启用上传计划",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1350,
+        "locale": "zh-Hant",
+        "target": "啟用上傳計劃",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1351,
+        "locale": "ar",
+        "target": "تمكين {label}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1351,
+        "locale": "de",
+        "target": "Aktivieren Sie {label}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1351,
+        "locale": "es",
+        "target": "Habilitar {label}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1351,
+        "locale": "fr",
+        "target": "Activer {label}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1351,
+        "locale": "hi",
+        "target": "{label} सक्षम करें",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1351,
+        "locale": "id",
+        "target": "Aktifkan {label}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1351,
+        "locale": "ja",
+        "target": "{label}を有効にする",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1351,
+        "locale": "ko",
+        "target": "{label} 활성화",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1351,
+        "locale": "pt-BR",
+        "target": "Habilitar {label}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1351,
+        "locale": "vi",
+        "target": "Kích hoạt {label}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1351,
+        "locale": "zh-Hans",
+        "target": "启用{label}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1351,
+        "locale": "zh-Hant",
+        "target": "啟用{label}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1352,
+        "locale": "ar",
+        "target": "تفعيل نشر {label}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1352,
+        "locale": "de",
+        "target": "Veröffentlichung von {label} aktivieren",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1352,
+        "locale": "es",
+        "target": "Activar la publicación de {label}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1352,
+        "locale": "fr",
+        "target": "Activer la publication de {label}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1352,
+        "locale": "hi",
+        "target": "{label} का प्रकाशन सक्षम करें",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1352,
+        "locale": "id",
+        "target": "Aktifkan publikasi {label}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1352,
+        "locale": "ja",
+        "target": "{label}の公開を有効にする",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1352,
+        "locale": "ko",
+        "target": "{label} 게시 활성화",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1352,
+        "locale": "pt-BR",
+        "target": "Ativar a publicação de {label}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1352,
+        "locale": "vi",
+        "target": "Bật việc công bố {label}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1352,
+        "locale": "zh-Hans",
+        "target": "启用{label}发布",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1352,
+        "locale": "zh-Hant",
+        "target": "啟用{label}發布",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1353,
+        "locale": "ar",
+        "target": "تمكين {title}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1353,
+        "locale": "de",
+        "target": "Aktivieren Sie {title}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1353,
+        "locale": "es",
+        "target": "Habilitar {title}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1353,
+        "locale": "fr",
+        "target": "Activer {title}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1353,
+        "locale": "hi",
+        "target": "{title} सक्षम करें",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1353,
+        "locale": "id",
+        "target": "Aktifkan {title}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1353,
+        "locale": "ja",
+        "target": "{title} を有効にする",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1353,
+        "locale": "ko",
+        "target": "{title} 활성화",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1353,
+        "locale": "pt-BR",
+        "target": "Ativar {title}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1353,
+        "locale": "vi",
+        "target": "Kích hoạt {title}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1353,
+        "locale": "zh-Hans",
+        "target": "启用 {title}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1353,
+        "locale": "zh-Hant",
+        "target": "啟用 {title}",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1355,
+        "locale": "ar",
+        "target": "مفعّل",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1355,
+        "locale": "de",
+        "target": "Aktiviert",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1355,
+        "locale": "es",
+        "target": "Habilitado",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1355,
+        "locale": "fr",
+        "target": "Activé",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1355,
+        "locale": "hi",
+        "target": "सक्षम",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1355,
+        "locale": "id",
+        "target": "Aktif",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1355,
+        "locale": "ja",
+        "target": "有効",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1355,
+        "locale": "ko",
+        "target": "활성화됨",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1355,
+        "locale": "pt-BR",
+        "target": "Ativado",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1355,
+        "locale": "vi",
+        "target": "Đã bật",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1355,
+        "locale": "zh-Hans",
+        "target": "已启用",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1355,
+        "locale": "zh-Hant",
+        "target": "已啟用",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1356,
+        "locale": "ar",
+        "target": "مفعّل (تشغيل تلقائيًا)",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1356,
+        "locale": "de",
+        "target": "Aktiviert (automatisch ausführen)",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1356,
+        "locale": "es",
+        "target": "Habilitado (ejecutar automáticamente)",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1356,
+        "locale": "fr",
+        "target": "Activé (exécution automatique)",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1356,
+        "locale": "hi",
+        "target": "सक्षम (स्वतः चलाएँ)",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1356,
+        "locale": "id",
+        "target": "Aktif (jalankan otomatis)",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1356,
+        "locale": "ja",
+        "target": "有効（自動実行）",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1356,
+        "locale": "ko",
+        "target": "활성화 (자동 실행)",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1356,
+        "locale": "pt-BR",
+        "target": "Ativado (executar automaticamente)",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1356,
+        "locale": "vi",
+        "target": "Đã bật (chạy tự động)",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1356,
+        "locale": "zh-Hans",
+        "target": "已启用（自动运行）",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1356,
+        "locale": "zh-Hant",
+        "target": "已啟用（自動執行）",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1357,
+        "locale": "ar",
+        "target": "مفعّل ومسموح بالتنزيل التلقائي وفق سياسة قائمة الأمنيات.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1357,
+        "locale": "de",
+        "target": "Aktiviert und gemäß Wunschlistenrichtlinie für automatische Downloads zugelassen.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1357,
+        "locale": "fr",
+        "target": "Activé et autorisé au téléchargement automatique selon la politique de la liste de souhaits.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1357,
+        "locale": "hi",
+        "target": "सक्षम है और विशलिस्ट नीति के अनुसार ऑटो-डाउनलोड की अनुमति है।",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1357,
+        "locale": "id",
+        "target": "Aktif dan diizinkan mengunduh otomatis menurut kebijakan Wishlist.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1357,
+        "locale": "ja",
+        "target": "有効で、ウィッシュリストのポリシーにより自動ダウンロードが許可されています。",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1357,
+        "locale": "ko",
+        "target": "위시리스트 정책에 따라 활성화되어 자동 다운로드가 허용됩니다.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1357,
+        "locale": "pt-BR",
+        "target": "Ativado e autorizado a baixar automaticamente pela política da lista de desejos.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1357,
+        "locale": "vi",
+        "target": "Đã bật và được phép tải tự động theo chính sách Danh sách mong muốn.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1357,
+        "locale": "zh-Hans",
+        "target": "已启用，并允许按照愿望清单策略自动下载。",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1357,
+        "locale": "zh-Hant",
+        "target": "已啟用，並依願望清單政策允許自動下載。",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1358,
+        "locale": "ar",
+        "target": "طلب قائمة أمنيات مفعّل ويتطلب موافقة يدوية للتنزيل.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1358,
+        "locale": "de",
+        "target": "Aktivierte Wunschlistenanfrage mit manueller Downloadfreigabe.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1358,
+        "locale": "es",
+        "target": "Solicitud habilitada de la lista de deseos que requiere aprobación manual para descargar.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1358,
+        "locale": "fr",
+        "target": "Demande de la liste de souhaits activée, avec approbation manuelle du téléchargement.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1358,
+        "locale": "hi",
+        "target": "सक्षम विशलिस्ट अनुरोध, डाउनलोड के लिए मैन्युअल स्वीकृति आवश्यक।",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1358,
+        "locale": "id",
+        "target": "Permintaan Wishlist aktif dengan persetujuan unduhan manual.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1358,
+        "locale": "ja",
+        "target": "有効なウィッシュリストリクエストです。ダウンロードには手動承認が必要です。",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1358,
+        "locale": "ko",
+        "target": "활성화된 위시리스트 요청이며 다운로드에 수동 승인이 필요합니다.",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1358,
+        "locale": "zh-Hans",
+        "target": "已启用的愿望清单请求，下载需手动批准。",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1358,
+        "locale": "zh-Hant",
+        "target": "已啟用的願望清單請求，下載需手動核准。",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1359,
+        "locale": "ar",
+        "target": "التشفير",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1359,
+        "locale": "de",
+        "target": "Verschlüsselung",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1359,
+        "locale": "es",
+        "target": "Cifrado",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1359,
+        "locale": "hi",
+        "target": "कूटलेखन",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1359,
+        "locale": "id",
+        "target": "Enkripsi",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1359,
+        "locale": "ja",
+        "target": "暗号化",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1359,
+        "locale": "ko",
+        "target": "암호화",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1359,
+        "locale": "pt-BR",
+        "target": "Criptografia",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1359,
+        "locale": "vi",
+        "target": "Mã hóa",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1359,
+        "locale": "zh-Hans",
+        "target": "加密",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1359,
+        "locale": "zh-Hant",
+        "target": "加密",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1360,
+        "locale": "ar",
+        "target": "انتهى",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1360,
+        "locale": "de",
+        "target": "Beendet",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1360,
+        "locale": "es",
+        "target": "Finalizada",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1360,
+        "locale": "fr",
+        "target": "Terminée",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1360,
+        "locale": "id",
+        "target": "Berakhir",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1360,
+        "locale": "ja",
+        "target": "終了",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1360,
+        "locale": "ko",
+        "target": "종료",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1360,
+        "locale": "pt-BR",
+        "target": "Encerrada",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1360,
+        "locale": "vi",
+        "target": "Đã kết thúc",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1360,
+        "locale": "zh-Hans",
+        "target": "结束时间",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1360,
+        "locale": "zh-Hant",
+        "target": "結束",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1361,
+        "locale": "de",
+        "target": "Endpunkt:",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1361,
+        "locale": "es",
+        "target": "Punto de conexión:",
+        "disposition": "correction"
+      },
+      {
+        "position": 1361,
+        "locale": "ko",
+        "target": "엔드포인트:",
+        "disposition": "correction"
+      },
+      {
+        "position": 1361,
+        "locale": "zh-Hans",
+        "target": "端点：",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1361,
+        "locale": "zh-Hant",
+        "target": "端點：",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1362,
+        "locale": "ar",
+        "target": "إلزام التوقيعات",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1362,
+        "locale": "de",
+        "target": "Signaturen erzwingen",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1362,
+        "locale": "es",
+        "target": "Exigir firmas",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1362,
+        "locale": "fr",
+        "target": "Signatures obligatoires",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1362,
+        "locale": "hi",
+        "target": "हस्ताक्षर अनिवार्य",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1362,
+        "locale": "id",
+        "target": "Tanda tangan wajib",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1362,
+        "locale": "ja",
+        "target": "署名を必須にする",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1362,
+        "locale": "ko",
+        "target": "서명 필수",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1362,
+        "locale": "pt-BR",
+        "target": "Exigir assinaturas",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1362,
+        "locale": "vi",
+        "target": "Bắt buộc chữ ký",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1362,
+        "locale": "zh-Hans",
+        "target": "强制签名",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1362,
+        "locale": "zh-Hant",
+        "target": "強制簽章",
+        "disposition": "accept-current"
+      }
+    ],
+    "adjudicatedCells": [
+      {
+        "position": 1343,
+        "locale": "vi",
+        "target": "Bật giới hạn tốc độ tải lên theo lịch, dựa trên chính sách tải lên toàn cục.",
+        "disposition": "refinement"
+      },
+      {
+        "position": 1344,
+        "locale": "ar",
+        "target": "تفعيل تفضيل دمج نتائج البحث المكررة",
+        "disposition": "correction"
+      },
+      {
+        "position": 1344,
+        "locale": "de",
+        "target": "Aktivieren Sie die Einstellung zum Zusammenfassen doppelter Suchergebnisse.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1344,
+        "locale": "es",
+        "target": "Habilitar la preferencia para agrupar duplicados en los resultados de búsqueda.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1344,
+        "locale": "fr",
+        "target": "Activer la préférence de regroupement des résultats de recherche en double",
+        "disposition": "correction"
+      },
+      {
+        "position": 1344,
+        "locale": "hi",
+        "target": "खोज परिणामों के डुप्लिकेट को एक साथ समूहित करने की प्राथमिकता सक्षम करें",
+        "disposition": "correction"
+      },
+      {
+        "position": 1344,
+        "locale": "id",
+        "target": "Aktifkan preferensi untuk mengelompokkan hasil pencarian duplikat",
+        "disposition": "correction"
+      },
+      {
+        "position": 1344,
+        "locale": "ja",
+        "target": "検索結果の重複をまとめる設定を有効にする",
+        "disposition": "correction"
+      },
+      {
+        "position": 1344,
+        "locale": "ko",
+        "target": "검색 결과의 중복 항목을 묶는 설정 활성화",
+        "disposition": "correction"
+      },
+      {
+        "position": 1344,
+        "locale": "pt-BR",
+        "target": "Ativar a preferência para agrupar resultados de pesquisa duplicados",
+        "disposition": "correction"
+      },
+      {
+        "position": 1344,
+        "locale": "vi",
+        "target": "Bật tùy chọn gộp các kết quả tìm kiếm trùng lặp",
+        "disposition": "correction"
+      },
+      {
+        "position": 1344,
+        "locale": "zh-Hans",
+        "target": "启用将重复搜索结果合并显示的偏好设置",
+        "disposition": "correction"
+      },
+      {
+        "position": 1344,
+        "locale": "zh-Hant",
+        "target": "啟用將重複搜尋結果合併顯示的偏好設定",
+        "disposition": "correction"
+      },
+      {
+        "position": 1345,
+        "locale": "ar",
+        "target": "فعّل فحوصات بدء التشغيل الصارمة وفحوصات تعزيز أمان الطلبات لعمليات النشر المكشوفة.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1345,
+        "locale": "es",
+        "target": "Active las comprobaciones estrictas de inicio y de endurecimiento de solicitudes para implementaciones expuestas.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1345,
+        "locale": "fr",
+        "target": "Activez les contrôles stricts de démarrage et de renforcement des requêtes pour les déploiements exposés.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1345,
+        "locale": "hi",
+        "target": "उजागर तैनाती के लिए स्टार्टअप और अनुरोधों को सुदृढ़ करने वाली सख्त जाँचें सक्षम करें।",
+        "disposition": "correction"
+      },
+      {
+        "position": 1345,
+        "locale": "id",
+        "target": "Aktifkan pemeriksaan startup yang ketat dan penguatan keamanan permintaan untuk deployment yang terekspos.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1345,
+        "locale": "ja",
+        "target": "公開環境で、厳格な起動時チェックとリクエストのセキュリティ強化チェックを有効にします。",
+        "disposition": "correction"
+      },
+      {
+        "position": 1345,
+        "locale": "pt-BR",
+        "target": "Ative verificações rigorosas de inicialização e de reforço das requisições para implantações expostas.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1345,
+        "locale": "vi",
+        "target": "Bật kiểm tra khởi động nghiêm ngặt và kiểm tra tăng cường bảo mật yêu cầu cho các bản triển khai công khai.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1348,
+        "locale": "ar",
+        "target": "تمكين سياسات معالجة تراجع الأداء للتنزيلات الموجودة في قائمة الانتظار أو المتوقفة.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1348,
+        "locale": "de",
+        "target": "Aktivieren Sie Rettungsrichtlinien für leistungsschwache Downloads, die sich in der Warteschlange befinden oder festhängen.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1348,
+        "locale": "es",
+        "target": "Habilite políticas de recuperación para descargas con bajo rendimiento que estén en cola o atascadas.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1348,
+        "locale": "hi",
+        "target": "कतार में लगे या अटके हुए डाउनलोड के लिए खराब प्रदर्शन से उबरने की नीतियाँ सक्षम करें।",
+        "disposition": "correction"
+      },
+      {
+        "position": 1348,
+        "locale": "id",
+        "target": "Aktifkan kebijakan pemulihan untuk unduhan berperforma buruk yang mengantre atau macet.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1348,
+        "locale": "pt-BR",
+        "target": "Habilite políticas de recuperação para downloads com baixo desempenho que estejam na fila ou parados.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1348,
+        "locale": "vi",
+        "target": "Bật các chính sách khắc phục hiệu suất kém cho bản tải xuống đang chờ hoặc bị đình trệ.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1348,
+        "locale": "zh-Hans",
+        "target": "为排队或停滞的下载启用性能恢复策略。",
+        "disposition": "correction"
+      },
+      {
+        "position": 1348,
+        "locale": "zh-Hant",
+        "target": "為排隊或停滯的下載啟用效能復原政策。",
+        "disposition": "correction"
+      },
+      {
+        "position": 1349,
+        "locale": "ar",
+        "target": "تمكين حدود سرعة الرفع المجدولة",
+        "disposition": "correction"
+      },
+      {
+        "position": 1349,
+        "locale": "fr",
+        "target": "Activer les limites de vitesse d’envoi programmées",
+        "disposition": "correction"
+      },
+      {
+        "position": 1350,
+        "locale": "ar",
+        "target": "تمكين جداول الرفع",
+        "disposition": "correction"
+      },
+      {
+        "position": 1354,
+        "locale": "ar",
+        "target": "فعّل {title}. تظل وصفات الأتمتة المعطلة ظاهرة لتسهيل العثور على مهام الإعداد.",
+        "disposition": "refinement"
+      },
+      {
+        "position": 1354,
+        "locale": "de",
+        "target": "Aktivieren Sie {title}. Deaktivierte Automatisierungsrezepte bleiben sichtbar, damit sich die erforderlichen Einrichtungsschritte leicht finden lassen.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1354,
+        "locale": "es",
+        "target": "Active {title}. Las recetas de automatización desactivadas siguen visibles para que sea fácil encontrar las tareas de configuración.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1354,
+        "locale": "fr",
+        "target": "Activez {title}. Les recettes d’automatisation désactivées restent visibles pour faciliter la recherche des tâches de configuration.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1354,
+        "locale": "hi",
+        "target": "{title} सक्षम करें। अक्षम ऑटोमेशन रेसिपी दिखाई देती रहेंगी, ताकि सेटअप के काम आसानी से मिल सकें।",
+        "disposition": "correction"
+      },
+      {
+        "position": 1354,
+        "locale": "id",
+        "target": "Aktifkan {title}. Alur otomatisasi yang dinonaktifkan tetap terlihat agar langkah penyiapannya mudah ditemukan.",
+        "disposition": "refinement"
+      },
+      {
+        "position": 1354,
+        "locale": "ja",
+        "target": "{title} を有効にします。無効化された自動化レシピも表示されたままなので、必要なセットアップ作業を見つけやすくなります。",
+        "disposition": "refinement"
+      },
+      {
+        "position": 1354,
+        "locale": "ko",
+        "target": "{title}를 활성화합니다. 비활성화된 자동화 레시피도 계속 표시되어 설정 작업을 쉽게 찾을 수 있습니다.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1354,
+        "locale": "pt-BR",
+        "target": "Ative {title}. As receitas de automação desativadas continuam visíveis para facilitar a localização das tarefas de configuração.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1354,
+        "locale": "vi",
+        "target": "Bật {title}. Các mẫu tự động hóa đã tắt vẫn hiển thị để bạn dễ tìm các bước cần thiết lập.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1354,
+        "locale": "zh-Hans",
+        "target": "启用 {title}。已停用的自动化方案仍会显示，方便找到设置所需的操作。",
+        "disposition": "correction"
+      },
+      {
+        "position": 1354,
+        "locale": "zh-Hant",
+        "target": "啟用 {title}。已停用的自動化方案仍會顯示，方便找到設定所需的操作。",
+        "disposition": "correction"
+      },
+      {
+        "position": 1357,
+        "locale": "es",
+        "target": "Habilitado y autorizado para descargarse automáticamente según la política de la lista de deseos.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1358,
+        "locale": "pt-BR",
+        "target": "Solicitação da lista de desejos ativada, com aprovação manual do download obrigatória.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1358,
+        "locale": "vi",
+        "target": "Yêu cầu trong danh sách mong muốn đã bật; cần phê duyệt thủ công trước khi tải xuống.",
+        "disposition": "correction"
+      },
+      {
+        "position": 1359,
+        "locale": "fr",
+        "target": "Chiffrement",
+        "disposition": "correction"
+      },
+      {
+        "position": 1360,
+        "locale": "hi",
+        "target": "समाप्ति का समय",
+        "disposition": "correction"
+      },
+      {
+        "position": 1361,
+        "locale": "ar",
+        "target": "نقطة النهاية:",
+        "disposition": "accept-current"
+      },
+      {
+        "position": 1361,
+        "locale": "fr",
+        "target": "Point de terminaison :",
+        "disposition": "correction"
+      },
+      {
+        "position": 1361,
+        "locale": "hi",
+        "target": "एंडपॉइंट:",
+        "disposition": "correction"
+      },
+      {
+        "position": 1361,
+        "locale": "id",
+        "target": "Titik koneksi:",
+        "disposition": "correction"
+      },
+      {
+        "position": 1361,
+        "locale": "ja",
+        "target": "エンドポイント：",
+        "disposition": "correction"
+      },
+      {
+        "position": 1361,
+        "locale": "pt-BR",
+        "target": "Ponto de conexão:",
+        "disposition": "correction"
+      },
+      {
+        "position": 1361,
+        "locale": "vi",
+        "target": "Điểm cuối:",
+        "disposition": "accept-current"
+      }
+    ]
+  },
+  "dispositions": {
+    "accept-current": 182,
+    "correction": 54,
+    "refinement": 4
+  },
+  "holds": {
+    "unresolvedInWindow": 0,
+    "priorHoldsPreserved": 23,
+    "priorHoldSourceSha256": "2231be5abf2ffb325057396d428350fbdb4d97cd7c62e77cd4e0e24a5ed4d5cb",
+    "priorHoldOutputSha256": "2231be5abf2ffb325057396d428350fbdb4d97cd7c62e77cd4e0e24a5ed4d5cb",
+    "allPriorHoldsUnchanged": true
+  },
+  "runtimeContext": {
+    "path": "web/src/lib/interfaceLocale.js",
+    "pin": {
+      "path": "web/src/lib/interfaceLocale.js",
+      "byteCount": 11530,
+      "lineCount": 302,
+      "sha256": "16eb5f119655805f48845e026ee12fd517fae6de871091bd9be2e5b7f1d310ea",
+      "gitBlob": "72dfea05f86bcf0ab02882a85c6e8d4a0cb0dabf"
+    },
+    "localeOptionOrder": [
+      "en",
+      "es",
+      "zh-Hans",
+      "hi",
+      "de",
+      "ja",
+      "fr",
+      "pt-BR",
+      "ar",
+      "ko",
+      "zh-Hant",
+      "vi",
+      "id"
+    ],
+    "lookupAndPlaceholderBehavior": "Source-key locale lookup with fallback and named placeholder replacement; source placeholders and caller values are preserved."
+  },
+  "validation": {
+    "candidateFreeVerifier": "PASS",
+    "primaryVerifier": "PASS",
+    "blindVerifier": "PASS",
+    "allPacketChecksums": "PASS",
+    "adjudicatedTargetTokenChecks": "PASS",
+    "repositoryWorktreeStatus": "clean",
+    "repoOrPrEditsMade": false,
+    "testsBuildsCiRun": false,
+    "releasesCut": false,
+    "packetVerifierResults": [
+      {
+        "script": "verify-candidate-free.py",
+        "status": "PASS",
+        "result": {
+          "result": "PASS",
+          "head": "130462c56f75d3c8fc2a90663a48c0474ad1208b",
+          "tree": "47aba96d79eb57d6024fb358ee59cde931f0de3b",
+          "queueCount": 5441,
+          "queueOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+          "positions": [
+            1343,
+            1362
+          ],
+          "cells": 240,
+          "callerReferences": 64,
+          "callerlessPositions": [],
+          "priorHoldsReattested": 23,
+          "changedPriorHolds": 0,
+          "mismatchCounts": {
+            "placeholderSequenceMismatchCount": 0,
+            "markupMismatchCount": 0,
+            "numericTokenMismatchCount": 0,
+            "protectedLiteralMismatchCount": 0
+          }
+        }
+      },
+      {
+        "script": "verify-primary-review.py",
+        "status": "PASS",
+        "result": {
+          "result": "PASS",
+          "head": "130462c56f75d3c8fc2a90663a48c0474ad1208b",
+          "tree": "47aba96d79eb57d6024fb358ee59cde931f0de3b",
+          "cells": 240,
+          "counts": {
+            "correction": 39,
+            "refinement": 18,
+            "accept-current": 183,
+            "hold": 0
+          },
+          "candidateFreeManifestSha256": "d11af73c2178f0789b5429ece69811719e7d50b54bbcef08c93fda352376834e",
+          "candidateFreeChecksumListSha256": "7a77ceaae645ea04165ba88924ce6bed87d7650c52d7d91ef9e3f98b386327b3",
+          "structuralMismatches": 0,
+          "carryForwardHolds": 23
+        }
+      },
+      {
+        "script": "verify_blind_review.py",
+        "status": "PASS",
+        "result": {
+          "result": "PASS",
+          "head": "130462c56f75d3c8fc2a90663a48c0474ad1208b",
+          "tree": "47aba96d79eb57d6024fb358ee59cde931f0de3b",
+          "window": "W1343-W1362",
+          "cells": 240,
+          "dispositions": {
+            "accept-current": 197,
+            "refinement": 8,
+            "correction": 35
+          },
+          "proposedChanges": 43,
+          "holds": 0,
+          "candidateFreeInputManifestSha256": "d11af73c2178f0789b5429ece69811719e7d50b54bbcef08c93fda352376834e",
+          "candidateFreeInputChecksumListSha256": "7a77ceaae645ea04165ba88924ce6bed87d7650c52d7d91ef9e3f98b386327b3",
+          "blindChecksumListSha256": "5f464b097c17d44704a520d37c651c3b653e57e9df47af2e271436002d4939f3",
+          "primaryReviewReadBeforeSeal": false
+        }
+      }
+    ]
+  },
+  "limits": "Cross-audit is a context-pinned semantic review; it is not a native-speaker approval or a browser-rendering review."
+}

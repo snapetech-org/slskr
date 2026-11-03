@@ -1,0 +1,132 @@
+{
+  "artifact": "slskR PR #204 W1343-W1362 candidate-free exact-head input",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "130462c56f75d3c8fc2a90663a48c0474ad1208b",
+  "tree": "47aba96d79eb57d6024fb358ee59cde931f0de3b",
+  "headRef": "codex/slskr-l10n-audit-20261030",
+  "baseRef": "main",
+  "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "draft": true,
+  "candidateFreeInputOnly": true,
+  "proposedTranslationsIncluded": false,
+  "selectedPositions": [
+    1343,
+    1362
+  ],
+  "previousBoundaryPosition": 1342,
+  "nextBoundaryPosition": 1363,
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "catalogSourceCount": 5441,
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "sourceQueueFile": "source-queue.jsonl",
+  "sourceQueueFileSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+  "callerReferenceCount": 64,
+  "callerOccurrenceCount": 64,
+  "callerFileCount": 24,
+  "callerResolutionHoldCount": 0,
+  "callerResolutionHoldPositions": [],
+  "priorHoldReattestationCount": 23,
+  "priorHoldUnchangedCount": 23,
+  "priorHoldChangedCount": 0,
+  "priorHoldWindows": [
+    "W1243-W1262",
+    "W1303-W1322",
+    "W1323-W1342"
+  ],
+  "historicalSourceOrdinalsClaimed": false,
+  "sourceOrderLineageFile": "source-order-lineage.json",
+  "localizationRuntimeContextFile": "localization-runtime-context.json",
+  "sourceQueueCount": 5441,
+  "catalogFilesPinned": 12,
+  "mismatchCounts": {
+    "placeholderSequenceMismatchCount": 0,
+    "markupMismatchCount": 0,
+    "numericTokenMismatchCount": 0,
+    "protectedLiteralMismatchCount": 0
+  },
+  "placeholderSequenceMismatchCount": 0,
+  "markupMismatchCount": 0,
+  "numericTokenMismatchCount": 0,
+  "protectedLiteralMismatchCount": 0,
+  "localWorktree": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1343-1362-primary-20261103/repo",
+  "localWorktreeHead": "130462c56f75d3c8fc2a90663a48c0474ad1208b",
+  "localWorktreeTree": "47aba96d79eb57d6024fb358ee59cde931f0de3b",
+  "localWorktreeBranch": "detached",
+  "localWorktreeStatusClean": true,
+  "createdAtUtc": "2026-11-03T14:58:30.096513+00:00",
+  "fileHashes": {
+    "PR-attestation.json": {
+      "sha256": "378d4e14a310e679a544d97aab3007546bded01bc6752d104b9a38d9d92c14cc",
+      "bytes": 969
+    },
+    "README.md": {
+      "sha256": "7f76215ba07cf5960b658c78cacc0965a00fec13f459ef648153d56021b68045",
+      "bytes": 1148
+    },
+    "caller-resolution-holds.jsonl": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "catalog-file-pins.json": {
+      "sha256": "0756e6c05085ff46c22b2f6710f87b5e9c4d70e7e40f6b647d6021736f716638",
+      "bytes": 12218
+    },
+    "catalog-structure.jsonl": {
+      "sha256": "38c0ced0f1dee40f5d7730bfef75979051abb9a08f4a9c0bb41b0a06298319bc",
+      "bytes": 3986
+    },
+    "current-target-cells.jsonl": {
+      "sha256": "b78eaaa4c7f4434c889467f2117ee316e7d90fe04aec506aea1cbe3e14295dab",
+      "bytes": 484458
+    },
+    "localization-runtime-context.json": {
+      "sha256": "d476c425b4c17edf442cdb04b9a92f34bb5d99fd770ce42f3c6db439234ec69b",
+      "bytes": 10057
+    },
+    "prior-hold-reattestation.jsonl": {
+      "sha256": "2231be5abf2ffb325057396d428350fbdb4d97cd7c62e77cd4e0e24a5ed4d5cb",
+      "bytes": 27041
+    },
+    "selected-source-keys.txt": {
+      "sha256": "ee801d54c67ad31678b163d78d48a166479b36e9990adfe2dd71ff4a77f826e5",
+      "bytes": 755
+    },
+    "source-contexts.jsonl": {
+      "sha256": "906b5b65172fbb4b80d6c6d03a50ff94a7300218312f48d6b33767ae1ac817c3",
+      "bytes": 134784
+    },
+    "source-order-lineage.json": {
+      "sha256": "126ce17dd45299fede9cec85cf61a7a0df3e893c15eeb914dda74de1c003ed23",
+      "bytes": 2503
+    },
+    "source-queue.jsonl": {
+      "sha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+      "bytes": 974393
+    },
+    "source-window-boundaries.jsonl": {
+      "sha256": "27a57bee083c11500d8b8f36023b9bd66cc7986fa0696899933f99617298e544",
+      "bytes": 4742
+    },
+    "verify-candidate-free.py": {
+      "sha256": "c704bf6bdae45a2a2c6a06f300e462ee54783dbe32f48627699ab7ef9f872371",
+      "bytes": 7834
+    }
+  }
+}
