@@ -1,0 +1,56 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "baseline_head": "99282b2f9b904f9814f5be66d8f643175e134f8e",
+  "baseline_tree": "ba0ba0790da40159b8d92935f0866cb6a112edce",
+  "window": "W963-W982",
+  "source_positions": [
+    963,
+    982
+  ],
+  "reviewed_cells": 240,
+  "locale_count": 12,
+  "primary_dispositions": {
+    "accept-current": 170,
+    "correction": 10,
+    "refinement": 24,
+    "hold": 36
+  },
+  "crossreview_dispositions": {
+    "accept-current": 175,
+    "correction": 18,
+    "refinement": 11,
+    "hold": 36
+  },
+  "root_adjudication_recommendations": {
+    "accept-current": 161,
+    "correction": 22,
+    "refinement": 21,
+    "hold": 36
+  },
+  "applied_dispositions": {
+    "accept-current": 161,
+    "correction": 22,
+    "refinement": 21,
+    "hold": 36
+  },
+  "catalog_changes": 42,
+  "source_text_changes": 1,
+  "source_callsite_replacements": 2,
+  "catalog_key_replacements": 12,
+  "readback_cells": 240,
+  "readback_mismatches": 0,
+  "keys_per_catalog": 5441,
+  "qualified_native_speaker_approval": false,
+  "current_head_browser_acceptance": "outstanding",
+  "tests_builds_scans_ci": "not run",
+  "workflow_changes": false,
+  "merge_release_tag": false,
+  "source_change_sha256": "9736dd2fcfd30fb8816fc0bf4c462eace8699f22cb63e086ec4fd6f4e80177c2",
+  "packet_SHA256SUMS": {
+    "primary-review": "669d8a39ee52a0bf42596da4fea4d772c1b9b0cc739797d38a93848cc8ab5495",
+    "independent-cross-review": "6a05777893600a181386db0f977a0326cf882185c4e564452b294edd5ba730f3",
+    "root-adjudication": "bf05027805e60932151c4df4d515a051b461dc94ed180c4f60affe3e544c3a42"
+  }
+}

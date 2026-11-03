@@ -1,0 +1,26 @@
+{
+  "baseline_head": "99282b2f9b904f9814f5be66d8f643175e134f8e",
+  "baseline_tree": "ba0ba0790da40159b8d92935f0866cb6a112edce",
+  "reviewed_cells": 240,
+  "final_dispositions": {
+    "accept-current": 161,
+    "correction": 22,
+    "refinement": 21,
+    "hold": 36
+  },
+  "catalog_changes": 42,
+  "catalog_files_changed": 12,
+  "readback_cells": 240,
+  "readback_mismatches": 0,
+  "all_locale_key_sets_match": true,
+  "keys_per_catalog": 5441,
+  "holds_retained": true,
+  "native_speaker_approval": false,
+  "tests_builds_scans_ci_browser": "not run",
+  "source_text_changes": 1,
+  "source_callsite_replacements": 2,
+  "catalog_key_replacements": 12,
+  "catalog_key_set_size_unchanged": true,
+  "ordered_key_sets_match_across_12_locales": true,
+  "all_240_final_targets_read_back_after_source_rekey": true
+}

@@ -1,0 +1,102 @@
+{
+  "task": "Independent blind cross-review: slskR PR #204, W963-W982",
+  "reviewMode": "source-only; primary candidate/disposition outputs not read before sealing",
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "state": "OPEN",
+  "draft": true,
+  "head": "99282b2f9b904f9814f5be66d8f643175e134f8e",
+  "tree": "ba0ba0790da40159b8d92935f0866cb6a112edce",
+  "officialBranch": "codex/slskr-l10n-audit-20261030",
+  "officialBranchHead": "99282b2f9b904f9814f5be66d8f643175e134f8e",
+  "worktree": "/home/keith/Documents/code/task-worktrees/localization-20261102-slskr",
+  "worktreeBranch": "codex/slskr-l10n-audit-20261030",
+  "worktreeStatus": "clean",
+  "sourceCount": 20,
+  "populatedCells": 240,
+  "localeCodes": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "dispositions": {
+    "accept-current": 175,
+    "refinement": 11,
+    "correction": 18,
+    "hold": 36
+  },
+  "callerPinCount": 24,
+  "verifiedCallerPinCount": 24,
+  "holds": {
+    "cells": 36,
+    "sources": [
+      {
+        "position": 970,
+        "source": "Could not connect to Soulseek."
+      },
+      {
+        "position": 971,
+        "source": "Could not copy the preference report."
+      },
+      {
+        "position": 980,
+        "source": "Could not reset browser preferences."
+      }
+    ],
+    "reason": "No exact production localization caller verified in web/src at this head; keep all 12 locale cells per source held rather than infer context."
+  },
+  "semanticFindings": [
+    {
+      "position": 964,
+      "scope": "all 12 locales",
+      "finding": "“local authority disable selections” is rendered ambiguously as local-government authority or local permission; exact caller uses browser-local disabledAuthorities and export does not change backend governance. Proposed translations explicitly place locality on the disable action; English source wording should be clarified."
+    },
+    {
+      "position": 967,
+      "locales": [
+        "ar",
+        "es",
+        "ko"
+      ],
+      "finding": "Corpus is a song-identification data corpus; current “body” translations are incorrect."
+    },
+    {
+      "position": 968,
+      "locales": [
+        "ar",
+        "id"
+      ],
+      "finding": "Current match term reads as sports matches; the caller is a list of song-corpus matches."
+    },
+    {
+      "position": 979,
+      "locales": [
+        "hi",
+        "ko",
+        "zh-Hans",
+        "zh-Hant"
+      ],
+      "finding": "Impersonal read-failure phrasing / Korean particle / Chinese colon spacing."
+    }
+  ],
+  "structuralAudit": {
+    "placeholderParity": "exact in all 240 cells",
+    "markupParity": "exact in all 240 cells; no source markup tokens",
+    "protectedLiteralParity": "Soulseek and CSV preserved in all cells where applicable",
+    "missingCatalogTargets": 0
+  },
+  "nativeSpeakerApproval": false,
+  "testsBuildScansCIOrBrowser": "not run",
+  "repositoryOrPREdits": "none",
+  "sourceOnlyInputSha256": "fc47688205057d983aff4895dc0ef82c418e4f1f2f67ff30d8a4aeb44d65df56",
+  "primaryCandidatesOrDispositionsRead": false
+}

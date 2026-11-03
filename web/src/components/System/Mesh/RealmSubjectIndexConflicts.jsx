@@ -156,7 +156,7 @@ const RealmSubjectIndexConflicts = () => {
             }
            {...interfaceTextProps("Load the read-only conflict report for this realm. This does not publish, disable, search, browse, or download.")}/>
           <Popup
-            content={interfaceText("Copy the visible conflict report, including local authority disable selections. This does not change backend realm governance.")}
+            content={interfaceText("Copy the visible conflict report, including which authorities you selected to disable locally. This does not change backend realm governance.")}
             position="top center"
             trigger={
               <Button
@@ -167,7 +167,7 @@ const RealmSubjectIndexConflicts = () => {
                 <Icon name="copy" />
                 <LocalizedText source={"Copy Report"} /></Button>
             }
-           {...interfaceTextProps("Copy the visible conflict report, including local authority disable selections. This does not change backend realm governance.")}/>
+           {...interfaceTextProps("Copy the visible conflict report, including which authorities you selected to disable locally. This does not change backend realm governance.")}/>
         </div>
       </div>
       <Input

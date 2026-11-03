@@ -1236,7 +1236,7 @@
   "Copy the local media-server readiness report. This does not call Plex, Jellyfin, Emby, or Navidrome.": "Copiez le rapport de préparation du serveur multimédia local. Cela n'appelle pas Plex, Jellyfin, Emby ou Navidrome.",
   "Copy the redacted diagnostic bundle to the clipboard.": "Copiez dans le presse-papiers le paquet de diagnostic dont les données sensibles ont été masquées.",
   "Copy the setup health check report for support or your own setup notes.": "Copiez le rapport de vérification de l'état de la configuration pour obtenir de l'aide ou vos propres notes de configuration.",
-  "Copy the visible conflict report, including local authority disable selections. This does not change backend realm governance.": "Copiez le rapport de conflit visible, y compris les sélections de désactivation des autorités locales. Cela ne change pas la gouvernance du domaine backend.",
+  "Copy the visible conflict report, including which authorities you selected to disable locally. This does not change backend realm governance.": "Copiez le rapport de conflit visible, y compris les autorités que vous avez choisi de désactiver localement. Cela ne change pas la gouvernance du domaine backend.",
   "Core": "Cœur",
   "Corpus": "Corpus",
   "Corpus Matches": "Correspondances de corpus",
