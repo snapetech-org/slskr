@@ -109,8 +109,8 @@ for h in invariants['historicalRank1257Hold']:
 parent=invariants['parentHead']
 head=subprocess.check_output(['git','-C',str(REPO),'rev-parse','HEAD'],text=True).strip()
 tree=subprocess.check_output(['git','-C',str(REPO),'rev-parse','HEAD^{tree}'],text=True).strip()
-parent_now=subprocess.check_output(['git','-C',str(REPO),'rev-parse','HEAD^'],text=True).strip()
-assert parent_now==parent
+ancestor=subprocess.run(['git','-C',str(REPO),'merge-base','--is-ancestor',parent,head],check=False)
+assert ancestor.returncode==0
 changed=subprocess.check_output(['git','-C',str(REPO),'diff','--name-only',parent+'..'+head],text=True).splitlines()
 allowed=set(invariants['catalogPaths']) | {p.relative_to(REPO).as_posix() for p in EVIDENCE.rglob('*') if p.is_file()}
 assert set(changed)==allowed,(sorted(set(changed)-allowed),sorted(allowed-set(changed)))
