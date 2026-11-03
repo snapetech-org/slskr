@@ -58,7 +58,8 @@ if any(x!=orders[0] for x in orders[1:]): raise SystemExit('locale key order dif
 counts=Counter(r['adjudicatedDisposition'] for r in ledger)
 if counts!=Counter({'accept-current':182,'correction':54,'refinement':4}): raise SystemExit('cross-audit disposition counts mismatch')
 if ver['result']!='PASS' or ver['selectedUpdates']!=58 or ver['readbackCells']!=240 or ver['carryForwardHoldsPreserved'] is not True: raise SystemExit('application summary mismatch')
-changed=set(git('diff','--name-only').splitlines())
+changed=set(git('diff','--name-only',load(app/'application-authorization.json')['parentHead']).splitlines())
 expected={r['catalogPath'] for r in plan}
-if changed!=expected or any(p.startswith('.github/workflows/') for p in changed): raise SystemExit('tracked diff scope mismatch')
+evidence_prefix='docs/pr-evidence/pr204-localization-2026-11-03/window-1343-1362/'
+if not expected.issubset(changed) or any(p not in expected and not p.startswith(evidence_prefix) for p in changed) or any(p.startswith('.github/workflows/') for p in changed): raise SystemExit('tracked diff scope mismatch')
 print(json.dumps({'result':'PASS','cells':240,'updates':58,'corrections':54,'refinements':4,'retained':182,'currentWindowHolds':0,'carryForwardHolds':23,'catalogs':12,'orderedKeysPreserved':True,'nonTargetsPreserved':True,'workflowFilesChanged':False},ensure_ascii=False,indent=2))
