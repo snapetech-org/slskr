@@ -1,0 +1,118 @@
+{
+  "repository": "snapetech-org/slskR#204",
+  "baseHead": "4193d79547018a561e9d5acacdb0ac0850f6f346",
+  "baseTree": "da7d72c82203781fc14d99e8dd85cc1b30c10164",
+  "window": "W1003-W1022",
+  "reviewedCells": 240,
+  "changedCells": 85,
+  "unchangedAcceptedOrHeldCells": 155,
+  "rootDispositionCounts": {
+    "accept-current": 143,
+    "refinement": 46,
+    "correction": 39,
+    "hold": 12
+  },
+  "blindDecisionCounts": {
+    "pass": 218,
+    "hold": 22
+  },
+  "orderedCatalogKeyCountPerLocale": 5441,
+  "localeCount": 12,
+  "orderedCatalogKeysSha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+  "catalogPinsAtBase": {
+    "web/src/lib/locales/ui-labels.ar.json": {
+      "sha256": "5db0c4cde733ccfa39df6bba8e2226b8d3675c521d6b603085312ea632895221",
+      "gitBlob": "56dae09d2c96dcd9606ce4543a370064e2500f10"
+    },
+    "web/src/lib/locales/ui-labels.de.json": {
+      "sha256": "9da7244022f2a998e3ebc5631ef951543cf1044080fc771ad3c75289b3bb380e",
+      "gitBlob": "b7a94ab4939d9c496bc54132704d78d70e042c7e"
+    },
+    "web/src/lib/locales/ui-labels.es.json": {
+      "sha256": "817c91e0f75927fd3761c18793828d5453ea501d251863dedab82a65002ce488",
+      "gitBlob": "7f157c056ed1e1367aa787921f7d1108ad305d64"
+    },
+    "web/src/lib/locales/ui-labels.fr.json": {
+      "sha256": "a6a4bfdedc03de83c7ef887750504e10e133b0982ebb26fb51d2bd58cea2b2ed",
+      "gitBlob": "d77e05d63470d5e168a531423679f89c2cfb724a"
+    },
+    "web/src/lib/locales/ui-labels.hi.json": {
+      "sha256": "7284aa77097977918b1e6ccd2e8dae47e9ae9300beeff8b5364456deca37dcc6",
+      "gitBlob": "911b260fa9c8e37cd958b3f0a5a4525c2f9b08de"
+    },
+    "web/src/lib/locales/ui-labels.id.json": {
+      "sha256": "2e41171c0bab7adc0950998df2be50f3472bb23e770b7a1ba471bd9744c50db7",
+      "gitBlob": "e36045d4a20b6c3df4d466ad69277410aa889457"
+    },
+    "web/src/lib/locales/ui-labels.ja.json": {
+      "sha256": "5cc6468dfed68e7b9407ede9d9ac4265e633278eb99ce110e73b9086632d3a0d",
+      "gitBlob": "7cfa552abad1939d1c24c62bc5dae34d32c4e953"
+    },
+    "web/src/lib/locales/ui-labels.ko.json": {
+      "sha256": "56f8e4dc265df3cdc498a6b212b5f623b55e469d12daf83d290d295e6963127e",
+      "gitBlob": "fae7703900953b130f2ec47d9b0860675bac2423"
+    },
+    "web/src/lib/locales/ui-labels.pt-BR.json": {
+      "sha256": "618b2cca964e3ead3ccb0e6bde68aa0a1ccf2d1a25a1528ba488fe1112676ff9",
+      "gitBlob": "c5bde9044bfa82d5136f4347713b9fef47807b7b"
+    },
+    "web/src/lib/locales/ui-labels.vi.json": {
+      "sha256": "9772848cf97d188b511402994b1995cd312681e3fca56a883255ea86e6214867",
+      "gitBlob": "2ff369ed2331bcb2906397d30fdffd28c08083fd"
+    },
+    "web/src/lib/locales/ui-labels.zh-Hans.json": {
+      "sha256": "ecb920c9feea15b76349ee54da9060f183c4deeb0d8fc4fb5f08d6f5fb9dfe0c",
+      "gitBlob": "6861df7402343c3aeff67bb268b7cd7fc0dff704"
+    },
+    "web/src/lib/locales/ui-labels.zh-Hant.json": {
+      "sha256": "67f654785d5ec019f953f3760f7ca250f636b1909a07feca1d6fb395071d1810",
+      "gitBlob": "3e0819d127848b0e943a28de71f5e8e38ff76f4f"
+    }
+  },
+  "callerFileAndLinePinsVerified": 31,
+  "blindHoldAdjudications": {
+    "accepted": [
+      "1007/de",
+      "1007/id",
+      "1007/ja",
+      "1007/vi",
+      "1007/zh-Hans",
+      "1007/zh-Hant",
+      "1012/fr",
+      "1019/ar",
+      "1019/hi",
+      "1019/vi"
+    ],
+    "retainedAsHolds": [
+      "1010/ar",
+      "1010/de",
+      "1010/es",
+      "1010/fr",
+      "1010/hi",
+      "1010/id",
+      "1010/ja",
+      "1010/ko",
+      "1010/pt-BR",
+      "1010/vi",
+      "1010/zh-Hans",
+      "1010/zh-Hant"
+    ]
+  },
+  "allFinalCellValuesReadBack": true,
+  "placeholderMarkupIcuProtectedLiteralChecks": "all approved targets passed pinned structural checks",
+  "nativeSpeakerApproval": "not established",
+  "readbackCatalogFileSha256": {
+    "web/src/lib/locales/ui-labels.ar.json": "7a34fea5e69deb9409e7bfe2f8bcf381b1cdf28963f90a90bb4bd58b2da0e600",
+    "web/src/lib/locales/ui-labels.de.json": "86c0868984d628dda2c1b293cd54042a8921deaae77448f075d528dd5f481bae",
+    "web/src/lib/locales/ui-labels.es.json": "b8ebfc539da446b7842744103d6445a3adf84e843848ef79434c8bccd1693370",
+    "web/src/lib/locales/ui-labels.fr.json": "94d9a193ba8a749026e5fbbc7a9a8a1bc538a60979bcdf7c7874f81fc4ad52e4",
+    "web/src/lib/locales/ui-labels.hi.json": "5db7090d338d5061f7e37f109a1da35ec1ef2f6763cda74436473dae963f1657",
+    "web/src/lib/locales/ui-labels.id.json": "3c7f6ee3794f32c63dcea7a5bc362e488f4c5330f8c5f42e5fefc1c4cf696cd8",
+    "web/src/lib/locales/ui-labels.ja.json": "8e87df5d0b8c170fc25b47fd8471b976b6d49bcebce8c29b1c77550f6b8ffb1e",
+    "web/src/lib/locales/ui-labels.ko.json": "edb10b33330eab35b3b42b2dd056c7f57375fd86777d2185f0dcc1aaa49cfbb1",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "25a334ee5f7880f02dc418128491af6f53574fac2f3838dcefe988ea0ef57fec",
+    "web/src/lib/locales/ui-labels.vi.json": "8723023d49a762c679c09280bd524dbf099801104b905df226bca23b45a1db3e",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "76c6faf0240a431178793b5a5ecd5e594481dc4a099d5211e4e9db74b4bbccc7",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "2af2f900735d24ff311740b1527732760c8f7a9ca5ad04320cd9d28e955e0f27"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "head": "4193d79547018a561e9d5acacdb0ac0850f6f346",
+  "tree": "da7d72c82203781fc14d99e8dd85cc1b30c10164",
+  "sourceIds": 20,
+  "cells": 240,
+  "dispositions": {
+    "accept-current": 143,
+    "refinement": 46,
+    "correction": 39,
+    "hold": 12
+  },
+  "changesByLocale": {
+    "de": 4,
+    "id": 8,
+    "ja": 7,
+    "pt-BR": 7,
+    "vi": 8,
+    "zh-Hans": 8,
+    "zh-Hant": 6,
+    "ar": 8,
+    "es": 7,
+    "fr": 6,
+    "hi": 9,
+    "ko": 7
+  },
+  "proposalCount": 85,
+  "callerCount": 31,
+  "callerlessSourceIds": [],
+  "nativeSpeakerApproval": false
+}

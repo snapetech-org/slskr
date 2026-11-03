@@ -1,0 +1,16 @@
+{
+  "repo_path": "/mnt/disks/scratch/task-worktrees/localization-20261103/slskr-pr204-w983-apply",
+  "host": "kspld0",
+  "head": "4193d79547018a561e9d5acacdb0ac0850f6f346",
+  "tree": "da7d72c82203781fc14d99e8dd85cc1b30c10164",
+  "branch": "",
+  "source_order_basis": "All twelve exact-head locale catalogs have 5,441 identical English source keys. The review window is 1-based sorted-key positions 1003–1022. The repository localization parity test also compares sorted key lists. The preceding branch commit titled for window 983–1002 modifies strings at matching sorted positions, corroborating this reconstruction without using a review packet.",
+  "blindness": "No PR body or W1003–1022 primary review packet was opened. No cross-review comparison was performed before this ledger was sealed.",
+  "output_files": [
+    "source-order-and-callers.jsonl",
+    "cell-review-ledger.jsonl",
+    "input-hashes.json",
+    "reconstruction-validation.json",
+    "review-summary.json"
+  ]
+}

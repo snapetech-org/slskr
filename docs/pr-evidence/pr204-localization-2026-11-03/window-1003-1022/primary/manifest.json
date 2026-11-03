@@ -1,0 +1,74 @@
+{
+  "task": "slskR PR #204 W1003-W1022 primary localization review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "state": "OPEN",
+  "isDraft": true,
+  "head": "4193d79547018a561e9d5acacdb0ac0850f6f346",
+  "tree": "da7d72c82203781fc14d99e8dd85cc1b30c10164",
+  "window": {
+    "firstPosition": 1003,
+    "lastPosition": 1022,
+    "sourceCount": 20,
+    "localeCount": 12,
+    "cellCount": 240
+  },
+  "selectionEvidence": "selection-evidence.json",
+  "counts": {
+    "accept-current": 143,
+    "refinement": 46,
+    "correction": 39,
+    "hold": 12
+  },
+  "nativeSpeakerApproval": false,
+  "repositoryOrPREdits": "none",
+  "testsBuildScansCIOrBrowser": "not run",
+  "artifacts": [
+    {
+      "path": "README.md",
+      "bytes": 1585,
+      "sha256": "18031240e5b903aa48817463bf1817e8f5afd50b6d797d5d1dde5dccf4b9046e"
+    },
+    {
+      "path": "caller-contexts.jsonl",
+      "bytes": 26100,
+      "sha256": "099e7c1ea32be74c8184a579086cb57439a5b540c0d2912392b5990e920b8915"
+    },
+    {
+      "path": "candidate-proposals.jsonl",
+      "bytes": 51694,
+      "sha256": "5c02a8cdcb4a747e47d59da706d3f44cec0ef915a09d7c42588e7334921e0c3d"
+    },
+    {
+      "path": "catalog-pins.jsonl",
+      "bytes": 2858,
+      "sha256": "0bceae17ba8b13169cfb6c4556d8adebb777778fff874fef94c088e8f4ad5319"
+    },
+    {
+      "path": "primary-review-ledger.jsonl",
+      "bytes": 489892,
+      "sha256": "7264df86994df61b9436b14a0fd7712cc3646615124c403dc1a54e0dcdac79c5"
+    },
+    {
+      "path": "selection-evidence.json",
+      "bytes": 3634,
+      "sha256": "95fff070ddea9aaad4a763da013b59e041321c439d747e81bbfea8e1c25021bc"
+    },
+    {
+      "path": "source-only-input.jsonl",
+      "bytes": 188055,
+      "sha256": "6d6bd6c52c16a9d0a945e2fe3856bab9ec0c11c64c7ec3eb28fb3e538fb6d40b"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 560,
+      "sha256": "d07f177872766a8daf0c921b6e689b1ec3b4bf6baadb2d6be4f5d08b4771bf7b"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 1160,
+      "sha256": "bbe9a46b970b246b1f78a410d17bc2a997977f337808c07bd47e67359108fadc"
+    }
+  ]
+}
