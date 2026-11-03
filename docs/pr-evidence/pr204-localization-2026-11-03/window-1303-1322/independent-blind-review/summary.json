@@ -1,0 +1,106 @@
+{
+  "artifact": "slskR PR #204 W1303-W1322 independent blind review",
+  "window": {
+    "firstPosition": 1303,
+    "lastPosition": 1322,
+    "sourceCount": 20,
+    "localeCount": 12,
+    "cellCount": 240
+  },
+  "pin": {
+    "head": "f46b8b2322f4b944f39f34d5bb8d55852ba330c8",
+    "tree": "4eba98f951a745dac6b5332bd6796bf57c7037e2",
+    "branch": "codex/slskr-l10n-audit-20261030",
+    "base": "main"
+  },
+  "input": {
+    "path": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1303-1322-primary-20261103/input",
+    "packetChecksumListSha256": "d30a1b2aa55a13eb0b33a116cfbf965494b675bbedf3acb9a6fbc61c53ead652",
+    "manifestSha256": "3145ccef78adbea528fe062d053ba90067207c4c49611ba43994da78383b244c",
+    "candidateFreeOnly": true
+  },
+  "counts": {
+    "propose": 18,
+    "retain": 212,
+    "hold": 10
+  },
+  "holds": [
+    {
+      "position": 1310,
+      "sourceKey": "Enable Spotify source-feed imports",
+      "locale": "zh-Hans",
+      "reason": "“source-feed” is a product-facing import concept; the current Chinese phrase duplicates 源, but selecting a natural Chinese name for the feed type needs locale terminology review. Preserve current value pending that review."
+    },
+    {
+      "position": 1310,
+      "sourceKey": "Enable Spotify source-feed imports",
+      "locale": "zh-Hant",
+      "reason": "“source-feed” is a product-facing import concept; the current Traditional Chinese phrase duplicates 來源, but selecting a natural localized name for the feed type needs locale terminology review. Preserve current value pending that review."
+    },
+    {
+      "position": 1311,
+      "sourceKey": "Enable Timing Obfuscation",
+      "locale": "vi",
+      "reason": "“xáo trộn thời gian” can describe timing randomization, but the source names a privacy timing-obfuscation control. The exact Vietnamese technical term is uncertain from this caller alone; preserve current value for native terminology review."
+    },
+    {
+      "position": 1313,
+      "sourceKey": "Enable YouTube playlist source-feed imports",
+      "locale": "zh-Hans",
+      "reason": "The caller ties this label to playlist expansion for Import Feed URLs. The current target duplicates 源, but the right Chinese name for this import-feed concept is unclear; preserve current value pending locale terminology review."
+    },
+    {
+      "position": 1313,
+      "sourceKey": "Enable YouTube playlist source-feed imports",
+      "locale": "zh-Hant",
+      "reason": "The caller ties this label to playlist expansion for Import Feed URLs. The current target duplicates 來源, but the right Traditional Chinese name for this import-feed concept is unclear; preserve current value pending locale terminology review."
+    },
+    {
+      "position": 1316,
+      "sourceKey": "Enable authority {authorityKey}",
+      "locale": "de",
+      "reason": "The caller identifies an authority entity that can be locally enabled for review without changing realm governance. “Berechtigung” means permission and may name a different concept; the established German domain term needs review."
+    },
+    {
+      "position": 1316,
+      "sourceKey": "Enable authority {authorityKey}",
+      "locale": "ja",
+      "reason": "The caller identifies a realm authority entity, while 権限 can read as permissions or authority. The established Japanese governance term needs review."
+    },
+    {
+      "position": 1316,
+      "sourceKey": "Enable authority {authorityKey}",
+      "locale": "ko",
+      "reason": "The caller identifies a realm authority entity, while 권한 can read as permissions or authority. The established Korean governance term needs review."
+    },
+    {
+      "position": 1316,
+      "sourceKey": "Enable authority {authorityKey}",
+      "locale": "zh-Hans",
+      "reason": "The caller identifies a realm authority entity, while 授权 may read as authorization. The established Chinese governance term is unclear from this context; preserve the current value pending terminology review."
+    },
+    {
+      "position": 1316,
+      "sourceKey": "Enable authority {authorityKey}",
+      "locale": "zh-Hant",
+      "reason": "The caller identifies a realm authority entity, while 權限 may read as permission. The established Traditional Chinese governance term is unclear; preserve the current value pending terminology review."
+    }
+  ],
+  "verifiedChecks": {
+    "cellCoverage": "20 positions x 12 locales, unique and complete",
+    "callers": "32 exact production caller references retained with line/file/blob hashes",
+    "placeholders": "0 mismatches in input; verified against final target for all cells",
+    "markup": "0 mismatches in input; verified against final target for all cells",
+    "numeric": "3 digit-versus-word mismatches at position 1314 are reviewed as the same five-second value; all other numeric tokens match",
+    "protectedLiterals": "10 initial mismatches at position 1308; all final targets preserve exact Scene and Pod literals",
+    "catalogs": "12 pinned catalogs, each with 5,441 keys and matching selected cell readbacks"
+  },
+  "notPerformed": [
+    "repository or PR edits",
+    "tests",
+    "builds",
+    "scans",
+    "CI"
+  ],
+  "createdAtUtc": "2026-11-03T12:53:06.157582+00:00"
+}

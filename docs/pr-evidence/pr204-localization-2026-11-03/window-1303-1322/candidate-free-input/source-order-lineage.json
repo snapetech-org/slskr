@@ -1,0 +1,43 @@
+{
+  "selectionRule": "One-based positions in the 5,441 unique source lookup keys sorted lexicographically by exact Unicode string.",
+  "previousCandidateFreeInputPath": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1283-1302-application-20261103/review-bundle/candidate-free-input",
+  "previousCandidateFreeHead": "55ca2ae0788bfd79daab5cc49f49ebb608593e98",
+  "previousCandidateFreeManifestSha256": "6f4f7bc3ed5d3d8097916cf37aa4a2b9ee043141cd1814aa880b673c593de944",
+  "previousCandidateFreeChecksumListSha256": "abbb1b89549b82072fcbf5fce3c6ae580cc5bd499b4fe5dadd5df7bd0c567f89",
+  "previousSourceQueueSha256": "da4f6b93e7d3f05c03b3dbd7a39959c8990a5089b78ea8b850b568aa2de38236",
+  "previousWindowSelectedPositions": [
+    1283,
+    1302
+  ],
+  "previousWindowNextBoundaryPosition": 1303,
+  "currentHeadCommittedSourceQueuePath": "docs/pr-evidence/pr204-localization-2026-11-03/window-1283-1302/review-bundle/candidate-free-input/source-queue.jsonl",
+  "currentHeadCommittedSourceQueueBlob": "5e82aea920438c5debfac306c98a07f234ba1f21",
+  "currentHeadCommittedSourceQueueMatchesPriorInput": true,
+  "liveCatalogSourceKeySetCount": 5441,
+  "liveCatalogSourceKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "liveCatalogOrderMatchesPreviousCandidateFreeQueue": true,
+  "selectedPositions": [
+    1303,
+    1322
+  ],
+  "firstSelected": {
+    "position": 1303,
+    "sourceKey": "Enable Privacy Layer",
+    "sourceKeySha256": "b8cd0599729dbfd9708608ccf13677e166e9fd83df78aefb79cbd81821171ebf",
+    "historicalSourceOrdinal": null
+  },
+  "lastSelected": {
+    "position": 1322,
+    "sourceKey": "Enable download schedules",
+    "sourceKeySha256": "8fc4a7b77fc4ea74e5398624535f1b8a686aea54e322efad0ce5af82849a6405",
+    "historicalSourceOrdinal": null
+  },
+  "nextBoundary": {
+    "position": 1323,
+    "sourceKey": "Enable equalizer",
+    "sourceKeySha256": "b74b5d9df0d7f751c81e77b39fb2b2aa415dbad67acce77f9faef640b1411572",
+    "historicalSourceOrdinal": null,
+    "role": "next-boundary-W1323"
+  },
+  "historicalSourceOrdinalsClaimed": false
+}

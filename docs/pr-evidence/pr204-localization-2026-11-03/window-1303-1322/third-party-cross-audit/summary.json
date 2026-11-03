@@ -1,0 +1,99 @@
+{
+  "applicationTargetCount": 70,
+  "artifact": "slskR PR #204 W1303-W1322 root third-party cross-audit",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "checks": {
+    "allSourceCallersPinned": true,
+    "applicationApproved": false,
+    "inputPrimaryBlindSumsVerified": true,
+    "markupProtected": true,
+    "placeholdersProtected": true,
+    "protectedLiteralsPreserved": true,
+    "uniqueCellCoverage": true
+  },
+  "createdAtUtc": "2026-11-03",
+  "decisionCounts": {
+    "accept-current": 160,
+    "correction": 31,
+    "hold": 10,
+    "refinement": 39
+  },
+  "disagreementCount": 82,
+  "head": "f46b8b2322f4b944f39f34d5bb8d55852ba330c8",
+  "holds": [
+    {
+      "locale": "zh-Hans",
+      "position": 1310,
+      "reason": "“source-feed” is a product-facing import concept; the current Chinese phrase duplicates 源, but selecting a natural Chinese name for the feed type needs locale terminology review. Preserve current value pending that review.",
+      "sourceKey": "Enable Spotify source-feed imports"
+    },
+    {
+      "locale": "zh-Hant",
+      "position": 1310,
+      "reason": "“source-feed” is a product-facing import concept; the current Traditional Chinese phrase duplicates 來源, but selecting a natural localized name for the feed type needs locale terminology review. Preserve current value pending that review.",
+      "sourceKey": "Enable Spotify source-feed imports"
+    },
+    {
+      "locale": "vi",
+      "position": 1311,
+      "reason": "“xáo trộn thời gian” can describe timing randomization, but the source names a privacy timing-obfuscation control. The exact Vietnamese technical term is uncertain from this caller alone; preserve current value for native terminology review.",
+      "sourceKey": "Enable Timing Obfuscation"
+    },
+    {
+      "locale": "zh-Hans",
+      "position": 1313,
+      "reason": "The caller ties this label to playlist expansion for Import Feed URLs. The current target duplicates 源, but the right Chinese name for this import-feed concept is unclear; preserve current value pending locale terminology review.",
+      "sourceKey": "Enable YouTube playlist source-feed imports"
+    },
+    {
+      "locale": "zh-Hant",
+      "position": 1313,
+      "reason": "The caller ties this label to playlist expansion for Import Feed URLs. The current target duplicates 來源, but the right Traditional Chinese name for this import-feed concept is unclear; preserve current value pending locale terminology review.",
+      "sourceKey": "Enable YouTube playlist source-feed imports"
+    },
+    {
+      "locale": "de",
+      "position": 1316,
+      "reason": "The caller identifies an authority entity that can be locally enabled for review without changing realm governance. “Berechtigung” means permission and may name a different concept; the established German domain term needs review.",
+      "sourceKey": "Enable authority {authorityKey}"
+    },
+    {
+      "locale": "ja",
+      "position": 1316,
+      "reason": "The caller identifies a realm authority entity, while 権限 can read as permissions or authority. The established Japanese governance term needs review.",
+      "sourceKey": "Enable authority {authorityKey}"
+    },
+    {
+      "locale": "ko",
+      "position": 1316,
+      "reason": "The caller identifies a realm authority entity, while 권한 can read as permissions or authority. The established Korean governance term needs review.",
+      "sourceKey": "Enable authority {authorityKey}"
+    },
+    {
+      "locale": "zh-Hans",
+      "position": 1316,
+      "reason": "The caller identifies a realm authority entity, while 授权 may read as authorization. The established Chinese governance term is unclear from this context; preserve the current value pending terminology review.",
+      "sourceKey": "Enable authority {authorityKey}"
+    },
+    {
+      "locale": "zh-Hant",
+      "position": 1316,
+      "reason": "The caller identifies a realm authority entity, while 權限 may read as permission. The established Traditional Chinese governance term is unclear; preserve the current value pending terminology review.",
+      "sourceKey": "Enable authority {authorityKey}"
+    }
+  ],
+  "inputs": {
+    "blindChecksumListSha256": "b1bec9a8321648f882585799a04cc7e4175ae4c25575c7fe76d088ca275de6a5",
+    "candidateFreeChecksumListSha256": "d30a1b2aa55a13eb0b33a116cfbf965494b675bbedf3acb9a6fbc61c53ead652",
+    "candidateFreeManifestSha256": "3145ccef78adbea528fe062d053ba90067207c4c49611ba43994da78383b244c",
+    "primaryChecksumListSha256": "1908619f28948aa78027fae48b8ac0fe71acdc35b1fc91f6760a9c46a6ea5684"
+  },
+  "tree": "4eba98f951a745dac6b5332bd6796bf57c7037e2",
+  "window": {
+    "cellCount": 240,
+    "firstPosition": 1303,
+    "lastPosition": 1322,
+    "localeCount": 12,
+    "sourceCount": 20
+  }
+}

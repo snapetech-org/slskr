@@ -1,0 +1,20 @@
+Enable Privacy Layer
+Enable Pushbullet
+Enable Pushbullet notifications
+Enable Pushover
+Enable Pushover notifications
+Enable Scene Pod Bridge
+Enable Spotify imports
+Enable Spotify source-feed imports
+Enable Timing Obfuscation
+Enable YouTube playlist expansion
+Enable YouTube playlist source-feed imports
+Enable a five-second fade between queue items.
+Enable authentication before exposing this Web UI outside a trusted local network.
+Enable authority {authorityKey}
+Enable auto replace stuck downloads
+Enable auto-replace stuck downloads
+Enable automatic replacement of stuck downloads with alternative sources.
+Enable crossfade
+Enable download scheduled speed limits
+Enable download schedules
