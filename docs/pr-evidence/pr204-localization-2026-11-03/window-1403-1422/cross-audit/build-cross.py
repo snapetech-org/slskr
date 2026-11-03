@@ -18,7 +18,7 @@ input_manifest=readj(CF/"manifest.json"); primary_manifest=readj(PR/"manifest.js
 assert input_manifest["head"]==primary_manifest["head"]=="727500e46852a5b6578e571781693857510943d9"
 assert input_manifest["tree"]==primary_manifest["tree"]=="c71165c20fc6ba7d49d563898ea2ec8e1e448672"
 locs=input_manifest["localeOrder"]; decisions=[]
-for k,base in sorted(cf_cells.items()):
+for k,base in sorted(cf_cells.items(),key=lambda item:(item[0][0],locs.index(item[0][1]))):
  i=ind[k]; p=prim[k]; d=pdec.get(k)
  assert base["sourceKey"]==i["sourceKey"]==p["sourceKey"]
  assert base["sourceKeySha256"]==i["sourceKeySha256"]==p["sourceKeySha256"]
@@ -34,7 +34,7 @@ for k,base in sorted(cf_cells.items()):
   assert d["disposition"]==p["disposition"] and d["rationale"]==p["rationale"]
  if i["disposition"]=="update" and d:
   relation="shared-change-same-target" if i["independentProposal"]==ptarget else "shared-change-different-target"
- elif i["disposition"]=="update" and not d: relation="independent-only-change"
+ elif i["disposition"]=="update" and not d: relation="independent-noop-agreement" if i["independentProposal"]==base["currentTarget"] else "independent-only-change"
  elif i["disposition"]=="hold" and d: relation="primary-change-resolves-independent-hold"
  elif d: relation="primary-only-change"
  else: relation="no-change-agreement"
@@ -52,11 +52,11 @@ for k,base in sorted(cf_cells.items()):
    why="The independent terminology hold is resolved by the exact caller: this is a user-managed digital channel object with channelId, name, and kind fields. Traditional Chinese 頻道 is the standard term for this channel."
   else:
    why="The primary correction was rechecked against the pinned source and caller. It resolves a semantic, grammatical, or locale-style issue not identified in the blind pass."
+ elif i["disposition"]=="update" and i["independentProposal"]==base["currentTarget"]:
+  why="The blind reviewer proposed text identical to the current value; exact value equality means no catalog update is needed."
  elif i["disposition"]=="update":
   selected_source="independent"; selected=i["independentProposal"]; final_disp="update"
-  if k==(1412,"ar"):
-   why="The blind review correctly identified شهادة as certificate/testimony rather than an exception. The CompatibilityDashboard caller uses Exception as a table heading, so adopt استثناء."
-  elif k==(1419,"vi"):
+  if k==(1419,"vi"):
    why="The blind review identified Hợp đồng thi công as a construction contract. The integration status is an execution contract, so adopt Hợp đồng thực thi."
  elif i["disposition"]=="hold":
   selected_source="independent"; final_disp="hold"; selected=base["currentTarget"]
@@ -106,13 +106,13 @@ for path,lines in [("web/src/lib/automationRecipes.js",[75,88]),("web/src/compon
 (R/"code-evidence.json").write_text(json.dumps({"head":input_manifest["head"],"tree":input_manifest["tree"],"files":code_evidence,
  "notes":["Automation recipe source titles are Wishlist Retry and Library Health Scan.","The message at position 1416 literally names Wishlist Retry and Library Health; the exact catalog entries for those literal keys are pinned separately.","PodChannelManagementPanel stores channelId, name, kind, and supports channel create/edit/delete, confirming a digital channel object for zh-Hant 頻道."]},ensure_ascii=False,sort_keys=True,indent=2)+"\n",encoding="utf-8")
 cnt={x:sum(r["finalDisposition"]==x for r in decisions) for x in ("retain","update","hold")}
-cmp={x:sum(r["reviewerComparison"]==x for r in decisions) for x in ("no-change-agreement","primary-only-change","independent-only-change","primary-change-resolves-independent-hold","shared-change-same-target","shared-change-different-target")}
+cmp={x:sum(r["reviewerComparison"]==x for r in decisions) for x in ("no-change-agreement","primary-only-change","independent-only-change","independent-noop-agreement","primary-change-resolves-independent-hold","shared-change-same-target","shared-change-different-target")}
 same_text=sum(r["reviewerComparison"]=="shared-change-same-target" for r in decisions)
 different_text=sum(r["reviewerComparison"]=="shared-change-different-target" for r in decisions)
 summary={"result":"SEALED_CROSS_AUDIT","cells":len(decisions),"finalDispositionCounts":cnt,"comparisonCounts":cmp,
  "sharedChangeSameTarget":same_text,"sharedChangeDifferentTarget":different_text,
  "sameDispositionDifferentProposalText":different_text,
- "primaryChangesAdopted":64,"independentOnlyChangesAdopted":2,"primaryAcceptedButIndependentCorrectionAdopted":2,
+ "primaryChangesAdopted":64,"independentOnlyChangesAdopted":1,"primaryAcceptedButIndependentCorrectionAdopted":1,"independentNoopAgreements":cmp["independent-noop-agreement"],
  "independentHoldResolved":1,"newHolds":cnt["hold"],
  "priorHoldsReattested":len(jl(CF/"prior-hold-reattestation.jsonl")),"changedPriorHolds":0,
  "priorSelectionsReattested":len(jl(CF/"prior-selection-reattestation.jsonl")),
@@ -130,7 +130,7 @@ manifest={"task":"slskR PR #204 W1403-W1422 independent translation cross-audit"
  "candidateFreeEvidence":"evidence/candidate-free-input","primaryEvidence":"evidence/primary-review","independentReview":"independent-review",
  "primaryMaterialsOpenedAfterIndependentSeal":True,"candidateFreeSourceHash":summary["candidateFreeManifestSha256"],
  "primaryManifestSha256":summary["primaryManifestSha256"],"independentManifestSha256":summary["independentManifestSha256"],
- "resolutionLedgerSha256":sha((R/"resolution-ledger.jsonl").read_bytes()),"finalDispositionCounts":cnt,"comparisonCounts":cmp,
+ "resolutionLedgerSha256":sha((R/"resolution-ledger.jsonl").read_bytes()),"finalDispositionCounts":cnt,"comparisonCounts":cmp,"independentNoopAgreements":cmp["independent-noop-agreement"],
  "priorHoldsReattested":35,"changedPriorHolds":0,"priorSelectionsReattested":160,
  "candidateFreeSourceQueueSha256":sha((CF/"source-queue.jsonl").read_bytes()),
  "catalogPinsSha256":sha((CF/"catalog-file-pins.json").read_bytes()),

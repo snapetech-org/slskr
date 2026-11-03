@@ -28,7 +28,7 @@ def main():
     assert not git(repo,'diff','--name-only',base,'HEAD','--','.github/workflows').decode().strip()
     ledger=readjl(window/'cross-audit/resolution-ledger.jsonl')
     plan=readjl(app/'apply-plan.jsonl'); readback=readjl(app/'catalog-readback.jsonl')
-    assert len(ledger)==len(readback)==240 and len(plan)==66
+    assert len(ledger)==len(readback)==240 and len(plan)==65
     plan_by={(r['catalogPath'],r['sourceKey']):r for r in plan}
     by_path={x['catalogPath']:x for x in readj(app/'catalog-invariants.json')['catalogs']}
     for path,inv in by_path.items():
@@ -51,9 +51,9 @@ def main():
     for h in holds:
         after=readj(repo/h['currentCatalogPath'])[h['sourceKey']]
         assert sha(after.encode())==h['currentTargetSha256']==h['priorCurrentTargetSha256']
-    assert result['updates']==66 and result['retains']==174 and result['newHolds']==0
+    assert result['updates']==65 and result['retains']==175 and result['newHolds']==0
     assert result['priorHoldsReattested']==result['priorHoldsPreserved']==35 and result['priorSelectionsReattested']==160
-    print('PASS: W1403-W1422 240-cell readback; 66 updates, 174 retains, 35 holds preserved; catalog structure and workflows unchanged')
+    print('PASS: W1403-W1422 240-cell readback; 65 updates, 175 retains, 35 holds preserved; catalog structure and workflows unchanged')
 
 def readj_bytes(raw): return json.loads(raw)
 if __name__=='__main__': main()

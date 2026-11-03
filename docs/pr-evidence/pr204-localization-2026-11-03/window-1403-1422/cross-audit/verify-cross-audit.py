@@ -37,7 +37,7 @@ pdec={(x["position"],x["locale"]):x for x in j(pr/"review-decisions.json")}
 rows=jl(R/"resolution-ledger.jsonl");locs=cm["localeOrder"]
 assert len(base)==len(ind)==len(prim)==len(rows)==240 and len(pdec)==64
 assert [(x["position"],x["locale"]) for x in rows]==[(p,l) for p in range(1403,1423) for l in locs]
-cnt={"retain":0,"update":0,"hold":0};cmp={x:0 for x in ("no-change-agreement","primary-only-change","independent-only-change","primary-change-resolves-independent-hold","shared-change-same-target","shared-change-different-target")}
+cnt={"retain":0,"update":0,"hold":0};cmp={x:0 for x in ("no-change-agreement","primary-only-change","independent-only-change","independent-noop-agreement","primary-change-resolves-independent-hold","shared-change-same-target","shared-change-different-target")}
 for r in rows:
  k=(r["position"],r["locale"]);b=base[k];i=ind[k];p=prim[k];d=pdec.get(k)
  for field,vals in (("sourceKey",(b["sourceKey"],i["sourceKey"],p["sourceKey"])),("sourceKeySha256",(b["sourceKeySha256"],i["sourceKeySha256"],p["sourceKeySha256"])),("currentTargetSha256",(b["currentTargetSha256"],i["currentTargetSha256"],p["currentTargetSha256"]))):assert len(set(vals))==1,(k,field)
@@ -48,13 +48,14 @@ for r in rows:
  assert r["catalogGitBlob"]==b["catalogGitBlob"]==i["catalogGitBlob"]==p["catalog"]["gitBlob"]
  pt=d["target"] if d else b["currentTarget"];assert r["primaryProposal"]==pt
  if i["disposition"]=="update" and d:rel="shared-change-same-target" if i["independentProposal"]==pt else "shared-change-different-target"
+ elif i["disposition"]=="update" and i["independentProposal"]==b["currentTarget"]:rel="independent-noop-agreement"
  elif i["disposition"]=="update":rel="independent-only-change"
  elif i["disposition"]=="hold" and d:rel="primary-change-resolves-independent-hold"
  elif d:rel="primary-only-change"
  else:rel="no-change-agreement"
  assert r["reviewerComparison"]==rel;cmp[rel]+=1
  if d:selected,src,disp=pt,"primary","update"
- elif i["disposition"]=="update":selected,src,disp=i["independentProposal"],"independent","update"
+ elif i["disposition"]=="update" and i["independentProposal"]!=b["currentTarget"]:selected,src,disp=i["independentProposal"],"independent","update"
  elif i["disposition"]=="hold":selected,src,disp=b["currentTarget"],"independent","hold"
  else:selected,src,disp=b["currentTarget"],"current","retain"
  assert (r["selectedTarget"],r["selectedSource"],r["finalDisposition"])==(selected,src,disp)
@@ -62,12 +63,12 @@ for r in rows:
  assert r["selectedTargetSha256"]==sha(selected.encode())
  st=tok(b["sourceKey"]);ft=tok(selected)
  assert st["ph"]==ft["ph"] and st["tag"]==ft["tag"] and st["num"]==ft["num"] and all(x in ft["prot"] for x in st["prot"])
-assert cnt==s["finalDispositionCounts"]=={"retain":174,"update":66,"hold":0}
-assert cmp==s["comparisonCounts"]=={"no-change-agreement":174,"primary-only-change":44,"independent-only-change":2,"primary-change-resolves-independent-hold":1,"shared-change-same-target":8,"shared-change-different-target":11}
+assert cnt==s["finalDispositionCounts"]=={"retain":175,"update":65,"hold":0}
+assert cmp==s["comparisonCounts"]=={"no-change-agreement":174,"primary-only-change":44,"independent-only-change":1,"independent-noop-agreement":1,"primary-change-resolves-independent-hold":1,"shared-change-same-target":8,"shared-change-different-target":11}
 h=jl(cf/"prior-hold-reattestation.jsonl");prev=jl(cf/"prior-selection-reattestation.jsonl")
 assert len(h)==35 and all(x["disposition"]=="hold" and x["reattestation"]=="same" and x["currentTarget"]==x["priorCurrentTarget"] and x["currentTargetSha256"]==x["priorCurrentTargetSha256"] for x in h)
 assert len(prev)==160 and all(x["selectionMatchesCurrentQueue"] and x["priorSourceKey"]==x["currentQueueSourceKey"] for x in prev)
-assert len(jl(R/"apply-plan.jsonl"))==66
+assert len(jl(R/"apply-plan.jsonl"))==65
 pins=j(cf/"catalog-file-pins.json")["localeCatalogs"];titles=jl(R/"catalog-title-evidence.jsonl");assert len(titles)==12
 for x in titles:
  pin=pins[x["locale"]];f=R/"evidence/pinned-catalogs"/Path(pin["path"]).name;cat=j(f)

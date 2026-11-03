@@ -18,12 +18,11 @@
         "Evidence",
         "Evidence (",
         "Evidence Review Sandbox",
-        "Exception",
         "Exclude the rejected Wishlist peer and remote directory from future automatic downloads.",
         "Execute {title}",
         "Execute {title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan.",
-        "Existing configuration is not a YAML mapping",
-        "Existing hash reused"
+        "Existing hash reused",
+        "Existing configuration is not a YAML mapping"
       ],
       "changedCellCount": 10
     },
@@ -198,9 +197,9 @@
         "Event topic filter",
         "Events",
         "Events Retention days",
-        "Every 15 minutes",
         "Evidence (",
         "Exclude the rejected Wishlist peer and remote directory from future automatic downloads.",
+        "Every 15 minutes",
         "Execute {title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan."
       ],
       "changedCellCount": 7
@@ -218,11 +217,11 @@
         "Event topic filter",
         "Events",
         "Events Retention days",
-        "Every 15 minutes",
         "Evidence (",
         "Exclude the rejected Wishlist peer and remote directory from future automatic downloads.",
-        "Execute {title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan.",
-        "Existing Channels"
+        "Existing Channels",
+        "Every 15 minutes",
+        "Execute {title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan."
       ],
       "changedCellCount": 8
     }

@@ -1,8 +1,8 @@
-f6a1a22fcd2939de6378577c8a7a97b3337b5de822e5b3585aebf29a4a1cf975  ./README.md
+80310f7cc760cbc77d7f6ed29538e0cedb0a8c16f44335c60d893628c09b0e2c  ./README.md
 772d11f4872e58ce47ac864ac65d07fe1f5f4e94d082df66d6bdd1050b4c8a2b  ./after-live-attestation.json
-dd627d771d2871f41d29a56e7d9a5cd5f7252b69059123db9b84c11a5774611a  ./apply-plan.jsonl
+7238b2e58ca8a51fe203269ef901ee7ec427715b131030da0a9e7dec5ceae6f9  ./apply-plan.jsonl
 46fb1c41fcb5c92947cda1727c2353840f66eb8ec55783bc163ff4dfa901bb3c  ./before-live-attestation.json
-9bffc9a9b35424a271523033df93954d9f8634b25e6d259844cae46d474267bb  ./build-cross.py
+e625b2d082e716f5ac5cd7459b970477bf0205b9b97f7cbd814d1d31f8172613  ./build-cross.py
 5c8fe2154668f74d3fd81443300197bad7c5167ad65c7b857edcf2ad2dad0824  ./catalog-title-evidence.jsonl
 31a3fca3b7b5eff58a760b04f5178bc39246a1264242f5705c42474ad392753c  ./code-evidence.json
 91d918a83044cbc5e319a6db7997179c93073a1147852673a2a0013f6b885dc0  ./evidence/candidate-free-input/PR-attestation.json
@@ -56,7 +56,7 @@ da225794c15987b929c0436c9fc50d281ea9a7bb4ce7c94b2272144ced39069f  ./independent-
 c7bc8dff88b89c1b84cf8758de394dcad98e3115b0ffab840ed1a48e1b1de61a  ./independent-review/prior-selection-reattestation.jsonl
 b59e8e232f7a322a8d22940dfab363a1beec660d1e3acfaeaca5663b4f250836  ./independent-review/summary.json
 d8528f5397ebff6775e469471b1afc2a0b05ab4bedabe6182efe838a532c91ee  ./independent-review/verify-independent.py
-76f6e54a73a882e070e4bf93d3ab9fe6e1c32dce75a6ca9a8f5bc8f46a309d62  ./manifest.json
-e9d192c129943abe20bbdef1558b89fd2c6c2738d7569448cbf9e3568ca94118  ./resolution-ledger.jsonl
-f06abfb1479c1b55e8cbf5966ce58f33740889e51cb259db9da7fcbaeec17528  ./summary.json
-afa98741e6fd6ddcd262308ef241f2220fbc54eda84dbf2308e4a8e2adedab70  ./verify-cross-audit.py
+ce616b4255c2003c3319b1f4f37630756efa0283074de69eb633e20a006165c3  ./manifest.json
+39dc57c7bb7bffdf8123691c38b0c1babcefdf0230e0bd518b7dee587c2157c6  ./resolution-ledger.jsonl
+62c1a91bea504c3335d2fdd4ea382783e6316742feed10525b9bc16dffc37450  ./summary.json
+27295bf8539128051a97b79c5a95f6e2322a86cab484204f60c816f97a5e93f2  ./verify-cross-audit.py

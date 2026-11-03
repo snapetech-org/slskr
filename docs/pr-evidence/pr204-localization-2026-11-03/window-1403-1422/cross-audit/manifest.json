@@ -10,7 +10,8 @@
   "cellCount": 240,
   "changedPriorHolds": 0,
   "comparisonCounts": {
-    "independent-only-change": 2,
+    "independent-noop-agreement": 1,
+    "independent-only-change": 1,
     "no-change-agreement": 174,
     "primary-change-resolves-independent-hold": 1,
     "primary-only-change": 44,
@@ -20,12 +21,13 @@
   "draft": true,
   "finalDispositionCounts": {
     "hold": 0,
-    "retain": 174,
-    "update": 66
+    "retain": 175,
+    "update": 65
   },
-  "finalUpdatePlanSha256": "dd627d771d2871f41d29a56e7d9a5cd5f7252b69059123db9b84c11a5774611a",
+  "finalUpdatePlanSha256": "7238b2e58ca8a51fe203269ef901ee7ec427715b131030da0a9e7dec5ceae6f9",
   "head": "727500e46852a5b6578e571781693857510943d9",
   "independentManifestSha256": "da225794c15987b929c0436c9fc50d281ea9a7bb4ce7c94b2272144ced39069f",
+  "independentNoopAgreements": 1,
   "independentReview": "independent-review",
   "independentReviewLedgerSha256": "61e397f1a1e5db7f2ceabc3c2e58a8df905462e9ff58b755983c72c20724e967",
   "localeOrder": [
@@ -42,11 +44,7 @@
     "vi",
     "id"
   ],
-  "mainRefDiffersFromPrBase": true,
-  "pinnedCatalogSnapshotCount": 12,
-  "pinnedSourceSnapshotCount": 2,
   "pr": 204,
-  "prBaseRefObserved": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
   "primaryDecisionFileSha256": "09234aea7515fa1c5b87f23811374ee166319a2be1f4d013ca8c84c1e3c947a1",
   "primaryEvidence": "evidence/primary-review",
   "primaryLedgerSha256": "1197bc27271c986261c3b2af7fc3965695352255cdc7e3c7b7e31bbc8bfa48ed",
@@ -54,9 +52,8 @@
   "primaryMaterialsOpenedAfterIndependentSeal": true,
   "priorHoldsReattested": 35,
   "priorSelectionsReattested": 160,
-  "remoteMainRefObserved": "32c8c40666d93690b8b1847001fd66001a4eaf99",
   "repo": "snapetech-org/slskR",
-  "resolutionLedgerSha256": "e9d192c129943abe20bbdef1558b89fd2c6c2738d7569448cbf9e3568ca94118",
+  "resolutionLedgerSha256": "39dc57c7bb7bffdf8123691c38b0c1babcefdf0230e0bd518b7dee587c2157c6",
   "selectedPositions": [
     1403,
     1422

@@ -4,7 +4,8 @@
   "cells": 240,
   "changedPriorHolds": 0,
   "comparisonCounts": {
-    "independent-only-change": 2,
+    "independent-noop-agreement": 1,
+    "independent-only-change": 1,
     "no-change-agreement": 174,
     "primary-change-resolves-independent-hold": 1,
     "primary-only-change": 44,
@@ -15,26 +16,18 @@
   "exactTree": "c71165c20fc6ba7d49d563898ea2ec8e1e448672",
   "finalDispositionCounts": {
     "hold": 0,
-    "retain": 174,
-    "update": 66
+    "retain": 175,
+    "update": 65
   },
   "independentChecksumListSha256": "2f74fa1d76fe0e21f5e306c6f19fa55a6a53986539b508f753e6eda667396d77",
   "independentHoldResolved": 1,
   "independentManifestSha256": "da225794c15987b929c0436c9fc50d281ea9a7bb4ce7c94b2272144ced39069f",
-  "independentOnlyChangesAdopted": 2,
-  "liveRefStatus": {
-    "draft": true,
-    "headBranchAndPullRefUnchanged": true,
-    "liveMainBranchRef": "32c8c40666d93690b8b1847001fd66001a4eaf99",
-    "mainDiffersFromPrBase": true,
-    "note": "main is ahead of the PR-reported base ref; cross-audit remains pinned to the PR's exact base/head snapshot",
-    "prBaseRef": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
-    "prState": "OPEN"
-  },
+  "independentNoopAgreements": 1,
+  "independentOnlyChangesAdopted": 1,
   "newHolds": 0,
   "numericBaselineExceptionsResolved": 2,
   "placeholderMarkupNumericProtectedMismatches": 0,
-  "primaryAcceptedButIndependentCorrectionAdopted": 2,
+  "primaryAcceptedButIndependentCorrectionAdopted": 1,
   "primaryChangesAdopted": 64,
   "primaryChecksumListSha256": "74221e4ecbb1dcdbc60c26184404de08ca4dbee56c968c178634938dd9ac71e1",
   "primaryManifestSha256": "276ddbf45822ca02d6db62c637cef9d14d80dbc8fc18642060bfefd52e346863",
