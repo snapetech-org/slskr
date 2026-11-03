@@ -1,0 +1,189 @@
+{
+  "baseRef": "main",
+  "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "boundaryFile": "source-window-boundaries.jsonl",
+  "boundaryRowCount": 22,
+  "callerFileCount": 23,
+  "callerReferenceCount": 36,
+  "callerResolutionHoldCount": 12,
+  "callerResolutionHoldPositions": [
+    1257
+  ],
+  "candidateFreeInputOnly": true,
+  "cellCount": 240,
+  "commitApiTree": "0ead1eb1678b4df05ca7feec9776c0319d4eefd3",
+  "draft": true,
+  "head": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+  "headRef": "codex/slskr-l10n-audit-20261030",
+  "localWorktree": "/mnt/disks/scratch/task-worktrees/localization-20261103/slskr-pr204-w1223-evidence-20261103",
+  "localWorktreeBranch": "",
+  "localWorktreeHead": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+  "localWorktreeStatusClean": true,
+  "localWorktreeTree": "0ead1eb1678b4df05ca7feec9776c0319d4eefd3",
+  "localeCount": 12,
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "nativeSpeakerApproval": false,
+  "nextBoundaryPosition": 1263,
+  "opaqueRuntimeValuesPolicy": "Caller lines and runtime expressions are captured verbatim from pinned source files; values are not evaluated, inferred, or rewritten.",
+  "placeholderTokenSequenceMismatchCount": 0,
+  "previousBoundaryPosition": 1242,
+  "proposedTranslationsIncluded": false,
+  "pullRequest": 204,
+  "remoteBranchHead": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+  "remoteBranchRef": "refs/heads/codex/slskr-l10n-audit-20261030",
+  "remotePullRefHead": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+  "repository": "snapetech-org/slskR",
+  "selectedPositions": [
+    1243,
+    1262
+  ],
+  "selectionRule": "One-based positions 1243–1262 in the 5,441 unique English source lookup keys shared by the 12 runtime locale catalogs; keys are sorted lexicographically by exact Unicode string and source strings are direct catalog lookup keys.",
+  "semanticReviewIncluded": false,
+  "sourceContextRows": 20,
+  "sourceCount": 20,
+  "sourceIds": [
+    {
+      "callerReferenceCount": 2,
+      "position": 1243,
+      "sourceKey": "Dry run (preview changes without applying)",
+      "sourceKeySha256": "b00c87ec7dc276c8f4d5b7660e7836d55a4b78bfc633523aecac178ab7d57da1"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1244,
+      "sourceKey": "Dry run:",
+      "sourceKeySha256": "3b6523a3e7f7736a573c8085b9c2e33f57e0f12b84ec206cf0e7e1d05a4efd27"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1245,
+      "sourceKey": "Dry-run plan created from an approved Discovery Inbox candidate. Review and explicit execution are still required before any network activity.",
+      "sourceKeySha256": "f059353949e9b0b7634cecf3544626f5c4844175a76bd3302e317a9ecb6e45b7"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1246,
+      "sourceKey": "Dry-run tag, cover-art, ReplayGain, and path decisions before any file write.",
+      "sourceKeySha256": "1e9c28a814fa5bf82757d0fe42240af331c0b1ab6bed3947555aba15c7c3aa4e"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1247,
+      "sourceKey": "Duplicates Detected:",
+      "sourceKeySha256": "046a093f5e41b87ec0ac9d1458b6722d1e9870560b99b95a330d227865695758"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1248,
+      "sourceKey": "Duration",
+      "sourceKeySha256": "4fc52a3c4c558b517c463b22d86d0e3b9cfd4255c98fe3510f9075b37ab419c9"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1249,
+      "sourceKey": "Duration Seconds",
+      "sourceKeySha256": "557db7ac26272424546188f1b43cbe5a4d3ac992757323361915ad9aec8d7ae0"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1250,
+      "sourceKey": "Duration spread: {minutes} min",
+      "sourceKeySha256": "2709208a7937afe2e88a13678d3a567dcb58b6ded04ca35c801e1d0a96d46b12"
+    },
+    {
+      "callerReferenceCount": 8,
+      "position": 1251,
+      "sourceKey": "Duration:",
+      "sourceKeySha256": "298d6c7549e48a9798cff3c8f93f7bab46bde00451199e9cbfd0ea8fc2e9e6e0"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1252,
+      "sourceKey": "Each descriptor requires a ContentID",
+      "sourceKeySha256": "9271cf043688fddaf62ec02b820295fba19d630f2c10ac8a0c8cdff77b65cab8"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1253,
+      "sourceKey": "Each file requires a filename",
+      "sourceKeySha256": "2248ce98e61fe3f3b1f8f0d464fd3a51851a0eec5f230977ca9d541f3efe2d29"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1254,
+      "sourceKey": "Each file requires a non-negative size",
+      "sourceKeySha256": "4e09f959c0b55ff06fa92fd7df7ea3ee27ecbbe674ee8950c1cda81108cab9b1"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1255,
+      "sourceKey": "Each last seen timestamp requires a non-empty channel ID and positive timestamp",
+      "sourceKeySha256": "269c21e3959e7d1e6a7205eaca4f7be75f6243dc1eb68719d1491ecd2e5673a6"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1256,
+      "sourceKey": "Each link requires a non-empty name and target",
+      "sourceKeySha256": "f4a731b59090faeadc955144add28c20b2107a3ddcbc4c8183e8a6d1f5490317"
+    },
+    {
+      "callerReferenceCount": 0,
+      "position": 1257,
+      "sourceKey": "Ecosystem",
+      "sourceKeySha256": "e219439281f24ad1442865ace73b5db3793c067814a7bef6bc5a8670a234ef6a"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1258,
+      "sourceKey": "Edges",
+      "sourceKeySha256": "658b158af9bde570fd7936f48d14af314d7a400afbc3a377157379b0eb6e6f41"
+    },
+    {
+      "callerReferenceCount": 5,
+      "position": 1259,
+      "sourceKey": "Edit",
+      "sourceKeySha256": "464c4ffd019e1e9691dcf0537c797353ef2b1c1d4833d3d463e5b74ae4547344"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1260,
+      "sourceKey": "Edit Options",
+      "sourceKeySha256": "a343ea5f0286626776746a025fa9d2757c543f465c3f724e78c499e810e3291f"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1261,
+      "sourceKey": "Edit User Note",
+      "sourceKeySha256": "c0e32387a63ceaf28e998ba481af7cfb7fab5a95653a14bd9f7f0346e2379dea"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1262,
+      "sourceKey": "Edit Wishlist Item",
+      "sourceKeySha256": "d62eb8586b9afde74cacdee1e91b4478e5cf815f79f7cfac1a87cec450dc281f"
+    }
+  ],
+  "sourceLookupKeyOrderHashFormat": "SHA-256 of all unique source keys sorted lexicographically, one exact key per line, trailing newline.",
+  "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "sourceQueueCount": 5441,
+  "sourceQueueFile": "source-queue.jsonl",
+  "sourceQueueFileSha256": "da4f6b93e7d3f05c03b3dbd7a39959c8990a5089b78ea8b850b568aa2de38236",
+  "sourceQueueOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "sourceRecordCount": 5441,
+  "state": "open",
+  "tree": "0ead1eb1678b4df05ca7feec9776c0319d4eefd3",
+  "window": "W1243-W1262"
+}

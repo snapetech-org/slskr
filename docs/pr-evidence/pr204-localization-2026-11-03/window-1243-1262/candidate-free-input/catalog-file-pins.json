@@ -1,0 +1,291 @@
+{
+  "callerFiles": {
+    "crates/slskr/src/extended_controller.rs": {
+      "byteCount": 39636,
+      "gitBlob": "64e96af1bb51f4c3574c838b2f16b6ba2f729173",
+      "lineCount": 1050,
+      "path": "crates/slskr/src/extended_controller.rs",
+      "sha256": "fdfd14cab2c836c21098e3158b963353f8fa4ed45bf194680c644ed9cf8a22bc"
+    },
+    "crates/slskr/src/mediacore_mutations.rs": {
+      "byteCount": 52996,
+      "gitBlob": "8cad7d2ce9377e3b9b68195d3a58558f27a19da8",
+      "lineCount": 1233,
+      "path": "crates/slskr/src/mediacore_mutations.rs",
+      "sha256": "48eb4d41e5d4515148e0cb3c6a3df2262f385f067d976a5cb1bc2c563b78e598"
+    },
+    "crates/slskr/src/podcore_mutations.rs": {
+      "byteCount": 79615,
+      "gitBlob": "09e8252602a617bc76e76bfaafc38cf270acf097",
+      "lineCount": 1750,
+      "path": "crates/slskr/src/podcore_mutations.rs",
+      "sha256": "8de3802d6daaa1239c00a645802a658ef63031b975cc5edadf3d1482f2182a3a"
+    },
+    "web/src/components/PlaylistIntake/PlaylistIntake.jsx": {
+      "byteCount": 32586,
+      "gitBlob": "162c8fb6dff17671f35471b4bae605da08b90447",
+      "lineCount": 655,
+      "path": "web/src/components/PlaylistIntake/PlaylistIntake.jsx",
+      "sha256": "a978f80c022835c003d35db99b38037dee622c6456d9cbc46688f810867e3ae6"
+    },
+    "web/src/components/Search/Detail/SearchResultControls.jsx": {
+      "byteCount": 19003,
+      "gitBlob": "f6ec8606ad6420be75d2cde695815e31b86bd448",
+      "lineCount": 448,
+      "path": "web/src/components/Search/Detail/SearchResultControls.jsx",
+      "sha256": "1f2880630f893cfc8361fb40a4ad4e9e07d01da96202b7ac36054c860124da46"
+    },
+    "web/src/components/Search/DiscoveryGraphAtlas.jsx": {
+      "byteCount": 2611,
+      "gitBlob": "b1890e4fb2064beec3e2964010b76837a98c81f8",
+      "lineCount": 71,
+      "path": "web/src/components/Search/DiscoveryGraphAtlas.jsx",
+      "sha256": "f330662140c9799147972271e5f4f55a6f87a3318d8cbe02a9c06cd17679a919"
+    },
+    "web/src/components/Search/Response.jsx": {
+      "byteCount": 41424,
+      "gitBlob": "8bee962fc708202a785758d9da1193ea4de59337",
+      "lineCount": 1105,
+      "path": "web/src/components/Search/Response.jsx",
+      "sha256": "da0ccb703c38cf3a444e9d79fba30cd62191f15277ec339b287529d121cbe6de"
+    },
+    "web/src/components/Search/SongIDEvidenceDetails.jsx": {
+      "byteCount": 39566,
+      "gitBlob": "a6a0eb1e9843801ff94e590a22878899f3d2bca2",
+      "lineCount": 811,
+      "path": "web/src/components/Search/SongIDEvidenceDetails.jsx",
+      "sha256": "4a90c2dfd31302a93964fed1f0642a56909bab926324519eb77c94cda6139f65"
+    },
+    "web/src/components/System/AutomationCenter/index.jsx": {
+      "byteCount": 19174,
+      "gitBlob": "c80e09d7a45fc31d2b9573711e62f14b7215fb1f",
+      "lineCount": 472,
+      "path": "web/src/components/System/AutomationCenter/index.jsx",
+      "sha256": "3e5392f8a4f4d0ed7e6e6191e5cbbb12e1f34689a13d7c40d22e26b56398628d"
+    },
+    "web/src/components/System/Integrations/MetadataSettingsPanel.jsx": {
+      "byteCount": 35742,
+      "gitBlob": "0d0ffc8e16a072970a51604bd95d76f7f796669f",
+      "lineCount": 827,
+      "path": "web/src/components/System/Integrations/MetadataSettingsPanel.jsx",
+      "sha256": "e5aaf906b4cfc6e17ef8706bc95efb660b0eda2748bf2dad1c411ee9621d6339"
+    },
+    "web/src/components/System/MediaCore/ContentDescriptorPublishingPanel.jsx": {
+      "byteCount": 21181,
+      "gitBlob": "c51d4085b6d2b180844a9e8091406f527651229b",
+      "lineCount": 514,
+      "path": "web/src/components/System/MediaCore/ContentDescriptorPublishingPanel.jsx",
+      "sha256": "375e2a926789a74af0efa132bf4bdf8f74606287bdb3ac9499f937eb3a3755f6"
+    },
+    "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx": {
+      "byteCount": 24235,
+      "gitBlob": "4f3c8484d8d23746369ce7619ab4e017849dfb89",
+      "lineCount": 566,
+      "path": "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx",
+      "sha256": "8cb1922e358f7229d7f8147f41e18bffa3146283c270a5844393fc72f755c6ca"
+    },
+    "web/src/components/System/MediaCore/MediaCoreMetadataPortabilityPanel.jsx": {
+      "byteCount": 14701,
+      "gitBlob": "194d820df304d56eb107142812814c2ff4d6524b",
+      "lineCount": 371,
+      "path": "web/src/components/System/MediaCore/MediaCoreMetadataPortabilityPanel.jsx",
+      "sha256": "d0a786e8d6c7c42ad22862d08b64ddcf4a3003417ca8a9459e766cbd136a2c03"
+    },
+    "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx": {
+      "byteCount": 33038,
+      "gitBlob": "2abab8a5496df8cdd48e7acf32b479c7ecba6c23",
+      "lineCount": 769,
+      "path": "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+      "sha256": "34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60"
+    },
+    "web/src/components/System/MediaCore/PodChannelManagementPanel.jsx": {
+      "byteCount": 15423,
+      "gitBlob": "c91e5e8e4250fda54163c8b7841aa9852754ff14",
+      "lineCount": 386,
+      "path": "web/src/components/System/MediaCore/PodChannelManagementPanel.jsx",
+      "sha256": "3ef47356d5cd5942894965fda3bc2999b654b0812a0c7274f85779b78dc99f9d"
+    },
+    "web/src/components/System/MediaCore/PodMessageRoutingPanel.jsx": {
+      "byteCount": 18706,
+      "gitBlob": "4e205e85e50775e0d1e69802884f30d6b1c32ed5",
+      "lineCount": 437,
+      "path": "web/src/components/System/MediaCore/PodMessageRoutingPanel.jsx",
+      "sha256": "d69c4b642ea560fd3f53688927cce8f6fea9f93923aa89f4924f640631cda32b"
+    },
+    "web/src/components/System/Options/EditModal.jsx": {
+      "byteCount": 7097,
+      "gitBlob": "94dabbce21b357730f07c86ded7aed79cffbe9f3",
+      "lineCount": 255,
+      "path": "web/src/components/System/Options/EditModal.jsx",
+      "sha256": "c3fc13d2b2c736611d9a9e86ed61aaa4c30f18dd372b4befeebd9e5365d5ef5c"
+    },
+    "web/src/components/System/Options/index.jsx": {
+      "byteCount": 2985,
+      "gitBlob": "fda024fdcc336132412a5ea583ee975e7115c5f6",
+      "lineCount": 118,
+      "path": "web/src/components/System/Options/index.jsx",
+      "sha256": "7dde0cfdd41f8351caa9a63ae88e7dbdc6653185ae654537e9b0b241ce5c12f3"
+    },
+    "web/src/components/System/SwarmVisualization/index.jsx": {
+      "byteCount": 18035,
+      "gitBlob": "7d2cece5f049ff490ba90e2148e515a5597df1ce",
+      "lineCount": 536,
+      "path": "web/src/components/System/SwarmVisualization/index.jsx",
+      "sha256": "175c3ab9e3f12c87ccdca0981085e48c4ada93d71cdbe4bcdd3552989429a9b9"
+    },
+    "web/src/components/Wishlist/WishlistItemRow.jsx": {
+      "byteCount": 6193,
+      "gitBlob": "cbc2e023f27b0cd4362391c295562862de51b49b",
+      "lineCount": 198,
+      "path": "web/src/components/Wishlist/WishlistItemRow.jsx",
+      "sha256": "b7252496aad45e77b718dae85e6d6cb298f1591bc77633c7957ba1806c384d6b"
+    },
+    "web/src/components/Wishlist/WishlistModal.jsx": {
+      "byteCount": 8939,
+      "gitBlob": "16b4aa4c5a2ab57b1a0c2f6581e99dfdd4b24727",
+      "lineCount": 272,
+      "path": "web/src/components/Wishlist/WishlistModal.jsx",
+      "sha256": "49f9f293410dec17e1d3c335ba49218fb7b351aa04a7bfc3ae107b138bf06582"
+    },
+    "web/src/lib/acquisitionPlans.js": {
+      "byteCount": 11768,
+      "gitBlob": "119e57ac78ad5812f4564233897619ed88a4196d",
+      "lineCount": 369,
+      "path": "web/src/lib/acquisitionPlans.js",
+      "sha256": "3cba8307133b13178436ba2b6f19c401f4791317ca07cc1466b09a36bd8511da"
+    },
+    "web/src/lib/serverErrorMessageAllowlist.js": {
+      "byteCount": 21330,
+      "gitBlob": "d9eed15e55416d5e5fa06657c9c86b287b9b3260",
+      "lineCount": 547,
+      "path": "web/src/lib/serverErrorMessageAllowlist.js",
+      "sha256": "de7bf779c371f2a93d106124d32051b39836c0e7cd557e314c11f7755ce004bc"
+    }
+  },
+  "head": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+  "localeCatalogs": {
+    "ar": {
+      "byteCount": 513233,
+      "gitBlob": "5c37bf70f54548baae5c991f7476c3a81a19f642",
+      "keyCount": 5441,
+      "lineCount": 5548,
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "sha256": "afed4718556d9025733169fbca7df01747022aa988a83d962d95886213e2e920"
+    },
+    "de": {
+      "byteCount": 443272,
+      "gitBlob": "f4dab51cb7c4aadfd4436cb002be79e2bac31592",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "sha256": "1bc951df7c59eeeca3608ea6e40984799be64db4bb05426f9a0de97dd9d455b3"
+    },
+    "es": {
+      "byteCount": 444462,
+      "gitBlob": "20961f141291ef42a683ac42ca3c42c79ddf0421",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "sha256": "99aa947f24c82252c3bc046da4d9b3bb0d127d0cbe030e8c22611e907399ce3a"
+    },
+    "fr": {
+      "byteCount": 455610,
+      "gitBlob": "f4cac022e85f8d6ead87c5969a4632979f170d05",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "sha256": "853627ed96cbf95d560d05e0fe54794f92f8e197f1454e60f96dd98282b85ff0"
+    },
+    "hi": {
+      "byteCount": 677528,
+      "gitBlob": "afa2ce040429931bf44f51d6002e56298a3c8290",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "sha256": "1e743edc575c08ac627b152f92dd35d626eba11649a6dbcb4b37d59926d40049"
+    },
+    "id": {
+      "byteCount": 409922,
+      "gitBlob": "20ff794ccad91e5df0b178e43b517d974975690d",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "sha256": "0f1493c9a20d3875470236dbccbfc829b9e7b3296f6364ec6db0d8b255d79f11"
+    },
+    "ja": {
+      "byteCount": 491184,
+      "gitBlob": "1eb2485bd6c6a81fe1e97c689e31ddc924f0134a",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "sha256": "d6bcea0c26eb1fe84bb6bd05ed7b348356f761980f05313bc6c670509ddc4c78"
+    },
+    "ko": {
+      "byteCount": 442326,
+      "gitBlob": "5833745a98a6cbbdea412ecde76ab00f01e3b815",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "sha256": "4ca5c4bcdcdf3cad843f8fa098980a7f499aa38cb48500980e0bea0542090238"
+    },
+    "pt-BR": {
+      "byteCount": 439118,
+      "gitBlob": "162e8f7a71d0911d9c1d63ce8cd6aff9cae0d54e",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "sha256": "324d17ca75bc04f70bbc9b542d0286baff49af49b1b5cb9a9caf36bc5bab85f0"
+    },
+    "vi": {
+      "byteCount": 475163,
+      "gitBlob": "a1354fcc689ae5c3365a66835d4eb16acd709c02",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "sha256": "669053f89ebb234c70f9959f40e6a1936cc784ddb49215364c521c4436b049c0"
+    },
+    "zh-Hans": {
+      "byteCount": 382978,
+      "gitBlob": "0884d950b8f237d2708559b94e77d2e8a1faf03c",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "sha256": "02cf6615ee64cf3b1a9ca0ac018ee9c8d59ffeac1e675f5b9047c7960d606225"
+    },
+    "zh-Hant": {
+      "byteCount": 383722,
+      "gitBlob": "c082826e6b0f00b4050b6a0357f195975cd2ec7e",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "sha256": "2972d247a3b8b47a0170749798f6b1055d261500403d05026d9e5a076445adb8"
+    }
+  },
+  "localeRuntime": {
+    "byteCount": 11530,
+    "gitBlob": "72dfea05f86bcf0ab02882a85c6e8d4a0cb0dabf",
+    "lineCount": 302,
+    "path": "web/src/lib/interfaceLocale.js",
+    "sha256": "16eb5f119655805f48845e026ee12fd517fae6de871091bd9be2e5b7f1d310ea"
+  },
+  "localesInRuntimeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "schemaVersion": 1,
+  "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "sourceLookupKeySetCount": 5441,
+  "sourceQueueFileSha256": "da4f6b93e7d3f05c03b3dbd7a39959c8990a5089b78ea8b850b568aa2de38236",
+  "sourceQueuePath": "source-queue.jsonl",
+  "tree": "0ead1eb1678b4df05ca7feec9776c0319d4eefd3"
+}

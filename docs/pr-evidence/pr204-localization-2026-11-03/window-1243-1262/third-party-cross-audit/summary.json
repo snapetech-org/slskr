@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+  "tree": "0ead1eb1678b4df05ca7feec9776c0319d4eefd3",
+  "window": "W1243-W1262",
+  "cellCount": 240,
+  "sourceCount": 20,
+  "localeCount": 12,
+  "primaryDispositionCounts": {
+    "accept-current": 139,
+    "correction": 81,
+    "hold": 12,
+    "refinement": 8
+  },
+  "blindDispositionCounts": {
+    "accepted": 179,
+    "correction": 1,
+    "refinement": 48,
+    "held": 12
+  },
+  "finalDispositionCounts": {
+    "accept-current": 127,
+    "correction": 81,
+    "hold": 12,
+    "refinement": 20
+  },
+  "selectedTargetChanges": 101,
+  "noCallerHolds": 12,
+  "noCallerHoldPosition": 1257,
+  "normalizedPrimaryBlindDispositionMismatches": 94,
+  "normalizedPrimaryBlindDispositionMatrix": {
+    "accept-current × accept-current": 127,
+    "accept-current × refinement": 12,
+    "correction × accept-current": 50,
+    "correction × correction": 1,
+    "correction × refinement": 30,
+    "hold × hold": 12,
+    "refinement × accept-current": 2,
+    "refinement × refinement": 6
+  },
+  "apiFieldSuffixCorrections": 48,
+  "nonCallerRationaleAdditionsFromBlindReview": 12,
+  "placeholderMarkupNumericEntityProtectedLiteralUnitFailures": 0,
+  "orderedLocaleCatalogKeyOrderPreserved": true,
+  "sourceQueueCount": 5441,
+  "sourceQueueOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "livePRState": "open",
+  "livePRDraft": true,
+  "remoteBranchHead": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+  "remotePullRefHead": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+  "qualifiedLocaleReviewRequired": true,
+  "nativeSpeakerApproval": false,
+  "releaseApproved": false
+}

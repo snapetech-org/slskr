@@ -1,0 +1,23 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "state": "open",
+  "draft": true,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "head": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+  "tree": "0ead1eb1678b4df05ca7feec9776c0319d4eefd3",
+  "remoteBranchHead": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+  "remotePullRefHead": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+  "localWorktree": "/mnt/disks/scratch/task-worktrees/localization-20261103/slskr-pr204-w1223-evidence-20261103",
+  "localWorktreeHead": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+  "localWorktreeTree": "0ead1eb1678b4df05ca7feec9776c0319d4eefd3",
+  "localWorktreeClean": true,
+  "candidateFreeManifestSha256": "a298dd57d888a652a89e0936881beb3b2897f83f07b93d9bc8f1f22560691c5b",
+  "primaryManifestSha256": "8ad86140c12418f525b3894ac95826340ee121131a8b70d88950678e38bf0993",
+  "blindManifestSha256": "10e3863f165bf59f7c3dfc0016633044457d157c97f64f8f466c75232eb74ca5",
+  "verifiedAtUTC": "2026-11-03T10:35:45.508585+00:00",
+  "reviewerType": "independent third-party cross-audit; proposals reconciled against exact caller/source pins",
+  "qualifiedNativeSpeakerApproval": false,
+  "releaseApprovedByThisCrossAudit": false,
+  "testsBuildsScansCIWorkflowActions": false
+}
