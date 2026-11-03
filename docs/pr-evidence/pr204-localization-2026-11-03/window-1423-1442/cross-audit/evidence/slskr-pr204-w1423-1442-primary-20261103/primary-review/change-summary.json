@@ -1,0 +1,322 @@
+{
+  "artifact": "slskR W1423-W1442 primary proposed-target summary",
+  "head": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+  "tree": "09adcb271a2eb92770df4a20098dccc3fde2a59f",
+  "changeCount": 28,
+  "changes": [
+    {
+      "position": 1423,
+      "sourceKey": "Existing peer data is retained until the next successful poll.",
+      "locale": "es",
+      "currentTarget": "Los datos de pares existentes se conservan hasta la próxima encuesta exitosa.",
+      "currentTargetSha256": "bf7fc1485ed88fdae0106722bbb1aec93e0cfb307790124d6136522e59ea0807",
+      "disposition": "correction",
+      "proposedTarget": "Los datos de pares existentes se conservan hasta el próximo sondeo exitoso.",
+      "proposedTargetSha256": "ea2811e4c1a85940fa35b3d7bbf7a5dbe69cb41a1b7fe2fe3c5a7e593629359e",
+      "reviewReason": "Encuesta means a survey; the caller reports peer polling, for which sondeo is the right network operation."
+    },
+    {
+      "position": 1423,
+      "sourceKey": "Existing peer data is retained until the next successful poll.",
+      "locale": "pt-BR",
+      "currentTarget": "Os dados de pares existentes são retidos até a próxima pesquisa bem-sucedida.",
+      "currentTargetSha256": "726b9e36d808d9419410836e79421f2eb41f511e3db655fff6695249ada53a42",
+      "disposition": "correction",
+      "proposedTarget": "Os dados de pares existentes são mantidos até a próxima consulta bem-sucedida.",
+      "proposedTargetSha256": "5d2ca38474c4ec209bd754c16326a9c0ca58ecf4526dc56c92781f3bb2bfb1b0",
+      "reviewReason": "Pesquisa reads as research/search; this Network warning is about the next successful peer query/poll."
+    },
+    {
+      "position": 1423,
+      "sourceKey": "Existing peer data is retained until the next successful poll.",
+      "locale": "id",
+      "currentTarget": "Data rekan yang ada dipertahankan hingga jajak pendapat berikutnya berhasil.",
+      "currentTargetSha256": "e12d0a2fba9a8110ad837524c0190f074f94104f45147f7d498d5a013f1a54ed",
+      "disposition": "correction",
+      "proposedTarget": "Data rekan yang ada dipertahankan hingga polling berikutnya berhasil.",
+      "proposedTargetSha256": "a2e70f3789bfcff549bd3e12e97e4b363746ba534e8d179d348578231f4c89f8",
+      "reviewReason": "Jajak pendapat means an opinion poll; the caller means the next technical peer poll."
+    },
+    {
+      "position": 1424,
+      "sourceKey": "Expand All",
+      "locale": "hi",
+      "currentTarget": "सभी का विस्तार",
+      "currentTargetSha256": "c2c6bf9af3ef1d180395d86e55584ce2b110441c9b3f06cbb53f1df8fef3d579",
+      "disposition": "correction",
+      "proposedTarget": "सभी का विस्तार करें",
+      "proposedTargetSha256": "8c55b8b6f5f11b6518d4a4a3fafab713a7b4f1fd844b32f7aaf8be8cd5fb58b5",
+      "reviewReason": "The DirectoryTree button is an imperative “Expand All”; the current wording is a noun phrase (“expansion of all”)."
+    },
+    {
+      "position": 1425,
+      "sourceKey": "Expand player",
+      "locale": "es",
+      "currentTarget": "Expandir jugador",
+      "currentTargetSha256": "a280510eb492bbb07d89445fa457cc5abbb9e4a3d21051962f20c48042d97259",
+      "disposition": "correction",
+      "proposedTarget": "Expandir reproductor",
+      "proposedTargetSha256": "8374a20d9042c7fb5eece4d491c68cd16a3e9df781b494921189b16ba072eb24",
+      "reviewReason": "The PlayerBar aria-label means a media player; jugador means a person/player in a game or sport."
+    },
+    {
+      "position": 1425,
+      "sourceKey": "Expand player",
+      "locale": "pt-BR",
+      "currentTarget": "Expandir player",
+      "currentTargetSha256": "2084e947992069806cfa284d8a722137aa6681b484c6221ee70c534a6e373852",
+      "disposition": "refinement",
+      "proposedTarget": "Expandir reprodutor",
+      "proposedTargetSha256": "aae5ebe469a2a93d3913d2c7247a18816f2ce1ef53b0adfc8fd80dd659ebbdb0",
+      "reviewReason": "Player is a common loanword, but reprodutor identifies the media control more clearly in this aria-label."
+    },
+    {
+      "position": 1425,
+      "sourceKey": "Expand player",
+      "locale": "ar",
+      "currentTarget": "قم بتوسيع اللاعب",
+      "currentTargetSha256": "13de4fd6805bcf20ce9b4192240d955206a55b3db01f02e8c0ee71403ee9fbdf",
+      "disposition": "correction",
+      "proposedTarget": "توسيع المشغل",
+      "proposedTargetSha256": "eec5b9c06eff132510e1cc6b0b53d7e55c9ca59bcda44c4cbf40cb16d2e40fb9",
+      "reviewReason": "This labels the media player control; اللاعب means an athlete/game player, while المشغل is the playback device."
+    },
+    {
+      "position": 1426,
+      "sourceKey": "Expand search results from {username}",
+      "locale": "hi",
+      "currentTarget": "‏{username} के खोज परिणाम फैलाएँ",
+      "currentTargetSha256": "e657a0add1f1842fbdaf4aa032d172d55a80180c60543ac0a56d53e3640c07e5",
+      "disposition": "correction",
+      "proposedTarget": "‏{username} के खोज परिणामों का विस्तार करें",
+      "proposedTargetSha256": "cc83f4d34931c4299041db6d671b724ec34740f24ce331fc8b26b7df08888bbb",
+      "reviewReason": "The Search response control expands the results; फैलाएँ suggests spreading rather than expanding a result list."
+    },
+    {
+      "position": 1427,
+      "sourceKey": "Expand the player drawer.",
+      "locale": "zh-Hans",
+      "currentTarget": "展开玩家抽屉。",
+      "currentTargetSha256": "d7cc77380c07d917816ecf31310e727cf1bf658b1452de3413e8b9df115080b2",
+      "disposition": "correction",
+      "proposedTarget": "展开播放器面板。",
+      "proposedTargetSha256": "85d35cd70c3ffa0281687186b85549a3d650189fc215384a991087a6dea5a765",
+      "reviewReason": "This caller controls the media player drawer; 玩家 means a game/person player, not the playback component."
+    },
+    {
+      "position": 1427,
+      "sourceKey": "Expand the player drawer.",
+      "locale": "pt-BR",
+      "currentTarget": "Expanda a gaveta do jogador.",
+      "currentTargetSha256": "77ad745900d4098bac32d342f42a8fe1b72ce8b4af6db0647a81df7a758fa1cc",
+      "disposition": "correction",
+      "proposedTarget": "Expanda o painel do reprodutor.",
+      "proposedTargetSha256": "985dc883c88fd831beec370b92a347562c8233eb4f9f10db4146879c81c13f52",
+      "reviewReason": "The PlayerBar drawer belongs to the media player; jogador means a person/player, and painel do reprodutor names the UI surface."
+    },
+    {
+      "position": 1427,
+      "sourceKey": "Expand the player drawer.",
+      "locale": "zh-Hant",
+      "currentTarget": "展開玩家抽屜。",
+      "currentTargetSha256": "367adfe8fffd8766eee58a269f871d33d3afa9c3bf476105fe415327166d3e0c",
+      "disposition": "correction",
+      "proposedTarget": "展開播放器面板。",
+      "proposedTargetSha256": "6f507da8d6b66f99565b7de8fabbd187de72ff970a3fb1950c6705d8468914c2",
+      "reviewReason": "This caller controls the media player drawer; 玩家 means a game/person player, not the playback component."
+    },
+    {
+      "position": 1429,
+      "sourceKey": "Expand visualizer to fill the browser window.",
+      "locale": "ar",
+      "currentTarget": "قم بتوسيع المتخيل لملء نافذة المتصفح.",
+      "currentTargetSha256": "5cd755c605b25e43ce2ac8505221e5d9fa77cd3880195a3b6e67773b24f364e7",
+      "disposition": "correction",
+      "proposedTarget": "وسّع العارض المرئي ليملأ نافذة المتصفح.",
+      "proposedTargetSha256": "e95c947eacb7e4e4df74a64b62bb41ab259c5df79ff61483aae31973ffc308db",
+      "reviewReason": "المتخيل means an imagined/imaginary thing; the Player visualizer is a visual display that fills the browser window."
+    },
+    {
+      "position": 1431,
+      "sourceKey": "Expand {directory}",
+      "locale": "hi",
+      "currentTarget": "{directory} को फैलाएँ",
+      "currentTargetSha256": "1f4d5beb0ca04f815e9e02c5fc8a4599c72147951dd481bd026a359ebaeaaaa9",
+      "disposition": "correction",
+      "proposedTarget": "{directory} का विस्तार करें",
+      "proposedTargetSha256": "e36cac7927eae380503a87fb07c674dc5d1e9dad0a06bb88fb8777c3515c9d02",
+      "reviewReason": "The shared DirectoryTree/FileList/TransferList control expands a directory node; फैलाएँ means spread and is not the UI operation."
+    },
+    {
+      "position": 1435,
+      "sourceKey": "Experience preference report copied.",
+      "locale": "ar",
+      "currentTarget": "نُسخت قائمة تفضيلات التجربة.",
+      "currentTargetSha256": "3c8a3c41e92a0740ea161f1b3fcdaf9057029a25dbc89a21592a6b691818d396",
+      "disposition": "correction",
+      "proposedTarget": "تم نسخ تقرير تفضيلات التجربة.",
+      "proposedTargetSha256": "230096a6ed679b216accaef47559cacca6bb03cd46d03e8c4251e749edc34daa",
+      "reviewReason": "The copied item is a report, not a list; the caller sets a message after copying the generated report."
+    },
+    {
+      "position": 1438,
+      "sourceKey": "Expire unrated after",
+      "locale": "es",
+      "currentTarget": "Caducar sin clasificar después",
+      "currentTargetSha256": "acbb9f7bea3d1d296e6894f9604203fbfe538c7d9aa1f2cd390d761f7bd3d24e",
+      "disposition": "correction",
+      "proposedTarget": "Caducar sin valoración después de",
+      "proposedTargetSha256": "3f4cf629c23aa830ba50a7404ac2a95d3618649eb5e0dac91406dc9dfe23d3ee",
+      "reviewReason": "The source describes an unrated item; clasificar means classify, not rate."
+    },
+    {
+      "position": 1438,
+      "sourceKey": "Expire unrated after",
+      "locale": "zh-Hans",
+      "currentTarget": "过期后未评级",
+      "currentTargetSha256": "802c8468fc2d433f2d93f5acda2335991dbec11cee1044b4fe0726d05a8bd2a1",
+      "disposition": "correction",
+      "proposedTarget": "未评分内容的过期时间",
+      "proposedTargetSha256": "aecc72a5b7457ee58a9d1468a1344ad5947dc5790746091defc179788b57d738",
+      "reviewReason": "The current order says “unrated after expiration”; this field is the expiry interval for content that has not been rated."
+    },
+    {
+      "position": 1438,
+      "sourceKey": "Expire unrated after",
+      "locale": "ja",
+      "currentTarget": "評価なしで期限切れになる",
+      "currentTargetSha256": "0b45094fb8295412a8ee9392bc99fd45a9fa6238f3f8b9738b5fb7afe6cc073c",
+      "disposition": "refinement",
+      "proposedTarget": "未評価のまま期限切れになるまでの期間",
+      "proposedTargetSha256": "1d5d29d47a833022a26ce488ff322a20279ae58ac8673104b8526ae759130721",
+      "reviewReason": "This caller labels an expiry-days input; the proposed wording makes the duration explicit while preserving the unrated condition."
+    },
+    {
+      "position": 1438,
+      "sourceKey": "Expire unrated after",
+      "locale": "pt-BR",
+      "currentTarget": "Expira sem classificação após",
+      "currentTargetSha256": "008f745ec1448acfc2dceab8ccac299a4888392fe1f7a347da00b61005561347",
+      "disposition": "refinement",
+      "proposedTarget": "Expira sem avaliação após",
+      "proposedTargetSha256": "b72072e77951bb35df42867800ad9f69fb960240cac8e05a1cc0d12194c91760",
+      "reviewReason": "Avaliação is clearer for the unrated condition than classificação in this policy setting."
+    },
+    {
+      "position": 1438,
+      "sourceKey": "Expire unrated after",
+      "locale": "ar",
+      "currentTarget": "تنتهي صلاحيته دون تصنيف بعد",
+      "currentTargetSha256": "aa9d2ee59c366409911a611939de4acff1b9f55033575a7d99e21d441123129c",
+      "disposition": "correction",
+      "proposedTarget": "مدة انتهاء صلاحية العناصر غير المُقيَّمة",
+      "proposedTargetSha256": "a4e8ecbf5112719ca49716a883f49ae55c1826f273e677f8d68c9e83c710f3b8",
+      "reviewReason": "This setting controls when unrated items expire; the current تصنيف reads as classification rather than rating."
+    },
+    {
+      "position": 1438,
+      "sourceKey": "Expire unrated after",
+      "locale": "ko",
+      "currentTarget": "다음 날짜 이후에 등급 없음 만료",
+      "currentTargetSha256": "e3767ce5ac402d025177234bb36a323e34160667c1fee77c3d354b63cc14ebd9",
+      "disposition": "correction",
+      "proposedTarget": "미평가 항목의 만료 기간",
+      "proposedTargetSha256": "8aeb8fa5333a96bb6b8df8c1760ba058e1d5791f145668cba4e908d6346d200c",
+      "reviewReason": "The current phrase is ungrammatical (“after next date, no rating expire”); this field names the expiry period for unrated items."
+    },
+    {
+      "position": 1438,
+      "sourceKey": "Expire unrated after",
+      "locale": "zh-Hant",
+      "currentTarget": "過期後未評級",
+      "currentTargetSha256": "59d15a88d7faac451b0f7eb57374f0df88f5538eb7ed2f15eb4af069ad2af4d4",
+      "disposition": "correction",
+      "proposedTarget": "未評分內容的到期時間",
+      "proposedTargetSha256": "3f881dfece8b3fad169de49c72eb6f85754251fddb28008b5cf95ca19768d974",
+      "reviewReason": "The current order says “unrated after expiration”; this field is the expiry interval for content that has not been rated."
+    },
+    {
+      "position": 1438,
+      "sourceKey": "Expire unrated after",
+      "locale": "vi",
+      "currentTarget": "Hết hạn chưa được xếp hạng sau",
+      "currentTargetSha256": "00e5a76f5aa1507fa6e2225fc28d970c7147a25ce1a79e37c73d2ac80136dfe1",
+      "disposition": "refinement",
+      "proposedTarget": "Thời gian hết hạn nếu chưa được đánh giá",
+      "proposedTargetSha256": "c3bad04b196877a88a2e616b42079fc9630896a145f55176e54fece9bec18170",
+      "reviewReason": "This is a duration setting for unrated shelf items; this phrasing is clearer than the current ranking-oriented clause."
+    },
+    {
+      "position": 1439,
+      "sourceKey": "Expired Entries:",
+      "locale": "vi",
+      "currentTarget": "Bài viết đã hết hạn:",
+      "currentTargetSha256": "c8a97ecc53d26f6af59293ca538f3b328ee73899d8628606f23e6d2fbc388eeb",
+      "disposition": "correction",
+      "proposedTarget": "Mục đã hết hạn:",
+      "proposedTargetSha256": "3b231cfa771c5af2d16414eec5e21bb7360162ae6af653fcb3d45a07e43cdd56",
+      "reviewReason": "The caller counts expired discovery entries, not expired articles/posts; mục is the context-neutral entry/item."
+    },
+    {
+      "position": 1440,
+      "sourceKey": "Expired Memberships:",
+      "locale": "fr",
+      "currentTarget": "Abonnements expirés :",
+      "currentTargetSha256": "a2a3633ba82476156e9042f88554233081bc75e43f671ceb27fb2badebf4e345",
+      "disposition": "correction",
+      "proposedTarget": "Adhésions expirées :",
+      "proposedTargetSha256": "1e7344157ce13f70f74287b0ac1e38c55899aee4bc494043bba296956849d93f",
+      "reviewReason": "This is a peer membership statistic, not a paid subscription; adhésions preserves the membership relation."
+    },
+    {
+      "position": 1440,
+      "sourceKey": "Expired Memberships:",
+      "locale": "pt-BR",
+      "currentTarget": "Assinaturas expiradas:",
+      "currentTargetSha256": "605eef96bda32e9e8aace1e00c9496539dd9e981b83d6127207d7c2ca4812654",
+      "disposition": "correction",
+      "proposedTarget": "Adesões vencidas:",
+      "proposedTargetSha256": "772c03d1fa034d451c4e390f95bc9d51d21c9f43acd4ad2ce9053f4246d193f7",
+      "reviewReason": "The caller counts peer memberships; assinaturas means subscriptions and changes the relationship type."
+    },
+    {
+      "position": 1441,
+      "sourceKey": "Expired Publications:",
+      "locale": "ar",
+      "currentTarget": "المطبوعات منتهية الصلاحية:",
+      "currentTargetSha256": "a0b58d566b629f37419007a80e4c247649b426a26ecef1f0acb8b23ef3e83e90",
+      "disposition": "correction",
+      "proposedTarget": "المنشورات المنتهية الصلاحية:",
+      "proposedTargetSha256": "e229ae4cafdc4ad0a4ca77fbef44e576e5021e48a2f73110cab42f3a9593336d",
+      "reviewReason": "This is a count of DHT content publications; المطبوعات means printed matter, while المنشورات means published posts/records."
+    },
+    {
+      "position": 1442,
+      "sourceKey": "Expires:",
+      "locale": "hi",
+      "currentTarget": "समाप्त:",
+      "currentTargetSha256": "d95659c23ddb9e5bb15118930314f65350f2f5d06c796cbb144aff628f53a098",
+      "disposition": "correction",
+      "proposedTarget": "समाप्ति:",
+      "proposedTargetSha256": "d42891d6d5b1c9b0bb848af7048fa19ae208b97fff08795a0ba3492f8703238e",
+      "reviewReason": "The caller labels an expiration timestamp; समाप्ति names the expiry, while समाप्त means ended/finished."
+    },
+    {
+      "position": 1442,
+      "sourceKey": "Expires:",
+      "locale": "ar",
+      "currentTarget": "تنتهي:",
+      "currentTargetSha256": "7f19df27be838cf295ed8d47e63d2e5282c5432f5b7d596aea6bf7a1afc5d253",
+      "disposition": "correction",
+      "proposedTarget": "تاريخ انتهاء الصلاحية:",
+      "proposedTargetSha256": "df14e2c01bf40da27d5d99e53d87e5549ec2ee7a0986eb8ae17589ae210b343a",
+      "reviewReason": "The caller labels an expiration timestamp; a date/expiry noun phrase is clearer than the finite verb تنتهي."
+    }
+  ],
+  "currentWindowHoldCount": 0,
+  "carriedHolds": {
+    "count": 35,
+    "changed": 0
+  },
+  "priorSelectedSourceRowsReattested": 180
+}

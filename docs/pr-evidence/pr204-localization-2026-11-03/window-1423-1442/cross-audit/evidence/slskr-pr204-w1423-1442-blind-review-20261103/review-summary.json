@@ -1,0 +1,103 @@
+{
+  "artifact": "slskR PR #204 W1423-W1442 blind independent translation review",
+  "scope": {
+    "repository": "snapetech-org/slskR",
+    "pullRequest": 204,
+    "head": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+    "tree": "09adcb271a2eb92770df4a20098dccc3fde2a59f",
+    "branch": "codex/slskr-l10n-audit-20261030",
+    "window": "W1423-W1442",
+    "positionRange": [
+      1423,
+      1442
+    ],
+    "sourceCount": 20,
+    "localeCount": 12,
+    "cellCount": 240,
+    "localeOrder": [
+      "es",
+      "zh-Hans",
+      "hi",
+      "de",
+      "ja",
+      "fr",
+      "pt-BR",
+      "ar",
+      "ko",
+      "zh-Hant",
+      "vi",
+      "id"
+    ]
+  },
+  "blindBasis": {
+    "candidateFreeInputOnly": true,
+    "candidateFreePath": "../slskr-pr204-w1423-1442-primary-20261103/candidate-free-input",
+    "candidateFreeManifestSha256": "40d6f1ebaf3e6ad72c854b24e40275511c0a6c6d41afe8625b60ef8cb117ea1e",
+    "candidateFreeChecksumListSha256": "f40bdd86a371e4ee2f3f1d17431124202ee1e766b56403924a0e730470a0ee3e",
+    "proposedTranslationsIncludedInInput": false,
+    "primaryProposalsOpened": false
+  },
+  "decisionCounts": {
+    "accept": 205,
+    "revise": 35,
+    "hold": 0
+  },
+  "revisionCountsByLocale": {
+    "es": 3,
+    "zh-Hans": 3,
+    "hi": 4,
+    "de": 0,
+    "ja": 2,
+    "fr": 2,
+    "pt-BR": 4,
+    "ar": 8,
+    "ko": 1,
+    "zh-Hant": 3,
+    "vi": 3,
+    "id": 2
+  },
+  "revisionCountsByCategory": {
+    "entry-vs-article": 1,
+    "expand-verb": 2,
+    "experience-context": 5,
+    "expiry-time-label": 1,
+    "media-player-term": 6,
+    "membership-vs-subscription": 2,
+    "missing-after-interval": 1,
+    "omitted-qualifier": 1,
+    "poll-and-peer-terms": 2,
+    "poll-context": 3,
+    "publication-term": 1,
+    "rating-label-and-order": 2,
+    "rating-label-clarity": 1,
+    "rating-vs-classification": 3,
+    "rating-vs-ranking": 1,
+    "report-noun": 1,
+    "visualizer-term": 2
+  },
+  "baselineTokenMismatchCounts": {
+    "placeholderSequence": 0,
+    "markup": 0,
+    "numeric": 0,
+    "protectedLiteral": 0
+  },
+  "suggestedTargetTokenMismatchCounts": {
+    "placeholderSequence": 0,
+    "markup": 0,
+    "numeric": 0,
+    "protectedLiteral": 0
+  },
+  "priorHoldReattestation": {
+    "expected": 35,
+    "reattested": 35,
+    "targetHashesMatched": 35,
+    "allUnchanged": true
+  },
+  "confidenceAndLimitations": {
+    "highConfidenceFindings": "caller-backed semantic and named-entity errors",
+    "moderateConfidenceFindings": "some locale phrasing and UX terminology judgments",
+    "nativeSpeakerReview": "not performed",
+    "evidenceGaps": []
+  },
+  "reviewOutcome": "205 cells acceptable; 35 need revision; 0 unresolved holds. All 35 carried hold target hashes match prior values."
+}

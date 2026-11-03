@@ -1,0 +1,42 @@
+{
+  "observedBefore": {
+    "observedAtUtc": "2026-11-03T19:28:28Z",
+    "repository": "snapetech-org/slskR",
+    "pullRequest": 204,
+    "url": "https://github.com/snapetech-org/slskr/pull/204",
+    "state": "OPEN",
+    "isDraft": true,
+    "branch": "codex/slskr-l10n-audit-20261030",
+    "head": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+    "baseRef": "main",
+    "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headTree": "09adcb271a2eb92770df4a20098dccc3fde2a59f",
+    "liveBranchRef": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+    "livePullRef": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+    "checkoutPath": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1423-1442-apply-20261103/repo",
+    "checkoutHead": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+    "checkoutTree": "09adcb271a2eb92770df4a20098dccc3fde2a59f",
+    "checkoutWorktreeClean": true
+  },
+  "observedAfter": {
+    "observedAtUtc": "2026-11-03T19:29:29Z",
+    "repository": "snapetech-org/slskR",
+    "pullRequest": 204,
+    "url": "https://github.com/snapetech-org/slskr/pull/204",
+    "state": "OPEN",
+    "isDraft": true,
+    "branch": "codex/slskr-l10n-audit-20261030",
+    "head": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+    "baseRef": "main",
+    "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headTree": "09adcb271a2eb92770df4a20098dccc3fde2a59f",
+    "liveBranchRef": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+    "livePullRef": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+    "checkoutPath": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1423-1442-apply-20261103/repo",
+    "checkoutHead": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+    "checkoutTree": "09adcb271a2eb92770df4a20098dccc3fde2a59f",
+    "checkoutWorktreeClean": true
+  },
+  "pinnedHead": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+  "pinnedTree": "09adcb271a2eb92770df4a20098dccc3fde2a59f"
+}

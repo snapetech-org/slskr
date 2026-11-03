@@ -1544,7 +1544,7 @@
   "Expand visualizer to fill the browser window.": "시각화 도우미를 확장하여 브라우저 창을 채웁니다.",
   "Expand visualizer to full browser window": "시각화 도우미를 전체 브라우저 창으로 확장",
   "Experience": "경험",
-  "Expire unrated after": "다음 날짜 이후에 등급 없음 만료",
+  "Expire unrated after": "미평가 항목 만료까지의 일수",
   "Expired Entries:": "만료된 항목:",
   "Expired Memberships:": "만료된 멤버십:",
   "Expired Publications:": "만료된 출판물:",

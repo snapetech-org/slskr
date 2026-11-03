@@ -1,0 +1,24 @@
+{
+  "observedAtUtc": "2026-11-03T20:08:47Z",
+  "pr": {
+    "baseRefName": "main",
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+    "isDraft": true,
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "refs": {
+    "refs/heads/codex/slskr-l10n-audit-20261030": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+    "refs/pull/204/head": "7ca8589266ab4c5a925782a8726d7e57b4ed7427"
+  },
+  "commitTree": "09adcb271a2eb92770df4a20098dccc3fde2a59f",
+  "pinnedHead": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+  "pinnedTree": "09adcb271a2eb92770df4a20098dccc3fde2a59f",
+  "baseRefDivergence": {
+    "prBaseRefName": "main",
+    "prBaseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "liveMainRefOid": "32c8c40666d93690b8b1847001fd66001a4eaf99"
+  }
+}
