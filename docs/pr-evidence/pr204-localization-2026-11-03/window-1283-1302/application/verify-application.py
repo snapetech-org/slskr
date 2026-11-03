@@ -80,8 +80,8 @@ for cat in invariants['catalogs']:
     assert len(keys)==cat['afterKeyCount']==5441
     key_digest=sha_bytes(('\n'.join(keys)+'\n').encode('utf-8'))
     assert key_digest==cat['beforeOrderedKeySha256']==cat['afterOrderedKeySha256']
-    changed_keys={r['sourceKey'] for r in plan if r['locale']==cat['locale'] and r['selectedUpdate']}
-    pairs=[(k,data[k]) for k in keys if k not in changed_keys]
+    window_keys={r['sourceKey'] for r in plan if r['locale']==cat['locale']}
+    pairs=[(k,data[k]) for k in keys if k not in window_keys]
     nonwindow=sha_bytes(json.dumps(pairs,ensure_ascii=False,separators=(',',':')).encode('utf-8'))
     assert nonwindow==cat['beforeNonWindowValuesSha256']==cat['afterNonWindowValuesSha256']
     for r in plan:
