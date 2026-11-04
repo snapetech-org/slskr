@@ -4224,7 +4224,7 @@
   "External visualizer did not launch.": "Der externe Visualizer wurde nicht gestartet.",
   "External visualizer status is unavailable.": "Der Status des externen Visualizers ist nicht verfügbar.",
   "Failed to load Tor status": "Der Tor-Status konnte nicht geladen werden",
-  "Failed to load adversarial status": "Der Gegnerstatus konnte nicht geladen werden",
+  "Failed to load adversarial status": "Der Status der Sicherheitsfunktionen für feindliche Umgebungen konnte nicht geladen werden.",
   "Failed to load transport status": "Transportstatus konnte nicht geladen werden",
   "ListenBrainz listens submitted: {count}.": "ListenBrainz Hörer eingereicht: {count}.",
   "Listening seed searches started: {count}.": "Die Suche nach Listening-Seeds wurde gestartet: {count}.",

@@ -4224,7 +4224,7 @@
   "External visualizer did not launch.": "Trình hiển thị bên ngoài không khởi chạy.",
   "External visualizer status is unavailable.": "Trạng thái trình hiển thị bên ngoài không khả dụng.",
   "Failed to load Tor status": "Không tải được trạng thái Tor",
-  "Failed to load adversarial status": "Không tải được trạng thái đối nghịch",
+  "Failed to load adversarial status": "Không thể tải trạng thái các tính năng bảo mật dành cho môi trường đối kháng.",
   "Failed to load transport status": "Không thể tải trạng thái vận chuyển",
   "ListenBrainz listens submitted: {count}.": "ListenBrainz lượt nghe đã gửi: {count}.",
   "Listening seed searches started: {count}.": "Các tìm kiếm hạt giống đã bắt đầu nghe: {count}.",

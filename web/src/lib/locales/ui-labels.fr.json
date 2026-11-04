@@ -4224,7 +4224,7 @@
   "External visualizer did not launch.": "Le visualiseur externe ne s'est pas lancé.",
   "External visualizer status is unavailable.": "L'état du visualiseur externe n'est pas disponible.",
   "Failed to load Tor status": "Échec du chargement du statut de Tor",
-  "Failed to load adversarial status": "Échec du chargement du statut contradictoire",
+  "Failed to load adversarial status": "Impossible de charger l’état des fonctions de sécurité adaptées aux environnements hostiles.",
   "Failed to load transport status": "Échec du chargement du statut de transport",
   "ListenBrainz listens submitted: {count}.": "ListenBrainz écoutes soumises : {count}.",
   "Listening seed searches started: {count}.": "Les recherches de graines d'écoute ont commencé : {count}.",

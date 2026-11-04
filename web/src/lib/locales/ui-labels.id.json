@@ -4224,7 +4224,7 @@
   "External visualizer did not launch.": "Visualisator eksternal tidak diluncurkan.",
   "External visualizer status is unavailable.": "Status visualisator eksternal tidak tersedia.",
   "Failed to load Tor status": "Gagal memuat status Tor",
-  "Failed to load adversarial status": "Gagal memuat status permusuhan",
+  "Failed to load adversarial status": "Gagal memuat status fitur keamanan untuk menghadapi lingkungan bermusuhan.",
   "Failed to load transport status": "Gagal memuat status transportasi",
   "ListenBrainz listens submitted: {count}.": "ListenBrainz mendengarkan dikirimkan: {count}.",
   "Listening seed searches started: {count}.": "Pencarian benih pendengaran dimulai: {count}.",

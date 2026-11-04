@@ -4224,7 +4224,7 @@
   "External visualizer did not launch.": "O visualizador externo não foi iniciado.",
   "External visualizer status is unavailable.": "O status do visualizador externo está indisponível.",
   "Failed to load Tor status": "Falha ao carregar o status do Tor",
-  "Failed to load adversarial status": "Falha ao carregar o status adversário",
+  "Failed to load adversarial status": "Não foi possível carregar o status dos recursos de segurança para ambientes hostis.",
   "Failed to load transport status": "Falha ao carregar o status do transporte",
   "ListenBrainz listens submitted: {count}.": "ListenBrainz escuta enviado: {count}.",
   "Listening seed searches started: {count}.": "As pesquisas iniciais de escuta foram iniciadas: {count}.",

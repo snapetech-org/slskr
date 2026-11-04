@@ -4224,7 +4224,7 @@
   "External visualizer did not launch.": "外部ビジュアライザが起動しませんでした。",
   "External visualizer status is unavailable.": "外部ビジュアライザのステータスは利用できません。",
   "Failed to load Tor status": "Tor ステータスのロードに失敗しました",
-  "Failed to load adversarial status": "敵対ステータスのロードに失敗しました",
+  "Failed to load adversarial status": "敵対的な環境向けのセキュリティ機能の状態を読み込めませんでした。",
   "Failed to load transport status": "トランスポートステータスのロードに失敗しました",
   "ListenBrainz listens submitted: {count}.": "ListenBrainz は送信されたものをリッスンします: {count}。",
   "Listening seed searches started: {count}.": "リスニング シードの検索が開始されました: {count}。",
