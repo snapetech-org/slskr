@@ -4596,7 +4596,7 @@
   "Failed to create search": "Suche konnte nicht erstellt werden",
   "Failed to delete channel: {error}": "Kanal konnte nicht gelöscht werden: {error}",
   "Failed to delete conversation: {error}": "Unterhaltung konnte nicht gelöscht werden: {error}",
-  "Failed to get aggregated opinions": "Zusammengefasste Bewertungen konnten nicht abgerufen werden",
+  "Failed to get aggregated opinions": "Aggregierte Meinungen konnten nicht abgerufen werden",
   "Failed to get backfill statistics": "Backfill-Statistiken konnten nicht abgerufen werden",
   "Failed to get channels": "Kanäle konnten nicht abgerufen werden",
   "Failed to get consensus recommendations": "Konsensempfehlungen konnten nicht abgerufen werden",

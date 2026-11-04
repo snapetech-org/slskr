@@ -4599,7 +4599,7 @@
   "Failed to get aggregated opinions": "एकत्रित राय प्राप्त नहीं हो सकीं",
   "Failed to get backfill statistics": "बैकफ़िल आँकड़े प्राप्त नहीं हो सके",
   "Failed to get channels": "चैनल प्राप्त नहीं हो सके",
-  "Failed to get consensus recommendations": "सहमति की सिफ़ारिशें प्राप्त नहीं हो सकीं",
+  "Failed to get consensus recommendations": "सर्वसम्मति-आधारित सिफ़ारिशें प्राप्त नहीं हो सकीं",
   "Failed to get content metadata: {error}": "कंटेंट मेटाडेटा प्राप्त नहीं हो सका: {error}",
   "Failed to get last seen timestamps": "अंतिम बार देखे जाने के टाइमस्टैम्प प्राप्त नहीं हो सके",
   "Failed to get member affinities": "सदस्य समानताएँ प्राप्त नहीं हो सकीं",

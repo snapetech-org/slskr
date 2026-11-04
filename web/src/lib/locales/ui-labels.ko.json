@@ -4599,7 +4599,7 @@
   "Failed to get aggregated opinions": "집계된 의견을 가져오지 못했습니다",
   "Failed to get backfill statistics": "백필 통계를 가져오지 못했습니다",
   "Failed to get channels": "채널을 가져오지 못했습니다",
-  "Failed to get consensus recommendations": "합의 추천을 가져오지 못했습니다",
+  "Failed to get consensus recommendations": "합의 기반 추천을 가져오지 못했습니다",
   "Failed to get content metadata: {error}": "콘텐츠 메타데이터를 가져오지 못했습니다: {error}",
   "Failed to get last seen timestamps": "마지막 확인 시각을 가져오지 못했습니다",
   "Failed to get member affinities": "구성원 친화도를 가져오지 못했습니다",
