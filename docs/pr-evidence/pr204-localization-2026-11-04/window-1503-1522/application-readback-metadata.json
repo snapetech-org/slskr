@@ -1,0 +1,15 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "reviewedParentHead": "a7d00cd97602c5910800330190817fcada008162",
+  "reviewedParentTree": "2d0a051348394e809ffc3a1fdbfccd20ba8af283",
+  "catalogCommit": "0e793dd5632b3e6d4f25f91fe5b47fc121f3f813",
+  "catalogTree": "a7ad6830162f0be4298e2f8c4100e58e2590ccb9",
+  "cells": 240,
+  "updates": 12,
+  "acceptCurrent": 228,
+  "holds": 0,
+  "nativeSpeakerApproval": false,
+  "browserAcceptance": false,
+  "deploymentsAtCatalogCommit": 0
+}

@@ -1,0 +1,20 @@
+Failed to check library health scan status
+Failed to check message seen status
+Failed to check role
+Failed to check role:
+Failed to cleanup expired memberships
+Failed to cleanup messages: {error}
+Failed to cleanup: {error}
+Failed to clear cache: {error}
+Failed to clear searches
+Failed to compute image perceptual hash
+Failed to connect to search updates
+Failed to copy SongID forensic matrix
+Failed to create channel: {error}
+Failed to create collection
+Failed to create fix job
+Failed to create invite
+Failed to create invite. Please ensure Identity & Friends is enabled and configured.
+Failed to create pod: {error}
+Failed to create port forwarding
+Failed to create room

@@ -1,0 +1,43 @@
+{
+  "artifact": "slskR PR #204 W1503-W1522 independent clean-blind semantic review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "a7d00cd97602c5910800330190817fcada008162",
+  "tree": "2d0a051348394e809ffc3a1fdbfccd20ba8af283",
+  "window": "W1503-W1522",
+  "cells": 240,
+  "sourceKeys": 20,
+  "localeCount": 12,
+  "dispositions": {
+    "accept-current": 228,
+    "hold": 1,
+    "propose-correction": 9,
+    "propose-refinement": 2
+  },
+  "proposedTargets": 11,
+  "proposalCounts": {
+    "propose-correction": 9,
+    "propose-refinement": 2
+  },
+  "heldCells": 1,
+  "heldCellsTextFree": true,
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "candidateFreePacketChecksumListSha256": "a599379018be2e495cd44edb33cbea6832b29afbb496d4de18b58cdb9d0d8cd1",
+  "candidateFreeManifestSha256": "f9f3f0f49a0933189ae1475e72748b09121f7abca95e316bf1cd1dc870718c8f",
+  "nativeSpeakerApproval": "not claimed",
+  "stateMachineValidation": "not performed; this review only judges fixed error text in pinned callers",
+  "browserAcceptance": "not claimed"
+}
