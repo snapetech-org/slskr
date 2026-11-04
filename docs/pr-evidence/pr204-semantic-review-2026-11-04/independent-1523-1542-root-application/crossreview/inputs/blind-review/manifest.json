@@ -1,0 +1,53 @@
+{
+  "artifact": "slskR PR #204 W1523-W1542 blind semantic review packet",
+  "reviewBasis": "sealed candidate-free input only",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "f6fbf614e7e2ff869e4ca86ae96103cff604b79c",
+  "tree": "536b0fc02a3c16fa7eb0f9d5504a4c8c91b2152d",
+  "selectedPositions": [
+    1523,
+    1542
+  ],
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "callerResolutionHoldCount": 0,
+  "callerResolutionHoldPositions": [],
+  "counts": {
+    "accept": 230,
+    "revise": 10,
+    "hold": 0
+  },
+  "inputPins": {
+    "candidateFreeInputManifestSha256": "b17b46c009ff33e0fdf52dd8d978aae472ded6cd3cf42fab4405c45b25b63527",
+    "candidateFreeInputSha256SumsSha256": "8e9798448c7c307d134741894ccde90a93ae3435d721a2c23649d34e58f9a19e",
+    "currentTargetCellsSha256": "f844f4991a4da12ca8539b10ac20fb4db7e3d3207c67b1ffb05e49b5a3acbac5",
+    "sourceContextsSha256": "f316f9eb82e84e8f11b3187daf758155af92c786f5b13e41e2ccc16267d5213a",
+    "localizationRuntimeContextSha256": "25614de30a3ec662aa4255f3b705a9f2399a38b7be75f7e6a5239a993855c69d",
+    "priorHoldHashReattestationSha256": "1bc4e7d8e2ea28063b91e2ca6ec683075b9a90c180c313073d1a4fae214b20e7"
+  },
+  "reviewSha256": "735ed531ace464d34f443abd76755ae6f73fb149ea24a481debd5e0f7635f4e0",
+  "reviewByteCount": 195677,
+  "reviewerNote": "Every cell has a disposition and a proposal. Accepted proposals reproduce the exact current target. The sealed input has no callerless positions and no hash-only prior hold rows in this selected window; no hold disposition was used.",
+  "holdReview": {
+    "callerResolutionHoldCount": 0,
+    "callerResolutionHoldPositions": [],
+    "priorHashOnlyHoldRows": 47,
+    "priorHashOnlyHoldRowsInSelectedWindow": 0
+  }
+}

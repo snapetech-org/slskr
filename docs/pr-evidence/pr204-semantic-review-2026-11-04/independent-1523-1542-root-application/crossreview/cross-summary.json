@@ -1,0 +1,124 @@
+{
+  "artifact": "slskR PR #204 W1523-W1542 independent cross-review",
+  "head": "f6fbf614e7e2ff869e4ca86ae96103cff604b79c",
+  "tree": "536b0fc02a3c16fa7eb0f9d5504a4c8c91b2152d",
+  "positions": [
+    1523,
+    1542
+  ],
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "decisionCounts": {
+    "keep-current": 222,
+    "select-primary-proposal": 8,
+    "hash-only-hold": 10
+  },
+  "selectedProposalCells": [
+    {
+      "position": 1536,
+      "locale": "de",
+      "selectedTargetSha256": "ac101a28c17d40dcf40b1bdf0fa83763f61e3984f90b3e07140a2f2d1d6da4fc"
+    },
+    {
+      "position": 1537,
+      "locale": "fr",
+      "selectedTargetSha256": "bcaf452ef1ba2133aef5340de4774f22bfe92acc8eae4d0e7fd520ea7dc898be"
+    },
+    {
+      "position": 1537,
+      "locale": "vi",
+      "selectedTargetSha256": "36192a501a7371d8cc5ca4d7d990a055fa8d7400625ef45969f923e792a7b7bf"
+    },
+    {
+      "position": 1539,
+      "locale": "fr",
+      "selectedTargetSha256": "bf60ef4bee3a101d65255f4d1dbd392d41c47cd045d06f0594799426a19ecd48"
+    },
+    {
+      "position": 1541,
+      "locale": "fr",
+      "selectedTargetSha256": "96730dfcd9ea3d9ac6ba353f49421aa9c6f3c43d52da8db0ef6b49d26459900c"
+    },
+    {
+      "position": 1541,
+      "locale": "vi",
+      "selectedTargetSha256": "4bb33963a9c8bace4169c080588323d458376ffaa8c8ac50f3ee7af7960f9759"
+    },
+    {
+      "position": 1542,
+      "locale": "hi",
+      "selectedTargetSha256": "773a94f1f3ec573f7e2d90f697f10c06c634a0dc2648f3963a2d615dd3776ad8"
+    },
+    {
+      "position": 1542,
+      "locale": "ko",
+      "selectedTargetSha256": "b98be0d16d36a4c0b6288b0550a5878026c0133b16236b84f1e5e2074f48f004"
+    }
+  ],
+  "hashOnlyHolds": [
+    {
+      "position": 1538,
+      "locale": "es",
+      "currentTargetSha256": "45e141712cae5ad9f531159208adf6198049721fce31eb322a7bc3b005577059",
+      "rationale": "Pinned caller context identifies a PodMessageBackfillPanel error path but does not define whether backfill means retroactive data loading, data completion, or synchronizing missed messages. Primary and blind proposals use materially different descriptions, and confidence is moderate. Preserve the current value by hash only pending product terminology; no replacement target is selected."
+    },
+    {
+      "position": 1538,
+      "locale": "pt-BR",
+      "currentTargetSha256": "21e30eb72319f6013724ed1c3ef724cf1af4551d8e791862f191b8764c2d2532",
+      "rationale": "Pinned caller context identifies a PodMessageBackfillPanel error path but does not define whether backfill means retroactive data loading, data completion, or synchronizing missed messages. Primary and blind proposals use materially different descriptions, and confidence is moderate. Preserve the current value by hash only pending product terminology; no replacement target is selected."
+    },
+    {
+      "position": 1538,
+      "locale": "ar",
+      "currentTargetSha256": "755efe621bfceb9b3f894c82c93bd9fe45847cbb9af76afdb75fdcc98fbc74a2",
+      "rationale": "Pinned caller context identifies a PodMessageBackfillPanel error path but does not define whether backfill means retroactive data loading, data completion, or synchronizing missed messages. Primary and blind proposals use materially different descriptions, and confidence is moderate. Preserve the current value by hash only pending product terminology; no replacement target is selected."
+    },
+    {
+      "position": 1538,
+      "locale": "vi",
+      "currentTargetSha256": "bad4edbb84691b33681b8f4f9bc97f34f7fe58090caac3dbf4c441d256eafe52",
+      "rationale": "Pinned caller context identifies a PodMessageBackfillPanel error path but does not define whether backfill means retroactive data loading, data completion, or synchronizing missed messages. Primary and blind proposals use materially different descriptions, and confidence is moderate. Preserve the current value by hash only pending product terminology; no replacement target is selected."
+    },
+    {
+      "position": 1538,
+      "locale": "id",
+      "currentTargetSha256": "a33cafcdbdbbf6ae056079d30eea6f5fd43d451431a17634c79023421ff3397e",
+      "rationale": "Pinned caller context identifies a PodMessageBackfillPanel error path but does not define whether backfill means retroactive data loading, data completion, or synchronizing missed messages. Primary and blind proposals use materially different descriptions, and confidence is moderate. Preserve the current value by hash only pending product terminology; no replacement target is selected."
+    },
+    {
+      "position": 1539,
+      "locale": "es",
+      "currentTargetSha256": "655d507b1553195e9f332b05b2521ab1703aaa475dcb588653c22de1689c1880",
+      "rationale": "Pinned caller context identifies a PodMessageBackfillPanel error path but does not define whether backfill means retroactive data loading, data completion, or synchronizing missed messages. Primary and blind proposals use materially different descriptions, and confidence is moderate. Preserve the current value by hash only pending product terminology; no replacement target is selected."
+    },
+    {
+      "position": 1539,
+      "locale": "pt-BR",
+      "currentTargetSha256": "eea1373db3fca6456d21ef4f93b7730dd42954ecb717e060d62de3ccebbfb1a2",
+      "rationale": "Pinned caller context identifies a PodMessageBackfillPanel error path but does not define whether backfill means retroactive data loading, data completion, or synchronizing missed messages. Primary and blind proposals use materially different descriptions, and confidence is moderate. Preserve the current value by hash only pending product terminology; no replacement target is selected."
+    },
+    {
+      "position": 1539,
+      "locale": "ar",
+      "currentTargetSha256": "144095fcbdc633a93eacd9e0fee613a98d17e559b211695cd7103f6df269a638",
+      "rationale": "Pinned caller context identifies a PodMessageBackfillPanel error path but does not define whether backfill means retroactive data loading, data completion, or synchronizing missed messages. Primary and blind proposals use materially different descriptions, and confidence is moderate. Preserve the current value by hash only pending product terminology; no replacement target is selected."
+    },
+    {
+      "position": 1539,
+      "locale": "vi",
+      "currentTargetSha256": "4f19209a61f74d527e2b7f0f347ef008745334034e508e5b68583d3e12ad029e",
+      "rationale": "Pinned caller context identifies a PodMessageBackfillPanel error path but does not define whether backfill means retroactive data loading, data completion, or synchronizing missed messages. Primary and blind proposals use materially different descriptions, and confidence is moderate. Preserve the current value by hash only pending product terminology; no replacement target is selected."
+    },
+    {
+      "position": 1539,
+      "locale": "id",
+      "currentTargetSha256": "4eca1e5a890646099df5a0b5c049ac6f82b5250dafb81034ae9ef9af58040da4",
+      "rationale": "Pinned caller context identifies a PodMessageBackfillPanel error path but does not define whether backfill means retroactive data loading, data completion, or synchronizing missed messages. Primary and blind proposals use materially different descriptions, and confidence is moderate. Preserve the current value by hash only pending product terminology; no replacement target is selected."
+    }
+  ],
+  "nativeSpeakerSignoff": false,
+  "browserReviewPerformed": false,
+  "applied": false
+}
