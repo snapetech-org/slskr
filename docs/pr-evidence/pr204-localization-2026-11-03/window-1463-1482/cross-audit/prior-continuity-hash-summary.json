@@ -1,0 +1,20 @@
+{
+  "policy": "Hash/count-only continuity summary; prior selection, hold, and source-order-lineage contents were not decoded or parsed and did not inform translation decisions.",
+  "priorSelectionReattestation": {
+    "recordCount": 220,
+    "windowCount": 11,
+    "sha256": "c1a515eee33173104e0613958a6953647a097dead900ab64899c593032bda8d4",
+    "byteCount": 173508
+  },
+  "carriedHoldReattestation": {
+    "recordCount": 35,
+    "unchangedCount": 35,
+    "changedCount": 0,
+    "sha256": "3da8be0f1935f24c3c7b7b60053cd0609057ed2764bb2e5c1c1a7e3e4c615a5d",
+    "byteCount": 43591
+  },
+  "sourceOrderLineage": {
+    "sha256": "d62bc23c462757f3c974ed412756aa61598f30f45a828e1c5d1bed6e3238cbf9",
+    "byteCount": 8677
+  }
+}

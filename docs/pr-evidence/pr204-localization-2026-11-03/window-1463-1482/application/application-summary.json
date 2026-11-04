@@ -1,0 +1,19 @@
+{
+  "result": "PASS",
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "headBeforeApplication": "2db7fa06845d9d94a5e5da2ddb5ecfdc04100ade",
+  "window": "W1463-W1482",
+  "cellsReadBack": 240,
+  "selectedUpdates": 59,
+  "corrections": 29,
+  "refinements": 30,
+  "acceptCurrent": 169,
+  "hashOnlyHolds": 12,
+  "callerlessHoldPosition": 1466,
+  "catalogCount": 12,
+  "orderedKeyCountPerCatalog": 5441,
+  "unchangedValueCount": 65233,
+  "workflowPathsTouched": 0,
+  "projectTestsOrBuildsRun": false
+}

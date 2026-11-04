@@ -1,0 +1,17 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "state": "OPEN",
+  "draft": true,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "head": "2db7fa06845d9d94a5e5da2ddb5ecfdc04100ade",
+  "tree": "0945d38050243ed0d52aa9d923636820c66e65ba",
+  "baseRef": "main",
+  "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "branchRef": "2db7fa06845d9d94a5e5da2ddb5ecfdc04100ade",
+  "pullRef": "2db7fa06845d9d94a5e5da2ddb5ecfdc04100ade",
+  "remoteMainHead": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "attestedAtUtc": "2026-11-04T01:03:51Z",
+  "method": "Final post-review attestation from kspls0 using live GitHub PR API fields, GitHub commit tree API, and git ls-remote branch/pull/base refs; exact head/tree matched candidate-free input.",
+  "observation": "GitHub PR API base.sha is 2a2b188f10b9460a15bc6d5c34e406b0193d51ba while refs/heads/main resolves to 1bbaec9fdc63a86de343e37e33bae70d44301a36; this was already present before review and does not affect the pinned PR head/tree or head refs."
+}

@@ -1,0 +1,31 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "2db7fa06845d9d94a5e5da2ddb5ecfdc04100ade",
+  "tree": "0945d38050243ed0d52aa9d923636820c66e65ba",
+  "trackedProductionJsTsFilesScanned": 324,
+  "selectedSourceCount": 20,
+  "selectedCallerOccurrenceCount": 29,
+  "selectedCallerReferenceCount": 29,
+  "uniqueSelectedCallerFiles": 4,
+  "callerlessSelectedPositions": [
+    1466
+  ],
+  "catalogPaths": [
+    "web/src/lib/locales/ui-labels.es.json",
+    "web/src/lib/locales/ui-labels.zh-Hans.json",
+    "web/src/lib/locales/ui-labels.hi.json",
+    "web/src/lib/locales/ui-labels.de.json",
+    "web/src/lib/locales/ui-labels.ja.json",
+    "web/src/lib/locales/ui-labels.fr.json",
+    "web/src/lib/locales/ui-labels.pt-BR.json",
+    "web/src/lib/locales/ui-labels.ar.json",
+    "web/src/lib/locales/ui-labels.ko.json",
+    "web/src/lib/locales/ui-labels.zh-Hant.json",
+    "web/src/lib/locales/ui-labels.vi.json",
+    "web/src/lib/locales/ui-labels.id.json"
+  ],
+  "runtimePath": "web/src/lib/interfaceLocale.js",
+  "runtimeFileSha256": "16eb5f119655805f48845e026ee12fd517fae6de871091bd9be2e5b7f1d310ea",
+  "runtimeGitBlob": "72dfea05f86bcf0ab02882a85c6e8d4a0cb0dabf"
+}
