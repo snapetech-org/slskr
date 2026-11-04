@@ -4589,7 +4589,7 @@
   "Failed to clear cache: {error}": "Không thể xóa bộ nhớ đệm: {error}",
   "Failed to clear searches": "Không thể xóa lượt tìm kiếm",
   "Failed to connect to search updates": "Không thể kết nối với cập nhật tìm kiếm",
-  "Failed to copy SongID forensic matrix": "Không thể sao chép ma trận phân tích SongID",
+  "Failed to copy SongID forensic matrix": "Không thể sao chép ma trận pháp chứng SongID",
   "Failed to create channel: {error}": "Không thể tạo kênh: {error}",
   "Failed to create fix job": "Không thể tạo tác vụ khắc phục",
   "Failed to create pod: {error}": "Không thể tạo pod: {error}",

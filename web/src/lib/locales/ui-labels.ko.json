@@ -4591,7 +4591,7 @@
   "Failed to connect to search updates": "검색 업데이트에 연결하지 못했습니다",
   "Failed to copy SongID forensic matrix": "SongID 포렌식 매트릭스를 복사하지 못했습니다",
   "Failed to create channel: {error}": "채널을 만들지 못했습니다: {error}",
-  "Failed to create fix job": "수정 작업을 만들지 못했습니다",
+  "Failed to create fix job": "복구 작업을 만들지 못했습니다",
   "Failed to create pod: {error}": "pod를 만들지 못했습니다: {error}",
   "Failed to create search": "검색을 만들지 못했습니다",
   "Failed to delete channel: {error}": "채널을 삭제하지 못했습니다: {error}",

@@ -4591,7 +4591,7 @@
   "Failed to connect to search updates": "खोज अपडेट से कनेक्ट नहीं हो सका",
   "Failed to copy SongID forensic matrix": "SongID फॉरेंसिक मैट्रिक्स कॉपी नहीं हो सका",
   "Failed to create channel: {error}": "चैनल नहीं बनाया जा सका: {error}",
-  "Failed to create fix job": "समाधान कार्य नहीं बनाया जा सका",
+  "Failed to create fix job": "मरम्मत कार्य नहीं बनाया जा सका",
   "Failed to create pod: {error}": "पॉड नहीं बनाया जा सका: {error}",
   "Failed to create search": "खोज नहीं बनाई जा सकी",
   "Failed to delete channel: {error}": "चैनल हटाया नहीं जा सका: {error}",

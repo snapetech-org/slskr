@@ -4641,7 +4641,7 @@
   "Failed to copy SongID forensic matrix": "تعذر نسخ مصفوفة SongID الجنائية",
   "Failed to create channel: {error}": "تعذر إنشاء القناة: {error}",
   "Failed to create fix job": "تعذر إنشاء مهمة الإصلاح",
-  "Failed to create pod: {error}": "تعذر إنشاء الحاوية (pod): {error}",
+  "Failed to create pod: {error}": "تعذر إنشاء Pod: {error}",
   "Failed to create search": "تعذر إنشاء البحث",
   "Failed to delete channel: {error}": "تعذر حذف القناة: {error}",
   "Failed to delete conversation: {error}": "تعذر حذف المحادثة: {error}",

@@ -4591,7 +4591,7 @@
   "Failed to connect to search updates": "Não foi possível conectar às atualizações de busca",
   "Failed to copy SongID forensic matrix": "Não foi possível copiar a matriz forense do SongID",
   "Failed to create channel: {error}": "Não foi possível criar o canal: {error}",
-  "Failed to create fix job": "Não foi possível criar a tarefa de correção",
+  "Failed to create fix job": "Não foi possível criar a tarefa de reparo",
   "Failed to create pod: {error}": "Não foi possível criar o pod: {error}",
   "Failed to create search": "Não foi possível criar a busca",
   "Failed to delete channel: {error}": "Não foi possível excluir o canal: {error}",

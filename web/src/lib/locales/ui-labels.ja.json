@@ -4591,7 +4591,7 @@
   "Failed to connect to search updates": "検索の更新に接続できませんでした",
   "Failed to copy SongID forensic matrix": "SongIDのフォレンジックマトリックスをコピーできませんでした",
   "Failed to create channel: {error}": "チャンネルを作成できませんでした: {error}",
-  "Failed to create fix job": "修正ジョブを作成できませんでした",
+  "Failed to create fix job": "修復ジョブを作成できませんでした",
   "Failed to create pod: {error}": "Podを作成できませんでした: {error}",
   "Failed to create search": "検索を作成できませんでした",
   "Failed to delete channel: {error}": "チャンネルを削除できませんでした: {error}",
