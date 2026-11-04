@@ -1,0 +1,22 @@
+{
+  "artifact": "slskR PR #204 W1483-W1502 application readback",
+  "sourceHead": "a8c2b4cf5f771f8b574001239aa9217697097d6f",
+  "sourceTree": "35f48ee94ec7bcaa3b8b47869f2dd119e219ccfd",
+  "updatedCellCount": 15,
+  "updatedCatalogFileCount": 8,
+  "catalogPaths": [
+    "web/src/lib/locales/ui-labels.ar.json",
+    "web/src/lib/locales/ui-labels.es.json",
+    "web/src/lib/locales/ui-labels.fr.json",
+    "web/src/lib/locales/ui-labels.hi.json",
+    "web/src/lib/locales/ui-labels.id.json",
+    "web/src/lib/locales/ui-labels.ko.json",
+    "web/src/lib/locales/ui-labels.pt-BR.json",
+    "web/src/lib/locales/ui-labels.vi.json"
+  ],
+  "allPreimageHashesMatched": true,
+  "allReadbackHashesMatched": true,
+  "onlyPlannedKeysChanged": true,
+  "currentWorktreeStatus": "catalog files only; uncommitted",
+  "testsBuildsCiRun": false
+}

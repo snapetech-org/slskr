@@ -1,0 +1,21 @@
+{
+  "catalogCommitSha": "15a3cfffc8f800f2420847e7a98e1f2e94b33819",
+  "catalogCommitTree": "bad4a26bcbd81f9dccf3f779acaf05d2c1866313",
+  "catalogCommitParent": "a8c2b4cf5f771f8b574001239aa9217697097d6f",
+  "catalogCommitMessage": "fix(l10n): correct W1483-1502 catalog translations",
+  "updatedCellCount": 15,
+  "updatedCatalogFileCount": 8,
+  "changedPaths": [
+    "web/src/lib/locales/ui-labels.ar.json",
+    "web/src/lib/locales/ui-labels.es.json",
+    "web/src/lib/locales/ui-labels.fr.json",
+    "web/src/lib/locales/ui-labels.hi.json",
+    "web/src/lib/locales/ui-labels.id.json",
+    "web/src/lib/locales/ui-labels.ko.json",
+    "web/src/lib/locales/ui-labels.pt-BR.json",
+    "web/src/lib/locales/ui-labels.vi.json"
+  ],
+  "evidenceCommitParent": "15a3cfffc8f800f2420847e7a98e1f2e94b33819",
+  "evidenceOnlyCommitPlanned": true,
+  "pushTargetRef": "refs/heads/codex/slskr-l10n-audit-20261030"
+}

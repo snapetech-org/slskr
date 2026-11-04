@@ -1,0 +1,59 @@
+{
+  "artifact": "slskR PR #204 W1483-W1502 cross review",
+  "head": "a8c2b4cf5f771f8b574001239aa9217697097d6f",
+  "tree": "35f48ee94ec7bcaa3b8b47869f2dd119e219ccfd",
+  "positions": [
+    1483,
+    1502
+  ],
+  "cellCount": 240,
+  "finalDispositionCounts": {
+    "accept-current": 225,
+    "correction": 12,
+    "refinement": 3
+  },
+  "inputComparison": {
+    "primaryProposalCount": 12,
+    "independentBlindProposalCount": 15,
+    "sharedProposalCellCount": 12,
+    "sameTargetProposalCount": 9,
+    "differentTargetProposalCount": 3,
+    "blindOnlyProposalCount": 3,
+    "primaryOnlyProposalCount": 0,
+    "proposalDisagreementsResolved": 6
+  },
+  "currentTokenMismatchCounts": {
+    "placeholder": 0,
+    "markup": 0,
+    "numeric": 0,
+    "protectedLiteral": 2
+  },
+  "protectedLiteralDisposition": {
+    "FTP": {
+      "count": 2,
+      "action": "corrected"
+    }
+  },
+  "proposedTargetProtectedMismatchCount": 0,
+  "remainingAcceptedCurrentProtectedMismatchCount": 0,
+  "unresolvedHoldCount": 0,
+  "holdPositions": [],
+  "priorContinuity": {
+    "policy": "hash-only; prior target/source values are not included",
+    "olderSelections": 220,
+    "olderHolds": 35,
+    "olderHoldsUnchanged": 35,
+    "previousWindowCells": 240,
+    "previousWindowHashOnlyDispositionCounts": {
+      "accept-current": 169,
+      "correction": 29,
+      "hold": 12,
+      "refinement": 30
+    },
+    "summarySha256": "8437f2ce0590d91dfd745858ac24d2584501ecee8d230c307cc7227e7348a230"
+  },
+  "attestationBeforeUtc": "2026-11-04T02:27:27.833602Z",
+  "attestationAfterUtc": "2026-11-04T02:39:27.121222Z",
+  "deploymentsForHeadBefore": 0,
+  "deploymentsForHeadAfter": 0
+}

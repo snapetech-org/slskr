@@ -1,0 +1,48 @@
+{
+  "artifact": "slskR PR #204 W1483-W1502 clean independent blind review",
+  "head": "a8c2b4cf5f771f8b574001239aa9217697097d6f",
+  "tree": "35f48ee94ec7bcaa3b8b47869f2dd119e219ccfd",
+  "selectedPositions": [
+    1483,
+    1502
+  ],
+  "cellCount": 240,
+  "proposalCount": 15,
+  "decisionCounts": {
+    "accept-current": 225,
+    "correction": 12,
+    "refinement": 3
+  },
+  "candidateFreeInputManifestSha256": "662b3139b833e785360fb850a52fa2abad5340ee1540f2b0cff9a11b8384a809",
+  "candidateFreeInputSha256SumsSha256": "abefdf3426836ba948e9cdc755bdd8ac655e5a782b1c9c2d557fd61fae3ea9e1",
+  "files": {
+    "PR-attestation-after.json": {
+      "sha256": "22a3dee0a616dd7e8eb70f5194956d60ec0c989de68bceafa20a6f5156fa8e12",
+      "byteCount": 1065
+    },
+    "PR-attestation-before.json": {
+      "sha256": "cabe93f701e0b33ee9ebef22275f752dcdf9000b8790cf3fa226517692cf3d0e",
+      "byteCount": 1065
+    },
+    "README.md": {
+      "sha256": "e22f7a5fb32246ea8bbcf0d0efef77ad50d85467c69d91f9befc46ccc85d6a12",
+      "byteCount": 846
+    },
+    "prior-continuity-hash-summary.json": {
+      "sha256": "8437f2ce0590d91dfd745858ac24d2584501ecee8d230c307cc7227e7348a230",
+      "byteCount": 1805
+    },
+    "review-ledger.jsonl": {
+      "sha256": "c57f35e1d5ffd94ab9af8eb299dcf47cb4046a2f4931f30c6d11c7111b5f3c46",
+      "byteCount": 249257
+    },
+    "token-summary.json": {
+      "sha256": "f6078a05b9bd24bf46ca329b963c44a9aed2a4ebf3422cd2c23910ae6473adf3",
+      "byteCount": 307
+    },
+    "verify-blind-review.py": {
+      "sha256": "d98ae23f1cca437981d75c98353f73293403c477188eac006a1e7d3096453587",
+      "byteCount": 3581
+    }
+  }
+}

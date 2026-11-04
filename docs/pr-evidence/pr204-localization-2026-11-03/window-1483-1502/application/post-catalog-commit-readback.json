@@ -1,0 +1,112 @@
+{
+  "result": "PASS",
+  "catalogCommitSha": "15a3cfffc8f800f2420847e7a98e1f2e94b33819",
+  "tree": "bad4a26bcbd81f9dccf3f779acaf05d2c1866313",
+  "parent": "a8c2b4cf5f771f8b574001239aa9217697097d6f",
+  "changedPaths": [
+    "web/src/lib/locales/ui-labels.ar.json",
+    "web/src/lib/locales/ui-labels.es.json",
+    "web/src/lib/locales/ui-labels.fr.json",
+    "web/src/lib/locales/ui-labels.hi.json",
+    "web/src/lib/locales/ui-labels.id.json",
+    "web/src/lib/locales/ui-labels.ko.json",
+    "web/src/lib/locales/ui-labels.pt-BR.json",
+    "web/src/lib/locales/ui-labels.vi.json"
+  ],
+  "cellReadbackCount": 15,
+  "allTargetsMatchLiveCatalog": true,
+  "allFilesMatchCommitTree": true,
+  "worktreeClean": true,
+  "fileReadbackPins": [
+    {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "locale": "ar",
+      "preimageSha256": "397e46d868a980678afecb7f7ae86a528ef7c01373d73ee4e3b3fd5ec8f23649",
+      "preimageGitBlob": "f94136d1dd68c38f1e31bd9f1c32c73e743910d2",
+      "readbackSha256": "35a4bf33898179e005fa07925174b1c5dfa0bf320faa295da536f2f8d57846af",
+      "commitGitBlob": "24cb74a76c02dd12a5003f9d627f1a671f5e3d2f",
+      "updatedKeyCount": 2,
+      "preimageBlobMatched": true,
+      "commitBlobMatchedDisk": true
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "locale": "es",
+      "preimageSha256": "830e42b3e75ca95736178a70e36bf7822ccf58aa7bf2a7da8de126b75931e9d1",
+      "preimageGitBlob": "54564463accfe3c6071486110a4979c268bec19d",
+      "readbackSha256": "87f80a1c56303b184b33d021d44898cb6a6cf44bf8acce58b067e2dfb2f5e453",
+      "commitGitBlob": "7056e88c033d8918612a600c293b90c4c811c61e",
+      "updatedKeyCount": 3,
+      "preimageBlobMatched": true,
+      "commitBlobMatchedDisk": true
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "locale": "fr",
+      "preimageSha256": "67259e3b4f08de3b1abf0aaa83cec0d01edab9b143546c1b603b29d36ab34f28",
+      "preimageGitBlob": "163ad35937511660c8b51d08d86a3e67654c07c6",
+      "readbackSha256": "e83512532420e600cf7db3099c0baed497cfe04894dfb49b6ce0fef514933394",
+      "commitGitBlob": "d5449bd06a0bf2d181a6f808bc2cc223c0e5eae0",
+      "updatedKeyCount": 3,
+      "preimageBlobMatched": true,
+      "commitBlobMatchedDisk": true
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "locale": "hi",
+      "preimageSha256": "31c02671bf347df02481ef9655b5fc3bfbfc283ccfe108c11f32902c7189fd17",
+      "preimageGitBlob": "e09efa8d621c7abf4db682658a2fad4d0d028f29",
+      "readbackSha256": "58c341b8352ea9fd2ed516e678ff144ec3b3ac639e232f90a40ab6b7a9e2b934",
+      "commitGitBlob": "02d89b381223750bdf47903ecbb0bde2d8390241",
+      "updatedKeyCount": 2,
+      "preimageBlobMatched": true,
+      "commitBlobMatchedDisk": true
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "locale": "id",
+      "preimageSha256": "9293b58522543c09615430c359a8636834234422870867b1cfcbbe6072eb9a9a",
+      "preimageGitBlob": "b1f7316475a4858ef4960cde8c96945047b80442",
+      "readbackSha256": "379559a466242f2245e5cec0d2615bb14b22f707b19589b8df56cd9caaa7cf60",
+      "commitGitBlob": "2d2a0a36e64b43ffb3caa553718b839c6acfbb2b",
+      "updatedKeyCount": 1,
+      "preimageBlobMatched": true,
+      "commitBlobMatchedDisk": true
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "locale": "ko",
+      "preimageSha256": "f3e7a473c5922204c57209d420dcf748dec2167b8b61a5ac06dbd8b17db93a33",
+      "preimageGitBlob": "fb313b44af82aca5859f09ce914522cc779cbde6",
+      "readbackSha256": "ce4e279e07be041aebd5311e0d8dc9593bda96c2153a2e5c00bc0f01c729bef6",
+      "commitGitBlob": "e3cc68c6359531962eeaf945146dae191b129bdc",
+      "updatedKeyCount": 1,
+      "preimageBlobMatched": true,
+      "commitBlobMatchedDisk": true
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "locale": "pt-BR",
+      "preimageSha256": "66e08568cab30b874e9f7d159e568a2d562e46bb5fcde40fef1d98242d060a13",
+      "preimageGitBlob": "491ff01404975923ff010e3e51adf03ad2537744",
+      "readbackSha256": "bdcd0d388d85affb8851cf03bf1c1f298697ec245a6e8801fc4e96897f683e25",
+      "commitGitBlob": "e4d831ecdbcdee6a113535163c931d84be447b5d",
+      "updatedKeyCount": 2,
+      "preimageBlobMatched": true,
+      "commitBlobMatchedDisk": true
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "locale": "vi",
+      "preimageSha256": "08f3865eff587498a2b8da8b342927077f9041595874b39479f9c1e64d65cf75",
+      "preimageGitBlob": "f738e6e8fe3a4734dd682e5671e6ae15cf07bbc2",
+      "readbackSha256": "5b45ac0c11cc9f18895238fdccc8d3f3ca99106f1f8992e290e39446cbd7c86a",
+      "commitGitBlob": "d16d8bf8963cca364ba826c9a48241c889a08053",
+      "updatedKeyCount": 1,
+      "preimageBlobMatched": true,
+      "commitBlobMatchedDisk": true
+    }
+  ],
+  "allPreimageGitBlobsMatched": true,
+  "allCommitBlobsMatchDisk": true
+}

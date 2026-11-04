@@ -1,0 +1,13 @@
+{
+  "cellCount": 240,
+  "currentMismatchCells": {
+    "protectedLiterals": 2
+  },
+  "proposedTokenMismatchCount": 0,
+  "proposalCount": 15,
+  "protectedLiteralProposalCount": 2,
+  "placeholderMismatchCount": 0,
+  "markupMismatchCount": 0,
+  "numericMismatchCount": 0,
+  "protectedLiteralMismatchCount": 2
+}
