@@ -3864,7 +3864,7 @@
   "Export confirmed local plays or ratings back to the selected media server profile.": "Xuất các lượt phát hoặc đánh giá cục bộ đã được xác nhận trở lại cấu hình máy chủ phương tiện đã chọn.",
   "External Servarr apps should use a scoped API key, not an operator session.": "Các ứng dụng Servarr bên ngoài nên dùng khóa API có phạm vi quyền hạn giới hạn, không dùng phiên của người vận hành.",
   "FAIL": "THẤT ​​BẠI",
-  "Failed jobs present": "Hiện tại công việc thất bại",
+  "Failed jobs present": "Có công việc bị lỗi",
   "Fake-lossless warnings": "Cảnh báo giả-lossless",
   "File size differs between sources. Retry to find a matching copy.": "Kích thước tệp khác nhau giữa các nguồn. Hãy thử lại để tìm một bản sao phù hợp.",
   "Find other sources": "Tìm nguồn khác",
