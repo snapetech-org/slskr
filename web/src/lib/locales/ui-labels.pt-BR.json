@@ -1588,7 +1588,7 @@
   "Failed to get backfill stats: {message}": "Falha ao obter estatísticas de preenchimento: {message}",
   "Failed to get channels: {message}": "Falha ao obter canais: {message}",
   "Failed to get consensus recommendations: {message}": "Falha ao obter recomendações de consenso: {message}",
-  "Failed to get last seen timestamps: {message}": "Falha ao obter os últimos carimbos de data/hora vistos: {message}",
+  "Failed to get last seen timestamps: {message}": "Não foi possível obter os horários da última visualização: {message}",
   "Failed to get member affinities: {message}": "Falha ao obter afinidades de membros: {message}",
   "Failed to get membership:": "Falha ao obter adesão:",
   "Failed to get opinion statistics: {message}": "Falha ao obter estatísticas de opinião: {message}",
