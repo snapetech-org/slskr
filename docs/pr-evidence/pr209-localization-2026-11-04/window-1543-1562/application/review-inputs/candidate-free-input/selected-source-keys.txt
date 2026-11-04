@@ -1,0 +1,20 @@
+Failed to get consensus recommendations: {message}
+Failed to get content metadata: {error}
+Failed to get discovery statistics
+Failed to get last seen timestamps
+Failed to get last seen timestamps: {message}
+Failed to get member affinities
+Failed to get member affinities: {message}
+Failed to get membership statistics
+Failed to get membership:
+Failed to get opinion statistics
+Failed to get opinion statistics: {message}
+Failed to get opinions
+Failed to get opinions: {message}
+Failed to get routing statistics
+Failed to get storage stats: {error}
+Failed to hydrate messaging workspace
+Failed to initialize port forwarding
+Failed to join room
+Failed to join room: {error}
+Failed to leave pod: {error}

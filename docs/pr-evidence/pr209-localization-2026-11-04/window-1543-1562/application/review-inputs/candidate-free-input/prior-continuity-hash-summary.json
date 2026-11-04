@@ -1,0 +1,71 @@
+{
+  "lineageSource": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1523-1542-primary-20261104/candidate-free-input",
+  "lineageFiles": {
+    "prior-window-selection-hash-only.jsonl": "46b98dc3b5fb7264de89cc1c073924f35a4021a254f21fce1a93ab5b71ac5d5d",
+    "prior-selection-hash-reattestation.jsonl": "eb93b087b399ec3a9782039c52e53b4e229d0a2834317bed5b3defbe7eb30efc",
+    "prior-hold-hash-reattestation.jsonl": "1bc4e7d8e2ea28063b91e2ca6ec683075b9a90c180c313073d1a4fae214b20e7"
+  },
+  "priorInputManifestSha256": "b17b46c009ff33e0fdf52dd8d978aae472ded6cd3cf42fab4405c45b25b63527",
+  "priorInputContinuitySummarySha256": "f316dfebc84c78d4c53b1576014feacb97d99b7bb8e9b19551e27554bbd215a5",
+  "fullSourceOrderQueue": {
+    "priorQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+    "liveQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+    "exactBytesMatch": true,
+    "positionsCoveredThrough": 1562
+  },
+  "previousWindowCells": {
+    "recordCount": 960,
+    "sourcePositionMatches": 960,
+    "allMatchExpectedPriorTarget": true,
+    "liveTargetMismatchCount": 0,
+    "windowLabels": [
+      "W1463-W1482",
+      "W1483-W1502",
+      "W1503-W1522",
+      "W1523-W1542"
+    ]
+  },
+  "priorSelections": {
+    "recordCount": 300,
+    "sourcePositionMatches": 300,
+    "allMatchLiveQueue": true,
+    "sourcePositionMismatchCount": 0
+  },
+  "priorHolds": {
+    "recordCount": 57,
+    "sourcePositionMatches": 57,
+    "unchangedCount": 57,
+    "changedCount": 0,
+    "backfillCallerBackedHashOnlyHoldCount": 10
+  },
+  "priorApplications": {
+    "w1503": {
+      "window": "W1503-W1522",
+      "parentHead": "a7d00cd97602c5910800330190817fcada008162",
+      "parentTree": "2d0a051348394e809ffc3a1fdbfccd20ba8af283",
+      "productCommit": "0e793dd5632b3e6d4f25f91fe5b47fc121f3f813",
+      "productTree": "a7ad6830162f0be4298e2f8c4100e58e2590ccb9",
+      "metadataSha256": "af8fac8738e8e9a77bfbc1abac5f3513b4fb4f41e3c49d8bb4cf7966857aad61",
+      "candidateFreeChecksumListSha256": "a599379018be2e495cd44edb33cbea6832b29afbb496d4de18b58cdb9d0d8cd1",
+      "catalogDiffCellCount": 240,
+      "appliedTargetHashCount": 12,
+      "acceptCurrentCount": 228,
+      "holdCount": 0
+    },
+    "w1523": {
+      "window": "W1523-W1542",
+      "productCommit": "09497027d7ca64892cf8ce3530dd5cc1fdf93c15",
+      "productTree": "b4594245bbb922bbce7785c9b4efc0041a2dd5df",
+      "readbackCellCount": 240,
+      "readbackSha256": "aaac86d6d749a3a7b1c3f4e25a57faca1853ec6925a5a3951cea908a19ed85f2",
+      "applicationReportSha256": "39760a429a50807f836aebe37d87fd053b4be2f3c5fde7e5c9da69228bcae698",
+      "applyPlanSha256": "367c2eac7ef950e3a7a47cf7533fe0f024c7a51fc61fbbe620d5d6e78ba3c81d",
+      "appliedTargetHashCount": 8,
+      "acceptCurrentCount": 222,
+      "hashOnlyHoldCount": 10,
+      "holdReason": "unresolved backfill terminology; production callers are present"
+    },
+    "appliedTargetHashCountTotal": 20
+  },
+  "rawPriorTranslationsIncluded": false
+}

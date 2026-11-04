@@ -1,0 +1,186 @@
+{
+  "artifact": "slskR PR #209 W1543-W1562 cross-review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "exactPin": {
+    "head": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+    "tree": "4259db991f25fbbd0200963769e62bb7e2150806",
+    "headRef": "codex/slskr-l10n-audit-20261104-resync",
+    "baseRef": "main",
+    "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36"
+  },
+  "liveRefChecks": {
+    "filteredPullRequestMetadata": {
+      "baseRefName": "main",
+      "baseRefOid": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+      "headRefName": "codex/slskr-l10n-audit-20261104-resync",
+      "headRefOid": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+      "isDraft": true,
+      "mergedAt": null,
+      "number": 209,
+      "state": "OPEN",
+      "updatedAt": "2026-11-04T20:53:30Z"
+    },
+    "branchRefSha": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+    "pullRefSha": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+    "localTreeSha": "4259db991f25fbbd0200963769e62bb7e2150806",
+    "matchedExactPin": true,
+    "prBodyOrDescriptionRequested": false
+  },
+  "sourceWorktree": {
+    "path": "/mnt/disks/scratch/task-worktrees/localization-20261104/slskr-pr209-w1543-1562-source",
+    "head": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+    "tree": "4259db991f25fbbd0200963769e62bb7e2150806",
+    "clean": true,
+    "verifiedCallerReferences": 21,
+    "verifiedCallerFiles": 10
+  },
+  "inputs": {
+    "candidateFreeInput": "/home/keith/Documents/code/task-scratch/slskr-pr209-w1543-1562-primary-20261104/candidate-free-input",
+    "primaryReview": "/home/keith/Documents/code/task-scratch/slskr-pr209-w1543-1562-primary-20261104/primary-review",
+    "independentBlindReview": "/home/keith/Documents/code/task-scratch/slskr-pr209-w1543-1562-independent-blind-review-20261104",
+    "candidateFreeChecksumListSha256": "dd128958855b904a900f3a7f160d7929de948afbc5b72eaccfe36ff3b1b92e24",
+    "primaryChecksumListSha256": "b4d29848a1c96acc7625e5b2f4cdbd9f719b984de821ba06826887433b534c2b",
+    "blindChecksumListSha256": "2587db3602c69ee821e797ec072af38224fda27a6165eabb74b5cae9e193f928",
+    "candidateFreeManifestSha256": "2e2a7dc58f41e75901d8bcc8afc102ba575c7166182ff3204a066b6bffd49b15",
+    "primarySummarySha256": "1f069a8e5b41f14fdbde2772382cfb7365dd048e74453ed515e658c39f632a8b",
+    "blindManifestSha256": "05f465d19ef06681fe93bf1543394d30cdf00a371e8916d8bd3fda963fd9b746",
+    "suppliedVerifiers": {
+      "candidateFree": "PASS",
+      "primary": "PASS",
+      "independentBlind": "PASS"
+    }
+  },
+  "review": {
+    "sourcePositions": [
+      1543,
+      1562
+    ],
+    "sourceCount": 20,
+    "localeCount": 12,
+    "cellCount": 240,
+    "localeOrder": [
+      "es",
+      "zh-Hans",
+      "hi",
+      "de",
+      "ja",
+      "fr",
+      "pt-BR",
+      "ar",
+      "ko",
+      "zh-Hant",
+      "vi",
+      "id"
+    ],
+    "crossDispositionCounts": {
+      "accept-current": 208,
+      "propose-correction": 27,
+      "hold": 5
+    },
+    "primaryProposals": 21,
+    "primaryProposalsEndorsed": 21,
+    "primaryProposalsWordingAdjusted": 4,
+    "primaryProposalsExact": 17,
+    "blindFindings": 20,
+    "blindFindingCells": 22,
+    "blindFindingCellsActioned": 18,
+    "blindFindingCellsHeld": 4,
+    "primaryBlindOverlapCells": 12,
+    "primaryOnlyProposalCells": 9,
+    "blindOnlyFindingCells": 10,
+    "cellsWithoutPrimaryOrBlindFinding": 209,
+    "newCorrectionsBeyondPrimary": 6,
+    "additionalCrossReviewHolds": 1,
+    "crossReviewFindings": [
+      {
+        "id": "XR01",
+        "cells": [
+          {
+            "position": 1548,
+            "locale": "ko"
+          },
+          {
+            "position": 1549,
+            "locale": "ko"
+          }
+        ],
+        "category": "terminology consistency",
+        "severity": "moderate",
+        "confidence": "moderate",
+        "finding": "The paired Korean error keys and the pinned Member Affinities, Get Member Affinities, and Affinity Score labels split between 친화도 and 친밀도. The blind review flags position 1549, but the panel labels use 친밀도; the evidence does not establish which term is semantically best for this affinity metric.",
+        "disposition": "hold-both-cells-for-fluent-review"
+      }
+    ],
+    "overallConfidence": "moderate",
+    "nativeSpeakerSignoff": false,
+    "browserReviewPerformed": false,
+    "tokenMismatchCounts": {
+      "currentPlaceholderSequenceMismatchCount": 0,
+      "currentMarkupMismatchCount": 0,
+      "currentNumericTokenMismatchCount": 0,
+      "currentProtectedLiteralMismatchCount": 0,
+      "recommendedPlaceholderSequenceMismatchCount": 0,
+      "recommendedMarkupMismatchCount": 0,
+      "recommendedNumericTokenMismatchCount": 0,
+      "recommendedProtectedLiteralMismatchCount": 0
+    },
+    "callerHashMismatches": 0
+  },
+  "reviewerExposure": {
+    "candidateFreeInputOpened": true,
+    "primaryReviewOpened": true,
+    "independentBlindReviewOpened": true,
+    "sourceCallerContextsOpened": true,
+    "pinnedCatalogLabelsRead": true,
+    "prDescriptionOrBodyOpened": false,
+    "prDescriptionOrBodyRequested": false
+  },
+  "actions": {
+    "catalogsEdited": false,
+    "prOrBodyChanged": false,
+    "commitOrPush": false,
+    "testsBuildsOrCI": false,
+    "workflowsModified": false,
+    "mergeReleaseOrTag": false
+  },
+  "createdAtUtc": "2026-11-04T22:02:12.693129+00:00",
+  "fileHashes": {
+    "build_cross_review.py": {
+      "sha256": "34ea3b1729d995e373c7692cf2e860ed03b2aced4ea0218e50468db1b04a55a3",
+      "byteCount": 28910
+    },
+    "cross-findings.json": {
+      "sha256": "9fe896ee080e1cbad63f862c980dbe414fccb66e6b73ffbde46fe9a8b825540a",
+      "byteCount": 672
+    },
+    "cross-review-ledger.jsonl": {
+      "sha256": "687eae2531988bb7084e225fea5bd1f0bcc2ea2a49e6300afb084228abd7d9b7",
+      "byteCount": 526516
+    },
+    "live-branch-ref.txt": {
+      "sha256": "61f9e3615d3613e336eba07cb936db326f00cf15f3f2cc1d7f56d9b8d9479214",
+      "byteCount": 41
+    },
+    "live-local-tree.txt": {
+      "sha256": "cbe376308c912b25f51828ea024f16e3682fde482a6b862f429e95e21d9c80d2",
+      "byteCount": 41
+    },
+    "live-pr-metadata.json": {
+      "sha256": "786b11f8818716141a5dfa4ae226c74c801fe17867cf3873f5c5b479f593acc2",
+      "byteCount": 284
+    },
+    "live-pull-ref.txt": {
+      "sha256": "61f9e3615d3613e336eba07cb936db326f00cf15f3f2cc1d7f56d9b8d9479214",
+      "byteCount": 41
+    },
+    "report.md": {
+      "sha256": "6e701cd8276617e10978af5a7c4228853d013898a87e086097423188c7e6f9c6",
+      "byteCount": 3659
+    },
+    "verify_cross_review.py": {
+      "sha256": "3f94b071dba704ebb089a2c21e833efe79a20740926492d46e428e6b5678b043",
+      "byteCount": 11821
+    }
+  }
+}

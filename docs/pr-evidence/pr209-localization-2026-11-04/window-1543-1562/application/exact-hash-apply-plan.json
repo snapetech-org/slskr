@@ -1,0 +1,2080 @@
+{
+  "schemaVersion": 1,
+  "task": "slskR PR #209 W1543-W1562 exact-hash application plan",
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 209,
+  "inputHead": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+  "inputTree": "4259db991f25fbbd0200963769e62bb7e2150806",
+  "inputBranch": "codex/slskr-l10n-audit-20261104-resync",
+  "baseRef": "main",
+  "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "crossReviewPacketPath": "/home/keith/Documents/code/task-scratch/slskr-pr209-w1543-1562-cross-review-20261104",
+  "crossReviewManifestSha256": "464971016d37350da9e4298f7db533d791a292ab4aee8ab4cdd9ae0da7e03611",
+  "crossReviewChecksumListSha256": "9c971d0dd06628bf165c9f65ded9c606565d50522d1480fbd6ace3a1d684acc3",
+  "crossReviewLedgerSha256": "687eae2531988bb7084e225fea5bd1f0bcc2ea2a49e6300afb084228abd7d9b7",
+  "preApplyCatalogPins": {
+    "web/src/lib/locales/ui-labels.es.json": {
+      "sha256": "87f80a1c56303b184b33d021d44898cb6a6cf44bf8acce58b067e2dfb2f5e453",
+      "gitBlob": "7056e88c033d8918612a600c293b90c4c811c61e",
+      "byteCount": 444697,
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "web/src/lib/locales/ui-labels.zh-Hans.json": {
+      "sha256": "83b9c7f965df257a4de19670b5bb29d293d86b4947f2258f288c6030489ffcb9",
+      "gitBlob": "958dc3eac912f8a808464c2afa800db48a3c03ef",
+      "byteCount": 383030,
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "web/src/lib/locales/ui-labels.hi.json": {
+      "sha256": "acab7533d0b703b933c35c66ddaca1d80d4a9989e0a509ff00c9d6a576d22647",
+      "gitBlob": "3c61ac24000f62ac63fba9e5feb20c447661659d",
+      "byteCount": 677965,
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "web/src/lib/locales/ui-labels.de.json": {
+      "sha256": "f2c585d245161f0d929b9dd8159ff269477f31809d77d6f21cb9fbb9d343fbac",
+      "gitBlob": "1ac69d11ac57a7b294fd285737d96403aaee5930",
+      "byteCount": 443105,
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "web/src/lib/locales/ui-labels.ja.json": {
+      "sha256": "9bb121a2985d68806d645173226383cf0cd34eb3cb4d5152a4e2c488a9cdd823",
+      "gitBlob": "a6a237a892d7f6022d4873a64919326d35136c91",
+      "byteCount": 491221,
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "web/src/lib/locales/ui-labels.fr.json": {
+      "sha256": "45c40fc74e17814bade40030159e8cb91b3f593e0216a2d7c20f76ea881e36b8",
+      "gitBlob": "8da33d72a19a08447405ca11364a335ede0db3bb",
+      "byteCount": 455717,
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "web/src/lib/locales/ui-labels.pt-BR.json": {
+      "sha256": "16d9526224922d51c9b527616e8927121b4186a40fcb5b080b32ee3b274b0a54",
+      "gitBlob": "6c3a59cb657df87c02b53e325f8648098d83c85c",
+      "byteCount": 439313,
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "web/src/lib/locales/ui-labels.ar.json": {
+      "sha256": "c0409de6e75d5d182088c00f6934781bff0502a2e51eec911127fbd1ce34f15b",
+      "gitBlob": "fd61110cbae558e2e07bd253030d2ad5a61f9443",
+      "byteCount": 513369,
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "web/src/lib/locales/ui-labels.ko.json": {
+      "sha256": "a5455063f85bc9a6144970daacb44cd18661a3bfa4bdb9bdb41bd18ad661aa6e",
+      "gitBlob": "f61b4a1459c54d7faadd0f587765b369139d671f",
+      "byteCount": 442425,
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "web/src/lib/locales/ui-labels.zh-Hant.json": {
+      "sha256": "6bb1a96843bd1e36f1789a514d1c9c1911982ccac1bffb2dc7e34c249e699791",
+      "gitBlob": "14b80e83b6a64e7264c09d94e0bad2cd4827f533",
+      "byteCount": 383789,
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "web/src/lib/locales/ui-labels.vi.json": {
+      "sha256": "8608ebddae317f1e7d1b28f3dca5bd27b161312e408a43b33542031e5adc97f9",
+      "gitBlob": "f7359b7f364e89df460eeca408c95d2cbd428e08",
+      "byteCount": 475288,
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "web/src/lib/locales/ui-labels.id.json": {
+      "sha256": "379559a466242f2245e5cec0d2615bb14b22f707b19589b8df56cd9caaa7cf60",
+      "gitBlob": "2d2a0a36e64b43ffb3caa553718b839c6acfbb2b",
+      "byteCount": 410211,
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    }
+  },
+  "selectedChanges": [
+    {
+      "position": 1543,
+      "locale": "hi",
+      "sourceKey": "Failed to get consensus recommendations: {message}",
+      "sourceKeySha256": "3975794353b80674591622a10b1bdcc35153723af547f236872704623adb5366",
+      "sourceContextSha256": "81e4232bb44b905d762b39f0d6ac02f0d001fd3936712822d159ab076e7ae723",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json",
+      "currentTarget": "सर्वसम्मत सिफ़ारिशें प्राप्त करने में विफल: {message}",
+      "currentTargetSha256": "f1b1475027b9d5a4d661607c8dcf7913ffb4d0ead5f2b158b6581233a763b08b",
+      "selectedTarget": "सहमति-आधारित सिफ़ारिशें प्राप्त नहीं हो सकीं: {message}",
+      "selectedTargetSha256": "a82096e0fd7e02a5eb004b7c6a17c2989f6414fcaf24e01ddd079507947e443b",
+      "crossLedgerRowSha256": "843f3ba736b24cdeaaa2d7f5f964a92fe66b8d96b5fe68db439d0ea53c62dfab",
+      "crossDisposition": "propose-correction",
+      "rationale": "The current wording can read as unanimous recommendations. Use the exact established Hindi wording from the Consensus Recommendations heading and preserve the runtime error placeholder.",
+      "confidence": "moderate"
+    },
+    {
+      "position": 1543,
+      "locale": "ja",
+      "sourceKey": "Failed to get consensus recommendations: {message}",
+      "sourceKeySha256": "3975794353b80674591622a10b1bdcc35153723af547f236872704623adb5366",
+      "sourceContextSha256": "81e4232bb44b905d762b39f0d6ac02f0d001fd3936712822d159ab076e7ae723",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json",
+      "currentTarget": "コンセンサス推奨の取得に失敗しました: {message}",
+      "currentTargetSha256": "5156b970c0228506cdd5c7df6422b1a27a2af9f48a8e11ce6161630cb7a873cb",
+      "selectedTarget": "コンセンサスによる推奨事項を取得できませんでした: {message}",
+      "selectedTargetSha256": "eaeacd601fa2f3d7ab8f7872008781120e94f85c1c7694c82348d57ab0152b90",
+      "crossLedgerRowSha256": "cb8b1821e7b741f38d16b0316046d559f77e8ea963676dc02a7201d8d55723d8",
+      "crossDisposition": "propose-correction",
+      "rationale": "The current compressed term is less clear than the consensus-recommendations concept. Match the exact Japanese panel heading and preserve the runtime error placeholder.",
+      "confidence": "moderate"
+    },
+    {
+      "position": 1543,
+      "locale": "ar",
+      "sourceKey": "Failed to get consensus recommendations: {message}",
+      "sourceKeySha256": "3975794353b80674591622a10b1bdcc35153723af547f236872704623adb5366",
+      "sourceContextSha256": "81e4232bb44b905d762b39f0d6ac02f0d001fd3936712822d159ab076e7ae723",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json",
+      "currentTarget": "فشل الحصول على توصيات بالإجماع: {message}",
+      "currentTargetSha256": "836167436ccd60449c42b59c03c13d448c02c5b5bb3e757d84b288a7158dde89",
+      "selectedTarget": "تعذر الحصول على توصيات التوافق: {message}",
+      "selectedTargetSha256": "caa49e869f1c52338899e534de3e2c936534a9df11ea7edb6aa10a11f32f8802",
+      "crossLedgerRowSha256": "635f9884a83c64ce54179596ddc20d811facdcee148b7e38ed4a12ba510734e3",
+      "crossDisposition": "propose-correction",
+      "rationale": "The current phrase can suggest unanimous recommendations. Match the Arabic panel heading for consensus recommendations and preserve the runtime error placeholder.",
+      "confidence": "moderate"
+    },
+    {
+      "position": 1543,
+      "locale": "ko",
+      "sourceKey": "Failed to get consensus recommendations: {message}",
+      "sourceKeySha256": "3975794353b80674591622a10b1bdcc35153723af547f236872704623adb5366",
+      "sourceContextSha256": "81e4232bb44b905d762b39f0d6ac02f0d001fd3936712822d159ab076e7ae723",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json",
+      "currentTarget": "합의 권장 사항을 가져오지 못했습니다: {message}",
+      "currentTargetSha256": "cd8f0985196ec8f4630395ff4374b1533c508cd78a524f6ed57f10ceda68d9c5",
+      "selectedTarget": "합의 권고사항을 가져오지 못했습니다: {message}",
+      "selectedTargetSha256": "cdd0f96bed7ac17bfccfb8184d205e30e6189f234041ff46322416b84e5d903c",
+      "crossLedgerRowSha256": "759c233c73abb67974337dcf087c3e02ee8464c41b33bf970c317c75bb04b53d",
+      "crossDisposition": "propose-correction",
+      "rationale": "The current wording is broad and differs from the panel heading. Match the established Korean heading term and preserve the runtime error placeholder.",
+      "confidence": "moderate"
+    },
+    {
+      "position": 1544,
+      "locale": "ar",
+      "sourceKey": "Failed to get content metadata: {error}",
+      "sourceKeySha256": "c7a58ea1d8420548f6463fe68cf884a9cbbf40b47260506bbf6d9accc56d6c1a",
+      "sourceContextSha256": "0e6e1b96fdab8722f2206bbcec816ea976876e651d73bfb14ee8b33473bf9aef",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json",
+      "currentTarget": "تعذر الحصول على بيانات المحتوى: {error}",
+      "currentTargetSha256": "df944eae7ef8a29a4609145c29b8a37d610aa86587541aad8de9e4b36c3b51e8",
+      "selectedTarget": "تعذر الحصول على البيانات الوصفية للمحتوى: {error}",
+      "selectedTargetSha256": "f4c4a9a43a525d72131d8b4e4b24d5c5cb1a8a9bee4a938d51475c74511f646e",
+      "crossLedgerRowSha256": "55f7b975cc1bf889ae03cf9b6cb1626619bf606e279d3861339cc2b5a7f3e17e",
+      "crossDisposition": "propose-correction",
+      "rationale": "The caller retrieves content metadata. بيانات المحتوى says content data and omits metadata; the established Arabic term البيانات الوصفية is precise here. The {error} placeholder is retained.",
+      "confidence": "high"
+    },
+    {
+      "position": 1546,
+      "locale": "es",
+      "sourceKey": "Failed to get last seen timestamps",
+      "sourceKeySha256": "a2521d9bea1b8c7fd379818ad38a7d7d9a34899df2908a5581fca9fe2812ad1c",
+      "sourceContextSha256": "03efe8928e1385624ef91f86af9df6a6ae7d6db6156f4d2e36961da6d7b7e36f",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json",
+      "currentTarget": "No se pudieron obtener las marcas de tiempo de la última actividad",
+      "currentTargetSha256": "b76b71b59fbedf5186ee19418053f9cb52523051496d8964a2d7d9ddb00108cb",
+      "selectedTarget": "No se pudieron obtener las marcas de tiempo de última presencia",
+      "selectedTargetSha256": "ccee66a198ac599ff71d93c138cd095b4ddd3380c7cd6d5adcacfd44a4e1ff2b",
+      "crossLedgerRowSha256": "e8c1bea21fab256f93d4067e30eea707b521521cd8647e3a754c4e58db680846",
+      "crossDisposition": "propose-correction",
+      "rationale": "The caller retrieves last-seen timestamps keyed by channel ID, and the neighboring panel heading uses última presencia. Última actividad is broader than the source term; this matches the established label.",
+      "confidence": "moderate"
+    },
+    {
+      "position": 1546,
+      "locale": "fr",
+      "sourceKey": "Failed to get last seen timestamps",
+      "sourceKeySha256": "a2521d9bea1b8c7fd379818ad38a7d7d9a34899df2908a5581fca9fe2812ad1c",
+      "sourceContextSha256": "03efe8928e1385624ef91f86af9df6a6ae7d6db6156f4d2e36961da6d7b7e36f",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json",
+      "currentTarget": "Impossible de récupérer les horodatages de dernière activité",
+      "currentTargetSha256": "c0b245bd0c695857b257013874e350421ec3a4ae8b61cb20facc11025e1b8bc1",
+      "selectedTarget": "Impossible de récupérer les horodatages de dernière présence",
+      "selectedTargetSha256": "289060b5429aec8798bc08cecb1fc987104546b399d3291196d8b73d510fcfc1",
+      "crossLedgerRowSha256": "e70ac210569bdc29e3cc2fd88c084b9bdd03cca0065d2ef86cd514ec9a4f5051",
+      "crossDisposition": "propose-correction",
+      "rationale": "The caller retrieves last-seen timestamps keyed by channel ID, and the neighboring panel heading uses dernière présence. Dernière activité is broader than the source term; this matches the established label.",
+      "confidence": "moderate"
+    },
+    {
+      "position": 1547,
+      "locale": "es",
+      "sourceKey": "Failed to get last seen timestamps: {message}",
+      "sourceKeySha256": "60d92baac2ca8d07d813ca8d1e22a2aee3e8efa63f8bbce2b25710ae8e525142",
+      "sourceContextSha256": "27d5b8821d4591083e313396dc6a84d2bcc29d3a024bca010ea2948045e894f5",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json",
+      "currentTarget": "No se pudieron obtener las marcas de tiempo vistas por última vez: {message}",
+      "currentTargetSha256": "cd98eaf6eca708f399a800edc744994841da01c5a44cd8f9e335c425b8a4b775",
+      "selectedTarget": "No se pudieron obtener las marcas de tiempo de última presencia: {message}",
+      "selectedTargetSha256": "0a8a33d60f7dd21e81ecf89a5a07fde78538a6b49c4eb0e1c7e3b41b83abdb0f",
+      "crossLedgerRowSha256": "435947184d8daeb41c8db787ab8feadbd3203f9ff107f35d27f86fcff16dd71a",
+      "crossDisposition": "propose-correction",
+      "rationale": "The current phrase makes the timestamps sound as if they were seen. Reuse the neighboring last-presence wording and retain {message}.",
+      "confidence": "moderate"
+    },
+    {
+      "position": 1547,
+      "locale": "ja",
+      "sourceKey": "Failed to get last seen timestamps: {message}",
+      "sourceKeySha256": "60d92baac2ca8d07d813ca8d1e22a2aee3e8efa63f8bbce2b25710ae8e525142",
+      "sourceContextSha256": "27d5b8821d4591083e313396dc6a84d2bcc29d3a024bca010ea2948045e894f5",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json",
+      "currentTarget": "最後に表示されたタイムスタンプを取得できませんでした: {message}",
+      "currentTargetSha256": "ef429c23beb7eb9bfcb64dcaff95941bd53de0f7518b0ea69ff1a733fdacddb0",
+      "selectedTarget": "最終確認時刻を取得できませんでした: {message}",
+      "selectedTargetSha256": "bdbd834818968f158f8d226fce31077837d89090119553957d0f0fcc4e480a7c",
+      "crossLedgerRowSha256": "df2d4bff632fa389707ab5f52c192845c767a1f8b6d9cde25263fed49a82cafb",
+      "crossDisposition": "propose-correction",
+      "rationale": "The current target means timestamps last displayed. Reuse the neighboring last-confirmed-time wording and retain {message}.",
+      "confidence": "moderate"
+    },
+    {
+      "position": 1547,
+      "locale": "fr",
+      "sourceKey": "Failed to get last seen timestamps: {message}",
+      "sourceKeySha256": "60d92baac2ca8d07d813ca8d1e22a2aee3e8efa63f8bbce2b25710ae8e525142",
+      "sourceContextSha256": "27d5b8821d4591083e313396dc6a84d2bcc29d3a024bca010ea2948045e894f5",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json",
+      "currentTarget": "Échec de l'obtention des horodatages de la dernière vue : {message}",
+      "currentTargetSha256": "6ab8bd774b3fe87e8a2aad907ab959fefc53a09586897bd5b1440ebc429af9a1",
+      "selectedTarget": "Impossible de récupérer les horodatages de dernière présence : {message}",
+      "selectedTargetSha256": "633a6885ccac1f05e469404b3cb832c31e98fa148f3b78f36320bcff509672a1",
+      "crossLedgerRowSha256": "4a82d5a61ab3b0628d6023fb86a2f1ad8dc37ef9b52969ca5bb68faffec039a8",
+      "crossDisposition": "propose-correction",
+      "rationale": "The current phrase suggests a last viewing event. Reuse the neighboring dernière présence wording and retain {message}.",
+      "confidence": "moderate"
+    },
+    {
+      "position": 1547,
+      "locale": "pt-BR",
+      "sourceKey": "Failed to get last seen timestamps: {message}",
+      "sourceKeySha256": "60d92baac2ca8d07d813ca8d1e22a2aee3e8efa63f8bbce2b25710ae8e525142",
+      "sourceContextSha256": "27d5b8821d4591083e313396dc6a84d2bcc29d3a024bca010ea2948045e894f5",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "currentTarget": "Falha ao obter os últimos carimbos de data/hora vistos: {message}",
+      "currentTargetSha256": "7f746317831e6da1e2af971015829c8194d33ecf54c0d8344cd1e0c92112e947",
+      "selectedTarget": "Não foi possível obter os horários da última visualização: {message}",
+      "selectedTargetSha256": "2f3d5307d33badce24f3e10ca6e652f63069fb934bdff436fa167bbeca21ef24",
+      "crossLedgerRowSha256": "a98cbbf2828a19933c94abfd4fafe5e2b6a2327f7086d670aa1d40b6bd09be9f",
+      "crossDisposition": "propose-correction",
+      "rationale": "The current phrase is awkward and makes the timestamps sound as if they were seen. Reuse the neighboring Portuguese wording and retain {message}.",
+      "confidence": "moderate"
+    },
+    {
+      "position": 1547,
+      "locale": "ko",
+      "sourceKey": "Failed to get last seen timestamps: {message}",
+      "sourceKeySha256": "60d92baac2ca8d07d813ca8d1e22a2aee3e8efa63f8bbce2b25710ae8e525142",
+      "sourceContextSha256": "27d5b8821d4591083e313396dc6a84d2bcc29d3a024bca010ea2948045e894f5",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json",
+      "currentTarget": "마지막으로 표시된 타임스탬프를 가져오지 못했습니다: {message}",
+      "currentTargetSha256": "68df528d12843235a865b6b7f23d0a25a3209f310e6f2747947d709f76a5362c",
+      "selectedTarget": "마지막 확인 시각을 가져오지 못했습니다: {message}",
+      "selectedTargetSha256": "0fe765b318ddf103687d8f90b4f3f054623847b4338191549937bc50a1a125b9",
+      "crossLedgerRowSha256": "7109180487389f7bfd1221d47bab12489568f3cbef94efe798e736ebb38d40bf",
+      "crossDisposition": "propose-correction",
+      "rationale": "The current target means timestamps last displayed. Reuse the neighboring last-confirmed-time wording and retain {message}.",
+      "confidence": "moderate"
+    },
+    {
+      "position": 1548,
+      "locale": "zh-Hans",
+      "sourceKey": "Failed to get member affinities",
+      "sourceKeySha256": "b2785d1080dc6298d65a909e6f6819da42634f7cd09e39ed5766a025dbccb611",
+      "sourceContextSha256": "c090800f3c9cc00283eb44ad292493843f04546aa62fa85101aea50a94b89f18",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "currentTarget": "无法获取成员关联度",
+      "currentTargetSha256": "de9339ca88812b9f95bbb71095fcf033483edca13ecb1a6949f795ef8cb1bed8",
+      "selectedTarget": "无法获取成员亲和度",
+      "selectedTargetSha256": "7ce5c230c36e1a877b99fc43f3b25f686d942d80e9aa4caac13c27a15a04874c",
+      "crossLedgerRowSha256": "e142c3a7f58d17d9d7a7ef06ee48e1b141fd75e207368011b44555861e7bc3b6",
+      "crossDisposition": "propose-correction",
+      "rationale": "The caller retrieves member affinity scores. The same panel's Member Affinities heading uses 成员亲和度; this refinement aligns the error with that established metric name.",
+      "confidence": "moderate"
+    },
+    {
+      "position": 1548,
+      "locale": "de",
+      "sourceKey": "Failed to get member affinities",
+      "sourceKeySha256": "b2785d1080dc6298d65a909e6f6819da42634f7cd09e39ed5766a025dbccb611",
+      "sourceContextSha256": "c090800f3c9cc00283eb44ad292493843f04546aa62fa85101aea50a94b89f18",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json",
+      "currentTarget": "Mitgliederzuordnungen konnten nicht abgerufen werden",
+      "currentTargetSha256": "ad2f3338e161fd7523ea145f456d1ec9360364d313265ec74fd53c6fe9bda94d",
+      "selectedTarget": "Mitgliederaffinitäten konnten nicht abgerufen werden",
+      "selectedTargetSha256": "d3aea82f95be92b0195286bd8b363cd6d43b3c3f628f1c8abe92ee00d4c78670",
+      "crossLedgerRowSha256": "26752ef568c6353771370dc5a1e68256be2614d870ab7582c101fd4e80ee3cca",
+      "crossDisposition": "propose-correction",
+      "rationale": "This is the retrieval error for the Member Affinities panel. Mitgliederzuordnungen means member mappings or assignments; the panel's established German label is Mitgliederaffinitäten.",
+      "confidence": "high"
+    },
+    {
+      "position": 1548,
+      "locale": "zh-Hant",
+      "sourceKey": "Failed to get member affinities",
+      "sourceKeySha256": "b2785d1080dc6298d65a909e6f6819da42634f7cd09e39ed5766a025dbccb611",
+      "sourceContextSha256": "c090800f3c9cc00283eb44ad292493843f04546aa62fa85101aea50a94b89f18",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "currentTarget": "無法取得成員關聯度",
+      "currentTargetSha256": "36ecd054e8de61b1b26525620a0b9817d2b6486bd509d3e2dc5f53e5029e284e",
+      "selectedTarget": "無法取得會員親和度",
+      "selectedTargetSha256": "47032b9fbe4e3938545fad4ab7b0a18f11ffca2b42e4d988174749964c54d1bb",
+      "crossLedgerRowSha256": "f34309b12a4947adfa58aa35b69180b61a459aa9e6daec00464ca7141f5035bb",
+      "crossDisposition": "propose-correction",
+      "rationale": "The caller retrieves member affinity scores. The same panel's Member Affinities heading uses 會員親和度; this refinement aligns the error with that established metric name.",
+      "confidence": "moderate"
+    },
+    {
+      "position": 1549,
+      "locale": "zh-Hans",
+      "sourceKey": "Failed to get member affinities: {message}",
+      "sourceKeySha256": "4309e9985f712293b399150a4ceb09c6204481d45087a692a27dc9566d5f63cc",
+      "sourceContextSha256": "c3a85ebefd4418ed03ff5354070c4739b5b1d472cdb8ebd049faf9c492bb4739",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "currentTarget": "获取成员关联失败：{message}",
+      "currentTargetSha256": "abb0a3368c476252f6c8100b0c733fc3c6c5d0d61454a6982d982ce8c81011cd",
+      "selectedTarget": "无法获取成员亲和度：{message}",
+      "selectedTargetSha256": "859538b4d68ee66f5027dad776b907f76d49e8313f54217e7fe59f957f54400f",
+      "crossLedgerRowSha256": "6d79ba448121772ab64bae93e5b796067119afca07cf24d868adb2084b9c2c55",
+      "crossDisposition": "propose-correction",
+      "rationale": "The caller retrieves member affinity scores. The current 成员关联 drops the degree/affinity meaning and differs from the panel label 成员亲和度; this keeps that term and {message}.",
+      "confidence": "high"
+    },
+    {
+      "position": 1549,
+      "locale": "ja",
+      "sourceKey": "Failed to get member affinities: {message}",
+      "sourceKeySha256": "4309e9985f712293b399150a4ceb09c6204481d45087a692a27dc9566d5f63cc",
+      "sourceContextSha256": "c3a85ebefd4418ed03ff5354070c4739b5b1d472cdb8ebd049faf9c492bb4739",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json",
+      "currentTarget": "メンバー アフィニティの取得に失敗しました: {message}",
+      "currentTargetSha256": "b432309c27579d7195aa614b0db1cf9de05ec5e9dea8ba33bac21b50f312c5b8",
+      "selectedTarget": "メンバーの親和度を取得できませんでした: {message}",
+      "selectedTargetSha256": "0dd582e01f3b7643f9574f71b8ab37f3be2c6763a4364e6dadc9f046e81332cc",
+      "crossLedgerRowSha256": "e9aeacb705e512f3dcd15c620485d5a15daa0a202f215dbe9a4a94d417a2a6a0",
+      "crossDisposition": "propose-correction",
+      "rationale": "The caller retrieves member affinity scores. The current メンバー アフィニティ is an awkward transliteration; the same panel uses the natural term メンバーの親和度. This preserves {message}.",
+      "confidence": "high"
+    },
+    {
+      "position": 1549,
+      "locale": "zh-Hant",
+      "sourceKey": "Failed to get member affinities: {message}",
+      "sourceKeySha256": "4309e9985f712293b399150a4ceb09c6204481d45087a692a27dc9566d5f63cc",
+      "sourceContextSha256": "c3a85ebefd4418ed03ff5354070c4739b5b1d472cdb8ebd049faf9c492bb4739",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "currentTarget": "取得成員關聯失敗：{message}",
+      "currentTargetSha256": "b7e6f7d9ab4c2300332831ab7060df04f197e8020b4e1b2ae56bdc46e9534b0f",
+      "selectedTarget": "無法取得會員親和度：{message}",
+      "selectedTargetSha256": "0911461f621d6f41d6d698df7d7acaa55e7b6dd37fc4bf3b21c0becd9960ae4e",
+      "crossLedgerRowSha256": "66b5acc8f96ddd1f37c656bee75786fddf8387a40780a270ab88a24c5c1b5045",
+      "crossDisposition": "propose-correction",
+      "rationale": "The caller retrieves member affinity scores. The current 成員關聯 drops the affinity-degree meaning and differs from the panel label 會員親和度; this keeps that term and {message}.",
+      "confidence": "high"
+    },
+    {
+      "position": 1549,
+      "locale": "vi",
+      "sourceKey": "Failed to get member affinities: {message}",
+      "sourceKeySha256": "4309e9985f712293b399150a4ceb09c6204481d45087a692a27dc9566d5f63cc",
+      "sourceContextSha256": "c3a85ebefd4418ed03ff5354070c4739b5b1d472cdb8ebd049faf9c492bb4739",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json",
+      "currentTarget": "Không nhận được mối quan hệ của thành viên: {message}",
+      "currentTargetSha256": "bf7d5a9ba0170ce1404a4ed688546e4ce42d644a044bc0c9136082fa0f139423",
+      "selectedTarget": "Không thể tải mức độ tương đồng của thành viên: {message}",
+      "selectedTargetSha256": "1c6709d88fc6c2e86f3f3f7e9c26d2ad87f430b2f504804697700c9fd28bec53",
+      "crossLedgerRowSha256": "a3a02de058fcbea185d5094df558b9df35e2362e27ce63ae86cc645bb0c884e1",
+      "crossDisposition": "propose-correction",
+      "rationale": "The caller retrieves member affinity scores. Mối quan hệ của thành viên means member relationships and is broader than the current neighboring wording mức độ tương đồng của thành viên; this aligns the pair and retains {message}.",
+      "confidence": "moderate"
+    },
+    {
+      "position": 1551,
+      "locale": "zh-Hans",
+      "sourceKey": "Failed to get membership:",
+      "sourceKeySha256": "dd041121ae19347ad25b9e56d3eabfe4323b8a8cfa2b4a90b842000b40575712",
+      "sourceContextSha256": "e1615df8a77dea0ac7ddb73df509bda9e83ed74a315341143d64fc50a31ca924",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "currentTarget": "获取会员失败：",
+      "currentTargetSha256": "c5fbc15a6f6bb89e3b25a658b3d41505c12da752a4f3d49a9ebd36a6859c9787",
+      "selectedTarget": "获取会员记录失败：",
+      "selectedTargetSha256": "6830c8f446568fdc633c5dc1d5a7329aafc035a252aea7b8b22aea70f141c588",
+      "crossLedgerRowSha256": "a31518d99f74322a07c0f837ad20cd05a3b3188fcd048414e3a8ec01f12883a7",
+      "crossDisposition": "propose-correction",
+      "rationale": "The caller displays the result of Get Membership Record. 获取会员失败 says it failed to get a member and omits the record; the existing label uses 会员记录.",
+      "confidence": "high"
+    },
+    {
+      "position": 1551,
+      "locale": "ko",
+      "sourceKey": "Failed to get membership:",
+      "sourceKeySha256": "dd041121ae19347ad25b9e56d3eabfe4323b8a8cfa2b4a90b842000b40575712",
+      "sourceContextSha256": "e1615df8a77dea0ac7ddb73df509bda9e83ed74a315341143d64fc50a31ca924",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json",
+      "currentTarget": "회원가입 실패:",
+      "currentTargetSha256": "0fba3e655a7a6a39f7cf9d04e67e3c291d89b83b81a9d772b6edfd55f43c32d8",
+      "selectedTarget": "회원 기록을 가져오지 못했습니다:",
+      "selectedTargetSha256": "edd842b64ef94b0f4b1ecdd53b178f982a08f8f372ac6e12497bf101477202fa",
+      "crossLedgerRowSha256": "c45847fa871cf96b0e81c1a5e23e6c19f53098b09567746335f5ef1121a3a5c1",
+      "crossDisposition": "propose-correction",
+      "rationale": "The caller displays a fetched membership record. 회원가입 means account sign-up, but this action retrieves an existing member record; this corrects the operation and keeps the trailing colon.",
+      "confidence": "high"
+    },
+    {
+      "position": 1551,
+      "locale": "zh-Hant",
+      "sourceKey": "Failed to get membership:",
+      "sourceKeySha256": "dd041121ae19347ad25b9e56d3eabfe4323b8a8cfa2b4a90b842000b40575712",
+      "sourceContextSha256": "e1615df8a77dea0ac7ddb73df509bda9e83ed74a315341143d64fc50a31ca924",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "currentTarget": "獲取會員失敗：",
+      "currentTargetSha256": "0b289a1272f58b995fe8c5b25ad9a86c8266092a33eaebd8e506ef64fd61bd7d",
+      "selectedTarget": "無法取得會員記錄：",
+      "selectedTargetSha256": "f8c1907419d4deae666853ed4d2a8c1a52005793737b551441ea86dbd536b1f2",
+      "crossLedgerRowSha256": "db966425ad155f8aaff593a192c3265db4284826837a7b86cc9f3a03aef8fc1f",
+      "crossDisposition": "propose-correction",
+      "rationale": "The caller displays the result of Get Membership Record. 獲取會員失敗 says it failed to get a member and omits the record; the existing label uses 會員記錄.",
+      "confidence": "high"
+    },
+    {
+      "position": 1551,
+      "locale": "vi",
+      "sourceKey": "Failed to get membership:",
+      "sourceKeySha256": "dd041121ae19347ad25b9e56d3eabfe4323b8a8cfa2b4a90b842000b40575712",
+      "sourceContextSha256": "e1615df8a77dea0ac7ddb73df509bda9e83ed74a315341143d64fc50a31ca924",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json",
+      "currentTarget": "Không thể trở thành thành viên:",
+      "currentTargetSha256": "2d321f491af06734839d1783db687be581a2bf540fc6d79c5f8c4d063d426e59",
+      "selectedTarget": "Không thể lấy hồ sơ thành viên:",
+      "selectedTargetSha256": "48e7720999a22e0de41ff6962cb69254b36b555a403268085662e45b3794349f",
+      "crossLedgerRowSha256": "9eaf255a21b214fca19ee3fec6fc077adad525b66d49bec3fff40a7792f756ad",
+      "crossDisposition": "propose-correction",
+      "rationale": "The caller displays a fetched membership record. Không thể trở thành thành viên means the person could not become a member; this instead describes retrieving the hồ sơ thành viên and retains the colon.",
+      "confidence": "high"
+    },
+    {
+      "position": 1553,
+      "locale": "hi",
+      "sourceKey": "Failed to get opinion statistics: {message}",
+      "sourceKeySha256": "c08b3a5004b22e9c7ea3c2579cebd352ff286902426b6f7cb99a20638fb46cd2",
+      "sourceContextSha256": "43b7017f47b69bf2abcb452cf019d1492f9a68c142879dd4c5beb87601eac5a7",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json",
+      "currentTarget": "राय आँकड़े प्राप्त करने में विफल: {message}",
+      "currentTargetSha256": "4b9fda5a3448d5e6b6755db5173ef4d489f89c9c086642de3a882f9603573f93",
+      "selectedTarget": "राय के आँकड़े प्राप्त नहीं हो सके: {message}",
+      "selectedTargetSha256": "ac251fbc6dc3ca0045723c9f8a2c28341c850ca401b120714f7e50a45911b18b",
+      "crossLedgerRowSha256": "47fa355ccd41a7a888153228e9f9200ba24424ae79be8b978e1fd07d5513a5b2",
+      "crossDisposition": "propose-correction",
+      "rationale": "The current compound omits the genitive marker present in the paired no-placeholder key. Reuse that natural paired wording and retain {message}.",
+      "confidence": "moderate"
+    },
+    {
+      "position": 1554,
+      "locale": "de",
+      "sourceKey": "Failed to get opinions",
+      "sourceKeySha256": "533719e8ecf629ecf90244fc0ff7513c1d4c1ad2a9b4bcee79d1626c6936b912",
+      "sourceContextSha256": "b93601e241ebfc785bec57aa103f8e13f6a6a0d7ffae59786baf03ee814e2fb8",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json",
+      "currentTarget": "Bewertungen konnten nicht abgerufen werden",
+      "currentTargetSha256": "732c9e663b8728b4aae2aeac99418355699bd464f819f8c116cc639369f4b4ce",
+      "selectedTarget": "Meinungen konnten nicht abgerufen werden",
+      "selectedTargetSha256": "0d0a86b8af5baacff803fdb68e24c6806e8eac387854eb94caedd8094a2f6fc0",
+      "crossLedgerRowSha256": "404a43ed54c1ad89bf8db510c6d2c00de5921fa8bb7cd2d0377a80a876a771bd",
+      "crossDisposition": "propose-correction",
+      "rationale": "The caller loads community opinions on content variants. Bewertungen narrows these to ratings/reviews; the adjacent opinion-statistics and previously approved aggregated-opinions wording use Meinungen.",
+      "confidence": "high"
+    },
+    {
+      "position": 1560,
+      "locale": "de",
+      "sourceKey": "Failed to join room",
+      "sourceKeySha256": "dd8f3a8d994eeeaf0b07ae744eabff0d2d5c7d32266848e67322a69f0e281a89",
+      "sourceContextSha256": "b593ba283a03c0a1eaa1ce3d316c5017cd72d69af1d8af1200f6d4a592380c72",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json",
+      "currentTarget": "Raum konnte nicht beigetreten werden",
+      "currentTargetSha256": "6a22ba974ca3cbabcc50a793d104a2a194790a77c269f2c32df461a874931b6a",
+      "selectedTarget": "Beitritt zum Raum fehlgeschlagen",
+      "selectedTargetSha256": "e0d11d8e84e038d55d004be74ff33bac5b849f2dc80e4d6d42d6fffb1ef9ed86",
+      "crossLedgerRowSha256": "6a0b6e320a95ade140a2c7b5a2c17b832de882aa546628e5ddd6a78088a26d1e",
+      "crossDisposition": "propose-correction",
+      "rationale": "The caller joins a chat room. The current passive omits the dative required by beitreten; Beitritt zum Raum fehlgeschlagen is idiomatic and matches the established Raum wording.",
+      "confidence": "high"
+    },
+    {
+      "position": 1561,
+      "locale": "de",
+      "sourceKey": "Failed to join room: {error}",
+      "sourceKeySha256": "65b815adb9ac1c3500437146fc405ae277bd4a8760dcfd82456e5d93fd9e75e8",
+      "sourceContextSha256": "e23eba54a6fd7499b3352692457df7ff6e3e2575101977e7d3d4c1d3685cc4ab",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json",
+      "currentTarget": "Raum konnte nicht beigetreten werden: {error}",
+      "currentTargetSha256": "623a5de1dc7f2681d697a8d537e40c928c078e9d0030767cf579df89c4eb04b8",
+      "selectedTarget": "Beitritt zum Raum fehlgeschlagen: {error}",
+      "selectedTargetSha256": "23680a0954af7bdc44657aea76c4d54ce033040c9085ee10b77a99343279dbcb",
+      "crossLedgerRowSha256": "51410770c1aa10bd660d8799649ef1a732fd2b11269e078394cdf288fdf1e228",
+      "crossDisposition": "propose-correction",
+      "rationale": "The two callers join a chat room. The current passive omits the dative required by beitreten; this idiomatic phrasing preserves {error}.",
+      "confidence": "high"
+    }
+  ],
+  "acceptedHashOnly": [
+    {
+      "position": 1543,
+      "locale": "es",
+      "sourceKeySha256": "3975794353b80674591622a10b1bdcc35153723af547f236872704623adb5366",
+      "currentTargetSha256": "ef8aff9ac264478cac63bbee7480715a2f1ca4b3cb6cbbb3162370176ead810c",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "position": 1543,
+      "locale": "zh-Hans",
+      "sourceKeySha256": "3975794353b80674591622a10b1bdcc35153723af547f236872704623adb5366",
+      "currentTargetSha256": "882c5eb827a2035373405b73815c94d02fb33550ddebf359702998924a4f17ba",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "position": 1543,
+      "locale": "de",
+      "sourceKeySha256": "3975794353b80674591622a10b1bdcc35153723af547f236872704623adb5366",
+      "currentTargetSha256": "7f21d1727d0a6ce04a599111d1ea4329427adea029c2f1ee4fdc8cd8f034660b",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "position": 1543,
+      "locale": "fr",
+      "sourceKeySha256": "3975794353b80674591622a10b1bdcc35153723af547f236872704623adb5366",
+      "currentTargetSha256": "dc592197078352d9e0da67dbbe89cf481e169db8ae97a28d960c5b4a01999876",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "position": 1543,
+      "locale": "pt-BR",
+      "sourceKeySha256": "3975794353b80674591622a10b1bdcc35153723af547f236872704623adb5366",
+      "currentTargetSha256": "14f7745bfd6acd64a9b8f5fd2e54c894148f9a2c72ac04227313dc677cb2c303",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "position": 1543,
+      "locale": "zh-Hant",
+      "sourceKeySha256": "3975794353b80674591622a10b1bdcc35153723af547f236872704623adb5366",
+      "currentTargetSha256": "d6e8a6219ce833ea83b2224a19508c653b94359b26d635fc97b458b2959d07cf",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    },
+    {
+      "position": 1543,
+      "locale": "vi",
+      "sourceKeySha256": "3975794353b80674591622a10b1bdcc35153723af547f236872704623adb5366",
+      "currentTargetSha256": "7b5a6ebf36154aec94b7d99c0b3dbb8276df511efe7e60efc4d354c0d3aab3b9",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "position": 1543,
+      "locale": "id",
+      "sourceKeySha256": "3975794353b80674591622a10b1bdcc35153723af547f236872704623adb5366",
+      "currentTargetSha256": "75c021bb4c1e14855b71d1f6272b7ad3a88566d62f3ff829f10b724e81d68499",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "position": 1544,
+      "locale": "es",
+      "sourceKeySha256": "c7a58ea1d8420548f6463fe68cf884a9cbbf40b47260506bbf6d9accc56d6c1a",
+      "currentTargetSha256": "04869f39a374557f68fb2b6bd5a5eff963f92e85778360a5015d81a24806a646",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "position": 1544,
+      "locale": "zh-Hans",
+      "sourceKeySha256": "c7a58ea1d8420548f6463fe68cf884a9cbbf40b47260506bbf6d9accc56d6c1a",
+      "currentTargetSha256": "cbccd2d37c239ec8d8cf3ebf03052d40c78ce1d488bcd411189859c6bfea4dad",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "position": 1544,
+      "locale": "hi",
+      "sourceKeySha256": "c7a58ea1d8420548f6463fe68cf884a9cbbf40b47260506bbf6d9accc56d6c1a",
+      "currentTargetSha256": "1affcfdd005a5990775fb2b247d7f02c8e1fecfda037d7fa45d0996d45d16c03",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "position": 1544,
+      "locale": "de",
+      "sourceKeySha256": "c7a58ea1d8420548f6463fe68cf884a9cbbf40b47260506bbf6d9accc56d6c1a",
+      "currentTargetSha256": "177ecf5850e437ee77227a364a0df67db2f2d554aae3ce808a831d26fadd644c",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "position": 1544,
+      "locale": "ja",
+      "sourceKeySha256": "c7a58ea1d8420548f6463fe68cf884a9cbbf40b47260506bbf6d9accc56d6c1a",
+      "currentTargetSha256": "8e4d296abc7c79a9cdb15d881fbc6fed68f555dec7b014199ce56d7380bf177e",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "position": 1544,
+      "locale": "fr",
+      "sourceKeySha256": "c7a58ea1d8420548f6463fe68cf884a9cbbf40b47260506bbf6d9accc56d6c1a",
+      "currentTargetSha256": "3a2618dc156c7d713a9b0ee7ef18416bfc80c52033032e698ef0e2c16e893c5d",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "position": 1544,
+      "locale": "pt-BR",
+      "sourceKeySha256": "c7a58ea1d8420548f6463fe68cf884a9cbbf40b47260506bbf6d9accc56d6c1a",
+      "currentTargetSha256": "68571147c2d7b5c3e28619d0c3f6406a5efc17b51be291c918ef521caade01aa",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "position": 1544,
+      "locale": "ko",
+      "sourceKeySha256": "c7a58ea1d8420548f6463fe68cf884a9cbbf40b47260506bbf6d9accc56d6c1a",
+      "currentTargetSha256": "00725b02c9c0593f2b833f9412dc10c11ed36f0c1330dee8f66ee0474c9d3f17",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "position": 1544,
+      "locale": "zh-Hant",
+      "sourceKeySha256": "c7a58ea1d8420548f6463fe68cf884a9cbbf40b47260506bbf6d9accc56d6c1a",
+      "currentTargetSha256": "5bb1a86e23f247c94dcbc98c24f736d94029a58faee8deec86412a925519307c",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    },
+    {
+      "position": 1544,
+      "locale": "vi",
+      "sourceKeySha256": "c7a58ea1d8420548f6463fe68cf884a9cbbf40b47260506bbf6d9accc56d6c1a",
+      "currentTargetSha256": "1de2d142eacddf51731972a1913e6dfa9d5f1a7131c797ccbfd944eefd0a55d7",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "position": 1544,
+      "locale": "id",
+      "sourceKeySha256": "c7a58ea1d8420548f6463fe68cf884a9cbbf40b47260506bbf6d9accc56d6c1a",
+      "currentTargetSha256": "7d0afbf341adad98697888d16821eaf98264bfb87c4f5435767f1d2fa764a330",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "position": 1545,
+      "locale": "es",
+      "sourceKeySha256": "f8ef0212c0d4cf058b6a917b45a40b5c8bdf667d6b1103c9193fc40aee059e41",
+      "currentTargetSha256": "dec64720863726b8713c9e9475a48d306031bb29ce147d95db3f3bcb72470c66",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "position": 1545,
+      "locale": "zh-Hans",
+      "sourceKeySha256": "f8ef0212c0d4cf058b6a917b45a40b5c8bdf667d6b1103c9193fc40aee059e41",
+      "currentTargetSha256": "7b7ff1786286217ae5ba7d6cc0088f4081b1219bedf47c83fe2ba58ee4746bd7",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "position": 1545,
+      "locale": "hi",
+      "sourceKeySha256": "f8ef0212c0d4cf058b6a917b45a40b5c8bdf667d6b1103c9193fc40aee059e41",
+      "currentTargetSha256": "2517f2635142d67b362ff7226e92fbae7664ce9c02700eb3541768ea647ce487",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "position": 1545,
+      "locale": "de",
+      "sourceKeySha256": "f8ef0212c0d4cf058b6a917b45a40b5c8bdf667d6b1103c9193fc40aee059e41",
+      "currentTargetSha256": "47108b542fe2cf2abbdc4b8d17a06f031fdd2a173e684fa69abf86e82b61938d",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "position": 1545,
+      "locale": "ja",
+      "sourceKeySha256": "f8ef0212c0d4cf058b6a917b45a40b5c8bdf667d6b1103c9193fc40aee059e41",
+      "currentTargetSha256": "ee22a94a428447960b2f65fd56e9448777d9690160a943a1e6285b10897123d2",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "position": 1545,
+      "locale": "fr",
+      "sourceKeySha256": "f8ef0212c0d4cf058b6a917b45a40b5c8bdf667d6b1103c9193fc40aee059e41",
+      "currentTargetSha256": "017f87dde3bd0e7e3b7e036a73b53d595839cb233faee1f3df7c2006f933a0b4",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "position": 1545,
+      "locale": "pt-BR",
+      "sourceKeySha256": "f8ef0212c0d4cf058b6a917b45a40b5c8bdf667d6b1103c9193fc40aee059e41",
+      "currentTargetSha256": "0898a785ab955106a34036fba7f7ed69f5fbec992c168c9d6453df6c1d6b17c0",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "position": 1545,
+      "locale": "ar",
+      "sourceKeySha256": "f8ef0212c0d4cf058b6a917b45a40b5c8bdf667d6b1103c9193fc40aee059e41",
+      "currentTargetSha256": "345d31d483a610e5668f48b1659afedaf27553ec91a045e28ab22f7e55148653",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "position": 1545,
+      "locale": "ko",
+      "sourceKeySha256": "f8ef0212c0d4cf058b6a917b45a40b5c8bdf667d6b1103c9193fc40aee059e41",
+      "currentTargetSha256": "c53bc40bed83e79d4474b21557da8404ea6f5947d826a0ce75838d2826072898",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "position": 1545,
+      "locale": "zh-Hant",
+      "sourceKeySha256": "f8ef0212c0d4cf058b6a917b45a40b5c8bdf667d6b1103c9193fc40aee059e41",
+      "currentTargetSha256": "2335b986293d7e225b0551d1b1799f8d39afbc944931e4cf4ab26dfad05aa8dd",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    },
+    {
+      "position": 1545,
+      "locale": "vi",
+      "sourceKeySha256": "f8ef0212c0d4cf058b6a917b45a40b5c8bdf667d6b1103c9193fc40aee059e41",
+      "currentTargetSha256": "20a382fe264efc5cc04db4ad486cb767e8403ffa64f6eefd612d0200569eee75",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "position": 1545,
+      "locale": "id",
+      "sourceKeySha256": "f8ef0212c0d4cf058b6a917b45a40b5c8bdf667d6b1103c9193fc40aee059e41",
+      "currentTargetSha256": "9ad2444806922e6732896dcdfb16b5bc05bd0e51a17b37324dfbd4c58c6babfc",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "position": 1546,
+      "locale": "zh-Hans",
+      "sourceKeySha256": "a2521d9bea1b8c7fd379818ad38a7d7d9a34899df2908a5581fca9fe2812ad1c",
+      "currentTargetSha256": "9d159670da7bf9e0ef65e5e625a8e4372e05eb616a91832bb0cba40b73dbc509",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "position": 1546,
+      "locale": "hi",
+      "sourceKeySha256": "a2521d9bea1b8c7fd379818ad38a7d7d9a34899df2908a5581fca9fe2812ad1c",
+      "currentTargetSha256": "47f18aab35bdc59d333e31f299bbaad1ad60457dd86285bbba533245f8c94bcc",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "position": 1546,
+      "locale": "de",
+      "sourceKeySha256": "a2521d9bea1b8c7fd379818ad38a7d7d9a34899df2908a5581fca9fe2812ad1c",
+      "currentTargetSha256": "44559a0c29d247c7436d0f1ba135e2a7891ba63b019aacaa00ff11a499afcdea",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "position": 1546,
+      "locale": "ja",
+      "sourceKeySha256": "a2521d9bea1b8c7fd379818ad38a7d7d9a34899df2908a5581fca9fe2812ad1c",
+      "currentTargetSha256": "554af2bb3d3516d299aca96675cb2594263903f614c0cd2f262d3967067c1804",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "position": 1546,
+      "locale": "pt-BR",
+      "sourceKeySha256": "a2521d9bea1b8c7fd379818ad38a7d7d9a34899df2908a5581fca9fe2812ad1c",
+      "currentTargetSha256": "7268408f7de56c0cdf5c8cc7216f8e3b15f88b7ab5c1cd63ff7949e4556803a2",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "position": 1546,
+      "locale": "ar",
+      "sourceKeySha256": "a2521d9bea1b8c7fd379818ad38a7d7d9a34899df2908a5581fca9fe2812ad1c",
+      "currentTargetSha256": "de81ee0d8722300c0dc57e6c21b85d67f61f4d57a595dfd594c7476f6c131344",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "position": 1546,
+      "locale": "ko",
+      "sourceKeySha256": "a2521d9bea1b8c7fd379818ad38a7d7d9a34899df2908a5581fca9fe2812ad1c",
+      "currentTargetSha256": "b60c4e2d0bfab10519803115c200c551eb982238861ccab7df961d865f6e6bec",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "position": 1546,
+      "locale": "zh-Hant",
+      "sourceKeySha256": "a2521d9bea1b8c7fd379818ad38a7d7d9a34899df2908a5581fca9fe2812ad1c",
+      "currentTargetSha256": "7ff4cc16db84480c22c605cd728cfacb2ab69955a30e3379bfc9952d799ff592",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    },
+    {
+      "position": 1546,
+      "locale": "vi",
+      "sourceKeySha256": "a2521d9bea1b8c7fd379818ad38a7d7d9a34899df2908a5581fca9fe2812ad1c",
+      "currentTargetSha256": "7c7fafe492ec95d09ac7152a66a19f1d47dc28882b622380772b08cf1bd87130",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "position": 1546,
+      "locale": "id",
+      "sourceKeySha256": "a2521d9bea1b8c7fd379818ad38a7d7d9a34899df2908a5581fca9fe2812ad1c",
+      "currentTargetSha256": "7d236d4f1a761c60bdd2f811dc040bd33bcda421193c56f241967b1fed50ed8d",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "position": 1547,
+      "locale": "zh-Hans",
+      "sourceKeySha256": "60d92baac2ca8d07d813ca8d1e22a2aee3e8efa63f8bbce2b25710ae8e525142",
+      "currentTargetSha256": "da4af5af53d02d999bb71e47911ac56678360fed0b020d8aed3fb80a73f5130a",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "position": 1547,
+      "locale": "hi",
+      "sourceKeySha256": "60d92baac2ca8d07d813ca8d1e22a2aee3e8efa63f8bbce2b25710ae8e525142",
+      "currentTargetSha256": "23a1585bbe23d494ac0130737ebfb2bb18a2595c607d26c120741e0e6f254cf4",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "position": 1547,
+      "locale": "de",
+      "sourceKeySha256": "60d92baac2ca8d07d813ca8d1e22a2aee3e8efa63f8bbce2b25710ae8e525142",
+      "currentTargetSha256": "e92e895056d259233d4b7a1e8fc7342fe74edcad67cb02cb7e2bf3ac56f8cc82",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "position": 1547,
+      "locale": "ar",
+      "sourceKeySha256": "60d92baac2ca8d07d813ca8d1e22a2aee3e8efa63f8bbce2b25710ae8e525142",
+      "currentTargetSha256": "fb5e0cceab095f0086c9fb35cae2699a442af55200198ba71681d94355a29319",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "position": 1547,
+      "locale": "zh-Hant",
+      "sourceKeySha256": "60d92baac2ca8d07d813ca8d1e22a2aee3e8efa63f8bbce2b25710ae8e525142",
+      "currentTargetSha256": "1e617e3a6345626f1689eaedec43768a48bce963c3263a3aafaa10f132f33ba7",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    },
+    {
+      "position": 1547,
+      "locale": "vi",
+      "sourceKeySha256": "60d92baac2ca8d07d813ca8d1e22a2aee3e8efa63f8bbce2b25710ae8e525142",
+      "currentTargetSha256": "683b08c2d45204760de6febee2d6a51a741d868c27ab0532a0876dbc63a94250",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "position": 1547,
+      "locale": "id",
+      "sourceKeySha256": "60d92baac2ca8d07d813ca8d1e22a2aee3e8efa63f8bbce2b25710ae8e525142",
+      "currentTargetSha256": "3b0a95d324504c24aaae320ace6171f5bd2d89686a283cdea4ce3a4826d53d96",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "position": 1548,
+      "locale": "es",
+      "sourceKeySha256": "b2785d1080dc6298d65a909e6f6819da42634f7cd09e39ed5766a025dbccb611",
+      "currentTargetSha256": "37f46820c5b776bc48463e8c4ab07e51280d1fdb042c1d0d91631bc969c97087",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "position": 1548,
+      "locale": "hi",
+      "sourceKeySha256": "b2785d1080dc6298d65a909e6f6819da42634f7cd09e39ed5766a025dbccb611",
+      "currentTargetSha256": "d2f4d807454fcff0f5784fc6b28ab4a5ca9ee75a625a4e8deb49bb309a9fb024",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "position": 1548,
+      "locale": "ja",
+      "sourceKeySha256": "b2785d1080dc6298d65a909e6f6819da42634f7cd09e39ed5766a025dbccb611",
+      "currentTargetSha256": "0a96cc18564f070d1953e1a4ac81974fcfc9a7e361b965189c6e59bfe4686bbb",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "position": 1548,
+      "locale": "fr",
+      "sourceKeySha256": "b2785d1080dc6298d65a909e6f6819da42634f7cd09e39ed5766a025dbccb611",
+      "currentTargetSha256": "d48ebfc1bf71e613247aedc23f5af5cc5d9ae4e0060a1b3490f4d8a642d0720f",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "position": 1548,
+      "locale": "pt-BR",
+      "sourceKeySha256": "b2785d1080dc6298d65a909e6f6819da42634f7cd09e39ed5766a025dbccb611",
+      "currentTargetSha256": "b257cd70fc8cf8fa4aae60b1f62354fa72abfc24a278daf465d1ed85b1a9239b",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "position": 1548,
+      "locale": "ar",
+      "sourceKeySha256": "b2785d1080dc6298d65a909e6f6819da42634f7cd09e39ed5766a025dbccb611",
+      "currentTargetSha256": "adeeccb501c5ce3c98be72111a8677281c48ae2b8db15a6e72b92fe7f7059243",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "position": 1548,
+      "locale": "vi",
+      "sourceKeySha256": "b2785d1080dc6298d65a909e6f6819da42634f7cd09e39ed5766a025dbccb611",
+      "currentTargetSha256": "78afef5509027084100d3ceef35e44a85bb1bbc4552dd440ee20f22f241adbcf",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "position": 1548,
+      "locale": "id",
+      "sourceKeySha256": "b2785d1080dc6298d65a909e6f6819da42634f7cd09e39ed5766a025dbccb611",
+      "currentTargetSha256": "8f52f6cd27a25a827de57421823aa318ffea94166cf0fe254419c3183d307e62",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "position": 1549,
+      "locale": "es",
+      "sourceKeySha256": "4309e9985f712293b399150a4ceb09c6204481d45087a692a27dc9566d5f63cc",
+      "currentTargetSha256": "c070455a3bd2b9c9bbce2e524e7fba5fbf66b08601b45005779c22f09e35b4d4",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "position": 1549,
+      "locale": "hi",
+      "sourceKeySha256": "4309e9985f712293b399150a4ceb09c6204481d45087a692a27dc9566d5f63cc",
+      "currentTargetSha256": "4e34d85b1644ca1444cee896b49e3358d3c9dff65f7376515e247e0222ad15d7",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "position": 1549,
+      "locale": "de",
+      "sourceKeySha256": "4309e9985f712293b399150a4ceb09c6204481d45087a692a27dc9566d5f63cc",
+      "currentTargetSha256": "b71cf0dc95f4233ca5d8e739a5572523c037fd89e198ddbd152a46c4169dd7bd",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "position": 1549,
+      "locale": "fr",
+      "sourceKeySha256": "4309e9985f712293b399150a4ceb09c6204481d45087a692a27dc9566d5f63cc",
+      "currentTargetSha256": "bdd5cf3f0c42317d03525365f2dc4ce030422b27855b47d26b51786cb7e00d77",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "position": 1549,
+      "locale": "pt-BR",
+      "sourceKeySha256": "4309e9985f712293b399150a4ceb09c6204481d45087a692a27dc9566d5f63cc",
+      "currentTargetSha256": "5db5d2ae3e9c8e1eba31d47a042111f1876548a7bf299ee499bb28fecb5ce529",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "position": 1549,
+      "locale": "id",
+      "sourceKeySha256": "4309e9985f712293b399150a4ceb09c6204481d45087a692a27dc9566d5f63cc",
+      "currentTargetSha256": "e6dc9536b658f6da5e58f98d69097932dce313f96d84cacb267122e638a06f53",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "position": 1550,
+      "locale": "es",
+      "sourceKeySha256": "0fe08bab9a6437162b0a90b2a754561ec0a27a218f56459b802dfbf099d3daa6",
+      "currentTargetSha256": "07ca193fb712af7de818c7d6302773b883e1bd86200ddd61335b9dcb84cc8d7b",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "position": 1550,
+      "locale": "hi",
+      "sourceKeySha256": "0fe08bab9a6437162b0a90b2a754561ec0a27a218f56459b802dfbf099d3daa6",
+      "currentTargetSha256": "6a36af907efcfe25f696caa2a20afaa86af3dfd47a0c5fc3dff99747fe5984ab",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "position": 1550,
+      "locale": "de",
+      "sourceKeySha256": "0fe08bab9a6437162b0a90b2a754561ec0a27a218f56459b802dfbf099d3daa6",
+      "currentTargetSha256": "ea3d6ef8b6011f964fbad815b756f64c870358ba0a70ce687a7243cbccc2dd54",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "position": 1550,
+      "locale": "ja",
+      "sourceKeySha256": "0fe08bab9a6437162b0a90b2a754561ec0a27a218f56459b802dfbf099d3daa6",
+      "currentTargetSha256": "54f98d5efcf0bf91baac21168435a3cf504d276d3c6949b925658049f7a1cee2",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "position": 1550,
+      "locale": "fr",
+      "sourceKeySha256": "0fe08bab9a6437162b0a90b2a754561ec0a27a218f56459b802dfbf099d3daa6",
+      "currentTargetSha256": "f31830b7fe578d10b6aab8dbd64f5ad8508a0302d6175220dee01405295831d3",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "position": 1550,
+      "locale": "pt-BR",
+      "sourceKeySha256": "0fe08bab9a6437162b0a90b2a754561ec0a27a218f56459b802dfbf099d3daa6",
+      "currentTargetSha256": "9ea63ab9e4aa38c714a2462faed2b0cf049c5fe603593a99dc4a642691abcd52",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "position": 1550,
+      "locale": "ar",
+      "sourceKeySha256": "0fe08bab9a6437162b0a90b2a754561ec0a27a218f56459b802dfbf099d3daa6",
+      "currentTargetSha256": "8a8bc2514e8e61669bd2d4c1ff4d56047e6caa595dec027da57be8066abbec54",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "position": 1550,
+      "locale": "ko",
+      "sourceKeySha256": "0fe08bab9a6437162b0a90b2a754561ec0a27a218f56459b802dfbf099d3daa6",
+      "currentTargetSha256": "549087c847471aa17fc549e2fee4fe1320bfed132ee951ac1ab075540034b8e9",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "position": 1550,
+      "locale": "vi",
+      "sourceKeySha256": "0fe08bab9a6437162b0a90b2a754561ec0a27a218f56459b802dfbf099d3daa6",
+      "currentTargetSha256": "398d429ed5c4ca8943cc5c9144c450c08907bc316b2bf360703824b93bee2199",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "position": 1550,
+      "locale": "id",
+      "sourceKeySha256": "0fe08bab9a6437162b0a90b2a754561ec0a27a218f56459b802dfbf099d3daa6",
+      "currentTargetSha256": "9f520c2ca7d9ccb314e25c4e167d99018ce98508970ae4486e0158703f183cc9",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "position": 1551,
+      "locale": "es",
+      "sourceKeySha256": "dd041121ae19347ad25b9e56d3eabfe4323b8a8cfa2b4a90b842000b40575712",
+      "currentTargetSha256": "315801e7a3eb199d16159081d7bd1cf255faab6a63cccb12cdecee72ad749885",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "position": 1551,
+      "locale": "hi",
+      "sourceKeySha256": "dd041121ae19347ad25b9e56d3eabfe4323b8a8cfa2b4a90b842000b40575712",
+      "currentTargetSha256": "d94807c74cd4e0cfa9fe22c23b3dcc6a2d373a8dd0cbd1c62ae3607e379ab3ce",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "position": 1551,
+      "locale": "de",
+      "sourceKeySha256": "dd041121ae19347ad25b9e56d3eabfe4323b8a8cfa2b4a90b842000b40575712",
+      "currentTargetSha256": "a19a6b51708f59f7992a31e63bdb93c1299dce4a4a791779bc0215ce197f21f6",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "position": 1551,
+      "locale": "ja",
+      "sourceKeySha256": "dd041121ae19347ad25b9e56d3eabfe4323b8a8cfa2b4a90b842000b40575712",
+      "currentTargetSha256": "80b40889ab44f9bdca7ebdb5dd8fd9ecddc24644e9e4fa7832cda5e6c9f74e00",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "position": 1551,
+      "locale": "fr",
+      "sourceKeySha256": "dd041121ae19347ad25b9e56d3eabfe4323b8a8cfa2b4a90b842000b40575712",
+      "currentTargetSha256": "fabe3753bbeef5b211d6a6b2903c29443283eb293ea559f877097bfe0143cdd2",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "position": 1551,
+      "locale": "pt-BR",
+      "sourceKeySha256": "dd041121ae19347ad25b9e56d3eabfe4323b8a8cfa2b4a90b842000b40575712",
+      "currentTargetSha256": "aa93ebe32b066682b79bbdebae56f049687e997c69e40ca8afa0c911b3408d63",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "position": 1551,
+      "locale": "ar",
+      "sourceKeySha256": "dd041121ae19347ad25b9e56d3eabfe4323b8a8cfa2b4a90b842000b40575712",
+      "currentTargetSha256": "5d81f459ebf87a5734e31fd6453af22c1c3ad35d6f05960a60478185021eb471",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "position": 1551,
+      "locale": "id",
+      "sourceKeySha256": "dd041121ae19347ad25b9e56d3eabfe4323b8a8cfa2b4a90b842000b40575712",
+      "currentTargetSha256": "0d7111314a7d48d6439146e6722dc27d7bf5b48ddacd706de18b00ff1497a754",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "position": 1552,
+      "locale": "es",
+      "sourceKeySha256": "330c12fa19fa3b92f56301337be8aec124cfa757017d11632a2b0a289c6ead9e",
+      "currentTargetSha256": "f24070311e168ff3cf012f316c2cae9f4fee673de80edfdad41c3c3317829f13",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "position": 1552,
+      "locale": "zh-Hans",
+      "sourceKeySha256": "330c12fa19fa3b92f56301337be8aec124cfa757017d11632a2b0a289c6ead9e",
+      "currentTargetSha256": "903631c6fcdeeeb4c5c3d8d5b0dea9c7f9fa267bf41c9dba6b24e3640ce54013",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "position": 1552,
+      "locale": "hi",
+      "sourceKeySha256": "330c12fa19fa3b92f56301337be8aec124cfa757017d11632a2b0a289c6ead9e",
+      "currentTargetSha256": "f932e44fdc69fdf690fc72941a8e4d48e882048d29329f327eb580b10644d47c",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "position": 1552,
+      "locale": "de",
+      "sourceKeySha256": "330c12fa19fa3b92f56301337be8aec124cfa757017d11632a2b0a289c6ead9e",
+      "currentTargetSha256": "bbd66c25e93e45161b541a19e35d4204cfc907ebfbdb07d47b5112a39d4bd6c3",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "position": 1552,
+      "locale": "ja",
+      "sourceKeySha256": "330c12fa19fa3b92f56301337be8aec124cfa757017d11632a2b0a289c6ead9e",
+      "currentTargetSha256": "76827398c8714ab8c811b909f7c6400833e55f0627edaf8b7da6f8b0fdb6b713",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "position": 1552,
+      "locale": "fr",
+      "sourceKeySha256": "330c12fa19fa3b92f56301337be8aec124cfa757017d11632a2b0a289c6ead9e",
+      "currentTargetSha256": "bd71780de013734ab35d153e8a495bfc70e21a7bef4250b7235973a1012dd0f7",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "position": 1552,
+      "locale": "pt-BR",
+      "sourceKeySha256": "330c12fa19fa3b92f56301337be8aec124cfa757017d11632a2b0a289c6ead9e",
+      "currentTargetSha256": "9c2ec20b4d3b663f84bace55ec27c96d5c28d55dbda69888b07241e72fb69238",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "position": 1552,
+      "locale": "ar",
+      "sourceKeySha256": "330c12fa19fa3b92f56301337be8aec124cfa757017d11632a2b0a289c6ead9e",
+      "currentTargetSha256": "8f511cda1e8d0dfd6ab24fd83dcac29f099bdfd5a07005bfb429f1e116d4b0f6",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "position": 1552,
+      "locale": "ko",
+      "sourceKeySha256": "330c12fa19fa3b92f56301337be8aec124cfa757017d11632a2b0a289c6ead9e",
+      "currentTargetSha256": "455c9fb04b0aa943d1fb989fba79af62277f549cfa09d42d3ec17ce034abc069",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "position": 1552,
+      "locale": "zh-Hant",
+      "sourceKeySha256": "330c12fa19fa3b92f56301337be8aec124cfa757017d11632a2b0a289c6ead9e",
+      "currentTargetSha256": "5bde83314872fc930d56eaa3703b3d325f3abfd74b5e5efe225219a88981884a",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    },
+    {
+      "position": 1552,
+      "locale": "vi",
+      "sourceKeySha256": "330c12fa19fa3b92f56301337be8aec124cfa757017d11632a2b0a289c6ead9e",
+      "currentTargetSha256": "672679d5d8846f882c3b956e7c58d9db9af9a89715174282999bf03fb5ceb72e",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "position": 1552,
+      "locale": "id",
+      "sourceKeySha256": "330c12fa19fa3b92f56301337be8aec124cfa757017d11632a2b0a289c6ead9e",
+      "currentTargetSha256": "03649d51fac8d49d8a3226363a6eb5244f3ef350f41425d62725c6ac25e47537",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "position": 1553,
+      "locale": "es",
+      "sourceKeySha256": "c08b3a5004b22e9c7ea3c2579cebd352ff286902426b6f7cb99a20638fb46cd2",
+      "currentTargetSha256": "ab99b2cd4c19ace7262a361677e802822fb12f131548ad3fb61961aac7235daa",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "position": 1553,
+      "locale": "zh-Hans",
+      "sourceKeySha256": "c08b3a5004b22e9c7ea3c2579cebd352ff286902426b6f7cb99a20638fb46cd2",
+      "currentTargetSha256": "483bfe03e488ee2be03d19479e1e649685114cfe7e69e5fb65c21bd7270117aa",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "position": 1553,
+      "locale": "de",
+      "sourceKeySha256": "c08b3a5004b22e9c7ea3c2579cebd352ff286902426b6f7cb99a20638fb46cd2",
+      "currentTargetSha256": "8c4fe3fd0eb9690c31121cae21da885a7b98b62d84364c79b4dc5eb4c952647b",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "position": 1553,
+      "locale": "ja",
+      "sourceKeySha256": "c08b3a5004b22e9c7ea3c2579cebd352ff286902426b6f7cb99a20638fb46cd2",
+      "currentTargetSha256": "0c65043152d798c559f9b5fba4be80f8be2514db42d46bb1c6217873e492e264",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "position": 1553,
+      "locale": "fr",
+      "sourceKeySha256": "c08b3a5004b22e9c7ea3c2579cebd352ff286902426b6f7cb99a20638fb46cd2",
+      "currentTargetSha256": "4c3489e46e0155a6cbd26a7d1e5fadfe017cf272e83df78ee02aab0330d55d70",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "position": 1553,
+      "locale": "pt-BR",
+      "sourceKeySha256": "c08b3a5004b22e9c7ea3c2579cebd352ff286902426b6f7cb99a20638fb46cd2",
+      "currentTargetSha256": "1237200f8c5c7b36a211060a9391634076a8425e4d6c1ff1a98bad21d94b74af",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "position": 1553,
+      "locale": "ar",
+      "sourceKeySha256": "c08b3a5004b22e9c7ea3c2579cebd352ff286902426b6f7cb99a20638fb46cd2",
+      "currentTargetSha256": "d48fdb47a3e457e686a71da2ba826fea1042d3b185dcc4bec9bb865afadaae0e",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "position": 1553,
+      "locale": "ko",
+      "sourceKeySha256": "c08b3a5004b22e9c7ea3c2579cebd352ff286902426b6f7cb99a20638fb46cd2",
+      "currentTargetSha256": "53c108be43a0e575d5aa75fe0d441c64dfa42a82c199407d9470095c7bfff011",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "position": 1553,
+      "locale": "zh-Hant",
+      "sourceKeySha256": "c08b3a5004b22e9c7ea3c2579cebd352ff286902426b6f7cb99a20638fb46cd2",
+      "currentTargetSha256": "343d2f1c93105dd9bbf3c013a1ba8ebb3e5f33ce2ae43a6e0262fac90ebc3423",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    },
+    {
+      "position": 1553,
+      "locale": "vi",
+      "sourceKeySha256": "c08b3a5004b22e9c7ea3c2579cebd352ff286902426b6f7cb99a20638fb46cd2",
+      "currentTargetSha256": "25bd1f54a1e317a4e553da8b852c6e8cd3406f586e1f1f0151fae86a83e709ae",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "position": 1553,
+      "locale": "id",
+      "sourceKeySha256": "c08b3a5004b22e9c7ea3c2579cebd352ff286902426b6f7cb99a20638fb46cd2",
+      "currentTargetSha256": "1fd08d832efe037cc409f11610b974f058273ba37ef36d3f212f0cfc03a6ef0d",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "position": 1554,
+      "locale": "es",
+      "sourceKeySha256": "533719e8ecf629ecf90244fc0ff7513c1d4c1ad2a9b4bcee79d1626c6936b912",
+      "currentTargetSha256": "4b0260e9ba60cf0942916a9664ed5b223b93641fe854bd4e99a6c9993606469b",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "position": 1554,
+      "locale": "zh-Hans",
+      "sourceKeySha256": "533719e8ecf629ecf90244fc0ff7513c1d4c1ad2a9b4bcee79d1626c6936b912",
+      "currentTargetSha256": "c4caedcb044a2852cf431f13c5ae30c6cadd002fa3b4469d0a8b8baae762d28d",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "position": 1554,
+      "locale": "hi",
+      "sourceKeySha256": "533719e8ecf629ecf90244fc0ff7513c1d4c1ad2a9b4bcee79d1626c6936b912",
+      "currentTargetSha256": "2e3450dc3bcd477b7feb4c6bdc75254dcc87545b6d56932b6c61e6fa5519a468",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "position": 1554,
+      "locale": "ja",
+      "sourceKeySha256": "533719e8ecf629ecf90244fc0ff7513c1d4c1ad2a9b4bcee79d1626c6936b912",
+      "currentTargetSha256": "c59ed556ab9c26e6d27fcb65f75346984645d3061d9e8e0d9bfa671aaac93ea1",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "position": 1554,
+      "locale": "fr",
+      "sourceKeySha256": "533719e8ecf629ecf90244fc0ff7513c1d4c1ad2a9b4bcee79d1626c6936b912",
+      "currentTargetSha256": "eaf6dc7fddc6f7421d5b965ecd35855c5311bf5501b446b1353f92d8b3af29e9",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "position": 1554,
+      "locale": "pt-BR",
+      "sourceKeySha256": "533719e8ecf629ecf90244fc0ff7513c1d4c1ad2a9b4bcee79d1626c6936b912",
+      "currentTargetSha256": "42d549b07b4b613bcc2e1e3ba51ab9644e5c1b5a345f6eccc1f3b94300c6b1c9",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "position": 1554,
+      "locale": "ar",
+      "sourceKeySha256": "533719e8ecf629ecf90244fc0ff7513c1d4c1ad2a9b4bcee79d1626c6936b912",
+      "currentTargetSha256": "8a12570b473f5942cdcd06667e3317d514027cf2b6d32ded41561bc70ec38e26",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "position": 1554,
+      "locale": "ko",
+      "sourceKeySha256": "533719e8ecf629ecf90244fc0ff7513c1d4c1ad2a9b4bcee79d1626c6936b912",
+      "currentTargetSha256": "95117e15b3c5d2930109e937b24b2024d8ec3cba2864fd487f12dc31737c803a",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "position": 1554,
+      "locale": "zh-Hant",
+      "sourceKeySha256": "533719e8ecf629ecf90244fc0ff7513c1d4c1ad2a9b4bcee79d1626c6936b912",
+      "currentTargetSha256": "9f0583d8871cfbbecad27c98c0738fac1b704bc51048cbe5ec5500c56f0c0a53",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    },
+    {
+      "position": 1554,
+      "locale": "vi",
+      "sourceKeySha256": "533719e8ecf629ecf90244fc0ff7513c1d4c1ad2a9b4bcee79d1626c6936b912",
+      "currentTargetSha256": "3815312d4e2f84d4df1f6f091311d14e2e7b719ca41f9c2f24da13c11e848ea1",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "position": 1554,
+      "locale": "id",
+      "sourceKeySha256": "533719e8ecf629ecf90244fc0ff7513c1d4c1ad2a9b4bcee79d1626c6936b912",
+      "currentTargetSha256": "876e2f48c1d388a260930e917b878361a537cbccaa2ee83a74f7e82f59d3ae89",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "position": 1555,
+      "locale": "es",
+      "sourceKeySha256": "344e4b546c69c1fe50e35c5dc8b54989611be0c2f4bdbb18b404799e2f9110eb",
+      "currentTargetSha256": "89e7c0a135d8917e7496398c354a69151a412f751a29eb92d6704d1e32f87ba2",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "position": 1555,
+      "locale": "zh-Hans",
+      "sourceKeySha256": "344e4b546c69c1fe50e35c5dc8b54989611be0c2f4bdbb18b404799e2f9110eb",
+      "currentTargetSha256": "5cf643d3840c4d4159ac893aa1d9cd338264f65ac60566a1e1a75d074c64d460",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "position": 1555,
+      "locale": "hi",
+      "sourceKeySha256": "344e4b546c69c1fe50e35c5dc8b54989611be0c2f4bdbb18b404799e2f9110eb",
+      "currentTargetSha256": "f5260fa53d3252bf3f6c03ad130fb132166662ab50fcca2632821e03133b86ae",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "position": 1555,
+      "locale": "de",
+      "sourceKeySha256": "344e4b546c69c1fe50e35c5dc8b54989611be0c2f4bdbb18b404799e2f9110eb",
+      "currentTargetSha256": "c12d695b8ede1b52e82df63d37974922275936c3b60e1e4901b676ed2b1200a9",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "position": 1555,
+      "locale": "ja",
+      "sourceKeySha256": "344e4b546c69c1fe50e35c5dc8b54989611be0c2f4bdbb18b404799e2f9110eb",
+      "currentTargetSha256": "380d8ee7c73636782f150e8f116927070638424684026bb47d771c0c4ce44337",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "position": 1555,
+      "locale": "fr",
+      "sourceKeySha256": "344e4b546c69c1fe50e35c5dc8b54989611be0c2f4bdbb18b404799e2f9110eb",
+      "currentTargetSha256": "616ebcf4fb5f52f246e0f0bf4f81ea065932b581f7dd949a41b8f6bef6212983",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "position": 1555,
+      "locale": "pt-BR",
+      "sourceKeySha256": "344e4b546c69c1fe50e35c5dc8b54989611be0c2f4bdbb18b404799e2f9110eb",
+      "currentTargetSha256": "5f0aedcc5fbba379750df084a2786c6f01a2e760adb502556de57b99c4e54613",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "position": 1555,
+      "locale": "ar",
+      "sourceKeySha256": "344e4b546c69c1fe50e35c5dc8b54989611be0c2f4bdbb18b404799e2f9110eb",
+      "currentTargetSha256": "76e1236df223af464f55970013ba9541e1189e811f1d70a9fbfe894895f874fe",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "position": 1555,
+      "locale": "ko",
+      "sourceKeySha256": "344e4b546c69c1fe50e35c5dc8b54989611be0c2f4bdbb18b404799e2f9110eb",
+      "currentTargetSha256": "7f082359c1b54b5901045b8e456184185549953bc47698d3b6a9b9ff44deeddb",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "position": 1555,
+      "locale": "zh-Hant",
+      "sourceKeySha256": "344e4b546c69c1fe50e35c5dc8b54989611be0c2f4bdbb18b404799e2f9110eb",
+      "currentTargetSha256": "630f1c1c5c7514bb7b79768ebc0aa760cd4d99105218d2c4080b79b64674a0de",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    },
+    {
+      "position": 1555,
+      "locale": "vi",
+      "sourceKeySha256": "344e4b546c69c1fe50e35c5dc8b54989611be0c2f4bdbb18b404799e2f9110eb",
+      "currentTargetSha256": "d991c394f31330a4c30882b4f066290dd69c15a9e898d5abac4c8103fe98b423",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "position": 1555,
+      "locale": "id",
+      "sourceKeySha256": "344e4b546c69c1fe50e35c5dc8b54989611be0c2f4bdbb18b404799e2f9110eb",
+      "currentTargetSha256": "8675af5377e779a015cd978c8d9bc91c312a3d464fceedde244d08bcd0080a54",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "position": 1556,
+      "locale": "es",
+      "sourceKeySha256": "a71f0adeffcee0a9cacdd0a4b408547707122c659565e836db0c367903510549",
+      "currentTargetSha256": "92d6d88d7059fcf868e15e0608e5ce3ee93e9485b217dde6ba34be0509a056d0",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "position": 1556,
+      "locale": "zh-Hans",
+      "sourceKeySha256": "a71f0adeffcee0a9cacdd0a4b408547707122c659565e836db0c367903510549",
+      "currentTargetSha256": "ff8bdfe9c99086c38563b296b1a4030885f68f560ded9c888e9bd8016cfa726d",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "position": 1556,
+      "locale": "hi",
+      "sourceKeySha256": "a71f0adeffcee0a9cacdd0a4b408547707122c659565e836db0c367903510549",
+      "currentTargetSha256": "45ed98b13744a9eca15634b6c2ffd9b48006fe47c75d9fc458174ab818d269ea",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "position": 1556,
+      "locale": "de",
+      "sourceKeySha256": "a71f0adeffcee0a9cacdd0a4b408547707122c659565e836db0c367903510549",
+      "currentTargetSha256": "e4563df2861021f799b1359b8437b37c4c9bef940ae62c32a8b8f43f8abf08ae",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "position": 1556,
+      "locale": "ja",
+      "sourceKeySha256": "a71f0adeffcee0a9cacdd0a4b408547707122c659565e836db0c367903510549",
+      "currentTargetSha256": "0a1457a08150ed635c6948f0844f495f3ce548f96152ac02e26fe28ab27b3beb",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "position": 1556,
+      "locale": "fr",
+      "sourceKeySha256": "a71f0adeffcee0a9cacdd0a4b408547707122c659565e836db0c367903510549",
+      "currentTargetSha256": "ba6c27b781a63c3a9a13a4567f97732f7e860231f52e682f9e6ae462b644a3e5",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "position": 1556,
+      "locale": "pt-BR",
+      "sourceKeySha256": "a71f0adeffcee0a9cacdd0a4b408547707122c659565e836db0c367903510549",
+      "currentTargetSha256": "6ed4bebc21e3465d88d7b921202b4085991dbf7937753016c9f2945557e08775",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "position": 1556,
+      "locale": "ar",
+      "sourceKeySha256": "a71f0adeffcee0a9cacdd0a4b408547707122c659565e836db0c367903510549",
+      "currentTargetSha256": "0e00c71cc5dc6f3896872cdf58fa49dda699c55eb8de5eba4475fa92a00947d6",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "position": 1556,
+      "locale": "ko",
+      "sourceKeySha256": "a71f0adeffcee0a9cacdd0a4b408547707122c659565e836db0c367903510549",
+      "currentTargetSha256": "d297ffab965b5b56cea8a16b8d89ffd307de7e35e69a9800df1d59c157a2d4fe",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "position": 1556,
+      "locale": "zh-Hant",
+      "sourceKeySha256": "a71f0adeffcee0a9cacdd0a4b408547707122c659565e836db0c367903510549",
+      "currentTargetSha256": "09e1a088373f435b0c7393c1c9e51fab569542be70846c604f56fa3d1b12c2cc",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    },
+    {
+      "position": 1556,
+      "locale": "vi",
+      "sourceKeySha256": "a71f0adeffcee0a9cacdd0a4b408547707122c659565e836db0c367903510549",
+      "currentTargetSha256": "5764aaf52e25dee2b7f542a8974573cda292fc5938eb3e5c539f31c311172375",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "position": 1556,
+      "locale": "id",
+      "sourceKeySha256": "a71f0adeffcee0a9cacdd0a4b408547707122c659565e836db0c367903510549",
+      "currentTargetSha256": "d4d3428430444f989248a712a9de946df4c3a9a2fc0f62f8aa8f73f63d756339",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "position": 1557,
+      "locale": "es",
+      "sourceKeySha256": "b2ede7047c8644e7b2966ef9c9d58ada08f179252e422f07f9c0e2581907925f",
+      "currentTargetSha256": "a01aace1e24ff276a7d4669cda08dc215c56dfd670303317d4678f24df7e9719",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "position": 1557,
+      "locale": "zh-Hans",
+      "sourceKeySha256": "b2ede7047c8644e7b2966ef9c9d58ada08f179252e422f07f9c0e2581907925f",
+      "currentTargetSha256": "f4caf882efeba04f40fee4f72aaa2c7c3797dc7bd462671ab6b436c82c5958d8",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "position": 1557,
+      "locale": "hi",
+      "sourceKeySha256": "b2ede7047c8644e7b2966ef9c9d58ada08f179252e422f07f9c0e2581907925f",
+      "currentTargetSha256": "d93694f4adf98efa67922e679b9f4548f457dfe71a228d845f5b974296a97171",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "position": 1557,
+      "locale": "de",
+      "sourceKeySha256": "b2ede7047c8644e7b2966ef9c9d58ada08f179252e422f07f9c0e2581907925f",
+      "currentTargetSha256": "76e8af65d6ab42cb0fd0c54787763bd02a8067fb09a6875cba4e237697486c91",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "position": 1557,
+      "locale": "ja",
+      "sourceKeySha256": "b2ede7047c8644e7b2966ef9c9d58ada08f179252e422f07f9c0e2581907925f",
+      "currentTargetSha256": "e44386854f8b0c44c6442cd4dd4a2dfdb1a1eb66e70bd593d0fb83ae17f8dc37",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "position": 1557,
+      "locale": "fr",
+      "sourceKeySha256": "b2ede7047c8644e7b2966ef9c9d58ada08f179252e422f07f9c0e2581907925f",
+      "currentTargetSha256": "ed4f15cb99afb571570348a8d8376577f91372e0c7f0f8167758899ebee71489",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "position": 1557,
+      "locale": "pt-BR",
+      "sourceKeySha256": "b2ede7047c8644e7b2966ef9c9d58ada08f179252e422f07f9c0e2581907925f",
+      "currentTargetSha256": "bc07715ed99bb10901892612dba388850682b1d11218367a817ca8a05c198abb",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "position": 1557,
+      "locale": "ar",
+      "sourceKeySha256": "b2ede7047c8644e7b2966ef9c9d58ada08f179252e422f07f9c0e2581907925f",
+      "currentTargetSha256": "32e315eb8bfb1986f87c127563169f9dfb5a07a0c04bee76b498ea198d998d0d",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "position": 1557,
+      "locale": "ko",
+      "sourceKeySha256": "b2ede7047c8644e7b2966ef9c9d58ada08f179252e422f07f9c0e2581907925f",
+      "currentTargetSha256": "4d0b9bc79dacbc2e7554e0a62297bb99b855fa36e857005add62c2dcb4cd8b88",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "position": 1557,
+      "locale": "zh-Hant",
+      "sourceKeySha256": "b2ede7047c8644e7b2966ef9c9d58ada08f179252e422f07f9c0e2581907925f",
+      "currentTargetSha256": "516987b523d6d9b8df58c90433f38e6c14e159596feb23c5672b01181b75f873",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    },
+    {
+      "position": 1557,
+      "locale": "vi",
+      "sourceKeySha256": "b2ede7047c8644e7b2966ef9c9d58ada08f179252e422f07f9c0e2581907925f",
+      "currentTargetSha256": "f2b410dfb12762dccce2b092da012e57cfbdc634e11f0fa56334cf72787099da",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "position": 1557,
+      "locale": "id",
+      "sourceKeySha256": "b2ede7047c8644e7b2966ef9c9d58ada08f179252e422f07f9c0e2581907925f",
+      "currentTargetSha256": "d40e173a0a4a84bc9a5ccf1e13671e7fd39b1dc191ba6c35ebc4056f1822c789",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "position": 1558,
+      "locale": "es",
+      "sourceKeySha256": "75d798a8887a520dbf23223a6e880aa742bcf53d3db5621d36f0d9595c9ae256",
+      "currentTargetSha256": "fd07c492fb52965f67bbb116b94c3528b832a3c4be153738b78b94b8e9bf296e",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "position": 1558,
+      "locale": "zh-Hans",
+      "sourceKeySha256": "75d798a8887a520dbf23223a6e880aa742bcf53d3db5621d36f0d9595c9ae256",
+      "currentTargetSha256": "206fcd543286f096b0c811dec5bd8b996a212702093025de8ac186fb403e3e45",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "position": 1558,
+      "locale": "hi",
+      "sourceKeySha256": "75d798a8887a520dbf23223a6e880aa742bcf53d3db5621d36f0d9595c9ae256",
+      "currentTargetSha256": "253f6dbf5784d9759af75627ae8b69cccc1c64b99a861fa98aad7ac5cbc0feda",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "position": 1558,
+      "locale": "de",
+      "sourceKeySha256": "75d798a8887a520dbf23223a6e880aa742bcf53d3db5621d36f0d9595c9ae256",
+      "currentTargetSha256": "c449fba9d16bdd8e728af63191c9376e44e29127da046b8dfb328dd5b0b07a03",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "position": 1558,
+      "locale": "ja",
+      "sourceKeySha256": "75d798a8887a520dbf23223a6e880aa742bcf53d3db5621d36f0d9595c9ae256",
+      "currentTargetSha256": "5927430328f024f8f7e54087d996fca7fd73c2d8eb7d870569aa653375d6e2f0",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "position": 1558,
+      "locale": "fr",
+      "sourceKeySha256": "75d798a8887a520dbf23223a6e880aa742bcf53d3db5621d36f0d9595c9ae256",
+      "currentTargetSha256": "5c0c1ac2c3ed44a59dcd8b419ba0a4939dde64e8c2aae518a19c617cdb5bdbe2",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "position": 1558,
+      "locale": "pt-BR",
+      "sourceKeySha256": "75d798a8887a520dbf23223a6e880aa742bcf53d3db5621d36f0d9595c9ae256",
+      "currentTargetSha256": "c8c435e83d13441b0bc268b42623b4f7134725275f8d061cb8df47a0858bd59c",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "position": 1558,
+      "locale": "ar",
+      "sourceKeySha256": "75d798a8887a520dbf23223a6e880aa742bcf53d3db5621d36f0d9595c9ae256",
+      "currentTargetSha256": "2aa2d5e2da31f093a2cbb8452809737dbdb4cb2461a12e34854805e2661cebaa",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "position": 1558,
+      "locale": "ko",
+      "sourceKeySha256": "75d798a8887a520dbf23223a6e880aa742bcf53d3db5621d36f0d9595c9ae256",
+      "currentTargetSha256": "5c39b51a55242009c344b7625ca52f002cb8e87600583ceb8c57239f10dbaa03",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "position": 1558,
+      "locale": "zh-Hant",
+      "sourceKeySha256": "75d798a8887a520dbf23223a6e880aa742bcf53d3db5621d36f0d9595c9ae256",
+      "currentTargetSha256": "9b02e4be6784732f306a3830e8053997c9bc27e3fa04d32056a0990bed0e04ce",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    },
+    {
+      "position": 1558,
+      "locale": "vi",
+      "sourceKeySha256": "75d798a8887a520dbf23223a6e880aa742bcf53d3db5621d36f0d9595c9ae256",
+      "currentTargetSha256": "13ca89d66265945bb1977c38dfe468f21328bb79bac880b7b7f8381e74e030aa",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "position": 1558,
+      "locale": "id",
+      "sourceKeySha256": "75d798a8887a520dbf23223a6e880aa742bcf53d3db5621d36f0d9595c9ae256",
+      "currentTargetSha256": "23b9648b0cc915d872c598b33198f8a07561eb14f3f564259af255b3bf2a74b7",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "position": 1559,
+      "locale": "es",
+      "sourceKeySha256": "b2bf54aaa932c9875577287cc495041e5eae0f56de26db9c57a14d16d6fb7e22",
+      "currentTargetSha256": "d973c914fa09329a43426f40f47c6fb1f81eb0e88e98e5802ff430bbfd232066",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "position": 1559,
+      "locale": "zh-Hans",
+      "sourceKeySha256": "b2bf54aaa932c9875577287cc495041e5eae0f56de26db9c57a14d16d6fb7e22",
+      "currentTargetSha256": "5df370452e0dec77e30f6bf7bb3d680b71ec53a36202a3c9c99888a55a356a0b",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "position": 1559,
+      "locale": "hi",
+      "sourceKeySha256": "b2bf54aaa932c9875577287cc495041e5eae0f56de26db9c57a14d16d6fb7e22",
+      "currentTargetSha256": "fc509b525c660e15ca7ec700f2309b14ef3336ba863eb401240a54d7da702edb",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "position": 1559,
+      "locale": "de",
+      "sourceKeySha256": "b2bf54aaa932c9875577287cc495041e5eae0f56de26db9c57a14d16d6fb7e22",
+      "currentTargetSha256": "4ffba9a517c293dfbab36fef49d5e2089f64f68134d7e4479bcd73c30ced5718",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "position": 1559,
+      "locale": "ja",
+      "sourceKeySha256": "b2bf54aaa932c9875577287cc495041e5eae0f56de26db9c57a14d16d6fb7e22",
+      "currentTargetSha256": "a1746bdfb260ba9c7c37587bc7663fd2dd1c454b174330d8bf9192c8ee6d3984",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "position": 1559,
+      "locale": "fr",
+      "sourceKeySha256": "b2bf54aaa932c9875577287cc495041e5eae0f56de26db9c57a14d16d6fb7e22",
+      "currentTargetSha256": "0b0458250d1d29de679e4373ceb3012dec553698b18ce8688cb6d3c24fa7fde1",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "position": 1559,
+      "locale": "pt-BR",
+      "sourceKeySha256": "b2bf54aaa932c9875577287cc495041e5eae0f56de26db9c57a14d16d6fb7e22",
+      "currentTargetSha256": "020e32fcc9ed29067abf94a717f96c4bf79f6f932bfa1fd432203768629690fe",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "position": 1559,
+      "locale": "ar",
+      "sourceKeySha256": "b2bf54aaa932c9875577287cc495041e5eae0f56de26db9c57a14d16d6fb7e22",
+      "currentTargetSha256": "cd048b1b2a4cabbf90b45e94a4857d51fba7081aeb4abd79c7819bf3d773a08b",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "position": 1559,
+      "locale": "ko",
+      "sourceKeySha256": "b2bf54aaa932c9875577287cc495041e5eae0f56de26db9c57a14d16d6fb7e22",
+      "currentTargetSha256": "ce3365ed49187eab01054654ac7eaca705a0c2446b905b7796e8a716388ddbe3",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "position": 1559,
+      "locale": "zh-Hant",
+      "sourceKeySha256": "b2bf54aaa932c9875577287cc495041e5eae0f56de26db9c57a14d16d6fb7e22",
+      "currentTargetSha256": "0838b89cd14f462744eaa0bbcb6d2b321bc878f6f471d8f738cfe77e10ffafea",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    },
+    {
+      "position": 1559,
+      "locale": "vi",
+      "sourceKeySha256": "b2bf54aaa932c9875577287cc495041e5eae0f56de26db9c57a14d16d6fb7e22",
+      "currentTargetSha256": "c30859184ba5c8c69f6151cfd6f2f904e01f3a5e67b00b5b05350d4e4ca43ad9",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "position": 1559,
+      "locale": "id",
+      "sourceKeySha256": "b2bf54aaa932c9875577287cc495041e5eae0f56de26db9c57a14d16d6fb7e22",
+      "currentTargetSha256": "a670b29d932d157bfbf7b8bd3241f9b46d04ce7f7317bb5a79dde4ff574cdc2d",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "position": 1560,
+      "locale": "es",
+      "sourceKeySha256": "dd8f3a8d994eeeaf0b07ae744eabff0d2d5c7d32266848e67322a69f0e281a89",
+      "currentTargetSha256": "70972a965882674eaac3e38e5250e3812c88f17a4a147f35db51970078751e01",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "position": 1560,
+      "locale": "zh-Hans",
+      "sourceKeySha256": "dd8f3a8d994eeeaf0b07ae744eabff0d2d5c7d32266848e67322a69f0e281a89",
+      "currentTargetSha256": "8343b2cf528863043f33e930af3baefdea649c58e6a12de0b281d4ccfc6d12ae",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "position": 1560,
+      "locale": "hi",
+      "sourceKeySha256": "dd8f3a8d994eeeaf0b07ae744eabff0d2d5c7d32266848e67322a69f0e281a89",
+      "currentTargetSha256": "9815bec1f3a2233cabc2ea7b90371c671d508604d705f04f12c2d09240a63f5f",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "position": 1560,
+      "locale": "ja",
+      "sourceKeySha256": "dd8f3a8d994eeeaf0b07ae744eabff0d2d5c7d32266848e67322a69f0e281a89",
+      "currentTargetSha256": "52ffaf51381c71bf013845a4d22682c512739edb30f5389c1fe4bf33cc344481",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "position": 1560,
+      "locale": "fr",
+      "sourceKeySha256": "dd8f3a8d994eeeaf0b07ae744eabff0d2d5c7d32266848e67322a69f0e281a89",
+      "currentTargetSha256": "a94793d8500ae0dbc46dc7dfdf8e009c9bc140b959eaa34375748f70472a292e",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "position": 1560,
+      "locale": "pt-BR",
+      "sourceKeySha256": "dd8f3a8d994eeeaf0b07ae744eabff0d2d5c7d32266848e67322a69f0e281a89",
+      "currentTargetSha256": "482dba8aeb09364211e33086d89fe7ad1b91e6e2538f3695cabcd3bcabe22f06",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "position": 1560,
+      "locale": "ar",
+      "sourceKeySha256": "dd8f3a8d994eeeaf0b07ae744eabff0d2d5c7d32266848e67322a69f0e281a89",
+      "currentTargetSha256": "bf33bc18416fcf09d767370b980510034a090a4fba10f508f4c98b487e665c4a",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "position": 1560,
+      "locale": "ko",
+      "sourceKeySha256": "dd8f3a8d994eeeaf0b07ae744eabff0d2d5c7d32266848e67322a69f0e281a89",
+      "currentTargetSha256": "8383b5321e39eb67fc0cd88b454f5485db0c280b3ca0d8006fbd188ab80338e5",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "position": 1560,
+      "locale": "zh-Hant",
+      "sourceKeySha256": "dd8f3a8d994eeeaf0b07ae744eabff0d2d5c7d32266848e67322a69f0e281a89",
+      "currentTargetSha256": "3aa9bc3ec615a254e1cc9ac345c2727e59a645e07e29002933754e8aa78daaae",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    },
+    {
+      "position": 1560,
+      "locale": "vi",
+      "sourceKeySha256": "dd8f3a8d994eeeaf0b07ae744eabff0d2d5c7d32266848e67322a69f0e281a89",
+      "currentTargetSha256": "4ac0350610187aa8a0a0ced4029f0948592ee3582459e8e2a778c8a0bd939848",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "position": 1560,
+      "locale": "id",
+      "sourceKeySha256": "dd8f3a8d994eeeaf0b07ae744eabff0d2d5c7d32266848e67322a69f0e281a89",
+      "currentTargetSha256": "68ffc855929a861ae2cd5ae69b225bc27b4652d57ef00f96687c71db46236ea3",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "position": 1561,
+      "locale": "es",
+      "sourceKeySha256": "65b815adb9ac1c3500437146fc405ae277bd4a8760dcfd82456e5d93fd9e75e8",
+      "currentTargetSha256": "e13f67faf2fe097fe772af63149f91dab14c501cb28d82d56e0ca350c47ab344",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "position": 1561,
+      "locale": "zh-Hans",
+      "sourceKeySha256": "65b815adb9ac1c3500437146fc405ae277bd4a8760dcfd82456e5d93fd9e75e8",
+      "currentTargetSha256": "84fd228ab9b1fd0145769243d21538b6ef27bcf7cc1cc6d623c4c6beae66a248",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "position": 1561,
+      "locale": "hi",
+      "sourceKeySha256": "65b815adb9ac1c3500437146fc405ae277bd4a8760dcfd82456e5d93fd9e75e8",
+      "currentTargetSha256": "9bca91b90e4096f5f9ea3a27e0c5bbfb683f1f4cd3f8ff4e42d446d7af709f2f",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "position": 1561,
+      "locale": "ja",
+      "sourceKeySha256": "65b815adb9ac1c3500437146fc405ae277bd4a8760dcfd82456e5d93fd9e75e8",
+      "currentTargetSha256": "9b4806ad5416097b90241df6b67fa0829a80e777162592b9a88777d7eb598e5c",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "position": 1561,
+      "locale": "fr",
+      "sourceKeySha256": "65b815adb9ac1c3500437146fc405ae277bd4a8760dcfd82456e5d93fd9e75e8",
+      "currentTargetSha256": "64819bd2667dbd8aa72a895bee682905598f911624a183920931bb41ea0b6bc0",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "position": 1561,
+      "locale": "pt-BR",
+      "sourceKeySha256": "65b815adb9ac1c3500437146fc405ae277bd4a8760dcfd82456e5d93fd9e75e8",
+      "currentTargetSha256": "d22bb0669d413f11649b92c357d2a395207332315f2a9a2fc3f3e86deb79b6bd",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "position": 1561,
+      "locale": "ar",
+      "sourceKeySha256": "65b815adb9ac1c3500437146fc405ae277bd4a8760dcfd82456e5d93fd9e75e8",
+      "currentTargetSha256": "30181a2df1899c27ca371d0d5d23e41c9ad9099308e09885cafb8158f576d0e1",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "position": 1561,
+      "locale": "ko",
+      "sourceKeySha256": "65b815adb9ac1c3500437146fc405ae277bd4a8760dcfd82456e5d93fd9e75e8",
+      "currentTargetSha256": "5e2822389822c857d26519773238ea348ae35c5f8ad4facf9eaf32d2c260f51b",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "position": 1561,
+      "locale": "zh-Hant",
+      "sourceKeySha256": "65b815adb9ac1c3500437146fc405ae277bd4a8760dcfd82456e5d93fd9e75e8",
+      "currentTargetSha256": "caef0e1eb9520d507da74c8291f00f7cd99280e8b95f93304eb4682a0cc635c3",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    },
+    {
+      "position": 1561,
+      "locale": "vi",
+      "sourceKeySha256": "65b815adb9ac1c3500437146fc405ae277bd4a8760dcfd82456e5d93fd9e75e8",
+      "currentTargetSha256": "c36b897022ab520089f4778f4d7a641ec4bd93b777f843ab65343e5b86a28d99",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "position": 1561,
+      "locale": "id",
+      "sourceKeySha256": "65b815adb9ac1c3500437146fc405ae277bd4a8760dcfd82456e5d93fd9e75e8",
+      "currentTargetSha256": "aff393fbae0bd3dafe8a546b1ca098885b13c86fcd6b04ad24e6c4e62f2faedd",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    },
+    {
+      "position": 1562,
+      "locale": "es",
+      "sourceKeySha256": "2c5024f02c168f07183ac0cf5aa9f37374be3d08e9fd386c760b982b749354bc",
+      "currentTargetSha256": "b2ddc1843a64a655a98728af7e1b69cbd5092da2c75f61e57cb3587c7409183d",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json"
+    },
+    {
+      "position": 1562,
+      "locale": "zh-Hans",
+      "sourceKeySha256": "2c5024f02c168f07183ac0cf5aa9f37374be3d08e9fd386c760b982b749354bc",
+      "currentTargetSha256": "b9049fb9450e5c3bce5b62dc5b5a01bd8aedf84aad8e0aa7831116e2c557f832",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "position": 1562,
+      "locale": "hi",
+      "sourceKeySha256": "2c5024f02c168f07183ac0cf5aa9f37374be3d08e9fd386c760b982b749354bc",
+      "currentTargetSha256": "8a34bdb802fbb23016e1a95795433993e08dfc51885e39ea683b92cb72ed1119",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json"
+    },
+    {
+      "position": 1562,
+      "locale": "de",
+      "sourceKeySha256": "2c5024f02c168f07183ac0cf5aa9f37374be3d08e9fd386c760b982b749354bc",
+      "currentTargetSha256": "bdcf232104b91e59ee3a009fdd1551f74afa4fa68b039167345ee6f6a21e99ef",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json"
+    },
+    {
+      "position": 1562,
+      "locale": "ja",
+      "sourceKeySha256": "2c5024f02c168f07183ac0cf5aa9f37374be3d08e9fd386c760b982b749354bc",
+      "currentTargetSha256": "84af3a1a31a03888c1075b371578a39605fb0276dc57de0292edcb67098332a7",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json"
+    },
+    {
+      "position": 1562,
+      "locale": "fr",
+      "sourceKeySha256": "2c5024f02c168f07183ac0cf5aa9f37374be3d08e9fd386c760b982b749354bc",
+      "currentTargetSha256": "b1dc82ac3947202e7fb5913e1c6ddba3146846e1be462b1b65da2fe37b2c72d5",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json"
+    },
+    {
+      "position": 1562,
+      "locale": "pt-BR",
+      "sourceKeySha256": "2c5024f02c168f07183ac0cf5aa9f37374be3d08e9fd386c760b982b749354bc",
+      "currentTargetSha256": "996c3a867ca23aae756a1ba7c98ab13d5abc4994b86fa26fcf1e3aa25fea2de1",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json"
+    },
+    {
+      "position": 1562,
+      "locale": "ar",
+      "sourceKeySha256": "2c5024f02c168f07183ac0cf5aa9f37374be3d08e9fd386c760b982b749354bc",
+      "currentTargetSha256": "d91581cb8656e3993d00a3fcdf96b52619e5dad6c4641353c5be3c0849cfcd82",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "position": 1562,
+      "locale": "ko",
+      "sourceKeySha256": "2c5024f02c168f07183ac0cf5aa9f37374be3d08e9fd386c760b982b749354bc",
+      "currentTargetSha256": "d86f94d21d0c85202f23b2625e6c4d822a2e5c6edcf7cfe6cb1a30f22527d9f1",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "position": 1562,
+      "locale": "zh-Hant",
+      "sourceKeySha256": "2c5024f02c168f07183ac0cf5aa9f37374be3d08e9fd386c760b982b749354bc",
+      "currentTargetSha256": "77dd5d465e7ff5996186ad379e0b24dae7072a03b8ea014a0c763caa3b30c8ed",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    },
+    {
+      "position": 1562,
+      "locale": "vi",
+      "sourceKeySha256": "2c5024f02c168f07183ac0cf5aa9f37374be3d08e9fd386c760b982b749354bc",
+      "currentTargetSha256": "ba2c75d1cb7baf0930d934fd23f18b0999f3b9beb7c7a9a81607ed85622d200f",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json"
+    },
+    {
+      "position": 1562,
+      "locale": "id",
+      "sourceKeySha256": "2c5024f02c168f07183ac0cf5aa9f37374be3d08e9fd386c760b982b749354bc",
+      "currentTargetSha256": "2391d71d66ddf6ef8701e7666ce1c6232cad7f61f646c5e5088941cd17155498",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json"
+    }
+  ],
+  "holdHashOnly": [
+    {
+      "position": 1548,
+      "locale": "ko",
+      "sourceKeySha256": "b2785d1080dc6298d65a909e6f6819da42634f7cd09e39ed5766a025dbccb611",
+      "currentTargetSha256": "03feb720d7053be69676908df4581223d5263b8102ec481d8d4dffba257c5cad",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "position": 1549,
+      "locale": "ar",
+      "sourceKeySha256": "4309e9985f712293b399150a4ceb09c6204481d45087a692a27dc9566d5f63cc",
+      "currentTargetSha256": "eb44f6c9ef3b18ddbf27e0d57b34ab16bb67c9c45896e863c61c40c99e351058",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json"
+    },
+    {
+      "position": 1549,
+      "locale": "ko",
+      "sourceKeySha256": "4309e9985f712293b399150a4ceb09c6204481d45087a692a27dc9566d5f63cc",
+      "currentTargetSha256": "f7e4b13c4d00b984fdc066fb64f55cb22a38d7223ef6aa61a4b7da17e8e6273d",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json"
+    },
+    {
+      "position": 1550,
+      "locale": "zh-Hans",
+      "sourceKeySha256": "0fe08bab9a6437162b0a90b2a754561ec0a27a218f56459b802dfbf099d3daa6",
+      "currentTargetSha256": "5c3cee06018f9ff73c17add0f2a0312284a16f22d82a2e15166b5137773f318a",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json"
+    },
+    {
+      "position": 1550,
+      "locale": "zh-Hant",
+      "sourceKeySha256": "0fe08bab9a6437162b0a90b2a754561ec0a27a218f56459b802dfbf099d3daa6",
+      "currentTargetSha256": "fb436c35a459c394b79dbb267e5e07157990df05ac981d5147af488283ec628c",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json"
+    }
+  ],
+  "counts": {
+    "propose-correction": 27,
+    "accept-current": 208,
+    "hold": 5
+  },
+  "catalogFiles": [
+    "web/src/lib/locales/ui-labels.ar.json",
+    "web/src/lib/locales/ui-labels.de.json",
+    "web/src/lib/locales/ui-labels.es.json",
+    "web/src/lib/locales/ui-labels.fr.json",
+    "web/src/lib/locales/ui-labels.hi.json",
+    "web/src/lib/locales/ui-labels.id.json",
+    "web/src/lib/locales/ui-labels.ja.json",
+    "web/src/lib/locales/ui-labels.ko.json",
+    "web/src/lib/locales/ui-labels.pt-BR.json",
+    "web/src/lib/locales/ui-labels.vi.json",
+    "web/src/lib/locales/ui-labels.zh-Hans.json",
+    "web/src/lib/locales/ui-labels.zh-Hant.json"
+  ],
+  "sourceCatalogKeyCount": {
+    "web/src/lib/locales/ui-labels.es.json": 5441,
+    "web/src/lib/locales/ui-labels.zh-Hans.json": 5441,
+    "web/src/lib/locales/ui-labels.hi.json": 5441,
+    "web/src/lib/locales/ui-labels.de.json": 5441,
+    "web/src/lib/locales/ui-labels.ja.json": 5441,
+    "web/src/lib/locales/ui-labels.fr.json": 5441,
+    "web/src/lib/locales/ui-labels.pt-BR.json": 5441,
+    "web/src/lib/locales/ui-labels.ar.json": 5441,
+    "web/src/lib/locales/ui-labels.ko.json": 5441,
+    "web/src/lib/locales/ui-labels.zh-Hant.json": 5441,
+    "web/src/lib/locales/ui-labels.vi.json": 5441,
+    "web/src/lib/locales/ui-labels.id.json": 5441
+  },
+  "selectedChangeLocaleCount": 11,
+  "productCommit": "9f158221682915a9c6c238c5e182871adbf93efd",
+  "productTree": "72c5fd0d9f69fe802e7a659e9c44d02fbc2f5eb8",
+  "productCommitParent": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+  "productCommitPaths": [
+    "web/src/lib/locales/ui-labels.ar.json",
+    "web/src/lib/locales/ui-labels.de.json",
+    "web/src/lib/locales/ui-labels.es.json",
+    "web/src/lib/locales/ui-labels.fr.json",
+    "web/src/lib/locales/ui-labels.hi.json",
+    "web/src/lib/locales/ui-labels.ja.json",
+    "web/src/lib/locales/ui-labels.ko.json",
+    "web/src/lib/locales/ui-labels.pt-BR.json",
+    "web/src/lib/locales/ui-labels.vi.json",
+    "web/src/lib/locales/ui-labels.zh-Hans.json",
+    "web/src/lib/locales/ui-labels.zh-Hant.json"
+  ]
+}

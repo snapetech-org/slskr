@@ -1,0 +1,24 @@
+{
+  "filteredPullRequestMetadata": {
+    "baseRefName": "main",
+    "baseRefOid": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+    "headRefName": "codex/slskr-l10n-audit-20261104-resync",
+    "headRefOid": "9f158221682915a9c6c238c5e182871adbf93efd",
+    "isDraft": true,
+    "mergedAt": null,
+    "number": 209,
+    "state": "OPEN",
+    "updatedAt": "2026-11-04T22:17:01Z"
+  },
+  "branchRefSha": "9f158221682915a9c6c238c5e182871adbf93efd",
+  "pullRefSha": "9f158221682915a9c6c238c5e182871adbf93efd",
+  "remoteBranchSha": "9f158221682915a9c6c238c5e182871adbf93efd",
+  "localCheckout": {
+    "head": "9f158221682915a9c6c238c5e182871adbf93efd",
+    "tree": "72c5fd0d9f69fe802e7a659e9c44d02fbc2f5eb8",
+    "statusPorcelain": ""
+  },
+  "productCommit": "9f158221682915a9c6c238c5e182871adbf93efd",
+  "productTree": "72c5fd0d9f69fe802e7a659e9c44d02fbc2f5eb8",
+  "matched": true
+}

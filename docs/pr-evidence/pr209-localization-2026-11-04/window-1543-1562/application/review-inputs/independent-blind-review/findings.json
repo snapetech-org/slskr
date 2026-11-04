@@ -1,0 +1,310 @@
+[
+  {
+    "id": "F01",
+    "cells": [
+      {
+        "position": 1544,
+        "locale": "ar"
+      }
+    ],
+    "category": "semantic omission",
+    "severity": "major",
+    "confidence": "high",
+    "sourceKey": "Failed to get content metadata: {error}",
+    "finding": "The Arabic target says content data and drops the metadata distinction.",
+    "recommendation": "Use an Arabic equivalent of content metadata (for example البيانات الوصفية للمحتوى) while preserving {error}."
+  },
+  {
+    "id": "F02",
+    "cells": [
+      {
+        "position": 1547,
+        "locale": "es"
+      }
+    ],
+    "category": "idiom and precision",
+    "severity": "moderate",
+    "confidence": "moderate",
+    "sourceKey": "Failed to get last seen timestamps: {message}",
+    "finding": "The phrasing reads as timestamps that were seen for the last time; it is awkward and blurs last-seen timestamps.",
+    "recommendation": "Use a natural Spanish phrasing for timestamps of last seen/last activity and preserve {message}."
+  },
+  {
+    "id": "F03",
+    "cells": [
+      {
+        "position": 1547,
+        "locale": "fr"
+      }
+    ],
+    "category": "meaning and idiom",
+    "severity": "moderate",
+    "confidence": "moderate",
+    "sourceKey": "Failed to get last seen timestamps: {message}",
+    "finding": "The phrase for the last view suggests a viewing event rather than a last-seen time and is not idiomatic here.",
+    "recommendation": "Use a natural French equivalent for last-seen timestamps and preserve {message}."
+  },
+  {
+    "id": "F04",
+    "cells": [
+      {
+        "position": 1547,
+        "locale": "pt-BR"
+      }
+    ],
+    "category": "idiom and precision",
+    "severity": "moderate",
+    "confidence": "moderate",
+    "sourceKey": "Failed to get last seen timestamps: {message}",
+    "finding": "The wording makes the timestamps themselves sound as if they were seen; it is clumsy and obscures the last-seen meaning.",
+    "recommendation": "Use a natural Brazilian Portuguese equivalent for timestamps of last seen/last activity and preserve {message}."
+  },
+  {
+    "id": "F05",
+    "cells": [
+      {
+        "position": 1547,
+        "locale": "ja"
+      }
+    ],
+    "category": "semantic shift",
+    "severity": "major",
+    "confidence": "high",
+    "sourceKey": "Failed to get last seen timestamps: {message}",
+    "finding": "The Japanese wording means timestamps last displayed, which is different from the source's last-seen timestamps.",
+    "recommendation": "Translate last seen as a person's last confirmed/online time, not the last time a timestamp was displayed; preserve {message}."
+  },
+  {
+    "id": "F06",
+    "cells": [
+      {
+        "position": 1547,
+        "locale": "ko"
+      }
+    ],
+    "category": "semantic shift",
+    "severity": "major",
+    "confidence": "high",
+    "sourceKey": "Failed to get last seen timestamps: {message}",
+    "finding": "The Korean wording means timestamps last displayed, rather than last-seen timestamps.",
+    "recommendation": "Use a Korean equivalent for last-seen/last-online timestamps and preserve {message}."
+  },
+  {
+    "id": "F07",
+    "cells": [
+      {
+        "position": 1548,
+        "locale": "de"
+      }
+    ],
+    "category": "mistranslation",
+    "severity": "major",
+    "confidence": "high",
+    "sourceKey": "Failed to get member affinities",
+    "finding": "The German compound means member assignments/allocations, not member affinities.",
+    "recommendation": "Use a German equivalent for affinities or similarity scores between members."
+  },
+  {
+    "id": "F08",
+    "cells": [
+      {
+        "position": 1549,
+        "locale": "ar"
+      }
+    ],
+    "category": "term precision and consistency",
+    "severity": "moderate",
+    "confidence": "moderate",
+    "sourceKey": "Failed to get member affinities: {message}",
+    "finding": "The Arabic term refers broadly to member connections/associations and is less precise than the affinity concept used in the paired key.",
+    "recommendation": "Keep the affinity/similarity terminology consistent with the paired member-affinities message and preserve {message}."
+  },
+  {
+    "id": "F09",
+    "cells": [
+      {
+        "position": 1549,
+        "locale": "ko"
+      }
+    ],
+    "category": "term consistency",
+    "severity": "moderate",
+    "confidence": "moderate",
+    "sourceKey": "Failed to get member affinities: {message}",
+    "finding": "The Korean term shifts from affinity at position 1548 to intimacy/closeness here, which suggests a different interpersonal meaning.",
+    "recommendation": "Reuse the same Korean affinity term used for position 1548 and preserve {message}."
+  },
+  {
+    "id": "F10",
+    "cells": [
+      {
+        "position": 1549,
+        "locale": "vi"
+      }
+    ],
+    "category": "semantic shift and consistency",
+    "severity": "moderate",
+    "confidence": "moderate",
+    "sourceKey": "Failed to get member affinities: {message}",
+    "finding": "The Vietnamese wording refers to members' relationships rather than an affinity/similarity measure, and differs from the paired key.",
+    "recommendation": "Use terminology aligned with the member-affinity/similarity wording at position 1548 and preserve {message}."
+  },
+  {
+    "id": "F11",
+    "cells": [
+      {
+        "position": 1549,
+        "locale": "zh-Hans"
+      },
+      {
+        "position": 1549,
+        "locale": "zh-Hant"
+      }
+    ],
+    "category": "term consistency",
+    "severity": "moderate",
+    "confidence": "moderate",
+    "sourceKey": "Failed to get member affinities: {message}",
+    "finding": "Both Chinese variants drop the degree/affinity aspect used for position 1548, leaving a broader member-association term.",
+    "recommendation": "Keep the member-affinity/relatedness term consistent with position 1548 in each script and preserve {message}."
+  },
+  {
+    "id": "F12",
+    "cells": [
+      {
+        "position": 1550,
+        "locale": "zh-Hans"
+      }
+    ],
+    "category": "semantic precision",
+    "severity": "moderate",
+    "confidence": "moderate",
+    "sourceKey": "Failed to get membership statistics",
+    "finding": "The Simplified Chinese wording reads as statistics about member relationships, rather than membership statistics.",
+    "recommendation": "Use a term for membership or member status statistics."
+  },
+  {
+    "id": "F13",
+    "cells": [
+      {
+        "position": 1550,
+        "locale": "zh-Hant"
+      }
+    ],
+    "category": "semantic precision",
+    "severity": "moderate",
+    "confidence": "moderate",
+    "sourceKey": "Failed to get membership statistics",
+    "finding": "The Traditional Chinese wording reads as statistics about member relationships, rather than membership statistics.",
+    "recommendation": "Use a term for membership or member status statistics."
+  },
+  {
+    "id": "F14",
+    "cells": [
+      {
+        "position": 1551,
+        "locale": "zh-Hans"
+      }
+    ],
+    "category": "term precision",
+    "severity": "moderate",
+    "confidence": "moderate",
+    "sourceKey": "Failed to get membership:",
+    "finding": "The Simplified Chinese wording says getting a member, which is ambiguous with retrieving a member record and does not clearly name the membership result shown by the caller.",
+    "recommendation": "Use a clear term for retrieving membership/member-status information and preserve the colon."
+  },
+  {
+    "id": "F15",
+    "cells": [
+      {
+        "position": 1551,
+        "locale": "zh-Hant"
+      }
+    ],
+    "category": "term precision",
+    "severity": "moderate",
+    "confidence": "moderate",
+    "sourceKey": "Failed to get membership:",
+    "finding": "The Traditional Chinese wording says getting a member, which is ambiguous with retrieving a member record and does not clearly name the membership result shown by the caller.",
+    "recommendation": "Use a clear term for retrieving membership/member-status information and preserve the colon."
+  },
+  {
+    "id": "F16",
+    "cells": [
+      {
+        "position": 1551,
+        "locale": "ko"
+      }
+    ],
+    "category": "mistranslation",
+    "severity": "major",
+    "confidence": "high",
+    "sourceKey": "Failed to get membership:",
+    "finding": "The Korean wording means sign-up/registration failed, while the caller renders an error from a membership result; it changes retrieval into joining/registering.",
+    "recommendation": "Translate failure to retrieve membership information and preserve the colon."
+  },
+  {
+    "id": "F17",
+    "cells": [
+      {
+        "position": 1551,
+        "locale": "vi"
+      }
+    ],
+    "category": "mistranslation",
+    "severity": "major",
+    "confidence": "high",
+    "sourceKey": "Failed to get membership:",
+    "finding": "The Vietnamese wording means being unable to become a member, while the caller renders an error from a membership result; it changes retrieval into joining.",
+    "recommendation": "Translate failure to retrieve membership information and preserve the colon."
+  },
+  {
+    "id": "F18",
+    "cells": [
+      {
+        "position": 1553,
+        "locale": "hi"
+      }
+    ],
+    "category": "grammar and consistency",
+    "severity": "moderate",
+    "confidence": "moderate",
+    "sourceKey": "Failed to get opinion statistics: {message}",
+    "finding": "The Hindi compound for opinion statistics omits the genitive marker used naturally in the paired no-placeholder key, making the phrase awkward.",
+    "recommendation": "Use राय के आँकड़े (or another natural Hindi equivalent) and preserve {message}."
+  },
+  {
+    "id": "F19",
+    "cells": [
+      {
+        "position": 1554,
+        "locale": "de"
+      }
+    ],
+    "category": "meaning and consistency",
+    "severity": "major",
+    "confidence": "high",
+    "sourceKey": "Failed to get opinions",
+    "finding": "The German target says ratings/reviews, while the paired placeholder message at position 1555 uses opinions; this changes the concept and is inconsistent within the same component.",
+    "recommendation": "Use the same German term for opinions as position 1555."
+  },
+  {
+    "id": "F20",
+    "cells": [
+      {
+        "position": 1560,
+        "locale": "de"
+      },
+      {
+        "position": 1561,
+        "locale": "de"
+      }
+    ],
+    "category": "grammar",
+    "severity": "moderate",
+    "confidence": "high",
+    "sourceKey": "Failed to join room",
+    "finding": "Both German translations use beitreten without the required dative article, so the construction is ungrammatical. The paired key at 1561 has the same issue.",
+    "recommendation": "Use a grammatical dative construction such as Dem Raum konnte nicht beigetreten werden, preserving the error placeholder at position 1561."
+  }
+]

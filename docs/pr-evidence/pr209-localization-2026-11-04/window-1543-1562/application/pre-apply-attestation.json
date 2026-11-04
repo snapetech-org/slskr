@@ -1,0 +1,22 @@
+{
+  "pr": {
+    "baseRefName": "main",
+    "baseRefOid": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+    "headRefName": "codex/slskr-l10n-audit-20261104-resync",
+    "headRefOid": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+    "isDraft": true,
+    "mergedAt": null,
+    "number": 209,
+    "state": "OPEN",
+    "updatedAt": "2026-11-04T20:53:30Z"
+  },
+  "branchRefSha": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+  "pullRefSha": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+  "remoteBranchSha": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+  "localHead": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+  "localTree": "4259db991f25fbbd0200963769e62bb7e2150806",
+  "localStatusPorcelain": "",
+  "crossPacketSha256SumsVerified": true,
+  "crossPacketVerifier": "PASS",
+  "bodyRequested": false
+}
