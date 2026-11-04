@@ -1,0 +1,36 @@
+{
+  "artifact": "Independent candidate-free blind semantic review",
+  "cellDecisions": {
+    "accept": 222,
+    "correction": 11,
+    "refinement": 7
+  },
+  "generatedOn": "2026-11-04",
+  "head": "f42c7e4be1f2bc9d63e13607d3c311d37f83f355",
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "pullRequest": 209,
+  "repository": "snapetech-org/slskR",
+  "reviewCellsFile": "review-cells.jsonl",
+  "reviewerExposure": "Candidate-free input and pinned source worktree only. PR body, primary-review directory, prior blind/cross outputs, and translation proposals were not opened.",
+  "tree": "f6cb31394c01c90a784d543b8f43b04b232c8b37",
+  "window": {
+    "cellCount": 240,
+    "firstPosition": 1563,
+    "lastPosition": 1582,
+    "localeCount": 12,
+    "sourceCount": 20
+  }
+}
