@@ -516,7 +516,7 @@
   "Stream failed": "Aliran gagal",
   "Failed to load directory contents": "Gagal memuat isi folder",
   "Failed to build discovery graph": "Gagal membuat grafik penemuan",
-  "Failed to queue nearby graph searches": "Gagal memasukkan pencarian grafik terdekat ke antrean",
+  "Failed to queue nearby graph searches": "Gagal memasukkan pencarian graf terdekat ke antrean",
   "Copied action preview": "Pratinjau tindakan disalin",
   "Unable to copy action preview": "Tidak dapat menyalin pratinjau tindakan",
   "Download failed": "Unduhan gagal",

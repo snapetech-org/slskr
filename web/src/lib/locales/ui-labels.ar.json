@@ -4852,7 +4852,7 @@
   "Failed to fetch job status": "تعذر جلب حالة المهمة",
   "Failed to fetch swarm jobs": "تعذر جلب مهام السرب",
   "Failed to fetch swarm data": "تعذر جلب بيانات السرب",
-  "Failed to load shares": "تعذر تحميل المشاركات",
+  "Failed to load shares": "تعذر تحميل الموارد المشتركة",
   "Failed to load share contents": "تعذر تحميل محتوى المشاركة",
   "Failed to rescan shares": "تعذر إعادة فحص المشاركات",
   "Failed to cancel the scan": "تعذر إلغاء الفحص",

@@ -516,7 +516,7 @@
   "Stream failed": "स्ट्रीम विफल हुई",
   "Failed to load directory contents": "फ़ोल्डर की सामग्री लोड नहीं हो सकी",
   "Failed to build discovery graph": "डिस्कवरी ग्राफ़ नहीं बनाया जा सका",
-  "Failed to queue nearby graph searches": "पास के ग्राफ़ खोजों को कतार में नहीं जोड़ा जा सका",
+  "Failed to queue nearby graph searches": "आस-पास की ग्राफ़ खोजों को कतार में नहीं जोड़ा जा सका",
   "Copied action preview": "कार्रवाई का पूर्वावलोकन कॉपी किया गया",
   "Unable to copy action preview": "कार्रवाई का पूर्वावलोकन कॉपी नहीं किया जा सका",
   "Download failed": "डाउनलोड विफल हुआ",

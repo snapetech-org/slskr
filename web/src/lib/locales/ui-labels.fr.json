@@ -516,7 +516,7 @@
   "Stream failed": "Échec de la diffusion",
   "Failed to load directory contents": "Impossible de charger le contenu du dossier",
   "Failed to build discovery graph": "Impossible de créer le graphe de découverte",
-  "Failed to queue nearby graph searches": "Impossible de mettre les recherches proches du graphe en file d’attente",
+  "Failed to queue nearby graph searches": "Impossible de mettre en file d’attente les recherches de graphe à proximité",
   "Copied action preview": "Aperçu de l’action copié",
   "Unable to copy action preview": "Impossible de copier l’aperçu de l’action",
   "Download failed": "Échec du téléchargement",

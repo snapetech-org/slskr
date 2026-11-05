@@ -4754,7 +4754,7 @@
   "Failed to fetch job status": "无法获取任务状态",
   "Failed to fetch swarm jobs": "无法获取集群任务",
   "Failed to fetch swarm data": "无法获取集群数据",
-  "Failed to load shares": "无法加载共享内容",
+  "Failed to load shares": "无法加载共享列表",
   "Failed to load share contents": "无法加载共享内容",
   "Failed to rescan shares": "无法重新扫描共享内容",
   "Failed to cancel the scan": "无法取消扫描",
