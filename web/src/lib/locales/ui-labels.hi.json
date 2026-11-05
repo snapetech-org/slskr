@@ -1605,7 +1605,7 @@
   "Failed to publish membership:": "सदस्यता प्रकाशित करने में विफल:",
   "Failed to publish pod:": "पॉड प्रकाशित करने में विफल:",
   "Failed to register pod:": "पॉड पंजीकृत करने में विफल:",
-  "Failed to retrieve information for": "के लिए जानकारी पुनर्प्राप्त करने में विफल",
+  "Failed to retrieve information for": "जानकारी प्राप्त नहीं हो सकी, उपयोगकर्ता",
   "Failed to retrieve metadata:": "मेटाडेटा पुनर्प्राप्त करने में विफल:",
   "Failed to route message:": "संदेश रूट करने में विफल:",
   "Failed to sign message:": "संदेश पर हस्ताक्षर करने में विफल:",

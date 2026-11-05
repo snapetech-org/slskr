@@ -1605,7 +1605,7 @@
   "Failed to publish membership:": "Mitgliedschaft konnte nicht veröffentlicht werden:",
   "Failed to publish pod:": "Pod konnte nicht veröffentlicht werden:",
   "Failed to register pod:": "Pod konnte nicht registriert werden:",
-  "Failed to retrieve information for": "Informationen für konnten nicht abgerufen werden",
+  "Failed to retrieve information for": "Fehler beim Abruf der Informationen für",
   "Failed to retrieve metadata:": "Metadaten konnten nicht abgerufen werden:",
   "Failed to route message:": "Nachricht konnte nicht weitergeleitet werden:",
   "Failed to sign message:": "Nachricht konnte nicht signiert werden:",

@@ -1604,7 +1604,7 @@
   "Failed to load verification stats:": "Không tải được số liệu thống kê xác minh:",
   "Failed to publish membership:": "Không thể xuất bản tư cách thành viên:",
   "Failed to publish pod:": "Không thể xuất bản pod:",
-  "Failed to register pod:": "Không thể đăng ký nhóm:",
+  "Failed to register pod:": "Không thể đăng ký Pod:",
   "Failed to retrieve information for": "Không thể truy xuất thông tin cho",
   "Failed to retrieve metadata:": "Không truy xuất được siêu dữ liệu:",
   "Failed to route message:": "Không thể định tuyến tin nhắn:",

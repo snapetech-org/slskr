@@ -1605,7 +1605,7 @@
   "Failed to publish membership:": "メンバーシップを公開できませんでした:",
   "Failed to publish pod:": "ポッドの公開に失敗しました:",
   "Failed to register pod:": "ポッドの登録に失敗しました:",
-  "Failed to retrieve information for": "の情報を取得できませんでした",
+  "Failed to retrieve information for": "ユーザーの情報を取得できませんでした：",
   "Failed to retrieve metadata:": "メタデータの取得に失敗しました:",
   "Failed to route message:": "メッセージのルーティングに失敗しました:",
   "Failed to sign message:": "メッセージに署名できませんでした:",

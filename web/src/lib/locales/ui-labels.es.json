@@ -4991,7 +4991,7 @@
   "Failed to publish descriptor": "No se pudo publicar el descriptor.",
   "Failed to publish membership": "No se pudo publicar la membresía.",
   "Failed to query shadow index": "No se pudo consultar el índice sombra.",
-  "Failed to raise event": "No se pudo generar el evento.",
+  "Failed to raise event": "No se pudo emitir el evento.",
   "Failed to read configuration file": "No se pudo leer el archivo de configuración.",
   "Failed to read wishlist": "No se pudo leer la lista de deseos.",
   "Failed to refresh discovery": "No se pudo actualizar el descubrimiento.",

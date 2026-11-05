@@ -4756,7 +4756,7 @@
   "Failed to fetch swarm data": "Não foi possível buscar os dados do swarm",
   "Failed to load shares": "Não foi possível carregar os compartilhamentos",
   "Failed to load share contents": "Não foi possível carregar o conteúdo compartilhado",
-  "Failed to rescan shares": "Não foi possível verificar novamente os compartilhamentos",
+  "Failed to rescan shares": "Não foi possível escanear novamente os compartilhamentos",
   "Failed to cancel the scan": "Não foi possível cancelar a verificação",
   "The event history could not be loaded.": "Não foi possível carregar o histórico de eventos.",
   "Federation diagnostics failed": "Falha no diagnóstico da federação",

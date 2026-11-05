@@ -1605,7 +1605,7 @@
   "Failed to publish membership:": "فشل في نشر العضوية:",
   "Failed to publish pod:": "فشل نشر البود:",
   "Failed to register pod:": "فشل تسجيل البود:",
-  "Failed to retrieve information for": "فشل في استرداد المعلومات ل",
+  "Failed to retrieve information for": "تعذر استرداد المعلومات الخاصة بالمستخدم",
   "Failed to retrieve metadata:": "فشل في استرداد البيانات التعريفية:",
   "Failed to route message:": "فشل توجيه الرسالة:",
   "Failed to sign message:": "فشل توقيع الرسالة:",
