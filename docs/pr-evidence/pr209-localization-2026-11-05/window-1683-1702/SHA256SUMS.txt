@@ -1,4 +1,4 @@
-0943fa6da7acb71425c01f3c5aeaf0b34e6fb868976d436a1d288536b393a186  ./README.md
+9ed7afe742a60b9163a73a7333f4fdd8b980c88167ed6cb09d7b8a338776c188  ./README.md
 1fbf71b0f3a364a549ea526a730d3730887fc3b16aa66285f1ed903f884ff246  ./blind-review/README.md
 7145793f6160f8a5afbbc51939649e3730c60ce1601f72dad9270c92ae9e0f88  ./blind-review/caller-evidence.jsonl
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./blind-review/holds.jsonl
@@ -43,7 +43,7 @@ fbd69b44ffe48753d1ca3ac0eb08ac8b12467fe028f33cdf0e7e5e76216bc1a6  ./primary-revi
 be22bfef5ee80ca6dccf2858d00c34b6101ed1887555b5cd3b3199a8306d70a9  ./primary-review/summary.json
 891eebd0d7ebdec9b37564cc1fa7f5f01bc2328f593d5c591035a7cc216c7e40  ./primary-review/verify_primary_review.py
 e28ac63d68869e0f1abecbcdf303449d6ac2a22941e55351187333c641f5853f  ./root-application/application-summary.json
-aa57df2d346ebc79ff1ce1aea7e9095952560e9ba5b6f55da429ab9cacde31b4  ./root-application/apply_localization.py
+66c301b1d77fecb4b145deb66ee06e0ffb997ed0c31c9130c02104b2b1c86399  ./root-application/apply_localization.py
 285c2a1889bc1ecabca98422a748f2183eb19ba11861b44efc360a585a049fc6  ./root-application/exact-hash-apply-plan.jsonl
 c4654274d1a5ee0cb33e5a3a3fc8caa5d127565ec1cef5992ae592731e8c35e0  ./root-application/final-head-readback.jsonl
 bacfdfaaf03f7fb9e81c82f8f578cc1cbc5684a4095db692f4af81472ec8d2dc  ./root-application/input-pins.json

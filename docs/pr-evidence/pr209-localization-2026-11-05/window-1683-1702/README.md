@@ -23,4 +23,3 @@ The root-application directory includes the exact-hash plan, eight root decision
 ## Acceptance status
 
 This is machine-assisted multilingual review at moderate confidence. It does not establish qualified native-speaker approval or exact-head headed-browser acceptance. No tests, builds, scans, CI, deployments, workflow changes, merges, releases, or tags were run or made.
-
