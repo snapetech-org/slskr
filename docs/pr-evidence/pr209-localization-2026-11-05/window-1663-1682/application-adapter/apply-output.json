@@ -1,0 +1,21 @@
+{
+  "catalogPostimages": {
+    "web/src/lib/locales/ui-labels.ar.json": "baa3f485ba5e9d2372f032b56638ce0b05cd8508e52026f873b93f20a6dbe3d5",
+    "web/src/lib/locales/ui-labels.fr.json": "9618b90d8ce22cad4bf34a887f915495e3ff6fa221a3ace043c618901015b750",
+    "web/src/lib/locales/ui-labels.hi.json": "41fe86bc9de206de470934040b1d1500d26775a51ec528167763667d63a44a15",
+    "web/src/lib/locales/ui-labels.ja.json": "01abfd7ee63058be31e5ca3f9f140e47a4cb7f38d3f2627139503e70201ad152",
+    "web/src/lib/locales/ui-labels.ko.json": "3b104454507073424aee6941a6ad94841671ace8fb3314e8379e5ffd24da6405",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "48af89dea0580bd38fb61415f6f1b313f5c1de5d53936c96af690bc3fcfc407d",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "21f679797e8e4932234b1cb7636f7202f55b0d50a927a9fe43e26740a6dac802"
+  },
+  "changedCells": 9,
+  "finalReadbackSha256": "b3d7eefd97a7dbf288e369654d0450bb7d4aafa6cb3e80db6339a1ea202c017c",
+  "result": "PASS",
+  "retainedCells": 231,
+  "reviewedCells": 240,
+  "sourcePin": {
+    "head": "2d804c49879372071adf606bc2a2cf51e261fd94",
+    "tree": "d6f5552d2400d868c2f2af98eb68caadfd4f3f66"
+  },
+  "workflowFilesChanged": false
+}

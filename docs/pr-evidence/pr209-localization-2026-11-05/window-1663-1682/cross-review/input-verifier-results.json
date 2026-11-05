@@ -1,0 +1,35 @@
+{
+  "results": [
+    {
+      "label": "candidate-free",
+      "command": [
+        "python3",
+        "/mnt/disks/scratch/task-scratch/slskr-pr209-w1663-1682-20261105/candidate-free-input/verify_candidate_free.py",
+        "--repo",
+        "/mnt/disks/scratch/task-worktrees/localization-20261105/slskr-pr209-w1663-1682-candidate-free"
+      ],
+      "exitCode": 0,
+      "output": "{\n  \"result\": \"PASS\",\n  \"head\": \"2ab97d1a21f7d001eb9470c76b3636f59f600609\",\n  \"tree\": \"63097ec7c80be0bef55fb1bde5a38da7b6a59ce7\",\n  \"selectedPositions\": [\n    1663,\n    1682\n  ],\n  \"sourceCount\": 20,\n  \"cells\": 240,\n  \"callerReferences\": 25,\n  \"callerOccurrences\": 25,\n  \"callerFiles\": 17,\n  \"callerlessPositions\": [],\n  \"priorWindowHashRows\": 2400,\n  \"priorSelections\": 420,\n  \"priorAppliedTargetHashes\": 104,\n  \"priorHolds\": 62,\n  \"W1643AppliedCells\": 9,\n  \"W1643RetainedCells\": 231,\n  \"tokenMismatchCounts\": {\n    \"placeholderSequenceMismatchCount\": 0,\n    \"markupMismatchCount\": 0,\n    \"numericTokenMismatchCount\": 0,\n    \"protectedLiteralMismatchCount\": 0\n  },\n  \"checksummedFiles\": 41,\n  \"previousPacketFilesVerified\": 40,\n  \"applicationFilesVerified\": 4\n}"
+    },
+    {
+      "label": "primary",
+      "command": [
+        "python3",
+        "/mnt/disks/scratch/task-scratch/slskr-pr209-w1663-1682-20261105/primary-review/verify_primary_review.py",
+        "--repo",
+        "/mnt/disks/scratch/task-worktrees/localization-20261105/slskr-pr209-w1663-1682-candidate-free"
+      ],
+      "exitCode": 0,
+      "output": "PASS: 240 cells (20 keys × 12 locales), caller/source/current-target pins, all token checks, 9 proposals, before/after exact refs, checksums; PASS exact commit/tree and catalog blobs"
+    },
+    {
+      "label": "blind",
+      "command": [
+        "python3",
+        "/mnt/disks/scratch/task-scratch/slskr-pr209-w1663-1682-20261105/blind-review/verify_blind_review.py"
+      ],
+      "exitCode": 0,
+      "output": "{\n  \"result\": \"PASS\",\n  \"head\": \"2ab97d1a21f7d001eb9470c76b3636f59f600609\",\n  \"tree\": \"63097ec7c80be0bef55fb1bde5a38da7b6a59ce7\",\n  \"cells\": 240,\n  \"proposals\": 8,\n  \"holds\": 0,\n  \"candidateFreeFilesVerified\": 41,\n  \"outputFilesVerified\": 14,\n  \"entryPrState\": \"OPEN\",\n  \"entryDraft\": true,\n  \"exitPrState\": \"OPEN\",\n  \"exitDraft\": true,\n  \"tokenMismatches\": 0\n}"
+    }
+  ]
+}

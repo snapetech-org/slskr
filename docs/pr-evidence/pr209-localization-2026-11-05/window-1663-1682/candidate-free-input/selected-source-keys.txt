@@ -1,0 +1,20 @@
+Failed to send message
+Failed to send pod message
+Failed to share collection
+Failed to sign message:
+Failed to sort leaderboard
+Failed to start backfill
+Failed to start bridge
+Failed to start port forwarding
+Failed to start replacement searches
+Failed to start scan
+Failed to start search
+Failed to start stream
+Failed to stop bridge
+Failed to stop port forwarding
+Failed to stop search
+Failed to submit join request:
+Failed to sync pod backfill: {error}
+Failed to sync with peer
+Failed to toggle accelerated mode: {error}
+Failed to toggle auto-replace: {error}

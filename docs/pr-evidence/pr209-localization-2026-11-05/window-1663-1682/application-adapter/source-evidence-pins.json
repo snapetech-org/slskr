@@ -1,0 +1,9 @@
+{
+  "applicationReadbackRows": 240,
+  "applicationReadbackSha256": "cc807349258785a254ce6c2ffd2ef2fa65be014a8d8b99fda054cff738309376",
+  "applicationSummarySha256": "3ad9f992f18624fab5fe72226728e589fa8b012a08fe9331eca5de561d55f8c1",
+  "candidateFreeChecksumsSha256": "9fe4a7012ed1a4ec53b70a4e9cb0b0d5fd1a0ea6d791edb4fcafbdee84dde49d",
+  "candidateFreeManifestSha256": "2e559b30bbac3bde00a7f5a00abff4a32462867141d2534ba7ff0e17566f8893",
+  "productCommit": "359dc71667b10d3ff6e7043f0eed2bd8fd1fbd05",
+  "productTree": "1401abeff68ee543e29623129f9a94f09f196f7c"
+}

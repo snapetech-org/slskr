@@ -1,0 +1,148 @@
+{
+  "artifact": "slskR PR #209 W1663-W1682 independent blind semantic review",
+  "byLocale": {
+    "ar": {
+      "acceptCurrent": 20,
+      "cells": 20,
+      "corrections": 0,
+      "highConfidence": 20,
+      "holds": 0,
+      "moderateConfidence": 0,
+      "refinements": 0
+    },
+    "de": {
+      "acceptCurrent": 20,
+      "cells": 20,
+      "corrections": 0,
+      "highConfidence": 20,
+      "holds": 0,
+      "moderateConfidence": 0,
+      "refinements": 0
+    },
+    "es": {
+      "acceptCurrent": 17,
+      "cells": 20,
+      "corrections": 0,
+      "highConfidence": 17,
+      "holds": 0,
+      "moderateConfidence": 3,
+      "refinements": 3
+    },
+    "fr": {
+      "acceptCurrent": 20,
+      "cells": 20,
+      "corrections": 0,
+      "highConfidence": 20,
+      "holds": 0,
+      "moderateConfidence": 0,
+      "refinements": 0
+    },
+    "hi": {
+      "acceptCurrent": 18,
+      "cells": 20,
+      "corrections": 0,
+      "highConfidence": 18,
+      "holds": 0,
+      "moderateConfidence": 2,
+      "refinements": 2
+    },
+    "id": {
+      "acceptCurrent": 19,
+      "cells": 20,
+      "corrections": 0,
+      "highConfidence": 19,
+      "holds": 0,
+      "moderateConfidence": 1,
+      "refinements": 1
+    },
+    "ja": {
+      "acceptCurrent": 20,
+      "cells": 20,
+      "corrections": 0,
+      "highConfidence": 20,
+      "holds": 0,
+      "moderateConfidence": 0,
+      "refinements": 0
+    },
+    "ko": {
+      "acceptCurrent": 20,
+      "cells": 20,
+      "corrections": 0,
+      "highConfidence": 20,
+      "holds": 0,
+      "moderateConfidence": 0,
+      "refinements": 0
+    },
+    "pt-BR": {
+      "acceptCurrent": 19,
+      "cells": 20,
+      "corrections": 0,
+      "highConfidence": 19,
+      "holds": 0,
+      "moderateConfidence": 1,
+      "refinements": 1
+    },
+    "vi": {
+      "acceptCurrent": 20,
+      "cells": 20,
+      "corrections": 0,
+      "highConfidence": 20,
+      "holds": 0,
+      "moderateConfidence": 0,
+      "refinements": 0
+    },
+    "zh-Hans": {
+      "acceptCurrent": 20,
+      "cells": 20,
+      "corrections": 0,
+      "highConfidence": 20,
+      "holds": 0,
+      "moderateConfidence": 0,
+      "refinements": 0
+    },
+    "zh-Hant": {
+      "acceptCurrent": 19,
+      "cells": 20,
+      "corrections": 0,
+      "highConfidence": 19,
+      "holds": 0,
+      "moderateConfidence": 1,
+      "refinements": 1
+    }
+  },
+  "callerlessCells": 0,
+  "candidateFreeOnly": true,
+  "cellCount": 240,
+  "confidence": {
+    "high": 232,
+    "low": 0,
+    "moderate": 8
+  },
+  "decisions": {
+    "accept-current": 232,
+    "refinement": 8
+  },
+  "exactHead": "2ab97d1a21f7d001eb9470c76b3636f59f600609",
+  "exactTree": "63097ec7c80be0bef55fb1bde5a38da7b6a59ce7",
+  "holdCount": 0,
+  "localeCount": 12,
+  "notes": [
+    "Review used only candidate-free input artifacts.",
+    "Caller context was available for all 240 cells.",
+    "Automated token flags were considered alongside meaning and caller context, not treated as semantic approvals.",
+    "No primary, cross-review, or other reviewer output was inspected."
+  ],
+  "positions": [
+    1663,
+    1682
+  ],
+  "prDraftAtEntry": true,
+  "prStateAtEntry": "OPEN",
+  "proposalCount": 8,
+  "reviewLane": "blind",
+  "sourceCount": 20,
+  "tokenPreservation": {
+    "checked": 240,
+    "mismatches": 0
+  }
+}

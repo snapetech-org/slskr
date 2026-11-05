@@ -1,0 +1,39 @@
+{
+  "capturedAtUtc": "2026-11-05T10:02:18+00:00",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "pr": {
+    "baseRefName": "main",
+    "baseRefOid": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+    "headRefName": "codex/slskr-l10n-audit-20261104-resync",
+    "headRefOid": "2ab97d1a21f7d001eb9470c76b3636f59f600609",
+    "isDraft": true,
+    "number": 209,
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/209"
+  },
+  "headTree": "63097ec7c80be0bef55fb1bde5a38da7b6a59ce7",
+  "baseTree": "3e8b229b305df2c28b1ba3e3799086b94b2c01e8",
+  "branchRef": "2ab97d1a21f7d001eb9470c76b3636f59f600609",
+  "pullRef": "2ab97d1a21f7d001eb9470c76b3636f59f600609",
+  "mainRef": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "localHead": "2ab97d1a21f7d001eb9470c76b3636f59f600609",
+  "localTree": "63097ec7c80be0bef55fb1bde5a38da7b6a59ce7",
+  "localClean": true,
+  "pinTuple": [
+    "OPEN",
+    true,
+    "codex/slskr-l10n-audit-20261104-resync",
+    "2ab97d1a21f7d001eb9470c76b3636f59f600609",
+    "63097ec7c80be0bef55fb1bde5a38da7b6a59ce7",
+    "main",
+    "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+    "3e8b229b305df2c28b1ba3e3799086b94b2c01e8",
+    "2ab97d1a21f7d001eb9470c76b3636f59f600609",
+    "2ab97d1a21f7d001eb9470c76b3636f59f600609",
+    "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+    "2ab97d1a21f7d001eb9470c76b3636f59f600609",
+    "63097ec7c80be0bef55fb1bde5a38da7b6a59ce7",
+    true
+  ]
+}

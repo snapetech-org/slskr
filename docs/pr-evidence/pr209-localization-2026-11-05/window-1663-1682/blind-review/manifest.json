@@ -1,0 +1,51 @@
+{
+  "artifact": "slskR PR #209 W1663-W1682 blind review packet",
+  "attestations": {
+    "entry": [
+      "pr-api-entry.json",
+      "head-commit-entry.json",
+      "remote-refs-entry.txt"
+    ],
+    "exit": [
+      "pr-api-exit.json",
+      "head-commit-exit.json",
+      "remote-refs-exit.txt"
+    ]
+  },
+  "baseBranch": "main",
+  "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "branch": "codex/slskr-l10n-audit-20261104-resync",
+  "candidateFreeInputDirectory": "../candidate-free-input",
+  "candidateFreeInputSha256SumsSha256": "f4782cd47209da6d2cf99e5a0ae988b091782dc743cd50ddd5121fc24d5d8077",
+  "candidateFreeOnly": true,
+  "candidateFreeVerifier": "../candidate-free-input/verify_candidate_free.py",
+  "candidateFreeVerifierEntryResult": "PASS",
+  "checksumsFile": "SHA256SUMS.txt",
+  "exactHead": "2ab97d1a21f7d001eb9470c76b3636f59f600609",
+  "exactTree": "63097ec7c80be0bef55fb1bde5a38da7b6a59ce7",
+  "holds": 0,
+  "ledgerSchema": "one JSON object per sourceKey-locale cell; candidateFreeRowSha256 hashes exact input JSONL row bytes without trailing LF",
+  "portableVerifier": "verify_blind_review.py",
+  "proposals": 8,
+  "pullRequest": 209,
+  "repository": "snapetech-org/slskR",
+  "reviewedCells": 240,
+  "reviewedLocales": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "reviewedPositions": [
+    1663,
+    1682
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "applicationReadbackSha256": "b3d7eefd97a7dbf288e369654d0450bb7d4aafa6cb3e80db6339a1ea202c017c",
+  "applicationOutputSha256": "d6332ca6573d0afd7eaa52bed0c4d9dc9a4660c0a45b2c8fb9d8331ddccf0da0",
+  "productCommitRecordSha256": "53181da5c8697fc567c97207939653d8eb4f93047619c420b2153dc806645b2e",
+  "productCommit": "359dc71667b10d3ff6e7043f0eed2bd8fd1fbd05",
+  "productTree": "1401abeff68ee543e29623129f9a94f09f196f7c",
+  "readbackRows": 240,
+  "changedCells": 9,
+  "retainedCells": 231,
+  "liveCatalogMatches": true
+}

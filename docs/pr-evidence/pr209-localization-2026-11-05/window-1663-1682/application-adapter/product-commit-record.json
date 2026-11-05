@@ -1,0 +1,19 @@
+{
+  "artifact": "W1643-W1662 prior product commit record",
+  "parent": "2d804c49879372071adf606bc2a2cf51e261fd94",
+  "pathCount": 7,
+  "paths": [
+    "web/src/lib/locales/ui-labels.ar.json",
+    "web/src/lib/locales/ui-labels.fr.json",
+    "web/src/lib/locales/ui-labels.hi.json",
+    "web/src/lib/locales/ui-labels.ja.json",
+    "web/src/lib/locales/ui-labels.ko.json",
+    "web/src/lib/locales/ui-labels.pt-BR.json",
+    "web/src/lib/locales/ui-labels.zh-Hant.json"
+  ],
+  "productCommit": "359dc71667b10d3ff6e7043f0eed2bd8fd1fbd05",
+  "productTree": "1401abeff68ee543e29623129f9a94f09f196f7c",
+  "retainedCells": 231,
+  "reviewedCells": 240,
+  "selectedCellCount": 9
+}

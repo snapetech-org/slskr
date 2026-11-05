@@ -1,0 +1,43 @@
+{
+  "artifact": "slskR PR #209 W1663-W1682 primary semantic localization review",
+  "baseRef": "main",
+  "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "branch": "codex/slskr-l10n-audit-20261104-resync",
+  "callerlessCellCount": 0,
+  "candidateFreeChecksumListSha256": "f4782cd47209da6d2cf99e5a0ae988b091782dc743cd50ddd5121fc24d5d8077",
+  "candidateFreeManifestSha256": "c9738795b32181465d0c962799567bb8c69a3954c9822ddfa768f85f4d73dd60",
+  "candidateFreeVerifierResult": "PASS; 41 checksummed files",
+  "cellCount": 240,
+  "checksums": "SHA256SUMS.txt",
+  "decisionCounts": {
+    "accept-current": 231,
+    "correction": 3,
+    "refinement": 6
+  },
+  "exactHead": "2ab97d1a21f7d001eb9470c76b3636f59f600609",
+  "exactTree": "63097ec7c80be0bef55fb1bde5a38da7b6a59ce7",
+  "files": [
+    "README.md",
+    "attestation-before.json",
+    "attestation-after.json",
+    "ledger.jsonl",
+    "proposals.jsonl",
+    "holds.jsonl",
+    "summary.json",
+    "verify_primary_review.py"
+  ],
+  "holdCount": 0,
+  "localeCount": 12,
+  "outputVerifier": "verify_primary_review.py",
+  "packetType": "primary-semantic-review",
+  "positions": [
+    1663,
+    1682
+  ],
+  "proposalCount": 9,
+  "pullRequest": 209,
+  "repository": "snapetech-org/slskR",
+  "schemaVersion": 1,
+  "sourceCount": 20,
+  "stateAtReview": "open/draft"
+}
