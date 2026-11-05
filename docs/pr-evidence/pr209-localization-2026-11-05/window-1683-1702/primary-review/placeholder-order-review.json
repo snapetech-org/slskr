@@ -1,0 +1,214 @@
+{
+  "count": 12,
+  "items": [
+    {
+      "position": 1700,
+      "locale": "hi",
+      "jsonPath": "$",
+      "sourcePlaceholders": [
+        "{action}",
+        "{count}",
+        "{label}",
+        "{message}"
+      ],
+      "targetPlaceholders": [
+        "{count}",
+        "{action}",
+        "{label}",
+        "{message}"
+      ],
+      "note": "Order differs for target-language grammar; every named placeholder appears exactly once."
+    },
+    {
+      "position": 1700,
+      "locale": "de",
+      "jsonPath": "$",
+      "sourcePlaceholders": [
+        "{action}",
+        "{count}",
+        "{label}",
+        "{message}"
+      ],
+      "targetPlaceholders": [
+        "{count}",
+        "{action}",
+        "{label}",
+        "{message}"
+      ],
+      "note": "Order differs for target-language grammar; every named placeholder appears exactly once."
+    },
+    {
+      "position": 1700,
+      "locale": "ja",
+      "jsonPath": "$",
+      "sourcePlaceholders": [
+        "{action}",
+        "{count}",
+        "{label}",
+        "{message}"
+      ],
+      "targetPlaceholders": [
+        "{count}",
+        "{action}",
+        "{label}",
+        "{message}"
+      ],
+      "note": "Order differs for target-language grammar; every named placeholder appears exactly once."
+    },
+    {
+      "position": 1700,
+      "locale": "ko",
+      "jsonPath": "$",
+      "sourcePlaceholders": [
+        "{action}",
+        "{count}",
+        "{label}",
+        "{message}"
+      ],
+      "targetPlaceholders": [
+        "{count}",
+        "{action}",
+        "{label}",
+        "{message}"
+      ],
+      "note": "Order differs for target-language grammar; every named placeholder appears exactly once."
+    },
+    {
+      "position": 1701,
+      "locale": "hi",
+      "jsonPath": "$",
+      "sourcePlaceholders": [
+        "{action}",
+        "{count}",
+        "{label}",
+        "{message}"
+      ],
+      "targetPlaceholders": [
+        "{count}",
+        "{action}",
+        "{label}",
+        "{message}"
+      ],
+      "note": "Order differs for target-language grammar; every named placeholder appears exactly once."
+    },
+    {
+      "position": 1701,
+      "locale": "de",
+      "jsonPath": "$",
+      "sourcePlaceholders": [
+        "{action}",
+        "{count}",
+        "{label}",
+        "{message}"
+      ],
+      "targetPlaceholders": [
+        "{count}",
+        "{action}",
+        "{label}",
+        "{message}"
+      ],
+      "note": "Order differs for target-language grammar; every named placeholder appears exactly once."
+    },
+    {
+      "position": 1701,
+      "locale": "ja",
+      "jsonPath": "$",
+      "sourcePlaceholders": [
+        "{action}",
+        "{count}",
+        "{label}",
+        "{message}"
+      ],
+      "targetPlaceholders": [
+        "{count}",
+        "{action}",
+        "{label}",
+        "{message}"
+      ],
+      "note": "Order differs for target-language grammar; every named placeholder appears exactly once."
+    },
+    {
+      "position": 1701,
+      "locale": "ko",
+      "jsonPath": "$",
+      "sourcePlaceholders": [
+        "{action}",
+        "{count}",
+        "{label}",
+        "{message}"
+      ],
+      "targetPlaceholders": [
+        "{count}",
+        "{action}",
+        "{label}",
+        "{message}"
+      ],
+      "note": "Order differs for target-language grammar; every named placeholder appears exactly once."
+    },
+    {
+      "position": 1702,
+      "locale": "hi",
+      "jsonPath": "$",
+      "sourcePlaceholders": [
+        "{action}",
+        "{label}",
+        "{message}"
+      ],
+      "targetPlaceholders": [
+        "{label}",
+        "{action}",
+        "{message}"
+      ],
+      "note": "Order differs for target-language grammar; every named placeholder appears exactly once."
+    },
+    {
+      "position": 1702,
+      "locale": "de",
+      "jsonPath": "$",
+      "sourcePlaceholders": [
+        "{action}",
+        "{label}",
+        "{message}"
+      ],
+      "targetPlaceholders": [
+        "{label}",
+        "{action}",
+        "{message}"
+      ],
+      "note": "Order differs for target-language grammar; every named placeholder appears exactly once."
+    },
+    {
+      "position": 1702,
+      "locale": "ja",
+      "jsonPath": "$",
+      "sourcePlaceholders": [
+        "{action}",
+        "{label}",
+        "{message}"
+      ],
+      "targetPlaceholders": [
+        "{label}",
+        "{action}",
+        "{message}"
+      ],
+      "note": "Order differs for target-language grammar; every named placeholder appears exactly once."
+    },
+    {
+      "position": 1702,
+      "locale": "ko",
+      "jsonPath": "$",
+      "sourcePlaceholders": [
+        "{action}",
+        "{label}",
+        "{message}"
+      ],
+      "targetPlaceholders": [
+        "{label}",
+        "{action}",
+        "{message}"
+      ],
+      "note": "Order differs for target-language grammar; every named placeholder appears exactly once."
+    }
+  ],
+  "disposition": "Accepted when every placeholder is preserved exactly once and the change is a target-language word-order requirement."
+}

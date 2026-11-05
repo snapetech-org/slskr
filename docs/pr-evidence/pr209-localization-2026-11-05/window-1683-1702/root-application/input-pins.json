@@ -1,0 +1,29 @@
+{
+  "window": "W1683-W1702",
+  "remainingQueueRankRange": [
+    1683,
+    1702
+  ],
+  "inputHead": "f04b7f965aef79552d65d40a2eeb550e5e3b9cfa",
+  "inputTree": "85fe880023e55e055660fd17599c291edd24a1c6",
+  "baseHead": "f04b7f965aef79552d65d40a2eeb550e5e3b9cfa",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "reviewedCellCount": 240,
+  "rootSelectedCorrections": 8,
+  "acceptedCurrent": 232,
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ]
+}

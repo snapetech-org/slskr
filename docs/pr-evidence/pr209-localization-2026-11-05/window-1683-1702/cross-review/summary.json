@@ -1,0 +1,58 @@
+{
+  "artifact": "slskR PR #209 W1683-W1702 cross-review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "exactHead": "f04b7f965aef79552d65d40a2eeb550e5e3b9cfa",
+  "exactTree": "85fe880023e55e055660fd17599c291edd24a1c6",
+  "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "positions": [
+    1683,
+    1702
+  ],
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "dispositionCounts": {
+    "accept-current": 232,
+    "select-proposal": 8,
+    "hold": 0
+  },
+  "proposalCounts": {
+    "primary": 8,
+    "blind": 5,
+    "changedCells": 8,
+    "blindProposalsSelected": 5,
+    "primaryOnlyProposalsSelected": 3
+  },
+  "changedCellIds": [
+    "1683::es",
+    "1683::ko",
+    "1683::vi",
+    "1684::ko",
+    "1685::zh-Hant",
+    "1686::ko",
+    "1692::de",
+    "1694::zh-Hant"
+  ],
+  "callerEvidence": {
+    "references": 21,
+    "occurrences": 21,
+    "files": 13,
+    "callerlessPositions": []
+  },
+  "tokenReview": {
+    "placeholderSequenceMismatchCount": 12,
+    "markupMismatchCount": 0,
+    "numericTokenMismatchCount": 0,
+    "protectedLiteralMismatchCount": 2,
+    "notes": "All 12 order changes preserve named placeholders exactly once; pinned runtime substitutes by placeholder name. French and Arabic translate generic ID appropriately. Arabic 1701 retains all six plural forms and every named placeholder."
+  },
+  "punctuationReview": {
+    "appendedErrorColonCells": [
+      "1684::ko",
+      "1686::ko"
+    ],
+    "finding": "Both Korean strings currently end with a period though source keys and pinned callers show a dynamic error follows. Selected targets restore the colon; other locale prefixes preserve their colon."
+  },
+  "confidence": "Moderate overall; Korean mistranslation and colon corrections are high confidence. Spanish, Vietnamese, German, and Traditional Chinese refinements have moderate linguistic confidence without native-speaker signoff."
+}

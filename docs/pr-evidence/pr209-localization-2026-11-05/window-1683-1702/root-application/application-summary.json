@@ -1,0 +1,53 @@
+{
+  "window": "W1683-W1702",
+  "remainingQueueRankRange": [
+    1683,
+    1702
+  ],
+  "inputHead": "f04b7f965aef79552d65d40a2eeb550e5e3b9cfa",
+  "inputTree": "85fe880023e55e055660fd17599c291edd24a1c6",
+  "baseHead": "f04b7f965aef79552d65d40a2eeb550e5e3b9cfa",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "reviewedCellCount": 240,
+  "rootSelectedCorrections": 8,
+  "acceptedCurrent": 232,
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "result": "PASS",
+  "productHead": "4e47285a4d3979e61918566ce86d10f57375622c",
+  "productTree": "cc07313a7f4e6b00e60f6b4583c5dbce7f40edbe",
+  "catalogsReadBack": 12,
+  "catalogEntriesPerLocale": 5441,
+  "catalogsMatchPinnedParentPlusExactPlan": true,
+  "nonTargetValuesAndKeyOrderPreserved": true,
+  "readbackCells": 240,
+  "changedCells": 8,
+  "unchangedCells": 232,
+  "baselineCatalogHashes": {
+    "web/src/lib/locales/ui-labels.es.json": "3c17fe039950d5e839baa5cd758906c96eccea2da5516b8965e79c38a496d291",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "5a10a85a948bfe92aadbb27a4422653cb4c54f43c099f71b97d9a896fc3b8b10",
+    "web/src/lib/locales/ui-labels.hi.json": "01b0f63e5cd00d134c19c0d44ae59efc2dcaa713bc75e702069129b9800d30f7",
+    "web/src/lib/locales/ui-labels.de.json": "110da8b47fc9da1250c74fa7fd372ea6a82b74435de8f3fb205ff91aac987881",
+    "web/src/lib/locales/ui-labels.ja.json": "2bd005cbc8081328a1effe2b1fe5e34205d71f80861a26be3ebe95733cd9e724",
+    "web/src/lib/locales/ui-labels.fr.json": "c5ba31f91b88e407a1253654e954e1e11c3cc7dd64fa1b86a3db03da8e8d603e",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "1eec65cc8906c2ab6226296266d7d878427e969962e87a372cd0d949ba6e415a",
+    "web/src/lib/locales/ui-labels.ar.json": "c55d867e382209e60758487c51d2460a8b1f49673cf682b3d18a171d6065e087",
+    "web/src/lib/locales/ui-labels.ko.json": "3b104454507073424aee6941a6ad94841671ace8fb3314e8379e5ffd24da6405",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "d74f77a23480e117db795e8c564b85f295df9f645abfb990186362bec9b73b68",
+    "web/src/lib/locales/ui-labels.vi.json": "2767dff33435d4d813eca0a3e73b5c8033a0571ef372c5a3b3cd5b9f94174d64",
+    "web/src/lib/locales/ui-labels.id.json": "0a7356c45b4acfd28ed72682f3f08409836a2013b688f7c20351fafdb5d68388"
+  }
+}

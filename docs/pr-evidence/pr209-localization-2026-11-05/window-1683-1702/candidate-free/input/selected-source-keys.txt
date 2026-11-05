@@ -1,0 +1,20 @@
+Failed to trigger backfill from search history
+Failed to unpublish pod:
+Failed to unregister pod
+Failed to unregister pod:
+Failed to update YAML
+Failed to update channel: {error}
+Failed to update configuration file
+Failed to update descriptor
+Failed to update log level
+Failed to update member affinities: {error}
+Failed to update membership
+Failed to update pod discovery
+Failed to vacuum database: {error}
+Failed to validate content ID: {error}
+Failed to verify membership
+Failed to verify membership:
+Failed to verify message:
+Failed to {action} {count} transfer. First error: {label}: {message}
+Failed to {action} {count} transfers. First error: {label}: {message}
+Failed to {action} {label}: {message}
