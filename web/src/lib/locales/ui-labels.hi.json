@@ -4784,7 +4784,7 @@
   "Failed to load user note": "उपयोगकर्ता नोट लोड नहीं हो सका",
   "Failed to load YAML": "YAML लोड नहीं हो सका",
   "Failed to retrieve user information": "उपयोगकर्ता की जानकारी प्राप्त नहीं हो सकी",
-  "Failed to save adversarial settings": "प्रतिकूल सुरक्षा सेटिंग सहेजी नहीं जा सकीं",
+  "Failed to save adversarial settings": "खतरों से सुरक्षा की सेटिंग सहेजी नहीं जा सकीं",
   "Failed to save FTP integration settings.": "FTP एकीकरण सेटिंग सहेजी नहीं जा सकीं।",
   "Failed to save metadata integration settings.": "मेटाडेटा एकीकरण सेटिंग सहेजी नहीं जा सकीं।",
   "Failed to save notification integration settings.": "सूचना एकीकरण सेटिंग सहेजी नहीं जा सकीं।",

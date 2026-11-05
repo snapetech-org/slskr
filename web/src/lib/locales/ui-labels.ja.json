@@ -5001,7 +5001,7 @@
   "Failed to retrieve membership": "メンバーシップを取得できませんでした。",
   "Failed to retrieve pod metadata": "Podメタデータを取得できませんでした。",
   "Failed to route message": "メッセージをルーティングできませんでした。",
-  "Failed to select canonical variant": "標準バリアントを選択できませんでした。",
+  "Failed to select canonical variant": "正準バリアントを選択できませんでした。",
   "Failed to start port forwarding": "ポートフォワーディングを開始できませんでした。",
   "Failed to unregister pod": "Podの登録を解除できませんでした。",
   "Failed to update configuration file": "設定ファイルを更新できませんでした。",

@@ -1607,7 +1607,7 @@
   "Failed to register pod:": "Échec de l'enregistrement du pod :",
   "Failed to retrieve information for": "Échec de la récupération des informations pour",
   "Failed to retrieve metadata:": "Échec de la récupération des métadonnées :",
-  "Failed to route message:": "Échec de l'acheminement du message :",
+  "Failed to route message:": "Échec du routage du message :",
   "Failed to sign message:": "Échec de la signature du message :",
   "Failed to submit join request:": "Échec de la soumission de la demande d'adhésion :",
   "Failed to trigger backfill from search history": "Échec du déclenchement du remplissage à partir de l'historique des recherches",

@@ -5106,7 +5106,7 @@
   "Failed to retrieve membership": "تعذر استرداد العضوية.",
   "Failed to retrieve pod metadata": "تعذر استرداد بيانات Pod الوصفية.",
   "Failed to route message": "تعذر توجيه الرسالة.",
-  "Failed to select canonical variant": "تعذر تحديد النسخة الأساسية.",
+  "Failed to select canonical variant": "تعذر اختيار النسخة المعيارية.",
   "Failed to start port forwarding": "تعذر بدء إعادة توجيه المنفذ.",
   "Failed to unregister pod": "تعذر إلغاء تسجيل Pod.",
   "Failed to update configuration file": "تعذر تحديث ملف الإعدادات.",
