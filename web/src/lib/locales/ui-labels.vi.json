@@ -1610,7 +1610,7 @@
   "Failed to route message:": "Không thể định tuyến tin nhắn:",
   "Failed to sign message:": "Không thể ký tin nhắn:",
   "Failed to submit join request:": "Không gửi được yêu cầu tham gia:",
-  "Failed to trigger backfill from search history": "Không thể kích hoạt chèn lấp từ lịch sử tìm kiếm",
+  "Failed to trigger backfill from search history": "Không thể bắt đầu bổ sung dữ liệu từ lịch sử tìm kiếm.",
   "Failed to unpublish pod:": "Không thể hủy xuất bản nhóm:",
   "Failed to unregister pod:": "Không thể hủy đăng ký nhóm:",
   "Failed to verify membership:": "Không thể xác minh tư cách thành viên:",

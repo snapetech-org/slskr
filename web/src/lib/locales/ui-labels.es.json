@@ -1610,7 +1610,7 @@
   "Failed to route message:": "No se pudo enrutar el mensaje:",
   "Failed to sign message:": "No se pudo firmar el mensaje:",
   "Failed to submit join request:": "No se pudo enviar la solicitud para unirse:",
-  "Failed to trigger backfill from search history": "No se pudo activar el reabastecimiento del historial de búsqueda",
+  "Failed to trigger backfill from search history": "No se pudo iniciar la carga retroactiva desde el historial de búsqueda.",
   "Failed to unpublish pod:": "No se pudo cancelar la publicación del pod:",
   "Failed to unregister pod:": "No se pudo cancelar el registro del pod:",
   "Failed to verify membership:": "No se pudo verificar la membresía:",

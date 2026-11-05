@@ -4646,7 +4646,7 @@
   "Failed to toggle accelerated mode: {error}": "Beschleunigter Modus konnte nicht umgeschaltet werden: {error}",
   "Failed to toggle auto-replace: {error}": "Automatisches Ersetzen konnte nicht umgeschaltet werden: {error}",
   "Failed to update channel: {error}": "Kanal konnte nicht aktualisiert werden: {error}",
-  "Failed to update member affinities: {error}": "Mitgliederzuordnungen konnten nicht aktualisiert werden: {error}",
+  "Failed to update member affinities: {error}": "Die Affinitäten der Mitglieder konnten nicht aktualisiert werden: {error}",
   "Failed to vacuum database: {error}": "Datenbankbereinigung fehlgeschlagen: {error}",
   "Failed to validate content ID: {error}": "Inhalts-ID konnte nicht validiert werden: {error}",
   "Failed to {action} {count} transfer. First error: {label}: {message}": "{count} Transfer konnte nicht {action} werden. Erster Fehler: {label}: {message}",
