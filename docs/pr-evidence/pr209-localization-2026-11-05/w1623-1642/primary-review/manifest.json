@@ -1,0 +1,31 @@
+{
+  "candidateFreeChecksumListSha256": "84fee67b49e418b792bfac098c82e92547d4d70157a57c2910bf94e97e54506f",
+  "candidateFreeInputPath": "/mnt/disks/scratch/task-scratch/slskr-pr209-w1623-1642-20261105/candidate-free-input",
+  "candidateFreeManifestSha256": "3bf3e6dcec41a841f941885e99002449bb68d5c21211319678817cc63f227e22",
+  "cellCount": 240,
+  "decisionCounts": {
+    "accept-current": 231,
+    "correction": 9
+  },
+  "exactHead": "7e366cbf21ad5490bd11ef418a0f2a98b3fbd567",
+  "exactTree": "801d7a037c15dcd83b3e038160054a46c9b8f03b",
+  "files": {
+    "README.md": "f6440af4a1c51949b078786c65c809961b69dfac967159cdb23a6b587cd1d15d",
+    "build_primary.py": "7cf2f5323f26af1101aafa19eef509e624b849a5c01f5528ad057319b9150d4f",
+    "holds-hash-only.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "primary-ledger.jsonl": "d8a7ee20b0686aea4998a9b6b03c6c1115dd968b421f8c5f330da544680d20b6",
+    "proposals.jsonl": "cd141b98e766540e1bff31c7a33b3463b12508ecf2317863c7baf65ca1153a63",
+    "summary.json": "6f6cba3cb8da63947ef0b0038e4bff64c639d6aaaef3907c713e730268af348d",
+    "verify_primary.py": "91e48f529fe71c5fee39571712da3d61936033870bfaeb4e624bebebb2a85ad0"
+  },
+  "holdCount": 0,
+  "localeCount": 12,
+  "proposalCount": 9,
+  "pullRequest": 209,
+  "repository": "snapetech-org/slskR",
+  "result": "PASS",
+  "reviewType": "primary-semantic-review-only",
+  "schemaVersion": 1,
+  "sourceCount": 20,
+  "window": "W1623-W1642"
+}

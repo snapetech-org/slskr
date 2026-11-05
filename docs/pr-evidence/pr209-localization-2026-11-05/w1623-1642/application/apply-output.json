@@ -1,0 +1,43 @@
+{
+  "catalogFilesChanged": 10,
+  "catalogMessageKeys": {
+    "web/src/lib/locales/ui-labels.ar.json": 5441,
+    "web/src/lib/locales/ui-labels.de.json": 5441,
+    "web/src/lib/locales/ui-labels.es.json": 5441,
+    "web/src/lib/locales/ui-labels.fr.json": 5441,
+    "web/src/lib/locales/ui-labels.hi.json": 5441,
+    "web/src/lib/locales/ui-labels.id.json": 5441,
+    "web/src/lib/locales/ui-labels.ja.json": 5441,
+    "web/src/lib/locales/ui-labels.ko.json": 5441,
+    "web/src/lib/locales/ui-labels.pt-BR.json": 5441,
+    "web/src/lib/locales/ui-labels.vi.json": 5441,
+    "web/src/lib/locales/ui-labels.zh-Hans.json": 5441,
+    "web/src/lib/locales/ui-labels.zh-Hant.json": 5441
+  },
+  "catalogPostimages": {
+    "web/src/lib/locales/ui-labels.ar.json": "335673acaf181c1027bf384c757e1dbd2c5d9e672bff4ffbbbd6632bedfec6fd",
+    "web/src/lib/locales/ui-labels.de.json": "110da8b47fc9da1250c74fa7fd372ea6a82b74435de8f3fb205ff91aac987881",
+    "web/src/lib/locales/ui-labels.es.json": "fb9406da0e4be856bcece88fee87884821feae19d161953eabf623289061e5c9",
+    "web/src/lib/locales/ui-labels.hi.json": "baccabba52012f7b9f17701d7c647e83cc92dfc60cf627fe8b4078b454a703c3",
+    "web/src/lib/locales/ui-labels.ja.json": "2c78b199e7039023ec3e392d8e1acf0d0135a3141b486c8a04b8e83e9a31ea9b",
+    "web/src/lib/locales/ui-labels.ko.json": "a9653a1a54280e346911ade937444b046596806e984947ef8e39bfe34d916913",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "d803dce984d9a1e38a65dc30eb6bcea818c40058f0f3ff3976f251e48520641e",
+    "web/src/lib/locales/ui-labels.vi.json": "2767dff33435d4d813eca0a3e73b5c8033a0571ef372c5a3b3cd5b9f94174d64",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "5a10a85a948bfe92aadbb27a4422653cb4c54f43c099f71b97d9a896fc3b8b10",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "1c5be35bfad23d474c2cc293a8930df570c4a51c780e1f892761d3b4b7070c7f"
+  },
+  "changedCells": 13,
+  "finalReadbackSha256": "64e3b2a2676a5e9ba0c5347899393c55a1de8086ac48d224457917f0610b8de3",
+  "keyOrderUnchanged": true,
+  "result": "PASS",
+  "retainedCells": 227,
+  "reviewedCells": 240,
+  "sourcePin": {
+    "head": "7e366cbf21ad5490bd11ef418a0f2a98b3fbd567",
+    "tree": "801d7a037c15dcd83b3e038160054a46c9b8f03b"
+  },
+  "testsBuildsScansCi": false,
+  "translationReviewMetadataChanges": 0,
+  "translationStatusChanges": 0,
+  "workflowChanges": 0
+}

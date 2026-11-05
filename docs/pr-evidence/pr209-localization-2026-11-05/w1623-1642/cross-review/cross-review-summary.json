@@ -1,0 +1,40 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "exactHead": "7e366cbf21ad5490bd11ef418a0f2a98b3fbd567",
+  "exactTree": "801d7a037c15dcd83b3e038160054a46c9b8f03b",
+  "window": "W1623-W1642",
+  "cells": 240,
+  "sourceCount": 20,
+  "localeCount": 12,
+  "rootDecisionCounts": {
+    "accept-current": 227,
+    "correction": 13
+  },
+  "primaryProposalCount": 9,
+  "blindProposalCount": 11,
+  "proposalIdentityOverlap": 7,
+  "primaryOnlyProposalCount": 2,
+  "blindOnlyProposalCount": 4,
+  "sharedTargetAgreementCount": 1,
+  "sharedTargetDisagreementCount": 6,
+  "unionProposalCount": 13,
+  "allUnionProposalsRecommendedCorrection": true,
+  "proposalReconciliationCounts": {
+    "blind-only-proposal": 4,
+    "both-accept-current": 227,
+    "both-proposed-different-target": 6,
+    "both-proposed-same-target": 1,
+    "primary-only-proposal": 2
+  },
+  "callerlessHoldCount": 0,
+  "sourceCurrentCallerMismatches": 0,
+  "nativeSpeakerReview": false,
+  "browserReview": false,
+  "repositoryEdits": false,
+  "prEdits": false,
+  "testsBuildsScansCI": false,
+  "candidateFreeChecksumListSha256": "84fee67b49e418b792bfac098c82e92547d4d70157a57c2910bf94e97e54506f",
+  "primaryChecksumListSha256": "269787104681946ad9d81c339b2d6155962dde359bfd29de86e7cd299d7e0fc7",
+  "blindChecksumListSha256": "a1e949dc1ebddc069b5bf1cc7c97adc5a59b5a0eaddf5ec3a1b0468ff8f86115"
+}

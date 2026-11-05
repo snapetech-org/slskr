@@ -1,0 +1,25 @@
+{
+  "artifact": "slskR PR #209 W1623-W1642 semantic cross-review and proposal adjudication",
+  "exactHead": "7e366cbf21ad5490bd11ef418a0f2a98b3fbd567",
+  "exactTree": "801d7a037c15dcd83b3e038160054a46c9b8f03b",
+  "cells": 240,
+  "sourceKeys": 20,
+  "candidateFreeChecksumListSha256": "84fee67b49e418b792bfac098c82e92547d4d70157a57c2910bf94e97e54506f",
+  "primaryChecksumListSha256": "269787104681946ad9d81c339b2d6155962dde359bfd29de86e7cd299d7e0fc7",
+  "blindChecksumListSha256": "a1e949dc1ebddc069b5bf1cc7c97adc5a59b5a0eaddf5ec3a1b0468ff8f86115",
+  "rootDecisionCounts": {
+    "accept-current": 227,
+    "correction": 13
+  },
+  "proposalAdjudicationCount": 13,
+  "crossReviewerPreviouslyAuthoredBlindPacket": true,
+  "primaryPacketAuthoredByCrossReviewer": false,
+  "nativeSpeakerSignoff": false,
+  "browserReview": false,
+  "files": [
+    "cross-review-ledger.jsonl",
+    "proposal-adjudications.jsonl",
+    "cross-review-summary.json",
+    "input-attestation.json"
+  ]
+}

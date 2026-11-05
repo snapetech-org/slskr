@@ -1,0 +1,27 @@
+{
+  "artifact": "slskR PR #209 W1623-W1642 root adjudication",
+  "callerlessCells": 0,
+  "cells": 240,
+  "dispositions": {
+    "accept-current": 227,
+    "correction": 13,
+    "hold": 0
+  },
+  "head": "7e366cbf21ad5490bd11ef418a0f2a98b3fbd567",
+  "headedBrowserReview": false,
+  "independentBlindProposals": 11,
+  "ledgerSha256": "838e195c206e51965df3144f57a51c7ef9e28cc5f4a920ef1af4e7c34aa71c8e",
+  "mergeReleaseTag": false,
+  "nativeSpeakerSignoff": false,
+  "priorPrimaryProposals": 9,
+  "proposalUnion": 13,
+  "pullRequest": 209,
+  "repository": "snapetech-org/slskR",
+  "reviewConfidence": "moderate",
+  "selectedCells": 13,
+  "sourceCurrentCallerMismatches": 0,
+  "testsBuildsScansCi": false,
+  "tree": "801d7a037c15dcd83b3e038160054a46c9b8f03b",
+  "window": "W1623-W1642",
+  "workflowChanges": false
+}

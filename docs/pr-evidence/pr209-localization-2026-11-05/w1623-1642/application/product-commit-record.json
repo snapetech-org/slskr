@@ -1,0 +1,17 @@
+{
+  "artifact": "slskR PR #209 W1623-W1642 product commit",
+  "branch": "codex/slskr-l10n-audit-20261104-resync",
+  "localeCatalogKeys": 5441,
+  "mergeReleaseTag": false,
+  "parent": "7e366cbf21ad5490bd11ef418a0f2a98b3fbd567",
+  "pathCount": 10,
+  "productCommit": "afba93ad8b640ae190c8c6dc2472ce0957c6ec2d",
+  "productTree": "f11c1d085b64fa90da86da6dc71f8ba0f011a972",
+  "pullRequest": 209,
+  "repository": "snapetech-org/slskR",
+  "retainedCells": 227,
+  "reviewedCells": 240,
+  "selectedCellCount": 13,
+  "testsBuildsScansCi": false,
+  "workflowChanges": 0
+}

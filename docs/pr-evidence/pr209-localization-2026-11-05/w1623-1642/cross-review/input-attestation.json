@@ -1,0 +1,71 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "exactHead": "7e366cbf21ad5490bd11ef418a0f2a98b3fbd567",
+  "exactTree": "801d7a037c15dcd83b3e038160054a46c9b8f03b",
+  "candidateFreeInputChecksumListSha256": "84fee67b49e418b792bfac098c82e92547d4d70157a57c2910bf94e97e54506f",
+  "primaryChecksumListSha256": "269787104681946ad9d81c339b2d6155962dde359bfd29de86e7cd299d7e0fc7",
+  "blindChecksumListSha256": "a1e949dc1ebddc069b5bf1cc7c97adc5a59b5a0eaddf5ec3a1b0468ff8f86115",
+  "packetFileCounts": {
+    "candidateFree": 31,
+    "primary": 8,
+    "blind": 16
+  },
+  "candidateFreeVerifierOffline": "PASS",
+  "candidateFreeVerifierFull": "PASS",
+  "primaryVerifier": "PASS",
+  "blindVerifier": "PASS",
+  "sourceCurrentCallerMismatches": 0,
+  "callerlessPositions": [],
+  "callerReferences": 20,
+  "callerOccurrences": 20,
+  "callerFiles": 12,
+  "initialPRPin": {
+    "repository": "snapetech-org/slskR",
+    "pullRequest": 209,
+    "state": "open",
+    "draft": true,
+    "headRef": "codex/slskr-l10n-audit-20261104-resync",
+    "headSha": "7e366cbf21ad5490bd11ef418a0f2a98b3fbd567",
+    "headTree": "801d7a037c15dcd83b3e038160054a46c9b8f03b",
+    "branchRefSha": "7e366cbf21ad5490bd11ef418a0f2a98b3fbd567",
+    "pullRefSha": "7e366cbf21ad5490bd11ef418a0f2a98b3fbd567",
+    "liveMainSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+    "prApiSha256": "6e21342d75a8c27924578ed2e6e4a8ca1093fa211468a4aea09203364a5ff891",
+    "remoteRefsSha256": "24ca10a71d65a4ac7c5c84d396ad1853b10425d202c000c29c2fdbf5f4a15225",
+    "prBodySha256": "50679b5d6b3ac0fb9c89f98c641bb6f87df3b2877be4822f2575eab9da286dbd",
+    "result": "PASS"
+  },
+  "finalPRPin": {
+    "repository": "snapetech-org/slskR",
+    "pullRequest": 209,
+    "state": "open",
+    "draft": true,
+    "headRef": "codex/slskr-l10n-audit-20261104-resync",
+    "headSha": "7e366cbf21ad5490bd11ef418a0f2a98b3fbd567",
+    "headTree": "801d7a037c15dcd83b3e038160054a46c9b8f03b",
+    "branchRefSha": "7e366cbf21ad5490bd11ef418a0f2a98b3fbd567",
+    "pullRefSha": "7e366cbf21ad5490bd11ef418a0f2a98b3fbd567",
+    "liveMainSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+    "prApiSha256": "6e21342d75a8c27924578ed2e6e4a8ca1093fa211468a4aea09203364a5ff891",
+    "remoteRefsSha256": "24ca10a71d65a4ac7c5c84d396ad1853b10425d202c000c29c2fdbf5f4a15225",
+    "prBodySha256": "50679b5d6b3ac0fb9c89f98c641bb6f87df3b2877be4822f2575eab9da286dbd",
+    "result": "PASS"
+  },
+  "reviewPacketAuthorship": {
+    "primaryByCrossReviewer": false,
+    "blindByCrossReviewer": true,
+    "semanticsReassessedAgainstCandidateFree": true
+  },
+  "repositoryEdits": false,
+  "prEdits": false,
+  "testsBuildsScansCI": false,
+  "nativeSpeakerReview": false,
+  "browserReview": false,
+  "pinnedSourceWorktree": {
+    "path": "/mnt/disks/scratch/task-scratch/slskr-pr209-w1623-1642-20261105/worktree",
+    "head": "7e366cbf21ad5490bd11ef418a0f2a98b3fbd567",
+    "tree": "801d7a037c15dcd83b3e038160054a46c9b8f03b",
+    "statusClean": true
+  }
+}
