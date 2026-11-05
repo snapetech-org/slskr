@@ -5,5 +5,15 @@
   "pullRequest": 209,
   "appliedCells": 12,
   "changedCatalogs": 8,
-  "catalogEntryCount": 5441
+  "catalogEntryCount": 5441,
+  "localSemgrepHook": {
+    "invoked": true,
+    "scope": "9 staged evidence scripts",
+    "files": 9,
+    "rules": 290,
+    "findings": 0,
+    "blockingFindings": 0,
+    "exitCode": 0,
+    "ciDispatch": false
+  }
 }
