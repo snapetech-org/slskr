@@ -5002,7 +5002,7 @@
   "Failed to retrieve pod metadata": "Échec de la récupération des métadonnées du Pod.",
   "Failed to route message": "Échec du routage du message.",
   "Failed to select canonical variant": "Échec de la sélection de la variante canonique.",
-  "Failed to start port forwarding": "Échec du démarrage du transfert de port.",
+  "Failed to start port forwarding": "Impossible de démarrer la redirection de port.",
   "Failed to unregister pod": "Échec de la désinscription du Pod.",
   "Failed to update configuration file": "Échec de la mise à jour du fichier de configuration.",
   "Failed to update descriptor": "Échec de la mise à jour du descripteur.",

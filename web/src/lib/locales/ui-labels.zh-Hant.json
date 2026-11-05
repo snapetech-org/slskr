@@ -5002,7 +5002,7 @@
   "Failed to retrieve pod metadata": "無法檢索 Pod 元數據。",
   "Failed to route message": "無法路由訊息。",
   "Failed to select canonical variant": "無法選擇規範變體。",
-  "Failed to start port forwarding": "無法啓動端口轉發。",
+  "Failed to start port forwarding": "無法啟動連接埠轉送。",
   "Failed to unregister pod": "無法取消注冊 Pod。",
   "Failed to update configuration file": "無法更新配置文件。",
   "Failed to update descriptor": "無法更新描述符。",

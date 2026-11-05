@@ -4692,7 +4692,7 @@
   "Failed to stop search": "تعذر إيقاف البحث",
   "Failed to sync pod backfill: {error}": "تعذرت مزامنة استكمال الـpod: {error}",
   "Failed to sync with peer": "تعذرت المزامنة مع النظير",
-  "Failed to toggle accelerated mode: {error}": "تعذر تبديل الوضع السريع: {error}",
+  "Failed to toggle accelerated mode: {error}": "تعذر تبديل وضع التسريع: {error}",
   "Failed to toggle auto-replace: {error}": "تعذر تبديل الاستبدال التلقائي: {error}",
   "Failed to update channel: {error}": "تعذر تحديث القناة: {error}",
   "Failed to update member affinities: {error}": "تعذر تحديث أوجه التقارب بين الأعضاء: {error}",

@@ -4641,7 +4641,7 @@
   "Failed to start replacement searches": "Gagal memulai pencarian pengganti",
   "Failed to start scan": "Gagal memulai pemindaian",
   "Failed to stop search": "Gagal menghentikan pencarian",
-  "Failed to sync pod backfill: {error}": "Gagal menyinkronkan pengisian ulang pod: {error}",
+  "Failed to sync pod backfill: {error}": "Gagal menyinkronkan pengisian data historis pod: {error}",
   "Failed to sync with peer": "Gagal menyinkronkan dengan peer",
   "Failed to toggle accelerated mode: {error}": "Gagal mengubah mode akselerasi: {error}",
   "Failed to toggle auto-replace: {error}": "Gagal mengubah penggantian otomatis: {error}",
