@@ -1,0 +1,8 @@
+{
+  "candidateFreeInputRoot": "/mnt/disks/scratch/task-scratch/slskr-pr209-w1603-1622-20261105/candidate-free-input",
+  "listedFilesVerifiedBySha256": true,
+  "unlistedFiles": [],
+  "unlistedFilesRead": false,
+  "unlistedFilesChanged": false,
+  "reviewUsesOnlyChecksumListedCandidateFreeFiles": true
+}

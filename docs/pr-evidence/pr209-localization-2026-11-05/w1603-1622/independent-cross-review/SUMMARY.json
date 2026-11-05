@@ -1,0 +1,54 @@
+{
+  "artifact": "slskR PR #209 W1603-W1622 independent cross-review",
+  "blindChecksumsVerified": true,
+  "browserReview": false,
+  "candidateFreeChecksumsVerified": true,
+  "cellCount": 240,
+  "crossDispositionCounts": {
+    "accept-current": 227,
+    "propose-correction": 11,
+    "propose-refinement": 2
+  },
+  "crossProposalCount": 13,
+  "currentTargetCellsSha256": "b5ec7436332f3c49aa7381308a7af655e7d583e965ff2a495e5f0415e7d42df4",
+  "head": "eeb63f1e4e21d801f4a4e0393813b6e86a1ff7c8",
+  "inputPins": {
+    "blind": {
+      "checksumListSha256": "631cbf9e76e4a664350f595ed5ce2ffd4e054a12f5140690ec0c3f0c4242b6c3",
+      "fileCount": 9
+    },
+    "candidateFree": {
+      "checksumListSha256": "01bc4656145cff78824bced979eb58e5a50b6dad4f061a47c904d472fbdf35c3",
+      "fileCount": 29
+    },
+    "primary": {
+      "checksumListSha256": "825d6ba51a11950773fcc7d985b99f5765f391d151dba1a4c8bcbc904220f8ab",
+      "fileCount": 6
+    },
+    "rootCrossReview": {
+      "checksumListSha256": "a1e24ba9a33626823ea9a885970cf9fd668dd27dfa3e6fa2a366c921c0e5a1b4",
+      "fileCount": 6
+    }
+  },
+  "localeCount": 12,
+  "nativeSpeakerSignoff": false,
+  "primaryChecksumsVerified": true,
+  "pullRequest": 209,
+  "repository": "snapetech-org/slskR",
+  "repositoryChangesApplied": false,
+  "reviewedAtUtc": "2026-11-05T05:38:45+00:00",
+  "rootAdjudicationSha256": "88ef9534d380808df7ccd0c14335f663f78b460cf97afd2c01fcfa5f972abdea",
+  "rootAgreements": 240,
+  "rootChecksumsVerified": true,
+  "rootDisagreements": 0,
+  "rootDispositionCounts": {
+    "accept-current": 227,
+    "correction": 11,
+    "refinement": 2
+  },
+  "rootOutcomesReviewed": 13,
+  "sourceContextsSha256": "5b0919ec3366bdf1b2c09d50b6093217c6ddbdd9ee795512ed8176f67ee6fbd4",
+  "sourceCount": 20,
+  "tree": "590ee410666905f68f601393b64a4798b0609181",
+  "window": "W1603-W1622"
+}

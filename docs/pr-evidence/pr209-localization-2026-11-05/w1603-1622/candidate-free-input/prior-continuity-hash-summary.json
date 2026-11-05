@@ -1,0 +1,133 @@
+{
+  "lineageSource": "/home/keith/Documents/code/task-scratch/slskr-pr209-w1583-1602-20261104/candidate-free-input",
+  "lineageFiles": {
+    "prior-window-selection-hash-only.jsonl": "ddde307c73be40571d9c231f7405aca914215150fcdf57f5bb544621df07d232",
+    "prior-selection-hash-reattestation.jsonl": "af37d4e6ffc25647f2f19e474d5fcce9d8114666ca8e2c1b03c2df1a1bf46922",
+    "prior-hold-hash-reattestation.jsonl": "fcad0c167f39ffb171ad18b71cf28cdb64c38cf1398b1fa4271a8fda158a33e6",
+    "prior-window-1503-1522-catalog-diff-hash-only.jsonl": "9a0d4cfb10cf88951db000f82fc2a7b440eddd7c07888b23687cc2db40e2fcfe",
+    "prior-window-1523-1542-application-hash-only.jsonl": "23739e049d49eaa09d1834bea19e0f2759cc09274c6e7013ae0b211770b426d4",
+    "prior-window-1543-1562-application-hash-only.jsonl": "511915c02a23c2a71db391f95bff7f9a9d27eac0d74fb77c7557e603dd070776",
+    "prior-window-1563-1582-application-hash-only.jsonl": "dfa518b5e4884d8c1c170df234a58058402c04f737568eacbb937316e6f4ac8c",
+    "prior-applied-target-hash-only.jsonl": "6d935a2e9e37b6045dbb21e8f317b0cfbdd4bbd974e08cd12f8b59f91d9dcc4b",
+    "prior-backfill-hold-hash-only.jsonl": "ff2dc382248868f2ca3fbe2b7712d3c27a419ae9d1842fb347513d5c0ce7ee2f"
+  },
+  "priorInputManifestSha256": "8edee39cae75d37cb4e03c61f6dbf3caf2f7e136c537999017386986dc49a781",
+  "priorInputChecksumListSha256": "33ae47996be290f7220d2248db29510c9884de573f0e8726475830715e2301ba",
+  "applicationReadbackSha256": "1d705d8c27bbe16ad49af8592fa92e18a36ee7152ea7218cc2417ec64cb7edee",
+  "applicationSummarySha256": "26b79a25db0d53852877e05a5a87034bdcb6386f95d784d02c818078ddbdbc5c",
+  "fullSourceOrderQueue": {
+    "priorQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+    "liveQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+    "exactBytesMatch": true,
+    "positionsCoveredThrough": 1602
+  },
+  "previousWindowCells": {
+    "recordCount": 1680,
+    "sourcePositionMatches": 1680,
+    "allMatchExpectedPriorTarget": true,
+    "liveTargetMismatchCount": 0,
+    "windowLabels": [
+      "W1463-W1482",
+      "W1483-W1502",
+      "W1503-W1522",
+      "W1523-W1542",
+      "W1543-W1562",
+      "W1563-W1582",
+      "W1583-W1602"
+    ]
+  },
+  "priorSelections": {
+    "recordCount": 360,
+    "sourcePositionMatches": 360,
+    "allMatchLiveQueue": true,
+    "sourcePositionMismatchCount": 0
+  },
+  "priorHolds": {
+    "recordCount": 62,
+    "sourcePositionMatches": 62,
+    "unchangedCount": 62,
+    "changedCount": 0,
+    "backfillCallerBackedHashOnlyHoldCount": 10,
+    "newlyPreservedHoldCount": 0
+  },
+  "priorApplications": {
+    "w1503": {
+      "window": "W1503-W1522",
+      "parentHead": "a7d00cd97602c5910800330190817fcada008162",
+      "parentTree": "2d0a051348394e809ffc3a1fdbfccd20ba8af283",
+      "productCommit": "0e793dd5632b3e6d4f25f91fe5b47fc121f3f813",
+      "productTree": "a7ad6830162f0be4298e2f8c4100e58e2590ccb9",
+      "metadataSha256": "af8fac8738e8e9a77bfbc1abac5f3513b4fb4f41e3c49d8bb4cf7966857aad61",
+      "candidateFreeChecksumListSha256": "a599379018be2e495cd44edb33cbea6832b29afbb496d4de18b58cdb9d0d8cd1",
+      "catalogDiffCellCount": 240,
+      "appliedTargetHashCount": 12,
+      "acceptCurrentCount": 228,
+      "holdCount": 0
+    },
+    "w1523": {
+      "window": "W1523-W1542",
+      "productCommit": "09497027d7ca64892cf8ce3530dd5cc1fdf93c15",
+      "productTree": "b4594245bbb922bbce7785c9b4efc0041a2dd5df",
+      "readbackCellCount": 240,
+      "readbackSha256": "aaac86d6d749a3a7b1c3f4e25a57faca1853ec6925a5a3951cea908a19ed85f2",
+      "applicationReportSha256": "39760a429a50807f836aebe37d87fd053b4be2f3c5fde7e5c9da69228bcae698",
+      "applyPlanSha256": "367c2eac7ef950e3a7a47cf7533fe0f024c7a51fc61fbbe620d5d6e78ba3c81d",
+      "appliedTargetHashCount": 8,
+      "acceptCurrentCount": 222,
+      "hashOnlyHoldCount": 10,
+      "holdReason": "unresolved backfill terminology; production callers are present"
+    },
+    "w1543": {
+      "window": "W1543-W1562",
+      "parentHead": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+      "productCommit": "9f158221682915a9c6c238c5e182871adbf93efd",
+      "productTree": "72c5fd0d9f69fe802e7a659e9c44d02fbc2f5eb8",
+      "readbackCellCount": 240,
+      "readbackSha256": "d95ac481a991c151733d815d05cda36bbfe572b67779896ac5bc120153bccb63",
+      "applicationReportSha256": "6e25500089f1db8f8cd7f03c9ff9d837b9d403880f1837f2de010197dcf4bc9e",
+      "appliedTargetHashCount": 27,
+      "acceptCurrentCount": 208,
+      "hashOnlyHoldCount": 5,
+      "holdReason": "preserved prior review holds; rationale omitted from hash-only lineage"
+    },
+    "w1563": {
+      "window": "W1563-W1582",
+      "parentHead": "f42c7e4be1f2bc9d63e13607d3c311d37f83f355",
+      "productCommit": "62e74939e7b8145055dbd77d83d2b5c3804d3b0b",
+      "productTree": "9103c0870dc73bdf15737bcdecd522ba511bee5f",
+      "readbackCellCount": 240,
+      "readbackSha256": "1033b835394637d4045817bb46c7ecf1464948a580dcf4dd5d437706eda64c08",
+      "applicationReportSha256": "d15957bb55f751384f27c0da5af663f540df9b4700b4f2f2325dda5e89bbd57f",
+      "appliedTargetHashCount": 18,
+      "acceptCurrentCount": 222,
+      "hashOnlyHoldCount": 0,
+      "decisionCounts": {
+        "retain-accepted": 222,
+        "apply-correction": 16,
+        "apply-refinement": 2
+      },
+      "holdReason": "none"
+    },
+    "w1583": {
+      "window": "W1583-W1602",
+      "parentHead": "e1ccc3d6509baf957f3039046e5b66dda3ae15d0",
+      "productCommit": "dab83932bb2b375caf3f588ac7b20b3bd835a419",
+      "productTree": "2f81027e8339283fa0153ae1e48cd43b4bfd3d52",
+      "readbackCellCount": 240,
+      "readbackSha256": "1d705d8c27bbe16ad49af8592fa92e18a36ee7152ea7218cc2417ec64cb7edee",
+      "applicationSummarySha256": "26b79a25db0d53852877e05a5a87034bdcb6386f95d784d02c818078ddbdbc5c",
+      "appliedTargetHashCount": 4,
+      "acceptCurrentCount": 236,
+      "hashOnlyHoldCount": 0,
+      "decisionCounts": {
+        "accept-current": 236,
+        "apply-refinement": 2,
+        "apply-correction": 2
+      },
+      "holdReason": "none"
+    },
+    "appliedTargetHashCountTotal": 69
+  },
+  "rawPriorTranslationsIncluded": false,
+  "W1583AppliedHashesMatchLiveCatalog": true
+}
