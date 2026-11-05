@@ -13,4 +13,4 @@ Scope: 20 source keys × 12 direct locales (240 catalog cells), reviewed against
 
 ## Limits
 
-Native-speaker approval and headed product UI review are still outstanding. No tests, builds, scans, CI runs, workflow edits, release actions, or merges were performed for this window. The product PR remains open for review.
+Native-speaker approval and headed product UI review are still outstanding. No tests, builds, CI dispatches, workflow edits, releases, tags, or merges were performed for this window. The evidence commit’s local Semgrep pre-commit hook ran outside private JIT and reported zero findings. The product PR remains open for review.
