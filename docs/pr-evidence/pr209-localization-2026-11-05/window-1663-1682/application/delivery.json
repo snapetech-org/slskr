@@ -15,5 +15,9 @@
     "blockingFindings": 0,
     "exitCode": 0,
     "ciDispatch": false
-  }
+  },
+  "evidenceCommit": "a87db1c594908fcff8305fc07f21ea7e3c9c34e7",
+  "evidenceTree": "ec60a3d4cc6a3cef368abb6a41c8f75cf233dfb0",
+  "deliveryMetadataCommit": "d187a7e8cc8a0fcc25f9ad5990bb45a01903f83c",
+  "deliveryMetadataTree": "1d27dabcb906d7c1b2a6721f41423532244e287a"
 }
