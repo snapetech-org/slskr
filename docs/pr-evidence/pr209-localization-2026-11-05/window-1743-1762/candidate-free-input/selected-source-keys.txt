@@ -1,0 +1,20 @@
+Filename is required
+Filename is required when not using discovery DB.
+Files
+Files selected: {count}
+Files unavailable
+Filter
+Filter (optional)
+Filter by Status
+Filter by Type
+Filter by file extension (e.g., flac, mp3, wav, m4a)
+Filter by kind
+Filter by name or peer…
+Filter by source:
+Filter by topic
+Filter events
+Filter imported RustyMilk presets by title or file name. The current filter also scopes next and random preset jumps.
+Filter logs by severity
+Filter name
+Filter:
+Find ContentIDs by domain and optional type

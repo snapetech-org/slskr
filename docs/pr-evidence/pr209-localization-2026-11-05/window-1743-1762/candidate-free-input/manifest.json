@@ -1,0 +1,148 @@
+{
+  "artifact": "slskR PR #209 W1743-W1762 candidate-free exact-head input",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "head": "ccbc3dc721c1cbd225d4e512f4f0af4c80476620",
+  "tree": "075d1b72a2fd080404ebec19d354cb863638df21",
+  "headRef": "codex/slskr-l10n-audit-20261104-resync",
+  "baseRef": "main",
+  "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "draft": true,
+  "candidateFreeInputOnly": true,
+  "proposedTranslationsIncluded": false,
+  "selectedPositions": [
+    1743,
+    1762
+  ],
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "catalogSourceCount": 5441,
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "sourceQueueCount": 5441,
+  "sourceQueueFileSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+  "callerReferenceCount": 28,
+  "callerOccurrenceCount": 28,
+  "callerFileCount": 19,
+  "trackedProductionJsTsFilesScanned": 324,
+  "uniqueSelectedCallerFiles": 19,
+  "callerResolutionHoldCount": 2,
+  "callerResolutionHoldPositions": [
+    1754,
+    1755
+  ],
+  "callerlessTargetTextsIncluded": false,
+  "activeHoldReattestationCount": 1,
+  "activeHoldIds": [
+    "1719::id"
+  ],
+  "activeHoldTargetHashUnchanged": true,
+  "activeHoldSourceContextUnchanged": true,
+  "tokenMismatchCounts": {
+    "placeholderSequenceMismatchCount": 0,
+    "markupMismatchCount": 0,
+    "numericTokenMismatchCount": 0,
+    "protectedLiteralMismatchCount": 0
+  },
+  "catalogFilesPinned": 12,
+  "previousWindow": "W1723-W1742",
+  "previousQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+  "previousQueueMatchesLiveQueue": true,
+  "historicalSourceOrdinalsClaimed": false,
+  "localWorktree": "/home/keith/Documents/code/.task-worktrees/localization-20261105/slskr-w1683",
+  "localWorktreeHead": "ccbc3dc721c1cbd225d4e512f4f0af4c80476620",
+  "localWorktreeTree": "075d1b72a2fd080404ebec19d354cb863638df21",
+  "localWorktreeBranch": "codex/slskr-l10n-audit-20261104-resync",
+  "localWorktreeStatusClean": true,
+  "beforeAfterRefsStable": true,
+  "createdAtUtc": "2026-11-05T15:53:50+00:00",
+  "window": "W1743-W1762",
+  "fileHashes": {
+    "README.md": {
+      "sha256": "f05b1a33beb0e719b7129450046ab8c327d23ed145ada5442316342f7de2d026",
+      "byteCount": 2032
+    },
+    "active-hold-reattestation.jsonl": {
+      "sha256": "20e7ed50d949e0dc16bd4365a37d7f2a217a99bd48a6d9f3b356b983df23a19a",
+      "byteCount": 1433
+    },
+    "attestation-after.json": {
+      "sha256": "961e72c11f1418f6ac00aade6c4ade3adc947beb7568d919c6ad11ba9302d70d",
+      "byteCount": 994
+    },
+    "attestation-before.json": {
+      "sha256": "5095048f5438cc5a75406811158a3731140a5871a86925bbb1f2f4915d8b452f",
+      "byteCount": 995
+    },
+    "build_candidate_free.py": {
+      "sha256": "66eb5f90fb3dd7f6c0bf731b571244f97035371a37f8e796f409af2a64d5da2f",
+      "byteCount": 18400
+    },
+    "caller-resolution-holds.jsonl": {
+      "sha256": "0d2cd1d16781950d9a51b1bed728f3c48917fae3476eb035bb3da9a9d820b8e2",
+      "byteCount": 432
+    },
+    "candidate-free-schema-helper.py": {
+      "sha256": "1cf2d8e74f09d24eb1ea29d3dd886522aa735c06220b7a71aa10c0f18796482f",
+      "byteCount": 7531
+    },
+    "catalog-file-pins.json": {
+      "sha256": "7074c68c00dad134a4f4a5e548c77ea483ed3bf691fa3ee29fecc9db011e068a",
+      "byteCount": 4330
+    },
+    "catalog-structure.jsonl": {
+      "sha256": "4cf6c30b887038862da76ba6fa838b1506d45fa7890e452297121bc4dfb7cff5",
+      "byteCount": 3554
+    },
+    "current-target-cells.jsonl": {
+      "sha256": "e7ec1eb504c176ccf6d3ee6398d7c7d2417f03cbf355d1f25fcbd7c981e3bc01",
+      "byteCount": 270927
+    },
+    "localization-runtime-context.json": {
+      "sha256": "25614de30a3ec662aa4255f3b705a9f2399a38b7be75f7e6a5239a993855c69d",
+      "byteCount": 10860
+    },
+    "selected-source-keys.txt": {
+      "sha256": "15066eb62f41c0fcb75c735c6b0b72910e45771883bad86096277bb7b9acadb6",
+      "byteCount": 524
+    },
+    "source-contexts.jsonl": {
+      "sha256": "f7c24ede726021d7d121819ce0b21079a397d48b27da6b92c9db9a1ee31d7d4b",
+      "byteCount": 42512
+    },
+    "source-order-lineage.json": {
+      "sha256": "4e15ef366b4b6f12533a9f9d1c9f4ad320dcbb24386c899e6d189a249e0eb64d",
+      "byteCount": 1461
+    },
+    "source-pin-reattestation.json": {
+      "sha256": "98194e612260163e4307551a8ea1556d334a5059fe2fa90b24d765eff71a6770",
+      "byteCount": 1416
+    },
+    "source-queue.jsonl": {
+      "sha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+      "byteCount": 974393
+    },
+    "source-window-boundaries.jsonl": {
+      "sha256": "23c2b54ca0f210b2bb776f3ab838d30fba289dab3c1567a8a74839e3952e2cb7",
+      "byteCount": 2638
+    },
+    "verify_candidate_free.py": {
+      "sha256": "3ac1ad035a738767f9a0091d858f866f35b53a2379712776d8b6b7a21de0565f",
+      "byteCount": 6569
+    }
+  }
+}
