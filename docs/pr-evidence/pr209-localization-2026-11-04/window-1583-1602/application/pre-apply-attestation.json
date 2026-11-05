@@ -1,0 +1,17 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "inputHead": "e1ccc3d6509baf957f3039046e5b66dda3ae15d0",
+  "inputTree": "d7c7aa967cb7faf51a8211a397859feebe8129b8",
+  "prState": "open",
+  "prDraft": true,
+  "baseRef": "main",
+  "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "headRef": "codex/slskr-l10n-audit-20261104-resync",
+  "branchRefBefore": "e1ccc3d6509baf957f3039046e5b66dda3ae15d0",
+  "pullRefBefore": "e1ccc3d6509baf957f3039046e5b66dda3ae15d0",
+  "refsVerifiedBy": "GitHub pull API, branch-ref API, and git ls-remote refs/pull/209/head",
+  "worktreeParent": "e1ccc3d6509baf957f3039046e5b66dda3ae15d0",
+  "worktreeTree": "d7c7aa967cb7faf51a8211a397859feebe8129b8",
+  "sharedCheckoutDirtyPathPreserved": "AGENTS.md"
+}

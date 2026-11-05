@@ -1,0 +1,27 @@
+{
+  "schema": "slskr-pr209-w1583-1602-application-summary/v1",
+  "inputHead": "e1ccc3d6509baf957f3039046e5b66dda3ae15d0",
+  "inputTree": "d7c7aa967cb7faf51a8211a397859feebe8129b8",
+  "sourceCells": 240,
+  "selectedChanges": 4,
+  "catalogFilesChanged": 3,
+  "catalogPathsChanged": [
+    "web/src/lib/locales/ui-labels.pt-BR.json",
+    "web/src/lib/locales/ui-labels.vi.json",
+    "web/src/lib/locales/ui-labels.zh-Hant.json"
+  ],
+  "readbackCounts": {
+    "apply-correction": 2,
+    "apply-refinement": 2,
+    "accept-current": 236
+  },
+  "holdsInWindow": 0,
+  "priorHoldsReattested": 62,
+  "priorHoldsUnchanged": 62,
+  "nativeSpeakerSignoff": false,
+  "browserReviewPerformed": false,
+  "reviewConfidence": "moderate overall",
+  "productCommit": "dab83932bb2b375caf3f588ac7b20b3bd835a419",
+  "productCommitParent": "e1ccc3d6509baf957f3039046e5b66dda3ae15d0",
+  "productTree": "2f81027e8339283fa0153ae1e48cd43b4bfd3d52"
+}

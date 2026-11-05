@@ -1,0 +1,11 @@
+{
+  "schema": "slskr-pr209-review-process-exposure/v1",
+  "genericPublicSearchCount": 1,
+  "searchDescription": "One generic public search about Traditional Chinese wording.",
+  "searchContentIncluded": false,
+  "searchContentReliedOn": false,
+  "accessedPRMaterials": false,
+  "accessedCandidateMaterials": false,
+  "accessedPriorReviewMaterials": false,
+  "proposalInfluence": false
+}

@@ -1,0 +1,23 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "productCommit": "dab83932bb2b375caf3f588ac7b20b3bd835a419",
+  "productTree": "2f81027e8339283fa0153ae1e48cd43b4bfd3d52",
+  "productCommitParent": "e1ccc3d6509baf957f3039046e5b66dda3ae15d0",
+  "productCommitPaths": [
+    "web/src/lib/locales/ui-labels.pt-BR.json",
+    "web/src/lib/locales/ui-labels.vi.json",
+    "web/src/lib/locales/ui-labels.zh-Hant.json"
+  ],
+  "branchRefAfter": "dab83932bb2b375caf3f588ac7b20b3bd835a419",
+  "pullRefAfter": "dab83932bb2b375caf3f588ac7b20b3bd835a419",
+  "prApiHeadAfter": "dab83932bb2b375caf3f588ac7b20b3bd835a419",
+  "prState": "open",
+  "prDraft": true,
+  "remoteReadbackVia": [
+    "GitHub commit API",
+    "branch-ref API",
+    "refs/pull/209/head"
+  ],
+  "remoteRefsAligned": true
+}
