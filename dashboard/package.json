@@ -49,6 +49,6 @@
   },
   "overrides": {
     "brace-expansion": "5.0.12",
-    "follow-redirects": "1.16.1"
+    "follow-redirects": "1.16.2"
   }
 }
