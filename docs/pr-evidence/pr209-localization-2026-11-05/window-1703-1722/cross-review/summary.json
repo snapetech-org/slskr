@@ -1,0 +1,156 @@
+{
+  "artifact": "slskR PR #209 W1703-W1722 independent cross-review",
+  "createdAtUtc": "2026-11-05T14:50:34+00:00",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "head": "91e109efba44ad9e53fe9544648a0d907a2bef77",
+  "tree": "38db78228144da5fc50179addccf826662bf97de",
+  "window": "W1703-W1722",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "candidateFreeInput": "/mnt/disks/scratch/task-scratch/slskr-pr209-w1703-1722-20261105/candidate-free-input",
+  "primaryReview": "/mnt/disks/scratch/task-scratch/slskr-pr209-w1703-1722-20261105/primary-review",
+  "blindReview": "/mnt/disks/scratch/task-scratch/slskr-pr209-w1703-1722-independent-blind-20261105",
+  "crossDispositionCounts": {
+    "accept-current": 170,
+    "refinement": 44,
+    "correction": 25,
+    "hold": 1
+  },
+  "crossDispositionCountsByLocale": {
+    "es": {
+      "accept-current": 14,
+      "correction": 3,
+      "refinement": 3,
+      "hold": 0
+    },
+    "zh-Hans": {
+      "accept-current": 15,
+      "correction": 2,
+      "refinement": 3,
+      "hold": 0
+    },
+    "hi": {
+      "accept-current": 15,
+      "correction": 1,
+      "refinement": 4,
+      "hold": 0
+    },
+    "de": {
+      "accept-current": 15,
+      "correction": 1,
+      "refinement": 4,
+      "hold": 0
+    },
+    "ja": {
+      "accept-current": 15,
+      "correction": 2,
+      "refinement": 3,
+      "hold": 0
+    },
+    "fr": {
+      "accept-current": 13,
+      "correction": 3,
+      "refinement": 4,
+      "hold": 0
+    },
+    "pt-BR": {
+      "accept-current": 12,
+      "correction": 3,
+      "refinement": 5,
+      "hold": 0
+    },
+    "ar": {
+      "accept-current": 14,
+      "correction": 3,
+      "refinement": 3,
+      "hold": 0
+    },
+    "ko": {
+      "accept-current": 17,
+      "correction": 1,
+      "refinement": 2,
+      "hold": 0
+    },
+    "zh-Hant": {
+      "accept-current": 13,
+      "correction": 2,
+      "refinement": 5,
+      "hold": 0
+    },
+    "vi": {
+      "accept-current": 14,
+      "correction": 1,
+      "refinement": 5,
+      "hold": 0
+    },
+    "id": {
+      "accept-current": 13,
+      "correction": 3,
+      "refinement": 3,
+      "hold": 1
+    }
+  },
+  "primaryDecisionCounts": {
+    "accept-current": 186,
+    "correction": 19,
+    "refinement": 35
+  },
+  "blindDecisionCounts": {
+    "accept": 195,
+    "revise": 45
+  },
+  "primaryBlindRelationCounts": {
+    "both_accept_current": 168,
+    "blind_only_revises": 18,
+    "both_revise_different": 18,
+    "both_revise_same": 9,
+    "primary_only_revises": 27
+  },
+  "primaryBlindDecisionDisagreementCount": 63,
+  "primaryBlindTargetTextDifferenceCount": 63,
+  "bothProposeDifferentTargetCount": 18,
+  "oneReviewerProposesOtherAcceptsCount": 45,
+  "rootsWithFlags": 13,
+  "escalatedRoots": [
+    1714,
+    1715,
+    1719
+  ],
+  "heldCells": [
+    "1719::id"
+  ],
+  "callerReferences": 30,
+  "uniqueCallerFiles": 17,
+  "callerlessPositions": [],
+  "protectedLiteralChecks": {
+    "manualBrand": "RustyMilk",
+    "sourcePositions": [
+      1712
+    ],
+    "cellsChecked": 12,
+    "preservedInCurrentPrimaryBlindAndCrossTargets": true
+  },
+  "numericTokenChecks": {
+    "sourceToken": "30",
+    "sourcePosition": 1710,
+    "cellsChecked": 12,
+    "preservedInPrimaryBlindAndCrossTargets": true
+  },
+  "placeholderMarkupChecks": {
+    "sourcePlaceholderCellCount": 0,
+    "sourceMarkupCellCount": 0,
+    "currentTargetsPass": true,
+    "primaryRecommendationsPass": true,
+    "blindCurrentTargetsPass": true
+  },
+  "sourceHoldsInSuppliedPackets": {
+    "callerResolutionHoldCount": 0,
+    "primaryHoldCount": 0,
+    "blindHoldCount": 0
+  },
+  "repoEdited": false,
+  "testsBuildsCI": false,
+  "nativeSpeakerSignoff": false
+}

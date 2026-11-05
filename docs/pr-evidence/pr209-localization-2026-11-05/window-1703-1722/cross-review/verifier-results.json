@@ -1,0 +1,40 @@
+{
+  "result": "PASS",
+  "checkedAtUtc": "2026-11-05T14:50:35+00:00",
+  "checks": {
+    "candidateFreeVerifier": "PASS",
+    "primaryReviewVerifier": "PASS",
+    "exactWorktreePin": "PASS",
+    "crossPacketRowPins": "PASS",
+    "all240CellKeysPresent": "PASS",
+    "callerContexts": "PASS",
+    "placeholdersMarkupAndNumbers": "PASS",
+    "RustyMilkLiteral": "PASS",
+    "priorInputHoldsPreserved": "PASS"
+  },
+  "errors": [],
+  "packetSpecificVerifierResults": [
+    {
+      "command": [
+        "python3",
+        "/mnt/disks/scratch/task-scratch/slskr-pr209-w1703-1722-20261105/candidate-free-input/verify_candidate_free.py",
+        "--repo",
+        "/home/keith/Documents/code/.task-worktrees/localization-20261105/slskr-w1683"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"head\": \"91e109efba44ad9e53fe9544648a0d907a2bef77\",\n  \"tree\": \"38db78228144da5fc50179addccf826662bf97de\",\n  \"positions\": [\n    1703,\n    1722\n  ],\n  \"cells\": 240,\n  \"sourceCount\": 20,\n  \"localeCount\": 12,\n  \"callerReferences\": 30,\n  \"callerOccurrences\": 30,\n  \"callerFiles\": 17,\n  \"callerlessPositions\": [],\n  \"tokenMismatchCounts\": {\n    \"placeholderSequenceMismatchCount\": 0,\n    \"markupMismatchCount\": 0,\n    \"numericTokenMismatchCount\": 0,\n    \"protectedLiteralMismatchCount\": 0\n  },\n  \"checksumFiles\": 18,\n  \"priorQueueContinuity\": \"PASS\"\n}",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "/mnt/disks/scratch/task-scratch/slskr-pr209-w1703-1722-20261105/primary-review/verify_primary_review.py",
+        "--repo",
+        "/home/keith/Documents/code/.task-worktrees/localization-20261105/slskr-w1683"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"head\": \"91e109efba44ad9e53fe9544648a0d907a2bef77\",\n  \"tree\": \"38db78228144da5fc50179addccf826662bf97de\",\n  \"cells\": 240,\n  \"decisionCounts\": {\n    \"refinement\": 35,\n    \"accept-current\": 186,\n    \"correction\": 19\n  },\n  \"proposals\": 54,\n  \"holds\": 0,\n  \"placeholderOrderDifferences\": 0,\n  \"genericIdLocalizations\": 0,\n  \"candidateFreeChecksumFiles\": 18,\n  \"primaryChecksumFiles\": 14\n}",
+      "stderr": ""
+    }
+  ]
+}

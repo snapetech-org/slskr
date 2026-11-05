@@ -1,0 +1,87 @@
+{
+  "exactHead": "91e109efba44ad9e53fe9544648a0d907a2bef77",
+  "exactTree": "38db78228144da5fc50179addccf826662bf97de",
+  "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "window": "W1703-W1722",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "decisionCounts": {
+    "refinement": 35,
+    "accept-current": 186,
+    "correction": 19
+  },
+  "confidenceCounts": {
+    "moderate": 237,
+    "high": 3
+  },
+  "proposalCount": 54,
+  "holdCount": 0,
+  "placeholderOrderDifferenceCellCount": 0,
+  "protectedLiteralLocalizationCellCount": 0,
+  "callerlessCells": 0,
+  "candidateFreeInputOnly": true,
+  "blindOrCrossOutputInspected": false,
+  "nativeSpeakerSignoff": false,
+  "localeDecisionCounts": {
+    "es": {
+      "refinement": 3,
+      "accept-current": 15,
+      "correction": 2
+    },
+    "zh-Hans": {
+      "refinement": 5,
+      "accept-current": 14,
+      "correction": 1
+    },
+    "hi": {
+      "accept-current": 16,
+      "refinement": 3,
+      "correction": 1
+    },
+    "de": {
+      "accept-current": 17,
+      "correction": 1,
+      "refinement": 2
+    },
+    "ja": {
+      "refinement": 1,
+      "accept-current": 18,
+      "correction": 1
+    },
+    "fr": {
+      "refinement": 4,
+      "accept-current": 14,
+      "correction": 2
+    },
+    "pt-BR": {
+      "correction": 3,
+      "accept-current": 13,
+      "refinement": 4
+    },
+    "ar": {
+      "accept-current": 16,
+      "correction": 3,
+      "refinement": 1
+    },
+    "ko": {
+      "refinement": 1,
+      "accept-current": 19
+    },
+    "zh-Hant": {
+      "refinement": 7,
+      "accept-current": 12,
+      "correction": 1
+    },
+    "vi": {
+      "accept-current": 16,
+      "refinement": 3,
+      "correction": 1
+    },
+    "id": {
+      "accept-current": 16,
+      "correction": 3,
+      "refinement": 1
+    }
+  }
+}

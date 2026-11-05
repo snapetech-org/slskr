@@ -1,0 +1,159 @@
+{
+  "artifact": "slskR PR #209 W1703-W1722 independent blind semantic review",
+  "reviewBasis": "Candidate-free source/current/caller evidence only; no primary-review directory or decisions read before sealing.",
+  "inputDirectory": "/mnt/disks/scratch/task-scratch/slskr-pr209-w1703-1722-20261105/candidate-free-input",
+  "inputPathNote": "The requested candidate-free/input path did not exist; the provided task directory contains candidate-free-input/.",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "head": "91e109efba44ad9e53fe9544648a0d907a2bef77",
+  "tree": "38db78228144da5fc50179addccf826662bf97de",
+  "sourceWindow": "W1703-W1722",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "reviewRowCount": 240,
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "decisionCounts": {
+    "revise": 45,
+    "accept": 195
+  },
+  "revisionsByPosition": {
+    "1703": {
+      "count": 10,
+      "locales": [
+        "es",
+        "zh-Hans",
+        "hi",
+        "de",
+        "ja",
+        "fr",
+        "pt-BR",
+        "ko",
+        "zh-Hant",
+        "id"
+      ]
+    },
+    "1704": {
+      "count": 1,
+      "locales": [
+        "id"
+      ]
+    },
+    "1705": {
+      "count": 7,
+      "locales": [
+        "es",
+        "de",
+        "fr",
+        "pt-BR",
+        "ar",
+        "vi",
+        "id"
+      ]
+    },
+    "1708": {
+      "count": 1,
+      "locales": [
+        "ja"
+      ]
+    },
+    "1709": {
+      "count": 1,
+      "locales": [
+        "ar"
+      ]
+    },
+    "1710": {
+      "count": 4,
+      "locales": [
+        "hi",
+        "pt-BR",
+        "vi",
+        "id"
+      ]
+    },
+    "1714": {
+      "count": 11,
+      "locales": [
+        "es",
+        "zh-Hans",
+        "de",
+        "ja",
+        "fr",
+        "pt-BR",
+        "ar",
+        "ko",
+        "zh-Hant",
+        "vi",
+        "id"
+      ]
+    },
+    "1718": {
+      "count": 1,
+      "locales": [
+        "pt-BR"
+      ]
+    },
+    "1719": {
+      "count": 8,
+      "locales": [
+        "es",
+        "hi",
+        "de",
+        "fr",
+        "pt-BR",
+        "ar",
+        "vi",
+        "id"
+      ]
+    },
+    "1720": {
+      "count": 1,
+      "locales": [
+        "ar"
+      ]
+    }
+  },
+  "callerEvidence": {
+    "callerReferenceCount": 30,
+    "callerOccurrenceCount": 30,
+    "uniqueCallerFiles": 17,
+    "callerlessPositions": [],
+    "callerResolutionHoldCount": 0,
+    "allSelectedRowsHaveCallerContextPins": true
+  },
+  "integrityAndConstraints": {
+    "inputChecksumListSha256": "5853df41cfce1ec03d92f5ab7a941d7953da943d3dd9148a13a356be2d130048",
+    "inputManifestSha256": "3a5d19e2238e5f780faba8a0f0654da641267f09616fd95ba8505fa9c6548eab",
+    "sourceQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+    "currentCellCount": 240,
+    "selectedCellCount": 240,
+    "currentScalarStringCells": 240,
+    "pluralFormObjects": 0,
+    "namedPlaceholderCount": 0,
+    "numericSourceTokens": {
+      "1710": "30"
+    },
+    "numericRecommendationMismatches": 0,
+    "currentTargetTokenMismatches": 0,
+    "sourceProtectedLiteralSignatureCount": 0,
+    "manuallyProtectedBrand": "RustyMilk",
+    "manualBrandExactPreservationCount": 12
+  },
+  "pluralReview": "All 240 target cells are scalar strings; there are no plural-form objects in this window. Singular/plural source concepts were reviewed as fixed UI labels.",
+  "literalReview": "The candidate-free signatures contain no protected-literal tokens. RustyMilk is independently treated as a protected product name and remains byte-exact in all 12 recommendations. The only numeric source literal is ASCII 30 in W1710, retained exactly in all 12 recommendations.",
+  "decisionMethod": "Recommendations were made independently from the source key, pinned current target, and exact caller context. “accept” retains the current target; “revise” records an independently authored replacement.",
+  "createdAtUtc": "2026-11-05T14:33:49+00:00"
+}
