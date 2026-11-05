@@ -1,0 +1,113 @@
+{
+  "artifact": "slskR PR #209 W1643-W1662 independent primary semantic review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "head": "2d804c49879372071adf606bc2a2cf51e261fd94",
+  "tree": "d6f5552d2400d868c2f2af98eb68caadfd4f3f66",
+  "headRef": "codex/slskr-l10n-audit-20261104-resync",
+  "selectedPositions": [
+    1643,
+    1662
+  ],
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "reviewedCellCount": 240,
+  "sourceKeyCount": 20,
+  "localeCount": 12,
+  "callerOccurrenceCount": 21,
+  "callerlessHoldCount": 0,
+  "dispositions": {
+    "accept-current": 236,
+    "correction": 4
+  },
+  "proposalCount": 4,
+  "proposalPositions": [
+    1643,
+    1646,
+    1649,
+    1654
+  ],
+  "byLocale": {
+    "es": {
+      "reviewed": 20,
+      "corrections": 0
+    },
+    "zh-Hans": {
+      "reviewed": 20,
+      "corrections": 0
+    },
+    "hi": {
+      "reviewed": 20,
+      "corrections": 1
+    },
+    "de": {
+      "reviewed": 20,
+      "corrections": 0
+    },
+    "ja": {
+      "reviewed": 20,
+      "corrections": 0
+    },
+    "fr": {
+      "reviewed": 20,
+      "corrections": 0
+    },
+    "pt-BR": {
+      "reviewed": 20,
+      "corrections": 0
+    },
+    "ar": {
+      "reviewed": 20,
+      "corrections": 0
+    },
+    "ko": {
+      "reviewed": 20,
+      "corrections": 1
+    },
+    "zh-Hant": {
+      "reviewed": 20,
+      "corrections": 2
+    },
+    "vi": {
+      "reviewed": 20,
+      "corrections": 0
+    },
+    "id": {
+      "reviewed": 20,
+      "corrections": 0
+    }
+  },
+  "mechanicalMismatchCounts": {
+    "placeholder": 0,
+    "markup": 0,
+    "numeric": 0,
+    "protectedLiteral": 0
+  },
+  "priorLineage": {
+    "priorSelections": 400,
+    "priorWindowHashes": 2160,
+    "priorHoldsUnchanged": 62,
+    "priorAppliedHashes": 95,
+    "W1623Applied": 13,
+    "W1623Retained": 227
+  },
+  "confidence": "moderate overall; four proposed corrections are high or moderate confidence as recorded per row",
+  "limitations": [
+    "No native-speaker signoff was obtained.",
+    "No browser/UI signoff was performed.",
+    "No tests, builds, scans, or CI were run; review was read-only against candidate-free exact-head source and caller evidence."
+  ],
+  "createdAtUtc": "2026-11-05T07:46:43+00:00"
+}

@@ -1,0 +1,18 @@
+{
+  "artifact": "blind-review",
+  "exactHead": "2d804c49879372071adf606bc2a2cf51e261fd94",
+  "exactTree": "d6f5552d2400d868c2f2af98eb68caadfd4f3f66",
+  "inputManifestSha256": "2e559b30bbac3bde00a7f5a00abff4a32462867141d2534ba7ff0e17566f8893",
+  "inputChecksumIndexSha256": "9fe4a7012ed1a4ec53b70a4e9cb0b0d5fd1a0ea6d791edb4fcafbdee84dde49d",
+  "ledgerSha256": "6e287a67fc05a2f680675177c17e1154fe1f8b4113c2bf0949af98f130c471d4",
+  "proposalsSha256": "00d5fba5f96a555be805c8f39a5f33e381bae86582634e6205d5a561c9c8c739",
+  "cellCount": 240,
+  "proposalCount": 7,
+  "decisionCounts": {
+    "accept-current": 233,
+    "correction": 2,
+    "refinement": 5
+  },
+  "candidateFreeOnly": true,
+  "primaryOrCrossOutputUsed": false
+}

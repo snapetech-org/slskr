@@ -1,0 +1,18 @@
+{
+  "capturedAtUtc": "2026-11-05T08:01:11+00:00",
+  "sources": [
+    {
+      "title": "Unicode Terminology: English-Japanese",
+      "url": "https://www.unicode.org/terminology/term_en_ja.html",
+      "supports": "Canonical → 正準; used to assess the Japanese refinement at 1661.",
+      "sourceType": "primary standards terminology"
+    },
+    {
+      "title": "Korean National Institute of Korean Language term entry: 정규형",
+      "url": "https://kli.korean.go.kr/term/trgtWord/indexTrgtWord.do?trgtWordNo=2442583",
+      "supports": "Lists canonical form as the English equivalent of 정규형 and lists 표준형 as a synonym; supports 정규 as a technical alternative while keeping the change a moderate-confidence refinement.",
+      "sourceType": "national terminology entry"
+    }
+  ],
+  "caution": "External terminology sources inform only the canonical-variant term choices. They do not provide native-speaker or product-specific algorithm review."
+}

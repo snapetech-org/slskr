@@ -1,0 +1,65 @@
+{
+  "artifact": "slskR PR #209 W1643-W1662 independent semantic cross-review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "head": "2d804c49879372071adf606bc2a2cf51e261fd94",
+  "tree": "d6f5552d2400d868c2f2af98eb68caadfd4f3f66",
+  "headRef": "codex/slskr-l10n-audit-20261104-resync",
+  "selectedPositions": [
+    1643,
+    1662
+  ],
+  "sourceKeyCount": 20,
+  "localeCount": 12,
+  "reviewedCellCount": 240,
+  "callerOccurrenceCount": 21,
+  "callerlessHoldCount": 0,
+  "reviewerProposalCounts": {
+    "primary": 4,
+    "blind": 7,
+    "uniqueUnion": 9
+  },
+  "crossDispositions": {
+    "retain-current": 231,
+    "correction": 4,
+    "refinement": 5
+  },
+  "applyReadyProposalCount": 9,
+  "reviewerDisagreementCellCount": 7,
+  "overlappingProposalCellsWithSameTarget": [
+    "W1643-W1662:1643:ko",
+    "W1643-W1662:1654:zh-Hant"
+  ],
+  "targetWordingConflicts": 0,
+  "disagreementKinds": {
+    "both-proposed-same-target": 2,
+    "one-reviewer-proposed": 7
+  },
+  "mechanicalMismatchCounts": {
+    "placeholder": 0,
+    "markup": 0,
+    "numeric": 0,
+    "protectedLiteral": 0
+  },
+  "inputVerifierResults": {
+    "candidateFree": "PASS",
+    "primary": "PASS",
+    "blind": "PASS"
+  },
+  "exactHeadAttestation": "PASS before and after cross-review; branch and pull refs both match the exact head",
+  "priorLineage": {
+    "priorSelections": 400,
+    "priorWindowHashes": 2160,
+    "priorHoldsUnchanged": 62,
+    "priorAppliedTargetHashes": 95,
+    "W1623Applied": 13,
+    "W1623Retained": 227
+  },
+  "confidence": "moderate overall; per-cell confidence is recorded in the cross-ledger and recommendations",
+  "limitations": [
+    "No native-speaker signoff was obtained.",
+    "No headed browser or UI display review was performed.",
+    "No repository/catalog/PR edits, tests, builds, scans, CI, or workflows were run."
+  ],
+  "createdAtUtc": "2026-11-05T08:01:11+00:00"
+}

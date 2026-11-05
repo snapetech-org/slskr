@@ -1,0 +1,17 @@
+{
+  "capturedAtUtc": "2026-11-05T08:06:47.377544+00:00",
+  "localHead": "2d804c49879372071adf606bc2a2cf51e261fd94",
+  "localTree": "d6f5552d2400d868c2f2af98eb68caadfd4f3f66",
+  "matchesPinnedHead": true,
+  "pullRequest": {
+    "baseRefOid": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+    "headRefName": "codex/slskr-l10n-audit-20261104-resync",
+    "headRefOid": "2d804c49879372071adf606bc2a2cf51e261fd94",
+    "isDraft": true,
+    "state": "OPEN"
+  },
+  "remoteBranch": "2d804c49879372071adf606bc2a2cf51e261fd94",
+  "remotePullHead": "2d804c49879372071adf606bc2a2cf51e261fd94",
+  "stage": "before-review",
+  "worktreeStatusPorcelain": ""
+}

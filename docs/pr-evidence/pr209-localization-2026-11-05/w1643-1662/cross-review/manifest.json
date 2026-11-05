@@ -1,0 +1,90 @@
+{
+  "artifact": "slskR PR #209 W1643-W1662 independent semantic cross-review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "head": "2d804c49879372071adf606bc2a2cf51e261fd94",
+  "tree": "d6f5552d2400d868c2f2af98eb68caadfd4f3f66",
+  "headRef": "codex/slskr-l10n-audit-20261104-resync",
+  "reviewType": "independent-semantic-cross-review",
+  "reviewedCellCount": 240,
+  "proposalCount": 9,
+  "holdCount": 0,
+  "fileHashes": {
+    "README.md": {
+      "sha256": "3c615cf3e8602cb78c85da16a0d9759d5d5de951aa3f98deae5b42600a17f4cb",
+      "byteCount": 2684
+    },
+    "attestation/head-commit-after-review.json": {
+      "sha256": "aebde564d0fd00855de5814faa1da7f68e04300bfe2700f69140400ba4bb747e",
+      "byteCount": 748826
+    },
+    "attestation/head-commit-before-review.json": {
+      "sha256": "aebde564d0fd00855de5814faa1da7f68e04300bfe2700f69140400ba4bb747e",
+      "byteCount": 748826
+    },
+    "attestation/pin-after-review.json": {
+      "sha256": "a3a64f05f1ca1e7ea5b78a17a7be0fe19f6a8dcc8485916fc293ec2f70871a21",
+      "byteCount": 886
+    },
+    "attestation/pin-before-review.json": {
+      "sha256": "a3a64f05f1ca1e7ea5b78a17a7be0fe19f6a8dcc8485916fc293ec2f70871a21",
+      "byteCount": 886
+    },
+    "attestation/pr-api-after-review.json": {
+      "sha256": "04f0dd52e549f18649eda9ea13b17e4f9caa07cd7c3faf781511aa977f4bc960",
+      "byteCount": 276
+    },
+    "attestation/pr-api-before-review.json": {
+      "sha256": "04f0dd52e549f18649eda9ea13b17e4f9caa07cd7c3faf781511aa977f4bc960",
+      "byteCount": 276
+    },
+    "attestation/remote-refs-after-review.txt": {
+      "sha256": "b7b54d523f571582116d3e0fbda29fc3b5bd738f255956c4a12f1725457c9ee5",
+      "byteCount": 208
+    },
+    "attestation/remote-refs-before-review.txt": {
+      "sha256": "b7b54d523f571582116d3e0fbda29fc3b5bd738f255956c4a12f1725457c9ee5",
+      "byteCount": 208
+    },
+    "build_cross_review.py": {
+      "sha256": "6771ae787fcff9993646506af396dfef9014a48556a6a1ccc5bbb0beb320ad0c",
+      "byteCount": 24132
+    },
+    "cross-ledger.jsonl": {
+      "sha256": "3045e279a08c330d7966080818fb5f0167cb31b2fadedd2b50eee5665390272a",
+      "byteCount": 599037
+    },
+    "external-terminology-notes.json": {
+      "sha256": "36a7bc13aa35e89570062bf9185fd1d5c34c213a5db1d61223d0657a4ca9a32c",
+      "byteCount": 971
+    },
+    "holds-hash-only.jsonl": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteCount": 0
+    },
+    "input-attestation.json": {
+      "sha256": "a23725a820173ba73dac86ef32f24b5972b97f64097f57a730e4ecb895675ddf",
+      "byteCount": 1235
+    },
+    "packet-verifier-results.json": {
+      "sha256": "3c17e493395cf934d871a618d351ec62c7191313302fa40ff04012a16a42bd95",
+      "byteCount": 1208
+    },
+    "proposal-disagreements.jsonl": {
+      "sha256": "09c1605896b9df5ef596b455744d493f55c2cb5ecc38362f4fb7c9b07a18199f",
+      "byteCount": 10505
+    },
+    "recommendations.jsonl": {
+      "sha256": "57bb2c305e168d1b62958229b2220887c1bba29bb8e353a83749efdb7fb08f87",
+      "byteCount": 11908
+    },
+    "summary.json": {
+      "sha256": "48e504a199811d623a35afec15548571bd9cfed1502a3901029b34911f679805",
+      "byteCount": 1892
+    },
+    "verify_cross_review.py": {
+      "sha256": "2df54fe8acadb084cda9a46647b7a95d3ac547125962d28a2abeb5df4871f332",
+      "byteCount": 15859
+    }
+  }
+}

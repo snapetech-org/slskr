@@ -1,0 +1,46 @@
+{
+  "candidateFree": {
+    "result": "PASS",
+    "head": "2d804c49879372071adf606bc2a2cf51e261fd94",
+    "tree": "d6f5552d2400d868c2f2af98eb68caadfd4f3f66",
+    "cells": 240,
+    "callerReferences": 21,
+    "callerlessPositions": [],
+    "priorWindowHashes": 2160,
+    "priorSelections": 400,
+    "priorHolds": 62,
+    "priorAppliedTargetHashes": 95,
+    "W1623AppliedCells": 13,
+    "W1623RetainedCells": 227,
+    "tokenMismatchCounts": {
+      "placeholder": 0,
+      "markup": 0,
+      "numeric": 0,
+      "protectedLiteral": 0
+    }
+  },
+  "primary": {
+    "result": "PASS",
+    "head": "2d804c49879372071adf606bc2a2cf51e261fd94",
+    "tree": "d6f5552d2400d868c2f2af98eb68caadfd4f3f66",
+    "cells": 240,
+    "acceptCurrent": 236,
+    "corrections": 4,
+    "callerlessHolds": 0,
+    "tokenPreservation": "PASS"
+  },
+  "blind": {
+    "result": "PASS",
+    "head": "2d804c49879372071adf606bc2a2cf51e261fd94",
+    "tree": "d6f5552d2400d868c2f2af98eb68caadfd4f3f66",
+    "cells": 240,
+    "decisions": {
+      "accept-current": 233,
+      "correction": 2,
+      "refinement": 5
+    },
+    "proposals": 7,
+    "tokenSignatures": "PASS",
+    "verifierRepoPin": "PASS with --repo exact detached worktree"
+  }
+}
