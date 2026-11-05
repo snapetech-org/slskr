@@ -1599,7 +1599,7 @@
   "Failed to load mesh statistics": "Không thể tải số liệu thống kê lưới",
   "Failed to load metrics": "Không tải được số liệu",
   "Failed to load pending requests": "Không thể tải các yêu cầu đang chờ xử lý",
-  "Failed to load pod publishing stats:": "Không thể tải số liệu thống kê xuất bản nhóm:",
+  "Failed to load pod publishing stats:": "Không thể tải số liệu thống kê xuất bản của pod:",
   "Failed to load routing stats:": "Không thể tải số liệu thống kê định tuyến:",
   "Failed to load verification stats:": "Không tải được số liệu thống kê xác minh:",
   "Failed to publish membership:": "Không thể xuất bản tư cách thành viên:",

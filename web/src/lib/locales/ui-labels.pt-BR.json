@@ -4615,7 +4615,7 @@
   "Failed to load collection items": "Não foi possível carregar os itens da coleção",
   "Failed to load collections": "Não foi possível carregar as coleções",
   "Failed to load conversation": "Não foi possível carregar a conversa",
-  "Failed to load joined rooms": "Não foi possível carregar as salas acessadas",
+  "Failed to load joined rooms": "Não foi possível carregar as salas em que você entrou",
   "Failed to load library health data": "Não foi possível carregar os dados de integridade da biblioteca",
   "Failed to load pod channel messages": "Não foi possível carregar as mensagens do canal do pod",
   "Failed to load pod members": "Não foi possível carregar os membros do pod",
