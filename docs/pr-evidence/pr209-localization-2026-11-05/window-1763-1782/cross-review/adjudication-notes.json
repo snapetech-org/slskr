@@ -1,0 +1,86 @@
+{
+  "artifact": "slskR PR #209 W1763-W1782 independent integrated cross adjudication notes",
+  "head": "5191888071f54061a6012acdedfeb518a6cb3661",
+  "issueAdjudications": [
+    {
+      "decision": "Select corrections that preserve exact ContentID capitalization and spelling where the source/caller names the ContentID field or entity.",
+      "positions": [
+        1766,
+        1771,
+        1777
+      ],
+      "reason": "The callers are the content graph, external ID resolver, and adjacent ContentID A/B input fields; generic translations/hyphenation weaken the named product field.",
+      "topic": "ContentID identity"
+    },
+    {
+      "decision": "Select the proposals preserving the exact ID token.",
+      "positions": [
+        1767
+      ],
+      "reason": "Caller is an inbound-link search input keyed by the entered ID; all three baseline missing-ID cells are corrected.",
+      "topic": "ID identifier"
+    },
+    {
+      "decision": "Select wording that identifies pods and a registry scan.",
+      "positions": [
+        1768
+      ],
+      "reason": "Pinned workflow calls the step Pod Discovery and names pod registration as the only state-changing risk; German Registrierungsscan is ambiguous, so select the Registry-Scan correction.",
+      "topic": "pod registry discovery"
+    },
+    {
+      "decision": "Select corrections/refinements for Hindi and Korean technical sense and Traditional Chinese regional terminology; refine German to perzeptuelle Hashes.",
+      "positions": [
+        1770
+      ],
+      "reason": "Caller is the perceptual/fuzzy content panel; perceptual means similarity hashing rather than cognitive/conceptual hashing.",
+      "topic": "perceptual hashing"
+    },
+    {
+      "decision": "Select the primary corrections for the 12 locales.",
+      "positions": [
+        1772
+      ],
+      "reason": "The caller is the library-health recipe: describe inaccessible/missing files, metadata gaps, false lossless claims, and missing cover art without the literal dead-file/art calques.",
+      "topic": "library health scan"
+    },
+    {
+      "decision": "Select the primary corrected wording where variants differ; preserve the two runtime placeholders in order at 1775.",
+      "positions": [
+        1773,
+        1774,
+        1775,
+        1776
+      ],
+      "reason": "SongIDEvidenceDetails renders fingerprint length for an audio/song-identification result; MetadataProcessingPanel maps the status strings for audio hashing. Explicit audio wording removes the biometric reading.",
+      "topic": "audio fingerprint context"
+    },
+    {
+      "decision": "Correct Japanese and Korean numeric-token additions by spelling the radix term without Arabic digits; refine Arabic to explicit hexadecimal notation; use 雜湊 in zh-Hant.",
+      "positions": [
+        1778
+      ],
+      "reason": "The source has no number token, so keep strict number-token parity. The digit 16 in 16進数/16진수 is conventional radix notation, but the primary written-number forms preserve the same base without adding an ASCII numeric token. The Arabic refinement clarifies the technical term.",
+      "topic": "hexadecimal notation"
+    },
+    {
+      "decision": "Refine Hindi and Indonesian to imperative button forms; choose the primary Japanese correction 修正する.",
+      "positions": [
+        1780
+      ],
+      "reason": "The caller is a remediation action on selected library-health issues; the Japanese current 修理 implies physical repair, while the cross-selected wording fits software correction.",
+      "topic": "Fix action label"
+    },
+    {
+      "decision": "Select primary corrections that express confirmation before correction.",
+      "positions": [
+        1781
+      ],
+      "reason": "The source is the automation-recipe approvalGate field; “confirmation before” preserves the prerequisite timing, while “confirmation of repair” can imply confirmation after the operation.",
+      "topic": "Fix confirmation gate"
+    }
+  ],
+  "nativeSpeakerReview": "Neither sealed review claims native-speaker approval; integrated language confidence is moderate and should be treated as a machine-assisted recommendation.",
+  "policy": "Use primary corrections when their source/caller rationale resolves a semantic or exact-token defect; adopt blind refinements when primary retained current but the blind refinement is supported by the pinned caller; accept current when both retain it. Preserve dissenting proposals and per-cell provenance in the ledger.",
+  "tree": "d5728c24b54a06dda432afd2ef5f378206a6cb8f"
+}

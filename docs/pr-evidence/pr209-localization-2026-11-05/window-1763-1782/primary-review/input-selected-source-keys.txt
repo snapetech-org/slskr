@@ -1,0 +1,20 @@
+Find Links
+Find More Files
+Find Similar Content
+Find all content that links to a specific ContentID
+Find content that links to this ID
+Find listed pods by name, tag, content, or registry scan.
+Find other sources
+Find similar content using perceptual hashes and text analysis
+Find the ContentID for an external identifier
+Finds duplicates, dead files, metadata gaps, fake lossless files, and missing art.
+Fingerprint Length:
+Fingerprint data is unavailable
+Fingerprint extraction failed: {exceptionType}: {message}
+Fingerprint stored
+First ContentID
+First hash value (hexadecimal)
+First text string
+Fix
+Fix confirmation
+Fixing

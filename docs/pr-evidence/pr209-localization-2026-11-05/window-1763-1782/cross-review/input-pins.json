@@ -1,0 +1,40 @@
+{
+  "artifact": "slskR PR #209 W1763-W1782 integrated cross-review input pins",
+  "blind": {
+    "activeHoldSha256": "877c5e2317c03123b752450e3495c2808b07a2c89fa83395c6d05c6bd3d7a64e",
+    "blindLedgerSha256": "a0fd7e2e3483669cc607db8e4456b57d3cecf390e88170ffc3b445f729d9e609",
+    "checksumListSha256": "0bd0fd1a08d07486c69827f96e8cd969bb6b88a3887e411672a0d719edcc1bb3",
+    "manifestSha256": "252e07896fdd115b41532c37b8a6b3fe09a75cfe1f2dc98b7fa37f707d5db1b0",
+    "path": "/mnt/disks/scratch/task-scratch/slskr-pr209-w1763-1782-blind-review-agent-20261105",
+    "tokenAuditSha256": "5ec752ffd9110b58d7673adfb4d083f6d6c44657a59491755c14684d72e96ca4"
+  },
+  "candidateFree": {
+    "activeHoldSha256": "553892053db5fb78509fbc3b24df31df6ea94a35d5cc90f296909fd26561d58c",
+    "afterAttestationSha256": "e3709a9fa934280c262de6baf015a9711f35eba424fad60c56d3058d5678c631",
+    "beforeAttestationSha256": "c1f2c1d3dfc1befa4315d90c2cc4276be7a4ddf65fe57140216e33607d7b38d8",
+    "checksumListSha256": "49ef8f606d569177ff187d01e11cad3c74708e6c60d570896477e7fcf4fcfeca",
+    "currentTargetCellsSha256": "f2e8ed623f78c4a3ca6a2d583fe3401f6452269a8a30ac97b0137f59f7a0d0d2",
+    "manifestSha256": "903d97b24a10d3357343db56b54d116aa065f6948ef7b381acf1f14c25693a7c",
+    "path": "/mnt/disks/scratch/task-scratch/slskr-pr209-w1763-1782-candidate-free-20261105/candidate-free-input",
+    "sourceContextsSha256": "7fa45ecd8f2c535ef3cc1dc113f109acc12cfb8e1a97fdca52023489055cde57",
+    "sourceQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45"
+  },
+  "head": "5191888071f54061a6012acdedfeb518a6cb3661",
+  "inputChecksumValidation": "PASS for all three sealed input packets",
+  "primary": {
+    "checksumListSha256": "789483b26b24acdd1e0ba846a4c8c794ba728b0f2a74dcc0e1be6ab6cbe29b04",
+    "frozenProposalLedgerSha256": "142119303f5883c209772ef4103b016314ba79bf6f5227cdee7b9f5954ae33a7",
+    "inputChecksumListSha256": "49ef8f606d569177ff187d01e11cad3c74708e6c60d570896477e7fcf4fcfeca",
+    "inputPinsSha256": "e709af908e097049576f030f8ffa417d78aefc2fba9179c84ea52e7fef4f9e05",
+    "localeReviewSha256": "db666ee3c42e770c48da7989d95db917031ebb898c590e39d243b43e82bce072",
+    "path": "/mnt/disks/scratch/task-scratch/slskr-pr209-w1763-1782-primary-review-20261105/primary-review",
+    "summarySha256": "8a33576441701af8c2c7cf96cb080dcfefdbc0c205329cc04064d63c972ba684"
+  },
+  "productTestsBuildsCiRun": false,
+  "productWorktreeInspected": false,
+  "pullRequest": 209,
+  "repository": "snapetech-org/slskR",
+  "rootAdjudicationInspected": false,
+  "tree": "d5728c24b54a06dda432afd2ef5f378206a6cb8f",
+  "window": "W1763-W1782"
+}

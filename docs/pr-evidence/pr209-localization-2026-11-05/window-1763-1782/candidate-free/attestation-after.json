@@ -1,0 +1,24 @@
+{
+  "capturedAtUtc": "2026-11-05T21:31:46+00:00",
+  "label": "after extraction",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "state": "OPEN",
+  "draft": true,
+  "url": "https://github.com/snapetech-org/slskr/pull/209",
+  "headRef": "codex/slskr-l10n-audit-20261104-resync",
+  "headSha": "5191888071f54061a6012acdedfeb518a6cb3661",
+  "headTree": "d5728c24b54a06dda432afd2ef5f378206a6cb8f",
+  "baseRef": "main",
+  "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "remoteRefs": {
+    "refs/heads/codex/slskr-l10n-audit-20261104-resync": "5191888071f54061a6012acdedfeb518a6cb3661",
+    "refs/heads/main": "9a9e7b93875d36c452b1b70587103003c2daae65",
+    "refs/pull/209/head": "5191888071f54061a6012acdedfeb518a6cb3661"
+  },
+  "localBranch": "codex/slskr-l10n-audit-20261104-resync",
+  "localHead": "5191888071f54061a6012acdedfeb518a6cb3661",
+  "localTree": "d5728c24b54a06dda432afd2ef5f378206a6cb8f",
+  "localWorktreeClean": true,
+  "deploymentActionsIssuedByReview": 0
+}

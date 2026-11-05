@@ -1,0 +1,427 @@
+{
+  "artifact": "slskR PR #209 W1763-W1782 primary semantic review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "window": "W1763-W1782",
+  "head": "5191888071f54061a6012acdedfeb518a6cb3661",
+  "tree": "d5728c24b54a06dda432afd2ef5f378206a6cb8f",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "independentProposalSha256": "142119303f5883c209772ef4103b016314ba79bf6f5227cdee7b9f5954ae33a7",
+  "reviewerRole": "primary semantic reviewer",
+  "semanticConfidence": "moderate",
+  "localeConfidence": "moderate",
+  "nativeSpeakerApproval": false,
+  "decisionBasis": "Pinned source and caller context; independent target proposals frozen before current catalog cells were opened. Current strings were consulted only afterward for retain/correct decisions and token audit.",
+  "sources": [
+    {
+      "position": 1763,
+      "sourceKey": "Find Links",
+      "sourceKeySha256": "b5373477c6198941f1af34a01d5d8a35ec2e62fe5cb3255fc1fe80a6f3ca7725",
+      "sourceContextSha256": "8abafcfcd7c3f7dfd046b98e262eba68c0fbc6a3a639c6460ab6217ee274da41",
+      "callerOccurrenceCount": 1,
+      "meaning": "Button that launches an inbound-link search in the content graph.",
+      "callers": [
+        {
+          "path": "web/src/components/System/MediaCore/MediaCoreContentGraphPanel.jsx",
+          "line": 293,
+          "lineSha256": "23adab093e7083e4342f75aa116724eb0975621f6036bb92c9fa4a75c1a19e50",
+          "contextSha256": "064719406899697f766922b3c93c6f39afddc0f5cd5904b07a2746aad3cabba3"
+        }
+      ],
+      "manualProtectedTerms": []
+    },
+    {
+      "position": 1764,
+      "sourceKey": "Find More Files",
+      "sourceKeySha256": "bde7e364762db22c6732b7f20652abe3ad3a495f798849dc7db682287b7ef127",
+      "sourceContextSha256": "0e27f40b4a62ef944f8ee0e91fcd85ec13d4b61af6c86cae83e6857aa19d931d",
+      "callerOccurrenceCount": 2,
+      "meaning": "Search for additional files in the selected peer directory from a search result.",
+      "callers": [
+        {
+          "path": "web/src/components/Search/Response.jsx",
+          "line": 1050,
+          "lineSha256": "87a693ea70ea889f99788f83a4ec7865b1dc9126f9d0b5e51cec6255977012bc",
+          "contextSha256": "611446616d98123b42fa16dd4e646e5aafe500801764cc34ce7309e85a934e7d"
+        },
+        {
+          "path": "web/src/components/Search/Response.jsx",
+          "line": 1051,
+          "lineSha256": "1536408e7ae356cf04ffcb923461a4a54b5adf1c5276c998c3d5c6dafe81104b",
+          "contextSha256": "dd3decc408ca316b825519faf21a32a94bbeae0d63e5eca20827c25032c7fb44"
+        }
+      ],
+      "manualProtectedTerms": []
+    },
+    {
+      "position": 1765,
+      "sourceKey": "Find Similar Content",
+      "sourceKeySha256": "32758e709303f640fae4c2153b7387b5d3ea94d79622fa9ab42b7ae96d5fa09b",
+      "sourceContextSha256": "8f148d9cbc30268a50abacacb316601018e6a8cfd4f5a906f477a8611279f678",
+      "callerOccurrenceCount": 1,
+      "meaning": "Button that runs a fuzzy/similar-content search.",
+      "callers": [
+        {
+          "path": "web/src/components/System/MediaCore/MediaCoreFuzzyContentPanel.jsx",
+          "line": 119,
+          "lineSha256": "8dd6ff7b812b34804a1e4e295f68d7f2c5df5ec8202e1169a3fe4d3f0d358383",
+          "contextSha256": "b9ca9448e99ce941661900e1473f61842bf00830fbe041bce27b812a9f61cef9"
+        }
+      ],
+      "manualProtectedTerms": []
+    },
+    {
+      "position": 1766,
+      "sourceKey": "Find all content that links to a specific ContentID",
+      "sourceKeySha256": "ab795c1b0501d3650dd5c7d5764d68fef76f2aee295e5cb191c988b714cf22a1",
+      "sourceContextSha256": "bac402226432314184957354f229bb6c2dff0e74d4249cc50069c4df95ae19c9",
+      "callerOccurrenceCount": 1,
+      "meaning": "Description of finding every graph item that points to one chosen ContentID.",
+      "callers": [
+        {
+          "path": "web/src/components/System/MediaCore/MediaCoreContentGraphPanel.jsx",
+          "line": 279,
+          "lineSha256": "da0739cb83f38383a62b2b992b3d64610c24b8ae76450e8181c28a26c839d88e",
+          "contextSha256": "1648bc42810a4a9f8e0bda2d898f67555e058735e093e9181bf960992c599705"
+        }
+      ],
+      "manualProtectedTerms": [
+        "ContentID"
+      ]
+    },
+    {
+      "position": 1767,
+      "sourceKey": "Find content that links to this ID",
+      "sourceKeySha256": "598a34868c2134e3b49350c8b98074e1a473f6ca5d0ceb3c0546fb9677628bf5",
+      "sourceContextSha256": "3103ea01559f06996c6c1f232e92a61a77e4f87a773fc280dbc0209bb38a8ecb",
+      "callerOccurrenceCount": 2,
+      "meaning": "Placeholder asking for the ID whose inbound links will be found.",
+      "callers": [
+        {
+          "path": "web/src/components/System/MediaCore/MediaCoreContentGraphPanel.jsx",
+          "line": 296,
+          "lineSha256": "0c56003c4edac54fd3d7440b511c21206247ed302fbd4cac363fb44e9d43a545",
+          "contextSha256": "889e6d96076015aaa352aeaed19c5b82564131a50fe512c82888cae31a63c758"
+        },
+        {
+          "path": "web/src/components/System/MediaCore/MediaCoreContentGraphPanel.jsx",
+          "line": 298,
+          "lineSha256": "b49fca57486d4ee60694a478cc4f3707326cce4703dfea37b1f073d21dddf7b9",
+          "contextSha256": "60aacdaade1bd22802160dd355406abf81b53c81c4deca9f6dc63190536dfdc3"
+        }
+      ],
+      "manualProtectedTerms": [
+        "ID"
+      ]
+    },
+    {
+      "position": 1768,
+      "sourceKey": "Find listed pods by name, tag, content, or registry scan.",
+      "sourceKeySha256": "bcae72cbbec6fabf868789d9f7d11d79bbb9c61efaa527030bd4270607597e50",
+      "sourceContextSha256": "f89918e4f90de3e87891dc7d56f17c9096853e61e763ca3346aecab05986264c",
+      "callerOccurrenceCount": 1,
+      "meaning": "Read-only discovery workflow that finds listed pods by metadata or registry scan.",
+      "callers": [
+        {
+          "path": "web/src/components/System/MediaCore/mediaCoreWorkflows.js",
+          "line": 59,
+          "lineSha256": "a73990845526feaa58809936496067abd6ea56a27fcc3fb94a1f7d24ad827f91",
+          "contextSha256": "66893fc9058ec3b8c6aec528516eb0c41f9ff5f6c838e5cb8041aa28451941f8"
+        }
+      ],
+      "manualProtectedTerms": []
+    },
+    {
+      "position": 1769,
+      "sourceKey": "Find other sources",
+      "sourceKeySha256": "e3654f9f5fdc952ce30ad97891683146e66ba7bf30c3d7969a02a4da065aaaf5",
+      "sourceContextSha256": "2507f8877d33632299833389d81f88cb2ec4eb58a1bd9ec7e4ecc832c824ffd0",
+      "callerOccurrenceCount": 4,
+      "meaning": "Retry action that seeks a different peer/source when the current peer cannot serve a file.",
+      "callers": [
+        {
+          "path": "web/src/lib/transfers.js",
+          "line": 299,
+          "lineSha256": "cf67cc8b777830b105bb72f9c44946a8f274f525a34f2569519e2d9f035bd515",
+          "contextSha256": "0fee2d83738831f2a8bdfb137c9353b725dbe82c7fc0f4bab9de07002857b28f"
+        },
+        {
+          "path": "web/src/lib/transfers.js",
+          "line": 318,
+          "lineSha256": "cf67cc8b777830b105bb72f9c44946a8f274f525a34f2569519e2d9f035bd515",
+          "contextSha256": "3a788bcd420db31d5127f59ef08dc620db123b140a8b41db677ced4eaede5132"
+        },
+        {
+          "path": "web/src/lib/transfers.js",
+          "line": 328,
+          "lineSha256": "cf67cc8b777830b105bb72f9c44946a8f274f525a34f2569519e2d9f035bd515",
+          "contextSha256": "58ecf3e321da5a661e8cbc0735f98c5ef5c815b99986ddca4512945fa32f4a65"
+        },
+        {
+          "path": "web/src/lib/transfers.js",
+          "line": 338,
+          "lineSha256": "cf67cc8b777830b105bb72f9c44946a8f274f525a34f2569519e2d9f035bd515",
+          "contextSha256": "4ad6af90f8db1edb0b96ba74251bb474132fc39a07103f0704655ef7e07119e9"
+        }
+      ],
+      "manualProtectedTerms": []
+    },
+    {
+      "position": 1770,
+      "sourceKey": "Find similar content using perceptual hashes and text analysis",
+      "sourceKeySha256": "1f7a57e5acb4bc3d1a3c7be57447d0366bd459ba061a0bb4dd6e052fb82dc028",
+      "sourceContextSha256": "abee2a9c5b1443afa80ed1bbb85e54b5ce344fd1a3702ddd8e9e46dfafea51a6",
+      "callerOccurrenceCount": 1,
+      "meaning": "Description of fuzzy matching based on perceptual hashes and text analysis.",
+      "callers": [
+        {
+          "path": "web/src/components/System/MediaCore/MediaCoreFuzzyContentPanel.jsx",
+          "line": 74,
+          "lineSha256": "b926c549b724e541278d6549b7bdbdf82333e4cb085abb1d902d70c5fe6eb78d",
+          "contextSha256": "8702af83615b0b25ae112222b363260d1fd90f3a07d4a608c7c767d5c25fbaa8"
+        }
+      ],
+      "manualProtectedTerms": []
+    },
+    {
+      "position": 1771,
+      "sourceKey": "Find the ContentID for an external identifier",
+      "sourceKeySha256": "be1c47178593132d9f57b4186042bce22100077b9d9495a3adbebc8f798a5d60",
+      "sourceContextSha256": "aebfdd9269b79ff7d933214f8629ad1b1cb57334a90026510df34bd28a6bf4e3",
+      "callerOccurrenceCount": 1,
+      "meaning": "Description of resolving an external identifier to the application ContentID.",
+      "callers": [
+        {
+          "path": "web/src/components/System/MediaCore/ResolveExternalIdPanel.jsx",
+          "line": 78,
+          "lineSha256": "458203a8f4701b1d2d1eb278cf109cac552e2e07517d7992b792f46350748d89",
+          "contextSha256": "524e0f58d5c1d87250d9896a3b9d9f028e47bde2d0d4ecc7b9594af1a35ebc80"
+        }
+      ],
+      "manualProtectedTerms": [
+        "ContentID"
+      ]
+    },
+    {
+      "position": 1772,
+      "sourceKey": "Finds duplicates, dead files, metadata gaps, fake lossless files, and missing art.",
+      "sourceKeySha256": "4e35395cfc1413f99d4bcf06028b93cc9d447d4f8f8008bc36cd8a7f0538af73",
+      "sourceContextSha256": "469f124251673368f99a96d51473c94139cdaaf811840d6a9a92f13d42671e35",
+      "callerOccurrenceCount": 1,
+      "meaning": "Library-health scan finding duplicates, unavailable paths, missing metadata, falsely lossless files, and missing artwork.",
+      "callers": [
+        {
+          "path": "web/src/lib/automationRecipes.js",
+          "line": 81,
+          "lineSha256": "16efadbcbaf2bbcb444213586694b5a8c3951c84129696a920c140cc92c3e3ba",
+          "contextSha256": "6d31ea8b5b1cf29e090b6a582f72007b834f1ea3416ac194ffca7043dc23536c"
+        }
+      ],
+      "manualProtectedTerms": []
+    },
+    {
+      "position": 1773,
+      "sourceKey": "Fingerprint Length:",
+      "sourceKeySha256": "46e84db5c7e755955c9fd07093b1c6fe53536b9b55d426ab20f1486bd90e46db",
+      "sourceContextSha256": "bf03b1603ad95f9e1625c23eb59f6842f058b4f4bb32530c4b5c625d4fcc3ed9",
+      "callerOccurrenceCount": 1,
+      "meaning": "Audio-fingerprint length field in song-identification evidence.",
+      "callers": [
+        {
+          "path": "web/src/components/Search/SongIDEvidenceDetails.jsx",
+          "line": 292,
+          "lineSha256": "d62c0dd4bd285f4f3b48ae83ed1eff30a36116d434a67369dc48b0eb08dde4be",
+          "contextSha256": "c3fc5847a96dcb350d28aed29b507da90652e2f6122eae3f9982062f9a521255"
+        }
+      ],
+      "manualProtectedTerms": []
+    },
+    {
+      "position": 1774,
+      "sourceKey": "Fingerprint data is unavailable",
+      "sourceKeySha256": "e4aebaebd1e5cbce83a7afb71192ee671c5017ed775c25484d5180a409ae8094",
+      "sourceContextSha256": "43371a15cdfcc2b9cfde29b660570af00595c4ac8ef397ab99a1c0472486a4bb",
+      "callerOccurrenceCount": 1,
+      "meaning": "Audio-fingerprint availability status in metadata processing.",
+      "callers": [
+        {
+          "path": "web/src/components/System/Integrations/MetadataProcessingPanel.jsx",
+          "line": 71,
+          "lineSha256": "69a8ad21f91d5d9456e3cc4d439db60512ef21707f66d6c13714961f76bf6913",
+          "contextSha256": "8713b76f67456784c33a46ece7053945845804bfb9c5223accbed6c587857ae9"
+        }
+      ],
+      "manualProtectedTerms": []
+    },
+    {
+      "position": 1775,
+      "sourceKey": "Fingerprint extraction failed: {exceptionType}: {message}",
+      "sourceKeySha256": "220014069dfe85b957ee4b70d00851401f48f3eda6a3d8ec72a5f63e112dc9ed",
+      "sourceContextSha256": "e4acb9851cbe6ced77add19046a7e3b62a7b279f240bcb4b4517cac9cdd26740",
+      "callerOccurrenceCount": 1,
+      "meaning": "Audio-fingerprint extraction error template; both named placeholders are substituted at runtime.",
+      "callers": [
+        {
+          "path": "web/src/components/System/Integrations/MetadataProcessingPanel.jsx",
+          "line": 57,
+          "lineSha256": "edeb184d139fcb57d7ddef5ef334a022b750300297553c3a1416fb4a7b2041bc",
+          "contextSha256": "b2bc5da961c6967b55fe7f8dd73aa335ebef47f97774300d2c38561d4a3790b1"
+        }
+      ],
+      "manualProtectedTerms": []
+    },
+    {
+      "position": 1776,
+      "sourceKey": "Fingerprint stored",
+      "sourceKeySha256": "79ef69de44bfe0a2d21a82b7965f8626a5999d5610ec05c23f3a855e5bf3c3e6",
+      "sourceContextSha256": "6d9d2bf70d536148b6c9af4704643ade17223d5cc80eadd4da502cad797e1f34",
+      "callerOccurrenceCount": 1,
+      "meaning": "Audio-fingerprint stored status in metadata processing.",
+      "callers": [
+        {
+          "path": "web/src/components/System/Integrations/MetadataProcessingPanel.jsx",
+          "line": 70,
+          "lineSha256": "f5104702f8775d13613e7c04f43475f7955644d3ad2d67ffbfb9a65a50d449bf",
+          "contextSha256": "df38bbd5fd71bc7cb5464df3c90455d7a19b0fb9d0ecbdee097c957d31e2aea5"
+        }
+      ],
+      "manualProtectedTerms": []
+    },
+    {
+      "position": 1777,
+      "sourceKey": "First ContentID",
+      "sourceKeySha256": "def2eec5846e5ce1967c4d8b816ef6f098ce53df0a6a3dbcf9bb484746bf7df9",
+      "sourceContextSha256": "9b659310ac3a81c21123af3b9b7e6a6389d6eeb56929daae4968ab13b0ba428d",
+      "callerOccurrenceCount": 2,
+      "meaning": "First input placeholder in the ContentID similarity form; neighboring labels are ContentID A/B.",
+      "callers": [
+        {
+          "path": "web/src/components/System/MediaCore/MediaCorePerceptualSimilarityPanel.jsx",
+          "line": 83,
+          "lineSha256": "1b2d596c6ec778e673945f21faed6c9daa2a970c569836a7262ca0b86dabe6ba",
+          "contextSha256": "2d36e1e8331af02124a1a888bd9c25317117a356c504163d3a535488ac08e942"
+        },
+        {
+          "path": "web/src/components/System/MediaCore/MediaCorePerceptualSimilarityPanel.jsx",
+          "line": 85,
+          "lineSha256": "1038072b2793787fc9d84db7b0b0115fde0e3ae05abb37e1519afe3561206f13",
+          "contextSha256": "f3425a31ead03f3650d1f18c4064ed0af5f848250fa1b309a2cd57f2bcae55c4"
+        }
+      ],
+      "manualProtectedTerms": [
+        "ContentID"
+      ]
+    },
+    {
+      "position": 1778,
+      "sourceKey": "First hash value (hexadecimal)",
+      "sourceKeySha256": "2e52ba12caf44b13460a66a363350cb0e5115e76585b2f4c72ad5f1a5b1724d5",
+      "sourceContextSha256": "6dbae3c08398fddd06ab7e7d1b99c2860269ddb5299a343438230aceb3e05915",
+      "callerOccurrenceCount": 2,
+      "meaning": "First hexadecimal hash input placeholder in the hash-similarity form.",
+      "callers": [
+        {
+          "path": "web/src/components/System/MediaCore/MediaCoreHashSimilarityPanel.jsx",
+          "line": 79,
+          "lineSha256": "8e981403920b2f740f495abb900d8b46c4509fa21c4cfc290d9ea3be00ffc46d",
+          "contextSha256": "cb637b5c6d40bc081ee7ee75980f16e17fb3b242b71918dd12f26cfe82ca660b"
+        },
+        {
+          "path": "web/src/components/System/MediaCore/MediaCoreHashSimilarityPanel.jsx",
+          "line": 81,
+          "lineSha256": "9e898aba0f20e90fbc75befbc0bd3aee8bf794ce08657173f49dd96fda61e082",
+          "contextSha256": "f7681de41007a83ad9e4bbf52b63c80f256787d18d604e0cb34c82a0f84a3abe"
+        }
+      ],
+      "manualProtectedTerms": []
+    },
+    {
+      "position": 1779,
+      "sourceKey": "First text string",
+      "sourceKeySha256": "3a6d4817a9e0a97baec7dd5f27e70703e7fad1f053c8cb132bfcd9d3ab616b80",
+      "sourceContextSha256": "b1d8cacea10dc22c3c1687d06cdc156da64b226a721c7d4946e06f40015a7630",
+      "callerOccurrenceCount": 2,
+      "meaning": "First text-input placeholder in the text-similarity form.",
+      "callers": [
+        {
+          "path": "web/src/components/System/MediaCore/MediaCoreTextSimilarityPanel.jsx",
+          "line": 77,
+          "lineSha256": "9f476549342d1afa4663362f28d5f2466ae3ffa10d28a4a4683bebbee0fda959",
+          "contextSha256": "bd51dc184e031659fd9c31b3dcd9818dbb0c259371ec07ad5ffec7784ef0848d"
+        },
+        {
+          "path": "web/src/components/System/MediaCore/MediaCoreTextSimilarityPanel.jsx",
+          "line": 79,
+          "lineSha256": "babc6f9b50907b08e944806e09954728d3db339b71e59f7e23b3efe53fea94f0",
+          "contextSha256": "e88af3d00300ced8202e1a0a95460b7dee0f16fe366cb4b201e9cf89b82185b6"
+        }
+      ],
+      "manualProtectedTerms": []
+    },
+    {
+      "position": 1780,
+      "sourceKey": "Fix",
+      "sourceKeySha256": "21f1595b614ffc31c2693545a5ccb27559edf20c53cdd21099bc83b743313fd8",
+      "sourceContextSha256": "a1c9f82321809528bd35ef95e5be1dfc23b07c131cfa4bc119385a5ebf5bfdf1",
+      "callerOccurrenceCount": 2,
+      "meaning": "Action button to repair selected library-health issues.",
+      "callers": [
+        {
+          "path": "web/src/components/System/LibraryHealth/index.jsx",
+          "line": 738,
+          "lineSha256": "62536c6fe69b7880a8af1fa32e5c1185a0bad4f9c8ae1a8acba2f844b63459e4",
+          "contextSha256": "ade93696b9017eec1fc2d15232f73393b9a6528ce40d2591927bce76436cb6f4"
+        },
+        {
+          "path": "web/src/components/System/LibraryHealth/index.jsx",
+          "line": 927,
+          "lineSha256": "692d767263b58ac1fee6da6789cf28b7030bc62303599c1484ef8cb169210e70",
+          "contextSha256": "87579e96f2925660a336acd2c5276f6c25c94b2b1f25647af086ef1ce502932c"
+        }
+      ],
+      "manualProtectedTerms": []
+    },
+    {
+      "position": 1781,
+      "sourceKey": "Fix confirmation",
+      "sourceKeySha256": "520bf9a0258c1964ab7613958490da8ee533a42583b10bafdb031ff82ec26bc7",
+      "sourceContextSha256": "53af6ee284e1a52af7bc5127ffe6fe26d00b2017b65e6058163c8f7ddfbe37c3",
+      "callerOccurrenceCount": 1,
+      "meaning": "Automation-recipe approval gate requiring user confirmation before a fix.",
+      "callers": [
+        {
+          "path": "web/src/lib/automationRecipes.js",
+          "line": 78,
+          "lineSha256": "ab66cfb422a27b9b957a68a050700d8eda4e3753ce279566746a5fce4bae108e",
+          "contextSha256": "fffc9deebd3611d85b59205d0f625d7ae6be1b615c81fc518edd124ab073996c"
+        }
+      ],
+      "manualProtectedTerms": []
+    },
+    {
+      "position": 1782,
+      "sourceKey": "Fixing",
+      "sourceKeySha256": "f7d3ae9b049ea33db34a11ad018f019b73df1826aa31bd6268806331f100c744",
+      "sourceContextSha256": "6dc5b357cc976b4921d406c70e2882ef5053d3372072e25084a5d61ce9a00495",
+      "callerOccurrenceCount": 2,
+      "meaning": "In-progress status for an issue repair.",
+      "callers": [
+        {
+          "path": "web/src/components/System/LibraryHealth/index.jsx",
+          "line": 904,
+          "lineSha256": "a5aa5854a657425c94066ff2f509bae96e6b3790f9f320cab79375f9b3000322",
+          "contextSha256": "3b8009827578f5739b62de7fe5f08d9c1d207277442635de2c4f78a93dfa0de2"
+        },
+        {
+          "path": "web/src/components/System/LibraryHealth/index.jsx",
+          "line": 931,
+          "lineSha256": "9a72718264c286f199dbd6523fbc689825aa2848a75c65b1d9b8de9fa3f9790f",
+          "contextSha256": "2e550cf0d16250069fc334fc08566b78015005c4100864097174b111fcf5f676"
+        }
+      ],
+      "manualProtectedTerms": []
+    }
+  ]
+}
