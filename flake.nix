@@ -10,23 +10,23 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        version = "0.2.74";
+        version = "0.2.82";
         sources = {
           "x86_64-linux" = {
-            url = "https://github.com/snapetech-org/slskr/releases/download/release-v0.2.74/slskr-v0.2.74-x86_64-unknown-linux-musl.tar.gz";
-            sha256 = "c1f63fcad9f98fa5d5d946020fd143dccbdbf77dc86db66c91e4bf183356ca42";
+            url = "https://github.com/snapetech-org/slskr/releases/download/v0.2.82/slskr-v0.2.82-x86_64-unknown-linux-musl.tar.gz";
+            sha256 = "00e694748fb53e47b280d84e999d4bc0d6a6a548f093b1526f07a6b30e66e306";
           };
           "aarch64-linux" = {
-            url = "https://github.com/snapetech-org/slskr/releases/download/release-v0.2.74/slskr-v0.2.74-aarch64-unknown-linux-musl.tar.gz";
-            sha256 = "3ac862d8a9a31ecb54af7ae92970edb69029f1269ed2d7b9bb2e36cfaeda2d82";
+            url = "https://github.com/snapetech-org/slskr/releases/download/v0.2.82/slskr-v0.2.82-aarch64-unknown-linux-musl.tar.gz";
+            sha256 = "1d5f0d3660f297f20cd8e97c1727e153358088ce7327d39decd6526f5e953976";
           };
           "x86_64-darwin" = {
-            url = "https://github.com/snapetech-org/slskr/releases/download/release-v0.2.74/slskr-v0.2.74-x86_64-apple-darwin.tar.gz";
-            sha256 = "c510f9f5a5b3f813f73022e78b7debc6e662b097e172e76d578bcdb0d08231e2";
+            url = "https://github.com/snapetech-org/slskr/releases/download/v0.2.82/slskr-v0.2.82-x86_64-apple-darwin.tar.gz";
+            sha256 = "0e7acda58e7e9d38b4826c398f012af140de16917eb178b9e4f14b1dffe98cd7";
           };
           "aarch64-darwin" = {
-            url = "https://github.com/snapetech-org/slskr/releases/download/release-v0.2.74/slskr-v0.2.74-aarch64-apple-darwin.tar.gz";
-            sha256 = "ce808668393baab28778d47a48cdbc1cec7446c6aca156cfc9414195b6258d55";
+            url = "https://github.com/snapetech-org/slskr/releases/download/v0.2.82/slskr-v0.2.82-aarch64-apple-darwin.tar.gz";
+            sha256 = "340c9e36fd8e371aa7b07781b99fd3faadd8efefa37ab14661932f232823c7d4";
           };
         };
         mkSlskr = { pname, version, sources }:
