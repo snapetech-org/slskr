@@ -1,0 +1,67 @@
+{
+  "artifact": "slskR PR #209 W1783-W1802 independent blind semantic review ledger",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "head": "0264a4fcaa944fee61049efec0cf3c451416c8b9",
+  "tree": "895e57c178d959a23aceddead27623f2dd854ba0",
+  "window": "W1783-W1802",
+  "positions": [
+    1783,
+    1802
+  ],
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "cellCount": 240,
+  "statusCounts": {
+    "retain": 197,
+    "review": 5,
+    "revise": 38
+  },
+  "issueCodeCounts": {
+    "ACTION_LABEL_STYLE": 1,
+    "EVIDENCE_STANCE_LABEL": 10,
+    "FOLD_VS_GROUP_TERM": 1,
+    "FOLLOW_VS_TRACK": 2,
+    "FORCE_ACTION_MISTRANSLATION": 5,
+    "HOST_ROLE_MISTRANSLATION": 1,
+    "LITERAL_FOLD": 15,
+    "PRODUCT_TERM_MISTRANSLATION": 1,
+    "PRODUCT_TERM_REVIEW": 2,
+    "SOURCE_DETAIL_OMISSION": 1,
+    "TECHNICAL_TERM": 1,
+    "WISHLIST_OWNERSHIP_OMISSION": 3
+  },
+  "inputPacket": {
+    "path": "../candidate-free-input",
+    "sha256SumsFileSha256": "368b3bcc5101b6c0d12c663b622d9a7c8b26dc6cd12c8c01cb119e300a8f9895",
+    "offlineVerifierResult": "PASS",
+    "offlineVerifierChecksummedFileCount": 20,
+    "sourcePacketReportedTokenMismatchCounts": {
+      "placeholderSequenceMismatchCount": 0,
+      "markupMismatchCount": 0,
+      "numericTokenMismatchCount": 1,
+      "protectedLiteralMismatchCount": 11
+    },
+    "reviewerDisposition": "The numeric and protected-literal flags were examined cell by cell and judged semantic false positives as recorded in the ledger."
+  },
+  "reviewMethod": "Semantic and technical review based only on this sealed packet’s current target cells, source strings, caller contexts, and pinned localization runtime context. The prescribed packet verifier also checked predecessor candidate-free continuity; no proposal packet or product files/worktrees were used for review.",
+  "confidence": "moderate",
+  "nativeSpeakerApproval": false,
+  "approvalStatement": "All statuses are provisional. Any reviewerSuggestionUnapproved values are proposals and are not native-speaker-approved; no cell is marked native-speaker-approved.",
+  "nextBoundary": "Obtain locale native-speaker review of every revise/review cell before adopting any suggested wording; then reconcile the approved edits against the pinned source/caller context.",
+  "createdAtUtc": "2026-11-05T23:55:23+00:00",
+  "candidateFreeInput": "../candidate-free-input",
+  "path": "../candidate-free-input"
+}

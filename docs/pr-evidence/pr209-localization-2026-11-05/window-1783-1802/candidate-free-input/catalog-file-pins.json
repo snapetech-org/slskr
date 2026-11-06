@@ -1,0 +1,92 @@
+{
+  "head": "0264a4fcaa944fee61049efec0cf3c451416c8b9",
+  "tree": "895e57c178d959a23aceddead27623f2dd854ba0",
+  "sourceLookupKeySetCount": 5441,
+  "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "localeCatalogs": {
+    "es": {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "sha256": "b161eaa8a35607480b968a53d96a9766555c67f042e9a399c347a59a22d338b6",
+      "gitBlob": "c0d7409ae39f2ad4edb246f7ebb47f07cfa0e79c",
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keyCount": 5441
+    },
+    "zh-Hans": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "sha256": "9aa57968625b8e3ee89749726863a094337893493a83a6011aae6edc5bb328ee",
+      "gitBlob": "98698215e1201fd56e8abbb28e20bbc53e25a4b8",
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keyCount": 5441
+    },
+    "hi": {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "sha256": "eb5df4ed8660df32b760cd20a48f00f7fcf86f677c3eef40bd9858b9ca1f1a38",
+      "gitBlob": "728a2b6dd387d099b12eac20ef38c598b9dc4fde",
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keyCount": 5441
+    },
+    "de": {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "sha256": "bb3d23afb9435db50df4947b671b76dd1ef01df358bf4621fae59dc549a3049b",
+      "gitBlob": "e2bb1d3ef42859c2c82c77e31b59bc29baa1a982",
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keyCount": 5441
+    },
+    "ja": {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "sha256": "c700b01c2938d2ab5b2ddc5f7fb66012ea9fa3c5a47691f6220501435ac0e683",
+      "gitBlob": "378b9b922ad263463b1cd7918d80321d2e08cd19",
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keyCount": 5441
+    },
+    "fr": {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "sha256": "e2a64c54e5163673da9f63e05ee3257601dcfb88c1d5722fabf075c3533d733c",
+      "gitBlob": "97203de8c8e6df435def27a6bc0052c4da587ae9",
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keyCount": 5441
+    },
+    "pt-BR": {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "sha256": "37e76a78a1bba7758812578fd03bbf90048870aa354db97db289b9a14696930f",
+      "gitBlob": "6dcfb74a10176e0f3838d0c7ea366068cd1f5776",
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keyCount": 5441
+    },
+    "ar": {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "sha256": "6f6c6f70800e61263c44eedce0f2f7ef4380befde2a8998190f7ce8984078fe6",
+      "gitBlob": "2ec7775b2622f6389e423606aa5e29148fb80b4f",
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keyCount": 5441
+    },
+    "ko": {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "sha256": "5279b1a61e0eb02fa4903489367cf1d630a562123a009c6b5dca1342d504f9ed",
+      "gitBlob": "82bd822e604d30795cc67bc44ea5b02273bb3bdc",
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keyCount": 5441
+    },
+    "zh-Hant": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "sha256": "ceef228f8ccf475f64f1b2781045094bef9daba57e88cc693392cf6125e7fb84",
+      "gitBlob": "709941ef27331d32dd5a882e06833172e601a6c0",
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keyCount": 5441
+    },
+    "vi": {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "sha256": "cb923395cfcaeb015404625ee1dcc617a3ed4e24584f7ffcf142413c980466cd",
+      "gitBlob": "8192184e7279c32f233cf8a8ab40561bac277c33",
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keyCount": 5441
+    },
+    "id": {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "sha256": "ef89f424f1f02d31f13ad5f136922f3418639ffb5d9f1eddb1e5d53183b811b3",
+      "gitBlob": "354ff51a2c563fe845d65773d3d67d5e0c475aa0",
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keyCount": 5441
+    }
+  }
+}

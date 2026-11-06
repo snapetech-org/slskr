@@ -1,0 +1,27 @@
+{
+  "reviewHead": "0264a4fcaa944fee61049efec0cf3c451416c8b9",
+  "reviewTree": "895e57c178d959a23aceddead27623f2dd854ba0",
+  "candidateFreeChecksumsSha256": "368b3bcc5101b6c0d12c663b622d9a7c8b26dc6cd12c8c01cb119e300a8f9895",
+  "primaryChecksumsSha256": "f1a51a357bc94bc5800c212e09c6a26cb4734540d03f858ab7d8666bf1eac576",
+  "blindChecksumsSha256": "f3a701fbe63766f006cec3b49bb0920d4935178ea4615e91c80739feb0e391a7",
+  "integratedCrossChecksumsSha256": "c782de5862a07675e879798798e3566d83094326d81e58ff329484293cee9cff",
+  "integratedCrossLedgerSha256": "abe180a46b18b2795efb30345fce6dfddee8d7862733b542d24e6ae652462b95",
+  "reviewedCells": 240,
+  "changedTargets": 56,
+  "unresolvedHold": "1792::ko; target retained at exact input hash",
+  "priorHold": "1719::id; hash-only and unchanged",
+  "reviewerApproval": "No qualified native-speaker approval; no headed-browser acceptance",
+  "agentSealedPacketChecksumsSha256": {
+    "candidateFree": "dc7a5b5d8901d1d8b5168c7da966ba3769e6377b2be383c0946c18de8e422962",
+    "primary": "f4043d4d16786166d6e0f8d74dbab8111f4bf6a09644d9fc1e1a1e8bd2638372",
+    "blind": "4dfd942b6367eea65d270f6d199de5194e4fd95e95bdcf91a5234ebec0e5cde2",
+    "integratedCross": "a6d7d30ac8089f01ca5597b9f6d5f016d71a794838977ec8eee338c6a621469c"
+  },
+  "committedPortablePacketChecksumsSha256": {
+    "candidateFree": "368b3bcc5101b6c0d12c663b622d9a7c8b26dc6cd12c8c01cb119e300a8f9895",
+    "primary": "f1a51a357bc94bc5800c212e09c6a26cb4734540d03f858ab7d8666bf1eac576",
+    "blind": "f3a701fbe63766f006cec3b49bb0920d4935178ea4615e91c80739feb0e391a7",
+    "integratedCross": "c782de5862a07675e879798798e3566d83094326d81e58ff329484293cee9cff"
+  },
+  "portablePaths": "Packet-local verifier and builder paths resolve from committed sibling directories; predecessor candidate-free input is committed under window-1763-1782/candidate-free."
+}

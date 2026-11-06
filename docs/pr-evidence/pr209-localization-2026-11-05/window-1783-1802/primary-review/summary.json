@@ -1,0 +1,51 @@
+{
+  "artifact": "slskR PR #209 W1783-W1802 primary semantic review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "window": "W1783-W1802",
+  "head": "0264a4fcaa944fee61049efec0cf3c451416c8b9",
+  "tree": "895e57c178d959a23aceddead27623f2dd854ba0",
+  "candidateFreeInput": "../candidate-free-input",
+  "candidateFreeChecksumListSha256": "368b3bcc5101b6c0d12c663b622d9a7c8b26dc6cd12c8c01cb119e300a8f9895",
+  "cells": 240,
+  "sourceCount": 20,
+  "localeCount": 12,
+  "callerReferences": 29,
+  "callerlessSourceCount": 0,
+  "dispositions": {
+    "accept_current": 168,
+    "correction": 40,
+    "refinement": 32
+  },
+  "proposedChanges": 72,
+  "baselineTokenMismatchCounts": {
+    "placeholderSequenceMismatchCount": 0,
+    "markupMismatchCount": 0,
+    "numericTokenMismatchCount": 1,
+    "protectedLiteralMismatchCount": 11
+  },
+  "proposedTokenMismatchCounts": {
+    "markup": 0,
+    "numeric": 0,
+    "placeholder": 0,
+    "protectedLiteral": 0
+  },
+  "protectedMatrixCellsPreserved": 12,
+  "activeHoldReattestedHashOnly": "1719::id",
+  "activeHoldTargetHashUnchanged": true,
+  "activeHoldSourceContextUnchanged": true,
+  "previousWindowReadbackHashesCopiedUnchanged": 240,
+  "nextBoundary": {
+    "boundary": true,
+    "position": 1803,
+    "sourceKeySha256": "46f390c945e7ff7e760db1cc63bed9f9429afa266c56413af8628ad801008175"
+  },
+  "runtimeContextPath": "web/src/lib/interfaceLocale.js",
+  "runtimeContextSha256": "16eb5f119655805f48845e026ee12fd517fae6de871091bd9be2e5b7f1d310ea",
+  "reviewMethod": "Primary semantic review using candidate-free exact-head source/current/caller/runtime evidence only",
+  "nativeSpeakerApproval": false,
+  "confidence": "moderate",
+  "productWorktreeEdited": false,
+  "catalogValuesApplied": false,
+  "testsBuildsScansCiRun": false
+}

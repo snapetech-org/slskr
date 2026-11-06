@@ -1,0 +1,16 @@
+{
+  "result": "PASS_POST_COMMIT_READBACK",
+  "window": "W1783-W1802",
+  "inputHead": "0264a4fcaa944fee61049efec0cf3c451416c8b9",
+  "inputTree": "895e57c178d959a23aceddead27623f2dd854ba0",
+  "productCommit": "fe1d95c89a1ebab79625299732c09d3649ee20e4",
+  "productTree": "63b34b52b0165db534cd7a4e2b06ba277f1309ae",
+  "verificationHead": "fe1d95c89a1ebab79625299732c09d3649ee20e4",
+  "catalogsMatchPinnedProduct": true,
+  "keyOrderPreserved": true,
+  "readbackRows": 240,
+  "changedCells": 56,
+  "unchangedCells": 183,
+  "heldCells": 1,
+  "nativeSpeakerApproval": false
+}
