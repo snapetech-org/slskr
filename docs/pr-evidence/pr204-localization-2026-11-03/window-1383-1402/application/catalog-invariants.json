@@ -1,0 +1,122 @@
+[
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.ar.json",
+    "entryCount": 5441,
+    "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+    "orderedKeySetAndOrderPreserved": true,
+    "validNonemptyStringOrPluralValues": true,
+    "pluralObjectCount": 15,
+    "changedTargets": 5,
+    "reviewedCells": 20
+  },
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.de.json",
+    "entryCount": 5441,
+    "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+    "orderedKeySetAndOrderPreserved": true,
+    "validNonemptyStringOrPluralValues": true,
+    "pluralObjectCount": 0,
+    "changedTargets": 3,
+    "reviewedCells": 20
+  },
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.es.json",
+    "entryCount": 5441,
+    "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+    "orderedKeySetAndOrderPreserved": true,
+    "validNonemptyStringOrPluralValues": true,
+    "pluralObjectCount": 0,
+    "changedTargets": 4,
+    "reviewedCells": 20
+  },
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.fr.json",
+    "entryCount": 5441,
+    "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+    "orderedKeySetAndOrderPreserved": true,
+    "validNonemptyStringOrPluralValues": true,
+    "pluralObjectCount": 0,
+    "changedTargets": 2,
+    "reviewedCells": 20
+  },
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.hi.json",
+    "entryCount": 5441,
+    "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+    "orderedKeySetAndOrderPreserved": true,
+    "validNonemptyStringOrPluralValues": true,
+    "pluralObjectCount": 0,
+    "changedTargets": 6,
+    "reviewedCells": 20
+  },
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.id.json",
+    "entryCount": 5441,
+    "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+    "orderedKeySetAndOrderPreserved": true,
+    "validNonemptyStringOrPluralValues": true,
+    "pluralObjectCount": 0,
+    "changedTargets": 6,
+    "reviewedCells": 20
+  },
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.ja.json",
+    "entryCount": 5441,
+    "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+    "orderedKeySetAndOrderPreserved": true,
+    "validNonemptyStringOrPluralValues": true,
+    "pluralObjectCount": 0,
+    "changedTargets": 4,
+    "reviewedCells": 20
+  },
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.ko.json",
+    "entryCount": 5441,
+    "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+    "orderedKeySetAndOrderPreserved": true,
+    "validNonemptyStringOrPluralValues": true,
+    "pluralObjectCount": 0,
+    "changedTargets": 6,
+    "reviewedCells": 20
+  },
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json",
+    "entryCount": 5441,
+    "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+    "orderedKeySetAndOrderPreserved": true,
+    "validNonemptyStringOrPluralValues": true,
+    "pluralObjectCount": 0,
+    "changedTargets": 4,
+    "reviewedCells": 20
+  },
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.vi.json",
+    "entryCount": 5441,
+    "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+    "orderedKeySetAndOrderPreserved": true,
+    "validNonemptyStringOrPluralValues": true,
+    "pluralObjectCount": 0,
+    "changedTargets": 5,
+    "reviewedCells": 20
+  },
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json",
+    "entryCount": 5441,
+    "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+    "orderedKeySetAndOrderPreserved": true,
+    "validNonemptyStringOrPluralValues": true,
+    "pluralObjectCount": 0,
+    "changedTargets": 6,
+    "reviewedCells": 20
+  },
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json",
+    "entryCount": 5441,
+    "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+    "orderedKeySetAndOrderPreserved": true,
+    "validNonemptyStringOrPluralValues": true,
+    "pluralObjectCount": 0,
+    "changedTargets": 6,
+    "reviewedCells": 20
+  }
+]

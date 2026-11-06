@@ -200,6 +200,7 @@ const shareFetch = async (ownerEndpoint, path, { method = 'GET', token, body } =
   if (!response.ok) {
     const error = new Error(data?.error || `Request failed: ${response.status}`);
     error.response = { data, status: response.status };
+    error.isRemoteShareError = true;
     throw error;
   }
   return data;

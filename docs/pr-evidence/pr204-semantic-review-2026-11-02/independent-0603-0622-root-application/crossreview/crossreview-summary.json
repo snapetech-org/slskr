@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "task": "Independent exact-head cross-review of slskR PR #204 W603–622",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "livePullRequest": {
+    "state": "OPEN",
+    "isDraft": true,
+    "headRefOid": "f9a852b0f914b53510013dcedbeb3e332275b92d"
+  },
+  "exactHead": "f9a852b0f914b53510013dcedbeb3e332275b92d",
+  "exactTree": "bbbfde5fa90f60b656bc4d1a551afaf4cc645742",
+  "worktree": "/mnt/disks/scratch/task-worktrees/localization-20261102/slskr-pr204-w503-522",
+  "worktreeClean": true,
+  "primaryPacket": "/mnt/disks/scratch/task-scratch/slskr-pr204-W603-622-primary-20261102/packet",
+  "primaryPacketChecksumVerified": true,
+  "inputRows": 240,
+  "sourcePositions": [
+    603,
+    622
+  ],
+  "sourceIds": 20,
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "crossReviewCounts": {
+    "accepted": 232,
+    "missed": 7,
+    "refined": 1
+  },
+  "proposalOutcomes": {
+    "primaryProposals": 63,
+    "accepted": 62,
+    "refined": 1,
+    "rejected": 0
+  },
+  "missedCurrentIssues": 7,
+  "held": 0,
+  "perLocale": {
+    "ar": {
+      "accepted": 19,
+      "refined": 1
+    },
+    "de": {
+      "accepted": 20
+    },
+    "es": {
+      "accepted": 20
+    },
+    "fr": {
+      "accepted": 20
+    },
+    "hi": {
+      "accepted": 20
+    },
+    "id": {
+      "accepted": 19,
+      "missed": 1
+    },
+    "ja": {
+      "accepted": 19,
+      "missed": 1
+    },
+    "ko": {
+      "accepted": 20
+    },
+    "pt-BR": {
+      "accepted": 20
+    },
+    "vi": {
+      "accepted": 19,
+      "missed": 1
+    },
+    "zh-Hans": {
+      "accepted": 18,
+      "missed": 2
+    },
+    "zh-Hant": {
+      "accepted": 18,
+      "missed": 2
+    }
+  },
+  "reattestation": {
+    "sourceInventorySha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+    "sourceInventoryEntries": 5437,
+    "sourceHashMismatches": 0,
+    "currentTargetHashOrTextMismatches": 0,
+    "targetCatalogBlobMismatches": 0,
+    "callerReferenceCount": 504,
+    "uniqueCallerPathLinePins": 42,
+    "callerPinMismatches": 0,
+    "noCallerSourceIds": [],
+    "primarySourceCandidateHashesVerified": true,
+    "crossRecommendationHashesComputed": true,
+    "placeholderParityFailures": 0,
+    "protectedLiteralParityFailures": 0
+  },
+  "missedIssueDetails": [
+    {
+      "sourceId": "Checks connection, shares, paths, and credentials for setup drift.",
+      "locale": "id",
+      "reason": "pembagian misstates shared folders as distribution."
+    },
+    {
+      "sourceId": "Checks connection, shares, paths, and credentials for setup drift.",
+      "locale": "ja",
+      "reason": "literal setup-drift loan obscures unexpected configuration changes."
+    },
+    {
+      "sourceId": "Choose a RustyMilk quality preset. Efficient lowers GPU load, Balanced caps at 60 FPS, and Full leaves rendering uncapped.",
+      "locale": "zh-Hans",
+      "reason": "localized quality-preset labels are left in English in the tooltip."
+    },
+    {
+      "sourceId": "Choose a RustyMilk quality preset. Efficient lowers GPU load, Balanced caps at 60 FPS, and Full leaves rendering uncapped.",
+      "locale": "zh-Hant",
+      "reason": "localized quality-preset labels are left in English in the tooltip."
+    },
+    {
+      "sourceId": "Choose a local CSV or JSON export from Plex, Jellyfin, Navidrome, or another media server. The file is read in this browser only.",
+      "locale": "vi",
+      "reason": "the player-history picker tooltip omits the file noun and has an awkward selection phrase."
+    },
+    {
+      "sourceId": "Choose from Collections",
+      "locale": "zh-Hans",
+      "reason": "收藏 means favorites; the modal lists collections and the adjacent term is 合集."
+    },
+    {
+      "sourceId": "Choose from Collections",
+      "locale": "zh-Hant",
+      "reason": "收藏 means favorites; the modal lists collections and the adjacent term is 合集."
+    }
+  ],
+  "separateScopeNote": "The related out-of-window Full preset label is also localized awkwardly in the Chinese catalogs (满的/滿的) although this row describes an uncapped mode; no out-of-window catalog candidate was added.",
+  "limits": "Machine semantic cross-review; not native-speaker approval.",
+  "repositoryOrPRChanges": false,
+  "testsBuildsScansCIOrWorkflowsRun": false,
+  "ledger": "crossreview-ledger.jsonl",
+  "ledgerSha256": "8fe119a7971306bdcd7b36e32750e45b624b69778fe77deb8855f0f09cace96f"
+}

@@ -1,0 +1,91 @@
+{
+  "audit_timestamp_utc": "2026-11-02T17:57:24+00:00",
+  "boundary_and_staleness": {
+    "caller_context_delta": "The source-selection branch at line 44 is unchanged. The live head now wraps the dynamic status with LocalizedText at line 110, so the primary’s plain-text render pin is stale; this improves translation coverage and does not change the status meaning.",
+    "primary_pin_re_attested_at_live_head": true,
+    "primary_pin_stale": true,
+    "primary_source_file_hash_discrepancy": "Primary `source-context.json` claims `1ffd38e6a6f23d725a35a2a52ed9f317a3c10bcff285a83b09ded775eaca976f`; recomputed bytes at its stated head are `6fff815fc95b10400d84970dfa25f8bdf05d5bb360d719a3cf7f1cc62bcab8ea`. The source blob OID itself matches.",
+    "window_boundary": "Only the one missing source string `Not configured` is in scope; all twelve direct catalogs were checked and the adjacent `Configured` branch is present in all twelve. No off-by-one/window-boundary issue found."
+  },
+  "current_catalogs": {
+    "Not_configured_missing": 12,
+    "Not_configured_present": 0,
+    "catalogs_reattested": 12,
+    "current_target_values_or_hashes": 0,
+    "direct_locales": [
+      "ar",
+      "de",
+      "es",
+      "fr",
+      "hi",
+      "id",
+      "ja",
+      "ko",
+      "pt-BR",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "identical_ordered_key_sets": true,
+    "ordered_keys_per_catalog": 5440,
+    "per_catalog_file_hashes_and_blobs_in": "catalog-reattestation.jsonl",
+    "target_candidates_are_separately_pinned_by_hash": true
+  },
+  "dispositions": {
+    "accept_primary_proposal": 12,
+    "correction_or_refinement": 0,
+    "current_catalog_entry_missing": 12,
+    "exact_primary_target_hash_matches": 12,
+    "held": 0,
+    "independent_final_values_match_primary": 12,
+    "rejected": 0,
+    "revised": 0
+  },
+  "live_pr": {
+    "branch": "codex/slskr-l10n-audit-20261030",
+    "canonical_github_branch_and_pull_ref_match": true,
+    "draft": true,
+    "head": "eb0a4b9e51e5d52ecade154c3bcfde152f39eb7f",
+    "number": 204,
+    "repository": "snapetech-org/slskR",
+    "state": "OPEN",
+    "tree": "6dc321d066407fc212541720f38b15b5bab3dbfc"
+  },
+  "primary": {
+    "current_locale_targets_still_missing": 12,
+    "head": "3a4c26a7faf1dacbd8f3a382d47243b7063a262d",
+    "packet_sha256s_digest": "980de9d310b89a83832916b3513b0f07bf47c686db1d6abc406434519accdcb4",
+    "packet_sha256s_entries_verified": 5,
+    "proposal_target_hashes_reverified": 12,
+    "source_blob_oid_still_matches": true,
+    "source_raw_file_hash_mismatch": true,
+    "stale_by_commit_relative_to_live": true,
+    "tree": "9059d27001d306ea6b064560137ff2a51dd19021"
+  },
+  "review_limits": {
+    "apply_authorized_or_performed": false,
+    "repo_pr_catalog_edits": false,
+    "review_confidence": "moderate; machine semantic review, no native-speaker signoff",
+    "tests_builds_ci_browser_actions": false
+  },
+  "source_and_caller": {
+    "active_branch_sites": 1,
+    "boundary_sibling": "Configured (present in all 12 locales; current exact values and hashes in boundary-reattestation.jsonl)",
+    "current_display_localized": true,
+    "current_source_blob": "3298a9b4bac0bf99ebfb4a0cf828b9c68ccc2254",
+    "current_source_file_sha256": "231d7df12d9f20d3c8b534fecdfe32937ebbe4ea040c81e652c6c7adefeabee1",
+    "current_status_render_sites": 1,
+    "source": "Not configured",
+    "source_path": "web/src/components/System/Integrations/LidarrPanel.jsx",
+    "source_sha256_utf8": "dd1841d295024256e8884cb898d863cb17333ef927fefae59368238e401c6ef0"
+  },
+  "task": "Independent cross-review of slskR PR #204 W816 Not configured",
+  "worktree": {
+    "head": "eb0a4b9e51e5d52ecade154c3bcfde152f39eb7f",
+    "host": "kspld0",
+    "path": "/home/keith/Documents/code/task-worktrees/localization-20261102-slskr",
+    "repo_files_written": false,
+    "status": "## codex/slskr-l10n-audit-20261030",
+    "tree": "6dc321d066407fc212541720f38b15b5bab3dbfc"
+  }
+}

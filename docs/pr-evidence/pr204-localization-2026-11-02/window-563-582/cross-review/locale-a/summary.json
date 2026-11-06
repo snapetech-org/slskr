@@ -1,0 +1,110 @@
+{
+  "caller_follow_up_count": 9,
+  "caller_follow_up_sources": [
+    {
+      "occurrence_count": 8,
+      "source_id": "Cancel",
+      "source_index": 565
+    },
+    {
+      "occurrence_count": 1,
+      "source_id": "Candidate score: {score}/100",
+      "source_index": 572
+    }
+  ],
+  "catalog_or_repository_modified": false,
+  "dispositions": {
+    "accepted": 31,
+    "held": 6,
+    "missed": 2,
+    "noop": 77,
+    "refined": 4
+  },
+  "held_cells": [
+    {
+      "locale": "ar",
+      "source_id": "Cancel{all}",
+      "source_index": 568
+    },
+    {
+      "locale": "de",
+      "source_id": "Cancel{all}",
+      "source_index": 568
+    },
+    {
+      "locale": "es",
+      "source_id": "Cancel{all}",
+      "source_index": 568
+    },
+    {
+      "locale": "fr",
+      "source_id": "Cancel{all}",
+      "source_index": 568
+    },
+    {
+      "locale": "hi",
+      "source_id": "Cancel{all}",
+      "source_index": 568
+    },
+    {
+      "locale": "id",
+      "source_id": "Cancel{all}",
+      "source_index": 568
+    }
+  ],
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id"
+  ],
+  "missed_cells": [
+    {
+      "locale": "es",
+      "source_id": "Candidate identity",
+      "source_index": 569
+    },
+    {
+      "locale": "de",
+      "source_id": "Candidate match found",
+      "source_index": 570
+    }
+  ],
+  "pr_head": "7e99edecbdea10580cc5e8d198930a82f076b834",
+  "pr_number": 204,
+  "pr_tree": "55de069f88c197ab8ddd3c773c1f10e5cb86abd5",
+  "refined_cells": [
+    {
+      "locale": "ar",
+      "source_id": "Canonical variants:",
+      "source_index": 577
+    },
+    {
+      "locale": "de",
+      "source_id": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.",
+      "source_index": 578
+    },
+    {
+      "locale": "es",
+      "source_id": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.",
+      "source_index": 578
+    },
+    {
+      "locale": "id",
+      "source_id": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.",
+      "source_index": 578
+    }
+  ],
+  "replacement_count": 37,
+  "review_window": [
+    563,
+    582
+  ],
+  "row_count": 120,
+  "schema_version": 1,
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "tests_builds_scans_ci_workflows_releases_browser_or_native_app_claims": false
+}

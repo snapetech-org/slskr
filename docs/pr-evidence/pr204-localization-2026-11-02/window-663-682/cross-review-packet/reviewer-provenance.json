@@ -1,0 +1,44 @@
+{
+  "reviewerRole": "independent cross-reviewer",
+  "reviewType": "independent source/caller-aware adjudication of all frozen current cells, 57 primary proposals, and 24 no-caller holds",
+  "exactHead": "6a7f2ae61df6c5ecbc4fa1471949735fa3a956c4",
+  "exactTree": "17b851a1d79c4aeac2e19b560f6dc845fcd8c404",
+  "scope": {
+    "positions": [
+      663,
+      682
+    ],
+    "sourceIds": 20,
+    "locales": [
+      "ar",
+      "de",
+      "es",
+      "fr",
+      "hi",
+      "id",
+      "ja",
+      "ko",
+      "pt-BR",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "cells": 240
+  },
+  "inputs": [
+    "frozen source inventory",
+    "source caller context",
+    "12 exact target catalogs",
+    "240 primary review rows",
+    "57 correction/refinement proposals",
+    "24 holds",
+    "Discovery Shelf, Queue, and star-rating established locale terms"
+  ],
+  "nativeSpeakerApproval": false,
+  "browserReview": false,
+  "repositoryOrPrEdits": false,
+  "testsBuildsScansCiRun": false,
+  "workflowsTouched": false,
+  "concurrentW643-662ApplicationObservedDuringReview": true,
+  "worktreeWasDirtyAtFinalAttestation": false
+}

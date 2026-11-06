@@ -1,0 +1,107 @@
+{
+  "applied_changes": 55,
+  "applied_corrections_sha256": "7089622e5314d884e0dcf950024747dfda10f8a0e715ac8a8e62bc8fba7325a0",
+  "baseline_head": "087ea7ca6fed28c59dabe9639d8984ea8f061aa1",
+  "candidate_rows": 56,
+  "catalog_commit": "ad7c283d",
+  "catalog_file_sha256": {
+    "web/src/lib/locales/ui-labels.ar.json": "a5d9499a65f808b7c19dd015f92f20b6e4f98f7f98dca2001ed97adfe1090cd6",
+    "web/src/lib/locales/ui-labels.de.json": "8371aa46899d01ac3e01b8eb47c811b778b64473a90bdd7a35ed38187d314796",
+    "web/src/lib/locales/ui-labels.es.json": "ffe0efd4595640b46addb8217ef506d6d07759a92cb98ea0a655b60e810ead74",
+    "web/src/lib/locales/ui-labels.fr.json": "c8b1c82e85c9c1737e269e888f9e48973fb4573cfc7b4bf194f0527ec13ba474",
+    "web/src/lib/locales/ui-labels.hi.json": "7b3685f302fabca1cee3df076c74ae91cae643732d74f00682c276da83e13776",
+    "web/src/lib/locales/ui-labels.id.json": "1e77eb75d42fcf1db435bd0a6fa3b55c14e7ee588c3f9ecf06322253dbe4ef0f",
+    "web/src/lib/locales/ui-labels.ja.json": "0bd27fbf47e83d20daeebe30e58295bcc8190f74c51eb10109f9fe57a8ca29bd",
+    "web/src/lib/locales/ui-labels.ko.json": "5aa742e08c6cf764774f25b9f3cd443e426784fa810ec20f7e4090cf3fc094de",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "fa9e0a44840a6a72477fd4a94070759040f84c94760aeabc509679ebf1f13b67",
+    "web/src/lib/locales/ui-labels.vi.json": "204052e60d62b50c248176e8f6fbe22d87f5d0d16d6e8a8a37f2486e2e7dcd17",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "492f94bcb290b6c8e9ff5df7216279e1e8d9f24b6c01910f87ba25e16b1dd5c9",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "273f90ef0ef9e9732022ed5c0f701ac9dc8b22f01f4e8ea19282e7cff6f3d259"
+  },
+  "catalog_tree": "d0a2faeba016b57850767fe0903b67621d61bc6c",
+  "changed_paths": 12,
+  "final_status_counts": {
+    "accepted-carry": 115,
+    "accepted-current": 1,
+    "accepted-fresh": 69,
+    "corrected": 55
+  },
+  "independent_ledger_sha256": "8bcf2290103054847606a12aebd33a2fe0ed183afa1cc276d37701c7d872258f",
+  "native_speaker_approved": false,
+  "overlap_counts": {
+    "exact_conflicts": 0,
+    "fresh": 70,
+    "prior_accepted": 115,
+    "prior_correction_needed": 55
+  },
+  "per_locale_final_status_counts": {
+    "ar": {
+      "accepted-carry": 5,
+      "accepted-fresh": 12,
+      "corrected": 3
+    },
+    "de": {
+      "accepted-carry": 5,
+      "accepted-fresh": 13,
+      "corrected": 2
+    },
+    "es": {
+      "accepted-carry": 5,
+      "accepted-fresh": 12,
+      "corrected": 3
+    },
+    "fr": {
+      "accepted-carry": 5,
+      "accepted-fresh": 12,
+      "corrected": 3
+    },
+    "hi": {
+      "accepted-carry": 5,
+      "accepted-fresh": 10,
+      "corrected": 5
+    },
+    "id": {
+      "accepted-carry": 5,
+      "accepted-fresh": 10,
+      "corrected": 5
+    },
+    "ja": {
+      "accepted-carry": 15,
+      "corrected": 5
+    },
+    "ko": {
+      "accepted-carry": 13,
+      "corrected": 7
+    },
+    "pt-BR": {
+      "accepted-carry": 14,
+      "accepted-current": 1,
+      "corrected": 5
+    },
+    "vi": {
+      "accepted-carry": 13,
+      "corrected": 7
+    },
+    "zh-Hans": {
+      "accepted-carry": 15,
+      "corrected": 5
+    },
+    "zh-Hant": {
+      "accepted-carry": 15,
+      "corrected": 5
+    }
+  },
+  "populated_cells": 240,
+  "reconciled_apply_plan_sha256": "4d3aafa574492d5419f70e7785aeb2d430a9f56a4fb40501ef67fa791988bd42",
+  "reconciled_decision_ledger_sha256": "d114916eef6c00aec1a2946c341ed3817440d01a9a67ee46b4b4fa114e6336f9",
+  "review_ledger_sha256": "b3c4fbb29945a65a7644edfd022b001aa5b085d04803485f3c88b9f42b06791b",
+  "root_and_independent_dispositions": {
+    "accept": 52,
+    "keep_current": 1,
+    "refine": 3
+  },
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_ids": 20,
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "window": "403-422"
+}

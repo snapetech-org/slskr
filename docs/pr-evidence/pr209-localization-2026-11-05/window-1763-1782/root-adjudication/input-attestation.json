@@ -1,0 +1,9 @@
+{
+  "reviewHead": "5191888071f54061a6012acdedfeb518a6cb3661",
+  "reviewTree": "d5728c24b54a06dda432afd2ef5f378206a6cb8f",
+  "crossChecksumListSha256": "345ebce11f343b975ba7566414ac337dca9a35b07820d61684f415f8d0096143",
+  "crossLedgerSha256": "18b4c67480cd7f4042b3ab9407862fdf35c7b647a683f42a8ad5fb1b532bf94e",
+  "rows": 240,
+  "priorHold1719": "hash-only; unchanged",
+  "independentPostCrossAudit": "all 109 selected target hashes/provenance verified; no findings"
+}

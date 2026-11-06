@@ -1,0 +1,69 @@
+{
+  "capturedAt": "2026-11-02",
+  "purpose": "Live all-seven PR reattestation immediately before applying slskR W903-W922.",
+  "pullRequests": [
+    {
+      "repository": "SeerrNG",
+      "pullRequest": 418,
+      "headRefName": "codex/seerrng-localization-overhaul-20261028",
+      "headRefOid": "7329f0ffb34d46042dbf1b165046e21c4f4d45e3",
+      "tree": "531e045f511ee9c46f4c7ed80d50f529c9c12000",
+      "isDraft": true,
+      "state": "OPEN"
+    },
+    {
+      "repository": "ChaptarrNG",
+      "pullRequest": 190,
+      "headRefName": "codex/chaptarrng-localization-complete-20261031",
+      "headRefOid": "c0a098e4e2b23117860c6e6827c1e84485273a7a",
+      "tree": "669c5d82ab651dc38abb2db9d35fc2f893a19fef",
+      "isDraft": true,
+      "state": "OPEN"
+    },
+    {
+      "repository": "QuestarrNG",
+      "pullRequest": 155,
+      "headRefName": "codex/localization-foundations-20261028",
+      "headRefOid": "0ea966692f4dec72e8830ebc1f085549968c587e",
+      "tree": "edc78b5261b481ab8afd044df8371bb21f5d4d14",
+      "isDraft": false,
+      "state": "OPEN"
+    },
+    {
+      "repository": "ROMarrNG",
+      "pullRequest": 70,
+      "headRefName": "task/localization-translation-review-20261030",
+      "headRefOid": "6db0b917343fc9fb605f8a4ecfbf9b4c21cebd1b",
+      "tree": "bfb778ba77849174a4670a70883c812183506b43",
+      "isDraft": true,
+      "state": "OPEN"
+    },
+    {
+      "repository": "slskR",
+      "pullRequest": 204,
+      "headRefName": "codex/slskr-l10n-audit-20261030",
+      "headRefOid": "b1e814ef11d55fd1710d0e2522df14fee9ff0a70",
+      "tree": "50fef41fa1abcfcceb9a99cfd756ae014e51e286",
+      "isDraft": true,
+      "state": "OPEN"
+    },
+    {
+      "repository": "slskdN",
+      "pullRequest": 409,
+      "headRefName": "codex/slskdn-oidc-tooltip-localization-20261030",
+      "headRefOid": "0a6cbdcb606de1888045df358427eb2b81c85546",
+      "tree": "dcef8f70ea7c10926058c5db7430611b5faa07db",
+      "isDraft": true,
+      "state": "OPEN"
+    },
+    {
+      "repository": "TorrentNG",
+      "pullRequest": 243,
+      "headRefName": "codex/torrentng-localization-audit-20261030",
+      "headRefOid": "11ff6fa2618e842e92716b7e92867769200e32e5",
+      "tree": "770415a3fcd9353884ac245b53798af9610c0aa3",
+      "isDraft": true,
+      "state": "OPEN"
+    }
+  ]
+}

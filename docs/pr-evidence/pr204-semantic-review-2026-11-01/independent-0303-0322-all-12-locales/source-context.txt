@@ -1,0 +1,409 @@
+PR review head 979aec510db9c404a2831368d57b525773b5f4ab tree 3b07b6e7658771101f3a83c7a5ecdbc96b8af2a4; source catalog commit 7ff454828398de6a3cfb72fe7f0ed21fe419425b tree 9e9f2aa743c4ff3236af8f99619803bdc3a37152.
+Caller files were read from the exact source commit and checked for identical git blobs at the exact PR head. These are caller-context excerpts, not a visual browser review.
+Source index 305 (“Appearance”) has no surviving non-catalog source callsite: both exact-token and case-insensitive scans of web/src find only locale catalogs. Its translations are therefore reviewed as a generic UI noun with moderate confidence.
+
+## web/src/components/System/Security/AdversarialSettings.jsx — blob 1ff1afe2b375fe044b6542e27cae3f6bce20f3c9, SHA-256 c82c38e14d05a22e4787a0991ea372c74d07a3a5988e87b51891133e4f802704
+### lines 90-103
+  90 |         mountedRef.current &&
+  91 |         requestIdsRef.current.status === requestId
+  92 |       ) {
+  93 |         if (statusData) {
+  94 |           setStatus(statusData);
+  95 |           setStatusError(null);
+  96 |         } else {
+  97 |           setStatus(null);
+  98 |           setStatusError(interfaceText('Anonymity status is unavailable'));
+  99 |         }
+ 100 |       }
+ 101 |     } catch (statusError) {
+ 102 |       if (mountedRef.current && requestIdsRef.current.status === requestId) {
+ 103 |         setStatus(null);
+
+## web/src/components/Rooms/RoomCreateModal.jsx — blob 416dd82df9642e82c3ae7827301d631dcbd2c1e7, SHA-256 cbf45ac308798a22db6a4478cb8fb90a68c83c2367c6629a309c2f0a46c75dac
+### lines 110-128
+ 110 |             <div style={{ display: 'flex', gap: '24px' }}>
+ 111 |               <div
+ 112 |                 style={{ alignItems: 'center', display: 'flex', gap: '8px' }}
+ 113 |               >
+ 114 |                 <Radio
+ 115 |                   checked={!isPrivate}
+ 116 |                   name="roomType"
+ 117 |                   onChange={() => setIsPrivate(false)}
+ 118 |                   value="public"
+ 119 |                 />
+ 120 |                 <div>
+ 121 |                   <strong><LocalizedText source={"Public Room"} /></strong>
+ 122 |                   <div className="room-create-type-description">
+ 123 |                     <LocalizedText source={"Anyone can join and see the room"} /></div>
+ 124 |                 </div>
+ 125 |               </div>
+ 126 |               <div
+ 127 |                 style={{ alignItems: 'center', display: 'flex', gap: '8px' }}
+ 128 |               >
+
+## web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx — blob 4f3c8484d8d23746369ce7619ab4e017849dfb89, SHA-256 8cb1922e358f7229d7f8147f41e18bffa3146283c270a5844393fc72f755c6ca
+### lines 338-360
+ 338 |             <Card.Content>
+ 339 |               <Form>
+ 340 |                 <Form.Group widths="equal">
+ 341 |                   <Form.Field>
+ 342 |                     <label><LocalizedText source={"Domain"} /></label>
+ 343 |                     <Dropdown
+ 344 |                       onChange={(e, { value }) => setQueryDomain(value)}
+ 345 |                       options={[
+ 346 |                         { key: 'audio', text: interfaceText("Audio"), value: 'audio' },
+ 347 |                         { key: 'video', text: interfaceText("Video"), value: 'video' },
+ 348 |                         { key: 'image', text: interfaceText("Image"), value: 'image' },
+ 349 |                         { key: 'text', text: interfaceText("Text"), value: 'text' },
+ 350 |                         {
+ 351 |                           key: 'application',
+ 352 |                           text: interfaceText("Application"),
+ 353 |                           value: 'application',
+ 354 |                         },
+ 355 |                       ]}
+ 356 |                       selection
+ 357 |                       value={queryDomain}
+ 358 |                     />
+ 359 |                   </Form.Field>
+ 360 |                   <Form.Field>
+
+## web/src/components/Wishlist/Wishlist.jsx — blob 54d5e35d9f027ea547f746df800fabd491c3bed7, SHA-256 74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7
+### lines 481-513
+ 481 |       {selectedIds.size > 0 && (
+ 482 |         <Segment className="wishlist-bulk-actions">
+ 483 |           <Header as="h4">
+ 484 |             <Icon name="tasks" />
+ 485 |             {localized('Bulk actions ({count})', { count: formatRegionalNumber(selectedIds.size) })}
+ 486 |           </Header>
+ 487 |           <Form>
+ 488 |             <Form.Input
+ 489 |               aria-label={t('Bulk wishlist filter')}
+ 490 |               lang={languageFor('Bulk wishlist filter')}
+ 491 |               dir={directionFor('Bulk wishlist filter')}
+ 492 |               label={localized('Apply filter to selected items')}
+ 493 |               lang={languageFor('e.g., flac OR mp3')}
+ 494 |               dir={directionFor('e.g., flac OR mp3')}
+ 495 |               onChange={(event) => setBulkFilter(event.target.value)}
+ 496 |               placeholder={t('e.g., flac OR mp3')}
+ 497 |               value={bulkFilter}
+ 498 |             />
+ 499 |             <Button
+ 500 |               aria-label={t('Apply filter to selected wishlist items')}
+ 501 |               lang={languageFor('Apply filter to selected wishlist items')}
+ 502 |               dir={directionFor('Apply filter to selected wishlist items')}
+ 503 |               disabled={bulkRunning}
+ 504 |               loading={bulkRunning}
+ 505 |               onClick={handleBulkFilter}
+ 506 |               primary
+ 507 |             >
+ 508 |               <Icon name="filter" />
+ 509 |               {localized('Apply Filter')}
+ 510 |             </Button>
+ 511 |           </Form>
+ 512 |         </Segment>
+ 513 |       )}
+
+## web/src/components/Search/Detail/SearchFilterModal.jsx — blob 7765f8e075878a6f8a883eaca82ed2b8ee4ed94e, SHA-256 b842680bae7a555b34814b900a55e3bca05485fdad27b10411c47c5c63034968
+### lines 340-364
+ 340 |               label={localized('Prefer lossless without hiding lossy fallback candidates')}
+ 341 |               onChange={(_, { checked }) =>
+ 342 |                 handleChange('preferLossless', checked)
+ 343 |               }
+ 344 |             />
+ 345 |           </Segment>
+ 346 |         </Form>
+ 347 |       </Modal.Content>
+ 348 |       <Modal.Actions>
+ 349 |         <ActionButton onClick={() => setOpen(false)} tooltip="Close without applying these search filters.">{localized('Cancel')}</ActionButton>
+ 350 |         <ActionButton
+ 351 |           onClick={handleSave}
+ 352 |           primary
+ 353 |           tooltip="Apply these filters to the current search."
+ 354 |         >
+ 355 |           {localized('Apply Filters')}
+ 356 |         </ActionButton>
+ 357 |       </Modal.Actions>
+ 358 |     </Modal>
+ 359 |   );
+ 360 | };
+ 361 |
+ 362 | export default SearchFilterModal;
+
+## web/src/components/System/Integrations/FtpIntegrationPanel.jsx — blob 81cb196f7be0d388c0dd2988f283990d958ae7fa, SHA-256 71a1dfcb043820f9f5ef0a4ee7d142fb308e7943f049b0dbdb9b60d22a4724a0
+### lines 383-415
+ 383 |           </Form.Group>
+ 384 |         </Form>
+ 385 |
+ 386 |         <div className="integration-actions">
+ 387 |           <Popup
+ 388 |             content={interfaceText("Apply these FTP settings through the runtime configuration overlay.")}
+ 389 |             trigger={
+ 390 |               <Button
+ 391 |                 disabled={!remoteConfiguration || missingRequiredSettings.length > 0}
+ 392 |                 icon
+ 393 |                 labelPosition="left"
+ 394 |                 loading={savingAction === 'runtime'}
+ 395 |                 onClick={applyRuntime}
+ 396 |                 primary
+ 397 |               >
+ 398 |                 <Icon name="save" />
+ 399 |                 <LocalizedText source={"Apply Runtime"} /></Button>
+ 400 |             }
+ 401 |            {...interfaceTextProps("Apply these FTP settings through the runtime configuration overlay.")}/>
+ 402 |           <Popup
+ 403 |             content={interfaceText("Persist these FTP settings to the YAML configuration file.")}
+ 404 |             trigger={
+ 405 |               <Button
+ 406 |                 disabled={!remoteConfiguration || missingRequiredSettings.length > 0}
+ 407 |                 icon
+ 408 |                 labelPosition="left"
+ 409 |                 loading={savingAction === 'yaml'}
+ 410 |                 onClick={saveYaml}
+ 411 |               >
+ 412 |                 <Icon name="file alternate" />
+ 413 |                 <LocalizedText source={"Save YAML"} /></Button>
+ 414 |             }
+ 415 |            {...interfaceTextProps("Persist these FTP settings to the YAML configuration file.")}/>
+
+## web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx — blob 327b7f895fdc64b4010aaa3bd787e5f38e64fb58, SHA-256 1cc2a189124afc784443085977608cf70ef9c1009143a110e74af7adb8e9f028
+### lines 652-684
+ 652 |         </Form>
+ 653 |
+ 654 |         <div className="integration-actions">
+ 655 |           <Popup
+ 656 |             content={interfaceText("Apply these notification settings through the runtime configuration overlay.")}
+ 657 |             trigger={
+ 658 |               <Button
+ 659 |                 disabled={!remoteConfiguration || missingRequiredSettings.length > 0}
+ 660 |                 icon
+ 661 |                 labelPosition="left"
+ 662 |                 loading={savingAction === 'runtime'}
+ 663 |                 onClick={applyRuntime}
+ 664 |                 primary
+ 665 |               >
+ 666 |                 <Icon name="save" />
+ 667 |                 <LocalizedText source={"Apply Runtime"} /></Button>
+ 668 |             }
+ 669 |            {...interfaceTextProps("Apply these notification settings through the runtime configuration overlay.")}/>
+ 670 |           <Popup
+ 671 |             content={interfaceText("Persist these notification settings to the YAML configuration file.")}
+ 672 |             trigger={
+ 673 |               <Button
+ 674 |                 disabled={!remoteConfiguration || missingRequiredSettings.length > 0}
+ 675 |                 icon
+ 676 |                 labelPosition="left"
+ 677 |                 loading={savingAction === 'yaml'}
+ 678 |                 onClick={saveYaml}
+ 679 |               >
+ 680 |                 <Icon name="file alternate" />
+ 681 |                 <LocalizedText source={"Save YAML"} /></Button>
+ 682 |             }
+ 683 |            {...interfaceTextProps("Persist these notification settings to the YAML configuration file.")}/>
+ 684 |           <Popup
+
+## web/src/components/System/Integrations/SourceFeedIntegrationsPanel.jsx — blob 6a8c88b73cbf55eec7d7ac0d23b8d86005b854be, SHA-256 3535dd1d9d37b9f01a451ad1b8220c864db8a0d3e6c074b9290eaf71b738af4e
+### lines 431-465
+ 431 |         </Form>
+ 432 |
+ 433 |         <div className="integration-actions">
+ 434 |           <Popup
+ 435 |             content={interfaceText("Apply these source-feed integration settings through the runtime configuration overlay.")}
+ 436 |             trigger={
+ 437 |               <Button
+ 438 |                 disabled={!remoteConfiguration || missingRequiredSettings.length > 0}
+ 439 |                 icon
+ 440 |                 labelPosition="left"
+ 441 |                 loading={savingAction === 'runtime'}
+ 442 |                 onClick={applyRuntime}
+ 443 |                 primary
+ 444 |               >
+ 445 |                 <Icon name="save" />
+ 446 |                 <LocalizedText source={"Apply Runtime"} /></Button>
+ 447 |             }
+ 448 |            {...interfaceTextProps("Apply these source-feed integration settings through the runtime configuration overlay.")}/>
+ 449 |           <Popup
+ 450 |             content={interfaceText("Persist these source-feed integration settings to the YAML configuration file.")}
+ 451 |             trigger={
+ 452 |               <Button
+ 453 |                 disabled={!remoteConfiguration || missingRequiredSettings.length > 0}
+ 454 |                 icon
+ 455 |                 labelPosition="left"
+ 456 |                 loading={savingAction === 'yaml'}
+ 457 |                 onClick={saveYaml}
+ 458 |               >
+ 459 |                 <Icon name="file alternate" />
+ 460 |                 <LocalizedText source={"Save YAML"} /></Button>
+ 461 |             }
+ 462 |            {...interfaceTextProps("Persist these source-feed integration settings to the YAML configuration file.")}/>
+ 463 |           <Popup
+ 464 |             content={interfaceText("Discard unsaved edits and restore the values currently reported by the daemon.")}
+ 465 |             trigger={
+
+## web/src/components/Player/VisualizerOverlayControls.jsx — blob 0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf, SHA-256 5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4
+### lines 436-473
+ 436 |                     ))}
+ 437 |                   </select>
+ 438 |                 }
+ 439 |                {...interfaceTextProps("Choose a global RustyMilk parameter to edit on the active preset.")}/>
+ 440 |               <LocalizedPopup
+ 441 |                 content="Adjust {label} for the active RustyMilk preset before applying the edited copy locally."
+ 442 |                 parameters={{ label: rustyMilkParameter.label.toLowerCase() }}
+ 443 |                 trigger={
+ 444 |                   <input
+ 445 |                     aria-label={interfaceText("Adjust RustyMilk {label}", { "label": (rustyMilkParameter.label) })}
+ 446 |                     className="player-visualizer-native-range"
+ 447 |                     data-testid="visualizer-native-parameter-value"
+ 448 |                     max={rustyMilkParameter.max}
+ 449 |                     min={rustyMilkParameter.min}
+ 450 |                     onChange={updateRustyMilkParameterDraft}
+ 451 |                     step={rustyMilkParameter.step}
+ 452 |                     type="range"
+ 453 |                     value={rustyMilkParameterValue}
+ 454 |                    {...interfaceTextProps("Adjust RustyMilk {label}")}/>
+ 455 |                 }
+ 456 |               />
+ 457 |               <Popup
+ 458 |                 content={interfaceText("Apply the selected RustyMilk parameter value and save the edited preset in this browser.")}
+ 459 |                 trigger={
+ 460 |                   <Button
+ 461 |                     aria-label={interfaceText("Apply RustyMilk parameter edit")}
+ 462 |                     data-testid="visualizer-apply-native-parameter"
+ 463 |                     icon
+ 464 |                     onClick={applyRustyMilkParameterEdit}
+ 465 |                     size="mini"
+ 466 |                    {...interfaceTextProps("Apply RustyMilk parameter edit")}>
+ 467 |                     <Icon name="sliders horizontal" />
+ 468 |                   </Button>
+ 469 |                 }
+ 470 |                {...interfaceTextProps("Apply the selected RustyMilk parameter value and save the edited preset in this browser.")}/>
+ 471 |               <Popup
+ 472 |                 content={interfaceText("Randomize the active RustyMilk preset's common visual parameters and save the edited copy locally.")}
+ 473 |                 trigger={
+
+## web/src/lib/mediaServerIntegrations.js — blob cb7ea2f94c4db646873aad3fab6a59ebaefad341, SHA-256 7e97c9c2c5bb798c28fdb21b7028e0abc093ec7b7fe97e9179887bc7ef668e05
+### lines 140-170
+ 140 |       'Export confirmed local plays or ratings back to the selected media server profile.',
+ 141 |     id: 'scrobbleExport',
+ 142 |     label: 'Scrobble and rating export',
+ 143 |     requiresConfirmation: true,
+ 144 |     requiresUserMapping: true,
+ 145 |   },
+ 146 |   {
+ 147 |     description:
+ 148 |       'Turn approved listening-intelligence gaps into acquisition queue candidates.',
+ 149 |     id: 'acquisitionQueue',
+ 150 |     label: 'Acquisition queue handoff',
+ 151 |     requiresConfirmation: true,
+ 152 |     requiresUserMapping: false,
+ 153 |   },
+ 154 |   {
+ 155 |     description:
+ 156 |       'Ask the selected media server to scan confirmed completed-download paths.',
+ 157 |     id: 'completedScan',
+ 158 |     label: 'Completed file scan',
+ 159 |     requiresConfirmation: true,
+ 160 |     requiresUserMapping: false,
+ 161 |   },
+ 162 |   {
+ 163 |     description:
+ 164 |       'Apply confirmed post-acquisition file actions after media-server visibility is verified.',
+ 165 |     id: 'confirmedFileActions',
+ 166 |     label: 'Confirmed file actions',
+ 167 |     requiresConfirmation: true,
+ 168 |     requiresUserMapping: false,
+ 169 |   },
+ 170 | ];
+
+## web/src/lib/meshEvidencePolicy.js — blob bb3bebf92b8d5cb63723a14d82688c9adc08474a, SHA-256 e6741dc9180fd5543407fd402c85ade0b78d451c604f3f33f8c08551840cd4df
+### lines 14-33
+  14 |
+  15 | export const inboundTrustTiers = [
+  16 |   {
+  17 |     description: 'Ignore all inbound mesh evidence until explicitly enabled.',
+  18 |     id: 'disabled',
+  19 |     label: 'Disabled',
+  20 |   },
+  21 |   {
+  22 |     description: 'Apply evidence only from directly trusted peers and contacts.',
+  23 |     id: 'trusted',
+  24 |     label: 'Trusted peers',
+  25 |   },
+  26 |   {
+  27 |     description: 'Apply trusted peer and realm-curated evidence with provenance.',
+  28 |     id: 'realm',
+  29 |     label: 'Trusted realms',
+  30 |   },
+  31 | ];
+  32 |
+  33 | export const outboundEvidenceTypes = [
+
+## web/src/components/System/Mesh/MeshEvidencePolicy.jsx — blob 2d8c7f594e9d3dc09192182cd1a7beefbc300f6d, SHA-256 b4dd46c29e740ea03bf84898655b413fc02bfe6274fbaa1c9964ed59e9c475a7
+### lines 25-65
+  25 |   List,
+  26 |   Message,
+  27 |   Popup,
+  28 |   Segment,
+  29 |   Statistic,
+  30 |   TextArea,
+  31 | } from 'semantic-ui-react';
+  32 |
+  33 | const inboundOptions = inboundTrustTiers.map((tier) => ({
+  34 |   key: tier.id,
+  35 |   text: interfaceText(tier.label),
+  36 |   value: tier.id,
+  37 | }));
+  38 |
+  39 | const sampleEvidence = JSON.stringify(
+  40 |   {
+  41 |     evidence: [
+  42 |       {
+  43 |         confidence: 0.92,
+  44 |         provenance: {
+  45 |           peerId: 'fixture-peer',
+  46 |           realmId: 'fixture-realm',
+  47 |           signature: 'fixture-signature',
+  48 |           trustTier: 'realm',
+  49 |         },
+  50 |         subject: 'mbid:recording:fixture-track',
+  51 |         type: 'metadataCorrection',
+  52 |         witnessCount: 3,
+  53 |       },
+  54 |       {
+  55 |         confidence: 0.82,
+  56 |         containsPath: true,
+  57 |         provenance: {
+  58 |           peerId: 'untrusted-peer',
+  59 |           signature: 'fixture-signature',
+  60 |           trustTier: 'untrusted',
+  61 |         },
+  62 |         subject: 'private-path-example',
+  63 |         type: 'releaseCompleteness',
+  64 |         witnessCount: 1,
+  65 |       },
+
+## web/src/components/PlaylistIntake/PlaylistIntake.jsx — blob 162c8fb6dff17671f35471b4bae605da08b90447, SHA-256 a978f80c022835c003d35db99b38037dee622c6456d9cbc46688f810867e3ae6
+### lines 465-488
+ 465 |                             <Icon name="copy outline" />
+ 466 |                             <LocalizedText source={"Copy Report"} /></Button>
+ 467 |                         }
+ 468 |                        {...interfaceTextProps("Copy a text report of the current tag and organization dry run. This does not write tags, move files, run ReplayGain, or contact providers.")}/>
+ 469 |                       <Popup
+ 470 |                         content={interfaceText("Approve this dry-run snapshot for later import review. This records source/proposed metadata only and does not write tags or move files.")}
+ 471 |                         position="top center"
+ 472 |                         trigger={
+ 473 |                           <Button
+ 474 |                             aria-label={interfaceText("Approve tag organization snapshot for {name}", { "name": (playlist.name) })}
+ 475 |                             disabled={!playlist.organizationPlan}
+ 476 |                             icon
+ 477 |                             onClick={() => approveTagOrganizationSnapshot(playlist)}
+ 478 |                             size="small"
+ 479 |                             type="button"
+ 480 |                            {...interfaceTextProps("Approve tag organization snapshot for {name}")}>
+ 481 |                             <Icon name="check circle outline" />
+ 482 |                             <LocalizedText source={"Approve Snapshot"} /></Button>
+ 483 |                         }
+ 484 |                        {...interfaceTextProps("Approve this dry-run snapshot for later import review. This records source/proposed metadata only and does not write tags or move files.")}/>
+ 485 |                       <Popup
+ 486 |                         content={interfaceText("Clear the approved snapshot while keeping the dry-run preview available for more edits.")}
+ 487 |                         position="top center"
+ 488 |                         trigger={

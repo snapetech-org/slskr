@@ -1,0 +1,149 @@
+{
+  "boundaryW782Mismatches": 0,
+  "candidateCells": 108,
+  "cells": 240,
+  "confidence": "moderate overall; high for status, retention, and preference semantics; moderate for long integration copy and locale phrasing",
+  "decisionCounts": {
+    "accept-current": 132,
+    "propose-correction": 99,
+    "propose-refinement": 9
+  },
+  "freshDecisionCounts": {
+    "accept-current": 71,
+    "propose-correction": 70,
+    "propose-refinement": 9
+  },
+  "freshlyReviewedCells": 150,
+  "head": "2d004e38fe7cf76f8d51f36d19c14c34fb497649",
+  "heldCells": 0,
+  "limitations": [
+    "Machine semantic review only; native-speaker approval remains outstanding for all locales.",
+    "W785 and W796 have caller-side localization gaps; catalog proposals do not fix raw rendering/interpolation.",
+    "W794 has no direct non-test web/src caller and was reviewed standalone."
+  ],
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "markupFailures": 0,
+  "nativeSpeakerApproval": false,
+  "nativeSpeakerReviewRequired": true,
+  "perLocaleDecisions": {
+    "ar": {
+      "accept-current": 12,
+      "propose-correction": 7,
+      "propose-refinement": 1
+    },
+    "de": {
+      "accept-current": 13,
+      "propose-correction": 6,
+      "propose-refinement": 1
+    },
+    "es": {
+      "accept-current": 13,
+      "propose-correction": 7
+    },
+    "fr": {
+      "accept-current": 12,
+      "propose-correction": 8
+    },
+    "hi": {
+      "accept-current": 12,
+      "propose-correction": 7,
+      "propose-refinement": 1
+    },
+    "id": {
+      "accept-current": 10,
+      "propose-correction": 9,
+      "propose-refinement": 1
+    },
+    "ja": {
+      "accept-current": 10,
+      "propose-correction": 9,
+      "propose-refinement": 1
+    },
+    "ko": {
+      "accept-current": 10,
+      "propose-correction": 9,
+      "propose-refinement": 1
+    },
+    "pt-BR": {
+      "accept-current": 11,
+      "propose-correction": 8,
+      "propose-refinement": 1
+    },
+    "vi": {
+      "accept-current": 11,
+      "propose-correction": 9
+    },
+    "zh-Hans": {
+      "accept-current": 9,
+      "propose-correction": 10,
+      "propose-refinement": 1
+    },
+    "zh-Hant": {
+      "accept-current": 9,
+      "propose-correction": 10,
+      "propose-refinement": 1
+    }
+  },
+  "placeholderFailures": 0,
+  "priorStatusCounts": {
+    "accepted": 61,
+    "correction-needed": 29,
+    "not-reviewed": 150
+  },
+  "protectedLiteralFailures": 0,
+  "pullRequest": 204,
+  "punctuationChangedCells": 13,
+  "punctuationReviewedCells": 240,
+  "repository": "snapetech-org/slskR",
+  "repositoryOrPrModified": false,
+  "reusedExactHashDispositionCounts": {
+    "accepted": 61,
+    "correction-needed": 29
+  },
+  "schemaVersion": 1,
+  "sourceCallerFiles": 21,
+  "sourceCallerPins": 36,
+  "sourceIds": 20,
+  "sourceIdsWithNoDirectCallers": [
+    "Completed transfers are hidden"
+  ],
+  "sourceInventorySha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "sourcePositions": [
+    783,
+    802
+  ],
+  "sourceRefactorNeeds": [
+    {
+      "blocksLocaleDisplay": true,
+      "caller": "web/src/lib/mediaServerIntegrations.js:188 -> web/src/components/System/Integrations/MediaServerPanel.jsx:305",
+      "problem": "Action is stored as a plain string and rendered without LocalizedText or interfaceText; catalog targets do not appear in this caller.",
+      "recommendedRefactor": "Render the action through LocalizedText/interfaceText or use a localized source key at the readiness check boundary.",
+      "sourceId": "Complete base URL, token, and path-map readiness before live execution.",
+      "sourceIndex": 785
+    },
+    {
+      "blocksLocaleDisplay": true,
+      "caller": "web/src/components/System/Data/index.jsx:17, raw values at :52 and :68",
+      "problem": "Placeholder receives raw English upload/download values, and English adds plural s outside the placeholder.",
+      "recommendedRefactor": "Map upload/download to localized labels before interpolation, or use separate localized toast source keys for uploads and downloads.",
+      "sourceId": "Completed {direction}s cleared!",
+      "sourceIndex": 796
+    }
+  ],
+  "task": "slskR PR #204 W783-802 primary semantic review",
+  "testsBuildsScansCiBrowserWorkflowsRun": false,
+  "tree": "7d114d519f4e6ad0a14a4a3fe048fde017551748"
+}

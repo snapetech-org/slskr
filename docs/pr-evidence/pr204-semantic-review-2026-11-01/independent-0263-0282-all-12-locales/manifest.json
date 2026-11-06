@@ -1,0 +1,242 @@
+{
+  "schema_version": 1,
+  "batch": "independent-0263-0282-all-12-locales",
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "pr_state": "OPEN",
+  "pr_draft": true,
+  "pr_branch": "codex/slskr-l10n-audit-20261030",
+  "review_head": "5a697d84c32043b9a56ab052cdbecc8529db1ade",
+  "review_tree": "923a788e4c22df73380cd498b0f11ab1a182b749",
+  "application_parent": "5a697d84c32043b9a56ab052cdbecc8529db1ade",
+  "application_head": "de509ead1789fe64811b14b63e1a22c14ade6893",
+  "application_tree": "e50004385568ab25e9d3eb5d314654880ef6ae8f",
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_catalog_tree_current_at_review_head": false,
+  "source_index_start": 263,
+  "source_index_end_inclusive": 282,
+  "source_index_method": "zero-based Python lexical order of the 5,437 direct catalog source IDs",
+  "source_key_count": 5437,
+  "source_ids": [
+    "Allow remote no-auth CIDRs",
+    "Allow slow or stalled downloads to use verified alternate sources. Soulseek peers use sequential failover; true multipart chunking is reserved for trusted slskr mesh peers.",
+    "Allow streaming",
+    "Allow this peer folder to appear again in future runs of this wishlist item.",
+    "Allow this webhook to call a target with a self-signed or otherwise untrusted certificate.",
+    "Already known",
+    "Ambiguous",
+    "An API key is visible in options.",
+    "An error occurred while cleaning up channel messages",
+    "An error occurred while cleaning up messages",
+    "An error occurred while creating the channel",
+    "An error occurred while creating the pod",
+    "An error occurred while deleting the channel",
+    "An error occurred while getting channels",
+    "An error occurred while getting last seen timestamps",
+    "An error occurred while getting member affinities",
+    "An error occurred while getting message count",
+    "An error occurred while getting opinions",
+    "An error occurred while getting storage statistics",
+    "An error occurred while getting the channel"
+  ],
+  "selected_cell_count": 240,
+  "catalog_cell_count": 65244,
+  "catalog_sha256_before": {
+    "web/src/lib/locales/ui-labels.ar.json": "60a34f5ad6659ce3ed429392a6e0d79f10bdbf3891570b14777de33a9c28f84f",
+    "web/src/lib/locales/ui-labels.de.json": "832d0471a04d5440bc86558d760fe65300300228c2579207c021fef64504c32c",
+    "web/src/lib/locales/ui-labels.es.json": "f33f795282610afba24f427b22a8a0a1f3757d5f20a35bf62cca0b54f5352c0e",
+    "web/src/lib/locales/ui-labels.fr.json": "383d7adf2a5ec652ba7230fbe15085e4b67d2e7efd24a276e2705c5913ce5c1b",
+    "web/src/lib/locales/ui-labels.hi.json": "3144b8ccecfc2fb2c81b604253726331fffa8a0f63ed686f90bdbf9bb32d3a16",
+    "web/src/lib/locales/ui-labels.id.json": "1d9da1e80060beee64c6e6d50079c0e2fea01c084bc038bac8116f053a748426",
+    "web/src/lib/locales/ui-labels.ja.json": "ef60aeaaf5ce0f2b978f0157d493a64ae88db5af764e30122d805cb25cd8c023",
+    "web/src/lib/locales/ui-labels.ko.json": "7e456353d8cd6a4d44e8dc8fbe31bfc2e950ad7ec464e68b9feebeff38cbee94",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "f4ab90d3b3a6806f3912cebffd5d89f4e825b3ed80506e6e903fb58e694e8790",
+    "web/src/lib/locales/ui-labels.vi.json": "48dbcd0b9906c834eacb6d46b3aae4c400886860238e348996de3c71fbb8ee82",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "8c826eebb4efb4996e966950adf2020f1358ebdcb7e5298d99f92676061f8ce9",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "11747cb04dd11943782a404ba868844a0ecaffb04e6f9d300f00c97487e0998f"
+  },
+  "catalog_sha256_after": {
+    "web/src/lib/locales/ui-labels.ar.json": "8d6093b08243d8c113a91082aedb2d3ca4db0002933164b5b993142706fc1456",
+    "web/src/lib/locales/ui-labels.de.json": "e71d440020618485c9807ee3d6130c2cc8c0a943a4ce9e59c879e6cc25fd9a24",
+    "web/src/lib/locales/ui-labels.es.json": "1c2dc6dc96697c7ecee6ba25c5829e54d0a7861beaf48e34d1fccfbcf770a675",
+    "web/src/lib/locales/ui-labels.fr.json": "24dcf0ee1608368e2df238ce7f43cff1f8c3d9dcca25b5e2f7712c7d96708a1e",
+    "web/src/lib/locales/ui-labels.hi.json": "46c514128702527e6740d35ec2f426f4e0c6d2fb234f09af2e346638c8823e94",
+    "web/src/lib/locales/ui-labels.id.json": "269924d98332b78b759558e1b0426ee255ddcd46d292aa4f170b8b7420b18de1",
+    "web/src/lib/locales/ui-labels.ja.json": "ef60aeaaf5ce0f2b978f0157d493a64ae88db5af764e30122d805cb25cd8c023",
+    "web/src/lib/locales/ui-labels.ko.json": "7e456353d8cd6a4d44e8dc8fbe31bfc2e950ad7ec464e68b9feebeff38cbee94",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "0de60739787750de428d6fc4d4fc8a6553aaca48085dfb76770c710996daa126",
+    "web/src/lib/locales/ui-labels.vi.json": "2be61bc7329276cea157b533a9e7f463921acc45157726d731428a1d3a6e9464",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "8c826eebb4efb4996e966950adf2020f1358ebdcb7e5298d99f92676061f8ce9",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "11747cb04dd11943782a404ba868844a0ecaffb04e6f9d300f00c97487e0998f"
+  },
+  "per_locale_population": {
+    "ar": {
+      "source_ids": 5437,
+      "populated": 5437,
+      "blank": 0
+    },
+    "de": {
+      "source_ids": 5437,
+      "populated": 5437,
+      "blank": 0
+    },
+    "es": {
+      "source_ids": 5437,
+      "populated": 5437,
+      "blank": 0
+    },
+    "fr": {
+      "source_ids": 5437,
+      "populated": 5437,
+      "blank": 0
+    },
+    "hi": {
+      "source_ids": 5437,
+      "populated": 5437,
+      "blank": 0
+    },
+    "id": {
+      "source_ids": 5437,
+      "populated": 5437,
+      "blank": 0
+    },
+    "ja": {
+      "source_ids": 5437,
+      "populated": 5437,
+      "blank": 0
+    },
+    "ko": {
+      "source_ids": 5437,
+      "populated": 5437,
+      "blank": 0
+    },
+    "pt-BR": {
+      "source_ids": 5437,
+      "populated": 5437,
+      "blank": 0
+    },
+    "vi": {
+      "source_ids": 5437,
+      "populated": 5437,
+      "blank": 0
+    },
+    "zh-Hans": {
+      "source_ids": 5437,
+      "populated": 5437,
+      "blank": 0
+    },
+    "zh-Hant": {
+      "source_ids": 5437,
+      "populated": 5437,
+      "blank": 0
+    }
+  },
+  "direct_catalog_total_populated": 65244,
+  "direct_catalog_total_blank": 0,
+  "baseline_status_counts": {
+    "new": 25,
+    "prior_accepted": 204,
+    "prior_correction-needed": 11
+  },
+  "overlap_partition_at_review_head": {
+    "new": 25,
+    "prior_accepted": 204,
+    "prior_correction-needed": 11
+  },
+  "window_accounting": {
+    "source_keys": 20,
+    "cell_slots": 240,
+    "populated_cells": 240,
+    "fresh_cells": 25,
+    "fresh_statuses": {
+      "accepted": 22,
+      "corrected": 3
+    },
+    "accepted_carries": 204,
+    "prior_correction_needed_before_application": 11,
+    "exact_corrections_applied": 14,
+    "root_reviewed_candidates": 14,
+    "root_dispositions": {
+      "accepted-proposal": 8,
+      "refined": 6
+    },
+    "terminal_statuses_after_review": {
+      "accepted": 226,
+      "corrected": 14
+    },
+    "held": 0,
+    "unresolved_conflicts": 0,
+    "unresolved_terminal_exclusions": 0
+  },
+  "placeholder_and_literal_checks": {
+    "cells_checked": 240,
+    "placeholder_sets_preserved": true,
+    "icu_messages": 0,
+    "protected_literals_checked": true,
+    "protected_literals_changed": 0
+  },
+  "prior_overlap_scan": {
+    "input_count": 842,
+    "manifest_file": "prior-evidence-scan-manifest.jsonl",
+    "manifest_file_sha256": "563166ac95576e403643a23033d68aeb6e6e8da7c6e373fe7c314e0e45fc9c31",
+    "canonical_input_manifest_sha256": "fddfef5b9bee844d9108ea1700e1e553dd8aa55886dda404c76f7826105780e9",
+    "input_roots": [
+      "prior-audit-7ff",
+      "pr-review-head"
+    ]
+  },
+  "candidate_ledger_sha256": "8ab9e8e8c2d259cf02d985feb592641fd660df24e6a990049a1a13e8499c08ad",
+  "root_cross_review_ledger_sha256": "863f30995df14ad349335fa2bd143c2345d8b68e93082e8692f45786345ce5a4",
+  "root_apply_plan_sha256": "30e54209464ff65e7f712c51d874e4a433aa98d6f22ddef3c4c283af096c9e94",
+  "applied_corrections_ledger_sha256": "f2d17f180a0cf1c372f685469d8a95178e6f621c94ec6a06e796b64f718e2c50",
+  "source_context": {
+    "file": "source-context.txt",
+    "evidence_text_sha256": "ac41dd0853fdb94fa0164f351452bb42a671aa4118079c1b6bb51e073084b2bb",
+    "runtime_files": [
+      "crates/slskr/src/podcore_mutations.rs",
+      "crates/slskr/src/podcore_queries.rs",
+      "crates/slskr/src/podcore_stats_controller.rs",
+      "web/src/components/Collections/CollectionShareModal.jsx",
+      "web/src/components/Search/DiscographyCoveragePanel.jsx",
+      "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx",
+      "web/src/components/System/MediaCore/PodMessageRoutingPanel.jsx",
+      "web/src/components/Transfers/TransfersHeader.jsx",
+      "web/src/components/Wishlist/WishlistModal.jsx",
+      "web/src/lib/setupHealthCheck.js"
+    ],
+    "sha256": {
+      "crates/slskr/src/podcore_mutations.rs": "8de3802d6daaa1239c00a645802a658ef63031b975cc5edadf3d1482f2182a3a",
+      "crates/slskr/src/podcore_queries.rs": "e2b4d40fdc61540d678a90c2befeba011ff5929ef29342b853a0e1be97684dfc",
+      "crates/slskr/src/podcore_stats_controller.rs": "aa8157129dbde7741f7238f674618f42303ae72d007dae580fbb983a0aad2d11",
+      "web/src/components/Collections/CollectionShareModal.jsx": "939b1c1492f12bda662f93753d34eedbbf2bd45997e3e838278f9832e3c29d78",
+      "web/src/components/Search/DiscographyCoveragePanel.jsx": "d1fdb70100b0fa7f3d38a3f0d37766e71e1efc45b8f4f47ee44684c5d173090a",
+      "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx": "17241e796b943988d339bac74569f5a5d4e8889194cad1221d0b9c8bc1b82a9e",
+      "web/src/components/System/MediaCore/PodMessageRoutingPanel.jsx": "d69c4b642ea560fd3f53688927cce8f6fea9f93923aa89f4924f640631cda32b",
+      "web/src/components/Transfers/TransfersHeader.jsx": "57f43a6851d991b9241b73a0f9ff08636573a49282033722f7350fb7f2a44d6f",
+      "web/src/components/Wishlist/WishlistModal.jsx": "49f9f293410dec17e1d3c335ba49218fb7b351aa04a7bfc3ae107b138bf06582",
+      "web/src/lib/setupHealthCheck.js": "254e98de004fc19ae7c71dd47527adb1cc39fe52473323a1aa3b7e4f32d5cb0a"
+    },
+    "git_blob_ids": {
+      "crates/slskr/src/podcore_mutations.rs": "09e8252602a617bc76e76bfaafc38cf270acf097",
+      "crates/slskr/src/podcore_queries.rs": "1bcafa27f853c182295586c484acdee1a4bb4d06",
+      "crates/slskr/src/podcore_stats_controller.rs": "49b3cbda8443584aadbc63f3d33777366eefa6a8",
+      "web/src/components/Collections/CollectionShareModal.jsx": "c992500ac8fbac7126cd206e012c3509cde6a1e9",
+      "web/src/components/Search/DiscographyCoveragePanel.jsx": "30a767356c47e5198976ddbac4ce657320f15b03",
+      "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx": "90f3e1d29a4b514a1877693e131e92b66b8050aa",
+      "web/src/components/System/MediaCore/PodMessageRoutingPanel.jsx": "4e205e85e50775e0d1e69802884f30d6b1c32ed5",
+      "web/src/components/Transfers/TransfersHeader.jsx": "de01ff39c31f0ac094b95fba0a15f40f709f605c",
+      "web/src/components/Wishlist/WishlistModal.jsx": "16b4aa4c5a2ab57b1a0c2f6581e99dfdd4b24727",
+      "web/src/lib/setupHealthCheck.js": "ac6f54149388e953852dc230f781fa52bac238e7"
+    }
+  },
+  "visual_check": {
+    "file": "headed-visual-check.md",
+    "status": "blocked",
+    "sha256": "0cf5dfca250a5f04a6baf05d3360fad1f60c51eb2bb1772dc39986d49f0bc243"
+  },
+  "browser_recapture_required": true,
+  "native_speaker_approval": false,
+  "locale_quality_confidence": "moderate without native-speaker approval",
+  "frozen_source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313"
+}

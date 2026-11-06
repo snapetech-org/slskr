@@ -1,0 +1,920 @@
+import LocalizedText, { LocalizedErrorOutput } from "../Shared/LocalizedText";
+import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
+import * as collectionsAPI from '../../lib/collections';
+import { toDisplayErrorOutput } from '../../lib/errors';
+import { readOptionalApiResponse } from '../../lib/optionalApi';
+import PlayCollectionItemButton from '../Player/PlayCollectionItemButton';
+import ErrorSegment from '../Shared/ErrorSegment';
+import LoaderSegment from '../Shared/LoaderSegment';
+import CreateCollectionModal from './CreateCollectionModal';
+import CollectionShareModal from './CollectionShareModal';
+import CollectionAddItemModal from './CollectionAddItemModal';
+import React, { Component } from 'react';
+import {
+  Button,
+  Container,
+  Header,
+  Icon,
+  Message,
+  Popup,
+  Segment,
+  Table,
+} from 'semantic-ui-react';
+
+const requireArrayData = (response, resource) => {
+  if (!Array.isArray(response?.data)) {
+    throw new Error(`Collections API returned an invalid ${resource} response`);
+  }
+
+  return response.data;
+};
+
+const requireLibrarySearchData = (response) => {
+  const data = response?.data;
+  if (
+    !data ||
+    typeof data !== 'object' ||
+    Array.isArray(data) ||
+    !Array.isArray(data.items)
+  ) {
+    throw new Error('Collections API returned an invalid library search response');
+  }
+
+  return data.items;
+};
+
+export default class Collections extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      addItemModalOpen: false,
+      addingItem: false,
+      collections: [],
+      collectionsLoadError: null,
+      creatingCollection: false,
+      creatingShare: false,
+      createModalOpen: false,
+      deletingCollectionId: null,
+      error: null,
+      collectionItemsError: null,
+      itemSearchLoading: false,
+      itemSearchQuery: '',
+      itemSearchResults: [],
+      loading: true,
+      newCollectionDescription: '',
+      newCollectionTitle: '',
+      newCollectionType: 'Playlist',
+      selectedCollection: null,
+      selectedCollectionItems: [],
+      sharesError: null,
+      removingItemId: null,
+      shareAllowDownload: true,
+      shareAllowStream: true,
+      shareAudienceId: null,
+      shareGroups: [],
+      shareGroupsLoading: false,
+      shareModalOpen: false,
+      shares: [],
+    };
+    this.isMountedFlag = false;
+    this.requestIds = {
+      addItem: 0,
+      collectionItems: 0,
+      collections: 0,
+      createCollection: 0,
+      createShare: 0,
+      deleteCollection: 0,
+      removeItem: 0,
+      search: 0,
+      shareGroups: 0,
+      shares: 0,
+      selection: 0,
+    };
+  }
+
+  componentDidMount() {
+    this.isMountedFlag = true;
+    void this.loadData();
+    void this.loadShareGroups();
+  }
+
+  componentWillUnmount() {
+    this.isMountedFlag = false;
+    Object.keys(this.requestIds).forEach((key) => {
+      this.requestIds[key] += 1;
+    });
+  }
+
+  loadData = async () => {
+    const requestId = ++this.requestIds.collections;
+    try {
+      if (this.isMountedFlag && requestId === this.requestIds.collections) {
+        this.setState({ error: null, loading: true });
+      }
+      const response = await readOptionalApiResponse(() => collectionsAPI.getCollections());
+      if (this.isMountedFlag && requestId === this.requestIds.collections) {
+        this.setState({
+          collections: requireArrayData(response, 'collections'),
+          collectionsLoadError: null,
+          loading: false,
+        });
+      }
+    } catch (error) {
+      const errorOutput = toDisplayErrorOutput(error, 'Failed to load collections');
+
+      if (this.isMountedFlag && requestId === this.requestIds.collections) {
+        this.setState({
+          error: errorOutput,
+          collectionsLoadError: errorOutput,
+          loading: false,
+        });
+      }
+    }
+  };
+
+  loadShareGroups = async () => {
+    const requestId = ++this.requestIds.shareGroups;
+    try {
+      if (this.isMountedFlag && requestId === this.requestIds.shareGroups) {
+        this.setState({ shareGroupsLoading: true });
+      }
+      const response = await readOptionalApiResponse(() => collectionsAPI.getShareGroups());
+      const shareGroups = requireArrayData(response, 'share groups');
+      if (this.isMountedFlag && requestId === this.requestIds.shareGroups) {
+        this.setState((previousState) => ({
+          shareAudienceId:
+            previousState.shareAudienceId ?? shareGroups[0]?.id ?? null,
+          shareGroups,
+          shareGroupsLoading: false,
+        }));
+      }
+    } catch (error) {
+      if (this.isMountedFlag && requestId === this.requestIds.shareGroups) {
+        this.setState({
+          error: toDisplayErrorOutput(error, 'Failed to load share groups'),
+          shareGroupsLoading: false,
+        });
+      }
+    }
+  };
+
+  loadShares = async (collectionId) => {
+    const requestId = ++this.requestIds.shares;
+    try {
+      if (!collectionId) {
+        if (this.isMountedFlag && requestId === this.requestIds.shares) {
+          this.setState({ shares: [] });
+        }
+        return;
+      }
+
+      const response = await readOptionalApiResponse(
+        () => collectionsAPI.getSharesByCollection(collectionId),
+      );
+      if (this.isMountedFlag && requestId === this.requestIds.shares) {
+        this.setState({
+          shares: requireArrayData(response, 'collection shares'),
+          sharesError: null,
+        });
+      }
+    } catch (error) {
+      if (this.isMountedFlag && requestId === this.requestIds.shares) {
+        this.setState({
+          sharesError: toDisplayErrorOutput(error, 'Failed to load collection shares'),
+        });
+      }
+    }
+  };
+
+  loadCollectionItems = async (collectionId) => {
+    const requestId = ++this.requestIds.collectionItems;
+    try {
+      const response = await collectionsAPI.getCollectionItems(collectionId);
+      if (
+        this.isMountedFlag &&
+        requestId === this.requestIds.collectionItems
+      ) {
+        this.setState({
+          collectionItemsError: null,
+          selectedCollectionItems: requireArrayData(
+            response,
+            'collection items',
+          ),
+        });
+      }
+    } catch (error) {
+      if (
+        this.isMountedFlag &&
+        requestId === this.requestIds.collectionItems
+      ) {
+        this.setState({
+          collectionItemsError: toDisplayErrorOutput(error, 'Failed to load collection items'),
+        });
+      }
+    }
+  };
+
+  handleCreateCollection = async () => {
+    if (!this.isMountedFlag || this.state.creatingCollection) return;
+    const requestId = ++this.requestIds.createCollection;
+    this.setState({ creatingCollection: true, error: null });
+
+    try {
+      await collectionsAPI.createCollection({
+        description: this.state.newCollectionDescription || undefined,
+        title: this.state.newCollectionTitle,
+        type: this.state.newCollectionType,
+      });
+      if (
+        !this.isMountedFlag ||
+        requestId !== this.requestIds.createCollection
+      ) {
+        return;
+      }
+      this.setState({
+        createModalOpen: false,
+        error: null,
+        newCollectionDescription: '',
+        newCollectionTitle: '',
+        newCollectionType: 'Playlist',
+      });
+      await this.loadData();
+    } catch (error) {
+      if (
+        this.isMountedFlag &&
+        requestId === this.requestIds.createCollection
+      ) {
+        this.setState({
+          error: toDisplayErrorOutput(error, 'Failed to create collection'),
+        });
+      }
+    } finally {
+      if (
+        this.isMountedFlag &&
+        requestId === this.requestIds.createCollection
+      ) {
+        this.setState({ creatingCollection: false });
+      }
+    }
+  };
+
+  handleDeleteCollection = async (id) => {
+    if (
+      !this.isMountedFlag ||
+      this.state.deletingCollectionId !== null
+    ) {
+      return;
+    }
+    // eslint-disable-next-line no-alert
+    if (!window.confirm(interfaceText('Delete this collection?'))) return;
+    const requestId = ++this.requestIds.deleteCollection;
+    this.setState({ deletingCollectionId: id, error: null });
+
+    try {
+      await collectionsAPI.deleteCollection(id);
+      if (
+        !this.isMountedFlag ||
+        requestId !== this.requestIds.deleteCollection
+      ) {
+        return;
+      }
+      await this.loadData();
+      if (
+        this.isMountedFlag &&
+        requestId === this.requestIds.deleteCollection &&
+        this.state.selectedCollection?.id === id
+      ) {
+        this.setState({
+          selectedCollection: null,
+          selectedCollectionItems: [],
+        });
+      }
+    } catch (error) {
+      if (
+        this.isMountedFlag &&
+        requestId === this.requestIds.deleteCollection
+      ) {
+        this.setState({
+          error: toDisplayErrorOutput(error, 'Failed to delete collection'),
+        });
+      }
+    } finally {
+      if (
+        this.isMountedFlag &&
+        requestId === this.requestIds.deleteCollection
+      ) {
+        this.setState({ deletingCollectionId: null });
+      }
+    }
+  };
+
+  handleSelectCollection = async (collection) => {
+    const selectionId = ++this.requestIds.selection;
+    if (!this.isMountedFlag) return;
+    this.setState((previousState) => {
+      const sameCollection = previousState.selectedCollection?.id === collection.id;
+      return {
+        error: null,
+        selectedCollection: collection,
+        collectionItemsError: null,
+        selectedCollectionItems: sameCollection
+          ? previousState.selectedCollectionItems
+          : [],
+        shares: sameCollection ? previousState.shares : [],
+        sharesError: null,
+      };
+    });
+    await this.loadCollectionItems(collection.id);
+    if (
+      !this.isMountedFlag ||
+      selectionId !== this.requestIds.selection
+    ) {
+      return;
+    }
+    await this.loadShares(collection.id);
+    if (
+      this.isMountedFlag &&
+      selectionId === this.requestIds.selection &&
+      this.state.selectedCollection?.id === collection.id
+    ) {
+      this.setState({ error: null });
+    }
+  };
+
+  handleSearchItems = async (query) => {
+    const requestId = ++this.requestIds.search;
+    if (!query || query.length < 2) {
+      if (this.isMountedFlag && requestId === this.requestIds.search) {
+        this.setState({ itemSearchLoading: false, itemSearchResults: [] });
+      }
+      return;
+    }
+
+    if (this.isMountedFlag && requestId === this.requestIds.search) {
+      this.setState({ itemSearchLoading: true });
+    }
+    try {
+      const response = await collectionsAPI.searchLibraryItems(query, null, 20);
+      const items = requireLibrarySearchData(response);
+      if (this.isMountedFlag && requestId === this.requestIds.search) {
+        this.setState({
+          itemSearchLoading: false,
+          itemSearchResults: items,
+        });
+      }
+    } catch (error) {
+      console.error('[Collections] Search error:', error);
+      if (this.isMountedFlag && requestId === this.requestIds.search) {
+        this.setState({
+          error: toDisplayErrorOutput(error, 'Failed to search library items'),
+          itemSearchLoading: false,
+          itemSearchResults: [],
+        });
+      }
+    }
+  };
+
+  handleAddItem = async () => {
+    const selectedCollection = this.state.selectedCollection;
+    if (!selectedCollection || this.state.addingItem) return;
+
+    const requestId = ++this.requestIds.addItem;
+    const itemSearchQuery = this.state.itemSearchQuery.trim();
+
+    // Use selected search result if available, otherwise use query as fallback
+    const selectedResult = this.state.itemSearchResults.find(
+      (item) => item.contentId === itemSearchQuery,
+    );
+    const contentId = selectedResult
+      ? selectedResult.contentId
+      : itemSearchQuery;
+    const mediaKind = selectedResult ? selectedResult.mediaKind : 'File'; // Default fallback
+
+    if (!contentId) return;
+    this.setState({ addingItem: true, error: null });
+
+    try {
+      await collectionsAPI.addCollectionItem(selectedCollection.id, {
+        bytes: selectedResult?.bytes,
+        contentId,
+        fileName: selectedResult?.fileName,
+        mediaKind,
+        sha256: selectedResult?.sha256,
+      });
+      if (
+        !this.isMountedFlag ||
+        requestId !== this.requestIds.addItem ||
+        this.state.selectedCollection?.id !== selectedCollection.id
+      ) {
+        return;
+      }
+      this.setState({
+        addItemModalOpen: false,
+        error: null,
+        itemSearchQuery: '',
+        itemSearchResults: [],
+      });
+      await this.loadCollectionItems(selectedCollection.id);
+    } catch (error) {
+      if (
+        this.isMountedFlag &&
+        requestId === this.requestIds.addItem
+      ) {
+        this.setState({ error: toDisplayErrorOutput(error, 'Failed to add item') });
+      }
+    } finally {
+      if (
+        this.isMountedFlag &&
+        requestId === this.requestIds.addItem
+      ) {
+        this.setState({ addingItem: false });
+      }
+    }
+  };
+
+  handleRemoveItem = async (itemId) => {
+    const selectedCollection = this.state.selectedCollection;
+    if (
+      !selectedCollection ||
+      !this.isMountedFlag ||
+      this.state.removingItemId !== null
+    ) {
+      return;
+    }
+
+    const requestId = ++this.requestIds.removeItem;
+    this.setState({ error: null, removingItemId: itemId });
+
+    try {
+      await collectionsAPI.removeCollectionItem(itemId);
+      if (
+        !this.isMountedFlag ||
+        requestId !== this.requestIds.removeItem ||
+        this.state.selectedCollection?.id !== selectedCollection.id
+      ) {
+        return;
+      }
+      await this.loadCollectionItems(selectedCollection.id);
+    } catch (error) {
+      if (
+        this.isMountedFlag &&
+        requestId === this.requestIds.removeItem
+      ) {
+        this.setState({
+          error: toDisplayErrorOutput(error, 'Failed to remove collection item'),
+        });
+      }
+    } finally {
+      if (
+        this.isMountedFlag &&
+        requestId === this.requestIds.removeItem
+      ) {
+        this.setState({ removingItemId: null });
+      }
+    }
+  };
+
+  handleOpenShareModal = () => {
+    const { shareGroups } = this.state;
+    this.setState({
+      shareAllowDownload: true,
+      shareAllowStream: true,
+      shareAudienceId: shareGroups[0]?.id ?? null,
+      shareModalOpen: true,
+    });
+  };
+
+  handleCreateShare = async () => {
+    const {
+      selectedCollection,
+      shareAllowDownload,
+      shareAllowStream,
+      shareAudienceId,
+      shareGroups,
+    } = this.state;
+    if (
+      !selectedCollection ||
+      !shareAudienceId ||
+      this.state.creatingShare
+    ) {
+      return;
+    }
+
+    // The backend has no "share with a group" primitive: /api/share-grants
+    // only ever grants one Soulseek username access to one collection. A
+    // "ShareGroup" audience is resolved client-side into its member
+    // usernames and fanned out into one grant per member.
+    const audienceGroup = shareGroups.find(
+      (group) => String(group.id) === String(shareAudienceId),
+    );
+    const usernames = [
+      ...new Set(
+        (audienceGroup?.members ?? [])
+          .map((member) =>
+            typeof member?.username === 'string'
+              ? member.username.trim()
+              : '',
+          )
+          .filter(Boolean),
+      ),
+    ];
+    if (usernames.length === 0) {
+      this.setState({
+        error: toDisplayErrorOutput(null, 'Selected group has no members to share with.'),
+      });
+      return;
+    }
+
+    // /api/share-grants only accepts collection_id + username at creation;
+    // the permission tokens it recognizes (download, stream) are only
+    // settable via a follow-up PUT.
+    const permissions = [
+      shareAllowDownload && 'download',
+      shareAllowStream && 'stream',
+    ].filter(Boolean).join(',');
+
+    const requestId = ++this.requestIds.createShare;
+    this.setState({ creatingShare: true, error: null });
+
+    try {
+      const created = await Promise.all(
+        usernames.map((username) =>
+          collectionsAPI.createShare({
+            collectionId: selectedCollection.id,
+            username,
+          })),
+      );
+      if (permissions) {
+        const shareIds = created
+          .map((response) => response?.data?.id)
+          .filter(Boolean);
+        if (shareIds.length !== created.length) {
+          throw new Error('Share creation returned an invalid grant');
+        }
+        await Promise.all(
+          created.map((response) =>
+            collectionsAPI.updateShare(response.data.id, { permissions })),
+        );
+      }
+      if (
+        !this.isMountedFlag ||
+        requestId !== this.requestIds.createShare ||
+        this.state.selectedCollection?.id !== selectedCollection.id
+      ) {
+        return;
+      }
+      this.setState({ error: null, shareModalOpen: false });
+      await this.loadShares(selectedCollection.id);
+    } catch (error) {
+      if (
+        this.isMountedFlag &&
+        requestId === this.requestIds.createShare
+      ) {
+        this.setState({
+          error: toDisplayErrorOutput(error, 'Failed to share collection'),
+        });
+      }
+    } finally {
+      if (
+        this.isMountedFlag &&
+        requestId === this.requestIds.createShare
+      ) {
+        this.setState({ creatingShare: false });
+      }
+    }
+  };
+
+  render() {
+    const {
+      addItemModalOpen,
+      addingItem,
+      collections,
+      collectionsLoadError,
+      collectionItemsError,
+      creatingCollection,
+      creatingShare,
+      createModalOpen,
+      deletingCollectionId,
+      error,
+      itemSearchLoading,
+      itemSearchQuery,
+      itemSearchResults,
+      loading,
+      newCollectionDescription,
+      newCollectionTitle,
+      newCollectionType,
+      selectedCollection,
+      selectedCollectionItems,
+      removingItemId,
+      shareAllowDownload,
+      shareAllowStream,
+      shareAudienceId,
+      shareGroups,
+      shareGroupsLoading,
+      shareModalOpen,
+      shares,
+      sharesError,
+    } = this.state;
+
+    if (loading) return <LoaderSegment />;
+
+    const typeOptions = [
+      { key: 'Playlist', text: interfaceText("Playlist"), value: 'Playlist' },
+      { key: 'ShareList', text: interfaceText("Share List"), value: 'ShareList' },
+    ];
+
+    const collectionShares = shares;
+
+    return (
+      <div data-testid="collections-root">
+        <Container>
+          <Header as="h1">
+            <Icon name="list" />
+            <Header.Content>
+              <LocalizedText source={"Collections"} /><Header.Subheader>
+                <LocalizedText source={"Manage your playlists and share lists"} /></Header.Subheader>
+            </Header.Content>
+          </Header>
+
+          {error && <ErrorSegment caption={error} />}
+
+          <div style={{ marginBottom: '1em' }}>
+            <Button
+              data-testid="collections-create"
+              onClick={() => this.setState({ createModalOpen: true })}
+              primary
+            >
+              <Icon name="plus" />
+              <LocalizedText source={"Create Collection"} /></Button>
+          </div>
+
+          {collectionsLoadError ? (
+            <Message
+              data-testid="collections-load-error"
+              error
+            >
+              <Message.Header><LocalizedText source={"Collections unavailable"} /></Message.Header>
+              <p><LocalizedErrorOutput output={collectionsLoadError} /></p>
+            </Message>
+          ) : collections.length === 0 ? (
+            <Segment placeholder>
+              <Header icon>
+                <Icon name="list" />
+                <LocalizedText source={"No collections yet"} /></Header>
+              <Button
+                data-testid="collections-create-empty"
+                onClick={() => this.setState({ createModalOpen: true })}
+                primary
+              >
+                <LocalizedText source={"Create Collection"} /></Button>
+            </Segment>
+          ) : (
+            <Table celled>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell><LocalizedText source={"Title"} /></Table.HeaderCell>
+                  <Table.HeaderCell><LocalizedText source={"Type"} /></Table.HeaderCell>
+                  <Table.HeaderCell><LocalizedText source={"Items"} /></Table.HeaderCell>
+                  <Table.HeaderCell><LocalizedText source={"Actions"} /></Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                {collections.map((collection) => (
+                  <Table.Row
+                    data-testid={`collection-row-${collection.title}`}
+                    key={collection.id}
+                    onClick={() => this.handleSelectCollection(collection)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <Table.Cell>{collection.title}</Table.Cell>
+                    <Table.Cell>{collection.type || <LocalizedText source={"Playlist"} />}</Table.Cell>
+                    <Table.Cell>{collection.itemCount || 0}</Table.Cell>
+                    <Table.Cell>
+                      <Button
+                        negative
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          this.handleDeleteCollection(collection.id);
+                        }}
+                        loading={deletingCollectionId === collection.id}
+                        disabled={deletingCollectionId !== null}
+                        size="small"
+                      >
+                        <LocalizedText source={"Delete"} /></Button>
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
+              </Table.Body>
+            </Table>
+          )}
+
+          {selectedCollection && (
+            <Segment style={{ marginTop: '2em' }}>
+              <Header as="h2">
+                {selectedCollection.title}
+                <Header.Subheader>
+                  {selectedCollection.type || <LocalizedText source={"Playlist"} />}
+                </Header.Subheader>
+              </Header>
+
+              <div style={{ marginBottom: '1em' }}>
+                <Button
+                  data-testid="collection-add-item"
+                  onClick={() => this.setState({ addItemModalOpen: true })}
+                  primary
+                >
+                  <Icon name="plus" />
+                  <LocalizedText source={"Add Item"} /></Button>
+                <Button
+                  data-testid="share-create"
+                  onClick={this.handleOpenShareModal}
+                  style={{ marginLeft: '0.5em' }}
+                >
+                  <Icon name="share alternate" />
+                  <LocalizedText source={"Share Collection"} /></Button>
+              </div>
+
+              <div data-testid="collection-items-table">
+                {collectionItemsError && (
+                  <Message
+                    data-testid="collection-items-load-error"
+                    error
+                  >
+                    <Message.Header><LocalizedText source={"Collection items unavailable"} /></Message.Header>
+                    <p><LocalizedErrorOutput output={collectionItemsError} /></p>
+                    {selectedCollectionItems.length > 0 && (
+                      <p><LocalizedText source={"Showing the last successfully loaded collection items."} /></p>
+                    )}
+                  </Message>
+                )}
+                {selectedCollectionItems.length === 0 ? (
+                  collectionItemsError ? null : (
+                  <Message info><LocalizedText source={"No items in this collection yet."} /></Message>
+                  )
+                ) : (
+                  <Table>
+                    <Table.Header>
+                      <Table.Row>
+                        <Table.HeaderCell><LocalizedText source={"File Name"} /></Table.HeaderCell>
+                        <Table.HeaderCell><LocalizedText source={"Media Kind"} /></Table.HeaderCell>
+                        <Table.HeaderCell><LocalizedText source={"Actions"} /></Table.HeaderCell>
+                      </Table.Row>
+                    </Table.Header>
+                    <Table.Body>
+                      {selectedCollectionItems.map((item, index) => (
+                        <Table.Row
+                          data-testid={`collection-item-row-${index}`}
+                          key={item.id}
+                        >
+                          <Table.Cell>
+                            {item.fileName || item.contentId || interfaceText('N/A')}
+                          </Table.Cell>
+                          <Table.Cell>{item.mediaKind || <LocalizedText source={"Unknown"} />}</Table.Cell>
+                          <Table.Cell>
+                            <PlayCollectionItemButton item={item} />
+                            <Popup
+                              content={interfaceText("Remove this item from the collection without deleting the shared file.")}
+                              trigger={
+                                <Button
+                                  data-testid={`collection-item-remove-${index}`}
+                                  negative
+                                  disabled={removingItemId !== null}
+                                  loading={removingItemId === item.id}
+                                  onClick={() => this.handleRemoveItem(item.id)}
+                                  size="small"
+                                >
+                                  <LocalizedText source={"Remove"} /></Button>
+                              }
+                             {...interfaceTextProps("Remove this item from the collection without deleting the shared file.")}/>
+                          </Table.Cell>
+                        </Table.Row>
+                      ))}
+                    </Table.Body>
+                  </Table>
+                )}
+              </div>
+
+              <Segment
+                data-testid="shares-list"
+                style={{ marginTop: '1em' }}
+              >
+                <Header as="h4"><LocalizedText source={"Shares"} /></Header>
+                {sharesError ? (
+                  <Message
+                    data-testid="collection-shares-load-error"
+                    error
+                  >
+                    <Message.Header><LocalizedText source={"Collection shares unavailable"} /></Message.Header>
+                    <p><LocalizedErrorOutput output={sharesError} /></p>
+                    {collectionShares.length > 0 && (
+                      <p><LocalizedText source={"Showing the last successfully loaded collection shares."} /></p>
+                    )}
+                  </Message>
+                ) : null}
+                {collectionShares.length === 0 ? (
+                  sharesError ? null : (
+                  <Message info><LocalizedText source={"No shares yet."} /></Message>
+                  )
+                ) : (
+                  <Table>
+                    <Table.Header>
+                      <Table.Row>
+                        <Table.HeaderCell><LocalizedText source={"Collection"} /></Table.HeaderCell>
+                        <Table.HeaderCell><LocalizedText source={"Audience"} /></Table.HeaderCell>
+                        <Table.HeaderCell><LocalizedText source={"Stream"} /></Table.HeaderCell>
+                        <Table.HeaderCell><LocalizedText source={"Download"} /></Table.HeaderCell>
+                      </Table.Row>
+                    </Table.Header>
+                    <Table.Body>
+                      {collectionShares.map((share) => (
+                        <Table.Row key={share.id}>
+                          <Table.Cell>
+                            {share.collection?.title ||
+                              selectedCollection.title}
+                          </Table.Cell>
+                          <Table.Cell>{share.username}</Table.Cell>
+                          <Table.Cell>
+                            {collectionsAPI.shareGrantAllows(share.permissions, 'stream') ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
+                          </Table.Cell>
+                          <Table.Cell>
+                            {collectionsAPI.shareGrantAllows(share.permissions, 'download') ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
+                          </Table.Cell>
+                        </Table.Row>
+                      ))}
+                    </Table.Body>
+                  </Table>
+                )}
+              </Segment>
+            </Segment>
+          )}
+
+          <CreateCollectionModal
+            actions={{
+              onClose: () => this.setState({
+                createModalOpen: false,
+                newCollectionDescription: '',
+                newCollectionTitle: '',
+                newCollectionType: 'Playlist',
+              }),
+              onCreate: this.handleCreateCollection,
+              onDescriptionChange: (event) => this.setState({ newCollectionDescription: event.target.value }),
+              onTitleChange: (event) => this.setState({ newCollectionTitle: event.target.value }),
+              onTypeChange: (_event, { value }) => this.setState({ newCollectionType: value }),
+            }}
+            state={{
+              creatingCollection,
+              createModalOpen,
+              newCollectionDescription,
+              newCollectionTitle,
+              newCollectionType,
+            }}
+            typeOptions={typeOptions}
+          />
+          <CollectionShareModal
+            actions={{
+              onAllowDownloadChange: (event) => this.setState({ shareAllowDownload: event.target.checked }),
+              onAllowStreamChange: (event) => this.setState({ shareAllowStream: event.target.checked }),
+              onAudienceChange: (_event, { value }) => this.setState({ shareAudienceId: value }),
+              onClose: () => this.setState({ shareModalOpen: false }),
+              onCreateShare: this.handleCreateShare,
+            }}
+            state={{
+              creatingShare,
+              shareAllowDownload,
+              shareAllowStream,
+              shareAudienceId,
+              shareGroups,
+              shareGroupsLoading,
+              shareModalOpen,
+            }}
+          />
+          <CollectionAddItemModal
+            actions={{
+              onAddItem: this.handleAddItem,
+              onClose: () => this.setState({
+                addItemModalOpen: false,
+                itemSearchQuery: '',
+                itemSearchResults: [],
+              }),
+              onSearchInputChange: (event) => {
+                const query = event.target.value;
+                this.setState({ itemSearchQuery: query });
+                this.handleSearchItems(query);
+              },
+              onSearchResultChange: (_event, { value }) => this.setState({ itemSearchQuery: value }),
+            }}
+            state={{
+              addItemModalOpen,
+              addingItem,
+              itemSearchLoading,
+              itemSearchQuery,
+              itemSearchResults,
+              selectedCollection,
+            }}
+          />
+        </Container>
+      </div>
+    );
+  }
+}

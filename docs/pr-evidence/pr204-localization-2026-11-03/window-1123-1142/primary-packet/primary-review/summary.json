@@ -1,0 +1,47 @@
+{
+  "title": "Primary review: slskR PR #204 W1123-W1142",
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "head": "dba3af4fcddf494bc0ca7da48d3f61d6f75f769c",
+  "tree": "7d83b6559bc28ee385f7da9b7c84eb46a91388f6",
+  "window": "W1123-W1142",
+  "cellCount": 240,
+  "sourceCount": 20,
+  "localeCount": 12,
+  "dispositionCounts": {
+    "accept-current": 186,
+    "refinement": 11,
+    "correction": 24,
+    "hold-no-direct-caller": 12,
+    "hold-term": 7
+  },
+  "proposalCount": 35,
+  "callerHoldCount": 12,
+  "termHoldCount": 7,
+  "callerHoldSourceIds": [
+    "Directory {directory} is locked"
+  ],
+  "termHoldGroups": {
+    "Disable authority {authorityKey}": [
+      "de",
+      "ja",
+      "ko",
+      "zh-Hans",
+      "zh-Hant",
+      "vi"
+    ],
+    "Disable HTTPS listener": [
+      "hi"
+    ]
+  },
+  "inputDirectory": "/mnt/disks/scratch/task-scratch/slskr-pr204-w1123-1142-primary-20261103/clean-input",
+  "inputChecksumsVerified": true,
+  "candidateFreeInputContainedNoPriorDecisionData": true,
+  "placeholderParityErrors": 0,
+  "httpsAcronymMismatchCount": 0,
+  "nativeSpeakerApproval": "pending; primary machine-assisted review only",
+  "testsBuildsScansCI": false,
+  "repositoryOrPrMutated": false,
+  "methodology": "Reviewed all 240 current values against English source IDs, exact catalog pins, exact production caller snippets, placeholders, product/technical terminology, and field/status/error/accessibility roles. Values without a direct localized caller or with unresolved product terminology are held; only reviewed candidates are proposed."
+}

@@ -1,0 +1,30 @@
+{
+  "artifact": "W1423-W1442 caller-context review notes",
+  "head": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+  "tree": "09adcb271a2eb92770df4a20098dccc3fde2a59f",
+  "sources": {
+    "1423": "Network warning shown when a mesh or discovered peer list cannot be refreshed; retained peer data remains until the next successful poll.",
+    "1424": "DirectoryTree action button that expands every node.",
+    "1425": "PlayerBar aria-label for the control that expands the collapsed media player.",
+    "1426": "Search response control that expands results associated with a username parameter.",
+    "1427": "PlayerBar tooltip/accessible description for the expandable player drawer.",
+    "1428": "SearchesListView tooltip that toggles an individual title panel open to inspect contents.",
+    "1429": "VisualizerOverlayControls action that expands the visualizer to fill the browser viewport.",
+    "1430": "VisualizerOverlayControls label for expanding the visualizer to the full browser window.",
+    "1431": "Shared directory-tree/file-list/transfer-list action that expands a named directory.",
+    "1432": "Acquisition profile summary for album-complete release matching and ranking.",
+    "1433": "System navigation label for the browser-local Experience settings area.",
+    "1434": "ExperienceSettings heading; options control Search, Player, and Messages behavior in the current browser.",
+    "1435": "Success toast/message after the experience preference report is copied to clipboard.",
+    "1436": "Status message after the browser-local experience preferences are reset.",
+    "1437": "Status message after browser-local experience preferences are saved.",
+    "1438": "Policy Preview label for the number of days before an unrated discovery-shelf item expires.",
+    "1439": "MediaCore discovery statistic counting expired discovery entries.",
+    "1440": "PodMembershipManagementPanel statistic counting expired peer memberships.",
+    "1441": "MediaCore/DHT publishing statistics counting expired published records.",
+    "1442": "Date-time label for the expiry timestamp of published or registered records."
+  },
+  "candidateFreeCallerCount": 34,
+  "callerlessPositions": [],
+  "runtimeContext": "web/src/lib/interfaceLocale.js uses exact English source-key lookup, named placeholder substitution, locale catalogs, and English fallback; see evidence/candidate-free-input/localization-runtime-context.json."
+}

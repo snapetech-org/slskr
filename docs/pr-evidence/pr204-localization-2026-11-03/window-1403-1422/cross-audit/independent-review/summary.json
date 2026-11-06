@@ -1,0 +1,40 @@
+{
+  "baselineNumericTokenMismatches": [
+    {
+      "adjudication": "source spells out three, target digit 3 has the same value",
+      "locale": "ja",
+      "position": 1416
+    },
+    {
+      "adjudication": "source spells out three, target digit 3 has the same value",
+      "locale": "ko",
+      "position": 1416
+    }
+  ],
+  "candidateFreeOnly": true,
+  "changedPriorHolds": 0,
+  "dispositions": {
+    "hold": 1,
+    "retain": 218,
+    "update": 21
+  },
+  "inputChecksumListSha256": "56773cbe0504f7daf871c2c6c8740ecc88ab8e1322bbec530f25318986bd1a2b",
+  "inputManifestSha256": "0ecb7a69e8892b53dfdea64aac207d2e478baa912038f5c4845cba5c5872e068",
+  "inputRoot": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1403-1422-primary-20261103/candidate-free-input",
+  "inputSourceOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "inputSourceQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+  "localeCount": 12,
+  "newHolds": [
+    {
+      "issue": "channel term requires product-domain glossary/context",
+      "locale": "zh-Hant",
+      "position": 1420
+    }
+  ],
+  "primaryMaterialsOpened": false,
+  "priorHoldsReattested": 35,
+  "priorSelectionsReattested": 160,
+  "result": "SEALED_INDEPENDENT_REVIEW",
+  "reviewedCells": 240,
+  "sourceCount": 20
+}

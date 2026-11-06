@@ -1,0 +1,337 @@
+# Exact source/caller context
+
+This evidence is read from the pinned source/code commit, not a moving branch.
+
+## Cell context map
+
+- `203` `Advanced`: System navigation tab label: Advanced settings pane (System.jsx).
+- `204` `Advanced Filters`: Accessible label/title of the sliders button that opens search-result filters (SearchResultControls.jsx).
+- `205` `Advanced Search Filters`: Heading of the advanced search-filter modal (SearchFilterModal.jsx).
+- `206` `Advanced privacy and anonymity features`: Subheader for security/privacy/anonymity controls on Adversarial Settings (AdversarialSettingsView.jsx).
+- `207` `Adversarial`: Short name of the adversarial-security profile area; exact page warns it is for repressive regimes or active surveillance and all options are disabled by default.
+- `208` `Adversarial Features Unavailable`: Error header when adversarial-security options are unavailable; this is a security feature, not an opposing/contradictory feature.
+- `209` `Adversarial Profile`: Label for the selected security/threat profile in the adversarial-security form.
+- `210` `Adversarial Resilience Overview`: Heading for resilience against adversarial attacks in the same security overview.
+- `211` `Adversarial Settings`: Settings tab for the security controls described by the page warning.
+- `212` `Adversarial Settings Not Configured`: Empty-state header when no adversarial-security configuration is present.
+- `213` `Adversarial features are advanced security options designed for users in adversarial environments. They are disabled by default and require explicit configuration.`: Explanation that these are advanced security options for repressive regimes or users facing active surveillance; disabled by default and require explicit configuration.
+- `214` `Adversarial features are not configured on this server`: Error text when this server has no adversarial-security configuration.
+- `215` `Adversarial settings updated successfully`: Success toast after saving the security settings.
+- `216` `Affinity Score:`: Numeric peer affinity percentage displayed alongside a separate trust score, message count, and opinion count.
+- `217` `After import`: Automation cadence for a media-server rescan after successful library import, not customs import.
+- `218` `Against:`: Label before the top evidence against a synthetic SongID hypothesis; means counter-evidence.
+- `219` `Age:`: Descriptor freshness value displayed as total minutes followed by “minutes”; means elapsed age.
+- `220` `Agent Mode`: Primary-navigation item for the app’s agent profile/mode.
+- `221` `Aggregated Opinion Results`: Heading above weighted/unweighted aggregates and consensus results for peer opinions.
+- `222` `Agreement:`: Numeric opinion-agreement measure calculated as one minus standard deviation divided by five; adjacent text says lower standard deviation means higher agreement.
+
+## Pinned caller excerpts
+
+### web/src/components/System/System.jsx
+commit=7ff454828398de6a3cfb72fe7f0ed21fe419425b
+tree=9e9f2aa743c4ff3236af8f99619803bdc3a37152
+blob=a3883b39c29b38485b5bfcadcf4039f18012c1a3
+sha256=41f2b7416cf6503df69aad6265f0df06fa3b7ee44d476b9e710ab5bf83ed2f0f
+--- lines 46-51 ---
+   46   { icon: 'share alternate', key: 'network', get title() { return interfaceText("Network & Mesh"); } },
+   47   { icon: 'shield alternate', key: 'security', get title() { return interfaceText("Security & Trust"); } },
+   48   { icon: 'magic', key: 'automation', get title() { return interfaceText("Automation & Jobs"); } },
+   49   { icon: 'heartbeat', key: 'diagnostics', get title() { return interfaceText("Diagnostics"); } },
+   50   { icon: 'options', key: 'advanced', get title() { return interfaceText("Advanced"); } },
+   51 ];
+
+### web/src/components/Search/Detail/SearchResultControls.jsx
+commit=7ff454828398de6a3cfb72fe7f0ed21fe419425b
+tree=9e9f2aa743c4ff3236af8f99619803bdc3a37152
+blob=f6ec8606ad6420be75d2cde695815e31b86bd448
+sha256=1f2880630f893cfc8361fb40a4ad4e9e07d01da96202b7ac36054c860124da46
+--- lines 256-264 ---
+  256                       <Button
+  257                         icon
+  258                         aria-label={t('Advanced Filters')}
+  259                         lang={languageFor('Advanced Filters')}
+  260                         dir={directionFor('Advanced Filters')}
+  261                         title={t('Advanced Filters')}
+  262                       >
+  263                         <Icon name="sliders horizontal" />
+  264                       </Button>
+
+### web/src/components/Search/Detail/SearchFilterModal.jsx
+commit=7ff454828398de6a3cfb72fe7f0ed21fe419425b
+tree=9e9f2aa743c4ff3236af8f99619803bdc3a37152
+blob=7765f8e075878a6f8a883eaca82ed2b8ee4ed94e
+sha256=b842680bae7a555b34814b900a55e3bca05485fdad27b10411c47c5c63034968
+--- lines 45-50 ---
+   45     >
+   46       <Header
+   47         content={localized('Advanced Search Filters')}
+   48         icon="filter"
+   49       />
+   50       <Modal.Content>
+
+### web/src/components/System/Security/AdversarialSettings.jsx
+commit=7ff454828398de6a3cfb72fe7f0ed21fe419425b
+tree=9e9f2aa743c4ff3236af8f99619803bdc3a37152
+blob=1ff1afe2b375fe044b6542e27cae3f6bce20f3c9
+sha256=c82c38e14d05a22e4787a0991ea372c74d07a3a5988e87b51891133e4f802704
+--- lines 53-69 ---
+   53       if (data) {
+   54         setSettings(data);
+   55         setError(null);
+   56         return data;
+   57       } else {
+   58         setError(interfaceText("Adversarial features are not configured on this server"));
+   59       }
+   60     } catch (fetchError) {
+   61       if (
+   62         mountedRef.current &&
+   63         requestIdsRef.current.settings === requestId
+   64       ) {
+   65         setError(
+   66           fetchError?.response?.status === 404
+   67             ? 'Adversarial features are not configured on this server'
+   68             : toDisplayError(fetchError, 'Failed to load adversarial settings'),
+   69         );
+--- lines 543-565 ---
+  543   if (error && !settings) {
+  544     return (
+  545       <Message negative>
+  546         <Message.Header><LocalizedText source={"Adversarial Features Unavailable"} /></Message.Header>
+  547         <p>{error}</p>
+  548         <p>
+  549           <LocalizedText source={"Adversarial features are advanced security options designed for users in adversarial environments. They are disabled by default and require explicit configuration."} /></p>
+  550         <Button
+  551           onClick={fetchSettings}
+  552           size="small"
+  553         >
+  554           <LocalizedText source={"Retry"} /></Button>
+  555       </Message>
+  556     );
+  557   }
+  558 <blank>
+  559   if (!settings) {
+  560     return (
+  561       <Message info>
+  562         <Message.Header><LocalizedText source={"Adversarial Settings Not Configured"} /></Message.Header>
+  563         <p><LocalizedText source={"No adversarial configuration found."} /></p>
+  564       </Message>
+  565     );
+--- lines 215-222 ---
+  215       await securityApi.updateAdversarialSettings(settings);
+  216       if (isCurrentRequest()) {
+  217         setSuccess(interfaceText("Adversarial settings updated successfully"));
+  218         setHasChanges(false);
+  219       }
+  220     } catch (saveError) {
+  221       if (isCurrentRequest()) {
+  222         setError(toDisplayError(saveError, 'Failed to save adversarial settings'));
+
+### web/src/components/System/Security/AdversarialSettingsView.jsx
+commit=7ff454828398de6a3cfb72fe7f0ed21fe419425b
+tree=9e9f2aa743c4ff3236af8f99619803bdc3a37152
+blob=adcacdd123faf82a315da746fab3243adf5ea6a3
+sha256=5b2dfa095ba281bae2b5ef66e17901b38c7d2a68d9bef52c5f016ce3352db72d
+--- lines 88-117 ---
+   88     {
+   89       menuItem: 'Overview',
+   90       render: () => (
+   91         <Tab.Pane>
+   92           <Header as="h3">
+   93             <Icon name="shield alternate" />
+   94             <LocalizedText source={"Adversarial Resilience Overview"} /></Header>
+   95           <p>
+   96             <strong><LocalizedText source={"⚠️ WARNING:"} /></strong> <LocalizedText source={"These features are designed for users in repressive regimes or facing active surveillance. They are"} />{' '}
+   97             <strong><LocalizedText source={"ALL DISABLED BY DEFAULT"} /></strong> <LocalizedText source={"and may impact performance and compatibility. Only enable if you understand the security implications."} /></p>
+   98 <blank>
+   99           <Form>
+  100             <Form.Field>
+  101               <label><LocalizedText source={"Adversarial Profile"} /></label>
+  102               <Dropdown
+  103                 onChange={(e, { value }) => updateSetting('Profile', value)}
+  104                 options={profileOptions}
+  105                 selection
+  106                 value={settings.Profile || 'Disabled'}
+  107               />
+  108             </Form.Field>
+  109 <blank>
+  110             <Form.Field>
+  111               <Checkbox
+  112                 checked={settings.Enabled || false}
+  113                 label={interfaceText("Enable Adversarial Features")}
+  114                 onChange={(e, { checked }) => updateSetting('Enabled', checked)}
+  115                {...interfaceTextProps("Enable Adversarial Features")}/>
+  116             </Form.Field>
+  117           </Form>
+--- lines 119-141 ---
+  119           {settings.Enabled && (
+  120             <>
+  121               <Message info>
+  122                 <Message.Header><LocalizedText source={"Active Features"} /></Message.Header>
+  123                 <ul>
+  124                   {settings.Privacy?.Enabled && (
+  125                     <li><LocalizedText source={"Privacy Layer (Traffic Analysis Protection)"} /></li>
+  126                   )}
+  127                   {settings.Anonymity?.Enabled && (
+  128                     <li><LocalizedText source={"Anonymity Layer (IP Protection)"} /></li>
+  129                   )}
+  130                   {settings.Transport?.Enabled && (
+  131                     <li><LocalizedText source={"Obfuscated Transport (Anti-DPI)"} /></li>
+  132                   )}
+  133                   {settings.OnionRouting?.Enabled && (
+  134                     <li><LocalizedText source={"Onion Routing (Mesh Anonymity)"} /></li>
+  135                   )}
+  136                   {settings.CensorshipResistance?.Enabled && (
+  137                     <li><LocalizedText source={"Censorship Resistance"} /></li>
+  138                   )}
+  139                   {settings.PlausibleDeniability?.Enabled && (
+  140                     <li><LocalizedText source={"Plausible Deniability"} /></li>
+  141                   )}
+--- lines 947-956 ---
+  947   return (
+  948     <div className="adversarial-settings">
+  949       <div className="security-header">
+  950         <Header as="h3">
+  951           <Icon name="user secret" />
+  952           <Header.Content>
+  953             <LocalizedText source={"Adversarial Settings"} /><Header.Subheader>
+  954               <LocalizedText source={"Advanced privacy and anonymity features"} /></Header.Subheader>
+  955           </Header.Content>
+  956         </Header>
+
+### web/src/components/System/MediaCore/PodOpinionsPanel.jsx
+commit=7ff454828398de6a3cfb72fe7f0ed21fe419425b
+tree=9e9f2aa743c4ff3236af8f99619803bdc3a37152
+blob=89eea2680f5cfacdc5c8000080c2e00229967df0
+sha256=181f034d5b6354dd10f5b383e42aefc0fd9ae7d63572eda99c78facda268f27f
+--- lines 681-695 ---
+  681               {hasCurrentAggregatedOpinions && aggregatedOpinions && (
+  682                 <div style={{ marginBottom: '1em' }}>
+  683                   <Header size="tiny"><LocalizedText source={"Aggregated Opinion Results"} /></Header>
+  684                   <Message info>
+  685                     <strong><LocalizedText source={"Weighted Average:"} /></strong>{' '}
+  686                     {formatRegionalFixedNumber(aggregatedOpinions.weightedAverageScore, 2)}/10
+  687                     <br />
+  688                     <strong><LocalizedText source={"Unweighted Average:"} /></strong>{' '}
+  689                     {formatRegionalFixedNumber(aggregatedOpinions.unweightedAverageScore, 2)}/10
+  690                     <br />
+  691                     <strong><LocalizedText source={"Consensus Strength:"} /></strong>{' '}
+  692                     {formatRegionalFixedNumber((aggregatedOpinions.consensusStrength * 100), 1)}%
+  693                     <br />
+  694                     <strong><LocalizedText source={"Total Opinions:"} /></strong>{' '}
+  695                     {formatRegionalNumber(aggregatedOpinions.totalOpinions)}
+--- lines 704-733 ---
+  704                   {/* Variant Breakdown */}
+  705                   {aggregatedOpinions.variantAggregates.length > 0 && (
+  706                     <div style={{ marginTop: '1em' }}>
+  707                       <Header size="tiny"><LocalizedText source={"Variant Analysis"} /></Header>
+  708                       {aggregatedOpinions.variantAggregates.map(
+  709                         (variant, index) => (
+  710                           <Card
+  711                             key={index}
+  712                             style={{ marginBottom: '0.5em' }}
+  713                           >
+  714                             <Card.Content style={{ padding: '0.5em' }}>
+  715                               <div>
+  716                                 <strong><LocalizedText source={"Variant:"} /></strong>{' '}
+  717                                 {variant.variantHash.slice(0, 8)}...
+  718                                 <br />
+  719                                 <strong><LocalizedText source={"Weighted Score:"} /></strong>{' '}
+  720                                 {formatRegionalFixedNumber(variant.weightedAverageScore, 2)}/10
+  721                                 <br />
+  722                                 <strong><LocalizedText source={"Unweighted Score:"} /></strong>{' '}
+  723                                 {formatRegionalFixedNumber(variant.unweightedAverageScore, 2)}/10
+  724                                 <br />
+  725                                 <strong><LocalizedText source={"Opinions:"} /></strong>{' '}
+  726                                 {formatRegionalNumber(variant.opinionCount)}
+  727                                 <br />
+  728                                 <strong><LocalizedText source={"Agreement:"} /></strong>{' '}
+  729                                 {formatRegionalFixedNumber((
+  730                                   1 -
+  731                                   variant.scoreStandardDeviation / 5
+  732                                 ), 2)}{' '}
+  733                                 <LocalizedText source={"(lower std dev = higher agreement)"} /></div>
+--- lines 830-845 ---
+  830                     ([peerId, affinity], index) => (
+  831                       <Card
+  832                         key={index}
+  833                         style={{ marginBottom: '0.5em' }}
+  834                       >
+  835                         <Card.Content style={{ padding: '0.5em' }}>
+  836                           <div>
+  837                             <strong><LocalizedText source={"Peer:"} /></strong> {peerId.slice(0, 8)}...
+  838                             <br />
+  839                             <strong><LocalizedText source={"Affinity Score:"} /></strong>{' '}
+  840                             {formatRegionalFixedNumber((affinity.affinityScore * 100), 1)}%<br />
+  841                             <strong><LocalizedText source={"Trust Score:"} /></strong>{' '}
+  842                             {formatRegionalFixedNumber((affinity.trustScore * 100), 1)}%<br />
+  843                             <strong><LocalizedText source={"Messages:"} /></strong> {formatRegionalNumber(affinity.messageCount)}
+  844                             <br />
+  845                             <strong><LocalizedText source={"Opinions:"} /></strong> {formatRegionalNumber(affinity.opinionCount)}
+
+### web/src/lib/automationRecipes.js
+commit=7ff454828398de6a3cfb72fe7f0ed21fe419425b
+tree=9e9f2aa743c4ff3236af8f99619803bdc3a37152
+blob=16b7b3ec33fe15748e47a45c397b58d0d35d9387
+sha256=24d9494cf78e88fdc700da54a99139ebd67d6c2b608d033b9d7d8dd312c2c706
+--- lines 90-98 ---
+   90   {
+   91     approvalGate: 'Configured import success',
+   92     cadence: 'After import',
+   93     cooldown: '10 minutes',
+   94     description: 'Asks configured media servers to rescan after successful library imports.',
+   95     enabledByDefault: false,
+   96     fileImpact: 'Media-server scan',
+   97     icon: 'server',
+   98     id: 'media-server-rescan',
+
+### web/src/components/Search/SongIDEvidenceDetails.jsx
+commit=7ff454828398de6a3cfb72fe7f0ed21fe419425b
+tree=9e9f2aa743c4ff3236af8f99619803bdc3a37152
+blob=a6a0eb1e9843801ff94e590a22878899f3d2bca2
+sha256=4a90c2dfd31302a93964fed1f0642a56909bab926324519eb77c94cda6139f65
+--- lines 90-97 ---
+   90         ) : null}
+   91         {Array.isArray(matrix.topEvidenceAgainst) &&
+   92         matrix.topEvidenceAgainst.length > 0 ? (
+   93           <div style={{ marginTop: '0.5em' }}>
+   94             <LocalizedText source={"Against:"} />{" "}{matrix.topEvidenceAgainst.slice(0, 3).join(' | ')}
+   95           </div>
+   96         ) : null}
+   97         {Array.isArray(matrix.notes) && matrix.notes.length > 0 ? (
+--- lines 790-797 ---
+  790               ) : null}
+  791               {Array.isArray(run.forensicMatrix.topEvidenceAgainst) &&
+  792               run.forensicMatrix.topEvidenceAgainst.length > 0 ? (
+  793                 <div style={{ marginBottom: '0.75em' }}>
+  794                   <strong><LocalizedText source={"Against:"} /></strong>{' '}
+  795                   {run.forensicMatrix.topEvidenceAgainst.join(' | ')}
+  796                 </div>
+  797               ) : null}
+
+### web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx
+commit=7ff454828398de6a3cfb72fe7f0ed21fe419425b
+tree=9e9f2aa743c4ff3236af8f99619803bdc3a37152
+blob=4f3c8484d8d23746369ce7619ab4e017849dfb89
+sha256=8cb1922e358f7229d7f8147f41e18bffa3146283c270a5844393fc72f755c6ca
+--- lines 476-483 ---
+  476                         {descriptorVerificationResult.freshnessValid
+  477                           ? <LocalizedText source={"Yes"} />
+  478                           : <LocalizedText source={"No"} />}
+  479                         <br />
+  480                         <strong><LocalizedText source={"Age:"} /></strong>{' '}
+  481                         {formatRegionalFixedNumber(descriptorVerificationResult.age?.totalMinutes, 1)}{' '}
+  482                         <LocalizedText source={"minutes"} /></p>
+  483                       {descriptorVerificationResult.warnings?.length > 0 && (
+
+### web/src/components/AppNavigationPrimary.jsx
+commit=7ff454828398de6a3cfb72fe7f0ed21fe419425b
+tree=9e9f2aa743c4ff3236af8f99619803bdc3a37152
+blob=f4f9070f4cbebaf5aa4307ef6ac7e5f78abbabb0
+sha256=f0212774c21ada86bc3115ea95ac8949307669597899890bbec920c029e7f1a7
+--- lines 61-66 ---
+   61               {isAgent ? (
+   62                 <Menu.Item>
+   63                   <Icon name="detective" />
+   64                   {label('Agent Mode')}
+   65                 </Menu.Item>
+   66               ) : (

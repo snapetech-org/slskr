@@ -1,0 +1,39 @@
+{
+  "caller_file_sha_blob_excerpt_checks": "pass",
+  "caller_files": {
+    "crates/slskr-web/src/native_row_rendering.rs": 1,
+    "crates/slskr-web/src/native_tab_rendering.rs": 1,
+    "web/src/components/Browse/BrowseSession.jsx": 3,
+    "web/src/components/Player/PlayerBar.jsx": 2,
+    "web/src/components/Player/PlayerLauncher.jsx": 2,
+    "web/src/components/Player/PlayerRadioModal.jsx": 1,
+    "web/src/components/Search/DiscographyCoveragePanel.jsx": 4,
+    "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx": 5,
+    "web/src/components/Search/DiscoveryGraphModal.jsx": 3,
+    "web/src/components/Shared/Footer.jsx": 4,
+    "web/src/components/System/ExperienceSettings/index.jsx": 1,
+    "web/src/components/System/Info/DiagnosticBundleModal.jsx": 3,
+    "web/src/components/System/MediaCore/ContentDescriptorPublishingPanel.jsx": 3,
+    "web/src/components/System/MediaCore/PodDiscoveryPanel.jsx": 6,
+    "web/src/components/System/Security/AdversarialSettingsView.jsx": 1,
+    "web/src/components/Wishlist/Wishlist.jsx": 6
+  },
+  "caller_runtime_source_and_pr_blob_ids_match": true,
+  "direct_localization_caller_source_ids": 19,
+  "localized_caller_pin_records": 25,
+  "no_direct_localization_caller_source_ids": [
+    "Build result-filter conditions without memorizing the filter syntax."
+  ],
+  "pr_head": "fa712d12ec3a41ed5e4f2e264f6b550ddbdaba6e",
+  "raw_nonlocalized_occurrence_pin_records": 0,
+  "schema_version": 1,
+  "source_context_rows": 20,
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_window": [
+    523,
+    542
+  ],
+  "supporting_caller_pin_records": 21,
+  "total_caller_pin_records": 46,
+  "unique_file_occurrences": 45
+}

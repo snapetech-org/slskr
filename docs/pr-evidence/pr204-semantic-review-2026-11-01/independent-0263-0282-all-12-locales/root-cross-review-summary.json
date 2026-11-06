@@ -1,0 +1,17 @@
+{
+  "application": "slskR",
+  "reviewer": "root_independent_semantic_cross_review",
+  "reviewed_at_utc": "2026-11-02T02:31:17Z",
+  "review_head": "5a697d84c32043b9a56ab052cdbecc8529db1ade",
+  "review_tree": "923a788e4c22df73380cd498b0f11ab1a182b749",
+  "reviewed_exact_cell_count": 14,
+  "dispositions": {
+    "accepted-proposal": 8,
+    "refined": 6,
+    "held": 0
+  },
+  "source_and_baseline_hash_mismatches": 0,
+  "native_speaker_review": "not_provided",
+  "root_cross_review_ledger_sha256": "863f30995df14ad349335fa2bd143c2345d8b68e93082e8692f45786345ce5a4",
+  "root_apply_plan_sha256": "30e54209464ff65e7f712c51d874e4a433aa98d6f22ddef3c4c283af096c9e94"
+}

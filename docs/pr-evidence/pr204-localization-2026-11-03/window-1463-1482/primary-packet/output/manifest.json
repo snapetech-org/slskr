@@ -1,0 +1,73 @@
+{
+  "artifact": "slskR PR #204 W1463-W1482 primary translation review",
+  "baseRef": "main",
+  "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "callerReferenceCount": 29,
+  "callerlessPositions": [
+    1466
+  ],
+  "candidateFreeInput": "../../candidate-free-input/",
+  "candidateFreeInputManifestSha256": "2d530c71158af879ebfd4c112805884957054929d504aba523cca0b51031006e",
+  "cellCount": 240,
+  "currentTokenMismatchCounts": {
+    "markupMismatchCount": 0,
+    "numericTokenMismatchCount": 0,
+    "placeholderSequenceMismatchCount": 0,
+    "protectedLiteralMismatchCount": 28
+  },
+  "dispositionCounts": {
+    "accept-current": 184,
+    "correct": 29,
+    "hold": 12,
+    "refine": 15
+  },
+  "draft": true,
+  "files": {
+    "README.md": {
+      "byteCount": 1761,
+      "sha256": "aabece7e2ac493bf50f1fea5abc127728e63a1d78935b37b1ece2139b9ec2aec"
+    },
+    "primary-ledger.jsonl": {
+      "byteCount": 1043419,
+      "sha256": "f8046e5cb89dce3db748326824eccbfd5d716dfa4d11e0a2fb4fbe2d9a5db067"
+    }
+  },
+  "head": "2db7fa06845d9d94a5e5da2ddb5ecfdc04100ade",
+  "headRef": "codex/slskr-l10n-audit-20261030",
+  "localeCount": 12,
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "nextBoundaryPosition": 1483,
+  "priorHolds": 35,
+  "priorHoldsUnchanged": 35,
+  "priorSelectionReattestations": 220,
+  "priorWindows": 11,
+  "proposalCount": 44,
+  "proposedTokenMismatchCounts": {
+    "markupMismatchCount": 0,
+    "numericTokenMismatchCount": 0,
+    "placeholderSequenceMismatchCount": 0,
+    "protectedLiteralMismatchCount": 0
+  },
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskr",
+  "selectedPositions": [
+    1463,
+    1482
+  ],
+  "sourceCount": 20,
+  "state": "OPEN",
+  "tree": "0945d38050243ed0d52aa9d923636820c66e65ba"
+}

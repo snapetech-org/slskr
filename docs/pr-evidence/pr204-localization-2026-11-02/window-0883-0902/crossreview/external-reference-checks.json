@@ -1,0 +1,23 @@
+{
+  "accessedAtUtc": "2026-11-02",
+  "references": [
+    {
+      "name": "Office québécois de la langue française, Grand dictionnaire terminologique — empreinte numérique",
+      "url": "https://vitrinelinguistique.oqlf.gouv.qc.ca/fiche-gdt/fiche/8371028/empreinte-numerique",
+      "status": "verified-live",
+      "finding": "The entry is in computing/cryptography and lists empreinte numérique as a preferred term for a fixed-length representation of message/file content produced by a hash algorithm."
+    },
+    {
+      "name": "CCN-CERT glossary — Huella digital",
+      "url": "https://www.ccn-cert.cni.es/publico/seriesCCN-STIC/series/400-Guias_Generales/401-glosario_abreviaturas/topics/514.html",
+      "status": "verified-live",
+      "finding": "Defines huella digital for a data-set characteristic derived by a summary/hash function; supports the Spanish fingerprint noun used in the FLAC heading."
+    },
+    {
+      "name": "Frozen primary terminology references",
+      "url": "../slskr-pr204-window-0883-0902-primary-20261102/terminology-sources.md",
+      "status": "checksummed-input",
+      "finding": "Contains supporting technical vocabulary references for content addressing in Spanish, French, German, Japanese, Korean, Portuguese, and Vietnamese. Some direct PDF fetches were unavailable during this cross-review, so those exact specialized constructions remain moderate-confidence machine review."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "caller_coverage": "one active source decision site and one active display site; current display is explicitly localized.",
+  "current_rendering": "The status appears after the adjacent API Key label. The icon is `key` for Configured and `warning sign` otherwise. At live head the status value is wrapped as `<LocalizedText source={maskedApiKey} />`.",
+  "exact_source_occurrences_in_web_js_jsx": [
+    "web/src/components/System/Integrations/LidarrPanel.jsx:44:    return apiKey ? 'Configured' : 'Not configured';"
+  ],
+  "live_pin": {
+    "display_lines": [
+      {
+        "line": 109,
+        "text": "            <Icon name={maskedApiKey === 'Configured' ? 'key' : 'warning sign'} />"
+      },
+      {
+        "line": 110,
+        "text": "            <LocalizedText source={\"API Key\"} />{\" \"}<LocalizedText source={maskedApiKey} />"
+      }
+    ],
+    "head": "eb0a4b9e51e5d52ecade154c3bcfde152f39eb7f",
+    "source_blob": "3298a9b4bac0bf99ebfb4a0cf828b9c68ccc2254",
+    "source_file_sha256": "231d7df12d9f20d3c8b534fecdfe32937ebbe4ea040c81e652c6c7adefeabee1",
+    "source_line": {
+      "line": 44,
+      "text": "    return apiKey ? 'Configured' : 'Not configured';"
+    },
+    "source_path": "web/src/components/System/Integrations/LidarrPanel.jsx",
+    "tree": "6dc321d066407fc212541720f38b15b5bab3dbfc"
+  },
+  "localization_path": {
+    "evidence_lines": [
+      "LocalizedText.jsx:5-8 calls t(source) for string source values."
+    ],
+    "evidence_lines_interface": [
+      "interfaceLocale.js:56 performs exact catalog key lookup.",
+      "interfaceLocale.js:68-74 returns the source unchanged if no translation is found.",
+      "interfaceLocale.js:279-281 binds t(source) to the active interface language."
+    ],
+    "interface_locale_blob": "72dfea05f86bcf0ab02882a85c6e8d4a0cb0dabf",
+    "interface_locale_path": "web/src/lib/interfaceLocale.js",
+    "interface_locale_sha256": "16eb5f119655805f48845e026ee12fd517fae6de871091bd9be2e5b7f1d310ea",
+    "localized_text_blob": "f6c4f6b6cf14b84b9964cd4ea6639b5b5660a1f0",
+    "localized_text_path": "web/src/components/Shared/LocalizedText.jsx",
+    "localized_text_sha256": "d6b4417309d2cb0e749d93e7156e8ae7214b18a363de01afde8fd0b445518e85"
+  },
+  "primary_input_pin": {
+    "head": "3a4c26a7faf1dacbd8f3a382d47243b7063a262d",
+    "source_blob": "3bb24c3fb94ceb4815dce12999fbacb898437e83",
+    "source_file_sha256_actual_at_primary_head": "6fff815fc95b10400d84970dfa25f8bdf05d5bb360d719a3cf7f1cc62bcab8ea",
+    "source_file_sha256_claimed": "1ffd38e6a6f23d725a35a2a52ed9f317a3c10bcff285a83b09ded775eaca976f",
+    "source_file_sha_claim_matches": false,
+    "tree": "9059d27001d306ea6b064560137ff2a51dd19021"
+  },
+  "pull_request": 204,
+  "repository": "snapetech-org/slskR",
+  "selection_semantics": "getOption(lidarrOptions, \"apiKey\", \"ApiKey\") is tested for truthiness. A truthy key yields the status source `Configured`; a falsey/absent key yields `Not configured`. This reports the configured option value; it does not validate credentials with a request.",
+  "target_tokens": "Source has no placeholders and no protected literals; all 12 proposals preserve the token-free status form."
+}

@@ -1,0 +1,3 @@
+# slskR PR #204 W1043–W1062 strict-blind review
+
+Independent review of 240 cells across 20 source IDs and 12 locales, bound only to checksum-sealed clean input packet manifest 3f63c42360ca88399198141d4d2b31e6851b81e041ba6da02bebc1767b915f3d (checksum-list digest 86ce3f8b0a908087f76ef9d4ae4274672bd18ffaf647aa60165fa16caef57e20) at head a5603a2349006684a454953ca746b8a93c5c9f1e / tree 04ae03079fbc2dd7c00897025f4b3a344912239c. The reviewer did not inspect primary proposals, the repository checkout, or the PR/API. Each source and locale was checked against its pinned caller context, placeholders, protocol names, and product literals. Machine review does not establish native-speaker approval.

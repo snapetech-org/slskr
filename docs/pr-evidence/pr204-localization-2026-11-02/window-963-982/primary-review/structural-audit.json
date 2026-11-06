@@ -1,0 +1,28 @@
+{
+  "cellCount": 240,
+  "currentICUMismatches": [],
+  "currentMarkupMismatches": [],
+  "currentPlaceholderMismatches": [],
+  "currentProtectedLiteralFailures": [],
+  "finalICUMismatches": [],
+  "finalMarkupMismatches": [],
+  "finalPlaceholderMismatches": [],
+  "finalProtectedLiteralFailures": [],
+  "head": "99282b2f9b904f9814f5be66d8f643175e134f8e",
+  "icuAudit": "No source in this window contains ICU plural/select syntax; every current and proposed locale value was checked.",
+  "protectedLiteralPolicy": {
+    "969": [
+      "Soulseek"
+    ],
+    "972": [
+      "CSV"
+    ],
+    "977": [
+      "CSV"
+    ]
+  },
+  "punctuationAudit": "Sentence terminators and colons are counted with locale punctuation equivalents; all reviewed-final counts match source counts.",
+  "result": "PASS",
+  "tree": "ba0ba0790da40159b8d92935f0866cb6a112edce",
+  "window": "W963-W982"
+}

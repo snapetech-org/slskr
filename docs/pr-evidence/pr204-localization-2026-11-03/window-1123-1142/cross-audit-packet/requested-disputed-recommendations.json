@@ -1,0 +1,183 @@
+[
+  {
+    "locale": "id",
+    "outcome": "WIN_BLIND",
+    "rationale": "Image width-by-height label; Dimensi is more precise than Ukuran.",
+    "source": "Dimensions",
+    "target": "Dimensi"
+  },
+  {
+    "locale": "id",
+    "outcome": "WIN_BLIND",
+    "rationale": "Image width-by-height result label; retain the colon.",
+    "source": "Dimensions:",
+    "target": "Dimensi:"
+  },
+  {
+    "locale": "all 12",
+    "outcome": "remove API-field suffix in every locale; Korean punctuation/spelling normalized",
+    "rationale": "The source error literal is exactly “Directory is required”; an API route in the caller does not justify extra target text.",
+    "source": "Directory is required",
+    "targets": [
+      {
+        "locale": "ar",
+        "sha256": "244ca8c2887d2be52a5c9dd6e5d068718c36dbbd6c9ac91147d9d1b1ad344697",
+        "target": "المجلد مطلوب."
+      },
+      {
+        "locale": "de",
+        "sha256": "9abcfe4af6b7f093b68619d34925407b563783ed23ae9646acc9b43d2fbdc86f",
+        "target": "Das Verzeichnis ist erforderlich."
+      },
+      {
+        "locale": "es",
+        "sha256": "bd494a440116b3a42d1af57b02f94a2210d3c0e0fc0ec5c7f064b9d2c8732067",
+        "target": "Se requiere el directorio."
+      },
+      {
+        "locale": "fr",
+        "sha256": "1379c96ad67747468ec0690a5403c1400642d20fd6406b74891427d7b0057aa0",
+        "target": "Le répertoire est obligatoire."
+      },
+      {
+        "locale": "hi",
+        "sha256": "a9d9b1f647eeb4210e9bc10621454d05fc2d603819ff0f4850d57809e3e3335e",
+        "target": "फ़ोल्डर आवश्यक है।"
+      },
+      {
+        "locale": "id",
+        "sha256": "045f9ae35c9398be10c19cf9d532efe9c6d555cc3c8d0369da6947d0fd0142e4",
+        "target": "Direktori wajib diisi."
+      },
+      {
+        "locale": "ja",
+        "sha256": "4e06f5924f1703ad55d4085c2e87600fc018b9328452f07567028707f172fc91",
+        "target": "ディレクトリが必要です。"
+      },
+      {
+        "locale": "ko",
+        "sha256": "124be21ccce3f20a13e0e872fa6603f568ee8faac26d2cb9a6098716431e6213",
+        "target": "디렉터리가 필요합니다."
+      },
+      {
+        "locale": "pt-BR",
+        "sha256": "b0fbcd7e2b41f9742eb2b90ae254428dd6e798b612e14eaa028ac9b60cc4f6df",
+        "target": "O diretório é obrigatório."
+      },
+      {
+        "locale": "vi",
+        "sha256": "a1d95684e0cc04dbb0bf74f2fe54091cd326208c0804607e7dfcf7d85de1b070",
+        "target": "Cần có thư mục."
+      },
+      {
+        "locale": "zh-Hans",
+        "sha256": "ff6dd3881a73c54459aea8cc7d29ee59834bdfb4ce605ff9cbcdc6f7128d45ab",
+        "target": "必须提供目录。"
+      },
+      {
+        "locale": "zh-Hant",
+        "sha256": "800d62a5c2af1eb406d32575323fff949d628d8b9923403b399efdd27e7d0adf",
+        "target": "必須提供目錄。"
+      }
+    ]
+  },
+  {
+    "locale": "ko",
+    "outcome": "WIN_BLIND",
+    "rationale": "Use consistent filesystem term spelling 디렉터리.",
+    "source": "Directory",
+    "target": "디렉터리"
+  },
+  {
+    "locale": "fr",
+    "outcome": "WIN_PRIMARY",
+    "rationale": "Filesystem-directory report; primary wording Rapport sur les répertoires is more exact.",
+    "source": "Directory report",
+    "target": "Rapport sur les répertoires"
+  },
+  {
+    "heldCurrent": "HTTPS श्रोता को अक्षम करें",
+    "locale": "hi",
+    "outcome": "HOLD_TERM",
+    "rationale": "No packet-backed Hindi network-listener term is established; the current श्रोता is a human listener sense and the blind लिसनर loan still needs qualified review. Hold the checkbox label.",
+    "source": "Disable HTTPS listener",
+    "target": null
+  },
+  {
+    "locale": "id",
+    "outcome": "WIN_PRIMARY",
+    "rationale": "Use the conventional listener loan in the concise checkbox label; retain HTTPS.",
+    "source": "Disable HTTPS listener",
+    "target": "Nonaktifkan listener HTTPS"
+  },
+  {
+    "locale": "vi",
+    "outcome": "WIN_BLIND",
+    "rationale": "Blind wording names the network listening service.",
+    "source": "Disable HTTPS listener",
+    "target": "Tắt dịch vụ lắng nghe HTTPS"
+  },
+  {
+    "locale": "all six non-Arabic disputed locales",
+    "rationale": "Keep the off polarity, network-listener sense, and localhost host token; Hindi remains held for the listener term.",
+    "source": "HTTPS safety warning",
+    "targets": [
+      {
+        "heldCurrent": null,
+        "locale": "es",
+        "outcome": "WIN_BLIND",
+        "sha256": "a75eb6b0c7181987b16e0e6d903b64843901557f4e76df1d70b56308d9e93832",
+        "target": "Desactive el servicio de escucha HTTPS. Manténgalo desactivado cuando exponga la interfaz web más allá de localhost."
+      },
+      {
+        "heldCurrent": null,
+        "locale": "fr",
+        "outcome": "WIN_BLIND",
+        "sha256": "32ec8e70b162cd075067c3bec95421e2666163793291ad05d36d1af425a1e5bf",
+        "target": "Désactivez le service d’écoute HTTPS. Gardez cette option désactivée lorsque vous exposez l’interface Web au-delà de localhost."
+      },
+      {
+        "heldCurrent": "HTTPS श्रोता को अक्षम करें। लोकलहोस्ट से परे वेब यूआई को उजागर करते समय इसे बंद रखें।",
+        "locale": "hi",
+        "outcome": "HOLD_TERM",
+        "sha256": null,
+        "target": null
+      },
+      {
+        "heldCurrent": null,
+        "locale": "id",
+        "outcome": "WIN_PRIMARY",
+        "sha256": "c3d711bbd4980c8b73ff575ff8c07512239cf69480ef54055ccf1f325f44b4cf",
+        "target": "Nonaktifkan listener HTTPS. Biarkan tetap nonaktif saat mengekspos UI Web di luar localhost."
+      },
+      {
+        "heldCurrent": null,
+        "locale": "pt-BR",
+        "outcome": "WIN_BLIND",
+        "sha256": "66902dde78b59d184046b1fafa14b7a519c60a16929903ec1b8c848e122f0ee1",
+        "target": "Desative o serviço de escuta HTTPS. Mantenha-o desativado ao expor a interface Web além de localhost."
+      },
+      {
+        "heldCurrent": null,
+        "locale": "vi",
+        "outcome": "WIN_BLIND",
+        "sha256": "057395e00960c033f740e37db19509980d04f77327ae8371e6ab58af1b5f84d9",
+        "target": "Tắt dịch vụ lắng nghe HTTPS. Hãy để tùy chọn này luôn tắt khi cung cấp giao diện Web bên ngoài localhost."
+      }
+    ]
+  },
+  {
+    "locale": "fr",
+    "outcome": "WIN_BLIND",
+    "rationale": "Use loopback for the network mode, not generic bouclage.",
+    "source": "Disable Web UI authentication only for tightly controlled loopback deployments.",
+    "target": "Désactivez l’authentification de l’interface Web uniquement pour les déploiements loopback strictement contrôlés."
+  },
+  {
+    "locale": "vi",
+    "outcome": "WIN_PRIMARY",
+    "rationale": "The direct player control toggles the named crossfade effect.",
+    "source": "Disable crossfade",
+    "target": "Tắt hiệu ứng crossfade"
+  }
+]

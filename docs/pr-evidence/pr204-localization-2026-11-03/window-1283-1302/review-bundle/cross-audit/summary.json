@@ -1,0 +1,1203 @@
+{
+  "schemaVersion": 1,
+  "artifact": "slskR PR #204 W1283-W1302 root cross-audit summary",
+  "window": "W1283-W1302 positions 1283-1302",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "55ca2ae0788bfd79daab5cc49f49ebb608593e98",
+  "tree": "d5677673b766d572102bba249af2ab69095dea0d",
+  "candidateFreePacketChecksumListSha256": "abbb1b89549b82072fcbf5fce3c6ae580cc5bd499b4fe5dadd5df7bd0c567f89",
+  "primaryPacketChecksumListSha256": "e824b4518481fa2a4b122f3d8c425be7cb22826aa7133ac0e5ec4f1edef9f339",
+  "blindPacketChecksumListSha256": "83d0867a1c615665f2c12609dd2ca525013b438497f8c8309565d0ed6f6e1178",
+  "reviewedCells": 240,
+  "dispositions": {
+    "accept-current": 95,
+    "correction": 73,
+    "refinement": 72
+  },
+  "selectedUpdates": 145,
+  "updatesByPosition": {
+    "1283": 11,
+    "1284": 4,
+    "1285": 12,
+    "1286": 12,
+    "1288": 10,
+    "1289": 2,
+    "1290": 9,
+    "1291": 12,
+    "1292": 12,
+    "1293": 12,
+    "1294": 5,
+    "1295": 8,
+    "1296": 12,
+    "1297": 12,
+    "1298": 4,
+    "1299": 2,
+    "1300": 2,
+    "1302": 4
+  },
+  "callerResolutionHolds": 0,
+  "changedCells": [
+    {
+      "position": 1283,
+      "locale": "es",
+      "sourceKey": "Enable FTP completed-download uploads",
+      "currentTarget": "Habilitar cargas de descargas completadas por FTP",
+      "selectedTarget": "Habilitar las subidas por FTP tras completar las descargas",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1283,
+      "locale": "zh-Hans",
+      "sourceKey": "Enable FTP completed-download uploads",
+      "currentTarget": "启用 FTP 完成下载上传",
+      "selectedTarget": "启用下载完成后的 FTP 上传",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1283,
+      "locale": "hi",
+      "sourceKey": "Enable FTP completed-download uploads",
+      "currentTarget": "एफ़टीपी पूर्ण-डाउनलोड अपलोड सक्षम करें",
+      "selectedTarget": "डाउनलोड पूरे होने पर FTP अपलोड सक्षम करें",
+      "disposition": "correction"
+    },
+    {
+      "position": 1283,
+      "locale": "ja",
+      "sourceKey": "Enable FTP completed-download uploads",
+      "currentTarget": "FTP によるダウンロード完了アップロードを有効にする",
+      "selectedTarget": "ダウンロード完了後のFTPアップロードを有効にする",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1283,
+      "locale": "fr",
+      "sourceKey": "Enable FTP completed-download uploads",
+      "currentTarget": "Activer les téléchargements FTP terminés",
+      "selectedTarget": "Activer les téléversements FTP après la fin des téléchargements",
+      "disposition": "correction"
+    },
+    {
+      "position": 1283,
+      "locale": "pt-BR",
+      "sourceKey": "Enable FTP completed-download uploads",
+      "currentTarget": "Habilitar uploads de download concluído por FTP",
+      "selectedTarget": "Habilitar uploads via FTP após a conclusão dos downloads",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1283,
+      "locale": "ar",
+      "sourceKey": "Enable FTP completed-download uploads",
+      "currentTarget": "تمكين عمليات التحميل المكتملة عبر بروتوكول نقل الملفات (FTP).",
+      "selectedTarget": "تمكين الرفع عبر FTP عند اكتمال التنزيلات",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1283,
+      "locale": "ko",
+      "sourceKey": "Enable FTP completed-download uploads",
+      "currentTarget": "FTP 완료 다운로드 업로드 활성화",
+      "selectedTarget": "다운로드 완료 후 FTP 업로드 활성화",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1283,
+      "locale": "zh-Hant",
+      "sourceKey": "Enable FTP completed-download uploads",
+      "currentTarget": "啟用 FTP 完成下載上傳",
+      "selectedTarget": "啟用下載完成後的 FTP 上傳",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1283,
+      "locale": "vi",
+      "sourceKey": "Enable FTP completed-download uploads",
+      "currentTarget": "Cho phép tải lên tải xuống hoàn tất FTP",
+      "selectedTarget": "Bật tải lên qua FTP sau khi tải xuống hoàn tất",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1283,
+      "locale": "id",
+      "sourceKey": "Enable FTP completed-download uploads",
+      "currentTarget": "Aktifkan unggahan FTP yang telah selesai diunduh",
+      "selectedTarget": "Aktifkan unggahan melalui FTP setelah unduhan selesai",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1284,
+      "locale": "hi",
+      "sourceKey": "Enable FTP uploads",
+      "currentTarget": "एफ़टीपी अपलोड सक्षम करें",
+      "selectedTarget": "FTP अपलोड सक्षम करें",
+      "disposition": "correction"
+    },
+    {
+      "position": 1284,
+      "locale": "fr",
+      "sourceKey": "Enable FTP uploads",
+      "currentTarget": "Activer les téléchargements FTP",
+      "selectedTarget": "Activer les téléversements FTP",
+      "disposition": "correction"
+    },
+    {
+      "position": 1284,
+      "locale": "pt-BR",
+      "sourceKey": "Enable FTP uploads",
+      "currentTarget": "Habilitar uploads de FTP",
+      "selectedTarget": "Habilitar uploads via FTP",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1284,
+      "locale": "ar",
+      "sourceKey": "Enable FTP uploads",
+      "currentTarget": "تمكين تحميلات FTP",
+      "selectedTarget": "تمكين الرفع عبر FTP",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1285,
+      "locale": "es",
+      "sourceKey": "Enable HTTP rate limiting",
+      "currentTarget": "Habilitar limitación de velocidad HTTP",
+      "selectedTarget": "Habilitar la limitación de frecuencia de las solicitudes HTTP",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1285,
+      "locale": "zh-Hans",
+      "sourceKey": "Enable HTTP rate limiting",
+      "currentTarget": "启用 HTTP 速率限制",
+      "selectedTarget": "启用 HTTP 请求速率限制",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1285,
+      "locale": "hi",
+      "sourceKey": "Enable HTTP rate limiting",
+      "currentTarget": "HTTP दर सीमित करना सक्षम करें",
+      "selectedTarget": "HTTP अनुरोध दर सीमित करना सक्षम करें",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1285,
+      "locale": "de",
+      "sourceKey": "Enable HTTP rate limiting",
+      "currentTarget": "Aktivieren Sie die Ratenbegrenzung HTTP",
+      "selectedTarget": "Begrenzung der HTTP-Anfragerate aktivieren",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1285,
+      "locale": "ja",
+      "sourceKey": "Enable HTTP rate limiting",
+      "currentTarget": "HTTP レート制限を有効にする",
+      "selectedTarget": "HTTP リクエストのレート制限を有効にする",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1285,
+      "locale": "fr",
+      "sourceKey": "Enable HTTP rate limiting",
+      "currentTarget": "Activer la limitation de débit HTTP",
+      "selectedTarget": "Activer la limitation du débit des requêtes HTTP",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1285,
+      "locale": "pt-BR",
+      "sourceKey": "Enable HTTP rate limiting",
+      "currentTarget": "Habilitar limitação de taxa HTTP",
+      "selectedTarget": "Habilitar a limitação da taxa de requisições HTTP",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1285,
+      "locale": "ar",
+      "sourceKey": "Enable HTTP rate limiting",
+      "currentTarget": "تمكين تحديد معدل HTTP",
+      "selectedTarget": "تمكين تحديد معدل طلبات HTTP",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1285,
+      "locale": "ko",
+      "sourceKey": "Enable HTTP rate limiting",
+      "currentTarget": "HTTP 속도 제한 활성화",
+      "selectedTarget": "HTTP 요청 속도 제한 활성화",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1285,
+      "locale": "zh-Hant",
+      "sourceKey": "Enable HTTP rate limiting",
+      "currentTarget": "啟用 HTTP 速率限制",
+      "selectedTarget": "啟用 HTTP 請求速率限制",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1285,
+      "locale": "vi",
+      "sourceKey": "Enable HTTP rate limiting",
+      "currentTarget": "Kích hoạt giới hạn tốc độ HTTP",
+      "selectedTarget": "Bật giới hạn tần suất yêu cầu HTTP",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1285,
+      "locale": "id",
+      "sourceKey": "Enable HTTP rate limiting",
+      "currentTarget": "Aktifkan pembatasan kecepatan HTTP",
+      "selectedTarget": "Aktifkan pembatasan laju permintaan HTTP",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1286,
+      "locale": "es",
+      "sourceKey": "Enable HTTP rate limiting for API, federation, and mesh gateway policies.",
+      "currentTarget": "Habilite la limitación de velocidad HTTP para las políticas de puerta de enlace de malla, federación y API.",
+      "selectedTarget": "Habilite la limitación de frecuencia de las solicitudes HTTP para las políticas de API, federación y puerta de enlace de malla.",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1286,
+      "locale": "zh-Hans",
+      "sourceKey": "Enable HTTP rate limiting for API, federation, and mesh gateway policies.",
+      "currentTarget": "为 API、联合和网状网关策略启用 HTTP 速率限制。",
+      "selectedTarget": "为 API、联邦和网状网关策略启用 HTTP 请求速率限制。",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1286,
+      "locale": "hi",
+      "sourceKey": "Enable HTTP rate limiting for API, federation, and mesh gateway policies.",
+      "currentTarget": "API, फ़ेडरेशन और मेश गेटवे नीतियों के लिए HTTP दर सीमित करने को सक्षम करें।",
+      "selectedTarget": "API, फ़ेडरेशन और मेश गेटवे नीतियों के लिए HTTP अनुरोध दर सीमित करना सक्षम करें।",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1286,
+      "locale": "de",
+      "sourceKey": "Enable HTTP rate limiting for API, federation, and mesh gateway policies.",
+      "currentTarget": "Aktivieren Sie die Ratenbegrenzung HTTP für API-, Verbund- und Mesh-Gateway-Richtlinien.",
+      "selectedTarget": "Aktivieren Sie die Begrenzung der HTTP-Anfragerate für API-, Föderations- und Mesh-Gateway-Richtlinien.",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1286,
+      "locale": "ja",
+      "sourceKey": "Enable HTTP rate limiting for API, federation, and mesh gateway policies.",
+      "currentTarget": "API、フェデレーション、およびメッシュ ゲートウェイ ポリシーに対して HTTP レート制限を有効にします。",
+      "selectedTarget": "API、フェデレーション、およびメッシュゲートウェイのポリシーで、HTTP リクエストのレート制限を有効にします。",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1286,
+      "locale": "fr",
+      "sourceKey": "Enable HTTP rate limiting for API, federation, and mesh gateway policies.",
+      "currentTarget": "Activez la limitation de débit HTTP pour les stratégies API, de fédération et de passerelle maillée.",
+      "selectedTarget": "Activez la limitation du débit des requêtes HTTP pour les règles d’API, de fédération et de passerelle maillée.",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1286,
+      "locale": "pt-BR",
+      "sourceKey": "Enable HTTP rate limiting for API, federation, and mesh gateway policies.",
+      "currentTarget": "Ative a limitação de taxa HTTP para API, políticas de federação e gateway de malha.",
+      "selectedTarget": "Ative a limitação da taxa de requisições HTTP para as políticas de API, federação e gateway de malha.",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1286,
+      "locale": "ar",
+      "sourceKey": "Enable HTTP rate limiting for API, federation, and mesh gateway policies.",
+      "currentTarget": "تمكين تحديد معدل HTTP لسياسات API والاتحاد وبوابة الشبكة.",
+      "selectedTarget": "تمكين تحديد معدل طلبات HTTP لسياسات API والاتحاد وبوابة الشبكة المتداخلة.",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1286,
+      "locale": "ko",
+      "sourceKey": "Enable HTTP rate limiting for API, federation, and mesh gateway policies.",
+      "currentTarget": "API, 페더레이션 및 메시 게이트웨이 정책에 대해 HTTP 속도 제한을 활성화합니다.",
+      "selectedTarget": "API, 페더레이션 및 메시 게이트웨이 정책에서 HTTP 요청 속도 제한을 활성화합니다.",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1286,
+      "locale": "zh-Hant",
+      "sourceKey": "Enable HTTP rate limiting for API, federation, and mesh gateway policies.",
+      "currentTarget": "為 API、聯合和網狀網關策略啟用 HTTP 速率限制。",
+      "selectedTarget": "為 API、聯邦和網狀閘道政策啟用 HTTP 請求速率限制。",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1286,
+      "locale": "vi",
+      "sourceKey": "Enable HTTP rate limiting for API, federation, and mesh gateway policies.",
+      "currentTarget": "Bật giới hạn tốc độ HTTP cho các chính sách API, liên kết và cổng lưới.",
+      "selectedTarget": "Bật giới hạn tần suất yêu cầu HTTP cho các chính sách API, liên kết và cổng lưới.",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1286,
+      "locale": "id",
+      "sourceKey": "Enable HTTP rate limiting for API, federation, and mesh gateway policies.",
+      "currentTarget": "Aktifkan pembatasan laju HTTP untuk kebijakan API, federasi, dan gateway mesh.",
+      "selectedTarget": "Aktifkan pembatasan laju permintaan HTTP untuk kebijakan API, federasi, dan gateway mesh.",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1288,
+      "locale": "es",
+      "sourceKey": "Enable Last.fm source-feed imports",
+      "currentTarget": "Habilitar las importaciones de fuentes de origen de Last.fm",
+      "selectedTarget": "Habilitar las importaciones desde los feeds de Last.fm",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1288,
+      "locale": "zh-Hans",
+      "sourceKey": "Enable Last.fm source-feed imports",
+      "currentTarget": "启用 Last.fm 源源导入",
+      "selectedTarget": "启用 Last.fm 信息流导入",
+      "disposition": "correction"
+    },
+    {
+      "position": 1288,
+      "locale": "hi",
+      "sourceKey": "Enable Last.fm source-feed imports",
+      "currentTarget": "Last.fm स्रोत-फ़ीड आयात सक्षम करें",
+      "selectedTarget": "Last.fm फ़ीड से आयात सक्षम करें",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1288,
+      "locale": "de",
+      "sourceKey": "Enable Last.fm source-feed imports",
+      "currentTarget": "Aktivieren Sie Last.fm-Source-Feed-Importe",
+      "selectedTarget": "Importe aus Last.fm-Feeds aktivieren",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1288,
+      "locale": "fr",
+      "sourceKey": "Enable Last.fm source-feed imports",
+      "currentTarget": "Activer les importations de flux source Last.fm",
+      "selectedTarget": "Activer l’importation des flux Last.fm",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1288,
+      "locale": "pt-BR",
+      "sourceKey": "Enable Last.fm source-feed imports",
+      "currentTarget": "Habilitar importações de feed de origem do Last.fm",
+      "selectedTarget": "Habilitar importações dos feeds do Last.fm",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1288,
+      "locale": "ar",
+      "sourceKey": "Enable Last.fm source-feed imports",
+      "currentTarget": "تمكين عمليات استيراد موجز مصدر Last.fm",
+      "selectedTarget": "تمكين الاستيراد من موجزات Last.fm",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1288,
+      "locale": "zh-Hant",
+      "sourceKey": "Enable Last.fm source-feed imports",
+      "currentTarget": "啟用 Last.fm 來源來源匯入",
+      "selectedTarget": "啟用 Last.fm 資訊流匯入",
+      "disposition": "correction"
+    },
+    {
+      "position": 1288,
+      "locale": "vi",
+      "sourceKey": "Enable Last.fm source-feed imports",
+      "currentTarget": "Cho phép nhập nguồn cấp dữ liệu nguồn Last.fm",
+      "selectedTarget": "Bật nhập từ các nguồn cấp dữ liệu Last.fm",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1288,
+      "locale": "id",
+      "sourceKey": "Enable Last.fm source-feed imports",
+      "currentTarget": "Aktifkan impor umpan sumber Last.fm",
+      "selectedTarget": "Aktifkan impor dari feed Last.fm",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1289,
+      "locale": "zh-Hans",
+      "sourceKey": "Enable Lidarr",
+      "currentTarget": "启用Lidarr",
+      "selectedTarget": "启用 Lidarr",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1289,
+      "locale": "zh-Hant",
+      "sourceKey": "Enable Lidarr",
+      "currentTarget": "啟用Lidarr",
+      "selectedTarget": "啟用 Lidarr",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1290,
+      "locale": "es",
+      "sourceKey": "Enable Lidarr auto-download setting",
+      "currentTarget": "Habilite la configuración de descarga automática Lidarr",
+      "selectedTarget": "Habilitar el ajuste de descarga automática de Lidarr",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1290,
+      "locale": "zh-Hans",
+      "sourceKey": "Enable Lidarr auto-download setting",
+      "currentTarget": "启用Lidarr自动下载设置",
+      "selectedTarget": "启用 Lidarr 自动下载设置",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1290,
+      "locale": "de",
+      "sourceKey": "Enable Lidarr auto-download setting",
+      "currentTarget": "Aktivieren Sie die automatische Download-Einstellung Lidarr",
+      "selectedTarget": "Einstellung für automatische Downloads von Lidarr aktivieren",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1290,
+      "locale": "fr",
+      "sourceKey": "Enable Lidarr auto-download setting",
+      "currentTarget": "Activer le paramètre de téléchargement automatique Lidarr",
+      "selectedTarget": "Activer le paramètre de téléchargement automatique de Lidarr",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1290,
+      "locale": "pt-BR",
+      "sourceKey": "Enable Lidarr auto-download setting",
+      "currentTarget": "Habilitar configuração de download automático Lidarr",
+      "selectedTarget": "Habilitar a configuração de download automático do Lidarr",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1290,
+      "locale": "ar",
+      "sourceKey": "Enable Lidarr auto-download setting",
+      "currentTarget": "تمكين إعداد التنزيل التلقائي Lidarr",
+      "selectedTarget": "تمكين إعداد التنزيل التلقائي في Lidarr",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1290,
+      "locale": "zh-Hant",
+      "sourceKey": "Enable Lidarr auto-download setting",
+      "currentTarget": "啟用Lidarr自動下載設定",
+      "selectedTarget": "啟用 Lidarr 自動下載設定",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1290,
+      "locale": "vi",
+      "sourceKey": "Enable Lidarr auto-download setting",
+      "currentTarget": "Bật cài đặt tự động tải xuống Lidarr",
+      "selectedTarget": "Bật cài đặt tự động tải xuống của Lidarr",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1290,
+      "locale": "id",
+      "sourceKey": "Enable Lidarr auto-download setting",
+      "currentTarget": "Aktifkan pengaturan unduh otomatis Lidarr",
+      "selectedTarget": "Aktifkan pengaturan pengunduhan otomatis Lidarr",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1291,
+      "locale": "es",
+      "sourceKey": "Enable Lidarr blacklist rejected downloads setting",
+      "currentTarget": "Habilite la configuración de descargas rechazadas de la lista negra Lidarr",
+      "selectedTarget": "Habilitar el ajuste de Lidarr para añadir las descargas rechazadas a la lista de bloqueo",
+      "disposition": "correction"
+    },
+    {
+      "position": 1291,
+      "locale": "zh-Hans",
+      "sourceKey": "Enable Lidarr blacklist rejected downloads setting",
+      "currentTarget": "启用 Lidarr 黑名单拒绝下载设置",
+      "selectedTarget": "启用 Lidarr 的已拒绝下载黑名单设置",
+      "disposition": "correction"
+    },
+    {
+      "position": 1291,
+      "locale": "hi",
+      "sourceKey": "Enable Lidarr blacklist rejected downloads setting",
+      "currentTarget": "Lidarr ब्लैकलिस्ट अस्वीकृत डाउनलोड सेटिंग सक्षम करें",
+      "selectedTarget": "Lidarr के अस्वीकृत डाउनलोड को ब्लैकलिस्ट करने की सेटिंग सक्षम करें",
+      "disposition": "correction"
+    },
+    {
+      "position": 1291,
+      "locale": "de",
+      "sourceKey": "Enable Lidarr blacklist rejected downloads setting",
+      "currentTarget": "Aktivieren Sie die Einstellung „Lidarr-Blacklist für abgelehnte Downloads“.",
+      "selectedTarget": "Lidarr-Einstellung zum Sperren abgelehnter Downloads aktivieren",
+      "disposition": "correction"
+    },
+    {
+      "position": 1291,
+      "locale": "ja",
+      "sourceKey": "Enable Lidarr blacklist rejected downloads setting",
+      "currentTarget": "Lidarr ブラックリスト拒否ダウンロード設定を有効にする",
+      "selectedTarget": "Lidarrで拒否されたダウンロードをブラックリストに追加する設定を有効にする",
+      "disposition": "correction"
+    },
+    {
+      "position": 1291,
+      "locale": "fr",
+      "sourceKey": "Enable Lidarr blacklist rejected downloads setting",
+      "currentTarget": "Activer le paramètre de liste noire des téléchargements rejetés Lidarr",
+      "selectedTarget": "Activer le paramètre Lidarr de mise sur liste noire des téléchargements rejetés",
+      "disposition": "correction"
+    },
+    {
+      "position": 1291,
+      "locale": "pt-BR",
+      "sourceKey": "Enable Lidarr blacklist rejected downloads setting",
+      "currentTarget": "Habilitar configuração de downloads rejeitados da lista negra Lidarr",
+      "selectedTarget": "Habilitar a configuração do Lidarr para incluir downloads rejeitados na lista de bloqueio",
+      "disposition": "correction"
+    },
+    {
+      "position": 1291,
+      "locale": "ar",
+      "sourceKey": "Enable Lidarr blacklist rejected downloads setting",
+      "currentTarget": "تمكين إعداد التنزيلات المرفوضة في القائمة السوداء لـ Lidarr",
+      "selectedTarget": "تمكين إعداد Lidarr لإضافة التنزيلات المرفوضة إلى القائمة السوداء",
+      "disposition": "correction"
+    },
+    {
+      "position": 1291,
+      "locale": "ko",
+      "sourceKey": "Enable Lidarr blacklist rejected downloads setting",
+      "currentTarget": "Lidarr 블랙리스트 거부 다운로드 설정 활성화",
+      "selectedTarget": "Lidarr 거부된 다운로드를 차단 목록에 추가하는 설정 활성화",
+      "disposition": "correction"
+    },
+    {
+      "position": 1291,
+      "locale": "zh-Hant",
+      "sourceKey": "Enable Lidarr blacklist rejected downloads setting",
+      "currentTarget": "啟用 Lidarr 黑名單拒絕下載設置",
+      "selectedTarget": "啟用 Lidarr 將遭拒下載加入黑名單的設定",
+      "disposition": "correction"
+    },
+    {
+      "position": 1291,
+      "locale": "vi",
+      "sourceKey": "Enable Lidarr blacklist rejected downloads setting",
+      "currentTarget": "Bật cài đặt danh sách đen Lidarr tải xuống bị từ chối",
+      "selectedTarget": "Bật cài đặt Lidarr để đưa các mục tải xuống bị từ chối vào danh sách chặn",
+      "disposition": "correction"
+    },
+    {
+      "position": 1291,
+      "locale": "id",
+      "sourceKey": "Enable Lidarr blacklist rejected downloads setting",
+      "currentTarget": "Aktifkan pengaturan unduhan yang ditolak daftar hitam Lidarr",
+      "selectedTarget": "Aktifkan pengaturan Lidarr untuk memasukkan unduhan yang ditolak ke daftar blokir",
+      "disposition": "correction"
+    },
+    {
+      "position": 1292,
+      "locale": "es",
+      "sourceKey": "Enable Lidarr completed import setting",
+      "currentTarget": "Habilite la configuración de importación completada Lidarr",
+      "selectedTarget": "Habilitar la importación de descargas completadas en Lidarr",
+      "disposition": "correction"
+    },
+    {
+      "position": 1292,
+      "locale": "zh-Hans",
+      "sourceKey": "Enable Lidarr completed import setting",
+      "currentTarget": "启用Lidarr已完成的导入设置",
+      "selectedTarget": "启用将已完成的下载导入 Lidarr",
+      "disposition": "correction"
+    },
+    {
+      "position": 1292,
+      "locale": "hi",
+      "sourceKey": "Enable Lidarr completed import setting",
+      "currentTarget": "Lidarr पूर्ण आयात सेटिंग सक्षम करें",
+      "selectedTarget": "Lidarr में पूरी हो चुकी डाउनलोड फ़ाइलों का आयात सक्षम करें",
+      "disposition": "correction"
+    },
+    {
+      "position": 1292,
+      "locale": "de",
+      "sourceKey": "Enable Lidarr completed import setting",
+      "currentTarget": "Aktivieren Sie die Einstellung „Lidarr abgeschlossener Import“.",
+      "selectedTarget": "Import abgeschlossener Downloads in Lidarr aktivieren",
+      "disposition": "correction"
+    },
+    {
+      "position": 1292,
+      "locale": "ja",
+      "sourceKey": "Enable Lidarr completed import setting",
+      "currentTarget": "Lidarrインポート完了設定を有効にする",
+      "selectedTarget": "完了したダウンロードを Lidarr にインポートする設定を有効にする",
+      "disposition": "correction"
+    },
+    {
+      "position": 1292,
+      "locale": "fr",
+      "sourceKey": "Enable Lidarr completed import setting",
+      "currentTarget": "Activer le paramètre d'importation terminé Lidarr",
+      "selectedTarget": "Activer l’importation des téléchargements terminés dans Lidarr",
+      "disposition": "correction"
+    },
+    {
+      "position": 1292,
+      "locale": "pt-BR",
+      "sourceKey": "Enable Lidarr completed import setting",
+      "currentTarget": "Habilitar configuração de importação concluída Lidarr",
+      "selectedTarget": "Habilitar a importação de downloads concluídos no Lidarr",
+      "disposition": "correction"
+    },
+    {
+      "position": 1292,
+      "locale": "ar",
+      "sourceKey": "Enable Lidarr completed import setting",
+      "currentTarget": "تمكين إعداد الاستيراد المكتمل Lidarr",
+      "selectedTarget": "تمكين استيراد التنزيلات المكتملة إلى Lidarr",
+      "disposition": "correction"
+    },
+    {
+      "position": 1292,
+      "locale": "ko",
+      "sourceKey": "Enable Lidarr completed import setting",
+      "currentTarget": "Lidarr 완료된 가져오기 설정 활성화",
+      "selectedTarget": "완료된 다운로드를 Lidarr로 가져오기 활성화",
+      "disposition": "correction"
+    },
+    {
+      "position": 1292,
+      "locale": "zh-Hant",
+      "sourceKey": "Enable Lidarr completed import setting",
+      "currentTarget": "啟用Lidarr已完成的導入設定",
+      "selectedTarget": "啟用將已完成的下載匯入 Lidarr",
+      "disposition": "correction"
+    },
+    {
+      "position": 1292,
+      "locale": "vi",
+      "sourceKey": "Enable Lidarr completed import setting",
+      "currentTarget": "Bật cài đặt nhập đã hoàn thành Lidarr",
+      "selectedTarget": "Bật tính năng nhập các bản tải xuống đã hoàn tất vào Lidarr",
+      "disposition": "correction"
+    },
+    {
+      "position": 1292,
+      "locale": "id",
+      "sourceKey": "Enable Lidarr completed import setting",
+      "currentTarget": "Aktifkan pengaturan impor Lidarr yang telah selesai",
+      "selectedTarget": "Aktifkan impor unduhan yang telah selesai ke Lidarr",
+      "disposition": "correction"
+    },
+    {
+      "position": 1293,
+      "locale": "es",
+      "sourceKey": "Enable Lidarr delete rejected downloads setting",
+      "currentTarget": "Habilite Lidarr para eliminar la configuración de descargas rechazadas",
+      "selectedTarget": "Habilitar la eliminación de archivos de descargas completadas que Lidarr rechace durante la importación automática",
+      "disposition": "correction"
+    },
+    {
+      "position": 1293,
+      "locale": "zh-Hans",
+      "sourceKey": "Enable Lidarr delete rejected downloads setting",
+      "currentTarget": "启用 Lidarr 删除拒绝的下载设置",
+      "selectedTarget": "启用自动导入时删除 Lidarr 拒绝的已完成文件",
+      "disposition": "correction"
+    },
+    {
+      "position": 1293,
+      "locale": "hi",
+      "sourceKey": "Enable Lidarr delete rejected downloads setting",
+      "currentTarget": "Lidarr डिलीट अस्वीकृत डाउनलोड सेटिंग सक्षम करें",
+      "selectedTarget": "स्वचालित आयात के दौरान Lidarr द्वारा अस्वीकार की गई पूरी हो चुकी फ़ाइलों को हटाने की सेटिंग सक्षम करें",
+      "disposition": "correction"
+    },
+    {
+      "position": 1293,
+      "locale": "de",
+      "sourceKey": "Enable Lidarr delete rejected downloads setting",
+      "currentTarget": "Aktivieren Sie die Einstellung Lidarr zum Löschen abgelehnter Downloads",
+      "selectedTarget": "Löschen der Dateien aus abgeschlossenen Downloads aktivieren, die Lidarr beim automatischen Import ablehnt",
+      "disposition": "correction"
+    },
+    {
+      "position": 1293,
+      "locale": "ja",
+      "sourceKey": "Enable Lidarr delete rejected downloads setting",
+      "currentTarget": "Lidarr 拒否されたダウンロードの削除設定を有効にする",
+      "selectedTarget": "自動インポート時に Lidarr が拒否した完了済みファイルを削除する設定を有効にする",
+      "disposition": "correction"
+    },
+    {
+      "position": 1293,
+      "locale": "fr",
+      "sourceKey": "Enable Lidarr delete rejected downloads setting",
+      "currentTarget": "Activer le paramètre Lidarr pour supprimer les téléchargements rejetés",
+      "selectedTarget": "Activer la suppression des fichiers issus de téléchargements terminés que Lidarr rejette lors de l’importation automatique",
+      "disposition": "correction"
+    },
+    {
+      "position": 1293,
+      "locale": "pt-BR",
+      "sourceKey": "Enable Lidarr delete rejected downloads setting",
+      "currentTarget": "Habilite a configuração de exclusão de downloads rejeitados de Lidarr",
+      "selectedTarget": "Habilitar a exclusão de arquivos de downloads concluídos rejeitados pelo Lidarr durante a importação automática",
+      "disposition": "correction"
+    },
+    {
+      "position": 1293,
+      "locale": "ar",
+      "sourceKey": "Enable Lidarr delete rejected downloads setting",
+      "currentTarget": "تمكين إعداد حذف التنزيلات المرفوضة Lidarr",
+      "selectedTarget": "تمكين حذف الملفات المكتملة التي يرفضها Lidarr أثناء الاستيراد التلقائي",
+      "disposition": "correction"
+    },
+    {
+      "position": 1293,
+      "locale": "ko",
+      "sourceKey": "Enable Lidarr delete rejected downloads setting",
+      "currentTarget": "Lidarr 거부된 다운로드 삭제 설정을 활성화합니다.",
+      "selectedTarget": "자동 가져오기 중 Lidarr가 거부한 완료된 파일 삭제 활성화",
+      "disposition": "correction"
+    },
+    {
+      "position": 1293,
+      "locale": "zh-Hant",
+      "sourceKey": "Enable Lidarr delete rejected downloads setting",
+      "currentTarget": "啟用 Lidarr 刪除拒絕的下載設置",
+      "selectedTarget": "啟用在自動匯入時刪除 Lidarr 拒絕的已完成檔案",
+      "disposition": "correction"
+    },
+    {
+      "position": 1293,
+      "locale": "vi",
+      "sourceKey": "Enable Lidarr delete rejected downloads setting",
+      "currentTarget": "Bật cài đặt xóa các bản tải xuống bị từ chối Lidarr",
+      "selectedTarget": "Bật tính năng xóa các tệp đã tải xong mà Lidarr từ chối trong quá trình nhập tự động",
+      "disposition": "correction"
+    },
+    {
+      "position": 1293,
+      "locale": "id",
+      "sourceKey": "Enable Lidarr delete rejected downloads setting",
+      "currentTarget": "Aktifkan Lidarr hapus pengaturan unduhan yang ditolak",
+      "selectedTarget": "Aktifkan penghapusan file unduhan yang telah selesai dan ditolak Lidarr saat impor otomatis",
+      "disposition": "correction"
+    },
+    {
+      "position": 1294,
+      "locale": "es",
+      "sourceKey": "Enable Lidarr integration settings",
+      "currentTarget": "Habilite la configuración de integración Lidarr",
+      "selectedTarget": "Habilitar los ajustes de integración de Lidarr",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1294,
+      "locale": "de",
+      "sourceKey": "Enable Lidarr integration settings",
+      "currentTarget": "Aktivieren Sie die Integrationseinstellungen Lidarr",
+      "selectedTarget": "Lidarr-Integrationseinstellungen aktivieren",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1294,
+      "locale": "ja",
+      "sourceKey": "Enable Lidarr integration settings",
+      "currentTarget": "Lidarr統合設定を有効にする",
+      "selectedTarget": "Lidarrの連携設定を有効にする",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1294,
+      "locale": "pt-BR",
+      "sourceKey": "Enable Lidarr integration settings",
+      "currentTarget": "Habilitar configurações de integração Lidarr",
+      "selectedTarget": "Habilitar as configurações de integração do Lidarr",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1294,
+      "locale": "ar",
+      "sourceKey": "Enable Lidarr integration settings",
+      "currentTarget": "تمكين إعدادات التكامل Lidarr",
+      "selectedTarget": "تمكين إعدادات تكامل Lidarr",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1295,
+      "locale": "es",
+      "sourceKey": "Enable Lidarr replace existing files setting",
+      "currentTarget": "Habilite Lidarr para reemplazar la configuración de archivos existentes",
+      "selectedTarget": "Permitir que Lidarr reemplace los archivos existentes",
+      "disposition": "correction"
+    },
+    {
+      "position": 1295,
+      "locale": "zh-Hans",
+      "sourceKey": "Enable Lidarr replace existing files setting",
+      "currentTarget": "启用 Lidarr 替换现有文件设置",
+      "selectedTarget": "启用 Lidarr 在导入时替换现有文件",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1295,
+      "locale": "hi",
+      "sourceKey": "Enable Lidarr replace existing files setting",
+      "currentTarget": "Lidarr को सक्षम करें मौजूदा फ़ाइलों को बदलें सेटिंग",
+      "selectedTarget": "Lidarr को मौजूदा फ़ाइलें बदलने की अनुमति देने वाली सेटिंग सक्षम करें",
+      "disposition": "correction"
+    },
+    {
+      "position": 1295,
+      "locale": "de",
+      "sourceKey": "Enable Lidarr replace existing files setting",
+      "currentTarget": "Aktivieren Sie die Einstellung Lidarr zum Ersetzen vorhandener Dateien",
+      "selectedTarget": "Lidarr das Ersetzen vorhandener Dateien erlauben",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1295,
+      "locale": "pt-BR",
+      "sourceKey": "Enable Lidarr replace existing files setting",
+      "currentTarget": "Habilite a configuração de substituição de arquivos existentes de Lidarr",
+      "selectedTarget": "Permitir que o Lidarr substitua arquivos existentes",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1295,
+      "locale": "ko",
+      "sourceKey": "Enable Lidarr replace existing files setting",
+      "currentTarget": "Lidarr 기존 파일 교체 설정 활성화",
+      "selectedTarget": "Lidarr에서 기존 파일을 교체하는 설정 활성화",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1295,
+      "locale": "vi",
+      "sourceKey": "Enable Lidarr replace existing files setting",
+      "currentTarget": "Bật Lidarr thay thế cài đặt tệp hiện có",
+      "selectedTarget": "Bật cài đặt cho phép Lidarr thay thế các tệp hiện có",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1295,
+      "locale": "id",
+      "sourceKey": "Enable Lidarr replace existing files setting",
+      "currentTarget": "Aktifkan Lidarr ganti pengaturan file yang ada",
+      "selectedTarget": "Aktifkan pengaturan agar Lidarr dapat mengganti file yang sudah ada",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1296,
+      "locale": "es",
+      "sourceKey": "Enable Lidarr wanted sync setting",
+      "currentTarget": "Habilite la configuración de sincronización deseada Lidarr",
+      "selectedTarget": "Habilitar el ajuste de sincronización de álbumes deseados de Lidarr",
+      "disposition": "correction"
+    },
+    {
+      "position": 1296,
+      "locale": "zh-Hans",
+      "sourceKey": "Enable Lidarr wanted sync setting",
+      "currentTarget": "启用 Lidarr 想要的同步设置",
+      "selectedTarget": "启用 Lidarr 待收集专辑的同步",
+      "disposition": "correction"
+    },
+    {
+      "position": 1296,
+      "locale": "hi",
+      "sourceKey": "Enable Lidarr wanted sync setting",
+      "currentTarget": "Lidarr वांछित सिंक सेटिंग सक्षम करें",
+      "selectedTarget": "Lidarr से वांछित एल्बम सिंक करने की सेटिंग सक्षम करें",
+      "disposition": "correction"
+    },
+    {
+      "position": 1296,
+      "locale": "de",
+      "sourceKey": "Enable Lidarr wanted sync setting",
+      "currentTarget": "Aktivieren Sie die gewünschte Synchronisierungseinstellung Lidarr",
+      "selectedTarget": "Einstellung zum Synchronisieren gewünschter Alben aus Lidarr aktivieren",
+      "disposition": "correction"
+    },
+    {
+      "position": 1296,
+      "locale": "ja",
+      "sourceKey": "Enable Lidarr wanted sync setting",
+      "currentTarget": "Lidarr 必要な同期設定を有効にする",
+      "selectedTarget": "Lidarr の未入手アルバムの同期を有効にする",
+      "disposition": "correction"
+    },
+    {
+      "position": 1296,
+      "locale": "fr",
+      "sourceKey": "Enable Lidarr wanted sync setting",
+      "currentTarget": "Activer le paramètre de synchronisation recherché Lidarr",
+      "selectedTarget": "Activer la synchronisation des albums recherchés par Lidarr",
+      "disposition": "correction"
+    },
+    {
+      "position": 1296,
+      "locale": "pt-BR",
+      "sourceKey": "Enable Lidarr wanted sync setting",
+      "currentTarget": "Habilite a configuração de sincronização desejada Lidarr",
+      "selectedTarget": "Habilitar a configuração para sincronizar álbuns desejados do Lidarr",
+      "disposition": "correction"
+    },
+    {
+      "position": 1296,
+      "locale": "ar",
+      "sourceKey": "Enable Lidarr wanted sync setting",
+      "currentTarget": "تمكين إعداد المزامنة المطلوبة Lidarr",
+      "selectedTarget": "تمكين مزامنة الألبومات التي يطلبها Lidarr",
+      "disposition": "correction"
+    },
+    {
+      "position": 1296,
+      "locale": "ko",
+      "sourceKey": "Enable Lidarr wanted sync setting",
+      "currentTarget": "Lidarr 원하는 동기화 설정 활성화",
+      "selectedTarget": "Lidarr에서 원하는 앨범을 동기화하는 설정 활성화",
+      "disposition": "correction"
+    },
+    {
+      "position": 1296,
+      "locale": "zh-Hant",
+      "sourceKey": "Enable Lidarr wanted sync setting",
+      "currentTarget": "啟用 Lidarr 想要的同步設定",
+      "selectedTarget": "啟用 Lidarr 待收集專輯同步",
+      "disposition": "correction"
+    },
+    {
+      "position": 1296,
+      "locale": "vi",
+      "sourceKey": "Enable Lidarr wanted sync setting",
+      "currentTarget": "Bật cài đặt đồng bộ hóa mong muốn Lidarr",
+      "selectedTarget": "Bật cài đặt đồng bộ các album được Lidarr đánh dấu là mong muốn",
+      "disposition": "correction"
+    },
+    {
+      "position": 1296,
+      "locale": "id",
+      "sourceKey": "Enable Lidarr wanted sync setting",
+      "currentTarget": "Aktifkan pengaturan sinkronisasi yang diinginkan Lidarr",
+      "selectedTarget": "Aktifkan pengaturan untuk menyinkronkan album yang diinginkan dari Lidarr",
+      "disposition": "correction"
+    },
+    {
+      "position": 1297,
+      "locale": "es",
+      "sourceKey": "Enable Lidarr wanted-album sync and completed-download import settings. Live sync still runs only from explicit Lidarr actions or configured schedulers.",
+      "currentTarget": "Habilite la sincronización del álbum deseado Lidarr y la configuración de importación de descarga completa. La sincronización en vivo aún se ejecuta solo desde acciones Lidarr explícitas o programadores configurados.",
+      "selectedTarget": "Habilite la sincronización de los álbumes deseados de Lidarr y la importación de descargas completadas. La sincronización en vivo seguirá ejecutándose únicamente mediante acciones explícitas de Lidarr o tareas programadas configuradas.",
+      "disposition": "correction"
+    },
+    {
+      "position": 1297,
+      "locale": "zh-Hans",
+      "sourceKey": "Enable Lidarr wanted-album sync and completed-download import settings. Live sync still runs only from explicit Lidarr actions or configured schedulers.",
+      "currentTarget": "启用 Lidarr 想要的专辑同步和已完成的下载导入设置。实时同步仍然仅从显式 Lidarr 操作或配置的调度程序运行。",
+      "selectedTarget": "启用 Lidarr 待收集专辑同步和已完成下载导入设置。实时同步仍只会通过明确触发的 Lidarr 操作或已配置的计划任务运行。",
+      "disposition": "correction"
+    },
+    {
+      "position": 1297,
+      "locale": "hi",
+      "sourceKey": "Enable Lidarr wanted-album sync and completed-download import settings. Live sync still runs only from explicit Lidarr actions or configured schedulers.",
+      "currentTarget": "Lidarr वांछित-एल्बम सिंक और पूर्ण-डाउनलोड आयात सेटिंग्स सक्षम करें। लाइव सिंक अभी भी केवल स्पष्ट Lidarr क्रियाओं या कॉन्फ़िगर किए गए शेड्यूलर से चलता है।",
+      "selectedTarget": "Lidarr से वांछित एल्बम सिंक करने और पूर्ण डाउनलोड आयात करने की सेटिंग सक्षम करें। लाइव सिंक अब भी केवल स्पष्ट Lidarr कार्रवाइयों या कॉन्फ़िगर किए गए शेड्यूलर से चलता है।",
+      "disposition": "correction"
+    },
+    {
+      "position": 1297,
+      "locale": "de",
+      "sourceKey": "Enable Lidarr wanted-album sync and completed-download import settings. Live sync still runs only from explicit Lidarr actions or configured schedulers.",
+      "currentTarget": "Aktivieren Sie die Lidarr-Synchronisierung für gesuchte Alben und die Importeinstellungen für abgeschlossene Downloads. Die Live-Synchronisierung wird weiterhin nur über explizite Lidarr-Aktionen oder konfigurierte Planer ausgeführt.",
+      "selectedTarget": "Aktivieren Sie die Einstellungen zum Synchronisieren gewünschter Alben aus Lidarr und zum Import abgeschlossener Downloads. Die Live-Synchronisierung wird weiterhin nur durch ausdrücklich ausgelöste Lidarr-Aktionen oder konfigurierte Zeitpläne gestartet.",
+      "disposition": "correction"
+    },
+    {
+      "position": 1297,
+      "locale": "ja",
+      "sourceKey": "Enable Lidarr wanted-album sync and completed-download import settings. Live sync still runs only from explicit Lidarr actions or configured schedulers.",
+      "currentTarget": "Lidarr 希望アルバムの同期とダウンロード完了インポート設定を有効にします。ライブ同期は引き続き、明示的な Lidarr アクションまたは構成されたスケジューラーからのみ実行されます。",
+      "selectedTarget": "Lidarr の未入手アルバムの同期と、完了したダウンロードのインポート設定を有効にします。ライブ同期は引き続き、明示的な Lidarr 操作または設定済みのスケジューラーからのみ実行されます。",
+      "disposition": "correction"
+    },
+    {
+      "position": 1297,
+      "locale": "fr",
+      "sourceKey": "Enable Lidarr wanted-album sync and completed-download import settings. Live sync still runs only from explicit Lidarr actions or configured schedulers.",
+      "currentTarget": "Activez les paramètres de synchronisation des albums recherchés Lidarr et d'importation des téléchargements terminés. La synchronisation en direct s'exécute toujours uniquement à partir d'actions Lidarr explicites ou de planificateurs configurés.",
+      "selectedTarget": "Activez les paramètres de synchronisation des albums souhaités depuis Lidarr et d’importation des téléchargements terminés. La synchronisation en direct continue de s’exécuter uniquement à partir d’actions Lidarr explicites ou de planificateurs configurés.",
+      "disposition": "correction"
+    },
+    {
+      "position": 1297,
+      "locale": "pt-BR",
+      "sourceKey": "Enable Lidarr wanted-album sync and completed-download import settings. Live sync still runs only from explicit Lidarr actions or configured schedulers.",
+      "currentTarget": "Ative a sincronização do álbum desejado Lidarr e as configurações de importação de download concluído. A sincronização ao vivo ainda é executada apenas a partir de ações Lidarr explícitas ou agendadores configurados.",
+      "selectedTarget": "Ative as configurações para sincronizar os álbuns desejados do Lidarr e importar downloads concluídos. A sincronização ao vivo continua sendo executada somente por ações explícitas do Lidarr ou por agendadores configurados.",
+      "disposition": "correction"
+    },
+    {
+      "position": 1297,
+      "locale": "ar",
+      "sourceKey": "Enable Lidarr wanted-album sync and completed-download import settings. Live sync still runs only from explicit Lidarr actions or configured schedulers.",
+      "currentTarget": "تمكين مزامنة الألبوم المطلوب Lidarr وإعدادات استيراد التنزيل المكتمل. لا تزال المزامنة المباشرة تعمل فقط من خلال إجراءات Lidarr الصريحة أو برامج الجدولة التي تم تكوينها.",
+      "selectedTarget": "تمكين مزامنة الألبومات التي يطلبها Lidarr وإعدادات استيراد التنزيلات المكتملة. ستظل المزامنة المباشرة تعمل فقط عبر إجراءات Lidarr الصريحة أو برامج الجدولة المُعَدّة.",
+      "disposition": "correction"
+    },
+    {
+      "position": 1297,
+      "locale": "ko",
+      "sourceKey": "Enable Lidarr wanted-album sync and completed-download import settings. Live sync still runs only from explicit Lidarr actions or configured schedulers.",
+      "currentTarget": "Lidarr 원하는 앨범 동기화 및 다운로드 완료 가져오기 설정을 활성화합니다. 라이브 동기화는 여전히 명시적인 Lidarr 작업 또는 구성된 스케줄러에서만 실행됩니다.",
+      "selectedTarget": "Lidarr에서 원하는 앨범 동기화 및 완료된 다운로드 가져오기 설정을 활성화합니다. 실시간 동기화는 계속해서 명시적인 Lidarr 작업이나 구성된 스케줄러를 통해서만 실행됩니다.",
+      "disposition": "correction"
+    },
+    {
+      "position": 1297,
+      "locale": "zh-Hant",
+      "sourceKey": "Enable Lidarr wanted-album sync and completed-download import settings. Live sync still runs only from explicit Lidarr actions or configured schedulers.",
+      "currentTarget": "啟用 Lidarr 想要的專輯同步和完成的下載匯入設定。即時同步仍然僅從明確 Lidarr 操作或配置的調度程序運行。",
+      "selectedTarget": "啟用 Lidarr 待收集專輯同步和已完成下載匯入設定。即時同步仍只會透過明確觸發的 Lidarr 操作或已設定的排程工作執行。",
+      "disposition": "correction"
+    },
+    {
+      "position": 1297,
+      "locale": "vi",
+      "sourceKey": "Enable Lidarr wanted-album sync and completed-download import settings. Live sync still runs only from explicit Lidarr actions or configured schedulers.",
+      "currentTarget": "Bật cài đặt đồng bộ hóa album mong muốn Lidarr và cài đặt nhập tải xuống đã hoàn tất. Đồng bộ hóa trực tiếp vẫn chỉ chạy từ các hành động Lidarr rõ ràng hoặc bộ lập lịch đã định cấu hình.",
+      "selectedTarget": "Bật cài đặt đồng bộ các album Lidarr đánh dấu là mong muốn và nhập các lượt tải xuống đã hoàn tất. Đồng bộ trực tiếp vẫn chỉ chạy thông qua các thao tác Lidarr được kích hoạt rõ ràng hoặc bộ lập lịch đã cấu hình.",
+      "disposition": "correction"
+    },
+    {
+      "position": 1297,
+      "locale": "id",
+      "sourceKey": "Enable Lidarr wanted-album sync and completed-download import settings. Live sync still runs only from explicit Lidarr actions or configured schedulers.",
+      "currentTarget": "Aktifkan sinkronisasi album yang diinginkan Lidarr dan pengaturan impor unduhan selesai. Sinkronisasi langsung masih berjalan hanya dari tindakan Lidarr eksplisit atau penjadwal yang dikonfigurasi.",
+      "selectedTarget": "Aktifkan pengaturan untuk menyinkronkan album yang diinginkan dari Lidarr dan mengimpor unduhan yang selesai. Sinkronisasi langsung tetap hanya berjalan melalui tindakan Lidarr eksplisit atau penjadwal yang dikonfigurasi.",
+      "disposition": "correction"
+    },
+    {
+      "position": 1298,
+      "locale": "hi",
+      "sourceKey": "Enable Message Batching",
+      "currentTarget": "संदेश बैचिंग सक्षम करें",
+      "selectedTarget": "संदेशों का बैच प्रसंस्करण सक्षम करें",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1298,
+      "locale": "pt-BR",
+      "sourceKey": "Enable Message Batching",
+      "currentTarget": "Habilitar lote de mensagens",
+      "selectedTarget": "Habilitar o processamento de mensagens em lote",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1298,
+      "locale": "zh-Hant",
+      "sourceKey": "Enable Message Batching",
+      "currentTarget": "啟用訊息批次",
+      "selectedTarget": "啟用訊息批次處理",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1298,
+      "locale": "vi",
+      "sourceKey": "Enable Message Batching",
+      "currentTarget": "Bật tính năng gửi tin nhắn theo nhóm",
+      "selectedTarget": "Bật xử lý tin nhắn theo lô",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1299,
+      "locale": "ar",
+      "sourceKey": "Enable Message Padding",
+      "currentTarget": "تمكين حشوة الرسائل",
+      "selectedTarget": "تمكين إضافة حشو إلى الرسائل",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1299,
+      "locale": "id",
+      "sourceKey": "Enable Message Padding",
+      "currentTarget": "Aktifkan Bantalan Pesan",
+      "selectedTarget": "Aktifkan padding pesan",
+      "disposition": "correction"
+    },
+    {
+      "position": 1300,
+      "locale": "zh-Hans",
+      "sourceKey": "Enable Ntfy",
+      "currentTarget": "启用Ntfy",
+      "selectedTarget": "启用 Ntfy",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1300,
+      "locale": "zh-Hant",
+      "sourceKey": "Enable Ntfy",
+      "currentTarget": "啟用Ntfy",
+      "selectedTarget": "啟用 Ntfy",
+      "disposition": "refinement"
+    },
+    {
+      "position": 1302,
+      "locale": "hi",
+      "sourceKey": "Enable Obfuscated Transport",
+      "currentTarget": "अस्पष्ट परिवहन सक्षम करें",
+      "selectedTarget": "नेटवर्क ट्रांसपोर्ट को छिपाने की सुविधा सक्षम करें",
+      "disposition": "correction"
+    },
+    {
+      "position": 1302,
+      "locale": "ar",
+      "sourceKey": "Enable Obfuscated Transport",
+      "currentTarget": "تمكين النقل المبهم",
+      "selectedTarget": "تمكين تمويه النقل",
+      "disposition": "correction"
+    },
+    {
+      "position": 1302,
+      "locale": "vi",
+      "sourceKey": "Enable Obfuscated Transport",
+      "currentTarget": "Kích hoạt tính năng vận chuyển bị xáo trộn",
+      "selectedTarget": "Bật tính năng ngụy trang phương thức truyền tải",
+      "disposition": "correction"
+    },
+    {
+      "position": 1302,
+      "locale": "id",
+      "sourceKey": "Enable Obfuscated Transport",
+      "currentTarget": "Aktifkan Transportasi yang Dikaburkan",
+      "selectedTarget": "Aktifkan transport yang disamarkan",
+      "disposition": "correction"
+    }
+  ],
+  "rootReviewPolicy": "All 240 cells were reviewed against exact candidate-free current values, caller context, primary review, and independent blind review. All caller references are pinned. Protected literals, placeholders, markup, and numeric tokens are preserved. No native-speaker approval is claimed."
+}

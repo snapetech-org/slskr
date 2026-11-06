@@ -1,0 +1,20 @@
+Download
+Download Album
+Download Best Album
+Download Clients
+Download KiB/s
+Download Selected
+Download Slots
+Download action preview
+Download approval
+Download cancelled retention minutes
+Download complete
+Download errored retention minutes
+Download failed
+Download filters
+Download in progress
+Download leaderboard
+Download mode status unavailable
+Download not allowed for this share
+Download path configured
+Download path missing

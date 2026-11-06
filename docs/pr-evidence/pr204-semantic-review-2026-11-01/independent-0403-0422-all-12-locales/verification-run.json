@@ -1,0 +1,73 @@
+{
+  "baseline_head": "087ea7ca6fed28c59dabe9639d8984ea8f061aa1",
+  "catalog_commit": "ad7c283dfe84f31b52f5a27c363a605fe068e36c",
+  "catalog_tree": "d0a2faeba016b57850767fe0903b67621d61bc6c",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "reviewed_cells": 240,
+  "candidate_cells": 56,
+  "accepted_dispositions": 185,
+  "applied_changes": 55,
+  "disposition_counts": {
+    "accepted-fresh": 69,
+    "accepted-carry": 115,
+    "corrected": 55,
+    "accepted-current": 1
+  },
+  "root_reconciled_candidate_counts": {
+    "accept": 52,
+    "root-refine": 1,
+    "independent-refine": 2,
+    "keep-current": 1
+  },
+  "caller_file_pins": 14,
+  "caller_files": {
+    "web/src/components/Transfers/Transfers.jsx": "744da23792a1fac5929a4802600b1cc7f238a3f3fabe1f33ded598b2b546b662",
+    "web/src/components/System/Integrations/MetadataProcessingPanel.jsx": "272ca1bfb95dd1884a4e8c6a4dd92b7d9e1d959dad96b4736e130dd3dd9cd914",
+    "web/src/components/Wishlist/Wishlist.jsx": "74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7",
+    "web/src/lib/acquisitionRequests.js": "0ad4096633725af850231922cc185a179393c3334aaf70fdee08c5c8a43b19fc",
+    "web/src/components/Transfers/TransfersHeader.jsx": "57f43a6851d991b9241b73a0f9ff08636573a49282033722f7350fb7f2a44d6f",
+    "web/src/components/System/Integrations/MediaServerPanel.jsx": "e8620c11fc3d54760a3332e5f791468029796fe21dc611cd1ef7fe7152c5d15d",
+    "web/src/lib/setupHealthCheck.js": "254e98de004fc19ae7c71dd47527adb1cc39fe52473323a1aa3b7e4f32d5cb0a",
+    "web/src/components/System/System.jsx": "41f2b7416cf6503df69aad6265f0df06fa3b7ee44d476b9e710ab5bf83ed2f0f",
+    "web/src/components/System/AutomationCenter/index.jsx": "3e5392f8a4f4d0ed7e6e6191e5cbbb12e1f34689a13d7c40d22e26b56398628d",
+    "web/src/components/System/ExperienceSettings/index.jsx": "ba7826de4b32bc9506d5926e6243623ccc3104da43706ce7a57fe4b17bcf2f30",
+    "web/src/components/Users/User.jsx": "9b0cc18a7485d5ba71fbc24f19a27fca0cf13e941def5412811775dbea35d1c9",
+    "web/src/components/Search/DiscographyCoveragePanel.jsx": "d1fdb70100b0fa7f3d38a3f0d37766e71e1efc45b8f4f47ee44684c5d173090a",
+    "web/src/components/Search/Response.jsx": "da0ccb703c38cf3a444e9d79fba30cd62191f15277ec339b287529d121cbe6de",
+    "web/src/components/Pods/PortForwarding.jsx": "3db4aa88c36b9c57f077c61f82541043d2787bc55f3289992b69403e942c326d"
+  },
+  "catalog_key_count_each_locale": 5437,
+  "locale_changed_cell_counts": {
+    "ar": 3,
+    "de": 2,
+    "es": 3,
+    "fr": 3,
+    "hi": 5,
+    "id": 5,
+    "ja": 5,
+    "ko": 7,
+    "pt-BR": 5,
+    "vi": 7,
+    "zh-Hans": 5,
+    "zh-Hant": 5
+  },
+  "catalog_file_sha256_after": {
+    "web/src/lib/locales/ui-labels.ar.json": "a5d9499a65f808b7c19dd015f92f20b6e4f98f7f98dca2001ed97adfe1090cd6",
+    "web/src/lib/locales/ui-labels.de.json": "8371aa46899d01ac3e01b8eb47c811b778b64473a90bdd7a35ed38187d314796",
+    "web/src/lib/locales/ui-labels.es.json": "ffe0efd4595640b46addb8217ef506d6d07759a92cb98ea0a655b60e810ead74",
+    "web/src/lib/locales/ui-labels.fr.json": "c8b1c82e85c9c1737e269e888f9e48973fb4573cfc7b4bf194f0527ec13ba474",
+    "web/src/lib/locales/ui-labels.hi.json": "7b3685f302fabca1cee3df076c74ae91cae643732d74f00682c276da83e13776",
+    "web/src/lib/locales/ui-labels.id.json": "1e77eb75d42fcf1db435bd0a6fa3b55c14e7ee588c3f9ecf06322253dbe4ef0f",
+    "web/src/lib/locales/ui-labels.ja.json": "0bd27fbf47e83d20daeebe30e58295bcc8190f74c51eb10109f9fe57a8ca29bd",
+    "web/src/lib/locales/ui-labels.ko.json": "5aa742e08c6cf764774f25b9f3cd443e426784fa810ec20f7e4090cf3fc094de",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "fa9e0a44840a6a72477fd4a94070759040f84c94760aeabc509679ebf1f13b67",
+    "web/src/lib/locales/ui-labels.vi.json": "204052e60d62b50c248176e8f6fbe22d87f5d0d16d6e8a8a37f2486e2e7dcd17",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "492f94bcb290b6c8e9ff5df7216279e1e8d9f24b6c01910f87ba25e16b1dd5c9",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "273f90ef0ef9e9732022ed5c0f701ac9dc8b22f01f4e8ea19282e7cff6f3d259"
+  },
+  "git_diff_check": "passed",
+  "native_speaker_approved": false,
+  "tests_builds_ci_run": false,
+  "all_pass": true
+}

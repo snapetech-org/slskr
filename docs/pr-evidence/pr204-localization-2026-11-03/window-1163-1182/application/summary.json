@@ -1,0 +1,27 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "window": "W1163-W1182",
+  "baseHead": "9aa58492ee693d8ca0f2c027a3ee5b8438639f91",
+  "baseTree": "b9ebab27d1f24932be0c623cf894a78115b6f2bb",
+  "readbackCells": 64,
+  "catalogFilesChanged": 12,
+  "changesByLocale": {
+    "ar": 2,
+    "de": 3,
+    "es": 4,
+    "fr": 5,
+    "hi": 6,
+    "id": 5,
+    "ja": 8,
+    "ko": 6,
+    "pt-BR": 8,
+    "vi": 4,
+    "zh-Hans": 6,
+    "zh-Hant": 7
+  },
+  "nativeSpeakerApproval": false,
+  "headedBrowserAcceptance": false,
+  "headedBrowserBlocker": "The registered agent_desktop_pool_v2 tools returned coordinator unavailable; host VM was running but guest port 8000 had no coordinator listener. Kasm remained reachable. No session or browser profile was changed.",
+  "testsBuildsScansCIOrWorkflowChanges": false
+}

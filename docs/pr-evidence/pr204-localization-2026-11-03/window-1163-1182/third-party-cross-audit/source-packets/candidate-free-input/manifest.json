@@ -1,0 +1,144 @@
+{
+  "base": "main",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "callerReferenceCount": 36,
+  "callerSourcesWithNoPinnedDirectLocalizedCaller": [],
+  "catalogPins": {
+    "web/src/lib/locales/ui-labels.ar.json": {
+      "gitBlob": "832159f9990ba225b0d2a539fc07a3b7c94d74de",
+      "keyCount": 5441,
+      "sha256": "25f0e5ba321f0f805147a43ebbfc40c9f2fad9095885309a1c2639bee27e0314"
+    },
+    "web/src/lib/locales/ui-labels.de.json": {
+      "gitBlob": "7bc59957e71c640f813f52025607e995dbb3f065",
+      "keyCount": 5441,
+      "sha256": "f575ca88a289a338b86ec00c16271a8dacfa9fb5bff2598256741d6def129007"
+    },
+    "web/src/lib/locales/ui-labels.es.json": {
+      "gitBlob": "0a3997a4781f009fce0b4971965fbb01aea5e329",
+      "keyCount": 5441,
+      "sha256": "edbf55fa2b8606f02caa4523e104acf32778d6ec40ace33068e3d893ab6370a1"
+    },
+    "web/src/lib/locales/ui-labels.fr.json": {
+      "gitBlob": "91dce3338ce296d99d2ebfce5d8f4f27de2245b5",
+      "keyCount": 5441,
+      "sha256": "9d3f6bae20ffe8b6b23f9b9f508ff11b6032762b5517f62b2406ffb9c952f073"
+    },
+    "web/src/lib/locales/ui-labels.hi.json": {
+      "gitBlob": "884883f84cf0a4c6814b7088ee34edef8c4f6358",
+      "keyCount": 5441,
+      "sha256": "b1c46195e698252fd3dcba011aa4f66601a61155a44d3843fd411ed055941f95"
+    },
+    "web/src/lib/locales/ui-labels.id.json": {
+      "gitBlob": "1bc0cc8c4ae47b4705c16a83fec6a87d2bdc11d3",
+      "keyCount": 5441,
+      "sha256": "c4d00e0a58dd73b2ac17be2f49328c8e38b241bbfbf43ce41e19dd6467b914f9"
+    },
+    "web/src/lib/locales/ui-labels.ja.json": {
+      "gitBlob": "becce9b75ccacb451442c02e9523bc4a43cbdf0d",
+      "keyCount": 5441,
+      "sha256": "87ec606e9b32a1ae0ca88531a832c3be59c9e817b79f16200ebcebcd4c00f453"
+    },
+    "web/src/lib/locales/ui-labels.ko.json": {
+      "gitBlob": "0edc2eb3d2ced0410d4b440c6b51c6f4198bc214",
+      "keyCount": 5441,
+      "sha256": "d186f92f2edf31c8eee2e55f62a8fca3d51edb1c7be315ed3f3652f1b434c830"
+    },
+    "web/src/lib/locales/ui-labels.pt-BR.json": {
+      "gitBlob": "bced9d2864e6a4f5371fc6ddd06666c6148ecbc2",
+      "keyCount": 5441,
+      "sha256": "62718f198ba5607a98f6def2359c2ee8ae4b9dddeea06cbed994fa1f03d54558"
+    },
+    "web/src/lib/locales/ui-labels.vi.json": {
+      "gitBlob": "b3eaa96329af5bd6a6b61ea71f0dab9f43159a5b",
+      "keyCount": 5441,
+      "sha256": "e66ac3df5e7941bf3a7491b3f4005dbb34028bb6345a36d01fc49fc21802f297"
+    },
+    "web/src/lib/locales/ui-labels.zh-Hans.json": {
+      "gitBlob": "e8b883c75b4ec23ca8d04e6203f01461e14a1208",
+      "keyCount": 5441,
+      "sha256": "bf2df3f344ca72a0a408d2c4d6e96d1d2a3db5a8db791f366c12d40d749f3d76"
+    },
+    "web/src/lib/locales/ui-labels.zh-Hant.json": {
+      "gitBlob": "edbd70b718123329fc2605134d79d4b7f3ee5164",
+      "keyCount": 5441,
+      "sha256": "ddc463d3a8d84f0a91f02187d98a7b252d844c2394c2295371d713e90a26fa4a"
+    }
+  },
+  "cellCount": 240,
+  "contextFilePins": {
+    "web/src/components/AppNavigationPrimary.jsx": "f0212774c21ada86bc3115ea95ac8949307669597899890bbec920c029e7f1a7",
+    "web/src/components/Player/PlayerDiscoveryShelfModal.jsx": "18c4d3c9f667767af9db6917912c0e66cb2912cefc861ecab45e0c330ae305c9",
+    "web/src/components/Player/PlayerRatingControls.jsx": "cff1009646d4b788df15f489ae347520906f5894cbfa5ea4b351b748f1b25f82",
+    "web/src/components/Search/Detail/SearchDetailHeader.jsx": "dff924e5f154de109da1658068e6e366b0eee26af28b632b31e4d8a0affd6eac",
+    "web/src/components/Search/DiscoveryGraphAtlasPanel.jsx": "9ab139ea6514100de0cef711e2aa5e26745bcc9936c965a9028c2591e6338471",
+    "web/src/components/Search/DiscoveryGraphModal.jsx": "26307d2ebbe1002688d340ea9c98c6012db15efd2e1dfd754b59a37c67cc49a8",
+    "web/src/components/Search/FederatedTasteRecommendationsPanel.jsx": "4b2b80578321d1d11ce3a48a57a3c9d544980b4f15dab7702d819facf0f0ec95",
+    "web/src/components/Search/SearchesListView.jsx": "46dddce98d3a57b202d8768822f43e3035b209980cca75fd355f0ea4da1b268a",
+    "web/src/components/Search/SoulseekDiscoveryPanel.jsx": "a2c4a4f8e044b355515d2da6bf5da217dd4cea2b4aa7394ca95e753be3900bef",
+    "web/src/components/System/MediaCore/PodDiscoveryPanel.jsx": "c17c245776bcb87bb6089ff3836ff6b6061081ad2d0935d4dd15bff3aff928af",
+    "web/src/components/System/MediaCore/mediaCoreWorkflows.js": "4b6d0b450c6fe806dc001f6d14e0c6bfca09cef6c9a32b779df7a5c0cd275a17",
+    "web/src/components/System/Network/NetworkDetails.jsx": "ea93b702834e5be75f28204abefc4fa6f3d60f5c950cce168ceb2fcf7051c33e",
+    "web/src/components/System/Network/index.jsx": "81f45c3ef9dd9a153979cd39594b3eab4fd0cccc226654647fc3a022f97fe005",
+    "web/src/lib/discoveryGraph.js": "7def96bf796dbe1ed555209f4796069b838746aac816863116d4ded31d7563ed",
+    "web/src/lib/discoveryShelf.js": "5eb906718a9e15eca0e8bade121fb1a282ecbc7b50200d2d97df5acd57b40e0a",
+    "web/src/lib/errors.js": "7f162f5b8715dd15b1b2cbd2e7578f09285f1c5655b55fde9851543d8ca625d4",
+    "web/src/lib/playerRatings.js": "1752a2d7232c8fc468d98c7199054d997611700be5d71147318bb0117a73a46f",
+    "web/src/lib/serverErrorMessageAllowlist.js": "de7bf779c371f2a93d106124d32051b39836c0e7cd557e314c11f7755ce004bc"
+  },
+  "head": "9aa58492ee693d8ca0f2c027a3ee5b8438639f91",
+  "isDraft": true,
+  "localeCount": 12,
+  "localeOrder": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "previousWindow": "W1143-W1162",
+  "previousWindowHead": "9aa58492ee693d8ca0f2c027a3ee5b8438639f91",
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskr",
+  "selectedPositions": [
+    1163,
+    1182
+  ],
+  "selectedSourceIds": [
+    "Discover",
+    "Discover pods via DHT using name slugs, tags, and content associations",
+    "Discovered",
+    "Discovered peer list unavailable",
+    "Discovered slskr Peers",
+    "Discovery",
+    "Discovery Graph",
+    "Discovery Graph Atlas",
+    "Discovery Graph branch report copied",
+    "Discovery Graph previewed for {title}.",
+    "Discovery Graph request is required.",
+    "Discovery Keys:",
+    "Discovery Rate",
+    "Discovery Shelf",
+    "Discovery Statistics",
+    "Discovery boost",
+    "Discovery caution",
+    "Discovery refresh completed: {entriesRefreshed} refreshed, {entriesExpired} expired",
+    "Discovery results",
+    "Discovery shelf cleared from this browser."
+  ],
+  "selectionRule": "Sorted unique source IDs shared by all twelve direct ui-label catalogs; use current one-based sorted position.",
+  "sourceCount": 5441,
+  "sourceIdOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "sourceOrderHashFormat": "SHA-256 of one source ID per line in sorted order, with trailing newline.",
+  "state": "OPEN",
+  "tree": "b9ebab27d1f24932be0c623cf894a78115b6f2bb",
+  "window": "W1163-W1182",
+  "windowSourceSha256": "9286572851500f464003eb53f0bc97ab6bee383ae93a8792cf8ab8492a91e460"
+}

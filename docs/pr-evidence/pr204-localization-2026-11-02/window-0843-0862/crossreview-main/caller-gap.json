@@ -1,0 +1,17 @@
+{
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "ja",
+    "ko",
+    "pt-BR",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "reason": "No production caller containing this source text was found at the exact PR head; review is limited to the self-contained status label and catalog parity.",
+  "reviewScope": "self-contained status text and catalog parity only",
+  "sourceId": "Connecting to Soulseek…",
+  "sourceIndex": 848
+}

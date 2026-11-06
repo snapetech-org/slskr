@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "batch": "independent-0183-0202-all-12-locales",
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "pr_state": "OPEN",
+  "pr_draft": true,
+  "pr_branch": "codex/slskr-l10n-audit-20261030",
+  "review_head": "7fb1c1973efb37609f9817a395909bf1c0602c3b",
+  "review_tree": "7a239122e33bf8194d9a5a110a52975a17904cfb",
+  "application_parent_head": "7fb1c1973efb37609f9817a395909bf1c0602c3b",
+  "application_head": "cc55673a362e627e256dc45cd90c9fe5c28c163f",
+  "application_tree": "739ba38688b25d02002a6f044cb393b4996de836",
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_catalog_tree_current_at_review_head": false,
+  "direct_catalog": {
+    "source_ids": 5437,
+    "locales": [
+      "ar",
+      "de",
+      "es",
+      "fr",
+      "hi",
+      "id",
+      "ja",
+      "ko",
+      "pt-BR",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "slots": 65244,
+    "populated_cells": 65244,
+    "blank_cells": 0,
+    "structured_plural_cells": 15,
+    "structured_plural_locale_counts": {
+      "ar": 15
+    },
+    "catalog_sha256_before": {
+      "web/src/lib/locales/ui-labels.ar.json": "273877f1321418c432f0f077667bcc374203c7e3b092caef1978e332c6fdf281",
+      "web/src/lib/locales/ui-labels.de.json": "31da85bb30b50f121d3e15eb36f6e599c490f1fab6a9442fef720b3951004cb3",
+      "web/src/lib/locales/ui-labels.es.json": "799a0cd8580870ef04dc0340f7535ffc8f37e6ccd2a1f9358deb4165b68cc8c6",
+      "web/src/lib/locales/ui-labels.fr.json": "c93f97e919289dbbf30efe417bbd5df2d254efd4fd2e811e65629dbcc37e59cf",
+      "web/src/lib/locales/ui-labels.hi.json": "dff2396339dd44db66909b336245db0ed629e136aefd0c9fc4e32ca2a4b32b0a",
+      "web/src/lib/locales/ui-labels.id.json": "5ffe9e697048b41f6a67bbd3fe76046582ddccf17ee4f535a1a47fe98dee6f2d",
+      "web/src/lib/locales/ui-labels.ja.json": "35218904466567f0c98cbb631e30af2d813f2eea719bf66a06f9984e5874b10e",
+      "web/src/lib/locales/ui-labels.ko.json": "5636a4b1a4bf325d6c03031b8b3ef34db7d04936c8216343e55b2d36fa544bcd",
+      "web/src/lib/locales/ui-labels.pt-BR.json": "5d66fed4d95c212350e7f29df2d70b94381cf086df8cfdac04bfc48f0c1b9372",
+      "web/src/lib/locales/ui-labels.vi.json": "91fac84a2ab6ebcfbe6f33cdf0302e0350b676e4cd69be796edc86509e856184",
+      "web/src/lib/locales/ui-labels.zh-Hans.json": "365c4c51e7cee40e79b37607319dd4dbe1345dcee77f085dd6f7fa1ad307881b",
+      "web/src/lib/locales/ui-labels.zh-Hant.json": "2945bee74a8ffc61db44b8a0bac113ba9f20a159657925c7f3dbc7d1647ce89c"
+    },
+    "catalog_sha256_after_application": {
+      "web/src/lib/locales/ui-labels.ar.json": "946f80466d4ebe707debff6b42441d2d798025a1bfc3c33ae7facbbf62eb03a8",
+      "web/src/lib/locales/ui-labels.de.json": "00cdfdae47a06caf66adb13306abc9b32e114be856c82ebfa81581e7fdfc41f0",
+      "web/src/lib/locales/ui-labels.es.json": "74c59c4de2cfb5c2e10fb4fad9fb14bd6aae4156bd32b492be75966628e2a5ea",
+      "web/src/lib/locales/ui-labels.fr.json": "09f0d381a05a07a411e69fec61f7910214123995c46148fac5b3e81957576ce0",
+      "web/src/lib/locales/ui-labels.hi.json": "d9e69e82e8109c56348e922d82e7a14368692a0eb683f3849bc17a5d0e1de9e1",
+      "web/src/lib/locales/ui-labels.id.json": "933bdd7d30f640e5829ce1f3e43089908467e45e427b3302564226b862a4d165",
+      "web/src/lib/locales/ui-labels.ja.json": "045a2c7fa70287b27be670a9af5d4998e191fc0181a9a5dff5e4546644c83b38",
+      "web/src/lib/locales/ui-labels.ko.json": "057f6c5b89b0dda26772be9ca355a25afe9e551178ea9fe123d86b4d48a42531",
+      "web/src/lib/locales/ui-labels.pt-BR.json": "b5826aea44f78810655073fc478d2bccdf28b9c9c15965e06a3e048e39fc060c",
+      "web/src/lib/locales/ui-labels.vi.json": "209e966043348a3ab8a38cff3ece7a2a3cb5db4b298038b61711597095f05b1f",
+      "web/src/lib/locales/ui-labels.zh-Hans.json": "a15769121461a656a28c4cea28af0b4c304ceecd27ef8eee46a785cf5ef94939",
+      "web/src/lib/locales/ui-labels.zh-Hant.json": "939c420556eb5111db37379867c51251c4faf21f8d6643e26093113fb360d67b"
+    }
+  },
+  "source_index_range": [
+    183,
+    202
+  ],
+  "source_index_method": "zero-based Python lexical sort of the 5,437 direct catalog source IDs",
+  "window_accounting": {
+    "source_keys": 20,
+    "cell_slots": 240,
+    "populated_cells": 240,
+    "fresh_cells": 64,
+    "fresh_statuses": {
+      "accepted": 60,
+      "correction-needed": 2,
+      "corrected": 2
+    },
+    "prior_accepted_carries": 127,
+    "prior_correction_needed_cells_before_application": 49,
+    "prior_correction_needed_exclusions_after_application": 7,
+    "exact_corrections_applied": 44,
+    "unresolved_conflict_cells": 0,
+    "disposition_partition": {
+      "fresh": 64,
+      "accepted_carries": 127,
+      "correction_needed_exclusions": 7,
+      "corrected": 44,
+      "conflict_holds": 0
+    },
+    "terminal_statuses_after_review": {
+      "accepted": 187,
+      "corrected": 44,
+      "correction-needed": 9,
+      "held": 0
+    },
+    "pending_exact_terminal_overlaps": 0,
+    "conflicting_exact_prior_statuses": 0
+  },
+  "source_ids": [
+    "Add similar recent session tracks to the upcoming queue. This only uses tracks already known to this browser session.",
+    "Add smart-radio seeds to Wishlist as enabled manual requests with auto-download off.",
+    "Add the next batch of matching results to the current list.",
+    "Add the selected contact or username to this share group.",
+    "Add to Wishlist",
+    "Add trusted local peers or disable LAN-only mode for public discovery.",
+    "Add up to five listening seeds to Wishlist as enabled manual-acquisition requests. Auto-download stays off.",
+    "Add {item} to Wishlist",
+    "Added a local caution signal for {username}. Nothing was published.",
+    "Added to wishlist",
+    "Added {count} missing track to Wishlist",
+    "Added {count} missing tracks to Wishlist",
+    "Added {interest} as a hated interest.",
+    "Added {interest} as an interest.",
+    "Added {normalizedSearchText} to Wishlist for review",
+    "Address",
+    "Adjust RustyMilk {label}",
+    "Adjust {label} for the active RustyMilk preset before applying the edited copy locally.",
+    "Administrator",
+    "Advance to the next queued track."
+  ],
+  "selection_rule": "Fresh review only for populated current cells with no exact terminal semantic record matching source ID, locale, source hash, and current target hash. Exact accepted cells carry. Exact prior correction-needed cells remain excluded unless an exact source/current-target-hash correction was independently re-reviewed and applied.",
+  "prior_overlap_scan": {
+    "scanned_json_evidence_files": 784,
+    "manifest_file": "prior-evidence-scan-manifest.jsonl",
+    "manifest_sha256": "35f8f19d903e47f610baf4616d9b70dcf08511b691b01ada5a6bc6486996ed71",
+    "canonical_input_manifest_sha256": "6d0f20a4f88773121c3f20b3f644c8740560af242976214342eeeab51a6fe87b",
+    "input_roots": [
+      "prior-audit-7ff",
+      "pr-review-head"
+    ]
+  },
+  "placeholder_and_literal_checks": {
+    "cells_checked": 240,
+    "placeholder_sets_preserved": true,
+    "icu_messages": 0,
+    "protected_literals_checked": true
+  },
+  "source_context": {
+    "file": "source-context.txt",
+    "evidence_text_sha256": "546f2476de89709edd15b8f59f04f166eea592bdb32140229fc6c499b2f9927a",
+    "runtime_files": [
+      "web/src/components/Player/PlayerQueueModal.jsx",
+      "web/src/components/Player/PlayerRadioModal.jsx",
+      "web/src/components/Player/PlayerStatsModal.jsx",
+      "web/src/components/Player/VisualizerOverlayControls.jsx",
+      "web/src/components/Search/Response.jsx",
+      "web/src/components/Search/SoulseekDiscoveryPanel.jsx",
+      "web/src/components/ShareGroups/ShareGroups.jsx",
+      "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx",
+      "web/src/components/System/Integrations/FtpIntegrationPanel.jsx",
+      "web/src/components/Wishlist/Wishlist.jsx",
+      "web/src/components/Wishlist/WishlistModal.jsx",
+      "web/src/lib/networkHealthScore.js"
+    ],
+    "sha256": {
+      "web/src/components/Player/PlayerQueueModal.jsx": "dbfe2ed6f8e0bf5b68fa51db9305473b19b63fe3a4d601c975b0cdeebd74c048",
+      "web/src/components/Player/PlayerRadioModal.jsx": "aca1220b0e5e3e8f3bf6503dfcf2429dea3d96976f0cb01ff141b45ec1ac4d72",
+      "web/src/components/Player/PlayerStatsModal.jsx": "ea9a17c1e064db7ec5f70c095a9bd0fb4f15476428007bf3472fcd7b2c5a4292",
+      "web/src/components/Player/VisualizerOverlayControls.jsx": "5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4",
+      "web/src/components/Search/Response.jsx": "da0ccb703c38cf3a444e9d79fba30cd62191f15277ec339b287529d121cbe6de",
+      "web/src/components/Search/SoulseekDiscoveryPanel.jsx": "a2c4a4f8e044b355515d2da6bf5da217dd4cea2b4aa7394ca95e753be3900bef",
+      "web/src/components/ShareGroups/ShareGroups.jsx": "d3a467377b0d3ce0e08c6623ac01b8c53616c41828715716ef94f274f92dea6e",
+      "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx": "17241e796b943988d339bac74569f5a5d4e8889194cad1221d0b9c8bc1b82a9e",
+      "web/src/components/System/Integrations/FtpIntegrationPanel.jsx": "71a1dfcb043820f9f5ef0a4ee7d142fb308e7943f049b0dbdb9b60d22a4724a0",
+      "web/src/components/Wishlist/Wishlist.jsx": "74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7",
+      "web/src/components/Wishlist/WishlistModal.jsx": "49f9f293410dec17e1d3c335ba49218fb7b351aa04a7bfc3ae107b138bf06582",
+      "web/src/lib/networkHealthScore.js": "9058b1d95ffcdf8d2c467b47cdcf3a9cede3f96000580f6b82f04220d0e5bea4"
+    },
+    "git_blob_ids": {
+      "web/src/components/Player/PlayerQueueModal.jsx": "8bdaf63060b6c9995f89f991500563aa06869593",
+      "web/src/components/Player/PlayerRadioModal.jsx": "5e3a902b2470733f61fb12378f9ecee2cf3a3e3b",
+      "web/src/components/Player/PlayerStatsModal.jsx": "6a26dc806b563672712209ade6cdbba3d998bad3",
+      "web/src/components/Player/VisualizerOverlayControls.jsx": "0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf",
+      "web/src/components/Search/Response.jsx": "8bee962fc708202a785758d9da1193ea4de59337",
+      "web/src/components/Search/SoulseekDiscoveryPanel.jsx": "e883d53a782c25322644a6f24f7e35862341dc30",
+      "web/src/components/ShareGroups/ShareGroups.jsx": "b9e41426dfb0f920200d982653d8ab2ff98622ba",
+      "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx": "90f3e1d29a4b514a1877693e131e92b66b8050aa",
+      "web/src/components/System/Integrations/FtpIntegrationPanel.jsx": "81cb196f7be0d388c0dd2988f283990d958ae7fa",
+      "web/src/components/Wishlist/Wishlist.jsx": "54d5e35d9f027ea547f746df800fabd491c3bed7",
+      "web/src/components/Wishlist/WishlistModal.jsx": "16b4aa4c5a2ab57b1a0c2f6581e99dfdd4b24727",
+      "web/src/lib/networkHealthScore.js": "26523f0fbf48bdd35fcab5ca8cac7d94d6265042"
+    }
+  },
+  "visual_check": {
+    "file": "headed-visual-check.md",
+    "status": "blocked",
+    "sha256": "0cf6cb56bbdfbef535ac9db35f95d79002b68ee40a67ea8c38084368fc6caac6",
+    "reason": "Exact-branch headed preview requires dependencies and a compatible isolated backend. The owned worktree has no node_modules, the only live API is the shared slskR daemon on 5030/50305 and was not used, and compiling a compatible backend is outside the no-build review boundary."
+  },
+  "browser_recapture_required": true,
+  "native_speaker_approval": false
+}

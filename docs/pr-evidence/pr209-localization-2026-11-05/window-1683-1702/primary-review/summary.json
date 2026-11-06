@@ -1,0 +1,70 @@
+{
+  "exactHead": "f04b7f965aef79552d65d40a2eeb550e5e3b9cfa",
+  "exactTree": "85fe880023e55e055660fd17599c291edd24a1c6",
+  "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "window": "W1683-W1702",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "decisionCounts": {
+    "refinement": 3,
+    "accept-current": 232,
+    "correction": 5
+  },
+  "confidenceCounts": {
+    "moderate": 236,
+    "high": 4
+  },
+  "proposalCount": 8,
+  "holdCount": 0,
+  "placeholderOrderDifferenceCellCount": 12,
+  "protectedLiteralLocalizationCellCount": 2,
+  "callerlessCells": 0,
+  "candidateFreeInputOnly": true,
+  "blindOrCrossOutputInspected": false,
+  "nativeSpeakerSignoff": false,
+  "localeDecisionCounts": {
+    "es": {
+      "refinement": 1,
+      "accept-current": 19
+    },
+    "zh-Hans": {
+      "accept-current": 20
+    },
+    "hi": {
+      "accept-current": 20
+    },
+    "de": {
+      "accept-current": 19,
+      "correction": 1
+    },
+    "ja": {
+      "accept-current": 20
+    },
+    "fr": {
+      "accept-current": 20
+    },
+    "pt-BR": {
+      "accept-current": 20
+    },
+    "ar": {
+      "accept-current": 20
+    },
+    "ko": {
+      "correction": 3,
+      "accept-current": 17
+    },
+    "zh-Hant": {
+      "accept-current": 18,
+      "correction": 1,
+      "refinement": 1
+    },
+    "vi": {
+      "refinement": 1,
+      "accept-current": 19
+    },
+    "id": {
+      "accept-current": 20
+    }
+  }
+}

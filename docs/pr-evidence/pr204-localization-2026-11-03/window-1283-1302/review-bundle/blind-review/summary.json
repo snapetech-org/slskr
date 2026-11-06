@@ -1,0 +1,42 @@
+{
+  "allCallerReferencesCarried": true,
+  "artifact": "Independent blind translation review ledger",
+  "callerResolutionHoldCount": 0,
+  "candidateFreeChecksumListSha256": "abbb1b89549b82072fcbf5fce3c6ae580cc5bd499b4fe5dadd5df7bd0c567f89",
+  "candidateFreeInputPath": "/mnt/disks/scratch/task-scratch/slskr-pr204-w1283-1302-blind-20261103/input",
+  "candidateFreeManifestSha256": "6f4f7bc3ed5d3d8097916cf37aa4a2b9ee043141cd1814aa880b673c593de944",
+  "expectedCells": 240,
+  "holds": 0,
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "nativeSpeakerApproval": false,
+  "notes": [
+    "The exact caller/context text and pins in the candidate-free packet were the only review evidence used.",
+    "Current target values were retained except where the blind review proposes a correction or clarity improvement.",
+    "No candidate translations, primary review, PR body, tests, builds, scans, or CI were consulted/run.",
+    "Proposals remain subject to native-speaker review."
+  ],
+  "pinnedHead": "55ca2ae0788bfd79daab5cc49f49ebb608593e98",
+  "pinnedTree": "d5677673b766d572102bba249af2ab69095dea0d",
+  "proposals": 132,
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "retains": 108,
+  "reviewedCells": 240,
+  "selectedPositions": [
+    1283,
+    1302
+  ]
+}

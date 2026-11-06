@@ -1,0 +1,20 @@
+Flux
+Focus album candidate {album}
+Focus the current result filter on this album folder name without starting another search or download.
+Focused pod workflow
+Fold Duplicates
+Fold Duplicates ({count})
+Fold Results
+Fold duplicate file candidates that appear from multiple providers or peers, keeping the highest-ranked visible result and showing the folded sources as metadata.
+Fold duplicate results
+Fold likely duplicate results into a single review row when page support is available.
+Folder ignores are available only for wishlist searches because each rule belongs to one wishlist item. Open a result from Wishlist history to use them.
+Folders
+Follow room broadcast
+Follow this pod's host playback using your own stream access.
+Follow this room's broadcast using your own stream access.
+For systemd, configure LoadCredential in the service unit. This dialog cannot write systemd credentials.
+For:
+Force HTTPS
+Force HTTPS redirects
+Forensic Matrix

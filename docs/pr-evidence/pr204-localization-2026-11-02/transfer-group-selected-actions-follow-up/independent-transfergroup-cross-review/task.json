@@ -1,0 +1,13 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "aa106d2505de8c9ace2d7d6dbf2af9777651947d",
+  "tree": "f99e717b4b77c8da098e7b8fc163926d4d32e926",
+  "newTargets": 36,
+  "legacyKeyRetirements": 36,
+  "totalRows": 72,
+  "heldRemoveTargets": 12,
+  "heldRemoveLegacyKeys": 12,
+  "ledger": "cross-review-ledger.jsonl",
+  "readOnly": true
+}

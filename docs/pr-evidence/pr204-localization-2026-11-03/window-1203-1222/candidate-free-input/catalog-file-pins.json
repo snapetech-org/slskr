@@ -1,0 +1,326 @@
+{
+  "callerFiles": {
+    "crates/slskr/src/controller_tests/full_automation_differential.rs": {
+      "byteCount": 65043,
+      "gitBlob": "316ff3bf763920f07137a8c3f90f1ce4e1b060ca",
+      "lineCount": 1779,
+      "path": "crates/slskr/src/controller_tests/full_automation_differential.rs",
+      "sha256": "9a28332c053e4770bdc41121e9d87b90a42cb656c5b1c387ffb56a2689325a2a"
+    },
+    "crates/slskr/src/controller_tests/full_controller_api_contracts.rs": {
+      "byteCount": 51873,
+      "gitBlob": "6707c78267b4b3e19fc08f9088cdbdb51723548d",
+      "lineCount": 1502,
+      "path": "crates/slskr/src/controller_tests/full_controller_api_contracts.rs",
+      "sha256": "6401adbe8499cb8cfa8de3fd9371788748e664fe5ab9262b822c1eab32976af3"
+    },
+    "crates/slskr/src/controller_tests/full_controller_api_differential_03.rs": {
+      "byteCount": 76609,
+      "gitBlob": "4472483baf957887771cc7690189191645e8d71e",
+      "lineCount": 2145,
+      "path": "crates/slskr/src/controller_tests/full_controller_api_differential_03.rs",
+      "sha256": "cdce198d97d3bc24c2d2c0e99e435bc73826865aea08918ab54ad0ec2328ac90"
+    },
+    "crates/slskr/src/controller_tests/full_telemetry_differential.rs": {
+      "byteCount": 20988,
+      "gitBlob": "ac937ad50e33943e56106a127a2a9cebc28fd2fa",
+      "lineCount": 626,
+      "path": "crates/slskr/src/controller_tests/full_telemetry_differential.rs",
+      "sha256": "f0a2689fa807456a9b937230d416847a6f4ed253659702036c63b8a21f08a28c"
+    },
+    "crates/slskr/src/controller_tests/full_transfers_differential.rs": {
+      "byteCount": 63337,
+      "gitBlob": "277090499d96965bf0e16a93fce9b3e1f55aa164",
+      "lineCount": 1817,
+      "path": "crates/slskr/src/controller_tests/full_transfers_differential.rs",
+      "sha256": "5ffaed9ab87ea90a51185678b8daf72dddb2085c0d6fe9b22c939e49a7a087bd"
+    },
+    "crates/slskr/src/controller_tests/full_versioned_api_differential_02.rs": {
+      "byteCount": 42882,
+      "gitBlob": "59ab3cb598ba99951d3f38281301e8ddd314204e",
+      "lineCount": 1098,
+      "path": "crates/slskr/src/controller_tests/full_versioned_api_differential_02.rs",
+      "sha256": "cf309993c9bbcf8e1b0856aa1547153e39dfc86bd69d4459b8d456619c6c0d1a"
+    },
+    "crates/slskr/src/event_bus.rs": {
+      "byteCount": 4802,
+      "gitBlob": "7c5324d1df38540303ae57a20ab39d82087e1979",
+      "lineCount": 140,
+      "path": "crates/slskr/src/event_bus.rs",
+      "sha256": "eccfce09bbdf93e189194e98ed3325461a3c9ebe93288d31a7ec9bb535a45b84"
+    },
+    "crates/slskr/src/extended_controller.rs": {
+      "byteCount": 39636,
+      "gitBlob": "64e96af1bb51f4c3574c838b2f16b6ba2f729173",
+      "lineCount": 1050,
+      "path": "crates/slskr/src/extended_controller.rs",
+      "sha256": "fdfd14cab2c836c21098e3158b963353f8fa4ed45bf194680c644ed9cf8a22bc"
+    },
+    "crates/slskr/src/legacy_route_dispatch_group_09.rs": {
+      "byteCount": 77899,
+      "gitBlob": "4cdd615f93182586b160549c1adca5fe84845fc1",
+      "lineCount": 1695,
+      "path": "crates/slskr/src/legacy_route_dispatch_group_09.rs",
+      "sha256": "f7d32ebc957f4f5e8983f3ab3d27892586cec6dd7d0a22805a9f1f446349c7ae"
+    },
+    "crates/slskr/src/route_dispatch_group_7_media_profile_import.rs": {
+      "byteCount": 44095,
+      "gitBlob": "150efc18ccc2c92187d2dce360447c6971f44e62",
+      "lineCount": 966,
+      "path": "crates/slskr/src/route_dispatch_group_7_media_profile_import.rs",
+      "sha256": "74f38eb7d335cab7cb96f7dd00c6ae8abe229cfa16331ca609b958a0d693898a"
+    },
+    "crates/slskr/src/transfer_batch_controller.rs": {
+      "byteCount": 17689,
+      "gitBlob": "52c48b03c9138c4d42680af4d6d184aa8ee0b96f",
+      "lineCount": 524,
+      "path": "crates/slskr/src/transfer_batch_controller.rs",
+      "sha256": "24552e1b20f933ffa50a2775b5bec41e65ee3a4f81449d8719d26805f70efa98"
+    },
+    "crates/slskr/src/transfer_controller.rs": {
+      "byteCount": 43920,
+      "gitBlob": "bc333fa67da77bf62d8bb65379642fdca9dd09cd",
+      "lineCount": 1198,
+      "path": "crates/slskr/src/transfer_controller.rs",
+      "sha256": "dc86d849bd3b3b8e0f61d6d20509b1651ea767a80cbec1958cbc6193b137142d"
+    },
+    "crates/slskr/src/transfer_entry.rs": {
+      "byteCount": 18125,
+      "gitBlob": "90dd6fd45ebd857d02ef0e0cfb874e82055d66a9",
+      "lineCount": 457,
+      "path": "crates/slskr/src/transfer_entry.rs",
+      "sha256": "32abd1cadbfe5e48ffb6a3bf7300c20a2c43b6a2134698fd8c0a2d010c0de6cf"
+    },
+    "web/src/components/Browse/Directory.jsx": {
+      "byteCount": 6598,
+      "gitBlob": "8f60fc38f61dc1ad5eaa5ed9975a4884b1156b84",
+      "lineCount": 219,
+      "path": "web/src/components/Browse/Directory.jsx",
+      "sha256": "7c6b347c6851f0d85a4cdcef49041626396ec6850d404c4e1e991e6a9dbd5a2e"
+    },
+    "web/src/components/Browse/DirectoryTree.jsx": {
+      "byteCount": 10610,
+      "gitBlob": "3a29b0a04ff2f0012dff2987beda99dad435eb43",
+      "lineCount": 359,
+      "path": "web/src/components/Browse/DirectoryTree.jsx",
+      "sha256": "1a32df7e28719921907ab174030850dcc09098099c6f69f6b0dbcc86ba7d1514"
+    },
+    "web/src/components/Collections/Collections.jsx": {
+      "byteCount": 31151,
+      "gitBlob": "c72ea0939c55ba47ed090e0d5ac3f67dd47b06c0",
+      "lineCount": 920,
+      "path": "web/src/components/Collections/Collections.jsx",
+      "sha256": "0ae47fbae62cd1c65e120eb02a41e4941c8aec5e1d5f037361f41365539c44ed"
+    },
+    "web/src/components/CompatibilityDashboard.jsx": {
+      "byteCount": 32620,
+      "gitBlob": "831b00821cf5999e39ce586eab76d81bfdbdbb82",
+      "lineCount": 882,
+      "path": "web/src/components/CompatibilityDashboard.jsx",
+      "sha256": "1e85738718ef2de4dc40358f746163cabb6192fca4072a8bf30ba0e133dbd27f"
+    },
+    "web/src/components/Search/DownloadActionPreviewModal.jsx": {
+      "byteCount": 3055,
+      "gitBlob": "f58ccfeb29c68d4d9b92feb0bea55c64d92e1a92",
+      "lineCount": 86,
+      "path": "web/src/components/Search/DownloadActionPreviewModal.jsx",
+      "sha256": "36a9f1f66d32495eacc37ea2424656d0523c074c4e49f574c68edff2deced25a"
+    },
+    "web/src/components/Search/Response.jsx": {
+      "byteCount": 41424,
+      "gitBlob": "8bee962fc708202a785758d9da1193ea4de59337",
+      "lineCount": 1105,
+      "path": "web/src/components/Search/Response.jsx",
+      "sha256": "da0ccb703c38cf3a444e9d79fba30cd62191f15277ec339b287529d121cbe6de"
+    },
+    "web/src/components/Search/SongIDAnalysisResults.jsx": {
+      "byteCount": 23849,
+      "gitBlob": "ddae669325bb2abe51c7b5c80fc1546174350e73",
+      "lineCount": 526,
+      "path": "web/src/components/Search/SongIDAnalysisResults.jsx",
+      "sha256": "f1468f5e7ffc69840fe8ff8317518f55ed02a2c727c84d35df87ad6a1c0fde28"
+    },
+    "web/src/components/Shares/SharedWithMe.jsx": {
+      "byteCount": 17076,
+      "gitBlob": "8ccbf1c56d38223e7b70ac7f6478c3b8b4f429b3",
+      "lineCount": 485,
+      "path": "web/src/components/Shares/SharedWithMe.jsx",
+      "sha256": "02db6d3dd2c4fee5f07f1211a59e2880090ba1729f628a4f3f540013884b9162"
+    },
+    "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx": {
+      "byteCount": 53474,
+      "gitBlob": "90f3e1d29a4b514a1877693e131e92b66b8050aa",
+      "lineCount": 1043,
+      "path": "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx",
+      "sha256": "17241e796b943988d339bac74569f5a5d4e8889194cad1221d0b9c8bc1b82a9e"
+    },
+    "web/src/components/System/AdminPolicies/index.jsx": {
+      "byteCount": 26021,
+      "gitBlob": "df800a08777dcb589a180c88dcc2679490bc84ad",
+      "lineCount": 575,
+      "path": "web/src/components/System/AdminPolicies/index.jsx",
+      "sha256": "c86a11ae6fe12a4a387f92fd35907ab7e225cf22be0b7057988d17cf63e8ba7f"
+    },
+    "web/src/components/TrafficTicker/TrafficTicker.jsx": {
+      "byteCount": 7793,
+      "gitBlob": "bc893fb019904bfc9ad5c48358a2db0dc1c676de",
+      "lineCount": 227,
+      "path": "web/src/components/TrafficTicker/TrafficTicker.jsx",
+      "sha256": "53101216362dacc7fa23ed8de50c9bb6bb4345ce076775f98ec199b25471ff5b"
+    },
+    "web/src/components/Transfers/Transfers.jsx": {
+      "byteCount": 25148,
+      "gitBlob": "00f3488b547c2f6e4d97fbd6d0931b724ea3c17d",
+      "lineCount": 818,
+      "path": "web/src/components/Transfers/Transfers.jsx",
+      "sha256": "744da23792a1fac5929a4802600b1cc7f238a3f3fabe1f33ded598b2b546b662"
+    },
+    "web/src/lib/automationRecipes.js": {
+      "byteCount": 12505,
+      "gitBlob": "16b7b3ec33fe15748e47a45c397b58d0d35d9387",
+      "lineCount": 413,
+      "path": "web/src/lib/automationRecipes.js",
+      "sha256": "24d9494cf78e88fdc700da54a99139ebd67d6c2b608d033b9d7d8dd312c2c706"
+    },
+    "web/src/lib/serverErrorMessageAllowlist.js": {
+      "byteCount": 21330,
+      "gitBlob": "d9eed15e55416d5e5fa06657c9c86b287b9b3260",
+      "lineCount": 547,
+      "path": "web/src/lib/serverErrorMessageAllowlist.js",
+      "sha256": "de7bf779c371f2a93d106124d32051b39836c0e7cd557e314c11f7755ce004bc"
+    },
+    "web/src/lib/setupHealthCheck.js": {
+      "byteCount": 12270,
+      "gitBlob": "20cef4352e429331c4e7ac996867c02036a0992c",
+      "lineCount": 361,
+      "path": "web/src/lib/setupHealthCheck.js",
+      "sha256": "76784b15cf7c25e871b7034028f5f5705ffb3f672f8f44b02a2ecac8d6f10a8b"
+    }
+  },
+  "head": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+  "localeCatalogs": {
+    "ar": {
+      "byteCount": 513081,
+      "gitBlob": "6aa73849724a0942a29f4f2a7ce5fa24103bfbde",
+      "keyCount": 5441,
+      "lineCount": 5548,
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "sha256": "d1b03fb5020e72583c2b06fa409e19919a2720d2064207bd6aa01ce00b693b23"
+    },
+    "de": {
+      "byteCount": 443233,
+      "gitBlob": "61e0e89d6205ab195d74f048e68a2059a705c618",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "sha256": "ba426f9a94c6776d0cb3857aaba01da8c1aaeb14fdc02a4b99869a262fa12abc"
+    },
+    "es": {
+      "byteCount": 444367,
+      "gitBlob": "7b3b26c9627d01df82a4ea915280a6bd632eb028",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "sha256": "c48b4e69f65fc1bfe9b2838df929113dba40782e99d4923c082ce2247d10cd4e"
+    },
+    "fr": {
+      "byteCount": 455518,
+      "gitBlob": "8ce3452a6021b6467657826bb43132ae2fdf342b",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "sha256": "4c5616a3bca8c31f740a9debd2da7410a678e4f7c3dd01de9011be0c19fbbff7"
+    },
+    "hi": {
+      "byteCount": 677323,
+      "gitBlob": "c70cc60f8e2546e41d0fa7ea8e4344d191272e79",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "sha256": "2a3bf672fe8da1ff141fa367ecb45571470fee72d92262f74fae341eb8f97ae4"
+    },
+    "id": {
+      "byteCount": 409772,
+      "gitBlob": "9539af0355c56f42dbeb46cec0427b5494b2e27e",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "sha256": "d54b6e66185b4fc8f0bb4f5107511b3b5cbe2e0b4741340a5c7cdde110dc4ad1"
+    },
+    "ja": {
+      "byteCount": 491124,
+      "gitBlob": "031437eb07fc13c37c4eba72071e85523198239b",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "sha256": "960181a71378746564dd4364cd098b73b4c631850903d963ec8c092a010412d8"
+    },
+    "ko": {
+      "byteCount": 442282,
+      "gitBlob": "ebf0fbb8e930dbb68ad73e4136e7bd0885888c73",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "sha256": "811af2e219fb056ddc7ad763bb58986e5c2307800fc7bd03e091c6cfa390c46e"
+    },
+    "pt-BR": {
+      "byteCount": 439035,
+      "gitBlob": "c3a17755c40fff2f14da4cce6f23b1967ae67a8f",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "sha256": "3de76bde938d6f14e3d6ce85ca87bb50e747444a613e8bce3e51f7b2c14ade0e"
+    },
+    "vi": {
+      "byteCount": 474950,
+      "gitBlob": "206fd69dccbb6a6150a06851d7e65afd3939f548",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "sha256": "185d8af8e9ab2cc30444e78f9349f623b16d8a190023d92366199e6c8ef01049"
+    },
+    "zh-Hans": {
+      "byteCount": 382900,
+      "gitBlob": "f55235f3f2c7e674f10b5fc1ad7f58f3f7e46a42",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "sha256": "4ae9873ab4c39b1e280981540cd33323b19b15410b34b3fa144e85c585394876"
+    },
+    "zh-Hant": {
+      "byteCount": 383641,
+      "gitBlob": "7e8176ee274486de8103fc3650b1519aa27b03d1",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "sha256": "258913e08aabbaabe01aaf51c1b0e95da4838af5413608c0d31da47641cb570d"
+    }
+  },
+  "localeRuntime": {
+    "byteCount": 11530,
+    "gitBlob": "72dfea05f86bcf0ab02882a85c6e8d4a0cb0dabf",
+    "lineCount": 302,
+    "path": "web/src/lib/interfaceLocale.js",
+    "sha256": "16eb5f119655805f48845e026ee12fd517fae6de871091bd9be2e5b7f1d310ea"
+  },
+  "localesInRuntimeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "schemaVersion": 1,
+  "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "sourceLookupKeySetCount": 5441,
+  "sourceQueueFileSha256": "da4f6b93e7d3f05c03b3dbd7a39959c8990a5089b78ea8b850b568aa2de38236",
+  "sourceQueuePath": "source-queue.jsonl",
+  "tree": "ba62eed0bd600a8f69bb6c0cbefe99da7ee47623"
+}

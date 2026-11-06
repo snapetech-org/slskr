@@ -1,0 +1,80 @@
+{
+  "callerPinMismatches": 0,
+  "callerPinsAttested": 42,
+  "cellsReviewed": 240,
+  "dispositions": {
+    "accepted-current": 193,
+    "accepted-primary-proposal": 31,
+    "accepted-prior-correction": 12,
+    "held": 2,
+    "missed": 1,
+    "refined": 1
+  },
+  "findings": [
+    {
+      "confidence": "moderate",
+      "currentTarget": "trung tâm",
+      "currentTargetSha256": "e899e9d97d130f3c4b4895127a0d96fc0a09c7bd2dafd581df2e93022858f80e",
+      "locale": "vi",
+      "recommendedTarget": "Trọng tâm phổ",
+      "recommendedTargetSha256": "9f02fa5c8ad1ea1af949fd85c607ae7984f442542063212ad2a00babef7c34cb",
+      "sourceId": "Centroid",
+      "sourceIndex": 584
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "頻道建立、更新和刪除操作會變更 Pod 訊息的組織方式。刪除通道可能會中斷路由和歷史工作流程。",
+      "currentTargetSha256": "761b0c40e31805a4e3e3d31046883a9f7a619f5ef4d15c91e92466c91816e7a6",
+      "locale": "zh-Hant",
+      "recommendedTarget": "頻道建立、更新和刪除操作會變更 Pod 訊息的組織方式。刪除頻道可能會中斷路由和歷史工作流程。",
+      "recommendedTargetSha256": "f9daf9f6adfb487b1acfe750d5bcc4d2b9deb54e01bb4170798a94a18d345be6",
+      "sourceId": "Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows.",
+      "sourceIndex": 596
+    }
+  ],
+  "head": "2f7483fdaa753e22f6d335a03f15db7d1d82b20f",
+  "heldChineseChannelsRowsConfirmed": 2,
+  "livePullRequest": {
+    "baseRefName": "main",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "2f7483fdaa753e22f6d335a03f15db7d1d82b20f",
+    "isDraft": true,
+    "state": "OPEN"
+  },
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "missedCurrentIssues": 1,
+  "nativeSpeakerApproval": false,
+  "placeholderFailures": 0,
+  "primaryProposals": 31,
+  "primaryProposalsAccepted": 31,
+  "priorCorrectionsConfirmed": 12,
+  "protectedLiteralFailures": 0,
+  "pullRequest": 204,
+  "refinements": 1,
+  "repository": "snapetech-org/slskR",
+  "repositoryOrPullRequestChanges": false,
+  "reviewWindow": [
+    583,
+    602
+  ],
+  "schemaVersion": 1,
+  "sourceCurrentMismatches": 0,
+  "sourceCurrentRowsAttested": 240,
+  "sourceIds": 20,
+  "testsBuildsScansCI": false,
+  "tree": "54ee16a812a5bda7871f3ef3ad7ff0cf3bf678e0",
+  "worktreeStatus": "clean"
+}

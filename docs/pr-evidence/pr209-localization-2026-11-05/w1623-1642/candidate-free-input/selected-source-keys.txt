@@ -1,0 +1,20 @@
+Failed to raise event
+Failed to read configuration file
+Failed to read wishlist
+Failed to rebuild search index: {error}
+Failed to refresh discovery
+Failed to refresh discovery: {error}
+Failed to refresh opinions: {error}
+Failed to refresh pod
+Failed to register message: {error}
+Failed to register pod
+Failed to register pod:
+Failed to remove collection item
+Failed to remove group member
+Failed to remove membership
+Failed to remove search
+Failed to rescan shares
+Failed to reset stats: {error}
+Failed to resolve target
+Failed to retrieve information for
+Failed to retrieve membership

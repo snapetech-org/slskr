@@ -1,0 +1,32 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "baseHead": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+  "baseTree": "ba62eed0bd600a8f69bb6c0cbefe99da7ee47623",
+  "window": "W1203–W1222",
+  "reviewedCells": 240,
+  "recommendationCounts": {
+    "accept-current": 136,
+    "correction/refinement proposal": 80,
+    "hold": 24
+  },
+  "appliedChanges": 80,
+  "changedLocaleFiles": [
+    "web/src/lib/locales/ui-labels.ar.json",
+    "web/src/lib/locales/ui-labels.de.json",
+    "web/src/lib/locales/ui-labels.es.json",
+    "web/src/lib/locales/ui-labels.fr.json",
+    "web/src/lib/locales/ui-labels.hi.json",
+    "web/src/lib/locales/ui-labels.id.json",
+    "web/src/lib/locales/ui-labels.ja.json",
+    "web/src/lib/locales/ui-labels.ko.json",
+    "web/src/lib/locales/ui-labels.pt-BR.json",
+    "web/src/lib/locales/ui-labels.vi.json",
+    "web/src/lib/locales/ui-labels.zh-Hans.json",
+    "web/src/lib/locales/ui-labels.zh-Hant.json"
+  ],
+  "retainedHolds": 24,
+  "readbackCells": 240,
+  "allSourceCurrentRecommendationHashesVerified": true,
+  "nonTargetCatalogValuesChanged": 0
+}

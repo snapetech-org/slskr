@@ -1,0 +1,159 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "baselineHead": "75e769d2d7b5b16d91a3826e90ffcf39c85fba96",
+  "baselineTree": "2cbcf109d666e2197a302a7b85b96c133f059136",
+  "reviewedCells": 240,
+  "sourceIds": 20,
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "independentCounts": {
+    "accept-current": 143,
+    "hold": 12,
+    "correction": 74,
+    "refinement": 11
+  },
+  "finalCounts": {
+    "accept-current": 143,
+    "hold": 12,
+    "correction": 73,
+    "refinement": 11,
+    "root-revision": 1
+  },
+  "appliedCellChanges": 85,
+  "rootRevisions": 1,
+  "heldCells": 12,
+  "baselineProtectedLiteralFailures": 2,
+  "restoredProtectedLiteral": "SongID in German and Hindi W956",
+  "catalogs": [
+    {
+      "locale": "ar",
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "fileSha256": "09cbe2697570b93cddaa11f9d24156192e6f4df267e957b68d971100023dbc26",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2",
+      "orderedKeysPreserved": true,
+      "gitBlob": "b83e4a4dd3fb060d4fdb1e27e52dcbfd076e1fd9"
+    },
+    {
+      "locale": "de",
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "fileSha256": "26f203f7ddf3db6601c8e5abca8ece48bd8109b3652c1697aab0c1665d60776e",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2",
+      "orderedKeysPreserved": true,
+      "gitBlob": "9df41bb24a2d17433ef967f0f2d391e6260ca75b"
+    },
+    {
+      "locale": "es",
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "fileSha256": "798bc324d61c5809096c966d82fb12c0fe60de001c5baef37703989cc8518163",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2",
+      "orderedKeysPreserved": true,
+      "gitBlob": "78ed41897e31c85503a1bd14027ac0e5cc8b5028"
+    },
+    {
+      "locale": "fr",
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "fileSha256": "09a147d0fc0aa66d79a7425a3999c2f971829467e31a0590c54c849366e6e511",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2",
+      "orderedKeysPreserved": true,
+      "gitBlob": "8496876f1b13a7801027d9a5632f85d88965a660"
+    },
+    {
+      "locale": "hi",
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "fileSha256": "b432ea6a947f1d1891a388249413ea15bf48ee0dd6b41a4f1891b55e011af6c6",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2",
+      "orderedKeysPreserved": true,
+      "gitBlob": "b082f5051e04131ec1317e2cf9953abdbdfa28a7"
+    },
+    {
+      "locale": "id",
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "fileSha256": "31a03e27b224d7609965d25e9dc1e5419863e9a637ec7da2078b8bce1de04158",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2",
+      "orderedKeysPreserved": true,
+      "gitBlob": "79c45e7c6a504c90ffec44ea5fb4c55fe56c2320"
+    },
+    {
+      "locale": "ja",
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "fileSha256": "59c01bee3c1940ad2f3e9ea120b73a78d181a5ee29a1cbddb664b2d02756e470",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2",
+      "orderedKeysPreserved": true,
+      "gitBlob": "f99cf464493793f6aaeba5b4cfc46f163e951199"
+    },
+    {
+      "locale": "ko",
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "fileSha256": "fe49675ada4c37e533cc1f1554fc22c2a1880f1d1a6d57b9ac878f09d3dc6f2b",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2",
+      "orderedKeysPreserved": true,
+      "gitBlob": "970e8edd38c44e7a2ccee39d69522f02136f024c"
+    },
+    {
+      "locale": "pt-BR",
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "fileSha256": "d7dd0882b696ebefbee45d7cd7d9815ec23a2c076166187fcccc446cb7dc924f",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2",
+      "orderedKeysPreserved": true,
+      "gitBlob": "eed62068e7c30673a843a28bafd624a6d431f0b5"
+    },
+    {
+      "locale": "vi",
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "fileSha256": "2ac25da56dfe21534bc16416839422c58b62054c022c6a8286aff85ad145e2b0",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2",
+      "orderedKeysPreserved": true,
+      "gitBlob": "67b30f11847906eeab4b143243ef8952066ea5b7"
+    },
+    {
+      "locale": "zh-Hans",
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "fileSha256": "abdd5c2d418d849b961f0e97772569819fc0fb2ec27779a925293237b16dbc27",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2",
+      "orderedKeysPreserved": true,
+      "gitBlob": "c2324ff4e6c021f9aa8f513bfab43f50e0a74acd"
+    },
+    {
+      "locale": "zh-Hant",
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "fileSha256": "472a52fe25c5fc0d0ae1faff0959e1d84100bab32b79de3a920e193a51a20b52",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2",
+      "orderedKeysPreserved": true,
+      "gitBlob": "3c533f373a71a28a12dc312b7e641354402535e4"
+    }
+  ],
+  "readbackCellsMatching": 240,
+  "catalogKeyOrderPreserved": true,
+  "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2",
+  "finalStructuralMismatches": 0,
+  "nativeSpeakerApproval": false,
+  "gitDiffCheck": "passed",
+  "testsBuildsScansCI": "not run",
+  "workflowReleaseTagMerge": "no changes"
+}

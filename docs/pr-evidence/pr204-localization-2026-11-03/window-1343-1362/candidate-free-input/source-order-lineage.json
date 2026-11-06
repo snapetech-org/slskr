@@ -1,0 +1,55 @@
+{
+  "selectionRule": "One-based positions in the 5,441 unique English source lookup keys sorted lexicographically by exact Unicode string.",
+  "previousCandidateFreeWindow": "W1323-W1342",
+  "previousCandidateFreeHead": "6ccefe07d8154acbc08e34249ef7039dc5bc1f08",
+  "previousCandidateFreeTree": "e0c1d1341be45ed73bd30cf027b479ce3b5bb95d",
+  "previousCandidateFreeManifestSha256": "fe7d3accc794f33a7e0fa4c8bda6f7a741d10b0abcfbb7f92f93746b64f2dad1",
+  "previousCandidateFreeChecksumListSha256": "c59efa7958cee2ef8fed0b9bb61e2b170fd9d3f4f4cbc116baac3a7a98974f7f",
+  "previousSourceQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+  "previousWindowSelectedPositions": [
+    1323,
+    1342
+  ],
+  "previousWindowNextBoundaryPosition": 1343,
+  "previousBoundaryPosition": 1342,
+  "previousBoundarySourceKey": "Enable scheduled speed limits",
+  "currentWindowSelectedPositions": [
+    1343,
+    1362
+  ],
+  "currentHeadCommittedSourceQueuePath": "docs/pr-evidence/pr204-localization-2026-11-03/window-1323-1342/candidate-free-input/source-queue.jsonl",
+  "currentHeadCommittedSourceQueueBlob": "8307c50b195f633d766d23c85530f23317cb128d",
+  "currentHeadCommittedSourceQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+  "currentHeadCommittedSourceQueueMatchesPreviousInput": true,
+  "liveCatalogSourceKeySetCount": 5441,
+  "liveCatalogSourceKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "liveCatalogOrderMatchesPreviousQueue": true,
+  "selectedPositions": [
+    1343,
+    1362
+  ],
+  "firstSelected": {
+    "position": 1343,
+    "sourceKey": "Enable scheduled upload speed limits under global upload policy.",
+    "sourceKeySha256": "a0958957d32556b541e714602366aa93aa388ca10e46c9f84b7f15be209abf97",
+    "historicalSourceOrdinal": null
+  },
+  "lastSelected": {
+    "position": 1362,
+    "sourceKey": "Enforce",
+    "sourceKeySha256": "3f7e3034a8e9cfde4fb4d2c9ba2df33ff5fd476b824ef1d7aac2bc10a1dd9faf",
+    "historicalSourceOrdinal": null
+  },
+  "previousBoundary": {
+    "position": 1342,
+    "sourceKey": "Enable scheduled speed limits",
+    "sourceKeySha256": "8a816f4951296ec609c045ec838bd973852c8da555f9754ac00661fd44c1de2d"
+  },
+  "nextBoundary": {
+    "position": 1363,
+    "sourceKey": "Enforce security hardening",
+    "sourceKeySha256": "c2f53d024547d7393a55f1c1309fea68866736ddfe1e3060994fa5153471a2b5",
+    "role": "next-boundary-W1343-W1362"
+  },
+  "historicalSourceOrdinalsClaimed": false
+}

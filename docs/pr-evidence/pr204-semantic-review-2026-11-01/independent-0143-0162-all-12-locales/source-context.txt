@@ -1,0 +1,481 @@
+# Runtime context for independent semantic review, source indices 143–162
+
+PR #204 catalog review baseline: `82494e758b7a78abd34812264a57a2a80bcc4c5c` / tree `ab984cf0c7043479b07264ccede7800c46d71db2`.
+Exact catalog correction application: `f4d5d8818028162266e56d027b7966f300bb6474` / tree `c4a4f0d55c8d206d19fe7c1b15f9b661f48e82a7` (parent `82494e758b7a78abd34812264a57a2a80bcc4c5c`).
+Runtime/source snapshot: `7ff454828398de6a3cfb72fe7f0ed21fe419425b` / tree `9e9f2aa743c4ff3236af8f99619803bdc3a37152`.
+All callsites below are extracted from the immutable runtime/source snapshot. Each file SHA-256 and Git blob ID is included.
+
+All 240 selected source/locale cells are populated. The selection keeps the exact target text, SHA-256, and prior disposition. Fresh decisions cover only exact values with no terminal exact prior disposition. The eight previously reviewed high-confidence cells are in `applied-corrections.jsonl`; they are distinct from the 87 fresh decisions.
+
+## Runtime callsites
+
+### `web/src/components/System/Security/AdversarialSettingsView.jsx` — Git blob `adcacdd123faf82a315da746fab3243adf5ea6a3`, SHA-256 `5b2dfa095ba281bae2b5ef66e17901b38c7d2a68d9bef52c5f016ce3352db72d`
+
+Lines 119–140:
+119:           {settings.Enabled && (
+120:             <>
+121:               <Message info>
+122:                 <Message.Header><LocalizedText source={"Active Features"} /></Message.Header>
+123:                 <ul>
+124:                   {settings.Privacy?.Enabled && (
+125:                     <li><LocalizedText source={"Privacy Layer (Traffic Analysis Protection)"} /></li>
+126:                   )}
+127:                   {settings.Anonymity?.Enabled && (
+128:                     <li><LocalizedText source={"Anonymity Layer (IP Protection)"} /></li>
+129:                   )}
+130:                   {settings.Transport?.Enabled && (
+131:                     <li><LocalizedText source={"Obfuscated Transport (Anti-DPI)"} /></li>
+132:                   )}
+133:                   {settings.OnionRouting?.Enabled && (
+134:                     <li><LocalizedText source={"Onion Routing (Mesh Anonymity)"} /></li>
+135:                   )}
+136:                   {settings.CensorshipResistance?.Enabled && (
+137:                     <li><LocalizedText source={"Censorship Resistance"} /></li>
+138:                   )}
+139:                   {settings.PlausibleDeniability?.Enabled && (
+140:                     <li><LocalizedText source={"Plausible Deniability"} /></li>
+
+### `web/src/components/System/MediaCore/PodMembershipManagementPanel.jsx` — Git blob `dd436ce3710d00f6436ec497ab9df9863e763723`, SHA-256 `d1ed549ca3edbb54571c3091ace817fcdecab5e073f17ce81768df6fe14d2953`
+
+Lines 498–513:
+498:               {membershipStats && !membershipStats.error && (
+499:                 <div style={{ marginTop: '1em' }}>
+500:                   <Message>
+501:                     <Message.Header><LocalizedText source={"Membership Statistics"} /></Message.Header>
+502:                     <p>
+503:                       <strong><LocalizedText source={"Total Memberships:"} /></strong>{' '}
+504:                       {formatRegionalNumber(membershipStats.totalMemberships)}
+505:                       <br />
+506:                       <strong><LocalizedText source={"Active Memberships:"} /></strong>{' '}
+507:                       {formatRegionalNumber(membershipStats.activeMemberships)}
+508:                       <br />
+509:                       <strong><LocalizedText source={"Banned Memberships:"} /></strong>{' '}
+510:                       {formatRegionalNumber(membershipStats.bannedMemberships)}
+511:                       <br />
+512:                       <strong><LocalizedText source={"Expired Memberships:"} /></strong>{' '}
+513:                       {formatRegionalNumber(membershipStats.expiredMemberships)}
+
+### `web/src/components/System/MediaCore/ContentDescriptorPublishingPanel.jsx` — Git blob `c51d4085b6d2b180844a9e8091406f527651229b`, SHA-256 `375e2a926789a74af0efa132bf4bdf8f74606287bdb3ac9499f937eb3a3755f6`
+
+Lines 462–476:
+462:                     <Message>
+463:                       <Message.Header><LocalizedText source={"Publishing Statistics"} /></Message.Header>
+464:                       <p>
+465:                         <strong><LocalizedText source={"Total Published:"} /></strong>{' '}
+466:                         {publishingStats.totalPublishedDescriptors}
+467:                         <br />
+468:                         <strong><LocalizedText source={"Active Publications:"} /></strong>{' '}
+469:                         {formatRegionalNumber(publishingStats.activePublications)}
+470:                         <br />
+471:                         <strong><LocalizedText source={"Expiring Soon:"} /></strong>{' '}
+472:                         {publishingStats.expiringSoon}
+473:                         <br />
+474:                         <strong><LocalizedText source={"Average TTL:"} /></strong>{' '}
+475:                         {formatRegionalFixedNumber(publishingStats.averageTtlHours, 1)} <LocalizedText source={"hours"} /><br />
+476:                         <strong><LocalizedText source={"Total Storage:"} /></strong>{' '}
+
+### `web/src/components/System/Jobs/index.jsx` — Git blob `d107affda28da2a86c3cbf22175cdf0898c6fa68`, SHA-256 `9e9f1caffccf25f2d9259e9295e3ad9f500acb30ba6150c976acf5762f4b0f16`
+
+Lines 320–355:
+320:             </Statistic>
+321:           </Grid.Column>
+322:         </Grid>
+323:       </Segment>
+324:
+325:       {swarmError && (
+326:         <Message negative>
+327:           <Message.Header><LocalizedText source={"Active swarm jobs unavailable"} /></Message.Header>
+328:           <p>{swarmError}</p>
+329:         </Message>
+330:       )}
+331:       {jobsError && (
+332:         <Message
+333:           data-testid="jobs-load-error"
+334:           error
+335:         >
+336:           <Message.Header><LocalizedText source={"Jobs unavailable"} /></Message.Header>
+337:           <p>{jobsError}</p>
+338:           <p><LocalizedText source={"Previously loaded jobs remain visible until the next successful refresh."} /></p>
+339:         </Message>
+340:       )}
+341:
+342:       {/* Active Swarm Jobs */}
+343:       {swarmJobs.length > 0 && (
+344:         <Segment>
+345:           <Header as="h3">
+346:             <Icon name="bolt" />
+347:             <Header.Content>
+348:               <LocalizedText source={"Active Swarm Downloads"} /><Header.Subheader>
+349:                 <LocalizedText source={"Multi-source downloads in progress"} /></Header.Subheader>
+350:             </Header.Content>
+351:           </Header>
+352:           {swarmLoading && (
+353:             <Loader
+354:               active
+355:               inline="centered"
+
+### `web/src/components/System/Network/index.jsx` — Git blob `2df958dba38d5ca7841043940d0d2b9f9c238658`, SHA-256 `81f45c3ef9dd9a153979cd39594b3eab4fd0cccc226654647fc3a022f97fe005`
+
+Lines 572–580:
+572:         <StatCard
+573:           color="orange"
+574:           icon="bolt"
+575:           inverted={darkTheme}
+576:           label={interfaceText("Active Swarms")}
+577:           subLabel={<LocalizedText source={"Multi-source downloads"} />}
+578:           value={hasStats ? formatNumber(swarmJobs?.length ?? 0) : '—'}
+579:          {...interfaceTextProps("Active Swarms")}/>
+580:       </Card.Group>
+
+### `web/src/components/Pods/PortForwarding.jsx` — Git blob `7eaacd44ed04d2ee5d71e7db466fe43b1fa39da1`, SHA-256 `3db4aa88c36b9c57f077c61f82541043d2787bc55f3289992b69403e942c326d`
+
+Lines 588–607:
+588:             ) : (
+589:               <div>
+590:                 <div style={{ marginBottom: '20px', textAlign: 'right' }}>
+591:                   <Button
+592:                     disabled={vpnCapablePods.length === 0}
+593:                     onClick={() => this.setState({ showCreateModal: true })}
+594:                     primary
+595:                   >
+596:                     <Icon name="plus" />
+597:                     <LocalizedText source={"Add Forwarding"} /></Button>
+598:                 </div>
+599:
+600:                 <Table celled>
+601:                   <Table.Header>
+602:                     <Table.Row>
+603:                       <Table.HeaderCell><LocalizedText source={"Local Port"} /></Table.HeaderCell>
+604:                       <Table.HeaderCell><LocalizedText source={"Pod"} /></Table.HeaderCell>
+605:                       <Table.HeaderCell><LocalizedText source={"Remote Service"} /></Table.HeaderCell>
+606:                       <Table.HeaderCell><LocalizedText source={"Status"} /></Table.HeaderCell>
+607:                       <Table.HeaderCell><LocalizedText source={"Connections"} /></Table.HeaderCell>
+
+Lines 728–741:
+728:       {
+729:         menuItem: 'Tunnel Statistics',
+730:         render: () => (
+731:           <Tab.Pane>
+732:             <div style={{ marginBottom: '20px' }}>
+733:               <Statistic.Group widths="four">
+734:                 <Statistic>
+735:                   <Statistic.Value>{activeForwardingCount}</Statistic.Value>
+736:                   <Statistic.Label><LocalizedText source={"Active Tunnels"} /></Statistic.Label>
+737:                 </Statistic>
+738:                 <Statistic>
+739:                   <Statistic.Value>
+740:                     {totalConnections}
+741:                   </Statistic.Value>
+
+Lines 880–891:
+880:             </div>
+881:
+882:             <Table celled>
+883:               <Table.Header>
+884:                 <Table.Row>
+885:                   <Table.HeaderCell><LocalizedText source={"Pod Name"} /></Table.HeaderCell>
+886:                   <Table.HeaderCell><LocalizedText source={"Members"} /></Table.HeaderCell>
+887:                   <Table.HeaderCell><LocalizedText source={"Active Tunnels"} /></Table.HeaderCell>
+888:                   <Table.HeaderCell><LocalizedText source={"Data Transferred"} /></Table.HeaderCell>
+889:                   <Table.HeaderCell><LocalizedText source={"Status"} /></Table.HeaderCell>
+890:                   <Table.HeaderCell><LocalizedText source={"Last Activity"} /></Table.HeaderCell>
+891:                 </Table.Row>
+
+### `web/src/components/System/SwarmVisualization/index.jsx` — Git blob `7d2cece5f049ff490ba90e2148e515a5597df1ce`, SHA-256 `175c3ab9e3f12c87ccdca0981085e48c4ada93d71cdbe4bcdd3552989429a9b9`
+
+Lines 238–253:
+238:               <Statistic.Value>
+239:                 {jobStatus.completedChunks || 0} / {jobStatus.totalChunks || 0}
+240:               </Statistic.Value>
+241:               <Statistic.Label><LocalizedText source={"Chunks"} /></Statistic.Label>
+242:             </Statistic>
+243:           </Grid.Column>
+244:           <Grid.Column>
+245:             <Statistic>
+246:               <Statistic.Value>{jobStatus.activeWorkers || 0}</Statistic.Value>
+247:               <Statistic.Label><LocalizedText source={"Active Workers"} /></Statistic.Label>
+248:             </Statistic>
+249:           </Grid.Column>
+250:           <Grid.Column>
+251:             <Statistic>
+252:               <Statistic.Value>
+253:                 {formatRegionalFixedNumber(jobStatus.chunksPerSecond || 0, 1)}
+
+### `crates/slskr-web/src/route_workflow_rendering.rs` — Git blob `653c99e718b35250385bc2d89fbc89c7c18a3a6f`, SHA-256 `efd2a909c953003101231eb41eb533bfc92391964b1aaf170c4b132590cffcfb`
+
+Lines 328–336:
+328:         RouteKind::Rooms => (
+329:             "Room activity",
+330:             "Joined rooms, available rooms, users, and recent messages.",
+331:             vec!["Room", "Activity", "Action"],
+332:             vec![
+333:                 ("public-domain", "joined / 18 users", "2 new messages", "Open"),
+334:                 ("ambient", "available", "54 users", "Join"),
+335:             ],
+336:             "Compose",
+
+### `web/src/lib/mediaServerIntegrations.js` — Git blob `cb7ea2f94c4db646873aad3fab6a59ebaefad341`, SHA-256 `7e97c9c2c5bb798c28fdb21b7028e0abc093ec7b7fe97e9179887bc7ef668e05`
+
+Lines 183–198:
+183:   const normalizedRateLimit = Number(rateLimitPerMinute) || 0;
+184:   const normalizedDedupeWindow = Number(dedupeWindowHours) || 0;
+185:   const adapterReady = syncPreview?.status === 'Ready for live adapter';
+186:   const contractChecks = [
+187:     {
+188:       action: 'Complete base URL, token, and path-map readiness before live execution.',
+189:       id: 'adapterReady',
+190:       label: 'Adapter readiness',
+191:       ready: adapterReady,
+192:     },
+193:     {
+194:       action: 'Configure an explicit media-server user mapping before importing or exporting user-scoped activity.',
+195:       id: 'userMapping',
+196:       label: 'User mapping configured',
+197:       ready: Boolean(userMappingConfigured),
+198:     },
+
+### `web/src/components/Wishlist/WishlistModal.jsx` — Git blob `16b4aa4c5a2ab57b1a0c2f6581e99dfdd4b24727`, SHA-256 `49f9f293410dec17e1d3c335ba49218fb7b351aa04a7bfc3ae107b138bf06582`
+
+Lines 257–267:
+257:       <Modal.Actions>
+258:         <Button onClick={onClose}>{localized('Cancel')}</Button>
+259:         <Button
+260:           disabled={saving}
+261:           loading={saving}
+262:           onClick={handleSave}
+263:           primary
+264:         >
+265:           {localized(isEdit ? 'Save' : 'Add')}
+266:         </Button>
+267:       </Modal.Actions>
+
+### `web/src/components/Contacts/Contacts.jsx` — Git blob `bf516a826f0e6a30691f06dbee952f1b96d5a9b1`, SHA-256 `bf147a0e2de3f6a602ed9e3a8b4df9a850e7c033d55549980a5448c9e074622a`
+
+Lines 499–508:
+499:                           if (nickname) {
+500:                             this.handleAddFromDiscovery(peer.peerId, nickname);
+501:                           }
+502:                         }}
+503:                         primary
+504:                         size="small"
+505:                         style={{ marginTop: '0.5em' }}
+506:                       >
+507:                         <LocalizedText source={"Add Contact"} /></Button>
+508:                     </List.Content>
+
+Lines 540–574:
+540:               <LocalizedText source={"Create Invite"} /></Button>
+541:             <Button
+542:               as="button"
+543:               data-testid="contacts-add-friend"
+544:               disabled={mutating}
+545:               onClick={() => this.setState({ addFriendModalOpen: true })}
+546:             >
+547:               <Icon name="user plus" />
+548:               <LocalizedText source={"Add Friend"} /></Button>
+549:             <Button disabled={nearbyLoading} onClick={this.loadNearby}>
+550:               <Icon name="refresh" />
+551:               <LocalizedText source={"Refresh Nearby"} /></Button>
+552:           </div>
+553:
+554:           <Tab
+555:             activeIndex={activeTab}
+556:             onTabChange={(e, { activeIndex }) =>
+557:               this.setState({ activeTab: activeIndex })
+558:             }
+559:             panes={panes}
+560:             renderActiveOnly={false}
+561:           />
+562:
+563:           {/* Add Friend Modal */}
+564:           <Modal
+565:             onClose={() => this.setState({ addFriendModalOpen: false })}
+566:             open={addFriendModalOpen}
+567:           >
+568:             <Modal.Header><LocalizedText source={"Add Friend from Invite"} /></Modal.Header>
+569:             <Modal.Content>
+570:               <p><LocalizedText source={"Paste an invite link:"} /></p>
+571:               <AddFriendForm
+572:                 onSubmit={(inviteLink, nickname) => {
+573:                   this.handleAddFromInvite(inviteLink, nickname);
+574:                 }}
+
+Lines 764–774:
+764:            {...interfaceTextProps("Friend's name")}/>
+765:         </div>
+766:         <Button
+767:           data-testid="contacts-add-invite-submit"
+768:           primary
+769:           type="submit"
+770:         >
+771:           <LocalizedText source={"Add Contact"} /></Button>
+772:       </form>
+773:     );
+774:   }
+
+### `web/src/components/Search/SoulseekDiscoveryPanel.jsx` — Git blob `e883d53a782c25322644a6f24f7e35862341dc30`, SHA-256 `a2c4a4f8e044b355515d2da6bf5da217dd4cea2b4aa7394ca95e753be3900bef`
+
+Lines 410–455:
+410:         <Form.Group widths="equal">
+411:           <Form.Input
+412:             label={interfaceText("Interest")}
+413:             onChange={(event) => setInterest(event.target.value)}
+414:             placeholder={interfaceText("genre, artist, scene, tag")}
+415:             value={interest}
+416:            {...interfaceTextProps("Interest")}/>
+417:           <Form.Input
+418:             label={interfaceText("Item")}
+419:             onChange={(event) => setItem(event.target.value)}
+420:             placeholder={interfaceText("item to branch from")}
+421:             value={item}
+422:            {...interfaceTextProps("Item")}/>
+423:           <Form.Input
+424:             label={interfaceText("User")}
+425:             onChange={(event) => setUsername(event.target.value)}
+426:             placeholder={interfaceText("username")}
+427:             value={username}
+428:            {...interfaceTextProps("User")}/>
+429:         </Form.Group>
+430:         <Button.Group size="small">
+431:           <Button
+432:             disabled={loading}
+433:             icon
+434:             labelPosition="left"
+435:             onClick={() => updateInterest(false, false)}
+436:             type="button"
+437:           >
+438:             <Icon name="heart" />
+439:             <LocalizedText source={"Add Interest"} /></Button>
+440:           <Button
+441:             disabled={loading}
+442:             icon
+443:             labelPosition="left"
+444:             onClick={() => updateInterest(true, false)}
+445:             type="button"
+446:           >
+447:             <Icon name="ban" />
+448:             <LocalizedText source={"Add Hated"} /></Button>
+449:           <Button
+450:             disabled={loading}
+451:             icon
+452:             labelPosition="left"
+453:             onClick={() => updateInterest(false, true)}
+454:             type="button"
+455:           >
+
+### `web/src/components/Collections/CollectionAddItemModal.jsx` — Git blob `9ec31ddf1a0a640ed31a0be463a70362f6ca4720`, SHA-256 `409ee50e50ea161c8fe8d9ac62ebc29eba10ae278ea5d542202a1d79000e21ab`
+
+Lines 11–18:
+11:   return (
+12:           <Modal
+13:             onClose={onClose}
+14:             open={addItemModalOpen}
+15:           >
+16:             <Modal.Header><LocalizedText source={"Add Item to"} />{" "}{selectedCollection?.title}</Modal.Header>
+17:             <Modal.Content>
+18:               <Form>
+
+Lines 60–74:
+60:             <Modal.Actions>
+61:               <Button
+62:                 onClick={onClose}
+63:               >
+64:                 <LocalizedText source={"Cancel"} /></Button>
+65:               <Button
+66:                 data-testid="collection-add-item-submit"
+67:                 disabled={!itemSearchQuery.trim() || addingItem}
+68:                 loading={addingItem}
+69:                 onClick={onAddItem}
+70:                 primary
+71:               >
+72:                 <LocalizedText source={"Add Item"} /></Button>
+73:             </Modal.Actions>
+74:           </Modal>
+
+### `web/src/components/ShareGroups/ShareGroups.jsx` — Git blob `b9e41426dfb0f920200d982653d8ab2ff98622ba`, SHA-256 `d3a467377b0d3ce0e08c6623ac01b8c53616c41828715716ef94f274f92dea6e`
+
+Lines 397–408:
+397:                       onClick={() =>
+398:                         this.setState({
+399:                           addMemberModalOpen: true,
+400:                           selectedGroup: group,
+401:                         })
+402:                       }
+403:                       primary
+404:                       size="small"
+405:                       tooltip="Add a contact or Soulseek username to this share group."
+406:                     >
+407:                       <LocalizedText source={"Add Member"} /></Button>
+408:                     <Button
+
+Lines 464–489:
+464:         {/* Add Member Modal */}
+465:         <Modal
+466:           onClose={() =>
+467:             this.setState({
+468:               addMemberModalOpen: false,
+469:               selectedContactId: null,
+470:               selectedGroup: null,
+471:               selectedUserId: null,
+472:             })
+473:           }
+474:           open={addMemberModalOpen}
+475:         >
+476:           <Modal.Header><LocalizedText source={"Add Member to"} />{" "}{selectedGroup?.name}</Modal.Header>
+477:           <Modal.Content>
+478:             {contacts.length > 0 ? (
+479:               <Form>
+480:                 <Form.Field>
+481:                   <label><LocalizedText source={"Add from Contacts"} /></label>
+482:                   <Dropdown
+483:                     data-testid="group-member-picker"
+484:                     fluid
+485:                     onChange={(e, { value }) =>
+486:                       this.setState({
+487:                         selectedContactId: value,
+488:                       })
+489:                     }
+
+Lines 536–552:
+536:               }
+537:               tooltip="Close this dialog without adding a member."
+538:             >
+539:               <LocalizedText source={"Cancel"} /></Button>
+540:             <Button
+541:               data-testid="group-member-add-submit"
+542:               disabled={(!selectedContactId && !selectedUserId) || operationPending}
+543:               loading={operationPending}
+544:               onClick={this.handleAddMember}
+545:               primary
+546:               tooltip="Add the selected contact or username to this share group."
+547:             >
+548:               <LocalizedText source={"Add Member"} /></Button>
+549:           </Modal.Actions>
+550:         </Modal>
+551:       </Container>
+552:     );
+
+## Per-key source notes
+
+- Index 143, `Active Features` — `web/src/components/System/Security/AdversarialSettingsView.jsx`: The “Active Features” message heading precedes a list that is rendered only when the individual Privacy, Anonymity, Transport, or OnionRouting setting is enabled. Review: Labels enabled security features. All six fresh targets mean active/enabled features.
+- Index 144, `Active Memberships:` — `web/src/components/System/MediaCore/PodMembershipManagementPanel.jsx`: A bold statistic label immediately precedes the formatted numeric active-membership count. Review: Labels the count of active memberships and preserves the source colon.
+- Index 145, `Active Publications:` — `web/src/components/System/MediaCore/ContentDescriptorPublishingPanel.jsx`: A bold statistic label immediately precedes the formatted count of active publications; the same key is reused in the publishing dashboard and DHT publishing panel. Review: Labels a count, not a publication action.
+- Index 146, `Active Swarm Downloads` — `web/src/components/System/Jobs/index.jsx`: A card header above swarm job cards; its subheader says “Multi-source downloads in progress.” The Network Details page repeats the same card heading and subheader. Review: Means active multi-source/swarm downloads. The French value may parse as downloads belonging to active swarms, so it remains a moderate correction suggestion.
+- Index 147, `Active Swarms` — `web/src/components/System/Network/index.jsx`: A network statistic card whose value is the count of current swarm jobs; its sublabel says “Multi-source downloads.” Review: Names the active swarm count.
+- Index 148, `Active Tunnels` — `web/src/components/Pods/PortForwarding.jsx`: A count statistic and table header for active tunnels in the port-forwarding management page. Review: Names active network tunnels.
+- Index 149, `Active Workers` — `web/src/components/System/SwarmVisualization/index.jsx`: A statistic label immediately above the count of active workers in the swarm visualization. Review: Names active workers; existing values are correction-needed exclusions and were not newly re-reviewed in this window.
+- Index 150, `Active swarm jobs unavailable` — `web/src/components/System/Jobs/index.jsx`: An error-state message header when the system cannot fetch active swarm jobs. Review: Communicates that active swarm-job data is unavailable; existing values are correction-needed exclusions.
+- Index 151, `Activity` — `crates/slskr-web/src/route_workflow_rendering.rs`: A table column header in the Rooms workflow, alongside “Room” and “Action.” Review: The target is the noun “activity” used as a table heading.
+- Index 152, `Adapter readiness` — `web/src/lib/mediaServerIntegrations.js`: The label of a readiness row in the media-server integration diagnostics data. Review: Names the readiness status of an adapter; existing Vietnamese value is correction-needed and excluded.
+- Index 153, `Add` — `web/src/components/Wishlist/WishlistModal.jsx`: The primary modal action uses this generic label when creating a wishlist entry; edits use “Save.” Review: A generic imperative button label.
+- Index 154, `Add Contact` — `web/src/components/Contacts/Contacts.jsx`: A button for adding a peer discovered nearby to the user’s contacts; a second instance is in the nearby contacts view. Review: Adds a contact, with no narrower friend semantics required.
+- Index 155, `Add Forwarding` — `web/src/components/Pods/PortForwarding.jsx`: The primary button opens the port-forward creation modal. The French page title is “Redirection de port,” while the current button says “Ajouter un transfert.” Review: French uses a generic transfer term inconsistent with the same page’s “redirection” terminology; a moderate proposal aligns the button with the screen.
+- Index 156, `Add Friend` — `web/src/components/Contacts/Contacts.jsx`: The main Contacts page button opens a form for adding a friend. Review: An imperative add-friend action.
+- Index 157, `Add Friend from Invite` — `web/src/components/Contacts/Contacts.jsx`: The modal heading above the invite-link and nickname form. Review: Adds a friend using an invitation link.
+- Index 158, `Add Hated` — `web/src/components/Search/SoulseekDiscoveryPanel.jsx`: A ban-icon button beside the heart-icon “Add Interest” action. Both use the entered genre, artist, scene, tag, item, or username; this action calls `updateInterest(true, false)`. Review: Adds the entered value to the disliked-interest list. Six high-confidence locale corrections in this key were applied from exact-hash evidence.
+- Index 159, `Add Interest` — `web/src/components/Search/SoulseekDiscoveryPanel.jsx`: A heart-icon button beside “Add Hated.” It adds the entered genre, artist, scene, tag, item, or username as a positive interest. Review: Adds a positive interest; the Arabic correction replaces a mistranslation of “interest” as benefit/usefulness.
+- Index 160, `Add Item` — `web/src/components/Collections/CollectionAddItemModal.jsx`: The primary submit action in the collection item picker; the entered value may be a search query used as a content ID. Review: Adds an item to the selected collection.
+- Index 161, `Add Item to` — `web/src/components/Collections/CollectionAddItemModal.jsx`: The modal heading concatenates this source fragment, one literal space, and the selected collection title. Review: The source fragment precedes the collection title. Hindi’s current locative phrase reads awkwardly in this concatenation; the moderate proposal turns it into a compact “Add item:” heading.
+- Index 162, `Add Member` — `web/src/components/ShareGroups/ShareGroups.jsx`: The button opens a member form for adding a contact or Soulseek username to a share group. Review: Adds a member to a share group; existing Chinese values are correction-needed exclusions.
+
+All source keys in this batch have no substitution placeholders, ICU message structure, or protected product/API literals. The verifier checks the exact source-key/hash and target/hash for all cells.

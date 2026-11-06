@@ -1,0 +1,31 @@
+{
+  "window": "W1703-W1722",
+  "inputHead": "91e109efba44ad9e53fe9544648a0d907a2bef77",
+  "inputTree": "38db78228144da5fc50179addccf826662bf97de",
+  "reviewedCells": 240,
+  "acceptedCurrent": 170,
+  "selectedCorrectionsAndRefinements": 69,
+  "heldUnchanged": 1,
+  "rootFlagsReviewed": 13,
+  "nativeSpeakerSignoff": false,
+  "decisionNotes": {
+    "1703": "Caller shows failure-count headings; adopt noun-like labels where current adjectives/verbs are awkward.",
+    "1704": "Restore the failover technical concept; retain the established English term rather than generic failure.",
+    "1705": "Clarify that warnings concern audio files falsely presented as lossless.",
+    "1708": "Retain both speed and acceptable-quality meaning in the acquisition-profile label.",
+    "1709": "Use an action label for the fast-forward button.",
+    "1710": "Describe a 30-second seek action and preserve ASCII 30.",
+    "1712": "Preserve RustyMilk byte-exactly in all locales.",
+    "1714": "Use preferences in the parent section title; recommendations are already named by the nested panel.",
+    "1715": "Use user-preference terminology for the federated music recommendation panel; align with position 1714.",
+    "1718": "Use rate-limit permit terminology and consistent Federation wording.",
+    "1719": "Make the numeric seconds unit explicit. Keep Indonesian on hold because both machine proposals are unsafe/uncertain.",
+    "1720": "Preserve ActivityPub Pod as a technical term; use diagnostics plural where appropriate.",
+    "1721": "Keep the Federation feature term consistent in its diagnostics error."
+  },
+  "holdCells": [
+    "1719::id"
+  ],
+  "protectedLiteral": "RustyMilk",
+  "numericToken": "30"
+}

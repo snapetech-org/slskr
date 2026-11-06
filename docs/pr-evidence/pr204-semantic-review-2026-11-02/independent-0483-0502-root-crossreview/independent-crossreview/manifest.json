@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Independent semantic cross-review and exact-head re-attestation for slskR PR #204, W483–502.",
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "head": "0a1c497c67637eb2c129cde23299efe4d9f79651",
+  "tree": "3e100c36e1c51c09e509cb3009ef6d20d22d3a18",
+  "inputs": {
+    "primaryReviewLedger": {
+      "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-W483-502-20261102/primary-review-ledger.jsonl",
+      "sha256": "fdd61acab11e1d0ee78c0249b654885edf7f34f4b27376ede41aecc94b69e493",
+      "expectedSha256": "fdd61acab11e1d0ee78c0249b654885edf7f34f4b27376ede41aecc94b69e493"
+    },
+    "sourceInventory": {
+      "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-W483-502-20261102/packet/source-inventory.jsonl",
+      "sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+      "rows": 5437,
+      "hashesMatch": 5437
+    },
+    "sourceContext": {
+      "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-W483-502-20261102/packet/source-context.jsonl",
+      "sha256": "bcd0eba113962e3f5cc9b0cb14a8edf574b318be63909d0001335bdcbc3d1c82",
+      "rows": 20
+    }
+  },
+  "coverage": {
+    "rowsReviewed": 240,
+    "expectedRows": 240,
+    "sourceCurrentReattested": 240,
+    "uniqueCallerPinsReattested": 25,
+    "placeholderAndProtectedLiteralChecksPassed": true
+  },
+  "decisions": {
+    "accept-current": 121,
+    "accept-proposal": 112,
+    "propose-missed-correction": 4,
+    "refine-proposal": 3
+  },
+  "nativeSpeakerReviewPerformed": false,
+  "outputFiles": [
+    "independent-crossreview-ledger.jsonl",
+    "source-current-attestation.jsonl",
+    "source-inventory-attestation.jsonl",
+    "caller-context-attestation.jsonl",
+    "summary.json",
+    "README.md"
+  ]
+}

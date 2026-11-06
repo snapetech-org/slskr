@@ -1,0 +1,90 @@
+{
+  "lineageSource": "/home/keith/Documents/code/task-scratch/slskr-pr209-w1543-1562-primary-20261104/candidate-free-input",
+  "lineageFiles": {
+    "prior-window-selection-hash-only.jsonl": "2ebc81612492517b45395b8cfd75b26bf8baf059c70fc45d78c265d1e8d6bfa3",
+    "prior-selection-hash-reattestation.jsonl": "87f173eda8551c001d9d9ce05f7d15b1e743e77599e2d873e614af458b1cc169",
+    "prior-hold-hash-reattestation.jsonl": "e4b8d55d5dbf10bce12c9edf1b149a69bd5704c0860323de65c6a596efb939d4",
+    "prior-window-1503-1522-catalog-diff-hash-only.jsonl": "9a0d4cfb10cf88951db000f82fc2a7b440eddd7c07888b23687cc2db40e2fcfe",
+    "prior-window-1523-1542-application-hash-only.jsonl": "23739e049d49eaa09d1834bea19e0f2759cc09274c6e7013ae0b211770b426d4",
+    "prior-applied-target-hash-only.jsonl": "8e397239e8c61233cbf06cd944690ffcad131a124a7904427a6243329d5a5c63",
+    "prior-backfill-hold-hash-only.jsonl": "ff2dc382248868f2ca3fbe2b7712d3c27a419ae9d1842fb347513d5c0ce7ee2f"
+  },
+  "priorInputManifestSha256": "2e2a7dc58f41e75901d8bcc8afc102ba575c7166182ff3204a066b6bffd49b15",
+  "priorInputContinuitySummarySha256": "b00883a95d98877a8e5aac49f4031f35339a868f64c63ca47bd135b960163b20",
+  "fullSourceOrderQueue": {
+    "priorQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+    "liveQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+    "exactBytesMatch": true,
+    "positionsCoveredThrough": 1582
+  },
+  "previousWindowCells": {
+    "recordCount": 1200,
+    "sourcePositionMatches": 1200,
+    "allMatchExpectedPriorTarget": true,
+    "liveTargetMismatchCount": 0,
+    "windowLabels": [
+      "W1463-W1482",
+      "W1483-W1502",
+      "W1503-W1522",
+      "W1523-W1542",
+      "W1543-W1562"
+    ]
+  },
+  "priorSelections": {
+    "recordCount": 320,
+    "sourcePositionMatches": 320,
+    "allMatchLiveQueue": true,
+    "sourcePositionMismatchCount": 0
+  },
+  "priorHolds": {
+    "recordCount": 62,
+    "sourcePositionMatches": 62,
+    "unchangedCount": 62,
+    "changedCount": 0,
+    "backfillCallerBackedHashOnlyHoldCount": 10,
+    "newlyPreservedHoldCount": 5
+  },
+  "priorApplications": {
+    "w1503": {
+      "window": "W1503-W1522",
+      "parentHead": "a7d00cd97602c5910800330190817fcada008162",
+      "parentTree": "2d0a051348394e809ffc3a1fdbfccd20ba8af283",
+      "productCommit": "0e793dd5632b3e6d4f25f91fe5b47fc121f3f813",
+      "productTree": "a7ad6830162f0be4298e2f8c4100e58e2590ccb9",
+      "metadataSha256": "af8fac8738e8e9a77bfbc1abac5f3513b4fb4f41e3c49d8bb4cf7966857aad61",
+      "candidateFreeChecksumListSha256": "a599379018be2e495cd44edb33cbea6832b29afbb496d4de18b58cdb9d0d8cd1",
+      "catalogDiffCellCount": 240,
+      "appliedTargetHashCount": 12,
+      "acceptCurrentCount": 228,
+      "holdCount": 0
+    },
+    "w1523": {
+      "window": "W1523-W1542",
+      "productCommit": "09497027d7ca64892cf8ce3530dd5cc1fdf93c15",
+      "productTree": "b4594245bbb922bbce7785c9b4efc0041a2dd5df",
+      "readbackCellCount": 240,
+      "readbackSha256": "aaac86d6d749a3a7b1c3f4e25a57faca1853ec6925a5a3951cea908a19ed85f2",
+      "applicationReportSha256": "39760a429a50807f836aebe37d87fd053b4be2f3c5fde7e5c9da69228bcae698",
+      "applyPlanSha256": "367c2eac7ef950e3a7a47cf7533fe0f024c7a51fc61fbbe620d5d6e78ba3c81d",
+      "appliedTargetHashCount": 8,
+      "acceptCurrentCount": 222,
+      "hashOnlyHoldCount": 10,
+      "holdReason": "unresolved backfill terminology; production callers are present"
+    },
+    "w1543": {
+      "window": "W1543-W1562",
+      "parentHead": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+      "productCommit": "9f158221682915a9c6c238c5e182871adbf93efd",
+      "productTree": "72c5fd0d9f69fe802e7a659e9c44d02fbc2f5eb8",
+      "readbackCellCount": 240,
+      "readbackSha256": "d95ac481a991c151733d815d05cda36bbfe572b67779896ac5bc120153bccb63",
+      "applicationReportSha256": "6e25500089f1db8f8cd7f03c9ff9d837b9d403880f1837f2de010197dcf4bc9e",
+      "appliedTargetHashCount": 27,
+      "acceptCurrentCount": 208,
+      "hashOnlyHoldCount": 5,
+      "holdReason": "preserved prior review holds; rationale omitted from hash-only lineage"
+    },
+    "appliedTargetHashCountTotal": 47
+  },
+  "rawPriorTranslationsIncluded": false
+}

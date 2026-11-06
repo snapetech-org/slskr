@@ -1,0 +1,34 @@
+{
+  "packetVerifiers": {
+    "blind": {
+      "returnCode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"pass\": true,\n  \"verifier\": \"candidate-free input checksums, live PR/branch/tree pins, 240 caller-bound decisions, token checks, prior holds, and sealed outputs\",\n  \"head\": \"b5da2589b6e8f2d4b0c0faab28bcdf0481e42438\",\n  \"tree\": \"36ae6ecf3b705995fbd549cb8650d6458936df91\",\n  \"cells\": 240,\n  \"decisions\": {\n    \"accept-current\": 182,\n    \"correction\": 46,\n    \"refinement\": 12\n  },\n  \"proposals\": 58,\n  \"callerless\": 0,\n  \"priorHoldsReattested\": 35,\n  \"priorHoldsChanged\": 0,\n  \"priorSelectionsReattested\": 140,\n  \"tokenCheckFailures\": {\n    \"markupPreserved\": 0,\n    \"numericTokensPreserved\": 0,\n    \"placeholderSequencePreserved\": 0,\n    \"protectedLiteralsPreserved\": 0\n  },\n  \"ledgerSha256\": \"798d4bad4d4951fd122d75998dc6e213e8f93f3783ec7d6cd3650d7fc3815746\",\n  \"outputBytes\": 533544\n}"
+    },
+    "candidateFree": {
+      "returnCode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"result\": \"PASS\",\n  \"head\": \"b5da2589b6e8f2d4b0c0faab28bcdf0481e42438\",\n  \"tree\": \"36ae6ecf3b705995fbd549cb8650d6458936df91\",\n  \"positions\": [\n    1383,\n    1402\n  ],\n  \"cells\": 240,\n  \"sourceQueueOrderSha256\": \"dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983\",\n  \"callerReferences\": 49,\n  \"callerlessPositions\": [],\n  \"priorHoldsReattested\": 35,\n  \"changedPriorHolds\": 0,\n  \"priorSelectedRowsReattested\": 140,\n  \"mismatchCounts\": {\n    \"placeholderSequenceMismatchCount\": 0,\n    \"markupMismatchCount\": 0,\n    \"numericTokenMismatchCount\": 0,\n    \"protectedLiteralMismatchCount\": 0\n  },\n  \"manifestSha256\": \"305e53b328c07083e7144ecbb33d52fe64fc1b08a794848a7dcec61a29a701ed\",\n  \"checksumListSha256\": \"f23606c20a24aebb33e7a5b79690a43bc54864da6fb516d3526828f7a1f192c1\"\n}"
+    },
+    "primary": {
+      "returnCode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"callerlessPositions\": [],\n  \"candidateFreeVerifier\": \"PASS\",\n  \"carryForwardHoldsReattested\": 35,\n  \"cells\": 240,\n  \"checksumListFilesVerified\": 9,\n  \"confidenceCounts\": {\n    \"high\": 35,\n    \"moderate\": 205\n  },\n  \"decisionCounts\": {\n    \"accept-current\": 189,\n    \"correction\": 38,\n    \"refinement\": 13\n  },\n  \"decisions\": 51,\n  \"head\": \"b5da2589b6e8f2d4b0c0faab28bcdf0481e42438\",\n  \"primaryFileHashesVerified\": [\n    \"README.md\",\n    \"input-verification.json\",\n    \"review-decisions.json\",\n    \"review-ledger.jsonl\",\n    \"source-context-evidence.jsonl\",\n    \"summary.json\",\n    \"verifier-output.json\",\n    \"verify-primary-ledger.py\"\n  ],\n  \"priorSelectionsReattested\": 140,\n  \"result\": \"PASS\",\n  \"sourceContexts\": 20,\n  \"tree\": \"36ae6ecf3b705995fbd549cb8650d6458936df91\",\n  \"window\": \"W1383-W1402\"\n}"
+    }
+  },
+  "packets": [
+    {
+      "path": "candidate-free-input",
+      "sha256Inventory": "f23606c20a24aebb33e7a5b79690a43bc54864da6fb516d3526828f7a1f192c1"
+    },
+    {
+      "path": "primary-review",
+      "sha256Inventory": "ee437d08333bb0b62635b215795d7b161215947f551bcddd4e04a288cd1feb36"
+    },
+    {
+      "path": "blind-review",
+      "sha256Inventory": "e11e92d767264bb01b0aef77bc8ac1eb4cf4a9bc789bbb0f19fb607894f7ada1"
+    }
+  ],
+  "result": "PASS"
+}

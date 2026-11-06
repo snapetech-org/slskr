@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W1243-W1262",
+  "appliedToParentHead": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+  "parentTree": "0ead1eb1678b4df05ca7feec9776c0319d4eefd3",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "dispositions": {
+    "accept-current": 127,
+    "correction": 81,
+    "hold": 12,
+    "refinement": 20
+  },
+  "selectedChanges": 101,
+  "readbackMatches": 240,
+  "unplannedNonTargetChanges": 0,
+  "orderedCatalogKeysPreserved": true,
+  "catalogCount": 12,
+  "callerlessHoldsPreserved": 12,
+  "callerlessHoldPosition": 1257,
+  "qualifiedLocaleReviewRequired": true,
+  "qualifiedNativeSpeakerApproval": false,
+  "exactHeadBrowserReview": false,
+  "releaseApproved": false,
+  "crossAuditLedgerSha256": "bbe705b8a51b75434b0563681a7913078d2bd31de5fb8f7ef992db9f744872f6"
+}

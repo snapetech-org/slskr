@@ -1,0 +1,208 @@
+{
+  "application": "slskR",
+  "application_head": "39dc86982d73737832639483e7a6a6de74bee953",
+  "application_parent": "979aec510db9c404a2831368d57b525773b5f4ab",
+  "application_tree": "d232fada7fdf0da778117134ff371f2c2d45a0da",
+  "browser_recapture_required": true,
+  "candidate_ledger_sha256": "85be45f3a534e8c59fb4b4b56d23bfda5bba70bcfbb05434a024f7db8566bcc0",
+  "carry_count": 92,
+  "catalog_sha256_after": {
+    "web/src/lib/locales/ui-labels.ar.json": "64cdd9fd1dde93bda472523e0b6fc4e13b01ed2f7d78a4d65665fe48922bbddb",
+    "web/src/lib/locales/ui-labels.de.json": "5a783e30c0863a3d523c353e3b24314f7741c3595c61d9f16e144f2be6fecfa3",
+    "web/src/lib/locales/ui-labels.es.json": "bf9bbde1fb4a850afaac1f4a524277228a5a75b704dae260288ed5d563618832",
+    "web/src/lib/locales/ui-labels.fr.json": "fd5125188d452cec459c9ec7edc650eef85d56851e87350419862442a5f2ccb1",
+    "web/src/lib/locales/ui-labels.hi.json": "2d6e588cf77e3ce1112f57c6afd97f5e592f0dfa1a900dc8594cc46f115b058b",
+    "web/src/lib/locales/ui-labels.id.json": "4dcbd521c8db8845d8fc84a6d13e010eee92f05d9978c92e6999d91c8076f380",
+    "web/src/lib/locales/ui-labels.ja.json": "a8ce5f1c2162b43fa2301120de66c48c447105a86c40cfc53ba5e276871b550c",
+    "web/src/lib/locales/ui-labels.ko.json": "a3c83d8b78ffffcf9e6e01b4abee34f8339c33dd420c64b6e990a80fc216ae82",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "ffbcf4263829c02c2ee265e3ab1fb46e1eb57c16ef0c178babb70d91c293cd27",
+    "web/src/lib/locales/ui-labels.vi.json": "6be79c8145ad2dc9590a6529bbe0ce67a668193bd8ca9fdca55baace67549956",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "fc2a17cfa6acd0301bf299c89fad975542633cb2af2513dcf1bd16eab0af68c6",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "0f9ce9801faeb703b0c7f07b47d86a26183726a22af7c1548ed4e57da51e7036"
+  },
+  "catalog_sha256_before": {
+    "web/src/lib/locales/ui-labels.ar.json": "53f688da529cd0135b7ac2cf18581c0710b5d28a83145678700f38191ea549b4",
+    "web/src/lib/locales/ui-labels.de.json": "486bde7b02cd3d57a88e4088166ca44bc4b8a56a75584b3f054b380909126415",
+    "web/src/lib/locales/ui-labels.es.json": "149b231db8d8cc5e9dbe63bcc8ac71f2e2d7c7d800312cb9631fec5cf473c8e8",
+    "web/src/lib/locales/ui-labels.fr.json": "c0f2e1ca0702ba4320ba0dba56b412c819c06f6cad9324de38873cbb135f1af3",
+    "web/src/lib/locales/ui-labels.hi.json": "4af6e7b9851d445dbfe251d650a860cec1ea88a0e4e9997f561b49dddb13f34f",
+    "web/src/lib/locales/ui-labels.id.json": "2c30f935ceb9fa9c294d1aae3800d7a7f8198b687f1604c82419f4be8d60b8d8",
+    "web/src/lib/locales/ui-labels.ja.json": "6b544f3be6f8712b5d0c85642179589bfb398338f81511d2c73f9cccf2382d18",
+    "web/src/lib/locales/ui-labels.ko.json": "d2b1003a7d7de613ec16ab6be0ed83fd7f77ff4be7bd521469ebd0d13c22a51b",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "e237a2304f628f3301618abb15aab5ba03e4800fa16fef41a1ec1af3119f6e89",
+    "web/src/lib/locales/ui-labels.vi.json": "5ed7f12f2245878e8096120f477361d74b3f9ed6b0fb61f0e75ca6eb23eb5f00",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "e9fc1c7328052dba8f88618b78422d8fd1a7a6a68dc91ea6d16b3ca08c7367c5",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "8cadca8952ac729ec2cee22cf5123355940429d0ed0837380ccd38c6ee2b2067"
+  },
+  "conflicts": 0,
+  "decision_counts": {
+    "accepted": 163,
+    "corrected": 77
+  },
+  "fresh_cell_count": 80,
+  "fresh_disposition_counts": {
+    "accepted": 71,
+    "corrected": 9
+  },
+  "holds": 0,
+  "native_speaker_approval": false,
+  "next_source_window": "323-342",
+  "per_locale_final_status_counts": {
+    "ar": {
+      "accepted": 13,
+      "corrected": 7
+    },
+    "de": {
+      "accepted": 14,
+      "corrected": 6
+    },
+    "es": {
+      "accepted": 10,
+      "corrected": 10
+    },
+    "fr": {
+      "accepted": 15,
+      "corrected": 5
+    },
+    "hi": {
+      "accepted": 14,
+      "corrected": 6
+    },
+    "id": {
+      "accepted": 11,
+      "corrected": 9
+    },
+    "ja": {
+      "accepted": 16,
+      "corrected": 4
+    },
+    "ko": {
+      "accepted": 16,
+      "corrected": 4
+    },
+    "pt-BR": {
+      "accepted": 14,
+      "corrected": 6
+    },
+    "vi": {
+      "accepted": 14,
+      "corrected": 6
+    },
+    "zh-Hans": {
+      "accepted": 13,
+      "corrected": 7
+    },
+    "zh-Hant": {
+      "accepted": 13,
+      "corrected": 7
+    }
+  },
+  "placeholder_and_literal_checks": {
+    "cells_checked": 240,
+    "icu_messages": 0,
+    "placeholder_cells": 12,
+    "placeholder_sets_preserved": true,
+    "protected_literal_cells": 48,
+    "protected_literals_changed": 0,
+    "protected_literals_checked": true,
+    "protected_literals_preserved": true
+  },
+  "prior_overlap_scan": {
+    "canonical_input_manifest_sha256": "ef8f47c8ede572c774e6c9387eca12e534f1102ba361f9a13ea713ce5b073266",
+    "input_count": 876,
+    "manifest_file_sha256": "bc97d9a26a83ec9dc9ef834958fb9e0c4b5993249a6d5c228713186fbed04c29"
+  },
+  "review_head": "979aec510db9c404a2831368d57b525773b5f4ab",
+  "review_tree": "3b07b6e7658771101f3a83c7a5ecdbc96b8af2a4",
+  "root_apply_plan_sha256": "11a026a87a2856ac09d3c2884fd7fe08d702de91856467552a0cc6336c59413b",
+  "root_candidate_count": 77,
+  "root_disposition_counts": {
+    "accepted": 43,
+    "refined": 34
+  },
+  "root_ledger_sha256": "df97293a80915abbef934bc02aad4f238951cb7fc90be04bc9c1dddbd32c9faa",
+  "selected_cell_count": 240,
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_context": {
+    "caller_files": {
+      "web/src/components/Player/VisualizerOverlayControls.jsx": "5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4",
+      "web/src/components/PlaylistIntake/PlaylistIntake.jsx": "a978f80c022835c003d35db99b38037dee622c6456d9cbc46688f810867e3ae6",
+      "web/src/components/Rooms/RoomCreateModal.jsx": "cbf45ac308798a22db6a4478cb8fb90a68c83c2367c6629a309c2f0a46c75dac",
+      "web/src/components/Search/Detail/SearchFilterModal.jsx": "b842680bae7a555b34814b900a55e3bca05485fdad27b10411c47c5c63034968",
+      "web/src/components/System/Integrations/FtpIntegrationPanel.jsx": "71a1dfcb043820f9f5ef0a4ee7d142fb308e7943f049b0dbdb9b60d22a4724a0",
+      "web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx": "1cc2a189124afc784443085977608cf70ef9c1009143a110e74af7adb8e9f028",
+      "web/src/components/System/Integrations/SourceFeedIntegrationsPanel.jsx": "3535dd1d9d37b9f01a451ad1b8220c864db8a0d3e6c074b9290eaf71b738af4e",
+      "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx": "8cb1922e358f7229d7f8147f41e18bffa3146283c270a5844393fc72f755c6ca",
+      "web/src/components/System/Mesh/MeshEvidencePolicy.jsx": "b4dd46c29e740ea03bf84898655b413fc02bfe6274fbaa1c9964ed59e9c475a7",
+      "web/src/components/System/Security/AdversarialSettings.jsx": "c82c38e14d05a22e4787a0991ea372c74d07a3a5988e87b51891133e4f802704",
+      "web/src/components/Wishlist/Wishlist.jsx": "74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7",
+      "web/src/lib/mediaServerIntegrations.js": "7e97c9c2c5bb798c28fdb21b7028e0abc093ec7b7fe97e9179887bc7ef668e05",
+      "web/src/lib/meshEvidencePolicy.js": "e6741dc9180fd5543407fd402c85ade0b78d451c604f3f33f8c08551840cd4df"
+    },
+    "catalog_file_hashes_after": {
+      "web/src/lib/locales/ui-labels.ar.json": "64cdd9fd1dde93bda472523e0b6fc4e13b01ed2f7d78a4d65665fe48922bbddb",
+      "web/src/lib/locales/ui-labels.de.json": "5a783e30c0863a3d523c353e3b24314f7741c3595c61d9f16e144f2be6fecfa3",
+      "web/src/lib/locales/ui-labels.es.json": "bf9bbde1fb4a850afaac1f4a524277228a5a75b704dae260288ed5d563618832",
+      "web/src/lib/locales/ui-labels.fr.json": "fd5125188d452cec459c9ec7edc650eef85d56851e87350419862442a5f2ccb1",
+      "web/src/lib/locales/ui-labels.hi.json": "2d6e588cf77e3ce1112f57c6afd97f5e592f0dfa1a900dc8594cc46f115b058b",
+      "web/src/lib/locales/ui-labels.id.json": "4dcbd521c8db8845d8fc84a6d13e010eee92f05d9978c92e6999d91c8076f380",
+      "web/src/lib/locales/ui-labels.ja.json": "a8ce5f1c2162b43fa2301120de66c48c447105a86c40cfc53ba5e276871b550c",
+      "web/src/lib/locales/ui-labels.ko.json": "a3c83d8b78ffffcf9e6e01b4abee34f8339c33dd420c64b6e990a80fc216ae82",
+      "web/src/lib/locales/ui-labels.pt-BR.json": "ffbcf4263829c02c2ee265e3ab1fb46e1eb57c16ef0c178babb70d91c293cd27",
+      "web/src/lib/locales/ui-labels.vi.json": "6be79c8145ad2dc9590a6529bbe0ce67a668193bd8ca9fdca55baace67549956",
+      "web/src/lib/locales/ui-labels.zh-Hans.json": "fc2a17cfa6acd0301bf299c89fad975542633cb2af2513dcf1bd16eab0af68c6",
+      "web/src/lib/locales/ui-labels.zh-Hant.json": "0f9ce9801faeb703b0c7f07b47d86a26183726a22af7c1548ed4e57da51e7036"
+    },
+    "catalog_file_hashes_before": {
+      "web/src/lib/locales/ui-labels.ar.json": "53f688da529cd0135b7ac2cf18581c0710b5d28a83145678700f38191ea549b4",
+      "web/src/lib/locales/ui-labels.de.json": "486bde7b02cd3d57a88e4088166ca44bc4b8a56a75584b3f054b380909126415",
+      "web/src/lib/locales/ui-labels.es.json": "149b231db8d8cc5e9dbe63bcc8ac71f2e2d7c7d800312cb9631fec5cf473c8e8",
+      "web/src/lib/locales/ui-labels.fr.json": "c0f2e1ca0702ba4320ba0dba56b412c819c06f6cad9324de38873cbb135f1af3",
+      "web/src/lib/locales/ui-labels.hi.json": "4af6e7b9851d445dbfe251d650a860cec1ea88a0e4e9997f561b49dddb13f34f",
+      "web/src/lib/locales/ui-labels.id.json": "2c30f935ceb9fa9c294d1aae3800d7a7f8198b687f1604c82419f4be8d60b8d8",
+      "web/src/lib/locales/ui-labels.ja.json": "6b544f3be6f8712b5d0c85642179589bfb398338f81511d2c73f9cccf2382d18",
+      "web/src/lib/locales/ui-labels.ko.json": "d2b1003a7d7de613ec16ab6be0ed83fd7f77ff4be7bd521469ebd0d13c22a51b",
+      "web/src/lib/locales/ui-labels.pt-BR.json": "e237a2304f628f3301618abb15aab5ba03e4800fa16fef41a1ec1af3119f6e89",
+      "web/src/lib/locales/ui-labels.vi.json": "5ed7f12f2245878e8096120f477361d74b3f9ed6b0fb61f0e75ca6eb23eb5f00",
+      "web/src/lib/locales/ui-labels.zh-Hans.json": "e9fc1c7328052dba8f88618b78422d8fd1a7a6a68dc91ea6d16b3ca08c7367c5",
+      "web/src/lib/locales/ui-labels.zh-Hant.json": "8cadca8952ac729ec2cee22cf5123355940429d0ed0837380ccd38c6ee2b2067"
+    },
+    "file_count": 13,
+    "sha256": "5de81e74eb2aee3efb9de86642b9e1405ea29fe891519af4eb6139ad942287d0"
+  },
+  "source_ids": [
+    "Anonymity status is unavailable",
+    "Anyone can join and see the room",
+    "Appearance",
+    "Application",
+    "Apply Filter",
+    "Apply Filters",
+    "Apply Runtime",
+    "Apply RustyMilk parameter edit",
+    "Apply confirmed post-acquisition file actions after media-server visibility is verified.",
+    "Apply evidence only from directly trusted peers and contacts.",
+    "Apply filter to selected items",
+    "Apply filter to selected wishlist items",
+    "Apply the selected RustyMilk parameter value and save the edited preset in this browser.",
+    "Apply these FTP settings through the runtime configuration overlay.",
+    "Apply these filters to the current search.",
+    "Apply these notification settings through the runtime configuration overlay.",
+    "Apply these source-feed integration settings through the runtime configuration overlay.",
+    "Apply trusted peer and realm-curated evidence with provenance.",
+    "Approve Snapshot",
+    "Approve tag organization snapshot for {name}"
+  ],
+  "source_index_end_inclusive": 322,
+  "source_index_start": 303,
+  "source_inventory_count": 5437,
+  "source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "visual_check": {
+    "browser": "Agentic VM",
+    "file": "headed-visual-check.md",
+    "reason": "No exact-head preview available; web/node_modules is absent and supplying a preview would require dependency installation or build.",
+    "sha256": "7e4ea4366cf9a5af88c0da6a8d7e4e065c101eccecefd1e0d5338c123e84299d",
+    "status": "blocked"
+  },
+  "window": "303-322"
+}

@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "liveState": "OPEN",
+  "isDraft": true,
+  "exactHead": "6a7f2ae61df6c5ecbc4fa1471949735fa3a956c4",
+  "exactTree": "17b851a1d79c4aeac2e19b560f6dc845fcd8c404",
+  "initialRequestedHead": "86ad391ca248ec50fa4049de0a0f08ee55010441",
+  "initialRequestedTree": "f773836319b92b6b8799cdda1695e7da09622941",
+  "headAdvancedDuringReview": true,
+  "sourceWindow": {
+    "positions": [
+      663,
+      682
+    ],
+    "sourceIds": 20,
+    "locales": [
+      "ar",
+      "de",
+      "es",
+      "fr",
+      "hi",
+      "id",
+      "ja",
+      "ko",
+      "pt-BR",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "cells": 240
+  },
+  "primaryPacket": "/mnt/disks/scratch/task-scratch/slskr-pr204-W663-682-primary-20261102/packet",
+  "primaryPacketSha256SumsSha256": "191198db9a9b7d91a9465f7b3ddf24a6f7a0253c36e29c27ce0c777459def12e",
+  "primaryFreezeManifestSha256": "69713333eddc3d326cc28acb3a0c2f57edbe4f9fab77e31ddc95c5c8981c9013",
+  "primaryDispositionCounts": {
+    "accept-current": 159,
+    "propose-refinement": 4,
+    "propose-correction": 53,
+    "hold-no-direct-caller": 24
+  },
+  "crossReviewDispositionCounts": {
+    "accepted-current": 154,
+    "accepted-primary-candidate": 56,
+    "held-no-direct-caller": 24,
+    "refined-primary-candidate": 1,
+    "refined-current-translation": 5
+  },
+  "crossReviewCountsByLocale": {
+    "ar": {
+      "accepted-current": 13,
+      "held-no-direct-caller": 2,
+      "accepted-primary-candidate": 4,
+      "refined-primary-candidate": 1
+    },
+    "de": {
+      "accepted-current": 12,
+      "accepted-primary-candidate": 6,
+      "held-no-direct-caller": 2
+    },
+    "es": {
+      "accepted-current": 13,
+      "held-no-direct-caller": 2,
+      "accepted-primary-candidate": 5
+    },
+    "fr": {
+      "accepted-current": 15,
+      "held-no-direct-caller": 2,
+      "accepted-primary-candidate": 3
+    },
+    "hi": {
+      "accepted-current": 13,
+      "held-no-direct-caller": 2,
+      "accepted-primary-candidate": 4,
+      "refined-current-translation": 1
+    },
+    "id": {
+      "accepted-current": 14,
+      "held-no-direct-caller": 2,
+      "accepted-primary-candidate": 3,
+      "refined-current-translation": 1
+    },
+    "ja": {
+      "accepted-current": 13,
+      "accepted-primary-candidate": 5,
+      "held-no-direct-caller": 2
+    },
+    "ko": {
+      "accepted-current": 13,
+      "held-no-direct-caller": 2,
+      "accepted-primary-candidate": 5
+    },
+    "pt-BR": {
+      "accepted-current": 12,
+      "held-no-direct-caller": 2,
+      "accepted-primary-candidate": 5,
+      "refined-current-translation": 1
+    },
+    "vi": {
+      "accepted-current": 12,
+      "held-no-direct-caller": 2,
+      "accepted-primary-candidate": 6
+    },
+    "zh-Hans": {
+      "accepted-current": 12,
+      "accepted-primary-candidate": 5,
+      "held-no-direct-caller": 2,
+      "refined-current-translation": 1
+    },
+    "zh-Hant": {
+      "accepted-current": 12,
+      "accepted-primary-candidate": 5,
+      "held-no-direct-caller": 2,
+      "refined-current-translation": 1
+    }
+  },
+  "primaryCandidateOutcomes": {
+    "total": 57,
+    "acceptedAsProposed": 56,
+    "refined": 1,
+    "rejected": 0,
+    "held": 0
+  },
+  "missedCurrentIssues": 0,
+  "currentTranslationRefinements": 5,
+  "additionalFindings": [
+    {
+      "sourceIndex": 680,
+      "sourceId": "Clear browser-local discovery shelf review items. This does not affect files or ratings.",
+      "locale": "hi",
+      "findingType": "current-terminology-refinement",
+      "recommendedTargetSha256": "fe9b521ce7b0e2831b44479feb42340242b12ba2470a944f76b34ad12ea89bd6"
+    },
+    {
+      "sourceIndex": 680,
+      "sourceId": "Clear browser-local discovery shelf review items. This does not affect files or ratings.",
+      "locale": "id",
+      "findingType": "current-terminology-refinement",
+      "recommendedTargetSha256": "57003a129684774b864367d7a6a82078933b7df911620700ac0d42a403a6f2d5"
+    },
+    {
+      "sourceIndex": 680,
+      "sourceId": "Clear browser-local discovery shelf review items. This does not affect files or ratings.",
+      "locale": "pt-BR",
+      "findingType": "current-terminology-refinement",
+      "recommendedTargetSha256": "c8c8d32b1b8509bb9f087071fcf085312e4384e4f8d4b2f8561281d285df10d6"
+    },
+    {
+      "sourceIndex": 680,
+      "sourceId": "Clear browser-local discovery shelf review items. This does not affect files or ratings.",
+      "locale": "zh-Hans",
+      "findingType": "current-terminology-refinement",
+      "recommendedTargetSha256": "655bfba09210cbeaabfcd35b67412b246b7891be2e08c02531b7f25acbc21a48"
+    },
+    {
+      "sourceIndex": 680,
+      "sourceId": "Clear browser-local discovery shelf review items. This does not affect files or ratings.",
+      "locale": "zh-Hant",
+      "findingType": "current-terminology-refinement",
+      "recommendedTargetSha256": "7d94b976fc8ba1b87b41237ff9c7514a32f45ec97fa0ada97e2bf3995393a798"
+    }
+  ],
+  "sourceValuesReattested": 20,
+  "currentCellsReattested": 240,
+  "cellMismatches": 0,
+  "callerReferenceRecordsReattested": 29,
+  "uniqueCallerLinesReattested": 29,
+  "uniqueCallerFiles": 15,
+  "targetCatalogsReattested": 12,
+  "placeholderMismatches": 0,
+  "markupMismatches": 0,
+  "protectedLiteralChecks": 24,
+  "protectedLiteralMismatches": 0,
+  "localizedTermMismatches": 0,
+  "nativeSpeakerApproval": false,
+  "browserReview": false,
+  "repositoryModifiedByReviewer": false,
+  "sharedWorktreeObservedDirty": false,
+  "sharedWorktreeHeadAtReview": "6a7f2ae61df6c5ecbc4fa1471949735fa3a956c4",
+  "sharedWorktreeTreeAtReview": "17b851a1d79c4aeac2e19b560f6dc845fcd8c404",
+  "testsBuildsScansCiWorkflowsReleasesTagsMerges": false,
+  "blockers": []
+}

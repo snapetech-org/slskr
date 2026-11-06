@@ -1,0 +1,42 @@
+{
+  "boundary_status": "pass",
+  "new_window": [
+    553,
+    562
+  ],
+  "new_window_noop": {
+    "locale_cell_count": 12,
+    "reason": "No exact localized caller in tracked application source at pinned baseline.",
+    "source_id": "Calendar",
+    "source_index": 562
+  },
+  "previous_hold": {
+    "candidate_sha256": "3dae2b943e6944551ee4eb8cd47a7d613d41f70ffeccb929d911be59eda58c34",
+    "candidate_text": "معلومات إصدار البرنامج غير متاحة",
+    "current_cell": {
+      "catalog_path": "web/src/lib/locales/ui-labels.ar.json",
+      "current_target_sha256": "50c71232ff1587bbd391d9ad64f40a49483c5f67a4e9753ec3d2488fbff495b3",
+      "current_text": "معلومات البناء غير متاحة",
+      "locale": "ar",
+      "placeholders": [],
+      "source_id": "Build information unavailable",
+      "source_index": 532,
+      "source_sha256": "e81214bb50585b9a8f75624fa2f7235f0a93a5a826cf43562be3fdb5b4d62df3"
+    },
+    "locale": "ar",
+    "source_id": "Build information unavailable",
+    "source_index": 532
+  },
+  "previous_noop": {
+    "locale_cell_count": 12,
+    "source_id": "Build result-filter conditions without memorizing the filter syntax.",
+    "source_index": 533
+  },
+  "previous_window": [
+    523,
+    542
+  ],
+  "schema_version": 1,
+  "source_id_overlap": [],
+  "source_index_overlap": []
+}

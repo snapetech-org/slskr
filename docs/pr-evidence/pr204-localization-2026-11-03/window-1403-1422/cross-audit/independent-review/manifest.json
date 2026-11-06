@@ -1,0 +1,37 @@
+{
+  "base": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "candidateFreeChecksumListSha256": "56773cbe0504f7daf871c2c6c8740ecc88ab8e1322bbec530f25318986bd1a2b",
+  "candidateFreeInputRoot": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1403-1422-primary-20261103/candidate-free-input",
+  "candidateFreeManifestSha256": "0ecb7a69e8892b53dfdea64aac207d2e478baa912038f5c4845cba5c5872e068",
+  "cellCount": 240,
+  "changedPriorHolds": 0,
+  "dispositionCounts": {
+    "hold": 1,
+    "retain": 218,
+    "update": 21
+  },
+  "draft": true,
+  "head": "727500e46852a5b6578e571781693857510943d9",
+  "inputHashes": {
+    "PR-attestation.json": "91d918a83044cbc5e319a6db7997179c93073a1147852673a2a0013f6b885dc0",
+    "catalog-file-pins.json": "d779f3b38d8354614e7c420b99e3238440459ed1a409b3254b5c6e2af599e0c7",
+    "current-target-cells.jsonl": "986762a08cdcc30b3468899758d59b05521cab3728a78496e36c1b6bf5b6e594",
+    "prior-hold-reattestation.jsonl": "056b76d8f4d748273b99449813ce4baf046addf0270d33786f2fe0111583f356",
+    "prior-selection-reattestation.jsonl": "c7bc8dff88b89c1b84cf8758de394dcad98e3115b0ffab840ed1a48e1b1de61a",
+    "source-contexts.jsonl": "7d693dede32068871e24fbaddc7147f497fc14d5594eec366f2b98c3d5556e62"
+  },
+  "pr": 204,
+  "primaryMaterialsOpened": false,
+  "priorHoldsReattested": 35,
+  "priorSelectionsReattested": 160,
+  "repo": "snapetech-org/slskR",
+  "reviewPacketSealStatus": "sealed before primary access",
+  "selectedPositions": [
+    1403,
+    1422
+  ],
+  "state": "OPEN",
+  "task": "slskR PR #204 W1403-W1422 independent translation review",
+  "tree": "c71165c20fc6ba7d49d563898ea2ec8e1e448672"
+}

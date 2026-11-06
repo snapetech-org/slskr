@@ -17,6 +17,7 @@ pub(crate) struct ControllerOptionsOverlayState {
     pub(crate) watched_instance_name: Option<String>,
     pub(crate) watched_controller_swagger: Option<bool>,
     pub(crate) watched_dht: Option<config::DhtSettings>,
+    pub(crate) notification_language: Option<String>,
     pub(crate) command_line_environment: BTreeMap<String, String>,
 }
 
@@ -28,6 +29,7 @@ impl ControllerOptionsOverlayState {
         };
         Ok(Self {
             yaml_effective,
+            notification_language: Some(config.integrations.notification_language.clone()),
             watched_download_exclusions: Some(config.download_filter.exclude.clone()),
             watched_obfuscation: Some(ObfuscationReloadState::from_config(config)),
             watched_restart_fingerprint: Some(restart_reload_fingerprint(config)),
@@ -36,12 +38,33 @@ impl ControllerOptionsOverlayState {
     }
 
     pub(crate) fn apply(&mut self, overlay: serde_json::Value) {
+        if let Some(language) = overlay
+            .pointer("/integration/notificationLanguage")
+            .and_then(serde_json::Value::as_str)
+        {
+            self.notification_language = Some(language.to_owned());
+        }
         merge_json_objects(&mut self.effective, &overlay);
         self.current = Some(overlay);
     }
 
     pub(crate) fn apply_yaml(&mut self, value: serde_json::Value) {
         self.watched_yaml_effective = Some(value);
+    }
+}
+
+#[cfg(test)]
+mod notification_language_overlay_state_tests {
+    use super::*;
+
+    #[test]
+    fn applying_a_notification_language_updates_the_current_projection_value() {
+        let mut overlay = ControllerOptionsOverlayState::default();
+        overlay.apply(serde_json::json!({
+            "integration": { "notificationLanguage": "zh-Hant" }
+        }));
+
+        assert_eq!(overlay.notification_language.as_deref(), Some("zh-Hant"));
     }
 }
 

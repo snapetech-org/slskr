@@ -1,7 +1,7 @@
-import LocalizedText, { LocalizedPluralText } from "../Shared/LocalizedText";
+import LocalizedText, { LocalizedErrorOutput, LocalizedPluralText } from "../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import * as collectionsAPI from '../../lib/collections';
-import { toDisplayError } from '../../lib/errors';
+import { toDisplayError, toDisplayErrorOutput } from '../../lib/errors';
 import { readOptionalApiResponse } from '../../lib/optionalApi';
 import ErrorSegment from '../Shared/ErrorSegment';
 import LoaderSegment from '../Shared/LoaderSegment';
@@ -104,10 +104,11 @@ export default class SharedWithMe extends Component {
       }
     } catch (error) {
       if (this.isMountedFlag && requestId === this.requestIds.load) {
+        const errorOutput = toDisplayErrorOutput(error, 'Failed to load shared collections');
         this.setState({
-          error: toDisplayError(error, 'Failed to load shared collections'),
+          error: errorOutput,
           loading: false,
-          sharesLoadError: toDisplayError(error, 'Failed to load shared collections'),
+          sharesLoadError: errorOutput,
         });
       }
     }
@@ -149,7 +150,7 @@ export default class SharedWithMe extends Component {
         requestId === this.requestIds.manifest
       ) {
         this.setState({
-          error: toDisplayError(error, 'Failed to load manifest'),
+          error: toDisplayErrorOutput(error, 'Failed to load manifest'),
           manifestLoading: false,
         });
       }
@@ -190,9 +191,9 @@ export default class SharedWithMe extends Component {
       ) {
         return;
       }
-      const message = toDisplayError(error, 'Failed to start stream');
-      this.setState({ error: message });
-      toast.error(message);
+      const errorOutput = toDisplayErrorOutput(error, 'Failed to start stream');
+      this.setState({ error: errorOutput });
+      toast.error(toDisplayError(error, 'Failed to start stream'));
     }
   };
 
@@ -233,13 +234,13 @@ export default class SharedWithMe extends Component {
       ) {
         return;
       }
-      const errorMessage = toDisplayError(error, 'Failed to start backfill');
+      const errorOutput = toDisplayErrorOutput(error, 'Failed to start backfill');
       this.setState({
         backfilling: false,
         backfillResult: null,
-        error: errorMessage,
+        error: errorOutput,
       });
-      toast.error(errorMessage);
+      toast.error(toDisplayError(error, 'Failed to start backfill'));
     } finally {
       this.backfillInFlight = false;
     }
@@ -276,7 +277,7 @@ export default class SharedWithMe extends Component {
             error
           >
             <Message.Header><LocalizedText source={"Shared collections unavailable"} /></Message.Header>
-            <p>{sharesLoadError}</p>
+            <p><LocalizedErrorOutput output={sharesLoadError} /></p>
           </Message>
         ) : shares.length === 0 ? (
           <Segment placeholder>
@@ -437,7 +438,7 @@ export default class SharedWithMe extends Component {
                 )}
               </div>
             ) : (
-              <ErrorSegment error="Failed to load manifest" />
+              <ErrorSegment caption={<LocalizedText source={"Failed to load manifest"} />} />
             )}
           </Modal.Content>
           <Modal.Actions>

@@ -1,0 +1,22 @@
+{
+  "primaryPacket": "/mnt/disks/scratch/task-scratch/slskr-pr204-W683-702-primary-20261102/packet",
+  "sha256": {
+    "README.md": "4b96e7ec0597fa65ba96c8857b0872b88aa501e3b706fbd141427520688d176b",
+    "caller-context-pins.jsonl": "e88dcada207d052e36e85641b550b1d478c9da67e1a604a0018a6088fbe81f1d",
+    "correction-candidates.jsonl": "df84f41def7801a0d75bf011e3e6207f7318aec1d53e15cc5c6f029019d86d11",
+    "current-cells.jsonl": "a65c02b29ce0176f3ebb87ee775fb435c38475682f6ca84ec11f445900f32ef8",
+    "freeze-manifest.json": "69713333eddc3d326cc28acb3a0c2f57edbe4f9fab77e31ddc95c5c8981c9013",
+    "freeze-manifest.sha256": "6b55c43f308d219957ad425d12c916589efc4a0abd6a85a7788675eef6bb7836",
+    "held-cells.jsonl": "678f2c6f168dd4557a291e3c93e6918e9fd428530358b5d5146c9b7569bdd0bd",
+    "manifest.json": "c4b3e0df91c5fe25c2b5a13d926c4ba5b3057eb62a183843285c8d87eed7b54c",
+    "primary-review-ledger.jsonl": "4cbb969af4427aa496ff6a8955119b60b27ac7c7fbfcee07463920b1eedaff66",
+    "primary-summary.json": "168914bf7ce14bba4a7ef5365aede4be795128dcf51fa42d86e18653141638d9",
+    "primary-verification.json": "dec896542d0c8412202473ef42c62df8d0169720bdce0e21c850814d78d771f6",
+    "prior-evidence-matches.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "review-input.jsonl": "a65c02b29ce0176f3ebb87ee775fb435c38475682f6ca84ec11f445900f32ef8",
+    "source-context.jsonl": "48a7e12c0d1a31c18f177e5d95aa8ddd860d7232cb684996bbe39bfc2bf46661",
+    "source-current-attestation.jsonl": "2f124206c376eefe7ebce93c81042ab902869933ab3a11873e5e3caa49c5b37c",
+    "source-inventory.jsonl": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+    "verification.json": "9cc31673f03b26abdb9a607e6be01cd523a5862a20dae73d4ba1035c17ea9afc"
+  }
+}

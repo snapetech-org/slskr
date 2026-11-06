@@ -1,0 +1,303 @@
+{
+  "schema_version": 1,
+  "batch": "independent-0043-0062-all-12-locales",
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "pr_state": "OPEN",
+  "pr_draft": true,
+  "pr_branch": "codex/slskr-l10n-audit-20261030",
+  "review_head": "271c782fd27e8c5e33bac0014d87cc7100c1b9bf",
+  "review_tree": "29b89f7145b7a14b71dca0c76168e0bd5d0a5b2e",
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_catalog_tree_current_at_pr_head": true,
+  "pr_head_changes_after_source_catalog_head": "documentation/evidence only; no non-doc changes",
+  "direct_catalog": {
+    "source_ids": 5437,
+    "locales": [
+      "ar",
+      "de",
+      "es",
+      "fr",
+      "hi",
+      "id",
+      "ja",
+      "ko",
+      "pt-BR",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "slots": 65244,
+    "populated_cells": 65244,
+    "blank_cells": 0,
+    "structured_plural_cells": 15,
+    "structured_plural_locale_counts": {
+      "ar": 15
+    },
+    "catalog_sha256": {
+      "web/src/lib/locales/ui-labels.ar.json": "85aa499a0ac019fa7b6323e9cc2fbdd5363dd39cb5e328e5baa5c47b84f3c3c6",
+      "web/src/lib/locales/ui-labels.de.json": "27b9ecb1aefbe6a2cae22736d886c03088fe76d2fd3c7845be886db965aad3e6",
+      "web/src/lib/locales/ui-labels.es.json": "fab50f4cac1b305ac7bbebf38f55cd9d6256a95756a66fe940f4404732c8c4c5",
+      "web/src/lib/locales/ui-labels.fr.json": "3e384ba1d4b111ab1f13dc80010ff6e854863bc2f2ed863ab9a72eaf9b1dccec",
+      "web/src/lib/locales/ui-labels.hi.json": "fe80e06cccb908e4f8f7f2295a28d844effe29a247858f2196281949ae92f547",
+      "web/src/lib/locales/ui-labels.id.json": "ca0975bbcc408d4d3c146aba26c4e5480a0233b0cac603cd530ea82bb07681d8",
+      "web/src/lib/locales/ui-labels.ja.json": "0ca95fc5c9f0b4cee791ab71d0283b151136946da5e9383f366d5a16f5a7541e",
+      "web/src/lib/locales/ui-labels.ko.json": "5636a4b1a4bf325d6c03031b8b3ef34db7d04936c8216343e55b2d36fa544bcd",
+      "web/src/lib/locales/ui-labels.pt-BR.json": "4babb54558c6c224304c2c62ea1303cdad90c5f931bb936e92402323a5759ce9",
+      "web/src/lib/locales/ui-labels.vi.json": "91fac84a2ab6ebcfbe6f33cdf0302e0350b676e4cd69be796edc86509e856184",
+      "web/src/lib/locales/ui-labels.zh-Hans.json": "365c4c51e7cee40e79b37607319dd4dbe1345dcee77f085dd6f7fa1ad307881b",
+      "web/src/lib/locales/ui-labels.zh-Hant.json": "2945bee74a8ffc61db44b8a0bac113ba9f20a159657925c7f3dbc7d1647ce89c"
+    }
+  },
+  "source_index_range": [
+    43,
+    62
+  ],
+  "source_index_method": "zero-based Python lexical sort of the 5,437 frozen source-inventory source_id values",
+  "window_accounting": {
+    "source_keys": 20,
+    "cell_slots": 240,
+    "populated_cells": 240,
+    "fresh_cells": 98,
+    "prior_terminal_cells": 142,
+    "fresh_statuses": {
+      "accepted": 93,
+      "correction-needed": 5
+    },
+    "prior_statuses": {
+      "accepted": 138,
+      "correction-needed": 4
+    },
+    "prior_accepted_carries": 138,
+    "prior_correction_needed_exclusions": 4,
+    "prior_held_exclusions": 0,
+    "final_statuses": {
+      "accepted": 231,
+      "correction-needed": 9
+    },
+    "pending_exact_terminal_overlaps": 0,
+    "conflicting_exact_prior_statuses": 0
+  },
+  "per_locale": {
+    "ar": {
+      "fresh": {
+        "accepted": 15,
+        "correction-needed": 2
+      },
+      "prior": {
+        "accepted": 3
+      }
+    },
+    "de": {
+      "fresh": {
+        "accepted": 17
+      },
+      "prior": {
+        "accepted": 3
+      }
+    },
+    "es": {
+      "fresh": {
+        "accepted": 13,
+        "correction-needed": 1
+      },
+      "prior": {
+        "accepted": 3,
+        "correction-needed": 3
+      }
+    },
+    "fr": {
+      "fresh": {
+        "accepted": 16
+      },
+      "prior": {
+        "accepted": 3,
+        "correction-needed": 1
+      }
+    },
+    "hi": {
+      "fresh": {
+        "accepted": 15,
+        "correction-needed": 2
+      },
+      "prior": {
+        "accepted": 3
+      }
+    },
+    "id": {
+      "fresh": {
+        "accepted": 17
+      },
+      "prior": {
+        "accepted": 3
+      }
+    },
+    "ja": {
+      "fresh": {},
+      "prior": {
+        "accepted": 20
+      }
+    },
+    "ko": {
+      "fresh": {},
+      "prior": {
+        "accepted": 20
+      }
+    },
+    "pt-BR": {
+      "fresh": {},
+      "prior": {
+        "accepted": 20
+      }
+    },
+    "vi": {
+      "fresh": {},
+      "prior": {
+        "accepted": 20
+      }
+    },
+    "zh-Hans": {
+      "fresh": {},
+      "prior": {
+        "accepted": 20
+      }
+    },
+    "zh-Hant": {
+      "fresh": {},
+      "prior": {
+        "accepted": 20
+      }
+    }
+  },
+  "selection_rule": "Fresh review only for populated current cells with no exact terminal semantic record matching source ID, locale, source hash, and target hash. Exact accepted cells carry; correction-needed and held cells are excluded.",
+  "prior_overlap_scan": {
+    "scanned_json_evidence_files": 718,
+    "manifest_file": "prior-evidence-scan-manifest.jsonl",
+    "manifest_sha256": "0c33ddbf6f572fb4f7a58711c14cb7fdede4f5b36a6a599184e675c88dcc63a2",
+    "canonical_input_manifest_sha256": "15fed956a301b374b66ba8345486ad8585232f07e87dfd1ee8992b0eb0568df9",
+    "analysis_summary_sha256": "9e54a1b7bca317bb82597b0839ef0d9a55f73e941a4a35052a8cda8ad205182f",
+    "input_root_ids": [
+      "prior-audit-7ff",
+      "pr-review-head"
+    ]
+  },
+  "source_context": {
+    "file": "source-context.txt",
+    "evidence_text_sha256": "3262e45e64ef3367de55297f70ba45c705eebd51a65a7fdb5f10a87165946f63",
+    "runtime_files": [
+      "web/src/components/CompatibilityDashboard.jsx",
+      "web/src/components/Player/PlayerStatsModal.jsx",
+      "web/src/components/Player/VisualizerOverlayControls.jsx",
+      "web/src/components/System/MediaCore/MediaCoreContentHashingPanel.jsx",
+      "web/src/components/System/SwarmAnalytics/index.jsx"
+    ],
+    "sha256": {
+      "web/src/components/CompatibilityDashboard.jsx": "1e85738718ef2de4dc40358f746163cabb6192fca4072a8bf30ba0e133dbd27f",
+      "web/src/components/Player/PlayerStatsModal.jsx": "ea9a17c1e064db7ec5f70c095a9bd0fb4f15476428007bf3472fcd7b2c5a4292",
+      "web/src/components/Player/VisualizerOverlayControls.jsx": "5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4",
+      "web/src/components/System/MediaCore/MediaCoreContentHashingPanel.jsx": "ab7783c0f29868f38cd4d7a94eaafd992bf03948b4ba8be76a8a5045e16ed601",
+      "web/src/components/System/SwarmAnalytics/index.jsx": "b020adc0f11520ad1fe52080fdf1d90fe717c3dea9a3c5379973b31514d88c9d"
+    },
+    "git_blob_ids": {
+      "web/src/components/CompatibilityDashboard.jsx": "831b00821cf5999e39ce586eab76d81bfdbdbb82",
+      "web/src/components/Player/PlayerStatsModal.jsx": "6a26dc806b563672712209ade6cdbba3d998bad3",
+      "web/src/components/Player/VisualizerOverlayControls.jsx": "0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf",
+      "web/src/components/System/MediaCore/MediaCoreContentHashingPanel.jsx": "cbe36436c936b1fcca220da0915288759f5a0aa3",
+      "web/src/components/System/SwarmAnalytics/index.jsx": "6b4db5a84a05d1ffdb560e0e2c8d2708590f3ded"
+    },
+    "reviewed_source_keys": [
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      50,
+      52,
+      53,
+      54,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62
+    ]
+  },
+  "language_references": [
+    {
+      "title": "Arabic Without Walls (University of California, Davis), Grammar Note 7.4: Numbers 3–10",
+      "url": "https://arabicwithoutwalls.ucdavis.edu/chapter7/grammar_note74.html",
+      "supports": "The counted noun after a numeral from 3 through 10 is plural."
+    },
+    {
+      "title": "Al Jazeera Learning Arabic, أحكام العدد والمعدود",
+      "url": "https://learning.aljazeera.net/ar/node/19761",
+      "supports": "The counted noun after numbers 3–10 is plural and genitive."
+    },
+    {
+      "title": "Larousse English–French dictionary, beat",
+      "url": "https://www.larousse.fr/dictionnaires/anglais-francais/beat/564977",
+      "supports": "For music/time, beat translates as temps; this supports French “4 temps” in the bass-beat selector."
+    }
+  ],
+  "correction_candidates": [
+    {
+      "source_index": 45,
+      "locale": "hi",
+      "current": "24 घंटों",
+      "proposal": "24 घंटे",
+      "issue_type": "standalone_label_grammar"
+    },
+    {
+      "source_index": 46,
+      "locale": "hi",
+      "current": "255, 128, 64, ... (आरजीबीए पिक्सेल डेटा)",
+      "proposal": "255, 128, 64, ... (RGBA पिक्सेल डेटा)",
+      "issue_type": "protected_technical_literal"
+    },
+    {
+      "source_index": 54,
+      "locale": "ar",
+      "current": "4 نبضة",
+      "proposal": "4 نبضات",
+      "issue_type": "arabic_counted_noun_number_agreement"
+    },
+    {
+      "source_index": 59,
+      "locale": "es",
+      "current": "7 dias",
+      "proposal": "7 días",
+      "issue_type": "spanish_orthography"
+    },
+    {
+      "source_index": 62,
+      "locale": "ar",
+      "current": "8 نبضة",
+      "proposal": "8 نبضات",
+      "issue_type": "arabic_counted_noun_number_agreement"
+    }
+  ],
+  "placeholder_and_literal_checks": {
+    "fresh_cells_checked": 98,
+    "placeholder_sets_preserved": true,
+    "icu_messages": 0,
+    "protected_literals_preserved_or_flagged": true,
+    "flagged_current_literal": [
+      {
+        "source_index": 46,
+        "locale": "hi",
+        "literal": "RGBA",
+        "current": "आरजीबीए",
+        "proposed": "RGBA"
+      }
+    ]
+  },
+  "native_speaker_approval": false,
+  "catalog_or_source_changes_made": false,
+  "correction_suggestions_applied": false,
+  "tests_builds_ci_or_release_actions_run": false,
+  "browser_recapture_required": false
+}

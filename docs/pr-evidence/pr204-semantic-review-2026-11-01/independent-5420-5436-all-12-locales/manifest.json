@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "batch": "independent-5420-5436-all-12-locales",
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "pr_state": "OPEN",
+  "pr_draft": true,
+  "pr_branch": "codex/slskr-l10n-audit-20261030",
+  "review_head": "2e5ed6c18fcc2ce513c42cb5ff657cc14678f04c",
+  "review_tree": "00fbb9f3f3ed8397ddedf04d89be7b01d0f66866",
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_catalog_tree_current_at_pr_head": true,
+  "pr_head_changes_after_source_catalog_head": "documentation/evidence only; no non-doc differences",
+  "direct_catalog": {
+    "source_ids": 5437,
+    "locales": [
+      "ar",
+      "de",
+      "es",
+      "fr",
+      "hi",
+      "id",
+      "ja",
+      "ko",
+      "pt-BR",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "slots": 65244,
+    "populated_cells": 65244,
+    "blank_cells": 0,
+    "structured_plural_cells": 15,
+    "structured_plural_locale_counts": {
+      "ar": 15
+    },
+    "catalog_sha256": {
+      "web/src/lib/locales/ui-labels.ar.json": "85aa499a0ac019fa7b6323e9cc2fbdd5363dd39cb5e328e5baa5c47b84f3c3c6",
+      "web/src/lib/locales/ui-labels.de.json": "27b9ecb1aefbe6a2cae22736d886c03088fe76d2fd3c7845be886db965aad3e6",
+      "web/src/lib/locales/ui-labels.es.json": "fab50f4cac1b305ac7bbebf38f55cd9d6256a95756a66fe940f4404732c8c4c5",
+      "web/src/lib/locales/ui-labels.fr.json": "3e384ba1d4b111ab1f13dc80010ff6e854863bc2f2ed863ab9a72eaf9b1dccec",
+      "web/src/lib/locales/ui-labels.hi.json": "fe80e06cccb908e4f8f7f2295a28d844effe29a247858f2196281949ae92f547",
+      "web/src/lib/locales/ui-labels.id.json": "ca0975bbcc408d4d3c146aba26c4e5480a0233b0cac603cd530ea82bb07681d8",
+      "web/src/lib/locales/ui-labels.ja.json": "0ca95fc5c9f0b4cee791ab71d0283b151136946da5e9383f366d5a16f5a7541e",
+      "web/src/lib/locales/ui-labels.ko.json": "5636a4b1a4bf325d6c03031b8b3ef34db7d04936c8216343e55b2d36fa544bcd",
+      "web/src/lib/locales/ui-labels.pt-BR.json": "4babb54558c6c224304c2c62ea1303cdad90c5f931bb936e92402323a5759ce9",
+      "web/src/lib/locales/ui-labels.vi.json": "91fac84a2ab6ebcfbe6f33cdf0302e0350b676e4cd69be796edc86509e856184",
+      "web/src/lib/locales/ui-labels.zh-Hans.json": "365c4c51e7cee40e79b37607319dd4dbe1345dcee77f085dd6f7fa1ad307881b",
+      "web/src/lib/locales/ui-labels.zh-Hant.json": "2945bee74a8ffc61db44b8a0bac113ba9f20a159657925c7f3dbc7d1647ce89c"
+    }
+  },
+  "source_index_range": [
+    5420,
+    5436
+  ],
+  "source_index_method": "zero-based Python lexical sort of the 5,437 frozen source-inventory source_id values",
+  "window_accounting": {
+    "source_keys": 17,
+    "cell_slots": 204,
+    "populated_cells": 204,
+    "fresh_cells": 6,
+    "prior_terminal_cells": 198,
+    "fresh_statuses": {
+      "accepted": 6
+    },
+    "prior_statuses": {
+      "accepted": 169,
+      "correction-needed": 28,
+      "held": 1
+    },
+    "prior_accepted_carries": 169,
+    "prior_correction_needed_exclusions": 28,
+    "prior_held_exclusions": 1,
+    "final_statuses": {
+      "accepted": 175,
+      "correction-needed": 28,
+      "held": 1
+    },
+    "pending_exact_terminal_overlaps": 0,
+    "conflicting_exact_prior_statuses": 0
+  },
+  "per_locale": {
+    "ar": {
+      "fresh": {
+        "accepted": 1
+      },
+      "prior": {
+        "accepted": 14,
+        "correction-needed": 2
+      }
+    },
+    "de": {
+      "fresh": {
+        "accepted": 1
+      },
+      "prior": {
+        "accepted": 15,
+        "correction-needed": 1
+      }
+    },
+    "es": {
+      "fresh": {
+        "accepted": 1
+      },
+      "prior": {
+        "accepted": 16
+      }
+    },
+    "fr": {
+      "fresh": {
+        "accepted": 1
+      },
+      "prior": {
+        "accepted": 15,
+        "correction-needed": 1
+      }
+    },
+    "hi": {
+      "fresh": {
+        "accepted": 1
+      },
+      "prior": {
+        "accepted": 14,
+        "correction-needed": 2
+      }
+    },
+    "id": {
+      "fresh": {
+        "accepted": 1
+      },
+      "prior": {
+        "accepted": 14,
+        "correction-needed": 1,
+        "held": 1
+      }
+    },
+    "ja": {
+      "fresh": {},
+      "prior": {
+        "accepted": 10,
+        "correction-needed": 7
+      }
+    },
+    "ko": {
+      "fresh": {},
+      "prior": {
+        "accepted": 13,
+        "correction-needed": 4
+      }
+    },
+    "pt-BR": {
+      "fresh": {},
+      "prior": {
+        "accepted": 15,
+        "correction-needed": 2
+      }
+    },
+    "vi": {
+      "fresh": {},
+      "prior": {
+        "accepted": 13,
+        "correction-needed": 4
+      }
+    },
+    "zh-Hans": {
+      "fresh": {},
+      "prior": {
+        "accepted": 15,
+        "correction-needed": 2
+      }
+    },
+    "zh-Hant": {
+      "fresh": {},
+      "prior": {
+        "accepted": 15,
+        "correction-needed": 2
+      }
+    }
+  },
+  "selection_rule": "Fresh review only for populated current cells with no terminal exact prior source/locale/source-hash/target-hash decision. Prior exact accepted cells carry; exact correction-needed and held cells are excluded.",
+  "prior_overlap_scan": {
+    "scanned_jsonl_files": 632,
+    "manifest_file": "prior-evidence-scan-manifest.jsonl",
+    "manifest_sha256": "47d249c6acdbd602a701d7a01ed60dda986f50f28d1e080751e5364f13484415",
+    "canonical_input_manifest_sha256": "623fbdb8aca91a05687c5564c85e88f823f62c8db1ac329d64eff21fd51c2c28",
+    "analysis_manifest_order_sha256": "623fbdb8aca91a05687c5564c85e88f823f62c8db1ac329d64eff21fd51c2c28",
+    "analysis_summary_sha256": "499b2f30f88b3640c46ba0fd5a810c012303a5fd771e3c7ea63984df225e2bad",
+    "input_root_ids": [
+      "prior-audit-7ff",
+      "pr-e05-worktree"
+    ]
+  },
+  "source_context": {
+    "file": "source-context.txt",
+    "evidence_text_sha256": "498a7b44d2dd4da6b525a4b358556ce702272e8c8f434f2c33ad51b52fc0b1ef",
+    "runtime_files": [
+      "web/src/components/Search/Detail/SearchResultControls.jsx",
+      "web/src/components/Search/Detail/SearchDetail.jsx"
+    ],
+    "sha256": {
+      "web/src/components/Search/Detail/SearchResultControls.jsx": "1f2880630f893cfc8361fb40a4ad4e9e07d01da96202b7ac36054c860124da46",
+      "web/src/components/Search/Detail/SearchDetail.jsx": "7bc9e9f25a2cc9e78f0e4d0bf67a2837315e7763c953d38553a6707c36bb16b8"
+    },
+    "git_blob_ids": {
+      "web/src/components/Search/Detail/SearchResultControls.jsx": "f6ec8606ad6420be75d2cde695815e31b86bd448",
+      "web/src/components/Search/Detail/SearchDetail.jsx": "86b09d942fc98d6269004ae960e227732a79484f"
+    },
+    "summary": "SearchResultControls maps the default smart sort option to a localized label; SearchDetail sorts by smartScore descending.",
+    "placeholders": [],
+    "icu_messages": 0,
+    "protected_literals": [
+      "⭐"
+    ],
+    "protected_literals_preserved": true
+  },
+  "native_speaker_approval": false,
+  "catalog_or_source_changes_made": false,
+  "correction_suggestions_applied": false,
+  "tests_builds_ci_or_release_actions_run": false,
+  "browser_recapture_required": false
+}

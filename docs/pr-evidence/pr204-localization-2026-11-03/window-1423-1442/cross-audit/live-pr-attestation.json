@@ -1,0 +1,52 @@
+{
+  "observedBefore": {
+    "observedAtUtc": "2026-11-03T19:36:03.811416+00:00",
+    "pr": {
+      "number": 204,
+      "state": "OPEN",
+      "isDraft": true,
+      "headRefName": "codex/slskr-l10n-audit-20261030",
+      "headRefOid": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+      "baseRefName": "main",
+      "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+      "url": "https://github.com/snapetech-org/slskr/pull/204"
+    },
+    "refs": {
+      "refs/heads/codex/slskr-l10n-audit-20261030": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+      "refs/pull/204/head": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+      "refs/heads/main": "32c8c40666d93690b8b1847001fd66001a4eaf99"
+    },
+    "commitTreeApi": {
+      "commit": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+      "tree": "09adcb271a2eb92770df4a20098dccc3fde2a59f"
+    },
+    "baseRefDivergence": "GitHub PR API baseRefOid remains 2a2b188f10b9460a15bc6d5c34e406b0193d51ba while live refs/heads/main is 32c8c40666d93690b8b1847001fd66001a4eaf99; the requested head branch and pull refs both match the pinned head."
+  },
+  "observedAfter": {
+    "observedAtUtc": "2026-11-03T19:42:42.654393+00:00",
+    "pr": {
+      "number": 204,
+      "state": "OPEN",
+      "isDraft": true,
+      "headRefName": "codex/slskr-l10n-audit-20261030",
+      "headRefOid": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+      "baseRefName": "main",
+      "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+      "url": "https://github.com/snapetech-org/slskr/pull/204"
+    },
+    "refs": {
+      "refs/heads/codex/slskr-l10n-audit-20261030": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+      "refs/heads/main": "32c8c40666d93690b8b1847001fd66001a4eaf99",
+      "refs/pull/204/head": "7ca8589266ab4c5a925782a8726d7e57b4ed7427"
+    },
+    "commitTreeApi": {
+      "commit": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+      "tree": "09adcb271a2eb92770df4a20098dccc3fde2a59f"
+    }
+  },
+  "pinnedHead": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+  "pinnedTree": "09adcb271a2eb92770df4a20098dccc3fde2a59f",
+  "baseRefDivergenceRecorded": true,
+  "headAndPullStateUnchanged": true,
+  "baseRefDivergence": "GitHub PR API baseRefOid remains 2a2b188f10b9460a15bc6d5c34e406b0193d51ba while live refs/heads/main is 32c8c40666d93690b8b1847001fd66001a4eaf99; the requested head branch and pull refs both match the pinned head."
+}

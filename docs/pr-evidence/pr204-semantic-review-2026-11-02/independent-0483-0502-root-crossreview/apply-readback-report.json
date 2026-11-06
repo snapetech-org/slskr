@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "window": "W483–502",
+  "inputHead": "0a1c497c67637eb2c129cde23299efe4d9f79651",
+  "inputTree": "3e100c36e1c51c09e509cb3009ef6d20d22d3a18",
+  "sourceInventoryRows": 5437,
+  "sourceInventoryHashMismatches": 0,
+  "currentCellsReattested": 240,
+  "currentCellMismatches": 0,
+  "callerPinsReattested": 25,
+  "callerPinMismatches": 0,
+  "primaryProposals": 115,
+  "proposalsAcceptedAsWritten": 112,
+  "proposalsRefined": 3,
+  "missedCorrectionsAdded": 4,
+  "acceptedCurrentCells": 121,
+  "held": 0,
+  "noOpPrimaryProposals": 0,
+  "placeholderFailures": 0,
+  "protectedLiteralFailures": 0,
+  "nativeSpeakerReviewPerformed": false,
+  "appliedExactHashEdits": 119,
+  "changedCatalogs": 12,
+  "catalogs": {
+    "web/src/lib/locales/ui-labels.ar.json": {
+      "appliedCells": 9,
+      "keyCount": 5437,
+      "fileSha256": "2291f0d1fb8982d5ebe8cc59b276b6e8237f9441577aab44a9400e29d7f45382"
+    },
+    "web/src/lib/locales/ui-labels.de.json": {
+      "appliedCells": 8,
+      "keyCount": 5437,
+      "fileSha256": "2698ec20949a96e617bf10c4ad7752960e942d6b8a1b8e98f5637f7b392fc542"
+    },
+    "web/src/lib/locales/ui-labels.es.json": {
+      "appliedCells": 12,
+      "keyCount": 5437,
+      "fileSha256": "7e5b6402622bbe43846c77d29d30a0cd8a7ad9b9db540e364631d8418a90140b"
+    },
+    "web/src/lib/locales/ui-labels.fr.json": {
+      "appliedCells": 8,
+      "keyCount": 5437,
+      "fileSha256": "641ebb4479f8bc070324e5f8855b9d740b15b2546337d888f0d55393ac4040bf"
+    },
+    "web/src/lib/locales/ui-labels.hi.json": {
+      "appliedCells": 9,
+      "keyCount": 5437,
+      "fileSha256": "e6b32887cc1812b51b6e0c37d57899a0342a6427b9403fef8ad95daf1deac68f"
+    },
+    "web/src/lib/locales/ui-labels.id.json": {
+      "appliedCells": 11,
+      "keyCount": 5437,
+      "fileSha256": "cd5cd3063e01fc299f9cd5ec1ffd4539b72bc610dbb33eca5ada911e95d2086c"
+    },
+    "web/src/lib/locales/ui-labels.ja.json": {
+      "appliedCells": 9,
+      "keyCount": 5437,
+      "fileSha256": "f1a614205a69a4c775af8d16a9b835a1690fba5bfee5d94cdfa6b65419f1e8aa"
+    },
+    "web/src/lib/locales/ui-labels.ko.json": {
+      "appliedCells": 12,
+      "keyCount": 5437,
+      "fileSha256": "44d7253fdf8b30b313761b28855ba7d4ebdbb9087976b854b754f6860df350d0"
+    },
+    "web/src/lib/locales/ui-labels.pt-BR.json": {
+      "appliedCells": 11,
+      "keyCount": 5437,
+      "fileSha256": "f424ca49b1583a4344ffe5054e7404c74265fa03c7422001a521deb1e12ef952"
+    },
+    "web/src/lib/locales/ui-labels.vi.json": {
+      "appliedCells": 10,
+      "keyCount": 5437,
+      "fileSha256": "04630d511b753e9fcb6b19491dd0b24dba6c7d2a30580ba0eef41fb24d44348b"
+    },
+    "web/src/lib/locales/ui-labels.zh-Hans.json": {
+      "appliedCells": 10,
+      "keyCount": 5437,
+      "fileSha256": "a9e9493fb4aed6dd35298d8eceb074b088d470bbcc481de843570de7ef2f9cbf"
+    },
+    "web/src/lib/locales/ui-labels.zh-Hant.json": {
+      "appliedCells": 10,
+      "keyCount": 5437,
+      "fileSha256": "ac43225419cd21b8380a101bfef6e26256336091e75074ef80e79de8af03480e"
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "boundaryRows": 24,
+  "boundarySourceIndices": [
+    821,
+    842
+  ],
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "browserReview": false,
+  "callerFiles": 31,
+  "callerPinsSupplied": 51,
+  "catalogKeyCount": 5441,
+  "catalogsReattested": 12,
+  "cellCount": 240,
+  "counts": {
+    "accept-current": 184,
+    "hold": 0,
+    "propose-correction": 51,
+    "propose-refinement": 5
+  },
+  "currentProtectedMismatchCells": 0,
+  "finalProtectedMismatchCells": 0,
+  "head": "074dfc70d584707a215e87cb1fd1969198f76b2e",
+  "holdCount": 0,
+  "livePullRequest": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "074dfc70d584707a215e87cb1fd1969198f76b2e",
+    "isDraft": true,
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "markupMismatchCells": 0,
+  "nativeSpeakerApproval": false,
+  "perLocale": {
+    "ar": {
+      "accept-current": 11,
+      "propose-correction": 8,
+      "propose-refinement": 1
+    },
+    "de": {
+      "accept-current": 19,
+      "propose-correction": 1
+    },
+    "es": {
+      "accept-current": 17,
+      "propose-correction": 3
+    },
+    "fr": {
+      "accept-current": 16,
+      "propose-correction": 3,
+      "propose-refinement": 1
+    },
+    "hi": {
+      "accept-current": 13,
+      "propose-correction": 6,
+      "propose-refinement": 1
+    },
+    "id": {
+      "accept-current": 17,
+      "propose-correction": 2,
+      "propose-refinement": 1
+    },
+    "ja": {
+      "accept-current": 9,
+      "propose-correction": 11
+    },
+    "ko": {
+      "accept-current": 13,
+      "propose-correction": 7
+    },
+    "pt-BR": {
+      "accept-current": 19,
+      "propose-correction": 1
+    },
+    "vi": {
+      "accept-current": 16,
+      "propose-correction": 3,
+      "propose-refinement": 1
+    },
+    "zh-Hans": {
+      "accept-current": 17,
+      "propose-correction": 3
+    },
+    "zh-Hant": {
+      "accept-current": 17,
+      "propose-correction": 3
+    }
+  },
+  "placeholderMismatchCells": 0,
+  "proposalCount": 56,
+  "pullRequest": 204,
+  "remoteBranchHead": "074dfc70d584707a215e87cb1fd1969198f76b2e",
+  "repository": "snapetech-org/slskR",
+  "repositoryModified": false,
+  "schemaVersion": 1,
+  "sourceCount": 20,
+  "sourceIds": [
+    "Confirm Restart",
+    "Confirm Shutdown",
+    "Confirmation gates required",
+    "Confirmed file actions",
+    "Conflict",
+    "Conflict Analysis",
+    "Conflict Resolution Strategy",
+    "Conflicting:",
+    "Conflicts",
+    "Conflicts Resolved:",
+    "Connect",
+    "Connect to Soulseek to search",
+    "Connect to server to perform a search",
+    "Connect to the Soulseek network (if not already connected)",
+    "Connect to the server to load privacy-filtered recommendations.",
+    "Connect to the server to map artist coverage.",
+    "Connect to the server to review artist radar subscriptions.",
+    "Connect to the server to use native Soulseek interests and recommendations.",
+    "Connect to the server to view album targets and track progress.",
+    "Connected"
+  ],
+  "sourceNotes": [
+    "Confirmation gates are policy safeguards; literal door/gate translations are misleading. Consider simplifying the English key to “Confirmation required.”",
+    "The conflicts are record/metadata conflicts, not personal or armed conflicts.",
+    "Artist coverage occurs in Discography Concierge and refers to discography coverage; avoid news/broadcast senses.",
+    "“Native Soulseek” is technical/product wording; the Chinese 本机 targets mean local machine and are inaccurate."
+  ],
+  "sourceWindowSha256": "e2338ea31e171c9a414d854adcb15268305336fd5e01c077eb325729ebef7492",
+  "testsBuildsCiRun": false,
+  "tree": "9914a55bdfb938408a4bf1f98bb5ed98c24b78a8",
+  "window": "W823-W842",
+  "worktree": {
+    "branch": "codex/slskr-l10n-audit-20261030",
+    "head": "074dfc70d584707a215e87cb1fd1969198f76b2e",
+    "status": "",
+    "tree": "9914a55bdfb938408a4bf1f98bb5ed98c24b78a8"
+  },
+  "zeroBasedSourceIndexInclusive": [
+    822,
+    841
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "applyPlanRows": 64,
+  "blindnessCaveat": "Cross-review blindness was compromised in process: after checksum verification its reviewer opened the primary README and saw aggregate disposition counts and same-window summary claims. It did not read the per-cell primary ledger/proposals before sealing. Treat the independent ledger as process-limited; this caveat is retained here.",
+  "exactHead": "09a614a66f1104fe530773fb17c79ed6338aed02",
+  "exactTree": "963f283311ae39dfa5fc289386d99dcc0dac2f90",
+  "nativeSpeakerApproval": false,
+  "noRepositoryCatalogPRWorkflowEdits": true,
+  "outputFiles": [
+    "root-decisions.jsonl",
+    "exact-hash-apply-plan.jsonl",
+    "adjudication-differences.jsonl",
+    "source-evidence.jsonl",
+    "catalog-term-anchors.json",
+    "exact-head-reattestation.json",
+    "summary.json",
+    "README.md"
+  ],
+  "pullRequest": 204,
+  "report": "Root adjudication of slskR PR #204 W983–W1002",
+  "repository": "snapetech-org/slskr",
+  "rootDispositions": {
+    "accept-current": 152,
+    "correction": 47,
+    "hold": 24,
+    "refinement": 17
+  },
+  "sealedBlindLedgerSha256": "9c4b196efb93ac708f2bc2d346dce5fa504ca073844cec95ea4df6807c83d362",
+  "verifiedInputHashes": {
+    "cross/BLIND-SHA256SUMS.txt": "1311870bd1664a5bf169fdab4f476ab6d7068e9eadedefe96eaf39f7927d18c3",
+    "cross/POST-COMPARE-SHA256SUMS.txt": "d60571c1c5522ce544dcecc97b4e33bc633830bd855c52447408ed0d70d64bd8",
+    "cross/blind-ledger-seal.json": "2655271feb2facf01cfc6a4d30052b2c97a66de63ff39dc99de7047dad65c9eb",
+    "cross/blind-ledger.jsonl": "9c4b196efb93ac708f2bc2d346dce5fa504ca073844cec95ea4df6807c83d362",
+    "cross/blind-manifest.json": "368b3c07d64b58ad84b0263bd452c387e6bce3a472f9754e551a43a48fdba79f",
+    "cross/blind-review-method.md": "ed7eeb1847670b4a561f465619ce133bdf117fcf84fe800dbe596d7dd460eff9",
+    "cross/blind-structural-audit.json": "ab7c17c0a02cf0d124d440e1fcf22e2504e588bdba1f02363b6beb2b3fb2b609",
+    "cross/comparison-notes.md": "66068c15006ec3dab44b35cdf6267a4e337a37bf4635ec9f3ac5e7c23a347f5c",
+    "cross/evidence/catalog-pins.jsonl": "62b9e316b196c1777aa333c44cda1927d9984a3ba45449ac5f06eb5d9bb617af",
+    "cross/evidence/exact-head-git-commit.json": "27fb691bc2ebdaffcfa6e9ed7d0df38ed04a94f5436ca0333e179420278e78da",
+    "cross/evidence/live-pr-reattestation.json": "09c420f2f07afc92e4e71f060395747f303d042f1fa37e0ed925e20f009f7985",
+    "cross/evidence/selection-evidence.json": "a39811f908bbde83454781c31a7223fa26fa27f985995795ea1a9d25e4f1a1fa",
+    "cross/evidence/source-current-attestation.json": "825999d33d65be677716dabdbdd8a1c4d06e45b063037b58bfe01324441ea12d",
+    "cross/evidence/source-only-input.jsonl": "32e6b0689a63c688915a7236beeaed3973714d8cfbb6028c552ca47fdd6eff7c",
+    "cross/proposal-comparison-summary.json": "d470d5528681a10488fdf5c5c508bcc988dbbf2e98883ce829b163241226f076",
+    "cross/proposal-comparison.jsonl": "688a94687d902ad5c0df26d3a6491bed28d1d8a6be0a35072a128b1ae7ecf1ef",
+    "primary/INPUT-SHA256SUMS": "06a9ce0a9ceccc7f2a54be669e4e498303ff339e8e111eec9590374113f9247e",
+    "primary/SHA256SUMS": "8e3198d1ea0b5bae0eb5a92a5fe8d337eaad4c605f8a3dbfae5081a39deb663a",
+    "primary/catalog-pins.jsonl": "62b9e316b196c1777aa333c44cda1927d9984a3ba45449ac5f06eb5d9bb617af",
+    "primary/input-attestation.json": "1dfe5c598cd4e4b0f83c77fa8cfbb234eb2b20829570ebc7218a6bd2f738d985",
+    "primary/primary-review-ledger.jsonl": "28b2a31cd39a3216836b7a2fe7ac3781daefd3e89d60613596aa34a20ef96088",
+    "primary/selection-evidence.json": "a39811f908bbde83454781c31a7223fa26fa27f985995795ea1a9d25e4f1a1fa",
+    "primary/source-only-input.jsonl": "32e6b0689a63c688915a7236beeaed3973714d8cfbb6028c552ca47fdd6eff7c",
+    "primary/summary.json": "53aba75876556cdf329b9b759c0872cb6b868a6a8a35895c1fbdbe89063dc3b3"
+  },
+  "window": {
+    "cellCount": 240,
+    "firstPosition": 983,
+    "lastPosition": 1002,
+    "localeCount": 12,
+    "sourceCount": 20
+  }
+}

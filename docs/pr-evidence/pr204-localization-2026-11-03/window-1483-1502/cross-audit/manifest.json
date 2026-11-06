@@ -1,0 +1,46 @@
+{
+  "artifact": "slskR PR #204 W1483-W1502 cross review",
+  "head": "a8c2b4cf5f771f8b574001239aa9217697097d6f",
+  "tree": "35f48ee94ec7bcaa3b8b47869f2dd119e219ccfd",
+  "positions": [
+    1483,
+    1502
+  ],
+  "cellCount": 240,
+  "inputPins": {
+    "candidateFreeManifestSha256": "662b3139b833e785360fb850a52fa2abad5340ee1540f2b0cff9a11b8384a809",
+    "primaryLedgerSha256": "8db61ebbbd688b845a6967fcb14054ddb5b0e9746557adb38d292a84061cbcf7",
+    "cleanBlindLedgerSha256": "c57f35e1d5ffd94ab9af8eb299dcf47cb4046a2f4931f30c6d11c7111b5f3c46"
+  },
+  "summarySha256": "75d498dde6d976ab4210ed7b84d7bd04ee7c8ebf3d61e70cecfa2f12fbae5fe4",
+  "files": {
+    "PR-attestation-after.json": {
+      "sha256": "545a06b44b8d2c590a68f67a35c4724b6b6857535ee5832bd444c23c62b57842",
+      "byteCount": 1065
+    },
+    "PR-attestation-before.json": {
+      "sha256": "cabe93f701e0b33ee9ebef22275f752dcdf9000b8790cf3fa226517692cf3d0e",
+      "byteCount": 1065
+    },
+    "README.md": {
+      "sha256": "43b3074b54d0f8c83632c1e551f6a8619eb5e483d67844439946553efb45ee8a",
+      "byteCount": 901
+    },
+    "cross-ledger.jsonl": {
+      "sha256": "577ade3cfa7f8ae6768da0585622fe86c9781cd67166b56a9b0a554f698531ee",
+      "byteCount": 373792
+    },
+    "cross-summary.json": {
+      "sha256": "75d498dde6d976ab4210ed7b84d7bd04ee7c8ebf3d61e70cecfa2f12fbae5fe4",
+      "byteCount": 1655
+    },
+    "prior-continuity-hash-summary.json": {
+      "sha256": "8437f2ce0590d91dfd745858ac24d2584501ecee8d230c307cc7227e7348a230",
+      "byteCount": 1805
+    },
+    "verify-cross-audit.py": {
+      "sha256": "634669aaae4aa4557ff7e36170ae71d3f0804a00cc7907fccf2da9d53816a25c",
+      "byteCount": 7080
+    }
+  }
+}

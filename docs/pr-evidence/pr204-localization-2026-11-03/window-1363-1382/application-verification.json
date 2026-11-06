@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "reviewedBaseHead": "281c39ec0cdb3677d7d523b7c4f0cd0d52bbf14c",
+  "reviewedBaseTree": "777b234b1aa3cb7a2c9fd560b2c0fecc4e7fe49d",
+  "applicationCommit": "41ab6e0a24ae2aacd99dea47d2aa49ef495e4087",
+  "applicationTree": "110e74bfc1716bb940e1e961f392f1b2933e6403",
+  "livePullRequestHead": "41ab6e0a24ae2aacd99dea47d2aa49ef495e4087",
+  "catalogs": {
+    "web/src/lib/locales/ui-labels.ar.json": "7ab99366e257888a66d177190be5b97412095bd9698f785f8f601347fbcf4fa3",
+    "web/src/lib/locales/ui-labels.de.json": "ce8d6cbfefcf91e913389787bd23bb48ae203b7f2a446f202632502288fe7ddc",
+    "web/src/lib/locales/ui-labels.es.json": "b28a3767f7c2b18b37c0c9cdf03f79c8471d3d2d4f0c8b69ed7adeff8ac3c683",
+    "web/src/lib/locales/ui-labels.fr.json": "914007890c720a957c7d7dcdb6df9897af5b6cc73eeef617283d5ee7f81bce09",
+    "web/src/lib/locales/ui-labels.hi.json": "e3d1a0043259c883e203d78165399218d4b92bd9f3d61ff9ab9f82d566af55d1",
+    "web/src/lib/locales/ui-labels.id.json": "f5750144e98f5eec7cabeb0ad618e3afc59ccdc414540bb568a00d153e0a1f97",
+    "web/src/lib/locales/ui-labels.ja.json": "c2741488db827dd5fce35f1889ac6aa7a481611dae1a6fb2b593f86d6a4e9bef",
+    "web/src/lib/locales/ui-labels.ko.json": "3ac8fdcbaf62efd639f1a680b5e674accf204f25329d950104856bb2e8641d94",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "bf8d361382db1874787ff4246b0eec912240f4ba3cd47babbcc97e906fdebf47",
+    "web/src/lib/locales/ui-labels.vi.json": "08b5f18853ce1914a876f3fe36412539b96073a605381661d2fda26c10858b89",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "8ab9c141474ea5a72fe5b08977b6fcc47598ba4ff61259e9fd266d5508b15524",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "0c9d171ea4b7e2908a327a8f8565bcbf2ea45532665bfb9893b868b62941063b"
+  }
+}

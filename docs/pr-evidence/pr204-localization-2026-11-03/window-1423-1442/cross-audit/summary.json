@@ -1,0 +1,165 @@
+{
+  "artifact": "slskR PR #204 W1423-W1442 independent third-party cross-audit",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "pinnedHead": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+  "pinnedTree": "09adcb271a2eb92770df4a20098dccc3fde2a59f",
+  "window": "W1423-W1442",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "decisionCounts": {
+    "accept-current": 201,
+    "correction": 38,
+    "refinement": 1,
+    "hold": 0
+  },
+  "decisionCountsByLocale": {
+    "es": {
+      "accept-current": 17,
+      "correction": 3,
+      "refinement": 0,
+      "hold": 0
+    },
+    "zh-Hans": {
+      "accept-current": 17,
+      "correction": 3,
+      "refinement": 0,
+      "hold": 0
+    },
+    "hi": {
+      "accept-current": 14,
+      "correction": 5,
+      "refinement": 1,
+      "hold": 0
+    },
+    "de": {
+      "accept-current": 20,
+      "correction": 0,
+      "refinement": 0,
+      "hold": 0
+    },
+    "ja": {
+      "accept-current": 18,
+      "correction": 2,
+      "refinement": 0,
+      "hold": 0
+    },
+    "fr": {
+      "accept-current": 18,
+      "correction": 2,
+      "refinement": 0,
+      "hold": 0
+    },
+    "pt-BR": {
+      "accept-current": 16,
+      "correction": 4,
+      "refinement": 0,
+      "hold": 0
+    },
+    "ar": {
+      "accept-current": 11,
+      "correction": 9,
+      "refinement": 0,
+      "hold": 0
+    },
+    "ko": {
+      "accept-current": 19,
+      "correction": 1,
+      "refinement": 0,
+      "hold": 0
+    },
+    "zh-Hant": {
+      "accept-current": 17,
+      "correction": 3,
+      "refinement": 0,
+      "hold": 0
+    },
+    "vi": {
+      "accept-current": 17,
+      "correction": 3,
+      "refinement": 0,
+      "hold": 0
+    },
+    "id": {
+      "accept-current": 17,
+      "correction": 3,
+      "refinement": 0,
+      "hold": 0
+    }
+  },
+  "primaryBlindReconciliationCounts": {
+    "both-propose-different-targets": 16,
+    "both-accept": 202,
+    "blind-only-proposal": 10,
+    "primary-only-proposal": 3,
+    "both-propose-same-target": 9
+  },
+  "selectedTargetSourceCounts": {
+    "primary": 6,
+    "current": 201,
+    "blind": 16,
+    "primary+blind": 9,
+    "cross-audit": 8
+  },
+  "reviewComparison": {
+    "primaryCounts": {
+      "correction": 24,
+      "accept-current": 212,
+      "refinement": 4
+    },
+    "blindCounts": {
+      "accept": 205,
+      "revise": 35,
+      "hold": 0
+    },
+    "bothAccept": 202,
+    "bothChangeSameTarget": 9,
+    "bothChangeDifferentTargets": 16,
+    "primaryOnlyProposal": 3,
+    "blindOnlyProposal": 10
+  },
+  "callerEvidence": {
+    "sourceContextCount": 20,
+    "callerReferenceCount": 34,
+    "callerlessSourcePositions": [],
+    "callerResolutionHoldCount": 0
+  },
+  "tokenAndProtectedLiteralChecks": {
+    "cellsChecked": 240,
+    "cellsPassing": 240,
+    "placeholderSourceOccurrences": 36,
+    "markupSourceOccurrences": 0,
+    "numericSourceOccurrences": 0,
+    "protectedLiteralSourceOccurrences": 0,
+    "selectedTargetMismatchCounts": {
+      "placeholders": 0,
+      "markup": 0,
+      "numeric": 0,
+      "protectedLiterals": 0
+    }
+  },
+  "carriedReviewState": {
+    "priorHoldsExpected": 35,
+    "priorHoldsReattested": 35,
+    "changedCarriedHolds": 0,
+    "priorSelectedRowsExpected": 180,
+    "priorSelectedRowsReattested": 180
+  },
+  "reviewLimit": "Contextual editorial cross-audit; native-speaker review was not performed."
+}

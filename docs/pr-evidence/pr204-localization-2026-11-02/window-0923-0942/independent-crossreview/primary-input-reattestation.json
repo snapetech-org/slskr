@@ -1,0 +1,12 @@
+{
+  "head": "ca71c6c90cbe6c1fa9ef0307a57b214e61e022b5",
+  "manifestArtifactCount": 18,
+  "manifestSha256": "4d9528f2d3a242ee8b65fb3ab866d71be14538ddb04b960208f3df952a261908",
+  "manifestSizesAndHashesPassed": true,
+  "primaryChecksumsPassed": true,
+  "primaryDirectory": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0923-0942-primary-20261102",
+  "sha256SumsFileSha256": "a539a5145104feaf7ec3a71b0354ef095de76f7017e7187e3137dacaec53b2b3",
+  "tree": "a35194c508f9b40f28ed75480fc20182a086c55d",
+  "verifiedFilesIncludingManifest": 19,
+  "window": "W923-W942"
+}

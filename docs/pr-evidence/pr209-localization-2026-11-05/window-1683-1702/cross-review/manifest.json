@@ -1,0 +1,59 @@
+{
+  "artifact": "slskR PR #209 W1683-W1702 cross-review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "exactHead": "f04b7f965aef79552d65d40a2eeb550e5e3b9cfa",
+  "exactTree": "85fe880023e55e055660fd17599c291edd24a1c6",
+  "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "candidateFreeManifestSha256": "f49d6dd7e9652781d59fe5053af5dce233439f24cb211692cec967802507eed2",
+  "candidateFreeCellRowsSha256": "b22d79459c0761bd892885719ec1d9b75aae266231bca9b2bc95ddc62b08eeed",
+  "primaryManifestSha256": "0e315e9f272c38f2e40e78b7136829ce769d3fd35ffbacebbd185b4f7f7ec7f7",
+  "primaryLedgerSha256": "825eb883737156cb99c5130c5a82c06240e4ce6146bbefaed3963d099b03ecc6",
+  "primaryProposalsSha256": "58a9623d8f486100e7d98b6a6f19b6c81e80703823a93bbe3b45e840142476cb",
+  "blindSealSha256": "39940340282ed9d8ccc2eec04cac96b20c2d3aa9275fd522753b116081da82c9",
+  "blindLedgerSha256": "a65b86e8e1787a79798c5e36cac7a555e578be21cd44611266adb7bad568170c",
+  "cellCount": 240,
+  "primaryProposalCount": 8,
+  "blindProposalCount": 5,
+  "dispositionCounts": {
+    "accept-current": 232,
+    "select-proposal": 8,
+    "hold": 0
+  },
+  "inputPins": {
+    "candidateFreeInput": {
+      "checksumListSha256": "9c73a4285d9c51483893a6b8347d9d3064b644966fb5a5624c7cbc84e7126436",
+      "manifestSha256": "f49d6dd7e9652781d59fe5053af5dce233439f24cb211692cec967802507eed2",
+      "ledgerSha256": "b22d79459c0761bd892885719ec1d9b75aae266231bca9b2bc95ddc62b08eeed"
+    },
+    "primaryReview": {
+      "checksumListSha256": "96573e391f561a6e210fdd34fa0215ab53fe10f6d93dafd85e25370827252bf4",
+      "manifestSha256": "0e315e9f272c38f2e40e78b7136829ce769d3fd35ffbacebbd185b4f7f7ec7f7",
+      "ledgerSha256": "825eb883737156cb99c5130c5a82c06240e4ce6146bbefaed3963d099b03ecc6"
+    },
+    "blindReview": {
+      "checksumListSha256": "a01efdd881556fa74e9ec0bb687f2600ac0f213c07075047a3379544d10ff058",
+      "manifestSha256": "39940340282ed9d8ccc2eec04cac96b20c2d3aa9275fd522753b116081da82c9",
+      "ledgerSha256": "a65b86e8e1787a79798c5e36cac7a555e578be21cd44611266adb7bad568170c"
+    }
+  },
+  "outputFileHashes": {
+    "README.md": {
+      "sha256": "2f83ae8a8be928c68d65236f0addd41d573dc24f26473c2cbd0c96e761b55b41",
+      "byteCount": 4158
+    },
+    "cross-ledger.jsonl": {
+      "sha256": "0df8fdea4418e3dc41cec5c12d4a08b0e595937de34acfdd059c3ca9ab891f3e",
+      "byteCount": 825984
+    },
+    "summary.json": {
+      "sha256": "d5cca7d950c17db48fc7cd0a8169f2425e60060daeeb4b3ef85b48cdca08d8f4",
+      "byteCount": 1910
+    },
+    "verify_cross_review.py": {
+      "sha256": "99159d853083b492d0d243cf852f83f3e39c9efe040428c1a6431021cb49ae34",
+      "byteCount": 7335
+    }
+  },
+  "createdAtUtc": "2026-11-05"
+}

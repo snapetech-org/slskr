@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+  "tree": "0ead1eb1678b4df05ca7feec9776c0319d4eefd3",
+  "window": "W1243-W1262",
+  "cellCount": 240,
+  "sourceCount": 20,
+  "localeCount": 12,
+  "dispositionCounts": {
+    "accept-current": 139,
+    "correction": 81,
+    "hold": 12,
+    "refinement": 8
+  },
+  "proposedCatalogChanges": 89,
+  "noCallerHolds": 12,
+  "noCallerHoldPositions": [
+    1257
+  ],
+  "placeholderMismatches": 0,
+  "markupMismatches": 0,
+  "numericMismatches": 0,
+  "protectedLiteralMismatches": 0,
+  "semanticUnitFailures": 0,
+  "qualifiedLocaleReviewRequired": true,
+  "nativeSpeakerApproval": false,
+  "releaseApprovedByThisReview": false
+}

@@ -1,0 +1,12 @@
+{
+  "pullRequest": 209,
+  "productHeadAtBodyUpdate": "dab83932bb2b375caf3f588ac7b20b3bd835a419",
+  "oldBodyLengthCharacters": 4096,
+  "newBodyLengthCharacters": 4960,
+  "oldBodySha256": "55b61d0c2e17826531645b47523ad09809fd09eb3745453b9580dc372623dbe3",
+  "newBodySha256": "081f033539c8e585b7d6dc90a58bf256d511fa13b877a51a6a6c1a3c74ee812e",
+  "oldBodyIsExactPrefix": true,
+  "remoteBodyMatchesRequestedBody": true,
+  "prState": "open",
+  "prDraft": true
+}

@@ -1,0 +1,16 @@
+{
+  "exactHeadTreeAndLivePrVerified": true,
+  "primaryPacketChecksumsPassed": true,
+  "sourceInventoryOrderVerified": true,
+  "all240CurrentTextsAndHashesReattested": true,
+  "allCallerPinsAndBasePinsReattested": true,
+  "allSourceAndCurrentPlaceholderSetsMatch": true,
+  "allFinalCandidatePlaceholderSetsMatch": true,
+  "allProtectedLiteralsVerified": true,
+  "allPriorChannelIdCorrectionHashesMatchCurrent": true,
+  "bothChineseChannelsHoldsHaveDisjointCallerMeanings": true,
+  "nativeSpeakerApproval": false,
+  "repoModified": false,
+  "testsBuildsCiRun": false,
+  "secondaryKeepRowRefinementReattested": true
+}

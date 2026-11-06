@@ -1,0 +1,13 @@
+# slskR PR #204 localization review: W1043–W1062
+
+This exact-head review covers 20 sorted source IDs × 12 direct locales (240 cells) at input head `a5603a2349006684a454953ca746b8a93c5c9f1e`, tree `04ae03079fbc2dd7c00897025f4b3a344912239c`. The clean input packet pins all twelve catalog blobs, all 41 production caller references, and the source order. The source-order SHA-256 is `dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983`; the selected-window source SHA-256 is `c09b47fbdb5a159d7686c235f27d245e59317586b4dc86ce8f3469c59030ac7f`.
+
+The primary review recorded 66 corrections, 5 refinements, 157 accept-current values, and 12 context holds. A separate strict-blind review, sealed from the clean input without access to the primary proposals or repository/API, recorded 73 corrections, 36 refinements, and 131 accept-current values, with no holds. Root adjudication reconciled the reviews into 72 corrections, 27 refinements, 129 accept-current values, and 12 holds. Root ratified the exact proposal ledger before mutation; the ratification record and all review packets are retained here.
+
+Applied exactly 99 ratified target changes across the twelve locale catalogs. The 12 position-1044 cells for `DHT body must be an object` remain held because the pinned backend/API message does not establish an exact localized UI rendering path. All 48 holds from W1023–W1042 (positions 1025, 1030, 1036, and 1037) remain unchanged. No other target was changed in this window.
+
+The post-apply readback compared each catalog against the exact input Git tree. It confirmed all 240 reviewed values, exactly the 99 planned changes, no unplanned cell changes, no placeholder or protected-literal mismatches, and identical ordered 5,441-key sets in all twelve catalogs. The source, caller, and catalog pins were re-attested before mutation. The readback report includes before/after file hashes and Git blobs, and per-cell current/final values and hashes.
+
+Evidence files include the checksum-verified clean input, primary review, strict-blind independent review, root adjudication proposal, root ratification, exact apply plan, and full readback. The root proposal ledger SHA-256 is `40d14cffebe2180f7286b0a3047b5ada32eaaf3a133f3a610da75ee57f364676`; its input packet and independent-ledger hashes are recorded in the packet summaries and manifests.
+
+This is machine-assisted review and does not claim native-speaker approval. Exact-head browser acceptance remains outstanding. No tests, builds, scans, CI dispatches, or workflow edits were run. PR #204 remains open and draft; no merge, release, or tag was made.

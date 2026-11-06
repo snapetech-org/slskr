@@ -1,0 +1,31 @@
+{
+  "window": "W1743-W1762",
+  "inputHead": "ccbc3dc721c1cbd225d4e512f4f0af4c80476620",
+  "inputTree": "075d1b72a2fd080404ebec19d354cb863638df21",
+  "reviewedCells": 240,
+  "acceptedCurrent": 182,
+  "selectedCorrectionsAndRefinements": 34,
+  "heldUnchangedHashOnly": 24,
+  "activeHoldIdHashOnly": "1719::id",
+  "catalogsPreflighted": 12,
+  "catalogEntriesPerLocale": 5441,
+  "catalogHashes": {
+    "web/src/lib/locales/ui-labels.es.json": "4627195be4d59def340b3df130ea2bc17a9c9b541550feffca408e50b7e74d1e",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "f5f33ce7962b072f6f8b725677d0034662e163c6b0e3f4a3081bb1fe62f06942",
+    "web/src/lib/locales/ui-labels.hi.json": "1ca40a747e89644002da771872e9d4163d94c868d50e753450c45acf40cfda7f",
+    "web/src/lib/locales/ui-labels.de.json": "8af02baa09592540526a5b5598a2d5d1a5391e407589aefcb3e81201b7fce369",
+    "web/src/lib/locales/ui-labels.ja.json": "e93d375c2cc0917944509b5cc75dc7480df58e473d5d8438862bdf66834161e0",
+    "web/src/lib/locales/ui-labels.fr.json": "2bbc0c9fdc9e5a3ae55553fd4596eca04c8cfba6add696cfad105f785c4950f7",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "587cbdfef4ea77dc62574ca9b551d86df7eb7e95d562d61fa990356e66b38257",
+    "web/src/lib/locales/ui-labels.ar.json": "6e158d543696675de4d47fe35291bb20534ffe79ca1e4302b6f10cffa2dbe64c",
+    "web/src/lib/locales/ui-labels.ko.json": "b665776561ed5249755dd5688a11d2ee5e79b6f4732f22947e9d5a2ad2028261",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "abe74066cd7e415b12bd448a0fa6f796f12816bbb015b58b57fc170fceda03a1",
+    "web/src/lib/locales/ui-labels.vi.json": "eaef599a3f21fddac8251ab2977178fdcc1240d58634cbcc20c5455d388b1f95",
+    "web/src/lib/locales/ui-labels.id.json": "6a935644b469821d7987fbdcdefc3d5a3d214c1ee176e2001b9542e6bbc9ebde"
+  },
+  "all216CallerBackedCurrentValuesMatched": true,
+  "all34ExactHashGuardsPassed": true,
+  "crossAndInputPacketVerifiersPassed": true,
+  "writeStartsAfterFullPreflight": true,
+  "result": "PASS"
+}

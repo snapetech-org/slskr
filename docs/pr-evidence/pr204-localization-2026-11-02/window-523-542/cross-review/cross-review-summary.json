@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "input_head": "fa712d12ec3a41ed5e4f2e264f6b550ddbdaba6e",
+  "input_tree": "9f1111e6d75f082af5a0cf4bf346ad12b71cdfd1",
+  "primary_reviewed_cells": 240,
+  "primary_candidate_count": 93,
+  "cross_reviewed_cells": 240,
+  "cross_review_disposition_counts": {
+    "accepted": 221,
+    "refined": 2,
+    "missed": 4,
+    "held": 1,
+    "no-op": 12
+  },
+  "primary_candidates_accepted": 91,
+  "primary_candidates_refined": 2,
+  "additional_missed_cells": 4,
+  "held_cells": 1,
+  "no_op_cells": 12,
+  "no_op_source_id": "Build result-filter conditions without memorizing the filter syntax.",
+  "no_op_source_index": 533,
+  "no_op_locale_cell_count": 12,
+  "placeholder_review": {
+    "source_index": 537,
+    "source_id": "Bulk actions ({count})",
+    "locale_cells": 12,
+    "placeholder": "{count}",
+    "all_sets_match": true
+  },
+  "native_speaker_approvals": 0,
+  "native_review_required": true,
+  "metadata_issues": [
+    "Primary candidate rationale for source index 529 (hi and id) says Wishlist inputs are clarified as items, but the exact candidate texts still use literal “seeds” (बीजों / benih); cross-review supplied item-based refinements.",
+    "The pre-comparison independent draft candidate for source index 535 duplicated the review-first wording from index 534. The independent issue disposition was a revision, but that draft candidate did not preserve Smart Radio/no-network semantics; the cross-review accepts the primary’s exact Smart Radio suggestions candidates instead."
+  ],
+  "cross_review_ledger_sha256": "d9969708e5eeb99938924764d6c0ae29d1b3f837a99ade83eac9dce536987780",
+  "primary_candidates_cross_reviewed_sha256": "e624a3adfc7ae339c1bd86478a4313de57452b47fc2c5c5fdb56390c35ffafdd",
+  "additional_findings_sha256": "eaf7993f078b55c9260f77e315022f343cbcf0a09e91848f55d01ed51a9c6fb9",
+  "held_candidate_text": "معلومات إصدار البرنامج غير متاحة",
+  "held_candidate_sha256": "3dae2b943e6944551ee4eb8cd47a7d613d41f70ffeccb929d911be59eda58c34"
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "artifact": "slskR PR #204 W1283-W1302 application authorization",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "55ca2ae0788bfd79daab5cc49f49ebb608593e98",
+  "tree": "d5677673b766d572102bba249af2ab69095dea0d",
+  "window": "W1283-W1302 positions 1283-1302",
+  "authorized": true,
+  "authorizedBy": "User standing instruction to complete localization, commit, push, and update the PR; do not cut releases.",
+  "authorizedAtUtc": "2026-11-03T12:16:10Z",
+  "exactSelectedTargets": 145,
+  "holdCount": 0,
+  "crossAuditLedgerSha256": "7f2b43e6b2ed350ccc2c9f1b5199aeea5a11a63bf2c9a70883b6c0119ea04fe0",
+  "crossAuditSummarySha256": "6f7223ce6928fd8898ae1e45367dc10a2fe90cafde433de3db9ec2ba87594c82",
+  "crossAuditChecksumListSha256": "8f16381d194fc7dd08d285764f8d3d830af03734c4eaf59d4b31968451fe0f24",
+  "scope": "Apply only selectedTarget values in the cross-audit ledger to the pinned 12 locale catalogs, add the evidence packet, verify exact readback and non-target invariants, then commit and push to PR #204.",
+  "constraints": [
+    "Reattest the branch and pull refs at the exact head immediately before the catalog write and before pushing.",
+    "Preserve all current values whose disposition is accept-current.",
+    "Do not change source code or .github/workflows.",
+    "Do not run tests, builds, scans, or CI.",
+    "Do not merge, release, or create tags.",
+    "Qualified native-speaker approval is not represented as complete."
+  ]
+}

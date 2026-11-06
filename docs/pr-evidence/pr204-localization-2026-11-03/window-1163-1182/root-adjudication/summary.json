@@ -1,0 +1,40 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "window": "W1163-W1182",
+  "exactHead": "9aa58492ee693d8ca0f2c027a3ee5b8438639f91",
+  "exactTree": "b9ebab27d1f24932be0c623cf894a78115b6f2bb",
+  "cells": 240,
+  "localeCount": 12,
+  "callerReferencesVerified": 36,
+  "dispositions": {
+    "accept-current": 160,
+    "hold": 16,
+    "refinement": 45,
+    "correction": 19
+  },
+  "catalogChanges": 64,
+  "catalogFilesChanged": 12,
+  "protectedLiterals": [
+    "DHT",
+    "slskr"
+  ],
+  "placeholderMarkupMismatches": 0,
+  "nativeSpeakerApproval": false,
+  "headedBrowserAcceptance": false,
+  "testsBuildsScansCIWorkflowChangesMergeReleaseOrTag": false,
+  "thirdPartyOverrides": [
+    {
+      "position": 1166,
+      "locale": "ja",
+      "target": "発見されたピアの一覧を利用できません",
+      "reason": "The source says discovered peers. The pinned nearby caller describes peers with slskr capabilities as detected, so retain the established Japanese distinction: 発見 for discovered and 検出 for detected."
+    },
+    {
+      "position": 1167,
+      "locale": "ja",
+      "target": "発見された slskr ピア",
+      "reason": "The source is the discovered-peer section label; its pinned nearby capability text uses detected. Use 発見 to preserve the source distinction and keep lowercase slskr exact."
+    }
+  ]
+}

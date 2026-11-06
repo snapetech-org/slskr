@@ -1,0 +1,7 @@
+# slskR PR #204 W1263–W1282 candidate-free input
+
+This packet contains 20 English source lookup keys and 240 current target cells across the 12 runtime locales. It is pinned to live open draft PR head `4b6f9b925ac7ec1243f3003fa0792c3b50e4560e` and tree `31c708cdb279e427ddb2082e297be382209489d3`. The PR head ref is `codex/slskr-l10n-audit-20261030`; the clean exact-head worktree is `/mnt/disks/scratch/task-worktrees/localization-20261103/slskr-pr204-w1243-apply-20261103` at `4b6f9b925ac7ec1243f3003fa0792c3b50e4560e`. Remote branch and pull-ref heads were rechecked.
+
+The 12 locale files have identical key sets with 5,441 source keys. `source-queue.jsonl` records the complete ordered source queue with SHA-256 per key. `source-window-boundaries.jsonl` records the previous boundary at position 1262, all selected positions 1263–1282, and the next boundary at position 1283. Each selected source key is paired with all 12 current locale values and exact catalog/file hashes. Caller references include adjacent source lines and per-file SHA-256/Git-blob pins; direct server error callers and client allowlist entries are retained where present.
+
+Caller runtime expressions are captured verbatim and remain opaque. Source/current placeholder token sequences are recorded mechanically. 0 locale cells have caller-resolution holds at positions []; see `caller-resolution-holds.jsonl`. This candidate-free packet contains no semantic decisions or proposed translations.

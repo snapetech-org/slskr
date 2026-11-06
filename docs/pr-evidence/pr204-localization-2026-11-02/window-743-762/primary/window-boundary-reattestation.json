@@ -1,0 +1,176 @@
+{
+  "attestedHead": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "attestedTree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "sourceInventorySha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "previousWindow": [
+    723,
+    742
+  ],
+  "currentWindow": [
+    743,
+    762
+  ],
+  "adjacent": true,
+  "nonOverlappingWithPriorWindows": true,
+  "previousPacketPath": "/mnt/disks/scratch/task-scratch/slskr-pr204-W723-742-primary-20261102/packet",
+  "previousPacketHashes": {
+    "manifest.json": {
+      "sha256": "326f3cafaee83aee0ca69edc2da9a8cddf9605aecc9bf40f898922c6a1e03c80",
+      "bytes": 6893
+    },
+    "primary-review-ledger.jsonl": {
+      "sha256": "dad5762e5a760a54003886257da3c242fc2e8c014d7aaae69afc85f2368801cd",
+      "bytes": 575526
+    },
+    "SHA256SUMS": {
+      "sha256": "b9e4eb34b26ff9baf17614d3d3b26615cf007c69ff344c78ace76586040b2d2e",
+      "bytes": 1778
+    }
+  },
+  "previousBoundaryTargetsReattested": [
+    {
+      "locale": "ar",
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "sourceIndex": 742,
+      "previousTargetSha256": "b8fc1b2c4992053aa06c0303c40421c4a85b56f85fd5e1112a370a1eba31d035",
+      "liveTarget": "أغلق هذه المعاينة وعد إلى الملفات المحددة دون بدء النقل.",
+      "liveTargetSha256": "b8fc1b2c4992053aa06c0303c40421c4a85b56f85fd5e1112a370a1eba31d035",
+      "targetUnchanged": true,
+      "previousRecommendedTarget": null,
+      "previousDecision": "hold-no-direct-caller",
+      "previousRowSha256": "f230bd0173a66ed12e0029d6407ab9d9be486953aa4401ff0cf96c0138a18c4c"
+    },
+    {
+      "locale": "de",
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "sourceIndex": 742,
+      "previousTargetSha256": "19367a2e2bf6943909a2d1fe2eba37b6dc72c3ea201a4e35749591d62953e5e8",
+      "liveTarget": "Schließe diese Vorschau und kehre zu den ausgewählten Dateien zurück, ohne eine Übertragung zu starten.",
+      "liveTargetSha256": "19367a2e2bf6943909a2d1fe2eba37b6dc72c3ea201a4e35749591d62953e5e8",
+      "targetUnchanged": true,
+      "previousRecommendedTarget": null,
+      "previousDecision": "hold-no-direct-caller",
+      "previousRowSha256": "524cc908eb6cdd51a8316fd22937878b24acd208bf0b255dd4d07923b388801c"
+    },
+    {
+      "locale": "es",
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "sourceIndex": 742,
+      "previousTargetSha256": "200aa95b0d35935adeae136f4b661dcabf94d28f97bcd41968f5c33cfe180dcd",
+      "liveTarget": "Cierra esta vista previa y vuelve a los archivos seleccionados sin iniciar la transferencia.",
+      "liveTargetSha256": "200aa95b0d35935adeae136f4b661dcabf94d28f97bcd41968f5c33cfe180dcd",
+      "targetUnchanged": true,
+      "previousRecommendedTarget": null,
+      "previousDecision": "hold-no-direct-caller",
+      "previousRowSha256": "3b7fd38e301fcafef2c60adf46bfa234afae7edaa98d43d582b855ba2529c0cf"
+    },
+    {
+      "locale": "fr",
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "sourceIndex": 742,
+      "previousTargetSha256": "ef544bc02e171b4f9b965defb33164e28f05574b284c26e7eedebfaeff1bbd11",
+      "liveTarget": "Fermez cet aperçu et revenez aux fichiers sélectionnés sans lancer le transfert.",
+      "liveTargetSha256": "ef544bc02e171b4f9b965defb33164e28f05574b284c26e7eedebfaeff1bbd11",
+      "targetUnchanged": true,
+      "previousRecommendedTarget": null,
+      "previousDecision": "hold-no-direct-caller",
+      "previousRowSha256": "9e67817ccb3c96fcd7a5163a88278a1ffb0f16f88ff6f7a793cb9ef176a38a8f"
+    },
+    {
+      "locale": "hi",
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "sourceIndex": 742,
+      "previousTargetSha256": "7914037c25b13d20b8f89da0ccb5aa09757579ec45d188ebdcae74c3e388cd53",
+      "liveTarget": "स्थानांतरण शुरू किए बिना इस पूर्वावलोकन को बंद करके चुनी गई फ़ाइलों पर लौटें।",
+      "liveTargetSha256": "7914037c25b13d20b8f89da0ccb5aa09757579ec45d188ebdcae74c3e388cd53",
+      "targetUnchanged": true,
+      "previousRecommendedTarget": null,
+      "previousDecision": "hold-no-direct-caller",
+      "previousRowSha256": "a6eed55d5f1b6e35653f0d2eb08c5d97a82292ba2d1c315543b194f985e6920a"
+    },
+    {
+      "locale": "id",
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "sourceIndex": 742,
+      "previousTargetSha256": "b9f4cbb7a8f5cbbd229d5ab88df57e2ccfb04ff4bd5b82f245d16f003c78fc5c",
+      "liveTarget": "Tutup pratinjau ini dan kembali ke berkas terpilih tanpa memulai transfer.",
+      "liveTargetSha256": "b9f4cbb7a8f5cbbd229d5ab88df57e2ccfb04ff4bd5b82f245d16f003c78fc5c",
+      "targetUnchanged": true,
+      "previousRecommendedTarget": null,
+      "previousDecision": "hold-no-direct-caller",
+      "previousRowSha256": "4d9951c5c8765f105d9b48c751695e9b8453400662f0557720c334e44add431f"
+    },
+    {
+      "locale": "ja",
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "sourceIndex": 742,
+      "previousTargetSha256": "07de1f9134f03c5d71aa764dc090adddf240428c87b8fe96de77e0880a003553",
+      "liveTarget": "転送を開始せずにプレビューを閉じて選択したファイルに戻ります。",
+      "liveTargetSha256": "07de1f9134f03c5d71aa764dc090adddf240428c87b8fe96de77e0880a003553",
+      "targetUnchanged": true,
+      "previousRecommendedTarget": null,
+      "previousDecision": "hold-no-direct-caller",
+      "previousRowSha256": "6f5dfdced7ade0c29082fce27a95f196b03ecf0f02bf143c572f29ffe7d70d3d"
+    },
+    {
+      "locale": "ko",
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "sourceIndex": 742,
+      "previousTargetSha256": "7fa04778c6387fd5eef226cb4b19b2381569350e54ddc7e806c9f2878bc21498",
+      "liveTarget": "전송을 시작하지 않고 미리 보기를 닫고 선택한 파일로 돌아갑니다.",
+      "liveTargetSha256": "7fa04778c6387fd5eef226cb4b19b2381569350e54ddc7e806c9f2878bc21498",
+      "targetUnchanged": true,
+      "previousRecommendedTarget": null,
+      "previousDecision": "hold-no-direct-caller",
+      "previousRowSha256": "404fbcd31a10d1313dcddcd5a7b69db8b16ead3064cd5730567a4332cce318ef"
+    },
+    {
+      "locale": "pt-BR",
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "sourceIndex": 742,
+      "previousTargetSha256": "a20d81d3e5f2f4ab989f721b434599a1973f23e3e1cc3e092d71df1f49eef914",
+      "liveTarget": "Feche esta prévia e volte aos arquivos selecionados sem iniciar a transferência.",
+      "liveTargetSha256": "a20d81d3e5f2f4ab989f721b434599a1973f23e3e1cc3e092d71df1f49eef914",
+      "targetUnchanged": true,
+      "previousRecommendedTarget": null,
+      "previousDecision": "hold-no-direct-caller",
+      "previousRowSha256": "1bc62fa0b35af285dc8cce14428cbc9d6b6b182411be093be3c865a1c27f0314"
+    },
+    {
+      "locale": "vi",
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "sourceIndex": 742,
+      "previousTargetSha256": "5a2e4a7e3ed50abfe946251d25f5ce7a38b5dfa4245ca380d44de4b60744679d",
+      "liveTarget": "Đóng bản xem trước này và quay lại các tệp đã chọn mà không bắt đầu truyền.",
+      "liveTargetSha256": "5a2e4a7e3ed50abfe946251d25f5ce7a38b5dfa4245ca380d44de4b60744679d",
+      "targetUnchanged": true,
+      "previousRecommendedTarget": null,
+      "previousDecision": "hold-no-direct-caller",
+      "previousRowSha256": "fa4ac4521b3a40ed061183fb06a3c8f05c6b8da4bb026bd0c5a8bc2a0842ea3d"
+    },
+    {
+      "locale": "zh-Hans",
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "sourceIndex": 742,
+      "previousTargetSha256": "a3a065315719a2bc6ca1f0c1c4a2316588e583af585dc731e82513d025fe3c45",
+      "liveTarget": "关闭此预览并返回所选文件，不会开始传输。",
+      "liveTargetSha256": "a3a065315719a2bc6ca1f0c1c4a2316588e583af585dc731e82513d025fe3c45",
+      "targetUnchanged": true,
+      "previousRecommendedTarget": null,
+      "previousDecision": "hold-no-direct-caller",
+      "previousRowSha256": "cd48a3959f4337b907f0190439a76fdcb378076fc37f4c90bff1f6822ce4285f"
+    },
+    {
+      "locale": "zh-Hant",
+      "sourceId": "Close this preview and return to the selected files without starting a transfer.",
+      "sourceIndex": 742,
+      "previousTargetSha256": "14abb7eca565af7a9fb9ddb53ae5d560c35d71dab056677462997bc9e8dfa3ce",
+      "liveTarget": "關閉此預覽並返回所選檔案，不會開始傳輸。",
+      "liveTargetSha256": "14abb7eca565af7a9fb9ddb53ae5d560c35d71dab056677462997bc9e8dfa3ce",
+      "targetUnchanged": true,
+      "previousRecommendedTarget": null,
+      "previousDecision": "hold-no-direct-caller",
+      "previousRowSha256": "5fac97c3d9f4cc6239cbcccc75c71097f95f54ce98d098572f8c888fc3d055e1"
+    }
+  ]
+}

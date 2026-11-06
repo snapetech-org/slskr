@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "task": "slskR PR #204 W623–642 primary semantic review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "df1bcd1a86d7b55a9c8b5502854ad0c7efbb3dbc",
+  "tree": "787225b69e49420344d031aead6f5e5085741c93",
+  "sourcePositions": [
+    623,
+    642
+  ],
+  "sourceIds": 20,
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "cells": 240,
+  "newlyReviewedCells": 228,
+  "priorAcceptedCellsPreserved": 12,
+  "priorSourceId": "Chromaprint needs an ffmpeg executable path.",
+  "counts": {
+    "accept-current": 208,
+    "propose-correction": 10,
+    "propose-refinement": 10,
+    "preserved-prior-disposition": 12
+  },
+  "correctionCandidates": 20,
+  "noDirectCallerSourceIds": [
+    "Choose how many matching results to render at once.",
+    "Choose how search results are ordered. Smart Ranking balances quality and availability."
+  ],
+  "callerReferences": 40,
+  "uniqueCallerFiles": [
+    "crates/slskr/src/controller_tests/full_media_differential.rs",
+    "crates/slskr/src/controller_tests/media_contracts.rs",
+    "crates/slskr/src/file_transfer_runtime_owners/audio_metadata.rs",
+    "crates/slskr/src/mediacore_controller.rs",
+    "crates/slskr/src/mediacore_extended.rs",
+    "crates/slskr/src/mediacore_mutations.rs",
+    "web/src/components/AppHeaderMenu.jsx",
+    "web/src/components/Player/PlayerStatsModal.jsx",
+    "web/src/components/Player/VisualizerOverlayControls.jsx",
+    "web/src/components/System/ExperienceSettings/index.jsx",
+    "web/src/components/System/Integrations/MetadataProcessingPanel.jsx",
+    "web/src/components/System/Integrations/MetadataSettingsPanel.jsx",
+    "web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx",
+    "web/src/components/System/Integrations/index.test.jsx",
+    "web/src/components/System/Integrations/integrationsShared.jsx"
+  ],
+  "uniqueCallerLines": 39,
+  "placeholderParityFailuresAtInput": 0,
+  "nativeSpeakerApproval": false,
+  "crossReview": "pending",
+  "catalogApplication": "pending",
+  "testsBuildsScansCIOrWorkflowsRun": false
+}

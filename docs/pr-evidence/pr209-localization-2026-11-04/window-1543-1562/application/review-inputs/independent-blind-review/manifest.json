@@ -1,0 +1,103 @@
+{
+  "artifact": "slskR PR #209 W1543-W1562 independent blind semantic review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "exactPin": {
+    "head": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+    "tree": "4259db991f25fbbd0200963769e62bb7e2150806",
+    "headRef": "codex/slskr-l10n-audit-20261104-resync",
+    "baseRef": "main",
+    "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36"
+  },
+  "input": {
+    "directory": "/home/keith/Documents/code/task-scratch/slskr-pr209-w1543-1562-primary-20261104/candidate-free-input",
+    "sha256SumsFileSha256": "dd128958855b904a900f3a7f160d7929de948afbc5b72eaccfe36ff3b1b92e24",
+    "manifestSha256": "2e2a7dc58f41e75901d8bcc8afc102ba575c7166182ff3204a066b6bffd49b15",
+    "checksumsVerified": true,
+    "candidateFreeVerifier": "PASS",
+    "sourceQueueRows": 5441,
+    "selectedCellCount": 240,
+    "catalogAndRuntimeBlobPinsVerified": 13
+  },
+  "liveRefChecks": {
+    "beforeReview": {
+      "prTuple": [
+        "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+        "codex/slskr-l10n-audit-20261104-resync",
+        "1bbaec9fdc63a86de343e37e33bae70d44301a36"
+      ],
+      "branchSha": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+      "pullSha": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+      "commitTreeSha": "4259db991f25fbbd0200963769e62bb7e2150806"
+    },
+    "afterReview": {
+      "prTuple": [
+        "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+        "codex/slskr-l10n-audit-20261104-resync",
+        "1bbaec9fdc63a86de343e37e33bae70d44301a36"
+      ],
+      "branchSha": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+      "pullSha": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+      "commitTreeSha": "4259db991f25fbbd0200963769e62bb7e2150806"
+    }
+  },
+  "review": {
+    "sourcePositions": [
+      1543,
+      1562
+    ],
+    "sourceCount": 20,
+    "localeCount": 12,
+    "localeOrder": [
+      "es",
+      "zh-Hans",
+      "hi",
+      "de",
+      "ja",
+      "fr",
+      "pt-BR",
+      "ar",
+      "ko",
+      "zh-Hant",
+      "vi",
+      "id"
+    ],
+    "reviewedCells": 240,
+    "acceptedCells": 218,
+    "heldCells": 22,
+    "findingCount": 20,
+    "overallConfidence": "moderate",
+    "callerReferences": 21,
+    "callerOccurrences": 21,
+    "callerlessPositions": [],
+    "callerlessCellsHashOnly": true,
+    "structuralMismatchCounts": {
+      "placeholderSequenceMismatchCount": 0,
+      "markupMismatchCount": 0,
+      "numericTokenMismatchCount": 0,
+      "protectedLiteralMismatchCount": 0
+    }
+  },
+  "reviewerExposure": {
+    "primaryReviewOpened": false,
+    "crossReviewOpened": false,
+    "priorAppReadbackJsonlOpened": false,
+    "prDescriptionOrBodyOpened": false,
+    "onlyCandidateFreeInputUsed": true,
+    "allowedPacketBuilderOrVerifierRead": true
+  },
+  "actions": {
+    "catalogsEdited": false,
+    "prOrBodyChanged": false,
+    "commitOrPush": false,
+    "testsBuildsOrCI": false,
+    "workflowsModified": false,
+    "mergedReleasedOrTagged": false
+  },
+  "fileHashes": {
+    "review.md": "2931f7cef977386443bcfd8b53679b59b5729e420efebfc2533c87221d3e3388",
+    "review-cells.jsonl": "c11c9eb14444ade3555b698adc269f81a54b5e88ea07396105e65bee5004b71d",
+    "findings.json": "b778757e9e3243883261624322be6f696d1751f29dcb0c8933d6c578a7e059eb",
+    "verify-review.py": "0d5d17402aecf6207b686db306969b19eedfcda6df4dff0f58714e21ca578e13"
+  }
+}

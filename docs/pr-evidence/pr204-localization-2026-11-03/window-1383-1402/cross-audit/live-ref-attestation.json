@@ -1,0 +1,36 @@
+{
+  "baseRefName": "main",
+  "branchRefOid": "b5da2589b6e8f2d4b0c0faab28bcdf0481e42438",
+  "headRefName": "codex/slskr-l10n-audit-20261030",
+  "headRefOid": "b5da2589b6e8f2d4b0c0faab28bcdf0481e42438",
+  "isDraft": true,
+  "localGitObjectDatabase": {
+    "path": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1303-1322-apply-20261103/repo",
+    "pinnedCommit": "b5da2589b6e8f2d4b0c0faab28bcdf0481e42438",
+    "pinnedCommitTree": "36ae6ecf3b705995fbd549cb8650d6458936df91"
+  },
+  "postReviewBranchRefOid": "b5da2589b6e8f2d4b0c0faab28bcdf0481e42438",
+  "postReviewHead": "b5da2589b6e8f2d4b0c0faab28bcdf0481e42438",
+  "postReviewPullRefOid": "b5da2589b6e8f2d4b0c0faab28bcdf0481e42438",
+  "postReviewTree": "36ae6ecf3b705995fbd549cb8650d6458936df91",
+  "pullRefOid": "b5da2589b6e8f2d4b0c0faab28bcdf0481e42438",
+  "pullRequest": 204,
+  "queriedAtUtc": "2026-11-03T17:45:59.810110+00:00",
+  "queryCommands": [
+    "gh pr view 204 --repo snapetech-org/slskR --json number,state,isDraft,headRefName,headRefOid,baseRefName,url,title",
+    "gh api repos/snapetech-org/slskR/git/matching-refs/heads/codex/slskr-l10n-audit-20261030 --jq .[0].object.sha",
+    "gh api repos/snapetech-org/slskR/pulls/204 --jq .head.sha",
+    "gh api repos/snapetech-org/slskR/commits/b5da2589b6e8f2d4b0c0faab28bcdf0481e42438 --jq .commit.tree.sha"
+  ],
+  "recheckedAtUtc": "2026-11-03T17:46:02.731772+00:00",
+  "repository": "snapetech-org/slskR",
+  "state": "OPEN",
+  "tree": "36ae6ecf3b705995fbd549cb8650d6458936df91",
+  "url": "https://github.com/snapetech-org/slskr/pull/204",
+  "workingCopy": {
+    "head": "130462c56f75d3c8fc2a90663a48c0474ad1208b",
+    "status": "clean",
+    "tree": "47aba96d79eb57d6024fb358ee59cde931f0de3b",
+    "usedForAudit": false
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "cellCount": 240,
+  "currentProtectedLiteralFailures": [
+    {
+      "locale": "de",
+      "missing": [
+        "SongID"
+      ],
+      "sourceIndex": 929
+    },
+    {
+      "locale": "hi",
+      "missing": [
+        "SongID"
+      ],
+      "sourceIndex": 929
+    }
+  ],
+  "finalProtectedLiteralFailures": [],
+  "markupParityFailures": [],
+  "placeholderParityFailures": [],
+  "protectedLiteralPolicy": {
+    "928": [
+      "Servarr"
+    ],
+    "929": [
+      "SongID",
+      "JSON"
+    ],
+    "939": [
+      "ReplayGain"
+    ]
+  },
+  "punctuationFailures": [],
+  "result": "PASS"
+}

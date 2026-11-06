@@ -1,0 +1,32 @@
+{
+  "task": "slskR PR #204 W816 Not configured application",
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "input_head": "eb0a4b9e51e5d52ecade154c3bcfde152f39eb7f",
+  "input_tree": "6dc321d066407fc212541720f38b15b5bab3dbfc",
+  "direct_locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "cells_applied": 12,
+  "accepted": 12,
+  "revised": 0,
+  "rejected": 0,
+  "held": 0,
+  "catalog_key_count_each": 5441,
+  "identical_ordered_key_sets": true,
+  "source_caller_reverified": true,
+  "primary_source_sha_discrepancy_recorded": true,
+  "native_speaker_approval": false,
+  "tests_builds_ci_browser_releases_tags_merges_workflows_touched": false
+}

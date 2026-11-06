@@ -1,0 +1,57 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pr_number": 204,
+  "input_head": "e4908e742db9f31a84c6aaaad43f4427c2db649b",
+  "input_tree": "93843e9d75c9d6846140346e80567be989d832af",
+  "raw_modal_string_action_callers": [
+    {
+      "path": "web/src/components/AppHeaderMenu.jsx",
+      "line": 147,
+      "excerpt": "                <Modal\n                  actions={[\n                    'Cancel',\n                    {\n                      content: interfaceText(\"Log Out\"),\n                      key: 'done',",
+      "blob_oid": "bfb81bb9841551f6d11707f2844674f1a92398cd"
+    },
+    {
+      "path": "web/src/components/System/Files/Explorer.jsx",
+      "line": 56,
+      "excerpt": "        <Modal\n          actions={[\n            'Cancel',\n            {\n              content: interfaceText(\"Delete\"),\n              key: 'done',",
+      "blob_oid": "ab4c5ed3b5c4c5315c6f46ee40ee2ad254f6daa3"
+    },
+    {
+      "path": "web/src/components/System/Files/Explorer.jsx",
+      "line": 114,
+      "excerpt": "        <Modal\n          actions={[\n            'Cancel',\n            {\n              content: interfaceText(\"Delete\"),\n              key: 'done',",
+      "blob_oid": "ab4c5ed3b5c4c5315c6f46ee40ee2ad254f6daa3"
+    },
+    {
+      "path": "web/src/components/System/Info/index.jsx",
+      "line": 75,
+      "excerpt": "        <Modal\n          actions={[\n            'Cancel',\n            {\n              content: interfaceText(\"Shut Down\"),\n              key: 'done',",
+      "blob_oid": "fe9e307633e6343f52d3bbeacb4111fc357d9f3f"
+    },
+    {
+      "path": "web/src/components/System/Info/index.jsx",
+      "line": 104,
+      "excerpt": "        <Modal\n          actions={[\n            'Cancel',\n            {\n              content: interfaceText(\"Restart\"),\n              key: 'done',",
+      "blob_oid": "fe9e307633e6343f52d3bbeacb4111fc357d9f3f"
+    }
+  ],
+  "shared_modal_action_renderer": {
+    "path": "web/src/semantic-ui-react/index.jsx",
+    "blob_oid": "67da71d574010720b1fe6a3d892bcc0079d9f46b",
+    "before": "The string-action branch rendered {action} directly, without interfaceText."
+  },
+  "confirm_fallbacks": {
+    "path": "web/src/semantic-ui-react/index.jsx",
+    "fallback_values": [
+      "Cancel",
+      "OK"
+    ],
+    "ok_key_absent_from_all_direct_catalogs_before": true,
+    "before_runtime_locale_subscription": false
+  },
+  "code_change": {
+    "string_actions": "interfaceText(action) with interfaceTextProps(action)",
+    "confirm_text": "interfaceText(textSource) with interfaceTextProps(textSource)",
+    "confirm_runtime_locale_subscription": true
+  }
+}

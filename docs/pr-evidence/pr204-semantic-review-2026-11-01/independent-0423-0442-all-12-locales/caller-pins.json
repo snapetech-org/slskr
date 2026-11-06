@@ -1,0 +1,276 @@
+{
+  "pins": {
+    "Available ports unavailable": [
+      {
+        "occurrences": [
+          {
+            "line": 679,
+            "text": "<Message.Header><LocalizedText source={\"Available ports unavailable\"} /></Message.Header>"
+          }
+        ],
+        "path": "web/src/components/Pods/PortForwarding.jsx",
+        "sha256": "3db4aa88c36b9c57f077c61f82541043d2787bc55f3289992b69403e942c326d"
+      }
+    ],
+    "Average Score:": [
+      {
+        "occurrences": [
+          {
+            "line": 517,
+            "text": "<strong><LocalizedText source={\"Average Score:\"} /></strong>{' '}"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/PodOpinionsPanel.jsx",
+        "sha256": "181f034d5b6354dd10f5b383e42aefc0fd9ae7d63572eda99c78facda268f27f"
+      }
+    ],
+    "Average TTL:": [
+      {
+        "occurrences": [
+          {
+            "line": 474,
+            "text": "<strong><LocalizedText source={\"Average TTL:\"} /></strong>{' '}"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/ContentDescriptorPublishingPanel.jsx",
+        "sha256": "375e2a926789a74af0efa132bf4bdf8f74606287bdb3ac9499f937eb3a3755f6"
+      }
+    ],
+    "Avg Computation Time:": [
+      {
+        "occurrences": [
+          {
+            "line": 518,
+            "text": "<strong><LocalizedText source={\"Avg Computation Time:\"} /></strong>{' '}"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+        "sha256": "34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60"
+      }
+    ],
+    "Avg Confidence:": [
+      {
+        "occurrences": [
+          {
+            "line": 448,
+            "text": "<strong><LocalizedText source={\"Avg Confidence:\"} /></strong>{' '}"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+        "sha256": "34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60"
+      }
+    ],
+    "Avg Duration": [
+      {
+        "occurrences": [
+          {
+            "line": 255,
+            "text": "<Statistic.Label><LocalizedText source={\"Avg Duration\"} /></Statistic.Label>"
+          }
+        ],
+        "path": "web/src/components/System/SwarmAnalytics/index.jsx",
+        "sha256": "b020adc0f11520ad1fe52080fdf1d90fe717c3dea9a3c5379973b31514d88c9d"
+      }
+    ],
+    "Avg Duration:": [
+      {
+        "occurrences": [
+          {
+            "line": 209,
+            "text": "<strong><LocalizedText source={\"Avg Duration:\"} /></strong>{' '}"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/PodMessageBackfillPanel.jsx",
+        "sha256": "a1b1127673baab77d8478398b3d26aa5080a73741a2230d2065f69272df3b364"
+      }
+    ],
+    "Avg Export Time:": [
+      {
+        "occurrences": [
+          {
+            "line": 662,
+            "text": "<strong><LocalizedText source={\"Avg Export Time:\"} /></strong>{' '}"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+        "sha256": "34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60"
+      }
+    ],
+    "Avg Import Time:": [
+      {
+        "occurrences": [
+          {
+            "line": 665,
+            "text": "<strong><LocalizedText source={\"Avg Import Time:\"} /></strong>{' '}"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+        "sha256": "34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60"
+      }
+    ],
+    "Avg Mappings/Domain:": [
+      {
+        "occurrences": [
+          {
+            "line": 323,
+            "text": "<strong><LocalizedText source={\"Avg Mappings/Domain:\"} /></strong>{' '}"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+        "sha256": "34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60"
+      }
+    ],
+    "Avg Match Time:": [
+      {
+        "occurrences": [
+          {
+            "line": 453,
+            "text": "<strong><LocalizedText source={\"Avg Match Time:\"} /></strong>{' '}"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+        "sha256": "34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60"
+      }
+    ],
+    "Avg Publish Time:": [
+      {
+        "occurrences": [
+          {
+            "line": 728,
+            "text": "<strong><LocalizedText source={\"Avg Publish Time:\"} /></strong>{' '}"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+        "sha256": "34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60"
+      },
+      {
+        "occurrences": [
+          {
+            "line": 335,
+            "text": "<strong><LocalizedText source={\"Avg Publish Time:\"} /></strong>{' '}"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/PodDhtPublishingPanel.jsx",
+        "sha256": "b54d9f456b6b638a12794f54ebd6f9005a8fb1797d177ef4774e42fbade22493"
+      }
+    ],
+    "Avg RTT": [
+      {
+        "occurrences": [
+          {
+            "line": 360,
+            "text": "<Table.HeaderCell><LocalizedText source={\"Avg RTT\"} /></Table.HeaderCell>"
+          }
+        ],
+        "path": "web/src/components/System/SwarmAnalytics/index.jsx",
+        "sha256": "b020adc0f11520ad1fe52080fdf1d90fe717c3dea9a3c5379973b31514d88c9d"
+      }
+    ],
+    "Avg Retrieval Time:": [
+      {
+        "occurrences": [
+          {
+            "line": 545,
+            "text": "<strong><LocalizedText source={\"Avg Retrieval Time:\"} /></strong>{' '}"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx",
+        "sha256": "8cb1922e358f7229d7f8147f41e18bffa3146283c270a5844393fc72f755c6ca"
+      },
+      {
+        "occurrences": [
+          {
+            "line": 394,
+            "text": "<strong><LocalizedText source={\"Avg Retrieval Time:\"} /></strong>{' '}"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+        "sha256": "34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60"
+      }
+    ],
+    "Avg Routing Time:": [
+      {
+        "occurrences": [
+          {
+            "line": 400,
+            "text": "<strong><LocalizedText source={\"Avg Routing Time:\"} /></strong>{' '}"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/PodMessageRoutingPanel.jsx",
+        "sha256": "d69c4b642ea560fd3f53688927cce8f6fea9f93923aa89f4924f640631cda32b"
+      }
+    ],
+    "Avg Search Time:": [
+      {
+        "occurrences": [
+          {
+            "line": 570,
+            "text": "<strong><LocalizedText source={\"Avg Search Time:\"} /></strong>{' '}"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/PodDiscoveryPanel.jsx",
+        "sha256": "c17c245776bcb87bb6089ff3836ff6b6061081ad2d0935d4dd15bff3aff928af"
+      }
+    ],
+    "Avg Sign Time:": [
+      {
+        "occurrences": [
+          {
+            "line": 310,
+            "text": "<strong><LocalizedText source={\"Avg Sign Time:\"} /></strong>{' '}"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/PodMessageSigningPanel.jsx",
+        "sha256": "8454b7b025260cf083324f52ea29f806f0ff4c188beec949fd13061e31e41972"
+      }
+    ],
+    "Avg Speed": [
+      {
+        "occurrences": [
+          {
+            "line": 219,
+            "text": "{ label: interfaceText(\"Avg Speed\"), sort: 'AverageSpeed' },"
+          }
+        ],
+        "path": "web/src/components/CompatibilityDashboard.jsx",
+        "sha256": "1e85738718ef2de4dc40358f746163cabb6192fca4072a8bf30ba0e133dbd27f"
+      },
+      {
+        "occurrences": [
+          {
+            "line": 248,
+            "text": "<Statistic.Label><LocalizedText source={\"Avg Speed\"} /></Statistic.Label>"
+          }
+        ],
+        "path": "web/src/components/System/SwarmAnalytics/index.jsx",
+        "sha256": "b020adc0f11520ad1fe52080fdf1d90fe717c3dea9a3c5379973b31514d88c9d"
+      }
+    ],
+    "Avg Throughput": [
+      {
+        "occurrences": [
+          {
+            "line": 361,
+            "text": "<Table.HeaderCell><LocalizedText source={\"Avg Throughput\"} /></Table.HeaderCell>"
+          }
+        ],
+        "path": "web/src/components/System/SwarmAnalytics/index.jsx",
+        "sha256": "b020adc0f11520ad1fe52080fdf1d90fe717c3dea9a3c5379973b31514d88c9d"
+      }
+    ],
+    "Avg Time:": [
+      {
+        "occurrences": [
+          {
+            "line": 383,
+            "text": "<strong><LocalizedText source={\"Avg Time:\"} /></strong>{' '}"
+          }
+        ],
+        "path": "web/src/components/System/MediaCore/PodMembershipVerificationPanel.jsx",
+        "sha256": "6306be736577b5e24c7d0df9c32f6542c0eb998c946778db59863aa0549402c5"
+      }
+    ]
+  },
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152"
+}

@@ -1,0 +1,55 @@
+{
+  "artifact": "slskR PR #204 W1483-W1502 application evidence",
+  "sourceHead": "a8c2b4cf5f771f8b574001239aa9217697097d6f",
+  "sourceTree": "35f48ee94ec7bcaa3b8b47869f2dd119e219ccfd",
+  "catalogCommit": "15a3cfffc8f800f2420847e7a98e1f2e94b33819",
+  "catalogCommitTree": "bad4a26bcbd81f9dccf3f779acaf05d2c1866313",
+  "updatedCellCount": 15,
+  "updatedCatalogFileCount": 8,
+  "files": {
+    "PR-attestation-before-application.json": {
+      "sha256": "0898f2ab405eca65583758d57e151331a7f17a079f5fc29297b3f36277a96a56",
+      "byteCount": 1065
+    },
+    "README.md": {
+      "sha256": "87cc63ee0dd03c268dabf0d1eb9f9a693d288e176a1e8ba66bda07f2a308e1ba",
+      "byteCount": 803
+    },
+    "application-plan.jsonl": {
+      "sha256": "754f2f1d78b38515fe3430d88f361f24ff298be09b1677a3323c7bc537ec4eb8",
+      "byteCount": 11694
+    },
+    "application-readback-summary.json": {
+      "sha256": "e17a57585263b87217a0de7cac25e85dc8fbf17ca5bc616930ec028b42943a71",
+      "byteCount": 829
+    },
+    "application-summary.json": {
+      "sha256": "260a220806fa38a81ea1ca7443b39e3112384a532fdbf5c0d3f57f029e8b5933",
+      "byteCount": 1175
+    },
+    "catalog-commit-attestation.json": {
+      "sha256": "c3a634fcd88dabed81f22ae828c74a69ced52df1f92df8df3357bde242d7c81c",
+      "byteCount": 5532
+    },
+    "catalog-file-readback.json": {
+      "sha256": "82640ae118eb83c8aa2dbfd153337679db766433b58bcfa2dd2330785b6470b1",
+      "byteCount": 3086
+    },
+    "commit-record.json": {
+      "sha256": "4a6c0615515dab585cc84dfd9c22aaf32ea71e39dd178f004e77e1469f942175",
+      "byteCount": 902
+    },
+    "post-catalog-commit-readback.json": {
+      "sha256": "e8cc9b66e5dbc28f965418aa7e773171a5e6a9516c5a2ed0634b84fe33e642df",
+      "byteCount": 4890
+    },
+    "readback.jsonl": {
+      "sha256": "26c53e93f4adb6141d7e2599d6a58aa9d3ea74ea69c95f344b4f1579c82bb16c",
+      "byteCount": 9492
+    },
+    "verify_application.py": {
+      "sha256": "7318c2b22299bbe7e6e5105956b2a4a6586df3b3cf552af8edea7a0c1f90e1a4",
+      "byteCount": 4875
+    }
+  }
+}

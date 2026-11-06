@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "livePrHeadAtReview": "6a8415d2df2f22935188992e03c4636052de2d67",
+  "livePrTreeAtReview": "f562ac9ed6108921efbef4272973b8895bb4c22a",
+  "appliedHeadBeforeRootRefinement": "44333cff18f24d67e5552e3289980beca8aa996d",
+  "appliedTreeBeforeRootRefinement": "4a2886515367cd8fd1acd03fb6f3eb175d1f8500",
+  "rowsReviewed": 86,
+  "dispositions": {
+    "accepted-applied-target": 85,
+    "refined": 1,
+    "held": 0
+  },
+  "exactSourceOldTargetAppliedTargetHashMismatches": 0,
+  "sourceFiles": 12,
+  "uniqueSourceStrings": 16,
+  "rootLedgerPath": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-e05-window5420-audit-20261101/independent-0203-0222-6a8415d2-20261101/root-independent-cross-review-203-222-2026-11-02.jsonl",
+  "rootLedgerSha256": "8634de78c160b0cba6f5309ff02baaa30451fff02a2272cc85dcaea676ff2d14",
+  "followupApplyPlanPath": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-e05-window5420-audit-20261101/independent-0203-0222-6a8415d2-20261101/root-refinement-apply-plan-203-222-2026-11-02.jsonl",
+  "followupApplyPlanSha256": "9067e22a39b6135de4f5fdb79b75e2f567c5fdad78e9c2e73a88bc1187ff01c8",
+  "nativeSpeakerReview": "not performed; required separately"
+}

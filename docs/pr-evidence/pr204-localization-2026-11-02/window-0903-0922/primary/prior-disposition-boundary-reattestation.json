@@ -1,0 +1,238 @@
+{
+  "priorWindow": "W883-W902",
+  "priorHead": "5f295feea832b3078c52d92d9268cd6446f804a5",
+  "priorTree": "22c6c11a817777e2a0df3987acd5fc6bf938c9a7",
+  "previousW902FinalReadbackChecks": [
+    {
+      "sourceIndex": 901,
+      "windowLabel": 902,
+      "sourceId": "ContentId is required.",
+      "locale": "ar",
+      "priorFinalTargetSha256": "16106c0f5d64c15a5bf8f0c0f56e0f5963c33ceddb4307446376018d38520ed8",
+      "currentTargetSha256": "16106c0f5d64c15a5bf8f0c0f56e0f5963c33ceddb4307446376018d38520ed8",
+      "matchesPriorWindowFinalReadback": true
+    },
+    {
+      "sourceIndex": 901,
+      "windowLabel": 902,
+      "sourceId": "ContentId is required.",
+      "locale": "de",
+      "priorFinalTargetSha256": "b569b706ace20baf5ffcfdc46abcc94198e33fd102daf7e48dbe338ef723db00",
+      "currentTargetSha256": "b569b706ace20baf5ffcfdc46abcc94198e33fd102daf7e48dbe338ef723db00",
+      "matchesPriorWindowFinalReadback": true
+    },
+    {
+      "sourceIndex": 901,
+      "windowLabel": 902,
+      "sourceId": "ContentId is required.",
+      "locale": "es",
+      "priorFinalTargetSha256": "4ef307e0002b4a20a086d68f0ea09868ca6302921986e0631de783c053cace63",
+      "currentTargetSha256": "4ef307e0002b4a20a086d68f0ea09868ca6302921986e0631de783c053cace63",
+      "matchesPriorWindowFinalReadback": true
+    },
+    {
+      "sourceIndex": 901,
+      "windowLabel": 902,
+      "sourceId": "ContentId is required.",
+      "locale": "fr",
+      "priorFinalTargetSha256": "ef5ba3595a35fa1eb3a27873511feac4e3e2be33a3b33ff5c40e7f4828a316c9",
+      "currentTargetSha256": "ef5ba3595a35fa1eb3a27873511feac4e3e2be33a3b33ff5c40e7f4828a316c9",
+      "matchesPriorWindowFinalReadback": true
+    },
+    {
+      "sourceIndex": 901,
+      "windowLabel": 902,
+      "sourceId": "ContentId is required.",
+      "locale": "hi",
+      "priorFinalTargetSha256": "dbeae1730268179f059818123171a03eece5c094cb351b870f0e11abc3e18a33",
+      "currentTargetSha256": "dbeae1730268179f059818123171a03eece5c094cb351b870f0e11abc3e18a33",
+      "matchesPriorWindowFinalReadback": true
+    },
+    {
+      "sourceIndex": 901,
+      "windowLabel": 902,
+      "sourceId": "ContentId is required.",
+      "locale": "id",
+      "priorFinalTargetSha256": "bea4f48b08a3883612209848348a9357a308f0611ebd4c52136d4ee2cf66a9d3",
+      "currentTargetSha256": "bea4f48b08a3883612209848348a9357a308f0611ebd4c52136d4ee2cf66a9d3",
+      "matchesPriorWindowFinalReadback": true
+    },
+    {
+      "sourceIndex": 901,
+      "windowLabel": 902,
+      "sourceId": "ContentId is required.",
+      "locale": "ja",
+      "priorFinalTargetSha256": "f58d2a69c36857bd82e9a225e62827ed4bb2d2f749181842970cef2ed0b9e91f",
+      "currentTargetSha256": "f58d2a69c36857bd82e9a225e62827ed4bb2d2f749181842970cef2ed0b9e91f",
+      "matchesPriorWindowFinalReadback": true
+    },
+    {
+      "sourceIndex": 901,
+      "windowLabel": 902,
+      "sourceId": "ContentId is required.",
+      "locale": "ko",
+      "priorFinalTargetSha256": "221f35f5b3799e5735b0b31c584f1a0c484a56e1a5a7da24f59ea762bb14a313",
+      "currentTargetSha256": "221f35f5b3799e5735b0b31c584f1a0c484a56e1a5a7da24f59ea762bb14a313",
+      "matchesPriorWindowFinalReadback": true
+    },
+    {
+      "sourceIndex": 901,
+      "windowLabel": 902,
+      "sourceId": "ContentId is required.",
+      "locale": "pt-BR",
+      "priorFinalTargetSha256": "eb94ae49f5dca0065fa010b55d8dc3cfdc283fa1e7c807ca08474b861456e43d",
+      "currentTargetSha256": "eb94ae49f5dca0065fa010b55d8dc3cfdc283fa1e7c807ca08474b861456e43d",
+      "matchesPriorWindowFinalReadback": true
+    },
+    {
+      "sourceIndex": 901,
+      "windowLabel": 902,
+      "sourceId": "ContentId is required.",
+      "locale": "vi",
+      "priorFinalTargetSha256": "cc02d316bae712ed7d85e60d4b91bef0c741021e61abd6efb59123d59449b8e3",
+      "currentTargetSha256": "cc02d316bae712ed7d85e60d4b91bef0c741021e61abd6efb59123d59449b8e3",
+      "matchesPriorWindowFinalReadback": true
+    },
+    {
+      "sourceIndex": 901,
+      "windowLabel": 902,
+      "sourceId": "ContentId is required.",
+      "locale": "zh-Hans",
+      "priorFinalTargetSha256": "816322fa4ba8da12707069afbad3facad27b17c7e542767065e875711249a1d8",
+      "currentTargetSha256": "816322fa4ba8da12707069afbad3facad27b17c7e542767065e875711249a1d8",
+      "matchesPriorWindowFinalReadback": true
+    },
+    {
+      "sourceIndex": 901,
+      "windowLabel": 902,
+      "sourceId": "ContentId is required.",
+      "locale": "zh-Hant",
+      "priorFinalTargetSha256": "89fe166f4878397ecac8be8ffe145d1ea7f39f9db7841aaae7c992d3b520938a",
+      "currentTargetSha256": "89fe166f4878397ecac8be8ffe145d1ea7f39f9db7841aaae7c992d3b520938a",
+      "matchesPriorWindowFinalReadback": true
+    }
+  ],
+  "newW903StartVsPreviousPinnedBoundary": [
+    {
+      "sourceIndex": 902,
+      "windowLabel": 903,
+      "sourceId": "Continue",
+      "locale": "ar",
+      "priorSourceSha256": "31fbef162594de01bab0cd525c51f74de7bcb15063029fa1a54b2cf5944c80d8",
+      "priorTargetSha256": "fdbc838bde8458d462763ed8ab8a326c8e13921e885efd664c7cb92312cef6a9",
+      "currentTargetSha256": "fdbc838bde8458d462763ed8ab8a326c8e13921e885efd664c7cb92312cef6a9",
+      "matchesPriorFollowingBoundary": true
+    },
+    {
+      "sourceIndex": 902,
+      "windowLabel": 903,
+      "sourceId": "Continue",
+      "locale": "de",
+      "priorSourceSha256": "31fbef162594de01bab0cd525c51f74de7bcb15063029fa1a54b2cf5944c80d8",
+      "priorTargetSha256": "7617e04629831e445b4a538430917787dbcabb233fa72ba40cdf3e99d99c0439",
+      "currentTargetSha256": "7617e04629831e445b4a538430917787dbcabb233fa72ba40cdf3e99d99c0439",
+      "matchesPriorFollowingBoundary": true
+    },
+    {
+      "sourceIndex": 902,
+      "windowLabel": 903,
+      "sourceId": "Continue",
+      "locale": "es",
+      "priorSourceSha256": "31fbef162594de01bab0cd525c51f74de7bcb15063029fa1a54b2cf5944c80d8",
+      "priorTargetSha256": "63e2bbaf1c924391bad24220f9b09f898e1dd6e96af1899449193886c642e496",
+      "currentTargetSha256": "63e2bbaf1c924391bad24220f9b09f898e1dd6e96af1899449193886c642e496",
+      "matchesPriorFollowingBoundary": true
+    },
+    {
+      "sourceIndex": 902,
+      "windowLabel": 903,
+      "sourceId": "Continue",
+      "locale": "fr",
+      "priorSourceSha256": "31fbef162594de01bab0cd525c51f74de7bcb15063029fa1a54b2cf5944c80d8",
+      "priorTargetSha256": "3bc3807f225b2e66992b91a2092dd23b0c1190fdacfd4a2435bc0b7158b7650e",
+      "currentTargetSha256": "3bc3807f225b2e66992b91a2092dd23b0c1190fdacfd4a2435bc0b7158b7650e",
+      "matchesPriorFollowingBoundary": true
+    },
+    {
+      "sourceIndex": 902,
+      "windowLabel": 903,
+      "sourceId": "Continue",
+      "locale": "hi",
+      "priorSourceSha256": "31fbef162594de01bab0cd525c51f74de7bcb15063029fa1a54b2cf5944c80d8",
+      "priorTargetSha256": "05db2bbe31fa053fd51c64b663ee39e41c54d387a85238980fea9aa1aec20f7f",
+      "currentTargetSha256": "05db2bbe31fa053fd51c64b663ee39e41c54d387a85238980fea9aa1aec20f7f",
+      "matchesPriorFollowingBoundary": true
+    },
+    {
+      "sourceIndex": 902,
+      "windowLabel": 903,
+      "sourceId": "Continue",
+      "locale": "id",
+      "priorSourceSha256": "31fbef162594de01bab0cd525c51f74de7bcb15063029fa1a54b2cf5944c80d8",
+      "priorTargetSha256": "5825ea6f7f19c5a523dd78a39cdd646a80ed251d32f00ca4b2d61dd192397410",
+      "currentTargetSha256": "5825ea6f7f19c5a523dd78a39cdd646a80ed251d32f00ca4b2d61dd192397410",
+      "matchesPriorFollowingBoundary": true
+    },
+    {
+      "sourceIndex": 902,
+      "windowLabel": 903,
+      "sourceId": "Continue",
+      "locale": "ja",
+      "priorSourceSha256": "31fbef162594de01bab0cd525c51f74de7bcb15063029fa1a54b2cf5944c80d8",
+      "priorTargetSha256": "2c763d541c0b2cccf5b8d2a3f1c57c87f703e5aad0f0185794aeb7375407f02f",
+      "currentTargetSha256": "2c763d541c0b2cccf5b8d2a3f1c57c87f703e5aad0f0185794aeb7375407f02f",
+      "matchesPriorFollowingBoundary": true
+    },
+    {
+      "sourceIndex": 902,
+      "windowLabel": 903,
+      "sourceId": "Continue",
+      "locale": "ko",
+      "priorSourceSha256": "31fbef162594de01bab0cd525c51f74de7bcb15063029fa1a54b2cf5944c80d8",
+      "priorTargetSha256": "ed5816d9c221b21405f3498ae9fdb23f233254c780c369ec43a8ec8c1bc0f164",
+      "currentTargetSha256": "ed5816d9c221b21405f3498ae9fdb23f233254c780c369ec43a8ec8c1bc0f164",
+      "matchesPriorFollowingBoundary": true
+    },
+    {
+      "sourceIndex": 902,
+      "windowLabel": 903,
+      "sourceId": "Continue",
+      "locale": "pt-BR",
+      "priorSourceSha256": "31fbef162594de01bab0cd525c51f74de7bcb15063029fa1a54b2cf5944c80d8",
+      "priorTargetSha256": "63e2bbaf1c924391bad24220f9b09f898e1dd6e96af1899449193886c642e496",
+      "currentTargetSha256": "63e2bbaf1c924391bad24220f9b09f898e1dd6e96af1899449193886c642e496",
+      "matchesPriorFollowingBoundary": true
+    },
+    {
+      "sourceIndex": 902,
+      "windowLabel": 903,
+      "sourceId": "Continue",
+      "locale": "vi",
+      "priorSourceSha256": "31fbef162594de01bab0cd525c51f74de7bcb15063029fa1a54b2cf5944c80d8",
+      "priorTargetSha256": "87a7ae881fae63a867ff45202cffc86fcef4a7108c4e939c5dc7b648dbb6f5a8",
+      "currentTargetSha256": "87a7ae881fae63a867ff45202cffc86fcef4a7108c4e939c5dc7b648dbb6f5a8",
+      "matchesPriorFollowingBoundary": true
+    },
+    {
+      "sourceIndex": 902,
+      "windowLabel": 903,
+      "sourceId": "Continue",
+      "locale": "zh-Hans",
+      "priorSourceSha256": "31fbef162594de01bab0cd525c51f74de7bcb15063029fa1a54b2cf5944c80d8",
+      "priorTargetSha256": "7c9691192f1b73408bbe4c0cb6d00db94375ca9d8fce0a0d5985e7a5178f083f",
+      "currentTargetSha256": "7c9691192f1b73408bbe4c0cb6d00db94375ca9d8fce0a0d5985e7a5178f083f",
+      "matchesPriorFollowingBoundary": true
+    },
+    {
+      "sourceIndex": 902,
+      "windowLabel": 903,
+      "sourceId": "Continue",
+      "locale": "zh-Hant",
+      "priorSourceSha256": "31fbef162594de01bab0cd525c51f74de7bcb15063029fa1a54b2cf5944c80d8",
+      "priorTargetSha256": "d9d1f08fa5ced3965150327ccbf5aad936f1d9f0e36ce8e424a85d06bf14a8c9",
+      "currentTargetSha256": "d9d1f08fa5ced3965150327ccbf5aad936f1d9f0e36ce8e424a85d06bf14a8c9",
+      "matchesPriorFollowingBoundary": true
+    }
+  ],
+  "allChecksPass": true
+}

@@ -1,0 +1,54 @@
+{
+  "title": "Independent blind review: slskR PR #204 W1123-W1142",
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "head": "dba3af4fcddf494bc0ca7da48d3f61d6f75f769c",
+  "tree": "7d83b6559bc28ee385f7da9b7c84eb46a91388f6",
+  "window": "W1123-W1142",
+  "cellCount": 240,
+  "sourceCount": 20,
+  "localeCount": 12,
+  "dispositionCounts": {
+    "accept-current": 165,
+    "correction": 47,
+    "refinement": 10,
+    "hold-no-direct-caller": 12,
+    "hold-term": 6
+  },
+  "proposalCount": 57,
+  "callerHoldCount": 12,
+  "termHoldCount": 6,
+  "callerHoldSourceIds": [
+    "Directory {directory} is locked"
+  ],
+  "termHoldGroup": {
+    "Disable authority {authorityKey}": [
+      "de",
+      "ja",
+      "ko",
+      "zh-Hans",
+      "zh-Hant",
+      "vi"
+    ]
+  },
+  "inputDirectory": "/mnt/disks/scratch/task-scratch/slskr-pr204-w1123-1142-primary-20261103/clean-input",
+  "inputFileSha256": {
+    "README.md": "35aaccafdcc395e2dd56dd0227fe6c6d6799e8f76512965dab4be74694fb4f9b",
+    "manifest.json": "bf4fbf438f51b9428118919d5df7f518d5ec28cec350649c766bfdc6e13a0676",
+    "catalog-file-pins.json": "64eae4d7c7f59b758c331fcba6f1ee2db0a84a8fe17678233036d2a99265fc9b",
+    "current-target-cells.jsonl": "bdc047e36f0339195cbeaf44aef851bdc76df9e15e61ca11412b6b9bed849f05",
+    "source-contexts.jsonl": "c1f051f59f51c4a75f7eb7375707192991fb3b67c42dcf059eba18b894154bc8"
+  },
+  "candidateFreeInputContainedNoPrimaryOrProposalData": true,
+  "livePullRequestReattested": true,
+  "placeholderParityErrors": 0,
+  "httpsAcronymMismatchCount": 0,
+  "nativeSpeakerApproval": "pending; independent machine-assisted review only",
+  "methodology": "Independently reviewed each current target against the pinned English source ID, exact caller snippets/roles, interpolation placeholders, and technical/security semantics. Did not inspect primary review outputs or candidate proposals. Unsupported source additions and unclear product terminology are corrections or holds.",
+  "limitations": "No qualified native-speaker validation or headed-browser review. Proposed network, authority, audio, and locale-specific copy requires native-speaker confirmation.",
+  "testsBuildsScansCIOrBrowserRun": false,
+  "repositoryOrPrMutated": false,
+  "nextWindow": "W1143-W1162",
+  "nextBoundarySourceId": "Disable karaoke mode"
+}

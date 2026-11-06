@@ -1,0 +1,85 @@
+{
+  "review_head": "6f8d2b252131a2b68f85d66eb5210e0b6e9f6511",
+  "review_tree": "2fece646fa9dcb6892cad5233b7c79eb08997c24",
+  "source_commit": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "files": {
+    "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx": {
+      "commit": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+      "tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+      "git_blob": "90f3e1d29a4b514a1877693e131e92b66b8050aa",
+      "sha256": "17241e796b943988d339bac74569f5a5d4e8889194cad1221d0b9c8bc1b82a9e",
+      "bytes": 53474
+    },
+    "web/src/components/System/Security/AdversarialSettingsView.jsx": {
+      "commit": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+      "tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+      "git_blob": "adcacdd123faf82a315da746fab3243adf5ea6a3",
+      "sha256": "5b2dfa095ba281bae2b5ef66e17901b38c7d2a68d9bef52c5f016ce3352db72d",
+      "bytes": 41904
+    },
+    "web/src/components/System/SourceProviders/index.jsx": {
+      "commit": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+      "tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+      "git_blob": "b776fdcbf40703674082b79be9c75e84d03839e9",
+      "sha256": "1f056026eede462d5e5410afe292d84103e6204288a6fa26a6cfb6647b2b9462",
+      "bytes": 11334
+    },
+    "web/src/components/Transfers/TransfersHeader.jsx": {
+      "commit": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+      "tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+      "git_blob": "de01ff39c31f0ac094b95fba0a15f40f709f605c",
+      "sha256": "57f43a6851d991b9241b73a0f9ff08636573a49282033722f7350fb7f2a44d6f",
+      "bytes": 9771
+    },
+    "web/src/components/Wishlist/WishlistModal.jsx": {
+      "commit": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+      "tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+      "git_blob": "16b4aa4c5a2ab57b1a0c2f6581e99dfdd4b24727",
+      "sha256": "49f9f293410dec17e1d3c335ba49218fb7b351aa04a7bfc3ae107b138bf06582",
+      "bytes": 8939
+    },
+    "web/src/components/Wishlist/WishlistItemRow.jsx": {
+      "commit": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+      "tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+      "git_blob": "cbc2e023f27b0cd4362391c295562862de51b49b",
+      "sha256": "b7252496aad45e77b718dae85e6d6cb298f1591bc77633c7957ba1806c384d6b",
+      "bytes": 6193
+    },
+    "web/src/components/Wishlist/CsvImportModal.jsx": {
+      "commit": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+      "tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+      "git_blob": "1d903eda3b3f4988847b4e646809337791feaeff",
+      "sha256": "fbe532b944fcce8d11e6027944a206b88c9dfea87a1f185f45249fb5ee4ddd3e",
+      "bytes": 6147
+    },
+    "web/src/components/System/Integrations/MetadataSettingsPanel.jsx": {
+      "commit": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+      "tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+      "git_blob": "0d0ffc8e16a072970a51604bd95d76f7f796669f",
+      "sha256": "e5aaf906b4cfc6e17ef8706bc95efb660b0eda2748bf2dad1c411ee9621d6339",
+      "bytes": 35742
+    },
+    "web/src/components/Player/PlayerQueueModal.jsx": {
+      "commit": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+      "tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+      "git_blob": "8bdaf63060b6c9995f89f991500563aa06869593",
+      "sha256": "dbfe2ed6f8e0bf5b68fa51db9305473b19b63fe3a4d601c975b0cdeebd74c048",
+      "bytes": 12928
+    },
+    "web/src/components/Transfers/Transfers.jsx": {
+      "commit": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+      "tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+      "git_blob": "00f3488b547c2f6e4d97fbd6d0931b724ea3c17d",
+      "sha256": "744da23792a1fac5929a4802600b1cc7f238a3f3fabe1f33ded598b2b546b662",
+      "bytes": 25148
+    },
+    "web/src/components/System/Integrations/LidarrPanel.jsx": {
+      "commit": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+      "tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+      "git_blob": "3bb24c3fb94ceb4815dce12999fbacb898437e83",
+      "sha256": "6fff815fc95b10400d84970dfa25f8bdf05d5bb360d719a3cf7f1cc62bcab8ea",
+      "bytes": 15378
+    }
+  }
+}

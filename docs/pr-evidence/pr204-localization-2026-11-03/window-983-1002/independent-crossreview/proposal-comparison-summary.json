@@ -1,0 +1,543 @@
+{
+  "task": "post-seal primary/independent cell comparison",
+  "primaryLedgerPath": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0983-1002-primary-20261102/primary-review-ledger.jsonl",
+  "blindLedgerPath": "blind-ledger.jsonl",
+  "blindLedgerSha256": "9c4b196efb93ac708f2bc2d346dce5fa504ca073844cec95ea4df6807c83d362",
+  "blindLedgerUnmodified": true,
+  "primaryLedgerSha256": "28b2a31cd39a3216836b7a2fe7ac3781daefd3e89d60613596aa34a20ef96088",
+  "counts": {
+    "cells": 240,
+    "dispositionAgreements": 216,
+    "cellsWithAnyDispositionOrProposalDifference": 34,
+    "dispositionDifferences": 24,
+    "proposalAgreements": 209,
+    "proposalDifferences": 31,
+    "primaryProposalRows": 51,
+    "primaryReviewedFinalRows": 216,
+    "sourceOrCurrentMismatches": 0,
+    "primaryFinalStructuralFailures": 4,
+    "blindFinalPrimaryFinalDisagreements": 31,
+    "blindDispositionCounts": {
+      "hold": 24,
+      "refinement": 14,
+      "accept-current": 160,
+      "correction": 42
+    },
+    "primaryDispositionCounts": {
+      "hold": 24,
+      "accept-current": 165,
+      "correction": 40,
+      "refinement": 11
+    }
+  },
+  "sourceOrCurrentMismatches": [],
+  "reviewDifferences": [
+    {
+      "sourcePosition": 985,
+      "locale": "ar",
+      "sourceId": "Could not update Wishlist filters.",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "refinement",
+      "blindTarget": "تعذر تحديث عوامل تصفية قائمة الرغبات.",
+      "primaryDisposition": "accept-current",
+      "primaryTarget": null,
+      "primaryReviewedFinal": "تعذر تحديث عوامل تصفية قائمة الأمنيات."
+    },
+    {
+      "sourcePosition": 985,
+      "locale": "hi",
+      "sourceId": "Could not update Wishlist filters.",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "refinement",
+      "blindTarget": "इच्छा सूची के फ़िल्टर अपडेट नहीं हो सके।",
+      "primaryDisposition": "accept-current",
+      "primaryTarget": null,
+      "primaryReviewedFinal": "विशलिस्ट फ़िल्टर अपडेट नहीं हो सके।"
+    },
+    {
+      "sourcePosition": 985,
+      "locale": "id",
+      "sourceId": "Could not update Wishlist filters.",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "refinement",
+      "blindTarget": "Tidak dapat memperbarui filter Daftar keinginan.",
+      "primaryDisposition": "accept-current",
+      "primaryTarget": null,
+      "primaryReviewedFinal": "Tidak dapat memperbarui filter Wishlist."
+    },
+    {
+      "sourcePosition": 985,
+      "locale": "vi",
+      "sourceId": "Could not update Wishlist filters.",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "refinement",
+      "blindTarget": "Không thể cập nhật bộ lọc Danh sách yêu thích.",
+      "primaryDisposition": "accept-current",
+      "primaryTarget": null,
+      "primaryReviewedFinal": "Không thể cập nhật bộ lọc Danh sách mong muốn."
+    },
+    {
+      "sourcePosition": 985,
+      "locale": "zh-Hans",
+      "sourceId": "Could not update Wishlist filters.",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "refinement",
+      "blindTarget": "无法更新愿望单筛选条件。",
+      "primaryDisposition": "accept-current",
+      "primaryTarget": null,
+      "primaryReviewedFinal": "无法更新愿望清单筛选条件。"
+    },
+    {
+      "sourcePosition": 986,
+      "locale": "ko",
+      "sourceId": "Count",
+      "differences": [
+        "proposal-text"
+      ],
+      "blindDisposition": "correction",
+      "blindTarget": "개수",
+      "primaryDisposition": "correction",
+      "primaryTarget": "건수",
+      "primaryReviewedFinal": "건수"
+    },
+    {
+      "sourcePosition": 987,
+      "locale": "fr",
+      "sourceId": "Counters for signatures, reputation, rate limits, and quarantine",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "correction",
+      "blindTarget": "Compteurs de signatures, de réputation, de limites de fréquence et de quarantaine",
+      "primaryDisposition": "accept-current",
+      "primaryTarget": null,
+      "primaryReviewedFinal": "Compteurs de signatures, de réputation, de limites de débit et de quarantaine"
+    },
+    {
+      "sourcePosition": 987,
+      "locale": "id",
+      "sourceId": "Counters for signatures, reputation, rate limits, and quarantine",
+      "differences": [
+        "proposal-text"
+      ],
+      "blindDisposition": "correction",
+      "blindTarget": "Penghitung tanda tangan, reputasi, pembatasan frekuensi, dan karantina",
+      "primaryDisposition": "correction",
+      "primaryTarget": "Penghitung tanda tangan, reputasi, batas frekuensi, dan karantina",
+      "primaryReviewedFinal": "Penghitung tanda tangan, reputasi, batas frekuensi, dan karantina"
+    },
+    {
+      "sourcePosition": 988,
+      "locale": "de",
+      "sourceId": "Cover Traffic",
+      "differences": [
+        "proposal-text"
+      ],
+      "blindDisposition": "correction",
+      "blindTarget": "Cover-Traffic",
+      "primaryDisposition": "correction",
+      "primaryTarget": "Tarnverkehr",
+      "primaryReviewedFinal": "Tarnverkehr"
+    },
+    {
+      "sourcePosition": 988,
+      "locale": "hi",
+      "sourceId": "Cover Traffic",
+      "differences": [
+        "proposal-text"
+      ],
+      "blindDisposition": "correction",
+      "blindTarget": "कवर ट्रैफ़िक",
+      "primaryDisposition": "correction",
+      "primaryTarget": "छद्म ट्रैफ़िक",
+      "primaryReviewedFinal": "छद्म ट्रैफ़िक"
+    },
+    {
+      "sourcePosition": 989,
+      "locale": "fr",
+      "sourceId": "Cover art",
+      "differences": [
+        "disposition"
+      ],
+      "blindDisposition": "refinement",
+      "blindTarget": "Pochette",
+      "primaryDisposition": "correction",
+      "primaryTarget": "Pochette",
+      "primaryReviewedFinal": "Pochette"
+    },
+    {
+      "sourcePosition": 989,
+      "locale": "zh-Hans",
+      "sourceId": "Cover art",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "accept-current",
+      "blindTarget": null,
+      "primaryDisposition": "correction",
+      "primaryTarget": "封面图",
+      "primaryReviewedFinal": "封面图"
+    },
+    {
+      "sourcePosition": 989,
+      "locale": "zh-Hant",
+      "sourceId": "Cover art",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "accept-current",
+      "blindTarget": null,
+      "primaryDisposition": "correction",
+      "primaryTarget": "封面圖",
+      "primaryReviewedFinal": "封面圖"
+    },
+    {
+      "sourcePosition": 990,
+      "locale": "zh-Hans",
+      "sourceId": "Cover art policy for {name}",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "accept-current",
+      "blindTarget": null,
+      "primaryDisposition": "refinement",
+      "primaryTarget": "{name} 的封面图策略",
+      "primaryReviewedFinal": "{name} 的封面图策略"
+    },
+    {
+      "sourcePosition": 990,
+      "locale": "zh-Hant",
+      "sourceId": "Cover art policy for {name}",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "accept-current",
+      "blindTarget": null,
+      "primaryDisposition": "refinement",
+      "primaryTarget": "{name} 的封面圖策略",
+      "primaryReviewedFinal": "{name} 的封面圖策略"
+    },
+    {
+      "sourcePosition": 991,
+      "locale": "vi",
+      "sourceId": "Coverage of shared FLACs",
+      "differences": [
+        "proposal-text"
+      ],
+      "blindDisposition": "correction",
+      "blindTarget": "Mức độ bao phủ các tệp FLAC dùng chung",
+      "primaryDisposition": "correction",
+      "primaryTarget": "Mức độ bao phủ các tệp FLAC được chia sẻ",
+      "primaryReviewedFinal": "Mức độ bao phủ các tệp FLAC được chia sẻ"
+    },
+    {
+      "sourcePosition": 992,
+      "locale": "vi",
+      "sourceId": "Create",
+      "differences": [
+        "disposition"
+      ],
+      "blindDisposition": "refinement",
+      "blindTarget": "Tạo",
+      "primaryDisposition": "correction",
+      "primaryTarget": "Tạo",
+      "primaryReviewedFinal": "Tạo"
+    },
+    {
+      "sourcePosition": 994,
+      "locale": "hi",
+      "sourceId": "Create Content-Linked Pod",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "correction",
+      "blindTarget": "कंटेंट-लिंक्ड Pod बनाएं",
+      "primaryDisposition": "accept-current",
+      "primaryTarget": null,
+      "primaryReviewedFinal": "कंटेंट-लिंक्ड पॉड बनाएं"
+    },
+    {
+      "sourcePosition": 994,
+      "locale": "ja",
+      "sourceId": "Create Content-Linked Pod",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "correction",
+      "blindTarget": "コンテンツにリンクされた Pod の作成",
+      "primaryDisposition": "accept-current",
+      "primaryTarget": null,
+      "primaryReviewedFinal": "コンテンツにリンクされたポッドの作成"
+    },
+    {
+      "sourcePosition": 994,
+      "locale": "ko",
+      "sourceId": "Create Content-Linked Pod",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "correction",
+      "blindTarget": "콘텐츠 연결 Pod 생성",
+      "primaryDisposition": "accept-current",
+      "primaryTarget": null,
+      "primaryReviewedFinal": "콘텐츠 연결 포드 생성"
+    },
+    {
+      "sourcePosition": 994,
+      "locale": "pt-BR",
+      "sourceId": "Create Content-Linked Pod",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "refinement",
+      "blindTarget": "Criar Pod vinculado ao conteúdo",
+      "primaryDisposition": "accept-current",
+      "primaryTarget": null,
+      "primaryReviewedFinal": "Criar pod vinculado a conteúdo"
+    },
+    {
+      "sourcePosition": 994,
+      "locale": "zh-Hans",
+      "sourceId": "Create Content-Linked Pod",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "accept-current",
+      "blindTarget": null,
+      "primaryDisposition": "refinement",
+      "primaryTarget": "创建与内容关联的 Pod",
+      "primaryReviewedFinal": "创建与内容关联的 Pod"
+    },
+    {
+      "sourcePosition": 994,
+      "locale": "zh-Hant",
+      "sourceId": "Create Content-Linked Pod",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "accept-current",
+      "blindTarget": null,
+      "primaryDisposition": "refinement",
+      "primaryTarget": "建立與內容連結的 Pod",
+      "primaryReviewedFinal": "建立與內容連結的 Pod"
+    },
+    {
+      "sourcePosition": 995,
+      "locale": "hi",
+      "sourceId": "Create Group",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "accept-current",
+      "blindTarget": null,
+      "primaryDisposition": "refinement",
+      "primaryTarget": "समूह बनाएँ",
+      "primaryReviewedFinal": "समूह बनाएँ"
+    },
+    {
+      "sourcePosition": 998,
+      "locale": "es",
+      "sourceId": "Create New Room",
+      "differences": [
+        "proposal-text"
+      ],
+      "blindDisposition": "correction",
+      "blindTarget": "Crear una nueva sala",
+      "primaryDisposition": "correction",
+      "primaryTarget": "Crear nueva sala",
+      "primaryReviewedFinal": "Crear nueva sala"
+    },
+    {
+      "sourcePosition": 998,
+      "locale": "hi",
+      "sourceId": "Create New Room",
+      "differences": [
+        "proposal-text"
+      ],
+      "blindDisposition": "refinement",
+      "blindTarget": "नया रूम बनाएँ",
+      "primaryDisposition": "refinement",
+      "primaryTarget": "नया कमरा बनाएँ",
+      "primaryReviewedFinal": "नया कमरा बनाएँ"
+    },
+    {
+      "sourcePosition": 998,
+      "locale": "zh-Hant",
+      "sourceId": "Create New Room",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "correction",
+      "blindTarget": "建立新的聊天室",
+      "primaryDisposition": "accept-current",
+      "primaryTarget": null,
+      "primaryReviewedFinal": "建立新房間"
+    },
+    {
+      "sourcePosition": 1000,
+      "locale": "de",
+      "sourceId": "Create Room",
+      "differences": [
+        "disposition"
+      ],
+      "blindDisposition": "correction",
+      "blindTarget": "Raum erstellen",
+      "primaryDisposition": "refinement",
+      "primaryTarget": "Raum erstellen",
+      "primaryReviewedFinal": "Raum erstellen"
+    },
+    {
+      "sourcePosition": 1000,
+      "locale": "es",
+      "sourceId": "Create Room",
+      "differences": [
+        "proposal-text"
+      ],
+      "blindDisposition": "correction",
+      "blindTarget": "Crear una sala",
+      "primaryDisposition": "correction",
+      "primaryTarget": "Crear sala",
+      "primaryReviewedFinal": "Crear sala"
+    },
+    {
+      "sourcePosition": 1000,
+      "locale": "hi",
+      "sourceId": "Create Room",
+      "differences": [
+        "proposal-text"
+      ],
+      "blindDisposition": "correction",
+      "blindTarget": "रूम बनाएँ",
+      "primaryDisposition": "correction",
+      "primaryTarget": "कमरा बनाएँ",
+      "primaryReviewedFinal": "कमरा बनाएँ"
+    },
+    {
+      "sourcePosition": 1000,
+      "locale": "zh-Hant",
+      "sourceId": "Create Room",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "correction",
+      "blindTarget": "建立聊天室",
+      "primaryDisposition": "accept-current",
+      "primaryTarget": null,
+      "primaryReviewedFinal": "創建房間"
+    },
+    {
+      "sourcePosition": 1001,
+      "locale": "es",
+      "sourceId": "Create Share Group",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "accept-current",
+      "blindTarget": null,
+      "primaryDisposition": "correction",
+      "primaryTarget": "Crear grupo para compartir",
+      "primaryReviewedFinal": "Crear grupo para compartir"
+    },
+    {
+      "sourcePosition": 1001,
+      "locale": "hi",
+      "sourceId": "Create Share Group",
+      "differences": [
+        "proposal-text"
+      ],
+      "blindDisposition": "refinement",
+      "blindTarget": "शेयर समूह बनाएँ",
+      "primaryDisposition": "refinement",
+      "primaryTarget": "साझा समूह बनाएँ",
+      "primaryReviewedFinal": "साझा समूह बनाएँ"
+    },
+    {
+      "sourcePosition": 1001,
+      "locale": "zh-Hant",
+      "sourceId": "Create Share Group",
+      "differences": [
+        "disposition",
+        "proposal-presence"
+      ],
+      "blindDisposition": "refinement",
+      "blindTarget": "建立分享群組",
+      "primaryDisposition": "accept-current",
+      "primaryTarget": null,
+      "primaryReviewedFinal": "建立共享組"
+    }
+  ],
+  "primaryFinalStructuralIssues": [
+    {
+      "sourcePosition": 994,
+      "locale": "hi",
+      "sourceId": "Create Content-Linked Pod",
+      "primaryFinal": "कंटेंट-लिंक्ड पॉड बनाएं",
+      "failed": [
+        "protectedLiterals"
+      ]
+    },
+    {
+      "sourcePosition": 994,
+      "locale": "ja",
+      "sourceId": "Create Content-Linked Pod",
+      "primaryFinal": "コンテンツにリンクされたポッドの作成",
+      "failed": [
+        "protectedLiterals"
+      ]
+    },
+    {
+      "sourcePosition": 994,
+      "locale": "ko",
+      "sourceId": "Create Content-Linked Pod",
+      "primaryFinal": "콘텐츠 연결 포드 생성",
+      "failed": [
+        "protectedLiterals"
+      ]
+    },
+    {
+      "sourcePosition": 994,
+      "locale": "pt-BR",
+      "sourceId": "Create Content-Linked Pod",
+      "primaryFinal": "Criar pod vinculado a conteúdo",
+      "failed": [
+        "protectedLiterals"
+      ]
+    }
+  ],
+  "notes": [
+    "Comparison ran after BLIND-SHA256SUMS.txt verified all pre-comparison outputs.",
+    "Comparison keys are (sourcePosition, locale); source/current identity and hashes were rechecked.",
+    "Primary reviewedFinal is compared with the blind final when present.",
+    "The independent protected-literal check treats Pod as exact based on the exact-head standalone catalog key; the four primary structural issues are all Pod transliterations/lowercase variants under that rule."
+  ]
+}

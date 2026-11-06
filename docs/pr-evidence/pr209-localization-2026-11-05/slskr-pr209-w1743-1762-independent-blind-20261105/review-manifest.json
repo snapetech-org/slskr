@@ -1,0 +1,137 @@
+{
+  "artifact": "Independent blind semantic review packet for slskR PR #209 W1743-W1762",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "pullRequestState": "OPEN",
+  "draft": true,
+  "head": "ccbc3dc721c1cbd225d4e512f4f0af4c80476620",
+  "tree": "075d1b72a2fd080404ebec19d354cb863638df21",
+  "headRef": "codex/slskr-l10n-audit-20261104-resync",
+  "baseRef": "main",
+  "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "window": "W1743-W1762",
+  "positions": [
+    1743,
+    1762
+  ],
+  "sourceCount": 20,
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "localeCount": 12,
+  "cellCount": 240,
+  "reviewableCellCount": 216,
+  "callerlessPositions": [
+    1754,
+    1755
+  ],
+  "callerlessCellCount": 24,
+  "candidateFreeBlindReview": true,
+  "priorProposalOrDecisionFilesRead": false,
+  "sourceInputPath": "/mnt/disks/scratch/task-scratch/slskr-pr209-w1743-1762-20261105/candidate-free-input",
+  "sourceInputManifestSha256": "ece7849af83f11071f952b38f0a625dda25e94e963488f1d889b65b66ada1e43",
+  "sourceInputChecksumListSha256": "451cbab646d5deb9dd8564aa9e39e9abc508c1d6c1dfc6d0118048663a0785f6",
+  "sourceInputFileHashes": {
+    "manifest.json": "ece7849af83f11071f952b38f0a625dda25e94e963488f1d889b65b66ada1e43",
+    "SHA256SUMS.txt": "451cbab646d5deb9dd8564aa9e39e9abc508c1d6c1dfc6d0118048663a0785f6",
+    "selected-source-keys.txt": "15066eb62f41c0fcb75c735c6b0b72910e45771883bad86096277bb7b9acadb6",
+    "source-queue.jsonl": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+    "source-contexts.jsonl": "f7c24ede726021d7d121819ce0b21079a397d48b27da6b92c9db9a1ee31d7d4b",
+    "current-target-cells.jsonl": "e7ec1eb504c176ccf6d3ee6398d7c7d2417f03cbf355d1f25fcbd7c981e3bc01",
+    "localization-runtime-context.json": "25614de30a3ec662aa4255f3b705a9f2399a38b7be75f7e6a5239a993855c69d",
+    "source-order-lineage.json": "4e15ef366b4b6f12533a9f9d1c9f4ad320dcbb24386c899e6d189a249e0eb64d",
+    "active-hold-reattestation.jsonl": "20e7ed50d949e0dc16bd4365a37d7f2a217a99bd48a6d9f3b356b983df23a19a"
+  },
+  "counts": {
+    "accept": 203,
+    "revise": 13,
+    "hold": 24
+  },
+  "countsByLocale": {
+    "es": {
+      "accept": 17,
+      "hold": 2,
+      "revise": 1
+    },
+    "zh-Hans": {
+      "accept": 17,
+      "hold": 2,
+      "revise": 1
+    },
+    "hi": {
+      "accept": 17,
+      "hold": 2,
+      "revise": 1
+    },
+    "de": {
+      "accept": 17,
+      "hold": 2,
+      "revise": 1
+    },
+    "ja": {
+      "accept": 17,
+      "hold": 2,
+      "revise": 1
+    },
+    "fr": {
+      "accept": 16,
+      "revise": 2,
+      "hold": 2
+    },
+    "pt-BR": {
+      "accept": 17,
+      "hold": 2,
+      "revise": 1
+    },
+    "ar": {
+      "accept": 17,
+      "hold": 2,
+      "revise": 1
+    },
+    "ko": {
+      "accept": 17,
+      "hold": 2,
+      "revise": 1
+    },
+    "zh-Hant": {
+      "accept": 17,
+      "hold": 2,
+      "revise": 1
+    },
+    "vi": {
+      "accept": 17,
+      "hold": 2,
+      "revise": 1
+    },
+    "id": {
+      "accept": 17,
+      "hold": 2,
+      "revise": 1
+    }
+  },
+  "callerReferenceCount": 28,
+  "callerOccurrenceCount": 28,
+  "callerFileCount": 19,
+  "activeHoldPreservedHashOnly": [
+    "1719::id"
+  ],
+  "previousWindow": "W1723-W1742",
+  "queueMatchesPreviousSealedQueue": true,
+  "inputLimitations": [
+    "No native-language reviewer was available; recommendations across locales are moderate confidence.",
+    "Review used the candidate-free source strings, current targets, pinned caller excerpts, and pinned localization runtime context. No rendered UI screenshots or external terminology references were included."
+  ],
+  "reviewBasis": "Semantic decisions were made against pinned caller contexts. Every caller-backed target hash, context pin, catalog pin, placeholder sequence, markup signature, numeric signature, and protected-literal preservation is independently checked by the verifier. Callerless cells and the carried active hold contain hashes only.",
+  "sealed": true
+}

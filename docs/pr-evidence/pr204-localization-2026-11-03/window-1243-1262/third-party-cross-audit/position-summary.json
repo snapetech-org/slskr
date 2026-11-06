@@ -1,0 +1,306 @@
+{
+  "1243": {
+    "sourceKey": "Dry run (preview changes without applying)",
+    "finalDispositions": {
+      "accept-current": 9,
+      "correction": 2,
+      "refinement": 1
+    },
+    "primaryDispositions": {
+      "accept-current": 10,
+      "correction": 2
+    },
+    "blindDispositions": {
+      "accepted": 10,
+      "correction": 1,
+      "refinement": 1
+    },
+    "changedCells": 3
+  },
+  "1244": {
+    "sourceKey": "Dry run:",
+    "finalDispositions": {
+      "accept-current": 10,
+      "correction": 2
+    },
+    "primaryDispositions": {
+      "accept-current": 10,
+      "correction": 2
+    },
+    "blindDispositions": {
+      "accepted": 11,
+      "refinement": 1
+    },
+    "changedCells": 2
+  },
+  "1245": {
+    "sourceKey": "Dry-run plan created from an approved Discovery Inbox candidate. Review and explicit execution are still required before any network activity.",
+    "finalDispositions": {
+      "accept-current": 8,
+      "refinement": 4
+    },
+    "primaryDispositions": {
+      "accept-current": 12
+    },
+    "blindDispositions": {
+      "accepted": 8,
+      "refinement": 4
+    },
+    "changedCells": 4
+  },
+  "1246": {
+    "sourceKey": "Dry-run tag, cover-art, ReplayGain, and path decisions before any file write.",
+    "finalDispositions": {
+      "correction": 8,
+      "refinement": 3,
+      "accept-current": 1
+    },
+    "primaryDispositions": {
+      "correction": 8,
+      "refinement": 3,
+      "accept-current": 1
+    },
+    "blindDispositions": {
+      "refinement": 11,
+      "accepted": 1
+    },
+    "changedCells": 11
+  },
+  "1247": {
+    "sourceKey": "Duplicates Detected:",
+    "finalDispositions": {
+      "accept-current": 11,
+      "refinement": 1
+    },
+    "primaryDispositions": {
+      "accept-current": 12
+    },
+    "blindDispositions": {
+      "accepted": 11,
+      "refinement": 1
+    },
+    "changedCells": 1
+  },
+  "1248": {
+    "sourceKey": "Duration",
+    "finalDispositions": {
+      "accept-current": 7,
+      "correction": 3,
+      "refinement": 2
+    },
+    "primaryDispositions": {
+      "accept-current": 8,
+      "correction": 3,
+      "refinement": 1
+    },
+    "blindDispositions": {
+      "accepted": 7,
+      "refinement": 5
+    },
+    "changedCells": 5
+  },
+  "1249": {
+    "sourceKey": "Duration Seconds",
+    "finalDispositions": {
+      "accept-current": 2,
+      "correction": 8,
+      "refinement": 2
+    },
+    "primaryDispositions": {
+      "accept-current": 2,
+      "correction": 8,
+      "refinement": 2
+    },
+    "blindDispositions": {
+      "accepted": 3,
+      "refinement": 9
+    },
+    "changedCells": 10
+  },
+  "1250": {
+    "sourceKey": "Duration spread: {minutes} min",
+    "finalDispositions": {
+      "accept-current": 11,
+      "refinement": 1
+    },
+    "primaryDispositions": {
+      "accept-current": 11,
+      "refinement": 1
+    },
+    "blindDispositions": {
+      "accepted": 12
+    },
+    "changedCells": 1
+  },
+  "1251": {
+    "sourceKey": "Duration:",
+    "finalDispositions": {
+      "accept-current": 7,
+      "correction": 3,
+      "refinement": 2
+    },
+    "primaryDispositions": {
+      "accept-current": 8,
+      "correction": 3,
+      "refinement": 1
+    },
+    "blindDispositions": {
+      "accepted": 7,
+      "refinement": 5
+    },
+    "changedCells": 5
+  },
+  "1252": {
+    "sourceKey": "Each descriptor requires a ContentID",
+    "finalDispositions": {
+      "correction": 12
+    },
+    "primaryDispositions": {
+      "correction": 12
+    },
+    "blindDispositions": {
+      "accepted": 12
+    },
+    "changedCells": 12
+  },
+  "1253": {
+    "sourceKey": "Each file requires a filename",
+    "finalDispositions": {
+      "correction": 12
+    },
+    "primaryDispositions": {
+      "correction": 12
+    },
+    "blindDispositions": {
+      "accepted": 12
+    },
+    "changedCells": 12
+  },
+  "1254": {
+    "sourceKey": "Each file requires a non-negative size",
+    "finalDispositions": {
+      "correction": 12
+    },
+    "primaryDispositions": {
+      "correction": 12
+    },
+    "blindDispositions": {
+      "accepted": 12
+    },
+    "changedCells": 12
+  },
+  "1255": {
+    "sourceKey": "Each last seen timestamp requires a non-empty channel ID and positive timestamp",
+    "finalDispositions": {
+      "accept-current": 12
+    },
+    "primaryDispositions": {
+      "accept-current": 12
+    },
+    "blindDispositions": {
+      "accepted": 12
+    },
+    "changedCells": 0
+  },
+  "1256": {
+    "sourceKey": "Each link requires a non-empty name and target",
+    "finalDispositions": {
+      "correction": 12
+    },
+    "primaryDispositions": {
+      "correction": 12
+    },
+    "blindDispositions": {
+      "accepted": 12
+    },
+    "changedCells": 12
+  },
+  "1257": {
+    "sourceKey": "Ecosystem",
+    "finalDispositions": {
+      "hold": 12
+    },
+    "primaryDispositions": {
+      "hold": 12
+    },
+    "blindDispositions": {
+      "held": 12
+    },
+    "changedCells": 0
+  },
+  "1258": {
+    "sourceKey": "Edges",
+    "finalDispositions": {
+      "accept-current": 4,
+      "correction": 7,
+      "refinement": 1
+    },
+    "primaryDispositions": {
+      "accept-current": 5,
+      "correction": 7
+    },
+    "blindDispositions": {
+      "accepted": 4,
+      "refinement": 8
+    },
+    "changedCells": 8
+  },
+  "1259": {
+    "sourceKey": "Edit",
+    "finalDispositions": {
+      "accept-current": 12
+    },
+    "primaryDispositions": {
+      "accept-current": 12
+    },
+    "blindDispositions": {
+      "accepted": 12
+    },
+    "changedCells": 0
+  },
+  "1260": {
+    "sourceKey": "Edit Options",
+    "finalDispositions": {
+      "accept-current": 11,
+      "refinement": 1
+    },
+    "primaryDispositions": {
+      "accept-current": 12
+    },
+    "blindDispositions": {
+      "accepted": 11,
+      "refinement": 1
+    },
+    "changedCells": 1
+  },
+  "1261": {
+    "sourceKey": "Edit User Note",
+    "finalDispositions": {
+      "accept-current": 11,
+      "refinement": 1
+    },
+    "primaryDispositions": {
+      "accept-current": 12
+    },
+    "blindDispositions": {
+      "accepted": 11,
+      "refinement": 1
+    },
+    "changedCells": 1
+  },
+  "1262": {
+    "sourceKey": "Edit Wishlist Item",
+    "finalDispositions": {
+      "accept-current": 11,
+      "refinement": 1
+    },
+    "primaryDispositions": {
+      "accept-current": 12
+    },
+    "blindDispositions": {
+      "accepted": 11,
+      "refinement": 1
+    },
+    "changedCells": 1
+  }
+}

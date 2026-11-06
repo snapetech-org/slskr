@@ -1,0 +1,50 @@
+{
+  "observedBeforeWrite": {
+    "capturedAtUTC": "2026-11-03T22:12:35.642352+00:00",
+    "pr": {
+      "baseRefName": "main",
+      "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+      "headRefName": "codex/slskr-l10n-audit-20261030",
+      "headRefOid": "44b37bd94385128d5bb5287aa1545901282bdfcb",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/slskr/pull/204"
+    },
+    "remoteCommitTree": "02c3f149a079c67b010d973dd02ca15776ad1610",
+    "remoteRefs": {
+      "refs/heads/codex/slskr-l10n-audit-20261030": "44b37bd94385128d5bb5287aa1545901282bdfcb",
+      "refs/pull/204/head": "44b37bd94385128d5bb5287aa1545901282bdfcb"
+    },
+    "sourceCheckout": {
+      "clean": true,
+      "head": "44b37bd94385128d5bb5287aa1545901282bdfcb",
+      "path": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1443-1462-source-repo",
+      "statusPorcelain": "",
+      "tree": "02c3f149a079c67b010d973dd02ca15776ad1610"
+    }
+  },
+  "observedDuringSeal": {
+    "capturedAtUTC": "2026-11-03T22:12:39.322756+00:00",
+    "pr": {
+      "baseRefName": "main",
+      "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+      "headRefName": "codex/slskr-l10n-audit-20261030",
+      "headRefOid": "44b37bd94385128d5bb5287aa1545901282bdfcb",
+      "isDraft": true,
+      "state": "OPEN",
+      "url": "https://github.com/snapetech-org/slskr/pull/204"
+    },
+    "remoteCommitTree": "02c3f149a079c67b010d973dd02ca15776ad1610",
+    "remoteRefs": {
+      "refs/heads/codex/slskr-l10n-audit-20261030": "44b37bd94385128d5bb5287aa1545901282bdfcb",
+      "refs/pull/204/head": "44b37bd94385128d5bb5287aa1545901282bdfcb"
+    },
+    "sourceCheckout": {
+      "clean": true,
+      "head": "44b37bd94385128d5bb5287aa1545901282bdfcb",
+      "path": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1443-1462-source-repo",
+      "statusPorcelain": "",
+      "tree": "02c3f149a079c67b010d973dd02ca15776ad1610"
+    }
+  }
+}

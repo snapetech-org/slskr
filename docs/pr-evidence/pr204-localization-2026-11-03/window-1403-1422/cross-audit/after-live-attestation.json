@@ -1,0 +1,27 @@
+{
+  "capturedAtUtc": "2026-11-03T18:37:47.500565+00:00",
+  "expected": {
+    "base": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "branch": "codex/slskr-l10n-audit-20261030",
+    "head": "727500e46852a5b6578e571781693857510943d9",
+    "tree": "c71165c20fc6ba7d49d563898ea2ec8e1e448672"
+  },
+  "localHead": "727500e46852a5b6578e571781693857510943d9",
+  "localHeadTree": "c71165c20fc6ba7d49d563898ea2ec8e1e448672",
+  "localStatusPorcelain": "",
+  "pr": {
+    "baseRefName": "main",
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "727500e46852a5b6578e571781693857510943d9",
+    "isDraft": true,
+    "number": 204,
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "refs": {
+    "refs/heads/codex/slskr-l10n-audit-20261030": "727500e46852a5b6578e571781693857510943d9",
+    "refs/heads/main": "32c8c40666d93690b8b1847001fd66001a4eaf99",
+    "refs/pull/204/head": "727500e46852a5b6578e571781693857510943d9"
+  }
+}

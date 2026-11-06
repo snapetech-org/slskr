@@ -1,0 +1,38 @@
+{
+  "artifact": "slskR PR #209 W1763-W1782 integrated cross-review token audit",
+  "candidateFreeCurrentReportedMismatchCounts": {
+    "markupMismatchCount": 0,
+    "numericTokenMismatchCount": 2,
+    "placeholderSequenceMismatchCount": 0,
+    "protectedLiteralMismatchCount": 3
+  },
+  "crossSelectedTargetAudit": {
+    "manualProtectedTermMismatches": 0,
+    "markupMismatches": 0,
+    "numericMismatches": 0,
+    "placeholderMismatches": 0,
+    "proposalCells": 240,
+    "protectedLiteralSequenceMismatches": 0,
+    "totalMismatchCells": 0
+  },
+  "currentTargetIndependentRecount": {
+    "manualProtectedTermMismatchCells": 18,
+    "markup": 0,
+    "numbers": 2,
+    "placeholders": 0,
+    "sourceProtectedLiteralsMissing": 3,
+    "uniqueCurrentIssueCells": 20
+  },
+  "head": "5191888071f54061a6012acdedfeb518a6cb3661",
+  "policy": "Placeholders and markup sequence, Arabic-digit numeric tokens, protected-literal sequence, and manually pinned ID/ContentID terms must match. The four adopted blind refinements and all primary corrections pass this strict check.",
+  "primaryCurrentAudit": {
+    "allCurrentTokenMismatchCells": 20,
+    "manualOnlyAdditionalMismatchCells": 15,
+    "manualProtectedTermMismatchCells": 18,
+    "markupMismatchCells": 0,
+    "numericTokenMismatchCells": 2,
+    "placeholderSequenceMismatchCells": 0,
+    "protectedLiteralMismatchCells": 3
+  },
+  "tree": "d5728c24b54a06dda432afd2ef5f378206a6cb8f"
+}

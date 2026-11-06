@@ -1,0 +1,114 @@
+{
+  "artifactCountExcludingManifestAndSums": 19,
+  "artifacts": [
+    {
+      "bytes": 1399,
+      "path": "README.md",
+      "sha256": "03a9f5cdbe1ae551fb021d9b0bbc4b90a5aeb22f820fe09a2a046bfed37a6eea"
+    },
+    {
+      "bytes": 17165,
+      "path": "adjacent-boundary-readbacks.jsonl",
+      "sha256": "18a754669025a083bac8c77edb542b30fa6c27f42c32c7e0aa0c82080f834371"
+    },
+    {
+      "bytes": 34366,
+      "path": "build_packet.py",
+      "sha256": "f40a829a776cee3f6046cb7d38f715e03bb2573f547ad6f87c1e35cf2ad4a151"
+    },
+    {
+      "bytes": 1768,
+      "path": "caller-gaps.jsonl",
+      "sha256": "d0e00738c95c48f9b1f2244451408680758b9aa6c84609b66da4aaf15c2c592f"
+    },
+    {
+      "bytes": 21401,
+      "path": "caller-pins.jsonl",
+      "sha256": "53d656f5022d1806c4dbcde8256882c69a55617af1632e1569f27ed5579f4b88"
+    },
+    {
+      "bytes": 4034,
+      "path": "catalog-pins.jsonl",
+      "sha256": "6e483575534f7256fcc79f3227d6bee303d71ae6ae144b7a9d65817c9a9a5327"
+    },
+    {
+      "bytes": 69208,
+      "path": "hold-register.jsonl",
+      "sha256": "d89bbb2395088c3464beffffc96dddae27f45145115c256fda68579e557e7a16"
+    },
+    {
+      "bytes": 2202,
+      "path": "input-attestation.json",
+      "sha256": "3d2eb625aba55580c816a4b24223d10ecbc05dcf689630b2d9a8ce2fe2032917"
+    },
+    {
+      "bytes": 843,
+      "path": "live-pr-reattestation.json",
+      "sha256": "6bae64e1473bfdd3b4cd7c2aa5614f9ac4c48f22440cd1da07acf9745490cdb2"
+    },
+    {
+      "bytes": 73068,
+      "path": "manual-proposals.jsonl",
+      "sha256": "e2367d3acd9cbf16bd3bdb33b209875cf7e0e5b36e2c6e463a978822bb354ee9"
+    },
+    {
+      "bytes": 477804,
+      "path": "primary-review-ledger.jsonl",
+      "sha256": "b109fa67d365fe52f387762aa93d30206fddf3c9a4a87424446b83eba9ebe0e4"
+    },
+    {
+      "bytes": 17822,
+      "path": "prior-boundary-reattestation.jsonl",
+      "sha256": "cfea1aa4d04306e815af3b6953bbe13dce85107c606d785df456bae9ee7f86af"
+    },
+    {
+      "bytes": 24938,
+      "path": "prior-caller-reattestation.jsonl",
+      "sha256": "cf1c8e4923ed814aa985ade9890a237442d05ceadda6d384a6e49112def5b438"
+    },
+    {
+      "bytes": 129691,
+      "path": "prior-window-final-reattestation.jsonl",
+      "sha256": "8232e6dc7d0c8964271ae217ac80999908ab1e9dcb96e10397ddb9edc63689b2"
+    },
+    {
+      "bytes": 60532,
+      "path": "same-head-terminology-pins.jsonl",
+      "sha256": "7abd7129800478c09a2bd410d0d2db269f45f5e9ccf8dfd402119185294e70a6"
+    },
+    {
+      "bytes": 7759,
+      "path": "source-inventory.jsonl",
+      "sha256": "8ea3b0af9adf3eb93bedeaba0de017a727f74ee90efdb67d763806f322af1156"
+    },
+    {
+      "bytes": 870,
+      "path": "structural-audit.json",
+      "sha256": "24ffeb1651844c0d341523824a130a8e766fe6d67bb9fee726a36ac51f211ea9"
+    },
+    {
+      "bytes": 194354,
+      "path": "structural-cell-audit.jsonl",
+      "sha256": "ecd80b2ad8b4f14b963a3d21bed463534dad742218fea965b7cf7d039091f5e5"
+    },
+    {
+      "bytes": 1873,
+      "path": "summary.json",
+      "sha256": "2cc766de0cc5cf99a2d97106b87baaffb58d8ea7353457570b6723f187c27814"
+    }
+  ],
+  "head": "99282b2f9b904f9814f5be66d8f643175e134f8e",
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "summary": {
+    "cellCount": 240,
+    "dispositionCounts": {
+      "accept-current": 170,
+      "correction": 10,
+      "hold": 36,
+      "refinement": 24
+    }
+  },
+  "tree": "ba0ba0790da40159b8d92935f0866cb6a112edce",
+  "window": "W963-W982"
+}

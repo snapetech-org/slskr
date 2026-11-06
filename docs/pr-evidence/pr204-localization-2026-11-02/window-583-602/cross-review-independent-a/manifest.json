@@ -1,0 +1,46 @@
+{
+  "dispositions": {
+    "accepted-current": 193,
+    "accepted-primary-proposal": 31,
+    "accepted-prior-correction": 12,
+    "held": 2,
+    "missed": 1,
+    "refined": 1
+  },
+  "head": "2f7483fdaa753e22f6d335a03f15db7d1d82b20f",
+  "livePullRequest": {
+    "baseRefName": "main",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "2f7483fdaa753e22f6d335a03f15db7d1d82b20f",
+    "isDraft": true,
+    "state": "OPEN"
+  },
+  "nativeSpeakerApproval": false,
+  "primaryInputs": {
+    "correction-candidates.jsonl": "27fd0ebce5bef4d38da7d858885d89659ea2e50f02e3135dde9e9e9983bd2e23",
+    "held-cells.jsonl": "580e2b9b18d1076c34223731ca05f5be9bbb60da9bd50205d23b4778011a4c8d",
+    "primary-review-ledger.jsonl": "d43ff66998f75230eb36986d28b47a2c604c6f162a7546cc72d862122c31ce6e",
+    "review-input.jsonl": "8ad71e6bdb2b6251a01ccca9720a8a842d5846bda30c5754fc541f7da77d7dd3",
+    "source-context.jsonl": "329c309e22b30bdf78e463fc431480adb29149e72a9866ec7f927771f014fa6e"
+  },
+  "primaryPacketChecksumVerification": "all listed files passed sha256sum -c",
+  "primaryPacketPath": "/mnt/disks/scratch/task-scratch/slskr-pr204-W583-602-primary-20261102/packet",
+  "primaryPacketSha256SumsSha256": "902a5af885a8a4d46a9a57a5e266ffb8a7a5452d51778f8343fa6398affbac8f",
+  "pullRequest": 204,
+  "repoOrPrChanged": false,
+  "repository": "snapetech-org/slskR",
+  "reviewWindow": [
+    583,
+    602
+  ],
+  "rowCounts": {
+    "cells": 240,
+    "sourceCurrentAttestations": 240,
+    "uniqueCallerPins": 42
+  },
+  "schemaVersion": 1,
+  "testsBuildsScansCI": false,
+  "tree": "54ee16a812a5bda7871f3ef3ad7ff0cf3bf678e0",
+  "worktreePath": "/mnt/disks/scratch/task-worktrees/localization-20261102/slskr-pr204-w503-522",
+  "worktreeStatus": "clean"
+}

@@ -1,0 +1,38 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "window": "W1063-W1082",
+  "exactInputHead": "328f33ba8dda766539e0b9cded6f94e5d0d8f716",
+  "exactInputTree": "84d625d3d2a60b263e9dfcca7e31e3fb3bee0904",
+  "inputManifestSha256": "2911a144a4c066fa129f9315c4e908e6a0581b306fc8f05fcf98758162bd906d",
+  "rootBlindLedgerSha256": "5691f78dd0c3685b016a117d929d3a420fd0b52979b575215588247fc1fce4ac",
+  "primaryLedgerSha256": "b02022b3e9d75fac941583c5d64b13ebf443419514617cc8da75c8c0a57f8972",
+  "supplementalBlindLedgerSha256": "d8f365272b3175d07fbc306c5d7dadc9dac8b5ef13ec9ddf007ed8c21d127e70",
+  "priorProposalSha256": "26996b2e66fe268b9529bf0d7916e7cf8455705c2201b5e1a0ed3dc488834e20",
+  "ratifiedLedgerSha256": "990ec452dc376a80edd5aa589f88b8f5a9c42b5037a831500aa813a5c299a9bb",
+  "cellCount": 240,
+  "sourceCount": 20,
+  "localeCount": 12,
+  "finalDispositionCounts": {
+    "accept-current": 137,
+    "correction": 77,
+    "hold-context": 12,
+    "refinement": 14
+  },
+  "exactTargetChanges": 91,
+  "holds": [
+    {
+      "position": 1081,
+      "sourceId": "Delete Selected",
+      "locales": 12,
+      "reason": "No exact production caller is present in the pinned caller inventory."
+    }
+  ],
+  "browserLocalContextAdjudications": 4,
+  "placeholderMismatches": 0,
+  "protectedLiteralMismatches": 0,
+  "catalogsMutated": false,
+  "testsBuildsScansOrCiRun": false,
+  "workflowChanges": false,
+  "nativeSpeakerApproval": false
+}

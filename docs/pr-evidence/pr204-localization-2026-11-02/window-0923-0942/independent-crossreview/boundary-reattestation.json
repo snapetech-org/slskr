@@ -1,0 +1,203 @@
+{
+  "allPinnedValuesMatchLiveCatalogs": true,
+  "boundaryCells": 24,
+  "previousFinalReadbacksMatchingCurrent": 240,
+  "previousHoldCellsPreserved": 12,
+  "previousWindow": "W903-W922",
+  "rows": [
+    {
+      "locale": "ar",
+      "matchesPinned": true,
+      "sourceId": "Copy History",
+      "sourceIndex": 921,
+      "targetSha256": "544e0acebc49daeda5bd8c7ca65e296f72af069b1559bb696cf9a1c3ff4cb0eb",
+      "windowLabel": 922
+    },
+    {
+      "locale": "de",
+      "matchesPinned": true,
+      "sourceId": "Copy History",
+      "sourceIndex": 921,
+      "targetSha256": "4b28ce419709cc86eb59e3a685968651cd2a7a85100f2d9c4959c9b10ad56f2a",
+      "windowLabel": 922
+    },
+    {
+      "locale": "es",
+      "matchesPinned": true,
+      "sourceId": "Copy History",
+      "sourceIndex": 921,
+      "targetSha256": "b38ba8d0bd63ff94f0890ba6e31e6a1cdb277495bc04b6fe2b975f0afc734e75",
+      "windowLabel": 922
+    },
+    {
+      "locale": "fr",
+      "matchesPinned": true,
+      "sourceId": "Copy History",
+      "sourceIndex": 921,
+      "targetSha256": "5f4df4e0b879372c7512f48a66bad7084d3c99be3dabf9c68dc8f667fcb9688e",
+      "windowLabel": 922
+    },
+    {
+      "locale": "hi",
+      "matchesPinned": true,
+      "sourceId": "Copy History",
+      "sourceIndex": 921,
+      "targetSha256": "899fe787e0c0c0585ba27851b40d21ed4dd0873ad7ce019333a89d88c5bec2c8",
+      "windowLabel": 922
+    },
+    {
+      "locale": "id",
+      "matchesPinned": true,
+      "sourceId": "Copy History",
+      "sourceIndex": 921,
+      "targetSha256": "2a6574f509f44893f3bf5c835f4a141a3fd62a1da4621511b1011f25a5697a18",
+      "windowLabel": 922
+    },
+    {
+      "locale": "ja",
+      "matchesPinned": true,
+      "sourceId": "Copy History",
+      "sourceIndex": 921,
+      "targetSha256": "cfa00197642ff2d38e68018f3d03bf5688cc3f90c3471923f335ce8859a539d3",
+      "windowLabel": 922
+    },
+    {
+      "locale": "ko",
+      "matchesPinned": true,
+      "sourceId": "Copy History",
+      "sourceIndex": 921,
+      "targetSha256": "567768839fbb6cb6ed1d16a0d90951838a0747f9befcf737c6324cb847651d58",
+      "windowLabel": 922
+    },
+    {
+      "locale": "pt-BR",
+      "matchesPinned": true,
+      "sourceId": "Copy History",
+      "sourceIndex": 921,
+      "targetSha256": "7d9c299c67c2599c671d0ca5fc531f41c9f62a18fdfbbcef0e092830a1df8df2",
+      "windowLabel": 922
+    },
+    {
+      "locale": "vi",
+      "matchesPinned": true,
+      "sourceId": "Copy History",
+      "sourceIndex": 921,
+      "targetSha256": "4289c6b7ac261636bba6e436e53136971b80d37ffcc7b405093774449984e397",
+      "windowLabel": 922
+    },
+    {
+      "locale": "zh-Hans",
+      "matchesPinned": true,
+      "sourceId": "Copy History",
+      "sourceIndex": 921,
+      "targetSha256": "dddf686ad0853981415efb9f55a987b3414accd870cfec74cb50053d033087f4",
+      "windowLabel": 922
+    },
+    {
+      "locale": "zh-Hant",
+      "matchesPinned": true,
+      "sourceId": "Copy History",
+      "sourceIndex": 921,
+      "targetSha256": "3c0819d5d8b497b77587d567bc3286fd7fff9a1bea59dc73075015e5159eeaf2",
+      "windowLabel": 922
+    },
+    {
+      "locale": "ar",
+      "matchesPinned": true,
+      "sourceId": "Copy diagnostic bundle",
+      "sourceIndex": 942,
+      "targetSha256": "b92c7ca6bd2c5113bc69994251d8f23cdea1be3c4a6328a5496860b7e189e27c",
+      "windowLabel": 943
+    },
+    {
+      "locale": "de",
+      "matchesPinned": true,
+      "sourceId": "Copy diagnostic bundle",
+      "sourceIndex": 942,
+      "targetSha256": "a6a19d66961a80fbc9901e802d4349b822f0eb138bf72f3b906c6a7c9b102f80",
+      "windowLabel": 943
+    },
+    {
+      "locale": "es",
+      "matchesPinned": true,
+      "sourceId": "Copy diagnostic bundle",
+      "sourceIndex": 942,
+      "targetSha256": "e46c386eb8ed25fc1999c1c0a695bd3f5eaed6af4c7639d4262e4dadfb8f83b2",
+      "windowLabel": 943
+    },
+    {
+      "locale": "fr",
+      "matchesPinned": true,
+      "sourceId": "Copy diagnostic bundle",
+      "sourceIndex": 942,
+      "targetSha256": "1fdaed73cf5c90095dfc6865edfbd602d4c3a73466475b51f29f6453c472b1a2",
+      "windowLabel": 943
+    },
+    {
+      "locale": "hi",
+      "matchesPinned": true,
+      "sourceId": "Copy diagnostic bundle",
+      "sourceIndex": 942,
+      "targetSha256": "275260456c29509a096bc791a90a4074eea3daa5f646e71822062985372f4c96",
+      "windowLabel": 943
+    },
+    {
+      "locale": "id",
+      "matchesPinned": true,
+      "sourceId": "Copy diagnostic bundle",
+      "sourceIndex": 942,
+      "targetSha256": "28769d6e5a632c3ce76accd3c9582fb8cdb44da7630bc415173ec2cc74250ed2",
+      "windowLabel": 943
+    },
+    {
+      "locale": "ja",
+      "matchesPinned": true,
+      "sourceId": "Copy diagnostic bundle",
+      "sourceIndex": 942,
+      "targetSha256": "c1283d29d4129ecc570f24183e675a6ee19b9e25d0e8fbb0f960405f746302b8",
+      "windowLabel": 943
+    },
+    {
+      "locale": "ko",
+      "matchesPinned": true,
+      "sourceId": "Copy diagnostic bundle",
+      "sourceIndex": 942,
+      "targetSha256": "b81e61948d251e081314e389e018969716a5e13b82cb973b8c401c8b4408a040",
+      "windowLabel": 943
+    },
+    {
+      "locale": "pt-BR",
+      "matchesPinned": true,
+      "sourceId": "Copy diagnostic bundle",
+      "sourceIndex": 942,
+      "targetSha256": "6d46a9a4be445eed86400ca08bc80e9043a4815d13aa457e3a52b2a2c9c7aa14",
+      "windowLabel": 943
+    },
+    {
+      "locale": "vi",
+      "matchesPinned": true,
+      "sourceId": "Copy diagnostic bundle",
+      "sourceIndex": 942,
+      "targetSha256": "4ea2c5c686c53a78aa03de4f4e1a80222a2094839ed1d736110ad201ccd29444",
+      "windowLabel": 943
+    },
+    {
+      "locale": "zh-Hans",
+      "matchesPinned": true,
+      "sourceId": "Copy diagnostic bundle",
+      "sourceIndex": 942,
+      "targetSha256": "59fc64c2a15fc98b52045f8c9df87b2d925bdc6e4d2e42afd8a0bd525eaf1058",
+      "windowLabel": 943
+    },
+    {
+      "locale": "zh-Hant",
+      "matchesPinned": true,
+      "sourceId": "Copy diagnostic bundle",
+      "sourceIndex": 942,
+      "targetSha256": "f2ca80a1e07d626cfc687184a3b8d524171d9ff84f19df64ece248aa723f2616",
+      "windowLabel": 943
+    }
+  ],
+  "w922BoundaryCellsMatchPriorFinalReadback": 12,
+  "w923StartCellsMatchPriorFollowingBoundary": 12
+}

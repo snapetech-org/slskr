@@ -1,0 +1,28 @@
+{
+  "acceptedCorrections": 4,
+  "acceptedRefinements": 5,
+  "applyPlanCount": 9,
+  "applyPlanSha256": "2778db40da4cd86482c2e77f50f040595789e69d8b17cd8cdf58791a040c2b74",
+  "artifact": "slskR PR #209 W1643-W1662 root adjudication",
+  "browserReview": false,
+  "callerlessHolds": 0,
+  "cellsReviewed": 240,
+  "crossPacketSha256": "3f4834a84702659b47906c9d5bc2060986321c1e9cc0f394005dd78dacaaf406",
+  "decisionCounts": {
+    "accept-cross-recommendation": 9,
+    "retain-current": 231
+  },
+  "exactHead": "2d804c49879372071adf606bc2a2cf51e261fd94",
+  "exactTree": "d6f5552d2400d868c2f2af98eb68caadfd4f3f66",
+  "holds": 0,
+  "liveAttestationBeforeReviewSha256": "2f932bb67ad7d55e23a9d8295308e43fe5bcc2497fb9d3e8dae9fe6e90210026",
+  "localeCount": 12,
+  "nativeSpeakerApproval": false,
+  "pullRequest": 209,
+  "repository": "snapetech-org/slskR",
+  "result": "PASS",
+  "reviewConfidence": "moderate overall; canonical variant terms are moderate-confidence pending fluent-speaker review",
+  "rootLedgerSha256": "47f0ed477a429fa744e896f46783cf1e1cd5966403d6ed31ba739f942f2bbba2",
+  "schemaVersion": 1,
+  "sourceKeyCount": 20
+}

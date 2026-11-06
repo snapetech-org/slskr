@@ -1,0 +1,16 @@
+{
+  "review_head": "7b53e289f3b4b121be4b1b49c997ebb65b02ed8a",
+  "review_tree": "1b7831ff560924250e1c5ebcc256f4cbf02d30b8",
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "candidate_cells": 22,
+  "accepted": 20,
+  "refined": 2,
+  "held": 0,
+  "applied": 22,
+  "native_speaker_review": "not provided",
+  "root_ledger_files": [
+    "root-cross-review.jsonl",
+    "root-radar-supplement-decisions.jsonl"
+  ]
+}

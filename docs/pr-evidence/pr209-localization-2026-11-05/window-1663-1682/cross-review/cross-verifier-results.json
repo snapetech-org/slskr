@@ -1,0 +1,22 @@
+{
+  "portable": {
+    "command": "python3 verify_cross_review.py",
+    "result": "PASS",
+    "head": "2ab97d1a21f7d001eb9470c76b3636f59f600609",
+    "tree": "63097ec7c80be0bef55fb1bde5a38da7b6a59ce7",
+    "cells": 240,
+    "changedCells": 12,
+    "holds": 0,
+    "exactWorktreeReadback": false
+  },
+  "exactWorktree": {
+    "command": "python3 verify_cross_review.py --repo /mnt/disks/scratch/task-worktrees/localization-20261105/slskr-pr209-w1663-1682-candidate-free",
+    "result": "PASS",
+    "head": "2ab97d1a21f7d001eb9470c76b3636f59f600609",
+    "tree": "63097ec7c80be0bef55fb1bde5a38da7b6a59ce7",
+    "cells": 240,
+    "changedCells": 12,
+    "holds": 0,
+    "exactWorktreeReadback": true
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "hold_id": "1719::id",
+  "position": 1719,
+  "locale": "id",
+  "decision": "preserved_active_hash_only_hold",
+  "target_text_included": false,
+  "proposal": null,
+  "current_target_sha256": "a27ecc61d532350de5694128b36f6cf1a57939c6c9dfa7460752041df275682f",
+  "prior_target_sha256": "a27ecc61d532350de5694128b36f6cf1a57939c6c9dfa7460752041df275682f",
+  "source_context_sha256": "ef8889eaa5f8c97c1fc7af4e883ea0eb7568a6cf2e5364840144b64bf597efe1",
+  "source_key_sha256": "ceecbc71ba63375c1586edcb31f301fbaca21e4b40ca65030e4ffc0c0276b5c1",
+  "catalog_path": "web/src/lib/locales/ui-labels.id.json",
+  "catalog_file_sha256": "5ed4fcd7182b08c01feead47e1724b5461068e6563ba2d801ff1d1a29ceda991",
+  "catalog_git_blob": "22ed3bc17459f3beb292519bdb448eb7058cd105",
+  "input_head": "5191888071f54061a6012acdedfeb518a6cb3661",
+  "input_tree": "d5728c24b54a06dda432afd2ef5f378206a6cb8f",
+  "target_hash_unchanged": true,
+  "source_context_unchanged": true,
+  "rationale": "Preserved from the immediately preceding sealed window as a text-free hash-only hold; no target text or translation proposal was created."
+}

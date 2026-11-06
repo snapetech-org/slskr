@@ -1,0 +1,25 @@
+{
+  "artifact": "slskR PR #209 W1603-W1622 root cross-review and adjudication",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "head": "eeb63f1e4e21d801f4a4e0393813b6e86a1ff7c8",
+  "tree": "590ee410666905f68f601393b64a4798b0609181",
+  "candidateFreeChecksumListSha256": "01bc4656145cff78824bced979eb58e5a50b6dad4f061a47c904d472fbdf35c3",
+  "primarySummarySha256": "7d5362581c7a5e8ef16757ab0446ac9edf80335fe98c6298ca8521db8b0eca1f",
+  "blindSummarySha256": "1dc65e0c0b81200e473a0f9412a89ef5664b32027761ac52b13f26e103260b8a",
+  "cellCount": 240,
+  "rootDispositionCounts": {
+    "accept-current": 227,
+    "correction": 11,
+    "refinement": 2
+  },
+  "proposalCount": 13,
+  "primaryBlindConvergence": 4,
+  "primaryBlindTargetConvergence": 4,
+  "holds": 0,
+  "tokenPreservation": "PASS",
+  "nativeSpeakerSignoff": false,
+  "browserReview": false,
+  "readbackPerformed": false,
+  "repositoryChangesApplied": false
+}

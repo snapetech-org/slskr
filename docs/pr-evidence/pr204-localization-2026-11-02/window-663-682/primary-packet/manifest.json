@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "livePullRequest": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "86ad391ca248ec50fa4049de0a0f08ee55010441",
+    "isDraft": true,
+    "mergeStateStatus": "CLEAN",
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "head": "86ad391ca248ec50fa4049de0a0f08ee55010441",
+  "tree": "f773836319b92b6b8799cdda1695e7da09622941",
+  "sourceBaselineHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceBaselineTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "sourceInventory": {
+    "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/frozen-inputs/source-inventory.jsonl",
+    "sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+    "keyCount": 5437
+  },
+  "sourceWindow": [
+    663,
+    682
+  ],
+  "sourceIds": 20,
+  "sourceIdBoundary": {
+    "663": "Clear All",
+    "682": "Clear current filter"
+  },
+  "previousWindow": {
+    "sourceWindow": [
+      643,
+      662
+    ],
+    "nonOverlapping": true,
+    "evidencePath": "task-scratch/slskr-pr204-W643-662-primary-20261102/packet"
+  },
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "cells": 240,
+  "catalogs": {
+    "ar": {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "bytes": 512055,
+      "sha256": "5d27ce82eae3850ba7c60c264c02bdb709b2cc8fe68f4ff5078da7ad80317255",
+      "blobOid": "03756da57abde7ba2fba7fc16f28ce03e7bf2a2d",
+      "keyCount": 5441
+    },
+    "de": {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "bytes": 442755,
+      "sha256": "73e4617a25ae28b9e5de4cfbefe7832006fcfd6de5e885a6e22e15b748bdd7c4",
+      "blobOid": "515896c192c2e2934cdeae2f8460f94890e5a3a0",
+      "keyCount": 5441
+    },
+    "es": {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "bytes": 443548,
+      "sha256": "e1c25a0950b0b75ce16688d9df4781db07f0665e72a25f0f8d38bda69677fa2e",
+      "blobOid": "c58874eb8f18e3b4ce8c11f8eb6c9d25fc351a9c",
+      "keyCount": 5441
+    },
+    "fr": {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "bytes": 454608,
+      "sha256": "b928c132fabf571d4a2be6bb269ec34fe070855bfb6e5e9f7a1d1ddf76d25c60",
+      "blobOid": "1ad730a3e3ff43236faf990660a923e9afe490fd",
+      "keyCount": 5441
+    },
+    "hi": {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "bytes": 675361,
+      "sha256": "98909042bd664d82596bf586af7b6e7d5918251e3c0ce7a49f2a56f4ffda534a",
+      "blobOid": "1f22793131f3ebe8c943e1b8877fa8032b170fce",
+      "keyCount": 5441
+    },
+    "id": {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "bytes": 409199,
+      "sha256": "dd75df301fe5bd9cc590e6c35b44a0f3d552c5aa02629c135ed4505c12eb48dd",
+      "blobOid": "2646195def6d6359fc2ae8b1285f161b35525f3a",
+      "keyCount": 5441
+    },
+    "ja": {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "bytes": 490731,
+      "sha256": "ad841cae8b58db52305ed16000c59608fc6252744a4769a222c6d762fb344902",
+      "blobOid": "b1e1793f156e00c97d8b1dfc8f204f2259fb8c81",
+      "keyCount": 5441
+    },
+    "ko": {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "bytes": 441660,
+      "sha256": "4d9879176929892a8e3d2872694875b45341d708f404a0970b71f2835a9a9a8c",
+      "blobOid": "0b1e861a0ebe4db31ad28a410a2297ed55707b73",
+      "keyCount": 5441
+    },
+    "pt-BR": {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "bytes": 438284,
+      "sha256": "757c84b6a1d4ecf6372f50cbc44132ab06680305727d5cb9802c06150000c4c6",
+      "blobOid": "54cb52b2e8f09cbc0906a264981a43ec36deb8c3",
+      "keyCount": 5441
+    },
+    "vi": {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "bytes": 473836,
+      "sha256": "f2abb2ac42ef728f582342b3332f55290dde86c930ed17a60acdbf0e735bb2b8",
+      "blobOid": "02fd9dae433831acb271794f5f182f8db0ea31ee",
+      "keyCount": 5441
+    },
+    "zh-Hans": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "bytes": 382343,
+      "sha256": "f2475d084556fc26abab89c6882b0aff59a84689cf96b9cf40be50a7012cf667",
+      "blobOid": "db79a853b7e8376ff14ffe2c0a3f5289ec6808f6",
+      "keyCount": 5441
+    },
+    "zh-Hant": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "bytes": 383051,
+      "sha256": "fe84afc1b77e5fbedcab783d47c91aa6bc3dc7bf5431f6cf5fb878585b90c4dd",
+      "blobOid": "1037a8cc13cdea5ef4cb8acb37f860ef51cd4866",
+      "keyCount": 5441
+    }
+  },
+  "catalogKeysOutsidePinnedSourceInventory": [
+    "OK",
+    "Connecting",
+    "Connection Failed",
+    "Reconnecting"
+  ],
+  "callerReferences": 29,
+  "uniqueCallerFiles": [
+    "crates/slskr-web/src/native_tab_rendering.rs",
+    "web/src/components/Browse/BrowseSession.jsx",
+    "web/src/components/Player/PlayerDiscoveryShelfModal.jsx",
+    "web/src/components/Player/PlayerIntegrationsModal.jsx",
+    "web/src/components/Player/PlayerQueueModal.jsx",
+    "web/src/components/Player/PlayerStatsModal.jsx",
+    "web/src/components/Player/VisualizerOverlayControls.jsx",
+    "web/src/components/PlaylistIntake/PlaylistIntake.jsx",
+    "web/src/components/Search/Detail/SearchFilterModal.jsx",
+    "web/src/components/Search/Detail/SearchResultControls.jsx",
+    "web/src/components/Search/List/SearchList.jsx",
+    "web/src/components/System/Data/index.jsx",
+    "web/src/components/System/Events/index.jsx",
+    "web/src/components/System/LibraryHealth/index.jsx",
+    "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx"
+  ],
+  "uniqueCallerLines": 29,
+  "sourceIdsWithNoDirectCallers": [
+    "Clear Old",
+    "Clear browser-local experience preferences and restore the supported defaults."
+  ],
+  "priorEvidenceMatches": 0,
+  "priorReviewFile": {
+    "path": "docs/localization/pr204-translation-review-2026-11-01.jsonl",
+    "blobOid": "ac532def0973f2d8abc9baa00d3b1c19b5843822",
+    "bytes": 2753515,
+    "sha256": "27ab430e61b7cb5628150121afc1b565e38af9cd2dc2608d3aebd65fce99220e"
+  },
+  "placeholderParityFailures": 0,
+  "nativeSpeakerApproval": false
+}

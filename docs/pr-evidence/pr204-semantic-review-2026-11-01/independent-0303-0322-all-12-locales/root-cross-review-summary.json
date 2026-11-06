@@ -1,0 +1,22 @@
+{
+  "applyCount": 77,
+  "applyPlanSha256": "11a026a87a2856ac09d3c2884fd7fe08d702de91856467552a0cc6336c59413b",
+  "callerPinsVerified": true,
+  "candidateCount": 77,
+  "candidatePlanSha256": "85be45f3a534e8c59fb4b4b56d23bfda5bba70bcfbb05434a024f7db8566bcc0",
+  "catalogHashesVerified": true,
+  "decisionCounts": {
+    "accepted": 43,
+    "refined": 34
+  },
+  "held": 0,
+  "nativeSpeakerReview": "not_provided",
+  "placeholdersVerified": true,
+  "reviewHead": "979aec510db9c404a2831368d57b525773b5f4ab",
+  "reviewTree": "3b07b6e7658771101f3a83c7a5ecdbc96b8af2a4",
+  "rootLedgerSha256": "df97293a80915abbef934bc02aad4f238951cb7fc90be04bc9c1dddbd32c9faa",
+  "schemaVersion": 1,
+  "sourceCatalogHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceCatalogTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "window": "303-322"
+}

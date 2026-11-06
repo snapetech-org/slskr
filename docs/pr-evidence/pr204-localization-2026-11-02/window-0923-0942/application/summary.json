@@ -1,0 +1,37 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W923-W942",
+  "inputHead": "ca71c6c90cbe6c1fa9ef0307a57b214e61e022b5",
+  "inputTree": "a35194c508f9b40f28ed75480fc20182a086c55d",
+  "cellsReviewed": 240,
+  "primary": {
+    "correction": 40,
+    "refinement": 2,
+    "acceptCurrent": 186,
+    "hold": 12
+  },
+  "independent": {
+    "acceptPrimaryProposal": 41,
+    "retainCurrent": 183,
+    "additionalCorrection": 3,
+    "retainHold": 12,
+    "revisePrimaryProposal": 1
+  },
+  "appliedChanges": 45,
+  "readbackCells": 240,
+  "catalogs": 12,
+  "catalogKeyCountPerLocale": 5441,
+  "sameOrderedKeyset": true,
+  "heldCells": 12,
+  "holdReason": "W938 catalog-only value has no exact production caller at the pinned head.",
+  "structuralReview": {
+    "placeholderParityFailures": 0,
+    "markupParityFailures": 0,
+    "punctuationFailures": 0,
+    "protectedLiteralFailuresAfterApplication": 0
+  },
+  "nativeSpeakerApproval": false,
+  "headedBrowserAcceptance": false,
+  "testsBuildScansCiOrBrowserRun": false
+}

@@ -1,0 +1,20 @@
+Failed to leave room: {error}
+Failed to list events
+Failed to load MediaCore statistics
+Failed to load Tor status
+Failed to load VPN pod status
+Failed to load YAML
+Failed to load adversarial settings
+Failed to load adversarial status
+Failed to load analytics
+Failed to load available ports
+Failed to load available rooms
+Failed to load bridge configuration
+Failed to load collection items
+Failed to load collection shares
+Failed to load collections
+Failed to load contacts
+Failed to load conversation
+Failed to load dashboard:
+Failed to load debug view
+Failed to load directory contents

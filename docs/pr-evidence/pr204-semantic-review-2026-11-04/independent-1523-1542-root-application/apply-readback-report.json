@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "task": "slskR PR #204 W1523-W1542 exact-hash application readback",
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "inputHead": "f6fbf614e7e2ff869e4ca86ae96103cff604b79c",
+  "inputTree": "536b0fc02a3c16fa7eb0f9d5504a4c8c91b2152d",
+  "inputBranch": "codex/slskr-l10n-audit-20261030",
+  "baseRef": "main",
+  "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "productCommit": "09497027d7ca64892cf8ce3530dd5cc1fdf93c15",
+  "productTree": "b4594245bbb922bbce7785c9b4efc0041a2dd5df",
+  "productCommitParent": "f6fbf614e7e2ff869e4ca86ae96103cff604b79c",
+  "reviewedSourcePositions": [
+    1523,
+    1542
+  ],
+  "reviewedCells": 240,
+  "sourceIds": 20,
+  "directLocales": 12,
+  "catalogChangesApplied": 8,
+  "outcomeCounts": {
+    "selected-primary": 8,
+    "keep-current": 222,
+    "hash-only-hold": 10
+  },
+  "noOpCells": 222,
+  "localeChangeCounts": {
+    "de": 1,
+    "fr": 3,
+    "vi": 2,
+    "hi": 1,
+    "ko": 1
+  },
+  "allBaseCatalogFilesMatchedPins": true,
+  "allBaseCurrentTargetsMatched": true,
+  "allFinalTargetsReadBack": true,
+  "allCatalogKeySetsUnchanged": true,
+  "allHoldCurrentHashesPreserved": true,
+  "readbackCellCount": 240,
+  "readbackCellsSha256": "aaac86d6d749a3a7b1c3f4e25a57faca1853ec6925a5a3951cea908a19ed85f2",
+  "applyPlanSha256": "367c2eac7ef950e3a7a47cf7533fe0f024c7a51fc61fbbe620d5d6e78ba3c81d",
+  "crossBundleChecksumListSha256": "821220bd1985318b28c5d9a0a62220c3ce710cc65ddf337a349313bba9242146",
+  "prBeforeBodySha256": "1de008b0ccb0a19a18c101204e579831047b1425d4db48e4341433f17796a47f",
+  "prBeforeAttestationSha256": "9463e116c3cf6116f983f13ff20c4b1f1019180c9dabf8dba5414959024a7e00",
+  "catalogFileReports": {
+    "web/src/lib/locales/ui-labels.es.json": {
+      "baseSha256": "87f80a1c56303b184b33d021d44898cb6a6cf44bf8acce58b067e2dfb2f5e453",
+      "baseGitBlob": "7056e88c033d8918612a600c293b90c4c811c61e",
+      "finalSha256": "87f80a1c56303b184b33d021d44898cb6a6cf44bf8acce58b067e2dfb2f5e453",
+      "finalByteCount": 444697,
+      "finalGitBlob": "7056e88c033d8918612a600c293b90c4c811c61e",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "keySetUnchanged": true,
+      "changesReadBack": 0
+    },
+    "web/src/lib/locales/ui-labels.zh-Hans.json": {
+      "baseSha256": "83b9c7f965df257a4de19670b5bb29d293d86b4947f2258f288c6030489ffcb9",
+      "baseGitBlob": "958dc3eac912f8a808464c2afa800db48a3c03ef",
+      "finalSha256": "83b9c7f965df257a4de19670b5bb29d293d86b4947f2258f288c6030489ffcb9",
+      "finalByteCount": 383030,
+      "finalGitBlob": "958dc3eac912f8a808464c2afa800db48a3c03ef",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "keySetUnchanged": true,
+      "changesReadBack": 0
+    },
+    "web/src/lib/locales/ui-labels.hi.json": {
+      "baseSha256": "693230cfadf262b7d50b615b1fef87b7574ab9cb9db7ed7a85c827e31b25d37c",
+      "baseGitBlob": "0a7fa1fc9e37800cc0e8ec135f0edc021197ec3c",
+      "finalSha256": "acab7533d0b703b933c35c66ddaca1d80d4a9989e0a509ff00c9d6a576d22647",
+      "finalByteCount": 677965,
+      "finalGitBlob": "3c61ac24000f62ac63fba9e5feb20c447661659d",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "keySetUnchanged": true,
+      "changesReadBack": 1
+    },
+    "web/src/lib/locales/ui-labels.de.json": {
+      "baseSha256": "5581145391a2c4c6ba2d7e17b50c7f2dc385de5a8010e6c9f8693a8222ba96e3",
+      "baseGitBlob": "c6328879a9665082707392345e1b6147b5615063",
+      "finalSha256": "f2c585d245161f0d929b9dd8159ff269477f31809d77d6f21cb9fbb9d343fbac",
+      "finalByteCount": 443105,
+      "finalGitBlob": "1ac69d11ac57a7b294fd285737d96403aaee5930",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "keySetUnchanged": true,
+      "changesReadBack": 1
+    },
+    "web/src/lib/locales/ui-labels.ja.json": {
+      "baseSha256": "9bb121a2985d68806d645173226383cf0cd34eb3cb4d5152a4e2c488a9cdd823",
+      "baseGitBlob": "a6a237a892d7f6022d4873a64919326d35136c91",
+      "finalSha256": "9bb121a2985d68806d645173226383cf0cd34eb3cb4d5152a4e2c488a9cdd823",
+      "finalByteCount": 491221,
+      "finalGitBlob": "a6a237a892d7f6022d4873a64919326d35136c91",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "keySetUnchanged": true,
+      "changesReadBack": 0
+    },
+    "web/src/lib/locales/ui-labels.fr.json": {
+      "baseSha256": "aefb7b1eb1b08198249568aa0d6e2d21ef9b7c8e4d27049348bf95db8173a437",
+      "baseGitBlob": "0e65eca2c13ceb6d9ba098894e8b0fa3e914a329",
+      "finalSha256": "45c40fc74e17814bade40030159e8cb91b3f593e0216a2d7c20f76ea881e36b8",
+      "finalByteCount": 455717,
+      "finalGitBlob": "8da33d72a19a08447405ca11364a335ede0db3bb",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "keySetUnchanged": true,
+      "changesReadBack": 3
+    },
+    "web/src/lib/locales/ui-labels.pt-BR.json": {
+      "baseSha256": "16d9526224922d51c9b527616e8927121b4186a40fcb5b080b32ee3b274b0a54",
+      "baseGitBlob": "6c3a59cb657df87c02b53e325f8648098d83c85c",
+      "finalSha256": "16d9526224922d51c9b527616e8927121b4186a40fcb5b080b32ee3b274b0a54",
+      "finalByteCount": 439313,
+      "finalGitBlob": "6c3a59cb657df87c02b53e325f8648098d83c85c",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "keySetUnchanged": true,
+      "changesReadBack": 0
+    },
+    "web/src/lib/locales/ui-labels.ar.json": {
+      "baseSha256": "c0409de6e75d5d182088c00f6934781bff0502a2e51eec911127fbd1ce34f15b",
+      "baseGitBlob": "fd61110cbae558e2e07bd253030d2ad5a61f9443",
+      "finalSha256": "c0409de6e75d5d182088c00f6934781bff0502a2e51eec911127fbd1ce34f15b",
+      "finalByteCount": 513369,
+      "finalGitBlob": "fd61110cbae558e2e07bd253030d2ad5a61f9443",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "keySetUnchanged": true,
+      "changesReadBack": 0
+    },
+    "web/src/lib/locales/ui-labels.ko.json": {
+      "baseSha256": "7947840005e15136c201ce33320ada5da6fb20a72f471db412a85e3aa5be25bb",
+      "baseGitBlob": "9d3539177c8c909d002dadd338978d76aca0ae9c",
+      "finalSha256": "a5455063f85bc9a6144970daacb44cd18661a3bfa4bdb9bdb41bd18ad661aa6e",
+      "finalByteCount": 442425,
+      "finalGitBlob": "f61b4a1459c54d7faadd0f587765b369139d671f",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "keySetUnchanged": true,
+      "changesReadBack": 1
+    },
+    "web/src/lib/locales/ui-labels.zh-Hant.json": {
+      "baseSha256": "6bb1a96843bd1e36f1789a514d1c9c1911982ccac1bffb2dc7e34c249e699791",
+      "baseGitBlob": "14b80e83b6a64e7264c09d94e0bad2cd4827f533",
+      "finalSha256": "6bb1a96843bd1e36f1789a514d1c9c1911982ccac1bffb2dc7e34c249e699791",
+      "finalByteCount": 383789,
+      "finalGitBlob": "14b80e83b6a64e7264c09d94e0bad2cd4827f533",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "keySetUnchanged": true,
+      "changesReadBack": 0
+    },
+    "web/src/lib/locales/ui-labels.vi.json": {
+      "baseSha256": "8ae9fe4671f3bed697e8f91316f98215f9f06ed644962a79c0fc4b4e2fcfc0b3",
+      "baseGitBlob": "9d6be591203307a5922dd86e3896986267079b36",
+      "finalSha256": "8608ebddae317f1e7d1b28f3dca5bd27b161312e408a43b33542031e5adc97f9",
+      "finalByteCount": 475288,
+      "finalGitBlob": "f7359b7f364e89df460eeca408c95d2cbd428e08",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "keySetUnchanged": true,
+      "changesReadBack": 2
+    },
+    "web/src/lib/locales/ui-labels.id.json": {
+      "baseSha256": "379559a466242f2245e5cec0d2615bb14b22f707b19589b8df56cd9caaa7cf60",
+      "baseGitBlob": "2d2a0a36e64b43ffb3caa553718b839c6acfbb2b",
+      "finalSha256": "379559a466242f2245e5cec0d2615bb14b22f707b19589b8df56cd9caaa7cf60",
+      "finalByteCount": 410211,
+      "finalGitBlob": "2d2a0a36e64b43ffb3caa553718b839c6acfbb2b",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "keySetUnchanged": true,
+      "changesReadBack": 0
+    }
+  },
+  "holdHashes": [
+    {
+      "position": 1538,
+      "locale": "es",
+      "currentTargetSha256": "45e141712cae5ad9f531159208adf6198049721fce31eb322a7bc3b005577059"
+    },
+    {
+      "position": 1538,
+      "locale": "pt-BR",
+      "currentTargetSha256": "21e30eb72319f6013724ed1c3ef724cf1af4551d8e791862f191b8764c2d2532"
+    },
+    {
+      "position": 1538,
+      "locale": "ar",
+      "currentTargetSha256": "755efe621bfceb9b3f894c82c93bd9fe45847cbb9af76afdb75fdcc98fbc74a2"
+    },
+    {
+      "position": 1538,
+      "locale": "vi",
+      "currentTargetSha256": "bad4edbb84691b33681b8f4f9bc97f34f7fe58090caac3dbf4c441d256eafe52"
+    },
+    {
+      "position": 1538,
+      "locale": "id",
+      "currentTargetSha256": "a33cafcdbdbbf6ae056079d30eea6f5fd43d451431a17634c79023421ff3397e"
+    },
+    {
+      "position": 1539,
+      "locale": "es",
+      "currentTargetSha256": "655d507b1553195e9f332b05b2521ab1703aaa475dcb588653c22de1689c1880"
+    },
+    {
+      "position": 1539,
+      "locale": "pt-BR",
+      "currentTargetSha256": "eea1373db3fca6456d21ef4f93b7730dd42954ecb717e060d62de3ccebbfb1a2"
+    },
+    {
+      "position": 1539,
+      "locale": "ar",
+      "currentTargetSha256": "144095fcbdc633a93eacd9e0fee613a98d17e559b211695cd7103f6df269a638"
+    },
+    {
+      "position": 1539,
+      "locale": "vi",
+      "currentTargetSha256": "4f19209a61f74d527e2b7f0f347ef008745334034e508e5b68583d3e12ad029e"
+    },
+    {
+      "position": 1539,
+      "locale": "id",
+      "currentTargetSha256": "4eca1e5a890646099df5a0b5c049ac6f82b5250dafb81034ae9ef9af58040da4"
+    }
+  ],
+  "productCommitPaths": [
+    "web/src/lib/locales/ui-labels.de.json",
+    "web/src/lib/locales/ui-labels.fr.json",
+    "web/src/lib/locales/ui-labels.hi.json",
+    "web/src/lib/locales/ui-labels.ko.json",
+    "web/src/lib/locales/ui-labels.vi.json"
+  ],
+  "testsBuildsScansCiOrWorkflowsRun": false,
+  "nativeSpeakerSignoff": false,
+  "browserReviewPerformed": false,
+  "applied": true,
+  "createdAtUtc": "2026-11-04T09:53:54Z"
+}

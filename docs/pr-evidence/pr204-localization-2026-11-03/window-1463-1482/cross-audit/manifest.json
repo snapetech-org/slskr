@@ -1,0 +1,32 @@
+{
+  "artifact": "slskR PR #204 W1463-W1482 cross-audit packet",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "2db7fa06845d9d94a5e5da2ddb5ecfdc04100ade",
+  "tree": "0945d38050243ed0d52aa9d923636820c66e65ba",
+  "selectedPositions": [
+    1463,
+    1482
+  ],
+  "cellCount": 240,
+  "finalDispositionCounts": {
+    "accept-current": 169,
+    "correction": 29,
+    "hold": 12,
+    "refinement": 30
+  },
+  "inputPins": {
+    "candidateFreeManifestSha256": "2d530c71158af879ebfd4c112805884957054929d504aba523cca0b51031006e",
+    "currentTargetCellsSha256": "ef6ecdcc05be9c479e74085c69e238127b3e20419716e9c04f2165e0d18209a5",
+    "sourceContextsSha256": "5431c589371982ddcac3237aa3b844d05c14813b9d660b12853754c5e68c956d",
+    "primaryManifestSha256": "afd40eb52367435e16c0996caaec6a06ba902703c537e57b5958d013da4fbade",
+    "primaryLedgerSha256": "f8046e5cb89dce3db748326824eccbfd5d716dfa4d11e0a2fb4fbe2d9a5db067",
+    "cleanBlindLedgerSha256": "27e13442785649ab869c548a72b5399f51fae52907f0e01c6f060c6b48d913fb",
+    "cleanBlindSummarySha256": "84201d4e3b89d575dc9d7b27ad03c41d109e35b0107c49323dd8bdb16cca4ff7"
+  },
+  "priorContentsParsed": false,
+  "deploymentsForHeadBefore": 0,
+  "deploymentsForHeadAfter": 0,
+  "attestationBeforeUtc": "2026-11-04T01:07:53Z",
+  "attestationAfterUtc": "2026-11-04T01:17:14Z"
+}

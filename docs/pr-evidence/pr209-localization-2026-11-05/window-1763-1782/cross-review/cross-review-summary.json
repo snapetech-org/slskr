@@ -1,0 +1,86 @@
+{
+  "activePriorHoldCount": 1,
+  "artifact": "slskR PR #209 W1763-W1782 independent integrated cross-review",
+  "blindDecisions": {
+    "accept_current": 156,
+    "correct": 27,
+    "refine": 57
+  },
+  "blindPacketChecksums": "PASS",
+  "callerFiles": 13,
+  "callerOccurrences": 30,
+  "callerReferences": 30,
+  "candidateFreeInputChecksums": "PASS",
+  "crossDispositionTotals": {
+    "accept_current": 131,
+    "correction": 105,
+    "hold": 0,
+    "refinement": 4
+  },
+  "crossDispositions": {
+    "accept_current": 131,
+    "correction": 105,
+    "refinement": 4
+  },
+  "crossSelectedTokenAudit": {
+    "manualProtectedTermMismatches": 0,
+    "markupMismatches": 0,
+    "numericMismatches": 0,
+    "placeholderMismatches": 0,
+    "proposalCells": 240,
+    "protectedLiteralSequenceMismatches": 0,
+    "totalMismatchCells": 0
+  },
+  "currentTokenAudit": {
+    "manualProtectedTermMismatchCells": 18,
+    "markup": 0,
+    "numbers": 2,
+    "placeholders": 0,
+    "sourceProtectedLiteralsMissing": 3,
+    "uniqueCurrentIssueCells": 20
+  },
+  "differentSelectedTargetCells": 74,
+  "head": "5191888071f54061a6012acdedfeb518a6cb3661",
+  "locales": 12,
+  "newHolds": 0,
+  "nextBoundaryPosition": 1783,
+  "nextBoundarySourceKeySha256": "f5edfb1fdf449300af6a0e1a089a2fece6de4649f3b7c9df885abf7662fe31e3",
+  "perCellProvenance": "240/240 PASS",
+  "preservedPriorHold": "1719::id",
+  "preservedPriorHoldTextFree": true,
+  "primaryActions": {
+    "correct": 105,
+    "retain": 135
+  },
+  "primaryBlindActionMatrix": {
+    "correct__accept_current": 25,
+    "correct__correct": 27,
+    "correct__refine": 53,
+    "retain__accept_current": 131,
+    "retain__refine": 4
+  },
+  "primaryPacketChecksums": "PASS",
+  "productWorktreeInspected": false,
+  "proposalExposureAndProvenance": {
+    "blindPacketPriorOutputPathCaveat": "A pre-existing directory occupied the initially chosen output path. During recovery, only its checksum filenames and digests were visible; no ledger or decision contents were read or used. This packet was written to a separate directory.",
+    "blindReviewPacketSaysPrimaryWasNotOpened": true,
+    "blindReviewPacketSaysWorktreeWasNotOpened": true,
+    "chronologyExternallyTimestamped": false,
+    "crossReviewerConsultedBothProposalSets": true,
+    "liveProductWorktreeStatusVerified": false,
+    "nativeSpeakerApproval": false,
+    "primaryPacketClaimsProposalFreezePrecededCurrentTargetComparison": true,
+    "primaryProposalLedgerPinnedBySha256": "142119303f5883c209772ef4103b016314ba79bf6f5227cdee7b9f5954ae33a7"
+  },
+  "pullRequest": 209,
+  "recommendationDisagreementRows": 105,
+  "repoEdited": false,
+  "repository": "snapetech-org/slskR",
+  "rootAdjudicationInspected": false,
+  "sameSelectedTargetCells": 166,
+  "selectedCells": 240,
+  "selectedSources": 20,
+  "testsBuildsCiRun": false,
+  "tree": "d5728c24b54a06dda432afd2ef5f378206a6cb8f",
+  "window": "W1763-W1782"
+}

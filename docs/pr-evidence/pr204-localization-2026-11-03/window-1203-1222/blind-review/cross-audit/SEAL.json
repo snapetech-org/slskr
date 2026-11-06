@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "SHA-256",
+  "sha256SumsFile": "SHA256SUMS.txt",
+  "sha256SumsSha256": "658f92b15fa8a9ad23728ae6367902646a9faac43e69198bd44899d063877459",
+  "rowCount": 240,
+  "head": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+  "tree": "ba62eed0bd600a8f69bb6c0cbefe99da7ee47623"
+}

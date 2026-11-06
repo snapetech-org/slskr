@@ -1,0 +1,20 @@
+Failed to create search
+Failed to create share group
+Failed to delete channel: {error}
+Failed to delete collection
+Failed to delete contact
+Failed to delete conversation: {error}
+Failed to delete share group
+Failed to discover pods
+Failed to discover pods by content
+Failed to fetch job status
+Failed to fetch jobs
+Failed to fetch swarm data
+Failed to fetch swarm jobs
+Failed to get aggregated opinions
+Failed to get aggregated opinions: {message}
+Failed to get backfill statistics
+Failed to get backfill stats: {message}
+Failed to get channels
+Failed to get channels: {message}
+Failed to get consensus recommendations

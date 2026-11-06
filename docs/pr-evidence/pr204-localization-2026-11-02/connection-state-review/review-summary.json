@@ -1,0 +1,340 @@
+{
+  "acquisitionProfileSummaryKeys": [
+    "FLAC/WAV first, strict metadata and duration matching.",
+    "High-bitrate lossy allowed, shorter queues preferred.",
+    "Expected track count, folder consistency, album-first ranking.",
+    "Slower queues and single-source candidates stay review-first.",
+    "Lower concurrency, no automatic public-peer retries.",
+    "Trusted mesh first, public Soulseek fallback second.",
+    "MBID, ISRC, or fingerprint evidence drives acceptance."
+  ],
+  "acquisitionProfileSummaryTranslationHashesByLocale": {
+    "ar": {
+      "Expected track count, folder consistency, album-first ranking.": "8b185fe38d9c97fad8a6570b3d4dcc393b6b0b1f4ce601dd63abbfae1b62ba88",
+      "FLAC/WAV first, strict metadata and duration matching.": "73bf4083cccc763c5c4c50e0d835962e533912d76aeddf9acf25b9e6ceaa69fe",
+      "High-bitrate lossy allowed, shorter queues preferred.": "268f534637bddee9329582b2ce5630e02bf60a6e162c208bc657a1eb3ee1cabc",
+      "Lower concurrency, no automatic public-peer retries.": "758ec806d292d8673aed182ebd5ec49eef4013c134fdad95480a398751cfbd89",
+      "MBID, ISRC, or fingerprint evidence drives acceptance.": "501876675295611d1b57c91fc6623e43c5ec42bd9586630ee7e5981eb701a176",
+      "Slower queues and single-source candidates stay review-first.": "4aa274c59df87390c3bd069836707987399fa67e666229a1b5fe27b653bd28e3",
+      "Trusted mesh first, public Soulseek fallback second.": "032727817250e6f35bb17dd279eab983a565dee6a8ce3e9c6780d15f2b915a7b"
+    },
+    "de": {
+      "Expected track count, folder consistency, album-first ranking.": "313ff6f0ac3463dd11f63f53307b5331f5f8773b84318709ed48062c3396c3d6",
+      "FLAC/WAV first, strict metadata and duration matching.": "8ea059c4082a72847a3b92c39ed85764c4d1b71ff93d15bf22bd8b86803053aa",
+      "High-bitrate lossy allowed, shorter queues preferred.": "4b9c0bf8033b5476dd933dc1ff4a708d213c4fd17a30b5d20943c7143d87de78",
+      "Lower concurrency, no automatic public-peer retries.": "c3f7a72db43da09387c86be3692003a5b3adf67e110cfe0ba861ee532e5b65a2",
+      "MBID, ISRC, or fingerprint evidence drives acceptance.": "2ef6ef26b2f7f2598c9c9b6829fd4b020c9b7a0bab65a4be77be3c0246faaa2b",
+      "Slower queues and single-source candidates stay review-first.": "1cd4f2b4ba28e5eab6d1136ef436878178aad3b3cf194a863df6afb64325a633",
+      "Trusted mesh first, public Soulseek fallback second.": "990377f4a239d2281ada1c0b7fce60973fa4a2744f991ce05b15eed1b556f13a"
+    },
+    "es": {
+      "Expected track count, folder consistency, album-first ranking.": "8ccb56133b13247109b39fb10b821a30c70eaca9f80097fe1c27dd751a2df4b6",
+      "FLAC/WAV first, strict metadata and duration matching.": "0e866b3f162c850f94b609870e3f973e8c2b5e88c37be52dbbfffc172d9400e1",
+      "High-bitrate lossy allowed, shorter queues preferred.": "8d4193ac912f1fe79c2e0a9c5a18f9cee6c99ddae9a1621b0e2da5d7da51da60",
+      "Lower concurrency, no automatic public-peer retries.": "e928431c3fdc8e5c7cef4e626aada95408810797eb19ce594cc5b32df6c05581",
+      "MBID, ISRC, or fingerprint evidence drives acceptance.": "e3d1995320a896e92b6e21fc4181b4b5c85f413efd640e3a4fa7762238b83a27",
+      "Slower queues and single-source candidates stay review-first.": "9a6b1f7dfb0b3bcc9ff9f7993f5bf2a60da5de7a060831a0068a651b97b64475",
+      "Trusted mesh first, public Soulseek fallback second.": "8b658b0bb8c5c3be5c0965da8581e3e2a9e89fc9cc72e28d73ae85e40caf7f4a"
+    },
+    "fr": {
+      "Expected track count, folder consistency, album-first ranking.": "e25819676e21aa8530710c15cad4f92d45f076153e2ae22e3ed06b1e36ecfe88",
+      "FLAC/WAV first, strict metadata and duration matching.": "d52ce1914f4ae819d83afb9fbb60214d8dd3372fc748297fc61166778201c956",
+      "High-bitrate lossy allowed, shorter queues preferred.": "0d708a0d2fc30383bce9891221802cc462e7e9c471a9a9b93e26654d3cd07956",
+      "Lower concurrency, no automatic public-peer retries.": "d3d930750f72be7346db367af70cde4ff1fd03d0a6236f75bf3ef07798d0152b",
+      "MBID, ISRC, or fingerprint evidence drives acceptance.": "6350770724bc260410c41d077d0e1c8908a7a23ba0cea8dcb58eac5e4891b660",
+      "Slower queues and single-source candidates stay review-first.": "80e1196a68bd0c046e2736cc549c4db1751e9169b04939850b377fa69e533fec",
+      "Trusted mesh first, public Soulseek fallback second.": "5e83c44be3de0006acac8c5cf6dce259c078966bca85ef5c149a2c797a05c0af"
+    },
+    "hi": {
+      "Expected track count, folder consistency, album-first ranking.": "f9f5d7a53729869ba194e6023820da035d3aa584def4c20a311a28a0718b465b",
+      "FLAC/WAV first, strict metadata and duration matching.": "f82715f94767340b4cf6d0c4aa963d06ff939280a96b34f589d0f23a1fa754db",
+      "High-bitrate lossy allowed, shorter queues preferred.": "d5a113dff7bf7135b57cef4978a289bac7bc96da293f1c5b1fe103cd5c05047a",
+      "Lower concurrency, no automatic public-peer retries.": "ed3109f2b32c02b832aa714c1ece8f343c4bfaa9b990cf192810e6553370c702",
+      "MBID, ISRC, or fingerprint evidence drives acceptance.": "94578c2bd27aa76332f97a9c8df0542d02bc90f1837d4212910bf3d6ef308bed",
+      "Slower queues and single-source candidates stay review-first.": "fec13d6af113f23c3b14b44282d2bed044b5e681dad69e7cbc2223cd09b8078d",
+      "Trusted mesh first, public Soulseek fallback second.": "5fa8a5948cd7bd9421567f5d60c5056a7cc076e2a562a086859ae3d3f07bd903"
+    },
+    "id": {
+      "Expected track count, folder consistency, album-first ranking.": "70e6c2462ec9f7223a66a160a94d631d85269d225e1b5d6124b1a347c4eab2ad",
+      "FLAC/WAV first, strict metadata and duration matching.": "c519b7d90c68bdf60985d363c5ff92ba26ac5eb9c5dcf84294e357cd4b79769c",
+      "High-bitrate lossy allowed, shorter queues preferred.": "fe6265cf676e26b60aa1fafd5fb288391af418a1f152e3528e21f2690f053d3c",
+      "Lower concurrency, no automatic public-peer retries.": "df6f57375af7716a903688a35d7de3cba6190a8be2c1186bfa3f0bb3269ec00b",
+      "MBID, ISRC, or fingerprint evidence drives acceptance.": "b02f91f874734f5b650d5b5c67e2772281a645aeedf904347f518c11bc88cba5",
+      "Slower queues and single-source candidates stay review-first.": "5f9821ee626f20604350fa596358185a1c476e70573a0912c8c595d9d8286a4f",
+      "Trusted mesh first, public Soulseek fallback second.": "c31f24a40e556fb8cfdfe1102d54d0bded0a521ce80e04d8f1cc9ec30b734f31"
+    },
+    "ja": {
+      "Expected track count, folder consistency, album-first ranking.": "c38f149bde49cf0b4bd02f655e23d4a7e799968f8053233602c94837339e4f1a",
+      "FLAC/WAV first, strict metadata and duration matching.": "74f08b42a99b2a7cd274b27faaae6be9dce523a24df57ce9ffd0581f5fea1f04",
+      "High-bitrate lossy allowed, shorter queues preferred.": "305b622ca706391cc0bdb138a46b4c1cf38cf772d57dc878c396bde4f1e1fa34",
+      "Lower concurrency, no automatic public-peer retries.": "5f01407a6a28c92da0f626352a63a0af7533342e08a64ce0c81f13b99327ab30",
+      "MBID, ISRC, or fingerprint evidence drives acceptance.": "7fa324ca38de450ff322eb7eec3824bdd308e99dc393b4c22c8966dea2b3ec76",
+      "Slower queues and single-source candidates stay review-first.": "3e3721d6c999f95df1eca8c2fc550895d1e7c38941773058b831a0b51a9fb583",
+      "Trusted mesh first, public Soulseek fallback second.": "f3cf1791b0b71cb0d3238d2daabedc18f8fc55d1b27beb93afb41a605ec49992"
+    },
+    "ko": {
+      "Expected track count, folder consistency, album-first ranking.": "223160298beb05d09c6b012ac0b7405dc85e2fc88249dfd9cf1976d0b8b932f1",
+      "FLAC/WAV first, strict metadata and duration matching.": "081d569e99d214b483f20c91cae1c28248f5c7ed973e7fa8e822f990f938856a",
+      "High-bitrate lossy allowed, shorter queues preferred.": "163f693a7e83f05766efcaf2c7a9b948b8986ecf375616fe4bd19ec569a3f516",
+      "Lower concurrency, no automatic public-peer retries.": "7e0b8f50d61ac3469537fc88e9f2f3f6023d046798bfadf5b558a74a0c44508b",
+      "MBID, ISRC, or fingerprint evidence drives acceptance.": "ce6feeecf29d5d6f5d90de3c90d210924401be1dc1735f609f775ea173637077",
+      "Slower queues and single-source candidates stay review-first.": "553ce8c7f946581c6ef57897d7a16f28ae941c10317e98c6ddd31edc5f9b6a11",
+      "Trusted mesh first, public Soulseek fallback second.": "b13e2212f80b79e90f02fc98d1d7c2ee01e0a852ab6e54da4858db14761524ee"
+    },
+    "pt-BR": {
+      "Expected track count, folder consistency, album-first ranking.": "d6e8c4901d241c41bda80d7cfd62f998e3a123cb47815241f6a68e30066aa32d",
+      "FLAC/WAV first, strict metadata and duration matching.": "d36ecd69f8be9512204d32a8fa3821f5552738b61ce900ecbd2ee831fd60b01b",
+      "High-bitrate lossy allowed, shorter queues preferred.": "966f41191ca05648dd0acf4b755545607103ca60feda9cb64b3b45fdf4e53509",
+      "Lower concurrency, no automatic public-peer retries.": "f77a2d8fa2aa5c18871ba16e17deae25b89fbdce7356c8ee208f545d657f5984",
+      "MBID, ISRC, or fingerprint evidence drives acceptance.": "ac180c04bf831c2125bf8939ffe111c6e0849ce5d2f4aa6d1832c3002ad81e61",
+      "Slower queues and single-source candidates stay review-first.": "2a2f50de0ed14d1b8972e0a0b620718395441de9a08ab0f7b4c0c88199c776f8",
+      "Trusted mesh first, public Soulseek fallback second.": "6e39f60513f36328005114ffbcfd3eaae54c759e912ea59084b6b19cde326fca"
+    },
+    "vi": {
+      "Expected track count, folder consistency, album-first ranking.": "d91385e5d2726124f701f343e0ff0481ada81c1f3f91dc5b52c2cf504c8e1367",
+      "FLAC/WAV first, strict metadata and duration matching.": "f96b3dbb5b4a284a1eb5277b92571dbc8b293894494a893245322947883efbf2",
+      "High-bitrate lossy allowed, shorter queues preferred.": "74dab0ea4bda0e158d7ee06337368b61358d351da274815aa0135d50a0cd1fd3",
+      "Lower concurrency, no automatic public-peer retries.": "5f3473c193a00870d2d4718a99714a281a1b788ac3ba852952b0c2c3c9e705fb",
+      "MBID, ISRC, or fingerprint evidence drives acceptance.": "6ab3dba52c41bfcad04cd4f3e0019854b8cb549fdee1fa3727a5f9f58075702c",
+      "Slower queues and single-source candidates stay review-first.": "b8a8a20760a6237fe2e47cf78b0c2993a8a1dace5141b6f50601b849aa86c71b",
+      "Trusted mesh first, public Soulseek fallback second.": "896a6f1a3f8bc47478632b373c2930858855dd6d583df71fccc0cbb981e79627"
+    },
+    "zh-Hans": {
+      "Expected track count, folder consistency, album-first ranking.": "541846ff0a39b51a25c3ddd10862bc48c3275c3679819a5029c302703e4b7e89",
+      "FLAC/WAV first, strict metadata and duration matching.": "ca1db6739c0dd2096c790194d735668fc4f76cc23f1efa0db9be989d330f33b7",
+      "High-bitrate lossy allowed, shorter queues preferred.": "da29e40d7a12c4c4cea5caae55fb73f106d9779abb965c4c9fd2c1c0d7b0b1b7",
+      "Lower concurrency, no automatic public-peer retries.": "fa3c227869388cb69b0a0494c66fc0fc7a913096e9b75a4e53ec5955ade1b755",
+      "MBID, ISRC, or fingerprint evidence drives acceptance.": "144ba29bb6b2cdf614b641d551299e34e9ac144f8555688f5da239d9270c4316",
+      "Slower queues and single-source candidates stay review-first.": "df2cd0123053ca6363018f0231fa4a00789fa7892695fee13a1fe53dbfcc8573",
+      "Trusted mesh first, public Soulseek fallback second.": "bbb8c17f9105d2c46c8970873c456db041c54ec0558b71b188a4029c657abbdd"
+    },
+    "zh-Hant": {
+      "Expected track count, folder consistency, album-first ranking.": "c22916c37bfce17844357fd17c19e9d02079971c060f1017245ffa2319d01d9e",
+      "FLAC/WAV first, strict metadata and duration matching.": "423211564d0e743fb77d2567a049dcff39c345d3f17af27be9a1840a37344f1b",
+      "High-bitrate lossy allowed, shorter queues preferred.": "b35f176568130415156bcd38350402bbaf748bf96a4b4c7c8d6893693484e1b5",
+      "Lower concurrency, no automatic public-peer retries.": "c1df03a31bb0a887891dbdcfa22786d44d78f4058fd696ba06795a8aa29939a1",
+      "MBID, ISRC, or fingerprint evidence drives acceptance.": "d9a462a61b51546a9f7c4c9b7f236ae499305055ebf336f2767dcffcd4093c9b",
+      "Slower queues and single-source candidates stay review-first.": "78b197956c5b8334974129c6244c7bf5ee1653dbe55e26a6cd4985b785c8f370",
+      "Trusted mesh first, public Soulseek fallback second.": "d16936941bac2c30718747b308386d10290e3f6272961c7bdc07066f833ac466"
+    }
+  },
+  "appliedRefinement": {
+    "key": "Reconnecting",
+    "locale": "id",
+    "previousSha256": "7053fbd2082688fb79a68a2f5dd415a7159e65cd313cddd072282a1e3c831018",
+    "previousValue": "Menghubungkan ulang",
+    "sha256": "12dce7f690604a9258a1adb92dd1f8346cee814daab214d8bb4fb2856c4d92f2",
+    "value": "Menyambung kembali"
+  },
+  "baseHead": "9d3aae249503d1732cc890a650052c85c57b2919",
+  "baseTree": "ec98bce9f26fc3fbef2968ba3e2b737b1d7fa214",
+  "callsiteAssessments": [
+    {
+      "localizedTextImportPresent": true,
+      "path": "web/src/components/ModeSpecificConnectButton.jsx",
+      "rationale": "The finite controller/server status labels are passed to the established LocalizedText component, which looks up the exact catalog key and supplies language/direction metadata for translated strings. The Agent state values are the same ones used by the existing state/color logic. Server-mode label selection matches Connecting, Connection Failed, and existing Disconnected cases; the raw server.lastError tooltip remains outside this translation change.",
+      "status": "accept",
+      "verifiedSnippets": [
+        "<LocalizedText source={controller?.state} />",
+        "<LocalizedText source={label} />"
+      ],
+      "workingFileSha256": "9137a281b7ea94ccd4c56660c21e6e51b5412dfd8b7d03115a5a7a40c74d9785"
+    },
+    {
+      "localizedTextImportPresent": true,
+      "path": "web/src/components/Search/SearchesListView.jsx",
+      "rationale": "The summary is a fixed one-of-seven string from acquisitionProfiles.js. Every summary key has a string translation in each of the 12 locale catalogs, and LocalizedText supplies the established lang/dir metadata.",
+      "status": "accept",
+      "verifiedSnippet": "<LocalizedText source={acquisitionProfile.summary} />",
+      "workingFileSha256": "46dddce98d3a57b202d8768822f43e3035b209980cca75fd355f0ea4da1b268a"
+    }
+  ],
+  "catalogAttestations": [
+    {
+      "keyPresence": {
+        "Connecting": true,
+        "Connection Failed": true,
+        "Reconnecting": true
+      },
+      "locale": "ar",
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "workingFileSha256": "709a14a649a9f18b2c9667c8ac6d1c753489df241bbb71717e39e4a5117b1aa0"
+    },
+    {
+      "keyPresence": {
+        "Connecting": true,
+        "Connection Failed": true,
+        "Reconnecting": true
+      },
+      "locale": "de",
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "workingFileSha256": "dd50d30ce6963c7d6bc299177d953bf154d23eabc948d2409f5641697ce929a2"
+    },
+    {
+      "keyPresence": {
+        "Connecting": true,
+        "Connection Failed": true,
+        "Reconnecting": true
+      },
+      "locale": "es",
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "workingFileSha256": "ae44125d37fc5e816412a2f5c3f5d034cd1fe64b9b554d3a2047408af190fb82"
+    },
+    {
+      "keyPresence": {
+        "Connecting": true,
+        "Connection Failed": true,
+        "Reconnecting": true
+      },
+      "locale": "fr",
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "workingFileSha256": "7543d291282e4d226368e1e22f789585ee1365d0174411e88c4265c8f9688595"
+    },
+    {
+      "keyPresence": {
+        "Connecting": true,
+        "Connection Failed": true,
+        "Reconnecting": true
+      },
+      "locale": "hi",
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "workingFileSha256": "79c7e08fab985c1341bb6b97d09ae7efe6581051890abe576c6422901190d952"
+    },
+    {
+      "keyPresence": {
+        "Connecting": true,
+        "Connection Failed": true,
+        "Reconnecting": true
+      },
+      "locale": "id",
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "workingFileSha256": "52c328a2b6a4f0898b2919c934b3594de8a8b2ce8c2dcd65ba892d8dc21354ad"
+    },
+    {
+      "keyPresence": {
+        "Connecting": true,
+        "Connection Failed": true,
+        "Reconnecting": true
+      },
+      "locale": "ja",
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "workingFileSha256": "c96b6f0f643ec0e723aebd871ed39ff132533b897eba379628278331f9e47a3b"
+    },
+    {
+      "keyPresence": {
+        "Connecting": true,
+        "Connection Failed": true,
+        "Reconnecting": true
+      },
+      "locale": "ko",
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "workingFileSha256": "e5371300dc1d8a61f583bc497f67368e5e7b6ad589f1dc481f8be38fcb0919a8"
+    },
+    {
+      "keyPresence": {
+        "Connecting": true,
+        "Connection Failed": true,
+        "Reconnecting": true
+      },
+      "locale": "pt-BR",
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "workingFileSha256": "d27a4c535f77a9c6a09f37ba2338fc37377825a7e8fee0d03a16e77f9a029b0f"
+    },
+    {
+      "keyPresence": {
+        "Connecting": true,
+        "Connection Failed": true,
+        "Reconnecting": true
+      },
+      "locale": "vi",
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "workingFileSha256": "9b084447575c4ced7da0d5b8d301dc9d93d92b8e4732d730b2b86e6781e8a9de"
+    },
+    {
+      "keyPresence": {
+        "Connecting": true,
+        "Connection Failed": true,
+        "Reconnecting": true
+      },
+      "locale": "zh-Hans",
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "workingFileSha256": "af01a4b29e4ecbf5a7152911e0c7476dff4e09979fc6849de97a7df6c3b1373e"
+    },
+    {
+      "keyPresence": {
+        "Connecting": true,
+        "Connection Failed": true,
+        "Reconnecting": true
+      },
+      "locale": "zh-Hant",
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "workingFileSha256": "ea1e8649db618e393a343d61f12919e7cf5f7ef4122de3f98318cb04da8b7e05"
+    }
+  ],
+  "catalogKeys": [
+    "Connecting",
+    "Connection Failed",
+    "Reconnecting"
+  ],
+  "finalCellCounts": {
+    "accept": 36,
+    "hold": 0,
+    "refine": 0,
+    "total": 36
+  },
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "localizedTextHelperAttestation": {
+    "assessment": "Appropriate: LocalizedText resolves exact source strings and uses languageFor/directionFor to set lang and dir on translated spans.",
+    "languageDirectionHelperPath": "web/src/lib/interfaceLocale.js",
+    "languageDirectionHelperSha256": "16eb5f119655805f48845e026ee12fd517fae6de871091bd9be2e5b7f1d310ea",
+    "path": "web/src/components/Shared/LocalizedText.jsx",
+    "sha256": "d6b4417309d2cb0e749d93e7156e8ae7214b18a363de01afde8fd0b445518e85"
+  },
+  "nativeSpeakerApproval": "none",
+  "pullRequest": {
+    "headRefOid": "9d3aae249503d1732cc890a650052c85c57b2919",
+    "isDraft": true,
+    "number": 204,
+    "repository": "snapetech-org/slskr",
+    "state": "OPEN"
+  },
+  "reconciliation": "The sole Indonesian Reconnecting refinement from the initial review is now present in the working catalog and is accepted in the final review.",
+  "repository": "snapetech-org/slskr",
+  "repositoryChangesByReviewer": "none",
+  "reviewedTrackedPatchSha256": "e54bc3dfb98fef5e1c56b110af2d06a2c76c4389c43561a9dcd114e30b6cdc64",
+  "task": "Final independent re-attestation of slskR connection-state localization patch",
+  "testsBuildsScansCI": "not run",
+  "workingTreeStatusAtReview": [
+    "## task/slskr-pr204-w603-622-apply-20261102-root",
+    " M web/src/components/ModeSpecificConnectButton.jsx",
+    " M web/src/components/Search/SearchesListView.jsx",
+    " M web/src/lib/locales/ui-labels.ar.json",
+    " M web/src/lib/locales/ui-labels.de.json",
+    " M web/src/lib/locales/ui-labels.es.json",
+    " M web/src/lib/locales/ui-labels.fr.json",
+    " M web/src/lib/locales/ui-labels.hi.json",
+    " M web/src/lib/locales/ui-labels.id.json",
+    " M web/src/lib/locales/ui-labels.ja.json",
+    " M web/src/lib/locales/ui-labels.ko.json",
+    " M web/src/lib/locales/ui-labels.pt-BR.json",
+    " M web/src/lib/locales/ui-labels.vi.json",
+    " M web/src/lib/locales/ui-labels.zh-Hans.json",
+    " M web/src/lib/locales/ui-labels.zh-Hant.json",
+    "?? docs/pr-evidence/pr204-localization-2026-11-02/browser-review-search-arabic/",
+    "?? web/vite.review.config.mjs"
+  ],
+  "worktree": "/mnt/disks/scratch/task-worktrees/localization-20261102/slskr-pr204-w503-522"
+}

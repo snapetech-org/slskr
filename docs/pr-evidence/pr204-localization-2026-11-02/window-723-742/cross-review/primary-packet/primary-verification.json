@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "head": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "tree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "window": [
+    723,
+    742
+  ],
+  "cellCount": 240,
+  "uniqueCellCount": 240,
+  "callerPinCount": 49,
+  "sourceCurrentPlaceholderFailures": 0,
+  "candidatePlaceholderFailures": 0,
+  "candidateProtectedLiteralFailures": 0,
+  "pluralMapCells": 0,
+  "heldCells": 49,
+  "candidateCells": 41,
+  "acceptedCurrentCells": 150,
+  "previousBoundaryRowsReattested": 12,
+  "boundaryCallerPinRowsReattested": 11,
+  "priorBoundaryRecommendationsApplied": 12,
+  "readOnly": true,
+  "repoOrPrModified": false,
+  "testsBuildsScansCiOrWorkflowsRun": false,
+  "nativeSpeakerApproval": false,
+  "nativeSpeakerReviewRequired": true,
+  "sourceLiteralCallerPins": 32,
+  "supportingCallerContextPins": 17,
+  "testReferences": 0,
+  "uniqueCallerLines": 48
+}

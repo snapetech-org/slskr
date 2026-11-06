@@ -1,0 +1,13 @@
+{
+  "allCellCallerReferencesMatch": true,
+  "allFilesAndGitBlobsMatch": true,
+  "allLineAndContextPinsMatch": true,
+  "catalogOnlyGap": {
+    "exactProductionStringLiteralMatches": [],
+    "heldLocaleCells": 12,
+    "sourceIndex": 937,
+    "windowLabel": 938
+  },
+  "distinctFiles": 15,
+  "pinnedCallerCount": 42
+}

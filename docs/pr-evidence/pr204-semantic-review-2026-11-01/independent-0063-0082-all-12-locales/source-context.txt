@@ -1,0 +1,164 @@
+# Runtime source context at PR #204 code head 7ff454828398de6a3cfb72fe7f0ed21fe419425b (tree 9e9f2aa743c4ff3236af8f99619803bdc3a37152)
+
+Review head 9650a6f9ef70bf23a0dc861156e751729c7a4604 (tree f2fcb8b930ea9e594b677ded121e6b3324cfd3b8) adds evidence/docs only after this source/catalog snapshot. Cited runtime files and locale catalogs match the frozen source snapshot.
+
+## `web/src/components/CompatibilityDashboard.jsx` — blob `831b00821cf5999e39ce586eab76d81bfdbdbb82`, SHA-256 `1e85738718ef2de4dc40358f746163cabb6192fca4072a8bf30ba0e133dbd27f`
+
+Lines 32–39:
+32: const HISTORY_RANGES = [
+33:   { buckets: 24, days: 1, get label() { return interfaceText("24h"); } },
+34:   { buckets: 84, days: 7, get label() { return interfaceText("7d"); } },
+35:   { buckets: 60, days: 30, get label() { return interfaceText("30d"); } },
+36:   { buckets: 90, days: 90, get label() { return interfaceText("90d"); } },
+37:   { buckets: 90, days: 180, get label() { return interfaceText("180d"); } },
+38:   { buckets: 100, days: 365, get label() { return interfaceText("1y"); } },
+39:   { buckets: 100, days: null, get label() { return interfaceText("All"); } },
+
+## `web/src/components/Player/PlayerStatsModal.jsx` — blob `6a26dc806b563672712209ade6cdbba3d998bad3`, SHA-256 `ea9a17c1e064db7ec5f70c095a9bd0fb4f15476428007bf3472fcd7b2c5a4292`
+
+Lines 272–277:
+272:         <div className="player-stats-ranges" role="group" aria-label={interfaceText("Listening stats range")} {...interfaceTextProps("Listening stats range")}>
+273:           {[
+274:             { label: interfaceText("7D"), value: 7 },
+275:             { label: interfaceText("30D"), value: 30 },
+276:             { label: interfaceText("90D"), value: 90 },
+277:             { label: interfaceText("All"), value: null },
+
+## `web/src/components/Search/SongIDEvidenceDetails.jsx` — blob `a6a0eb1e9843801ff94e590a22878899f3d2bca2`, SHA-256 `4a90c2dfd31302a93964fed1f0642a56909bab926324519eb77c94cda6139f65`
+
+Lines 258–268:
+258:                 <Label size="tiny"><LocalizedText source={"AI Mentions"} />{" "}{formatRegionalNumber(run.scorecard.aiCommentMentionCount || 0)}</Label>
+259:                 <Label size="tiny"><LocalizedText source={"Panako"} />{" "}{formatRegionalNumber(run.scorecard.panakoHitCount || 0)}</Label>
+260:                 <Label size="tiny"><LocalizedText source={"Audfprint"} />{" "}{formatRegionalNumber(run.scorecard.audfprintHitCount || 0)}</Label>
+261:                 <Label size="tiny"><LocalizedText source={"Corpus"} />{" "}{formatRegionalNumber(run.scorecard.corpusMatchCount || 0)}</Label>
+262:                 <Label size="tiny">
+263:                   <LocalizedText source={"Provenance"} />{" "}{formatRegionalNumber(run.scorecard.provenanceSignalCount || 0)}
+264:                 </Label>
+265:                 <Label size="tiny">
+266:                   <LocalizedText source={"AI Heuristics"} />{" "}{formatRegionalNumber(run.scorecard.aiArtifactClipCount || 0)}
+267:                 </Label>
+268:               </div>
+
+Lines 326–333:
+326:           {run.aiHeuristics ? (
+327:             <details style={detailStyle}>
+328:               <summary style={detailSummaryStyle}><LocalizedText source={"AI Audio Heuristics"} /></summary>
+329:               <div style={{ marginBottom: '1em' }}>
+330:                 <Label size="tiny">
+331:                   <LocalizedText source={"Score"} />{" "}{formatPercent(run.aiHeuristics.artifactScore)}
+332:                 </Label>
+333:                 <Label size="tiny">{run.aiHeuristics.artifactLabel || interfaceText('unknown')}</Label>
+
+Lines 594–599:
+594:                       {clip.aiHeuristics ? (
+595:                         <List.Description style={{ marginTop: '0.35em' }}>
+596:                           <LocalizedText source={"AI Heuristics:"} />{" "}{clip.aiHeuristics.artifactLabel} (
+597:                           {formatPercent(clip.aiHeuristics.artifactScore)})
+598:                         </List.Description>
+599:                       ) : null}
+
+## `web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx` — blob `90f3e1d29a4b514a1877693e131e92b66b8050aa`, SHA-256 `17241e796b943988d339bac74569f5a5d4e8889194cad1221d0b9c8bc1b82a9e`
+
+Lines 495–508:
+495:                 <Form.Input
+496:                   aria-label={interfaceText("API key policy name")}
+497:                   disabled={!remoteConfiguration || saving}
+498:                   label={interfaceText("API Key Name")}
+499:                   onChange={(_, { value }) => update('apiKeyName', value)}
+500:                   value={form.apiKeyName}
+501:                  {...interfaceTextProps("API key policy name")}/>
+502:                 <Form.Input
+503:                   aria-label={interfaceText("API key replacement value")}
+504:                   disabled={!remoteConfiguration || saving}
+505:                   label={interfaceText("API Key")}
+506:                   onChange={(_, { value }) => update('apiKeyValue', value)}
+507:                   placeholder={interfaceText(form.apiKeyConfigured ? 'Configured' : 'New API key')}
+508:                   type="password"
+
+Lines 526–539:
+526:                  {...interfaceTextProps("API key role")}/>
+527:               </Form.Group>
+528:               <Form.Group widths="equal">
+529:                 <Form.Input
+530:                   aria-label={interfaceText("API key CIDR allowlist")}
+531:                   disabled={!remoteConfiguration || saving}
+532:                   label={interfaceText("API CIDRs")}
+533:                   onChange={(_, { value }) => update('apiKeyCidr', value)}
+534:                   value={form.apiKeyCidr}
+535:                  {...interfaceTextProps("API key CIDR allowlist")}/>
+536:                 <Form.Input
+537:                   aria-label={interfaceText("API key scopes")}
+538:                   disabled={!remoteConfiguration || saving}
+539:                   label={interfaceText("API Scopes")}
+
+## `web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx` — blob `2abab8a5496df8cdd48e7acf32b479c7ecba6c23`, SHA-256 `34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60`
+
+Lines 468–471:
+468:                               <small>
+469:                                 {algorithm}<LocalizedText source={": F1="} />{formatRegionalFixedNumber(stats.f1Score, 2)}<LocalizedText source={", Precision="} />{formatRegionalFixedNumber(stats.precision, 2)}
+470:                               </small>
+471:                             </div>
+
+## `web/src/components/System/MediaCore/PodMessageSigningPanel.jsx` — blob `bfa628f90b21349b4686799aa6dc40b46ab70832`, SHA-256 `8454b7b025260cf083324f52ea29f806f0ff4c188beec949fd13061e31e41972`
+
+Lines 226–232:
+226:                         <Message size="tiny">
+227:                           <p>
+228:                             <LocalizedText source={"Message"} />{" "}{verificationResult.messageId}<LocalizedText source={": Signature is"} />{' '}
+229:                             {verificationResult.isValid ? interfaceText('Valid') : interfaceText('Invalid')}
+230:                           </p>
+231:                         </Message>
+232:                       )}
+
+## `web/src/components/System/Mesh/MeshEvidencePolicy.jsx` — blob `2d8c7f594e9d3dc09192182cd1a7beefbc300f6d`, SHA-256 `b4dd46c29e740ea03bf84898655b413fc02bfe6274fbaa1c9964ed59e9c475a7`
+
+Lines 336–346:
+336:                     </List.Header>
+337:                     <List.Description>
+338:                       <LocalizedText source={"Confidence"} />{" "}{formatRegionalNumber(entry.confidence)}<LocalizedText source={"; witnesses"} />{" "}{formatRegionalNumber(entry.witnessCount)}<LocalizedText source={"; provenance"} />{" "}{entry.provenance.trustTier}
+339:                       {entry.reasons.length > 0
+340:                         ? interfaceText('; rejected because {reasons}', {
+341:                           reasons: entry.reasons.join(', '),
+342:                         })
+343:                         : <LocalizedText source={"; accepted for local use"} />}
+344:                     </List.Description>
+345:                   </List.Content>
+346:                 </List.Item>
+
+## `web/src/components/System/Security/AdversarialSettingsView.jsx` — blob `adcacdd123faf82a315da746fab3243adf5ea6a3`, SHA-256 `5b2dfa095ba281bae2b5ef66e17901b38c7d2a68d9bef52c5f016ce3352db72d`
+
+Lines 94–100:
+94:             <LocalizedText source={"Adversarial Resilience Overview"} /></Header>
+95:           <p>
+96:             <strong><LocalizedText source={"⚠️ WARNING:"} /></strong> <LocalizedText source={"These features are designed for users in repressive regimes or facing active surveillance. They are"} />{' '}
+97:             <strong><LocalizedText source={"ALL DISABLED BY DEFAULT"} /></strong> <LocalizedText source={"and may impact performance and compatibility. Only enable if you understand the security implications."} /></p>
+98:
+99:           <Form>
+100:             <Form.Field>
+
+## `web/src/lib/acquisitionRequests.js` — blob `3b89ad55924c0e4e84b1c005898b35f7e8e5b169`, SHA-256 `0ad4096633725af850231922cc185a179393c3334aaf70fdee08c5c8a43b19fc`
+
+Lines 21–29:
+21:   },
+22:   failed: {
+23:     color: 'red',
+24:     label: 'Failed',
+25:     summary: 'A previous acquisition/import attempt failed and needs review.',
+26:   },
+27:   imported: {
+28:     color: 'teal',
+29:     label: 'Imported',
+
+## Conflict holds
+
+Four exact target cells for `; provenance` (ko, vi, zh-Hans, zh-Hant) have both accepted and correction-needed terminal records. The Japanese `A download path is configured.` cell also has both outcomes. This bundle preserves the exact conflicting evidence references and does not choose a status.
+
+## Related Hindi status labels
+
+PodMessageSigningPanel renders `: Signature is` followed by localized `Valid` or `Invalid`. The Hindi values are `वैध` and `अमान्य`; the current fragment places `है` before that adjective, so the proposal changes the fragment to `: हस्ताक्षर की स्थिति`.
+
+MeshEvidencePolicy renders `; witnesses` followed by a count. The Hindi proposal `; गवाहों की संख्या` forms a natural count label.
+
+## German uppercase spelling
+
+The source is an all-caps warning. The German target has lowercase `ß` inside `STANDARDMÄßIG`. The 2024 official orthography rules allow `SS` or capital `ẞ` in uppercase; the proposal uses `SS`. Reference: https://www.rechtschreibrat.com/DOX/RfdR_Amtliches-Regelwerk_2024.pdf

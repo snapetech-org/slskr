@@ -1,0 +1,21 @@
+{
+  "all_240_current_values_and_hashes": "pass",
+  "caller_search_direct_bridge_and_noop": "pass",
+  "caller_source_pr_file_blob_excerpt_reattestation": "pass",
+  "catalog_blob_and_file_hashes_12": "pass",
+  "catalog_modified": false,
+  "independent_review_candidate_and_decision_comparison_240": "pass",
+  "native_speaker_approval": false,
+  "native_speaker_review_required": true,
+  "placeholder_sets_all_candidates": "pass",
+  "pr_head_and_tree": "pass",
+  "prior_exact_matches_397_and_stale_0": "pass",
+  "prior_routed_accepted_cells_preserved": 12,
+  "schema_version": 1,
+  "source_head_and_tree": "pass",
+  "source_inventory_5437_rows": "pass",
+  "source_window_indices_and_hashes": "pass",
+  "tests_builds_scans_ci_workflows_releases_tags_merges": false,
+  "w523_w542_noop_hold_boundary": "pass",
+  "worktree_clean": true
+}

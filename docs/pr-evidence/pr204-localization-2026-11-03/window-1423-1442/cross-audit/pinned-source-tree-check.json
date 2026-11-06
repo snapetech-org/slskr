@@ -1,0 +1,301 @@
+{
+  "observedAtUtc": "2026-11-03T19:42:42.654393+00:00",
+  "commit": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+  "tree": "09adcb271a2eb92770df4a20098dccc3fde2a59f",
+  "treeEntryCount": 6159,
+  "recursiveTreeTruncated": false,
+  "catalogPathCount": 12,
+  "productionCallerPathCount": 20,
+  "runtimePathCount": 1,
+  "committedSourceQueuePathCount": 1,
+  "checkedPathCount": 34,
+  "missingPaths": [],
+  "mismatchedPaths": [],
+  "result": "PASS",
+  "method": "GitHub Git Trees API recursive listing at the exact pinned commit tree; compare each returned blob SHA-1 to the candidate-free packet file pin, including locale catalogs, production caller files, locale runtime, and the committed source-order queue.",
+  "paths": [
+    {
+      "path": "docs/pr-evidence/pr204-localization-2026-11-03/window-1403-1422/candidate-free-input/source-queue.jsonl",
+      "kind": "committed-source-queue",
+      "expectedGitBlob": "8307c50b195f633d766d23c85530f23317cb128d",
+      "actualGitBlob": "8307c50b195f633d766d23c85530f23317cb128d",
+      "matches": true
+    },
+    {
+      "path": "web/src/components/Browse/DirectoryTree.jsx",
+      "kind": "production-caller",
+      "expectedGitBlob": "3a29b0a04ff2f0012dff2987beda99dad435eb43",
+      "actualGitBlob": "3a29b0a04ff2f0012dff2987beda99dad435eb43",
+      "matches": true,
+      "pinnedSha256": "1a32df7e28719921907ab174030850dcc09098099c6f69f6b0dbcc86ba7d1514"
+    },
+    {
+      "path": "web/src/components/Player/PlayerBar.jsx",
+      "kind": "production-caller",
+      "expectedGitBlob": "4ba36606819dc376ce16b1e605353250e5f25b50",
+      "actualGitBlob": "4ba36606819dc376ce16b1e605353250e5f25b50",
+      "matches": true,
+      "pinnedSha256": "545be10b605b6dd2dbe9d1e14d6442e5b331166e6910acb023bc06246e4cbb7d"
+    },
+    {
+      "path": "web/src/components/Player/PlayerDiscoveryShelfModal.jsx",
+      "kind": "production-caller",
+      "expectedGitBlob": "93754b8ae4bbf582b9140acf977f58b7ecc001cb",
+      "actualGitBlob": "93754b8ae4bbf582b9140acf977f58b7ecc001cb",
+      "matches": true,
+      "pinnedSha256": "18c4d3c9f667767af9db6917912c0e66cb2912cefc861ecab45e0c330ae305c9"
+    },
+    {
+      "path": "web/src/components/Player/VisualizerOverlayControls.jsx",
+      "kind": "production-caller",
+      "expectedGitBlob": "0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf",
+      "actualGitBlob": "0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf",
+      "matches": true,
+      "pinnedSha256": "5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4"
+    },
+    {
+      "path": "web/src/components/Search/Response.jsx",
+      "kind": "production-caller",
+      "expectedGitBlob": "8bee962fc708202a785758d9da1193ea4de59337",
+      "actualGitBlob": "8bee962fc708202a785758d9da1193ea4de59337",
+      "matches": true,
+      "pinnedSha256": "da0ccb703c38cf3a444e9d79fba30cd62191f15277ec339b287529d121cbe6de"
+    },
+    {
+      "path": "web/src/components/Search/SearchesListView.jsx",
+      "kind": "production-caller",
+      "expectedGitBlob": "22f0f4a4bfdd5e3469b9681a03028aba8b269969",
+      "actualGitBlob": "22f0f4a4bfdd5e3469b9681a03028aba8b269969",
+      "matches": true,
+      "pinnedSha256": "46dddce98d3a57b202d8768822f43e3035b209980cca75fd355f0ea4da1b268a"
+    },
+    {
+      "path": "web/src/components/Shared/FileList.jsx",
+      "kind": "production-caller",
+      "expectedGitBlob": "15b08f65a7d0b704eccaeca2972844bc03775e19",
+      "actualGitBlob": "15b08f65a7d0b704eccaeca2972844bc03775e19",
+      "matches": true,
+      "pinnedSha256": "f373875d4cc6dfdc0d5096791c163343d9ede675a3fdf0be2c311a9231382296"
+    },
+    {
+      "path": "web/src/components/System/ExperienceSettings/index.jsx",
+      "kind": "production-caller",
+      "expectedGitBlob": "fbe8caabfc30e03809dc5ae7051bddb731986956",
+      "actualGitBlob": "fbe8caabfc30e03809dc5ae7051bddb731986956",
+      "matches": true,
+      "pinnedSha256": "ba7826de4b32bc9506d5926e6243623ccc3104da43706ce7a57fe4b17bcf2f30"
+    },
+    {
+      "path": "web/src/components/System/Integrations/SourceFeedIntegrationsPanel.jsx",
+      "kind": "production-caller",
+      "expectedGitBlob": "6a8c88b73cbf55eec7d7ac0d23b8d86005b854be",
+      "actualGitBlob": "6a8c88b73cbf55eec7d7ac0d23b8d86005b854be",
+      "matches": true,
+      "pinnedSha256": "3535dd1d9d37b9f01a451ad1b8220c864db8a0d3e6c074b9290eaf71b738af4e"
+    },
+    {
+      "path": "web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx",
+      "kind": "production-caller",
+      "expectedGitBlob": "2abab8a5496df8cdd48e7acf32b479c7ecba6c23",
+      "actualGitBlob": "2abab8a5496df8cdd48e7acf32b479c7ecba6c23",
+      "matches": true,
+      "pinnedSha256": "34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60"
+    },
+    {
+      "path": "web/src/components/System/MediaCore/PodDhtPublishingPanel.jsx",
+      "kind": "production-caller",
+      "expectedGitBlob": "e3f016a10d5dd9a2514231bc25e6b81f1a71177f",
+      "actualGitBlob": "e3f016a10d5dd9a2514231bc25e6b81f1a71177f",
+      "matches": true,
+      "pinnedSha256": "b54d9f456b6b638a12794f54ebd6f9005a8fb1797d177ef4774e42fbade22493"
+    },
+    {
+      "path": "web/src/components/System/MediaCore/PodDiscoveryPanel.jsx",
+      "kind": "production-caller",
+      "expectedGitBlob": "c79ee3cf9b70c20fbb819aae0925b3b52c0dbe89",
+      "actualGitBlob": "c79ee3cf9b70c20fbb819aae0925b3b52c0dbe89",
+      "matches": true,
+      "pinnedSha256": "c17c245776bcb87bb6089ff3836ff6b6061081ad2d0935d4dd15bff3aff928af"
+    },
+    {
+      "path": "web/src/components/System/MediaCore/PodMembershipManagementPanel.jsx",
+      "kind": "production-caller",
+      "expectedGitBlob": "dd436ce3710d00f6436ec497ab9df9863e763723",
+      "actualGitBlob": "dd436ce3710d00f6436ec497ab9df9863e763723",
+      "matches": true,
+      "pinnedSha256": "d1ed549ca3edbb54571c3091ace817fcdecab5e073f17ce81768df6fe14d2953"
+    },
+    {
+      "path": "web/src/components/System/Mesh/MeshEvidencePolicy.jsx",
+      "kind": "production-caller",
+      "expectedGitBlob": "2d8c7f594e9d3dc09192182cd1a7beefbc300f6d",
+      "actualGitBlob": "2d8c7f594e9d3dc09192182cd1a7beefbc300f6d",
+      "matches": true,
+      "pinnedSha256": "b4dd46c29e740ea03bf84898655b413fc02bfe6274fbaa1c9964ed59e9c475a7"
+    },
+    {
+      "path": "web/src/components/System/Mesh/RealmSubjectIndexConflicts.jsx",
+      "kind": "production-caller",
+      "expectedGitBlob": "355a03884b50ecd5b45287aa89f538919a17f70a",
+      "actualGitBlob": "355a03884b50ecd5b45287aa89f538919a17f70a",
+      "matches": true,
+      "pinnedSha256": "7f4c9a172e08b50027271c856dca10f7270a23f7bba89ca1488cb6561ae62a77"
+    },
+    {
+      "path": "web/src/components/System/Network/index.jsx",
+      "kind": "production-caller",
+      "expectedGitBlob": "2df958dba38d5ca7841043940d0d2b9f9c238658",
+      "actualGitBlob": "2df958dba38d5ca7841043940d0d2b9f9c238658",
+      "matches": true,
+      "pinnedSha256": "81f45c3ef9dd9a153979cd39594b3eab4fd0cccc226654647fc3a022f97fe005"
+    },
+    {
+      "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+      "kind": "production-caller",
+      "expectedGitBlob": "adcacdd123faf82a315da746fab3243adf5ea6a3",
+      "actualGitBlob": "adcacdd123faf82a315da746fab3243adf5ea6a3",
+      "matches": true,
+      "pinnedSha256": "5b2dfa095ba281bae2b5ef66e17901b38c7d2a68d9bef52c5f016ce3352db72d"
+    },
+    {
+      "path": "web/src/components/System/System.jsx",
+      "kind": "production-caller",
+      "expectedGitBlob": "a3883b39c29b38485b5bfcadcf4039f18012c1a3",
+      "actualGitBlob": "a3883b39c29b38485b5bfcadcf4039f18012c1a3",
+      "matches": true,
+      "pinnedSha256": "41f2b7416cf6503df69aad6265f0df06fa3b7ee44d476b9e710ab5bf83ed2f0f"
+    },
+    {
+      "path": "web/src/components/Transfers/TransferList.jsx",
+      "kind": "production-caller",
+      "expectedGitBlob": "6b0cc627ee092390cde17aa8330a8d7cb24202d3",
+      "actualGitBlob": "6b0cc627ee092390cde17aa8330a8d7cb24202d3",
+      "matches": true,
+      "pinnedSha256": "5db7fa14417829b11cd41eb78614b114bb747c5c5fbdc2842c24dfc924066491"
+    },
+    {
+      "path": "web/src/lib/acquisitionProfiles.js",
+      "kind": "production-caller",
+      "expectedGitBlob": "8708137fd8763e4a33bec1571a14f28153ee4189",
+      "actualGitBlob": "8708137fd8763e4a33bec1571a14f28153ee4189",
+      "matches": true,
+      "pinnedSha256": "014d4977e503569f658b3809d918b6401b3b6e9699e4228a28a16760c4b0282b"
+    },
+    {
+      "path": "web/src/lib/interfaceLocale.js",
+      "kind": "locale-runtime",
+      "expectedGitBlob": "72dfea05f86bcf0ab02882a85c6e8d4a0cb0dabf",
+      "actualGitBlob": "72dfea05f86bcf0ab02882a85c6e8d4a0cb0dabf",
+      "matches": true,
+      "pinnedSha256": "16eb5f119655805f48845e026ee12fd517fae6de871091bd9be2e5b7f1d310ea"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "kind": "locale-catalog",
+      "expectedGitBlob": "be1f3806257279bd8143d8aea2e155ecb9da97c8",
+      "actualGitBlob": "be1f3806257279bd8143d8aea2e155ecb9da97c8",
+      "matches": true,
+      "locale": "ar",
+      "pinnedSha256": "093976ad69295629112fe0434c63263e69c84d6f04982216fd69b86e0b91a24b"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "kind": "locale-catalog",
+      "expectedGitBlob": "fd3ef712fd290b6986f578b96b384ef51870b6de",
+      "actualGitBlob": "fd3ef712fd290b6986f578b96b384ef51870b6de",
+      "matches": true,
+      "locale": "de",
+      "pinnedSha256": "d29c38718ea7365eec57c73baf03bba78186136de66add637d1a6f2983220fb6"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "kind": "locale-catalog",
+      "expectedGitBlob": "00ccd6313f23a641bfbbd146648966bb74b542df",
+      "actualGitBlob": "00ccd6313f23a641bfbbd146648966bb74b542df",
+      "matches": true,
+      "locale": "es",
+      "pinnedSha256": "d6e854d2556580e24144449c0bd82dc8e051fe211cb630a9956840470e15a8e2"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "kind": "locale-catalog",
+      "expectedGitBlob": "eba3ece30cee2e45b0f914056fa5872198a4ce35",
+      "actualGitBlob": "eba3ece30cee2e45b0f914056fa5872198a4ce35",
+      "matches": true,
+      "locale": "fr",
+      "pinnedSha256": "120f1857f4d60a387e879d48ad60ca40dd25eb212dcd8a7257fbd07cdb149c87"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "kind": "locale-catalog",
+      "expectedGitBlob": "e9e0144562e5e5493779649f4810eae82832ad81",
+      "actualGitBlob": "e9e0144562e5e5493779649f4810eae82832ad81",
+      "matches": true,
+      "locale": "hi",
+      "pinnedSha256": "a3c8d432fc76fd93961261ffd804ff172942ce04f5d3a11a5af9265624029379"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "kind": "locale-catalog",
+      "expectedGitBlob": "74fb1c978be057d9b7dfc9480da2740738da995f",
+      "actualGitBlob": "74fb1c978be057d9b7dfc9480da2740738da995f",
+      "matches": true,
+      "locale": "id",
+      "pinnedSha256": "cf545456485fc5c0ab16538ba7cf3e54d51220dad4bb2f9d066157835dda8d7c"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "kind": "locale-catalog",
+      "expectedGitBlob": "2957f9c84489433153432cfab5287890b19189c1",
+      "actualGitBlob": "2957f9c84489433153432cfab5287890b19189c1",
+      "matches": true,
+      "locale": "ja",
+      "pinnedSha256": "eefb330f623cc1aea5059adf7359491998274e8b3449955102f50a6c3ae6ff6e"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "kind": "locale-catalog",
+      "expectedGitBlob": "cf643243cbfc537268aaa3fb3cb2825c3312a3b7",
+      "actualGitBlob": "cf643243cbfc537268aaa3fb3cb2825c3312a3b7",
+      "matches": true,
+      "locale": "ko",
+      "pinnedSha256": "aceda4ed7b5c7c7caa569d1e5e7ec9dae85070c92557c844c040e2dd8b0a6b68"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "kind": "locale-catalog",
+      "expectedGitBlob": "1cddd8b153561259b73dc73e26e6ec81efbe0d56",
+      "actualGitBlob": "1cddd8b153561259b73dc73e26e6ec81efbe0d56",
+      "matches": true,
+      "locale": "pt-BR",
+      "pinnedSha256": "f07b0f265c8cfa1d7e49701e8235e4eb261975b6d01b2e3dd2d62c37b1000072"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "kind": "locale-catalog",
+      "expectedGitBlob": "1c84702a762f4320121cef078ad2bb6d25d7dab2",
+      "actualGitBlob": "1c84702a762f4320121cef078ad2bb6d25d7dab2",
+      "matches": true,
+      "locale": "vi",
+      "pinnedSha256": "abf5b17406908c6837017d02491522fec4640d0cc4d64593ceb1806982de0649"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "kind": "locale-catalog",
+      "expectedGitBlob": "d839aa9f3c91efc99bc0e7eb8887c4d848037110",
+      "actualGitBlob": "d839aa9f3c91efc99bc0e7eb8887c4d848037110",
+      "matches": true,
+      "locale": "zh-Hans",
+      "pinnedSha256": "20a7aacdfbb517603cd8ff357b50742cb835926110e8c9dd3fddb89ac2fb5ea9"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "kind": "locale-catalog",
+      "expectedGitBlob": "5638018eeb0319001993fff515a9f1e301597ed8",
+      "actualGitBlob": "5638018eeb0319001993fff515a9f1e301597ed8",
+      "matches": true,
+      "locale": "zh-Hant",
+      "pinnedSha256": "e8d083201cac18821dca9741ae9380366ab14368b4bbcbc762edd016bbb0f7d4"
+    }
+  ]
+}

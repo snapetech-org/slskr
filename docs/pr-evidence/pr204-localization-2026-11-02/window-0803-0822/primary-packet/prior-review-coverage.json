@@ -1,0 +1,8 @@
+{
+  "cellsReviewedFresh": 240,
+  "dispositionsReused": 0,
+  "evidenceScope": "tracked docs/pr-evidence/pr204-localization-2026-11-02 JSONL records available at the attested head",
+  "exactHashPriorReviewCells": 0,
+  "note": "No source-window-specific review dispositions were found; source inventory rows are not review decisions.",
+  "priorMatchingReviewRecords": 0
+}

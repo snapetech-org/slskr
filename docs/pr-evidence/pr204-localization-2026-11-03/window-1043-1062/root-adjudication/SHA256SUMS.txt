@@ -1,0 +1,3 @@
+40d14cffebe2180f7286b0a3047b5ada32eaaf3a133f3a610da75ee57f364676  root-adjudication-proposal.jsonl
+90aea5de5742cf235b40f3655d3608ba9fcbc0d0ddad1e43372bdb888f2f14d9  proposal-summary.json
+efe1b17233d0010d71de81cf45c06a30dc702ef2b62451f4e5fbbed9ffabf56b  README.md

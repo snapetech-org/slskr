@@ -1,0 +1,43 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "reviewed_input_head": "aa106d2505de8c9ace2d7d6dbf2af9777651947d",
+  "reviewed_input_tree": "f99e717b4b77c8da098e7b8fc163926d4d32e926",
+  "new_selected_action_translations_applied": 24,
+  "old_placeholder_keys_retired": 24,
+  "window_563_582_follow_up_corrections_applied": 5,
+  "catalog_count": 12,
+  "catalog_keys_per_locale_before": {
+    "ar": 5441,
+    "de": 5441,
+    "es": 5441,
+    "fr": 5441,
+    "hi": 5441,
+    "id": 5441,
+    "ja": 5441,
+    "ko": 5441,
+    "pt-BR": 5441,
+    "vi": 5441,
+    "zh-Hans": 5441,
+    "zh-Hant": 5441
+  },
+  "catalog_keys_per_locale_after": {
+    "ar": 5441,
+    "de": 5441,
+    "es": 5441,
+    "fr": 5441,
+    "hi": 5441,
+    "id": 5441,
+    "ja": 5441,
+    "ko": 5441,
+    "pt-BR": 5441,
+    "vi": 5441,
+    "zh-Hans": 5441,
+    "zh-Hant": 5441
+  },
+  "held_selected_remove_translations": 12,
+  "held_reason": "The current route dispatch passes remove=true, and the server deletes the local file even when deleteFile=false; user direction is pending.",
+  "native_speaker_approval": false,
+  "browser_review_at_follow_up_head": false,
+  "tests_builds_scans_ci_workflows_releases_tags_merges": false
+}

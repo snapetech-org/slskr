@@ -1,0 +1,32 @@
+{
+  "task": "slskR PR #204 W743-762 exact-hash reviewed application",
+  "reviewInputHead": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "reviewInputTree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "applyInputHead": "1fd308c936f8a3d1f542afe4b5b7862ac1699880",
+  "reviewedCells": 240,
+  "appliedCellChanges": 53,
+  "finalDispositions": {
+    "accept-current": 187,
+    "propose-correction": 52,
+    "propose-refinement": 1,
+    "hold": 0
+  },
+  "retainedHolds": 0,
+  "sourceCurrentTargetHashesReattestedAtApplyHead": 240,
+  "crossReviewedFinalTargetsVerifiedAfterApply": 240,
+  "catalogKeysPerLocale": 5440,
+  "placeholderMarkupProtectedLiteralMismatches": 0,
+  "nativeSpeakerApproval": false,
+  "postApplyBrowserReview": false,
+  "testsBuildsCiRun": false,
+  "releasesTagsMerges": false,
+  "applyInputTree": "7ff0fd083a449be57da3d0c6d9c9f72e86a6e788",
+  "preCommitSemgrep": {
+    "scanner": "Semgrep Community Edition",
+    "ruleset": "p/default",
+    "stagedCrossReviewBuilderFiles": 1,
+    "rulesRun": 290,
+    "findings": 0,
+    "productSourceScanned": false
+  }
+}

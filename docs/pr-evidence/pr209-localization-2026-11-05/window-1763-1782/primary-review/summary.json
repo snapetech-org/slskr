@@ -1,0 +1,133 @@
+{
+  "artifact": "slskR PR #209 W1763-W1782 primary review",
+  "schemaVersion": 1,
+  "head": "5191888071f54061a6012acdedfeb518a6cb3661",
+  "tree": "d5728c24b54a06dda432afd2ef5f378206a6cb8f",
+  "window": "W1763-W1782",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "actions": {
+    "retain": 135,
+    "correct": 105
+  },
+  "perPositionActionCounts": {
+    "1763": {
+      "correct": 0,
+      "retain": 12
+    },
+    "1764": {
+      "correct": 0,
+      "retain": 12
+    },
+    "1765": {
+      "correct": 0,
+      "retain": 12
+    },
+    "1766": {
+      "correct": 2,
+      "retain": 10
+    },
+    "1767": {
+      "correct": 3,
+      "retain": 9
+    },
+    "1768": {
+      "correct": 4,
+      "retain": 8
+    },
+    "1769": {
+      "correct": 0,
+      "retain": 12
+    },
+    "1770": {
+      "correct": 3,
+      "retain": 9
+    },
+    "1771": {
+      "correct": 2,
+      "retain": 10
+    },
+    "1772": {
+      "correct": 12,
+      "retain": 0
+    },
+    "1773": {
+      "correct": 12,
+      "retain": 0
+    },
+    "1774": {
+      "correct": 12,
+      "retain": 0
+    },
+    "1775": {
+      "correct": 12,
+      "retain": 0
+    },
+    "1776": {
+      "correct": 12,
+      "retain": 0
+    },
+    "1777": {
+      "correct": 11,
+      "retain": 1
+    },
+    "1778": {
+      "correct": 3,
+      "retain": 9
+    },
+    "1779": {
+      "correct": 0,
+      "retain": 12
+    },
+    "1780": {
+      "correct": 5,
+      "retain": 7
+    },
+    "1781": {
+      "correct": 12,
+      "retain": 0
+    },
+    "1782": {
+      "correct": 0,
+      "retain": 12
+    }
+  },
+  "independentProposals": 240,
+  "independentProposalLedgerSha256": "142119303f5883c209772ef4103b016314ba79bf6f5227cdee7b9f5954ae33a7",
+  "candidateFreeTokenMismatchCounts": {
+    "placeholderSequenceMismatchCount": 0,
+    "markupMismatchCount": 0,
+    "numericTokenMismatchCount": 2,
+    "protectedLiteralMismatchCount": 3
+  },
+  "currentTokenAudit": {
+    "placeholderSequenceMismatchCells": 0,
+    "markupMismatchCells": 0,
+    "numericTokenMismatchCells": 2,
+    "protectedLiteralMismatchCells": 3,
+    "manualProtectedTermMismatchCells": 18,
+    "manualOnlyAdditionalMismatchCells": 15,
+    "allCurrentTokenMismatchCells": 20
+  },
+  "finalTokenMismatchCells": 0,
+  "proposedPlaceholdersPreserved": true,
+  "proposedMarkupPreserved": true,
+  "proposedNumericTokensPreserved": true,
+  "proposedProtectedLiteralsPreserved": true,
+  "callerlessPositionsInWindow": [],
+  "newHolds": 0,
+  "activeHoldContinuity": {
+    "holdId": "1719::id",
+    "textIncluded": false,
+    "targetHashUnchanged": true,
+    "sourceContextUnchanged": true
+  },
+  "nextBoundaryPosition": 1783,
+  "nextBoundarySourceKeySha256": "f5edfb1fdf449300af6a0e1a089a2fece6de4649f3b7c9df885abf7662fe31e3",
+  "nativeSpeakerApproval": false,
+  "testsBuildsCiRun": false,
+  "repoEdited": false,
+  "productHeadAdvanced": false,
+  "createdAtUtc": "2026-11-05T22:03:02.192224+00:00"
+}

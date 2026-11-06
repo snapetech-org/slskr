@@ -1,0 +1,122 @@
+{
+  "title": "slskR W803–W822 caller gap resolution",
+  "reviewedBaseHead": "3a4c26a7faf1dacbd8f3a382d47243b7063a262d",
+  "reviewedBaseTree": "9059d27001d306ea6b064560137ff2a51dd19021",
+  "crossReviewPacketSha256": "cc466152155a1a6325a70f841611cd0b3bc9017f1f0caabad3bcdb18d1d3eb96",
+  "initialRawOutputFindings": {
+    "callerIntegrationHoldCells": 36,
+    "secondaryExportOnlyCells": 24,
+    "uniqueSourceLocaleCellsWithKnownRawOutput": 60
+  },
+  "routes": {
+    "W814 execution-contract copy": "MediaServerPanel passes its active `t` function to the execution-contract report formatter, which translates `check.action` before copying.",
+    "W815 readiness table and sync-report copy": "The readiness table renders `check.action` with `LocalizedText`; the copied sync report receives the active `t` function and translates actions.",
+    "W816 Lidarr status display": "The status value remains canonical English for icon selection and is rendered through `LocalizedText`.",
+    "W812/W813 setup-health exports": "The setup-health text report and YAML diagnostic bundle translate action values using the current UI-language function; language changes invalidate the memoized bundle/report."
+  },
+  "changedSourceFileHashes": {
+    "web/src/components/System/Integrations/MediaServerPanel.jsx": {
+      "sha256": "6a455897150bf618cd4c1402010c2ce410e0d912831545ffd2d404444bd03b0d"
+    },
+    "web/src/components/System/Integrations/LidarrPanel.jsx": {
+      "sha256": "231d7df12d9f20d3c8b534fecdfe32937ebbe4ea040c81e652c6c7adefeabee1"
+    },
+    "web/src/lib/mediaServerIntegrations.js": {
+      "sha256": "7d477ed1486dbda8c93e63c7479e5f55973b06fc13e359b1d8331cbc51f52c0f"
+    },
+    "web/src/components/System/Info/SetupHealthCheckModal.jsx": {
+      "sha256": "df183f2ff5844a33448ef3891224ab8a7069b5c938a20b996031db8dc98dbe08"
+    },
+    "web/src/lib/setupHealthCheck.js": {
+      "sha256": "76784b15cf7c25e871b7034028f5f5705ffb3f672f8f44b02a2ecac8d6f10a8b"
+    },
+    "web/src/components/System/Info/DiagnosticBundleModal.jsx": {
+      "sha256": "0f5765df8fa9e0a353291497a6235d6805dc56982772d8280d9b727a692fd268"
+    },
+    "web/src/lib/diagnosticBundle.js": {
+      "sha256": "453845c2ae89aef47c1321fff1c12ed488f27766e29e1f2df28a86a35863b4f5"
+    }
+  },
+  "catalogs": {
+    "ar": {
+      "catalogFileSha256": "821eb178b7e6185a0803c4278d1ef5f93dba0e8bace0ea0c6be018075a780e1b",
+      "requiredReviewedKeys": 5,
+      "allReviewedKeysTranslated": true
+    },
+    "de": {
+      "catalogFileSha256": "ebba4887e7dc103573c2c4186ebb2fe1ac734ca2598e780f2a20a091a45eb9f1",
+      "requiredReviewedKeys": 5,
+      "allReviewedKeysTranslated": true
+    },
+    "es": {
+      "catalogFileSha256": "699cd5d6028404a55e45b94ca5b058ca5120894482b80b935b0c40d6444339fc",
+      "requiredReviewedKeys": 5,
+      "allReviewedKeysTranslated": true
+    },
+    "fr": {
+      "catalogFileSha256": "8732ef3edc10969094bbdddf1a0458bf90cd21f2c9b8318a28ab62e45c205c8a",
+      "requiredReviewedKeys": 5,
+      "allReviewedKeysTranslated": true
+    },
+    "hi": {
+      "catalogFileSha256": "0db062d5886e65f7537d09d4e58e552b199ff81c69e755d52460ad2c7f90bee7",
+      "requiredReviewedKeys": 5,
+      "allReviewedKeysTranslated": true
+    },
+    "id": {
+      "catalogFileSha256": "6e7e2cce1d86a1070f9bbc9f364200d12958fd388c1eea496fc40f981b33d332",
+      "requiredReviewedKeys": 5,
+      "allReviewedKeysTranslated": true
+    },
+    "ja": {
+      "catalogFileSha256": "c647c032955a4fdbd9e380c4d5142768f5202a8a94a9b60465d4f4ce61cb4255",
+      "requiredReviewedKeys": 5,
+      "allReviewedKeysTranslated": true
+    },
+    "ko": {
+      "catalogFileSha256": "ac4e9214a04aa1aaa0bd26c44433217e7f08b8e4421f2c0c5638005e2920ae29",
+      "requiredReviewedKeys": 5,
+      "allReviewedKeysTranslated": true
+    },
+    "pt-BR": {
+      "catalogFileSha256": "5c460355af2e9976eb764ccb147d6ada5a673314eb30001932a270918311623d",
+      "requiredReviewedKeys": 5,
+      "allReviewedKeysTranslated": true
+    },
+    "vi": {
+      "catalogFileSha256": "085681de3e8b5171a1217000e4476e5198eee8f187e7b05ac38db7d12b9c4a79",
+      "requiredReviewedKeys": 5,
+      "allReviewedKeysTranslated": true
+    },
+    "zh-Hans": {
+      "catalogFileSha256": "d7ab2d67ea9d2054347640a6605c7aa425cef258bde106d4901844ac1b9c3789",
+      "requiredReviewedKeys": 5,
+      "allReviewedKeysTranslated": true
+    },
+    "zh-Hant": {
+      "catalogFileSha256": "06eec8d1805f60f8da1600148d267b28ba76e15500be1a6cb0dadf1c4ab0fe44",
+      "requiredReviewedKeys": 5,
+      "allReviewedKeysTranslated": true
+    }
+  },
+  "remainingCatalogGap": {
+    "source": "Not configured",
+    "missingLocales": [
+      "ar",
+      "de",
+      "es",
+      "fr",
+      "hi",
+      "id",
+      "ja",
+      "ko",
+      "pt-BR",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "cells": 12,
+    "status": "requires a separate exact-head primary and independent cross-review"
+  },
+  "validation": "Static source-route and catalog-value inspection plus exact-hash readback; no tests/builds/CI were run."
+}

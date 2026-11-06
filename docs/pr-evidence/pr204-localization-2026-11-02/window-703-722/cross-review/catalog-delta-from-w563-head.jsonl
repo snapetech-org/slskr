@@ -1,0 +1,506 @@
+{"change": "value-changed", "key": "Can create content-linked pods", "locale": "ar", "new": "يمكن إنشاء Pods مرتبطة بالمحتوى", "old": "يمكن إنشاء قرون مرتبطة بالمحتوى"}
+{"change": "added", "key": "Cancel selected", "locale": "ar", "new": "إلغاء العناصر المحددة", "old": null}
+{"change": "removed", "key": "Cancel{all}", "locale": "ar", "new": null, "old": "إلغاء{all}"}
+{"change": "value-changed", "key": "Candidates", "locale": "ar", "new": "عناصر مرشحة", "old": "مرشحين"}
+{"change": "value-changed", "key": "Canonical", "locale": "ar", "new": "قياسي", "old": "الكنسي"}
+{"change": "value-changed", "key": "Canonical support from", "locale": "ar", "new": "دعم التسجيل القياسي من", "old": "الدعم الكنسي من"}
+{"change": "value-changed", "key": "Canonical variants:", "locale": "ar", "new": "نسخ مختلفة للتسجيل القياسي:", "old": "المتغيرات الكنسي:"}
+{"change": "value-changed", "key": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.", "locale": "ar", "new": "حدّد معدل إطارات عرض RustyMilk لتقليل حمل وحدة معالجة الرسومات، أو اتركه بلا حد لتحقيق أعلى سلاسة.", "old": "قم بتغطية عرض RustyMilk لتقليل حمل وحدة معالجة الرسومات، أو اتركه بدون غطاء للحصول على أقصى قدر من السلاسة."}
+{"change": "value-changed", "key": "Capture local history", "locale": "ar", "new": "سجّل سجل التشغيل محليًا", "old": "التقاط التاريخ المحلي"}
+{"change": "value-changed", "key": "Capture player history preference", "locale": "ar", "new": "إعداد تسجيل سجل التشغيل", "old": "التقاط تفضيلات تاريخ اللاعب"}
+{"change": "value-changed", "key": "Centroid", "locale": "ar", "new": "مركز الطيف", "old": "النقطه الوسطى"}
+{"change": "value-changed", "key": "Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows.", "locale": "ar", "new": "تعمل إجراءات إنشاء القناة وتحديثها وحذفها على تغيير كيفية تنظيم رسائل Pod. يمكن أن يؤدي حذف القنوات إلى تعطيل سير عمل التوجيه والسجل.", "old": "تعمل إجراءات إنشاء القناة وتحديثها وحذفها على تغيير كيفية تنظيم رسائل البود. يمكن أن يؤدي حذف القنوات إلى تعطيل سير عمل التوجيه والسجل."}
+{"change": "value-changed", "key": "Check", "locale": "ar", "new": "الفحص", "old": "يفحص"}
+{"change": "value-changed", "key": "Check Seen", "locale": "ar", "new": "تحقق من حالة قراءة الرسالة", "old": "تحقق من المشاهدة"}
+{"change": "value-changed", "key": "Check whether a completed file path reported by slskr maps to the path a media server can scan.", "locale": "ar", "new": "تحقق مما إذا كان مسار الملف الذي اكتمل تنزيله، كما أبلغ عنه slskr، يتوافق مع مسار يمكن لخادم الوسائط فحصه.", "old": "تحقق مما إذا كان مسار الملف المكتمل الذي تم الإبلاغ عنه بواسطة slskr يعين المسار الذي يمكن لخادم الوسائط فحصه."}
+{"change": "value-changed", "key": "Checks connection, shares, paths, and credentials for setup drift.", "locale": "ar", "new": "يتحقق من الاتصال والمشاركات والمسارات وبيانات الاعتماد لاكتشاف التغييرات غير المتوقعة في الإعداد.", "old": "يتحقق من الاتصال والمشاركات والمسارات وبيانات الاعتماد لانجراف الإعداد."}
+{"change": "value-changed", "key": "Choose a RustyMilk quality preset. Efficient lowers GPU load, Balanced caps at 60 FPS, and Full leaves rendering uncapped.", "locale": "ar", "new": "اختر إعدادًا مسبقًا لجودة RustyMilk. يقلل الوضع عالي الكفاءة حمل وحدة معالجة الرسومات، ويحدّ الوضع المتوازن معدل الإطارات إلى 60 FPS، بينما يتيح الوضع غير المحدود التصيير بلا قيود.", "old": "اختر إعدادًا مسبقًا لجودة RustyMilk. تعمل الكفاءة على تقليل حمل وحدة معالجة الرسومات، والأغطية المتوازنة عند 60 FPS، وعرض الأوراق الكاملة بدون غطاء."}
+{"change": "value-changed", "key": "Choose how long RustyMilk should wait before timed preset changes.", "locale": "ar", "new": "اختر مدة انتظار RustyMilk قبل أن يبدّل الإعداد المسبق وفقًا للمؤقّت.", "old": "اختر المدة التي يجب أن ينتظرها RustyMilk قبل إجراء تغييرات محددة مسبقًا."}
+{"change": "value-changed", "key": "Chunk Progress Heatmap", "locale": "ar", "new": "خريطة حرارية لتقدم القطع", "old": "خريطة الحرارة لتقدم القطعة"}
+{"change": "value-changed", "key": "Chunk Utilization", "locale": "ar", "new": "معدل استخدام القطع", "old": "استغلال القطعة"}
+{"change": "value-changed", "key": "Chunks Completed", "locale": "ar", "new": "القطع المكتملة", "old": "اكتملت القطع"}
+{"change": "value-changed", "key": "Chunks Failed", "locale": "ar", "new": "القطع الفاشلة", "old": "فشلت القطع"}
+{"change": "value-changed", "key": "Clean:", "locale": "ar", "new": "إدخالات بلا تعارض:", "old": "ينظف:"}
+{"change": "value-changed", "key": "Cleaned up {result} old messages", "locale": "ar", "new": "اكتمل تنظيف الرسائل القديمة. العدد: {result}", "old": "تنظيف الرسائل القديمة {result}"}
+{"change": "value-changed", "key": "Cleanup Seen Messages", "locale": "ar", "new": "تنظيف سجلات الرسائل التي تم تسجيل الاطّلاع عليها", "old": "تنظيف الرسائل المرئية"}
+{"change": "value-changed", "key": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained", "locale": "ar", "new": "اكتمل التنظيف: عدد سجلات الرسائل المنظفة {messagesCleaned}، وعدد السجلات المحتفظ بها {messagesRetained}.", "old": "اكتملت عملية التنظيف: تم تنظيف رسائل {messagesCleaned}، مع الاحتفاظ بـ {messagesRetained}"}
+{"change": "value-changed", "key": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors", "locale": "ar", "new": "اكتمل التنظيف: عدد السجلات المنظفة {recordsCleaned}، وعدد الأخطاء {errorsEncountered}.", "old": "اكتملت عملية التنظيف: تم تنظيف سجلات {recordsCleaned}، وأخطاء {errorsEncountered}"}
+{"change": "value-changed", "key": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.", "locale": "ar", "new": "تؤثر إجراءات التنظيف وإعادة بناء الفهرس وVACUUM في تخزين رسائل Pod المحلي. أما إجراءات البحث والعدّ فهي للقراءة فقط.", "old": "تؤثر إجراءات التنظيف وإعادة البناء والتفريغ على تخزين رسائل الكبسولة المحلية. إجراءات البحث والعد هي للقراءة فقط."}
+{"change": "value-changed", "key": "Clear (", "locale": "ar", "new": "إلغاء تحديد (", "old": "واضح ("}
+{"change": "value-changed", "key": "Clear RustyMilk preset search", "locale": "ar", "new": "مسح البحث عن إعدادات RustyMilk المسبقة", "old": "مسح البحث المسبق لـ RustyMilk"}
+{"change": "value-changed", "key": "Clear Shelf", "locale": "ar", "new": "إفراغ رف الاكتشاف", "old": "مسح الرف"}
+{"change": "value-changed", "key": "Clear Snapshot", "locale": "ar", "new": "مسح اللقطة المعتمدة", "old": "مسح لقطة"}
+{"change": "value-changed", "key": "Clear Upcoming", "locale": "ar", "new": "إفراغ قائمة الانتظار القادمة", "old": "واضح القادمة"}
+{"change": "value-changed", "key": "Clear active native playlist", "locale": "ar", "new": "إلغاء تحديد قائمة التشغيل المحلية النشطة", "old": "مسح قائمة التشغيل الأصلية النشطة"}
+{"change": "value-changed", "key": "Clear tag organization snapshot for {name}", "locale": "ar", "new": "امسح لقطة تنظيم الوسوم لـ {name}", "old": "مسح لقطة تنظيم العلامة لـ {name}"}
+{"change": "value-changed", "key": "Cleared tag and organization snapshot for {playlistName}", "locale": "ar", "new": "تم مسح لقطة تنظيم الوسوم لـ {playlistName}.", "old": "تم مسح العلامة ولقطة المؤسسة لـ {playlistName}"}
+{"change": "added", "key": "Connecting", "locale": "ar", "new": "جارٍ الاتصال", "old": null}
+{"change": "added", "key": "Connection Failed", "locale": "ar", "new": "فشل الاتصال", "old": null}
+{"change": "added", "key": "OK", "locale": "ar", "new": "موافق", "old": null}
+{"change": "added", "key": "Reconnecting", "locale": "ar", "new": "جارٍ إعادة الاتصال", "old": null}
+{"change": "added", "key": "Retry selected", "locale": "ar", "new": "إعادة محاولة العناصر المحددة", "old": null}
+{"change": "removed", "key": "Retry{all}", "locale": "ar", "new": null, "old": "إعادة المحاولة{all}"}
+{"change": "added", "key": "Cancel selected", "locale": "de", "new": "Ausgewählte abbrechen", "old": null}
+{"change": "removed", "key": "Cancel{all}", "locale": "de", "new": null, "old": "Stornieren{all}"}
+{"change": "value-changed", "key": "Candidate match found", "locale": "de", "new": "Übereinstimmung für den Kandidaten gefunden", "old": "Übereinstimmung für Kandidat gefunden"}
+{"change": "value-changed", "key": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.", "locale": "de", "new": "Begrenzen Sie die Bildrate des RustyMilk-Renderings, um die GPU-Last zu senken, oder lassen Sie sie für eine möglichst flüssige Darstellung unbegrenzt.", "old": "Begrenzen Sie das RustyMilk-Rendering für eine geringere GPU-Last oder lassen Sie es für maximale Glätte offen."}
+{"change": "value-changed", "key": "Capture local history", "locale": "de", "new": "Lokalen Wiedergabeverlauf aufzeichnen", "old": "Erfassen Sie die lokale Geschichte"}
+{"change": "value-changed", "key": "Capture player history preference", "locale": "de", "new": "Einstellung zum Aufzeichnen des Wiedergabeverlaufs", "old": "Erfassen Sie die Präferenz für den Spielerverlauf"}
+{"change": "value-changed", "key": "Check", "locale": "de", "new": "Prüfung", "old": "Überprüfen"}
+{"change": "value-changed", "key": "Check Seen", "locale": "de", "new": "Lesestatus der Nachricht prüfen", "old": "Überprüfen Sie „Gesehen“."}
+{"change": "value-changed", "key": "Check local firewall rules, router/NAT forwarding, container port publishing, and any reverse-proxy setup that might expose the Web UI but not the Soulseek listen port.", "locale": "de", "new": "Prüfen Sie lokale Firewallregeln, Router-/NAT-Weiterleitungen, Container-Portfreigaben und Reverse-Proxy-Konfigurationen, die möglicherweise die Weboberfläche, aber nicht den Soulseek-Listening-Port freigeben.", "old": "Überprüfen Sie lokale Firewallregeln, Router-/NAT-Weiterleitung, Container-Port-Veröffentlichung und alle Reverse-Proxy-Setups, die möglicherweise die Web-Benutzeroberfläche, aber nicht den Soulseek-Abhörport offenlegen."}
+{"change": "value-changed", "key": "Check whether a completed file path reported by slskr maps to the path a media server can scan.", "locale": "de", "new": "Prüfen Sie, ob der von slskr gemeldete Pfad einer fertig heruntergeladenen Datei dem Pfad entspricht, den ein Medienserver scannen kann.", "old": "Überprüfen Sie, ob ein von slskr gemeldeter vollständiger Dateipfad dem Pfad entspricht, den ein Medienserver scannen kann."}
+{"change": "value-changed", "key": "Choose File", "locale": "de", "new": "Datei auswählen", "old": "Wählen Sie Datei"}
+{"change": "value-changed", "key": "Choose a RustyMilk quality preset. Efficient lowers GPU load, Balanced caps at 60 FPS, and Full leaves rendering uncapped.", "locale": "de", "new": "Wählen Sie eine RustyMilk-Qualitätsvoreinstellung. Der effiziente Modus senkt die GPU-Last, der ausgewogene Modus begrenzt die Bildrate auf 60 FPS und der unbegrenzte Modus lässt das Rendering ohne Begrenzung.", "old": "Wählen Sie eine RustyMilk-Qualitätsvoreinstellung. „Effizient“ senkt die GPU-Last, „Balanced“ begrenzt die Werte auf 60 FPS und „Full“ lässt das Rendering unbeschränkt."}
+{"change": "value-changed", "key": "Chunks", "locale": "de", "new": "Chunks", "old": "Brocken"}
+{"change": "value-changed", "key": "Chunks Completed", "locale": "de", "new": "Abgeschlossene Chunks", "old": "Teile abgeschlossen"}
+{"change": "value-changed", "key": "Chunks Failed", "locale": "de", "new": "Fehlgeschlagene Chunks", "old": "Chunks fehlgeschlagen"}
+{"change": "value-changed", "key": "Clean:", "locale": "de", "new": "Konfliktfreie Einträge:", "old": "Sauber:"}
+{"change": "value-changed", "key": "Cleaned up {result} old messages", "locale": "de", "new": "Es wurden {result} alte Nachrichten bereinigt.", "old": "Alte {result}-Nachrichten wurden bereinigt"}
+{"change": "value-changed", "key": "Cleanup Seen Messages", "locale": "de", "new": "Einträge zu gesehenen Nachrichten bereinigen", "old": "Gesehene Nachrichten bereinigen"}
+{"change": "value-changed", "key": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained", "locale": "de", "new": "Bereinigung abgeschlossen: {messagesCleaned} Einträge zu gesehenen Nachrichten bereinigt, {messagesRetained} beibehalten.", "old": "Bereinigung abgeschlossen: {messagesCleaned}-Nachrichten bereinigt, {messagesRetained} beibehalten"}
+{"change": "value-changed", "key": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors", "locale": "de", "new": "Bereinigung abgeschlossen: {recordsCleaned} Datensätze bereinigt, {errorsEncountered} Fehler aufgetreten.", "old": "Bereinigung abgeschlossen: {recordsCleaned}-Datensätze bereinigt, {errorsEncountered}-Fehler"}
+{"change": "value-changed", "key": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.", "locale": "de", "new": "Bereinigungs-, Indexneuaufbau- und VACUUM-Aktionen wirken sich auf den lokalen Nachrichtenspeicher von Pod aus. Such- und Zählaktionen sind schreibgeschützt.", "old": "Bereinigungs-, Neuerstellungs- und Vakuumaktionen wirken sich auf die lokale Pod-Nachrichtenspeicherung aus. Such- und Zählaktionen sind schreibgeschützt."}
+{"change": "value-changed", "key": "Clear (", "locale": "de", "new": "Auswahl aufheben (", "old": "Klar ("}
+{"change": "value-changed", "key": "Clear ListenBrainz token", "locale": "de", "new": "ListenBrainz-Token löschen", "old": "Löschen Sie das ListenBrainz-Token"}
+{"change": "value-changed", "key": "Clear RustyMilk preset search", "locale": "de", "new": "RustyMilk-Preset-Suche löschen", "old": "Löschen Sie die voreingestellte RustyMilk-Suche"}
+{"change": "value-changed", "key": "Clear Shelf", "locale": "de", "new": "Discovery-Regal leeren", "old": "Klares Regal"}
+{"change": "value-changed", "key": "Clear Upcoming", "locale": "de", "new": "Kommende Titel entfernen", "old": "Klar, bevorstehend"}
+{"change": "value-changed", "key": "Clear active native playlist", "locale": "de", "new": "Auswahl der aktiven lokalen Playlist aufheben", "old": "Aktive native Playlist löschen"}
+{"change": "value-changed", "key": "Clear browse result", "locale": "de", "new": "Browsergebnis zurücksetzen", "old": "Suchergebnis löschen"}
+{"change": "value-changed", "key": "Clear only the browser-local listening history used for this stats view.", "locale": "de", "new": "Löschen Sie nur den lokalen Wiedergabeverlauf dieses Browsers, der für diese Statistikansicht verwendet wird.", "old": "Löschen Sie nur den browserlokalen Abhörverlauf, der für diese Statistikansicht verwendet wird."}
+{"change": "value-changed", "key": "Clear selected user", "locale": "de", "new": "Benutzer aus dem Eingabefeld entfernen", "old": "Ausgewählten Benutzer löschen"}
+{"change": "value-changed", "key": "Clear this browse result and enter another username.", "locale": "de", "new": "Leeren Sie die aktuelle Dateiansicht und geben Sie einen anderen Benutzernamen ein.", "old": "Dieses Suchergebnis löschen und einen anderen Benutzernamen eingeben."}
+{"change": "added", "key": "Connecting", "locale": "de", "new": "Verbindung wird hergestellt", "old": null}
+{"change": "added", "key": "Connection Failed", "locale": "de", "new": "Verbindung fehlgeschlagen", "old": null}
+{"change": "added", "key": "OK", "locale": "de", "new": "OK", "old": null}
+{"change": "added", "key": "Reconnecting", "locale": "de", "new": "Verbindung wird wiederhergestellt", "old": null}
+{"change": "added", "key": "Retry selected", "locale": "de", "new": "Ausgewählte erneut versuchen", "old": null}
+{"change": "removed", "key": "Retry{all}", "locale": "de", "new": null, "old": "Wiederholen{all}"}
+{"change": "value-changed", "key": "Can create content-linked pods", "locale": "es", "new": "Puede crear Pods vinculados al contenido", "old": "Puede crear pods vinculados a contenido"}
+{"change": "added", "key": "Cancel selected", "locale": "es", "new": "Cancelar los elementos seleccionados", "old": null}
+{"change": "removed", "key": "Cancel{all}", "locale": "es", "new": null, "old": "Cancelar{all}"}
+{"change": "value-changed", "key": "Candidate identity", "locale": "es", "new": "Identidad del candidato", "old": "Identidad candidata"}
+{"change": "value-changed", "key": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.", "locale": "es", "new": "Limita la frecuencia de fotogramas del renderizado de RustyMilk para reducir la carga de la GPU o déjala sin límite para lograr la máxima fluidez.", "old": "Limite el renderizado de RustyMilk para reducir la carga de la GPU o déjelo sin tapar para obtener la máxima suavidad."}
+{"change": "value-changed", "key": "Capture local history", "locale": "es", "new": "Registrar el historial de reproducción localmente", "old": "Capture la historia local"}
+{"change": "value-changed", "key": "Capture player history preference", "locale": "es", "new": "Preferencia para registrar el historial de reproducción", "old": "Preferencia de captura del historial del jugador"}
+{"change": "value-changed", "key": "Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows.", "locale": "es", "new": "Las acciones de creación, actualización y eliminación de canales cambian la forma en que se organizan los mensajes del Pod. La eliminación de canales puede interrumpir los flujos de trabajo de enrutamiento e historial.", "old": "Las acciones de creación, actualización y eliminación de canales cambian la forma en que se organizan los mensajes del pod. La eliminación de canales puede interrumpir los flujos de trabajo de enrutamiento e historial."}
+{"change": "value-changed", "key": "Check", "locale": "es", "new": "Comprobación", "old": "Controlar"}
+{"change": "value-changed", "key": "Check DHT startup logs and listener configuration.", "locale": "es", "new": "Verifique los registros de inicio de DHT y la configuración de escucha.", "old": "Verifique los registros de inicio de DHT y la configuración del detector."}
+{"change": "value-changed", "key": "Check Seen", "locale": "es", "new": "Comprobar el estado de lectura del mensaje", "old": "Verificar visto"}
+{"change": "value-changed", "key": "Check whether a completed file path reported by slskr maps to the path a media server can scan.", "locale": "es", "new": "Compruebe si la ruta del archivo cuya descarga terminó, según slskr, corresponde a una ruta que un servidor multimedia pueda escanear.", "old": "Compruebe si una ruta de archivo completa informada por slskr se asigna a la ruta que un servidor de medios puede escanear."}
+{"change": "value-changed", "key": "Choose File", "locale": "es", "new": "Seleccionar archivo", "old": "Elija archivo"}
+{"change": "value-changed", "key": "Choose a RustyMilk quality preset. Efficient lowers GPU load, Balanced caps at 60 FPS, and Full leaves rendering uncapped.", "locale": "es", "new": "Elija un ajuste preestablecido de calidad para RustyMilk. El modo eficiente reduce la carga de la GPU, el modo equilibrado limita la frecuencia de fotogramas a 60 FPS y el modo sin límite deja el renderizado sin restricciones.", "old": "Elija un ajuste preestablecido de calidad de RustyMilk. Eficiente reduce la carga de la GPU, los límites equilibrados son 60 FPS y el renderizado completo deja sin límites."}
+{"change": "value-changed", "key": "Choose how long RustyMilk should wait before timed preset changes.", "locale": "es", "new": "Elija cuánto debe esperar RustyMilk antes de cambiar de preajuste según el temporizador.", "old": "Elija cuánto tiempo debe esperar RustyMilk antes de los cambios preestablecidos programados."}
+{"change": "value-changed", "key": "Choose how many detected bass beats should pass before RustyMilk advances to another preset.", "locale": "es", "new": "Elija cuántos pulsos de bajo deben detectarse antes de que RustyMilk cambie a otro preajuste.", "old": "Elija cuántos ritmos de graves detectados deben pasar antes de que RustyMilk avance a otro preajuste."}
+{"change": "value-changed", "key": "Choose how search results are ordered. Smart Ranking balances quality and availability.", "locale": "es", "new": "Elige cómo ordenar los resultados de búsqueda. La clasificación inteligente equilibra calidad y disponibilidad.", "old": "Elige cómo ordenar los resultados. La clasificación inteligente equilibra calidad y disponibilidad."}
+{"change": "value-changed", "key": "Chunks", "locale": "es", "new": "Fragmentos", "old": "trozos"}
+{"change": "value-changed", "key": "Chunks per second", "locale": "es", "new": "Fragmentos por segundo", "old": "Trozos por segundo"}
+{"change": "value-changed", "key": "Clean:", "locale": "es", "new": "Entradas sin conflictos:", "old": "Limpio:"}
+{"change": "value-changed", "key": "Cleaned up {result} old messages", "locale": "es", "new": "Se eliminaron {result} mensajes antiguos.", "old": "Se limpiaron mensajes antiguos {result}"}
+{"change": "value-changed", "key": "Cleanup Seen Messages", "locale": "es", "new": "Limpiar registros de mensajes vistos", "old": "Mensajes de limpieza vistos"}
+{"change": "value-changed", "key": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained", "locale": "es", "new": "Limpieza completada: se limpiaron {messagesCleaned} registros de mensajes vistos y se conservaron {messagesRetained}.", "old": "Limpieza completada: mensajes {messagesCleaned} limpiados, {messagesRetained} retenidos"}
+{"change": "value-changed", "key": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors", "locale": "es", "new": "Limpieza completada: se depuraron {recordsCleaned} registros y se encontraron {errorsEncountered} errores.", "old": "Limpieza completada: registros {recordsCleaned} limpios, errores {errorsEncountered}"}
+{"change": "value-changed", "key": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.", "locale": "es", "new": "Las acciones de limpieza, reconstrucción del índice y VACUUM afectan al almacenamiento local de mensajes de Pod. Las acciones de búsqueda y recuento son de solo lectura.", "old": "Las acciones de limpieza, reconstrucción y aspiración afectan el almacenamiento de mensajes del pod local. Las acciones de búsqueda y recuento son de solo lectura."}
+{"change": "value-changed", "key": "Clear (", "locale": "es", "new": "Quitar selección (", "old": "Claro ("}
+{"change": "value-changed", "key": "Clear Quality", "locale": "es", "new": "Borrar el filtro de calidad", "old": "Borrar calidad"}
+{"change": "value-changed", "key": "Clear RustyMilk preset search", "locale": "es", "new": "Borrar la búsqueda de presets de RustyMilk", "old": "Borrar la búsqueda preestablecida de RustyMilk"}
+{"change": "value-changed", "key": "Clear Shelf", "locale": "es", "new": "Vaciar el estante de descubrimiento", "old": "Estante transparente"}
+{"change": "value-changed", "key": "Clear Upcoming", "locale": "es", "new": "Quitar los próximos elementos de la cola", "old": "Borrar Próximo"}
+{"change": "value-changed", "key": "Clear active native playlist", "locale": "es", "new": "Quitar la selección de la lista nativa activa", "old": "Borrar lista de reproducción nativa activa"}
+{"change": "value-changed", "key": "Clear selected user", "locale": "es", "new": "Quitar el usuario seleccionado del campo", "old": "Borrar usuario seleccionado"}
+{"change": "value-changed", "key": "Cleared tag and organization snapshot for {playlistName}", "locale": "es", "new": "Se borró la instantánea de organización de etiquetas para {playlistName}.", "old": "Etiqueta eliminada y instantánea de la organización para {playlistName}"}
+{"change": "added", "key": "Connecting", "locale": "es", "new": "Conectando", "old": null}
+{"change": "added", "key": "Connection Failed", "locale": "es", "new": "Error de conexión", "old": null}
+{"change": "added", "key": "OK", "locale": "es", "new": "Aceptar", "old": null}
+{"change": "added", "key": "Reconnecting", "locale": "es", "new": "Reconectando", "old": null}
+{"change": "added", "key": "Retry selected", "locale": "es", "new": "Reintentar los elementos seleccionados", "old": null}
+{"change": "removed", "key": "Retry{all}", "locale": "es", "new": null, "old": "Reintentar{all}"}
+{"change": "value-changed", "key": "Can create content-linked pods", "locale": "fr", "new": "Peut créer des Pods liés au contenu", "old": "Peut créer des modules liés au contenu"}
+{"change": "value-changed", "key": "Cancel Scan", "locale": "fr", "new": "Annuler le scan", "old": "Annuler la numérisation"}
+{"change": "added", "key": "Cancel selected", "locale": "fr", "new": "Annuler les éléments sélectionnés", "old": null}
+{"change": "removed", "key": "Cancel{all}", "locale": "fr", "new": null, "old": "Annuler{all}"}
+{"change": "value-changed", "key": "Canonical support from", "locale": "fr", "new": "Soutien à l’enregistrement canonique par", "old": "Prise en charge canonique de"}
+{"change": "value-changed", "key": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.", "locale": "fr", "new": "Limitez la fréquence d’images du rendu RustyMilk pour réduire la charge du GPU, ou laissez-la sans limite pour une fluidité maximale.", "old": "Limitez le rendu RustyMilk pour réduire la charge GPU, ou laissez-le non plafonné pour une fluidité maximale."}
+{"change": "value-changed", "key": "Capture local history", "locale": "fr", "new": "Enregistrer localement l’historique de lecture", "old": "Capturez l'histoire locale"}
+{"change": "value-changed", "key": "Capture player history preference", "locale": "fr", "new": "Préférence d’enregistrement de l’historique de lecture", "old": "Capturer les préférences de l'historique des joueurs"}
+{"change": "value-changed", "key": "Centroid", "locale": "fr", "new": "Centroïde spectral", "old": "Centre de gravité"}
+{"change": "value-changed", "key": "Channel \"{channelName}\" deleted successfully", "locale": "fr", "new": "Canal \"{channelName}\" supprimé avec succès", "old": "Chaîne \"{channelName}\" supprimée avec succès"}
+{"change": "value-changed", "key": "Channel ID", "locale": "fr", "new": "ID du canal", "old": "ID de chaîne"}
+{"change": "value-changed", "key": "Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows.", "locale": "fr", "new": "Les actions de création, de mise à jour et de suppression de canal modifient la façon dont les messages du Pod sont organisés. La suppression de canaux peut perturber les flux de travail de routage et d’historique.", "old": "Les actions de création, de mise à jour et de suppression de canal modifient la façon dont les messages du pod sont organisés. La suppression de canaux peut perturber les flux de travail de routage et d'historique."}
+{"change": "value-changed", "key": "Channel name", "locale": "fr", "new": "Nom du canal", "old": "Nom de la chaîne"}
+{"change": "value-changed", "key": "Channel name is required", "locale": "fr", "new": "Le nom du canal est obligatoire", "old": "Le nom de la chaîne est obligatoire"}
+{"change": "value-changed", "key": "Channel updated successfully", "locale": "fr", "new": "Canal mis à jour avec succès", "old": "Chaîne mise à jour avec succès"}
+{"change": "value-changed", "key": "Check", "locale": "fr", "new": "Vérification", "old": "Vérifier"}
+{"change": "value-changed", "key": "Check DHT startup logs and listener configuration.", "locale": "fr", "new": "Vérifiez les journaux de démarrage DHT et la configuration du port d’écoute.", "old": "Vérifiez les journaux de démarrage du DHT et la configuration de l'écouteur."}
+{"change": "value-changed", "key": "Check Seen", "locale": "fr", "new": "Vérifier l’état de lecture du message", "old": "Chèque vu"}
+{"change": "value-changed", "key": "Check whether a completed file path reported by slskr maps to the path a media server can scan.", "locale": "fr", "new": "Vérifiez si le chemin du fichier dont le téléchargement est terminé, tel que le signale slskr, correspond à un chemin qu’un serveur multimédia peut scanner.", "old": "Vérifiez si un chemin de fichier complet signalé par slskr correspond au chemin qu'un serveur multimédia peut analyser."}
+{"change": "value-changed", "key": "Checked:", "locale": "fr", "new": "Éléments vérifiés :", "old": "À carreaux:"}
+{"change": "value-changed", "key": "Choose a RustyMilk quality preset. Efficient lowers GPU load, Balanced caps at 60 FPS, and Full leaves rendering uncapped.", "locale": "fr", "new": "Choisissez un préréglage de qualité RustyMilk. Le mode efficace réduit la charge du GPU, le mode équilibré limite la fréquence d’images à 60 FPS et le mode sans limite laisse le rendu sans restriction.", "old": "Choisissez un préréglage de qualité RustyMilk. L'efficacité réduit la charge du GPU, les plafonds équilibrés à 60 FPS et le rendu complet laisse le rendu non plafonné."}
+{"change": "value-changed", "key": "Choose how long RustyMilk should wait before timed preset changes.", "locale": "fr", "new": "Choisissez combien de temps RustyMilk doit attendre avant un changement de préréglage programmé.", "old": "Choisissez combien de temps RustyMilk doit attendre avant les modifications prédéfinies chronométrées."}
+{"change": "value-changed", "key": "Choose how many detected bass beats should pass before RustyMilk advances to another preset.", "locale": "fr", "new": "Choisissez combien de battements de basse doivent être détectés avant que RustyMilk passe à un autre préréglage.", "old": "Choisissez combien de battements de basse détectés doivent passer avant que RustyMilk passe à un autre préréglage."}
+{"change": "value-changed", "key": "Choose how search results are ordered. Smart Ranking balances quality and availability.", "locale": "fr", "new": "Choisissez l’ordre des résultats de recherche. Le classement intelligent équilibre la qualité et la disponibilité.", "old": "Choisissez l’ordre des résultats. Le classement intelligent équilibre qualité et disponibilité."}
+{"change": "value-changed", "key": "Choose which custom wave from the active RustyMilk preset should be exported or removed.", "locale": "fr", "new": "Choisissez quelle forme d’onde personnalisée du préréglage RustyMilk actif doit être exportée ou supprimée.", "old": "Choisissez quelle vague personnalisée du préréglage RustyMilk actif doit être exportée ou supprimée."}
+{"change": "value-changed", "key": "Chunk Utilization", "locale": "fr", "new": "Utilisation des fragments", "old": "Utilisation des morceaux"}
+{"change": "value-changed", "key": "Chunks", "locale": "fr", "new": "Fragments", "old": "Morceaux"}
+{"change": "value-changed", "key": "Chunks Completed", "locale": "fr", "new": "Fragments terminés", "old": "Morceaux terminés"}
+{"change": "value-changed", "key": "Chunks Failed", "locale": "fr", "new": "Fragments en échec", "old": "Des morceaux ont échoué"}
+{"change": "value-changed", "key": "Chunks per second", "locale": "fr", "new": "Fragments par seconde", "old": "Morceaux par seconde"}
+{"change": "value-changed", "key": "Clean:", "locale": "fr", "new": "Entrées sans conflit :", "old": "Faire le ménage:"}
+{"change": "value-changed", "key": "Cleaned up {result} old messages", "locale": "fr", "new": "Nettoyage terminé : {result} anciens messages supprimés.", "old": "Nettoyage des anciens messages {result}"}
+{"change": "value-changed", "key": "Cleanup Seen Messages", "locale": "fr", "new": "Nettoyer les entrées de messages vus", "old": "Messages de nettoyage vus"}
+{"change": "value-changed", "key": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained", "locale": "fr", "new": "Nettoyage terminé : {messagesCleaned} enregistrements de messages vus nettoyés ; {messagesRetained} conservés.", "old": "Nettoyage terminé : messages {messagesCleaned} nettoyés, {messagesRetained} conservés"}
+{"change": "value-changed", "key": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors", "locale": "fr", "new": "Nettoyage terminé : {recordsCleaned} enregistrements nettoyés, {errorsEncountered} erreurs rencontrées.", "old": "Nettoyage terminé : enregistrements {recordsCleaned} nettoyés, erreurs {errorsEncountered}"}
+{"change": "value-changed", "key": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.", "locale": "fr", "new": "Les actions de nettoyage, de reconstruction de l’index et de VACUUM affectent le stockage local des messages de Pod. Les actions de recherche et de comptage sont en lecture seule.", "old": "Les actions de nettoyage, de reconstruction et de vide affectent le stockage des messages du pod local. Les actions de recherche et de comptage sont en lecture seule."}
+{"change": "value-changed", "key": "Clear (", "locale": "fr", "new": "Désélectionner (", "old": "Clair ("}
+{"change": "value-changed", "key": "Clear Shelf", "locale": "fr", "new": "Vider l’étagère Découverte", "old": "Étagère transparente"}
+{"change": "value-changed", "key": "Clear Upcoming", "locale": "fr", "new": "Vider la file d’attente à venir", "old": "Effacer à venir"}
+{"change": "value-changed", "key": "Clear active native playlist", "locale": "fr", "new": "Désélectionner la playlist native active", "old": "Effacer la playlist native active"}
+{"change": "value-changed", "key": "Clear the approved snapshot while keeping the dry-run preview available for more edits.", "locale": "fr", "new": "Effacez l’instantané approuvé tout en laissant l’aperçu de simulation disponible pour d’autres modifications.", "old": "Effacez l’instantané approuvé tout en gardant l’aperçu à sec disponible pour d’autres modifications."}
+{"change": "value-changed", "key": "Cleared tag and organization snapshot for {playlistName}", "locale": "fr", "new": "Instantané d’organisation des balises effacé pour {playlistName}.", "old": "Balise effacée et instantané de l'organisation pour {playlistName}"}
+{"change": "added", "key": "Connecting", "locale": "fr", "new": "Connexion en cours", "old": null}
+{"change": "added", "key": "Connection Failed", "locale": "fr", "new": "Échec de la connexion", "old": null}
+{"change": "added", "key": "OK", "locale": "fr", "new": "OK", "old": null}
+{"change": "added", "key": "Reconnecting", "locale": "fr", "new": "Reconnexion en cours", "old": null}
+{"change": "added", "key": "Retry selected", "locale": "fr", "new": "Réessayer les éléments sélectionnés", "old": null}
+{"change": "removed", "key": "Retry{all}", "locale": "fr", "new": null, "old": "Réessayer{all}"}
+{"change": "value-changed", "key": "Can create content-linked pods", "locale": "hi", "new": "कंटेंट से जुड़े Pods बना सकते हैं", "old": "कंटेंट-लिंक्ड पॉड बना सकते हैं"}
+{"change": "value-changed", "key": "Canary", "locale": "hi", "new": "Canary", "old": "कैनरी"}
+{"change": "added", "key": "Cancel selected", "locale": "hi", "new": "चयनित आइटम रद्द करें", "old": null}
+{"change": "removed", "key": "Cancel{all}", "locale": "hi", "new": null, "old": "रद्द करें{all}"}
+{"change": "value-changed", "key": "Candidates", "locale": "hi", "new": "सुझाए गए आइटम", "old": "उम्मीदवार"}
+{"change": "value-changed", "key": "Canonical", "locale": "hi", "new": "मानक", "old": "कैनन का"}
+{"change": "value-changed", "key": "Canonical support from", "locale": "hi", "new": "मानक रिकॉर्डिंग का समर्थन करने वाले", "old": "से विहित समर्थन"}
+{"change": "value-changed", "key": "Canonical variants:", "locale": "hi", "new": "मानक संस्करण के वैरिएंट:", "old": "विहित संस्करण:"}
+{"change": "value-changed", "key": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.", "locale": "hi", "new": "GPU लोड कम करने के लिए RustyMilk रेंडरिंग की अधिकतम फ़्रेम दर सीमित करें, या अधिकतम सहजता के लिए इसे बिना सीमा के छोड़ें।", "old": "कम GPU लोड के लिए RustyMilk रेंडरिंग को कैप करें, या अधिकतम स्मूथनेस के लिए इसे अनकैप्ड छोड़ दें।"}
+{"change": "value-changed", "key": "Capture local history", "locale": "hi", "new": "स्थानीय प्लेबैक इतिहास रिकॉर्ड करें", "old": "स्थानीय इतिहास कैप्चर करें"}
+{"change": "value-changed", "key": "Capture player history preference", "locale": "hi", "new": "प्लेबैक इतिहास दर्ज करने की प्राथमिकता", "old": "खिलाड़ी इतिहास प्राथमिकता कैप्चर करें"}
+{"change": "value-changed", "key": "Certificate PFX (optional)", "locale": "hi", "new": "प्रमाणपत्र PFX (वैकल्पिक)", "old": "प्रमाणपत्र पीएफएक्स (वैकल्पिक)"}
+{"change": "value-changed", "key": "Changed fields", "locale": "hi", "new": "बदले गए फ़ील्ड", "old": "फ़ील्ड बदल दिए गए"}
+{"change": "value-changed", "key": "Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows.", "locale": "hi", "new": "चैनल बनाने, अपडेट करने और हटाने की कार्रवाइयां Pod संदेशों को व्यवस्थित करने के तरीके को बदल देती हैं। चैनल हटाने से रूटिंग और इतिहास वर्कफ़्लो बाधित हो सकते हैं।", "old": "चैनल बनाने, अपडेट करने और हटाने की कार्रवाइयां पॉड संदेशों को व्यवस्थित करने के तरीके को बदल देती हैं। चैनल हटाने से रूटिंग और इतिहास वर्कफ़्लो बाधित हो सकते हैं।"}
+{"change": "value-changed", "key": "Check", "locale": "hi", "new": "जाँच", "old": "जाँच करना"}
+{"change": "value-changed", "key": "Check DHT startup logs and listener configuration.", "locale": "hi", "new": "DHT के स्टार्टअप लॉग और लिसनर की सेटिंग जाँचें।", "old": "DHT स्टार्टअप लॉग और श्रोता कॉन्फ़िगरेशन की जाँच करें।"}
+{"change": "value-changed", "key": "Check Seen", "locale": "hi", "new": "संदेश के पढ़े जाने की स्थिति जाँचें", "old": "देखा गया जाँच करें"}
+{"change": "value-changed", "key": "Check local firewall rules, router/NAT forwarding, container port publishing, and any reverse-proxy setup that might expose the Web UI but not the Soulseek listen port.", "locale": "hi", "new": "स्थानीय फ़ायरवॉल नियमों, राउटर/NAT फ़ॉरवर्डिंग, कंटेनर पोर्ट प्रकाशन और ऐसे रिवर्स-प्रॉक्सी सेटअप की जाँच करें जो वेब UI को उजागर कर सकते हैं, लेकिन Soulseek के लिसन पोर्ट को नहीं।", "old": "स्थानीय फ़ायरवॉल नियम, राउटर/एनएटी फ़ॉरवर्डिंग, कंटेनर पोर्ट प्रकाशन और किसी भी रिवर्स-प्रॉक्सी सेटअप की जाँच करें जो वेब यूआई को उजागर कर सकता है लेकिन Soulseek श्रवण पोर्ट को नहीं।"}
+{"change": "value-changed", "key": "Check whether a completed file path reported by slskr maps to the path a media server can scan.", "locale": "hi", "new": "जाँचें कि slskr द्वारा बताई गई डाउनलोड पूरी हो चुकी फ़ाइल का पथ उस पथ से मेल खाता है जिसे मीडिया सर्वर स्कैन कर सकता है।", "old": "जांचें कि क्या slskr द्वारा रिपोर्ट किया गया पूर्ण फ़ाइल पथ उस पथ से मेल खाता है जिसे मीडिया सर्वर स्कैन कर सकता है।"}
+{"change": "value-changed", "key": "Checks connection, shares, paths, and credentials for setup drift.", "locale": "hi", "new": "सेटअप में अनपेक्षित बदलावों का पता लगाने के लिए कनेक्शन, शेयर, पथ और क्रेडेंशियल की जाँच करता है।", "old": "सेटअप बहाव के लिए कनेक्शन, शेयर, पथ और क्रेडेंशियल की जाँच करता है।"}
+{"change": "value-changed", "key": "Choose File", "locale": "hi", "new": "फ़ाइल चुनें", "old": "फाइलें चुनें"}
+{"change": "value-changed", "key": "Choose a RustyMilk quality preset. Efficient lowers GPU load, Balanced caps at 60 FPS, and Full leaves rendering uncapped.", "locale": "hi", "new": "RustyMilk के लिए गुणवत्ता प्रीसेट चुनें। कुशल मोड GPU का भार घटाता है, संतुलित मोड फ़्रेम दर को 60 FPS तक सीमित करता है, और बिना सीमा वाला मोड रेंडरिंग पर कोई सीमा नहीं लगाता।", "old": "RustyMilk का गुणवत्ता प्रीसेट चुनें। Efficient GPU लोड कम करता है, Balanced 60 FPS की सीमा तय करता है और Full रेंडरिंग पर कोई सीमा नहीं लगाता।"}
+{"change": "value-changed", "key": "Choose how long RustyMilk should wait before timed preset changes.", "locale": "hi", "new": "टाइमर से प्रीसेट बदलने से पहले RustyMilk कितनी देर प्रतीक्षा करे, यह चुनें।", "old": "चुनें कि समयबद्ध पूर्व निर्धारित परिवर्तनों से पहले RustyMilk को कितनी देर तक प्रतीक्षा करनी चाहिए।"}
+{"change": "value-changed", "key": "Choose how many detected bass beats should pass before RustyMilk advances to another preset.", "locale": "hi", "new": "दूसरे प्रीसेट पर जाने से पहले RustyMilk कितनी पहचानी गई बास बीटों की प्रतीक्षा करे, यह चुनें।", "old": "चुनें कि RustyMilk के दूसरे प्रीसेट पर आगे बढ़ने से पहले कितने ज्ञात बास बीट्स पास होने चाहिए।"}
+{"change": "value-changed", "key": "Chunk Progress Heatmap", "locale": "hi", "new": "डेटा खंडों की प्रगति का हीटमैप", "old": "चंक प्रोग्रेस हीटमैप"}
+{"change": "value-changed", "key": "Chunks", "locale": "hi", "new": "खंड", "old": "चंक्स"}
+{"change": "value-changed", "key": "Chunks Completed", "locale": "hi", "new": "पूर्ण किए गए खंड", "old": "टुकड़े पूरे हो गए"}
+{"change": "value-changed", "key": "Chunks Failed", "locale": "hi", "new": "विफल खंड", "old": "खंड विफल"}
+{"change": "value-changed", "key": "Chunks per second", "locale": "hi", "new": "प्रति सेकंड खंड", "old": "प्रति सेकंड टुकड़े"}
+{"change": "value-changed", "key": "Clean:", "locale": "hi", "new": "विवाद-रहित प्रविष्टियाँ:", "old": "साफ:"}
+{"change": "value-changed", "key": "Cleaned up {result} old messages", "locale": "hi", "new": "{result} पुराने संदेश हटाए गए", "old": "{result} पुराने संदेशों को साफ़ किया गया"}
+{"change": "value-changed", "key": "Cleanup Seen Messages", "locale": "hi", "new": "देखे गए संदेशों के रिकॉर्ड साफ़ करें", "old": "देखे गए संदेशों की सफ़ाई"}
+{"change": "value-changed", "key": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained", "locale": "hi", "new": "सफ़ाई पूरी हुई: {messagesCleaned} देखे गए संदेशों के रिकॉर्ड साफ़ किए गए, {messagesRetained} रिकॉर्ड रखे गए।", "old": "सफ़ाई पूरी हुई: {messagesCleaned} संदेश साफ़ किए गए, {messagesRetained} बरकरार रखा गया"}
+{"change": "value-changed", "key": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors", "locale": "hi", "new": "सफ़ाई पूरी हुई: {recordsCleaned} रिकॉर्ड साफ़ किए गए, {errorsEncountered} त्रुटियाँ हुईं।", "old": "सफ़ाई पूर्ण: {recordsCleaned} रिकॉर्ड साफ़, {errorsEncountered} त्रुटियाँ"}
+{"change": "value-changed", "key": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.", "locale": "hi", "new": "सफ़ाई, इंडेक्स पुनर्निर्माण और VACUUM कार्रवाइयाँ Pod के स्थानीय संदेश भंडारण को प्रभावित करती हैं। खोज और गणना की कार्रवाइयाँ केवल-पठन हैं।", "old": "सफाई, पुनर्निर्माण और वैक्यूम क्रियाएं स्थानीय पॉड संदेश भंडारण को प्रभावित करती हैं। खोजें और गिनें क्रियाएँ केवल-पढ़ने के लिए हैं।"}
+{"change": "value-changed", "key": "Clear (", "locale": "hi", "new": "चयन हटाएँ (", "old": "स्पष्ट ("}
+{"change": "value-changed", "key": "Clear Selection", "locale": "hi", "new": "चयन साफ़ करें", "old": "स्पष्ट चयन"}
+{"change": "value-changed", "key": "Clear Shelf", "locale": "hi", "new": "डिस्कवरी शेल्फ़ खाली करें", "old": "साफ़ शेल्फ"}
+{"change": "value-changed", "key": "Clear Upcoming", "locale": "hi", "new": "आगामी सूची से सभी गीत हटाएँ", "old": "स्पष्ट आगामी"}
+{"change": "value-changed", "key": "Clear active native playlist", "locale": "hi", "new": "सक्रिय स्थानीय प्लेलिस्ट का चयन हटाएँ", "old": "सक्रिय मूल प्लेलिस्ट साफ़ करें"}
+{"change": "value-changed", "key": "Clear browser-local discovery shelf review items. This does not affect files or ratings.", "locale": "hi", "new": "ब्राउज़र की स्थानीय डिस्कवरी शेल्फ़ के समीक्षा आइटम साफ़ करें। इससे फ़ाइलों या रेटिंग पर कोई प्रभाव नहीं पड़ता।", "old": "ब्राउज़र-स्थानीय खोज शेल्फ़ समीक्षा आइटम साफ़ करें। इससे फ़ाइलों या रेटिंग पर कोई प्रभाव नहीं पड़ता."}
+{"change": "value-changed", "key": "Clear tag organization snapshot for {name}", "locale": "hi", "new": "{name} के लिए टैग व्यवस्थित करने वाला स्नैपशॉट साफ़ करें।", "old": "{name} के लिए स्पष्ट टैग संगठन स्नैपशॉट"}
+{"change": "value-changed", "key": "Clear this browse result and enter another username.", "locale": "hi", "new": "इस उपयोगकर्ता की फ़ाइल सूची साफ़ करके दूसरा उपयोगकर्ता नाम दर्ज करें।", "old": "इस ब्राउज़ परिणाम को साफ़ करें और दूसरा उपयोगकर्ता नाम दर्ज करें।"}
+{"change": "value-changed", "key": "Cleared tag and organization snapshot for {playlistName}", "locale": "hi", "new": "{playlistName} के लिए टैग व्यवस्थित करने वाला स्नैपशॉट साफ़ कर दिया गया है।", "old": "{playlistName} के लिए साफ़ टैग और संगठन स्नैपशॉट"}
+{"change": "added", "key": "Connecting", "locale": "hi", "new": "कनेक्ट हो रहा है", "old": null}
+{"change": "added", "key": "Connection Failed", "locale": "hi", "new": "कनेक्शन विफल", "old": null}
+{"change": "added", "key": "OK", "locale": "hi", "new": "ठीक है", "old": null}
+{"change": "added", "key": "Reconnecting", "locale": "hi", "new": "फिर से कनेक्ट हो रहा है", "old": null}
+{"change": "added", "key": "Retry selected", "locale": "hi", "new": "चयनित आइटम फिर से आज़माएँ", "old": null}
+{"change": "removed", "key": "Retry{all}", "locale": "hi", "new": null, "old": "पुनः प्रयास करें{all}"}
+{"change": "value-changed", "key": "Can create content-linked pods", "locale": "id", "new": "Dapat membuat Pods yang tertaut ke konten", "old": "Dapat membuat pod yang tertaut konten"}
+{"change": "added", "key": "Cancel selected", "locale": "id", "new": "Batalkan item yang dipilih", "old": null}
+{"change": "removed", "key": "Cancel{all}", "locale": "id", "new": null, "old": "Batalkan{all}"}
+{"change": "value-changed", "key": "Canonical", "locale": "id", "new": "Kanonik", "old": "Resmi"}
+{"change": "value-changed", "key": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.", "locale": "id", "new": "Batasi frame rate pada rendering RustyMilk untuk mengurangi beban GPU, atau biarkan tanpa batas agar tampilannya tetap semulus mungkin.", "old": "Batasi rendering RustyMilk untuk beban GPU yang lebih rendah, atau biarkan tidak ditutup untuk kelancaran maksimum."}
+{"change": "value-changed", "key": "Capture local history", "locale": "id", "new": "Catat riwayat pemutaran secara lokal", "old": "Abadikan sejarah lokal"}
+{"change": "value-changed", "key": "Capture player history preference", "locale": "id", "new": "Preferensi pencatatan riwayat pemutaran", "old": "Tangkap preferensi riwayat pemain"}
+{"change": "value-changed", "key": "Censorship Resistance", "locale": "id", "new": "Ketahanan terhadap penyensoran", "old": "Resistensi Sensor"}
+{"change": "value-changed", "key": "Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows.", "locale": "id", "new": "Tindakan pembuatan, pembaruan, dan penghapusan saluran mengubah cara pesan Pod diatur. Menghapus saluran dapat mengganggu alur kerja perutean dan riwayat.", "old": "Tindakan pembuatan, pembaruan, dan penghapusan saluran mengubah cara pesan pod diatur. Menghapus saluran dapat mengganggu alur kerja perutean dan riwayat."}
+{"change": "value-changed", "key": "Check", "locale": "id", "new": "Pemeriksaan", "old": "Memeriksa"}
+{"change": "value-changed", "key": "Check DHT startup logs and listener configuration.", "locale": "id", "new": "Periksa log startup DHT dan konfigurasi listener DHT.", "old": "Periksa log startup DHT dan konfigurasi pendengar."}
+{"change": "value-changed", "key": "Check Seen", "locale": "id", "new": "Periksa status baca pesan", "old": "Periksa Terlihat"}
+{"change": "value-changed", "key": "Check whether a completed file path reported by slskr maps to the path a media server can scan.", "locale": "id", "new": "Periksa apakah jalur yang dilaporkan slskr untuk file yang sudah selesai diunduh cocok dengan jalur yang dapat dipindai oleh server media.", "old": "Periksa apakah jalur file lengkap yang dilaporkan oleh slskr dipetakan ke jalur yang dapat dipindai oleh server media."}
+{"change": "value-changed", "key": "Checks connection, shares, paths, and credentials for setup drift.", "locale": "id", "new": "Memeriksa koneksi, folder yang dibagikan, jalur, dan kredensial untuk mendeteksi penyimpangan konfigurasi.", "old": "Memeriksa koneksi, pembagian, jalur, dan kredensial untuk penyimpangan pengaturan."}
+{"change": "value-changed", "key": "Checksum:", "locale": "id", "new": "Checksum:", "old": "Jumlah pemeriksaan:"}
+{"change": "value-changed", "key": "Choose a RustyMilk quality preset. Efficient lowers GPU load, Balanced caps at 60 FPS, and Full leaves rendering uncapped.", "locale": "id", "new": "Pilih preset kualitas RustyMilk. Mode Efisien mengurangi beban GPU, mode Seimbang membatasi laju bingkai hingga 60 FPS, dan mode tanpa batas membiarkan rendering berjalan tanpa pembatasan.", "old": "Pilih preset kualitas RustyMilk. Efisien menurunkan beban GPU, Batas seimbang pada 60 FPS, dan Penuh membuat rendering tidak terbatas."}
+{"change": "value-changed", "key": "Choose how long RustyMilk should wait before timed preset changes.", "locale": "id", "new": "Pilih berapa lama RustyMilk harus menunggu sebelum mengganti preset sesuai pengatur waktu.", "old": "Pilih berapa lama RustyMilk harus menunggu sebelum pengaturan waktunya berubah."}
+{"change": "value-changed", "key": "Choose how many detected bass beats should pass before RustyMilk advances to another preset.", "locale": "id", "new": "Pilih jumlah ketukan bass yang harus terdeteksi sebelum RustyMilk beralih ke preset lain.", "old": "Pilih berapa banyak ketukan bass yang terdeteksi yang harus dilewati sebelum RustyMilk melanjutkan ke preset lain."}
+{"change": "value-changed", "key": "Chromaprint Off", "locale": "id", "new": "Chromaprint: Nonaktif", "old": "Chromaprint: Mati"}
+{"change": "value-changed", "key": "Clean:", "locale": "id", "new": "Entri tanpa konflik:", "old": "Membersihkan:"}
+{"change": "value-changed", "key": "Cleaned up {result} old messages", "locale": "id", "new": "{result} pesan lama telah dibersihkan", "old": "Membersihkan pesan lama {result}"}
+{"change": "value-changed", "key": "Cleanup Seen Messages", "locale": "id", "new": "Bersihkan catatan pesan yang telah dilihat", "old": "Bersihkan Pesan yang Dilihat"}
+{"change": "value-changed", "key": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained", "locale": "id", "new": "Pembersihan selesai: catatan untuk {messagesCleaned} pesan yang telah dilihat dibersihkan; {messagesRetained} catatan dipertahankan.", "old": "Pembersihan selesai: pesan {messagesCleaned} dibersihkan, {messagesRetained} dipertahankan"}
+{"change": "value-changed", "key": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors", "locale": "id", "new": "Pembersihan selesai: {recordsCleaned} catatan dibersihkan, {errorsEncountered} kesalahan ditemukan.", "old": "Pembersihan selesai: catatan {recordsCleaned} dibersihkan, kesalahan {errorsEncountered}"}
+{"change": "value-changed", "key": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.", "locale": "id", "new": "Tindakan pembersihan, pembangunan ulang indeks, dan VACUUM memengaruhi penyimpanan pesan lokal Pod. Tindakan pencarian dan penghitungan hanya-baca.", "old": "Tindakan pembersihan, pembangunan kembali, dan vakum memengaruhi penyimpanan pesan pod lokal. Tindakan pencarian dan penghitungan bersifat hanya baca."}
+{"change": "value-changed", "key": "Clear (", "locale": "id", "new": "Batalkan pilihan (", "old": "Jernih ("}
+{"change": "value-changed", "key": "Clear Shelf", "locale": "id", "new": "Kosongkan Rak Penemuan", "old": "Hapus Rak"}
+{"change": "value-changed", "key": "Clear Upcoming", "locale": "id", "new": "Kosongkan antrean berikutnya", "old": "Hapus Mendatang"}
+{"change": "value-changed", "key": "Clear active native playlist", "locale": "id", "new": "Batalkan pemilihan playlist lokal aktif", "old": "Hapus playlist asli yang aktif"}
+{"change": "value-changed", "key": "Clear browser-local discovery shelf review items. This does not affect files or ratings.", "locale": "id", "new": "Hapus item tinjauan dari rak penemuan lokal di browser. Ini tidak memengaruhi file atau rating.", "old": "Hapus item tinjauan rak penemuan lokal browser. Ini tidak mempengaruhi file atau peringkat."}
+{"change": "value-changed", "key": "Clear only the browser-local listening history used for this stats view.", "locale": "id", "new": "Hapus hanya riwayat pemutaran lokal browser yang digunakan untuk tampilan statistik ini.", "old": "Hapus hanya riwayat pendengaran lokal browser yang digunakan untuk tampilan statistik ini."}
+{"change": "value-changed", "key": "Clear selected user", "locale": "id", "new": "Hapus pengguna yang dipilih dari kolom input", "old": "Hapus pengguna yang dipilih"}
+{"change": "added", "key": "Connecting", "locale": "id", "new": "Menghubungkan", "old": null}
+{"change": "added", "key": "Connection Failed", "locale": "id", "new": "Koneksi gagal", "old": null}
+{"change": "added", "key": "OK", "locale": "id", "new": "Oke", "old": null}
+{"change": "added", "key": "Reconnecting", "locale": "id", "new": "Menyambung kembali", "old": null}
+{"change": "added", "key": "Retry selected", "locale": "id", "new": "Coba lagi item yang dipilih", "old": null}
+{"change": "removed", "key": "Retry{all}", "locale": "id", "new": null, "old": "Coba lagi{all}"}
+{"change": "value-changed", "key": "Can create content-linked pods", "locale": "ja", "new": "コンテンツにリンクされた Pod を作成できる", "old": "コンテンツにリンクされたポッドを作成できる"}
+{"change": "value-changed", "key": "Cancel Scan", "locale": "ja", "new": "スキャンをキャンセル", "old": "スキャンのキャンセル"}
+{"change": "added", "key": "Cancel selected", "locale": "ja", "new": "選択した項目をキャンセル", "old": null}
+{"change": "value-changed", "key": "Cancelled", "locale": "ja", "new": "キャンセル済み", "old": "キャンセル"}
+{"change": "removed", "key": "Cancel{all}", "locale": "ja", "new": null, "old": "キャンセル{all}"}
+{"change": "value-changed", "key": "Candidate identity", "locale": "ja", "new": "候補の識別", "old": "候補の同一性"}
+{"change": "value-changed", "key": "Candidates", "locale": "ja", "new": "候補作品", "old": "候補者"}
+{"change": "value-changed", "key": "Canonical support from", "locale": "ja", "new": "正規録音を支持する", "old": "正規サポート"}
+{"change": "value-changed", "key": "Canonical variants:", "locale": "ja", "new": "正規版のバリエーション:", "old": "正規の亜種:"}
+{"change": "value-changed", "key": "Capture local history", "locale": "ja", "new": "このブラウザーでの再生履歴を記録する", "old": "地元の歴史を記録する"}
+{"change": "value-changed", "key": "Capture player history preference", "locale": "ja", "new": "再生履歴の記録設定", "old": "プレーヤー履歴のキャプチャ設定"}
+{"change": "value-changed", "key": "Channel ID is required", "locale": "ja", "new": "チャンネルIDが必要です。 (APIフィールド： \"channelId\")", "old": "チャネルIDが必要です。 (APIフィールド： \"channelId\")"}
+{"change": "value-changed", "key": "Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows.", "locale": "ja", "new": "チャンネルの作成、更新、および削除の操作により、Podメッセージの編成方法が変わります。チャンネルを削除すると、ルーティングと履歴のワークフローが中断される可能性があります。", "old": "チャネルの作成、更新、および削除のアクションにより、ポッド メッセージの編成方法が変更されます。チャネルを削除すると、ルーティングと履歴のワークフローが中断される可能性があります。"}
+{"change": "value-changed", "key": "Channel:", "locale": "ja", "new": "チャンネル：", "old": "チャネル："}
+{"change": "value-changed", "key": "Check", "locale": "ja", "new": "チェック項目", "old": "チェック"}
+{"change": "value-changed", "key": "Check Role", "locale": "ja", "new": "ロールを確認", "old": "チェックロール"}
+{"change": "value-changed", "key": "Check Seen", "locale": "ja", "new": "メッセージの既読状態を確認", "old": "確認済み"}
+{"change": "value-changed", "key": "Check whether a completed file path reported by slskr maps to the path a media server can scan.", "locale": "ja", "new": "slskr が報告したダウンロード完了済みファイルのパスが、メディアサーバーでスキャンできるパスに対応しているか確認してください。", "old": "slskr によって報告された完全なファイル パスが、メディア サーバーがスキャンできるパスにマップされているかどうかを確認します。"}
+{"change": "value-changed", "key": "Checks connection, shares, paths, and credentials for setup drift.", "locale": "ja", "new": "接続、共有、パス、認証情報を確認し、設定に予期しない変更がないか調べます。", "old": "接続、共有、パス、資格情報のセットアップ ドリフトをチェックします。"}
+{"change": "value-changed", "key": "Choose how long RustyMilk should wait before timed preset changes.", "locale": "ja", "new": "タイマーによるプリセット切り替えの前にRustyMilkが待機する時間を選びます。", "old": "RustyMilk が時間指定されたプリセットを変更するまで待機する時間を選択します。"}
+{"change": "value-changed", "key": "Choose how many detected bass beats should pass before RustyMilk advances to another preset.", "locale": "ja", "new": "別のプリセットに切り替える前にRustyMilkが検出するベースビートの回数を選びます。", "old": "RustyMilk が別のプリセットに進む前に、検出されたベースビートが何回通過するかを選択します。"}
+{"change": "value-changed", "key": "Chunks Completed", "locale": "ja", "new": "完了したチャンク数", "old": "チャンクが完了しました"}
+{"change": "value-changed", "key": "Chunks Failed", "locale": "ja", "new": "失敗したチャンク数", "old": "チャンクが失敗しました"}
+{"change": "value-changed", "key": "Clean:", "locale": "ja", "new": "競合のない項目：", "old": "クリーン："}
+{"change": "value-changed", "key": "Cleaned up {result} old messages", "locale": "ja", "new": "古いメッセージを {result} 件削除しました", "old": "{result} の古いメッセージをクリーンアップしました"}
+{"change": "value-changed", "key": "Cleanup Seen Messages", "locale": "ja", "new": "閲覧済みメッセージの記録を整理", "old": "表示されたメッセージのクリーンアップ"}
+{"change": "value-changed", "key": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained", "locale": "ja", "new": "クリーンアップ完了: 閲覧済みメッセージの記録を {messagesCleaned} 件整理し、{messagesRetained} 件を保持しました。", "old": "クリーンアップが完了しました: {messagesCleaned} メッセージは削除され、{messagesRetained} は保持されました"}
+{"change": "value-changed", "key": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors", "locale": "ja", "new": "クリーンアップ完了: {recordsCleaned} 件のレコードを整理し、{errorsEncountered} 件のエラーが発生しました。", "old": "クリーンアップが完了しました: {recordsCleaned} レコードはクリーンアップされました、{errorsEncountered} エラーは"}
+{"change": "value-changed", "key": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.", "locale": "ja", "new": "クリーンアップ、インデックス再構築、VACUUM の各操作は、ローカル Pod メッセージストレージに影響します。検索と件数確認の操作は読み取り専用です。", "old": "クリーンアップ、再構築、およびバキュームのアクションは、ローカル ポッド メッセージ ストレージに影響します。検索およびカウントのアクションは読み取り専用です。"}
+{"change": "value-changed", "key": "Clear (", "locale": "ja", "new": "選択解除 (", "old": "クリア （"}
+{"change": "value-changed", "key": "Clear Filter", "locale": "ja", "new": "フィルターをクリア", "old": "クリアフィルター"}
+{"change": "value-changed", "key": "Clear Shelf", "locale": "ja", "new": "ディスカバリーシェルフを空にする", "old": "クリアシェルフ"}
+{"change": "value-changed", "key": "Clear Upcoming", "locale": "ja", "new": "再生待ちの曲をすべてキューから外す", "old": "今後のクリア"}
+{"change": "value-changed", "key": "Clear active native playlist", "locale": "ja", "new": "アクティブなローカルプレイリストの選択を解除", "old": "アクティブなネイティブ プレイリストをクリアする"}
+{"change": "value-changed", "key": "Clear browser-local discovery shelf review items. This does not affect files or ratings.", "locale": "ja", "new": "ブラウザー内のディスカバリーシェルフのレビュー項目を消去します。ファイルや評価には影響しません。", "old": "ブラウザー ローカルのディスカバリー シェルフのレビュー項目をクリアします。これはファイルや評価には影響しません。"}
+{"change": "added", "key": "Connecting", "locale": "ja", "new": "接続中", "old": null}
+{"change": "added", "key": "Connection Failed", "locale": "ja", "new": "接続に失敗しました", "old": null}
+{"change": "added", "key": "OK", "locale": "ja", "new": "OK", "old": null}
+{"change": "added", "key": "Reconnecting", "locale": "ja", "new": "再接続中", "old": null}
+{"change": "added", "key": "Retry selected", "locale": "ja", "new": "選択した項目を再試行", "old": null}
+{"change": "removed", "key": "Retry{all}", "locale": "ja", "new": null, "old": "再試行{all}"}
+{"change": "value-changed", "key": "Can create content-linked pods", "locale": "ko", "new": "콘텐츠에 연결된 Pod를 만들 수 있습니다.", "old": "콘텐츠 연결 포드를 생성할 수 있습니다."}
+{"change": "added", "key": "Cancel selected", "locale": "ko", "new": "선택한 항목을 취소", "old": null}
+{"change": "removed", "key": "Cancel{all}", "locale": "ko", "new": null, "old": "취소{all}"}
+{"change": "value-changed", "key": "Candidates", "locale": "ko", "new": "후보 항목", "old": "후보자"}
+{"change": "value-changed", "key": "Canonical", "locale": "ko", "new": "정규", "old": "정식"}
+{"change": "value-changed", "key": "Canonical support from", "locale": "ko", "new": "정규 녹음을 뒷받침하는", "old": "정식 지원"}
+{"change": "value-changed", "key": "Canonical variants:", "locale": "ko", "new": "정규 버전 변형:", "old": "정식 변형:"}
+{"change": "value-changed", "key": "Capture local history", "locale": "ko", "new": "이 브라우저에 재생 기록 저장", "old": "지역 역사를 포착하세요"}
+{"change": "value-changed", "key": "Capture player history preference", "locale": "ko", "new": "재생 기록 저장 설정", "old": "플레이어 기록 환경 설정 캡처"}
+{"change": "value-changed", "key": "Centroid", "locale": "ko", "new": "스펙트럼 중심", "old": "중심"}
+{"change": "value-changed", "key": "Channel \"{channelName}\" deleted successfully", "locale": "ko", "new": "\"{channelName}\" 채널이 성공적으로 삭제되었습니다.", "old": "채널 \"{channelName}\"가 성공적으로 삭제되었습니다."}
+{"change": "value-changed", "key": "Channel \"{newChannelName}\" created successfully", "locale": "ko", "new": "\"{newChannelName}\" 채널이 성공적으로 생성되었습니다.", "old": "채널 \"{newChannelName}\"가 성공적으로 생성되었습니다."}
+{"change": "value-changed", "key": "Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows.", "locale": "ko", "new": "채널 생성, 업데이트 및 삭제 작업은 Pod 메시지 구성 방식을 변경합니다. 채널을 삭제하면 라우팅 및 기록 워크플로가 중단될 수 있습니다.", "old": "채널 생성, 업데이트 및 삭제 작업은 포드 메시지 구성 방식을 변경합니다. 채널을 삭제하면 라우팅 및 기록 워크플로가 중단될 수 있습니다."}
+{"change": "value-changed", "key": "Check", "locale": "ko", "new": "점검 항목", "old": "확인하다"}
+{"change": "value-changed", "key": "Check Seen", "locale": "ko", "new": "메시지 읽음 상태 확인", "old": "확인됨"}
+{"change": "value-changed", "key": "Check whether a completed file path reported by slskr maps to the path a media server can scan.", "locale": "ko", "new": "slskr가 보고한 다운로드 완료 파일의 경로가 미디어 서버에서 스캔할 수 있는 경로와 일치하는지 확인하세요.", "old": "slskr에서 보고한 완전한 파일 경로가 미디어 서버가 검색할 수 있는 경로에 매핑되는지 확인하세요."}
+{"change": "value-changed", "key": "Choose a RustyMilk quality preset. Efficient lowers GPU load, Balanced caps at 60 FPS, and Full leaves rendering uncapped.", "locale": "ko", "new": "RustyMilk 품질 프리셋을 선택하세요. 효율 모드는 GPU 부하를 낮추고, 균형 모드는 프레임 속도를 60 FPS로 제한하며, 무제한 모드는 렌더링을 제한하지 않습니다.", "old": "RustyMilk 품질 사전 설정을 선택하세요. Efficient는 GPU 로드를 낮추고, Balanced cap은 60 FPS로, Full은 렌더링을 제한하지 않습니다."}
+{"change": "value-changed", "key": "Choose how long RustyMilk should wait before timed preset changes.", "locale": "ko", "new": "타이머에 따라 프리셋을 변경하기 전에 RustyMilk가 기다릴 시간을 선택하세요.", "old": "시간 제한이 있는 사전 설정이 변경되기 전에 RustyMilk가 기다려야 하는 시간을 선택하세요."}
+{"change": "value-changed", "key": "Chunks Completed", "locale": "ko", "new": "완료된 청크 수", "old": "청크 완료됨"}
+{"change": "value-changed", "key": "Chunks Failed", "locale": "ko", "new": "실패한 청크 수", "old": "청크 실패"}
+{"change": "value-changed", "key": "Clean:", "locale": "ko", "new": "충돌 없는 항목:", "old": "깨끗한:"}
+{"change": "value-changed", "key": "Cleanup Seen Messages", "locale": "ko", "new": "열람된 메시지 기록 정리", "old": "확인된 메시지 정리"}
+{"change": "value-changed", "key": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained", "locale": "ko", "new": "정리 완료: 열람된 메시지 기록 {messagesCleaned}개를 정리하고 {messagesRetained}개를 유지했습니다.", "old": "정리 완료: {messagesCleaned} 메시지가 정리되고 {messagesRetained}는 유지됩니다."}
+{"change": "value-changed", "key": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors", "locale": "ko", "new": "정리 완료: 레코드 {recordsCleaned}개를 정리했고 오류 {errorsEncountered}개가 발생했습니다.", "old": "정리 완료: {recordsCleaned} 레코드 정리됨, {errorsEncountered} 오류"}
+{"change": "value-changed", "key": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.", "locale": "ko", "new": "정리, 인덱스 재구축 및 VACUUM 작업은 로컬 Pod 메시지 저장소에 영향을 미칩니다. 검색 및 개수 확인 작업은 읽기 전용입니다.", "old": "정리, 재구축 및 진공 작업은 로컬 포드 메시지 저장소에 영향을 미칩니다. 검색 및 계산 작업은 읽기 전용입니다."}
+{"change": "value-changed", "key": "Clear (", "locale": "ko", "new": "선택 해제 (", "old": "분명한 ("}
+{"change": "value-changed", "key": "Clear Quality", "locale": "ko", "new": "품질 필터 지우기", "old": "품질 지우기"}
+{"change": "value-changed", "key": "Clear Shelf", "locale": "ko", "new": "디스커버리 선반 비우기", "old": "명확한 선반"}
+{"change": "value-changed", "key": "Clear Upcoming", "locale": "ko", "new": "대기 중인 곡 모두 지우기", "old": "예정된 항목 지우기"}
+{"change": "value-changed", "key": "Clear active native playlist", "locale": "ko", "new": "활성 로컬 재생목록 선택 해제", "old": "활성 기본 재생목록 지우기"}
+{"change": "value-changed", "key": "Clear browser-local discovery shelf review items. This does not affect files or ratings.", "locale": "ko", "new": "브라우저 로컬 디스커버리 선반의 검토 항목을 지웁니다. 파일이나 평점에는 영향을 주지 않습니다.", "old": "브라우저-로컬 검색 선반 검토 항목을 지웁니다. 이는 파일이나 등급에 영향을 미치지 않습니다."}
+{"change": "added", "key": "Connecting", "locale": "ko", "new": "연결 중", "old": null}
+{"change": "added", "key": "Connection Failed", "locale": "ko", "new": "연결 실패", "old": null}
+{"change": "added", "key": "OK", "locale": "ko", "new": "확인", "old": null}
+{"change": "added", "key": "Reconnecting", "locale": "ko", "new": "다시 연결 중", "old": null}
+{"change": "added", "key": "Retry selected", "locale": "ko", "new": "선택한 항목을 다시 시도", "old": null}
+{"change": "removed", "key": "Retry{all}", "locale": "ko", "new": null, "old": "재시도{all}"}
+{"change": "value-changed", "key": "Can create content-linked pods", "locale": "pt-BR", "new": "Pode criar Pods vinculados a conteúdo", "old": "Pode criar pods vinculados a conteúdo"}
+{"change": "value-changed", "key": "Cancel Scan", "locale": "pt-BR", "new": "Cancelar varredura", "old": "Cancelar digitalização"}
+{"change": "added", "key": "Cancel selected", "locale": "pt-BR", "new": "Cancelar os itens selecionados", "old": null}
+{"change": "value-changed", "key": "Cancelled", "locale": "pt-BR", "new": "Cancelado", "old": "Cancelados"}
+{"change": "removed", "key": "Cancel{all}", "locale": "pt-BR", "new": null, "old": "Cancelar{all}"}
+{"change": "value-changed", "key": "Candidates", "locale": "pt-BR", "new": "Obras candidatas", "old": "Candidatos"}
+{"change": "value-changed", "key": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.", "locale": "pt-BR", "new": "Limite a taxa de quadros da renderização do RustyMilk para reduzir a carga da GPU ou deixe-a sem limite para obter a máxima suavidade.", "old": "Limite a renderização do RustyMilk para reduzir a carga da GPU ou deixe-a destampada para obter o máximo de suavidade."}
+{"change": "value-changed", "key": "Capture local history", "locale": "pt-BR", "new": "Registrar o histórico de reprodução neste navegador", "old": "Capture a história local"}
+{"change": "value-changed", "key": "Capture player history preference", "locale": "pt-BR", "new": "Preferência de registro do histórico de reprodução", "old": "Capturar preferência do histórico do jogador"}
+{"change": "value-changed", "key": "Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows.", "locale": "pt-BR", "new": "As ações de criação, atualização e exclusão de canal alteram a forma como as mensagens do Pod são organizadas. A exclusão de canais pode interromper os fluxos de trabalho de roteamento e histórico.", "old": "As ações de criação, atualização e exclusão de canal alteram a forma como as mensagens do pod são organizadas. A exclusão de canais pode interromper os fluxos de trabalho de roteamento e histórico."}
+{"change": "value-changed", "key": "Check", "locale": "pt-BR", "new": "Verificação", "old": "Verificar"}
+{"change": "value-changed", "key": "Check DHT startup logs and listener configuration.", "locale": "pt-BR", "new": "Verifique os logs de inicialização do DHT e a configuração de escuta.", "old": "Verifique os logs de inicialização e a configuração do ouvinte do DHT."}
+{"change": "value-changed", "key": "Check Seen", "locale": "pt-BR", "new": "Verificar o status de leitura da mensagem", "old": "Verificar visto"}
+{"change": "value-changed", "key": "Check whether a completed file path reported by slskr maps to the path a media server can scan.", "locale": "pt-BR", "new": "Verifique se o caminho informado pelo slskr para um arquivo cujo download foi concluído corresponde a um caminho que o servidor de mídia consegue escanear.", "old": "Verifique se um caminho de arquivo concluído relatado por slskr é mapeado para o caminho que um servidor de mídia pode verificar."}
+{"change": "value-changed", "key": "Choose File", "locale": "pt-BR", "new": "Escolha um arquivo", "old": "Escolha arquivo"}
+{"change": "value-changed", "key": "Choose a RustyMilk quality preset. Efficient lowers GPU load, Balanced caps at 60 FPS, and Full leaves rendering uncapped.", "locale": "pt-BR", "new": "Escolha uma predefinição de qualidade do RustyMilk. O modo eficiente reduz a carga da GPU, o modo equilibrado limita a taxa de quadros a 60 FPS e o modo sem limite deixa a renderização livre de restrições.", "old": "Escolha uma predefinição de qualidade RustyMilk. Eficiente reduz a carga da GPU, limites balanceados em 60 FPS e Full deixa a renderização sem limite."}
+{"change": "value-changed", "key": "Choose how long RustyMilk should wait before timed preset changes.", "locale": "pt-BR", "new": "Escolha quanto tempo o RustyMilk deve esperar antes de trocar de predefinição conforme o temporizador.", "old": "Escolha quanto tempo o RustyMilk deve esperar antes das alterações predefinidas cronometradas."}
+{"change": "value-changed", "key": "Choose how many detected bass beats should pass before RustyMilk advances to another preset.", "locale": "pt-BR", "new": "Escolha quantas batidas graves devem ser detectadas antes que o RustyMilk avance para outra predefinição.", "old": "Escolha quantas batidas graves detectadas devem passar antes que o RustyMilk avance para outra predefinição."}
+{"change": "value-changed", "key": "Choose how search results are ordered. Smart Ranking balances quality and availability.", "locale": "pt-BR", "new": "Escolha como ordenar os resultados da pesquisa. A classificação inteligente equilibra qualidade e disponibilidade.", "old": "Escolha como ordenar os resultados. A classificação inteligente equilibra qualidade e disponibilidade."}
+{"change": "value-changed", "key": "Chunk Success Rate", "locale": "pt-BR", "new": "Taxa de sucesso dos blocos", "old": "Taxa de sucesso de pedaços"}
+{"change": "value-changed", "key": "Chunk Utilization", "locale": "pt-BR", "new": "Utilização dos blocos", "old": "Utilização de pedaços"}
+{"change": "value-changed", "key": "Chunks", "locale": "pt-BR", "new": "Blocos", "old": "Pedaços"}
+{"change": "value-changed", "key": "Chunks Completed", "locale": "pt-BR", "new": "Blocos concluídos", "old": "Pedaços concluídos"}
+{"change": "value-changed", "key": "Chunks Failed", "locale": "pt-BR", "new": "Blocos com falha", "old": "Falha nos pedaços"}
+{"change": "value-changed", "key": "Chunks per second", "locale": "pt-BR", "new": "Blocos por segundo", "old": "Pedaços por segundo"}
+{"change": "value-changed", "key": "Clean:", "locale": "pt-BR", "new": "Entradas sem conflitos:", "old": "Limpar:"}
+{"change": "value-changed", "key": "Cleaned up {result} old messages", "locale": "pt-BR", "new": "{result} mensagens antigas foram removidas", "old": "Mensagens antigas {result} limpas"}
+{"change": "value-changed", "key": "Cleanup Seen Messages", "locale": "pt-BR", "new": "Limpar registros de mensagens vistas", "old": "Limpar mensagens vistas"}
+{"change": "value-changed", "key": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained", "locale": "pt-BR", "new": "Limpeza concluída: {messagesCleaned} registros de mensagens vistas removidos, {messagesRetained} mantidos.", "old": "Limpeza concluída: mensagens {messagesCleaned} limpas, {messagesRetained} retidas"}
+{"change": "value-changed", "key": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors", "locale": "pt-BR", "new": "Limpeza concluída: {recordsCleaned} registros removidos, {errorsEncountered} erros encontrados.", "old": "Limpeza concluída: registros {recordsCleaned} limpos, erros {errorsEncountered}"}
+{"change": "value-changed", "key": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.", "locale": "pt-BR", "new": "As ações de limpeza, reconstrução do índice e VACUUM afetam o armazenamento local de mensagens do Pod. As ações de pesquisa e contagem são somente leitura.", "old": "As ações de limpeza, reconstrução e aspiração afetam o armazenamento local de mensagens do pod. As ações de pesquisa e contagem são somente leitura."}
+{"change": "value-changed", "key": "Clear (", "locale": "pt-BR", "new": "Limpar seleção (", "old": "Claro ("}
+{"change": "value-changed", "key": "Clear Quality", "locale": "pt-BR", "new": "Limpar filtro de qualidade", "old": "Limpar qualidade"}
+{"change": "value-changed", "key": "Clear RustyMilk preset search", "locale": "pt-BR", "new": "Limpar a busca de presets do RustyMilk", "old": "Limpar pesquisa predefinida do RustyMilk"}
+{"change": "value-changed", "key": "Clear Shelf", "locale": "pt-BR", "new": "Esvaziar a prateleira de descoberta", "old": "Prateleira transparente"}
+{"change": "value-changed", "key": "Clear Upcoming", "locale": "pt-BR", "new": "Limpar a fila de próximas músicas", "old": "Limpar próximo"}
+{"change": "value-changed", "key": "Clear active native playlist", "locale": "pt-BR", "new": "Desmarcar a playlist local ativa", "old": "Limpar playlist nativa ativa"}
+{"change": "value-changed", "key": "Clear browser-local discovery shelf review items. This does not affect files or ratings.", "locale": "pt-BR", "new": "Limpe os itens de revisão da prateleira de descoberta local do navegador. Isso não afeta arquivos ou avaliações.", "old": "Limpe os itens de revisão da prateleira de descoberta local do navegador. Isso não afeta arquivos ou classificações."}
+{"change": "value-changed", "key": "Cleared tag and organization snapshot for {playlistName}", "locale": "pt-BR", "new": "Snapshot de organização de tags removido para {playlistName}.", "old": "Tag limpa e instantâneo da organização para {playlistName}"}
+{"change": "added", "key": "Connecting", "locale": "pt-BR", "new": "Conectando", "old": null}
+{"change": "added", "key": "Connection Failed", "locale": "pt-BR", "new": "Falha na conexão", "old": null}
+{"change": "added", "key": "OK", "locale": "pt-BR", "new": "OK", "old": null}
+{"change": "added", "key": "Reconnecting", "locale": "pt-BR", "new": "Reconectando", "old": null}
+{"change": "added", "key": "Retry selected", "locale": "pt-BR", "new": "Tentar novamente os itens selecionados", "old": null}
+{"change": "removed", "key": "Retry{all}", "locale": "pt-BR", "new": null, "old": "Tentar novamente{all}"}
+{"change": "value-changed", "key": "Can create content-linked pods", "locale": "vi", "new": "Có thể tạo Pod liên kết với nội dung", "old": "Có thể tạo nhóm liên kết nội dung"}
+{"change": "added", "key": "Cancel selected", "locale": "vi", "new": "Hủy các mục đã chọn", "old": null}
+{"change": "removed", "key": "Cancel{all}", "locale": "vi", "new": null, "old": "Hủy{all}"}
+{"change": "value-changed", "key": "Candidate score", "locale": "vi", "new": "Điểm phù hợp", "old": "Điểm ứng viên"}
+{"change": "value-changed", "key": "Candidate score: {score}/100", "locale": "vi", "new": "Điểm phù hợp: {score}/100", "old": "Điểm ứng viên: {score}/100"}
+{"change": "value-changed", "key": "Candidate score: {score}/100. Reasons: {reasons}", "locale": "vi", "new": "Điểm phù hợp: {score}/100. Lý do: {reasons}", "old": "Điểm ứng viên: {score}/100. Lý do: {reasons}"}
+{"change": "value-changed", "key": "Candidates", "locale": "vi", "new": "Mục đề xuất", "old": "Ứng viên"}
+{"change": "value-changed", "key": "Canonical support from", "locale": "vi", "new": "Bản ghi chuẩn được hỗ trợ bởi", "old": "Hỗ trợ kinh điển từ"}
+{"change": "value-changed", "key": "Canonical variants:", "locale": "vi", "new": "Các biến thể của bản chuẩn:", "old": "Các biến thể kinh điển:"}
+{"change": "value-changed", "key": "Capture local history", "locale": "vi", "new": "Ghi lại lịch sử phát trong trình duyệt này", "old": "Ghi lại lịch sử địa phương"}
+{"change": "value-changed", "key": "Capture player history preference", "locale": "vi", "new": "Tùy chọn ghi lịch sử phát", "old": "Nắm bắt tùy chọn lịch sử người chơi"}
+{"change": "value-changed", "key": "Centroid", "locale": "vi", "new": "Trọng tâm phổ", "old": "trung tâm"}
+{"change": "value-changed", "key": "Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows.", "locale": "vi", "new": "Các hành động tạo, cập nhật và xóa kênh sẽ thay đổi cách sắp xếp các tin nhắn trong Pod. Việc xóa các kênh có thể làm gián đoạn quy trình định tuyến và lịch sử.", "old": "Các hành động tạo, cập nhật và xóa kênh sẽ thay đổi cách sắp xếp các tin nhắn trong nhóm. Việc xóa các kênh có thể làm gián đoạn quy trình định tuyến và lịch sử."}
+{"change": "value-changed", "key": "Check", "locale": "vi", "new": "Hạng mục kiểm tra", "old": "Kiểm tra"}
+{"change": "value-changed", "key": "Check DHT startup logs and listener configuration.", "locale": "vi", "new": "Kiểm tra nhật ký khởi động DHT và cấu hình listener DHT.", "old": "Kiểm tra nhật ký khởi động DHT và cấu hình trình nghe."}
+{"change": "value-changed", "key": "Check Seen", "locale": "vi", "new": "Kiểm tra trạng thái đã đọc của tin nhắn", "old": "Kiểm tra đã xem"}
+{"change": "value-changed", "key": "Check whether a completed file path reported by slskr maps to the path a media server can scan.", "locale": "vi", "new": "Kiểm tra xem đường dẫn của tệp đã tải xuống hoàn tất do slskr báo cáo có khớp với đường dẫn mà máy chủ phương tiện có thể quét hay không.", "old": "Kiểm tra xem đường dẫn tệp đã hoàn thành được báo cáo bởi slskr có ánh xạ tới đường dẫn mà máy chủ phương tiện có thể quét hay không."}
+{"change": "value-changed", "key": "Checks connection, shares, paths, and credentials for setup drift.", "locale": "vi", "new": "Kiểm tra kết nối, mục chia sẻ, đường dẫn và thông tin xác thực để phát hiện những thay đổi ngoài dự kiến trong cấu hình.", "old": "Kiểm tra kết nối, lượt chia sẻ, đường dẫn và thông tin đăng nhập để biết lỗi thiết lập."}
+{"change": "value-changed", "key": "Choose a RustyMilk quality preset. Efficient lowers GPU load, Balanced caps at 60 FPS, and Full leaves rendering uncapped.", "locale": "vi", "new": "Chọn một cấu hình chất lượng RustyMilk. Cấu hình tiết kiệm giảm tải GPU, cấu hình cân bằng giới hạn tốc độ khung hình ở 60 FPS, còn cấu hình không giới hạn không áp hạn chế cho kết xuất.", "old": "Chọn cài đặt trước chất lượng RustyMilk. Giảm tải GPU một cách hiệu quả, Giới hạn cân bằng ở mức 60 FPS và Hiển thị hoàn toàn không bị giới hạn."}
+{"change": "value-changed", "key": "Choose a local CSV or JSON export from Plex, Jellyfin, Navidrome, or another media server. The file is read in this browser only.", "locale": "vi", "new": "Chọn tệp xuất CSV hoặc JSON cục bộ từ Plex, Jellyfin, Navidrome hoặc máy chủ phương tiện khác. Tệp chỉ được đọc trong trình duyệt này.", "old": "Chọn xuất CSV hoặc JSON cục bộ từ Plex, Jellyfin, Navidrome hoặc máy chủ phương tiện khác. Tệp chỉ được đọc trong trình duyệt này."}
+{"change": "value-changed", "key": "Choose how long RustyMilk should wait before timed preset changes.", "locale": "vi", "new": "Chọn khoảng thời gian RustyMilk sẽ chờ trước khi đổi cài đặt sẵn theo bộ hẹn giờ.", "old": "Chọn khoảng thời gian RustyMilk sẽ đợi trước khi thay đổi cài đặt trước theo thời gian."}
+{"change": "value-changed", "key": "Choose how many detected bass beats should pass before RustyMilk advances to another preset.", "locale": "vi", "new": "Chọn số nhịp âm trầm cần được phát hiện trước khi RustyMilk chuyển sang cài đặt sẵn khác.", "old": "Chọn số nhịp âm trầm được phát hiện sẽ vượt qua trước khi RustyMilk chuyển sang cài đặt trước khác."}
+{"change": "value-changed", "key": "Choose which custom shape from the active RustyMilk preset should be exported or removed.", "locale": "vi", "new": "Chọn hình dạng tùy chỉnh nào trong cài đặt sẵn đang hoạt động của RustyMilk để xuất hoặc xóa.", "old": "Chọn hình dạng tùy chỉnh nào từ cài đặt trước RustyMilk đang hoạt động sẽ được xuất hoặc xóa."}
+{"change": "value-changed", "key": "Choose which custom wave from the active RustyMilk preset should be exported or removed.", "locale": "vi", "new": "Chọn dạng sóng tùy chỉnh nào trong cài đặt sẵn đang hoạt động của RustyMilk để xuất hoặc xóa.", "old": "Chọn sóng tùy chỉnh nào từ cài đặt trước RustyMilk đang hoạt động sẽ được xuất hoặc xóa."}
+{"change": "value-changed", "key": "Chunk Progress Heatmap", "locale": "vi", "new": "Bản đồ nhiệt tiến độ khối", "old": "Bản đồ nhiệt tiến độ Chunk"}
+{"change": "value-changed", "key": "Chunk Utilization", "locale": "vi", "new": "Mức sử dụng khối", "old": "Sử dụng Chunk"}
+{"change": "value-changed", "key": "Chunks Completed", "locale": "vi", "new": "Khối đã hoàn thành", "old": "Các phần đã hoàn thành"}
+{"change": "value-changed", "key": "Chunks Failed", "locale": "vi", "new": "Khối bị lỗi", "old": "Khối không thành công"}
+{"change": "value-changed", "key": "Clean:", "locale": "vi", "new": "Mục không xung đột:", "old": "Lau dọn:"}
+{"change": "value-changed", "key": "Cleaned up {result} old messages", "locale": "vi", "new": "Đã xóa {result} tin nhắn cũ", "old": "Dọn dẹp tin nhắn cũ {result}"}
+{"change": "value-changed", "key": "Cleanup Seen Messages", "locale": "vi", "new": "Dọn dẹp bản ghi tin nhắn đã xem", "old": "Dọn dẹp tin nhắn đã xem"}
+{"change": "value-changed", "key": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained", "locale": "vi", "new": "Đã dọn dẹp: xóa bản ghi của {messagesCleaned} tin nhắn đã xem, giữ lại {messagesRetained} bản ghi.", "old": "Đã hoàn tất dọn dẹp: Thông báo {messagesCleaned} đã được xóa, {messagesRetained} được giữ lại"}
+{"change": "value-changed", "key": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors", "locale": "vi", "new": "Đã dọn dẹp: xóa {recordsCleaned} bản ghi và gặp {errorsEncountered} lỗi.", "old": "Đã hoàn tất dọn dẹp: Bản ghi {recordsCleaned} đã được xóa, lỗi {errorsEncountered}"}
+{"change": "value-changed", "key": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.", "locale": "vi", "new": "Các thao tác dọn dẹp, xây dựng lại chỉ mục và VACUUM ảnh hưởng đến kho lưu trữ tin nhắn Pod cục bộ. Thao tác tìm kiếm và đếm chỉ đọc dữ liệu.", "old": "Các hành động dọn dẹp, xây dựng lại và hút bụi ảnh hưởng đến việc lưu trữ tin nhắn nhóm cục bộ. Hành động tìm kiếm và đếm ở chế độ chỉ đọc."}
+{"change": "value-changed", "key": "Clear (", "locale": "vi", "new": "Bỏ chọn (", "old": "Thông thoáng ("}
+{"change": "value-changed", "key": "Clear RustyMilk preset search", "locale": "vi", "new": "Xóa bộ lọc tìm kiếm preset RustyMilk", "old": "Xóa tìm kiếm cài sẵn RustyMilk"}
+{"change": "value-changed", "key": "Clear Shelf", "locale": "vi", "new": "Dọn trống kệ khám phá", "old": "kệ rõ ràng"}
+{"change": "value-changed", "key": "Clear Snapshot", "locale": "vi", "new": "Xóa bản chụp đã duyệt", "old": "Xóa ảnh chụp nhanh"}
+{"change": "value-changed", "key": "Clear Upcoming", "locale": "vi", "new": "Xóa các bài hát khỏi danh sách chờ phát", "old": "Xóa sắp tới"}
+{"change": "value-changed", "key": "Clear active native playlist", "locale": "vi", "new": "Bỏ chọn danh sách phát cục bộ đang hoạt động", "old": "Xóa danh sách phát gốc đang hoạt động"}
+{"change": "value-changed", "key": "Clear browser-local discovery shelf review items. This does not affect files or ratings.", "locale": "vi", "new": "Xóa các mục đánh giá trên kệ khám phá lưu trong trình duyệt. Việc này không ảnh hưởng đến tệp hay điểm đánh giá.", "old": "Xóa các mục đánh giá giá khám phá cục bộ trên trình duyệt. Điều này không ảnh hưởng đến tập tin hoặc xếp hạng."}
+{"change": "value-changed", "key": "Clear selected user", "locale": "vi", "new": "Bỏ người dùng đã chọn khỏi ô nhập", "old": "Xóa người dùng đã chọn"}
+{"change": "added", "key": "Connecting", "locale": "vi", "new": "Đang kết nối", "old": null}
+{"change": "added", "key": "Connection Failed", "locale": "vi", "new": "Kết nối thất bại", "old": null}
+{"change": "added", "key": "OK", "locale": "vi", "new": "Đồng ý", "old": null}
+{"change": "added", "key": "Reconnecting", "locale": "vi", "new": "Đang kết nối lại", "old": null}
+{"change": "added", "key": "Retry selected", "locale": "vi", "new": "Thử lại các mục đã chọn", "old": null}
+{"change": "removed", "key": "Retry{all}", "locale": "vi", "new": null, "old": "Thử lại{all}"}
+{"change": "added", "key": "Cancel selected", "locale": "zh-Hans", "new": "取消所选项目", "old": null}
+{"change": "removed", "key": "Cancel{all}", "locale": "zh-Hans", "new": null, "old": "取消{all}"}
+{"change": "value-changed", "key": "Candidates", "locale": "zh-Hans", "new": "候选作品", "old": "候选人"}
+{"change": "value-changed", "key": "Canonical", "locale": "zh-Hans", "new": "规范", "old": "典范"}
+{"change": "value-changed", "key": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.", "locale": "zh-Hans", "new": "限制 RustyMilk 渲染以降低 GPU 负载，或不限制渲染以获得最流畅的体验。", "old": "限制 RustyMilk 渲染以降低 GPU 负载，或不限制渲染以获得最大平滑度。"}
+{"change": "value-changed", "key": "Capture local history", "locale": "zh-Hans", "new": "记录此浏览器中的播放历史", "old": "捕捉当地历史"}
+{"change": "value-changed", "key": "Capture player history preference", "locale": "zh-Hans", "new": "播放历史记录偏好设置", "old": "捕获玩家历史偏好"}
+{"change": "value-changed", "key": "Centroid", "locale": "zh-Hans", "new": "频谱质心", "old": "质心"}
+{"change": "value-changed", "key": "Channel ID", "locale": "zh-Hans", "new": "频道 ID", "old": "通道号"}
+{"change": "value-changed", "key": "Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows.", "locale": "zh-Hans", "new": "频道创建、更新和删除操作会更改 Pod 消息的组织方式。删除频道可能会中断路由和历史工作流程。", "old": "通道创建、更新和删除操作会更改 Pod 消息的组织方式。删除通道可能会中断路由和历史工作流程。"}
+{"change": "value-changed", "key": "Channel:", "locale": "zh-Hans", "new": "频道：", "old": "渠道："}
+{"change": "value-changed", "key": "Check", "locale": "zh-Hans", "new": "检查项", "old": "查看"}
+{"change": "value-changed", "key": "Check Seen", "locale": "zh-Hans", "new": "检查消息的已读状态", "old": "检查已见"}
+{"change": "value-changed", "key": "Check whether a completed file path reported by slskr maps to the path a media server can scan.", "locale": "zh-Hans", "new": "检查 slskr 报告的已完成下载文件路径是否对应媒体服务器可以扫描的路径。", "old": "检查slskr上报的完整文件路径是否映射到媒体服务器可以扫描的路径。"}
+{"change": "value-changed", "key": "Choose a RustyMilk quality preset. Efficient lowers GPU load, Balanced caps at 60 FPS, and Full leaves rendering uncapped.", "locale": "zh-Hans", "new": "选择 RustyMilk 质量预设。“高效”模式可降低 GPU 负载，“均衡”模式将帧率限制在 60 FPS，“不设上限”模式则不限制渲染。", "old": "选择 RustyMilk 质量预设。 Efficient 可降低 GPU 负载，Balanced 上限为 60 FPS，Full 则不限制渲染。"}
+{"change": "value-changed", "key": "Choose from Collections", "locale": "zh-Hans", "new": "从合集中选择", "old": "从收藏中选择"}
+{"change": "value-changed", "key": "Choose how many detected bass beats should pass before RustyMilk advances to another preset.", "locale": "zh-Hans", "new": "选择 RustyMilk 在检测到多少个低音节拍后切换到另一个预设。", "old": "选择在 RustyMilk 前进到另一个预设之前应经过多少检测到的低音节拍。"}
+{"change": "value-changed", "key": "Chunks Completed", "locale": "zh-Hans", "new": "已完成块数", "old": "块已完成"}
+{"change": "value-changed", "key": "Chunks Failed", "locale": "zh-Hans", "new": "失败块数", "old": "块失败"}
+{"change": "value-changed", "key": "Clean:", "locale": "zh-Hans", "new": "无冲突条目：", "old": "干净的："}
+{"change": "value-changed", "key": "Cleaned up {result} old messages", "locale": "zh-Hans", "new": "已清理 {result} 条旧消息", "old": "清理了 {result} 旧消息"}
+{"change": "value-changed", "key": "Cleanup Seen Messages", "locale": "zh-Hans", "new": "清理已查看消息的记录", "old": "清理看到的消息"}
+{"change": "value-changed", "key": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained", "locale": "zh-Hans", "new": "清理完成：已清理 {messagesCleaned} 条已查看消息的记录，保留 {messagesRetained} 条。", "old": "清理完成：{messagesCleaned} 消息已清理，{messagesRetained} 保留"}
+{"change": "value-changed", "key": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors", "locale": "zh-Hans", "new": "清理完成：已清理 {recordsCleaned} 条记录，遇到 {errorsEncountered} 个错误。", "old": "清理完成：{recordsCleaned} 记录已清理，{errorsEncountered} 错误"}
+{"change": "value-changed", "key": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.", "locale": "zh-Hans", "new": "清理、重建索引和 VACUUM 操作会影响本地 Pod 消息存储。搜索和计数操作为只读。", "old": "清理、重建和清理操作会影响本地 Pod 消息存储。搜索和计数操作是只读的。"}
+{"change": "value-changed", "key": "Clear (", "locale": "zh-Hans", "new": "取消选择 (", "old": "清除 （"}
+{"change": "value-changed", "key": "Clear Local History", "locale": "zh-Hans", "new": "清除本地历史记录", "old": "清晰的本地历史记录"}
+{"change": "value-changed", "key": "Clear Shelf", "locale": "zh-Hans", "new": "清空探索架", "old": "透明货架"}
+{"change": "value-changed", "key": "Clear Snapshot", "locale": "zh-Hans", "new": "清除快照", "old": "清晰快照"}
+{"change": "value-changed", "key": "Clear Upcoming", "locale": "zh-Hans", "new": "清空待播列表", "old": "清除即将到来的"}
+{"change": "value-changed", "key": "Clear active native playlist", "locale": "zh-Hans", "new": "取消选择当前本地播放列表", "old": "清除活动的本机播放列表"}
+{"change": "value-changed", "key": "Clear browser-local discovery shelf review items. This does not affect files or ratings.", "locale": "zh-Hans", "new": "清除浏览器本地探索架中的审查项目。这不会影响文件或评分。", "old": "清除浏览器本地发现架审查项目。这不会影响文件或评级。"}
+{"change": "value-changed", "key": "Clear tag organization snapshot for {name}", "locale": "zh-Hans", "new": "清除 {name} 的标签组织快照", "old": "{name} 的清晰标签组织快照"}
+{"change": "added", "key": "Connecting", "locale": "zh-Hans", "new": "正在连接", "old": null}
+{"change": "added", "key": "Connection Failed", "locale": "zh-Hans", "new": "连接失败", "old": null}
+{"change": "value-changed", "key": "Full", "locale": "zh-Hans", "new": "不设上限", "old": "满的"}
+{"change": "added", "key": "OK", "locale": "zh-Hans", "new": "确定", "old": null}
+{"change": "added", "key": "Reconnecting", "locale": "zh-Hans", "new": "正在重新连接", "old": null}
+{"change": "added", "key": "Retry selected", "locale": "zh-Hans", "new": "重试所选项目", "old": null}
+{"change": "removed", "key": "Retry{all}", "locale": "zh-Hans", "new": null, "old": "重试{all}"}
+{"change": "added", "key": "Cancel selected", "locale": "zh-Hant", "new": "取消所選項目", "old": null}
+{"change": "removed", "key": "Cancel{all}", "locale": "zh-Hant", "new": null, "old": "取消{all}"}
+{"change": "value-changed", "key": "Candidates", "locale": "zh-Hant", "new": "候選作品", "old": "候選人"}
+{"change": "value-changed", "key": "Canonical", "locale": "zh-Hant", "new": "規範", "old": "典範"}
+{"change": "value-changed", "key": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.", "locale": "zh-Hant", "new": "限制 RustyMilk 渲染以降低 GPU 負載，或不限制渲染以獲得最流暢的體驗。", "old": "限制 RustyMilk 渲染以降低 GPU 負載，或不限制渲染以獲得最大平滑度。"}
+{"change": "value-changed", "key": "Capture local history", "locale": "zh-Hant", "new": "記錄此瀏覽器中的播放歷史", "old": "捕捉當地歷史"}
+{"change": "value-changed", "key": "Capture player history preference", "locale": "zh-Hant", "new": "播放歷史記錄偏好設定", "old": "捕捉玩家歷史偏好"}
+{"change": "value-changed", "key": "Centroid", "locale": "zh-Hant", "new": "頻譜質心", "old": "質心"}
+{"change": "value-changed", "key": "Changed fields", "locale": "zh-Hant", "new": "已變更的欄位", "old": "更改的字段"}
+{"change": "value-changed", "key": "Channel ID", "locale": "zh-Hant", "new": "頻道 ID", "old": "頻道號碼"}
+{"change": "value-changed", "key": "Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows.", "locale": "zh-Hant", "new": "頻道建立、更新和刪除操作會變更 Pod 訊息的組織方式。刪除頻道可能會中斷路由和歷史工作流程。", "old": "頻道建立、更新和刪除操作會變更 Pod 訊息的組織方式。刪除通道可能會中斷路由和歷史工作流程。"}
+{"change": "value-changed", "key": "Channel:", "locale": "zh-Hant", "new": "頻道：", "old": "通路："}
+{"change": "value-changed", "key": "Check", "locale": "zh-Hant", "new": "檢查項", "old": "查看"}
+{"change": "value-changed", "key": "Check Seen", "locale": "zh-Hant", "new": "檢查訊息的已讀狀態", "old": "檢查已見"}
+{"change": "value-changed", "key": "Check whether a completed file path reported by slskr maps to the path a media server can scan.", "locale": "zh-Hant", "new": "檢查 slskr 回報的已完成下載檔案路徑是否對應媒體伺服器可掃描的路徑。", "old": "檢查slskr上報的完整檔案路徑是否對應到媒體伺服器可以掃描的路徑。"}
+{"change": "value-changed", "key": "Choose a RustyMilk quality preset. Efficient lowers GPU load, Balanced caps at 60 FPS, and Full leaves rendering uncapped.", "locale": "zh-Hant", "new": "選擇 RustyMilk 品質預設。「高效」模式可降低 GPU 負載，「均衡」模式將影格率限制在 60 FPS，「不設上限」模式則不限制渲染。", "old": "選擇 RustyMilk 品質預設。 Efficient 可降低 GPU 負載，Balanced 上限為 60 FPS，Full 則不限制渲染。"}
+{"change": "value-changed", "key": "Choose from Collections", "locale": "zh-Hant", "new": "從合集中選擇", "old": "從收藏中選擇"}
+{"change": "value-changed", "key": "Choose how many detected bass beats should pass before RustyMilk advances to another preset.", "locale": "zh-Hant", "new": "選擇 RustyMilk 在偵測到多少個低音節拍後切換到另一個預設。", "old": "選擇在 RustyMilk 前進到另一個預設之前應經過多少檢測到的低音節拍。"}
+{"change": "value-changed", "key": "Chunks Completed", "locale": "zh-Hant", "new": "已完成區塊數", "old": "區塊已完成"}
+{"change": "value-changed", "key": "Chunks Failed", "locale": "zh-Hant", "new": "失敗區塊數", "old": "區塊失敗"}
+{"change": "value-changed", "key": "Clean:", "locale": "zh-Hant", "new": "無衝突項目：", "old": "乾淨的："}
+{"change": "value-changed", "key": "Cleaned up {result} old messages", "locale": "zh-Hant", "new": "已清理 {result} 則舊訊息", "old": "清理了 {result} 舊消息"}
+{"change": "value-changed", "key": "Cleanup Seen Messages", "locale": "zh-Hant", "new": "清理已檢視訊息的記錄", "old": "清理看到的訊息"}
+{"change": "value-changed", "key": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained", "locale": "zh-Hant", "new": "清理完成：已清理 {messagesCleaned} 筆已檢視訊息的記錄，保留 {messagesRetained} 筆。", "old": "清理完成：{messagesCleaned} 訊息已清理，{messagesRetained} 保留"}
+{"change": "value-changed", "key": "Cleanup completed: {recordsCleaned} records cleaned, {errorsEncountered} errors", "locale": "zh-Hant", "new": "清理完成：已清理 {recordsCleaned} 筆記錄，遇到 {errorsEncountered} 個錯誤。", "old": "清理完成：{recordsCleaned} 記錄已清理，{errorsEncountered} 錯誤"}
+{"change": "value-changed", "key": "Cleanup, rebuild, and vacuum actions affect local pod message storage. Search and count actions are read-only.", "locale": "zh-Hant", "new": "清理、重建索引和 VACUUM 操作會影響本地 Pod 訊息儲存。搜尋和計數操作僅供讀取。", "old": "清理、重建和清理操作會影響本地 Pod 訊息儲存。搜尋和計數操作是唯讀的。"}
+{"change": "value-changed", "key": "Clear (", "locale": "zh-Hant", "new": "取消選取 (", "old": "清除 （"}
+{"change": "value-changed", "key": "Clear Local History", "locale": "zh-Hant", "new": "清除本機歷史記錄", "old": "清晰的本地歷史記錄"}
+{"change": "value-changed", "key": "Clear Shelf", "locale": "zh-Hant", "new": "清空探索架", "old": "透明貨架"}
+{"change": "value-changed", "key": "Clear Snapshot", "locale": "zh-Hant", "new": "清除快照", "old": "清晰快照"}
+{"change": "value-changed", "key": "Clear Upcoming", "locale": "zh-Hant", "new": "清空待播清單", "old": "清除即將到來的"}
+{"change": "value-changed", "key": "Clear active native playlist", "locale": "zh-Hant", "new": "取消選取目前的本機播放清單", "old": "清除活動的本機播放列表"}
+{"change": "value-changed", "key": "Clear browser-local discovery shelf review items. This does not affect files or ratings.", "locale": "zh-Hant", "new": "清除瀏覽器本地探索架中的審查項目。這不會影響檔案或評分。", "old": "清除瀏覽器本地發現架審查項目。這不會影響文件或評級。"}
+{"change": "value-changed", "key": "Clear tag organization snapshot for {name}", "locale": "zh-Hant", "new": "清除 {name} 的標籤組織快照", "old": "{name} 的清晰標籤組織快照"}
+{"change": "added", "key": "Connecting", "locale": "zh-Hant", "new": "正在連線", "old": null}
+{"change": "added", "key": "Connection Failed", "locale": "zh-Hant", "new": "連線失敗", "old": null}
+{"change": "value-changed", "key": "Full", "locale": "zh-Hant", "new": "不設上限", "old": "滿的"}
+{"change": "added", "key": "OK", "locale": "zh-Hant", "new": "確定", "old": null}
+{"change": "added", "key": "Reconnecting", "locale": "zh-Hant", "new": "正在重新連線", "old": null}
+{"change": "added", "key": "Retry selected", "locale": "zh-Hant", "new": "重試所選項目", "old": null}
+{"change": "removed", "key": "Retry{all}", "locale": "zh-Hant", "new": null, "old": "重試{all}"}

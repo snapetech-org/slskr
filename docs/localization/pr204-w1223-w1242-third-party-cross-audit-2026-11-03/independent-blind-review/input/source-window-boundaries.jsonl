@@ -1,0 +1,22 @@
+{"position": 1222, "role": "previous-boundary-W1222", "sourceKey": "Download path missing", "sourceKeySha256": "030a1b1d9c5117eef218ea3ec7f7d7b975f1b086894e0a1dc2ea2ac87bb55183"}
+{"position": 1223, "role": "selected-W1223-W1242", "sourceKey": "Download retry attempts", "sourceKeySha256": "531458465f490645c2b858f9b2033669690d8fdebc96a1f7e55eebfada5ba883"}
+{"position": 1224, "role": "selected-W1223-W1242", "sourceKey": "Download retry delay milliseconds", "sourceKeySha256": "aca8e4e08f5b923260491225880a59494bd9f4f778948babbf7dc99560b19fd3"}
+{"position": 1225, "role": "selected-W1223-W1242", "sourceKey": "Download retry incomplete strategy", "sourceKeySha256": "77f7a703fdb4fd5a4714f6d8629226dd3817afda4568ed775d2a23b23f88a8f0"}
+{"position": 1226, "role": "selected-W1223-W1242", "sourceKey": "Download retry max delay milliseconds", "sourceKeySha256": "11cdb24658a55372941346f553411ba66ff33e759404e267bc6c825e69d1649b"}
+{"position": 1227, "role": "selected-W1223-W1242", "sourceKey": "Download selected files", "sourceKeySha256": "4b0d344c0c4238d9ba2a9a9f61594fafea4425ba9f023978c1979f0b2b751e66"}
+{"position": 1228, "role": "selected-W1223-W1242", "sourceKey": "Download succeeded retention minutes", "sourceKeySha256": "eedd780033cfa653352d311a675b0d406bebbbca10ac346bf2be5327ffaa4eef"}
+{"position": 1229, "role": "selected-W1223-W1242", "sourceKey": "Download the selected files from {folder}?", "sourceKeySha256": "a795fc136cb44bf7008a0900f407145fa1043aba372142245a637abf8e471ca8"}
+{"position": 1230, "role": "selected-W1223-W1242", "sourceKey": "DownloadFileComplete", "sourceKeySha256": "3b8af18bd2c62430b21e7ab7f1f928fe40406a7d0fc54db3a8eab7b5bf569367"}
+{"position": 1231, "role": "selected-W1223-W1242", "sourceKey": "Downloaded", "sourceKeySha256": "f0b0738f75b8bcd1dd40e42c6233d6d6f4f584bdcfa124741bceeb2c6c5b3249"}
+{"position": 1232, "role": "selected-W1223-W1242", "sourceKey": "Downloaded or prepared for import review.", "sourceKeySha256": "651077f4964e8872294722b705058ea694f91108f223ac3a4809c609b47765f3"}
+{"position": 1233, "role": "selected-W1223-W1242", "sourceKey": "Downloaded ·", "sourceKeySha256": "20f0c16aac851c3ae8f25f7937be3d6d4784e73c80d156dba60d2d219101553c"}
+{"position": 1234, "role": "selected-W1223-W1242", "sourceKey": "Downloaders", "sourceKeySha256": "b8d5195c7c364ca4718f2196d9d23be0d44245a2bc3c910e6654325b32b5921b"}
+{"position": 1235, "role": "selected-W1223-W1242", "sourceKey": "Downloading", "sourceKeySha256": "37b345555d7ea6c1724d28076ce47b956d202574c211fefa36afba778f335373"}
+{"position": 1236, "role": "selected-W1223-W1242", "sourceKey": "Downloads", "sourceKeySha256": "d5fdc1af021e2d360ff80496c4c5d698e77fc3015a157ea08e8e60cf81690a46"}
+{"position": 1237, "role": "selected-W1223-W1242", "sourceKey": "Downloads Active", "sourceKeySha256": "8eb56e2161f264a294b2387cfbbf3569c7dc2402ba038e2ba992866ed6253bad"}
+{"position": 1238, "role": "selected-W1223-W1242", "sourceKey": "Downloads Queued", "sourceKeySha256": "36ee71a39e9a22eb09194dbb75ef0c460191f12aa2aa71e003b461ce39c10027"}
+{"position": 1239, "role": "selected-W1223-W1242", "sourceKey": "Downloads Total", "sourceKeySha256": "7f9bca4a4f12fc2555896dc6ba30393824ae09321f8f3b9f0f267655e19e31d7"}
+{"position": 1240, "role": "selected-W1223-W1242", "sourceKey": "Downloads after approval", "sourceKeySha256": "b426fed0c6f56e7c488e15171323e66fd530114a597f57da2750f38422f0aea8"}
+{"position": 1241, "role": "selected-W1223-W1242", "sourceKey": "Downloads unavailable", "sourceKeySha256": "923da41af42a1d097a8813f7d262d3e5917e77fcebd4e4d673cf2840c181cd1d"}
+{"position": 1242, "role": "selected-W1223-W1242", "sourceKey": "Dropped Requests", "sourceKeySha256": "b2d67e3c5e2bd50b9395f2e629f2f6e629d257123a2641f40058a2a5abff43e0"}
+{"position": 1243, "role": "next-boundary-W1243", "sourceKey": "Dry run (preview changes without applying)", "sourceKeySha256": "b00c87ec7dc276c8f4d5b7660e7836d55a4b78bfc633523aecac178ab7d57da1"}

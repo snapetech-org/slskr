@@ -1,0 +1,122 @@
+{
+  "inputChecksumListSha256": "4525f64eec71544375b5af2a44592e0560b6fa904e3bcc9e14dc6715236dd1d3",
+  "inputChecksumsAllMatch": true,
+  "verifiedInputFiles": [
+    {
+      "path": "PR-attestation.json",
+      "expectedSha256": "7cdb953ebb9405ad6e16244d861a1ac121e87b63e95c28db48e3930142af3f1b",
+      "actualSha256": "7cdb953ebb9405ad6e16244d861a1ac121e87b63e95c28db48e3930142af3f1b",
+      "matches": true
+    },
+    {
+      "path": "README.md",
+      "expectedSha256": "00491f173f26b657ea785f52c47aab25b3a82d472d006e050910520645c2bc0b",
+      "actualSha256": "00491f173f26b657ea785f52c47aab25b3a82d472d006e050910520645c2bc0b",
+      "matches": true
+    },
+    {
+      "path": "caller-resolution-holds.jsonl",
+      "expectedSha256": "5d07a18d7fba3b175fc2ba4a0e392c41631e7e36d1b5c4d2f284e13356fdf71e",
+      "actualSha256": "5d07a18d7fba3b175fc2ba4a0e392c41631e7e36d1b5c4d2f284e13356fdf71e",
+      "matches": true
+    },
+    {
+      "path": "catalog-file-pins.json",
+      "expectedSha256": "ac6f3288f20706e5e231fc4974f22c100117cd988e0ed2fbfc6e2bab5a3e5efb",
+      "actualSha256": "ac6f3288f20706e5e231fc4974f22c100117cd988e0ed2fbfc6e2bab5a3e5efb",
+      "matches": true
+    },
+    {
+      "path": "current-target-cells.jsonl",
+      "expectedSha256": "487debc83276a1dd549c2068f2db34c8103d1d1ff6eca5bff85079fce313000e",
+      "actualSha256": "487debc83276a1dd549c2068f2db34c8103d1d1ff6eca5bff85079fce313000e",
+      "matches": true
+    },
+    {
+      "path": "final-live-pr-verification.json",
+      "expectedSha256": "c84ba3f3aea82d51e78e3d88ea68090bc21b764c97e55e090094722509e34823",
+      "actualSha256": "c84ba3f3aea82d51e78e3d88ea68090bc21b764c97e55e090094722509e34823",
+      "matches": true
+    },
+    {
+      "path": "localization-runtime-context.json",
+      "expectedSha256": "07c408f78d2c710a54133ec8d1688c065c00ff400ef34893edaece9113a2a871",
+      "actualSha256": "07c408f78d2c710a54133ec8d1688c065c00ff400ef34893edaece9113a2a871",
+      "matches": true
+    },
+    {
+      "path": "manifest.json",
+      "expectedSha256": "1a5b1c58ab7bc7ca5c6c7c9b67a2cf24d65bc950a34dffb35ad83d8f0d81d725",
+      "actualSha256": "1a5b1c58ab7bc7ca5c6c7c9b67a2cf24d65bc950a34dffb35ad83d8f0d81d725",
+      "matches": true
+    },
+    {
+      "path": "selected-source-keys.txt",
+      "expectedSha256": "4a6dbee2fff975fb60eb2c3c071b2f4fb0b7a9e01e8b049404b6881d54f52e9d",
+      "actualSha256": "4a6dbee2fff975fb60eb2c3c071b2f4fb0b7a9e01e8b049404b6881d54f52e9d",
+      "matches": true
+    },
+    {
+      "path": "source-contexts.jsonl",
+      "expectedSha256": "bf3377197b31124eefbbc9d9e561ee217e8b262f84b8f3edf349539759a9d283",
+      "actualSha256": "bf3377197b31124eefbbc9d9e561ee217e8b262f84b8f3edf349539759a9d283",
+      "matches": true
+    },
+    {
+      "path": "source-queue.jsonl",
+      "expectedSha256": "da4f6b93e7d3f05c03b3dbd7a39959c8990a5089b78ea8b850b568aa2de38236",
+      "actualSha256": "da4f6b93e7d3f05c03b3dbd7a39959c8990a5089b78ea8b850b568aa2de38236",
+      "matches": true
+    },
+    {
+      "path": "source-window-boundaries.jsonl",
+      "expectedSha256": "8d1643b213250edb7ab924a7488bf5aac0f04b7772c86cb193c795541f7acc6c",
+      "actualSha256": "8d1643b213250edb7ab924a7488bf5aac0f04b7772c86cb193c795541f7acc6c",
+      "matches": true
+    }
+  ],
+  "livePr": {
+    "state": "open",
+    "draft": true,
+    "branch": "codex/slskr-l10n-audit-20261030",
+    "baseRef": "main",
+    "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "head": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+    "tree": "ba62eed0bd600a8f69bb6c0cbefe99da7ee47623",
+    "remoteBranchHead": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+    "remotePullRefHead": "7c0dd5844d39e5fdb5269fa50317b26f117512a2"
+  },
+  "sourceHashMismatches": 0,
+  "currentTargetHashMismatches": 0,
+  "catalogPinMismatches": 0,
+  "coverage": {
+    "sourceContexts": 20,
+    "cells": 240,
+    "uniqueCellKeys": 240,
+    "callerReferences": 86,
+    "holds": 24
+  },
+  "candidateFree": true,
+  "primaryOutputInspected": false,
+  "selectionQueueMatchesSelectedKeyList": true,
+  "selectionQueueMatchesCellRows": true,
+  "queueBoundaryPins": [
+    {
+      "position": 1202,
+      "sourceKey": "Done"
+    },
+    {
+      "position": 1203,
+      "sourceKey": "Download"
+    },
+    {
+      "position": 1222,
+      "sourceKey": "Download path missing"
+    },
+    {
+      "position": 1223,
+      "sourceKey": "Download retry attempts"
+    }
+  ],
+  "callerReferenceCountRecomputed": 86
+}

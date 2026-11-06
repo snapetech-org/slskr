@@ -1,0 +1,34 @@
+{
+  "observedBefore": {
+    "state": "OPEN",
+    "isDraft": true,
+    "branch": "codex/slskr-l10n-audit-20261030",
+    "head": "44b37bd94385128d5bb5287aa1545901282bdfcb",
+    "headTree": "02c3f149a079c67b010d973dd02ca15776ad1610",
+    "liveBranchRef": "44b37bd94385128d5bb5287aa1545901282bdfcb",
+    "livePullRef": "44b37bd94385128d5bb5287aa1545901282bdfcb",
+    "checkoutWorktreeClean": true,
+    "checkoutHead": "44b37bd94385128d5bb5287aa1545901282bdfcb",
+    "checkoutTree": "02c3f149a079c67b010d973dd02ca15776ad1610",
+    "baseRef": "main",
+    "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "observedAtUtc": "2026-11-03T20:39:48.277323+00:00"
+  },
+  "observedAfter": {
+    "state": "OPEN",
+    "isDraft": true,
+    "branch": "codex/slskr-l10n-audit-20261030",
+    "head": "44b37bd94385128d5bb5287aa1545901282bdfcb",
+    "headTree": "02c3f149a079c67b010d973dd02ca15776ad1610",
+    "liveBranchRef": "44b37bd94385128d5bb5287aa1545901282bdfcb",
+    "livePullRef": "44b37bd94385128d5bb5287aa1545901282bdfcb",
+    "checkoutWorktreeClean": true,
+    "checkoutHead": "44b37bd94385128d5bb5287aa1545901282bdfcb",
+    "checkoutTree": "02c3f149a079c67b010d973dd02ca15776ad1610",
+    "baseRef": "main",
+    "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "observedAtUtc": "2026-11-03T20:47:37.645590+00:00"
+  },
+  "afterSourcePinCount": 29,
+  "all240CatalogTargetsReattested": true
+}

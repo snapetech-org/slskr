@@ -1,0 +1,38 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "window": "W1083-W1102",
+  "inputHead": "e1d9eb920ee121d8c108b098e94f0f3d2b440256",
+  "inputTree": "1d274f797f620482f4f344e7cf67de27e75e5568",
+  "sourceOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "windowSourceSha256": "3938b39471c24139918902de990427089ea5b96f1a93bb7e793b8f7a52f00cd3",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "callerReferences": 28,
+  "dispositions": {
+    "refinement": 21,
+    "accept-current": 151,
+    "correction": 32,
+    "hold-context": 36
+  },
+  "plannedCandidates": 53,
+  "heldPositions": [
+    1090,
+    1091,
+    1095
+  ],
+  "confidence": "moderate",
+  "nativeSpeakerReview": false,
+  "sourceHashMismatches": 0,
+  "currentTargetHashMismatches": 0,
+  "placeholderMismatches": 0,
+  "protectedLiteralMismatches": 0,
+  "inputPacketOnly": true,
+  "testsBuildsScansCIWorkflowsRun": false,
+  "notes": [
+    "Primary packet is private until root confirms the strict-blind ledger is sealed.",
+    "No catalog or PR files were changed.",
+    "Positions 1090/1091 have no exact production caller; position 1095 is a raw tooltip prop without a localized render path in the input packet."
+  ]
+}

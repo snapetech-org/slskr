@@ -1,0 +1,170 @@
+{
+  "additionalPinnedTestReferences": 4,
+  "allW643to662CatalogCellsUnchangedFromInputHead": true,
+  "callerPinsReattested": 30,
+  "catalogChangesWithinReviewedWindow": 0,
+  "cellsReviewedAndReattested": 240,
+  "crossReviewDispositionCounts": {
+    "accept-current": 96,
+    "accept-primary-proposal": 118,
+    "hold-source-behavior-mismatch": 12,
+    "missed-issue": 2,
+    "preserved-prior-disposition": 12
+  },
+  "crossReviewTargetCount": 120,
+  "crossReviewTargetPlaceholdersAndMarkup": "passed for all 120 independent targets",
+  "directCallerReferences": 26,
+  "exactHead": "86ad391ca248ec50fa4049de0a0f08ee55010441",
+  "exactTree": "f773836319b92b6b8799cdda1695e7da09622941",
+  "headCatalogsAttested": 12,
+  "heldCellsRetained": 12,
+  "heldSourceBehavior": "Live route clears all pending joins and leaves without expiry filtering.",
+  "heldSourceId": "Cleanup Expired",
+  "inputParent": "aa106d2505de8c9ace2d7d6dbf2af9777651947d",
+  "knownInterveningDelta": "selected Retry/Cancel follow-up evidence, TransferGroup.jsx action updates, and associated locale-catalog key changes; exact paths and keys are in catalog-scope-diff.json",
+  "limitations": [
+    "This is an independent machine-assisted semantic cross-review, not native-speaker approval.",
+    "The primary packet's exact W643–662 source IDs and 240 locale cells were reattested; source inventory positions use zero-based indices.",
+    "The live head contains the known selected Retry/Cancel follow-up delta; the 240 reviewed cells and all 30 caller pins are unchanged from the input head."
+  ],
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "missedIssueCells": [
+    {
+      "crossReviewTarget": "خريطة حرارية لتقدم القطع",
+      "crossReviewTargetSha256": "88e795b2ff82304a38424c23a2cd3900d11121d2cfda6b48a2470d539ca6ccbf",
+      "currentTarget": "خريطة الحرارة لتقدم القطعة",
+      "currentTargetSha256": "eb3fb737616e5a0d062e3ca2625249837cfceca4597b8e60d3c192af830b9acd",
+      "locale": "ar",
+      "sourceId": "Chunk Progress Heatmap",
+      "sourceIndex": 644
+    },
+    {
+      "crossReviewTarget": "معدل استخدام القطع",
+      "crossReviewTargetSha256": "ceee066dea8737b7666f9df738e6cc652812d912074126311acd5381620455a2",
+      "currentTarget": "استغلال القطعة",
+      "currentTargetSha256": "752eb859f4c9db6eb76d956e69489d272e71d817b0150aaaf314b5602db47cc0",
+      "locale": "ar",
+      "sourceId": "Chunk Utilization",
+      "sourceIndex": 646
+    }
+  ],
+  "missedIssueCount": 2,
+  "nativeSpeakerApproval": false,
+  "perLocale": {
+    "ar": {
+      "accept-current": 7,
+      "accept-primary-proposal": 9,
+      "hold-source-behavior-mismatch": 1,
+      "missed-issue": 2,
+      "preserved-prior-disposition": 1
+    },
+    "de": {
+      "accept-current": 8,
+      "accept-primary-proposal": 10,
+      "hold-source-behavior-mismatch": 1,
+      "preserved-prior-disposition": 1
+    },
+    "es": {
+      "accept-current": 9,
+      "accept-primary-proposal": 9,
+      "hold-source-behavior-mismatch": 1,
+      "preserved-prior-disposition": 1
+    },
+    "fr": {
+      "accept-current": 6,
+      "accept-primary-proposal": 12,
+      "hold-source-behavior-mismatch": 1,
+      "preserved-prior-disposition": 1
+    },
+    "hi": {
+      "accept-current": 6,
+      "accept-primary-proposal": 12,
+      "hold-source-behavior-mismatch": 1,
+      "preserved-prior-disposition": 1
+    },
+    "id": {
+      "accept-current": 11,
+      "accept-primary-proposal": 7,
+      "hold-source-behavior-mismatch": 1,
+      "preserved-prior-disposition": 1
+    },
+    "ja": {
+      "accept-current": 9,
+      "accept-primary-proposal": 9,
+      "hold-source-behavior-mismatch": 1,
+      "preserved-prior-disposition": 1
+    },
+    "ko": {
+      "accept-current": 10,
+      "accept-primary-proposal": 8,
+      "hold-source-behavior-mismatch": 1,
+      "preserved-prior-disposition": 1
+    },
+    "pt-BR": {
+      "accept-current": 5,
+      "accept-primary-proposal": 13,
+      "hold-source-behavior-mismatch": 1,
+      "preserved-prior-disposition": 1
+    },
+    "vi": {
+      "accept-current": 7,
+      "accept-primary-proposal": 11,
+      "hold-source-behavior-mismatch": 1,
+      "preserved-prior-disposition": 1
+    },
+    "zh-Hans": {
+      "accept-current": 9,
+      "accept-primary-proposal": 9,
+      "hold-source-behavior-mismatch": 1,
+      "preserved-prior-disposition": 1
+    },
+    "zh-Hant": {
+      "accept-current": 9,
+      "accept-primary-proposal": 9,
+      "hold-source-behavior-mismatch": 1,
+      "preserved-prior-disposition": 1
+    }
+  },
+  "primaryPacket": "/mnt/disks/scratch/task-scratch/slskr-pr204-W643-662-primary-20261102/packet",
+  "primaryPacketManifestSha256": "a74abd1bdcb4126291973723311846058797dc44ea4ffaa1bac07ba5fb6098d1",
+  "primaryPacketSha256SumsVerified": true,
+  "primaryProposalsAccepted": 118,
+  "primaryProposalsRefined": 0,
+  "primaryProposalsRejected": 0,
+  "priorAcceptedCellsPreserved": 12,
+  "priorAcceptedSourceId": "Circuit building failed",
+  "protectedLiteralChecks": "passed for all targets where applicable",
+  "pullRequest": 204,
+  "pullRequestIsDraft": true,
+  "pullRequestState": "OPEN",
+  "releaseOrTagActions": false,
+  "repository": "snapetech-org/SlskR",
+  "repositoryChanges": false,
+  "schemaVersion": 1,
+  "sourceBaselineHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceBaselineTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "sourceCellPlaceholdersAndMarkup": "passed for all 240 current cells",
+  "sourceIds": 20,
+  "sourceInventorySha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "sourcePositions": [
+    643,
+    662
+  ],
+  "task": "Independent cross-review of slskR PR #204 W643–662 primary packet",
+  "testsBuildsScansCIOrBrowserWorkRun": false,
+  "uniqueCallerLines": 30,
+  "workflowFilesTouched": false
+}

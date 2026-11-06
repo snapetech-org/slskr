@@ -1,0 +1,20 @@
+Dry run (preview changes without applying)
+Dry run:
+Dry-run plan created from an approved Discovery Inbox candidate. Review and explicit execution are still required before any network activity.
+Dry-run tag, cover-art, ReplayGain, and path decisions before any file write.
+Duplicates Detected:
+Duration
+Duration Seconds
+Duration spread: {minutes} min
+Duration:
+Each descriptor requires a ContentID
+Each file requires a filename
+Each file requires a non-negative size
+Each last seen timestamp requires a non-empty channel ID and positive timestamp
+Each link requires a non-empty name and target
+Ecosystem
+Edges
+Edit
+Edit Options
+Edit User Note
+Edit Wishlist Item

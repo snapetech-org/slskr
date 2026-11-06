@@ -1,0 +1,15 @@
+{
+  "repo": "snapetech-org/slskR",
+  "pr": 204,
+  "liveHead": "7b53e289f3b4b121be4b1b49c997ebb65b02ed8a",
+  "liveTree": "1b7831ff560924250e1c5ebcc256f4cbf02d30b8",
+  "sourceHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "candidateSupplementSha256": "43d4c00728a4b0f82d462c90dee599521c20157e1b5df6412649c8132cf1833e",
+  "rows": 6,
+  "accepted": 6,
+  "refined": 0,
+  "held": 0,
+  "applyGate": "revalidate all targets against exact current remote head after the pending 16-cell commit is pushed",
+  "nativeSpeakerReview": "not provided"
+}

@@ -3,10 +3,16 @@ import * as federationDiagnostics from '../../../lib/federationDiagnostics';
 import * as lidarr from '../../../lib/lidarr';
 import * as optionsApi from '../../../lib/options';
 import * as slskr from '../../../lib/slskr';
+import {
+  INTERFACE_LANGUAGE_OPTIONS,
+  resetInterfaceLanguage,
+  setInterfaceLanguage,
+} from '../../../lib/interfaceLocale';
+import NotificationIntegrationsPanel from './NotificationIntegrationsPanel';
 import Integrations, { buildDefaultSpotifyRedirectUri } from './index';
 import React from 'react';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 vi.mock('../../../lib/lidarr', () => ({
   getImportHistory: vi.fn(),
@@ -33,6 +39,7 @@ vi.mock('../../../lib/slskr', () => ({
 
 describe('Integrations', () => {
   beforeEach(() => {
+    resetInterfaceLanguage();
     vi.clearAllMocks();
     slskr.getMetadataProcessingStatus.mockResolvedValue({
       active: [],
@@ -68,6 +75,11 @@ describe('Integrations', () => {
         warnings: ['Public federation is enabled while HTTP signature verification is disabled.'],
       },
     });
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    resetInterfaceLanguage();
   });
 
   it('includes the configured web subpath in the default Spotify redirect URI', () => {
@@ -1043,6 +1055,7 @@ describe('Integrations', () => {
       <Integrations
         options={{
           integration: {
+            notificationLanguage: 'en',
             ntfy: {
               enabled: false,
               notificationPrefix: 'slskr',
@@ -1071,6 +1084,10 @@ describe('Integrations', () => {
 
     fireEvent.click(screen.getByLabelText('Enable Pushbullet notifications'));
     fireEvent.click(screen.getByLabelText('Enable Ntfy notifications'));
+    fireEvent.click(
+      screen.getByRole('combobox', { name: 'Notification title language' }),
+    );
+    fireEvent.click(screen.getByRole('option', { name: 'Español — Spanish' }));
     fireEvent.change(screen.getByLabelText('Ntfy topic URL'), {
       target: { value: 'https://ntfy.sh/slskr' },
     });
@@ -1079,6 +1096,7 @@ describe('Integrations', () => {
     await waitFor(() => {
       expect(optionsApi.applyOverlay).toHaveBeenCalledWith({
         integration: {
+          notificationLanguage: 'es',
           ntfy: {
             enabled: true,
             notificationPrefix: 'slskr',
@@ -1110,6 +1128,59 @@ describe('Integrations', () => {
     ).toBeInTheDocument();
   });
 
+  it('renders notification language options with per-language direction in Arabic', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      json: async () => ({
+        'Choose the language used for app-authored notification titles. Message text and notification prefixes stay unchanged.': 'اختر اللغة المستخدمة في عناوين الإشعارات التي ينشئها التطبيق. يظل نص الرسائل وبادئات الإشعارات دون تغيير.',
+        'Notification title language': 'لغة عناوين الإشعارات',
+      }),
+      ok: true,
+    }));
+    await act(async () => { await setInterfaceLanguage('ar'); });
+    render(
+      <NotificationIntegrationsPanel
+        options={{
+          integration: { notificationLanguage: 'ar' },
+          remoteConfiguration: true,
+        }}
+      />,
+    );
+
+    const languageSelect = screen.getByRole('combobox', {
+      name: 'لغة عناوين الإشعارات',
+    });
+    expect(languageSelect).toHaveAttribute('lang', 'ar');
+    expect(languageSelect).toHaveAttribute('dir', 'rtl');
+    expect(document.documentElement.lang).toBe('en');
+    expect(document.documentElement.dir).toBe('ltr');
+
+    fireEvent.click(languageSelect);
+    for (const option of INTERFACE_LANGUAGE_OPTIONS) {
+      const optionLabels = screen.getByRole('option', { name: option.text })
+        .querySelectorAll('span');
+      const [nativeName, englishName] = option.text.split(' — ');
+      expect(Array.from(optionLabels, (label) => ({
+        dir: label.getAttribute('dir'),
+        lang: label.getAttribute('lang'),
+        text: label.textContent,
+      }))).toEqual([
+        {
+          dir: option.value === 'ar' ? 'rtl' : 'ltr',
+          lang: option.value,
+          text: nativeName,
+        },
+        ...(englishName ? [{ dir: 'ltr', lang: 'en', text: englishName }] : []),
+      ]);
+    }
+
+    const help = screen.getByText(
+      'اختر اللغة المستخدمة في عناوين الإشعارات التي ينشئها التطبيق. يظل نص الرسائل وبادئات الإشعارات دون تغيير.',
+    );
+    expect(help.tagName).toBe('P');
+    expect(help).toHaveAttribute('lang', 'ar');
+    expect(help).toHaveAttribute('dir', 'rtl');
+  });
+
   it('persists notification settings to YAML from the web UI', async () => {
     optionsApi.getYaml.mockResolvedValue('integrations: {}\n');
     optionsApi.updateYaml.mockResolvedValue({});
@@ -1118,6 +1189,7 @@ describe('Integrations', () => {
       <Integrations
         options={{
           integration: {
+            notificationLanguage: 'en',
             ntfy: {},
             pushbullet: {},
             pushover: {},
@@ -1136,12 +1208,19 @@ describe('Integrations', () => {
     fireEvent.change(await screen.findByLabelText('Pushover API token'), {
       target: { value: 'pushover-token' },
     });
+    fireEvent.click(
+      await screen.findByRole('combobox', { name: 'Notification title language' }),
+    );
+    fireEvent.click(screen.getByRole('option', { name: 'Français — French' }));
     fireEvent.click(screen.getAllByText('Save YAML')[1]);
 
     await waitFor(() => {
       expect(optionsApi.updateYaml).toHaveBeenCalled();
     });
     expect(optionsApi.updateYaml.mock.calls[0][0].yaml).toContain('pushover');
+    expect(optionsApi.updateYaml.mock.calls[0][0].yaml).toContain(
+      'notification_language: fr',
+    );
     expect(optionsApi.updateYaml.mock.calls[0][0].yaml).toContain(
       'user_key: pushover-user',
     );

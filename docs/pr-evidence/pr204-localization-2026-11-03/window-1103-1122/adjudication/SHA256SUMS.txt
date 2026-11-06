@@ -1,0 +1,3 @@
+5b85a81724b9d1cc672d299591f2edc61ad1d51b31b68961b85aefe79935ef80  ratified-ledger.jsonl
+4b83b06f1c8d0f3c41ff5ef6a70dfb3aa12eac6935e8c3ccbd4ef308b629f9c7  summary.json
+1558ba0428ca0ace849482127011a962dfcc4ccce2833ed56fab1ea253dfdb54  summary.md

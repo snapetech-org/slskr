@@ -1,0 +1,41 @@
+{
+  "candidateFreeChecksumListSha256": "56773cbe0504f7daf871c2c6c8740ecc88ab8e1322bbec530f25318986bd1a2b",
+  "candidateFreeManifestSha256": "0ecb7a69e8892b53dfdea64aac207d2e478baa912038f5c4845cba5c5872e068",
+  "cells": 240,
+  "changedPriorHolds": 0,
+  "comparisonCounts": {
+    "independent-noop-agreement": 1,
+    "independent-only-change": 1,
+    "no-change-agreement": 174,
+    "primary-change-resolves-independent-hold": 1,
+    "primary-only-change": 44,
+    "shared-change-different-target": 11,
+    "shared-change-same-target": 8
+  },
+  "exactHead": "727500e46852a5b6578e571781693857510943d9",
+  "exactTree": "c71165c20fc6ba7d49d563898ea2ec8e1e448672",
+  "finalDispositionCounts": {
+    "hold": 0,
+    "retain": 175,
+    "update": 65
+  },
+  "independentChecksumListSha256": "2f74fa1d76fe0e21f5e306c6f19fa55a6a53986539b508f753e6eda667396d77",
+  "independentHoldResolved": 1,
+  "independentManifestSha256": "da225794c15987b929c0436c9fc50d281ea9a7bb4ce7c94b2272144ced39069f",
+  "independentNoopAgreements": 1,
+  "independentOnlyChangesAdopted": 1,
+  "newHolds": 0,
+  "numericBaselineExceptionsResolved": 2,
+  "placeholderMarkupNumericProtectedMismatches": 0,
+  "primaryAcceptedButIndependentCorrectionAdopted": 1,
+  "primaryChangesAdopted": 64,
+  "primaryChecksumListSha256": "74221e4ecbb1dcdbc60c26184404de08ca4dbee56c968c178634938dd9ac71e1",
+  "primaryManifestSha256": "276ddbf45822ca02d6db62c637cef9d14d80dbc8fc18642060bfefd52e346863",
+  "priorHoldsReattested": 35,
+  "priorSelectionsReattested": 160,
+  "result": "SEALED_CROSS_AUDIT",
+  "sameDispositionDifferentProposalText": 11,
+  "sharedChangeDifferentTarget": 11,
+  "sharedChangeSameTarget": 8,
+  "sourceQueueOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983"
+}

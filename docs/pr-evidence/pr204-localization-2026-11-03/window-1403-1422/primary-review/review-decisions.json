@@ -1,0 +1,514 @@
+[
+  {
+    "position": 1404,
+    "locale": "de",
+    "disposition": "correction",
+    "target": "Filter für Ereignisthemen",
+    "rationale": "The caller is the system Events filter, so use the event-record sense Ereignis rather than an event or occasion (Veranstaltung).",
+    "confidence": "high"
+  },
+  {
+    "position": 1404,
+    "locale": "zh-Hans",
+    "disposition": "correction",
+    "target": "事件主题过滤器",
+    "rationale": "The caller is the system Events filter; 事件 names logged occurrences, while 活动 can mean a scheduled activity.",
+    "confidence": "high"
+  },
+  {
+    "position": 1404,
+    "locale": "zh-Hant",
+    "disposition": "correction",
+    "target": "事件主題過濾器",
+    "rationale": "The caller is the system Events filter; 事件 names logged occurrences, while 活動 can mean a scheduled activity.",
+    "confidence": "high"
+  },
+  {
+    "position": 1405,
+    "locale": "de",
+    "disposition": "correction",
+    "target": "Ereignisse",
+    "rationale": "This is the system Events pane, so Ereignisse is the logged-occurrence sense.",
+    "confidence": "high"
+  },
+  {
+    "position": 1405,
+    "locale": "zh-Hans",
+    "disposition": "correction",
+    "target": "事件",
+    "rationale": "This is the system Events pane, so 事件 is the logged-occurrence sense.",
+    "confidence": "high"
+  },
+  {
+    "position": 1405,
+    "locale": "zh-Hant",
+    "disposition": "correction",
+    "target": "事件",
+    "rationale": "This is the system Events pane, so 事件 is the logged-occurrence sense.",
+    "confidence": "high"
+  },
+  {
+    "position": 1405,
+    "locale": "id",
+    "disposition": "correction",
+    "target": "Peristiwa",
+    "rationale": "The label opens the system event log; peristiwa means occurrences, while acara suggests scheduled occasions.",
+    "confidence": "high"
+  },
+  {
+    "position": 1406,
+    "locale": "es",
+    "disposition": "correction",
+    "target": "Días de retención de eventos",
+    "rationale": "Reorder the label to natural Spanish and preserve that it specifies the number of days for event retention.",
+    "confidence": "high"
+  },
+  {
+    "position": 1406,
+    "locale": "zh-Hans",
+    "disposition": "correction",
+    "target": "事件保留天数",
+    "rationale": "Use the logged-event term 事件, consistent with the system Events pane.",
+    "confidence": "high"
+  },
+  {
+    "position": 1406,
+    "locale": "hi",
+    "disposition": "correction",
+    "target": "इवेंट प्रतिधारण अवधि (दिन)",
+    "rationale": "The current word order is ungrammatical; this label identifies the event-retention period in days.",
+    "confidence": "high"
+  },
+  {
+    "position": 1406,
+    "locale": "de",
+    "disposition": "correction",
+    "target": "Aufbewahrungstage für Ereignisse",
+    "rationale": "This setting retains system event records, so use Ereignisse rather than Veranstaltungen.",
+    "confidence": "high"
+  },
+  {
+    "position": 1406,
+    "locale": "ja",
+    "disposition": "refinement",
+    "target": "イベントの保存日数",
+    "rationale": "Add the particle の for a natural label meaning the number of days event records are retained.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1406,
+    "locale": "ko",
+    "disposition": "correction",
+    "target": "이벤트 보존 일수",
+    "rationale": "보존 일수 is the natural term for a data-retention period in days; 보유일 suggests possession.",
+    "confidence": "high"
+  },
+  {
+    "position": 1406,
+    "locale": "zh-Hant",
+    "disposition": "correction",
+    "target": "事件保留天數",
+    "rationale": "Use the logged-event term 事件, consistent with the system Events pane.",
+    "confidence": "high"
+  },
+  {
+    "position": 1406,
+    "locale": "id",
+    "disposition": "correction",
+    "target": "Hari retensi peristiwa",
+    "rationale": "Use peristiwa for system log events, rather than acara for scheduled occasions.",
+    "confidence": "high"
+  },
+  {
+    "position": 1407,
+    "locale": "zh-Hans",
+    "disposition": "correction",
+    "target": "每 15 分钟",
+    "rationale": "The caller displays this as an automation cadence; 一班 means a work shift or service run and changes the meaning.",
+    "confidence": "high"
+  },
+  {
+    "position": 1407,
+    "locale": "zh-Hant",
+    "disposition": "correction",
+    "target": "每 15 分鐘",
+    "rationale": "The caller displays this as an automation cadence; 一班 means a work shift or service run and changes the meaning.",
+    "confidence": "high"
+  },
+  {
+    "position": 1408,
+    "locale": "es",
+    "disposition": "refinement",
+    "target": "Cada automatización es visible aquí. Habilite las recetas cuando su impacto se ajuste a su nodo; la ejecución es manual y requiere que la acción real del backend esté disponible.",
+    "rationale": "Lowercase the clause after the semicolon and smooth the conditional while preserving the manual-execution and backend-availability requirements.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1408,
+    "locale": "hi",
+    "disposition": "correction",
+    "target": "यहाँ हर ऑटोमेशन दिखाई देता है। जब ऑटोमेशन का प्रभाव आपके नोड के अनुकूल हो, तभी रेसिपी सक्षम करें; निष्पादन मैन्युअल है और इसके लिए वास्तविक बैकएंड कार्रवाई उपलब्ध होनी चाहिए।",
+    "rationale": "व्यंजनों reads as food recipes here; रेसिपी is the software automation recipe term, and the revised sentence fixes the awkward node-fit phrasing.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1408,
+    "locale": "de",
+    "disposition": "refinement",
+    "target": "Hier sind alle Automatisierungen sichtbar. Aktivieren Sie Rezepte, wenn ihre Auswirkungen zu Ihrem Knoten passen; die Ausführung erfolgt manuell und setzt voraus, dass die echte Backend-Aktion verfügbar ist.",
+    "rationale": "Keep the technical recipe and node terms, while fixing the clause capitalization and making the backend prerequisite idiomatic.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1408,
+    "locale": "ja",
+    "disposition": "refinement",
+    "target": "すべての自動化をここで確認できます。ノードへの影響が適切な場合にレシピを有効にしてください。実行は手動で、実際のバックエンドアクションが利用可能な場合に限られます。",
+    "rationale": "The revised Japanese removes an unnatural space inside the backend term and expresses the availability condition clearly.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1408,
+    "locale": "ar",
+    "disposition": "correction",
+    "target": "كل عمليات الأتمتة ظاهرة هنا. فعّل الوصفات عندما يتناسب تأثيرها مع عقدتك؛ التنفيذ يدوي ويتطلب أن يكون إجراء الواجهة الخلفية الفعلي متاحًا.",
+    "rationale": "The current wording treats the imperative as a noun phrase and uses a literal backend rendering; the revision gives a direct imperative and natural interface-backend term.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1408,
+    "locale": "vi",
+    "disposition": "correction",
+    "target": "Mọi quy trình tự động hóa đều hiển thị tại đây. Chỉ bật các quy trình khi mức độ ảnh hưởng phù hợp với nút của bạn; việc thực thi là thủ công và yêu cầu hành động backend thực sự phải có sẵn.",
+    "rationale": "Công thức nấu ăn means cooking recipes; quy trình fits software automation recipes in this UI.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1408,
+    "locale": "id",
+    "disposition": "refinement",
+    "target": "Setiap otomasi terlihat di sini. Aktifkan resep jika dampaknya sesuai dengan node Anda; eksekusi dilakukan secara manual dan mensyaratkan tersedianya tindakan backend yang sebenarnya.",
+    "rationale": "Clarify that the real backend action must be available and smooth the conditional wording.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1409,
+    "locale": "ar",
+    "disposition": "correction",
+    "target": "الأدلة",
+    "rationale": "The source is a table column for supporting evidence, not a certificate or witness testimony (شهادة).",
+    "confidence": "high"
+  },
+  {
+    "position": 1409,
+    "locale": "vi",
+    "disposition": "correction",
+    "target": "Bằng chứng",
+    "rationale": "Bằng chứng is the natural Vietnamese UI term for evidence; Chứng cớ is uncommon here.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1410,
+    "locale": "ar",
+    "disposition": "correction",
+    "target": "الأدلة (",
+    "rationale": "The source labels a count of evidence items; use أدلة rather than شهادة, preserving the following count delimiter.",
+    "confidence": "high"
+  },
+  {
+    "position": 1410,
+    "locale": "vi",
+    "disposition": "correction",
+    "target": "Bằng chứng (",
+    "rationale": "Use the natural Vietnamese evidence term for the count label and preserve its opening parenthesis.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1410,
+    "locale": "zh-Hans",
+    "disposition": "refinement",
+    "target": "证据（",
+    "rationale": "The count follows this label immediately; remove the extra Latin-style spacing and use locale-appropriate opening-parenthesis typography.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1410,
+    "locale": "zh-Hant",
+    "disposition": "refinement",
+    "target": "證據（",
+    "rationale": "The count follows this label immediately; remove the extra Latin-style spacing and use locale-appropriate opening-parenthesis typography.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1410,
+    "locale": "ja",
+    "disposition": "refinement",
+    "target": "証拠（",
+    "rationale": "The count follows this label immediately; remove the extra Latin-style spacing and use locale-appropriate opening-parenthesis typography.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1411,
+    "locale": "de",
+    "disposition": "refinement",
+    "target": "Sandbox zur Prüfung von Nachweisen",
+    "rationale": "The caller is a preview environment for signed mesh evidence; this phrasing is more natural than the dense compound while retaining the established technical term Sandbox.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1411,
+    "locale": "ar",
+    "disposition": "correction",
+    "target": "بيئة اختبار لمراجعة الأدلة",
+    "rationale": "The feature previews evidence before application; an isolated test environment is clearer than a literal sand box.",
+    "confidence": "high"
+  },
+  {
+    "position": 1411,
+    "locale": "id",
+    "disposition": "correction",
+    "target": "Lingkungan uji untuk meninjau bukti",
+    "rationale": "Kotak Pasir is a literal sand box; the caller is a software review environment.",
+    "confidence": "high"
+  },
+  {
+    "position": 1413,
+    "locale": "es",
+    "disposition": "correction",
+    "target": "Excluya el par rechazado de la lista de deseos y el directorio remoto de futuras descargas automáticas.",
+    "rationale": "The current adjective placement ambiguously marks both items as rejected; this makes the peer the rejected item and keeps the remote directory separate.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1413,
+    "locale": "zh-Hans",
+    "disposition": "correction",
+    "target": "从今后的自动下载中排除被拒绝的愿望清单对等节点和远程目录。",
+    "rationale": "Identify the rejected item as the Wishlist peer and use 对等节点 for a peer in this P2P setting.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1413,
+    "locale": "ja",
+    "disposition": "refinement",
+    "target": "拒否されたウィッシュリストのピアとリモートディレクトリを、今後の自動ダウンロードから除外します。",
+    "rationale": "Add the grammatical particle and remove the awkward space in the technical term while preserving which item was rejected.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1413,
+    "locale": "fr",
+    "disposition": "correction",
+    "target": "Excluez le pair rejeté de la liste de souhaits ainsi que le répertoire distant des futurs téléchargements automatiques.",
+    "rationale": "The revised agreement makes clear that only the peer is rejected, not the remote directory.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1413,
+    "locale": "pt-BR",
+    "disposition": "correction",
+    "target": "Exclua das futuras transferências automáticas o par da lista de desejos que foi rejeitado e o diretório remoto.",
+    "rationale": "Move the rejection clause next to par so it cannot modify both the peer and the directory.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1413,
+    "locale": "ar",
+    "disposition": "correction",
+    "target": "استبعد النظير المرفوض في قائمة الرغبات والدليل البعيد من التنزيلات التلقائية المستقبلية.",
+    "rationale": "Make the rejected Wishlist peer explicit and avoid plural agreement that can imply the remote directory is also rejected.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1413,
+    "locale": "zh-Hant",
+    "disposition": "correction",
+    "target": "將被拒絕的願望清單對等節點與遠端目錄排除在未來的自動下載之外。",
+    "rationale": "Identify the rejected item as the Wishlist peer and use 對等節點 for a peer in this P2P setting.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1413,
+    "locale": "vi",
+    "disposition": "correction",
+    "target": "Loại trừ nút ngang hàng trong Danh sách yêu thích đã bị từ chối cùng thư mục từ xa khỏi các lượt tải tự động trong tương lai.",
+    "rationale": "The current word order makes the rejected item unclear; this names the peer node as rejected and separates the remote directory.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1413,
+    "locale": "id",
+    "disposition": "correction",
+    "target": "Kecualikan peer Daftar Keinginan yang ditolak dan direktori jarak jauh dari unduhan otomatis mendatang.",
+    "rationale": "Clarify that Wishlist peer is the rejected item and keep the remote directory as a separate exclusion.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1415,
+    "locale": "ar",
+    "disposition": "refinement",
+    "target": "نفّذ {title}",
+    "rationale": "This is the accessible button label for a direct execute action; use the imperative rather than the current verbal noun.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1416,
+    "locale": "es",
+    "disposition": "correction",
+    "target": "Ejecute {title} ahora mediante su acción real del backend. «Reintentar la lista de deseos» realiza hasta tres búsquedas habilitadas; «Salud de la biblioteca» inicia el análisis de solo lectura configurado.",
+    "rationale": "Match both embedded recipe names to their exact pinned locale-catalog titles and retain the source count of three without turning the spelled-out number into a numeric-token mismatch.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1416,
+    "locale": "zh-Hans",
+    "disposition": "correction",
+    "target": "现在通过其真实的后端操作执行 {title}。“愿望清单重试”最多会运行三项已启用的搜索；“图书馆健康”会启动已配置的只读扫描。",
+    "rationale": "Match both embedded recipe names to their exact pinned locale-catalog titles and retain the source count of three without turning the spelled-out number into a numeric-token mismatch.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1416,
+    "locale": "hi",
+    "disposition": "correction",
+    "target": "अब {title} को उसकी वास्तविक बैकएंड कार्रवाई के ज़रिए चलाएँ। “इच्छा सूची पुनः प्रयास करें” अधिकतम तीन सक्षम खोजें चलाता है; “पुस्तकालय स्वास्थ्य” कॉन्फ़िगर किए गए केवल-पठन स्कैन को शुरू करता है।",
+    "rationale": "Match both embedded recipe names to their exact pinned locale-catalog titles and retain the source count of three without turning the spelled-out number into a numeric-token mismatch.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1416,
+    "locale": "de",
+    "disposition": "correction",
+    "target": "Führen Sie {title} jetzt über die zugehörige echte Backend-Aktion aus. „Wunschliste erneut versuchen“ führt bis zu drei aktivierte Suchen aus; „Bibliotheksgesundheit“ startet den konfigurierten Nur-Lese-Scan.",
+    "rationale": "Match both embedded recipe names to their exact pinned locale-catalog titles and retain the source count of three without turning the spelled-out number into a numeric-token mismatch.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1416,
+    "locale": "ja",
+    "disposition": "correction",
+    "target": "実際のバックエンドアクションを使って、今すぐ {title} を実行します。「ウィッシュリストの再試行」は、有効な検索を最大三件実行します。「図書館の健全性」は、設定済みの読み取り専用スキャンを開始します。",
+    "rationale": "Match both embedded recipe names to their exact pinned locale-catalog titles and retain the source count of three without turning the spelled-out number into a numeric-token mismatch.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1416,
+    "locale": "fr",
+    "disposition": "correction",
+    "target": "Exécutez {title} maintenant via son action réelle côté backend. « Réessayer » lance jusqu’à trois recherches activées ; « Santé des bibliothèques » démarre l’analyse configurée en lecture seule.",
+    "rationale": "Match both embedded recipe names to their exact pinned locale-catalog titles and retain the source count of three without turning the spelled-out number into a numeric-token mismatch.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1416,
+    "locale": "pt-BR",
+    "disposition": "correction",
+    "target": "Execute {title} agora por meio da ação real do backend. “Lista de desejos, tentar novamente” executa até três buscas habilitadas; “Saúde da Biblioteca” inicia a verificação configurada somente para leitura.",
+    "rationale": "Match both embedded recipe names to their exact pinned locale-catalog titles and retain the source count of three without turning the spelled-out number into a numeric-token mismatch.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1416,
+    "locale": "ar",
+    "disposition": "correction",
+    "target": "نفّذ {title} الآن من خلال إجراء الواجهة الخلفية الفعلي. تشغّل «قائمة الرغبات إعادة المحاولة» ما يصل إلى ثلاث عمليات بحث مفعّلة؛ وتبدأ «صحة المكتبة» الفحص المُعدّ للقراءة فقط.",
+    "rationale": "Match both embedded recipe names to their exact pinned locale-catalog titles and retain the source count of three without turning the spelled-out number into a numeric-token mismatch.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1416,
+    "locale": "ko",
+    "disposition": "correction",
+    "target": "이제 실제 백엔드 작업을 통해 {title}를 실행하세요. “위시리스트 재시도”는 최대 세 건의 활성화된 검색을 실행하고, “도서관 건강”은 설정된 읽기 전용 검사를 시작합니다.",
+    "rationale": "Match both embedded recipe names to their exact pinned locale-catalog titles and retain the source count of three without turning the spelled-out number into a numeric-token mismatch.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1416,
+    "locale": "zh-Hant",
+    "disposition": "correction",
+    "target": "現在透過實際的後端操作執行 {title}。「願望清單重試」最多會執行三項已啟用的搜尋；「圖書館健康」會啟動已設定的唯讀掃描。",
+    "rationale": "Match both embedded recipe names to their exact pinned locale-catalog titles and retain the source count of three without turning the spelled-out number into a numeric-token mismatch.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1416,
+    "locale": "vi",
+    "disposition": "correction",
+    "target": "Thực thi {title} ngay bằng hành động backend thực tế tương ứng. “Danh sách yêu thích Thử lại” chạy tối đa ba lượt tìm kiếm đang bật; “Thư viện sức khỏe” khởi chạy lượt quét chỉ đọc đã cấu hình.",
+    "rationale": "Match both embedded recipe names to their exact pinned locale-catalog titles and retain the source count of three without turning the spelled-out number into a numeric-token mismatch.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1416,
+    "locale": "id",
+    "disposition": "correction",
+    "target": "Jalankan {title} sekarang melalui tindakan backend yang sebenarnya. “Daftar Keinginan Coba Lagi” menjalankan hingga tiga pencarian yang diaktifkan; “Kesehatan Perpustakaan” memulai pemindaian baca-saja yang dikonfigurasi.",
+    "rationale": "Match both embedded recipe names to their exact pinned locale-catalog titles and retain the source count of three without turning the spelled-out number into a numeric-token mismatch.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1418,
+    "locale": "ja",
+    "disposition": "correction",
+    "target": "実行契約がブロックされています",
+    "rationale": "The pinned caller uses this as a media-server execution-contract status; 約定契約 is a settlement/transaction term, not an execution contract.",
+    "confidence": "high"
+  },
+  {
+    "position": 1419,
+    "locale": "ja",
+    "disposition": "correction",
+    "target": "実行契約の準備が整っています",
+    "rationale": "Use 実行契約 for the media-server execution contract and express its ready status naturally.",
+    "confidence": "high"
+  },
+  {
+    "position": 1420,
+    "locale": "zh-Hant",
+    "disposition": "correction",
+    "target": "現有頻道",
+    "rationale": "This heading lists named digital channels in the Pod channel-management panel; 頻道 is the conventional UI term here, whereas 通路 means a passage or route.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1421,
+    "locale": "ar",
+    "disposition": "correction",
+    "target": "التكوين الحالي ليس خريطة YAML.",
+    "rationale": "Use the data-structure sense of YAML mapping (خريطة) rather than تعيين, which reads as an assignment.",
+    "confidence": "high"
+  },
+  {
+    "position": 1422,
+    "locale": "fr",
+    "disposition": "correction",
+    "target": "Empreinte existante réutilisée",
+    "rationale": "In this metadata-processing status, the reused hash is a digest value; hachage names the hashing process, while empreinte names the value.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1422,
+    "locale": "ar",
+    "disposition": "correction",
+    "target": "تمت إعادة استخدام قيمة التجزئة الموجودة",
+    "rationale": "Specify that the reused item is the hash value; التجزئة alone can denote the hashing process.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1422,
+    "locale": "vi",
+    "disposition": "correction",
+    "target": "Mã băm hiện có được sử dụng lại",
+    "rationale": "Mã băm is the hash value; hàm băm refers to the hash function.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1404,
+    "locale": "id",
+    "disposition": "correction",
+    "target": "Filter topik peristiwa",
+    "rationale": "The caller is the system event-log filter; peristiwa names logged occurrences more accurately than acara, which suggests scheduled occasions.",
+    "confidence": "high"
+  }
+]

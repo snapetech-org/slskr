@@ -1,0 +1,64 @@
+{
+  "artifact": "slskR PR #204 third-party localization cross-audit W1183-W1202",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "8e60a51ec25967df115a3fd8c42872abbec58d8a",
+  "tree": "c2ec31432943730f0a8f3ee87687c46b6a4400c2",
+  "reviewedCells": 240,
+  "sourceCount": 20,
+  "localeCount": 12,
+  "callerReferenceCount": 37,
+  "primaryDispositionCounts": {
+    "accept-current": 167,
+    "correction/refinement proposal": 39,
+    "hold": 34
+  },
+  "blindDecisionCounts": {
+    "accept-current": 151,
+    "refinement": 19,
+    "correction": 58,
+    "hold": 12
+  },
+  "crossAuditDispositionCounts": {
+    "accept-current": 161,
+    "refinement": 4,
+    "correction": 63,
+    "hold": 12
+  },
+  "primaryBlindDisagreementCount": 54,
+  "resolvedDisagreementCount": 52,
+  "retainedHoldDisagreementCount": 2,
+  "unresolvedSemanticHolds": [
+    {
+      "position": 1198,
+      "sourceKey": "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain.",
+      "cells": 12,
+      "question": "Product-approved translation for the domain-fronting setting and mechanism is unavailable."
+    }
+  ],
+  "protectedLiteralAudit": {
+    "requiredLiterals": {
+      "DisplayName": 12,
+      "ReplayGain": 12,
+      "CDN": 12
+    },
+    "approvedCandidateViolations": 0,
+    "existingCurrentViolations": 1,
+    "currentViolationDetails": [
+      {
+        "position": 1198,
+        "locale": "hi",
+        "literal": "CDN",
+        "sourceCount": 1,
+        "currentCount": 0
+      }
+    ]
+  },
+  "placeholderMarkupNumericFailures": 0,
+  "position1198HindiCurrentCDNViolation": true,
+  "allInputPrimaryBlindAndLivePinsVerified": true,
+  "nativeSpeakerApproval": false,
+  "limitations": "Machine-assisted semantic cross-audit. Qualified native-speaker review remains outstanding; the domain-fronting terminology is held across all locales.",
+  "repositoryOrPREdited": false,
+  "testsBuildsScansCIWorkflowsBrowserMergeReleaseOrTagPerformed": false
+}

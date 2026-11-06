@@ -1,0 +1,107 @@
+{
+  "additionalProjectScansRun": false,
+  "allCurrentTokenChecksPass": true,
+  "allProposalTokenChecksPass": true,
+  "blindReviewPerformed": false,
+  "browserReviewPerformed": false,
+  "byLocale": {
+    "ar": {
+      "accept-current": 20
+    },
+    "de": {
+      "accept-current": 20
+    },
+    "es": {
+      "accept-current": 19,
+      "correction": 1
+    },
+    "fr": {
+      "accept-current": 20
+    },
+    "hi": {
+      "accept-current": 19,
+      "correction": 1
+    },
+    "id": {
+      "accept-current": 20
+    },
+    "ja": {
+      "accept-current": 19,
+      "correction": 1
+    },
+    "ko": {
+      "accept-current": 18,
+      "correction": 2
+    },
+    "pt-BR": {
+      "accept-current": 20
+    },
+    "vi": {
+      "accept-current": 19,
+      "correction": 1
+    },
+    "zh-Hans": {
+      "accept-current": 19,
+      "correction": 1
+    },
+    "zh-Hant": {
+      "accept-current": 18,
+      "correction": 2
+    }
+  },
+  "callerlessSourceCount": 0,
+  "candidateFreeChecksumListSha256": "84fee67b49e418b792bfac098c82e92547d4d70157a57c2910bf94e97e54506f",
+  "candidateFreeManifestSha256": "3bf3e6dcec41a841f941885e99002449bb68d5c21211319678817cc63f227e22",
+  "cellCount": 240,
+  "ciDispatched": false,
+  "createdAtUtc": "2026-11-05T06:23:45.897425+00:00",
+  "crossReviewPerformed": false,
+  "decisionCounts": {
+    "accept-current": 231,
+    "correction": 9
+  },
+  "exactHead": "7e366cbf21ad5490bd11ef418a0f2a98b3fbd567",
+  "exactTree": "801d7a037c15dcd83b3e038160054a46c9b8f03b",
+  "hashOnlyHoldCount": 0,
+  "livePrState": {
+    "draft": true,
+    "head": "7e366cbf21ad5490bd11ef418a0f2a98b3fbd567",
+    "state": "OPEN",
+    "tree": "801d7a037c15dcd83b3e038160054a46c9b8f03b"
+  },
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "nativeSpeakerReviewPerformed": false,
+  "priorLineageReattested": {
+    "allMatchedCurrentCatalogHashes": true,
+    "appliedTargets": 82,
+    "carryForwardHolds": 62,
+    "priorWindowCells": 1920,
+    "sourceSelections": 380
+  },
+  "projectBuildsRun": false,
+  "projectTestsRun": false,
+  "proposalCount": 9,
+  "pullRequest": 209,
+  "repoOrPrEditsMade": false,
+  "repository": "snapetech-org/slskR",
+  "result": "PASS",
+  "reviewType": "primary-semantic-review-only",
+  "schemaVersion": 1,
+  "scopedCallerResolutionScan": "Performed only by the candidate-free packet builder and verifier as required for exact caller context.",
+  "sourceCount": 20,
+  "window": "W1623-W1642",
+  "workflowEditsMade": false
+}

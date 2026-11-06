@@ -1,0 +1,47 @@
+{
+  "exactHead": "99282b2f9b904f9814f5be66d8f643175e134f8e",
+  "exactTree": "ba0ba0790da40159b8d92935f0866cb6a112edce",
+  "previousBoundaryRows": 36,
+  "previousBoundaryRowsReattested": 36,
+  "previousCallerPins": 38,
+  "previousCallerPinsReattested": 38,
+  "previousChecksumVerifications": {
+    "committedWindow": {
+      "exitCode": 0,
+      "path": "/home/keith/Documents/code/task-worktrees/localization-20261102-slskr/docs/pr-evidence/pr204-localization-2026-11-02/window-0943-0962/SHA256SUMS",
+      "stderr": "",
+      "stdoutSha256": "d350ba4f422b30200805b8be8b297475d7825e0d716c10e4bd8b184edd66c3b3",
+      "verifiedEntries": 26
+    },
+    "crossReviewScratch": {
+      "exitCode": 0,
+      "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0943-0962-crossreview-20261102/SHA256SUMS",
+      "stderr": "",
+      "stdoutSha256": "70aa79dec1e6fbf10dd91aad7f5cb690e7932c77dcbd1be9829641abf8247e01",
+      "verifiedEntries": 5
+    },
+    "primaryScratch": {
+      "exitCode": 0,
+      "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0943-0962-primary-20261102/SHA256SUMS",
+      "stderr": "",
+      "stdoutSha256": "a8d10a8fc39e8f5ceac0802d43a27c562e18d70540753448e6b80976a5bb8764",
+      "verifiedEntries": 15
+    }
+  },
+  "previousCommittedRootSHA256SUMS": "ca5dfcda2ef9116aac80bb8529d0f8b5de0d71fc9ba0da4f1f2a3182ca1826b1",
+  "previousCrossReviewScratchSHA256SUMS": "024d66285a249ee176ab4664178308925c25e00565233b7fed22c2e2100d2d47",
+  "previousPrimaryScratchSHA256SUMS": "fc7ca25a0e47976be11e00ee7816400efbed343f59c601b24374ba6aaeee13af",
+  "previousReadbackMatchesCurrent": 240,
+  "previousReadbackRows": 240,
+  "previousW944HoldCells": 12,
+  "previousWindow": "W943-W962",
+  "selectedSourceIdsSha256": "b5d2eee0ea767a014103549895df3eb7be843e7eca60382694af08021a30cb86",
+  "selectedSourceIndices": [
+    962,
+    981
+  ],
+  "sourceInventoryFileSha256": "67d1c36a5a42dfc3472b902d1ab93f7cb6f40a816dc6a86b72f84cdddbfb5dbb",
+  "sourceInventoryGitBlob": "f5c211b1bf12b47b134db65d2fcb9ed9bc6653d1",
+  "sourceInventoryPath": "docs/pr-evidence/pr204-localization-2026-11-02/window-0803-0822/primary-packet/current-source-inventory.jsonl",
+  "sourceInventoryRecordCount": 5440
+}

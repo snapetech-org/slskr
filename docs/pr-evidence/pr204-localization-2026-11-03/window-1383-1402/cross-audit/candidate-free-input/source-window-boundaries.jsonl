@@ -1,0 +1,22 @@
+{"historicalSourceOrdinal":null,"position":1382,"role":"previous-boundary-W1363-W1382","sourceKey":"Entries","sourceKeySha256":"7cb76b4af12abb80d576251aa088332aa69ef709dc04c00499ce973fa5f4255f"}
+{"historicalSourceOrdinal":null,"position":1383,"role":"selected-W1383-W1402","sourceKey":"Entries:","sourceKeySha256":"89a7fe8936b25b8be3c371bcdf3fe0dd1da2f63ab8946a88d139435ad81653f4"}
+{"historicalSourceOrdinal":null,"position":1384,"role":"selected-W1383-W1402","sourceKey":"Entropy checks:","sourceKeySha256":"04f3388c3a8060be8de06f604877f13fdbb75bb060da38f97f7d7e397aa6d71d"}
+{"historicalSourceOrdinal":null,"position":1385,"role":"selected-W1383-W1402","sourceKey":"Error","sourceKeySha256":"54a0e8c17ebb21a11f8a25b8042786ef7efe52441e6cc87e92c67e0c4c0c6e78"}
+{"historicalSourceOrdinal":null,"position":1386,"role":"selected-W1383-W1402","sourceKey":"Error Count By Type","sourceKeySha256":"69af01be0949209101084ea7cedade124b02250b68239a2edfbd4477ee025512"}
+{"historicalSourceOrdinal":null,"position":1387,"role":"selected-W1383-W1402","sourceKey":"Error Loading Swarm Data","sourceKeySha256":"fed639a1440f88203bd1d4e0c0430e1e39d39b1e3e7c95413f23effe764b0ac7"}
+{"historicalSourceOrdinal":null,"position":1388,"role":"selected-W1383-W1402","sourceKey":"Error count report","sourceKeySha256":"f4a77345a34e281c07c1b82653667eaa570f8aa5f3bf2a6b7b0a547b2b811260"}
+{"historicalSourceOrdinal":null,"position":1389,"role":"selected-W1383-W1402","sourceKey":"Error history","sourceKeySha256":"524f355e3792328d8774bf2e33ad880dfc66c9376ce36a1d3efb35ea6443f47a"}
+{"historicalSourceOrdinal":null,"position":1390,"role":"selected-W1383-W1402","sourceKey":"Error:","sourceKeySha256":"617062906764f3b8912525512fc2f3747ddcc1623b932718d6e4910baee5a8a4"}
+{"historicalSourceOrdinal":null,"position":1391,"role":"selected-W1383-W1402","sourceKey":"Errored","sourceKeySha256":"d23d6aeb8ba32567472bcfee8b009bfe688f25dcff93a7fe82d933badb13e894"}
+{"historicalSourceOrdinal":null,"position":1392,"role":"selected-W1383-W1402","sourceKey":"Errors","sourceKeySha256":"cb702378f31507efa79a2a2c6046050bc9f578f149c88e3c0a3d9532ab4b5300"}
+{"historicalSourceOrdinal":null,"position":1393,"role":"selected-W1383-W1402","sourceKey":"Errors (","sourceKeySha256":"883b731477bfbcce07e9fb0abf9a291d249f29ebf88d6490de5e88398c78b0ab"}
+{"historicalSourceOrdinal":null,"position":1394,"role":"selected-W1383-W1402","sourceKey":"Est. False Positive:","sourceKeySha256":"1a6b01c45fdbf25b919b4e5ca3e5884d507c46d697f67369158927ab2e901da0"}
+{"historicalSourceOrdinal":null,"position":1395,"role":"selected-W1383-W1402","sourceKey":"Estimated Impact:","sourceKeySha256":"18d40fddbec02bd8a8b56646db32b9ab08550757ce49284818fb2dfb85cc1aed"}
+{"historicalSourceOrdinal":null,"position":1396,"role":"selected-W1383-W1402","sourceKey":"Estimated Size:","sourceKeySha256":"07e56bf8696ead497ccb302658678559e0c732c66781ab642c4e82717c4ffee8"}
+{"historicalSourceOrdinal":null,"position":1397,"role":"selected-W1383-W1402","sourceKey":"Evaluate the pasted evidence locally. This does not publish, query peers, or apply ranking changes.","sourceKeySha256":"46af4d1e84bf9c53288c234484d4881bc4ab67e0d765161eb87964111348fc9d"}
+{"historicalSourceOrdinal":null,"position":1398,"role":"selected-W1383-W1402","sourceKey":"Event history filters","sourceKeySha256":"be8930d71298c623534e4699c7b23f9d5d75a240c15f2cbca587507fdc103a14"}
+{"historicalSourceOrdinal":null,"position":1399,"role":"selected-W1383-W1402","sourceKey":"Event history unavailable","sourceKeySha256":"425381da845982d3724c5c94d59350bc3115683b5820cb73a3c55abd5ed326ba"}
+{"historicalSourceOrdinal":null,"position":1400,"role":"selected-W1383-W1402","sourceKey":"Event hooks, remote targets, command hooks, and retry shape.","sourceKeySha256":"170d96ccb5e4a41ffcfd5238bbc2706de2b5bc6cf9d8a7546fa913c485aa2f36"}
+{"historicalSourceOrdinal":null,"position":1401,"role":"selected-W1383-W1402","sourceKey":"Event kind filter","sourceKeySha256":"6e2be7ab2dc7f19d2ed1f898afd273c780b3c5d373b760678f6a814e3a6ecb2e"}
+{"historicalSourceOrdinal":null,"position":1402,"role":"selected-W1383-W1402","sourceKey":"Event retention days","sourceKeySha256":"8a5514bb347a594667835716799626d8154bd5371d9507a31e2d40ef1fa245c1"}
+{"historicalSourceOrdinal":null,"position":1403,"role":"next-boundary-W1383-W1402","sourceKey":"Event text filter","sourceKeySha256":"7e785286e3c810f86a1fcb00ed68c212832540167c8eee9003a399f6507738cd"}

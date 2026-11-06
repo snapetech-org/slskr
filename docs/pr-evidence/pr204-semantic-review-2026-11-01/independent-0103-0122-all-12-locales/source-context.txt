@@ -1,0 +1,249 @@
+# Runtime source context at PR #204 code/catalog head 7ff454828398de6a3cfb72fe7f0ed21fe419425b (tree 9e9f2aa743c4ff3236af8f99619803bdc3a37152)
+
+Review head f4d295b2df50fbce0d56c7b0b94b35ea87211d36 (tree 332e09992fd20eb5b0183a77be627732629edca7) includes the 11 previously verified exact-hash high-confidence corrections in five locale catalogs plus documentation; runtime source files are unchanged from the source/catalog snapshot. The review-head catalog hashes and prior correction ledger are revalidated separately by the batch verifier.
+
+Each selected cell is a populated value. The exact source key and current target value are retained in selection.jsonl; only cells with no exact terminal match are newly adjudicated in decisions.jsonl. Existing exact accepted/correction-needed results are carried or excluded in their own files.
+
+## Runtime callsites
+
+### `web/src/components/Transfers/Transfers.jsx` — Git blob `00f3488b547c2f6e4d97fbd6d0931b724ea3c17d`, SHA-256 `744da23792a1fac5929a4802600b1cc7f238a3f3fabe1f33ded598b2b546b662`
+
+Lines 711–725:
+711:     modeInFlightRef.current.accelerated = true;
+712:     setAcceleratedChanging(true);
+713:     const requestId = ++modeRequestIdsRef.current.accelerated;
+714:     try {
+715:       const status = await transfersLibrary.setAcceleratedMode({ enabled });
+716:       if (!mountedRef.current || requestId !== modeRequestIdsRef.current.accelerated) return;
+717:       setAcceleratedEnabled(status?.enabled ?? enabled);
+718:       toast.info(
+719:         <LocalizedText
+720:           source={enabled
+721:             ? 'Accelerated mode enabled. Slow or stalled downloads can use verified alternate sources.'
+722:             : 'Accelerated mode disabled'}
+723:         />,
+724:       );
+725:     } catch (error) {
+
+### `web/src/components/System/MediaCore/PodJoinLeavePanel.jsx` — Git blob `b244f791d0e8a476e5ff90c6f7ea2cc76cfebf70`, SHA-256 `b2b05d9ac4074f60bc81f8f70c07d4d9943be023fadea5b84dffef8c447c7169`
+
+Lines 232–253:
+232:             <Card.Content>
+233:               <Grid>
+234:                 <Grid.Column width={8}>
+235:                   {/* Accept Join */}
+236:                   <Header size="small"><LocalizedText source={"Accept Join Request"} /></Header>
+237:                   <Form>
+238:                     <Form.TextArea
+239:                       label={interfaceText("Acceptance JSON (signed by owner/mod)")}
+240:                       onChange={(e) => setAcceptanceData(e.target.value)}
+241:                       placeholder='{"podId": "pod:artist:mb:daft-punk-hash", "peerId": "alice", "acceptedRole": "member", "acceptorPeerId": "bob", "acceptorPublicKey": "base64-ed25519-public-key", "timestampUnixMs": 1703123456789, "signature": "ed25519:base64-signature", "message": "Welcome!"}'
+242:                       rows={4}
+243:                       value={acceptanceData}
+244:                      {...interfaceTextProps("Acceptance JSON (signed by owner/mod)")}/>
+245:                     <Button
+246:                       disabled={acceptingJoin || !acceptanceData.trim()}
+247:                       loading={acceptingJoin}
+248:                       onClick={handleAcceptJoin}
+249:                       positive
+250:                     >
+251:                       <LocalizedText source={"Accept Join"} /></Button>
+252:                   </Form>
+253:
+
+### `web/src/components/System/QuarantineJury/index.jsx` — Git blob `808a1ce533e535bd5c15a8e5c61244ac13c979e4`, SHA-256 `7db0e17e031d499390af6681f4e430209de5b052c7816a7c3f054baa6c1211b2`
+
+Lines 775–790:
+775:                 </Form>
+776:               </Segment>
+777:
+778:               <Segment>
+779:                 <Header as="h5"><LocalizedText source={"Acceptance"} /></Header>
+780:                 {accepted ? (
+781:                   <Message
+782:                     positive
+783:                     header={interfaceText("Release candidate accepted")}
+784:                     content={(
+785:                       <LocalizedText
+786:                         source="{acceptedBy} accepted this recommendation at {date}."
+787:                         values={{
+788:                           acceptedBy: normalizeAcceptance(review.acceptance).acceptedBy,
+789:                           date: formatDate(normalizeAcceptance(review.acceptance).createdAt),
+790:                         }}
+
+Lines 802–850:
+802:                       trigger={
+803:                         <Button
+804:                           color="green"
+805:                           disabled={!review.canAcceptReleaseCandidate || saving}
+806:                           icon
+807:                           labelPosition="left"
+808:                           onClick={() => setAcceptOpen(true)}
+809:                           type="button"
+810:                         >
+811:                           <Icon name="check circle" />
+812:                           <LocalizedText source={"Accept Release Candidate"} /></Button>
+813:                       }
+814:                      {...interfaceTextProps("Open the confirmation dialog. Accepting records a local decision only when the aggregate recommends Release Candidate.")}/>
+815:                   </>
+816:                 )}
+817:               </Segment>
+818:             </>
+819:           )}
+820:         </Segment>
+821:       </div>
+822:
+823:       <Modal
+824:         onClose={() => setAcceptOpen(false)}
+825:         open={acceptOpen}
+826:         size="small"
+827:       >
+828:         <Modal.Header><LocalizedText source={"Accept Release Candidate"} /></Modal.Header>
+829:         <Modal.Content>
+830:           <Message
+831:             warning
+832:             content={interfaceText("This records a local acceptance decision for the jury recommendation. It does not automatically move files or broadcast a release.")}
+833:            {...interfaceTextProps("This records a local acceptance decision for the jury recommendation. It does not automatically move files or broadcast a release.")}/>
+834:           <Form>
+835:             <Form.Input
+836:               label={interfaceText("Accepted By")}
+837:               onChange={(_event, { value }) =>
+838:                 setAcceptForm((current) => ({
+839:                   ...current,
+840:                   acceptedBy: value,
+841:                 }))
+842:               }
+843:               value={acceptForm.acceptedBy}
+844:              {...interfaceTextProps("Accepted By")}/>
+845:             <Form.TextArea
+846:               label={interfaceText("Review Note")}
+847:               onChange={(_event, { value }) =>
+848:                 setAcceptForm((current) => ({
+849:                   ...current,
+850:                   note: value,
+
+### `web/src/components/System/Mesh/MeshEvidencePolicy.jsx` — Git blob `2d8c7f594e9d3dc09192182cd1a7beefbc300f6d`, SHA-256 `b4dd46c29e740ea03bf84898655b413fc02bfe6274fbaa1c9964ed59e9c475a7`
+
+Lines 308–320:
+308:         {review && (
+309:           <div className="mesh-evidence-review-results">
+310:             <div className="mesh-evidence-review-summary">
+311:               <Label color="blue">
+312:                 <LocalizedText source={"Total"} /><Label.Detail>{formatRegionalNumber(review.summary.total)}</Label.Detail>
+313:               </Label>
+314:               <Label color="green">
+315:                 <LocalizedText source={"Accepted"} /><Label.Detail>{review.summary.accepted}</Label.Detail>
+316:               </Label>
+317:               <Label color="red">
+318:                 <LocalizedText source={"Rejected"} /><Label.Detail>{review.summary.rejected}</Label.Detail>
+319:               </Label>
+320:             </div>
+
+### `web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx` — Git blob `327b7f895fdc64b4010aaa3bd787e5f38e64fb58`, SHA-256 `1cc2a189124afc784443085977608cf70ef9c1009143a110e74af7adb8e9f028`
+
+Lines 405–421:
+405:                     update('pushbulletEnabled', checked)
+406:                   }
+407:                   toggle
+408:                  {...interfaceTextProps("Enable Pushbullet notifications")}/>
+409:               }
+410:              {...interfaceTextProps("Turn on Pushbullet delivery for enabled notification triggers.")}/>
+411:             <Form.Group widths="equal">
+412:               <Form.Input
+413:                 aria-label={interfaceText("Pushbullet access token")}
+414:                 disabled={!remoteConfiguration || saving}
+415:                 label={interfaceText("Access Token")}
+416:                 onChange={(_, { value }) => update('pushbulletAccessToken', value)}
+417:                 placeholder={
+418:                   interfaceText(form.pushbulletAccessTokenConfigured
+419:                     ? 'Configured'
+420:                     : 'Pushbullet access token')
+421:                 }
+
+Lines 510–525:
+510:                 disabled={!remoteConfiguration || saving}
+511:                 label={interfaceText("Topic URL")}
+512:                 onChange={(_, { value }) => update('ntfyUrl', value)}
+513:                 placeholder="https://ntfy.sh/mytopic"
+514:                 value={form.ntfyUrl}
+515:                {...interfaceTextProps("Ntfy topic URL")}/>
+516:               <Form.Input
+517:                 aria-label={interfaceText("Ntfy access token")}
+518:                 disabled={!remoteConfiguration || saving}
+519:                 label={interfaceText("Access Token")}
+520:                 onChange={(_, { value }) => update('ntfyAccessToken', value)}
+521:                 placeholder={
+522:                   interfaceText(form.ntfyAccessTokenConfigured
+523:                     ? 'Configured'
+524:                     : 'Optional Ntfy token')
+525:                 }
+
+### `web/src/components/System/Integrations/MetadataSettingsPanel.jsx` — Git blob `0d0ffc8e16a072970a51604bd95d76f7f796669f`, SHA-256 `e5aaf906b4cfc6e17ef8706bc95efb660b0eda2748bf2dad1c411ee9621d6339`
+
+Lines 382–398:
+382:       <Card.Content>
+383:         <div className="integration-status-row">
+384:           {boolLabel(form.chromaprintEnabled, 'Chromaprint On', 'Chromaprint Off')}
+385:           {boolLabel(form.acoustIdEnabled, 'AcoustID On', 'AcoustID Off')}
+386:           <Label>
+387:             <Icon
+388:               name={form.acoustIdClientIdConfigured ? 'key' : 'warning sign'}
+389:             />
+390:             <LocalizedText source={"AcoustID Client"} />{' '}
+391:             {form.acoustIdClientIdConfigured ? <LocalizedText source={"Configured"} /> : <LocalizedText source={"Missing"} />}
+392:           </Label>
+393:           {boolLabel(form.lidarrEnabled, 'Lidarr On', 'Lidarr Off')}
+394:           <Label>
+395:             <Icon name={form.lidarrApiKeyConfigured ? 'key' : 'warning sign'} />
+396:             <LocalizedText source={"Lidarr API Key"} />{" "}{form.lidarrApiKeyConfigured ? <LocalizedText source={"Configured"} /> : <LocalizedText source={"Missing"} />}
+397:           </Label>
+398:         </div>
+
+Lines 525–541:
+525:                     : 'AcoustID client ID')
+526:                 }
+527:                 type="password"
+528:                 value={form.acoustIdClientId}
+529:                {...interfaceTextProps("AcoustID client ID")}/>
+530:               <Form.Input
+531:                 aria-label={interfaceText("AcoustID base URL")}
+532:                 disabled={!remoteConfiguration || saving}
+533:                 label={interfaceText("Base URL")}
+534:                 onChange={(_, { value }) => update('acoustIdBaseUrl', value)}
+535:                 value={form.acoustIdBaseUrl}
+536:                {...interfaceTextProps("AcoustID base URL")}/>
+537:             </Form.Group>
+538:           </Segment>
+539:
+540:           <Segment>
+541:             <Header as="h4">
+
+### `web/src/components/Search/SongIDEvidenceDetails.jsx` — Git blob `a6a0eb1e9843801ff94e590a22878899f3d2bca2`, SHA-256 `4a90c2dfd31302a93964fed1f0642a56909bab926324519eb77c94cda6139f65`
+
+Lines 244–251:
+244:               <summary style={detailSummaryStyle}><LocalizedText source={"Scorecard"} /></summary>
+245:               <div style={{ marginBottom: '1em' }}>
+246:                 <Label size="tiny"><LocalizedText source={"Audio"} />{" "}{run.scorecard.analysisAudioSource || interfaceText('none')}</Label>
+247:                 <Label size="tiny"><LocalizedText source={"Clips"} />{" "}{formatRegionalNumber(run.scorecard.clipCount || 0)}</Label>
+248:                 <Label size="tiny"><LocalizedText source={"AcoustID"} />{" "}{formatRegionalNumber(run.scorecard.acoustIdHitCount || 0)}</Label>
+249:                 <Label size="tiny"><LocalizedText source={"AcoustID Raw"} />{" "}{formatRegionalNumber(run.scorecard.rawAcoustIdHitCount || 0)}</Label>
+250:                 <Label size="tiny"><LocalizedText source={"SongRec"} />{" "}{formatRegionalNumber(run.scorecard.songRecHitCount || 0)}</Label>
+251:                 <Label size="tiny"><LocalizedText source={"SongRec Distinct"} />{" "}{formatRegionalNumber(run.scorecard.songRecDistinctMatchCount || 0)}</Label>
+
+## Key-to-context mapping
+
+- Index 103, `Accelerated mode enabled. Slow or stalled downloads can use verified alternate sources.` — `web/src/components/Transfers/Transfers.jsx`: A success toast after enabling accelerated mode; the full source says slow or stalled downloads may use verified alternate sources. Review note: The target states activation and preserves the slow/stalled condition plus verified alternate-source behavior.
+- Index 104, `Accept Join` — `web/src/components/System/MediaCore/PodJoinLeavePanel.jsx`: Positive button under the “Accept Join Request” section, with signed acceptance JSON for a pod membership request. Review note: The target is an action label for accepting a requester into a pod; it is not a generic “join” navigation label.
+- Index 105, `Accept Join Request` — `web/src/components/System/MediaCore/PodJoinLeavePanel.jsx`: Header over the signed acceptance form for a pod join request. Review note: The target names accepting a request to join the pod.
+- Index 108, `Accept Recommendation` — `web/src/components/System/QuarantineJury/index.jsx`: Action button for accepting the jury recommendation. Review note: The target says to accept the recommendation, not to accept the underlying media file outright.
+- Index 109, `Accept Release Candidate` — `web/src/components/System/QuarantineJury/index.jsx`: Button and confirmation modal for a local acceptance decision when the jury recommendation is Release Candidate. Review note: The target accepts the Release Candidate recommendation; no translation claims this action publishes or moves files.
+- Index 110, `Acceptance` — `web/src/components/System/QuarantineJury/index.jsx`: “Acceptance” is a heading for the decision details in the quarantine jury. Review note: Targets are nominal forms for the recorded acceptance decision.
+- Index 112, `Accepted` — `web/src/components/System/Mesh/MeshEvidencePolicy.jsx`: Count label in the review summary, paired with rejected and total counts. Review note: The target is the accepted-result status label and remains a short count caption.
+- Index 113, `Accepted By` — `web/src/components/System/QuarantineJury/index.jsx`: Input label on the confirmation form for the person recording the local decision. Review note: The target labels who accepted the recommendation.
+- Index 115, `Access Token` — `web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx`: Input label for notification provider access-token credentials. Review note: The target means an authentication access token.
+- Index 117, `AcoustID` — `web/src/components/Search/SongIDEvidenceDetails.jsx`: Scorecard label before the count of AcoustID matches. Review note: AcoustID is the service/product name and must remain unchanged.
+- Index 118, `AcoustID Client` — `web/src/components/System/Integrations/MetadataSettingsPanel.jsx`: Status label next to Configured/Missing for the AcoustID client ID, with a matching credential input below. Review note: AcoustID is preserved; “Client” refers to the configured integration client, not a customer.
+- Index 121, `AcoustID Raw` — `web/src/components/Search/SongIDEvidenceDetails.jsx`: Scorecard label before raw AcoustID hit count. Review note: AcoustID is the product name; “Raw” describes unprocessed/raw match count data.
+- Index 122, `AcoustID base URL` — `web/src/components/System/Integrations/MetadataSettingsPanel.jsx`: Accessible name for AcoustID’s base URL input; the visible label is Base URL. Review note: AcoustID and the URL acronym are preserved; the target identifies the base URL setting.
+
+No placeholders or ICU messages occur in the 71 fresh cells. The service/product literal `AcoustID` is preserved in its four fresh keys; `URL` is also preserved in the base URL label. There is no native-speaker sign-off.

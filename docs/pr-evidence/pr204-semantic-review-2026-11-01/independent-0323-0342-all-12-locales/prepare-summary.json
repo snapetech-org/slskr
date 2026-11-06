@@ -1,0 +1,111 @@
+{
+  "head": "2eb1b192fcc384712de9b73dab96426d57f2ddf1",
+  "head_tree": "d27a73371f5096f666bc02c1c78892503c36153a",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_ids": 5437,
+  "frozen_source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "selected_source_indices": [
+    323,
+    342
+  ],
+  "selected_source_ids": [
+    "Approve this dry-run snapshot for later import review. This records source/proposed metadata only and does not write tags or move files.",
+    "Approved",
+    "Approved in Discovery Inbox for the next acquisition step.",
+    "Approved tag and organization snapshot for {playlistName}",
+    "Are Similar:",
+    "Are you sure you want restart the application?",
+    "Are you sure you want to ban member \"{peerId}\" from pod \"{podId}\"?",
+    "Are you sure you want to clean up expired membership records?",
+    "Are you sure you want to delete directory '{fullName}'?",
+    "Are you sure you want to delete file '{fullName}'?",
+    "Are you sure you want to delete the channel \"{channelName}\"? This action cannot be undone.",
+    "Are you sure you want to log out?",
+    "Are you sure you want to reset all MediaCore statistics? This cannot be undone.",
+    "Are you sure you want to shut the application down? You'll need to manually start it again.",
+    "Are you sure you want to unpublish pod \"{podId}\"?",
+    "Artist",
+    "Artist - Title, one row per track, or simple CSV artist,title",
+    "Artist / Album / 01 - Title",
+    "Artist MBID",
+    "Artist MBID is required"
+  ],
+  "catalog_sha256": {
+    "web/src/lib/locales/ui-labels.ar.json": "64cdd9fd1dde93bda472523e0b6fc4e13b01ed2f7d78a4d65665fe48922bbddb",
+    "web/src/lib/locales/ui-labels.de.json": "5a783e30c0863a3d523c353e3b24314f7741c3595c61d9f16e144f2be6fecfa3",
+    "web/src/lib/locales/ui-labels.es.json": "bf9bbde1fb4a850afaac1f4a524277228a5a75b704dae260288ed5d563618832",
+    "web/src/lib/locales/ui-labels.fr.json": "fd5125188d452cec459c9ec7edc650eef85d56851e87350419862442a5f2ccb1",
+    "web/src/lib/locales/ui-labels.hi.json": "2d6e588cf77e3ce1112f57c6afd97f5e592f0dfa1a900dc8594cc46f115b058b",
+    "web/src/lib/locales/ui-labels.id.json": "4dcbd521c8db8845d8fc84a6d13e010eee92f05d9978c92e6999d91c8076f380",
+    "web/src/lib/locales/ui-labels.ja.json": "a8ce5f1c2162b43fa2301120de66c48c447105a86c40cfc53ba5e276871b550c",
+    "web/src/lib/locales/ui-labels.ko.json": "a3c83d8b78ffffcf9e6e01b4abee34f8339c33dd420c64b6e990a80fc216ae82",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "ffbcf4263829c02c2ee265e3ab1fb46e1eb57c16ef0c178babb70d91c293cd27",
+    "web/src/lib/locales/ui-labels.vi.json": "6be79c8145ad2dc9590a6529bbe0ce67a668193bd8ca9fdca55baace67549956",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "fc2a17cfa6acd0301bf299c89fad975542633cb2af2513dcf1bd16eab0af68c6",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "0f9ce9801faeb703b0c7f07b47d86a26183726a22af7c1548ed4e57da51e7036"
+  },
+  "overlap_input_count": 892,
+  "overlap_manifest_sha256": "1933aca9142d98f9a25c11d4872d7238b8a6ec446750215974f1f28f742be031",
+  "counts": {
+    "new": 67,
+    "prior_accepted": 128,
+    "prior_correction-needed": 45
+  },
+  "per_locale": {
+    "ar": {
+      "new": 12,
+      "prior_accepted": 5,
+      "prior_correction-needed": 3
+    },
+    "de": {
+      "new": 10,
+      "prior_correction-needed": 3,
+      "prior_accepted": 7
+    },
+    "es": {
+      "new": 11,
+      "prior_accepted": 5,
+      "prior_correction-needed": 4
+    },
+    "fr": {
+      "new": 11,
+      "prior_accepted": 5,
+      "prior_correction-needed": 4
+    },
+    "hi": {
+      "new": 12,
+      "prior_accepted": 5,
+      "prior_correction-needed": 3
+    },
+    "id": {
+      "new": 11,
+      "prior_correction-needed": 4,
+      "prior_accepted": 5
+    },
+    "ja": {
+      "prior_accepted": 17,
+      "prior_correction-needed": 3
+    },
+    "ko": {
+      "prior_accepted": 16,
+      "prior_correction-needed": 4
+    },
+    "pt-BR": {
+      "prior_correction-needed": 4,
+      "prior_accepted": 16
+    },
+    "vi": {
+      "prior_correction-needed": 5,
+      "prior_accepted": 15
+    },
+    "zh-Hans": {
+      "prior_accepted": 16,
+      "prior_correction-needed": 4
+    },
+    "zh-Hant": {
+      "prior_accepted": 16,
+      "prior_correction-needed": 4
+    }
+  }
+}

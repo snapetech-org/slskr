@@ -1,0 +1,1229 @@
+{
+  "callerFileCount": 22,
+  "callerReferenceCount": 37,
+  "cellCount": 240,
+  "dispositionCounts": {
+    "accept-current": 167,
+    "correction/refinement proposal": 39,
+    "hold": 34
+  },
+  "head": "8e60a51ec25967df115a3fd8c42872abbec58d8a",
+  "holdCount": 34,
+  "holds": [
+    {
+      "confidence": "low",
+      "currentTarget": "Se requiere DisplayName. (campos de API: \"displayName\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 1077,
+            "path": "crates/slskr/src/legacy_route_dispatch_group_06.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 277,
+            "path": "crates/slskr/src/route_dispatch_group_5_mutations.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 67,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note is part of the intended localized validation error"
+      },
+      "locale": "es",
+      "position": 1188,
+      "rationale": "The server callers return only `DisplayName is required.` The targets append an API-field parenthetical naming `displayName`; although the packet contains a `publishedPod.displayName` response property elsewhere, it does not establish that this added note belongs in the localized validation error or names the input field. Preserve the exact `DisplayName` literal and hold the added wording until its error-message contract is confirmed.",
+      "sourceKey": "DisplayName is required."
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "必须提供 DisplayName。 (API 字段： \"displayName\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 1077,
+            "path": "crates/slskr/src/legacy_route_dispatch_group_06.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 277,
+            "path": "crates/slskr/src/route_dispatch_group_5_mutations.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 67,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note is part of the intended localized validation error"
+      },
+      "locale": "zh-Hans",
+      "position": 1188,
+      "rationale": "The server callers return only `DisplayName is required.` The targets append an API-field parenthetical naming `displayName`; although the packet contains a `publishedPod.displayName` response property elsewhere, it does not establish that this added note belongs in the localized validation error or names the input field. Preserve the exact `DisplayName` literal and hold the added wording until its error-message contract is confirmed.",
+      "sourceKey": "DisplayName is required."
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "DisplayName आवश्यक है। (API फ़ील्ड: \"displayName\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 1077,
+            "path": "crates/slskr/src/legacy_route_dispatch_group_06.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 277,
+            "path": "crates/slskr/src/route_dispatch_group_5_mutations.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 67,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note is part of the intended localized validation error"
+      },
+      "locale": "hi",
+      "position": 1188,
+      "rationale": "The server callers return only `DisplayName is required.` The targets append an API-field parenthetical naming `displayName`; although the packet contains a `publishedPod.displayName` response property elsewhere, it does not establish that this added note belongs in the localized validation error or names the input field. Preserve the exact `DisplayName` literal and hold the added wording until its error-message contract is confirmed.",
+      "sourceKey": "DisplayName is required."
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "DisplayName ist erforderlich. (API-Felder: \"displayName\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 1077,
+            "path": "crates/slskr/src/legacy_route_dispatch_group_06.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 277,
+            "path": "crates/slskr/src/route_dispatch_group_5_mutations.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 67,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note is part of the intended localized validation error"
+      },
+      "locale": "de",
+      "position": 1188,
+      "rationale": "The server callers return only `DisplayName is required.` The targets append an API-field parenthetical naming `displayName`; although the packet contains a `publishedPod.displayName` response property elsewhere, it does not establish that this added note belongs in the localized validation error or names the input field. Preserve the exact `DisplayName` literal and hold the added wording until its error-message contract is confirmed.",
+      "sourceKey": "DisplayName is required."
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "DisplayNameが必要です。 (APIフィールド： \"displayName\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 1077,
+            "path": "crates/slskr/src/legacy_route_dispatch_group_06.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 277,
+            "path": "crates/slskr/src/route_dispatch_group_5_mutations.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 67,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note is part of the intended localized validation error"
+      },
+      "locale": "ja",
+      "position": 1188,
+      "rationale": "The server callers return only `DisplayName is required.` The targets append an API-field parenthetical naming `displayName`; although the packet contains a `publishedPod.displayName` response property elsewhere, it does not establish that this added note belongs in the localized validation error or names the input field. Preserve the exact `DisplayName` literal and hold the added wording until its error-message contract is confirmed.",
+      "sourceKey": "DisplayName is required."
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "DisplayName est obligatoire. (champs API : \"displayName\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 1077,
+            "path": "crates/slskr/src/legacy_route_dispatch_group_06.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 277,
+            "path": "crates/slskr/src/route_dispatch_group_5_mutations.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 67,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note is part of the intended localized validation error"
+      },
+      "locale": "fr",
+      "position": 1188,
+      "rationale": "The server callers return only `DisplayName is required.` The targets append an API-field parenthetical naming `displayName`; although the packet contains a `publishedPod.displayName` response property elsewhere, it does not establish that this added note belongs in the localized validation error or names the input field. Preserve the exact `DisplayName` literal and hold the added wording until its error-message contract is confirmed.",
+      "sourceKey": "DisplayName is required."
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "DisplayName é obrigatório. (campos de API: \"displayName\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 1077,
+            "path": "crates/slskr/src/legacy_route_dispatch_group_06.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 277,
+            "path": "crates/slskr/src/route_dispatch_group_5_mutations.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 67,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note is part of the intended localized validation error"
+      },
+      "locale": "pt-BR",
+      "position": 1188,
+      "rationale": "The server callers return only `DisplayName is required.` The targets append an API-field parenthetical naming `displayName`; although the packet contains a `publishedPod.displayName` response property elsewhere, it does not establish that this added note belongs in the localized validation error or names the input field. Preserve the exact `DisplayName` literal and hold the added wording until its error-message contract is confirmed.",
+      "sourceKey": "DisplayName is required."
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "مطلوب DisplayName. (حقول API: \"displayName\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 1077,
+            "path": "crates/slskr/src/legacy_route_dispatch_group_06.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 277,
+            "path": "crates/slskr/src/route_dispatch_group_5_mutations.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 67,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note is part of the intended localized validation error"
+      },
+      "locale": "ar",
+      "position": 1188,
+      "rationale": "The server callers return only `DisplayName is required.` The targets append an API-field parenthetical naming `displayName`; although the packet contains a `publishedPod.displayName` response property elsewhere, it does not establish that this added note belongs in the localized validation error or names the input field. Preserve the exact `DisplayName` literal and hold the added wording until its error-message contract is confirmed.",
+      "sourceKey": "DisplayName is required."
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "DisplayName이 필요합니다. (API 필드: \"displayName\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 1077,
+            "path": "crates/slskr/src/legacy_route_dispatch_group_06.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 277,
+            "path": "crates/slskr/src/route_dispatch_group_5_mutations.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 67,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note is part of the intended localized validation error"
+      },
+      "locale": "ko",
+      "position": 1188,
+      "rationale": "The server callers return only `DisplayName is required.` The targets append an API-field parenthetical naming `displayName`; although the packet contains a `publishedPod.displayName` response property elsewhere, it does not establish that this added note belongs in the localized validation error or names the input field. Preserve the exact `DisplayName` literal and hold the added wording until its error-message contract is confirmed.",
+      "sourceKey": "DisplayName is required."
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "必須提供 DisplayName。 (API 欄位： \"displayName\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 1077,
+            "path": "crates/slskr/src/legacy_route_dispatch_group_06.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 277,
+            "path": "crates/slskr/src/route_dispatch_group_5_mutations.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 67,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note is part of the intended localized validation error"
+      },
+      "locale": "zh-Hant",
+      "position": 1188,
+      "rationale": "The server callers return only `DisplayName is required.` The targets append an API-field parenthetical naming `displayName`; although the packet contains a `publishedPod.displayName` response property elsewhere, it does not establish that this added note belongs in the localized validation error or names the input field. Preserve the exact `DisplayName` literal and hold the added wording until its error-message contract is confirmed.",
+      "sourceKey": "DisplayName is required."
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "Cần có DisplayName. (trường API: \"displayName\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 1077,
+            "path": "crates/slskr/src/legacy_route_dispatch_group_06.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 277,
+            "path": "crates/slskr/src/route_dispatch_group_5_mutations.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 67,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note is part of the intended localized validation error"
+      },
+      "locale": "vi",
+      "position": 1188,
+      "rationale": "The server callers return only `DisplayName is required.` The targets append an API-field parenthetical naming `displayName`; although the packet contains a `publishedPod.displayName` response property elsewhere, it does not establish that this added note belongs in the localized validation error or names the input field. Preserve the exact `DisplayName` literal and hold the added wording until its error-message contract is confirmed.",
+      "sourceKey": "DisplayName is required."
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "DisplayName wajib diisi. (kolom API: \"displayName\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 1077,
+            "path": "crates/slskr/src/legacy_route_dispatch_group_06.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 277,
+            "path": "crates/slskr/src/route_dispatch_group_5_mutations.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 67,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note is part of the intended localized validation error"
+      },
+      "locale": "id",
+      "position": 1188,
+      "rationale": "The server callers return only `DisplayName is required.` The targets append an API-field parenthetical naming `displayName`; although the packet contains a `publishedPod.displayName` response property elsewhere, it does not establish that this added note belongs in the localized validation error or names the input field. Preserve the exact `DisplayName` literal and hold the added wording until its error-message contract is confirmed.",
+      "sourceKey": "DisplayName is required."
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "Đồng nghiệp khác biệt",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 685,
+            "path": "web/src/components/CompatibilityDashboard.jsx",
+            "role": "UI literal caller"
+          }
+        ],
+        "unresolvedQuestion": "which Vietnamese term is preferred for a network peer in this statistic"
+      },
+      "locale": "vi",
+      "position": 1191,
+      "rationale": "The caller shows this as a transfer-compatibility statistic whose value is computed from `distinctUsers`. The current Vietnamese says colleagues; the packet does not establish the product’s preferred Vietnamese term for network peers. Hold rather than choose an unverified term.",
+      "sourceKey": "Distinct peers"
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "Se requiere el dominio. (campos de API: \"domain\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 641,
+            "path": "crates/slskr/src/mediacore_extended.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 68,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note belongs in the error and how to describe a route path parameter"
+      },
+      "locale": "es",
+      "position": 1197,
+      "rationale": "The server caller checks an empty `/domain/` path segment and returns only `Domain is required`. Most targets append an “API fields: domain” note; the packet does not establish that this extra explanatory phrase belongs in the localized error or that a path parameter should be described as a field. Hold the added wording. The French cell has no appended note and remains reviewable.",
+      "sourceKey": "Domain is required"
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "必须提供域名。 (API 字段： \"domain\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 641,
+            "path": "crates/slskr/src/mediacore_extended.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 68,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note belongs in the error and how to describe a route path parameter"
+      },
+      "locale": "zh-Hans",
+      "position": 1197,
+      "rationale": "The server caller checks an empty `/domain/` path segment and returns only `Domain is required`. Most targets append an “API fields: domain” note; the packet does not establish that this extra explanatory phrase belongs in the localized error or that a path parameter should be described as a field. Hold the added wording. The French cell has no appended note and remains reviewable.",
+      "sourceKey": "Domain is required"
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "डोमेन आवश्यक है। (API फ़ील्ड: \"domain\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 641,
+            "path": "crates/slskr/src/mediacore_extended.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 68,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note belongs in the error and how to describe a route path parameter"
+      },
+      "locale": "hi",
+      "position": 1197,
+      "rationale": "The server caller checks an empty `/domain/` path segment and returns only `Domain is required`. Most targets append an “API fields: domain” note; the packet does not establish that this extra explanatory phrase belongs in the localized error or that a path parameter should be described as a field. Hold the added wording. The French cell has no appended note and remains reviewable.",
+      "sourceKey": "Domain is required"
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "Die Domäne ist erforderlich. (API-Felder: \"domain\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 641,
+            "path": "crates/slskr/src/mediacore_extended.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 68,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note belongs in the error and how to describe a route path parameter"
+      },
+      "locale": "de",
+      "position": 1197,
+      "rationale": "The server caller checks an empty `/domain/` path segment and returns only `Domain is required`. Most targets append an “API fields: domain” note; the packet does not establish that this extra explanatory phrase belongs in the localized error or that a path parameter should be described as a field. Hold the added wording. The French cell has no appended note and remains reviewable.",
+      "sourceKey": "Domain is required"
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "ドメインが必要です。 (APIフィールド： \"domain\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 641,
+            "path": "crates/slskr/src/mediacore_extended.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 68,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note belongs in the error and how to describe a route path parameter"
+      },
+      "locale": "ja",
+      "position": 1197,
+      "rationale": "The server caller checks an empty `/domain/` path segment and returns only `Domain is required`. Most targets append an “API fields: domain” note; the packet does not establish that this extra explanatory phrase belongs in the localized error or that a path parameter should be described as a field. Hold the added wording. The French cell has no appended note and remains reviewable.",
+      "sourceKey": "Domain is required"
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "O domínio é obrigatório. (campos de API: \"domain\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 641,
+            "path": "crates/slskr/src/mediacore_extended.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 68,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note belongs in the error and how to describe a route path parameter"
+      },
+      "locale": "pt-BR",
+      "position": 1197,
+      "rationale": "The server caller checks an empty `/domain/` path segment and returns only `Domain is required`. Most targets append an “API fields: domain” note; the packet does not establish that this extra explanatory phrase belongs in the localized error or that a path parameter should be described as a field. Hold the added wording. The French cell has no appended note and remains reviewable.",
+      "sourceKey": "Domain is required"
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "النطاق مطلوب. (حقول API: \"domain\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 641,
+            "path": "crates/slskr/src/mediacore_extended.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 68,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note belongs in the error and how to describe a route path parameter"
+      },
+      "locale": "ar",
+      "position": 1197,
+      "rationale": "The server caller checks an empty `/domain/` path segment and returns only `Domain is required`. Most targets append an “API fields: domain” note; the packet does not establish that this extra explanatory phrase belongs in the localized error or that a path parameter should be described as a field. Hold the added wording. The French cell has no appended note and remains reviewable.",
+      "sourceKey": "Domain is required"
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "도메인이 필요합니다. (API 필드: \"domain\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 641,
+            "path": "crates/slskr/src/mediacore_extended.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 68,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note belongs in the error and how to describe a route path parameter"
+      },
+      "locale": "ko",
+      "position": 1197,
+      "rationale": "The server caller checks an empty `/domain/` path segment and returns only `Domain is required`. Most targets append an “API fields: domain” note; the packet does not establish that this extra explanatory phrase belongs in the localized error or that a path parameter should be described as a field. Hold the added wording. The French cell has no appended note and remains reviewable.",
+      "sourceKey": "Domain is required"
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "必須提供域名。 (API 欄位： \"domain\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 641,
+            "path": "crates/slskr/src/mediacore_extended.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 68,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note belongs in the error and how to describe a route path parameter"
+      },
+      "locale": "zh-Hant",
+      "position": 1197,
+      "rationale": "The server caller checks an empty `/domain/` path segment and returns only `Domain is required`. Most targets append an “API fields: domain” note; the packet does not establish that this extra explanatory phrase belongs in the localized error or that a path parameter should be described as a field. Hold the added wording. The French cell has no appended note and remains reviewable.",
+      "sourceKey": "Domain is required"
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "Cần có miền. (trường API: \"domain\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 641,
+            "path": "crates/slskr/src/mediacore_extended.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 68,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note belongs in the error and how to describe a route path parameter"
+      },
+      "locale": "vi",
+      "position": 1197,
+      "rationale": "The server caller checks an empty `/domain/` path segment and returns only `Domain is required`. Most targets append an “API fields: domain” note; the packet does not establish that this extra explanatory phrase belongs in the localized error or that a path parameter should be described as a field. Hold the added wording. The French cell has no appended note and remains reviewable.",
+      "sourceKey": "Domain is required"
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "Domain wajib diisi. (kolom API: \"domain\")",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 641,
+            "path": "crates/slskr/src/mediacore_extended.rs",
+            "role": "server-side literal caller"
+          },
+          {
+            "line": 68,
+            "path": "web/src/lib/serverErrorMessageAllowlist.js",
+            "role": "server-error translation allowlist"
+          }
+        ],
+        "unresolvedQuestion": "whether the added API-field note belongs in the error and how to describe a route path parameter"
+      },
+      "locale": "id",
+      "position": 1197,
+      "rationale": "The server caller checks an empty `/domain/` path segment and returns only `Domain is required`. Most targets append an “API fields: domain” note; the packet does not establish that this extra explanatory phrase belongs in the localized error or that a path parameter should be described as a field. Hold the added wording. The French cell has no appended note and remains reviewable.",
+      "sourceKey": "Domain is required"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "Dominio al frente (por ejemplo, dominios CDN principales). El tráfico parece conectarse a este dominio.",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 935,
+            "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+            "role": "UI literal caller"
+          }
+        ],
+        "unresolvedQuestion": "which locale-specific term is approved for domain fronting"
+      },
+      "locale": "es",
+      "position": 1198,
+      "rationale": "This is a security setting for a domain to front through; the hint says traffic appears to connect to the selected domain and gives CDN examples. The current phrasings include literal front-through constructions or wording about transmitting/advancing that does not establish a reliable locale-specific term for domain fronting. Hold these cells rather than invent technical terminology. The Hindi cell also renders `CDN` in Devanagari rather than preserving the acronym.",
+      "sourceKey": "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain."
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "डोमेन टू फ्रंट थ्रू (उदाहरण के लिए, प्रमुख सीडीएन डोमेन)। ट्रैफ़िक इस डोमेन से कनेक्ट होता प्रतीत होता है.",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 935,
+            "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+            "role": "UI literal caller"
+          }
+        ],
+        "unresolvedQuestion": "which locale-specific term is approved for domain fronting"
+      },
+      "locale": "hi",
+      "position": 1198,
+      "rationale": "This is a security setting for a domain to front through; the hint says traffic appears to connect to the selected domain and gives CDN examples. The current phrasings include literal front-through constructions or wording about transmitting/advancing that does not establish a reliable locale-specific term for domain fronting. Hold these cells rather than invent technical terminology. The Hindi cell also renders `CDN` in Devanagari rather than preserving the acronym.",
+      "sourceKey": "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain."
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "Domäne, durch die man vordringen soll (z. B. große CDN-Domänen). Es scheint, dass der Datenverkehr eine Verbindung zu dieser Domain herstellt.",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 935,
+            "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+            "role": "UI literal caller"
+          }
+        ],
+        "unresolvedQuestion": "which locale-specific term is approved for domain fronting"
+      },
+      "locale": "de",
+      "position": 1198,
+      "rationale": "This is a security setting for a domain to front through; the hint says traffic appears to connect to the selected domain and gives CDN examples. The current phrasings include literal front-through constructions or wording about transmitting/advancing that does not establish a reliable locale-specific term for domain fronting. Hold these cells rather than invent technical terminology. The Hindi cell also renders `CDN` in Devanagari rather than preserving the acronym.",
+      "sourceKey": "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain."
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "ドメインからフロントスルー (主要な CDN ドメインなど)。トラフィックはこのドメインに接続しているようです。",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 935,
+            "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+            "role": "UI literal caller"
+          }
+        ],
+        "unresolvedQuestion": "which locale-specific term is approved for domain fronting"
+      },
+      "locale": "ja",
+      "position": 1198,
+      "rationale": "This is a security setting for a domain to front through; the hint says traffic appears to connect to the selected domain and gives CDN examples. The current phrasings include literal front-through constructions or wording about transmitting/advancing that does not establish a reliable locale-specific term for domain fronting. Hold these cells rather than invent technical terminology. The Hindi cell also renders `CDN` in Devanagari rather than preserving the acronym.",
+      "sourceKey": "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain."
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "Domaine à transmettre (par exemple, les principaux domaines CDN). Le trafic semble se connecter à ce domaine.",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 935,
+            "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+            "role": "UI literal caller"
+          }
+        ],
+        "unresolvedQuestion": "which locale-specific term is approved for domain fronting"
+      },
+      "locale": "fr",
+      "position": 1198,
+      "rationale": "This is a security setting for a domain to front through; the hint says traffic appears to connect to the selected domain and gives CDN examples. The current phrasings include literal front-through constructions or wording about transmitting/advancing that does not establish a reliable locale-specific term for domain fronting. Hold these cells rather than invent technical terminology. The Hindi cell also renders `CDN` in Devanagari rather than preserving the acronym.",
+      "sourceKey": "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain."
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "Domínio para front-through (por exemplo, principais domínios CDN). O tráfego parece se conectar a este domínio.",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 935,
+            "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+            "role": "UI literal caller"
+          }
+        ],
+        "unresolvedQuestion": "which locale-specific term is approved for domain fronting"
+      },
+      "locale": "pt-BR",
+      "position": 1198,
+      "rationale": "This is a security setting for a domain to front through; the hint says traffic appears to connect to the selected domain and gives CDN examples. The current phrasings include literal front-through constructions or wording about transmitting/advancing that does not establish a reliable locale-specific term for domain fronting. Hold these cells rather than invent technical terminology. The Hindi cell also renders `CDN` in Devanagari rather than preserving the acronym.",
+      "sourceKey": "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain."
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "المجال إلى الأمام من خلال (على سبيل المثال، مجالات CDN الرئيسية). يبدو أن حركة المرور تتصل بهذا المجال.",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 935,
+            "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+            "role": "UI literal caller"
+          }
+        ],
+        "unresolvedQuestion": "which locale-specific term is approved for domain fronting"
+      },
+      "locale": "ar",
+      "position": 1198,
+      "rationale": "This is a security setting for a domain to front through; the hint says traffic appears to connect to the selected domain and gives CDN examples. The current phrasings include literal front-through constructions or wording about transmitting/advancing that does not establish a reliable locale-specific term for domain fronting. Hold these cells rather than invent technical terminology. The Hindi cell also renders `CDN` in Devanagari rather than preserving the acronym.",
+      "sourceKey": "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain."
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "앞으로 통과할 도메인(예: 주요 CDN 도메인) 트래픽이 이 도메인으로 연결되는 것 같습니다.",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 935,
+            "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+            "role": "UI literal caller"
+          }
+        ],
+        "unresolvedQuestion": "which locale-specific term is approved for domain fronting"
+      },
+      "locale": "ko",
+      "position": 1198,
+      "rationale": "This is a security setting for a domain to front through; the hint says traffic appears to connect to the selected domain and gives CDN examples. The current phrasings include literal front-through constructions or wording about transmitting/advancing that does not establish a reliable locale-specific term for domain fronting. Hold these cells rather than invent technical terminology. The Hindi cell also renders `CDN` in Devanagari rather than preserving the acronym.",
+      "sourceKey": "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain."
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "Tên miền ở phía trước (ví dụ: các miền CDN chính). Lưu lượng truy cập dường như kết nối với tên miền này.",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 935,
+            "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+            "role": "UI literal caller"
+          }
+        ],
+        "unresolvedQuestion": "which locale-specific term is approved for domain fronting"
+      },
+      "locale": "vi",
+      "position": 1198,
+      "rationale": "This is a security setting for a domain to front through; the hint says traffic appears to connect to the selected domain and gives CDN examples. The current phrasings include literal front-through constructions or wording about transmitting/advancing that does not establish a reliable locale-specific term for domain fronting. Hold these cells rather than invent technical terminology. The Hindi cell also renders `CDN` in Devanagari rather than preserving the acronym.",
+      "sourceKey": "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain."
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "Domain ke depan (misalnya, domain CDN utama). Lalu lintas tampaknya terhubung ke domain ini.",
+      "holdEvidence": {
+        "sourceCallerReferences": [
+          {
+            "line": 935,
+            "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+            "role": "UI literal caller"
+          }
+        ],
+        "unresolvedQuestion": "which locale-specific term is approved for domain fronting"
+      },
+      "locale": "id",
+      "position": 1198,
+      "rationale": "This is a security setting for a domain to front through; the hint says traffic appears to connect to the selected domain and gives CDN examples. The current phrasings include literal front-through constructions or wording about transmitting/advancing that does not establish a reliable locale-specific term for domain fronting. Hold these cells rather than invent technical terminology. The Hindi cell also renders `CDN` in Devanagari rather than preserving the acronym.",
+      "sourceKey": "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain."
+    }
+  ],
+  "inputChecksumListSha256": "eec2b61e39754e909ed0bb9c31ce703ddea12f774787fdd2039cea6b8434f18e",
+  "inputFiles": {
+    "PR-attestation.json": "840a7b9e139b9ddc056316b74629a2d86f9d442f6a44527b1fa9d94b0ab489f0",
+    "README.md": "ee1d76fcb3f5e6feab9608a86c2f42e8b99222fd6f2e6c408b6d77a184fa4ddf",
+    "catalog-file-pins.json": "ba1fc3ef9fa50443d2a83cf8672ba48eac2be9124401b829658bc5212a11121b",
+    "current-target-cells.jsonl": "034084982f4576a0e109fb2d439b1b339a5c64f83706a73e619a21043da1240d",
+    "localization-runtime-context.json": "07c408f78d2c710a54133ec8d1688c065c00ff400ef34893edaece9113a2a871",
+    "manifest.json": "1fd98200a643810a07df00665fc5f6de986e835a47b59d4f7d08f34d49b579b0",
+    "selected-source-keys.txt": "3eb39e7ce2034623d801ada86278f5aea318b8f2391da3d29ab565d76f79c273",
+    "source-contexts.jsonl": "76c0aaacfad4cb9d299e7ad83868fe9d2c092379c872b51fd87755a1e01a8159"
+  },
+  "inputPacket": "/mnt/disks/scratch/task-scratch/slskr-pr204-w1183-1202-input-20261103/clean-input",
+  "limitations": [
+    "Machine review is not native-speaker approval.",
+    "Position 1188 is held because the targets append an API-field note whose relationship to the validation error is not established by the pinned callers.",
+    "Position 1197 is held for locales with an added API-field note because the exact caller is a route path parameter and the packet does not establish that extra wording as part of the localized error.",
+    "Position 1198 is held in ten locales because the packet does not establish a reliable localized term for the specialized domain-fronting setting; Simplified and Traditional Chinese “前置域” are accepted as direct equivalents.",
+    "Vietnamese position 1191 is held because the packet does not establish the product’s preferred term for network peers."
+  ],
+  "localeCount": 12,
+  "nativeSpeakerApproval": false,
+  "placeholderMismatchCount": 0,
+  "proposalClassCounts": {
+    "correction": 35,
+    "refinement": 4
+  },
+  "proposalCount": 39,
+  "proposals": [
+    {
+      "confidence": "moderate",
+      "currentTarget": "Jours d'expiration des étagères Discovery",
+      "locale": "fr",
+      "position": 1183,
+      "proposalType": "refinement",
+      "proposedTarget": "Nombre de jours avant expiration de l’étagère Discovery",
+      "rationale": "This is a numeric `expiryDays` field. The current plural phrasing is awkward; the proposal states that the value is the number of days before the Discovery shelf expires.",
+      "sourceKey": "Discovery shelf expiry days"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "검색 선반 만료일",
+      "locale": "ko",
+      "position": 1183,
+      "proposalType": "correction",
+      "proposedTarget": "디스커버리 선반 만료 일수",
+      "rationale": "The caller binds this label to a numeric days value. The current wording says “search shelf expiry date”; this preserves Discovery and expresses an expiry-day count.",
+      "sourceKey": "Discovery shelf expiry days"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "Ngày hết hạn của kệ Discovery",
+      "locale": "vi",
+      "position": 1183,
+      "proposalType": "correction",
+      "proposedTarget": "Số ngày đến khi kệ Discovery hết hạn",
+      "rationale": "The caller binds this label to a numeric days value. The current translation says an expiry day/date, rather than the number of days until expiry.",
+      "sourceKey": "Discovery shelf expiry days"
+    },
+    {
+      "confidence": "high",
+      "currentTarget": "Despedir",
+      "locale": "es",
+      "position": 1184,
+      "proposalType": "correction",
+      "proposedTarget": "Cerrar",
+      "rationale": "Both callers clear an error or success message when this button is clicked. “Despedir” suggests dismissing a person; “Cerrar” matches the close action.",
+      "sourceKey": "Dismiss"
+    },
+    {
+      "confidence": "high",
+      "currentTarget": "解雇",
+      "locale": "zh-Hans",
+      "position": 1184,
+      "proposalType": "correction",
+      "proposedTarget": "关闭",
+      "rationale": "Both callers clear an error or success message when this button is clicked. “解雇” means firing someone; “关闭” matches the close action.",
+      "sourceKey": "Dismiss"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "नकार देना",
+      "locale": "hi",
+      "position": 1184,
+      "proposalType": "correction",
+      "proposedTarget": "बंद करें",
+      "rationale": "The callers clear the displayed error or success message. The current wording means reject/refuse; this is the close action.",
+      "sourceKey": "Dismiss"
+    },
+    {
+      "confidence": "high",
+      "currentTarget": "Zurückweisen",
+      "locale": "de",
+      "position": 1184,
+      "proposalType": "correction",
+      "proposedTarget": "Schließen",
+      "rationale": "The callers clear the displayed error or success message. “Zurückweisen” means reject; “Schließen” matches the close action.",
+      "sourceKey": "Dismiss"
+    },
+    {
+      "confidence": "high",
+      "currentTarget": "却下する",
+      "locale": "ja",
+      "position": 1184,
+      "proposalType": "correction",
+      "proposedTarget": "閉じる",
+      "rationale": "The callers clear the displayed error or success message. “却下する” means reject a proposal; “閉じる” matches the close action.",
+      "sourceKey": "Dismiss"
+    },
+    {
+      "confidence": "high",
+      "currentTarget": "Rejeter",
+      "locale": "fr",
+      "position": 1184,
+      "proposalType": "correction",
+      "proposedTarget": "Fermer",
+      "rationale": "The callers clear the displayed error or success message. “Rejeter” means reject; “Fermer” matches the close action.",
+      "sourceKey": "Dismiss"
+    },
+    {
+      "confidence": "high",
+      "currentTarget": "Liberar",
+      "locale": "pt-BR",
+      "position": 1184,
+      "proposalType": "correction",
+      "proposedTarget": "Fechar",
+      "rationale": "The callers clear the displayed error or success message. “Liberar” means release/free; “Fechar” matches the close action.",
+      "sourceKey": "Dismiss"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "رفض",
+      "locale": "ar",
+      "position": 1184,
+      "proposalType": "correction",
+      "proposedTarget": "إغلاق",
+      "rationale": "The callers clear the displayed error or success message. “رفض” means rejection; “إغلاق” matches the close action.",
+      "sourceKey": "Dismiss"
+    },
+    {
+      "confidence": "high",
+      "currentTarget": "해고하다",
+      "locale": "ko",
+      "position": 1184,
+      "proposalType": "correction",
+      "proposedTarget": "닫기",
+      "rationale": "The callers clear the displayed error or success message. “해고하다” means fire someone; “닫기” matches the close action.",
+      "sourceKey": "Dismiss"
+    },
+    {
+      "confidence": "high",
+      "currentTarget": "解僱",
+      "locale": "zh-Hant",
+      "position": 1184,
+      "proposalType": "correction",
+      "proposedTarget": "關閉",
+      "rationale": "The callers clear the displayed error or success message. “解僱” means firing someone; “關閉” matches the close action.",
+      "sourceKey": "Dismiss"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "Miễn nhiệm",
+      "locale": "vi",
+      "position": 1184,
+      "proposalType": "correction",
+      "proposedTarget": "Đóng",
+      "rationale": "The callers clear the displayed error or success message. “Miễn nhiệm” means removing someone from an office; “Đóng” matches the close action.",
+      "sourceKey": "Dismiss"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "Membubarkan",
+      "locale": "id",
+      "position": 1184,
+      "proposalType": "correction",
+      "proposedTarget": "Tutup",
+      "rationale": "The callers clear the displayed error or success message. “Membubarkan” means disband/dissolve; “Tutup” matches the close action.",
+      "sourceKey": "Dismiss"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "bồi thẩm đoàn bất đồng quan điểm",
+      "locale": "vi",
+      "position": 1189,
+      "proposalType": "correction",
+      "proposedTarget": "Các bồi thẩm viên bất đồng quan điểm",
+      "rationale": "The caller uses this as the heading for a joined list of `dissentingJurors`. The current wording names a dissenting jury panel, rather than the dissenting jurors.",
+      "sourceKey": "Dissenting jurors"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "المستخدمون المتميزون",
+      "locale": "ar",
+      "position": 1190,
+      "proposalType": "correction",
+      "proposedTarget": "المستخدمون الفريدون",
+      "rationale": "This is a count heading for distinct users. “المتميزون” can read as distinguished users; “الفريدون” expresses unique users.",
+      "sourceKey": "Distinct Users"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "Compañeros distintos",
+      "locale": "es",
+      "position": 1191,
+      "proposalType": "correction",
+      "proposedTarget": "Pares únicos",
+      "rationale": "The caller is a transfer-compatibility statistic built from distinct-user counts. “Compañeros” suggests companions/colleagues; “pares” preserves the network-peer sense.",
+      "sourceKey": "Distinct peers"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "不同的同行",
+      "locale": "zh-Hans",
+      "position": 1191,
+      "proposalType": "refinement",
+      "proposedTarget": "不同的对等方",
+      "rationale": "The caller is a transfer-compatibility statistic built from distinct-user counts. “同行” can read as professional colleagues; “对等方” identifies peers in the network context.",
+      "sourceKey": "Distinct peers"
+    },
+    {
+      "confidence": "low",
+      "currentTarget": "विशिष्ट सहकर्मी",
+      "locale": "hi",
+      "position": 1191,
+      "proposalType": "correction",
+      "proposedTarget": "विशिष्ट पीयर",
+      "rationale": "The caller is a transfer-compatibility statistic built from distinct-user counts. “सहकर्मी” means colleague; the technical term “पीयर” preserves the network-peer sense.",
+      "sourceKey": "Distinct peers"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "Eindeutige Kollegen",
+      "locale": "de",
+      "position": 1191,
+      "proposalType": "correction",
+      "proposedTarget": "Eindeutige Peers",
+      "rationale": "The caller is a transfer-compatibility statistic built from distinct-user counts. “Kollegen” means colleagues; the technical loan “Peers” preserves the network-peer sense.",
+      "sourceKey": "Distinct peers"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "أقرانهم المتميزون",
+      "locale": "ar",
+      "position": 1191,
+      "proposalType": "correction",
+      "proposedTarget": "أقران فريدون",
+      "rationale": "The caller is a transfer-compatibility statistic built from distinct-user counts. The current phrase can read as “their distinguished peers”; this says unique peers.",
+      "sourceKey": "Distinct peers"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "뚜렷한 동료",
+      "locale": "ko",
+      "position": 1191,
+      "proposalType": "correction",
+      "proposedTarget": "서로 다른 피어",
+      "rationale": "The caller is a transfer-compatibility statistic built from distinct-user counts. “동료” means colleague; “피어” preserves the network-peer sense.",
+      "sourceKey": "Distinct peers"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "不同的同行",
+      "locale": "zh-Hant",
+      "position": 1191,
+      "proposalType": "refinement",
+      "proposedTarget": "不同的對等方",
+      "rationale": "The caller is a transfer-compatibility statistic built from distinct-user counts. “同行” can read as professional colleagues; “對等方” identifies peers in the network context.",
+      "sourceKey": "Distinct peers"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "Rekan yang berbeda",
+      "locale": "id",
+      "position": 1191,
+      "proposalType": "correction",
+      "proposedTarget": "Peer yang unik",
+      "rationale": "The caller is a transfer-compatibility statistic built from distinct-user counts. “Rekan” suggests colleagues/associates; “peer” retains the network term.",
+      "sourceKey": "Distinct peers"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "اِختِصاص",
+      "locale": "ar",
+      "position": 1194,
+      "proposalType": "correction",
+      "proposedTarget": "المجال",
+      "rationale": "The callers use this for content domains such as audio, video, and image. “اختصاص” suggests a specialty; “المجال” expresses the domain/category.",
+      "sourceKey": "Domain"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "Lãnh địa",
+      "locale": "vi",
+      "position": 1194,
+      "proposalType": "correction",
+      "proposedTarget": "Lĩnh vực",
+      "rationale": "The callers use this for content domains such as audio, video, and image. “Lãnh địa” means territory; “Lĩnh vực” expresses a domain or field.",
+      "sourceKey": "Domain"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "域名搜索",
+      "locale": "zh-Hans",
+      "position": 1195,
+      "proposalType": "correction",
+      "proposedTarget": "领域搜索",
+      "rationale": "The caller’s card describes finding ContentIDs by domains such as audio, video, and image. “域名搜索” implies DNS/domain-name search; “领域搜索” fits content domains.",
+      "sourceKey": "Domain Search"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "域名搜尋",
+      "locale": "zh-Hant",
+      "position": 1195,
+      "proposalType": "correction",
+      "proposedTarget": "領域搜尋",
+      "rationale": "The caller’s card describes finding ContentIDs by domains such as audio, video, and image. “域名搜尋” implies DNS/domain-name search; “領域搜尋” fits content domains.",
+      "sourceKey": "Domain Search"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "Tìm kiếm tên miền",
+      "locale": "vi",
+      "position": 1195,
+      "proposalType": "correction",
+      "proposedTarget": "Tìm kiếm theo lĩnh vực",
+      "rationale": "The caller’s card searches content domains such as audio, video, and image. “Tên miền” means an Internet domain name; this expresses search by content field/domain.",
+      "sourceKey": "Domain Search"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "اِختِصاص:",
+      "locale": "ar",
+      "position": 1199,
+      "proposalType": "correction",
+      "proposedTarget": "المجال:",
+      "rationale": "The caller displays this label before a runtime content-domain value. The current “اختصاص” suggests a specialty; “المجال” fits the audio/video/image category context.",
+      "sourceKey": "Domain:"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "Lãnh địa:",
+      "locale": "vi",
+      "position": 1199,
+      "proposalType": "correction",
+      "proposedTarget": "Lĩnh vực:",
+      "rationale": "The caller displays this label before an opaque runtime content-domain value. “Lãnh địa” means territory; “Lĩnh vực” fits the content field/domain.",
+      "sourceKey": "Domain:"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "域名",
+      "locale": "zh-Hans",
+      "position": 1200,
+      "proposalType": "correction",
+      "proposedTarget": "领域",
+      "rationale": "The caller labels a count of MediaCore content domains, whose examples are audio, video, and image. “域名” implies DNS names; “领域” fits these categories.",
+      "sourceKey": "Domains"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "網域",
+      "locale": "zh-Hant",
+      "position": 1200,
+      "proposalType": "correction",
+      "proposedTarget": "領域",
+      "rationale": "The caller labels a count of MediaCore content domains, whose examples are audio, video, and image. “網域” implies network domains; “領域” fits these categories.",
+      "sourceKey": "Domains"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "Tên miền",
+      "locale": "vi",
+      "position": 1200,
+      "proposalType": "correction",
+      "proposedTarget": "Lĩnh vực",
+      "rationale": "The caller labels a count of MediaCore content domains, whose examples are audio, video, and image. “Tên miền” implies DNS names; “Lĩnh vực” fits these categories.",
+      "sourceKey": "Domains"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "域名：",
+      "locale": "zh-Hans",
+      "position": 1201,
+      "proposalType": "correction",
+      "proposedTarget": "领域：",
+      "rationale": "The caller labels the total count of MediaCore content domains, whose examples are audio, video, and image. “域名” implies DNS names; “领域” fits these categories.",
+      "sourceKey": "Domains:"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "域名：",
+      "locale": "zh-Hant",
+      "position": 1201,
+      "proposalType": "correction",
+      "proposedTarget": "領域：",
+      "rationale": "The caller labels the total count of MediaCore content domains, whose examples are audio, video, and image. “域名” implies DNS names; “領域” fits these categories.",
+      "sourceKey": "Domains:"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "Tên miền:",
+      "locale": "vi",
+      "position": 1201,
+      "proposalType": "correction",
+      "proposedTarget": "Lĩnh vực:",
+      "rationale": "The caller labels the total count of MediaCore content domains, whose examples are audio, video, and image. “Tên miền” implies DNS names; “Lĩnh vực” fits these categories.",
+      "sourceKey": "Domains:"
+    },
+    {
+      "confidence": "moderate",
+      "currentTarget": "終わり",
+      "locale": "ja",
+      "position": 1202,
+      "proposalType": "refinement",
+      "proposedTarget": "完了",
+      "rationale": "All five callers use this as a button that closes or finishes a modal, not as a label for an ending. “完了” is the conventional concise UI action.",
+      "sourceKey": "Done"
+    }
+  ],
+  "protectedLiteralChecks": 36,
+  "protectedLiteralMismatchCount": 1,
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "reviewType": "primary semantic review",
+  "schemaVersion": 1,
+  "sourceCount": 20,
+  "tree": "c2ec31432943730f0a8f3ee87687c46b6a4400c2",
+  "window": "W1183-W1202"
+}

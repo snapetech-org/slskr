@@ -1,0 +1,251 @@
+# Runtime source context at PR code head 7ff454828398de6a3cfb72fe7f0ed21fe419425b (tree 9e9f2aa743c4ff3236af8f99619803bdc3a37152)
+
+The exact PR head `e05f1b71618bfecd89659b9387a6a6b224aa6e74` (tree `edf233c33dec6acea2ecf4fecb15edc13a75ee69`) adds evidence/docs only. All twelve locale catalogs and the cited source files have the same contents as the pinned 7ff code tree.
+
+
+## `web/src/components/Player/PlayerLauncher.jsx` — git blob `54f6f98454f46a957dc0e00c78660965412f025e`, SHA-256 `6942fcea65ad86549e0114f765ec9ce50a7ad4497828d4d5b79373dfb32ce720`
+
+
+Lines 448–458:
+
+448:                 onChange={(_, { value }) => updateBrowserQuery(value)}
+449:                 placeholder={interfaceText("Search all audio by file, artist folder, album folder, or path")}
+450:                 value={query}
+451:                {...interfaceTextProps("Search all audio by file, artist folder, album folder, or path")}/>
+452:               <div className="player-file-explorer-counts">
+453:                 {itemsLoading
+454:                   ? <LocalizedText source={"Loading..."} />
+455:                   : <LocalizedText source={"{shownFileCount} of {totalFiles} tracks"} values={{ "shownFileCount": (shownFileCount), "totalFiles": (visibleBrowserStats.totalFiles) }} />}
+456:                 {visibleBrowserStats.duplicatesRemoved > 0
+457:                   ? <LocalizedText source={", {duplicatesRemoved} duplicates collapsed"} values={{ "duplicatesRemoved": (visibleBrowserStats.duplicatesRemoved) }} />
+458:                   : ''}
+
+
+## `web/src/components/Search/DiscoveryGraphCanvas.jsx` — git blob `ba213baf579f37adcb205ebdc19ea7550d472f23`, SHA-256 `91800659b6e5f575665d097a676bf5b94422154d96f02b9b523c2ca89ad7d536`
+
+
+Lines 88–108:
+
+88:
+89:         return (
+90:           <line
+91:             key={`${edge.sourceNodeId}-${edge.targetNodeId}-${edge.edgeType}`}
+92:             stroke="#c7d0d9"
+93:             strokeWidth={1 + Math.round((edge.weight || 0) * 3)}
+94:             x1={source.x}
+95:             x2={target.x}
+96:             y1={source.y}
+97:             y2={target.y}
+98:           >
+99:             <title>
+100:               {interfaceText('{source} → {target} · {edgeType}{reason}', {
+101:                 source: source.label,
+102:                 target: target.label,
+103:                 edgeType: edge.edgeType,
+104:                 reason: edge.reason ? ` · ${edge.reason}` : '',
+105:               })}
+106:             </title>
+107:           </line>
+108:         );
+
+
+## `web/src/components/System/AutomationCenter/index.jsx` — git blob `c80e09d7a45fc31d2b9573711e62f14b7215fb1f`, SHA-256 `3e5392f8a4f4d0ed7e6e6191e5cbbb12e1f34689a13d7c40d22e26b56398628d`
+
+
+Lines 80–201:
+
+80:     () => buildAutomationRunHistory(recipeState),
+81:     [recipeState],
+82:   );
+83:
+84:   const toggleRecipe = (recipe, enabled) => {
+85:     setRecipeState(setAutomationRecipeEnabled(recipe.id, enabled));
+86:     toast.info(interfaceText(enabled ? "{title} enabled" : "{title} disabled", { title: interfaceText(recipe.title) }));
+87:   };
+88:
+89:   const dryRunRecipe = (recipe) => {
+90:     setRecipeState(setAutomationRecipeDryRun(recipe.id));
+91:     toast.info(interfaceText("{title} dry run recorded", { title: interfaceText(recipe.title) }));
+92:   };
+93:
+94:   const executeWishlistRetry = async (recipe, isCurrentRequest) => {
+95:     const response = await wishlistAPI.getAll();
+96:     if (!isCurrentRequest()) return;
+97:     const allRequests = Array.isArray(response)
+98:       ? response.filter(
+99:           (request) =>
+100:             request &&
+101:             typeof request === 'object' &&
+102:             !Array.isArray(request),
+103:         )
+104:       : [];
+105:     const runnableRequests = getRunnableWishlistRequests(allRequests, { limit: 3 });
+106:     const result = {
+107:       failed: 0,
+108:       runLimit: 3,
+109:       skipped: Math.max(allRequests.length - runnableRequests.length, 0),
+110:       started: 0,
+111:     };
+112:
+113:     for (const request of runnableRequests) {
+114:       try {
+115:         await wishlistAPI.runSearch(request.id);
+116:         if (!isCurrentRequest()) return;
+117:         result.started += 1;
+118:       } catch {
+119:         result.failed += 1;
+120:       }
+121:     }
+122:
+123:     if (!isCurrentRequest()) return;
+124:     result.summary = `Ran ${formatRegionalNumber(result.started)} Wishlist searches; ${formatRegionalNumber(result.failed)} failed; ${formatRegionalNumber(result.skipped)} skipped.`;
+125:     const report = buildAutomationExecutionReport(recipe, result);
+126:     setRecipeState(setAutomationRecipeExecution(recipe.id, report, report.generatedAt));
+127:     const status = interfaceText("{title} ran {started} bounded Wishlist searches; {failed} failed. Downloads still require normal result review.", { title: interfaceText(recipe.title), started: result.started, failed: result.failed });
+128:     setCopyStatus(status);
+129:     toast.info(status);
+130:   };
+131:
+132:   const executeLibraryHealthScan = async (recipe, isCurrentRequest) => {
+133:     const libraryPath = `${recipeInputs[recipe.id]?.libraryPath || ''}`.trim();
+134:     if (!libraryPath) {
+135:       setCopyStatus(interfaceText('Enter a Library Health path before starting the scan.'));
+136:       return;
+137:     }
+138:
+139:     const response = await libraryHealthAPI.startScan(libraryPath);
+140:     if (!isCurrentRequest()) return;
+141:     const rawScanId = response?.data?.scanId || response?.scanId;
+142:     const scanId =
+143:       typeof rawScanId === 'string' || typeof rawScanId === 'number'
+144:         ? String(rawScanId)
+145:         : interfaceText('unknown');
+146:     const report = buildAutomationExecutionReport(recipe, {
+147:       scanId,
+148:       started: 1,
+149:       summary: `Started Library Health scan ${scanId} for ${libraryPath}.`,
+150:     });
+151:     setRecipeState(setAutomationRecipeExecution(recipe.id, report, report.generatedAt));
+152:     const status = interfaceText("{title} started scan {scanId} for {libraryPath}.", { title: interfaceText(recipe.title), scanId, libraryPath });
+153:     setCopyStatus(status);
+154:     toast.info(status);
+155:   };
+156:
+157:   const executeReadOnlyRecipe = async (recipe, isCurrentRequest) => {
+158:     const result = await executeAutomationAction(recipe.id);
+159:     if (!isCurrentRequest()) return;
+160:     const report = buildAutomationExecutionReport(recipe, result);
+161:     setRecipeState(setAutomationRecipeExecution(recipe.id, report, report.generatedAt));
+162:     const summary =
+163:       typeof result?.summary === 'string'
+164:         ? result.summary
+165:         : toDisplayError(result, `${recipe.title} completed`);
+166:     setCopyStatus(interfaceText("{title}: {summary}", { title: interfaceText(recipe.title), summary }));
+167:     toast.info(interfaceText("{title} completed", { title: interfaceText(recipe.title) }));
+168:   };
+169:
+170:   const executeRecipe = async (recipe) => {
+171:     if (!mountedRef.current || executionInFlightRef.current) return;
+172:     const requestId = ++executionRequestIdRef.current;
+173:     const isCurrentRequest = () =>
+174:       mountedRef.current && executionRequestIdRef.current === requestId;
+175:
+176:     if (!isAutomationRecipeExecutable(recipe)) {
+177:       if (isCurrentRequest()) {
+178:         setCopyStatus(interfaceText("{title} is preview-only because its backend action is unavailable.", { title: interfaceText(recipe.title) }));
+179:       }
+180:       return;
+181:     }
+182:
+183:     executionInFlightRef.current = true;
+184:     setExecutingRecipe(recipe.id);
+185:     try {
+186:       if (recipe.id === 'wishlist-retry') {
+187:         await executeWishlistRetry(recipe, isCurrentRequest);
+188:       }
+189:       if (recipe.id === 'library-health-scan') {
+190:         await executeLibraryHealthScan(recipe, isCurrentRequest);
+191:       }
+192:       if (['dashboard-refresh', 'local-diagnostics', 'stale-cache-reminders'].includes(recipe.id)) {
+193:         await executeReadOnlyRecipe(recipe, isCurrentRequest);
+194:       }
+195:     } catch (error) {
+196:       if (isCurrentRequest()) {
+197:         const message = interfaceText("{title} failed: {message}", { title: interfaceText(recipe.title), message: toDisplayError(error) });
+198:         setCopyStatus(message);
+199:         toast.error(message);
+200:       }
+201:     } finally {
+
+
+## `web/src/components/Search/Detail/SearchResultControls.jsx` — git blob `f6ec8606ad6420be75d2cde695815e31b86bd448`, SHA-256 `1f2880630f893cfc8361fb40a4ad4e9e07d01da96202b7ac36054c860124da46`
+
+
+Lines 338–349:
+
+338:                         {candidate.score}/100
+339:                       </Label>
+340:                     </List.Header>
+341:                     <List.Description>
+342:                 {t('{tracks} of {expected} visible tracks · {sources} sources · {percent}%', {
+343:                   tracks: formatRegionalNumber(candidate.trackCount),
+344:                   expected: formatRegionalNumber(candidate.expectedTrackCount),
+345:                   sources: formatRegionalNumber(candidate.sourceCount),
+346:                   percent: formatRegionalNumber(Math.round(candidate.completenessRatio * 100)),
+347:                 })}
+348:                     </List.Description>
+349:                     <div className="search-album-candidate-review">
+
+
+## `web/src/lib/automationRecipes.js` — git blob `16b7b3ec33fe15748e47a45c397b58d0d35d9387`, SHA-256 `24d9494cf78e88fdc700da54a99139ebd67d6c2b608d033b9d7d8dd312c2c706`
+
+
+Lines 65–101:
+
+65:     approvalGate: 'Download approval',
+66:     cadence: 'Manual or scheduled',
+67:     cooldown: '2 hours',
+68:     description: 'Retries failed Wishlist items using the selected acquisition profile.',
+69:     enabledByDefault: false,
+70:     fileImpact: 'Downloads after approval',
+71:     icon: 'redo',
+72:     id: 'wishlist-retry',
+73:     maxRunTime: '20 minutes',
+74:     networkImpact: 'Public peers possible',
+75:     title: 'Wishlist Retry',
+76:   },
+77:   {
+78:     approvalGate: 'Fix confirmation',
+79:     cadence: 'Manual or scheduled',
+80:     cooldown: '24 hours',
+81:     description: 'Finds duplicates, dead files, metadata gaps, fake lossless files, and missing art.',
+82:     enabledByDefault: false,
+83:     fileImpact: 'Read only until fixed',
+84:     icon: 'heartbeat',
+85:     id: 'library-health-scan',
+86:     maxRunTime: '30 minutes',
+87:     networkImpact: 'Local',
+88:     title: 'Library Health Scan',
+89:   },
+90:   {
+91:     approvalGate: 'Configured import success',
+92:     cadence: 'After import',
+93:     cooldown: '10 minutes',
+94:     description: 'Asks configured media servers to rescan after successful library imports.',
+95:     enabledByDefault: false,
+96:     fileImpact: 'Media-server scan',
+97:     icon: 'server',
+98:     id: 'media-server-rescan',
+99:     maxRunTime: '2 minutes',
+100:     networkImpact: 'Local network',
+101:     title: 'Media Server Rescan',
+
+
+## Contextless exact-string search
+
+A literal search of runtime JavaScript/TypeScript source under `web/src`, excluding locale catalogs and test/spec files, found no non-locale caller for these four templates. `rg -n -F --file contextless-source-patterns.txt web/src --glob '*.jsx' --glob '*.js' --glob '*.tsx' --glob '*.ts' --glob '!**/locales/**' --glob '!**/*.test.*' --glob '!**/*.spec.*'` exited 1 with no matches. The four strings remain held across all twelve locales until callsite/source placement can be established.
+
+
+## Arabic right-to-left route marker precedent
+
+The Arabic catalog at the same pinned source head already renders the route-label source “Open System → Options to review your Soulseek credentials, then use Disconnected in the top bar to reconnect.” as “افتح النظام ← الخيارات لمراجعة بيانات اعتماد Soulseek، ثم استخدم «غير متصل» في الشريط العلوي لإعادة الاتصال.” The target value SHA-256 is `01cd2e4a226a567c5819b0c285b9d913eb7fe464ccf0c94c5c4b72a81789ac62`; catalog SHA-256 is `85aa499a0ac019fa7b6323e9cc2fbdd5363dd39cb5e328e5baa5c47b84f3c3c6`. This supports mirroring the Discovery Graph’s `→` marker as `←` in Arabic while preserving source-to-target logical order in right-to-left reading.

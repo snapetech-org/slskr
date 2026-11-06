@@ -1,0 +1,8 @@
+{
+  "oldBodyLengthCharacters": 4096,
+  "oldBodySha256": "55b61d0c2e17826531645b47523ad09809fd09eb3745453b9580dc372623dbe3",
+  "newBodyLengthCharacters": 4960,
+  "newBodySha256": "081f033539c8e585b7d6dc90a58bf256d511fa13b877a51a6a6c1a3c74ee812e",
+  "oldBodyIsExactPrefix": true,
+  "section": "### W1583–W1602 — fixed server errors\n\nReviewed all 240 catalog cells for 20 source messages across 12 locales, including their production callers. Applied four approved changes in product commit `dab83932bb2b375caf3f588ac7b20b3bd835a419`: two corrections and two refinements across the Brazilian Portuguese, Traditional Chinese, and Vietnamese catalogs. The remaining 236 cells were retained unchanged; all 62 carried prior holds were reattested unchanged, with no new holds.\n\nThe primary review, independent blind review, cross-review, and root adjudication are recorded in the PR evidence. The blind reviewer disclosed one generic public search about Traditional Chinese wording; the cross-reviewer did not access or rely on it. Native-speaker signoff and headed browser review remain outstanding. No tests, builds, scans, CI, or workflow edits were performed.\n"
+}

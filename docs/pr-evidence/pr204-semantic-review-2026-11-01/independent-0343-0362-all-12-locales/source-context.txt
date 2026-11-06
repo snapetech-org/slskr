@@ -1,0 +1,509 @@
+# Source and caller context for slskR semantic window 343–362
+
+PR #204 review commit `7b53e289f3b4b121be4b1b49c997ebb65b02ed8a` / tree `1b7831ff560924250e1c5ebcc256f4cbf02d30b8`.
+Source/catalog commit `7ff454828398de6a3cfb72fe7f0ed21fe419425b` / tree `9e9f2aa743c4ff3236af8f99619803bdc3a37152`. All caller file Git blobs match between those commits.
+
+## Per-key context
+
+- Index 343: `Artist Release Radar` — Named Search feature section for artist release-radar subscriptions; users provide an artist name or MusicBrainz ID and can mute release groups. Caller: `web/src/components/Search/ArtistReleaseRadarPanel.jsx:212-245; web/src/components/Search/SearchesListView.jsx:384-396`.
+- Index 344: `Artist and title are required` — Server validation for a now-playing request: both artist and title fields are required. The optional parenthetical API field names in localized targets match the request payload keys. Caller: `crates/slskr/src/route_dispatch_group_5_mutations.rs:217-235; crates/slskr/src/legacy_route_dispatch_group_06.rs:1020-1035`.
+- Index 345: `Artist name` — Label for an artist-name input in Artist Release Radar and a placeholder in the Discovery Graph artist selector. Caller: `web/src/components/Search/ArtistReleaseRadarPanel.jsx:225-237; web/src/components/Search/DiscoveryGraphAtlasPanel.jsx:325-335`.
+- Index 346: `Artist:` — Bold metadata label preceding the artist value in the Pod Content Linking panel. Caller: `web/src/components/System/MediaCore/PodContentLinkingPanel.jsx:296-309`.
+- Index 347: `Artists` — Heading above the artist list in SongID analysis results. Caller: `web/src/components/Search/SongIDAnalysisResults.jsx:458-473`.
+- Index 348: `Ascending` — Job-list sorting control label; the paired branch switches ascending versus descending order. Caller: `web/src/components/System/Jobs/index.jsx:488-496`.
+- Index 349: `Ask the selected media server to scan confirmed completed-download paths.` — Description of the completed-file scan integration: ask the selected media server to scan only confirmed paths for downloads that are complete. Caller: `web/src/lib/mediaServerIntegrations.js:154-161`.
+- Index 350: `Asks configured media servers to rescan after successful library imports.` — Automation recipe description: configured media servers rescan after library imports succeed. Caller: `web/src/lib/automationRecipes.js:90-100`.
+- Index 351: `Assembling` — Localized job status for the normalized server state `assembling`. Caller: `web/src/components/System/Jobs/index.jsx:48-55`.
+- Index 352: `At least one ContentID is required` — MediaCore validation requires at least one ContentID in the request `contentIds` array. Caller: `crates/slskr/src/mediacore_mutations.rs:785-805`.
+- Index 353: `At least one ContentID is required for export` — MediaCore export validation requires at least one ContentID in the `contentIds` array. Caller: `crates/slskr/src/mediacore_mutations.rs:1020-1038`.
+- Index 354: `At least one MusicBrainz identifier is required` — Extended controller validates that at least one MusicBrainz identifier is supplied. Caller: `crates/slskr/src/extended_controller_mutations.rs:411-426`.
+- Index 355: `At least one descriptor is required` — MediaCore batch publish requires at least one entry in the `descriptors` array. Caller: `crates/slskr/src/mediacore_mutations.rs:620-640`.
+- Index 356: `At least one file is required` — Extended-controller validation rejects a request with an empty files array. Caller: `crates/slskr/src/extended_controller.rs:115-126`.
+- Index 357: `At least one link is required` — MediaCore link creation requires at least one link in the request. Caller: `crates/slskr/src/mediacore_mutations.rs:460-480`.
+- Index 358: `At least one non-empty ContentID is required` — MediaCore validation requires a non-empty ContentID in the `contentIds` array. Caller: `crates/slskr/src/mediacore_mutations.rs:690-710`.
+- Index 359: `At least one recipient is required` — Messaging form validation shown as an error toast when no recipient is selected. Caller: `web/src/components/Messaging/Messaging.jsx:676-686`.
+- Index 360: `At least one source must be selected` — Searches page displays this warning when the user has not selected any source. Caller: `web/src/components/Search/SearchesListView.jsx:305-313`.
+- Index 361: `At least one username is required` — Ranking and history request validation requires a username. Caller: `crates/slskr/src/ranking_controller.rs:54-70; crates/slskr/src/feature_mutation_controller.rs:1054-1063`.
+- Index 362: `At least one wishlist item ID is required` — Wishlist-store and route validation require at least one wishlist item ID; the request accepts `ids` or `itemIds`. Caller: `crates/slskr/src/wishlist_store.rs:713-729; crates/slskr/src/route_dispatch_group_5_mutations.rs:503-515`.
+
+## Pinned caller excerpts
+
+### `web/src/components/Search/ArtistReleaseRadarPanel.jsx` — blob `c5576accb0ef5597c0be91cd509b95b8f8bb82a2`, SHA-256 `018f81a495a5189a497b0ac0f67899e7bc55f9a05598765006db7d70d9e43567`
+
+Lines 212–245:
+212:   if (disabled) {
+213:     return (
+214:       <Segment raised>
+215:         <Header as="h4"><LocalizedText source={"Artist Release Radar"} /></Header>
+216:         <p><LocalizedText source={"Connect to the server to review artist radar subscriptions."} /></p>
+217:       </Segment>
+218:     );
+219:   }
+220:
+221:   return (
+222:     <Segment raised>
+223:       <Header as="h4"><LocalizedText source={"Artist Release Radar"} /></Header>
+224:       <Form>
+225:         <Form.Group widths="equal">
+226:           <Form.Input
+227:             aria-label={interfaceText("Release radar artist MBID")}
+228:             label={interfaceText("Artist MBID")}
+229:             onChange={(event) => setArtistId(event.target.value)}
+230:             value={artistId}
+231:            {...interfaceTextProps("Release radar artist MBID")}/>
+232:           <Form.Input
+233:             aria-label={interfaceText("Release radar artist name")}
+234:             label={interfaceText("Artist name")}
+235:             onChange={(event) => setArtistName(event.target.value)}
+236:             value={artistName}
+237:            {...interfaceTextProps("Release radar artist name")}/>
+238:           <Form.Input
+239:             aria-label={interfaceText("Muted release group IDs")}
+240:             label={interfaceText("Muted release groups")}
+241:             onChange={(event) => setMutedReleaseGroups(event.target.value)}
+242:             placeholder={interfaceText("comma-separated MBIDs")}
+243:             value={mutedReleaseGroups}
+244:            {...interfaceTextProps("Muted release group IDs")}/>
+245:         </Form.Group>
+
+### `web/src/components/Search/SearchesListView.jsx` — blob `a8864fa20454a01cf52bd7d2043e5e3c5e5ba854`, SHA-256 `a412a0815d836e14c0e62feb36be929c1792bc64bcf10f213520c4609d028482`
+
+Lines 305–313:
+305:                     style={{
+306:                       color: 'orange',
+307:                       fontSize: '0.9em',
+308:                       fontStyle: 'italic',
+309:                     }}
+310:                   >
+311:                     <Icon name="warning" /> <LocalizedText source={"At least one source must be selected"} /></span>
+312:                 )}
+313:               </div>
+
+Lines 384–396:
+384:         <DiscographyCoveragePanel disabled={!normalizedServer.isConnected} />
+385:       </CollapsibleSection>
+386:       <CollapsibleSection
+387:         defaultOpen={false}
+388:         storageKey="slskr.search.section.artistReleaseRadar"
+389:         title={interfaceText("Artist Release Radar")}
+390:        {...interfaceTextProps("Artist Release Radar")}>
+391:         <ArtistReleaseRadarPanel disabled={!normalizedServer.isConnected} />
+392:       </CollapsibleSection>
+393:       <CollapsibleSection
+394:         defaultOpen={false}
+395:         storageKey="slskr.search.section.soulseekDiscovery"
+396:         title={interfaceText("Soulseek Discovery")}
+
+### `crates/slskr/src/route_dispatch_group_5_mutations.rs` — blob `fd2ae49885626c55b9fbe1de243d648e10c4ae50`, SHA-256 `64dd5dbd084fa47da32076160a6cd2f15c2efb707313c4301a528832007d6bb4`
+
+Lines 217–235:
+217:                 .map(str::trim)
+218:                 .map(ToOwned::to_owned)
+219:                 .or_else(|| {
+220:                     (!versioned)
+221:                         .then(|| extract_json_string_field(body, "title"))
+222:                         .flatten()
+223:                 })
+224:                 .unwrap_or_default();
+225:             if artist.trim().is_empty() || title.trim().is_empty() {
+226:                 return Ok(routing::bad_request_response(
+227:                     "Artist and title are required",
+228:                 ));
+229:             }
+230:             let _now_playing_persistence = state.now_playing_persistence_lock.lock().await;
+231:             let mut now_playing = state.now_playing.write().await;
+232:             let previous = now_playing.clone();
+233:             let record = now_playing.upsert(username, artist, title);
+234:             let mutated = now_playing.clone();
+235:             drop(now_playing);
+
+Lines 503–515:
+503:                 ));
+504:             }
+505:             let requested_ids = extract_json_string_array_field(body, "ids")
+506:                 .or_else(|| extract_json_string_array_field(body, "itemIds"))
+507:                 .unwrap_or_default();
+508:             if requested_ids.is_empty() {
+509:                 return Ok(routing::bad_request_response(
+510:                     "At least one wishlist item ID is required",
+511:                 ));
+512:             }
+513:             let filter = extract_json_string_field(body, "filter").unwrap_or_default();
+514:             let compatibility_contract = route.path.starts_with("/api/v0/");
+515:             let _wishlist_search_persistence = state.wishlist_search_persistence_lock.lock().await;
+
+### `crates/slskr/src/legacy_route_dispatch_group_06.rs` — blob `dfb87529c7d2475e9dbdf9d57f505c74aff118bb`, SHA-256 `ee87a25b60b4b07b1462564baba9855a1439a36a652500e1249f109e11f1ab00`
+
+Lines 1020–1035:
+1020:                 .and_then(serde_json::Value::as_object)
+1021:                 .and_then(|object| json_object_field_ci(object, "title"))
+1022:                 .and_then(serde_json::Value::as_str)
+1023:                 .map(str::trim)
+1024:                 .map(ToOwned::to_owned)
+1025:                 .or_else(|| (!versioned).then(|| extract_json_string_field(body, "title")).flatten())
+1026:                 .unwrap_or_default();
+1027:             if artist.trim().is_empty() || title.trim().is_empty() {
+1028:                 return Ok(routing::bad_request_response("Artist and title are required"));
+1029:             }
+1030:             let _now_playing_persistence = state.now_playing_persistence_lock.lock().await;
+1031:             let mut now_playing = state.now_playing.write().await;
+1032:             let previous = now_playing.clone();
+1033:             let record = now_playing.upsert(username, artist, title);
+1034:             let mutated = now_playing.clone();
+1035:             drop(now_playing);
+
+### `web/src/components/Search/DiscoveryGraphAtlasPanel.jsx` — blob `2aa163337ab944a655b7869ea98297beda838627`, SHA-256 `9ab139ea6514100de0cef711e2aa5e26745bcc9936c965a9028c2591e6338471`
+
+Lines 325–335:
+325:         <Form.Group widths="equal">
+326:           <Form.Field>
+327:             <Input
+328:               disabled={disabled || loading}
+329:               label={interfaceText("Artist")}
+330:               onChange={(event) => setArtist(event.target.value)}
+331:               placeholder={interfaceText("Artist name")}
+332:               value={artist}
+333:              {...interfaceTextProps("Artist")}/>
+334:           </Form.Field>
+335:           <Form.Field>
+
+### `web/src/components/System/MediaCore/PodContentLinkingPanel.jsx` — blob `90ca87707887481e41d1fec566c333e4b8f34ce0`, SHA-256 `8eb34b910972e8bc8786ef06cc40f33699b2c1f327cb1b832111ebca557e5474`
+
+Lines 296–309:
+296:                   style={{ marginBottom: '1em' }}
+297:                 >
+298:                   <Message.Header><LocalizedText source={"Content Metadata"} /></Message.Header>
+299:                   <p>
+300:                     <strong><LocalizedText source={"Title:"} /></strong> {contentMetadata.title}
+301:                     <br />
+302:                     <strong><LocalizedText source={"Artist:"} /></strong> {contentMetadata.artist}
+303:                     <br />
+304:                     <strong><LocalizedText source={"Type:"} /></strong> {contentMetadata.type} (
+305:                     {contentMetadata.domain})
+306:                   </p>
+307:                 </Message>
+308:               )}
+309:
+
+### `web/src/components/Search/SongIDAnalysisResults.jsx` — blob `ddae669325bb2abe51c7b5c80fc1546174350e73`, SHA-256 `f1468f5e7ffc69840fe8ff8317518f55ed02a2c727c84d35df87ad6a1c0fde28`
+
+Lines 458–473:
+458:                   </List.Item>
+459:                 ))}
+460:               </List>
+461:             </>
+462:           ) : null}
+463:
+464:           {Array.isArray(run.artists) && run.artists.length > 0 ? (
+465:             <>
+466:               <Header as="h5"><LocalizedText source={"Artists"} /></Header>
+467:               <List divided relaxed>
+468:                 {run.artists.map((candidate) => (
+469:                   <List.Item key={candidate.candidateId}>
+470:                     <List.Content floated="right">
+471:                       <Popup
+472:                         content={interfaceText("Create a discography job from this SongID artist candidate so slskr can plan a catalog-scale acquisition workflow.")}
+473:                         position="top center"
+
+### `web/src/components/System/Jobs/index.jsx` — blob `d107affda28da2a86c3cbf22175cdf0898c6fa68`, SHA-256 `9e9f1caffccf25f2d9259e9295e3ad9f500acb30ba6150c976acf5762f4b0f16`
+
+Lines 48–55:
+48: const localizedJobStatus = (status) => {
+49:   const normalized = String(status || '').toLowerCase().replaceAll(/[^a-z]/gu, '');
+50:   switch (normalized) {
+51:     case 'assembling': return interfaceText('Assembling');
+52:     case 'cancelled':
+53:     case 'canceled': return interfaceText('Cancelled');
+54:     case 'complete':
+55:     case 'completed': return interfaceText('Completed');
+
+Lines 488–496:
+488:               )
+489:             }
+490:             toggle
+491:           >
+492:             <Icon
+493:               name={filters.sortOrder === 'asc' ? 'sort up' : 'sort down'}
+494:             />
+495:             {filters.sortOrder === 'asc' ? <LocalizedText source={"Ascending"} /> : <LocalizedText source={"Descending"} />}
+496:           </Button>
+
+### `web/src/lib/mediaServerIntegrations.js` — blob `cb7ea2f94c4db646873aad3fab6a59ebaefad341`, SHA-256 `7e97c9c2c5bb798c28fdb21b7028e0abc093ec7b7fe97e9179887bc7ef668e05`
+
+Lines 154–161:
+154:   {
+155:     description:
+156:       'Ask the selected media server to scan confirmed completed-download paths.',
+157:     id: 'completedScan',
+158:     label: 'Completed file scan',
+159:     requiresConfirmation: true,
+160:     requiresUserMapping: false,
+161:   },
+
+### `web/src/lib/automationRecipes.js` — blob `16b7b3ec33fe15748e47a45c397b58d0d35d9387`, SHA-256 `24d9494cf78e88fdc700da54a99139ebd67d6c2b608d033b9d7d8dd312c2c706`
+
+Lines 90–100:
+90:   {
+91:     approvalGate: 'Configured import success',
+92:     cadence: 'After import',
+93:     cooldown: '10 minutes',
+94:     description: 'Asks configured media servers to rescan after successful library imports.',
+95:     enabledByDefault: false,
+96:     fileImpact: 'Media-server scan',
+97:     icon: 'server',
+98:     id: 'media-server-rescan',
+99:     maxRunTime: '2 minutes',
+100:     networkImpact: 'Local network',
+
+### `crates/slskr/src/mediacore_mutations.rs` — blob `8cad7d2ce9377e3b9b68195d3a58558f27a19da8`, SHA-256 `48eb4d41e5d4515148e0cb3c6a3df2262f385f067d976a5cb1bc2c563b78e598`
+
+Lines 460–480:
+460:             return Some(routing::bad_request_response(
+461:                 "links must contain at most 100 items",
+462:             ));
+463:         }
+464:         let links = payload
+465:             .get("links")
+466:             .and_then(serde_json::Value::as_array)
+467:             .cloned()
+468:             .unwrap_or_default();
+469:         if links.is_empty() {
+470:             return Some(routing::bad_request_response(
+471:                 "At least one link is required",
+472:             ));
+473:         }
+474:         let valid_links = links.iter().all(|link| {
+475:             link.get("name")
+476:                 .and_then(serde_json::Value::as_str)
+477:                 .is_some_and(|value| !value.trim().is_empty())
+478:                 && link
+479:                     .get("target")
+480:                     .and_then(serde_json::Value::as_str)
+
+Lines 620–640:
+620:             .and_then(|value| {
+621:                 value
+622:                     .get("descriptors")
+623:                     .and_then(serde_json::Value::as_array)
+624:                     .cloned()
+625:             })
+626:             .unwrap_or_default();
+627:         if descriptors.is_empty() {
+628:             return Some(routing::bad_request_response(
+629:                 "At least one descriptor is required",
+630:             ));
+631:         }
+632:         if descriptors.iter().any(|descriptor| {
+633:             descriptor
+634:                 .get("contentId")
+635:                 .and_then(serde_json::Value::as_str)
+636:                 .is_none_or(|value| value.trim().is_empty())
+637:         }) {
+638:             return Some(routing::bad_request_response(
+639:                 "Each descriptor requires a ContentID",
+640:             ));
+
+Lines 690–710:
+690:         let requested = request.get("contentIds");
+691:         let requested_ids = requested.and_then(serde_json::Value::as_array).map(|ids| {
+692:             let mut seen = HashSet::new();
+693:             ids.iter()
+694:                 .filter_map(serde_json::Value::as_str)
+695:                 .map(str::trim)
+696:                 .filter(|id| !id.is_empty())
+697:                 .filter(|id| seen.insert(id.to_ascii_lowercase()))
+698:                 .map(str::to_owned)
+699:                 .collect::<Vec<_>>()
+700:         });
+701:         if requested.is_some() && requested_ids.as_ref().is_none_or(Vec::is_empty) {
+702:             return Some(routing::bad_request_response(
+703:                 "At least one non-empty ContentID is required",
+704:             ));
+705:         }
+706:         let descriptors = state
+707:             .controller_features
+708:             .read()
+709:             .await
+710:             .values_with_prefix("mediacore/descriptor/");
+
+Lines 785–805:
+785:                             .filter(|id| !id.is_empty())
+786:                             .filter(|id| seen.insert(id.to_ascii_lowercase()))
+787:                             .map(str::to_owned)
+788:                             .collect::<Vec<_>>()
+789:                     })
+790:             })
+791:             .unwrap_or_default();
+792:         if ids.is_empty() {
+793:             return Some(routing::bad_request_response(
+794:                 "At least one ContentID is required",
+795:             ));
+796:         }
+797:         let started_at = Instant::now();
+798:         let mut found = 0_usize;
+799:         let mut failed = 0_usize;
+800:         let mut results = Vec::with_capacity(ids.len());
+801:         for content_id in &ids {
+802:             match mediacore_retrieve_descriptor(content_id, false, state).await {
+803:                 Ok(result) => {
+804:                     found += usize::from(result.found);
+805:                     results.push(result.value);
+
+Lines 1020–1038:
+1020:                     .map(|ids| {
+1021:                         ids.iter()
+1022:                             .filter_map(serde_json::Value::as_str)
+1023:                             .map(str::trim)
+1024:                             .filter(|id| !id.is_empty())
+1025:                             .collect::<Vec<_>>()
+1026:                     })
+1027:                     .unwrap_or_default();
+1028:                 if content_ids.is_empty() {
+1029:                     return Some(routing::bad_request_response(
+1030:                         "At least one ContentID is required for export",
+1031:                     ));
+1032:                 }
+1033:                 let source_name = if state.config.controller_profile == ControllerProfile::Native {
+1034:                     "slskr"
+1035:                 } else {
+1036:                     "slskR"
+1037:                 };
+1038:                 let features = state.controller_features.read().await;
+
+### `crates/slskr/src/extended_controller_mutations.rs` — blob `0b61de56cb43201c462a4ab27fc222cb0c2a440a`, SHA-256 `387cce74ebd16af74b2c67ea0a18dafbe3e40e73f77b92260554076bb540edb6`
+
+Lines 411–426:
+411:                         identifiers.push(content_id);
+412:                     }
+413:                 } else if value.len() > 128 {
+414:                     return routing::bad_request_response(
+415:                         "MusicBrainz identifiers cannot exceed 128 characters",
+416:                     );
+417:                 }
+418:             }
+419:         }
+420:         if identifiers.is_empty() {
+421:             return routing::bad_request_response(
+422:                 "At least one MusicBrainz identifier is required",
+423:             );
+424:         }
+425:         if let Err(error) = state
+426:             .controller_features
+
+### `crates/slskr/src/extended_controller.rs` — blob `64e96af1bb51f4c3574c838b2f16b6ba2f729173`, SHA-256 `fdfd14cab2c836c21098e3158b963353f8fa4ed45bf194680c644ed9cf8a22bc`
+
+Lines 115–126:
+115:     let Some(username) = username else {
+116:         return routing::bad_request_response("Username is required");
+117:     };
+118:     let Some(files) = payload
+119:         .get("files")
+120:         .and_then(serde_json::Value::as_array)
+121:         .filter(|files| !files.is_empty())
+122:     else {
+123:         return routing::bad_request_response("At least one file is required");
+124:     };
+125:     if files.iter().any(serde_json::Value::is_null) {
+126:         return routing::bad_request_response("One or more files in the request are null");
+
+### `web/src/components/Messaging/Messaging.jsx` — blob `3955cb840e5787884f1762e2cb60506c72c59c13`, SHA-256 `924a274e6ae870ddfc906ef6102a52886b511662b0d800fd39b130d9805a4959`
+
+Lines 676–686:
+676:     const usernames = batchUsernames
+677:       .split(/[\s,;]+/)
+678:       .map((username) => username.trim())
+679:       .filter(Boolean);
+680:     const message = batchMessage.trim();
+681:
+682:     if (usernames.length === 0) {
+683:       toast.error(interfaceText("At least one recipient is required"));
+684:       return;
+685:     }
+686:
+
+### `crates/slskr/src/ranking_controller.rs` — blob `e1d151ec2eaaddb32c1521b907f4e46987e9e8df`, SHA-256 `1a6203615a90fe87a78e568f2346194d7ab2303d1f4349dacac952b827224316`
+
+Lines 54–70:
+54:     if let Some(response) = ranking_storage_failure_response(state).await {
+55:         return response;
+56:     }
+57:     let payload = match serde_json::from_str::<serde_json::Value>(body) {
+58:         Ok(payload) => payload,
+59:         Err(_) => return ranking_bad_request_response("At least one username is required"),
+60:     };
+61:     let Some(values) = payload.as_array() else {
+62:         return ranking_bad_request_response("At least one username is required");
+63:     };
+64:     if values.is_empty() {
+65:         return ranking_bad_request_response("At least one username is required");
+66:     }
+67:     if values.len() > MAX_RANKING_BATCH_ITEMS {
+68:         return ranking_bad_request_response("at most 1000 usernames may be requested");
+69:     }
+70:     let mut usernames = Vec::new();
+
+### `crates/slskr/src/feature_mutation_controller.rs` — blob `cce57f3d7170ec960b3af9b044144272414dec67`, SHA-256 `6b0128473ac2e5bab4c6da41992e6864cefaf02ce8e283203c399a3b8498de34`
+
+Lines 1054–1063:
+1054:                             usernames.push(username);
+1055:                         }
+1056:                         usernames
+1057:                     });
+1058:                 if usernames.is_empty() {
+1059:                     return routing::bad_request_response("At least one username is required");
+1060:                 }
+1061:                 return routing::ok_response(
+1062:                     serde_json::json!({
+1063:                         "filename": filename,
+
+### `crates/slskr/src/wishlist_store.rs` — blob `07982234c61f3482879aeebb65c06e0bbe2d137b`, SHA-256 `47cfba5f5507bfe71f30771bc5072ccaa7863883c79929d0fd2147e7d1c9f7b3`
+
+Lines 713–729:
+713:     ) -> Result<Vec<WishlistItem>, &'static str> {
+714:         let mut distinct_ids = Vec::new();
+715:         for item_id in item_ids {
+716:             let item_id = item_id.trim();
+717:             if item_id.is_empty() {
+718:                 return Err("At least one wishlist item ID is required");
+719:             }
+720:             if !distinct_ids.iter().any(|known| known == item_id) {
+721:                 distinct_ids.push(item_id.to_owned());
+722:             }
+723:         }
+724:         if distinct_ids.is_empty() {
+725:             return Err("At least one wishlist item ID is required");
+726:         }
+727:
+728:         let known_ids = self
+729:             .records
+
+### `web/src/lib/serverErrorMessageAllowlist.js` — blob `d9eed15e55416d5e5fa06657c9c86b287b9b3260`, SHA-256 `de7bf779c371f2a93d106124d32051b39836c0e7cd557e314c11f7755ce004bc`
+
+Lines 20–42:
+20:   "An error occurred while refreshing opinions",
+21:   "An error occurred while searching messages",
+22:   "An error occurred while syncing all pods",
+23:   "An error occurred while syncing backfill",
+24:   "An error occurred while updating member affinities",
+25:   "An error occurred while updating the channel",
+26:   "An error occurred while vacuuming database",
+27:   "Artist and title are required",
+28:   "At least one ContentID is required",
+29:   "At least one ContentID is required for export",
+30:   "At least one MusicBrainz identifier is required",
+31:   "At least one descriptor is required",
+32:   "At least one file is required",
+33:   "At least one link is required",
+34:   "At least one non-empty ContentID is required",
+35:   "At least one username is required",
+36:   "At least one wishlist item ID is required",
+37:   "At most 100 cache keys may be invalidated",
+38:   "Audio sample count exceeds the one-hour analysis limit",
+39:   "Audio samples are required",
+40:   "Authenticated peer identity is required",
+41:   "Authenticated recipient identity is required",
+42:   "Body is required",
+
+## Review-wide checks
+
+All selected values were populated at the exact review head and were reconciled using exact source and current-target hashes. No placeholders or ICU message forms occur in these 20 English source keys. `ContentID`, `MusicBrainz`, and API field names retained in the existing server-error targets are checked against the pinned handlers. Native-speaker approval is not claimed.

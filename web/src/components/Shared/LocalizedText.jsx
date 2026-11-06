@@ -1,5 +1,6 @@
 import React from 'react';
 import { useInterfaceLanguage } from '../../lib/interfaceLocale';
+import { isDisplayErrorOutput } from '../../lib/errors';
 
 const LocalizedText = ({ as: Element = 'span', source, values, children, ...props }) => {
   const { directionFor, languageFor, t } = useInterfaceLanguage();
@@ -45,6 +46,19 @@ export const LocalizedPluralText = ({
       {text ?? children}
     </Element>
   );
+};
+
+export const LocalizedErrorOutput = ({ output }) => {
+  const { language, languageFor } = useInterfaceLanguage();
+  if (!isDisplayErrorOutput(output)) return null;
+  if (output.kind === 'app') {
+    const translationLanguage = languageFor(output.source);
+    if (language === 'en' || translationLanguage === language) {
+      return <LocalizedText source={output.source} />;
+    }
+    return <bdi dir="ltr" lang="en">{output.source}</bdi>;
+  }
+  return <bdi dir="auto" lang="und">{output.text}</bdi>;
 };
 
 export default LocalizedText;

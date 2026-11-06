@@ -1,0 +1,343 @@
+{
+  "title": "Ratified adjudication: slskR PR #204 W1103-W1122",
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "head": "e45e6967625c5e804b688b9cb03d359ea59d000b",
+  "tree": "c5164178f16e0fa2f59586c9ab3685e1ac08dfa5",
+  "inputPacket": "/mnt/disks/scratch/task-scratch/slskr-pr204-W1103-1122-blind-input-20261103/input",
+  "primaryPacket": "/mnt/disks/scratch/task-scratch/slskr-pr204-W1103-1122-primary-20261103/primary-private",
+  "sealedBlindLedger": "/mnt/disks/scratch/task-scratch/slskr-pr204-W1103-1122-independent-blind-20261103/review-ledger.jsonl",
+  "cellCount": 240,
+  "sourceCount": 20,
+  "localeCount": 12,
+  "pinnedProductionReferences": 66,
+  "primaryCallerReferencesMatchPinnedInput": true,
+  "primaryChangedCells": 85,
+  "primaryChangedCellsWithoutDirectLocalizedCall": 60,
+  "ratifiedDispositionCounts": {
+    "RATIFY_CURRENT_TARGET": 115,
+    "RATIFY_PRIMARY_CANDIDATE": 19,
+    "HOLD_NO_DIRECT_LOCALIZED_CALLER": 96,
+    "HOLD_WORDING_DISAGREEMENT": 6,
+    "HOLD_SWARM_TERMINOLOGY": 4
+  },
+  "noDirectLocalizedCallerSourceIds": [
+    {
+      "sourceId": "Descriptor",
+      "references": [
+        {
+          "path": "web/src/components/Search/SongIDEvidenceDetails.jsx",
+          "line": 234,
+          "lineText": "                {renderLane('Descriptor', run.forensicMatrix?.descriptorPriorsLane)}",
+          "localizedCallPattern": false
+        }
+      ]
+    },
+    {
+      "sourceId": "Descriptor ContentID is required",
+      "references": [
+        {
+          "path": "crates/slskr/src/mediacore_mutations.rs",
+          "line": 586,
+          "lineText": "                \"Descriptor ContentID is required\",",
+          "localizedCallPattern": false
+        },
+        {
+          "path": "web/src/lib/serverErrorMessageAllowlist.js",
+          "line": 59,
+          "lineText": "  \"Descriptor ContentID is required\",",
+          "localizedCallPattern": false
+        }
+      ]
+    },
+    {
+      "sourceId": "Descriptor is required",
+      "references": [
+        {
+          "path": "crates/slskr/src/mediacore_mutations.rs",
+          "line": 576,
+          "lineText": "            return Some(routing::bad_request_response(\"Descriptor is required\"));",
+          "localizedCallPattern": false
+        },
+        {
+          "path": "crates/slskr/src/mediacore_mutations.rs",
+          "line": 841,
+          "lineText": "            return Some(routing::bad_request_response(\"Descriptor is required\"));",
+          "localizedCallPattern": false
+        },
+        {
+          "path": "web/src/lib/serverErrorMessageAllowlist.js",
+          "line": 60,
+          "lineText": "  \"Descriptor is required\",",
+          "localizedCallPattern": false
+        }
+      ]
+    },
+    {
+      "sourceId": "Destination host must be between 1 and 253 characters",
+      "references": [
+        {
+          "path": "crates/slskr/src/legacy_route_dispatch_group_10.rs",
+          "line": 639,
+          "lineText": "                    \"Destination host must be between 1 and 253 characters\",",
+          "localizedCallPattern": false
+        },
+        {
+          "path": "crates/slskr/src/route_dispatch_group_7_network_admin.rs",
+          "line": 282,
+          "lineText": "                    \"Destination host must be between 1 and 253 characters\",",
+          "localizedCallPattern": false
+        },
+        {
+          "path": "web/src/lib/serverErrorMessageAllowlist.js",
+          "line": 61,
+          "lineText": "  \"Destination host must be between 1 and 253 characters\",",
+          "localizedCallPattern": false
+        }
+      ]
+    },
+    {
+      "sourceId": "Destination is not allowed by the Pod private-gateway policy",
+      "references": [
+        {
+          "path": "crates/slskr/src/legacy_route_dispatch_group_10.rs",
+          "line": 668,
+          "lineText": "                        \"Destination is not allowed by the Pod private-gateway policy\",",
+          "localizedCallPattern": false
+        },
+        {
+          "path": "crates/slskr/src/route_dispatch_group_7_network_admin.rs",
+          "line": 311,
+          "lineText": "                        \"Destination is not allowed by the Pod private-gateway policy\",",
+          "localizedCallPattern": false
+        },
+        {
+          "path": "web/src/lib/serverErrorMessageAllowlist.js",
+          "line": 62,
+          "lineText": "  \"Destination is not allowed by the Pod private-gateway policy\",",
+          "localizedCallPattern": false
+        }
+      ]
+    },
+    {
+      "sourceId": "Destination must be relative and stay within the download root",
+      "references": [
+        {
+          "path": "crates/slskr/src/extended_controller.rs",
+          "line": 189,
+          "lineText": "            \"Destination must be relative and stay within the download root\",",
+          "localizedCallPattern": false
+        },
+        {
+          "path": "web/src/lib/serverErrorMessageAllowlist.js",
+          "line": 63,
+          "lineText": "  \"Destination must be relative and stay within the download root\",",
+          "localizedCallPattern": false
+        }
+      ]
+    },
+    {
+      "sourceId": "Destination port must be between 1 and 65535",
+      "references": [
+        {
+          "path": "crates/slskr/src/legacy_route_dispatch_group_10.rs",
+          "line": 644,
+          "lineText": "                    \"Destination port must be between 1 and 65535\",",
+          "localizedCallPattern": false
+        },
+        {
+          "path": "crates/slskr/src/route_dispatch_group_7_network_admin.rs",
+          "line": 287,
+          "lineText": "                    \"Destination port must be between 1 and 65535\",",
+          "localizedCallPattern": false
+        },
+        {
+          "path": "web/src/components/Pods/PortForwarding.jsx",
+          "line": 390,
+          "lineText": "      this.setState({ error: 'Destination port must be between 1 and 65535' });",
+          "localizedCallPattern": false
+        },
+        {
+          "path": "web/src/lib/serverErrorMessageAllowlist.js",
+          "line": 64,
+          "lineText": "  \"Destination port must be between 1 and 65535\",",
+          "localizedCallPattern": false
+        }
+      ]
+    },
+    {
+      "sourceId": "Detected",
+      "references": [
+        {
+          "path": "crates/slskr/src/controller_tests/full_library_differential.rs",
+          "line": 388,
+          "lineText": "    assert_eq!(filtered_json[\"filter\"][\"statuses\"][0], \"Detected\");",
+          "localizedCallPattern": false
+        },
+        {
+          "path": "crates/slskr/src/controller_tests/full_library_differential_02.rs",
+          "line": 1533,
+          "lineText": "            && filtered_json[\"filter\"][\"statuses\"][0] == \"Detected\"",
+          "localizedCallPattern": false
+        },
+        {
+          "path": "crates/slskr/src/library_store.rs",
+          "line": 116,
+          "lineText": "                    \"Detected\",",
+          "localizedCallPattern": false
+        },
+        {
+          "path": "crates/slskr/src/library_store.rs",
+          "line": 606,
+          "lineText": "                    \"status\": if remediation.is_some() { \"Resolved\" } else { \"Detected\" },",
+          "localizedCallPattern": false
+        },
+        {
+          "path": "web/src/components/System/LibraryHealth/index.jsx",
+          "line": 916,
+          "lineText": "                        {issue.canAutoFix && issue.status === 'Detected' && (",
+          "localizedCallPattern": false
+        }
+      ]
+    }
+  ],
+  "directLocalizedSourceIds": [
+    "Descending",
+    "Description",
+    "Descriptor JSON",
+    "Descriptor Retrieval",
+    "Descriptor Retrieved",
+    "Descriptor Verification",
+    "Detailed",
+    "Detailed peer contribution and performance metrics require trace data. This may not be available for all swarm downloads.",
+    "Details",
+    "Detect quality issues, transcodes, and missing tracks",
+    "Diagnostic Bundle",
+    "Diagnostic bundle copied"
+  ],
+  "unresolvedDisagreements": [
+    {
+      "sourceId": "Descriptor Verification",
+      "locale": "hi",
+      "currentTarget": "वर्णनकर्ता सत्यापन",
+      "blindTarget": "डिस्क्रिप्टर सत्यापन",
+      "primaryTarget": "वर्णनकर्ता सत्यापन",
+      "ratifiedTarget": "वर्णनकर्ता सत्यापन",
+      "reason": "The blind ledger proposed “डिस्क्रिप्टर सत्यापन” to align a technical descriptor term with “Descriptor JSON”; primary accepts the current “वर्णनकर्ता सत्यापन”. Both alternatives require a qualified Hindi reviewer to settle the product term."
+    },
+    {
+      "sourceId": "Detailed",
+      "locale": "ko",
+      "currentTarget": "상세한",
+      "blindTarget": "상세",
+      "primaryTarget": "상세한",
+      "ratifiedTarget": "상세한",
+      "reason": "The blind ledger proposed the compact option label “상세”; primary accepts “상세한”. The pinned caller establishes a standalone settings option but does not settle which Korean label is idiomatic; preserve current pending native review."
+    },
+    {
+      "sourceId": "Detailed",
+      "locale": "zh-Hans",
+      "currentTarget": "详细的",
+      "blindTarget": "详细",
+      "primaryTarget": "详细的",
+      "ratifiedTarget": "详细的",
+      "reason": "The blind ledger proposed “详细” as a compact standalone option label; primary accepts “详细的”. The pinned caller establishes a standalone settings option but does not settle which Simplified Chinese label is idiomatic; preserve current pending native review."
+    },
+    {
+      "sourceId": "Detailed",
+      "locale": "zh-Hant",
+      "currentTarget": "詳細的",
+      "blindTarget": "詳細",
+      "primaryTarget": "詳細的",
+      "ratifiedTarget": "詳細的",
+      "reason": "The blind ledger proposed “詳細” as a compact standalone option label; primary accepts “詳細的”. The pinned caller establishes a standalone settings option but does not settle which Traditional Chinese label is idiomatic; preserve current pending native review."
+    },
+    {
+      "sourceId": "Detailed peer contribution and performance metrics require trace data. This may not be available for all swarm downloads.",
+      "locale": "id",
+      "currentTarget": "Kontribusi rekan yang terperinci dan metrik kinerja memerlukan data jejak. Ini mungkin tidak tersedia untuk semua unduhan gerombolan.",
+      "blindTarget": "Kontribusi rekan yang terperinci dan metrik kinerja memerlukan data jejak. Ini mungkin tidak tersedia untuk semua unduhan gerombolan.",
+      "primaryTarget": "Kontribusi peer dan metrik kinerja yang terperinci memerlukan data trace. Data ini mungkin tidak tersedia untuk semua unduhan peer-to-peer.",
+      "ratifiedTarget": "Kontribusi rekan yang terperinci dan metrik kinerja memerlukan data jejak. Ini mungkin tidak tersedia untuk semua unduhan gerombolan.",
+      "reason": "The direct localized caller is pinned, but the English source uses the technical term “swarm”. The primary candidate recasts it as peer-to-peer downloads; that may broaden the source-specific meaning. Preserve the current value pending product glossary/native-speaker review, as instructed."
+    },
+    {
+      "sourceId": "Detailed peer contribution and performance metrics require trace data. This may not be available for all swarm downloads.",
+      "locale": "vi",
+      "currentTarget": "Số liệu hiệu suất và đóng góp ngang hàng chi tiết yêu cầu dữ liệu theo dõi. Điều này có thể không có sẵn cho tất cả các bản tải xuống của bầy đàn.",
+      "blindTarget": "Số liệu hiệu suất và đóng góp ngang hàng chi tiết yêu cầu dữ liệu theo dõi. Điều này có thể không có sẵn cho tất cả các bản tải xuống của bầy đàn.",
+      "primaryTarget": "Các số liệu chi tiết về đóng góp của các nút ngang hàng và hiệu suất cần dữ liệu truy vết. Dữ liệu này có thể không có sẵn trong mọi lượt tải qua mạng ngang hàng.",
+      "ratifiedTarget": "Số liệu hiệu suất và đóng góp ngang hàng chi tiết yêu cầu dữ liệu theo dõi. Điều này có thể không có sẵn cho tất cả các bản tải xuống của bầy đàn.",
+      "reason": "The direct localized caller is pinned, but the English source uses the technical term “swarm”. The primary candidate recasts it as peer-to-peer downloads; that may broaden the source-specific meaning. Preserve the current value pending product glossary/native-speaker review, as instructed."
+    },
+    {
+      "sourceId": "Detailed peer contribution and performance metrics require trace data. This may not be available for all swarm downloads.",
+      "locale": "zh-Hans",
+      "currentTarget": "详细的同行贡献和绩效指标需要跟踪数据。这可能不适用于所有群下载。",
+      "blindTarget": "详细的同行贡献和绩效指标需要跟踪数据。这可能不适用于所有群下载。",
+      "primaryTarget": "详细的对等节点贡献和性能指标需要追踪数据。这些数据可能并非所有点对点下载都能提供。",
+      "ratifiedTarget": "详细的同行贡献和绩效指标需要跟踪数据。这可能不适用于所有群下载。",
+      "reason": "The direct localized caller is pinned, but the English source uses the technical term “swarm”. The primary candidate recasts it as peer-to-peer downloads; that may broaden the source-specific meaning. Preserve the current value pending product glossary/native-speaker review, as instructed."
+    },
+    {
+      "sourceId": "Detailed peer contribution and performance metrics require trace data. This may not be available for all swarm downloads.",
+      "locale": "zh-Hant",
+      "currentTarget": "詳細的同行貢獻和績效指標需要追蹤數據。這可能不適用於所有群組下載。",
+      "blindTarget": "詳細的同行貢獻和績效指標需要追蹤數據。這可能不適用於所有群組下載。",
+      "primaryTarget": "詳細的對等節點貢獻和效能指標需要追蹤資料。這些資料可能並非所有點對點下載都能提供。",
+      "ratifiedTarget": "詳細的同行貢獻和績效指標需要追蹤數據。這可能不適用於所有群組下載。",
+      "reason": "The direct localized caller is pinned, but the English source uses the technical term “swarm”. The primary candidate recasts it as peer-to-peer downloads; that may broaden the source-specific meaning. Preserve the current value pending product glossary/native-speaker review, as instructed."
+    },
+    {
+      "sourceId": "Diagnostic Bundle",
+      "locale": "fr",
+      "currentTarget": "Offre groupée de diagnostic",
+      "blindTarget": "Ensemble de diagnostic",
+      "primaryTarget": "Pack de diagnostic",
+      "ratifiedTarget": "Offre groupée de diagnostic",
+      "reason": "The blind ledger proposed “Ensemble de diagnostic”; primary proposes “Pack de diagnostic”. The pinned button/modal context supports a diagnostic package but not which French product term is preferred; preserve current pending native review."
+    },
+    {
+      "sourceId": "Diagnostic bundle copied",
+      "locale": "fr",
+      "currentTarget": "Ensemble de diagnostic copié",
+      "blindTarget": "Ensemble de diagnostic copié",
+      "primaryTarget": "Pack de diagnostic copié",
+      "ratifiedTarget": "Ensemble de diagnostic copié",
+      "reason": "The blind ledger retained “Ensemble de diagnostic copié”; primary proposes “Pack de diagnostic copié” to match its label candidate. The toast and button should use one French term, but the preferred term remains unresolved; preserve current pending native review."
+    }
+  ],
+  "callerDefinitionConflict": {
+    "primaryReport": "66 pinned production references and no callerless source IDs; correct if callerless means no source occurrence/reference at all.",
+    "adjudication": "All 20 source IDs have one or more pinned production references. Eight IDs have references but every reference has localizedCallPattern=false. Those raw lane/error/status/test references do not establish direct use of the locale-cell value. The clean packet omits any indirect server-error-to-catalog lookup call site, so all 96 locale cells for these IDs remain holds."
+  },
+  "primaryCandidateChangesReconciliation": {
+    "heldForNoDirectLocalizedCaller": 60,
+    "heldForSwarmTerminology": 4,
+    "heldForFrenchTerminologyDisagreement": 2,
+    "ratifiedDirectCallCandidates": 19,
+    "sum": 85
+  },
+  "placeholdersAndMarkup": "No placeholders or markup occur in any source/current/blind/primary/ratified string in the reviewed cells.",
+  "protectedLiteralPolicy": "Exact source literals (ContentID, JSON, Pod) are tracked separately from current-only API field annotations. Source numeric tokens are preserved in every ratified string. Current-only API field names are not treated as source-protected literals.",
+  "rtlSensitiveNote": "Every Arabic cell includes a bidi check note for embedded Latin literals and numeric ranges.",
+  "nativeSpeakerApproval": "pending; this is machine-assisted adjudication, not qualified native-speaker approval.",
+  "translationsApplied": false,
+  "testsBuildsScansCi": false,
+  "swarmTermAdjudication": {
+    "ratifiedLocales": [
+      "ar",
+      "es",
+      "hi",
+      "ko"
+    ],
+    "heldLocales": [
+      "id",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "rationale": "The pinned localized call is in SwarmVisualization and the source sentence explicitly refers to peer contribution and swarm downloads. Peer-to-peer wording was ratified for ar/es/hi/ko; the remaining four keep current values because their exact local wording remains unresolved without a product glossary/native-speaker review."
+  },
+  "repositoryAndLivePrContentReadOrChanged": false
+}

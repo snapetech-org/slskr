@@ -1,0 +1,471 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "livePullRequestBefore": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "77a1e481b475381ac45172cf7fd3f5a5c460d7c0",
+    "isDraft": true,
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "livePullRequestAfter": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "77a1e481b475381ac45172cf7fd3f5a5c460d7c0",
+    "isDraft": true,
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "oldPrimaryHead": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "oldPrimaryTree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "currentLiveHead": "77a1e481b475381ac45172cf7fd3f5a5c460d7c0",
+  "currentLiveTree": "d4dae6999b34c2060d7662caddbc348917026411",
+  "headAfterReview": "77a1e481b475381ac45172cf7fd3f5a5c460d7c0",
+  "treeAfterReview": "d4dae6999b34c2060d7662caddbc348917026411",
+  "worktree": "/mnt/disks/scratch/task-worktrees/localization-20261102/slskr-pr204-W743-762-apply",
+  "worktreeClean": true,
+  "sourceInventoryPath": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/frozen-inputs/source-inventory.jsonl",
+  "sourceInventorySha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "sourceIdsAttested": 20,
+  "sourceCurrentCellsAttestedAtCurrentHead": 240,
+  "sourceHashMismatches": [],
+  "currentTargetHashMismatches": [],
+  "currentTargetsChangedSincePrimaryHead": [],
+  "targetCatalogsAtCurrentHead": {
+    "ar": {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "liveBlob": "5ed2f741cb8264f1f553c5b68729afa8b1c42531",
+      "liveSha256": "bd53e57985d1c3750116de58842a5131b1a6eec8c2c4d5954d348bd70edc865a",
+      "bytes": 512284,
+      "keys": 5440,
+      "frozenBlobAtPrimaryHead": "ee6059c505a4a57ddd1aa199bcb39af8b523e49b",
+      "frozenSha256AtPrimaryHead": "a00bff46a89ab3fb7c45cfa851354f46a4915cf640f03bf57e1ba8bc976fc8e9"
+    },
+    "de": {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "liveBlob": "5334741e5d0c26396c475dee1f8480afc7d1e541",
+      "liveSha256": "cbef15022e2a734c4400d1347a0ff4b0a4dd2ab6507f804985c5bbc0d31ea213",
+      "bytes": 442887,
+      "keys": 5440,
+      "frozenBlobAtPrimaryHead": "8cedf119cb61308f999abc576c3c8eb7df8ee03e",
+      "frozenSha256AtPrimaryHead": "76f6b9e30faf15e201f00d4004e3b2ed7b7110dfb86db8f0c1844a772db68bc8"
+    },
+    "es": {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "liveBlob": "f8c4d94774ef25a5fcbd1bb197c1596a00caecbe",
+      "liveSha256": "a5417cb6bf3b2303ae41e018706cbf678bdf96fbec5972c30f3db59c0def4504",
+      "bytes": 443744,
+      "keys": 5440,
+      "frozenBlobAtPrimaryHead": "ba8ae008a285c9ae778fc68ac29e6c98b6c9a2db",
+      "frozenSha256AtPrimaryHead": "7e654724771d92061f3f3031e495b8c16fc2d942fe4f73eeb8914a40e000ce53"
+    },
+    "fr": {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "liveBlob": "73d24ac596e0126dabc35babfab90b1732234633",
+      "liveSha256": "05ef8ead0c232804f322e5c1f0a49444ca92113096141026f402309b754bbe87",
+      "bytes": 454746,
+      "keys": 5440,
+      "frozenBlobAtPrimaryHead": "4f00cf80bc5ffd6a110c7e43cf7b6151f53f2ade",
+      "frozenSha256AtPrimaryHead": "bbdfdae078a0c33c4789725d37eb1ca0f4e3e39fe5e53429968ca1565d3dfc11"
+    },
+    "hi": {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "liveBlob": "363a12cd229c45963658963698d1819097ea1f06",
+      "liveSha256": "8a1eff87ac7ac1d48970c1fb240e658ae78d2d7468387ee4fd3a9c03494a04a9",
+      "bytes": 675851,
+      "keys": 5440,
+      "frozenBlobAtPrimaryHead": "8bfb77040ea5f11e584b5f6116a27b8bae24f39b",
+      "frozenSha256AtPrimaryHead": "f1d0c8682337d0654c4199117940caa7b0fa3e1129b64711ab523f949de55618"
+    },
+    "id": {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "liveBlob": "ebf1c4fc85a33ed285fb8ebd37e1c74dbdca9a7e",
+      "liveSha256": "d3bf94fb50276292c56bc3c70b15d7b57a019eaea9d222f8dfe169fb98ed0818",
+      "bytes": 409366,
+      "keys": 5440,
+      "frozenBlobAtPrimaryHead": "80b68b5a822fcd67ca28097130362cc2293b281e",
+      "frozenSha256AtPrimaryHead": "c18b65e150cd65e1b8bf064314f71d317f47a1d0ded57caaec0607085e975e82"
+    },
+    "ja": {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "liveBlob": "3419f607eeec0647c01cef41b6aefe64d0d95931",
+      "liveSha256": "7921964b3f9e7beb751cbff23c9570959ebd3813b088c8f59f450e6beedf519b",
+      "bytes": 490733,
+      "keys": 5440,
+      "frozenBlobAtPrimaryHead": "69d097947d2264b2977279532d13461c0c908c8d",
+      "frozenSha256AtPrimaryHead": "9dc8b7bfe98332e5ad9edabcdbfb0c02439f33b700c30da24faf2a0fae10d038"
+    },
+    "ko": {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "liveBlob": "a2141618bc763f9da82625d13a2628599e8714a7",
+      "liveSha256": "425ec56d79979bd22257d6ce9840112e3bce58ed04410e23a72fa2119a9b7854",
+      "bytes": 441816,
+      "keys": 5440,
+      "frozenBlobAtPrimaryHead": "e2b5813ad9758ee0c1e2b9757f9b6711c4c34d49",
+      "frozenSha256AtPrimaryHead": "a9cf5dc146eb95d07a54dcb51e1a61c1879766fcd9dfac0c7a87087b45e2bea3"
+    },
+    "pt-BR": {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "liveBlob": "3a0a6b26b42d88f6583efb3f0b266358015c934a",
+      "liveSha256": "820b3ff3f21aabbadbf1bd7d65119aae3548159769bd7c6dfc9064937398a93e",
+      "bytes": 438407,
+      "keys": 5440,
+      "frozenBlobAtPrimaryHead": "ecb745c964a3150afeb0c659a7d5384ac0a3a167",
+      "frozenSha256AtPrimaryHead": "55784629eacb6c1b3ac49a84ca9434cd0ce34ea0ce6a7b272c572ae74977f3b4"
+    },
+    "vi": {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "liveBlob": "c65febd7cfe3bb8e24d9d19cbbeef755baba157c",
+      "liveSha256": "2de25991140f2e190299c1f9ebb42463e0bed1ca8c8a12bb4c41358baf2d10bd",
+      "bytes": 474099,
+      "keys": 5440,
+      "frozenBlobAtPrimaryHead": "fc777bee1de10a5ba0c0c5f9efcbe25893435fdb",
+      "frozenSha256AtPrimaryHead": "0d23f73af90773febc9cd12be8356d999d772e981b3ced25239d5d1eb7b45d4e"
+    },
+    "zh-Hans": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "liveBlob": "cc6bc2986ef9fed4199fe0acb1d4e4690ca93cc2",
+      "liveSha256": "e2104ea09ac8c0e3f8520ddf3f8a1a5921ccb7b161f02d7abcd49e626281dabb",
+      "bytes": 382456,
+      "keys": 5440,
+      "frozenBlobAtPrimaryHead": "03f32a74761700505aa33692da8be2e311847288",
+      "frozenSha256AtPrimaryHead": "f53106f318b62b972b5ebe15aa5a54bc59d87f9de0abc00ca926a01bee79994d"
+    },
+    "zh-Hant": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "liveBlob": "f813fff25d4dcf7774afc5a624f13b30eeaafa7d",
+      "liveSha256": "60d75940f014594900bd9d56f1cfe20a11d6e5d5625df6f8d597ad7384385ea4",
+      "bytes": 383185,
+      "keys": 5440,
+      "frozenBlobAtPrimaryHead": "7a1d1ff77abe50060d172c70800add497d13e75d",
+      "frozenSha256AtPrimaryHead": "77f75a92460589fe3add5924299d8184d928137e4e406d6824d5081ebc2d417b"
+    }
+  },
+  "callerPinsReattested": {
+    "references": 70,
+    "kinds": {
+      "source-reference": 43,
+      "collection-shares-section-context": 1,
+      "test-reference": 12,
+      "shared-collections-name-column": 1,
+      "incoming-collections-empty-state": 1,
+      "collections-list-load-error-branch": 1,
+      "color-options-dropdown-context": 1,
+      "combined-score-value": 1,
+      "compact-atlas-mode-toggle": 1,
+      "compare-current-node-handler": 1,
+      "compare-pinned-node-handler": 1,
+      "ContentID-input-context": 1,
+      "levenshtein-result-metric": 1,
+      "phonetic-result-metric": 1,
+      "comparison-bridge-node-arguments": 1,
+      "compatibility-actions-list": 1,
+      "compatibility-review-copy-context": 1
+    },
+    "files": 24,
+    "uniqueLines": 70,
+    "filesByPath": {
+      "web/src/components/Collections/Collections.jsx": {
+        "blob": "c72ea0939c55ba47ed090e0d5ac3f67dd47b06c0",
+        "sha256": "0ae47fbae62cd1c65e120eb02a41e4941c8aec5e1d5f037361f41365539c44ed"
+      },
+      "web/src/components/Collections/Collections.test.jsx": {
+        "blob": "926653082fc3db2fea24a189b004728039b109f0",
+        "sha256": "4ddd90094e8a53643809072f317618c0c10b24518d58d10b790cb557c6fc6a65"
+      },
+      "crates/slskr-web/src/native_tab_rendering.rs": {
+        "blob": "5cbb9ace4ec143aa7acccee8192371b70ae92e1a",
+        "sha256": "d3ad7316bcdb69f3c64a3a7ab2211a1d5646f3bb997a938e8d9c2998ab31ab10"
+      },
+      "crates/slskr-web/src/route_catalog.rs": {
+        "blob": "92b7306fd444883a9e518852c1618b435fd703ed",
+        "sha256": "3773e4fc28fcbc954e9a40648238459c36464d2d4b205f6b9994073ee6f6503a"
+      },
+      "crates/slskr-web/src/route_controls.rs": {
+        "blob": "6d291218beb50a48f1fee115ddbb1ef6ff746490",
+        "sha256": "f09e47434f9c389137fe09d643ae9cf25bf83d6fb33e39be0c6b996ac0d3699f"
+      },
+      "crates/slskr-web/src/route_reference_panels.rs": {
+        "blob": "d61e7d99f08bf1325231c9d2ee49d6d38330b476",
+        "sha256": "f84a6c236077ca22872ac3b79781ff5f10aacb7879143720a5ad43ba8ba18666"
+      },
+      "crates/slskr-web/src/route_workflow_rendering.rs": {
+        "blob": "653c99e718b35250385bc2d89fbc89c7c18a3a6f",
+        "sha256": "efd2a909c953003101231eb41eb533bfc92391964b1aaf170c4b132590cffcfb"
+      },
+      "crates/slskr-web/src/web_tests/route_inventory.rs": {
+        "blob": "aaf02b3c8823f15c9584b5dc9e287ef0f342d5c9",
+        "sha256": "38b123e3a401394a464a877ab8218ca41150c7b2d9d31abebf13d0fb63db2147"
+      },
+      "crates/slskr-web/src/web_tests/workflow_rendering.rs": {
+        "blob": "b739f0d6f4fb868f006b8170e23820defeac2cc2",
+        "sha256": "c42ddda76b86e3c2c4c9fee4519b8fc1f32c9300c019dc90d222c6eb9f82c019"
+      },
+      "web/src/components/AppNavigationPrimary.jsx": {
+        "blob": "f4f9070f4cbebaf5aa4307ef6ac7e5f78abbabb0",
+        "sha256": "f0212774c21ada86bc3115ea95ac8949307669597899890bbec920c029e7f1a7"
+      },
+      "web/src/components/Player/PlayerLauncher.jsx": {
+        "blob": "54f6f98454f46a957dc0e00c78660965412f025e",
+        "sha256": "6942fcea65ad86549e0114f765ec9ce50a7ad4497828d4d5b79373dfb32ce720"
+      },
+      "web/src/components/Shares/SharedWithMe.jsx": {
+        "blob": "8ccbf1c56d38223e7b70ac7f6478c3b8b4f429b3",
+        "sha256": "02db6d3dd2c4fee5f07f1211a59e2880090ba1729f628a4f3f540013884b9162"
+      },
+      "crates/slskr/src/controller_tests/full_persistence_differential.rs": {
+        "blob": "01708f0de004c84847a6a7182090251f83e3eec9",
+        "sha256": "a8c37dc035dc18888eabb50085f929e60076c5276b6616385df297fb5fdf52cf"
+      },
+      "crates/slskr/src/controller_tests/full_persistence_differential_02.rs": {
+        "blob": "43c682f2a476b67963e07fb856da16e926230055",
+        "sha256": "8db3b723fe0226cd37d311c862af006ee177bf2175fb8f2b8442df766325d279"
+      },
+      "web/src/components/Player/PlayerBar.test.jsx": {
+        "blob": "34d8d92cbaa281634d1bb95d935945a4b71a3859",
+        "sha256": "6b824047dec4a33fe997dd90efb6de0bcdb6210033738f9d3542894ae0a68f73"
+      },
+      "web/src/components/Users/UserNoteModal.jsx": {
+        "blob": "da3b96c79f197d180dab8465c5e6ccfb13591021",
+        "sha256": "1b5fb333df81433a6df604673aaa49f67a0cda639298ebf37a363ef03bb6b767"
+      },
+      "web/src/components/System/MediaCore/MediaCoreTextSimilarityPanel.jsx": {
+        "blob": "27c0a318d863a0205402269eb65a9b78d5671980",
+        "sha256": "3ca7ccb89ceb9c3099b204e4222dc5907ba8f6fe2f875ab1d5b4a667e08f9aae"
+      },
+      "web/src/components/Search/SongIDEvidenceDetails.jsx": {
+        "blob": "a6a0eb1e9843801ff94e590a22878899f3d2bca2",
+        "sha256": "4a90c2dfd31302a93964fed1f0642a56909bab926324519eb77c94cda6139f65"
+      },
+      "web/src/components/System/ExperienceSettings/index.jsx": {
+        "blob": "fbe8caabfc30e03809dc5ae7051bddb731986956",
+        "sha256": "ba7826de4b32bc9506d5926e6243623ccc3104da43706ce7a57fe4b17bcf2f30"
+      },
+      "web/src/components/Search/DiscoveryGraphModal.jsx": {
+        "blob": "e0b366ffd69b72f779d80bf5de35e0bc2ef52245",
+        "sha256": "26307d2ebbe1002688d340ea9c98c6012db15efd2e1dfd754b59a37c67cc49a8"
+      },
+      "web/src/components/System/MediaCore/MediaCoreHashSimilarityPanel.jsx": {
+        "blob": "ef421bb767cd96a6f14922aa0b110b53952cbdfe",
+        "sha256": "561f920034eae2f1768a420fa0b714fcc0a80ed0aff0ce254fd0a12c703997af"
+      },
+      "web/src/components/System/MediaCore/MediaCorePerceptualSimilarityPanel.jsx": {
+        "blob": "5f6ed7d6493ad4e5dbf6a03f00a023440f9c27df",
+        "sha256": "caf1ea1ae9193df532a3c6919b184841da53bd2db8b2996e99fa49e309da253e"
+      },
+      "web/src/components/System/Integrations/ServarrReadinessPanel.jsx": {
+        "blob": "fe7e6898ed57e7600640ed2e713e3b9d0776a485",
+        "sha256": "b3fee3039f668534ce542821af6d67d913eacca0aa378dd9584a93225a0fd7f9"
+      },
+      "web/src/components/System/Integrations/index.test.jsx": {
+        "blob": "a6fb00cbeb39b31e968336388594ac9a2e9fa416",
+        "sha256": "ae80c5cf5c5b7cb5019de5e20f6847712449e9e372d2f5e4650e4fc4c2f17dda"
+      }
+    },
+    "lineErrors": [],
+    "sourceIdsWithNoDirectCaller": [
+      "Collections — full sets and 1G1R"
+    ]
+  },
+  "priorDispositionCountsReattested": {
+    "correction-needed": 15,
+    "accepted": 105,
+    "not-reviewed": 120
+  },
+  "priorDispositionRowsReattested": 240,
+  "priorAcceptedAndCorrectionRowsReused": 120,
+  "freshNotReviewedCells": 120,
+  "priorSourceAndTargetMismatches": 0,
+  "W762BoundaryCellsReattestedAtCurrentHead": 12,
+  "W762BoundaryTargetsMatchingW743CrossReviewFinal": 12,
+  "W762BoundaryCells": [
+    {
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "locale": "ar",
+      "preW743CommitTarget": "عناصر المجموعة غير متوفرة",
+      "preW743CommitTargetSha256": "50683229ea2427acc65898ac46bab9de24f93d654fe3d3c2e28a84254f766fa8",
+      "preW743PrimaryDisposition": "accept-current",
+      "postW743CrossReviewTarget": "عناصر المجموعة غير متوفرة",
+      "postW743CrossReviewDisposition": "accept-current",
+      "postW743CrossReviewTargetSha256": "50683229ea2427acc65898ac46bab9de24f93d654fe3d3c2e28a84254f766fa8",
+      "liveTargetAtHead": "عناصر المجموعة غير متوفرة",
+      "liveTargetSha256AtHead": "50683229ea2427acc65898ac46bab9de24f93d654fe3d3c2e28a84254f766fa8",
+      "liveMatchesCrossReviewFinal": true,
+      "targetChangedSincePreW743Head": false
+    },
+    {
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "locale": "de",
+      "preW743CommitTarget": "Sammlungsartikel nicht verfügbar",
+      "preW743CommitTargetSha256": "1c12ab9efcdbc76715626c3d2e261599e08550a3c21a018a337db9927848857d",
+      "preW743PrimaryDisposition": "propose-correction",
+      "postW743CrossReviewTarget": "Sammlungselemente nicht verfügbar",
+      "postW743CrossReviewDisposition": "propose-correction",
+      "postW743CrossReviewTargetSha256": "81823a6d1167c51d008eaaabef3fdf5eefde3ed09766e1da04d901c151c6d085",
+      "liveTargetAtHead": "Sammlungselemente nicht verfügbar",
+      "liveTargetSha256AtHead": "81823a6d1167c51d008eaaabef3fdf5eefde3ed09766e1da04d901c151c6d085",
+      "liveMatchesCrossReviewFinal": true,
+      "targetChangedSincePreW743Head": true
+    },
+    {
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "locale": "es",
+      "preW743CommitTarget": "Artículos de colección no disponibles",
+      "preW743CommitTargetSha256": "710f888984ccc91a14099ceb8aaa5cdce1b61256452ac4076d5cc4dabeacf0cc",
+      "preW743PrimaryDisposition": "accept-current",
+      "postW743CrossReviewTarget": "Elementos de la colección no disponibles",
+      "postW743CrossReviewDisposition": "propose-correction",
+      "postW743CrossReviewTargetSha256": "52cf1d7455bcf42e611d5ef59611aee48caa3be26b85e0a890db256b62d8ccdf",
+      "liveTargetAtHead": "Elementos de la colección no disponibles",
+      "liveTargetSha256AtHead": "52cf1d7455bcf42e611d5ef59611aee48caa3be26b85e0a890db256b62d8ccdf",
+      "liveMatchesCrossReviewFinal": true,
+      "targetChangedSincePreW743Head": true
+    },
+    {
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "locale": "fr",
+      "preW743CommitTarget": "Objets de collection indisponibles",
+      "preW743CommitTargetSha256": "f7543a5ab0906178bbf570302b22e87434f8ad21318da7a9387eb706d8be1034",
+      "preW743PrimaryDisposition": "accept-current",
+      "postW743CrossReviewTarget": "Éléments de la collection indisponibles",
+      "postW743CrossReviewDisposition": "propose-correction",
+      "postW743CrossReviewTargetSha256": "9eb0b5a34eeae8659660033d6c026505a40353722cfbbb1fb11b610afc063286",
+      "liveTargetAtHead": "Éléments de la collection indisponibles",
+      "liveTargetSha256AtHead": "9eb0b5a34eeae8659660033d6c026505a40353722cfbbb1fb11b610afc063286",
+      "liveMatchesCrossReviewFinal": true,
+      "targetChangedSincePreW743Head": true
+    },
+    {
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "locale": "hi",
+      "preW743CommitTarget": "संग्रहण आइटम अनुपलब्ध",
+      "preW743CommitTargetSha256": "1f43a503d2951d12c3f8f1bec19e4aeda435df2349be78bb6ebd5e9851d14cb2",
+      "preW743PrimaryDisposition": "propose-correction",
+      "postW743CrossReviewTarget": "संग्रह की वस्तुएँ उपलब्ध नहीं हैं",
+      "postW743CrossReviewDisposition": "propose-correction",
+      "postW743CrossReviewTargetSha256": "32f0306f3b1f53d2388d161f55845a64e67b0cc10eb4f32f3359b488dad8f058",
+      "liveTargetAtHead": "संग्रह की वस्तुएँ उपलब्ध नहीं हैं",
+      "liveTargetSha256AtHead": "32f0306f3b1f53d2388d161f55845a64e67b0cc10eb4f32f3359b488dad8f058",
+      "liveMatchesCrossReviewFinal": true,
+      "targetChangedSincePreW743Head": true
+    },
+    {
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "locale": "id",
+      "preW743CommitTarget": "Item koleksi tidak tersedia",
+      "preW743CommitTargetSha256": "9ba73c22009ec1950c6dd572cb33e45729e8feb64ea9aeadc1576b3f8da6d6a3",
+      "preW743PrimaryDisposition": "accept-current",
+      "postW743CrossReviewTarget": "Item koleksi tidak tersedia",
+      "postW743CrossReviewDisposition": "accept-current",
+      "postW743CrossReviewTargetSha256": "9ba73c22009ec1950c6dd572cb33e45729e8feb64ea9aeadc1576b3f8da6d6a3",
+      "liveTargetAtHead": "Item koleksi tidak tersedia",
+      "liveTargetSha256AtHead": "9ba73c22009ec1950c6dd572cb33e45729e8feb64ea9aeadc1576b3f8da6d6a3",
+      "liveMatchesCrossReviewFinal": true,
+      "targetChangedSincePreW743Head": false
+    },
+    {
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "locale": "ja",
+      "preW743CommitTarget": "コレクションアイテムが利用不可",
+      "preW743CommitTargetSha256": "028c8c2c56878dc21acf404bafcbe5ea982efd82a7fe37aee35868ff82b4246b",
+      "preW743PrimaryDisposition": "accept-current",
+      "postW743CrossReviewTarget": "コレクションアイテムが利用不可",
+      "postW743CrossReviewDisposition": "accept-current",
+      "postW743CrossReviewTargetSha256": "028c8c2c56878dc21acf404bafcbe5ea982efd82a7fe37aee35868ff82b4246b",
+      "liveTargetAtHead": "コレクションアイテムが利用不可",
+      "liveTargetSha256AtHead": "028c8c2c56878dc21acf404bafcbe5ea982efd82a7fe37aee35868ff82b4246b",
+      "liveMatchesCrossReviewFinal": true,
+      "targetChangedSincePreW743Head": false
+    },
+    {
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "locale": "ko",
+      "preW743CommitTarget": "컬렉션 항목을 사용할 수 없습니다",
+      "preW743CommitTargetSha256": "94d2f9ee78059895108bd2aa9b6e694780b2a7fb55029264067914b896f6cda5",
+      "preW743PrimaryDisposition": "accept-current",
+      "postW743CrossReviewTarget": "컬렉션 항목을 사용할 수 없습니다",
+      "postW743CrossReviewDisposition": "accept-current",
+      "postW743CrossReviewTargetSha256": "94d2f9ee78059895108bd2aa9b6e694780b2a7fb55029264067914b896f6cda5",
+      "liveTargetAtHead": "컬렉션 항목을 사용할 수 없습니다",
+      "liveTargetSha256AtHead": "94d2f9ee78059895108bd2aa9b6e694780b2a7fb55029264067914b896f6cda5",
+      "liveMatchesCrossReviewFinal": true,
+      "targetChangedSincePreW743Head": false
+    },
+    {
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "locale": "pt-BR",
+      "preW743CommitTarget": "Itens de coleção indisponíveis",
+      "preW743CommitTargetSha256": "3e307e2c1f8c72e38b98cbd1d9edf789a96d043de75eca03f13dfa8f20010529",
+      "preW743PrimaryDisposition": "accept-current",
+      "postW743CrossReviewTarget": "Itens da coleção indisponíveis",
+      "postW743CrossReviewDisposition": "propose-correction",
+      "postW743CrossReviewTargetSha256": "95be61bcee9be4f93a10a3a1e9a71a2d737aca00f5f54542a5d7dfc1399b58f0",
+      "liveTargetAtHead": "Itens da coleção indisponíveis",
+      "liveTargetSha256AtHead": "95be61bcee9be4f93a10a3a1e9a71a2d737aca00f5f54542a5d7dfc1399b58f0",
+      "liveMatchesCrossReviewFinal": true,
+      "targetChangedSincePreW743Head": true
+    },
+    {
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "locale": "vi",
+      "preW743CommitTarget": "Mục bộ sưu tập không có sẵn",
+      "preW743CommitTargetSha256": "16a79727ca10880aebd886b3d8c8f546a8d39c50bbbba11ab4be4014418bc156",
+      "preW743PrimaryDisposition": "accept-current",
+      "postW743CrossReviewTarget": "Mục bộ sưu tập không có sẵn",
+      "postW743CrossReviewDisposition": "accept-current",
+      "postW743CrossReviewTargetSha256": "16a79727ca10880aebd886b3d8c8f546a8d39c50bbbba11ab4be4014418bc156",
+      "liveTargetAtHead": "Mục bộ sưu tập không có sẵn",
+      "liveTargetSha256AtHead": "16a79727ca10880aebd886b3d8c8f546a8d39c50bbbba11ab4be4014418bc156",
+      "liveMatchesCrossReviewFinal": true,
+      "targetChangedSincePreW743Head": false
+    },
+    {
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "locale": "zh-Hans",
+      "preW743CommitTarget": "收藏品不可用",
+      "preW743CommitTargetSha256": "d410ff1a642aa7d62fe9fbe50b69d7262f103638527c7251200d8b25b4e94980",
+      "preW743PrimaryDisposition": "propose-correction",
+      "postW743CrossReviewTarget": "合集项目不可用",
+      "postW743CrossReviewDisposition": "propose-correction",
+      "postW743CrossReviewTargetSha256": "fcf43e9d8865930cd0b8233778c407febb43e1a3af256d6d929a055916aa32c5",
+      "liveTargetAtHead": "合集项目不可用",
+      "liveTargetSha256AtHead": "fcf43e9d8865930cd0b8233778c407febb43e1a3af256d6d929a055916aa32c5",
+      "liveMatchesCrossReviewFinal": true,
+      "targetChangedSincePreW743Head": true
+    },
+    {
+      "sourceIndex": 762,
+      "sourceId": "Collection items unavailable",
+      "locale": "zh-Hant",
+      "preW743CommitTarget": "收藏品不可用",
+      "preW743CommitTargetSha256": "d410ff1a642aa7d62fe9fbe50b69d7262f103638527c7251200d8b25b4e94980",
+      "preW743PrimaryDisposition": "propose-correction",
+      "postW743CrossReviewTarget": "合輯項目無法使用",
+      "postW743CrossReviewDisposition": "propose-correction",
+      "postW743CrossReviewTargetSha256": "83e8f5db7eb42099b840beab741164e70ce3429cdda4f88b071a7653ce4a70bb",
+      "liveTargetAtHead": "合輯項目無法使用",
+      "liveTargetSha256AtHead": "83e8f5db7eb42099b840beab741164e70ce3429cdda4f88b071a7653ce4a70bb",
+      "liveMatchesCrossReviewFinal": true,
+      "targetChangedSincePreW743Head": true
+    }
+  ],
+  "placeholderFailures": 0,
+  "markupFailures": 0,
+  "punctuationCompatibilityFailures": 0,
+  "protectedLiteralFailures": 0,
+  "openingDelimiterFailures": 0,
+  "checks": "pass",
+  "checkedAtUtc": "2026-11-02T16:20:28Z"
+}

@@ -1,0 +1,22 @@
+{
+  "result": "APPLIED_AND_READ_BACK",
+  "pullRequest": 204,
+  "inputHead": "b52b7c9abd112328a70d9e811d3b6aa2d4feb8e6",
+  "inputTree": "d7a46bce75c76e3a74736b85175f7fa412324f39",
+  "window": "W843-W862",
+  "cellsReviewed": 240,
+  "locales": 12,
+  "catalogKeyCount": 5441,
+  "catalogValuesChanged": 64,
+  "primaryCandidates": 51,
+  "crossreviewAdditionalCorrections": 13,
+  "thirdPartyAdjudicated": 14,
+  "holds": 0,
+  "callerGapSource": "Connecting to Soulseek\u2026",
+  "callerGapSourceIndex": 848,
+  "callerGapValuesChanged": 0,
+  "allTargetsReadBack": true,
+  "catalogKeySetsPreserved": true,
+  "serializationPreserved": true,
+  "testsBuildsCiRun": false
+}

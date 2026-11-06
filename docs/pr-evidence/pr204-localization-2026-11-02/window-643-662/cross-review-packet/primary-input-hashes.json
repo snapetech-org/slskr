@@ -1,0 +1,27 @@
+{
+  "manifestSha256": "a74abd1bdcb4126291973723311846058797dc44ea4ffaa1bac07ba5fb6098d1",
+  "primaryPacket": "/mnt/disks/scratch/task-scratch/slskr-pr204-W643-662-primary-20261102/packet",
+  "sha256sumsSha256": "38d21bbbf8633783f9a4e51e8543e55b0d3c0866a92e4bea8930d6f3ef4b5200",
+  "sha256sumsVerified": true,
+  "verifiedFileHashes": {
+    "README.md": "99ed87d5a8f5b88edd1c9a07274ec36b29e8ae6b35587386e3c21d27bc48fd97",
+    "caller-context-pins.jsonl": "b10db72d04eb3bd55ac89135bf3aa043c2913e46d9cd68b3200373fb6e923350",
+    "correction-candidates.jsonl": "10c2e160949780783c9d49ff654574405c304f6532305a5ca76db2631c6b4336",
+    "current-cells.jsonl": "edbadfd7d2c89b58ad795a2aa91147aeadb6f6ea8f2acc18df3a27b408df9398",
+    "exact-head.json": "0c3f3581b223417a793d230e0d0daf860cdc624fa0cddd94ec415981d10ff91a",
+    "final-reattestation.json": "5cc1bcae17a281b28ebf24d03138de203d31ddbae8c5f5142d3e80963162d0f5",
+    "freeze-manifest.json": "69713333eddc3d326cc28acb3a0c2f57edbe4f9fab77e31ddc95c5c8981c9013",
+    "freeze-manifest.sha256": "6b55c43f308d219957ad425d12c916589efc4a0abd6a85a7788675eef6bb7836",
+    "held-cells.jsonl": "a496cd6eeb28f2bea027b7f27542159dfc974762d46dac9b8d259da11d5c6b9c",
+    "manifest.json": "a74abd1bdcb4126291973723311846058797dc44ea4ffaa1bac07ba5fb6098d1",
+    "primary-review-ledger.jsonl": "5de4625feaa733b762ec2b64414af4d46c2063da2d5416b8a32587aa0c79a219",
+    "primary-summary.json": "1480bd04f7c61f8764ef91865e4e6cbe3332ae9f7e60979590e52ce5ca23a915",
+    "primary-verification.json": "512597b3ac0a46e26ab5f5a9e0afdb8cd6dee00fc315de081e3f6439b4bea9ca",
+    "prior-evidence-matches.jsonl": "dc455373c43b6b74b6979635a4aed1c1ead77c2b126eead5e03575aeb161b324",
+    "review-input.jsonl": "edbadfd7d2c89b58ad795a2aa91147aeadb6f6ea8f2acc18df3a27b408df9398",
+    "source-context.jsonl": "07a7bc09b3367cbc6639cce79a0e71b9f864e65ae870a84174328caf6777daad",
+    "source-current-attestation.jsonl": "5d5dbff657a520c5519e5998de72ce1d7a36a7ce7826c369e295c90447bc73ac",
+    "source-inventory.jsonl": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+    "verification.json": "28ef6944ccb30a2cba098af1de8de4a4d93dad45bc654a76fae594e099323444"
+  }
+}

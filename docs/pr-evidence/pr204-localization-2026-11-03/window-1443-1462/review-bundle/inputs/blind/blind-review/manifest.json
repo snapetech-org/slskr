@@ -1,0 +1,52 @@
+{
+  "artifact": "slskR PR #204 W1443-W1462 blind review ledger",
+  "carryForwardHoldCount": 35,
+  "carryForwardHoldUnchangedCount": 35,
+  "cellCount": 240,
+  "dispositionCounts": {
+    "accept-current": 190,
+    "correction": 31,
+    "refinement": 19
+  },
+  "fileHashes": {
+    "README.md": {
+      "byteCount": 1009,
+      "sha256": "4f4a945efa2ef2e8f73a260806a1375b995b7dda69f46fdbcb8ede23adbf9828"
+    },
+    "blind-ledger.jsonl": {
+      "byteCount": 615395,
+      "sha256": "835116dc6c3998632b47caaca0bb0cddfe079167ab286336709b076193cb1bdd"
+    },
+    "carry-forward-hold-reattestation.jsonl": {
+      "byteCount": 41596,
+      "sha256": "865eddfa2e1719cd6b8d428005389c9c09e90a41cfac1d8f7ea30baf2261ba52"
+    },
+    "live-head-pin-reattestation.json": {
+      "byteCount": 67613,
+      "sha256": "9df9b59612e0067af90fb753bd0c280563cc0b7910c22a7836d1fc8ccf785eda"
+    },
+    "prior-selection-reattestation.jsonl": {
+      "byteCount": 174286,
+      "sha256": "2638f43e7e70bc4f994f39c172a8a475a56bbd8b00c1ddc0f3f489964b578357"
+    },
+    "review-summary.json": {
+      "byteCount": 5638,
+      "sha256": "2ad207458c09b8a5b621b33f6d4a255f9b569784e2f82658c34c42abf6cbb3d5"
+    },
+    "verify_blind_review.py": {
+      "byteCount": 5455,
+      "sha256": "24efd4e3cc2a28cce7fba2bfd90352c8a5ea81f9a7eb71a53a9074e0f4c4c1ee"
+    }
+  },
+  "head": "44b37bd94385128d5bb5287aa1545901282bdfcb",
+  "localeCount": 12,
+  "priorSelectionReattestationCount": 200,
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "selectedPositions": [
+    1443,
+    1462
+  ],
+  "sourceCount": 20,
+  "tree": "02c3f149a079c67b010d973dd02ca15776ad1610"
+}

@@ -1,0 +1,27 @@
+# slskR localization audit and translation follow-up
+
+This draft replaces [PR #204](https://github.com/snapetech-org/slskr/pull/204) so the already-pushed localization changes are attached to a pull-request head that matches its branch. On 2026-11-04, the PR API and refs/pull/204/head remained at f6fbf614e7e2ff869e4ca86ae96103cff604b79c while the same-repository branch contained two additional, ordinary commits through c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b. The new branch points at that existing commit. No history was rewritten and no commit was amended or copied. The old PR is closed after this replacement is verified; its complete historical review narrative remains available there.
+
+## Localization scope
+
+The audit covers all 12 direct target locales: Spanish, Simplified Chinese, Hindi, German, Japanese, French, Brazilian Portuguese, Arabic, Korean, Traditional Chinese, Vietnamese, and Indonesian. English remains the fallback. Every locale catalog retains the same ordered set of 5,441 keys.
+
+The preceding audit windows, reviews, and readbacks are preserved in the history and evidence linked from PR #204. This replacement carries all existing product and evidence commits plus the current W1523–W1542 follow-up.
+
+## W1523–W1542 review and application
+
+The primary, independent blind, and cross-review packets cover 240 cells across 20 source positions and 12 locales. Cross-review selected 8 target updates, retained 222 current values, and placed 10 cells on hash-only hold where caller context does not resolve whether “backfill” means retroactive loading, completion, or synchronizing missed messages. The approved changes affect the German, French, Hindi, Korean, and Vietnamese catalogs. Readback preserves every other target and all ordered catalog keys.
+
+- Product commit: 09497027d7ca64892cf8ce3530dd5cc1fdf93c15
+- Evidence commit / PR head: c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b
+- [Complete review, application, and readback evidence](https://github.com/snapetech-org/slskr/tree/c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b/docs/pr-evidence/pr204-semantic-review-2026-11-04/independent-1523-1542-root-application/)
+
+## Review and validation limits
+
+This is machine semantic review. Qualified native-speaker approval and exact-head headed-browser acceptance are not claimed. No tests, builds, scans, CI dispatches, workflow edits, merges, releases, or tags were made. The existing .github/workflows files are unchanged.
+
+## W1543–W1562 localization application (2026-11-04)
+
+Applied 27 cross-reviewed corrections in product commit 9f158221682915a9c6c238c5e182871adbf93efd across 11 locale catalogs. Exact readback covered all 240 cells: 208 accepted values and five held values were retained unchanged. All 12 catalogs retain 5,441 keys and their original key order.
+
+The five holds remain unchanged for fluent-speaker review: Arabic member-affinity wording at 1549, Korean affinity wording at 1548–1549, and Simplified and Traditional Chinese membership statistics at 1550. The review and application have no native-speaker sign-off or browser review. No tests, builds, scans, or CI were run. Application evidence: docs/pr-evidence/pr209-localization-2026-11-04/window-1543-1562/application/

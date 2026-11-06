@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "livePullRequest": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "aa106d2505de8c9ace2d7d6dbf2af9777651947d",
+    "isDraft": true,
+    "mergeStateStatus": "CLEAN",
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "head": "aa106d2505de8c9ace2d7d6dbf2af9777651947d",
+  "tree": "f99e717b4b77c8da098e7b8fc163926d4d32e926",
+  "sourceBaselineHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceBaselineTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "sourceInventory": {
+    "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/frozen-inputs/source-inventory.jsonl",
+    "sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+    "keyCount": 5437
+  },
+  "sourceWindow": [
+    643,
+    662
+  ],
+  "sourceIds": 20,
+  "sourceIdBoundary": {
+    "643": "Chromaprint sample rate",
+    "662": "Clear ("
+  },
+  "previousWindow": {
+    "sourceWindow": [
+      623,
+      642
+    ],
+    "nonOverlapping": true,
+    "evidencePath": "docs/pr-evidence/pr204-semantic-review-2026-11-02/independent-0623-0642-root-application"
+  },
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "cells": 240,
+  "catalogs": {
+    "ar": {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "bytes": 512001,
+      "sha256": "709a14a649a9f18b2c9667c8ac6d1c753489df241bbb71717e39e4a5117b1aa0",
+      "blobOid": "f8bd6f4635b1001947df4fb28054af5d9e43fc40",
+      "keyCount": 5441
+    },
+    "de": {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "bytes": 442727,
+      "sha256": "dd50d30ce6963c7d6bc299177d953bf154d23eabc948d2409f5641697ce929a2",
+      "blobOid": "c7bfb9a129da6a6642c839f0867e521acf5432be",
+      "keyCount": 5441
+    },
+    "es": {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "bytes": 443494,
+      "sha256": "ae44125d37fc5e816412a2f5c3f5d034cd1fe64b9b554d3a2047408af190fb82",
+      "blobOid": "14d41c52472dd98cdfa7c7ccebbd5b2d6444c637",
+      "keyCount": 5441
+    },
+    "fr": {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "bytes": 454550,
+      "sha256": "7543d291282e4d226368e1e22f789585ee1365d0174411e88c4265c8f9688595",
+      "blobOid": "d68f3bc5cac07da2598b4b794f9d85e8084059d6",
+      "keyCount": 5441
+    },
+    "hi": {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "bytes": 675311,
+      "sha256": "79c7e08fab985c1341bb6b97d09ae7efe6581051890abe576c6422901190d952",
+      "blobOid": "e66448f970b6439ee9c309943e93e76c8c9e9df5",
+      "keyCount": 5441
+    },
+    "id": {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "bytes": 409165,
+      "sha256": "52c328a2b6a4f0898b2919c934b3594de8a8b2ce8c2dcd65ba892d8dc21354ad",
+      "blobOid": "588fa3897a41626eb059bc9b399f5f081676017c",
+      "keyCount": 5441
+    },
+    "ja": {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "bytes": 490685,
+      "sha256": "c96b6f0f643ec0e723aebd871ed39ff132533b897eba379628278331f9e47a3b",
+      "blobOid": "bbfd4b1a40166191f28c1f14f9090ea405d233cd",
+      "keyCount": 5441
+    },
+    "ko": {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "bytes": 441618,
+      "sha256": "e5371300dc1d8a61f583bc497f67368e5e7b6ad589f1dc481f8be38fcb0919a8",
+      "blobOid": "004f11687ff587ca7caba8ed31b14d3eb229a086",
+      "keyCount": 5441
+    },
+    "pt-BR": {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "bytes": 438242,
+      "sha256": "d27a4c535f77a9c6a09f37ba2338fc37377825a7e8fee0d03a16e77f9a029b0f",
+      "blobOid": "4a6e6cdf8ca8003937e92e4a6421da5d85f81097",
+      "keyCount": 5441
+    },
+    "vi": {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "bytes": 473792,
+      "sha256": "9b084447575c4ced7da0d5b8d301dc9d93d92b8e4732d730b2b86e6781e8a9de",
+      "blobOid": "0a27f63aed5e9b1e9f473bf783785514eadc46fa",
+      "keyCount": 5441
+    },
+    "zh-Hans": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "bytes": 382318,
+      "sha256": "af01a4b29e4ecbf5a7152911e0c7476dff4e09979fc6849de97a7df6c3b1373e",
+      "blobOid": "fd9bcb47bdcb37fa350b8b8d6c9649dfc51c330f",
+      "keyCount": 5441
+    },
+    "zh-Hant": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "bytes": 383026,
+      "sha256": "ea1e8649db618e393a343d61f12919e7cf5f7ef4122de3f98318cb04da8b7e05",
+      "blobOid": "2dff56034ecd59264551683cb0e0125ba48071a2",
+      "keyCount": 5441
+    }
+  },
+  "catalogKeysOutsidePinnedSourceInventory": [
+    "OK",
+    "Connecting",
+    "Connection Failed",
+    "Reconnecting"
+  ],
+  "callerReferences": 30,
+  "uniqueCallerFiles": [
+    "crates/slskr/src/controller_tests/full_controller_api_contracts.rs",
+    "crates/slskr/src/controller_tests/full_controller_api_differential.rs",
+    "crates/slskr/src/extended_controller_mutations.rs",
+    "web/src/components/App.jsx",
+    "web/src/components/Browse/DirectoryTree.jsx",
+    "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx",
+    "web/src/components/System/Integrations/MetadataSettingsPanel.jsx",
+    "web/src/components/System/MediaCore/MediaCoreMetadataPortabilityPanel.jsx",
+    "web/src/components/System/MediaCore/PodMembershipManagementPanel.jsx",
+    "web/src/components/System/MediaCore/PodMessageRoutingPanel.jsx",
+    "web/src/components/System/MediaCore/PodMessageStoragePanel.jsx",
+    "web/src/components/System/SwarmAnalytics/index.jsx",
+    "web/src/components/System/SwarmAnalytics/index.test.jsx",
+    "web/src/components/System/SwarmVisualization/index.jsx",
+    "web/src/lib/serverErrorMessageAllowlist.js"
+  ],
+  "uniqueCallerLines": 30,
+  "sourceIdsWithNoDirectCallers": [],
+  "priorEvidenceMatches": 12,
+  "priorReviewFile": {
+    "path": "docs/localization/pr204-translation-review-2026-11-01.jsonl",
+    "blobOid": "ac532def0973f2d8abc9baa00d3b1c19b5843822",
+    "bytes": 2753515,
+    "sha256": "27ab430e61b7cb5628150121afc1b565e38af9cd2dc2608d3aebd65fce99220e"
+  },
+  "placeholderParityFailures": 0,
+  "nativeSpeakerApproval": false
+}

@@ -1,0 +1,47 @@
+{
+  "artifact": "slskR PR #204 W1323-W1342 independent blind semantic review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "state": "OPEN",
+  "draft": true,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "head": "6ccefe07d8154acbc08e34249ef7039dc5bc1f08",
+  "tree": "e0c1d1341be45ed73bd30cf027b479ce3b5bb95d",
+  "baseRef": "main",
+  "candidateFreeInputPath": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1323-1342-primary-20261103/input-v4",
+  "candidateFreeManifestSha256": "fe7d3accc794f33a7e0fa4c8bda6f7a741d10b0abcfbb7f92f93746b64f2dad1",
+  "candidateFreeChecksumListSha256": "c59efa7958cee2ef8fed0b9bb61e2b170fd9d3f4f4cbc116baac3a7a98974f7f",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "currentWindowDispositionCounts": {
+    "accept": 216,
+    "correction": 20,
+    "refinement": 4
+  },
+  "currentWindowHolds": 0,
+  "selectedChangeCount": 24,
+  "carryForwardHolds": {
+    "count": 22,
+    "byPosition": {
+      "1257": 12,
+      "1310": 2,
+      "1311": 1,
+      "1313": 2,
+      "1316": 5
+    },
+    "unchangedCount": 22,
+    "copiedFrom": "candidate-free input-v4/prior-hold-reattestation.jsonl"
+  },
+  "inputIntegrity": {
+    "candidateFreeVerifier": "PASS",
+    "currentWindowCallerlessHolds": 0,
+    "placeholderSequenceMismatchCount": 0,
+    "markupMismatchCount": 0,
+    "numericTokenMismatchCount": 0,
+    "protectedLiteralMismatchCount": 0
+  },
+  "blindReviewLedgerSha256": "c956baee5e986ea2df87f64b6db3fde4ac754af1300ed4039e80587b53da9037",
+  "reviewMode": "candidate-free input only; no primary or prior-audit packet opened",
+  "applicationAuthorization": "not included; blind review packet only"
+}

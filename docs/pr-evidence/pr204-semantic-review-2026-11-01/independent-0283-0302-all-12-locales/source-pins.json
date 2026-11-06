@@ -1,0 +1,351 @@
+{
+  "application": "slskR",
+  "catalog_sha256_after": {
+    "web/src/lib/locales/ui-labels.ar.json": "53f688da529cd0135b7ac2cf18581c0710b5d28a83145678700f38191ea549b4",
+    "web/src/lib/locales/ui-labels.de.json": "486bde7b02cd3d57a88e4088166ca44bc4b8a56a75584b3f054b380909126415",
+    "web/src/lib/locales/ui-labels.es.json": "149b231db8d8cc5e9dbe63bcc8ac71f2e2d7c7d800312cb9631fec5cf473c8e8",
+    "web/src/lib/locales/ui-labels.fr.json": "c0f2e1ca0702ba4320ba0dba56b412c819c06f6cad9324de38873cbb135f1af3",
+    "web/src/lib/locales/ui-labels.hi.json": "4af6e7b9851d445dbfe251d650a860cec1ea88a0e4e9997f561b49dddb13f34f",
+    "web/src/lib/locales/ui-labels.id.json": "2c30f935ceb9fa9c294d1aae3800d7a7f8198b687f1604c82419f4be8d60b8d8",
+    "web/src/lib/locales/ui-labels.ja.json": "6b544f3be6f8712b5d0c85642179589bfb398338f81511d2c73f9cccf2382d18",
+    "web/src/lib/locales/ui-labels.ko.json": "d2b1003a7d7de613ec16ab6be0ed83fd7f77ff4be7bd521469ebd0d13c22a51b",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "e237a2304f628f3301618abb15aab5ba03e4800fa16fef41a1ec1af3119f6e89",
+    "web/src/lib/locales/ui-labels.vi.json": "5ed7f12f2245878e8096120f477361d74b3f9ed6b0fb61f0e75ca6eb23eb5f00",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "e9fc1c7328052dba8f88618b78422d8fd1a7a6a68dc91ea6d16b3ca08c7367c5",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "8cadca8952ac729ec2cee22cf5123355940429d0ed0837380ccd38c6ee2b2067"
+  },
+  "catalog_sha256_before": {
+    "web/src/lib/locales/ui-labels.ar.json": "8d6093b08243d8c113a91082aedb2d3ca4db0002933164b5b993142706fc1456",
+    "web/src/lib/locales/ui-labels.de.json": "e71d440020618485c9807ee3d6130c2cc8c0a943a4ce9e59c879e6cc25fd9a24",
+    "web/src/lib/locales/ui-labels.es.json": "1c2dc6dc96697c7ecee6ba25c5829e54d0a7861beaf48e34d1fccfbcf770a675",
+    "web/src/lib/locales/ui-labels.fr.json": "24dcf0ee1608368e2df238ce7f43cff1f8c3d9dcca25b5e2f7712c7d96708a1e",
+    "web/src/lib/locales/ui-labels.hi.json": "46c514128702527e6740d35ec2f426f4e0c6d2fb234f09af2e346638c8823e94",
+    "web/src/lib/locales/ui-labels.id.json": "269924d98332b78b759558e1b0426ee255ddcd46d292aa4f170b8b7420b18de1",
+    "web/src/lib/locales/ui-labels.ja.json": "ef60aeaaf5ce0f2b978f0157d493a64ae88db5af764e30122d805cb25cd8c023",
+    "web/src/lib/locales/ui-labels.ko.json": "7e456353d8cd6a4d44e8dc8fbe31bfc2e950ad7ec464e68b9feebeff38cbee94",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "0de60739787750de428d6fc4d4fc8a6553aaca48085dfb76770c710996daa126",
+    "web/src/lib/locales/ui-labels.vi.json": "2be61bc7329276cea157b533a9e7f463921acc45157726d731428a1d3a6e9464",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "8c826eebb4efb4996e966950adf2020f1358ebdcb7e5298d99f92676061f8ce9",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "11747cb04dd11943782a404ba868844a0ecaffb04e6f9d300f00c97487e0998f"
+  },
+  "git_blob_ids": {
+    "crates/slskr/src/podcore_mutations.rs": "09e8252602a617bc76e76bfaafc38cf270acf097",
+    "crates/slskr/src/podcore_queries.rs": "1bcafa27f853c182295586c484acdee1a4bb4d06",
+    "web/src/components/Search/SongIDPanel.jsx": "6fdab9ac4884fdd98d1691a783a9bce5af9090f9",
+    "web/src/components/System/MediaCore/MediaCoreHashSimilarityPanel.jsx": "ef421bb767cd96a6f14922aa0b110b53952cbdfe",
+    "web/src/components/System/MediaCore/MediaCoreMetadataPortabilityPanel.jsx": "194d820df304d56eb107142812814c2ff4d6524b",
+    "web/src/components/System/MediaCore/MediaCoreTextSimilarityPanel.jsx": "27c0a318d863a0205402269eb65a9b78d5671980",
+    "web/src/components/System/MediaCore/PodMessageBackfillPanel.jsx": "a10fea57aff9f5a2c76d676f23f8ef212277cc69",
+    "web/src/components/System/Network/NetworkDetails.jsx": "e2007ae26e923d742d85cfdcaf4295053ed24429",
+    "web/src/components/System/Security/AdversarialSettingsView.jsx": "adcacdd123faf82a315da746fab3243adf5ea6a3",
+    "web/src/components/System/SwarmAnalytics/index.jsx": "6b4db5a84a05d1ffdb560e0e2c8d2708590f3ded",
+    "web/src/lib/serverErrorMessageAllowlist.js": "d9eed15e55416d5e5fa06657c9c86b287b9b3260"
+  },
+  "native_speaker_review": "not_provided",
+  "review_head": "aa604d3ae8e32ae997c97e12a210f20be92cdd5f",
+  "review_tree": "5cdb9fe6a6e25c8921767ebd11f5a19e338c7fbc",
+  "sha256": {
+    "crates/slskr/src/podcore_mutations.rs": "8de3802d6daaa1239c00a645802a658ef63031b975cc5edadf3d1482f2182a3a",
+    "crates/slskr/src/podcore_queries.rs": "e2b4d40fdc61540d678a90c2befeba011ff5929ef29342b853a0e1be97684dfc",
+    "web/src/components/Search/SongIDPanel.jsx": "e831f050c440f591b8ba2b70a879bfdaf76f8bc5f5b62438134e86577f303a12",
+    "web/src/components/System/MediaCore/MediaCoreHashSimilarityPanel.jsx": "561f920034eae2f1768a420fa0b714fcc0a80ed0aff0ce254fd0a12c703997af",
+    "web/src/components/System/MediaCore/MediaCoreMetadataPortabilityPanel.jsx": "d0a786e8d6c7c42ad22862d08b64ddcf4a3003417ca8a9459e766cbd136a2c03",
+    "web/src/components/System/MediaCore/MediaCoreTextSimilarityPanel.jsx": "3ca7ccb89ceb9c3099b204e4222dc5907ba8f6fe2f875ab1d5b4a667e08f9aae",
+    "web/src/components/System/MediaCore/PodMessageBackfillPanel.jsx": "a1b1127673baab77d8478398b3d26aa5080a73741a2230d2065f69272df3b364",
+    "web/src/components/System/Network/NetworkDetails.jsx": "ea93b702834e5be75f28204abefc4fa6f3d60f5c950cce168ceb2fcf7051c33e",
+    "web/src/components/System/Security/AdversarialSettingsView.jsx": "5b2dfa095ba281bae2b5ef66e17901b38c7d2a68d9bef52c5f016ce3352db72d",
+    "web/src/components/System/SwarmAnalytics/index.jsx": "b020adc0f11520ad1fe52080fdf1d90fe717c3dea9a3c5379973b31514d88c9d",
+    "web/src/lib/serverErrorMessageAllowlist.js": "de7bf779c371f2a93d106124d32051b39836c0e7cd557e314c11f7755ce004bc"
+  },
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_contexts": [
+    {
+      "line_numbers": [
+        1021
+      ],
+      "path": "crates/slskr/src/podcore_mutations.rs",
+      "source_blob": "09e8252602a617bc76e76bfaafc38cf270acf097",
+      "source_id": "An error occurred while rebuilding search index",
+      "source_index": 283
+    },
+    {
+      "line_numbers": [
+        237
+      ],
+      "path": "crates/slskr/src/podcore_mutations.rs",
+      "source_blob": "09e8252602a617bc76e76bfaafc38cf270acf097",
+      "source_id": "An error occurred while refreshing opinions",
+      "source_index": 284
+    },
+    {
+      "line_numbers": [
+        769
+      ],
+      "path": "crates/slskr/src/podcore_queries.rs",
+      "source_blob": "1bcafa27f853c182295586c484acdee1a4bb4d06",
+      "source_id": "An error occurred while searching messages",
+      "source_index": 285
+    },
+    {
+      "line_numbers": [
+        827
+      ],
+      "path": "crates/slskr/src/podcore_mutations.rs",
+      "source_blob": "09e8252602a617bc76e76bfaafc38cf270acf097",
+      "source_id": "An error occurred while syncing all pods",
+      "source_index": 286
+    },
+    {
+      "line_numbers": [
+        811
+      ],
+      "path": "crates/slskr/src/podcore_mutations.rs",
+      "source_blob": "09e8252602a617bc76e76bfaafc38cf270acf097",
+      "source_id": "An error occurred while syncing backfill",
+      "source_index": 287
+    },
+    {
+      "line_numbers": [
+        206
+      ],
+      "path": "crates/slskr/src/podcore_mutations.rs",
+      "source_blob": "09e8252602a617bc76e76bfaafc38cf270acf097",
+      "source_id": "An error occurred while updating member affinities",
+      "source_index": 288
+    },
+    {
+      "line_numbers": [
+        379
+      ],
+      "path": "crates/slskr/src/podcore_mutations.rs",
+      "source_blob": "09e8252602a617bc76e76bfaafc38cf270acf097",
+      "source_id": "An error occurred while updating the channel",
+      "source_index": 289
+    },
+    {
+      "line_numbers": [
+        1025
+      ],
+      "path": "crates/slskr/src/podcore_mutations.rs",
+      "source_blob": "09e8252602a617bc76e76bfaafc38cf270acf097",
+      "source_id": "An error occurred while vacuuming database",
+      "source_index": 290
+    },
+    {
+      "line_numbers": [
+        161,
+        166
+      ],
+      "path": "web/src/components/System/SwarmAnalytics/index.jsx",
+      "source_blob": "6b4db5a84a05d1ffdb560e0e2c8d2708590f3ded",
+      "source_id": "Analytics time window",
+      "source_index": 291
+    },
+    {
+      "line_numbers": [
+        200
+      ],
+      "path": "web/src/components/System/SwarmAnalytics/index.jsx",
+      "source_blob": "6b4db5a84a05d1ffdb560e0e2c8d2708590f3ded",
+      "source_id": "Analytics unavailable",
+      "source_index": 292
+    },
+    {
+      "line_numbers": [
+        264
+      ],
+      "path": "web/src/components/System/MediaCore/MediaCoreMetadataPortabilityPanel.jsx",
+      "source_blob": "194d820df304d56eb107142812814c2ff4d6524b",
+      "source_id": "Analyze Conflicts",
+      "source_index": 293
+    },
+    {
+      "line_numbers": [
+        111
+      ],
+      "path": "web/src/components/System/MediaCore/MediaCoreHashSimilarityPanel.jsx",
+      "source_blob": "ef421bb767cd96a6f14922aa0b110b53952cbdfe",
+      "source_id": "Analyze Similarity",
+      "source_index": 294
+    },
+    {
+      "line_numbers": [
+        100
+      ],
+      "path": "web/src/components/System/MediaCore/MediaCoreTextSimilarityPanel.jsx",
+      "source_blob": "27c0a318d863a0205402269eb65a9b78d5671980",
+      "source_id": "Analyze Text Similarity",
+      "source_index": 295
+    },
+    {
+      "line_numbers": [
+        501,
+        512
+      ],
+      "path": "web/src/components/Search/SongIDPanel.jsx",
+      "source_blob": "6fdab9ac4884fdd98d1691a783a9bce5af9090f9",
+      "source_id": "Analyze the source and rank likely track, album, and artist candidates so you can search or plan downloads from the result.",
+      "source_index": 296
+    },
+    {
+      "line_numbers": [
+        510
+      ],
+      "path": "web/src/components/Search/SongIDPanel.jsx",
+      "source_blob": "6fdab9ac4884fdd98d1691a783a9bce5af9090f9",
+      "source_id": "Analyze with SongID",
+      "source_index": 297
+    },
+    {
+      "line_numbers": [
+        172
+      ],
+      "path": "web/src/components/System/Network/NetworkDetails.jsx",
+      "source_blob": "e2007ae26e923d742d85cfdcaf4295053ed24429",
+      "source_id": "And {count} more…",
+      "source_index": 298
+    },
+    {
+      "line_numbers": [
+        128,
+        176,
+        564,
+        572,
+        576
+      ],
+      "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+      "source_blob": "adcacdd123faf82a315da746fab3243adf5ea6a3",
+      "source_id": "Anonymity Layer",
+      "source_index": 299
+    },
+    {
+      "line_numbers": [
+        128
+      ],
+      "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+      "source_blob": "adcacdd123faf82a315da746fab3243adf5ea6a3",
+      "source_id": "Anonymity Layer (IP Protection)",
+      "source_index": 300
+    },
+    {
+      "line_numbers": [
+        564
+      ],
+      "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+      "source_blob": "adcacdd123faf82a315da746fab3243adf5ea6a3",
+      "source_id": "Anonymity Layer - IP Protection",
+      "source_index": 301
+    },
+    {
+      "line_numbers": [
+        582
+      ],
+      "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+      "source_blob": "adcacdd123faf82a315da746fab3243adf5ea6a3",
+      "source_id": "Anonymity Mode",
+      "source_index": 302
+    },
+    {
+      "context_role": "UI explanation of backfill semantics",
+      "line_numbers": [
+        151,
+        153
+      ],
+      "path": "web/src/components/System/MediaCore/PodMessageBackfillPanel.jsx",
+      "source_blob": "a10fea57aff9f5a2c76d676f23f8ef212277cc69",
+      "source_id": "An error occurred while syncing backfill",
+      "source_index": 287
+    }
+  ],
+  "source_files": [
+    {
+      "bytes": 79615,
+      "matches_source_head_review_head": true,
+      "path": "crates/slskr/src/podcore_mutations.rs",
+      "review_blob": "09e8252602a617bc76e76bfaafc38cf270acf097",
+      "sha256": "8de3802d6daaa1239c00a645802a658ef63031b975cc5edadf3d1482f2182a3a",
+      "source_blob": "09e8252602a617bc76e76bfaafc38cf270acf097"
+    },
+    {
+      "bytes": 38934,
+      "matches_source_head_review_head": true,
+      "path": "crates/slskr/src/podcore_queries.rs",
+      "review_blob": "1bcafa27f853c182295586c484acdee1a4bb4d06",
+      "sha256": "e2b4d40fdc61540d678a90c2befeba011ff5929ef29342b853a0e1be97684dfc",
+      "source_blob": "1bcafa27f853c182295586c484acdee1a4bb4d06"
+    },
+    {
+      "bytes": 22540,
+      "matches_source_head_review_head": true,
+      "path": "web/src/components/Search/SongIDPanel.jsx",
+      "review_blob": "6fdab9ac4884fdd98d1691a783a9bce5af9090f9",
+      "sha256": "e831f050c440f591b8ba2b70a879bfdaf76f8bc5f5b62438134e86577f303a12",
+      "source_blob": "6fdab9ac4884fdd98d1691a783a9bce5af9090f9"
+    },
+    {
+      "bytes": 5790,
+      "matches_source_head_review_head": true,
+      "path": "web/src/components/System/MediaCore/MediaCoreHashSimilarityPanel.jsx",
+      "review_blob": "ef421bb767cd96a6f14922aa0b110b53952cbdfe",
+      "sha256": "561f920034eae2f1768a420fa0b714fcc0a80ed0aff0ce254fd0a12c703997af",
+      "source_blob": "ef421bb767cd96a6f14922aa0b110b53952cbdfe"
+    },
+    {
+      "bytes": 14701,
+      "matches_source_head_review_head": true,
+      "path": "web/src/components/System/MediaCore/MediaCoreMetadataPortabilityPanel.jsx",
+      "review_blob": "194d820df304d56eb107142812814c2ff4d6524b",
+      "sha256": "d0a786e8d6c7c42ad22862d08b64ddcf4a3003417ca8a9459e766cbd136a2c03",
+      "source_blob": "194d820df304d56eb107142812814c2ff4d6524b"
+    },
+    {
+      "bytes": 5747,
+      "matches_source_head_review_head": true,
+      "path": "web/src/components/System/MediaCore/MediaCoreTextSimilarityPanel.jsx",
+      "review_blob": "27c0a318d863a0205402269eb65a9b78d5671980",
+      "sha256": "3ca7ccb89ceb9c3099b204e4222dc5907ba8f6fe2f875ab1d5b4a667e08f9aae",
+      "source_blob": "27c0a318d863a0205402269eb65a9b78d5671980"
+    },
+    {
+      "bytes": 18835,
+      "matches_source_head_review_head": true,
+      "path": "web/src/components/System/Network/NetworkDetails.jsx",
+      "review_blob": "e2007ae26e923d742d85cfdcaf4295053ed24429",
+      "sha256": "ea93b702834e5be75f28204abefc4fa6f3d60f5c950cce168ceb2fcf7051c33e",
+      "source_blob": "e2007ae26e923d742d85cfdcaf4295053ed24429"
+    },
+    {
+      "bytes": 41904,
+      "matches_source_head_review_head": true,
+      "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+      "review_blob": "adcacdd123faf82a315da746fab3243adf5ea6a3",
+      "sha256": "5b2dfa095ba281bae2b5ef66e17901b38c7d2a68d9bef52c5f016ce3352db72d",
+      "source_blob": "adcacdd123faf82a315da746fab3243adf5ea6a3"
+    },
+    {
+      "bytes": 18016,
+      "matches_source_head_review_head": true,
+      "path": "web/src/components/System/SwarmAnalytics/index.jsx",
+      "review_blob": "6b4db5a84a05d1ffdb560e0e2c8d2708590f3ded",
+      "sha256": "b020adc0f11520ad1fe52080fdf1d90fe717c3dea9a3c5379973b31514d88c9d",
+      "source_blob": "6b4db5a84a05d1ffdb560e0e2c8d2708590f3ded"
+    },
+    {
+      "bytes": 21330,
+      "matches_source_head_review_head": true,
+      "path": "web/src/lib/serverErrorMessageAllowlist.js",
+      "review_blob": "d9eed15e55416d5e5fa06657c9c86b287b9b3260",
+      "sha256": "de7bf779c371f2a93d106124d32051b39836c0e7cd557e314c11f7755ce004bc",
+      "source_blob": "d9eed15e55416d5e5fa06657c9c86b287b9b3260"
+    },
+    {
+      "bytes": 12330,
+      "matches_source_head_review_head": true,
+      "path": "web/src/components/System/MediaCore/PodMessageBackfillPanel.jsx",
+      "review_blob": "a10fea57aff9f5a2c76d676f23f8ef212277cc69",
+      "sha256": "a1b1127673baab77d8478398b3d26aa5080a73741a2230d2065f69272df3b364",
+      "source_blob": "a10fea57aff9f5a2c76d676f23f8ef212277cc69"
+    }
+  ]
+}

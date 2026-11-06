@@ -1,0 +1,82 @@
+{
+  "catalogSnapshotMatchesRecordedWorkingFileHashes": true,
+  "interpretation": "The prior review metadata pins base head 9d3aae but records a dirty working tree with 12 modified locale files. The review artifact committed at aa106d25 records those exact working-file SHA-256 values; they reattest to the catalog blobs at aa106d25, and all reused target hashes exactly match current b52b7c9 values. This is exact text reuse against the captured patch, not a claim that those keys were present in the tracked 9d3aae tree.",
+  "priorSumsChecks": [
+    {
+      "actualSha256": "cabe3fa3eabea2e49567d59c3ecb647fa4b7757859609011f0144d7c8242aced",
+      "expectedSha256": "cabe3fa3eabea2e49567d59c3ecb647fa4b7757859609011f0144d7c8242aced",
+      "matches": true,
+      "path": "docs/pr-evidence/pr204-localization-2026-11-02/connection-state-review/review-cells.jsonl"
+    },
+    {
+      "actualSha256": "250bbb2e1356db567d467b6784bd824788f6e3cad5199ddb2801543e4b2afa50",
+      "expectedSha256": "250bbb2e1356db567d467b6784bd824788f6e3cad5199ddb2801543e4b2afa50",
+      "matches": true,
+      "path": "docs/pr-evidence/pr204-localization-2026-11-02/connection-state-review/review-summary.json"
+    }
+  ],
+  "reusedRowsForAssignedLocales": 18,
+  "reusedRowsReattested": 24,
+  "reusedSourceStates": [
+    "Connecting",
+    "Connection Failed"
+  ],
+  "reviewArtifactCommit": "aa106d2505de8c9ace2d7d6dbf2af9777651947d",
+  "reviewArtifactPath": "docs/pr-evidence/pr204-localization-2026-11-02/connection-state-review/review-cells.jsonl",
+  "reviewArtifactRows": 36,
+  "reviewArtifactSha256": "cabe3fa3eabea2e49567d59c3ecb647fa4b7757859609011f0144d7c8242aced",
+  "reviewSummarySha256": "250bbb2e1356db567d467b6784bd824788f6e3cad5199ddb2801543e4b2afa50",
+  "reviewedBaseHead": "9d3aae249503d1732cc890a650052c85c57b2919",
+  "reviewedPrDraft": true,
+  "reviewedPrState": "open",
+  "trackedBaseCatalogKeyPresenceByLocale": {
+    "ar": {
+      "Connecting": false,
+      "Connection Failed": false
+    },
+    "de": {
+      "Connecting": false,
+      "Connection Failed": false
+    },
+    "es": {
+      "Connecting": false,
+      "Connection Failed": false
+    },
+    "fr": {
+      "Connecting": false,
+      "Connection Failed": false
+    },
+    "hi": {
+      "Connecting": false,
+      "Connection Failed": false
+    },
+    "id": {
+      "Connecting": false,
+      "Connection Failed": false
+    },
+    "ja": {
+      "Connecting": false,
+      "Connection Failed": false
+    },
+    "ko": {
+      "Connecting": false,
+      "Connection Failed": false
+    },
+    "pt-BR": {
+      "Connecting": false,
+      "Connection Failed": false
+    },
+    "vi": {
+      "Connecting": false,
+      "Connection Failed": false
+    },
+    "zh-Hans": {
+      "Connecting": false,
+      "Connection Failed": false
+    },
+    "zh-Hant": {
+      "Connecting": false,
+      "Connection Failed": false
+    }
+  }
+}

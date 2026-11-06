@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "livePullRequest": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+    "isDraft": true,
+    "mergeStateStatus": "CLEAN",
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "head": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "tree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "sourceBaselineHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceBaselineTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "sourceInventory": {
+    "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/frozen-inputs/source-inventory.jsonl",
+    "sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+    "keyCount": 5437
+  },
+  "sourceWindow": [
+    763,
+    782
+  ],
+  "sourceIds": 20,
+  "sourceIdBoundary": {
+    "763": "Collection shares unavailable",
+    "782": "Compatibility Review"
+  },
+  "previousWindow": {
+    "sourceWindow": [
+      743,
+      762
+    ],
+    "nonOverlapping": true,
+    "evidencePath": "/mnt/disks/scratch/task-scratch/slskr-pr204-W743-762-primary-20261102/packet",
+    "boundaryReattestationPath": "window-boundary-reattestation.json"
+  },
+  "nextSourceBoundary": {
+    "783": "Complete"
+  },
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "freshReviewLocales": [
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "cells": 240,
+  "catalogs": {
+    "ar": {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "bytes": 512275,
+      "sha256": "a00bff46a89ab3fb7c45cfa851354f46a4915cf640f03bf57e1ba8bc976fc8e9",
+      "blobOid": "ee6059c505a4a57ddd1aa199bcb39af8b523e49b",
+      "keyCount": 5440
+    },
+    "de": {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "bytes": 442873,
+      "sha256": "76f6b9e30faf15e201f00d4004e3b2ed7b7110dfb86db8f0c1844a772db68bc8",
+      "blobOid": "8cedf119cb61308f999abc576c3c8eb7df8ee03e",
+      "keyCount": 5440
+    },
+    "es": {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "bytes": 443702,
+      "sha256": "7e654724771d92061f3f3031e495b8c16fc2d942fe4f73eeb8914a40e000ce53",
+      "blobOid": "ba8ae008a285c9ae778fc68ac29e6c98b6c9a2db",
+      "keyCount": 5440
+    },
+    "fr": {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "bytes": 454732,
+      "sha256": "bbdfdae078a0c33c4789725d37eb1ca0f4e3e39fe5e53429968ca1565d3dfc11",
+      "blobOid": "4f00cf80bc5ffd6a110c7e43cf7b6151f53f2ade",
+      "keyCount": 5440
+    },
+    "hi": {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "bytes": 675761,
+      "sha256": "f1d0c8682337d0654c4199117940caa7b0fa3e1129b64711ab523f949de55618",
+      "blobOid": "8bfb77040ea5f11e584b5f6116a27b8bae24f39b",
+      "keyCount": 5440
+    },
+    "id": {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "bytes": 409318,
+      "sha256": "c18b65e150cd65e1b8bf064314f71d317f47a1d0ded57caaec0607085e975e82",
+      "blobOid": "80b68b5a822fcd67ca28097130362cc2293b281e",
+      "keyCount": 5440
+    },
+    "ja": {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "bytes": 490752,
+      "sha256": "9dc8b7bfe98332e5ad9edabcdbfb0c02439f33b700c30da24faf2a0fae10d038",
+      "blobOid": "69d097947d2264b2977279532d13461c0c908c8d",
+      "keyCount": 5440
+    },
+    "ko": {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "bytes": 441795,
+      "sha256": "a9cf5dc146eb95d07a54dcb51e1a61c1879766fcd9dfac0c7a87087b45e2bea3",
+      "blobOid": "e2b5813ad9758ee0c1e2b9757f9b6711c4c34d49",
+      "keyCount": 5440
+    },
+    "pt-BR": {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "bytes": 438407,
+      "sha256": "55784629eacb6c1b3ac49a84ca9434cd0ce34ea0ce6a7b272c572ae74977f3b4",
+      "blobOid": "ecb745c964a3150afeb0c659a7d5384ac0a3a167",
+      "keyCount": 5440
+    },
+    "vi": {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "bytes": 473966,
+      "sha256": "0d23f73af90773febc9cd12be8356d999d772e981b3ced25239d5d1eb7b45d4e",
+      "blobOid": "fc777bee1de10a5ba0c0c5f9efcbe25893435fdb",
+      "keyCount": 5440
+    },
+    "zh-Hans": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "bytes": 382437,
+      "sha256": "f53106f318b62b972b5ebe15aa5a54bc59d87f9de0abc00ca926a01bee79994d",
+      "blobOid": "03f32a74761700505aa33692da8be2e311847288",
+      "keyCount": 5440
+    },
+    "zh-Hant": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "bytes": 383151,
+      "sha256": "77f75a92460589fe3add5924299d8184d928137e4e406d6824d5081ebc2d417b",
+      "blobOid": "7a1d1ff77abe50060d172c70800add497d13e75d",
+      "keyCount": 5440
+    }
+  },
+  "catalogKeysOutsidePinnedSourceInventory": [
+    "Cancel selected",
+    "Connecting",
+    "Connection Failed",
+    "Loading native Soulseek interests for {username}.",
+    "OK",
+    "Reconnecting",
+    "Retry selected"
+  ],
+  "sourceKeysMissingFromCatalogs": [
+    "Cancel{all}",
+    "Click to load native Soulseek interests for",
+    "Loading native interests",
+    "Retry{all}"
+  ],
+  "callerReferences": 70,
+  "directLiteralCallerReferences": 43,
+  "supportingCallerContextPins": 15,
+  "testReferences": 12,
+  "uniqueCallerFiles": [
+    "crates/slskr-web/src/native_tab_rendering.rs",
+    "crates/slskr-web/src/route_catalog.rs",
+    "crates/slskr-web/src/route_controls.rs",
+    "crates/slskr-web/src/route_reference_panels.rs",
+    "crates/slskr-web/src/route_workflow_rendering.rs",
+    "crates/slskr-web/src/web_tests/route_inventory.rs",
+    "crates/slskr-web/src/web_tests/workflow_rendering.rs",
+    "crates/slskr/src/controller_tests/full_persistence_differential.rs",
+    "crates/slskr/src/controller_tests/full_persistence_differential_02.rs",
+    "web/src/components/AppNavigationPrimary.jsx",
+    "web/src/components/Collections/Collections.jsx",
+    "web/src/components/Collections/Collections.test.jsx",
+    "web/src/components/Player/PlayerBar.test.jsx",
+    "web/src/components/Player/PlayerLauncher.jsx",
+    "web/src/components/Search/DiscoveryGraphModal.jsx",
+    "web/src/components/Search/SongIDEvidenceDetails.jsx",
+    "web/src/components/Shares/SharedWithMe.jsx",
+    "web/src/components/System/ExperienceSettings/index.jsx",
+    "web/src/components/System/Integrations/ServarrReadinessPanel.jsx",
+    "web/src/components/System/Integrations/index.test.jsx",
+    "web/src/components/System/MediaCore/MediaCoreHashSimilarityPanel.jsx",
+    "web/src/components/System/MediaCore/MediaCorePerceptualSimilarityPanel.jsx",
+    "web/src/components/System/MediaCore/MediaCoreTextSimilarityPanel.jsx",
+    "web/src/components/Users/UserNoteModal.jsx"
+  ],
+  "uniqueCallerLines": 70,
+  "sourceIdsWithNoDirectCallers": [
+    "Collections — full sets and 1G1R"
+  ],
+  "noDirectCallerDisposition": "The single unreferenced source “Collections — full sets and 1G1R” was judged standalone; 1G1R was checked as an exact protected literal.",
+  "priorAuditInput": {
+    "head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+    "tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+    "priorWindowStatusCounts": {
+      "correction-needed": 15,
+      "accepted": 105,
+      "not-reviewed": 120
+    },
+    "priorAcceptedPlusCorrectionRowsReattested": 120,
+    "reusedAcceptedRows": 105,
+    "reusedCorrectionNeededRows": 15,
+    "freshNotReviewedRows": 120,
+    "sourceHashMismatches": 0,
+    "targetHashMismatches": 0,
+    "reviewLedgerSha256": "ffa2fce046085a9a46543ba01dd6a40c0fc02475313d3e833489edf49c73d784",
+    "findingsSha256": "2d981e8b82e9d7080c04ebd26ca2971c704d954c3b3a39ccb4aa436b211b0ccd",
+    "reviewedDecisionsSha256": "c98b1cd429deabe19e262fef3ac6c90bab921e32115b7d941928a8c0f27778eb"
+  },
+  "existingCoverageCheck": {
+    "taskScratchPriorW763PacketsFound": 0,
+    "liveRepoAppliedDecisionRecordsForSelectedIds": 0,
+    "searchedReviewEvidenceFiles": 731,
+    "selectedSourceIdsAlreadyReviewedAtExactHead": true,
+    "noOverlapWithEarlierWindows": true
+  },
+  "placeholderParityFailures": 0,
+  "pluralMapCells": {},
+  "nativeSpeakerApproval": false
+}

@@ -1,0 +1,121 @@
+{
+  "artifact": "slskR PR #204 W1503–W1522 sealed primary translation ledger",
+  "reviewedAtUtc": "2026-11-04",
+  "authority": "primary translation review; no human native-speaker approval claimed",
+  "packet": {
+    "head": "a7d00cd97602c5910800330190817fcada008162",
+    "tree": "2d0a051348394e809ffc3a1fdbfccd20ba8af283",
+    "sourceIds": 20,
+    "cells": 240,
+    "locales": 12,
+    "callerlessRows": 0,
+    "candidateFreeVerifier": "PASS",
+    "candidateFreeChecksums": "19/19 PASS"
+  },
+  "review": {
+    "acceptCurrent": 237,
+    "correction": 1,
+    "refinement": 2,
+    "hold": 0,
+    "proposalsOnlyForCorrectionOrRefinement": true,
+    "holdsTextFree": true,
+    "placeholderMarkupNumericProtectedChecks": "240/240 PASS"
+  },
+  "proposals": [
+    {
+      "position": 1517,
+      "locale": "hi",
+      "type": "correction",
+      "target": "सुधार कार्य नहीं बनाया जा सका"
+    },
+    {
+      "position": 1514,
+      "locale": "fr",
+      "type": "refinement",
+      "target": "Impossible de copier la matrice forensique SongID"
+    },
+    {
+      "position": 1514,
+      "locale": "vi",
+      "type": "refinement",
+      "target": "Không thể sao chép ma trận pháp chứng SongID"
+    }
+  ],
+  "identityBeforeAfter": {
+    "repository": {
+      "before": "snapetech-org/slskR",
+      "after": "snapetech-org/slskR",
+      "stable": true
+    },
+    "pullRequest": {
+      "before": 204,
+      "after": 204,
+      "stable": true
+    },
+    "state": {
+      "before": "OPEN",
+      "after": "OPEN",
+      "stable": true
+    },
+    "draft": {
+      "before": true,
+      "after": true,
+      "stable": true
+    },
+    "head": {
+      "before": "a7d00cd97602c5910800330190817fcada008162",
+      "after": "a7d00cd97602c5910800330190817fcada008162",
+      "stable": true
+    },
+    "tree": {
+      "before": "2d0a051348394e809ffc3a1fdbfccd20ba8af283",
+      "after": "2d0a051348394e809ffc3a1fdbfccd20ba8af283",
+      "stable": true
+    },
+    "headRef": {
+      "before": "codex/slskr-l10n-audit-20261030",
+      "after": "codex/slskr-l10n-audit-20261030",
+      "stable": true
+    },
+    "branchRef": {
+      "before": "a7d00cd97602c5910800330190817fcada008162",
+      "after": "a7d00cd97602c5910800330190817fcada008162",
+      "stable": true
+    },
+    "pullRef": {
+      "before": "a7d00cd97602c5910800330190817fcada008162",
+      "after": "a7d00cd97602c5910800330190817fcada008162",
+      "stable": true
+    },
+    "baseRef": {
+      "before": "main",
+      "after": "main",
+      "stable": true
+    },
+    "baseSha": {
+      "before": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+      "after": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+      "stable": true
+    },
+    "mainRef": {
+      "before": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+      "after": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+      "stable": true
+    }
+  },
+  "deployments": {
+    "forHead": [
+      0,
+      0
+    ],
+    "repository": [
+      0,
+      0
+    ],
+    "reviewIssued": 0
+  },
+  "actionsRunsForHead": [
+    0,
+    0
+  ]
+}

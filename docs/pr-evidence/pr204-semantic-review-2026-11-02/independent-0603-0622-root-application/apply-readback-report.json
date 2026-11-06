@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "task": "slskR PR #204 W603–622 exact-hash application readback",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "inputHead": "f9a852b0f914b53510013dcedbeb3e332275b92d",
+  "inputTree": "bbbfde5fa90f60b656bc4d1a551afaf4cc645742",
+  "reviewedSourcePositions": [
+    603,
+    622
+  ],
+  "reviewedCells": 240,
+  "sourceIds": 20,
+  "directLocales": 12,
+  "catalogChangesApplied": 70,
+  "outcomeCounts": {
+    "accepted-primary": 62,
+    "missed": 7,
+    "refined": 1
+  },
+  "noOpCells": 170,
+  "localeChangeCounts": {
+    "ar": 5,
+    "de": 6,
+    "es": 6,
+    "fr": 6,
+    "hi": 8,
+    "id": 7,
+    "ja": 5,
+    "ko": 4,
+    "pt-BR": 6,
+    "vi": 7,
+    "zh-Hans": 5,
+    "zh-Hant": 5
+  },
+  "allBaseCurrentTargetsMatched": true,
+  "allFinalTargetsReadBack": true,
+  "allCatalogKeySetsUnchanged": true,
+  "catalogFileReports": {
+    "web/src/lib/locales/ui-labels.ar.json": {
+      "baseKeys": 5438,
+      "finalKeys": 5438,
+      "keySetUnchanged": true,
+      "changesReadBack": 5,
+      "catalogSha256": "fb1f3b98570343414a9f7347e807f33b8ad1a99782787c9b49f700c6573b2a10"
+    },
+    "web/src/lib/locales/ui-labels.de.json": {
+      "baseKeys": 5438,
+      "finalKeys": 5438,
+      "keySetUnchanged": true,
+      "changesReadBack": 6,
+      "catalogSha256": "d6628a25072b3c5e2c5b27f5e14e29030d75cc9ad3cfeff42e6ef7ce393ca034"
+    },
+    "web/src/lib/locales/ui-labels.es.json": {
+      "baseKeys": 5438,
+      "finalKeys": 5438,
+      "keySetUnchanged": true,
+      "changesReadBack": 6,
+      "catalogSha256": "a259642b321cb89d8ddf2a49ebc685fd06265c9fdf444b22e48b4e768ae6b347"
+    },
+    "web/src/lib/locales/ui-labels.fr.json": {
+      "baseKeys": 5438,
+      "finalKeys": 5438,
+      "keySetUnchanged": true,
+      "changesReadBack": 6,
+      "catalogSha256": "a017f519299b3f542422a7b85df4e15031301d1b0d617fbdc99bc38a710af9d8"
+    },
+    "web/src/lib/locales/ui-labels.hi.json": {
+      "baseKeys": 5438,
+      "finalKeys": 5438,
+      "keySetUnchanged": true,
+      "changesReadBack": 8,
+      "catalogSha256": "ceff42fbebc92cf8fdc775a1442d64bd1777bd22393a5c0b540fc5ed16c72736"
+    },
+    "web/src/lib/locales/ui-labels.id.json": {
+      "baseKeys": 5438,
+      "finalKeys": 5438,
+      "keySetUnchanged": true,
+      "changesReadBack": 7,
+      "catalogSha256": "f0993a508eb2cbf91af1a1525b10ab7f197ba2e3d8638c3076ffcda969bb1663"
+    },
+    "web/src/lib/locales/ui-labels.ja.json": {
+      "baseKeys": 5438,
+      "finalKeys": 5438,
+      "keySetUnchanged": true,
+      "changesReadBack": 5,
+      "catalogSha256": "1f567906ea8c036741304bbd12a31642e4509cbaf7d9c6e36706ca208927a0a5"
+    },
+    "web/src/lib/locales/ui-labels.ko.json": {
+      "baseKeys": 5438,
+      "finalKeys": 5438,
+      "keySetUnchanged": true,
+      "changesReadBack": 4,
+      "catalogSha256": "725b93e723b4a97852167f17274b618c75de44a6db0f0c011807293482c25fd8"
+    },
+    "web/src/lib/locales/ui-labels.pt-BR.json": {
+      "baseKeys": 5438,
+      "finalKeys": 5438,
+      "keySetUnchanged": true,
+      "changesReadBack": 6,
+      "catalogSha256": "cc1bccb8d24982fd76e7f80a75b7af238f881eca5594a0a04438350b10172d52"
+    },
+    "web/src/lib/locales/ui-labels.vi.json": {
+      "baseKeys": 5438,
+      "finalKeys": 5438,
+      "keySetUnchanged": true,
+      "changesReadBack": 7,
+      "catalogSha256": "bc7a73a55234045f34d1d59dc48f58a47cd5b83c7dd54247bacc043d7a724d48"
+    },
+    "web/src/lib/locales/ui-labels.zh-Hans.json": {
+      "baseKeys": 5438,
+      "finalKeys": 5438,
+      "keySetUnchanged": true,
+      "changesReadBack": 5,
+      "catalogSha256": "35b98b887be2091c8b1de58e38ab0ec8fcbf103ec2579c66e5222a91037d89c7"
+    },
+    "web/src/lib/locales/ui-labels.zh-Hant.json": {
+      "baseKeys": 5438,
+      "finalKeys": 5438,
+      "keySetUnchanged": true,
+      "changesReadBack": 5,
+      "catalogSha256": "34fa6330b1dc22b85eb9551ee20c1ac63cc3e28acf6df68d0d8c095c19a65949"
+    }
+  },
+  "crossReviewAttestations": {
+    "sourceHashMismatches": 0,
+    "currentTargetHashOrTextMismatches": 0,
+    "targetCatalogBlobMismatches": 0,
+    "callerReferences": 504,
+    "uniqueCallerPathLinePins": 42,
+    "callerPinMismatches": 0,
+    "placeholderParityFailures": 0,
+    "protectedLiteralParityFailures": 0
+  },
+  "testsBuildsScansCIOrWorkflowsRun": false
+}

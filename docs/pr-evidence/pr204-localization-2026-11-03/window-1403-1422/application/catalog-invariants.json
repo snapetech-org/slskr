@@ -1,0 +1,229 @@
+{
+  "baseHead": "727500e46852a5b6578e571781693857510943d9",
+  "baseTree": "c71165c20fc6ba7d49d563898ea2ec8e1e448672",
+  "catalogCount": 12,
+  "totalChangedCells": 66,
+  "catalogs": [
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json",
+      "beforeSha256": "42c78429863ed2800b591da030421eef518de721174caffc509e510a503bd006",
+      "beforeGitBlob": "f12de94c80b86cc277580b7f11fa48073be60fac",
+      "afterSha256": "093976ad69295629112fe0434c63263e69c84d6f04982216fd69b86e0b91a24b",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "orderedKeysSha256After": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "changedSourceKeys": [
+        "Every automation is visible here. Enable recipes when their impact fits your node; execution is manual and requires the real backend action to be available.",
+        "Evidence",
+        "Evidence (",
+        "Evidence Review Sandbox",
+        "Exclude the rejected Wishlist peer and remote directory from future automatic downloads.",
+        "Execute {title}",
+        "Execute {title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan.",
+        "Existing hash reused",
+        "Existing configuration is not a YAML mapping"
+      ],
+      "changedCellCount": 10
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json",
+      "beforeSha256": "19078e4cd36497a1f06db094fd432da65ed441f3232b50f1913c7d16492a60d7",
+      "beforeGitBlob": "f7dc2756af4487f7949a67ead00777511a74478c",
+      "afterSha256": "d29c38718ea7365eec57c73baf03bba78186136de66add637d1a6f2983220fb6",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "orderedKeysSha256After": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "changedSourceKeys": [
+        "Event topic filter",
+        "Events",
+        "Events Retention days",
+        "Every automation is visible here. Enable recipes when their impact fits your node; execution is manual and requires the real backend action to be available.",
+        "Evidence Review Sandbox",
+        "Execute {title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan."
+      ],
+      "changedCellCount": 6
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json",
+      "beforeSha256": "1299c6e60d138d2d783bab7abbae467652dc35e31576654483730d8230851896",
+      "beforeGitBlob": "5e6d7e8582a36e604b072df8310d886bdcbb6feb",
+      "afterSha256": "d6e854d2556580e24144449c0bd82dc8e051fe211cb630a9956840470e15a8e2",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "orderedKeysSha256After": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "changedSourceKeys": [
+        "Events Retention days",
+        "Every automation is visible here. Enable recipes when their impact fits your node; execution is manual and requires the real backend action to be available.",
+        "Exclude the rejected Wishlist peer and remote directory from future automatic downloads.",
+        "Execute {title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan."
+      ],
+      "changedCellCount": 4
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json",
+      "beforeSha256": "1e7cc626e8999b28e7edf37b19e7dc2b1d8ce3b135922b7ed0c223a8509b3955",
+      "beforeGitBlob": "a2487e1e180dd4b6058ac948dbadf8df123c51b1",
+      "afterSha256": "120f1857f4d60a387e879d48ad60ca40dd25eb212dcd8a7257fbd07cdb149c87",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "orderedKeysSha256After": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "changedSourceKeys": [
+        "Exclude the rejected Wishlist peer and remote directory from future automatic downloads.",
+        "Execute {title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan.",
+        "Existing hash reused"
+      ],
+      "changedCellCount": 3
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json",
+      "beforeSha256": "277bede6f36a58a30de398ab02e837386d2f058e1c5f627fea11101480cd6e67",
+      "beforeGitBlob": "037d47334c71acce1a1b1e8274bda53912b47193",
+      "afterSha256": "a3c8d432fc76fd93961261ffd804ff172942ce04f5d3a11a5af9265624029379",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "orderedKeysSha256After": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "changedSourceKeys": [
+        "Events Retention days",
+        "Every automation is visible here. Enable recipes when their impact fits your node; execution is manual and requires the real backend action to be available.",
+        "Execute {title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan."
+      ],
+      "changedCellCount": 3
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json",
+      "beforeSha256": "ab945bdb3bd77f9a30d59aa203086262a91a729c31a054baa25132f21bc3d9bc",
+      "beforeGitBlob": "73fdbd546a8f979202b96e05b1dec21880089b6e",
+      "afterSha256": "cf545456485fc5c0ab16538ba7cf3e54d51220dad4bb2f9d066157835dda8d7c",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "orderedKeysSha256After": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "changedSourceKeys": [
+        "Event topic filter",
+        "Events",
+        "Events Retention days",
+        "Every automation is visible here. Enable recipes when their impact fits your node; execution is manual and requires the real backend action to be available.",
+        "Evidence Review Sandbox",
+        "Exclude the rejected Wishlist peer and remote directory from future automatic downloads.",
+        "Execute {title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan."
+      ],
+      "changedCellCount": 7
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json",
+      "beforeSha256": "8c30914999f957a3a4b5348b2b5fed5327bc2653715d527244c67972332ddbbf",
+      "beforeGitBlob": "10134f369b934bbcdd3c3a3c414a9da64df3477d",
+      "afterSha256": "eefb330f623cc1aea5059adf7359491998274e8b3449955102f50a6c3ae6ff6e",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "orderedKeysSha256After": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "changedSourceKeys": [
+        "Events Retention days",
+        "Every automation is visible here. Enable recipes when their impact fits your node; execution is manual and requires the real backend action to be available.",
+        "Evidence (",
+        "Exclude the rejected Wishlist peer and remote directory from future automatic downloads.",
+        "Execute {title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan.",
+        "Execution contract blocked",
+        "Execution contract ready"
+      ],
+      "changedCellCount": 7
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json",
+      "beforeSha256": "6d9dc24ffbb6292ee353758b1b8de4ea61f838a081d59b62905b2acc5c8d5eb6",
+      "beforeGitBlob": "160a80898bee56578adf3c78c8aedf5ffad0fe37",
+      "afterSha256": "aceda4ed7b5c7c7caa569d1e5e7ec9dae85070c92557c844c040e2dd8b0a6b68",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "orderedKeysSha256After": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "changedSourceKeys": [
+        "Events Retention days",
+        "Execute {title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan."
+      ],
+      "changedCellCount": 2
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "beforeSha256": "4bb8a2b6fb2d455ed4a431ec72aa33b2a9cacafe15251361cb7a202d5a63078e",
+      "beforeGitBlob": "895051abb1d3bd9cd6aec013b6f004a402986050",
+      "afterSha256": "f07b0f265c8cfa1d7e49701e8235e4eb261975b6d01b2e3dd2d62c37b1000072",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "orderedKeysSha256After": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "changedSourceKeys": [
+        "Exclude the rejected Wishlist peer and remote directory from future automatic downloads.",
+        "Execute {title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan."
+      ],
+      "changedCellCount": 2
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json",
+      "beforeSha256": "f95ed22f26b1f0e2d7b0729599aaaced05bcae917c2ff5bca75e70362c423e95",
+      "beforeGitBlob": "2b92d5d30b3ba8cc37b4ad64b54b5547d4d0f36a",
+      "afterSha256": "abf5b17406908c6837017d02491522fec4640d0cc4d64593ceb1806982de0649",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "orderedKeysSha256After": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "changedSourceKeys": [
+        "Every automation is visible here. Enable recipes when their impact fits your node; execution is manual and requires the real backend action to be available.",
+        "Evidence",
+        "Evidence (",
+        "Exclude the rejected Wishlist peer and remote directory from future automatic downloads.",
+        "Execute {title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan.",
+        "Execution contract ready",
+        "Existing hash reused"
+      ],
+      "changedCellCount": 7
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "beforeSha256": "0fd41a60b7c9d8eba0e05cc6948b205d430a1e4051d102396c3554df9f4047a9",
+      "beforeGitBlob": "b4dac91bd4759bc8bc79bfee65c16c727e681956",
+      "afterSha256": "20a7aacdfbb517603cd8ff357b50742cb835926110e8c9dd3fddb89ac2fb5ea9",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "orderedKeysSha256After": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "changedSourceKeys": [
+        "Event topic filter",
+        "Events",
+        "Events Retention days",
+        "Evidence (",
+        "Exclude the rejected Wishlist peer and remote directory from future automatic downloads.",
+        "Every 15 minutes",
+        "Execute {title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan."
+      ],
+      "changedCellCount": 7
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "beforeSha256": "0f4891526a5fdd4b3a2d709c674cf81cdee15170402e0de9152fd618991cd9f4",
+      "beforeGitBlob": "0982ce52e1d34084e900413c0a3188b531fb27d8",
+      "afterSha256": "e8d083201cac18821dca9741ae9380366ab14368b4bbcbc762edd016bbb0f7d4",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "orderedKeysSha256After": "d8f06baaeb3db0e29fefdb80f3ac9814932afed1b5677ae57766721f99f67959",
+      "changedSourceKeys": [
+        "Event topic filter",
+        "Events",
+        "Events Retention days",
+        "Evidence (",
+        "Exclude the rejected Wishlist peer and remote directory from future automatic downloads.",
+        "Existing Channels",
+        "Every 15 minutes",
+        "Execute {title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan."
+      ],
+      "changedCellCount": 8
+    }
+  ]
+}

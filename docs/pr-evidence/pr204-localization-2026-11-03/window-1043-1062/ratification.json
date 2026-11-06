@@ -1,0 +1,12 @@
+{
+  "ratifiedBy": "/root",
+  "proposalLedgerPath": "docs/pr-evidence/pr204-localization-2026-11-03/window-1043-1062/root-adjudication/root-adjudication-proposal.jsonl",
+  "proposalLedgerSha256": "40d14cffebe2180f7286b0a3047b5ada32eaaf3a133f3a610da75ee57f364676",
+  "proposalChecksumManifestSha256": "445a27fee2ca28f0025e073ba5a2d4ff4a8017f08df69f561bc10ecbc1be7a5e",
+  "authorizedChanges": 99,
+  "authorizedHolds": 12,
+  "heldPosition": 1044,
+  "priorW1023W1042HoldsPreserved": 48,
+  "authorization": "Apply exactly the 99 root-proposed target changes; retain 12 position-1044 hold-context cells and all accept-current cells. Recheck live PR head/catalog/source pins before mutation. No tests/builds/CI/workflow edits/merge/release/tag.",
+  "ratificationRecordedAtUtc": "2026-11-03T03:38:14Z"
+}

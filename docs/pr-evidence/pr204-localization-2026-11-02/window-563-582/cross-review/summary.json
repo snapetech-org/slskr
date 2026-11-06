@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "pr_head": "7e99edecbdea10580cc5e8d198930a82f076b834",
+  "pr_tree": "55de069f88c197ab8ddd3c773c1f10e5cb86abd5",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "window_indices": [
+    563,
+    582
+  ],
+  "locale_count": 12,
+  "source_id_count": 20,
+  "reviewed_cells": 240,
+  "primary_candidate_cells": 74,
+  "normalized_dispositions": {
+    "accepted": 68,
+    "noop": 152,
+    "held": 12,
+    "missed": 2,
+    "refined": 6
+  },
+  "disposition_definition": "accepted=primary correction proposal independently accepted; refined=exact replacement adjusted; missed=primary keep row independently found deficient; held=caller-blocked Cancel{all}; noop=retain exact current target with no catalog correction.",
+  "raw_reviewer_dispositions": {
+    "locale-a": {
+      "accepted": 31,
+      "noop": 77,
+      "held": 6,
+      "missed": 2,
+      "refined": 4
+    },
+    "locale-b": {
+      "accepted": 106,
+      "noop": 6,
+      "held": 6,
+      "refined": 2
+    }
+  },
+  "normalization_note": "Locale-b labels 69 primary accept-current rows as accepted; these are normalized to noop/retain-current so accepted counts represent correction proposals only.",
+  "attestation_counts": {
+    "source_current_candidate_cells_pass": 240,
+    "caller_file_blob_line_pins_pass": 88
+  },
+  "failed_checks": [],
+  "native_speaker_approval": false,
+  "native_speaker_review_required": true,
+  "tests_builds_scans_ci_workflows_releases_pr_updates": false,
+  "primary_packet_sha256sums_sha256": "6877ec3993379826689d17b2d5d4bbb812661d19ce1f7d9ebc90cf38877bd589",
+  "locale_a_packet_sha256sums_sha256": "deaeafc9361af1ec0c9df786f30004c527f89595ca1e4a1aacbdcb0edceae21e",
+  "locale_b_packet_sha256sums_sha256": "af198b44d697ade46f63bf8f6641b91deb6c53662290b9c5d8fd868160eddfde",
+  "current_window_primary_no_op_cells": 0,
+  "previous_window_no_op_cells_reverified": 12,
+  "previous_window_source_id": "Calendar",
+  "previous_window_no_caller_status_at_current_head": "verified-no-exact-caller",
+  "held_cells_source_id": "Cancel{all}",
+  "held_cells_count": 12,
+  "missed_corrections": [
+    {
+      "source_index": 569,
+      "locale": "es",
+      "source_id": "Candidate identity",
+      "target": "Identidad del candidato",
+      "target_sha256": "dfde2dc0d0bf2e4f803318343d86bc1bb4e2f98d151e5feced16b07bef4ecc0a"
+    },
+    {
+      "source_index": 570,
+      "locale": "de",
+      "source_id": "Candidate match found",
+      "target": "Übereinstimmung für den Kandidaten gefunden",
+      "target_sha256": "9f54105cf56c67e62786bef9a6c6ce925c16faf96985ea0fea128b12b0c2cf4a"
+    }
+  ],
+  "refinements": [
+    {
+      "source_index": 576,
+      "locale": "ja",
+      "source_id": "Canonical support from",
+      "target": "正規判定を支持する",
+      "target_sha256": "e1829adc8731701a8aeb9bd1b6d9716f2e6fa9dcae6eaee4a58eacfb06c862a1"
+    },
+    {
+      "source_index": 576,
+      "locale": "ko",
+      "source_id": "Canonical support from",
+      "target": "정규 판정을 뒷받침하는",
+      "target_sha256": "26dc11e15361dec788ccc7918a083d2c04c8057f6a037a5c465f970e8c3cf2b4"
+    },
+    {
+      "source_index": 577,
+      "locale": "ar",
+      "source_id": "Canonical variants:",
+      "target": "نسخ مختلفة للتسجيل القياسي:",
+      "target_sha256": "73134ee043c34f3b78cee91b8123f9dbcc536a7afd256d48e5348b98b4144377"
+    },
+    {
+      "source_index": 578,
+      "locale": "de",
+      "source_id": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.",
+      "target": "Begrenzen Sie die Bildrate des RustyMilk-Renderings, um die GPU-Last zu senken, oder lassen Sie sie für eine möglichst flüssige Darstellung unbegrenzt.",
+      "target_sha256": "5a080e00a98271e5455345472fb2ca7442976204a641fac82d68764dc0e9b8cb"
+    },
+    {
+      "source_index": 578,
+      "locale": "es",
+      "source_id": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.",
+      "target": "Limita la frecuencia de fotogramas del renderizado de RustyMilk para reducir la carga de la GPU o déjala sin límite para lograr la máxima fluidez.",
+      "target_sha256": "ec75082733ded523161bbdbd6b0be4744cf97da30c4631ad5e11db065a598c05"
+    },
+    {
+      "source_index": 578,
+      "locale": "id",
+      "source_id": "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.",
+      "target": "Batasi frame rate pada rendering RustyMilk untuk mengurangi beban GPU, atau biarkan tanpa batas agar tampilannya tetap semulus mungkin.",
+      "target_sha256": "d2b8634748845d29535a9647a7fde61d313551673f65972af2bfca412773a571"
+    }
+  ],
+  "caller_followups": "See caller-bypass-follow-up.json; no caller changes are included in catalog dispositions.",
+  "cross_review_scope_complete": true,
+  "live_pr_state": "OPEN",
+  "live_pr_head_reverified": "7e99edecbdea10580cc5e8d198930a82f076b834",
+  "live_pr_head_matches_review_input": true,
+  "worktree_status": "clean",
+  "scratch_volume_free_space_bytes": 4719638192128,
+  "definite_visible_raw_cancel_callers": 6,
+  "related_dynamic_candidate_score_source_sites": 3,
+  "raw_nonlocalized_exact_occurrences": 35,
+  "raw_cancelled_literal_occurrences_classified_as_status_or_control_flow": 23,
+  "created_on_host": "kspld0",
+  "task_scratch_output_retained_as_deliverable": true
+}

@@ -1,0 +1,18 @@
+{
+  "blindLedger": "blind-ledger.jsonl",
+  "sha256": "9c4b196efb93ac708f2bc2d346dce5fa504ca073844cec95ea4df6807c83d362",
+  "rows": 240,
+  "head": "09a614a66f1104fe530773fb17c79ed6338aed02",
+  "tree": "963f283311ae39dfa5fc289386d99dcc0dac2f90",
+  "checks": {
+    "sourceCurrentAttestation": "pass",
+    "all240CellRowsUnique": "pass",
+    "983_984_all12_held": "pass",
+    "changeFieldsConsistentWithDisposition": "pass",
+    "proposalHashes": "pass",
+    "finalStructuralChecks": "pass",
+    "currentProtectedLiteralIssues": 4
+  },
+  "sealedBeforePrimaryLedgerRead": true,
+  "blindnessCaveat": "Primary README aggregate/same-window summary text was read; per-cell proposal ledger remained unopened."
+}

@@ -1,0 +1,23 @@
+{
+  "catalog_head": "ad7c283dfe84f31b52f5a27c363a605fe068e36c",
+  "catalog_tree": "d0a2faeba016b57850767fe0903b67621d61bc6c",
+  "source_id": "Auto-Replace (automatic stuck-download replacement)",
+  "source_index": 393,
+  "held_cells": 8,
+  "held_locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "prior_correction_needed_rows_superseded": 6,
+  "provisional_root_review_rows_pinned": 40,
+  "held_ledger_sha256": "571c07920b356dcc70b8aaa3e2abe093a729efc22b19148df088fed6fc591096",
+  "native_speaker_approval": false,
+  "unintended_overlaps": 0,
+  "all_pass": true
+}

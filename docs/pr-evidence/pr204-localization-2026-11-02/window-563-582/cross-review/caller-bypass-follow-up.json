@@ -1,0 +1,965 @@
+{
+  "schema_version": 1,
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "pr_head": "7e99edecbdea10580cc5e8d198930a82f076b834",
+  "pr_tree": "55de069f88c197ab8ddd3c773c1f10e5cb86abd5",
+  "catalog_candidate": false,
+  "scope_note": "All caller findings here are separate follow-ups. None are folded into the W563–582 catalog corrections. Raw exact literals were re-attested at the pinned PR tree.",
+  "primary_exact_literal_search": {
+    "all_exact_literal_matches": 84,
+    "localized_literal_caller_pins": 49,
+    "nonlocalized_exact_occurrences": 35,
+    "raw_exact_occurrence_count": 35,
+    "raw_occurrences": [
+      {
+        "source_index": 565,
+        "source_id": "Cancel",
+        "path": "crates/slskr-web/src/native_row_rendering.rs",
+        "line": 490,
+        "kind": "other-exact-source-literal",
+        "search_text": "        RouteKind::Downloads => vec![primary_action, \"Retry\", \"Cancel\", \"Remove\"],",
+        "actual_text": "        RouteKind::Downloads => vec![primary_action, \"Retry\", \"Cancel\", \"Remove\"],",
+        "line_matches": true,
+        "file_sha256": "6f161e300327ff4abbcce8bb0bd864f1925411321a399c48204591de96abdd65",
+        "pr_blob_oid": "aa7ce7f37f47c19fc155fc5580055bf8bc115609"
+      },
+      {
+        "source_index": 565,
+        "source_id": "Cancel",
+        "path": "crates/slskr-web/src/route_data_projection.rs",
+        "line": 447,
+        "kind": "other-exact-source-literal",
+        "search_text": "                                \"Cancel\"",
+        "actual_text": "                                \"Cancel\"",
+        "line_matches": true,
+        "file_sha256": "cf54298c2b5861f20667af9865cc89acb4083655d47725b9f4466f21502cc346",
+        "pr_blob_oid": "100cc3f0440cd2a0d8ed95e4c2cf9cb2def86387"
+      },
+      {
+        "source_index": 565,
+        "source_id": "Cancel",
+        "path": "crates/slskr-web/src/route_data_projection.rs",
+        "line": 474,
+        "kind": "other-exact-source-literal",
+        "search_text": "                                        \"Cancel\"",
+        "actual_text": "                                        \"Cancel\"",
+        "line_matches": true,
+        "file_sha256": "cf54298c2b5861f20667af9865cc89acb4083655d47725b9f4466f21502cc346",
+        "pr_blob_oid": "100cc3f0440cd2a0d8ed95e4c2cf9cb2def86387"
+      },
+      {
+        "source_index": 565,
+        "source_id": "Cancel",
+        "path": "crates/slskr-web/src/route_reference_panels.rs",
+        "line": 145,
+        "kind": "other-exact-source-literal",
+        "search_text": "                vec![\"Retry\", \"Cancel\", \"Remove\", \"Clear Completed\"],",
+        "actual_text": "                vec![\"Retry\", \"Cancel\", \"Remove\", \"Clear Completed\"],",
+        "line_matches": true,
+        "file_sha256": "f84a6c236077ca22872ac3b79781ff5f10aacb7879143720a5ad43ba8ba18666",
+        "pr_blob_oid": "d61e7d99f08bf1325231c9d2ee49d6d38330b476"
+      },
+      {
+        "source_index": 565,
+        "source_id": "Cancel",
+        "path": "crates/slskr-web/src/route_workflow_rendering.rs",
+        "line": 300,
+        "kind": "other-exact-source-literal",
+        "search_text": "                (\"Open Sessions/01 Theme.flac\", \"peer1 / 42% / 1.2 MB/s\", \"ETA 03:10\", \"Cancel\"),",
+        "actual_text": "                (\"Open Sessions/01 Theme.flac\", \"peer1 / 42% / 1.2 MB/s\", \"ETA 03:10\", \"Cancel\"),",
+        "line_matches": true,
+        "file_sha256": "efd2a909c953003101231eb41eb533bfc92391964b1aaf170c4b132590cffcfb",
+        "pr_blob_oid": "653c99e718b35250385bc2d89fbc89c7c18a3a6f"
+      },
+      {
+        "source_index": 565,
+        "source_id": "Cancel",
+        "path": "web/src/components/AppHeaderMenu.jsx",
+        "line": 147,
+        "kind": "other-exact-source-literal",
+        "search_text": "                    'Cancel',",
+        "actual_text": "                    'Cancel',",
+        "line_matches": true,
+        "file_sha256": "5023bafc3e795ffd3107f9305e637b97f563768d42873546a8d0ebaf7ed8a569",
+        "pr_blob_oid": "bfb81bb9841551f6d11707f2844674f1a92398cd"
+      },
+      {
+        "source_index": 565,
+        "source_id": "Cancel",
+        "path": "web/src/components/System/Files/Explorer.jsx",
+        "line": 56,
+        "kind": "other-exact-source-literal",
+        "search_text": "            'Cancel',",
+        "actual_text": "            'Cancel',",
+        "line_matches": true,
+        "file_sha256": "cffd906eba54004f1ffb86a41fc41ef568514f0300872c40e657bd0fd8dcf0fe",
+        "pr_blob_oid": "ab4c5ed3b5c4c5315c6f46ee40ee2ad254f6daa3"
+      },
+      {
+        "source_index": 565,
+        "source_id": "Cancel",
+        "path": "web/src/components/System/Files/Explorer.jsx",
+        "line": 114,
+        "kind": "other-exact-source-literal",
+        "search_text": "            'Cancel',",
+        "actual_text": "            'Cancel',",
+        "line_matches": true,
+        "file_sha256": "cffd906eba54004f1ffb86a41fc41ef568514f0300872c40e657bd0fd8dcf0fe",
+        "pr_blob_oid": "ab4c5ed3b5c4c5315c6f46ee40ee2ad254f6daa3"
+      },
+      {
+        "source_index": 565,
+        "source_id": "Cancel",
+        "path": "web/src/components/System/Info/index.jsx",
+        "line": 75,
+        "kind": "other-exact-source-literal",
+        "search_text": "            'Cancel',",
+        "actual_text": "            'Cancel',",
+        "line_matches": true,
+        "file_sha256": "2ab81f30d00db61b6ef3c4c6ac2a67628ff0328224d1f662825b7ff57772ac57",
+        "pr_blob_oid": "fe9e307633e6343f52d3bbeacb4111fc357d9f3f"
+      },
+      {
+        "source_index": 565,
+        "source_id": "Cancel",
+        "path": "web/src/components/System/Info/index.jsx",
+        "line": 104,
+        "kind": "other-exact-source-literal",
+        "search_text": "            'Cancel',",
+        "actual_text": "            'Cancel',",
+        "line_matches": true,
+        "file_sha256": "2ab81f30d00db61b6ef3c4c6ac2a67628ff0328224d1f662825b7ff57772ac57",
+        "pr_blob_oid": "fe9e307633e6343f52d3bbeacb4111fc357d9f3f"
+      },
+      {
+        "source_index": 565,
+        "source_id": "Cancel",
+        "path": "web/src/semantic-ui-react/index.jsx",
+        "line": 1574,
+        "kind": "other-exact-source-literal",
+        "search_text": "      {renderConfirmButton(cancelButton, 'Cancel', onCancel, false)}",
+        "actual_text": "      {renderConfirmButton(cancelButton, 'Cancel', onCancel, false)}",
+        "line_matches": true,
+        "file_sha256": "de60ae1bf666cf55e5f584891e9162b7b26b1e63136d0432aac50005a274abfc",
+        "pr_blob_oid": "67da71d574010720b1fe6a3d892bcc0079d9f46b"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/browse_store.rs",
+        "line": 91,
+        "kind": "other-exact-source-literal",
+        "search_text": "        \"cancelled\" => \"Cancelled\",",
+        "actual_text": "        \"cancelled\" => \"Cancelled\",",
+        "line_matches": true,
+        "file_sha256": "839c8fc4622ba93b362e8fba2fa5785cd07e57551d5006e9f227cebb3e13d6f6",
+        "pr_blob_oid": "75b3a446f403f4530feb8bb8c9ab5a724e98445f"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/extended_controller.rs",
+        "line": 880,
+        "kind": "other-exact-source-literal",
+        "search_text": "        \"cancelled\" => \"Cancelled\",",
+        "actual_text": "        \"cancelled\" => \"Cancelled\",",
+        "line_matches": true,
+        "file_sha256": "fdfd14cab2c836c21098e3158b963353f8fa4ed45bf194680c644ed9cf8a22bc",
+        "pr_blob_oid": "64e96af1bb51f4c3574c838b2f16b6ba2f729173"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/lib.rs",
+        "line": 1473,
+        "kind": "other-exact-source-literal",
+        "search_text": "        \"cancelled\" => \"Cancelled\",",
+        "actual_text": "        \"cancelled\" => \"Cancelled\",",
+        "line_matches": true,
+        "file_sha256": "4fbef0f012cef171d728bdd61560841580a565fa1a067973223e437e8f7e9781",
+        "pr_blob_oid": "be76d746650078c75874f9a43d9a4b2ec7ddb4a5"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/search_persistence.rs",
+        "line": 19,
+        "kind": "other-exact-source-literal",
+        "search_text": "        \"cancelled\" | \"canceled\" | \"Cancelled\" | \"Canceled\" => Some(\"cancelled\"),",
+        "actual_text": "        \"cancelled\" | \"canceled\" | \"Cancelled\" | \"Canceled\" => Some(\"cancelled\"),",
+        "line_matches": true,
+        "file_sha256": "b21051c0c591e5ade00ff8890e5f56d3e0b60b0d8f39d7691c3fd47caf7b1f31",
+        "pr_blob_oid": "f80fb875976dc534d61387e1ad770fdce8bcf3b8"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/search_persistence.rs",
+        "line": 29,
+        "kind": "other-exact-source-literal",
+        "search_text": "        \"cancelled\" => \"Cancelled\",",
+        "actual_text": "        \"cancelled\" => \"Cancelled\",",
+        "line_matches": true,
+        "file_sha256": "b21051c0c591e5ade00ff8890e5f56d3e0b60b0d8f39d7691c3fd47caf7b1f31",
+        "pr_blob_oid": "f80fb875976dc534d61387e1ad770fdce8bcf3b8"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/transfer_controller.rs",
+        "line": 446,
+        "kind": "other-exact-source-literal",
+        "search_text": "        \"cancelled\" => \"Cancelled\",",
+        "actual_text": "        \"cancelled\" => \"Cancelled\",",
+        "line_matches": true,
+        "file_sha256": "dc86d849bd3b3b8e0f61d6d20509b1651ea767a80cbec1958cbc6193b137142d",
+        "pr_blob_oid": "bc333fa67da77bf62d8bb65379642fdca9dd09cd"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/transfer_controller.rs",
+        "line": 1028,
+        "kind": "other-exact-source-literal",
+        "search_text": "                \"Cancelled\" | \"Failed\" | \"Rejected\"",
+        "actual_text": "                \"Cancelled\" | \"Failed\" | \"Rejected\"",
+        "line_matches": true,
+        "file_sha256": "dc86d849bd3b3b8e0f61d6d20509b1651ea767a80cbec1958cbc6193b137142d",
+        "pr_blob_oid": "bc333fa67da77bf62d8bb65379642fdca9dd09cd"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/transfer_controller.rs",
+        "line": 1077,
+        "kind": "other-exact-source-literal",
+        "search_text": "                \"Cancelled\" | \"Failed\" | \"Rejected\"",
+        "actual_text": "                \"Cancelled\" | \"Failed\" | \"Rejected\"",
+        "line_matches": true,
+        "file_sha256": "dc86d849bd3b3b8e0f61d6d20509b1651ea767a80cbec1958cbc6193b137142d",
+        "pr_blob_oid": "bc333fa67da77bf62d8bb65379642fdca9dd09cd"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/transfer_entry.rs",
+        "line": 299,
+        "kind": "other-exact-source-literal",
+        "search_text": "        \"Cancelled\"",
+        "actual_text": "        \"Cancelled\"",
+        "line_matches": true,
+        "file_sha256": "32abd1cadbfe5e48ffb6a3bf7300c20a2c43b6a2134698fd8c0a2d010c0de6cf",
+        "pr_blob_oid": "90dd6fd45ebd857d02ef0e0cfb874e82055d66a9"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/transfer_entry.rs",
+        "line": 321,
+        "kind": "other-exact-source-literal",
+        "search_text": "    let completed_at = matches!(state, \"Completed\" | \"Failed\" | \"Cancelled\")",
+        "actual_text": "    let completed_at = matches!(state, \"Completed\" | \"Failed\" | \"Cancelled\")",
+        "line_matches": true,
+        "file_sha256": "32abd1cadbfe5e48ffb6a3bf7300c20a2c43b6a2134698fd8c0a2d010c0de6cf",
+        "pr_blob_oid": "90dd6fd45ebd857d02ef0e0cfb874e82055d66a9"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/transfer_queue.rs",
+        "line": 139,
+        "kind": "other-exact-source-literal",
+        "search_text": "                    \"cancelled\" | \"Cancelled\" => \"cancelled\",",
+        "actual_text": "                    \"cancelled\" | \"Cancelled\" => \"cancelled\",",
+        "line_matches": true,
+        "file_sha256": "9d50ddb1b79fe96f6945230f4b66dbd89778b701025c77b027fca534974508d6",
+        "pr_blob_oid": "8405c735dd6ec055b60d89478f1f3590e1256950"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/virtual_soulfind_v2.rs",
+        "line": 218,
+        "kind": "other-exact-source-literal",
+        "search_text": "                \"Cancelled\",",
+        "actual_text": "                \"Cancelled\",",
+        "line_matches": true,
+        "file_sha256": "433a1c4642ecd243b251a6966e45ac07a1eb6fc195072f4c28eb81054c0b367f",
+        "pr_blob_oid": "3084db73b9c23a211dc4677d32fb12343d896255"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/components/Search/Searches.jsx",
+        "line": 622,
+        "kind": "other-exact-source-literal",
+        "search_text": "          state: 'Cancelled',",
+        "actual_text": "          state: 'Cancelled',",
+        "line_matches": true,
+        "file_sha256": "90df495cac8f6595dc4d477b5b43e6e531990dcc3d5cda829c9f9eec87a5bc02",
+        "pr_blob_oid": "d34bb36eb5bff99447ff3ba91a802bf9eb709c21"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/components/System/AdminPolicies/index.jsx",
+        "line": 192,
+        "kind": "other-exact-source-literal",
+        "search_text": "    retentionDownloadCancelled: String(getOption(retentionDownload, 'cancelled', 'Cancelled') ?? ''),",
+        "actual_text": "    retentionDownloadCancelled: String(getOption(retentionDownload, 'cancelled', 'Cancelled') ?? ''),",
+        "line_matches": true,
+        "file_sha256": "c86a11ae6fe12a4a387f92fd35907ab7e225cf22be0b7057988d17cf63e8ba7f",
+        "pr_blob_oid": "df800a08777dcb589a180c88dcc2679490bc84ad"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/components/System/AdminPolicies/index.jsx",
+        "line": 210,
+        "kind": "other-exact-source-literal",
+        "search_text": "    retentionUploadCancelled: String(getOption(retentionUpload, 'cancelled', 'Cancelled') ?? ''),",
+        "actual_text": "    retentionUploadCancelled: String(getOption(retentionUpload, 'cancelled', 'Cancelled') ?? ''),",
+        "line_matches": true,
+        "file_sha256": "c86a11ae6fe12a4a387f92fd35907ab7e225cf22be0b7057988d17cf63e8ba7f",
+        "pr_blob_oid": "df800a08777dcb589a180c88dcc2679490bc84ad"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/components/TrafficTicker/TrafficTicker.jsx",
+        "line": 47,
+        "kind": "other-exact-source-literal",
+        "search_text": "    state.includes('Cancelled') ||",
+        "actual_text": "    state.includes('Cancelled') ||",
+        "line_matches": true,
+        "file_sha256": "53101216362dacc7fa23ed8de50c9bb6bb4345ce076775f98ec199b25471ff5b",
+        "pr_blob_oid": "bc893fb019904bfc9ad5c48358a2db0dc1c676de"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/components/TrafficTicker/TrafficTicker.jsx",
+        "line": 71,
+        "kind": "other-exact-source-literal",
+        "search_text": "    state.includes('Cancelled') ||",
+        "actual_text": "    state.includes('Cancelled') ||",
+        "line_matches": true,
+        "file_sha256": "53101216362dacc7fa23ed8de50c9bb6bb4345ce076775f98ec199b25471ff5b",
+        "pr_blob_oid": "bc893fb019904bfc9ad5c48358a2db0dc1c676de"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/components/Transfers/TransferList.jsx",
+        "line": 23,
+        "kind": "other-exact-source-literal",
+        "search_text": "  'Completed, Cancelled': 'Cancelled',",
+        "actual_text": "  'Completed, Cancelled': 'Cancelled',",
+        "line_matches": true,
+        "file_sha256": "5db7fa14417829b11cd41eb78614b114bb747c5c5fbdc2842c24dfc924066491",
+        "pr_blob_oid": "6b0cc627ee092390cde17aa8330a8d7cb24202d3"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/components/Transfers/TransfersHeader.jsx",
+        "line": 20,
+        "kind": "other-exact-source-literal",
+        "search_text": "    case 'Cancelled':",
+        "actual_text": "    case 'Cancelled':",
+        "line_matches": true,
+        "file_sha256": "57f43a6851d991b9241b73a0f9ff08636573a49282033722f7350fb7f2a44d6f",
+        "pr_blob_oid": "de01ff39c31f0ac094b95fba0a15f40f709f605c"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/components/Transfers/TransfersHeader.jsx",
+        "line": 56,
+        "kind": "other-exact-source-literal",
+        "search_text": "    case 'Cancelled':",
+        "actual_text": "    case 'Cancelled':",
+        "line_matches": true,
+        "file_sha256": "57f43a6851d991b9241b73a0f9ff08636573a49282033722f7350fb7f2a44d6f",
+        "pr_blob_oid": "de01ff39c31f0ac094b95fba0a15f40f709f605c"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/lib/searchState.js",
+        "line": 80,
+        "kind": "other-exact-source-literal",
+        "search_text": "      cancelled: 'Cancelled',",
+        "actual_text": "      cancelled: 'Cancelled',",
+        "line_matches": true,
+        "file_sha256": "807aca58854cf3fb3560863fd2bd679e5196eb7404629f62888c6b2acbe23527",
+        "pr_blob_oid": "acbbdca3b3c7052184d1ed6828bd627f24e17fe3"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/lib/setupHealthCheck.js",
+        "line": 71,
+        "kind": "other-exact-source-literal",
+        "search_text": "  ).filter((item) => !['Completed', 'Cancelled', 'Failed'].includes(item.state)).length;",
+        "actual_text": "  ).filter((item) => !['Completed', 'Cancelled', 'Failed'].includes(item.state)).length;",
+        "line_matches": true,
+        "file_sha256": "254e98de004fc19ae7c71dd47527adb1cc39fe52473323a1aa3b7e4f32d5cb0a",
+        "pr_blob_oid": "ac6f54149388e953852dc230f781fa52bac238e7"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/lib/transfers.js",
+        "line": 266,
+        "kind": "other-exact-source-literal",
+        "search_text": "      return 'Cancelled';",
+        "actual_text": "      return 'Cancelled';",
+        "line_matches": true,
+        "file_sha256": "c3887c3dcafd43e6446e1ef0e7447adb134b0fe6d7445af71b5ab71a3768a0f0",
+        "pr_blob_oid": "d9d4afb3641d95727146d55d8761b3ab3f891f41"
+      },
+      {
+        "source_index": 572,
+        "source_id": "Candidate score: {score}/100",
+        "path": "crates/slskr-web/src/search_planning_owners/search_previews.rs",
+        "line": 215,
+        "kind": "other-exact-source-literal",
+        "search_text": "        lines.push(format!(\"Candidate score: {score}/100\"));",
+        "actual_text": "        lines.push(format!(\"Candidate score: {score}/100\"));",
+        "line_matches": true,
+        "file_sha256": "89eee8eb66552b8163cdb09bf3c999012a4e20abb6ef91c71e1f1c51b294fba8",
+        "pr_blob_oid": "9b9089093fba83aa979d76178cd5a56d74377da2"
+      }
+    ]
+  },
+  "definite_ui_bypass_candidates": {
+    "source_id": "Cancel",
+    "source_index": 565,
+    "occurrences": [
+      {
+        "path": "web/src/components/AppHeaderMenu.jsx",
+        "line": 147,
+        "text": "                    'Cancel',",
+        "assessment": "raw Cancel button content is rendered directly by Modal action/fallback helper",
+        "file_sha256": "5023bafc3e795ffd3107f9305e637b97f563768d42873546a8d0ebaf7ed8a569",
+        "pr_blob_oid": "bfb81bb9841551f6d11707f2844674f1a92398cd"
+      },
+      {
+        "path": "web/src/components/System/Files/Explorer.jsx",
+        "line": 56,
+        "text": "            'Cancel',",
+        "assessment": "raw Cancel button content is rendered directly by Modal action/fallback helper",
+        "file_sha256": "cffd906eba54004f1ffb86a41fc41ef568514f0300872c40e657bd0fd8dcf0fe",
+        "pr_blob_oid": "ab4c5ed3b5c4c5315c6f46ee40ee2ad254f6daa3"
+      },
+      {
+        "path": "web/src/components/System/Files/Explorer.jsx",
+        "line": 114,
+        "text": "            'Cancel',",
+        "assessment": "raw Cancel button content is rendered directly by Modal action/fallback helper",
+        "file_sha256": "cffd906eba54004f1ffb86a41fc41ef568514f0300872c40e657bd0fd8dcf0fe",
+        "pr_blob_oid": "ab4c5ed3b5c4c5315c6f46ee40ee2ad254f6daa3"
+      },
+      {
+        "path": "web/src/components/System/Info/index.jsx",
+        "line": 75,
+        "text": "            'Cancel',",
+        "assessment": "raw Cancel button content is rendered directly by Modal action/fallback helper",
+        "file_sha256": "2ab81f30d00db61b6ef3c4c6ac2a67628ff0328224d1f662825b7ff57772ac57",
+        "pr_blob_oid": "fe9e307633e6343f52d3bbeacb4111fc357d9f3f"
+      },
+      {
+        "path": "web/src/components/System/Info/index.jsx",
+        "line": 104,
+        "text": "            'Cancel',",
+        "assessment": "raw Cancel button content is rendered directly by Modal action/fallback helper",
+        "file_sha256": "2ab81f30d00db61b6ef3c4c6ac2a67628ff0328224d1f662825b7ff57772ac57",
+        "pr_blob_oid": "fe9e307633e6343f52d3bbeacb4111fc357d9f3f"
+      },
+      {
+        "path": "web/src/semantic-ui-react/index.jsx",
+        "line": 1574,
+        "text": "      {renderConfirmButton(cancelButton, 'Cancel', onCancel, false)}",
+        "assessment": "raw Cancel button content is rendered directly by Modal action/fallback helper",
+        "file_sha256": "de60ae1bf666cf55e5f584891e9162b7b26b1e63136d0432aac50005a274abfc",
+        "pr_blob_oid": "67da71d574010720b1fe6a3d892bcc0079d9f46b"
+      }
+    ],
+    "assessment": "These Modal action/fallback values render their string content directly in the project Modal implementation; follow-up should replace them with localized caller output.",
+    "native_route_action_literals": [
+      {
+        "source_index": 565,
+        "source_id": "Cancel",
+        "path": "crates/slskr-web/src/native_row_rendering.rs",
+        "line": 490,
+        "kind": "other-exact-source-literal",
+        "search_text": "        RouteKind::Downloads => vec![primary_action, \"Retry\", \"Cancel\", \"Remove\"],",
+        "actual_text": "        RouteKind::Downloads => vec![primary_action, \"Retry\", \"Cancel\", \"Remove\"],",
+        "line_matches": true,
+        "file_sha256": "6f161e300327ff4abbcce8bb0bd864f1925411321a399c48204591de96abdd65",
+        "pr_blob_oid": "aa7ce7f37f47c19fc155fc5580055bf8bc115609"
+      },
+      {
+        "source_index": 565,
+        "source_id": "Cancel",
+        "path": "crates/slskr-web/src/route_data_projection.rs",
+        "line": 447,
+        "kind": "other-exact-source-literal",
+        "search_text": "                                \"Cancel\"",
+        "actual_text": "                                \"Cancel\"",
+        "line_matches": true,
+        "file_sha256": "cf54298c2b5861f20667af9865cc89acb4083655d47725b9f4466f21502cc346",
+        "pr_blob_oid": "100cc3f0440cd2a0d8ed95e4c2cf9cb2def86387"
+      },
+      {
+        "source_index": 565,
+        "source_id": "Cancel",
+        "path": "crates/slskr-web/src/route_data_projection.rs",
+        "line": 474,
+        "kind": "other-exact-source-literal",
+        "search_text": "                                        \"Cancel\"",
+        "actual_text": "                                        \"Cancel\"",
+        "line_matches": true,
+        "file_sha256": "cf54298c2b5861f20667af9865cc89acb4083655d47725b9f4466f21502cc346",
+        "pr_blob_oid": "100cc3f0440cd2a0d8ed95e4c2cf9cb2def86387"
+      },
+      {
+        "source_index": 565,
+        "source_id": "Cancel",
+        "path": "crates/slskr-web/src/route_reference_panels.rs",
+        "line": 145,
+        "kind": "other-exact-source-literal",
+        "search_text": "                vec![\"Retry\", \"Cancel\", \"Remove\", \"Clear Completed\"],",
+        "actual_text": "                vec![\"Retry\", \"Cancel\", \"Remove\", \"Clear Completed\"],",
+        "line_matches": true,
+        "file_sha256": "f84a6c236077ca22872ac3b79781ff5f10aacb7879143720a5ad43ba8ba18666",
+        "pr_blob_oid": "d61e7d99f08bf1325231c9d2ee49d6d38330b476"
+      },
+      {
+        "source_index": 565,
+        "source_id": "Cancel",
+        "path": "crates/slskr-web/src/route_workflow_rendering.rs",
+        "line": 300,
+        "kind": "other-exact-source-literal",
+        "search_text": "                (\"Open Sessions/01 Theme.flac\", \"peer1 / 42% / 1.2 MB/s\", \"ETA 03:10\", \"Cancel\"),",
+        "actual_text": "                (\"Open Sessions/01 Theme.flac\", \"peer1 / 42% / 1.2 MB/s\", \"ETA 03:10\", \"Cancel\"),",
+        "line_matches": true,
+        "file_sha256": "efd2a909c953003101231eb41eb533bfc92391964b1aaf170c4b132590cffcfb",
+        "pr_blob_oid": "653c99e718b35250385bc2d89fbc89c7c18a3a6f"
+      }
+    ],
+    "assessment_native_literals": "The remaining raw Cancel literals are in native route/action projection code; pin the consumers before changing them."
+  },
+  "candidate_score_related_bypasses": {
+    "source_index": 572,
+    "source_id": "Candidate score: {score}/100",
+    "exact_primary_search_hits": [
+      {
+        "source_index": 572,
+        "source_id": "Candidate score: {score}/100",
+        "path": "crates/slskr-web/src/search_planning_owners/search_previews.rs",
+        "line": 215,
+        "kind": "other-exact-source-literal",
+        "search_text": "        lines.push(format!(\"Candidate score: {score}/100\"));",
+        "actual_text": "        lines.push(format!(\"Candidate score: {score}/100\"));",
+        "line_matches": true,
+        "file_sha256": "89eee8eb66552b8163cdb09bf3c999012a4e20abb6ef91c71e1f1c51b294fba8",
+        "pr_blob_oid": "9b9089093fba83aa979d76178cd5a56d74377da2"
+      }
+    ],
+    "additional_dynamic_label_sites": [
+      {
+        "path": "web/src/lib/searchActionPreview.js",
+        "line": 42,
+        "text": "  if (communityQualitySummary?.override?.mode === 'ignore') {",
+        "label_shape": "Candidate score is {score}/100",
+        "description": "Low-score warning string is interpolated directly into preview warnings.",
+        "file_sha256": "2493c979c11c083ccc1f4a01515cacba27c6b01f6811f5bc9a7f87b9f2717c4b",
+        "pr_blob_oid": "c1f914617a2980c169e541b97cefee6154927b26"
+      },
+      {
+        "path": "web/src/lib/searchActionPreview.js",
+        "line": 73,
+        "text": "    lines.push(`Candidate score: ${preview.candidateScore}/100`);",
+        "label_shape": "Candidate score: {score}/100",
+        "description": "Formatted preview string is rendered in the DownloadActionPreviewModal pre and copied by its summary action.",
+        "file_sha256": "2493c979c11c083ccc1f4a01515cacba27c6b01f6811f5bc9a7f87b9f2717c4b",
+        "pr_blob_oid": "c1f914617a2980c169e541b97cefee6154927b26"
+      },
+      {
+        "path": "crates/slskr-web/src/search_planning_owners/search_previews.rs",
+        "line": 215,
+        "text": "        lines.push(format!(\"Candidate score: {score}/100\"));",
+        "label_shape": "Candidate score: {score}/100",
+        "description": "Native preview formatter emits the label directly; consumer rendering should be reviewed separately.",
+        "file_sha256": "89eee8eb66552b8163cdb09bf3c999012a4e20abb6ef91c71e1f1c51b294fba8",
+        "pr_blob_oid": "9b9089093fba83aa979d76178cd5a56d74377da2"
+      }
+    ],
+    "assessment": "The web formatter exposes raw English in a preview summary/warning; native formatter is separately flagged for consumer review. These require caller localization, not catalog target edits."
+  },
+  "cancelled_literal_occurrences": {
+    "source_index": 567,
+    "source_id": "Cancelled",
+    "count": 23,
+    "classification": "The 23 exact raw matches are status/data or control-flow literals. Confirmed web display paths translate dynamic status labels (`TransferList` via `t(label)` and `SearchStatusIcon` via `LocalizedText`); do not treat the raw-string count alone as 23 UI bypasses.",
+    "occurrences": [
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/browse_store.rs",
+        "line": 91,
+        "kind": "other-exact-source-literal",
+        "search_text": "        \"cancelled\" => \"Cancelled\",",
+        "actual_text": "        \"cancelled\" => \"Cancelled\",",
+        "line_matches": true,
+        "file_sha256": "839c8fc4622ba93b362e8fba2fa5785cd07e57551d5006e9f227cebb3e13d6f6",
+        "pr_blob_oid": "75b3a446f403f4530feb8bb8c9ab5a724e98445f"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/extended_controller.rs",
+        "line": 880,
+        "kind": "other-exact-source-literal",
+        "search_text": "        \"cancelled\" => \"Cancelled\",",
+        "actual_text": "        \"cancelled\" => \"Cancelled\",",
+        "line_matches": true,
+        "file_sha256": "fdfd14cab2c836c21098e3158b963353f8fa4ed45bf194680c644ed9cf8a22bc",
+        "pr_blob_oid": "64e96af1bb51f4c3574c838b2f16b6ba2f729173"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/lib.rs",
+        "line": 1473,
+        "kind": "other-exact-source-literal",
+        "search_text": "        \"cancelled\" => \"Cancelled\",",
+        "actual_text": "        \"cancelled\" => \"Cancelled\",",
+        "line_matches": true,
+        "file_sha256": "4fbef0f012cef171d728bdd61560841580a565fa1a067973223e437e8f7e9781",
+        "pr_blob_oid": "be76d746650078c75874f9a43d9a4b2ec7ddb4a5"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/search_persistence.rs",
+        "line": 19,
+        "kind": "other-exact-source-literal",
+        "search_text": "        \"cancelled\" | \"canceled\" | \"Cancelled\" | \"Canceled\" => Some(\"cancelled\"),",
+        "actual_text": "        \"cancelled\" | \"canceled\" | \"Cancelled\" | \"Canceled\" => Some(\"cancelled\"),",
+        "line_matches": true,
+        "file_sha256": "b21051c0c591e5ade00ff8890e5f56d3e0b60b0d8f39d7691c3fd47caf7b1f31",
+        "pr_blob_oid": "f80fb875976dc534d61387e1ad770fdce8bcf3b8"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/search_persistence.rs",
+        "line": 29,
+        "kind": "other-exact-source-literal",
+        "search_text": "        \"cancelled\" => \"Cancelled\",",
+        "actual_text": "        \"cancelled\" => \"Cancelled\",",
+        "line_matches": true,
+        "file_sha256": "b21051c0c591e5ade00ff8890e5f56d3e0b60b0d8f39d7691c3fd47caf7b1f31",
+        "pr_blob_oid": "f80fb875976dc534d61387e1ad770fdce8bcf3b8"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/transfer_controller.rs",
+        "line": 446,
+        "kind": "other-exact-source-literal",
+        "search_text": "        \"cancelled\" => \"Cancelled\",",
+        "actual_text": "        \"cancelled\" => \"Cancelled\",",
+        "line_matches": true,
+        "file_sha256": "dc86d849bd3b3b8e0f61d6d20509b1651ea767a80cbec1958cbc6193b137142d",
+        "pr_blob_oid": "bc333fa67da77bf62d8bb65379642fdca9dd09cd"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/transfer_controller.rs",
+        "line": 1028,
+        "kind": "other-exact-source-literal",
+        "search_text": "                \"Cancelled\" | \"Failed\" | \"Rejected\"",
+        "actual_text": "                \"Cancelled\" | \"Failed\" | \"Rejected\"",
+        "line_matches": true,
+        "file_sha256": "dc86d849bd3b3b8e0f61d6d20509b1651ea767a80cbec1958cbc6193b137142d",
+        "pr_blob_oid": "bc333fa67da77bf62d8bb65379642fdca9dd09cd"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/transfer_controller.rs",
+        "line": 1077,
+        "kind": "other-exact-source-literal",
+        "search_text": "                \"Cancelled\" | \"Failed\" | \"Rejected\"",
+        "actual_text": "                \"Cancelled\" | \"Failed\" | \"Rejected\"",
+        "line_matches": true,
+        "file_sha256": "dc86d849bd3b3b8e0f61d6d20509b1651ea767a80cbec1958cbc6193b137142d",
+        "pr_blob_oid": "bc333fa67da77bf62d8bb65379642fdca9dd09cd"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/transfer_entry.rs",
+        "line": 299,
+        "kind": "other-exact-source-literal",
+        "search_text": "        \"Cancelled\"",
+        "actual_text": "        \"Cancelled\"",
+        "line_matches": true,
+        "file_sha256": "32abd1cadbfe5e48ffb6a3bf7300c20a2c43b6a2134698fd8c0a2d010c0de6cf",
+        "pr_blob_oid": "90dd6fd45ebd857d02ef0e0cfb874e82055d66a9"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/transfer_entry.rs",
+        "line": 321,
+        "kind": "other-exact-source-literal",
+        "search_text": "    let completed_at = matches!(state, \"Completed\" | \"Failed\" | \"Cancelled\")",
+        "actual_text": "    let completed_at = matches!(state, \"Completed\" | \"Failed\" | \"Cancelled\")",
+        "line_matches": true,
+        "file_sha256": "32abd1cadbfe5e48ffb6a3bf7300c20a2c43b6a2134698fd8c0a2d010c0de6cf",
+        "pr_blob_oid": "90dd6fd45ebd857d02ef0e0cfb874e82055d66a9"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/transfer_queue.rs",
+        "line": 139,
+        "kind": "other-exact-source-literal",
+        "search_text": "                    \"cancelled\" | \"Cancelled\" => \"cancelled\",",
+        "actual_text": "                    \"cancelled\" | \"Cancelled\" => \"cancelled\",",
+        "line_matches": true,
+        "file_sha256": "9d50ddb1b79fe96f6945230f4b66dbd89778b701025c77b027fca534974508d6",
+        "pr_blob_oid": "8405c735dd6ec055b60d89478f1f3590e1256950"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "crates/slskr/src/virtual_soulfind_v2.rs",
+        "line": 218,
+        "kind": "other-exact-source-literal",
+        "search_text": "                \"Cancelled\",",
+        "actual_text": "                \"Cancelled\",",
+        "line_matches": true,
+        "file_sha256": "433a1c4642ecd243b251a6966e45ac07a1eb6fc195072f4c28eb81054c0b367f",
+        "pr_blob_oid": "3084db73b9c23a211dc4677d32fb12343d896255"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/components/Search/Searches.jsx",
+        "line": 622,
+        "kind": "other-exact-source-literal",
+        "search_text": "          state: 'Cancelled',",
+        "actual_text": "          state: 'Cancelled',",
+        "line_matches": true,
+        "file_sha256": "90df495cac8f6595dc4d477b5b43e6e531990dcc3d5cda829c9f9eec87a5bc02",
+        "pr_blob_oid": "d34bb36eb5bff99447ff3ba91a802bf9eb709c21"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/components/System/AdminPolicies/index.jsx",
+        "line": 192,
+        "kind": "other-exact-source-literal",
+        "search_text": "    retentionDownloadCancelled: String(getOption(retentionDownload, 'cancelled', 'Cancelled') ?? ''),",
+        "actual_text": "    retentionDownloadCancelled: String(getOption(retentionDownload, 'cancelled', 'Cancelled') ?? ''),",
+        "line_matches": true,
+        "file_sha256": "c86a11ae6fe12a4a387f92fd35907ab7e225cf22be0b7057988d17cf63e8ba7f",
+        "pr_blob_oid": "df800a08777dcb589a180c88dcc2679490bc84ad"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/components/System/AdminPolicies/index.jsx",
+        "line": 210,
+        "kind": "other-exact-source-literal",
+        "search_text": "    retentionUploadCancelled: String(getOption(retentionUpload, 'cancelled', 'Cancelled') ?? ''),",
+        "actual_text": "    retentionUploadCancelled: String(getOption(retentionUpload, 'cancelled', 'Cancelled') ?? ''),",
+        "line_matches": true,
+        "file_sha256": "c86a11ae6fe12a4a387f92fd35907ab7e225cf22be0b7057988d17cf63e8ba7f",
+        "pr_blob_oid": "df800a08777dcb589a180c88dcc2679490bc84ad"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/components/TrafficTicker/TrafficTicker.jsx",
+        "line": 47,
+        "kind": "other-exact-source-literal",
+        "search_text": "    state.includes('Cancelled') ||",
+        "actual_text": "    state.includes('Cancelled') ||",
+        "line_matches": true,
+        "file_sha256": "53101216362dacc7fa23ed8de50c9bb6bb4345ce076775f98ec199b25471ff5b",
+        "pr_blob_oid": "bc893fb019904bfc9ad5c48358a2db0dc1c676de"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/components/TrafficTicker/TrafficTicker.jsx",
+        "line": 71,
+        "kind": "other-exact-source-literal",
+        "search_text": "    state.includes('Cancelled') ||",
+        "actual_text": "    state.includes('Cancelled') ||",
+        "line_matches": true,
+        "file_sha256": "53101216362dacc7fa23ed8de50c9bb6bb4345ce076775f98ec199b25471ff5b",
+        "pr_blob_oid": "bc893fb019904bfc9ad5c48358a2db0dc1c676de"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/components/Transfers/TransferList.jsx",
+        "line": 23,
+        "kind": "other-exact-source-literal",
+        "search_text": "  'Completed, Cancelled': 'Cancelled',",
+        "actual_text": "  'Completed, Cancelled': 'Cancelled',",
+        "line_matches": true,
+        "file_sha256": "5db7fa14417829b11cd41eb78614b114bb747c5c5fbdc2842c24dfc924066491",
+        "pr_blob_oid": "6b0cc627ee092390cde17aa8330a8d7cb24202d3"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/components/Transfers/TransfersHeader.jsx",
+        "line": 20,
+        "kind": "other-exact-source-literal",
+        "search_text": "    case 'Cancelled':",
+        "actual_text": "    case 'Cancelled':",
+        "line_matches": true,
+        "file_sha256": "57f43a6851d991b9241b73a0f9ff08636573a49282033722f7350fb7f2a44d6f",
+        "pr_blob_oid": "de01ff39c31f0ac094b95fba0a15f40f709f605c"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/components/Transfers/TransfersHeader.jsx",
+        "line": 56,
+        "kind": "other-exact-source-literal",
+        "search_text": "    case 'Cancelled':",
+        "actual_text": "    case 'Cancelled':",
+        "line_matches": true,
+        "file_sha256": "57f43a6851d991b9241b73a0f9ff08636573a49282033722f7350fb7f2a44d6f",
+        "pr_blob_oid": "de01ff39c31f0ac094b95fba0a15f40f709f605c"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/lib/searchState.js",
+        "line": 80,
+        "kind": "other-exact-source-literal",
+        "search_text": "      cancelled: 'Cancelled',",
+        "actual_text": "      cancelled: 'Cancelled',",
+        "line_matches": true,
+        "file_sha256": "807aca58854cf3fb3560863fd2bd679e5196eb7404629f62888c6b2acbe23527",
+        "pr_blob_oid": "acbbdca3b3c7052184d1ed6828bd627f24e17fe3"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/lib/setupHealthCheck.js",
+        "line": 71,
+        "kind": "other-exact-source-literal",
+        "search_text": "  ).filter((item) => !['Completed', 'Cancelled', 'Failed'].includes(item.state)).length;",
+        "actual_text": "  ).filter((item) => !['Completed', 'Cancelled', 'Failed'].includes(item.state)).length;",
+        "line_matches": true,
+        "file_sha256": "254e98de004fc19ae7c71dd47527adb1cc39fe52473323a1aa3b7e4f32d5cb0a",
+        "pr_blob_oid": "ac6f54149388e953852dc230f781fa52bac238e7"
+      },
+      {
+        "source_index": 567,
+        "source_id": "Cancelled",
+        "path": "web/src/lib/transfers.js",
+        "line": 266,
+        "kind": "other-exact-source-literal",
+        "search_text": "      return 'Cancelled';",
+        "actual_text": "      return 'Cancelled';",
+        "line_matches": true,
+        "file_sha256": "c3887c3dcafd43e6446e1ef0e7447adb134b0fe6d7445af71b5ab71a3768a0f0",
+        "pr_blob_oid": "d9d4afb3641d95727146d55d8761b3ab3f891f41"
+      }
+    ]
+  },
+  "held_source_rewrite": {
+    "source_index": 568,
+    "source_id": "Cancel{all}",
+    "source_sha256": "58343c139839e9eae249a869acc719a7ef687857adb699f3b11e6df0edfc623b",
+    "path": "web/src/components/Transfers/TransferGroup.jsx",
+    "file_sha256": "73e4d6bb7a4cb5475d8e9fe98e227bea4983529d4a6e21d287359f033a8dc519",
+    "pr_blob_oid": "489191988e137700c6e3c26a38b01d80807839c2",
+    "evidence": [
+      {
+        "line": 102,
+        "text": "    const all = selected.length > 1 ? ' Selected' : '';"
+      },
+      {
+        "line": 169,
+        "text": "                  content={interfaceText(\"Cancel{all}\", { \"all\": (all) })}"
+      },
+      {
+        "line": 172,
+        "text": "                 {...interfaceTextProps(\"Cancel{all}\")}/>"
+      }
+    ],
+    "reason": "The caller inserts literal English “ Selected” into {all} for multi-selection; all 12 locale cells remain held pending a caller/source rewrite."
+  },
+  "adjacent_out_of_window_key": {
+    "source_index": 5285,
+    "source_id": "track candidate(s)",
+    "source_sha256": "fec9749eb891789bc09c05da850309e479f17588add313c71042f052174c3320",
+    "scope": "out-of-window; no catalog recommendation in W563–582",
+    "callers": [
+      {
+        "path": "web/src/components/Search/SongIDAnalysisResults.jsx",
+        "line": 454,
+        "text": "                          <LocalizedText source={\"Canonical support from\"} />{\" \"}{candidate.canonicalSupportCount} <LocalizedText source={\"track candidate(s)\"} /></List.Description>",
+        "file_sha256": "f1468f5e7ffc69840fe8ff8317518f55ed02a2c727c84d35df87ad6a1c0fde28",
+        "pr_blob_oid": "ddae669325bb2abe51c7b5c80fc1546174350e73"
+      },
+      {
+        "path": "web/src/components/Search/SongIDAnalysisResults.jsx",
+        "line": 511,
+        "text": "                          <LocalizedText source={\"Canonical support from\"} />{\" \"}{candidate.canonicalSupportCount} <LocalizedText source={\"track candidate(s)\"} /></List.Description>",
+        "file_sha256": "f1468f5e7ffc69840fe8ff8317518f55ed02a2c727c84d35df87ad6a1c0fde28",
+        "pr_blob_oid": "ddae669325bb2abe51c7b5c80fc1546174350e73"
+      }
+    ],
+    "current_targets": {
+      "ja": {
+        "text": "候補を追跡する",
+        "sha256": "147097ceb3323d05473e4fa59117b2bd2a0aed9ef58fff7e866ee0def32a24cd",
+        "catalog_blob_oid": "668833a097b829aabef172eb2087c967084ff652"
+      },
+      "ko": {
+        "text": "트랙 후보자",
+        "sha256": "9029e213b932e063f830123d525be97292b83a787f0541a52b41c84265178143",
+        "catalog_blob_oid": "67db297a7d6fb3c98ff12e0bc3b41165bd5d23ff"
+      },
+      "pt-BR": {
+        "text": "rastrear candidato(s)",
+        "sha256": "fbf502eb77a5d23dbe02292867103ba7052ecfa8b989b789f88c265840d5e0d8",
+        "catalog_blob_oid": "0d93a5c4403bfcf3c74248c48ea5c5d6cacb35ac"
+      },
+      "vi": {
+        "text": "theo dõi (các) ứng viên",
+        "sha256": "8257d6556f7c07c96007ff3197446708d80d86cf5f5447f3efdb57beace0285f",
+        "catalog_blob_oid": "77d7a90f67df012686204a9efa6540ad0ef37475"
+      },
+      "zh-Hans": {
+        "text": "跟踪候选人",
+        "sha256": "d9e9981e63db1b1b3f19b3a34a9a9e654ceab81a3c6e10f48e46c510cc857533",
+        "catalog_blob_oid": "1269a1aa5255f12dd0314290b68629a39b85619d"
+      },
+      "zh-Hant": {
+        "text": "跟蹤候選人",
+        "sha256": "99c83b8459d29d233f3cc28328071dea58a7a49fa580ee1d522f2d1f6c8dd88d",
+        "catalog_blob_oid": "53d2d154135baeb074bf79d84969a37443cc367c"
+      }
+    }
+  },
+  "native_speaker_approval": false
+}

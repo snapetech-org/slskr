@@ -1,0 +1,106 @@
+{
+  "exactHeadBeforeApply": "3a4c26a7faf1dacbd8f3a382d47243b7063a262d",
+  "treeBeforeApply": "9059d27001d306ea6b064560137ff2a51dd19021",
+  "livePRReattested": true,
+  "remoteBranchReattested": true,
+  "primaryManifestVerified": true,
+  "crossReviewManifestVerified": true,
+  "acceptedCrossReviewedCells": 106,
+  "appliedCells": 106,
+  "readbacksMatch": true,
+  "catalogs": {
+    "ar": {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "entryCount": 5440,
+      "orderedKeySetSha256": "3393fd25ec3d0fd6bbb40dfe09ab7a3c7b8d020d11f320dfb3e65d54e84339c7",
+      "fileSha256": "821eb178b7e6185a0803c4278d1ef5f93dba0e8bace0ea0c6be018075a780e1b",
+      "changedCells": 9
+    },
+    "de": {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "entryCount": 5440,
+      "orderedKeySetSha256": "3393fd25ec3d0fd6bbb40dfe09ab7a3c7b8d020d11f320dfb3e65d54e84339c7",
+      "fileSha256": "ebba4887e7dc103573c2c4186ebb2fe1ac734ca2598e780f2a20a091a45eb9f1",
+      "changedCells": 7
+    },
+    "es": {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "entryCount": 5440,
+      "orderedKeySetSha256": "3393fd25ec3d0fd6bbb40dfe09ab7a3c7b8d020d11f320dfb3e65d54e84339c7",
+      "fileSha256": "699cd5d6028404a55e45b94ca5b058ca5120894482b80b935b0c40d6444339fc",
+      "changedCells": 6
+    },
+    "fr": {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "entryCount": 5440,
+      "orderedKeySetSha256": "3393fd25ec3d0fd6bbb40dfe09ab7a3c7b8d020d11f320dfb3e65d54e84339c7",
+      "fileSha256": "8732ef3edc10969094bbdddf1a0458bf90cd21f2c9b8318a28ab62e45c205c8a",
+      "changedCells": 7
+    },
+    "hi": {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "entryCount": 5440,
+      "orderedKeySetSha256": "3393fd25ec3d0fd6bbb40dfe09ab7a3c7b8d020d11f320dfb3e65d54e84339c7",
+      "fileSha256": "0db062d5886e65f7537d09d4e58e552b199ff81c69e755d52460ad2c7f90bee7",
+      "changedCells": 8
+    },
+    "id": {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "entryCount": 5440,
+      "orderedKeySetSha256": "3393fd25ec3d0fd6bbb40dfe09ab7a3c7b8d020d11f320dfb3e65d54e84339c7",
+      "fileSha256": "6e7e2cce1d86a1070f9bbc9f364200d12958fd388c1eea496fc40f981b33d332",
+      "changedCells": 9
+    },
+    "ja": {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "entryCount": 5440,
+      "orderedKeySetSha256": "3393fd25ec3d0fd6bbb40dfe09ab7a3c7b8d020d11f320dfb3e65d54e84339c7",
+      "fileSha256": "c647c032955a4fdbd9e380c4d5142768f5202a8a94a9b60465d4f4ce61cb4255",
+      "changedCells": 11
+    },
+    "ko": {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "entryCount": 5440,
+      "orderedKeySetSha256": "3393fd25ec3d0fd6bbb40dfe09ab7a3c7b8d020d11f320dfb3e65d54e84339c7",
+      "fileSha256": "ac4e9214a04aa1aaa0bd26c44433217e7f08b8e4421f2c0c5638005e2920ae29",
+      "changedCells": 10
+    },
+    "pt-BR": {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "entryCount": 5440,
+      "orderedKeySetSha256": "3393fd25ec3d0fd6bbb40dfe09ab7a3c7b8d020d11f320dfb3e65d54e84339c7",
+      "fileSha256": "5c460355af2e9976eb764ccb147d6ada5a673314eb30001932a270918311623d",
+      "changedCells": 5
+    },
+    "vi": {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "entryCount": 5440,
+      "orderedKeySetSha256": "3393fd25ec3d0fd6bbb40dfe09ab7a3c7b8d020d11f320dfb3e65d54e84339c7",
+      "fileSha256": "085681de3e8b5171a1217000e4476e5198eee8f187e7b05ac38db7d12b9c4a79",
+      "changedCells": 10
+    },
+    "zh-Hans": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "entryCount": 5440,
+      "orderedKeySetSha256": "3393fd25ec3d0fd6bbb40dfe09ab7a3c7b8d020d11f320dfb3e65d54e84339c7",
+      "fileSha256": "d7ab2d67ea9d2054347640a6605c7aa425cef258bde106d4901844ac1b9c3789",
+      "changedCells": 12
+    },
+    "zh-Hant": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "entryCount": 5440,
+      "orderedKeySetSha256": "3393fd25ec3d0fd6bbb40dfe09ab7a3c7b8d020d11f320dfb3e65d54e84339c7",
+      "fileSha256": "06eec8d1805f60f8da1600148d267b28ba76e15500be1a6cb0dadf1c4ab0fe44",
+      "changedCells": 12
+    }
+  },
+  "callerGapReview": {
+    "initialRawOutputLocaleCells": 60,
+    "resolvedBySourceChanges": 60,
+    "directUiAndCopyCallerCells": 36,
+    "setupHealthTextAndYamlExportCells": 24,
+    "remainingMissingCatalogCells": 12,
+    "remainingMissingSourceKey": "Not configured",
+    "status": "caller paths routed through translation; separate 12-cell catalog review pending"
+  }
+}

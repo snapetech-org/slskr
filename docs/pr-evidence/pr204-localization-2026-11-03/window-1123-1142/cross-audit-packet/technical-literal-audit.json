@@ -1,0 +1,336 @@
+{
+  "disposition": "The literal HTTPS is required and preserved exactly. The network concept loopback is carried as raw loopback or standard locale technical equivalent. The hostname localhost is retained exactly in selected winning targets where a safe target exists; the Hindi warning remains held because its listener term is unresolved.",
+  "httpsAcronymLosses": [],
+  "localhostChecksByLocale": [
+    {
+      "assessment": "exact-literal-preserved",
+      "exactLiteralPresent": true,
+      "locale": "ar",
+      "outcome": "WIN_PRIMARY",
+      "selectedTarget": "عطّل مستمع HTTPS. أبقه معطّلًا عند إتاحة واجهة الويب خارج localhost."
+    },
+    {
+      "assessment": "exact-literal-preserved",
+      "exactLiteralPresent": true,
+      "locale": "de",
+      "outcome": "KEEP_CURRENT",
+      "selectedTarget": "Deaktivieren Sie den HTTPS-Listener. Lassen Sie dies deaktiviert, wenn Sie die Web-Benutzeroberfläche über „localhost“ hinaus verfügbar machen."
+    },
+    {
+      "assessment": "exact-literal-preserved",
+      "exactLiteralPresent": true,
+      "locale": "es",
+      "outcome": "WIN_BLIND",
+      "selectedTarget": "Desactive el servicio de escucha HTTPS. Manténgalo desactivado cuando exponga la interfaz web más allá de localhost."
+    },
+    {
+      "assessment": "exact-literal-preserved",
+      "exactLiteralPresent": true,
+      "locale": "fr",
+      "outcome": "WIN_BLIND",
+      "selectedTarget": "Désactivez le service d’écoute HTTPS. Gardez cette option désactivée lorsque vous exposez l’interface Web au-delà de localhost."
+    },
+    {
+      "assessment": "held-current-transliteration",
+      "exactLiteralPresent": false,
+      "locale": "hi",
+      "outcome": "HOLD_TERM",
+      "selectedTarget": "HTTPS श्रोता को अक्षम करें। लोकलहोस्ट से परे वेब यूआई को उजागर करते समय इसे बंद रखें।"
+    },
+    {
+      "assessment": "exact-literal-preserved",
+      "exactLiteralPresent": true,
+      "locale": "id",
+      "outcome": "WIN_PRIMARY",
+      "selectedTarget": "Nonaktifkan listener HTTPS. Biarkan tetap nonaktif saat mengekspos UI Web di luar localhost."
+    },
+    {
+      "assessment": "exact-literal-preserved",
+      "exactLiteralPresent": true,
+      "locale": "ja",
+      "outcome": "KEEP_CURRENT",
+      "selectedTarget": "HTTPS リスナーを無効にします。 localhost を超えて Web UI を公開する場合は、これをオフにしてください。"
+    },
+    {
+      "assessment": "exact-literal-preserved",
+      "exactLiteralPresent": true,
+      "locale": "ko",
+      "outcome": "KEEP_CURRENT",
+      "selectedTarget": "HTTPS 수신기를 비활성화합니다. localhost를 넘어 웹 UI를 노출하는 경우 이 기능을 꺼두세요."
+    },
+    {
+      "assessment": "exact-literal-preserved",
+      "exactLiteralPresent": true,
+      "locale": "pt-BR",
+      "outcome": "WIN_BLIND",
+      "selectedTarget": "Desative o serviço de escuta HTTPS. Mantenha-o desativado ao expor a interface Web além de localhost."
+    },
+    {
+      "assessment": "exact-literal-preserved",
+      "exactLiteralPresent": true,
+      "locale": "vi",
+      "outcome": "WIN_BLIND",
+      "selectedTarget": "Tắt dịch vụ lắng nghe HTTPS. Hãy để tùy chọn này luôn tắt khi cung cấp giao diện Web bên ngoài localhost."
+    },
+    {
+      "assessment": "exact-literal-preserved",
+      "exactLiteralPresent": true,
+      "locale": "zh-Hans",
+      "outcome": "WIN_CROSS_AUDIT",
+      "selectedTarget": "禁用 HTTPS 侦听器。在 localhost 之外公开 Web UI 时，请关闭此选项。"
+    },
+    {
+      "assessment": "exact-literal-preserved",
+      "exactLiteralPresent": true,
+      "locale": "zh-Hant",
+      "outcome": "WIN_CROSS_AUDIT",
+      "selectedTarget": "停用 HTTPS 偵聽器。在 localhost 以外公開 Web UI 時，請關閉此選項。"
+    }
+  ],
+  "localhostProposalChecksByLocale": [
+    {
+      "blindExact": true,
+      "blindTarget": "عطّل مستمع HTTPS. اترك هذا الخيار معطّلًا عند إتاحة واجهة الويب خارج localhost.",
+      "locale": "ar",
+      "primaryExact": true,
+      "primaryTarget": "عطّل مستمع HTTPS. أبقه معطّلًا عند إتاحة واجهة الويب خارج localhost."
+    },
+    {
+      "blindExact": true,
+      "blindTarget": null,
+      "locale": "de",
+      "primaryExact": true,
+      "primaryTarget": null
+    },
+    {
+      "blindExact": true,
+      "blindTarget": "Desactive el servicio de escucha HTTPS. Manténgalo desactivado cuando exponga la interfaz web más allá de localhost.",
+      "locale": "es",
+      "primaryExact": true,
+      "primaryTarget": null
+    },
+    {
+      "blindExact": true,
+      "blindTarget": "Désactivez le service d’écoute HTTPS. Gardez cette option désactivée lorsque vous exposez l’interface Web au-delà de localhost.",
+      "locale": "fr",
+      "primaryExact": true,
+      "primaryTarget": null
+    },
+    {
+      "blindExact": true,
+      "blindTarget": "HTTPS लिसनर को अक्षम करें। localhost के बाहर Web UI को उपलब्ध कराते समय इसे अक्षम रखें।",
+      "locale": "hi",
+      "primaryExact": false,
+      "primaryTarget": null
+    },
+    {
+      "blindExact": true,
+      "blindTarget": "Nonaktifkan layanan penerima koneksi HTTPS. Pastikan opsi ini tetap nonaktif saat mengekspos UI Web di luar localhost.",
+      "locale": "id",
+      "primaryExact": true,
+      "primaryTarget": "Nonaktifkan listener HTTPS. Biarkan tetap nonaktif saat mengekspos UI Web di luar localhost."
+    },
+    {
+      "blindExact": true,
+      "blindTarget": null,
+      "locale": "ja",
+      "primaryExact": true,
+      "primaryTarget": null
+    },
+    {
+      "blindExact": true,
+      "blindTarget": null,
+      "locale": "ko",
+      "primaryExact": true,
+      "primaryTarget": null
+    },
+    {
+      "blindExact": true,
+      "blindTarget": "Desative o serviço de escuta HTTPS. Mantenha-o desativado ao expor a interface Web além de localhost.",
+      "locale": "pt-BR",
+      "primaryExact": false,
+      "primaryTarget": null
+    },
+    {
+      "blindExact": true,
+      "blindTarget": "Tắt dịch vụ lắng nghe HTTPS. Hãy để tùy chọn này luôn tắt khi cung cấp giao diện Web bên ngoài localhost.",
+      "locale": "vi",
+      "primaryExact": true,
+      "primaryTarget": null
+    },
+    {
+      "blindExact": false,
+      "blindTarget": null,
+      "locale": "zh-Hans",
+      "primaryExact": false,
+      "primaryTarget": null
+    },
+    {
+      "blindExact": false,
+      "blindTarget": null,
+      "locale": "zh-Hant",
+      "primaryExact": false,
+      "primaryTarget": null
+    }
+  ],
+  "loopbackChecksByLocale": [
+    {
+      "form": "raw term or standard locale technical equivalent",
+      "locale": "ar",
+      "outcome": "WIN_PRIMARY",
+      "preservesLoopbackTerm": true,
+      "selectedTarget": "عطّل مصادقة واجهة الويب فقط في عمليات نشر loopback الخاضعة لضوابط صارمة."
+    },
+    {
+      "form": "raw term or standard locale technical equivalent",
+      "locale": "de",
+      "outcome": "KEEP_CURRENT",
+      "preservesLoopbackTerm": true,
+      "selectedTarget": "Deaktivieren Sie die Web-UI-Authentifizierung nur für streng kontrollierte Loopback-Bereitstellungen."
+    },
+    {
+      "form": "raw term or standard locale technical equivalent",
+      "locale": "es",
+      "outcome": "KEEP_CURRENT",
+      "preservesLoopbackTerm": true,
+      "selectedTarget": "Deshabilite la autenticación de la interfaz de usuario web solo para implementaciones de loopback estrictamente controladas."
+    },
+    {
+      "form": "raw term or standard locale technical equivalent",
+      "locale": "fr",
+      "outcome": "WIN_BLIND",
+      "preservesLoopbackTerm": true,
+      "selectedTarget": "Désactivez l’authentification de l’interface Web uniquement pour les déploiements loopback strictement contrôlés."
+    },
+    {
+      "form": "raw term or standard locale technical equivalent",
+      "locale": "hi",
+      "outcome": "KEEP_CURRENT",
+      "preservesLoopbackTerm": true,
+      "selectedTarget": "केवल कसकर नियंत्रित लूपबैक परिनियोजन के लिए वेब यूआई प्रमाणीकरण अक्षम करें।"
+    },
+    {
+      "form": "raw term or standard locale technical equivalent",
+      "locale": "id",
+      "outcome": "KEEP_CURRENT",
+      "preservesLoopbackTerm": true,
+      "selectedTarget": "Nonaktifkan autentikasi UI Web hanya untuk penerapan loopback yang dikontrol dengan ketat."
+    },
+    {
+      "form": "raw term or standard locale technical equivalent",
+      "locale": "ja",
+      "outcome": "KEEP_CURRENT",
+      "preservesLoopbackTerm": true,
+      "selectedTarget": "Web UI 認証は、厳密に制御されたループバック展開の場合にのみ無効にします。"
+    },
+    {
+      "form": "raw term or standard locale technical equivalent",
+      "locale": "ko",
+      "outcome": "KEEP_CURRENT",
+      "preservesLoopbackTerm": true,
+      "selectedTarget": "엄격하게 제어되는 루프백 배포에 대해서만 웹 UI 인증을 비활성화합니다."
+    },
+    {
+      "form": "raw term or standard locale technical equivalent",
+      "locale": "pt-BR",
+      "outcome": "KEEP_CURRENT",
+      "preservesLoopbackTerm": true,
+      "selectedTarget": "Desative a autenticação da UI da Web apenas para implantações de loopback rigidamente controladas."
+    },
+    {
+      "form": "raw term or standard locale technical equivalent",
+      "locale": "vi",
+      "outcome": "WIN_BLIND",
+      "preservesLoopbackTerm": true,
+      "selectedTarget": "Chỉ tắt xác thực giao diện Web trong các môi trường triển khai loopback được kiểm soát chặt chẽ."
+    },
+    {
+      "form": "raw term or standard locale technical equivalent",
+      "locale": "zh-Hans",
+      "outcome": "KEEP_CURRENT",
+      "preservesLoopbackTerm": true,
+      "selectedTarget": "仅针对严格控制的环回部署禁用 Web UI 身份验证。"
+    },
+    {
+      "form": "raw term or standard locale technical equivalent",
+      "locale": "zh-Hant",
+      "outcome": "KEEP_CURRENT",
+      "preservesLoopbackTerm": true,
+      "selectedTarget": "僅針對嚴格控制的環回部署會停用 Web UI 驗證。"
+    }
+  ],
+  "loopbackProposalTargetsByLocale": [
+    {
+      "blindTarget": "لا تُعطِّل مصادقة واجهة الويب إلا في عمليات نشر loopback الخاضعة لرقابة صارمة.",
+      "locale": "ar",
+      "primaryTarget": "عطّل مصادقة واجهة الويب فقط في عمليات نشر loopback الخاضعة لضوابط صارمة.",
+      "selectedTarget": "عطّل مصادقة واجهة الويب فقط في عمليات نشر loopback الخاضعة لضوابط صارمة."
+    },
+    {
+      "blindTarget": "Deaktivieren Sie die Web-UI-Authentifizierung nur für streng kontrollierte Loopback-Bereitstellungen.",
+      "locale": "de",
+      "primaryTarget": "Deaktivieren Sie die Web-UI-Authentifizierung nur für streng kontrollierte Loopback-Bereitstellungen.",
+      "selectedTarget": "Deaktivieren Sie die Web-UI-Authentifizierung nur für streng kontrollierte Loopback-Bereitstellungen."
+    },
+    {
+      "blindTarget": "Deshabilite la autenticación de la interfaz de usuario web solo para implementaciones de loopback estrictamente controladas.",
+      "locale": "es",
+      "primaryTarget": "Deshabilite la autenticación de la interfaz de usuario web solo para implementaciones de loopback estrictamente controladas.",
+      "selectedTarget": "Deshabilite la autenticación de la interfaz de usuario web solo para implementaciones de loopback estrictamente controladas."
+    },
+    {
+      "blindTarget": "Désactivez l’authentification de l’interface Web uniquement pour les déploiements loopback strictement contrôlés.",
+      "locale": "fr",
+      "primaryTarget": "Désactivez l'authentification de l'interface utilisateur Web uniquement pour les déploiements de bouclage étroitement contrôlés.",
+      "selectedTarget": "Désactivez l’authentification de l’interface Web uniquement pour les déploiements loopback strictement contrôlés."
+    },
+    {
+      "blindTarget": "केवल कसकर नियंत्रित लूपबैक परिनियोजन के लिए वेब यूआई प्रमाणीकरण अक्षम करें।",
+      "locale": "hi",
+      "primaryTarget": "केवल कसकर नियंत्रित लूपबैक परिनियोजन के लिए वेब यूआई प्रमाणीकरण अक्षम करें।",
+      "selectedTarget": "केवल कसकर नियंत्रित लूपबैक परिनियोजन के लिए वेब यूआई प्रमाणीकरण अक्षम करें।"
+    },
+    {
+      "blindTarget": "Nonaktifkan autentikasi UI Web hanya untuk penerapan loopback yang dikontrol dengan ketat.",
+      "locale": "id",
+      "primaryTarget": "Nonaktifkan autentikasi UI Web hanya untuk penerapan loopback yang dikontrol dengan ketat.",
+      "selectedTarget": "Nonaktifkan autentikasi UI Web hanya untuk penerapan loopback yang dikontrol dengan ketat."
+    },
+    {
+      "blindTarget": "Web UI 認証は、厳密に制御されたループバック展開の場合にのみ無効にします。",
+      "locale": "ja",
+      "primaryTarget": "Web UI 認証は、厳密に制御されたループバック展開の場合にのみ無効にします。",
+      "selectedTarget": "Web UI 認証は、厳密に制御されたループバック展開の場合にのみ無効にします。"
+    },
+    {
+      "blindTarget": "엄격하게 제어되는 루프백 배포에 대해서만 웹 UI 인증을 비활성화합니다.",
+      "locale": "ko",
+      "primaryTarget": "엄격하게 제어되는 루프백 배포에 대해서만 웹 UI 인증을 비활성화합니다.",
+      "selectedTarget": "엄격하게 제어되는 루프백 배포에 대해서만 웹 UI 인증을 비활성화합니다."
+    },
+    {
+      "blindTarget": "Desative a autenticação da UI da Web apenas para implantações de loopback rigidamente controladas.",
+      "locale": "pt-BR",
+      "primaryTarget": "Desative a autenticação da UI da Web apenas para implantações de loopback rigidamente controladas.",
+      "selectedTarget": "Desative a autenticação da UI da Web apenas para implantações de loopback rigidamente controladas."
+    },
+    {
+      "blindTarget": "Chỉ tắt xác thực giao diện Web trong các môi trường triển khai loopback được kiểm soát chặt chẽ.",
+      "locale": "vi",
+      "primaryTarget": "Chỉ tắt xác thực Web UI trong các triển khai loopback được kiểm soát chặt chẽ.",
+      "selectedTarget": "Chỉ tắt xác thực giao diện Web trong các môi trường triển khai loopback được kiểm soát chặt chẽ."
+    },
+    {
+      "blindTarget": "仅针对严格控制的环回部署禁用 Web UI 身份验证。",
+      "locale": "zh-Hans",
+      "primaryTarget": "仅针对严格控制的环回部署禁用 Web UI 身份验证。",
+      "selectedTarget": "仅针对严格控制的环回部署禁用 Web UI 身份验证。"
+    },
+    {
+      "blindTarget": "僅針對嚴格控制的環回部署會停用 Web UI 驗證。",
+      "locale": "zh-Hant",
+      "primaryTarget": "僅針對嚴格控制的環回部署會停用 Web UI 驗證。",
+      "selectedTarget": "僅針對嚴格控制的環回部署會停用 Web UI 驗證。"
+    }
+  ]
+}

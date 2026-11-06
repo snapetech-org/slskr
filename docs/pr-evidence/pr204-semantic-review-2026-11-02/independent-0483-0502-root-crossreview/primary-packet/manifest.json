@@ -1,0 +1,224 @@
+{
+  "branch_tree_is_source_ancestor": true,
+  "caller_files": {
+    "crates/slskr/src/extended_controller_mutations.rs": 1,
+    "crates/slskr/src/mediacore_mutations.rs": 2,
+    "web/src/components/Search/Detail/SearchDetail.jsx": 1,
+    "web/src/components/Search/Response.jsx": 6,
+    "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx": 3,
+    "web/src/components/System/Integrations/MediaServerPanel.jsx": 1,
+    "web/src/components/System/Integrations/MetadataSettingsPanel.jsx": 1,
+    "web/src/components/System/LibraryHealth/index.jsx": 1,
+    "web/src/components/System/MediaCore/PodChannelManagementPanel.jsx": 1,
+    "web/src/components/System/MediaCore/PodMessageRoutingPanel.jsx": 1,
+    "web/src/components/System/Mesh/index.jsx": 1,
+    "web/src/components/System/Security/AdversarialSettingsView.jsx": 2,
+    "web/src/components/System/System.jsx": 1,
+    "web/src/components/Users/UserNoteModal.jsx": 1,
+    "web/src/lib/serverErrorMessageAllowlist.js": 2
+  },
+  "catalogs": {
+    "ar": {
+      "bytes": 511442,
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "sha256": "5ac65ddf22aedf3600f7d4646685d41ef93f84e56b27ac5f7cc807bd8f5f3078",
+      "source_keys": 5437
+    },
+    "de": {
+      "bytes": 442382,
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "sha256": "5fa15bfba6cb2ef71c4120cba5557d4273396fde325a4b90b23a0657e16e8cc5",
+      "source_keys": 5437
+    },
+    "es": {
+      "bytes": 443050,
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "sha256": "e5e65d680fe8c62dcfbbc37bd6850b2355d64befb3df26e5dc4dff6c6d8f4558",
+      "source_keys": 5437
+    },
+    "fr": {
+      "bytes": 454095,
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "sha256": "c619c4ee6ea6c364f9f69631adb02c5a2a0a79fd004c7b878890e2d7969d5bb4",
+      "source_keys": 5437
+    },
+    "hi": {
+      "bytes": 674536,
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "sha256": "01ae2a67cf0d20ee818d69387b409bfbb56594a15bf3020f248b0c97ce41a926",
+      "source_keys": 5437
+    },
+    "id": {
+      "bytes": 408768,
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "sha256": "709a729d304976531c1ea3182f356996a2f7b1b119bf0697d70311359d3cc23c",
+      "source_keys": 5437
+    },
+    "ja": {
+      "bytes": 490635,
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "sha256": "c985f2af5f263ca40c8e14c4045d08c4f9c2ff2bd29c35762c7467485ed4ad90",
+      "source_keys": 5437
+    },
+    "ko": {
+      "bytes": 441267,
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "sha256": "d3313e54e0152430181cc0f471571e2328f2ee9f9b4f1ebf19c0cc14e32aab86",
+      "source_keys": 5437
+    },
+    "pt-BR": {
+      "bytes": 437791,
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "sha256": "b0ac1076e9dbccbc8c648db75ccf6c105c2d127fd3793e229c3408e4cf43bf5d",
+      "source_keys": 5437
+    },
+    "vi": {
+      "bytes": 473364,
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "sha256": "411bdcb645eaf4e7c6d452c8a8bedf4816b5d7b9f2e3cb41db5fb9674ce5bacf",
+      "source_keys": 5437
+    },
+    "zh-Hans": {
+      "bytes": 381989,
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "sha256": "cd44046a329327e2c72dbdc4289b809a66a266e5fbb605581f8bbe4faf655207",
+      "source_keys": 5437
+    },
+    "zh-Hant": {
+      "bytes": 382697,
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "sha256": "ba8f3d9c1f39470dd89d3e57bf74b4f3f74d0007406143d75ea240aa2dd06d99",
+      "source_keys": 5437
+    }
+  },
+  "catalogs_modified": false,
+  "correction_candidates": 99,
+  "decisions": {
+    "accept-current": 141,
+    "confirm-prior-correction": 99
+  },
+  "freeze_manifest_declared_source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "freeze_manifest_sha256": "69713333eddc3d326cc28acb3a0c2f57edbe4f9fab77e31ddc95c5c8981c9013",
+  "live_pr_state": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "0a1c497c67637eb2c129cde23299efe4d9f79651",
+    "isDraft": true,
+    "mergeStateStatus": "CLEAN",
+    "mergeable": "MERGEABLE",
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "native_speaker_approval": false,
+  "per_locale": {
+    "ar": {
+      "accept-current": 12,
+      "confirm-prior-correction": 8
+    },
+    "de": {
+      "accept-current": 14,
+      "confirm-prior-correction": 6
+    },
+    "es": {
+      "accept-current": 10,
+      "confirm-prior-correction": 10
+    },
+    "fr": {
+      "accept-current": 14,
+      "confirm-prior-correction": 6
+    },
+    "hi": {
+      "accept-current": 13,
+      "confirm-prior-correction": 7
+    },
+    "id": {
+      "accept-current": 10,
+      "confirm-prior-correction": 10
+    },
+    "ja": {
+      "accept-current": 12,
+      "confirm-prior-correction": 8
+    },
+    "ko": {
+      "accept-current": 10,
+      "confirm-prior-correction": 10
+    },
+    "pt-BR": {
+      "accept-current": 12,
+      "confirm-prior-correction": 8
+    },
+    "vi": {
+      "accept-current": 12,
+      "confirm-prior-correction": 8
+    },
+    "zh-Hans": {
+      "accept-current": 11,
+      "confirm-prior-correction": 9
+    },
+    "zh-Hant": {
+      "accept-current": 11,
+      "confirm-prior-correction": 9
+    }
+  },
+  "placeholders_in_selected_source_ids": 48,
+  "pr_head": "0a1c497c67637eb2c129cde23299efe4d9f79651",
+  "pr_tree": "3e100c36e1c51c09e509cb3009ef6d20d22d3a18",
+  "prior_conflicts": [],
+  "prior_evidence_inputs": 1037,
+  "prior_evidence_inputs_sha256": "f9ada486815075ac4b69bcb63b03f86565bf0e795dcff65cefb70614c4f15edf",
+  "prior_exact_match_cells": 191,
+  "prior_exact_match_raw_records": 470,
+  "prior_exact_match_records": 277,
+  "protected_literal_tokens_contextual_only": true,
+  "pull_request": 204,
+  "repository": "snapetech-org/slskR",
+  "schema_version": 1,
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_ids": 5437,
+  "source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "source_runtime_diff_from_source_head_to_pr_head": [],
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "target_locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "tests_builds_scans_ci_workflows_releases_tags_merges": false,
+  "window_cells": 240,
+  "window_indices": [
+    483,
+    502
+  ],
+  "window_source_ids": [
+    "Blacklist File",
+    "Blacklist Off",
+    "Blacklist On",
+    "Blacklist rejected downloads",
+    "Blacklisted User",
+    "Block this user from search results",
+    "Block {username} from search results",
+    "Blocked",
+    "Blocked {username} from search results",
+    "Blocked {username} from search results.",
+    "Blocklist",
+    "Bloom Filter Fill:",
+    "Blue",
+    "Body is required",
+    "Bootstrap Peers",
+    "Both values are required",
+    "Bound",
+    "Bounded replacement searches started for selected Library Health issues: {count}.",
+    "Bridge",
+    "Bridge Lines"
+  ],
+  "worktree_status": ""
+}

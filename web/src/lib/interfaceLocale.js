@@ -143,8 +143,15 @@ const browserLanguage = () => {
   const candidates = navigator.languages?.length ? navigator.languages : [navigator.language];
   for (const candidate of candidates) {
     const normalized = candidate.toLowerCase();
-    const base = normalized.split(/[-_]/)[0];
-    if (base === 'zh') return /(?:hant|tw|hk|mo)/.test(normalized) ? 'zh-Hant' : 'zh-Hans';
+    const subtags = normalized.split(/[-_]/);
+    const base = subtags[0];
+    if (base === 'zh') {
+      const script = /^[a-z]{4}$/.test(subtags[1] || '') ? subtags[1] : '';
+      if (script === 'hans') return 'zh-Hans';
+      if (script === 'hant') return 'zh-Hant';
+      const region = script ? subtags[2] : subtags[1];
+      return /^(?:tw|hk|mo)$/.test(region || '') ? 'zh-Hant' : 'zh-Hans';
+    }
     if (base === 'pt') return 'pt-BR';
     if (supportedLanguages.has(base)) return base;
   }

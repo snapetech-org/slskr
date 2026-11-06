@@ -1,0 +1,34 @@
+{
+  "repository": "snapetech-org/slskR#204",
+  "window": "W1003-W1022",
+  "baseHead": "4193d79547018a561e9d5acacdb0ac0850f6f346",
+  "baseTree": "da7d72c82203781fc14d99e8dd85cc1b30c10164",
+  "reviewCounts": {
+    "cells": 240,
+    "primary": {
+      "accept-current": 143,
+      "correction": 39,
+      "refinement": 46,
+      "hold": 12
+    },
+    "independentBlind": {
+      "pass": 218,
+      "hold": 22
+    },
+    "root": {
+      "accept-current": 143,
+      "refinement": 46,
+      "correction": 39,
+      "hold": 12
+    }
+  },
+  "approvedCatalogChanges": 85,
+  "callerlessOrCompositionHold": "source position 1010 in all 12 locales",
+  "primaryPacketSha256": "27295181f83427eced37f8dad3ad45c512f5803fd1309078dbd5e945c05f51ee",
+  "independentPacketSha256": "a8b4c69620b75e245216414ffd1ae3b93126a99275a5e841c2ce91432e9acb89",
+  "catalogKeyCount": 5441,
+  "catalogsHaveIdenticalOrderedKeys": true,
+  "nativeSpeakerApproval": "not established",
+  "browserReview": "current-head browser review remains a separate gate",
+  "noTestsBuildsOrCI": true
+}

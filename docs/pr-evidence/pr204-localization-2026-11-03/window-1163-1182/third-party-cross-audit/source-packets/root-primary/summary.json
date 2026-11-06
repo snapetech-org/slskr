@@ -1,0 +1,62 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "window": "W1163-W1182",
+  "inputHead": "9aa58492ee693d8ca0f2c027a3ee5b8438639f91",
+  "inputTree": "b9ebab27d1f24932be0c623cf894a78115b6f2bb",
+  "cleanInputManifestSha256": "e8fd206298f2685d5126f61aa55c8186192a35e3dbb76f3ccd44ca4833f69422",
+  "cleanInputChecksumListSha256": "f2c444c9001373ba705392746261d4390f26fa6b5ace242e530a90940cbc3e6d",
+  "sourceIdOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "windowSourceSha256": "9286572851500f464003eb53f0bc97ab6bee383ae93a8792cf8ab8492a91e460",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "callerReferences": 36,
+  "dispositions": {
+    "accept-current": 175,
+    "correction": 20,
+    "hold": 12,
+    "refinement": 33
+  },
+  "proposedChanges": 53,
+  "changesByPosition": {
+    "1165": 8,
+    "1166": 6,
+    "1167": 9,
+    "1170": 9,
+    "1172": 9,
+    "1175": 1,
+    "1176": 1,
+    "1178": 1,
+    "1180": 2,
+    "1181": 2,
+    "1182": 5
+  },
+  "changesByLocale": {
+    "ar": 3,
+    "de": 3,
+    "es": 3,
+    "fr": 4,
+    "hi": 5,
+    "id": 4,
+    "ja": 6,
+    "ko": 6,
+    "pt-BR": 5,
+    "vi": 5,
+    "zh-Hans": 4,
+    "zh-Hant": 5
+  },
+  "holdsByPosition": {
+    "1164": 12
+  },
+  "sourceHashMismatches": 0,
+  "currentTargetHashMismatches": 0,
+  "candidateHashMismatches": 0,
+  "placeholderMismatches": 0,
+  "protectedLiteralMismatches": 0,
+  "confidence": "moderate",
+  "nativeSpeakerReview": false,
+  "independentBlindReview": false,
+  "catalogsOrRepositoryChanged": false,
+  "testsBuildsScansCIOrWorkflowChanges": false
+}

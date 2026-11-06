@@ -1,0 +1,37 @@
+{
+  "allCallerPinsMatchEmbeddedCallerEvidence": true,
+  "base": "main",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "callerContextBundles": 20,
+  "callerContextRecords": 32,
+  "callerPinUniqueSourceIDs": 16,
+  "callerPinsRows": 20,
+  "cellCount": 240,
+  "currentCatalogAndCallerHashesVerifiedAgainstPinnedTree": true,
+  "exactHeadCloneStatus": "clean",
+  "head": "26a34849f39f533f4ad0562a02a01182ca2b3e2e",
+  "inputBundlePath": "/mnt/disks/scratch/task-scratch/slskr-pr204-w1023-1042-clean-input-20261103",
+  "inputSha256Sums": {
+    "README.md": "b63b15ec35ea55f65a09dda2621341cce6f831294cb4d0d5a931b0fb94c829bd",
+    "caller-pins.jsonl": "24c99915dd1a39a0d7ed3e56fcfb4a8d17a51f11bed4f1aa1bf7aea6b423205f",
+    "manifest.json": "b11ced5db24620538c63b2c9c794e7be377ddf55008bb71f8b35bf5c4997a4d3",
+    "source-only-input.jsonl": "c340a899c8156a30517c9708f5acde09bbceff5c975fdd79619444dc29c60fda"
+  },
+  "isDraft": true,
+  "liveState": "OPEN",
+  "localeCount": 12,
+  "pullRequest": 204,
+  "remoteBranchHead": "26a34849f39f533f4ad0562a02a01182ca2b3e2e",
+  "remoteTree": "ef72f18c4591c23e0d59635c6467f4905d678dcf",
+  "repository": "snapetech-org/slskR",
+  "sourceIdsWithoutCallerPin": [
+    "CsvText is required",
+    "DHT",
+    "DHT Off",
+    "DHT On"
+  ],
+  "sourceOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "sourceRows": 20,
+  "tree": "ef72f18c4591c23e0d59635c6467f4905d678dcf",
+  "windowSourceSha256": "92a6ec82c7e9707b910082c59bb6e50a3e27ac50308a1078950372a200f1aeb5"
+}

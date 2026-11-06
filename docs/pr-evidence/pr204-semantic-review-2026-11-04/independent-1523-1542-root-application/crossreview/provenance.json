@@ -1,0 +1,114 @@
+{
+  "artifact": "slskR PR #204 W1523-W1542 independent cross-review provenance",
+  "createdAtUtc": "2026-11-04T09:35:53Z",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "expectedHead": "f6fbf614e7e2ff869e4ca86ae96103cff604b79c",
+  "expectedTree": "536b0fc02a3c16fa7eb0f9d5504a4c8c91b2152d",
+  "livePrVerification": {
+    "method": "GitHub CLI read-only API calls",
+    "prCommand": "gh pr view 204 --repo snapetech-org/slskr --json state,isDraft,headRefOid,headRefName,baseRefName",
+    "commitCommand": "gh api repos/snapetech-org/slskr/commits/f6fbf614e7e2ff869e4ca86ae96103cff604b79c --jq '{sha:.sha,tree:.commit.tree.sha}'",
+    "result": "PASS",
+    "state": "OPEN",
+    "draft": true,
+    "head": "f6fbf614e7e2ff869e4ca86ae96103cff604b79c",
+    "tree": "536b0fc02a3c16fa7eb0f9d5504a4c8c91b2152d",
+    "headRef": "codex/slskr-l10n-audit-20261030",
+    "baseRef": "main",
+    "verifiedAtUtc": "2026-11-04T09:35:53Z"
+  },
+  "upstreamPackets": {
+    "candidateFree": {
+      "path": "inputs/candidate-free-input",
+      "verifier": "verify-candidate-free.py",
+      "verifierSha256": "1048cfa9a6d2c7dfd91bfaa9227247a49b0f1615e054355bc2333a2e954b5cca",
+      "result": "PASS",
+      "checksummedFiles": 20,
+      "cells": 240,
+      "sources": 20,
+      "manifestSha256": "b17b46c009ff33e0fdf52dd8d978aae472ded6cd3cf42fab4405c45b25b63527",
+      "checksumListSha256": "8e9798448c7c307d134741894ccde90a93ae3435d721a2c23649d34e58f9a19e"
+    },
+    "primary": {
+      "path": "inputs/primary-review",
+      "verifier": "verify-primary.py",
+      "verifierSha256": "0f5234117dda6927a0a59344c53b46f9451437988dd49d99d8bc741fce4c3b6e",
+      "result": "PASS",
+      "checksummedFiles": 7,
+      "cells": 240,
+      "proposals": 18,
+      "holds": 0,
+      "checksumListSha256": "fbf02e8696a7b2ad9be86389c38e4583a4daac6a9a2c5fbafd3c1312c0b8cf88"
+    },
+    "blind": {
+      "path": "inputs/blind-review",
+      "verifier": "verify_blind_packet.py",
+      "verifierSha256": "fb2a72cef4da72762cd1bd18bb6d65063b87c35cfd3fc8299ea05f0c4b156ee9",
+      "result": "PASS",
+      "checksummedFiles": 4,
+      "cells": 240,
+      "accept": 230,
+      "revise": 10,
+      "hold": 0,
+      "manifestSha256": "605784ae2e0fbe1f59f308c10895386131fc76fdbddb0214a01028fd7c333d6b",
+      "checksumListSha256": "3a946bfe83634fcd72350513c7b0eae3910ef9fe3471f3b4758db70dfbe3f97f",
+      "verifierInputPathNote": "The exact upstream verifier uses the original candidate-free absolute path; it was run successfully before snapshotting. This cross verifier validates the copied packets through relative paths."
+    }
+  },
+  "priorHashOnlyLineage": {
+    "source": "inputs/candidate-free-input",
+    "files": {
+      "prior-window-selection-hash-only.jsonl": {
+        "sha256": "46b98dc3b5fb7264de89cc1c073924f35a4021a254f21fce1a93ab5b71ac5d5d",
+        "rowCount": 480
+      },
+      "prior-selection-hash-reattestation.jsonl": {
+        "sha256": "eb93b087b399ec3a9782039c52e53b4e229d0a2834317bed5b3defbe7eb30efc",
+        "rowCount": 260
+      },
+      "prior-hold-hash-reattestation.jsonl": {
+        "sha256": "1bc4e7d8e2ea28063b91e2ca6ec683075b9a90c180c313073d1a4fae214b20e7",
+        "rowCount": 47
+      }
+    },
+    "summarySha256": "f316dfebc84c78d4c53b1576014feacb97d99b7bb8e9b19551e27554bbd215a5",
+    "summary": {
+      "lineageSource": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1503-primary-20261104/candidate-free-input",
+      "lineageFiles": {
+        "prior-window-selection-hash-only.jsonl": "5288200a2f800b4d296ce41a389c7ef06d679495b9059c733f6a6bfbfada96a0",
+        "prior-selection-hash-reattestation.jsonl": "372bab8204f3a4c8d76aee9f08c6f2c94eda016220c899218ff27edbe87b6b61",
+        "prior-hold-hash-reattestation.jsonl": "27d83aa4b0d51769a91e63202f33e934f56d0e0e900438a7fcffc1944e1e11c1"
+      },
+      "previousWindowCells": {
+        "recordCount": 480,
+        "sourcePositionMatches": 480,
+        "allMatchExpectedPriorTarget": true,
+        "liveTargetMismatchCount": 0
+      },
+      "priorSelections": {
+        "recordCount": 260,
+        "sourcePositionMatches": 260,
+        "allMatchLiveQueue": true,
+        "sourcePositionMismatchCount": 0
+      },
+      "priorHolds": {
+        "recordCount": 47,
+        "sourcePositionMatches": 47,
+        "unchangedCount": 47,
+        "changedCount": 0
+      },
+      "rawPriorTranslationsIncluded": false
+    },
+    "selectedWindowPositionOverlap": 0,
+    "rawPriorTranslationsIncluded": false
+  },
+  "constraints": {
+    "repositoryEdited": false,
+    "pullRequestEdited": false,
+    "browserInspected": false,
+    "nativeSpeakerSignoff": false,
+    "applied": false,
+    "testsBuildsOrCiRun": false
+  }
+}

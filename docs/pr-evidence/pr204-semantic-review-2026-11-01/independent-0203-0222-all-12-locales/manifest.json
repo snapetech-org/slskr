@@ -1,0 +1,203 @@
+{
+  "batch": "independent-0203-0222-all-12-locales",
+  "source_index_start": 203,
+  "source_index_end_inclusive": 222,
+  "source_ids": [
+    "Advanced",
+    "Advanced Filters",
+    "Advanced Search Filters",
+    "Advanced privacy and anonymity features",
+    "Adversarial",
+    "Adversarial Features Unavailable",
+    "Adversarial Profile",
+    "Adversarial Resilience Overview",
+    "Adversarial Settings",
+    "Adversarial Settings Not Configured",
+    "Adversarial features are advanced security options designed for users in adversarial environments. They are disabled by default and require explicit configuration.",
+    "Adversarial features are not configured on this server",
+    "Adversarial settings updated successfully",
+    "Affinity Score:",
+    "After import",
+    "Against:",
+    "Age:",
+    "Agent Mode",
+    "Aggregated Opinion Results",
+    "Agreement:"
+  ],
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "review_head": "6a8415d2df2f22935188992e03c4636052de2d67",
+  "review_tree": "f562ac9ed6108921efbef4272973b8895bb4c22a",
+  "application_head": "cea88305885c27879ecd1569944ee86bdf78e2b2",
+  "application_tree": "6f2e6881ca7c463eab8e39b9ea3ec08bf929be97",
+  "application_parent": "6a8415d2df2f22935188992e03c4636052de2d67",
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_key_count": 5437,
+  "catalog_cell_count": 65244,
+  "selected_cell_count": 240,
+  "overlap_partition_at_review_head": {
+    "fresh": 39,
+    "prior_accepted": 104,
+    "prior_correction-needed": 97,
+    "conflicts": 0
+  },
+  "final_window_partition": {
+    "fresh_accepted": 38,
+    "fresh_corrected": 1,
+    "accepted_carries": 104,
+    "prior_corrections_applied": 85,
+    "fresh_correction_applied": 1,
+    "prior_correction_needed_held": 12,
+    "conflicts": 0
+  },
+  "per_locale_review_head_partition": {
+    "ar": {
+      "new": 7,
+      "prior_correction-needed": 9,
+      "prior_accepted": 4
+    },
+    "de": {
+      "prior_correction-needed": 11,
+      "new": 6,
+      "prior_accepted": 3
+    },
+    "es": {
+      "new": 7,
+      "prior_correction-needed": 9,
+      "prior_accepted": 4
+    },
+    "fr": {
+      "new": 7,
+      "prior_correction-needed": 9,
+      "prior_accepted": 4
+    },
+    "hi": {
+      "prior_correction-needed": 11,
+      "new": 6,
+      "prior_accepted": 3
+    },
+    "id": {
+      "prior_correction-needed": 11,
+      "new": 6,
+      "prior_accepted": 3
+    },
+    "ja": {
+      "prior_correction-needed": 4,
+      "prior_accepted": 16
+    },
+    "ko": {
+      "prior_correction-needed": 4,
+      "prior_accepted": 16
+    },
+    "pt-BR": {
+      "prior_accepted": 11,
+      "prior_correction-needed": 9
+    },
+    "vi": {
+      "prior_correction-needed": 12,
+      "prior_accepted": 8
+    },
+    "zh-Hans": {
+      "prior_correction-needed": 4,
+      "prior_accepted": 16
+    },
+    "zh-Hant": {
+      "prior_correction-needed": 4,
+      "prior_accepted": 16
+    }
+  },
+  "corrections_applied": 86,
+  "locale_quality_confidence": "moderate without native-speaker approval",
+  "native_speaker_approval": false,
+  "catalog_sha256_before": {
+    "web/src/lib/locales/ui-labels.ar.json": "946f80466d4ebe707debff6b42441d2d798025a1bfc3c33ae7facbbf62eb03a8",
+    "web/src/lib/locales/ui-labels.de.json": "00cdfdae47a06caf66adb13306abc9b32e114be856c82ebfa81581e7fdfc41f0",
+    "web/src/lib/locales/ui-labels.es.json": "74c59c4de2cfb5c2e10fb4fad9fb14bd6aae4156bd32b492be75966628e2a5ea",
+    "web/src/lib/locales/ui-labels.fr.json": "09f0d381a05a07a411e69fec61f7910214123995c46148fac5b3e81957576ce0",
+    "web/src/lib/locales/ui-labels.hi.json": "d9e69e82e8109c56348e922d82e7a14368692a0eb683f3849bc17a5d0e1de9e1",
+    "web/src/lib/locales/ui-labels.id.json": "933bdd7d30f640e5829ce1f3e43089908467e45e427b3302564226b862a4d165",
+    "web/src/lib/locales/ui-labels.ja.json": "045a2c7fa70287b27be670a9af5d4998e191fc0181a9a5dff5e4546644c83b38",
+    "web/src/lib/locales/ui-labels.ko.json": "057f6c5b89b0dda26772be9ca355a25afe9e551178ea9fe123d86b4d48a42531",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "b5826aea44f78810655073fc478d2bccdf28b9c9c15965e06a3e048e39fc060c",
+    "web/src/lib/locales/ui-labels.vi.json": "209e966043348a3ab8a38cff3ece7a2a3cb5db4b298038b61711597095f05b1f",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "a15769121461a656a28c4cea28af0b4c304ceecd27ef8eee46a785cf5ef94939",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "939c420556eb5111db37379867c51251c4faf21f8d6643e26093113fb360d67b"
+  },
+  "catalog_sha256_after": {
+    "web/src/lib/locales/ui-labels.ar.json": "1f54c9be827cbae0555964c1b82736b650da0b996cf0de299ec6ace54583acf3",
+    "web/src/lib/locales/ui-labels.de.json": "6acd39320e5b49928409a7cbba8faac0108045371183751c54b1bdc3a7edaad8",
+    "web/src/lib/locales/ui-labels.es.json": "97bd6291da38b8cf58c92dc6b57b8bd4c80a98d0faae48cb9ea17e310434ca23",
+    "web/src/lib/locales/ui-labels.fr.json": "db9a73b188ed4eef4e6a6f0bd4e21ae197dcceb16f1d3a22db220d4912819d50",
+    "web/src/lib/locales/ui-labels.hi.json": "5c8004cf6df65bb653ad0a396ee4dce2bac9906b0f25e5464df6c5352866fc9d",
+    "web/src/lib/locales/ui-labels.id.json": "b1781f7893d77988e7cc21333a58b20e58ede03020bd6b7e29e00dce8e5f5e76",
+    "web/src/lib/locales/ui-labels.ja.json": "ac2a23fda32a3a0c63fb7295c64fe0f9646a3c35e623c42e8022c5d7873d03ab",
+    "web/src/lib/locales/ui-labels.ko.json": "da6c6d081bb34e0f8c1560ab388eaaff72662e5a0cd9e9286b98368666f92bef",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "f267b31039540de0526142dcce6c302a0c3bdf75e36bc401a8409263e7abfa48",
+    "web/src/lib/locales/ui-labels.vi.json": "89ade0211c2e96ee2f950116ea471e42578b2a120f024bd5f7f94df7802584ea",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "a8a78eade1d37d18c483de015a47a68a5473217399db2c8fafd7b22a03d5b128",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "9273dfaa8280eea3ebd0bae8ecf92979ef0ced643e55d16bb81e2aa41c234643"
+  },
+  "prior_overlap_scan": {
+    "input_count": 794,
+    "canonical_manifest_sha256": "671da42aab3c65c85b32dcafba14aa25b70ff63f60b0048ad6b5b1adf82f4764",
+    "manifest_file_sha256": "4babbe89fcc1af332294543bc2db467e3a887ca2c54875d796c04f09e4a9f1de"
+  },
+  "source_context": {
+    "file": "source-context.txt",
+    "evidence_text_sha256": "59c05ee949028c2ecf1719dc2187f17bca9019dd9478b07a499f5e7cdb6b4424",
+    "sha256": {
+      "web/src/components/System/System.jsx": "41f2b7416cf6503df69aad6265f0df06fa3b7ee44d476b9e710ab5bf83ed2f0f",
+      "web/src/components/Search/Detail/SearchResultControls.jsx": "1f2880630f893cfc8361fb40a4ad4e9e07d01da96202b7ac36054c860124da46",
+      "web/src/components/Search/Detail/SearchFilterModal.jsx": "b842680bae7a555b34814b900a55e3bca05485fdad27b10411c47c5c63034968",
+      "web/src/components/System/Security/AdversarialSettings.jsx": "c82c38e14d05a22e4787a0991ea372c74d07a3a5988e87b51891133e4f802704",
+      "web/src/components/System/Security/AdversarialSettingsView.jsx": "5b2dfa095ba281bae2b5ef66e17901b38c7d2a68d9bef52c5f016ce3352db72d",
+      "web/src/components/System/MediaCore/PodOpinionsPanel.jsx": "181f034d5b6354dd10f5b383e42aefc0fd9ae7d63572eda99c78facda268f27f",
+      "web/src/lib/automationRecipes.js": "24d9494cf78e88fdc700da54a99139ebd67d6c2b608d033b9d7d8dd312c2c706",
+      "web/src/components/Search/SongIDEvidenceDetails.jsx": "4a90c2dfd31302a93964fed1f0642a56909bab926324519eb77c94cda6139f65",
+      "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx": "8cb1922e358f7229d7f8147f41e18bffa3146283c270a5844393fc72f755c6ca",
+      "web/src/components/AppNavigationPrimary.jsx": "f0212774c21ada86bc3115ea95ac8949307669597899890bbec920c029e7f1a7"
+    },
+    "git_blob_ids": {
+      "web/src/components/System/System.jsx": "a3883b39c29b38485b5bfcadcf4039f18012c1a3",
+      "web/src/components/Search/Detail/SearchResultControls.jsx": "f6ec8606ad6420be75d2cde695815e31b86bd448",
+      "web/src/components/Search/Detail/SearchFilterModal.jsx": "7765f8e075878a6f8a883eaca82ed2b8ee4ed94e",
+      "web/src/components/System/Security/AdversarialSettings.jsx": "1ff1afe2b375fe044b6542e27cae3f6bce20f3c9",
+      "web/src/components/System/Security/AdversarialSettingsView.jsx": "adcacdd123faf82a315da746fab3243adf5ea6a3",
+      "web/src/components/System/MediaCore/PodOpinionsPanel.jsx": "89eea2680f5cfacdc5c8000080c2e00229967df0",
+      "web/src/lib/automationRecipes.js": "16b7b3ec33fe15748e47a45c397b58d0d35d9387",
+      "web/src/components/Search/SongIDEvidenceDetails.jsx": "a6a0eb1e9843801ff94e590a22878899f3d2bca2",
+      "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx": "4f3c8484d8d23746369ce7619ab4e017849dfb89",
+      "web/src/components/AppNavigationPrimary.jsx": "f4f9070f4cbebaf5aa4307ef6ac7e5f78abbabb0"
+    }
+  },
+  "placeholder_and_literal_checks": {
+    "cells_checked": 240,
+    "placeholder_sets_preserved": true,
+    "icu_messages": 0,
+    "protected_literals_checked": true,
+    "protected_literals_changed": 0
+  },
+  "visual_check": {
+    "status": "blocked",
+    "file": "headed-visual-check.md",
+    "sha256": "bf32fcec84d901b2930287340fd186c24cc67dba77592664359f9e45892c1fad"
+  },
+  "browser_recapture_required": true,
+  "applied_corrections_ledger_sha256": "dd9766f48f6547d30fb7c961a7ee3573ed3bc02cd1766e71204bf292186c5c04",
+  "batch_plan_sha256": "22f15b6122a06889f0a2602f9af87908d5360a731a604aa510947b3c99c75b85",
+  "fresh_audit_cell_count": 39,
+  "full_cell_audit_count": 240
+}

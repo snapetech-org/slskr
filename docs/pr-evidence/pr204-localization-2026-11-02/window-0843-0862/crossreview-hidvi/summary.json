@@ -1,0 +1,72 @@
+{
+  "browserApproval": false,
+  "callerGapCells": [
+    {
+      "locale": "hi",
+      "sourceId": "Connecting to Soulseek…"
+    },
+    {
+      "locale": "id",
+      "sourceId": "Connecting to Soulseek…"
+    },
+    {
+      "locale": "vi",
+      "sourceId": "Connecting to Soulseek…"
+    }
+  ],
+  "cellsReviewed": 60,
+  "corrections": [
+    {
+      "locale": "vi",
+      "rationale": "The current Vietnamese says “connected customers.” In the Bridge card this is a count of software clients; “máy khách” is the correct technical term.",
+      "sourceId": "Connected Clients (",
+      "sourceIndex": 842,
+      "target": "Máy khách đã kết nối (",
+      "targetSha256": "8484d09b8d1de3a30ded08aea80ff6c7eac59b904bce239d2d83f9ed67ee06ee"
+    },
+    {
+      "locale": "hi",
+      "rationale": "The current Hindi uses an awkward passive verb phrase for this Mesh Peers subheader. A participial noun phrase clearly labels already-connected clients.",
+      "sourceId": "Connected slskr clients for hash sync",
+      "sourceIndex": 843,
+      "target": "हैश सिंक के लिए जुड़े हुए slskr क्लाइंट",
+      "targetSha256": "8e21e69a453dd2e684b0d4e9fa18007932f859e24802813987ba75fda7495f28"
+    },
+    {
+      "locale": "hi",
+      "rationale": "“सर्वसम्मति” may imply unanimity. This Pod recommendation metric represents consensus/agreement, so “सहमति” avoids that extra claim.",
+      "sourceId": "Consensus Score:",
+      "sourceIndex": 859,
+      "target": "सहमति स्कोर:",
+      "targetSha256": "147f24b836a4370bbfdb19b82398da81200b648af1b10da3005f0dba3d9d9577"
+    }
+  ],
+  "counts": {
+    "accept-current": 43,
+    "accept-primary-proposal": 14,
+    "propose-correction": 3
+  },
+  "exactHead": "b52b7c9abd112328a70d9e811d3b6aa2d4feb8e6",
+  "exactTree": "d7a46bce75c76e3a74736b85175f7fa412324f39",
+  "holds": 0,
+  "locales": [
+    "hi",
+    "id",
+    "vi"
+  ],
+  "markupMismatches": 0,
+  "nativeSpeakerApproval": false,
+  "newCorrections": 3,
+  "placeholderMismatches": 0,
+  "primaryProposalsAccepted": 14,
+  "protectedLiteralMismatches": 0,
+  "pullRequest": 204,
+  "repoModified": false,
+  "repository": "snapetech-org/slskR",
+  "sourceCount": 20,
+  "sourceIndices": [
+    842,
+    861
+  ],
+  "testsBuildsCiRun": false
+}

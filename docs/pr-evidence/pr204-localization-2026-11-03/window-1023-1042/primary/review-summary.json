@@ -1,0 +1,22 @@
+{
+  "callerlessOrNonlocalizingCaveats": [
+    "CsvText is required appears only in the server-error allowlist and has no exact production localization caller in the pinned context; proposed targets omit unsupported API-fields parentheticals.",
+    "DHT appears as an acronym in network-health code and a test, without an exact production localization literal; current targets preserve the acronym.",
+    "DHT On and DHT Off are passed to a local boolLabel helper in AdminPoliciesForm.jsx that renders the strings directly without a LocalizedText wrapper; target translations are reviewed lexically, but runtime localization is not established at this call site."
+  ],
+  "cellCount": 240,
+  "dispositionCounts": {
+    "accept-current": 163,
+    "correction": 52,
+    "refinement": 25
+  },
+  "heldCells": 0,
+  "localeCount": 12,
+  "method": "Machine-assisted source/current/caller-context review at the pinned head; not native-speaker review.",
+  "proposedChanges": 77,
+  "releaseCut": false,
+  "repoStatus": "Exact-head verification clone clean; no repository or pull-request modifications made.",
+  "reviewConfidenceOverall": "moderate",
+  "sourceCount": 20,
+  "testsBuildsCIWorkflowsRun": false
+}

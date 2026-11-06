@@ -1,0 +1,76 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W863-W882",
+  "zeroBasedSourceIndexInclusive": [
+    862,
+    881
+  ],
+  "head": "72597bcf3c71f586040cd882506dff8dcbf6c804",
+  "tree": "98f7304db2e39ad722121c24047f5f06aa515663",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "sourceCount": 20,
+  "cellCount": 240,
+  "counts": {
+    "propose-correction": 57,
+    "accept-current": 183
+  },
+  "candidateCorrectionCount": 57,
+  "holdCount": 0,
+  "catalogKeyCount": 5441,
+  "catalogsReattested": 12,
+  "callerFiles": 15,
+  "callerPins": 27,
+  "callerGaps": [],
+  "placeholderMismatches": 0,
+  "markupMismatches": 0,
+  "protectedLiteralMismatches": 0,
+  "nativeSpeakerApproval": false,
+  "headedBrowserReview": false,
+  "testsBuildsScansCiRun": false,
+  "repositoryModified": false,
+  "sourceIds": [
+    "Conservative Network",
+    "Conservative discovery of hashes from non-slskr peers",
+    "Contacts",
+    "Contacts unavailable",
+    "Content",
+    "Content A:",
+    "Content B:",
+    "Content Graph",
+    "Content ID",
+    "Content ID (e.g., content:audio:album:mb-id)",
+    "Content ID (e.g., content:audio:album:mb-release-id)",
+    "Content ID and variant hash are required",
+    "Content ID is required",
+    "Content ID mappings and domain statistics",
+    "Content ID must be a JSON string",
+    "Content ID:",
+    "Content Linking",
+    "Content Metadata",
+    "Content Opinions",
+    "Content Publishing"
+  ],
+  "boundarySourceIndices": [
+    861,
+    882
+  ],
+  "boundarySourceIds": [
+    "Consensus for destructive actions",
+    "Content Registry"
+  ],
+  "localeOrder": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ]
+}

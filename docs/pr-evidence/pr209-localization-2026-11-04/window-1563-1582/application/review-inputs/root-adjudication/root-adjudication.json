@@ -1,0 +1,62 @@
+{
+  "artifact": "Root manual adjudication for slskR PR #209 W1563-W1582",
+  "schemaVersion": 1,
+  "exactHead": "f42c7e4be1f2bc9d63e13607d3c311d37f83f355",
+  "exactTree": "f6cb31394c01c90a784d543b8f43b04b232c8b37",
+  "sealedCrossPacket": "../slskr-pr209-w1563-1582-cross-20261104",
+  "sealedCrossPacketModified": false,
+  "reviewer": "root",
+  "rows": [
+    {
+      "position": 1569,
+      "locale": "hi",
+      "sourceKey": "Failed to load adversarial settings",
+      "sourceKeySha256": "50ea7d6eab719df412b4ea66348b5611b33159d76e8b658a6780efd0c0cfad4a",
+      "crossRecordSha256": "26ba15cac609ec7a847feb75d834191d06f9460368cede353c045922fb98b0de",
+      "currentTarget": "प्रतिकूल सुरक्षा सेटिंग लोड नहीं हो सकीं",
+      "currentTargetSha256": "ca3818451408ba5ad1254f2ade5b6a8b870559f62a66513c9003778d4be5e18f",
+      "crossSelectedTarget": "प्रतिकूल माहौल के लिए सुरक्षा सेटिंग लोड नहीं हो सकीं",
+      "crossSelectedTargetSha256": "881f9bdd9ae3079dd50033cb048167309f1631bc604bb09a2560a5368b79fd8b",
+      "rootTarget": "शत्रुतापूर्ण वातावरण के लिए सुरक्षा सेटिंग लोड नहीं हो सकीं",
+      "rootTargetSha256": "182991c367868f8bcc61ea34a4408c3a384d542af39c3c67b2de05682e259d97",
+      "decision": "replace-cross-selected-target-before-apply",
+      "rationale": "The same English source explanation is translated in this Hindi catalog as शत्रुतापूर्ण वातावरण. Use that established hostile-environment wording consistently in the settings error.",
+      "semanticConfidence": "moderate",
+      "nativeSpeakerSignoff": false
+    },
+    {
+      "position": 1570,
+      "locale": "hi",
+      "sourceKey": "Failed to load adversarial status",
+      "sourceKeySha256": "168c4df787751e01dedd040cad9ffba564af897e73f6da0c7ab9330cbe717c58",
+      "crossRecordSha256": "dc4fc8d2fbef22b35c558b224d0b520478985e7ee72983ea6823e43697e2b6a0",
+      "currentTarget": "प्रतिकूल स्थिति लोड करने में विफल",
+      "currentTargetSha256": "e78fc1368bc74f5708b79b4e0fad4bd4060f5836ee262a801352580e5781a7cc",
+      "crossSelectedTarget": "प्रतिकूल माहौल के लिए सुरक्षा सुविधाओं की स्थिति लोड नहीं हो सकी",
+      "crossSelectedTargetSha256": "ce5ec0036c92d7dfffdd8a43a86d71c7a193f32206ae8b7c2f54743ccbd69f8c",
+      "rootTarget": "शत्रुतापूर्ण वातावरण के लिए सुरक्षा सुविधाओं की स्थिति लोड नहीं हो सकी",
+      "rootTargetSha256": "6e955e8f76d3443ca0116b2a363c1bf327f1defd479eedd096c10f23085de484",
+      "decision": "replace-cross-selected-target-before-apply",
+      "rationale": "Use the established शत्रुतापूर्ण वातावरण term from the source explanation; the selected प्रतिकूल माहौल is less specific and can mean an adverse setting.",
+      "semanticConfidence": "moderate",
+      "nativeSpeakerSignoff": false
+    },
+    {
+      "position": 1570,
+      "locale": "es",
+      "sourceKey": "Failed to load adversarial status",
+      "sourceKeySha256": "168c4df787751e01dedd040cad9ffba564af897e73f6da0c7ab9330cbe717c58",
+      "crossRecordSha256": "02388a1225a565606ef9473530836a2ed2eb9cfc41db444499453e2e91960022",
+      "currentTarget": "No se pudo cargar el estado adversario",
+      "currentTargetSha256": "c887682b9ae86710747e52d700cd158f5be054b138a207f67490542338bfae75",
+      "crossSelectedTarget": "No se pudo cargar el estado de las funciones de seguridad adversarial",
+      "crossSelectedTargetSha256": "0b49ea2ef94fcac88bb8e4ca9989d0c6e1e5eceb4b3d028d18e2cda1f6c8b22d",
+      "rootTarget": "No se pudo cargar el estado de las funciones de seguridad para entornos hostiles",
+      "rootTargetSha256": "ec4a02d6f266fd08663d51e5b7385f669288b5c477a9752cd2dcb27567db847a",
+      "decision": "replace-cross-selected-target-before-apply",
+      "rationale": "Use the established “funciones de seguridad” terminology and “entornos hostiles” wording from the Spanish explanation of the feature, instead of the less natural technical calque “seguridad adversarial”.",
+      "semanticConfidence": "moderate",
+      "nativeSpeakerSignoff": false
+    }
+  ]
+}

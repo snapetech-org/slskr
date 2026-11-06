@@ -1,0 +1,15 @@
+{
+  "artifact": "slskR PR #209 W1683-W1702 blind semantic review ledger",
+  "callerEvidenceSha256": "7145793f6160f8a5afbbc51939649e3730c60ce1601f72dad9270c92ae9e0f88",
+  "cellCount": 240,
+  "holdCount": 0,
+  "inputManifestSha256": "f49d6dd7e9652781d59fe5053af5dce233439f24cb211692cec967802507eed2",
+  "ledgerSha256": "a65b86e8e1787a79798c5e36cac7a555e578be21cd44611266adb7bad568170c",
+  "proposalCount": 5,
+  "reviewSummarySha256": "36f44450dc49e0af42a18c6a28d48f58f4a73bbac7ece4be6e538c38fe69572c",
+  "sealedAtUtc": "2026-11-05T13:47:52+00:00",
+  "sourcePin": {
+    "head": "f04b7f965aef79552d65d40a2eeb550e5e3b9cfa",
+    "tree": "85fe880023e55e055660fd17599c291edd24a1c6"
+  }
+}

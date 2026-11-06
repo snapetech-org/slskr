@@ -1,0 +1,27 @@
+{
+  "lineageSource": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1503-primary-20261104/candidate-free-input",
+  "lineageFiles": {
+    "prior-window-selection-hash-only.jsonl": "5288200a2f800b4d296ce41a389c7ef06d679495b9059c733f6a6bfbfada96a0",
+    "prior-selection-hash-reattestation.jsonl": "372bab8204f3a4c8d76aee9f08c6f2c94eda016220c899218ff27edbe87b6b61",
+    "prior-hold-hash-reattestation.jsonl": "27d83aa4b0d51769a91e63202f33e934f56d0e0e900438a7fcffc1944e1e11c1"
+  },
+  "previousWindowCells": {
+    "recordCount": 480,
+    "sourcePositionMatches": 480,
+    "allMatchExpectedPriorTarget": true,
+    "liveTargetMismatchCount": 0
+  },
+  "priorSelections": {
+    "recordCount": 260,
+    "sourcePositionMatches": 260,
+    "allMatchLiveQueue": true,
+    "sourcePositionMismatchCount": 0
+  },
+  "priorHolds": {
+    "recordCount": 47,
+    "sourcePositionMatches": 47,
+    "unchangedCount": 47,
+    "changedCount": 0
+  },
+  "rawPriorTranslationsIncluded": false
+}

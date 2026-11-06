@@ -1,0 +1,96 @@
+{
+  "additionalCorrections": 3,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "cellCount": 240,
+  "counts": {
+    "accept-primary-proposal": 41,
+    "additional-correction": 3,
+    "retain-current": 183,
+    "retain-hold": 12,
+    "revise-primary-proposal": 1
+  },
+  "findings": [
+    {
+      "issue": "menanyakan rekan reads as asking a colleague, not querying network peers.",
+      "locale": "id",
+      "recommendedTarget": "Salin laporan kesehatan jaringan lokal untuk diagnostik. Ini tidak mengirim kueri ke peer atau mengubah status jaringan.",
+      "sourceIndex": 932,
+      "windowLabel": 933
+    },
+    {
+      "issue": "변형 narrows general file mutation to transformation/deformation.",
+      "locale": "ko",
+      "recommendedTarget": "선택한 위험한 문제에 대한 수동 격리 검토 패킷을 복사합니다. 이는 격리 상태를 변경하거나, 파일을 이동하거나, 피어 메시지를 보내거나, 파일을 수정하지 않습니다.",
+      "sourceIndex": 933,
+      "windowLabel": 934
+    },
+    {
+      "issue": "Primary correction still says politique de conservation (“retention policy”), not shelf policy; use pinned feature name.",
+      "locale": "fr",
+      "recommendedTarget": "Copiez un rapport textuel de l’aperçu actuel de la politique de l’Etagère Découverte pour examen. Cela n’effectue aucune action.",
+      "sourceIndex": 938,
+      "windowLabel": 939
+    },
+    {
+      "issue": "연습 실행 means practice run, not a dry run.",
+      "locale": "ko",
+      "recommendedTarget": "검토를 위해 현재 태그 및 정리 모의 실행에 대한 텍스트 보고서를 복사합니다. 이는 태그를 기록하거나 파일을 이동하거나 ReplayGain을 실행하거나 제공업체에 연락하지 않습니다.",
+      "sourceIndex": 939,
+      "windowLabel": 940
+    }
+  ],
+  "head": "ca71c6c90cbe6c1fa9ef0307a57b214e61e022b5",
+  "headedBrowserAcceptance": false,
+  "holds": {
+    "cells": 12,
+    "reason": "No exact production source literal caller at this head.",
+    "sourceIndex": 937,
+    "windowLabel": 938
+  },
+  "inputVerification": {
+    "callerFiles": 15,
+    "callerPinsReattested": 42,
+    "catalogKeysPerLocale": 5441,
+    "catalogsReattested": 12,
+    "primaryChecksumsPassed": 19,
+    "primaryManifestArtifacts": 18,
+    "priorWindowReadbacksMatchingCurrent": 240,
+    "w922BoundaryCells": 12,
+    "w923StartBoundaryCells": 12,
+    "w943ForwardBoundaryCells": 12
+  },
+  "localeCount": 12,
+  "nativeSpeakerApproval": false,
+  "primaryProposalRevised": 1,
+  "primaryProposalsAcceptedUnchanged": 41,
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "reviewLimit": "Independent linguistic review is not native-speaker approval; locale-specific nuance should receive native-speaker review before merge.",
+  "sourceCount": 20,
+  "structuralAudit": {
+    "currentProtectedLiteralFailureCells": 2,
+    "currentProtectedLiteralFailures": [
+      {
+        "locale": "de",
+        "missing": [
+          "SongID"
+        ],
+        "sourceIndex": 929
+      },
+      {
+        "locale": "hi",
+        "missing": [
+          "SongID"
+        ],
+        "sourceIndex": 929
+      }
+    ],
+    "finalProtectedLiteralFailureCells": 0,
+    "markupParityFailures": 0,
+    "placeholderParityFailures": 0,
+    "punctuationFailures": 0
+  },
+  "testsBuildScansCiOrBrowserRun": false,
+  "tree": "a35194c508f9b40f28ed75480fc20182a086c55d",
+  "window": "W923-W942"
+}

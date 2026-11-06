@@ -1,0 +1,89 @@
+{
+  "catalog_candidate": false,
+  "evidence_source": "primary packet source-context.jsonl and caller-search-attestation.json",
+  "follow_up_type": "caller-side-localization-bypasses",
+  "note": "These raw English source occurrences are a separate caller-side follow-up only. They do not create or alter any catalog candidate in this review.",
+  "occurrences": [
+    {
+      "caller_kind": "raw-English-nonlocalized-display",
+      "line": 147,
+      "path": "web/src/components/AppHeaderMenu.jsx",
+      "source_id": "Cancel",
+      "source_index": 565
+    },
+    {
+      "caller_kind": "raw-English-nonlocalized-display",
+      "line": 56,
+      "path": "web/src/components/System/Files/Explorer.jsx",
+      "source_id": "Cancel",
+      "source_index": 565
+    },
+    {
+      "caller_kind": "raw-English-nonlocalized-display",
+      "line": 114,
+      "path": "web/src/components/System/Files/Explorer.jsx",
+      "source_id": "Cancel",
+      "source_index": 565
+    },
+    {
+      "caller_kind": "raw-English-nonlocalized-display",
+      "line": 75,
+      "path": "web/src/components/System/Info/index.jsx",
+      "source_id": "Cancel",
+      "source_index": 565
+    },
+    {
+      "caller_kind": "raw-English-nonlocalized-display",
+      "line": 104,
+      "path": "web/src/components/System/Info/index.jsx",
+      "source_id": "Cancel",
+      "source_index": 565
+    },
+    {
+      "caller_kind": "raw-English-nonlocalized-display",
+      "line": 1574,
+      "path": "web/src/semantic-ui-react/index.jsx",
+      "source_id": "Cancel",
+      "source_index": 565
+    },
+    {
+      "caller_kind": "raw-English-nonlocalized-display",
+      "line": 120,
+      "path": "crates/slskr-web/src/native_row_rendering.rs",
+      "source_id": "Cancel",
+      "source_index": 565
+    },
+    {
+      "caller_kind": "raw-English-nonlocalized-display",
+      "line": 996,
+      "path": "crates/slskr-web/src/native_workspace_panels.rs",
+      "source_id": "Cancel",
+      "source_index": 565
+    },
+    {
+      "caller_kind": "raw-English-nonlocalized-display",
+      "line": 215,
+      "path": "crates/slskr-web/src/search_planning_owners/search_previews.rs",
+      "source_id": "Candidate score: {score}/100",
+      "source_index": 572
+    }
+  ],
+  "pr_head": "7e99edecbdea10580cc5e8d198930a82f076b834",
+  "pr_number": 204,
+  "pr_tree": "55de069f88c197ab8ddd3c773c1f10e5cb86abd5",
+  "raw_nonlocalized_occurrence_count": 9,
+  "schema_version": 1,
+  "source_count": 2,
+  "sources": [
+    {
+      "occurrence_count": 8,
+      "source_id": "Cancel",
+      "source_index": 565
+    },
+    {
+      "occurrence_count": 1,
+      "source_id": "Candidate score: {score}/100",
+      "source_index": 572
+    }
+  ]
+}

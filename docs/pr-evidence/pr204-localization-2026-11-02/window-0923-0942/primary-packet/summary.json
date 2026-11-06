@@ -1,0 +1,184 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W923-W942",
+  "zeroBasedSourceIndexInclusive": [
+    922,
+    941
+  ],
+  "head": "ca71c6c90cbe6c1fa9ef0307a57b214e61e022b5",
+  "tree": "a35194c508f9b40f28ed75480fc20182a086c55d",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "state": "OPEN",
+  "isDraft": true,
+  "sourceCount": 20,
+  "cellCount": 240,
+  "counts": {
+    "correction": 40,
+    "accept-current": 186,
+    "refinement": 2,
+    "hold": 12
+  },
+  "proposalKindCounts": {
+    "correction": 40,
+    "refinement": 2
+  },
+  "proposedValueChanges": 42,
+  "holdCellCount": 12,
+  "catalogKeyCount": 5441,
+  "catalogsReattested": 12,
+  "callerPins": 42,
+  "callerFiles": 15,
+  "callerGapSources": 1,
+  "callerGaps": [
+    {
+      "sourceIndex": 937,
+      "windowLabel": 938,
+      "sourceId": "Copy a short report of these browser-local choices to include with a support request.",
+      "reason": "No exact source string-literal caller exists in production web/src at this head; the catalog-only entry remains held pending source/caller confirmation.",
+      "targetLocales": [
+        "ar",
+        "de",
+        "es",
+        "fr",
+        "hi",
+        "id",
+        "ja",
+        "ko",
+        "pt-BR",
+        "vi",
+        "zh-Hans",
+        "zh-Hant"
+      ]
+    }
+  ],
+  "placeholderMismatches": 0,
+  "markupMismatches": 0,
+  "protectedLiteralCurrentFailureCells": 2,
+  "protectedLiteralFinalFailureCells": 0,
+  "protectedLiteralCurrentFailures": [
+    {
+      "sourceIndex": 929,
+      "locale": "de",
+      "tokens": [
+        "SongID"
+      ]
+    },
+    {
+      "sourceIndex": 929,
+      "locale": "hi",
+      "tokens": [
+        "SongID"
+      ]
+    }
+  ],
+  "punctuationFindings": [],
+  "catalogKeysetsIdentical": true,
+  "boundarySourceIndices": [
+    921,
+    942
+  ],
+  "boundarySourceIds": [
+    "Copy History",
+    "Copy diagnostic bundle"
+  ],
+  "previousWindow": "W903-W922",
+  "previousWindowCellReadbacksReattested": 240,
+  "previousWindowReadbacksMatchingCurrent": 240,
+  "previousHoldsPreserved": 12,
+  "w922BoundaryAll12Match": true,
+  "w923StartAll12MatchPreviousPin": true,
+  "allSevenPullRequestsAtSelection": [
+    {
+      "repository": "SeerrNG",
+      "pullRequest": 418,
+      "state": "OPEN",
+      "isDraft": true,
+      "baseRefOid": "221d8e0d542802da7529cd272c928cc747677e5c",
+      "headRefName": "codex/seerrng-localization-overhaul-20261028",
+      "headRefOid": "58697945e3d3fb44c37d49db0cc0f88e3af110cc",
+      "url": "https://github.com/snapetech-org/seerrng/pull/418"
+    },
+    {
+      "repository": "chaptarrng",
+      "pullRequest": 190,
+      "state": "OPEN",
+      "isDraft": true,
+      "baseRefOid": "03274100af783fdffaca4dd8436e163dc6b18795",
+      "headRefName": "codex/chaptarrng-localization-complete-20261031",
+      "headRefOid": "cc00a297fd221d52169f3c4683ffc1b0ee20871f",
+      "url": "https://github.com/snapetech-org/chaptarrng/pull/190"
+    },
+    {
+      "repository": "QuestarrNG",
+      "pullRequest": 155,
+      "state": "OPEN",
+      "isDraft": false,
+      "baseRefOid": "e188cd0c74c73071c94b04915e1babac2d2bf386",
+      "headRefName": "codex/localization-foundations-20261028",
+      "headRefOid": "0ea966692f4dec72e8830ebc1f085549968c587e",
+      "url": "https://github.com/snapetech-org/QuestarrNG/pull/155"
+    },
+    {
+      "repository": "ROMarrNG",
+      "pullRequest": 70,
+      "state": "OPEN",
+      "isDraft": true,
+      "baseRefOid": "bcd1eb41b5cdf8202acb5cf8e365e14761b743b5",
+      "headRefName": "task/localization-translation-review-20261030",
+      "headRefOid": "6db0b917343fc9fb605f8a4ecfbf9b4c21cebd1b",
+      "url": "https://github.com/snapetech-org/ROMarrNG/pull/70"
+    },
+    {
+      "repository": "slskR",
+      "pullRequest": 204,
+      "state": "OPEN",
+      "isDraft": true,
+      "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+      "headRefName": "codex/slskr-l10n-audit-20261030",
+      "headRefOid": "ca71c6c90cbe6c1fa9ef0307a57b214e61e022b5",
+      "url": "https://github.com/snapetech-org/slskr/pull/204"
+    },
+    {
+      "repository": "slskdN",
+      "pullRequest": 409,
+      "state": "OPEN",
+      "isDraft": true,
+      "baseRefOid": "f25d263a2a7cdb2c8f76c40c346cb10f749a9356",
+      "headRefName": "codex/slskdn-oidc-tooltip-localization-20261030",
+      "headRefOid": "0a6cbdcb606de1888045df358427eb2b81c85546",
+      "url": "https://github.com/snapetech-org/slskdN/pull/409"
+    },
+    {
+      "repository": "TorrentNG",
+      "pullRequest": 243,
+      "state": "OPEN",
+      "isDraft": true,
+      "baseRefOid": "0de7ddcf2f16a4399da8fd7904dc35f458b4837c",
+      "headRefName": "codex/torrentng-localization-audit-20261030",
+      "headRefOid": "11ff6fa2618e842e92716b7e92867769200e32e5",
+      "url": "https://github.com/snapetech-org/TorrentNG/pull/243"
+    }
+  ],
+  "selectedAtUtc": "2026-11-02T23:03:43.268255+00:00",
+  "nativeSpeakerApproval": false,
+  "headedBrowserAcceptance": false,
+  "testsBuildScansCiOrBrowserRun": false,
+  "repositoryModified": false,
+  "overallConfidence": "moderate",
+  "limitations": "Static machine-assisted primary review. It does not establish native-speaker approval, browser acceptance, or runtime validation. One catalog-only source string is held across all locales for lack of an exact production caller.",
+  "localeOrder": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ]
+}

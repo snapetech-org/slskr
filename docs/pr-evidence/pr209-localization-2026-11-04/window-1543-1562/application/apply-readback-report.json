@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "task": "slskR PR #209 W1543-W1562 exact-hash application readback",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "inputHead": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+  "inputTree": "4259db991f25fbbd0200963769e62bb7e2150806",
+  "inputBranch": "codex/slskr-l10n-audit-20261104-resync",
+  "baseRef": "main",
+  "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "productCommit": "9f158221682915a9c6c238c5e182871adbf93efd",
+  "productTree": "72c5fd0d9f69fe802e7a659e9c44d02fbc2f5eb8",
+  "productCommitParent": "c15eddffec2c4c24cc091b2a6ebf0c43fa58ef1b",
+  "reviewedSourcePositions": [
+    1543,
+    1562
+  ],
+  "reviewedCells": 240,
+  "sourceIds": 20,
+  "directLocales": 12,
+  "catalogChangesApplied": 27,
+  "outcomeCounts": {
+    "apply-correction": 27,
+    "retain-accepted": 208,
+    "retain-hold": 5
+  },
+  "noOpCells": 213,
+  "localeChangeCounts": {
+    "ar": 2,
+    "de": 4,
+    "es": 2,
+    "fr": 2,
+    "hi": 2,
+    "ja": 3,
+    "ko": 3,
+    "pt-BR": 1,
+    "vi": 2,
+    "zh-Hans": 3,
+    "zh-Hant": 3
+  },
+  "allBaseCatalogFilesMatchedPins": true,
+  "allCurrentTargetGuardsMatched": true,
+  "allBaseCurrentTargetsMatched": true,
+  "allFinalTargetsReadBack": true,
+  "allCatalogKeySetsUnchanged": true,
+  "allCatalogKeyOrdersUnchanged": true,
+  "allAcceptedTargetHashesPreserved": true,
+  "allHoldCurrentHashesPreserved": true,
+  "readbackCellCount": 240,
+  "readbackCellsSha256": "d95ac481a991c151733d815d05cda36bbfe572b67779896ac5bc120153bccb63",
+  "applyPlanSha256": "f31c0f055df4f29af8ed87f5aacd8a7de1b4f4429e7b39e01e98cfc6f1e87981",
+  "postimageCatalogPinsSha256": "df162b45d1c549283d51fb0dfc3aa10d82e0fb66ce4421592e7bbc898654ffaa",
+  "crossReviewChecksumListSha256": "9c971d0dd06628bf165c9f65ded9c606565d50522d1480fbd6ace3a1d684acc3",
+  "prBeforeBodySha256": "b37045fda614e89f6628da6ed29df9dff233923825d5159bd5d2c72d4f90fbfe",
+  "prAfterBodySha256": "754cae53e889b6e348c0b5b55cd23c1e6c6dd48f7e8365277f683166505ad61d",
+  "prBodyPrefixPreserved": true,
+  "prBodyApiReadbackMatches": true,
+  "catalogFileReports": {
+    "web/src/lib/locales/ui-labels.ar.json": {
+      "baseSha256": "c0409de6e75d5d182088c00f6934781bff0502a2e51eec911127fbd1ce34f15b",
+      "baseGitBlob": "fd61110cbae558e2e07bd253030d2ad5a61f9443",
+      "finalSha256": "319cba214a1bde3538b5478c2b6d1c15de4b42c721084e693e27ab98ac007143",
+      "finalByteCount": 513388,
+      "finalGitBlob": "15800a1d3c0df4d48ae5e5a251af71e85958a47a",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "baseOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "finalOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keySetUnchanged": true,
+      "keyOrderUnchanged": true,
+      "changesReadBack": 2,
+      "changedSourceKeys": [
+        "Failed to get consensus recommendations: {message}",
+        "Failed to get content metadata: {error}"
+      ]
+    },
+    "web/src/lib/locales/ui-labels.de.json": {
+      "baseSha256": "f2c585d245161f0d929b9dd8159ff269477f31809d77d6f21cb9fbb9d343fbac",
+      "baseGitBlob": "1ac69d11ac57a7b294fd285737d96403aaee5930",
+      "finalSha256": "f96d83228636ab960ef4ddeac5973a5d89000b1a122865f0c4790cbf21fa7fed",
+      "finalByteCount": 443096,
+      "finalGitBlob": "69756a004be8bede701c7ec52fe0e503a921fbe7",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "baseOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "finalOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keySetUnchanged": true,
+      "keyOrderUnchanged": true,
+      "changesReadBack": 4,
+      "changedSourceKeys": [
+        "Failed to get member affinities",
+        "Failed to get opinions",
+        "Failed to join room",
+        "Failed to join room: {error}"
+      ]
+    },
+    "web/src/lib/locales/ui-labels.es.json": {
+      "baseSha256": "87f80a1c56303b184b33d021d44898cb6a6cf44bf8acce58b067e2dfb2f5e453",
+      "baseGitBlob": "7056e88c033d8918612a600c293b90c4c811c61e",
+      "finalSha256": "04d36e79494386cea68cca39f1fd969ab27f9da7958bff6902da27ac674228ef",
+      "finalByteCount": 444692,
+      "finalGitBlob": "dd273d73f6de4f12543db71cb32339c06f49cb2a",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "baseOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "finalOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keySetUnchanged": true,
+      "keyOrderUnchanged": true,
+      "changesReadBack": 2,
+      "changedSourceKeys": [
+        "Failed to get last seen timestamps",
+        "Failed to get last seen timestamps: {message}"
+      ]
+    },
+    "web/src/lib/locales/ui-labels.fr.json": {
+      "baseSha256": "45c40fc74e17814bade40030159e8cb91b3f593e0216a2d7c20f76ea881e36b8",
+      "baseGitBlob": "8da33d72a19a08447405ca11364a335ede0db3bb",
+      "finalSha256": "12c7c075676bab736fc1913979616411c1ebcaf76383be6851740db3a8591c41",
+      "finalByteCount": 455724,
+      "finalGitBlob": "f7772706265eeada7d7abc52a649967f885314d1",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "baseOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "finalOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keySetUnchanged": true,
+      "keyOrderUnchanged": true,
+      "changesReadBack": 2,
+      "changedSourceKeys": [
+        "Failed to get last seen timestamps",
+        "Failed to get last seen timestamps: {message}"
+      ]
+    },
+    "web/src/lib/locales/ui-labels.hi.json": {
+      "baseSha256": "acab7533d0b703b933c35c66ddaca1d80d4a9989e0a509ff00c9d6a576d22647",
+      "baseGitBlob": "3c61ac24000f62ac63fba9e5feb20c447661659d",
+      "finalSha256": "8fd1915ccacb8845457dbf06948b489ff4daa1f863406e1a06afcbda4f88a5e0",
+      "finalByteCount": 677970,
+      "finalGitBlob": "d2c8aedfc1c550e5e605a526cdbe480b35e4546c",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "baseOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "finalOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keySetUnchanged": true,
+      "keyOrderUnchanged": true,
+      "changesReadBack": 2,
+      "changedSourceKeys": [
+        "Failed to get consensus recommendations: {message}",
+        "Failed to get opinion statistics: {message}"
+      ]
+    },
+    "web/src/lib/locales/ui-labels.id.json": {
+      "baseSha256": "379559a466242f2245e5cec0d2615bb14b22f707b19589b8df56cd9caaa7cf60",
+      "baseGitBlob": "2d2a0a36e64b43ffb3caa553718b839c6acfbb2b",
+      "finalSha256": "379559a466242f2245e5cec0d2615bb14b22f707b19589b8df56cd9caaa7cf60",
+      "finalByteCount": 410211,
+      "finalGitBlob": "2d2a0a36e64b43ffb3caa553718b839c6acfbb2b",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "baseOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "finalOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keySetUnchanged": true,
+      "keyOrderUnchanged": true,
+      "changesReadBack": 0,
+      "changedSourceKeys": []
+    },
+    "web/src/lib/locales/ui-labels.ja.json": {
+      "baseSha256": "9bb121a2985d68806d645173226383cf0cd34eb3cb4d5152a4e2c488a9cdd823",
+      "baseGitBlob": "a6a237a892d7f6022d4873a64919326d35136c91",
+      "finalSha256": "08ae31787e9b2fbfbe9115f2710db263b1fe53a504477550ef44b2cfdf40f8ab",
+      "finalByteCount": 491208,
+      "finalGitBlob": "2afc7e25f1114592a8836e210758ecdf9582b110",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "baseOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "finalOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keySetUnchanged": true,
+      "keyOrderUnchanged": true,
+      "changesReadBack": 3,
+      "changedSourceKeys": [
+        "Failed to get consensus recommendations: {message}",
+        "Failed to get last seen timestamps: {message}",
+        "Failed to get member affinities: {message}"
+      ]
+    },
+    "web/src/lib/locales/ui-labels.ko.json": {
+      "baseSha256": "a5455063f85bc9a6144970daacb44cd18661a3bfa4bdb9bdb41bd18ad661aa6e",
+      "baseGitBlob": "f61b4a1459c54d7faadd0f587765b369139d671f",
+      "finalSha256": "20232ff30cb1afd7fcfcba82867fdcda8c6ec1d711777b8e2643fc4fbb665cd8",
+      "finalByteCount": 442432,
+      "finalGitBlob": "094813efe75207de08a6a12195942c4eddfde838",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "baseOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "finalOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keySetUnchanged": true,
+      "keyOrderUnchanged": true,
+      "changesReadBack": 3,
+      "changedSourceKeys": [
+        "Failed to get consensus recommendations: {message}",
+        "Failed to get last seen timestamps: {message}",
+        "Failed to get membership:"
+      ]
+    },
+    "web/src/lib/locales/ui-labels.pt-BR.json": {
+      "baseSha256": "16d9526224922d51c9b527616e8927121b4186a40fcb5b080b32ee3b274b0a54",
+      "baseGitBlob": "6c3a59cb657df87c02b53e325f8648098d83c85c",
+      "finalSha256": "643cf12b5745d7cd63b66f69d26e22e22f6705e129476629ced39907640a2ce6",
+      "finalByteCount": 439321,
+      "finalGitBlob": "0e43a6534b4537a7610bcbede7cc9e4dccad371d",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "baseOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "finalOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keySetUnchanged": true,
+      "keyOrderUnchanged": true,
+      "changesReadBack": 1,
+      "changedSourceKeys": [
+        "Failed to get last seen timestamps: {message}"
+      ]
+    },
+    "web/src/lib/locales/ui-labels.vi.json": {
+      "baseSha256": "8608ebddae317f1e7d1b28f3dca5bd27b161312e408a43b33542031e5adc97f9",
+      "baseGitBlob": "f7359b7f364e89df460eeca408c95d2cbd428e08",
+      "finalSha256": "759c41f2552dc8b9503b94a5c3ffe056bbd24406c40e31d24d2d7c05c4921977",
+      "finalByteCount": 475298,
+      "finalGitBlob": "8170d794241c311739d5067c33f35c8ae88bf055",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "baseOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "finalOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keySetUnchanged": true,
+      "keyOrderUnchanged": true,
+      "changesReadBack": 2,
+      "changedSourceKeys": [
+        "Failed to get member affinities: {message}",
+        "Failed to get membership:"
+      ]
+    },
+    "web/src/lib/locales/ui-labels.zh-Hans.json": {
+      "baseSha256": "83b9c7f965df257a4de19670b5bb29d293d86b4947f2258f288c6030489ffcb9",
+      "baseGitBlob": "958dc3eac912f8a808464c2afa800db48a3c03ef",
+      "finalSha256": "71a5ac25691b4364147724ad735c70a52e6f2f547390ceb75ce559e91a99770c",
+      "finalByteCount": 383039,
+      "finalGitBlob": "0598790156a2bf595f928f10168b5770549c4a4c",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "baseOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "finalOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keySetUnchanged": true,
+      "keyOrderUnchanged": true,
+      "changesReadBack": 3,
+      "changedSourceKeys": [
+        "Failed to get member affinities",
+        "Failed to get member affinities: {message}",
+        "Failed to get membership:"
+      ]
+    },
+    "web/src/lib/locales/ui-labels.zh-Hant.json": {
+      "baseSha256": "6bb1a96843bd1e36f1789a514d1c9c1911982ccac1bffb2dc7e34c249e699791",
+      "baseGitBlob": "14b80e83b6a64e7264c09d94e0bad2cd4827f533",
+      "finalSha256": "8082b97fb2da38b8044e58dffa59fe0714893b5183539013b69ee3b73f97497d",
+      "finalByteCount": 383798,
+      "finalGitBlob": "289bb1712923cb18f6bc9af1b9b13e74f5f577c0",
+      "baseKeyCount": 5441,
+      "finalKeyCount": 5441,
+      "baseOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "finalOrderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "keySetUnchanged": true,
+      "keyOrderUnchanged": true,
+      "changesReadBack": 3,
+      "changedSourceKeys": [
+        "Failed to get member affinities",
+        "Failed to get member affinities: {message}",
+        "Failed to get membership:"
+      ]
+    }
+  },
+  "productCommitPaths": [
+    "web/src/lib/locales/ui-labels.ar.json",
+    "web/src/lib/locales/ui-labels.de.json",
+    "web/src/lib/locales/ui-labels.es.json",
+    "web/src/lib/locales/ui-labels.fr.json",
+    "web/src/lib/locales/ui-labels.hi.json",
+    "web/src/lib/locales/ui-labels.ja.json",
+    "web/src/lib/locales/ui-labels.ko.json",
+    "web/src/lib/locales/ui-labels.pt-BR.json",
+    "web/src/lib/locales/ui-labels.vi.json",
+    "web/src/lib/locales/ui-labels.zh-Hans.json",
+    "web/src/lib/locales/ui-labels.zh-Hant.json"
+  ],
+  "crossReviewInputPacketCopies": {
+    "candidateFree": "review-inputs/candidate-free-input",
+    "primary": "review-inputs/primary-review",
+    "independentBlind": "review-inputs/independent-blind-review"
+  },
+  "nativeSpeakerSignoff": false,
+  "browserReviewPerformed": false,
+  "testsBuildsScansOrCiRun": false,
+  "workflowsModified": false,
+  "applied": true,
+  "createdAtUtc": "2026-11-04T22:20:06.216495+00:00"
+}

@@ -1,0 +1,15 @@
+{
+  "reviewer": "root_independent_semantic_cross_review",
+  "review_head": "b70b68e0cc297d5a0a7f7ace6a47d3c950e22470",
+  "review_tree": "ca40b695c4ab3a2f0485791246ecffb1c0dc249e",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "candidate_count": 83,
+  "dispositions": {
+    "accepted-proposal": 71,
+    "refined": 12
+  },
+  "native_speaker_review": "not_provided",
+  "ledger_sha256": "3d840984024cb24829e5cc7173fa47589cbbe54ef9f36a77312f0bfc7756a2e0",
+  "apply_plan_sha256": "b9030722ce56b0ea2a2da6795c7c5bf8f39b4ff69c9bec7ad82285284343536f"
+}

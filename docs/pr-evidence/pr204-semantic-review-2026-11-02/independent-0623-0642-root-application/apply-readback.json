@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "inputHead": "df1bcd1a86d7b55a9c8b5502854ad0c7efbb3dbc",
+  "inputTree": "787225b69e49420344d031aead6f5e5085741c93",
+  "cellsApplied": 25,
+  "catalogKeyCounts": {
+    "web/src/lib/locales/ui-labels.ar.json": 5438,
+    "web/src/lib/locales/ui-labels.es.json": 5438,
+    "web/src/lib/locales/ui-labels.fr.json": 5438,
+    "web/src/lib/locales/ui-labels.hi.json": 5438,
+    "web/src/lib/locales/ui-labels.id.json": 5438,
+    "web/src/lib/locales/ui-labels.ja.json": 5438,
+    "web/src/lib/locales/ui-labels.ko.json": 5438,
+    "web/src/lib/locales/ui-labels.pt-BR.json": 5438,
+    "web/src/lib/locales/ui-labels.vi.json": 5438,
+    "web/src/lib/locales/ui-labels.zh-Hans.json": 5438,
+    "web/src/lib/locales/ui-labels.zh-Hant.json": 5438
+  },
+  "catalogFileSha256": {
+    "web/src/lib/locales/ui-labels.ar.json": "69abab4b18d891e3d088d30551a4a28b1c0c8ed3ab0cf4d01e0c0cee2d31a6df",
+    "web/src/lib/locales/ui-labels.es.json": "4a5bdbc54e417eadace17d3ee2824a79cab0f2ed5f9db4697f7554e5fe96cfaa",
+    "web/src/lib/locales/ui-labels.fr.json": "c1be80153d69b5f15e9acd003f221ed0ab1feba05f6a51cf4c8fc21b9b064455",
+    "web/src/lib/locales/ui-labels.hi.json": "04ab8ce281be9212616190d8d375f269fa57cf9a443c6361a106b841ba02e731",
+    "web/src/lib/locales/ui-labels.id.json": "b377f1dbfd342882a5749738c0f2126f76542282a1baa1bfdbe38c42165b363f",
+    "web/src/lib/locales/ui-labels.ja.json": "79409c26c5577636b745eec58d412e970e1fbde32e3844631c796b7e576c2cd6",
+    "web/src/lib/locales/ui-labels.ko.json": "926ca54cda73259913e0ec78cc439186183434ccc78fe74a42e4bce263286c20",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "0b7a62efa2ad8148baea98962578f8abbb53c92864d87b2a26463b519a373d7a",
+    "web/src/lib/locales/ui-labels.vi.json": "f10ae1b2ff229cf9c4cfc9aa8747a4176a177042a02362fa268c0deafb8a61c0",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "dcacb24db625f6e5ec20def599c680a08e62313cf17fff3d168e5d5b952c6a31",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "d1cc071d0e74b5b9b8ef3a3f16d0545c49c35b4bc9382d46ed8ee2959c85a7ce"
+  },
+  "allReadbacksMatchFinalHashes": true,
+  "priorAcceptedCellsChanged": 0,
+  "testsBuildsScansCIOrWorkflowsRun": false,
+  "rows": [
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.ar.json",
+      "sourceId": "Choose how long RustyMilk should wait before timed preset changes.",
+      "locale": "ar",
+      "sourceIndex": 624,
+      "beforeSha256": "098d10727a526c2eda48fa92ff7365b72f638c78f1c746bcb3e783411bc8c3dc",
+      "afterSha256": "11295e836910d5a072f8e4b17ad3861acdd4d44f02b6b5741723dcb78c7ad64f",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.es.json",
+      "sourceId": "Choose how long RustyMilk should wait before timed preset changes.",
+      "locale": "es",
+      "sourceIndex": 624,
+      "beforeSha256": "9f2854cefa2d1851f0f24d02234aae37d49dbb500f6b0b54094230e8a8d9dbcb",
+      "afterSha256": "e2162530059b1449b227b360123adff377f54724a6891e66fdbcf0e4f0113371",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.fr.json",
+      "sourceId": "Choose how long RustyMilk should wait before timed preset changes.",
+      "locale": "fr",
+      "sourceIndex": 624,
+      "beforeSha256": "38fbc2cac883fed85d415c85a919af48ae3dd73cdc0e8fa9c6bb37271f9f22ea",
+      "afterSha256": "bede2cf8fc136a5e27d04215ba94e01b0313d01442a997be20447aedfb7823e8",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.hi.json",
+      "sourceId": "Choose how long RustyMilk should wait before timed preset changes.",
+      "locale": "hi",
+      "sourceIndex": 624,
+      "beforeSha256": "690b9e4bcaeeb30f3a7a274406790654f48a8dc9bf03ba6f64813ff9db735796",
+      "afterSha256": "b26e799f69d1df98e291afa47029191193164402af889c9860b6ff0ccea189b1",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.id.json",
+      "sourceId": "Choose how long RustyMilk should wait before timed preset changes.",
+      "locale": "id",
+      "sourceIndex": 624,
+      "beforeSha256": "f77cbea2ce125eb842e0c13f4ed579cbbf5fc1b39a88c912a7eb1a0d20662f87",
+      "afterSha256": "71bf1f780acd620b18d7e25b0988e12e4f636c9c7fa294bea14628c914820836",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.ja.json",
+      "sourceId": "Choose how long RustyMilk should wait before timed preset changes.",
+      "locale": "ja",
+      "sourceIndex": 624,
+      "beforeSha256": "ce89c93bed4cc2175763c319cdbc633d60dd3321395b20deff5af032b5644ef0",
+      "afterSha256": "4f52ee855e7c5afd283f8a9990c9852efb7459b35c653a21efa6fecfc0af558f",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.ko.json",
+      "sourceId": "Choose how long RustyMilk should wait before timed preset changes.",
+      "locale": "ko",
+      "sourceIndex": 624,
+      "beforeSha256": "7f15e78edd39448caf11fc6a58457562b0948f82c8ea70aeb29ac312ab238f2a",
+      "afterSha256": "331072578ffc211eeb297b8e81bdf07dfe5641d36cce5bff7e04a3ad0f1d9500",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "sourceId": "Choose how long RustyMilk should wait before timed preset changes.",
+      "locale": "pt-BR",
+      "sourceIndex": 624,
+      "beforeSha256": "dd8970c685c4db4e3d0406ccac16979098ba48ec0c447dd65da4c3745cb248f0",
+      "afterSha256": "466f9305db4669ae4943abc316e8d5244523d25c4f378edb6f9aedec500aabb1",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.vi.json",
+      "sourceId": "Choose how long RustyMilk should wait before timed preset changes.",
+      "locale": "vi",
+      "sourceIndex": 624,
+      "beforeSha256": "3ede09442b3a38860419cdcc0a0f9886a527e8302468d8dfe0a6af3bc81a8e7d",
+      "afterSha256": "43155292ad9ca8c45ca12497d85e9f5c1edc97eb4c5df0afe078836db9b71ef0",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.es.json",
+      "sourceId": "Choose how many detected bass beats should pass before RustyMilk advances to another preset.",
+      "locale": "es",
+      "sourceIndex": 625,
+      "beforeSha256": "8b2439f008795ff28db61d87c0d6b4e2a8963f8245209054ec1cf7044d53beaa",
+      "afterSha256": "7bdb40344dbe4e519a6c7d2cd0c3d9f9f5f4ff260bb60f2766f941b04fceae5f",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.fr.json",
+      "sourceId": "Choose how many detected bass beats should pass before RustyMilk advances to another preset.",
+      "locale": "fr",
+      "sourceIndex": 625,
+      "beforeSha256": "53597d58c75e692cebb4d2cc1a25d20e6c46d3c3b50d500936233b7aa50423a4",
+      "afterSha256": "d2a12d907ba14ed380cf99531192fef22b844110bd93e7608ef65a142234c9ec",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.hi.json",
+      "sourceId": "Choose how many detected bass beats should pass before RustyMilk advances to another preset.",
+      "locale": "hi",
+      "sourceIndex": 625,
+      "beforeSha256": "1a23949b47e564b87c1cc5f66e01d3a74e77a4f13e5a64112d9f5d661e9485ee",
+      "afterSha256": "1e230ff2d75bf7c34ffa387f3100d711c9b4e8105c06772fb2daf198d33bd5e6",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.id.json",
+      "sourceId": "Choose how many detected bass beats should pass before RustyMilk advances to another preset.",
+      "locale": "id",
+      "sourceIndex": 625,
+      "beforeSha256": "afa6795570087f50c4098cd7c05cb61c20dcbb1d4e2ff921d3ce10d3ac3afa92",
+      "afterSha256": "464a36eba6e9f93630618258e4dfe57ad20bbab744677ea6998d1c4d5dc6d3f9",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.ja.json",
+      "sourceId": "Choose how many detected bass beats should pass before RustyMilk advances to another preset.",
+      "locale": "ja",
+      "sourceIndex": 625,
+      "beforeSha256": "0bdbd48bd06da1330fad5d0b0c80756d0910f9b71e872bf3a231d0fefce9e4e5",
+      "afterSha256": "20aba80864e8dd6ca86bb8745e9a8a5d3171d22acf2b8bc1853448e83c2c11e2",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "sourceId": "Choose how many detected bass beats should pass before RustyMilk advances to another preset.",
+      "locale": "pt-BR",
+      "sourceIndex": 625,
+      "beforeSha256": "f438d3414853abf355bed6a43a54d43c13372c14a2c06e5292476353fa54df22",
+      "afterSha256": "312e7246ae0acffbe57a351ee1aa33d7c70e5ab4e188c87474b371437e6c470e",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.vi.json",
+      "sourceId": "Choose how many detected bass beats should pass before RustyMilk advances to another preset.",
+      "locale": "vi",
+      "sourceIndex": 625,
+      "beforeSha256": "0bfabcbbe7f5c3b04bf6cb8fd977a8608acc6c91b484eebca259150f2cd50fa8",
+      "afterSha256": "91efed5d73ba16b0baceb688144d079c2a3ac931019d296088dbda1708bb72cb",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "sourceId": "Choose how many detected bass beats should pass before RustyMilk advances to another preset.",
+      "locale": "zh-Hans",
+      "sourceIndex": 625,
+      "beforeSha256": "74149c782fd3cb19f31ef93775b4c0441ad844fc21be8a687bc83f4bd25c3735",
+      "afterSha256": "aec09d12bbf55eefb96660a4378b7848a8779ff3b60dfcb680c50e007a95cb6a",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "sourceId": "Choose how many detected bass beats should pass before RustyMilk advances to another preset.",
+      "locale": "zh-Hant",
+      "sourceIndex": 625,
+      "beforeSha256": "7a27719569d16dffc8887cadafe0173dd4318973b8039219780449d4288fd4e9",
+      "afterSha256": "1fc889a6ffe32d06eb0f95f4125f68da31d66bcf964ccd44c8bf35a097447248",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.fr.json",
+      "sourceId": "Choose which custom wave from the active RustyMilk preset should be exported or removed.",
+      "locale": "fr",
+      "sourceIndex": 633,
+      "beforeSha256": "dc746e050e53464814230619845ac538568a8a4d07bab1958d06e19ee843d5b5",
+      "afterSha256": "313d476727fd1cf169f5e4cc718d0f67c66202bea26bc8af2528a9cb28e057a1",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.id.json",
+      "sourceId": "Chromaprint Off",
+      "locale": "id",
+      "sourceIndex": 635,
+      "beforeSha256": "aed029313eacc0f190e12e0706889cbd6399fdaf32334c5008300075144b4900",
+      "afterSha256": "08dabb0c85be0c7da5629ec4476fb68be7158ef182759ff58a3eced21f307c0d",
+      "crossReviewDisposition": "accept-primary-proposal"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.es.json",
+      "sourceId": "Choose how search results are ordered. Smart Ranking balances quality and availability.",
+      "locale": "es",
+      "sourceIndex": 627,
+      "beforeSha256": "9a232ab448dbaa6366cf246cf1dbf15ecfaaff6a4a30a2e6783d2399de700ef0",
+      "afterSha256": "a2783433150d9ab682ac5ffd0b8695924e167ed964dfd66b601a7768d6c2c284",
+      "crossReviewDisposition": "missed-issue"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.fr.json",
+      "sourceId": "Choose how search results are ordered. Smart Ranking balances quality and availability.",
+      "locale": "fr",
+      "sourceIndex": 627,
+      "beforeSha256": "25f0ec884fb2e43dcaff067f71dc2d2f8ff5a84594e95f6fb6f16da69207df19",
+      "afterSha256": "e41dccbae08ac32e989526c27a174fcbd55a1db022652ad06c77434f28b5c428",
+      "crossReviewDisposition": "missed-issue"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "sourceId": "Choose how search results are ordered. Smart Ranking balances quality and availability.",
+      "locale": "pt-BR",
+      "sourceIndex": 627,
+      "beforeSha256": "5bd34f52e922c14cb69c0b6668befa13457a0e1ae83285dfbd76d02cba70efbd",
+      "afterSha256": "63987f50cea7220bfcecf135cdf31d2440bb30ab10d08e5c277167ed137f904a",
+      "crossReviewDisposition": "missed-issue"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.vi.json",
+      "sourceId": "Choose which custom shape from the active RustyMilk preset should be exported or removed.",
+      "locale": "vi",
+      "sourceIndex": 632,
+      "beforeSha256": "a4c49d7d9b1031fb19d7855c67d71c885093e24f897c10aafec452808f6d50ad",
+      "afterSha256": "f4ade2dee9e105e7742d904ba4863a23817e560cd16dbb090894890f530a357f",
+      "crossReviewDisposition": "missed-issue"
+    },
+    {
+      "targetFile": "web/src/lib/locales/ui-labels.vi.json",
+      "sourceId": "Choose which custom wave from the active RustyMilk preset should be exported or removed.",
+      "locale": "vi",
+      "sourceIndex": 633,
+      "beforeSha256": "011c032fe2e795ed838beecb76b62d8124954434e2ebf5b093e62512c9a66cfe",
+      "afterSha256": "bb376601dafdb673579584d943fa44923cb56d1ef1b482f47aeb584063441058",
+      "crossReviewDisposition": "missed-issue"
+    }
+  ]
+}

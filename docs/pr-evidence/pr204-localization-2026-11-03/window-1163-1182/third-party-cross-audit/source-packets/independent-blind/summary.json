@@ -1,0 +1,44 @@
+{
+  "cellCount": 240,
+  "decisionCounts": {
+    "accept-current": 182,
+    "correction-proposal": 22,
+    "hold": 4,
+    "refinement-proposal": 32
+  },
+  "head": "9aa58492ee693d8ca0f2c027a3ee5b8438639f91",
+  "holds": [
+    {
+      "locale": "ar",
+      "position": 1165,
+      "rationale": "The current Arabic is an imperative (“discover”), but the source is a completed-state label beside a count. Arabic wording depends on the implicit noun and number agreement, so hold for native review.",
+      "sourceId": "Discovered"
+    },
+    {
+      "locale": "zh-Hans",
+      "position": 1179,
+      "rationale": "The current 警告 means warning. The source is a player-rating dimension, but the packet does not say whether caution means a warning, risk, or preference; hold for terminology review.",
+      "sourceId": "Discovery caution"
+    },
+    {
+      "locale": "zh-Hant",
+      "position": 1179,
+      "rationale": "The current 警告 means warning. The source is a player-rating dimension, but the packet does not say whether caution means a warning, risk, or preference; hold for terminology review.",
+      "sourceId": "Discovery caution"
+    },
+    {
+      "locale": "ar",
+      "position": 1180,
+      "rationale": "The message receives refreshed and expired item counts. Arabic count agreement depends on the runtime values and counted noun; hold for native review rather than guess.",
+      "sourceId": "Discovery refresh completed: {entriesRefreshed} refreshed, {entriesExpired} expired"
+    }
+  ],
+  "manifestInputSha256": "e8fd206298f2685d5126f61aa55c8186192a35e3dbb76f3ccd44ca4833f69422",
+  "nativeSpeakerApproval": false,
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskr",
+  "sourceContextInputSha256": "7bb077329c5fb283898520749e222f3e165422cf0a27bd20d8b30fb8fbc56210",
+  "sourceInputSha256": "0a753fa2647ddcd6b902749fbb46392c757d090c72805f9fa274796b1130ddc4",
+  "tree": "b9ebab27d1f24932be0c623cf894a78115b6f2bb",
+  "window": "W1163-W1182"
+}

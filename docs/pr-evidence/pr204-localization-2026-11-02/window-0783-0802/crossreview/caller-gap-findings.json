@@ -1,0 +1,26 @@
+{
+  "count": 2,
+  "heldSourceIds": [
+    "Complete base URL, token, and path-map readiness before live execution.",
+    "Completed {direction}s cleared!"
+  ],
+  "findings": [
+    {
+      "sourceIndexPrimary": 785,
+      "sourceIndexCurrent": 784,
+      "sourceId": "Complete base URL, token, and path-map readiness before live execution.",
+      "callerReferences": [],
+      "reason": "The action is a plain string in mediaServerIntegrations.js and MediaServerPanel renders check.action raw. Catalog changes cannot affect this display until the caller localizes the action. The English source itself is awkward (“Complete … readiness”); clarify it while refactoring.",
+      "possibleRefactor": "localize the action value at the readiness check or render check.action via LocalizedText/interfaceText"
+    },
+    {
+      "sourceIndexPrimary": 796,
+      "sourceIndexCurrent": 795,
+      "sourceId": "Completed {direction}s cleared!",
+      "callerReferences": [],
+      "reason": "The caller interpolates raw English upload/download values and leaves the English plural s outside {direction}. No single locale string can correctly handle both directions until the caller localizes the direction or uses separate toast source keys.",
+      "possibleRefactor": "localize upload/download before interpolation, or split into direction-specific toast source keys"
+    }
+  ],
+  "sourceRefactorNeedsReattested": true
+}

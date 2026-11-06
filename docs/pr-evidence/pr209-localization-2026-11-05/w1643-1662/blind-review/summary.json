@@ -1,0 +1,51 @@
+{
+  "artifact": "slskR PR #209 W1643-W1662 independent blind semantic review",
+  "exactHead": "2d804c49879372071adf606bc2a2cf51e261fd94",
+  "exactTree": "d6f5552d2400d868c2f2af98eb68caadfd4f3f66",
+  "pullRequest": 209,
+  "inputDirectory": "../candidate-free-input/",
+  "inputManifestSha256": "2e559b30bbac3bde00a7f5a00abff4a32462867141d2534ba7ff0e17566f8893",
+  "inputChecksumIndexSha256": "9fe4a7012ed1a4ec53b70a4e9cb0b0d5fd1a0ea6d791edb4fcafbdee84dde49d",
+  "reviewedAtUtc": "2026-11-05T07:46:27+00:00",
+  "cellCount": 240,
+  "sourceCount": 20,
+  "localeCount": 12,
+  "decisionCounts": {
+    "accept-current": 233,
+    "correction": 2,
+    "refinement": 5
+  },
+  "proposalCount": 7,
+  "proposalCountsByLocale": {
+    "ar": 1,
+    "fr": 1,
+    "ja": 1,
+    "ko": 2,
+    "pt-BR": 1,
+    "zh-Hant": 1
+  },
+  "proposalCountsBySource": {
+    "Failed to retrieve metadata:": 1,
+    "Failed to route message:": 2,
+    "Failed to save source-feed integration settings.": 1,
+    "Failed to select canonical variant": 3
+  },
+  "confidenceCounts": {
+    "high": 236,
+    "moderate": 4
+  },
+  "tokenAudit": {
+    "placeholderCells": 24,
+    "markupCells": 0,
+    "numericTokenCells": 0,
+    "protectedLiteralCells": 12,
+    "recommendationsPreservePlaceholderMarkupNumericAndProtectedLiteralTokens": true,
+    "podTermPreserved": true
+  },
+  "limitations": [
+    "Semantic decisions are based on the pinned English source keys and extracted direct caller contexts in the candidate-free packet.",
+    "No native-speaker second review or headed runtime display review was performed.",
+    "The canonical-variant caller is an error-message allowlist; its surrounding algorithm semantics are unavailable in this packet, so Arabic, Japanese, and Korean terminology refinements have moderate confidence."
+  ],
+  "independence": "No primary-review or cross-review outputs were used as inputs."
+}

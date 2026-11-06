@@ -1,0 +1,286 @@
+{
+  "previousWindow": "W903-W922",
+  "previousHead": "b1e814ef11d55fd1710d0e2522df14fee9ff0a70",
+  "previousTree": "50fef41fa1abcfcceb9a99cfd756ae014e51e286",
+  "previousPacketChecksums": [
+    {
+      "path": "/home/keith/Documents/code/task-worktrees/localization-20261102-slskr/docs/pr-evidence/pr204-localization-2026-11-02/window-0903-0922/SHA256SUMS",
+      "exitCode": 0,
+      "verifiedFiles": 36,
+      "stderr": ""
+    },
+    {
+      "path": "/home/keith/Documents/code/task-worktrees/localization-20261102-slskr/docs/pr-evidence/pr204-localization-2026-11-02/window-0903-0922/primary/SHA256SUMS",
+      "exitCode": 0,
+      "verifiedFiles": 15,
+      "stderr": ""
+    },
+    {
+      "path": "/home/keith/Documents/code/task-worktrees/localization-20261102-slskr/docs/pr-evidence/pr204-localization-2026-11-02/window-0903-0922/crossreview/SHA256SUMS",
+      "exitCode": 0,
+      "verifiedFiles": 8,
+      "stderr": ""
+    }
+  ],
+  "previousFinalReadbackCellCount": 240,
+  "previousFinalReadbackMatchesCurrent": 240,
+  "previousHoldCellCount": 12,
+  "previousHoldsPreserved": true,
+  "w922BoundaryChecks": [
+    {
+      "sourceIndex": 921,
+      "windowLabel": 922,
+      "sourceId": "Copy History",
+      "locale": "ar",
+      "previousDisposition": "accept-primary-correction",
+      "previousFinalTargetSha256": "544e0acebc49daeda5bd8c7ca65e296f72af069b1559bb696cf9a1c3ff4cb0eb",
+      "currentTarget": "نسخ السجل",
+      "currentTargetSha256": "544e0acebc49daeda5bd8c7ca65e296f72af069b1559bb696cf9a1c3ff4cb0eb",
+      "matchesPriorW922FinalReadback": true
+    },
+    {
+      "sourceIndex": 921,
+      "windowLabel": 922,
+      "sourceId": "Copy History",
+      "locale": "de",
+      "previousDisposition": "retain-current",
+      "previousFinalTargetSha256": "4b28ce419709cc86eb59e3a685968651cd2a7a85100f2d9c4959c9b10ad56f2a",
+      "currentTarget": "Verlauf kopieren",
+      "currentTargetSha256": "4b28ce419709cc86eb59e3a685968651cd2a7a85100f2d9c4959c9b10ad56f2a",
+      "matchesPriorW922FinalReadback": true
+    },
+    {
+      "sourceIndex": 921,
+      "windowLabel": 922,
+      "sourceId": "Copy History",
+      "locale": "es",
+      "previousDisposition": "accept-primary-correction",
+      "previousFinalTargetSha256": "b38ba8d0bd63ff94f0890ba6e31e6a1cdb277495bc04b6fe2b975f0afc734e75",
+      "currentTarget": "Copiar el historial",
+      "currentTargetSha256": "b38ba8d0bd63ff94f0890ba6e31e6a1cdb277495bc04b6fe2b975f0afc734e75",
+      "matchesPriorW922FinalReadback": true
+    },
+    {
+      "sourceIndex": 921,
+      "windowLabel": 922,
+      "sourceId": "Copy History",
+      "locale": "fr",
+      "previousDisposition": "retain-current",
+      "previousFinalTargetSha256": "5f4df4e0b879372c7512f48a66bad7084d3c99be3dabf9c68dc8f667fcb9688e",
+      "currentTarget": "Copier l'historique",
+      "currentTargetSha256": "5f4df4e0b879372c7512f48a66bad7084d3c99be3dabf9c68dc8f667fcb9688e",
+      "matchesPriorW922FinalReadback": true
+    },
+    {
+      "sourceIndex": 921,
+      "windowLabel": 922,
+      "sourceId": "Copy History",
+      "locale": "hi",
+      "previousDisposition": "retain-current",
+      "previousFinalTargetSha256": "899fe787e0c0c0585ba27851b40d21ed4dd0873ad7ce019333a89d88c5bec2c8",
+      "currentTarget": "इतिहास कॉपी करें",
+      "currentTargetSha256": "899fe787e0c0c0585ba27851b40d21ed4dd0873ad7ce019333a89d88c5bec2c8",
+      "matchesPriorW922FinalReadback": true
+    },
+    {
+      "sourceIndex": 921,
+      "windowLabel": 922,
+      "sourceId": "Copy History",
+      "locale": "id",
+      "previousDisposition": "retain-current",
+      "previousFinalTargetSha256": "2a6574f509f44893f3bf5c835f4a141a3fd62a1da4621511b1011f25a5697a18",
+      "currentTarget": "Salin Riwayat",
+      "currentTargetSha256": "2a6574f509f44893f3bf5c835f4a141a3fd62a1da4621511b1011f25a5697a18",
+      "matchesPriorW922FinalReadback": true
+    },
+    {
+      "sourceIndex": 921,
+      "windowLabel": 922,
+      "sourceId": "Copy History",
+      "locale": "ja",
+      "previousDisposition": "accept-primary-correction",
+      "previousFinalTargetSha256": "cfa00197642ff2d38e68018f3d03bf5688cc3f90c3471923f335ce8859a539d3",
+      "currentTarget": "履歴をコピー",
+      "currentTargetSha256": "cfa00197642ff2d38e68018f3d03bf5688cc3f90c3471923f335ce8859a539d3",
+      "matchesPriorW922FinalReadback": true
+    },
+    {
+      "sourceIndex": 921,
+      "windowLabel": 922,
+      "sourceId": "Copy History",
+      "locale": "ko",
+      "previousDisposition": "accept-primary-correction",
+      "previousFinalTargetSha256": "567768839fbb6cb6ed1d16a0d90951838a0747f9befcf737c6324cb847651d58",
+      "currentTarget": "이력을 복사",
+      "currentTargetSha256": "567768839fbb6cb6ed1d16a0d90951838a0747f9befcf737c6324cb847651d58",
+      "matchesPriorW922FinalReadback": true
+    },
+    {
+      "sourceIndex": 921,
+      "windowLabel": 922,
+      "sourceId": "Copy History",
+      "locale": "pt-BR",
+      "previousDisposition": "retain-current",
+      "previousFinalTargetSha256": "7d9c299c67c2599c671d0ca5fc531f41c9f62a18fdfbbcef0e092830a1df8df2",
+      "currentTarget": "Copiar histórico",
+      "currentTargetSha256": "7d9c299c67c2599c671d0ca5fc531f41c9f62a18fdfbbcef0e092830a1df8df2",
+      "matchesPriorW922FinalReadback": true
+    },
+    {
+      "sourceIndex": 921,
+      "windowLabel": 922,
+      "sourceId": "Copy History",
+      "locale": "vi",
+      "previousDisposition": "retain-current",
+      "previousFinalTargetSha256": "4289c6b7ac261636bba6e436e53136971b80d37ffcc7b405093774449984e397",
+      "currentTarget": "Sao chép lịch sử",
+      "currentTargetSha256": "4289c6b7ac261636bba6e436e53136971b80d37ffcc7b405093774449984e397",
+      "matchesPriorW922FinalReadback": true
+    },
+    {
+      "sourceIndex": 921,
+      "windowLabel": 922,
+      "sourceId": "Copy History",
+      "locale": "zh-Hans",
+      "previousDisposition": "retain-current",
+      "previousFinalTargetSha256": "dddf686ad0853981415efb9f55a987b3414accd870cfec74cb50053d033087f4",
+      "currentTarget": "复制历史记录",
+      "currentTargetSha256": "dddf686ad0853981415efb9f55a987b3414accd870cfec74cb50053d033087f4",
+      "matchesPriorW922FinalReadback": true
+    },
+    {
+      "sourceIndex": 921,
+      "windowLabel": 922,
+      "sourceId": "Copy History",
+      "locale": "zh-Hant",
+      "previousDisposition": "retain-current",
+      "previousFinalTargetSha256": "3c0819d5d8b497b77587d567bc3286fd7fff9a1bea59dc73075015e5159eeaf2",
+      "currentTarget": "複製歷史記錄",
+      "currentTargetSha256": "3c0819d5d8b497b77587d567bc3286fd7fff9a1bea59dc73075015e5159eeaf2",
+      "matchesPriorW922FinalReadback": true
+    }
+  ],
+  "w923StartChecks": [
+    {
+      "sourceIndex": 922,
+      "windowLabel": 923,
+      "sourceId": "Copy Plan",
+      "locale": "ar",
+      "previousPinnedTargetSha256": "fd7df2322d073aee70cc0f7d167c69f7686750730952149cd5c94f6f8a0d4a02",
+      "currentTarget": "خطة النسخ",
+      "currentTargetSha256": "fd7df2322d073aee70cc0f7d167c69f7686750730952149cd5c94f6f8a0d4a02",
+      "matchesPriorW923FollowingBoundary": true
+    },
+    {
+      "sourceIndex": 922,
+      "windowLabel": 923,
+      "sourceId": "Copy Plan",
+      "locale": "de",
+      "previousPinnedTargetSha256": "de25e01f6aa3b84636722ee8f1cd0df8a1c04304c743e49b0a10509adabf8534",
+      "currentTarget": "Plan kopieren",
+      "currentTargetSha256": "de25e01f6aa3b84636722ee8f1cd0df8a1c04304c743e49b0a10509adabf8534",
+      "matchesPriorW923FollowingBoundary": true
+    },
+    {
+      "sourceIndex": 922,
+      "windowLabel": 923,
+      "sourceId": "Copy Plan",
+      "locale": "es",
+      "previousPinnedTargetSha256": "e9bb07725b149b36687d07e0fc753a2d1e3f84350c8de8f8264b97d80a704a61",
+      "currentTarget": "Copiar plano",
+      "currentTargetSha256": "e9bb07725b149b36687d07e0fc753a2d1e3f84350c8de8f8264b97d80a704a61",
+      "matchesPriorW923FollowingBoundary": true
+    },
+    {
+      "sourceIndex": 922,
+      "windowLabel": 923,
+      "sourceId": "Copy Plan",
+      "locale": "fr",
+      "previousPinnedTargetSha256": "afe7143be12792c47983cedb05881c5a6c508715242b8a5d91972e9d31cd82ce",
+      "currentTarget": "Plan de copie",
+      "currentTargetSha256": "afe7143be12792c47983cedb05881c5a6c508715242b8a5d91972e9d31cd82ce",
+      "matchesPriorW923FollowingBoundary": true
+    },
+    {
+      "sourceIndex": 922,
+      "windowLabel": 923,
+      "sourceId": "Copy Plan",
+      "locale": "hi",
+      "previousPinnedTargetSha256": "600e7b71330ae1afb065d46e90826ac9809b2dc9f02e865545c2ef2668e26374",
+      "currentTarget": "योजना की प्रतिलिपि बनाएँ",
+      "currentTargetSha256": "600e7b71330ae1afb065d46e90826ac9809b2dc9f02e865545c2ef2668e26374",
+      "matchesPriorW923FollowingBoundary": true
+    },
+    {
+      "sourceIndex": 922,
+      "windowLabel": 923,
+      "sourceId": "Copy Plan",
+      "locale": "id",
+      "previousPinnedTargetSha256": "bdd919bac671783cfb70bb3aa60ccd7012a0c5ddac5f4cb34233bf06f82d3d45",
+      "currentTarget": "Salin Rencana",
+      "currentTargetSha256": "bdd919bac671783cfb70bb3aa60ccd7012a0c5ddac5f4cb34233bf06f82d3d45",
+      "matchesPriorW923FollowingBoundary": true
+    },
+    {
+      "sourceIndex": 922,
+      "windowLabel": 923,
+      "sourceId": "Copy Plan",
+      "locale": "ja",
+      "previousPinnedTargetSha256": "16ee6ad67e9bc5958c31351d2c9bff759ba00598aacd9481baaa4cda37c5e17b",
+      "currentTarget": "コピープラン",
+      "currentTargetSha256": "16ee6ad67e9bc5958c31351d2c9bff759ba00598aacd9481baaa4cda37c5e17b",
+      "matchesPriorW923FollowingBoundary": true
+    },
+    {
+      "sourceIndex": 922,
+      "windowLabel": 923,
+      "sourceId": "Copy Plan",
+      "locale": "ko",
+      "previousPinnedTargetSha256": "540b66bad1b92e7d1fb2f37f5fd84b8f262e26f464d9bf8e3201b332307adec4",
+      "currentTarget": "계획 복사",
+      "currentTargetSha256": "540b66bad1b92e7d1fb2f37f5fd84b8f262e26f464d9bf8e3201b332307adec4",
+      "matchesPriorW923FollowingBoundary": true
+    },
+    {
+      "sourceIndex": 922,
+      "windowLabel": 923,
+      "sourceId": "Copy Plan",
+      "locale": "pt-BR",
+      "previousPinnedTargetSha256": "e9bb07725b149b36687d07e0fc753a2d1e3f84350c8de8f8264b97d80a704a61",
+      "currentTarget": "Copiar plano",
+      "currentTargetSha256": "e9bb07725b149b36687d07e0fc753a2d1e3f84350c8de8f8264b97d80a704a61",
+      "matchesPriorW923FollowingBoundary": true
+    },
+    {
+      "sourceIndex": 922,
+      "windowLabel": 923,
+      "sourceId": "Copy Plan",
+      "locale": "vi",
+      "previousPinnedTargetSha256": "4d32690515a3e442f2347948387155d39616a56e68dfbd03d79344679f2d44e1",
+      "currentTarget": "Sao chép kế hoạch",
+      "currentTargetSha256": "4d32690515a3e442f2347948387155d39616a56e68dfbd03d79344679f2d44e1",
+      "matchesPriorW923FollowingBoundary": true
+    },
+    {
+      "sourceIndex": 922,
+      "windowLabel": 923,
+      "sourceId": "Copy Plan",
+      "locale": "zh-Hans",
+      "previousPinnedTargetSha256": "42db12649b38dcc8becf229390cd915654abaacda3c4c21429da5ecb7e352756",
+      "currentTarget": "复制计划",
+      "currentTargetSha256": "42db12649b38dcc8becf229390cd915654abaacda3c4c21429da5ecb7e352756",
+      "matchesPriorW923FollowingBoundary": true
+    },
+    {
+      "sourceIndex": 922,
+      "windowLabel": 923,
+      "sourceId": "Copy Plan",
+      "locale": "zh-Hant",
+      "previousPinnedTargetSha256": "0970be347116c8e63dae3689e7f0636b9684ff079222d3dc30877fff7b8fdde2",
+      "currentTarget": "複製計劃",
+      "currentTargetSha256": "0970be347116c8e63dae3689e7f0636b9684ff079222d3dc30877fff7b8fdde2",
+      "matchesPriorW923FollowingBoundary": true
+    }
+  ],
+  "allChecksPass": true
+}

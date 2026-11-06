@@ -1,0 +1,20 @@
+External visualizer did not launch.
+External visualizer status is unavailable.
+ExternalId is required
+FAIL
+FLAC/WAV first, strict metadata and duration matching.
+FTP Off
+FTP On
+FTP Uploads
+FTP connection timeout milliseconds
+FTP encryption mode
+FTP ignore certificate errors
+FTP integration settings applied for this running daemon.
+FTP integration settings saved to YAML.
+FTP needs a server address before completed downloads can be uploaded.
+FTP overwrite existing remote files
+FTP password
+FTP remote upload path
+FTP retry attempts
+FTP server address
+FTP server port

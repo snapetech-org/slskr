@@ -1,0 +1,410 @@
+[
+  {
+    "position": 1383,
+    "locale": "vi",
+    "disposition": "correction",
+    "target": "Mục:",
+    "rationale": "The caller renders an export metadata entry count; “Bài viết” means articles/posts, not generic entries.",
+    "confidence": "high"
+  },
+  {
+    "position": 1385,
+    "locale": "hi",
+    "disposition": "refinement",
+    "target": "त्रुटि",
+    "rationale": "This key labels both an error heading and the Error log level; त्रुटि is the established technical term and is more precise than गलती.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1386,
+    "locale": "hi",
+    "disposition": "correction",
+    "target": "प्रकार के अनुसार त्रुटियों की संख्या",
+    "rationale": "The caller is a chart heading for counts grouped by type; गणना can mean the act of calculating rather than the number of errors.",
+    "confidence": "high"
+  },
+  {
+    "position": 1389,
+    "locale": "ar",
+    "disposition": "correction",
+    "target": "سجل الأخطاء",
+    "rationale": "This caller labels the compatibility dashboard’s error-history chart; the current singular تاريخ الخطأ reads as the date/history of one error.",
+    "confidence": "high"
+  },
+  {
+    "position": 1393,
+    "locale": "zh-Hans",
+    "disposition": "correction",
+    "target": "错误 (",
+    "rationale": "The caller appends a count and a literal ASCII closing parenthesis after this localized prefix, so the opening parenthesis must also be ASCII.",
+    "confidence": "high"
+  },
+  {
+    "position": 1393,
+    "locale": "zh-Hant",
+    "disposition": "correction",
+    "target": "錯誤 (",
+    "rationale": "The caller appends a count and a literal ASCII closing parenthesis after this localized prefix, so the opening parenthesis must also be ASCII.",
+    "confidence": "high"
+  },
+  {
+    "position": 1394,
+    "locale": "es",
+    "disposition": "correction",
+    "target": "Tasa estimada de falsos positivos:",
+    "rationale": "The pinned caller displays estimatedFalsePositiveRate; the current abbreviation Est. is unclear and does not state the rate.",
+    "confidence": "high"
+  },
+  {
+    "position": 1394,
+    "locale": "zh-Hans",
+    "disposition": "correction",
+    "target": "估计假阳性率：",
+    "rationale": "The Bloom-filter metric is an estimated false-positive rate; the current target splits the label with sentence punctuation and omits the rate.",
+    "confidence": "high"
+  },
+  {
+    "position": 1394,
+    "locale": "hi",
+    "disposition": "correction",
+    "target": "अनुमानित गलत-सकारात्मक दर:",
+    "rationale": "The caller displays an estimated false-positive rate; the current target misreads Est. as a time-zone abbreviation and uses an unclear literal phrase.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1394,
+    "locale": "de",
+    "disposition": "correction",
+    "target": "Geschätzte Falsch-Positiv-Rate:",
+    "rationale": "The caller displays an estimated false-positive rate; the current target reads as two fragments and does not identify the rate.",
+    "confidence": "high"
+  },
+  {
+    "position": 1394,
+    "locale": "ja",
+    "disposition": "correction",
+    "target": "推定偽陽性率:",
+    "rationale": "The caller displays an estimated false-positive rate; the current target interprets Est. as Eastern Standard Time and leaves the metric incomplete.",
+    "confidence": "high"
+  },
+  {
+    "position": 1394,
+    "locale": "fr",
+    "disposition": "correction",
+    "target": "Taux estimé de faux positifs :",
+    "rationale": "The caller displays an estimated false-positive rate; the current target interprets Est. as a time-zone abbreviation and omits the rate.",
+    "confidence": "high"
+  },
+  {
+    "position": 1394,
+    "locale": "pt-BR",
+    "disposition": "correction",
+    "target": "Taxa estimada de falsos positivos:",
+    "rationale": "The caller displays an estimated false-positive rate; the current target begins with an unclear abbreviation and omits the rate.",
+    "confidence": "high"
+  },
+  {
+    "position": 1394,
+    "locale": "ar",
+    "disposition": "correction",
+    "target": "معدل الإيجابيات الكاذبة المقدّر:",
+    "rationale": "The caller displays an estimated false-positive rate; the current target reads EST as a time-zone abbreviation and omits the rate.",
+    "confidence": "high"
+  },
+  {
+    "position": 1394,
+    "locale": "ko",
+    "disposition": "correction",
+    "target": "예상 오탐률:",
+    "rationale": "The caller displays a false-positive rate; the current target names an estimated false positive but omits that the value is a rate.",
+    "confidence": "high"
+  },
+  {
+    "position": 1394,
+    "locale": "zh-Hant",
+    "disposition": "correction",
+    "target": "預估假陽性率：",
+    "rationale": "The Bloom-filter metric is an estimated false-positive rate; the current target splits the label with sentence punctuation and omits the rate.",
+    "confidence": "high"
+  },
+  {
+    "position": 1394,
+    "locale": "vi",
+    "disposition": "correction",
+    "target": "Tỷ lệ dương tính giả ước tính:",
+    "rationale": "The caller displays an estimated false-positive rate; the current target separates the estimate and false-positive phrase into fragments and omits the rate.",
+    "confidence": "high"
+  },
+  {
+    "position": 1394,
+    "locale": "id",
+    "disposition": "correction",
+    "target": "Perkiraan tingkat positif palsu:",
+    "rationale": "The caller displays an estimated false-positive rate; the current target splits the estimate and metric into fragments and omits the rate.",
+    "confidence": "high"
+  },
+  {
+    "position": 1396,
+    "locale": "zh-Hans",
+    "disposition": "correction",
+    "target": "估计大小：",
+    "rationale": "The caller reports storage in MB, so this means data size; 尺寸 suggests physical dimensions.",
+    "confidence": "high"
+  },
+  {
+    "position": 1396,
+    "locale": "zh-Hant",
+    "disposition": "correction",
+    "target": "預估大小：",
+    "rationale": "The caller reports storage in MB, so this means data size; 尺寸 suggests physical dimensions.",
+    "confidence": "high"
+  },
+  {
+    "position": 1397,
+    "locale": "zh-Hans",
+    "disposition": "refinement",
+    "target": "在本地评估粘贴的证据。这不会发布内容、查询对等节点或应用排名更改。",
+    "rationale": "The mesh-evidence caller refers to network peers; 对等节点 identifies those peers more clearly than 同行.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1397,
+    "locale": "hi",
+    "disposition": "refinement",
+    "target": "स्थानीय रूप से चिपकाए गए साक्ष्य का मूल्यांकन करें। इससे कुछ भी प्रकाशित नहीं होगा, पीयर नोड्स से पूछताछ नहीं होगी और रैंकिंग में बदलाव लागू नहीं होंगे।",
+    "rationale": "The mesh-evidence caller refers to peer nodes, while साथियों can mean colleagues; this wording keeps the action local and names the network peers.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1397,
+    "locale": "de",
+    "disposition": "refinement",
+    "target": "Bewerten Sie die eingefügten Belege lokal. Dabei werden keine Daten veröffentlicht, keine Peers abgefragt und keine Rankingänderungen angewendet.",
+    "rationale": "The caller describes local mesh-evidence review; lokal is clearer for local processing than vor Ort, and the parallel clauses make the three exclusions explicit.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1397,
+    "locale": "ja",
+    "disposition": "refinement",
+    "target": "貼り付けた証拠をローカルで評価します。公開、ピアへの問い合わせ、ランキング変更の適用は行われません。",
+    "rationale": "The caller is a mesh-evidence action; ピアへの問い合わせ is more natural than the current literal ピアのクエリ.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1397,
+    "locale": "pt-BR",
+    "disposition": "refinement",
+    "target": "Avalie as evidências coladas localmente. Isso não publica nada, não consulta os pares nem aplica alterações de classificação.",
+    "rationale": "The caller describes querying network peers; adding the article in consulta os pares makes the Portuguese phrase grammatical.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1397,
+    "locale": "ar",
+    "disposition": "correction",
+    "target": "قيِّم الأدلة الملصقة محليًا. لا يؤدي ذلك إلى نشرها أو الاستعلام عن عُقَد النظير أو تطبيق تغييرات على الترتيب.",
+    "rationale": "The caller is an imperative mesh-evidence action; the current Arabic starts as a noun phrase and أقرانه can mean people’s peers rather than network peer nodes.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1397,
+    "locale": "ko",
+    "disposition": "refinement",
+    "target": "붙여넣은 증거를 로컬에서 평가합니다. 게시하거나 피어 노드에 질의하거나 순위 변경을 적용하지 않습니다.",
+    "rationale": "The caller describes local network evidence review; 로컬에서 is clearer for local processing and 피어 노드에 질의 is more idiomatic than 쿼리 피어.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1397,
+    "locale": "zh-Hant",
+    "disposition": "refinement",
+    "target": "在本地評估貼上的證據。這不會發布內容、查詢對等節點或套用排名變更。",
+    "rationale": "The mesh-evidence caller refers to network peers; 對等節點 identifies those peers more clearly than 同行.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1397,
+    "locale": "vi",
+    "disposition": "refinement",
+    "target": "Đánh giá cục bộ bằng chứng đã dán. Việc này không đăng tải nội dung, truy vấn các nút ngang hàng hoặc áp dụng thay đổi thứ hạng.",
+    "rationale": "The mesh-evidence caller refers to network peers and local processing; cục bộ avoids the geographical sense of tại địa phương.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1397,
+    "locale": "id",
+    "disposition": "correction",
+    "target": "Evaluasi bukti yang ditempel secara lokal. Ini tidak memublikasikan apa pun, mengirim kueri ke peer, atau menerapkan perubahan peringkat.",
+    "rationale": "The caller refers to network peers; rekan means colleagues, while peer is the relevant mesh term.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1399,
+    "locale": "vi",
+    "disposition": "refinement",
+    "target": "Lịch sử sự kiện không khả dụng",
+    "rationale": "This is an unavailable-state header; không khả dụng is more idiomatic UI wording than không có sẵn.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1400,
+    "locale": "es",
+    "disposition": "correction",
+    "target": "Ganchos de eventos, destinos remotos, ganchos de comandos y configuración de reintentos.",
+    "rationale": "The Admin Policies card summarizes webhook and script settings, including retry attempts; forma de reintento incorrectly describes a physical shape.",
+    "confidence": "high"
+  },
+  {
+    "position": 1400,
+    "locale": "zh-Hans",
+    "disposition": "correction",
+    "target": "事件钩子、远程目标、命令钩子和重试配置。",
+    "rationale": "The Admin Policies card summarizes webhook and script settings, including retries; 重试形状 incorrectly describes a physical shape.",
+    "confidence": "high"
+  },
+  {
+    "position": 1400,
+    "locale": "hi",
+    "disposition": "correction",
+    "target": "इवेंट हुक, दूरस्थ लक्ष्य, कमांड हुक और पुनः प्रयास सेटिंग्स।",
+    "rationale": "The Admin Policies card summarizes retry attempts; पुनः प्रयास आकार incorrectly describes a physical shape.",
+    "confidence": "high"
+  },
+  {
+    "position": 1400,
+    "locale": "de",
+    "disposition": "correction",
+    "target": "Ereignis-Hooks, Remote-Ziele, Befehls-Hooks und Einstellungen für erneute Versuche.",
+    "rationale": "The Admin Policies card contains retry-attempt settings; Wiederholungsform incorrectly describes a physical shape.",
+    "confidence": "high"
+  },
+  {
+    "position": 1400,
+    "locale": "ja",
+    "disposition": "correction",
+    "target": "イベントフック、リモートターゲット、コマンドフック、リトライ設定。",
+    "rationale": "The Admin Policies card contains retry settings; 再試行形状 incorrectly describes a physical shape.",
+    "confidence": "high"
+  },
+  {
+    "position": 1400,
+    "locale": "fr",
+    "disposition": "correction",
+    "target": "Hooks d’événements, cibles distantes, hooks de commande et paramètres de nouvelle tentative.",
+    "rationale": "The Admin Policies card contains retry-attempt settings; forme de nouvelle tentative incorrectly describes a physical shape.",
+    "confidence": "high"
+  },
+  {
+    "position": 1400,
+    "locale": "pt-BR",
+    "disposition": "correction",
+    "target": "Ganchos de eventos, destinos remotos, ganchos de comando e configurações de novas tentativas.",
+    "rationale": "The Admin Policies card contains retry-attempt settings; formato de nova tentativa incorrectly describes a physical shape.",
+    "confidence": "high"
+  },
+  {
+    "position": 1400,
+    "locale": "ar",
+    "disposition": "correction",
+    "target": "خطافات الأحداث، والأهداف البعيدة، وخطافات الأوامر، وإعدادات إعادة المحاولة.",
+    "rationale": "The Admin Policies card contains retry-attempt settings; إعادة محاولة الشكل incorrectly describes a physical shape.",
+    "confidence": "high"
+  },
+  {
+    "position": 1400,
+    "locale": "ko",
+    "disposition": "correction",
+    "target": "이벤트 후크, 원격 대상, 명령 후크 및 재시도 설정.",
+    "rationale": "The Admin Policies card contains retry settings; 재시도 형태 incorrectly describes a physical shape.",
+    "confidence": "high"
+  },
+  {
+    "position": 1400,
+    "locale": "zh-Hant",
+    "disposition": "correction",
+    "target": "事件掛鉤、遠端目標、命令掛鉤和重試設定。",
+    "rationale": "The Admin Policies card contains retry settings; 重試形狀 incorrectly describes a physical shape.",
+    "confidence": "high"
+  },
+  {
+    "position": 1400,
+    "locale": "vi",
+    "disposition": "correction",
+    "target": "Móc sự kiện, mục tiêu từ xa, móc lệnh và cấu hình cơ chế thử lại.",
+    "rationale": "The Admin Policies card contains retry settings; hình dạng thử lại incorrectly describes a physical shape.",
+    "confidence": "high"
+  },
+  {
+    "position": 1400,
+    "locale": "id",
+    "disposition": "correction",
+    "target": "Kait peristiwa, target jarak jauh, kait perintah, dan pengaturan percobaan ulang.",
+    "rationale": "The Admin Policies card contains retry-attempt settings; bentuk percobaan ulang incorrectly describes a physical shape.",
+    "confidence": "high"
+  },
+  {
+    "position": 1401,
+    "locale": "id",
+    "disposition": "correction",
+    "target": "Filter jenis peristiwa",
+    "rationale": "This labels a system event-kind filter; acara commonly means an occasion, while peristiwa matches the catalog’s event-history terminology.",
+    "confidence": "high"
+  },
+  {
+    "position": 1402,
+    "locale": "zh-Hans",
+    "disposition": "correction",
+    "target": "事件保留天数",
+    "rationale": "The caller labels retention for system events; 活动 refers to activities and does not clearly identify logged events.",
+    "confidence": "high"
+  },
+  {
+    "position": 1402,
+    "locale": "hi",
+    "disposition": "refinement",
+    "target": "इवेंट प्रतिधारण अवधि (दिन)",
+    "rationale": "This is a numeric policy label; अवधि (दिन) states the retention period and unit more clearly than अवधारण दिन.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1402,
+    "locale": "de",
+    "disposition": "refinement",
+    "target": "Aufbewahrungsdauer für Ereignisse (Tage)",
+    "rationale": "This labels a numeric duration; adding (Tage) makes the input unit explicit and reads more naturally than Aufbewahrungstage für Ereignisse.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1402,
+    "locale": "ar",
+    "disposition": "correction",
+    "target": "أيام الاحتفاظ بالأحداث",
+    "rationale": "The caller labels retention for system events; the existing singular الحدث is inconsistent with the plural source.",
+    "confidence": "high"
+  },
+  {
+    "position": 1402,
+    "locale": "ko",
+    "disposition": "refinement",
+    "target": "이벤트 보존 기간(일)",
+    "rationale": "This is a numeric policy label; 보존 기간(일) expresses an event-retention duration more clearly than 보유일.",
+    "confidence": "moderate"
+  },
+  {
+    "position": 1402,
+    "locale": "zh-Hant",
+    "disposition": "correction",
+    "target": "事件保留天數",
+    "rationale": "The caller labels retention for system events; 活動 refers to activities and does not clearly identify logged events.",
+    "confidence": "high"
+  },
+  {
+    "position": 1402,
+    "locale": "id",
+    "disposition": "correction",
+    "target": "Hari retensi peristiwa",
+    "rationale": "This labels retention for system events; peristiwa matches the catalog’s event-history wording better than acara, which often means an occasion.",
+    "confidence": "high"
+  }
+]

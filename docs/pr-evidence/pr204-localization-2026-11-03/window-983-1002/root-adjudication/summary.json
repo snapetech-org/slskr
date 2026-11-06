@@ -1,0 +1,51 @@
+{
+  "blindnessCaveat": "Cross-review blindness was compromised in process: after checksum verification its reviewer opened the primary README and saw aggregate disposition counts and same-window summary claims. It did not read the per-cell primary ledger/proposals before sealing. Treat the independent ledger as process-limited; this caveat is retained here.",
+  "comparison": {
+    "cellsWithDispositionOrTargetDifferences": 34,
+    "dispositionMatches": 216,
+    "exactDispositionAndTargetMatches": 206,
+    "holdsAgreed": 24,
+    "targetMatches": 209
+  },
+  "head": "09a614a66f1104fe530773fb17c79ed6338aed02",
+  "nativeSpeakerApproval": false,
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskr",
+  "repositoryOrPRChangesMade": false,
+  "resolvedPodLiteralCells": {
+    "allFinalTargetsPreservePod": true,
+    "locales": [
+      "hi",
+      "ja",
+      "ko",
+      "pt-BR"
+    ],
+    "position": 994
+  },
+  "rootApplyPlanRows": 64,
+  "rootDispositionCounts": {
+    "accept-current": 152,
+    "correction": 47,
+    "hold": 24,
+    "refinement": 17
+  },
+  "rootHeldPositions": {
+    "983": 12,
+    "984": 12
+  },
+  "structuralMismatches": {
+    "icu": 0,
+    "markup": 0,
+    "placeholders": 0,
+    "protectedLiterals": 0
+  },
+  "testsBuildScansBrowserCIWorkflowOrRelease": false,
+  "tree": "963f283311ae39dfa5fc289386d99dcc0dac2f90",
+  "window": {
+    "cellCount": 240,
+    "firstPosition": 983,
+    "lastPosition": 1002,
+    "localeCount": 12,
+    "sourceCount": 20
+  }
+}

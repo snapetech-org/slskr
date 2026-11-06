@@ -2,6 +2,7 @@ use super::*;
 
 #[derive(Clone, Debug, Default)]
 pub struct IntegrationSettings {
+    pub notification_language: String,
     pub spotify: Box<SpotifyIntegrationSettings>,
     pub lidarr: Box<LidarrIntegrationSettings>,
     pub chromaprint: ChromaprintIntegrationSettings,
@@ -27,6 +28,7 @@ impl IntegrationSettings {
         current_upstream_behavior: bool,
     ) -> Result<Self, String> {
         Ok(Self {
+            notification_language: notification_language(file_config.notification_language, env)?,
             spotify: Box::new(SpotifyIntegrationSettings::from_layers(
                 file_config.spotify,
                 env,
@@ -73,7 +75,8 @@ impl IntegrationSettings {
 
     pub fn sanitized_json(&self) -> String {
         format!(
-            "{{\"spotify\":{},\"lidarr\":{},\"chromaprint\":{},\"acoustid\":{},\"musicbrainz\":{},\"youtube\":{},\"lastfm\":{},\"ntfy\":{},\"pushover\":{},\"pushbullet\":{},\"ftp\":{},\"vpn\":{},\"script_count\":{},\"webhook_count\":{},\"bridge\":{},\"external_visualizer\":{}}}",
+            "{{\"notification_language\":{},\"spotify\":{},\"lidarr\":{},\"chromaprint\":{},\"acoustid\":{},\"musicbrainz\":{},\"youtube\":{},\"lastfm\":{},\"ntfy\":{},\"pushover\":{},\"pushbullet\":{},\"ftp\":{},\"vpn\":{},\"script_count\":{},\"webhook_count\":{},\"bridge\":{},\"external_visualizer\":{}}}",
+            json_option(Some(&self.notification_language)),
             self.spotify.sanitized_json(),
             self.lidarr.sanitized_json(),
             self.chromaprint.sanitized_json(),
@@ -91,6 +94,25 @@ impl IntegrationSettings {
             self.bridge.sanitized_json(),
             self.external_visualizer.sanitized_json()
         )
+    }
+}
+
+pub const SUPPORTED_NOTIFICATION_LANGUAGES: &[&str] = &[
+    "en", "es", "zh-Hans", "hi", "de", "ja", "fr", "pt-BR", "ar", "ko", "zh-Hant", "vi", "id",
+];
+
+fn notification_language<E: ConfigEnv>(file: Option<String>, env: &E) -> Result<String, String> {
+    let language = env
+        .var("SLSKD_NOTIFICATION_LANGUAGE")
+        .or(file)
+        .unwrap_or_else(|| "en".to_owned());
+    if SUPPORTED_NOTIFICATION_LANGUAGES.contains(&language.as_str()) {
+        Ok(language)
+    } else {
+        Err(format!(
+            "integrations.notification_language must be one of: {}.",
+            SUPPORTED_NOTIFICATION_LANGUAGES.join(", ")
+        ))
     }
 }
 

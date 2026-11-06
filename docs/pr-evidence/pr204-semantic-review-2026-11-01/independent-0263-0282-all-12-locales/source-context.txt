@@ -1,0 +1,415 @@
+Pinned source/context head 7ff454828398de6a3cfb72fe7f0ed21fe419425b / tree 9e9f2aa743c4ff3236af8f99619803bdc3a37152. Line numbers refer to these exact blobs.
+
+### web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx | blob 90f3e1d29a4b514a1877693e131e92b66b8050aa | sha256 17241e796b943988d339bac74569f5a5d4e8889194cad1221d0b9c8bc1b82a9e
+-- lines 135-160
+135:               <Form.TextArea
+136:                 aria-label={interfaceText("Webhook event names")}
+137:                 disabled={!remoteConfiguration || saving}
+138:                 label={interfaceText("Webhook Events")}
+139:                 onChange={(_, { value }) => update('webhookEvents', value)}
+140:                 placeholder={interfaceText("PrivateMessageReceived&#10;DownloadFileComplete")}
+141:                 value={form.webhookEvents}
+142:                {...interfaceTextProps("Webhook event names")}/>
+143:               <Popup
+144:                 content={interfaceText("Allow this webhook to call a target with a self-signed or otherwise untrusted certificate.")}
+145:                 trigger={
+146:                   <Checkbox
+147:                     aria-label={interfaceText("Ignore webhook certificate errors")}
+148:                     checked={form.webhookIgnoreCertificateErrors}
+149:                     disabled={!remoteConfiguration || saving}
+150:                     label={interfaceText("Ignore webhook certificate errors")}
+151:                     onChange={(_, { checked }) =>
+152:                       update('webhookIgnoreCertificateErrors', Boolean(checked))
+153:                     }
+154:                     toggle
+155:                    {...interfaceTextProps("Ignore webhook certificate errors")}/>
+156:                 }
+157:                {...interfaceTextProps("Allow this webhook to call a target with a self-signed or otherwise untrusted certificate.")}/>
+158:               <Form.Group widths="equal">
+159:                 <Form.Input
+160:                   aria-label={interfaceText("Script policy name")}
+-- lines 438-459
+438:                   trigger={
+439:                     <Checkbox
+440:                       aria-label={interfaceText("Allow remote no-auth CIDRs")}
+441:                       checked={form.allowRemoteNoAuth}
+442:                       disabled={!remoteConfiguration || saving}
+443:                       label={interfaceText("Allow remote no-auth CIDRs")}
+444:                       onChange={(_, { checked }) =>
+445:                         update('allowRemoteNoAuth', Boolean(checked))
+446:                       }
+447:                       toggle
+448:                      {...interfaceTextProps("Allow remote no-auth CIDRs")}/>
+449:                   }
+450:                  {...interfaceTextProps("Allow no-auth access from explicitly configured non-loopback CIDRs.")}/>
+451:                 <Popup
+452:                   content={interfaceText("Enable HTTP rate limiting for API, federation, and mesh gateway policies.")}
+453:                   trigger={
+454:                     <Checkbox
+455:                       aria-label={interfaceText("Enable HTTP rate limiting")}
+456:                       checked={form.rateLimitEnabled}
+457:                       disabled={!remoteConfiguration || saving}
+458:                       label={interfaceText("Enable HTTP rate limiting")}
+459:                       onChange={(_, { checked }) =>
+
+### web/src/components/Transfers/TransfersHeader.jsx | blob de01ff39c31f0ac094b95fba0a15f40f709f605c | sha256 57f43a6851d991b9241b73a0f9ff08636573a49282033722f7350fb7f2a44d6f
+-- lines 216-242
+216:         >
+217:           {localizedBulkAction('Remove', removeOption)}
+218:         </ShrinkableDropdownButton>
+219:         <Nbsp />
+220:         <Popup
+221:           content={interfaceText("Allow slow or stalled downloads to use verified alternate sources. Soulseek peers use sequential failover; true multipart chunking is reserved for trusted slskr mesh peers.")}
+222:           position="bottom right"
+223:           trigger={
+224:             <Checkbox
+225:               checked={acceleratedEnabled}
+226:               className="accelerated-downloads-toggle"
+227:               disabled={
+228:                 !server.isConnected ||
+229:                 acceleratedChanging ||
+230:                 Boolean(modeStatusError)
+231:               }
+232:               hidden={direction === 'upload'}
+233:               label={localizedText('Accelerated')}
+234:               onChange={(_, data) => onAcceleratedChange?.(data.checked)}
+235:               toggle
+236:             />
+237:           }
+238:          {...interfaceTextProps("Allow slow or stalled downloads to use verified alternate sources. Soulseek peers use sequential failover; true multipart chunking is reserved for trusted slskr mesh peers.")}/>
+239:         <Nbsp />
+240:         <Popup
+241:           content={interfaceText("Automatically find and replace stuck downloads with alternative sources. Replacements must be within {autoReplaceThreshold}% file size.", { "autoReplaceThreshold": (autoReplaceThreshold) })}
+242:           position="bottom right"
+
+### web/src/components/Collections/CollectionShareModal.jsx | blob c992500ac8fbac7126cd206e012c3509cde6a1e9 | sha256 939b1c1492f12bda662f93753d34eedbbf2bd45997e3e838278f9832e3c29d78
+-- lines 32-51
+32:                         text: group.name,
+33:                         value: group.id,
+34:                       }))}
+35:                       selection
+36:                       value={shareAudienceId}
+37:                     />
+38:                   </Form.Field>
+39:                   <Form.Field>
+40:                     <label htmlFor="share-allow-stream"><LocalizedText source={"Allow streaming"} /></label>
+41:                     <input
+42:                       checked={shareAllowStream}
+43:                       data-testid="share-policy-stream"
+44:                       id="share-allow-stream"
+45:                       onChange={onAllowStreamChange}
+46:                       type="checkbox"
+47:                     />
+48:                   </Form.Field>
+49:                   <Form.Field>
+50:                     <label htmlFor="share-allow-download"><LocalizedText source={"Allow download"} /></label>
+51:                     <input
+
+### web/src/components/Wishlist/WishlistModal.jsx | blob 16b4aa4c5a2ab57b1a0c2f6581e99dfdd4b24727 | sha256 49f9f293410dec17e1d3c335ba49218fb7b351aa04a7bfc3ae107b138bf06582
+-- lines 227-245
+227:                           className="truncate-cell"
+228:                           title={rule.directory}
+229:                         >
+230:                           {rule.directory}
+231:                         </div>
+232:                       </Table.Cell>
+233:                       <Table.Cell collapsing>
+234:                         <Popup
+235:                           content={localized('Allow this peer folder to appear again in future runs of this wishlist item.')}
+236:                           trigger={
+237:                             <Button
+238:                               aria-label={t('Restore ignored folder {directory}', { directory: rule.directory })}
+239:                               lang={languageFor('Restore ignored folder {directory}')}
+240:                               dir={directionFor('Restore ignored folder {directory}')}
+241:                               compact
+242:                               icon="undo"
+243:                               onClick={() => restoreIgnoredResult(rule)}
+244:                               size="tiny"
+245:                             />
+
+### web/src/components/System/MediaCore/PodMessageRoutingPanel.jsx | blob 4e205e85e50775e0d1e69802884f30d6b1c32ed5 | sha256 d69c4b642ea560fd3f53688927cce8f6fea9f93923aa89f4924f640631cda32b
+-- lines 151-162
+151:
+152:     try {
+153:       const result = await mediacore.registerMessageSeen(
+154:         checkMessageId,
+155:         checkPodId,
+156:       );
+157:       toast.success(interfaceText('Message registered as seen: {status}', {
+158:         status: interfaceText(result.wasNewlyRegistered ? 'New' : 'Already known'),
+159:       }));
+160:     } catch (error_) {
+161:       toast.error(interfaceText('Failed to register message: {error}', { error: toDisplayError(error_) }));
+162:     }
+
+### web/src/components/Search/DiscographyCoveragePanel.jsx | blob 30a767356c47e5198976ddbac4ce657320f15b03 | sha256 d1fdb70100b0fa7f3d38a3f0d37766e71e1efc45b8f4f47ee44684c5d173090a
+-- lines 34-55
+34:     case 'MeshAvailable':
+35:       return 'teal';
+36:     case 'WishlistSeeded':
+37:       return 'blue';
+38:     case 'Ambiguous':
+39:       return 'orange';
+40:     default:
+41:       return 'grey';
+42:   }
+43: };
+44:
+45: const statusText = (status) => {
+46:   switch (status) {
+47:     case 'MeshAvailable':
+48:       return 'Available';
+49:     case 'WishlistSeeded':
+50:       return 'Wishlist';
+51:     case 'Ambiguous':
+52:       return 'Ambiguous';
+53:     default:
+54:       return 'Missing';
+55:   }
+
+### web/src/lib/setupHealthCheck.js | blob ac6f54149388e953852dc230f781fa52bac238e7 | sha256 254e98de004fc19ae7c71dd47527adb1cc39fe52473323a1aa3b7e4f32d5cb0a
+-- lines 182-189
+182:       evidence: authDisabled
+183:         ? 'Web authentication is disabled.'
+184:         : apiKeyConfigured
+185:           ? 'An API key is visible in options.'
+186:           : 'No API key is visible in options.',
+187:       group: 'Access',
+188:       status: authDisabled ? 'fail' : apiKeyConfigured ? 'pass' : 'warn',
+189:       summary: authDisabled ? 'Authentication disabled' : apiKeyConfigured ? 'API key configured' : 'API key missing',
+
+### crates/slskr/src/podcore_mutations.rs | blob 09e8252602a617bc76e76bfaafc38cf270acf097 | sha256 8de3802d6daaa1239c00a645802a658ef63031b975cc5edadf3d1482f2182a3a
+-- lines 304-324
+304:             };
+305:             let response = state.pods.write().await.upsert_channel(pod_id, channel);
+306:             Some(match response {
+307:                 Ok(Some(channel)) => {
+308:                     routing::created_response(serde_json::json!(channel).to_string())
+309:                 }
+310:                 Ok(None) => routing::not_found_response(),
+311:                 Err(error) if error.starts_with("pod state write failed:") => {
+312:                     routing::internal_server_error_response(
+313:                         "An error occurred while creating the channel",
+314:                     )
+315:                 }
+316:                 Err(error) => routing::bad_request_response(&error),
+317:             })
+318:         }
+319:         ("PUT", [pod_id, section, channel_id]) if section == "channels" => {
+320:             // Matches the frozen native profile contract: updating a pod channel
+321:             // requires the acting peer to moderate the pod.
+322:             if !pod_local_peer_can_moderate(state, pod_id).await {
+323:                 return Some(routing::forbidden_response(
+324:                     "only a pod moderator may update channels",
+-- lines 418-434
+418:                 {
+419:                     return Some(routing::service_unavailable_response(&error));
+420:                 }
+421:             }
+422:             Some(match response {
+423:                 Ok(Some(true)) => routing::ok_response(String::new()),
+424:                 Ok(Some(false)) | Ok(None) => routing::not_found_response(),
+425:                 Err(_error) => routing::internal_server_error_response(
+426:                     "An error occurred while deleting the channel",
+427:                 ),
+428:             })
+429:         }
+430:         ("POST", [section, pod_id, peer_id, action])
+431:             if section == "membership" && matches!(action.as_str(), "ban" | "unban" | "role") =>
+432:         {
+433:             // Matches the frozen native profile contract: BanMember/UnbanMember/
+434:             // ChangeRole all require the acting peer to moderate the pod --
+-- lines 724-760
+724:                 .pod_channels
+725:                 .write()
+726:                 .await
+727:                 .delete_older_than(older_than, None, None);
+728:             Some(match response {
+729:                 Ok(removed) => routing::ok_response(removed.len().to_string()),
+730:                 Err(_error) => routing::internal_server_error_response(
+731:                     "An error occurred while cleaning up messages",
+732:                 ),
+733:             })
+734:         }
+735:         ("DELETE", [section, pod_id, channel_id, cleanup])
+736:             if section == "messages" && cleanup == "cleanup" =>
+737:         {
+738:             let older_than =
+739:                 query_parameter(query, "olderThan").and_then(|value| value.parse::<u64>().ok());
+740:             let Some(older_than) = older_than.filter(|value| *value > 0) else {
+741:                 return Some(routing::bad_request_response(
+742:                     "olderThan timestamp must be positive",
+743:                 ));
+744:             };
+745:             let response = state.pod_channels.write().await.delete_older_than(
+746:                 older_than,
+747:                 Some(pod_id),
+748:                 Some(channel_id),
+749:             );
+750:             Some(match response {
+751:                 Ok(removed) => routing::ok_response(removed.len().to_string()),
+752:                 Err(_error) => routing::internal_server_error_response(
+753:                     "An error occurred while cleaning up channel messages",
+754:                 ),
+755:             })
+756:         }
+757:         ("PUT", [section, pod_id, channel_id, last_seen])
+758:             if section == "backfill" && last_seen == "last-seen" =>
+759:         {
+760:             let timestamp = extract_json_u64_field(body, "lastSeen")
+-- lines 992-1005
+992:                 Ok(pod) => routing::created_response(serde_json::json!(pod).to_string()),
+993:                 Err(error) if error == "Pod already exists" => routing::conflict_response(&error),
+994:                 Err(error)
+995:                     if versioned_v0
+996:                         && state.config.controller_profile == ControllerProfile::Native
+997:                         && error.starts_with("pod state write failed") =>
+998:                 {
+999:                     routing::internal_server_error_response(
+1000:                         "An error occurred while creating the pod",
+1001:                     )
+1002:                 }
+1003:                 Err(error) => routing::bad_request_response(&error),
+1004:             })
+1005:         }
+
+### crates/slskr/src/podcore_queries.rs | blob 1bcafa27f853c182295586c484acdee1a4bb4d06 | sha256 e2b4d40fdc61540d678a90c2befeba011ff5929ef29342b853a0e1be97684dfc
+-- lines 118-154
+118:         [pod_id, section] if section == "channels" => {
+119:             if versioned_v0
+120:                 && state.config.controller_profile == ControllerProfile::Native
+121:                 && state.pods.read().await.validate_storage().is_err()
+122:             {
+123:                 return routing::internal_server_error_response(
+124:                     "An error occurred while getting channels",
+125:                 );
+126:             }
+127:             let pods = state.pods.read().await;
+128:             pods.get(pod_id)
+129:                 .map_or_else(routing::not_found_response, |pod| {
+130:                     routing::ok_response(
+131:                         serde_json::Value::Array(
+132:                             pod.channels
+133:                                 .into_iter()
+134:                                 .map(|channel| serde_json::json!(channel))
+135:                                 .collect(),
+136:                         )
+137:                         .to_string(),
+138:                     )
+139:                 })
+140:         }
+141:         [pod_id, section, channel_id] if section == "channels" => {
+142:             if versioned_v0
+143:                 && state.config.controller_profile == ControllerProfile::Native
+144:                 && state.pods.read().await.validate_storage().is_err()
+145:             {
+146:                 return routing::internal_server_error_response(
+147:                     "An error occurred while getting the channel",
+148:                 );
+149:             }
+150:             let pods = state.pods.read().await;
+151:             let channel = pods.get(pod_id).and_then(|pod| {
+152:                 pod.channels
+153:                     .into_iter()
+154:                     .find(|channel| channel.channel_id == *channel_id)
+-- lines 160-180
+160:         [pod_id, section, content, content_id, tail @ ..]
+161:             if section == "opinions" && content == "content" =>
+162:         {
+163:             if versioned_v0
+164:                 && state.config.controller_profile == ControllerProfile::Native
+165:                 && state
+166:                     .controller_features
+167:                     .read()
+168:                     .await
+169:                     .validate_storage()
+170:                     .is_err()
+171:             {
+172:                 return routing::internal_server_error_response(
+173:                     "An error occurred while getting opinions",
+174:                 );
+175:             }
+176:             let opinions = state
+177:                 .controller_features
+178:                 .read()
+179:                 .await
+180:                 .values_with_prefix(&format!("pod/opinion/{pod_id}/{content_id}/"));
+-- lines 428-472
+428:                     .read()
+429:                     .await
+430:                     .validate_storage()
+431:                     .is_err()
+432:             {
+433:                 return routing::internal_server_error_response(
+434:                     "An error occurred while getting member affinities",
+435:                 );
+436:             }
+437:             routing::ok_response(pod_member_affinities_json(state, pod_id).await.to_string())
+438:         }
+439:         [section, pod_id, last_seen] if section == "backfill" && last_seen == "last-seen" => {
+440:             if versioned_v0
+441:                 && state.config.controller_profile == ControllerProfile::Native
+442:                 && state
+443:                     .controller_features
+444:                     .read()
+445:                     .await
+446:                     .validate_storage()
+447:                     .is_err()
+448:             {
+449:                 return routing::internal_server_error_response(
+450:                     "An error occurred while getting last seen timestamps",
+451:                 );
+452:             }
+453:             let features = state.controller_features.read().await;
+454:             let pod = state.pods.read().await.get(pod_id);
+455:             let mut latest_by_channel = serde_json::Map::new();
+456:             for channel in pod.map(|pod| pod.channels).unwrap_or_default() {
+457:                 if let Some(last_seen) = features
+458:                     .get(&format!("pod/backfill/{pod_id}/{}", channel.channel_id))
+459:                     .and_then(|value| value.get("lastSeen"))
+460:                     .and_then(serde_json::Value::as_u64)
+461:                 {
+462:                     latest_by_channel.insert(channel.channel_id, serde_json::json!(last_seen));
+463:                 }
+464:             }
+465:             routing::ok_response(serde_json::Value::Object(latest_by_channel).to_string())
+466:         }
+467:         [section, metadata, tail @ ..]
+468:             if section == "dht" && metadata == "metadata" && !tail.is_empty() =>
+469:         {
+470:             if versioned_v0
+471:                 && state.config.controller_profile == ControllerProfile::Native
+472:                 && state
+-- lines 738-750
+738:         }
+739:         [section, pod_id, channel_id, count] if section == "messages" && count == "count" => {
+740:             let messages = state.pod_channels.read().await;
+741:             if messages.validate_storage().is_err() {
+742:                 return routing::internal_server_error_response(
+743:                     "An error occurred while getting message count",
+744:                 );
+745:             }
+746:             let messages = messages.list(pod_id, channel_id, None);
+747:             routing::ok_response((messages.len() as u64).to_string())
+748:         }
+749:         [section, pod_id, search] if section == "messages" && search == "search" => {
+750:             let needle = query_parameter(query, "query")
+
+### crates/slskr/src/podcore_stats_controller.rs | blob 49b3cbda8443584aadbc63f3d33777366eefa6a8 | sha256 aa8157129dbde7741f7238f674618f42303ae72d007dae580fbb983a0aad2d11
+-- lines 287-302
+287:                     "backfillRequestsByPod": requests_by_pod,
+288:                     "lastBackfillOperation": last_operation
+289:                         .unwrap_or_else(|| PODCORE_MIN_DATETIME.to_owned()),
+290:                 })
+291:                 .to_string(),
+292:             )
+293:         }
+294:         "/api/podcore/messages/stats" => {
+295:             if pod_messages.validate_storage().is_err() {
+296:                 return routing::internal_server_error_response(
+297:                     "An error occurred while getting storage statistics",
+298:                 );
+299:             }
+300:             let mut value = serde_json::json!({
+301:                 "totalMessages": message_stats.total_messages,
+302:                 "totalSizeBytes": message_stats.total_messages.saturating_mul(200),

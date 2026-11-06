@@ -1,0 +1,104 @@
+{
+  "interpretation": {
+    "Browse": "No exact localized-source call appears in web/src. The key occurs as raw English text in legacy/native source and is pinned separately in source-context.jsonl.",
+    "Browse Shares": "Direct LocalizedText caller is pinned in RoomSession.jsx; surrounding callbacks pass the room member username to /browse.",
+    "Browse available Soulseek rooms and join the selected room.": "No direct source caller was found in web/src, crates/slskr/src, or crates/slskr-web/src."
+  },
+  "search_scope": "tracked runtime source at exact source head; locale catalogs excluded from localized caller searches",
+  "searches": [
+    {
+      "command": [
+        "git",
+        "grep",
+        "-n",
+        "-F",
+        "\"Browse\"",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+        "--",
+        "web/src",
+        ":!web/src/lib/locales/*"
+      ],
+      "exit_code": 1,
+      "matches": [],
+      "stderr": []
+    },
+    {
+      "command": [
+        "git",
+        "grep",
+        "-n",
+        "-F",
+        "\"Browse\"",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+        "--",
+        "crates/slskr/src/web_static.rs",
+        "crates/slskr-web/src"
+      ],
+      "exit_code": 0,
+      "matches": [
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/native_row_rendering.rs:501:        RouteKind::Contacts => vec![primary_action, \"Message\", \"Browse\", \"Remove\"],",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/native_tab_rendering.rs:801:        (RouteKind::Browse, \"Tree\") => &[\"Browse\", \"Refresh Folder\"],",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/native_tab_rendering.rs:851:        (RouteKind::Users, \"Directory\" | \"Detail\") => &[\"Watch\", \"Browse\", \"Message\"],",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/native_tab_rendering.rs:853:        (RouteKind::Contacts, \"Contacts\" | \"Nearby\") => &[\"Add Friend\", \"Message\", \"Browse\"],",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/native_table_navigation.rs:218:            if let Some(action) = route_action_for_native_label(&route_path, \"Browse\") {",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/native_workspace_panels.rs:105:            native_editor_action_buttons(&[\"Search for User\", \"Message\", \"Browse\", \"Watch\", \"Save note\"]),",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/native_workspace_panels.rs:122:            native_editor_action_buttons(&[\"Create Invite\", \"Add Friend\", \"Message\", \"Browse\", \"Remove\"]),",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/route_catalog.rs:223:            title: \"Browse\",",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/route_catalog.rs:323:            label: \"Browse\",",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/route_catalog.rs:373:            title: \"Browse\",",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/route_catalog.rs:1782:            title: \"Browse\",",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/route_data_projection.rs:523:                (username, status, stats, \"Browse\".to_string())",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/route_reference_panels.rs:43:        RouteKind::Browse => r#\" data-react-component=\"Browse\"\"#,",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/route_reference_panels.rs:177:                vec![\"Search for User\", \"Clear Selected User\", \"Browse\", \"Message\"],",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/route_reference_panels.rs:187:                vec![\"Create Invite\", \"Add Friend\", \"Refresh Nearby\", \"Message\", \"Browse\", \"Remove\"],",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/route_reference_panels.rs:248:                \"Browse\",",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/route_workflow_rendering.rs:344:                (\"peer1\", \"online / privileged\", \"note saved\", \"Browse\"),",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/web_tests/native_actions.rs:77:        (\"/contacts\", \"Browse\", \"Request Directory\"),",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/web_tests/native_actions.rs:145:        (\"/contacts\", &[\"Message\", \"Browse\", \"Remove\"]),",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/web_tests/route_inventory.rs:193:        \"Browse\",",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:crates/slskr-web/src/web_tests/workflow_rendering.rs:86:        (\"/browse\", \"Browse\", \"Browse\", \"browse-native\"),"
+      ],
+      "stderr": []
+    },
+    {
+      "command": [
+        "git",
+        "grep",
+        "-n",
+        "-F",
+        "Browse available Soulseek rooms and join the selected room.",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+        "--",
+        "web/src",
+        ":!web/src/lib/locales/*",
+        "crates/slskr/src",
+        "crates/slskr-web/src"
+      ],
+      "exit_code": 1,
+      "matches": [],
+      "stderr": []
+    },
+    {
+      "command": [
+        "git",
+        "grep",
+        "-n",
+        "-F",
+        "Browse Shares",
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+        "--",
+        "web/src",
+        ":!web/src/lib/locales/*",
+        "crates/slskr/src",
+        "crates/slskr-web/src"
+      ],
+      "exit_code": 0,
+      "matches": [
+        "7ff454828398de6a3cfb72fe7f0ed21fe419425b:web/src/components/Rooms/RoomSession.jsx:404:            <LocalizedText source={\"Browse Shares\"} /></Button>"
+      ],
+      "stderr": []
+    }
+  ],
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152"
+}

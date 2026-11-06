@@ -1,0 +1,59 @@
+{
+  "artifact": "slskR PR #209 W1563-W1582 independent cross-review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "head": "f42c7e4be1f2bc9d63e13607d3c311d37f83f355",
+  "tree": "f6cb31394c01c90a784d543b8f43b04b232c8b37",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "counts": {
+    "accept-current": 222,
+    "propose-correction": 16,
+    "propose-refinement": 2,
+    "text-free-hold": 0
+  },
+  "proposalReconciliation": {
+    "primaryProposalRecordsReviewed": 12,
+    "blindProposalRecordsReviewed": 18,
+    "uniqueProposedCellsReviewed": 18,
+    "overlappingProposalCells": 12,
+    "primaryOnlyCells": 0,
+    "blindOnlyCells": 6,
+    "sameSuggestedTextOnOverlap": 1,
+    "differentSuggestedTextOnOverlap": 11
+  },
+  "holdCount": 0,
+  "holdReasons": [],
+  "callerContextValidation": {
+    "callerlessPositions": [],
+    "allCellCallerContextHashesMatch": true,
+    "allProposalCallerEvidenceIncluded": true
+  },
+  "tokenIntegrity": {
+    "placeholdersMismatchCount": 0,
+    "markupMismatchCount": 0,
+    "numericTokenMismatchCount": 0,
+    "protectedLiteralMismatchCount": 0,
+    "validatedForAllSelectedTargets": true
+  },
+  "inputVerifierResults": {
+    "candidateFree": "PASS",
+    "primary": "PASS",
+    "blind": "PASS"
+  },
+  "inputChecksummedFileCounts": {
+    "candidateFree": 26,
+    "primary": 7,
+    "blind": 5
+  },
+  "inputChecksumListSha256": {
+    "candidateFree": "338b12096e7b2b424edda87855e19feb2b7a9ffe2a432065c69621e32d9d07c8",
+    "primary": "520ac663d9b033ec99c3fb3d4420b6122d83f6cd084ccb5ae43c75f811038095",
+    "blind": "c26b162347a6f8fe390ed8d8c975b04507839cc67547a84d1bb16e068e20fba1"
+  },
+  "nativeSpeakerSignoff": false,
+  "browserReviewPerformed": false,
+  "semanticConfidence": "moderate",
+  "createdAtUtc": "2026-11-04T23:02:34Z"
+}

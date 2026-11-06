@@ -1,0 +1,43 @@
+{
+  "adjudicatedCells": 14,
+  "allRecommendationsAccepted": true,
+  "confidence": "moderate; independent static adjudication",
+  "decisions": {
+    "accept-new-correction": 13,
+    "accept-revised-primary-proposal": 1
+  },
+  "exactCatalogsReattested": 12,
+  "head": "b52b7c9abd112328a70d9e811d3b6aa2d4feb8e6",
+  "holds": 0,
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "ja",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "markupMismatches": 0,
+  "nativeSpeakerApproval": false,
+  "newCorrectionsAdjudicated": 13,
+  "placeholderMismatches": 0,
+  "protectedLiteralFailures": 0,
+  "pullRequest": 204,
+  "repoModified": false,
+  "repository": "snapetech-org/slskR",
+  "revisedPrimaryProposalsAdjudicated": 1,
+  "selectedCallerRefsReattested": 5,
+  "sourceIndices": [
+    842,
+    843,
+    849,
+    852,
+    859
+  ],
+  "testsBuildsCiBrowserRun": false,
+  "tree": "d7a46bce75c76e3a74736b85175f7fa412324f39",
+  "window": "W843-W862"
+}

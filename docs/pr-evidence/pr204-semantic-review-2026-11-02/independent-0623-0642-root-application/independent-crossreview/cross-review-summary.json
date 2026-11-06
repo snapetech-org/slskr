@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "task": "Independent cross-review of slskR PR #204 W623–642 primary packet",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "pullRequestState": "OPEN",
+  "pullRequestIsDraft": true,
+  "exactHead": "df1bcd1a86d7b55a9c8b5502854ad0c7efbb3dbc",
+  "exactTree": "787225b69e49420344d031aead6f5e5085741c93",
+  "worktree": "/mnt/disks/scratch/task-worktrees/localization-20261102/slskr-pr204-w503-522",
+  "worktreeClean": true,
+  "primaryPacket": "/mnt/disks/scratch/task-scratch/slskr-pr204-W623-642-primary-20261102/packet",
+  "primaryPacketSHA256SUMSVerified": true,
+  "primaryPacketManifestSha256": "d29a6671dbbc51fc3aaa5ea8239f44d2397c61a14988f65ac1e92bf96ac738d0",
+  "primaryInputSha256": "821ee78083df0f402783918f8d6683eaf00a8b64636ed734d709896090b74463",
+  "inputFilesVerified": {
+    "README.md": "0b1ce5686c53ffd1bca3c926e5acbe114c6669574cb98103395d4df716df4280",
+    "SHA256SUMS": "c3cfc43cc3e880e8f65d7dedfa02f164862deb44f24c0e2045c6dd1516c43214",
+    "manifest.json": "d29a6671dbbc51fc3aaa5ea8239f44d2397c61a14988f65ac1e92bf96ac738d0",
+    "review-input.jsonl": "821ee78083df0f402783918f8d6683eaf00a8b64636ed734d709896090b74463",
+    "primary-review-ledger.jsonl": "a00d9cb05c98235257211373c037b5935c08ac8f0c6d6f69cec5007b68b77c98",
+    "correction-candidates.jsonl": "3767ba2bb24f6f4ba19c636f2f0908706a4538356fbe27828f749bbb3d1e2866",
+    "current-cells.jsonl": "821ee78083df0f402783918f8d6683eaf00a8b64636ed734d709896090b74463",
+    "source-context.jsonl": "5d4212b05c80d87167e22ee51c0a5efcbfc309597202d83848061a5cc09be430",
+    "caller-context-pins.jsonl": "0191f726ca703e28944b6895cf82e34d43df90762bf164b84d0fc66fc432fa7c",
+    "source-current-attestation.jsonl": "5c53bd35f8afeab9f5944c668dc7def362f3298794ded65ab117010920a48119",
+    "prior-evidence-matches.jsonl": "09c01d7d11c02afbd1ca4df72b040b4462413ffc50330102656ac380d7e15981",
+    "verification.json": "75101a7a50d27f641ea38284ccd2d78dd28dda4575a68b22039e44a707f9ce2f"
+  },
+  "rows": 240,
+  "sourceIds": 20,
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "crossReviewDispositionCounts": {
+    "accept-current": 203,
+    "accept-primary-proposal": 20,
+    "missed-issue": 5,
+    "preserved-prior-disposition": 12
+  },
+  "primaryCandidateCount": 20,
+  "primaryProposalsAccepted": 20,
+  "primaryProposalsRefined": 0,
+  "primaryProposalsRejected": 0,
+  "missedIssueCount": 5,
+  "missedIssueCells": [
+    {
+      "sourceIndex": 627,
+      "sourceId": "Choose how search results are ordered. Smart Ranking balances quality and availability.",
+      "locale": "es",
+      "target": "Elige cómo ordenar los resultados de búsqueda. La clasificación inteligente equilibra calidad y disponibilidad.",
+      "targetSha256": "a2783433150d9ab682ac5ffd0b8695924e167ed964dfd66b601a7768d6c2c284"
+    },
+    {
+      "sourceIndex": 627,
+      "sourceId": "Choose how search results are ordered. Smart Ranking balances quality and availability.",
+      "locale": "fr",
+      "target": "Choisissez l’ordre des résultats de recherche. Le classement intelligent équilibre la qualité et la disponibilité.",
+      "targetSha256": "e41dccbae08ac32e989526c27a174fcbd55a1db022652ad06c77434f28b5c428"
+    },
+    {
+      "sourceIndex": 627,
+      "sourceId": "Choose how search results are ordered. Smart Ranking balances quality and availability.",
+      "locale": "pt-BR",
+      "target": "Escolha como ordenar os resultados da pesquisa. A classificação inteligente equilibra qualidade e disponibilidade.",
+      "targetSha256": "63987f50cea7220bfcecf135cdf31d2440bb30ab10d08e5c277167ed137f904a"
+    },
+    {
+      "sourceIndex": 632,
+      "sourceId": "Choose which custom shape from the active RustyMilk preset should be exported or removed.",
+      "locale": "vi",
+      "target": "Chọn hình dạng tùy chỉnh nào trong cài đặt sẵn đang hoạt động của RustyMilk để xuất hoặc xóa.",
+      "targetSha256": "f4ade2dee9e105e7742d904ba4863a23817e560cd16dbb090894890f530a357f"
+    },
+    {
+      "sourceIndex": 633,
+      "sourceId": "Choose which custom wave from the active RustyMilk preset should be exported or removed.",
+      "locale": "vi",
+      "target": "Chọn dạng sóng tùy chỉnh nào trong cài đặt sẵn đang hoạt động của RustyMilk để xuất hoặc xóa.",
+      "targetSha256": "bb376601dafdb673579584d943fa44923cb56d1ef1b482f47aeb584063441058"
+    }
+  ],
+  "priorAcceptedCellsPreserved": 12,
+  "preservedSourceId": "Chromaprint needs an ffmpeg executable path.",
+  "noDirectCallerSourceIds": [
+    "Choose how many matching results to render at once.",
+    "Choose how search results are ordered. Smart Ranking balances quality and availability."
+  ],
+  "noDirectCallerNote": "For both source IDs, callerStatus is no-direct-caller-found and no output claims that the string renders.",
+  "attestationMismatches": [],
+  "sourceCurrentTargetCatalogCallerHashChecks": "passed for all 240 cells; all 40 caller-pin records across 39 unique lines re-attested",
+  "proposalPlaceholderProtectedLiteralChecks": "passed for every primary proposal and missed target",
+  "notes": [
+    "All 20 primary candidate texts and hashes were rechecked and accepted.",
+    "Three ES/FR/pt-BR targets for source 627 omit “search” from “search results”; the key has no direct caller.",
+    "Vietnamese preset terminology in sources 632 and 633 was refined; “dạng sóng” clarifies the audio waveform fragment.",
+    "The 12 exact accepted Chromaprint executable-path records were preserved, not re-reviewed.",
+    "No repository/PR/catalog changes, tests, builds, scans, or CI actions were made.",
+    "No native-speaker approval is claimed."
+  ]
+}

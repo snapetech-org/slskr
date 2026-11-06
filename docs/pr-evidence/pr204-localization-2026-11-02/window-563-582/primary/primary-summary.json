@@ -1,0 +1,142 @@
+{
+  "all_candidate_placeholder_sets_match_source": true,
+  "all_current_cell_prior_hashes_reverified": true,
+  "candidate_cells_by_source": {
+    "Can create content-linked pods": 9,
+    "Canary": 1,
+    "Cancel Scan": 3,
+    "Cancelled": 1,
+    "Candidate identity": 1,
+    "Candidate score": 1,
+    "Candidate score: {score}/100": 1,
+    "Candidate score: {score}/100. Reasons: {reasons}": 1,
+    "Candidates": 8,
+    "Canonical": 6,
+    "Canonical support from": 6,
+    "Canonical variants:": 5,
+    "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.": 7,
+    "Capture local history": 12,
+    "Capture player history preference": 12
+  },
+  "catalog_modified": false,
+  "cell_count": 240,
+  "correction_candidate_cells": 74,
+  "decisions": {
+    "accept-current": 154,
+    "confirm-prior-correction": 52,
+    "hold-source-rewrite-required": 12,
+    "refine-prior-correction": 14,
+    "reopen-prior-accepted": 8
+  },
+  "exact_prior_match_cells": 240,
+  "exact_prior_match_records": 450,
+  "held_cells": 12,
+  "held_reason": "The caller injects hard-coded English “ Selected” into {all}; catalog changes cannot localize it.",
+  "held_source_ids": [
+    "Cancel{all}"
+  ],
+  "locale_count": 12,
+  "native_speaker_approval": false,
+  "native_speaker_review_required": true,
+  "no_op_cells": 0,
+  "per_locale": {
+    "ar": {
+      "accept-current": 11,
+      "confirm-prior-correction": 4,
+      "hold-source-rewrite-required": 1,
+      "refine-prior-correction": 3,
+      "reopen-prior-accepted": 1
+    },
+    "de": {
+      "accept-current": 16,
+      "confirm-prior-correction": 2,
+      "hold-source-rewrite-required": 1,
+      "refine-prior-correction": 1
+    },
+    "es": {
+      "accept-current": 15,
+      "confirm-prior-correction": 3,
+      "hold-source-rewrite-required": 1,
+      "refine-prior-correction": 1
+    },
+    "fr": {
+      "accept-current": 13,
+      "confirm-prior-correction": 4,
+      "hold-source-rewrite-required": 1,
+      "refine-prior-correction": 1,
+      "reopen-prior-accepted": 1
+    },
+    "hi": {
+      "accept-current": 10,
+      "confirm-prior-correction": 5,
+      "hold-source-rewrite-required": 1,
+      "refine-prior-correction": 2,
+      "reopen-prior-accepted": 2
+    },
+    "id": {
+      "accept-current": 14,
+      "confirm-prior-correction": 4,
+      "hold-source-rewrite-required": 1,
+      "refine-prior-correction": 1
+    },
+    "ja": {
+      "accept-current": 11,
+      "confirm-prior-correction": 6,
+      "hold-source-rewrite-required": 1,
+      "refine-prior-correction": 1,
+      "reopen-prior-accepted": 1
+    },
+    "ko": {
+      "accept-current": 12,
+      "confirm-prior-correction": 7,
+      "hold-source-rewrite-required": 1
+    },
+    "pt-BR": {
+      "accept-current": 12,
+      "confirm-prior-correction": 5,
+      "hold-source-rewrite-required": 1,
+      "refine-prior-correction": 1,
+      "reopen-prior-accepted": 1
+    },
+    "vi": {
+      "accept-current": 10,
+      "confirm-prior-correction": 6,
+      "hold-source-rewrite-required": 1,
+      "refine-prior-correction": 3
+    },
+    "zh-Hans": {
+      "accept-current": 15,
+      "confirm-prior-correction": 3,
+      "hold-source-rewrite-required": 1,
+      "reopen-prior-accepted": 1
+    },
+    "zh-Hant": {
+      "accept-current": 15,
+      "confirm-prior-correction": 3,
+      "hold-source-rewrite-required": 1,
+      "reopen-prior-accepted": 1
+    }
+  },
+  "placeholder_source_keys": [
+    "Cancel{all}",
+    "Candidate score: {score}/100",
+    "Candidate score: {score}/100. Reasons: {reasons}"
+  ],
+  "pr_head": "7e99edecbdea10580cc5e8d198930a82f076b834",
+  "pr_number": 204,
+  "pr_tree": "55de069f88c197ab8ddd3c773c1f10e5cb86abd5",
+  "primary_reviewed_cells": 240,
+  "prior_routed_cells": 0,
+  "repository": "snapetech-org/slskR",
+  "review_window_indices": [
+    563,
+    582
+  ],
+  "schema_version": 1,
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_key_count": 20,
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "stale_prior_match_records": 0,
+  "tests_builds_scans_ci_workflows_releases_tags_merges": false,
+  "translation_decided_cells": 228
+}

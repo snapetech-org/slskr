@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "reviewBaselineHead": "e64d0d17ba0ee14144220a786b3f2fac7210f3d4",
+  "reviewBaselineTree": "1cd02ac0825eda073cb422d79986c24f3096c6ce",
+  "catalogApplicationCommit": "bbf949781eb480be45898cff44b4bc5469425165",
+  "catalogApplicationTree": "7c035e52cfa18e013542297553625461d3630934",
+  "catalogCellsApplied": 147,
+  "catalogFilesChanged": 12,
+  "changedCellsByLocale": {
+    "ar": 13,
+    "de": 13,
+    "es": 14,
+    "fr": 11,
+    "hi": 12,
+    "id": 14,
+    "ja": 14,
+    "ko": 15,
+    "pt-BR": 15,
+    "vi": 16,
+    "zh-Hans": 5,
+    "zh-Hant": 5
+  },
+  "rootDecisionCounts": {
+    "accept-as-proposed": 130,
+    "refine": 17,
+    "keep-current-already-satisfied": 1
+  },
+  "windowCells": 240,
+  "acceptedUnchangedCells": 92,
+  "alreadySatisfiedCurrentCells": 1,
+  "correctedCells": 147,
+  "heldOrUnreviewedWithinWindow": 0,
+  "cumulativeStatusAfterWindow": {
+    "accepted": 24116,
+    "corrected": 808,
+    "correctionNeeded": 10263,
+    "held": 297,
+    "conflicts": 0,
+    "unreviewed": 29760,
+    "total": 65244
+  },
+  "checks": {
+    "baselineCatalogValuesMatched": true,
+    "rootFinalTargetsMatched": true,
+    "allOtherCatalogValuesAndKeyOrderUnchanged": true,
+    "callerFileHashesAndLiteralsMatched": true,
+    "dynamicPlaceholdersPreserved": true,
+    "workflowFilesUnchanged": true,
+    "gitDiffCheckPassed": true
+  },
+  "validationRun": {
+    "tests": false,
+    "builds": false,
+    "securityScans": false,
+    "ci": false,
+    "release": false,
+    "tags": false,
+    "merge": false
+  },
+  "nativeSpeakerApproval": false
+}

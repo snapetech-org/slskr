@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "tree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "scope": {
+    "positions": [
+      743,
+      762
+    ],
+    "sourceIds": 20,
+    "locales": [
+      "ar",
+      "de",
+      "es",
+      "fr",
+      "hi",
+      "id",
+      "ja",
+      "ko",
+      "pt-BR",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "cells": 240
+  },
+  "primaryPacket": {
+    "path": "/mnt/disks/scratch/task-scratch/slskr-pr204-W743-762-primary-20261102/packet",
+    "sha256sumsSha256": "58063c457d3a8c4631807941c569501d103e23091f9530d38adc1f72bc766f6a",
+    "manifestSha256": "918af329b724b6f558339b682353265afab8ae71f0c386a3eacd38b11c7cd0a7",
+    "sourceCurrentSha256": "1666ccb37f34692ba465fe24261face4b1401cf603e25e9915440de884bc122e",
+    "primaryLedgerSha256": "04042a09a22374a2f4040fbae7004aa874a9e0d86a9439996dfb111aeaee2a12",
+    "candidateRowsSha256": "e117ecab903ca575dc366467a44a5d093f84e45e2e3c53d2a8ad51b5868c9d2d",
+    "sourceContextSha256": "64c6009cd97bd4a1126929c6a52f20e1b29a8c6b8f5c192c06f9405d00eaec86",
+    "callerContextPinsSha256": "b8bc487f2398e3540dedf88a11595788c9fec5bd3e5b6434188fa6c4f1f01080"
+  },
+  "sourceInventory": {
+    "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/frozen-inputs/source-inventory.jsonl",
+    "sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+    "keys": 5437
+  },
+  "reattestation": {
+    "path": "crossreview-reattestation.json",
+    "sha256": "6714c307146b85888cf61a8f88b4e9fff36bad120ed52403af7d3e2852fde17a",
+    "checks": "pass"
+  },
+  "ledger": {
+    "path": "crossreview-ledger.jsonl",
+    "rows": 240,
+    "sha256": "169b9164ffa178dd93269e0793281076f8e7ea9c3e1ad9f11828ae97e85843c8",
+    "dispositions": {
+      "accept-current": 187,
+      "propose-refinement": 1,
+      "propose-correction": 52
+    }
+  },
+  "callerPins": {
+    "path": "crossreview-caller-pins.jsonl",
+    "rows": 67,
+    "references": 67,
+    "files": 26,
+    "sha256": "f09774844ef8e0a9663c3dc9fbaa369b46ce71f1c4dca1628e11357b6ae13542"
+  },
+  "callerContexts": {
+    "path": "crossreview-caller-contexts.jsonl",
+    "rows": 20,
+    "references": 59,
+    "sha256": "6179dc41bc92a2336840bd64be9fb229a2c4a1711d3eac3b2983e95e2ba783c0"
+  },
+  "findings": {
+    "path": "crossreview-findings.json",
+    "overrides": 11,
+    "sha256": "4bced5a27a7b97f36abb50ac6079d33713ab78da096dccd3dc49d93f884acf7c"
+  },
+  "summarySha256": "17cf2a8b9ce124c6069e97d98cfc21944a0a664e75c2db7bfcd444d1b08a8ae9",
+  "readmeSha256": "d663a46c6cbbe85647905301877d5ae3d892c11dec71c07b5e71ad4b5dd848f3",
+  "builderSha256": "95a7c60141855dc716f2f7970daaa34317b0f592feac600a171325375e846f7a",
+  "artifactFiles": {
+    "README.md": {
+      "sha256": "d663a46c6cbbe85647905301877d5ae3d892c11dec71c07b5e71ad4b5dd848f3",
+      "bytes": 1424
+    },
+    "build_crossreview_packet.py": {
+      "sha256": "95a7c60141855dc716f2f7970daaa34317b0f592feac600a171325375e846f7a",
+      "bytes": 25953
+    },
+    "crossreview-caller-contexts.jsonl": {
+      "sha256": "6179dc41bc92a2336840bd64be9fb229a2c4a1711d3eac3b2983e95e2ba783c0",
+      "bytes": 64402
+    },
+    "crossreview-caller-pins.jsonl": {
+      "sha256": "f09774844ef8e0a9663c3dc9fbaa369b46ce71f1c4dca1628e11357b6ae13542",
+      "bytes": 76301
+    },
+    "crossreview-findings.json": {
+      "sha256": "4bced5a27a7b97f36abb50ac6079d33713ab78da096dccd3dc49d93f884acf7c",
+      "bytes": 3939
+    },
+    "crossreview-ledger.jsonl": {
+      "sha256": "169b9164ffa178dd93269e0793281076f8e7ea9c3e1ad9f11828ae97e85843c8",
+      "bytes": 1212609
+    },
+    "crossreview-reattestation.json": {
+      "sha256": "6714c307146b85888cf61a8f88b4e9fff36bad120ed52403af7d3e2852fde17a",
+      "bytes": 17818
+    },
+    "summary.json": {
+      "sha256": "17cf2a8b9ce124c6069e97d98cfc21944a0a664e75c2db7bfcd444d1b08a8ae9",
+      "bytes": 3740
+    }
+  },
+  "nativeSpeakerApproval": "outstanding",
+  "repositoryOrPrModified": false,
+  "testsBuildsScansCIorBrowserRun": false,
+  "workflowFilesTouched": false
+}

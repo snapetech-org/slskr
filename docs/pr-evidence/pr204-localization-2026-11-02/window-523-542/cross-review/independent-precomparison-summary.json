@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "input_head": "fa712d12ec3a41ed5e4f2e264f6b550ddbdaba6e",
+  "input_tree": "9f1111e6d75f082af5a0cf4bf346ad12b71cdfd1",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "independent_reviewed_cells": 240,
+  "independent_disposition_counts": {
+    "accept-current": 151,
+    "propose-revision": 77,
+    "no-op-no-direct-caller": 12
+  },
+  "independent_candidate_count": 77,
+  "independent_own_dispositions_frozen_before_primary_comparison": true,
+  "primary_review_files_opened_before_freeze": false,
+  "native_speaker_approvals": 0,
+  "native_review_required": true,
+  "independent_ledger_sha256": "b855c337a9ecc969fb7726eb0e5871399bff04520124dff27df518cc317856f3"
+}

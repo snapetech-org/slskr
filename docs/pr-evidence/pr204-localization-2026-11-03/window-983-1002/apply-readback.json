@@ -1,0 +1,34 @@
+{
+  "baseHead": "09a614a66f1104fe530773fb17c79ed6338aed02",
+  "baseTree": "963f283311ae39dfa5fc289386d99dcc0dac2f90",
+  "plannedRows": 64,
+  "appliedRows": 64,
+  "catalogsChanged": 12,
+  "catalogPaths": [
+    "web/src/lib/locales/ui-labels.ar.json",
+    "web/src/lib/locales/ui-labels.de.json",
+    "web/src/lib/locales/ui-labels.es.json",
+    "web/src/lib/locales/ui-labels.fr.json",
+    "web/src/lib/locales/ui-labels.hi.json",
+    "web/src/lib/locales/ui-labels.id.json",
+    "web/src/lib/locales/ui-labels.ja.json",
+    "web/src/lib/locales/ui-labels.ko.json",
+    "web/src/lib/locales/ui-labels.pt-BR.json",
+    "web/src/lib/locales/ui-labels.vi.json",
+    "web/src/lib/locales/ui-labels.zh-Hans.json",
+    "web/src/lib/locales/ui-labels.zh-Hant.json"
+  ],
+  "localeCatalogCount": 12,
+  "orderedLocaleKeyCount": 5441,
+  "identicalOrderedKeyArrays": true,
+  "plannedTargetsReadBack": true,
+  "noUnplannedValueChangesInEditedCatalogs": true,
+  "heldCellsChanged": false,
+  "rootLedgerDispositionCounts": {
+    "accept-current": 152,
+    "correction": 47,
+    "refinement": 17,
+    "hold": 24
+  },
+  "independentReviewProcessCaveat": "Cross-reviewer saw primary README aggregate counts and same-window summary claims before sealing; did not see primary per-cell ledger/proposals."
+}

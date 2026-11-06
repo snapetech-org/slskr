@@ -1,0 +1,293 @@
+{
+  "callerFiles": {
+    "crates/slskr/src/config_integrations.rs": {
+      "byteCount": 59823,
+      "gitBlob": "a6c6bf0278953c05829dc509522978eff0857192",
+      "lineCount": 1592,
+      "path": "crates/slskr/src/config_integrations.rs",
+      "sha256": "58e8aadaf3f32af185177a911eb2a963f6f978deb3038cd3fe8ff3cec44c497e"
+    },
+    "crates/slskr/src/controller_tests/full_native_api_differential_02.rs": {
+      "byteCount": 73472,
+      "gitBlob": "70b1d9b76edb2e9ead89eebe82b42dc07207a73c",
+      "lineCount": 2179,
+      "path": "crates/slskr/src/controller_tests/full_native_api_differential_02.rs",
+      "sha256": "aa68bba473360f2a894cc1d93d41aa0beb312cbd2753cb515b3135f4950c687b"
+    },
+    "crates/slskr/src/controller_tests/full_transfers_differential.rs": {
+      "byteCount": 63337,
+      "gitBlob": "277090499d96965bf0e16a93fce9b3e1f55aa164",
+      "lineCount": 1817,
+      "path": "crates/slskr/src/controller_tests/full_transfers_differential.rs",
+      "sha256": "5ffaed9ab87ea90a51185678b8daf72dddb2085c0d6fe9b22c939e49a7a087bd"
+    },
+    "crates/slskr/src/controller_tests/full_versioned_api_differential_02.rs": {
+      "byteCount": 42882,
+      "gitBlob": "59ab3cb598ba99951d3f38281301e8ddd314204e",
+      "lineCount": 1098,
+      "path": "crates/slskr/src/controller_tests/full_versioned_api_differential_02.rs",
+      "sha256": "cf309993c9bbcf8e1b0856aa1547153e39dfc86bd69d4459b8d456619c6c0d1a"
+    },
+    "crates/slskr/src/destination_state.rs": {
+      "byteCount": 6883,
+      "gitBlob": "d0fae3e4e37ebdb474e7c28be2baec60cdd0f3e5",
+      "lineCount": 206,
+      "path": "crates/slskr/src/destination_state.rs",
+      "sha256": "83c351d4b5226d0bb01e60386f8218dd71e64c10d9840811f65965641a484763"
+    },
+    "crates/slskr/src/extended_controller.rs": {
+      "byteCount": 39636,
+      "gitBlob": "64e96af1bb51f4c3574c838b2f16b6ba2f729173",
+      "lineCount": 1050,
+      "path": "crates/slskr/src/extended_controller.rs",
+      "sha256": "fdfd14cab2c836c21098e3158b963353f8fa4ed45bf194680c644ed9cf8a22bc"
+    },
+    "crates/slskr/src/legacy_route_dispatch_group_01.rs": {
+      "byteCount": 78998,
+      "gitBlob": "bcc7ab2e7dbe652cecdf595f1f771dba707efd50",
+      "lineCount": 1797,
+      "path": "crates/slskr/src/legacy_route_dispatch_group_01.rs",
+      "sha256": "cc5efe8a0c9f7eef6adf3f56dd350487d7d45c5871b91eb93b3144c8e2fe527e"
+    },
+    "crates/slskr/src/route_dispatch_group_1_events.rs": {
+      "byteCount": 23877,
+      "gitBlob": "e7f8e05ee21d29981e2da7b8b5c02f2bd2ba1f2c",
+      "lineCount": 558,
+      "path": "crates/slskr/src/route_dispatch_group_1_events.rs",
+      "sha256": "ea8e11221f5ea161570ace7bb6166c71c70c1da160fe9300b6b1cdbc9e4e2a35"
+    },
+    "crates/slskr/src/scripts_tests.rs": {
+      "byteCount": 10171,
+      "gitBlob": "0c73c072a41b096868b3ebcdfcbb09ba5f27ace7",
+      "lineCount": 297,
+      "path": "crates/slskr/src/scripts_tests.rs",
+      "sha256": "fa71a78d3f8d3dbac026ed55fbdff493ad6f4bb12c60b79f3cd1c75147d5e23e"
+    },
+    "crates/slskr/src/signalr_ws.rs": {
+      "byteCount": 39810,
+      "gitBlob": "19b506498740933124724a025d8b5e302533a53b",
+      "lineCount": 1130,
+      "path": "crates/slskr/src/signalr_ws.rs",
+      "sha256": "355571091609ed6c1d2358ae7db76cf318e372da8b72b0af3a76ab4d0286ab29"
+    },
+    "crates/slskr/src/webhooks.rs": {
+      "byteCount": 48805,
+      "gitBlob": "ee1aab9f5442184a543803af34c8fa94a9c324be",
+      "lineCount": 1428,
+      "path": "crates/slskr/src/webhooks.rs",
+      "sha256": "7ae75dc9359ef8be7d7bf79236168f562d0231891c18c9e5d55cfafe162a5867"
+    },
+    "web/src/components/AppNavigationPrimary.jsx": {
+      "byteCount": 13506,
+      "gitBlob": "f4f9070f4cbebaf5aa4307ef6ac7e5f78abbabb0",
+      "lineCount": 350,
+      "path": "web/src/components/AppNavigationPrimary.jsx",
+      "sha256": "f0212774c21ada86bc3115ea95ac8949307669597899890bbec920c029e7f1a7"
+    },
+    "web/src/components/Browse/BrowseSession.jsx": {
+      "byteCount": 28903,
+      "gitBlob": "f23f2c0599eedac1b028b37c0a89383602c46186",
+      "lineCount": 888,
+      "path": "web/src/components/Browse/BrowseSession.jsx",
+      "sha256": "2a15c62b380fa43e1186bcffc002b6d3a93460fe54f0cf743ca92f3b987f641e"
+    },
+    "web/src/components/CompatibilityDashboard.jsx": {
+      "byteCount": 32620,
+      "gitBlob": "831b00821cf5999e39ce586eab76d81bfdbdbb82",
+      "lineCount": 882,
+      "path": "web/src/components/CompatibilityDashboard.jsx",
+      "sha256": "1e85738718ef2de4dc40358f746163cabb6192fca4072a8bf30ba0e133dbd27f"
+    },
+    "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx": {
+      "byteCount": 53474,
+      "gitBlob": "90f3e1d29a4b514a1877693e131e92b66b8050aa",
+      "lineCount": 1043,
+      "path": "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx",
+      "sha256": "17241e796b943988d339bac74569f5a5d4e8889194cad1221d0b9c8bc1b82a9e"
+    },
+    "web/src/components/System/Files/index.jsx": {
+      "byteCount": 1189,
+      "gitBlob": "064e1805571db219ddbc0ed410f77ce57f23b278",
+      "lineCount": 53,
+      "path": "web/src/components/System/Files/index.jsx",
+      "sha256": "d22467d0348add52915736bc10c299d33c5fc8a0cfae8097c8fd34fef5ed251b"
+    },
+    "web/src/components/System/Jobs/index.jsx": {
+      "byteCount": 20241,
+      "gitBlob": "d107affda28da2a86c3cbf22175cdf0898c6fa68",
+      "lineCount": 601,
+      "path": "web/src/components/System/Jobs/index.jsx",
+      "sha256": "9e9f1caffccf25f2d9259e9295e3ad9f500acb30ba6150c976acf5762f4b0f16"
+    },
+    "web/src/components/System/Metrics/index.jsx": {
+      "byteCount": 9042,
+      "gitBlob": "b56dcd7e659a938f47f1a96f2ef2a0550b100876",
+      "lineCount": 277,
+      "path": "web/src/components/System/Metrics/index.jsx",
+      "sha256": "148984c1547bfbae3134d4591d74c28268aea15ee26c06357b11910d07a629e0"
+    },
+    "web/src/components/Transfers/Transfers.jsx": {
+      "byteCount": 25148,
+      "gitBlob": "00f3488b547c2f6e4d97fbd6d0931b724ea3c17d",
+      "lineCount": 818,
+      "path": "web/src/components/Transfers/Transfers.jsx",
+      "sha256": "744da23792a1fac5929a4802600b1cc7f238a3f3fabe1f33ded598b2b546b662"
+    },
+    "web/src/lib/acquisitionRequests.js": {
+      "byteCount": 5632,
+      "gitBlob": "3b89ad55924c0e4e84b1c005898b35f7e8e5b169",
+      "lineCount": 207,
+      "path": "web/src/lib/acquisitionRequests.js",
+      "sha256": "0ad4096633725af850231922cc185a179393c3334aaf70fdee08c5c8a43b19fc"
+    },
+    "web/src/lib/automationRecipes.js": {
+      "byteCount": 12505,
+      "gitBlob": "16b7b3ec33fe15748e47a45c397b58d0d35d9387",
+      "lineCount": 413,
+      "path": "web/src/lib/automationRecipes.js",
+      "sha256": "24d9494cf78e88fdc700da54a99139ebd67d6c2b608d033b9d7d8dd312c2c706"
+    },
+    "web/src/lib/discoveryInbox.js": {
+      "byteCount": 5509,
+      "gitBlob": "8e3b099af706e660e54732362b41bbcdb83006e4",
+      "lineCount": 214,
+      "path": "web/src/lib/discoveryInbox.js",
+      "sha256": "4bf88075b1e30f053cc32f27998bd191ec4436751a7076fa0d79a76038622b0b"
+    },
+    "web/src/lib/setupHealthCheck.js": {
+      "byteCount": 12270,
+      "gitBlob": "20cef4352e429331c4e7ac996867c02036a0992c",
+      "lineCount": 361,
+      "path": "web/src/lib/setupHealthCheck.js",
+      "sha256": "76784b15cf7c25e871b7034028f5f5705ffb3f672f8f44b02a2ecac8d6f10a8b"
+    }
+  },
+  "head": "1bb6a4c0d9ac2407ad3ab1191fe454d6661d4763",
+  "localeCatalogs": {
+    "ar": {
+      "byteCount": 513218,
+      "gitBlob": "118f6da90a349beb8144a6923a8562d12d1f614e",
+      "keyCount": 5441,
+      "lineCount": 5548,
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "sha256": "6fe30739f77db14f255f60d12e71793781b0ed73383fb388b520a6cff1b79125"
+    },
+    "de": {
+      "byteCount": 443270,
+      "gitBlob": "ad0610a3fdb43f4fe69ffa8dfd98d2788384f488",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "sha256": "887b3cf77fdfaea6297595f80693296224423749133ce94418389ebfd8cd15d8"
+    },
+    "es": {
+      "byteCount": 444428,
+      "gitBlob": "876d09ad04d2677a926c930e05bf952208b1dde4",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "sha256": "283be18837b07c67caa1dab97e1b02f0e4b3733b090d5b3e8962ede016e64722"
+    },
+    "fr": {
+      "byteCount": 455591,
+      "gitBlob": "b321b3b892deb9c1598f067904599c66ec1b0395",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "sha256": "cc14b0ed0010c80b34da44e125dad67274a2faf95c4ecac11e71790260101868"
+    },
+    "hi": {
+      "byteCount": 677429,
+      "gitBlob": "e252bd05ff9e1cdd339039400fba14cdf00daca5",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "sha256": "1ae5aea82dee50b71cb8969d9cd7858fa7ec1a655ae2b877c3cd6296bd08bde3"
+    },
+    "id": {
+      "byteCount": 409867,
+      "gitBlob": "1d559bf6e5735305ecc80ee8f7872ef509f38a2d",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "sha256": "91da07109bde9f2f591a82e2229bc48b0f83e87662964cee5193c5750751cd29"
+    },
+    "ja": {
+      "byteCount": 491160,
+      "gitBlob": "b5d7061312f64bc879c563495599bf7cb4aa82c4",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "sha256": "23d5019d1b5f8cbae83546325488f868f67deab87cc9fe646182cb95f10ddaa1"
+    },
+    "ko": {
+      "byteCount": 442311,
+      "gitBlob": "2a1350bed0596ed3727e9a584f65772670e64306",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "sha256": "5d9cdc452ff17e1f920cc7329f70943fe4a0f78672a87264720174303ed071f0"
+    },
+    "pt-BR": {
+      "byteCount": 439108,
+      "gitBlob": "bf8a01da9cf4a2e4d1d3e2a4deae757bd8abade6",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "sha256": "644bcfc5b242215e5c940c2baf6b9edd67f388428f0771e21875dab0752530c6"
+    },
+    "vi": {
+      "byteCount": 475060,
+      "gitBlob": "b3fcbfa2439f919c4c71741623c61c1f565710c1",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "sha256": "924114bec2e8aa0c25e9e110c9c75245bea7d0f7353de63088971a45572fc1e7"
+    },
+    "zh-Hans": {
+      "byteCount": 382936,
+      "gitBlob": "af72f4c809d91791d767138f1f791cd8c85066e0",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "sha256": "e9d8ee43129009c4456a9f5f8728e9f1b877668a97d0dbea1ad1d52946b8c508"
+    },
+    "zh-Hant": {
+      "byteCount": 383683,
+      "gitBlob": "9a974c90ebe215e6c6e2dbf7ce8efb3cea53f1d1",
+      "keyCount": 5441,
+      "lineCount": 5443,
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "sha256": "24dcbc5dad534d6ec3bfad9b9679ca991b4bec33fac075f4a05b85d8ef3f3157"
+    }
+  },
+  "localeRuntime": {
+    "byteCount": 11530,
+    "gitBlob": "72dfea05f86bcf0ab02882a85c6e8d4a0cb0dabf",
+    "lineCount": 302,
+    "path": "web/src/lib/interfaceLocale.js",
+    "sha256": "16eb5f119655805f48845e026ee12fd517fae6de871091bd9be2e5b7f1d310ea"
+  },
+  "localesInRuntimeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "schemaVersion": 1,
+  "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "sourceLookupKeySetCount": 5441,
+  "sourceQueueCopiedFromPriorPacket": "/mnt/disks/scratch/task-scratch/slskr-pr204-w1203-1222-input-20261103/clean-input",
+  "sourceQueueFileSha256": "da4f6b93e7d3f05c03b3dbd7a39959c8990a5089b78ea8b850b568aa2de38236",
+  "sourceQueueMatchesCurrentHeadCatalogs": true,
+  "sourceQueuePath": "source-queue.jsonl",
+  "tree": "c92bb8f15ec61d538168b41859d9146bad91ae66"
+}

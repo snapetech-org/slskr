@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "artifact": "slskR PR #204 W1383-W1402 primary semantic review",
+  "reviewType": "primary-semantic",
+  "sealed": true,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W1403-W1422",
+  "head": "727500e46852a5b6578e571781693857510943d9",
+  "tree": "c71165c20fc6ba7d49d563898ea2ec8e1e448672",
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "inputPath": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1403-1422-primary-20261103/candidate-free-input",
+  "inputManifestSha256": "0ecb7a69e8892b53dfdea64aac207d2e478baa912038f5c4845cba5c5872e068",
+  "inputChecksumListSha256": "56773cbe0504f7daf871c2c6c8740ecc88ab8e1322bbec530f25318986bd1a2b",
+  "decisionCounts": {
+    "accept-current": 176,
+    "correction": 53,
+    "refinement": 11
+  },
+  "holdCount": 0,
+  "candidateFreeInputVerifier": "PASS",
+  "createdAtUtc": "2026-11-03T18:22:46.641319+00:00",
+  "files": {
+    "README.md": {
+      "sha256": "fa02e8e733c6905c9e91cf41fa7303258102b75d910f6bd36246f1c1e016bfe1",
+      "byteCount": 819
+    },
+    "input-verification.json": {
+      "sha256": "f7f98c94941b9ed6f34923c7b896503738c523420116f9273908749506005c45",
+      "byteCount": 788
+    },
+    "review-decisions.json": {
+      "sha256": "09234aea7515fa1c5b87f23811374ee166319a2be1f4d013ca8c84c1e3c947a1",
+      "byteCount": 24591
+    },
+    "review-ledger.jsonl": {
+      "sha256": "1197bc27271c986261c3b2af7fc3965695352255cdc7e3c7b7e31bbc8bfa48ed",
+      "byteCount": 547616
+    },
+    "source-context-evidence.jsonl": {
+      "sha256": "f6e196c864d7f3887e6b4e8a8a7ca71c6f5df5db96ef069e7f7b7ca4c4ae6a43",
+      "byteCount": 75673
+    },
+    "summary.json": {
+      "sha256": "0b798b850824cf2ba979bca361a30ac049b4fdd8ff11b9cdaa1be311feb68494",
+      "byteCount": 1140
+    },
+    "verifier-output.json": {
+      "sha256": "e004f1dbae79e70ac9cc58376d138e6484cf5280f80535db3dd404fdd7b5fe4c",
+      "byteCount": 572
+    },
+    "verify-primary-ledger.py": {
+      "sha256": "1c28551b101dd95a2fea1b886b09add580d4b7320ac0d406c4b0b4f43cc7ab3c",
+      "byteCount": 8942
+    }
+  }
+}

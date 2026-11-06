@@ -1,0 +1,16 @@
+{
+  "accepted_as_proposed": 42,
+  "apply_plan_sha256": "2d87c27a7893c32a2eefd0fce755c44812b48cea2c8eb45e043255e2615134a8",
+  "baseline_hash_mismatches": 0,
+  "caller_blob_mismatches": 0,
+  "dispositions": {
+    "accepted-proposal": 42,
+    "refined-proposal": 1
+  },
+  "held": 0,
+  "ledger_sha256": "9cb1c6b3a01c60ab1e61ed8e9283f1e3ffaf1039f4c040088235122127f5109e",
+  "native_speaker_review": "not_provided",
+  "refined": 1,
+  "reviewed_candidates": 43,
+  "source_hash_mismatches": 0
+}

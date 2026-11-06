@@ -1,0 +1,83 @@
+{
+  "constraints": {
+    "pullRequestActions": false,
+    "qualifiedLocaleReviewRequiredBeforeRelease": true,
+    "qualifiedNativeSpeakerReviewProvided": false,
+    "releaseApproved": false,
+    "repositoryEdits": false,
+    "testsBuildsScansOrCi": false,
+    "workflowChanges": false
+  },
+  "createdAtUtc": "2026-11-03 10:00:55 UTC",
+  "crossAuditVerification": {
+    "cellCount": 240,
+    "changedTargets": 74,
+    "dispositions": {
+      "accept-current": 142,
+      "correction": 47,
+      "hold": 24,
+      "refinement": 27
+    },
+    "ledgerPath": "cross-audit-ledger.jsonl",
+    "ledgerSha256": "8d330fa51e699f9bc253c0f877f58cd0bc031867ee8f9d46793a0658a1f2c631",
+    "noCallerHoldsRetained": 24,
+    "perCellSourceCallerPlaceholderEvidenceIncluded": true,
+    "selectedTargetStructuralPassCount": 216,
+    "selectedTargets": 216,
+    "unitBearingCandidateCheckTotal": 36,
+    "unitBearingCandidateChecksPassed": 36
+  },
+  "independentCandidateFreeSpotCheck": {
+    "cellCount": 84,
+    "primaryAndBlindLedgersSeen": false,
+    "selectedCandidatesSeen": false,
+    "source": "candidate-free packet only",
+    "windowPositions": [
+      1223,
+      1224,
+      1225,
+      1226,
+      1227,
+      1228,
+      1242
+    ]
+  },
+  "livePullRequestSnapshot": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "1bb6a4c0d9ac2407ad3ab1191fe454d6661d4763",
+    "isDraft": true,
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204",
+    "verifiedAgainstCommitTree": "c92bb8f15ec61d538168b41859d9146bad91ae66"
+  },
+  "pinnedCommit": {
+    "head": "1bb6a4c0d9ac2407ad3ab1191fe454d6661d4763",
+    "pullRequest": 204,
+    "repository": "snapetech-org/slskR",
+    "tree": "c92bb8f15ec61d538168b41859d9146bad91ae66"
+  },
+  "repositoryStatus": {
+    "branch": "codex/disable-codeql-slskr-20261031",
+    "repositoryPath": "/home/keith/Documents/code/slskR",
+    "trackingStatus": "behind origin/codex/disable-codeql-slskr-20261031 by 3 commits",
+    "worktreeClean": true
+  },
+  "sourceEvidenceVerification": {
+    "callerContextLineHashMismatches": 0,
+    "callerContextLinesChecked": 495,
+    "callerReferenceSnapshots": 55,
+    "candidateFreeInputManifestSha256": "fddc720597ace3e2598efd690cd5b6e07a9fa23b9120e2513cab8a34cc1c9b95",
+    "currentTargetCatalogLookupMismatches": 0,
+    "independentBlindChecksumsVerified": true,
+    "independentBlindLedgerSha256": "9c6ae855a4727a67ca657c8463fc6b1272ff3a5fc36543a982e9b2c654c3c87d",
+    "packetChecksumsVerified": true,
+    "pinnedCallerCatalogRuntimeFiles": 36,
+    "pinnedFilesMatched": 36,
+    "primaryChecksumsVerified": true,
+    "primaryLedgerSha256": "84d0f1ff30e5b618ff6611da771a7a37c4d0934614ab2a06d9efbb8d01195038",
+    "sourceAndCurrentTargetHashMismatches": 0,
+    "sourceCurrentTargetCellsChecked": 240
+  },
+  "title": "slskR PR #204 W1223-W1242 third-party cross-audit attestation"
+}

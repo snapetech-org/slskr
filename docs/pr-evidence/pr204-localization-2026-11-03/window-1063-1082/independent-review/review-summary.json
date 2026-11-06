@@ -1,0 +1,32 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "window": "W1063-W1082",
+  "reviewInputHead": "328f33ba8dda766539e0b9cded6f94e5d0d8f716",
+  "reviewInputTree": "84d625d3d2a60b263e9dfcca7e31e3fb3bee0904",
+  "inputManifestSha256": "2911a144a4c066fa129f9315c4e908e6a0581b306fc8f05fcf98758162bd906d",
+  "inputChecksumListSha256": "83a76443e8ac1dbcc441a59b0305b560473b4b1789ad3cba8fcf219e23d93885",
+  "sourceIdOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "windowSourceSha256": "827427571dbd12e9d2faf31d22a79d573a247e0984bf21160c8205945437a9c3",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "dispositionCounts": {
+    "accept-current": 146,
+    "refinement": 13,
+    "correction": 69,
+    "hold-context": 12
+  },
+  "proposedTargetChanges": 82,
+  "holds": 12,
+  "heldSourceIds": [
+    "Delete Selected"
+  ],
+  "placeholderMismatches": 0,
+  "protectedLiteralMismatches": 0,
+  "sourceCurrentTargetHashesCarried": true,
+  "callerReferencesCarried": true,
+  "nativeSpeakerReviewed": false,
+  "primaryReviewReadBeforeSeal": false,
+  "independentReviewReadBeforeSeal": false
+}

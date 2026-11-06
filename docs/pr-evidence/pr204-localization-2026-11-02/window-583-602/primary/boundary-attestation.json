@@ -1,0 +1,70 @@
+{
+  "status": "pass",
+  "currentWindow": {
+    "indices": [
+      583,
+      602
+    ],
+    "sourceIds": [
+      "Censorship Resistance",
+      "Centroid",
+      "Certificate PFX (optional)",
+      "Certificate Password",
+      "Certificate Password Missing",
+      "Certificate Password Set",
+      "Certificate password",
+      "Change Role",
+      "Changed fields",
+      "Channel \"{channelName}\" deleted successfully",
+      "Channel \"{newChannelName}\" created successfully",
+      "Channel ID",
+      "Channel ID is required",
+      "Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows.",
+      "Channel name",
+      "Channel name is required",
+      "Channel updated successfully",
+      "Channel:",
+      "Channels",
+      "Chapters"
+    ],
+    "cells": 240
+  },
+  "previousWindow": {
+    "indices": [
+      563,
+      582
+    ],
+    "sourceIds": [
+      "Can create content-linked pods",
+      "Canary",
+      "Cancel",
+      "Cancel Scan",
+      "Cancelled",
+      "Cancel{all}",
+      "Candidate identity",
+      "Candidate match found",
+      "Candidate score",
+      "Candidate score: {score}/100",
+      "Candidate score: {score}/100. Reasons: {reasons}",
+      "Candidates",
+      "Canonical",
+      "Canonical support from",
+      "Canonical variants:",
+      "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.",
+      "Capabilities unavailable",
+      "Capture local history",
+      "Capture player history preference",
+      "Category"
+    ],
+    "packet": "/mnt/disks/scratch/task-scratch/slskr-pr204-W563-582-primary-20261102/packet"
+  },
+  "contiguousBoundary": {
+    "previousLastIndex": 582,
+    "currentFirstIndex": 583,
+    "sourceIdSetsDisjoint": true
+  },
+  "previousPacketSha256SumsSha256": "6877ec3993379826689d17b2d5d4bbb812661d19ce1f7d9ebc90cf38877bd589",
+  "previousPacketChecksumVerified": true,
+  "attestedHead": "2f7483fdaa753e22f6d335a03f15db7d1d82b20f",
+  "attestedTree": "54ee16a812a5bda7871f3ef3ad7ff0cf3bf678e0"
+}

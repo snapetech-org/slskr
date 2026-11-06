@@ -1,0 +1,32 @@
+{
+  "artifact": "slskR PR #204 W1283-W1302 primary semantic review",
+  "head": "55ca2ae0788bfd79daab5cc49f49ebb608593e98",
+  "tree": "d5677673b766d572102bba249af2ab69095dea0d",
+  "headRef": "codex/slskr-l10n-audit-20261030",
+  "baseRef": "main",
+  "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "positions": [
+    1283,
+    1302
+  ],
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "decisionCounts": {
+    "accept-current": 112,
+    "correction": 73,
+    "refinement": 55
+  },
+  "changedCellCount": 128,
+  "heldCellCount": 0,
+  "callerResolutionHoldCount": 0,
+  "historicalRank1257HoldOutsideWindow": "preserved; no change or review in this window",
+  "placeholderMismatchCount": 0,
+  "markupMismatchCount": 0,
+  "numericTokenMismatchCount": 0,
+  "protectedLiteralMismatchCount": 0,
+  "primaryReviewOnly": true,
+  "applicationApproved": false,
+  "blindReviewIncluded": false,
+  "crossAuditIncluded": false
+}

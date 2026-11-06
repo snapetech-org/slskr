@@ -1,0 +1,138 @@
+{
+  "all_candidate_placeholder_sets_match_source": true,
+  "all_current_cell_prior_hashes_reverified": true,
+  "candidate_cells_by_source": {
+    "Browser-local preference surface for Search, Player, and Messages behavior that can be consumed by page-specific backfill.": 12,
+    "Bucket Sizes (bytes)": 5,
+    "Build": 12,
+    "Build Atlas": 4,
+    "Build a per-release coverage map for this MusicBrainz artist using cached release data, verified HashDb evidence, and existing Wishlist seeds.": 8,
+    "Build a persistent atlas in-page from the current seed fields instead of opening a temporary modal.": 6,
+    "Build an atlas from a seed above or restore a saved branch.": 6,
+    "Build review-first radio searches from the current track. Nothing is searched or queued until you choose a query.": 8,
+    "Build smart-radio search seeds from the current track without starting network work yet.": 12,
+    "Building neighborhood": 12,
+    "Bulk wishlist filter": 2,
+    "Bundle": 5,
+    "By Name": 1
+  },
+  "catalog_modified": false,
+  "cell_count": 240,
+  "confirmed_prior_correction_candidates": 85,
+  "conflicts": [],
+  "correction_candidate_cells": 93,
+  "decisions": {
+    "accept-current": 135,
+    "confirm-prior-correction": 85,
+    "no-op-no-direct-localized-caller": 12,
+    "reopen-prior-accepted": 8
+  },
+  "exact_prior_match_records": 457,
+  "locale_count": 12,
+  "native_speaker_approval": false,
+  "native_speaker_review_required": true,
+  "new_correction_candidates": 0,
+  "no_direct_localized_caller_source_ids": [
+    "Build result-filter conditions without memorizing the filter syntax."
+  ],
+  "no_op_cells": 12,
+  "per_locale": {
+    "ar": {
+      "accept-current": 14,
+      "confirm-prior-correction": 3,
+      "no-op-no-direct-localized-caller": 1,
+      "reopen-prior-accepted": 2
+    },
+    "de": {
+      "accept-current": 12,
+      "confirm-prior-correction": 6,
+      "no-op-no-direct-localized-caller": 1,
+      "reopen-prior-accepted": 1
+    },
+    "es": {
+      "accept-current": 12,
+      "confirm-prior-correction": 5,
+      "no-op-no-direct-localized-caller": 1,
+      "reopen-prior-accepted": 2
+    },
+    "fr": {
+      "accept-current": 14,
+      "confirm-prior-correction": 4,
+      "no-op-no-direct-localized-caller": 1,
+      "reopen-prior-accepted": 1
+    },
+    "hi": {
+      "accept-current": 13,
+      "confirm-prior-correction": 5,
+      "no-op-no-direct-localized-caller": 1,
+      "reopen-prior-accepted": 1
+    },
+    "id": {
+      "accept-current": 12,
+      "confirm-prior-correction": 6,
+      "no-op-no-direct-localized-caller": 1,
+      "reopen-prior-accepted": 1
+    },
+    "ja": {
+      "accept-current": 11,
+      "confirm-prior-correction": 8,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "ko": {
+      "accept-current": 12,
+      "confirm-prior-correction": 7,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "pt-BR": {
+      "accept-current": 12,
+      "confirm-prior-correction": 7,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "vi": {
+      "accept-current": 7,
+      "confirm-prior-correction": 12,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "zh-Hans": {
+      "accept-current": 8,
+      "confirm-prior-correction": 11,
+      "no-op-no-direct-localized-caller": 1
+    },
+    "zh-Hant": {
+      "accept-current": 8,
+      "confirm-prior-correction": 11,
+      "no-op-no-direct-localized-caller": 1
+    }
+  },
+  "placeholder_source_keys": [
+    "Bulk actions ({count})",
+    "Bulk actions ({count})",
+    "Bulk actions ({count})",
+    "Bulk actions ({count})",
+    "Bulk actions ({count})",
+    "Bulk actions ({count})",
+    "Bulk actions ({count})",
+    "Bulk actions ({count})",
+    "Bulk actions ({count})",
+    "Bulk actions ({count})",
+    "Bulk actions ({count})",
+    "Bulk actions ({count})"
+  ],
+  "pr_head": "fa712d12ec3a41ed5e4f2e264f6b550ddbdaba6e",
+  "pr_number": 204,
+  "pr_tree": "9f1111e6d75f082af5a0cf4bf346ad12b71cdfd1",
+  "primary_reviewed_cells": 228,
+  "prior_routed_rows_in_window": 0,
+  "reopened_prior_acceptances": 8,
+  "repository": "snapetech-org/slskR",
+  "review_window_indices": [
+    523,
+    542
+  ],
+  "schema_version": 1,
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_key_count": 20,
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "stale_prior_match_records": 0,
+  "tests_builds_scans_ci_workflows_releases_tags_merges": false
+}

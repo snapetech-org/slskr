@@ -50,13 +50,6 @@ const interfaceLanguageOptions = INTERFACE_LANGUAGE_OPTIONS.map((option) => ({
   ...option,
   text: localizedOptionLabel(option),
 }));
-const regionalFormatOptions = REGIONAL_FORMAT_OPTIONS.map((option) => ({
-  ...option,
-  text: localizedOptionLabel(
-    option,
-    option.value === 'system' ? 'en' : option.value,
-  ),
-}));
 
 const storageKey = EXPERIENCE_PREFERENCES_STORAGE_KEY;
 
@@ -86,7 +79,6 @@ const defaults = {
 };
 
 const options = {
-  regionalFormat: regionalFormatOptions,
   actionPreviewDensity: [
     { key: 'compact', get text() { return interfaceText("Compact"); }, value: 'compact' },
     { key: 'detailed', get text() { return interfaceText("Detailed"); }, value: 'detailed' },
@@ -132,7 +124,7 @@ const options = {
 
 const maxPreferenceTextCharacters = 2_048;
 const preferenceOptionValues = {
-  regionalFormat: options.regionalFormat.map((option) => option.value),
+  regionalFormat: REGIONAL_FORMAT_OPTIONS.map((option) => option.value),
   discoveryApprovalFilter: options.approvalFilter.map((option) => option.value),
   discoveryExplanationDetail: options.explanationDetail.map((option) => option.value),
   playerDefaultVisualizer: options.visualizerDefault.map((option) => option.value),
@@ -197,6 +189,15 @@ const ExperienceSettings = () => {
   const mountedRef = useMountedRef();
   const regionalFormat = useRegionalFormat();
   const { language, setLanguage, t } = useInterfaceLanguage();
+  const regionalFormatOptions = REGIONAL_FORMAT_OPTIONS.map((option) => ({
+    ...option,
+    text: localizedOptionLabel(
+      option.value === 'system'
+        ? { ...option, text: t('Use browser settings') }
+        : option,
+      option.value === 'system' ? language : option.value,
+    ),
+  }));
 
   useEffect(() => {
     setForm(readStoredPreferences());
@@ -311,7 +312,7 @@ const ExperienceSettings = () => {
                 label={<span lang={language}>{t('Date, time, and number format')}</span>}
                 lang={language}
                 onChange={(_, { value }) => update('regionalFormat', value)}
-                options={options.regionalFormat}
+                options={regionalFormatOptions}
                 value={form.regionalFormat}
               />
             </Form>

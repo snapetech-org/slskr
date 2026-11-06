@@ -1,0 +1,96 @@
+{
+  "sourceHead": "99282b2f9b904f9814f5be66d8f643175e134f8e",
+  "sourceTree": "ba0ba0790da40159b8d92935f0866cb6a112edce",
+  "repoWorktree": "/home/keith/Documents/code/task-worktrees/localization-20261102-slskr",
+  "sourceRecordCount": 20,
+  "populatedLocaleCellCount": 240,
+  "verifiedCallerPinCount": 24,
+  "sourceInputs": [
+    "source-inventory.jsonl: only inventory position, sourceId, source hash",
+    "caller-pins.jsonl: exact caller path/context/file+line hashes",
+    "catalog-pins.jsonl: locale/catalog file pins"
+  ],
+  "primaryCandidateOrDispositionOutputsRead": false,
+  "sourceOnlyInputSha256": "fc47688205057d983aff4895dc0ef82c418e4f1f2f67ff30d8a4aeb44d65df56",
+  "localePins": [
+    {
+      "locale": "ar",
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "fileSha256": "09cbe2697570b93cddaa11f9d24156192e6f4df267e957b68d971100023dbc26"
+    },
+    {
+      "locale": "de",
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "fileSha256": "26f203f7ddf3db6601c8e5abca8ece48bd8109b3652c1697aab0c1665d60776e"
+    },
+    {
+      "locale": "es",
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "fileSha256": "798bc324d61c5809096c966d82fb12c0fe60de001c5baef37703989cc8518163"
+    },
+    {
+      "locale": "fr",
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "fileSha256": "09a147d0fc0aa66d79a7425a3999c2f971829467e31a0590c54c849366e6e511"
+    },
+    {
+      "locale": "hi",
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "fileSha256": "b432ea6a947f1d1891a388249413ea15bf48ee0dd6b41a4f1891b55e011af6c6"
+    },
+    {
+      "locale": "id",
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "fileSha256": "31a03e27b224d7609965d25e9dc1e5419863e9a637ec7da2078b8bce1de04158"
+    },
+    {
+      "locale": "ja",
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "fileSha256": "59c01bee3c1940ad2f3e9ea120b73a78d181a5ee29a1cbddb664b2d02756e470"
+    },
+    {
+      "locale": "ko",
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "fileSha256": "fe49675ada4c37e533cc1f1554fc22c2a1880f1d1a6d57b9ac878f09d3dc6f2b"
+    },
+    {
+      "locale": "pt-BR",
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "fileSha256": "d7dd0882b696ebefbee45d7cd7d9815ec23a2c076166187fcccc446cb7dc924f"
+    },
+    {
+      "locale": "vi",
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "fileSha256": "2ac25da56dfe21534bc16416839422c58b62054c022c6a8286aff85ad145e2b0"
+    },
+    {
+      "locale": "zh-Hans",
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "fileSha256": "abdd5c2d418d849b961f0e97772569819fc0fb2ec27779a925293237b16dbc27"
+    },
+    {
+      "locale": "zh-Hant",
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "fileSha256": "472a52fe25c5fc0d0ae1faff0959e1d84100bab32b79de3a920e193a51a20b52"
+    }
+  ],
+  "pullRequest": {
+    "number": 204,
+    "url": "https://github.com/snapetech-org/slskr/pull/204",
+    "state": "OPEN",
+    "draft": true,
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "99282b2f9b904f9814f5be66d8f643175e134f8e",
+    "baseRefName": "main"
+  },
+  "exactTree": "ba0ba0790da40159b8d92935f0866cb6a112edce",
+  "officialTaskGitHubRefHead": "99282b2f9b904f9814f5be66d8f643175e134f8e",
+  "worktreeBranch": "codex/slskr-l10n-audit-20261030",
+  "worktreeStatus": "clean",
+  "reviewer": "independent blind cross-review",
+  "upstreamInputFileSha256": {
+    "source-inventory.jsonl": "8ea3b0af9adf3eb93bedeaba0de017a727f74ee90efdb67d763806f322af1156",
+    "caller-pins.jsonl": "53d656f5022d1806c4dbcde8256882c69a55617af1632e1569f27ed5579f4b88",
+    "catalog-pins.jsonl": "6e483575534f7256fcc79f3227d6bee303d71ae6ae144b7a9d65817c9a9a5327"
+  }
+}

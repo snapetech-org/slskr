@@ -1,0 +1,65 @@
+{
+  "activeHoldIdHashOnly": "1719::id",
+  "artifact": "slskR PR #209 W1743-W1762 primary semantic review ledger",
+  "baseRef": "main",
+  "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "callerBackedCells": 216,
+  "callerlessCellsHashOnly": 24,
+  "callerlessPositions": [
+    1754,
+    1755
+  ],
+  "candidateFreeInputChecksumsSha256": {
+    "SHA256SUMS.txt": "451cbab646d5deb9dd8564aa9e39e9abc508c1d6c1dfc6d0118048663a0785f6",
+    "active-hold-reattestation.jsonl": "20e7ed50d949e0dc16bd4365a37d7f2a217a99bd48a6d9f3b356b983df23a19a",
+    "caller-resolution-holds.jsonl": "0d2cd1d16781950d9a51b1bed728f3c48917fae3476eb035bb3da9a9d820b8e2",
+    "catalog-file-pins.json": "7074c68c00dad134a4f4a5e548c77ea483ed3bf691fa3ee29fecc9db011e068a",
+    "current-target-cells.jsonl": "e7ec1eb504c176ccf6d3ee6398d7c7d2417f03cbf355d1f25fcbd7c981e3bc01",
+    "localization-runtime-context.json": "25614de30a3ec662aa4255f3b705a9f2399a38b7be75f7e6a5239a993855c69d",
+    "manifest.json": "ece7849af83f11071f952b38f0a625dda25e94e963488f1d889b65b66ada1e43",
+    "source-contexts.jsonl": "f7c24ede726021d7d121819ce0b21079a397d48b27da6b92c9db9a1ee31d7d4b",
+    "source-queue.jsonl": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45"
+  },
+  "candidateFreeInputDirectory": "../candidate-free-input",
+  "candidateFreeManifestSha256": "ece7849af83f11071f952b38f0a625dda25e94e963488f1d889b65b66ada1e43",
+  "cellCount": 240,
+  "currentTargetTextCopiedToLedger": false,
+  "dispositionCounts": {
+    "accept-current": 183,
+    "correction": 7,
+    "hold": 24,
+    "refinement": 26
+  },
+  "head": "ccbc3dc721c1cbd225d4e512f4f0af4c80476620",
+  "independentBlindPacketRead": false,
+  "localeCount": 12,
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "nativeSpeakerReview": false,
+  "positionRange": [
+    1743,
+    1762
+  ],
+  "providedProposedTranslationsRead": false,
+  "pullRequest": 209,
+  "repository": "snapetech-org/slskR",
+  "reviewConfidence": "moderate",
+  "sourceCount": 20,
+  "tree": "075d1b72a2fd080404ebec19d354cb863638df21",
+  "verificationStatus": "pass",
+  "verifiedAtUtc": "2026-11-05T16:18:00Z",
+  "verifier": "python3 verify_primary_review.py",
+  "window": "W1743-W1762"
+}

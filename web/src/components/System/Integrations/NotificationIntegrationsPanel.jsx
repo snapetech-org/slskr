@@ -1,6 +1,11 @@
-import LocalizedText from "../../Shared/LocalizedText";
-import { interfaceText, interfaceTextProps, useInterfaceLanguage } from "../../../lib/interfaceLocale";
-import { toDisplayError } from '../../../lib/errors';
+import LocalizedText, { LocalizedErrorOutput } from "../../Shared/LocalizedText";
+import {
+  INTERFACE_LANGUAGE_OPTIONS,
+  interfaceText,
+  interfaceTextProps,
+  useInterfaceLanguage,
+} from "../../../lib/interfaceLocale";
+import { toDisplayErrorOutput } from '../../../lib/errors';
 import * as optionsApi from '../../../lib/options';
 import * as YAML from 'yaml';
 import React, { useEffect, useState } from 'react';
@@ -23,6 +28,26 @@ import {
   toNumber,
   useAsyncGuard,
 } from './integrationsShared';
+
+const notificationLanguageOptions = INTERFACE_LANGUAGE_OPTIONS.map((option) => {
+  const [nativeName, englishName] = option.text.split(' — ');
+  const direction = option.value === 'ar' ? 'rtl' : 'ltr';
+
+  return {
+    ...option,
+    text: (
+      <>
+        <span dir={direction} lang={option.value}>{nativeName}</span>
+        {englishName && (
+          <>
+            {' — '}
+            <span dir="ltr" lang="en">{englishName}</span>
+          </>
+        )}
+      </>
+    ),
+  };
+});
 
 const NotificationIntegrationsPanel = ({ options }) => {
   useInterfaceLanguage();
@@ -109,6 +134,7 @@ const NotificationIntegrationsPanel = ({ options }) => {
 
     return {
       integration: {
+        notificationLanguage: form.notificationLanguage,
         ntfy: ntfyPatch,
         pushbullet: pushbulletPatch,
         pushover: pushoverPatch,
@@ -152,13 +178,13 @@ const NotificationIntegrationsPanel = ({ options }) => {
       markSecretsConfigured(overlay);
       setMessage({
         positive: true,
-        text: interfaceText("Notification integration settings applied for this running daemon."),
+        source: "Notification integration settings applied for this running daemon.",
       });
     } catch (error) {
       if (!asyncGuard.isCurrent(requestId)) return;
       setMessage({
         negative: true,
-        text: toDisplayError(
+        output: toDisplayErrorOutput(
           error,
           'Failed to apply notification integration settings.',
         ),
@@ -184,6 +210,10 @@ const NotificationIntegrationsPanel = ({ options }) => {
       const ntfyPatch = overlay.integration.ntfy;
       const pushoverPatch = overlay.integration.pushover;
 
+      set(
+        ['integrations', 'notification_language'],
+        overlay.integration.notificationLanguage,
+      );
       set(['integrations', 'pushbullet', 'enabled'], pushbulletPatch.enabled);
       set(
         ['integrations', 'pushbullet', 'notification_prefix'],
@@ -256,13 +286,13 @@ const NotificationIntegrationsPanel = ({ options }) => {
       markSecretsConfigured(overlay);
       setMessage({
         positive: true,
-        text: interfaceText("Notification integration settings saved to YAML."),
+        source: "Notification integration settings saved to YAML.",
       });
     } catch (error) {
       if (!asyncGuard.isCurrent(requestId)) return;
       setMessage({
         negative: true,
-        text: toDisplayError(
+        output: toDisplayErrorOutput(
           error,
           'Failed to save notification integration settings.',
         ),
@@ -327,7 +357,9 @@ const NotificationIntegrationsPanel = ({ options }) => {
             positive={message.positive}
             size="small"
           >
-            {message.text}
+            {message.source
+              ? <LocalizedText source={message.source} />
+              : <LocalizedErrorOutput output={message.output} />}
           </Message>
         )}
         {missingRequiredSettings.length > 0 && (
@@ -335,11 +367,28 @@ const NotificationIntegrationsPanel = ({ options }) => {
             size="small"
             warning
           >
-            <Message.List items={missingRequiredSettings} />
+            <Message.List
+              items={missingRequiredSettings.map((source) => ({
+                key: source,
+                content: <LocalizedText source={source} />,
+              }))}
+            />
           </Message>
         )}
 
         <Form className="notification-settings-form">
+          <Form.Select
+            aria-label={interfaceText("Notification title language")}
+            disabled={!remoteConfiguration || saving}
+            label={<LocalizedText source={"Notification title language"} />}
+            onChange={(_, { value }) => update('notificationLanguage', value)}
+            options={notificationLanguageOptions}
+            value={form.notificationLanguage}
+           {...interfaceTextProps("Notification title language")}/>
+          <LocalizedText
+            as="p"
+            source={"Choose the language used for app-authored notification titles. Message text and notification prefixes stay unchanged."}
+          />
           <Segment>
             <Header as="h4">
               <Icon name="paper plane" />

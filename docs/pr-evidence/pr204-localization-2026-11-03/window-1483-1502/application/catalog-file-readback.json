@@ -1,0 +1,66 @@
+[
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.ar.json",
+    "preimageFileSha256": "397e46d868a980678afecb7f7ae86a528ef7c01373d73ee4e3b3fd5ec8f23649",
+    "readbackFileSha256": "35a4bf33898179e005fa07925174b1c5dfa0bf320faa295da536f2f8d57846af",
+    "preimageGitBlob": "f94136d1dd68c38f1e31bd9f1c32c73e743910d2",
+    "updatedKeyCount": 2,
+    "onlyPlannedKeysChanged": true
+  },
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.es.json",
+    "preimageFileSha256": "830e42b3e75ca95736178a70e36bf7822ccf58aa7bf2a7da8de126b75931e9d1",
+    "readbackFileSha256": "87f80a1c56303b184b33d021d44898cb6a6cf44bf8acce58b067e2dfb2f5e453",
+    "preimageGitBlob": "54564463accfe3c6071486110a4979c268bec19d",
+    "updatedKeyCount": 3,
+    "onlyPlannedKeysChanged": true
+  },
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.fr.json",
+    "preimageFileSha256": "67259e3b4f08de3b1abf0aaa83cec0d01edab9b143546c1b603b29d36ab34f28",
+    "readbackFileSha256": "e83512532420e600cf7db3099c0baed497cfe04894dfb49b6ce0fef514933394",
+    "preimageGitBlob": "163ad35937511660c8b51d08d86a3e67654c07c6",
+    "updatedKeyCount": 3,
+    "onlyPlannedKeysChanged": true
+  },
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.hi.json",
+    "preimageFileSha256": "31c02671bf347df02481ef9655b5fc3bfbfc283ccfe108c11f32902c7189fd17",
+    "readbackFileSha256": "58c341b8352ea9fd2ed516e678ff144ec3b3ac639e232f90a40ab6b7a9e2b934",
+    "preimageGitBlob": "e09efa8d621c7abf4db682658a2fad4d0d028f29",
+    "updatedKeyCount": 2,
+    "onlyPlannedKeysChanged": true
+  },
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.id.json",
+    "preimageFileSha256": "9293b58522543c09615430c359a8636834234422870867b1cfcbbe6072eb9a9a",
+    "readbackFileSha256": "379559a466242f2245e5cec0d2615bb14b22f707b19589b8df56cd9caaa7cf60",
+    "preimageGitBlob": "b1f7316475a4858ef4960cde8c96945047b80442",
+    "updatedKeyCount": 1,
+    "onlyPlannedKeysChanged": true
+  },
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.ko.json",
+    "preimageFileSha256": "f3e7a473c5922204c57209d420dcf748dec2167b8b61a5ac06dbd8b17db93a33",
+    "readbackFileSha256": "ce4e279e07be041aebd5311e0d8dc9593bda96c2153a2e5c00bc0f01c729bef6",
+    "preimageGitBlob": "fb313b44af82aca5859f09ce914522cc779cbde6",
+    "updatedKeyCount": 1,
+    "onlyPlannedKeysChanged": true
+  },
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json",
+    "preimageFileSha256": "66e08568cab30b874e9f7d159e568a2d562e46bb5fcde40fef1d98242d060a13",
+    "readbackFileSha256": "bdcd0d388d85affb8851cf03bf1c1f298697ec245a6e8801fc4e96897f683e25",
+    "preimageGitBlob": "491ff01404975923ff010e3e51adf03ad2537744",
+    "updatedKeyCount": 2,
+    "onlyPlannedKeysChanged": true
+  },
+  {
+    "catalogPath": "web/src/lib/locales/ui-labels.vi.json",
+    "preimageFileSha256": "08f3865eff587498a2b8da8b342927077f9041595874b39479f9c1e64d65cf75",
+    "readbackFileSha256": "5b45ac0c11cc9f18895238fdccc8d3f3ca99106f1f8992e290e39446cbd7c86a",
+    "preimageGitBlob": "f738e6e8fe3a4734dd682e5671e6ae15cf07bbc2",
+    "updatedKeyCount": 1,
+    "onlyPlannedKeysChanged": true
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "artifact": "slskR PR #204 W1483-W1502 primary review packet",
+  "head": "a8c2b4cf5f771f8b574001239aa9217697097d6f",
+  "tree": "35f48ee94ec7bcaa3b8b47869f2dd119e219ccfd",
+  "selectedPositions": [
+    1483,
+    1502
+  ],
+  "cellCount": 240,
+  "proposalCount": 12,
+  "dispositionCounts": {
+    "accept-current": 228,
+    "correct": 12
+  },
+  "currentTokenMismatchCounts": {
+    "protectedLiterals": 2
+  },
+  "candidateFreeInputManifestSha256": "662b3139b833e785360fb850a52fa2abad5340ee1540f2b0cff9a11b8384a809",
+  "candidateFreeInputSha256SumsSha256": "abefdf3426836ba948e9cdc755bdd8ac655e5a782b1c9c2d557fd61fae3ea9e1",
+  "files": {
+    "PR-attestation-after.json": {
+      "sha256": "3132f9538cb2625b743b67a06ad64c956180a2e5ec0af052b78e86d484a212ac",
+      "byteCount": 1065
+    },
+    "PR-attestation-before.json": {
+      "sha256": "cabe93f701e0b33ee9ebef22275f752dcdf9000b8790cf3fa226517692cf3d0e",
+      "byteCount": 1065
+    },
+    "README.md": {
+      "sha256": "d72fac15d10977012443b7b6a4a58b14e35f058b0506cbf54135b5eda4562f5d",
+      "byteCount": 816
+    },
+    "primary-ledger.jsonl": {
+      "sha256": "8db61ebbbd688b845a6967fcb14054ddb5b0e9746557adb38d292a84061cbcf7",
+      "byteCount": 245128
+    },
+    "verify-primary.py": {
+      "sha256": "24a6d06d86f852fdd94ebd2b5423575bb1bd992a12ec9134321b2509db3c4dcd",
+      "byteCount": 3295
+    }
+  }
+}

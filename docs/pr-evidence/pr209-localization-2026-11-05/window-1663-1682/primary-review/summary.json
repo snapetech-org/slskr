@@ -1,0 +1,67 @@
+{
+  "baseRef": "main",
+  "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "branch": "codex/slskr-l10n-audit-20261104-resync",
+  "callerFileCount": 17,
+  "callerOccurrenceCount": 25,
+  "callerReferenceCount": 25,
+  "callerlessCells": 0,
+  "candidateFreeChecksumListSha256": "f4782cd47209da6d2cf99e5a0ae988b091782dc743cd50ddd5121fc24d5d8077",
+  "candidateFreeChecksummedFileCount": 41,
+  "candidateFreeManifestSha256": "c9738795b32181465d0c962799567bb8c69a3954c9822ddfa768f85f4d73dd60",
+  "candidateFreeVerifierResult": "PASS; 41 checksummed files, 240 cells, callers and token pins verified",
+  "cellCount": 240,
+  "confidenceCounts": {
+    "moderate": 240
+  },
+  "decisionCounts": {
+    "accept-current": 231,
+    "correction": 3,
+    "refinement": 6
+  },
+  "exactHead": "2ab97d1a21f7d001eb9470c76b3636f59f600609",
+  "exactTree": "63097ec7c80be0bef55fb1bde5a38da7b6a59ce7",
+  "holdCount": 0,
+  "inProductVisualReviewPerformed": false,
+  "limitations": "AI language review without qualified native-speaker signoff. Arabic dynamic {error} substitutions were preserved; runtime bidi rendering was outside this text-only review.",
+  "localeCount": 12,
+  "locales": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "nativeSpeakerReviewPerformed": false,
+  "olderReviewProposalContentRead": false,
+  "outputPrimaryVerifierResult": "PASS; 240 cells, proposals, exact refs, repository commit/tree/catalog blobs and checksums verified",
+  "positions": {
+    "end": 1682,
+    "start": 1663
+  },
+  "proposalCount": 9,
+  "pullRequest": 209,
+  "repository": "snapetech-org/slskR",
+  "repositoryOrPrEdited": false,
+  "result": "PASS",
+  "reviewType": "primary independent semantic review",
+  "schemaVersion": 1,
+  "sourceCount": 20,
+  "testsBuildsScansCiOrWorkflowsRun": false,
+  "tokenAudit": {
+    "candidateFreeCurrentTargetMismatches": 0,
+    "colonPrefixes": true,
+    "markupTags": true,
+    "numericTokens": true,
+    "placeholders": true,
+    "protectedLiterals": true,
+    "recommendedTargetMismatches": 0
+  }
+}

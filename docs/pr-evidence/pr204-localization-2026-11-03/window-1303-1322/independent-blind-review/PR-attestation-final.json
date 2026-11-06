@@ -1,0 +1,18 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "state": "OPEN",
+  "draft": true,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "baseBranch": "main",
+  "head": "f46b8b2322f4b944f39f34d5bb8d55852ba330c8",
+  "tree": "4eba98f951a745dac6b5332bd6796bf57c7037e2",
+  "branchRef": "f46b8b2322f4b944f39f34d5bb8d55852ba330c8",
+  "pullRef": "f46b8b2322f4b944f39f34d5bb8d55852ba330c8",
+  "packetManifestSha256": "3145ccef78adbea528fe062d053ba90067207c4c49611ba43994da78383b244c",
+  "attestedAtUtc": "2026-11-03T12:53:06.157343+00:00",
+  "sourceCheckout": "../source-checkout (removed after review)",
+  "sourceCheckoutClean": true,
+  "note": "Live PR, branch ref, pull ref, checkout HEAD/tree all re-attested; no PR body or primary review data was read.",
+  "sourceCheckoutCleanup": "Task-owned clean checkout removed after final source-context verification; no repo changes existed."
+}

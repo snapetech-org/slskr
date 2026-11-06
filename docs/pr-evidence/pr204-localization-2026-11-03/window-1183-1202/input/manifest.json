@@ -1,0 +1,174 @@
+{
+  "baseRef": "main",
+  "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "callerFileCount": 22,
+  "callerReferenceCount": 37,
+  "candidateFreeInputOnly": true,
+  "cellCount": 240,
+  "draft": true,
+  "head": "8e60a51ec25967df115a3fd8c42872abbec58d8a",
+  "headRef": "codex/slskr-l10n-audit-20261030",
+  "localWorktree": "/mnt/disks/scratch/task-worktrees/localization-20261103/slskr-pr204-w1123-1142-apply",
+  "localWorktreeBranch": "codex/slskr-pr204-w1123-20261103",
+  "localWorktreeHead": "8e60a51ec25967df115a3fd8c42872abbec58d8a",
+  "localWorktreeStatusClean": true,
+  "localWorktreeTree": "c2ec31432943730f0a8f3ee87687c46b6a4400c2",
+  "localeCount": 12,
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "nativeSpeakerApproval": false,
+  "opaqueRuntimeValuesPolicy": "Caller lines and runtime expressions are captured verbatim from pinned source files; values are not evaluated, inferred, or rewritten.",
+  "placeholderTokenSequenceMismatchCount": 0,
+  "proposedTranslationsIncluded": false,
+  "pullRequest": 204,
+  "remotePullRefHead": "8e60a51ec25967df115a3fd8c42872abbec58d8a",
+  "repository": "snapetech-org/slskR",
+  "selectedPositions": [
+    1183,
+    1202
+  ],
+  "selectionRule": "One-based positions 1183–1202 in the 5,441 unique English source lookup keys shared by the 12 runtime locale catalogs; keys are sorted lexicographically by exact Unicode string and source strings are direct catalog lookup keys.",
+  "semanticReviewIncluded": false,
+  "sourceContextRows": 20,
+  "sourceCount": 20,
+  "sourceIds": [
+    {
+      "callerReferenceCount": 2,
+      "position": 1183,
+      "sourceKey": "Discovery shelf expiry days",
+      "sourceKeySha256": "5c810ae9cabe76f191904f160f5d7bda7bf9ddf969bda16430099a0c22f2eb13"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1184,
+      "sourceKey": "Dismiss",
+      "sourceKeySha256": "48845bff334a50a59aaecf499f28a7a24c3b4b891b8b18a9f1169ad8e8a6b261"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1185,
+      "sourceKey": "Dismiss port migration reminder",
+      "sourceKeySha256": "3c612743c37bed75857e00abc2a9d3371c594469c07fd411e5b60261478c80e5"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1186,
+      "sourceKey": "Dismiss this port migration reminder until the forwarded ports change again.",
+      "sourceKeySha256": "09dd3b2f2adfb0187587ce1b9206037b9c82acc8ac8c7cb6d01f0b3b6a5e949d"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1187,
+      "sourceKey": "Display Name:",
+      "sourceKeySha256": "01c17432f91bc0ec6cf2e5fe9d72fa52f7f4a5fae6c2485176f948f5315aceef"
+    },
+    {
+      "callerReferenceCount": 3,
+      "position": 1188,
+      "sourceKey": "DisplayName is required.",
+      "sourceKeySha256": "3d0a7ce5edaddd5bd0180ec6b58de62c8e716eb5a46e42d1550a6f5a5567c9ab"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1189,
+      "sourceKey": "Dissenting jurors",
+      "sourceKeySha256": "0a44c64e88882ce3c6860b3e41a64482437f0d565eecab4a5a9352f10bdd9795"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1190,
+      "sourceKey": "Distinct Users",
+      "sourceKeySha256": "82127cc41ffc8878a1352716c35fbd37e294c7e32ed1e01dbc5b1a230b872d06"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1191,
+      "sourceKey": "Distinct peers",
+      "sourceKeySha256": "c96fde8493e0152ad7530fbeab31720fac0a5c359f5ed10b6677181398191632"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1192,
+      "sourceKey": "Do not change cover art",
+      "sourceKeySha256": "b137ae348fb04b58fdbab2c7755ea82a680be7f709d46359d612125021e1b1cf"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1193,
+      "sourceKey": "Do not run ReplayGain",
+      "sourceKeySha256": "2a70ee2bee7d4c43ca408b6821785ef89cb5221537821243cc4de2d6a85548a5"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1194,
+      "sourceKey": "Domain",
+      "sourceKeySha256": "79fa33618d8eaa1fc55f6f8a2d34c65ececc4c5961ac2b1433802c2629d55ca1"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1195,
+      "sourceKey": "Domain Search",
+      "sourceKeySha256": "a77619f5fa533558793432bc2cd049c493903ca4f28f5fa5031558424833036d"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1196,
+      "sourceKey": "Domain configured",
+      "sourceKeySha256": "b35cf7a0e4bd10b8127480a1e1b31a2c53eed08f3e7e1cee606be509e7158472"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1197,
+      "sourceKey": "Domain is required",
+      "sourceKeySha256": "025f3d105c5c8f7cdf93ea6086e0851291e2235057acbe1bd877cc36b9296ac5"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1198,
+      "sourceKey": "Domain to front through (e.g., major CDN domains). Traffic appears to connect to this domain.",
+      "sourceKeySha256": "63b20adec9867ff0e1d7c170032daa2921addda25f0e9e529efecfc696d488d2"
+    },
+    {
+      "callerReferenceCount": 2,
+      "position": 1199,
+      "sourceKey": "Domain:",
+      "sourceKeySha256": "a4c7de063119163c41ede5e54542b7b4b4d3d5b03381af13359a2477ac8cd45d"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1200,
+      "sourceKey": "Domains",
+      "sourceKeySha256": "ced67718ea0f31eb4fcb32715449aa8a3527583f27af07f3c518d6686d5dd2b1"
+    },
+    {
+      "callerReferenceCount": 1,
+      "position": 1201,
+      "sourceKey": "Domains:",
+      "sourceKeySha256": "c989877eb7092e4f64e3b40e3c1f4055e90eff3e15f7cb613f674f5bbdc9def5"
+    },
+    {
+      "callerReferenceCount": 5,
+      "position": 1202,
+      "sourceKey": "Done",
+      "sourceKeySha256": "11a6767d5674c7e45f7e00dc525762275b3a48491ad6045427d2609cc496c516"
+    }
+  ],
+  "sourceLookupKeyOrderHashFormat": "SHA-256 of all unique source keys sorted lexicographically, one exact key per line, trailing newline.",
+  "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "sourceRecordCount": 5441,
+  "state": "open",
+  "tree": "c2ec31432943730f0a8f3ee87687c46b6a4400c2",
+  "window": "W1183-W1202"
+}

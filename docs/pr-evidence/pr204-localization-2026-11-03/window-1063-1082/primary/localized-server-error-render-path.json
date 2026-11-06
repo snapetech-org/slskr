@@ -1,0 +1,334 @@
+{
+  "sourceId": "Data points must be between 2 and 168",
+  "inputHead": "328f33ba8dda766539e0b9cded6f94e5d0d8f716",
+  "reasoning": "The exact GET /api/swarm/analytics/trends route emits this fixed app-authored message when dataPoints is out of range. The React SwarmAnalytics page calls the trends API, catches the response through toDisplayError, and displays the result in its visible error message and toast. errors.js recognizes allowlisted app messages and passes the source through interfaceText, so the matching catalog value has a pinned localized production render path.",
+  "files": [
+    {
+      "path": "crates/slskr/src/route_dispatch_group_6_relay_controller.rs",
+      "fileSha256": "4f86420157140550b3d16f5309e16defc02c338658a628d26c10739797263ffe",
+      "gitBlob": "3a6f8f9bb2c3f8ea69e741499b7af3e9dbc1c4f4",
+      "snippets": [
+        {
+          "startLine": 725,
+          "endLine": 734,
+          "lines": [
+            {
+              "line": 725,
+              "text": "         (\"GET\", \"/api/swarm/analytics/trends\") => {"
+            },
+            {
+              "line": 726,
+              "text": "             if query_bounded_usize(route.query, \"timeWindowHours\", 1, 168).is_err() {"
+            },
+            {
+              "line": 727,
+              "text": "                 return Ok(routing::bad_request_response("
+            },
+            {
+              "line": 728,
+              "text": "                     \"Time window must be between 1 and 168 hours (7 days)\","
+            },
+            {
+              "line": 729,
+              "text": "                 ));"
+            },
+            {
+              "line": 730,
+              "text": "             }"
+            },
+            {
+              "line": 731,
+              "text": "             if query_bounded_usize(route.query, \"dataPoints\", 2, 168).is_err() {"
+            },
+            {
+              "line": 732,
+              "text": "                 return Ok(routing::bad_request_response("
+            },
+            {
+              "line": 733,
+              "text": "                     \"Data points must be between 2 and 168\","
+            },
+            {
+              "line": 734,
+              "text": "                 ));"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/serverErrorMessageAllowlist.js",
+      "fileSha256": "de7bf779c371f2a93d106124d32051b39836c0e7cd557e314c11f7755ce004bc",
+      "gitBlob": "d9eed15e55416d5e5fa06657c9c86b287b9b3260",
+      "snippets": [
+        {
+          "startLine": 58,
+          "endLine": 58,
+          "lines": [
+            {
+              "line": 58,
+              "text": "  \"Data points must be between 2 and 168\","
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/errors.js",
+      "fileSha256": "7f162f5b8715dd15b1b2cbd2e7578f09285f1c5655b55fde9851543d8ca625d4",
+      "gitBlob": "8f5d27d79d93facb8275058d3e37613699dc6970",
+      "snippets": [
+        {
+          "startLine": 24,
+          "endLine": 34,
+          "lines": [
+            {
+              "line": 24,
+              "text": "  const value = error?.response?.data ?? error?.message ?? error;"
+            },
+            {
+              "line": 25,
+              "text": "  const preserveRemoteDetail = error?.isRemoteShareError === true;"
+            },
+            {
+              "line": 26,
+              "text": "  const fallbackOutput = () => appOutput(fallback);"
+            },
+            {
+              "line": 27,
+              "text": ""
+            },
+            {
+              "line": 28,
+              "text": "  if (typeof value === 'number') return opaqueOutput(String(value));"
+            },
+            {
+              "line": 29,
+              "text": "  if (typeof value === 'string') {"
+            },
+            {
+              "line": 30,
+              "text": "    if (!value.trim()) return fallbackOutput();"
+            },
+            {
+              "line": 31,
+              "text": "    return !preserveRemoteDetail && isAppServerErrorMessage(value)"
+            },
+            {
+              "line": 32,
+              "text": "      ? appOutput(value)"
+            },
+            {
+              "line": 33,
+              "text": "      : opaqueOutput(value);"
+            },
+            {
+              "line": 34,
+              "text": "  }"
+            }
+          ]
+        },
+        {
+          "startLine": 71,
+          "endLine": 75,
+          "lines": [
+            {
+              "line": 71,
+              "text": "// app-authored copy and opaque server/provider details retain separate text metadata."
+            },
+            {
+              "line": 72,
+              "text": "export const toDisplayError = (error, fallback = 'Request failed') => {"
+            },
+            {
+              "line": 73,
+              "text": "  const output = toDisplayErrorOutput(error, fallback);"
+            },
+            {
+              "line": 74,
+              "text": "  return output.kind === 'app' ? interfaceText(output.source) : output.text;"
+            },
+            {
+              "line": 75,
+              "text": "};"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "web/src/lib/swarmAnalytics.js",
+      "fileSha256": "b826502946e3eac881575cfe8aef01fe49a4d07637c057ae2b922c12057804c2",
+      "gitBlob": "01d4b56c2bbe25ff1c6824542e6a369f8f89e980",
+      "snippets": [
+        {
+          "startLine": 103,
+          "endLine": 108,
+          "lines": [
+            {
+              "line": 103,
+              "text": "export const getTrends = async (timeWindowHours = 24, dataPoints = 24) => {"
+            },
+            {
+              "line": 104,
+              "text": "  try {"
+            },
+            {
+              "line": 105,
+              "text": "    const response = await api.get("
+            },
+            {
+              "line": 106,
+              "text": "      `/swarm/analytics/trends?${queryString({ timeWindowHours, dataPoints })}`,"
+            },
+            {
+              "line": 107,
+              "text": "    );"
+            },
+            {
+              "line": 108,
+              "text": "    return requireObjectResponse(response.data, 'trend data');"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "web/src/components/System/SwarmAnalytics/index.jsx",
+      "fileSha256": "b020adc0f11520ad1fe52080fdf1d90fe717c3dea9a3c5379973b31514d88c9d",
+      "gitBlob": "6b4db5a84a05d1ffdb560e0e2c8d2708590f3ded",
+      "snippets": [
+        {
+          "startLine": 62,
+          "endLine": 68,
+          "lines": [
+            {
+              "line": 62,
+              "text": "        await Promise.all(["
+            },
+            {
+              "line": 63,
+              "text": "          swarmAnalyticsLibrary.getPerformanceMetrics(timeWindow),"
+            },
+            {
+              "line": 64,
+              "text": "          swarmAnalyticsLibrary.getPeerRankings(rankingLimit),"
+            },
+            {
+              "line": 65,
+              "text": "          swarmAnalyticsLibrary.getEfficiencyMetrics(timeWindow),"
+            },
+            {
+              "line": 66,
+              "text": "          swarmAnalyticsLibrary.getTrends(timeWindow, 24),"
+            },
+            {
+              "line": 67,
+              "text": "          swarmAnalyticsLibrary.getRecommendations(),"
+            },
+            {
+              "line": 68,
+              "text": "        ]);"
+            }
+          ]
+        },
+        {
+          "startLine": 89,
+          "endLine": 101,
+          "lines": [
+            {
+              "line": 89,
+              "text": "    } catch (error) {"
+            },
+            {
+              "line": 90,
+              "text": "      if ("
+            },
+            {
+              "line": 91,
+              "text": "        mountedRef.current &&"
+            },
+            {
+              "line": 92,
+              "text": "        requestIdRef.current === requestId"
+            },
+            {
+              "line": 93,
+              "text": "      ) {"
+            },
+            {
+              "line": 94,
+              "text": "        const message = toDisplayError(error, 'Failed to load analytics');"
+            },
+            {
+              "line": 95,
+              "text": "        setError(message);"
+            },
+            {
+              "line": 96,
+              "text": "        toast.error(message);"
+            },
+            {
+              "line": 97,
+              "text": "        console.error('Failed to fetch analytics:', error);"
+            },
+            {
+              "line": 98,
+              "text": "      }"
+            },
+            {
+              "line": 99,
+              "text": "    } finally {"
+            },
+            {
+              "line": 100,
+              "text": "      if ("
+            },
+            {
+              "line": 101,
+              "text": "        mountedRef.current &&"
+            }
+          ]
+        },
+        {
+          "startLine": 195,
+          "endLine": 202,
+          "lines": [
+            {
+              "line": 195,
+              "text": "          {error && ("
+            },
+            {
+              "line": 196,
+              "text": "            <Message"
+            },
+            {
+              "line": 197,
+              "text": "              data-testid=\"swarm-analytics-error\""
+            },
+            {
+              "line": 198,
+              "text": "              negative"
+            },
+            {
+              "line": 199,
+              "text": "            >"
+            },
+            {
+              "line": 200,
+              "text": "              <Message.Header><LocalizedText source={\"Analytics unavailable\"} /></Message.Header>"
+            },
+            {
+              "line": 201,
+              "text": "              <p>{error}</p>"
+            },
+            {
+              "line": 202,
+              "text": "            </Message>"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

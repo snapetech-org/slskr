@@ -1,0 +1,20 @@
+Existing peer data is retained until the next successful poll.
+Expand All
+Expand player
+Expand search results from {username}
+Expand the player drawer.
+Expand the {title} panel to inspect its contents.
+Expand visualizer to fill the browser window.
+Expand visualizer to full browser window
+Expand {directory}
+Expected track count, folder consistency, album-first ranking.
+Experience
+Experience Preferences
+Experience preference report copied.
+Experience preferences reset to defaults.
+Experience preferences saved locally in this browser.
+Expire unrated after
+Expired Entries:
+Expired Memberships:
+Expired Publications:
+Expires:

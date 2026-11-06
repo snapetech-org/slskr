@@ -1,0 +1,39 @@
+{
+  "exactPrHeadTree": true,
+  "livePrHeadMatches": true,
+  "sourceBaselineAncestor": true,
+  "worktreeClean": true,
+  "sourceInventoryReproduced": true,
+  "selectedWindowMatches": true,
+  "windowAdjacentToPreviousSourceIndex742": true,
+  "nonOverlapWithW703_722AndW723_742": true,
+  "allPinnedSourceKeysPresentInCatalogs": true,
+  "catalogExtraKeysAttestedOutsidePinnedInventory": [
+    "Cancel selected",
+    "Connecting",
+    "Connection Failed",
+    "Loading native Soulseek interests for {username}.",
+    "OK",
+    "Reconnecting",
+    "Retry selected"
+  ],
+  "sourceKeysMissingFromAllCatalogs": [
+    "Cancel{all}",
+    "Click to load native Soulseek interests for",
+    "Loading native interests",
+    "Retry{all}"
+  ],
+  "currentCellCount": 240,
+  "sourceRowCount": 20,
+  "callerPinsReattestedAtHead": true,
+  "targetCatalogBlobsReattestedAtHead": true,
+  "sourceTargetPlaceholderParityFailures": 0,
+  "pluralMapCellCount": 0,
+  "priorDispositionReattestations": 240,
+  "priorAcceptedAndCorrectionRowsReused": 90,
+  "freshCells": 150,
+  "priorSourceHashMismatches": 0,
+  "priorTargetHashMismatches": 0,
+  "boundaryTargetsReattested": 12,
+  "nativeSpeakerApproval": false
+}

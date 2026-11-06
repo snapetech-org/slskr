@@ -1,0 +1,40 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "window": "W1043-W1062",
+  "head": "a5603a2349006684a454953ca746b8a93c5c9f1e",
+  "tree": "04ae03079fbc2dd7c00897025f4b3a344912239c",
+  "sourceIds": 20,
+  "locales": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "cells": 240,
+  "dispositions": {
+    "correction": 73,
+    "accept-current": 131,
+    "refinement": 36
+  },
+  "changedProposals": 109,
+  "sourceHashMismatches": 0,
+  "currentTargetHashMismatches": 0,
+  "placeholderMismatches": 0,
+  "protectedLiteralMismatches": 0,
+  "callerContextSources": 20,
+  "callerReferences": 41,
+  "primaryProposalsRead": false,
+  "repositoryOrApiInspected": false,
+  "nativeSpeakerApproval": false,
+  "blindInputManifestSha256": "3f63c42360ca88399198141d4d2b31e6851b81e041ba6da02bebc1767b915f3d",
+  "blindInputChecksumListSha256": "86ce3f8b0a908087f76ef9d4ae4274672bd18ffaf647aa60165fa16caef57e20"
+}

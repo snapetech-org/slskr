@@ -1,0 +1,252 @@
+{
+  "blindCurrentTargetDispositionMatrix": {
+    "accept-current": {
+      "SEMANTIC_PASS": 142
+    },
+    "correction": {
+      "HOLD_SEMANTIC_OR_LOCALE_REVIEW": 40,
+      "SEMANTIC_PASS": 7
+    },
+    "hold": {
+      "HOLD_NO_EXACT_CALLER": 24
+    },
+    "refinement": {
+      "HOLD_SEMANTIC_OR_LOCALE_REVIEW": 6,
+      "SEMANTIC_PASS": 21
+    }
+  },
+  "candidateFreeInputManifestSha256": "fddc720597ace3e2598efd690cd5b6e07a9fa23b9120e2513cab8a34cc1c9b95",
+  "changedTargetCount": 74,
+  "decisionScopeNote": "The independent blind review saw only current targets; its dispositions do not constitute review of the selected candidate targets. The third-party audit adjudicated each proposed/current target using the pinned source, caller, runtime, and token evidence. This is machine semantic review, not qualified native-speaker approval.",
+  "dispositions": {
+    "accept-current": 142,
+    "correction": 47,
+    "hold": 24,
+    "refinement": 27
+  },
+  "head": "1bb6a4c0d9ac2407ad3ab1191fe454d6661d4763",
+  "independentBlindLedgerSha256": "9c6ae855a4727a67ca657c8463fc6b1272ff3a5fc36543a982e9b2c654c3c87d",
+  "localeCount": 12,
+  "noCallerHoldsRetained": 24,
+  "perPosition": {
+    "1223": {
+      "blindCurrentTargetDispositions": {
+        "HOLD_SEMANTIC_OR_LOCALE_REVIEW": 8,
+        "SEMANTIC_PASS": 4
+      },
+      "dispositions": {
+        "accept-current": 2,
+        "correction": 9,
+        "refinement": 1
+      },
+      "sourceKey": "Download retry attempts"
+    },
+    "1224": {
+      "blindCurrentTargetDispositions": {
+        "HOLD_SEMANTIC_OR_LOCALE_REVIEW": 5,
+        "SEMANTIC_PASS": 7
+      },
+      "dispositions": {
+        "accept-current": 2,
+        "correction": 6,
+        "refinement": 4
+      },
+      "sourceKey": "Download retry delay milliseconds"
+    },
+    "1225": {
+      "blindCurrentTargetDispositions": {
+        "HOLD_SEMANTIC_OR_LOCALE_REVIEW": 9,
+        "SEMANTIC_PASS": 3
+      },
+      "dispositions": {
+        "correction": 9,
+        "refinement": 3
+      },
+      "sourceKey": "Download retry incomplete strategy"
+    },
+    "1226": {
+      "blindCurrentTargetDispositions": {
+        "HOLD_SEMANTIC_OR_LOCALE_REVIEW": 6,
+        "SEMANTIC_PASS": 6
+      },
+      "dispositions": {
+        "accept-current": 2,
+        "correction": 7,
+        "refinement": 3
+      },
+      "sourceKey": "Download retry max delay milliseconds"
+    },
+    "1227": {
+      "blindCurrentTargetDispositions": {
+        "HOLD_NO_EXACT_CALLER": 12
+      },
+      "dispositions": {
+        "hold": 12
+      },
+      "sourceKey": "Download selected files"
+    },
+    "1228": {
+      "blindCurrentTargetDispositions": {
+        "HOLD_SEMANTIC_OR_LOCALE_REVIEW": 12
+      },
+      "dispositions": {
+        "correction": 9,
+        "refinement": 3
+      },
+      "sourceKey": "Download succeeded retention minutes"
+    },
+    "1229": {
+      "blindCurrentTargetDispositions": {
+        "SEMANTIC_PASS": 12
+      },
+      "dispositions": {
+        "accept-current": 12
+      },
+      "sourceKey": "Download the selected files from {folder}?"
+    },
+    "1230": {
+      "blindCurrentTargetDispositions": {
+        "SEMANTIC_PASS": 12
+      },
+      "dispositions": {
+        "accept-current": 12
+      },
+      "sourceKey": "DownloadFileComplete"
+    },
+    "1231": {
+      "blindCurrentTargetDispositions": {
+        "SEMANTIC_PASS": 12
+      },
+      "dispositions": {
+        "accept-current": 11,
+        "correction": 1
+      },
+      "sourceKey": "Downloaded"
+    },
+    "1232": {
+      "blindCurrentTargetDispositions": {
+        "SEMANTIC_PASS": 12
+      },
+      "dispositions": {
+        "accept-current": 11,
+        "refinement": 1
+      },
+      "sourceKey": "Downloaded or prepared for import review."
+    },
+    "1233": {
+      "blindCurrentTargetDispositions": {
+        "SEMANTIC_PASS": 12
+      },
+      "dispositions": {
+        "accept-current": 12
+      },
+      "sourceKey": "Downloaded ·"
+    },
+    "1234": {
+      "blindCurrentTargetDispositions": {
+        "HOLD_NO_EXACT_CALLER": 12
+      },
+      "dispositions": {
+        "hold": 12
+      },
+      "sourceKey": "Downloaders"
+    },
+    "1235": {
+      "blindCurrentTargetDispositions": {
+        "SEMANTIC_PASS": 12
+      },
+      "dispositions": {
+        "accept-current": 12
+      },
+      "sourceKey": "Downloading"
+    },
+    "1236": {
+      "blindCurrentTargetDispositions": {
+        "HOLD_SEMANTIC_OR_LOCALE_REVIEW": 1,
+        "SEMANTIC_PASS": 11
+      },
+      "dispositions": {
+        "accept-current": 11,
+        "refinement": 1
+      },
+      "sourceKey": "Downloads"
+    },
+    "1237": {
+      "blindCurrentTargetDispositions": {
+        "SEMANTIC_PASS": 12
+      },
+      "dispositions": {
+        "accept-current": 6,
+        "refinement": 6
+      },
+      "sourceKey": "Downloads Active"
+    },
+    "1238": {
+      "blindCurrentTargetDispositions": {
+        "HOLD_SEMANTIC_OR_LOCALE_REVIEW": 1,
+        "SEMANTIC_PASS": 11
+      },
+      "dispositions": {
+        "accept-current": 7,
+        "correction": 1,
+        "refinement": 4
+      },
+      "sourceKey": "Downloads Queued"
+    },
+    "1239": {
+      "blindCurrentTargetDispositions": {
+        "SEMANTIC_PASS": 12
+      },
+      "dispositions": {
+        "accept-current": 12
+      },
+      "sourceKey": "Downloads Total"
+    },
+    "1240": {
+      "blindCurrentTargetDispositions": {
+        "SEMANTIC_PASS": 12
+      },
+      "dispositions": {
+        "accept-current": 12
+      },
+      "sourceKey": "Downloads after approval"
+    },
+    "1241": {
+      "blindCurrentTargetDispositions": {
+        "SEMANTIC_PASS": 12
+      },
+      "dispositions": {
+        "accept-current": 12
+      },
+      "sourceKey": "Downloads unavailable"
+    },
+    "1242": {
+      "blindCurrentTargetDispositions": {
+        "HOLD_SEMANTIC_OR_LOCALE_REVIEW": 4,
+        "SEMANTIC_PASS": 8
+      },
+      "dispositions": {
+        "accept-current": 6,
+        "correction": 5,
+        "refinement": 1
+      },
+      "sourceKey": "Dropped Requests"
+    }
+  },
+  "primaryLedgerSha256": "84d0f1ff30e5b618ff6611da771a7a37c4d0934614ab2a06d9efbb8d01195038",
+  "pullRequest": 204,
+  "qualifiedLocaleReviewRequiredForSelectedTargets": true,
+  "releaseApprovedByThisReview": 0,
+  "repository": "snapetech-org/slskR",
+  "reviewedCellCount": 240,
+  "selectedTargetCount": 216,
+  "sourceCount": 20,
+  "structuralChecks": {
+    "currentMarkupPass": 240,
+    "currentNumericPass": 240,
+    "currentPlaceholderPass": 240,
+    "selectedTargetStructuralPass": 216
+  },
+  "title": "slskR PR #204 W1223-W1242 third-party cross-audit",
+  "tree": "c92bb8f15ec61d538168b41859d9146bad91ae66"
+}

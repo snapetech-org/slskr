@@ -1,0 +1,261 @@
+PR exact review head aa604d3ae8e32ae997c97e12a210f20be92cdd5f tree 5cdb9fe6a6e25c8921767ebd11f5a19e338c7fbc; source catalog commit 7ff454828398de6a3cfb72fe7f0ed21fe419425b tree 9e9f2aa743c4ff3236af8f99619803bdc3a37152.
+Every source caller blob is identical at both commits. Exact cell baselines and proposals are hash-pinned in candidate-corrections.jsonl.
+
+## [283] An error occurred while rebuilding search index — crates/slskr/src/podcore_mutations.rs lines 1021 — blob 09e8252602a617bc76e76bfaafc38cf270acf097
+ 1018 |                 Ok(success) => routing::ok_response(success.to_string()),
+ 1019 |                 Err(_error) if action == "rebuild-index" => {
+ 1020 |                     routing::internal_server_error_response(
+ 1021 |                         "An error occurred while rebuilding search index",
+ 1022 |                     )
+ 1023 |                 }
+ 1024 |                 Err(_error) => routing::internal_server_error_response(
+ 1025 |                     "An error occurred while vacuuming database",
+
+## [284] An error occurred while refreshing opinions — crates/slskr/src/podcore_mutations.rs lines 237 — blob 09e8252602a617bc76e76bfaafc38cf270acf097
+  234 |                     .is_err()
+  235 |             {
+  236 |                 return Some(routing::internal_server_error_response(
+  237 |                     "An error occurred while refreshing opinions",
+  238 |                 ));
+  239 |             }
+  240 |             let started_at = std::time::Instant::now();
+  241 |             let opinions = state
+
+## [285] An error occurred while searching messages — crates/slskr/src/podcore_queries.rs lines 769 — blob 1bcafa27f853c182295586c484acdee1a4bb4d06
+  766 |             let messages = state.pod_channels.read().await;
+  767 |             if messages.validate_storage().is_err() {
+  768 |                 return routing::internal_server_error_response(
+  769 |                     "An error occurred while searching messages",
+  770 |                 );
+  771 |             }
+  772 |             let rows = pod
+  773 |                 .channels
+
+## [286] An error occurred while syncing all pods — crates/slskr/src/podcore_mutations.rs lines 827 — blob 09e8252602a617bc76e76bfaafc38cf270acf097
+  824 |                     || state.pod_channels.read().await.validate_storage().is_err())
+  825 |             {
+  826 |                 return Some(routing::internal_server_error_response(
+  827 |                     "An error occurred while syncing all pods",
+  828 |                 ));
+  829 |             }
+  830 |             let local_peer_id = pod_request_peer_id(state).await.unwrap_or_default();
+  831 |             let pods_store = state.pods.read().await;
+
+## [287] An error occurred while syncing backfill — crates/slskr/src/podcore_mutations.rs lines 811 — blob 09e8252602a617bc76e76bfaafc38cf270acf097
+  808 |                     || state.pod_channels.read().await.validate_storage().is_err())
+  809 |             {
+  810 |                 return Some(routing::internal_server_error_response(
+  811 |                     "An error occurred while syncing backfill",
+  812 |                 ));
+  813 |             }
+  814 |             let Some(result) = podcore_local_backfill_response(state, pod_id, &last_seen).await
+  815 |             else {
+
+## [288] An error occurred while updating member affinities — crates/slskr/src/podcore_mutations.rs lines 206 — blob 09e8252602a617bc76e76bfaafc38cf270acf097
+  203 |                     .is_err()
+  204 |             {
+  205 |                 return Some(routing::internal_server_error_response(
+  206 |                     "An error occurred while updating member affinities",
+  207 |                 ));
+  208 |             }
+  209 |             let started_at = std::time::Instant::now();
+  210 |             let affinities = pod_member_affinities_json(state, pod_id).await;
+
+## [289] An error occurred while updating the channel — crates/slskr/src/podcore_mutations.rs lines 379 — blob 09e8252602a617bc76e76bfaafc38cf270acf097
+  376 |                 Ok(None) => routing::not_found_response(),
+  377 |                 Err(error) if error.starts_with("pod state write failed:") => {
+  378 |                     routing::internal_server_error_response(
+  379 |                         "An error occurred while updating the channel",
+  380 |                     )
+  381 |                 }
+  382 |                 Err(error) => routing::bad_request_response(&error),
+  383 |             })
+
+## [290] An error occurred while vacuuming database — crates/slskr/src/podcore_mutations.rs lines 1025 — blob 09e8252602a617bc76e76bfaafc38cf270acf097
+ 1022 |                     )
+ 1023 |                 }
+ 1024 |                 Err(_error) => routing::internal_server_error_response(
+ 1025 |                     "An error occurred while vacuuming database",
+ 1026 |                 ),
+ 1027 |             })
+ 1028 |         }
+ 1029 |         ("POST", [section, action])
+
+## [291] Analytics time window — web/src/components/System/SwarmAnalytics/index.jsx lines 161,166 — blob 6b4db5a84a05d1ffdb560e0e2c8d2708590f3ded
+  158 |           <Grid.Column>
+  159 |             <label><LocalizedText source={"Time Window"} /></label>
+  160 |             <Dropdown
+  161 |               aria-label={interfaceText("Analytics time window")}
+  162 |               onChange={(e, { value }) => setTimeWindow(value)}
+  163 |               options={timeWindowOptions}
+  164 |               selection
+  165 |               value={timeWindow}
+  166 |              {...interfaceTextProps("Analytics time window")}/>
+  167 |           </Grid.Column>
+  168 |           <Grid.Column>
+  169 |             <label><LocalizedText source={"Peer Rankings Limit"} /></label>
+  170 |             <Dropdown
+
+## [292] Analytics unavailable — web/src/components/System/SwarmAnalytics/index.jsx lines 200 — blob 6b4db5a84a05d1ffdb560e0e2c8d2708590f3ded
+  197 |               data-testid="swarm-analytics-error"
+  198 |               negative
+  199 |             >
+  200 |               <Message.Header><LocalizedText source={"Analytics unavailable"} /></Message.Header>
+  201 |               <p>{error}</p>
+  202 |             </Message>
+  203 |           )}
+  204 |           {/* Performance Metrics */}
+
+## [293] Analyze Conflicts — web/src/components/System/MediaCore/MediaCoreMetadataPortabilityPanel.jsx lines 264 — blob 194d820df304d56eb107142812814c2ff4d6524b
+  261 |                   onClick={handleAnalyzeConflicts}
+  262 |                   secondary
+  263 |                 >
+  264 |                   <LocalizedText source={"Analyze Conflicts"} /></Button>
+  265 |                 <Button
+  266 |                   disabled={!importPackage.trim() || importingMetadata}
+  267 |                   loading={importingMetadata}
+  268 |                   onClick={handleImportMetadata}
+
+## [294] Analyze Similarity — web/src/components/System/MediaCore/MediaCoreHashSimilarityPanel.jsx lines 111 — blob ef421bb767cd96a6f14922aa0b110b53952cbdfe
+  108 |                   onClick={handleComputeSimilarity}
+  109 |                   primary
+  110 |                 >
+  111 |                   <LocalizedText source={"Analyze Similarity"} /></Button>
+  112 |               </Form>
+  113 |
+  114 |               {similarityResult && (
+  115 |                 <div style={{ marginTop: '1em' }}>
+
+## [295] Analyze Text Similarity — web/src/components/System/MediaCore/MediaCoreTextSimilarityPanel.jsx lines 100 — blob 27c0a318d863a0205402269eb65a9b78d5671980
+   97 |                   onClick={handleComputeTextSimilarity}
+   98 |                   primary
+   99 |                 >
+  100 |                   <LocalizedText source={"Analyze Text Similarity"} /></Button>
+  101 |               </Form>
+  102 |
+  103 |               {textSimilarityResult && (
+  104 |                 <div style={{ marginTop: '1em' }}>
+
+## [296] Analyze the source and rank likely track, album, and artist candidates so you can search or plan downloads from the result. — web/src/components/Search/SongIDPanel.jsx lines 501,512 — blob 6fdab9ac4884fdd98d1691a783a9bce5af9090f9
+  498 |            {...interfaceTextProps("Optional target directory for album or discography jobs")}/>
+  499 |         </Form.Field>
+  500 |         <Popup
+  501 |           content={interfaceText("Analyze the source and rank likely track, album, and artist candidates so you can search or plan downloads from the result.")}
+  502 |           position="top right"
+  503 |           trigger={
+  504 |             <Button
+  505 |               disabled={disabled || loading}
+  509 |             >
+  510 |               <LocalizedText source={"Analyze with SongID"} /></Button>
+  511 |           }
+  512 |          {...interfaceTextProps("Analyze the source and rank likely track, album, and artist candidates so you can search or plan downloads from the result.")}/>
+  513 |       </Form>
+  514 |
+  515 |       <Grid stackable columns={2} style={{ marginTop: '1em' }}>
+  516 |         <Grid.Column width={5}>
+
+## [297] Analyze with SongID — web/src/components/Search/SongIDPanel.jsx lines 510 — blob 6fdab9ac4884fdd98d1691a783a9bce5af9090f9
+  507 |               onClick={handleAnalyze}
+  508 |               primary
+  509 |             >
+  510 |               <LocalizedText source={"Analyze with SongID"} /></Button>
+  511 |           }
+  512 |          {...interfaceTextProps("Analyze the source and rank likely track, album, and artist candidates so you can search or plan downloads from the result.")}/>
+  513 |       </Form>
+  514 |
+
+## [298] And {count} more… — web/src/components/System/Network/NetworkDetails.jsx lines 172 — blob e2007ae26e923d742d85cfdcaf4295053ed24429
+  169 |                 {discoveredPeers.length > 10 && (
+  170 |                   <List.Item>
+  171 |                     <List.Content>
+  172 |                       <em><LocalizedText source={"And {count} more…"} values={{ count: discoveredPeers.length - 10 }} /></em>
+  173 |                     </List.Content>
+  174 |                   </List.Item>
+  175 |                 )}
+  176 |               </List>
+
+## [299] Anonymity Layer — web/src/components/System/Security/AdversarialSettingsView.jsx lines 128,176,564,572,576 — blob adcacdd123faf82a315da746fab3243adf5ea6a3
+  125 |                     <li><LocalizedText source={"Privacy Layer (Traffic Analysis Protection)"} /></li>
+  126 |                   )}
+  127 |                   {settings.Anonymity?.Enabled && (
+  128 |                     <li><LocalizedText source={"Anonymity Layer (IP Protection)"} /></li>
+  129 |                   )}
+  130 |                   {settings.Transport?.Enabled && (
+  131 |                     <li><LocalizedText source={"Obfuscated Transport (Anti-DPI)"} /></li>
+  132 |                   )}
+  173 |                             <LocalizedText source={"Disabled"} /></Label>
+  174 |                         )}
+  175 |                       </Statistic.Value>
+  176 |                       <Statistic.Label><LocalizedText source={"Anonymity Layer"} /></Statistic.Label>
+  177 |                     </Statistic>
+  178 |                   </Grid.Column>
+  179 |                   <Grid.Column>
+  180 |                     <Statistic size="small">
+  561 |       menuItem: 'Anonymity',
+  562 |       render: () => (
+  563 |         <Tab.Pane>
+  564 |           <Header as="h4"><LocalizedText source={"Anonymity Layer - IP Protection"} /></Header>
+  565 |           <p>
+  566 |             <LocalizedText source={"Route traffic through anonymizing networks to hide your IP address."} /></p>
+  567 |
+  568 |           <Form>
+  569 |             <Form.Field>
+  570 |               <Checkbox
+  571 |                 checked={settings.Anonymity?.Enabled || false}
+  572 |                 label={interfaceText("Enable Anonymity Layer")}
+  573 |                 onChange={(e, { checked }) =>
+  574 |                   updateSetting('Anonymity.Enabled', checked)
+  575 |                 }
+  576 |                {...interfaceTextProps("Enable Anonymity Layer")}/>
+  577 |             </Form.Field>
+  578 |
+  579 |             {settings.Anonymity?.Enabled && (
+  580 |               <>
+
+## [300] Anonymity Layer (IP Protection) — web/src/components/System/Security/AdversarialSettingsView.jsx lines 128 — blob adcacdd123faf82a315da746fab3243adf5ea6a3
+  125 |                     <li><LocalizedText source={"Privacy Layer (Traffic Analysis Protection)"} /></li>
+  126 |                   )}
+  127 |                   {settings.Anonymity?.Enabled && (
+  128 |                     <li><LocalizedText source={"Anonymity Layer (IP Protection)"} /></li>
+  129 |                   )}
+  130 |                   {settings.Transport?.Enabled && (
+  131 |                     <li><LocalizedText source={"Obfuscated Transport (Anti-DPI)"} /></li>
+  132 |                   )}
+
+## [301] Anonymity Layer - IP Protection — web/src/components/System/Security/AdversarialSettingsView.jsx lines 564 — blob adcacdd123faf82a315da746fab3243adf5ea6a3
+  561 |       menuItem: 'Anonymity',
+  562 |       render: () => (
+  563 |         <Tab.Pane>
+  564 |           <Header as="h4"><LocalizedText source={"Anonymity Layer - IP Protection"} /></Header>
+  565 |           <p>
+  566 |             <LocalizedText source={"Route traffic through anonymizing networks to hide your IP address."} /></p>
+  567 |
+  568 |           <Form>
+
+## [302] Anonymity Mode — web/src/components/System/Security/AdversarialSettingsView.jsx lines 582 — blob adcacdd123faf82a315da746fab3243adf5ea6a3
+  579 |             {settings.Anonymity?.Enabled && (
+  580 |               <>
+  581 |                 <Form.Field>
+  582 |                   <label><LocalizedText source={"Anonymity Mode"} /></label>
+  583 |                   <Dropdown
+  584 |                     onChange={(e, { value }) =>
+  585 |                       updateSetting('Anonymity.Mode', value)
+  586 |                     }
+
+## [287] Backfill UI semantics — web/src/components/System/MediaCore/PodMessageBackfillPanel.jsx lines [151, 153] — blob a10fea57aff9f5a2c76d676f23f8ef212277cc69
+  148 |                 <Icon name="sync" />
+  149 |                 <LocalizedText source={"Pod Message Backfill"} /></Card.Header>
+  150 |               <Card.Description>
+  151 |                 <LocalizedText source={"Synchronize missed messages when peers rejoin pods"} /></Card.Description>
+  152 |               <PodWorkflowNotice title={interfaceText("Syncs local pod state")} {...interfaceTextProps("Syncs local pod state")}>
+  153 |                 <LocalizedText source={"Backfill sync uses last-seen timestamps to request missed messages. Confirm the target pod before syncing all channels."} /></PodWorkflowNotice>
+  154 |             </Card.Content>
+  155 |
+  150 |               <Card.Description>
+  151 |                 <LocalizedText source={"Synchronize missed messages when peers rejoin pods"} /></Card.Description>
+  152 |               <PodWorkflowNotice title={interfaceText("Syncs local pod state")} {...interfaceTextProps("Syncs local pod state")}>
+  153 |                 <LocalizedText source={"Backfill sync uses last-seen timestamps to request missed messages. Confirm the target pod before syncing all channels."} /></PodWorkflowNotice>
+  154 |             </Card.Content>
+  155 |
+  156 |             {/* Message Backfill */}
+  157 |             <Card.Content>

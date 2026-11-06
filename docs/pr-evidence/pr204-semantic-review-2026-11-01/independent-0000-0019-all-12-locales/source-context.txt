@@ -1,0 +1,170 @@
+# Runtime source context at PR #204 code head 7ff454828398de6a3cfb72fe7f0ed21fe419425b (tree 9e9f2aa743c4ff3236af8f99619803bdc3a37152)
+
+The current PR review head 36c98eceea4c8cd016b2fe5092e563b17fcf3f32 (tree bfe3d3cfbb4c2bb1eda75c29833028d72492bf3c) adds evidence/docs only after this source/catalog tree. The cited runtime files and all 12 catalog blobs match the frozen source snapshot.
+
+## `web/src/components/App.jsx` — blob `91799690ed97c8b6c90195924a410e7a919d257b`, SHA-256 `a5916ac10ad34353fa35b414e8aeae2f7080887899d69c28c39adf7f46b75b47`
+
+Lines 853–857:
+853:               primary
+854:             >
+855:               <LocalizedText source={"Connect"} /></Button>
+856:           </Modal.Actions>
+857:         </Modal>
+
+## `web/src/components/Browse/BrowseSession.jsx` — blob `f23f2c0599eedac1b028b37c0a89383602c46186`, SHA-256 `2a15c62b380fa43e1186bcffc002b6d3a93460fe54f0cf743ca92f3b987f641e`
+
+Lines 783–786:
+783:             size="big"
+784:           >
+785:             <LocalizedText source={"Downloaded"} />{" "}{Math.round(browseStatus.percentComplete || 0)}<LocalizedText source={"% of Response"} /></Loader>
+786:         ) : (
+
+Lines 850–854:
+850:                         {interfaceText("{directories} directories, {files} files", { "directories": (info.directories), "files": (info.files) })}
+851:                         {info.lockedDirectories
+852:                           ? <LocalizedText source={"({lockedDirectories} locked directories, {lockedFiles} locked files)"} values={{ "lockedDirectories": (info.lockedDirectories), "lockedFiles": (info.lockedFiles) }} />
+853:                           : ''}
+854:                       </Card.Meta>
+
+## `web/src/components/Browse/Directory.jsx` — blob `8f60fc38f61dc1ad5eaa5ed9975a4884b1156b84`, SHA-256 `7c6b347c6851f0d85a4cdcef49041626396ec6850d404c4e1e991e6a9dbd5a2e`
+
+Lines 204–208:
+204:                     {getDownloadErrorMessage(downloadError)}
+205:                     {downloadError?.status
+206:                       ? <LocalizedText source={"(HTTP {status} {statusText})"} values={{ "status": (downloadError.status), "statusText": (downloadError.statusText) }} />
+207:                       : ''}
+208:                   </Label>
+
+## `web/src/components/Player/PlayerLauncher.jsx` — blob `54f6f98454f46a957dc0e00c78660965412f025e`, SHA-256 `6942fcea65ad86549e0114f765ec9ce50a7ad4497828d4d5b79373dfb32ce720`
+
+Lines 507–511:
+507:                         <small>
+508:                           {directory.fileCount} <LocalizedText source={"tracks"} />{directory.childDirectoryCount
+509:                             ? <LocalizedText source={", {childDirectoryCount} folders"} values={{ "childDirectoryCount": (directory.childDirectoryCount) }} />
+510:                             : ''}
+511:                         </small>
+
+## `web/src/components/Player/VisualizerOverlayControls.jsx` — blob `0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf`, SHA-256 `5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4`
+
+Lines 269–273:
+269:                       {visibleRustyMilkPresetLibrary.map((preset) => (
+270:                         <option key={preset.id} value={preset.id}>
+271:                           {rustyMilkFavoritePresetIds.includes(preset.id) ? `${interfaceText("(favorite)")} ` : ''}
+272:                           {preset.title || preset.fileName}
+273:                         </option>
+
+## `web/src/components/Search/Response.jsx` — blob `8bee962fc708202a785758d9da1193ea4de59337`, SHA-256 `da0ccb703c38cf3a444e9d79fba30cd62191f15277ec339b287529d121cbe6de`
+
+Lines 694–700:
+694:                 {this.localizedText(this.localizedError(downloadError, 'Download failed'))}{' '}
+695:                 {downloadError?.status &&
+696:                   interfaceText('(HTTP {status} {statusText})', {
+697:                     status: downloadError.status,
+698:                     statusText: downloadError.statusText || '',
+699:                   })}
+700:               </Label>
+
+## `web/src/components/Search/SongIDEvidenceDetails.jsx` — blob `a6a0eb1e9843801ff94e590a22878899f3d2bca2`, SHA-256 `4a90c2dfd31302a93964fed1f0642a56909bab926324519eb77c94cda6139f65`
+
+Lines 659–663:
+659:                     {comment.timestampSeconds !== null &&
+660:                     comment.timestampSeconds !== undefined
+661:                       ? <LocalizedText source={"({timestampSeconds}s)"} values={{ "timestampSeconds": (comment.timestampSeconds) }} />
+662:                       : ''}
+663:                   </List.Item>
+
+## `web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx` — blob `4f3c8484d8d23746369ce7619ab4e017849dfb89`, SHA-256 `8cb1922e358f7229d7f8147f41e18bffa3146283c270a5844393fc72f755c6ca`
+
+Lines 244–248:
+244:                         {retrievalResult.verification?.isValid ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
+245:                         {retrievalResult.verification?.warnings?.length > 0 && (
+246:                           <span> <LocalizedText source={"(with warnings)"} /></span>
+247:                         )}
+248:                       </p>
+
+## `web/src/components/System/MediaCore/MediaCoreFuzzyContentPanel.jsx` — blob `de8807b88672ece1f3881a566684011a9ea2089b`, SHA-256 `f2f45f7a3e14734355ae9234b504039d43121d73da544df09509434e849ad18f`
+
+Lines 155–159:
+155:                                 <List.Description>
+156:                                   <LocalizedText source={"Confidence:"} />{' '}
+157:                                   {formatRegionalFixedNumber((match.confidence * 100), 1)}<LocalizedText source={"% | Reason:"} />{" "}{match.reason}
+158:                                 </List.Description>
+159:                               </List.Content>
+
+## `web/src/components/System/MediaCore/MediaCoreHashSimilarityPanel.jsx` — blob `ef421bb767cd96a6f14922aa0b110b53952cbdfe`, SHA-256 `561f920034eae2f1768a420fa0b714fcc0a80ed0aff0ce254fd0a12c703997af`
+
+Lines 128–133:
+128:                         {formatRegionalFixedNumber((similarityResult.similarity * 100), 1)}%<br />
+129:                         <strong><LocalizedText source={"Are Similar:"} /></strong>{' '}
+130:                         {similarityResult.areSimilar ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />} <LocalizedText source={"(threshold:"} />{' '}
+131:                         {formatRegionalFixedNumber((similarityResult.threshold * 100), 1)}%)
+132:                       </p>
+133:                     </Message>
+
+## `web/src/components/System/MediaCore/MediaCorePerceptualSimilarityPanel.jsx` — blob `5f6ed7d6493ad4e5dbf6a03f00a023440f9c27df`, SHA-256 `caf1ea1ae9193df532a3c6919b184841da53bd2db8b2996e99fa49e309da253e`
+
+Lines 139–144:
+139:                         <strong><LocalizedText source={"Are Similar:"} /></strong>{' '}
+140:                         {perceptualSimilarityResult.isSimilar ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}{' '}
+141:                         <LocalizedText source={"(threshold:"} />{' '}
+142:                         {formatRegionalFixedNumber((perceptualSimilarityResult.threshold * 100), 1)}
+143:                         %)
+144:                       </p>
+
+## `web/src/components/System/MediaCore/MediaCoreStatisticsDashboardPanel.jsx` — blob `2abab8a5496df8cdd48e7acf32b479c7ecba6c23`, SHA-256 `34bef4b1a67e24b4c77c50b32df51c261f7b9256da3b7a76e7ad5f5994c85a60`
+
+Lines 467–471:
+467:                             >
+468:                               <small>
+469:                                 {algorithm}<LocalizedText source={": F1="} />{formatRegionalFixedNumber(stats.f1Score, 2)}<LocalizedText source={", Precision="} />{formatRegionalFixedNumber(stats.precision, 2)}
+470:                               </small>
+471:                             </div>
+
+## `web/src/components/System/MediaCore/PodOpinionsPanel.jsx` — blob `89eea2680f5cfacdc5c8000080c2e00229967df0`, SHA-256 `181f034d5b6354dd10f5b383e42aefc0fd9ae7d63572eda99c78facda268f27f`
+
+Lines 731–735:
+731:                                   variant.scoreStandardDeviation / 5
+732:                                 ), 2)}{' '}
+733:                                 <LocalizedText source={"(lower std dev = higher agreement)"} /></div>
+734:                             </Card.Content>
+735:                           </Card>
+
+## `web/src/components/System/Network/index.jsx` — blob `2df958dba38d5ca7841043940d0d2b9f9c238658`, SHA-256 `81f45c3ef9dd9a153979cd39594b3eab4fd0cccc226654647fc3a022f97fe005`
+
+Lines 191–196:
+191:         >
+192:           <Message.Header><LocalizedText source={"Soulseek credentials are not configured"} /></Message.Header>
+193:           <p>
+194:             <LocalizedText source={"Set"} />{" "}<code>SLSK_USERNAME</code> <LocalizedText source={"and"} />{" "}<code>SLSK_PASSWORD</code><LocalizedText source={", configure a credential store, or use the Connect control in the top bar."} /></p>
+195:         </Message>
+196:       )}
+
+## `web/src/components/System/Security/index.jsx` — blob `5a3b5cd919daa818d106031ecc70a31cde4c14a2`, SHA-256 `dc055397cbd4afe380d4b0c5c0f3af3c1077719fea1854ec4116cf2367ca2743`
+
+Lines 128–132:
+128:             <strong><LocalizedText source={"Fresh installations"} /></strong> <LocalizedText source={"- Security features need time to observe network activity"} /></li>
+129:           <li>
+130:             <strong><LocalizedText source={"Standalone mode"} /></strong> <LocalizedText source={"- Most security features activate when mesh networking is enabled"} /></li>
+131:           <li>
+132:             <strong><LocalizedText source={"Low traffic"} /></strong> <LocalizedText source={"- Peer reputation, violation tracking, and behavioral analysis require peer interactions"} /></li>
+
+Lines 231–235:
+231:               <p>
+232:                 <strong><LocalizedText source={"Crypto Health:"} /></strong> <LocalizedText source={"Entropy checks:"} />{' '}
+233:                 {stats.entropyStats?.checkCount ?? 0}<LocalizedText source={", Warnings:"} />{' '}
+234:                 {stats.entropyStats?.warningCount ?? 0}
+235:               </p>
+
+## `web/src/components/Transfers/TransferList.jsx` — blob `6b0cc627ee092390cde17aa8330a8d7cb24202d3`, SHA-256 `5db7fa14417829b11cd41eb78614b114bb747c5c5fbdc2842c24dfc924066491`
+
+Lines 32–36:
+32:   return (
+33:     <span lang={languageFor(label)} dir={directionFor(label)}>
+34:       {t(label)}{placeInQueue ? <LocalizedText source={"(#{placeInQueue})"} values={{ "placeInQueue": (placeInQueue) }} /> : ''}
+35:     </span>
+36:   );
+
+## Connect label consistency
+
+`Network/index.jsx` references the Connect control in its credential guidance. `App.jsx` renders a UI control using the source key `Connect`; in this snapshot the locale targets are ar='يتصل', de='Verbinden', es='Conectar', fr='Connecter', hi='जोड़ना', id='Menghubungkan'.
+The German/French targets leave the source label in English, and the Hindi target transliterates it instead of using the current catalog label. Those three cells are marked correction-needed.

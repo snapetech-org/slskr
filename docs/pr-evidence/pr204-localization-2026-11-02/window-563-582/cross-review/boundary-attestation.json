@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "repository": "snapetech-org/slskR",
+  "pull_request": 204,
+  "current_window": {
+    "indices": [
+      563,
+      582
+    ],
+    "head": "7e99edecbdea10580cc5e8d198930a82f076b834",
+    "tree": "55de069f88c197ab8ddd3c773c1f10e5cb86abd5",
+    "cell_count": 240,
+    "source_ids": [
+      "Can create content-linked pods",
+      "Canary",
+      "Cancel",
+      "Cancel Scan",
+      "Cancelled",
+      "Cancel{all}",
+      "Candidate identity",
+      "Candidate match found",
+      "Candidate score",
+      "Candidate score: {score}/100",
+      "Candidate score: {score}/100. Reasons: {reasons}",
+      "Candidates",
+      "Canonical",
+      "Canonical support from",
+      "Canonical variants:",
+      "Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.",
+      "Capabilities unavailable",
+      "Capture local history",
+      "Capture player history preference",
+      "Category"
+    ]
+  },
+  "previous_window": {
+    "indices": [
+      543,
+      562
+    ],
+    "packet_path": "/mnt/disks/scratch/task-scratch/slskr-pr204-W543-562-primary-20261102/packet",
+    "packet_head": "255dc8789cf130c9fee39ab94f84a00fab79d215",
+    "packet_tree": "afdc0f69e5ed99e84e689fb6b2f20c1fe74dea54",
+    "packet_sha256sums_sha256": "4c0df1173bd330f30fe1fba0bef90ee95239d0f29d2f318955ba5e5e5e9a0f7d",
+    "checksums_pass": true,
+    "primary_noop_cells": 12,
+    "primary_noop_source_id": "Calendar",
+    "primary_held_cells": 0,
+    "no_op_cell_hashes_reattested_at_current_head": {
+      "ar": {
+        "text": "التقويم",
+        "sha256": "c6c25b9b516fca479b563688274593111288fbae3adb68ef85c07f9ca32fd916",
+        "matches_previous_noop_hash": true
+      },
+      "de": {
+        "text": "Kalender",
+        "sha256": "36f1504f51182fee12f9ec58467cf09c2c5f871ef4f242af4a8a56713827ad57",
+        "matches_previous_noop_hash": true
+      },
+      "es": {
+        "text": "Calendario",
+        "sha256": "68de201e0ef3fd85950e35462b7342c40fe59a47e306f913f0e74da0357c6722",
+        "matches_previous_noop_hash": true
+      },
+      "fr": {
+        "text": "Calendrier",
+        "sha256": "b65d9008e899b623f856565410108f289f8ee03e26e09f45487e154963f008a5",
+        "matches_previous_noop_hash": true
+      },
+      "hi": {
+        "text": "कैलेंडर",
+        "sha256": "6527f9069857b1e8419d91f06d9974c1407ad31abc480f592610e5dabbad9d83",
+        "matches_previous_noop_hash": true
+      },
+      "id": {
+        "text": "Kalender",
+        "sha256": "36f1504f51182fee12f9ec58467cf09c2c5f871ef4f242af4a8a56713827ad57",
+        "matches_previous_noop_hash": true
+      },
+      "ja": {
+        "text": "カレンダー",
+        "sha256": "e6f6d06c444531e329f2862930b7f343dcabb882ff47d6617a27006bb03f3e10",
+        "matches_previous_noop_hash": true
+      },
+      "ko": {
+        "text": "달력",
+        "sha256": "965833d955bd6c16d185e01737f998f56ea8d3918944a7227dfcee415bfae12f",
+        "matches_previous_noop_hash": true
+      },
+      "pt-BR": {
+        "text": "Calendário",
+        "sha256": "b667fcdd17dac31192947a286a66c4d8bef6c6f0499a9d1fec5ab4f12372bee1",
+        "matches_previous_noop_hash": true
+      },
+      "vi": {
+        "text": "Lịch",
+        "sha256": "be87b3025462ef7e287fbe2bf0fac627db802545260504e5356dab401c2cf4c0",
+        "matches_previous_noop_hash": true
+      },
+      "zh-Hans": {
+        "text": "日历",
+        "sha256": "a00f295cfbb0b1b3cb12ee87f2a0529da73839215f66ec758797a4d867e449fd",
+        "matches_previous_noop_hash": true
+      },
+      "zh-Hant": {
+        "text": "日曆",
+        "sha256": "6180b5e1ceec8c6203e900b8a9e0e6be2f32129a1210728366dfa918d674d7c4",
+        "matches_previous_noop_hash": true
+      }
+    },
+    "direct_runtime_source_search_at_current_head": {
+      "query": "Calendar",
+      "roots": [
+        "web/src",
+        "crates/slskr-web/src"
+      ],
+      "excluded_paths": [
+        "web/src/lib/locales/**"
+      ],
+      "match_count": 0,
+      "matches": [],
+      "result": "no exact tracked application-source matches"
+    }
+  },
+  "overlap": {
+    "source_index_intersection": [],
+    "source_id_intersection": [],
+    "expected_adjacent_windows": true,
+    "status": "pass"
+  },
+  "metadata_note": "The W543–562 packet was frozen at ancestor head 255dc8789cf130c9fee39ab94f84a00fab79d215; its 12 Calendar target hashes were independently rechecked and match the W563–582 input head. The source search at current W563 head still finds no exact Calendar occurrence in application roots. Thus the prior no-op status is preserved with current-head evidence.",
+  "primary_boundary_attestation_status": "pass",
+  "native_speaker_approval": false
+}

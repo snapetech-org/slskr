@@ -1,0 +1,249 @@
+{
+  "review": "independent blind review; current cells and pinned caller context only",
+  "head": "2db7fa06845d9d94a5e5da2ddb5ecfdc04100ade",
+  "tree": "0945d38050243ed0d52aa9d923636820c66e65ba",
+  "positions": [
+    1463,
+    1482
+  ],
+  "cells": 240,
+  "decisionCounts": {
+    "accept-current": 177,
+    "correction": 29,
+    "hold": 12,
+    "refinement": 22
+  },
+  "tokenMismatchCounts": {
+    "placeholderSequenceMismatchCount": 0,
+    "markupMismatchCount": 0,
+    "numericTokenMismatchCount": 0,
+    "protectedLiteralMismatchCount": 28
+  },
+  "protectedLiteralMismatchRows": [
+    {
+      "position": 1466,
+      "locale": "es",
+      "sourceKeySha256": "425305e25df9df108e011164f7ca97522276cf1bc67b8aec3a7139cd60fb9a81",
+      "missingProtectedLiterals": [
+        "FAIL"
+      ]
+    },
+    {
+      "position": 1466,
+      "locale": "zh-Hans",
+      "sourceKeySha256": "425305e25df9df108e011164f7ca97522276cf1bc67b8aec3a7139cd60fb9a81",
+      "missingProtectedLiterals": [
+        "FAIL"
+      ]
+    },
+    {
+      "position": 1466,
+      "locale": "hi",
+      "sourceKeySha256": "425305e25df9df108e011164f7ca97522276cf1bc67b8aec3a7139cd60fb9a81",
+      "missingProtectedLiterals": [
+        "FAIL"
+      ]
+    },
+    {
+      "position": 1466,
+      "locale": "de",
+      "sourceKeySha256": "425305e25df9df108e011164f7ca97522276cf1bc67b8aec3a7139cd60fb9a81",
+      "missingProtectedLiterals": [
+        "FAIL"
+      ]
+    },
+    {
+      "position": 1466,
+      "locale": "ja",
+      "sourceKeySha256": "425305e25df9df108e011164f7ca97522276cf1bc67b8aec3a7139cd60fb9a81",
+      "missingProtectedLiterals": [
+        "FAIL"
+      ]
+    },
+    {
+      "position": 1466,
+      "locale": "fr",
+      "sourceKeySha256": "425305e25df9df108e011164f7ca97522276cf1bc67b8aec3a7139cd60fb9a81",
+      "missingProtectedLiterals": [
+        "FAIL"
+      ]
+    },
+    {
+      "position": 1466,
+      "locale": "pt-BR",
+      "sourceKeySha256": "425305e25df9df108e011164f7ca97522276cf1bc67b8aec3a7139cd60fb9a81",
+      "missingProtectedLiterals": [
+        "FAIL"
+      ]
+    },
+    {
+      "position": 1466,
+      "locale": "ar",
+      "sourceKeySha256": "425305e25df9df108e011164f7ca97522276cf1bc67b8aec3a7139cd60fb9a81",
+      "missingProtectedLiterals": [
+        "FAIL"
+      ]
+    },
+    {
+      "position": 1466,
+      "locale": "ko",
+      "sourceKeySha256": "425305e25df9df108e011164f7ca97522276cf1bc67b8aec3a7139cd60fb9a81",
+      "missingProtectedLiterals": [
+        "FAIL"
+      ]
+    },
+    {
+      "position": 1466,
+      "locale": "zh-Hant",
+      "sourceKeySha256": "425305e25df9df108e011164f7ca97522276cf1bc67b8aec3a7139cd60fb9a81",
+      "missingProtectedLiterals": [
+        "FAIL"
+      ]
+    },
+    {
+      "position": 1466,
+      "locale": "vi",
+      "sourceKeySha256": "425305e25df9df108e011164f7ca97522276cf1bc67b8aec3a7139cd60fb9a81",
+      "missingProtectedLiterals": [
+        "FAIL"
+      ]
+    },
+    {
+      "position": 1466,
+      "locale": "id",
+      "sourceKeySha256": "425305e25df9df108e011164f7ca97522276cf1bc67b8aec3a7139cd60fb9a81",
+      "missingProtectedLiterals": [
+        "FAIL"
+      ]
+    },
+    {
+      "position": 1470,
+      "locale": "hi",
+      "sourceKeySha256": "de8d573d85d0c0c68bafd1a9c20ac9a0357e7f68777453780b15eea07a91c077",
+      "missingProtectedLiterals": [
+        "FTP"
+      ]
+    },
+    {
+      "position": 1470,
+      "locale": "ar",
+      "sourceKeySha256": "de8d573d85d0c0c68bafd1a9c20ac9a0357e7f68777453780b15eea07a91c077",
+      "missingProtectedLiterals": [
+        "FTP"
+      ]
+    },
+    {
+      "position": 1471,
+      "locale": "hi",
+      "sourceKeySha256": "b629e77f2e79720239bfa125b2a26b0820c16f69c8f32d385a7aa5148ebf978e",
+      "missingProtectedLiterals": [
+        "FTP"
+      ]
+    },
+    {
+      "position": 1472,
+      "locale": "hi",
+      "sourceKeySha256": "9f857048e827bfb88bd2745d25451924a0da377435a66617881bb0bccfcd97ad",
+      "missingProtectedLiterals": [
+        "FTP"
+      ]
+    },
+    {
+      "position": 1473,
+      "locale": "hi",
+      "sourceKeySha256": "1d4d2158be4824a6f309db31c5d87c77ba938699a1245320c21de51a5e77d622",
+      "missingProtectedLiterals": [
+        "FTP"
+      ]
+    },
+    {
+      "position": 1474,
+      "locale": "hi",
+      "sourceKeySha256": "0ad1cddc534f8142d2853de41f0260c687c6ac32feef598ddea863fd61b8bcaa",
+      "missingProtectedLiterals": [
+        "FTP"
+      ]
+    },
+    {
+      "position": 1477,
+      "locale": "hi",
+      "sourceKeySha256": "475702f80307f16a56f1c3f27f22410b110ee2909ab44f64accd05c91ffd4009",
+      "missingProtectedLiterals": [
+        "FTP"
+      ]
+    },
+    {
+      "position": 1478,
+      "locale": "es",
+      "sourceKeySha256": "8a052ac94e3350642ea951d55391b8aa8eacc9fb8fc1a5695b41132555e6adb0",
+      "missingProtectedLiterals": [
+        "FTP"
+      ]
+    },
+    {
+      "position": 1478,
+      "locale": "hi",
+      "sourceKeySha256": "8a052ac94e3350642ea951d55391b8aa8eacc9fb8fc1a5695b41132555e6adb0",
+      "missingProtectedLiterals": [
+        "FTP"
+      ]
+    },
+    {
+      "position": 1478,
+      "locale": "ar",
+      "sourceKeySha256": "8a052ac94e3350642ea951d55391b8aa8eacc9fb8fc1a5695b41132555e6adb0",
+      "missingProtectedLiterals": [
+        "FTP"
+      ]
+    },
+    {
+      "position": 1479,
+      "locale": "hi",
+      "sourceKeySha256": "f0565e569b584f45fb9760fc24f70cef91cfc1f9e9f257ee414492d23f24d045",
+      "missingProtectedLiterals": [
+        "FTP"
+      ]
+    },
+    {
+      "position": 1480,
+      "locale": "hi",
+      "sourceKeySha256": "381531deeb3ce15089eb25d14e0eb053cc09ffafa37e42fccb69eb2a32362d92",
+      "missingProtectedLiterals": [
+        "FTP"
+      ]
+    },
+    {
+      "position": 1481,
+      "locale": "hi",
+      "sourceKeySha256": "0efbd769ce16a42b1b45fed8c10edbc1fba527ca2da395e32b052963c126d1e3",
+      "missingProtectedLiterals": [
+        "FTP"
+      ]
+    },
+    {
+      "position": 1481,
+      "locale": "ar",
+      "sourceKeySha256": "0efbd769ce16a42b1b45fed8c10edbc1fba527ca2da395e32b052963c126d1e3",
+      "missingProtectedLiterals": [
+        "FTP"
+      ]
+    },
+    {
+      "position": 1482,
+      "locale": "hi",
+      "sourceKeySha256": "3de6cb350acbf4eae6379c66fbdc7e0875242d5ba0465822a61e8aa3c50eb434",
+      "missingProtectedLiterals": [
+        "FTP"
+      ]
+    },
+    {
+      "position": 1482,
+      "locale": "ar",
+      "sourceKeySha256": "3de6cb350acbf4eae6379c66fbdc7e0875242d5ba0465822a61e8aa3c50eb434",
+      "missingProtectedLiterals": [
+        "FTP"
+      ]
+    }
+  ],
+  "method": "Recomputed with the pinned candidate-free token regex; prior-selection, prior-hold, and source-order-lineage contents were not parsed or emitted."
+}

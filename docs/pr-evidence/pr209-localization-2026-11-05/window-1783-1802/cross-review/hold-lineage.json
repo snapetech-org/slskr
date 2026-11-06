@@ -1,0 +1,48 @@
+{
+  "artifact": "integrated cross-review hold lineage",
+  "head": "0264a4fcaa944fee61049efec0cf3c451416c8b9",
+  "tree": "895e57c178d959a23aceddead27623f2dd854ba0",
+  "carriedPriorActiveHold": {
+    "catalogFileSha256": "ef89f424f1f02d31f13ad5f136922f3418639ffb5d9f1eddb1e5d53183b811b3",
+    "catalogGitBlob": "354ff51a2c563fe845d65773d3d67d5e0c475aa0",
+    "catalogPath": "web/src/lib/locales/ui-labels.id.json",
+    "currentCallerCount": 1,
+    "currentHead": "0264a4fcaa944fee61049efec0cf3c451416c8b9",
+    "currentSourceContextSha256": "ef8889eaa5f8c97c1fc7af4e883ea0eb7568a6cf2e5364840144b64bf597efe1",
+    "currentTargetSha256": "a27ecc61d532350de5694128b36f6cf1a57939c6c9dfa7460752041df275682f",
+    "currentTree": "895e57c178d959a23aceddead27623f2dd854ba0",
+    "decision": "preserved_active_hold",
+    "holdId": "1719::id",
+    "locale": "id",
+    "position": 1719,
+    "previousWindow": "W1763-W1782",
+    "priorCellRecordSha256": "db6cc702d729432523678763e48ae241f26fbee515dd568ea641ed7aa5e11989",
+    "priorCurrentTargetSha256": "a27ecc61d532350de5694128b36f6cf1a57939c6c9dfa7460752041df275682f",
+    "priorHead": "5191888071f54061a6012acdedfeb518a6cb3661",
+    "priorPacketChecksumsSha256": "5853df41cfce1ec03d92f5ab7a941d7953da943d3dd9148a13a356be2d130048",
+    "priorPacketManifestSha256": "3a5d19e2238e5f780faba8a0f0654da641267f09616fd95ba8505fa9c6548eab",
+    "priorSourceContextSha256": "ef8889eaa5f8c97c1fc7af4e883ea0eb7568a6cf2e5364840144b64bf597efe1",
+    "priorTree": "d5728c24b54a06dda432afd2ef5f378206a6cb8f",
+    "rationale": "Reattested the active hold at the current exact head; source context and target hash match the immediately preceding sealed packet; target text remains hash-only.",
+    "sourceContextUnchanged": true,
+    "sourceKeySha256": "ceecbc71ba63375c1586edcb31f301fbaca21e4b40ca65030e4ffc0c0276b5c1",
+    "targetHashUnchanged": true,
+    "textIncluded": false
+  },
+  "newWindowHolds": [
+    {
+      "cellId": "1792::ko",
+      "sourceKeySha256": "ae983ef03b5290c94db34d0ee5dfbb6b89c5c66be3ec636f2f9f05211fe15e4b",
+      "sourceContextSha256": "e65d5e291b4f714661af4a4e2ff4cde1712c86a9504a24fc9ebfbae9233a967f",
+      "currentTargetSha256": "d6063554f492d1cdfd0134b5c26666468c13e0c4068542fb4a98bc04b1d11862",
+      "primaryDisposition": "accept_current",
+      "blindStatus": "review",
+      "blindIssueCodes": [
+        "FOLD_VS_GROUP_TERM"
+      ],
+      "selectedTargetSha256": "d6063554f492d1cdfd0134b5c26666468c13e0c4068542fb4a98bc04b1d11862",
+      "textIncluded": false,
+      "rationale": "The primary review retains the current word, while the blind review flags a locale-specific choice between a fold/collapse term and a grouping term. The exact Korean UI term is unresolved, so hold this cell at its current hash pending locale review."
+    }
+  ]
+}

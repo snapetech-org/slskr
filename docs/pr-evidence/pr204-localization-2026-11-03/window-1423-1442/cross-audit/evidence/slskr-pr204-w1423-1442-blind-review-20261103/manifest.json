@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "artifact": "slskR PR #204 W1423-W1442 blind independent translation review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+  "tree": "09adcb271a2eb92770df4a20098dccc3fde2a59f",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "positionRange": [
+    1423,
+    1442
+  ],
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "locales": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "candidateFreeInputManifestSha256": "40d6f1ebaf3e6ad72c854b24e40275511c0a6c6d41afe8625b60ef8cb117ea1e",
+  "candidateFreeChecksumListSha256": "f40bdd86a371e4ee2f3f1d17431124202ee1e766b56403924a0e730470a0ee3e",
+  "candidateFreeCellsSha256": "ef06e5f5023d99c238f0f9a08012578a1e4899ebe209c18efbdf727d3c8e9a5c",
+  "candidateFreeContextsSha256": "bdf9fffd50bf186d10423ca7dc450b02396ac40bad5d9395ad37191bc1083229",
+  "candidateFreePriorHoldsSha256": "d748f128a2518f5b34a20f469c31194c716cedfdb1e45b443464b66f7f1b5ffb",
+  "primaryProposalsOpened": false,
+  "primaryProposalsCreated": false,
+  "decisionCounts": {
+    "accept": 205,
+    "revise": 35,
+    "hold": 0
+  },
+  "priorHoldsReattested": 35,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1241,
+      "sha256": "c2d9443b7aa00337389ba2588e9d6a4f132d6328faf8776dde7edf771fbd9c52"
+    },
+    {
+      "path": "review-ledger.jsonl",
+      "bytes": 504089,
+      "sha256": "48b86297f60c6a3f906926d3a63385fcae00021bdce260ea3522f16e0f189938"
+    },
+    {
+      "path": "prior-hold-reattestation.jsonl",
+      "bytes": 31292,
+      "sha256": "af933b804a140765332bb65382b2801f145efe8441d2927fcfcc287b7d8a7e91"
+    },
+    {
+      "path": "review-summary.json",
+      "bytes": 2720,
+      "sha256": "943cbb8704906ba13ac0d7ef1dc626e905997dfa72a6b94908fd0a53fc2d2336"
+    },
+    {
+      "path": "verify_review.py",
+      "bytes": 4178,
+      "sha256": "d33a80f3470c6fcd5926b5f85d8d85fc02506e0d9d8171c2463a6b66a1a3f99c"
+    }
+  ]
+}

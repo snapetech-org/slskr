@@ -1,0 +1,19 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "state": "open",
+  "draft": true,
+  "baseRef": "main",
+  "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "headRef": "codex/slskr-l10n-audit-20261104-resync",
+  "headSha": "2d804c49879372071adf606bc2a2cf51e261fd94",
+  "headTree": "d6f5552d2400d868c2f2af98eb68caadfd4f3f66",
+  "branchRefSha": "2d804c49879372071adf606bc2a2cf51e261fd94",
+  "pullRefSha": "2d804c49879372071adf606bc2a2cf51e261fd94",
+  "liveMainSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "prApiSha256": "04f0dd52e549f18649eda9ea13b17e4f9caa07cd7c3faf781511aa977f4bc960",
+  "remoteRefsSha256": "b7b54d523f571582116d3e0fbda29fc3b5bd738f255956c4a12f1725457c9ee5",
+  "headCommitResponseSha256": "aebde564d0fd00855de5814faa1da7f68e04300bfe2700f69140400ba4bb747e",
+  "prUrl": "https://github.com/snapetech-org/slskr/pull/209",
+  "result": "PASS"
+}

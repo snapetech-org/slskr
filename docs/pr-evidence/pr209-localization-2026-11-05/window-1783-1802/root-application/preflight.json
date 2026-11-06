@@ -1,0 +1,30 @@
+{
+  "result": "PASS",
+  "window": "W1783-W1802",
+  "inputHead": "0264a4fcaa944fee61049efec0cf3c451416c8b9",
+  "inputTree": "895e57c178d959a23aceddead27623f2dd854ba0",
+  "reviewedCells": 240,
+  "selectedChanges": 56,
+  "acceptedCurrent": 183,
+  "corrections": 55,
+  "refinements": 1,
+  "held": 1,
+  "catalogs": 12,
+  "entriesPerCatalog": 5441,
+  "allCurrentHashesMatch": true,
+  "allSelectedTargetHashesMatch": true,
+  "catalogHashes": {
+    "web/src/lib/locales/ui-labels.es.json": "b161eaa8a35607480b968a53d96a9766555c67f042e9a399c347a59a22d338b6",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "9aa57968625b8e3ee89749726863a094337893493a83a6011aae6edc5bb328ee",
+    "web/src/lib/locales/ui-labels.hi.json": "eb5df4ed8660df32b760cd20a48f00f7fcf86f677c3eef40bd9858b9ca1f1a38",
+    "web/src/lib/locales/ui-labels.de.json": "bb3d23afb9435db50df4947b671b76dd1ef01df358bf4621fae59dc549a3049b",
+    "web/src/lib/locales/ui-labels.ja.json": "c700b01c2938d2ab5b2ddc5f7fb66012ea9fa3c5a47691f6220501435ac0e683",
+    "web/src/lib/locales/ui-labels.fr.json": "e2a64c54e5163673da9f63e05ee3257601dcfb88c1d5722fabf075c3533d733c",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "37e76a78a1bba7758812578fd03bbf90048870aa354db97db289b9a14696930f",
+    "web/src/lib/locales/ui-labels.ar.json": "6f6c6f70800e61263c44eedce0f2f7ef4380befde2a8998190f7ce8984078fe6",
+    "web/src/lib/locales/ui-labels.ko.json": "5279b1a61e0eb02fa4903489367cf1d630a562123a009c6b5dca1342d504f9ed",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "ceef228f8ccf475f64f1b2781045094bef9daba57e88cc693392cf6125e7fb84",
+    "web/src/lib/locales/ui-labels.vi.json": "cb923395cfcaeb015404625ee1dcc617a3ed4e24584f7ffcf142413c980466cd",
+    "web/src/lib/locales/ui-labels.id.json": "ef89f424f1f02d31f13ad5f136922f3418639ffb5d9f1eddb1e5d53183b811b3"
+  }
+}

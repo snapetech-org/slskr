@@ -1,0 +1,34 @@
+{
+  "callerReferenceCount": 37,
+  "callerResolutionHolds": 0,
+  "cellCount": 240,
+  "dispositionCounts": {
+    "accept-current": 195,
+    "correction": 26,
+    "refinement": 19
+  },
+  "head": "4b6f9b925ac7ec1243f3003fa0792c3b50e4560e",
+  "historicalNoCallerHold": {
+    "currentHeadExactQuotedProductionCallerCount": 0,
+    "currentHeadVerification": "/mnt/disks/scratch/task-scratch/slskr-pr204-w1263-1282-primary-20261103/review/prior-hold-verification.json",
+    "evidence": "/mnt/disks/scratch/task-scratch/slskr-pr204-w1243-1262-input-20261103/clean-input/caller-resolution-holds.jsonl",
+    "position": 1257,
+    "sourceKey": "Ecosystem",
+    "status": "preserved; outside current window; not reconsidered"
+  },
+  "localeCount": 12,
+  "markupMismatches": 0,
+  "nativeSpeakerApproval": false,
+  "numericMismatches": 0,
+  "placeholderMismatches": 0,
+  "proposedCatalogChanges": 45,
+  "pullRequest": 204,
+  "qualifiedLocaleReviewRequired": true,
+  "releaseApprovedByThisReview": false,
+  "repository": "snapetech-org/slskR",
+  "schemaVersion": 1,
+  "sourceCount": 20,
+  "technicalLiteralMismatches": 0,
+  "tree": "31c708cdb279e427ddb2082e297be382209489d3",
+  "window": "W1263-W1282"
+}

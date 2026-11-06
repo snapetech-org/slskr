@@ -1,0 +1,74 @@
+{
+  "adjudicatedCells": 14,
+  "adjudicationLedgerSha256": "214d2e32859b52b7e06aeb030885b8ace3d5a06a444ba0f03a2b483e0ad341d4",
+  "files": [
+    {
+      "bytes": 2322,
+      "path": "README.md",
+      "sha256": "94fe2279d25407d198c6304c06765c4e57a3fce84ff60d5899c130b0dd6c2a3a"
+    },
+    {
+      "bytes": 32130,
+      "path": "adjudication-ledger.jsonl",
+      "sha256": "214d2e32859b52b7e06aeb030885b8ace3d5a06a444ba0f03a2b483e0ad341d4"
+    },
+    {
+      "bytes": 4204,
+      "path": "all-seven-pr-heads-final.json",
+      "sha256": "0a9bde4e49ab87a61735a3497f293a3f6f034e48f6656f4d03ccf509b84e2d35"
+    },
+    {
+      "bytes": 4204,
+      "path": "all-seven-pr-heads-start.json",
+      "sha256": "f7425bccd436db41148b37fabb2ac2acc7c3367a8c33b60104916f9b24b55b5a"
+    },
+    {
+      "bytes": 25013,
+      "path": "build_adjudication.py",
+      "sha256": "05f589fd34a4a29da1fa03c36cc2521f65b72c4935be1dcd51ff73d6efb578b4"
+    },
+    {
+      "bytes": 9974,
+      "path": "caller-reattestation.jsonl",
+      "sha256": "b5a2b128584eb811b58b78427fd3b2cfff9b283bc8d6f9b0213e90c6dac805ce"
+    },
+    {
+      "bytes": 4694,
+      "path": "catalog-reattestation.jsonl",
+      "sha256": "8f319c9d58bfc233b40f3f804ff6e3732d538ccc282a947f74d0362cff51e846"
+    },
+    {
+      "bytes": 1411,
+      "path": "final-reattestation.json",
+      "sha256": "fb3d59a1bc4b236040f906a922e3f8320321be1a31ce2b09403c1a7f5d721277"
+    },
+    {
+      "bytes": 1990,
+      "path": "input-packet-reattestation.json",
+      "sha256": "af92dc9e8534f396ac79e3b21a9cd4b150fbc04eade9a925a3fbe4bec37bfee9"
+    },
+    {
+      "bytes": 3179,
+      "path": "source-window-boundaries.jsonl",
+      "sha256": "9b7de76bd62198210e79433d55b56fbc399c535c864723171d13fb8af9003e28"
+    },
+    {
+      "bytes": 952,
+      "path": "summary.json",
+      "sha256": "c34e18d779800706871c9483cf71c75d8365e960cca7f0a883c8bd6a0985f58b"
+    },
+    {
+      "bytes": 8038,
+      "path": "terminology-references.jsonl",
+      "sha256": "d54a90f2e7ff91b25dd9c72e9ab06c5463b8c7291ab41c3dd6bc705610bcdd79"
+    }
+  ],
+  "head": "b52b7c9abd112328a70d9e811d3b6aa2d4feb8e6",
+  "nativeSpeakerApproval": false,
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "schemaVersion": 1,
+  "summarySha256": "c34e18d779800706871c9483cf71c75d8365e960cca7f0a883c8bd6a0985f58b",
+  "tree": "d7a46bce75c76e3a74736b85175f7fa412324f39",
+  "window": "W843-W862"
+}

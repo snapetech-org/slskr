@@ -1,0 +1,79 @@
+{
+  "activeHoldIdHashOnly": "1719::id",
+  "agreementStatusCounts": {
+    "agree_accept": 182,
+    "agree_hold": 24,
+    "agree_revise": 12,
+    "override_blind": 21,
+    "override_primary": 1
+  },
+  "artifact": "slskR PR #209 W1743-W1762 cross-review packet",
+  "baseRef": "main",
+  "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "callerBackedCellCount": 216,
+  "callerlessCellCountHashOnly": 24,
+  "callerlessPositions": [
+    1754,
+    1755
+  ],
+  "candidateFreeInputDirectory": "../candidate-free-input",
+  "candidateFreeInputUsed": true,
+  "catalogsEdited": false,
+  "cellCount": 240,
+  "crossDispositionCounts": {
+    "accept-current": 182,
+    "correction": 7,
+    "hold": 24,
+    "refinement": 27
+  },
+  "draft": true,
+  "head": "ccbc3dc721c1cbd225d4e512f4f0af4c80476620",
+  "independentBlindPacketDirectory": "../../slskr-pr209-w1743-1762-independent-blind-20261105",
+  "independentBlindPacketRead": true,
+  "inputFileHashes": {
+    "blind": {
+      "SHA256SUMS.txt": "5025d788c9b25b658d57994876e734678c63af5f59d9a90ff0174624b76141d3",
+      "blind-review-ledger.jsonl": "9f5020eec4279543f76f24b966c628782ab5ff8f861f799f36b889bd99da2217",
+      "preserved-active-holds.jsonl": "0c59015338250fd49c65834eb7b0cd300f620178183d33ca76bb93fda692468d",
+      "review-manifest.json": "d80f05190ac2e58564584ac45b36a6cb43f320d59977a6a3f3ac73bde405954b"
+    },
+    "candidateFree": {
+      "SHA256SUMS.txt": "451cbab646d5deb9dd8564aa9e39e9abc508c1d6c1dfc6d0118048663a0785f6",
+      "active-hold-reattestation.jsonl": "20e7ed50d949e0dc16bd4365a37d7f2a217a99bd48a6d9f3b356b983df23a19a",
+      "caller-resolution-holds.jsonl": "0d2cd1d16781950d9a51b1bed728f3c48917fae3476eb035bb3da9a9d820b8e2",
+      "catalog-file-pins.json": "7074c68c00dad134a4f4a5e548c77ea483ed3bf691fa3ee29fecc9db011e068a",
+      "current-target-cells.jsonl": "e7ec1eb504c176ccf6d3ee6398d7c7d2417f03cbf355d1f25fcbd7c981e3bc01",
+      "manifest.json": "ece7849af83f11071f952b38f0a625dda25e94e963488f1d889b65b66ada1e43",
+      "source-contexts.jsonl": "f7c24ede726021d7d121819ce0b21079a397d48b27da6b92c9db9a1ee31d7d4b"
+    },
+    "primary": {
+      "SHA256SUMS.txt": "f6c2fe605d30e078409075c790c0fd3f24be4c30770fe73293ee5659f9810b0b",
+      "active-hold-reattestation.jsonl": "59ffffa92d94c1a1103acb27f9fda5ec71c6142d63023967f0bb67ce911cc832",
+      "manifest.json": "ffdc090de12c409b3518358d78912f9b7309dc72c35439a7320752ccb18d9396",
+      "primary-review.jsonl": "779320d69712a954a2d48373cc87e8ea969397658ed00a6d1483e06fea073cbf"
+    }
+  },
+  "localeCount": 12,
+  "nativeSpeakerReview": false,
+  "overrideCounts": {
+    "overrideBlind": 21,
+    "overridePrimary": 1
+  },
+  "positions": [
+    1743,
+    1762
+  ],
+  "primaryPacketDirectory": "../primary-review",
+  "pullRequest": 209,
+  "pullRequestState": "OPEN",
+  "recommendationCellCount": 34,
+  "repository": "snapetech-org/slskR",
+  "reviewConfidence": "moderate",
+  "sourceCount": 20,
+  "testsRun": false,
+  "tree": "075d1b72a2fd080404ebec19d354cb863638df21",
+  "verificationStatus": "pass",
+  "verifiedAtUtc": "2026-11-05T16:26:51Z",
+  "verifier": "python3 verify_cross_packet.py",
+  "window": "W1743-W1762"
+}

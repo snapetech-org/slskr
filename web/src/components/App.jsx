@@ -6,6 +6,7 @@ import * as collectionsAPI from '../lib/collections';
 import { createApplicationHubConnection } from '../lib/hubFactory';
 import { getState as getApplicationState } from '../lib/application';
 import { getCurrent as getApplicationOptions } from '../lib/options';
+import { toDisplayError } from '../lib/errors';
 import * as relayAPI from '../lib/relay';
 import { connect, disconnect } from '../lib/server';
 import * as session from '../lib/session';
@@ -73,17 +74,6 @@ const normalizeTheme = (theme) => {
 };
 
 const getSemanticTheme = (theme) => (theme === 'light' ? 'light' : 'dark');
-
-const toDisplayError = (error, fallback = 'Request failed') => {
-  const value = error?.response?.data ?? error?.message ?? error;
-  if (typeof value === 'string' || typeof value === 'number') return String(value);
-  if (value && typeof value === 'object') {
-    for (const key of ['message', 'error', 'detail', 'title']) {
-      if (typeof value[key] === 'string' && value[key].trim()) return value[key];
-    }
-  }
-  return interfaceText(fallback);
-};
 
 const setNavigationHeightVariable = (element) => {
   if (!element || typeof document === 'undefined') return;

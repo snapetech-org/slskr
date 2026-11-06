@@ -1,0 +1,23 @@
+{
+  "rootSums": "PASS",
+  "candidateFreeInputSums": "PASS",
+  "primaryVerifier": "PASS",
+  "blindVerifier": "PASS",
+  "blindVerifierHost": "kspld0",
+  "crossAuditVerifier": "PASS",
+  "candidateFreeManifestSha256": "6f4f7bc3ed5d3d8097916cf37aa4a2b9ee043141cd1814aa880b673c593de944",
+  "candidateFreeChecksumListSha256": "abbb1b89549b82072fcbf5fce3c6ae580cc5bd499b4fe5dadd5df7bd0c567f89",
+  "blindVerifierReceiptSha256": "d1c55b7dec51bb68ae70148405bab3e3bbfe391a75fb792b7d56d3a89abf3983",
+  "crossAuditVerifierOutput": "cross-audit verified: 240 cells; 145 updates; 95 accept-current; 0 holds",
+  "primaryVerifierOutput": "{\n  \"result\": \"PASS\",\n  \"inputManifestSha256\": \"6f4f7bc3ed5d3d8097916cf37aa4a2b9ee043141cd1814aa880b673c593de944\",\n  \"inputChecksumListSha256\": \"abbb1b89549b82072fcbf5fce3c6ae580cc5bd499b4fe5dadd5df7bd0c567f89\",\n  \"cellCount\": 240,\n  \"decisionCounts\": {\n    \"accept-current\": 112,\n    \"correction\": 73,\n    \"refinement\": 55\n  },\n  \"holds\": 0,\n  \"allStructureAndTokenChecksPassed\": true\n}",
+  "blindVerifierOutput": {
+    "candidateFreeChecksumListSha256": "abbb1b89549b82072fcbf5fce3c6ae580cc5bd499b4fe5dadd5df7bd0c567f89",
+    "cells": 240,
+    "head": "55ca2ae0788bfd79daab5cc49f49ebb608593e98",
+    "holds": 0,
+    "proposals": 132,
+    "retains": 108,
+    "status": "PASS",
+    "tree": "d5677673b766d572102bba249af2ab69095dea0d"
+  }
+}

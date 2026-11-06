@@ -1,0 +1,111 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W863-W882",
+  "assignedLocales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id"
+  ],
+  "assignedCellCount": 120,
+  "dispositionCounts": {
+    "accept-current": 88,
+    "accept-proposal": 32
+  },
+  "candidateRevisions": 32,
+  "rejectedCandidates": 0,
+  "holds": 0,
+  "exactPrimaryHead": "72597bcf3c71f586040cd882506dff8dcbf6c804",
+  "exactPrimaryTree": "98f7304db2e39ad722121c24047f5f06aa515663",
+  "repositoryStatusBeforeAfter": "clean",
+  "catalogsReattested": 12,
+  "catalogsAssigned": 6,
+  "catalogKeyCount": 5441,
+  "allTwelveCatalogKeySetsIdentical": true,
+  "currentTargetCellReattestationsPassed": 120,
+  "currentTargetCellReattestationFailures": 0,
+  "currentProtectedExampleTokenFailures": 6,
+  "currentProtectedExampleFailures": [
+    {
+      "sourceIndex": 871,
+      "windowLabel": 872,
+      "locale": "es",
+      "target": "ID de contenido (por ejemplo, contenido:audio:álbum:mb-id)",
+      "missingTokens": [
+        "content:audio:album:mb-id"
+      ],
+      "primaryAcceptedTarget": "ID de contenido (p. ej., content:audio:album:mb-id)"
+    },
+    {
+      "sourceIndex": 871,
+      "windowLabel": 872,
+      "locale": "hi",
+      "target": "सामग्री आईडी (जैसे, सामग्री:ऑडियो:एल्बम:एमबी-आईडी)",
+      "missingTokens": [
+        "content:audio:album:mb-id"
+      ],
+      "primaryAcceptedTarget": "सामग्री आईडी (उदाहरण: content:audio:album:mb-id)"
+    },
+    {
+      "sourceIndex": 871,
+      "windowLabel": 872,
+      "locale": "id",
+      "target": "ID Konten (misalnya, konten:audio:album:mb-id)",
+      "missingTokens": [
+        "content:audio:album:mb-id"
+      ],
+      "primaryAcceptedTarget": "ID konten (misalnya, content:audio:album:mb-id)"
+    },
+    {
+      "sourceIndex": 872,
+      "windowLabel": 873,
+      "locale": "es",
+      "target": "ID de contenido (por ejemplo, contenido:audio:álbum:mb-release-id)",
+      "missingTokens": [
+        "content:audio:album:mb-release-id"
+      ],
+      "primaryAcceptedTarget": "ID de contenido (p. ej., content:audio:album:mb-release-id)"
+    },
+    {
+      "sourceIndex": 872,
+      "windowLabel": 873,
+      "locale": "hi",
+      "target": "सामग्री आईडी (जैसे, सामग्री:ऑडियो:एल्बम:एमबी-रिलीज़-आईडी)",
+      "missingTokens": [
+        "content:audio:album:mb-release-id"
+      ],
+      "primaryAcceptedTarget": "सामग्री आईडी (उदाहरण: content:audio:album:mb-release-id)"
+    },
+    {
+      "sourceIndex": 872,
+      "windowLabel": 873,
+      "locale": "id",
+      "target": "ID Konten (misalnya, konten:audio:album:mb-release-id)",
+      "missingTokens": [
+        "content:audio:album:mb-release-id"
+      ],
+      "primaryAcceptedTarget": "ID konten (misalnya, content:audio:album:mb-release-id)"
+    }
+  ],
+  "allCandidateAndRecommendedProtectedTokensPassed": true,
+  "placeholderMismatches": 0,
+  "markupMismatches": 0,
+  "callerPinsReattested": 27,
+  "callerPinFailures": 0,
+  "callerPinCountForWindow": 20,
+  "sourceAndCallerContext": "All exact source caller pins are tied to commit blobs, file hashes, surface-line hashes, and pinned context lines; #863 exclusion is checked semantically with exact lowercase `slskr` retained.",
+  "primaryPacketSha256SumsSha256": "aaeee1a02507f830796ed72959adbc31177df9dfd7e2bf0d7236137962b46209",
+  "primaryReviewLedgerSha256": "e2fea414ecac9ec6714a2afb2f2b42927697cd522bbdcb46a7e2b209a1734e3c",
+  "primaryManifestSha256": "be0e9f821f84ae878b9cba3bb95e89e400f71437239f1a1bbee17ed826d903f7",
+  "livePRStateAttestation": "Parent combined packet owns live seven-PR head/state requery; this batch reattests the pinned local PR commit/tree.",
+  "nativeSpeakerApproval": false,
+  "testsBuildsScansCiBrowserRun": false,
+  "repositoryModified": false,
+  "reviewLimits": [
+    "Machine-assisted semantic cross-review; no native-speaker approval is established.",
+    "This batch makes no repository or PR changes."
+  ]
+}

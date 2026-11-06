@@ -39,6 +39,8 @@ Translate interface labels, help, empty states, validation, notifications, and e
 
 System > Experience Preferences offers a browser-local interface-language selector for twelve first-wave locales. This follow-up adds 138 missing source strings to each of the twelve locale catalogs (1,656 translated values), covering fixed copy in Browse, Chat, Messaging, Player, Rooms, Search, System, and Transfers. It also localizes count-sensitive messages and recognized app-owned error details. The system settings tab is labeled “File sharing” to distinguish file-sharing controls from collection “Shares.” Catalog parity and placeholder checks cover every locale. Locale JSON is fetched on demand, and startup waits for the selected or browser-detected catalog. Media and user-provided content, paths, and raw API/protocol values remain unchanged.
 
+PR #204 adds a further 6,588 reviewed target values across 549 source IDs and twelve direct locales. The initial 6,564-cell planning estimate omitted two federation/signature enum display IDs (24 cells); the completed set includes `Enforce`, `Friends only`, and `Hermit` while leaving their machine enum values unchanged. Exact-head reconciliation confirms each locale contains all 549 targets with zero missing keys, nulls, blanks, or English-identical values. See the [PR #204 translation reconciliation](localization/pr204-translation-review-2026-11-01.md) and its source-linked audit.
+
 The regional-format preference also localizes digits in track durations and audio quality values, alongside the existing dates, counts, transfer sizes, and metric/network values. Arabic strings carry local language and direction metadata.
 
 Regional formatting uses the selected preference for dates, times, counts, byte sizes, and numbers in the shipped UI. Changes re-render open screens immediately, keep working in the current tab when browser storage is blocked, and update from another tab's preference changes.
@@ -50,3 +52,7 @@ This follow-up adds 165 source strings to each of the twelve catalogs. It routes
 ## Remaining work
 
 The catalog translations were machine-generated and still need fluent-speaker review. Review the full Arabic layout interactively at narrow and desktop widths before claiming app-wide RTL support.
+
+## Focused catalog audit (2026-10-30)
+
+A semantic pass reviewed the 224 IDs added by PR #165 across all twelve locales (2,688 target values), plus key and placeholder integrity for the merged 4,558-ID catalogs. It corrected 25 clear copy errors in swarm, release-candidate, player, and file-sharing labels. Current main adds 317 more IDs; all twelve catalogs contain every one, and their placeholders match. The remaining English-identical values in those additions are dynamic-value templates or standard technical terms and units. These focused corrections do not add per-string native-review provenance: the machine-generated catalogs still need fluent-speaker review, and Arabic RTL review remains outstanding.

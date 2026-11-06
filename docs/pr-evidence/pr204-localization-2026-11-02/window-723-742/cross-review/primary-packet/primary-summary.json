@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "task": "slskR PR #204 W723–742 primary semantic review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "tree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "sourceBaselineHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceBaselineTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "sourcePositions": [
+    723,
+    742
+  ],
+  "sourceIds": 20,
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "cells": 240,
+  "counts": {
+    "accept-current": 150,
+    "propose-correction": 41,
+    "hold-locale-terminology": 1,
+    "hold-no-direct-caller": 36,
+    "hold-source-ambiguity": 12
+  },
+  "candidateCells": 41,
+  "heldCells": 49,
+  "holdGroups": [
+    {
+      "source": "Close the dialog without joining a Soulseek room.",
+      "locales": 12,
+      "reason": "No direct caller pinned."
+    },
+    {
+      "source": "Close this dialog without saving the current result filter.",
+      "locales": 12,
+      "reason": "No direct caller pinned."
+    },
+    {
+      "source": "Close this preview and return to the selected files without starting a transfer.",
+      "locales": 12,
+      "reason": "No direct caller pinned."
+    },
+    {
+      "source": "Close this panel without deleting the thread or leaving anything.",
+      "locales": 12,
+      "reason": "Caller only removes the panel from local state; “leaving anything” is ambiguous about room/channel membership."
+    },
+    {
+      "source": "Close diagnostic bundle",
+      "locale": "vi",
+      "reason": "Current phrase can mean “package diagnostics”; needs fluent Vietnamese terminology review."
+    }
+  ],
+  "callerRefactorNeeds": [
+    {
+      "source": "Close this panel without deleting the thread or leaving anything.",
+      "path": "web/src/components/Messaging/Messaging.jsx",
+      "lines": [
+        942,
+        947,
+        952,
+        133
+      ],
+      "reason": "closePanel only filters the panel from local UI state and does not delete a thread or leave a room/channel. Replace “leaving anything” with an explicit room/channel membership statement before translating.",
+      "pinnedBehavior": "The close icon calls closePanel(panel.id) at line 947; closePanel filters that panel from local state at line 133."
+    }
+  ],
+  "sourceIdsWithNoDirectCallers": [
+    "Close the dialog without joining a Soulseek room.",
+    "Close this dialog without saving the current result filter.",
+    "Close this preview and return to the selected files without starting a transfer."
+  ],
+  "perLocale": {
+    "ar": {
+      "accept-current": 16,
+      "hold-no-direct-caller": 3,
+      "hold-source-ambiguity": 1
+    },
+    "de": {
+      "propose-correction": 3,
+      "accept-current": 13,
+      "hold-no-direct-caller": 3,
+      "hold-source-ambiguity": 1
+    },
+    "es": {
+      "propose-correction": 4,
+      "accept-current": 12,
+      "hold-no-direct-caller": 3,
+      "hold-source-ambiguity": 1
+    },
+    "fr": {
+      "propose-correction": 3,
+      "accept-current": 13,
+      "hold-no-direct-caller": 3,
+      "hold-source-ambiguity": 1
+    },
+    "hi": {
+      "accept-current": 12,
+      "propose-correction": 4,
+      "hold-no-direct-caller": 3,
+      "hold-source-ambiguity": 1
+    },
+    "id": {
+      "accept-current": 15,
+      "hold-no-direct-caller": 3,
+      "propose-correction": 1,
+      "hold-source-ambiguity": 1
+    },
+    "ja": {
+      "propose-correction": 5,
+      "accept-current": 11,
+      "hold-no-direct-caller": 3,
+      "hold-source-ambiguity": 1
+    },
+    "ko": {
+      "propose-correction": 4,
+      "accept-current": 12,
+      "hold-no-direct-caller": 3,
+      "hold-source-ambiguity": 1
+    },
+    "pt-BR": {
+      "propose-correction": 2,
+      "accept-current": 14,
+      "hold-no-direct-caller": 3,
+      "hold-source-ambiguity": 1
+    },
+    "vi": {
+      "accept-current": 10,
+      "hold-locale-terminology": 1,
+      "propose-correction": 5,
+      "hold-no-direct-caller": 3,
+      "hold-source-ambiguity": 1
+    },
+    "zh-Hans": {
+      "propose-correction": 5,
+      "accept-current": 11,
+      "hold-no-direct-caller": 3,
+      "hold-source-ambiguity": 1
+    },
+    "zh-Hant": {
+      "propose-correction": 5,
+      "accept-current": 11,
+      "hold-no-direct-caller": 3,
+      "hold-source-ambiguity": 1
+    }
+  },
+  "callerReferences": 49,
+  "callerFiles": 13,
+  "priorEvidenceMatches": 0,
+  "placeholderFailures": 0,
+  "protectedLiteralFailures": 0,
+  "nativeSpeakerApproval": false,
+  "nativeSpeakerReviewRequired": true,
+  "testsBuildsScansCiWorkflowsRan": false,
+  "repositoryOrPrModified": false,
+  "catalogDeltaNote": "Each live locale catalog has seven keys outside and four frozen keys absent from the 5,437-key source inventory. The interpolated loading label is outside this W723–742 review window; exact deltas appear in manifest.json.",
+  "boundaryReattestation": "W722 was rechecked against current catalogs and the prior ledger at this head; all 12 prior recommendations are present and all 11 prior caller-pin rows still match their live line hashes and file blobs.",
+  "directLiteralCallerReferences": 32,
+  "supportingCallerContextPins": 17,
+  "testReferences": 0,
+  "uniqueCallerLines": 48
+}

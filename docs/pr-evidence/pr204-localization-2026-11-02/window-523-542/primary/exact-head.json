@@ -1,0 +1,142 @@
+{
+  "caller_context_records": 20,
+  "caller_pin_records": 46,
+  "catalogs": [
+    {
+      "bytes": 511504,
+      "git_blob_oid": "f963b51851d24596058d3eb335cdd5005be06eb7",
+      "locale": "ar",
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "sha256": "fa84f9bfd93ff4b3b061fe9298448c5f57d0964a7f302885063c113dc7c3f6d9",
+      "source_keys": 5437,
+      "status": "pass"
+    },
+    {
+      "bytes": 442422,
+      "git_blob_oid": "d9f43bb1f883d0fdf6890d9b4accdcca98fff17e",
+      "locale": "de",
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "sha256": "d952d10b8ce9de3f619b5b952f90e19bf2d08321aa719710bae6861a3ba0d32b",
+      "source_keys": 5437,
+      "status": "pass"
+    },
+    {
+      "bytes": 443166,
+      "git_blob_oid": "010f1d0ae29cbc0c8e6786ae77e80fc6f6b1fbe9",
+      "locale": "es",
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "sha256": "c57e8f4bd62dd6378467294c01fb4f73f74d630b0ece17959303d523948a5898",
+      "source_keys": 5437,
+      "status": "pass"
+    },
+    {
+      "bytes": 454218,
+      "git_blob_oid": "d3da03d2f9275775b581484918b52daf0c1a5497",
+      "locale": "fr",
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "sha256": "c6f79c3ce6d6beccf7ece8dad5232f97c0f5aaf59b2aec6e93f21616334de762",
+      "source_keys": 5437,
+      "status": "pass"
+    },
+    {
+      "bytes": 674675,
+      "git_blob_oid": "161bcdf1a8e55c63863adabb91455b78bc8c3b2e",
+      "locale": "hi",
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "sha256": "9b1116d702a838126c789e17d64082eb455321a7d1e047383bdc447e08d71530",
+      "source_keys": 5437,
+      "status": "pass"
+    },
+    {
+      "bytes": 408843,
+      "git_blob_oid": "0681d13e5a1cbd949cedb47ce503512d7ba5e87d",
+      "locale": "id",
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "sha256": "b55d71c8f02a39c67758101cba0f19bc3a569501146771e08c8e3f8b2c502bcf",
+      "source_keys": 5437,
+      "status": "pass"
+    },
+    {
+      "bytes": 490569,
+      "git_blob_oid": "daadf6a5939ed158d20949f7698b06fc00ea3fd0",
+      "locale": "ja",
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "sha256": "920f95310299bc86c9b27c85f214b65c37d46e2bffdecac48ed18e7b1a0485f3",
+      "source_keys": 5437,
+      "status": "pass"
+    },
+    {
+      "bytes": 441350,
+      "git_blob_oid": "4aa06b32c91d446afd17534d2c166f7e1a03935e",
+      "locale": "ko",
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "sha256": "14ac435bbc87ad2cf6ea2a909ad06b634c43d891927bdd7dcc341da6da93b40e",
+      "source_keys": 5437,
+      "status": "pass"
+    },
+    {
+      "bytes": 437905,
+      "git_blob_oid": "2d870b6f90ab5ac59d99458cd32481af92c6e1e9",
+      "locale": "pt-BR",
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "sha256": "9d48f4e2a177a581e9bc9c7ff2461ed0b5b7f0987dd9eab401bfef07601c8e02",
+      "source_keys": 5437,
+      "status": "pass"
+    },
+    {
+      "bytes": 473488,
+      "git_blob_oid": "e7db16cade7d3e676f6355642104e0f5dc6e80e7",
+      "locale": "vi",
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "sha256": "9e391a9e479ddcc9d86aec0c620abafd389cedcd6ca33e213bc22990ef8fb15f",
+      "source_keys": 5437,
+      "status": "pass"
+    },
+    {
+      "bytes": 382034,
+      "git_blob_oid": "ecfabeb56fa6ef805f00b2cfece70f4ad085ee81",
+      "locale": "zh-Hans",
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "sha256": "8327b72a4e062aa98d2468222cd71a2f1a592c7e55367e47227a2c8eeca3c54a",
+      "source_keys": 5437,
+      "status": "pass"
+    },
+    {
+      "bytes": 382742,
+      "git_blob_oid": "39c66584c074fa61aa036710eb630dfea23cff0c",
+      "locale": "zh-Hant",
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "sha256": "8f4d8b7c6d84685479cabf78ba7ef0738d9047299e73c8d8b9783ba298cd3da5",
+      "source_keys": 5437,
+      "status": "pass"
+    }
+  ],
+  "catalogs_modified": false,
+  "checks_run": false,
+  "direct_localization_caller_count": 19,
+  "live_pr": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "fa712d12ec3a41ed5e4f2e264f6b550ddbdaba6e",
+    "isDraft": true,
+    "mergeStateStatus": "CLEAN",
+    "mergeable": "MERGEABLE",
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "no_direct_localization_caller_source_ids": [
+    "Build result-filter conditions without memorizing the filter syntax."
+  ],
+  "pr_tree": "9f1111e6d75f082af5a0cf4bf346ad12b71cdfd1",
+  "prior_exact_match_records": 457,
+  "prior_routed_rows_in_window": 0,
+  "prior_stale_match_records": 0,
+  "pull_request": 204,
+  "repository": "snapetech-org/slskR",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_is_merge_base": true,
+  "source_runtime_diff_excluding_locales": [],
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "verified_head": "fa712d12ec3a41ed5e4f2e264f6b550ddbdaba6e",
+  "worktree_status": ""
+}

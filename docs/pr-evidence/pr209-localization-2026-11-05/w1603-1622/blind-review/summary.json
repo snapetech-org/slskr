@@ -1,0 +1,31 @@
+{
+  "artifact": "slskR PR #209 W1603-W1622 independent blind semantic review",
+  "window": "W1603-W1622",
+  "head": "eeb63f1e4e21d801f4a4e0393813b6e86a1ff7c8",
+  "tree": "590ee410666905f68f601393b64a4798b0609181",
+  "candidateFreeInputManifestSha256": "338964fedbe77b8c68814dbb36c50daf86af12d4b39c668239d59c513bf3e950",
+  "candidateFreeInputChecksumListSha256": "01bc4656145cff78824bced979eb58e5a50b6dad4f061a47c904d472fbdf35c3",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "decisionCounts": {
+    "accept-current": 227,
+    "correction": 13
+  },
+  "proposalCount": 13,
+  "holdCount": 0,
+  "heldPositions": [],
+  "allCellsReviewed": true,
+  "candidateFreeInputOnly": true,
+  "primaryReviewRead": false,
+  "otherProposalLedgerRead": false,
+  "nativeSpeakerSignoff": false,
+  "browserReview": false,
+  "tokenChecks": {
+    "placeholderSequence": "PASS",
+    "markup": "PASS",
+    "numericTokens": "PASS",
+    "protectedLiterals": "PASS"
+  },
+  "unlistedCandidateFreeCacheObserved": false
+}

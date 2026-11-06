@@ -1,0 +1,22 @@
+{
+  "verifiedAtUtc": "2026-11-03T08:12:48+00:00",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": "https://github.com/snapetech-org/slskr/pull/204",
+  "state": "OPEN",
+  "draft": true,
+  "baseRef": "main",
+  "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "headRef": "codex/slskr-l10n-audit-20261030",
+  "headSha": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+  "remotePullRef": "refs/pull/204/head",
+  "remotePullRefHead": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+  "remoteBranchRef": "refs/heads/codex/slskr-l10n-audit-20261030",
+  "remoteBranchHead": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+  "commitApiTree": "ba62eed0bd600a8f69bb6c0cbefe99da7ee47623",
+  "localWorktree": "/mnt/disks/scratch/task-worktrees/localization-20261103/slskr-pr204-w1183-1202-apply-20261103",
+  "localWorktreeBranch": "",
+  "localWorktreeHead": "7c0dd5844d39e5fdb5269fa50317b26f117512a2",
+  "localWorktreeTree": "ba62eed0bd600a8f69bb6c0cbefe99da7ee47623",
+  "localWorktreeStatusClean": true,
+  "result": "PASS"
+}

@@ -1,0 +1,60 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W883-W902",
+  "head": "5f295feea832b3078c52d92d9268cd6446f804a5",
+  "tree": "22c6c11a817777e2a0df3987acd5fc6bf938c9a7",
+  "primaryProposalsAdjudicated": 111,
+  "crossReviewRowsForProposals": 111,
+  "primaryProposalsAccepted": 110,
+  "primaryNoOpRetained": 1,
+  "additionalCorrectionRecommendationsAdjudicated": 2,
+  "additionalCorrectionsAccepted": 2,
+  "approvedValueChanges": 112,
+  "unchangedReviewedNoOpCells": 1,
+  "sampledAcceptCurrentRetained": 59,
+  "adjudicationRows": 113,
+  "adjudicationDispositionCounts": {
+    "accept-primary-correction": 110,
+    "retain-current-exact-no-op": 1,
+    "accept-additional-paired-label-consistency-correction": 2
+  },
+  "decisionDetails": [
+    {
+      "sourceIndex": 889,
+      "locale": "ko",
+      "action": "retain-current-exact-no-op",
+      "current": "콘텐츠 ID B",
+      "proposed": "콘텐츠 ID B",
+      "note": "Proposal exactly equals the pinned existing value and hash."
+    },
+    {
+      "sourceIndex": 888,
+      "locale": "zh-Hans",
+      "action": "accept-additional-paired-label-consistency-correction",
+      "current": "内容 ID A",
+      "target": "内容ID A",
+      "note": "Matches glossary `内容ID` and paired B label `内容ID B`."
+    },
+    {
+      "sourceIndex": 888,
+      "locale": "zh-Hant",
+      "action": "accept-additional-paired-label-consistency-correction",
+      "current": "內容 ID A",
+      "target": "內容ID A",
+      "note": "Matches glossary `內容ID` and paired B label `內容ID B`."
+    }
+  ],
+  "allPrimaryProposalHashChecksPassed": true,
+  "allCrossReviewSourceAndCurrentHashesPassed": true,
+  "allCatalogFileBlobAndHashPinsPassed": true,
+  "all110AcceptedTargetsMatchPrimaryAndCrossReview": true,
+  "noOpCurrentValueRetained": true,
+  "pairedChineseTargetsMatchGlossaryAndBLabel": true,
+  "nativeSpeakerApproval": false,
+  "headedBrowserAcceptance": false,
+  "testsBuildScansCiBrowserRun": false,
+  "repositoryEdited": false,
+  "primaryPacketSha256SumsSha256": "9572fd737e7c7b7ac5ff05c8cb6870ad630861bcf5481b55ad7b69c5b20170de",
+  "crossReviewPacketSha256SumsSha256": "0f393af14d7d78cda0e81e356abb1ce04326d32268efba40bc84f25857cf56ca"
+}

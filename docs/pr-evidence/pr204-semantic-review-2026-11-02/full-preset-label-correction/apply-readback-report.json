@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "task": "slskR Chinese Full preset label correction readback",
+  "inputHead": "c0255ca319b9d5b3bba06980fc97ddb72072f759",
+  "inputTree": "0773b762a309cad8e102e7b159eeef00a0eaf1d9",
+  "sourceId": "Full",
+  "sourceIndex": 1823,
+  "cellsApplied": 2,
+  "localesApplied": [
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "allTargetsReadBack": true,
+  "catalogKeySetsUnchanged": true,
+  "allTwelveCatalogKeySetsMatch": true,
+  "catalogs": {
+    "web/src/lib/locales/ui-labels.zh-Hans.json": {
+      "keyCountBefore": 5438,
+      "keyCountAfter": 5438,
+      "keySetUnchanged": true,
+      "changedCellsReadBack": 1,
+      "catalogSha256After": "e6f6762d339fc907d1e3dbe541e028d02b2da7cbaec2bad5e64fa08a7c7f7b57"
+    },
+    "web/src/lib/locales/ui-labels.zh-Hant.json": {
+      "keyCountBefore": 5438,
+      "keyCountAfter": 5438,
+      "keySetUnchanged": true,
+      "changedCellsReadBack": 1,
+      "catalogSha256After": "8aad1f7142b8f51556b263976a58c4c3ecc9fe14a9e3f40cdbf444d73c494793"
+    }
+  },
+  "testsBuildsScansCIOrWorkflowsRun": false
+}

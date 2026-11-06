@@ -1,0 +1,5 @@
+# Private primary semantic review — slskR PR #204 W1103-W1122
+
+Exact clean-input pins: head e45e6967625c5e804b688b9cb03d359ea59d000b, tree c5164178f16e0fa2f59586c9ab3685e1ac08dfa5, input-manifest SHA-256 a55d67ef78eb413342358b7637534d1219c16311faefae012fc14ab52005b69d. This review covers 20 sequential source positions across 12 direct locales, 240 cells, and 66 pinned production references. The review uses only the checksummed clean-input packet; it does not inspect or modify repository/PR content.
+
+Dispositions: {'accept-current': 155, 'correction': 75, 'refinement': 10}; 85 proposed target refinements/corrections. All reviewed source/current/candidate hashes, placeholder sets, numeric tokens, and protected product literals match. No catalog cells were applied. Caller context exists for every selected source ID; there are no no-caller holds in this window. This is a machine-assisted primary review, not qualified native-speaker approval or independent cross-review. Keep this packet private until the separate strict-blind review has been sealed. No tests, builds, scans, CI, workflow edits, or PR changes were made.

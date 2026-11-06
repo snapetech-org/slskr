@@ -1,0 +1,33 @@
+{
+  "artifact": "slskR PR #204 W1503-W1522 root cross-review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "a7d00cd97602c5910800330190817fcada008162",
+  "tree": "2d0a051348394e809ffc3a1fdbfccd20ba8af283",
+  "window": "W1503-W1522",
+  "cells": 240,
+  "sourceIds": 20,
+  "localeCount": 12,
+  "primaryProposals": 3,
+  "independentBlindProposals": 11,
+  "proposalUnion": 11,
+  "selectedUpdates": 12,
+  "selectedDispositionCounts": {
+    "accept-current": 228,
+    "refinement": 5,
+    "correction": 7
+  },
+  "selectedFromCounts": {
+    "current": 228,
+    "root-adjudication": 12
+  },
+  "textFreeHolds": 0,
+  "placeholderAndMarkupChecks": "PASS for every selected target",
+  "primaryLedgerSha256": "c2b449c79513bfd9d253d2512286893a3ec73446891b7e411288affe643aaf7e",
+  "independentBlindLedgerSha256": "3449e3fb04cf50e67ea7d974e8dd4927b8f7edbe920d175a9ae2a97c8e0d19b7",
+  "candidateFreeManifestSha256": "f9f3f0f49a0933189ae1475e72748b09121f7abca95e316bf1cd1dc870718c8f",
+  "nativeSpeakerSignoff": "not claimed",
+  "stateMachineValidation": "not performed",
+  "exactHeadBrowserAcceptance": "not performed; exact-head deployment lookup returned zero",
+  "catalogApplication": "pending"
+}

@@ -1,0 +1,105 @@
+{
+  "dispositions": {
+    "accepted": 179,
+    "correction": 1,
+    "held": 12,
+    "refinement": 48
+  },
+  "inputChecksumVerification": "passed: sha256sum -c SHA256SUMS.txt",
+  "inputFilesVerified": 11,
+  "inputPacket": "/mnt/disks/scratch/task-scratch/slskr-pr204-w1243-1262-input-20261103/clean-input",
+  "inputPacketChecksumListSha256": "a298dd57d888a652a89e0936881beb3b2897f83f07b93d9bc8f1f22560691c5b",
+  "inputPolicy": "Used only the candidate-free packet for source keys, current targets, source/caller context, holds, and integrity checks. Did not open the primary ledger, proposed candidates, or cross-audit files.",
+  "integrityChecks": {
+    "allPositionsPresent": true,
+    "apiFieldHints": {
+      "allListedLiteralNamesPresentInAll12": true,
+      "mismatches": [],
+      "positions": [
+        1252,
+        1253,
+        1254,
+        1256
+      ]
+    },
+    "cellsPerPosition": 12,
+    "channelIdLiteralPresentInAll12At1255": true,
+    "contentIdPreservedInAll12At1252": true,
+    "digitBearingCurrentTargets": 0,
+    "discoveryInboxCurrentExactPreservation": {
+      "exact": 10,
+      "translatedOrTransliterated": [
+        "hi",
+        "vi"
+      ]
+    },
+    "localeOrderMatchesManifest": true,
+    "markupHits": 0,
+    "minutesPlaceholderPreservedInAll12": true,
+    "numericReview": "Non-negative size at 1254 and positive timestamps at 1255 preserved across all 12 locales.",
+    "placeholderTokenSequenceMismatches": 0,
+    "replayGainPreservedInAll12At1246AndReplacements": true,
+    "sourceMarkupHits": 0,
+    "unitReview": "Seconds preserved at 1249; minutes and {minutes} preserved at 1250; generic Duration labels at 1251 remain unit-neutral for callers appending seconds/milliseconds."
+  },
+  "limitations": [
+    "No native-speaker approval was provided in the input packet.",
+    "All values at position 1257 remain held pending caller resolution."
+  ],
+  "outputDirectory": "/mnt/disks/scratch/task-scratch/slskr-pr204-w1243-1262-blind-review-20261103",
+  "prohibitedWorkNotPerformed": [
+    "tests",
+    "builds",
+    "scans",
+    "CI",
+    "workflow edits",
+    "repository or worktree changes"
+  ],
+  "pullRequest": {
+    "baseRefName": "main",
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "draft": true,
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+    "liveChecks": [
+      "gh pr view 204 --repo snapetech-org/slskR --json state,isDraft,baseRefName,baseRefOid,headRefName,headRefOid,url",
+      "git ls-remote https://github.com/snapetech-org/slskR.git refs/heads/codex/slskr-l10n-audit-20261030 refs/pull/204/head",
+      "gh api repos/snapetech-org/slskR/commits/ce2e7d12f3025f0312df37527b4c270d0eb5bce5 --jq .sha+.commit.tree.sha"
+    ],
+    "number": 204,
+    "pinnedLocalWorktree": "/mnt/disks/scratch/task-worktrees/localization-20261103/slskr-pr204-w1223-evidence-20261103",
+    "pinnedLocalWorktreeStatus": "detached HEAD; clean",
+    "pinnedLocalWorktreeTree": "0ead1eb1678b4df05ca7feec9776c0319d4eefd3",
+    "remoteRefs": {
+      "refs/heads/codex/slskr-l10n-audit-20261030": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+      "refs/pull/204/head": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5"
+    },
+    "repository": "snapetech-org/slskR",
+    "state": "OPEN",
+    "tree": "0ead1eb1678b4df05ca7feec9776c0319d4eefd3"
+  },
+  "reviewType": "independent blind semantic review",
+  "reviewedAtUtc": "2026-11-03T10:28:23Z",
+  "reviewerRole": "subagent /root/slskr_w1243_blind",
+  "scope": {
+    "currentTargetCells": 240,
+    "heldCells": 12,
+    "heldPosition": 1257,
+    "locales": [
+      "es",
+      "zh-Hans",
+      "hi",
+      "de",
+      "ja",
+      "fr",
+      "pt-BR",
+      "ar",
+      "ko",
+      "zh-Hant",
+      "vi",
+      "id"
+    ],
+    "positions": "1243–1262 inclusive",
+    "sourceKeys": 20
+  }
+}

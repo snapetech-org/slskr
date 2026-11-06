@@ -1,0 +1,335 @@
+# slskR semantic review source and caller context: 363–382
+
+PR #204 exact review head `61155e37280a60d025fda50e9115a5ef2f5cd45f` / tree `d58ce3c148365d8d4bccd997cc4e1c561d81f76e`.
+Source and caller snapshot `7ff454828398de6a3cfb72fe7f0ed21fe419425b` / tree `9e9f2aa743c4ff3236af8f99619803bdc3a37152`. Every pinned caller blob is identical at both commits.
+
+## Findings tied to source context
+
+- Index 369, `Audience`: Column in the Collections Shares table; each row shows the username of the recipient the collection is shared with. It is not a spectator audience. Caller: `web/src/components/Collections/Collections.jsx:822-843`.
+
+- Index 370, `Audio`: Standalone content-domain option beside Video, Image, Text, and Application; also a fallback label for media kind and SongID audio source. Caller: `web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx:334-354; web/src/components/Player/PlayerLauncher.jsx:375-389,540-557; web/src/components/Search/SongIDEvidenceDetails.jsx:240-250`.
+
+- Index 371, `Audio Hash Computed`: Success-state message header shown after an audio hash was computed. Caller: `web/src/components/System/MediaCore/MediaCoreContentHashingPanel.jsx:178-190`.
+
+- Index 372, `Audio Perceptual Hash`: Heading for the perceptual audio hash method/field in the MediaCore hashing panel. Caller: `web/src/components/System/MediaCore/MediaCoreContentHashingPanel.jsx:120-132`.
+
+- Index 374, `Audio Samples (comma-separated floats)`: Label for the form field containing comma-separated floating-point audio sample values; placeholder shows normalized numeric examples. Caller: `web/src/components/System/MediaCore/MediaCoreContentHashingPanel.jsx:145-170`.
+
+- Index 378, `Audio:`: Field label preceding the boolean audio property in a validated ContentID result. Caller: `web/src/components/System/MediaCore/MediaCoreContentRegistryPanel.jsx:222-232`.
+
+- Index 381, `Authenticated peer identity is required`: Server error returned by Pod routes when the authenticated local network peer identity is absent. Caller: `crates/slskr/src/extended_controller_dynamic_get.rs:318-329; crates/slskr/src/legacy_route_dispatch_group_07.rs:912-924,1078-1088; crates/slskr/src/legacy_route_dispatch_group_10.rs:650-662; crates/slskr/src/route_dispatch_group_6_pods.rs:92-104,244-256; crates/slskr/src/route_dispatch_group_7_network_admin.rs:293-305; crates/slskr/src/misc_controller_mutations.rs:399-411`.
+
+## Pinned caller excerpts
+
+### `web/src/components/Collections/Collections.jsx` — blob `c72ea0939c55ba47ed090e0d5ac3f67dd47b06c0`, SHA-256 `0ae47fbae62cd1c65e120eb02a41e4941c8aec5e1d5f037361f41365539c44ed`
+
+Lines 822–843:
+822:                       <Table.Row>
+823:                         <Table.HeaderCell><LocalizedText source={"Collection"} /></Table.HeaderCell>
+824:                         <Table.HeaderCell><LocalizedText source={"Audience"} /></Table.HeaderCell>
+825:                         <Table.HeaderCell><LocalizedText source={"Stream"} /></Table.HeaderCell>
+826:                         <Table.HeaderCell><LocalizedText source={"Download"} /></Table.HeaderCell>
+827:                       </Table.Row>
+828:                     </Table.Header>
+829:                     <Table.Body>
+830:                       {collectionShares.map((share) => (
+831:                         <Table.Row key={share.id}>
+832:                           <Table.Cell>
+833:                             {share.collection?.title ||
+834:                               selectedCollection.title}
+835:                           </Table.Cell>
+836:                           <Table.Cell>{share.username}</Table.Cell>
+837:                           <Table.Cell>
+838:                             {collectionsAPI.shareGrantAllows(share.permissions, 'stream') ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
+839:                           </Table.Cell>
+840:                           <Table.Cell>
+841:                             {collectionsAPI.shareGrantAllows(share.permissions, 'download') ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
+842:                           </Table.Cell>
+843:                         </Table.Row>
+
+### `web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx` — blob `4f3c8484d8d23746369ce7619ab4e017849dfb89`, SHA-256 `8cb1922e358f7229d7f8147f41e18bffa3146283c270a5844393fc72f755c6ca`
+
+Lines 334–354:
+334:                 <LocalizedText source={"Query by Domain"} /></Card.Header>
+335:               <Card.Description>
+336:                 <LocalizedText source={"Query content descriptors by domain and optional type"} /></Card.Description>
+337:             </Card.Content>
+338:             <Card.Content>
+339:               <Form>
+340:                 <Form.Group widths="equal">
+341:                   <Form.Field>
+342:                     <label><LocalizedText source={"Domain"} /></label>
+343:                     <Dropdown
+344:                       onChange={(e, { value }) => setQueryDomain(value)}
+345:                       options={[
+346:                         { key: 'audio', text: interfaceText("Audio"), value: 'audio' },
+347:                         { key: 'video', text: interfaceText("Video"), value: 'video' },
+348:                         { key: 'image', text: interfaceText("Image"), value: 'image' },
+349:                         { key: 'text', text: interfaceText("Text"), value: 'text' },
+350:                         {
+351:                           key: 'application',
+352:                           text: interfaceText("Application"),
+353:                           value: 'application',
+354:                         },
+
+### `web/src/components/Player/PlayerLauncher.jsx` — blob `54f6f98454f46a957dc0e00c78660965412f025e`, SHA-256 `6942fcea65ad86549e0114f765ec9ce50a7ad4497828d4d5b79373dfb32ce720`
+
+Lines 375–389:
+375:                   <Table.Body>
+376:                     {collectionItems.map((item) => (
+377:                       <Table.Row key={item.id || item.contentId}>
+378:                         <Table.Cell>
+379:                           <strong>
+380:                             {item.fileName || item.title || item.contentId}
+381:                           </strong>
+382:                           <div className="player-picker-meta">
+383:                             {item.mediaKind || <LocalizedText source={"Audio"} />}
+384:                           </div>
+385:                         </Table.Cell>
+386:                         <Table.Cell collapsing>
+387:                           <Popup
+388:                             content={interfaceText("Play this collection item in the browser player.")}
+389:                             trigger={
+
+Lines 540–557:
+540:                     <Table.Body>
+541:                       {visibleBrowserItems.map((item) => (
+542:                         <Table.Row
+543:                           data-testid={`player-file-row-${item.contentId}`}
+544:                           key={`${item.contentId}-${item.path}`}
+545:                           onDoubleClick={() => playAndClose(item)}
+546:                         >
+547:                           <Table.Cell>
+548:                             <strong>{item.fileName || item.contentId}</strong>
+549:                             <div className="player-picker-meta">
+550:                               {item.mediaKind || <LocalizedText source={"Audio"} />}
+551:                               {item.bytes ? <LocalizedText source={" - {size} MB"} values={{ "size": Math.round(item.bytes / 1024 / 1024) }} /> : ''}
+552:                             </div>
+553:                           </Table.Cell>
+554:                           <Table.Cell>
+555:                             <span className="player-file-path">{item.path}</span>
+556:                           </Table.Cell>
+557:                           <Table.Cell collapsing>
+
+### `web/src/components/Search/SongIDEvidenceDetails.jsx` — blob `a6a0eb1e9843801ff94e590a22878899f3d2bca2`, SHA-256 `4a90c2dfd31302a93964fed1f0642a56909bab926324519eb77c94cda6139f65`
+
+Lines 240–250:
+240:           ) : null}
+241:
+242:           {hasScorecardSignal(run.scorecard) ? (
+243:             <details style={detailStyle}>
+244:               <summary style={detailSummaryStyle}><LocalizedText source={"Scorecard"} /></summary>
+245:               <div style={{ marginBottom: '1em' }}>
+246:                 <Label size="tiny"><LocalizedText source={"Audio"} />{" "}{run.scorecard.analysisAudioSource || interfaceText('none')}</Label>
+247:                 <Label size="tiny"><LocalizedText source={"Clips"} />{" "}{formatRegionalNumber(run.scorecard.clipCount || 0)}</Label>
+248:                 <Label size="tiny"><LocalizedText source={"AcoustID"} />{" "}{formatRegionalNumber(run.scorecard.acoustIdHitCount || 0)}</Label>
+249:                 <Label size="tiny"><LocalizedText source={"AcoustID Raw"} />{" "}{formatRegionalNumber(run.scorecard.rawAcoustIdHitCount || 0)}</Label>
+250:                 <Label size="tiny"><LocalizedText source={"SongRec"} />{" "}{formatRegionalNumber(run.scorecard.songRecHitCount || 0)}</Label>
+
+### `web/src/components/System/MediaCore/MediaCoreContentHashingPanel.jsx` — blob `cbe36436c936b1fcca220da0915288759f5a0aa3`, SHA-256 `ab7783c0f29868f38cd4d7a94eaafd992bf03948b4ba8be76a8a5045e16ed601`
+
+Lines 120–132:
+120:         <Grid.Column width={8}>
+121:           <Card fluid>
+122:             <Card.Content>
+123:               <Card.Header>
+124:                 <Icon name="sound" />
+125:                 <LocalizedText source={"Audio Perceptual Hash"} /></Card.Header>
+126:               <Card.Description>
+127:                 <LocalizedText source={"Compute perceptual hash for audio similarity detection"} /></Card.Description>
+128:             </Card.Content>
+129:             <Card.Content>
+130:               <Form>
+131:                 <Form.Group widths="equal">
+132:                   <Form.Field>
+
+Lines 145–170:
+145:                     />
+146:                   </Form.Field>
+147:                   <Form.Field>
+148:                     <label><LocalizedText source={"Sample Rate (Hz)"} /></label>
+149:                     <Input
+150:                       onChange={(e) => setSampleRate(e.target.value)}
+151:                       type="number"
+152:                       value={sampleRate}
+153:                     />
+154:                   </Form.Field>
+155:                 </Form.Group>
+156:                 <Form.Field>
+157:                   <label><LocalizedText source={"Audio Samples (comma-separated floats)"} /></label>
+158:                   <TextArea
+159:                     onChange={(e) => setAudioSamples(e.target.value)}
+160:                     placeholder={interfaceText("0.1, -0.2, 0.3, ... (normalized -1.0 to 1.0)")}
+161:                     rows={3}
+162:                     value={audioSamples}
+163:                    {...interfaceTextProps("0.1, -0.2, 0.3, ... (normalized -1.0 to 1.0)")}/>
+164:                 </Form.Field>
+165:                 <Button
+166:                   disabled={!audioSamples.trim() || computingAudioHash}
+167:                   loading={computingAudioHash}
+168:                   onClick={handleComputeAudioHash}
+169:                   primary
+170:                 >
+
+Lines 178–190:
+178:                       <p>{audioHashResult.error}</p>
+179:                     </Message>
+180:                   ) : (
+181:                     <Message success>
+182:                       <Message.Header><LocalizedText source={"Audio Hash Computed"} /></Message.Header>
+183:                       <p>
+184:                         <strong><LocalizedText source={"Algorithm:"} /></strong> {audioHashResult.algorithm}
+185:                         <br />
+186:                         <strong><LocalizedText source={"Hex Hash:"} /></strong> {audioHashResult.hex}
+187:                         <br />
+188:                         <strong><LocalizedText source={"Sample Count:"} /></strong>{' '}
+189:                         {audioSamples.split(',').filter((s) => s.trim()).length}
+190:                       </p>
+
+### `web/src/components/System/MediaCore/MediaCoreContentRegistryPanel.jsx` — blob `0f1af770cf3ab38ff29c1f11ec341bc7cdab84e9`, SHA-256 `07072ffb1e0c33c22077f0cfc05d3b55f7d05d612eb4700445f159191f98c055`
+
+Lines 222–232:
+222:                         <br />
+223:                         <strong><LocalizedText source={"Type:"} /></strong> {validatedContent.type}
+224:                         <br />
+225:                         <strong>ID:</strong> {validatedContent.id}
+226:                         <br />
+227:                         <strong><LocalizedText source={"Audio:"} /></strong>{' '}
+228:                         {validatedContent.isAudio ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />} |
+229:                         <strong><LocalizedText source={"Video:"} /></strong>{' '}
+230:                         {validatedContent.isVideo ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />} |
+231:                         <strong><LocalizedText source={"Image:"} /></strong>{' '}
+232:                         {validatedContent.isImage ? <LocalizedText source={"Yes"} /> : <LocalizedText source={"No"} />}
+
+### `crates/slskr/src/extended_controller_dynamic_get.rs` — blob `901aa8b80da2edd53ae205676f2ae87b2e4631d9`, SHA-256 `7d3c6b149b468fbb49e3512dd3ad5252f346d443f314bc75119853c6cf04d123`
+
+Lines 318–329:
+318:                 // ListeningPartyEvent that the sibling POST handler writes
+319:                 // (or 204 if there is none) -- never the pod object plus raw
+320:                 // chat history, and never without a membership check. This
+321:                 // check also applies in the local no-auth test mode: the
+322:                 // configured Soulseek identity is still the acting peer.
+323:                 let Some(peer_id) = pod_request_peer_id(state).await else {
+324:                     drop(pods);
+325:                     return routing::forbidden_response("Authenticated peer identity is required");
+326:                 };
+327:                 if !pods.is_member(pod_id, &peer_id) {
+328:                     drop(pods);
+329:                     return routing::forbidden_response("Pod membership is required");
+
+### `crates/slskr/src/legacy_route_dispatch_group_07.rs` — blob `448304fe862c4d7e56dbe406e27848d80201bedd`, SHA-256 `f0a6a49d70f2dfcad5654a42942a0251dc8a9dfbacb949a9c3cba8dc3eeea07d`
+
+Lines 912–924:
+912:                   return Ok(routing::bad_request_response("Message body is required"));
+913:               }
+914:               if sender_peer_id.is_empty() {
+915:                   return Ok(routing::bad_request_response("SenderPeerId is required"));
+916:               }
+917:               let authenticated_peer_id = pod_request_peer_id(state).await;
+918:               let Some(authenticated_peer_id) = authenticated_peer_id else {
+919:                   return Ok(routing::forbidden_response(
+920:                       "Authenticated peer identity is required",
+921:                   ));
+922:               };
+923:               if sender_peer_id != authenticated_peer_id {
+924:                   return Ok(routing::forbidden_response(
+
+Lines 1078–1088:
+1078:                   Err(error) => {
+1079:                       return Ok(routing::bad_request_response(&format!(
+1080:                           "Invalid pod request: {error}"
+1081:                       )));
+1082:                   }
+1083:               };
+1084:               let Some(creator) = pod_request_peer_id(state).await else {
+1085:                   return Ok(routing::forbidden_response("Authenticated peer identity is required"));
+1086:               };
+1087:               match state.pods.write().await.create(pod, creator) {
+1088:                   Ok(pod) => Ok(routing::created_response(
+
+### `crates/slskr/src/legacy_route_dispatch_group_10.rs` — blob `5a488a41237cdff78c7eb14e60ce5fc66e67c964`, SHA-256 `f44e4544898addfe3e89d6a3a93d52a912e8c37d65dec87a6fbc57c3e0da71d7`
+
+Lines 650–662:
+650:                 ));
+651:             }
+652:             let local_port = local_port.unwrap_or_default() as u16;
+653:             let destination_port = destination_port.unwrap_or_default() as u16;
+654:             let Some(local_username) = pod_request_peer_id(state).await else {
+655:                 return Ok(routing::forbidden_response(
+656:                     "Authenticated peer identity is required",
+657:                 ));
+658:             };
+659:             let (pod, pod_gateway_certificate_sha256) = {
+660:                 let pods = state.pods.read().await;
+661:                 if !pods.is_member(pod_id, &local_username) {
+662:                     return Ok(routing::forbidden_response(
+
+### `crates/slskr/src/route_dispatch_group_6_pods.rs` — blob `d0c89f7dcc067dccb4f400f1ac1a793db157bbb6`, SHA-256 `3b84f198a25597832fa6b8c18508cc2e5639bcbde15c3679c43d6216b514053e`
+
+Lines 92–104:
+92:                 return Ok(routing::bad_request_response("Message body is required"));
+93:             }
+94:             if sender_peer_id.is_empty() {
+95:                 return Ok(routing::bad_request_response("SenderPeerId is required"));
+96:             }
+97:             let authenticated_peer_id = pod_request_peer_id(state).await;
+98:             let Some(authenticated_peer_id) = authenticated_peer_id else {
+99:                 return Ok(routing::forbidden_response(
+100:                     "Authenticated peer identity is required",
+101:                 ));
+102:             };
+103:             if sender_peer_id != authenticated_peer_id {
+104:                 return Ok(routing::forbidden_response(
+
+Lines 244–256:
+244:                 Err(error) => {
+245:                     return Ok(routing::bad_request_response(&format!(
+246:                         "Invalid pod request: {error}"
+247:                     )));
+248:                 }
+249:             };
+250:             let Some(creator) = pod_request_peer_id(state).await else {
+251:                 return Ok(routing::forbidden_response(
+252:                     "Authenticated peer identity is required",
+253:                 ));
+254:             };
+255:             match state.pods.write().await.create(pod, creator) {
+256:                 Ok(pod) => Ok(routing::created_response(
+
+### `crates/slskr/src/route_dispatch_group_7_network_admin.rs` — blob `114f810191c69efe33b55197f409f52bc3c5ca53`, SHA-256 `0073e152b94d1107f516d279424aaeac330e35c0df046bf107aa0acecf8bc48c`
+
+Lines 293–305:
+293:                 ));
+294:             }
+295:             let local_port = local_port.unwrap_or_default() as u16;
+296:             let destination_port = destination_port.unwrap_or_default() as u16;
+297:             let Some(local_username) = pod_request_peer_id(state).await else {
+298:                 return Ok(routing::forbidden_response(
+299:                     "Authenticated peer identity is required",
+300:                 ));
+301:             };
+302:             let (pod, pod_gateway_certificate_sha256) = {
+303:                 let pods = state.pods.read().await;
+304:                 if !pods.is_member(pod_id, &local_username) {
+305:                     return Ok(routing::forbidden_response(
+
+### `crates/slskr/src/misc_controller_mutations.rs` — blob `e5e9cbfe36b7a088914f91e33e711bf18d0199db`, SHA-256 `68c40ed6104bd8c639c92c367eff14965da7f3729db29da3bcf0b3291a090b94`
+
+Lines 399–411:
+399:         // Matches the oracle's ListeningPartyController.Publish: the
+400:         // caller must be a real pod member, and the host peer id is
+401:         // always the authenticated local identity, never a
+402:         // client-supplied field.
+403:         let Some(host_peer_id) = pod_request_peer_id(state).await else {
+404:             drop(pods);
+405:             return Some(routing::forbidden_response(
+406:                 "Authenticated peer identity is required",
+407:             ));
+408:         };
+409:         if !pods.is_member(pod_id, &host_peer_id) {
+410:             drop(pods);
+411:             return Some(routing::forbidden_response("Pod membership is required"));
+
+## Review checks
+
+All 240 cells were populated and reconciled against exact source and current-target hashes. Review covered meaning, source context, placeholders, ICU syntax, and protected literals. The selected source keys contain no placeholders or ICU expressions; technical API names and property values are preserved where present. Forty exact-cell correction candidates are proposed for independent cross-review; no catalog changes have been made. Native-speaker approval is not claimed.

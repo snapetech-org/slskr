@@ -1,0 +1,281 @@
+{
+  "artifact": "slskR PR #209 W1623-W1642 exact-hash application plan",
+  "branch": "codex/slskr-l10n-audit-20261104-resync",
+  "catalogFiles": {
+    "web/src/lib/locales/ui-labels.ar.json": {
+      "catalogFileSha256": "340454a383281dbcf27bf5f1e067274da309f54cb1eb22a229278f125e44fd6b",
+      "catalogGitBlob": "90d866fb57e34dd432db6a8e047099a26e86e841",
+      "keyCount": 5441,
+      "keyOrderSha256": "448df1518ea568e4be0f0d60a4ad2e5045bd38d7db94d5a64d79c10f4f01c4ab"
+    },
+    "web/src/lib/locales/ui-labels.de.json": {
+      "catalogFileSha256": "22cf0be9b7a307b5e0aefa8b06688146563c0e29a6c476a7e0edde09c6433886",
+      "catalogGitBlob": "597ab288cf45919282fc01d25c78a57e6e190b04",
+      "keyCount": 5441,
+      "keyOrderSha256": "448df1518ea568e4be0f0d60a4ad2e5045bd38d7db94d5a64d79c10f4f01c4ab"
+    },
+    "web/src/lib/locales/ui-labels.es.json": {
+      "catalogFileSha256": "0e4786577d842d3522f9878398c241951234740dda8c48423ee5d22afeed0f20",
+      "catalogGitBlob": "4bdd22f012a3f43aa1958585d22d415284109de9",
+      "keyCount": 5441,
+      "keyOrderSha256": "448df1518ea568e4be0f0d60a4ad2e5045bd38d7db94d5a64d79c10f4f01c4ab"
+    },
+    "web/src/lib/locales/ui-labels.fr.json": {
+      "catalogFileSha256": "82c47cdb755870b0bd578edf79c60a7721785d2507c73458e68427e0bded0d3d",
+      "catalogGitBlob": "1d652dd8e7dd8637f1c2e4bfb5761a824ec28e53",
+      "keyCount": 5441,
+      "keyOrderSha256": "448df1518ea568e4be0f0d60a4ad2e5045bd38d7db94d5a64d79c10f4f01c4ab"
+    },
+    "web/src/lib/locales/ui-labels.hi.json": {
+      "catalogFileSha256": "97136ac2e4bc5237fa22c99bc1a7491a1ec4171f4881ea483b902237f3ab0682",
+      "catalogGitBlob": "0de5e1f86c1fd8b6495582528a11a3d742fdaa7a",
+      "keyCount": 5441,
+      "keyOrderSha256": "448df1518ea568e4be0f0d60a4ad2e5045bd38d7db94d5a64d79c10f4f01c4ab"
+    },
+    "web/src/lib/locales/ui-labels.id.json": {
+      "catalogFileSha256": "2a62918b0cc187a5464a7df547b1ce46bd1b6b7a52a367985ccf5e4fe33edb64",
+      "catalogGitBlob": "67f274e5bf2d6f2eb7982ebe9c162c4f0d8fc6af",
+      "keyCount": 5441,
+      "keyOrderSha256": "448df1518ea568e4be0f0d60a4ad2e5045bd38d7db94d5a64d79c10f4f01c4ab"
+    },
+    "web/src/lib/locales/ui-labels.ja.json": {
+      "catalogFileSha256": "f74496789fc88d72fda55281c2678744f9e25c7ceebacf0ad87afe052998d542",
+      "catalogGitBlob": "1acd4c32f769e06a5819265c4c4e3e58d2578887",
+      "keyCount": 5441,
+      "keyOrderSha256": "448df1518ea568e4be0f0d60a4ad2e5045bd38d7db94d5a64d79c10f4f01c4ab"
+    },
+    "web/src/lib/locales/ui-labels.ko.json": {
+      "catalogFileSha256": "5b61381d9e639f0f374ba92d68f4e9d13884fbb89e62102416d4020926974499",
+      "catalogGitBlob": "d2d316c286fdacc33192cc90c3a2cfcde1b91f8b",
+      "keyCount": 5441,
+      "keyOrderSha256": "448df1518ea568e4be0f0d60a4ad2e5045bd38d7db94d5a64d79c10f4f01c4ab"
+    },
+    "web/src/lib/locales/ui-labels.pt-BR.json": {
+      "catalogFileSha256": "49a8faee05d717954d0e185b8fc0500adca7081fb6dd34461dc4678df58e44fc",
+      "catalogGitBlob": "1c846e1382717094fdaef48e7b9f9b1a5ba74681",
+      "keyCount": 5441,
+      "keyOrderSha256": "448df1518ea568e4be0f0d60a4ad2e5045bd38d7db94d5a64d79c10f4f01c4ab"
+    },
+    "web/src/lib/locales/ui-labels.vi.json": {
+      "catalogFileSha256": "6a2af158d005543377b275cacadc0bfa15873c0117d72aea869f1f90104fdec9",
+      "catalogGitBlob": "7ef10c1b89efbf9f14d6409949892206437543ca",
+      "keyCount": 5441,
+      "keyOrderSha256": "448df1518ea568e4be0f0d60a4ad2e5045bd38d7db94d5a64d79c10f4f01c4ab"
+    },
+    "web/src/lib/locales/ui-labels.zh-Hans.json": {
+      "catalogFileSha256": "01e55535c09f3a3aae9ed595c6ec7d47e030e0d2c8b2afb3608363dc1f781596",
+      "catalogGitBlob": "8c56c20617dc2d3af4eeedeba1258561a7dcbc0f",
+      "keyCount": 5441,
+      "keyOrderSha256": "448df1518ea568e4be0f0d60a4ad2e5045bd38d7db94d5a64d79c10f4f01c4ab"
+    },
+    "web/src/lib/locales/ui-labels.zh-Hant.json": {
+      "catalogFileSha256": "dbbb0f71c60a885f6f3220e41026d9c217c5eb38a0d1dc97c9202b9fb14bf46e",
+      "catalogGitBlob": "2f4eec345358f96fe8e16e7256c453cee9e31d37",
+      "keyCount": 5441,
+      "keyOrderSha256": "448df1518ea568e4be0f0d60a4ad2e5045bd38d7db94d5a64d79c10f4f01c4ab"
+    }
+  },
+  "changes": [
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json",
+      "crossReviewRecordSha256": "9e243d392b1a2148a40edff147b660464ac4ce8f7b4b57fc00f9f6fc6c7232dd",
+      "expectedCurrentTarget": "No se pudo generar el evento.",
+      "expectedCurrentTargetSha256": "77bddd659b77508a796165ba9192d0ef95922db96fd29e123bcda5a86480fbef",
+      "finalTarget": "No se pudo emitir el evento.",
+      "finalTargetSha256": "70942f3887e0116b298cc6643e7c77de68db6a52fab3758e1066016950558bc1",
+      "locale": "es",
+      "position": 1623,
+      "rootRationale": "The production allowlist uses “raise event” to mean emit or dispatch an event; “emitir” is more precise than “generar”.",
+      "sourceContextSha256": "1383bb9db9020db0ef83f2a11265638cf8232fcb4abfeae94d4188b0cc45436c",
+      "sourceKey": "Failed to raise event",
+      "sourceKeySha256": "139f7f1d85edd70741ae9b87593c2740d4d9f3b61f80f3f9b414c361c1e2396e"
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json",
+      "crossReviewRecordSha256": "ee969d5d0c1bd3db86f6ecd707922505b5e3f4dc840c04e2b91b10f0250bd55c",
+      "expectedCurrentTarget": "검색 발견 정보를 새로 고치지 못했습니다: {error}",
+      "expectedCurrentTargetSha256": "935dde7f5f0a33e091aae77905d6854b351d50c159924ad05e7ada2b570c647c",
+      "finalTarget": "탐색 정보를 새로 고치지 못했습니다: {error}",
+      "finalTargetSha256": "12dc680eb153fb13aa136b52cbce4446fd1a4b461d2ecb0cf75c8bfa7a820553",
+      "locale": "ko",
+      "position": 1628,
+      "rootRationale": "This is a discovery-data refresh error. “탐색 정보” describes the discovery data and retains the error placeholder without redundantly saying search plus discovery.",
+      "sourceContextSha256": "84a144fb8d3c449143f6983d934b2f286daadd6a0c3bd22ab09a2a9555dabf0e",
+      "sourceKey": "Failed to refresh discovery: {error}",
+      "sourceKeySha256": "d65989786f0735dc106d863e58a525e099366443bbb874ee0e1c9db1991fe75b"
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "crossReviewRecordSha256": "4bc4a307e6445f1610db0c1f5e38bf0d549d5bd0f17537494f54197666e126cb",
+      "expectedCurrentTarget": "無法登錄訊息：{error}",
+      "expectedCurrentTargetSha256": "186cd6dc01b048a51211cb5ba48e447f96df3c137d9c2146796af706a30fa2b8",
+      "finalTarget": "無法註冊訊息：{error}",
+      "finalTargetSha256": "7be60f0eb772164bc7b7859a6b344de75cafec74ec2836a4d7662bfc5c77ef4b",
+      "locale": "zh-Hant",
+      "position": 1631,
+      "rootRationale": "This UI action registers a message as seen; 註冊 conveys registration, while 登錄 can read as logging or recording.",
+      "sourceContextSha256": "9603cc923a63eeeac6ad0989729e549c648b60e90c93c01546cd1499493a479f",
+      "sourceKey": "Failed to register message: {error}",
+      "sourceKeySha256": "f4ded1c0d4cacdc50e660de3877e581695ebb2ffb8455fff58987977c6d98b1f"
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "crossReviewRecordSha256": "efa23059c0ed20b1b43ca7a610162de2180bb30fd68014c19f0f525aa418a775",
+      "expectedCurrentTarget": "無法注冊 Pod。",
+      "expectedCurrentTargetSha256": "95e012c2657e32c81d1b1d0d02640a5e5ae4a018cf2629d19715a0c57f17a6ac",
+      "finalTarget": "無法註冊 Pod。",
+      "finalTargetSha256": "54b5016c763497af5b0e1093e9b2cc46d2204bd409259e6acf7d234ccb176ada",
+      "locale": "zh-Hant",
+      "position": 1632,
+      "rootRationale": "註冊 is the Traditional Chinese form; Pod is the technical entity name and remains unchanged.",
+      "sourceContextSha256": "7bf27e1638cce3429e3a9275b986bc6564810e515c6403956d2d0ecf8f3a70c0",
+      "sourceKey": "Failed to register pod",
+      "sourceKeySha256": "c1ee561176af8253c855e33bafd28085e92c746f0dfd6eeeef7200236137c550"
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json",
+      "crossReviewRecordSha256": "a8fc59154b0e7ebcea5154e8eaceabe98a1e51355ac5c2727f3773d5b49c42dd",
+      "expectedCurrentTarget": "Không thể đăng ký nhóm:",
+      "expectedCurrentTargetSha256": "a5af6b022144fdc28f955aabcdad7228f0b90620219264039819fea08730d3f1",
+      "finalTarget": "Không thể đăng ký Pod:",
+      "finalTargetSha256": "4c5bf4d7b032946eb2de641792187ea94f53ef99aa81657f1102b62a7d796661",
+      "locale": "vi",
+      "position": 1633,
+      "rootRationale": "The caller reports registration of a Pod. “nhóm” means group and changes that technical entity.",
+      "sourceContextSha256": "3479c0c02157cab1c4830096b24c7690b44bee0f7d3dc239d8908010d5c947c7",
+      "sourceKey": "Failed to register pod:",
+      "sourceKeySha256": "298c73ff6a4f11bd504513b8c0c75dbe4c1d095fc2b5bc83ac1a39b0357c47f6"
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "crossReviewRecordSha256": "4a3f92496691798e676ce89468be5b866e9dd1c39fc4ea3d107b38f255879a27",
+      "expectedCurrentTarget": "Não foi possível verificar novamente os compartilhamentos",
+      "expectedCurrentTargetSha256": "255fb7bde040a1d25c00e244427e508a80aa2715da01c7b74cab73ff182faf2b",
+      "finalTarget": "Não foi possível escanear novamente os compartilhamentos",
+      "finalTargetSha256": "6f41abf4a010d523f4f9d31d896b38ba49f948a263c9bf8e34dd280b2dbb2830",
+      "locale": "pt-BR",
+      "position": 1638,
+      "rootRationale": "The caller reports a failed rescan operation; this names rescanning the shared items more directly than “verificar novamente”.",
+      "sourceContextSha256": "a30309ae8e1362270ac158c2576815d198e5d5bbfd250ab97ab83b564f3aa928",
+      "sourceKey": "Failed to rescan shares",
+      "sourceKeySha256": "c6f81f5e3ab2ba9be15712ad2913a652d78edaa00b4381cb9c2f077eeb644d70"
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "crossReviewRecordSha256": "aff70c7fe76ae874cbfd1ad87efa446773cd75e1ad743807afb9d968a6be205e",
+      "expectedCurrentTarget": "检索信息失败",
+      "expectedCurrentTargetSha256": "c6e72c165948ccdf5ac51e676cbc54fbb06d2eab6b53e7a061b346e4a86c596d",
+      "finalTarget": "无法获取用户信息：",
+      "finalTargetSha256": "fa740deb19f4266007641b09a4219f8a761b6ea1287d89f9526b601cadbf879f",
+      "locale": "zh-Hans",
+      "position": 1641,
+      "rootRationale": "The caller appends a username and error after this fragment. The label makes the username attachment clear.",
+      "sourceContextSha256": "1c13dfda0e6ac6b3dcbd4082097c4136b75387a62ff08d3adc1e5e382752120c",
+      "sourceKey": "Failed to retrieve information for",
+      "sourceKeySha256": "fb635a4459883a44b73cb316a229bbf7bc0a9f5db5c477956f3344cfbf6d016f"
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json",
+      "crossReviewRecordSha256": "bad147528ef19f02bc7f8a08713ff38beba25a08860505d70cc6fb3422056e91",
+      "expectedCurrentTarget": "के लिए जानकारी पुनर्प्राप्त करने में विफल",
+      "expectedCurrentTargetSha256": "585dd970b1694a21f32f6c7ded89e2f2bc813e198f2958380de3cd1c30d0ae5a",
+      "finalTarget": "जानकारी प्राप्त नहीं हो सकी, उपयोगकर्ता",
+      "finalTargetSha256": "078b92feb9aff44685936f3b3af93300968eeef673c394fe9b86945eeca6fc3e",
+      "locale": "hi",
+      "position": 1641,
+      "rootRationale": "The caller appends a username after this fragment. This keeps the failure clause and the following user label in the caller’s order.",
+      "sourceContextSha256": "1c13dfda0e6ac6b3dcbd4082097c4136b75387a62ff08d3adc1e5e382752120c",
+      "sourceKey": "Failed to retrieve information for",
+      "sourceKeySha256": "fb635a4459883a44b73cb316a229bbf7bc0a9f5db5c477956f3344cfbf6d016f"
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json",
+      "crossReviewRecordSha256": "c352d69c90585645f514d6f899d022e7a30c93d91179b9f4ab4e50ba16a634ae",
+      "expectedCurrentTarget": "Informationen für konnten nicht abgerufen werden",
+      "expectedCurrentTargetSha256": "e87f247a715bd2afdaf6c394156e60f9605380995fd1b6d1362b6b2550385916",
+      "finalTarget": "Fehler beim Abruf der Informationen für",
+      "finalTargetSha256": "3d3b244d7dd717ce405507543edfa8b2c1bab8d920a6fe085f3ff2a3f513be4d",
+      "locale": "de",
+      "position": 1641,
+      "rootRationale": "The caller appends the username, so the final “für [name]” construction is grammatical.",
+      "sourceContextSha256": "1c13dfda0e6ac6b3dcbd4082097c4136b75387a62ff08d3adc1e5e382752120c",
+      "sourceKey": "Failed to retrieve information for",
+      "sourceKeySha256": "fb635a4459883a44b73cb316a229bbf7bc0a9f5db5c477956f3344cfbf6d016f"
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json",
+      "crossReviewRecordSha256": "31df724c4e3bbc54fe84d24b0d6929ccafb9727609eb6f019b173227551a4b51",
+      "expectedCurrentTarget": "の情報を取得できませんでした",
+      "expectedCurrentTargetSha256": "ebdb4ec1caf392c06144b67d880b7a76c5a624069b293b188623d5e0051d9876",
+      "finalTarget": "ユーザーの情報を取得できませんでした：",
+      "finalTargetSha256": "6c82afbebac624772d25b55af0e33e8a035d4efaf2fd3a3e1223e64f69301fdb",
+      "locale": "ja",
+      "position": 1641,
+      "rootRationale": "The caller appends a username and error. This introduces the user detail clearly; the current genitive fragment cannot attach naturally.",
+      "sourceContextSha256": "1c13dfda0e6ac6b3dcbd4082097c4136b75387a62ff08d3adc1e5e382752120c",
+      "sourceKey": "Failed to retrieve information for",
+      "sourceKeySha256": "fb635a4459883a44b73cb316a229bbf7bc0a9f5db5c477956f3344cfbf6d016f"
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json",
+      "crossReviewRecordSha256": "b59a853fc8cd5bf808fecdbecc931502bcbd11b251b1976513faeb58139017da",
+      "expectedCurrentTarget": "فشل في استرداد المعلومات ل",
+      "expectedCurrentTargetSha256": "57fb291a2d3bca0b8239c262e9474e744c61d63389a003f4b09757b739c8731b",
+      "finalTarget": "تعذر استرداد المعلومات الخاصة بالمستخدم",
+      "finalTargetSha256": "ef76eb3381430897ac71d5117b58eb3b5278af9259bce6af1bf10fbffd203658",
+      "locale": "ar",
+      "position": 1641,
+      "rootRationale": "The caller appends the username. This expresses that the missing information belongs to that user without leaving the current preposition detached.",
+      "sourceContextSha256": "1c13dfda0e6ac6b3dcbd4082097c4136b75387a62ff08d3adc1e5e382752120c",
+      "sourceKey": "Failed to retrieve information for",
+      "sourceKeySha256": "fb635a4459883a44b73cb316a229bbf7bc0a9f5db5c477956f3344cfbf6d016f"
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json",
+      "crossReviewRecordSha256": "a963cf6bc649a13add09291cf0963de1367289c9a2393c588ab437ba617d3421",
+      "expectedCurrentTarget": "다음에 대한 정보를 검색하지 못했습니다.",
+      "expectedCurrentTargetSha256": "63514fb4b224f971b6618099e83d91aba77ceaa33526e00efb3c75410cdde5ce",
+      "finalTarget": "해당 사용자의 정보를 가져오지 못했습니다:",
+      "finalTargetSha256": "048d12acb8fa17de41f97212b8c8620b318f272a1b5012d290205a0abdc359fb",
+      "locale": "ko",
+      "position": 1641,
+      "rootRationale": "The caller appends the username and error. The phrase identifies whose information failed to load.",
+      "sourceContextSha256": "1c13dfda0e6ac6b3dcbd4082097c4136b75387a62ff08d3adc1e5e382752120c",
+      "sourceKey": "Failed to retrieve information for",
+      "sourceKeySha256": "fb635a4459883a44b73cb316a229bbf7bc0a9f5db5c477956f3344cfbf6d016f"
+    },
+    {
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "crossReviewRecordSha256": "62139f8ed341d6f168a15de46d2350cfafa9f719021786b8f1893f9e9e2587be",
+      "expectedCurrentTarget": "檢索資訊失敗",
+      "expectedCurrentTargetSha256": "cece3f0ea58ea5f05a1f21225660525ea595bba3fcb279064e64dfa94a560cb4",
+      "finalTarget": "無法取得使用者資訊：",
+      "finalTargetSha256": "7c7bc06773a553d00466a7065e0702205ebbf710bf1c2b8beeb62a6589a10e26",
+      "locale": "zh-Hant",
+      "position": 1641,
+      "rootRationale": "The caller appends a username and error. This labels the appended name clearly; the current phrase is disconnected.",
+      "sourceContextSha256": "1c13dfda0e6ac6b3dcbd4082097c4136b75387a62ff08d3adc1e5e382752120c",
+      "sourceKey": "Failed to retrieve information for",
+      "sourceKeySha256": "fb635a4459883a44b73cb316a229bbf7bc0a9f5db5c477956f3344cfbf6d016f"
+    }
+  ],
+  "mergeReleaseTag": false,
+  "pullRequest": 209,
+  "repository": "snapetech-org/slskR",
+  "reviewedCells": 240,
+  "rootDispositions": {
+    "accept-current": 227,
+    "correction": 13,
+    "hold": 0
+  },
+  "selectedCellCount": 13,
+  "sourcePin": {
+    "head": "7e366cbf21ad5490bd11ef418a0f2a98b3fbd567",
+    "tree": "801d7a037c15dcd83b3e038160054a46c9b8f03b"
+  },
+  "testsBuildsScansCi": false,
+  "translationReviewMetadataChanges": 0,
+  "translationStatusChanges": 0,
+  "window": "W1623-W1642",
+  "workflowChanges": 0
+}

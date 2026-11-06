@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "86ad391ca248ec50fa4049de0a0f08ee55010441",
+  "tree": "f773836319b92b6b8799cdda1695e7da09622941",
+  "sourceWindow": [
+    663,
+    682
+  ],
+  "sourceIds": 20,
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "cells": 240,
+  "counts": {
+    "accept-current": 159,
+    "propose-refinement": 4,
+    "propose-correction": 53,
+    "hold-no-direct-caller": 24
+  },
+  "candidateCount": 57,
+  "holdCount": 24,
+  "holdsBySourceId": {
+    "Clear Old": "No direct caller was found at the pinned head, so the object/context for “old” cannot be confirmed.",
+    "Clear browser-local experience preferences and restore the supported defaults.": "No direct caller was found at the pinned head, so the exact preference scope and supported-default behavior cannot be confirmed."
+  },
+  "callerReferences": 29,
+  "currentHeadReattestation": true,
+  "sourceInventoryExceptions": [
+    "Retry{all}",
+    "Cancel{all} are absent after caller rewrite; Retry selected and Cancel selected were independently reviewed and added at the previous follow-up."
+  ],
+  "catalogs": {
+    "ar": "03756da57abde7ba2fba7fc16f28ce03e7bf2a2d",
+    "de": "515896c192c2e2934cdeae2f8460f94890e5a3a0",
+    "es": "c58874eb8f18e3b4ce8c11f8eb6c9d25fc351a9c",
+    "fr": "1ad730a3e3ff43236faf990660a923e9afe490fd",
+    "hi": "1f22793131f3ebe8c943e1b8877fa8032b170fce",
+    "id": "2646195def6d6359fc2ae8b1285f161b35525f3a",
+    "ja": "b1e1793f156e00c97d8b1dfc8f204f2259fb8c81",
+    "ko": "0b1e861a0ebe4db31ad28a410a2297ed55707b73",
+    "pt-BR": "54cb52b2e8f09cbc0906a264981a43ec36deb8c3",
+    "vi": "02fd9dae433831acb271794f5f182f8db0ea31ee",
+    "zh-Hans": "db79a853b7e8376ff14ffe2c0a3f5289ec6808f6",
+    "zh-Hant": "1037a8cc13cdea5ef4cb8acb37f860ef51cd4866"
+  },
+  "nativeSpeakerApproval": false,
+  "browserReview": false,
+  "testsBuildsScansCiRun": false,
+  "repositoryModified": false
+}

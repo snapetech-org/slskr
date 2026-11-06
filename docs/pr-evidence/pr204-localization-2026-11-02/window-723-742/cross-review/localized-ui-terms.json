@@ -1,0 +1,97 @@
+{
+  "head": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "sourceKeys": [
+    "Browse",
+    "Wishlist",
+    "Smart Radio Seed",
+    "Collection",
+    "Discovery Shelf"
+  ],
+  "tree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "values": {
+    "ar": {
+      "Browse": "تصفح",
+      "Collection": "مجموعة",
+      "Discovery Shelf": "رف الاكتشاف",
+      "Smart Radio Seed": "بذور الراديو الذكية",
+      "Wishlist": "قائمة الرغبات"
+    },
+    "de": {
+      "Browse": "Durchsuchen",
+      "Collection": "Sammlung",
+      "Discovery Shelf": "Discovery-Regal",
+      "Smart Radio Seed": "Smart Radio Seed",
+      "Wishlist": "Wunschliste"
+    },
+    "es": {
+      "Browse": "Explorar",
+      "Collection": "Colección",
+      "Discovery Shelf": "Estante de descubrimiento",
+      "Smart Radio Seed": "Semilla de radio inteligente",
+      "Wishlist": "Lista de deseos"
+    },
+    "fr": {
+      "Browse": "Parcourir",
+      "Collection": "Collection",
+      "Discovery Shelf": "Etagère Découverte",
+      "Smart Radio Seed": "Graine de radio intelligente",
+      "Wishlist": "Liste de souhaits"
+    },
+    "hi": {
+      "Browse": "ब्राउज़ करें",
+      "Collection": "संग्रह",
+      "Discovery Shelf": "डिस्कवरी शेल्फ",
+      "Smart Radio Seed": "स्मार्ट रेडियो बीज",
+      "Wishlist": "इच्छा सूची"
+    },
+    "id": {
+      "Browse": "Jelajahi",
+      "Collection": "Koleksi",
+      "Discovery Shelf": "Rak Penemuan",
+      "Smart Radio Seed": "Benih Radio Cerdas",
+      "Wishlist": "Daftar keinginan"
+    },
+    "ja": {
+      "Browse": "参照",
+      "Collection": "コレクション",
+      "Discovery Shelf": "ディスカバリーシェルフ",
+      "Smart Radio Seed": "スマートラジオシード",
+      "Wishlist": "ウィッシュリスト"
+    },
+    "ko": {
+      "Browse": "둘러보기",
+      "Collection": "컬렉션",
+      "Discovery Shelf": "디스커버리 선반",
+      "Smart Radio Seed": "스마트 라디오 씨앗",
+      "Wishlist": "위시리스트"
+    },
+    "pt-BR": {
+      "Browse": "Explorar",
+      "Collection": "Coleção",
+      "Discovery Shelf": "Prateleira de descoberta",
+      "Smart Radio Seed": "Semente de rádio inteligente",
+      "Wishlist": "Lista de desejos"
+    },
+    "vi": {
+      "Browse": "Duyệt",
+      "Collection": "Bộ sưu tập",
+      "Discovery Shelf": "Kệ khám phá",
+      "Smart Radio Seed": "Hạt giống vô tuyến thông minh",
+      "Wishlist": "Danh sách yêu thích"
+    },
+    "zh-Hans": {
+      "Browse": "浏览",
+      "Collection": "合集",
+      "Discovery Shelf": "探索架",
+      "Smart Radio Seed": "智能无线电种子",
+      "Wishlist": "愿望单"
+    },
+    "zh-Hant": {
+      "Browse": "瀏覽",
+      "Collection": "合輯",
+      "Discovery Shelf": "探索架",
+      "Smart Radio Seed": "智慧無線電種子",
+      "Wishlist": "願望清單"
+    }
+  }
+}

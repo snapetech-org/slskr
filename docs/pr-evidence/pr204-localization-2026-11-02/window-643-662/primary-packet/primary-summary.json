@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "task": "slskR PR #204 W643–662 primary semantic review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "aa106d2505de8c9ace2d7d6dbf2af9777651947d",
+  "tree": "f99e717b4b77c8da098e7b8fc163926d4d32e926",
+  "sourceBaselineHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceBaselineTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "sourcePositions": [
+    643,
+    662
+  ],
+  "sourceIds": 20,
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "cells": 240,
+  "newlyReviewedCells": 228,
+  "priorAcceptedCellsPreserved": 12,
+  "priorSourceId": "Circuit building failed",
+  "counts": {
+    "accept-current": 98,
+    "propose-refinement": 58,
+    "propose-correction": 60,
+    "preserved-prior-disposition": 12,
+    "hold-source-behavior-mismatch": 12
+  },
+  "correctionCandidates": 118,
+  "heldCells": 12,
+  "perLocale": {
+    "ar": {
+      "accept-current": 9,
+      "propose-refinement": 2,
+      "preserved-prior-disposition": 1,
+      "propose-correction": 7,
+      "hold-source-behavior-mismatch": 1
+    },
+    "de": {
+      "accept-current": 8,
+      "propose-correction": 3,
+      "propose-refinement": 7,
+      "preserved-prior-disposition": 1,
+      "hold-source-behavior-mismatch": 1
+    },
+    "es": {
+      "accept-current": 9,
+      "propose-refinement": 2,
+      "preserved-prior-disposition": 1,
+      "propose-correction": 7,
+      "hold-source-behavior-mismatch": 1
+    },
+    "fr": {
+      "accept-current": 6,
+      "propose-refinement": 5,
+      "propose-correction": 7,
+      "preserved-prior-disposition": 1,
+      "hold-source-behavior-mismatch": 1
+    },
+    "hi": {
+      "accept-current": 6,
+      "propose-refinement": 7,
+      "propose-correction": 5,
+      "preserved-prior-disposition": 1,
+      "hold-source-behavior-mismatch": 1
+    },
+    "id": {
+      "accept-current": 11,
+      "preserved-prior-disposition": 1,
+      "propose-correction": 4,
+      "hold-source-behavior-mismatch": 1,
+      "propose-refinement": 3
+    },
+    "ja": {
+      "accept-current": 9,
+      "propose-correction": 6,
+      "preserved-prior-disposition": 1,
+      "hold-source-behavior-mismatch": 1,
+      "propose-refinement": 3
+    },
+    "ko": {
+      "accept-current": 10,
+      "propose-refinement": 5,
+      "preserved-prior-disposition": 1,
+      "propose-correction": 3,
+      "hold-source-behavior-mismatch": 1
+    },
+    "pt-BR": {
+      "accept-current": 5,
+      "propose-refinement": 7,
+      "propose-correction": 6,
+      "preserved-prior-disposition": 1,
+      "hold-source-behavior-mismatch": 1
+    },
+    "vi": {
+      "accept-current": 7,
+      "propose-correction": 8,
+      "propose-refinement": 3,
+      "preserved-prior-disposition": 1,
+      "hold-source-behavior-mismatch": 1
+    },
+    "zh-Hans": {
+      "accept-current": 9,
+      "propose-refinement": 7,
+      "preserved-prior-disposition": 1,
+      "propose-correction": 2,
+      "hold-source-behavior-mismatch": 1
+    },
+    "zh-Hant": {
+      "accept-current": 9,
+      "propose-refinement": 7,
+      "preserved-prior-disposition": 1,
+      "propose-correction": 2,
+      "hold-source-behavior-mismatch": 1
+    }
+  },
+  "callerReferences": 26,
+  "uniqueCallerFiles": [
+    "crates/slskr/src/extended_controller_mutations.rs",
+    "web/src/components/App.jsx",
+    "web/src/components/Browse/DirectoryTree.jsx",
+    "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx",
+    "web/src/components/System/Integrations/MetadataSettingsPanel.jsx",
+    "web/src/components/System/MediaCore/MediaCoreMetadataPortabilityPanel.jsx",
+    "web/src/components/System/MediaCore/PodMembershipManagementPanel.jsx",
+    "web/src/components/System/MediaCore/PodMessageRoutingPanel.jsx",
+    "web/src/components/System/MediaCore/PodMessageStoragePanel.jsx",
+    "web/src/components/System/SwarmAnalytics/index.jsx",
+    "web/src/components/System/SwarmVisualization/index.jsx",
+    "web/src/lib/serverErrorMessageAllowlist.js"
+  ],
+  "uniqueCallerLines": 26,
+  "placeholderParityFailures": 0,
+  "markupParityFailures": 0,
+  "protectedLiteralChecks": 36,
+  "protectedLiteralCandidateFailures": 0,
+  "sourceBehaviorNotes": [
+    {
+      "sourceIndex": 656,
+      "sourceId": "Cleanup Expired",
+      "note": "UI says expired membership cleanup, but backend clears all pending join/leave requests without checking expiry; 12 cells held."
+    },
+    {
+      "sourceIndex": 658,
+      "sourceId": "Cleanup Seen Messages",
+      "note": "Caller/backend remove old seen-message tracking records, not message bodies; candidates make the record target explicit."
+    },
+    {
+      "sourceIndex": 659,
+      "sourceId": "Cleanup completed: {messagesCleaned} messages cleaned, {messagesRetained} retained",
+      "note": "Counters report deleted/retained seen-message tracking records; candidates state that context."
+    }
+  ],
+  "catalogKeysOutsidePinnedSourceInventory": [
+    "OK",
+    "Connecting",
+    "Connection Failed",
+    "Reconnecting"
+  ],
+  "nativeSpeakerApproval": false,
+  "crossReview": "pending",
+  "catalogApplication": "pending",
+  "testsBuildsScansCIOrWorkflowsRun": false
+}

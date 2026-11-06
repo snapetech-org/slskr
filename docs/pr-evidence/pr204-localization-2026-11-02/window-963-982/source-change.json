@@ -1,0 +1,17 @@
+{
+  "baseline_head": "99282b2f9b904f9814f5be66d8f643175e134f8e",
+  "baseline_tree": "ba0ba0790da40159b8d92935f0866cb6a112edce",
+  "file": "web/src/components/System/Mesh/RealmSubjectIndexConflicts.jsx",
+  "old_source": "Copy the visible conflict report, including local authority disable selections. This does not change backend realm governance.",
+  "old_source_sha256": "f41792666b3f8d5b474e6323fc4cdfb5d068e7c525d0c07875d575b7052e99b5",
+  "new_source": "Copy the visible conflict report, including which authorities you selected to disable locally. This does not change backend realm governance.",
+  "new_source_sha256": "1675f841280abc03a431580ecf8922d6357a227a64ad33a8595430223898cd58",
+  "old_source_occurrences": 2,
+  "new_source_occurrences": 2,
+  "source_file_sha256_before": "3bac8e97e2b8089e594183384842acd8d20c7cf0b7a05f9a76ac01ef02b72e77",
+  "source_file_sha256_after": "7f4c9a172e08b50027271c856dca10f7270a23f7bba89ca1488cb6561ae62a77",
+  "locale_catalog_key_replacements": 12,
+  "old_catalog_key_absent_after": true,
+  "new_key_order_preserved_in_place": true,
+  "rationale": "The component’s browser-local disabledAuthorities list and report show that local describes the user-selected disable action, not the authority entity."
+}

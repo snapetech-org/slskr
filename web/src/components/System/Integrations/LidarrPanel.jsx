@@ -107,7 +107,7 @@ const LidarrPanel = ({ options }) => {
           )}
           <Label>
             <Icon name={maskedApiKey === 'Configured' ? 'key' : 'warning sign'} />
-            <LocalizedText source={"API Key"} />{" "}{maskedApiKey}
+            <LocalizedText source={"API Key"} />{" "}<LocalizedText source={maskedApiKey} />
           </Label>
         </div>
         <Table

@@ -1,0 +1,107 @@
+{
+  "pr_head": "98001f35f1cf33283190b96e60c3e65f01625929",
+  "pr_head_tree": "44280b39a053203e711d31503cf4552e23e09f8b",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_ids": 5437,
+  "frozen_source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "selected_source_indices": [
+    423,
+    442
+  ],
+  "selected_source_ids": [
+    "Available ports unavailable",
+    "Average Score:",
+    "Average TTL:",
+    "Avg Computation Time:",
+    "Avg Confidence:",
+    "Avg Duration",
+    "Avg Duration:",
+    "Avg Export Time:",
+    "Avg Import Time:",
+    "Avg Mappings/Domain:",
+    "Avg Match Time:",
+    "Avg Publish Time:",
+    "Avg RTT",
+    "Avg Retrieval Time:",
+    "Avg Routing Time:",
+    "Avg Search Time:",
+    "Avg Sign Time:",
+    "Avg Speed",
+    "Avg Throughput",
+    "Avg Time:"
+  ],
+  "catalog_file_sha256": {
+    "web/src/lib/locales/ui-labels.ar.json": "a5d9499a65f808b7c19dd015f92f20b6e4f98f7f98dca2001ed97adfe1090cd6",
+    "web/src/lib/locales/ui-labels.de.json": "8371aa46899d01ac3e01b8eb47c811b778b64473a90bdd7a35ed38187d314796",
+    "web/src/lib/locales/ui-labels.es.json": "ffe0efd4595640b46addb8217ef506d6d07759a92cb98ea0a655b60e810ead74",
+    "web/src/lib/locales/ui-labels.fr.json": "c8b1c82e85c9c1737e269e888f9e48973fb4573cfc7b4bf194f0527ec13ba474",
+    "web/src/lib/locales/ui-labels.hi.json": "7b3685f302fabca1cee3df076c74ae91cae643732d74f00682c276da83e13776",
+    "web/src/lib/locales/ui-labels.id.json": "1e77eb75d42fcf1db435bd0a6fa3b55c14e7ee588c3f9ecf06322253dbe4ef0f",
+    "web/src/lib/locales/ui-labels.ja.json": "0bd27fbf47e83d20daeebe30e58295bcc8190f74c51eb10109f9fe57a8ca29bd",
+    "web/src/lib/locales/ui-labels.ko.json": "5aa742e08c6cf764774f25b9f3cd443e426784fa810ec20f7e4090cf3fc094de",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "fa9e0a44840a6a72477fd4a94070759040f84c94760aeabc509679ebf1f13b67",
+    "web/src/lib/locales/ui-labels.vi.json": "204052e60d62b50c248176e8f6fbe22d87f5d0d16d6e8a8a37f2486e2e7dcd17",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "492f94bcb290b6c8e9ff5df7216279e1e8d9f24b6c01910f87ba25e16b1dd5c9",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "273f90ef0ef9e9732022ed5c0f701ac9dc8b22f01f4e8ea19282e7cff6f3d259"
+  },
+  "overlap_input_count": 994,
+  "overlap_manifest_sha256": "d05dc6b06d346040c8eda51d14415663802a5f2405c6164372dc74041d82bc23",
+  "window_cell_count": 240,
+  "counts": {
+    "prior_correction-needed": 24,
+    "prior_accepted": 109,
+    "new": 107
+  },
+  "per_locale": {
+    "ar": {
+      "prior_correction-needed": 1,
+      "new": 19
+    },
+    "de": {
+      "prior_correction-needed": 3,
+      "new": 17
+    },
+    "es": {
+      "prior_correction-needed": 3,
+      "new": 17
+    },
+    "fr": {
+      "prior_correction-needed": 2,
+      "new": 18
+    },
+    "hi": {
+      "prior_correction-needed": 1,
+      "new": 19
+    },
+    "id": {
+      "prior_correction-needed": 3,
+      "new": 17
+    },
+    "ja": {
+      "prior_accepted": 19,
+      "prior_correction-needed": 1
+    },
+    "ko": {
+      "prior_correction-needed": 3,
+      "prior_accepted": 17
+    },
+    "pt-BR": {
+      "prior_accepted": 18,
+      "prior_correction-needed": 2
+    },
+    "vi": {
+      "prior_accepted": 17,
+      "prior_correction-needed": 3
+    },
+    "zh-Hans": {
+      "prior_accepted": 19,
+      "prior_correction-needed": 1
+    },
+    "zh-Hant": {
+      "prior_accepted": 19,
+      "prior_correction-needed": 1
+    }
+  },
+  "conflicts": []
+}

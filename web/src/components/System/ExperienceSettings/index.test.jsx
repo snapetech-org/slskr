@@ -3,6 +3,7 @@ import ExperienceSettings from './index';
 import { REGIONAL_FORMAT_OPTIONS } from '../../../lib/regionalFormat';
 import {
   INTERFACE_LANGUAGE_OPTIONS,
+  interfaceText,
   resetInterfaceLanguage,
   setInterfaceLanguage,
 } from '../../../lib/interfaceLocale';
@@ -130,8 +131,8 @@ describe('ExperienceSettings', () => {
     }
   });
 
-  it('uses each regional-format option’s own pronunciation and text direction', () => {
-    setInterfaceLanguage('ar');
+  it('uses each regional-format option’s own pronunciation and text direction', async () => {
+    await setInterfaceLanguage('ar');
     render(<ExperienceSettings />);
 
     const regionalSelect = screen.getAllByRole('combobox')[1];
@@ -141,9 +142,11 @@ describe('ExperienceSettings', () => {
     fireEvent.click(regionalSelect);
 
     for (const option of REGIONAL_FORMAT_OPTIONS) {
-      const optionLabels = screen.getByRole('option', { name: option.text }).querySelectorAll('span');
-      const [nativeName, englishName] = option.text.split(' — ');
-      const nativeLocale = option.value === 'system' ? 'en' : option.value;
+      const systemOption = option.value === 'system';
+      const label = systemOption ? interfaceText('Use browser settings') : option.text;
+      const optionLabels = screen.getByRole('option', { name: label }).querySelectorAll('span');
+      const [nativeName, englishName] = systemOption ? [label, undefined] : option.text.split(' — ');
+      const nativeLocale = systemOption ? 'ar' : option.value;
       expect(optionLabels).toHaveLength(englishName ? 2 : 1);
       expect(Array.from(optionLabels, (label) => ({
         text: label.textContent,

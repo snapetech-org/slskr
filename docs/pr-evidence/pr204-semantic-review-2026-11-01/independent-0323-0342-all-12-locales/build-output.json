@@ -1,0 +1,176 @@
+{
+  "review_head": "2eb1b192fcc384712de9b73dab96426d57f2ddf1",
+  "review_tree": "d27a73371f5096f666bc02c1c78892503c36153a",
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "source_ids": 5437,
+  "source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "window_indices": [
+    323,
+    342
+  ],
+  "window_cells": 240,
+  "fresh_cells": 67,
+  "fresh_statuses": {
+    "accepted": 66,
+    "correction-needed": 1
+  },
+  "accepted_carries": 128,
+  "prior_correction_needed_reassessed": 45,
+  "exact_status_conflicts": 0,
+  "all_cell_first_pass_statuses": {
+    "accepted": 194,
+    "correction-needed": 46
+  },
+  "candidate_count": 46,
+  "candidate_by_locale": {
+    "pt-BR": 4,
+    "vi": 5,
+    "de": 3,
+    "id": 4,
+    "ko": 4,
+    "hi": 4,
+    "zh-Hans": 4,
+    "zh-Hant": 4,
+    "ar": 3,
+    "es": 4,
+    "fr": 4,
+    "ja": 3
+  },
+  "candidate_by_index": {
+    "323": 2,
+    "325": 3,
+    "327": 4,
+    "329": 11,
+    "336": 3,
+    "337": 11,
+    "339": 12
+  },
+  "per_locale": {
+    "ar": {
+      "accepted": 17,
+      "correction-needed": 3
+    },
+    "de": {
+      "accepted": 17,
+      "correction-needed": 3
+    },
+    "es": {
+      "accepted": 16,
+      "correction-needed": 4
+    },
+    "fr": {
+      "accepted": 16,
+      "correction-needed": 4
+    },
+    "hi": {
+      "accepted": 16,
+      "correction-needed": 4
+    },
+    "id": {
+      "accepted": 16,
+      "correction-needed": 4
+    },
+    "ja": {
+      "accepted": 17,
+      "correction-needed": 3
+    },
+    "ko": {
+      "accepted": 16,
+      "correction-needed": 4
+    },
+    "pt-BR": {
+      "correction-needed": 4,
+      "accepted": 16
+    },
+    "vi": {
+      "correction-needed": 5,
+      "accepted": 15
+    },
+    "zh-Hans": {
+      "accepted": 16,
+      "correction-needed": 4
+    },
+    "zh-Hant": {
+      "accepted": 16,
+      "correction-needed": 4
+    }
+  },
+  "per_index": {
+    "323": {
+      "accepted": 10,
+      "correction-needed": 2
+    },
+    "324": {
+      "accepted": 12
+    },
+    "325": {
+      "accepted": 9,
+      "correction-needed": 3
+    },
+    "326": {
+      "accepted": 12
+    },
+    "327": {
+      "accepted": 8,
+      "correction-needed": 4
+    },
+    "328": {
+      "accepted": 12
+    },
+    "329": {
+      "correction-needed": 11,
+      "accepted": 1
+    },
+    "330": {
+      "accepted": 12
+    },
+    "331": {
+      "accepted": 12
+    },
+    "332": {
+      "accepted": 12
+    },
+    "333": {
+      "accepted": 12
+    },
+    "334": {
+      "accepted": 12
+    },
+    "335": {
+      "accepted": 12
+    },
+    "336": {
+      "accepted": 9,
+      "correction-needed": 3
+    },
+    "337": {
+      "correction-needed": 11,
+      "accepted": 1
+    },
+    "338": {
+      "accepted": 12
+    },
+    "339": {
+      "correction-needed": 12
+    },
+    "340": {
+      "accepted": 12
+    },
+    "341": {
+      "accepted": 12
+    },
+    "342": {
+      "accepted": 12
+    }
+  },
+  "placeholder_cells": 72,
+  "icu_cells": 0,
+  "native_speaker_approval": false
+}
+candidate-corrections.jsonl 21a0c0ca2e0025ef42475b8341c4cc375f7acfe91bb1d86c9602f9c575baf2f6 90437
+reviewed-cell-audit.jsonl 98d6b0befdb3a98e115157b65d35d8120ef3dfdec7201c30a22f1e894ba96c41 526994
+decisions.jsonl 723c93f849f57ebfd7a1d51e451d5e7aded87b8c6f31062df28e4fbf2f75415c 125576
+source-context.txt 4682c1cfa617a4b801bdea168746e7d60f9e391c2dbc9d29eef65253c463b37b 32681
+source-pins.json 9cc0dde3592085f047eaabdd484e133e631a2cf344c289ea6ea8ccb34d63b154 5493
+review-summary.json 085dc0e9beee69f8f13d1510e14d394990474f8727b6a2c5a541b3dc68ab15f3 3075

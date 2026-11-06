@@ -1,0 +1,120 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W923-W942",
+  "zeroBasedSourceIndexInclusive": [
+    922,
+    941
+  ],
+  "head": "ca71c6c90cbe6c1fa9ef0307a57b214e61e022b5",
+  "tree": "a35194c508f9b40f28ed75480fc20182a086c55d",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "artifactCountExcludingManifestAndSums": 18,
+  "artifacts": [
+    {
+      "path": "README.md",
+      "bytes": 2745,
+      "sha256": "faa225bfde783417d2b6c2cde2adc39f391d06b55df22a577f2062925fdd07a7"
+    },
+    {
+      "path": "all-seven-pr-snapshots.json",
+      "bytes": 2727,
+      "sha256": "35e42b4b2348f6b5b49fe498bee87cfde36c47026520bb86f0542f6b31685de1"
+    },
+    {
+      "path": "boundary-pins.jsonl",
+      "bytes": 7147,
+      "sha256": "17479f3d3159810c121f1c62d263fa218a8e87c842d5b98fdccddcd0bfbcc566"
+    },
+    {
+      "path": "build_primary.py",
+      "bytes": 54273,
+      "sha256": "c303e78241715571139bd83cfd2f8502a551d64c5c151b9cd033a7bc5dc8af2a"
+    },
+    {
+      "path": "caller-gaps.jsonl",
+      "bytes": 412,
+      "sha256": "3d78006d18c6e32bff59d9423bdf2bc1692614ad9ffd74d44935bcabecce6cc9"
+    },
+    {
+      "path": "catalog-pins.jsonl",
+      "bytes": 3734,
+      "sha256": "e9036afc5e751476beb8f71761dbcfe5973d6b9b3d9869ca1afde943e3201f75"
+    },
+    {
+      "path": "final-live-head.json",
+      "bytes": 351,
+      "sha256": "c325f8049b6f6dff72bf75bffb6a529fbe722aa22582055f5af3a9567d2b6736"
+    },
+    {
+      "path": "glossary-reference-pins.jsonl",
+      "bytes": 84052,
+      "sha256": "e6e55b327345f957f1ae3023a9f04e29bb8df19ccf3c8ccb98ee945bc90e12e5"
+    },
+    {
+      "path": "live-head.json",
+      "bytes": 573,
+      "sha256": "42d68fb7bd2de7cbf0893bbabccef5af0b374dc2fed760089171d9665128146d"
+    },
+    {
+      "path": "locale-formality-checks.jsonl",
+      "bytes": 103096,
+      "sha256": "eec9edbdc5d6d9018970c939055b6463431841d73c481ae53d6c88652247d5d3"
+    },
+    {
+      "path": "prior-boundary-reattestation.json",
+      "bytes": 11699,
+      "sha256": "6654083691e59daff0c2fd09936d0d8db391c98122ba26c9e06317f03865aa6d"
+    },
+    {
+      "path": "prior-disposition-reattestation.jsonl",
+      "bytes": 117055,
+      "sha256": "29873d2b19e7a7ecbf140068fce7fe21c5c5d32d64946bbf016363fbfea1768e"
+    },
+    {
+      "path": "protected-literal-integrity.jsonl",
+      "bytes": 103608,
+      "sha256": "bee338b3bf02bc32d72a643188752f3832ee133b22f033469930f9375141b474"
+    },
+    {
+      "path": "review-cells.jsonl",
+      "bytes": 360071,
+      "sha256": "3b4c0ebaa10c1e35782fdb9825063f8ccb13338bebbfaf8490af91183938fd1f"
+    },
+    {
+      "path": "source-caller-pins.jsonl",
+      "bytes": 42895,
+      "sha256": "77d98040c3e68c20bf9da2f71e7eaab53068d9591ee0d128110a869e05a98887"
+    },
+    {
+      "path": "source-window-and-boundaries.jsonl",
+      "bytes": 4490,
+      "sha256": "d07a2ea47030539a74740680aded5fce28bf9891222b248553148f43ddbac5aa"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 5461,
+      "sha256": "d07880cd54468813251d189c4a26ca014a538402b6476f4bf1f92e4b52b95da6"
+    },
+    {
+      "path": "terminology-sources.md",
+      "bytes": 1725,
+      "sha256": "c6ac32488711815edb2032103a5e8246ffac97aa96df8beade92d568b43bf0ea"
+    }
+  ],
+  "summary": {
+    "cellCount": 240,
+    "dispositionCounts": {
+      "correction": 40,
+      "accept-current": 186,
+      "refinement": 2,
+      "hold": 12
+    },
+    "proposalKindCounts": {
+      "correction": 40,
+      "refinement": 2
+    },
+    "proposedValueChanges": 42,
+    "holdCellCount": 12
+  }
+}

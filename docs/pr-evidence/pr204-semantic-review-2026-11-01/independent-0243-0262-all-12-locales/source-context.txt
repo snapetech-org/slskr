@@ -1,0 +1,331 @@
+Exact source/context excerpts for catalog source commit 7ff454828398de6a3cfb72fe7f0ed21fe419425b / tree 9e9f2aa743c4ff3236af8f99619803bdc3a37152. Line numbers are from those pinned source files.
+
+### web/src/components/System/Jobs/index.jsx | blob d107affda28da2a86c3cbf22175cdf0898c6fa68 | sha256 9e9f1caffccf25f2d9259e9295e3ad9f500acb30ba6150c976acf5762f4b0f16
+-- lines 434-450
+434:       {/* Job List */}
+435:       <Segment>
+436:         <Header as="h3">
+437:           <Icon name="tasks" />
+438:           <Header.Content><LocalizedText source={"All Jobs"} /></Header.Content>
+439:         </Header>
+440: 
+441:         {/* Filters */}
+442:         <div style={{ display: 'flex', gap: '1em', marginBottom: '1em' }}>
+443:           <Dropdown
+444:             clearable
+445:             onChange={(_e, { value }) => handleFilterChange('type', value)}
+446:             options={[
+447:               { key: 'discography', text: interfaceText("Discography"), value: 'discography' },
+448:               {
+449:                 key: 'label_crate',
+450:                 text: interfaceText("Label Crate"),
+
+### web/src/components/System/MediaCore/PodDiscoveryPanel.jsx | blob c79ee3cf9b70c20fbb819aae0925b3b52c0dbe89 | sha256 c17c245776bcb87bb6089ff3836ff6b6061081ad2d0935d4dd15bff3aff928af
+-- lines 451-470
+451:                 <Grid.Column width={4}>
+452:                   {/* Discover All */}
+453:                   <Header size="small"><LocalizedText source={"All Pods"} /></Header>
+454:                   <Form>
+455:                     <Form.Input
+456:                       label={interfaceText("Limit")}
+457:                       max="1000"
+458:                       min="1"
+459:                       onChange={(e) =>
+460:                         setDiscoverLimit(Number.parseInt(e.target.value) || 50)
+461:                       }
+462:                       type="number"
+463:                       value={discoverLimit}
+464:                      {...interfaceTextProps("Limit")}/>
+465:                     <Button
+466:                       disabled={discoveringAll}
+467:                       fluid
+468:                       loading={discoveringAll}
+469:                       onClick={handleDiscoverAll}
+470:                     >
+
+### web/src/components/Player/VisualizerOverlayControls.jsx | blob 0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf | sha256 5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4
+-- lines 165-184
+165:               {rustyMilkPresetPlaylists.length > 0 ? (
+166:                 <Popup
+167:                   content={interfaceText("Use a saved native playlist as the active preset bank.")}
+168:                   trigger={
+169:                     <select
+170:                       aria-label={interfaceText("RustyMilk playlist")}
+171:                       className="player-visualizer-native-library"
+172:                       data-testid="visualizer-native-playlist"
+173:                       onChange={selectNativePlaylist}
+174:                       value={activeNativePlaylistId}
+175:                      {...interfaceTextProps("RustyMilk playlist")}>
+176:                       <option value="">{interfaceText("All imported")}</option>
+177:                       {rustyMilkPresetPlaylists.map((playlist) => (
+178:                         <option key={playlist.id} value={playlist.id}>
+179:                           {playlist.name}
+180:                         </option>
+181:                       ))}
+182:                     </select>
+183:                   }
+184:                  {...interfaceTextProps("Use a saved native playlist as the active preset bank.")}/>
+
+### web/src/components/Search/DiscographyCoveragePanel.jsx | blob 30a767356c47e5198976ddbac4ce657320f15b03 | sha256 d1fdb70100b0fa7f3d38a3f0d37766e71e1efc45b8f4f47ee44684c5d173090a
+-- lines 26-32
+26: const profileOptions = [
+27:   { key: 'core', get text() { return interfaceText("Core"); }, value: 'CoreDiscography' },
+28:   { key: 'extended', get text() { return interfaceText("Extended"); }, value: 'ExtendedDiscography' },
+29:   { key: 'all', get text() { return interfaceText("All releases"); }, value: 'AllReleases' },
+30: ];
+31: 
+32: const statusColor = (status) => {
+
+### web/src/components/System/Integrations/MediaServerPanel.jsx | blob f0e320beceb19f9253fc8e687a5ffac0028f67d5 | sha256 e8620c11fc3d54760a3332e5f791468029796fe21dc611cd1ef7fe7152c5d15d
+-- lines 429-438
+429:                   <Table.Cell>
+430:                     <Label color={automation.ready ? 'green' : 'orange'}>
+431:                       {automation.ready ? <LocalizedText source={"Ready"} /> : <LocalizedText source={"Blocked"} />}
+432:                     </Label>
+433:                   </Table.Cell>
+434:                   <Table.Cell>
+435:                     {automation.blockedReasons.length === 0
+436:                       ? <LocalizedText source={"All required gates are satisfied."} />
+437:                       : automation.blockedReasons.join(' ')}
+438:                   </Table.Cell>
+
+### web/src/components/Search/Detail/SearchDetail.jsx | blob 86b09d942fc98d6269004ae960e227732a79484f | sha256 7bc9e9f25a2cc9e78f0e4d0bf67a2837315e7763c953d38553a6707c36bb16b8
+-- lines 861-871
+861:           ) : filteredCount > 0 ? (
+862:             <Button
+863:               className="showmore-button"
+864:               disabled
+865:               fluid
+866:               size="large"
+867:             >{localized('All results shown. {count} results hidden by filters', {
+868:               count: formatRegionalNumber(filteredCount),
+869:             })}</Button>
+870:           ) : (
+871:             ''
+
+### web/src/components/System/Metrics/index.jsx | blob b56dcd7e659a938f47f1a96f2ef2a0550b100876 | sha256 148984c1547bfbae3134d4591d74c28268aea15ee26c06357b11910d07a629e0
+-- lines 126-146
+126:   const slskrMetrics = Object.entries(
+127:     metrics && typeof metrics === 'object' ? metrics : {},
+128:   )
+129:     .filter(([key]) => key.startsWith('slskr_'))
+130:     .sort(([a], [b]) => a.localeCompare(b));
+131: 
+132:   if (slskrMetrics.length === 0) return null;
+133: 
+134:   return (
+135:     <Segment>
+136:       <Header size="small">
+137:         <Icon name="table" />
+138:         <LocalizedText source={"All slskr Metrics"} /></Header>
+139:       <Table
+140:         compact
+141:         size="small"
+142:         striped
+143:       >
+144:         <Table.Header>
+145:           <Table.Row>
+146:             <Table.HeaderCell><LocalizedText source={"Metric"} /></Table.HeaderCell>
+
+### web/src/components/System/Integrations/FtpIntegrationPanel.jsx | blob 81cb196f7be0d388c0dd2988f283990d958ae7fa | sha256 71a1dfcb043820f9f5ef0a4ee7d142fb308e7943f049b0dbdb9b60d22a4724a0
+-- lines 369-383
+369:             <Popup
+370:               content={interfaceText("Allow FTP certificate validation failures for self-signed or untrusted certificates.")}
+371:               trigger={
+372:                 <Checkbox
+373:                   aria-label={interfaceText("FTP ignore certificate errors")}
+374:                   checked={form.ignoreCertificateErrors}
+375:                   disabled={!remoteConfiguration || saving}
+376:                   label={interfaceText("Ignore certificate errors")}
+377:                   onChange={(_, { checked }) =>
+378:                     update('ignoreCertificateErrors', checked)
+379:                   }
+380:                  {...interfaceTextProps("FTP ignore certificate errors")}/>
+381:               }
+382:              {...interfaceTextProps("Allow FTP certificate validation failures for self-signed or untrusted certificates.")}/>
+383:           </Form.Group>
+
+### web/src/components/System/Integrations/MetadataSettingsPanel.jsx | blob 0d0ffc8e16a072970a51604bd95d76f7f796669f | sha256 e5aaf906b4cfc6e17ef8706bc95efb660b0eda2748bf2dad1c411ee9621d6339
+-- lines 647-675
+647:               <Popup
+648:                 content={interfaceText("Allow Lidarr-created Wishlist items to auto-download according to Wishlist rules.")}
+649:                 trigger={
+650:                   <Checkbox
+651:                     aria-label={interfaceText("Enable Lidarr auto-download setting")}
+652:                     checked={form.lidarrAutoDownload}
+653:                     disabled={!remoteConfiguration || saving}
+654:                     label={interfaceText("Auto-download synced Wishlist items")}
+655:                     onChange={(_, { checked }) =>
+656:                       update('lidarrAutoDownload', checked)
+657:                     }
+658:                    {...interfaceTextProps("Enable Lidarr auto-download setting")}/>
+659:                 }
+660:                {...interfaceTextProps("Allow Lidarr-created Wishlist items to auto-download according to Wishlist rules.")}/>
+661:               <Popup
+662:                 content={interfaceText("Allow completed slskr download directories to be sent to Lidarr manual import.")}
+663:                 trigger={
+664:                   <Checkbox
+665:                     aria-label={interfaceText("Enable Lidarr completed import setting")}
+666:                     checked={form.lidarrAutoImportCompleted}
+667:                     disabled={!remoteConfiguration || saving}
+668:                     label={interfaceText("Auto-import completed downloads")}
+669:                     onChange={(_, { checked }) =>
+670:                       update('lidarrAutoImportCompleted', checked)
+671:                     }
+672:                    {...interfaceTextProps("Enable Lidarr completed import setting")}/>
+673:                 }
+674:                {...interfaceTextProps("Allow completed slskr download directories to be sent to Lidarr manual import.")}/>
+675:             </Form.Group>
+-- lines 746-760
+746:               <Popup
+747:                 content={interfaceText("Allow Lidarr to replace existing files during completed-download import.")}
+748:                 trigger={
+749:                   <Checkbox
+750:                     aria-label={interfaceText("Enable Lidarr replace existing files setting")}
+751:                     checked={form.lidarrImportReplaceExistingFiles}
+752:                     disabled={!remoteConfiguration || saving}
+753:                     label={interfaceText("Replace existing files")}
+754:                     onChange={(_, { checked }) =>
+755:                       update('lidarrImportReplaceExistingFiles', checked)
+756:                     }
+757:                    {...interfaceTextProps("Enable Lidarr replace existing files setting")}/>
+758:                 }
+759:                {...interfaceTextProps("Allow Lidarr to replace existing files during completed-download import.")}/>
+760:               <Popup
+
+### web/src/components/Player/PodListenAlongPanel.jsx | blob 46cefa0ad94487776bb2bcf1f7f171d51e7c1b3f | sha256 e1b87651a33685f5c46840e4d819b7f37f4171cb1fe28811e41fb3d2d9c95ca1
+-- lines 325-361
+325:                {...interfaceTextProps("Broadcast current track to room")}>
+326:                 <Icon name="bullhorn" />
+327:               </Button>
+328:             }
+329:            {...interfaceTextProps("Broadcast your current local player track to this room.")}/>
+330:           <Popup
+331:             content={interfaceText("List this room broadcast in the mesh radio directory.")}
+332:             trigger={
+333:               <Button
+334:                 active={globalRadio}
+335:                 aria-label={interfaceText("List room broadcast in mesh directory")}
+336:                 icon
+337:                 onClick={() => setGlobalRadio((value) => !value)}
+338:                 size="mini"
+339:                 title={interfaceText("List room broadcast in mesh directory")}
+340:                {...interfaceTextProps("List room broadcast in mesh directory")}>
+341:                 <Icon name="broadcast tower" />
+342:               </Button>
+343:             }
+344:            {...interfaceTextProps("List this room broadcast in the mesh radio directory.")}/>
+345:           <Popup
+346:             content={interfaceText("Allow directory listeners to stream the current track from this node.")}
+347:             trigger={
+348:               <Button
+349:                 active={meshStreaming}
+350:                 aria-label={interfaceText("Allow mesh streaming for broadcast")}
+351:                 disabled={!globalRadio}
+352:                 icon
+353:                 onClick={() => setMeshStreaming((value) => !value)}
+354:                 size="mini"
+355:                 title={interfaceText("Allow mesh streaming for broadcast")}
+356:                {...interfaceTextProps("Allow mesh streaming for broadcast")}>
+357:                 <Icon name="wifi" />
+358:               </Button>
+359:             }
+360:            {...interfaceTextProps("Allow directory listeners to stream the current track from this node.")}/>
+361:           <Popup
+-- lines 405-428
+405:         <Popup
+406:           content={interfaceText("List this party in the slskr mesh radio directory so nearby mesh members can discover it.")}
+407:           trigger={
+408:             <Checkbox
+409:               checked={globalRadio}
+410:               label={interfaceText("List globally")}
+411:               onChange={(event, data) => setGlobalRadio(data.checked)}
+412:               toggle
+413:              {...interfaceTextProps("List globally")}/>
+414:           }
+415:          {...interfaceTextProps("List this party in the slskr mesh radio directory so nearby mesh members can discover it.")}/>
+416:         <Popup
+417:           content={interfaceText("Allow listeners who join from the directory to stream this party's current track from this slskr node.")}
+418:           trigger={
+419:             <Checkbox
+420:               checked={meshStreaming}
+421:               disabled={!globalRadio}
+422:               label={interfaceText("Mesh streaming")}
+423:               onChange={(event, data) => setMeshStreaming(data.checked)}
+424:               toggle
+425:              {...interfaceTextProps("Mesh streaming")}/>
+426:           }
+427:          {...interfaceTextProps("Allow listeners who join from the directory to stream this party's current track from this slskr node.")}/>
+428:       </div>
+
+### web/src/components/Collections/CollectionShareModal.jsx | blob c992500ac8fbac7126cd206e012c3509cde6a1e9 | sha256 939b1c1492f12bda662f93753d34eedbbf2bd45997e3e838278f9832e3c29d78
+-- lines 48-58
+48:                   </Form.Field>
+49:                   <Form.Field>
+50:                     <label htmlFor="share-allow-download"><LocalizedText source={"Allow download"} /></label>
+51:                     <input
+52:                       checked={shareAllowDownload}
+53:                       data-testid="share-policy-download"
+54:                       id="share-allow-download"
+55:                       onChange={onAllowDownloadChange}
+56:                       type="checkbox"
+57:                     />
+58:                   </Form.Field>
+
+### web/src/components/System/Bridge/index.jsx | blob 2ebcb45755514fd7f281cdf96fd40046605d1906 | sha256 cdb2bf06a4066615fbdcbbffdd552b504db80aff3003c2e60ac3de43162ec666
+-- lines 378-391
+378:                 <Form.Group widths="equal">
+379:                   <Form.Field>
+380:                     <Checkbox
+381:                       checked={config?.enabled || false}
+382:                       label={interfaceText("Enable Bridge")}
+383:                       onChange={(e, { checked }) =>
+384:                         handleConfigChange('enabled', checked)
+385:                       }
+386:                       toggle
+387:                      {...interfaceTextProps("Enable Bridge")}/>
+388:                     <small>
+389:                       <LocalizedText source={"Allow legacy Soulseek clients to connect via bridge"} /></small>
+390:                   </Form.Field>
+391:                 </Form.Group>
+
+### web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx | blob 90f3e1d29a4b514a1877693e131e92b66b8050aa | sha256 17241e796b943988d339bac74569f5a5d4e8889194cad1221d0b9c8bc1b82a9e
+-- lines 436-450
+436:                 <Popup
+437:                   content={interfaceText("Allow no-auth access from explicitly configured non-loopback CIDRs.")}
+438:                   trigger={
+439:                     <Checkbox
+440:                       aria-label={interfaceText("Allow remote no-auth CIDRs")}
+441:                       checked={form.allowRemoteNoAuth}
+442:                       disabled={!remoteConfiguration || saving}
+443:                       label={interfaceText("Allow remote no-auth CIDRs")}
+444:                       onChange={(_, { checked }) =>
+445:                         update('allowRemoteNoAuth', Boolean(checked))
+446:                       }
+447:                       toggle
+448:                      {...interfaceTextProps("Allow remote no-auth CIDRs")}/>
+449:                   }
+450:                  {...interfaceTextProps("Allow no-auth access from explicitly configured non-loopback CIDRs.")}/>
+
+### web/src/components/System/ExperienceSettings/index.jsx | blob fbe8caabfc30e03809dc5ae7051bddb731986956 | sha256 ba7826de4b32bc9506d5926e6243623ccc3104da43706ce7a57fe4b17bcf2f30
+-- lines 405-420
+405:               <Form.Group grouped>
+406:                 <Popup
+407:                   content={interfaceText("Allow player pages to append local similar-track queue candidates when explicit page support is available.")}
+408:                   trigger={
+409:                     <Checkbox
+410:                       aria-label={interfaceText("Enable player queue auto-fill preference")}
+411:                       checked={form.playerQueueAutoFill}
+412:                       label={interfaceText("Enable queue auto-fill")}
+413:                       onChange={(_, { checked }) =>
+414:                         update('playerQueueAutoFill', Boolean(checked))
+415:                       }
+416:                       toggle
+417:                      {...interfaceTextProps("Enable player queue auto-fill preference")}/>
+418:                   }
+419:                  {...interfaceTextProps("Allow player pages to append local similar-track queue candidates when explicit page support is available.")}/>
+420:                 <Checkbox
+
+### Caller search notes
+No exact literal usage for “All Sources” or “All loaded transfers are complete” was found in web/src at this source head; both were reviewed as standalone selector/status copy. “All Jobs” is the heading of System Jobs; “All imported” is the option for imported RustyMilk preset playlists; “All releases” is a MusicBrainz discography filter. “All required gates” is a readiness-prerequisite message; the {count} placeholder is a regionalized filtered-result count.
+The listen-along controls use a mesh radio directory of rooms. The directory-listener setting means listeners who join from that directory, and the party’s current track belongs to a listening room.

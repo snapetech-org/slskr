@@ -1,7 +1,7 @@
-import LocalizedText from "../Shared/LocalizedText";
+import LocalizedText, { LocalizedErrorOutput } from "../Shared/LocalizedText";
 import { interfaceText, interfaceTextProps } from "../../lib/interfaceLocale";
 import * as collectionsAPI from '../../lib/collections';
-import { toDisplayError } from '../../lib/errors';
+import { toDisplayErrorOutput } from '../../lib/errors';
 import { readOptionalApiResponse } from '../../lib/optionalApi';
 import PlayCollectionItemButton from '../Player/PlayCollectionItemButton';
 import ErrorSegment from '../Shared/ErrorSegment';
@@ -121,12 +121,12 @@ export default class Collections extends Component {
         });
       }
     } catch (error) {
-      const errorMessage = toDisplayError(error, 'Failed to load collections');
+      const errorOutput = toDisplayErrorOutput(error, 'Failed to load collections');
 
       if (this.isMountedFlag && requestId === this.requestIds.collections) {
         this.setState({
-          error: errorMessage,
-          collectionsLoadError: errorMessage,
+          error: errorOutput,
+          collectionsLoadError: errorOutput,
           loading: false,
         });
       }
@@ -152,7 +152,7 @@ export default class Collections extends Component {
     } catch (error) {
       if (this.isMountedFlag && requestId === this.requestIds.shareGroups) {
         this.setState({
-          error: toDisplayError(error, 'Failed to load share groups'),
+          error: toDisplayErrorOutput(error, 'Failed to load share groups'),
           shareGroupsLoading: false,
         });
       }
@@ -181,7 +181,7 @@ export default class Collections extends Component {
     } catch (error) {
       if (this.isMountedFlag && requestId === this.requestIds.shares) {
         this.setState({
-          sharesError: toDisplayError(error, 'Failed to load collection shares'),
+          sharesError: toDisplayErrorOutput(error, 'Failed to load collection shares'),
         });
       }
     }
@@ -209,7 +209,7 @@ export default class Collections extends Component {
         requestId === this.requestIds.collectionItems
       ) {
         this.setState({
-          collectionItemsError: toDisplayError(error, 'Failed to load collection items'),
+          collectionItemsError: toDisplayErrorOutput(error, 'Failed to load collection items'),
         });
       }
     }
@@ -246,7 +246,7 @@ export default class Collections extends Component {
         requestId === this.requestIds.createCollection
       ) {
         this.setState({
-          error: toDisplayError(error, 'Failed to create collection'),
+          error: toDisplayErrorOutput(error, 'Failed to create collection'),
         });
       }
     } finally {
@@ -296,7 +296,7 @@ export default class Collections extends Component {
         requestId === this.requestIds.deleteCollection
       ) {
         this.setState({
-          error: toDisplayError(error, 'Failed to delete collection'),
+          error: toDisplayErrorOutput(error, 'Failed to delete collection'),
         });
       }
     } finally {
@@ -367,7 +367,7 @@ export default class Collections extends Component {
       console.error('[Collections] Search error:', error);
       if (this.isMountedFlag && requestId === this.requestIds.search) {
         this.setState({
-          error: toDisplayError(error, 'Failed to search library items'),
+          error: toDisplayErrorOutput(error, 'Failed to search library items'),
           itemSearchLoading: false,
           itemSearchResults: [],
         });
@@ -421,7 +421,7 @@ export default class Collections extends Component {
         this.isMountedFlag &&
         requestId === this.requestIds.addItem
       ) {
-        this.setState({ error: toDisplayError(error, 'Failed to add item') });
+        this.setState({ error: toDisplayErrorOutput(error, 'Failed to add item') });
       }
     } finally {
       if (
@@ -462,7 +462,7 @@ export default class Collections extends Component {
         requestId === this.requestIds.removeItem
       ) {
         this.setState({
-          error: toDisplayError(error, 'Failed to remove collection item'),
+          error: toDisplayErrorOutput(error, 'Failed to remove collection item'),
         });
       }
     } finally {
@@ -520,7 +520,9 @@ export default class Collections extends Component {
       ),
     ];
     if (usernames.length === 0) {
-      this.setState({ error: 'Selected group has no members to share with.' });
+      this.setState({
+        error: toDisplayErrorOutput(null, 'Selected group has no members to share with.'),
+      });
       return;
     }
 
@@ -570,7 +572,7 @@ export default class Collections extends Component {
         requestId === this.requestIds.createShare
       ) {
         this.setState({
-          error: toDisplayError(error, 'Failed to share collection'),
+          error: toDisplayErrorOutput(error, 'Failed to share collection'),
         });
       }
     } finally {
@@ -653,7 +655,7 @@ export default class Collections extends Component {
               error
             >
               <Message.Header><LocalizedText source={"Collections unavailable"} /></Message.Header>
-              <p>{collectionsLoadError}</p>
+              <p><LocalizedErrorOutput output={collectionsLoadError} /></p>
             </Message>
           ) : collections.length === 0 ? (
             <Segment placeholder>
@@ -740,7 +742,7 @@ export default class Collections extends Component {
                     error
                   >
                     <Message.Header><LocalizedText source={"Collection items unavailable"} /></Message.Header>
-                    <p>{collectionItemsError}</p>
+                    <p><LocalizedErrorOutput output={collectionItemsError} /></p>
                     {selectedCollectionItems.length > 0 && (
                       <p><LocalizedText source={"Showing the last successfully loaded collection items."} /></p>
                     )}
@@ -804,7 +806,7 @@ export default class Collections extends Component {
                     error
                   >
                     <Message.Header><LocalizedText source={"Collection shares unavailable"} /></Message.Header>
-                    <p>{sharesError}</p>
+                    <p><LocalizedErrorOutput output={sharesError} /></p>
                     {collectionShares.length > 0 && (
                       <p><LocalizedText source={"Showing the last successfully loaded collection shares."} /></p>
                     )}

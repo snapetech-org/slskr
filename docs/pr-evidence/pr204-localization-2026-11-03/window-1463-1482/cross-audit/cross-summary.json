@@ -1,0 +1,54 @@
+{
+  "artifact": "slskR PR #204 W1463-W1482 cross-audit",
+  "head": "2db7fa06845d9d94a5e5da2ddb5ecfdc04100ade",
+  "tree": "0945d38050243ed0d52aa9d923636820c66e65ba",
+  "positions": [
+    1463,
+    1482
+  ],
+  "cellCount": 240,
+  "inputComparison": {
+    "primaryProposalCount": 44,
+    "independentBlindProposalCount": 51,
+    "bothProposeSameTarget": 21,
+    "bothProposeDifferentTargets": 15,
+    "primaryOnlyProposals": 8,
+    "independentBlindOnlyProposals": 15,
+    "neitherProposes": 181,
+    "oneSidedProposalStatusDifferences": 23
+  },
+  "finalDispositionCounts": {
+    "accept-current": 169,
+    "correction": 29,
+    "hold": 12,
+    "refinement": 30
+  },
+  "currentTokenMismatchCounts": {
+    "placeholder": 0,
+    "markup": 0,
+    "numeric": 0,
+    "protectedLiteral": 28
+  },
+  "protectedLiteralDisposition": {
+    "FTP": {
+      "count": 16,
+      "resolution": "corrected in proposed targets; exact source/caller context identifies the FTP integration controls"
+    },
+    "FAIL": {
+      "count": 12,
+      "resolution": "hash-only holds; no exact production caller is pinned"
+    }
+  },
+  "remainingAcceptedCurrentProtectedMismatchCount": 0,
+  "proposedTargetProtectedMismatchCount": 0,
+  "unresolvedHoldCount": 12,
+  "holdPositions": [
+    1466
+  ],
+  "holdRowsContainTargetText": false,
+  "deploymentsForHeadBefore": 0,
+  "priorContinuity": "hash/count-only summary; restricted contents never parsed or displayed",
+  "deploymentsForHeadAfter": 0,
+  "attestationBeforeUtc": "2026-11-04T01:07:53Z",
+  "attestationAfterUtc": "2026-11-04T01:17:14Z"
+}

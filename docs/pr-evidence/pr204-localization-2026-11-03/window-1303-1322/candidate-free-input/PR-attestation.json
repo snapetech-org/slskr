@@ -1,0 +1,15 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "state": "OPEN",
+  "draft": true,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "head": "f46b8b2322f4b944f39f34d5bb8d55852ba330c8",
+  "tree": "4eba98f951a745dac6b5332bd6796bf57c7037e2",
+  "baseRef": "main",
+  "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "branchRef": "f46b8b2322f4b944f39f34d5bb8d55852ba330c8",
+  "pullRef": "f46b8b2322f4b944f39f34d5bb8d55852ba330c8",
+  "attestedAtUtc": "2026-11-03T12:40:17.838061+00:00",
+  "method": "GitHub PR selected fields, GitHub commit tree API, and git ls-remote for branch and pull refs"
+}

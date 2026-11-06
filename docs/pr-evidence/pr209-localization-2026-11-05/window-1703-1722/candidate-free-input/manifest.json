@@ -1,0 +1,134 @@
+{
+  "artifact": "slskR PR #209 W1703-W1722 candidate-free exact-head input",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "head": "91e109efba44ad9e53fe9544648a0d907a2bef77",
+  "tree": "38db78228144da5fc50179addccf826662bf97de",
+  "headRef": "codex/slskr-l10n-audit-20261104-resync",
+  "baseRef": "main",
+  "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "draft": true,
+  "candidateFreeInputOnly": true,
+  "proposedTranslationsIncluded": false,
+  "selectedPositions": [
+    1703,
+    1722
+  ],
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "catalogSourceCount": 5441,
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "sourceQueueCount": 5441,
+  "sourceQueueFileSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+  "callerReferenceCount": 30,
+  "callerOccurrenceCount": 30,
+  "callerFileCount": 17,
+  "trackedProductionJsTsFilesScanned": 324,
+  "uniqueSelectedCallerFiles": 17,
+  "callerResolutionHoldCount": 0,
+  "callerResolutionHoldPositions": [],
+  "callerlessTargetTextsIncluded": false,
+  "tokenMismatchCounts": {
+    "placeholderSequenceMismatchCount": 0,
+    "markupMismatchCount": 0,
+    "numericTokenMismatchCount": 0,
+    "protectedLiteralMismatchCount": 0
+  },
+  "catalogFilesPinned": 12,
+  "previousWindow": "W1683-W1702",
+  "previousQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+  "previousQueueMatchesLiveQueue": true,
+  "historicalSourceOrdinalsClaimed": false,
+  "localWorktree": "/home/keith/Documents/code/.task-worktrees/localization-20261105/slskr-w1683",
+  "localWorktreeHead": "91e109efba44ad9e53fe9544648a0d907a2bef77",
+  "localWorktreeTree": "38db78228144da5fc50179addccf826662bf97de",
+  "localWorktreeBranch": "codex/slskr-l10n-audit-20261104-resync",
+  "localWorktreeStatusClean": true,
+  "beforeAfterRefsStable": true,
+  "createdAtUtc": "2026-11-05T14:12:46+00:00",
+  "fileHashes": {
+    "README.md": {
+      "sha256": "1b510c0fe4be83d4a1acfbfbbddeadb80151a04f24f5535acc7699e2bd63def5",
+      "byteCount": 1987
+    },
+    "attestation-after.json": {
+      "sha256": "046e4bfde38bd89f79be720d257534ab35e5a27e716943b4c91f6ae4e868456c",
+      "byteCount": 994
+    },
+    "attestation-before.json": {
+      "sha256": "07a9d52cd366a148e911448d63a05d835e9a29c3ae9d1f05818990cbbe4f4a57",
+      "byteCount": 995
+    },
+    "build_candidate_free.py": {
+      "sha256": "4d9f4d33044d10fbe07dc77588a8ef19705cd2a459090f4b10b9f0a751753efb",
+      "byteCount": 16656
+    },
+    "caller-resolution-holds.jsonl": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteCount": 0
+    },
+    "candidate-free-schema-helper.py": {
+      "sha256": "1cf2d8e74f09d24eb1ea29d3dd886522aa735c06220b7a71aa10c0f18796482f",
+      "byteCount": 7531
+    },
+    "catalog-file-pins.json": {
+      "sha256": "717ee7e5aff780c8063616ce32977eabdb195647a377e45b3915859c7aba1949",
+      "byteCount": 4330
+    },
+    "catalog-structure.jsonl": {
+      "sha256": "cc048f41fdccf4a43a4430c9914f58f4e00b60815f2261cb9cd612e02e2c9081",
+      "byteCount": 3554
+    },
+    "current-target-cells.jsonl": {
+      "sha256": "e7653d229f7b9e22598b6e9e152831a2684c1ab50b855b2921591730a2d1f20c",
+      "byteCount": 278638
+    },
+    "localization-runtime-context.json": {
+      "sha256": "25614de30a3ec662aa4255f3b705a9f2399a38b7be75f7e6a5239a993855c69d",
+      "byteCount": 10860
+    },
+    "selected-source-keys.txt": {
+      "sha256": "2a485b98f5ff81c7664345469adb771fd3aae880f0d48af9c1aa7ca16323a35e",
+      "byteCount": 439
+    },
+    "source-contexts.jsonl": {
+      "sha256": "76fddfb96a2615de417005de9b8b6a409964e2f6010ac090cb6c71692e30fdf1",
+      "byteCount": 46170
+    },
+    "source-order-lineage.json": {
+      "sha256": "2ae2d065d3cf1f972a353ad4f43ddd6802d043e1236a97a6d24d80582c3f43c6",
+      "byteCount": 1346
+    },
+    "source-pin-reattestation.json": {
+      "sha256": "1df3f68982f5a8506bd2376a27b51d130ac1759605bbd902794fa336e2e57e65",
+      "byteCount": 1394
+    },
+    "source-queue.jsonl": {
+      "sha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+      "byteCount": 974393
+    },
+    "source-window-boundaries.jsonl": {
+      "sha256": "f9cd17be217679c359b80cfb0a0c5e08bcd81c45789eb950f34317f39b2d3373",
+      "byteCount": 2638
+    },
+    "verify_candidate_free.py": {
+      "sha256": "932003360c4c0352dd6eaeddd5e27326a1e94fbf1c763e3cb4c09892634364d2",
+      "byteCount": 12159
+    }
+  }
+}

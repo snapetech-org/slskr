@@ -1,0 +1,9 @@
+{
+  "artifact": "slskR W1603-W1622 proposed exact-hash apply plan",
+  "head": "eeb63f1e4e21d801f4a4e0393813b6e86a1ff7c8",
+  "tree": "590ee410666905f68f601393b64a4798b0609181",
+  "changeCount": 13,
+  "catalogCount": 8,
+  "status": "PROPOSED_NOT_APPLIED",
+  "crossReviewPending": true
+}

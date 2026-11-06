@@ -1,0 +1,28 @@
+{
+  "applicationCommit": "a65ba4693c4f613f470509ab882f7532e40b11ef",
+  "applicationParent": "2eb1b192fcc384712de9b73dab96426d57f2ddf1",
+  "applicationTree": "f174eb839e00c23493c9a418392f589ad6d59597",
+  "applyCount": 47,
+  "applyPlanSha256": "f8f5bef17279617f80d21257216cf29e7b3e83c9ffd01d5d3435e43e3610e0da",
+  "conflicts": 0,
+  "coordinatedGroupCandidateCount": 4,
+  "coordinatedGroupCandidatePlanSha256": "f4948754f552e395073cab20e6ec32bc6809ebf836a5a62bc50c7cc3d33186c4",
+  "dispositionCounts": {
+    "accepted": 41,
+    "accepted-unchanged": 2,
+    "refined": 6
+  },
+  "exactHashPreflight": "passed",
+  "held": 0,
+  "mainCandidateCount": 46,
+  "mainCandidatePlanSha256": "21a0c0ca2e0025ef42475b8341c4cc375f7acfe91bb1d86c9602f9c575baf2f6",
+  "nativeSpeakerReview": "not_provided",
+  "reviewHead": "2eb1b192fcc384712de9b73dab96426d57f2ddf1",
+  "reviewRows": 49,
+  "reviewTree": "d27a73371f5096f666bc02c1c78892503c36153a",
+  "rootLedgerSha256": "78fd9eb826f104ed50a38b561d4f210e09091cbad6e691eab8dc55c49760f8ae",
+  "schemaVersion": 1,
+  "sourceCatalogHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceCatalogTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "window": "323-342"
+}

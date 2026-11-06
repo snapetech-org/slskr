@@ -1,0 +1,164 @@
+{
+  "title": "slskR PR #204 W1223–W1242 independent blind semantic review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "1bb6a4c0d9ac2407ad3ab1191fe454d6661d4763",
+  "tree": "c92bb8f15ec61d538168b41859d9146bad91ae66",
+  "candidateFreeInputManifestSha256": "fddc720597ace3e2598efd690cd5b6e07a9fa23b9120e2513cab8a34cc1c9b95",
+  "reviewedCellCount": 240,
+  "sourceCount": 20,
+  "localeCount": 12,
+  "positions": [
+    1223,
+    1242
+  ],
+  "dispositions": {
+    "HOLD_SEMANTIC_OR_LOCALE_REVIEW": 46,
+    "SEMANTIC_PASS": 170,
+    "HOLD_NO_EXACT_CALLER": 24
+  },
+  "perPositionDispositions": {
+    "1223": {
+      "HOLD_SEMANTIC_OR_LOCALE_REVIEW": 8,
+      "SEMANTIC_PASS": 4
+    },
+    "1224": {
+      "SEMANTIC_PASS": 7,
+      "HOLD_SEMANTIC_OR_LOCALE_REVIEW": 5
+    },
+    "1225": {
+      "HOLD_SEMANTIC_OR_LOCALE_REVIEW": 9,
+      "SEMANTIC_PASS": 3
+    },
+    "1226": {
+      "HOLD_SEMANTIC_OR_LOCALE_REVIEW": 6,
+      "SEMANTIC_PASS": 6
+    },
+    "1227": {
+      "HOLD_NO_EXACT_CALLER": 12
+    },
+    "1228": {
+      "HOLD_SEMANTIC_OR_LOCALE_REVIEW": 12
+    },
+    "1229": {
+      "SEMANTIC_PASS": 12
+    },
+    "1230": {
+      "SEMANTIC_PASS": 12
+    },
+    "1231": {
+      "SEMANTIC_PASS": 12
+    },
+    "1232": {
+      "SEMANTIC_PASS": 12
+    },
+    "1233": {
+      "SEMANTIC_PASS": 12
+    },
+    "1234": {
+      "HOLD_NO_EXACT_CALLER": 12
+    },
+    "1235": {
+      "SEMANTIC_PASS": 12
+    },
+    "1236": {
+      "SEMANTIC_PASS": 11,
+      "HOLD_SEMANTIC_OR_LOCALE_REVIEW": 1
+    },
+    "1237": {
+      "SEMANTIC_PASS": 12
+    },
+    "1238": {
+      "SEMANTIC_PASS": 11,
+      "HOLD_SEMANTIC_OR_LOCALE_REVIEW": 1
+    },
+    "1239": {
+      "SEMANTIC_PASS": 12
+    },
+    "1240": {
+      "SEMANTIC_PASS": 12
+    },
+    "1241": {
+      "SEMANTIC_PASS": 12
+    },
+    "1242": {
+      "SEMANTIC_PASS": 8,
+      "HOLD_SEMANTIC_OR_LOCALE_REVIEW": 4
+    }
+  },
+  "callerResolutionHoldsPreserved": 24,
+  "semanticOrLocaleHolds": 46,
+  "releaseApprovedByThisReview": 0,
+  "structuralChecks": {
+    "targetAndSourceHashesRecomputed": true,
+    "candidateTargetsAbsent": true,
+    "placeholderMismatchCount": 0,
+    "numericTokenMismatchCount": 0,
+    "markupTokenMismatchCount": 0,
+    "folderPlaceholderPreservedCells": 12,
+    "DownloadFileCompleteLiteralPreservedCells": 12,
+    "middleDotPreservedCells": 12,
+    "noCallerCellsMatchInputHoldSet": 24
+  },
+  "callerScope": {
+    "nonTestPathReferences": 44,
+    "testOnlyReferences": 11,
+    "note": "Non-test-path reference counts are not independently asserted as production callers."
+  },
+  "specificSemanticHolds": [
+    {
+      "positions": [
+        1223,
+        1224,
+        1225,
+        1226
+      ],
+      "finding": "Several retry-setting labels read as imperative download actions or do not clearly name the attempts/delay/strategy field."
+    },
+    {
+      "position": 1228,
+      "finding": "Translations do not clearly express minutes to retain successfully completed downloads; Spanish “actas” and German “Protokolle” can denote records/logs rather than a duration."
+    },
+    {
+      "position": 1236,
+      "locale": "pt-BR",
+      "finding": "“Transferências” is broader than downloads and can collapse the downloads-only menu/metric scope."
+    },
+    {
+      "position": 1238,
+      "locale": "vi",
+      "finding": "“Tải xuống hàng đợi” reads as a download queue rather than queued downloads."
+    },
+    {
+      "position": 1242,
+      "locales": [
+        "zh-Hans",
+        "ko",
+        "zh-Hant",
+        "id"
+      ],
+      "finding": "Targets imply deleted/cancelled requests rather than requests dropped by the incoming-request metric."
+    }
+  ],
+  "noCallerCells": [
+    {
+      "position": 1227,
+      "sourceKey": "Download selected files",
+      "localeCellCount": 12,
+      "disposition": "HOLD_NO_EXACT_CALLER",
+      "reason": "No exact quoted non-test source-key caller was resolved in the pinned source scan; keep held."
+    },
+    {
+      "position": 1234,
+      "sourceKey": "Downloaders",
+      "localeCellCount": 12,
+      "disposition": "HOLD_NO_EXACT_CALLER",
+      "reason": "No exact quoted non-test source-key caller was resolved in the pinned source scan; keep held."
+    }
+  ],
+  "otherReviewOutputsConsultedBeforeSeal": false,
+  "otherReviewOutputsConsultedAfterSeal": false,
+  "repositoriesOrPullRequestsEdited": false,
+  "testsBuildsScansCIOrWorkflowsRun": false,
+  "reviewLimit": "Machine-assisted semantic review only; no native-speaker approval; no cell is released by this artifact."
+}

@@ -1,0 +1,255 @@
+{
+  "schema_version": 1,
+  "repository": "snapetech-org/slskr",
+  "pull_request": 204,
+  "head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "comparison_base_head": "3ffa6746f7350737a4580538a08fb7ee7a078450",
+  "local_worktree_untracked_files": [
+    "qa-runtime/",
+    "web/vite.l10n-review.config.mjs"
+  ],
+  "locale_order": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "source_ids": 5437,
+  "catalog_cells": 65244,
+  "pending_source_records": 549,
+  "pending_source_ids_sha256": "005332187f13893607e961d412aa51aec700d86dbd0f38fbcd8618c6c1737589",
+  "catalogs": {
+    "ar": {
+      "repo_path": "web/src/lib/locales/ui-labels.ar.json",
+      "git_blob_sha": "77a8a9cc31de3b1c36592635ce435cacdf867800",
+      "bytes": 510431,
+      "sha256": "85aa499a0ac019fa7b6323e9cc2fbdd5363dd39cb5e328e5baa5c47b84f3c3c6",
+      "keys": 5437
+    },
+    "de": {
+      "repo_path": "web/src/lib/locales/ui-labels.de.json",
+      "git_blob_sha": "d9d15ab483dc749a25297aa29a786f9e3a23f707",
+      "bytes": 441758,
+      "sha256": "27b9ecb1aefbe6a2cae22736d886c03088fe76d2fd3c7845be886db965aad3e6",
+      "keys": 5437
+    },
+    "es": {
+      "repo_path": "web/src/lib/locales/ui-labels.es.json",
+      "git_blob_sha": "4f932b1f75a82513060855e88c3b9544ffd14dbf",
+      "bytes": 442211,
+      "sha256": "fab50f4cac1b305ac7bbebf38f55cd9d6256a95756a66fe940f4404732c8c4c5",
+      "keys": 5437
+    },
+    "fr": {
+      "repo_path": "web/src/lib/locales/ui-labels.fr.json",
+      "git_blob_sha": "263d5267fdfd4e1952a4181489a68ec0f28186ec",
+      "bytes": 453202,
+      "sha256": "3e384ba1d4b111ab1f13dc80010ff6e854863bc2f2ed863ab9a72eaf9b1dccec",
+      "keys": 5437
+    },
+    "hi": {
+      "repo_path": "web/src/lib/locales/ui-labels.hi.json",
+      "git_blob_sha": "e34dafb2870578bfc9f6118b57c8ddd5f5cb7ae4",
+      "bytes": 672858,
+      "sha256": "fe80e06cccb908e4f8f7f2295a28d844effe29a247858f2196281949ae92f547",
+      "keys": 5437
+    },
+    "id": {
+      "repo_path": "web/src/lib/locales/ui-labels.id.json",
+      "git_blob_sha": "fe401951768371277ad3f7dfadcf4ef16ec297f3",
+      "bytes": 408060,
+      "sha256": "ca0975bbcc408d4d3c146aba26c4e5480a0233b0cac603cd530ea82bb07681d8",
+      "keys": 5437
+    },
+    "ja": {
+      "repo_path": "web/src/lib/locales/ui-labels.ja.json",
+      "git_blob_sha": "67e47a19028c5fb58900e2326857132a1b73d393",
+      "bytes": 490270,
+      "sha256": "0ca95fc5c9f0b4cee791ab71d0283b151136946da5e9383f366d5a16f5a7541e",
+      "keys": 5437
+    },
+    "ko": {
+      "repo_path": "web/src/lib/locales/ui-labels.ko.json",
+      "git_blob_sha": "1c74a81ebedde37c392cf835cceda7a78cc89edd",
+      "bytes": 440760,
+      "sha256": "5636a4b1a4bf325d6c03031b8b3ef34db7d04936c8216343e55b2d36fa544bcd",
+      "keys": 5437
+    },
+    "pt-BR": {
+      "repo_path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "git_blob_sha": "ff5aa5e14218997fcaff87eac085ca9031675f18",
+      "bytes": 437205,
+      "sha256": "4babb54558c6c224304c2c62ea1303cdad90c5f931bb936e92402323a5759ce9",
+      "keys": 5437
+    },
+    "vi": {
+      "repo_path": "web/src/lib/locales/ui-labels.vi.json",
+      "git_blob_sha": "ddedcc7ed76dbe553f1f7525eabd9a177c093065",
+      "bytes": 472681,
+      "sha256": "91fac84a2ab6ebcfbe6f33cdf0302e0350b676e4cd69be796edc86509e856184",
+      "keys": 5437
+    },
+    "zh-Hans": {
+      "repo_path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "git_blob_sha": "f12b3d2f6d8fc714db183b869f2dd37446aa3b8e",
+      "bytes": 381685,
+      "sha256": "365c4c51e7cee40e79b37607319dd4dbe1345dcee77f085dd6f7fa1ad307881b",
+      "keys": 5437
+    },
+    "zh-Hant": {
+      "repo_path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "git_blob_sha": "ece5b530b2abd3776c5a107d481ef2aed29a259b",
+      "bytes": 382382,
+      "sha256": "2945bee74a8ffc61db44b8a0bac113ba9f20a159657925c7f3dbc7d1647ce89c",
+      "keys": 5437
+    }
+  },
+  "pending_source_list": {
+    "repo_path": "docs/localization/pr204-pending-translation-cells-9c6dcb22.jsonl",
+    "git_blob_sha": "8bfab02b3226274e08bbbf4cd46d92ca98a970e8",
+    "bytes": 211474,
+    "sha256": "027ba04ae68b21057b305650cc3523108686114fd16964f88ef31b12e89be835",
+    "record_counts": {
+      "all": 550,
+      "targetSource": 549
+    },
+    "counts_from_manifest": {
+      "allowlistedServerErrorSources": 538,
+      "serverErrorSourcesMissingCatalogTargets": 527,
+      "serverErrorMissingTargetCells": 6324,
+      "newUiSourceKeys": 31,
+      "newUiKeysIdenticalToEnglishInEveryLocale": 19,
+      "englishIdenticalTargetCells": 228,
+      "additionalSourceIdsNeeded": 3,
+      "additionalSourceIdTargetCells": 36,
+      "totalPendingTranslationCells": 6588
+    }
+  },
+  "pending_source_reconciliation": {
+    "pending_source_ids_present_in_each_catalog": true,
+    "new_catalog_source_ids_not_in_pending_list": [
+      "Use browser settings"
+    ]
+  },
+  "provenance_files": [
+    {
+      "repo_path": "docs/localization/pr204-translation-review-2026-11-01.jsonl",
+      "git_blob_sha": "ac532def0973f2d8abc9baa00d3b1c19b5843822",
+      "bytes": 2753515,
+      "sha256": "27ab430e61b7cb5628150121afc1b565e38af9cd2dc2608d3aebd65fce99220e"
+    },
+    {
+      "repo_path": "docs/localization/pr204-translation-review-2026-11-01.manifest.json",
+      "git_blob_sha": "e9c26646351c5643114bd5d8868a8bf6d94351f0",
+      "bytes": 2173,
+      "sha256": "34941c15a7f28553421fd749ddeec1b90e1c13319603e50925f973761acc4e81"
+    },
+    {
+      "repo_path": "docs/localization/pr204-translation-review-2026-11-01.md",
+      "git_blob_sha": "d7a3e3a3d517a2fa512bbc2dfecbfa0488f0ec6e",
+      "bytes": 1498,
+      "sha256": "db462f30a3331b1be8a02a7903528a3b1e871cab3420a019d491ffce36531f1e"
+    },
+    {
+      "repo_path": "docs/localization/pr204-regional-format-key-review-2026-11-01.json",
+      "git_blob_sha": "25a31d22fa0537887839e53301a3bb8d68f44cd7",
+      "bytes": 6825,
+      "sha256": "69738b673bd97016f9783c9be6f35041a0000335e95aa6c19eb64f266f33cd86"
+    }
+  ],
+  "diff_from_3ffa_by_locale": {
+    "ar": {
+      "added_keys": 531,
+      "removed_keys": 0,
+      "changed_values": 19
+    },
+    "de": {
+      "added_keys": 531,
+      "removed_keys": 0,
+      "changed_values": 19
+    },
+    "es": {
+      "added_keys": 531,
+      "removed_keys": 0,
+      "changed_values": 19
+    },
+    "fr": {
+      "added_keys": 531,
+      "removed_keys": 0,
+      "changed_values": 19
+    },
+    "hi": {
+      "added_keys": 531,
+      "removed_keys": 0,
+      "changed_values": 19
+    },
+    "id": {
+      "added_keys": 531,
+      "removed_keys": 0,
+      "changed_values": 19
+    },
+    "ja": {
+      "added_keys": 531,
+      "removed_keys": 0,
+      "changed_values": 19
+    },
+    "ko": {
+      "added_keys": 531,
+      "removed_keys": 0,
+      "changed_values": 19
+    },
+    "pt-BR": {
+      "added_keys": 531,
+      "removed_keys": 0,
+      "changed_values": 19
+    },
+    "vi": {
+      "added_keys": 531,
+      "removed_keys": 0,
+      "changed_values": 19
+    },
+    "zh-Hans": {
+      "added_keys": 531,
+      "removed_keys": 0,
+      "changed_values": 19
+    },
+    "zh-Hant": {
+      "added_keys": 531,
+      "removed_keys": 0,
+      "changed_values": 19
+    }
+  },
+  "diff_validation": {
+    "added_source_ids_per_locale": 531,
+    "changed_source_ids_per_locale": 19,
+    "removed_source_ids_per_locale": 0,
+    "identical_added_key_sets": true,
+    "identical_changed_key_sets": true,
+    "changed_targets_english_identical_at_old_head_per_locale": {
+      "ar": 19,
+      "de": 19,
+      "es": 19,
+      "fr": 19,
+      "hi": 19,
+      "id": 19,
+      "ja": 19,
+      "ko": 19,
+      "pt-BR": 19,
+      "vi": 19,
+      "zh-Hans": 19,
+      "zh-Hant": 19
+    }
+  },
+  "source_inventory_sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "current_cells_sha256": "2158d0cb1da7aef1e1b20ed7fb829d3afd63d14d5758caffb8b8581873673ba1",
+  "catalog_delta_sha256": "44bafd2b76390892b2831e86c862b8a2a1253fda6e39dc962ccb5dd065bdc000"
+}

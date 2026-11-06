@@ -1,0 +1,22 @@
+{
+  "count": 2,
+  "items": [
+    {
+      "blocksLocaleDisplay": true,
+      "caller": "web/src/lib/mediaServerIntegrations.js:188 -> web/src/components/System/Integrations/MediaServerPanel.jsx:305",
+      "problem": "Action is stored as a plain string and rendered without LocalizedText or interfaceText; catalog targets do not appear in this caller.",
+      "recommendedRefactor": "Render the action through LocalizedText/interfaceText or use a localized source key at the readiness check boundary.",
+      "sourceId": "Complete base URL, token, and path-map readiness before live execution.",
+      "sourceIndex": 785
+    },
+    {
+      "blocksLocaleDisplay": true,
+      "caller": "web/src/components/System/Data/index.jsx:17, raw values at :52 and :68",
+      "problem": "Placeholder receives raw English upload/download values, and English adds plural s outside the placeholder.",
+      "recommendedRefactor": "Map upload/download to localized labels before interpolation, or use separate localized toast source keys for uploads and downloads.",
+      "sourceId": "Completed {direction}s cleared!",
+      "sourceIndex": 796
+    }
+  ],
+  "schemaVersion": 1
+}

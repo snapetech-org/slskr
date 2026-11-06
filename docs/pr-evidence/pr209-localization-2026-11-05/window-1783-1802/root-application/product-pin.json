@@ -1,0 +1,33 @@
+{
+  "productCommit": "fe1d95c89a1ebab79625299732c09d3649ee20e4",
+  "productTree": "63b34b52b0165db534cd7a4e2b06ba277f1309ae",
+  "catalogFiles": [
+    "web/src/lib/locales/ui-labels.ar.json",
+    "web/src/lib/locales/ui-labels.de.json",
+    "web/src/lib/locales/ui-labels.es.json",
+    "web/src/lib/locales/ui-labels.fr.json",
+    "web/src/lib/locales/ui-labels.hi.json",
+    "web/src/lib/locales/ui-labels.id.json",
+    "web/src/lib/locales/ui-labels.ja.json",
+    "web/src/lib/locales/ui-labels.ko.json",
+    "web/src/lib/locales/ui-labels.pt-BR.json",
+    "web/src/lib/locales/ui-labels.vi.json",
+    "web/src/lib/locales/ui-labels.zh-Hans.json",
+    "web/src/lib/locales/ui-labels.zh-Hant.json"
+  ],
+  "catalogSha256": {
+    "web/src/lib/locales/ui-labels.ar.json": "fa13c4f0fc1fb2b0ce738b708091937339fc363e4150c5a56efc49a0767687fd",
+    "web/src/lib/locales/ui-labels.de.json": "fa5c7613b0f15a2641770952e9b5b88a6243f619fdddcfa353e5a24a38792eb2",
+    "web/src/lib/locales/ui-labels.es.json": "e23705b7e13b2bcf22299e98b76b0237e7180e94c04f80bb7a665c2edb9f85d4",
+    "web/src/lib/locales/ui-labels.fr.json": "cc2d7dd0d4c8554152768413d02cab155ad60e726eae85b203b24d268fe2cd36",
+    "web/src/lib/locales/ui-labels.hi.json": "93c8c717eda4cf979f6a00f7371c748cb9f70987d5b388a2ba9029306130bdd5",
+    "web/src/lib/locales/ui-labels.id.json": "34778d9b280d9d882d90662d8af3b44fc7d309285482eb4291bed57622cc4e26",
+    "web/src/lib/locales/ui-labels.ja.json": "017b23237b1871dcedb40d6d1dc7494667b7f3381c516cbc866125da74e2e2c2",
+    "web/src/lib/locales/ui-labels.ko.json": "b486098adcc412aa90c5de19e58c69d3c2f8b40106e7e5b4254c4b21bd61e1cd",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "16a2f89f82f669915a6cb7f6e067d70ec8d82f411312efd16d3c52a4e60ae754",
+    "web/src/lib/locales/ui-labels.vi.json": "934dbc4e6f5d2bb9769bf638646d9ac40074078268bd9e669adc2d8117399f3a",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "2c4c3b63f226f514cf263dc20dbbac92f0db3daaa101513aaed46bcff7af54e8",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "e9671fca8a2754dfdbe80e4e318d52671eb4833303aa5c15c923ba107b7494e9"
+  },
+  "changedCells": 56
+}

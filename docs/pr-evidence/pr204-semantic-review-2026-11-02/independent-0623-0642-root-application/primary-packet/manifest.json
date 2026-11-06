@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "livePullRequest": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "df1bcd1a86d7b55a9c8b5502854ad0c7efbb3dbc",
+    "isDraft": true,
+    "mergeStateStatus": "CLEAN",
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "head": "df1bcd1a86d7b55a9c8b5502854ad0c7efbb3dbc",
+  "tree": "787225b69e49420344d031aead6f5e5085741c93",
+  "sourceBaselineHead": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "sourceBaselineTree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "sourceInventory": {
+    "path": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/frozen-inputs/source-inventory.jsonl",
+    "sha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+    "keyCount": 5437
+  },
+  "sourceWindow": [
+    623,
+    642
+  ],
+  "sourceIds": 20,
+  "sourceIdBoundary": {
+    "623": "Choose how dates, times, and numbers are displayed. This setting is separate from interface language.",
+    "642": "Chromaprint needs an ffmpeg executable path."
+  },
+  "previousWindow": {
+    "sourceWindow": [
+      603,
+      622
+    ],
+    "nonOverlapping": true,
+    "evidencePath": "docs/pr-evidence/pr204-semantic-review-2026-11-02/independent-0603-0622-root-application"
+  },
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "cells": 240,
+  "catalogs": {
+    "ar": {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "bytes": 511861,
+      "sha256": "fb1f3b98570343414a9f7347e807f33b8ad1a99782787c9b49f700c6573b2a10",
+      "blobOid": "8130469feddfac7e1da93fb77efbb20cf379cf4d",
+      "keyCount": 5438
+    },
+    "de": {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "bytes": 442573,
+      "sha256": "d6628a25072b3c5e2c5b27f5e14e29030d75cc9ad3cfeff42e6ef7ce393ca034",
+      "blobOid": "b4b7251d0bb125cd80c7ca5e7c7be58527bb4c15",
+      "keyCount": 5438
+    },
+    "es": {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "bytes": 443383,
+      "sha256": "a259642b321cb89d8ddf2a49ebc685fd06265c9fdf444b22e48b4e768ae6b347",
+      "blobOid": "ff5d8d5ad4aaac23e845017f748823a36f302bcb",
+      "keyCount": 5438
+    },
+    "fr": {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "bytes": 454401,
+      "sha256": "a017f519299b3f542422a7b85df4e15031301d1b0d617fbdc99bc38a710af9d8",
+      "blobOid": "3ca4450135b47e9c12e8001b1235abbf64baf8c3",
+      "keyCount": 5438
+    },
+    "hi": {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "bytes": 675178,
+      "sha256": "ceff42fbebc92cf8fdc775a1442d64bd1777bd22393a5c0b540fc5ed16c72736",
+      "blobOid": "2a8f99bc93e0b590db90f8a7e7d439550042718d",
+      "keyCount": 5438
+    },
+    "id": {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "bytes": 409062,
+      "sha256": "f0993a508eb2cbf91af1a1525b10ab7f197ba2e3d8638c3076ffcda969bb1663",
+      "blobOid": "f12ef2d44ee4e391239ba79531302e57784d733a",
+      "keyCount": 5438
+    },
+    "ja": {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "bytes": 490588,
+      "sha256": "1f567906ea8c036741304bbd12a31642e4509cbaf7d9c6e36706ca208927a0a5",
+      "blobOid": "42b0789833d1340453aeb74c1ea4ce8d6efc675b",
+      "keyCount": 5438
+    },
+    "ko": {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "bytes": 441527,
+      "sha256": "725b93e723b4a97852167f17274b618c75de44a6db0f0c011807293482c25fd8",
+      "blobOid": "553b2cc66c1d8fcb27e40d9d568710ee26fbe262",
+      "keyCount": 5438
+    },
+    "pt-BR": {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "bytes": 438117,
+      "sha256": "cc1bccb8d24982fd76e7f80a75b7af238f881eca5594a0a04438350b10172d52",
+      "blobOid": "0ca2799ebeb3e0dd389142dc5326c8f00241a9c8",
+      "keyCount": 5438
+    },
+    "vi": {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "bytes": 473678,
+      "sha256": "bc7a73a55234045f34d1d59dc48f58a47cd5b83c7dd54247bacc043d7a724d48",
+      "blobOid": "a09adc76ccd5b880303b2f62dc8fa79a9770e4bc",
+      "keyCount": 5438
+    },
+    "zh-Hans": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "bytes": 382219,
+      "sha256": "e6f6762d339fc907d1e3dbe541e028d02b2da7cbaec2bad5e64fa08a7c7f7b57",
+      "blobOid": "31669980e701fbde08d9a95bf9e948fc495eb113",
+      "keyCount": 5438
+    },
+    "zh-Hant": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "bytes": 382927,
+      "sha256": "8aad1f7142b8f51556b263976a58c4c3ecc9fe14a9e3f40cdbf444d73c494793",
+      "blobOid": "0fd2c060762e4de4843129660a2f0caffda612c2",
+      "keyCount": 5438
+    }
+  },
+  "catalogKeysOutsidePinnedSourceInventory": [
+    "OK"
+  ],
+  "callerReferences": 40,
+  "uniqueCallerFiles": [
+    "crates/slskr/src/controller_tests/full_media_differential.rs",
+    "crates/slskr/src/controller_tests/media_contracts.rs",
+    "crates/slskr/src/file_transfer_runtime_owners/audio_metadata.rs",
+    "crates/slskr/src/mediacore_controller.rs",
+    "crates/slskr/src/mediacore_extended.rs",
+    "crates/slskr/src/mediacore_mutations.rs",
+    "web/src/components/AppHeaderMenu.jsx",
+    "web/src/components/Player/PlayerStatsModal.jsx",
+    "web/src/components/Player/VisualizerOverlayControls.jsx",
+    "web/src/components/System/ExperienceSettings/index.jsx",
+    "web/src/components/System/Integrations/MetadataProcessingPanel.jsx",
+    "web/src/components/System/Integrations/MetadataSettingsPanel.jsx",
+    "web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx",
+    "web/src/components/System/Integrations/index.test.jsx",
+    "web/src/components/System/Integrations/integrationsShared.jsx"
+  ],
+  "uniqueCallerLines": 39,
+  "sourceIdsWithNoDirectCallers": [
+    "Choose how many matching results to render at once.",
+    "Choose how search results are ordered. Smart Ranking balances quality and availability."
+  ],
+  "priorEvidenceMatches": 12,
+  "priorReviewFile": {
+    "path": "docs/localization/pr204-translation-review-2026-11-01.jsonl",
+    "blobOid": "ac532def0973f2d8abc9baa00d3b1c19b5843822",
+    "bytes": 2753515,
+    "sha256": "27ab430e61b7cb5628150121afc1b565e38af9cd2dc2608d3aebd65fce99220e"
+  },
+  "placeholderParityFailures": 0,
+  "nativeSpeakerApproval": false
+}

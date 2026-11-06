@@ -1,0 +1,36 @@
+{
+  "artifact": "slskR PR #209 W1603-W1622 exact-hash catalog application",
+  "headBefore": "eeb63f1e4e21d801f4a4e0393813b6e86a1ff7c8",
+  "treeBefore": "590ee410666905f68f601393b64a4798b0609181",
+  "changedCellCount": 13,
+  "readbackCellCount": 240,
+  "changedCatalogPaths": [
+    "web/src/lib/locales/ui-labels.ar.json",
+    "web/src/lib/locales/ui-labels.de.json",
+    "web/src/lib/locales/ui-labels.fr.json",
+    "web/src/lib/locales/ui-labels.hi.json",
+    "web/src/lib/locales/ui-labels.id.json",
+    "web/src/lib/locales/ui-labels.ko.json",
+    "web/src/lib/locales/ui-labels.vi.json",
+    "web/src/lib/locales/ui-labels.zh-Hans.json"
+  ],
+  "catalogCount": 8,
+  "rootDispositionCounts": {
+    "accept-current": 227,
+    "correction": 11,
+    "refinement": 2
+  },
+  "allWindowCellsMatchAdjudication": true,
+  "allCatalogKeySetsAndOrderPreserved": true,
+  "nonTargetValuesUnchanged": true,
+  "placeholderMarkupNumericChecks": "PASS",
+  "sourceProtectedLiteralChecks": "PASS (independent cross-review and root packet)",
+  "browserReview": false,
+  "nativeSpeakerSignoff": false,
+  "status": "PRODUCT_COMMITTED_AND_PUSHED",
+  "productCommit": "bdc831fcde86101cd949fe70bd99acd8871ace4a",
+  "baseHead": "eeb63f1e4e21d801f4a4e0393813b6e86a1ff7c8",
+  "productTree": "c9d994368a90e82f310a3c81a6ba059567c0e3bd",
+  "pushedBranch": "codex/slskr-l10n-audit-20261104-resync",
+  "productCommitChangesOnlyCatalogs": true
+}

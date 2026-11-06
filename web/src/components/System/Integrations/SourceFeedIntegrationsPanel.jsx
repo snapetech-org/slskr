@@ -273,7 +273,12 @@ const SourceFeedIntegrationsPanel = ({ options }) => {
             size="small"
             warning
           >
-            <Message.List items={missingRequiredSettings} />
+            <Message.List
+              items={missingRequiredSettings.map((source) => ({
+                key: source,
+                content: <LocalizedText source={source} />,
+              }))}
+            />
           </Message>
         )}
 

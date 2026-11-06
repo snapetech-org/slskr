@@ -1,0 +1,236 @@
+{
+  "catalogs": [
+    {
+      "locale": "es",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json",
+      "beforeSha256": "d6e854d2556580e24144449c0bd82dc8e051fe211cb630a9956840470e15a8e2",
+      "beforeGitBlob": "00ccd6313f23a641bfbbd146648966bb74b542df",
+      "afterSha256": "796acf0195232729a81741e963a268f3bf96b370bf762c1e04bca748f335ca0f",
+      "afterGitBlob": "9f8101a8a011afda4116cd8ddeff0201f8ba7383",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "orderedKeysSha256After": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "changedSourceKeys": [
+        "Existing peer data is retained until the next successful poll.",
+        "Expand player",
+        "Expire unrated after"
+      ],
+      "plannedChangeCount": 3,
+      "catalogChanged": true
+    },
+    {
+      "locale": "zh-Hans",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "beforeSha256": "20a7aacdfbb517603cd8ff357b50742cb835926110e8c9dd3fddb89ac2fb5ea9",
+      "beforeGitBlob": "d839aa9f3c91efc99bc0e7eb8887c4d848037110",
+      "afterSha256": "31e90296b6294255853179506c549bd7887c1bbba80e7c95d44ae2b2beee5e40",
+      "afterGitBlob": "2a6e1749e024704d50a88a27e052b1741f70fa98",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "orderedKeysSha256After": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "changedSourceKeys": [
+        "Expand the player drawer.",
+        "Experience",
+        "Expire unrated after"
+      ],
+      "plannedChangeCount": 3,
+      "catalogChanged": true
+    },
+    {
+      "locale": "hi",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json",
+      "beforeSha256": "a3c8d432fc76fd93961261ffd804ff172942ce04f5d3a11a5af9265624029379",
+      "beforeGitBlob": "e9e0144562e5e5493779649f4810eae82832ad81",
+      "afterSha256": "a9e803db7943b207fe7fffe880c4f7a79243d0beab2ec8722f901bca733d018d",
+      "afterGitBlob": "1d402fedd58f8e5e73dd315daf3baa431a3ffea9",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "orderedKeysSha256After": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "changedSourceKeys": [
+        "Expand {directory}",
+        "Expand search results from {username}",
+        "Existing peer data is retained until the next successful poll.",
+        "Expand All",
+        "Expire unrated after",
+        "Expires:"
+      ],
+      "plannedChangeCount": 6,
+      "catalogChanged": true
+    },
+    {
+      "locale": "de",
+      "catalogPath": "web/src/lib/locales/ui-labels.de.json",
+      "beforeSha256": "d29c38718ea7365eec57c73baf03bba78186136de66add637d1a6f2983220fb6",
+      "beforeGitBlob": "fd3ef712fd290b6986f578b96b384ef51870b6de",
+      "afterSha256": "d29c38718ea7365eec57c73baf03bba78186136de66add637d1a6f2983220fb6",
+      "afterGitBlob": "fd3ef712fd290b6986f578b96b384ef51870b6de",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "orderedKeysSha256After": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "changedSourceKeys": [],
+      "plannedChangeCount": 0,
+      "catalogChanged": false
+    },
+    {
+      "locale": "ja",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json",
+      "beforeSha256": "eefb330f623cc1aea5059adf7359491998274e8b3449955102f50a6c3ae6ff6e",
+      "beforeGitBlob": "2957f9c84489433153432cfab5287890b19189c1",
+      "afterSha256": "711d30bf775fb1c57d4e1de6d5977ce3315c27cf2ed9906000c8972d87348fdd",
+      "afterGitBlob": "b6d2c7085c80d1763bedebdd6286687d2f4c98f6",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "orderedKeysSha256After": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "changedSourceKeys": [
+        "Experience",
+        "Expire unrated after"
+      ],
+      "plannedChangeCount": 2,
+      "catalogChanged": true
+    },
+    {
+      "locale": "fr",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json",
+      "beforeSha256": "120f1857f4d60a387e879d48ad60ca40dd25eb212dcd8a7257fbd07cdb149c87",
+      "beforeGitBlob": "eba3ece30cee2e45b0f914056fa5872198a4ce35",
+      "afterSha256": "3bfc5e79bc90eeb6c9947c57076796f229f81a13af8752d946f43f472c0e3e04",
+      "afterGitBlob": "b8ea7ea7e26f2244d3a2592481c68b08cf1bc929",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "orderedKeysSha256After": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "changedSourceKeys": [
+        "Expand the player drawer.",
+        "Expired Memberships:"
+      ],
+      "plannedChangeCount": 2,
+      "catalogChanged": true
+    },
+    {
+      "locale": "pt-BR",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "beforeSha256": "f07b0f265c8cfa1d7e49701e8235e4eb261975b6d01b2e3dd2d62c37b1000072",
+      "beforeGitBlob": "1cddd8b153561259b73dc73e26e6ec81efbe0d56",
+      "afterSha256": "94b0baaddafb6248e38258315a39e697a2eb186f193d6f8f09726c259caf049a",
+      "afterGitBlob": "dd57cc14aa340f28b11057c6dd0ceae2beed5bfc",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "orderedKeysSha256After": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "changedSourceKeys": [
+        "Existing peer data is retained until the next successful poll.",
+        "Expand the player drawer.",
+        "Expire unrated after",
+        "Expired Memberships:"
+      ],
+      "plannedChangeCount": 4,
+      "catalogChanged": true
+    },
+    {
+      "locale": "ar",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json",
+      "beforeSha256": "093976ad69295629112fe0434c63263e69c84d6f04982216fd69b86e0b91a24b",
+      "beforeGitBlob": "be1f3806257279bd8143d8aea2e155ecb9da97c8",
+      "afterSha256": "c25faff33367f61222f559ddd8b4cfbc083a93aae0b6a1b906b6c19bbfa22774",
+      "afterGitBlob": "9a0a0a7690a596527c3ca64834319670f2420f13",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "orderedKeysSha256After": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "changedSourceKeys": [
+        "Experience preference report copied.",
+        "Existing peer data is retained until the next successful poll.",
+        "Expand player",
+        "Expand visualizer to fill the browser window.",
+        "Expand visualizer to full browser window",
+        "Experience",
+        "Expire unrated after",
+        "Expired Publications:",
+        "Expires:"
+      ],
+      "plannedChangeCount": 9,
+      "catalogChanged": true
+    },
+    {
+      "locale": "ko",
+      "catalogPath": "web/src/lib/locales/ui-labels.ko.json",
+      "beforeSha256": "aceda4ed7b5c7c7caa569d1e5e7ec9dae85070c92557c844c040e2dd8b0a6b68",
+      "beforeGitBlob": "cf643243cbfc537268aaa3fb3cb2825c3312a3b7",
+      "afterSha256": "8c20faab149c16036ddcb65d99cdc9058bf9414db446361635046ecef487c941",
+      "afterGitBlob": "19f32950ac555d440b9dbe6007ce718915874592",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "orderedKeysSha256After": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "changedSourceKeys": [
+        "Expire unrated after"
+      ],
+      "plannedChangeCount": 1,
+      "catalogChanged": true
+    },
+    {
+      "locale": "zh-Hant",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "beforeSha256": "e8d083201cac18821dca9741ae9380366ab14368b4bbcbc762edd016bbb0f7d4",
+      "beforeGitBlob": "5638018eeb0319001993fff515a9f1e301597ed8",
+      "afterSha256": "19272c3d1557c8e54f2cf4d2f9a60611f27458e7a73e466fac0c8cbd7ee28198",
+      "afterGitBlob": "ee58dc3b746c616fc30c5e2c77be865833f1f639",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "orderedKeysSha256After": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "changedSourceKeys": [
+        "Expand the player drawer.",
+        "Experience",
+        "Expire unrated after"
+      ],
+      "plannedChangeCount": 3,
+      "catalogChanged": true
+    },
+    {
+      "locale": "vi",
+      "catalogPath": "web/src/lib/locales/ui-labels.vi.json",
+      "beforeSha256": "abf5b17406908c6837017d02491522fec4640d0cc4d64593ceb1806982de0649",
+      "beforeGitBlob": "1c84702a762f4320121cef078ad2bb6d25d7dab2",
+      "afterSha256": "9557d59ca10dac05af3b585c037397adc0e458b286335ba84c591aa3aa56bdbe",
+      "afterGitBlob": "ef7d2422bc2fd23c5deedfba589e97d8acee5966",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "orderedKeysSha256After": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "changedSourceKeys": [
+        "Experience",
+        "Expire unrated after",
+        "Expired Entries:"
+      ],
+      "plannedChangeCount": 3,
+      "catalogChanged": true
+    },
+    {
+      "locale": "id",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json",
+      "beforeSha256": "cf545456485fc5c0ab16538ba7cf3e54d51220dad4bb2f9d066157835dda8d7c",
+      "beforeGitBlob": "74fb1c978be057d9b7dfc9480da2740738da995f",
+      "afterSha256": "d9de69a5517ed3bbf646d6aa4fb92794db5419bfb0a40eb2e86e4953d06ce3a4",
+      "afterGitBlob": "8cad3ac0a81d54573da45af02672c5c1374f5471",
+      "keyCountBefore": 5441,
+      "keyCountAfter": 5441,
+      "orderedKeysSha256Before": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "orderedKeysSha256After": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+      "changedSourceKeys": [
+        "Expected track count, folder consistency, album-first ranking.",
+        "Existing peer data is retained until the next successful poll.",
+        "Expire unrated after"
+      ],
+      "plannedChangeCount": 3,
+      "catalogChanged": true
+    }
+  ],
+  "catalogCount": 12,
+  "expectedKeyCount": 5441
+}

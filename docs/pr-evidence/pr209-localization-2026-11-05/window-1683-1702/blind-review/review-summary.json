@@ -1,0 +1,153 @@
+{
+  "artifact": "Blind semantic review ledger for slskR PR #209 W1683-W1702",
+  "beforeAfterSourcePinStable": true,
+  "callerEvidenceSha256": "7145793f6160f8a5afbbc51939649e3730c60ce1601f72dad9270c92ae9e0f88",
+  "callerResolutionHoldsInInput": 0,
+  "decisionCounts": {
+    "hold": 0,
+    "keep": 235,
+    "propose": 5
+  },
+  "holdCount": 0,
+  "inputBoundary": "/mnt/disks/scratch/task-scratch/slskr-pr209-w1683-1702-20261105/candidate-free-input",
+  "inputPacketSha256ListVerified": true,
+  "proposalCells": [
+    {
+      "confidence": "high",
+      "issue": "The current Korean phrase 백업 광고 means “backup ad”; the caller reports failure to start a data backfill from search history.",
+      "locale": "ko",
+      "position": 1683
+    },
+    {
+      "confidence": "high",
+      "issue": "The source label ends with a colon, and the caller appends the unpublish error after it. The current Korean full stop breaks that delimiter.",
+      "locale": "ko",
+      "position": 1684
+    },
+    {
+      "confidence": "high",
+      "issue": "The current Traditional Chinese string uses 注冊; 註冊 is the standard Traditional Chinese spelling for registration.",
+      "locale": "zh-Hant",
+      "position": 1685
+    },
+    {
+      "confidence": "high",
+      "issue": "The source label ends with a colon, and the caller appends the unregister error after it. The current Korean full stop breaks that delimiter.",
+      "locale": "ko",
+      "position": 1686
+    },
+    {
+      "confidence": "moderate",
+      "issue": "Mitgliederzuordnungen means member assignments/mappings and shifts the source concept affinities. The PodOpinionsPanel context supports the direct affinity term.",
+      "locale": "de",
+      "position": 1692
+    }
+  ],
+  "repositoryAccessed": false,
+  "repositoryModified": false,
+  "reviewMode": "candidate-free independent review",
+  "reviewedAtUtc": "2026-11-05T13:47:52+00:00",
+  "scope": {
+    "cellCount": 240,
+    "localeCount": 12,
+    "localeOrder": [
+      "es",
+      "zh-Hans",
+      "hi",
+      "de",
+      "ja",
+      "fr",
+      "pt-BR",
+      "ar",
+      "ko",
+      "zh-Hant",
+      "vi",
+      "id"
+    ],
+    "positions": [
+      1683,
+      1702
+    ],
+    "sourceCount": 20
+  },
+  "sourcePin": {
+    "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+    "branch": "codex/slskr-l10n-audit-20261104-resync",
+    "head": "f04b7f965aef79552d65d40a2eeb550e5e3b9cfa",
+    "tree": "85fe880023e55e055660fd17599c291edd24a1c6"
+  },
+  "tokenReview": {
+    "markupMismatchCellCount": 0,
+    "numericTokenMismatchCellCount": 0,
+    "placeholderMultisetMismatchCellCount": 0,
+    "placeholderOrderDifferenceCellCount": 12,
+    "placeholderOrderDifferenceCells": [
+      [
+        1700,
+        "hi"
+      ],
+      [
+        1700,
+        "de"
+      ],
+      [
+        1700,
+        "ja"
+      ],
+      [
+        1700,
+        "ko"
+      ],
+      [
+        1701,
+        "hi"
+      ],
+      [
+        1701,
+        "de"
+      ],
+      [
+        1701,
+        "ja"
+      ],
+      [
+        1701,
+        "ko"
+      ],
+      [
+        1702,
+        "hi"
+      ],
+      [
+        1702,
+        "de"
+      ],
+      [
+        1702,
+        "ja"
+      ],
+      [
+        1702,
+        "ko"
+      ]
+    ],
+    "protectedLiteralMismatchCellCount": 2,
+    "protectedLiteralMismatchCells": [
+      [
+        1696,
+        "fr",
+        [
+          "ID"
+        ]
+      ],
+      [
+        1696,
+        "ar",
+        [
+          "ID"
+        ]
+      ]
+    ],
+    "reviewDisposition": "All 12 placeholder-order differences are grammar-driven reorderings with each named placeholder preserved; the two ID mismatches are appropriate localization of the generic word identifier in French and Arabic. YAML is preserved in all 12 targets."
+  }
+}

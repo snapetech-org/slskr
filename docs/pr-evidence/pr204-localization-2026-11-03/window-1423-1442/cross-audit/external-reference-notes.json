@@ -1,0 +1,56 @@
+{
+  "accessedAtUtc": "2026-11-03",
+  "nativeSpeakerReview": "Not performed. Dictionary/glossary evidence corroborates selected semantic distinctions but does not validate every locale phrase.",
+  "references": [
+    {
+      "url": "https://dle.rae.es/encuesta",
+      "source": "Real Academia Española, Diccionario de la lengua española: encuesta",
+      "relevance": "Defines encuesta as standardized questions addressed to a representative sample to learn opinions; supports rejecting a survey-like term for the network refresh caller."
+    },
+    {
+      "url": "https://dle.rae.es/sondeo",
+      "source": "Real Academia Española, Diccionario de la lengua española: sondeo",
+      "relevance": "Provides the Spanish sondeo entry. The audit selects it in the specific networking sense of a recurring poll/refresh, based on the pinned caller context."
+    },
+    {
+      "url": "https://dicionario.priberam.org/pesquisa",
+      "source": "Dicionário Priberam da Língua Portuguesa: pesquisa",
+      "relevance": "Defines pesquisa as searching/inquiring/investigating, supporting the distinction from a successful peer query."
+    },
+    {
+      "url": "https://dicionario.priberam.org/consulta",
+      "source": "Dicionário Priberam da Língua Portuguesa: consulta",
+      "relevance": "Lists consultation/examination senses, supporting consulta for the network query/refresh context."
+    },
+    {
+      "url": "https://dicionario.priberam.org/assinatura",
+      "source": "Dicionário Priberam da Língua Portuguesa: assinatura",
+      "relevance": "Defines one sense as paid rights to a publication or service for a set period (subscription), supporting correction of the membership statistic."
+    },
+    {
+      "url": "https://ciberduvidas-ql.iscte-iul.pt/consultorio/perguntas/membresia-e-membership/36249",
+      "source": "Ciberdúvidas da Língua Portuguesa: membresia e membership",
+      "relevance": "Notes that Portuguese translations of membership vary by context, including adesão, associação, filiação, and afiliação; the selected PT-BR term is therefore moderate confidence."
+    },
+    {
+      "url": "https://www.hindwi.org/hindi-dictionary/hindi-meaning-of-peer",
+      "source": "Hindwi Hindi dictionary: peer",
+      "relevance": "Gives equal/peer person/companion senses, corroborating that the existing colleague-like Hindi word is not the network-node sense."
+    },
+    {
+      "url": "https://www.eac.gov/sites/default/files/glossary_files/Glossary_Hindi.pdf",
+      "source": "U.S. Election Assistance Commission, Hindi Glossary of Election Terminology",
+      "relevance": "Election terminology context corroborates that मतदान is voting, unlike the network refresh in the caller."
+    },
+    {
+      "url": "https://dga.gov.sa/sites/default/files/2025-06/%D9%82%D8%A7%D9%85%D9%88%D8%B3%20%D9%85%D8%B5%D8%B7%D9%84%D8%AD%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AD%D9%83%D9%88%D9%85%D8%A9%20%D8%A7%D9%84%D8%B1%D9%82%D9%85%D9%8A%D8%A9%20-V2.0.pdf",
+      "source": "Saudi Digital Government Authority, Digital Government Terminology Glossary v2.0",
+      "relevance": "Maps User Experience to تجربة المستخدم, supporting تجربة/التجربة for the product settings sense rather than خبرة."
+    },
+    {
+      "url": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=23653&la=1&powerMode=0",
+      "source": "Taiwan Ministry of Education, Concised Mandarin Chinese Dictionary: 經驗",
+      "relevance": "Defines 經驗 as knowledge or skills obtained by practice, supporting the distinction from the product/user experience sense in the menu caller."
+    }
+  ]
+}

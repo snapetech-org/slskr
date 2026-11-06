@@ -1,0 +1,20 @@
+{
+  "result": "PASS",
+  "checks": {
+    "candidate-free-verifier": "PASS",
+    "primary-verifier": "PASS",
+    "exact-pin": "PASS",
+    "input-cell-pins": "PASS",
+    "canonical-240-cell-order": "PASS",
+    "caller-contexts": "PASS",
+    "recommendation-token-preservation": "PASS",
+    "manual-protected-literal": "PASS",
+    "prior-holds-preserved": "PASS",
+    "packet-checksums": "PASS"
+  },
+  "errors": [],
+  "cells": 240,
+  "rootFlags": 20,
+  "head": "91e109efba44ad9e53fe9544648a0d907a2bef77",
+  "tree": "38db78228144da5fc50179addccf826662bf97de"
+}

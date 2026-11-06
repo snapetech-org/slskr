@@ -1,0 +1,117 @@
+{
+  "currentCatalogsHaveIdenticalOrderedKeyArrays": true,
+  "currentSortedInventorySha256": "ee6bc46aa55f9c0b79839e3fa7c235cc93d2ddc3883c9f9a13f85ff96b8994b1",
+  "currentSourceCount": 5441,
+  "currentVsPriorInventoryDifference": {
+    "addedCurrent": [
+      "Copy the visible conflict report, including which authorities you selected to disable locally. This does not change backend realm governance.",
+      "Not configured"
+    ],
+    "removedPrior": [
+      "Copy the visible conflict report, including local authority disable selections. This does not change backend realm governance."
+    ]
+  },
+  "priorFullInventoryCount": 5440,
+  "priorFullInventoryPath": "docs/pr-evidence/pr204-localization-2026-11-02/window-0803-0822/primary-packet/current-source-inventory.jsonl",
+  "priorPrimaryLedgerHits": [],
+  "priorWindowEvidencePath": "docs/pr-evidence/pr204-localization-2026-11-02/window-963-982/primary-review/source-inventory.jsonl",
+  "priorWindowPath": "docs/pr-evidence/pr204-localization-2026-11-02/window-963-982",
+  "priorWindowPositions": [
+    963,
+    982
+  ],
+  "priorWindowSourceCount": 20,
+  "selected": [
+    {
+      "sourceId": "Could not save browser preferences.",
+      "sourcePosition": 983
+    },
+    {
+      "sourceId": "Could not save this filter in browser storage.",
+      "sourcePosition": 984
+    },
+    {
+      "sourceId": "Could not update Wishlist filters.",
+      "sourcePosition": 985
+    },
+    {
+      "sourceId": "Count",
+      "sourcePosition": 986
+    },
+    {
+      "sourceId": "Counters for signatures, reputation, rate limits, and quarantine",
+      "sourcePosition": 987
+    },
+    {
+      "sourceId": "Cover Traffic",
+      "sourcePosition": 988
+    },
+    {
+      "sourceId": "Cover art",
+      "sourcePosition": 989
+    },
+    {
+      "sourceId": "Cover art policy for {name}",
+      "sourcePosition": 990
+    },
+    {
+      "sourceId": "Coverage of shared FLACs",
+      "sourcePosition": 991
+    },
+    {
+      "sourceId": "Create",
+      "sourcePosition": 992
+    },
+    {
+      "sourceId": "Create Collection",
+      "sourcePosition": 993
+    },
+    {
+      "sourceId": "Create Content-Linked Pod",
+      "sourcePosition": 994
+    },
+    {
+      "sourceId": "Create Group",
+      "sourcePosition": 995
+    },
+    {
+      "sourceId": "Create Invite",
+      "sourcePosition": 996
+    },
+    {
+      "sourceId": "Create New Channel",
+      "sourcePosition": 997
+    },
+    {
+      "sourceId": "Create New Room",
+      "sourcePosition": 998
+    },
+    {
+      "sourceId": "Create Playlist",
+      "sourcePosition": 999
+    },
+    {
+      "sourceId": "Create Room",
+      "sourcePosition": 1000
+    },
+    {
+      "sourceId": "Create Share Group",
+      "sourcePosition": 1001
+    },
+    {
+      "sourceId": "Create Your First Group",
+      "sourcePosition": 1002
+    }
+  ],
+  "selectionBoundary": "Current sorted positions 963-982 exactly match the committed W963-W982 source set after the recorded position-964 rename; selected positions 983-1002 are the next 20 IDs and disjoint from that reviewed set. Prior review-ledger scan found no disposition rows for selected IDs.",
+  "selectionRule": "Sorted unique source IDs from current shared 12-locale ui-labels catalogs; use one-based current sorted position. All keys must be present in every locale.",
+  "sourceKeyRename": {
+    "currentSha256": "1675f841280abc03a431580ecf8922d6357a227a64ad33a8595430223898cd58",
+    "currentSource": "Copy the visible conflict report, including which authorities you selected to disable locally. This does not change backend realm governance.",
+    "oldSha256": "f41792666b3f8d5b474e6323fc4cdfb5d068e7c525d0c07875d575b7052e99b5",
+    "oldSource": "Copy the visible conflict report, including local authority disable selections. This does not change backend realm governance.",
+    "orderPreservedInPlace": true,
+    "position": 964,
+    "rekeyedLocales": 12
+  }
+}

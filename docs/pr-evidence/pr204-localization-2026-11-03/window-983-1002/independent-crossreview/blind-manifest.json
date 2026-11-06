@@ -1,0 +1,34 @@
+{
+  "task": "slskR PR #204 independent semantic cross-review W983-W1002",
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "state": "open",
+  "draft": true,
+  "headRef": "codex/slskr-l10n-audit-20261030",
+  "head": "09a614a66f1104fe530773fb17c79ed6338aed02",
+  "tree": "963f283311ae39dfa5fc289386d99dcc0dac2f90",
+  "window": {
+    "firstPosition": 983,
+    "lastPosition": 1002,
+    "sourceCount": 20,
+    "localeCount": 12,
+    "cellCount": 240
+  },
+  "dispositions": {
+    "hold": 24,
+    "refinement": 14,
+    "accept-current": 160,
+    "correction": 42
+  },
+  "proposedTargets": 56,
+  "structuralAuditIssueCount": 4,
+  "sourceCurrentAttestationPass": true,
+  "nativeSpeakerApproval": false,
+  "testsBuildScansBrowserOrCI": "not run",
+  "repoOrPrEdits": "none",
+  "blindLedgerPath": "blind-ledger.jsonl",
+  "blindLedgerRows": 240,
+  "strictBlindProcess": "compromised by opening primary README.md; no per-cell proposal ledger read before sealing",
+  "semanticConfidence": "moderate",
+  "limitation": "Machine-assisted review; no native-speaker approval."
+}

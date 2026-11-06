@@ -1,0 +1,109 @@
+{
+  "catalogs": {
+    "ar": {
+      "blob_oid": "1e8d534d29c2eb82e31816998d32bc5c137b3fc9",
+      "bytes": 511428,
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "sha256": "2291f0d1fb8982d5ebe8cc59b276b6e8237f9441577aab44a9400e29d7f45382",
+      "source_keys": 5437
+    },
+    "de": {
+      "blob_oid": "00d4674e508b8c73af5ff8569f75fd86ecc3333b",
+      "bytes": 442374,
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "sha256": "2698ec20949a96e617bf10c4ad7752960e942d6b8a1b8e98f5637f7b392fc542",
+      "source_keys": 5437
+    },
+    "es": {
+      "blob_oid": "d088d969b57ada5fe7bcc446f2c8aed4ae5b80ca",
+      "bytes": 443103,
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "sha256": "7e5b6402622bbe43846c77d29d30a0cd8a7ad9b9db540e364631d8418a90140b",
+      "source_keys": 5437
+    },
+    "fr": {
+      "blob_oid": "670d3ead674b159eddcc649193809dcaf92e81cd",
+      "bytes": 454156,
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "sha256": "641ebb4479f8bc070324e5f8855b9d740b15b2546337d888f0d55393ac4040bf",
+      "source_keys": 5437
+    },
+    "hi": {
+      "blob_oid": "ae41ce2e3ccf9a1745357ca7526180728d7650f5",
+      "bytes": 674580,
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "sha256": "e6b32887cc1812b51b6e0c37d57899a0342a6427b9403fef8ad95daf1deac68f",
+      "source_keys": 5437
+    },
+    "id": {
+      "blob_oid": "503ff402e599042a6485f7f60a95d5d5949357e2",
+      "bytes": 408784,
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "sha256": "cd5cd3063e01fc299f9cd5ec1ffd4539b72bc610dbb33eca5ada911e95d2086c",
+      "source_keys": 5437
+    },
+    "ja": {
+      "blob_oid": "2a9c63eab2b74f8d3cb3767191e6d9a66d72f9dd",
+      "bytes": 490595,
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "sha256": "f1a614205a69a4c775af8d16a9b835a1690fba5bfee5d94cdfa6b65419f1e8aa",
+      "source_keys": 5437
+    },
+    "ko": {
+      "blob_oid": "f2487b1f6c322e66320a3efcab5615d459166fc6",
+      "bytes": 441301,
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "sha256": "44d7253fdf8b30b313761b28855ba7d4ebdbb9087976b854b754f6860df350d0",
+      "source_keys": 5437
+    },
+    "pt-BR": {
+      "blob_oid": "6a965960a7f7e67d7f21d2f604582327fecd7212",
+      "bytes": 437846,
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "sha256": "f424ca49b1583a4344ffe5054e7404c74265fa03c7422001a521deb1e12ef952",
+      "source_keys": 5437
+    },
+    "vi": {
+      "blob_oid": "c9d2bc14b3e196f3f628308f79fbf76a8f8c80c5",
+      "bytes": 473406,
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "sha256": "04630d511b753e9fcb6b19491dd0b24dba6c7d2a30580ba0eef41fb24d44348b",
+      "source_keys": 5437
+    },
+    "zh-Hans": {
+      "blob_oid": "bffac8e413c6cd47dba661e20cccf2469cd1ae8c",
+      "bytes": 381992,
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "sha256": "a9e9493fb4aed6dd35298d8eceb074b088d470bbcc481de843570de7ef2f9cbf",
+      "source_keys": 5437
+    },
+    "zh-Hant": {
+      "blob_oid": "27925fe069fdd284863260056799e82353bc4f45",
+      "bytes": 382700,
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "sha256": "ac43225419cd21b8380a101bfef6e26256336091e75074ef80e79de8af03480e",
+      "source_keys": 5437
+    }
+  },
+  "catalogs_modified": false,
+  "checks_run": false,
+  "live_pr": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "7bf9f91c0f34269434fee70cd2f7067afeaf6122",
+    "isDraft": true,
+    "mergeStateStatus": "CLEAN",
+    "mergeable": "MERGEABLE",
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "pr_tree": "b598a6ad004a504037e64ebf541b5c9e01d54765",
+  "pull_request": 204,
+  "repository": "snapetech-org/slskR",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_is_merge_base": true,
+  "source_runtime_diff_excluding_locales": [],
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "verified_head": "7bf9f91c0f34269434fee70cd2f7067afeaf6122",
+  "worktree_status": ""
+}

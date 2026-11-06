@@ -1,0 +1,52 @@
+{
+  "artifact": "slskR PR #204 W1423-W1442 primary review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "baseRef": "main",
+  "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "head": "7ca8589266ab4c5a925782a8726d7e57b4ed7427",
+  "tree": "09adcb271a2eb92770df4a20098dccc3fde2a59f",
+  "window": "W1423-W1442",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "locales": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "decisionCounts": {
+    "correction": 24,
+    "accept-current": 212,
+    "refinement": 4
+  },
+  "proposedTargetCount": 28,
+  "carriedHoldReattestationCount": 35,
+  "changedCarriedHolds": 0,
+  "priorSelectionReattestationRows": 180,
+  "callerResolutionHoldCount": 0,
+  "currentWindowHoldCount": 0,
+  "candidateFreeInputManifestSha256": "40d6f1ebaf3e6ad72c854b24e40275511c0a6c6d41afe8625b60ef8cb117ea1e",
+  "candidateFreeInputChecksumListSha256": "f40bdd86a371e4ee2f3f1d17431124202ee1e766b56403924a0e730470a0ee3e",
+  "sourceQueueOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "catalogSourceCount": 5441,
+  "mismatchCounts": {
+    "placeholderSequenceMismatchCount": 0,
+    "markupMismatchCount": 0,
+    "numericTokenMismatchCount": 0,
+    "protectedLiteralMismatchCount": 0
+  },
+  "blindBoundary": "Primary decisions were prepared from the candidate-free input only; the independent blind-review packet was not opened.",
+  "reviewLimit": "Contextual editorial review; no native-speaker attestation is claimed.",
+  "createdAtUtc": "2026-11-03T19:28:28Z"
+}

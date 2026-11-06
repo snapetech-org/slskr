@@ -1,0 +1,186 @@
+{
+  "callerPinCount": 36,
+  "catalogDeltaFromW563HeadCount": 506,
+  "catalogDeltaSha256": "b5c09149e397d7657ffa50d280ae803778433c9ecbcfaf4f5f20de1b3d2b73fb",
+  "catalogSnapshots": [
+    {
+      "bytes": 512303,
+      "gitBlobSha": "f4521db2a87865cdb9d3ae29c35e1b8fa8f8f9aa",
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "revision": "current",
+      "sha256": "0a32e28e5fe94b84ebbaf1909a51e9af54d65155278b1e240cf314b040bf3d10"
+    },
+    {
+      "bytes": 442888,
+      "gitBlobSha": "c294a9ed9df83206237f397a7924e622493bc1af",
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "revision": "current",
+      "sha256": "0ff5da2443b63fe60f2c127ed0660a33f122e73b731ef10644f03b314b92b4d1"
+    },
+    {
+      "bytes": 443723,
+      "gitBlobSha": "4212ce5994785bad840c2efdecc35b1be839a9ef",
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "revision": "current",
+      "sha256": "33eddfa34afdc0094fdd31ea1e565153971ecf5b42d2d9846eb7f2dafc9b2a47"
+    },
+    {
+      "bytes": 454751,
+      "gitBlobSha": "1448cab274e0d01692ce817d4e0c61153248b509",
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "revision": "current",
+      "sha256": "f5af63c92d7303e43c18ecfd7899e9c8dee24a32b55921d88da0eed31db84ddb"
+    },
+    {
+      "bytes": 675801,
+      "gitBlobSha": "24154c3ce99504a78693c21a65af1ed1d9331dd9",
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "revision": "current",
+      "sha256": "3c13c8c0da1cf7b4dbbbbc64e446f5c0d207fdba7a3f50efe51e5a81f946491d"
+    },
+    {
+      "bytes": 409339,
+      "gitBlobSha": "dc5844c436f3742f6af8458ea740632cceae0780",
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "revision": "current",
+      "sha256": "08b3d81c4afa68b1550ffb901fc260079d317fa7aab40724753d85adb6a375c9"
+    },
+    {
+      "bytes": 490716,
+      "gitBlobSha": "6ffbe76ffee5ef6c2dcbc0c89c8a961be73a219b",
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "revision": "current",
+      "sha256": "6ff90334c0c957e5cdafdd153103ccaf100476ebe5c908c443658a234b923862"
+    },
+    {
+      "bytes": 441807,
+      "gitBlobSha": "9808b0fd124a88f3c7181c054482cea81cbb6c15",
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "revision": "current",
+      "sha256": "2224e24bb866d3be1c91d39cd800f2d789d103c6502f856401ee25bddd386f02"
+    },
+    {
+      "bytes": 438412,
+      "gitBlobSha": "985abf306936895514b34460b85255b2a8e29110",
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "revision": "current",
+      "sha256": "6e1fd4b2712b40fcb201a21196517070dc37f0c8454b82048917cf9262694615"
+    },
+    {
+      "bytes": 473915,
+      "gitBlobSha": "221ec306a00a068247285fcff0b6ad90c6594364",
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "revision": "current",
+      "sha256": "7bdccac3e7cad9f55cc47bcab6ddc62f533af91c0de72a457f5747f45773bb7e"
+    },
+    {
+      "bytes": 382429,
+      "gitBlobSha": "c173e0a4826416d3cf12b083ddd56178e2ba11bc",
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "revision": "current",
+      "sha256": "c5cf808fdfea82318070534376d99d1af923d84df35ae8fc0e670015ab833c22"
+    },
+    {
+      "bytes": 383143,
+      "gitBlobSha": "9852a63f37730194a6ae7a36a81a5965cea1b25a",
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "revision": "current",
+      "sha256": "8e1d8c42c5acf35e9e1ee2c5fd6287d28b0491c3d0d56c840cca16588ddf6b1d"
+    },
+    {
+      "bytes": 511721,
+      "gitBlobSha": "f638acfe3cf10b48c16e759979b57b93c7cf4dd4",
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "revision": "w563-head",
+      "sha256": "a574702d921204c7554bc5320dfd1b245ee346000fb7c6e9c36e85b4bb709d3d"
+    },
+    {
+      "bytes": 442490,
+      "gitBlobSha": "5733187cc10c9fd170eee06b9f7f98289757fe04",
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "revision": "w563-head",
+      "sha256": "26876a741733ae9cb73aafc4086471eb7bc549d5738a1584c2bddc32b98752f2"
+    },
+    {
+      "bytes": 443196,
+      "gitBlobSha": "55de91139774cf8f827f0327a2623f2210b1527f",
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "revision": "w563-head",
+      "sha256": "f315b7da7a9cde6629122d1c874fb0102f4424128a7d12b7f57c0f71e06fcdd1"
+    },
+    {
+      "bytes": 454220,
+      "gitBlobSha": "93b80257d510d840012e2e5b411c59e70a492790",
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "revision": "w563-head",
+      "sha256": "17c65156f796530f51e7de28b99db5dab0f328e303b3475bf5f9858e3f0e232b"
+    },
+    {
+      "bytes": 674824,
+      "gitBlobSha": "a0261af2feec6570e0d7f4efa58be35b7783aade",
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "revision": "w563-head",
+      "sha256": "99358bd6517e4827493af5d335c4ecc909b27bcaad73bb882745db3681201e82"
+    },
+    {
+      "bytes": 408886,
+      "gitBlobSha": "2cbfe23de993f020c0a430ae826d24a2578821b7",
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "revision": "w563-head",
+      "sha256": "262b2244cd24ec7a328dc12a019a4a24c9e0b0f7a49ca951bbef1aeacaf7e9ab"
+    },
+    {
+      "bytes": 490510,
+      "gitBlobSha": "668833a097b829aabef172eb2087c967084ff652",
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "revision": "w563-head",
+      "sha256": "56131b7611bbc9ccd6a61d732d24a7ee657a8b0342b280b6409cff88429115f3"
+    },
+    {
+      "bytes": 441393,
+      "gitBlobSha": "67db297a7d6fb3c98ff12e0bc3b41165bd5d23ff",
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "revision": "w563-head",
+      "sha256": "c5eebc5cf2a5645f8c14fd34a5535fcf97c95c43eb639c58b784954c5b1af754"
+    },
+    {
+      "bytes": 437937,
+      "gitBlobSha": "0d93a5c4403bfcf3c74248c48ea5c5d6cacb35ac",
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "revision": "w563-head",
+      "sha256": "10e98549809b71bda5d32ad8e815bcb7814d60800a12ccb321733f3c820607eb"
+    },
+    {
+      "bytes": 473472,
+      "gitBlobSha": "77d7a90f67df012686204a9efa6540ad0ef37475",
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "revision": "w563-head",
+      "sha256": "3c8c5f5914cbe2a86c8a1f74e490b7f8731f8b926d5eee140a557e2de61dec5e"
+    },
+    {
+      "bytes": 382092,
+      "gitBlobSha": "1269a1aa5255f12dd0314290b68629a39b85619d",
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "revision": "w563-head",
+      "sha256": "91fe8b24e70c339d80acbb9e1a37d162f9c1262c5475731fe77300a11c4b0f33"
+    },
+    {
+      "bytes": 382800,
+      "gitBlobSha": "53d2d154135baeb074bf79d84969a37443cc367c",
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "revision": "w563-head",
+      "sha256": "953b40004f4991987a4fcfb759afc3577469f01cea922c1fabec36376fc9bbf2"
+    }
+  ],
+  "currentCatalogCount": 12,
+  "currentCellsReattested": 240,
+  "currentHead": "8b2f1f5fb216fb9946e823c5dff86d5e76a30b84",
+  "currentTree": "90225bd501256ac84c520105e714df9fc9d6aefc",
+  "repository": "snapetech-org/slskR",
+  "sourceInventoryPath": "/mnt/disks/scratch/task-worktrees/localization-20261030/slskr-populated-catalog-review-7ff45482-20261101/frozen-inputs/source-inventory.jsonl",
+  "sourceInventorySha256": "dd5959b45ec3a7002806b3b03a8d434cb791cc737d2afe1554d24351eac6f313",
+  "sourceRowCount": 20,
+  "w563CatalogCount": 12,
+  "w563Head": "7e99edecbdea10580cc5e8d198930a82f076b834",
+  "w563Tree": "55de069f88c197ab8ddd3c773c1f10e5cb86abd5"
+}

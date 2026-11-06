@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-11-02T15:53:57.219044+00:00",
+  "pullRequest": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+    "isDraft": true,
+    "mergeStateStatus": "CLEAN",
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "repositoryHead": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "repositoryTree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "repositoryStatusClean": true,
+  "exactPinnedStateMatches": true
+}

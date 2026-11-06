@@ -111,6 +111,17 @@ pub(super) fn load_watched_controller_configuration(
         .map_err(|_| "configuration reload panicked".to_owned())?
 }
 
+fn apply_notification_language_reload(overlay: &mut ControllerOptionsOverlayState, language: &str) {
+    if let Some(integration) = overlay
+        .effective
+        .get_mut("integration")
+        .and_then(serde_json::Value::as_object_mut)
+    {
+        integration.remove("notificationLanguage");
+    }
+    overlay.notification_language = Some(language.to_owned());
+}
+
 pub(super) fn apply_watched_controller_configuration<'a>(
     state: &'a AppState,
     text: Option<&'a str>,
@@ -287,6 +298,13 @@ pub(super) fn apply_watched_controller_configuration<'a>(
             };
         *state.private_message_auto_response_settings.write().await =
             reloaded.private_message_auto_response.clone();
+        {
+            let mut options_overlay = state.options_overlay.write().await;
+            apply_notification_language_reload(
+                &mut *options_overlay,
+                &reloaded.integrations.notification_language,
+            );
+        }
         *state.integration_settings.write().await = reloaded.integrations.clone();
         *state.transfer_auto_retry_settings.write().await = reloaded.transfer_auto_retry.clone();
         *state.transfer_upload_settings.write().await = reloaded.transfer_upload.clone();
@@ -700,3 +718,34 @@ pub(super) const NATIVE_DEFAULT_ADVERSARIAL_YAML: &str = r#"security:
       - I2PQuic
 ...
 "#;
+
+#[cfg(test)]
+mod notification_language_overlay_tests {
+    use super::*;
+
+    #[test]
+    fn reload_replaces_only_the_saved_notification_language_override() {
+        let mut overlay = ControllerOptionsOverlayState::default();
+        overlay.effective = serde_json::json!({
+            "integration": {
+                "notificationLanguage": "es",
+                "ntfy": {"enabled": true}
+            }
+        });
+
+        apply_notification_language_reload(&mut overlay, "fr");
+
+        assert!(overlay
+            .effective
+            .pointer("/integration/notificationLanguage")
+            .is_none());
+        assert_eq!(overlay.notification_language.as_deref(), Some("fr"));
+        assert_eq!(
+            overlay
+                .effective
+                .pointer("/integration/ntfy/enabled")
+                .and_then(serde_json::Value::as_bool),
+            Some(true)
+        );
+    }
+}

@@ -1,0 +1,350 @@
+{
+  "1383|vi": {
+    "disposition": "correction",
+    "proposal": "Mục:",
+    "rationale": "“Bài viết” means posts or articles; this label counts exported entries.",
+    "confidence": "moderate"
+  },
+  "1384|vi": {
+    "disposition": "refinement",
+    "proposal": "Kiểm tra entropy:",
+    "rationale": "The technical term is used as a measurement name; lowercase entropy reads naturally in Vietnamese.",
+    "confidence": "moderate"
+  },
+  "1385|hi": {
+    "disposition": "correction",
+    "proposal": "त्रुटि",
+    "rationale": "“गलती” usually means a mistake; this is a generic software error heading.",
+    "confidence": "moderate"
+  },
+  "1387|es": {
+    "disposition": "correction",
+    "proposal": "Error al cargar los datos de Swarm",
+    "rationale": "Swarm is the name of the visualization feature and should stay as a product name.",
+    "confidence": "moderate"
+  },
+  "1387|hi": {
+    "disposition": "correction",
+    "proposal": "Swarm डेटा लोड करने में त्रुटि",
+    "rationale": "Swarm is the name of the visualization feature and should stay as a product name.",
+    "confidence": "moderate"
+  },
+  "1387|de": {
+    "disposition": "correction",
+    "proposal": "Fehler beim Laden der Swarm-Daten",
+    "rationale": "Swarm is the name of the visualization feature and should stay as a product name.",
+    "confidence": "moderate"
+  },
+  "1387|fr": {
+    "disposition": "correction",
+    "proposal": "Erreur lors du chargement des données de Swarm",
+    "rationale": "Swarm is the name of the visualization feature and should stay as a product name.",
+    "confidence": "moderate"
+  },
+  "1387|ar": {
+    "disposition": "correction",
+    "proposal": "حدث خطأ أثناء تحميل بيانات Swarm",
+    "rationale": "Swarm is the name of the visualization feature and should stay as a product name.",
+    "confidence": "moderate"
+  },
+  "1387|vi": {
+    "disposition": "correction",
+    "proposal": "Lỗi khi tải dữ liệu Swarm",
+    "rationale": "Swarm is the name of the visualization feature and should stay as a product name.",
+    "confidence": "moderate"
+  },
+  "1387|id": {
+    "disposition": "correction",
+    "proposal": "Kesalahan saat memuat data Swarm",
+    "rationale": "Swarm is the name of the visualization feature and should stay as a product name.",
+    "confidence": "moderate"
+  },
+  "1389|ar": {
+    "disposition": "correction",
+    "proposal": "سجل الأخطاء",
+    "rationale": "The current phrase means an error date; the caller is an error-history report.",
+    "confidence": "moderate"
+  },
+  "1391|hi": {
+    "disposition": "correction",
+    "proposal": "त्रुटि हुई",
+    "rationale": "The current adjective means defective; this status says the operation encountered an error.",
+    "confidence": "moderate"
+  },
+  "1391|de": {
+    "disposition": "correction",
+    "proposal": "Mit Fehlern",
+    "rationale": "“Fehlerhaft” suggests defective; the transfer and retention callers use this as an errored status.",
+    "confidence": "moderate"
+  },
+  "1391|ja": {
+    "disposition": "refinement",
+    "proposal": "エラーあり",
+    "rationale": "This is a transfer/status category; spelling out that an error occurred is clearer than the generic noun.",
+    "confidence": "moderate"
+  },
+  "1391|ko": {
+    "disposition": "refinement",
+    "proposal": "오류 발생",
+    "rationale": "This is a status category; the current noun alone does not express the errored state.",
+    "confidence": "moderate"
+  },
+  "1391|id": {
+    "disposition": "refinement",
+    "proposal": "Terjadi kesalahan",
+    "rationale": "This status should say that an error occurred rather than merely that something is problematic.",
+    "confidence": "moderate"
+  },
+  "1393|zh-Hans": {
+    "disposition": "correction",
+    "proposal": "错误 (",
+    "rationale": "The caller appends an ASCII closing parenthesis after the count; use the matching ASCII opener.",
+    "confidence": "moderate"
+  },
+  "1393|zh-Hant": {
+    "disposition": "correction",
+    "proposal": "錯誤 (",
+    "rationale": "The caller appends an ASCII closing parenthesis after the count; use the matching ASCII opener.",
+    "confidence": "moderate"
+  },
+  "1394|es": {
+    "disposition": "refinement",
+    "proposal": "Tasa estimada de falsos positivos:",
+    "rationale": "The caller displays a percentage rate; spell out the estimate and the false-positive rate.",
+    "confidence": "moderate"
+  },
+  "1394|zh-Hans": {
+    "disposition": "correction",
+    "proposal": "预计误报率：",
+    "rationale": "The current punctuation is broken and omits rate; the caller displays a false-positive percentage.",
+    "confidence": "moderate"
+  },
+  "1394|hi": {
+    "disposition": "correction",
+    "proposal": "अनुमानित गलत-सकारात्मक दर:",
+    "rationale": "The current “ईएसटी” reads as an acronym; the caller displays an estimated false-positive rate.",
+    "confidence": "moderate"
+  },
+  "1394|de": {
+    "disposition": "refinement",
+    "proposal": "Geschätzte Falsch-Positiv-Rate:",
+    "rationale": "The caller displays a percentage rate; a compound rate label is clearer and grammatical.",
+    "confidence": "moderate"
+  },
+  "1394|ja": {
+    "disposition": "correction",
+    "proposal": "推定誤検知率：",
+    "rationale": "The current “EST” can read as a time-zone abbreviation; this caller displays the estimated false-positive rate.",
+    "confidence": "moderate"
+  },
+  "1394|fr": {
+    "disposition": "correction",
+    "proposal": "Taux estimé de faux positifs :",
+    "rationale": "The current “HNE” means Eastern time; this caller displays a false-positive rate.",
+    "confidence": "moderate"
+  },
+  "1394|pt-BR": {
+    "disposition": "correction",
+    "proposal": "Taxa estimada de falsos positivos:",
+    "rationale": "The current “Husa” is not an estimate label; the caller displays a false-positive rate.",
+    "confidence": "moderate"
+  },
+  "1394|ar": {
+    "disposition": "correction",
+    "proposal": "معدل الإيجابيات الكاذبة المقدّر:",
+    "rationale": "The current “EST” reads as a time-zone abbreviation; the caller displays the estimated false-positive rate.",
+    "confidence": "moderate"
+  },
+  "1394|ko": {
+    "disposition": "refinement",
+    "proposal": "예상 오탐률:",
+    "rationale": "The current wording is understandable but does not name the rate shown by the caller.",
+    "confidence": "moderate"
+  },
+  "1394|zh-Hant": {
+    "disposition": "correction",
+    "proposal": "預估誤報率：",
+    "rationale": "The current punctuation is broken and omits rate; the caller displays a false-positive percentage.",
+    "confidence": "moderate"
+  },
+  "1394|vi": {
+    "disposition": "correction",
+    "proposal": "Tỷ lệ dương tính giả ước tính:",
+    "rationale": "The current punctuation breaks the label; the caller displays an estimated false-positive rate.",
+    "confidence": "moderate"
+  },
+  "1394|id": {
+    "disposition": "correction",
+    "proposal": "Perkiraan tingkat positif palsu:",
+    "rationale": "The current punctuation breaks the label; the caller displays an estimated false-positive rate.",
+    "confidence": "moderate"
+  },
+  "1396|zh-Hans": {
+    "disposition": "correction",
+    "proposal": "预计大小：",
+    "rationale": "The value is a storage amount in MB, so 大小 is clearer than 尺寸, which suggests dimensions.",
+    "confidence": "moderate"
+  },
+  "1396|zh-Hant": {
+    "disposition": "correction",
+    "proposal": "預計大小：",
+    "rationale": "The value is a storage amount in MB, so 大小 is clearer than 尺寸, which suggests dimensions.",
+    "confidence": "moderate"
+  },
+  "1397|es": {
+    "disposition": "refinement",
+    "proposal": "Evalúe las pruebas pegadas localmente. Esto no publica, no consulta nodos pares ni aplica cambios de clasificación.",
+    "rationale": "The local evaluation tooltip is clear; “nodos pares” makes the network meaning of peers explicit.",
+    "confidence": "moderate"
+  },
+  "1397|de": {
+    "disposition": "correction",
+    "proposal": "Bewerten Sie die eingefügten Nachweise lokal. Dadurch wird nichts veröffentlicht, werden keine Peers abgefragt und keine Ranking-Änderungen angewendet.",
+    "rationale": "“Vor Ort” suggests a physical location, and the original wording is awkward; this is a local-only evaluation notice.",
+    "confidence": "moderate"
+  },
+  "1397|hi": {
+    "disposition": "correction",
+    "proposal": "चिपकाए गए साक्ष्य का स्थानीय रूप से मूल्यांकन करें। इससे कुछ प्रकाशित नहीं होता, peer nodes से क्वेरी नहीं की जाती और रैंकिंग में बदलाव लागू नहीं होते।",
+    "rationale": "“साथियों” means colleagues, not network peers, and the current sentence is awkward.",
+    "confidence": "moderate"
+  },
+  "1397|ja": {
+    "disposition": "refinement",
+    "proposal": "貼り付けた証拠をローカルで評価します。公開したり、ピアノードに問い合わせたり、ランキングの変更を適用したりすることはありません。",
+    "rationale": "Replace the unnatural code-mixed ピアのクエリ with a clear peer-node inquiry phrase.",
+    "confidence": "moderate"
+  },
+  "1397|pt-BR": {
+    "disposition": "refinement",
+    "proposal": "Avalie as evidências coladas localmente. Isso não publica, não consulta outros pares da rede nem aplica alterações na classificação.",
+    "rationale": "Make clear that “peers” are other network peers in this local-only evaluation tooltip.",
+    "confidence": "moderate"
+  },
+  "1397|ar": {
+    "disposition": "correction",
+    "proposal": "قيّم الأدلة الملصقة محليًا. لا ينشر ذلك بيانات، ولا يستعلم عن العقد النظيرة، ولا يطبق تغييرات الترتيب.",
+    "rationale": "Use the imperative from the tooltip and identify peers as network nodes, not people.",
+    "confidence": "moderate"
+  },
+  "1397|ko": {
+    "disposition": "correction",
+    "proposal": "붙여넣은 증거를 로컬에서 평가하세요. 이를 공개하거나 피어 노드에 질의하거나 순위 변경을 적용하지 않습니다.",
+    "rationale": "“현지에서” suggests a geographic location, and the current peer query phrase is unnatural.",
+    "confidence": "moderate"
+  },
+  "1397|zh-Hans": {
+    "disposition": "correction",
+    "proposal": "在本地评估粘贴的证据。这不会发布、查询对等节点或应用排名变更。",
+    "rationale": "同行 can mean professional colleagues; 对等节点 identifies network peers.",
+    "confidence": "moderate"
+  },
+  "1397|zh-Hant": {
+    "disposition": "correction",
+    "proposal": "在本機評估貼上的證據。這不會發布、查詢對等節點或套用排名變更。",
+    "rationale": "同行 can mean professional colleagues; 對等節點 identifies network peers.",
+    "confidence": "moderate"
+  },
+  "1397|vi": {
+    "disposition": "refinement",
+    "proposal": "Đánh giá bằng chứng đã dán cục bộ. Thao tác này không xuất bản, không truy vấn các máy ngang hàng và không áp dụng thay đổi xếp hạng.",
+    "rationale": "“Tại địa phương” can suggest a geographic place; cục bộ suits the local-only operation.",
+    "confidence": "moderate"
+  },
+  "1397|id": {
+    "disposition": "correction",
+    "proposal": "Evaluasi bukti yang ditempel secara lokal. Tindakan ini tidak memublikasikan apa pun, mengirim kueri ke node peer, atau menerapkan perubahan peringkat.",
+    "rationale": "“Rekan” means colleagues; the caller’s peers are network nodes.",
+    "confidence": "moderate"
+  },
+  "1400|es": {
+    "disposition": "correction",
+    "proposal": "Ganchos de eventos, destinos remotos, ganchos de comandos y configuración de reintentos.",
+    "rationale": "The source is a settings-card description; literal translations of retry “shape” are not idiomatic. “Retry configuration” conveys the intended settings concept.",
+    "confidence": "moderate"
+  },
+  "1400|zh-Hans": {
+    "disposition": "correction",
+    "proposal": "事件钩子、远程目标、命令钩子和重试配置。",
+    "rationale": "The source is a settings-card description; literal translations of retry “shape” are not idiomatic. “Retry configuration” conveys the intended settings concept.",
+    "confidence": "moderate"
+  },
+  "1400|hi": {
+    "disposition": "correction",
+    "proposal": "इवेंट हुक, रिमोट लक्ष्य, कमांड हुक और पुनः प्रयास कॉन्फ़िगरेशन。",
+    "rationale": "The source is a settings-card description; literal translations of retry “shape” are not idiomatic. “Retry configuration” conveys the intended settings concept.",
+    "confidence": "moderate"
+  },
+  "1400|de": {
+    "disposition": "correction",
+    "proposal": "Ereignis-Hooks, Remote-Ziele, Befehls-Hooks und Konfiguration der Wiederholungen.",
+    "rationale": "The source is a settings-card description; literal translations of retry “shape” are not idiomatic. “Retry configuration” conveys the intended settings concept.",
+    "confidence": "moderate"
+  },
+  "1400|ja": {
+    "disposition": "correction",
+    "proposal": "イベントフック、リモートターゲット、コマンドフック、再試行の設定。",
+    "rationale": "The source is a settings-card description; literal translations of retry “shape” are not idiomatic. “Retry configuration” conveys the intended settings concept.",
+    "confidence": "moderate"
+  },
+  "1400|fr": {
+    "disposition": "correction",
+    "proposal": "Hooks d’événements, cibles distantes, hooks de commande et configuration des nouvelles tentatives.",
+    "rationale": "The source is a settings-card description; literal translations of retry “shape” are not idiomatic. “Retry configuration” conveys the intended settings concept.",
+    "confidence": "moderate"
+  },
+  "1400|pt-BR": {
+    "disposition": "correction",
+    "proposal": "Ganchos de eventos, destinos remotos, ganchos de comando e configuração de novas tentativas.",
+    "rationale": "The source is a settings-card description; literal translations of retry “shape” are not idiomatic. “Retry configuration” conveys the intended settings concept.",
+    "confidence": "moderate"
+  },
+  "1400|ar": {
+    "disposition": "correction",
+    "proposal": "خطافات الأحداث، والأهداف البعيدة، وخطافات الأوامر، وسياسة إعادة المحاولة.",
+    "rationale": "The source is a settings-card description; literal translations of retry “shape” are not idiomatic. “Retry configuration” conveys the intended settings concept.",
+    "confidence": "moderate"
+  },
+  "1400|ko": {
+    "disposition": "correction",
+    "proposal": "이벤트 훅, 원격 대상, 명령 훅 및 재시도 설정.",
+    "rationale": "The source is a settings-card description; literal translations of retry “shape” are not idiomatic. “Retry configuration” conveys the intended settings concept.",
+    "confidence": "moderate"
+  },
+  "1400|zh-Hant": {
+    "disposition": "correction",
+    "proposal": "事件鉤子、遠端目標、命令鉤子與重試設定。",
+    "rationale": "The source is a settings-card description; literal translations of retry “shape” are not idiomatic. “Retry configuration” conveys the intended settings concept.",
+    "confidence": "moderate"
+  },
+  "1400|vi": {
+    "disposition": "correction",
+    "proposal": "Hook sự kiện, mục tiêu từ xa, hook lệnh và cấu hình thử lại.",
+    "rationale": "The source is a settings-card description; literal translations of retry “shape” are not idiomatic. “Retry configuration” conveys the intended settings concept.",
+    "confidence": "moderate"
+  },
+  "1400|id": {
+    "disposition": "correction",
+    "proposal": "Hook peristiwa, target jarak jauh, hook perintah, dan konfigurasi percobaan ulang.",
+    "rationale": "The source is a settings-card description; literal translations of retry “shape” are not idiomatic. “Retry configuration” conveys the intended settings concept.",
+    "confidence": "moderate"
+  },
+  "1402|hi": {
+    "disposition": "correction",
+    "proposal": "इवेंट रखने की अवधि (दिन)",
+    "rationale": "The current phrase is an unnatural calque; the input labels a number field for how long to keep events.",
+    "confidence": "moderate"
+  },
+  "1402|ko": {
+    "disposition": "correction",
+    "proposal": "이벤트 보관 기간(일)",
+    "rationale": "The current 보유일 is unclear; this labels the number of days events are retained.",
+    "confidence": "moderate"
+  },
+  "1402|ar": {
+    "disposition": "refinement",
+    "proposal": "أيام الاحتفاظ بالأحداث",
+    "rationale": "Use the plural event category for the retention-days field.",
+    "confidence": "moderate"
+  }
+}

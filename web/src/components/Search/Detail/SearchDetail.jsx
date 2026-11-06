@@ -30,7 +30,7 @@ import {
 } from '../../../lib/storage';
 import { getAllNotes } from '../../../lib/userNotes';
 import { getDirectoryName, sleep, formatRegionalNumber, useRegionalFormat } from '../../../lib/util';
-import { toDisplayError } from '../../../lib/errors';
+import { toDisplayErrorOutput } from '../../../lib/errors';
 import * as wishlistAPI from '../../../lib/wishlist';
 import ErrorSegment from '../../Shared/ErrorSegment';
 import LoaderSegment from '../../Shared/LoaderSegment';
@@ -348,7 +348,7 @@ const SearchDetail = ({
       } catch (getError) {
         if (!cancelled) {
           console.error(getError);
-          setError(toDisplayError(getError, 'Could not load search results. Try again later.'));
+          setError(toDisplayErrorOutput(getError, 'Could not load search results. Try again later.'));
           setLoading(false);
         }
       }
@@ -690,14 +690,14 @@ const SearchDetail = ({
   const loaded = !removing && !creating && !loading && results !== null;
 
   if (error && results === null) {
-    return <ErrorSegment caption={toDisplayError(error, t('Could not load search results. Try again later.'))} />;
+    return <ErrorSegment caption={error} />;
   }
 
   return (
     <>
       {error && (
         <div data-testid="search-results-load-error">
-          <ErrorSegment caption={toDisplayError(error, t('Could not load search results. Try again later.'))} />
+          <ErrorSegment caption={error} />
         </div>
       )}
       <SearchDetailHeader

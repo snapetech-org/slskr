@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "state": "open",
+  "draft": true,
+  "headRef": "codex/slskr-l10n-audit-20261030",
+  "headSha": "b5da2589b6e8f2d4b0c0faab28bcdf0481e42438",
+  "branchRef": "refs/heads/codex/slskr-l10n-audit-20261030",
+  "branchRefSha": "b5da2589b6e8f2d4b0c0faab28bcdf0481e42438",
+  "tree": "36ae6ecf3b705995fbd549cb8650d6458936df91",
+  "baseRef": "main",
+  "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "verifiedAtUtc": "2026-11-03T17:33:11Z",
+  "method": "GitHub PR metadata endpoint, Git refs endpoint, and commit endpoint; metadata/ref/tree values matched exact task pins"
+}

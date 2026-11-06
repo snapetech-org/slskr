@@ -1,0 +1,100 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W903-W922",
+  "head": "b1e814ef11d55fd1710d0e2522df14fee9ff0a70",
+  "tree": "50fef41fa1abcfcceb9a99cfd756ae014e51e286",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "sourceCount": 20,
+  "cellCount": 240,
+  "dispositionCounts": {
+    "correction": 29,
+    "refinement": 8,
+    "accept-current": 191,
+    "hold": 12
+  },
+  "proposalKindCounts": {
+    "correction": 29,
+    "refinement": 8
+  },
+  "proposedValueChanges": 37,
+  "heldCells": 12,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1442,
+      "sha256": "2d8254e65eaebef8ed054ee860906a8efc34d4ce0b8b517c3cf45a3d191be623"
+    },
+    {
+      "path": "all-seven-pr-snapshots.json",
+      "bytes": 2727,
+      "sha256": "3739d667f2427c0346fd437da28a94151009eee387aba8f7415460b7e347db77"
+    },
+    {
+      "path": "boundary-pins.jsonl",
+      "bytes": 7566,
+      "sha256": "715e5b4d8374dc9fc74567e4b122b40172c359456cdcf12d1accca0af9e0898d"
+    },
+    {
+      "path": "build_primary.py",
+      "bytes": 31145,
+      "sha256": "90d6014d81de4add3acf17cd551076849a3dda5edd3e865ff270c3f1dd7ed701"
+    },
+    {
+      "path": "caller-gaps.jsonl",
+      "bytes": 384,
+      "sha256": "3accdcf2a01d04f7d1ea0b59730caf7429b7faf212a3c1bc84a15c70b2f89b7a"
+    },
+    {
+      "path": "catalog-pins.jsonl",
+      "bytes": 3734,
+      "sha256": "86cbd981740ed4ddb2dcc97f15bf60f9bd54ced10dd28124cb8c04ba8c6ff4b3"
+    },
+    {
+      "path": "glossary-reference-pins.jsonl",
+      "bytes": 31677,
+      "sha256": "554629e1e1a694b5ef48cb4b5e13a0e67e93ae9a7dce41c3834aa6201dd8e5fb"
+    },
+    {
+      "path": "live-head.json",
+      "bytes": 573,
+      "sha256": "fd69f0286adcd6a2b05cce8dc49d0d284596a117517b9661d31797c463a3ba21"
+    },
+    {
+      "path": "locale-formality-checks.jsonl",
+      "bytes": 87268,
+      "sha256": "7123732b3700cb5855d13a3314256ec1386ccc5e4816dfb3f88dd6391ad651c5"
+    },
+    {
+      "path": "prior-disposition-boundary-reattestation.json",
+      "bytes": 10157,
+      "sha256": "4354c4f72495da1fb4e94dc87661dbecb843da72d27d2b64bc3ff2874561e289"
+    },
+    {
+      "path": "review-ledger.jsonl",
+      "bytes": 271357,
+      "sha256": "425dc0d4190e880f43619d15fcf5feaea53a4a06fc6ac7814000215a0af00d9a"
+    },
+    {
+      "path": "source-caller-pins.jsonl",
+      "bytes": 18220,
+      "sha256": "fa0a3a78c15cf9179701aae219c9f47fb7223ebddbe9fb860af78b7c80766b35"
+    },
+    {
+      "path": "source-window-and-boundaries.jsonl",
+      "bytes": 3581,
+      "sha256": "37f04f12f0c2b59b744d9820531d878258fe8844aa48a35aa51c22d903bc1b91"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 5561,
+      "sha256": "f2fb1055228fcec6ffecd3081425e9a1d68096fde2f7f0d4a440b1f6922244f6"
+    },
+    {
+      "path": "terminology-sources.md",
+      "bytes": 1977,
+      "sha256": "58d636adeed44fdf428f79f2b31fa730b2640075a7636c1e66825e40fd99f7f8"
+    }
+  ],
+  "sha256SumsSha256": "91ebeb555c0c1a9fb39907d2510b685ac879cf0696e56a846acdb0030280f230"
+}

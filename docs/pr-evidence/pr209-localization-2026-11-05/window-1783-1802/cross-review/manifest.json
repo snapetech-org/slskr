@@ -1,0 +1,144 @@
+{
+  "artifact": "slskR PR #209 W1783-W1802 integrated cross-review ledger",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "window": "W1783-W1802",
+  "head": "0264a4fcaa944fee61049efec0cf3c451416c8b9",
+  "tree": "895e57c178d959a23aceddead27623f2dd854ba0",
+  "inputPackets": {
+    "candidateFree": {
+      "path": "../candidate-free-input",
+      "sha256SumsFileSha256": "368b3bcc5101b6c0d12c663b622d9a7c8b26dc6cd12c8c01cb119e300a8f9895",
+      "manifestSha256": "4548970cc4b77f093cb443e20d6c1a8f768ba154bf77cf8188bcb93e2ba70198",
+      "currentTargetCellsSha256": "021f178cef7c4546d66a71107d5e20d0894452eb4c31e27ceb7a15fe1f7ce0c1",
+      "sourceQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+      "sourceContextsSha256": "a5dbdcfc66aa38d86302acb6905fa4d9939554efaa8061c9b56572781119d1bc",
+      "activeHoldSha256": "a0fad001e7c4edcf1139aada774150dd5f7b5662f48531b0f97ac84de7517f75",
+      "previousWindowReadbackSha256": "dd3ac56a6e0015b55a38ce5acc2a1524a8de38cd2c615fe4aa96a765d6d771f3"
+    },
+    "primary": {
+      "path": "../primary-review",
+      "sha256SumsFileSha256": "f1a51a357bc94bc5800c212e09c6a26cb4734540d03f858ab7d8666bf1eac576",
+      "summarySha256": "8d818e2eec2cdaf6fc73700da445ffa91e4bdaee5dcf608422c12da14285da6d",
+      "ledgerSha256": "14efac84d5e789a32167bacc3a09a73d585ef58277c449b9defa56d44a84d735"
+    },
+    "blind": {
+      "path": "../blind-review",
+      "sha256SumsFileSha256": "f3a701fbe63766f006cec3b49bb0920d4935178ea4615e91c80739feb0e391a7",
+      "manifestSha256": "839fa76b7a829f3bd417b92b7e1eba5af6714980f2274ee75ffd056ecff5ef1e",
+      "ledgerSha256": "2146ddbb27cdd7d840a9aff1e5e5b86e04ba1aca687e66cdb8eb0d9d54a06a73"
+    }
+  },
+  "cellCount": 240,
+  "sourceCount": 20,
+  "localeCount": 12,
+  "callerOccurrenceCount": 29,
+  "callerReferenceCount": 29,
+  "dispositions": {
+    "accept_current": 183,
+    "correction": 55,
+    "hold": 1,
+    "refinement": 1
+  },
+  "selectionOrigins": {
+    "blind": 6,
+    "current": 184,
+    "primary": 30,
+    "primary_and_blind": 20
+  },
+  "changedTargetCount": 56,
+  "baselineTokenMismatchCountsRecomputed": {
+    "numeric": 1,
+    "protectedLiteral": 11
+  },
+  "selectedTokenMismatchCounts": {
+    "markup": 0,
+    "numeric": 0,
+    "placeholder": 0,
+    "protectedLiteral": 0
+  },
+  "localeReviewFlags": {
+    "count": 5,
+    "resolvedProvisionally": 4,
+    "held": 1,
+    "cells": [
+      {
+        "cellId": "1786::ar",
+        "blindIssueCodes": [
+          "PRODUCT_TERM_REVIEW"
+        ],
+        "resolution": "resolved_provisionally",
+        "selectedTargetSha256": "5a6f92dbc7f7d541487e05633ee5b053d76042e8f0262c43468d90968ffcf120"
+      },
+      {
+        "cellId": "1792::ko",
+        "blindIssueCodes": [
+          "FOLD_VS_GROUP_TERM"
+        ],
+        "resolution": "hold",
+        "selectedTargetSha256": "d6063554f492d1cdfd0134b5c26666468c13e0c4068542fb4a98bc04b1d11862"
+      },
+      {
+        "cellId": "1796::zh-Hans",
+        "blindIssueCodes": [
+          "FOLLOW_VS_TRACK"
+        ],
+        "resolution": "resolved_provisionally",
+        "selectedTargetSha256": "362620385ccf787cabd4121662487bfb4182b3f20ae9ae3b5ac2afb7d5a869f7"
+      },
+      {
+        "cellId": "1796::ar",
+        "blindIssueCodes": [
+          "PRODUCT_TERM_REVIEW"
+        ],
+        "resolution": "resolved_provisionally",
+        "selectedTargetSha256": "d17e0e3cd3d62a39ae49b21bd20543fcfc51d2f796f140e6481c3a5a8451ad90"
+      },
+      {
+        "cellId": "1800::hi",
+        "blindIssueCodes": [
+          "ACTION_LABEL_STYLE"
+        ],
+        "resolution": "resolved_provisionally",
+        "selectedTargetSha256": "9e6efe9cb6bccf716c80666d78cbfc0abcc41870acf38f1083c3b52f01026327"
+      }
+    ]
+  },
+  "holdCells": [
+    "1792::ko"
+  ],
+  "carriedPriorActiveHold": {
+    "holdId": "1719::id",
+    "position": 1719,
+    "locale": "id",
+    "targetHashUnchanged": true,
+    "sourceContextUnchanged": true,
+    "textIncluded": false
+  },
+  "previousWindowReadbackCount": 240,
+  "previousWindowReadbacksTextIncluded": false,
+  "nextBoundary": {
+    "boundary": true,
+    "position": 1803,
+    "sourceKeySha256": "46f390c945e7ff7e760db1cc63bed9f9429afa266c56413af8628ad801008175"
+  },
+  "reviewConfidence": "moderate",
+  "nativeSpeakerApproval": false,
+  "productFilesEdited": false,
+  "testsBuildsScansCiRun": false,
+  "selectionPolicy": {
+    "summary": "Require candidate-free source/caller/token evidence; preserve independently corroborated material corrections; retain current text when only a stylistic refinement is proposed; hold the unresolved Korean fold/group term.",
+    "localeReviewFlags": {
+      "resolvedProvisionally": [
+        "1786::ar",
+        "1796::zh-Hans",
+        "1796::ar",
+        "1800::hi"
+      ],
+      "held": [
+        "1792::ko"
+      ]
+    }
+  },
+  "checksumCoverage": "SHA256SUMS.txt covers every regular output file except itself."
+}

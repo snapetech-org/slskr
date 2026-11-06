@@ -93,6 +93,24 @@ describe('share API helpers', () => {
     ).rejects.toMatchObject({ message: 'Request failed: 502' });
   });
 
+  it('marks remote peer error details to bypass local message translation', async () => {
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(JSON.stringify({ error: 'Search query is required' }), {
+        status: 400,
+      }),
+    );
+
+    await expect(
+      fetchRemoteShareManifest('https://owner.example', 'grant-1', 'share-secret'),
+    ).rejects.toMatchObject({
+      isRemoteShareError: true,
+      response: {
+        data: { error: 'Search query is required' },
+        status: 400,
+      },
+    });
+  });
+
   it('normalizes remote owner endpoints before building stream URLs', () => {
     expect(
       buildRemoteShareStreamUrl(

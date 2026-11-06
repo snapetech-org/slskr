@@ -1,0 +1,48 @@
+{
+  "caller_branch_line_unchanged": true,
+  "current_source_blob_oid": "3298a9b4bac0bf99ebfb4a0cf828b9c68ccc2254",
+  "current_source_file_sha256": "231d7df12d9f20d3c8b534fecdfe32937ebbe4ea040c81e652c6c7adefeabee1",
+  "live_head": "eb0a4b9e51e5d52ecade154c3bcfde152f39eb7f",
+  "live_tree": "6dc321d066407fc212541720f38b15b5bab3dbfc",
+  "primary_catalog_base_pins_all_reverified": true,
+  "primary_head": "3a4c26a7faf1dacbd8f3a382d47243b7063a262d",
+  "primary_packet_path": "/mnt/disks/scratch/task-scratch/slskr-pr204-W816-not-configured-primary-20261102",
+  "primary_proposal_hashes_reverified": 12,
+  "primary_proposal_sha256s_file_entries": [
+    {
+      "bytes": 968,
+      "path": "README.md",
+      "sha256": "6267d1aa720e12a8becb0d4844169ab567b7c005cf25898b6c95d32e75f8058c"
+    },
+    {
+      "bytes": 3994,
+      "path": "catalog-snapshot.json",
+      "sha256": "f92057819df0d05a0f8b4e280167d61e839884bab381758b06bdbbb10b472f4a"
+    },
+    {
+      "bytes": 539,
+      "path": "source-context.json",
+      "sha256": "5aea287afc26a1bd5803d3684e5dff2372f78c29db5787d7effe4565ba95ce08"
+    },
+    {
+      "bytes": 687,
+      "path": "summary.json",
+      "sha256": "04af518558942556d84404dd3d12885888448fdd22d9228eeb7509f1a5be622a"
+    },
+    {
+      "bytes": 8031,
+      "path": "translation-proposals.jsonl",
+      "sha256": "8706340bccd11969f320624fc18e08253d3a100dba02de40db294bef9c16b6ee"
+    }
+  ],
+  "primary_source_blob_match": true,
+  "primary_source_blob_oid_claimed": "3bb24c3fb94ceb4815dce12999fbacb898437e83",
+  "primary_source_blob_oid_recomputed": "3bb24c3fb94ceb4815dce12999fbacb898437e83",
+  "primary_source_file_sha256_claimed": "1ffd38e6a6f23d725a35a2a52ed9f317a3c10bcff285a83b09ded775eaca976f",
+  "primary_source_file_sha256_recomputed_from_primary_head": "6fff815fc95b10400d84970dfa25f8bdf05d5bb360d719a3cf7f1cc62bcab8ea",
+  "primary_source_sha_mismatch": true,
+  "primary_tree": "9059d27001d306ea6b064560137ff2a51dd19021",
+  "render_wrapper_changed_since_primary": true,
+  "sha256s_entries_verified": 5,
+  "sha256s_file_sha256": "980de9d310b89a83832916b3513b0f07bf47c686db1d6abc406434519accdcb4"
+}

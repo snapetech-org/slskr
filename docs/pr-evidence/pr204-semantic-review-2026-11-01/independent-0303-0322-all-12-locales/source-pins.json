@@ -1,0 +1,136 @@
+{
+  "application": "slskR",
+  "application_head": "39dc86982d73737832639483e7a6a6de74bee953",
+  "application_parent": "979aec510db9c404a2831368d57b525773b5f4ab",
+  "application_tree": "d232fada7fdf0da778117134ff371f2c2d45a0da",
+  "catalog_sha256_after": {
+    "web/src/lib/locales/ui-labels.ar.json": "64cdd9fd1dde93bda472523e0b6fc4e13b01ed2f7d78a4d65665fe48922bbddb",
+    "web/src/lib/locales/ui-labels.de.json": "5a783e30c0863a3d523c353e3b24314f7741c3595c61d9f16e144f2be6fecfa3",
+    "web/src/lib/locales/ui-labels.es.json": "bf9bbde1fb4a850afaac1f4a524277228a5a75b704dae260288ed5d563618832",
+    "web/src/lib/locales/ui-labels.fr.json": "fd5125188d452cec459c9ec7edc650eef85d56851e87350419862442a5f2ccb1",
+    "web/src/lib/locales/ui-labels.hi.json": "2d6e588cf77e3ce1112f57c6afd97f5e592f0dfa1a900dc8594cc46f115b058b",
+    "web/src/lib/locales/ui-labels.id.json": "4dcbd521c8db8845d8fc84a6d13e010eee92f05d9978c92e6999d91c8076f380",
+    "web/src/lib/locales/ui-labels.ja.json": "a8ce5f1c2162b43fa2301120de66c48c447105a86c40cfc53ba5e276871b550c",
+    "web/src/lib/locales/ui-labels.ko.json": "a3c83d8b78ffffcf9e6e01b4abee34f8339c33dd420c64b6e990a80fc216ae82",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "ffbcf4263829c02c2ee265e3ab1fb46e1eb57c16ef0c178babb70d91c293cd27",
+    "web/src/lib/locales/ui-labels.vi.json": "6be79c8145ad2dc9590a6529bbe0ce67a668193bd8ca9fdca55baace67549956",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "fc2a17cfa6acd0301bf299c89fad975542633cb2af2513dcf1bd16eab0af68c6",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "0f9ce9801faeb703b0c7f07b47d86a26183726a22af7c1548ed4e57da51e7036"
+  },
+  "catalog_sha256_before": {
+    "web/src/lib/locales/ui-labels.ar.json": "53f688da529cd0135b7ac2cf18581c0710b5d28a83145678700f38191ea549b4",
+    "web/src/lib/locales/ui-labels.de.json": "486bde7b02cd3d57a88e4088166ca44bc4b8a56a75584b3f054b380909126415",
+    "web/src/lib/locales/ui-labels.es.json": "149b231db8d8cc5e9dbe63bcc8ac71f2e2d7c7d800312cb9631fec5cf473c8e8",
+    "web/src/lib/locales/ui-labels.fr.json": "c0f2e1ca0702ba4320ba0dba56b412c819c06f6cad9324de38873cbb135f1af3",
+    "web/src/lib/locales/ui-labels.hi.json": "4af6e7b9851d445dbfe251d650a860cec1ea88a0e4e9997f561b49dddb13f34f",
+    "web/src/lib/locales/ui-labels.id.json": "2c30f935ceb9fa9c294d1aae3800d7a7f8198b687f1604c82419f4be8d60b8d8",
+    "web/src/lib/locales/ui-labels.ja.json": "6b544f3be6f8712b5d0c85642179589bfb398338f81511d2c73f9cccf2382d18",
+    "web/src/lib/locales/ui-labels.ko.json": "d2b1003a7d7de613ec16ab6be0ed83fd7f77ff4be7bd521469ebd0d13c22a51b",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "e237a2304f628f3301618abb15aab5ba03e4800fa16fef41a1ec1af3119f6e89",
+    "web/src/lib/locales/ui-labels.vi.json": "5ed7f12f2245878e8096120f477361d74b3f9ed6b0fb61f0e75ca6eb23eb5f00",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "e9fc1c7328052dba8f88618b78422d8fd1a7a6a68dc91ea6d16b3ca08c7367c5",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "8cadca8952ac729ec2cee22cf5123355940429d0ed0837380ccd38c6ee2b2067"
+  },
+  "files": {
+    "web/src/components/Player/VisualizerOverlayControls.jsx": {
+      "bytes": 38871,
+      "git_blob_id": "0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf",
+      "sha256": "5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4"
+    },
+    "web/src/components/PlaylistIntake/PlaylistIntake.jsx": {
+      "bytes": 32586,
+      "git_blob_id": "162c8fb6dff17671f35471b4bae605da08b90447",
+      "sha256": "a978f80c022835c003d35db99b38037dee622c6456d9cbc46688f810867e3ae6"
+    },
+    "web/src/components/Rooms/RoomCreateModal.jsx": {
+      "bytes": 5509,
+      "git_blob_id": "416dd82df9642e82c3ae7827301d631dcbd2c1e7",
+      "sha256": "cbf45ac308798a22db6a4478cb8fb90a68c83c2367c6629a309c2f0a46c75dac"
+    },
+    "web/src/components/Search/Detail/SearchFilterModal.jsx": {
+      "bytes": 13692,
+      "git_blob_id": "7765f8e075878a6f8a883eaca82ed2b8ee4ed94e",
+      "sha256": "b842680bae7a555b34814b900a55e3bca05485fdad27b10411c47c5c63034968"
+    },
+    "web/src/components/System/Integrations/FtpIntegrationPanel.jsx": {
+      "bytes": 16423,
+      "git_blob_id": "81cb196f7be0d388c0dd2988f283990d958ae7fa",
+      "sha256": "71a1dfcb043820f9f5ef0a4ee7d142fb308e7943f049b0dbdb9b60d22a4724a0"
+    },
+    "web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx": {
+      "bytes": 28162,
+      "git_blob_id": "327b7f895fdc64b4010aaa3bd787e5f38e64fb58",
+      "sha256": "1cc2a189124afc784443085977608cf70ef9c1009143a110e74af7adb8e9f028"
+    },
+    "web/src/components/System/Integrations/SourceFeedIntegrationsPanel.jsx": {
+      "bytes": 19301,
+      "git_blob_id": "6a8c88b73cbf55eec7d7ac0d23b8d86005b854be",
+      "sha256": "3535dd1d9d37b9f01a451ad1b8220c864db8a0d3e6c074b9290eaf71b738af4e"
+    },
+    "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx": {
+      "bytes": 24235,
+      "git_blob_id": "4f3c8484d8d23746369ce7619ab4e017849dfb89",
+      "sha256": "8cb1922e358f7229d7f8147f41e18bffa3146283c270a5844393fc72f755c6ca"
+    },
+    "web/src/components/System/Mesh/MeshEvidencePolicy.jsx": {
+      "bytes": 14258,
+      "git_blob_id": "2d8c7f594e9d3dc09192182cd1a7beefbc300f6d",
+      "sha256": "b4dd46c29e740ea03bf84898655b413fc02bfe6274fbaa1c9964ed59e9c475a7"
+    },
+    "web/src/components/System/Security/AdversarialSettings.jsx": {
+      "bytes": 19390,
+      "git_blob_id": "1ff1afe2b375fe044b6542e27cae3f6bce20f3c9",
+      "sha256": "c82c38e14d05a22e4787a0991ea372c74d07a3a5988e87b51891133e4f802704"
+    },
+    "web/src/components/Wishlist/Wishlist.jsx": {
+      "bytes": 20126,
+      "git_blob_id": "54d5e35d9f027ea547f746df800fabd491c3bed7",
+      "sha256": "74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7"
+    },
+    "web/src/lib/mediaServerIntegrations.js": {
+      "bytes": 9869,
+      "git_blob_id": "cb7ea2f94c4db646873aad3fab6a59ebaefad341",
+      "sha256": "7e97c9c2c5bb798c28fdb21b7028e0abc093ec7b7fe97e9179887bc7ef668e05"
+    },
+    "web/src/lib/meshEvidencePolicy.js": {
+      "bytes": 9630,
+      "git_blob_id": "bb3bebf92b8d5cb63723a14d82688c9adc08474a",
+      "sha256": "e6741dc9180fd5543407fd402c85ade0b78d451c604f3f33f8c08551840cd4df"
+    }
+  },
+  "git_blob_ids": {
+    "web/src/components/Player/VisualizerOverlayControls.jsx": "0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf",
+    "web/src/components/PlaylistIntake/PlaylistIntake.jsx": "162c8fb6dff17671f35471b4bae605da08b90447",
+    "web/src/components/Rooms/RoomCreateModal.jsx": "416dd82df9642e82c3ae7827301d631dcbd2c1e7",
+    "web/src/components/Search/Detail/SearchFilterModal.jsx": "7765f8e075878a6f8a883eaca82ed2b8ee4ed94e",
+    "web/src/components/System/Integrations/FtpIntegrationPanel.jsx": "81cb196f7be0d388c0dd2988f283990d958ae7fa",
+    "web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx": "327b7f895fdc64b4010aaa3bd787e5f38e64fb58",
+    "web/src/components/System/Integrations/SourceFeedIntegrationsPanel.jsx": "6a8c88b73cbf55eec7d7ac0d23b8d86005b854be",
+    "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx": "4f3c8484d8d23746369ce7619ab4e017849dfb89",
+    "web/src/components/System/Mesh/MeshEvidencePolicy.jsx": "2d8c7f594e9d3dc09192182cd1a7beefbc300f6d",
+    "web/src/components/System/Security/AdversarialSettings.jsx": "1ff1afe2b375fe044b6542e27cae3f6bce20f3c9",
+    "web/src/components/Wishlist/Wishlist.jsx": "54d5e35d9f027ea547f746df800fabd491c3bed7",
+    "web/src/lib/mediaServerIntegrations.js": "cb7ea2f94c4db646873aad3fab6a59ebaefad341",
+    "web/src/lib/meshEvidencePolicy.js": "bb3bebf92b8d5cb63723a14d82688c9adc08474a"
+  },
+  "native_speaker_review": "not_provided",
+  "review_head": "979aec510db9c404a2831368d57b525773b5f4ab",
+  "review_tree": "3b07b6e7658771101f3a83c7a5ecdbc96b8af2a4",
+  "sha256": {
+    "web/src/components/Player/VisualizerOverlayControls.jsx": "5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4",
+    "web/src/components/PlaylistIntake/PlaylistIntake.jsx": "a978f80c022835c003d35db99b38037dee622c6456d9cbc46688f810867e3ae6",
+    "web/src/components/Rooms/RoomCreateModal.jsx": "cbf45ac308798a22db6a4478cb8fb90a68c83c2367c6629a309c2f0a46c75dac",
+    "web/src/components/Search/Detail/SearchFilterModal.jsx": "b842680bae7a555b34814b900a55e3bca05485fdad27b10411c47c5c63034968",
+    "web/src/components/System/Integrations/FtpIntegrationPanel.jsx": "71a1dfcb043820f9f5ef0a4ee7d142fb308e7943f049b0dbdb9b60d22a4724a0",
+    "web/src/components/System/Integrations/NotificationIntegrationsPanel.jsx": "1cc2a189124afc784443085977608cf70ef9c1009143a110e74af7adb8e9f028",
+    "web/src/components/System/Integrations/SourceFeedIntegrationsPanel.jsx": "3535dd1d9d37b9f01a451ad1b8220c864db8a0d3e6c074b9290eaf71b738af4e",
+    "web/src/components/System/MediaCore/ContentDescriptorRetrievalPanel.jsx": "8cb1922e358f7229d7f8147f41e18bffa3146283c270a5844393fc72f755c6ca",
+    "web/src/components/System/Mesh/MeshEvidencePolicy.jsx": "b4dd46c29e740ea03bf84898655b413fc02bfe6274fbaa1c9964ed59e9c475a7",
+    "web/src/components/System/Security/AdversarialSettings.jsx": "c82c38e14d05a22e4787a0991ea372c74d07a3a5988e87b51891133e4f802704",
+    "web/src/components/Wishlist/Wishlist.jsx": "74cf746ed5b9dcb176b36ada63bdcbac711411ea9e457ad97cd3d2537d972ca7",
+    "web/src/lib/mediaServerIntegrations.js": "7e97c9c2c5bb798c28fdb21b7028e0abc093ec7b7fe97e9179887bc7ef668e05",
+    "web/src/lib/meshEvidencePolicy.js": "e6741dc9180fd5543407fd402c85ade0b78d451c604f3f33f8c08551840cd4df"
+  },
+  "source_catalog_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_catalog_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152"
+}

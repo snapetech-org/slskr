@@ -1,0 +1,104 @@
+# Runtime source context at PR #204 code head 7ff454828398de6a3cfb72fe7f0ed21fe419425b (tree 9e9f2aa743c4ff3236af8f99619803bdc3a37152)
+
+The review head 271c782fd27e8c5e33bac0014d87cc7100c1b9bf (tree 29b89f7145b7a14b71dca0c76168e0bd5d0a5b2e) adds evidence/docs only after this source/catalog snapshot. Cited runtime files and locale catalogs match the frozen source snapshot.
+
+## `web/src/components/CompatibilityDashboard.jsx` — blob `831b00821cf5999e39ce586eab76d81bfdbdbb82`, SHA-256 `1e85738718ef2de4dc40358f746163cabb6192fca4072a8bf30ba0e133dbd27f`
+
+Lines 32–39:
+32: const HISTORY_RANGES = [
+33:   { buckets: 24, days: 1, get label() { return interfaceText("24h"); } },
+34:   { buckets: 84, days: 7, get label() { return interfaceText("7d"); } },
+35:   { buckets: 60, days: 30, get label() { return interfaceText("30d"); } },
+36:   { buckets: 90, days: 90, get label() { return interfaceText("90d"); } },
+37:   { buckets: 90, days: 180, get label() { return interfaceText("180d"); } },
+38:   { buckets: 100, days: 365, get label() { return interfaceText("1y"); } },
+39:   { buckets: 100, days: null, get label() { return interfaceText("All"); } },
+
+## `web/src/components/Player/PlayerStatsModal.jsx` — blob `6a26dc806b563672712209ade6cdbba3d998bad3`, SHA-256 `ea9a17c1e064db7ec5f70c095a9bd0fb4f15476428007bf3472fcd7b2c5a4292`
+
+Lines 272–277:
+272:         <div className="player-stats-ranges" role="group" aria-label={interfaceText("Listening stats range")} {...interfaceTextProps("Listening stats range")}>
+273:           {[
+274:             { label: interfaceText("7D"), value: 7 },
+275:             { label: interfaceText("30D"), value: 30 },
+276:             { label: interfaceText("90D"), value: 90 },
+277:             { label: interfaceText("All"), value: null },
+
+## `web/src/components/Player/VisualizerOverlayControls.jsx` — blob `0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf`, SHA-256 `5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4`
+
+Lines 508–519:
+508:                     value={nativeFpsCap}
+509:                    {...interfaceTextProps("RustyMilk FPS cap")}>
+510:                     <option value="full">{interfaceText("Full FPS")}</option>
+511:                     <option value="60">{interfaceText("60 FPS")}</option>
+512:                     <option value="30">{interfaceText("30 FPS")}</option>
+513:                     <option value="24">{interfaceText("24 FPS")}</option>
+514:                   </select>
+515:                 }
+516:                {...interfaceTextProps("Cap RustyMilk rendering for lower GPU load, or leave it uncapped for maximum smoothness.")}/>
+517:               <Popup
+518:                 content={interfaceText("Choose a RustyMilk quality preset. Efficient lowers GPU load, Balanced caps at 60 FPS, and Full leaves rendering uncapped.")}
+519:                 trigger={
+
+Lines 678–701:
+678:                      {...interfaceTextProps("RustyMilk beats per preset")}>
+679:                       <option value={4}>{interfaceText("4 beats")}</option>
+680:                       <option value={8}>{interfaceText("8 beats")}</option>
+681:                       <option value={16}>{interfaceText("16 beats")}</option>
+682:                     </select>
+683:                   }
+684:                  {...interfaceTextProps("Choose how many detected bass beats should pass before RustyMilk advances to another preset.")}/>
+685:               ) : null}
+686:               {rustyMilkAutomationMode === 'timed' ? (
+687:                 <Popup
+688:                   content={interfaceText("Choose how long RustyMilk should wait before timed preset changes.")}
+689:                   trigger={
+690:                     <select
+691:                       aria-label={interfaceText("RustyMilk timed preset interval")}
+692:                       className="player-visualizer-native-library"
+693:                       data-testid="visualizer-native-automation-interval"
+694:                       onChange={updateRustyMilkAutomationInterval}
+695:                       value={rustyMilkAutomationSettings.timedIntervalSeconds}
+696:                      {...interfaceTextProps("RustyMilk timed preset interval")}>
+697:                     <option value={15}>{interfaceText("15 sec")}</option>
+698:                     <option value={30}>{interfaceText("30 sec")}</option>
+699:                     <option value={60}>{interfaceText("60 sec")}</option>
+700:                     </select>
+701:                   }
+
+## `web/src/components/System/MediaCore/MediaCoreContentHashingPanel.jsx` — blob `cbe36436c936b1fcca220da0915288759f5a0aa3`, SHA-256 `ab7783c0f29868f38cd4d7a94eaafd992bf03948b4ba8be76a8a5045e16ed601`
+
+Lines 244–253:
+244:                 <Form.Field>
+245:                   <label><LocalizedText source={"Pixel Data (comma-separated bytes 0-255)"} /></label>
+246:                   <TextArea
+247:                     onChange={(e) => setImagePixels(e.target.value)}
+248:                     placeholder={interfaceText("255, 128, 64, ... (RGBA pixel data)")}
+249:                     rows={3}
+250:                     value={imagePixels}
+251:                    {...interfaceTextProps("255, 128, 64, ... (RGBA pixel data)")}/>
+252:                 </Form.Field>
+253:                 <Button
+
+## `web/src/components/System/SwarmAnalytics/index.jsx` — blob `6b4db5a84a05d1ffdb560e0e2c8d2708590f3ded`, SHA-256 `b020adc0f11520ad1fe52080fdf1d90fe717c3dea9a3c5379973b31514d88c9d`
+
+Lines 47–53:
+47:   const timeWindowOptions = [
+48:     { key: '1', text: interfaceText("1 hour"), value: 1 },
+49:     { key: '6', text: interfaceText("6 hours"), value: 6 },
+50:     { key: '24', text: interfaceText("24 hours"), value: 24 },
+51:     { key: '72', text: interfaceText("3 days"), value: 72 },
+52:     { key: '168', text: interfaceText("7 days"), value: 168 },
+53:   ];
+
+## Language references and findings
+
+- For Arabic count nouns after 4 and 8, the University of California, Davis Arabic Without Walls Grammar Note 7.4 and Al Jazeera Learning Arabic explain the plural-noun rule for numbers 3–10. This supports the proposed `4 نبضات` and `8 نبضات`.
+- The current Hindi `24 घंटों` is a standalone range-option label; the same catalog uses direct-form `24 घंटे` for “24 hours”.
+- The Hindi RGBA placeholder transliterates a standard color-format acronym that is shown as `RGBA` by the source and most locales.
+- Spanish `7 dias` is missing the acute accent in `días`.
+- Larousse lists musical/time `beat` as `temps`, supporting the French `4 temps` translation. The sibling 8/16-beat options use `battements`; this is a style inconsistency, but both terms convey a musical beat in this context, so no correction is proposed.
+
+- Arabic Without Walls (University of California, Davis), Grammar Note 7.4: Numbers 3–10: https://arabicwithoutwalls.ucdavis.edu/chapter7/grammar_note74.html — The counted noun after a numeral from 3 through 10 is plural.
+- Al Jazeera Learning Arabic, أحكام العدد والمعدود: https://learning.aljazeera.net/ar/node/19761 — The counted noun after numbers 3–10 is plural and genitive.
+- Larousse English–French dictionary, beat: https://www.larousse.fr/dictionnaires/anglais-francais/beat/564977 — For music/time, beat translates as temps; this supports French “4 temps” in the bass-beat selector.

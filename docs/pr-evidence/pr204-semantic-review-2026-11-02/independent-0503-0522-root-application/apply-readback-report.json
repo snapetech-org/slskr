@@ -1,0 +1,96 @@
+{
+  "task": "slskR PR #204 W503–522 exact-hash apply readback",
+  "pr_input_head": "7bf9f91c0f34269434fee70cd2f7067afeaf6122",
+  "pr_input_tree": "b598a6ad004a504037e64ebf541b5c9e01d54765",
+  "reviewed_cells": 240,
+  "applied_target_updates": 49,
+  "dispositions": {
+    "primary_proposals_accepted": 29,
+    "primary_proposals_refined": 10,
+    "independent_missed_corrections": 10,
+    "accepted_current_unchanged": 155,
+    "prior_routed_holds_unchanged": 12,
+    "no_op_cells_unchanged": 24
+  },
+  "changed_catalogs": {
+    "web/src/lib/locales/ui-labels.ar.json": {
+      "key_count": 5437,
+      "updates": 4,
+      "before_sha256": "2291f0d1fb8982d5ebe8cc59b276b6e8237f9441577aab44a9400e29d7f45382",
+      "after_sha256": "fa84f9bfd93ff4b3b061fe9298448c5f57d0964a7f302885063c113dc7c3f6d9"
+    },
+    "web/src/lib/locales/ui-labels.de.json": {
+      "key_count": 5437,
+      "updates": 3,
+      "before_sha256": "2698ec20949a96e617bf10c4ad7752960e942d6b8a1b8e98f5637f7b392fc542",
+      "after_sha256": "d952d10b8ce9de3f619b5b952f90e19bf2d08321aa719710bae6861a3ba0d32b"
+    },
+    "web/src/lib/locales/ui-labels.es.json": {
+      "key_count": 5437,
+      "updates": 4,
+      "before_sha256": "7e5b6402622bbe43846c77d29d30a0cd8a7ad9b9db540e364631d8418a90140b",
+      "after_sha256": "c57e8f4bd62dd6378467294c01fb4f73f74d630b0ece17959303d523948a5898"
+    },
+    "web/src/lib/locales/ui-labels.fr.json": {
+      "key_count": 5437,
+      "updates": 3,
+      "before_sha256": "641ebb4479f8bc070324e5f8855b9d740b15b2546337d888f0d55393ac4040bf",
+      "after_sha256": "c6f79c3ce6d6beccf7ece8dad5232f97c0f5aaf59b2aec6e93f21616334de762"
+    },
+    "web/src/lib/locales/ui-labels.hi.json": {
+      "key_count": 5437,
+      "updates": 3,
+      "before_sha256": "e6b32887cc1812b51b6e0c37d57899a0342a6427b9403fef8ad95daf1deac68f",
+      "after_sha256": "9b1116d702a838126c789e17d64082eb455321a7d1e047383bdc447e08d71530"
+    },
+    "web/src/lib/locales/ui-labels.id.json": {
+      "key_count": 5437,
+      "updates": 4,
+      "before_sha256": "cd5cd3063e01fc299f9cd5ec1ffd4539b72bc610dbb33eca5ada911e95d2086c",
+      "after_sha256": "b55d71c8f02a39c67758101cba0f19bc3a569501146771e08c8e3f8b2c502bcf"
+    },
+    "web/src/lib/locales/ui-labels.ja.json": {
+      "key_count": 5437,
+      "updates": 3,
+      "before_sha256": "f1a614205a69a4c775af8d16a9b835a1690fba5bfee5d94cdfa6b65419f1e8aa",
+      "after_sha256": "920f95310299bc86c9b27c85f214b65c37d46e2bffdecac48ed18e7b1a0485f3"
+    },
+    "web/src/lib/locales/ui-labels.ko.json": {
+      "key_count": 5437,
+      "updates": 3,
+      "before_sha256": "44d7253fdf8b30b313761b28855ba7d4ebdbb9087976b854b754f6860df350d0",
+      "after_sha256": "14ac435bbc87ad2cf6ea2a909ad06b634c43d891927bdd7dcc341da6da93b40e"
+    },
+    "web/src/lib/locales/ui-labels.pt-BR.json": {
+      "key_count": 5437,
+      "updates": 5,
+      "before_sha256": "f424ca49b1583a4344ffe5054e7404c74265fa03c7422001a521deb1e12ef952",
+      "after_sha256": "9d48f4e2a177a581e9bc9c7ff2461ed0b5b7f0987dd9eab401bfef07601c8e02"
+    },
+    "web/src/lib/locales/ui-labels.vi.json": {
+      "key_count": 5437,
+      "updates": 5,
+      "before_sha256": "04630d511b753e9fcb6b19491dd0b24dba6c7d2a30580ba0eef41fb24d44348b",
+      "after_sha256": "9e391a9e479ddcc9d86aec0c620abafd389cedcd6ca33e213bc22990ef8fb15f"
+    },
+    "web/src/lib/locales/ui-labels.zh-Hans.json": {
+      "key_count": 5437,
+      "updates": 6,
+      "before_sha256": "a9e9493fb4aed6dd35298d8eceb074b088d470bbcc481de843570de7ef2f9cbf",
+      "after_sha256": "8327b72a4e062aa98d2468222cd71a2f1a592c7e55367e47227a2c8eeca3c54a"
+    },
+    "web/src/lib/locales/ui-labels.zh-Hant.json": {
+      "key_count": 5437,
+      "updates": 6,
+      "before_sha256": "ac43225419cd21b8380a101bfef6e26256336091e75074ef80e79de8af03480e",
+      "after_sha256": "8f4d8b7c6d84685479cabf78ba7ef0738d9047299e73c8d8b9783ba298cd3da5"
+    }
+  },
+  "all_240_source_current_final_hashes_verified": true,
+  "all_49_readbacks_exact": true,
+  "placeholder_mismatches": 0,
+  "prior_routed_hold_values_unchanged": true,
+  "no_op_values_unchanged": true,
+  "native_speaker_review_required": true,
+  "tests_builds_scans_ci_workflows_releases_tags_merge": "not run or changed"
+}

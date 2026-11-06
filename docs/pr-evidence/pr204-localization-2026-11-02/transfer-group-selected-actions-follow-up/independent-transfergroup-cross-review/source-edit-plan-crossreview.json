@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "exactHead": "aa106d2505de8c9ace2d7d6dbf2af9777651947d",
+  "exactTree": "f99e717b4b77c8da098e7b8fc163926d4d32e926",
+  "decision": "partial-hold",
+  "retryCancelDecision": "accept",
+  "removeDecision": "hold",
+  "rationale": "The Retry/Cancel branches preserve one-item source keys and use complete localized keys for multiple selections in both visible content and title/accessibility text. All six exact old-key references are covered and no other code reference was found. Hold the Remove branch and its old catalog-key retirement: the pinned backend treats the normal remove=true request as local-file deletion, the same condition reached by deleteFile=true, contrary to the packet assertion that the first action only removes the transfer entry.",
+  "oldKeyCallerHits": [
+    "web/src/components/Transfers/TransferGroup.jsx:160:                  content={interfaceText(\"Retry{all}\", { \"all\": (all) })}",
+    "web/src/components/Transfers/TransferGroup.jsx:163:                 {...interfaceTextProps(\"Retry{all}\")}/>",
+    "web/src/components/Transfers/TransferGroup.jsx:169:                  content={interfaceText(\"Cancel{all}\", { \"all\": (all) })}",
+    "web/src/components/Transfers/TransferGroup.jsx:172:                 {...interfaceTextProps(\"Cancel{all}\")}/>",
+    "web/src/components/Transfers/TransferGroup.jsx:180:                    content={interfaceText(\"Remove{all}\", { \"all\": (all) })}",
+    "web/src/components/Transfers/TransferGroup.jsx:183:                   {...interfaceTextProps(\"Remove{all}\")}/>"
+  ],
+  "expectedOldKeyCodeReferencesAfterPlan": 0,
+  "sourceEditPlan": {
+    "addSourceSelectionLines": [],
+    "file": "web/src/components/Transfers/TransferGroup.jsx",
+    "helperRationale": "interfaceText performs an exact key lookup and returns a complete translated string. interfaceTextProps computes the same text for title/aria-label. Passing the same full variant to both avoids English suffix concatenation, supports locale-specific word order, and yields no unresolved {all} placeholder.",
+    "newEnglishSourceIds": [
+      {
+        "placeholderSet": [],
+        "sha256": "d4d28fa24f2b89bd2bba42f560ed723eb2c4202943ce63e482abfc4b4992db6c",
+        "sourceId": "Retry selected"
+      },
+      {
+        "placeholderSet": [],
+        "sha256": "34e18e5e5389ea6faf6da1035fb9a112f200c8412e8a5d9d848320063edc3507",
+        "sourceId": "Cancel selected"
+      },
+      {
+        "placeholderSet": [],
+        "sha256": "78d22b05b5081f5276035a4118378217933602ae17ec815ef8c7df5e7c3db1e1",
+        "sourceId": "Remove selected"
+      }
+    ],
+    "recommendedCodeSnippet": "const selected = this.getSelectedFiles();\nconst hasMultipleSelected = selected.length > 1;\n\n// Retry button\ncontent={interfaceText(hasMultipleSelected ? 'Retry selected' : 'Retry')}\n{...interfaceTextProps(hasMultipleSelected ? 'Retry selected' : 'Retry')}\n\n// Cancel button\ncontent={interfaceText(hasMultipleSelected ? 'Cancel selected' : 'Cancel')}\n{...interfaceTextProps(hasMultipleSelected ? 'Cancel selected' : 'Cancel')}\n\n// Remove button\ncontent={interfaceText(hasMultipleSelected ? 'Remove selected' : 'Remove')}\n{...interfaceTextProps(hasMultipleSelected ? 'Remove selected' : 'Remove')}",
+    "removeLine": {
+      "new": "const hasMultipleSelected = selected.length > 1;",
+      "old": "const all = selected.length > 1 ? ' Selected' : '';"
+    },
+    "replaceButtonCalls": [
+      {
+        "newContent": "interfaceText(hasMultipleSelected ? 'Retry selected' : 'Retry')",
+        "newProps": "interfaceTextProps(hasMultipleSelected ? 'Retry selected' : 'Retry')",
+        "oldContent": "interfaceText(\"Retry{all}\", { \"all\": (all) })",
+        "oldProps": "interfaceTextProps(\"Retry{all}\")"
+      },
+      {
+        "newContent": "interfaceText(hasMultipleSelected ? 'Cancel selected' : 'Cancel')",
+        "newProps": "interfaceTextProps(hasMultipleSelected ? 'Cancel selected' : 'Cancel')",
+        "oldContent": "interfaceText(\"Cancel{all}\", { \"all\": (all) })",
+        "oldProps": "interfaceTextProps(\"Cancel{all}\")"
+      },
+      {
+        "newContent": "interfaceText(hasMultipleSelected ? 'Remove selected' : 'Remove')",
+        "newProps": "interfaceTextProps(hasMultipleSelected ? 'Remove selected' : 'Remove')",
+        "oldContent": "interfaceText(\"Remove{all}\", { \"all\": (all) })",
+        "oldProps": "interfaceTextProps(\"Remove{all}\")"
+      }
+    ],
+    "threshold": "Preserve selected.length > 1; exactly one selected item continues to use the existing Retry/Cancel/Remove source key. The new variants are direct static string arguments to interfaceText and interfaceTextProps so source discovery can see every English ID."
+  },
+  "semanticEvidencePins": [
+    {
+      "path": "web/src/components/Transfers/TransferGroup.jsx",
+      "fileBlob": "489191988e137700c6e3c26a38b01d80807839c2",
+      "fileSha256": "73e4d6bb7a4cb5475d8e9fe98e227bea4983529d4a6e21d287359f033a8dc519",
+      "line": 61,
+      "lineText": "  handleRemoveAll = async (selected, deleteFile = false) => {",
+      "lineSha256": "caffa2d404c0363e94f929da8bbe1465fae09d248f7f3fb5b57342b85e5c3e92"
+    },
+    {
+      "path": "web/src/components/Transfers/TransferGroup.jsx",
+      "fileBlob": "489191988e137700c6e3c26a38b01d80807839c2",
+      "fileSha256": "73e4d6bb7a4cb5475d8e9fe98e227bea4983529d4a6e21d287359f033a8dc519",
+      "line": 72,
+      "lineText": "    await this.props.removeAll(selected, deleteFile);",
+      "lineSha256": "fa3d3f2fe39673ef83d498d4e2be1d6fc5616aa7e48c88d96e64252fcefc7e11"
+    },
+    {
+      "path": "web/src/components/Transfers/TransferGroup.jsx",
+      "fileBlob": "489191988e137700c6e3c26a38b01d80807839c2",
+      "fileSha256": "73e4d6bb7a4cb5475d8e9fe98e227bea4983529d4a6e21d287359f033a8dc519",
+      "line": 182,
+      "lineText": "                    onClick={() => this.handleRemoveAll(selected)}",
+      "lineSha256": "e51f3aff1e02eb3bd369b5900fa81de234262d752c15f89e44c9c8a917558fcd"
+    },
+    {
+      "path": "web/src/components/Transfers/TransferGroup.jsx",
+      "fileBlob": "489191988e137700c6e3c26a38b01d80807839c2",
+      "fileSha256": "73e4d6bb7a4cb5475d8e9fe98e227bea4983529d4a6e21d287359f033a8dc519",
+      "line": 188,
+      "lineText": "                      onClick={() => this.handleRemoveAll(selected, true)}",
+      "lineSha256": "59c66838581b70a673c47b5896e70e6e1c18cb4cb7435bc9143126ec1536ec14"
+    },
+    {
+      "path": "web/src/components/Transfers/TransferGroup.jsx",
+      "fileBlob": "489191988e137700c6e3c26a38b01d80807839c2",
+      "fileSha256": "73e4d6bb7a4cb5475d8e9fe98e227bea4983529d4a6e21d287359f033a8dc519",
+      "line": 189,
+      "lineText": "                      title={interfaceText(\"Remove and Delete File(s) from Disk\")}",
+      "lineSha256": "3ee16305540348c0f618082b1c80a74c281bd45bb523fb6d49dbe734e43b7a3b"
+    },
+    {
+      "path": "web/src/components/Transfers/Transfers.jsx",
+      "fileBlob": "00f3488b547c2f6e4d97fbd6d0931b724ea3c17d",
+      "fileSha256": "744da23792a1fac5929a4802600b1cc7f238a3f3fabe1f33ded598b2b546b662",
+      "line": 571,
+      "lineText": "      await transfersLibrary.cancel({",
+      "lineSha256": "a2d65fd72ce3870d3b7eca3d50285ccc44f24796622ca55c8679b696e58e460c"
+    },
+    {
+      "path": "web/src/components/Transfers/Transfers.jsx",
+      "fileBlob": "00f3488b547c2f6e4d97fbd6d0931b724ea3c17d",
+      "fileSha256": "744da23792a1fac5929a4802600b1cc7f238a3f3fabe1f33ded598b2b546b662",
+      "line": 575,
+      "lineText": "        remove: true,",
+      "lineSha256": "ed844d5cf8933abde0120aec2c42169270d729fe819243f902da343b0ee89a1e"
+    },
+    {
+      "path": "web/src/components/Transfers/Transfers.jsx",
+      "fileBlob": "00f3488b547c2f6e4d97fbd6d0931b724ea3c17d",
+      "fileSha256": "744da23792a1fac5929a4802600b1cc7f238a3f3fabe1f33ded598b2b546b662",
+      "line": 592,
+      "lineText": "  const removeAll = (",
+      "lineSha256": "0a88be502de06b9ac2dc96cf5de9feaf7fe7398304793edce5907abb27d7267e"
+    },
+    {
+      "path": "web/src/components/Transfers/Transfers.jsx",
+      "fileBlob": "00f3488b547c2f6e4d97fbd6d0931b724ea3c17d",
+      "fileSha256": "744da23792a1fac5929a4802600b1cc7f238a3f3fabe1f33ded598b2b546b662",
+      "line": 594,
+      "lineText": "    deleteFile = false,",
+      "lineSha256": "f3ca3c9c1bc1b00a12e3a32ed2ec95363cf58dbd541689efef94fb8d7343fa92"
+    },
+    {
+      "path": "web/src/components/Transfers/Transfers.jsx",
+      "fileBlob": "00f3488b547c2f6e4d97fbd6d0931b724ea3c17d",
+      "fileSha256": "744da23792a1fac5929a4802600b1cc7f238a3f3fabe1f33ded598b2b546b662",
+      "line": 620,
+      "lineText": "          await remove({",
+      "lineSha256": "2a63b5b90c522e42bd9340c6407ed433bb3098b88441f736f3afe1b9401dd7fd"
+    },
+    {
+      "path": "web/src/components/Transfers/Transfers.jsx",
+      "fileBlob": "00f3488b547c2f6e4d97fbd6d0931b724ea3c17d",
+      "fileSha256": "744da23792a1fac5929a4802600b1cc7f238a3f3fabe1f33ded598b2b546b662",
+      "line": 621,
+      "lineText": "            deleteFile,",
+      "lineSha256": "1c69c8ba8ad51141454a13684a1d7cf5dd26fc505505c176b36e2724c7f38ed3"
+    },
+    {
+      "path": "web/src/lib/transfers.js",
+      "fileBlob": "d9d4afb3641d95727146d55d8761b3ab3f891f41",
+      "fileSha256": "c3887c3dcafd43e6446e1ef0e7447adb134b0fe6d7445af71b5ab71a3768a0f0",
+      "line": 160,
+      "lineText": "export const cancel = ({",
+      "lineSha256": "360aba60b098fe446713efb3df6a5789d60b6af21db3ff53f8ced63ea830a2aa"
+    },
+    {
+      "path": "web/src/lib/transfers.js",
+      "fileBlob": "d9d4afb3641d95727146d55d8761b3ab3f891f41",
+      "fileSha256": "c3887c3dcafd43e6446e1ef0e7447adb134b0fe6d7445af71b5ab71a3768a0f0",
+      "line": 164,
+      "lineText": "  remove = false,",
+      "lineSha256": "09e89390a3377cf64931c5da7d15a8c993389b8c0242466c7ec5607685133dff"
+    },
+    {
+      "path": "web/src/lib/transfers.js",
+      "fileBlob": "d9d4afb3641d95727146d55d8761b3ab3f891f41",
+      "fileSha256": "c3887c3dcafd43e6446e1ef0e7447adb134b0fe6d7445af71b5ab71a3768a0f0",
+      "line": 165,
+      "lineText": "  deleteFile = false,",
+      "lineSha256": "aa2807750442360d414b19d8f23c2bd7f40534404f3957c6964c795af76a87ea"
+    },
+    {
+      "path": "web/src/lib/transfers.js",
+      "fileBlob": "d9d4afb3641d95727146d55d8761b3ab3f891f41",
+      "fileSha256": "c3887c3dcafd43e6446e1ef0e7447adb134b0fe6d7445af71b5ab71a3768a0f0",
+      "line": 167,
+      "lineText": "  return api.delete(",
+      "lineSha256": "5f100ab4a01c9c9abfd8622f99216779c103a3e997f1e0a3893e4c5ee1fb269b"
+    },
+    {
+      "path": "web/src/lib/transfers.js",
+      "fileBlob": "d9d4afb3641d95727146d55d8761b3ab3f891f41",
+      "fileSha256": "c3887c3dcafd43e6446e1ef0e7447adb134b0fe6d7445af71b5ab71a3768a0f0",
+      "line": 168,
+      "lineText": "    `/transfers/${direction}s/${encodeURIComponent(username)}/${encodeURIComponent(id)}?remove=${remove}&deleteFile=${deleteFile}`,",
+      "lineSha256": "1697381768b01626f6529b0293a76b7685b8cbcf06b7dd606da49c0e9070f0ed"
+    },
+    {
+      "path": "crates/slskr/src/route_dispatch_group_2.rs",
+      "fileBlob": "116348860dfff4ccdaec5388a0cf18fe7756e7e1",
+      "fileSha256": "a7976e95166fc95e446fae2c72439d0b3db7234a46b8cc58328da122435dcb9a",
+      "line": 10,
+      "lineText": "        response = route_dispatch_group_2_transfer_files(context).await;",
+      "lineSha256": "009bd7f25573f654cd186d9f8fce32a9ed9758d56b67941ddad262d92c30f84c"
+    },
+    {
+      "path": "crates/slskr/src/route_dispatch_group_2_transfer_files.rs",
+      "fileBlob": "90734b79d7d997ed53dc2aa57b77fbecc180dfd2",
+      "fileSha256": "772548228e9511f7df24833dfa8d96a6569f633a86b7cd5e5116d45eef1265c9",
+      "line": 22,
+      "lineText": "            let remove_file = query_parameter(route.query, \"remove\")",
+      "lineSha256": "2212f69e68ffcc006f59f2f61d05797743f85f50612ba395ea3dd2c93967932f"
+    },
+    {
+      "path": "crates/slskr/src/route_dispatch_group_2_transfer_files.rs",
+      "fileBlob": "90734b79d7d997ed53dc2aa57b77fbecc180dfd2",
+      "fileSha256": "772548228e9511f7df24833dfa8d96a6569f633a86b7cd5e5116d45eef1265c9",
+      "line": 24,
+      "lineText": "                || query_parameter(route.query, \"deleteFile\").is_some_and(|value| value == \"true\");",
+      "lineSha256": "3f7d5e3915fba34aed07a1efbf48aaf5e470c8c5a07f1dcbb0a2224f505cf390"
+    },
+    {
+      "path": "crates/slskr/src/route_dispatch_group_2_transfer_files.rs",
+      "fileBlob": "90734b79d7d997ed53dc2aa57b77fbecc180dfd2",
+      "fileSha256": "772548228e9511f7df24833dfa8d96a6569f633a86b7cd5e5116d45eef1265c9",
+      "line": 50,
+      "lineText": "            if remove_file {",
+      "lineSha256": "75e412f3c39b715d786a5e66aa1a870b5417fc5cd87fa071f4325b452aa54483"
+    },
+    {
+      "path": "crates/slskr/src/route_dispatch_group_2_transfer_files.rs",
+      "fileBlob": "90734b79d7d997ed53dc2aa57b77fbecc180dfd2",
+      "fileSha256": "772548228e9511f7df24833dfa8d96a6569f633a86b7cd5e5116d45eef1265c9",
+      "line": 51,
+      "lineText": "                if let Some(path) = target.local_path.as_deref() {",
+      "lineSha256": "a37085e672553b781d95a46d9a966d39634e4ccbf4b6619451fd88274f731ece"
+    },
+    {
+      "path": "crates/slskr/src/route_dispatch_group_2_transfer_files.rs",
+      "fileBlob": "90734b79d7d997ed53dc2aa57b77fbecc180dfd2",
+      "fileSha256": "772548228e9511f7df24833dfa8d96a6569f633a86b7cd5e5116d45eef1265c9",
+      "line": 52,
+      "lineText": "                    if let Err(error) = remove_transfer_file_if_present(path).await {",
+      "lineSha256": "94ab4177fee4c0ce73f5c59178262f99ebfc07293546ad151402a16561231f1e"
+    }
+  ],
+  "removeActionSemantics": {
+    "defaultDeleteFile": false,
+    "transferGroupCall": "handleRemoveAll(selected)",
+    "transferGroupDefaultFlag": "deleteFile=false",
+    "transfersRemoveCall": "removeAll(selected,false)",
+    "clientApiCall": {
+      "remove": true,
+      "deleteFile": false
+    },
+    "activeRouteFileDeletePredicate": "remove == true || deleteFile == true",
+    "activeRouteDeletesLocalPathWhenPredicateTrue": true,
+    "separateDestructiveCall": "handleRemoveAll(selected,true)",
+    "separateDestructiveTitle": "Remove and Delete File(s) from Disk",
+    "crossReviewConclusion": "The normal Remove path and separate disk-delete path both satisfy the active route file-deletion predicate; clarify/fix behavior before approving Remove labels or retiring Remove{all}."
+  }
+}

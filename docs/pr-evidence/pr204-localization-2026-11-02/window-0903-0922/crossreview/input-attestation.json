@@ -1,0 +1,138 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "reviewWindow": "W903-W922",
+  "primaryPacket": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0903-0922-primary-20261102",
+  "primarySumsFileSha256": "91ebeb555c0c1a9fb39907d2510b685ac879cf0696e56a846acdb0030280f230",
+  "primaryPacketChecksums": {
+    "exitCode": 0,
+    "output": "README.md: OK\nall-seven-pr-snapshots.json: OK\nboundary-pins.jsonl: OK\nbuild_primary.py: OK\ncaller-gaps.jsonl: OK\ncatalog-pins.jsonl: OK\nglossary-reference-pins.jsonl: OK\nlive-head.json: OK\nlocale-formality-checks.jsonl: OK\nprior-disposition-boundary-reattestation.json: OK\nreview-ledger.jsonl: OK\nsource-caller-pins.jsonl: OK\nsource-window-and-boundaries.jsonl: OK\nsummary.json: OK\nterminology-sources.md: OK",
+    "stderr": ""
+  },
+  "livePullRequest": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "b1e814ef11d55fd1710d0e2522df14fee9ff0a70",
+    "isDraft": true,
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "apiTree": "50fef41fa1abcfcceb9a99cfd756ae014e51e286",
+  "remoteBranchHead": "b1e814ef11d55fd1710d0e2522df14fee9ff0a70",
+  "localHead": "b1e814ef11d55fd1710d0e2522df14fee9ff0a70",
+  "localTree": "50fef41fa1abcfcceb9a99cfd756ae014e51e286",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "worktreeStatus": "",
+  "catalogAttestations": [
+    {
+      "locale": "ar",
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "blob": "6fd357b133fdaa4fa2c3b3477035995e162be86e",
+      "fileSha256": "6a0841be02816a913d46bf835bd2472d2d29a19140c26d8993657128da8ccdf0",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2"
+    },
+    {
+      "locale": "de",
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "blob": "8db5c22df9b3d12f42717bee12d5852ec8e7c764",
+      "fileSha256": "adeb4d32721995c4720e3231ab7c071e439ca3558923ff424123b94abd0523cf",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2"
+    },
+    {
+      "locale": "es",
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "blob": "ca7d6dda5e373071ceb88d396641ce95e23f677f",
+      "fileSha256": "7e051a365253b308b5045233b2bbfa412f693accd8e272ffc10c0040e5f3b173",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2"
+    },
+    {
+      "locale": "fr",
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "blob": "03da56dbe42c584ea8a439bfb30cd14e799aaba6",
+      "fileSha256": "6637516b649ed0c2690f5916682f9316de4c46c393d404e7b1db978e28ec03ce",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2"
+    },
+    {
+      "locale": "hi",
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "blob": "c0aea39cd63c531bb09155e01f67349eb078aa03",
+      "fileSha256": "4ab6f78ab86b5a605e23badfb891badee65e31849fa9f5e46b354330e96dc793",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2"
+    },
+    {
+      "locale": "id",
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "blob": "df9730403a6cf169d27b9e7c33baa84bc372b208",
+      "fileSha256": "dbff3ac13f4b3ba3464c549ecde51aa08b5de1398eff0ecd7138ab172d9e8e74",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2"
+    },
+    {
+      "locale": "ja",
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "blob": "0f7fa2adff1298efdcd455887760cbdaf530dc67",
+      "fileSha256": "8351aa7db761c72d1c12435bbd2b06dbf3812214ac9918b657902974535e7b78",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2"
+    },
+    {
+      "locale": "ko",
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "blob": "b25cc8f1032415bc89e7006c774994cc322e864d",
+      "fileSha256": "6e139f6e3e4685c865887b41773d3ce8cfd79d6fcf730cd79d21d52021c03703",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2"
+    },
+    {
+      "locale": "pt-BR",
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "blob": "216932e75ef81400c5543995ce77ed9e2d729bfb",
+      "fileSha256": "b88508573c348fac5be053b2dd70a9f2e3dee68f1994b3f02e6609f27f42ca1f",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2"
+    },
+    {
+      "locale": "vi",
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "blob": "cf665356bf07cc8d0ebc3785539ba5234871d1b8",
+      "fileSha256": "ff0edce6293c87414737ea77b49948b14f9b28f40739137f8fd7652aa99549fc",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2"
+    },
+    {
+      "locale": "zh-Hans",
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "blob": "1c551b74304fbac1d662278cbac12643add3e09a",
+      "fileSha256": "b237e5eebc0fb700462bdf93f25bc11763db8e7886a6ee4b9f68d51514afdc33",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2"
+    },
+    {
+      "locale": "zh-Hant",
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "blob": "3b98056dc0185482012a11847e2289c05e641df0",
+      "fileSha256": "90b87cdb60f1336878a40e3fd5598c8892985102da57f82de0d6f194a22c80df",
+      "keyCount": 5441,
+      "orderedKeysetSha256": "ed205a438666dca1a2d470d642f83a78df2ec898df646d4a0c2598d9924b9dd2"
+    }
+  ],
+  "catalogKeyCount": 5441,
+  "allLocaleKeysetsIdentical": true,
+  "sourceCallerPinCount": 20,
+  "sourceCallerPinsVerified": 20,
+  "catalogOnlyGapVerified": true,
+  "boundaryPinCount": 24,
+  "boundaryPinsVerified": 24,
+  "previousWindowReadbacksVerified": 24,
+  "primaryCellCount": 240,
+  "primaryCellCurrentSourceAndTargetHashesVerified": true,
+  "allInputArtifactsStayOutsideRepository": true,
+  "nativeSpeakerApproval": false,
+  "testsBuildScansCIOrBrowserRun": false,
+  "attestedAtUtc": "2026-11-02T22:48:59.488392+00:00"
+}

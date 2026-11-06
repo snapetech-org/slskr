@@ -1,0 +1,20 @@
+[
+  {
+    "id": "XR01",
+    "cells": [
+      {
+        "position": 1548,
+        "locale": "ko"
+      },
+      {
+        "position": 1549,
+        "locale": "ko"
+      }
+    ],
+    "category": "terminology consistency",
+    "severity": "moderate",
+    "confidence": "moderate",
+    "finding": "The paired Korean error keys and the pinned Member Affinities, Get Member Affinities, and Affinity Score labels split between 친화도 and 친밀도. The blind review flags position 1549, but the panel labels use 친밀도; the evidence does not establish which term is semantically best for this affinity metric.",
+    "disposition": "hold-both-cells-for-fluent-review"
+  }
+]

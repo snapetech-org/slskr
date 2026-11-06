@@ -1,5 +1,5 @@
 import LocalizedText from "../../Shared/LocalizedText";
-import { interfaceText, interfaceTextProps } from "../../../lib/interfaceLocale";
+import { interfaceTextProps } from "../../../lib/interfaceLocale";
 
 
 import * as federationDiagnostics from '../../../lib/federationDiagnostics';
@@ -19,6 +19,49 @@ import {
   useAsyncGuard,
   valueOrDash,
 } from './integrationsShared';
+
+const getFederationWarningSource = (warning) => {
+  switch (warning) {
+    case 'Federation is enabled but federation.baseUrl is not configured.':
+      return 'Federation is enabled but federation.baseUrl is not configured.';
+    case 'Public federation is enabled while HTTP signature verification is disabled.':
+      return 'Public federation is enabled while HTTP signature verification is disabled.';
+    case 'Federation publishing is enabled while social federation is disabled.':
+      return 'Federation publishing is enabled while social federation is disabled.';
+    case 'Federation publishing defaults to public without moderation approval.':
+      return 'Federation publishing defaults to public without moderation approval.';
+    case 'Pod join signatures are not enforced.':
+      return 'Pod join signatures are not enforced.';
+    case 'Pod message signatures are not enforced.':
+      return 'Pod message signatures are not enforced.';
+    default:
+      return undefined;
+  }
+};
+
+const federationExposureSources = Object.freeze({
+  Hermit: 'Hermit',
+  FriendsOnly: 'Friends only',
+  Public: 'Public',
+  Custom: 'Custom',
+});
+
+const signatureModeSources = Object.freeze({
+  Off: 'Off',
+  Warn: 'Warn',
+  Enforce: 'Enforce',
+});
+
+const localizedStatusValue = (value, sources) => {
+  const source = typeof value === 'string' &&
+    Object.prototype.hasOwnProperty.call(sources, value)
+    ? sources[value]
+    : undefined;
+
+  return source
+    ? <LocalizedText source={source} />
+    : <bdi dir="auto" lang="und">{valueOrDash(value)}</bdi>;
+};
 
 const FederationDiagnosticsPanel = () => {
   const [diagnostics, setDiagnostics] = useState(null);
@@ -61,7 +104,17 @@ const FederationDiagnosticsPanel = () => {
   const publishing = diagnostics?.publishing || {};
   const pods = diagnostics?.pods || {};
   const mesh = diagnostics?.mesh || {};
-  const warnings = diagnostics?.warnings || [];
+  const warningMessages = diagnostics?.warnings || [];
+  const warnings = Array.isArray(warningMessages) ? warningMessages : [];
+  const warningItems = warnings.map((warning, index) => {
+    const source = getFederationWarningSource(warning);
+    return {
+      key: `federation-warning-${index}`,
+      content: source
+        ? <LocalizedText source={source} />
+        : <bdi dir="auto" lang="und">{warning}</bdi>,
+    };
+  });
 
   return (
     <Card fluid>
@@ -84,7 +137,8 @@ const FederationDiagnosticsPanel = () => {
           {boolLabel(federation.enabled, 'Federation On', 'Federation Off')}
           <Label>
             <Icon name="privacy" />
-            <LocalizedText source={"Exposure:"} />{" "}{valueOrDash(federation.exposure)}
+            <LocalizedText source={"Exposure:"} />{" "}
+            {localizedStatusValue(federation.exposure, federationExposureSources)}
           </Label>
           {boolLabel(publishing.enabled, 'Publishing On', 'Publishing Off')}
           {boolLabel(
@@ -109,19 +163,25 @@ const FederationDiagnosticsPanel = () => {
             </Table.Row>
             <Table.Row>
               <Table.Cell><LocalizedText source={"Publishable domains"} /></Table.Cell>
-              <Table.Cell>{publishing.publishableDomains?.join(', ') || '-'}</Table.Cell>
+              <Table.Cell>
+                <bdi dir="auto" lang="und">
+                  {publishing.publishableDomains?.join(', ') || '-'}
+                </bdi>
+              </Table.Cell>
             </Table.Row>
             <Table.Row>
               <Table.Cell><LocalizedText source={"Publishing visibility"} /></Table.Cell>
-              <Table.Cell>{valueOrDash(publishing.defaultVisibility)}</Table.Cell>
+              <Table.Cell>
+                <bdi dir="auto" lang="und">{valueOrDash(publishing.defaultVisibility)}</bdi>
+              </Table.Cell>
             </Table.Row>
             <Table.Row>
               <Table.Cell><LocalizedText source={"Pod join signatures"} /></Table.Cell>
-              <Table.Cell>{valueOrDash(pods.joinSignatureMode)}</Table.Cell>
+              <Table.Cell>{localizedStatusValue(pods.joinSignatureMode, signatureModeSources)}</Table.Cell>
             </Table.Row>
             <Table.Row>
               <Table.Cell><LocalizedText source={"Pod message signatures"} /></Table.Cell>
-              <Table.Cell>{valueOrDash(pods.messageSignatureMode)}</Table.Cell>
+              <Table.Cell>{localizedStatusValue(pods.messageSignatureMode, signatureModeSources)}</Table.Cell>
             </Table.Row>
             <Table.Row>
               <Table.Cell><LocalizedText source={"Mesh self peer ID"} /></Table.Cell>
@@ -139,7 +199,7 @@ const FederationDiagnosticsPanel = () => {
             warning
           >
             <Message.Header><LocalizedText source={"Federation posture warnings"} /></Message.Header>
-            <Message.List items={warnings} />
+            <Message.List items={warningItems} />
           </Message>
         )}
         {!loading && warnings.length === 0 && diagnostics && (

@@ -1,0 +1,20 @@
+Enable FTP completed-download uploads
+Enable FTP uploads
+Enable HTTP rate limiting
+Enable HTTP rate limiting for API, federation, and mesh gateway policies.
+Enable Last.fm imports
+Enable Last.fm source-feed imports
+Enable Lidarr
+Enable Lidarr auto-download setting
+Enable Lidarr blacklist rejected downloads setting
+Enable Lidarr completed import setting
+Enable Lidarr delete rejected downloads setting
+Enable Lidarr integration settings
+Enable Lidarr replace existing files setting
+Enable Lidarr wanted sync setting
+Enable Lidarr wanted-album sync and completed-download import settings. Live sync still runs only from explicit Lidarr actions or configured schedulers.
+Enable Message Batching
+Enable Message Padding
+Enable Ntfy
+Enable Ntfy notifications
+Enable Obfuscated Transport

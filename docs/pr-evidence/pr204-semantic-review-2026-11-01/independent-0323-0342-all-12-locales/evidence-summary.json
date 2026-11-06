@@ -1,0 +1,26 @@
+{
+  "file_sha256": {
+    "README.md": "7ec7df42f26f28329434ed167651349ca18306ca93d2cb7f60b4fa7f9c548a74",
+    "build-output.json": "795a364d56d3a4ae131080abd6412cd3862be3584872dd1f10e65f1c1aef7308",
+    "candidate-cell-audit.jsonl": "f3f90a6bd803aebebffccd7e400741ed3282bb3e2afeb04296bcee7fede96ef6",
+    "candidate-corrections.jsonl": "21a0c0ca2e0025ef42475b8341c4cc375f7acfe91bb1d86c9602f9c575baf2f6",
+    "carries.jsonl": "65148e682f2320bd180dfea315023cee8ce2ac75a3a769c5c0cece4ef44a432f",
+    "decisions.jsonl": "723c93f849f57ebfd7a1d51e451d5e7aded87b8c6f31062df28e4fbf2f75415c",
+    "headed-visual-check.md": "7182d9c6f5ea29e9cf4f58c2df6ec4a4d4b108ade3553812a645df7ab674a1cb",
+    "korean-discovery-inbox-group-candidates.jsonl": "f4948754f552e395073cab20e6ec32bc6809ebf836a5a62bc50c7cc3d33186c4",
+    "korean-discovery-inbox-group-context-48.jsonl": "3f019a82e0a6ff60912cf94cb70923c6c880c0934510e33fbf622bedeef1252a",
+    "manifest.json": "81640b929e68edf36401236bea6efc5b7ae824b60c28e9166aa16e5e3254a455",
+    "prepare-summary.json": "5a6f6a3e84abb8246df1a67943ef8f9b596c6719059f757db245434e959cbc9e",
+    "prior-evidence-scan-manifest.jsonl": "c3251c3f0ea75d83796d53cf1862b27cdf3b7d54e84b27ee62e626b96f57c781",
+    "review-summary.json": "3c9055b91f679745e1eeb6f62bbba1a8bfce160aa4dc5a179f75df723a09ac53",
+    "reviewed-cell-audit.jsonl": "98d6b0befdb3a98e115157b65d35d8120ef3dfdec7201c30a22f1e894ba96c41",
+    "selection-before-corrections.jsonl": "beca7196835da1ea9a76d52d19bcf9a61139dce6499ecf0aadab8f214964fc2e",
+    "selection.jsonl": "beca7196835da1ea9a76d52d19bcf9a61139dce6499ecf0aadab8f214964fc2e",
+    "source-context.txt": "4682c1cfa617a4b801bdea168746e7d60f9e391c2dbc9d29eef65253c463b37b",
+    "source-pins.json": "9cc0dde3592085f047eaabdd484e133e631a2cf344c289ea6ea8ccb34d63b154",
+    "verify_candidate_preflight.py": "4f23dfe40fed5decc9f86d82fd08a2af84e36719038fdf224d18a6f7ae3b8a61",
+    "verify_korean_discovery_group.py": "f5a73b1e9df99b60c7eb4b286078a332ffde6bbd20aa36e85e56df208797b1cb"
+  },
+  "manifest_file": "manifest.json",
+  "manifest_sha256": "81640b929e68edf36401236bea6efc5b7ae824b60c28e9166aa16e5e3254a455"
+}

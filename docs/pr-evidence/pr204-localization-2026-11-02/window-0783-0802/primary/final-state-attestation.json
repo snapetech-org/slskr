@@ -1,0 +1,16 @@
+{
+  "checkedAtUtc": "2026-11-02T16:40:59.298230+00:00",
+  "exactPinnedStateMatches": true,
+  "outputDirectory": "/mnt/disks/scratch/task-scratch/slskr-pr204-W783-802-primary-20261102/packet",
+  "pullRequest": {
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "2d004e38fe7cf76f8d51f36d19c14c34fb497649",
+    "isDraft": true,
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "repositoryHead": "2d004e38fe7cf76f8d51f36d19c14c34fb497649",
+  "repositoryStatusClean": true,
+  "repositoryTree": "7d114d519f4e6ad0a14a4a3fe048fde017551748",
+  "schemaVersion": 1
+}

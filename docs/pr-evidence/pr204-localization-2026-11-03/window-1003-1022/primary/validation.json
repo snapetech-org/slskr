@@ -1,0 +1,58 @@
+{
+  "head": "4193d79547018a561e9d5acacdb0ac0850f6f346",
+  "tree": "da7d72c82203781fc14d99e8dd85cc1b30c10164",
+  "prState": "OPEN",
+  "isDraft": true,
+  "sourceCount": 20,
+  "cellCount": 240,
+  "positions": [
+    1003,
+    1022
+  ],
+  "catalogCounts": {
+    "ar": 5441,
+    "de": 5441,
+    "es": 5441,
+    "fr": 5441,
+    "hi": 5441,
+    "id": 5441,
+    "ja": 5441,
+    "ko": 5441,
+    "pt-BR": 5441,
+    "vi": 5441,
+    "zh-Hans": 5441,
+    "zh-Hant": 5441
+  },
+  "orderedCatalogParity": true,
+  "sourceInventoryCount": 5441,
+  "priorDispositionHits": 0,
+  "callerCount": 31,
+  "callerlessSourceIds": [],
+  "holdCells": 12,
+  "dispositionCounts": {
+    "accept-current": 143,
+    "refinement": 46,
+    "correction": 39,
+    "hold": 12
+  },
+  "plannedChangesByLocale": {
+    "de": 4,
+    "id": 8,
+    "ja": 7,
+    "pt-BR": 7,
+    "vi": 8,
+    "zh-Hans": 8,
+    "zh-Hant": 6,
+    "ar": 8,
+    "es": 7,
+    "fr": 6,
+    "hi": 9,
+    "ko": 7
+  },
+  "sourceTargetPlaceholderMismatches": 0,
+  "markupMismatches": 0,
+  "protectedTermMismatches": 0,
+  "sourceFragmentCompositionHold": 12,
+  "nativeSpeakerApproval": false,
+  "testsBuildsScansCIOrBrowser": "not run"
+}

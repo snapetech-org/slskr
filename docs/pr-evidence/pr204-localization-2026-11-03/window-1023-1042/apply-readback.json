@@ -1,0 +1,125 @@
+{
+  "repository": "snapetech-org/slskR#204",
+  "baseHead": "26a34849f39f533f4ad0562a02a01182ca2b3e2e",
+  "baseTree": "ef72f18c4591c23e0d59635c6467f4905d678dcf",
+  "window": "W1023-W1042",
+  "reviewedCells": 240,
+  "changedCells": 67,
+  "unchangedAcceptedOrHeldCells": 173,
+  "rootDispositionCounts": {
+    "accept-current": 125,
+    "refinement": 26,
+    "correction": 41,
+    "hold": 48
+  },
+  "primaryDispositionCounts": {
+    "accept-current": 163,
+    "correction": 52,
+    "refinement": 25
+  },
+  "blindDispositionCounts": {
+    "accept-current": 154,
+    "refine": 38,
+    "hold-context": 48
+  },
+  "orderedCatalogKeyCountPerLocale": 5441,
+  "localeCount": 12,
+  "orderedCatalogKeysSha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be",
+  "catalogPinsAtBase": {
+    "web/src/lib/locales/ui-labels.ar.json": {
+      "sha256": "7a34fea5e69deb9409e7bfe2f8bcf381b1cdf28963f90a90bb4bd58b2da0e600",
+      "gitBlob": "ae64950ce5f38f321ac3577195e2657c7c54f957"
+    },
+    "web/src/lib/locales/ui-labels.de.json": {
+      "sha256": "86c0868984d628dda2c1b293cd54042a8921deaae77448f075d528dd5f481bae",
+      "gitBlob": "8791183a177330c1445af9f3b7ebac6ee8e60964"
+    },
+    "web/src/lib/locales/ui-labels.es.json": {
+      "sha256": "b8ebfc539da446b7842744103d6445a3adf84e843848ef79434c8bccd1693370",
+      "gitBlob": "f31e9345de977f13bdb97c92faa1e21ba4423c34"
+    },
+    "web/src/lib/locales/ui-labels.fr.json": {
+      "sha256": "94d9a193ba8a749026e5fbbc7a9a8a1bc538a60979bcdf7c7874f81fc4ad52e4",
+      "gitBlob": "69f98cda4bde5e3502ddc72e4b885474bf1f7e63"
+    },
+    "web/src/lib/locales/ui-labels.hi.json": {
+      "sha256": "5db7090d338d5061f7e37f109a1da35ec1ef2f6763cda74436473dae963f1657",
+      "gitBlob": "547258906ab78fdbb8b9ffb54feb2ee252a52c0a"
+    },
+    "web/src/lib/locales/ui-labels.id.json": {
+      "sha256": "3c7f6ee3794f32c63dcea7a5bc362e488f4c5330f8c5f42e5fefc1c4cf696cd8",
+      "gitBlob": "4a71c2cefc4c6d503555d6a191f804b4257fa290"
+    },
+    "web/src/lib/locales/ui-labels.ja.json": {
+      "sha256": "8e87df5d0b8c170fc25b47fd8471b976b6d49bcebce8c29b1c77550f6b8ffb1e",
+      "gitBlob": "1da493238c9d50a9bbd91685208afa97a2a2ef8e"
+    },
+    "web/src/lib/locales/ui-labels.ko.json": {
+      "sha256": "edb10b33330eab35b3b42b2dd056c7f57375fd86777d2185f0dcc1aaa49cfbb1",
+      "gitBlob": "57c7dbd3e1514d422e32e0c35d6d1161eb2d0b3e"
+    },
+    "web/src/lib/locales/ui-labels.pt-BR.json": {
+      "sha256": "25a334ee5f7880f02dc418128491af6f53574fac2f3838dcefe988ea0ef57fec",
+      "gitBlob": "b99fb73e59032dbfc0188abe300ca876516103d2"
+    },
+    "web/src/lib/locales/ui-labels.vi.json": {
+      "sha256": "8723023d49a762c679c09280bd524dbf099801104b905df226bca23b45a1db3e",
+      "gitBlob": "51f5256fbd646ba0e4562c5c6d9c3e36f9b3f025"
+    },
+    "web/src/lib/locales/ui-labels.zh-Hans.json": {
+      "sha256": "76c6faf0240a431178793b5a5ecd5e594481dc4a099d5211e4e9db74b4bbccc7",
+      "gitBlob": "afe2391db6c6050e02a0efa2745055803b055bad"
+    },
+    "web/src/lib/locales/ui-labels.zh-Hant.json": {
+      "sha256": "2af2f900735d24ff311740b1527732760c8f7a9ca5ad04320cd9d28e955e0f27",
+      "gitBlob": "3e8a0aaf8459944f4f50f5e5f3ab1ff5aacc2f26"
+    }
+  },
+  "callerReferencesReattested": 32,
+  "allReviewedCellHashesVerifiedBeforeApply": true,
+  "allFinalCellValuesReadBack": true,
+  "onlyPlannedCellsChanged": true,
+  "allLocaleCatalogsRetainOriginalKeyOrder": true,
+  "placeholderParity": "all approved targets preserve source placeholders",
+  "unsupportedCallerHolds": {
+    "1025": "CsvText is required — no exact production localization caller/render path verified",
+    "1030": "DHT — dynamic network-health area value/test references only",
+    "1036": "DHT Off — local boolLabel emits the string without LocalizedText",
+    "1037": "DHT On — local boolLabel emits the string without LocalizedText"
+  },
+  "rootOnlyDisagreements": [
+    {
+      "sourcePosition": 1023,
+      "locale": "de",
+      "target": "Kryptografie-Status:",
+      "rootDisposition": "refinement"
+    },
+    {
+      "sourcePosition": 1024,
+      "locale": "ko",
+      "target": "Pod 메시지의 진위성과 무결성을 보장하는 암호학적 서명 및 검증",
+      "rootDisposition": "correction"
+    }
+  ],
+  "nativeSpeakerApproval": false,
+  "buildsTestsCIWorkflowsRun": false,
+  "preWriteLivePRHead": "26a34849f39f533f4ad0562a02a01182ca2b3e2e",
+  "preWriteLivePRTree": "ef72f18c4591c23e0d59635c6467f4905d678dcf",
+  "readbackCatalogFileSha256": {
+    "web/src/lib/locales/ui-labels.ar.json": "831089ee7b4ce559c2b40c658e4ae6d0428e4995dd4aaa7511516a42c7fe3a72",
+    "web/src/lib/locales/ui-labels.de.json": "0e38a1be6ffa47917071131e04b6306816e2f815e198e647c0e609c3fed2f76a",
+    "web/src/lib/locales/ui-labels.es.json": "f151c576b3fc4d85d2cb30d9b7b2ed482c217c1ce65694f6537134301cf07fe6",
+    "web/src/lib/locales/ui-labels.fr.json": "d2369a8053ffe4dae87f276afad30891fa8a1b8a608f91d1e8ea6cbaa3eb2733",
+    "web/src/lib/locales/ui-labels.hi.json": "db19ad818794b3c412c831345553ba2effd4febdf3cb7a533f48ac6990fbd010",
+    "web/src/lib/locales/ui-labels.id.json": "5308031f54bea301a5e9274956bffadfa2ce742dcc84d09d4ab3dde57eef3a35",
+    "web/src/lib/locales/ui-labels.ja.json": "54d162ea9e90830f17741c660d3e26cf18cb87193ccf16545dbb06cce27e2762",
+    "web/src/lib/locales/ui-labels.ko.json": "9b7ece7cd8fc9c100fd5ea85a52eb1498dd46d12c0a1125f25881eb36eb50cbc",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "64f2780836f087f41fdcdc5bd36c658ba2213dd6f6d2dece54829eb4af3bae6a",
+    "web/src/lib/locales/ui-labels.vi.json": "ade6034789b1bd4769857ac5217a4027300dbd1c6be9fd137cf0f0227f09a6c1",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "142f284ed2eed17cce470dce6d1c8f72155b67b9fe418376060fd8330dc98a26",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "e20de3a454328c8c001ba11f245acd5d2cfd3dd2d1b6fb4f661e9f87492c892a"
+  },
+  "primaryChecksumManifestSha256": "076b9ba77424ad65d6de66ae256126cb80e5ae17c9c3ce75f395004a3fdc5ca4",
+  "cleanInputChecksumManifestSha256": "d0eaac9e71d70e7f50f075e68d17a758d8cf5563cdab2bef379c5ffbb702ce15",
+  "independentChecksumManifestSha256": "89ec5309cd4728dda9c2fb626155f36840b5a3e5969612a546304d116255aeab"
+}

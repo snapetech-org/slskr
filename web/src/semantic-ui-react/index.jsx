@@ -1410,10 +1410,11 @@ const renderModalAction = (action, index, close) => {
   }
   return (
     <Button
+      {...interfaceTextProps(action)}
       key={index}
       onClick={close}
     >
-      {action}
+      {interfaceText(action)}
     </Button>
   );
 };
@@ -1542,12 +1543,15 @@ const renderConfirmButton = (button, fallbackText, onClick, positive) => {
       />
     );
   }
+  const textSource = button || fallbackText;
+  const hasTextSource = typeof textSource === 'string';
   return (
     <Button
+      {...(hasTextSource ? interfaceTextProps(textSource) : {})}
       onClick={onClick}
       positive={positive}
     >
-      {button || fallbackText}
+      {hasTextSource ? interfaceText(textSource) : textSource}
     </Button>
   );
 };
@@ -1561,21 +1565,24 @@ export const Confirm = ({
   onConfirm,
   open,
   ...props
-}) => (
-  <Modal
-    {...props}
-    onClose={onCancel}
-    open={open}
-    size="tiny"
-  >
-    {header ? <Modal.Header>{header}</Modal.Header> : null}
-    <Modal.Content>{content}</Modal.Content>
-    <Modal.Actions>
-      {renderConfirmButton(cancelButton, 'Cancel', onCancel, false)}
-      {renderConfirmButton(confirmButton, 'OK', onConfirm, true)}
-    </Modal.Actions>
-  </Modal>
-);
+}) => {
+  useInterfaceLanguage();
+  return (
+    <Modal
+      {...props}
+      onClose={onCancel}
+      open={open}
+      size="tiny"
+    >
+      {header ? <Modal.Header>{header}</Modal.Header> : null}
+      <Modal.Content>{content}</Modal.Content>
+      <Modal.Actions>
+        {renderConfirmButton(cancelButton, 'Cancel', onCancel, false)}
+        {renderConfirmButton(confirmButton, 'OK', onConfirm, true)}
+      </Modal.Actions>
+    </Modal>
+  );
+};
 
 export const Popup = ({
   basic,

@@ -1,0 +1,20 @@
+Enable scheduled upload speed limits under global upload policy.
+Enable search duplicate folding preference
+Enable strict startup and request hardening checks for exposed deployments.
+Enable the equalizer for this browser player.
+Enable the legacy top-level scheduled speed-limit policy in YAML.
+Enable underperformance rescue policies for queued or stalled downloads.
+Enable upload scheduled speed limits
+Enable upload schedules
+Enable {label}
+Enable {label} publication
+Enable {title}
+Enable {title}. Disabled recipes remain visible so setup work is discoverable.
+Enabled
+Enabled (run automatically)
+Enabled and allowed to auto-download through Wishlist policy.
+Enabled wishlist request with manual download approval.
+Encryption
+Ended
+Endpoint:
+Enforce

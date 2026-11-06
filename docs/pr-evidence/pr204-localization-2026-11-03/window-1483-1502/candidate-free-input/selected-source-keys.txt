@@ -1,0 +1,20 @@
+FTP username
+Factors:
+Fail
+Failed
+Failed Membership:
+Failed Publications:
+Failed Routes:
+Failed Signatures:
+Failed jobs present
+Failed to add contact from invite
+Failed to add discovered contact
+Failed to add item
+Failed to add member
+Failed to apply FTP integration settings.
+Failed to apply notification integration settings.
+Failed to apply source-feed integration settings.
+Failed to browse
+Failed to browse local audio
+Failed to build discovery graph
+Failed to cancel the scan

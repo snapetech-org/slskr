@@ -1,0 +1,20 @@
+Edit note for {username}
+Edit server options YAML
+Editing
+Efficiency Metrics
+Efficient
+Embed cover art
+Empty payload
+Enable
+Enable AcoustID
+Enable AcoustID lookup
+Enable AcoustID metadata lookup for existing fingerprint workflows. Saving this does not submit audio or contact AcoustID immediately.
+Enable Adversarial Features
+Enable Anonymity Layer
+Enable Bridge
+Enable Chromaprint
+Enable Chromaprint fingerprinting
+Enable Cover Traffic
+Enable DHT rendezvous
+Enable DHT rendezvous only if you want mesh peer discovery.
+Enable DHT rendezvous. Disable this when you want no DHT peer discovery.

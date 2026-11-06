@@ -1,0 +1,29 @@
+{
+  "all_pass": true,
+  "apply_operations": 55,
+  "caller_hash_checks": 56,
+  "candidate_hash_checks": 56,
+  "candidate_rows": 56,
+  "current_hash_checks": 56,
+  "final_hash_checks": 56,
+  "independent_ledger_sha256": "8bcf2290103054847606a12aebd33a2fe0ed183afa1cc276d37701c7d872258f",
+  "live_pr_draft": true,
+  "live_pr_open": true,
+  "placeholder_checks": 56,
+  "pr_head": "087ea7ca6fed28c59dabe9639d8984ea8f061aa1",
+  "pr_tree": "444ac3f3b8fed739ffaae5a149379cf9c706343c",
+  "protected_literal_checks": 56,
+  "reconciled_apply_plan_sha256": "4d3aafa574492d5419f70e7785aeb2d430a9f56a4fb40501ef67fa791988bd42",
+  "reconciled_decision_ledger_sha256": "d114916eef6c00aec1a2946c341ed3817440d01a9a67ee46b4b4fa114e6336f9",
+  "remote_head_match": true,
+  "resolved_dispositions": {
+    "accept": 52,
+    "independent-refine": 2,
+    "keep-current": 1,
+    "root-refine": 1
+  },
+  "root_candidate_plan_sha256": "6be16eab6537f68578d7373b0c70235af8e9117511de8e2b7a2a19ff649ab8c7",
+  "source_hash_checks": 56,
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152"
+}

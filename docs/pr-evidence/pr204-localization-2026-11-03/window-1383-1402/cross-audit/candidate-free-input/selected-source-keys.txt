@@ -1,0 +1,20 @@
+Entries:
+Entropy checks:
+Error
+Error Count By Type
+Error Loading Swarm Data
+Error count report
+Error history
+Error:
+Errored
+Errors
+Errors (
+Est. False Positive:
+Estimated Impact:
+Estimated Size:
+Evaluate the pasted evidence locally. This does not publish, query peers, or apply ranking changes.
+Event history filters
+Event history unavailable
+Event hooks, remote targets, command hooks, and retry shape.
+Event kind filter
+Event retention days

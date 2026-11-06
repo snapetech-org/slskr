@@ -1,0 +1,20 @@
+Failed:
+Failover
+Fake-lossless warnings
+Family
+Family Score
+Fast Good Enough
+Fast-forward local playback
+Fast-forward local playback by 30 seconds.
+Fastest source first
+Favorite active RustyMilk preset
+Favorites
+Federated Taste
+Federated Taste Recommendations
+Federation Off
+Federation On
+Federation Permits/min
+Federation Window sec
+Federation and Pod Diagnostics
+Federation diagnostics could not be loaded.
+Federation diagnostics failed

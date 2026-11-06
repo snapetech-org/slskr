@@ -1,0 +1,69 @@
+{
+  "artifact": "slskR PR #204 W1363-W1382 sealed blind translation review",
+  "blindInputChecksumListSha256": "c72ccd868a1cf1b50a0ceacde2e0cbc6a287ac25b50b97705704b2d9aae66b76",
+  "blindInputManifestSha256": "3c6004617e8d0986362a7cfe4bb919654165d8935a07dc8eaf20ab69aba6ae18",
+  "blindInputPath": "/home/keith/Documents/code/task-scratch/slskr-pr204-next-candidatefree-20261103/blind-input",
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "callerlessHolds": 12,
+  "callerlessPositions": [
+    1376
+  ],
+  "candidateCatalogAccessed": false,
+  "candidateTranslationsAccessed": false,
+  "cellCount": 240,
+  "createdAtUtc": "2026-11-03T16:17:30.508747+00:00",
+  "files": [
+    {
+      "bytes": 1328,
+      "path": "README.md",
+      "sha256": "fdb87589678d96f69969a2968955a0396e3987f4bc64b47d7d1ba6b838d9d428"
+    },
+    {
+      "bytes": 31004,
+      "path": "build_blind_review.py",
+      "sha256": "c0d05e335e15bacff87f67d24f7d4b835c61a0bccaac71f58d999caceb858f02"
+    },
+    {
+      "bytes": 16691,
+      "path": "coherence-review.json",
+      "sha256": "5e2ab96579e91530feb8842c0dd9cd3d601e083b8d2cddcb59af5f90d4a4a854"
+    },
+    {
+      "bytes": 1507687,
+      "path": "sealed-translation-ledger.jsonl",
+      "sha256": "58fa79c8b6124e5adfcfec4993d1a8356152aa9852f4fe2f759206915984ea42"
+    },
+    {
+      "bytes": 1894,
+      "path": "summary.json",
+      "sha256": "5637c5b390d73fa272759b55b245b1ecc0a72c5455f498e7dbeab98b1587ab18"
+    },
+    {
+      "bytes": 625,
+      "path": "verification.json",
+      "sha256": "189b036958672e3e90a51fa2e092dea0454e82d0657dd41dacb558c67cd89b05"
+    },
+    {
+      "bytes": 11837,
+      "path": "verify_blind_review.py",
+      "sha256": "1770bbbd860fbdf5d94b7ad12287b9cf82ae035cc375766a2d8308362bac7f50"
+    }
+  ],
+  "head": "281c39ec0cdb3677d7d523b7c4f0cd0d52bbf14c",
+  "heldCells": 12,
+  "localeCount": 12,
+  "priorReviewsAccessed": false,
+  "promptsSha256": "dc7c20a02c28f157434e37b5aa486d4b4b7db24c79422295ecd9b08746a8f77d",
+  "proposedCells": 228,
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "repositoryWorktreeAccessed": false,
+  "reviewType": "blind source-and-caller-context",
+  "schemaVersion": 1,
+  "sealed": true,
+  "sealedBeforeCandidateBearingReview": true,
+  "sourceContextsSha256": "7e3823fee026cf9322d82d359383f1a4ecad70e656abf5b73607b49611b1e384",
+  "sourceCount": 20,
+  "tree": "777b234b1aa3cb7a2c9fd560b2c0fecc4e7fe49d",
+  "window": "W1363-W1382"
+}

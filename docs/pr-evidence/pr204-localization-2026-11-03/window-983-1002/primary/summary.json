@@ -1,0 +1,125 @@
+{
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "callerGapCellsHeld": 24,
+  "callerGapCount": 2,
+  "callerGapSourceIds": [
+    "Could not save browser preferences.",
+    "Could not save this filter in browser storage."
+  ],
+  "callerPins": 33,
+  "cellCount": 240,
+  "confidence": "Moderate overall; no native-speaker approval. Holds are low confidence on translation because caller context is unresolved.",
+  "dispositionCounts": {
+    "accept-current": 165,
+    "correction": 40,
+    "hold": 24,
+    "refinement": 11
+  },
+  "exactCallerSources": 18,
+  "head": "09a614a66f1104fe530773fb17c79ed6338aed02",
+  "icuMismatches": 0,
+  "isDraft": true,
+  "localeCount": 12,
+  "markupMismatches": 0,
+  "nativeSpeakerApproval": false,
+  "perSourceCounts": {
+    "1000": {
+      "accept-current": 8,
+      "correction": 3,
+      "refinement": 1
+    },
+    "1001": {
+      "accept-current": 10,
+      "correction": 1,
+      "refinement": 1
+    },
+    "1002": {
+      "accept-current": 12
+    },
+    "983": {
+      "hold": 12
+    },
+    "984": {
+      "hold": 12
+    },
+    "985": {
+      "accept-current": 12
+    },
+    "986": {
+      "accept-current": 2,
+      "correction": 10
+    },
+    "987": {
+      "accept-current": 6,
+      "correction": 6
+    },
+    "988": {
+      "accept-current": 2,
+      "correction": 10
+    },
+    "989": {
+      "accept-current": 9,
+      "correction": 3
+    },
+    "990": {
+      "accept-current": 10,
+      "refinement": 2
+    },
+    "991": {
+      "accept-current": 11,
+      "correction": 1
+    },
+    "992": {
+      "accept-current": 5,
+      "correction": 4,
+      "refinement": 3
+    },
+    "993": {
+      "accept-current": 12
+    },
+    "994": {
+      "accept-current": 10,
+      "refinement": 2
+    },
+    "995": {
+      "accept-current": 11,
+      "refinement": 1
+    },
+    "996": {
+      "accept-current": 12
+    },
+    "997": {
+      "accept-current": 12
+    },
+    "998": {
+      "accept-current": 9,
+      "correction": 2,
+      "refinement": 1
+    },
+    "999": {
+      "accept-current": 12
+    }
+  },
+  "placeholderMismatches": 0,
+  "proposalCellCount": 51,
+  "protectedLiteralFailures": 0,
+  "pullRequest": 204,
+  "punctuationMismatches": 0,
+  "relatedFollowUp": [
+    {
+      "currentPosition": 1279,
+      "reason": "This sibling UI label shares the Privacy.CoverTraffic feature and should use the same locale term when its window is reviewed.",
+      "sourceId": "Enable Cover Traffic"
+    }
+  ],
+  "repository": "snapetech-org/slskR",
+  "repositoryOrPrChanged": false,
+  "reviewLedgerSha256": "28b2a31cd39a3216836b7a2fe7ac3781daefd3e89d60613596aa34a20ef96088",
+  "sourceCount": 20,
+  "sourceOnlyInputSha256": "32e6b0689a63c688915a7236beeaed3973714d8cfbb6028c552ca47fdd6eff7c",
+  "state": "OPEN",
+  "task": "slskR PR #204 W983-W1002 exact-head primary localization review",
+  "testsBuildScansCIOrBrowserRun": false,
+  "tree": "963f283311ae39dfa5fc289386d99dcc0dac2f90",
+  "window": "W983-W1002"
+}

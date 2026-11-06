@@ -1,0 +1,240 @@
+{"checks":[],"locale":"ar","sourceId":"Censorship Resistance"}
+{"checks":[],"locale":"de","sourceId":"Censorship Resistance"}
+{"checks":[],"locale":"es","sourceId":"Censorship Resistance"}
+{"checks":[],"locale":"fr","sourceId":"Censorship Resistance"}
+{"checks":[],"locale":"hi","sourceId":"Censorship Resistance"}
+{"checks":[],"locale":"id","sourceId":"Censorship Resistance"}
+{"checks":[],"locale":"ja","sourceId":"Censorship Resistance"}
+{"checks":[],"locale":"ko","sourceId":"Censorship Resistance"}
+{"checks":[],"locale":"pt-BR","sourceId":"Censorship Resistance"}
+{"checks":[],"locale":"vi","sourceId":"Censorship Resistance"}
+{"checks":[],"locale":"zh-Hans","sourceId":"Censorship Resistance"}
+{"checks":[],"locale":"zh-Hant","sourceId":"Censorship Resistance"}
+{"checks":[],"locale":"ar","sourceId":"Centroid"}
+{"checks":[],"locale":"de","sourceId":"Centroid"}
+{"checks":[],"locale":"es","sourceId":"Centroid"}
+{"checks":[],"locale":"fr","sourceId":"Centroid"}
+{"checks":[],"locale":"hi","sourceId":"Centroid"}
+{"checks":[],"locale":"id","sourceId":"Centroid"}
+{"checks":[],"locale":"ja","sourceId":"Centroid"}
+{"checks":[],"locale":"ko","sourceId":"Centroid"}
+{"checks":[],"locale":"pt-BR","sourceId":"Centroid"}
+{"checks":[],"locale":"vi","sourceId":"Centroid"}
+{"checks":[],"locale":"zh-Hans","sourceId":"Centroid"}
+{"checks":[],"locale":"zh-Hant","sourceId":"Centroid"}
+{"checks":[{"literal":"PFX","presentInFinal":true}],"locale":"ar","sourceId":"Certificate PFX (optional)"}
+{"checks":[{"literal":"PFX","presentInFinal":true}],"locale":"de","sourceId":"Certificate PFX (optional)"}
+{"checks":[{"literal":"PFX","presentInFinal":true}],"locale":"es","sourceId":"Certificate PFX (optional)"}
+{"checks":[{"literal":"PFX","presentInFinal":true}],"locale":"fr","sourceId":"Certificate PFX (optional)"}
+{"checks":[{"literal":"PFX","presentInFinal":true}],"locale":"hi","sourceId":"Certificate PFX (optional)"}
+{"checks":[{"literal":"PFX","presentInFinal":true}],"locale":"id","sourceId":"Certificate PFX (optional)"}
+{"checks":[{"literal":"PFX","presentInFinal":true}],"locale":"ja","sourceId":"Certificate PFX (optional)"}
+{"checks":[{"literal":"PFX","presentInFinal":true}],"locale":"ko","sourceId":"Certificate PFX (optional)"}
+{"checks":[{"literal":"PFX","presentInFinal":true}],"locale":"pt-BR","sourceId":"Certificate PFX (optional)"}
+{"checks":[{"literal":"PFX","presentInFinal":true}],"locale":"vi","sourceId":"Certificate PFX (optional)"}
+{"checks":[{"literal":"PFX","presentInFinal":true}],"locale":"zh-Hans","sourceId":"Certificate PFX (optional)"}
+{"checks":[{"literal":"PFX","presentInFinal":true}],"locale":"zh-Hant","sourceId":"Certificate PFX (optional)"}
+{"checks":[],"locale":"ar","sourceId":"Certificate Password"}
+{"checks":[],"locale":"de","sourceId":"Certificate Password"}
+{"checks":[],"locale":"es","sourceId":"Certificate Password"}
+{"checks":[],"locale":"fr","sourceId":"Certificate Password"}
+{"checks":[],"locale":"hi","sourceId":"Certificate Password"}
+{"checks":[],"locale":"id","sourceId":"Certificate Password"}
+{"checks":[],"locale":"ja","sourceId":"Certificate Password"}
+{"checks":[],"locale":"ko","sourceId":"Certificate Password"}
+{"checks":[],"locale":"pt-BR","sourceId":"Certificate Password"}
+{"checks":[],"locale":"vi","sourceId":"Certificate Password"}
+{"checks":[],"locale":"zh-Hans","sourceId":"Certificate Password"}
+{"checks":[],"locale":"zh-Hant","sourceId":"Certificate Password"}
+{"checks":[],"locale":"ar","sourceId":"Certificate Password Missing"}
+{"checks":[],"locale":"de","sourceId":"Certificate Password Missing"}
+{"checks":[],"locale":"es","sourceId":"Certificate Password Missing"}
+{"checks":[],"locale":"fr","sourceId":"Certificate Password Missing"}
+{"checks":[],"locale":"hi","sourceId":"Certificate Password Missing"}
+{"checks":[],"locale":"id","sourceId":"Certificate Password Missing"}
+{"checks":[],"locale":"ja","sourceId":"Certificate Password Missing"}
+{"checks":[],"locale":"ko","sourceId":"Certificate Password Missing"}
+{"checks":[],"locale":"pt-BR","sourceId":"Certificate Password Missing"}
+{"checks":[],"locale":"vi","sourceId":"Certificate Password Missing"}
+{"checks":[],"locale":"zh-Hans","sourceId":"Certificate Password Missing"}
+{"checks":[],"locale":"zh-Hant","sourceId":"Certificate Password Missing"}
+{"checks":[],"locale":"ar","sourceId":"Certificate Password Set"}
+{"checks":[],"locale":"de","sourceId":"Certificate Password Set"}
+{"checks":[],"locale":"es","sourceId":"Certificate Password Set"}
+{"checks":[],"locale":"fr","sourceId":"Certificate Password Set"}
+{"checks":[],"locale":"hi","sourceId":"Certificate Password Set"}
+{"checks":[],"locale":"id","sourceId":"Certificate Password Set"}
+{"checks":[],"locale":"ja","sourceId":"Certificate Password Set"}
+{"checks":[],"locale":"ko","sourceId":"Certificate Password Set"}
+{"checks":[],"locale":"pt-BR","sourceId":"Certificate Password Set"}
+{"checks":[],"locale":"vi","sourceId":"Certificate Password Set"}
+{"checks":[],"locale":"zh-Hans","sourceId":"Certificate Password Set"}
+{"checks":[],"locale":"zh-Hant","sourceId":"Certificate Password Set"}
+{"checks":[],"locale":"ar","sourceId":"Certificate password"}
+{"checks":[],"locale":"de","sourceId":"Certificate password"}
+{"checks":[],"locale":"es","sourceId":"Certificate password"}
+{"checks":[],"locale":"fr","sourceId":"Certificate password"}
+{"checks":[],"locale":"hi","sourceId":"Certificate password"}
+{"checks":[],"locale":"id","sourceId":"Certificate password"}
+{"checks":[],"locale":"ja","sourceId":"Certificate password"}
+{"checks":[],"locale":"ko","sourceId":"Certificate password"}
+{"checks":[],"locale":"pt-BR","sourceId":"Certificate password"}
+{"checks":[],"locale":"vi","sourceId":"Certificate password"}
+{"checks":[],"locale":"zh-Hans","sourceId":"Certificate password"}
+{"checks":[],"locale":"zh-Hant","sourceId":"Certificate password"}
+{"checks":[],"locale":"ar","sourceId":"Change Role"}
+{"checks":[],"locale":"de","sourceId":"Change Role"}
+{"checks":[],"locale":"es","sourceId":"Change Role"}
+{"checks":[],"locale":"fr","sourceId":"Change Role"}
+{"checks":[],"locale":"hi","sourceId":"Change Role"}
+{"checks":[],"locale":"id","sourceId":"Change Role"}
+{"checks":[],"locale":"ja","sourceId":"Change Role"}
+{"checks":[],"locale":"ko","sourceId":"Change Role"}
+{"checks":[],"locale":"pt-BR","sourceId":"Change Role"}
+{"checks":[],"locale":"vi","sourceId":"Change Role"}
+{"checks":[],"locale":"zh-Hans","sourceId":"Change Role"}
+{"checks":[],"locale":"zh-Hant","sourceId":"Change Role"}
+{"checks":[],"locale":"ar","sourceId":"Changed fields"}
+{"checks":[],"locale":"de","sourceId":"Changed fields"}
+{"checks":[],"locale":"es","sourceId":"Changed fields"}
+{"checks":[],"locale":"fr","sourceId":"Changed fields"}
+{"checks":[],"locale":"hi","sourceId":"Changed fields"}
+{"checks":[],"locale":"id","sourceId":"Changed fields"}
+{"checks":[],"locale":"ja","sourceId":"Changed fields"}
+{"checks":[],"locale":"ko","sourceId":"Changed fields"}
+{"checks":[],"locale":"pt-BR","sourceId":"Changed fields"}
+{"checks":[],"locale":"vi","sourceId":"Changed fields"}
+{"checks":[],"locale":"zh-Hans","sourceId":"Changed fields"}
+{"checks":[],"locale":"zh-Hant","sourceId":"Changed fields"}
+{"checks":[{"literal":"{channelName}","presentInFinal":true}],"locale":"ar","sourceId":"Channel \"{channelName}\" deleted successfully"}
+{"checks":[{"literal":"{channelName}","presentInFinal":true}],"locale":"de","sourceId":"Channel \"{channelName}\" deleted successfully"}
+{"checks":[{"literal":"{channelName}","presentInFinal":true}],"locale":"es","sourceId":"Channel \"{channelName}\" deleted successfully"}
+{"checks":[{"literal":"{channelName}","presentInFinal":true}],"locale":"fr","sourceId":"Channel \"{channelName}\" deleted successfully"}
+{"checks":[{"literal":"{channelName}","presentInFinal":true}],"locale":"hi","sourceId":"Channel \"{channelName}\" deleted successfully"}
+{"checks":[{"literal":"{channelName}","presentInFinal":true}],"locale":"id","sourceId":"Channel \"{channelName}\" deleted successfully"}
+{"checks":[{"literal":"{channelName}","presentInFinal":true}],"locale":"ja","sourceId":"Channel \"{channelName}\" deleted successfully"}
+{"checks":[{"literal":"{channelName}","presentInFinal":true}],"locale":"ko","sourceId":"Channel \"{channelName}\" deleted successfully"}
+{"checks":[{"literal":"{channelName}","presentInFinal":true}],"locale":"pt-BR","sourceId":"Channel \"{channelName}\" deleted successfully"}
+{"checks":[{"literal":"{channelName}","presentInFinal":true}],"locale":"vi","sourceId":"Channel \"{channelName}\" deleted successfully"}
+{"checks":[{"literal":"{channelName}","presentInFinal":true}],"locale":"zh-Hans","sourceId":"Channel \"{channelName}\" deleted successfully"}
+{"checks":[{"literal":"{channelName}","presentInFinal":true}],"locale":"zh-Hant","sourceId":"Channel \"{channelName}\" deleted successfully"}
+{"checks":[{"literal":"{newChannelName}","presentInFinal":true}],"locale":"ar","sourceId":"Channel \"{newChannelName}\" created successfully"}
+{"checks":[{"literal":"{newChannelName}","presentInFinal":true}],"locale":"de","sourceId":"Channel \"{newChannelName}\" created successfully"}
+{"checks":[{"literal":"{newChannelName}","presentInFinal":true}],"locale":"es","sourceId":"Channel \"{newChannelName}\" created successfully"}
+{"checks":[{"literal":"{newChannelName}","presentInFinal":true}],"locale":"fr","sourceId":"Channel \"{newChannelName}\" created successfully"}
+{"checks":[{"literal":"{newChannelName}","presentInFinal":true}],"locale":"hi","sourceId":"Channel \"{newChannelName}\" created successfully"}
+{"checks":[{"literal":"{newChannelName}","presentInFinal":true}],"locale":"id","sourceId":"Channel \"{newChannelName}\" created successfully"}
+{"checks":[{"literal":"{newChannelName}","presentInFinal":true}],"locale":"ja","sourceId":"Channel \"{newChannelName}\" created successfully"}
+{"checks":[{"literal":"{newChannelName}","presentInFinal":true}],"locale":"ko","sourceId":"Channel \"{newChannelName}\" created successfully"}
+{"checks":[{"literal":"{newChannelName}","presentInFinal":true}],"locale":"pt-BR","sourceId":"Channel \"{newChannelName}\" created successfully"}
+{"checks":[{"literal":"{newChannelName}","presentInFinal":true}],"locale":"vi","sourceId":"Channel \"{newChannelName}\" created successfully"}
+{"checks":[{"literal":"{newChannelName}","presentInFinal":true}],"locale":"zh-Hans","sourceId":"Channel \"{newChannelName}\" created successfully"}
+{"checks":[{"literal":"{newChannelName}","presentInFinal":true}],"locale":"zh-Hant","sourceId":"Channel \"{newChannelName}\" created successfully"}
+{"checks":[],"locale":"ar","sourceId":"Channel ID"}
+{"checks":[],"locale":"de","sourceId":"Channel ID"}
+{"checks":[],"locale":"es","sourceId":"Channel ID"}
+{"checks":[],"locale":"fr","sourceId":"Channel ID"}
+{"checks":[],"locale":"hi","sourceId":"Channel ID"}
+{"checks":[],"locale":"id","sourceId":"Channel ID"}
+{"checks":[],"locale":"ja","sourceId":"Channel ID"}
+{"checks":[],"locale":"ko","sourceId":"Channel ID"}
+{"checks":[],"locale":"pt-BR","sourceId":"Channel ID"}
+{"checks":[],"locale":"vi","sourceId":"Channel ID"}
+{"checks":[{"literal":"ID","presentInFinal":true}],"locale":"zh-Hans","sourceId":"Channel ID"}
+{"checks":[{"literal":"ID","presentInFinal":true}],"locale":"zh-Hant","sourceId":"Channel ID"}
+{"checks":[{"literal":"channelId","presentInFinal":true}],"locale":"ar","sourceId":"Channel ID is required"}
+{"checks":[{"literal":"channelId","presentInFinal":true}],"locale":"de","sourceId":"Channel ID is required"}
+{"checks":[{"literal":"channelId","presentInFinal":true}],"locale":"es","sourceId":"Channel ID is required"}
+{"checks":[{"literal":"channelId","presentInFinal":true}],"locale":"fr","sourceId":"Channel ID is required"}
+{"checks":[{"literal":"channelId","presentInFinal":true}],"locale":"hi","sourceId":"Channel ID is required"}
+{"checks":[{"literal":"channelId","presentInFinal":true}],"locale":"id","sourceId":"Channel ID is required"}
+{"checks":[{"literal":"channelId","presentInFinal":true}],"locale":"ja","sourceId":"Channel ID is required"}
+{"checks":[{"literal":"channelId","presentInFinal":true}],"locale":"ko","sourceId":"Channel ID is required"}
+{"checks":[{"literal":"channelId","presentInFinal":true}],"locale":"pt-BR","sourceId":"Channel ID is required"}
+{"checks":[{"literal":"channelId","presentInFinal":true}],"locale":"vi","sourceId":"Channel ID is required"}
+{"checks":[{"literal":"channelId","presentInFinal":true}],"locale":"zh-Hans","sourceId":"Channel ID is required"}
+{"checks":[{"literal":"channelId","presentInFinal":true}],"locale":"zh-Hant","sourceId":"Channel ID is required"}
+{"checks":[{"literal":"Pod","presentInFinal":true}],"locale":"ar","sourceId":"Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows."}
+{"checks":[{"literal":"Pod","presentInFinal":true}],"locale":"de","sourceId":"Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows."}
+{"checks":[{"literal":"Pod","presentInFinal":true}],"locale":"es","sourceId":"Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows."}
+{"checks":[{"literal":"Pod","presentInFinal":true}],"locale":"fr","sourceId":"Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows."}
+{"checks":[{"literal":"Pod","presentInFinal":true}],"locale":"hi","sourceId":"Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows."}
+{"checks":[{"literal":"Pod","presentInFinal":true}],"locale":"id","sourceId":"Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows."}
+{"checks":[{"literal":"Pod","presentInFinal":true}],"locale":"ja","sourceId":"Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows."}
+{"checks":[{"literal":"Pod","presentInFinal":true}],"locale":"ko","sourceId":"Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows."}
+{"checks":[{"literal":"Pod","presentInFinal":true}],"locale":"pt-BR","sourceId":"Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows."}
+{"checks":[{"literal":"Pod","presentInFinal":true}],"locale":"vi","sourceId":"Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows."}
+{"checks":[{"literal":"Pod","presentInFinal":true}],"locale":"zh-Hans","sourceId":"Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows."}
+{"checks":[{"literal":"Pod","presentInFinal":true}],"locale":"zh-Hant","sourceId":"Channel create, update, and delete actions change how pod messages are organized. Deleting channels can disrupt routing and history workflows."}
+{"checks":[],"locale":"ar","sourceId":"Channel name"}
+{"checks":[],"locale":"de","sourceId":"Channel name"}
+{"checks":[],"locale":"es","sourceId":"Channel name"}
+{"checks":[],"locale":"fr","sourceId":"Channel name"}
+{"checks":[],"locale":"hi","sourceId":"Channel name"}
+{"checks":[],"locale":"id","sourceId":"Channel name"}
+{"checks":[],"locale":"ja","sourceId":"Channel name"}
+{"checks":[],"locale":"ko","sourceId":"Channel name"}
+{"checks":[],"locale":"pt-BR","sourceId":"Channel name"}
+{"checks":[],"locale":"vi","sourceId":"Channel name"}
+{"checks":[],"locale":"zh-Hans","sourceId":"Channel name"}
+{"checks":[],"locale":"zh-Hant","sourceId":"Channel name"}
+{"checks":[],"locale":"ar","sourceId":"Channel name is required"}
+{"checks":[],"locale":"de","sourceId":"Channel name is required"}
+{"checks":[],"locale":"es","sourceId":"Channel name is required"}
+{"checks":[],"locale":"fr","sourceId":"Channel name is required"}
+{"checks":[],"locale":"hi","sourceId":"Channel name is required"}
+{"checks":[],"locale":"id","sourceId":"Channel name is required"}
+{"checks":[],"locale":"ja","sourceId":"Channel name is required"}
+{"checks":[],"locale":"ko","sourceId":"Channel name is required"}
+{"checks":[],"locale":"pt-BR","sourceId":"Channel name is required"}
+{"checks":[],"locale":"vi","sourceId":"Channel name is required"}
+{"checks":[],"locale":"zh-Hans","sourceId":"Channel name is required"}
+{"checks":[],"locale":"zh-Hant","sourceId":"Channel name is required"}
+{"checks":[],"locale":"ar","sourceId":"Channel updated successfully"}
+{"checks":[],"locale":"de","sourceId":"Channel updated successfully"}
+{"checks":[],"locale":"es","sourceId":"Channel updated successfully"}
+{"checks":[],"locale":"fr","sourceId":"Channel updated successfully"}
+{"checks":[],"locale":"hi","sourceId":"Channel updated successfully"}
+{"checks":[],"locale":"id","sourceId":"Channel updated successfully"}
+{"checks":[],"locale":"ja","sourceId":"Channel updated successfully"}
+{"checks":[],"locale":"ko","sourceId":"Channel updated successfully"}
+{"checks":[],"locale":"pt-BR","sourceId":"Channel updated successfully"}
+{"checks":[],"locale":"vi","sourceId":"Channel updated successfully"}
+{"checks":[],"locale":"zh-Hans","sourceId":"Channel updated successfully"}
+{"checks":[],"locale":"zh-Hant","sourceId":"Channel updated successfully"}
+{"checks":[],"locale":"ar","sourceId":"Channel:"}
+{"checks":[],"locale":"de","sourceId":"Channel:"}
+{"checks":[],"locale":"es","sourceId":"Channel:"}
+{"checks":[],"locale":"fr","sourceId":"Channel:"}
+{"checks":[],"locale":"hi","sourceId":"Channel:"}
+{"checks":[],"locale":"id","sourceId":"Channel:"}
+{"checks":[],"locale":"ja","sourceId":"Channel:"}
+{"checks":[],"locale":"ko","sourceId":"Channel:"}
+{"checks":[],"locale":"pt-BR","sourceId":"Channel:"}
+{"checks":[],"locale":"vi","sourceId":"Channel:"}
+{"checks":[],"locale":"zh-Hans","sourceId":"Channel:"}
+{"checks":[],"locale":"zh-Hant","sourceId":"Channel:"}
+{"checks":[],"locale":"ar","sourceId":"Channels"}
+{"checks":[],"locale":"de","sourceId":"Channels"}
+{"checks":[],"locale":"es","sourceId":"Channels"}
+{"checks":[],"locale":"fr","sourceId":"Channels"}
+{"checks":[],"locale":"hi","sourceId":"Channels"}
+{"checks":[],"locale":"id","sourceId":"Channels"}
+{"checks":[],"locale":"ja","sourceId":"Channels"}
+{"checks":[],"locale":"ko","sourceId":"Channels"}
+{"checks":[],"locale":"pt-BR","sourceId":"Channels"}
+{"checks":[],"locale":"vi","sourceId":"Channels"}
+{"checks":[],"locale":"zh-Hans","sourceId":"Channels"}
+{"checks":[],"locale":"zh-Hant","sourceId":"Channels"}
+{"checks":[],"locale":"ar","sourceId":"Chapters"}
+{"checks":[],"locale":"de","sourceId":"Chapters"}
+{"checks":[],"locale":"es","sourceId":"Chapters"}
+{"checks":[],"locale":"fr","sourceId":"Chapters"}
+{"checks":[],"locale":"hi","sourceId":"Chapters"}
+{"checks":[],"locale":"id","sourceId":"Chapters"}
+{"checks":[],"locale":"ja","sourceId":"Chapters"}
+{"checks":[],"locale":"ko","sourceId":"Chapters"}
+{"checks":[],"locale":"pt-BR","sourceId":"Chapters"}
+{"checks":[],"locale":"vi","sourceId":"Chapters"}
+{"checks":[],"locale":"zh-Hans","sourceId":"Chapters"}
+{"checks":[],"locale":"zh-Hant","sourceId":"Chapters"}

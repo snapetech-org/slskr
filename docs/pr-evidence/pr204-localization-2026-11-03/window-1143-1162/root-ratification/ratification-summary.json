@@ -1,0 +1,35 @@
+{
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "window": "W1143-W1162",
+  "baseHead": "20c66f7889c564fae5db1128d7dde22b512fc5be",
+  "baseTree": "85e82d73c6c191ea4875850d3c1afff7bae5c63a",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "ratifiedDispositions": {
+    "accept-current": 186,
+    "correction": 20,
+    "hold": 14,
+    "refinement": 20
+  },
+  "appliedChanges": 40,
+  "heldCells": 14,
+  "holdPositions": [
+    1146,
+    1160
+  ],
+  "catalogKeyCount": 5441,
+  "orderedCatalogSequencesUnchanged": true,
+  "numericFiveSecondManuallyReconciled": true,
+  "checksums": {
+    "candidateFreeManifestSha256": "e022466fdb5d4c4b32b320c307aacca177bb1030c3830913258aacdfcf487b60",
+    "primaryLedgerSha256": "c69519b3c937516e3ba61d20fd810bab5451196822b4ac831ea657300b9bcaec",
+    "blindLedgerSha256": "50062cff7ab0897284fb5b25dd4b9f3f2771a715d4831aae415cdf4b692b0522",
+    "thirdPartyCrossAuditSha256": "4e3272a23846deb1aef325c09aa71c8b795a7947b4af42155f929034c37cd080"
+  },
+  "nativeSpeakerApproval": false,
+  "browserAcceptance": false,
+  "testsBuildsScansCI": false,
+  "workflowsChanged": false
+}

@@ -315,13 +315,18 @@ class UserCard extends Component {
     const { interests, interestsError, interestsLoading } = this.state;
 
     if (interestsLoading) {
+      const isolatedUsername = `\u2068${username}\u2069`;
       return (
         <span>
           <Icon
             loading
             name="spinner"
           />{' '}
-          <LocalizedText source={"Loading native interests"} /></span>
+          <LocalizedText
+            source={"Loading native Soulseek interests for {username}."}
+            values={{ username: isolatedUsername }}
+          />
+        </span>
       );
     }
 
@@ -333,7 +338,7 @@ class UserCard extends Component {
     const hated = asArray(interests?.hated ?? interests?.Hated);
 
     if (!interests) {
-      return <span><LocalizedText source={"Click to load native Soulseek interests for"} />{" "}{username}.</span>;
+      return null;
     }
 
     return (
@@ -508,22 +513,24 @@ class UserCard extends Component {
                 }
               />
             ))}
-            <Popup
-              content={this.renderInterestPopup()}
-              on="click"
-              onOpen={this.fetchInterests}
-              position="top center"
-              trigger={
-                <span className="user-card-stat user-card-stat-red user-card-stat-clickable">
-                  <Icon
-                    fitted
-                    name="heart outline"
-                    size="small"
-                  />
-                  <span className="user-card-stat-value"><LocalizedText source={"i"} /></span>
-                </span>
-              }
-            />
+            {username && (
+              <Popup
+                content={this.renderInterestPopup()}
+                on="click"
+                onOpen={this.fetchInterests}
+                position="top center"
+                trigger={
+                  <span className="user-card-stat user-card-stat-red user-card-stat-clickable">
+                    <Icon
+                      fitted
+                      name="heart outline"
+                      size="small"
+                    />
+                    <span className="user-card-stat-value"><LocalizedText source={"i"} /></span>
+                  </span>
+                }
+              />
+            )}
           </span>
         )}
       </span>

@@ -1,0 +1,20 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "window": "W1763-W1782",
+  "head": "5191888071f54061a6012acdedfeb518a6cb3661",
+  "tree": "d5728c24b54a06dda432afd2ef5f378206a6cb8f",
+  "candidateFreeInput": "/mnt/disks/scratch/task-scratch/slskr-pr209-w1763-1782-candidate-free-20261105/candidate-free-input",
+  "candidateFreeManifestSha256": "903d97b24a10d3357343db56b54d116aa065f6948ef7b381acf1f14c25693a7c",
+  "candidateFreeChecksumListSha256": "49ef8f606d569177ff187d01e11cad3c74708e6c60d570896477e7fcf4fcfeca",
+  "currentTargetCellsSha256": "f2e8ed623f78c4a3ca6a2d583fe3401f6452269a8a30ac97b0137f59f7a0d0d2",
+  "sourceContextsSha256": "7fa45ecd8f2c535ef3cc1dc113f109acc12cfb8e1a97fdca52023489055cde57",
+  "selectedSourceKeysSha256": "e5fa9866d49a4dbe9290c87ddf9d963a05bcc7406a50b28704a2f9b66f8799b8",
+  "sourceQueueSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+  "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "independentProposalSha256": "142119303f5883c209772ef4103b016314ba79bf6f5227cdee7b9f5954ae33a7",
+  "activeHoldInputSha256": "553892053db5fb78509fbc3b24df31df6ea94a35d5cc90f296909fd26561d58c",
+  "worktreePath": "/home/keith/Documents/code/.task-worktrees/localization-20261105/slskr-w1683",
+  "worktreeStatusClean": true,
+  "productHeadAdvanced": false
+}

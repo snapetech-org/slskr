@@ -1,0 +1,39 @@
+{
+  "window": "W1703-W1722",
+  "inputHead": "91e109efba44ad9e53fe9544648a0d907a2bef77",
+  "inputTree": "38db78228144da5fc50179addccf826662bf97de",
+  "reviewedCells": 240,
+  "acceptedCurrent": 170,
+  "selectedCorrectionsAndRefinements": 69,
+  "heldUnchanged": 1,
+  "catalogsPreflighted": 12,
+  "catalogEntriesPerLocale": 5441,
+  "catalogHashes": {
+    "web/src/lib/locales/ui-labels.es.json": "c50f0c615eff1da668a1e87095d656d3f26b7a2870a31af72fd9155b301890b6",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "5a10a85a948bfe92aadbb27a4422653cb4c54f43c099f71b97d9a896fc3b8b10",
+    "web/src/lib/locales/ui-labels.hi.json": "01b0f63e5cd00d134c19c0d44ae59efc2dcaa713bc75e702069129b9800d30f7",
+    "web/src/lib/locales/ui-labels.de.json": "0f97b9384b9f04b0800c491602042b7cb02d49295344877651afa573a05da388",
+    "web/src/lib/locales/ui-labels.ja.json": "2bd005cbc8081328a1effe2b1fe5e34205d71f80861a26be3ebe95733cd9e724",
+    "web/src/lib/locales/ui-labels.fr.json": "c5ba31f91b88e407a1253654e954e1e11c3cc7dd64fa1b86a3db03da8e8d603e",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "1eec65cc8906c2ab6226296266d7d878427e969962e87a372cd0d949ba6e415a",
+    "web/src/lib/locales/ui-labels.ar.json": "c55d867e382209e60758487c51d2460a8b1f49673cf682b3d18a171d6065e087",
+    "web/src/lib/locales/ui-labels.ko.json": "1185e606f6dfa2f363da92f562f72eba4498359eb5c0bbb11ad6cd1f6980043f",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "9ef4cac90888f1c6727665c755937b780b57c9eeb9224dcd754193ded4c29e2e",
+    "web/src/lib/locales/ui-labels.vi.json": "2a3eac7a621f29b25615381127d9c48561423244c02440d806e8b574bc14690d",
+    "web/src/lib/locales/ui-labels.id.json": "0a7356c45b4acfd28ed72682f3f08409836a2013b688f7c20351fafdb5d68388"
+  },
+  "all240CurrentValuesMatched": true,
+  "all69ExactHashGuardsPassed": true,
+  "writeStartedAfterFullPreflight": true,
+  "result": "PASS",
+  "productHead": "0f05e049a241347d419c5705c0b8efc0c0030f76",
+  "productTree": "3b1ba4ee694613cff33cbf39e9fac09d73943a43",
+  "catalogsMatchPinnedParentPlusExactPlan": true,
+  "nonTargetValuesAndKeyOrderPreserved": true,
+  "readbackCells": 240,
+  "changedCells": 69,
+  "unchangedCells": 171,
+  "rootHoldCells": [
+    "1719::id"
+  ]
+}

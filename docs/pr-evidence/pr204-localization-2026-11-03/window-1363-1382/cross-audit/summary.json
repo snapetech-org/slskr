@@ -1,0 +1,103 @@
+{
+  "blindSelectedDisagreements": 132,
+  "blindVerifier": "PASS",
+  "branchPullAndTreeAgree": true,
+  "callerlessCellsHeld": 12,
+  "callerlessPosition": 1376,
+  "cellCount": 240,
+  "disagreementsByLocale": {
+    "ar": 13,
+    "de": 16,
+    "es": 17,
+    "fr": 18,
+    "hi": 16,
+    "id": 13,
+    "ja": 16,
+    "ko": 18,
+    "pt-BR": 18,
+    "vi": 15,
+    "zh-Hans": 16,
+    "zh-Hant": 17
+  },
+  "disagreementsByPosition": {
+    "1363": 11,
+    "1364": 10,
+    "1365": 8,
+    "1366": 11,
+    "1367": 12,
+    "1368": 12,
+    "1369": 12,
+    "1370": 11,
+    "1371": 10,
+    "1372": 12,
+    "1373": 11,
+    "1374": 6,
+    "1375": 11,
+    "1376": 0,
+    "1377": 12,
+    "1378": 12,
+    "1379": 12,
+    "1380": 9,
+    "1381": 7,
+    "1382": 4
+  },
+  "draft": true,
+  "head": "281c39ec0cdb3677d7d523b7c4f0cd0d52bbf14c",
+  "holdCells": 12,
+  "inputCurrentProtectedLiteralMismatchCells": 2,
+  "inputProtectedLiteralMismatchKeys": [
+    {
+      "locale": "ar",
+      "position": 1372
+    },
+    {
+      "locale": "hi",
+      "position": 1372
+    }
+  ],
+  "inputVerifier": "PASS",
+  "liveHeadRequeried": true,
+  "localeCount": 12,
+  "nativeSpeakerReviewPerformed": false,
+  "nextBoundaryPosition": 1383,
+  "positions": [
+    1363,
+    1382
+  ],
+  "previousBoundaryPosition": 1362,
+  "primaryBlindTargetAgreementsAmongProposals": 35,
+  "primaryBlindTargetDisagreements": 193,
+  "primaryPathExampleMismatchDisposition": "both are rank-1376 callerless holds; no translation selected",
+  "primarySelectedDisagreements": 61,
+  "primaryUnresolvedPathExampleMismatchCells": 2,
+  "primaryVerifier": "PASS",
+  "priorCarryForwardHoldsReattestedUnchanged": 23,
+  "priorSelectedRowsReattested": 120,
+  "proposalCells": 228,
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "repositoryOrPullRequestMutated": false,
+  "resolutionCounts": {
+    "agreement": 35,
+    "blind-selected": 132,
+    "hold-consensus": 12,
+    "primary-selected": 61
+  },
+  "selectedDispositionCounts": {
+    "accept-current": 85,
+    "correction": 27,
+    "hold": 12,
+    "refinement": 116
+  },
+  "selectedMarkupMismatches": 0,
+  "selectedNumericMismatches": 0,
+  "selectedPathExampleMismatches": 0,
+  "selectedPlaceholderMismatches": 0,
+  "selectedProtectedLiteralMismatches": 0,
+  "sourceCount": 20,
+  "state": "OPEN",
+  "testsBuildsOrCiRun": false,
+  "tree": "777b234b1aa3cb7a2c9fd560b2c0fecc4e7fe49d",
+  "url": "https://github.com/snapetech-org/slskr/pull/204",
+  "window": "W1363-W1382"
+}

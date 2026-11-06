@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "head": "281c39ec0cdb3677d7d523b7c4f0cd0d52bbf14c",
+  "tree": "777b234b1aa3cb7a2c9fd560b2c0fecc4e7fe49d",
+  "sourceLookupKeySetCount": 5441,
+  "sourceLookupKeyOrderSha256": "dcabd0a1f1e6e9504a47b5126d9f9fbd10aa5a2da80266ab945098248b97d983",
+  "sourceQueuePath": "source-queue.jsonl",
+  "sourceQueueFileSha256": "7ac2b9540530175809ee6ad483164ca2fb365d189585bb799e3c3b7031c0ae45",
+  "localesInRuntimeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "localeCatalogs": {
+    "es": {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "byteCount": 444658,
+      "lineCount": 5443,
+      "sha256": "fe1a0ab359aa43c1adc08dda66e8f091b77baf8143c8cb2427bf368eb22e36f7",
+      "gitBlob": "ec38603f9422ae7cfad5afbb730f47454c4fb964",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "zh-Hans": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "byteCount": 382944,
+      "lineCount": 5443,
+      "sha256": "2c0000f046d93e11cec4d7941290d543bed7dbcad8759c3da55509c9f5a05bd6",
+      "gitBlob": "165bf9656790ebe0e99b67209a97a83f069e150b",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "hi": {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "byteCount": 677988,
+      "lineCount": 5443,
+      "sha256": "b29f7d8066abb0eaa23addf4decc2127859240cf8b2ad90ec965f27ac62325d4",
+      "gitBlob": "4edc33b0661135a96cee78631f9c4bc4b9560697",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "de": {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "byteCount": 443185,
+      "lineCount": 5443,
+      "sha256": "e532c6c87b12561f981f9883b570895391ca2fa8a227b1c7d048941309e737f2",
+      "gitBlob": "8e6b2458366e5554cfe1a596ed27a28fd11678a2",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "ja": {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "byteCount": 491241,
+      "lineCount": 5443,
+      "sha256": "54da4b7634f7673501c406e5c01dd62055c7a586fe2aa2f7c91eebe1a63d8daf",
+      "gitBlob": "563aac2544fd9692a377cf4b74783fd278799f6a",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "fr": {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "byteCount": 455684,
+      "lineCount": 5443,
+      "sha256": "4407c36f06d9dfcceb03cf106e2ae11ba88e233eba99b36fa5e5b7ece97f58c3",
+      "gitBlob": "3bbf1f578814d4a50b62b90fc030a650dd972d1d",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "pt-BR": {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "byteCount": 439262,
+      "lineCount": 5443,
+      "sha256": "e88c6a4656bc8276519b07166405f43d0577f2f26dabc9679eb300a16a8d3378",
+      "gitBlob": "7c984c113122e62c452739c2b79a3fa4e963ac82",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "ar": {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "byteCount": 513240,
+      "lineCount": 5548,
+      "sha256": "8cfeeed82d8482f7c4b8513329e5bb2445927ae577c275bacf644f6d16a43a09",
+      "gitBlob": "1fe3d78dbea150b5cef200b73ec94816790b7cc1",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "ko": {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "byteCount": 442384,
+      "lineCount": 5443,
+      "sha256": "ae0c5bf6a38ce15c21c5835073fca302bf301bd2ad9c883565d3244990ccf382",
+      "gitBlob": "1f774e7341d19888f2d7071a4581a5d22a45801c",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "zh-Hant": {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "byteCount": 383706,
+      "lineCount": 5443,
+      "sha256": "18438cd58568e5e54cc6ac637efc281b86909814bf355eb1078cbf4cbcb26280",
+      "gitBlob": "8ec6e97e1853752b20fcd8f532329a9506da0f34",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "vi": {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "byteCount": 475288,
+      "lineCount": 5443,
+      "sha256": "74eab6b6081f38aed98b1114ba1a7c2b4b37901cf563f7eaad3c04d88b08eac0",
+      "gitBlob": "67bf82e5d8d1d0468392da38f61de507298b93fb",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    },
+    "id": {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "byteCount": 410067,
+      "lineCount": 5443,
+      "sha256": "de717606220cc7ba5a323db99e8752644e825848dfca32da75d0927a1dcf80c7",
+      "gitBlob": "30935c5d6c4bf273860d432ab606691d0fd338da",
+      "keyCount": 5441,
+      "orderedKeySha256": "e1e5af8cb51540c025e7031ba58e2acd58294d26f548880ada3a12d08b5cf2be"
+    }
+  },
+  "localeRuntime": {
+    "path": "web/src/lib/interfaceLocale.js",
+    "byteCount": 11530,
+    "lineCount": 302,
+    "sha256": "16eb5f119655805f48845e026ee12fd517fae6de871091bd9be2e5b7f1d310ea",
+    "gitBlob": "72dfea05f86bcf0ab02882a85c6e8d4a0cb0dabf"
+  },
+  "callerFiles": {
+    "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx": {
+      "path": "web/src/components/System/AdminPolicies/AdminPoliciesForm.jsx",
+      "byteCount": 53474,
+      "lineCount": 1043,
+      "sha256": "17241e796b943988d339bac74569f5a5d4e8889194cad1221d0b9c8bc1b82a9e",
+      "gitBlob": "90f3e1d29a4b514a1877693e131e92b66b8050aa"
+    },
+    "web/src/components/System/Security/AdversarialSettingsView.jsx": {
+      "path": "web/src/components/System/Security/AdversarialSettingsView.jsx",
+      "byteCount": 41904,
+      "lineCount": 1018,
+      "sha256": "5b2dfa095ba281bae2b5ef66e17901b38c7d2a68d9bef52c5f016ce3352db72d",
+      "gitBlob": "adcacdd123faf82a315da746fab3243adf5ea6a3"
+    },
+    "web/src/components/System/MediaCore/MediaCoreContentGraphPanel.jsx": {
+      "path": "web/src/components/System/MediaCore/MediaCoreContentGraphPanel.jsx",
+      "byteCount": 13944,
+      "lineCount": 344,
+      "sha256": "3b19490e2733effe92ea6d6dd713996dfe1a6a0d908bfe8f8976d5360fb5df65",
+      "gitBlob": "0f87bd8c15132da224683d3bf8c18614996089a0"
+    },
+    "web/src/components/System/AutomationCenter/index.jsx": {
+      "path": "web/src/components/System/AutomationCenter/index.jsx",
+      "byteCount": 19174,
+      "lineCount": 472,
+      "sha256": "3e5392f8a4f4d0ed7e6e6191e5cbbb12e1f34689a13d7c40d22e26b56398628d",
+      "gitBlob": "c80e09d7a45fc31d2b9573711e62f14b7215fb1f"
+    },
+    "web/src/components/System/LibraryHealth/index.jsx": {
+      "path": "web/src/components/System/LibraryHealth/index.jsx",
+      "byteCount": 36030,
+      "lineCount": 983,
+      "sha256": "93770b1489c22b54d631d90b593a86e0eca30ca4475d3b1472c1af60604c1d2b",
+      "gitBlob": "644c76751793b2bd45057a0191a054d74f547d36"
+    },
+    "web/src/components/System/Mesh/RealmSubjectIndexConflicts.jsx": {
+      "path": "web/src/components/System/Mesh/RealmSubjectIndexConflicts.jsx",
+      "byteCount": 12920,
+      "lineCount": 324,
+      "sha256": "7f4c9a172e08b50027271c856dca10f7270a23f7bba89ca1488cb6561ae62a77",
+      "gitBlob": "355a03884b50ecd5b45287aa89f538919a17f70a"
+    },
+    "web/src/lib/mediaServerIntegrations.js": {
+      "path": "web/src/lib/mediaServerIntegrations.js",
+      "byteCount": 9969,
+      "lineCount": 326,
+      "sha256": "7d477ed1486dbda8c93e63c7479e5f55973b06fc13e359b1d8331cbc51f52c0f",
+      "gitBlob": "7e7ac0ce6695f166eadd00570509a2724eff7859"
+    },
+    "web/src/components/Collections/CreateCollectionModal.jsx": {
+      "path": "web/src/components/Collections/CreateCollectionModal.jsx",
+      "byteCount": 2563,
+      "lineCount": 63,
+      "sha256": "f29683894b37c0b84874936ab1161086f5bcc581b715058d0f320a48e4d56616",
+      "gitBlob": "c7177c6495a67d4f38f56c9ac6ee94bdcc950ef9"
+    },
+    "web/src/components/System/MediaCore/ResolveExternalIdPanel.jsx": {
+      "path": "web/src/components/System/MediaCore/ResolveExternalIdPanel.jsx",
+      "byteCount": 3723,
+      "lineCount": 125,
+      "sha256": "9effefa571036f9799e5ff16e2bd816332394d6aee08f7a5481c229102206701",
+      "gitBlob": "bdae02503e0e5b1ef70bb76a22f7d60b3603e01e"
+    },
+    "web/src/components/Player/VisualizerOverlayControls.jsx": {
+      "path": "web/src/components/Player/VisualizerOverlayControls.jsx",
+      "byteCount": 38871,
+      "lineCount": 792,
+      "sha256": "5427c77cbbce755ea745cce9fe458862c6d1480535f1145e966e8cafa5bd13d4",
+      "gitBlob": "0896be26bbf37ea872f10c4a3a5e64a9aca7d3cf"
+    },
+    "web/src/components/ShareGroups/ShareGroups.jsx": {
+      "path": "web/src/components/ShareGroups/ShareGroups.jsx",
+      "byteCount": 18047,
+      "lineCount": 554,
+      "sha256": "d3a467377b0d3ce0e08c6623ac01b8c53616c41828715716ef94f274f92dea6e",
+      "gitBlob": "b9e41426dfb0f920200d982653d8ab2ff98622ba"
+    },
+    "web/src/components/Users/UserNoteModal.jsx": {
+      "path": "web/src/components/Users/UserNoteModal.jsx",
+      "byteCount": 7286,
+      "lineCount": 247,
+      "sha256": "1b5fb333df81433a6df604673aaa49f67a0cda639298ebf37a363ef03bb6b767",
+      "gitBlob": "da3b96c79f197d180dab8465c5e6ccfb13591021"
+    },
+    "web/src/components/Rooms/RoomCreateModal.jsx": {
+      "path": "web/src/components/Rooms/RoomCreateModal.jsx",
+      "byteCount": 5509,
+      "lineCount": 168,
+      "sha256": "cbf45ac308798a22db6a4478cb8fb90a68c83c2367c6629a309c2f0a46c75dac",
+      "gitBlob": "416dd82df9642e82c3ae7827301d631dcbd2c1e7"
+    },
+    "web/src/components/Wishlist/WishlistModal.jsx": {
+      "path": "web/src/components/Wishlist/WishlistModal.jsx",
+      "byteCount": 8939,
+      "lineCount": 272,
+      "sha256": "49f9f293410dec17e1d3c335ba49218fb7b351aa04a7bfc3ae107b138bf06582",
+      "gitBlob": "16b4aa4c5a2ab57b1a0c2f6581e99dfdd4b24727"
+    }
+  }
+}

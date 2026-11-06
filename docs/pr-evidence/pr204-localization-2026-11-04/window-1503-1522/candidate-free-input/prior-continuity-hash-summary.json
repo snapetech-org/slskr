@@ -1,0 +1,46 @@
+{
+  "policy": "Prior selections, holds, and source-order lineage are carried forward as hashes/counts only. No prior target/source text or raw lineage files are included.",
+  "priorInputManifestSha256": "662b3139b833e785360fb850a52fa2abad5340ee1540f2b0cff9a11b8384a809",
+  "priorInputPriorContinuitySummarySha256": "8437f2ce0590d91dfd745858ac24d2584501ecee8d230c307cc7227e7348a230",
+  "olderPriorSelections": {
+    "recordCount": 220,
+    "hashOnlySourceRecords": 220,
+    "matchesLiveQueueCount": 220,
+    "hashOnlyLedgerSha256": "372bab8204f3a4c8d76aee9f08c6f2c94eda016220c899218ff27edbe87b6b61"
+  },
+  "previousSelectedSourceWindows": {
+    "sourceCount": 40,
+    "windowLabels": [
+      "W1463-W1482",
+      "W1483-W1502"
+    ]
+  },
+  "priorHolds": {
+    "recordCount": 47,
+    "unchangedCount": 47,
+    "hashOnlyLedgerSha256": "27d83aa4b0d51769a91e63202f33e934f56d0e0e900438a7fcffc1944e1e11c1"
+  },
+  "previousWindowCells": {
+    "recordCount": 480,
+    "allMatchLiveCatalog": true,
+    "hashOnlyLedgerSha256": "5288200a2f800b4d296ce41a389c7ef06d679495b9059c733f6a6bfbfada96a0",
+    "windowDispositionCounts": {
+      "W1463-W1482": {
+        "accept-current": 169,
+        "correction": 29,
+        "hold": 12,
+        "refinement": 30
+      },
+      "W1483-W1502": {
+        "accept-current": 225,
+        "correction": 12,
+        "refinement": 3
+      }
+    }
+  },
+  "priorSourceOrderLineage": {
+    "byteCount": 8677,
+    "sha256": "d62bc23c462757f3c974ed412756aa61598f30f45a828e1c5d1bed6e3238cbf9"
+  },
+  "previousCrossLedgerSha256": "577ade3cfa7f8ae6768da0585622fe86c9781cd67166b56a9b0a554f698531ee"
+}

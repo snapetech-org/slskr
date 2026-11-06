@@ -1,0 +1,18 @@
+{
+  "pullRequest": 209,
+  "productCommit": "62e74939e7b8145055dbd77d83d2b5c3804d3b0b",
+  "headBefore": "62e74939e7b8145055dbd77d83d2b5c3804d3b0b",
+  "headAfter": "62e74939e7b8145055dbd77d83d2b5c3804d3b0b",
+  "bodyBeforeCharacters": 3223,
+  "bodyAfterCharacters": 4096,
+  "bodyPrefixCharacters": 3223,
+  "bodyBeforeSha256": "754cae53e889b6e348c0b5b55cd23c1e6c6dd48f7e8365277f683166505ad61d",
+  "bodyAfterSha256": "55b61d0c2e17826531645b47523ad09809fd09eb3745453b9580dc372623dbe3",
+  "appendedSummarySha256": "279a55d480d2f2bf519b71dd1aa0d2f08dfa5fa23d8e976c1aaed74703fff510",
+  "exactPrefixPreserved": true,
+  "apiReadbackMatches": true,
+  "prState": "open",
+  "draft": true,
+  "updatedAtBefore": "2026-11-04T23:14:04Z",
+  "updatedAtAfter": "2026-11-04T23:17:16Z"
+}

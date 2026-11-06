@@ -72,7 +72,7 @@ const LocalizedSetupHealthAction = ({ source }) => {
 };
 
 const SetupHealthCheckModal = ({ options = {}, state = {} }) => {
-  useInterfaceLanguage();
+  const { t } = useInterfaceLanguage();
   const [activeGroup, setActiveGroup] = useState('All');
   const [copying, setCopying] = useState(false);
   const copyingRef = useRef(false);
@@ -86,7 +86,7 @@ const SetupHealthCheckModal = ({ options = {}, state = {} }) => {
       }),
     [options, state],
   );
-  const report = useMemo(() => formatSetupHealthReport(summary), [summary]);
+  const report = useMemo(() => formatSetupHealthReport(summary, t), [summary, t]);
   const groupNames = useMemo(
     () => ['All', ...Object.keys(summary.groups).sort()],
     [summary.groups],

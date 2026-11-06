@@ -1,0 +1,147 @@
+{
+  "all_candidate_placeholder_sets_match_source": true,
+  "candidate_cells_excluding_prior_routed": 39,
+  "catalog_modified": false,
+  "cell_count": 240,
+  "confirmed_prior_correction_candidates": 20,
+  "conflicts": [],
+  "correction_candidates_by_source": {
+    "Bridge URL": 9,
+    "Broadcast current track to room": 7,
+    "Broadcast failed": 1,
+    "Broadcast your current local player track to this room.": 7,
+    "Brown": 2,
+    "Browse Shares": 10,
+    "Browse shared and downloaded local audio that slskr can stream in this browser.": 2,
+    "Browse this user's files": 1
+  },
+  "decisions": {
+    "accept-current": 189,
+    "confirm-prior-correction": 20,
+    "preserve-prior-routed": 12,
+    "reopen-prior-accepted": 19
+  },
+  "locale_count": 12,
+  "native_speaker_approval": false,
+  "native_speaker_review_required": true,
+  "new_correction_candidates": 0,
+  "new_proposal_cells_without_prior_exact_evidence": 0,
+  "no_direct_localized_caller_source_ids": [
+    "Browse",
+    "Browse available Soulseek rooms and join the selected room."
+  ],
+  "per_locale": {
+    "ar": {
+      "accept-current": 17,
+      "preserve-prior-routed": 1,
+      "reopen-prior-accepted": 2
+    },
+    "de": {
+      "accept-current": 18,
+      "preserve-prior-routed": 1,
+      "reopen-prior-accepted": 1
+    },
+    "es": {
+      "accept-current": 17,
+      "confirm-prior-correction": 1,
+      "preserve-prior-routed": 1,
+      "reopen-prior-accepted": 1
+    },
+    "fr": {
+      "accept-current": 16,
+      "preserve-prior-routed": 1,
+      "reopen-prior-accepted": 3
+    },
+    "hi": {
+      "accept-current": 18,
+      "preserve-prior-routed": 1,
+      "reopen-prior-accepted": 1
+    },
+    "id": {
+      "accept-current": 17,
+      "confirm-prior-correction": 1,
+      "preserve-prior-routed": 1,
+      "reopen-prior-accepted": 1
+    },
+    "ja": {
+      "accept-current": 16,
+      "confirm-prior-correction": 2,
+      "preserve-prior-routed": 1,
+      "reopen-prior-accepted": 1
+    },
+    "ko": {
+      "accept-current": 16,
+      "confirm-prior-correction": 2,
+      "preserve-prior-routed": 1,
+      "reopen-prior-accepted": 1
+    },
+    "pt-BR": {
+      "accept-current": 14,
+      "confirm-prior-correction": 3,
+      "preserve-prior-routed": 1,
+      "reopen-prior-accepted": 2
+    },
+    "vi": {
+      "accept-current": 14,
+      "confirm-prior-correction": 3,
+      "preserve-prior-routed": 1,
+      "reopen-prior-accepted": 2
+    },
+    "zh-Hans": {
+      "accept-current": 13,
+      "confirm-prior-correction": 4,
+      "preserve-prior-routed": 1,
+      "reopen-prior-accepted": 2
+    },
+    "zh-Hant": {
+      "accept-current": 13,
+      "confirm-prior-correction": 4,
+      "preserve-prior-routed": 1,
+      "reopen-prior-accepted": 2
+    }
+  },
+  "placeholder_source_keys": [
+    "Browse shared directory {path}",
+    "Browse shared directory {path}",
+    "Browse shared directory {path}",
+    "Browse shared directory {path}",
+    "Browse shared directory {path}",
+    "Browse shared directory {path}",
+    "Browse shared directory {path}",
+    "Browse shared directory {path}",
+    "Browse shared directory {path}",
+    "Browse shared directory {path}",
+    "Browse shared directory {path}",
+    "Browse shared directory {path}"
+  ],
+  "pr_head": "7bf9f91c0f34269434fee70cd2f7067afeaf6122",
+  "pr_number": 204,
+  "pr_tree": "b598a6ad004a504037e64ebf541b5c9e01d54765",
+  "preserved_prior_bridge_download_failed_dispositions": {
+    "ar": "corrected",
+    "de": "corrected",
+    "es": "accepted",
+    "fr": "corrected",
+    "hi": "corrected",
+    "id": "corrected",
+    "ja": "corrected",
+    "ko": "corrected",
+    "pt-BR": "corrected",
+    "vi": "corrected",
+    "zh-Hans": "corrected",
+    "zh-Hant": "corrected"
+  },
+  "primary_freshly_reviewed_cells": 228,
+  "prior_routed_preserved_cells": 12,
+  "reopened_prior_acceptances": 19,
+  "repository": "snapetech-org/slskR",
+  "review_window_indices": [
+    503,
+    522
+  ],
+  "schema_version": 1,
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_key_count": 20,
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "tests_builds_scans_ci_workflows_releases_tags_merges": false
+}

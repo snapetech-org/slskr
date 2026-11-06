@@ -1,0 +1,30 @@
+{
+  "artifact": "W1443-W1462 caller-context review notes",
+  "head": "44b37bd94385128d5bb5287aa1545901282bdfcb",
+  "tree": "02c3f149a079c67b010d973dd02ca15776ad1610",
+  "sources": {
+    "1443": "Publishing statistics label for the count expiring soon.",
+    "1444": "Automation recipe approval gate for explicit publication of signed quality and verification evidence to trusted mesh peers.",
+    "1445": "MediaCore metadata portability card header and export button.",
+    "1446": "RustyMilk preset export control for the selected shape fragment.",
+    "1447": "RustyMilk preset export control for the selected wave fragment.",
+    "1448": "Success message header after an export completes.",
+    "1449": "Export control for the active RustyMilk preset.",
+    "1450": "Scrobble/rating integration description that exports confirmed local playback or ratings to the selected media-server profile.",
+    "1451": "MediaCore metadata portability description for a portable package of ContentIDs.",
+    "1452": "Tooltip for exporting the active RustyMilk preset text after local edits.",
+    "1453": "Tooltip for exporting the selected custom shape as a .shape fragment.",
+    "1454": "Tooltip for exporting the selected custom wave as a .wave fragment.",
+    "1455": "Description of export/import operations and conflict resolution.",
+    "1456": "Federation diagnostics label for the Hermit/Friends only/Public/Custom audience mode.",
+    "1457": "Discography coverage selector option whose value is ExtendedDiscography.",
+    "1458": "External identifier form label.",
+    "1459": "External identifier resolution form label.",
+    "1460": "External identifier value label.",
+    "1461": "Servarr readiness description comparing a scoped API key with an operator session.",
+    "1462": "Section title in the player integrations panel for an external visualizer tool."
+  },
+  "candidateFreeCallerCount": 20,
+  "callerlessPositions": [],
+  "runtimeContext": "web/src/lib/interfaceLocale.js uses exact English source-key lookup, named placeholder substitution, twelve locale catalogs, and English fallback; see evidence/candidate-free-input/localization-runtime-context.json."
+}

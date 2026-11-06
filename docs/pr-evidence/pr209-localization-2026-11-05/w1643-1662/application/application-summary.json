@@ -1,0 +1,126 @@
+{
+  "artifact": "slskR PR #209 W1643-W1662 exact-hash catalog application",
+  "cellsApplied": 9,
+  "cellsReviewed": 240,
+  "changedByLocale": {
+    "ar": 1,
+    "fr": 1,
+    "hi": 1,
+    "ja": 1,
+    "ko": 2,
+    "pt-BR": 1,
+    "zh-Hant": 2
+  },
+  "changedCatalogs": {
+    "web/src/lib/locales/ui-labels.ar.json": {
+      "afterSha256": "baa3f485ba5e9d2372f032b56638ce0b05cd8508e52026f873b93f20a6dbe3d5",
+      "allNonTargetValuesUnchanged": true,
+      "beforeSha256": "335673acaf181c1027bf384c757e1dbd2c5d9e672bff4ffbbbd6632bedfec6fd",
+      "changedCount": 1,
+      "changedKeys": [
+        "Failed to select canonical variant"
+      ],
+      "gitBlobBefore": "31932812b031d0e82ca0803f0fb69e91ab91f1f4",
+      "keyCount": 5441,
+      "keyOrderPreserved": true
+    },
+    "web/src/lib/locales/ui-labels.fr.json": {
+      "afterSha256": "9618b90d8ce22cad4bf34a887f915495e3ff6fa221a3ace043c618901015b750",
+      "allNonTargetValuesUnchanged": true,
+      "beforeSha256": "82c47cdb755870b0bd578edf79c60a7721785d2507c73458e68427e0bded0d3d",
+      "changedCount": 1,
+      "changedKeys": [
+        "Failed to route message:"
+      ],
+      "gitBlobBefore": "1d652dd8e7dd8637f1c2e4bfb5761a824ec28e53",
+      "keyCount": 5441,
+      "keyOrderPreserved": true
+    },
+    "web/src/lib/locales/ui-labels.hi.json": {
+      "afterSha256": "41fe86bc9de206de470934040b1d1500d26775a51ec528167763667d63a44a15",
+      "allNonTargetValuesUnchanged": true,
+      "beforeSha256": "baccabba52012f7b9f17701d7c647e83cc92dfc60cf627fe8b4078b454a703c3",
+      "changedCount": 1,
+      "changedKeys": [
+        "Failed to save adversarial settings"
+      ],
+      "gitBlobBefore": "d4ec823462e47ae88f5927573513292d7a7f49a9",
+      "keyCount": 5441,
+      "keyOrderPreserved": true
+    },
+    "web/src/lib/locales/ui-labels.ja.json": {
+      "afterSha256": "01abfd7ee63058be31e5ca3f9f140e47a4cb7f38d3f2627139503e70201ad152",
+      "allNonTargetValuesUnchanged": true,
+      "beforeSha256": "2c78b199e7039023ec3e392d8e1acf0d0135a3141b486c8a04b8e83e9a31ea9b",
+      "changedCount": 1,
+      "changedKeys": [
+        "Failed to select canonical variant"
+      ],
+      "gitBlobBefore": "0ebf6e43afb3542f8196d9741b6f98e08e1a86be",
+      "keyCount": 5441,
+      "keyOrderPreserved": true
+    },
+    "web/src/lib/locales/ui-labels.ko.json": {
+      "afterSha256": "3b104454507073424aee6941a6ad94841671ace8fb3314e8379e5ffd24da6405",
+      "allNonTargetValuesUnchanged": true,
+      "beforeSha256": "a9653a1a54280e346911ade937444b046596806e984947ef8e39bfe34d916913",
+      "changedCount": 2,
+      "changedKeys": [
+        "Failed to retrieve metadata:",
+        "Failed to select canonical variant"
+      ],
+      "gitBlobBefore": "9fa9e5f63d7f7432a838fc822d459d373f612973",
+      "keyCount": 5441,
+      "keyOrderPreserved": true
+    },
+    "web/src/lib/locales/ui-labels.pt-BR.json": {
+      "afterSha256": "48af89dea0580bd38fb61415f6f1b313f5c1de5d53936c96af690bc3fcfc407d",
+      "allNonTargetValuesUnchanged": true,
+      "beforeSha256": "d803dce984d9a1e38a65dc30eb6bcea818c40058f0f3ff3976f251e48520641e",
+      "changedCount": 1,
+      "changedKeys": [
+        "Failed to route message:"
+      ],
+      "gitBlobBefore": "475533f5cfec1c5c2afaf0a8dd51e8db06bc3d48",
+      "keyCount": 5441,
+      "keyOrderPreserved": true
+    },
+    "web/src/lib/locales/ui-labels.zh-Hant.json": {
+      "afterSha256": "21f679797e8e4932234b1cb7636f7202f55b0d50a927a9fe43e26740a6dac802",
+      "allNonTargetValuesUnchanged": true,
+      "beforeSha256": "1c5be35bfad23d474c2cc293a8930df570c4a51c780e1f892761d3b4b7070c7f",
+      "changedCount": 2,
+      "changedKeys": [
+        "Failed to route message",
+        "Failed to save source-feed integration settings."
+      ],
+      "gitBlobBefore": "888b6813dc87819bcec35923e90ab0843342f3fe",
+      "keyCount": 5441,
+      "keyOrderPreserved": true
+    }
+  },
+  "exactSourceHead": "2d804c49879372071adf606bc2a2cf51e261fd94",
+  "exactSourceTree": "d6f5552d2400d868c2f2af98eb68caadfd4f3f66",
+  "keyOrderPreserved": true,
+  "localeCellCounts": {
+    "ar": 20,
+    "de": 20,
+    "es": 20,
+    "fr": 20,
+    "hi": 20,
+    "id": 20,
+    "ja": 20,
+    "ko": 20,
+    "pt-BR": 20,
+    "vi": 20,
+    "zh-Hans": 20,
+    "zh-Hant": 20
+  },
+  "nativeSpeakerApproval": false,
+  "readbackMatches": 240,
+  "readbackMismatches": 0,
+  "result": "PASS",
+  "testsBuildsScansOrCI": false,
+  "unselectedCatalogValuesUnchanged": true,
+  "workflowFilesChanged": false
+}

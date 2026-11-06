@@ -1,0 +1,20 @@
+Enable equalizer
+Enable karaoke mode
+Enable keyboard shortcuts
+Enable loading a managed CIDR/P2P/DAT blacklist file at startup.
+Enable local audio fingerprint generation through ffmpeg and Chromaprint. This only changes YAML; scans still run through explicit feature workflows.
+Enable local message search
+Enable local message search preference
+Enable managed blacklist
+Enable mesh networking via DHT/Overlay (check footer for connectivity)
+Enable messages dense mode preference
+Enable player keyboard shortcuts preference
+Enable player queue auto-fill preference
+Enable publication of {label}. This remains local policy state until backend federation is wired.
+Enable queue auto-fill
+Enable release radar subscription
+Enable rescue mode
+Enable room user filtering
+Enable room user filtering preference
+Enable scheduled download speed limits under global download policy.
+Enable scheduled speed limits

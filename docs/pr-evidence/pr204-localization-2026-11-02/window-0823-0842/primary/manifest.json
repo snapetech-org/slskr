@@ -1,0 +1,97 @@
+{
+  "candidateCount": 56,
+  "cellCount": 240,
+  "counts": {
+    "accept-current": 184,
+    "hold": 0,
+    "propose-correction": 51,
+    "propose-refinement": 5
+  },
+  "files": [
+    {
+      "bytes": 1732,
+      "path": "README.md",
+      "sha256": "8cc6d27ab55d6b3193b7d2bec870d255ea9163b2aed184cc72f39f55a09bdc24"
+    },
+    {
+      "bytes": 24821,
+      "path": "build_review.py",
+      "sha256": "2da8077ba44bce9cc5c7e42989d88bab9f2d8d689e6110d88615b1900ee4d40b"
+    },
+    {
+      "bytes": 37470,
+      "path": "caller-context-reattestation.jsonl",
+      "sha256": "97f0001eb6bf4a3cbcaf5fcbdfbc93ae1b5845b2589cf0f7d617645b6fbc96d8"
+    },
+    {
+      "bytes": 3385,
+      "path": "catalog-pins.json",
+      "sha256": "7c3a40af0d0a7d49c6d43a9ea6ac0233a6f642645955ccc56f66e48d62fe6646"
+    },
+    {
+      "bytes": 154175,
+      "path": "correction-candidates.jsonl",
+      "sha256": "ff1486ad07d759dfe6de9000a11479a5f7bae128d3693596ea0bd0efbafaac45"
+    },
+    {
+      "bytes": 2226,
+      "path": "input-reattestation.json",
+      "sha256": "9fef5abec4dc9c524bebc741a7429ec4fadccc9bdad8bcf282df22ddafd3e93b"
+    },
+    {
+      "bytes": 781688,
+      "path": "primary-review-ledger.jsonl",
+      "sha256": "67c2b7e93ab75a8718807325365041888e836984834db21cc62bc324c64eedd4"
+    },
+    {
+      "bytes": 6693,
+      "path": "source-boundaries.jsonl",
+      "sha256": "47aa5b2d8c0663056b1d3d5951c5d7c249eee885da72f0e673e6e54dbd99c275"
+    },
+    {
+      "bytes": 4206,
+      "path": "summary.json",
+      "sha256": "464ac5559edd4931e3a68b5165595a530c3bba1222add692452d439b81502786"
+    }
+  ],
+  "head": "074dfc70d584707a215e87cb1fd1969198f76b2e",
+  "inputFiles": [
+    {
+      "bytes": 3826,
+      "path": "build_packet.py",
+      "sha256": "1fc6d47d64dfbd6b71e3d33065b72dfcde4102fbcdd4ad760847300be911f8e4"
+    },
+    {
+      "bytes": 25944,
+      "path": "caller-context-pins.jsonl",
+      "sha256": "e03d62f86e2066aeb6ff638e573ced55204c26a3a809d5ed85958cbda95204b1"
+    },
+    {
+      "bytes": 3414,
+      "path": "catalog-reattestation.json",
+      "sha256": "822020b5e657db49502839f7ad4f6a3679c1f5410c2fa79648814c8b8282cb59"
+    },
+    {
+      "bytes": 86768,
+      "path": "current-cells.jsonl",
+      "sha256": "e72104ea9b4623611568429d923c60afc171a11c8eb0a724f1fc2276ea5f7adf"
+    },
+    {
+      "bytes": 827468,
+      "path": "current-source-inventory.jsonl",
+      "sha256": "96bdac2ea3fd813ac019f046faf5cf4762e69ee15ba6792d62fe386be1554303"
+    },
+    {
+      "bytes": 496,
+      "path": "exact-head.json",
+      "sha256": "63645fdc11c83323b3e29d9d7267152f9758eb7789f756374b9a6eacdbe4b24d"
+    }
+  ],
+  "pullRequest": 204,
+  "repository": "snapetech-org/slskR",
+  "schemaVersion": 1,
+  "sourceCount": 20,
+  "sourceWindowSha256": "e2338ea31e171c9a414d854adcb15268305336fd5e01c077eb325729ebef7492",
+  "tree": "9914a55bdfb938408a4bf1f98bb5ed98c24b78a8",
+  "window": "W823-W842"
+}

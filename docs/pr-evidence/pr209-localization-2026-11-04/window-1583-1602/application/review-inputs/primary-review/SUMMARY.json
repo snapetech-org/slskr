@@ -1,0 +1,24 @@
+{
+  "artifact": "slskR PR #209 W1583-W1602 primary semantic review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "head": "e1ccc3d6509baf957f3039046e5b66dda3ae15d0",
+  "tree": "d7c7aa967cb7faf51a8211a397859feebe8129b8",
+  "candidateFreeInputChecksumListSha256": "33ae47996be290f7220d2248db29510c9884de573f0e8726475830715e2301ba",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "counts": {
+    "accept-current": 237,
+    "propose-correction": 2,
+    "propose-refinement": 1,
+    "text-free-hold": 0
+  },
+  "proposalCount": 3,
+  "holdCount": 0,
+  "allCellRowsHaveSourceAndCurrentHashes": true,
+  "placeholdersMarkupNumbersProtectedLiteralsReviewed": true,
+  "nativeSpeakerSignoff": false,
+  "browserReviewPerformed": false,
+  "createdAtUtc": "2026-11-04T23:52:32+00:00"
+}

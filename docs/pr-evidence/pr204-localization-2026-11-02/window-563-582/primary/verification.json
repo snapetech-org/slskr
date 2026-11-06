@@ -1,0 +1,21 @@
+{
+  "W543_562_no_op_hold_boundary": "pass (12 no-op, 0 held)",
+  "all_240_catalog_current_values_and_hashes": "pass",
+  "caller_exact_literal_search_and_context_pins": "pass",
+  "caller_source_pr_blob_excerpt_reattestation": "pass (88 pins)",
+  "candidate_sha256_and_placeholder_parity": "pass",
+  "catalog_modified": false,
+  "current_window_hold_cells": 12,
+  "current_window_no_op_cells": 0,
+  "live_pr_state_and_head": "pass",
+  "merge_base_is_source_head": true,
+  "native_speaker_approval": false,
+  "native_speaker_review_required": true,
+  "pr_head_and_tree": "pass",
+  "previous_W543_562_packet_checksums": "pass",
+  "schema_version": 1,
+  "source_head_and_tree": "pass",
+  "source_inventory_5437_keys_and_window_indices": "pass",
+  "tests_builds_scans_ci_workflows_releases_tags_merges": false,
+  "worktree_clean": true
+}

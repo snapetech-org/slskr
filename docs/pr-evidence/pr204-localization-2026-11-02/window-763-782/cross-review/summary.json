@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "state": "OPEN",
+  "isDraft": true,
+  "head": "77a1e481b475381ac45172cf7fd3f5a5c460d7c0",
+  "tree": "d4dae6999b34c2060d7662caddbc348917026411",
+  "primaryPacketHead": "32903976fabe543f89dd5950245ba11dd77c8eb3",
+  "primaryPacketTree": "ebf75888b3087e83fe2327495c17611802925f71",
+  "sourceWindow": [
+    763,
+    782
+  ],
+  "sourceIds": 20,
+  "locales": [
+    "ar",
+    "de",
+    "es",
+    "fr",
+    "hi",
+    "id",
+    "ja",
+    "ko",
+    "pt-BR",
+    "vi",
+    "zh-Hans",
+    "zh-Hant"
+  ],
+  "cells": 240,
+  "primaryDispositionCounts": {
+    "propose-correction": 43,
+    "accept-current": 197
+  },
+  "crossReviewDispositionCounts": {
+    "propose-correction": 43,
+    "accept-current": 196,
+    "propose-refinement": 1
+  },
+  "perLocale": {
+    "ar": {
+      "accept-current": 16,
+      "propose-correction": 4,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "de": {
+      "accept-current": 19,
+      "propose-correction": 1,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "es": {
+      "accept-current": 18,
+      "propose-correction": 2,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "fr": {
+      "accept-current": 18,
+      "propose-correction": 2,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "hi": {
+      "accept-current": 16,
+      "propose-correction": 3,
+      "propose-refinement": 1,
+      "hold": 0
+    },
+    "id": {
+      "accept-current": 17,
+      "propose-correction": 3,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "ja": {
+      "accept-current": 18,
+      "propose-correction": 2,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "ko": {
+      "accept-current": 16,
+      "propose-correction": 4,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "pt-BR": {
+      "accept-current": 18,
+      "propose-correction": 2,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "vi": {
+      "accept-current": 16,
+      "propose-correction": 4,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "zh-Hans": {
+      "accept-current": 13,
+      "propose-correction": 7,
+      "propose-refinement": 0,
+      "hold": 0
+    },
+    "zh-Hant": {
+      "accept-current": 11,
+      "propose-correction": 9,
+      "propose-refinement": 0,
+      "hold": 0
+    }
+  },
+  "primaryCorrectionCandidates": 43,
+  "primaryCandidatesAccepted": 40,
+  "primaryCandidateRevisions": 3,
+  "additionalCrossReviewCandidates": 1,
+  "finalCandidateCount": 44,
+  "finalTargetsDifferFromPrimary": 4,
+  "callerReferences": 70,
+  "callerPinKinds": {
+    "source-reference": 43,
+    "collection-shares-section-context": 1,
+    "test-reference": 12,
+    "shared-collections-name-column": 1,
+    "incoming-collections-empty-state": 1,
+    "collections-list-load-error-branch": 1,
+    "color-options-dropdown-context": 1,
+    "combined-score-value": 1,
+    "compact-atlas-mode-toggle": 1,
+    "compare-current-node-handler": 1,
+    "compare-pinned-node-handler": 1,
+    "ContentID-input-context": 1,
+    "levenshtein-result-metric": 1,
+    "phonetic-result-metric": 1,
+    "comparison-bridge-node-arguments": 1,
+    "compatibility-actions-list": 1,
+    "compatibility-review-copy-context": 1
+  },
+  "callerFiles": 24,
+  "uniqueCallerLines": 70,
+  "sourceIdsWithNoDirectCaller": [
+    "Collections — full sets and 1G1R"
+  ],
+  "priorDispositionCounts": {
+    "correction-needed": 15,
+    "accepted": 105,
+    "not-reviewed": 120
+  },
+  "priorReusedRows": 120,
+  "freshNotReviewedCells": 120,
+  "priorSourceAndTargetMismatches": 0,
+  "currentWindowCellDriftSincePrimaryHead": 0,
+  "W762BoundaryCellsReattested": 12,
+  "W762BoundaryMatchesW743CrossReviewFinal": 12,
+  "placeholderFailures": 0,
+  "markupFailures": 0,
+  "punctuationCompatibilityFailures": 0,
+  "protectedLiteralFailures": 0,
+  "openingDelimiterFailures": 0,
+  "heldCells": 0,
+  "confidence": "moderate",
+  "nativeSpeakerApproval": "outstanding",
+  "repositoryOrPrModified": false,
+  "testsBuildsScansCIorBrowserRun": false,
+  "workflowFilesTouched": false,
+  "outputPath": "/mnt/disks/scratch/task-scratch/slskr-pr204-W763-782-crossreview-by-agent-20261102/packet"
+}

@@ -1,0 +1,185 @@
+{
+  "task": "Strict blind independent review of slskR PR #204 window W1003–1022",
+  "head": "4193d79547018a561e9d5acacdb0ac0850f6f346",
+  "tree": "da7d72c82203781fc14d99e8dd85cc1b30c10164",
+  "branch": "",
+  "scope": "Current targets for 20 sorted catalog source strings x 12 locales, with exact-head caller line reattestation.",
+  "decision_counts": {
+    "pass": 218,
+    "hold": 22
+  },
+  "per_locale": {
+    "ar": {
+      "pass": 18,
+      "hold": 2
+    },
+    "de": {
+      "pass": 18,
+      "hold": 2
+    },
+    "es": {
+      "pass": 19,
+      "hold": 1
+    },
+    "fr": {
+      "pass": 18,
+      "hold": 2
+    },
+    "hi": {
+      "pass": 18,
+      "hold": 2
+    },
+    "id": {
+      "pass": 18,
+      "hold": 2
+    },
+    "ja": {
+      "pass": 18,
+      "hold": 2
+    },
+    "ko": {
+      "pass": 19,
+      "hold": 1
+    },
+    "pt-BR": {
+      "pass": 19,
+      "hold": 1
+    },
+    "vi": {
+      "pass": 17,
+      "hold": 3
+    },
+    "zh-Hans": {
+      "pass": 18,
+      "hold": 2
+    },
+    "zh-Hant": {
+      "pass": 18,
+      "hold": 2
+    }
+  },
+  "hold_sources": [
+    1007,
+    1010,
+    1012,
+    1019
+  ],
+  "hold_cells": [
+    {
+      "ordinal": 1007,
+      "locale": "de",
+      "source": "Create a single-release job from this SongID album candidate so slskr can plan album acquisition directly."
+    },
+    {
+      "ordinal": 1007,
+      "locale": "id",
+      "source": "Create a single-release job from this SongID album candidate so slskr can plan album acquisition directly."
+    },
+    {
+      "ordinal": 1007,
+      "locale": "ja",
+      "source": "Create a single-release job from this SongID album candidate so slskr can plan album acquisition directly."
+    },
+    {
+      "ordinal": 1007,
+      "locale": "vi",
+      "source": "Create a single-release job from this SongID album candidate so slskr can plan album acquisition directly."
+    },
+    {
+      "ordinal": 1007,
+      "locale": "zh-Hans",
+      "source": "Create a single-release job from this SongID album candidate so slskr can plan album acquisition directly."
+    },
+    {
+      "ordinal": 1007,
+      "locale": "zh-Hant",
+      "source": "Create a single-release job from this SongID album candidate so slskr can plan album acquisition directly."
+    },
+    {
+      "ordinal": 1010,
+      "locale": "ar",
+      "source": "Create or join a pod that has the"
+    },
+    {
+      "ordinal": 1010,
+      "locale": "de",
+      "source": "Create or join a pod that has the"
+    },
+    {
+      "ordinal": 1010,
+      "locale": "es",
+      "source": "Create or join a pod that has the"
+    },
+    {
+      "ordinal": 1010,
+      "locale": "fr",
+      "source": "Create or join a pod that has the"
+    },
+    {
+      "ordinal": 1010,
+      "locale": "hi",
+      "source": "Create or join a pod that has the"
+    },
+    {
+      "ordinal": 1010,
+      "locale": "id",
+      "source": "Create or join a pod that has the"
+    },
+    {
+      "ordinal": 1010,
+      "locale": "ja",
+      "source": "Create or join a pod that has the"
+    },
+    {
+      "ordinal": 1010,
+      "locale": "ko",
+      "source": "Create or join a pod that has the"
+    },
+    {
+      "ordinal": 1010,
+      "locale": "pt-BR",
+      "source": "Create or join a pod that has the"
+    },
+    {
+      "ordinal": 1010,
+      "locale": "vi",
+      "source": "Create or join a pod that has the"
+    },
+    {
+      "ordinal": 1010,
+      "locale": "zh-Hans",
+      "source": "Create or join a pod that has the"
+    },
+    {
+      "ordinal": 1010,
+      "locale": "zh-Hant",
+      "source": "Create or join a pod that has the"
+    },
+    {
+      "ordinal": 1012,
+      "locale": "fr",
+      "source": "Create pods linked to specific content (music, videos, etc.) for focused discussions"
+    },
+    {
+      "ordinal": 1019,
+      "locale": "ar",
+      "source": "Created"
+    },
+    {
+      "ordinal": 1019,
+      "locale": "hi",
+      "source": "Created"
+    },
+    {
+      "ordinal": 1019,
+      "locale": "vi",
+      "source": "Created"
+    }
+  ],
+  "limitations": [
+    "No native-speaker claim.",
+    "No tests, builds, CI, or repo/PR edits were performed.",
+    "The primary packet and PR body were not read."
+  ],
+  "review_date_utc": "2026-11-03T02:14:49.869081+00:00"
+}

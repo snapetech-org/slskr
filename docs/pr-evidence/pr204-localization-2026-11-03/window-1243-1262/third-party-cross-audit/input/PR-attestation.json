@@ -1,0 +1,20 @@
+{
+  "baseRefName": "main",
+  "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+  "commitApiTree": "0ead1eb1678b4df05ca7feec9776c0319d4eefd3",
+  "draft": true,
+  "headRefName": "codex/slskr-l10n-audit-20261030",
+  "headRefOid": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+  "localWorktree": "/mnt/disks/scratch/task-worktrees/localization-20261103/slskr-pr204-w1223-evidence-20261103",
+  "localWorktreeBranch": "",
+  "localWorktreeHead": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+  "localWorktreeStatusClean": true,
+  "localWorktreeTree": "0ead1eb1678b4df05ca7feec9776c0319d4eefd3",
+  "pullRequest": 204,
+  "remoteBranchHead": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+  "remoteBranchRef": "refs/heads/codex/slskr-l10n-audit-20261030",
+  "remotePullRef": "refs/pull/204/head",
+  "remotePullRefHead": "ce2e7d12f3025f0312df37527b4c270d0eb5bce5",
+  "repository": "snapetech-org/slskR",
+  "state": "open"
+}

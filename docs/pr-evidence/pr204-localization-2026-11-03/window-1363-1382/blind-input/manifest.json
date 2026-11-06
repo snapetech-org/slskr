@@ -1,0 +1,92 @@
+{
+  "artifact": "slskR PR #204 W1363-W1382 blind input",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "branch": "codex/slskr-l10n-audit-20261030",
+  "head": "281c39ec0cdb3677d7d523b7c4f0cd0d52bbf14c",
+  "tree": "777b234b1aa3cb7a2c9fd560b2c0fecc4e7fe49d",
+  "positions": [
+    1363,
+    1382
+  ],
+  "sourceCount": 20,
+  "localeCount": 12,
+  "promptCount": 240,
+  "localeOrder": [
+    "es",
+    "zh-Hans",
+    "hi",
+    "de",
+    "ja",
+    "fr",
+    "pt-BR",
+    "ar",
+    "ko",
+    "zh-Hant",
+    "vi",
+    "id"
+  ],
+  "localeNames": {
+    "es": "Spanish",
+    "zh-Hans": "Simplified Chinese",
+    "hi": "Hindi",
+    "de": "German",
+    "ja": "Japanese",
+    "fr": "French",
+    "pt-BR": "Brazilian Portuguese",
+    "ar": "Arabic",
+    "ko": "Korean",
+    "zh-Hant": "Traditional Chinese",
+    "vi": "Vietnamese",
+    "id": "Indonesian"
+  },
+  "sealedInputManifestSha256": "fc43ea14fc3e04f94c1d99a29cb5007e662123011665d18992432487228ce6ac",
+  "sourceContextInputPath": "candidate-free-input/source-contexts.jsonl",
+  "sourceContextFileSha256": "7e3823fee026cf9322d82d359383f1a4ecad70e656abf5b73607b49611b1e384",
+  "sourceContextRecordCount": 20,
+  "sourceContextSha256ByPosition": {
+    "1363": "a5a102e0538300673886dc26a5b64ba3466f49c9d1e3670e5e59298b59581559",
+    "1364": "bd25170cb6e3d7c52f9a791679240eba9fccbef45a7d086b8055da2d034b0c4d",
+    "1365": "ba94bf0e1ed02f5e0293aa6c410b5f5e2ac2c23fbd8a75e54b8470921ae15b20",
+    "1366": "5ad713ff193c320896a1d1314d494bed75c1c965e6931c194cc89358e3f76fd2",
+    "1367": "b83076791416111fc6bfaa2ad37ae52b501a024c64832d120b1da0b8bbca59cb",
+    "1368": "52a4d51fb3369c6b63d238f5bb571a5b18528dd50c30fdd899efa7490a4451b3",
+    "1369": "f80156225ffb1c54a5ce6f7a26557fcaa1ab191a8f72d387316e5b7e5f269655",
+    "1370": "5802f71a7604a51003ebf47c3faaedd6805a511d28c5a4c7f1392be5288f2236",
+    "1371": "9ecbf9c2a2d207a28f52d06ae369e88586de2824520a3637e5df4966530b18fc",
+    "1372": "7ebc710f0dc11602b5240c6fd451db5df57d71c233940d7acbbf5f5530edc29b",
+    "1373": "1034d77745787a23837cbc6e219bbdb62aef17b99a2021391f0de406dd4cbe25",
+    "1374": "c49ad1fe1611c7256b76248bc62ffd3de93b60836f376226bb84ea59d30c3f72",
+    "1375": "c734eb376fd9504e2f25516acf58e31a9e71895dfcbf0d5afb64387d116fe8e3",
+    "1376": "2d84a5815688377216424997477b793944540b657695ec027676dd4ac2c154ca",
+    "1377": "b4566082c7ee46717f796341f7d0417636eb51d60a5181ade676ee70914cb19a",
+    "1378": "b199df216fc58767ae5e273f0bc50b9321982b6471da71bd761cc92873165489",
+    "1379": "f7fdfeb80a225beff7b6dc5e797bc8ecdec55cd5697b18db56a132a6414a6648",
+    "1380": "867ff719fa04539c443406c6683df284bfa0491836531e0df60a8b8e661d8a8f",
+    "1381": "7d12052317cc522c56ccfe6f9e8da4338b72235be854709ab3aea454e6100273",
+    "1382": "7c714c13c00b8ea58bb9dcdd83b9fcd65a3c90d361fadd142e1eeee324bb4d1f"
+  },
+  "callerlessPositions": [
+    1376
+  ],
+  "containsOnlySourceCallerContextAndPrompts": true,
+  "fileHashes": {
+    "README.md": {
+      "sha256": "04559ad825b9b40482c4895e3e21870638fbbcf4914f419299943300f66ccaf4",
+      "bytes": 810
+    },
+    "prompts.jsonl": {
+      "sha256": "dc7c20a02c28f157434e37b5aa486d4b4b7db24c79422295ecd9b08746a8f77d",
+      "bytes": 331728
+    },
+    "source-contexts.jsonl": {
+      "sha256": "7e3823fee026cf9322d82d359383f1a4ecad70e656abf5b73607b49611b1e384",
+      "bytes": 73180
+    },
+    "verify-blind-input.py": {
+      "sha256": "c8505cc151040ad18924c39f052812ff0d81eb7ca90ebc8141063caeda89e8dc",
+      "bytes": 4467
+    }
+  },
+  "createdAtUtc": "2026-11-03T16:05:08.614097+00:00"
+}

@@ -1,0 +1,39 @@
+{
+  "baseRef": "main",
+  "baseSha": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+  "candidateFreeChecksumListSha256": "f4782cd47209da6d2cf99e5a0ae988b091782dc743cd50ddd5121fc24d5d8077",
+  "candidateFreeChecksummedFileCount": 41,
+  "candidateFreeManifestSha256": "c9738795b32181465d0c962799567bb8c69a3954c9822ddfa768f85f4d73dd60",
+  "candidateFreeVerifierResult": "PASS; 41 checksummed files and all 240 cells/token/caller pins",
+  "draft": true,
+  "head": "2ab97d1a21f7d001eb9470c76b3636f59f600609",
+  "headRef": "codex/slskr-l10n-audit-20261104-resync",
+  "livePrApiResult": "PASS; open/draft and exact head/base matched",
+  "liveRemoteRefsResult": "PASS; branch, pull, and main refs matched",
+  "localHead": "2ab97d1a21f7d001eb9470c76b3636f59f600609",
+  "localTree": "63097ec7c80be0bef55fb1bde5a38da7b6a59ce7",
+  "localWorktree": "/mnt/disks/scratch/task-worktrees/localization-20261105/slskr-pr209-w1663-1682-candidate-free",
+  "localWorktreeClean": true,
+  "observedAtUtc": "2026-11-05T08:51:49+00:00",
+  "phase": "before-primary-packet-seal",
+  "pullRequest": 209,
+  "remoteRefs": {
+    "refs/heads/codex/slskr-l10n-audit-20261104-resync": "2ab97d1a21f7d001eb9470c76b3636f59f600609",
+    "refs/heads/main": "1bbaec9fdc63a86de343e37e33bae70d44301a36",
+    "refs/pull/209/head": "2ab97d1a21f7d001eb9470c76b3636f59f600609"
+  },
+  "repository": "snapetech-org/slskR",
+  "repositoryOrPrEditedByReview": false,
+  "reviewScope": {
+    "cellCount": 240,
+    "localeCount": 12,
+    "positions": [
+      1663,
+      1682
+    ],
+    "sourceCount": 20
+  },
+  "state": "OPEN",
+  "tree": "63097ec7c80be0bef55fb1bde5a38da7b6a59ce7",
+  "url": "https://github.com/snapetech-org/slskR/pull/209"
+}

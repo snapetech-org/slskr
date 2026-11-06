@@ -1,0 +1,46 @@
+{
+  "cellCount": 240,
+  "currentProtectedLiteralFailures": [
+    {
+      "locale": "de",
+      "missing": [
+        "SongID"
+      ],
+      "sourceIndex": 955
+    },
+    {
+      "locale": "hi",
+      "missing": [
+        "SongID"
+      ],
+      "sourceIndex": 955
+    }
+  ],
+  "finalProtectedLiteralFailures": [],
+  "markupMismatches": [],
+  "placeholderMismatches": [],
+  "protectedLiteralPolicy": {
+    "953": [
+      "CSV"
+    ],
+    "954": [
+      "JSON"
+    ],
+    "955": [
+      "SongID",
+      "JSON"
+    ],
+    "959": [
+      "Servarr",
+      "Lidarr"
+    ],
+    "960": [
+      "Plex",
+      "Jellyfin",
+      "Emby",
+      "Navidrome"
+    ]
+  },
+  "punctuationMismatches": [],
+  "result": "PASS"
+}

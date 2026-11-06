@@ -1,0 +1,79 @@
+{
+  "exactHead": {
+    "branch": "codex/slskr-l10n-audit-20261030",
+    "cells": 240,
+    "head": "074dfc70d584707a215e87cb1fd1969198f76b2e",
+    "locales": [
+      "ar",
+      "de",
+      "es",
+      "fr",
+      "hi",
+      "id",
+      "ja",
+      "ko",
+      "pt-BR",
+      "vi",
+      "zh-Hans",
+      "zh-Hant"
+    ],
+    "pullRequest": 204,
+    "repository": "snapetech-org/slskR",
+    "sourceIndexZeroBasedInclusive": [
+      822,
+      841
+    ],
+    "state": "OPEN/DRAFT",
+    "tree": "9914a55bdfb938408a4bf1f98bb5ed98c24b78a8",
+    "window": "W823-W842"
+  },
+  "files": [
+    {
+      "bytes": 3826,
+      "path": "build_packet.py",
+      "sha256": "1fc6d47d64dfbd6b71e3d33065b72dfcde4102fbcdd4ad760847300be911f8e4"
+    },
+    {
+      "bytes": 25944,
+      "path": "caller-context-pins.jsonl",
+      "sha256": "e03d62f86e2066aeb6ff638e573ced55204c26a3a809d5ed85958cbda95204b1"
+    },
+    {
+      "bytes": 3414,
+      "path": "catalog-reattestation.json",
+      "sha256": "822020b5e657db49502839f7ad4f6a3679c1f5410c2fa79648814c8b8282cb59"
+    },
+    {
+      "bytes": 86768,
+      "path": "current-cells.jsonl",
+      "sha256": "e72104ea9b4623611568429d923c60afc171a11c8eb0a724f1fc2276ea5f7adf"
+    },
+    {
+      "bytes": 827468,
+      "path": "current-source-inventory.jsonl",
+      "sha256": "96bdac2ea3fd813ac019f046faf5cf4762e69ee15ba6792d62fe386be1554303"
+    },
+    {
+      "bytes": 496,
+      "path": "exact-head.json",
+      "sha256": "63645fdc11c83323b3e29d9d7267152f9758eb7789f756374b9a6eacdbe4b24d"
+    }
+  ],
+  "inputDirectory": "/mnt/disks/scratch/task-scratch/slskr-pr204-window-0823-0842-primary-20261102",
+  "livePullRequest": {
+    "baseRefOid": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "headRefName": "codex/slskr-l10n-audit-20261030",
+    "headRefOid": "074dfc70d584707a215e87cb1fd1969198f76b2e",
+    "isDraft": true,
+    "state": "OPEN",
+    "url": "https://github.com/snapetech-org/slskr/pull/204"
+  },
+  "remoteBranchHead": "074dfc70d584707a215e87cb1fd1969198f76b2e",
+  "schemaVersion": 1,
+  "worktree": {
+    "branch": "codex/slskr-l10n-audit-20261030",
+    "head": "074dfc70d584707a215e87cb1fd1969198f76b2e",
+    "status": "",
+    "tree": "9914a55bdfb938408a4bf1f98bb5ed98c24b78a8"
+  }
+}

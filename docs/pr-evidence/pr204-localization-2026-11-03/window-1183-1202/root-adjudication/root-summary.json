@@ -1,0 +1,70 @@
+{
+  "artifact": "slskR PR #204 W1183-W1202 root adjudication and application",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "inputHead": "8e60a51ec25967df115a3fd8c42872abbec58d8a",
+  "inputTree": "c2ec31432943730f0a8f3ee87687c46b6a4400c2",
+  "reviewedCells": 240,
+  "positions": [
+    1183,
+    1202
+  ],
+  "localeCount": 12,
+  "primaryRows": 240,
+  "independentBlindRows": 240,
+  "thirdPartyRows": 240,
+  "callerReferences": 37,
+  "thirdPartyDispositionCounts": {
+    "accept-current": 161,
+    "refinement": 4,
+    "correction": 63,
+    "hold": 12
+  },
+  "rootDispositionCounts": {
+    "accept-current": 161,
+    "adopt-cross-audit-refinement": 4,
+    "adopt-cross-audit-correction": 63,
+    "hold": 11,
+    "hold-term-with-protected-literal-fix": 1
+  },
+  "changedCells": 68,
+  "semanticTerminologyHolds": 12,
+  "literalOnlyFixesWithinHeldCells": 1,
+  "heldCellPositions": [
+    1198
+  ],
+  "catalogFilesChanged": [
+    "web/src/lib/locales/ui-labels.ar.json",
+    "web/src/lib/locales/ui-labels.de.json",
+    "web/src/lib/locales/ui-labels.es.json",
+    "web/src/lib/locales/ui-labels.fr.json",
+    "web/src/lib/locales/ui-labels.hi.json",
+    "web/src/lib/locales/ui-labels.id.json",
+    "web/src/lib/locales/ui-labels.ja.json",
+    "web/src/lib/locales/ui-labels.ko.json",
+    "web/src/lib/locales/ui-labels.pt-BR.json",
+    "web/src/lib/locales/ui-labels.vi.json",
+    "web/src/lib/locales/ui-labels.zh-Hans.json",
+    "web/src/lib/locales/ui-labels.zh-Hant.json"
+  ],
+  "readbackCells": 240,
+  "readbackFailures": 0,
+  "catalogKeyCounts": {
+    "web/src/lib/locales/ui-labels.ar.json": 5441,
+    "web/src/lib/locales/ui-labels.de.json": 5441,
+    "web/src/lib/locales/ui-labels.es.json": 5441,
+    "web/src/lib/locales/ui-labels.fr.json": 5441,
+    "web/src/lib/locales/ui-labels.hi.json": 5441,
+    "web/src/lib/locales/ui-labels.id.json": 5441,
+    "web/src/lib/locales/ui-labels.ja.json": 5441,
+    "web/src/lib/locales/ui-labels.ko.json": 5441,
+    "web/src/lib/locales/ui-labels.pt-BR.json": 5441,
+    "web/src/lib/locales/ui-labels.vi.json": 5441,
+    "web/src/lib/locales/ui-labels.zh-Hans.json": 5441,
+    "web/src/lib/locales/ui-labels.zh-Hant.json": 5441
+  },
+  "nativeSpeakerApproval": false,
+  "browserAcceptance": false,
+  "testsBuildsScansCIWorkflowChangesMergeReleaseOrTag": false,
+  "callerReferenceDefinition": "unique caller path/line/context pins, not repeated per locale cell"
+}

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "valid": true,
+  "rowCount": 240,
+  "uniqueCellCount": 240,
+  "allInputReviewerChecksumsVerified": true,
+  "livePinVerified": true,
+  "callerEvidenceReconciled": true,
+  "placeholderMarkupNumericChecksPass": true,
+  "protectedLiteralChecksPass": true,
+  "counts": {
+    "accept-current": 136,
+    "correction/refinement proposal": 80,
+    "hold": 24
+  },
+  "targetDifferences": 64,
+  "dispositionConflicts": 11,
+  "checkAssertionsPassed": true
+}

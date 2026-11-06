@@ -1,0 +1,220 @@
+{
+  "title": "Exact-hash apply plan: slskR PR #204 W1103-W1122",
+  "repository": "snapetech-org/slskr",
+  "pullRequest": 204,
+  "head": "e45e6967625c5e804b688b9cb03d359ea59d000b",
+  "tree": "c5164178f16e0fa2f59586c9ab3685e1ac08dfa5",
+  "window": "W1103-W1122",
+  "changeCount": 19,
+  "items": [
+    {
+      "sourceId": "Descending",
+      "position": 1103,
+      "locale": "fr",
+      "catalogFile": "web/src/lib/locales/ui-labels.fr.json",
+      "currentTarget": "Descendant",
+      "currentTargetSha256": "446625a5dfd3a4fe35a0c81873d544db71141290aa061458d388b26656d7c6a5",
+      "target": "Décroissant",
+      "targetSha256": "951c6c43bdfc5d0f3cdd782e52013ccfb4b25c54af2399b0b8a3aa7ab5213d80",
+      "ratifiedDisposition": "RATIFY_PRIMARY_CANDIDATE"
+    },
+    {
+      "sourceId": "Description",
+      "position": 1104,
+      "locale": "vi",
+      "catalogFile": "web/src/lib/locales/ui-labels.vi.json",
+      "currentTarget": "Sự miêu tả",
+      "currentTargetSha256": "e34399deb4ebeff391ec225b2d96de4dc5e269a1b8d76cccfe7f20d217870ed2",
+      "target": "Mô tả",
+      "targetSha256": "9eca256d0e8dc458f3bdc78eaeab37c14fc089190994c3b975dbbd52a5c8de2f",
+      "ratifiedDisposition": "RATIFY_PRIMARY_CANDIDATE"
+    },
+    {
+      "sourceId": "Descriptor Retrieval",
+      "position": 1108,
+      "locale": "vi",
+      "catalogFile": "web/src/lib/locales/ui-labels.vi.json",
+      "currentTarget": "Truy xuất mô tả",
+      "currentTargetSha256": "6a6dc07912622371205a4bc148337302a9d77e2d785fd25af610163d3b858950",
+      "target": "Truy xuất bộ mô tả",
+      "targetSha256": "cf651844c1daedf0db81fad9cffc49881c8694a358411ae5487ed24cc1fb4e10",
+      "ratifiedDisposition": "RATIFY_PRIMARY_CANDIDATE"
+    },
+    {
+      "sourceId": "Descriptor Retrieved",
+      "position": 1109,
+      "locale": "hi",
+      "catalogFile": "web/src/lib/locales/ui-labels.hi.json",
+      "currentTarget": "डिस्क्रिप्टर पुनर्प्राप्त",
+      "currentTargetSha256": "39d25d3b847b5ffcd7b211756b59e1ea2be01f3da9b560dd1f79082624b8a281",
+      "target": "डिस्क्रिप्टर प्राप्त हुआ",
+      "targetSha256": "e1c1a7bf7b5cdc0b16f04bead7e6520f0e78f41930d312cfbe4479b179b7a09a",
+      "ratifiedDisposition": "RATIFY_PRIMARY_CANDIDATE"
+    },
+    {
+      "sourceId": "Descriptor Retrieved",
+      "position": 1109,
+      "locale": "id",
+      "catalogFile": "web/src/lib/locales/ui-labels.id.json",
+      "currentTarget": "Deskriptor Diakses",
+      "currentTargetSha256": "26da9dc54a176923168072d1d0583702a187505abe5386a12b0a2bee47248b45",
+      "target": "Deskriptor berhasil diambil",
+      "targetSha256": "a16027701a186a9728f82ed580ce1268e912216c0785eaf9619e8a233744d6b1",
+      "ratifiedDisposition": "RATIFY_PRIMARY_CANDIDATE"
+    },
+    {
+      "sourceId": "Descriptor Retrieved",
+      "position": 1109,
+      "locale": "ja",
+      "catalogFile": "web/src/lib/locales/ui-labels.ja.json",
+      "currentTarget": "取得された記述子",
+      "currentTargetSha256": "dcfcac01aaa3151b8b4beb95cd1b2f81fcb267d98164d8b56eac0e2799365b23",
+      "target": "記述子を取得しました",
+      "targetSha256": "96a93f37ccfbc1ecd5c0d9d2252c4058b2f4a08b643a67ef55d5e9a1c2936591",
+      "ratifiedDisposition": "RATIFY_PRIMARY_CANDIDATE"
+    },
+    {
+      "sourceId": "Descriptor Retrieved",
+      "position": 1109,
+      "locale": "ko",
+      "catalogFile": "web/src/lib/locales/ui-labels.ko.json",
+      "currentTarget": "검색된 설명자",
+      "currentTargetSha256": "b622eef0dc5d33c9121d1b34c75b9d9f0c419bd17efeca1613eaab9297e9c7b4",
+      "target": "설명자를 가져왔습니다",
+      "targetSha256": "889960f0ddca03e77d29bd9d4e35169383551d198396a541ddad27f005fd0c78",
+      "ratifiedDisposition": "RATIFY_PRIMARY_CANDIDATE"
+    },
+    {
+      "sourceId": "Descriptor Retrieved",
+      "position": 1109,
+      "locale": "zh-Hans",
+      "catalogFile": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "currentTarget": "检索到描述符",
+      "currentTargetSha256": "bffa46502e8a4448abdc183506eb4c221e539f557f509e9eb1c742a75ef5daf4",
+      "target": "已获取描述符",
+      "targetSha256": "49e9df6fcac1d5954e27138152988d5efd10ada9a7e86ac6019d44b8ae03bedb",
+      "ratifiedDisposition": "RATIFY_PRIMARY_CANDIDATE"
+    },
+    {
+      "sourceId": "Descriptor Retrieved",
+      "position": 1109,
+      "locale": "zh-Hant",
+      "catalogFile": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "currentTarget": "檢索到描述符",
+      "currentTargetSha256": "1c461cba4110dcb9ce29a761089c1cd7425e4b52c8fb92e439a0d1b6edf4d0e6",
+      "target": "已取得描述符",
+      "targetSha256": "0d554979e718e50e0de8f531c9f61f535ac6857b98083e49cbbd29b818548ecb",
+      "ratifiedDisposition": "RATIFY_PRIMARY_CANDIDATE"
+    },
+    {
+      "sourceId": "Descriptor Verification",
+      "position": 1110,
+      "locale": "ar",
+      "catalogFile": "web/src/lib/locales/ui-labels.ar.json",
+      "currentTarget": "التحقق من الوصف",
+      "currentTargetSha256": "e8ae96fe41d5121c0ab9382e85a2e89e51b063980dc8fb3462c0de47e5fa00b0",
+      "target": "التحقق من الواصف",
+      "targetSha256": "3a4a591e746a4dc5890394975b80b936acec7cf531b30618c80d499c7f71e4ac",
+      "ratifiedDisposition": "RATIFY_PRIMARY_CANDIDATE"
+    },
+    {
+      "sourceId": "Descriptor Verification",
+      "position": 1110,
+      "locale": "vi",
+      "catalogFile": "web/src/lib/locales/ui-labels.vi.json",
+      "currentTarget": "Xác minh mô tả",
+      "currentTargetSha256": "b3926a9bc282fc6f7d23388f087497f799b378f7d2ce36f6b7b7a441150bc2f3",
+      "target": "Xác minh bộ mô tả",
+      "targetSha256": "5e343f45daaf5a216112247ec055eee6f579833f03ed654e25e60d78f0de6364",
+      "ratifiedDisposition": "RATIFY_PRIMARY_CANDIDATE"
+    },
+    {
+      "sourceId": "Detailed peer contribution and performance metrics require trace data. This may not be available for all swarm downloads.",
+      "position": 1117,
+      "locale": "ar",
+      "catalogFile": "web/src/lib/locales/ui-labels.ar.json",
+      "currentTarget": "تتطلب مساهمة النظراء التفصيلية ومقاييس الأداء بيانات التتبع. قد لا يكون هذا متاحًا لجميع التنزيلات الجماعية.",
+      "currentTargetSha256": "38cf8eec46f7d0a160529aec034023c35d7719365332cc3f160a57f80a633dc7",
+      "target": "تتطلب مساهمة الأقران التفصيلية ومقاييس الأداء بيانات التتبع. وقد لا تتوفر هذه البيانات لجميع التنزيلات عبر شبكات النظير إلى النظير.",
+      "targetSha256": "ca3adfa3146d37dc76a6069c074c2f812e6094743367ed2dd94c09c4147ec45f",
+      "ratifiedDisposition": "RATIFY_PRIMARY_CANDIDATE"
+    },
+    {
+      "sourceId": "Detailed peer contribution and performance metrics require trace data. This may not be available for all swarm downloads.",
+      "position": 1117,
+      "locale": "es",
+      "catalogFile": "web/src/lib/locales/ui-labels.es.json",
+      "currentTarget": "Las métricas detalladas de rendimiento y contribución de los pares requieren datos de seguimiento. Es posible que esto no esté disponible para todas las descargas de swarm.",
+      "currentTargetSha256": "5420c6c3ecfcc415f3a604db5d065cd2e3641e86ab76eb01fdf1eb8c88d401fd",
+      "target": "Las métricas detalladas de rendimiento y contribución de los pares requieren datos de seguimiento. Es posible que estos datos no estén disponibles para todas las descargas en la red de pares.",
+      "targetSha256": "97f9bcfe8098c5fb55590cddf86bf5c49915290c3aa63ce48c4c0d215e4b1b53",
+      "ratifiedDisposition": "RATIFY_PRIMARY_CANDIDATE"
+    },
+    {
+      "sourceId": "Detailed peer contribution and performance metrics require trace data. This may not be available for all swarm downloads.",
+      "position": 1117,
+      "locale": "hi",
+      "catalogFile": "web/src/lib/locales/ui-labels.hi.json",
+      "currentTarget": "विस्तृत सहकर्मी योगदान और प्रदर्शन मेट्रिक्स के लिए ट्रेस डेटा की आवश्यकता होती है। यह सभी झुंड डाउनलोड के लिए उपलब्ध नहीं हो सकता है।",
+      "currentTargetSha256": "3d5154feda5d7d17e09b06932bc34fb2dcf2233ac378fcba7e54d952b073b311",
+      "target": "विस्तृत पीयर योगदान और प्रदर्शन मेट्रिक्स के लिए ट्रेस डेटा आवश्यक है। सभी पीयर-टू-पीयर डाउनलोड के लिए यह डेटा उपलब्ध हो, यह ज़रूरी नहीं है।",
+      "targetSha256": "db9bd7d615d51268e8cf6a7754b68af57f94ac14c00405d086623bea966aac59",
+      "ratifiedDisposition": "RATIFY_PRIMARY_CANDIDATE"
+    },
+    {
+      "sourceId": "Detailed peer contribution and performance metrics require trace data. This may not be available for all swarm downloads.",
+      "position": 1117,
+      "locale": "ko",
+      "catalogFile": "web/src/lib/locales/ui-labels.ko.json",
+      "currentTarget": "자세한 동료 기여 및 성과 지표에는 추적 데이터가 필요합니다. 모든 Swarm 다운로드에 이 기능을 사용하지 못할 수도 있습니다.",
+      "currentTargetSha256": "1288e0c20e94f70790a4eb8d9e2f55b35e4b95e72f7218903a673923d651268c",
+      "target": "자세한 피어 기여 및 성능 지표에는 추적 데이터가 필요합니다. 이 데이터는 모든 스웜 다운로드에서 제공되지 않을 수 있습니다.",
+      "targetSha256": "11f0abca4ae261d953510bd4d5bc0ac26895b7fc2f776e65225c92e8abcf2862",
+      "ratifiedDisposition": "RATIFY_PRIMARY_CANDIDATE"
+    },
+    {
+      "sourceId": "Details",
+      "position": 1118,
+      "locale": "ko",
+      "catalogFile": "web/src/lib/locales/ui-labels.ko.json",
+      "currentTarget": "세부",
+      "currentTargetSha256": "cb9fd4c2d0b8099ba125ac59dbe5c3f79617b41432ea013634301c06e1738ea0",
+      "target": "세부 정보",
+      "targetSha256": "26d0ffcf9d367e79534ede50d3b4b8dfab89838c11fef2519ed93183ead3edb5",
+      "ratifiedDisposition": "RATIFY_PRIMARY_CANDIDATE"
+    },
+    {
+      "sourceId": "Details",
+      "position": 1118,
+      "locale": "zh-Hans",
+      "catalogFile": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "currentTarget": "细节",
+      "currentTargetSha256": "5ce4ed5694c358ff1adaa178c026c06f9836302a624f9f60c0b2865bbf83c7bb",
+      "target": "详情",
+      "targetSha256": "979a332955c855bf1b800021f3e645b9f555b4e2da354b14c5810d6621d8375b",
+      "ratifiedDisposition": "RATIFY_PRIMARY_CANDIDATE"
+    },
+    {
+      "sourceId": "Details",
+      "position": 1118,
+      "locale": "zh-Hant",
+      "catalogFile": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "currentTarget": "細節",
+      "currentTargetSha256": "cab5e138f354250fc7a0dfb7c769684120d84eaf003af83c1098cb3bc262c946",
+      "target": "詳情",
+      "targetSha256": "16b1a92a36adf8561d5028f605c913abfae67fefa5e0f0bf3f6b70a14dd28f3c",
+      "ratifiedDisposition": "RATIFY_PRIMARY_CANDIDATE"
+    },
+    {
+      "sourceId": "Detect quality issues, transcodes, and missing tracks",
+      "position": 1119,
+      "locale": "ar",
+      "catalogFile": "web/src/lib/locales/ui-labels.ar.json",
+      "currentTarget": "اكتشاف مشكلات الجودة والرموز المحولة والمسارات المفقودة",
+      "currentTargetSha256": "2e6f3325cef458236b544502f13195e06a1284738762aac4d19015c2cb3a9f03",
+      "target": "اكتشاف مشكلات الجودة وعمليات تحويل الترميز والمسارات المفقودة",
+      "targetSha256": "0007a3a685e52eb5361f8fed338d471e1b6293129f54c9d317d3c7f5e20bc86c",
+      "ratifiedDisposition": "RATIFY_PRIMARY_CANDIDATE"
+    }
+  ]
+}

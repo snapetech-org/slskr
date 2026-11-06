@@ -1,0 +1,351 @@
+{
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "window": "W863-W882",
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "primaryHead": "72597bcf3c71f586040cd882506dff8dcbf6c804",
+  "primaryTree": "98f7304db2e39ad722121c24047f5f06aa515663",
+  "primaryState": "OPEN",
+  "primaryIsDraft": true,
+  "primaryManifestSha256": "be0e9f821f84ae878b9cba3bb95e89e400f71437239f1a1bbee17ed826d903f7",
+  "primarySha256SumsSha256": "aaeee1a02507f830796ed72959adbc31177df9dfd7e2bf0d7236137962b46209",
+  "crossReviewDispositionCounts": {
+    "accept-proposal": 56,
+    "revise-proposal": 12,
+    "accept-current": 172
+  },
+  "primaryCandidateCount": 57,
+  "acceptedPrimaryProposals": 56,
+  "revisedPrimaryProposals": 1,
+  "rejectedCandidates": 0,
+  "holds": 0,
+  "independentCurrentTargetRevisions": 11,
+  "totalRevisedRows": 12,
+  "revisions": [
+    {
+      "sourceIndex": 863,
+      "locale": "vi",
+      "currentTarget": "Phát hiện thận trọng các giá trị băm từ các đồng nghiệp không phải slskr",
+      "primaryProposal": "Phát hiện hash có giới hạn từ peer ngoài slskr",
+      "reviewedFinal": "Phát hiện có chọn lọc các hash từ peer bên ngoài slskr",
+      "reviewedFinalSha256": "4e5f9c591528e4d4940dc7d978048a6c4e0b1082035b5a5c9b63f9000cd4562b",
+      "reason": "The Backfill Scheduler subtitle refers to a selective discovery process, not hashes that themselves are limited. This wording expresses selective discovery and keeps peers outside slskr."
+    },
+    {
+      "sourceIndex": 865,
+      "locale": "zh-Hans",
+      "currentTarget": "联系方式不可用",
+      "primaryProposal": null,
+      "reviewedFinal": "联系人不可用",
+      "reviewedFinalSha256": "b9660d1d90370ee5d55da2b4e7dc15f8f81f7718a6ad13dfff9ef594e8184cf3",
+      "reason": "The caller is an empty-state header shown when the contacts request fails. 联系方式 means contact methods/details, while this page is the contacts list; align the error label with 联系人."
+    },
+    {
+      "sourceIndex": 865,
+      "locale": "zh-Hant",
+      "currentTarget": "聯絡方式不可用",
+      "primaryProposal": null,
+      "reviewedFinal": "聯絡人不可用",
+      "reviewedFinalSha256": "94fbe87975bc120957ffcd7c290b6abc1f66fc01b022280faa7d12a1f2f91d19",
+      "reason": "The caller is an empty-state header shown when the contacts request fails. 聯絡方式 means contact methods/details, while this page is the contacts list; align the error label with 聯絡人."
+    },
+    {
+      "sourceIndex": 867,
+      "locale": "ko",
+      "currentTarget": "내용 A:",
+      "primaryProposal": null,
+      "reviewedFinal": "콘텐츠 A:",
+      "reviewedFinalSha256": "43baf6ffbedd0cc3908b88549049d538f48f50aa9671f546649f67c25521215d",
+      "reason": "Keep the same product term 콘텐츠 used for Content B and the Content ID labels; retain A as the comparison-side identifier."
+    },
+    {
+      "sourceIndex": 867,
+      "locale": "zh-Hans",
+      "currentTarget": "内容一：",
+      "primaryProposal": null,
+      "reviewedFinal": "内容 A：",
+      "reviewedFinalSha256": "bee765c5bc23cffed688d0f5fc9852a001f0a762915df2d01218ccbcd3f5303b",
+      "reason": "The caller presents two comparison results as Content A and Content B. Preserve the paired Latin side markers instead of converting A to 一 while B is 乙."
+    },
+    {
+      "sourceIndex": 867,
+      "locale": "zh-Hant",
+      "currentTarget": "內容一：",
+      "primaryProposal": null,
+      "reviewedFinal": "內容 A：",
+      "reviewedFinalSha256": "a8b8f658456df54e8a0db8e18b665d9e9e652a1508a2d226ad334cdec1fed80b",
+      "reason": "The caller presents two comparison results as Content A and Content B. Preserve the paired Latin side markers instead of converting A to 一 while B is 乙."
+    },
+    {
+      "sourceIndex": 868,
+      "locale": "ko",
+      "currentTarget": "콘텐츠 B:",
+      "primaryProposal": null,
+      "reviewedFinal": "콘텐츠 B:",
+      "reviewedFinalSha256": "a7b4b2f786a16f6c5f262befcc47ace41d5e364902adc963b46c671062c79a4e",
+      "reason": "Keep the same product term 콘텐츠 used for Content A and the Content ID labels; retain B as the comparison-side identifier."
+    },
+    {
+      "sourceIndex": 868,
+      "locale": "zh-Hans",
+      "currentTarget": "内容乙：",
+      "primaryProposal": null,
+      "reviewedFinal": "内容 B：",
+      "reviewedFinalSha256": "19e7306ef383746ee2c694fcdb823a1e4e1669fb2e7d7f5790313be43135c798",
+      "reason": "The caller presents two comparison results as Content A and Content B. Preserve the paired Latin side markers instead of converting A to 一 while B is 乙."
+    },
+    {
+      "sourceIndex": 868,
+      "locale": "zh-Hant",
+      "currentTarget": "內容乙：",
+      "primaryProposal": null,
+      "reviewedFinal": "內容 B：",
+      "reviewedFinalSha256": "75d75caf9f53b6d40494cdf38f9c0d57dcc488eababce5f3c6ead15db61a18b5",
+      "reason": "The caller presents two comparison results as Content A and Content B. Preserve the paired Latin side markers instead of converting A to 一 while B is 乙."
+    },
+    {
+      "sourceIndex": 875,
+      "locale": "pt-BR",
+      "currentTarget": "Mapeamentos de Content ID e estatísticas de domínio",
+      "primaryProposal": null,
+      "reviewedFinal": "Mapeamentos de ID do conteúdo e estatísticas de domínio",
+      "reviewedFinalSha256": "5c189269aa6f5742eaad2c2044a2aa4928f867b9fcfbf57f34cf242f59960237",
+      "reason": "The current title leaves Content ID in English although the adjacent Content ID labels are localized as ID do conteúdo. Use consistent Brazilian Portuguese terminology."
+    },
+    {
+      "sourceIndex": 875,
+      "locale": "vi",
+      "currentTarget": "Ánh xạ Content ID và thống kê tên miền",
+      "primaryProposal": null,
+      "reviewedFinal": "Ánh xạ ID nội dung và thống kê tên miền",
+      "reviewedFinalSha256": "90c53b8ef638b1612b1f73afe4b829979500b5427af033aaacfceebb1c22b53d",
+      "reason": "The current title leaves Content ID in English although adjacent Content ID labels are localized as ID nội dung. Use consistent Vietnamese terminology."
+    },
+    {
+      "sourceIndex": 875,
+      "locale": "zh-Hant",
+      "currentTarget": "內容 ID 映射和域統計信息",
+      "primaryProposal": null,
+      "reviewedFinal": "內容 ID 映射與網域統計資訊",
+      "reviewedFinalSha256": "8c83ae46ba30b20cf21f79b44c3a19d071a5ca4569ed4c27eb65c08682411857",
+      "reason": "For the statistics dashboard this refers to registry mappings by internet domain. 網域 is the locale-specific term for an internet domain, and 資訊 uses Traditional Chinese orthography."
+    }
+  ],
+  "directCatalogsReattested": 12,
+  "catalogKeyCount": 5441,
+  "allCatalogKeySetsIdentical": true,
+  "sourceCurrentProposalAndFinalHashesReattested": 240,
+  "callerPinsReattested": 27,
+  "callerFiles": 15,
+  "callerGaps": 0,
+  "currentProtectedLiteralMismatchCount": 11,
+  "currentProtectedLiteralMismatchRows": [
+    {
+      "sourceIndex": 871,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-id)",
+      "locale": "es",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-id"
+      ],
+      "value": "ID de contenido (por ejemplo, contenido:audio:álbum:mb-id)"
+    },
+    {
+      "sourceIndex": 871,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-id)",
+      "locale": "hi",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-id"
+      ],
+      "value": "सामग्री आईडी (जैसे, सामग्री:ऑडियो:एल्बम:एमबी-आईडी)"
+    },
+    {
+      "sourceIndex": 871,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-id)",
+      "locale": "id",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-id"
+      ],
+      "value": "ID Konten (misalnya, konten:audio:album:mb-id)"
+    },
+    {
+      "sourceIndex": 871,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-id)",
+      "locale": "vi",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-id"
+      ],
+      "value": "ID nội dung (ví dụ: nội dung:audio:album:mb-id)"
+    },
+    {
+      "sourceIndex": 871,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-id)",
+      "locale": "zh-Hans",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-id"
+      ],
+      "value": "内容 ID（例如内容：音频：专辑：mb-id）"
+    },
+    {
+      "sourceIndex": 871,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-id)",
+      "locale": "zh-Hant",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-id"
+      ],
+      "value": "內容 ID（例如內容：音訊：專輯：mb-id）"
+    },
+    {
+      "sourceIndex": 872,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-release-id)",
+      "locale": "es",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-release-id"
+      ],
+      "value": "ID de contenido (por ejemplo, contenido:audio:álbum:mb-release-id)"
+    },
+    {
+      "sourceIndex": 872,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-release-id)",
+      "locale": "hi",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-release-id"
+      ],
+      "value": "सामग्री आईडी (जैसे, सामग्री:ऑडियो:एल्बम:एमबी-रिलीज़-आईडी)"
+    },
+    {
+      "sourceIndex": 872,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-release-id)",
+      "locale": "id",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-release-id"
+      ],
+      "value": "ID Konten (misalnya, konten:audio:album:mb-release-id)"
+    },
+    {
+      "sourceIndex": 872,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-release-id)",
+      "locale": "zh-Hans",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-release-id"
+      ],
+      "value": "内容 ID（例如内容：音频：专辑：mb-release-id）"
+    },
+    {
+      "sourceIndex": 872,
+      "sourceId": "Content ID (e.g., content:audio:album:mb-release-id)",
+      "locale": "zh-Hant",
+      "field": "current",
+      "missingTokens": [
+        "content:audio:album:mb-release-id"
+      ],
+      "value": "內容 ID（例如內容：音訊：專輯：mb-release-id）"
+    }
+  ],
+  "proposalProtectedLiteralMismatchCount": 0,
+  "reviewedFinalProtectedLiteralMismatchCount": 0,
+  "placeholderMismatches": 0,
+  "markupMismatches": 0,
+  "icuPatternCount": 0,
+  "slskrProductLiteral": "Exact lowercase `slskr` preserved in all W864 candidates/finals; the “non-” relation is translated naturally and semantically checked.",
+  "sourceIndexPairingAttestation": {
+    "862": "Conservative Network",
+    "863": "Conservative discovery of hashes from non-slskr peers",
+    "866": "Content",
+    "869": "Content Graph",
+    "870": "Content ID",
+    "871": "Content ID (e.g., content:audio:album:mb-id)",
+    "872": "Content ID (e.g., content:audio:album:mb-release-id)",
+    "875": "Content ID mappings and domain statistics",
+    "880": "Content Opinions"
+  },
+  "livePRHeadRequery": {
+    "beforeCaptureUtc": "2026-11-02T20:58:03.817060+00:00",
+    "afterCaptureUtc": "2026-11-02T21:04:49.111347+00:00",
+    "allSevenHeadsTreesAndStatesUnchanged": true,
+    "pullRequests": [
+      {
+        "repository": "snapetech-org/SeerrNG",
+        "number": 418,
+        "state": "OPEN",
+        "isDraft": true,
+        "head": "0905d4be32d8b7ec3b1af701473a3fdf6e0f30a2",
+        "tree": "a09117211080bbd89d32959f17d93b02a82b966f"
+      },
+      {
+        "repository": "snapetech-org/ChaptarrNG",
+        "number": 190,
+        "state": "OPEN",
+        "isDraft": true,
+        "head": "a9a74f6ba733e8c1f06a2d260bd802d4fde2da0e",
+        "tree": "d9d25f309f3a7256056b4ed8deb1dabee58b64fe"
+      },
+      {
+        "repository": "snapetech-org/QuestarrNG",
+        "number": 155,
+        "state": "OPEN",
+        "isDraft": false,
+        "head": "be131f2d42988bb8f4a271e4df428985da15b53b",
+        "tree": "afd827714b9ada51ef269e41184ac219e064059b"
+      },
+      {
+        "repository": "snapetech-org/ROMarrNG",
+        "number": 70,
+        "state": "OPEN",
+        "isDraft": true,
+        "head": "8e3820252b0c362e18e421b3a73e7ff1478d32a0",
+        "tree": "0d29024efd7e5e886926a83d95f57c472f327db9"
+      },
+      {
+        "repository": "snapetech-org/slskR",
+        "number": 204,
+        "state": "OPEN",
+        "isDraft": true,
+        "head": "72597bcf3c71f586040cd882506dff8dcbf6c804",
+        "tree": "98f7304db2e39ad722121c24047f5f06aa515663"
+      },
+      {
+        "repository": "snapetech-org/slskdN",
+        "number": 409,
+        "state": "OPEN",
+        "isDraft": true,
+        "head": "31544a6ef15db2f8481dd76aa9c10844ec3164ba",
+        "tree": "fe94582c3e13f0f567fbfa6c3abac6e8558ba17d"
+      },
+      {
+        "repository": "snapetech-org/TorrentNG",
+        "number": 243,
+        "state": "OPEN",
+        "isDraft": true,
+        "head": "11ff6fa2618e842e92716b7e92867769200e32e5",
+        "tree": "770415a3fcd9353884ac245b53798af9610c0aa3"
+      }
+    ]
+  },
+  "nativeSpeakerApproval": "outstanding",
+  "machineAssistedReviewOnly": true,
+  "headedBrowserReview": false,
+  "testsBuildsScansCIorBrowserRun": false,
+  "repositoryEdited": false,
+  "repositoryStatus": "clean",
+  "retainedOutputs": [
+    "crossreview-ledger.jsonl",
+    "caller-pin-reattestation.jsonl",
+    "catalog-reattestation.jsonl",
+    "primary-input manifest/checksum/ledger",
+    "both independently sealed locale-batch packets",
+    "live PR before/after snapshots",
+    "full-window structural reattestation"
+  ]
+}

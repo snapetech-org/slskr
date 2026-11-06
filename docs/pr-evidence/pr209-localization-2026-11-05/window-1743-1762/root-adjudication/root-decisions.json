@@ -1,0 +1,18 @@
+{
+  "window": "W1743-W1762",
+  "inputHead": "ccbc3dc721c1cbd225d4e512f4f0af4c80476620",
+  "inputTree": "075d1b72a2fd080404ebec19d354cb863638df21",
+  "reviewedCells": 240,
+  "acceptedCurrent": 182,
+  "selectedCorrectionsAndRefinements": 34,
+  "heldUnchangedHashOnly": 24,
+  "activeHoldIdHashOnly": "1719::id",
+  "specialRootOverride": {
+    "cellId": "W1743-W1762:1743:hi",
+    "crossTarget": "फ़ाइल नाम आवश्यक है。",
+    "rootTarget": "फ़ाइल नाम आवश्यक है।",
+    "reason": "Use Hindi danda punctuation while retaining the cross-reviewed removal of unsupported API-field annotation."
+  },
+  "nativeSpeakerReview": false,
+  "reviewConfidence": "moderate"
+}

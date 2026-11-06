@@ -1,0 +1,20 @@
+Event text filter
+Event topic filter
+Events
+Events Retention days
+Every 15 minutes
+Every automation is visible here. Enable recipes when their impact fits your node; execution is manual and requires the real backend action to be available.
+Evidence
+Evidence (
+Evidence Review Sandbox
+Exception
+Exclude the rejected Wishlist peer and remote directory from future automatic downloads.
+Excluded Paths
+Execute {title}
+Execute {title} now through its real backend action. Wishlist Retry runs up to three enabled searches; Library Health starts the configured read-only scan.
+Executed
+Execution contract blocked
+Execution contract ready
+Existing Channels
+Existing configuration is not a YAML mapping
+Existing hash reused

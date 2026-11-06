@@ -1,0 +1,274 @@
+{
+  "artifact": "slskR PR #209 W1663-W1682 exact-hash application plan",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 209,
+  "branch": "codex/slskr-l10n-audit-20261104-resync",
+  "sourcePin": {
+    "head": "2ab97d1a21f7d001eb9470c76b3636f59f600609",
+    "tree": "63097ec7c80be0bef55fb1bde5a38da7b6a59ce7"
+  },
+  "sourceRange": [
+    1663,
+    1682
+  ],
+  "candidateCells": 240,
+  "rootDispositionCounts": {
+    "accept-current": 228,
+    "accept-consensus-proposal": 4,
+    "accept-primary-proposal": 5,
+    "accept-blind-proposal": 2,
+    "cross-adjustment": 1
+  },
+  "rootReview": {
+    "appliedSelectedCells": 12,
+    "retainedCurrentCells": 228,
+    "holds": 0,
+    "confidence": "moderate",
+    "nativeSpeakerApproval": false,
+    "headedBrowserReview": false
+  },
+  "catalogs": [
+    {
+      "path": "web/src/lib/locales/ui-labels.ar.json",
+      "preimageSha256": "baa3f485ba5e9d2372f032b56638ce0b05cd8508e52026f873b93f20a6dbe3d5",
+      "entryCount": 5441,
+      "keyOrderSha256": "a7776ca91c41c4e7345c65d8593e12535a96619135277daf9ab52d6c578d28a9"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.de.json",
+      "preimageSha256": "110da8b47fc9da1250c74fa7fd372ea6a82b74435de8f3fb205ff91aac987881",
+      "entryCount": 5441,
+      "keyOrderSha256": "a7776ca91c41c4e7345c65d8593e12535a96619135277daf9ab52d6c578d28a9"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.es.json",
+      "preimageSha256": "fb9406da0e4be856bcece88fee87884821feae19d161953eabf623289061e5c9",
+      "entryCount": 5441,
+      "keyOrderSha256": "a7776ca91c41c4e7345c65d8593e12535a96619135277daf9ab52d6c578d28a9"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.fr.json",
+      "preimageSha256": "9618b90d8ce22cad4bf34a887f915495e3ff6fa221a3ace043c618901015b750",
+      "entryCount": 5441,
+      "keyOrderSha256": "a7776ca91c41c4e7345c65d8593e12535a96619135277daf9ab52d6c578d28a9"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.hi.json",
+      "preimageSha256": "41fe86bc9de206de470934040b1d1500d26775a51ec528167763667d63a44a15",
+      "entryCount": 5441,
+      "keyOrderSha256": "a7776ca91c41c4e7345c65d8593e12535a96619135277daf9ab52d6c578d28a9"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.id.json",
+      "preimageSha256": "2a62918b0cc187a5464a7df547b1ce46bd1b6b7a52a367985ccf5e4fe33edb64",
+      "entryCount": 5441,
+      "keyOrderSha256": "a7776ca91c41c4e7345c65d8593e12535a96619135277daf9ab52d6c578d28a9"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.ja.json",
+      "preimageSha256": "01abfd7ee63058be31e5ca3f9f140e47a4cb7f38d3f2627139503e70201ad152",
+      "entryCount": 5441,
+      "keyOrderSha256": "a7776ca91c41c4e7345c65d8593e12535a96619135277daf9ab52d6c578d28a9"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.ko.json",
+      "preimageSha256": "3b104454507073424aee6941a6ad94841671ace8fb3314e8379e5ffd24da6405",
+      "entryCount": 5441,
+      "keyOrderSha256": "a7776ca91c41c4e7345c65d8593e12535a96619135277daf9ab52d6c578d28a9"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "preimageSha256": "48af89dea0580bd38fb61415f6f1b313f5c1de5d53936c96af690bc3fcfc407d",
+      "entryCount": 5441,
+      "keyOrderSha256": "a7776ca91c41c4e7345c65d8593e12535a96619135277daf9ab52d6c578d28a9"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.vi.json",
+      "preimageSha256": "2767dff33435d4d813eca0a3e73b5c8033a0571ef372c5a3b3cd5b9f94174d64",
+      "entryCount": 5441,
+      "keyOrderSha256": "a7776ca91c41c4e7345c65d8593e12535a96619135277daf9ab52d6c578d28a9"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.zh-Hans.json",
+      "preimageSha256": "5a10a85a948bfe92aadbb27a4422653cb4c54f43c099f71b97d9a896fc3b8b10",
+      "entryCount": 5441,
+      "keyOrderSha256": "a7776ca91c41c4e7345c65d8593e12535a96619135277daf9ab52d6c578d28a9"
+    },
+    {
+      "path": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "preimageSha256": "21f679797e8e4932234b1cb7636f7202f55b0d50a927a9fe43e26740a6dac802",
+      "entryCount": 5441,
+      "keyOrderSha256": "a7776ca91c41c4e7345c65d8593e12535a96619135277daf9ab52d6c578d28a9"
+    }
+  ],
+  "changes": [
+    {
+      "position": 1667,
+      "sourceKey": "Failed to sort leaderboard",
+      "sourceKeySha256": "0196870c47454b4ee91515a8f5944b373f4a2cefdee2c723caac827c0386eec0",
+      "locale": "pt-BR",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "sourceContextSha256": "2ade540e60cf6201c7e5be41654ca6a93ffd12b1ae0edd70e20a8afd6629bd44",
+      "currentTarget": "Não foi possível ordenar o placar",
+      "currentTargetSha256": "fd71dc1235e2e78e986339d2df274e48d29462152009a8d090f4d8156d974d27",
+      "finalTarget": "Não foi possível ordenar a tabela de classificação",
+      "finalTargetSha256": "2b7a806912fc596298f27ac70aa9db4a6a1f72ec4d0741ec7dc50c5f8bb353ca",
+      "crossDecision": "accept-consensus-proposal",
+      "rationale": "The dashboard sorts a ranked leaderboard. “Placar” is more often a scoreboard; “tabela de classificação” names the ranking and both reviewers independently selected it."
+    },
+    {
+      "position": 1668,
+      "sourceKey": "Failed to start backfill",
+      "sourceKeySha256": "1132c8f2f30d0e3ac62ff97016aa1532143e295e304d87c489580eaa48b3ca3d",
+      "locale": "es",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json",
+      "sourceContextSha256": "0fef9b6a838a0e4a045823c78be0ff6260540ed83b92c6a92a8f91b8dd189881",
+      "currentTarget": "No se pudo iniciar la recuperación de datos",
+      "currentTargetSha256": "b95604c85e592e323d6e00b6d051b4954814d55cd387875af33c8be2233e835a",
+      "finalTarget": "No se pudo iniciar la carga retroactiva de datos",
+      "finalTargetSha256": "3948994a71f2d0adeb6d6db77df60af683fd1273f9d9917aa423045e49b1a602",
+      "crossDecision": "accept-primary-proposal",
+      "rationale": "The caller starts a historical data backfill. “Recuperación de datos” can mean restoring lost data; “carga retroactiva de datos” states the operation explicitly. I prefer the primary’s fuller wording to the blind review’s shorter alternative because “de datos” clarifies what is being loaded."
+    },
+    {
+      "position": 1670,
+      "sourceKey": "Failed to start port forwarding",
+      "sourceKeySha256": "1fc400d834cd97b63466a3819a04849443aa978d12974202cceaee07a4efe079",
+      "locale": "ja",
+      "catalogPath": "web/src/lib/locales/ui-labels.ja.json",
+      "sourceContextSha256": "947b1bd5b6f8d4eaebca5f37815775a4e53223a527e2d042ea715719cc83a2d7",
+      "currentTarget": "ポートフォワーディングを開始できませんでした。",
+      "currentTargetSha256": "8d7a048f9f2bd64d003171575aa8f30c343e78ce81c3d36b7151c042a932fcc0",
+      "finalTarget": "ポート転送を開始できませんでした。",
+      "finalTargetSha256": "b162cc39050607e98930614b9a938532e05d9c162319730cc55d7dca45df3dab",
+      "crossDecision": "accept-primary-proposal",
+      "rationale": "“ポート転送” is clear Japanese and matches the paired stop message’s terminology; it avoids switching to the English loanword in this error."
+    },
+    {
+      "position": 1670,
+      "sourceKey": "Failed to start port forwarding",
+      "sourceKeySha256": "1fc400d834cd97b63466a3819a04849443aa978d12974202cceaee07a4efe079",
+      "locale": "fr",
+      "catalogPath": "web/src/lib/locales/ui-labels.fr.json",
+      "sourceContextSha256": "947b1bd5b6f8d4eaebca5f37815775a4e53223a527e2d042ea715719cc83a2d7",
+      "currentTarget": "Échec du démarrage du transfert de port.",
+      "currentTargetSha256": "afd27af1aaa07b6c2a76355b521a314b2eafbd3ba40363ba946abdd35dc07817",
+      "finalTarget": "Impossible de démarrer la redirection de port.",
+      "finalTargetSha256": "2fd9860e95bdf816a964c52621156313b62a1541abfdfa83e16e415d07830c11",
+      "crossDecision": "accept-primary-proposal",
+      "rationale": "“Redirection de port” is the clear networking term and matches the paired stop message. The proposal retains the terminal period already present in this server-error translation."
+    },
+    {
+      "position": 1670,
+      "sourceKey": "Failed to start port forwarding",
+      "sourceKeySha256": "1fc400d834cd97b63466a3819a04849443aa978d12974202cceaee07a4efe079",
+      "locale": "zh-Hant",
+      "catalogPath": "web/src/lib/locales/ui-labels.zh-Hant.json",
+      "sourceContextSha256": "947b1bd5b6f8d4eaebca5f37815775a4e53223a527e2d042ea715719cc83a2d7",
+      "currentTarget": "無法啓動端口轉發。",
+      "currentTargetSha256": "301fbfb9ce9235996417d23769aeb5e02eab730d288f228c2f9e6a588d49987b",
+      "finalTarget": "無法啟動連接埠轉送。",
+      "finalTargetSha256": "b7885aa6e356610bded610110aef62d2b05b9d2a053e190f4e4b598ca505d587",
+      "crossDecision": "accept-consensus-proposal",
+      "rationale": "The source is network port forwarding. Taiwanese Traditional Chinese uses “連接埠轉送”; this also matches the paired stop message and replaces mainland “端口轉發”."
+    },
+    {
+      "position": 1678,
+      "sourceKey": "Failed to submit join request:",
+      "sourceKeySha256": "6ad3b5c82d3f8b73cc1eedebb883cc0f68a5e91350c0e55bfd156e534af43882",
+      "locale": "es",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json",
+      "sourceContextSha256": "6834538f54bf209234c63e06b4d4960c792df02d15fa5a5528341bf26c597e5e",
+      "currentTarget": "No se pudo enviar la solicitud de unión:",
+      "currentTargetSha256": "9be2e8abc705f4d9ec238bcd16a1b55873fcd5d652dcc11deead3f736ee8dbd5",
+      "finalTarget": "No se pudo enviar la solicitud para unirse:",
+      "finalTargetSha256": "92918a95e9af597e2347804465e3641415fbfa0ed279067b4275959f3c8d0f96",
+      "crossDecision": "accept-consensus-proposal",
+      "rationale": "The pod panel appends a join failure after this prefix. “Solicitud para unirse” clearly means a request to join, while “solicitud de unión” can suggest a labor union; the colon remains for the appended detail."
+    },
+    {
+      "position": 1679,
+      "sourceKey": "Failed to sync pod backfill: {error}",
+      "sourceKeySha256": "40f246944d29790fc6c9d88d8e1a20f0d829a949ae5d0f4b4e7a2911cf669b04",
+      "locale": "es",
+      "catalogPath": "web/src/lib/locales/ui-labels.es.json",
+      "sourceContextSha256": "6c62b20d78a51bf729735fc6628e2fb1f1c5cf927fe481a98411f6a4e62cd1e8",
+      "currentTarget": "No se pudo sincronizar el relleno del pod: {error}",
+      "currentTargetSha256": "a798a9215f60ab91db7cb8c5c69b79f1450836ba1be0972b5fff7a45dba67977",
+      "finalTarget": "No se pudo sincronizar la carga retroactiva del pod: {error}",
+      "finalTargetSha256": "bfe02c180135bd8f8856776b12b66f83b0f0300e70c15437677d10890c0986b4",
+      "crossDecision": "accept-consensus-proposal",
+      "rationale": "The caller synchronizes historical pod messages. “Carga retroactiva” conveys backfill and aligns with the selected Spanish wording for position 1668; the {error} slot is preserved."
+    },
+    {
+      "position": 1679,
+      "sourceKey": "Failed to sync pod backfill: {error}",
+      "sourceKeySha256": "40f246944d29790fc6c9d88d8e1a20f0d829a949ae5d0f4b4e7a2911cf669b04",
+      "locale": "pt-BR",
+      "catalogPath": "web/src/lib/locales/ui-labels.pt-BR.json",
+      "sourceContextSha256": "6c62b20d78a51bf729735fc6628e2fb1f1c5cf927fe481a98411f6a4e62cd1e8",
+      "currentTarget": "Não foi possível sincronizar o preenchimento do pod: {error}",
+      "currentTargetSha256": "aaf12b87b8ca2f5ec207ae6a5f9036e32b9268d8d39e9292eee6e3865e78beae",
+      "finalTarget": "Não foi possível sincronizar o preenchimento retroativo do pod: {error}",
+      "finalTargetSha256": "3616f6b5c701d9041b47e39f19407d344411c3f866619a6a45ab05cd32279342",
+      "crossDecision": "accept-primary-proposal",
+      "rationale": "The caller synchronizes a pod backfill. “Preenchimento retroativo” makes the historical operation explicit and matches the selected Brazilian Portuguese term at position 1668; the {error} slot is preserved."
+    },
+    {
+      "position": 1679,
+      "sourceKey": "Failed to sync pod backfill: {error}",
+      "sourceKeySha256": "40f246944d29790fc6c9d88d8e1a20f0d829a949ae5d0f4b4e7a2911cf669b04",
+      "locale": "id",
+      "catalogPath": "web/src/lib/locales/ui-labels.id.json",
+      "sourceContextSha256": "6c62b20d78a51bf729735fc6628e2fb1f1c5cf927fe481a98411f6a4e62cd1e8",
+      "currentTarget": "Gagal menyinkronkan pengisian ulang pod: {error}",
+      "currentTargetSha256": "2102a1324dddd05332ca660d429ee3fdd48a0f5419e8ad7189e899edad420a13",
+      "finalTarget": "Gagal menyinkronkan pengisian data historis pod: {error}",
+      "finalTargetSha256": "4083323ff80f01177b5a245a6ccd95676f4f73bc75384fc65833cff55acfcbf6",
+      "crossDecision": "accept-blind-proposal",
+      "rationale": "The caller synchronizes historical pod messages. “Pengisian ulang” suggests refilling; “pengisian data historis” accurately names backfill and matches the existing Indonesian rendering at position 1668. The {error} slot is preserved."
+    },
+    {
+      "position": 1681,
+      "sourceKey": "Failed to toggle accelerated mode: {error}",
+      "sourceKeySha256": "71d7f60746723ddcb3f1d81e3228ce44f1e3df85696b0d863818b0a5e9c29714",
+      "locale": "hi",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json",
+      "sourceContextSha256": "34c11bbd894c542a67ce0c4a850beb5bc2c2a1834ed5555bfaff07f4b3c35861",
+      "currentTarget": "त्वरित मोड टॉगल नहीं हो सका: {error}",
+      "currentTargetSha256": "afe7825923e2286da4b05e7553cc7b226ae5cf1d687b9a0b0edce6217e5109d0",
+      "finalTarget": "त्वरण मोड को चालू या बंद नहीं किया जा सका: {error}",
+      "finalTargetSha256": "51e798d082c000523c42122a2ac5e2f9151e6dd454dcb88c20ae79d3b0b4477b",
+      "crossDecision": "cross-adjustment",
+      "rationale": "The blind proposal improves the transliterated “टॉगल” by stating that the mode could not be switched on or off. I changed “त्वरित” (fast) to “त्वरण” (acceleration) to preserve the source’s accelerated-mode meaning. The {error} slot is preserved."
+    },
+    {
+      "position": 1681,
+      "sourceKey": "Failed to toggle accelerated mode: {error}",
+      "sourceKeySha256": "71d7f60746723ddcb3f1d81e3228ce44f1e3df85696b0d863818b0a5e9c29714",
+      "locale": "ar",
+      "catalogPath": "web/src/lib/locales/ui-labels.ar.json",
+      "sourceContextSha256": "34c11bbd894c542a67ce0c4a850beb5bc2c2a1834ed5555bfaff07f4b3c35861",
+      "currentTarget": "تعذر تبديل الوضع السريع: {error}",
+      "currentTargetSha256": "e4a6c41882137f8acf19f02ec82d80abca7c9027d779badd723f6901cb5811c8",
+      "finalTarget": "تعذر تبديل وضع التسريع: {error}",
+      "finalTargetSha256": "f4e13b7ca0e7b21dc98da8fb78522faaf2900982d6be2973cac97df241c40db5",
+      "crossDecision": "accept-primary-proposal",
+      "rationale": "The Transfers caller reports a failed accelerated-mode toggle. “وضع التسريع” means acceleration mode more precisely than “الوضع السريع” (fast mode); the {error} slot is preserved."
+    },
+    {
+      "position": 1682,
+      "sourceKey": "Failed to toggle auto-replace: {error}",
+      "sourceKeySha256": "bcd7dd2d66286e8fa37b38a88db9e7ec3d0bf2e8c772419cfa644dffc0c45839",
+      "locale": "hi",
+      "catalogPath": "web/src/lib/locales/ui-labels.hi.json",
+      "sourceContextSha256": "e220859e623348f7b967f1484b18d48bb0697dcbec8b5ce64b9450c6625be833",
+      "currentTarget": "ऑटो-रिप्लेस टॉगल नहीं हो सका: {error}",
+      "currentTargetSha256": "363124950304425a7450a6b9cd015b5d163f07f889d7964c7d14d2a110ee9fc4",
+      "finalTarget": "स्वचालित प्रतिस्थापन को चालू या बंद नहीं किया जा सका: {error}",
+      "finalTargetSha256": "389e4f4216b5b9c59353ddffd96b9d139fd6713027facee230be4ef27e5a8c77",
+      "crossDecision": "accept-blind-proposal",
+      "rationale": "The Transfers caller toggles the automatic-replacement setting. Spelling out “could not be switched on or off” is clearer Hindi than the dense “ऑटो-रिप्लेस टॉगल”; the {error} slot is preserved."
+    }
+  ]
+}

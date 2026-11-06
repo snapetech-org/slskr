@@ -1,0 +1,108 @@
+{
+  "application_head": "94d67e7deaf418120294c2ff6681c2773fb8c023",
+  "application_parent_head": "1494972d86c8fddf62078328376d4aefca07f051",
+  "application_parent_tree": "1c0b3e16e721dfe623cf4239ae3bd4f9fbfc86d3",
+  "application_tree": "b6d9a9b012e65eb87daed63192d800445de0c726",
+  "applied_corrections": 2,
+  "baseline_conflict_scan_manifest_sha256": "2b13e14d491eef03539469fca6e69fb56d5dbe67693e761695a4488a12d42b94",
+  "baseline_conflicts": 25,
+  "baseline_head": "1494972d86c8fddf62078328376d4aefca07f051",
+  "baseline_tree": "1c0b3e16e721dfe623cf4239ae3bd4f9fbfc86d3",
+  "catalog_cell_count": 65244,
+  "catalog_correction_totals_after_application": 17,
+  "catalog_edits_included": true,
+  "catalog_sha256_after": {
+    "web/src/lib/locales/ui-labels.ar.json": "4ad7eec11cc1d30afd0129e6aac7002669df7cc3f91d59c868115f970f70b5df",
+    "web/src/lib/locales/ui-labels.de.json": "85d2cccea96e3b597d723feef0c007b76976108f6c5c53a0123765bf6253d896",
+    "web/src/lib/locales/ui-labels.es.json": "5bb3094c1ca1ce25d2da577cd9d405338798571f2cd97cd9e6da063e3447bf75",
+    "web/src/lib/locales/ui-labels.fr.json": "203216db3f4f745128a89772b7680f401e4b9d7b4d978f4d932d1649f08762bd",
+    "web/src/lib/locales/ui-labels.hi.json": "2cf595937e1ddcdc94e42044c71bc42cd3f4b7445ca0509ec6e9fbf5d636b76b",
+    "web/src/lib/locales/ui-labels.id.json": "ca0975bbcc408d4d3c146aba26c4e5480a0233b0cac603cd530ea82bb07681d8",
+    "web/src/lib/locales/ui-labels.ja.json": "35218904466567f0c98cbb631e30af2d813f2eea719bf66a06f9984e5874b10e",
+    "web/src/lib/locales/ui-labels.ko.json": "5636a4b1a4bf325d6c03031b8b3ef34db7d04936c8216343e55b2d36fa544bcd",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "5d66fed4d95c212350e7f29df2d70b94381cf086df8cfdac04bfc48f0c1b9372",
+    "web/src/lib/locales/ui-labels.vi.json": "91fac84a2ab6ebcfbe6f33cdf0302e0350b676e4cd69be796edc86509e856184",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "365c4c51e7cee40e79b37607319dd4dbe1345dcee77f085dd6f7fa1ad307881b",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "2945bee74a8ffc61db44b8a0bac113ba9f20a159657925c7f3dbc7d1647ce89c"
+  },
+  "catalog_sha256_before": {
+    "web/src/lib/locales/ui-labels.ar.json": "4ad7eec11cc1d30afd0129e6aac7002669df7cc3f91d59c868115f970f70b5df",
+    "web/src/lib/locales/ui-labels.de.json": "85d2cccea96e3b597d723feef0c007b76976108f6c5c53a0123765bf6253d896",
+    "web/src/lib/locales/ui-labels.es.json": "5bb3094c1ca1ce25d2da577cd9d405338798571f2cd97cd9e6da063e3447bf75",
+    "web/src/lib/locales/ui-labels.fr.json": "203216db3f4f745128a89772b7680f401e4b9d7b4d978f4d932d1649f08762bd",
+    "web/src/lib/locales/ui-labels.hi.json": "2cf595937e1ddcdc94e42044c71bc42cd3f4b7445ca0509ec6e9fbf5d636b76b",
+    "web/src/lib/locales/ui-labels.id.json": "ca0975bbcc408d4d3c146aba26c4e5480a0233b0cac603cd530ea82bb07681d8",
+    "web/src/lib/locales/ui-labels.ja.json": "0ca95fc5c9f0b4cee791ab71d0283b151136946da5e9383f366d5a16f5a7541e",
+    "web/src/lib/locales/ui-labels.ko.json": "5636a4b1a4bf325d6c03031b8b3ef34db7d04936c8216343e55b2d36fa544bcd",
+    "web/src/lib/locales/ui-labels.pt-BR.json": "4babb54558c6c224304c2c62ea1303cdad90c5f931bb936e92402323a5759ce9",
+    "web/src/lib/locales/ui-labels.vi.json": "91fac84a2ab6ebcfbe6f33cdf0302e0350b676e4cd69be796edc86509e856184",
+    "web/src/lib/locales/ui-labels.zh-Hans.json": "365c4c51e7cee40e79b37607319dd4dbe1345dcee77f085dd6f7fa1ad307881b",
+    "web/src/lib/locales/ui-labels.zh-Hant.json": "2945bee74a8ffc61db44b8a0bac113ba9f20a159657925c7f3dbc7d1647ce89c"
+  },
+  "cells_with_placeholders": 4,
+  "changed_locales": [
+    "ja",
+    "pt-BR"
+  ],
+  "correction_ledger": "applied-corrections.jsonl",
+  "correction_ledger_sha256": "d128ab333f60d886a618449436755907628d5215cbeccbbf54fe192cfd27263b",
+  "correction_policy": "Applied only exact-hash corrections with high semantic confidence. Moderate terminology/phrasing proposals remain correction-needed and unapplied.",
+  "corrections": [
+    {
+      "after_sha256": "97cb9376f50941b18c14719738bb9a27f6aa38434cbc52db3d07b1a60dfdaa64",
+      "before_sha256": "3e365b22b2b7749ab64aa80f53dfc1f5eaa2edc3321c6f134cd4285cf72cd583",
+      "locale": "ja",
+      "source_id": "A download path is configured."
+    },
+    {
+      "after_sha256": "1dcd8ebad3036576b1b589b3c2675a596975aa52bdc56057bc75139c06b39d50",
+      "before_sha256": "1b5deb4180eb7a310f0773d11f42bd6ab368f56b5e518fab41bea4a9ae795ae5",
+      "locale": "pt-BR",
+      "source_id": "ExternalId is required"
+    }
+  ],
+  "expected_final_evidence_file_count": 763,
+  "expected_final_status_counts": {
+    "accepted": 23167,
+    "corrected": 17,
+    "correction-needed": 10972,
+    "held": 287,
+    "unreviewed": 30801
+  },
+  "expected_final_unreviewed_cells": 30801,
+  "icu_cells": 0,
+  "moderate_correction_suggestions_applied": 0,
+  "native_speaker_approval": false,
+  "outcome_counts": {
+    "accepted": 8,
+    "corrected": 2,
+    "correction-needed": 15
+  },
+  "per_locale_correction_counts": {
+    "ja": 1,
+    "pt-BR": 1
+  },
+  "placeholders_checked": 4,
+  "pre_scan_summary": "pre-scan-summary.json",
+  "pre_scan_summary_sha256": "f1aebedd8563a4012caaa66999f39fed720b303e66140e68f72b2d10d0207e6c",
+  "prior_conflict_snapshot": "prior-conflicts.json",
+  "prior_conflict_snapshot_sha256": "ea000862d3f560aa26013779f35e0ac0eb141268538eeee1d7fe9af04af935ec",
+  "prior_evidence_file_manifest": "prior-evidence-file-manifest.jsonl",
+  "prior_evidence_file_manifest_count": 28,
+  "prior_evidence_file_manifest_sha256": "7930dddb77f6b50562b433fecee1891ba11ebf7f9c9f79d8f7626976b779e627",
+  "protected_literals_checked": 11,
+  "pull_request": 204,
+  "repository": "snapetech-org/slskR",
+  "resolution_ledger": "conflict-resolutions.jsonl",
+  "resolution_ledger_sha256": "67ec32d2d1d86252441845e3da5b4a76bf988c1eb55c697022722db926d81e28",
+  "review_method": "Per-cell exact-current adjudication against pinned runtime/source callsites, followed by a single terminal disposition that explicitly supersedes all conflicting exact evidence references.",
+  "schema_version": 1,
+  "source_context_count": 13,
+  "source_context_file": "source-contexts.jsonl",
+  "source_context_sha256": "5b696bc5dab432a943edbdb99eedd391546824d1d83f4c2f197e80683bfec55b",
+  "source_head": "7ff454828398de6a3cfb72fe7f0ed21fe419425b",
+  "source_id_count": 5437,
+  "source_tree": "9e9f2aa743c4ff3236af8f99619803bdc3a37152",
+  "tests_build_ci_workflows_releases_tags": false,
+  "verification_head_is_dynamic_docs_head": true
+}

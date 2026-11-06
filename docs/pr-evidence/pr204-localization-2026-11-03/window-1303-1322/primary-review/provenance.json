@@ -1,0 +1,60 @@
+{
+  "artifact": "slskR PR #204 W1303-W1322 primary review evidence",
+  "reviewer": "/root/slskr_w1263_input_primary",
+  "reviewedAtUtc": "2026-11-03T12:44:19.268515+00:00",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "liveAttestation": {
+    "repository": "snapetech-org/slskR",
+    "pullRequest": 204,
+    "state": "OPEN",
+    "draft": true,
+    "branch": "codex/slskr-l10n-audit-20261030",
+    "head": "f46b8b2322f4b944f39f34d5bb8d55852ba330c8",
+    "tree": "4eba98f951a745dac6b5332bd6796bf57c7037e2",
+    "baseRef": "main",
+    "baseSha": "2a2b188f10b9460a15bc6d5c34e406b0193d51ba",
+    "branchRef": "f46b8b2322f4b944f39f34d5bb8d55852ba330c8",
+    "pullRef": "f46b8b2322f4b944f39f34d5bb8d55852ba330c8",
+    "attestedAtUtc": "2026-11-03T12:40:17.838061+00:00",
+    "method": "GitHub PR selected fields, GitHub commit tree API, and git ls-remote for branch and pull refs"
+  },
+  "candidateFreeInput": {
+    "path": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1303-1322-primary-20261103/input",
+    "manifestSha256": "3145ccef78adbea528fe062d053ba90067207c4c49611ba43994da78383b244c",
+    "checksumListSha256": "d30a1b2aa55a13eb0b33a116cfbf965494b675bbedf3acb9a6fbc61c53ead652",
+    "candidateFree": true,
+    "proposedTranslationsIncluded": false
+  },
+  "scope": {
+    "positions": [
+      1303,
+      1322
+    ],
+    "sourceCount": 20,
+    "localeCount": 12,
+    "cellCount": 240,
+    "localeOrder": [
+      "es",
+      "zh-Hans",
+      "hi",
+      "de",
+      "ja",
+      "fr",
+      "pt-BR",
+      "ar",
+      "ko",
+      "zh-Hant",
+      "vi",
+      "id"
+    ],
+    "historicalSourceOrdinalsClaimed": false
+  },
+  "method": "Reviewed only the pinned candidate-free source keys, current targets, exact production caller lines and context spans, locale catalogs, runtime placeholder behavior, and token metadata. No review proposal for this window was consulted.",
+  "limitations": [
+    "No native-speaker signoff is included.",
+    "The historical source ordinal sequence is unavailable; positions follow the pinned lexicographic source queue.",
+    "No repository or PR change was made."
+  ],
+  "applicationApproved": false
+}

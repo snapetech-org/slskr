@@ -1,0 +1,83 @@
+{
+  "current_window": {
+    "indices": [
+      543,
+      562
+    ],
+    "no_op_cells": 12,
+    "no_op_source_id": "Calendar",
+    "no_op_source_index": 562,
+    "source_ids": [
+      "By Tag",
+      "By Tags (AND)",
+      "Bypass cache (force fresh retrieval)",
+      "Bypass the equalizer without losing your slider settings.",
+      "Bytes Served",
+      "Bytes by Source",
+      "Byzantine",
+      "CBR",
+      "CPU Seconds",
+      "CSV File",
+      "CSV Text",
+      "CSV did not contain any track rows",
+      "CSV text is required.",
+      "Cache Hits:",
+      "Cache Misses:",
+      "Cache Performance",
+      "Cache Size:",
+      "Cache cleared: {entriesCleared} entries, {bytesFreed} bytes freed",
+      "Cache performance and retrieval statistics",
+      "Calendar"
+    ]
+  },
+  "input_head": "255dc8789cf130c9fee39ab94f84a00fab79d215",
+  "input_tree": "afdc0f69e5ed99e84e689fb6b2f20c1fe74dea54",
+  "overlapping_indices": [],
+  "overlapping_source_ids": [],
+  "previous_window": {
+    "crossreview_path": "/mnt/disks/scratch/task-scratch/slskr-pr204-W523-542-independent-crossreview-20261102",
+    "crossreview_sha256sums_sha256": "3794169211654ea6d3b7e454c80f23f36b34b72ad2ce515a39c7ded2758c0bc5",
+    "held_candidate_sha256": "3dae2b943e6944551ee4eb8cd47a7d613d41f70ffeccb929d911be59eda58c34",
+    "held_candidate_text": "معلومات إصدار البرنامج غير متاحة",
+    "held_locale": "ar",
+    "held_source_id": "Build information unavailable",
+    "held_source_index": 532,
+    "indices": [
+      523,
+      542
+    ],
+    "no_op_cells": 12,
+    "no_op_source_id": "Build result-filter conditions without memorizing the filter syntax.",
+    "no_op_source_index": 533,
+    "packet_path": "/mnt/disks/scratch/task-scratch/slskr-pr204-W523-542-20261102/packet",
+    "packet_sha256sums_sha256": "01aeea2a76ff44b94bd73d514a397254baf8b19f00352da10e84778a5955c3b4",
+    "source_ids": [
+      "Browse user files",
+      "Browse your collections and play an item from a playlist or share list.",
+      "Browser-local preference surface for Search, Player, and Messages behavior that can be consumed by page-specific backfill.",
+      "Bucket Sizes (bytes)",
+      "Build",
+      "Build Atlas",
+      "Build a per-release coverage map for this MusicBrainz artist using cached release data, verified HashDb evidence, and existing Wishlist seeds.",
+      "Build a persistent atlas in-page from the current seed fields instead of opening a temporary modal.",
+      "Build an atlas from a seed above or restore a saved branch.",
+      "Build information unavailable",
+      "Build result-filter conditions without memorizing the filter syntax.",
+      "Build review-first radio searches from the current track. Nothing is searched or queued until you choose a query.",
+      "Build smart-radio search seeds from the current track without starting network work yet.",
+      "Building neighborhood",
+      "Bulk actions ({count})",
+      "Bulk wishlist filter",
+      "Bundle",
+      "By Content ID",
+      "By Domain:",
+      "By Name"
+    ],
+    "verified_crossreview_files": 10,
+    "verified_files": 20
+  },
+  "pull_request": 204,
+  "repository": "snapetech-org/slskR",
+  "schema_version": 1,
+  "status": "pass"
+}

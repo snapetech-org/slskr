@@ -1,0 +1,48 @@
+{
+  "artifact": "slskR PR #204 W1343-W1362 primary semantic review",
+  "repository": "snapetech-org/slskR",
+  "pullRequest": 204,
+  "head": "130462c56f75d3c8fc2a90663a48c0474ad1208b",
+  "tree": "47aba96d79eb57d6024fb358ee59cde931f0de3b",
+  "selectedPositions": [
+    1343,
+    1362
+  ],
+  "sourceCount": 20,
+  "localeCount": 12,
+  "cellCount": 240,
+  "candidateFreeInputPath": "/home/keith/Documents/code/task-scratch/slskr-pr204-w1343-1362-primary-20261103/input",
+  "candidateFreeManifestSha256": "d11af73c2178f0789b5429ece69811719e7d50b54bbcef08c93fda352376834e",
+  "candidateFreeChecksumListSha256": "7a77ceaae645ea04165ba88924ce6bed87d7650c52d7d91ef9e3f98b386327b3",
+  "blindReviewMaterialsRead": false,
+  "repositoryOrPRModified": false,
+  "countsByDisposition": {
+    "correction": 39,
+    "refinement": 18,
+    "accept-current": 183,
+    "hold": 0
+  },
+  "fileHashes": {
+    "README.md": {
+      "sha256": "3ed3875b6dd271cf4deb74dfa4f03dd20c56d04b9d083d2da6fc3a2314bf3949",
+      "bytes": 749
+    },
+    "primary-review-ledger.jsonl": {
+      "sha256": "e5ce02fc0d78ef13dca7d227c627c45226c1b44fbc51f189433dc11f7fd9477f",
+      "bytes": 616772
+    },
+    "provenance.json": {
+      "sha256": "c6f5159c3fb46ddfd85076f93c0caea91041cf68117cb4c60d8148689103a806",
+      "bytes": 1007
+    },
+    "summary.json": {
+      "sha256": "cd6a678d6b320d83d11081e38d4156200b94feeb691e2a1c11cad4d8333cfae1",
+      "bytes": 1574
+    },
+    "verify-primary-review.py": {
+      "sha256": "18a001a100edc256c459b83b1e16ff6c0b9574c3d01a352b6b91ea897fcf10d0",
+      "bytes": 4521
+    }
+  },
+  "createdAtUtc": "2026-11-03T15:03:17.612467+00:00"
+}

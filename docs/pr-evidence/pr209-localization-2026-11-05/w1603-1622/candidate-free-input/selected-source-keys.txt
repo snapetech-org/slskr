@@ -1,0 +1,20 @@
+Failed to load share contents
+Failed to load share groups
+Failed to load shared collections
+Failed to load shares
+Failed to load transfer errors
+Failed to load transfers
+Failed to load transport status
+Failed to load user note
+Failed to load verification stats:
+Failed to persist settings
+Failed to publish descriptor
+Failed to publish membership
+Failed to publish membership:
+Failed to publish opinion: {error}
+Failed to publish pod:
+Failed to query shadow index
+Failed to queue download: {message}
+Failed to queue nearby atlas searches
+Failed to queue nearby graph searches
+Failed to queue nearby searches

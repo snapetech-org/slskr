@@ -1,0 +1,9 @@
+# slskR PR #204 W783–802 exact-head localization review
+
+The primary packet and a distinct independent cross-review are pinned to PR #204 head `2d004e38fe7cf76f8d51f36d19c14c34fb497649` / tree `7d114d519f4e6ad0a14a4a3fe048fde017551748`. They cover 240 cells (20 source IDs × 12 direct locales); the independent review also reattested 36 caller pins and 12 prior W782 readback cells. Current source ordinals are 782–801 (primary ordinals 783–802).
+
+Root adjudication accepts 70 cross-reviewed proposals, adopts 14 independent revisions to primary proposals, and accepts four additional W790 corrections. These 88 changes are recorded in `application/exact-hash-apply-plan.jsonl`; all were read back at the target hashes. Another 128 cells remain accepted-current. All 24 W785/W796 cells remain held because their callers emit raw English action/direction values; catalog edits cannot localize them until the callers are refactored. W794 (“Completed transfers are hidden”) has no direct non-test caller and remains a standalone terminology review.
+
+The primary packet reports reusing 90 prior exact-hash cell dispositions. The independent cross-review found all 12 referenced prior per-locale ledger file hashes differ from the primary packet’s pinned hashes. It rechecked all 240 row-level source/target/status records, found zero source or target hash mismatches, reattested 29 finding rows, and marked prior linkage stale/unverified. Root therefore relies on the live cell/caller cross-review, not the unverifiable prior ledger linkage.
+
+`root-adjudication.jsonl` contains one final disposition per reviewed cell. `static-validation.json` records source/target hash and ordinal checks, locale key parity, exact changed-cell totals, and hold preservation. No native-speaker approval is claimed. No tests, builds, scans, CI, workflow edits, releases, tags, or merges were performed.

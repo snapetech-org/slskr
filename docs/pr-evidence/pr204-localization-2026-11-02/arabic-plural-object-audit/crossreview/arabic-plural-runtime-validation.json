@@ -1,0 +1,1026 @@
+{
+  "runtimeImplementation": {
+    "path": "web/src/lib/interfaceLocale.js",
+    "pluralCodeContextRefs": [
+      20,
+      21
+    ],
+    "selection": "new Intl.PluralRules('ar').select(Number(count))",
+    "mapBehavior": "When Arabic localization is an object, select that exact category, then fall back to 'other' and then the source. All 15 audited Arabic maps have every category nonempty, so the category-specific form is used.",
+    "countBehavior": "LocalizedPluralText supplies the numeric count for category selection; placeholder replacement accepts the localized count string for display."
+  },
+  "nodeRuntimeProbe": {
+    "node": "v24.22.1",
+    "icu": "78.3",
+    "resolved": {
+      "locale": "ar",
+      "type": "cardinal",
+      "minimumIntegerDigits": 1,
+      "minimumFractionDigits": 0,
+      "maximumFractionDigits": 3,
+      "pluralCategories": [
+        "zero",
+        "one",
+        "two",
+        "few",
+        "many",
+        "other"
+      ],
+      "roundingIncrement": 1,
+      "roundingMode": "halfExpand",
+      "roundingPriority": "auto",
+      "trailingZeroDisplay": "auto"
+    },
+    "samples": [
+      {
+        "count": 0,
+        "category": "zero"
+      },
+      {
+        "count": 1,
+        "category": "one"
+      },
+      {
+        "count": 2,
+        "category": "two"
+      },
+      {
+        "count": 3,
+        "category": "few"
+      },
+      {
+        "count": 4,
+        "category": "few"
+      },
+      {
+        "count": 10,
+        "category": "few"
+      },
+      {
+        "count": 11,
+        "category": "many"
+      },
+      {
+        "count": 12,
+        "category": "many"
+      },
+      {
+        "count": 19,
+        "category": "many"
+      },
+      {
+        "count": 20,
+        "category": "many"
+      },
+      {
+        "count": 21,
+        "category": "many"
+      },
+      {
+        "count": 22,
+        "category": "many"
+      },
+      {
+        "count": 25,
+        "category": "many"
+      },
+      {
+        "count": 99,
+        "category": "many"
+      },
+      {
+        "count": 100,
+        "category": "other"
+      },
+      {
+        "count": 101,
+        "category": "other"
+      },
+      {
+        "count": 102,
+        "category": "other"
+      },
+      {
+        "count": 103,
+        "category": "few"
+      },
+      {
+        "count": 111,
+        "category": "many"
+      },
+      {
+        "count": 1.5,
+        "category": "other"
+      }
+    ]
+  },
+  "representativeExpectedCategories": {
+    "0": "zero",
+    "1": "one",
+    "2": "two",
+    "3": "few",
+    "10": "few",
+    "11": "many",
+    "99": "many",
+    "100": "other",
+    "102": "other",
+    "103": "few",
+    "111": "many"
+  },
+  "observedRequiredCategories": [
+    "few",
+    "many",
+    "one",
+    "other",
+    "two",
+    "zero"
+  ],
+  "arabicMapsReattested": 15,
+  "arabicMapsExactSixCategories": true,
+  "allCategoryFormsNonempty": true,
+  "allCategoryPlaceholdersPreserved": true,
+  "categoryForms": [
+    {
+      "source_id": "Added {count} missing tracks to Wishlist",
+      "source_index": 194,
+      "source_sha256": "7cb8b0f951f87a5809f7e79c006f5fcadb2d5688a7a61782388dd7a052f6998c",
+      "target_sha256": "70a618d9dfa94f31ff65a3d4e0b7787759a8c78a05bbdebc5eddcbf550539be9",
+      "categories": {
+        "zero": {
+          "value": "لم تتم إضافة أي مقاطع مفقودة ({count}) إلى قائمة الأمنيات",
+          "valueSha256": "59dec8a521fd431b66740f66dcac3cbf3017e9800aa0c55384f98ae03801a689",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "one": {
+          "value": "تمت إضافة {count} مقطع مفقود إلى قائمة الأمنيات",
+          "valueSha256": "d64eb0a7694b0e9cd495a3a2f27d1a25740fed8693cff5a0f4e211e7a7146802",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "two": {
+          "value": "تمت إضافة {count} مقطعين مفقودين إلى قائمة الأمنيات",
+          "valueSha256": "d056f91da25b6c1dcd41a2373e3b12ba56c488202e42cde924300c9a24951c8e",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "few": {
+          "value": "تمت إضافة {count} مقاطع مفقودة إلى قائمة الأمنيات",
+          "valueSha256": "29bd054f3f5dc2fe4c0cfbedfa5da4619020eec2533e1c7696bccdcb65ea7054",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "many": {
+          "value": "تمت إضافة {count} مقطعًا مفقودًا إلى قائمة الأمنيات",
+          "valueSha256": "beb71f507e567b0876894922966130b3f1c6bb6541a72370159c32c67b48d15d",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "other": {
+          "value": "تمت إضافة {count} من المقاطع المفقودة إلى قائمة الأمنيات",
+          "valueSha256": "1186d3cf71d8ac54c1e906be3890d1a665399cd282f861ad00443fc1a0c1294f",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        }
+      },
+      "allSixCategoriesNonempty": true,
+      "placeholderParityPerCategory": true
+    },
+    {
+      "source_id": "Cleared {count} searches",
+      "source_index": 703,
+      "source_sha256": "a7ebf6df1008bf290ababa583faa3ffa39b297f4755669eaa0506e95e64a00e8",
+      "target_sha256": "14dfedd99be0e59ee9cf7d3094d9ff6a27e8d471e561f2333c5e7ce8dd7deffc",
+      "categories": {
+        "zero": {
+          "value": "تم مسح {count} عملية بحث",
+          "valueSha256": "da3d27d42ef54b3b222e1c351256e8a983ac0c87bb03c3b6ef6d4af6b51f69ec",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "one": {
+          "value": "تم مسح {count} عملية بحث",
+          "valueSha256": "da3d27d42ef54b3b222e1c351256e8a983ac0c87bb03c3b6ef6d4af6b51f69ec",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "two": {
+          "value": "تم مسح {count} عمليتي بحث",
+          "valueSha256": "58a1af4a3225f8acc6fb3d8074444995fdc0e486c27cf7f744d405cb0c56e626",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "few": {
+          "value": "تم مسح {count} عمليات بحث",
+          "valueSha256": "c1db52b3aa56c2500a2430b9e89a1e170df9c931ece875b5afdeca9811562358",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "many": {
+          "value": "تم مسح {count} عملية بحث",
+          "valueSha256": "da3d27d42ef54b3b222e1c351256e8a983ac0c87bb03c3b6ef6d4af6b51f69ec",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "other": {
+          "value": "تم مسح {count} من عمليات البحث",
+          "valueSha256": "547938aa0f9c860fb9c77e36047af9208446ca65e981b6388cb356e20fefd496",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        }
+      },
+      "allSixCategoriesNonempty": true,
+      "placeholderParityPerCategory": true
+    },
+    {
+      "source_id": "Copied {format} export for {count} plays.",
+      "source_index": 915,
+      "source_sha256": "0ff11134c7b81e1f737897fcc4a2e7d38d5a3e8d02aa1ca6477758b886dc683b",
+      "target_sha256": "b46a25bd2249c80860c5eec48343f64803165418c34541e18ccdee8e42496edf",
+      "categories": {
+        "zero": {
+          "value": "تم نسخ تصدير {format} لعدد {count} من مرات التشغيل",
+          "valueSha256": "d8c136655c45eaea7371fe0b23354af40f36c1ca22813ab135971b7d78ee481d",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{format}": 1,
+            "{count}": 1
+          }
+        },
+        "one": {
+          "value": "تم نسخ تصدير {format} لعدد {count} مرة تشغيل",
+          "valueSha256": "9173234d65e4ba4b87df366d90c8441f0400dc334cd4840d1490e93219a03e54",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{format}": 1,
+            "{count}": 1
+          }
+        },
+        "two": {
+          "value": "تم نسخ تصدير {format} لعدد {count} مرتي تشغيل",
+          "valueSha256": "419821a7985e4a4ec9ce22825fe5c77cf7c564684dcd56d02e1e41ee1365d58b",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{format}": 1,
+            "{count}": 1
+          }
+        },
+        "few": {
+          "value": "تم نسخ تصدير {format} لعدد {count} مرات تشغيل",
+          "valueSha256": "4d8a1ea454fabb3b85c22e9bb6bbcecaf88017487290d3742b83ef2a250d2053",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{format}": 1,
+            "{count}": 1
+          }
+        },
+        "many": {
+          "value": "تم نسخ تصدير {format} لعدد {count} مرة تشغيل",
+          "valueSha256": "9173234d65e4ba4b87df366d90c8441f0400dc334cd4840d1490e93219a03e54",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{format}": 1,
+            "{count}": 1
+          }
+        },
+        "other": {
+          "value": "تم نسخ تصدير {format} لعدد {count} من مرات التشغيل",
+          "valueSha256": "d8c136655c45eaea7371fe0b23354af40f36c1ca22813ab135971b7d78ee481d",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{format}": 1,
+            "{count}": 1
+          }
+        }
+      },
+      "allSixCategoriesNonempty": true,
+      "placeholderParityPerCategory": true
+    },
+    {
+      "source_id": "Failed to {action} {count} transfers. First error: {label}: {message}",
+      "source_index": 1700,
+      "source_sha256": "7ca076fbdba33e74091c4f7347642402258d4635effaf96b387a9fed525d6bbb",
+      "target_sha256": "488dc9ef11bd3e59396bf744471d950ab8486e070c16aef8c77af84685ea62d0",
+      "categories": {
+        "zero": {
+          "value": "تعذر {action} أي من عمليات النقل ({count}). أول خطأ: {label}: {message}",
+          "valueSha256": "0f3473817433df77924571b65573fe3a2ad1c42c65ee8c5d1cab3dbe1d2f4634",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{action}": 1,
+            "{count}": 1,
+            "{label}": 1,
+            "{message}": 1
+          }
+        },
+        "one": {
+          "value": "تعذر {action} عملية نقل واحدة ({count}). أول خطأ: {label}: {message}",
+          "valueSha256": "35bd1a0395f1a3b08abb50036cb6096aa0a4391f0f316c7541a5836f7f565c0c",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{action}": 1,
+            "{count}": 1,
+            "{label}": 1,
+            "{message}": 1
+          }
+        },
+        "two": {
+          "value": "تعذر {action} عمليتي نقل ({count}). أول خطأ: {label}: {message}",
+          "valueSha256": "8aba71c226883979aa0b4205c4b640d4bba2cc85679f43e9c6d5828fc6a9e2ec",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{action}": 1,
+            "{count}": 1,
+            "{label}": 1,
+            "{message}": 1
+          }
+        },
+        "few": {
+          "value": "تعذر {action} {count} عمليات نقل. أول خطأ: {label}: {message}",
+          "valueSha256": "e9befaf2a5b9ca2ebc9c1b2e4bcb0f077a982b74d2712d373013ad056fcd6f0f",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{action}": 1,
+            "{count}": 1,
+            "{label}": 1,
+            "{message}": 1
+          }
+        },
+        "many": {
+          "value": "تعذر {action} {count} عملية نقل. أول خطأ: {label}: {message}",
+          "valueSha256": "37163f7e9741694f749ecc8610c9bd256b484b0b1c4663f7f9b8375b710bf231",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{action}": 1,
+            "{count}": 1,
+            "{label}": 1,
+            "{message}": 1
+          }
+        },
+        "other": {
+          "value": "تعذر {action} {count} من عمليات النقل. أول خطأ: {label}: {message}",
+          "valueSha256": "8a6c4dd298c650c39010cccb9092c2b629c914023fd1af9c1c46c9860ecca031",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{action}": 1,
+            "{count}": 1,
+            "{label}": 1,
+            "{message}": 1
+          }
+        }
+      },
+      "allSixCategoriesNonempty": true,
+      "placeholderParityPerCategory": true
+    },
+    {
+      "source_id": "Last {count} hours",
+      "source_index": 2117,
+      "source_sha256": "2a1b71258382e598dcf94aa9626800a786368a11d1e7a565d0552621822fa69c",
+      "target_sha256": "4e71ab72a92f00a9f2711c9ac92e682aeff02ee64aa722ed4bfaad57a6d15938",
+      "categories": {
+        "zero": {
+          "value": "آخر {count} ساعة",
+          "valueSha256": "43ebe9d91160fd34cfe9e30aafba727239551ca17dc730880d7d6a976feb0764",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "one": {
+          "value": "آخر {count} ساعة",
+          "valueSha256": "43ebe9d91160fd34cfe9e30aafba727239551ca17dc730880d7d6a976feb0764",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "two": {
+          "value": "آخر {count} ساعتين",
+          "valueSha256": "67aac8790fbe13f642deeec8b9b7b8747fad7dd59df8fd5e6fa44fe347839da1",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "few": {
+          "value": "آخر {count} ساعات",
+          "valueSha256": "7bc7da485cdaef11075fc262ebfaa448bd1bbff1f78a40052630b643a12b1582",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "many": {
+          "value": "آخر {count} ساعة",
+          "valueSha256": "43ebe9d91160fd34cfe9e30aafba727239551ca17dc730880d7d6a976feb0764",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "other": {
+          "value": "آخر {count} ساعة",
+          "valueSha256": "43ebe9d91160fd34cfe9e30aafba727239551ca17dc730880d7d6a976feb0764",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        }
+      },
+      "allSixCategoriesNonempty": true,
+      "placeholderParityPerCategory": true
+    },
+    {
+      "source_id": "Lidarr import retry queued: {count} files",
+      "source_index": 2166,
+      "source_sha256": "1fe30bb55a3de7fb7a38979bf039b21534a5e60f7fe70683869310a70fe49e9f",
+      "target_sha256": "406c2c5e011b7cfe1df3c23d048ea9535a55bdb5519825f2bdc4ae457305239b",
+      "categories": {
+        "zero": {
+          "value": "تم وضع إعادة محاولة استيراد Lidarr في قائمة الانتظار: {count} ملف",
+          "valueSha256": "a053f72de00a97177980c02c2e616ef46245de8640429db7d33210471bf7dcc2",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "one": {
+          "value": "تم وضع إعادة محاولة استيراد Lidarr في قائمة الانتظار: {count} ملف",
+          "valueSha256": "a053f72de00a97177980c02c2e616ef46245de8640429db7d33210471bf7dcc2",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "two": {
+          "value": "تم وضع إعادة محاولة استيراد Lidarr في قائمة الانتظار: {count} ملفين",
+          "valueSha256": "d0c554617b06926733d662b99c91aa41269b43dcbe0a5ade411d362ea0105bba",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "few": {
+          "value": "تم وضع إعادة محاولة استيراد Lidarr في قائمة الانتظار: {count} ملفات",
+          "valueSha256": "fae62e4111450f33530a88f11253ebdf1b4838452ce184d5e2fa9cb6bb8d59d9",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "many": {
+          "value": "تم وضع إعادة محاولة استيراد Lidarr في قائمة الانتظار: {count} ملفًا",
+          "valueSha256": "086c3466f95e1e4b772c1bfe4c85eb49908705a84980655a065183a48837f96c",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "other": {
+          "value": "تم وضع إعادة محاولة استيراد Lidarr في قائمة الانتظار: {count} ملف",
+          "valueSha256": "a053f72de00a97177980c02c2e616ef46245de8640429db7d33210471bf7dcc2",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        }
+      },
+      "allSixCategoriesNonempty": true,
+      "placeholderParityPerCategory": true
+    },
+    {
+      "source_id": "Prepared {format} export for {count} plays; clipboard is unavailable.",
+      "source_index": 3149,
+      "source_sha256": "823ce2a4ef83199b01d889dff1384dca443377a13a6e421b7ec911364fba22f9",
+      "target_sha256": "57b22e61875d4b8a378d38f81e6aec75694ddb6107ebe0a7ec696269f7bdcf6c",
+      "categories": {
+        "zero": {
+          "value": "تم إعداد تصدير {format} لعدد {count} من مرات التشغيل؛ الحافظة غير متاحة",
+          "valueSha256": "ff1ca9e482d4ab5377545b806a113e02bb2cdd72d04711d9fa1f1c19f0d290a1",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{format}": 1,
+            "{count}": 1
+          }
+        },
+        "one": {
+          "value": "تم إعداد تصدير {format} لعدد {count} مرة تشغيل؛ الحافظة غير متاحة",
+          "valueSha256": "d6e4bb45bfa3ccae61e01e668262995e2a1e1ffd5740af6c5a734c43def78eda",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{format}": 1,
+            "{count}": 1
+          }
+        },
+        "two": {
+          "value": "تم إعداد تصدير {format} لعدد {count} مرتي تشغيل؛ الحافظة غير متاحة",
+          "valueSha256": "822b4d620b8d3d6dccdc0072a87a77eb3806240ec3688e0cd1264966488ac826",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{format}": 1,
+            "{count}": 1
+          }
+        },
+        "few": {
+          "value": "تم إعداد تصدير {format} لعدد {count} مرات تشغيل؛ الحافظة غير متاحة",
+          "valueSha256": "61489ef82f5ff95a9b105432061a5c5674a9d5c599a224cbf8395b4e9ea407ed",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{format}": 1,
+            "{count}": 1
+          }
+        },
+        "many": {
+          "value": "تم إعداد تصدير {format} لعدد {count} مرة تشغيل؛ الحافظة غير متاحة",
+          "valueSha256": "d6e4bb45bfa3ccae61e01e668262995e2a1e1ffd5740af6c5a734c43def78eda",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{format}": 1,
+            "{count}": 1
+          }
+        },
+        "other": {
+          "value": "تم إعداد تصدير {format} لعدد {count} من مرات التشغيل؛ الحافظة غير متاحة",
+          "valueSha256": "ff1ca9e482d4ab5377545b806a113e02bb2cdd72d04711d9fa1f1c19f0d290a1",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{format}": 1,
+            "{count}": 1
+          }
+        }
+      },
+      "allSixCategoriesNonempty": true,
+      "placeholderParityPerCategory": true
+    },
+    {
+      "source_id": "Queued {count} files for download",
+      "source_index": 3328,
+      "source_sha256": "b7087e2b713b88a6ce38411ace70e101b5cdb08e1b195a88ceb5fd03a3870668",
+      "target_sha256": "f9412927ea3b1f7bcedb9afd71e4def59d2f92e0f7b315b81bf290f535d07b39",
+      "categories": {
+        "zero": {
+          "value": "لم تتم إضافة {count} ملف إلى قائمة التنزيل",
+          "valueSha256": "99eab7b16b07c139e613ede0898cdaa8622924844cd3dd3b4ce41ec93bf5986d",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "one": {
+          "value": "تمت إضافة {count} ملف إلى قائمة التنزيل",
+          "valueSha256": "38ae5f6289e07ba17a35c06bd81885006e91b2c8ba7642cd2951a2da80751740",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "two": {
+          "value": "تمت إضافة {count} ملفين إلى قائمة التنزيل",
+          "valueSha256": "4312e7cf54c0dffaec083da74ce19026cbb2593e68525c311561e55dee33fd72",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "few": {
+          "value": "تمت إضافة {count} ملفات إلى قائمة التنزيل",
+          "valueSha256": "7514ec310b7fba8e5ba45ff0d4c0e70ae10b7e2216070a85e7be2b9cd12bb010",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "many": {
+          "value": "تمت إضافة {count} ملفًا إلى قائمة التنزيل",
+          "valueSha256": "fd5a24a03c155155b7b9a3d6af109bffa40c51e7a6977bd8dac512bd913ff8b8",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "other": {
+          "value": "تمت إضافة {count} ملف إلى قائمة التنزيل",
+          "valueSha256": "38ae5f6289e07ba17a35c06bd81885006e91b2c8ba7642cd2951a2da80751740",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        }
+      },
+      "allSixCategoriesNonempty": true,
+      "placeholderParityPerCategory": true
+    },
+    {
+      "source_id": "fingerprint matches",
+      "source_index": 5003,
+      "source_sha256": "485c7bf7e82f304d6052a3072de4291e23e77e97543623e4712c3ef6cc46d5fc",
+      "target_sha256": "e1494e7d1ab62d85567c11638eef250226cbb06520f6b4ea2fc6105a84985928",
+      "categories": {
+        "zero": {
+          "value": "لا توجد تطابقات للبصمة",
+          "valueSha256": "d9d2fa20816a8c19b639315c17c1d2136e611fd16ad17af93498fecde7218db1",
+          "nonempty": true,
+          "countPlaceholders": {}
+        },
+        "one": {
+          "value": "تطابق واحد للبصمة",
+          "valueSha256": "9a78cf3eec8da5b81a06d16726682fa8145b80e78c5024dc4d8421f7baab915a",
+          "nonempty": true,
+          "countPlaceholders": {}
+        },
+        "two": {
+          "value": "تطابقان للبصمة",
+          "valueSha256": "6d8ba9016775223540069873efadb5db5a95d22e54cd0bc1da349d0f88d2a774",
+          "nonempty": true,
+          "countPlaceholders": {}
+        },
+        "few": {
+          "value": "تطابقات للبصمة",
+          "valueSha256": "9957bfb5a269bba25e5e72fe084d70ddf0698512e8d7c919aa94f0d258c89ee4",
+          "nonempty": true,
+          "countPlaceholders": {}
+        },
+        "many": {
+          "value": "تطابقًا للبصمة",
+          "valueSha256": "bf5577830bb9e5485dd85034a30411e8e33d337cf6a47badc152d4672eff1e7a",
+          "nonempty": true,
+          "countPlaceholders": {}
+        },
+        "other": {
+          "value": "تطابقات للبصمة",
+          "valueSha256": "9957bfb5a269bba25e5e72fe084d70ddf0698512e8d7c919aa94f0d258c89ee4",
+          "nonempty": true,
+          "countPlaceholders": {}
+        }
+      },
+      "allSixCategoriesNonempty": true,
+      "placeholderParityPerCategory": true
+    },
+    {
+      "source_id": "swarms",
+      "source_index": 5277,
+      "source_sha256": "7996910b4b12da7d6029e2e63d7e67d41dbf7b36587e2e0574ae1519c3e7534f",
+      "target_sha256": "3396fd283f769cd9f1d8a47f04a3b9773ce5216f357eea22720134c3f0c1d32f",
+      "categories": {
+        "zero": {
+          "value": "لا أسراب",
+          "valueSha256": "d9369861e83c144a2cb60ebbd5918a5886e7035c0033d12d2bed9a66d7c55fdf",
+          "nonempty": true,
+          "countPlaceholders": {}
+        },
+        "one": {
+          "value": "سرب واحد",
+          "valueSha256": "b7074ac874032ace7444d1514cc2b2e2db23a9cbd7930ebf314d410baa169f10",
+          "nonempty": true,
+          "countPlaceholders": {}
+        },
+        "two": {
+          "value": "سربان",
+          "valueSha256": "e451997ee4325d4f413456a0ea4aa6bfd8d84e7c517d459c1f0887a30257efde",
+          "nonempty": true,
+          "countPlaceholders": {}
+        },
+        "few": {
+          "value": "أسراب",
+          "valueSha256": "5aecf9707ef847fe33f50c0a6a04dc4408a7d8437cefa33198a46a03b80cd6ed",
+          "nonempty": true,
+          "countPlaceholders": {}
+        },
+        "many": {
+          "value": "سربًا",
+          "valueSha256": "360877732a995405fd396cb7eaf6f3a9403f9c93cfa96609540335cbc14e2352",
+          "nonempty": true,
+          "countPlaceholders": {}
+        },
+        "other": {
+          "value": "أسراب",
+          "valueSha256": "5aecf9707ef847fe33f50c0a6a04dc4408a7d8437cefa33198a46a03b80cd6ed",
+          "nonempty": true,
+          "countPlaceholders": {}
+        }
+      },
+      "allSixCategoriesNonempty": true,
+      "placeholderParityPerCategory": true
+    },
+    {
+      "source_id": "{count} Selected Issues",
+      "source_index": 5360,
+      "source_sha256": "cc9e07f67eb991a655af7a9b199847733f53cc0b46d119a8ea31714789bac320",
+      "target_sha256": "663dbdb8dd350201376c05313c854aba8facb7c3fa93ccf1cd3a03fe9286bd87",
+      "categories": {
+        "zero": {
+          "value": "لم يتم تحديد أي مشكلة ({count})",
+          "valueSha256": "9d1959d051af5ecdd120151cec44696bc1656a034105ffcb6d691d09e0004147",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "one": {
+          "value": "تم تحديد مشكلة واحدة ({count})",
+          "valueSha256": "277e33594ac88fd5ca4ca1d315c31d642d459107b6c0d002302fff0d04e0e706",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "two": {
+          "value": "تم تحديد مشكلتين ({count})",
+          "valueSha256": "e47998e700907a6710ec9b753f4b07131541b10bea30722c97c1f2223af1469a",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "few": {
+          "value": "تم تحديد {count} مشكلات",
+          "valueSha256": "37a0d676fae8176b026f5356c69bd07cdce29eff98c1eebd85314d714ff3753e",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "many": {
+          "value": "تم تحديد {count} مشكلة",
+          "valueSha256": "c82c412e8390b0aa31d0dd27aa5c9b4c5a692849d1b93a5b66b3c3598feee7f8",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "other": {
+          "value": "تم تحديد {count} من المشكلات",
+          "valueSha256": "1d68286f5cca3576169bb3e0eed3d587297cc18fe88a1577a17c6297da15e2cf",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        }
+      },
+      "allSixCategoriesNonempty": true,
+      "placeholderParityPerCategory": true
+    },
+    {
+      "source_id": "{count} files",
+      "source_index": 5370,
+      "source_sha256": "63352fdc2cd6bbbfb4ac957d4fb6e0b03eda6d5240381ec7a0f3a9b8db3a231f",
+      "target_sha256": "c7787d8fa26ec6ab5ac5a4ab4bd1457d9b2a13c4733ef51b2ae9a2e29467b0bf",
+      "categories": {
+        "zero": {
+          "value": "{count} ملف",
+          "valueSha256": "410ef164108997606d2f27158f6d06fef3205ad241875e5753fa4197023d8bbf",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "one": {
+          "value": "{count} ملف",
+          "valueSha256": "410ef164108997606d2f27158f6d06fef3205ad241875e5753fa4197023d8bbf",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "two": {
+          "value": "{count} ملفان",
+          "valueSha256": "8c7fc578c8b728f2e6e3c9eb0b6635f81eb69156cb94f9c69cdb235820f8f07f",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "few": {
+          "value": "{count} ملفات",
+          "valueSha256": "4b3d15498f4ca3a67da995e6e1e8426d231f3690b80da90030cfedbcd675270c",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "many": {
+          "value": "{count} ملفًا",
+          "valueSha256": "1abde53a97819e855e0b0396271e24c8d86f0db920ba7e48d0e238f9f5e5e698",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "other": {
+          "value": "{count} ملف",
+          "valueSha256": "410ef164108997606d2f27158f6d06fef3205ad241875e5753fa4197023d8bbf",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        }
+      },
+      "allSixCategoriesNonempty": true,
+      "placeholderParityPerCategory": true
+    },
+    {
+      "source_id": "{count} items",
+      "source_index": 5372,
+      "source_sha256": "f65216b3ac8c5249886b85261ea5a5dc6818f3d3c0f33b7499d04724f5c12235",
+      "target_sha256": "8feb52cfd4b2f3f0b1ef70490c4510348ebdfe72d4309b8a0cdf09506fccb39e",
+      "categories": {
+        "zero": {
+          "value": "{count} عناصر",
+          "valueSha256": "d0639c01436b8cd3a6af27508c30c554b55dc3e32767b3237dfeba6981df739a",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "one": {
+          "value": "{count} عنصر",
+          "valueSha256": "7a6194cefb8ab1bac4fd1549e4094c90df0b454b4ea08db4da9587e786df9320",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "two": {
+          "value": "{count} عنصران",
+          "valueSha256": "848468fd0429447578b1f7a79daaaa74703b08d54229fe6ad49d2e50273abba7",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "few": {
+          "value": "{count} عناصر",
+          "valueSha256": "d0639c01436b8cd3a6af27508c30c554b55dc3e32767b3237dfeba6981df739a",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "many": {
+          "value": "{count} عنصرًا",
+          "valueSha256": "1df6e7d4044fd8fb37d8d08cdb0a0e2ba715651f762fc62f4add25ea233f02ed",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "other": {
+          "value": "{count} عنصر",
+          "valueSha256": "7a6194cefb8ab1bac4fd1549e4094c90df0b454b4ea08db4da9587e786df9320",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        }
+      },
+      "allSixCategoriesNonempty": true,
+      "placeholderParityPerCategory": true
+    },
+    {
+      "source_id": "{count} swarms",
+      "source_index": 5383,
+      "source_sha256": "0261a4bf5b60e88840d648f829214089687ee449f1d8c7073a6653fef09df169",
+      "target_sha256": "73892b262258965d30b043ed7537c75d76903733bc5307b9e0887ebb484a6579",
+      "categories": {
+        "zero": {
+          "value": "{count} سرب",
+          "valueSha256": "e228fd08247abe037837f635fc53a648b3a8a9674a0a3a78147118fc1445f0f8",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "one": {
+          "value": "{count} سرب",
+          "valueSha256": "e228fd08247abe037837f635fc53a648b3a8a9674a0a3a78147118fc1445f0f8",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "two": {
+          "value": "{count} سربان",
+          "valueSha256": "5e77b07ebdb60291fd7c68bc8640d96be69429825d33a662216c8c7fe6bcf8cc",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "few": {
+          "value": "{count} أسراب",
+          "valueSha256": "f37ec6a4096ac4378460ba2c40d94ca911a3ceeffb7ff878a85562310c63229f",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "many": {
+          "value": "{count} سربًا",
+          "valueSha256": "c227c928f0c39d34fde3c16f9897f83633b07531957ef8f80ba617aeccda9190",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "other": {
+          "value": "{count} سرب",
+          "valueSha256": "e228fd08247abe037837f635fc53a648b3a8a9674a0a3a78147118fc1445f0f8",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        }
+      },
+      "allSixCategoriesNonempty": true,
+      "placeholderParityPerCategory": true
+    },
+    {
+      "source_id": "· {count} verified matches",
+      "source_index": 5431,
+      "source_sha256": "a6b8102489274ba8027eb56fc0050c928c24bfea6a73842421944f780fc1f04d",
+      "target_sha256": "3fe21be5497e945009f421b3d2bc8e45adbb96fe47b0210ea0307414572ca2e8",
+      "categories": {
+        "zero": {
+          "value": "· لا توجد تطابقات مؤكدة ({count})",
+          "valueSha256": "f1606cdd67d334939c69115b4c21b2af1afe19b54f69fc168e60f6286e387512",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "one": {
+          "value": "· {count} تطابق مؤكد",
+          "valueSha256": "1db312b7752ac0e05e60688b731d230b1d62544145200dd73c0576eaf0c6cd58",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "two": {
+          "value": "· {count} تطابقان مؤكدان",
+          "valueSha256": "1263e6385a63e2b8770a4fe9ef2bf711a4a9a938e3e058b5a5e5c48f6e21088e",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "few": {
+          "value": "· {count} تطابقات مؤكدة",
+          "valueSha256": "f131110f5ff854a98bb5097b239444092e160eb4b6e6788d405b01b5dd6db6c5",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "many": {
+          "value": "· {count} تطابقًا مؤكدًا",
+          "valueSha256": "65dbc64b8da411da956c62749a6df73cb3ff0d7ae7cf3fd448cd3ce432f185be",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        },
+        "other": {
+          "value": "· {count} من التطابقات المؤكدة",
+          "valueSha256": "d373e2bb05e5e3c9639d31a07991c67c3c3117ee3206e1becabd658debaaaf08",
+          "nonempty": true,
+          "countPlaceholders": {
+            "{count}": 1
+          }
+        }
+      },
+      "allSixCategoriesNonempty": true,
+      "placeholderParityPerCategory": true
+    }
+  ],
+  "staticTestSourceReadOnly": {
+    "path": "web/src/lib/interfaceLocale.test.js",
+    "contextRef": 22,
+    "executed": false
+  },
+  "projectTestsExecuted": false
+}

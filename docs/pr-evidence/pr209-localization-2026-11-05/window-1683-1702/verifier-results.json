@@ -1,0 +1,24 @@
+{
+  "artifact": "slskR PR #209 W1683-W1702 root-adjudicated application",
+  "inputHead": "f04b7f965aef79552d65d40a2eeb550e5e3b9cfa",
+  "inputTree": "85fe880023e55e055660fd17599c291edd24a1c6",
+  "productHead": "4e47285a4d3979e61918566ce86d10f57375622c",
+  "productTree": "cc07313a7f4e6b00e60f6b4583c5dbce7f40edbe",
+  "review": {
+    "candidateFree": {"result": "PASS", "cells": 240, "sources": 20, "callerReferences": 21},
+    "primary": {"result": "PASS", "corrections": 8, "acceptCurrent": 232},
+    "blind": {"result": "PASS", "proposals": 5, "retains": 235},
+    "crossReview": {"result": "PASS", "corrections": 8, "acceptCurrent": 232, "holds": 0},
+    "rootApplication": {"result": "PASS", "changedCells": 8, "unchangedCells": 232, "catalogs": 12, "entriesPerLocale": 5441}
+  },
+  "placeholderOrderVariations": 12,
+  "placeholderContentPreserved": true,
+  "markupMismatches": 0,
+  "numericMismatches": 0,
+  "arabicPluralFormsPreserved": ["zero", "one", "two", "few", "many", "other"],
+  "nativeSpeakerApproval": false,
+  "exactHeadBrowserAcceptance": false,
+  "testsBuildsScansCiDeploymentsRun": false,
+  "workflowChanges": 0,
+  "mergeReleaseOrTag": false
+}
