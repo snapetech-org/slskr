@@ -525,7 +525,8 @@ pub(super) fn apply_watched_controller_configuration<'a>(
         state
             .share_settings_generation
             .fetch_add(1, std::sync::atomic::Ordering::AcqRel);
-        state.shares.write().await.roots = pending_share_roots(&reloaded.share_settings);
+        std::sync::Arc::make_mut(&mut *state.shares.write().await).roots =
+            pending_share_roots(&reloaded.share_settings);
         state.share_lifecycle.write().await.scan_pending = true;
         drop(_share_index_turn);
         record_event(

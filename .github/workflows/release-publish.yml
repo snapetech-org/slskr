@@ -1,5 +1,4 @@
-# packer-windows-jit-v1
-# ng-runner-policy: private-jit-only-v1
+# Runner policy: compatible GitHub-hosted runners by default
 name: Publish Downstream Packages
 run-name: ${{ format('action:{0}:pool:{1}', inputs.action_tag, inputs.runner_pool_tag) }}
 
@@ -11,7 +10,7 @@ on:
         required: true
         type: string
       runner_pool_tag:
-        description: Private ephemeral JIT runner pool
+        description: GitHub-hosted runner pool
         required: true
         type: string
       tag:
@@ -67,10 +66,10 @@ on:
         options:
           - release
       runner_pool_tag:
-        description: Private ephemeral JIT runner pool
+        description: GitHub-hosted runner pool
         required: true
         type: choice
-        options: [private]
+        options: [hosted]
       tag:
         description: "Release tag to publish, for example v<semver>"
         required: true
@@ -99,14 +98,14 @@ jobs:
         (
           github.ref == 'refs/heads/main' &&
           inputs.action_tag == 'release' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
-        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private'
+        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'hosted'
       )
     name: Prepare Dynamic Release Metadata
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-metadata"]}}', github.run_id)) }}
+    runs-on: ubuntu-24.04
     outputs:
       tag: ${{ steps.version.outputs.tag }}
       release_version: ${{ steps.version.outputs.release_version }}
@@ -180,14 +179,14 @@ jobs:
         (
           github.ref == 'refs/heads/main' &&
           inputs.action_tag == 'release' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
-        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private' && (inputs.publish_only != 'winget')
+        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'hosted' && (inputs.publish_only != 'winget')
       )
     needs: metadata
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-aur"]}}', github.run_id)) }}
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -248,14 +247,14 @@ jobs:
         (
           github.ref == 'refs/heads/main' &&
           inputs.action_tag == 'release' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
-        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private' && (inputs.publish_only != 'winget')
+        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'hosted' && (inputs.publish_only != 'winget')
       )
     needs: metadata
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-copr"]}}', github.run_id)) }}
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -451,14 +450,14 @@ jobs:
         (
           github.ref == 'refs/heads/main' &&
           inputs.action_tag == 'release' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
-        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private' && (inputs.publish_only != 'winget')
+        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'hosted' && (inputs.publish_only != 'winget')
       )
     needs: metadata
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-ppa"]}}', github.run_id)) }}
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -652,14 +651,14 @@ jobs:
         (
           github.ref == 'refs/heads/main' &&
           inputs.action_tag == 'release' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
-        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private' && (inputs.publish_only != 'winget')
+        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'hosted' && (inputs.publish_only != 'winget')
       )
     needs: metadata
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-docker"]}}', github.run_id)) }}
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -759,14 +758,14 @@ jobs:
         (
           github.ref == 'refs/heads/main' &&
           inputs.action_tag == 'release' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
-        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private' && (inputs.publish_only != 'winget')
+        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'hosted' && (inputs.publish_only != 'winget')
       )
     needs: metadata
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-homebrew"]}}', github.run_id)) }}
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -801,15 +800,15 @@ jobs:
         (
           github.ref == 'refs/heads/main' &&
           inputs.action_tag == 'release' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
-        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private'
+        inputs.action_tag == 'release' && inputs.runner_pool_tag == 'hosted'
       )
     name: Submit Winget PR
     needs: metadata
-    runs-on: ${{ fromJSON(format('{{"group":"packer-windows","labels":["self-hosted","Windows","X64","on-demand","packer-windows","slskR","gha-{0}-winget"]}}', github.run_id)) }}
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:

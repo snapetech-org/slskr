@@ -1,4 +1,4 @@
-# ng-runner-policy: private-jit-only-v1
+# Runner policy: compatible GitHub-hosted runners by default
 name: slskr Web UI localization validation
 run-name: ${{ format('action:{0}:pool:{1}', inputs.action_tag, inputs.runner_pool_tag) }}
 on:
@@ -12,10 +12,10 @@ on:
         options:
           - test
       runner_pool_tag:
-        description: Private ephemeral JIT runner pool
+        description: GitHub-hosted runner pool
         required: true
         type: choice
-        options: [private]
+        options: [hosted]
 permissions:
   contents: read
 jobs:
@@ -27,13 +27,13 @@ jobs:
         (
           github.ref == 'refs/heads/main' &&
           inputs.action_tag == 'test' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
         true
       )
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-web-assets"]}}', github.run_id)) }}
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
       contents: read

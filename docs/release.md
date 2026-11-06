@@ -131,7 +131,7 @@ placeholder section.
 ## CI and release matrix
 
 The `CI` workflow is started with a manual dispatch using `action_tag=test` and
-`runner_pool_tag=private`. For a release, dispatch it on the release tag and
+`runner_pool_tag=hosted`. For a release, dispatch it on the release tag and
 wait for the exact-tag, exact-commit run to pass. Each matrix job builds a target
 archive, verifies its checksum and layout, and uploads the archive for seven
 days so a platform-specific build can be downloaded for testing. Native
@@ -143,13 +143,13 @@ The release workflow uses the same native runner and target mapping:
 
 | Target | CI and release runner | Rust target | CI exercise |
 | --- | --- | --- | --- |
-| `linux-x64` | Private JIT Linux x64 | `x86_64-unknown-linux-gnu` | Full Linux tests and archive smoke |
-| `linux-musl-x64` | Private JIT Linux x64 | `x86_64-unknown-linux-musl` | Static archive build and smoke |
-| `linux-arm64` | Private JIT Linux ARM64 | `aarch64-unknown-linux-gnu` | Full AArch64 tests and archive smoke |
-| `linux-musl-arm64` | Private JIT Linux ARM64 | `aarch64-unknown-linux-musl` | Static archive build and smoke |
-| `macos-x64` | Private JIT macOS x64 | `x86_64-apple-darwin` | Native workspace tests and archive smoke |
-| `macos-arm64` | Private JIT macOS ARM64 | `aarch64-apple-darwin` | Native workspace tests and archive smoke |
-| `windows-x64` | Private JIT Windows x64 | `x86_64-pc-windows-msvc` | Native workspace tests and archive smoke |
+| `linux-x64` | `ubuntu-24.04` | `x86_64-unknown-linux-gnu` | Full Linux tests and archive smoke |
+| `linux-musl-x64` | `ubuntu-24.04` | `x86_64-unknown-linux-musl` | Static archive build and smoke |
+| `linux-arm64` | `ubuntu-24.04-arm` | `aarch64-unknown-linux-gnu` | Full AArch64 tests and archive smoke |
+| `linux-musl-arm64` | `ubuntu-24.04-arm` | `aarch64-unknown-linux-musl` | Static archive build and smoke |
+| `macos-x64` | `macos-15-intel` | `x86_64-apple-darwin` | Native workspace tests and archive smoke |
+| `macos-arm64` | `macos-15` | `aarch64-apple-darwin` | Native workspace tests and archive smoke |
+| `windows-x64` | `windows-latest` | `x86_64-pc-windows-msvc` | Native workspace tests and archive smoke |
 
 Create and push a version tag named:
 
@@ -161,10 +161,10 @@ Use `v<semver>`, for example `v1.2.3` or `v1.2.3-rc.1`. Existing
 `release-v<semver>` tags remain supported for compatibility. Commits pushed to
 `main` do not start CI or release workflows. After the tag exists, manually
 dispatch CI on that tag with `action_tag=test` and
-`runner_pool_tag=private`. Once that exact run succeeds, manually dispatch
-Release on the same tag with `action_tag=release`, `runner_pool_tag=private`,
+`runner_pool_tag=hosted`. Once that exact run succeeds, manually dispatch
+Release on the same tag with `action_tag=release`, `runner_pool_tag=hosted`,
 and the identical `tag` input. The release workflow checks the selected ref,
-requested tag, and successful private CI result before publishing. Use a tag
+requested tag, and successful hosted CI result before publishing. Use a tag
 pointing to the reviewed `main` commit.
 
 For a release build, the workflow creates a GitHub Release and uploads all archives

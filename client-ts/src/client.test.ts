@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { resolve } from 'node:path';
@@ -43,12 +44,12 @@ describe('SlskrClient request lifecycle', () => {
 
   afterEach(() => {
     global.fetch = originalFetch;
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
   });
 
   it('clears request timeout timers when fetch rejects', async () => {
-    const clearTimeoutSpy = jest.spyOn(global, 'clearTimeout');
-    global.fetch = jest.fn().mockRejectedValue(new Error('network down'));
+    const clearTimeoutSpy = vi.spyOn(global, 'clearTimeout');
+    global.fetch = vi.fn().mockRejectedValue(new Error('network down'));
     const client = new SlskrClient({
       baseUrl: 'http://localhost:8080',
       token: 'test-token',
@@ -62,7 +63,7 @@ describe('SlskrClient request lifecycle', () => {
   });
 
   it('keeps the request timeout active while reading a response body', async () => {
-    global.fetch = jest.fn().mockImplementation(
+    global.fetch = vi.fn().mockImplementation(
       async (_input: RequestInfo | URL, init?: RequestInit) => {
         let rejectRead: (reason?: unknown) => void = () => {};
         let firstRead = true;
@@ -105,7 +106,7 @@ describe('SlskrClient request lifecycle', () => {
   });
 
   it('does not turn a timed-out error body into an API error', async () => {
-    global.fetch = jest.fn().mockImplementation(
+    global.fetch = vi.fn().mockImplementation(
       async (_input: RequestInfo | URL, init?: RequestInit) => {
         let rejectRead: (reason?: unknown) => void = () => {};
         const pendingRead = new Promise<unknown>((_, reject) => {
@@ -150,7 +151,7 @@ describe('SlskrClient request lifecycle', () => {
   });
 
   it('disables the request deadline when timeout is zero', async () => {
-    global.fetch = jest.fn().mockImplementation(
+    global.fetch = vi.fn().mockImplementation(
       () => new Promise((resolve) => {
         setTimeout(() => resolve(new Response('{"status":"ok"}', { status: 200 })), 10);
       })
@@ -167,7 +168,7 @@ describe('SlskrClient request lifecycle', () => {
   });
 
   it('accepts successful no-content mutations without retrying JSON parsing', async () => {
-    global.fetch = jest.fn().mockResolvedValue(new Response(null, { status: 204 }));
+    global.fetch = vi.fn().mockResolvedValue(new Response(null, { status: 204 }));
     const client = new SlskrClient({
       baseUrl: 'http://localhost:8080',
       token: 'test-token',
@@ -179,7 +180,7 @@ describe('SlskrClient request lifecycle', () => {
   });
 
   it('accepts successful empty response bodies as no content', async () => {
-    global.fetch = jest.fn().mockResolvedValue(new Response('  \n', { status: 202 }));
+    global.fetch = vi.fn().mockResolvedValue(new Response('  \n', { status: 202 }));
     const client = new SlskrClient({
       baseUrl: 'http://localhost:8080',
       token: 'test-token',
@@ -192,7 +193,7 @@ describe('SlskrClient request lifecycle', () => {
 
   it('does not send bodies with authenticated GET requests', async () => {
     const requests: RequestInit[] = [];
-    global.fetch = jest.fn().mockImplementation(async (_input: RequestInfo | URL, init?: RequestInit) => {
+    global.fetch = vi.fn().mockImplementation(async (_input: RequestInfo | URL, init?: RequestInit) => {
       requests.push(init ?? {});
       return new Response('{"username":"alice"}', { status: 200 });
     });
@@ -209,7 +210,7 @@ describe('SlskrClient request lifecycle', () => {
 
   it('rejects redirects before an API token can be forwarded', async () => {
     const requests: RequestInit[] = [];
-    global.fetch = jest.fn().mockImplementation(async (_input: RequestInfo | URL, init?: RequestInit) => {
+    global.fetch = vi.fn().mockImplementation(async (_input: RequestInfo | URL, init?: RequestInit) => {
       requests.push(init ?? {});
       throw new TypeError('redirect mode is error');
     });
@@ -226,7 +227,7 @@ describe('SlskrClient request lifecycle', () => {
 
   it('serializes falsy JSON request bodies instead of dropping them', async () => {
     const requests: RequestInit[] = [];
-    global.fetch = jest.fn().mockImplementation(async (_input: RequestInfo | URL, init?: RequestInit) => {
+    global.fetch = vi.fn().mockImplementation(async (_input: RequestInfo | URL, init?: RequestInit) => {
       requests.push(init ?? {});
       return new Response('{}', { status: 200 });
     });
@@ -244,7 +245,7 @@ describe('SlskrClient request lifecycle', () => {
   });
 
   it('rejects oversized declared responses without retrying', async () => {
-    global.fetch = jest.fn().mockResolvedValue(new Response(null, {
+    global.fetch = vi.fn().mockResolvedValue(new Response(null, {
       status: 200,
       headers: { 'content-length': String(8 * 1024 * 1024 + 1) },
     }));
@@ -259,7 +260,7 @@ describe('SlskrClient request lifecycle', () => {
   });
 
   it('preserves structured API errors without assuming an object body', async () => {
-    global.fetch = jest.fn().mockResolvedValue(new Response(
+    global.fetch = vi.fn().mockResolvedValue(new Response(
       JSON.stringify({ error: 'validation_failed', message: 'Invalid query', details: 'query is required' }),
       { status: 422, headers: { 'content-type': 'application/json' } },
     ));
@@ -276,7 +277,7 @@ describe('SlskrClient request lifecycle', () => {
       status: 422,
     });
 
-    global.fetch = jest.fn().mockResolvedValue(new Response('["invalid"]', { status: 400 }));
+    global.fetch = vi.fn().mockResolvedValue(new Response('["invalid"]', { status: 400 }));
     await expect(client.health()).rejects.toBeInstanceOf(ApiError);
   });
 
@@ -293,7 +294,7 @@ describe('SlskrClient request lifecycle', () => {
     ];
 
     for (const [resource, invoke, payload] of cases) {
-      global.fetch = jest.fn().mockResolvedValue(new Response(JSON.stringify(payload), { status: 200 }));
+      global.fetch = vi.fn().mockResolvedValue(new Response(JSON.stringify(payload), { status: 200 }));
       const client = new SlskrClient({
         baseUrl: 'http://localhost:8080',
         token: 'test-token',
@@ -309,7 +310,7 @@ describe('SlskrClient request lifecycle', () => {
 
   it('bounds streamed responses without a content length', async () => {
     const chunk = new Uint8Array(8 * 1024 * 1024 + 1);
-    global.fetch = jest.fn().mockResolvedValue(new Response(new ReadableStream({
+    global.fetch = vi.fn().mockResolvedValue(new Response(new ReadableStream({
       start(controller) {
         controller.enqueue(chunk);
         controller.close();
@@ -325,7 +326,7 @@ describe('SlskrClient request lifecycle', () => {
   });
 
   it('does not replay mutations after a transport failure', async () => {
-    global.fetch = jest.fn().mockRejectedValue(new Error('response lost'));
+    global.fetch = vi.fn().mockRejectedValue(new Error('response lost'));
     const client = new SlskrClient({
       baseUrl: 'http://localhost:8080',
       token: 'test-token',
@@ -338,7 +339,7 @@ describe('SlskrClient request lifecycle', () => {
   });
 
   it('retains retries for idempotent reads', async () => {
-    global.fetch = jest
+    global.fetch = vi
       .fn()
       .mockRejectedValueOnce(new Error('network down'))
       .mockResolvedValueOnce(new Response('{"status":"ok"}', { status: 200 }));
@@ -429,7 +430,7 @@ describe('SlskrClient request lifecycle', () => {
 
   it('uses daemon wire contracts and accepts daemon collection shapes', async () => {
     const requests: Array<{ url: string; init?: RequestInit }> = [];
-    global.fetch = jest.fn().mockImplementation(async (input: RequestInfo | URL, init?: RequestInit) => {
+    global.fetch = vi.fn().mockImplementation(async (input: RequestInfo | URL, init?: RequestInit) => {
       const url = String(input);
       requests.push({ url, init });
       const parsed = new URL(url);
@@ -585,7 +586,7 @@ describe('SlskrClient request lifecycle', () => {
 
   it('normalizes the daemon create-search identifier and terminal cancellation', async () => {
     let searchRequestCount = 0;
-    global.fetch = jest.fn().mockImplementation(async (input: RequestInfo | URL) => {
+    global.fetch = vi.fn().mockImplementation(async (input: RequestInfo | URL) => {
       const parsed = new URL(String(input));
       if (parsed.pathname === '/api/searches' && searchRequestCount === 0) {
         searchRequestCount += 1;
@@ -618,7 +619,7 @@ describe('SlskrClient request lifecycle', () => {
   });
 
   it('normalizes all daemon transfer terminal states', async () => {
-    global.fetch = jest.fn().mockResolvedValue(new Response(
+    global.fetch = vi.fn().mockResolvedValue(new Response(
       '{"entries":['
         + '{"id":"transfer-succeeded","status":"Succeeded"},'
         + '{"id":"transfer-completed","status":"completed"},'
@@ -645,7 +646,7 @@ describe('SlskrClient request lifecycle', () => {
   });
 
   it('ignores out-of-range numeric timestamps instead of throwing', async () => {
-    global.fetch = jest.fn().mockResolvedValue(new Response(
+    global.fetch = vi.fn().mockResolvedValue(new Response(
       '{"entries":[{"id":"search-1","started_at":1e308}]}',
       { status: 200 },
     ));
@@ -662,7 +663,7 @@ describe('SlskrClient request lifecycle', () => {
 
   it('uses canonical session, browse, and MediaCore cache routes', async () => {
     const requests: Array<{ url: string; init?: RequestInit }> = [];
-    global.fetch = jest.fn().mockImplementation(async (input: RequestInfo | URL, init?: RequestInit) => {
+    global.fetch = vi.fn().mockImplementation(async (input: RequestInfo | URL, init?: RequestInit) => {
       const url = String(input);
       requests.push({ url, init });
       const parsed = new URL(url);

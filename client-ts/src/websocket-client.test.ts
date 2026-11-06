@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import { spawn, type ChildProcess } from 'node:child_process';
 import * as path from 'node:path';
 
@@ -52,13 +53,13 @@ describe('WebSocketClient reconnect lifecycle', () => {
   const originalWebSocket = global.WebSocket;
 
   beforeEach(() => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     MockWebSocket.instances = [];
     global.WebSocket = MockWebSocket as unknown as typeof WebSocket;
   });
 
   afterEach(() => {
-    jest.useRealTimers();
+    vi.useRealTimers();
     global.WebSocket = originalWebSocket;
   });
 
@@ -69,7 +70,7 @@ describe('WebSocketClient reconnect lifecycle', () => {
     await connected;
 
     client.disconnect();
-    jest.runOnlyPendingTimers();
+    vi.runOnlyPendingTimers();
 
     expect(MockWebSocket.instances).toHaveLength(1);
     expect(client.isConnected()).toBe(false);
@@ -81,7 +82,7 @@ describe('WebSocketClient reconnect lifecycle', () => {
     MockWebSocket.instances[0].open();
     await connected;
 
-    jest.advanceTimersByTime(30_000);
+    vi.advanceTimersByTime(30_000);
 
     expect(MockWebSocket.instances[0].sent).toEqual([]);
     client.disconnect();
@@ -94,7 +95,7 @@ describe('WebSocketClient reconnect lifecycle', () => {
     await connected;
 
     MockWebSocket.instances[0].close();
-    jest.advanceTimersByTime(1000);
+    vi.advanceTimersByTime(1000);
 
     expect(MockWebSocket.instances).toHaveLength(2);
   });
@@ -112,7 +113,7 @@ describe('WebSocketClient reconnect lifecycle', () => {
     const client = new WebSocketClient('http://localhost:8080', 'token');
     const connected = client.connect();
 
-    jest.advanceTimersByTime(15_000);
+    vi.advanceTimersByTime(15_000);
 
     await expect(connected).rejects.toThrow('WebSocket connection timed out');
     expect(client.isConnected()).toBe(false);
@@ -123,7 +124,7 @@ describe('WebSocketClient reconnect lifecycle', () => {
     const client = new WebSocketClient('http://localhost:8080', 'token');
     const firstConnection = client.connect();
 
-    jest.advanceTimersByTime(15_000);
+    vi.advanceTimersByTime(15_000);
 
     await expect(firstConnection).rejects.toThrow('WebSocket connection timed out');
     const secondConnection = client.connect();
@@ -167,7 +168,7 @@ describe('WebSocketClient reconnect lifecycle', () => {
     client.disconnect();
 
     await expect(connected).rejects.toThrow('closed before opening');
-    jest.runOnlyPendingTimers();
+    vi.runOnlyPendingTimers();
     expect(MockWebSocket.instances).toHaveLength(1);
   });
 
@@ -222,7 +223,7 @@ describe('WebSocketClient reconnect lifecycle', () => {
       data: { topics: ['search.completed', 'transfer.completed'] },
     });
     MockWebSocket.instances[0].close();
-    jest.advanceTimersByTime(1000);
+    vi.advanceTimersByTime(1000);
     MockWebSocket.instances[1].open();
 
     expect(JSON.parse(MockWebSocket.instances[1].sent[0])).toEqual({
@@ -288,8 +289,8 @@ describe('WebSocketClient reconnect lifecycle', () => {
     MockWebSocket.instances[0].open();
     await connected;
 
-    const received = jest.fn();
-    const errors = jest.fn();
+    const received = vi.fn();
+    const errors = vi.fn();
     client.on('search.started', received);
     client.onError(errors);
     MockWebSocket.instances[0].onmessage?.({ data: 'null' });

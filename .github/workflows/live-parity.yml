@@ -1,4 +1,4 @@
-# ng-runner-policy: private-jit-only-v1
+# Runner policy: compatible GitHub-hosted runners by default
 name: Live Parity
 run-name: ${{ format('action:{0}:pool:{1}', inputs.action_tag, inputs.runner_pool_tag) }}
 
@@ -15,10 +15,10 @@ on:
         options:
           - test
       runner_pool_tag:
-        description: Private ephemeral JIT runner pool
+        description: GitHub-hosted runner pool
         required: true
         type: choice
-        options: [private]
+        options: [hosted]
 permissions:
   contents: read
 
@@ -35,13 +35,13 @@ jobs:
         (
           github.ref == 'refs/heads/main' &&
           inputs.action_tag == 'test' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
         true
       )
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-rust-ui-and-slskd-api"]}}', github.run_id)) }}
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
       - uses: dtolnay/rust-toolchain@29eef336d9b2848a0b548edc03f92a220660cdb8 # dtolnay/rust-toolchain@stable
@@ -94,13 +94,13 @@ jobs:
         (
           github.ref == 'refs/heads/main' &&
           inputs.action_tag == 'test' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
         true
       )
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-credentialed-live-interop"]}}', github.run_id)) }}
+    runs-on: ubuntu-24.04
     env:
       SLSKR_LIVE_INTEROP_ENV: ${{ secrets.SLSKR_LIVE_INTEROP_ENV }}
     steps:

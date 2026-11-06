@@ -40,7 +40,7 @@ describe('TransferList', () => {
       />,
     );
 
-    expect(screen.getByText('Fallidos')).toHaveAttribute('lang', 'es');
+    expect(screen.getByText(SPANISH_LABELS.Failed)).toHaveAttribute('lang', 'es');
   });
 
   it('translates the initializing transfer state', async () => {

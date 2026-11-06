@@ -719,7 +719,7 @@ pub(super) async fn serve(invocation: ServeInvocation) -> Result<(), String> {
         distributed_persistence_snapshots,
         distributed_persistence_status,
         soulseek_distributed_settings: RwLock::new(config.soulseek_distributed),
-        shares: RwLock::new(share_index),
+        shares: RwLock::new(Arc::new(share_index)),
         share_settings: RwLock::new(share_settings),
         share_index_persistence_lock: AsyncMutex::new(()),
         share_settings_generation: std::sync::atomic::AtomicU64::new(0),

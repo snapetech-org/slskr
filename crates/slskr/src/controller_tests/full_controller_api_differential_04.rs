@@ -1534,15 +1534,17 @@ pub(super) async fn controller_api_differential_controller_search_lifecycle() {
         }};
     }
 
-    state.shares.write().await.entries.push(FileEntry {
-        filename_encoding: Default::default(),
-        extension_encoding: Default::default(),
-        code: 1,
-        filename: "Remote/Search.flac".to_owned(),
-        size: 321,
-        extension: "flac".to_owned(),
-        attributes: Vec::new(),
-    });
+    std::sync::Arc::make_mut(&mut *state.shares.write().await)
+        .entries
+        .push(FileEntry {
+            filename_encoding: Default::default(),
+            extension_encoding: Default::default(),
+            code: 1,
+            filename: "Remote/Search.flac".to_owned(),
+            size: 321,
+            extension: "flac".to_owned(),
+            attributes: Vec::new(),
+        });
     let search_id = "22222222-2222-4222-8222-222222222222";
     let create_body = format!(r#"{{"id":"{search_id}","searchText":"Remote Search"}}"#);
     let created = crate::route_http_request("POST", "/api/v0/searches", None, &create_body, &state)

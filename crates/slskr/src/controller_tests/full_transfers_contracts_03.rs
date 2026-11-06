@@ -551,6 +551,7 @@ pub(super) async fn inbound_transfer_request_serves_shared_file_over_pierce_fire
     std::fs::write(&path, [1_u8, 2, 3, 4]).expect("write shared file");
     {
         let mut shares = state.shares.write().await;
+        let shares = std::sync::Arc::make_mut(&mut *shares);
         shares.entries.push(FileEntry {
             filename_encoding: Default::default(),
             extension_encoding: Default::default(),

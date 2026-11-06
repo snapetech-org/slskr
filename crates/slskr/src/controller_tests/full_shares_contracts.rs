@@ -128,6 +128,7 @@ pub(super) async fn share_catalog_supports_filters_and_pagination() {
     let (state, _receiver) = test_state();
     {
         let mut shares = state.shares.write().await;
+        let shares = std::sync::Arc::make_mut(&mut *shares);
         shares.entries.push(FileEntry {
             filename_encoding: Default::default(),
             extension_encoding: Default::default(),
@@ -165,6 +166,7 @@ pub(super) async fn share_rescan_route_rebuilds_snapshot() {
 
     {
         let mut shares = state.shares.write().await;
+        let shares = std::sync::Arc::make_mut(&mut *shares);
         shares.entries.clear();
     }
 
@@ -406,6 +408,7 @@ pub(super) async fn share_rebuild_routes_roll_back_when_persistence_fails() {
         );
         {
             let mut shares = state.shares.write().await;
+            let shares = std::sync::Arc::make_mut(&mut *shares);
             shares.entries.clear();
             shares.local_paths.clear();
             shares.roots.clear();

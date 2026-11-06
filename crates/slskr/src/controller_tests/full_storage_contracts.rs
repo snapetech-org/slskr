@@ -8,6 +8,7 @@ pub(super) async fn files_api_lists_one_share_root_without_local_paths() {
     let (state, _receiver) = test_state();
     {
         let mut shares = state.shares.write().await;
+        let shares = std::sync::Arc::make_mut(&mut *shares);
         shares.roots.push(crate::ShareRoot {
             label: "Music".to_owned(),
             local_path: PathBuf::from("Music"),
@@ -87,6 +88,7 @@ pub(super) async fn files_api_projects_folder_views_and_directory_summaries() {
     let (state, _receiver) = test_state();
     {
         let mut shares = state.shares.write().await;
+        let shares = std::sync::Arc::make_mut(&mut *shares);
         shares.roots.push(crate::ShareRoot {
             label: "Music".to_owned(),
             local_path: PathBuf::from("Music"),

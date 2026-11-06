@@ -1968,6 +1968,7 @@ pub(super) async fn controller_api_differential_controller_users_and_shares() {
 
     {
         let mut shares = state.shares.write().await;
+        let shares = std::sync::Arc::make_mut(&mut *shares);
         shares.roots.clear();
         shares.entries.clear();
         shares.local_paths.clear();

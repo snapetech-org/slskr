@@ -18,6 +18,13 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.77] — 2026-11-06
+
+- Publish completed large-library share indexes without a full duplicate allocation; failed rescans retain the last complete index.
+- Bound session-command queue admission and server writes to recover stalled searches.
+- Restore native public GitHub-hosted validation and downstream release publishing.
+- Remove vulnerable Node tooling dependencies and refresh Rust, frontend, and workflow dependencies.
+
 ### User-facing changes
 
 #### Changed

@@ -336,6 +336,7 @@ pub(super) async fn compatibility_projections_use_local_state_for_core_stores() 
 
     {
         let mut shares = state.shares.write().await;
+        let shares = std::sync::Arc::make_mut(&mut *shares);
         shares.roots.push(crate::ShareRoot {
             label: "Virtual".to_owned(),
             local_path: PathBuf::from("Virtual"),

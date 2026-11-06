@@ -543,6 +543,7 @@ pub(super) async fn controller_api_differential_controller_residual_core_contrac
         test_state_with_env(MapEnv::default().with("SLSKR_CONTROLLER_PROFILE", target));
     let browse_root_id = {
         let mut shares = browse_failure_state.shares.write().await;
+        let shares = std::sync::Arc::make_mut(&mut *shares);
         if shares.roots.is_empty() {
             let files = shares.entries.len();
             let bytes = shares.entries.iter().map(|entry| entry.size).sum();

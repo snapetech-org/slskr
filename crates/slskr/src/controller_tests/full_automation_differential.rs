@@ -462,16 +462,18 @@ pub(super) async fn controller_api_differential_automation_compat_routes_use_exp
         "populated-dynamic-state"
     );
 
-    state.shares.write().await.roots.push(crate::ShareRoot {
-        label: "Virtual".to_owned(),
-        local_path: PathBuf::from("Virtual"),
-        raw: "Virtual".to_owned(),
-        directories: 0,
-        files: 1,
-        bytes: 42,
-        extensions: Vec::new(),
-        statistics_ready: true,
-    });
+    std::sync::Arc::make_mut(&mut *state.shares.write().await)
+        .roots
+        .push(crate::ShareRoot {
+            label: "Virtual".to_owned(),
+            local_path: PathBuf::from("Virtual"),
+            raw: "Virtual".to_owned(),
+            directories: 0,
+            files: 1,
+            bytes: 42,
+            extensions: Vec::new(),
+            statistics_ready: true,
+        });
     let shares = crate::route_http_request("GET", "/api/v0/shares", None, "", &state)
         .await
         .expect("shares");

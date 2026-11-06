@@ -66,13 +66,6 @@ vi.mock('../../../lib/wishlist', () => ({
   getIgnoredResults: vi.fn(),
   ignoreResult: vi.fn(),
 }));
-vi.mock('../../Shared/ErrorSegment', () => ({
-  default: ({ caption, ...props }) => (
-    <div {...props} data-testid={props['data-testid'] || 'search-error'}>
-      {caption}
-    </div>
-  ),
-}));
 vi.mock('../../Shared/LoaderSegment', () => ({
   default: ({ children }) => <div data-testid="search-loader">{children}</div>,
 }));

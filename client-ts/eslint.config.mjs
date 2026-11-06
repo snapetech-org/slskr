@@ -19,7 +19,6 @@ export default tseslint.config(
         expect: 'readonly',
         global: 'readonly',
         it: 'readonly',
-        jest: 'readonly',
       },
     },
     rules: {

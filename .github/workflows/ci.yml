@@ -1,5 +1,4 @@
-# packer-windows-jit-v1
-# ng-runner-policy: private-jit-only-v1
+# Runner policy: compatible GitHub-hosted runners by default
 name: CI
 run-name: ${{ format('action:{0}:pool:{1}{2}', inputs.action_tag, inputs.runner_pool_tag, startsWith(github.ref, 'refs/tags/') && format(':tag:{0}', github.ref_name) || '') }}
 
@@ -21,10 +20,10 @@ on:
         options:
           - test
       runner_pool_tag:
-        description: Private ephemeral JIT runner pool
+        description: GitHub-hosted runner pool
         required: true
         type: choice
-        options: [private]
+        options: [hosted]
 # Keep every validation attempt isolated so retries are never canceled or conflated.
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.run_id }}-${{ github.run_attempt }}
@@ -40,15 +39,15 @@ jobs:
       (
         github.event_name != 'workflow_dispatch' ||
         (
-          (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/release-v')) &&
+          (github.ref == 'refs/heads/main' || (startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v'))) &&
           inputs.action_tag == 'test' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
         github.event_name != 'push' || github.ref == 'refs/heads/main'
       )
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-web-assets"]}}', github.run_id)) }}
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
@@ -77,15 +76,15 @@ jobs:
       (
         github.event_name != 'workflow_dispatch' ||
         (
-          (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/release-v')) &&
+          (github.ref == 'refs/heads/main' || (startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v'))) &&
           inputs.action_tag == 'test' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
         true
       )
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-controller-regex-parity"]}}', github.run_id)) }}
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     env:
       DOTNET_VERSION: '10.0.402'
@@ -142,15 +141,15 @@ jobs:
       (
         github.event_name != 'workflow_dispatch' ||
         (
-          (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/release-v')) &&
+          (github.ref == 'refs/heads/main' || (startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v'))) &&
           inputs.action_tag == 'test' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
         true
       )
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-rust"]}}', github.run_id)) }}
+    runs-on: ubuntu-24.04
     timeout-minutes: 360
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
@@ -309,15 +308,15 @@ jobs:
       (
         github.event_name != 'workflow_dispatch' ||
         (
-          (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/release-v')) &&
+          (github.ref == 'refs/heads/main' || (startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v'))) &&
           inputs.action_tag == 'test' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
         github.event_name != 'push' || github.ref == 'refs/heads/main'
       )
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","arm64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-linux-aarch64"]}}', github.run_id)) }}
+    runs-on: ubuntu-24.04-arm
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
@@ -351,16 +350,16 @@ jobs:
       (
         github.event_name != 'workflow_dispatch' ||
         (
-          (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/release-v')) &&
+          (github.ref == 'refs/heads/main' || (startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v'))) &&
           inputs.action_tag == 'test' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
         github.event_name != 'push' || github.ref == 'refs/heads/main'
       )
     needs: web-assets
-    runs-on: ${{ matrix.os == 'linux-x64' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds"]}}', github.run_id, strategy.job-index)) || matrix.os == 'linux-arm64' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","arm64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-x64' && fromJSON(format('{{"group":"private-apple-builds","labels":["self-hosted","macOS","X64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds","private-apple"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-arm64' && fromJSON(format('{{"group":"private-apple-builds","labels":["self-hosted","macOS","ARM64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-platform-builds","private-apple"]}}', github.run_id, strategy.job-index)) || fromJSON(format('{{"group":"packer-windows","labels":["self-hosted","Windows","X64","on-demand","packer-windows","slskR","gha-{0}-{1}-platform-builds"]}}', github.run_id, strategy.job-index)) }}
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 120
     env:
       CARGO_NET_GIT_FETCH_WITH_CLI: true
@@ -369,37 +368,37 @@ jobs:
       matrix:
         include:
           - name: linux-x64
-            os: linux-x64
+            os: ubuntu-24.04
             target: x86_64-unknown-linux-gnu
             apt: pkg-config libssl-dev
             native_tests: false
           - name: linux-musl-x64
-            os: linux-x64
+            os: ubuntu-24.04
             target: x86_64-unknown-linux-musl
             apt: musl-tools pkg-config libssl-dev
             native_tests: false
           - name: linux-arm64
-            os: linux-arm64
+            os: ubuntu-24.04-arm
             target: aarch64-unknown-linux-gnu
             apt: pkg-config libssl-dev
             native_tests: false
           - name: linux-musl-arm64
-            os: linux-arm64
+            os: ubuntu-24.04-arm
             target: aarch64-unknown-linux-musl
             apt: musl-tools pkg-config libssl-dev
             native_tests: false
           - name: macos-x64
-            os: macos-x64
+            os: macos-15-intel
             target: x86_64-apple-darwin
             apt: ''
             native_tests: true
           - name: macos-arm64
-            os: macos-arm64
+            os: macos-15
             target: aarch64-apple-darwin
             apt: ''
             native_tests: true
           - name: windows-x64
-            os: windows-x64
+            os: windows-latest
             target: x86_64-pc-windows-msvc
             apt: ''
             native_tests: true
@@ -494,15 +493,15 @@ jobs:
       (
         github.event_name != 'workflow_dispatch' ||
         (
-          (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/release-v')) &&
+          (github.ref == 'refs/heads/main' || (startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v'))) &&
           inputs.action_tag == 'test' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
         true
       )
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-package-surfaces"]}}', github.run_id)) }}
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6

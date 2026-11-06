@@ -1342,6 +1342,7 @@ pub(super) async fn controller_api_differential_shares_open_cases() {
     macro_rules! seed_share_root {
         ($state:expr) => {{
             let mut shares = $state.shares.write().await;
+            let shares = std::sync::Arc::make_mut(&mut *shares);
             shares.roots.clear();
             shares.entries.clear();
             shares.local_paths.clear();

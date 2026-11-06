@@ -1,0 +1,5 @@
+
+# Frozen review evidence calculates Git SHA-1 blob object IDs, not signatures.
+# Keep its original bytes so the recorded review hashes remain verifiable.
+docs/pr-evidence/pr204-localization-2026-11-03/window-1443-1462/review-bundle/inputs/primary/attest_after.py
+docs/pr-evidence/pr204-localization-2026-11-03/window-1443-1462/review-bundle/inputs/primary/final_live_check.py

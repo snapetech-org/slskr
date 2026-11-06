@@ -30,7 +30,9 @@ pub(super) fn cancel_active_share_scan(state: &AppState) {
     }
 }
 
-pub(super) async fn rebuild_share_index(state: &AppState) -> Result<ShareIndexSnapshot, String> {
+pub(super) async fn rebuild_share_index(
+    state: &AppState,
+) -> Result<Arc<ShareIndexSnapshot>, String> {
     let scan_permit = Arc::clone(&state.share_scans)
         .try_acquire_owned()
         .map_err(|_| SHARE_SCAN_BUSY_ERROR.to_owned())?;
@@ -41,7 +43,7 @@ pub(super) async fn add_runtime_share(
     state: &AppState,
     path: &str,
     alias: Option<&str>,
-) -> Result<(crate::config::ShareDirectory, ShareIndexSnapshot), String> {
+) -> Result<(crate::config::ShareDirectory, Arc<ShareIndexSnapshot>), String> {
     let directory = crate::config::ShareDirectory::from_path(path, alias)?;
     let (previous_directories, mutated_directories) = {
         let _persistence_turn = state.share_index_persistence_lock.lock().await;
@@ -102,7 +104,7 @@ pub(super) async fn add_runtime_share(
 pub(super) async fn rebuild_share_index_with_permit(
     state: &AppState,
     _scan_permit: OwnedSemaphorePermit,
-) -> Result<ShareIndexSnapshot, String> {
+) -> Result<Arc<ShareIndexSnapshot>, String> {
     let cancellation_guard = register_share_scan_cancellation(state);
     {
         let mut lifecycle = state.share_lifecycle.write().await;
@@ -226,6 +228,9 @@ pub(super) async fn rebuild_share_index_with_permit(
         ),
     )
     .await;
+    // Publish and return the same immutable allocation; large NAS indexes must
+    // not be duplicated on a Tokio worker when the scan completes.
+    let snapshot = Arc::new(snapshot);
     commit_share_index_snapshot_checked(state, &snapshot, share_settings_generation).await?;
     Ok(snapshot)
 }
@@ -254,7 +259,7 @@ async fn persist_share_index_checked(
 
 pub(super) async fn commit_share_index_snapshot_checked(
     state: &AppState,
-    snapshot: &ShareIndexSnapshot,
+    snapshot: &Arc<ShareIndexSnapshot>,
     scanned_settings_generation: u64,
 ) -> Result<(), String> {
     let _persistence_turn = state.share_index_persistence_lock.lock().await;
@@ -276,7 +281,7 @@ pub(super) async fn commit_share_index_snapshot_checked(
         lifecycle.faulted = true;
         return Err(error);
     }
-    *state.shares.write().await = snapshot.clone();
+    *state.shares.write().await = Arc::clone(snapshot);
     *state.share_lifecycle.write().await = ShareLifecycleState::from_snapshot(snapshot);
     Ok(())
 }

@@ -1069,3 +1069,31 @@ async fn daemon_shutdown_closes_forwarding_listener_and_rejects_late_rules() {
         .unwrap();
     drop(rebound);
 }
+
+#[tokio::test]
+async fn share_rebuild_publishes_one_allocation_and_preserves_it_on_failure() {
+    let (state, _receiver) = test_state_with_env(MapEnv::default());
+    let rebuilt = crate::rebuild_share_index(&state)
+        .await
+        .expect("rebuild shares");
+    let published = state.shares.read().await.clone();
+    assert!(Arc::ptr_eq(&rebuilt, &published));
+    assert_eq!(rebuilt.entries.as_ptr(), published.entries.as_ptr());
+
+    let root = state.config.state_dir.join("capped-share-fixture");
+    fs::create_dir_all(&root).expect("create capped share root");
+    fs::write(root.join("one.flac"), b"one").unwrap();
+    fs::write(root.join("two.flac"), b"two").unwrap();
+    {
+        let mut settings = state.share_settings.write().await;
+        settings.directories =
+            crate::config::parse_share_directories(root.to_str().unwrap()).unwrap();
+        settings.fixture_entries.clear();
+        settings.max_files = 1;
+        settings.cache_tsv_enabled = false;
+    }
+    assert!(crate::rebuild_share_index(&state).await.is_err());
+    assert!(Arc::ptr_eq(&published, &*state.shares.read().await));
+    assert!(state.share_lifecycle.read().await.faulted);
+    fs::remove_dir_all(&root).unwrap();
+}

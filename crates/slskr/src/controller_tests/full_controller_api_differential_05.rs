@@ -1905,6 +1905,7 @@ pub(super) async fn controller_api_differential_controller_runtime_failure_isola
 
     {
         let mut shares = state.shares.write().await;
+        let shares = std::sync::Arc::make_mut(&mut *shares);
         shares.roots.push(crate::ShareRoot {
             label: "Virtual".to_owned(),
             local_path: PathBuf::from("/srv/music"),

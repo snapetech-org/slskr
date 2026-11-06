@@ -1,10 +1,11 @@
+import { vi, type Mock } from 'vitest';
 import { BatchBuilder, BatchClient, maxBatchOperations } from './batch-client';
 import { SlskrClient } from './client';
 import { BatchOperation } from './types';
 
 describe('Batch operation limits', () => {
-  function mockClient(): { client: SlskrClient; postAuth: jest.Mock } {
-    const postAuth = jest.fn();
+  function mockClient(): { client: SlskrClient; postAuth: Mock } {
+    const postAuth = vi.fn();
     return { client: { postAuth } as unknown as SlskrClient, postAuth };
   }
 

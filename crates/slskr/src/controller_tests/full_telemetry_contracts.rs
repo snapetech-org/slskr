@@ -82,7 +82,7 @@ pub(super) async fn metrics_distinguish_database_stats_failure_from_empty_databa
 #[cfg(feature = "full-controller-tests")]
 pub(super) async fn telemetry_api_returns_runtime_health_without_secrets() {
     let (state, _receiver) = test_state();
-    state.shares.write().await.cache_error =
+    std::sync::Arc::make_mut(&mut *state.shares.write().await).cache_error =
         Some("share cache write failed: /private/share-index.tsv denied".to_owned());
     {
         let mut transfers = state.transfers.write().await;

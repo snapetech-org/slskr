@@ -404,6 +404,7 @@ async fn library_browser_projects_share_tree_and_sha256_stream_ids() {
     fs::write(&local_file, b"browser stream fixture").expect("write browser fixture");
     {
         let mut shares = state.shares.write().await;
+        let shares = std::sync::Arc::make_mut(&mut *shares);
         shares.entries.push(FileEntry {
             filename_encoding: Default::default(),
             extension_encoding: Default::default(),

@@ -1,5 +1,4 @@
-# packer-windows-jit-v1
-# ng-runner-policy: private-jit-only-v1
+# Runner policy: compatible GitHub-hosted runners by default
 name: Windows Smoke
 run-name: ${{ format('action:{0}:pool:{1}', inputs.action_tag, inputs.runner_pool_tag) }}
 
@@ -13,10 +12,10 @@ on:
         options:
           - test
       runner_pool_tag:
-        description: Private ephemeral JIT runner pool
+        description: GitHub-hosted runner pool
         required: true
         type: choice
-        options: [private]
+        options: [hosted]
 concurrency:
   group: ${{ github.workflow }}-${{ github.run_id }}
   cancel-in-progress: false
@@ -35,13 +34,13 @@ jobs:
         (
           github.ref == 'refs/heads/main' &&
           inputs.action_tag == 'test' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
         true
       )
-    runs-on: ${{ fromJSON(format('{{"group":"packer-windows","labels":["self-hosted","Windows","X64","on-demand","packer-windows","slskR","gha-{0}-rust"]}}', github.run_id)) }}
+    runs-on: windows-latest
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6

@@ -1,5 +1,4 @@
-# packer-windows-jit-v1
-# ng-runner-policy: private-jit-only-v1
+# Runner policy: compatible GitHub-hosted runners by default
 name: Release
 run-name: ${{ format('action:{0}:pool:{1}:tag:{2}', inputs.action_tag, inputs.runner_pool_tag, inputs.tag) }}
 
@@ -22,10 +21,10 @@ on:
         options:
           - release
       runner_pool_tag:
-        description: Private ephemeral JIT runner pool
+        description: GitHub-hosted runner pool
         required: true
         type: choice
-        options: [private]
+        options: [hosted]
       tag:
         description: Release tag; must match the selected ref
         required: true
@@ -45,16 +44,16 @@ jobs:
       (
         github.event_name != 'workflow_dispatch' ||
         (
-          startsWith(github.ref, 'refs/tags/release-v') &&
+          (startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v')) &&
           github.ref_name == inputs.tag &&
           inputs.action_tag == 'release' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
         true
       )
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-version"]}}', github.run_id)) }}
+    runs-on: ubuntu-24.04
     outputs:
       version: ${{ steps.version.outputs.version }}
     steps:
@@ -76,16 +75,16 @@ jobs:
       (
         github.event_name != 'workflow_dispatch' ||
         (
-          startsWith(github.ref, 'refs/tags/release-v') &&
+          (startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v')) &&
           github.ref_name == inputs.tag &&
           inputs.action_tag == 'release' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
         true
       )
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-main-ci"]}}', github.run_id)) }}
+    runs-on: ubuntu-24.04
     steps:
       - name: Wait for CI on release commit
         shell: bash
@@ -113,21 +112,21 @@ jobs:
               --arg sha "$RELEASE_SHA" \
               '[.[] | select(
                 .event == "workflow_dispatch" and
-                .displayTitle == ("action:test:pool:private:tag:" + $tag) and
+                .displayTitle == ("action:test:pool:hosted:tag:" + $tag) and
                 .headBranch == $tag and
                 .headSha == $sha
               )] | .[0] // empty' <<<"$runs_json")"
 
             if [[ -z "$run_json" ]]; then
-              echo "No explicit private CI dispatch exists for release tag $RELEASE_TAG." >&2
-              echo "Run CI on that tag with action=test and runner_pool_tag=private first." >&2
+              echo "No explicit hosted CI dispatch exists for release tag $RELEASE_TAG." >&2
+              echo "Run CI on that tag with action=test and runner_pool_tag=hosted first." >&2
               exit 1
             fi
 
             status="$(jq -r '.status' <<<"$run_json")"
             conclusion="$(jq -r '.conclusion // ""' <<<"$run_json")"
             url="$(jq -r '.url' <<<"$run_json")"
-            printf 'Tagged private CI for %s: %s %s %s\n' "$RELEASE_TAG" "$status" "$conclusion" "$url"
+            printf 'Tagged hosted CI for %s: %s %s %s\n' "$RELEASE_TAG" "$status" "$conclusion" "$url"
 
             if [[ "$status" == "completed" && "$conclusion" == "success" ]]; then
               exit 0
@@ -140,7 +139,7 @@ jobs:
 
             sleep 30
           done
-          printf 'Timed out waiting for tagged private CI on %s\n' "$RELEASE_TAG" >&2
+          printf 'Timed out waiting for tagged hosted CI on %s\n' "$RELEASE_TAG" >&2
           exit 1
 
   gate:
@@ -150,16 +149,16 @@ jobs:
       (
         github.event_name != 'workflow_dispatch' ||
         (
-          startsWith(github.ref, 'refs/tags/release-v') &&
+          (startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v')) &&
           github.ref_name == inputs.tag &&
           inputs.action_tag == 'release' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
         true
       )
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-gate"]}}', github.run_id)) }}
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
       - name: Check out frozen controller parity references
@@ -233,46 +232,46 @@ jobs:
       (
         github.event_name != 'workflow_dispatch' ||
         (
-          startsWith(github.ref, 'refs/tags/release-v') &&
+          (startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v')) &&
           github.ref_name == inputs.tag &&
           inputs.action_tag == 'release' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
         true
       )
-    runs-on: ${{ matrix.os == 'linux-x64' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) || matrix.os == 'linux-arm64' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","arm64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-x64' && fromJSON(format('{{"group":"private-apple-builds","labels":["self-hosted","macOS","X64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build","private-apple"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-arm64' && fromJSON(format('{{"group":"private-apple-builds","labels":["self-hosted","macOS","ARM64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build","private-apple"]}}', github.run_id, strategy.job-index)) || fromJSON(format('{{"group":"packer-windows","labels":["self-hosted","Windows","X64","on-demand","packer-windows","slskR","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) }}
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         include:
           - name: linux-x64
-            os: linux-x64
+            os: ubuntu-24.04
             target: x86_64-unknown-linux-gnu
             apt: ''
           - name: linux-musl-x64
-            os: linux-x64
+            os: ubuntu-24.04
             target: x86_64-unknown-linux-musl
             apt: musl-tools
           - name: linux-arm64
-            os: linux-arm64
+            os: ubuntu-24.04-arm
             target: aarch64-unknown-linux-gnu
             apt: ''
           - name: linux-musl-arm64
-            os: linux-arm64
+            os: ubuntu-24.04-arm
             target: aarch64-unknown-linux-musl
             apt: musl-tools
           - name: macos-x64
-            os: macos-x64
+            os: macos-15-intel
             target: x86_64-apple-darwin
             apt: ''
           - name: macos-arm64
-            os: macos-arm64
+            os: macos-15
             target: aarch64-apple-darwin
             apt: ''
           - name: windows-x64
-            os: windows-x64
+            os: windows-latest
             target: x86_64-pc-windows-msvc
             apt: ''
     steps:
@@ -379,17 +378,17 @@ jobs:
       (
         github.event_name != 'workflow_dispatch' ||
         (
-          startsWith(github.ref, 'refs/tags/release-v') &&
+          (startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v')) &&
           github.ref_name == inputs.tag &&
           inputs.action_tag == 'release' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
-        startsWith(github.ref, 'refs/tags/release-v')
+        (startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v'))
       )
     needs: [version, gate, build]
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-release"]}}', github.run_id)) }}
+    runs-on: ubuntu-24.04
     outputs:
       release_body: ${{ steps.release-body.outputs.release_body }}
     permissions:
@@ -495,7 +494,7 @@ jobs:
 
   downstream-publish:
     name: Publish Downstream Packages
-    if: startsWith(github.ref, 'refs/tags/release-v') && github.ref_name == inputs.tag && inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private'
+    if: (startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v')) && github.ref_name == inputs.tag && inputs.action_tag == 'release' && inputs.runner_pool_tag == 'hosted'
     needs: [release]
     permissions:
       actions: read
@@ -504,7 +503,7 @@ jobs:
     uses: ./.github/workflows/release-publish.yml
     with:
       action_tag: release
-      runner_pool_tag: private
+      runner_pool_tag: hosted
       tag: ${{ github.ref_name }}
     secrets:
       AUR_SSH_KEY: ${{ secrets.AUR_SSH_KEY }}
@@ -531,17 +530,17 @@ jobs:
       (
         github.event_name != 'workflow_dispatch' ||
         (
-          startsWith(github.ref, 'refs/tags/release-v') &&
+          (startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v')) &&
           github.ref_name == inputs.tag &&
           inputs.action_tag == 'release' &&
-          inputs.runner_pool_tag == 'private'
+          inputs.runner_pool_tag == 'hosted'
         )
       ) &&
       (
-        startsWith(github.ref, 'refs/tags/release-v')
+        (startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v'))
       )
     needs: [version, release, downstream-publish]
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-discord"]}}', github.run_id)) }}
+    runs-on: ubuntu-24.04
     steps:
       - name: Post release announcement
         shell: bash

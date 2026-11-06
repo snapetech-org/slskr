@@ -435,7 +435,7 @@ pub(super) async fn incoming_search_response_honors_configured_file_limit() {
         "SLSKD_THROTTLING_SEARCH_INCOMING_RESPONSE_FILE_LIMIT",
         "100",
     ));
-    state.shares.write().await.entries = (0..150)
+    std::sync::Arc::make_mut(&mut *state.shares.write().await).entries = (0..150)
         .map(|index| crate::FileEntry {
             filename_encoding: Default::default(),
             extension_encoding: Default::default(),

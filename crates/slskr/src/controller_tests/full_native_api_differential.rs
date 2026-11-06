@@ -42,6 +42,7 @@ pub(super) async fn controller_api_differential_native_library_fallback_uses_cur
     );
     {
         let mut shares = state.shares.write().await;
+        let shares = std::sync::Arc::make_mut(&mut *shares);
         shares.entries.clear();
         shares.local_paths.clear();
     }

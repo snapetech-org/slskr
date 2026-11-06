@@ -138,7 +138,7 @@ run_typescript_checks() {
     if [[ ! -d node_modules ]]; then
       npm ci
     fi
-    npm test -- --runInBand --json --outputFile="$ts_temp/typescript-tests.json"
+    npm test -- --reporter=json --outputFile="$ts_temp/typescript-tests.json"
     npm run lint
   )
   "$python_executable" - "$ts_temp/typescript-tests.json" <<'PY'

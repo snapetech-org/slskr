@@ -18,7 +18,7 @@ pub(super) struct AppState {
     pub(super) listeners: RwLock<ListenerSnapshot>,
     pub(super) distributed_network: RwLock<DistributedRuntime>,
     pub(super) soulseek_distributed_settings: RwLock<crate::config::SoulseekDistributedSettings>,
-    pub(super) shares: RwLock<ShareIndexSnapshot>,
+    pub(super) shares: RwLock<Arc<ShareIndexSnapshot>>,
     pub(super) share_settings: RwLock<crate::config::ShareSettings>,
     pub(super) core_workflow_settings: RwLock<crate::config::CoreWorkflowSettings>,
     pub(super) advanced_networking: RwLock<crate::config::AdvancedNetworkingSettings>,
