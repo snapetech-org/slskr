@@ -271,7 +271,7 @@ jobs:
           . packaging/scripts/release-assets.sh
           mkdir -p dist
           for target in x86_64 aarch64; do
-            asset="slskr-${{ needs.metadata.outputs.release_version }}-${target}-unknown-linux-gnu.tar.gz"
+            asset="slskr-${{ needs.metadata.outputs.release_version }}-${target}-unknown-linux-musl.tar.gz"
             slskr_wait_for_asset "${{ needs.metadata.outputs.tag }}" "$asset" "dist/$asset"
           done
       - name: Install COPR tooling
@@ -410,7 +410,7 @@ jobs:
           version="${{ needs.metadata.outputs.pkgver }}"
           rpm_top="$(mktemp -d "/tmp/slskr-rpmbuild-${version}.XXXXXX")"
           mkdir -p "$rpm_top"/{SOURCES,SPECS,SRPMS}
-          cp dist/slskr-${{ needs.metadata.outputs.release_version }}-*-unknown-linux-gnu.tar.gz "$rpm_top/SOURCES/"
+          cp dist/slskr-${{ needs.metadata.outputs.release_version }}-*-unknown-linux-musl.tar.gz "$rpm_top/SOURCES/"
           cp packaging/aur/slskr.service "$rpm_top/SOURCES/"
           cp packaging/aur/slskr.sysusers "$rpm_top/SOURCES/"
           cp packaging/aur/slskr.tmpfiles "$rpm_top/SOURCES/"
@@ -493,12 +493,12 @@ jobs:
           version="${{ needs.metadata.outputs.pkgver }}"
           release_version="${{ needs.metadata.outputs.release_version }}"
           for target in x86_64 aarch64; do
-            asset="slskr-${release_version}-${target}-unknown-linux-gnu.tar.gz"
+            asset="slskr-${release_version}-${target}-unknown-linux-musl.tar.gz"
             slskr_wait_for_asset "${{ needs.metadata.outputs.tag }}" "$asset" "/tmp/$asset"
           done
           src="slskr-${version}"
           mkdir -p "$src/vendor" "$src/lib/systemd/system" "$src/usr/lib/sysusers.d" "$src/usr/lib/tmpfiles.d"
-          cp /tmp/slskr-${release_version}-*-unknown-linux-gnu.tar.gz "$src/vendor/"
+          cp /tmp/slskr-${release_version}-*-unknown-linux-musl.tar.gz "$src/vendor/"
           cp packaging/aur/slskr.service "$src/lib/systemd/system/slskr.service"
           cp packaging/aur/slskr.sysusers "$src/usr/lib/sysusers.d/slskr.conf"
           cp packaging/aur/slskr.tmpfiles "$src/usr/lib/tmpfiles.d/slskr.conf"
@@ -723,6 +723,7 @@ jobs:
           push: true
           build-args: |
             VERSION=${{ needs.metadata.outputs.release_version }}
+            RELEASE_TAG=${{ needs.metadata.outputs.tag }}
             REVISION=${{ needs.metadata.outputs.release_sha }}
             BUILD_DATE=${{ github.event.release.published_at || github.run_id }}
           tags: ${{ steps.tags.outputs.ghcr }}
@@ -741,6 +742,7 @@ jobs:
           push: true
           build-args: |
             VERSION=${{ needs.metadata.outputs.release_version }}
+            RELEASE_TAG=${{ needs.metadata.outputs.tag }}
             REVISION=${{ needs.metadata.outputs.release_sha }}
             BUILD_DATE=${{ github.event.release.published_at || github.run_id }}
           tags: ${{ steps.tags.outputs.dockerhub }}

@@ -550,6 +550,8 @@ jobs:
             libstdc++6:arm64 \
             ripgrep \
             rpm
+      - name: Verify static packages on older Linux runtimes
+        run: scripts/check-linux-package-compatibility.sh target/dist
       - name: Run release surface policy checks
         run: |
           scripts/check-workflow-release-policy.sh
@@ -591,8 +593,8 @@ jobs:
             cp packaging/aur/slskr.service "$build_root/lib/systemd/system/slskr.service"
             cp packaging/aur/slskr.sysusers "$build_root/usr/lib/sysusers.d/slskr.conf"
             cp packaging/aur/slskr.tmpfiles "$build_root/usr/lib/tmpfiles.d/slskr.conf"
-            cp target/dist/slskr-ci-*-x86_64-unknown-linux-gnu.tar.gz "$build_root/vendor/slskr-v${package_version}-x86_64-unknown-linux-gnu.tar.gz"
-            cp target/dist/slskr-ci-*-aarch64-unknown-linux-gnu.tar.gz "$build_root/vendor/slskr-v${package_version}-aarch64-unknown-linux-gnu.tar.gz"
+            cp target/dist/slskr-ci-*-x86_64-unknown-linux-musl.tar.gz "$build_root/vendor/slskr-v${package_version}-x86_64-unknown-linux-musl.tar.gz"
+            cp target/dist/slskr-ci-*-aarch64-unknown-linux-musl.tar.gz "$build_root/vendor/slskr-v${package_version}-aarch64-unknown-linux-musl.tar.gz"
             (cd "$build_root" && dpkg-buildpackage -us -uc -d -b -a "$deb_arch")
           done
       - name: Build RPMs for x86_64 and aarch64
@@ -605,8 +607,8 @@ jobs:
             rpm_top="$RUNNER_TEMP/slskr-rpm-$rpm_arch"
             rm -rf "$rpm_top"
             mkdir -p "$rpm_top"/{SOURCES,SPECS,BUILD,BUILDROOT,RPMS,SRPMS}
-            cp target/dist/slskr-ci-*-x86_64-unknown-linux-gnu.tar.gz "$rpm_top/SOURCES/slskr-v${package_version}-x86_64-unknown-linux-gnu.tar.gz"
-            cp target/dist/slskr-ci-*-aarch64-unknown-linux-gnu.tar.gz "$rpm_top/SOURCES/slskr-v${package_version}-aarch64-unknown-linux-gnu.tar.gz"
+            cp target/dist/slskr-ci-*-x86_64-unknown-linux-musl.tar.gz "$rpm_top/SOURCES/slskr-v${package_version}-x86_64-unknown-linux-musl.tar.gz"
+            cp target/dist/slskr-ci-*-aarch64-unknown-linux-musl.tar.gz "$rpm_top/SOURCES/slskr-v${package_version}-aarch64-unknown-linux-musl.tar.gz"
             cp packaging/aur/slskr.service "$rpm_top/SOURCES/slskr.service"
             cp packaging/aur/slskr.sysusers "$rpm_top/SOURCES/slskr.sysusers"
             cp packaging/aur/slskr.tmpfiles "$rpm_top/SOURCES/slskr.tmpfiles"

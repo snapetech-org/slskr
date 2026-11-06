@@ -31,6 +31,7 @@ python3 scripts/test-aur-container-smoke.py
 python3 scripts/test-react-nightly-audit.py
 python3 scripts/test-rf-delayed-filesystem-proof.py
 python3 scripts/test-chocolatey-workflow-checksum.py
+python3 scripts/test-release-metadata.py
 python3 scripts/test-native-style-owners.py
 scripts/with-process-memory-guard.sh python3 scripts/test-react-audit-launch-cleanup.py
 scripts/with-process-memory-guard.sh python3 scripts/test-controller-inventory-order.py

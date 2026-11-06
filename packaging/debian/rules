@@ -12,7 +12,7 @@ override_dh_auto_install:
 		arm64) target=aarch64 ;; \
 		*) echo "unsupported Debian architecture: $(DEB_HOST_ARCH)" >&2; exit 1 ;; \
 	esac; \
-	archive="$$(find vendor -maxdepth 1 -type f -name "*-$$target-unknown-linux-gnu.tar.gz" -print -quit)"; \
+	archive="$$(find vendor -maxdepth 1 -type f -name "*-$$target-unknown-linux-musl.tar.gz" -print -quit)"; \
 	test -n "$$archive" || { echo "missing release archive for $$target" >&2; exit 1; }; \
 	mkdir -p debian/slskr/usr/lib/slskr debian/slskr/usr/bin; \
 	tar -xzf "$$archive" -C debian/slskr/usr/lib/slskr --strip-components=1; \

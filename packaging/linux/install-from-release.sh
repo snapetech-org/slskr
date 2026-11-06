@@ -38,7 +38,7 @@ case "$(uname -m)" in
     ;;
 esac
 
-ARCHIVE="slskr-${VERSION#release-v}-${rust_arch}-unknown-linux-gnu.tar.gz"
+ARCHIVE="slskr-${VERSION#release-}-${rust_arch}-unknown-linux-musl.tar.gz"
 WORK_DIR="$(mktemp -d)"
 trap 'rm -rf "$WORK_DIR"' EXIT
 ARCHIVE_PATH="${WORK_DIR}/${ARCHIVE}"
@@ -48,7 +48,7 @@ curl --fail --location --output "$ARCHIVE_PATH" \
   "https://github.com/snapetech-org/slskr/releases/download/${VERSION}/${ARCHIVE}"
 curl --fail --location --output "$CHECKSUMS_PATH" \
   "https://github.com/snapetech-org/slskr/releases/download/${VERSION}/SHA256SUMS.txt"
-grep -Eq "^[0-9a-fA-F]{64}[[:space:]]+\*?${ARCHIVE//./\\.}$" "$CHECKSUMS_PATH" \
+grep -Eq "^[0-9a-fA-F]{64}[[:space:]]+\*?(\./)?${ARCHIVE//./\\.}$" "$CHECKSUMS_PATH" \
   || { echo "Release checksum does not cover ${ARCHIVE}." >&2; exit 1; }
 (cd "$WORK_DIR" && sha256sum --check --ignore-missing SHA256SUMS.txt)
 
@@ -56,7 +56,7 @@ apt-get update -qq
 apt-get install -y -qq ca-certificates curl tar
 id -u "$USER" >/dev/null 2>&1 || useradd --system --home-dir "$DATA_DIR" --shell /usr/sbin/nologin "$USER"
 mkdir -p "$DEST" "$DATA_DIR" "$CONFIG_DIR"
-tar -xzf "$ARCHIVE_PATH" -C "$DEST"
+tar -xzf "$ARCHIVE_PATH" -C "$DEST" --strip-components=1
 chown -R "${USER}:${USER}" "$DEST" "$DATA_DIR"
 
 if [ ! -f "$CONFIG_FILE" ]; then

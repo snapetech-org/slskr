@@ -18,10 +18,11 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
-## [0.2.78] — 2026-11-06
+## [0.2.79] — 2026-11-06
 
 - Publish completed large-library share indexes without a full duplicate allocation; failed rescans retain the last complete index.
 - Bound session-command queue admission and server writes to recover stalled searches.
+- Keep Debian/PPA, RPM, Linux Homebrew, and Linux installers compatible with older system libraries through static archives.
 - Restore native public GitHub-hosted validation and downstream release publishing.
 - Remove vulnerable Node tooling dependencies and refresh Rust, frontend, and workflow dependencies.
 

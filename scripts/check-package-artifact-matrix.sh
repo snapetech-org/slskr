@@ -116,8 +116,8 @@ done
 
 for expected in \
   'package_version="$(awk' \
-  'slskr-v${package_version}-x86_64-unknown-linux-gnu.tar.gz' \
-  'slskr-v${package_version}-aarch64-unknown-linux-gnu.tar.gz'; do
+  'slskr-v${package_version}-x86_64-unknown-linux-musl.tar.gz' \
+  'slskr-v${package_version}-aarch64-unknown-linux-musl.tar.gz'; do
   if ! rg -n -F -- "$expected" .github/workflows/ci.yml >/dev/null; then
     printf 'package artifact matrix check failed: CI package version must come from checked-in package metadata: %s\n' "$expected"
     status=1
@@ -148,8 +148,8 @@ for expected in \
   'ref: ${{ inputs.tag || github.event.inputs.tag || github.ref_name }}' \
   'release_sha="$(git rev-parse HEAD)"' \
   'for target in x86_64 aarch64' \
-  'cp dist/slskr-${{ needs.metadata.outputs.release_version }}-*-unknown-linux-gnu.tar.gz' \
-  'cp /tmp/slskr-${release_version}-*-unknown-linux-gnu.tar.gz' \
+  'cp dist/slskr-${{ needs.metadata.outputs.release_version }}-*-unknown-linux-musl.tar.gz' \
+  'cp /tmp/slskr-${release_version}-*-unknown-linux-musl.tar.gz' \
   'copr-cli modify slskr' \
   '--chroot "${chroots[3]}"'; do
   if ! rg -n -F -- "$expected" .github/workflows/release-publish.yml >/dev/null; then
@@ -175,7 +175,7 @@ for expected in 'target' '**/target' 'node_modules' 'web/build' \
   fi
 done
 
-for expected in 'TARGETARCH' 'SHA256SUMS.txt' 'sha256sum --check --ignore-missing'; do
+for expected in 'TARGETARCH' 'ARG RELEASE_TAG' 'SHA256SUMS.txt' 'sha256sum --check --ignore-missing'; do
   if ! rg -n -F -- "$expected" packaging/docker/release.Dockerfile >/dev/null; then
     printf 'package artifact matrix check failed: release Docker checksum/architecture token missing: %s\n' "$expected"
     status=1

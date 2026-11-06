@@ -32,20 +32,20 @@ case "$(uname -m)" in
     ;;
 esac
 
-ARCHIVE="slskr-${VERSION#release-v}-${rust_arch}-unknown-linux-gnu.tar.gz"
+ARCHIVE="slskr-${VERSION#release-}-${rust_arch}-unknown-linux-musl.tar.gz"
 WORK_DIR="$(mktemp -d)"
 trap 'rm -rf "$WORK_DIR"' EXIT
 curl --fail --location --output "${WORK_DIR}/${ARCHIVE}" \
   "https://github.com/snapetech-org/slskr/releases/download/${VERSION}/${ARCHIVE}"
 curl --fail --location --output "${WORK_DIR}/SHA256SUMS.txt" \
   "https://github.com/snapetech-org/slskr/releases/download/${VERSION}/SHA256SUMS.txt"
-grep -Eq "^[0-9a-fA-F]{64}[[:space:]]+\*?${ARCHIVE//./\\.}$" "${WORK_DIR}/SHA256SUMS.txt" \
+grep -Eq "^[0-9a-fA-F]{64}[[:space:]]+\*?(\./)?${ARCHIVE//./\\.}$" "${WORK_DIR}/SHA256SUMS.txt" \
   || { echo "Release checksum does not cover ${ARCHIVE}." >&2; exit 1; }
 (cd "$WORK_DIR" && sha256sum --check --ignore-missing SHA256SUMS.txt)
 
 id -u "$USER" >/dev/null 2>&1 || useradd --system --home-dir "$DATA_DIR" --shell /usr/sbin/nologin "$USER"
 mkdir -p "$DEST" "$DATA_DIR" "$CONFIG_DIR"
-tar -xzf "${WORK_DIR}/${ARCHIVE}" -C "$DEST"
+tar -xzf "${WORK_DIR}/${ARCHIVE}" -C "$DEST" --strip-components=1
 chown -R "${USER}:${USER}" "$DEST" "$DATA_DIR"
 
 if [ ! -f "$CONFIG_FILE" ]; then

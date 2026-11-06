@@ -32,6 +32,8 @@ done
 
 linux_x64_sha="$(sha_for "$linux_x64")"
 linux_arm64_sha="$(sha_for "$linux_arm64")"
+linux_musl_x64_sha="$(sha_for "$linux_musl_x64")"
+linux_musl_arm64_sha="$(sha_for "$linux_musl_arm64")"
 mac_x64_sha="$(sha_for "$mac_x64")"
 mac_arm64_sha="$(sha_for "$mac_arm64")"
 win_x64_sha="$(sha_for "$win_x64")"
@@ -42,6 +44,7 @@ tmp_sha="$(slskr_sha256 packaging/aur/slskr.tmpfiles)"
 
 sed -i \
   -e "s/^pkgver=.*/pkgver=${pkgver}/" \
+  -e "s/^_release_tag=.*/_release_tag=${tag}/" \
   -e "s/^sha256sums=.*/sha256sums=('${svc_sha}' '${sys_sha}' '${tmp_sha}')/" \
   -e "s/^sha256sums_x86_64=.*/sha256sums_x86_64=('${linux_x64_sha}')/" \
   -e "s/^sha256sums_aarch64=.*/sha256sums_aarch64=('${linux_arm64_sha}')/" \
@@ -49,13 +52,14 @@ sed -i \
 
 sed -i \
   -e "s/^pkgver=.*/pkgver=${pkgver}/" \
+  -e "s/^_release_tag=.*/_release_tag=${tag}/" \
   -e "s/^sha256sums=.*/sha256sums=('SKIP' '${svc_sha}' '${sys_sha}' '${tmp_sha}')/" \
   packaging/aur/PKGBUILD
 
 sed -i \
   -e "s/^Version:.*/Version:        ${pkgver}/" \
-  -e "s|^Source0:.*|Source0:        ${linux_x64}|" \
-  -e "s|^Source1:.*|Source1:        ${linux_arm64}|" \
+  -e "s|^Source0:.*|Source0:        ${linux_musl_x64}|" \
+  -e "s|^Source1:.*|Source1:        ${linux_musl_arm64}|" \
   packaging/rpm/slskr.spec
 
 cat > packaging/debian/changelog <<EOF
@@ -66,12 +70,12 @@ slskr (${pkgver}-1) unstable; urgency=medium
  -- slskr maintainers <slskr@proton.me>  $(date -R)
 EOF
 
-python3 - "$tag" "$release_version" "$pkgver" "$linux_x64_sha" "$linux_arm64_sha" "$mac_x64_sha" "$mac_arm64_sha" "$win_x64_sha" <<'PY'
+python3 - "$tag" "$release_version" "$pkgver" "$linux_x64_sha" "$linux_arm64_sha" "$mac_x64_sha" "$mac_arm64_sha" "$win_x64_sha" "$linux_musl_x64_sha" "$linux_musl_arm64_sha" <<'PY'
 import pathlib
 import re
 import sys
 
-tag, rel, pkgver, linux_x64, linux_arm64, mac_x64, mac_arm64, win_x64 = sys.argv[1:]
+tag, rel, pkgver, linux_x64, linux_arm64, mac_x64, mac_arm64, win_x64, musl_x64, musl_arm64 = sys.argv[1:]
 
 def write(path, text):
     pathlib.Path(path).write_text(text, encoding="utf-8")
@@ -144,11 +148,11 @@ write("packaging/homebrew/Formula/slskr.rb", f'''class Slskr < Formula
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/snapetech-org/slskr/releases/download/{tag}/slskr-{rel}-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "{linux_arm64}"
+      url "https://github.com/snapetech-org/slskr/releases/download/{tag}/slskr-{rel}-aarch64-unknown-linux-musl.tar.gz"
+      sha256 "{musl_arm64}"
     else
-      url "https://github.com/snapetech-org/slskr/releases/download/{tag}/slskr-{rel}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "{linux_x64}"
+      url "https://github.com/snapetech-org/slskr/releases/download/{tag}/slskr-{rel}-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "{musl_x64}"
     end
   end
 

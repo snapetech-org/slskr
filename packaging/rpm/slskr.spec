@@ -4,8 +4,8 @@ Release:        1%{?dist}
 Summary:        Rust Soulseek daemon with bundled Web UI
 License:        AGPL-3.0-only
 URL:            https://github.com/snapetech-org/slskr
-Source0:        slskr-v0.2.74-x86_64-unknown-linux-gnu.tar.gz
-Source1:        slskr-v0.2.74-aarch64-unknown-linux-gnu.tar.gz
+Source0:        slskr-v0.2.74-x86_64-unknown-linux-musl.tar.gz
+Source1:        slskr-v0.2.74-aarch64-unknown-linux-musl.tar.gz
 Source2:        slskr.service
 Source3:        slskr.sysusers
 Source4:        slskr.tmpfiles
@@ -34,16 +34,16 @@ Requires(pre):  shadow-utils
 slskr is a Rust Soulseek daemon with an HTTP API and bundled Web UI.
 
 %prep
-mkdir -p slskr-v%{version}-%{slskr_target}-unknown-linux-gnu
+mkdir -p slskr-v%{version}-%{slskr_target}-unknown-linux-musl
 tar -xzf %{slskr_source} \
     --strip-components=1 \
-    -C slskr-v%{version}-%{slskr_target}-unknown-linux-gnu
-cd slskr-v%{version}-%{slskr_target}-unknown-linux-gnu
+    -C slskr-v%{version}-%{slskr_target}-unknown-linux-musl
+cd slskr-v%{version}-%{slskr_target}-unknown-linux-musl
 
 %build
 
 %install
-cd slskr-v%{version}-%{slskr_target}-unknown-linux-gnu
+cd slskr-v%{version}-%{slskr_target}-unknown-linux-musl
 install -Dm755 slskr %{buildroot}%{_bindir}/slskr
 install -Dm644 docs/slskr.config.example.toml %{buildroot}%{_sysconfdir}/slskr/config.toml
 install -Dm644 %{SOURCE2} %{buildroot}%{_unitdir}/slskr.service

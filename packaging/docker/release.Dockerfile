@@ -2,6 +2,7 @@ FROM --platform=$BUILDPLATFORM debian:bookworm-slim AS release
 
 ARG TARGETARCH
 ARG VERSION=dev
+ARG RELEASE_TAG
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends ca-certificates curl tar \
@@ -15,9 +16,10 @@ RUN set -eux; \
     esac; \
     test "$VERSION" != "dev"; \
     archive="slskr-${VERSION}-${rust_target}.tar.gz"; \
-    url="https://github.com/snapetech-org/slskr/releases/download/release-${VERSION}/${archive}"; \
+    release_tag="${RELEASE_TAG:-release-${VERSION}}"; \
+    url="https://github.com/snapetech-org/slskr/releases/download/${release_tag}/${archive}"; \
     curl -fsSL "$url" -o "/tmp/$archive"; \
-    curl -fsSL "https://github.com/snapetech-org/slskr/releases/download/release-${VERSION}/SHA256SUMS.txt" -o /tmp/SHA256SUMS.txt; \
+    curl -fsSL "https://github.com/snapetech-org/slskr/releases/download/${release_tag}/SHA256SUMS.txt" -o /tmp/SHA256SUMS.txt; \
     grep -Eq "^[0-9a-fA-F]{64}[[:space:]]+\\*?(\\./)?$archive$" /tmp/SHA256SUMS.txt; \
     (cd /tmp && sha256sum --check --ignore-missing SHA256SUMS.txt); \
     mkdir -p /out; \
