@@ -84,7 +84,7 @@ hex = "0.4"
 rand = "0.10"
 ring = "0.17"
 subtle = "2.6"
-fancy-regex = "0.19"
+fancy-regex = "0.20"
 rcgen = { version = "0.14", default-features = false, features = ["crypto", "ring"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
