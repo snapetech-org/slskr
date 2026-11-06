@@ -6,6 +6,7 @@ use super::{
 use crate::persistence;
 use std::collections::{BTreeMap, HashSet};
 use std::path::{Path, PathBuf};
+use std::sync::Arc;
 
 #[derive(Debug, Default)]
 pub(super) struct CatalogFilter {
@@ -108,8 +109,9 @@ impl ShareRoot {
 
 #[derive(Clone, Debug)]
 pub(crate) struct ShareIndexSnapshot {
-    pub(crate) entries: Vec<FileEntry>,
-    pub(crate) local_paths: BTreeMap<String, PathBuf>,
+    // Metadata updates and bounded readers must not duplicate a whole library.
+    pub(crate) entries: Arc<Vec<FileEntry>>,
+    pub(crate) local_paths: Arc<BTreeMap<String, PathBuf>>,
     pub(crate) roots: Vec<ShareRoot>,
     pub(crate) fixture_files: usize,
     pub(crate) scan_errors: Vec<String>,
@@ -216,8 +218,8 @@ pub(crate) fn pending_share_roots(settings: &crate::config::ShareSettings) -> Ve
 impl ShareIndexSnapshot {
     pub(crate) fn uninitialized(config: &AppConfig) -> Self {
         Self {
-            entries: Vec::new(),
-            local_paths: BTreeMap::new(),
+            entries: Arc::new(Vec::new()),
+            local_paths: Arc::new(BTreeMap::new()),
             roots: pending_share_roots(&config.share_settings),
             fixture_files: 0,
             scan_errors: Vec::new(),
@@ -353,8 +355,8 @@ impl ShareIndexSnapshot {
             &entries,
         );
         Self {
-            entries,
-            local_paths,
+            entries: Arc::new(entries),
+            local_paths: Arc::new(local_paths),
             roots,
             fixture_files: 0,
             scan_errors: Vec::new(),

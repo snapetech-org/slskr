@@ -318,10 +318,9 @@ pub(super) async fn add_test_share(
 ) {
     let mut shares = state.shares.write().await;
     let shares = std::sync::Arc::make_mut(&mut *shares);
-    shares
-        .local_paths
+    std::sync::Arc::make_mut(&mut shares.local_paths)
         .insert(filename.to_owned(), path.to_path_buf());
-    shares.entries.push(FileEntry {
+    std::sync::Arc::make_mut(&mut shares.entries).push(FileEntry {
         filename_encoding: Default::default(),
         extension_encoding: Default::default(),
         code: 1,

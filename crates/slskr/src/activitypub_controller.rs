@@ -551,7 +551,7 @@ async fn activitypub_music_activities(
 ) -> Vec<serde_json::Value> {
     let entries = state.shares.read().await.entries.clone();
     entries
-        .into_iter()
+        .iter()
         .take(limit)
         .map(|entry| {
             let work_key = format!("{}|{}", entry.filename, entry.size);

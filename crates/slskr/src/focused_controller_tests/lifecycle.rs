@@ -1071,6 +1071,49 @@ async fn daemon_shutdown_closes_forwarding_listener_and_rejects_late_rules() {
 }
 
 #[tokio::test]
+async fn share_metadata_copy_on_write_preserves_index_payload_allocations() {
+    let (state, _receiver) = test_state_with_env(MapEnv::default());
+    let mut snapshot = crate::ShareIndexSnapshot::uninitialized(&state.config);
+    Arc::make_mut(&mut snapshot.entries).push(FileEntry {
+        filename_encoding: Default::default(),
+        extension_encoding: Default::default(),
+        code: 1,
+        filename: "Music/one.flac".to_owned(),
+        size: 42,
+        extension: "flac".to_owned(),
+        attributes: Vec::new(),
+    });
+    Arc::make_mut(&mut snapshot.local_paths).insert(
+        "Music/one.flac".to_owned(),
+        std::path::PathBuf::from("/fixture/one.flac"),
+    );
+    snapshot.roots.push(crate::ShareRoot {
+        label: "Music".to_owned(),
+        local_path: std::path::PathBuf::from("/fixture"),
+        raw: "Music".to_owned(),
+        directories: 1,
+        files: 1,
+        bytes: 42,
+        extensions: Vec::new(),
+        statistics_ready: true,
+    });
+    let previous = Arc::new(snapshot);
+    let mut changed = Arc::clone(&previous);
+    Arc::make_mut(&mut changed).roots[0].label = "Updated".to_owned();
+
+    assert!(!Arc::ptr_eq(&previous, &changed));
+    assert!(Arc::ptr_eq(&previous.entries, &changed.entries));
+    assert!(Arc::ptr_eq(&previous.local_paths, &changed.local_paths));
+    assert_eq!(previous.roots[0].label, "Music");
+    assert_eq!(changed.roots[0].label, "Updated");
+    assert_eq!(changed.entries[0].filename, "Music/one.flac");
+    assert_eq!(
+        changed.local_paths.get("Music/one.flac"),
+        Some(&std::path::PathBuf::from("/fixture/one.flac"))
+    );
+}
+
+#[tokio::test]
 async fn share_rebuild_publishes_one_allocation_and_preserves_it_on_failure() {
     let (state, _receiver) = test_state_with_env(MapEnv::default());
     let rebuilt = crate::rebuild_share_index(&state)

@@ -911,7 +911,7 @@ pub(super) async fn controller_api_differential_library_jobs_and_discovery_proje
     {
         let mut shares = state.shares.write().await;
         let shares = std::sync::Arc::make_mut(&mut *shares);
-        shares.entries.push(FileEntry {
+        std::sync::Arc::make_mut(&mut shares.entries).push(FileEntry {
             filename_encoding: Default::default(),
             extension_encoding: Default::default(),
             code: 1,

@@ -580,11 +580,15 @@ async fn bridge_handle_search(
         .unwrap_or_else(|| "slskR".to_owned());
     let entries = state.shares.read().await.entries.clone();
     let mut files = Vec::new();
-    for entry in entries {
+    for entry in entries.iter() {
         if !entry.filename.to_ascii_lowercase().contains(&query) {
             continue;
         }
-        files.push((entry.filename, entry.size, entry.extension));
+        files.push((
+            entry.filename.as_str(),
+            entry.size,
+            entry.extension.as_str(),
+        ));
         if files.len() >= 1_000 {
             break;
         }
@@ -597,11 +601,12 @@ async fn bridge_handle_search(
     );
     for (filename, size, extension) in files {
         bridge_write_string(&mut response, &username);
-        bridge_write_string(&mut response, &filename);
+        bridge_write_string(&mut response, filename);
         response.extend_from_slice(&i64::try_from(size).unwrap_or(i64::MAX).to_le_bytes());
         bridge_write_i32(&mut response, 0);
-        bridge_write_string(&mut response, &extension);
+        bridge_write_string(&mut response, extension);
     }
+    drop(entries);
     bridge_write_frame(stream, BRIDGE_SEARCH_RESPONSE, &response).await
 }
 

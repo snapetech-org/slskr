@@ -722,8 +722,8 @@ pub(super) fn build_share_index_with_progress(
     );
 
     Ok(ShareIndexSnapshot {
-        entries,
-        local_paths: scan.local_paths,
+        entries: Arc::new(entries),
+        local_paths: Arc::new(scan.local_paths),
         roots: scan.roots,
         fixture_files,
         scan_errors: scan.errors,

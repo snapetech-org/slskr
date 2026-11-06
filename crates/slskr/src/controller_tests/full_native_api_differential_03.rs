@@ -56,17 +56,18 @@ pub(super) async fn controller_api_differential_native_search_compatibility_cont
         .expect("slskdn search compatibility database");
     let (state, mut receiver) =
         test_state_with_env_parts(env.clone(), crate::SearchStore::new(), Some(db.clone()));
-    std::sync::Arc::make_mut(&mut *state.shares.write().await)
-        .entries
-        .push(FileEntry {
-            filename_encoding: Default::default(),
-            extension_encoding: Default::default(),
-            code: 1,
-            filename: "Remote/Search.flac".to_owned(),
-            size: 321,
-            extension: "flac".to_owned(),
-            attributes: Vec::new(),
-        });
+    std::sync::Arc::make_mut(
+        &mut std::sync::Arc::make_mut(&mut *state.shares.write().await).entries,
+    )
+    .push(FileEntry {
+        filename_encoding: Default::default(),
+        extension_encoding: Default::default(),
+        code: 1,
+        filename: "Remote/Search.flac".to_owned(),
+        size: 321,
+        extension: "flac".to_owned(),
+        attributes: Vec::new(),
+    });
 
     let created = crate::route_http_request(
         "POST",

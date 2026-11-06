@@ -129,7 +129,7 @@ pub(super) async fn share_catalog_supports_filters_and_pagination() {
     {
         let mut shares = state.shares.write().await;
         let shares = std::sync::Arc::make_mut(&mut *shares);
-        shares.entries.push(FileEntry {
+        std::sync::Arc::make_mut(&mut shares.entries).push(FileEntry {
             filename_encoding: Default::default(),
             extension_encoding: Default::default(),
             code: 1,
@@ -167,7 +167,7 @@ pub(super) async fn share_rescan_route_rebuilds_snapshot() {
     {
         let mut shares = state.shares.write().await;
         let shares = std::sync::Arc::make_mut(&mut *shares);
-        shares.entries.clear();
+        std::sync::Arc::make_mut(&mut shares.entries).clear();
     }
 
     let response = crate::route_http_request("POST", "/api/v0/shares/rescan", None, "", &state)
@@ -409,8 +409,8 @@ pub(super) async fn share_rebuild_routes_roll_back_when_persistence_fails() {
         {
             let mut shares = state.shares.write().await;
             let shares = std::sync::Arc::make_mut(&mut *shares);
-            shares.entries.clear();
-            shares.local_paths.clear();
+            std::sync::Arc::make_mut(&mut shares.entries).clear();
+            std::sync::Arc::make_mut(&mut shares.local_paths).clear();
             shares.roots.clear();
             shares.scan_errors.push("previous snapshot".to_owned());
         }

@@ -1970,8 +1970,8 @@ pub(super) async fn controller_api_differential_controller_users_and_shares() {
         let mut shares = state.shares.write().await;
         let shares = std::sync::Arc::make_mut(&mut *shares);
         shares.roots.clear();
-        shares.entries.clear();
-        shares.local_paths.clear();
+        std::sync::Arc::make_mut(&mut shares.entries).clear();
+        std::sync::Arc::make_mut(&mut shares.local_paths).clear();
         shares.roots.push(crate::ShareRoot {
             label: "Virtual".to_owned(),
             local_path: PathBuf::from("/srv/music"),
@@ -1986,7 +1986,7 @@ pub(super) async fn controller_api_differential_controller_users_and_shares() {
             }],
             statistics_ready: true,
         });
-        shares.entries.push(FileEntry {
+        std::sync::Arc::make_mut(&mut shares.entries).push(FileEntry {
             filename_encoding: Default::default(),
             extension_encoding: Default::default(),
             code: 1,

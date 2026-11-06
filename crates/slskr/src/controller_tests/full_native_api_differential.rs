@@ -43,8 +43,8 @@ pub(super) async fn controller_api_differential_native_library_fallback_uses_cur
     {
         let mut shares = state.shares.write().await;
         let shares = std::sync::Arc::make_mut(&mut *shares);
-        shares.entries.clear();
-        shares.local_paths.clear();
+        std::sync::Arc::make_mut(&mut shares.entries).clear();
+        std::sync::Arc::make_mut(&mut shares.local_paths).clear();
     }
 
     let visible_response = crate::route_http_request(

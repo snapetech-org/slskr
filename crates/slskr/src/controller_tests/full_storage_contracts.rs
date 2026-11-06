@@ -23,7 +23,7 @@ pub(super) async fn files_api_lists_one_share_root_without_local_paths() {
             }],
             statistics_ready: true,
         });
-        shares.entries.push(FileEntry {
+        std::sync::Arc::make_mut(&mut shares.entries).push(FileEntry {
             filename_encoding: Default::default(),
             extension_encoding: Default::default(),
             code: 1,
@@ -32,7 +32,7 @@ pub(super) async fn files_api_lists_one_share_root_without_local_paths() {
             extension: "mp3".to_owned(),
             attributes: Vec::new(),
         });
-        shares.entries.push(FileEntry {
+        std::sync::Arc::make_mut(&mut shares.entries).push(FileEntry {
             filename_encoding: Default::default(),
             extension_encoding: Default::default(),
             code: 1,
@@ -41,7 +41,7 @@ pub(super) async fn files_api_lists_one_share_root_without_local_paths() {
             extension: "flac".to_owned(),
             attributes: Vec::new(),
         });
-        shares.entries.push(FileEntry {
+        std::sync::Arc::make_mut(&mut shares.entries).push(FileEntry {
             filename_encoding: Default::default(),
             extension_encoding: Default::default(),
             code: 1,
@@ -50,7 +50,7 @@ pub(super) async fn files_api_lists_one_share_root_without_local_paths() {
             extension: "jpg".to_owned(),
             attributes: Vec::new(),
         });
-        shares.local_paths.insert(
+        std::sync::Arc::make_mut(&mut shares.local_paths).insert(
             "Music/Test.flac".to_owned(),
             PathBuf::from("/tmp/private/Test.flac"),
         );
@@ -116,7 +116,7 @@ pub(super) async fn files_api_projects_folder_views_and_directory_summaries() {
             ("Music/Artist/Live/Bootleg.flac", 100, "flac"),
             ("Music/Artist/Loose.mp3", 100, "mp3"),
         ] {
-            shares.entries.push(FileEntry {
+            std::sync::Arc::make_mut(&mut shares.entries).push(FileEntry {
                 filename_encoding: Default::default(),
                 extension_encoding: Default::default(),
                 code: 1,

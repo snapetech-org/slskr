@@ -445,7 +445,8 @@ pub(super) async fn incoming_search_response_honors_configured_file_limit() {
             extension: "flac".to_owned(),
             attributes: Vec::new(),
         })
-        .collect();
+        .collect::<Vec<_>>()
+        .into();
     let response = crate::build_file_search_response(&state, 1, "fixture")
         .await
         .expect("matching response");

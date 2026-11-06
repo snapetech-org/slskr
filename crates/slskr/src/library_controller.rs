@@ -345,15 +345,17 @@ pub(super) async fn native_library_items_search_json(
         (shares.entries.clone(), shares.local_paths.clone())
     };
     let mut candidates = entries
-        .into_iter()
+        .iter()
         .filter(|entry| library_entry_matches(entry, query.as_deref(), kinds.as_ref()))
         .take(limit)
+        .cloned()
         .map(|entry| {
             let local_path = local_paths.get(&entry.filename).cloned();
             let display_path = entry.filename.clone();
             (entry, local_path, display_path)
         })
         .collect::<Vec<_>>();
+    drop((entries, local_paths));
 
     if candidates.is_empty() {
         let mut settings = state.share_settings.read().await.clone();

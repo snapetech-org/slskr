@@ -552,7 +552,7 @@ pub(super) async fn inbound_transfer_request_serves_shared_file_over_pierce_fire
     {
         let mut shares = state.shares.write().await;
         let shares = std::sync::Arc::make_mut(&mut *shares);
-        shares.entries.push(FileEntry {
+        std::sync::Arc::make_mut(&mut shares.entries).push(FileEntry {
             filename_encoding: Default::default(),
             extension_encoding: Default::default(),
             code: 1,
@@ -561,8 +561,7 @@ pub(super) async fn inbound_transfer_request_serves_shared_file_over_pierce_fire
             extension: "flac".to_owned(),
             attributes: Vec::new(),
         });
-        shares
-            .local_paths
+        std::sync::Arc::make_mut(&mut shares.local_paths)
             .insert("Virtual/Inbound.flac".to_owned(), path.clone());
     }
 
