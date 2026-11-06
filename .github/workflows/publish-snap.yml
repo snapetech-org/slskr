@@ -47,8 +47,11 @@ jobs:
           packaging/scripts/update-release-metadata.sh "$RELEASE_TAG" release-assets
           mkdir -p "$RUNNER_TEMP/snap-build/snap"
           cp packaging/snap/snapcraft.yaml "$RUNNER_TEMP/snap-build/snap/snapcraft.yaml"
-      - name: Install Snapcraft
-        run: sudo snap install snapcraft --classic --channel=8.x/stable
+      - name: Install Snapcraft and archive inspection tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y squashfs-tools
+          sudo snap install snapcraft --classic --channel=8.x/stable
       - name: Build native Snap
         env:
           BUILD_ARCH: ${{ matrix.arch }}
