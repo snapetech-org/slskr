@@ -1,23 +1,22 @@
 # ng-runner-policy: private-jit-only-v1
 name: Semgrep Community Edition
-run-name: ${{ format('action:{0}:pool:{1}', inputs.action_tag, inputs.runner_pool_tag) }}
+run-name: ${{ format('action:{0}:pool:{1}', inputs.action, inputs.runner_pool) }}
 
 on:
   workflow_dispatch:
     inputs:
-      action_tag:
-        description: Action to run
+      action:
+        description: Run the private security scan
         required: true
         type: choice
         options:
-          - semgrep
-      runner_pool_tag:
-        description: Private ephemeral JIT runner pool
+          - scan
+      runner_pool:
+        description: Select the private ephemeral runner pool
         required: true
         type: choice
         options:
           - private
-
 permissions:
   contents: read
 
@@ -28,7 +27,18 @@ concurrency:
 jobs:
   semgrep:
     name: Semgrep CE (community rules)
-    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}"]}}', github.run_id)) }}
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          github.ref == 'refs/heads/main' &&
+          inputs.action == 'scan' && inputs.runner_pool == 'private'
+        )
+      ) &&
+      (
+        github.event_name == 'workflow_dispatch' && inputs.action == 'scan' && inputs.runner_pool == 'private' && github.ref == 'refs/heads/main'
+      )
+    runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-semgrep"]}}', github.run_id)) }}
     timeout-minutes: 30
     steps:
       - name: Checkout
@@ -51,10 +61,23 @@ jobs:
             -v /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt:ro \
             -v "$GITHUB_WORKSPACE:/src" -w /src semgrep/semgrep:latest \
             semgrep scan --config p/default --metrics=off --jobs 2 \
-              --json-output semgrep.json .
+              --json-output semgrep.json --sarif-output semgrep.sarif .
 
       - name: Report finding count
         if: always() && hashFiles('semgrep.json') != ''
         run: |
-          jq -r '"Semgrep CE reported \(.results | length) finding(s). Review the job log and JSON report."' semgrep.json
+          jq -r '"Semgrep CE reported \(.results | length) finding(s). Review semgrep.sarif and the scan log."' semgrep.json
 
+      - name: Retain scan report (semgrep)
+        if: >-
+          always() && hashFiles('semgrep.sarif') != '' &&
+          (github.event_name != 'pull_request' ||
+          github.event.pull_request.head.repo.full_name == github.repository)
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: scan-report-semgrep-${{ github.job }}-${{ strategy.job-index }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            semgrep.sarif
+            semgrep.json
+          if-no-files-found: warn
+          retention-days: 14

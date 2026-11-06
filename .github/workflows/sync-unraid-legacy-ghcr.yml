@@ -15,8 +15,7 @@ on:
         description: Private ephemeral JIT runner pool
         required: true
         type: choice
-        options:
-          - private
+        options: [private]
 permissions:
   contents: read
 
@@ -27,9 +26,17 @@ concurrency:
 jobs:
   sync:
     if: >-
-      github.event_name == 'workflow_dispatch' &&
-      github.repository == 'snapetech-org/slskr' &&
-      github.ref == 'refs/heads/main'
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          github.ref == 'refs/heads/main' &&
+          inputs.action_tag == 'sync' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        github.event_name == 'workflow_dispatch' && github.repository == 'snapetech-org/slskr' && github.ref == 'refs/heads/main'
+      )
     runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-sync"]}}', github.run_id)) }}
     timeout-minutes: 10
     permissions:

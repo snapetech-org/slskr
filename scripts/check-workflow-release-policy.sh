@@ -24,36 +24,8 @@ for expected in \
 done
 
 if ! rg -q '^  workflow_dispatch:' .github/workflows/ci.yml ||
-   rg -q '^  (push|pull_request|pull_request_target|schedule):' .github/workflows/ci.yml; then
-  printf 'workflow release policy check failed: CI must remain manually dispatched\n' >&2
-  status=1
-fi
-for expected in \
-  'action_tag:' \
-  '- test' \
-  'runner_pool_tag:' \
-  '- private'; do
-  if ! rg -n -F -- "$expected" .github/workflows/ci.yml >/dev/null; then
-    printf 'workflow release policy check failed: CI dispatch input is missing: %s\n' "$expected" >&2
-    status=1
-  fi
-done
-if rg -n 'NG_HOSTED_FIRST|runs-on:[[:space:]]*(["\x27])?(ubuntu|macos|windows)-' .github/workflows >/dev/null; then
-  printf 'workflow release policy check failed: hosted runner routing is not allowed\n' >&2
-  status=1
-fi
-for job in web-assets controller-regex-parity rust linux-aarch64 platform-builds package-surfaces; do
-  job_block="$(sed -n "/^  $job:/,/^  [A-Za-z0-9_-]*:/p" .github/workflows/ci.yml)"
-  if [[ "$job_block" != *"ng-shared-main-jit"* ||
-        "$job_block" != *"ng-shared-main-slskr"* ||
-        "$job_block" != *"ng-main-run-{0}"* ||
-        "$job_block" != *"github.run_id"* ]]; then
-    printf 'workflow release policy check failed: %s must use the private per-run JIT pool\n' "$job" >&2
-    status=1
-  fi
-done
-if ! rg -n -F '"group":"packer-windows"' .github/workflows/ci.yml >/dev/null; then
-  printf 'workflow release policy check failed: Windows CI must use the private Packer JIT group\n' >&2
+   rg -q '^  (push|pull_request(_target)?|schedule):' .github/workflows/ci.yml; then
+  printf 'workflow release policy check failed: CI must use explicit dispatch and must not build on default-branch pushes\n' >&2
   status=1
 fi
 controller_parity_job="$(sed -n '/^  controller-regex-parity:/,/^  [A-Za-z0-9_-]*:/p' .github/workflows/ci.yml)"
@@ -70,33 +42,87 @@ if [[ -z "$dotnet_setup_line" || -z "$dotnet_info_line" || "$dotnet_setup_line" 
   printf 'workflow release policy check failed: controller parity must install .NET before using dotnet\n' >&2
   status=1
 fi
+
 for workflow in semgrep-community.yml trivy-filesystem.yml; do
   workflow_path=".github/workflows/$workflow"
-  workflow_events="$(sed -n '1,/^jobs:/p' "$workflow_path")"
   if [[ ! -f "$workflow_path" ]] ||
-     ! rg -n -F 'ng-shared-main-jit' "$workflow_path" >/dev/null ||
-     ! rg -n -F 'ng-shared-main-slskr' "$workflow_path" >/dev/null ||
-     ! rg -n -F 'ng-main-run-{0}' "$workflow_path" >/dev/null ||
-     ! rg -n -F 'github.run_id' "$workflow_path" >/dev/null ||
-     ! rg -n -F 'workflow_dispatch:' <<<"$workflow_events" >/dev/null ||
-     ! rg -n -F -- '- private' "$workflow_path" >/dev/null ||
-     rg -n -F 'NG_HOSTED_FIRST' "$workflow_path" >/dev/null; then
-    printf 'workflow release policy check failed: %s must use private JIT for manual scans\n' "$workflow_path" >&2
+     ! rg -q '^  workflow_dispatch:' "$workflow_path" ||
+     ! rg -q "inputs.action == 'scan'" "$workflow_path" ||
+     ! rg -q "inputs.runner_pool == 'private'" "$workflow_path" ||
+     ! rg -q "github.ref == 'refs/heads/main'" "$workflow_path" ||
+     ! rg -q -F '"group":"ng-shared-main-jit"' "$workflow_path" ||
+     ! rg -q -F 'ng-main-run-{0}' "$workflow_path" ||
+     ! rg -q -F 'gha-{0}-' "$workflow_path" ||
+     rg -q 'ubuntu-latest|windows-latest|macos-latest|NG_HOSTED_FIRST' "$workflow_path"; then
+    printf 'workflow release policy check failed: %s must be a manual, trusted-main scan on private JIT without hosted fallback\n' "$workflow_path" >&2
     status=1
   fi
 done
-for workflow in .github/workflows/*.yml; do
-  if ! rg -q -F 'ng-shared-main-jit' "$workflow"; then
-    continue
-  fi
-  case "${workflow##*/}" in
-    ci.yml|semgrep-community.yml|trivy-filesystem.yml|live-parity.yml|local-identity-leaks.yml|react-nightly-audit.yml|release-publish.yml|release.yml|sync-unraid-legacy-ghcr.yml|web-assets-validation.yml) ;;
-    *)
-      printf 'workflow release policy check failed: unexpected shared runner route in %s\n' "$workflow" >&2
-      status=1
-      ;;
-  esac
-done
+
+if ! python3 - .github/workflows <<'PYTHON'
+import re
+import sys
+from pathlib import Path
+
+workflow_directory = Path(sys.argv[1])
+allowed_groups = {
+    "ng-shared-main-jit",
+    "private-apple-builds",
+    "packer-windows",
+    "gvisor-sandbox",
+    "public-fork-jit",
+}
+hosted_runner = re.compile(r"(?:ubuntu|windows|macos)-[A-Za-z0-9._-]+")
+group_pattern = re.compile(r'"group"\s*:\s*"([^\"]+)"|^\s+group:\s*([A-Za-z0-9_-]+)\s*$', re.MULTILINE)
+errors = []
+
+for workflow in sorted((*workflow_directory.glob("*.yml"), *workflow_directory.glob("*.yaml"))):
+    lines = workflow.read_text().splitlines()
+    for index, line in enumerate(lines):
+        match = re.match(r"^(?P<indent> *)runs-on:(?P<value>.*)$", line)
+        if match is None:
+            continue
+        block_lines = [line]
+        parent_indent = len(match.group("indent"))
+        for child in lines[index + 1 :]:
+            if child.strip() and len(child) - len(child.lstrip()) <= parent_indent:
+                break
+            block_lines.append(child)
+        block = "\n".join(block_lines)
+        if hosted_runner.search(block):
+            errors.append(f"{workflow.name}:{index + 1} selects hosted runner capacity")
+            continue
+        groups = {a or b for a, b in group_pattern.findall(block)}
+        if not groups:
+            errors.append(f"{workflow.name}:{index + 1} has no approved private runner group")
+            continue
+        for group in groups:
+            if group not in allowed_groups:
+                errors.append(f"{workflow.name}:{index + 1} selects unapproved runner group {group}")
+                continue
+            if group == "ng-shared-main-jit":
+                required = ('"self-hosted"', '"ng-main-run-{0}"', '"gha-{0}-', 'github.run_id')
+            elif group == "private-apple-builds":
+                required = ('"self-hosted"', '"private-apple"', '"ng-main-run-{0}"', '"gha-{0}-', 'github.run_id')
+            elif group == "packer-windows":
+                required = ('"self-hosted"', '"gha-{0}-', 'github.run_id')
+            elif group == "public-fork-jit":
+                required = ('"self-hosted"', 'ng-public-run-${{ github.run_id }}')
+            else:
+                required = ("gvisor-sandbox",)
+            missing = [token for token in required if token not in block]
+            if missing:
+                errors.append(f"{workflow.name}:{index + 1} lacks private JIT scope for {group}: {', '.join(missing)}")
+
+if errors:
+    print("\n".join(errors), file=sys.stderr)
+    sys.exit(1)
+PYTHON
+then
+  printf 'workflow release policy check failed: every runner selector must use compatible private JIT with run-scoped labels\n' >&2
+  status=1
+fi
+
 if [[ ! -f "$pin_policy" ]]; then
   printf 'workflow release policy check failed: GitHub Actions pin policy is missing: %s\n' "$pin_policy" >&2
   status=1
@@ -127,16 +153,6 @@ else
       status=1
     fi
   done < <(rg -n '^[[:space:]-]*uses:[[:space:]]+[^[:space:]#]+@[^[:space:]#]+' .github/workflows)
-fi
-
-codeql_workflow=".github/workflows/codeql.yml"
-if [[ -e "$codeql_workflow" ]]; then
-  printf 'workflow release policy check failed: CodeQL workflow must remain disabled: %s\n' "$codeql_workflow" >&2
-  status=1
-fi
-if rg -n 'github/codeql-action/|security-events:[[:space:]]*write' .github/workflows >/dev/null; then
-  printf 'workflow release policy check failed: CodeQL actions and code-scanning uploads must remain disabled\n' >&2
-  status=1
 fi
 
 if ! rg -n -F 'scripts/run-security-scans.sh' .github/workflows scripts/run-release-gate.sh >/dev/null; then
@@ -235,22 +251,20 @@ if ! rg -n -F 'Locale::Maketext::Simple' scripts/select-windows-perl.ps1 >/dev/n
   status=1
 fi
 
-release_events="$(sed -n '1,/^jobs:/p' .github/workflows/release.yml)"
-if ! rg -n -F 'workflow_dispatch:' <<<"$release_events" >/dev/null ||
-   rg -n '^  (push|release|schedule):' <<<"$release_events" >/dev/null; then
-  printf 'workflow release policy check failed: release must be manually dispatched for a selected tag\n' >&2
+if ! rg -n -F "'v*'" .github/workflows/release.yml >/dev/null; then
+  printf 'workflow release policy check failed: v* tag trigger was not found\n' >&2
   status=1
 fi
-for expected in \
-  'description: Release tag; must match the selected ref' \
-  'REQUESTED_TAG: ${{ inputs.tag }}' \
-  'if [[ "$RELEASE_TAG" != "$REQUESTED_TAG" ]]' \
-  'tag_pattern='; do
-  if ! rg -n -F -- "$expected" .github/workflows/release.yml >/dev/null; then
-    printf 'workflow release policy check failed: release tag validation is missing: %s\n' "$expected" >&2
-    status=1
-  fi
-done
+
+if ! rg -n -F "release-v*" .github/workflows/release.yml >/dev/null; then
+  printf 'workflow release policy check failed: legacy release-v tags must remain supported\n' >&2
+  status=1
+fi
+
+if rg -n -F "workflow_dispatch:" .github/workflows/release.yml >/dev/null; then
+  printf 'workflow release policy check failed: release workflow must only run from v* or legacy release-v tags\n' >&2
+  status=1
+fi
 
 if rg -n -F "types: [published]" .github/workflows/release-publish.yml >/dev/null; then
   printf 'workflow release policy check failed: downstream package publish must be dispatched after release assets are uploaded\n' >&2
@@ -312,6 +326,16 @@ for dockerfile in Dockerfile packaging/docker/release.Dockerfile; do
   done
 done
 
+for expected in \
+  'push:' \
+  'tags:' \
+  'cargo audit'; do
+  if ! rg -n -F -- "$expected" .github/workflows/ci.yml >/dev/null; then
+    printf 'workflow release policy check failed: CI must retain tag-only advisory coverage; missing token: %s\n' "$expected" >&2
+    status=1
+  fi
+done
+
 if ! rg -n -F -- 'cancel-in-progress: false' .github/workflows/ci.yml >/dev/null; then
   printf 'workflow release policy check failed: validation runs must not cancel earlier attempts\n' >&2
   status=1
@@ -343,17 +367,6 @@ for expected in \
   fi
 done
 
-for workflow in ci release release-publish publish-chocolatey windows-smoke; do
-  if ! rg -n -F 'packer-windows' ".github/workflows/${workflow}.yml" >/dev/null; then
-    printf 'workflow release policy check failed: Windows jobs must use the private Packer JIT group: %s\n' "$workflow" >&2
-    status=1
-  fi
-done
-if rg -n 'runs-on:[[:space:]]*(["\x27])?(ubuntu|macos|windows)-|NG_HOSTED_FIRST' .github/workflows >/dev/null; then
-  printf 'workflow release policy check failed: hosted runner labels or fallback routing are not allowed\n' >&2
-  status=1
-fi
-
 if ! rg -n -F 'cargo audit' .github/workflows/ci.yml .github/workflows/release.yml scripts/run-release-gate.sh >/dev/null; then
   printf 'workflow release policy check failed: RustSec audit must stay wired into CI and release gates\n' >&2
   status=1
@@ -377,10 +390,9 @@ for expected in \
   'v<semver>' \
   'Require Main CI' \
   'for _ in {1..240}' \
-  '--workflow ci.yml' \
+  '--workflow CI' \
+  '--branch main' \
   '--commit "$RELEASE_SHA"' \
-  '.event == "workflow_dispatch"' \
-  '.displayTitle == ("action:test:pool:private:tag:" + $tag)' \
   'needs: [version, main-ci]' \
   "startsWith(github.ref, 'refs/tags/release-v')" \
   "startsWith(github.ref, 'refs/tags/v')" \
@@ -416,9 +428,13 @@ for expected in \
   fi
 done
 
-if ! rg -n -F '`macos-x64`' docs/release.md >/dev/null ||
-   ! rg -n -F 'Private JIT macOS x64' docs/release.md >/dev/null; then
-  printf 'workflow release policy check failed: release docs must document the private macOS x64 target\n' >&2
+if ! rg -n -F '`macos-15-intel`' docs/release.md >/dev/null; then
+  printf 'workflow release policy check failed: release docs must document the current macOS Intel runner\n' >&2
+  status=1
+fi
+
+if rg -n -F "'release-*'" .github/workflows/release.yml >/dev/null; then
+  printf 'workflow release policy check failed: broad release-* tag trigger must not return\n' >&2
   status=1
 fi
 

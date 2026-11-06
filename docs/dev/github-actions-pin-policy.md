@@ -9,13 +9,9 @@ Run `scripts/check-workflow-release-policy.sh` after changing `.github/workflows
 The gate fails if any external `uses:` reference is not pinned to a full commit SHA
 or if a pinned action or reusable workflow is missing from this ledger.
 
-CodeQL analysis is disabled by organization policy. Semgrep and Trivy workflows
-remain active and report findings in workflow logs; no `github/codeql-action`
-workflow action is allowed.
-
 | Pinned dependency | Reviewed ref | Pinned commit | Notes |
  --- | --- | --- |
-| `actions/checkout` | `v6` | `3d3c42e5aac5ba805825da76410c181273ba90b1` | CI, release, live parity, and local identity workflows. |
+| `actions/checkout` | `v6` | `3d3c42e5aac5ba805825da76410c181273ba90b1` | CI, release, live parity, and local identity checkout. |
 | `actions/cache` | `v6.1.0` | `55cc8345863c7cc4c66a329aec7e433d2d1c52a9` | Cached pinned `cargo-audit` binaries for CI and release gates. |
 | `dtolnay/rust-toolchain` | `stable` | `29eef336d9b2848a0b548edc03f92a220660cdb8` | Rust toolchain install for CI, release, and live parity jobs. |
 | `Swatinem/rust-cache` | `v2` | `f0d9c3887740aee45f6153b24b3a6b815192ec16` | Dereferenced tag target for Rust cache setup. |

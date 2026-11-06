@@ -1,3 +1,4 @@
+# packer-windows-jit-v1
 # ng-runner-policy: private-jit-only-v1
 name: Release
 run-name: ${{ format('action:{0}:pool:{1}:tag:{2}', inputs.action_tag, inputs.runner_pool_tag, inputs.tag) }}
@@ -24,8 +25,7 @@ on:
         description: Private ephemeral JIT runner pool
         required: true
         type: choice
-        options:
-          - private
+        options: [private]
       tag:
         description: Release tag; must match the selected ref
         required: true
@@ -41,6 +41,19 @@ concurrency:
 jobs:
   version:
     name: Version
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          startsWith(github.ref, 'refs/tags/release-v') &&
+          github.ref_name == inputs.tag &&
+          inputs.action_tag == 'release' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        true
+      )
     runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-version"]}}', github.run_id)) }}
     outputs:
       version: ${{ steps.version.outputs.version }}
@@ -59,6 +72,19 @@ jobs:
 
   main-ci:
     name: Require Main CI
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          startsWith(github.ref, 'refs/tags/release-v') &&
+          github.ref_name == inputs.tag &&
+          inputs.action_tag == 'release' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        true
+      )
     runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-main-ci"]}}', github.run_id)) }}
     steps:
       - name: Wait for CI on release commit
@@ -120,6 +146,19 @@ jobs:
   gate:
     name: Release Gate
     needs: [version, main-ci]
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          startsWith(github.ref, 'refs/tags/release-v') &&
+          github.ref_name == inputs.tag &&
+          inputs.action_tag == 'release' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        true
+      )
     runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-gate"]}}', github.run_id)) }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
@@ -190,37 +229,50 @@ jobs:
   build:
     name: Build ${{ matrix.name }}
     needs: [version, main-ci]
-    runs-on: ${{ matrix.os == 'ubuntu-latest' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) || matrix.os == 'ubuntu-24.04-arm' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","arm64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-15-intel' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","macOS","X64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-15' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","macOS","ARM64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) || fromJSON(format('{{"group":"packer-windows","labels":["self-hosted","Windows","X64","packer-windows","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) }}
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          startsWith(github.ref, 'refs/tags/release-v') &&
+          github.ref_name == inputs.tag &&
+          inputs.action_tag == 'release' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        true
+      )
+    runs-on: ${{ matrix.os == 'linux-x64' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) || matrix.os == 'linux-arm64' && fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","arm64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-x64' && fromJSON(format('{{"group":"private-apple-builds","labels":["self-hosted","macOS","X64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build","private-apple"]}}', github.run_id, strategy.job-index)) || matrix.os == 'macos-arm64' && fromJSON(format('{{"group":"private-apple-builds","labels":["self-hosted","macOS","ARM64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-{1}-build","private-apple"]}}', github.run_id, strategy.job-index)) || fromJSON(format('{{"group":"packer-windows","labels":["self-hosted","Windows","X64","on-demand","packer-windows","slskR","gha-{0}-{1}-build"]}}', github.run_id, strategy.job-index)) }}
     strategy:
       fail-fast: false
       matrix:
         include:
           - name: linux-x64
-            os: ubuntu-latest
+            os: linux-x64
             target: x86_64-unknown-linux-gnu
             apt: ''
           - name: linux-musl-x64
-            os: ubuntu-latest
+            os: linux-x64
             target: x86_64-unknown-linux-musl
             apt: musl-tools
           - name: linux-arm64
-            os: ubuntu-24.04-arm
+            os: linux-arm64
             target: aarch64-unknown-linux-gnu
             apt: ''
           - name: linux-musl-arm64
-            os: ubuntu-24.04-arm
+            os: linux-arm64
             target: aarch64-unknown-linux-musl
             apt: musl-tools
           - name: macos-x64
-            os: macos-15-intel
+            os: macos-x64
             target: x86_64-apple-darwin
             apt: ''
           - name: macos-arm64
-            os: macos-15
+            os: macos-arm64
             target: aarch64-apple-darwin
             apt: ''
           - name: windows-x64
-            os: windows-latest
+            os: windows-x64
             target: x86_64-pc-windows-msvc
             apt: ''
     steps:
@@ -321,10 +373,21 @@ jobs:
           path: |
             target/dist/slskr-*
           if-no-files-found: error
-
   release:
     name: Publish GitHub Release
-    if: startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v')
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          startsWith(github.ref, 'refs/tags/release-v') &&
+          github.ref_name == inputs.tag &&
+          inputs.action_tag == 'release' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        startsWith(github.ref, 'refs/tags/release-v')
+      )
     needs: [version, gate, build]
     runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-release"]}}', github.run_id)) }}
     outputs:
@@ -432,7 +495,7 @@ jobs:
 
   downstream-publish:
     name: Publish Downstream Packages
-    if: startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v')
+    if: startsWith(github.ref, 'refs/tags/release-v') && github.ref_name == inputs.tag && inputs.action_tag == 'release' && inputs.runner_pool_tag == 'private'
     needs: [release]
     permissions:
       actions: read
@@ -464,7 +527,19 @@ jobs:
 
   discord:
     name: Announce Discord Release
-    if: startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v')
+    if: >-
+      (
+        github.event_name != 'workflow_dispatch' ||
+        (
+          startsWith(github.ref, 'refs/tags/release-v') &&
+          github.ref_name == inputs.tag &&
+          inputs.action_tag == 'release' &&
+          inputs.runner_pool_tag == 'private'
+        )
+      ) &&
+      (
+        startsWith(github.ref, 'refs/tags/release-v')
+      )
     needs: [version, release, downstream-publish]
     runs-on: ${{ fromJSON(format('{{"group":"ng-shared-main-jit","labels":["self-hosted","linux","x64","ng-shared-main-slskr","ng-main-run-{0}","gha-{0}-discord"]}}', github.run_id)) }}
     steps:
