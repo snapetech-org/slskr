@@ -19,6 +19,36 @@ TARGETS = (
 
 
 class ReleaseMetadataTests(unittest.TestCase):
+    def test_publisher_accepts_tagged_calls_and_main_only_manual_retries(self):
+        workflow = (ROOT / '.github/workflows/release-publish.yml').read_text()
+        caller = (ROOT / '.github/workflows/release.yml').read_text()
+        self.assertIn('uses: ./.github/workflows/release-publish.yml\n    with:\n      release_workflow_call: true', caller)
+        self.assertIn("if: github.event_name == 'workflow_dispatch' && !inputs.release_workflow_call", workflow)
+        for job in ('metadata', 'aur', 'copr', 'ppa', 'docker', 'homebrew', 'winget'):
+            body = re.search(r'^  ' + job + r':\n(.*?)(?=^  [a-z]|\Z)', workflow, re.M | re.S).group(1)
+            gate = re.search(r'^    if: >-\n((?:      .*\n)+)', body, re.M).group(1)
+            for ref, called, action, pool, expected in (
+                ('refs/tags/v9.8.7', True, 'release', 'hosted', True),
+                ('refs/heads/main', False, 'release', 'hosted', True),
+                ('refs/tags/v9.8.7', False, 'release', 'hosted', False),
+                ('refs/heads/feature', False, 'release', 'hosted', False),
+                ('refs/tags/v9.8.6', True, 'release', 'hosted', False),
+                ('refs/tags/v9.8.7', True, 'test', 'hosted', False),
+                ('refs/tags/v9.8.7', True, 'release', 'private', False),
+            ):
+                expression = gate
+                for field, value in {
+                    'github.event_name': 'workflow_dispatch', 'github.ref': ref,
+                    'inputs.release_workflow_call': called, 'inputs.tag': 'v9.8.7',
+                    'inputs.action_tag': action, 'inputs.runner_pool_tag': pool,
+                    'inputs.publish_only': 'all',
+                }.items():
+                    expression = expression.replace(field, repr(value))
+                expression = ' '.join(expression.replace('&&', ' and ').replace('||', ' or ').split())
+                with self.subTest(job=job, ref=ref, called=called, action=action, pool=pool):
+                    self.assertEqual(eval(expression, {'__builtins__': {},
+                        'format': lambda template, value: template.format(value)}), expected)
+
     def test_workflow_archive_names_match_package_consumers(self):
         workflow = (ROOT / '.github/workflows/release.yml').read_text()
         value = re.search(r'^\s+SLSKR_RELEASE_VERSION:\s*(.+)$', workflow, re.M).group(1)

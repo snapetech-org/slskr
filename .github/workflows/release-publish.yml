@@ -5,6 +5,11 @@ run-name: ${{ format('action:{0}:pool:{1}', inputs.action_tag, inputs.runner_poo
 on:
   workflow_call:
     inputs:
+      release_workflow_call:
+        description: Validated tag handoff from the release workflow
+        required: false
+        type: boolean
+        default: false
       action_tag:
         description: Action to run
         required: true
@@ -95,6 +100,7 @@ jobs:
     if: >-
       (
         github.event_name != 'workflow_dispatch' ||
+        (inputs.release_workflow_call && github.ref == format('refs/tags/{0}', inputs.tag)) ||
         (
           github.ref == 'refs/heads/main' &&
           inputs.action_tag == 'release' &&
@@ -113,7 +119,7 @@ jobs:
       release_sha: ${{ steps.version.outputs.release_sha }}
     steps:
       - name: Require main source for manual publisher retries
-        if: github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'workflow_dispatch' && !inputs.release_workflow_call
         shell: bash
         run: |
           if [[ "$GITHUB_REF" != "refs/heads/main" ]]; then
@@ -176,6 +182,7 @@ jobs:
     if: >-
       (
         github.event_name != 'workflow_dispatch' ||
+        (inputs.release_workflow_call && github.ref == format('refs/tags/{0}', inputs.tag)) ||
         (
           github.ref == 'refs/heads/main' &&
           inputs.action_tag == 'release' &&
@@ -244,6 +251,7 @@ jobs:
     if: >-
       (
         github.event_name != 'workflow_dispatch' ||
+        (inputs.release_workflow_call && github.ref == format('refs/tags/{0}', inputs.tag)) ||
         (
           github.ref == 'refs/heads/main' &&
           inputs.action_tag == 'release' &&
@@ -447,6 +455,7 @@ jobs:
     if: >-
       (
         github.event_name != 'workflow_dispatch' ||
+        (inputs.release_workflow_call && github.ref == format('refs/tags/{0}', inputs.tag)) ||
         (
           github.ref == 'refs/heads/main' &&
           inputs.action_tag == 'release' &&
@@ -648,6 +657,7 @@ jobs:
     if: >-
       (
         github.event_name != 'workflow_dispatch' ||
+        (inputs.release_workflow_call && github.ref == format('refs/tags/{0}', inputs.tag)) ||
         (
           github.ref == 'refs/heads/main' &&
           inputs.action_tag == 'release' &&
@@ -757,6 +767,7 @@ jobs:
     if: >-
       (
         github.event_name != 'workflow_dispatch' ||
+        (inputs.release_workflow_call && github.ref == format('refs/tags/{0}', inputs.tag)) ||
         (
           github.ref == 'refs/heads/main' &&
           inputs.action_tag == 'release' &&
@@ -799,6 +810,7 @@ jobs:
     if: >-
       (
         github.event_name != 'workflow_dispatch' ||
+        (inputs.release_workflow_call && github.ref == format('refs/tags/{0}', inputs.tag)) ||
         (
           github.ref == 'refs/heads/main' &&
           inputs.action_tag == 'release' &&

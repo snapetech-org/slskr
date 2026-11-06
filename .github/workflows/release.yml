@@ -502,6 +502,7 @@ jobs:
       packages: write
     uses: ./.github/workflows/release-publish.yml
     with:
+      release_workflow_call: true
       action_tag: release
       runner_pool_tag: hosted
       tag: ${{ github.ref_name }}
