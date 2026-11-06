@@ -214,6 +214,8 @@ jobs:
       - run: scripts/test-check-plan-freshness.sh
       - run: scripts/check-rust-format.sh
       - run: cargo clippy --locked --workspace --all-targets -- -D warnings
+      - name: Compile optional controller and compatibility tests
+        run: cargo check --locked -p slskr --tests --features full-controller-tests,legacy-route-dispatch
       - run: cargo check --locked -p slskr-web --target wasm32-unknown-unknown
       - name: Run Rust workspace tests
         timeout-minutes: 270

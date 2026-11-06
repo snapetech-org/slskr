@@ -18,7 +18,7 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
-## [0.2.77] — 2026-11-06
+## [0.2.78] — 2026-11-06
 
 - Publish completed large-library share indexes without a full duplicate allocation; failed rescans retain the last complete index.
 - Bound session-command queue admission and server writes to recover stalled searches.

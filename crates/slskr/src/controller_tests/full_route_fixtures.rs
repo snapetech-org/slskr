@@ -960,7 +960,7 @@ pub(super) async fn configured_api_token_protects_api_routes_impl() {
         )
         .1,
         soulseek_distributed_settings: RwLock::new(config.soulseek_distributed),
-        shares: RwLock::new(share_index),
+        shares: RwLock::new(Arc::new(share_index)),
         share_settings: RwLock::new(config.share_settings.clone()),
         share_index_persistence_lock: tokio::sync::Mutex::new(()),
         share_settings_generation: std::sync::atomic::AtomicU64::new(0),
@@ -1302,7 +1302,7 @@ pub(super) async fn configured_api_token_protects_api_routes_impl() {
         )
         .1,
         soulseek_distributed_settings: RwLock::new(cookie_enabled_config.soulseek_distributed),
-        shares: RwLock::new(cookie_share_index),
+        shares: RwLock::new(Arc::new(cookie_share_index)),
         share_settings: RwLock::new(cookie_enabled_config.share_settings.clone()),
         share_index_persistence_lock: tokio::sync::Mutex::new(()),
         share_settings_generation: std::sync::atomic::AtomicU64::new(0),
