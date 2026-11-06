@@ -192,6 +192,11 @@ jobs:
           echo "$HOME/go/bin" >> "$GITHUB_PATH"
       - name: Lint GitHub workflows
         run: actionlint
+      - name: Lint release-gate shell scripts
+        run: >-
+          shellcheck -x
+          -e SC1090,SC2016,SC2030,SC2031,SC2034,SC2100,SC2155,SC2206,SC2317,SC2329
+          scripts/*.sh
       - name: Restore cargo-audit
         id: cargo-audit-cache
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # actions/cache@v6.1.0
