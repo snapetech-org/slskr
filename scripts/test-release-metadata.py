@@ -3,9 +3,11 @@
 import hashlib
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import tempfile
+import tarfile
 import unittest
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -17,6 +19,41 @@ TARGETS = (
 
 
 class ReleaseMetadataTests(unittest.TestCase):
+    def test_workflow_archive_names_match_package_consumers(self):
+        workflow = (ROOT / '.github/workflows/release.yml').read_text()
+        value = re.search(r'^\s+SLSKR_RELEASE_VERSION:\s*(.+)$', workflow, re.M).group(1)
+        archive_version = value.replace('${{ needs.version.outputs.version }}', '9.8.7')
+        expected_version = subprocess.check_output(['bash', '-c',
+            'source "$1"; slskr_release_version_from_tag v9.8.7', 'test',
+            str(ROOT / 'packaging/scripts/release-assets.sh')], text=True).strip()
+        target = 'x86_64-unknown-linux-musl'
+        expected_root = f'slskr-{expected_version}-{target}'
+        with tempfile.TemporaryDirectory(prefix='slskr-archive-contract-') as tmp:
+            root = Path(tmp)
+            (root / 'scripts').mkdir()
+            shutil.copy2(ROOT / 'scripts/build-release-archive.sh', root / 'scripts')
+            for name in ('README.md', 'LICENSE', 'NOTICE', 'COMPLIANCE.md',
+                         'docs/slskr.config.example.toml', 'web/build/index.html',
+                         'web/build/assets/app.js', f'target/{target}/release/slskr'):
+                path = root / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text('archive contract fixture\n')
+            (root / 'bin').mkdir()
+            cargo = root / 'bin/cargo'
+            cargo.write_text('#!/bin/sh\ntest "$SLSKR_APP_VERSION" = 9.8.7\n')
+            cargo.chmod(0o755)
+            subprocess.run(['bash', 'scripts/build-release-archive.sh', '--target', target,
+                            '--skip-web-build'], cwd=root, check=True, capture_output=True,
+                           env={**os.environ, 'PATH': f'{root / "bin"}:{os.environ["PATH"]}',
+                                'SLSKR_RELEASE_VERSION': archive_version,
+                                'SOURCE_DATE_EPOCH': '1577836800'})
+            archive = root / f'target/dist/{expected_root}.tar.gz'
+            self.assertTrue(archive.is_file(), 'workflow must build the filenames consumed by publishers')
+            with tarfile.open(archive) as packaged:
+                self.assertIn(f'{expected_root}/slskr', packaged.getnames())
+            self.assertEqual(archive.with_suffix('.gz.sha256').read_text().split()[0],
+                             hashlib.sha256(archive.read_bytes()).hexdigest())
+
     def test_tag_identity_and_portable_package_checksums(self):
         for tag in ('v9.8.7', 'release-v9.8.7'):
             with self.subTest(tag=tag), tempfile.TemporaryDirectory(prefix='slskr-release-metadata-') as tmp:

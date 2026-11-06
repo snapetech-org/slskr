@@ -342,7 +342,7 @@ jobs:
       - name: Build archive
         shell: bash
         env:
-          SLSKR_RELEASE_VERSION: ${{ needs.version.outputs.version }}
+          SLSKR_RELEASE_VERSION: v${{ needs.version.outputs.version }}
         run: scripts/build-release-archive.sh --target '${{ matrix.target }}'
       - name: Verify archive layout
         shell: bash

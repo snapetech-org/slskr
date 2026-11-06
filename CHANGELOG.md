@@ -18,6 +18,13 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.81] — 2026-11-06
+
+- Fix large-library share-index publication stalls and preserve complete indexes after failed rescans.
+- Recover stalled searches through bounded session queues and server writes.
+- Refresh vulnerable dependencies and restore native public GitHub-hosted release validation.
+- Publish canonical archive names consumed by package managers, with static Linux packages for older system libraries.
+
 ## [0.2.80] — 2026-11-06
 
 - Publish large-library share indexes without duplicating the full index and preserve the last complete index after failed rescans.
