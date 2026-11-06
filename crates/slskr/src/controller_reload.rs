@@ -301,7 +301,7 @@ pub(super) fn apply_watched_controller_configuration<'a>(
         {
             let mut options_overlay = state.options_overlay.write().await;
             apply_notification_language_reload(
-                &mut *options_overlay,
+                &mut options_overlay,
                 &reloaded.integrations.notification_language,
             );
         }
@@ -726,13 +726,15 @@ mod notification_language_overlay_tests {
 
     #[test]
     fn reload_replaces_only_the_saved_notification_language_override() {
-        let mut overlay = ControllerOptionsOverlayState::default();
-        overlay.effective = serde_json::json!({
-            "integration": {
-                "notificationLanguage": "es",
-                "ntfy": {"enabled": true}
-            }
-        });
+        let mut overlay = ControllerOptionsOverlayState {
+            effective: serde_json::json!({
+                "integration": {
+                    "notificationLanguage": "es",
+                    "ntfy": {"enabled": true}
+                }
+            }),
+            ..Default::default()
+        };
 
         apply_notification_language_reload(&mut overlay, "fr");
 

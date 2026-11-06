@@ -103,9 +103,6 @@ export default defineConfig({
   build: {
     outDir: 'build',
     emptyOutDir: true,
-    // Compress the expanded localized UI within the existing shipped budgets.
-    minify: 'terser',
-    terserOptions: { compress: { passes: 2 } },
     chunkSizeWarningLimit: 700,
     // Vite 8 defaults to lightningcss for CSS minification, which rejects some
     // valid-but-unusual CSS emitted by semantic-ui-less (e.g. 0.0px dimensions).
@@ -125,6 +122,7 @@ export default defineConfig({
           ) {
             return 'react-vendor';
           }
+
           if (id.includes('axios')) return 'api-vendor';
 
           return 'vendor';

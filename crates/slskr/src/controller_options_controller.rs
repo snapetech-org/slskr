@@ -842,51 +842,6 @@ pub(super) async fn apply_controller_options_overlay(body: &str, state: &AppStat
     }
 }
 
-#[cfg(test)]
-mod notification_language_tests {
-    use super::*;
-
-    #[test]
-    fn options_overlay_accepts_supported_notification_languages_only() {
-        for target in [ControllerProfile::Native, ControllerProfile::Legacy] {
-            let overlay = normalize_controller_options_overlay(
-                r#"{"integration":{"notificationLanguage":"zh-Hant","ntfy":{"enabled":true}}}"#,
-                target,
-            )
-            .unwrap();
-            assert_eq!(overlay["integration"]["notificationLanguage"], "zh-Hant");
-            if target == ControllerProfile::Native {
-                assert_eq!(overlay["integration"]["ntfy"]["enabled"], true);
-            }
-
-            for value in [serde_json::json!("en-US"), serde_json::json!(null)] {
-                let body = serde_json::json!({"integration": {"notificationLanguage": value}});
-                assert!(normalize_controller_options_overlay(&body.to_string(), target,).is_err());
-            }
-        }
-    }
-
-    #[test]
-    fn only_unsupported_notification_language_uses_a_stable_localizable_error_code() {
-        let unsupported =
-            controller_options_overlay_error_response(UNSUPPORTED_NOTIFICATION_TITLE_LANGUAGE);
-        let unsupported_body: serde_json::Value = serde_json::from_str(&unsupported.body).unwrap();
-        assert_eq!(
-            unsupported_body["code"],
-            UNSUPPORTED_NOTIFICATION_TITLE_LANGUAGE_CODE
-        );
-        assert_eq!(
-            unsupported_body["error"],
-            UNSUPPORTED_NOTIFICATION_TITLE_LANGUAGE
-        );
-
-        let generic = controller_options_overlay_error_response("Invalid options overlay");
-        let generic_body: serde_json::Value = serde_json::from_str(&generic.body).unwrap();
-        assert_eq!(generic_body["error"], "Invalid options overlay");
-        assert!(generic_body.get("code").is_none());
-    }
-}
-
 pub(super) fn controller_options_mutation_response(
     body: &str,
     acknowledgements: u64,
@@ -998,4 +953,49 @@ pub(super) fn controller_server_state_json(
         );
     }
     response
+}
+
+#[cfg(test)]
+mod notification_language_tests {
+    use super::*;
+
+    #[test]
+    fn options_overlay_accepts_supported_notification_languages_only() {
+        for target in [ControllerProfile::Native, ControllerProfile::Legacy] {
+            let overlay = normalize_controller_options_overlay(
+                r#"{"integration":{"notificationLanguage":"zh-Hant","ntfy":{"enabled":true}}}"#,
+                target,
+            )
+            .unwrap();
+            assert_eq!(overlay["integration"]["notificationLanguage"], "zh-Hant");
+            if target == ControllerProfile::Native {
+                assert_eq!(overlay["integration"]["ntfy"]["enabled"], true);
+            }
+
+            for value in [serde_json::json!("en-US"), serde_json::json!(null)] {
+                let body = serde_json::json!({"integration": {"notificationLanguage": value}});
+                assert!(normalize_controller_options_overlay(&body.to_string(), target,).is_err());
+            }
+        }
+    }
+
+    #[test]
+    fn only_unsupported_notification_language_uses_a_stable_localizable_error_code() {
+        let unsupported =
+            controller_options_overlay_error_response(UNSUPPORTED_NOTIFICATION_TITLE_LANGUAGE);
+        let unsupported_body: serde_json::Value = serde_json::from_str(&unsupported.body).unwrap();
+        assert_eq!(
+            unsupported_body["code"],
+            UNSUPPORTED_NOTIFICATION_TITLE_LANGUAGE_CODE
+        );
+        assert_eq!(
+            unsupported_body["error"],
+            UNSUPPORTED_NOTIFICATION_TITLE_LANGUAGE
+        );
+
+        let generic = controller_options_overlay_error_response("Invalid options overlay");
+        let generic_body: serde_json::Value = serde_json::from_str(&generic.body).unwrap();
+        assert_eq!(generic_body["error"], "Invalid options overlay");
+        assert!(generic_body.get("code").is_none());
+    }
 }

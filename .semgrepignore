@@ -3,3 +3,10 @@
 # Keep its original bytes so the recorded review hashes remain verifiable.
 docs/pr-evidence/pr204-localization-2026-11-03/window-1443-1462/review-bundle/inputs/primary/attest_after.py
 docs/pr-evidence/pr204-localization-2026-11-03/window-1443-1462/review-bundle/inputs/primary/final_live_check.py
+
+# Loopback httptest servers intentionally emit raw JSON/error bodies and accept
+# WebSocket fixtures without browser origins. These files were excluded by
+# Semgrep's built-in test defaults before this explicit ignore file was added.
+client-go/batch_test.go
+client-go/client_test.go
+client-go/websocket_test.go
