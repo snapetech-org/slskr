@@ -1,15 +1,17 @@
 name: slskr
-base: core22
+base: core24
 version: '0.2.74'
 summary: Rust Soulseek daemon with bundled Web UI
 description: |
   slskR is a Rust Soulseek client and daemon with a local web interface.
 grade: stable
 confinement: strict
-architectures:
-  - build-on: [amd64]
+platforms:
+  amd64:
+    build-on: [amd64]
     build-for: [amd64]
-  - build-on: [amd64, arm64]
+  arm64:
+    build-on: [arm64]
     build-for: [arm64]
 
 apps:

@@ -15,7 +15,7 @@ slskdN release system, with slskR-specific package and project names.
 | COPR | `slskdn/slskr` (x86_64 and aarch64) | Preferred: `COPR_KERBEROS_PRINCIPAL`, `COPR_KERBEROS_KEYTAB_B64`; then Fedora username/password/TOTP; last fallback: `COPR_LOGIN`, `COPR_TOKEN` |
 | Launchpad PPA | `~keefshape/ubuntu/slskdn` (amd64; arm64 source-ready) | `GPG_PRIVATE_KEY`, optional `LAUNCHPAD_SFTP_KEY`, optional `LAUNCHPAD_SFTP_USER` |
 | Homebrew tap | `snapetech/homebrew-slskdn` (compatibility tap) | `TAP_GITHUB_TOKEN` |
-| Snap | `slskr` (amd64 and arm64) | Snap Store credentials managed outside this workflow |
+| Snap | `slskr` (amd64 and arm64) | `SNAPCRAFT_STORE_CREDENTIALS` in the manual `publish-snap.yml` workflow |
 | Flatpak | `io.github.slskd.slskr` (x86_64 and aarch64) | Flathub credentials managed outside this workflow |
 | Helm | `packaging/helm/slskr` (multi-arch GHCR image) | none |
 | TrueNAS SCALE | `packaging/truenas-scale/charts/slskr` (multi-arch GHCR image) | none |
@@ -41,9 +41,9 @@ The release workflow directly publishes GitHub release assets, the GHCR
 multi-architecture image, AUR, COPR, the Launchpad PPA, and the Homebrew tap
 when their credentials are configured. It submits Winget manifests for external
 review. The release CI also validates the Snap and Flatpak manifests and their
-architecture-specific source archives, but it does not upload to the Snap
-Store or Flathub; those stores require their own credentials and review
-processes.
+architecture-specific source archives, while the separate manual `publish-snap.yml` workflow builds and uploads both
+Snap architectures after the release assets exist. Flathub remains an external
+publication and review process.
 
 The 2026-09-06 audit found the Launchpad source publication fully accepted and
 its `amd64` build successful, but the public PPA scheduled no `arm64` build.

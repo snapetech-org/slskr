@@ -1,0 +1,75 @@
+name: Publish Snap
+run-name: Snap ${{ inputs.tag }} (${{ inputs.publish && 'publish' || 'validate' }})
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Published release tag
+        type: string
+        required: true
+      publish:
+        description: Publish verified packages to the stable channel
+        type: boolean
+        default: true
+permissions:
+  contents: read
+concurrency:
+  group: snap-${{ inputs.tag }}
+  cancel-in-progress: false
+jobs:
+  snap:
+    if: github.ref == 'refs/heads/main'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: amd64
+            os: ubuntu-24.04
+          - arch: arm64
+            os: ubuntu-24.04-arm
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Verify release assets and generate package metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          [[ "$RELEASE_TAG" =~ ^(release-)?v[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          mkdir -p release-assets
+          gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --dir release-assets \
+            --pattern '*.tar.gz' --pattern '*.zip' --pattern '*.json' --pattern SHA256SUMS.txt
+          (cd release-assets && sha256sum --check SHA256SUMS.txt)
+          packaging/scripts/update-release-metadata.sh "$RELEASE_TAG" release-assets
+          mkdir -p "$RUNNER_TEMP/snap-build/snap"
+          cp packaging/snap/snapcraft.yaml "$RUNNER_TEMP/snap-build/snap/snapcraft.yaml"
+      - name: Install Snapcraft
+        run: sudo snap install snapcraft --classic --channel=8.x/stable
+      - name: Build native Snap
+        env:
+          BUILD_ARCH: ${{ matrix.arch }}
+        run: |
+          cd "$RUNNER_TEMP/snap-build"
+          sudo snapcraft --destructive-mode --build-for "$BUILD_ARCH"
+          snap_file=$(find . -maxdepth 1 -name '*.snap' -print -quit)
+          test -n "$snap_file"
+          unsquashfs -d unpacked "$snap_file"
+          unpacked/slskr version
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: snap-${{ matrix.arch }}
+          path: ${{ runner.temp }}/snap-build/*.snap
+          if-no-files-found: error
+          retention-days: 30
+      - name: Publish stable Snap
+        if: inputs.publish
+        env:
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS }}
+        run: |
+          test -n "$SNAPCRAFT_STORE_CREDENTIALS" || { echo 'Snap Store credentials are required.' >&2; exit 1; }
+          cd "$RUNNER_TEMP/snap-build"
+          snapcraft upload ./*.snap --release=stable
