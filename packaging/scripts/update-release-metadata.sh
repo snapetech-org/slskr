@@ -219,7 +219,7 @@ parts:
 
 write("packaging/flatpak/io.github.slskd.slskr.yml", f'''app-id: io.github.slskd.slskr
 runtime: org.freedesktop.Platform
-runtime-version: '23.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 command: slskr-wrapper
 
