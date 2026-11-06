@@ -13,12 +13,12 @@
         version = "0.2.74";
         sources = {
           "x86_64-linux" = {
-            url = "https://github.com/snapetech-org/slskr/releases/download/release-v0.2.74/slskr-v0.2.74-x86_64-unknown-linux-gnu.tar.gz";
-            sha256 = "a9767342626ef961fede6a89296f0578809413178a7889fb8ba752b1bcf26e44";
+            url = "https://github.com/snapetech-org/slskr/releases/download/release-v0.2.74/slskr-v0.2.74-x86_64-unknown-linux-musl.tar.gz";
+            sha256 = "c1f63fcad9f98fa5d5d946020fd143dccbdbf77dc86db66c91e4bf183356ca42";
           };
           "aarch64-linux" = {
-            url = "https://github.com/snapetech-org/slskr/releases/download/release-v0.2.74/slskr-v0.2.74-aarch64-unknown-linux-gnu.tar.gz";
-            sha256 = "70e55df434fb5333e13f80e9a97cc183a033fed2416ebead458715654265e66d";
+            url = "https://github.com/snapetech-org/slskr/releases/download/release-v0.2.74/slskr-v0.2.74-aarch64-unknown-linux-musl.tar.gz";
+            sha256 = "3ac862d8a9a31ecb54af7ae92970edb69029f1269ed2d7b9bb2e36cfaeda2d82";
           };
           "x86_64-darwin" = {
             url = "https://github.com/snapetech-org/slskr/releases/download/release-v0.2.74/slskr-v0.2.74-x86_64-apple-darwin.tar.gz";
@@ -34,7 +34,10 @@
             inherit pname version;
             src = pkgs.fetchurl (sources.${system});
             nativeBuildInputs = [ pkgs.makeWrapper ];
-            unpackPhase = "tar xzf $src";
+            dontConfigure = true;
+            dontBuild = true;
+            dontStrip = true;
+            dontPatchELF = true;
             installPhase = ''
               mkdir -p $out/libexec/${pname} $out/bin
               cp -r . $out/libexec/${pname}/

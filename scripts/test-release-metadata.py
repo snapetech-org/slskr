@@ -62,6 +62,7 @@ class ReleaseMetadataTests(unittest.TestCase):
                                 ignore=shutil.ignore_patterns('build', 'target', 'node_modules'))
                 for name in ('flake.nix', 'slskr.xml'):
                     shutil.copy2(ROOT / name, root / name)
+                unraid_template = (root / 'slskr.xml').read_bytes()
                 assets = root / 'assets'
                 assets.mkdir()
                 hashes = {}
@@ -72,6 +73,15 @@ class ReleaseMetadataTests(unittest.TestCase):
                     hashes[target] = hashlib.sha256(content).hexdigest()
                 subprocess.run(['bash', 'packaging/scripts/update-release-metadata.sh', tag, str(assets)],
                                cwd=root, check=True, capture_output=True)
+                self.assertEqual((root / 'slskr.xml').read_bytes(), unraid_template)
+                nix = (root / 'flake.nix').read_text()
+                for system, target in (
+                    ('x86_64-linux', 'x86_64-unknown-linux-musl'),
+                    ('aarch64-linux', 'aarch64-unknown-linux-musl'),
+                ):
+                    source = re.search(r'"' + system + r'" = \{(.*?)\n\s*\};', nix, re.S).group(1)
+                    self.assertIn(f'/releases/download/{tag}/slskr-v9.8.7-{target}.tar.gz', source)
+                    self.assertIn(hashes[target], source)
                 for recipe in ('PKGBUILD', 'PKGBUILD-bin'):
                     recipe_path = root / 'packaging/aur' / recipe
                     result = subprocess.check_output(['bash', '-c',

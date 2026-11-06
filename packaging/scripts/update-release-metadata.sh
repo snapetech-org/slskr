@@ -284,11 +284,7 @@ for values in \
   sed -i "s|^  tag: .*|  tag: \"${release_version}\"|" "$values"
 done
 
-# The checked-in Unraid Community Apps template (slskr.xml) floats on :latest
-# so catalog installs always pull the newest release. This refresh only pins
-# the ephemeral CI copy; it is not committed back to the repository.
-sed -i "s|^  <Repository>.*</Repository>|  <Repository>ghcr.io/snapetech/slskr:${release_version}</Repository>|" \
-  slskr.xml
+# The checked-in Unraid template floats on :latest; preserve it during refresh.
 sed -i "s|^version=\".*\"|version=\"${pkgver}\"|" \
   packaging/synology-spk/INFO
 sed -i "s|^VERSION=\"\${SLSKR_VERSION:-.*}\"|VERSION=\"\${SLSKR_VERSION:-${pkgver}}\"|" \
@@ -296,8 +292,8 @@ sed -i "s|^VERSION=\"\${SLSKR_VERSION:-.*}\"|VERSION=\"\${SLSKR_VERSION:-${pkgve
 
 sed -i \
   -e "s|^        version = .*|        version = \"${pkgver}\";|" \
-  -e "/\"x86_64-linux\" = {/,/^[[:space:]]*};/ { s|^            url = .*|            url = \"https://github.com/snapetech-org/slskr/releases/download/${tag}/${linux_x64}\";|; s|^            sha256 = .*|            sha256 = \"${linux_x64_sha}\";|; }" \
-  -e "/\"aarch64-linux\" = {/,/^[[:space:]]*};/ { s|^            url = .*|            url = \"https://github.com/snapetech-org/slskr/releases/download/${tag}/${linux_arm64}\";|; s|^            sha256 = .*|            sha256 = \"${linux_arm64_sha}\";|; }" \
+  -e "/\"x86_64-linux\" = {/,/^[[:space:]]*};/ { s|^            url = .*|            url = \"https://github.com/snapetech-org/slskr/releases/download/${tag}/${linux_musl_x64}\";|; s|^            sha256 = .*|            sha256 = \"${linux_musl_x64_sha}\";|; }" \
+  -e "/\"aarch64-linux\" = {/,/^[[:space:]]*};/ { s|^            url = .*|            url = \"https://github.com/snapetech-org/slskr/releases/download/${tag}/${linux_musl_arm64}\";|; s|^            sha256 = .*|            sha256 = \"${linux_musl_arm64_sha}\";|; }" \
   -e "/\"x86_64-darwin\" = {/,/^[[:space:]]*};/ { s|^            url = .*|            url = \"https://github.com/snapetech-org/slskr/releases/download/${tag}/${mac_x64}\";|; s|^            sha256 = .*|            sha256 = \"${mac_x64_sha}\";|; }" \
   -e "/\"aarch64-darwin\" = {/,/^[[:space:]]*};/ { s|^            url = .*|            url = \"https://github.com/snapetech-org/slskr/releases/download/${tag}/${mac_arm64}\";|; s|^            sha256 = .*|            sha256 = \"${mac_arm64_sha}\";|; }" \
   flake.nix

@@ -69,7 +69,6 @@ for expected in \
   'packaging/chocolatey/slskr.nuspec' \
   'packaging/helm/slskr/Chart.yaml' \
   'packaging/truenas-scale/charts/slskr/Chart.yaml' \
-  'slskr.xml' \
   'packaging/synology-spk/INFO'; do
   if ! rg -n -F -- "$expected" packaging/scripts/update-release-metadata.sh >/dev/null; then
     printf 'package artifact matrix check failed: release metadata refresh missing: %s\n' "$expected"
@@ -77,14 +76,16 @@ for expected in \
   fi
 done
 
-for expected in \
-  'tag: \"${release_version}\"' \
-  'ghcr.io/snapetech/slskr:${release_version}'; do
-  if ! rg -n -F -- "$expected" packaging/scripts/update-release-metadata.sh >/dev/null; then
-    printf 'package artifact matrix check failed: container consumers must use the published image tag: %s\n' "$expected"
-    status=1
-  fi
-done
+if ! rg -q -F 'tag: \"${release_version}\"' packaging/scripts/update-release-metadata.sh; then
+  printf 'package artifact matrix check failed: Helm and TrueNAS must use the published image tag\n'
+  status=1
+fi
+
+if ! rg -q -F '<Repository>ghcr.io/snapetech/slskr:latest</Repository>' slskr.xml ||
+   rg -q -F '<Repository>' packaging/scripts/update-release-metadata.sh; then
+  printf 'package artifact matrix check failed: Unraid must retain its floating latest image during metadata refresh\n'
+  status=1
+fi
 
 for expected in \
   'Architecture: amd64 arm64' \

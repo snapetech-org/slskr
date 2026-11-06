@@ -81,10 +81,15 @@ Keep `COPR_LOGIN` and `COPR_TOKEN` configured only as a last fallback while the
 preferred Kerberos or Fedora password+TOTP path is being validated. The
 workflow uses the token only when the other credential sets are incomplete.
 
-Debian/PPA, RPM, Linux Homebrew, and Linux installers use static musl archives
+Debian/PPA, RPM, Linux Homebrew, Nix on Linux, and Linux installers use static musl archives
 so their binaries work with older system libraries. Both GNU archive targets
 remain available independently. CI starts the static x64 binary on Ubuntu 22.04
 and Debian 12 before accepting package builds.
+
+The Nix flake follows the generated release metadata on `main`. To pin a
+published package, pin its metadata-refresh commit; application version tags
+are created before the release archive hashes exist. Standard Nix unpacking
+enters the archive root, and the prebuilt executable is kept unchanged.
 
 ## Dynamic Hashes
 
