@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Exercise real metadata generation for current and legacy release tags."""
+import ast
 import hashlib
 import os
 from pathlib import Path
@@ -16,6 +17,31 @@ TARGETS = (
     'x86_64-unknown-linux-musl', 'aarch64-unknown-linux-musl',
     'x86_64-apple-darwin', 'aarch64-apple-darwin', 'x86_64-pc-windows-msvc',
 )
+
+
+def workflow_gate_value(node):
+    """Interpret only the literal boolean operations used by publisher guards."""
+    if isinstance(node, ast.Expression):
+        return workflow_gate_value(node.body)
+    if isinstance(node, ast.Constant):
+        return node.value
+    if isinstance(node, ast.BoolOp):
+        values = (workflow_gate_value(value) for value in node.values)
+        if isinstance(node.op, ast.And):
+            return all(values)
+        if isinstance(node.op, ast.Or):
+            return any(values)
+    if isinstance(node, ast.Compare) and len(node.ops) == 1:
+        left, right = workflow_gate_value(node.left), workflow_gate_value(node.comparators[0])
+        if isinstance(node.ops[0], ast.Eq):
+            return left == right
+        if isinstance(node.ops[0], ast.NotEq):
+            return left != right
+    if (isinstance(node, ast.Call) and isinstance(node.func, ast.Name)
+            and node.func.id == 'format' and len(node.args) == 2 and not node.keywords):
+        template, value = map(workflow_gate_value, node.args)
+        return template.format(value)
+    raise AssertionError(f'Unsupported workflow guard syntax: {ast.dump(node)}')
 
 
 class ReleaseMetadataTests(unittest.TestCase):
@@ -46,8 +72,7 @@ class ReleaseMetadataTests(unittest.TestCase):
                     expression = expression.replace(field, repr(value))
                 expression = ' '.join(expression.replace('&&', ' and ').replace('||', ' or ').split())
                 with self.subTest(job=job, ref=ref, called=called, action=action, pool=pool):
-                    self.assertEqual(eval(expression, {'__builtins__': {},
-                        'format': lambda template, value: template.format(value)}), expected)
+                    self.assertEqual(workflow_gate_value(ast.parse(expression, mode='eval')), expected)
 
     def test_workflow_archive_names_match_package_consumers(self):
         workflow = (ROOT / '.github/workflows/release.yml').read_text()
