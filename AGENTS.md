@@ -1,19 +1,17 @@
-## Runner policy — owner directive, 2026-10-26
+## Runner policy — owner directive, 2026-11-03
 
-All repositories and all GitHub Actions build, test, scan, packaging and release
-jobs must use compatible private ephemeral JIT runners. GitHub-hosted runners
-and automatic hosted fallback are not authorized. This directive supersedes
-older hosted-first, pilot-only, selected-jobs-only and permission-pending notes.
-Do not restore `NG_HOSTED_FIRST`, a hosted literal, or a hosted matrix fallback.
-Missing capacity is a provisioning blocker, never permission to spend hosted
-minutes. Preserve OS and architecture requirements. Keep untrusted pull-request
-code on an isolated disposable runner with no secrets; do not widen trusted
-runner-group access to make it run. Preserve active builds and other agents'
-work. Do not restart the broker while it owns running guests. Validate a new
-workflow revision on private JIT; rerunning an old run uses its old revision.
+Use compatible public GitHub-hosted runners by default, preserving each job's
+required OS and architecture. Use private ephemeral JIT runners only when a
+task requires private hardware, network, files, or other task-specific private
+resources. Public pull-request code must run without secrets and with minimal
+permissions; use disposable isolated execution when the task requires tighter
+egress or environment controls. Preserve active builds and other agents' work.
+Do not restart the broker while it owns running guests. Validate each workflow
+revision on the runner class it selects; rerunning an old run uses its old
+revision.
 
-The shared policy and exact workflow inventory live in
-`snapetech-org/packer/scripts/shared-jit-runner-pool/`. Source routing, deployed
-broker policy, runner-group access and live platform capacity must all agree.
-Do not report the rollout complete from YAML changes alone.
+The shared JIT inventory lives in
+`snapetech-org/packer/scripts/shared-jit-runner-pool/`. Check source routing,
+runner-group access, deployed broker policy, and live capacity when a task
+needs a private JIT route.
 
