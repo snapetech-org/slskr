@@ -26,10 +26,11 @@ slskdN release system, with slskR-specific package and project names.
 | Nix flake | `slskr` | none |
 
 The release workflow skips optional credentialed channels whose secrets are not
-available. GHCR publication is required and uses a classic personal access token
+available. GHCR and Docker Hub publication are required for stable releases.
+GHCR uses a classic personal access token
 because the `slskR` package belongs to the personal `snapetech` account rather
-than the `snapetech-org` repository. Docker Hub is a best-effort mirror and does
-not gate GHCR or the release. The
+than the `snapetech-org` repository. Both registries receive the same verified
+release before the container publishing job completes. The
 Winget job submits a pull request to Microsoft's repository; a successful job
 does not mean that Microsoft has merged or indexed the package. Chocolatey is a
 separate manual-dispatch workflow and derives both its package version and
