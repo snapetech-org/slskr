@@ -6,13 +6,18 @@ on:
         description: Published release to scan
         required: true
         type: string
+      full_scan:
+        description: Also execute the portable binary and run a full Defender scan
+        required: false
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
   scan:
     if: github.ref == 'refs/heads/main'
     runs-on: windows-2025
-    timeout-minutes: 30
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
       - name: Download and verify published Windows archive
@@ -20,6 +25,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ inputs.tag }}
+          FULL_SCAN: ${{ inputs.full_scan }}
         run: |
           gh release download $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY --pattern '*windows-msvc.zip' --pattern 'SHA256SUMS*' --dir scan
           if ($LASTEXITCODE -ne 0) { throw 'Release download failed' }
@@ -28,3 +34,20 @@ jobs:
           $lines = Get-Content scan/SHA256SUMS* | Where-Object { $_ -match [regex]::Escape($archive.Name) }
           if (-not ($lines | Where-Object { $_.StartsWith($hash, [System.StringComparison]::OrdinalIgnoreCase) })) { throw 'Archive checksum mismatch' }
           ./scripts/scan-windows-release.ps1 -Archive $archive.FullName
+          if ($env:FULL_SCAN -eq 'true') {
+            $binary = Get-ChildItem "$env:RUNNER_TEMP/defender-release-scan" -Filter slskr.exe -Recurse | Select-Object -First 1
+            & $binary.FullName version
+            if ($LASTEXITCODE -ne 0) { throw 'Portable binary execution failed' }
+            # Remove the hosted image's whole-drive exclusions for this disposable diagnostic VM.
+            $exclusions = (Get-MpPreference).ExclusionPath
+            if ($exclusions) { Remove-MpPreference -ExclusionPath $exclusions }
+            $started = Get-Date
+            Start-MpScan -ScanType FullScan
+            Get-MpComputerStatus | Select-Object FullScanStartTime, FullScanEndTime, AntivirusSignatureVersion | Format-List
+            $detections = @(Get-MpThreatDetection | Where-Object { $_.InitialDetectionTime -ge $started })
+            $detections | Format-List ThreatID, InitialDetectionTime, Resources, ActionSuccess
+            if ($detections.Count -gt 0) {
+              Get-MpThreat | Format-List ThreatID, ThreatName, IsActive, Resources
+              throw 'Full system scan reported detections; inspect the diagnostic records'
+            }
+          }
