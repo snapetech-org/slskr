@@ -290,16 +290,24 @@ for expected in \
 done
 
 for expected in \
-  'merge-upstream' \
-  'git/refs/heads/' \
-  'slskr-release-backup-' \
-  'force = $true' \
-  'wingetcreate submit'; do
+  'Never reset the fork default.' \
+  'base_tree = $upstreamCommit.tree.sha' \
+  'parents = @($upstreamSha)' \
+  '"$forkUri/git/refs"' \
+  '$existingPrs'; do
   if ! rg -n -F -- "$expected" scripts/submit-winget-release.ps1 >/dev/null; then
-    printf 'workflow release policy check failed: Winget fork recovery token missing: %s\n' "$expected" >&2
+    printf 'workflow release policy check failed: safe Winget submission token missing: %s\n' "$expected" >&2
     status=1
   fi
 done
+if rg -n 'force[[:space:]]*=[[:space:]]*\$true|merge-upstream|git/refs/heads/' scripts/submit-winget-release.ps1 >/dev/null; then
+  printf 'workflow release policy check failed: Winget publisher must not reset or rewrite an existing fork branch\n' >&2
+  status=1
+fi
+if ! rg -n -F 'scripts/test-submit-winget-release.ps1' .github/workflows/release-publish.yml >/dev/null; then
+  printf 'workflow release policy check failed: Winget submission regression tests must run before publishing\n' >&2
+  status=1
+fi
 
 if ! rg -n -F 'cargo audit' .github/workflows/ci.yml .github/workflows/release.yml scripts/run-release-gate.sh >/dev/null; then
   printf 'workflow release policy check failed: RustSec audit must stay wired into CI and release gates\n' >&2

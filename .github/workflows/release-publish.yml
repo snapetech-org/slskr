@@ -888,15 +888,14 @@ jobs:
             Write-Host "WINGETCREATE_GITHUB_TOKEN not configured; skipping Winget."
             exit 0
           }
-          Invoke-WebRequest https://aka.ms/wingetcreate/latest -OutFile wingetcreate.exe
           $submitPath = Join-Path "winget-submit" "manifests/s/snapetech/slskr/${{ needs.metadata.outputs.pkgver }}"
           New-Item -ItemType Directory -Force $submitPath | Out-Null
           Copy-Item packaging/winget/snapetech.slskr.yaml $submitPath/
           Copy-Item packaging/winget/snapetech.slskr.installer.yaml $submitPath/
           Copy-Item packaging/winget/snapetech.slskr.locale.en-US.yaml $submitPath/
           $scriptRoot = if ($env:GITHUB_EVENT_NAME -eq 'workflow_dispatch') { 'release-publisher' } else { $env:GITHUB_WORKSPACE }
+          & (Join-Path $scriptRoot 'scripts/test-submit-winget-release.ps1')
           $submitScript = Join-Path $scriptRoot 'scripts/submit-winget-release.ps1'
           & $submitScript `
-            -WingetCreatePath (Join-Path $PWD 'wingetcreate.exe') `
             -SubmitPath $submitPath `
             -PackageVersion '${{ needs.metadata.outputs.pkgver }}'

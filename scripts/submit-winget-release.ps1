@@ -1,9 +1,6 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [string] $WingetCreatePath,
-
-    [Parameter(Mandatory = $true)]
     [string] $SubmitPath,
 
     [Parameter(Mandatory = $true)]
@@ -19,10 +16,6 @@ if ([string]::IsNullOrWhiteSpace($token)) {
 
 if ($PackageVersion -notmatch '^[0-9]+\.[0-9]+\.[0-9]+(?:[-+][0-9A-Za-z.-]+)?$') {
     throw "Invalid Winget package version: $PackageVersion"
-}
-
-if (-not (Test-Path -LiteralPath $WingetCreatePath -PathType Leaf)) {
-    throw "WingetCreate executable not found: $WingetCreatePath"
 }
 
 if (-not (Test-Path -LiteralPath $SubmitPath -PathType Container)) {
@@ -59,7 +52,7 @@ function Get-HttpStatusCode {
 function Invoke-GitHubApi {
     param(
         [Parameter(Mandatory = $true)]
-        [ValidateSet('GET', 'POST', 'PATCH')]
+        [ValidateSet('GET', 'POST')]
         [string] $Method,
 
         [Parameter(Mandatory = $true)]
@@ -147,65 +140,72 @@ if ([string]::IsNullOrWhiteSpace($forkOwner) -or [string]$fork.name -ne 'winget-
 $owner = $forkOwner
 $forkUri = "$apiRoot/repos/$owner/winget-pkgs"
 
-$forkBranch = [string]$fork.default_branch
-if ([string]::IsNullOrWhiteSpace($forkBranch)) {
-    throw "GitHub fork has no default branch: $forkUri"
+# Create the final manifest commit directly on a new branch from upstream.
+# Canonical repository URLs avoid authenticated-write redirects in clients that
+# address Git data through /repositories/<id>. Never reset the fork default.
+$branch = "slskr-release-$PackageVersion"
+$branchPath = Escape-PathSegment $branch
+$manifestRoot = "manifests/s/snapetech/slskr/$PackageVersion"
+$expectedNames = @('snapetech.slskr.yaml', 'snapetech.slskr.installer.yaml', 'snapetech.slskr.locale.en-US.yaml')
+$files = @(Get-ChildItem -LiteralPath $SubmitPath -File)
+if ($files.Count -ne 3 -or @(Compare-Object ($files.Name | Sort-Object) ($expectedNames | Sort-Object)).Count -ne 0) {
+    throw 'Expected exactly the three snapetech.slskr manifests.'
 }
-
-$forkBranchPath = Escape-PathSegment $forkBranch
-$forkRefUri = "$forkUri/git/ref/heads/$forkBranchPath"
-$forkUpdateUri = "$forkUri/git/refs/heads/$forkBranchPath"
-$syncUri = "$forkUri/merge-upstream"
-try {
-    $null = Invoke-GitHubApi -Method POST -Uri $syncUri -Body @{ branch = $forkBranch }
-    Write-Host "Synchronized $owner/winget-pkgs/$forkBranch with microsoft/winget-pkgs/$upstreamBranch."
+function Read-ManifestText {
+    param([string] $Path)
+    [IO.File]::ReadAllText($Path).Replace("`r`n", "`n").Replace("`n", "`r`n")
 }
-catch {
-    $status = Get-HttpStatusCode $_
-    Write-Warning "Winget fork synchronization failed (HTTP $status); preserving the old default branch and repairing it from upstream."
-
-    $forkRef = Invoke-GitHubApi -Method GET -Uri $forkRefUri
-    $forkSha = [string]$forkRef.object.sha
-    if ([string]::IsNullOrWhiteSpace($forkSha)) {
-        throw "Unable to resolve the current Winget fork default branch: $forkRefUri"
-    }
-
-    $runId = $env:GITHUB_RUN_ID
-    if ([string]::IsNullOrWhiteSpace($runId)) {
-        $runId = [DateTime]::UtcNow.ToString('yyyyMMddHHmmss')
-    }
-    $runAttempt = $env:GITHUB_RUN_ATTEMPT
-    if ([string]::IsNullOrWhiteSpace($runAttempt)) {
-        $runAttempt = '1'
-    }
-    $backupBranch = "slskr-release-backup-$PackageVersion-$runId-$runAttempt"
-    $backupRefUri = "$forkUri/git/refs/heads/$(Escape-PathSegment $backupBranch)"
-
-    try {
-        $null = Invoke-GitHubApi -Method POST -Uri "$forkUri/git/refs" -Body @{
-            ref = "refs/heads/$backupBranch"
-            sha = $forkSha
+$existingRef = $null
+try { $existingRef = Invoke-GitHubApi -Method GET -Uri "$forkUri/git/ref/heads/$branchPath" }
+catch { if ((Get-HttpStatusCode $_) -ne 404) { throw } }
+if ($null -ne $existingRef) {
+    foreach ($file in $files) {
+        $remote = Invoke-GitHubApi -Method GET -Uri "$forkUri/contents/$manifestRoot/$($file.Name)?ref=$branchPath"
+        $remoteText = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($remote.content))
+        if ($remoteText.Replace("`r`n", "`n") -cne (Read-ManifestText $file.FullName).Replace("`r`n", "`n")) {
+            throw "Existing release branch has different manifest content: $branch. Preserve it and investigate."
         }
     }
-    catch {
-        if ((Get-HttpStatusCode $_) -ne 422) {
-            throw
-        }
-
-        $existingBackup = Invoke-GitHubApi -Method GET -Uri $backupRefUri
-        if ([string]$existingBackup.object.sha -ne $forkSha) {
-            throw "Backup branch already exists at a different commit: $backupBranch"
-        }
-    }
-
-    $null = Invoke-GitHubApi -Method PATCH -Uri $forkUpdateUri -Body @{
-        sha = $upstreamSha
-        force = $true
-    }
-    Write-Host "Reset $owner/winget-pkgs/$forkBranch to upstream $upstreamSha. Previous default-branch state is preserved as $backupBranch."
 }
-
-& $WingetCreatePath submit $SubmitPath -t $token
-if ($LASTEXITCODE -ne 0) {
-    throw "wingetcreate submit failed with exit code $LASTEXITCODE"
+else {
+    $upstreamCommit = Invoke-GitHubApi -Method GET -Uri "$apiRoot/repos/microsoft/winget-pkgs/git/commits/$upstreamSha"
+    $treeEntries = @($files | ForEach-Object {
+        @{ path = "$manifestRoot/$($_.Name)"; mode = '100644'; type = 'blob'; content = (Read-ManifestText $_.FullName) }
+    })
+    $tree = Invoke-GitHubApi -Method POST -Uri "$forkUri/git/trees" -Body @{
+        base_tree = $upstreamCommit.tree.sha
+        tree = $treeEntries
+    }
+    $commit = Invoke-GitHubApi -Method POST -Uri "$forkUri/git/commits" -Body @{
+        message = "New version: snapetech.slskr version $PackageVersion"
+        tree = $tree.sha
+        parents = @($upstreamSha)
+    }
+    $null = Invoke-GitHubApi -Method POST -Uri "$forkUri/git/refs" -Body @{
+        ref = "refs/heads/$branch"
+        sha = $commit.sha
+    }
+}
+$head = [Uri]::EscapeDataString("${owner}:$branch")
+$existingPrs = @(Invoke-GitHubApi -Method GET -Uri "$apiRoot/repos/microsoft/winget-pkgs/pulls?state=all&head=$head")
+if ($existingPrs.Count -gt 0) {
+    $pr = $existingPrs[0]
+    if ($pr.state -ne 'open' -and -not $pr.merged_at) {
+        throw "The existing Winget release PR was closed without merging: $($pr.html_url)"
+    }
+}
+else {
+    $template = Invoke-GitHubApi -Method GET -Uri "$apiRoot/repos/microsoft/winget-pkgs/contents/.github/PULL_REQUEST_TEMPLATE.md"
+    $body = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($template.content))
+    $body += "`n`nRelease validation: the published Windows archive checksum, CLI version smoke, and Microsoft Defender archive/extracted-file scans passed in the slskr release workflow. This PR changes only snapetech.slskr $PackageVersion manifests.`n"
+    $pr = Invoke-GitHubApi -Method POST -Uri "$apiRoot/repos/microsoft/winget-pkgs/pulls" -Body @{
+        title = "New version: snapetech.slskr version $PackageVersion"
+        head = "${owner}:$branch"
+        base = $upstreamBranch
+        body = $body
+    }
+}
+Write-Host "Winget pull request: $($pr.html_url)"
+if ($env:GITHUB_STEP_SUMMARY) {
+    Add-Content $env:GITHUB_STEP_SUMMARY "Winget submission: [$PackageVersion]($($pr.html_url))"
 }

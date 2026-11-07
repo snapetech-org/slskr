@@ -206,3 +206,13 @@ Submission receipts alone do not prove that asynchronous repositories published:
 verify COPR builds, Launchpad binary publication, registry tags, package metadata,
 and external package validation before reporting completion. Snap is excluded from
 v0.2.83 by the owner directive; all other release channels remain required.
+
+### Winget fork recovery
+
+The Winget publisher creates a new release branch whose parent is the Microsoft
+upstream commit and whose tree changes only the three package manifests. It uses
+canonical repository URLs for authenticated writes and reuses an existing PR only
+when its manifest contents match. It does not reset the fork's default branch.
+Run `pwsh -NoProfile -File scripts/test-submit-winget-release.ps1` to exercise
+canonical writes, upstream ancestry, idempotency, and refusal to overwrite
+mismatched published content. The publisher runs this test before submitting.
