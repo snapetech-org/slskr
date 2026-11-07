@@ -196,3 +196,13 @@ can still pass `SLSKR_RELEASE_VERSION` directly to
 Archive roots are named `slskr-<version>-<target>` so the published package
 version remains tied to the release input even though the workspace crates are
 not published independently.
+
+### Required completion
+
+The `Require Complete Release` job runs even when dependencies fail or are skipped.
+Every native build, release gate, GitHub publication, downstream publication, and
+Discord announcement must succeed. Missing publisher credentials fail preflight.
+Submission receipts alone do not prove that asynchronous repositories published:
+verify COPR builds, Launchpad binary publication, registry tags, package metadata,
+and external package validation before reporting completion. Snap is excluded from
+v0.2.83 by the owner directive; all other release channels remain required.

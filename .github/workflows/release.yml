@@ -347,6 +347,12 @@ jobs:
       - name: Verify archive layout
         shell: bash
         run: scripts/verify-release-artifacts.sh target/dist
+      - name: Scan Windows release with Microsoft Defender
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $archive = Get-ChildItem target/dist/*.zip | Select-Object -First 1
+          ./scripts/scan-windows-release.ps1 -Archive $archive.FullName
       - name: Run Windows archive smoke
         if: runner.os == 'Windows'
         shell: pwsh
@@ -528,3 +534,15 @@ jobs:
       tag: ${{ github.ref_name }}
     secrets:
       DISCORD_RELEASE_WEBHOOK_URL: ${{ secrets.DISCORD_RELEASE_WEBHOOK_URL }}
+
+  release-complete:
+    name: Require Complete Release
+    if: always()
+    needs: [version, main-ci, gate, build, release, downstream-publish, discord]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
+      - name: Reject failed, cancelled, or skipped release stages
+        env:
+          RELEASE_NEEDS_JSON: ${{ toJSON(needs) }}
+        run: python3 scripts/check-release-completion.py

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Exercise real metadata generation for current and legacy release tags."""
 import ast
+import importlib.util
 import hashlib
 import json
 import os
@@ -51,6 +52,24 @@ def workflow_gate_value(node):
 
 
 class ReleaseMetadataTests(unittest.TestCase):
+    def test_release_completion_rejects_skipped_and_missing_stages(self):
+        spec = importlib.util.spec_from_file_location('completion', ROOT / 'scripts/check-release-completion.py')
+        completion = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(completion)
+        needs = {name: {'result': 'success'} for name in completion.REQUIRED}
+        self.assertEqual(completion.incomplete_stages(needs), {})
+        for name in completion.REQUIRED:
+            for result in ('skipped', 'failure', 'cancelled'):
+                with self.subTest(stage=name, result=result):
+                    broken = {**needs, name: {'result': result}}
+                    self.assertEqual(completion.incomplete_stages(broken), {name: result})
+            missing = {key: value for key, value in needs.items() if key != name}
+            self.assertEqual(completion.incomplete_stages(missing), {name: 'missing'})
+        workflow = (ROOT / '.github/workflows/release.yml').read_text().split('  release-complete:\n')[1]
+        self.assertIn('if: always()', workflow)
+        for name in completion.REQUIRED:
+            self.assertIn(name, workflow)
+
     def test_announcement_recovery_and_tagged_call_guards(self):
         workflow = (ROOT / '.github/workflows/announce-release.yml').read_text()
         gate = re.search(r'^    if: >-\n((?:      .*\n)+)', workflow, re.M).group(1)

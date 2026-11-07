@@ -147,6 +147,45 @@ jobs:
             echo "pkgver=${pkgver}"
             echo "release_sha=${release_sha}"
           } >> "$GITHUB_OUTPUT"
+      - name: Require publisher credentials
+        env:
+          PUBLISH_ONLY: ${{ inputs.publish_only }}
+          AUR_SSH_KEY: ${{ secrets.AUR_SSH_KEY }}
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          TAP_GITHUB_TOKEN: ${{ secrets.TAP_GITHUB_TOKEN }}
+          WINGETCREATE_GITHUB_TOKEN: ${{ secrets.WINGETCREATE_GITHUB_TOKEN }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+          GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
+          GHCR_LEGACY_TOKEN: ${{ secrets.GHCR_LEGACY_TOKEN }}
+          COPR_LOGIN: ${{ secrets.COPR_LOGIN }}
+          COPR_TOKEN: ${{ secrets.COPR_TOKEN }}
+          COPR_KERBEROS_PRINCIPAL: ${{ secrets.COPR_KERBEROS_PRINCIPAL }}
+          COPR_KERBEROS_KEYTAB_B64: ${{ secrets.COPR_KERBEROS_KEYTAB_B64 }}
+          COPR_FEDORA_USERNAME: ${{ secrets.COPR_FEDORA_USERNAME }}
+          COPR_FEDORA_PASSWORD: ${{ secrets.COPR_FEDORA_PASSWORD }}
+          COPR_FEDORA_OTP_SECRET: ${{ secrets.COPR_FEDORA_OTP_SECRET }}
+        shell: python
+        run: |
+          import os
+          required = ['WINGETCREATE_GITHUB_TOKEN']
+          if os.environ['PUBLISH_ONLY'] != 'winget':
+              required += ['AUR_SSH_KEY', 'GPG_PRIVATE_KEY', 'TAP_GITHUB_TOKEN',
+                           'DOCKERHUB_USERNAME', 'DOCKERHUB_TOKEN']
+              alternatives = [
+                  ('GHCR_TOKEN', 'GHCR_LEGACY_TOKEN'),
+              ]
+              for group in alternatives:
+                  if not any(os.environ.get(name) for name in group):
+                      raise SystemExit('Missing publisher credentials: ' + ' or '.join(group))
+              copr = [('COPR_LOGIN', 'COPR_TOKEN'),
+                      ('COPR_KERBEROS_PRINCIPAL', 'COPR_KERBEROS_KEYTAB_B64'),
+                      ('COPR_FEDORA_USERNAME', 'COPR_FEDORA_PASSWORD', 'COPR_FEDORA_OTP_SECRET')]
+              if not any(all(os.environ.get(name) for name in group) for group in copr):
+                  raise SystemExit('Missing a complete COPR authentication configuration')
+          missing = [name for name in required if not os.environ.get(name)]
+          if missing:
+              raise SystemExit('Missing publisher credentials: ' + ', '.join(missing))
       - name: Download release assets
         env:
           GH_TOKEN: ${{ github.token }}

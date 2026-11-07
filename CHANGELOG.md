@@ -18,6 +18,13 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.83] — 2026-11-07
+
+- Require every native build, downstream publisher, and Discord announcement to succeed before the release workflow can pass.
+- Fail early when package publisher credentials are missing and restore automatic tagged downstream publishing.
+- Confirm Discord delivery and support announcement recovery using the current published release notes.
+- Include the large-library indexing, stalled-search recovery, security dependency, and static Linux compatibility fixes shipped in 0.2.82.
+
 ## [0.2.82] — 2026-11-06
 
 - Keep large share indexes shared during scan publication, configuration reloads, and bounded library/federation reads; failed rescans retain the last complete index.

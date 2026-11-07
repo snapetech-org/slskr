@@ -1,0 +1,30 @@
+name: Diagnose Windows Release Security
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Published release to scan
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  scan:
+    if: github.ref == 'refs/heads/main'
+    runs-on: windows-2025
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
+      - name: Download and verify published Windows archive
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          gh release download $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY --pattern '*windows-msvc.zip' --pattern 'SHA256SUMS*' --dir scan
+          if ($LASTEXITCODE -ne 0) { throw 'Release download failed' }
+          $archive = Get-ChildItem scan/*windows-msvc.zip | Select-Object -First 1
+          $hash = (Get-FileHash $archive.FullName -Algorithm SHA256).Hash
+          $lines = Get-Content scan/SHA256SUMS* | Where-Object { $_ -match [regex]::Escape($archive.Name) }
+          if (-not ($lines | Where-Object { $_.StartsWith($hash, [System.StringComparison]::OrdinalIgnoreCase) })) { throw 'Archive checksum mismatch' }
+          ./scripts/scan-windows-release.ps1 -Archive $archive.FullName
