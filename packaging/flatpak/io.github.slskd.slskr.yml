@@ -31,10 +31,10 @@ modules:
       - chmod +x /app/bin/slskr-wrapper
     sources:
       - type: archive
-        url: https://github.com/snapetech-org/slskr/releases/download/v0.2.82/slskr-v0.2.82-x86_64-unknown-linux-gnu.tar.gz
-        sha256: 1be76e20557764ce99ccc63b65db35366ab187c8dcc85b966f85f11875a131a0
+        url: https://github.com/snapetech-org/slskr/releases/download/v0.2.83/slskr-v0.2.83-x86_64-unknown-linux-gnu.tar.gz
+        sha256: 6bf49ddd5d1d910d2f79e7740ac8e41ec0af76a8378464dd0cad2a4f6b0c6cd6
         only-arches: [x86_64]
       - type: archive
-        url: https://github.com/snapetech-org/slskr/releases/download/v0.2.82/slskr-v0.2.82-aarch64-unknown-linux-gnu.tar.gz
-        sha256: a0810ac469673dd08ccf3bc5aca40d1255055403a1ac0a1826cd2a3f9847e7b9
+        url: https://github.com/snapetech-org/slskr/releases/download/v0.2.83/slskr-v0.2.83-aarch64-unknown-linux-gnu.tar.gz
+        sha256: a8e56faf27ec021a48f1410f884e0a39d23ba9c3e3043bf8ad1bbcd4eb6f4928
         only-arches: [aarch64]
