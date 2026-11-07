@@ -336,11 +336,17 @@ for expected in \
   'Announce Discord Release' \
   'scripts/release_notes.py' \
   'User-facing changes' \
-  'RELEASE_BODY' \
-  'slskr Releases' \
   'scripts/validate-changelog.sh'; do
   if ! rg -n -F -- "$expected" .github/workflows/release.yml >/dev/null; then
     printf 'workflow release policy check failed: release tag policy token missing: %s\n' "$expected" >&2
+    status=1
+  fi
+done
+
+for expected in 'workflow_dispatch:' 'workflow_call:' 'runs-on: ubuntu-24.04' \
+  'DISCORD_RELEASE_WEBHOOK_URL' 'scripts/discord_announcement.py' 'discord-receipt.json'; do
+  if ! rg -q -F -- "$expected" .github/workflows/announce-release.yml; then
+    printf 'release announcement policy check failed: missing %s\n' "$expected" >&2
     status=1
   fi
 done

@@ -171,8 +171,22 @@ For a release build, the workflow creates a GitHub Release and uploads all archi
 plus `SHA256SUMS.txt`, `slskr-cyclonedx.json`, and
 `slskr-dependency-manifest.json`. The JSON manifests are included in the
 release checksum file and build-provenance attestation subjects.
-After the GitHub Release is published, the workflow posts a Discord
-announcement using the `DISCORD_RELEASE_WEBHOOK_URL` repository secret.
+After GitHub publication and successful downstream publishing, the workflow
+calls `announce-release.yml` with the `DISCORD_RELEASE_WEBHOOK_URL` repository
+secret. It reads the current published release body and requires Discord to
+return a saved message ID. The receipt is retained as an Actions artifact.
+
+If an announcement was skipped after a publishing recovery, first check the
+original announcement job and any delivery receipt to avoid duplicate posts.
+Then announce the existing release from `main` without rebuilding packages:
+
+```sh
+gh workflow run announce-release.yml --ref main -f tag=v0.2.82
+```
+
+The manual path accepts only a published release and runs from `main`. A
+network timeout can leave delivery uncertain; inspect the channel before
+retrying. The sender does not automatically retry message creation.
 
 The internal/unpublished Cargo crates intentionally remain at `0.0.0`. Binary
 and archive version metadata comes from the release workflow. Tag builds derive

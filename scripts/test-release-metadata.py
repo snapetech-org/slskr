@@ -2,6 +2,7 @@
 """Exercise real metadata generation for current and legacy release tags."""
 import ast
 import hashlib
+import json
 import os
 from pathlib import Path
 import re
@@ -10,6 +11,9 @@ import subprocess
 import tempfile
 import tarfile
 import unittest
+from unittest.mock import patch
+
+from discord_announcement import build_payload, execute_webhook
 
 ROOT = Path(__file__).resolve().parent.parent
 TARGETS = (
@@ -25,6 +29,8 @@ def workflow_gate_value(node):
         return workflow_gate_value(node.body)
     if isinstance(node, ast.Constant):
         return node.value
+    if isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.Not):
+        return not workflow_gate_value(node.operand)
     if isinstance(node, ast.BoolOp):
         values = (workflow_gate_value(value) for value in node.values)
         if isinstance(node.op, ast.And):
@@ -45,6 +51,68 @@ def workflow_gate_value(node):
 
 
 class ReleaseMetadataTests(unittest.TestCase):
+    def test_announcement_recovery_and_tagged_call_guards(self):
+        workflow = (ROOT / '.github/workflows/announce-release.yml').read_text()
+        gate = re.search(r'^    if: >-\n((?:      .*\n)+)', workflow, re.M).group(1)
+        for ref, called, expected in (
+            ('refs/heads/main', False, True), ('refs/tags/v9.8.7', True, True),
+            ('refs/tags/v9.8.7', False, False), ('refs/heads/feature', False, False),
+            ('refs/tags/v9.8.6', True, False),
+        ):
+            expression = gate
+            for field, value in {'inputs.release_workflow_call': called,
+                                 'github.ref': ref, 'inputs.tag': 'v9.8.7',
+                                 'github.event_name': 'workflow_dispatch'}.items():
+                expression = expression.replace(field, repr(value))
+            expression = ' '.join(expression.replace('&&', ' and ').replace('||', ' or ').replace('!', ' not ').split())
+            with self.subTest(ref=ref, called=called):
+                self.assertEqual(workflow_gate_value(ast.parse(expression, mode='eval')), expected)
+        caller = (ROOT / '.github/workflows/release.yml').read_text().split('  discord:\n', 1)[1]
+        self.assertIn('uses: ./.github/workflows/announce-release.yml', caller)
+        for dependency in ('version', 'release', 'downstream-publish'):
+            self.assertIn(f"needs.{dependency}.result == 'success'", caller)
+        self.assertIn('always() && !cancelled()', caller)
+        self.assertIn('release_workflow_call: true', caller)
+
+    def test_announcement_uses_current_published_notes_and_safe_mentions(self):
+        for tag in ('v9.8.7', 'release-v9.8.7'):
+            release = {'tagName': tag, 'url': f'https://github.com/owner/repo/releases/tag/{tag}',
+                       'body': 'Current fixed release notes @everyone', 'publishedAt': '2026-11-07', 'isDraft': False}
+            payload = build_payload(release, tag, 'owner/repo', 'https://github.com/owner/repo/actions/runs/1')
+            self.assertIn(release['body'], payload['embeds'][0]['description'])
+            self.assertEqual(payload['embeds'][0]['title'], 'slskr 9.8.7 is live')
+            self.assertEqual(payload['allowed_mentions'], {'parse': []})
+            for change in ({'isDraft': True}, {'tagName': 'v0.0.0'}, {'body': ''}):
+                with self.assertRaises(ValueError):
+                    build_payload({**release, **change}, tag, 'owner/repo', 'workflow')
+            release['body'] = '\U0001f600' * 5000
+            description = build_payload(release, tag, 'owner/repo', 'workflow')['embeds'][0]['description']
+            self.assertLessEqual(len(description.encode('utf-16-le')), 7600)
+
+    def test_discord_requires_delivery_confirmation_and_redacts_webhook_errors(self):
+        webhook = 'https://discord.com/api/webhooks/123/secret-token?thread_id=456'
+        payload = {'embeds': [{'url': 'https://github.com/owner/repo/releases/tag/v1.2.3'}]}
+        with patch('discord_announcement.subprocess.run') as send:
+            send.return_value = subprocess.CompletedProcess([], 0, '{"id":"789","channel_id":"456"}\n200')
+            self.assertEqual(execute_webhook(webhook, payload)['message_id'], '789')
+            self.assertIn('wait=true', send.call_args.args[0][-1])
+            self.assertIn('thread_id=456', send.call_args.args[0][-1])
+            self.assertEqual(json.loads(send.call_args.kwargs['input']), payload)
+        with patch('discord_announcement.subprocess.run') as send:
+            send.return_value = subprocess.CompletedProcess([], 0, 'secret-token\n403')
+            with self.assertRaisesRegex(RuntimeError, 'HTTP 403') as raised:
+                execute_webhook(webhook, payload)
+            self.assertNotIn('secret-token', str(raised.exception))
+        with patch('discord_announcement.subprocess.run') as send:
+            send.return_value = subprocess.CompletedProcess([], 0, '{}\n200')
+            with self.assertRaisesRegex(RuntimeError, 'no message confirmation'):
+                execute_webhook(webhook, payload)
+            send.assert_called_once()
+        with patch('discord_announcement.subprocess.run', side_effect=subprocess.TimeoutExpired('curl', 35)) as send:
+            with self.assertRaisesRegex(RuntimeError, 'not confirmed'):
+                execute_webhook(webhook, payload)
+            send.assert_called_once()
+
     def test_publisher_accepts_tagged_calls_and_main_only_manual_retries(self):
         workflow = (ROOT / '.github/workflows/release-publish.yml').read_text()
         caller = (ROOT / '.github/workflows/release.yml').read_text()
