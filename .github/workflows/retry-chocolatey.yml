@@ -1,0 +1,80 @@
+name: Retry Validated Chocolatey Publication
+run-name: Retry Chocolatey ${{ inputs.tag }} from validated run ${{ inputs.validation_run_id }}
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Published release tag
+        required: true
+        type: string
+      validation_run_id:
+        description: Run containing the validated Chocolatey package artifact
+        required: true
+        type: string
+permissions:
+  actions: read
+  contents: read
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: windows-2025
+    timeout-minutes: 15
+    steps:
+      - name: Validate recovery inputs
+        shell: pwsh
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+          VALIDATION_RUN_ID: ${{ inputs.validation_run_id }}
+        run: |
+          if ($env:RELEASE_TAG -notmatch '^(release-)?v[0-9]+\.[0-9]+\.[0-9]+$') { throw 'Invalid release tag' }
+          if ($env:VALIDATION_RUN_ID -notmatch '^[1-9][0-9]+$') { throw 'Invalid validation run ID' }
+      - name: Require a trusted completed validation run
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VALIDATION_RUN_ID: ${{ inputs.validation_run_id }}
+        run: |
+          $run = gh api "repos/$env:GITHUB_REPOSITORY/actions/runs/$env:VALIDATION_RUN_ID" | ConvertFrom-Json
+          if ($LASTEXITCODE -ne 0 -or $run.event -ne 'workflow_dispatch' -or $run.head_branch -ne 'main' -or $run.status -ne 'completed' -or $run.path -ne '.github/workflows/publish-chocolatey.yml' -or $run.head_repository.full_name -ne $env:GITHUB_REPOSITORY) { throw 'Untrusted validation run' }
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # actions/download-artifact@v8.0.2
+        with:
+          name: chocolatey-validation-${{ inputs.validation_run_id }}
+          path: validated
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.validation_run_id }}
+      - name: Verify and publish the existing package
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
+          RELEASE_TAG: ${{ inputs.tag }}
+          VALIDATION_RUN_ID: ${{ inputs.validation_run_id }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          if ([string]::IsNullOrWhiteSpace($env:CHOCO_API_KEY)) { throw 'CHOCO_API_KEY is required' }
+          $receipt = Get-Content validated/chocolatey-validation.json -Raw | ConvertFrom-Json
+          if ($receipt.schemaVersion -ne 1 -or $receipt.tag -ne $env:RELEASE_TAG -or -not $receipt.releaseAssetChecksumVerified -or -not $receipt.packageUrlAndChecksumSmokePassed) { throw 'Validation receipt does not prove this package' }
+          $ref = gh api "repos/$env:GITHUB_REPOSITORY/git/ref/tags/$env:RELEASE_TAG" | ConvertFrom-Json
+          if ($LASTEXITCODE -ne 0 -or $ref.object.type -ne 'commit' -or $ref.object.sha -ne $receipt.sourceCommit) { throw 'Validated source does not match the immutable release tag' }
+          gh release download $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY --pattern SHA256SUMS.txt --dir published
+          if ($LASTEXITCODE -ne 0 -or (Get-FileHash published/SHA256SUMS.txt).Hash -ne (Get-FileHash validated/SHA256SUMS.txt).Hash) { throw 'Published release checksums changed after validation' }
+          $packages = @(Get-ChildItem validated/*.nupkg)
+          if ($packages.Count -ne 1) { throw 'Expected one validated package' }
+          $package = $packages[0]
+          $sha = (Get-FileHash $package.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($sha -ne $receipt.packageSha256) { throw 'Package checksum mismatch' }
+          $response = Invoke-WebRequest -Uri 'https://push.chocolatey.org/api/v2/package/' -Method Put -Headers @{'X-NuGet-ApiKey' = $env:CHOCO_API_KEY} -Form @{package = $package} -SkipHttpErrorCheck
+          $body = [regex]::Replace([string]$response.Content, [regex]::Escape($env:CHOCO_API_KEY), '[redacted]', [Text.RegularExpressions.RegexOptions]::IgnoreCase)
+          $body = $body.Substring(0, [Math]::Min(4000, $body.Length))
+          $result = [ordered]@{tag = $env:RELEASE_TAG; validationRunId = $env:VALIDATION_RUN_ID; packageSha256 = $sha; statusCode = [int]$response.StatusCode; response = $body}
+          $result | ConvertTo-Json | Set-Content chocolatey-publication-receipt.json -Encoding utf8
+          Write-Host ($result | ConvertTo-Json)
+          if ([int]$response.StatusCode -notin @(200, 201, 202)) { throw "Chocolatey rejected the validated package (HTTP $($response.StatusCode)); see the redacted receipt" }
+      - name: Retain publication response
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # actions/upload-artifact@v7.0.2
+        with:
+          name: chocolatey-publication-${{ github.run_id }}
+          path: chocolatey-publication-receipt.json
+          if-no-files-found: warn
+          retention-days: 7

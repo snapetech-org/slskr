@@ -216,3 +216,13 @@ when its manifest contents match. It does not reset the fork's default branch.
 Run `pwsh -NoProfile -File scripts/test-submit-winget-release.ps1` to exercise
 canonical writes, upstream ancestry, idempotency, and refusal to overwrite
 mismatched published content. The publisher runs this test before submitting.
+
+### Chocolatey upload recovery
+
+If upload fails after validation, reuse the saved package instead of rebuilding:
+`gh workflow run retry-chocolatey.yml --ref main -f tag=v<semver> -f validation_run_id=<run-id>`.
+Recovery accepts only a completed manual run of `publish-chocolatey.yml` from main,
+checks the receipt, immutable source tag, package hash, and published checksum
+manifest, then attempts one upload and retains its redacted HTTP response.
+HTTP 403 can indicate a moderation limit as well as invalid credentials; inspect
+the actual response before changing keys. Do not bypass repository moderation.
