@@ -4,13 +4,15 @@ param(
     [string] $SubmitPath,
 
     [Parameter(Mandatory = $true)]
-    [string] $PackageVersion
+    [string] $PackageVersion,
+
+    [switch] $UseGhCli
 )
 
 $ErrorActionPreference = 'Stop'
 
 $token = $env:WINGETCREATE_GITHUB_TOKEN
-if ([string]::IsNullOrWhiteSpace($token)) {
+if (-not $UseGhCli -and [string]::IsNullOrWhiteSpace($token)) {
     throw 'WINGETCREATE_GITHUB_TOKEN is required to submit the Winget manifest.'
 }
 
@@ -63,6 +65,23 @@ function Invoke-GitHubApi {
         [object] $Body
     )
 
+    if ($UseGhCli) {
+        $arguments = @('api', $Uri, '--method', $Method)
+        if ($PSBoundParameters.ContainsKey('Body')) {
+            $payload = $Body | ConvertTo-Json -Depth 20 -Compress
+            $output = $payload | & gh @arguments --input - 2>&1
+        }
+        else { $output = & gh @arguments 2>&1 }
+        if ($LASTEXITCODE -ne 0) {
+            # Preserve the actual HTTP status for ordinary absent-ref recovery.
+            $failure = $output | Out-String
+            $match = [regex]::Match($failure, '\(HTTP ([0-9]{3})\)')
+            $status = if ($match.Success) { [int]$match.Groups[1].Value } else { 500 }
+            throw [Microsoft.PowerShell.Commands.HttpResponseException]::new("GitHub CLI request failed: $Method $Uri", [Net.Http.HttpResponseMessage]::new([Net.HttpStatusCode]$status))
+        }
+        if ($output) { return ($output | ConvertFrom-Json) }
+        return
+    }
     $request = @{
         Method = $Method
         Uri = $Uri
