@@ -3,6 +3,7 @@ class Slskr < Formula
   homepage "https://github.com/snapetech-org/slskr"
   license "AGPL-3.0-only"
   version "0.2.86"
+  revision 1
 
   on_macos do
     on_arm do
@@ -27,10 +28,12 @@ class Slskr < Formula
 
   def install
     libexec.install Dir["*"]
-    bin.install libexec/"slskr"
+    bin.write_exec_script libexec/"slskr"
   end
 
   test do
+    assert_path_exists libexec/"slskr"
+    assert_path_exists libexec/"web/build/index.html"
     assert_match "slskr", shell_output("#{bin}/slskr version")
   end
 end

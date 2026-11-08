@@ -155,11 +155,14 @@ elif dependencies is not None and not len(dependencies):
 ET.indent(nuspec, space='  ')
 write(str(nuspec_path), '<?xml version="1.0" encoding="utf-8"?>\n' + ET.tostring(nuspec, encoding='unicode') + '\n')
 
+# The first v0.2.86 formula moved the binary away from its bundled Web assets.
+# A revision makes existing installations upgrade; reset it for later versions.
+brew_revision = "\n  revision 1" if pkgver == "0.2.86" else ""
 write("packaging/homebrew/Formula/slskr.rb", f'''class Slskr < Formula
   desc "Rust Soulseek daemon with bundled Web UI"
   homepage "https://github.com/snapetech-org/slskr"
   license "AGPL-3.0-only"
-  version "{pkgver}"
+  version "{pkgver}"{brew_revision}
 
   on_macos do
     on_arm do
@@ -184,10 +187,12 @@ write("packaging/homebrew/Formula/slskr.rb", f'''class Slskr < Formula
 
   def install
     libexec.install Dir["*"]
-    bin.install libexec/"slskr"
+    bin.write_exec_script libexec/"slskr"
   end
 
   test do
+    assert_path_exists libexec/"slskr"
+    assert_path_exists libexec/"web/build/index.html"
     assert_match "slskr", shell_output("#{{bin}}/slskr version")
   end
 end

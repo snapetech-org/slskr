@@ -315,7 +315,8 @@ esac
                 shutil.copy2(ROOT / name, root / name)
             assets = root / 'assets'
             assets.mkdir()
-            for version, required in (('0.2.83', True), ('0.2.84', False)):
+            for version, required in (('0.2.83', True), ('0.2.84', False),
+                                      ('0.2.86', False), ('0.2.87', False)):
                 for target in TARGETS:
                     extension = 'zip' if target.endswith('msvc') else 'tar.gz'
                     (assets / f'slskr-v{version}-{target}.{extension}').write_bytes(b'metadata fixture')
@@ -324,6 +325,10 @@ esac
                 nuspec = (root / 'packaging/chocolatey/slskr.nuspec').read_text()
                 self.assertEqual('Microsoft.VCRedist.2015+.x64' in installer, required)
                 self.assertEqual('vcredist140' in nuspec, required)
+                formula = (root / 'packaging/homebrew/Formula/slskr.rb').read_text()
+                self.assertIn('bin.write_exec_script libexec/"slskr"', formula)
+                self.assertIn('assert_path_exists libexec/"web/build/index.html"', formula)
+                self.assertEqual('  revision 1\n' in formula, version == '0.2.86')
 
     def test_tag_identity_and_portable_package_checksums(self):
         for tag in ('v9.8.7', 'release-v9.8.7'):
