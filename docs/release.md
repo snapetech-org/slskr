@@ -178,7 +178,7 @@ For a release build, the workflow creates a GitHub Release and uploads all archi
 plus `SHA256SUMS.txt`, `slskr-cyclonedx.json`, and
 `slskr-dependency-manifest.json`. The JSON manifests are included in the
 release checksum file and build-provenance attestation subjects.
-After GitHub publication and successful downstream publishing, the workflow
+After GitHub publication, the workflow immediately
 calls `announce-release.yml` with the `DISCORD_RELEASE_WEBHOOK_URL` repository
 secret. It reads the current published release body and requires Discord to
 return a saved message ID. The receipt is retained as an Actions artifact.
@@ -215,7 +215,8 @@ and external package validation before reporting completion. The called public
 publication check waits for all COPR native builds and public RPM indexes,
 Launchpad binaries and apt indexes, merged Winget manifests with the archive hash,
 the requested version in the public WinGet client catalog, and Chocolatey approval
-before Discord can run. Its receipt distinguishes actual
+before full distribution can be reported complete. Discord announces the published
+GitHub release independently of downstream package publication. The receipt distinguishes actual
 publication from authorized pending exceptions. It waits at most one hour; retry
 failed verification after external publication catches up without rebuilding.
 Snap is excluded by owner instruction. The owner also directed that Chocolatey's
@@ -267,7 +268,8 @@ HTTP 403 can indicate a moderation limit as well as invalid credentials; inspect
 the actual response before changing keys. Do not bypass repository moderation.
 
 Chocolatey is a required called job of the full release workflow. A publication
-failure blocks Discord and the final completion gate. The standalone manual path
+failure blocks the final completion gate. It does not block the GitHub release's
+Discord announcement. The standalone manual path
 remains available for validation and recovery; full releases always pass
 `publish: true` and fail if publication credentials are missing.
 

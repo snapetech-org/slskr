@@ -175,10 +175,30 @@ esac
             expression = ' '.join(expression.replace('&&', ' and ').replace('||', ' or ').replace('!', ' not ').split())
             with self.subTest(ref=ref, called=called):
                 self.assertEqual(workflow_gate_value(ast.parse(expression, mode='eval')), expected)
-        caller = (ROOT / '.github/workflows/release.yml').read_text().split('  discord:\n', 1)[1]
+        caller = (ROOT / '.github/workflows/release.yml').read_text().split('  discord:\n', 1)[1].split('  release-complete:\n', 1)[0]
         self.assertIn('uses: ./.github/workflows/announce-release.yml', caller)
-        for dependency in ('version', 'release', 'downstream-publish', 'chocolatey', 'public-publication'):
-            self.assertIn(f"needs.{dependency}.result == 'success'", caller)
+        self.assertIn('needs: [version, release]', caller)
+        gate = re.search(r'^    if: >-\n((?:      .*\n)+)', caller, re.M).group(1)
+        defaults = {'needs.version.result': 'success', 'needs.release.result': 'success',
+                    'needs.downstream-publish.result': 'failure', 'needs.chocolatey.result': 'skipped',
+                    'needs.public-publication.result': 'failure', 'github.ref': 'refs/tags/v9.8.7',
+                    'inputs.tag': 'v9.8.7', 'inputs.action_tag': 'release',
+                    'inputs.runner_pool_tag': 'hosted', 'always()': True, 'cancelled()': False}
+        cases = [({}, True), ({'cancelled()': True}, False),
+                 ({'github.ref': 'refs/heads/main'}, False),
+                 ({'github.ref': 'refs/tags/v9.8.6'}, False),
+                 ({'inputs.action_tag': 'validate'}, False),
+                 ({'inputs.runner_pool_tag': 'other'}, False)]
+        for dependency in ('version', 'release'):
+            cases.extend(({f'needs.{dependency}.result': result}, False)
+                         for result in ('failure', 'skipped', 'cancelled'))
+        for changes, expected in cases:
+            expression = gate
+            for field, value in {**defaults, **changes}.items():
+                expression = expression.replace(field, repr(value))
+            expression = ' '.join(expression.replace('&&', ' and ').replace('||', ' or ').replace('!', ' not ').split())
+            with self.subTest(changes=changes):
+                self.assertEqual(workflow_gate_value(ast.parse(expression, mode='eval')), expected)
         self.assertIn('always() && !cancelled()', caller)
         self.assertIn('release_workflow_call: true', caller)
 

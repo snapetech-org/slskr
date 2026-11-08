@@ -569,12 +569,9 @@ jobs:
       always() && !cancelled() &&
       needs.version.result == 'success' &&
       needs.release.result == 'success' &&
-      needs.downstream-publish.result == 'success' &&
-      needs.chocolatey.result == 'success' &&
-      needs.public-publication.result == 'success' &&
       github.ref == format('refs/tags/{0}', inputs.tag) &&
       inputs.action_tag == 'release' && inputs.runner_pool_tag == 'hosted'
-    needs: [version, release, downstream-publish, chocolatey, public-publication]
+    needs: [version, release]
     uses: ./.github/workflows/announce-release.yml
     with:
       release_workflow_call: true
