@@ -221,6 +221,7 @@ PY
       echo "release executable present; skipped running target $artifact_target on host ${host_target:-unknown}"
     fi
   elif [[ -f "$root/slskr.exe" ]]; then
+    python3 scripts/check-windows-runtime.py "$root/slskr.exe"
     if [[ -n "$host_target" && "$artifact_target" == "$host_target" ]]; then
       verify_app_version "$root/slskr.exe" "$expected_app_version"
     else

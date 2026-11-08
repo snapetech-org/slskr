@@ -21,4 +21,5 @@ strip = "symbols"
 # before its HTTP listener is created.  Reserve the same stack size used by
 # the Windows smoke child environment so the executable can start reliably.
 [target.x86_64-pc-windows-msvc]
-rustflags = ["-C", "link-arg=/STACK:16777216"]
+# Portable archives must run on Windows without a separately installed VC runtime.
+rustflags = ["-C", "link-arg=/STACK:16777216", "-C", "target-feature=+crt-static"]
