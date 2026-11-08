@@ -3,6 +3,29 @@ name: Publish Chocolatey
 run-name: ${{ format('action:{0}:pool:{1}', inputs.action_tag, inputs.runner_pool_tag) }}
 
 on:
+  workflow_call:
+    inputs:
+      release_workflow_call:
+        description: Validated tag handoff from the release workflow
+        required: false
+        type: boolean
+        default: false
+      action_tag:
+        required: true
+        type: string
+      runner_pool_tag:
+        required: true
+        type: string
+      tag:
+        required: true
+        type: string
+      publish:
+        required: false
+        type: boolean
+        default: true
+    secrets:
+      CHOCO_API_KEY:
+        required: true
   workflow_dispatch:
     inputs:
       action_tag:
@@ -31,20 +54,21 @@ permissions:
 jobs:
   publish:
     if: >-
+      inputs.action_tag == 'release' && inputs.runner_pool_tag == 'hosted' &&
       (
-        github.event_name != 'workflow_dispatch' ||
-        (
-          github.ref == 'refs/heads/main' &&
-          inputs.action_tag == 'release' &&
-          inputs.runner_pool_tag == 'hosted'
-        )
-      ) &&
-      (
-        true
+        (inputs.release_workflow_call && github.ref == format('refs/tags/{0}', inputs.tag)) ||
+        (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && !inputs.release_workflow_call)
       )
     runs-on: windows-latest
     timeout-minutes: 20
     steps:
+      - name: Require publication credentials
+        if: inputs.publish
+        shell: pwsh
+        env:
+          CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
+        run: |
+          if ([string]::IsNullOrWhiteSpace($env:CHOCO_API_KEY)) { throw 'CHOCO_API_KEY is required for publication' }
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           ref: ${{ inputs.tag }}
@@ -177,7 +201,6 @@ jobs:
           CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
         run: |
           if ([string]::IsNullOrWhiteSpace($env:CHOCO_API_KEY)) {
-            Write-Host "CHOCO_API_KEY not configured; skipping Chocolatey push."
-            exit 0
+            throw "CHOCO_API_KEY is required for publication"
           }
           choco push (Get-ChildItem release-assets\*.nupkg | Select-Object -First 1) --source https://push.chocolatey.org/ --api-key $env:CHOCO_API_KEY

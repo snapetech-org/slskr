@@ -7,6 +7,7 @@ import json
 import os
 from pathlib import Path
 import re
+import runpy
 import shutil
 import subprocess
 import tempfile
@@ -88,10 +89,32 @@ class ReleaseMetadataTests(unittest.TestCase):
                 self.assertEqual(workflow_gate_value(ast.parse(expression, mode='eval')), expected)
         caller = (ROOT / '.github/workflows/release.yml').read_text().split('  discord:\n', 1)[1]
         self.assertIn('uses: ./.github/workflows/announce-release.yml', caller)
-        for dependency in ('version', 'release', 'downstream-publish'):
+        for dependency in ('version', 'release', 'downstream-publish', 'chocolatey'):
             self.assertIn(f"needs.{dependency}.result == 'success'", caller)
         self.assertIn('always() && !cancelled()', caller)
         self.assertIn('release_workflow_call: true', caller)
+
+    def test_chocolatey_is_required_and_accepts_trusted_tag_calls(self):
+        workflow = (ROOT / '.github/workflows/publish-chocolatey.yml').read_text()
+        gate = re.search(r'^    if: >-\n((?:      .*\n)+)', workflow, re.M).group(1)
+        for ref, called, expected in (
+            ('refs/heads/main', False, True), ('refs/tags/v9.8.7', True, True),
+            ('refs/tags/v9.8.7', False, False), ('refs/heads/feature', False, False),
+            ('refs/tags/v9.8.6', True, False),
+        ):
+            expression = gate
+            for field, value in {'inputs.release_workflow_call': called, 'github.ref': ref,
+                                 'inputs.tag': 'v9.8.7', 'github.event_name': 'workflow_dispatch',
+                                 'inputs.action_tag': 'release', 'inputs.runner_pool_tag': 'hosted'}.items():
+                expression = expression.replace(field, repr(value))
+            expression = ' '.join(expression.replace('&&', ' and ').replace('||', ' or ').replace('!', ' not ').split())
+            with self.subTest(ref=ref, called=called):
+                self.assertEqual(workflow_gate_value(ast.parse(expression, mode='eval')), expected)
+        caller = (ROOT / '.github/workflows/release.yml').read_text().split('  chocolatey:\n')[1].split('  discord:\n')[0]
+        self.assertIn('uses: ./.github/workflows/publish-chocolatey.yml', caller)
+        self.assertIn('release_workflow_call: true', caller)
+        self.assertIn('publish: true', caller)
+        self.assertIn('chocolatey', runpy.run_path(str(ROOT / 'scripts/check-release-completion.py'))['REQUIRED'])
 
     def test_announcement_uses_current_published_notes_and_safe_mentions(self):
         for tag in ('v9.8.7', 'release-v9.8.7'):

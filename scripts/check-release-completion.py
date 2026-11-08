@@ -4,7 +4,7 @@ import json
 import os
 import sys
 
-REQUIRED = {'version', 'main-ci', 'gate', 'build', 'release', 'downstream-publish', 'discord'}
+REQUIRED = {'version', 'main-ci', 'gate', 'build', 'release', 'downstream-publish', 'chocolatey', 'discord'}
 
 
 def incomplete_stages(needs):

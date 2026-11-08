@@ -518,6 +518,19 @@ jobs:
       TAP_GITHUB_TOKEN: ${{ secrets.TAP_GITHUB_TOKEN }}
       WINGETCREATE_GITHUB_TOKEN: ${{ secrets.WINGETCREATE_GITHUB_TOKEN }}
 
+  chocolatey:
+    name: Publish Chocolatey Package
+    needs: [release]
+    uses: ./.github/workflows/publish-chocolatey.yml
+    with:
+      release_workflow_call: true
+      action_tag: release
+      runner_pool_tag: hosted
+      tag: ${{ github.ref_name }}
+      publish: true
+    secrets:
+      CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
+
   discord:
     name: Announce Discord Release
     if: >-
@@ -525,9 +538,10 @@ jobs:
       needs.version.result == 'success' &&
       needs.release.result == 'success' &&
       needs.downstream-publish.result == 'success' &&
+      needs.chocolatey.result == 'success' &&
       github.ref == format('refs/tags/{0}', inputs.tag) &&
       inputs.action_tag == 'release' && inputs.runner_pool_tag == 'hosted'
-    needs: [version, release, downstream-publish]
+    needs: [version, release, downstream-publish, chocolatey]
     uses: ./.github/workflows/announce-release.yml
     with:
       release_workflow_call: true
@@ -538,7 +552,7 @@ jobs:
   release-complete:
     name: Require Complete Release
     if: always()
-    needs: [version, main-ci, gate, build, release, downstream-publish, discord]
+    needs: [version, main-ci, gate, build, release, downstream-publish, chocolatey, discord]
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6

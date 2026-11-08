@@ -232,3 +232,8 @@ For operator recovery with an existing authenticated GitHub CLI session, run
 after generating metadata from verified release assets. This uses the existing CLI
 authentication directly; it does not export or copy that credential into Actions.
 A matching Actions retry can confirm the existing PR without creating another one.
+
+Chocolatey is a required called job of the full release workflow. A publication
+failure blocks Discord and the final completion gate. The standalone manual path
+remains available for validation and recovery; full releases always pass
+`publish: true` and fail if publication credentials are missing.
