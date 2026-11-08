@@ -134,6 +134,27 @@ jobs:
           $nuspec = Get-Content $nuspecPath -Raw
           $nuspec = $nuspec -replace '<version>[^<]+</version>', "<version>$env:PACKAGE_VERSION</version>"
           Set-Content $nuspecPath $nuspec
+          [xml]$manifest = Get-Content $nuspecPath -Raw
+          $manager = [Xml.XmlNamespaceManager]::new($manifest.NameTable)
+          $manager.AddNamespace('n', $manifest.DocumentElement.NamespaceURI)
+          $metadata = $manifest.SelectSingleNode('/n:package/n:metadata', $manager)
+          $dependencies = $metadata.SelectSingleNode('n:dependencies', $manager)
+          $vc = $manifest.SelectSingleNode('//n:dependency[@id="vcredist140"]', $manager)
+          $needsRuntime = [version](($env:PACKAGE_VERSION -split '[-+]')[0]) -lt [version]'0.2.84'
+          if ($vc) { $null = $vc.ParentNode.RemoveChild($vc) }
+          if ($needsRuntime) {
+            if (-not $dependencies) {
+              $dependencies = $manifest.CreateElement('dependencies', $manifest.DocumentElement.NamespaceURI)
+              $null = $metadata.AppendChild($dependencies)
+            }
+            $vc = $manifest.CreateElement('dependency', $manifest.DocumentElement.NamespaceURI)
+            $vc.SetAttribute('id', 'vcredist140')
+            $vc.SetAttribute('version', '[14.0,)')
+            $null = $dependencies.AppendChild($vc)
+          } elseif ($dependencies -and -not $dependencies.HasChildNodes) {
+            $null = $metadata.RemoveChild($dependencies)
+          }
+          $manifest.Save((Resolve-Path $nuspecPath).Path)
           choco pack packaging\chocolatey\slskr.nuspec --outputdirectory release-assets
       - name: Smoke-check nupkg contents
         shell: pwsh
@@ -151,6 +172,10 @@ jobs:
           Copy-Item $package.FullName $archivePath -Force
           Expand-Archive -Path $archivePath -DestinationPath $extractDir
           $installScript = Get-Content (Join-Path $extractDir 'tools\chocolateyinstall.ps1') -Raw
+          [xml]$packedManifest = Get-Content (Get-ChildItem $extractDir -Filter '*.nuspec' | Select-Object -First 1).FullName -Raw
+          $vc = $packedManifest.SelectSingleNode('//*[local-name()="dependency" and @id="vcredist140"]')
+          $needsRuntime = [version](($env:PACKAGE_VERSION -split '[-+]')[0]) -lt [version]'0.2.84'
+          if ($needsRuntime -ne ($null -ne $vc)) { throw 'Package Visual C++ runtime dependency does not match its binary generation' }
           $releaseUrlPattern = 'https://github\.com/[^/]+/[^/]+/releases/download/' + [regex]::Escape($env:RELEASE_TAG)
           if ($installScript -notmatch $releaseUrlPattern) {
             throw "nupkg installer does not contain a fully qualified release URL for $env:RELEASE_TAG"

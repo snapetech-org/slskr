@@ -76,6 +76,11 @@ import re
 import sys
 
 tag, rel, pkgver, linux_x64, linux_arm64, mac_x64, mac_arm64, win_x64, musl_x64, musl_arm64 = sys.argv[1:]
+# Releases before 0.2.84 imported VCRUNTIME140.dll. Newer releases enforce
+# static CRT linkage through the portable archive verifier.
+needs_vc_runtime = tuple(map(int, re.split(r'[-+]', pkgver)[0].split('.'))) < (0, 2, 84)
+vc_dependencies = ("Dependencies:\n  PackageDependencies:\n"
+                   "    - PackageIdentifier: Microsoft.VCRedist.2015+.x64\n") if needs_vc_runtime else ""
 
 def write(path, text):
     pathlib.Path(path).write_text(text, encoding="utf-8")
@@ -121,13 +126,34 @@ NestedInstallerType: portable
 NestedInstallerFiles:
   - RelativeFilePath: slskr-{rel}-x86_64-pc-windows-msvc\\slskr.exe
     PortableCommandAlias: slskr
-Installers:
+{vc_dependencies}Installers:
   - Architecture: x64
     InstallerUrl: https://github.com/snapetech-org/slskr/releases/download/{tag}/slskr-{rel}-x86_64-pc-windows-msvc.zip
     InstallerSha256: {win_x64.upper()}
 ManifestType: installer
 ManifestVersion: 1.6.0
 """)
+
+# Preserve other package dependencies while adding/removing the known legacy CRT.
+import xml.etree.ElementTree as ET
+nuspec_path = pathlib.Path('packaging/chocolatey/slskr.nuspec')
+ns = 'http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd'
+ET.register_namespace('', ns)
+nuspec = ET.fromstring(nuspec_path.read_text())
+metadata = nuspec.find('{' + ns + '}metadata')
+dependencies = metadata.find('{' + ns + '}dependencies')
+if dependencies is not None:
+    for dependency in list(dependencies):
+        if dependency.get('id', '').lower() == 'vcredist140':
+            dependencies.remove(dependency)
+if needs_vc_runtime:
+    if dependencies is None:
+        dependencies = ET.SubElement(metadata, '{' + ns + '}dependencies')
+    ET.SubElement(dependencies, '{' + ns + '}dependency', {'id': 'vcredist140', 'version': '[14.0,)'})
+elif dependencies is not None and not len(dependencies):
+    metadata.remove(dependencies)
+ET.indent(nuspec, space='  ')
+write(str(nuspec_path), '<?xml version="1.0" encoding="utf-8"?>\n' + ET.tostring(nuspec, encoding='unicode') + '\n')
 
 write("packaging/homebrew/Formula/slskr.rb", f'''class Slskr < Formula
   desc "Rust Soulseek daemon with bundled Web UI"

@@ -219,6 +219,24 @@ class ReleaseMetadataTests(unittest.TestCase):
             self.assertEqual(archive.with_suffix('.gz.sha256').read_text().split()[0],
                              hashlib.sha256(archive.read_bytes()).hexdigest())
 
+    def test_legacy_windows_runtime_dependencies_are_removed_for_static_releases(self):
+        with tempfile.TemporaryDirectory(prefix='slskr-runtime-metadata-') as tmp:
+            root = Path(tmp)
+            shutil.copytree(ROOT / 'packaging', root / 'packaging', ignore=shutil.ignore_patterns('build', 'target', 'node_modules'))
+            for name in ('flake.nix', 'slskr.xml'):
+                shutil.copy2(ROOT / name, root / name)
+            assets = root / 'assets'
+            assets.mkdir()
+            for version, required in (('0.2.83', True), ('0.2.84', False)):
+                for target in TARGETS:
+                    extension = 'zip' if target.endswith('msvc') else 'tar.gz'
+                    (assets / f'slskr-v{version}-{target}.{extension}').write_bytes(b'metadata fixture')
+                subprocess.run(['bash', 'packaging/scripts/update-release-metadata.sh', 'v' + version, str(assets)], cwd=root, check=True, capture_output=True)
+                installer = (root / 'packaging/winget/snapetech.slskr.installer.yaml').read_text()
+                nuspec = (root / 'packaging/chocolatey/slskr.nuspec').read_text()
+                self.assertEqual('Microsoft.VCRedist.2015+.x64' in installer, required)
+                self.assertEqual('vcredist140' in nuspec, required)
+
     def test_tag_identity_and_portable_package_checksums(self):
         for tag in ('v9.8.7', 'release-v9.8.7'):
             with self.subTest(tag=tag), tempfile.TemporaryDirectory(prefix='slskr-release-metadata-') as tmp:
