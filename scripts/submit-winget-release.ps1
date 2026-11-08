@@ -93,7 +93,10 @@ function Invoke-GitHubApi {
         $request.ContentType = 'application/json'
     }
 
-    Invoke-RestMethod @request
+    # Invoke-RestMethod emits an API array as one pipeline object. Assign it
+    # first so returning it enumerates the array, including an empty PR list.
+    $response = Invoke-RestMethod @request
+    return $response
 }
 
 function Escape-PathSegment {

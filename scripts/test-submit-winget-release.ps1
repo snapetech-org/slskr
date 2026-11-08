@@ -47,7 +47,10 @@ try {
                 if ($global:SlskrWingetTestCase -eq 'existing') {
                     return [pscustomobject]@{ state = 'open'; html_url = 'https://github.com/microsoft/winget-pkgs/pull/123' }
                 }
-                return @()
+                # Match Invoke-RestMethod: [] is emitted as one empty array,
+                # rather than emitting no pipeline objects like `return @()`.
+                Write-Output -NoEnumerate @()
+                return
             }
             '^https://api.github.com/repos/microsoft/winget-pkgs/contents/.github/PULL_REQUEST_TEMPLATE.md$' {
                 return [pscustomobject]@{ content = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes('PR template')) }
