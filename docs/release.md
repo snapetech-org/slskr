@@ -214,7 +214,8 @@ verify COPR builds, Launchpad binary publication, registry tags, package metadat
 and external package validation before reporting completion. The called public
 publication check waits for all COPR native builds and public RPM indexes,
 Launchpad binaries and apt indexes, merged Winget manifests with the archive hash,
-and Chocolatey approval before Discord can run. Its receipt distinguishes actual
+the requested version in the public WinGet client catalog, and Chocolatey approval
+before Discord can run. Its receipt distinguishes actual
 publication from authorized pending exceptions. It waits at most one hour; retry
 failed verification after external publication catches up without rebuilding.
 Snap is excluded by owner instruction. The owner also directed that Chocolatey's
@@ -233,6 +234,9 @@ the same owner authorization. This workflow never uploads or sends messages.
 The live checker uses the hash-locked dependencies in
 `scripts/requirements-publication.txt`; the workflow installs them in its own
 temporary virtual environment. Fixture tests require only the standard library.
+The WinGet check reads Microsoft's `source2.msix` client index as a bounded,
+read-only SQLite database. A merged GitHub manifest alone does not prove that
+WinGet clients can discover the new version.
 
 ### Winget fork recovery
 
