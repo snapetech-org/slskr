@@ -204,8 +204,25 @@ Every native build, release gate, GitHub publication, downstream publication, an
 Discord announcement must succeed. Missing publisher credentials fail preflight.
 Submission receipts alone do not prove that asynchronous repositories published:
 verify COPR builds, Launchpad binary publication, registry tags, package metadata,
-and external package validation before reporting completion. Snap is excluded from
-v0.2.83 by the owner directive; all other release channels remain required.
+and external package validation before reporting completion. The called public
+publication check waits for all COPR native builds and public RPM indexes,
+Launchpad binaries and apt indexes, merged Winget manifests with the archive hash,
+and Chocolatey approval before Discord can run. Its receipt distinguishes actual
+publication from authorized pending exceptions. It waits at most one hour; retry
+failed verification after external publication catches up without rebuilding.
+Snap is excluded by owner instruction. The owner also directed that Chocolatey's
+first-package review be left alone, without moderator contact or repeated uploads.
+For that pending exception, dispatch Release with
+`defer_chocolatey_initial_review=true`. The package is still prepared and retained;
+the publisher observes the first package's approval status and makes no upload
+while it remains unapproved. The availability receipt reports Chocolatey as
+pending, with `complete: false`, and release notes disclose the exception.
+The exception defaults to false. On later runs it no longer applies once the
+first package is approved. All other configured channels remain required.
+
+For a read-only recovery check, dispatch `verify-release-publication.yml` from
+main with the original tag. Set `allow_chocolatey_initial_review=true` only under
+the same owner authorization. This workflow never uploads or sends messages.
 
 ### Winget fork recovery
 

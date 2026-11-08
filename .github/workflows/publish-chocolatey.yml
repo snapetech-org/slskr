@@ -23,6 +23,11 @@ on:
         required: false
         type: boolean
         default: true
+      defer_initial_review:
+        description: Owner-authorized pending exception; do not upload while the first package awaits approval
+        required: false
+        type: boolean
+        default: false
     secrets:
       CHOCO_API_KEY:
         required: true
@@ -46,6 +51,11 @@ on:
         description: Push the validated package to Chocolatey
         type: boolean
         default: true
+        required: false
+      defer_initial_review:
+        description: Owner-authorized pending exception; do not upload while the first package awaits approval
+        type: boolean
+        default: false
         required: false
 
 permissions:
@@ -183,6 +193,19 @@ jobs:
           if ($installScript -notmatch '\$checksum\s*=\s*"[0-9a-fA-F]{64}"') {
             throw "nupkg installer does not contain a SHA-256 checksum"
           }
+      - name: Respect the pending first-package review
+        if: inputs.publish && inputs.defer_initial_review
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          [xml]$first = (Invoke-WebRequest -Uri "https://community.chocolatey.org/api/v2/Packages(Id='slskr',Version='0.2.82')").Content
+          $version = $first.SelectSingleNode("//*[local-name()='properties']/*[local-name()='Version']").InnerText
+          $approved = $first.SelectSingleNode("//*[local-name()='properties']/*[local-name()='IsApproved']").InnerText
+          if ($version -ne '0.2.82' -or $approved -notin @('true', 'false')) { throw 'Unexpected first-package moderation response' }
+          if ($approved -eq 'false') {
+            'CHOCO_DEFERRED=true' | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+            'Chocolatey awaits initial package approval. Owner authorized deferral; no upload or moderator contact will occur.' | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Encoding utf8 -Append
+          }
       - name: Record validated package evidence
         shell: pwsh
         env:
@@ -207,6 +230,8 @@ jobs:
             releaseAssetChecksumVerified = $true
             packageUrlAndChecksumSmokePassed = $true
             publishRequested = ($env:PUBLISH_REQUESTED -eq 'true')
+            pendingInitialReview = ($env:CHOCO_DEFERRED -eq 'true')
+            publicationStatus = if ($env:CHOCO_DEFERRED -eq 'true') { 'pending-initial-review' } else { 'validated' }
           }
           $receipt | ConvertTo-Json | Set-Content release-assets\chocolatey-validation.json -Encoding utf8
       - name: Retain validated Chocolatey package
@@ -219,8 +244,8 @@ jobs:
             release-assets/SHA256SUMS.txt
           if-no-files-found: error
           retention-days: 30
-      - name: Push package when credentials are configured
-        if: inputs.publish
+      - name: Push the validated package
+        if: inputs.publish && env.CHOCO_DEFERRED != 'true'
         shell: pwsh
         env:
           CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}

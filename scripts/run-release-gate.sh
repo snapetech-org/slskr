@@ -48,6 +48,7 @@ run_step "Changelog validation" scripts/validate-changelog.sh
 run_step "Shell syntax check" bash -n scripts/*.sh
 run_step "Release-note tooling tests" python3 scripts/test_release_notes.py
 run_step "Release metadata tests" python3 scripts/test-release-metadata.py
+run_step "Public release publication tests" python3 scripts/test-public-release.py
 run_step "Benchmark comparison and SQLite profiler tests" python3 -m unittest -v scripts.test_compare_benchmark scripts.test_profile_sqlite
 run_optional_step shellcheck "Shell lint" shellcheck \
   -x \

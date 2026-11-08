@@ -143,7 +143,7 @@ esac
                 self.assertEqual(workflow_gate_value(ast.parse(expression, mode='eval')), expected)
         caller = (ROOT / '.github/workflows/release.yml').read_text().split('  discord:\n', 1)[1]
         self.assertIn('uses: ./.github/workflows/announce-release.yml', caller)
-        for dependency in ('version', 'release', 'downstream-publish', 'chocolatey'):
+        for dependency in ('version', 'release', 'downstream-publish', 'chocolatey', 'public-publication'):
             self.assertIn(f"needs.{dependency}.result == 'success'", caller)
         self.assertIn('always() && !cancelled()', caller)
         self.assertIn('release_workflow_call: true', caller)

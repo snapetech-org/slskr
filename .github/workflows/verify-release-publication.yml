@@ -1,0 +1,69 @@
+name: Verify Public Release Publication
+run-name: Public package availability for ${{ inputs.tag }}
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Published release tag to verify
+        required: true
+        type: string
+      wait_seconds:
+        description: Maximum wait for external publication, 0 to 5400 seconds
+        required: false
+        type: number
+        default: 0
+      allow_chocolatey_initial_review:
+        description: Owner-authorized pending exception while the first Chocolatey package awaits approval
+        type: boolean
+        default: false
+  workflow_call:
+    inputs:
+      tag:
+        required: true
+        type: string
+      release_workflow_call:
+        required: true
+        type: boolean
+      wait_seconds:
+        required: false
+        type: number
+        default: 3600
+      allow_chocolatey_initial_review:
+        required: false
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: >-
+      (inputs.release_workflow_call && github.ref == format('refs/tags/{0}', inputs.tag)) ||
+      (!inputs.release_workflow_call && github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Test public publication checks
+        run: python3 scripts/test-public-release.py
+      - name: Require actual public packages
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+          WAIT_SECONDS: ${{ inputs.wait_seconds }}
+          ALLOW_INITIAL_REVIEW: ${{ inputs.allow_chocolatey_initial_review }}
+        run: |
+          options=()
+          if [[ "$ALLOW_INITIAL_REVIEW" == true ]]; then
+            options+=(--allow-chocolatey-initial-review)
+          fi
+          python3 scripts/check-public-release.py "$RELEASE_TAG" \
+            --wait-seconds "$WAIT_SECONDS" --receipt public-release-publication.json "${options[@]}"
+      - name: Retain public availability evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # actions/upload-artifact@v7.0.2
+        with:
+          name: public-release-publication-${{ inputs.tag }}-${{ github.run_id }}
+          path: public-release-publication.json
+          if-no-files-found: error
+          retention-days: 90

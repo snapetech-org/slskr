@@ -4,7 +4,8 @@ import json
 import os
 import sys
 
-REQUIRED = {'version', 'main-ci', 'gate', 'build', 'release', 'downstream-publish', 'chocolatey', 'discord'}
+REQUIRED = {'version', 'main-ci', 'gate', 'build', 'release', 'downstream-publish',
+            'chocolatey', 'public-publication', 'discord'}
 
 
 def incomplete_stages(needs):
@@ -19,4 +20,4 @@ if __name__ == '__main__':
         for stage, result in failures.items():
             print(f'Required release stage {stage}: {result}', file=sys.stderr)
         sys.exit(1)
-    print('Every required build, publisher, and announcement stage succeeded.')
+    print('Every required release stage succeeded. The public availability receipt lists any explicitly authorized pending channels.')
