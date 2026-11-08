@@ -143,6 +143,8 @@ Source-only release and packaging policy runs first, before compilation. Run
 `scripts/check-release-preflight.sh` locally before creating a candidate tag;
 it checks both workflow policy and artifact-matrix policy, including immutable
 tag provenance, and runs the metadata and announcement regression tests.
+The independently dispatched `release-preflight.yml` workflow checks the same
+preflight on a clean hosted runner, installing ripgrep, Git, and Python explicitly.
 
 The release workflow uses the same native runner and target mapping:
 

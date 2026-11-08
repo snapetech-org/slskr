@@ -1,0 +1,20 @@
+name: Release Policy Preflight
+on:
+  workflow_dispatch:
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Install preflight tools on a clean runner
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ripgrep git python3
+      - name: Validate release and packaging policy before compilation
+        run: scripts/check-release-preflight.sh

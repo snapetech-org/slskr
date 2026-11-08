@@ -38,12 +38,7 @@ jobs:
     if: >-
       inputs.action_tag == 'test' && inputs.runner_pool_tag == 'hosted' &&
       (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v'))
-    runs-on: ubuntu-24.04
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
-      - name: Validate release and packaging policy before compilation
-        run: scripts/check-release-preflight.sh
+    uses: ./.github/workflows/release-preflight.yml
 
   web-assets:
     name: Production web assets
