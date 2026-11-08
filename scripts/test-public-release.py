@@ -17,6 +17,26 @@ SPEC.loader.exec_module(publication)
 
 
 class PublicationTests(unittest.TestCase):
+    def test_publication_poll_revalidates_cached_metadata(self):
+        session = MagicMock()
+        session.__enter__.return_value = session
+
+        def cached_response(method, url, **kwargs):
+            response = MagicMock()
+            response.__enter__.return_value = response
+            response.status_code = 200
+            # Reproduce the observed stale Launchpad collection: it changes
+            # only when the client asks the cache to revalidate its response.
+            current = kwargs['headers'].get('Cache-Control') == 'no-cache'
+            response.iter_content.return_value = [b'{"entries":["new-release"]}'
+                                                  if current else b'{"entries":[]}']
+            return response
+
+        session.request.side_effect = cached_response
+        with patch.object(publication, 'public_session', return_value=session):
+            self.assertEqual(publication.json_read(publication.PPA),
+                             {'entries': ['new-release']})
+
     def test_http_transport_rejects_local_files_and_untrusted_redirects(self):
         def client():
             session = MagicMock()

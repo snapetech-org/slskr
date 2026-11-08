@@ -47,7 +47,8 @@ def request(url, method):
                 raise ValueError(f'request rejected for repository origin {parsed.scheme}://{parsed.hostname}:{parsed.port}')
             with session.request(method, url, timeout=25, verify=True, stream=True,
                                  allow_redirects=False,
-                                 headers={'User-Agent': 'slskr-publication-check'}) as response:
+                                 headers={'User-Agent': 'slskr-publication-check',
+                                          'Cache-Control': 'no-cache'}) as response:
                 if response.status_code in (301, 302, 303, 307, 308):
                     location = response.headers.get('Location')
                     if not location:
