@@ -223,6 +223,9 @@ first package is approved. All other configured channels remain required.
 For a read-only recovery check, dispatch `verify-release-publication.yml` from
 main with the original tag. Set `allow_chocolatey_initial_review=true` only under
 the same owner authorization. This workflow never uploads or sends messages.
+The live checker uses the hash-locked dependencies in
+`scripts/requirements-publication.txt`; the workflow installs them in its own
+temporary virtual environment. Fixture tests require only the standard library.
 
 ### Winget fork recovery
 

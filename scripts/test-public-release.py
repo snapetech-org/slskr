@@ -9,7 +9,7 @@ import contextlib
 from pathlib import Path
 import tempfile
 import unittest
-from unittest.mock import Mock, patch
+from unittest.mock import MagicMock, Mock, patch
 
 SPEC = importlib.util.spec_from_file_location('publication', Path(__file__).with_name('check-public-release.py'))
 publication = importlib.util.module_from_spec(SPEC)
@@ -17,6 +17,38 @@ SPEC.loader.exec_module(publication)
 
 
 class PublicationTests(unittest.TestCase):
+    def test_http_transport_rejects_local_files_and_untrusted_redirects(self):
+        def client():
+            session = MagicMock()
+            session.__enter__.return_value = session
+            return session
+        for url in ('file:///etc/passwd', 'http://github.com/package',
+                    'https://localhost/package', 'https://github.com:8443/package',
+                    'https://user:password@github.com/package', 'https://@github.com/package'):
+            session = client()
+            with self.subTest(url=url), patch.object(publication, 'public_session', return_value=session):
+                with self.assertRaises(ValueError):
+                    publication.read(url)
+                session.request.assert_not_called()
+        response = Mock(status_code=302, headers={'Location': 'https://localhost/package'})
+        session = client()
+        session.request.return_value.__enter__.return_value = response
+        with patch.object(publication, 'public_session', return_value=session):
+            with self.assertRaises(ValueError):
+                publication.read('https://github.com/package')
+            self.assertEqual(session.request.call_count, 1)
+        redirect = Mock(status_code=302, headers={'Location': 'https://packages.redhat.com/package'})
+        content = Mock(status_code=200)
+        content.iter_content.return_value = [b'public metadata']
+        session = client()
+        session.request.return_value.__enter__.side_effect = [redirect, content]
+        with patch.object(publication, 'public_session', return_value=session):
+            self.assertEqual(publication.read(publication.RPM + 'package'), b'public metadata')
+            self.assertEqual(session.request.call_count, 2)
+            for call in session.request.call_args_list:
+                self.assertTrue(call.kwargs['verify'])
+                self.assertFalse(call.kwargs['allow_redirects'])
+
     def test_authorized_review_exception_is_not_reported_as_complete_publication(self):
         with tempfile.TemporaryDirectory(prefix='slskr-publication-test-') as directory:
             receipt = Path(directory) / 'receipt.json'

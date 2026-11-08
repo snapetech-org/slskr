@@ -45,6 +45,12 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
         with:
           persist-credentials: false
+      - name: Install pinned publication-check dependencies
+        run: |
+          python3 -m venv "$RUNNER_TEMP/publication-venv"
+          "$RUNNER_TEMP/publication-venv/bin/python" -m pip --isolated install \
+            --disable-pip-version-check --require-hashes -r scripts/requirements-publication.txt
+          echo "$RUNNER_TEMP/publication-venv/bin" >> "$GITHUB_PATH"
       - name: Test public publication checks
         run: python3 scripts/test-public-release.py
       - name: Require actual public packages

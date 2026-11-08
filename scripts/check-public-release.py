@@ -10,7 +10,6 @@ from pathlib import Path
 import re
 import time
 import urllib.parse
-import urllib.request
 import xml.etree.ElementTree as ET
 
 
@@ -22,21 +21,57 @@ COPR = 'https://copr.fedorainfracloud.org/api_3/'
 RPM = 'https://download.copr.fedorainfracloud.org/results/slskdn/slskr/'
 NS = {'r': 'http://linux.duke.edu/metadata/repo',
       'p': 'http://linux.duke.edu/metadata/common'}
+PUBLIC_HOSTS = {'github.com', 'release-assets.githubusercontent.com', 'objects.githubusercontent.com',
+                'raw.githubusercontent.com', 'api.launchpad.net', 'ppa.launchpadcontent.net',
+                'copr.fedorainfracloud.org', 'download.copr.fedorainfracloud.org',
+                'community.chocolatey.org', 'packages.redhat.com', 'copr-pulp-prod.s3.amazonaws.com'}
+# COPR serves public artifacts through Red Hat Packages and this specific S3 bucket.
+
+
+def public_session():
+    # The network checker installs its pinned dependency; fixture tests need only
+    # the standard library. Disable implicit netrc credentials and proxy config.
+    import requests
+    session = requests.Session()
+    session.trust_env = False
+    return session
+
+
+def request(url, method):
+    with public_session() as session:
+        for _ in range(6):
+            parsed = urllib.parse.urlsplit(url)
+            if (parsed.scheme != 'https' or parsed.hostname not in PUBLIC_HOSTS
+                    or parsed.port not in (None, 443)
+                    or parsed.username is not None or parsed.password is not None):
+                raise ValueError(f'request rejected for repository origin {parsed.scheme}://{parsed.hostname}:{parsed.port}')
+            with session.request(method, url, timeout=25, verify=True, stream=True,
+                                 allow_redirects=False,
+                                 headers={'User-Agent': 'slskr-publication-check'}) as response:
+                if response.status_code in (301, 302, 303, 307, 308):
+                    location = response.headers.get('Location')
+                    if not location:
+                        raise ValueError('repository redirect is missing its location')
+                    url = urllib.parse.urljoin(url, location)
+                    continue
+                if response.status_code != 200:
+                    raise ValueError(f'HTTP {response.status_code} from {parsed.hostname}')
+                data = bytearray()
+                if method == 'GET':
+                    for chunk in response.iter_content(chunk_size=64 * 1024):
+                        data.extend(chunk)
+                        if len(data) > 8 * 1024 * 1024:
+                            raise ValueError('repository metadata exceeds size limit')
+                return bytes(data)
+    raise ValueError('too many repository redirects')
 
 
 def read(url):
-    request = urllib.request.Request(url, headers={'User-Agent': 'slskr-publication-check'})
-    with urllib.request.urlopen(request, timeout=25) as response:
-        data = response.read(8 * 1024 * 1024 + 1)
-    if len(data) > 8 * 1024 * 1024:
-        raise ValueError('repository metadata exceeds size limit')
-    return data
+    return request(url, 'GET')
 
 
 def public_file(url):
-    with urllib.request.urlopen(urllib.request.Request(url, method='HEAD'), timeout=25) as response:
-        if response.status != 200:
-            raise ValueError('package is not publicly downloadable')
+    request(url, 'HEAD')
 
 
 def gunzip(data):
