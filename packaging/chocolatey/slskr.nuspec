@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>slskr</id>
-    <version>0.2.83</version>
+    <version>0.2.86</version>
     <title>slskR</title>
     <authors>snapetech</authors>
     <projectUrl>https://github.com/snapetech-org/slskr</projectUrl>
@@ -11,9 +11,6 @@
     <tags>slskr soulseek p2p daemon</tags>
     <summary>Rust Soulseek daemon with bundled Web UI</summary>
     <description>slskR is a Rust Soulseek daemon with an HTTP API and bundled Web UI.</description>
-    <dependencies>
-      <dependency id="vcredist140" version="[14.0,)" />
-    </dependencies>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
