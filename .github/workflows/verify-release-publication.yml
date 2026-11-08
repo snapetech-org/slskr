@@ -53,6 +53,14 @@ jobs:
           echo "$RUNNER_TEMP/publication-venv/bin" >> "$GITHUB_PATH"
       - name: Test public publication checks
         run: python3 scripts/test-public-release.py
+      - name: Read live WinGet client catalog
+        run: |
+          python3 - <<'PY'
+          import json
+          import runpy
+          checker = runpy.run_path('scripts/check-public-release.py')
+          print(json.dumps(checker['winget_catalog'](), indent=2))
+          PY
       - name: Require actual public packages
         env:
           RELEASE_TAG: ${{ inputs.tag }}

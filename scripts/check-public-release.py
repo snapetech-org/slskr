@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Wait for public package publication. Never upload, retry, or send messages."""
 import argparse
+from contextlib import closing
 import datetime
 import gzip
 import hashlib
@@ -8,9 +9,12 @@ import io
 import json
 from pathlib import Path
 import re
+import sqlite3
+import tempfile
 import time
 import urllib.parse
 import xml.etree.ElementTree as ET
+import zipfile
 
 
 CHROOTS = {'fedora-43-x86_64', 'fedora-43-aarch64',
@@ -24,7 +28,8 @@ NS = {'r': 'http://linux.duke.edu/metadata/repo',
 PUBLIC_HOSTS = {'github.com', 'release-assets.githubusercontent.com', 'objects.githubusercontent.com',
                 'raw.githubusercontent.com', 'api.launchpad.net', 'ppa.launchpadcontent.net',
                 'copr.fedorainfracloud.org', 'download.copr.fedorainfracloud.org',
-                'community.chocolatey.org', 'packages.redhat.com', 'copr-pulp-prod.s3.amazonaws.com'}
+                'community.chocolatey.org', 'packages.redhat.com', 'copr-pulp-prod.s3.amazonaws.com',
+                'cdn.winget.microsoft.com'}
 # COPR serves public artifacts through Red Hat Packages and this specific S3 bucket.
 
 
@@ -160,6 +165,33 @@ def ppa(version):
     return {'version': source['source_package_version'], 'packages': packages}
 
 
+def winget_catalog():
+    # This is the client source documented by microsoft/winget-cli, not the
+    # GitHub manifest repository. A merge can precede catalog publication.
+    url = 'https://cdn.winget.microsoft.com/cache/source2.msix'
+    package = read(url)
+    maximum = 64 * 1024 * 1024
+    with zipfile.ZipFile(io.BytesIO(package)) as archive:
+        if archive.getinfo('Public/index.db').file_size > maximum:
+            raise ValueError('WinGet catalog index exceeds size limit')
+        with archive.open('Public/index.db') as stream:
+            index = stream.read(maximum + 1)
+    if len(index) > maximum:
+        raise ValueError('WinGet catalog index exceeds size limit')
+    with tempfile.TemporaryDirectory(prefix='slskr-winget-catalog-') as directory:
+        path = Path(directory) / 'index.db'
+        path.write_bytes(index)
+        with closing(sqlite3.connect(path.as_uri() + '?mode=ro&immutable=1', uri=True)) as db:
+            db.execute('PRAGMA trusted_schema=OFF')
+            db.execute('PRAGMA query_only=ON')
+            row = db.execute('SELECT id, latest_version FROM packages WHERE id = ? COLLATE NOCASE',
+                             ('snapetech.slskr',)).fetchone()
+    if not row:
+        raise ValueError('slskr is missing from the public WinGet client catalog')
+    return {'source': url, 'archiveSha256': hashlib.sha256(package).hexdigest(),
+            'packageIdentifier': row[0], 'latestVersion': row[1]}
+
+
 def winget(version, windows_sha):
     url = ('https://raw.githubusercontent.com/microsoft/winget-pkgs/master/'
            f'manifests/s/snapetech/slskr/{version}/snapetech.slskr.installer.yaml')
@@ -168,7 +200,11 @@ def winget(version, windows_sha):
     hashes = re.findall(r'^\s+InstallerSha256:\s*([0-9a-fA-F]{64})\s*$', manifest, re.M)
     if not package_version or package_version[1] != version or [s.lower() for s in hashes] != [windows_sha]:
         raise ValueError('public Winget manifest does not match the release archive')
-    return {'manifest': url, 'windowsSha256': windows_sha}
+    catalog = winget_catalog()
+    if catalog['latestVersion'] != version:
+        raise ValueError('WinGet client catalog has not published the release: '
+                         + str(catalog['latestVersion']))
+    return {'manifest': url, 'windowsSha256': windows_sha, 'catalog': catalog}
 
 
 def chocolatey(version, allow_initial_review=False):

@@ -7,8 +7,10 @@ import io
 import json
 import contextlib
 from pathlib import Path
+import sqlite3
 import tempfile
 import unittest
+import zipfile
 from unittest.mock import MagicMock, Mock, patch
 
 SPEC = importlib.util.spec_from_file_location('publication', Path(__file__).with_name('check-public-release.py'))
@@ -123,13 +125,56 @@ class PublicationTests(unittest.TestCase):
                                        ('0.2.84', 'b' * 64, False)):
             with self.subTest(version=version, digest=digest):
                 data = f'PackageVersion: {version}\nInstallers:\n- Architecture: x64\n  InstallerSha256: {digest}\n'.encode()
-                with patch.object(publication, 'read', return_value=data) as read:
+                with patch.object(publication, 'read', return_value=data) as read, \
+                     patch.object(publication, 'winget_catalog',
+                                  return_value={'latestVersion': '0.2.84'}) as catalog:
                     if valid:
                         publication.winget('0.2.84', 'a' * 64)
+                        catalog.assert_called_once()
                     else:
                         with self.assertRaises(ValueError):
                             publication.winget('0.2.84', 'a' * 64)
+                        catalog.assert_not_called()
                     self.assertIn('/master/', read.call_args.args[0])
+
+    def test_winget_merged_manifest_waits_for_the_client_catalog(self):
+        manifest = ('PackageVersion: 0.2.86\nInstallers:\n- Architecture: x64\n'
+                    '  InstallerSha256: ' + 'a' * 64 + '\n').encode()
+        for version, package, ready in (('0.2.83', 'snapetech.slskr', False),
+                                         ('0.2.86', 'snapetech.slskr', True),
+                                         ('0.2.86', 'other.package', False)):
+            with self.subTest(version=version, package=package), \
+                 tempfile.TemporaryDirectory(prefix='slskr-catalog-fixture-') as directory:
+                path = Path(directory) / 'index.db'
+                db = sqlite3.connect(path)
+                try:
+                    db.execute('CREATE TABLE packages(id TEXT, latest_version TEXT)')
+                    db.execute('INSERT INTO packages VALUES (?, ?)', (package, version))
+                    db.commit()
+                finally:
+                    db.close()
+                buffer = io.BytesIO()
+                with zipfile.ZipFile(buffer, 'w', compression=zipfile.ZIP_DEFLATED) as archive:
+                    archive.writestr('Public/index.db', path.read_bytes())
+                with patch.object(publication, 'read', side_effect=[manifest, buffer.getvalue()]) as read:
+                    if ready:
+                        result = publication.winget('0.2.86', 'a' * 64)
+                        self.assertEqual(result['catalog']['latestVersion'], '0.2.86')
+                    else:
+                        with self.assertRaises(ValueError):
+                            publication.winget('0.2.86', 'a' * 64)
+                    self.assertEqual(read.call_args.args[0],
+                                     'https://cdn.winget.microsoft.com/cache/source2.msix')
+
+    def test_winget_catalog_rejects_oversized_index_before_decompression(self):
+        archive = MagicMock()
+        archive.__enter__.return_value = archive
+        archive.getinfo.return_value.file_size = 64 * 1024 * 1024 + 1
+        with patch.object(publication, 'read', return_value=b'fixture'), \
+             patch.object(publication.zipfile, 'ZipFile', return_value=archive):
+            with self.assertRaisesRegex(ValueError, 'size limit'):
+                publication.winget_catalog()
+        archive.open.assert_not_called()
 
     def test_launchpad_source_or_successful_build_alone_is_insufficient(self):
         source = {'source_package_version': '0.2.84-1ppa123~jammy',
