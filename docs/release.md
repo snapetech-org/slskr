@@ -217,6 +217,14 @@ Run `pwsh -NoProfile -File scripts/test-submit-winget-release.ps1` to exercise
 canonical writes, upstream ancestry, idempotency, and refusal to overwrite
 mismatched published content. The publisher runs this test before submitting.
 
+For operator recovery with an existing authenticated GitHub CLI session, run
+`pwsh -NoProfile -File scripts/submit-winget-release.ps1 -SubmitPath packaging/winget -PackageVersion <semver> -UseGhCli`
+after generating metadata from verified release assets. This uses the existing CLI
+authentication directly; it does not export or copy that credential into Actions.
+A matching Actions retry can confirm the existing PR without creating another one.
+Manual metadata recovery uses its selected main workflow revision and resolves
+package URLs and source provenance from the original immutable release tag.
+
 ### Chocolatey upload recovery
 
 If upload fails after validation, reuse the saved package instead of rebuilding:
@@ -227,20 +235,16 @@ manifest, then attempts one upload and retains its redacted HTTP response.
 HTTP 403 can indicate a moderation limit as well as invalid credentials; inspect
 the actual response before changing keys. Do not bypass repository moderation.
 
-For operator recovery with an existing authenticated GitHub CLI session, run
-`pwsh -NoProfile -File scripts/submit-winget-release.ps1 -SubmitPath packaging/winget -PackageVersion <semver> -UseGhCli`
-after generating metadata from verified release assets. This uses the existing CLI
-authentication directly; it does not export or copy that credential into Actions.
-A matching Actions retry can confirm the existing PR without creating another one.
-
 Chocolatey is a required called job of the full release workflow. A publication
 failure blocks Discord and the final completion gate. The standalone manual path
 remains available for validation and recovery; full releases always pass
 `publish: true` and fail if publication credentials are missing.
 
-Portable Windows archives use static CRT linkage while retaining the configured
-16 MiB stack reserve. `scripts/check-windows-runtime.py` reads PE imports and
+Starting with 0.2.84, portable Windows archives use static CRT linkage while
+retaining the configured 16 MiB stack reserve. `scripts/check-windows-runtime.py` reads PE imports and
 rejects undeclared Visual C++ redistributable dependencies. Archive verification
 runs this check even when inspecting Windows artifacts from another OS; native
 Windows smoke also executes the resulting binary. This packaging check does not
 replace Microsoft Defender or external catalog validation.
+Legacy Windows package metadata declares the required Visual C++ redistributable
+for versions before 0.2.84; their original archives and checksums remain unchanged.
