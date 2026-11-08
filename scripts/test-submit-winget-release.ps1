@@ -62,7 +62,7 @@ try {
         $global:SlskrWingetTestCase = $case
         $global:SlskrWingetTestRequests = [Collections.Generic.List[object]]::new()
         $caught = $null
-        try { & (Join-Path $PSScriptRoot 'submit-winget-release.ps1') -SubmitPath $root -PackageVersion '9.8.7' }
+        try { & (Join-Path $PSScriptRoot 'submit-winget-release.ps1') -SubmitPath $root -PackageVersion '9.8.7' 6>$null }
         catch { $caught = $_ }
         $writes = @($global:SlskrWingetTestRequests | Where-Object Method -ne 'GET')
         if (@($writes | Where-Object Method -ne 'POST').Count -ne 0) { throw 'Publisher updated or deleted published history' }

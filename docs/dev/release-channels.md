@@ -14,9 +14,9 @@ slskdN release system, with slskR-specific package and project names.
 | AUR binary package | `slskr-bin` | `AUR_SSH_KEY` |
 | COPR | `slskdn/slskr` (x86_64 and aarch64) | Preferred: `COPR_KERBEROS_PRINCIPAL`, `COPR_KERBEROS_KEYTAB_B64`; then Fedora username/password/TOTP; last fallback: `COPR_LOGIN`, `COPR_TOKEN` |
 | Launchpad PPA | `~keefshape/ubuntu/slskdn` (amd64; arm64 source-ready) | `GPG_PRIVATE_KEY`, optional `LAUNCHPAD_SFTP_KEY`, optional `LAUNCHPAD_SFTP_USER` |
-| Homebrew tap | `snapetech/homebrew-slskdn` (compatibility tap) | `TAP_GITHUB_TOKEN` |
+| Homebrew tap | `snapetech-org/homebrew-slskdn` (`snapetech/homebrew-slskdn` compatibility redirect) | `TAP_GITHUB_TOKEN` |
 | Snap | `slskr` (amd64 and arm64) | `SNAPCRAFT_STORE_CREDENTIALS` in the manual `publish-snap.yml` workflow |
-| Flatpak | `io.github.slskd.slskr` (x86_64 and aarch64) | Flathub credentials managed outside this workflow |
+| Flatpak manifest | `io.github.slskd.slskr` (x86_64 and aarch64) | no Flathub publisher configured in this repository |
 | Helm | `packaging/helm/slskr` (multi-arch GHCR image) | none |
 | TrueNAS SCALE | `packaging/truenas-scale/charts/slskr` (multi-arch GHCR image) | none |
 | Unraid | `slskr.xml` (repository root; floating `latest` GHCR tag) | none |
@@ -25,26 +25,33 @@ slskdN release system, with slskR-specific package and project names.
 | Chocolatey | `slskr` (Windows x64) | `CHOCO_API_KEY` |
 | Nix flake | `slskr` | none |
 
-The release workflow skips optional credentialed channels whose secrets are not
-available. GHCR and Docker Hub publication are required for stable releases.
+All configured package publishers are required for a full release. Missing
+credentials fail preflight; they must not turn publication into a successful
+no-op. A targeted recovery retries only the selected failed publisher after the
+other destinations have actual publication receipts. It is not a substitute for
+verifying every required channel. Snap remains excluded by the owner's current
+release directive; do not extend that exception to another publisher.
 GHCR uses a classic personal access token
 because the `slskR` package belongs to the personal `snapetech` account rather
 than the `snapetech-org` repository. Both registries receive the same verified
 release before the container publishing job completes. The
 Winget job submits a pull request to Microsoft's repository; a successful job
 does not mean that Microsoft has merged or indexed the package. Chocolatey is a
-separate manual-dispatch workflow and derives both its package version and
-Windows archive checksum from the requested release tag.
+required reusable job in the tagged release workflow and derives its package
+version and Windows archive checksum from that tag. Its manual workflow remains
+available for validation and recovery. Chocolatey publication failures block
+Discord and the final completion gate.
 
 ## Publication boundaries
 
-The release workflow directly publishes GitHub release assets, the GHCR
-multi-architecture image, AUR, COPR, the Launchpad PPA, and the Homebrew tap
-when their credentials are configured. It submits Winget manifests for external
-review. The release CI also validates the Snap and Flatpak manifests and their
+The release workflow directly publishes GitHub release assets, both GHCR and
+Docker Hub multi-architecture images, AUR, COPR, the Launchpad PPA, the Homebrew
+tap, and Chocolatey packages. It submits Winget manifests for external review. The release CI also validates the Snap and Flatpak manifests and their
 architecture-specific source archives, while the separate manual `publish-snap.yml` workflow builds and uploads both
-Snap architectures after the release assets exist. Flathub remains an external
-publication and review process.
+Snap architectures after the release assets exist. The checked-in Flatpak
+manifest and its download validation do not constitute a Flathub submission.
+Flathub requires a separately verified app repository, publisher, and review
+process; do not report an upload without an actual receipt.
 
 The 2026-09-06 audit found the Launchpad source publication fully accepted and
 its `amd64` build successful, but the public PPA scheduled no `arm64` build.
@@ -62,6 +69,17 @@ and listing are external and are not performed by a slskR workflow. The
 template tracks the floating `latest` GHCR tag so catalog installs always pull
 the newest published release; the release metadata refresh does not commit
 changes back to the repository.
+
+## Confirming completion
+
+A successful submission is not the same as repository availability. Confirm the
+native archives, checksums and provenance; both registry aliases and native
+platform manifests; AUR versions and the actual tap formula; all COPR builds and
+public RPM indexes; and the Launchpad build plus public apt index. Record Winget
+and Chocolatey validation/moderation states separately from submission receipts.
+Do not describe an external catalog as indexed while it is still reviewing a PR
+or package. Use the recovery commands in `docs/release.md` and retain their
+actual package hashes and provider responses.
 
 ## COPR Authentication
 
