@@ -19,6 +19,8 @@ the release is prepared. Do not rewrite audited release history.
 ## [Unreleased]
 
 - Link the Visual C++ runtime statically so portable Windows packages start without an undeclared redistributable dependency.
+- Require Chocolatey publication alongside every other configured publisher before announcing release completion.
+- Recover Winget submissions without rewriting fork history, and verify existing submissions before retrying them.
 
 ## [0.2.83] — 2026-11-07
 
