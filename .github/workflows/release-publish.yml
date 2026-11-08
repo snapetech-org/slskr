@@ -251,8 +251,8 @@ jobs:
         run: |
           set -euo pipefail
           if [[ -z "${AUR_SSH_KEY:-}" ]]; then
-            echo "AUR_SSH_KEY is not configured; skipping AUR publish."
-            exit 0
+            echo "::error::AUR_SSH_KEY is required for AUR publication."
+            exit 1
           fi
           tmp_key="$(mktemp)"
           trap 'rm -f "$tmp_key"' EXIT
@@ -263,7 +263,7 @@ jobs:
           AUR_SSH_KEY: ${{ secrets.AUR_SSH_KEY }}
         run: |
           set -euo pipefail
-          [[ -n "${AUR_SSH_KEY:-}" ]] || exit 0
+          [[ -n "${AUR_SSH_KEY:-}" ]] || { echo "::error::AUR_SSH_KEY is required."; exit 1; }
           bash packaging/scripts/checkout-aur-repo.sh slskr-bin aur-slskr-bin
           rm -f aur-slskr-bin/slskr.install
           cp packaging/aur/PKGBUILD-bin aur-slskr-bin/PKGBUILD
@@ -276,7 +276,7 @@ jobs:
           AUR_SSH_KEY: ${{ secrets.AUR_SSH_KEY }}
         run: |
           set -euo pipefail
-          [[ -n "${AUR_SSH_KEY:-}" ]] || exit 0
+          [[ -n "${AUR_SSH_KEY:-}" ]] || { echo "::error::AUR_SSH_KEY is required."; exit 1; }
           bash packaging/scripts/checkout-aur-repo.sh slskr aur-slskr
           rm -f aur-slskr/slskr.install
           cp packaging/aur/PKGBUILD aur-slskr/PKGBUILD
@@ -432,7 +432,8 @@ jobs:
               exit 1
             fi
           else
-            echo "COPR credentials not configured; skipping."
+            echo "::error::COPR credentials are required for publication."
+            exit 1
           fi
       - name: Build and upload SRPM
         env:
@@ -448,7 +449,8 @@ jobs:
           if [[ -z "${COPR_KERBEROS_PRINCIPAL:-}" || -z "${COPR_KERBEROS_KEYTAB_B64:-}" ]] \
             && [[ -z "${COPR_FEDORA_USERNAME:-}" || -z "${COPR_FEDORA_PASSWORD:-}" || -z "${COPR_FEDORA_OTP_SECRET:-}" ]] \
             && [[ -z "${COPR_LOGIN:-}" || -z "${COPR_TOKEN:-}" ]]; then
-            exit 0
+            echo "::error::COPR credentials are required for publication."
+            exit 1
           fi
           if ! copr-cli whoami >/dev/null 2>&1; then
             echo "::error title=COPR authentication failed::copr-cli could not authenticate. Renew the configured COPR Kerberos keytab or Fedora password+TOTP credentials; use COPR_LOGIN and COPR_TOKEN only as the last fallback."
@@ -524,8 +526,8 @@ jobs:
         run: |
           set -euo pipefail
           if [[ -z "${GPG_PRIVATE_KEY:-}" ]]; then
-            echo "GPG_PRIVATE_KEY not configured; skipping PPA."
-            exit 0
+            echo "::error::GPG_PRIVATE_KEY is required for PPA publication."
+            exit 1
           fi
           printf '%s\n' "$GPG_PRIVATE_KEY" | gpg --batch --import
           key_id="$(gpg --list-secret-keys --keyid-format long | awk '/^sec/ { split($2,a,"/"); print a[2]; exit }')"
@@ -536,7 +538,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          [[ -n "${GPG_PRIVATE_KEY:-}" ]] || exit 0
+          [[ -n "${GPG_PRIVATE_KEY:-}" ]] || { echo "::error::GPG_PRIVATE_KEY is required."; exit 1; }
           . packaging/scripts/release-assets.sh
           version="${{ needs.metadata.outputs.pkgver }}"
           release_version="${{ needs.metadata.outputs.release_version }}"
@@ -620,7 +622,7 @@ jobs:
           LAUNCHPAD_SFTP_USER: ${{ secrets.LAUNCHPAD_SFTP_USER }}
         run: |
           set -euo pipefail
-          [[ -n "${GPG_PRIVATE_KEY:-}" ]] || exit 0
+          [[ -n "${GPG_PRIVATE_KEY:-}" ]] || { echo "::error::GPG_PRIVATE_KEY is required."; exit 1; }
           changes="$(find . -maxdepth 1 -name '*.changes' -print -quit)"
           if [[ -z "$changes" ]]; then
             echo "::error::Unable to find source package .changes file"
@@ -832,8 +834,8 @@ jobs:
         run: |
           set -euo pipefail
           if [[ -z "${GH_TOKEN:-}" ]]; then
-            echo "TAP_GITHUB_TOKEN not configured; skipping Homebrew tap."
-            exit 0
+            echo "::error::TAP_GITHUB_TOKEN is required for Homebrew publication."
+            exit 1
           fi
           git clone "https://x-access-token:${GH_TOKEN}@github.com/snapetech/homebrew-slskdn.git" tap
           mkdir -p tap/Formula
@@ -842,7 +844,13 @@ jobs:
           git config user.name "slskr CI"
           git config user.email "slskr@proton.me"
           git add Formula/slskr.rb
-          git commit -m "Update slskr to ${{ needs.metadata.outputs.release_version }}" || exit 0
+          if git diff --cached --quiet; then
+            echo "Homebrew formula already matches the requested release."
+          else
+            diff_status=$?
+            [[ "$diff_status" -eq 1 ]] || exit "$diff_status"
+            git commit -m "Update slskr to ${{ needs.metadata.outputs.release_version }}"
+          fi
           git push
 
   winget:
@@ -885,8 +893,7 @@ jobs:
         run: |
           $ErrorActionPreference = "Stop"
           if ([string]::IsNullOrWhiteSpace($env:WINGETCREATE_GITHUB_TOKEN)) {
-            Write-Host "WINGETCREATE_GITHUB_TOKEN not configured; skipping Winget."
-            exit 0
+            throw 'WINGETCREATE_GITHUB_TOKEN is required for Winget publication.'
           }
           $submitPath = Join-Path "winget-submit" "manifests/s/snapetech/slskr/${{ needs.metadata.outputs.pkgver }}"
           New-Item -ItemType Directory -Force $submitPath | Out-Null

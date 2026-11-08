@@ -12,6 +12,7 @@ import shutil
 import subprocess
 import tempfile
 import tarfile
+import textwrap
 import unittest
 from unittest.mock import patch
 
@@ -53,6 +54,59 @@ def workflow_gate_value(node):
 
 
 class ReleaseMetadataTests(unittest.TestCase):
+    def test_publish_steps_fail_before_work_when_credentials_are_missing(self):
+        workflow = (ROOT / '.github/workflows/release-publish.yml').read_text()
+        for name in ('Setup AUR SSH', 'Push slskr-bin', 'Push slskr source package',
+                     'Build and upload SRPM', 'Import signing key', 'Build source package',
+                     'Upload to PPA', 'Push tap'):
+            with self.subTest(step=name):
+                step = workflow.split(f'      - name: {name}\n', 1)[1]
+                block = re.search(r'        run: \|\n((?:          .*\n|\n)+)', step).group(1)
+                script = re.sub(r'\$\{\{.*?\}\}', 'v9.8.7', textwrap.dedent(block))
+                # No external commands are reachable with this PATH: a missed
+                # credential guard fails differently instead of publishing.
+                result = subprocess.run(['/bin/bash', '-c', script],
+                                        env={'PATH': '/nonexistent'}, capture_output=True, text=True)
+                self.assertEqual(result.returncode, 1, result.stderr)
+                self.assertIn('::error::', result.stdout)
+
+    def test_homebrew_commit_failures_do_not_pass_as_no_changes(self):
+        workflow = (ROOT / '.github/workflows/release-publish.yml').read_text()
+        step = workflow.split('      - name: Push tap\n', 1)[1].split('\n  winget:', 1)[0]
+        script = textwrap.dedent(step.split('        run: |\n', 1)[1])
+        script = re.sub(r'\$\{\{.*?\}\}', 'v9.8.7', script)
+        for diff_exit, commit_exit, push_exit, expected, committed, pushed in (
+            (0, 9, 0, 0, False, True),
+            (1, 0, 0, 0, True, True),
+            (1, 7, 0, 7, True, False),
+            (2, 0, 0, 2, False, False),
+            (1, 0, 8, 8, True, True),
+        ):
+            with self.subTest(diff=diff_exit, commit=commit_exit, push=push_exit):
+                with tempfile.TemporaryDirectory(prefix='slskr-tap-test-') as directory:
+                    root = Path(directory)
+                    (root / 'packaging/homebrew/Formula').mkdir(parents=True)
+                    (root / 'packaging/homebrew/Formula/slskr.rb').write_text('fixture formula\n')
+                    (root / 'bin').mkdir()
+                    git = root / 'bin/git'
+                    git.write_text('''#!/bin/sh
+case "$1" in
+  clone) mkdir -p tap/Formula ;;
+  diff) exit "$DIFF_EXIT" ;;
+  commit) touch ../committed; exit "$COMMIT_EXIT" ;;
+  push) touch ../pushed; exit "$PUSH_EXIT" ;;
+esac
+''')
+                    git.chmod(0o755)
+                    env = {**os.environ, 'PATH': f"{root / 'bin'}:{os.environ['PATH']}",
+                           'GH_TOKEN': 'fixture', 'DIFF_EXIT': str(diff_exit),
+                           'COMMIT_EXIT': str(commit_exit), 'PUSH_EXIT': str(push_exit)}
+                    result = subprocess.run(['bash', '-c', script], cwd=root, env=env,
+                                            capture_output=True, text=True)
+                    self.assertEqual(result.returncode, expected, result.stderr)
+                    self.assertEqual((root / 'committed').exists(), committed)
+                    self.assertEqual((root / 'pushed').exists(), pushed)
+
     def test_release_completion_rejects_skipped_and_missing_stages(self):
         spec = importlib.util.spec_from_file_location('completion', ROOT / 'scripts/check-release-completion.py')
         completion = importlib.util.module_from_spec(spec)
