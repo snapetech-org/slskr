@@ -128,7 +128,9 @@ jobs:
           fi
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          ref: ${{ inputs.tag || github.event.inputs.tag || github.ref_name }}
+          # Recovery uses the selected workflow's metadata fixes while package
+          # URLs and provenance remain bound to the immutable release tag.
+          ref: ${{ github.event_name == 'workflow_dispatch' && !inputs.release_workflow_call && github.sha || inputs.tag || github.event.inputs.tag || github.ref_name }}
       - name: Resolve version
         id: version
         env:
@@ -140,7 +142,8 @@ jobs:
           tag="${RELEASE_TAG}"
           release_version="$(slskr_release_version_from_tag "$tag")"
           pkgver="${release_version#v}"
-          release_sha="$(git rev-parse HEAD)"
+          git fetch --no-tags --depth=1 origin "refs/tags/${tag}:refs/tags/${tag}"
+          release_sha="$(git rev-parse "refs/tags/${tag}^{commit}")"
           {
             echo "tag=${tag}"
             echo "release_version=${release_version}"
