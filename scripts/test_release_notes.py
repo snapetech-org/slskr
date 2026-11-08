@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 import shutil
+import os
 import subprocess
 import sys
 import tempfile
+import textwrap
 import unittest
 from pathlib import Path
 
@@ -24,6 +26,29 @@ Release validation now publishes the same curated summary to GitHub and Discord 
 
 
 class ReleaseNotesTests(unittest.TestCase):
+    def test_workflow_summary_uses_only_the_requested_dated_changelog(self) -> None:
+        root = Path(__file__).resolve().parent.parent
+        step = (root / '.github/workflows/release.yml').read_text().split('      - name: Create release notes\n', 1)[1]
+        script = textwrap.dedent(step.split('        run: |\n', 1)[1].split('          previous_tag=', 1)[0])
+        for version, deferred, expected in (('2.4.6', 'false', 0), ('2.4.6', 'true', 0), ('2.4.7', 'false', 1)):
+            with self.subTest(version=version, deferred=deferred):
+                with tempfile.TemporaryDirectory(prefix='slskr-release-summary-') as directory:
+                    fixture = Path(directory)
+                    (fixture / 'release').mkdir()
+                    (fixture / 'CHANGELOG.md').write_text(
+                        '# Changelog\n\n## [Unreleased]\n\n## [2.4.6] — 2026-11-07\n\n'
+                        '- Current portable runtime fix.\n\n## [2.4.5] — 2026-11-06\n\n- Older release detail.\n')
+                    env = {**os.environ, 'RELEASE_VERSION': version, 'RELEASE_REPOSITORY': 'snapetech-org/slskr',
+                           'RELEASE_REF_NAME': 'v' + version, 'DEFER_CHOCOLATEY_INITIAL_REVIEW': deferred}
+                    result = subprocess.run(['bash', '-c', script], cwd=fixture, env=env,
+                                            capture_output=True, text=True)
+                    self.assertEqual(result.returncode, expected, result.stderr)
+                    if expected == 0:
+                        notes = (fixture / 'release/RELEASE_NOTES.md').read_text()
+                        self.assertIn('Current portable runtime fix.', notes)
+                        self.assertNotIn('Older release detail.', notes)
+                        self.assertEqual('Chocolatey updates await' in notes, deferred == 'true')
+
     def test_release_validator_allows_a_product_placeholder_reference(self) -> None:
         validator = Path(__file__).with_name("validate-release-notes.sh")
         notes = """# slskr 1.0.0

@@ -444,7 +444,18 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          # The assembler inserts the ### User-facing changes section from release-notes/.
+          # The summary uses this release's dated changelog; detailed fragments
+          # are assembled separately without repeating older release highlights.
+          # Full notes retain the structured User-facing changes section.
+          highlights="$(awk -v version="$RELEASE_VERSION" '
+            index($0, "## [" version "] — ") == 1 { in_section = 1; next }
+            in_section && /^## \[/ { exit }
+            in_section { print }
+          ' CHANGELOG.md)"
+          if ! grep -Eq '^[[:space:]]*-[[:space:]]+\S' <<<"$highlights"; then
+            echo "Missing dated changelog details for $RELEASE_VERSION" >&2
+            exit 1
+          fi
           cat > release/RELEASE_NOTES.md <<EOF
           # slskr ${RELEASE_VERSION}
 
@@ -454,10 +465,7 @@ jobs:
 
           ## Highlights
 
-          - Compatibility-profile routing, authentication boundaries, Soulseek transport, transfer, messaging, discovery, and mesh contracts were expanded and exercised against the frozen controller surfaces.
-          - The React Web UI now has live MusicBrainz, SongID, discovery-graph, Discography, MediaCore, Soulseek, system, and Automation workflows, with headless route, viewport, error-state, and reconnect coverage.
-          - Rust and release tooling now enforce bounded memory, serialized Cargo execution, reproducible multi-platform archives, dependency manifests, checksums, and build provenance.
-          - Session stability was improved for fragmented Soulseek frames, SQLite event contention, optional distributed-parent failures, CSP-protected CodeMirror, and modal keyboard/stacking behavior.
+          ${highlights}
 
           ## Proof and detailed notes
 
