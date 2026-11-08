@@ -54,6 +54,40 @@ def workflow_gate_value(node):
 
 
 class ReleaseMetadataTests(unittest.TestCase):
+    def test_recovery_metadata_records_release_tag_instead_of_current_head(self):
+        workflow = (ROOT / '.github/workflows/release-publish.yml').read_text()
+        step = workflow.split('      - name: Resolve version\n', 1)[1]
+        script = textwrap.dedent(re.search(r'        run: \|\n((?:          .*\n|\n)+)', step).group(1))
+        with tempfile.TemporaryDirectory(prefix='slskr-provenance-test-') as directory:
+            fixture = Path(directory)
+            def git(*args):
+                return subprocess.check_output(['git', *args], cwd=fixture, text=True, stderr=subprocess.DEVNULL).strip()
+            git('init', '-b', 'main')
+            git('config', 'user.name', 'Release fixture')
+            git('config', 'user.email', 'fixture@example.invalid')
+            git('config', 'commit.gpgsign', 'false')
+            git('config', 'core.hooksPath', '/dev/null')
+            (fixture / 'packaging/scripts').mkdir(parents=True)
+            shutil.copy2(ROOT / 'packaging/scripts/release-assets.sh', fixture / 'packaging/scripts/release-assets.sh')
+            git('add', '.')
+            git('commit', '-m', 'Release source')
+            release_sha = git('rev-parse', 'HEAD')
+            git('tag', 'v9.8.7')
+            (fixture / 'retry-fix').write_text('Newer metadata recovery logic\n')
+            git('add', '.')
+            git('commit', '-m', 'Newer main source')
+            self.assertNotEqual(git('rev-parse', 'HEAD'), release_sha)
+            git('clone', '--bare', str(fixture), str(fixture / 'origin.git'))
+            git('remote', 'add', 'origin', str(fixture / 'origin.git'))
+            output = fixture / 'output'
+            result = subprocess.run(['bash', '-c', script], cwd=fixture,
+                                    env={**os.environ, 'RELEASE_TAG': 'v9.8.7', 'GITHUB_OUTPUT': str(output)},
+                                    capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            values = dict(line.split('=', 1) for line in output.read_text().splitlines())
+            self.assertEqual(values['release_sha'], release_sha)
+            self.assertEqual(values['pkgver'], '9.8.7')
+
     def test_publish_steps_fail_before_work_when_credentials_are_missing(self):
         workflow = (ROOT / '.github/workflows/release-publish.yml').read_text()
         for name in ('Setup AUR SSH', 'Push slskr-bin', 'Push slskr source package',

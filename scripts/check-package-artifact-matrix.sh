@@ -147,7 +147,8 @@ fi
 
 for expected in \
   'ref: ${{ inputs.tag || github.event.inputs.tag || github.ref_name }}' \
-  'release_sha="$(git rev-parse HEAD)"' \
+  'git fetch --no-tags --depth=1 origin "refs/tags/${tag}:refs/tags/${tag}"' \
+  'release_sha="$(git rev-parse "refs/tags/${tag}^{commit}")"' \
   'for target in x86_64 aarch64' \
   'cp dist/slskr-${{ needs.metadata.outputs.release_version }}-*-unknown-linux-musl.tar.gz' \
   'cp /tmp/slskr-${release_version}-*-unknown-linux-musl.tar.gz' \

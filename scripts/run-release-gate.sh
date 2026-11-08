@@ -40,6 +40,7 @@ run_optional_step() {
   fi
 }
 
+run_step "Release and packaging preflight" scripts/check-release-preflight.sh
 run_step "Rust debug build" cargo build --locked -q -p slskr
 # Keep Web dependencies installed for the lint, test, and build steps below.
 run_step "Install web dependencies" npm --prefix web ci

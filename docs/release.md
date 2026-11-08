@@ -139,6 +139,11 @@ workspace tests run on Linux x64, Linux AArch64, both macOS architectures, and
 Windows; the additional musl jobs smoke test their built static binary through
 the same archive verifier.
 
+Source-only release and packaging policy runs first, before compilation. Run
+`scripts/check-release-preflight.sh` locally before creating a candidate tag;
+it checks both workflow policy and artifact-matrix policy, including immutable
+tag provenance, and runs the metadata and announcement regression tests.
+
 The release workflow uses the same native runner and target mapping:
 
 | Target | CI and release runner | Rust target | CI exercise |

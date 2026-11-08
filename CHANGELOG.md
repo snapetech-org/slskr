@@ -18,6 +18,13 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.85] — 2026-11-07
+
+- Ship portable Windows archives with the Visual C++ runtime linked statically.
+- Verify every configured publisher and public package availability before announcing release completion.
+- Preserve explicit pending status for Chocolatey's initial review without further submissions; Snap Store publication remains excluded by owner instruction.
+- Bind publisher recovery provenance to the immutable release tag and validate packaging policy before native compilation.
+
 ## [0.2.84] — 2026-11-07
 
 - Link the Visual C++ runtime statically so portable Windows packages start without an undeclared redistributable dependency.

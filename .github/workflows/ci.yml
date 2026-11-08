@@ -33,8 +33,21 @@ permissions:
   contents: read
 
 jobs:
+  release-policy:
+    name: Release policy preflight
+    if: >-
+      inputs.action_tag == 'test' && inputs.runner_pool_tag == 'hosted' &&
+      (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v') || startsWith(github.ref, 'refs/tags/release-v'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v6
+      - name: Validate release and packaging policy before compilation
+        run: scripts/check-release-preflight.sh
+
   web-assets:
     name: Production web assets
+    needs: release-policy
     if: >-
       (
         github.event_name != 'workflow_dispatch' ||
@@ -71,6 +84,7 @@ jobs:
           retention-days: 7
 
   controller-regex-parity:
+    needs: release-policy
     name: Controller regex parity
     if: >-
       (
@@ -136,6 +150,7 @@ jobs:
         run: scripts/check-controller-options-differential.sh
 
   rust:
+    needs: release-policy
     # Trusted main Rust validation uses the isolated shared pool.
     if: >-
       (
@@ -310,6 +325,7 @@ jobs:
         run: printf '[Reproducibility evidence](%s)\n' "$REPRODUCIBILITY_ARTIFACT_URL" >> "$GITHUB_STEP_SUMMARY"
 
   linux-aarch64:
+    needs: release-policy
     name: Linux AArch64
     if: >-
       (
