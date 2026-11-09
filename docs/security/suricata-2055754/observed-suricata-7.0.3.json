@@ -1,0 +1,47 @@
+{
+  "engine": "This is Suricata version 7.0.3 RELEASE",
+  "results": [
+    {
+      "case": "alert-baseline",
+      "sid_2055754_alerts": 1,
+      "control_alerts": 0,
+      "simulated_blocked_packets": 0,
+      "passed": true
+    },
+    {
+      "case": "alert-scoped-suppression",
+      "sid_2055754_alerts": 0,
+      "control_alerts": 0,
+      "simulated_blocked_packets": 0,
+      "passed": true
+    },
+    {
+      "case": "alert-other-destination",
+      "sid_2055754_alerts": 1,
+      "control_alerts": 0,
+      "simulated_blocked_packets": 0,
+      "passed": true
+    },
+    {
+      "case": "alert-other-signature",
+      "sid_2055754_alerts": 0,
+      "control_alerts": 1,
+      "simulated_blocked_packets": 0,
+      "passed": true
+    },
+    {
+      "case": "drop-baseline",
+      "sid_2055754_alerts": 1,
+      "control_alerts": 0,
+      "simulated_blocked_packets": 1,
+      "passed": true
+    },
+    {
+      "case": "drop-with-suppression",
+      "sid_2055754_alerts": 0,
+      "control_alerts": 0,
+      "simulated_blocked_packets": 10,
+      "passed": true
+    }
+  ]
+}

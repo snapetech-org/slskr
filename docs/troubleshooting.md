@@ -60,6 +60,19 @@ The HTTP UI/API port is separate and does not carry peer traffic. Keep it
 loopback-only or put it behind an authenticated proxy. Check listener and DHT
 state in the System page or the relevant telemetry endpoints.
 
+## Suricata or a firewall reports VenomRAT
+
+Valid Soulseek replies can trigger Emerging Threats **SID 2055754**, named
+`ET MALWARE VenomRAT CnC Server Keepalive`. This specific collision has been
+reproduced with slskR 0.2.86 replies, but an alert name alone does not establish
+that your traffic is benign. Other Venom-related signatures need their own
+investigation.
+
+See [Suricata / IDS alerts](suricata-alerts.md) for the exact conditions,
+diagnostic fields, independently replayable evidence, and scoped mitigations.
+An alert suppression can leave IPS blocking active; it is not a general fix
+for interrupted transfers.
+
 ## A share or search result is missing
 
 - Confirm the daemon account can read the configured share directory.

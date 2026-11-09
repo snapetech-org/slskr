@@ -95,6 +95,11 @@ Also included:
 - [Troubleshooting](./docs/troubleshooting.md)
 - [Build from source](./docs/install.md#build)
 
+**Suricata / IDS alerts:** some valid Soulseek messages can trigger the
+VenomRAT keepalive signature **SID 2055754**. See
+[how to verify the alert and handle a confirmed false positive](./docs/suricata-alerts.md)
+before changing firewall rules.
+
 ### Docker
 
 ```bash

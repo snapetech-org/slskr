@@ -80,6 +80,8 @@ HTTP listener directly to the public internet. See
 
 ## See also
 
+- [Suricata / IDS alerts](../suricata-alerts.md) for the verified Soulseek
+  signature collision, diagnostics, and scoped mitigations.
 - [Configuration](../configuration.md) for auth and rate-limit settings.
 - [Credential storage](../credential-storage.md) for secret handling.
 - [Compliance](../../COMPLIANCE.md) for public posture and licensing notes.
