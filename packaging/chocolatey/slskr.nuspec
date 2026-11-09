@@ -9,6 +9,12 @@
     <projectUrl>https://github.com/snapetech-org/slskr</projectUrl>
     <iconUrl>https://cdn.jsdelivr.net/gh/snapetech-org/slskr@1793880b92c5eda4dcf5688d922b04102ea5c41c/web/public/apple-touch-icon.png</iconUrl>
     <licenseUrl>https://github.com/snapetech-org/slskr/blob/main/LICENSE</licenseUrl>
+    <packageSourceUrl>https://github.com/snapetech-org/slskr/tree/main/packaging/chocolatey</packageSourceUrl>
+    <projectSourceUrl>https://github.com/snapetech-org/slskr</projectSourceUrl>
+    <docsUrl>https://github.com/snapetech-org/slskr/blob/main/docs/README.md</docsUrl>
+    <mailingListUrl>https://github.com/snapetech-org/slskr/discussions</mailingListUrl>
+    <bugTrackerUrl>https://github.com/snapetech-org/slskr/issues</bugTrackerUrl>
+    <releaseNotes>https://github.com/snapetech-org/slskr/releases</releaseNotes>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>slskr soulseek p2p daemon</tags>
     <summary>Rust Soulseek daemon with bundled Web UI</summary>
