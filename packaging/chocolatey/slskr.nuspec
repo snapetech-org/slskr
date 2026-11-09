@@ -5,7 +5,9 @@
     <version>0.2.86</version>
     <title>slskR</title>
     <authors>snapetech</authors>
+    <copyright>Copyright (c) 2026 slskr contributors.</copyright>
     <projectUrl>https://github.com/snapetech-org/slskr</projectUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/snapetech-org/slskr@1793880b92c5eda4dcf5688d922b04102ea5c41c/web/public/apple-touch-icon.png</iconUrl>
     <licenseUrl>https://github.com/snapetech-org/slskr/blob/main/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>slskr soulseek p2p daemon</tags>
