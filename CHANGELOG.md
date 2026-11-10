@@ -18,7 +18,12 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
-- Keep browse and local search available when a share scan skips unreadable files: warnings are reported separately from scan errors instead of closing the index.
+## [0.2.89] — 2026-11-10
+
+- Finish music library scans when individual files are unreadable, and log each retained warning with its path and operating-system error.
+- Keep share browse and local search available after skipped files by reporting warnings separately from fatal scan errors (#213).
+- Preserve the previous share index when a directory is inaccessible or a scan safety limit is reached.
+- Update bundled SQLite to 3.54.1 to fix CVE-2026-119375.
 
 ## [0.2.88] — 2026-11-10
 
