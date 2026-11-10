@@ -12,6 +12,7 @@ resolver = "2"
 # upstream source local while resolving its cache dependency to the patched
 # 0.18.2 release until mainline publishes that update.
 mainline = { path = "vendor/mainline" }
+sqlx-sqlite = { path = "vendor/sqlx-sqlite" }
 
 [workspace.package]
 edition = "2021"

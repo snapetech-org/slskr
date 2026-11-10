@@ -18,6 +18,12 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.88] — 2026-11-10
+
+- Skip unreadable music files, log their paths and operating-system errors at Warning level, and finish indexing readable files.
+- Preserve the previous share index if a share directory is inaccessible or a scan safety limit is reached.
+- Update bundled SQLite to 3.54.1 to fix CVE-2026-119375.
+
 ## [0.2.86] — 2026-11-07
 
 - Ship portable Windows archives with the Visual C++ runtime linked statically.
