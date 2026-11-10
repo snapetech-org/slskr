@@ -228,7 +228,7 @@ pub(super) async fn rebuild_share_index_with_permit(
             logging::LogLevel::Warn,
             "shares",
             format!(
-                "share scan skipped {} unreadable entries; fix their permissions to share them",
+                "share scan recorded {} warnings while skipping unreadable files",
                 snapshot.scan_warnings.len()
             ),
         )
