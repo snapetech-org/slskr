@@ -102,6 +102,9 @@ jobs:
           if ($asset.Count -ne 1) {
             throw "Expected exactly one Windows release asset, found $($asset.Count)"
           }
+          if ($asset[0].Length -gt 190000000) {
+            throw "Chocolatey payload exceeds the 190000000-byte budget: $($asset[0].Name) ($($asset[0].Length) bytes)."
+          }
           $checksumPath = Join-Path $PWD 'release-assets\SHA256SUMS.txt'
           if (-not (Test-Path $checksumPath)) {
             throw "SHA256SUMS.txt was not downloaded"
