@@ -75,6 +75,46 @@ fn json_safe_share_label(label: &str) -> String {
     label.chars().take(80).collect()
 }
 
+#[cfg(unix)]
+const MAX_SHARE_SCAN_FILE_WARNINGS: usize = 100;
+
+fn share_scan_io_error(
+    label: &str,
+    path: &Path,
+    operation: &str,
+    error: impl std::fmt::Display,
+) -> String {
+    format!(
+        "{}: {operation}: {path:?}: {error}",
+        json_safe_share_label(label)
+    )
+}
+
+#[cfg(unix)]
+fn record_unreadable_share_file(
+    label: &str,
+    path: &Path,
+    error: std::io::Error,
+    options: &ShareScanOptions,
+    output: &mut ShareScanOutput<'_>,
+) {
+    let warning_index = options
+        .skipped_file_diagnostics
+        .fetch_add(1, Ordering::Relaxed);
+    if warning_index < MAX_SHARE_SCAN_FILE_WARNINGS {
+        output.warnings.push(share_scan_io_error(
+            label,
+            path,
+            "skipped unreadable file",
+            error,
+        ));
+    } else if warning_index == MAX_SHARE_SCAN_FILE_WARNINGS {
+        output.warnings.push(format!(
+            "additional unreadable files skipped; diagnostics limited to the first {MAX_SHARE_SCAN_FILE_WARNINGS} files"
+        ));
+    }
+}
+
 pub(super) fn extension_for(filename: &str) -> String {
     filename
         .rsplit_once('.')
@@ -510,6 +550,128 @@ mod progress_tests {
         fs::remove_dir_all(root).expect("remove share fixture");
     }
 
+    #[cfg(unix)]
+    #[test]
+    fn unreadable_files_do_not_discard_readable_entries_or_hide_the_cause() {
+        use std::os::unix::fs::PermissionsExt;
+
+        let root = std::env::temp_dir().join(format!(
+            "slskr-unreadable-share-file-test-{}",
+            uuid::Uuid::new_v4()
+        ));
+        fs::create_dir_all(&root).expect("create share fixture");
+        let blocked = root.join("unreadable\ntrack.flac");
+        fs::write(&blocked, b"audio").expect("write unreadable fixture");
+        fs::write(root.join("readable.flac"), b"audio").expect("write readable fixture");
+        fs::set_permissions(&blocked, fs::Permissions::from_mode(0o0)).expect("deny fixture reads");
+        if fs::File::open(&blocked).is_ok() {
+            fs::remove_dir_all(root).expect("remove privileged-user fixture");
+            eprintln!("unreadable-file permission test requires an unprivileged user");
+            return;
+        }
+        let config = AppConfig::from_layers(
+            None,
+            crate::config::FileConfig::default(),
+            &TestConfigEnv::default()
+                .with("SLSKR_SHARE_DIRS", root.display().to_string())
+                .with("SLSKR_SHARE_FIXTURE", "")
+                .with("SLSKR_SHARE_CACHE_TSV_ENABLED", "false"),
+        )
+        .expect("valid share configuration");
+        let snapshot = build_share_index_with_progress(
+            &config,
+            Arc::new(AtomicBool::new(false)),
+            Arc::new(AtomicUsize::new(0)),
+        )
+        .expect("individual unreadable files must not abort a scan");
+
+        assert_eq!(snapshot.scanned_entries, 2);
+        assert_eq!(snapshot.entries.len(), 1);
+        assert!(snapshot.entries[0].filename.ends_with("/readable.flac"));
+        assert_eq!(snapshot.local_paths.len(), 1);
+        assert_eq!(snapshot.scan_errors.len(), 1);
+        let warning = &snapshot.scan_errors[0];
+        assert!(warning.contains("skipped unreadable file"), "{warning}");
+        assert!(warning.contains("unreadable\\ntrack.flac"), "{warning}");
+        assert!(warning.contains("os error 13"), "{warning}");
+        assert!(!warning.contains('\n'), "{warning}");
+        fs::remove_dir_all(root).expect("remove share fixture");
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn unreadable_file_diagnostics_are_bounded_across_share_roots() {
+        use std::os::unix::fs::PermissionsExt;
+
+        let root = std::env::temp_dir().join(format!(
+            "slskr-bounded-share-warnings-test-{}",
+            uuid::Uuid::new_v4()
+        ));
+        let mut directories = Vec::new();
+        for name in ["first", "second"] {
+            let directory = root.join(name);
+            fs::create_dir_all(&directory).expect("create share fixture");
+            for index in 0..MAX_SHARE_SCAN_FILE_WARNINGS {
+                let blocked = directory.join(format!("blocked-{index}.flac"));
+                fs::write(&blocked, b"audio").expect("write unreadable fixture");
+                fs::set_permissions(&blocked, fs::Permissions::from_mode(0o0))
+                    .expect("deny fixture reads");
+            }
+            directories.push(
+                ShareDirectory::from_path(directory.to_str().expect("fixture path"), None)
+                    .expect("parse share directory"),
+            );
+        }
+        if fs::File::open(root.join("first/blocked-0.flac")).is_ok() {
+            fs::remove_dir_all(root).expect("remove privileged-user fixture");
+            eprintln!("unreadable-file permission test requires an unprivileged user");
+            return;
+        }
+        let scan = scan_share_dirs(&directories, false, false, 1_000, false, 2, &[]);
+
+        assert!(scan.errors.is_empty(), "{:?}", scan.errors);
+        assert!(scan.entries.is_empty());
+        assert_eq!(scan.warnings.len(), MAX_SHARE_SCAN_FILE_WARNINGS + 1);
+        assert_eq!(
+            scan.warnings
+                .iter()
+                .filter(|warning| warning.contains("diagnostics limited"))
+                .count(),
+            1
+        );
+        fs::remove_dir_all(root).expect("remove share fixture");
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn unreadable_share_directories_still_fail_closed() {
+        use std::os::unix::fs::PermissionsExt;
+
+        let root = std::env::temp_dir().join(format!(
+            "slskr-unreadable-share-root-test-{}",
+            uuid::Uuid::new_v4()
+        ));
+        fs::create_dir_all(&root).expect("create share fixture");
+        fs::set_permissions(&root, fs::Permissions::from_mode(0o0))
+            .expect("deny share directory reads");
+        let directories =
+            vec![
+                ShareDirectory::from_path(root.to_str().expect("fixture path"), None)
+                    .expect("parse share directory"),
+            ];
+        let scan = scan_share_dirs(&directories, false, false, 100, false, 1, &[]);
+        fs::set_permissions(&root, fs::Permissions::from_mode(0o700))
+            .expect("restore fixture access");
+        fs::remove_dir_all(root).expect("remove share fixture");
+        if scan.errors.is_empty() {
+            eprintln!("unreadable-directory permission test requires an unprivileged user");
+            return;
+        }
+        assert!(scan.errors[0].contains("directory unavailable"));
+        assert!(scan.errors[0].contains("os error 13"));
+        assert!(scan.warnings.is_empty());
+    }
+
     #[test]
     fn consuming_a_root_scan_releases_its_large_worker_payload() {
         const FILE_COUNT: usize = 4_096;
@@ -545,6 +707,7 @@ mod progress_tests {
                 local_paths,
                 roots: Vec::new(),
                 errors: Vec::new(),
+                warnings: Vec::new(),
                 cancelled: false,
             },
         )]);
@@ -614,6 +777,7 @@ pub(super) struct ShareScan {
     pub(super) local_paths: BTreeMap<String, PathBuf>,
     pub(super) roots: Vec<ShareRoot>,
     pub(super) errors: Vec<String>,
+    pub(super) warnings: Vec<String>,
     pub(super) cancelled: bool,
 }
 
@@ -631,6 +795,7 @@ fn take_share_scan(
         } else {
             vec![SHARE_SCAN_WORKER_ERROR.to_owned()]
         },
+        warnings: Vec::new(),
         cancelled: false,
     })
 }
@@ -646,6 +811,8 @@ struct ShareScanOptions {
     probe_media_attributes: bool,
     cancellation: Arc<AtomicBool>,
     progress: Arc<AtomicUsize>,
+    #[cfg(unix)]
+    skipped_file_diagnostics: Arc<AtomicUsize>,
 }
 
 pub(super) struct ShareScanRequest<'a> {
@@ -726,7 +893,7 @@ pub(super) fn build_share_index_with_progress(
         local_paths: Arc::new(scan.local_paths),
         roots: scan.roots,
         fixture_files,
-        scan_errors: scan.errors,
+        scan_errors: scan.warnings,
         cache_path,
         cache_enabled: config.share_settings.cache_tsv_enabled,
         cache_written_at,
@@ -785,6 +952,8 @@ fn scan_share_dirs_with_cancellation_and_progress(
         probe_media_attributes,
         cancellation,
         progress,
+        #[cfg(unix)]
+        skipped_file_diagnostics: Arc::new(AtomicUsize::new(0)),
     };
     let exclusions = directories
         .iter()
@@ -852,6 +1021,7 @@ fn scan_share_dirs_with_cancellation_and_progress(
     let mut local_paths = BTreeMap::new();
     let mut root_summaries = Vec::new();
     let mut errors = Vec::new();
+    let mut warnings = Vec::new();
     for (index, directory) in ordered_directories.iter().enumerate() {
         let mut scan = take_share_scan(&mut scanned, index, directory);
         if scan.cancelled {
@@ -860,6 +1030,7 @@ fn scan_share_dirs_with_cancellation_and_progress(
                 local_paths,
                 roots: root_summaries,
                 errors,
+                warnings,
                 cancelled: true,
             };
         }
@@ -867,6 +1038,7 @@ fn scan_share_dirs_with_cancellation_and_progress(
         entries.append(&mut scan.entries);
         local_paths.append(&mut scan.local_paths);
         errors.append(&mut scan.errors);
+        warnings.append(&mut scan.warnings);
     }
     if worker_failed && !errors.iter().any(|error| error == SHARE_SCAN_WORKER_ERROR) {
         errors.push(SHARE_SCAN_WORKER_ERROR.to_owned());
@@ -878,6 +1050,7 @@ fn scan_share_dirs_with_cancellation_and_progress(
         local_paths,
         roots: root_summaries,
         errors,
+        warnings,
         cancelled,
     }
 }
@@ -891,10 +1064,12 @@ fn scan_single_share_directory(
     let mut entries = Vec::new();
     let mut local_paths = BTreeMap::new();
     let mut errors = Vec::new();
+    let mut warnings = Vec::new();
     let mut output = ShareScanOutput {
         entries: &mut entries,
         local_paths: &mut local_paths,
         errors: &mut errors,
+        warnings: &mut warnings,
     };
     let cancellation = Arc::clone(&options.cancellation);
     scan_share_root(
@@ -910,6 +1085,7 @@ fn scan_single_share_directory(
         local_paths,
         roots: Vec::new(),
         errors,
+        warnings,
         cancelled: cancellation.load(Ordering::Relaxed),
     }
 }
@@ -964,6 +1140,7 @@ struct ShareScanOutput<'a> {
     entries: &'a mut Vec<FileEntry>,
     local_paths: &'a mut BTreeMap<String, PathBuf>,
     errors: &'a mut Vec<String>,
+    warnings: &'a mut Vec<String>,
 }
 
 fn scan_share_root(
@@ -992,12 +1169,17 @@ fn scan_share_root(
     } else {
         fs::symlink_metadata(root)
     };
-    let Ok(metadata) = metadata else {
-        output.errors.push(format!(
-            "{}: share root metadata unavailable",
-            json_safe_share_label(label)
-        ));
-        return;
+    let metadata = match metadata {
+        Ok(metadata) => metadata,
+        Err(error) => {
+            output.errors.push(share_scan_io_error(
+                label,
+                root,
+                "share root metadata unavailable",
+                error,
+            ));
+            return;
+        }
     };
     if !metadata.is_dir() {
         output
@@ -1008,10 +1190,12 @@ fn scan_share_root(
     let canonical_root = if options.follow_symlinks {
         match root.canonicalize() {
             Ok(path) => Some(path),
-            Err(_) => {
-                output.errors.push(format!(
-                    "{}: canonical root unavailable",
-                    json_safe_share_label(label)
+            Err(error) => {
+                output.errors.push(share_scan_io_error(
+                    label,
+                    root,
+                    "canonical root unavailable",
+                    error,
                 ));
                 return;
             }
@@ -1038,10 +1222,12 @@ fn scan_share_root(
 
         let read_dir = match fs::read_dir(&directory) {
             Ok(read_dir) => read_dir,
-            Err(_) => {
-                output.errors.push(format!(
-                    "{}: directory unreadable",
-                    json_safe_share_label(label)
+            Err(error) => {
+                output.errors.push(share_scan_io_error(
+                    label,
+                    &directory,
+                    "directory unreadable",
+                    error,
                 ));
                 continue;
             }
@@ -1060,12 +1246,17 @@ fn scan_share_root(
                 return;
             }
 
-            let Ok(child) = child else {
-                output.errors.push(format!(
-                    "{}: entry unreadable",
-                    json_safe_share_label(label)
-                ));
-                continue;
+            let child = match child {
+                Ok(child) => child,
+                Err(error) => {
+                    output.errors.push(share_scan_io_error(
+                        label,
+                        &directory,
+                        "entry unreadable",
+                        error,
+                    ));
+                    continue;
+                }
             };
             let path = child.path();
             if exclusions.iter().any(|excluded| path.starts_with(excluded)) {
@@ -1084,12 +1275,17 @@ fn scan_share_root(
             } else {
                 fs::symlink_metadata(&path)
             };
-            let Ok(metadata) = metadata else {
-                output.errors.push(format!(
-                    "{}: entry metadata unavailable",
-                    json_safe_share_label(label)
-                ));
-                continue;
+            let metadata = match metadata {
+                Ok(metadata) => metadata,
+                Err(error) => {
+                    output.errors.push(share_scan_io_error(
+                        label,
+                        &path,
+                        "entry metadata unavailable",
+                        error,
+                    ));
+                    continue;
+                }
             };
             if metadata.file_type().is_symlink() && !options.follow_symlinks {
                 continue;
@@ -1108,12 +1304,17 @@ fn scan_share_root(
                 continue;
             }
             if let Some(canonical_root) = canonical_root.as_ref() {
-                let Ok(canonical_path) = path.canonicalize() else {
-                    output.errors.push(format!(
-                        "{}: entry canonical path unavailable",
-                        json_safe_share_label(label)
-                    ));
-                    continue;
+                let canonical_path = match path.canonicalize() {
+                    Ok(canonical_path) => canonical_path,
+                    Err(error) => {
+                        output.errors.push(share_scan_io_error(
+                            label,
+                            &path,
+                            "entry canonical path unavailable",
+                            error,
+                        ));
+                        continue;
+                    }
                 };
                 if !canonical_path.starts_with(canonical_root) {
                     continue;
@@ -1176,7 +1377,12 @@ fn scan_share_root_unix(
                 .push(if is_share_scan_descriptor_limit(error) {
                     SHARE_SCAN_DESCRIPTOR_LIMIT_ERROR.to_owned()
                 } else {
-                    format!("{}: directory unavailable", json_safe_share_label(label))
+                    share_scan_io_error(
+                        label,
+                        root,
+                        "directory unavailable",
+                        std::io::Error::from(error),
+                    )
                 });
             return;
         }
@@ -1208,7 +1414,12 @@ fn scan_share_root_unix(
                     .push(if is_share_scan_descriptor_limit(error) {
                         SHARE_SCAN_DESCRIPTOR_LIMIT_ERROR.to_owned()
                     } else {
-                        format!("{}: directory unavailable", json_safe_share_label(label))
+                        share_scan_io_error(
+                            label,
+                            &root.join(&relative_directory),
+                            "directory unavailable",
+                            std::io::Error::from(error),
+                        )
                     });
                 continue;
             }
@@ -1221,7 +1432,12 @@ fn scan_share_root_unix(
                     .push(if is_share_scan_descriptor_limit(error) {
                         SHARE_SCAN_DESCRIPTOR_LIMIT_ERROR.to_owned()
                     } else {
-                        format!("{}: directory unreadable", json_safe_share_label(label))
+                        share_scan_io_error(
+                            label,
+                            &root.join(&relative_directory),
+                            "directory unreadable",
+                            std::io::Error::from(error),
+                        )
                     });
                 continue;
             }
@@ -1233,16 +1449,21 @@ fn scan_share_root_unix(
             if options.file_limit_reached.load(Ordering::Relaxed) {
                 return;
             }
-            let Ok(child) = child else {
-                if !reserve_share_scan_entry(&options.progress) {
-                    output.errors.push(SHARE_SCAN_ENTRY_LIMIT_ERROR.to_owned());
-                    return;
+            let child = match child {
+                Ok(child) => child,
+                Err(error) => {
+                    if !reserve_share_scan_entry(&options.progress) {
+                        output.errors.push(SHARE_SCAN_ENTRY_LIMIT_ERROR.to_owned());
+                        return;
+                    }
+                    output.errors.push(share_scan_io_error(
+                        label,
+                        &root.join(&relative_directory),
+                        "entry unreadable",
+                        std::io::Error::from(error),
+                    ));
+                    continue;
                 }
-                output.errors.push(format!(
-                    "{}: entry unreadable",
-                    json_safe_share_label(label)
-                ));
-                continue;
             };
             let name = child.file_name();
             if matches!(name.to_bytes(), b"." | b"..") {
@@ -1269,7 +1490,7 @@ fn scan_share_root_unix(
             {
                 continue;
             }
-            match openat(&directory, name, directory_flags, Mode::empty()) {
+            let directory_error = match openat(&directory, name, directory_flags, Mode::empty()) {
                 Ok(child_directory) => {
                     drop(child_directory);
                     if !reserve_pending_share_scan_directory(&options.pending_directories) {
@@ -1287,8 +1508,8 @@ fn scan_share_root_unix(
                         .push(SHARE_SCAN_DESCRIPTOR_LIMIT_ERROR.to_owned());
                     return;
                 }
-                Err(_) => {}
-            }
+                Err(error) => error,
+            };
             let entry_type = match statat(&directory, name, AtFlags::SYMLINK_NOFOLLOW) {
                 Ok(stat) => FileType::from_raw_mode(stat.st_mode),
                 Err(error) if is_share_scan_descriptor_limit(error) => {
@@ -1297,18 +1518,22 @@ fn scan_share_root_unix(
                         .push(SHARE_SCAN_DESCRIPTOR_LIMIT_ERROR.to_owned());
                     return;
                 }
-                Err(_) => {
-                    output.errors.push(format!(
-                        "{}: entry metadata unavailable",
-                        json_safe_share_label(label)
+                Err(error) => {
+                    output.errors.push(share_scan_io_error(
+                        label,
+                        &root.join(&relative),
+                        "entry metadata unavailable",
+                        std::io::Error::from(error),
                     ));
                     continue;
                 }
             };
             if entry_type == FileType::Directory {
-                output.errors.push(format!(
-                    "{}: directory unreadable",
-                    json_safe_share_label(label)
+                output.errors.push(share_scan_io_error(
+                    label,
+                    &root.join(&relative),
+                    "directory unreadable",
+                    std::io::Error::from(directory_error),
                 ));
                 continue;
             }
@@ -1323,21 +1548,30 @@ fn scan_share_root_unix(
                         .push(SHARE_SCAN_DESCRIPTOR_LIMIT_ERROR.to_owned());
                     return;
                 }
-                Err(_) => {
-                    output.errors.push(format!(
-                        "{}: entry unreadable",
-                        json_safe_share_label(label)
-                    ));
+                Err(error) => {
+                    record_unreadable_share_file(
+                        label,
+                        &root.join(&relative),
+                        error.into(),
+                        &options,
+                        output,
+                    );
                     continue;
                 }
             };
             let mut file = fs::File::from(file);
-            let Ok(metadata) = file.metadata() else {
-                output.errors.push(format!(
-                    "{}: entry metadata unavailable",
-                    json_safe_share_label(label)
-                ));
-                continue;
+            let metadata = match file.metadata() {
+                Ok(metadata) => metadata,
+                Err(error) => {
+                    record_unreadable_share_file(
+                        label,
+                        &root.join(&relative),
+                        error,
+                        &options,
+                        output,
+                    );
+                    continue;
+                }
             };
             if !metadata.is_file() {
                 continue;

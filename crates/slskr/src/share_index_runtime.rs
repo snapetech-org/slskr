@@ -217,6 +217,9 @@ pub(super) async fn rebuild_share_index_with_permit(
             return Err(error);
         }
     };
+    for warning in &snapshot.scan_errors {
+        record_daemon_log(state, logging::LogLevel::Warn, "shares", warning.clone()).await;
+    }
     record_daemon_log(
         state,
         logging::LogLevel::Info,
