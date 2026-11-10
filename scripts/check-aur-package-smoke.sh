@@ -60,7 +60,6 @@ docker run --rm -i --cidfile "$container_id_file" \
   bash -s -- <<'CONTAINER_SCRIPT'
 set -euo pipefail
 
-pacman -Sy --noconfirm --needed sudo >/dev/null
 useradd --create-home builder
 work_root="$(mktemp -d -p /tmp slskr-aur-smoke.XXXXXX)"
 trap 'rm -rf "$work_root"' EXIT
