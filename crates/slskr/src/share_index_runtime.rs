@@ -217,8 +217,22 @@ pub(super) async fn rebuild_share_index_with_permit(
             return Err(error);
         }
     };
-    for warning in &snapshot.scan_errors {
+    // Skipped entries never fail the scan, but they must not disappear quietly:
+    // the scanner bounds the list, so log every warning it kept.
+    for warning in &snapshot.scan_warnings {
         record_daemon_log(state, logging::LogLevel::Warn, "shares", warning.clone()).await;
+    }
+    if !snapshot.scan_warnings.is_empty() {
+        record_daemon_log(
+            state,
+            logging::LogLevel::Warn,
+            "shares",
+            format!(
+                "share scan skipped {} unreadable entries; fix their permissions to share them",
+                snapshot.scan_warnings.len()
+            ),
+        )
+        .await;
     }
     record_daemon_log(
         state,

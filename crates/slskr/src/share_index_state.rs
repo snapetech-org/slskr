@@ -114,7 +114,13 @@ pub(crate) struct ShareIndexSnapshot {
     pub(crate) local_paths: Arc<BTreeMap<String, PathBuf>>,
     pub(crate) roots: Vec<ShareRoot>,
     pub(crate) fixture_files: usize,
+    // Fatal scan failures. A non-empty list means the snapshot is incomplete and
+    // browse/search must stay closed.
     pub(crate) scan_errors: Vec<String>,
+    // Entries skipped without invalidating the index (for example an unreadable
+    // file). Reported through the daemon log and the status payloads, never
+    // treated as a failed scan.
+    pub(crate) scan_warnings: Vec<String>,
     pub(crate) cache_path: PathBuf,
     pub(crate) cache_enabled: bool,
     pub(crate) cache_written_at: Option<u64>,
@@ -223,6 +229,7 @@ impl ShareIndexSnapshot {
             roots: pending_share_roots(&config.share_settings),
             fixture_files: 0,
             scan_errors: Vec::new(),
+            scan_warnings: Vec::new(),
             cache_path: share_cache_path(&config.state_dir),
             cache_enabled: config.share_settings.cache_tsv_enabled,
             cache_written_at: None,
@@ -245,12 +252,19 @@ impl ShareIndexSnapshot {
             .map(|error| json_option(Some(error.as_str())))
             .collect::<Vec<_>>()
             .join(",");
+        let warnings = self
+            .scan_warnings
+            .iter()
+            .map(|warning| json_option(Some(warning.as_str())))
+            .collect::<Vec<_>>()
+            .join(",");
         format!(
-            "{{\"roots\":[{}],\"files\":{},\"fixture_files\":{},\"scan_errors\":[{}],\"cache_file\":\"{}\",\"cache_enabled\":{},\"cache_kind\":\"compatibility-debug\",\"cache_written_at\":{},\"cache_error\":{},\"updated_at\":{}}}",
+            "{{\"roots\":[{}],\"files\":{},\"fixture_files\":{},\"scan_errors\":[{}],\"scan_warnings\":[{}],\"cache_file\":\"{}\",\"cache_enabled\":{},\"cache_kind\":\"compatibility-debug\",\"cache_written_at\":{},\"cache_error\":{},\"updated_at\":{}}}",
             roots,
             self.entries.len(),
             self.fixture_files,
             errors,
+            warnings,
             json_escape(
                 self.cache_path
                     .file_name()
@@ -267,12 +281,13 @@ impl ShareIndexSnapshot {
     pub(crate) fn summary_json(&self) -> String {
         let bytes = self.entries.iter().map(|entry| entry.size).sum::<u64>();
         format!(
-            "{{\"roots\":{},\"files\":{},\"fixture_files\":{},\"bytes\":{},\"scan_errors\":{},\"cache_enabled\":{},\"cache_error\":{},\"updated_at\":{}}}",
+            "{{\"roots\":{},\"files\":{},\"fixture_files\":{},\"bytes\":{},\"scan_errors\":{},\"scan_warnings\":{},\"cache_enabled\":{},\"cache_error\":{},\"updated_at\":{}}}",
             self.roots.len(),
             self.entries.len(),
             self.fixture_files,
             bytes,
             self.scan_errors.len(),
+            self.scan_warnings.len(),
             self.cache_enabled,
             self.cache_error.is_some(),
             self.updated_at
@@ -360,6 +375,7 @@ impl ShareIndexSnapshot {
             roots,
             fixture_files: 0,
             scan_errors: Vec::new(),
+            scan_warnings: Vec::new(),
             cache_path,
             cache_enabled: config.share_settings.cache_tsv_enabled,
             cache_written_at,

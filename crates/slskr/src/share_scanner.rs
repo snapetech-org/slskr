@@ -589,8 +589,13 @@ mod progress_tests {
         assert_eq!(snapshot.entries.len(), 1);
         assert!(snapshot.entries[0].filename.ends_with("/readable.flac"));
         assert_eq!(snapshot.local_paths.len(), 1);
-        assert_eq!(snapshot.scan_errors.len(), 1);
-        let warning = &snapshot.scan_errors[0];
+        assert!(
+            snapshot.scan_errors.is_empty(),
+            "a skipped file must not mark the index incomplete: {:?}",
+            snapshot.scan_errors
+        );
+        assert_eq!(snapshot.scan_warnings.len(), 1);
+        let warning = &snapshot.scan_warnings[0];
         assert!(warning.contains("skipped unreadable file"), "{warning}");
         assert!(warning.contains("unreadable\\ntrack.flac"), "{warning}");
         assert!(warning.contains("os error 13"), "{warning}");
@@ -893,7 +898,8 @@ pub(super) fn build_share_index_with_progress(
         local_paths: Arc::new(scan.local_paths),
         roots: scan.roots,
         fixture_files,
-        scan_errors: scan.warnings,
+        scan_errors: scan.errors,
+        scan_warnings: scan.warnings,
         cache_path,
         cache_enabled: config.share_settings.cache_tsv_enabled,
         cache_written_at,

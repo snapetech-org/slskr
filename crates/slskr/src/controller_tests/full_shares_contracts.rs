@@ -1904,3 +1904,108 @@ pub(super) fn share_cache_tsv_can_be_disabled_for_sqlite_primary_state() {
 
     std::fs::remove_dir_all(state_dir).unwrap();
 }
+
+// A skipped file may only degrade the index, never close it: the snapshot keeps
+// the readable entries, reports the skip as a warning, and every read path
+// (browse-all, per-share browse, local library search) keeps serving them.
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
+#[cfg(unix)]
+pub(super) async fn unreadable_share_files_keep_browse_and_search_available() {
+    use std::os::unix::fs::PermissionsExt;
+
+    let root = std::env::temp_dir().join(format!(
+        "slskr-share-unreadable-browse-test-{}",
+        uuid::Uuid::new_v4()
+    ));
+    std::fs::create_dir_all(&root).expect("create share fixture directory");
+    std::fs::write(root.join("readable.flac"), b"one").expect("write readable fixture");
+    let locked = root.join("locked.flac");
+    std::fs::write(&locked, b"two").expect("write unreadable fixture");
+    std::fs::set_permissions(&locked, std::fs::Permissions::from_mode(0o000))
+        .expect("deny fixture reads");
+    if std::fs::File::open(&locked).is_ok() {
+        let _ = std::fs::remove_dir_all(root);
+        eprintln!("unreadable-file permission test requires an unprivileged user");
+        return;
+    }
+
+    let (state, _receiver) = test_state_with_env(
+        MapEnv::default()
+            .with("SLSKR_SHARE_DIRS", &root.display().to_string())
+            .with("SLSKR_SHARE_FIXTURE", "")
+            .with("SLSKR_SHARE_CACHE_TSV_ENABLED", "false"),
+    );
+    let rescan = crate::route_http_request("POST", "/api/v0/shares/rescan", None, "", &state)
+        .await
+        .expect("rescan shares");
+    assert_eq!(rescan.status, "202 Accepted");
+
+    let (root_id, indexed, scan_errors, scan_warnings) = {
+        let shares = state.shares.read().await;
+        (
+            shares
+                .roots
+                .first()
+                .map(|root| crate::share_root_id(&root.label)),
+            shares.entries.len(),
+            shares.scan_errors.clone(),
+            shares.scan_warnings.clone(),
+        )
+    };
+    assert_eq!(indexed, 1);
+    assert!(scan_errors.is_empty(), "{scan_errors:?}");
+    assert_eq!(scan_warnings.len(), 1, "{scan_warnings:?}");
+    assert!(
+        scan_warnings[0].contains("locked.flac"),
+        "{}",
+        scan_warnings[0]
+    );
+    assert!(!state.share_lifecycle.read().await.faulted);
+
+    let browse_all = crate::route_http_request("GET", "/api/v0/shares/contents", None, "", &state)
+        .await
+        .expect("browse all shares");
+    assert_eq!(browse_all.status, "200 OK", "{}", browse_all.body);
+    assert!(
+        browse_all.body.contains("readable.flac"),
+        "{}",
+        browse_all.body
+    );
+
+    let root_id = root_id.expect("one scanned share root");
+    let browse_root = crate::route_http_request(
+        "GET",
+        &format!("/api/v0/shares/{root_id}/contents"),
+        None,
+        "",
+        &state,
+    )
+    .await
+    .expect("browse one share");
+    assert_eq!(browse_root.status, "200 OK", "{}", browse_root.body);
+    assert!(
+        browse_root.body.contains("readable.flac"),
+        "{}",
+        browse_root.body
+    );
+
+    let library = crate::route_http_request(
+        "GET",
+        "/api/library/items/browser?query=readable",
+        None,
+        "",
+        &state,
+    )
+    .await
+    .expect("library browser search");
+    assert_eq!(library.status, "200 OK", "{}", library.body);
+    assert!(library.body.contains("readable.flac"), "{}", library.body);
+
+    let summary: serde_json::Value =
+        serde_json::from_str(&state.shares.read().await.summary_json()).expect("summary JSON");
+    assert_eq!(summary["scan_errors"], 0);
+    assert_eq!(summary["scan_warnings"], 1);
+
+    let _ = std::fs::remove_dir_all(root);
+}
