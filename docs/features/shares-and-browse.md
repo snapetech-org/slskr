@@ -33,6 +33,10 @@ persistence is enabled, and rewrites the `share-index.tsv` compatibility cache.
 - A scan that exceeds the filesystem-entry limit (`2,000,000`) or the
   pending-directory-path limit (`262,144`) fails without replacing the last
   complete index.
+- A file the daemon cannot open is skipped and reported with its path and
+  operating-system error. Skipped files are warnings, not scan errors: browse
+  and local search keep serving every readable entry. Unavailable directories
+  and the limits above still fail without replacing the last complete index.
 - Hidden files and symlinks are skipped unless explicitly enabled.
 - Filters are regular expressions matched against the original local paths.
 

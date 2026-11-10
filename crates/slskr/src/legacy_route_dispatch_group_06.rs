@@ -1471,6 +1471,7 @@ pub(super) async fn legacy_route_dispatch_group_06(
                     "files": snapshot.entries.len(),
                     "bytes": snapshot.entries.iter().map(|entry| entry.size).sum::<u64>(),
                     "scan_errors": snapshot.scan_errors,
+                    "scan_warnings": snapshot.scan_warnings,
                     "scanned": true,
                     "indexPersisted": state.db.is_some(),
                     "configurationPersisted": false,

@@ -18,6 +18,8 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+- Keep browse and local search available when a share scan skips unreadable files: warnings are reported separately from scan errors instead of closing the index.
+
 ## [0.2.88] — 2026-11-10
 
 - Skip unreadable music files, log their paths and operating-system errors at Warning level, and finish indexing readable files.
