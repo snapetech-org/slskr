@@ -8,8 +8,10 @@ import subprocess
 import sys
 import urllib.parse
 
+from discord_release_route import publish
 
-def build_payload(release, tag, repository, workflow_url):
+
+def build_payload(release, tag, repository, workflow_url, *, truncate=True):
     if not re.fullmatch(r'(?:release-)?v(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?', tag):
         raise ValueError('Release tag must use v<semver> or release-v<semver>.')
     url = f'https://github.com/{repository}/releases/tag/{tag}'
@@ -22,7 +24,7 @@ def build_payload(release, tag, repository, workflow_url):
         raise ValueError('Release notes must be nonempty.')
     body += '\n\nRelease artifacts are available on GitHub.'
     # Discord limits embed descriptions; preserve whole Unicode characters.
-    if len(body.encode('utf-16-le')) > 7600:
+    if truncate and len(body.encode('utf-16-le')) > 7600:
         body = body.encode('utf-16-le')[:7594].decode('utf-16-le', errors='ignore') + '…'
     version = tag.removeprefix('release-').removeprefix('v')
     return {
@@ -75,8 +77,21 @@ def main():
     repository = os.environ['GITHUB_REPOSITORY']
     tag = os.environ['RELEASE_TAG']
     workflow_url = f"https://github.com/{repository}/actions/runs/{os.environ['GITHUB_RUN_ID']}"
-    payload = build_payload(json.loads(release_path.read_text()), tag, repository, workflow_url)
-    receipt = execute_webhook(os.environ.get('DISCORD_RELEASE_WEBHOOK_URL', ''), payload)
+    changelog = os.environ.get('DISCORD_CHANGELOG_WEBHOOK', '')
+    project = os.environ.get('DISCORD_RELEASE_WEBHOOK_URL', '')
+    payload = build_payload(json.loads(release_path.read_text()), tag, repository, workflow_url,
+                            truncate=not changelog)
+    if changelog:
+        def save(receipt):
+            receipt.update({'tag': tag, 'workflow_url': workflow_url,
+                            'release_url': payload['embeds'][0]['url']})
+            receipt_path.write_text(json.dumps(receipt, indent=2) + '\n')
+
+        publish([payload], 'slskR', tag, project, changelog, on_progress=save)
+        return
+
+    print('::warning::DISCORD_CHANGELOG_WEBHOOK is unset; using the existing project channel.')
+    receipt = execute_webhook(project, payload)
     receipt.update({'tag': tag, 'workflow_url': workflow_url})
     receipt_path.write_text(json.dumps(receipt, indent=2) + '\n')
     print(f"Discord confirmed message {receipt['message_id']} for {tag}.")

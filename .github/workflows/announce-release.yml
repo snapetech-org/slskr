@@ -20,6 +20,8 @@ on:
     secrets:
       DISCORD_RELEASE_WEBHOOK_URL:
         required: true
+      DISCORD_CHANGELOG_WEBHOOK:
+        required: false
 
 permissions:
   contents: read
@@ -49,14 +51,16 @@ jobs:
       - name: Send and confirm Discord announcement
         env:
           DISCORD_RELEASE_WEBHOOK_URL: ${{ secrets.DISCORD_RELEASE_WEBHOOK_URL }}
+          DISCORD_CHANGELOG_WEBHOOK: ${{ secrets.DISCORD_CHANGELOG_WEBHOOK }}
           RELEASE_TAG: ${{ inputs.tag }}
         run: |
           python3 scripts/discord_announcement.py \
             "$RUNNER_TEMP/discord-release.json" "$RUNNER_TEMP/discord-receipt.json"
       - name: Retain delivery confirmation
+        if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: discord-announcement-${{ inputs.tag }}
           path: ${{ runner.temp }}/discord-receipt.json
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 90

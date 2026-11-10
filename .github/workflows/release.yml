@@ -578,6 +578,7 @@ jobs:
       tag: ${{ github.ref_name }}
     secrets:
       DISCORD_RELEASE_WEBHOOK_URL: ${{ secrets.DISCORD_RELEASE_WEBHOOK_URL }}
+      DISCORD_CHANGELOG_WEBHOOK: ${{ secrets.DISCORD_CHANGELOG_WEBHOOK }}
 
   release-complete:
     name: Require Complete Release

@@ -179,9 +179,12 @@ plus `SHA256SUMS.txt`, `slskr-cyclonedx.json`, and
 `slskr-dependency-manifest.json`. The JSON manifests are included in the
 release checksum file and build-provenance attestation subjects.
 After GitHub publication, the workflow immediately
-calls `announce-release.yml` with the `DISCORD_RELEASE_WEBHOOK_URL` repository
-secret. It reads the current published release body and requires Discord to
-return a saved message ID. The receipt is retained as an Actions artifact.
+calls `announce-release.yml` with `DISCORD_RELEASE_WEBHOOK_URL` for the project
+channel and `DISCORD_CHANGELOG_WEBHOOK` for the shared #changelogs channel.
+The job verifies the published release, confirms the complete notes in
+#changelogs, and posts a link in the project channel. Delivery artifacts retain
+confirmed Discord message links. If the shared secret is absent, delivery uses
+the existing project webhook.
 
 If an announcement was skipped after a publishing recovery, first check the
 original announcement job and any delivery receipt to avoid duplicate posts.
