@@ -18,6 +18,12 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.92] — 2026-11-11
+
+- Resume queued downloads when the uploader starts the transfer on a new regular or obfuscated peer connection.
+- Keep remote queues pending when the original connection closes or times out, and preserve downloads already accepted on another connection.
+- Use Ubuntu's standard package mirror for hosted build and release jobs when the Azure mirror cannot resolve.
+
 ## [0.2.91] — 2026-11-11
 
 - Resume queued downloads when the uploader starts the transfer on a new regular or obfuscated peer connection.

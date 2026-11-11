@@ -326,6 +326,7 @@ jobs:
           done
       - name: Install COPR tooling
         run: |
+          scripts/configure-ubuntu-apt-mirrors.sh
           sudo apt-get update
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y ca-certificates krb5-user libkrb5-dev oathtool rpm python3-pip python3-venv
           python3 -m venv /tmp/slskr-copr
@@ -521,6 +522,7 @@ jobs:
           path: packaging
       - name: Install Debian tooling
         run: |
+          scripts/configure-ubuntu-apt-mirrors.sh
           sudo apt-get update
           sudo apt-get install -y devscripts debhelper gnupg dput
       - name: Import signing key
