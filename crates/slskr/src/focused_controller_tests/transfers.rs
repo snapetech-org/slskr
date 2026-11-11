@@ -1,6 +1,121 @@
 use super::fixtures::*;
 
 #[tokio::test]
+async fn inbound_download_routes_zero_init_tokens_to_the_negotiated_file() {
+    for obfuscated in [false, true] {
+        exercise_inbound_download_routing(obfuscated, true).await;
+    }
+}
+
+#[tokio::test]
+async fn inbound_download_rejects_unknown_tokens_without_failing_other_transfers() {
+    for obfuscated in [false, true] {
+        exercise_inbound_download_routing(obfuscated, false).await;
+    }
+}
+
+async fn exercise_inbound_download_routing(obfuscated: bool, valid_token: bool) {
+    use slskr_client::file_transfer::FileTransferConnection;
+
+    let (state, _receiver) = test_state_with_env(MapEnv::default());
+    for destination in &mut state.destinations.write().await.records {
+        if destination.is_default {
+            destination.path = state.config.downloads_dir.display().to_string();
+        }
+    }
+    let paths = [
+        "active-upload.bin",
+        "first-download.bin",
+        "second-download.bin",
+    ]
+    .map(|name| state.config.downloads_dir.join(name));
+    fs::create_dir_all(&state.config.downloads_dir).unwrap();
+    fs::write(&paths[0], [9, 8, 7, 6]).unwrap();
+    let entries = {
+        let mut transfers = state.transfers.write().await;
+        [
+            (1, "downloader", "in_progress"),
+            (0, "uploader", "accepted"),
+            (0, "uploader", "accepted"),
+        ]
+        .into_iter()
+        .zip(&paths)
+        .map(|((direction, username, status), path)| {
+            let entry = transfers.create(
+                direction,
+                Some(username.to_owned()),
+                path.file_name().unwrap().to_string_lossy().into_owned(),
+                Some(path.display().to_string()),
+                Some(4),
+            );
+            transfers
+                .update_status(entry.id, status, None, None)
+                .unwrap()
+        })
+        .collect::<Vec<_>>()
+    };
+    let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+    let stream = tokio::net::TcpStream::connect(listener.local_addr().unwrap())
+        .await
+        .unwrap();
+    let (accepted, remote_addr) = listener.accept().await.unwrap();
+    let incoming = crate::IncomingConnection::PeerInit {
+        username: "uploader".to_owned(),
+        kind: crate::ConnectionKind::FileTransfer,
+        token: 0,
+        stream: accepted,
+        obfuscated,
+    };
+    let receiver_state = Arc::clone(&state);
+    let receiving =
+        crate::listener_runtime::handle_owned_incoming(receiver_state, incoming, remote_addr);
+    let sending = async {
+        let mut peer = if obfuscated {
+            FileTransferConnection::new_obfuscated(stream)
+        } else {
+            FileTransferConnection::new(stream)
+        };
+        let token = if valid_token {
+            entries[2].token
+        } else {
+            u32::MAX
+        };
+        peer.send_token(token).await.unwrap();
+        if let Ok(Ok(offset)) =
+            tokio::time::timeout(Duration::from_secs(1), peer.receive_offset()).await
+        {
+            assert_eq!(offset, 0);
+            peer.write_chunk(&[1, 2, 3, 4]).await.unwrap();
+        }
+    };
+    tokio::join!(receiving, sending);
+    let transfers = state.transfers.read().await;
+    let expected_download = if valid_token { "succeeded" } else { "accepted" };
+    for (entry, expected) in entries
+        .iter()
+        .zip(["in_progress", "accepted", expected_download])
+    {
+        let actual = transfers
+            .entries
+            .iter()
+            .find(|actual| actual.id == entry.id)
+            .unwrap();
+        assert_eq!(
+            actual.status, expected,
+            "{}: {:?}",
+            entry.filename, actual.reason
+        );
+    }
+    if valid_token {
+        assert_eq!(fs::read(&paths[2]).unwrap(), [1, 2, 3, 4]);
+    } else {
+        assert!(!paths[2].exists());
+    }
+    drop(transfers);
+    let _ = fs::remove_dir_all(&state.config.state_dir);
+}
+
+#[tokio::test]
 async fn remotely_queued_upload_is_not_immediately_negotiated_again() {
     use slskr_client::protocol::peer::{PeerMessage, TransferResponse};
     use slskr_client::stream::{InitConnection, PeerMessageConnection};

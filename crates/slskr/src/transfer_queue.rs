@@ -769,13 +769,19 @@ impl TransferQueue {
     pub(super) fn pending_inbound_file_transfer(
         &self,
         token: Option<u32>,
+        peer_username: Option<&str>,
     ) -> Option<TransferEntry> {
         self.entries
             .iter()
-            .find(|entry| {
+            .filter(|entry| {
                 entry.local_path.is_some()
                     && (entry.status == "accepted" || entry.status == "in_progress")
                     && token.is_none_or(|token| entry.token == token)
+                    && peer_username
+                        .is_none_or(|username| entry.peer_username.as_deref() == Some(username))
+            })
+            .min_by_key(|entry| {
+                u8::from(token.is_none() && peer_username.is_some() && entry.direction != 0)
             })
             .cloned()
     }

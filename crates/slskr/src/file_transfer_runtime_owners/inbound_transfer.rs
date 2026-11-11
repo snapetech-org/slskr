@@ -4,6 +4,7 @@ pub(crate) async fn handle_inbound_file_transfer(
     state: &AppState,
     mut file: slskr_client::file_transfer::FileTransferConnection<TcpStream>,
     token: Option<u32>,
+    peer_username: Option<&str>,
 ) -> Result<(), String> {
     if let Some(token) = token {
         let pending = state
@@ -19,9 +20,9 @@ pub(crate) async fn handle_inbound_file_transfer(
             return result.map(|_| ());
         }
     }
-    let transfer = {
+    let mut transfer = {
         let transfers = state.transfers.read().await;
-        transfers.pending_inbound_file_transfer(token)
+        transfers.pending_inbound_file_transfer(token, peer_username)
     }
     .ok_or_else(|| {
         token.map_or_else(
@@ -29,6 +30,27 @@ pub(crate) async fn handle_inbound_file_transfer(
             |token| format!("no accepted inbound file transfer is pending for token {token}"),
         )
     })?;
+    let received_token = if token.is_none() && transfer.direction == 0 {
+        let remote_token = time::timeout(
+            state.config.soulseek_connection.timeout_transfer,
+            file.receive_token(),
+        )
+        .await
+        .map_err(|_| "inbound download token receive timed out".to_owned())?
+        .map_err(|error| format!("inbound download token receive failed: {error}"))?;
+        transfer = {
+            let transfers = state.transfers.read().await;
+            transfers
+                .pending_inbound_file_transfer(Some(remote_token), peer_username)
+                .filter(|entry| entry.direction == 0)
+        }
+        .ok_or_else(|| {
+            format!("no accepted inbound download is pending for token {remote_token}")
+        })?;
+        Some(remote_token)
+    } else {
+        None
+    };
 
     // native profile's type-1 transfer manager sends the negotiated remote token
     // immediately after PeerInit.  The regular compatibility path retains
@@ -62,7 +84,7 @@ pub(crate) async fn handle_inbound_file_transfer(
     }
 
     let result = if transfer.direction == 0 {
-        download_file_transfer_with_connection(state, &transfer, &mut file).await
+        download_file_transfer_with_connection(state, &transfer, &mut file, received_token).await
     } else {
         upload_file_transfer_with_connection(state, &transfer, &mut file, !remote_token_received)
             .await

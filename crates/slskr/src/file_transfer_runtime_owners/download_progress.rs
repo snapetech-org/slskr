@@ -7,14 +7,18 @@ pub(super) async fn download_file_with_progress(
     offset: u64,
     remaining: usize,
     file: &mut fs::File,
+    received_token: Option<u32>,
 ) -> Result<u64, String> {
-    let token = time::timeout(
-        state.config.soulseek_connection.timeout_transfer,
-        connection.receive_token(),
-    )
-    .await
-    .map_err(|_| "file download token receive timed out".to_owned())?
-    .map_err(|error| format!("file download token receive failed: {error}"))?;
+    let token = match received_token {
+        Some(token) => token,
+        None => time::timeout(
+            state.config.soulseek_connection.timeout_transfer,
+            connection.receive_token(),
+        )
+        .await
+        .map_err(|_| "file download token receive timed out".to_owned())?
+        .map_err(|error| format!("file download token receive failed: {error}"))?,
+    };
     if token != transfer.token {
         return Err(format!(
             "transfer token mismatch: expected {}, received {token}",

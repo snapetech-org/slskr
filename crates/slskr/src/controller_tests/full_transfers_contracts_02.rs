@@ -1765,6 +1765,7 @@ pub(super) async fn queued_backfill_transfer_reads_only_the_bounded_header() {
             &task_state,
             slskr_client::file_transfer::FileTransferConnection::new(server),
             Some(token),
+            None,
         )
         .await
     });

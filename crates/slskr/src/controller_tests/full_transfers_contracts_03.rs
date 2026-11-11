@@ -606,6 +606,7 @@ pub(super) async fn inbound_transfer_request_serves_shared_file_over_pierce_fire
             &inbound_state,
             slskr_client::file_transfer::FileTransferConnection::new(stream),
             Some(7),
+            None,
         )
         .await
         .expect("serve inbound file");

@@ -6,7 +6,7 @@ pub(super) async fn download_file_transfer(
     transfer: &TransferEntry,
 ) -> Result<(u64, u64), String> {
     let mut connection = connect_file_transfer_preferred(state, address).await?;
-    download_file_transfer_with_connection(state, transfer, &mut connection).await
+    download_file_transfer_with_connection(state, transfer, &mut connection, None).await
 }
 
 pub(super) async fn download_file_transfer_with_retry(
@@ -132,6 +132,7 @@ pub(crate) async fn download_file_transfer_with_connection(
     state: &AppState,
     transfer: &TransferEntry,
     connection: &mut slskr_client::file_transfer::FileTransferConnection<TcpStream>,
+    received_token: Option<u32>,
 ) -> Result<(u64, u64), String> {
     let local_path = transfer
         .local_path
@@ -177,9 +178,16 @@ pub(crate) async fn download_file_transfer_with_connection(
         prepare_incomplete_download_file(&incomplete_dir, &incomplete_path, &retry_strategy, size)?;
     let remaining = usize::try_from(size - offset)
         .map_err(|_| "download remaining size is too large".to_owned())?;
-    let bytes_received =
-        download_file_with_progress(state, transfer, connection, offset, remaining, &mut file)
-            .await?;
+    let bytes_received = download_file_with_progress(
+        state,
+        transfer,
+        connection,
+        offset,
+        remaining,
+        &mut file,
+        received_token,
+    )
+    .await?;
     file.sync_all()
         .map_err(|error| format!("download file sync failed: {error}"))?;
     drop(file);

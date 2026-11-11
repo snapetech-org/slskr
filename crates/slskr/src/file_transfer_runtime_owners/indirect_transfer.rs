@@ -63,6 +63,6 @@ pub(super) async fn execute_indirect_file_transfer(
     if transfer.direction == 1 {
         upload_file_transfer_with_connection(state, transfer, &mut connection, true).await
     } else {
-        download_file_transfer_with_connection(state, transfer, &mut connection).await
+        download_file_transfer_with_connection(state, transfer, &mut connection, None).await
     }
 }

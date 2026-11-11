@@ -539,10 +539,11 @@ pub(super) async fn handle_owned_incoming(
             .await
         }
         IncomingConnection::FileTransfer(file) => {
-            handle_inbound_file_transfer(&state, file, None).await
+            handle_inbound_file_transfer(&state, file, None, None).await
         }
         IncomingConnection::PeerInit {
             kind: ConnectionKind::FileTransfer,
+            username,
             token,
             stream,
             obfuscated,
@@ -556,6 +557,7 @@ pub(super) async fn handle_owned_incoming(
                     slskr_client::file_transfer::FileTransferConnection::new(stream)
                 },
                 (token != 0).then_some(token),
+                Some(&username),
             )
             .await
         }
@@ -575,7 +577,7 @@ pub(super) async fn handle_owned_incoming(
             let has_file_transfer = {
                 let transfers = state.transfers.read().await;
                 transfers
-                    .pending_inbound_file_transfer(Some(token))
+                    .pending_inbound_file_transfer(Some(token), None)
                     .is_some()
             };
             let has_pending_peer_message = state
@@ -588,6 +590,7 @@ pub(super) async fn handle_owned_incoming(
                     &state,
                     slskr_client::file_transfer::FileTransferConnection::new(stream),
                     Some(token),
+                    None,
                 )
                 .await
             } else if has_pending_peer_message {

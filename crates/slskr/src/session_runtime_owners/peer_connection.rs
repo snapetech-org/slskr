@@ -33,6 +33,7 @@ pub(super) async fn handle_connect_to_peer_request(
                 state,
                 slskr_client::file_transfer::FileTransferConnection::new(stream),
                 Some(request.token),
+                Some(&request.username),
             )
             .await
         }

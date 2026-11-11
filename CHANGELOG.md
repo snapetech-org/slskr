@@ -18,6 +18,12 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.94] — 2026-11-11
+
+- Resume queued downloads when the uploader starts the transfer on a new regular or obfuscated peer connection, including after the original connection closes or times out.
+- Match incoming file connections to their peer and negotiated transfer token so concurrent uploads and downloads cannot claim another download's connection.
+- Preserve remote upload queue scheduling and use independent mirrors of signed Ubuntu packages during Ubuntu DNS outages.
+
 ## [0.2.93] — 2026-11-11
 
 - Resume queued downloads when the uploader starts the transfer on a new regular or obfuscated peer connection.
