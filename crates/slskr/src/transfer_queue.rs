@@ -831,12 +831,12 @@ impl TransferQueue {
                 && entry.peer_username.as_deref() == Some(username.as_str())
                 && entry.filename == filename
                 && entry.local_path.is_some()
-                && entry.status == "queued"
-                && entry
-                    .reason
-                    .as_deref()
-                    .map(is_remote_queue_response)
-                    .unwrap_or(false)
+                && (entry.status == "peer_negotiating"
+                    || (entry.status == "queued"
+                        && entry
+                            .reason
+                            .as_deref()
+                            .is_some_and(is_remote_queue_response)))
         })?;
         entry.previous_status = Some(entry.status.clone());
         entry.token = token;

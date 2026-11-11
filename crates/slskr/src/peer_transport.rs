@@ -1120,7 +1120,7 @@ async fn negotiate_plain_peer_transfer(
         .await
         .map_err(|_| "plain peer transfer response timed out".to_owned())?
         .map_err(|error| format!("plain peer transfer response failed: {error}"))?;
-    handle_peer_transfer_negotiation_response(&mut peer, response, transfer, timeout).await
+    handle_peer_transfer_negotiation_response(state, &mut peer, response, transfer, timeout).await
 }
 
 async fn negotiate_obfuscated_peer_transfer(
@@ -1150,10 +1150,11 @@ async fn negotiate_obfuscated_peer_transfer(
         .await
         .map_err(|_| "obfuscated peer transfer response timed out".to_owned())?
         .map_err(|error| format!("obfuscated peer transfer response failed: {error}"))?;
-    handle_peer_transfer_negotiation_response(&mut peer, response, transfer, timeout).await
+    handle_peer_transfer_negotiation_response(state, &mut peer, response, transfer, timeout).await
 }
 
 async fn handle_peer_transfer_negotiation_response<C>(
+    state: &AppState,
     peer: &mut C,
     response: PeerMessage,
     transfer: &TransferEntry,
@@ -1178,8 +1179,47 @@ where
                 && transfer.direction == 0
                 && is_remote_queue_response(&reason) =>
         {
-            let queued = time::timeout(timeout, peer.receive_peer_message())
-                .await
+            let (tracked_download, queued_download) = {
+                let mut transfers = state.transfers.write().await;
+                let tracked = transfers.entries.iter().find(|entry| {
+                    entry.id == transfer.id
+                        && entry.direction == 0
+                        && entry.peer_username == transfer.peer_username
+                        && entry.filename == transfer.filename
+                        && entry.local_path.is_some()
+                });
+                let tracked_download = tracked.is_some();
+                let pending = tracked.is_some_and(|entry| {
+                    entry.token == token && entry.status == "peer_negotiating"
+                });
+                let queued_download = pending
+                    .then(|| {
+                        transfers.update_status(transfer.id, "queued", None, Some(reason.clone()))
+                    })
+                    .flatten();
+                (tracked_download, queued_download)
+            };
+            if let Some(queued_download) = &queued_download {
+                persist_transfer_projection(state, queued_download).await;
+            }
+            if tracked_download && queued_download.is_none() {
+                return Ok(PeerTransferNegotiation::Rejected { token, reason });
+            }
+            let queued = time::timeout(timeout, peer.receive_peer_message()).await;
+            if queued_download.is_some() {
+                if let Ok(Ok(PeerMessage::TransferRequest(request))) = queued {
+                    if request.direction == 1 && request.filename == transfer.filename {
+                        if let Some(username) = transfer.peer_username.as_deref() {
+                            super::peer_message_runtime::handle_queued_upload_request(
+                                state, peer, username, &request,
+                            )
+                            .await?;
+                        }
+                    }
+                }
+                return Ok(PeerTransferNegotiation::Rejected { token, reason });
+            }
+            let queued = queued
                 .map_err(|_| "queued transfer request timed out".to_owned())?
                 .map_err(|error| format!("queued transfer request failed: {error}"))?;
             let PeerMessage::TransferRequest(request) = queued else {
@@ -1208,7 +1248,7 @@ where
     }
 }
 
-trait PeerMessageSenderReceiver {
+pub(super) trait PeerMessageSenderReceiver {
     async fn receive_peer_message(&mut self) -> Result<PeerMessage, String>;
     async fn send_peer_message(&mut self, message: &PeerMessage) -> Result<(), String>;
 }

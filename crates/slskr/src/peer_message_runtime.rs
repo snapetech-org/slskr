@@ -178,9 +178,11 @@ async fn blacklisted_peer_response(
     })
 }
 
-async fn handle_queued_upload_request(
+pub(super) async fn handle_queued_upload_request<
+    C: super::peer_transport::PeerMessageSenderReceiver,
+>(
     state: &AppState,
-    peer: &mut PeerMessageConnection<TcpStream>,
+    peer: &mut C,
     username: &str,
     request: &TransferRequest,
 ) -> Result<bool, String> {
@@ -191,24 +193,39 @@ async fn handle_queued_upload_request(
         usize::try_from(state.transfer_download_settings.read().await.slots).unwrap_or(usize::MAX);
     let admission = {
         let mut transfers = state.transfers.write().await;
-        let pending = transfers.entries.iter().any(|entry| {
-            entry.direction == 0
-                && entry.peer_username.as_deref() == Some(username)
-                && entry.filename == request.filename
-                && entry.local_path.is_some()
-                && entry.status == "queued"
-                && entry
-                    .reason
-                    .as_deref()
-                    .is_some_and(is_remote_queue_response)
-        });
-        if !pending {
+        let pending_id = transfers
+            .entries
+            .iter()
+            .find(|entry| {
+                entry.direction == 0
+                    && entry.peer_username.as_deref() == Some(username)
+                    && entry.filename == request.filename
+                    && entry.local_path.is_some()
+                    && (entry.status == "peer_negotiating"
+                        || (entry.status == "queued"
+                            && entry
+                                .reason
+                                .as_deref()
+                                .is_some_and(is_remote_queue_response)))
+            })
+            .map(|entry| entry.id);
+        if pending_id.is_none() {
             None
+        } else if request.token == 0
+            || transfers.entries.iter().any(|entry| {
+                Some(entry.id) != pending_id
+                    && entry.token == request.token
+                    && !is_terminal_transfer_status(&entry.status)
+            })
+        {
+            Some(Err(
+                "queued transfer token is invalid or already active".to_owned()
+            ))
         } else if !transfers.has_capacity_for_direction(
             0,
             state.config.transfer_max_active,
             download_slots,
-            None,
+            pending_id,
         ) {
             Some(Err("Queued".to_owned()))
         } else {
@@ -225,7 +242,7 @@ async fn handle_queued_upload_request(
     match admission {
         None => Ok(false),
         Some(Err(reason)) => {
-            peer.send(&PeerMessage::TransferResponse(TransferResponse::Rejected {
+            peer.send_peer_message(&PeerMessage::TransferResponse(TransferResponse::Rejected {
                 token: request.token,
                 reason,
             }))
@@ -239,7 +256,8 @@ async fn handle_queued_upload_request(
             Ok(true)
         }
         Some(Ok(accepted)) => {
-            peer.send(&PeerMessage::TransferResponse(TransferResponse::Allowed {
+            persist_transfer_projection(state, &accepted).await;
+            peer.send_peer_message(&PeerMessage::TransferResponse(TransferResponse::Allowed {
                 token: request.token,
                 size: accepted.size,
             }))
@@ -902,6 +920,15 @@ pub(super) async fn handle_obfuscated_peer_messages_with_address(
             break;
         }
 
+        if let (PeerMessage::TransferRequest(request), Some(username)) =
+            (&message, peer_username.as_deref())
+        {
+            if request.direction == 1
+                && handle_queued_upload_request(state, &mut peer, username, request).await?
+            {
+                break;
+            }
+        }
         let peer_connection = &mut peer;
         handle_peer_message(
             state,

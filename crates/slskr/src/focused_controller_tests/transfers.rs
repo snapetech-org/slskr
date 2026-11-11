@@ -1,6 +1,189 @@
 use super::fixtures::*;
 
 #[tokio::test]
+async fn remote_queue_accepts_a_new_peer_connection_without_losing_the_download() {
+    for obfuscated in [false, true] {
+        for (disconnect_before_offer, delay, early_offer) in [
+            (false, Duration::ZERO, false),
+            (true, Duration::ZERO, false),
+            (false, Duration::from_millis(1200), false),
+            (false, Duration::ZERO, true),
+        ] {
+            exercise_remote_queue_callback(disconnect_before_offer, delay, obfuscated, early_offer)
+                .await;
+        }
+    }
+}
+
+async fn exercise_remote_queue_callback(
+    disconnect_before_offer: bool,
+    delay: Duration,
+    obfuscated: bool,
+    early_offer: bool,
+) {
+    use slskr_client::protocol::peer::{PeerMessage, TransferRequest, TransferResponse};
+    use slskr_client::stream::{
+        InitConnection, ObfuscatedPeerMessageConnection, PeerMessageConnection,
+    };
+
+    let (state, _receiver) = test_state_with_env(
+        MapEnv::default()
+            .with("SLSKR_SLSK_INACTIVITY_TIMEOUT", "1000")
+            .with("SLSKR_FROZEN_TRANSFER_DOWNLOAD_JSON", r#"{"slots":1}"#),
+    );
+    let filename = "Remote/Queued.bin";
+    let download = {
+        let mut transfers = state.transfers.write().await;
+        let entry = transfers.create(
+            0,
+            Some("uploader".to_owned()),
+            filename.to_owned(),
+            Some(
+                state
+                    .config
+                    .downloads_dir
+                    .join("Queued.bin")
+                    .display()
+                    .to_string(),
+            ),
+            Some(4),
+        );
+        transfers.update_status(entry.id, "peer_lookup", None, None);
+        entry
+    };
+    let uploader = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+    let address = slskr_client::protocol::server::PeerAddress {
+        username: "uploader".to_owned(),
+        ip: "127.0.0.1".parse().unwrap(),
+        port: u32::from(uploader.local_addr().unwrap().port()),
+        obfuscation_type: 0,
+        obfuscated_port: 0,
+    };
+    let negotiating_state = Arc::clone(&state);
+    let negotiation = tokio::spawn(async move {
+        crate::project_peer_transfer_response(&negotiating_state, &address).await;
+    });
+    let (stream, _) = uploader.accept().await.unwrap();
+    let mut init = InitConnection::new(stream);
+    init.receive().await.unwrap();
+    let mut original = PeerMessageConnection::new(init.into_inner());
+    assert!(matches!(
+        original.receive().await.unwrap(),
+        PeerMessage::TransferRequest(_)
+    ));
+    let queued_response = PeerMessage::TransferResponse(TransferResponse::Rejected {
+        token: download.token,
+        reason: "Queued".to_owned(),
+    });
+    if !early_offer {
+        original.send(&queued_response).await.unwrap();
+        let deadline = tokio::time::Instant::now() + Duration::from_secs(1);
+        loop {
+            let transfers = state.transfers.read().await;
+            let entry = transfers
+                .entries
+                .iter()
+                .find(|entry| entry.id == download.id)
+                .unwrap();
+            if entry.status == "queued" {
+                assert_eq!(entry.reason.as_deref(), Some("Queued"));
+                break;
+            }
+            assert!(
+                tokio::time::Instant::now() < deadline,
+                "remote queue was not recorded: {}",
+                entry.status
+            );
+            drop(transfers);
+            tokio::task::yield_now().await;
+        }
+    }
+    let mut original = Some(original);
+    if disconnect_before_offer {
+        drop(original.take());
+        tokio::time::sleep(Duration::from_millis(100)).await;
+        let transfers = state.transfers.read().await;
+        let entry = transfers
+            .entries
+            .iter()
+            .find(|entry| entry.id == download.id)
+            .unwrap();
+        assert_eq!(entry.status, "queued");
+    }
+    tokio::time::sleep(delay).await;
+    let incoming = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+    let stream = tokio::net::TcpStream::connect(incoming.local_addr().unwrap())
+        .await
+        .unwrap();
+    let (accepted, _) = incoming.accept().await.unwrap();
+    let incoming_state = Arc::clone(&state);
+    let callback = tokio::spawn(async move {
+        if obfuscated {
+            crate::handle_obfuscated_peer_messages_with_address(
+                &incoming_state,
+                ObfuscatedPeerMessageConnection::new(accepted),
+                Some("uploader".to_owned()),
+                None,
+            )
+            .await
+        } else {
+            crate::handle_plain_peer_messages(
+                &incoming_state,
+                PeerMessageConnection::new(accepted),
+                Some("uploader".to_owned()),
+            )
+            .await
+        }
+    });
+    let upload_token = download.token + 77;
+    let offer = PeerMessage::TransferRequest(TransferRequest {
+        filename_encoding: Default::default(),
+        direction: 1,
+        token: upload_token,
+        filename: filename.to_owned(),
+        size: Some(4),
+    });
+    let response = if obfuscated {
+        let mut peer = ObfuscatedPeerMessageConnection::new(stream);
+        peer.send(&offer).await.unwrap();
+        peer.receive().await.unwrap()
+    } else {
+        let mut peer = PeerMessageConnection::new(stream);
+        peer.send(&offer).await.unwrap();
+        peer.receive().await.unwrap()
+    };
+    assert_eq!(
+        response,
+        PeerMessage::TransferResponse(TransferResponse::Allowed {
+            token: upload_token,
+            size: Some(4),
+        })
+    );
+    callback.await.unwrap().unwrap();
+    if early_offer {
+        original
+            .as_mut()
+            .unwrap()
+            .send(&queued_response)
+            .await
+            .unwrap();
+    }
+    drop(original);
+    negotiation.await.unwrap();
+    let transfers = state.transfers.read().await;
+    let entry = transfers
+        .entries
+        .iter()
+        .find(|entry| entry.id == download.id)
+        .unwrap();
+    assert_eq!(entry.status, "accepted");
+    assert_eq!(entry.token, upload_token);
+    assert_eq!(entry.reason, None);
+    drop(transfers);
+    let _ = fs::remove_dir_all(&state.config.state_dir);
+}
+
+#[tokio::test]
 async fn versioned_download_range_sources_use_verified_executor() {
     let (state, _receiver) =
         test_state_with_env(MapEnv::default().with("SLSKR_CONTROLLER_PROFILE", "slskdn"));

@@ -349,15 +349,22 @@ pub(crate) async fn project_peer_transfer_response(state: &AppState, address: &P
 
     let updated = {
         let mut transfers = state.transfers.write().await;
-        transfers.update_status(transfer.id, status, bytes_transferred, reason)
+        let pending = transfers.entries.iter().any(|entry| {
+            entry.id == transfer.id
+                && entry.token == transfer.token
+                && entry.status == "peer_negotiating"
+        });
+        if pending {
+            transfers.update_status(transfer.id, status, bytes_transferred, reason)
+        } else {
+            None
+        }
     };
     if let Some(updated) = updated {
         persist_transfer_projection(state, &updated).await;
     }
-    if status != "queued" {
-        schedule_queued_uploads(state).await;
-        schedule_queued_downloads(state).await;
-    }
+    schedule_queued_uploads(state).await;
+    schedule_queued_downloads(state).await;
 }
 
 pub(crate) async fn schedule_queued_downloads(state: &AppState) {

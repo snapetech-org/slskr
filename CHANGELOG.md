@@ -18,6 +18,11 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.91] — 2026-11-11
+
+- Resume queued downloads when the uploader starts the transfer on a new regular or obfuscated peer connection.
+- Keep remote queues pending when the original connection closes or times out, and preserve downloads already accepted on another connection.
+
 ## [0.2.90] — 2026-11-10
 
 - Finish music library scans when individual files are unreadable, and log each retained warning with its path and operating-system error.
