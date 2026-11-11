@@ -1,6 +1,65 @@
 use super::fixtures::*;
 
 #[tokio::test]
+async fn remotely_queued_upload_is_not_immediately_negotiated_again() {
+    use slskr_client::protocol::peer::{PeerMessage, TransferResponse};
+    use slskr_client::stream::{InitConnection, PeerMessageConnection};
+
+    let (state, mut receiver) = test_state_with_env(MapEnv::default());
+    let path = state.config.state_dir.join("queued-upload.bin");
+    fs::write(&path, [1, 2, 3, 4]).unwrap();
+    let upload = {
+        let mut transfers = state.transfers.write().await;
+        let entry = transfers.create(
+            1,
+            Some("downloader".to_owned()),
+            "Shared/Queued.bin".to_owned(),
+            Some(path.display().to_string()),
+            Some(4),
+        );
+        transfers.update_status(entry.id, "peer_lookup", None, None);
+        entry
+    };
+    let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+    let address = slskr_client::protocol::server::PeerAddress {
+        username: "downloader".to_owned(),
+        ip: "127.0.0.1".parse().unwrap(),
+        port: u32::from(listener.local_addr().unwrap().port()),
+        obfuscation_type: 0,
+        obfuscated_port: 0,
+    };
+    let peer = tokio::spawn(async move {
+        let (stream, _) = listener.accept().await.unwrap();
+        let mut init = InitConnection::new(stream);
+        init.receive().await.unwrap();
+        let mut peer = PeerMessageConnection::new(init.into_inner());
+        assert!(matches!(
+            peer.receive().await.unwrap(),
+            PeerMessage::TransferRequest(_)
+        ));
+        peer.send(&PeerMessage::TransferResponse(TransferResponse::Rejected {
+            token: upload.token,
+            reason: "Queued".to_owned(),
+        }))
+        .await
+        .unwrap();
+    });
+    crate::project_peer_transfer_response(&state, &address).await;
+    peer.await.unwrap();
+    let transfers = state.transfers.read().await;
+    let entry = transfers
+        .entries
+        .iter()
+        .find(|entry| entry.id == upload.id)
+        .unwrap();
+    assert_eq!(entry.status, "queued");
+    assert_eq!(entry.reason.as_deref(), Some("Queued"));
+    assert!(receiver.try_recv().is_err());
+    drop(transfers);
+    let _ = fs::remove_dir_all(&state.config.state_dir);
+}
+
+#[tokio::test]
 async fn remote_queue_accepts_a_new_peer_connection_without_losing_the_download() {
     for obfuscated in [false, true] {
         for (disconnect_before_offer, delay, early_offer) in [

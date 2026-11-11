@@ -363,7 +363,9 @@ pub(crate) async fn project_peer_transfer_response(state: &AppState, address: &P
     if let Some(updated) = updated {
         persist_transfer_projection(state, &updated).await;
     }
-    schedule_queued_uploads(state).await;
+    if status != "queued" {
+        schedule_queued_uploads(state).await;
+    }
     schedule_queued_downloads(state).await;
 }
 
