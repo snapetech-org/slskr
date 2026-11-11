@@ -18,6 +18,12 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.93] — 2026-11-11
+
+- Resume queued downloads when the uploader starts the transfer on a new regular or obfuscated peer connection.
+- Keep remote queues pending when the original connection closes or times out, and preserve downloads already accepted on another connection.
+- Use independent mirrors of signed Ubuntu packages so Ubuntu DNS outages do not block release jobs.
+
 ## [0.2.92] — 2026-11-11
 
 - Resume queued downloads when the uploader starts the transfer on a new regular or obfuscated peer connection.
