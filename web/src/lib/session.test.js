@@ -19,6 +19,7 @@ vi.mock('./api', async () => {
 
 describe('session', () => {
   beforeEach(() => {
+    vi.clearAllMocks();
     localStorage.clear();
     sessionStorage.clear();
     Object.defineProperty(document, 'cookie', {
@@ -43,11 +44,13 @@ describe('session', () => {
     expect(session.isLoggedIn()).toBe(false);
   });
 
-  it('ignores legacy tokens left in persistent browser storage', () => {
+  it('restores a remembered token from persistent browser storage', () => {
     localStorage.setItem('slskr-token', 'persistent-token');
 
-    expect(session.authHeaders()).toEqual({});
-    expect(session.isLoggedIn()).toBe(false);
+    expect(session.authHeaders()).toEqual({
+      Authorization: 'Bearer persistent-token',
+    });
+    expect(session.isLoggedIn()).toBe(true);
   });
 
   it('adds CSRF only when requested for direct fetch mutations', () => {
@@ -76,20 +79,78 @@ describe('session', () => {
     // the server issues rather than reusing the password as a token.
     expect(api.post).toHaveBeenCalledWith('/session', {
       password: 'user-password',
+      rememberMe: false,
       username: 'user',
     });
     expect(sessionStorage.getItem('slskr-token')).toBe('server-issued-jwt');
+    expect(localStorage.getItem('slskr-token')).toBeNull();
   });
 
-  it('keeps the session token in session storage even when a legacy rememberMe value is supplied', async () => {
+  it('stores a remembered session token in persistent storage', async () => {
     api.post.mockResolvedValue({
       data: { token: 'server-issued-jwt' },
     });
 
     await session.login({ password: 'user-password', rememberMe: true, username: 'user' });
 
+    expect(api.post).toHaveBeenCalledWith('/session', {
+      password: 'user-password',
+      rememberMe: true,
+      username: 'user',
+    });
+    expect(localStorage.getItem('slskr-token')).toBe('server-issued-jwt');
+    expect(sessionStorage.getItem('slskr-token')).toBeNull();
+  });
+
+  it('refreshes a remembered session into persistent storage', async () => {
+    localStorage.setItem('slskr-token', 'remembered-jwt');
+    api.post.mockResolvedValue({
+      data: { token: 'refreshed-jwt' },
+    });
+
+    await expect(session.refresh()).resolves.toBe('refreshed-jwt');
+
+    expect(api.post).toHaveBeenCalledWith('/session/refresh');
+    expect(localStorage.getItem('slskr-token')).toBe('refreshed-jwt');
+    expect(sessionStorage.getItem('slskr-token')).toBeNull();
+  });
+
+  it('refreshes a normal session into session storage', async () => {
+    sessionStorage.setItem('slskr-token', 'normal-jwt');
+    api.post.mockResolvedValue({
+      data: { token: 'refreshed-jwt' },
+    });
+
+    await expect(session.refresh()).resolves.toBe('refreshed-jwt');
+
+    expect(sessionStorage.getItem('slskr-token')).toBe('refreshed-jwt');
     expect(localStorage.getItem('slskr-token')).toBeNull();
-    expect(sessionStorage.getItem('slskr-token')).toBe('server-issued-jwt');
+  });
+
+  it('does not refresh without an active session', async () => {
+    await expect(session.refresh()).resolves.toBeUndefined();
+    expect(api.post).not.toHaveBeenCalled();
+  });
+
+  it('does not resurrect a token that was cleared while refreshing', async () => {
+    sessionStorage.setItem('slskr-token', 'normal-jwt');
+    api.post.mockImplementation(async () => {
+      sessionStorage.clear();
+      return { data: { token: 'refreshed-jwt' } };
+    });
+
+    await expect(session.refresh()).resolves.toBeNull();
+    expect(sessionStorage.getItem('slskr-token')).toBeNull();
+  });
+
+  it('clears both remembered and normal tokens on logout', () => {
+    localStorage.setItem('slskr-token', 'remembered-jwt');
+    sessionStorage.setItem('slskr-token', 'normal-jwt');
+
+    session.logout();
+
+    expect(localStorage.getItem('slskr-token')).toBeNull();
+    expect(sessionStorage.getItem('slskr-token')).toBeNull();
   });
 
   it('rethrows network session-check errors without masking them', async () => {

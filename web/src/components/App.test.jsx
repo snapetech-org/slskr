@@ -13,9 +13,11 @@ const {
   getApplicationOptions,
   getApplicationState,
   getSecurityEnabled,
+  getTokenRemainingMillis,
   getUnreadActivity,
   getRoomActivity,
   isLoggedIn,
+  refresh,
 } = vi.hoisted(() => ({
   check: vi.fn(),
   connectServer: vi.fn(),
@@ -26,7 +28,9 @@ const {
   getApplicationOptions: vi.fn(),
   getApplicationState: vi.fn(),
   getRoomActivity: vi.fn(),
+  getTokenRemainingMillis: vi.fn(),
   isLoggedIn: vi.fn(),
+  refresh: vi.fn(),
 }));
 
 vi.mock('../lib/chat', () => ({
@@ -59,9 +63,11 @@ vi.mock('../lib/session', () => ({
   isLoggedIn,
   login: vi.fn(),
   logout: vi.fn(),
+  refresh,
 }));
 
 vi.mock('../lib/token', () => ({
+  getTokenRemainingMillis,
   isPassthroughEnabled: vi.fn(() => false),
 }));
 
@@ -136,6 +142,8 @@ describe('App', () => {
     getCollections.mockResolvedValue({ data: [] });
     getRoomActivity.mockResolvedValue({});
     isLoggedIn.mockReturnValue(true);
+    getTokenRemainingMillis.mockReturnValue(undefined);
+    refresh.mockResolvedValue(undefined);
     connectServer.mockResolvedValue({
       data: {
         credentialsConfigured: true,
@@ -471,6 +479,18 @@ describe('App', () => {
     });
     expect(getUnreadActivity).toHaveBeenCalledTimes(2);
     expect(getRoomActivity).toHaveBeenCalledTimes(2);
+  });
+
+  it('refreshes a restored session that expires within the refresh interval', async () => {
+    getTokenRemainingMillis.mockReturnValue(5 * 60 * 1000);
+
+    render(
+      <MemoryRouter initialEntries={['/searches']}>
+        <App />
+      </MemoryRouter>,
+    );
+
+    await waitFor(() => expect(refresh).toHaveBeenCalled());
   });
 
   it('shows a dismissible network endpoint notice when ports are reported', async () => {

@@ -438,6 +438,7 @@ async fn route_dispatch_group_0_control_plane(
                 }
                 let username = extract_json_string_field(body, "username").unwrap_or_default();
                 let password = extract_json_string_field(body, "password").unwrap_or_default();
+                let remember_me = extract_json_bool_field(body, "rememberMe").unwrap_or(false);
                 // The bundled Web UI authenticates with the configured static
                 // API token in the Bearer header and intentionally does not
                 // echo that token into the request body. Treat that already
@@ -509,12 +510,23 @@ async fn route_dispatch_group_0_control_plane(
                         .to_string(),
                     ));
                 }
-                let Some((token, claims)) = utils::issue_admin_jwt(
+                let auth_epoch = utils::web_auth_epoch(
+                    &state.config.controller_web_jwt_key,
+                    &configured_username,
+                    &configured_password,
+                );
+                let Some((token, claims)) = utils::issue_admin_jwt_with_remember(
                     &state.config.controller_web_jwt_key,
                     state.config.controller_profile,
-                    state.config.controller_web_jwt_ttl_millis,
+                    if remember_me {
+                        state.config.controller_web_jwt_remember_ttl_millis
+                    } else {
+                        state.config.controller_web_jwt_ttl_millis
+                    },
                     &username,
                     issued,
+                    remember_me,
+                    auth_epoch,
                 ) else {
                     return Ok(routing::service_unavailable_response(
                         "JWT signing credential is unavailable",

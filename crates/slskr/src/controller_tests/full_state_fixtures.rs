@@ -289,7 +289,7 @@ pub(super) fn test_state_with_env_parts_full(
         pending_indirect_peer_downloads: std::sync::Mutex::new(BTreeMap::new()),
         preview_streams: Arc::new(tokio::sync::Semaphore::new(crate::MAX_PREVIEW_STREAMS)),
         listening_party_stream_limits: RwLock::new(crate::ListeningPartyStreamLimits::default()),
-        revoked_jwts: RwLock::new(crate::RevokedJwtStore::default()),
+        revoked_jwts: std::sync::Arc::new(RwLock::new(crate::RevokedJwtStore::default())),
         login_attempts: RwLock::new(crate::LoginAttemptStore::default()),
         pod_signature_stats: crate::PodSignatureStats::default(),
         pod_verification_stats: crate::PodVerificationStats::default(),

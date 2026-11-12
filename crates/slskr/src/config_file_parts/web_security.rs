@@ -119,4 +119,5 @@ impl Default for ControllerApiKeyFileConfig {
 pub struct AuthJwtFileConfig {
     pub(in crate::config) key: Option<String>,
     pub(in crate::config) ttl: Option<u64>,
+    pub(in crate::config) remember_ttl: Option<u64>,
 }

@@ -11,7 +11,7 @@ import * as relayAPI from '../lib/relay';
 import { connect, disconnect } from '../lib/server';
 import * as session from '../lib/session';
 import { getLocalStorageItem, setLocalStorageItem } from '../lib/storage';
-import { isPassthroughEnabled } from '../lib/token';
+import { getTokenRemainingMillis, isPassthroughEnabled } from '../lib/token';
 import { useRegionalFormat } from '../lib/util';
 import {
   getStoredNetworkEndpointSnapshot,
@@ -90,6 +90,10 @@ const setNavigationHeightVariable = (element) => {
 
 
 
+const SESSION_REFRESH_INTERVAL_MS = 15 * 60 * 1000;
+const SESSION_REFRESH_VISIBLE_THRESHOLD_MS = 5 * 60 * 1000;
+const SESSION_REFRESH_MIN_DELAY_MS = 1000;
+
 const initialState = {
   applicationOptions: {},
   applicationState: {},
@@ -144,6 +148,8 @@ class App extends Component {
     this.isMountedFlag = false;
     this.connectionInFlight = false;
     this.loginInFlight = false;
+    this.sessionRefreshTimer = undefined;
+    this.lastSessionRefreshAt = 0;
     this.navigationActivity = new AppNavigationActivity({
       getCurrentPath: () => this.getCurrentPath(),
       isAuthenticated: () => this.isAuthenticated(),
@@ -160,6 +166,11 @@ class App extends Component {
       'visibilitychange',
       this.navigationActivity.handleVisibilityChange,
     );
+    document.addEventListener(
+      'visibilitychange',
+      this.handleSessionVisibilityChange,
+    );
+    this.startSessionRefresh();
     window.addEventListener('resize', this.handleNavigationResize);
     this.startChromeMeasurement();
     this.syncThemeChrome();
@@ -202,6 +213,14 @@ class App extends Component {
       'visibilitychange',
       this.navigationActivity.handleVisibilityChange,
     );
+    document.removeEventListener(
+      'visibilitychange',
+      this.handleSessionVisibilityChange,
+    );
+    if (this.sessionRefreshTimer) {
+      clearTimeout(this.sessionRefreshTimer);
+      this.sessionRefreshTimer = undefined;
+    }
 
     if (this.navigationResizeObserver) {
       this.navigationResizeObserver.disconnect();
@@ -606,7 +625,7 @@ class App extends Component {
     this.forceUpdate();
   };
 
-  handleLogin = (username, password) => {
+  handleLogin = (username, password, rememberMe = false) => {
     if (this.loginInFlight || !this.isMountedFlag) return;
     this.loginInFlight = true;
     this.setState(
@@ -615,7 +634,8 @@ class App extends Component {
       }),
       async () => {
         try {
-          await session.login({ password, username });
+          await session.login({ password, rememberMe, username });
+          this.restartSessionRefresh();
           this.setState(
             (previousState) => ({
               login: { ...previousState.login, error: false, pending: false },
@@ -636,6 +656,67 @@ class App extends Component {
   logout = () => {
     session.logout();
     this.setState({ login: { ...initialState.login } });
+  };
+
+  restartSessionRefresh = () => {
+    if (this.sessionRefreshTimer) {
+      clearTimeout(this.sessionRefreshTimer);
+      this.sessionRefreshTimer = undefined;
+    }
+    this.startSessionRefresh();
+  };
+
+  startSessionRefresh = () => {
+    if (this.sessionRefreshTimer) return;
+    // A restored token may expire before the first scheduled tick. Refresh it
+    // immediately when it is already inside the normal refresh interval.
+    const remaining = getTokenRemainingMillis();
+    if (remaining !== undefined && remaining <= SESSION_REFRESH_INTERVAL_MS) {
+      this.refreshSession();
+    }
+    this.scheduleSessionRefresh();
+  };
+
+  scheduleSessionRefresh = () => {
+    if (!this.isMountedFlag) return;
+    const remaining = session.isLoggedIn()
+      ? getTokenRemainingMillis()
+      : undefined;
+    const delay =
+      remaining === undefined
+        ? SESSION_REFRESH_INTERVAL_MS
+        : Math.max(
+            SESSION_REFRESH_MIN_DELAY_MS,
+            Math.min(SESSION_REFRESH_INTERVAL_MS, remaining / 2),
+          );
+    this.sessionRefreshTimer = window.setTimeout(() => {
+      this.refreshSession();
+      this.scheduleSessionRefresh();
+    }, delay);
+  };
+
+  handleSessionVisibilityChange = () => {
+    if (document.visibilityState !== 'visible') return;
+    if (Date.now() - this.lastSessionRefreshAt < SESSION_REFRESH_VISIBLE_THRESHOLD_MS) {
+      return;
+    }
+    this.refreshSession();
+  };
+
+  refreshSession = () => {
+    if (!this.isMountedFlag || !session.isLoggedIn()) return;
+    this.lastSessionRefreshAt = Date.now();
+    session.refresh().catch((error) => {
+      if (error.response?.status === 401) {
+        console.debug('session refresh rejected; clearing stored token');
+        session.logout();
+        if (this.isMountedFlag) {
+          this.setState({ login: { ...initialState.login } });
+        }
+        return;
+      }
+      console.debug('session refresh failed', error);
+    });
   };
 
   withTokenCheck = (component) => {

@@ -184,6 +184,28 @@ impl RevokedJwtStore {
     }
 }
 
+/// Grace period before a superseded rotation token is revoked. Concurrent
+/// tabs share the same stored token; this lets a refresh that was already in
+/// flight finish before the old jti is rejected.
+pub(crate) const JWT_ROTATION_GRACE_SECONDS: u64 = 60;
+
+pub(crate) fn schedule_jwt_revocation(
+    revoked_jwts: Arc<RwLock<RevokedJwtStore>>,
+    jti: String,
+    expires_at: u64,
+    grace_seconds: u64,
+) {
+    tokio::spawn(async move {
+        if grace_seconds > 0 {
+            tokio::time::sleep(Duration::from_secs(grace_seconds)).await;
+        }
+        let now = unix_timestamp();
+        if let Err(error) = revoked_jwts.write().await.revoke(jti, expires_at, now) {
+            eprintln!("[Error] JWT rotation revocation persistence failed: {error}");
+        }
+    });
+}
+
 #[derive(Clone, Copy, Debug)]
 struct LoginAttempt {
     failures: u8,

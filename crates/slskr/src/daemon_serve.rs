@@ -69,7 +69,7 @@ pub(super) fn load_pod_stores(
 
 pub(super) async fn serve(invocation: ServeInvocation) -> Result<(), String> {
     let (config_file, file_config) = config::load_file_config()?;
-    let config = AppConfig::from_layers(
+    let mut config = AppConfig::from_layers(
         config_file,
         file_config,
         &ControllerCliEnv {
@@ -87,6 +87,13 @@ pub(super) async fn serve(invocation: ServeInvocation) -> Result<(), String> {
         return Ok(());
     }
     ensure_private_state_dir(&config.state_dir)?;
+    if !config.controller_web_jwt_key_configured {
+        // Sessions must survive daemon restarts. Persist an automatically
+        // generated signing key in the private state directory instead of
+        // rotating it on every start.
+        config.controller_web_jwt_key =
+            crate::config::load_or_create_persisted_controller_jwt_key(&config.state_dir)?;
+    }
     ensure_private_storage_dir(&config.downloads_dir, "downloads")?;
     ensure_private_storage_dir(&config.incomplete_dir, "incomplete")?;
     initialize_telemetry(&config).await?;
@@ -880,7 +887,7 @@ pub(super) async fn serve(invocation: ServeInvocation) -> Result<(), String> {
         pending_indirect_peer_downloads: std::sync::Mutex::new(BTreeMap::new()),
         preview_streams: Arc::new(Semaphore::new(MAX_PREVIEW_STREAMS)),
         listening_party_stream_limits: RwLock::new(ListeningPartyStreamLimits::default()),
-        revoked_jwts: RwLock::new(revoked_jwts),
+        revoked_jwts: Arc::new(RwLock::new(revoked_jwts)),
         login_attempts: RwLock::new(LoginAttemptStore::default()),
         pod_signature_stats: PodSignatureStats::default(),
         pod_verification_stats: PodVerificationStats::default(),

@@ -166,7 +166,7 @@ describe('api transport limits', () => {
     }
   });
 
-  it.each(['/session', '/server', '/application'])(
+  it.each(['/session', '/session/refresh', '/server', '/application'])(
     'preserves authentication state for exempt 401 route %s', async (path) => {
       const originalBaseUrl = api.defaults.baseURL;
       api.defaults.baseURL = 'http://localhost:3000/api/v0';
@@ -186,6 +186,27 @@ describe('api transport limits', () => {
       }
     },
   );
+
+  it('preserves a remembered token when session refresh is rejected', async () => {
+    const originalBaseUrl = api.defaults.baseURL;
+    api.defaults.baseURL = 'http://localhost:3000/api/v0';
+    setToken(localStorage, 'remembered-jwt');
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response('{}', { status: 401 }),
+    );
+
+    try {
+      await expect(api.post('/session/refresh')).rejects.toMatchObject({
+        response: { status: 401 },
+      });
+      expect(localStorage.getItem('slskr-token')).toBe('remembered-jwt');
+      expect(sessionStorage.getItem('slskr-token')).toBeNull();
+    } finally {
+      api.defaults.baseURL = originalBaseUrl;
+      localStorage.clear();
+      sessionStorage.clear();
+    }
+  });
 
   it('clears session credentials and logs empty-body responses on other 401s', async () => {
     const originalBaseUrl = api.defaults.baseURL;
