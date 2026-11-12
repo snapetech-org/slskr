@@ -843,3 +843,75 @@ fn controller_web_auth_defaults_match_frozen_profiles() {
     assert_eq!(configured.controller_web_auth_username, "admin");
     assert_eq!(configured.controller_web_auth_password, "configured-secret");
 }
+
+#[test]
+fn jwt_key_ttl_and_remember_ttl_accept_slskr_aliases() {
+    let key = "k".repeat(40);
+    let configured = crate::config::AppConfig::from_layers(
+        None,
+        crate::config::FileConfig::default(),
+        &MapEnv::default()
+            .with("SLSKR_JWT_KEY", &key)
+            .with("SLSKR_JWT_TTL", "7200000")
+            .with("SLSKR_JWT_REMEMBER_TTL", "1209600000"),
+    )
+    .expect("slskr JWT aliases");
+    assert!(configured.controller_web_jwt_key_configured);
+    assert_eq!(configured.controller_web_jwt_key, key);
+    assert_eq!(configured.controller_web_jwt_ttl_millis, 7_200_000);
+    assert_eq!(
+        configured.controller_web_jwt_remember_ttl_millis,
+        1_209_600_000
+    );
+
+    let defaults = crate::config::AppConfig::from_layers(
+        None,
+        crate::config::FileConfig::default(),
+        &MapEnv::default(),
+    )
+    .expect("JWT defaults");
+    assert!(!defaults.controller_web_jwt_key_configured);
+    assert_eq!(
+        defaults.controller_web_jwt_remember_ttl_millis,
+        604_800_000_u64
+    );
+}
+
+#[test]
+fn remember_ttl_rejects_values_shorter_than_one_hour() {
+    let error = crate::config::AppConfig::from_layers(
+        None,
+        crate::config::FileConfig::default(),
+        &MapEnv::default().with("SLSKR_JWT_REMEMBER_TTL", "1000"),
+    )
+    .expect_err("short remember TTL must fail startup");
+    assert!(error.contains("remember TTL"), "{error}");
+}
+
+#[test]
+fn restart_fingerprint_tracks_the_remembered_ttl() {
+    let base = crate::config::AppConfig::from_layers(
+        None,
+        crate::config::FileConfig::default(),
+        &MapEnv::default()
+            .with("SLSKR_AUTH_DISABLED", "false")
+            .with("SLSKD_USERNAME", "admin")
+            .with("SLSKD_PASSWORD", "admin-password"),
+    )
+    .expect("base JWT configuration");
+    let changed = crate::config::AppConfig::from_layers(
+        None,
+        crate::config::FileConfig::default(),
+        &MapEnv::default()
+            .with("SLSKR_AUTH_DISABLED", "false")
+            .with("SLSKD_USERNAME", "admin")
+            .with("SLSKD_PASSWORD", "admin-password")
+            .with("SLSKR_JWT_REMEMBER_TTL", "1209600000"),
+    )
+    .expect("changed JWT configuration");
+
+    assert_ne!(
+        crate::restart_reload_fingerprint(&base),
+        crate::restart_reload_fingerprint(&changed),
+    );
+}

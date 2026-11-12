@@ -117,6 +117,7 @@ pub(crate) fn restart_reload_fingerprint(config: &AppConfig) -> String {
         format!("{:?}", &config.controller_metrics_password),
         format!("{:?}", config.auth_required),
         format!("{:?}", config.controller_web_jwt_ttl_millis),
+        format!("{:?}", config.controller_web_jwt_remember_ttl_millis),
         format!(
             "{:?}",
             config

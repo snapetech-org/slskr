@@ -22,6 +22,72 @@ async fn route_dispatch_group_2_session_search(
                 body: snapshot.json(),
             })
         }
+        ("POST", "/api/session/refresh") => {
+            let Some(token) = utils::bearer_authorization_token(authorization) else {
+                return Ok(routing::unauthorized_response());
+            };
+            let now = unix_timestamp();
+            let Some(claims) = utils::verify_admin_jwt(
+                &state.config.controller_web_jwt_key,
+                state.config.controller_profile,
+                token,
+                now,
+            ) else {
+                return Ok(routing::unauthorized_response());
+            };
+            let configured_username = state
+                .controller_web_auth_username
+                .read()
+                .unwrap_or_else(std::sync::PoisonError::into_inner)
+                .clone();
+            let configured_password = state
+                .controller_web_auth_password
+                .read()
+                .unwrap_or_else(std::sync::PoisonError::into_inner)
+                .clone();
+            let auth_epoch = utils::web_auth_epoch(
+                &state.config.controller_web_jwt_key,
+                &configured_username,
+                &configured_password,
+            );
+            if !utils::admin_jwt_can_refresh(&claims, auth_epoch) {
+                return Ok(routing::unauthorized_response());
+            }
+            let ttl = if claims.remember {
+                state.config.controller_web_jwt_remember_ttl_millis
+            } else {
+                state.config.controller_web_jwt_ttl_millis
+            };
+            let Some((token, refreshed)) = utils::reissue_admin_jwt(
+                &state.config.controller_web_jwt_key,
+                state.config.controller_profile,
+                ttl,
+                &claims,
+                now,
+                auth_epoch,
+            ) else {
+                return Ok(routing::service_unavailable_response(
+                    "JWT signing credential is unavailable",
+                ));
+            };
+            crate::security_state::schedule_jwt_revocation(
+                std::sync::Arc::clone(&state.revoked_jwts),
+                claims.jti.clone(),
+                claims.exp,
+                crate::security_state::JWT_ROTATION_GRACE_SECONDS,
+            );
+            Ok(routing::ok_response(
+                serde_json::json!({
+                    "name": refreshed.name,
+                    "tokenType": "Bearer",
+                    "token": token,
+                    "issued": refreshed.iat,
+                    "notBefore": refreshed.nbf,
+                    "expires": refreshed.exp,
+                })
+                .to_string(),
+            ))
+        }
         ("POST", "/api/session/connect") => {
             if let Err(error) = send_session_command(state, SessionCommand::Connect).await {
                 return Ok(routing::service_unavailable_response(&error));

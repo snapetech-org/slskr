@@ -66,6 +66,41 @@ Protected routes accept bearer authentication and `X-API-Key`. Read-only,
 read/write, and now-playing scoped tokens can be configured separately. See
 [HTTP deployment](http-api-deployment.md).
 
+### Browser sessions
+
+The Web UI signs in with a short-lived administrator JWT. By default the
+token is kept in `sessionStorage`, so closing the browser ends the session.
+Selecting **Remember Me** stores the token in `localStorage` instead and
+issues it with the longer remembered lifetime. The UI refreshes an active
+local web-auth session periodically, and after a tab returns to the
+foreground, through `POST /api/v0/session/refresh`. Changing the web-auth
+username or password stops bound tokens from refreshing. Tokens without a
+credential binding also cannot refresh; they remain valid only until their
+current expiry. OIDC tokens are not refreshed until provider-side session
+revalidation is available.
+
+When no signing key is configured, slskR generates one on first start and
+persists it as `<state_dir>/jwt-key` with owner-only permissions. Keep the
+state directory on persistent storage (the supplied Docker example uses a
+named volume); otherwise every container recreation creates a new key and
+invalidates browser sessions. Configure a key explicitly when several
+replicas must accept each other's sessions.
+
+```toml
+[auth.jwt]
+key = "replace-with-at-least-32-characters"
+ttl = 3600000
+remember_ttl = 604800000
+```
+
+```bash
+SLSKR_JWT_KEY=replace-with-at-least-32-characters
+SLSKR_JWT_TTL=3600000
+SLSKR_JWT_REMEMBER_TTL=604800000
+```
+
+`SLSKD_JWT_KEY` and `SLSKD_JWT_TTL` remain accepted compatibility aliases.
+
 ## Profiles and optional features
 
 The native controller profile is the normal application mode. Compatibility

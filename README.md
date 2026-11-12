@@ -117,6 +117,14 @@ docker run -d --name slskr --restart unless-stopped \
 Open <http://localhost:5030/>, sign in as `slskr` with the generated password,
 then enter your Soulseek credentials.
 
+Browser sessions are signed with a key generated once and stored in the state
+volume. Keep that volume on persistent storage; recreating it invalidates
+existing sign-ins. Set `SLSKR_JWT_KEY` when several replicas must accept each
+other's sessions. The Web UI's **Remember Me** option keeps a browser signed in
+across restarts. Active local web-auth sessions refresh automatically. OIDC
+sessions keep their configured JWT lifetime until provider-session
+revalidation is supported.
+
 ### Release binary
 
 Download the archive for your platform from

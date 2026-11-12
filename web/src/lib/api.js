@@ -136,7 +136,7 @@ api.interceptors.response.use(
       // Handle 401 (authentication)
       if (
         status === 401 &&
-        !['/session', '/server', '/application'].includes(url)
+        !['/session', '/session/refresh', '/server', '/application'].includes(url)
       ) {
         console.debug('received 401 from api route, logging out');
         clearToken();

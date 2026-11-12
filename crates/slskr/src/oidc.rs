@@ -491,6 +491,21 @@ pub(super) async fn complete_response(
         Err(_) => return crate::routing::unauthorized_response(),
     };
     let issued = crate::utils::unix_timestamp();
+    let configured_username = state
+        .controller_web_auth_username
+        .read()
+        .unwrap_or_else(std::sync::PoisonError::into_inner)
+        .clone();
+    let configured_password = state
+        .controller_web_auth_password
+        .read()
+        .unwrap_or_else(std::sync::PoisonError::into_inner)
+        .clone();
+    let auth_epoch = crate::utils::web_auth_epoch(
+        &state.config.controller_web_jwt_key,
+        &configured_username,
+        &configured_password,
+    );
     let Some((token, claims)) = crate::utils::issue_oidc_admin_jwt(
         &state.config.controller_web_jwt_key,
         state.config.controller_profile,
@@ -499,6 +514,7 @@ pub(super) async fn complete_response(
         issued,
         &state.config.controller_oidc.issuer_url,
         &identity.subject,
+        auth_epoch,
     ) else {
         return crate::routing::service_unavailable_response(
             "JWT signing credential is unavailable",

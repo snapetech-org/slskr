@@ -419,6 +419,72 @@ pub(super) async fn legacy_route_dispatch_group_00(
             })
         }
         ("GET", "/api/session/enabled") => Ok(routing::ok_response(state.config.auth_required.to_string())),
+        ("POST", "/api/session/refresh") => {
+            let Some(token) = utils::bearer_authorization_token(authorization) else {
+                return Ok(routing::unauthorized_response());
+            };
+            let now = unix_timestamp();
+            let Some(claims) = utils::verify_admin_jwt(
+                &state.config.controller_web_jwt_key,
+                state.config.controller_profile,
+                token,
+                now,
+            ) else {
+                return Ok(routing::unauthorized_response());
+            };
+            let configured_username = state
+                .controller_web_auth_username
+                .read()
+                .unwrap_or_else(std::sync::PoisonError::into_inner)
+                .clone();
+            let configured_password = state
+                .controller_web_auth_password
+                .read()
+                .unwrap_or_else(std::sync::PoisonError::into_inner)
+                .clone();
+            let auth_epoch = utils::web_auth_epoch(
+                &state.config.controller_web_jwt_key,
+                &configured_username,
+                &configured_password,
+            );
+            if !utils::admin_jwt_can_refresh(&claims, auth_epoch) {
+                return Ok(routing::unauthorized_response());
+            }
+            let ttl = if claims.remember {
+                state.config.controller_web_jwt_remember_ttl_millis
+            } else {
+                state.config.controller_web_jwt_ttl_millis
+            };
+            let Some((token, refreshed)) = utils::reissue_admin_jwt(
+                &state.config.controller_web_jwt_key,
+                state.config.controller_profile,
+                ttl,
+                &claims,
+                now,
+                auth_epoch,
+            ) else {
+                return Ok(routing::service_unavailable_response(
+                    "JWT signing credential is unavailable",
+                ));
+            };
+            crate::security_state::schedule_jwt_revocation(
+                std::sync::Arc::clone(&state.revoked_jwts),
+                claims.jti.clone(),
+                claims.exp,
+                crate::security_state::JWT_ROTATION_GRACE_SECONDS,
+            );
+            Ok(routing::ok_response(
+                serde_json::json!({
+                    "name": refreshed.name,
+                    "tokenType": "Bearer",
+                    "token": token,
+                    "issued": refreshed.iat,
+                    "notBefore": refreshed.nbf,
+                    "expires": refreshed.exp,
+                })
+                .to_string(),
+            ))
+        }
         ("POST", "/api/session") => {
             if route.path.starts_with("/api/v0/") {
                 if state.config.controller_headless {
@@ -430,6 +496,7 @@ pub(super) async fn legacy_route_dispatch_group_00(
                 }
                 let username = extract_json_string_field(body, "username").unwrap_or_default();
                 let password = extract_json_string_field(body, "password").unwrap_or_default();
+                let remember_me = extract_json_bool_field(body, "rememberMe").unwrap_or(false);
                 if username.trim().is_empty() || password.trim().is_empty() {
                     return Ok(routing::bad_request_response(
                         "Username and/or Password missing or invalid",
@@ -480,12 +547,23 @@ pub(super) async fn legacy_route_dispatch_group_00(
                     return Ok(routing::unauthorized_response());
                 }
                 state.login_attempts.write().await.clear(&attempt_keys);
-                let Some((token, claims)) = utils::issue_admin_jwt(
+                let auth_epoch = utils::web_auth_epoch(
+                    &state.config.controller_web_jwt_key,
+                    &configured_username,
+                    &configured_password,
+                );
+                let Some((token, claims)) = utils::issue_admin_jwt_with_remember(
                     &state.config.controller_web_jwt_key,
                     state.config.controller_profile,
-                    state.config.controller_web_jwt_ttl_millis,
+                    if remember_me {
+                        state.config.controller_web_jwt_remember_ttl_millis
+                    } else {
+                        state.config.controller_web_jwt_ttl_millis
+                    },
                     &username,
                     issued,
+                    remember_me,
+                    auth_epoch,
                 ) else {
                     return Ok(routing::service_unavailable_response(
                         "JWT signing credential is unavailable",

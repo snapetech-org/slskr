@@ -19,6 +19,7 @@ import {
 
 const initialState = {
   password: '',
+  rememberMe: false,
   username: '',
 };
 
@@ -90,7 +91,7 @@ const LoginForm = ({ error, loading, onLoginAttempt }) => {
     }));
   };
 
-  const { password, username } = state;
+  const { password, rememberMe, username } = state;
   const oidcPresentation = getOidcProviderPresentation(oidcProvider);
 
   return (
@@ -147,6 +148,16 @@ const LoginForm = ({ error, loading, onLoginAttempt }) => {
                 type="password"
                 value={password}
                {...interfaceTextProps("Password")}/>
+              <Form.Checkbox
+                checked={rememberMe}
+                data-testid="login-remember"
+                disabled={loading}
+                label={<LocalizedText source="Remember Me" />}
+                onChange={(event, data) =>
+                  handleChange('rememberMe', Boolean(data.checked))
+                }
+                style={{ marginTop: '1rem', textAlign: 'left' }}
+              />
             </Segment>
             <Button
               className="login-button"
@@ -154,7 +165,7 @@ const LoginForm = ({ error, loading, onLoginAttempt }) => {
               disabled={!ready || loading}
               fluid
               loading={loading}
-              onClick={() => onLoginAttempt(username, password)}
+              onClick={() => onLoginAttempt(username, password, rememberMe)}
               primary
               size="large"
             >

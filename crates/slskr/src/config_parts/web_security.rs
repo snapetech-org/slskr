@@ -8,6 +8,206 @@ pub(super) fn random_controller_jwt_key() -> Result<String, String> {
     Ok(bytes.iter().map(|byte| format!("{byte:02x}")).collect())
 }
 
+fn validate_controller_jwt_key(key: &str) -> Result<(), String> {
+    if !(32..=255).contains(&key.encode_utf16().count()) {
+        return Err(
+            "web authentication JWT key must contain between 32 and 255 characters".to_owned(),
+        );
+    }
+    Ok(())
+}
+
+fn read_persisted_controller_jwt_key(path: &Path) -> Result<String, String> {
+    let key = fs::read_to_string(path)
+        .map_err(|error| format!("failed to read JWT key {}: {error}", path.display()))?;
+    let key = key.trim().to_owned();
+    validate_controller_jwt_key(&key)?;
+    Ok(key)
+}
+
+#[cfg(unix)]
+fn create_private_key_file(path: &Path) -> std::io::Result<fs::File> {
+    use std::os::unix::fs::OpenOptionsExt;
+
+    fs::OpenOptions::new()
+        .write(true)
+        .create_new(true)
+        .mode(0o600)
+        .open(path)
+}
+
+#[cfg(not(unix))]
+fn create_private_key_file(path: &Path) -> std::io::Result<fs::File> {
+    fs::OpenOptions::new()
+        .write(true)
+        .create_new(true)
+        .open(path)
+}
+
+const MIN_PERSISTED_JWT_KEY_BYTES: u64 = 32;
+
+fn read_existing_controller_jwt_key(path: &Path) -> Result<String, String> {
+    // A concurrent daemon may still be writing the key; retry briefly before
+    // giving up.
+    let mut last_error = format!("failed to read JWT key {}", path.display());
+    for _ in 0..50 {
+        match read_persisted_controller_jwt_key(path) {
+            Ok(key) => return Ok(key),
+            Err(error) => last_error = error,
+        }
+        std::thread::sleep(std::time::Duration::from_millis(10));
+    }
+    Err(last_error)
+}
+
+#[cfg(unix)]
+fn sync_parent_directory(path: &Path) {
+    if let Some(parent) = path.parent() {
+        if let Ok(directory) = fs::File::open(parent) {
+            let _ = directory.sync_all();
+        }
+    }
+}
+
+#[cfg(not(unix))]
+fn sync_parent_directory(_path: &Path) {}
+
+fn write_private_key_temp(path: &Path, key: &str) -> Result<PathBuf, String> {
+    use std::io::Write as _;
+
+    let parent = path
+        .parent()
+        .ok_or_else(|| format!("JWT key {} has no parent directory", path.display()))?;
+    let temp_path = parent.join(format!(
+        ".jwt-key-{}-{}",
+        std::process::id(),
+        uuid::Uuid::new_v4().simple()
+    ));
+    let result = (|| -> Result<(), String> {
+        let mut file = create_private_key_file(&temp_path).map_err(|error| {
+            format!(
+                "failed to create temporary JWT key {}: {error}",
+                temp_path.display()
+            )
+        })?;
+        file.write_all(key.as_bytes())
+            .and_then(|()| file.sync_all())
+            .map_err(|error| {
+                format!(
+                    "failed to write temporary JWT key {}: {error}",
+                    temp_path.display()
+                )
+            })
+    })();
+    if let Err(error) = result {
+        let _ = fs::remove_file(&temp_path);
+        return Err(error);
+    }
+    Ok(temp_path)
+}
+
+fn create_persisted_controller_jwt_key_directly(path: &Path, key: &str) -> Result<String, String> {
+    use std::io::Write as _;
+
+    match create_private_key_file(path) {
+        Ok(mut file) => {
+            if let Err(error) = file
+                .write_all(key.as_bytes())
+                .and_then(|()| file.sync_all())
+            {
+                drop(file);
+                let _ = fs::remove_file(path);
+                return Err(format!(
+                    "failed to write JWT key {}: {error}",
+                    path.display()
+                ));
+            }
+            sync_parent_directory(path);
+            Ok(key.to_owned())
+        }
+        Err(error) if error.kind() == std::io::ErrorKind::AlreadyExists => {
+            read_existing_controller_jwt_key(path)
+        }
+        Err(error) => Err(format!(
+            "failed to create JWT key {}: {error}",
+            path.display()
+        )),
+    }
+}
+
+fn create_persisted_controller_jwt_key(path: &Path) -> Result<String, String> {
+    let key = random_controller_jwt_key()?;
+    let temp_path = write_private_key_temp(path, &key)?;
+    let link_result = fs::hard_link(&temp_path, path);
+    let _ = fs::remove_file(&temp_path);
+    match link_result {
+        Ok(()) => {
+            sync_parent_directory(path);
+            Ok(key)
+        }
+        Err(error) if error.kind() == std::io::ErrorKind::AlreadyExists => {
+            // Another daemon won the initialization race; use the key it
+            // installed so both processes agree.
+            read_existing_controller_jwt_key(path)
+        }
+        Err(error) => {
+            // Some filesystems do not support hard links. Fall back to the
+            // create-new write so startup still works there.
+            create_persisted_controller_jwt_key_directly(path, &key).map_err(|fallback_error| {
+                format!(
+                    "failed to install JWT key {}: {error}; fallback failed: {fallback_error}",
+                    path.display()
+                )
+            })
+        }
+    }
+}
+
+/// Loads the JWT signing key persisted in the state directory, generating one
+/// on first start. Persisting the key keeps issued sessions valid across daemon
+/// restarts instead of silently invalidating every browser session.
+pub(crate) fn load_or_create_persisted_controller_jwt_key(
+    state_dir: &Path,
+) -> Result<String, String> {
+    let path = state_dir.join("jwt-key");
+    match fs::symlink_metadata(&path) {
+        Ok(metadata) => {
+            if metadata.file_type().is_symlink() || !metadata.is_file() {
+                return Err(format!("JWT key {} must be a regular file", path.display()));
+            }
+            if metadata.len() < MIN_PERSISTED_JWT_KEY_BYTES {
+                // An interrupted first-run write can leave an empty or
+                // partial file here. It can never be a usable key, so replace
+                // it instead of failing every later startup.
+                eprintln!(
+                    "replacing unusable JWT key {} ({} bytes)",
+                    path.display(),
+                    metadata.len()
+                );
+                match fs::remove_file(&path) {
+                    Ok(()) => {}
+                    Err(error) if error.kind() == std::io::ErrorKind::NotFound => {}
+                    Err(error) => {
+                        return Err(format!(
+                            "failed to remove unusable JWT key {}: {error}",
+                            path.display()
+                        ));
+                    }
+                }
+                return create_persisted_controller_jwt_key(&path);
+            }
+            read_persisted_controller_jwt_key(&path)
+        }
+        Err(error) if error.kind() == std::io::ErrorKind::NotFound => {
+            create_persisted_controller_jwt_key(&path)
+        }
+        Err(error) => Err(format!(
+            "failed to inspect JWT key {}: {error}",
+            path.display()
+        )),
+    }
+}
+
 pub(super) fn validate_api_token(token: &str) -> Result<(), String> {
     if token.trim().is_empty() {
         return Err("HTTP API token must not be empty or whitespace-only".to_owned());
@@ -122,6 +322,7 @@ pub(super) struct ControllerWebAuthSettings {
     pub(super) controller_web_jwt_key: String,
     pub(super) controller_web_jwt_key_configured: bool,
     pub(super) controller_web_jwt_ttl_millis: u64,
+    pub(super) controller_web_jwt_remember_ttl_millis: u64,
 }
 
 #[derive(Clone)]
@@ -162,22 +363,12 @@ pub(super) fn resolve_controller_oidc<E: ConfigEnv>(
     let client_id = env.var("SLSKR_OIDC_CLIENT_ID").unwrap_or_default();
     let client_secret = env.var("SLSKR_OIDC_CLIENT_SECRET").unwrap_or_default();
     let redirect_uri = env.var("SLSKR_OIDC_REDIRECT_URI").unwrap_or_default();
-    let allowed_emails = env
-        .var("SLSKR_OIDC_ALLOWED_EMAILS")
-        .unwrap_or_default();
+    let allowed_emails = env.var("SLSKR_OIDC_ALLOWED_EMAILS").unwrap_or_default();
     let allowed_email_domains = env
         .var("SLSKR_OIDC_ALLOWED_EMAIL_DOMAINS")
         .unwrap_or_default();
-    let allow_any_verified_user = env_bool_layer(
-        env,
-        "SLSKR_OIDC_ALLOW_ANY_VERIFIED_USER",
-        false,
-    )?;
-    let allow_private_issuer = env_bool_layer(
-        env,
-        "SLSKR_OIDC_ALLOW_PRIVATE_ISSUER",
-        false,
-    )?;
+    let allow_any_verified_user = env_bool_layer(env, "SLSKR_OIDC_ALLOW_ANY_VERIFIED_USER", false)?;
+    let allow_private_issuer = env_bool_layer(env, "SLSKR_OIDC_ALLOW_PRIVATE_ISSUER", false)?;
     let core = [&issuer_url, &client_id, &client_secret, &redirect_uri];
     let extras = !allowed_emails.trim().is_empty()
         || !allowed_email_domains.trim().is_empty()
@@ -212,8 +403,7 @@ pub(super) fn resolve_controller_oidc<E: ConfigEnv>(
         || issuer.password().is_some()
         || issuer.query().is_some()
         || issuer.fragment().is_some()
-        || !(issuer.scheme() == "https"
-            || (allow_private_issuer && issuer.scheme() == "http"))
+        || !(issuer.scheme() == "https" || (allow_private_issuer && issuer.scheme() == "http"))
     {
         return Err("SLSKR_OIDC_ISSUER_URL must use HTTPS (or HTTP with SLSKR_OIDC_ALLOW_PRIVATE_ISSUER=true) and contain no credentials, query, or fragment".to_owned());
     }
@@ -227,7 +417,10 @@ pub(super) fn resolve_controller_oidc<E: ConfigEnv>(
         || callback.fragment().is_some()
         || !callback.path().ends_with("/api/v0/session/oidc/callback")
     {
-        return Err("SLSKR_OIDC_REDIRECT_URI must be HTTPS and end at /api/v0/session/oidc/callback".to_owned());
+        return Err(
+            "SLSKR_OIDC_REDIRECT_URI must be HTTPS and end at /api/v0/session/oidc/callback"
+                .to_owned(),
+        );
     }
     Ok(ControllerOidcSettings {
         provider,
@@ -256,6 +449,7 @@ pub(super) fn resolve_controller_web_auth<E: ConfigEnv>(
     web_auth_password: Option<String>,
     web_jwt_key: Option<String>,
     web_jwt_ttl: Option<u64>,
+    web_jwt_remember_ttl: Option<u64>,
 ) -> Result<ControllerWebAuthSettings, String> {
     let controller_metrics_enabled =
         env_bool_layer(env, "SLSKD_METRICS", metrics_enabled.unwrap_or(false))?;
@@ -307,19 +501,16 @@ pub(super) fn resolve_controller_web_auth<E: ConfigEnv>(
             ));
         }
     }
-    let controller_web_jwt_key = env.var("SLSKD_JWT_KEY").or(web_jwt_key);
+    let controller_web_jwt_key =
+        optional_env_any(env, &["SLSKR_JWT_KEY", "SLSKD_JWT_KEY"]).or(web_jwt_key);
     let controller_web_jwt_key_configured = controller_web_jwt_key.is_some();
     let controller_web_jwt_key = controller_web_jwt_key
         .map(Ok)
         .unwrap_or_else(random_controller_jwt_key)?;
-    if !(32..=255).contains(&controller_web_jwt_key.encode_utf16().count()) {
-        return Err(
-            "web authentication JWT key must contain between 32 and 255 characters".to_owned(),
-        );
-    }
-    let controller_web_jwt_ttl_millis = env_parse_layer(
+    validate_controller_jwt_key(&controller_web_jwt_key)?;
+    let controller_web_jwt_ttl_millis = env_parse_any_layer(
         env,
-        "SLSKD_JWT_TTL",
+        &["SLSKR_JWT_TTL", "SLSKD_JWT_TTL"],
         web_jwt_ttl,
         if controller_profile == ControllerProfile::Legacy {
             604_800_000_u64
@@ -329,6 +520,17 @@ pub(super) fn resolve_controller_web_auth<E: ConfigEnv>(
     )?;
     if controller_web_jwt_ttl_millis < 3_600 {
         return Err("web authentication JWT TTL must be at least 3600 milliseconds".to_owned());
+    }
+    let controller_web_jwt_remember_ttl_millis = env_parse_any_layer(
+        env,
+        &["SLSKR_JWT_REMEMBER_TTL"],
+        web_jwt_remember_ttl,
+        604_800_000_u64,
+    )?;
+    if controller_web_jwt_remember_ttl_millis < 3_600 {
+        return Err(
+            "web authentication JWT remember TTL must be at least 3600 milliseconds".to_owned(),
+        );
     }
     let metrics_auth_requires_credentials =
         controller_metrics_enabled && !controller_metrics_auth_disabled;
@@ -361,6 +563,7 @@ pub(super) fn resolve_controller_web_auth<E: ConfigEnv>(
         controller_web_jwt_key,
         controller_web_jwt_key_configured,
         controller_web_jwt_ttl_millis,
+        controller_web_jwt_remember_ttl_millis,
     })
 }
 

@@ -224,6 +224,17 @@ rate_limit_authenticated = 5000
 # Trust forwarded client IP headers only from these proxy CIDRs.
 trusted_proxy_cidrs = ["127.0.0.1/32"]
 
+[auth.jwt]
+# Signing key for browser session tokens. When omitted, slskR generates a
+# random key on first start and stores it in the private state directory so
+# signed-in browsers stay signed in across daemon restarts. Set this (or
+# SLSKR_JWT_KEY) to share sessions across replicas or to rotate deliberately.
+# key = "replace-with-at-least-32-characters"
+# Normal session lifetime in milliseconds. Native default: one hour.
+# ttl = 3600000
+# Lifetime for sessions created with the Web UI "Remember Me" option.
+# remember_ttl = 604800000
+
 [persistence]
 enabled = false
 

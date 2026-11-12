@@ -31,15 +31,26 @@ credentials use `SLSK_USERNAME` and `SLSK_PASSWORD`.
 
 | Variable | Role |
 | --- | --- |
-| `SLSKR_API_TOKEN` | Administrator; also signs short-lived administrator JWTs. |
+| `SLSKR_API_TOKEN` | Administrator API credential. It does not sign browser JWTs. |
 | `SLSKR_API_READ_WRITE_TOKEN` | Non-administrator read/write. |
 | `SLSKR_API_READ_ONLY_TOKEN` | Read-only. |
 | `SLSKR_API_NOWPLAYING_TOKEN` | Scoped now-playing webhook only. |
 
 Protected routes accept `Authorization: Bearer <token>` or `X-API-Key: <token>`.
-Keep tokens in memory or session storage; do not embed long-lived tokens in
-browser storage or shared URLs. Five failed source-IP or source-scoped
-credential attempts trigger a bounded five-minute lockout.
+Browser sessions use JWTs signed with `SLSKR_JWT_KEY` (or `[auth.jwt] key`).
+When no key is configured, slskR generates one and persists it in the private
+state directory, so sessions survive daemon restarts. Normal Web UI sessions
+stay in `sessionStorage`; the opt-in **Remember Me** option stores the token in
+`localStorage` and uses the longer `SLSKR_JWT_REMEMBER_TTL` lifetime. The UI
+refreshes active local web-auth sessions with
+`POST /api/v0/session/refresh`. Changing the web-auth username or password
+prevents bound tokens from refreshing;
+pre-binding tokens also cannot refresh, and remain valid only until their
+current expiry. OIDC tokens are not refreshed until provider-side session
+revalidation is available. Avoid
+embedding API tokens in browser storage or sharing them in URLs. Five failed
+source-IP or source-scoped credential attempts trigger a bounded five-minute
+lockout.
 
 ## Browser protections
 

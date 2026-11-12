@@ -4,6 +4,8 @@ import {
   clearToken,
   getToken,
   isPassthroughEnabled,
+  isRememberedSession,
+  isTokenRefreshable,
   setToken,
 } from './token';
 
@@ -25,10 +27,14 @@ export const isLoggedIn = () => {
   );
 };
 
-export const login = async ({ username, password }) => {
-  const { token } = (await api.post('/session', { password, username })).data;
+export const isRefreshable = () => isLoggedIn() && isTokenRefreshable();
+
+export const login = async ({ username, password, rememberMe = false }) => {
+  const { token } = (
+    await api.post('/session', { password, rememberMe: Boolean(rememberMe), username })
+  ).data;
   clearToken();
-  setToken(sessionStorage, token);
+  setToken(rememberMe ? localStorage : sessionStorage, token);
   return token;
 };
 
@@ -53,6 +59,30 @@ export const check = async () => {
     }
     throw error;
   }
+};
+
+// Sliding refresh: exchange a still-valid token for a fresh one with the same
+// remembered-session category. Keeps active sessions from expiring while the
+// UI stays open.
+export const refresh = async () => {
+  if (!isLoggedIn()) {
+    return undefined;
+  }
+
+  const remembered = isRememberedSession();
+  const token = getToken();
+  const { data } = await api.post('/session/refresh');
+  if (!data?.token) {
+    throw new Error('session refresh returned no token');
+  }
+  // Logging out (or another refresh) while this request was in flight must
+  // win; never resurrect a token that the user just discarded.
+  if (getToken() !== token) {
+    return getToken();
+  }
+  clearToken();
+  setToken(remembered ? localStorage : sessionStorage, data.token);
+  return data.token;
 };
 
 export const authHeaders = ({ csrf = false } = {}) => {

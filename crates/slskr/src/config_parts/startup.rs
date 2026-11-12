@@ -74,6 +74,7 @@ impl AppConfig {
             controller_web_jwt_key,
             controller_web_jwt_key_configured,
             controller_web_jwt_ttl_millis,
+            controller_web_jwt_remember_ttl_millis,
         } = resolve_controller_web_auth(
             env,
             controller_profile,
@@ -87,6 +88,7 @@ impl AppConfig {
             file_config.auth.password,
             file_config.auth.jwt.key,
             file_config.auth.jwt.ttl,
+            file_config.auth.jwt.remember_ttl,
         )?;
         let instance_name = optional_env_any(env, &["SLSKR_INSTANCE_NAME", "SLSKD_INSTANCE_NAME"])
             .unwrap_or_else(|| "default".to_owned());
@@ -687,6 +689,7 @@ impl AppConfig {
             controller_web_jwt_key,
             controller_web_jwt_key_configured,
             controller_web_jwt_ttl_millis,
+            controller_web_jwt_remember_ttl_millis,
             auth_required,
             api_token,
             api_read_write_token,
