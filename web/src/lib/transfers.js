@@ -193,6 +193,22 @@ export const getPlaceInQueue = ({ username, id }) => {
 
 export const isStateSucceeded = (state) => state === 'Completed, Succeeded';
 
+// The daemon emits terminal rows as bare `Completed`/`Failed`/`Cancelled`,
+// while this UI keys success, retry, and bulk removal off the combined slskd
+// states. Normalize once so terminal rows render and count correctly.
+export const normalizeTransferState = (state = '') => {
+  switch (state) {
+    case 'Completed':
+      return 'Completed, Succeeded';
+    case 'Cancelled':
+      return 'Completed, Cancelled';
+    case 'Failed':
+      return 'Completed, Errored';
+    default:
+      return state;
+  }
+};
+
 export const isStateTerminal = (state = '') => state.includes('Completed');
 
 export const isStateRetryable = (state) =>

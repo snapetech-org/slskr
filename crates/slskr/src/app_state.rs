@@ -1,3 +1,4 @@
+use super::session_state::PendingIndirectPeerDownload;
 use super::session_state::PendingIndirectPeerMessage;
 use super::*;
 
@@ -129,6 +130,8 @@ pub(super) struct AppState {
     pub(super) peer_endpoints: RwLock<BTreeMap<String, (PeerAddress, u64)>>,
     pub(super) pending_indirect_peer_messages:
         std::sync::Mutex<BTreeMap<u32, PendingIndirectPeerMessage>>,
+    pub(super) pending_indirect_peer_downloads:
+        std::sync::Mutex<BTreeMap<u32, PendingIndirectPeerDownload>>,
     pub(super) preview_streams: Arc<Semaphore>,
     pub(super) listening_party_stream_limits: RwLock<ListeningPartyStreamLimits>,
     pub(super) revoked_jwts: RwLock<RevokedJwtStore>,

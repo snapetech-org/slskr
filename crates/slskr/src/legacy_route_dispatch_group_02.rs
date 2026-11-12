@@ -624,6 +624,7 @@ pub(super) async fn legacy_route_dispatch_group_02(
                     rollback_transfer_mutation_if_unchanged(state, previous, mutated).await;
                     return Ok(routing::service_unavailable_response(&error));
                 }
+                schedule_queued_downloads(state).await;
                 return Ok(routing::ok_response(
                     serde_json::json!({
                         "queued": count,
@@ -1460,6 +1461,7 @@ pub(super) async fn legacy_route_dispatch_group_02(
                      "transfers": created,
                  }).to_string()
              };
+             schedule_queued_downloads(state).await;
              Ok(routing::ok_response(response_body))
          }
 

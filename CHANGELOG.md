@@ -18,6 +18,8 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+- Resume peer-queued downloads after a confirmed queue response and reconnect, while validating the callback peer and transfer token and enforcing local download-slot limits.
+
 ## [0.2.95] — 2026-11-12
 
 - Resume peer-queued downloads when the uploader reconnects with the matching transfer token, while enforcing local download-slot limits.

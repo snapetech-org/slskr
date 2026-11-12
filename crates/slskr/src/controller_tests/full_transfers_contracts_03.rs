@@ -42,6 +42,136 @@ pub(super) async fn transfer_start_with_peer_requests_peer_address() {
 
 #[cfg_attr(test, tokio::test)]
 #[cfg(feature = "full-controller-tests")]
+pub(super) async fn inbound_download_reads_the_offset_without_a_transfer_token_frame() {
+    // slskd (Soulseek.NET) announces the transfer token in `PeerInit` and then
+    // expects our offset immediately; it never writes `FileTransferInit`. If we
+    // wait for one the peer times out and the download dies at 0%.
+    let (state, _receiver) = test_state();
+    let path = crate::safe_download_path(&state.config.downloads_dir, "Remote/Tokenless.flac")
+        .expect("download path");
+    state.destinations.write().await.records.clear();
+    let completed = crate::configured_download_destination_path(&state, "Remote/Tokenless.flac")
+        .await
+        .expect("completed path");
+    std::fs::create_dir_all(completed.parent().expect("completed parent"))
+        .expect("completed parent");
+    let token = {
+        let mut transfers = state.transfers.write().await;
+        let entry = transfers.create(
+            0,
+            Some("friend".to_owned()),
+            "Remote/Tokenless.flac".to_owned(),
+            Some(path.display().to_string()),
+            Some(6),
+        );
+        let token = entry.token;
+        transfers.update_status(entry.id, "accepted", None, None);
+        token
+    };
+
+    let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+    let address = listener.local_addr().unwrap();
+    let (client, server) = tokio::join!(tokio::net::TcpStream::connect(address), listener.accept());
+    let (server, _) = server.unwrap();
+    let task_state = Arc::clone(&state);
+    let handler = tokio::spawn(async move {
+        crate::handle_inbound_file_transfer(
+            &task_state,
+            slskr_client::file_transfer::FileTransferConnection::new(server),
+            Some(token),
+            Some("friend"),
+            None,
+        )
+        .await
+    });
+
+    let mut peer = slskr_client::file_transfer::FileTransferConnection::new(client.unwrap());
+    let peer_task = tokio::spawn(async move {
+        // No `send_token`: the peer's dialect carries the token in `PeerInit`.
+        let offset = peer.receive_offset().await;
+        peer.write_chunk(b"fLaC\0\0").await.unwrap();
+        offset
+    });
+    let handler_result = handler.await.unwrap();
+    if let Err(error) = &handler_result {
+        panic!("inbound download failed: {error}");
+    }
+    assert_eq!(peer_task.await.unwrap().expect("peer offset"), 0);
+
+    assert_eq!(
+        std::fs::read(&completed).expect("downloaded file"),
+        b"fLaC\0\0"
+    );
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
+pub(super) async fn inbound_download_consumes_the_transfer_token_frame_after_peer_init() {
+    // Nicotine+ and SoulseekQt announce the token both in `PeerInit` and with a
+    // `FileTransferInit` frame on the transfer socket. The frame is protocol
+    // data, not audio: writing it into the file shifts the payload by four
+    // bytes and truncates the tail.
+    let (state, _receiver) = test_state();
+    let path = crate::safe_download_path(&state.config.downloads_dir, "Remote/TokenFrame.flac")
+        .expect("download path");
+    state.destinations.write().await.records.clear();
+    let completed = crate::configured_download_destination_path(&state, "Remote/TokenFrame.flac")
+        .await
+        .expect("completed path");
+    std::fs::create_dir_all(completed.parent().expect("completed parent"))
+        .expect("completed parent");
+    let token = {
+        let mut transfers = state.transfers.write().await;
+        let entry = transfers.create(
+            0,
+            Some("friend".to_owned()),
+            "Remote/TokenFrame.flac".to_owned(),
+            Some(path.display().to_string()),
+            Some(6),
+        );
+        let token = entry.token;
+        transfers.update_status(entry.id, "accepted", None, None);
+        token
+    };
+
+    let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+    let address = listener.local_addr().unwrap();
+    let (client, server) = tokio::join!(tokio::net::TcpStream::connect(address), listener.accept());
+    let (server, _) = server.unwrap();
+    let task_state = Arc::clone(&state);
+    let handler = tokio::spawn(async move {
+        crate::handle_inbound_file_transfer(
+            &task_state,
+            slskr_client::file_transfer::FileTransferConnection::new(server),
+            Some(token),
+            Some("friend"),
+            None,
+        )
+        .await
+    });
+
+    let mut peer = slskr_client::file_transfer::FileTransferConnection::new(client.unwrap());
+    let peer_task = tokio::spawn(async move {
+        // Both `PeerInit` (the `Some(token)` above) and the frame carry it.
+        peer.send_token(token).await.unwrap();
+        let offset = peer.receive_offset().await;
+        peer.write_chunk(b"fLaC\0\0").await.unwrap();
+        offset
+    });
+    let handler_result = handler.await.unwrap();
+    if let Err(error) = &handler_result {
+        panic!("inbound download failed: {error}");
+    }
+    assert_eq!(peer_task.await.unwrap().expect("peer offset"), 0);
+
+    assert_eq!(
+        std::fs::read(&completed).expect("downloaded file"),
+        b"fLaC\0\0"
+    );
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
 pub(super) async fn queued_peer_download_adopts_the_remote_upload_token() {
     let (state, _receiver) = test_state();
     let path = crate::safe_download_path(&state.config.downloads_dir, "Remote/Queued.flac")
@@ -71,23 +201,14 @@ pub(super) async fn queued_peer_download_adopts_the_remote_upload_token() {
         init.receive().await.expect("init");
         let mut peer = slskr_client::stream::PeerMessageConnection::new(init.into_inner());
         assert_eq!(
-            peer.receive().await.expect("download request"),
-            crate::PeerMessage::TransferRequest(crate::TransferRequest {
-                filename_encoding: Default::default(),
-                direction: 0,
-                token: request_token,
+            peer.receive().await.expect("queue upload"),
+            crate::PeerMessage::QueueUpload {
                 filename: "Remote/Queued.flac".to_owned(),
-                size: None,
-            })
+            }
         );
-        peer.send(&crate::PeerMessage::TransferResponse(
-            crate::TransferResponse::Rejected {
-                token: request_token,
-                reason: "Queued".to_owned(),
-            },
-        ))
-        .await
-        .expect("queued response");
+        // The queue position poll is a courtesy message; it never changes the
+        // negotiation, so the peer may answer with either a place or the offer.
+        let _ = peer.receive().await.expect("place in queue request");
         peer.send(&crate::PeerMessage::TransferRequest(
             crate::TransferRequest {
                 filename_encoding: Default::default(),
@@ -402,13 +523,25 @@ pub(super) async fn queued_remote_download_resume_obeys_download_slots() {
         .await
         .expect("listener");
     let address = listener.local_addr().expect("local address");
+    crate::remember_peer_endpoint(
+        &state,
+        slskr_client::protocol::server::PeerAddress {
+            username: "friend".to_owned(),
+            ip: "127.0.0.1".parse().unwrap(),
+            port: u32::from(address.port()),
+            obfuscation_type: 0,
+            obfuscated_port: 0,
+        },
+    )
+    .await;
     let server_state = state.clone();
     let server = tokio::spawn(async move {
-        let (stream, _) = listener.accept().await.expect("accept peer-message");
-        crate::handle_plain_peer_messages(
+        let (stream, remote_address) = listener.accept().await.expect("accept peer-message");
+        crate::handle_plain_peer_messages_with_address(
             &server_state,
             slskr_client::stream::PeerMessageConnection::new(stream),
             Some("friend".to_owned()),
+            Some(remote_address.ip()),
         )
         .await
     });
@@ -607,6 +740,7 @@ pub(super) async fn inbound_transfer_request_serves_shared_file_over_pierce_fire
             slskr_client::file_transfer::FileTransferConnection::new(stream),
             Some(7),
             None,
+            None,
         )
         .await
         .expect("serve inbound file");
@@ -683,25 +817,28 @@ pub(super) async fn queued_download_resumes_when_peer_opens_inbound_file_transfe
         assert_eq!(username, "tester");
         assert_eq!(kind, slskr_client::connection::ConnectionKind::PeerMessages);
         let mut peer = slskr_client::stream::PeerMessageConnection::new(stream);
-        let slskr_client::protocol::peer::PeerMessage::TransferRequest(request) = peer
-            .receive()
-            .await
-            .expect("receive initial download request")
-        else {
-            panic!("initial message was not a transfer request");
-        };
-        assert_eq!(request.direction, 0);
-        assert_eq!(request.filename, "Queued-After-Free-Slot.bin");
+        assert_eq!(
+            peer.receive().await.expect("receive queue upload"),
+            slskr_client::protocol::peer::PeerMessage::QueueUpload {
+                filename: "Queued-After-Free-Slot.bin".to_owned(),
+            }
+        );
+        assert_eq!(
+            peer.receive()
+                .await
+                .expect("receive queue position request"),
+            slskr_client::protocol::peer::PeerMessage::PlaceInQueueRequest {
+                filename: "Queued-After-Free-Slot.bin".to_owned(),
+            }
+        );
         peer.send(
-            &slskr_client::protocol::peer::PeerMessage::TransferResponse(
-                slskr_client::protocol::peer::TransferResponse::Rejected {
-                    token: request.token,
-                    reason: "Queued".to_owned(),
-                },
-            ),
+            &slskr_client::protocol::peer::PeerMessage::PlaceInQueueResponse {
+                filename: "Queued-After-Free-Slot.bin".to_owned(),
+                place: 1,
+            },
         )
         .await
-        .expect("return queued response");
+        .expect("return remote queue position");
     });
     crate::project_peer_transfer_response(
         &state,
@@ -772,28 +909,25 @@ pub(super) async fn queued_download_resumes_when_peer_opens_inbound_file_transfe
     let inbound_state = Arc::clone(&state);
     let transfer_token = queued.token;
     let server = tokio::spawn(async move {
-        let (incoming, _) = listener.accept().await.expect("accept resumed transfer");
+        let (incoming, remote_addr) = listener.accept().await.expect("accept resumed transfer");
         let slskr_client::listener::IncomingConnection::PeerInit {
             username,
             kind,
             token,
-            stream,
             obfuscated,
-        } = incoming
+            ..
+        } = &incoming
         else {
             panic!("resumed transfer did not use PeerInit");
         };
         assert_eq!(username, "friend");
-        assert_eq!(kind, slskr_client::connection::ConnectionKind::FileTransfer);
-        assert_eq!(token, transfer_token);
-        assert!(!obfuscated);
-        crate::handle_inbound_file_transfer(
-            &inbound_state,
-            slskr_client::file_transfer::FileTransferConnection::new(stream),
-            Some(token),
-            Some(&username),
-        )
-        .await
+        assert_eq!(
+            *kind,
+            slskr_client::connection::ConnectionKind::FileTransfer
+        );
+        assert_eq!(*token, 0);
+        assert!(!*obfuscated);
+        crate::listener_runtime::handle_owned_incoming(inbound_state, incoming, remote_addr).await;
     });
 
     let stream = tokio::net::TcpStream::connect(address)
@@ -803,11 +937,14 @@ pub(super) async fn queued_download_resumes_when_peer_opens_inbound_file_transfe
         stream,
         "friend",
         slskr_client::connection::ConnectionKind::FileTransfer,
-        transfer_token,
+        0,
     )
     .await
     .expect("send resumed transfer PeerInit");
     let mut peer = slskr_client::file_transfer::FileTransferConnection::new(stream);
+    peer.send_token(transfer_token)
+        .await
+        .expect("send transfer-init token");
     let offset = tokio::time::timeout(Duration::from_secs(3), peer.receive_offset()).await;
     assert!(
         offset.as_ref().is_ok_and(Result::is_ok),
@@ -823,10 +960,7 @@ pub(super) async fn queued_download_resumes_when_peer_opens_inbound_file_transfe
         .await
         .expect("send resumed file bytes");
     drop(peer);
-    server
-        .await
-        .expect("inbound transfer task")
-        .expect("queued download completes");
+    server.await.expect("inbound transfer task");
 
     let transfers = state.transfers.read().await;
     let completed = transfers

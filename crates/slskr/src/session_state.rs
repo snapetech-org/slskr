@@ -1,4 +1,5 @@
 use super::{PeerMessage, ServerMessage};
+use tokio::net::TcpStream;
 use tokio::sync::oneshot;
 
 use super::{
@@ -24,6 +25,16 @@ pub(super) struct SessionSnapshot {
 pub(super) struct PendingIndirectPeerMessage {
     pub(super) message: PeerMessage,
     pub(super) completion: oneshot::Sender<Result<(), String>>,
+}
+
+/// A download negotiation waiting for the peer to open the server-brokered
+/// connection. The inbound stream is handed back so the negotiation keeps a
+/// single peer connection open for `QueueUpload` and the peer's offer.
+#[derive(Debug)]
+pub(super) struct PendingIndirectPeerDownload {
+    pub(super) username: String,
+    pub(super) transfer_id: u64,
+    pub(super) connection: oneshot::Sender<TcpStream>,
 }
 
 impl SessionSnapshot {

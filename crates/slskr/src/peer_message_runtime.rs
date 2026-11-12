@@ -68,7 +68,9 @@ async fn handle_plain_peer_message_once(
             }
         } else if request.direction == 1 {
             if let Some(username) = peer_username {
-                if handle_queued_upload_request(state, peer, username, request).await? {
+                if handle_queued_upload_request(state, peer, username, request, peer_address, false)
+                    .await?
+                {
                     return Ok(false);
                 }
             }
@@ -185,9 +187,20 @@ pub(super) async fn handle_queued_upload_request<
     peer: &mut C,
     username: &str,
     request: &TransferRequest,
+    peer_address: Option<IpAddr>,
+    outbound_peer_connection: bool,
 ) -> Result<bool, String> {
     if !state.config.transfer_allow_inbound {
         return Ok(false);
+    }
+    if !outbound_peer_connection {
+        let Some(peer_address) = peer_address else {
+            return Ok(false);
+        };
+        if !super::peer_transport::peer_source_matches_endpoint(state, username, peer_address).await
+        {
+            return Ok(false);
+        }
     }
     let download_slots =
         usize::try_from(state.transfer_download_settings.read().await.slots).unwrap_or(usize::MAX);
@@ -924,7 +937,15 @@ pub(super) async fn handle_obfuscated_peer_messages_with_address(
             (&message, peer_username.as_deref())
         {
             if request.direction == 1
-                && handle_queued_upload_request(state, &mut peer, username, request).await?
+                && handle_queued_upload_request(
+                    state,
+                    &mut peer,
+                    username,
+                    request,
+                    peer_address,
+                    false,
+                )
+                .await?
             {
                 break;
             }

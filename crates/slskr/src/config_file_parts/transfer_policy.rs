@@ -480,11 +480,10 @@ impl TransferDownloadSettings {
                 "download retry strategy '{incomplete}' must be resume or overwrite"
             ));
         }
-        let default_attempts = if target == ControllerProfile::Legacy {
-            3
-        } else {
-            1
-        };
+        // slskd retries a failed download three times before giving up; both
+        // profiles use that default so a transient peer/connection failure
+        // requeues instead of failing the file on the first attempt.
+        let default_attempts = 3;
         let attempts = file.retry.attempts.unwrap_or(default_attempts);
         let delay_ms = file.retry.delay.unwrap_or(5_000);
         let max_delay_ms = file.retry.max_delay.unwrap_or(60_000);

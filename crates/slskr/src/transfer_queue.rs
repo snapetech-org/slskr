@@ -775,9 +775,17 @@ impl TransferQueue {
             .iter()
             .filter(|entry| {
                 entry.local_path.is_some()
-                    && (entry.status == "accepted"
-                        || entry.status == "in_progress"
-                        || (token.is_some() && entry.direction == 0 && entry.status == "queued"))
+                    && if entry.direction == 0 {
+                        // An inbound download socket may only attach to a
+                        // transfer that has not started yet. A transfer already
+                        // in progress owns its connection (possibly one we
+                        // dialed ourselves), so a second socket must not start
+                        // writing the same file. A queued callback is admitted
+                        // only when the socket supplied its negotiated token.
+                        entry.status == "accepted" || (token.is_some() && entry.status == "queued")
+                    } else {
+                        entry.status == "accepted" || entry.status == "in_progress"
+                    }
                     && token.is_none_or(|token| entry.token == token)
                     && peer_username
                         .is_none_or(|username| entry.peer_username.as_deref() == Some(username))
@@ -870,6 +878,8 @@ impl TransferQueue {
         }
         entry.status = "accepted".to_owned();
         entry.reason = None;
+        // A peer offer clears any stale retry deadline after a remote queue.
+        entry.next_attempt_at = None;
         entry.updated_at = unix_timestamp();
         entry.updated_at_ms = next_transfer_updated_at_ms(entry.updated_at_ms);
         let entry = entry.clone();

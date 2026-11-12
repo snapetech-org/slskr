@@ -14,10 +14,110 @@ async fn inbound_download_rejects_unknown_tokens_without_failing_other_transfers
     }
 }
 
-async fn exercise_inbound_download_routing(obfuscated: bool, valid_token: bool) {
-    use slskr_client::file_transfer::FileTransferConnection;
+#[tokio::test]
+async fn raw_inbound_download_without_a_token_cannot_claim_an_accepted_transfer() {
+    use slskr_client::{
+        connection::ConnectionKind, file_transfer::FileTransferConnection,
+        io::write_connection_kind, listener::demux_incoming,
+    };
 
     let (state, _receiver) = test_state_with_env(MapEnv::default());
+    for destination in &mut state.destinations.write().await.records {
+        if destination.is_default {
+            destination.path = state.config.downloads_dir.display().to_string();
+        }
+    }
+    fs::create_dir_all(&state.config.downloads_dir).unwrap();
+    let path = crate::safe_download_path(&state.config.downloads_dir, "RawTokenless.bin").unwrap();
+    let transfer = {
+        let mut transfers = state.transfers.write().await;
+        let entry = transfers.create(
+            0,
+            Some("expected-peer".to_owned()),
+            "RawTokenless.bin".to_owned(),
+            Some(path.display().to_string()),
+            Some(4),
+        );
+        transfers
+            .update_status(entry.id, "accepted", None, None)
+            .unwrap()
+    };
+
+    let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+    let client = tokio::net::TcpStream::connect(listener.local_addr().unwrap());
+    let (client, accepted) = tokio::join!(client, listener.accept());
+    let (accepted, remote_addr) = accepted.unwrap();
+    let mut client = client.unwrap();
+    write_connection_kind(&mut client, ConnectionKind::FileTransfer)
+        .await
+        .unwrap();
+    let incoming = demux_incoming(accepted).await.unwrap();
+    assert!(matches!(
+        &incoming,
+        crate::IncomingConnection::FileTransfer(_)
+    ));
+    let handler_state = Arc::clone(&state);
+    let handler = tokio::spawn(async move {
+        crate::listener_runtime::handle_owned_incoming(handler_state, incoming, remote_addr).await
+    });
+
+    // This models a raw `FileTransfer` listener socket. An attacker sends no
+    // token and waits to see whether the daemon will disclose an offset for an
+    // unrelated accepted download.
+    let peer = tokio::spawn(async move {
+        let mut peer = FileTransferConnection::new(client);
+        match tokio::time::timeout(
+            Duration::from_millis(1500) + Duration::from_secs(1),
+            peer.receive_offset(),
+        )
+        .await
+        {
+            Ok(Ok(_offset)) => {
+                peer.write_chunk(&[0x41, 0x42, 0x43, 0x44]).await.unwrap();
+                true
+            }
+            Ok(Err(_)) | Err(_) => false,
+        }
+    });
+
+    let received_offset = peer.await.unwrap();
+    handler.await.unwrap();
+    assert!(
+        !received_offset,
+        "tokenless socket received a download offset"
+    );
+    assert!(
+        !path.exists(),
+        "tokenless socket created a completed download"
+    );
+    let transfers = state.transfers.read().await;
+    let current = transfers
+        .entries
+        .iter()
+        .find(|entry| entry.id == transfer.id)
+        .unwrap();
+    assert_eq!(current.status, "accepted");
+    assert_eq!(current.bytes_transferred, 0);
+    drop(transfers);
+    let _ = fs::remove_dir_all(&state.config.state_dir);
+}
+
+async fn exercise_inbound_download_routing(obfuscated: bool, valid_token: bool) {
+    use slskr_client::file_transfer::FileTransferConnection;
+    use slskr_client::protocol::server::PeerAddress;
+
+    let (state, _receiver) = test_state_with_env(MapEnv::default());
+    crate::remember_peer_endpoint(
+        &state,
+        PeerAddress {
+            username: "uploader".to_owned(),
+            ip: "127.0.0.1".parse().unwrap(),
+            port: 53000,
+            obfuscation_type: 0,
+            obfuscated_port: 0,
+        },
+    )
+    .await;
     for destination in &mut state.destinations.write().await.records {
         if destination.is_default {
             destination.path = state.config.downloads_dir.display().to_string();
@@ -70,11 +170,9 @@ async fn exercise_inbound_download_routing(obfuscated: bool, valid_token: bool) 
     let receiving =
         crate::listener_runtime::handle_owned_incoming(receiver_state, incoming, remote_addr);
     let sending = async {
-        let mut peer = if obfuscated {
-            FileTransferConnection::new_obfuscated(stream)
-        } else {
-            FileTransferConnection::new(stream)
-        };
+        // Type-1 obfuscation covers only the `PeerInit` frame; the transfer
+        // token, the offset handshake, and the payload are always plain.
+        let mut peer = FileTransferConnection::new(stream);
         let token = if valid_token {
             entries[2].token
         } else {
@@ -189,6 +287,178 @@ async fn remote_queue_accepts_a_new_peer_connection_without_losing_the_download(
     }
 }
 
+/// A retry entry is not authorization to accept an inbound offer from a
+/// connection identified only by a peer-supplied username and filename.
+#[tokio::test]
+async fn retry_queued_download_rejects_an_unsolicited_peer_offer() {
+    use slskr_client::protocol::peer::{PeerMessage, TransferRequest, TransferResponse};
+    use slskr_client::stream::PeerMessageConnection;
+
+    let (state, _receiver) = test_state_with_env(MapEnv::default());
+    let filename = "Remote/RetryOffer.flac";
+    let download = {
+        let mut transfers = state.transfers.write().await;
+        let entry = transfers.create(
+            0,
+            Some("uploader".to_owned()),
+            filename.to_owned(),
+            Some(
+                state
+                    .config
+                    .downloads_dir
+                    .join("RetryOffer.flac")
+                    .display()
+                    .to_string(),
+            ),
+            Some(4),
+        );
+        transfers
+            .update_retry_state(
+                entry.id,
+                2,
+                Some(crate::unix_timestamp().saturating_add(30)),
+                "queued",
+                Some("plain peer connect failed: No route to host".to_owned()),
+            )
+            .expect("queue retry")
+    };
+
+    let incoming = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+    let stream = tokio::net::TcpStream::connect(incoming.local_addr().unwrap())
+        .await
+        .unwrap();
+    let (accepted, _) = incoming.accept().await.unwrap();
+    let incoming_state = Arc::clone(&state);
+    let callback = tokio::spawn(async move {
+        crate::handle_plain_peer_messages(
+            &incoming_state,
+            PeerMessageConnection::new(accepted),
+            Some("uploader".to_owned()),
+        )
+        .await
+    });
+
+    let upload_token = download.token.saturating_add(9);
+    let mut peer = PeerMessageConnection::new(stream);
+    peer.send(&PeerMessage::TransferRequest(TransferRequest {
+        filename_encoding: Default::default(),
+        direction: 1,
+        token: upload_token,
+        filename: filename.to_owned(),
+        size: Some(4),
+    }))
+    .await
+    .unwrap();
+    assert!(matches!(
+        peer.receive().await.unwrap(),
+        PeerMessage::TransferResponse(TransferResponse::Rejected { token, .. })
+            if token == upload_token
+    ));
+    callback.await.unwrap().unwrap();
+
+    let transfers = state.transfers.read().await;
+    let entry = transfers
+        .entries
+        .iter()
+        .find(|entry| entry.id == download.id)
+        .expect("download entry");
+    assert_eq!(entry.status, "queued");
+    assert_eq!(entry.token, download.token);
+    assert_eq!(
+        entry.reason.as_deref(),
+        Some("plain peer connect failed: No route to host")
+    );
+    assert!(entry.next_attempt_at.is_some());
+    drop(transfers);
+    let _ = fs::remove_dir_all(&state.config.state_dir);
+}
+
+#[tokio::test]
+async fn remote_queue_callback_rejects_a_spoofed_source_address() {
+    use slskr_client::protocol::peer::{PeerMessage, TransferRequest, TransferResponse};
+    use slskr_client::protocol::server::PeerAddress;
+    use slskr_client::stream::PeerMessageConnection;
+
+    let (state, _receiver) = test_state_with_env(MapEnv::default());
+    let filename = "Remote/AddressBound.bin";
+    let download = {
+        let mut transfers = state.transfers.write().await;
+        let entry = transfers.create(
+            0,
+            Some("uploader".to_owned()),
+            filename.to_owned(),
+            Some(
+                state
+                    .config
+                    .downloads_dir
+                    .join("AddressBound.bin")
+                    .display()
+                    .to_string(),
+            ),
+            Some(4),
+        );
+        transfers
+            .update_status(entry.id, "queued", None, Some("Queued".to_owned()))
+            .unwrap()
+    };
+    crate::remember_peer_endpoint(
+        &state,
+        PeerAddress {
+            username: "uploader".to_owned(),
+            ip: "192.0.2.45".parse().unwrap(),
+            port: 53000,
+            obfuscation_type: 0,
+            obfuscated_port: 0,
+        },
+    )
+    .await;
+
+    let incoming = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+    let stream = tokio::net::TcpStream::connect(incoming.local_addr().unwrap())
+        .await
+        .unwrap();
+    let (accepted, _) = incoming.accept().await.unwrap();
+    let handler_state = Arc::clone(&state);
+    let handler = tokio::spawn(async move {
+        crate::handle_plain_peer_messages_with_address(
+            &handler_state,
+            PeerMessageConnection::new(accepted),
+            Some("uploader".to_owned()),
+            Some("127.0.0.1".parse().unwrap()),
+        )
+        .await
+    });
+    let upload_token = download.token.wrapping_add(77).max(1);
+    let mut peer = PeerMessageConnection::new(stream);
+    peer.send(&PeerMessage::TransferRequest(TransferRequest {
+        filename_encoding: Default::default(),
+        direction: 1,
+        token: upload_token,
+        filename: filename.to_owned(),
+        size: Some(4),
+    }))
+    .await
+    .unwrap();
+    assert!(matches!(
+        peer.receive().await.unwrap(),
+        PeerMessage::TransferResponse(TransferResponse::Rejected { token, .. })
+            if token == upload_token
+    ));
+    handler.await.unwrap().unwrap();
+
+    let transfers = state.transfers.read().await;
+    let entry = transfers
+        .entries
+        .iter()
+        .find(|entry| entry.id == download.id)
+        .unwrap();
+    assert_eq!(entry.status, "queued");
+    assert_eq!(entry.token, download.token);
+    assert_eq!(entry.reason.as_deref(), Some("Queued"));
+    drop(transfers);
+    let _ = fs::remove_dir_all(&state.config.state_dir);
+}
+
 async fn exercise_remote_queue_callback(
     disconnect_before_offer: bool,
     delay: Duration,
@@ -241,17 +511,34 @@ async fn exercise_remote_queue_callback(
     let mut init = InitConnection::new(stream);
     init.receive().await.unwrap();
     let mut original = PeerMessageConnection::new(init.into_inner());
+    // The downloader asks the uploader to queue the file, then polls its
+    // position on the same peer-message connection.
     assert!(matches!(
         original.receive().await.unwrap(),
-        PeerMessage::TransferRequest(_)
+        PeerMessage::QueueUpload { .. }
     ));
-    let queued_response = PeerMessage::TransferResponse(TransferResponse::Rejected {
-        token: download.token,
-        reason: "Queued".to_owned(),
-    });
+    assert!(matches!(
+        original.receive().await.unwrap(),
+        PeerMessage::PlaceInQueueRequest { .. }
+    ));
+    let queue_position = PeerMessage::PlaceInQueueResponse {
+        filename: filename.to_owned(),
+        place: 1,
+    };
+    let mut original = Some(original);
     if !early_offer {
-        original.send(&queued_response).await.unwrap();
-        let deadline = tokio::time::Instant::now() + Duration::from_secs(1);
+        if disconnect_before_offer {
+            drop(original.take());
+        } else {
+            original
+                .as_mut()
+                .unwrap()
+                .send(&queue_position)
+                .await
+                .unwrap();
+            drop(original.take());
+        }
+        let deadline = tokio::time::Instant::now() + Duration::from_secs(5);
         loop {
             let transfers = state.transfers.read().await;
             let entry = transfers
@@ -260,7 +547,11 @@ async fn exercise_remote_queue_callback(
                 .find(|entry| entry.id == download.id)
                 .unwrap();
             if entry.status == "queued" {
-                assert_eq!(entry.reason.as_deref(), Some("Queued"));
+                if disconnect_before_offer {
+                    assert_ne!(entry.reason.as_deref(), Some("Queued"));
+                } else {
+                    assert_eq!(entry.reason.as_deref(), Some("Queued"));
+                }
                 break;
             }
             assert!(
@@ -271,18 +562,6 @@ async fn exercise_remote_queue_callback(
             drop(transfers);
             tokio::task::yield_now().await;
         }
-    }
-    let mut original = Some(original);
-    if disconnect_before_offer {
-        drop(original.take());
-        tokio::time::sleep(Duration::from_millis(100)).await;
-        let transfers = state.transfers.read().await;
-        let entry = transfers
-            .entries
-            .iter()
-            .find(|entry| entry.id == download.id)
-            .unwrap();
-        assert_eq!(entry.status, "queued");
     }
     tokio::time::sleep(delay).await;
     let incoming = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
@@ -297,14 +576,15 @@ async fn exercise_remote_queue_callback(
                 &incoming_state,
                 ObfuscatedPeerMessageConnection::new(accepted),
                 Some("uploader".to_owned()),
-                None,
+                Some("127.0.0.1".parse().unwrap()),
             )
             .await
         } else {
-            crate::handle_plain_peer_messages(
+            crate::handle_plain_peer_messages_with_address(
                 &incoming_state,
                 PeerMessageConnection::new(accepted),
                 Some("uploader".to_owned()),
+                Some("127.0.0.1".parse().unwrap()),
             )
             .await
         }
@@ -326,19 +606,28 @@ async fn exercise_remote_queue_callback(
         peer.send(&offer).await.unwrap();
         peer.receive().await.unwrap()
     };
-    assert_eq!(
-        response,
-        PeerMessage::TransferResponse(TransferResponse::Allowed {
-            token: upload_token,
-            size: Some(4),
-        })
-    );
+    let should_accept = !disconnect_before_offer || early_offer;
+    if should_accept {
+        assert_eq!(
+            response,
+            PeerMessage::TransferResponse(TransferResponse::Allowed {
+                token: upload_token,
+                size: Some(4),
+            })
+        );
+    } else {
+        assert!(matches!(
+            response,
+            PeerMessage::TransferResponse(TransferResponse::Rejected { token, .. })
+                if token == upload_token
+        ));
+    }
     callback.await.unwrap().unwrap();
     if early_offer {
         original
             .as_mut()
             .unwrap()
-            .send(&queued_response)
+            .send(&queue_position)
             .await
             .unwrap();
     }
@@ -350,9 +639,15 @@ async fn exercise_remote_queue_callback(
         .iter()
         .find(|entry| entry.id == download.id)
         .unwrap();
-    assert_eq!(entry.status, "accepted");
-    assert_eq!(entry.token, upload_token);
-    assert_eq!(entry.reason, None);
+    if should_accept {
+        assert_eq!(entry.status, "accepted");
+        assert_eq!(entry.token, upload_token);
+        assert_eq!(entry.reason, None);
+    } else {
+        assert_eq!(entry.status, "queued");
+        assert_eq!(entry.token, download.token);
+        assert_ne!(entry.reason.as_deref(), Some("Queued"));
+    }
     drop(transfers);
     let _ = fs::remove_dir_all(&state.config.state_dir);
 }

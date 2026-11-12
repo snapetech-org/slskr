@@ -190,17 +190,16 @@ pub(super) async fn check_privileges_after_login(state: &AppState) {
 pub(crate) async fn dispatch_queued_downloads_after_login(state: &AppState) {
     let exclusions = effective_download_exclusions(state).await;
     cancel_downloads_blocked_by_policy(state, &exclusions).await;
-    let queued: Vec<TransferEntry> = {
+    let queued = {
         let queue = state.transfers.read().await;
         queue
             .entries
             .iter()
             .filter(|entry| entry.direction == 0 && entry.status == "queued")
-            .cloned()
-            .collect()
+            .count()
     };
 
-    if queued.is_empty() {
+    if queued == 0 {
         return;
     }
 
@@ -208,31 +207,11 @@ pub(crate) async fn dispatch_queued_downloads_after_login(state: &AppState) {
         state,
         logging::LogLevel::Info,
         "transfers",
-        format!("dispatching {} queued downloads after login", queued.len()),
+        format!("dispatching {queued} queued downloads after login"),
     )
     .await;
 
-    for entry in queued {
-        let Some(peer_username) = entry.peer_username.as_deref() else {
-            continue;
-        };
-        let command = SessionCommand::TransferPeer {
-            id: entry.id,
-            username: peer_username.to_owned(),
-        };
-        if let Err(error) = send_session_command(state, command).await {
-            record_daemon_log(
-                state,
-                logging::LogLevel::Warn,
-                "transfers",
-                format!(
-                    "failed to dispatch queued download {} for {}: {}",
-                    entry.filename, peer_username, error
-                ),
-            )
-            .await;
-        }
-    }
+    resume_queued_downloads_after_login(state).await;
 }
 
 pub(super) async fn replay_joined_rooms(state: &AppState, session: &mut ServerSession<TcpStream>) {

@@ -374,6 +374,52 @@ async fn run_listener_manager(
     }
 }
 
+/// Record the first bytes a peer sends on a listener connection without
+/// consuming them, so inbound handshakes that fail can be traced.
+async fn log_inbound_prefix(
+    state: &AppState,
+    stream: &TcpStream,
+    remote_addr: SocketAddr,
+    obfuscated: bool,
+    shared_obfuscation: bool,
+) {
+    // `peek` waits for the peer's first bytes; skip it unless debug
+    // diagnostics are on so silent connections do not hold a task for 2s.
+    if !soulseek_diagnostic_level_allows(
+        state.config.soulseek_diagnostic_level,
+        logging::LogLevel::Debug,
+    ) {
+        return;
+    }
+
+    let mut buffer = [0_u8; 64];
+    let Ok(Ok(read)) = time::timeout(time::Duration::from_secs(2), stream.peek(&mut buffer)).await
+    else {
+        return;
+    };
+    if read == 0 {
+        return;
+    }
+    let first_byte = buffer[0];
+    let listener = if obfuscated {
+        "obfuscated"
+    } else if shared_obfuscation {
+        "shared"
+    } else {
+        "regular"
+    };
+    record_soulseek_diagnostic(
+        state,
+        logging::LogLevel::Debug,
+        "soulseek",
+        format!(
+            "inbound {listener} prefix from {} ({read} bytes, first byte {first_byte:02x})",
+            scrub_socket_addr(remote_addr)
+        ),
+    )
+    .await;
+}
+
 async fn process_listener_connection(
     state: Arc<AppState>,
     stream: TcpStream,
@@ -381,6 +427,7 @@ async fn process_listener_connection(
     obfuscated: bool,
     shared_obfuscation: bool,
 ) {
+    log_inbound_prefix(&state, &stream, remote_addr, obfuscated, shared_obfuscation).await;
     let incoming = match time::timeout(DEFAULT_INIT_HANDSHAKE_TIMEOUT, async move {
         if obfuscated {
             demux_obfuscated_incoming(stream).await
@@ -437,6 +484,10 @@ async fn process_shared_mesh_connection(
     stream: TcpStream,
     remote_addr: SocketAddr,
 ) {
+    // Record the raw listener prefix before any framing decision is made. The
+    // shared path has to guess between plain, obfuscated, and mesh TLS, so the
+    // only way to explain a failed handshake afterwards is to keep the bytes.
+    log_inbound_prefix(&state, &stream, remote_addr, false, true).await;
     let incoming = match time::timeout(
         DEFAULT_INIT_HANDSHAKE_TIMEOUT,
         demux_shared_mesh_incoming(stream),
@@ -539,7 +590,14 @@ pub(super) async fn handle_owned_incoming(
             .await
         }
         IncomingConnection::FileTransfer(file) => {
-            handle_inbound_file_transfer(&state, file, None, None).await
+            record_soulseek_diagnostic(
+                &state,
+                logging::LogLevel::Debug,
+                "soulseek",
+                "inbound file transfer connection classified without an init token".to_owned(),
+            )
+            .await;
+            handle_inbound_file_transfer(&state, file, None, None, Some(remote_addr.ip())).await
         }
         IncomingConnection::PeerInit {
             kind: ConnectionKind::FileTransfer,
@@ -549,15 +607,29 @@ pub(super) async fn handle_owned_incoming(
             obfuscated,
             ..
         } => {
+            record_soulseek_diagnostic(
+                &state,
+                logging::LogLevel::Debug,
+                "soulseek",
+                format!(
+                    "inbound file transfer init from {}: token_present {}, obfuscated {obfuscated}",
+                    redact_username(&username),
+                    token != 0
+                ),
+            )
+            .await;
             handle_inbound_file_transfer(
                 &state,
-                if obfuscated {
-                    slskr_client::file_transfer::FileTransferConnection::new_obfuscated(stream)
-                } else {
-                    slskr_client::file_transfer::FileTransferConnection::new(stream)
-                },
+                // Type-1 obfuscation covers only the init frame. A peer that
+                // opens the file-transfer socket with an obfuscated `PeerInit`
+                // still writes the transfer token and reads our offset in the
+                // clear (verified against SoulseekQt: the 4 bytes after the
+                // init frame are the plaintext token), so the transfer payload
+                // must not be decoded with the rotated stream cipher.
+                slskr_client::file_transfer::FileTransferConnection::new(stream),
                 (token != 0).then_some(token),
                 Some(&username),
+                Some(remote_addr.ip()),
             )
             .await
         }
@@ -591,8 +663,21 @@ pub(super) async fn handle_owned_incoming(
                     slskr_client::file_transfer::FileTransferConnection::new(stream),
                     Some(token),
                     None,
+                    Some(remote_addr.ip()),
                 )
                 .await
+            } else if let Some(pending) = take_pending_indirect_peer_download(&state, token) {
+                // The download negotiation owns this socket from here: it sends
+                // `QueueUpload` and waits for the peer's offer on it.
+                if pending.connection.send(stream).is_ok() {
+                    Ok(())
+                } else {
+                    Err(format!(
+                        "indirect download for transfer {} from {} is no longer waiting",
+                        pending.transfer_id,
+                        redact_username(&pending.username)
+                    ))
+                }
             } else if has_pending_peer_message {
                 send_pending_indirect_peer_message(&state, token, stream)
                     .await

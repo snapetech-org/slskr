@@ -1,3 +1,4 @@
+use super::session_state::PendingIndirectPeerDownload;
 use super::session_state::PendingIndirectPeerMessage;
 use super::*;
 
@@ -395,7 +396,11 @@ async fn connect_obfuscated_file_transfer(
     .await
     .map_err(|_| "obfuscated file-transfer init timed out".to_owned())?
     .map_err(|error| format!("obfuscated file-transfer init failed: {error}"))?;
-    Ok(slskr_client::file_transfer::FileTransferConnection::new_obfuscated(stream))
+    // Only the init frame is obfuscated; the peer reads the transfer offset and
+    // writes file data in the clear on the same socket.
+    Ok(slskr_client::file_transfer::FileTransferConnection::new(
+        stream,
+    ))
 }
 
 pub(super) async fn connect_indirect_file_transfer(
@@ -517,6 +522,385 @@ pub(super) async fn negotiate_peer_transfer(
         }
     }
     Err(last_error.unwrap_or_else(|| "peer did not advertise a peer-message port".to_owned()))
+}
+
+/// Outcome of asking a peer to upload a file we want to download.
+pub(super) enum PeerDownloadNegotiation {
+    /// The peer accepted the queue request and offered the file. We replied
+    /// `Allowed`, so the peer now dials our file-transfer port.
+    Offer {
+        size: Option<u64>,
+        place: Option<u32>,
+    },
+    /// The peer accepted the queue request but has not offered the file yet.
+    Queued { place: Option<u32> },
+    /// The peer refused to upload the file.
+    Rejected { reason: String },
+}
+
+/// Queue a download with a peer using the current Soulseek flow.
+///
+/// Uploaders no longer answer `TransferRequest { direction: 0 }`; the
+/// downloader sends `QueueUpload`, and the uploader eventually answers with
+/// `TransferRequest { direction: 1 }` carrying its own token. We allow that
+/// offer and wait for the uploader to dial us. Dialing the peer ourselves only
+/// ever produces a silent stall.
+pub(super) async fn negotiate_peer_download(
+    state: &AppState,
+    address: &PeerAddress,
+    transfer: &TransferEntry,
+) -> Result<PeerDownloadNegotiation, String> {
+    if !state.config.transfer_allow_inbound {
+        return Err(
+            "inbound file transfers are disabled, so peers cannot deliver queued downloads"
+                .to_owned(),
+        );
+    }
+    let username = outgoing_peer_init_username(state).await?;
+    let peer_ip = peer_connect_ip(state, address);
+    let regular_port = u16::try_from(address.port).ok().filter(|port| *port != 0);
+    let mut last_error = (address.port != 0 && regular_port.is_none())
+        .then(|| "peer port is out of range".to_owned());
+    for transport in outbound_peer_dial_order(
+        &state.config,
+        regular_port.is_some(),
+        peer_supports_obfuscated_dial(address),
+    ) {
+        let result = match transport {
+            OutboundPeerTransport::Regular => {
+                request_plain_peer_download(
+                    state,
+                    SocketAddr::V4(SocketAddrV4::new(
+                        peer_ip,
+                        regular_port.expect("regular transport requires a port"),
+                    )),
+                    username.clone(),
+                    transfer,
+                    state.config.soulseek_connection.timeout_inactivity,
+                )
+                .await
+            }
+            OutboundPeerTransport::Obfuscated => {
+                request_obfuscated_peer_download(
+                    state,
+                    SocketAddr::V4(SocketAddrV4::new(peer_ip, address.obfuscated_port)),
+                    username.clone(),
+                    transfer,
+                    state.config.soulseek_connection.timeout_inactivity,
+                )
+                .await
+            }
+        };
+        match result {
+            // A refusal or a queue position is terminal for this attempt:
+            // switching transports cannot change the peer's answer.
+            Ok(outcome) => return Ok(outcome),
+            Err(error) => last_error = Some(error),
+        }
+    }
+    // Most Soulseek peers sit behind NAT and publish an endpoint nobody can
+    // dial. Reference clients ask the server to broker the connection instead
+    // (`ConnectToPeer`), so the peer dials us and we negotiate over that
+    // inbound socket. Without this every download from a closed port fails.
+    match request_indirect_peer_download(
+        state,
+        &address.username,
+        transfer,
+        state.config.soulseek_connection.timeout_inactivity,
+    )
+    .await
+    {
+        Ok(outcome) => Ok(outcome),
+        Err(indirect_error) => Err(match last_error {
+            Some(direct_error) => {
+                format!("{direct_error}; indirect peer connect failed: {indirect_error}")
+            }
+            None => indirect_error,
+        }),
+    }
+}
+
+/// Ask the server to have the peer dial us for this download.
+///
+/// The socket has to stay open across `QueueUpload` and the peer's offer, so
+/// the inbound stream is handed back to the caller instead of being used for a
+/// single one-way message.
+async fn request_indirect_peer_download(
+    state: &AppState,
+    username: &str,
+    transfer: &TransferEntry,
+    timeout: Duration,
+) -> Result<PeerDownloadNegotiation, String> {
+    let (connection, response) = oneshot::channel();
+    let token = {
+        let mut pending = state
+            .pending_indirect_peer_downloads
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner);
+        let pending_messages = state
+            .pending_indirect_peer_messages
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner);
+        let mut token = None;
+        for _ in 0..64 {
+            let mut bytes = [0_u8; 4];
+            SysRng
+                .try_fill_bytes(&mut bytes)
+                .map_err(|_| "secure indirect download token generation failed".to_owned())?;
+            let candidate = u32::from_be_bytes(bytes);
+            if candidate != 0
+                && !pending.contains_key(&candidate)
+                && !pending_messages.contains_key(&candidate)
+            {
+                token = Some(candidate);
+                break;
+            }
+        }
+        let Some(token) = token else {
+            return Err("unable to allocate an indirect download token".to_owned());
+        };
+        drop(pending_messages);
+        pending.insert(
+            token,
+            PendingIndirectPeerDownload {
+                username: username.to_owned(),
+                transfer_id: transfer.id,
+                connection,
+            },
+        );
+        token
+    };
+    if let Err(error) = try_send_session_command(
+        state,
+        SessionCommand::IndirectPeerMessage {
+            username: username.to_owned(),
+            token,
+        },
+    ) {
+        take_pending_indirect_peer_download(state, token);
+        return Err(format!("indirect peer download dispatch failed: {error}"));
+    }
+    let stream = match time::timeout(timeout, response).await {
+        Ok(Ok(stream)) => stream,
+        Ok(Err(_)) => return Err("indirect peer download connection was dropped".to_owned()),
+        Err(_) => {
+            take_pending_indirect_peer_download(state, token);
+            return Err("peer did not open an indirect connection in time".to_owned());
+        }
+    };
+    let mut peer = PeerMessageConnection::new(stream);
+    queue_peer_download(state, &mut peer, transfer, timeout).await
+}
+
+/// Claim the inbound socket the peer opened for a pending indirect download.
+pub(super) fn take_pending_indirect_peer_download(
+    state: &AppState,
+    token: u32,
+) -> Option<PendingIndirectPeerDownload> {
+    state
+        .pending_indirect_peer_downloads
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner)
+        .remove(&token)
+}
+
+async fn request_plain_peer_download(
+    state: &AppState,
+    address: SocketAddr,
+    username: String,
+    transfer: &TransferEntry,
+    timeout: Duration,
+) -> Result<PeerDownloadNegotiation, String> {
+    let stream = connect_soulseek_tcp(state, address, SoulseekSocketClass::Control)
+        .await
+        .map_err(|error| format!("plain peer connect failed: {error}"))?;
+    let stream = time::timeout(
+        timeout,
+        send_peer_init(stream, username, ConnectionKind::PeerMessages),
+    )
+    .await
+    .map_err(|_| "plain peer init timed out".to_owned())?
+    .map_err(|error| format!("plain peer init failed: {error}"))?;
+    let mut peer = PeerMessageConnection::new(stream);
+    queue_peer_download(state, &mut peer, transfer, timeout).await
+}
+
+async fn request_obfuscated_peer_download(
+    state: &AppState,
+    address: SocketAddr,
+    username: String,
+    transfer: &TransferEntry,
+    timeout: Duration,
+) -> Result<PeerDownloadNegotiation, String> {
+    let stream = connect_soulseek_tcp(state, address, SoulseekSocketClass::Control)
+        .await
+        .map_err(|error| format!("obfuscated peer connect failed: {error}"))?;
+    let stream = time::timeout(
+        timeout,
+        send_obfuscated_peer_init(stream, username, ConnectionKind::PeerMessages),
+    )
+    .await
+    .map_err(|_| "obfuscated peer init timed out".to_owned())?
+    .map_err(|error| format!("obfuscated peer init failed: {error}"))?;
+    let mut peer = ObfuscatedPeerMessageConnection::new(stream);
+    queue_peer_download(state, &mut peer, transfer, timeout).await
+}
+
+async fn queue_peer_download<C>(
+    state: &AppState,
+    peer: &mut C,
+    transfer: &TransferEntry,
+    timeout: Duration,
+) -> Result<PeerDownloadNegotiation, String>
+where
+    C: PeerMessageSenderReceiver,
+{
+    time::timeout(
+        timeout,
+        peer.send_peer_message(&PeerMessage::QueueUpload {
+            filename: transfer.filename.clone(),
+        }),
+    )
+    .await
+    .map_err(|_| "download queue upload timed out".to_owned())?
+    .map_err(|error| format!("download queue upload failed: {error}"))?;
+    // Optional courtesy poll: it only feeds the queue position we report back.
+    let _ = peer
+        .send_peer_message(&PeerMessage::PlaceInQueueRequest {
+            filename: transfer.filename.clone(),
+        })
+        .await;
+    await_peer_download_offer(state, peer, transfer, None, timeout).await
+}
+
+/// Read the peer's answer until it offers the file, refuses it, or the offer
+/// window closes.
+async fn await_peer_download_offer<C>(
+    state: &AppState,
+    peer: &mut C,
+    transfer: &TransferEntry,
+    mut place: Option<u32>,
+    wait: Duration,
+) -> Result<PeerDownloadNegotiation, String>
+where
+    C: PeerMessageSenderReceiver,
+{
+    let deadline = time::Instant::now() + wait;
+    loop {
+        let remaining = deadline.saturating_duration_since(time::Instant::now());
+        if remaining.is_zero() {
+            return Ok(PeerDownloadNegotiation::Queued { place });
+        }
+        // `receive` is not cancel safe, so a timeout here always ends the
+        // negotiation instead of resuming on the same connection.
+        let message = match time::timeout(remaining, peer.receive_peer_message()).await {
+            Ok(Ok(message)) => message,
+            // Some uploaders answer the queue-position poll, close this
+            // negotiation socket, then open a fresh peer connection when a
+            // slot frees up. Once we have observed a queue position, that
+            // close confirms remote queue ownership instead of being a
+            // transport failure that should restart the download.
+            Ok(Err(_)) if place.is_some() => {
+                return Ok(PeerDownloadNegotiation::Queued { place });
+            }
+            Ok(Err(error)) => return Err(error),
+            Err(_) => return Ok(PeerDownloadNegotiation::Queued { place }),
+        };
+        if state
+            .transfers
+            .read()
+            .await
+            .entries
+            .iter()
+            .find(|entry| entry.id == transfer.id)
+            .is_some_and(|entry| entry.status == "cancelled")
+        {
+            return Err("download cancelled while waiting for the peer".to_owned());
+        }
+        match message {
+            PeerMessage::TransferRequest(request) if request.direction == 1 => {
+                if !same_transfer_filename(&request.filename, &transfer.filename) {
+                    peer.send_peer_message(&PeerMessage::TransferResponse(
+                        TransferResponse::Rejected {
+                            token: request.token,
+                            reason: "File not requested.".to_owned(),
+                        },
+                    ))
+                    .await
+                    .ok();
+                    continue;
+                }
+                let size = request.size.or(transfer.size);
+                // Bind the queue entry before telling the peer to dial, so the
+                // inbound file-transfer connection finds it.
+                let accepted = {
+                    let mut transfers = state.transfers.write().await;
+                    transfers.accept_queued_inbound_negotiation(transfer.id, request.token, size)
+                };
+                match accepted {
+                    Ok(Some(_)) => {}
+                    Ok(None) => {
+                        peer.send_peer_message(&PeerMessage::TransferResponse(
+                            TransferResponse::Rejected {
+                                token: request.token,
+                                reason: "Queued".to_owned(),
+                            },
+                        ))
+                        .await
+                        .ok();
+                        return Err("download is no longer queued for this peer".to_owned());
+                    }
+                    Err(error) => {
+                        peer.send_peer_message(&PeerMessage::TransferResponse(
+                            TransferResponse::Rejected {
+                                token: request.token,
+                                reason: "Queued".to_owned(),
+                            },
+                        ))
+                        .await
+                        .ok();
+                        return Err(error);
+                    }
+                }
+                peer.send_peer_message(&PeerMessage::TransferResponse(TransferResponse::Allowed {
+                    token: request.token,
+                    size,
+                }))
+                .await
+                .map_err(|error| format!("download offer response failed: {error}"))?;
+                return Ok(PeerDownloadNegotiation::Offer { size, place });
+            }
+            PeerMessage::PlaceInQueueResponse {
+                place: queue_place, ..
+            } => place = Some(queue_place),
+            PeerMessage::UploadDenied { reason, .. } => {
+                return Ok(PeerDownloadNegotiation::Rejected {
+                    reason: if reason.trim().is_empty() {
+                        "upload denied by peer".to_owned()
+                    } else {
+                        reason
+                    },
+                })
+            }
+            PeerMessage::UploadFailed { .. } => {
+                return Ok(PeerDownloadNegotiation::Rejected {
+                    reason: "peer reported the upload failed".to_owned(),
+                })
+            }
+            // Peers sometimes announce a queue slot or ask for shares while we
+            // wait; neither changes the queue request.
+            PeerMessage::PlaceholdUpload { .. } | PeerMessage::UploadQueueNotification => {}
+            _ => {}
+        }
+    }
+}
+
+fn same_transfer_filename(left: &str, right: &str) -> bool {
+    if left == right {
+        return true;
+    }
+    let normalize = |value: &str| value.replace('/', "\\").to_ascii_lowercase();
+    normalize(left) == normalize(right)
 }
 
 pub(super) async fn fetch_peer_browse(
@@ -973,6 +1357,16 @@ pub(super) async fn remember_peer_endpoint(state: &AppState, address: PeerAddres
     endpoints.insert(key, (address, unix_timestamp()));
 }
 
+pub(super) async fn peer_source_matches_endpoint(
+    state: &AppState,
+    username: &str,
+    source_ip: std::net::IpAddr,
+) -> bool {
+    cached_peer_endpoint(state, username)
+        .await
+        .is_some_and(|address| source_ip == std::net::IpAddr::V4(address.ip))
+}
+
 pub(super) async fn cached_peer_endpoint(state: &AppState, username: &str) -> Option<PeerAddress> {
     if let Some(address) = test_user_endpoint_peer_address(state, username) {
         return Some(address);
@@ -1211,7 +1605,7 @@ where
                     if request.direction == 1 && request.filename == transfer.filename {
                         if let Some(username) = transfer.peer_username.as_deref() {
                             super::peer_message_runtime::handle_queued_upload_request(
-                                state, peer, username, &request,
+                                state, peer, username, &request, None, true,
                             )
                             .await?;
                         }

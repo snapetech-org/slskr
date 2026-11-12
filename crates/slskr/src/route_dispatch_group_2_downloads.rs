@@ -257,6 +257,7 @@ async fn route_dispatch_group_2_downloads(
                     remove_transfer_entries_if_unchanged(state, &created_entries).await;
                     return Err(error);
                 }
+                schedule_queued_downloads(state).await;
                 return Ok(routing::ok_response(
                     serde_json::json!({
                         "queued": count,
@@ -321,6 +322,9 @@ async fn route_dispatch_group_2_downloads(
                 remove_transfer_entries_if_unchanged(state, std::slice::from_ref(&entry)).await;
                 return Err(error);
             }
+            // A single-transfer create is a staging step; consumers start it
+            // explicitly through `POST /transfers/{id}/start`. Only the
+            // queue-enqueue APIs promote downloads straight away.
             Ok(routing::created_response(entry.json()))
         }
 

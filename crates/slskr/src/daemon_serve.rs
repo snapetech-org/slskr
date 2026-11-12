@@ -877,6 +877,7 @@ pub(super) async fn serve(invocation: ServeInvocation) -> Result<(), String> {
         controller_features: ControllerFeatureStore::new(controller_feature_state),
         peer_endpoints: RwLock::new(BTreeMap::new()),
         pending_indirect_peer_messages: std::sync::Mutex::new(BTreeMap::new()),
+        pending_indirect_peer_downloads: std::sync::Mutex::new(BTreeMap::new()),
         preview_streams: Arc::new(Semaphore::new(MAX_PREVIEW_STREAMS)),
         listening_party_stream_limits: RwLock::new(ListeningPartyStreamLimits::default()),
         revoked_jwts: RwLock::new(revoked_jwts),
@@ -964,6 +965,7 @@ pub(super) async fn serve(invocation: ServeInvocation) -> Result<(), String> {
     relay_agent::spawn(Arc::clone(&state));
     spawn_download_auto_retry(Arc::clone(&state));
     spawn_download_auto_replace(Arc::clone(&state));
+    spawn_queued_download_scheduler(Arc::clone(&state));
     spawn_transfer_rescue(Arc::clone(&state));
     spawn_backfill_scheduler(Arc::clone(&state));
     spawn_lidarr_sync_scheduler(Arc::clone(&state));

@@ -21,6 +21,12 @@ vi.mock('../../lib/transfers', () => ({
   setAcceleratedMode: vi.fn(),
   getPlaceInQueue: vi.fn(),
   download: vi.fn(),
+  normalizeTransferState: (state) =>
+    ({
+      Completed: 'Completed, Succeeded',
+      Cancelled: 'Completed, Cancelled',
+      Failed: 'Completed, Errored',
+    })[state] || state,
   isStateRetryable: (state) =>
     state.includes('Completed') && state !== 'Completed, Succeeded',
   cancel: vi.fn(),
