@@ -4,6 +4,7 @@ import {
   getChanges,
   getFlat,
   getHistory,
+  normalizeTransferState,
 } from './transfers';
 
 vi.mock('./api', () => ({
@@ -117,5 +118,18 @@ describe('transfer API helpers', () => {
     await expect(getHistory({ direction: 'download' })).rejects.toThrow(
       `Transfers API returned an invalid ${resource}`,
     );
+  });
+});
+
+describe('normalizeTransferState', () => {
+  it.each([
+    ['Completed', 'Completed, Succeeded'],
+    ['Cancelled', 'Completed, Cancelled'],
+    ['Failed', 'Completed, Errored'],
+    ['InProgress', 'InProgress'],
+    ['Queued', 'Queued'],
+    ['', ''],
+  ])('maps %s to %s', (state, expected) => {
+    expect(normalizeTransferState(state)).toBe(expected);
   });
 });

@@ -65,6 +65,30 @@ describe('TransferList', () => {
     expect(screen.getByText('Iniciando')).toHaveAttribute('lang', 'es');
   });
 
+
+  it('renders a succeeded transfer with a green status button', () => {
+    render(
+      <TransferList
+        directoryName="Album"
+        files={[{
+          bytesTransferred: 2,
+          direction: 'download',
+          filename: 'done.mp3',
+          id: 'done',
+          size: 2,
+          state: 'Completed, Succeeded',
+        }]}
+        onPlaceInQueueRequested={vi.fn()}
+        onRetryRequested={vi.fn()}
+        onSelectionChange={vi.fn()}
+      />,
+    );
+
+    const status = screen.getByText('Succeeded');
+    expect(status.closest('button')).toHaveClass('green');
+    expect(status.closest('button')).not.toHaveClass('red');
+  });
+
   it('localizes the transferred-byte numerator with the regional format', () => {
     setRegionalFormatPreference('de');
 

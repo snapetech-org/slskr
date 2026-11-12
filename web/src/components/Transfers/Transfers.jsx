@@ -4,6 +4,7 @@ import './Transfers.css';
 import * as autoReplaceLibrary from '../../lib/autoReplace';
 import { toDisplayError } from '../../lib/errors';
 import * as transfersLibrary from '../../lib/transfers';
+import { normalizeTransferState } from '../../lib/transfers';
 import { usePolling } from '../../lib/usePolling';
 import { formatRegionalNumber } from '../../lib/util';
 
@@ -71,6 +72,9 @@ const transferDirectory = (filename) => {
   return separator >= 0 ? filename.slice(0, separator) : '';
 };
 
+// The daemon reports terminal transfers as bare `Completed`/`Failed`/
+// `Cancelled`; normalize them to the combined slskd states the transfer UI
+// (header counters, colors, retry/removal rules) is written against.
 const normalizeTransferFile = (file, username) => {
   if (!file || typeof file !== 'object' || Array.isArray(file)) return null;
 
@@ -98,7 +102,7 @@ const normalizeTransferFile = (file, username) => {
     id,
     percentComplete,
     size: toNonNegativeNumber(file.size, 0),
-    state: toText(file.state),
+    state: normalizeTransferState(toText(file.state)),
     username: normalizedUsername,
   };
 };
