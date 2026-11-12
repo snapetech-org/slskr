@@ -470,6 +470,9 @@ async fn project_peer_download_response(
             if !download_negotiation_still_owned(state, transfer.id).await {
                 return;
             }
+            if requeue_peer_download(state, transfer, &error).await {
+                return;
+            }
             fail_peer_download(state, transfer, error).await;
         }
     }
@@ -493,6 +496,149 @@ async fn download_negotiation_still_owned(state: &AppState, id: u64) -> bool {
                 "peer_lookup" | "peer_negotiating" | "queued"
             )
         })
+}
+
+/// Requeue a download whose attempt failed, mirroring slskd's `Retry.Do`.
+///
+/// slskd keeps the transfer in `Queued | Locally`, waits an exponential
+/// backoff (`download.retry.delay` capped by `max_delay`), and retries the
+/// same transfer until `download.retry.attempts` is exhausted. Returns `false`
+/// when no attempts remain, so the caller can record the final failure.
+pub(crate) async fn requeue_peer_download(
+    state: &AppState,
+    transfer: &TransferEntry,
+    reason: &str,
+) -> bool {
+    let retry = state.transfer_download_settings.read().await.retry.clone();
+    let attempts = transfer.attempts.max(1);
+    if attempts >= retry.attempts.max(1) {
+        return false;
+    }
+    let delay = download_retry_delay(&retry, attempts);
+    let next_attempt_at = unix_timestamp().saturating_add(delay.as_secs().max(1));
+    let requeued = {
+        let mut transfers = state.transfers.write().await;
+        // Never resurrect a transfer that another task already finished or
+        // that the user cancelled while this attempt was in flight.
+        if !transfers
+            .entries
+            .iter()
+            .any(|entry| entry.id == transfer.id && !is_terminal_transfer_status(&entry.status))
+        {
+            return true;
+        }
+        transfers.update_retry_state(
+            transfer.id,
+            attempts.saturating_add(1),
+            Some(next_attempt_at),
+            "queued",
+            Some(reason.to_owned()),
+        )
+    };
+    let Some(requeued) = requeued else {
+        return true;
+    };
+    persist_transfer_projection(state, &requeued).await;
+    record_daemon_log(
+        state,
+        logging::LogLevel::Info,
+        "transfers",
+        format!(
+            "download {} from {} failed: {reason}; queued for retry attempt {}/{} in {}s",
+            transfer.filename,
+            transfer
+                .peer_username
+                .as_deref()
+                .map(redact_username)
+                .unwrap_or_else(|| "<unknown>".to_owned()),
+            attempts.saturating_add(1),
+            retry.attempts.max(1),
+            delay.as_secs().max(1),
+        ),
+    )
+    .await;
+    true
+}
+
+/// Fail downloads that the peer accepted but never opened a file-transfer
+/// socket for.
+///
+/// A peer can answer `QueueUpload` with an offer, take our `Allowed`, and then
+/// never dial (or dial and disappear before a byte arrives). Without this sweep
+/// the entry sits in `accepted` forever and keeps a download slot, so the rest
+/// of the queue never starts.
+pub(crate) async fn expire_stalled_download_negotiations(state: &AppState) -> usize {
+    let now = unix_timestamp();
+    let stall = state
+        .config
+        .soulseek_connection
+        .timeout_transfer
+        .max(Duration::from_secs(30))
+        .as_secs();
+    let stalled: Vec<TransferEntry> = {
+        let transfers = state.transfers.read().await;
+        transfers
+            .entries
+            .iter()
+            .filter(|entry| {
+                // `in_progress` with no bytes is also a stall: a restart can
+                // rehydrate a transfer whose negotiation task is gone, and a
+                // retry can claim a peer address that never answers. Real
+                // transfers refresh `updated_at` as chunks land; a connected
+                // socket that stays silent is already bounded by the transfer
+                // read timeout, so failing here is not more aggressive.
+                entry.direction == 0
+                    && match entry.status.as_str() {
+                        "accepted" => now.saturating_sub(entry.updated_at) >= stall,
+                        "in_progress" => {
+                            entry.bytes_transferred == 0
+                                && now.saturating_sub(entry.updated_at) >= stall
+                        }
+                        _ => false,
+                    }
+            })
+            .cloned()
+            .collect()
+    };
+    let mut expired = 0;
+    for entry in stalled {
+        let reason = if entry.status == "in_progress" {
+            "download stalled before any data arrived"
+        } else {
+            "peer did not open a file-transfer connection in time"
+        };
+        if requeue_peer_download(state, &entry, reason).await {
+            expired += 1;
+            continue;
+        }
+        let failed = {
+            let mut transfers = state.transfers.write().await;
+            transfers.update_status(entry.id, "failed", None, Some(reason.to_owned()))
+        };
+        if let Some(failed) = failed {
+            expired += 1;
+            persist_transfer_projection(state, &failed).await;
+            record_daemon_log(
+                state,
+                logging::LogLevel::Warn,
+                "transfers",
+                format!(
+                    "download {} from {} stalled ({reason}); releasing its slot",
+                    entry.filename,
+                    entry
+                        .peer_username
+                        .as_deref()
+                        .map(redact_username)
+                        .unwrap_or_else(|| "<unknown>".to_owned())
+                ),
+            )
+            .await;
+        }
+    }
+    if expired > 0 {
+        schedule_queued_downloads(state).await;
+    }
+    expired
 }
 
 async fn fail_peer_download(state: &AppState, transfer: &TransferEntry, reason: String) {
@@ -538,6 +684,7 @@ pub(crate) async fn resume_queued_downloads_after_login(state: &AppState) {
 
 async fn schedule_queued_downloads_inner(state: &AppState, include_remote_queued: bool) {
     loop {
+        let now = unix_timestamp();
         let download_slots = usize::try_from(state.transfer_download_settings.read().await.slots)
             .unwrap_or(usize::MAX);
         if !download_capacity_available(state, None).await {
@@ -572,6 +719,9 @@ async fn schedule_queued_downloads_inner(state: &AppState, include_remote_queued
                                 .reason
                                 .as_deref()
                                 .is_some_and(is_remote_queue_response))
+                        // A retry queued after a failed attempt sleeps until
+                        // its backoff elapses; the periodic scheduler wakes it.
+                        && entry.next_attempt_at.is_none_or(|at| at <= now)
                 })
                 .min_by_key(|entry| (entry.requested_at, entry.id))
                 .cloned();

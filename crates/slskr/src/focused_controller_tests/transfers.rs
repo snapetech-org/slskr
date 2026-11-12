@@ -187,6 +187,92 @@ async fn remote_queue_accepts_a_new_peer_connection_without_losing_the_download(
     }
 }
 
+/// A download waiting on its retry backoff still has the peer's old
+/// `QueueUpload`. The peer may answer with its offer during that window, and
+/// the offer must be accepted instead of falling through to `File not shared.`
+#[tokio::test]
+async fn retry_queued_download_accepts_a_peer_offer_during_backoff() {
+    use slskr_client::protocol::peer::{PeerMessage, TransferRequest, TransferResponse};
+    use slskr_client::stream::PeerMessageConnection;
+
+    let (state, _receiver) = test_state_with_env(MapEnv::default());
+    let filename = "Remote/RetryOffer.flac";
+    let download = {
+        let mut transfers = state.transfers.write().await;
+        let entry = transfers.create(
+            0,
+            Some("uploader".to_owned()),
+            filename.to_owned(),
+            Some(
+                state
+                    .config
+                    .downloads_dir
+                    .join("RetryOffer.flac")
+                    .display()
+                    .to_string(),
+            ),
+            Some(4),
+        );
+        transfers
+            .update_retry_state(
+                entry.id,
+                2,
+                Some(crate::unix_timestamp().saturating_add(30)),
+                "queued",
+                Some("plain peer connect failed: No route to host".to_owned()),
+            )
+            .expect("queue retry")
+    };
+
+    let incoming = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+    let stream = tokio::net::TcpStream::connect(incoming.local_addr().unwrap())
+        .await
+        .unwrap();
+    let (accepted, _) = incoming.accept().await.unwrap();
+    let incoming_state = Arc::clone(&state);
+    let callback = tokio::spawn(async move {
+        crate::handle_plain_peer_messages(
+            &incoming_state,
+            PeerMessageConnection::new(accepted),
+            Some("uploader".to_owned()),
+        )
+        .await
+    });
+
+    let upload_token = download.token.saturating_add(9);
+    let mut peer = PeerMessageConnection::new(stream);
+    peer.send(&PeerMessage::TransferRequest(TransferRequest {
+        filename_encoding: Default::default(),
+        direction: 1,
+        token: upload_token,
+        filename: filename.to_owned(),
+        size: Some(4),
+    }))
+    .await
+    .unwrap();
+    assert_eq!(
+        peer.receive().await.unwrap(),
+        PeerMessage::TransferResponse(TransferResponse::Allowed {
+            token: upload_token,
+            size: Some(4),
+        })
+    );
+    callback.await.unwrap().unwrap();
+
+    let transfers = state.transfers.read().await;
+    let entry = transfers
+        .entries
+        .iter()
+        .find(|entry| entry.id == download.id)
+        .expect("download entry");
+    assert_eq!(entry.status, "accepted");
+    assert_eq!(entry.token, upload_token);
+    assert_eq!(entry.reason, None);
+    assert!(entry.next_attempt_at.is_none());
+    drop(transfers);
+    let _ = fs::remove_dir_all(&state.config.state_dir);
+}
+
 async fn exercise_remote_queue_callback(
     disconnect_before_offer: bool,
     delay: Duration,
@@ -278,7 +364,28 @@ async fn exercise_remote_queue_callback(
     let mut original = Some(original);
     if disconnect_before_offer {
         drop(original.take());
-        tokio::time::sleep(Duration::from_millis(100)).await;
+        // The failed dial falls back to the server-brokered (indirect)
+        // transport, which itself waits one inactivity window before the
+        // attempt is declared failed and requeued.
+        let deadline = tokio::time::Instant::now() + Duration::from_secs(5);
+        loop {
+            let transfers = state.transfers.read().await;
+            let entry = transfers
+                .entries
+                .iter()
+                .find(|entry| entry.id == download.id)
+                .unwrap();
+            if entry.status == "queued" {
+                break;
+            }
+            assert!(
+                tokio::time::Instant::now() < deadline,
+                "failed attempt was not requeued: {}",
+                entry.status
+            );
+            drop(transfers);
+            tokio::task::yield_now().await;
+        }
         let transfers = state.transfers.read().await;
         let entry = transfers
             .entries

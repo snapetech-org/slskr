@@ -138,8 +138,60 @@ pub(crate) async fn handle_inbound_file_transfer(
         upload_file_transfer_with_connection(state, &transfer, &mut file, !remote_token_received)
             .await
     };
+    finish_file_transfer(state, &transfer, result).await;
+    Ok(())
+}
+
+/// Whether this data socket still owns its transfer entry.
+///
+/// `handle_inbound_file_transfer` moves the entry to `in_progress` right before
+/// it starts reading. Any other status means a queued retry, a newer attempt,
+/// or a terminal outcome already owns the entry.
+async fn download_data_socket_still_owned(state: &AppState, id: u64) -> bool {
+    state
+        .transfers
+        .read()
+        .await
+        .entries
+        .iter()
+        .find(|entry| entry.id == id)
+        .is_some_and(|entry| entry.status == "in_progress")
+}
+
+/// Project the outcome of a transfer that owns its socket.
+///
+/// The listener path ends here after `handle_inbound_file_transfer` reads the
+/// last chunk; the outbound dial path projects through
+/// `execute_accepted_file_transfer` instead.
+pub(crate) async fn finish_file_transfer(
+    state: &AppState,
+    transfer: &TransferEntry,
+    result: Result<(u64, u64), String>,
+) {
     if let Err(error) = &result {
-        record_expected_upload_failure(state, &transfer, error).await;
+        record_expected_upload_failure(state, transfer, error).await;
+    }
+    // A download that loses its data socket is retried like slskd's
+    // `Retry.Do`: the same entry returns to `queued` with the next attempt and
+    // the incomplete `.part` file resumes. Cancellation, content-safety
+    // rejection, and exhausted attempts stay terminal.
+    if transfer.direction == 0 {
+        if let Err(error) = &result {
+            if transfer_is_cancelled(state, transfer.id).await {
+                return;
+            }
+            // A stall sweep may have already requeued this transfer and a newer
+            // attempt may own it now. A late socket error must not spend that
+            // attempt's retry budget.
+            if !download_data_socket_still_owned(state, transfer.id).await {
+                return;
+            }
+            if !error.starts_with("download rejected by configured content safety policy")
+                && requeue_peer_download(state, transfer, error).await
+            {
+                return;
+            }
+        }
     }
     let (status, bytes_transferred, size, reason) = match result {
         Ok((bytes_transferred, size)) => ("succeeded", bytes_transferred, Some(size), None),
@@ -150,6 +202,32 @@ pub(crate) async fn handle_inbound_file_transfer(
             Some(error),
         ),
     };
+    if let Some(reason) = reason.as_deref() {
+        record_soulseek_diagnostic(
+            state,
+            if transfer.direction == 0 {
+                logging::LogLevel::Warn
+            } else {
+                logging::LogLevel::Info
+            },
+            "soulseek",
+            format!(
+                "inbound {} {} for {} ended {status}: {reason}",
+                if transfer.direction == 0 {
+                    "download"
+                } else {
+                    "upload"
+                },
+                transfer.id,
+                transfer
+                    .peer_username
+                    .as_deref()
+                    .map(redact_username)
+                    .unwrap_or_else(|| "<unknown>".to_owned()),
+            ),
+        )
+        .await;
+    }
 
     let updated = {
         let mut transfers = state.transfers.write().await;
@@ -165,5 +243,4 @@ pub(crate) async fn handle_inbound_file_transfer(
     }
     schedule_queued_uploads(state).await;
     schedule_queued_downloads(state).await;
-    Ok(())
 }

@@ -202,11 +202,7 @@ pub(super) async fn handle_queued_upload_request<
                     && entry.filename == request.filename
                     && entry.local_path.is_some()
                     && (entry.status == "peer_negotiating"
-                        || (entry.status == "queued"
-                            && entry
-                                .reason
-                                .as_deref()
-                                .is_some_and(is_remote_queue_response)))
+                        || entry.status == "queued")
             })
             .map(|entry| entry.id);
         if pending_id.is_none() {

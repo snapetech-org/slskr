@@ -28,6 +28,10 @@ use self::download_progress::download_file_with_progress;
 pub(super) use self::download_progress::{transfer_is_cancelled, update_transfer_progress};
 #[path = "file_transfer_runtime_owners/inbound_transfer.rs"]
 mod inbound_transfer;
+// Exposed at crate root for the full-controller contracts, which drive the
+// retry projection without a live socket.
+#[cfg(feature = "full-controller-tests")]
+pub(super) use self::inbound_transfer::finish_file_transfer;
 pub(super) use self::inbound_transfer::handle_inbound_file_transfer;
 #[path = "file_transfer_runtime_owners/indirect_transfer.rs"]
 mod indirect_transfer;
@@ -36,8 +40,9 @@ pub(super) use self::indirect_transfer::{fail_indirect_browse, fail_indirect_tra
 #[path = "file_transfer_runtime_owners/peer_negotiation.rs"]
 mod peer_negotiation;
 pub(super) use self::peer_negotiation::{
-    execute_accepted_file_transfer, probe_peer_capability, project_indirect_transfer_response,
-    project_peer_transfer_response, schedule_queued_downloads,
+    execute_accepted_file_transfer, expire_stalled_download_negotiations, probe_peer_capability,
+    project_indirect_transfer_response, project_peer_transfer_response, requeue_peer_download,
+    resume_queued_downloads_after_login, schedule_queued_downloads,
 };
 #[path = "file_transfer_runtime_owners/transfer_policy.rs"]
 mod transfer_policy;

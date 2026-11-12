@@ -72,6 +72,7 @@ pub(super) fn spawn_download_auto_retry(state: Arc<AppState>) {
         let mut tracker = AutoRetryTracker::default();
         loop {
             let settings = state.transfer_auto_retry_settings.read().await.clone();
+            expire_stalled_download_negotiations(&state).await;
             if settings.enabled && state.session.read().await.state == "connected" {
                 if let Err(error) =
                     run_download_auto_retry_cycle_with_settings(&state, &mut tracker, &settings)
@@ -134,6 +135,22 @@ pub(super) fn spawn_download_auto_replace(state: Arc<AppState>) {
                 }
             }
             time::sleep(settings.check_interval).await;
+        }
+    });
+}
+
+/// Wake queued downloads whose retry backoff elapsed (and any queued entry an
+/// event missed) without waiting for the five-minute auto-retry sweep.
+pub(super) fn spawn_queued_download_scheduler(state: Arc<AppState>) {
+    let task_state = Arc::clone(&state);
+    state.spawn_managed_task(async move {
+        let mut interval = time::interval(Duration::from_secs(1));
+        interval.set_missed_tick_behavior(time::MissedTickBehavior::Skip);
+        loop {
+            interval.tick().await;
+            if task_state.session.read().await.state == "connected" {
+                schedule_queued_downloads(&task_state).await;
+            }
         }
     });
 }

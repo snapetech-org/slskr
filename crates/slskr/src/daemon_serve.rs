@@ -965,6 +965,7 @@ pub(super) async fn serve(invocation: ServeInvocation) -> Result<(), String> {
     relay_agent::spawn(Arc::clone(&state));
     spawn_download_auto_retry(Arc::clone(&state));
     spawn_download_auto_replace(Arc::clone(&state));
+    spawn_queued_download_scheduler(Arc::clone(&state));
     spawn_transfer_rescue(Arc::clone(&state));
     spawn_backfill_scheduler(Arc::clone(&state));
     spawn_lidarr_sync_scheduler(Arc::clone(&state));
