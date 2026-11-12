@@ -25,9 +25,9 @@ export const clearToken = () => {
 
 export const isPassthroughEnabled = () => getToken() === tokenPassthroughValue;
 
-// Reads the token expiry for refresh scheduling only. Signature verification
-// remains the server's responsibility.
-export const getTokenExpiry = () => {
+// Reads token claims for scheduling only. Signature verification remains the
+// server's responsibility.
+const getTokenClaims = () => {
   const token = getToken();
   if (!token || token === tokenPassthroughValue) return undefined;
   const payload = token.split('.')[1];
@@ -39,10 +39,25 @@ export const getTokenExpiry = () => {
       '=',
     );
     const decoded = JSON.parse(atob(padded));
-    return typeof decoded.exp === 'number' ? decoded.exp : undefined;
+    return decoded && typeof decoded === 'object' ? decoded : undefined;
   } catch {
     return undefined;
   }
+};
+
+export const isTokenRefreshable = () => {
+  const claims = getTokenClaims();
+  return (
+    claims !== undefined &&
+    typeof claims.auth_epoch === 'number' &&
+    !claims.oidc_issuer &&
+    !claims.oidc_subject
+  );
+};
+
+export const getTokenExpiry = () => {
+  const expiry = getTokenClaims()?.exp;
+  return typeof expiry === 'number' ? expiry : undefined;
 };
 
 export const getTokenRemainingMillis = () => {

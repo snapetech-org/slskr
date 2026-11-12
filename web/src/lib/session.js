@@ -5,6 +5,7 @@ import {
   getToken,
   isPassthroughEnabled,
   isRememberedSession,
+  isTokenRefreshable,
   setToken,
 } from './token';
 
@@ -25,6 +26,8 @@ export const isLoggedIn = () => {
     token !== undefined && token !== null && token !== tokenPassthroughValue
   );
 };
+
+export const isRefreshable = () => isLoggedIn() && isTokenRefreshable();
 
 export const login = async ({ username, password, rememberMe = false }) => {
   const { token } = (

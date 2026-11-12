@@ -178,9 +178,7 @@ pub fn route_requires_auth(config: &AppConfig, path: &str) -> bool {
         && path != "/api/session/enabled"
         && !matches!(
             path,
-            "/api/session/oidc/enabled"
-                | "/api/session/oidc/login"
-                | "/api/session/oidc/callback"
+            "/api/session/oidc/enabled" | "/api/session/oidc/login" | "/api/session/oidc/callback"
         )
 }
 
@@ -383,6 +381,21 @@ pub(crate) fn web_auth_epoch(jwt_key: &str, username: &str, password: &str) -> O
     let mut epoch = [0_u8; 8];
     epoch.copy_from_slice(&digest[..8]);
     Some(u64::from_be_bytes(epoch))
+}
+
+/// Only locally authenticated tokens carrying a credential binding can use
+/// sliding refresh. Pre-binding tokens must expire normally, and OIDC tokens
+/// must not outlive the identity-provider session until provider-side
+/// revalidation is available.
+pub(crate) fn admin_jwt_can_refresh(
+    claims: &AdminJwtClaims,
+    current_auth_epoch: Option<u64>,
+) -> bool {
+    matches!(
+        (claims.auth_epoch, current_auth_epoch),
+        (Some(claim), Some(current)) if claim == current
+    ) && claims.oidc_issuer.is_none()
+        && claims.oidc_subject.is_none()
 }
 
 pub(crate) fn issue_admin_jwt(

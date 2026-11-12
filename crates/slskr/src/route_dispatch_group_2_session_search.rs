@@ -50,10 +50,7 @@ async fn route_dispatch_group_2_session_search(
                 &configured_username,
                 &configured_password,
             );
-            if claims
-                .auth_epoch
-                .is_some_and(|epoch| Some(epoch) != auth_epoch)
-            {
+            if !utils::admin_jwt_can_refresh(&claims, auth_epoch) {
                 return Ok(routing::unauthorized_response());
             }
             let ttl = if claims.remember {

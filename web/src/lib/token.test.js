@@ -3,12 +3,13 @@ import {
   clearToken,
   getTokenExpiry,
   getTokenRemainingMillis,
+  isTokenRefreshable,
   setToken,
 } from './token';
 
-const tokenWithExpiry = (exp) => {
+const tokenWithClaims = (claims) => {
   const header = btoa(JSON.stringify({ alg: 'HS256', typ: 'JWT' }));
-  const payload = btoa(JSON.stringify({ exp }))
+  const payload = btoa(JSON.stringify(claims))
     .replace(/\+/g, '-')
     .replace(/\//g, '_')
     .replace(/=+$/, '');
@@ -21,7 +22,7 @@ describe('token expiry helpers', () => {
   });
 
   it('reads exp from a stored token', () => {
-    setToken(sessionStorage, tokenWithExpiry(1234));
+    setToken(sessionStorage, tokenWithClaims({ exp: 1234 }));
 
     expect(getTokenExpiry()).toBe(1234);
   });
@@ -36,11 +37,28 @@ describe('token expiry helpers', () => {
 
   it('reports the remaining lifetime in milliseconds', () => {
     const exp = Math.floor(Date.now() / 1000) + 60;
-    setToken(sessionStorage, tokenWithExpiry(exp));
+    setToken(sessionStorage, tokenWithClaims({ exp }));
 
     const remaining = getTokenRemainingMillis();
 
     expect(remaining).toBeGreaterThan(58_000);
     expect(remaining).toBeLessThanOrEqual(60_000);
+  });
+
+  it('only schedules refresh for locally authenticated tokens with an epoch', () => {
+    setToken(
+      sessionStorage,
+      tokenWithClaims({ auth_epoch: 42, exp: 1234 }),
+    );
+    expect(isTokenRefreshable()).toBe(true);
+
+    setToken(sessionStorage, tokenWithClaims({ exp: 1234 }));
+    expect(isTokenRefreshable()).toBe(false);
+
+    setToken(
+      sessionStorage,
+      tokenWithClaims({ auth_epoch: 42, exp: 1234, oidc_issuer: 'idp' }),
+    );
+    expect(isTokenRefreshable()).toBe(false);
   });
 });

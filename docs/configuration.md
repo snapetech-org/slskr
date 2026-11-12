@@ -72,10 +72,12 @@ The Web UI signs in with a short-lived administrator JWT. By default the
 token is kept in `sessionStorage`, so closing the browser ends the session.
 Selecting **Remember Me** stores the token in `localStorage` instead and
 issues it with the longer remembered lifetime. The UI refreshes an active
-session periodically, and after a tab returns to the foreground, through
-`POST /api/v0/session/refresh`. Changing the web-auth username or password
-stops existing tokens from refreshing; they remain valid only until their
-current expiry.
+local web-auth session periodically, and after a tab returns to the
+foreground, through `POST /api/v0/session/refresh`. Changing the web-auth
+username or password stops bound tokens from refreshing. Tokens without a
+credential binding also cannot refresh; they remain valid only until their
+current expiry. OIDC tokens are not refreshed until provider-side session
+revalidation is available.
 
 When no signing key is configured, slskR generates one on first start and
 persists it as `<state_dir>/jwt-key` with owner-only permissions. Keep the

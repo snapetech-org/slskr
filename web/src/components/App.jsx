@@ -667,7 +667,7 @@ class App extends Component {
   };
 
   startSessionRefresh = () => {
-    if (this.sessionRefreshTimer) return;
+    if (this.sessionRefreshTimer || !session.isRefreshable()) return;
     // A restored token may expire before the first scheduled tick. Refresh it
     // immediately when it is already inside the normal refresh interval.
     const remaining = getTokenRemainingMillis();
@@ -678,10 +678,11 @@ class App extends Component {
   };
 
   scheduleSessionRefresh = () => {
-    if (!this.isMountedFlag) return;
-    const remaining = session.isLoggedIn()
-      ? getTokenRemainingMillis()
-      : undefined;
+    if (!this.isMountedFlag || !session.isRefreshable()) {
+      this.sessionRefreshTimer = undefined;
+      return;
+    }
+    const remaining = getTokenRemainingMillis();
     const delay =
       remaining === undefined
         ? SESSION_REFRESH_INTERVAL_MS
@@ -697,6 +698,7 @@ class App extends Component {
 
   handleSessionVisibilityChange = () => {
     if (document.visibilityState !== 'visible') return;
+    if (!session.isRefreshable()) return;
     if (Date.now() - this.lastSessionRefreshAt < SESSION_REFRESH_VISIBLE_THRESHOLD_MS) {
       return;
     }
@@ -704,7 +706,7 @@ class App extends Component {
   };
 
   refreshSession = () => {
-    if (!this.isMountedFlag || !session.isLoggedIn()) return;
+    if (!this.isMountedFlag || !session.isRefreshable()) return;
     this.lastSessionRefreshAt = Date.now();
     session.refresh().catch((error) => {
       if (error.response?.status === 401) {

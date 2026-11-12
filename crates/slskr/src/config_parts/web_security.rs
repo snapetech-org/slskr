@@ -363,22 +363,12 @@ pub(super) fn resolve_controller_oidc<E: ConfigEnv>(
     let client_id = env.var("SLSKR_OIDC_CLIENT_ID").unwrap_or_default();
     let client_secret = env.var("SLSKR_OIDC_CLIENT_SECRET").unwrap_or_default();
     let redirect_uri = env.var("SLSKR_OIDC_REDIRECT_URI").unwrap_or_default();
-    let allowed_emails = env
-        .var("SLSKR_OIDC_ALLOWED_EMAILS")
-        .unwrap_or_default();
+    let allowed_emails = env.var("SLSKR_OIDC_ALLOWED_EMAILS").unwrap_or_default();
     let allowed_email_domains = env
         .var("SLSKR_OIDC_ALLOWED_EMAIL_DOMAINS")
         .unwrap_or_default();
-    let allow_any_verified_user = env_bool_layer(
-        env,
-        "SLSKR_OIDC_ALLOW_ANY_VERIFIED_USER",
-        false,
-    )?;
-    let allow_private_issuer = env_bool_layer(
-        env,
-        "SLSKR_OIDC_ALLOW_PRIVATE_ISSUER",
-        false,
-    )?;
+    let allow_any_verified_user = env_bool_layer(env, "SLSKR_OIDC_ALLOW_ANY_VERIFIED_USER", false)?;
+    let allow_private_issuer = env_bool_layer(env, "SLSKR_OIDC_ALLOW_PRIVATE_ISSUER", false)?;
     let core = [&issuer_url, &client_id, &client_secret, &redirect_uri];
     let extras = !allowed_emails.trim().is_empty()
         || !allowed_email_domains.trim().is_empty()
@@ -413,8 +403,7 @@ pub(super) fn resolve_controller_oidc<E: ConfigEnv>(
         || issuer.password().is_some()
         || issuer.query().is_some()
         || issuer.fragment().is_some()
-        || !(issuer.scheme() == "https"
-            || (allow_private_issuer && issuer.scheme() == "http"))
+        || !(issuer.scheme() == "https" || (allow_private_issuer && issuer.scheme() == "http"))
     {
         return Err("SLSKR_OIDC_ISSUER_URL must use HTTPS (or HTTP with SLSKR_OIDC_ALLOW_PRIVATE_ISSUER=true) and contain no credentials, query, or fragment".to_owned());
     }
@@ -428,7 +417,10 @@ pub(super) fn resolve_controller_oidc<E: ConfigEnv>(
         || callback.fragment().is_some()
         || !callback.path().ends_with("/api/v0/session/oidc/callback")
     {
-        return Err("SLSKR_OIDC_REDIRECT_URI must be HTTPS and end at /api/v0/session/oidc/callback".to_owned());
+        return Err(
+            "SLSKR_OIDC_REDIRECT_URI must be HTTPS and end at /api/v0/session/oidc/callback"
+                .to_owned(),
+        );
     }
     Ok(ControllerOidcSettings {
         provider,

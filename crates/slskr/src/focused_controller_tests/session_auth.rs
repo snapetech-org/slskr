@@ -173,6 +173,72 @@ async fn session_refresh_rejects_tokens_after_a_web_auth_credential_change() {
 }
 
 #[tokio::test]
+async fn session_refresh_rejects_legacy_tokens_without_a_credential_binding() {
+    let (state, _commands) = test_state_with_env(auth_env());
+    let (token, claims) = crate::utils::issue_admin_jwt(
+        &state.config.controller_web_jwt_key,
+        state.config.controller_profile,
+        state.config.controller_web_jwt_ttl_millis,
+        ADMIN_USERNAME,
+        crate::utils::unix_timestamp(),
+    )
+    .expect("legacy session token");
+    assert!(claims.auth_epoch.is_none());
+
+    *state
+        .controller_web_auth_password
+        .write()
+        .unwrap_or_else(std::sync::PoisonError::into_inner) = "new-password".to_owned();
+    let authorization = format!("Bearer {token}");
+    let response = crate::route_dispatch::route_http_request_with_headers(
+        "POST",
+        "/api/v0/session/refresh",
+        Some(authorization.as_str()),
+        "",
+        &state,
+        &crate::RequestSecurityHeaders::default(),
+    )
+    .await
+    .expect("refresh route");
+
+    assert_eq!(response.status, "401 Unauthorized");
+}
+
+#[tokio::test]
+async fn session_refresh_rejects_oidc_tokens_without_provider_revalidation() {
+    let (state, _commands) = test_state_with_env(auth_env());
+    let auth_epoch = crate::utils::web_auth_epoch(
+        &state.config.controller_web_jwt_key,
+        ADMIN_USERNAME,
+        ADMIN_PASSWORD,
+    );
+    let (token, _) = crate::utils::issue_oidc_admin_jwt(
+        &state.config.controller_web_jwt_key,
+        state.config.controller_profile,
+        state.config.controller_web_jwt_ttl_millis,
+        ADMIN_USERNAME,
+        crate::utils::unix_timestamp(),
+        "https://idp.example.invalid",
+        "subject-1",
+        auth_epoch,
+    )
+    .expect("OIDC session token");
+    let authorization = format!("Bearer {token}");
+    let response = crate::route_dispatch::route_http_request_with_headers(
+        "POST",
+        "/api/v0/session/refresh",
+        Some(authorization.as_str()),
+        "",
+        &state,
+        &crate::RequestSecurityHeaders::default(),
+    )
+    .await
+    .expect("refresh route");
+
+    assert_eq!(response.status, "401 Unauthorized");
+}
+
+#[tokio::test]
 async fn scheduled_rotation_revocation_revokes_the_old_token() {
     let (state, _commands) = test_state_with_env(auth_env());
     let response = login(

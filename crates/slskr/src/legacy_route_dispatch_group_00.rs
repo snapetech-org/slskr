@@ -447,10 +447,7 @@ pub(super) async fn legacy_route_dispatch_group_00(
                 &configured_username,
                 &configured_password,
             );
-            if claims
-                .auth_epoch
-                .is_some_and(|epoch| Some(epoch) != auth_epoch)
-            {
+            if !utils::admin_jwt_can_refresh(&claims, auth_epoch) {
                 return Ok(routing::unauthorized_response());
             }
             let ttl = if claims.remember {
