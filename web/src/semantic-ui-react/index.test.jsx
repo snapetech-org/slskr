@@ -84,6 +84,15 @@ describe('form control labels', () => {
     expect(screen.getByRole('checkbox', { name: 'Accept terms' })).toBeInTheDocument();
   });
 
+  it('renders the box label even when no label text is supplied', () => {
+    const { container } = render(<Checkbox aria-label="Select file" />);
+
+    const input = screen.getByRole('checkbox', { name: 'Select file' });
+    const label = container.querySelector('.ui.checkbox label');
+    expect(label).not.toBeNull();
+    expect(label).toHaveAttribute('for', input.id);
+  });
+
   it('uses a Form.Field label to name nested input controls', () => {
     render(
       <Form>

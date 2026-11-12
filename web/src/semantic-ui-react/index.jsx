@@ -1222,7 +1222,13 @@ const CheckboxInput = React.forwardRef((props, ref) => {
         {...inputProps}
         ref={ref}
       />
-      {label ? <label htmlFor={inputId}>{label}</label> : null}
+      {/*
+        The box itself is drawn by `.ui.checkbox label:before`, so the label
+        must exist even when no label text is supplied. Selection-only
+        checkboxes (transfer rows, file lists) name the input with
+        `aria-label` instead of visible text.
+      */}
+      <label htmlFor={inputId}>{label}</label>
     </div>
   );
 });
