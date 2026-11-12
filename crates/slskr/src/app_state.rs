@@ -134,7 +134,7 @@ pub(super) struct AppState {
         std::sync::Mutex<BTreeMap<u32, PendingIndirectPeerDownload>>,
     pub(super) preview_streams: Arc<Semaphore>,
     pub(super) listening_party_stream_limits: RwLock<ListeningPartyStreamLimits>,
-    pub(super) revoked_jwts: RwLock<RevokedJwtStore>,
+    pub(super) revoked_jwts: Arc<RwLock<RevokedJwtStore>>,
     pub(super) login_attempts: RwLock<LoginAttemptStore>,
     pub(super) pod_signature_stats: PodSignatureStats,
     pub(super) pod_verification_stats: PodVerificationStats,

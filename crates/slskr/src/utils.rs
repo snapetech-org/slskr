@@ -349,10 +349,40 @@ pub(crate) struct AdminJwtClaims {
     pub exp: u64,
     pub iss: String,
     pub aud: String,
+    /// Marks a token issued for the opt-in "Remember Me" login. Remembered
+    /// tokens use the longer remembered lifetime and are refreshed into
+    /// remembered tokens.
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub remember: bool,
+    /// Binds a token to the web-auth credentials that were active when it was
+    /// issued. Sliding refresh compares this against the current credentials,
+    /// so changing the username or password stops existing tokens from being
+    /// refreshed indefinitely.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub auth_epoch: Option<u64>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub oidc_issuer: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub oidc_subject: Option<String>,
+}
+
+fn is_false(value: &bool) -> bool {
+    !*value
+}
+
+/// Derives a stable identifier for the current web-auth credentials. The JWT
+/// signing key is used as the HMAC key, so the value cannot be used to test
+/// password guesses without also holding the signing key.
+pub(crate) fn web_auth_epoch(jwt_key: &str, username: &str, password: &str) -> Option<u64> {
+    let mut mac = Hmac::<Sha256>::new_from_slice(jwt_key.as_bytes()).ok()?;
+    mac.update(b"slskr-web-auth-epoch\0");
+    mac.update(username.as_bytes());
+    mac.update(b"\0");
+    mac.update(password.as_bytes());
+    let digest = mac.finalize().into_bytes();
+    let mut epoch = [0_u8; 8];
+    epoch.copy_from_slice(&digest[..8]);
+    Some(u64::from_be_bytes(epoch))
 }
 
 pub(crate) fn issue_admin_jwt(
@@ -362,6 +392,26 @@ pub(crate) fn issue_admin_jwt(
     username: &str,
     now: u64,
 ) -> Option<(String, AdminJwtClaims)> {
+    issue_admin_jwt_with_remember(
+        jwt_key,
+        controller_profile,
+        ttl_millis,
+        username,
+        now,
+        false,
+        None,
+    )
+}
+
+pub(crate) fn issue_admin_jwt_with_remember(
+    jwt_key: &str,
+    controller_profile: crate::config::ControllerProfile,
+    ttl_millis: u64,
+    username: &str,
+    now: u64,
+    remember: bool,
+    auth_epoch: Option<u64>,
+) -> Option<(String, AdminJwtClaims)> {
     issue_admin_jwt_with_identity(
         jwt_key,
         controller_profile,
@@ -369,6 +419,8 @@ pub(crate) fn issue_admin_jwt(
         username,
         now,
         None,
+        remember,
+        auth_epoch,
     )
 }
 
@@ -380,6 +432,7 @@ pub(crate) fn issue_oidc_admin_jwt(
     now: u64,
     issuer: &str,
     subject: &str,
+    auth_epoch: Option<u64>,
 ) -> Option<(String, AdminJwtClaims)> {
     issue_admin_jwt_with_identity(
         jwt_key,
@@ -388,6 +441,35 @@ pub(crate) fn issue_oidc_admin_jwt(
         username,
         now,
         Some((issuer, subject)),
+        false,
+        auth_epoch,
+    )
+}
+
+/// Issues a fresh token for an already verified session, preserving the
+/// identity and remembered-session category. Sliding refresh keeps an active
+/// browser session alive without asking the user to sign in again.
+pub(crate) fn reissue_admin_jwt(
+    jwt_key: &str,
+    controller_profile: crate::config::ControllerProfile,
+    ttl_millis: u64,
+    claims: &AdminJwtClaims,
+    now: u64,
+    auth_epoch: Option<u64>,
+) -> Option<(String, AdminJwtClaims)> {
+    let oidc_identity = claims
+        .oidc_issuer
+        .as_deref()
+        .zip(claims.oidc_subject.as_deref());
+    issue_admin_jwt_with_identity(
+        jwt_key,
+        controller_profile,
+        ttl_millis,
+        &claims.name,
+        now,
+        oidc_identity,
+        claims.remember,
+        auth_epoch,
     )
 }
 
@@ -398,6 +480,8 @@ fn issue_admin_jwt_with_identity(
     username: &str,
     now: u64,
     oidc_identity: Option<(&str, &str)>,
+    remember: bool,
+    auth_epoch: Option<u64>,
 ) -> Option<(String, AdminJwtClaims)> {
     let issuer = match controller_profile {
         crate::config::ControllerProfile::Legacy => "slskd",
@@ -413,6 +497,8 @@ fn issue_admin_jwt_with_identity(
         exp: now.saturating_add(ttl_millis / 1000),
         iss: issuer.to_owned(),
         aud: issuer.to_owned(),
+        remember,
+        auth_epoch,
         oidc_issuer: oidc_identity.map(|(issuer, _)| issuer.to_owned()),
         oidc_subject: oidc_identity.map(|(_, subject)| subject.to_owned()),
     };

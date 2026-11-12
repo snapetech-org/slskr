@@ -21,7 +21,7 @@ Protected routes accept `Authorization: Bearer <token>` or the
 
 | Token | Scope |
 | --- | --- |
-| `SLSKR_API_TOKEN` | Administrator; also signs short-lived administrator JWTs. |
+| `SLSKR_API_TOKEN` | Administrator API credential. It does not sign browser JWTs. |
 | `SLSKR_API_READ_WRITE_TOKEN` | Non-administrator read/write. |
 | `SLSKR_API_READ_ONLY_TOKEN` | Read-only. |
 | `SLSKR_API_NOWPLAYING_TOKEN` | Scoped now-playing webhook only. |

@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import LoginForm, { getHttpsHintUrl } from './LoginForm';
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 
 vi.mock('./Shared/Footer', () => ({ default: () => <div>Footer</div> }));
@@ -37,5 +37,40 @@ describe('LoginForm', () => {
     expect(link).toHaveClass('login-https-hint-link');
     expect(link.closest('.login-https-hint')).toBeInTheDocument();
     expect(screen.getByText('HTTPS Option')).toBeInTheDocument();
+  });
+
+  it('passes the Remember Me choice to the login attempt', () => {
+    window.history.pushState({}, '', '/');
+    const onLoginAttempt = vi.fn();
+
+    render(<LoginForm loading={false} onLoginAttempt={onLoginAttempt} />);
+
+    fireEvent.change(screen.getByPlaceholderText('Username'), {
+      target: { value: 'user' },
+    });
+    fireEvent.change(screen.getByPlaceholderText('Password'), {
+      target: { value: 'password' },
+    });
+    fireEvent.click(screen.getByRole('checkbox', { name: 'Remember Me' }));
+    fireEvent.click(screen.getByTestId('login-submit'));
+
+    expect(onLoginAttempt).toHaveBeenCalledWith('user', 'password', true);
+  });
+
+  it('defaults Remember Me to off', () => {
+    window.history.pushState({}, '', '/');
+    const onLoginAttempt = vi.fn();
+
+    render(<LoginForm loading={false} onLoginAttempt={onLoginAttempt} />);
+
+    fireEvent.change(screen.getByPlaceholderText('Username'), {
+      target: { value: 'user' },
+    });
+    fireEvent.change(screen.getByPlaceholderText('Password'), {
+      target: { value: 'password' },
+    });
+    fireEvent.click(screen.getByTestId('login-submit'));
+
+    expect(onLoginAttempt).toHaveBeenCalledWith('user', 'password', false);
   });
 });

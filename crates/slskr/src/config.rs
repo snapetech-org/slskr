@@ -132,6 +132,7 @@ pub struct AppConfig {
     pub controller_web_jwt_key: String,
     pub controller_web_jwt_key_configured: bool,
     pub controller_web_jwt_ttl_millis: u64,
+    pub controller_web_jwt_remember_ttl_millis: u64,
     pub auth_required: bool,
     pub api_token: Option<String>,
     pub api_read_write_token: Option<String>,
@@ -283,10 +284,11 @@ pub use transfer_policy::{
 };
 #[path = "config_parts/web_security.rs"]
 mod web_security;
-pub use web_security::{ControllerOidcSettings, TrustedProxyCidr};
+pub(crate) use web_security::load_or_create_persisted_controller_jwt_key;
 use web_security::{
     resolve_api_and_web_hardening, resolve_auth_disabled, resolve_controller_api_keys,
     resolve_controller_oidc, resolve_controller_web, resolve_controller_web_auth,
     trusted_proxy_cidrs_from_layers, ApiAndWebHardeningSettings, ControllerWebAuthSettings,
     ControllerWebResolution,
 };
+pub use web_security::{ControllerOidcSettings, TrustedProxyCidr};
