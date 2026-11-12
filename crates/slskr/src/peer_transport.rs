@@ -395,7 +395,9 @@ async fn connect_obfuscated_file_transfer(
     .await
     .map_err(|_| "obfuscated file-transfer init timed out".to_owned())?
     .map_err(|error| format!("obfuscated file-transfer init failed: {error}"))?;
-    Ok(slskr_client::file_transfer::FileTransferConnection::new_obfuscated(stream))
+    // Only the init frame is obfuscated; the peer reads the transfer offset and
+    // writes file data in the clear on the same socket.
+    Ok(slskr_client::file_transfer::FileTransferConnection::new(stream))
 }
 
 pub(super) async fn connect_indirect_file_transfer(

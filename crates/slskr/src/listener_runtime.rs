@@ -549,13 +549,25 @@ pub(super) async fn handle_owned_incoming(
             obfuscated,
             ..
         } => {
+            record_soulseek_diagnostic(
+                &state,
+                logging::LogLevel::Debug,
+                "soulseek",
+                format!(
+                    "inbound file transfer init from {}: token {token}, obfuscated {obfuscated}",
+                    redact_username(&username)
+                ),
+            )
+            .await;
             handle_inbound_file_transfer(
                 &state,
-                if obfuscated {
-                    slskr_client::file_transfer::FileTransferConnection::new_obfuscated(stream)
-                } else {
-                    slskr_client::file_transfer::FileTransferConnection::new(stream)
-                },
+                // Type-1 obfuscation covers only the init frame. A peer that
+                // opens the file-transfer socket with an obfuscated `PeerInit`
+                // still writes the transfer token and reads our offset in the
+                // clear (verified against SoulseekQt: the 4 bytes after the
+                // init frame are the plaintext token), so the transfer payload
+                // must not be decoded with the rotated stream cipher.
+                slskr_client::file_transfer::FileTransferConnection::new(stream),
                 (token != 0).then_some(token),
                 Some(&username),
             )

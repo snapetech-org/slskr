@@ -1,5 +1,16 @@
 use super::*;
 
+/// How long an inbound download waits for the peer's `FileTransferInit` token
+/// before it keeps the negotiated token and starts the offset handshake.
+///
+/// Reference clients disagree here: Nicotine+ and SoulseekQt announce the
+/// transfer token (`FileTransferInit`) on the file-transfer socket, while
+/// slskd carries it in `PeerInit` and expects our offset immediately. The peer
+/// that announces a token writes it in the same burst as `PeerInit`, so a short
+/// grace is enough to tell the two dialects apart without stalling peers that
+/// never send one.
+pub(crate) const INBOUND_TRANSFER_TOKEN_GRACE: time::Duration = time::Duration::from_millis(1500);
+
 pub(crate) async fn handle_inbound_file_transfer(
     state: &AppState,
     mut file: slskr_client::file_transfer::FileTransferConnection<TcpStream>,
@@ -30,24 +41,58 @@ pub(crate) async fn handle_inbound_file_transfer(
             |token| format!("no accepted inbound file transfer is pending for token {token}"),
         )
     })?;
-    let received_token = if token.is_none() && transfer.direction == 0 {
-        let remote_token = time::timeout(
-            state.config.soulseek_connection.timeout_transfer,
-            file.receive_token(),
-        )
-        .await
-        .map_err(|_| "inbound download token receive timed out".to_owned())?
-        .map_err(|error| format!("inbound download token receive failed: {error}"))?;
-        transfer = {
-            let transfers = state.transfers.read().await;
-            transfers
-                .pending_inbound_file_transfer(Some(remote_token), peer_username)
-                .filter(|entry| entry.direction == 0)
+    let received_token = if transfer.direction == 0 {
+        // Every reference client that announces the transfer token on the
+        // file-transfer socket (Nicotine+, SoulseekQt) writes it in the same
+        // burst as `PeerInit`; slskd/Soulseek.NET carries it only in
+        // `PeerInit`. Always look for the frame before answering with our
+        // offset: treating `PeerInit`'s token as proof that no frame follows
+        // made the frame bytes land at the head of the file, corrupting an
+        // otherwise complete download.
+        match time::timeout(INBOUND_TRANSFER_TOKEN_GRACE, file.receive_token()).await {
+            Ok(Ok(remote_token)) => {
+                if token.is_none() {
+                    transfer = {
+                        let transfers = state.transfers.read().await;
+                        transfers
+                            .pending_inbound_file_transfer(Some(remote_token), peer_username)
+                            .filter(|entry| entry.direction == 0)
+                    }
+                    .ok_or_else(|| {
+                        format!("no accepted inbound download is pending for token {remote_token}")
+                    })?;
+                } else if remote_token != transfer.token {
+                    return Err(format!(
+                        "inbound download token mismatch: expected {}, received {remote_token}",
+                        transfer.token
+                    ));
+                }
+                Some(remote_token)
+            }
+            Ok(Err(error)) => {
+                record_soulseek_diagnostic(
+                    state,
+                    logging::LogLevel::Warn,
+                    "soulseek",
+                    format!(
+                        "inbound download {} from {} closed before its transfer token: {error}",
+                        transfer.id,
+                        peer_username
+                            .map(redact_username)
+                            .unwrap_or_else(|| "<unknown>".to_owned())
+                    ),
+                )
+                .await;
+                return Err(format!(
+                    "inbound download token receive failed for transfer {}: {error}",
+                    transfer.id
+                ));
+            }
+            // The peer opened the transfer socket without announcing a token.
+            // Continue with the negotiated token instead of waiting for the
+            // peer's own inactivity timeout to abort the transfer.
+            Err(_) => Some(transfer.token),
         }
-        .ok_or_else(|| {
-            format!("no accepted inbound download is pending for token {remote_token}")
-        })?;
-        Some(remote_token)
     } else {
         None
     };
@@ -56,6 +101,10 @@ pub(crate) async fn handle_inbound_file_transfer(
     // immediately after PeerInit.  The regular compatibility path retains
     // the historical local-token send behavior for clients that do not send
     // that framing on an incoming transfer socket.
+    //
+    // Current listeners decode the init frame and hand the payload over as a
+    // plain connection, so this branch is only reachable when a caller
+    // explicitly supplies an obfuscated `FileTransferConnection`.
     let remote_token_received = if file.is_obfuscated() && transfer.direction == 1 {
         let remote_token = time::timeout(
             state.config.soulseek_connection.timeout_transfer,

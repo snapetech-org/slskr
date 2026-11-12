@@ -11,13 +11,18 @@ pub(super) async fn download_file_with_progress(
 ) -> Result<u64, String> {
     let token = match received_token {
         Some(token) => token,
-        None => time::timeout(
-            state.config.soulseek_connection.timeout_transfer,
+        None => match time::timeout(
+            super::inbound_transfer::INBOUND_TRANSFER_TOKEN_GRACE,
             connection.receive_token(),
         )
         .await
-        .map_err(|_| "file download token receive timed out".to_owned())?
-        .map_err(|error| format!("file download token receive failed: {error}"))?,
+        {
+            Ok(Ok(remote_token)) => remote_token,
+            Ok(Err(error)) => return Err(format!("file download token receive failed: {error}")),
+            // A peer that carried its token in `PeerInit` sends no
+            // `FileTransferInit`; keep the negotiated token and start reading.
+            Err(_) => transfer.token,
+        },
     };
     if token != transfer.token {
         return Err(format!(

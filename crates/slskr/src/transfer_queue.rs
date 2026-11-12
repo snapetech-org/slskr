@@ -775,7 +775,16 @@ impl TransferQueue {
             .iter()
             .filter(|entry| {
                 entry.local_path.is_some()
-                    && (entry.status == "accepted" || entry.status == "in_progress")
+                    && if entry.direction == 0 {
+                        // An inbound download socket may only attach to a
+                        // transfer that has not started yet. A transfer already
+                        // in progress owns its connection (possibly one we
+                        // dialed ourselves), so a second socket must not start
+                        // writing the same file.
+                        entry.status == "accepted"
+                    } else {
+                        entry.status == "accepted" || entry.status == "in_progress"
+                    }
                     && token.is_none_or(|token| entry.token == token)
                     && peer_username
                         .is_none_or(|username| entry.peer_username.as_deref() == Some(username))

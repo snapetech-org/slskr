@@ -70,11 +70,9 @@ async fn exercise_inbound_download_routing(obfuscated: bool, valid_token: bool) 
     let receiving =
         crate::listener_runtime::handle_owned_incoming(receiver_state, incoming, remote_addr);
     let sending = async {
-        let mut peer = if obfuscated {
-            FileTransferConnection::new_obfuscated(stream)
-        } else {
-            FileTransferConnection::new(stream)
-        };
+        // Type-1 obfuscation covers only the `PeerInit` frame; the transfer
+        // token, the offset handshake, and the payload are always plain.
+        let mut peer = FileTransferConnection::new(stream);
         let token = if valid_token {
             entries[2].token
         } else {
