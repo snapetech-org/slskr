@@ -257,6 +257,18 @@ def format_capture_metadata(notes: list[dict[str, Any]]) -> str:
 def inject_curated_notes(changelog: str, curated_notes: str) -> str:
     if not curated_notes:
         return changelog
+
+    highlights = re.search(r"^## Highlights[ \t]*$", changelog, re.M)
+    if highlights is not None:
+        following_heading = re.search(r"^## .+$", changelog[highlights.end() :], re.M)
+        if following_heading is None:
+            suffix = ""
+        else:
+            suffix_start = highlights.end() + following_heading.start()
+            suffix = changelog[suffix_start:]
+        assembled = changelog[: highlights.end()] + "\n\n" + curated_notes.strip()
+        return assembled + ("\n\n" + suffix if suffix else "\n")
+
     heading = re.search(r"^## .+$", changelog, re.M)
     if heading is None:
         return f"{curated_notes}\n\n{changelog.strip()}\n"

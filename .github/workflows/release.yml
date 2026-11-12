@@ -447,9 +447,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          # The summary uses this release's dated changelog; detailed fragments
-          # are assembled separately without repeating older release highlights.
-          # Full notes retain the structured User-facing changes section.
+          # The public summary uses this release's dated changelog. Full notes
+          # replace that Highlights content with validated structured User-facing changes.
           highlights="$(awk -v version="$RELEASE_VERSION" '
             index($0, "## [" version "] — ") == 1 { in_section = 1; next }
             in_section && /^## \[/ { exit }
