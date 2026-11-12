@@ -835,6 +835,7 @@ async fn route_dispatch_group_2_transfer_status(
                 })
                 .to_string()
             };
+            schedule_queued_downloads(state).await;
             Ok(routing::ok_response(response_body))
         }
 

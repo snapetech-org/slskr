@@ -239,9 +239,12 @@ async fn exercise_remote_queue_callback(
     let mut init = InitConnection::new(stream);
     init.receive().await.unwrap();
     let mut original = PeerMessageConnection::new(init.into_inner());
+    // Modern download negotiation: we ask the uploader to queue the file
+    // (`QueueUpload`) and it answers with an offer on this socket. The legacy
+    // `TransferRequest { direction: 0 }` handshake is not used any more.
     assert!(matches!(
         original.receive().await.unwrap(),
-        PeerMessage::TransferRequest(_)
+        PeerMessage::QueueUpload { .. }
     ));
     let queued_response = PeerMessage::TransferResponse(TransferResponse::Rejected {
         token: download.token,
@@ -249,7 +252,9 @@ async fn exercise_remote_queue_callback(
     });
     if !early_offer {
         original.send(&queued_response).await.unwrap();
-        let deadline = tokio::time::Instant::now() + Duration::from_secs(1);
+        // The peer's offer window is `timeout_inactivity`; after it closes the
+        // negotiation records the remote queue state.
+        let deadline = tokio::time::Instant::now() + Duration::from_secs(5);
         loop {
             let transfers = state.transfers.read().await;
             let entry = transfers

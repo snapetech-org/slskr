@@ -270,6 +270,11 @@ pub(crate) async fn project_peer_transfer_response(state: &AppState, address: &P
         return;
     }
 
+    if transfer.direction == 0 {
+        project_peer_download_response(state, address, &transfer).await;
+        return;
+    }
+
     let result = negotiate_peer_transfer(state, address, &transfer).await;
     let (status, bytes_transferred, reason) = match result {
         Ok(PeerTransferNegotiation::Allowed { token, size }) if token == transfer.token => {
@@ -369,7 +374,169 @@ pub(crate) async fn project_peer_transfer_response(state: &AppState, address: &P
     schedule_queued_downloads(state).await;
 }
 
+/// Project the modern `QueueUpload` download negotiation.
+///
+/// Uploaders answer `QueueUpload` with `TransferRequest { direction: 1 }` and
+/// then dial us. Nothing here sends `TransferRequest { direction: 0 }` or dials
+/// the uploader: that legacy flow is silently ignored by current peers.
+async fn project_peer_download_response(
+    state: &AppState,
+    address: &PeerAddress,
+    transfer: &TransferEntry,
+) {
+    // The modern flow requires the peer to dial our listener, so a disabled
+    // inbound transfer setting is permanent and must not burn the retry
+    // budget on a transport classification.
+    if !state.config.transfer_allow_inbound {
+        fail_peer_download(
+            state,
+            transfer,
+            "inbound file transfers are disabled, so peers cannot deliver queued downloads"
+                .to_owned(),
+        )
+        .await;
+        return;
+    }
+    let peer = redact_username(&address.username);
+    match negotiate_peer_download(state, address, transfer).await {
+        Ok(PeerDownloadNegotiation::Offer { token, size, place }) => {
+            // `negotiate_peer_download` promoted the entry to `accepted` before
+            // telling the peer to dial, so only the projection is left.
+            let accepted = {
+                let transfers = state.transfers.read().await;
+                transfers
+                    .entries
+                    .iter()
+                    .find(|entry| entry.id == transfer.id)
+                    .cloned()
+            };
+            if let Some(accepted) = accepted {
+                persist_transfer_projection(state, &accepted).await;
+            }
+            let place = match place {
+                Some(place) => format!(", queue position {place}"),
+                None => String::new(),
+            };
+            record_daemon_log(
+                state,
+                logging::LogLevel::Info,
+                "transfers",
+                format!(
+                    "peer {peer} offered {} ({} bytes, token {token}{place}); waiting for the inbound connection",
+                    transfer.filename,
+                    size.or(transfer.size).unwrap_or(0)
+                ),
+            )
+            .await;
+        }
+        Ok(PeerDownloadNegotiation::Queued { place }) => {
+            // A slow or lost attempt must not downgrade a transfer another
+            // socket already accepted; only the attempt that still owns the
+            // entry may move it back to `queued`.
+            if !download_negotiation_still_owned(state, transfer.id).await {
+                return;
+            }
+            let updated = {
+                let mut transfers = state.transfers.write().await;
+                transfers.update_status(transfer.id, "queued", None, Some("Queued".to_owned()))
+            };
+            if let Some(updated) = updated {
+                persist_transfer_projection(state, &updated).await;
+            }
+            let place = match place {
+                Some(place) => format!(", queue position {place}"),
+                None => String::new(),
+            };
+            record_daemon_log(
+                state,
+                logging::LogLevel::Info,
+                "transfers",
+                format!(
+                    "peer {peer} kept {} queued{place}; waiting for the peer to offer it",
+                    transfer.filename
+                ),
+            )
+            .await;
+        }
+        Ok(PeerDownloadNegotiation::Rejected { reason }) => {
+            if !download_negotiation_still_owned(state, transfer.id).await {
+                return;
+            }
+            // slskd treats an explicit rejection (file not shared, denied,
+            // duplicate) as final; only transport failures are retried.
+            fail_peer_download(state, transfer, reason).await;
+        }
+        Err(error) => {
+            if !download_negotiation_still_owned(state, transfer.id).await {
+                return;
+            }
+            fail_peer_download(state, transfer, error).await;
+        }
+    }
+}
+
+/// Whether this negotiation attempt still owns the transfer entry.
+///
+/// Once another socket accepted the file (`accepted`/`in_progress`) a late
+/// timeout or disconnect from a slower attempt must not move it back.
+async fn download_negotiation_still_owned(state: &AppState, id: u64) -> bool {
+    state
+        .transfers
+        .read()
+        .await
+        .entries
+        .iter()
+        .find(|entry| entry.id == id)
+        .is_some_and(|entry| {
+            matches!(
+                entry.status.as_str(),
+                "peer_lookup" | "peer_negotiating" | "queued"
+            )
+        })
+}
+
+async fn fail_peer_download(state: &AppState, transfer: &TransferEntry, reason: String) {
+    let failed = {
+        let mut transfers = state.transfers.write().await;
+        transfers.update_status(transfer.id, "failed", None, Some(reason.clone()))
+    };
+    if let Some(failed) = failed {
+        persist_transfer_projection(state, &failed).await;
+    }
+    record_daemon_log(
+        state,
+        logging::LogLevel::Warn,
+        "transfers",
+        format!(
+            "download {} from {} failed during negotiation: {reason}",
+            transfer.filename,
+            transfer
+                .peer_username
+                .as_deref()
+                .map(redact_username)
+                .unwrap_or_else(|| "<unknown>".to_owned())
+        ),
+    )
+    .await;
+    schedule_queued_downloads(state).await;
+}
+
 pub(crate) async fn schedule_queued_downloads(state: &AppState) {
+    schedule_queued_downloads_inner(state, false).await;
+}
+
+/// Re-ask peers for downloads that were waiting in their remote queue when the
+/// session ended.
+///
+/// The periodic scheduler deliberately leaves remote-queued entries alone: the
+/// peer owns the queue and will offer the file. After a reconnect the old
+/// `QueueUpload` may be gone, so login replay refreshes it once instead of
+/// leaving the transfer queued forever.
+pub(crate) async fn resume_queued_downloads_after_login(state: &AppState) {
+    schedule_queued_downloads_inner(state, true).await;
+}
+
+async fn schedule_queued_downloads_inner(state: &AppState, include_remote_queued: bool) {
     loop {
         let download_slots = usize::try_from(state.transfer_download_settings.read().await.slots)
             .unwrap_or(usize::MAX);
@@ -395,11 +562,22 @@ pub(crate) async fn schedule_queued_downloads(state: &AppState) {
                 .filter(|entry| {
                     entry.direction == 0
                         && entry.status == "queued"
-                        && entry.reason.as_deref() == Some("Local download slots exhausted")
+                        // Without a peer or destination there is nothing to
+                        // negotiate; promoting these would strand them in
+                        // `peer_lookup`, which counts as an active download.
+                        && entry.peer_username.is_some()
+                        && entry.local_path.is_some()
+                        && (include_remote_queued
+                            || !entry
+                                .reason
+                                .as_deref()
+                                .is_some_and(is_remote_queue_response))
                 })
                 .min_by_key(|entry| (entry.requested_at, entry.id))
                 .cloned();
-            next.and_then(|entry| transfers.update_status(entry.id, "peer_lookup", None, None))
+            next.and_then(|entry| {
+                transfers.update_retry_state(entry.id, entry.attempts, None, "peer_lookup", None)
+            })
         };
         let Some(queued) = queued else {
             return;

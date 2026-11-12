@@ -605,6 +605,18 @@ pub(super) async fn handle_owned_incoming(
                     None,
                 )
                 .await
+            } else if let Some(pending) = take_pending_indirect_peer_download(&state, token) {
+                // The download negotiation owns this socket from here: it sends
+                // `QueueUpload` and waits for the peer's offer on it.
+                if pending.connection.send(stream).is_ok() {
+                    Ok(())
+                } else {
+                    Err(format!(
+                        "indirect download for transfer {} from {} is no longer waiting",
+                        pending.transfer_id,
+                        redact_username(&pending.username)
+                    ))
+                }
             } else if has_pending_peer_message {
                 send_pending_indirect_peer_message(&state, token, stream)
                     .await

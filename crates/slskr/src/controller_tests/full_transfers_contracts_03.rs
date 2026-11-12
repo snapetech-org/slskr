@@ -199,23 +199,14 @@ pub(super) async fn queued_peer_download_adopts_the_remote_upload_token() {
         init.receive().await.expect("init");
         let mut peer = slskr_client::stream::PeerMessageConnection::new(init.into_inner());
         assert_eq!(
-            peer.receive().await.expect("download request"),
-            crate::PeerMessage::TransferRequest(crate::TransferRequest {
-                filename_encoding: Default::default(),
-                direction: 0,
-                token: request_token,
+            peer.receive().await.expect("queue upload"),
+            crate::PeerMessage::QueueUpload {
                 filename: "Remote/Queued.flac".to_owned(),
-                size: None,
-            })
+            }
         );
-        peer.send(&crate::PeerMessage::TransferResponse(
-            crate::TransferResponse::Rejected {
-                token: request_token,
-                reason: "Queued".to_owned(),
-            },
-        ))
-        .await
-        .expect("queued response");
+        // The queue position poll is a courtesy message; it never changes the
+        // negotiation, so the peer may answer with either a place or the offer.
+        let _ = peer.receive().await.expect("place in queue request");
         peer.send(&crate::PeerMessage::TransferRequest(
             crate::TransferRequest {
                 filename_encoding: Default::default(),
