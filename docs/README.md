@@ -109,6 +109,7 @@ http://127.0.0.1:5030
 | [Open commons fixtures](open-commons-fixtures.md) | Fixture source policy and manifest notes. |
 | [Legacy port harvest](legacy-port-harvest.md) | Historical implementation and parity harvest notes. |
 | [Runtime parity ledger](parity/slskdn-slsknet-runtime-parity.md) | slskdN/Soulseek.NET-family behavior parity ledger. |
+| [slskd vs slskr transfer and network comparison](research/slskd-vs-slskr-transfer-network.md) | Source-level comparison of download/upload flows, connection setup, and the PR #214 legacy-outbound claim. |
 | [Performance analysis](performance-analysis.md) | Performance observations and follow-up areas. |
 | [Idle container benchmark](../benchmarks/artifacts/20261012-idle-container-slskr-slskd.md) | Repeated pinned-image CPU/RSS matrix: matched disconnected slskR/slskd and DHT-on slskR, with raw data and method limits. |
 | [Live Soulseek idle benchmark](../benchmarks/artifacts/20261012-live-soulseek-idle.md) | Connected-idle comparison of slskd, slskR with DHT off, and slskR with DHT on on `kspld0`, plus the aborted `kspls0` attempt and host-load evidence. |
