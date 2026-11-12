@@ -775,7 +775,9 @@ impl TransferQueue {
             .iter()
             .filter(|entry| {
                 entry.local_path.is_some()
-                    && (entry.status == "accepted" || entry.status == "in_progress")
+                    && (entry.status == "accepted"
+                        || entry.status == "in_progress"
+                        || (token.is_some() && entry.direction == 0 && entry.status == "queued"))
                     && token.is_none_or(|token| entry.token == token)
                     && peer_username
                         .is_none_or(|username| entry.peer_username.as_deref() == Some(username))
@@ -784,6 +786,23 @@ impl TransferQueue {
                 u8::from(token.is_none() && peer_username.is_some() && entry.direction != 0)
             })
             .cloned()
+    }
+
+    pub(super) fn claim_pending_inbound_file_transfer(
+        &mut self,
+        token: Option<u32>,
+        peer_username: Option<&str>,
+        max_active: usize,
+        download_slots: usize,
+    ) -> Option<TransferEntry> {
+        let transfer = self.pending_inbound_file_transfer(token, peer_username)?;
+        if transfer.status != "queued" {
+            return Some(transfer);
+        }
+        if !self.has_capacity_for_direction(0, max_active, download_slots, None) {
+            return None;
+        }
+        self.update_status(transfer.id, "accepted", None, None)
     }
 
     pub(super) fn accept_queued_inbound_negotiation(

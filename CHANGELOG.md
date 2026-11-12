@@ -18,6 +18,10 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.95] — 2026-11-12
+
+- Resume peer-queued downloads when the uploader reconnects with the matching transfer token, while enforcing local download-slot limits.
+
 ## [0.2.94] — 2026-11-11
 
 - Resume queued downloads when the uploader starts the transfer on a new regular or obfuscated peer connection, including after the original connection closes or times out.

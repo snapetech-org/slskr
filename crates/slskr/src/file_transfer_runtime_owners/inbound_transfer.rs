@@ -20,9 +20,16 @@ pub(crate) async fn handle_inbound_file_transfer(
             return result.map(|_| ());
         }
     }
+    let download_slots =
+        usize::try_from(state.transfer_download_settings.read().await.slots).unwrap_or(usize::MAX);
     let mut transfer = {
-        let transfers = state.transfers.read().await;
-        transfers.pending_inbound_file_transfer(token, peer_username)
+        let mut transfers = state.transfers.write().await;
+        transfers.claim_pending_inbound_file_transfer(
+            token,
+            peer_username,
+            state.config.transfer_max_active,
+            download_slots,
+        )
     }
     .ok_or_else(|| {
         token.map_or_else(
@@ -30,24 +37,33 @@ pub(crate) async fn handle_inbound_file_transfer(
             |token| format!("no accepted inbound file transfer is pending for token {token}"),
         )
     })?;
-    let received_token = if token.is_none() && transfer.direction == 0 {
-        let remote_token = time::timeout(
-            state.config.soulseek_connection.timeout_transfer,
-            file.receive_token(),
-        )
-        .await
-        .map_err(|_| "inbound download token receive timed out".to_owned())?
-        .map_err(|error| format!("inbound download token receive failed: {error}"))?;
-        transfer = {
-            let transfers = state.transfers.read().await;
-            transfers
-                .pending_inbound_file_transfer(Some(remote_token), peer_username)
-                .filter(|entry| entry.direction == 0)
+    let received_token = if transfer.direction == 0 {
+        if let Some(token) = token {
+            Some(token)
+        } else {
+            let remote_token = time::timeout(
+                state.config.soulseek_connection.timeout_transfer,
+                file.receive_token(),
+            )
+            .await
+            .map_err(|_| "inbound download token receive timed out".to_owned())?
+            .map_err(|error| format!("inbound download token receive failed: {error}"))?;
+            transfer = {
+                let mut transfers = state.transfers.write().await;
+                transfers
+                    .claim_pending_inbound_file_transfer(
+                        Some(remote_token),
+                        peer_username,
+                        state.config.transfer_max_active,
+                        download_slots,
+                    )
+                    .filter(|entry| entry.direction == 0)
+            }
+            .ok_or_else(|| {
+                format!("no accepted inbound download is pending for token {remote_token}")
+            })?;
+            Some(remote_token)
         }
-        .ok_or_else(|| {
-            format!("no accepted inbound download is pending for token {remote_token}")
-        })?;
-        Some(remote_token)
     } else {
         None
     };
