@@ -11,6 +11,8 @@ trivy_image="${SLSKR_TRIVY_IMAGE:-aquasec/trivy:0.72.0}"
 external_reference_relative=""
 status=0
 
+python3 scripts/test-security-scan-inputs.py
+
 if [[ -n "${SLSKR_UPSTREAM_GIT_REPO:-}" && -d "$SLSKR_UPSTREAM_GIT_REPO" ]]; then
   repo_realpath="$(cd "$repo_root" && pwd -P)"
   upstream_realpath="$(cd "$SLSKR_UPSTREAM_GIT_REPO" && pwd -P)"
@@ -104,7 +106,8 @@ run_trivy() {
   local docker_ignore_args=()
   local trivy_skip_args=()
   # The release gate writes Cargo outputs and frozen upstream checkouts here.
-  # They are build/reference data, not slskR's dependency or release surface.
+  # Local task evidence is also outside slskR's dependency or release surface.
+  trivy_skip_args+=(--skip-dirs ./.local)
   trivy_skip_args+=(--skip-dirs ./target)
   if [[ -f "$repo_root/.trivyignore" ]]; then
     ignore_args+=(--ignorefile "$repo_root/.trivyignore")

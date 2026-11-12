@@ -37,10 +37,8 @@ if (( staged )) && [[ "$mode" == trivy ]]; then
   exit 2
 fi
 
-semgrep_patterns=(-g '*.py' -g '*.js' -g '*.jsx' -g '*.ts' -g '*.tsx' -g '*.mjs' -g '*.cjs' -g '*.go' -g '*.rs' -g '*.java' -g '*.kt' -g '*.kts' -g '*.cs' -g '*.c' -g '*.h' -g '*.cc' -g '*.cpp' -g '*.hpp' -g '*.php' -g '*.rb' -g '*.swift' -g '*.sh' -g '*.bash' -g '*.zsh' -g '*.ps1' -g '*.sql' -g '*.scala' -g '*.ex' -g '*.exs' -g '*.tf' -g 'Dockerfile*' -g 'docker-compose*.yml' -g 'docker-compose*.yaml' -g 'compose*.yml' -g 'compose*.yaml' -g '.github/workflows/*.yml' -g '.github/workflows/*.yaml' -g 'k8s/**/*.yml' -g 'k8s/**/*.yaml' -g 'helm/**/*.yml' -g 'helm/**/*.yaml' -g 'charts/**/*.yml' -g 'charts/**/*.yaml' -g 'deploy/**/*.yml' -g 'deploy/**/*.yaml' -g 'infra/**/*.yml' -g 'infra/**/*.yaml')
-
 has_semgrep_input() {
-  rg --files --hidden "${semgrep_patterns[@]}" -g '!**/security-scan-local.sh' -g '!**/update-security-tools.sh' -g '!**/install-security-hooks.sh' -g '!**/.githooks/**' -g '!**/.husky/**' -g '!**/docs/**' >/dev/null 2>&1
+  python3 "$repo_root/scripts/security-scan-inputs.py" semgrep
 }
 
 semgrep_run() {
@@ -64,9 +62,16 @@ semgrep_run() {
       return 0
     fi
   else
-    if ! has_semgrep_input; then
-      echo "Semgrep: no supported source or configuration files in this repository; skipped."
-      return 0
+    if has_semgrep_input; then
+      :
+    else
+      local discovery_status=$?
+      if (( discovery_status == 1 )); then
+        echo "Semgrep: no supported source or configuration files in this repository; skipped."
+        return 0
+      fi
+      echo "Semgrep: failed to discover scan inputs; refusing to skip." >&2
+      return "$discovery_status"
     fi
     targets=(.)
   fi
@@ -95,36 +100,19 @@ semgrep_run() {
   fi
 }
 
-has_dependency_files() {
-  rg --files --hidden -g 'package.json' -g 'package-lock.json' -g 'pnpm-lock.yaml' -g 'yarn.lock' -g 'bun.lock*' -g 'Cargo.toml' -g 'Cargo.lock' -g 'go.mod' -g 'go.sum' -g 'pyproject.toml' -g 'requirements*.txt' -g 'uv.lock' -g 'poetry.lock' -g 'Pipfile*' -g '*.csproj' -g '*.sln' -g 'pom.xml' -g 'build.gradle' -g 'build.gradle.kts' -g 'gradle.lockfile' -g 'Gemfile*' -g 'composer.json' -g 'composer.lock' -g 'mix.lock' -g 'pubspec.yaml' >/dev/null 2>&1
-}
-has_iac_files() {
-  rg --files --hidden -g 'Dockerfile' -g 'Dockerfile.*' -g 'docker-compose*.yml' -g 'docker-compose*.yaml' -g 'compose*.yml' -g 'compose*.yaml' -g '*.tf' -g '*.tfvars' -g 'Chart.yaml' -g 'kustomization.yaml' -g '.github/workflows/*.yml' -g '.github/workflows/*.yaml' -g 'k8s/**/*.yml' -g 'k8s/**/*.yaml' -g 'helm/**/*.yml' -g 'helm/**/*.yaml' -g 'charts/**/*.yml' -g 'charts/**/*.yaml' -g 'deploy/**/*.yml' -g 'deploy/**/*.yaml' -g 'infra/**/*.yml' -g 'infra/**/*.yaml' >/dev/null 2>&1
-}
-has_code_files() {
-  rg --files --hidden "${semgrep_patterns[@]}" -g '!**/security-scan-local.sh' -g '!**/update-security-tools.sh' -g '!**/install-security-hooks.sh' -g '!**/.githooks/**' -g '!**/.husky/**' -g '!**/docs/**' >/dev/null 2>&1
-}
-
 trivy_run() {
-  local scanners=()
-  local args=()
-  if has_dependency_files; then scanners+=(vuln); fi
-  if has_iac_files; then scanners+=(misconfig); fi
-  if has_code_files || ((${#scanners[@]} > 0)); then scanners+=(secret); fi
-  if ((${#scanners[@]} == 0)); then
+  local scanner_list
+  if ! scanner_list="$(python3 "$repo_root/scripts/security-scan-inputs.py" trivy)"; then
+    echo "Trivy: failed to discover scan inputs; refusing to skip." >&2
+    return 2
+  fi
+  if [[ -z "$scanner_list" ]]; then
     echo "Trivy: no source, dependency, or deployment files; skipped."
     return 0
   fi
-  local scanner_list
-    scanner_list=""
-  for scanner in "${scanners[@]}"; do
-    if [[ -n "$scanner_list" ]]; then
-      scanner_list+=,
-    fi
-    scanner_list+="$scanner"
-  done
+  local args=()
   args+=(fs --scanners "$scanner_list" --timeout "${TRIVY_TIMEOUT:-20m}" --severity 'HIGH,CRITICAL' --ignore-unfixed --exit-code "${TRIVY_EXIT_CODE:-0}")
-  for dir in .git node_modules vendor target dist build coverage .venv; do args+=(--skip-dirs "$dir"); done
+  for dir in .git .local node_modules vendor target dist build coverage .venv; do args+=(--skip-dirs "$dir"); done
   if (( ci_mode )); then args+=(--config= --ignorefile= --secret-config=); fi
   if [[ "${TRIVY_OFFLINE:-0}" == 1 ]]; then args+=(--skip-db-update --skip-java-db-update --skip-check-update); fi
 
