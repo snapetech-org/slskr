@@ -398,7 +398,9 @@ async fn connect_obfuscated_file_transfer(
     .map_err(|error| format!("obfuscated file-transfer init failed: {error}"))?;
     // Only the init frame is obfuscated; the peer reads the transfer offset and
     // writes file data in the clear on the same socket.
-    Ok(slskr_client::file_transfer::FileTransferConnection::new(stream))
+    Ok(slskr_client::file_transfer::FileTransferConnection::new(
+        stream,
+    ))
 }
 
 pub(super) async fn connect_indirect_file_transfer(
@@ -525,9 +527,8 @@ pub(super) async fn negotiate_peer_transfer(
 /// Outcome of asking a peer to upload a file we want to download.
 pub(super) enum PeerDownloadNegotiation {
     /// The peer accepted the queue request and offered the file. We replied
-    /// `Allowed`, so the peer now dials our file-transfer port with `token`.
+    /// `Allowed`, so the peer now dials our file-transfer port.
     Offer {
-        token: u32,
         size: Option<u64>,
         place: Option<u32>,
     },
@@ -793,7 +794,16 @@ where
         // `receive` is not cancel safe, so a timeout here always ends the
         // negotiation instead of resuming on the same connection.
         let message = match time::timeout(remaining, peer.receive_peer_message()).await {
-            Ok(result) => result?,
+            Ok(Ok(message)) => message,
+            // Some uploaders answer the queue-position poll, close this
+            // negotiation socket, then open a fresh peer connection when a
+            // slot frees up. Once we have observed a queue position, that
+            // close confirms remote queue ownership instead of being a
+            // transport failure that should restart the download.
+            Ok(Err(_)) if place.is_some() => {
+                return Ok(PeerDownloadNegotiation::Queued { place });
+            }
+            Ok(Err(error)) => return Err(error),
             Err(_) => return Ok(PeerDownloadNegotiation::Queued { place }),
         };
         if state
@@ -858,11 +868,7 @@ where
                 }))
                 .await
                 .map_err(|error| format!("download offer response failed: {error}"))?;
-                return Ok(PeerDownloadNegotiation::Offer {
-                    token: request.token,
-                    size,
-                    place,
-                });
+                return Ok(PeerDownloadNegotiation::Offer { size, place });
             }
             PeerMessage::PlaceInQueueResponse {
                 place: queue_place, ..
@@ -1351,6 +1357,16 @@ pub(super) async fn remember_peer_endpoint(state: &AppState, address: PeerAddres
     endpoints.insert(key, (address, unix_timestamp()));
 }
 
+pub(super) async fn peer_source_matches_endpoint(
+    state: &AppState,
+    username: &str,
+    source_ip: std::net::IpAddr,
+) -> bool {
+    cached_peer_endpoint(state, username)
+        .await
+        .is_some_and(|address| source_ip == std::net::IpAddr::V4(address.ip))
+}
+
 pub(super) async fn cached_peer_endpoint(state: &AppState, username: &str) -> Option<PeerAddress> {
     if let Some(address) = test_user_endpoint_peer_address(state, username) {
         return Some(address);
@@ -1589,7 +1605,7 @@ where
                     if request.direction == 1 && request.filename == transfer.filename {
                         if let Some(username) = transfer.peer_username.as_deref() {
                             super::peer_message_runtime::handle_queued_upload_request(
-                                state, peer, username, &request,
+                                state, peer, username, &request, None, true,
                             )
                             .await?;
                         }

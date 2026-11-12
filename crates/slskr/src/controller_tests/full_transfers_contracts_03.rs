@@ -80,6 +80,7 @@ pub(super) async fn inbound_download_reads_the_offset_without_a_transfer_token_f
             slskr_client::file_transfer::FileTransferConnection::new(server),
             Some(token),
             Some("friend"),
+            None,
         )
         .await
     });
@@ -144,6 +145,7 @@ pub(super) async fn inbound_download_consumes_the_transfer_token_frame_after_pee
             slskr_client::file_transfer::FileTransferConnection::new(server),
             Some(token),
             Some("friend"),
+            None,
         )
         .await
     });
@@ -521,13 +523,25 @@ pub(super) async fn queued_remote_download_resume_obeys_download_slots() {
         .await
         .expect("listener");
     let address = listener.local_addr().expect("local address");
+    crate::remember_peer_endpoint(
+        &state,
+        slskr_client::protocol::server::PeerAddress {
+            username: "friend".to_owned(),
+            ip: "127.0.0.1".parse().unwrap(),
+            port: u32::from(address.port()),
+            obfuscation_type: 0,
+            obfuscated_port: 0,
+        },
+    )
+    .await;
     let server_state = state.clone();
     let server = tokio::spawn(async move {
-        let (stream, _) = listener.accept().await.expect("accept peer-message");
-        crate::handle_plain_peer_messages(
+        let (stream, remote_address) = listener.accept().await.expect("accept peer-message");
+        crate::handle_plain_peer_messages_with_address(
             &server_state,
             slskr_client::stream::PeerMessageConnection::new(stream),
             Some("friend".to_owned()),
+            Some(remote_address.ip()),
         )
         .await
     });
@@ -726,6 +740,7 @@ pub(super) async fn inbound_transfer_request_serves_shared_file_over_pierce_fire
             slskr_client::file_transfer::FileTransferConnection::new(stream),
             Some(7),
             None,
+            None,
         )
         .await
         .expect("serve inbound file");
@@ -746,6 +761,225 @@ pub(super) async fn inbound_transfer_request_serves_shared_file_over_pierce_fire
     assert_eq!(record.bytes_transferred, 4);
     assert_eq!(record.size, Some(4));
     let _ = std::fs::remove_file(path);
+}
+
+#[cfg_attr(test, tokio::test)]
+#[cfg(feature = "full-controller-tests")]
+pub(super) async fn queued_download_resumes_when_peer_opens_inbound_file_transfer() {
+    let (state, _receiver) =
+        test_state_with_env(MapEnv::default().with("SLSKD_DOWNLOAD_SLOTS", "1"));
+    if let Some(destination) = state
+        .destinations
+        .write()
+        .await
+        .records
+        .iter_mut()
+        .find(|destination| destination.is_default)
+    {
+        destination.path = state.config.downloads_dir.display().to_string();
+    }
+    std::fs::create_dir_all(&state.config.downloads_dir).expect("create downloads directory");
+    let download_path =
+        crate::safe_download_path(&state.config.downloads_dir, "Queued-After-Free-Slot.bin")
+            .expect("download path");
+    let pending = {
+        let mut transfers = state.transfers.write().await;
+        let pending = transfers.create(
+            0,
+            Some("friend".to_owned()),
+            "Queued-After-Free-Slot.bin".to_owned(),
+            Some(download_path.display().to_string()),
+            Some(4),
+        );
+        transfers
+            .update_status(pending.id, "peer_lookup", None, None)
+            .expect("pending download")
+    };
+
+    let peer_listener = slskr_client::listener::Listener::bind("127.0.0.1:0")
+        .await
+        .expect("peer-message listener");
+    let peer_address = peer_listener.local_addr().expect("peer-message address");
+    let remote = tokio::spawn(async move {
+        let (incoming, _) = peer_listener
+            .accept()
+            .await
+            .expect("accept initial download request");
+        let slskr_client::listener::IncomingConnection::PeerInit {
+            username,
+            kind,
+            stream,
+            ..
+        } = incoming
+        else {
+            panic!("initial download request did not use PeerInit");
+        };
+        assert_eq!(username, "tester");
+        assert_eq!(kind, slskr_client::connection::ConnectionKind::PeerMessages);
+        let mut peer = slskr_client::stream::PeerMessageConnection::new(stream);
+        assert_eq!(
+            peer.receive().await.expect("receive queue upload"),
+            slskr_client::protocol::peer::PeerMessage::QueueUpload {
+                filename: "Queued-After-Free-Slot.bin".to_owned(),
+            }
+        );
+        assert_eq!(
+            peer.receive()
+                .await
+                .expect("receive queue position request"),
+            slskr_client::protocol::peer::PeerMessage::PlaceInQueueRequest {
+                filename: "Queued-After-Free-Slot.bin".to_owned(),
+            }
+        );
+        peer.send(
+            &slskr_client::protocol::peer::PeerMessage::PlaceInQueueResponse {
+                filename: "Queued-After-Free-Slot.bin".to_owned(),
+                place: 1,
+            },
+        )
+        .await
+        .expect("return remote queue position");
+    });
+    crate::project_peer_transfer_response(
+        &state,
+        &slskr_client::protocol::server::PeerAddress {
+            username: "friend".to_owned(),
+            ip: "127.0.0.1".parse().unwrap(),
+            port: u32::from(peer_address.port()),
+            obfuscation_type: 0,
+            obfuscated_port: 0,
+        },
+    )
+    .await;
+    remote.await.expect("remote peer task");
+    let queued = {
+        let transfers = state.transfers.read().await;
+        let queued = transfers
+            .entries
+            .iter()
+            .find(|entry| entry.id == pending.id)
+            .expect("queued download");
+        assert_eq!(queued.status, "queued");
+        assert_eq!(queued.reason.as_deref(), Some("Queued"));
+        queued.clone()
+    };
+    {
+        let transfers = state.transfers.read().await;
+        assert!(transfers
+            .pending_inbound_file_transfer(Some(queued.token), Some("other-peer"))
+            .is_none());
+        assert!(transfers
+            .pending_inbound_file_transfer(Some(queued.token.wrapping_add(1)), Some("friend"))
+            .is_none());
+    }
+    {
+        let mut transfers = state.transfers.write().await;
+        let busy = transfers.create(
+            0,
+            Some("busy".to_owned()),
+            "Busy.bin".to_owned(),
+            None,
+            Some(1),
+        );
+        transfers.update_status(busy.id, "in_progress", None, None);
+        assert!(transfers
+            .claim_pending_inbound_file_transfer(
+                Some(queued.token),
+                Some("friend"),
+                state.config.transfer_max_active,
+                1,
+            )
+            .is_none());
+        assert_eq!(
+            transfers
+                .entries
+                .iter()
+                .find(|entry| entry.id == queued.id)
+                .expect("queued transfer remains pending at capacity")
+                .status,
+            "queued"
+        );
+        transfers.update_status(busy.id, "succeeded", None, None);
+    }
+
+    let listener = slskr_client::listener::Listener::bind("127.0.0.1:0")
+        .await
+        .expect("listener");
+    let address = listener.local_addr().expect("local address");
+    let inbound_state = Arc::clone(&state);
+    let transfer_token = queued.token;
+    let server = tokio::spawn(async move {
+        let (incoming, remote_addr) = listener.accept().await.expect("accept resumed transfer");
+        let slskr_client::listener::IncomingConnection::PeerInit {
+            username,
+            kind,
+            token,
+            obfuscated,
+            ..
+        } = &incoming
+        else {
+            panic!("resumed transfer did not use PeerInit");
+        };
+        assert_eq!(username, "friend");
+        assert_eq!(
+            *kind,
+            slskr_client::connection::ConnectionKind::FileTransfer
+        );
+        assert_eq!(*token, 0);
+        assert!(!*obfuscated);
+        crate::listener_runtime::handle_owned_incoming(inbound_state, incoming, remote_addr).await;
+    });
+
+    let stream = tokio::net::TcpStream::connect(address)
+        .await
+        .expect("connect resumed transfer");
+    let stream = slskr_client::peer_connect::send_peer_init_with_token(
+        stream,
+        "friend",
+        slskr_client::connection::ConnectionKind::FileTransfer,
+        0,
+    )
+    .await
+    .expect("send resumed transfer PeerInit");
+    let mut peer = slskr_client::file_transfer::FileTransferConnection::new(stream);
+    peer.send_token(transfer_token)
+        .await
+        .expect("send transfer-init token");
+    let offset = tokio::time::timeout(Duration::from_secs(3), peer.receive_offset()).await;
+    assert!(
+        offset.as_ref().is_ok_and(Result::is_ok),
+        "queued download was not admitted when its peer opened the matching transfer: {offset:?}"
+    );
+    assert_eq!(
+        offset
+            .expect("resume offset timed out")
+            .expect("resume offset"),
+        0
+    );
+    peer.write_chunk(&[1, 2, 3, 4])
+        .await
+        .expect("send resumed file bytes");
+    drop(peer);
+    server.await.expect("inbound transfer task");
+
+    let transfers = state.transfers.read().await;
+    let completed = transfers
+        .entries
+        .iter()
+        .find(|entry| entry.id == queued.id)
+        .expect("download record");
+    assert_eq!(
+        completed.status, "succeeded",
+        "queued transfer failed: {:?}",
+        completed.reason
+    );
+    assert_eq!(completed.bytes_transferred, 4);
+    drop(transfers);
+    assert_eq!(
+        std::fs::read(&download_path).expect("completed download"),
+        [1, 2, 3, 4]
+    );
+    std::fs::remove_dir_all(&state.config.state_dir).expect("remove transfer fixture state");
 }
 
 #[cfg_attr(test, tokio::test)]

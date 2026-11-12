@@ -34,6 +34,7 @@ pub(super) async fn handle_connect_to_peer_request(
                 slskr_client::file_transfer::FileTransferConnection::new(stream),
                 Some(request.token),
                 Some(&request.username),
+                Some(std::net::IpAddr::V4(address.ip)),
             )
             .await
         }

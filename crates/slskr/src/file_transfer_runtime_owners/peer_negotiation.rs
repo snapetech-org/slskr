@@ -239,6 +239,7 @@ pub(crate) async fn project_indirect_transfer_response(
 }
 
 pub(crate) async fn project_peer_transfer_response(state: &AppState, address: &PeerAddress) {
+    remember_peer_endpoint(state, address.clone()).await;
     let transfer = {
         let transfers = state.transfers.read().await;
         transfers.pending_peer_transfer(&address.username)
@@ -399,7 +400,7 @@ async fn project_peer_download_response(
     }
     let peer = redact_username(&address.username);
     match negotiate_peer_download(state, address, transfer).await {
-        Ok(PeerDownloadNegotiation::Offer { token, size, place }) => {
+        Ok(PeerDownloadNegotiation::Offer { size, place, .. }) => {
             // `negotiate_peer_download` promoted the entry to `accepted` before
             // telling the peer to dial, so only the projection is left.
             let accepted = {
@@ -422,7 +423,7 @@ async fn project_peer_download_response(
                 logging::LogLevel::Info,
                 "transfers",
                 format!(
-                    "peer {peer} offered {} ({} bytes, token {token}{place}); waiting for the inbound connection",
+                    "peer {peer} offered {} ({} bytes{place}); waiting for the inbound connection",
                     transfer.filename,
                     size.or(transfer.size).unwrap_or(0)
                 ),

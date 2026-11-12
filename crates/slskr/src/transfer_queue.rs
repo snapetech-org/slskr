@@ -780,8 +780,9 @@ impl TransferQueue {
                         // transfer that has not started yet. A transfer already
                         // in progress owns its connection (possibly one we
                         // dialed ourselves), so a second socket must not start
-                        // writing the same file.
-                        entry.status == "accepted"
+                        // writing the same file. A queued callback is admitted
+                        // only when the socket supplied its negotiated token.
+                        entry.status == "accepted" || (token.is_some() && entry.status == "queued")
                     } else {
                         entry.status == "accepted" || entry.status == "in_progress"
                     }
@@ -793,6 +794,23 @@ impl TransferQueue {
                 u8::from(token.is_none() && peer_username.is_some() && entry.direction != 0)
             })
             .cloned()
+    }
+
+    pub(super) fn claim_pending_inbound_file_transfer(
+        &mut self,
+        token: Option<u32>,
+        peer_username: Option<&str>,
+        max_active: usize,
+        download_slots: usize,
+    ) -> Option<TransferEntry> {
+        let transfer = self.pending_inbound_file_transfer(token, peer_username)?;
+        if transfer.status != "queued" {
+            return Some(transfer);
+        }
+        if !self.has_capacity_for_direction(0, max_active, download_slots, None) {
+            return None;
+        }
+        self.update_status(transfer.id, "accepted", None, None)
     }
 
     pub(super) fn accept_queued_inbound_negotiation(
@@ -846,10 +864,12 @@ impl TransferQueue {
                 && entry.peer_username.as_deref() == Some(username.as_str())
                 && entry.filename == filename
                 && entry.local_path.is_some()
-                // Any queued download may receive the peer's offer: a retry
-                // waiting on its backoff has an error reason instead of the
-                // remote-queue marker, but the peer's offer is still valid.
-                && (entry.status == "peer_negotiating" || entry.status == "queued")
+                && (entry.status == "peer_negotiating"
+                    || (entry.status == "queued"
+                        && entry
+                            .reason
+                            .as_deref()
+                            .is_some_and(is_remote_queue_response)))
         })?;
         entry.previous_status = Some(entry.status.clone());
         entry.token = token;
@@ -858,7 +878,7 @@ impl TransferQueue {
         }
         entry.status = "accepted".to_owned();
         entry.reason = None;
-        // The peer's offer supersedes the retry backoff pending for this entry.
+        // A peer offer clears any stale retry deadline after a remote queue.
         entry.next_attempt_at = None;
         entry.updated_at = unix_timestamp();
         entry.updated_at_ms = next_transfer_updated_at_ms(entry.updated_at_ms);

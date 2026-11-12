@@ -383,8 +383,6 @@ async fn log_inbound_prefix(
     obfuscated: bool,
     shared_obfuscation: bool,
 ) {
-    use std::fmt::Write as _;
-
     // `peek` waits for the peer's first bytes; skip it unless debug
     // diagnostics are on so silent connections do not hold a task for 2s.
     if !soulseek_diagnostic_level_allows(
@@ -395,21 +393,14 @@ async fn log_inbound_prefix(
     }
 
     let mut buffer = [0_u8; 64];
-    let Ok(Ok(read)) = time::timeout(
-        time::Duration::from_secs(2),
-        stream.peek(&mut buffer),
-    )
-    .await
+    let Ok(Ok(read)) = time::timeout(time::Duration::from_secs(2), stream.peek(&mut buffer)).await
     else {
         return;
     };
     if read == 0 {
         return;
     }
-    let mut hex = String::with_capacity(read.saturating_mul(2));
-    for byte in &buffer[..read] {
-        let _ = write!(hex, "{byte:02x}");
-    }
+    let first_byte = buffer[0];
     let listener = if obfuscated {
         "obfuscated"
     } else if shared_obfuscation {
@@ -422,7 +413,7 @@ async fn log_inbound_prefix(
         logging::LogLevel::Debug,
         "soulseek",
         format!(
-            "inbound {listener} prefix from {} ({read} bytes): {hex}",
+            "inbound {listener} prefix from {} ({read} bytes, first byte {first_byte:02x})",
             scrub_socket_addr(remote_addr)
         ),
     )
@@ -606,7 +597,7 @@ pub(super) async fn handle_owned_incoming(
                 "inbound file transfer connection classified without an init token".to_owned(),
             )
             .await;
-            handle_inbound_file_transfer(&state, file, None, None).await
+            handle_inbound_file_transfer(&state, file, None, None, Some(remote_addr.ip())).await
         }
         IncomingConnection::PeerInit {
             kind: ConnectionKind::FileTransfer,
@@ -621,8 +612,9 @@ pub(super) async fn handle_owned_incoming(
                 logging::LogLevel::Debug,
                 "soulseek",
                 format!(
-                    "inbound file transfer init from {}: token {token}, obfuscated {obfuscated}",
-                    redact_username(&username)
+                    "inbound file transfer init from {}: token_present {}, obfuscated {obfuscated}",
+                    redact_username(&username),
+                    token != 0
                 ),
             )
             .await;
@@ -637,6 +629,7 @@ pub(super) async fn handle_owned_incoming(
                 slskr_client::file_transfer::FileTransferConnection::new(stream),
                 (token != 0).then_some(token),
                 Some(&username),
+                Some(remote_addr.ip()),
             )
             .await
         }
@@ -670,6 +663,7 @@ pub(super) async fn handle_owned_incoming(
                     slskr_client::file_transfer::FileTransferConnection::new(stream),
                     Some(token),
                     None,
+                    Some(remote_addr.ip()),
                 )
                 .await
             } else if let Some(pending) = take_pending_indirect_peer_download(&state, token) {
