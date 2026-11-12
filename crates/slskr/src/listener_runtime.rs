@@ -374,6 +374,61 @@ async fn run_listener_manager(
     }
 }
 
+/// Record the first bytes a peer sends on a listener connection without
+/// consuming them, so inbound handshakes that fail can be traced.
+async fn log_inbound_prefix(
+    state: &AppState,
+    stream: &TcpStream,
+    remote_addr: SocketAddr,
+    obfuscated: bool,
+    shared_obfuscation: bool,
+) {
+    use std::fmt::Write as _;
+
+    // `peek` waits for the peer's first bytes; skip it unless debug
+    // diagnostics are on so silent connections do not hold a task for 2s.
+    if !soulseek_diagnostic_level_allows(
+        state.config.soulseek_diagnostic_level,
+        logging::LogLevel::Debug,
+    ) {
+        return;
+    }
+
+    let mut buffer = [0_u8; 64];
+    let Ok(Ok(read)) = time::timeout(
+        time::Duration::from_secs(2),
+        stream.peek(&mut buffer),
+    )
+    .await
+    else {
+        return;
+    };
+    if read == 0 {
+        return;
+    }
+    let mut hex = String::with_capacity(read.saturating_mul(2));
+    for byte in &buffer[..read] {
+        let _ = write!(hex, "{byte:02x}");
+    }
+    let listener = if obfuscated {
+        "obfuscated"
+    } else if shared_obfuscation {
+        "shared"
+    } else {
+        "regular"
+    };
+    record_soulseek_diagnostic(
+        state,
+        logging::LogLevel::Debug,
+        "soulseek",
+        format!(
+            "inbound {listener} prefix from {} ({read} bytes): {hex}",
+            scrub_socket_addr(remote_addr)
+        ),
+    )
+    .await;
+}
+
 async fn process_listener_connection(
     state: Arc<AppState>,
     stream: TcpStream,
@@ -381,6 +436,7 @@ async fn process_listener_connection(
     obfuscated: bool,
     shared_obfuscation: bool,
 ) {
+    log_inbound_prefix(&state, &stream, remote_addr, obfuscated, shared_obfuscation).await;
     let incoming = match time::timeout(DEFAULT_INIT_HANDSHAKE_TIMEOUT, async move {
         if obfuscated {
             demux_obfuscated_incoming(stream).await
@@ -437,6 +493,10 @@ async fn process_shared_mesh_connection(
     stream: TcpStream,
     remote_addr: SocketAddr,
 ) {
+    // Record the raw listener prefix before any framing decision is made. The
+    // shared path has to guess between plain, obfuscated, and mesh TLS, so the
+    // only way to explain a failed handshake afterwards is to keep the bytes.
+    log_inbound_prefix(&state, &stream, remote_addr, false, true).await;
     let incoming = match time::timeout(
         DEFAULT_INIT_HANDSHAKE_TIMEOUT,
         demux_shared_mesh_incoming(stream),
@@ -539,6 +599,13 @@ pub(super) async fn handle_owned_incoming(
             .await
         }
         IncomingConnection::FileTransfer(file) => {
+            record_soulseek_diagnostic(
+                &state,
+                logging::LogLevel::Debug,
+                "soulseek",
+                "inbound file transfer connection classified without an init token".to_owned(),
+            )
+            .await;
             handle_inbound_file_transfer(&state, file, None, None).await
         }
         IncomingConnection::PeerInit {

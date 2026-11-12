@@ -363,7 +363,7 @@ use self::daemon_runtime_setup::*;
 use self::daemon_serve::serve;
 use self::event_runtime::{
     persist_event_record_checked, record_daemon_log, record_event, record_http_log,
-    record_soulseek_diagnostic,
+    record_soulseek_diagnostic, soulseek_diagnostic_level_allows,
 };
 use self::managed_tasks::{MAX_HTTP_CONNECTION_TASKS, spawn_bounded_http_connection_task};
 use self::podcore_controller::dynamic_podcore_get_route;
