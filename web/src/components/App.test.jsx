@@ -17,6 +17,7 @@ const {
   getUnreadActivity,
   getRoomActivity,
   isLoggedIn,
+  isRefreshable,
   refresh,
 } = vi.hoisted(() => ({
   check: vi.fn(),
@@ -30,6 +31,7 @@ const {
   getRoomActivity: vi.fn(),
   getTokenRemainingMillis: vi.fn(),
   isLoggedIn: vi.fn(),
+  isRefreshable: vi.fn(),
   refresh: vi.fn(),
 }));
 
@@ -61,6 +63,7 @@ vi.mock('../lib/session', () => ({
   check,
   getSecurityEnabled,
   isLoggedIn,
+  isRefreshable,
   login: vi.fn(),
   logout: vi.fn(),
   refresh,
@@ -142,6 +145,7 @@ describe('App', () => {
     getCollections.mockResolvedValue({ data: [] });
     getRoomActivity.mockResolvedValue({});
     isLoggedIn.mockReturnValue(true);
+    isRefreshable.mockReturnValue(true);
     getTokenRemainingMillis.mockReturnValue(undefined);
     refresh.mockResolvedValue(undefined);
     connectServer.mockResolvedValue({
@@ -491,6 +495,24 @@ describe('App', () => {
     );
 
     await waitFor(() => expect(refresh).toHaveBeenCalled());
+  });
+
+  it('does not refresh sessions that are not eligible for refresh', async () => {
+    vi.useFakeTimers();
+    isRefreshable.mockReturnValue(false);
+    getTokenRemainingMillis.mockReturnValue(5 * 60 * 1000);
+
+    render(
+      <MemoryRouter initialEntries={['/searches']}>
+        <App />
+      </MemoryRouter>,
+    );
+
+    await act(async () => {
+      document.dispatchEvent(new Event('visibilitychange'));
+      await Promise.resolve();
+    });
+    expect(refresh).not.toHaveBeenCalled();
   });
 
   it('shows a dismissible network endpoint notice when ports are reported', async () => {
