@@ -89,6 +89,25 @@ class ReleaseNotesTests(unittest.TestCase):
         self.assertIn("### Capture metadata", metadata)
         self.assertIn("users, operators", metadata)
 
+    def test_curated_notes_replace_highlights_and_preserve_following_sections(self) -> None:
+        changelog = """# slskr 1.0.0
+
+## Highlights
+
+- Summary from CHANGELOG.
+
+## Proof and detailed notes
+
+- Evidence for this release.
+"""
+        curated = "### User-facing changes\n\n#### Fixed\n\n- The queued download resumes."
+
+        assembled = release_notes.inject_curated_notes(changelog, curated)
+
+        self.assertIn("## Highlights\n\n### User-facing changes", assembled)
+        self.assertNotIn("Summary from CHANGELOG", assembled)
+        self.assertIn("## Proof and detailed notes\n\n- Evidence for this release.", assembled)
+
     def test_invalid_schema_is_rejected(self) -> None:
         note = release_notes.parse_release_note(
             "release-notes/incomplete.md",
@@ -196,7 +215,10 @@ class ReleaseNotesTests(unittest.TestCase):
             )
             self.assertIn("### User-facing changes", preview)
 
-            body = "# slskr 1.0.0\n\n## Highlights\n\n- Existing release detail.\n"
+            body = (
+                "# slskr 1.0.0\n\n## Highlights\n\n- Existing release detail.\n\n"
+                "## Proof and detailed notes\n\n- Retained release evidence.\n"
+            )
             body_path = repository / "release.md"
             body_path.write_text(body)
             summary_path = repository / "summary.md"
@@ -237,6 +259,8 @@ class ReleaseNotesTests(unittest.TestCase):
             assembled = body_path.read_text()
             self.assertIn("### User-facing changes", assembled)
             self.assertIn("## Highlights\n\n### User-facing changes", assembled)
+            self.assertNotIn("Existing release detail", assembled)
+            self.assertIn("## Proof and detailed notes\n\n- Retained release evidence.", assembled)
 
             (repository / "release-notes" / "pipeline.md").write_text(
                 VALID_NOTE.replace("Release validation", "Changed release validation")
