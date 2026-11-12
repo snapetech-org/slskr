@@ -39,7 +39,7 @@ above and will drift as those projects change.
    negotiation and queueing layer, not at the wire-format layer.
 
 2. **The modern download request is `QueueUpload` (peer code 43).** It is what
-   Nicotine+ >= 3.0.3, Museek+ and the official clients send. The uploader answers
+   Nicotine+ >= 3.0.3, Museek+ and other current Soulseek clients send. The uploader answers
    later with `TransferRequest { direction: 1 }` and then dials the downloader.
    PR #214's move of slskr's normal download path to `QueueUpload` is directionally
    correct.
@@ -627,16 +627,9 @@ The surviving code comment is at
 
 ### 7.2 What the protocol says
 
-Nicotine+ is the most explicit reference (`pynicotine/slskmessages.py:3907-3919`):
-
-> This message is sent by a peer once they are ready to start uploading a file. A
-> `TransferResponse` message is expected from the recipient, either allowing or
-> rejecting the upload attempt.
->
-> This message was formerly used to send a download request (direction 0) as well, but
-> Nicotine+ >= 3.0.3, Museek+ and the official clients use the `QueueUpload` message
-> for this purpose today. **Clients like slskd and Seeker still use this method for
-> downloading, so we need to ensure we still understand such requests.**
+Nicotine+ documents this as an upload offer that the recipient may allow or reject. It
+notes that current clients use `QueueUpload` for download requests, while slskd and
+Seeker still use legacy direction 0 (`pynicotine/slskmessages.py:3907-3919`).
 
 Nicotine+ also documents `QueueUpload` as "the modern replacement to a
 `TransferRequest` with direction 0" (`pynicotine/uploads.py:918-925`) and still
@@ -688,8 +681,8 @@ Replace the comment at `peer_negotiation.rs:376-383` with something like:
 ```rust
 /// Queue a download with a peer using the current Soulseek flow.
 ///
-/// `QueueUpload` is what current clients send: Nicotine+ >= 3.0.3, Museek+ and the
-/// official clients use it, and uploaders answer with `TransferRequest
+/// `QueueUpload` is what current clients send: Nicotine+ >= 3.0.3, Museek+ and other
+/// current Soulseek clients use it, and uploaders answer with `TransferRequest
 /// { direction: 1 }` carrying their own token. We allow that offer and wait for the
 /// uploader to dial us.
 ///
