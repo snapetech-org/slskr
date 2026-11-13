@@ -18,6 +18,12 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.99] — 2026-11-13
+
+- Preserve web sessions across daemon restarts, restricting token refresh to the credentials that issued the token.
+- Negotiate downloads through Soulseek's `QueueUpload` protocol and re-request remote-queued downloads after reconnect.
+- Refresh vulnerable build and runtime dependencies, including the Web toolchain and container packages.
+
 ## [0.2.98] — 2026-11-12
 
 - Preserve controller web sessions across daemon restarts, with session refresh restricted to the credentials that issued the token.

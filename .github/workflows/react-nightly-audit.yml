@@ -55,7 +55,7 @@ jobs:
       - name: Install dependencies and Chromium
         run: |
           npm --prefix web ci --allow-git=root --legacy-peer-deps
-          npm --prefix web exec playwright install --with-deps chromium
+          npm --prefix web exec -- playwright install --with-deps chromium
       - name: Run bounded browser workflows
         shell: bash
         run: |

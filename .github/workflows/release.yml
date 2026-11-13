@@ -226,7 +226,7 @@ jobs:
       - name: Install Playwright browsers
         run: |
           npm --prefix web ci --allow-git=root --legacy-peer-deps
-          npm --prefix web exec playwright install --with-deps chromium
+          npm --prefix web exec -- playwright install --with-deps chromium
       - name: Run release gate
         env:
           SLSKR_UPSTREAM_GIT_REPO: ${{ github.workspace }}/slskdn-reference

@@ -66,6 +66,15 @@ for workflow in ci release; do
   done
 done
 
+playwright_install='npm --prefix web exec -- playwright install --with-deps chromium'
+for workflow in release.yml react-nightly-audit.yml live-parity.yml; do
+  workflow_path=".github/workflows/$workflow"
+  if ! rg -n -F -- "$playwright_install" "$workflow_path" >/dev/null; then
+    printf 'workflow release policy check failed: %s must pass Playwright arguments after npm exec --\n' "$workflow_path" >&2
+    status=1
+  fi
+done
+
 if [[ ! -f "$pin_policy" ]]; then
   printf 'workflow release policy check failed: GitHub Actions pin policy is missing: %s\n' "$pin_policy" >&2
   status=1
