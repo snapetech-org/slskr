@@ -7,7 +7,7 @@ cd "$repo_root"
 
 required="${SLSKR_SECURITY_SCANS_REQUIRED:-0}"
 semgrep_image="${SLSKR_SEMGREP_IMAGE:-semgrep/semgrep:1.167.0}"
-trivy_image="${SLSKR_TRIVY_IMAGE:-aquasec/trivy:0.72.0}"
+trivy_image="${SLSKR_TRIVY_IMAGE:-aquasec/trivy:0.76.2}"
 external_reference_relative=""
 status=0
 
@@ -148,8 +148,13 @@ run_trivy() {
   fi
 }
 
+run_python_dependency_audit() {
+  run_or_record "Python dependency audit" scripts/audit-python-dependencies.sh
+}
+
 run_semgrep
 run_trivy
+run_python_dependency_audit
 
 if [[ "$status" -ne 0 ]]; then
   exit "$status"

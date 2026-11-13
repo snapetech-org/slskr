@@ -80,6 +80,8 @@ jobs:
             web/package-lock.json
             dashboard/package-lock.json
             client-ts/package-lock.json
+      - name: Install patched npm CLI
+        run: npm install --global npm@12.2.2 --no-audit --no-fund
 
       - name: Process memory guard
         shell: bash

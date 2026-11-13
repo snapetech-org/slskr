@@ -63,8 +63,9 @@ run_step "Rust wasm web check" cargo check --locked -p slskr-web --target wasm32
 run_step "Rust tests" cargo test --locked --workspace
 
 if cargo audit --version >/dev/null 2>&1; then
-  # RUSTSEC-2023-0071 has no upstream fix; the OIDC client only verifies
-  # provider signatures with public keys and performs no RSA private-key operations.
+  # RUSTSEC-2023-0071 is fixed in rsa >=0.10, but openidconnect 4.1.0 still
+  # pins rsa 0.9.2. The OIDC client only verifies signatures with public keys
+  # and performs no RSA private-key operations.
   run_step "RustSec audit" cargo audit --ignore RUSTSEC-2023-0071
 else
   printf '\n==> RustSec audit\n'

@@ -120,7 +120,7 @@ trivy_run() {
   if command -v trivy >/dev/null 2>&1; then
     trivy "${args[@]}" .
   elif command -v docker >/dev/null 2>&1; then
-    local image="aquasec/trivy:latest"
+    local image="aquasec/trivy:0.76.2"
     local cache_dir="${TRIVY_CACHE_DIR:-${XDG_CACHE_HOME:-$HOME/.cache}/trivy}"
     mkdir -p "$cache_dir"
     if ! docker image inspect "$image" >/dev/null 2>&1; then
