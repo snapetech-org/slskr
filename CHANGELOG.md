@@ -18,6 +18,12 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.98] — 2026-11-12
+
+- Preserve controller web sessions across daemon restarts, with session refresh restricted to the credentials that issued the token.
+- Negotiate downloads with peers using `QueueUpload`, and re-request remote-queued downloads after reconnect.
+- Refresh vulnerable build and runtime dependencies, including the Web toolchain and container packages.
+
 ## [0.2.97] — 2026-11-12
 
 - Keep browser sessions alive across daemon restarts, with opt-in Remember Me and refresh bound to the current web-auth credentials.
