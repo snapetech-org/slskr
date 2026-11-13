@@ -398,6 +398,13 @@ pub(crate) fn admin_jwt_can_refresh(
         && claims.oidc_subject.is_none()
 }
 
+#[derive(Default)]
+struct AdminJwtOptions<'a> {
+    oidc_identity: Option<(&'a str, &'a str)>,
+    remember: bool,
+    auth_epoch: Option<u64>,
+}
+
 pub(crate) fn issue_admin_jwt(
     jwt_key: &str,
     controller_profile: crate::config::ControllerProfile,
@@ -431,9 +438,11 @@ pub(crate) fn issue_admin_jwt_with_remember(
         ttl_millis,
         username,
         now,
-        None,
-        remember,
-        auth_epoch,
+        AdminJwtOptions {
+            remember,
+            auth_epoch,
+            ..AdminJwtOptions::default()
+        },
     )
 }
 
@@ -443,8 +452,7 @@ pub(crate) fn issue_oidc_admin_jwt(
     ttl_millis: u64,
     username: &str,
     now: u64,
-    issuer: &str,
-    subject: &str,
+    oidc_identity: (&str, &str),
     auth_epoch: Option<u64>,
 ) -> Option<(String, AdminJwtClaims)> {
     issue_admin_jwt_with_identity(
@@ -453,9 +461,11 @@ pub(crate) fn issue_oidc_admin_jwt(
         ttl_millis,
         username,
         now,
-        Some((issuer, subject)),
-        false,
-        auth_epoch,
+        AdminJwtOptions {
+            oidc_identity: Some(oidc_identity),
+            auth_epoch,
+            ..AdminJwtOptions::default()
+        },
     )
 }
 
@@ -480,9 +490,11 @@ pub(crate) fn reissue_admin_jwt(
         ttl_millis,
         &claims.name,
         now,
-        oidc_identity,
-        claims.remember,
-        auth_epoch,
+        AdminJwtOptions {
+            oidc_identity,
+            remember: claims.remember,
+            auth_epoch,
+        },
     )
 }
 
@@ -492,9 +504,7 @@ fn issue_admin_jwt_with_identity(
     ttl_millis: u64,
     username: &str,
     now: u64,
-    oidc_identity: Option<(&str, &str)>,
-    remember: bool,
-    auth_epoch: Option<u64>,
+    options: AdminJwtOptions<'_>,
 ) -> Option<(String, AdminJwtClaims)> {
     let issuer = match controller_profile {
         crate::config::ControllerProfile::Legacy => "slskd",
@@ -510,10 +520,10 @@ fn issue_admin_jwt_with_identity(
         exp: now.saturating_add(ttl_millis / 1000),
         iss: issuer.to_owned(),
         aud: issuer.to_owned(),
-        remember,
-        auth_epoch,
-        oidc_issuer: oidc_identity.map(|(issuer, _)| issuer.to_owned()),
-        oidc_subject: oidc_identity.map(|(_, subject)| subject.to_owned()),
+        remember: options.remember,
+        auth_epoch: options.auth_epoch,
+        oidc_issuer: options.oidc_identity.map(|(issuer, _)| issuer.to_owned()),
+        oidc_subject: options.oidc_identity.map(|(_, subject)| subject.to_owned()),
     };
     let header = URL_SAFE_NO_PAD.encode(br#"{"alg":"HS256","typ":"JWT"}"#);
     let payload = URL_SAFE_NO_PAD.encode(serde_json::to_vec(&claims).ok()?);

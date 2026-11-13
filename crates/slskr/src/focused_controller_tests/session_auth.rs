@@ -218,8 +218,7 @@ async fn session_refresh_rejects_oidc_tokens_without_provider_revalidation() {
         state.config.controller_web_jwt_ttl_millis,
         ADMIN_USERNAME,
         crate::utils::unix_timestamp(),
-        "https://idp.example.invalid",
-        "subject-1",
+        ("https://idp.example.invalid", "subject-1"),
         auth_epoch,
     )
     .expect("OIDC session token");

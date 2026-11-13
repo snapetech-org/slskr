@@ -512,8 +512,7 @@ pub(super) async fn complete_response(
         state.config.controller_web_jwt_ttl_millis,
         &identity.email,
         issued,
-        &state.config.controller_oidc.issuer_url,
-        &identity.subject,
+        (&state.config.controller_oidc.issuer_url, &identity.subject),
         auth_epoch,
     ) else {
         return crate::routing::service_unavailable_response(
