@@ -505,7 +505,7 @@ jobs:
           scripts/validate-release-notes.sh "$RELEASE_VERSION" release/RELEASE_NOTES.md
           scripts/validate-release-notes.sh "$RELEASE_VERSION" release/RELEASE_NOTES_FULL.md
           cat release/RELEASE_NOTES.md
-      - uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # softprops/action-gh-release@v3
+      - uses: softprops/action-gh-release@8a0cd651e5b2365bd640854a3fa5dfc70e4875f3 # softprops/action-gh-release@v3
         with:
           tag_name: ${{ github.ref_name }}
           name: slskr ${{ needs.version.outputs.version }}
