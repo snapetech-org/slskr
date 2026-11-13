@@ -10,10 +10,20 @@ mirror_dir="${test_root}/apt"
 mkdir -p "${mirror_dir}/sources.list.d"
 source_list="${mirror_dir}/sources.list"
 deb822_sources="${mirror_dir}/sources.list.d/ubuntu.sources"
+hosted_sources="${mirror_dir}/sources.list.d/hosted-ubuntu.sources"
+hosted_mirror_list="${mirror_dir}/apt-mirrors.txt"
 touch \
   "${mirror_dir}/apt-mirrors-archive.txt" \
   "${mirror_dir}/apt-mirrors-security.txt" \
   "${mirror_dir}/apt-mirrors-ports.txt"
+
+# GitHub-hosted Ubuntu images route their Ubuntu sources through this
+# mirror+file URI. Keep the runner-owned mirror list intact and retarget each
+# deb822 stanza to the project-owned archive or security list.
+cat >"$hosted_mirror_list" <<'EOF'
+https://azure.archive.ubuntu.com/ubuntu/
+https://archive.ubuntu.com/ubuntu/
+EOF
 
 cat >"$source_list" <<'EOF'
 deb https://azure.archive.ubuntu.com/ubuntu/ noble main restricted
@@ -28,6 +38,27 @@ Types: deb
 URIs: http://archive.ubuntu.com/ubuntu/
 Suites: noble noble-updates noble-backports
 Components: main universe
+EOF
+
+cat >"$hosted_sources" <<EOF
+Types: deb
+URIs: mirror+file:${hosted_mirror_list}
+Suites: noble noble-updates noble-backports
+Components: main universe
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+Types: deb
+URIs: mirror+file:${hosted_mirror_list}
+Suites: noble-security
+Components: main universe
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+Types: deb
+URIs: mirror+file:${hosted_mirror_list}
+Suites: noble noble-updates
+Components: main universe
+Architectures: arm64
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
 EOF
 
 SLSKR_APT_MIRROR_DIR="$mirror_dir" SLSKR_APT_SOURCE_DIR="$mirror_dir" "$helper"
@@ -45,7 +76,12 @@ assert_contains "mirror+file:${mirror_dir}/apt-mirrors-archive.txt" "$source_lis
 assert_contains "mirror+file:${mirror_dir}/apt-mirrors-security.txt" "$source_list"
 assert_contains "mirror+file:${mirror_dir}/apt-mirrors-ports.txt" "$source_list"
 assert_contains "mirror+file:${mirror_dir}/apt-mirrors-archive.txt" "$deb822_sources"
+assert_contains $'URIs: mirror+file:'"${mirror_dir}/apt-mirrors-archive.txt"$'\nSuites: noble noble-updates noble-backports' "$hosted_sources"
+assert_contains $'URIs: mirror+file:'"${mirror_dir}/apt-mirrors-security.txt"$'\nSuites: noble-security' "$hosted_sources"
+assert_contains $'URIs: mirror+file:'"${mirror_dir}/apt-mirrors-ports.txt"$'\nSuites: noble noble-updates' "$hosted_sources"
 assert_contains 'https://packages.microsoft.com/ubuntu/24.04/prod' "$source_list"
+assert_contains 'https://azure.archive.ubuntu.com/ubuntu/' "$hosted_mirror_list"
+assert_contains 'https://archive.ubuntu.com/ubuntu/' "$hosted_mirror_list"
 
 assert_contains $'https://archive.ubuntu.com/ubuntu/\tpriority:1' "${mirror_dir}/apt-mirrors-archive.txt"
 assert_contains $'https://mirrors.kernel.org/ubuntu/\tpriority:2' "${mirror_dir}/apt-mirrors-archive.txt"
@@ -56,8 +92,25 @@ assert_contains $'https://mirror.csclub.uwaterloo.ca/ubuntu-ports/\tpriority:2' 
 
 cp "$source_list" "${source_list}.before"
 cp "$deb822_sources" "${deb822_sources}.before"
+cp "$hosted_sources" "${hosted_sources}.before"
+cp "$hosted_mirror_list" "${hosted_mirror_list}.before"
 SLSKR_APT_MIRROR_DIR="$mirror_dir" SLSKR_APT_SOURCE_DIR="$mirror_dir" "$helper"
 cmp -s "${source_list}.before" "$source_list"
 cmp -s "${deb822_sources}.before" "$deb822_sources"
+cmp -s "${hosted_sources}.before" "$hosted_sources"
+cmp -s "${hosted_mirror_list}.before" "$hosted_mirror_list"
+
+cat >"${mirror_dir}/sources.list.d/mixed-ubuntu.sources" <<EOF
+Types: deb
+URIs: mirror+file:${hosted_mirror_list}
+Suites: noble noble-security
+Components: main universe
+EOF
+if SLSKR_APT_MIRROR_DIR="$mirror_dir" SLSKR_APT_SOURCE_DIR="$mirror_dir" \
+  "$helper" >"${test_root}/mixed-stanza.log" 2>&1; then
+  printf 'APT mirror regression failed: mixed archive/security stanza was accepted\n' >&2
+  exit 1
+fi
+assert_contains 'cannot route a mixed archive/security Deb822 stanza' "${test_root}/mixed-stanza.log"
 
 printf 'Ubuntu APT mirror fallback regression passed.\n'
