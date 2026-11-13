@@ -5,6 +5,7 @@ ARG VERSION=dev
 ARG RELEASE_TAG
 
 RUN apt-get update \
+    && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends ca-certificates curl tar \
     && rm -rf /var/lib/apt/lists/*
 
@@ -43,6 +44,7 @@ LABEL org.opencontainers.image.title="slskr" \
       org.opencontainers.image.licenses="AGPL-3.0-only"
 
 RUN apt-get update \
+    && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends ca-certificates curl \
     && rm -rf /var/lib/apt/lists/* \
     && if ! getent group slskr >/dev/null; then \

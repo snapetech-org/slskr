@@ -47,6 +47,8 @@ jobs:
           node-version: '22.23.4'
           cache: npm
           cache-dependency-path: web/package-lock.json
+      - name: Install patched npm CLI
+        run: npm install --global npm@12.2.2 --no-audit --no-fund
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # actions/setup-python@v7.1.0
         with:
           python-version: '3.12'

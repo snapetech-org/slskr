@@ -1,27 +1,33 @@
-FROM node:22.23.4-bookworm AS web-builder
+FROM node:22.23.4-bookworm-slim AS web-builder
 
 ARG VERSION=dev
 WORKDIR /src
+
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && rm -rf /var/lib/apt/lists/* \
+    && npm install --global npm@12.2.2 --no-audit --no-fund
 
 COPY web/.npmrc web/package*.json web/
 RUN npm --prefix web ci
 COPY web web
 RUN npm --prefix web run build
 
-FROM rust:1.94-bookworm AS builder
+FROM rust:1.94-slim-bookworm AS builder
 
 ARG VERSION=dev
 WORKDIR /src
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends ca-certificates pkg-config \
+    && apt-get upgrade -y \
+    && apt-get install -y --no-install-recommends build-essential ca-certificates libssl-dev pkg-config \
     && rm -rf /var/lib/apt/lists/*
 
 COPY . .
 COPY --from=web-builder /src/web/build web/build
 RUN SLSKR_RELEASE_VERSION="${VERSION}" cargo build --release -p slskr --locked
 
-FROM debian:bookworm-slim
+FROM ubuntu:24.04
 
 ARG VERSION=dev
 ARG REVISION=unknown
@@ -36,6 +42,7 @@ LABEL org.opencontainers.image.title="slskr" \
       org.opencontainers.image.licenses="AGPL-3.0-only"
 
 RUN apt-get update \
+    && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends ca-certificates wget \
     && rm -rf /var/lib/apt/lists/* \
     && if ! getent group slskr >/dev/null; then \

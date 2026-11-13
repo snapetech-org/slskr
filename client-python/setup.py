@@ -22,9 +22,9 @@ setup(
     ],
     extras_require={
         "dev": [
-            "pytest>=8,<9",
+            "pytest>=9.0.3,<10",
             "pytest-asyncio>=0.23,<2",
-            "black>=24,<26",
+            "black>=26.10.1,<27",
             "flake8>=7,<8",
             "mypy>=1.11,<2",
             "build>=1,<2",

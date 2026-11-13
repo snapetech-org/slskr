@@ -45,6 +45,8 @@ jobs:
         with:
           node-version: '22.23.4'
           package-manager-cache: false
+      - name: Install patched npm CLI
+        run: npm install --global npm@12.2.2 --no-audit --no-fund
       - name: Install web dependencies
         run: npm --prefix web ci --allow-git=root --legacy-peer-deps --no-audit --no-fund
       - name: Test Web UI localization coverage
