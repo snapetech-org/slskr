@@ -191,7 +191,7 @@ rewrite_source_file() {
         return 1
       fi
     else
-      if ! cat "$temporary_file" | sudo tee "$source_file" >/dev/null; then
+      if ! sudo sh -c 'cat "$1" > "$2"' sh "$temporary_file" "$source_file"; then
         rm -f -- "$temporary_file"
         return 1
       fi
