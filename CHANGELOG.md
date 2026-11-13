@@ -18,6 +18,10 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.104] — 2026-11-13
+
+- Route ARM64 Ubuntu archive, update, and security suites through the Ports mirror so hosted package validation can proceed.
+
 ## [0.2.103] — 2026-11-13
 
 - Update the QUIC protocol and UDP dependencies to patched releases, fixing three newly reported RustSec denial-of-service advisories.

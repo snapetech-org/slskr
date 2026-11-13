@@ -114,20 +114,21 @@ rewrite_source_file() {
           print "APT mirror setup cannot route a runner mirror URI without a Suites field" > "/dev/stderr"
           exit 2
         }
-        if (has_security && has_archive && (has_runner_mirror || has_direct_ubuntu_mirror)) {
-          print "APT mirror setup cannot route a mixed archive/security Deb822 stanza: " suites > "/dev/stderr"
-          exit 2
-        }
 
         lower_architectures = tolower(architectures)
         has_x86_architecture = lower_architectures ~ /(^|[[:space:],])(amd64|i386)([[:space:],]|$)/
         has_ports_architecture = lower_architectures ~ /(^|[[:space:],])(arm64|armhf|armel|riscv64|ppc64el|s390x)([[:space:],]|$)/
+        if (architectures != "") use_ports = has_ports_architecture
+        else use_ports = native_arch !~ /^(amd64|i386)$/ && native_arch != ""
+
+        if (has_security && has_archive && !use_ports && (has_runner_mirror || has_direct_ubuntu_mirror)) {
+          print "APT mirror setup cannot route a mixed archive/security Deb822 stanza: " suites > "/dev/stderr"
+          exit 2
+        }
         if (has_runner_mirror && has_x86_architecture && has_ports_architecture) {
           print "APT mirror setup cannot route mixed x86/ports Architectures in one Deb822 stanza" > "/dev/stderr"
           exit 2
         }
-        if (architectures != "") use_ports = has_ports_architecture
-        else use_ports = native_arch !~ /^(amd64|i386)$/ && native_arch != ""
         if (use_ports) selected_uri = ports_uri
         else if (has_security) selected_uri = security_uri
         else selected_uri = archive_uri

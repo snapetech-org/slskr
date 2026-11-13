@@ -100,6 +100,23 @@ cmp -s "${deb822_sources}.before" "$deb822_sources"
 cmp -s "${hosted_sources}.before" "$hosted_sources"
 cmp -s "${hosted_mirror_list}.before" "$hosted_mirror_list"
 
+# The package-surfaces workflow adds this source to resolve ARM64 packages
+# from Ubuntu Ports. The security suite belongs to the Ports mirror too, so
+# this mixed suite list is safe to route through the Ports mirror list.
+cat >"${mirror_dir}/sources.list.d/slskr-arm64.sources" <<'EOF'
+Types: deb
+URIs: http://ports.ubuntu.com/ubuntu-ports/
+Suites: noble noble-updates noble-security
+Components: main universe restricted multiverse
+Architectures: arm64
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+EOF
+SLSKR_APT_MIRROR_DIR="$mirror_dir" SLSKR_APT_SOURCE_DIR="$mirror_dir" "$helper"
+assert_contains "URIs: mirror+file:${mirror_dir}/apt-mirrors-ports.txt" \
+  "${mirror_dir}/sources.list.d/slskr-arm64.sources"
+assert_contains $'Suites: noble noble-updates noble-security\nComponents:' \
+  "${mirror_dir}/sources.list.d/slskr-arm64.sources"
+
 cat >"${mirror_dir}/sources.list.d/mixed-ubuntu.sources" <<EOF
 Types: deb
 URIs: mirror+file:${hosted_mirror_list}
