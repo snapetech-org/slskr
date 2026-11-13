@@ -18,6 +18,11 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.97] — 2026-11-12
+
+- Keep browser sessions alive across daemon restarts, with opt-in Remember Me and refresh bound to the current web-auth credentials.
+- Patch Python development tools, remove vulnerable native compiler payloads from the Web build, and refresh container operating-system packages.
+
 ## [0.2.96] — 2026-11-12
 
 - Resume peer-queued downloads after a confirmed queue response and reconnect, while validating the callback peer and transfer token and enforcing local download-slot limits.
