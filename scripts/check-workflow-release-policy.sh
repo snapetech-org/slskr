@@ -31,7 +31,7 @@ fi
 controller_parity_job="$(sed -n '/^  controller-regex-parity:/,/^  [A-Za-z0-9_-]*:/p' .github/workflows/ci.yml)"
 if [[ "$controller_parity_job" != *'DOTNET_INSTALL_DIR: ${{ github.workspace }}/.dotnet'* ||
       "$controller_parity_job" != *"DOTNET_VERSION: '10.0.402'"* ||
-      "$controller_parity_job" != *"actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68"* ||
+      "$controller_parity_job" != *"actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73"* ||
       "$controller_parity_job" != *'dotnet-version: ${{ env.DOTNET_VERSION }}'* ]]; then
   printf 'workflow release policy check failed: controller regex parity must install its pinned .NET SDK into the workspace\n' >&2
   status=1
