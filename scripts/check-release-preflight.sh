@@ -13,6 +13,7 @@ done
 
 # Check source-only packaging rules before spending time on native compilation.
 scripts/check-workflow-release-policy.sh
+scripts/test-configure-ubuntu-apt-mirrors.sh
 scripts/check-package-artifact-matrix.sh
 scripts/check-aur-packaging-checksums.sh
 scripts/check-release-version-metadata.sh

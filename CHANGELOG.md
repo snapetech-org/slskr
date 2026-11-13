@@ -18,6 +18,13 @@ the release is prepared. Do not rewrite audited release history.
 
 ## [Unreleased]
 
+## [0.2.100] — 2026-11-13
+
+- Resume Soulseek downloads when peers confirm a remote queue or reconnect, using the `QueueUpload` protocol and validating the peer and transfer token.
+- Preserve browser sessions across daemon restarts, with refresh tokens bound to the credentials that issued them.
+- Refresh vulnerable build and runtime dependencies, including the Web toolchain and container packages.
+- Fail over Ubuntu package downloads across ordered, independently hosted mirror lists, and reject stale package indexes when all mirrors fail.
+
 ## [0.2.99] — 2026-11-13
 
 - Preserve web sessions across daemon restarts, restricting token refresh to the credentials that issued the token.

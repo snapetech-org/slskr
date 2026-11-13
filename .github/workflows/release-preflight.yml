@@ -15,7 +15,7 @@ jobs:
       - name: Install preflight tools on a clean runner
         run: |
           scripts/configure-ubuntu-apt-mirrors.sh
-          sudo apt-get update
+          sudo apt-get update --error-on=any
           sudo apt-get install -y --no-install-recommends ripgrep git python3
       - name: Validate release and packaging policy before compilation
         run: scripts/check-release-preflight.sh

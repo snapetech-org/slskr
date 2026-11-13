@@ -127,7 +127,7 @@ jobs:
       - name: Install Linux build dependencies
         run: |
           scripts/configure-ubuntu-apt-mirrors.sh
-          sudo apt-get update
+          sudo apt-get update --error-on=any
           sudo apt-get install -y pkg-config libssl-dev ripgrep
       - name: Set up .NET SDK for controller parity
         uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # actions/setup-dotnet@v6.0.0
@@ -200,7 +200,7 @@ jobs:
       - name: Install workflow and shell linters
         run: |
           scripts/configure-ubuntu-apt-mirrors.sh
-          sudo apt-get update
+          sudo apt-get update --error-on=any
           sudo apt-get install -y pkg-config libssl-dev ripgrep shellcheck
       - name: Install actionlint
         run: |
@@ -361,7 +361,7 @@ jobs:
       - name: Install musl toolchain
         run: |
           scripts/configure-ubuntu-apt-mirrors.sh
-          sudo apt-get update
+          sudo apt-get update --error-on=any
           sudo apt-get install -y musl-tools pkg-config libssl-dev
       - name: Check native GNU build
         run: cargo check --locked --workspace --all-targets
@@ -467,7 +467,7 @@ jobs:
         shell: bash
         run: |
           scripts/configure-ubuntu-apt-mirrors.sh
-          sudo apt-get update
+          sudo apt-get update --error-on=any
           sudo apt-get install -y ${{ matrix.apt }}
       - name: Run native workspace tests
         if: matrix.native_tests
@@ -562,7 +562,7 @@ jobs:
           EOF
           sudo dpkg --add-architecture arm64
           scripts/configure-ubuntu-apt-mirrors.sh
-          sudo apt-get update
+          sudo apt-get update --error-on=any
           if apt-cache show libssl3:arm64 >/dev/null 2>&1; then
             arm_ssl_package=libssl3
           else

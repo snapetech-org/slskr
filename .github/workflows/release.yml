@@ -207,7 +207,7 @@ jobs:
       - name: Install workflow and shell linters
         run: |
           scripts/configure-ubuntu-apt-mirrors.sh
-          sudo apt-get update
+          sudo apt-get update --error-on=any
           sudo apt-get install -y ripgrep shellcheck
           go install "github.com/rhysd/actionlint/cmd/actionlint@${ACTIONLINT_VERSION}"
           echo "$HOME/go/bin" >> "$GITHUB_PATH"
@@ -344,7 +344,7 @@ jobs:
         shell: bash
         run: |
           scripts/configure-ubuntu-apt-mirrors.sh
-          sudo apt-get update
+          sudo apt-get update --error-on=any
           sudo apt-get install -y ${{ matrix.apt }}
       - name: Install wasm-bindgen CLI
         shell: bash
@@ -418,7 +418,7 @@ jobs:
         shell: bash
         run: |
           scripts/configure-ubuntu-apt-mirrors.sh
-          sudo apt-get update
+          sudo apt-get update --error-on=any
           sudo apt-get install -y ripgrep
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # actions/download-artifact@v8.0.2
         with:

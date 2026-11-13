@@ -75,6 +75,19 @@ for workflow in release.yml react-nightly-audit.yml live-parity.yml; do
   fi
 done
 
+for workflow in ci.yml release.yml release-publish.yml release-preflight.yml; do
+  workflow_path=".github/workflows/$workflow"
+  helper_count="$(rg -c -F 'scripts/configure-ubuntu-apt-mirrors.sh' "$workflow_path" || true)"
+  update_count="$(rg -c -F 'sudo apt-get update --error-on=any' "$workflow_path" || true)"
+  helper_count="${helper_count:-0}"
+  update_count="${update_count:-0}"
+  if [[ "$helper_count" != "$update_count" ]] ||
+     rg -n 'sudo apt-get update[[:space:]]*$' "$workflow_path" >/dev/null; then
+    printf 'workflow release policy check failed: %s must fail closed after every mirrored Ubuntu package-index refresh\n' "$workflow_path" >&2
+    status=1
+  fi
+done
+
 if [[ ! -f "$pin_policy" ]]; then
   printf 'workflow release policy check failed: GitHub Actions pin policy is missing: %s\n' "$pin_policy" >&2
   status=1
