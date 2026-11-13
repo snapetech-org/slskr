@@ -3,6 +3,7 @@
 import ast
 import importlib.util
 import hashlib
+import io
 import json
 import os
 from pathlib import Path
@@ -326,6 +327,44 @@ esac
                 self.assertIn(f'{expected_root}/slskr', packaged.getnames())
             self.assertEqual(archive.with_suffix('.gz.sha256').read_text().split()[0],
                              hashlib.sha256(archive.read_bytes()).hexdigest())
+
+    def test_release_archive_verifier_handles_many_web_assets(self):
+        with tempfile.TemporaryDirectory(prefix='slskr-verifier-assets-') as tmp:
+            artifact_dir = Path(tmp) / 'dist'
+            artifact_dir.mkdir()
+            target = 'aarch64-unknown-linux-gnu'
+            root_name = f'slskr-ci-fixture-{target}'
+            archive = artifact_dir / f'{root_name}.tar.gz'
+            files = {
+                'RUN.txt': f'slskr ci-fixture ({target})\n'.encode(),
+                'README.md': b'fixture\n',
+                'LICENSE': b'fixture\n',
+                'NOTICE': b'fixture\n',
+                'COMPLIANCE.md': b'fixture\n',
+                'docs/slskr.config.example.toml': b'fixture\n',
+                'slskr': b'fixture executable\n',
+                'web/build/index.html': b'<html></html>\n',
+                'web/build/assets/app.css': b'body {}\n',
+            }
+            with tarfile.open(archive, 'w:gz') as packaged:
+                for name, content in files.items():
+                    entry = tarfile.TarInfo(f'{root_name}/{name}')
+                    entry.size = len(content)
+                    packaged.addfile(entry, io.BytesIO(content))
+                for index in range(2048):
+                    name = f'web/build/assets/chunk-{index:04d}-' + ('x' * 48) + '.js'
+                    content = b'asset\n'
+                    entry = tarfile.TarInfo(f'{root_name}/{name}')
+                    entry.size = len(content)
+                    packaged.addfile(entry, io.BytesIO(content))
+
+            digest = hashlib.sha256(archive.read_bytes()).hexdigest()
+            archive.with_name(f'{archive.name}.sha256').write_text(f'{digest}  {archive.name}\n')
+            result = subprocess.run(
+                ['bash', str(ROOT / 'scripts/verify-release-artifacts.sh'), str(artifact_dir)],
+                cwd=ROOT, capture_output=True, text=True,
+            )
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
     def test_legacy_windows_runtime_dependencies_are_removed_for_static_releases(self):
         with tempfile.TemporaryDirectory(prefix='slskr-runtime-metadata-') as tmp:

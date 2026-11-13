@@ -211,8 +211,16 @@ PY
   test -f "$root/docs/slskr.config.example.toml"
   test -f "$root/web/build/index.html"
   test -d "$root/web/build/assets"
-  find "$root/web/build/assets" -type f -name '*.js' | grep -q .
-  find "$root/web/build/assets" -type f -name '*.css' | grep -q .
+  javascript_asset="$(find "$root/web/build/assets" -type f -name '*.js' -print -quit)"
+  if [[ -z "$javascript_asset" ]]; then
+    echo "archive does not contain JavaScript assets" >&2
+    exit 1
+  fi
+  stylesheet_asset="$(find "$root/web/build/assets" -type f -name '*.css' -print -quit)"
+  if [[ -z "$stylesheet_asset" ]]; then
+    echo "archive does not contain CSS assets" >&2
+    exit 1
+  fi
   if [[ -f "$root/slskr" ]]; then
     chmod +x "$root/slskr"
     if [[ -n "$host_target" && "$artifact_target" == "$host_target" ]]; then
