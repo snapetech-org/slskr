@@ -14,7 +14,7 @@ pub(super) async fn dispatch_queued_downloads_after_login_sends_transfer_peer_co
             0,
             Some("test-peer".to_owned()),
             "Remote/Test.flac".to_owned(),
-            None,
+            Some("/tmp/test-peer-queued.flac".to_owned()),
             Some(1024),
         );
     }
