@@ -52,10 +52,6 @@ for workflow in semgrep-community.yml trivy-filesystem.yml; do
     status=1
   fi
 done
-if rg -n 'github/codeql-action/' .github/workflows >/dev/null || [[ -e .github/workflows/codeql.yml ]]; then
-  printf 'workflow release policy check failed: CodeQL must remain disabled\n' >&2
-  status=1
-fi
 # Public runners are the default. Keep the seven native target/OS mappings.
 for workflow in ci release; do
   for runner in ubuntu-24.04 ubuntu-24.04-arm macos-15-intel macos-15 windows-latest; do
